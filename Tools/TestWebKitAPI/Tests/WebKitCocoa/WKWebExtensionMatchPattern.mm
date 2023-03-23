@@ -31,7 +31,7 @@
 #import <CyberKit/WKFoundation.h>
 #import <CyberKit/_WKWebExtensionMatchPatternPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static _WKWebExtensionMatchPattern *toPattern(NSString *string)
 {
@@ -525,6 +525,6 @@ TEST(WKWebExtensionMatchPattern, CustomURLScheme)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

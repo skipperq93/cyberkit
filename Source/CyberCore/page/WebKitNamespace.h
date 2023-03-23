@@ -36,19 +36,19 @@ namespace CyberCore {
 class UserContentProvider;
 class UserMessageHandlersNamespace;
 
-class WebKitNamespace : public DOMWindowProperty, public RefCounted<WebKitNamespace> {
+class CyberKitNamespace : public DOMWindowProperty, public RefCounted<CyberKitNamespace> {
 public:
-    static Ref<WebKitNamespace> create(DOMWindow& window, UserContentProvider& userContentProvider)
+    static Ref<CyberKitNamespace> create(DOMWindow& window, UserContentProvider& userContentProvider)
     {
-        return adoptRef(*new WebKitNamespace(window, userContentProvider));
+        return adoptRef(*new CyberKitNamespace(window, userContentProvider));
     }
 
-    virtual ~WebKitNamespace();
+    virtual ~CyberKitNamespace();
 
     UserMessageHandlersNamespace* messageHandlers();
 
 private:
-    explicit WebKitNamespace(DOMWindow&, UserContentProvider&);
+    explicit CyberKitNamespace(DOMWindow&, UserContentProvider&);
 
     Ref<UserMessageHandlersNamespace> m_messageHandlerNamespace;
 };

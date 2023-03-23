@@ -56,7 +56,7 @@ class Report;
 class ResourceRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkConnectionToWebProcess;
 class NetworkLoad;
@@ -323,4 +323,4 @@ private:
     MemoryCompactRobinHoodHashMap<String, String> m_reportingEndpoints;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

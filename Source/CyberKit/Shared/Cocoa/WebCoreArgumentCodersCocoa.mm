@@ -50,7 +50,7 @@
 #endif
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/CyberCoreArgumentCodersCocoaAdditions.mm>
+#include <CyberKitAdditions/CyberCoreArgumentCodersCocoaAdditions.mm>
 #endif
 
 #if USE(AVFOUNDATION)
@@ -436,10 +436,10 @@ void ArgumentCoder<CyberCore::Font>::encodePlatformData(Encoder& encoder, const 
     const auto& creationData = platformData.creationData();
     encoder << static_cast<bool>(creationData);
     if (creationData) {
-        WebKit::SharedMemory::Handle handle;
+        CyberKit::SharedMemory::Handle handle;
         {
-            auto sharedMemoryBuffer = WebKit::SharedMemory::copyBuffer(creationData->fontFaceData);
-            if (auto memoryHandle = sharedMemoryBuffer->createHandle(WebKit::SharedMemory::Protection::ReadOnly))
+            auto sharedMemoryBuffer = CyberKit::SharedMemory::copyBuffer(creationData->fontFaceData);
+            if (auto memoryHandle = sharedMemoryBuffer->createHandle(CyberKit::SharedMemory::Protection::ReadOnly))
                 handle = WTFMove(*memoryHandle);
         }
         encoder << creationData->fontFaceData->size();
@@ -544,12 +544,12 @@ std::optional<CyberCore::FontPlatformData> ArgumentCoder<CyberCore::Font>::decod
         if (!bufferSize)
             return std::nullopt;
 
-        std::optional<WebKit::SharedMemory::Handle> handle;
+        std::optional<CyberKit::SharedMemory::Handle> handle;
         decoder >> handle;
         if (!handle)
             return std::nullopt;
 
-        auto sharedMemoryBuffer = WebKit::SharedMemory::map(*handle, WebKit::SharedMemory::Protection::ReadOnly);
+        auto sharedMemoryBuffer = CyberKit::SharedMemory::map(*handle, CyberKit::SharedMemory::Protection::ReadOnly);
         if (!sharedMemoryBuffer)
             return std::nullopt;
 

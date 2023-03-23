@@ -30,12 +30,12 @@
 #include "WebGPUIdentifier.h"
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ShaderModuleCompilationHint {
     WebGPUIdentifier pipelineLayout;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

@@ -116,7 +116,7 @@ WEBCORE_EXPORT @interface CyberCoreNSURLSession : NSObject {
 - (NSURLSessionDownloadTask *)downloadTaskWithResumeData:(NSData *)resumeData completionHandler:(void (^)(NSURL * location, NSURLResponse * response, NSError * error))completionHandler;
 @end
 
-@interface CyberCoreNSURLSession (WebKitAwesomeness)
+@interface CyberCoreNSURLSession (CyberKitAwesomeness)
 - (void)sendH2Ping:(NSURL *)url pongHandler:(void (^)(NSError * _Nullable error, NSTimeInterval interval))pongHandler;
 @end
 
@@ -154,7 +154,7 @@ WEBCORE_EXPORT @interface CyberCoreNSURLSession : NSObject {
 - (void)resume;
 @end
 
-@interface CyberCoreNSURLSessionDataTask (WebKitInternal)
+@interface CyberCoreNSURLSessionDataTask (CyberKitInternal)
 - (void)resource:(nullable CyberCore::PlatformMediaResource*)resource sentBytes:(unsigned long long)bytesSent totalBytesToBeSent:(unsigned long long)totalBytesToBeSent;
 - (void)resource:(nullable CyberCore::PlatformMediaResource*)resource receivedResponse:(const CyberCore::ResourceResponse&)response completionHandler:(CompletionHandler<void(CyberCore::ShouldContinuePolicyCheck)>&&)completionHandler;
 - (BOOL)resource:(nullable CyberCore::PlatformMediaResource*)resource shouldCacheResponse:(const CyberCore::ResourceResponse&)response;

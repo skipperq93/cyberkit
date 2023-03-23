@@ -26,7 +26,7 @@
 #include "config.h"
 #include "Module.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 Module::Module(const String& path)
     : m_path(path)

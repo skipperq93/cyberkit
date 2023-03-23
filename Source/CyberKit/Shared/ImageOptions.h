@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum ImageOptions {
     ImageOptionsShareable = 1 << 0,
@@ -60,4 +60,4 @@ inline ImageOptions snapshotOptionsToImageOptions(SnapshotOptions snapshotOption
     return static_cast<ImageOptions>(imageOptions);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

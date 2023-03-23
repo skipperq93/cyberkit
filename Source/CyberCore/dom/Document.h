@@ -1277,7 +1277,7 @@ public:
     void checkCompleted();
 
 #if ENABLE(IOS_TOUCH_EVENTS)
-#include <WebKitAdditions/DocumentIOS.h>
+#include <CyberKitAdditions/DocumentIOS.h>
 #endif
 
 #if ENABLE(DEVICE_ORIENTATION) && PLATFORM(IOS_FAMILY)

@@ -31,7 +31,7 @@
 #include "AuxiliaryProcessMain.h"
 #include "GPUProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessMainPlayStation final: public AuxiliaryProcessMainBaseNoSingleton<GPUProcess> {
 };
@@ -41,6 +41,6 @@ int GPUProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<GPUProcessMainPlayStation>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

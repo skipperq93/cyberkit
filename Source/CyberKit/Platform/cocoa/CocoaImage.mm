@@ -34,7 +34,7 @@
 #import <CoreServices/CoreServices.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<NSData> transcode(CGImageRef image, CFStringRef typeIdentifier)
 {
@@ -66,4 +66,4 @@ std::pair<RetainPtr<NSData>, RetainPtr<CFStringRef>> transcodeWithPreferredMIMET
     return { nil, nil };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

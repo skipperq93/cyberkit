@@ -32,7 +32,7 @@
 #include "Font.h"
 #include "FontSelector.h"
 #include "Timer.h"
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 #include <memory>
 #include <wtf/Forward.h>
 #include <wtf/HashSet.h>
@@ -156,7 +156,7 @@ private:
     bool m_buildIsUnderway { false };
     bool m_isStopped { false };
 
-    WebKitFontFamilyNames::FamilyNamesList<AtomString> m_fontFamilyNames;
+    CyberKitFontFamilyNames::FamilyNamesList<AtomString> m_fontFamilyNames;
 };
 
 } // namespace WebCore

@@ -960,7 +960,7 @@ long long CurlHandle::maxCurlOffT()
 
 int CurlHandle::expectedSizeOfCurlOffT()
 {
-    // The size of a curl_off_t could be different in WebKit and in cURL depending on
+    // The size of a curl_off_t could be different in CyberKit and in cURL depending on
     // compilation flags of both.
     static int expectedSizeOfCurlOffT = 0;
     if (!expectedSizeOfCurlOffT) {

@@ -31,7 +31,7 @@
 #import <pal/spi/mac/NSMenuSPI.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool canCallMenuTypeForEvent()
 {
@@ -138,4 +138,4 @@ TEST(CyberKitLegacy, MenuAndButtonForAltMiddleClick)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

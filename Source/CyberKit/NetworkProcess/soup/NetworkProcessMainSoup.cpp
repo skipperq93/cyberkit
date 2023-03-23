@@ -35,7 +35,7 @@
 #include <pal/crypto/gcrypt/Initialization.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcessMainSoup final: public AuxiliaryProcessMainBaseNoSingleton<NetworkProcess> {
 public:
@@ -61,4 +61,4 @@ int NetworkProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<NetworkProcessMainSoup>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

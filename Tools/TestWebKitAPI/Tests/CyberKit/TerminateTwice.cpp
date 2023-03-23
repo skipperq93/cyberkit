@@ -30,7 +30,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loaded;
 
@@ -39,7 +39,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
     loaded = true;
 }
 
-TEST(WebKit, TerminateTwice)
+TEST(CyberKit, TerminateTwice)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -65,6 +65,6 @@ TEST(WebKit, TerminateTwice)
     WKPageTerminate(webView.page());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

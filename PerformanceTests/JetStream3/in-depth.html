@@ -167,7 +167,7 @@
 
         <dt id="tsf-wasm">tsf-wasm</dt>
         <dd>
-         Runs Filip Pizlo's &mdash; of the WebKit team &mdash; implementation of a <a href="http://www.filpizlo.com/tsf/"> Typed Stream Format </a>
+         Runs Filip Pizlo's &mdash; of the CyberKit team &mdash; implementation of a <a href="http://www.filpizlo.com/tsf/"> Typed Stream Format </a>
          in Web Assembly. The original code is compiled from C to Web Assembly using <a href="https://emscripten.org">Emscripten</a>.
          Source code: <a href="wasm/TSF">TSF</a>
         </dd>
@@ -175,7 +175,7 @@
         <dt id="tagcloud-SP">tagcloud-SP</dt>
         <dd>
          Parses JSON and generates markup for a <a href="http://en.wikipedia.org/wiki/Tag_cloud">tag
-         cloud</a> view of the data. Written by Maciej Stachowiak of the WebKit team. Exercises string
+         cloud</a> view of the data. Written by Maciej Stachowiak of the CyberKit team. Exercises string
          parsing and manipulation. A similar version of this benchmark was originally published in SunSpider.
          Source code: <a href="SunSpider/tagcloud.js">tagcloud.js</a>
         </dd>
@@ -221,7 +221,7 @@
         <dd>
          Uses Web Workers to parallelize the computation of a <a href="https://en.wikipedia.org/wiki/Time-series_segmentation">
          time series segmentation</a> algorithm over a sample data set. This code is adapted from an algorithm used in the <a href="https://perf.webkit.org/v3/">
-         WebKit performance dashboard.</a>
+         CyberKit performance dashboard.</a>
          Source code: <a href="worker/segmentation.js">segmentation.js</a>
         </dd>
 
@@ -350,7 +350,7 @@
 
         <dt id="multi-inspector-code-load">multi-inspector-code-load</dt>
         <dd>
-         Measures the repeated parsing of a modern JavaScript code base: WebKit's Web Inspector.
+         Measures the repeated parsing of a modern JavaScript code base: CyberKit's Web Inspector.
          Because this test allows caching, this is representative of revisiting the same website.
          Source code: <a href="code-load/code-multi-load.js">code-multi-load.js</a>
         </dd>
@@ -383,7 +383,7 @@
 
         <dt id="json-stringify-inspector">json-stringify-inspector</dt>
         <dd>
-         Measures JSON.stringify performance on a set of objects that WebKit's Web Inspector
+         Measures JSON.stringify performance on a set of objects that CyberKit's Web Inspector
          stringifies when communicating between the UI and web pages.
          This benchmark was inspired by a similar benchmark in the Kraken benchmark suite.
          Source code: <a href="SeaMonster/json-stringify-inspector.js">json-stringify-inspector.js</a>
@@ -391,7 +391,7 @@
 
         <dt id="json-parse-inspector">json-parse-inspector</dt>
         <dd>
-         Measures JSON.parse performance on a set of objects that WebKit's Web Inspector
+         Measures JSON.parse performance on a set of objects that CyberKit's Web Inspector
          parses when communicating between the UI and web pages.
          This benchmark was inspired by a similar benchmark in the Kraken benchmark suite.
          Source code: <a href="SeaMonster/json-parse-inspector.js">json-parse-inspector.js</a>
@@ -409,7 +409,7 @@
 
         <dt id="HashSet-wasm">HashSet-wasm</dt>
         <dd>
-         A Web Assembly benchmark replaying a set of hash table operations performed in WebKit when loading
+         A Web Assembly benchmark replaying a set of hash table operations performed in CyberKit when loading
          a web page. This benchmark was compiled from C++ to Web Assembly using <a href="https://emscripten.org">Emscripten</a>.
          Source code: <a href="wasm/HashSet.cpp">HashSet.cpp</a>, <a href="wasm/HashSet.js">HashSet.js</a>
         </dd>
@@ -419,7 +419,7 @@
          Apache Harmony java.util.HashMap implementation ported to JavaScript and benchmarked by
          doing hash table insertions, queries, and then iterating the associated entrySet. Tests
          object-oriented JavaScript idioms and object construction. A similar JavaScript version
-         of this benchmark was originally published as part of the WebKit test suite.
+         of this benchmark was originally published as part of the CyberKit test suite.
          Source code: <a href="simple/hash-map.js">hash-map.js</a>
         </dd>
 
@@ -464,7 +464,7 @@
 
         <dt id="first-inspector-code-load">first-inspector-code-load</dt>
         <dd>
-         Measures the first-time parsing of a modern JavaScript code base: WebKit's Web Inspector.
+         Measures the first-time parsing of a modern JavaScript code base: CyberKit's Web Inspector.
          This models the parsing time of visiting a web site for the first time.
          Source code: <a href="code-load/code-first-load.js">code-first-load.js</a>
         </dd>
@@ -630,7 +630,7 @@
 
         <dt id="Air">Air</dt>
         <dd>
-         Air is an ES2015 port of the <a href="https://webkit.org/blog/5852/introducing-the-b3-jit-compiler/">WebKit B3 JIT</a>'s <a href="https://trac.webkit.org/changeset/201783">Air::allocateStack phase</a>.
+         Air is an ES2015 port of the <a href="https://webkit.org/blog/5852/introducing-the-b3-jit-compiler/">CyberKit B3 JIT</a>'s <a href="https://trac.webkit.org/changeset/201783">Air::allocateStack phase</a>.
          This code is a heavy user of Map, Set, classes, spread, and for-of. The benchmark runs allocateStack on hot function
          bodies from other popular JavaScript benchmarks. This benchmark was previously published in ARES-6.
          Source code: <a href="ARES-6/Air">Air</a>

@@ -34,7 +34,7 @@
 #import <wtf/CallbackAggregator.h>
 #import <wtf/ProcessPrivilege.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static CFHTTPCookieStorageAcceptPolicy toCFHTTPCookieStorageAcceptPolicy(HTTPCookieAcceptPolicy policy)
@@ -70,4 +70,4 @@ void WebCookieManager::platformSetHTTPCookieAcceptPolicy(HTTPCookieAcceptPolicy 
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

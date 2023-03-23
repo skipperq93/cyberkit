@@ -40,7 +40,7 @@
 #include <wtf/WorkQueue.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 class IOChannel;

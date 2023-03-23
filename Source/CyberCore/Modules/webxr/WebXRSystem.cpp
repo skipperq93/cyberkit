@@ -492,7 +492,7 @@ void WebXRSystem::requestSession(Document& document, XRSessionMode mode, const X
 
         rejectPromiseWithNotSupportedError.release();
 
-        // WebKit does not currently support the Permissions API. https://w3c.github.io/permissions/
+        // CyberKit does not currently support the Permissions API. https://w3c.github.io/permissions/
         // However we do implement here the permission request algorithm without the
         // Permissions API bits as it handles, among others, the session features parsing. We also
         // do it here before creating the session as there is no need to do it on advance.

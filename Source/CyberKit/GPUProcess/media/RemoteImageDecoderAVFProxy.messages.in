@@ -32,7 +32,7 @@ messages -> RemoteImageDecoderAVFProxy NotRefCounted {
     DeleteDecoder(CyberCore::ImageDecoderIdentifier identifier)
     SetExpectedContentSize(CyberCore::ImageDecoderIdentifier identifier, long long expectedContentSize)
     SetData(CyberCore::ImageDecoderIdentifier identifier, IPC::SharedBufferReference data, bool allDataReceived) -> (size_t frameCount, CyberCore::IntSize size, bool hasTrack, std::optional<Vector<CyberCore::ImageDecoder::FrameInfo>> frameInfos) Synchronous
-    CreateFrameImageAtIndex(CyberCore::ImageDecoderIdentifier identifier, size_t index) -> (std::optional<WebKit::ShareableBitmapHandle> imageHandle) Synchronous
+    CreateFrameImageAtIndex(CyberCore::ImageDecoderIdentifier identifier, size_t index) -> (std::optional<CyberKit::ShareableBitmapHandle> imageHandle) Synchronous
     ClearFrameBufferCache(CyberCore::ImageDecoderIdentifier identifier, size_t index)
 }
 

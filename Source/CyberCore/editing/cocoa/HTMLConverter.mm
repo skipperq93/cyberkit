@@ -1093,7 +1093,7 @@ NSDictionary *HTMLConverter::computedAttributesForElement(Element& element)
 
         String textAlign = _caches->propertyValueForNode(coreBlockElement, CSSPropertyTextAlign);
         if (textAlign.length()) {
-            // WebKit can return -khtml-left, -khtml-right, -khtml-center
+            // CyberKit can return -khtml-left, -khtml-right, -khtml-center
             if (textAlign.endsWith("left"_s))
                 [paragraphStyle setAlignment:NSTextAlignmentLeft];
             else if (textAlign.endsWith("right"_s))
@@ -1301,7 +1301,7 @@ BOOL HTMLConverter::_addAttachmentForElement(Element& element, NSURL *url, BOOL 
     }
 #endif
     if (!fileWrapper && !notFound && url) {
-        // Special handling for Mail attachments, until WebKit provides a standard way to get the data.
+        // Special handling for Mail attachments, until CyberKit provides a standard way to get the data.
         Class WebMessageDocumentClass = _WebMessageDocumentClass();
         if (WebMessageDocumentClass) {
             NSTextAttachment *mimeTextAttachment = nil;
@@ -2404,15 +2404,15 @@ AttributedString editingAttributedString(const SimpleRange& range, IncludeImages
         auto textAlignment = NSTextAlignmentNatural;
         switch (style.textAlign()) {
         case TextAlignMode::Right:
-        case TextAlignMode::WebKitRight:
+        case TextAlignMode::CyberKitRight:
             textAlignment = NSTextAlignmentRight;
             break;
         case TextAlignMode::Left:
-        case TextAlignMode::WebKitLeft:
+        case TextAlignMode::CyberKitLeft:
             textAlignment = NSTextAlignmentLeft;
             break;
         case TextAlignMode::Center:
-        case TextAlignMode::WebKitCenter:
+        case TextAlignMode::CyberKitCenter:
             textAlignment = NSTextAlignmentCenter;
             break;
         case TextAlignMode::Justify:

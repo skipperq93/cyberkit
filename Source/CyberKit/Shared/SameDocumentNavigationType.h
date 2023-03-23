@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class SameDocumentNavigationType : uint8_t {
     AnchorNavigation,
@@ -34,4 +34,4 @@ enum class SameDocumentNavigationType : uint8_t {
     SessionStatePop
 };
 
-} // namespace WebKit
+} // namespace CyberKit

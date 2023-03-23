@@ -75,7 +75,7 @@ static bool trustsServerForLocalTests(NSURLAuthenticationChallenge *challenge)
 
 @end
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 enum LoadTaskIdentifierType { };
 using LoadTaskIdentifier = ObjectIdentifier<LoadTaskIdentifierType>;
@@ -136,4 +136,4 @@ void NetworkLoader::start(URL&& url, RefPtr<JSON::Object>&& jsonPayload, CyberCo
     taskMap().add(identifier, task);
 }
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

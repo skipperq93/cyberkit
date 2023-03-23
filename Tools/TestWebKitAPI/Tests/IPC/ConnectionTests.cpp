@@ -30,7 +30,7 @@
 #include <wtf/threads/BinarySemaphore.h>
 
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static constexpr Seconds kDefaultWaitForTimeout = 1_s;
 

@@ -464,13 +464,13 @@ void derefGPtr<GstClock>(GstClock* ptr)
         gst_object_unref(ptr);
 }
 
-template <> GRefPtr<WebKitVideoSink> adoptGRef(WebKitVideoSink* ptr)
+template <> GRefPtr<CyberKitVideoSink> adoptGRef(CyberKitVideoSink* ptr)
 {
     ASSERT(!ptr || !g_object_is_floating(ptr));
-    return GRefPtr<WebKitVideoSink>(ptr, GRefPtrAdopt);
+    return GRefPtr<CyberKitVideoSink>(ptr, GRefPtrAdopt);
 }
 
-template <> WebKitVideoSink* refGPtr<WebKitVideoSink>(WebKitVideoSink* ptr)
+template <> CyberKitVideoSink* refGPtr<CyberKitVideoSink>(CyberKitVideoSink* ptr)
 {
     if (ptr)
         gst_object_ref_sink(GST_OBJECT(ptr));
@@ -478,29 +478,29 @@ template <> WebKitVideoSink* refGPtr<WebKitVideoSink>(WebKitVideoSink* ptr)
     return ptr;
 }
 
-template <> void derefGPtr<WebKitVideoSink>(WebKitVideoSink* ptr)
+template <> void derefGPtr<CyberKitVideoSink>(CyberKitVideoSink* ptr)
 {
     if (ptr)
         gst_object_unref(GST_OBJECT(ptr));
 }
 
-template <> GRefPtr<WebKitWebSrc> adoptGRef(WebKitWebSrc* ptr)
+template <> GRefPtr<CyberKitWebSrc> adoptGRef(CyberKitWebSrc* ptr)
 {
     ASSERT(!ptr || !g_object_is_floating(ptr));
-    return GRefPtr<WebKitWebSrc>(ptr, GRefPtrAdopt);
+    return GRefPtr<CyberKitWebSrc>(ptr, GRefPtrAdopt);
 }
 
-// This method is only available for WebKitWebSrc and should not be used for any other type.
-// This is only to work around a bug in GST where the URI downloader is not taking the ownership of WebKitWebSrc.
+// This method is only available for CyberKitWebSrc and should not be used for any other type.
+// This is only to work around a bug in GST where the URI downloader is not taking the ownership of CyberKitWebSrc.
 // See https://bugs.webkit.org/show_bug.cgi?id=144040.
-GRefPtr<WebKitWebSrc> ensureGRef(WebKitWebSrc* ptr)
+GRefPtr<CyberKitWebSrc> ensureGRef(CyberKitWebSrc* ptr)
 {
     if (ptr && g_object_is_floating(ptr))
         gst_object_ref_sink(GST_OBJECT(ptr));
-    return GRefPtr<WebKitWebSrc>(ptr);
+    return GRefPtr<CyberKitWebSrc>(ptr);
 }
 
-template <> WebKitWebSrc* refGPtr<WebKitWebSrc>(WebKitWebSrc* ptr)
+template <> CyberKitWebSrc* refGPtr<CyberKitWebSrc>(CyberKitWebSrc* ptr)
 {
     if (ptr)
         gst_object_ref_sink(GST_OBJECT(ptr));
@@ -508,7 +508,7 @@ template <> WebKitWebSrc* refGPtr<WebKitWebSrc>(WebKitWebSrc* ptr)
     return ptr;
 }
 
-template <> void derefGPtr<WebKitWebSrc>(WebKitWebSrc* ptr)
+template <> void derefGPtr<CyberKitWebSrc>(CyberKitWebSrc* ptr)
 {
     if (ptr)
         gst_object_unref(GST_OBJECT(ptr));

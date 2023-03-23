@@ -112,4 +112,4 @@ private:
     mutable std::unique_ptr<WTF::URL> m_parsedURL;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

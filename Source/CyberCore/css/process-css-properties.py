@@ -3228,7 +3228,7 @@ class GenerateCSSStyleDeclarationPropertyNames:
                         // [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString _webkit_cased_attribute;
                         """,
                     names_and_aliases_with_properties=filter(lambda item: item[0].startswith("-webkit-"), names_and_aliases_with_properties),
-                    variant="WebKitCased",
+                    variant="CyberKitCased",
                     convert_to_idl_attribute=True,
                     lowercase_first=True
                 )

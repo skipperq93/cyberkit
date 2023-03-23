@@ -31,7 +31,7 @@
 #include "StreamConnectionEncoder.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // ArgumentCoderEncoderDecoderTest internally constructs the encoder object specified
 // as the template parameter, into which each test can encode the desired objects.
@@ -678,4 +678,4 @@ REGISTER_TYPED_TEST_SUITE_P(ArgumentCoderVectorTest,
     VectorTooBig);
 INSTANTIATE_TYPED_TEST_SUITE_P(ArgumentCoderTest, ArgumentCoderVectorTest, EncoderTypes, EncoderTypeNames);
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

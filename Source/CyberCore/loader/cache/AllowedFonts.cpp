@@ -39,7 +39,7 @@ static const MemoryCompactLookupOnlyRobinHoodHashSet<AtomString>& allowedFontHas
 {
     // Set of base64 strings of the sha256 representation of each allowed font binary.
     static NeverDestroyed<MemoryCompactLookupOnlyRobinHoodHashSet<AtomString>> allowedFontHashes(std::initializer_list<AtomString> {
-        // custom font Ahem-10000A.ttf for testing (Tools/TestWebKitAPI/Tests/WebKitCocoa/Ahem-10000A.ttf)
+        // custom font Ahem-10000A.ttf for testing (Tools/TestCyberKitAPI/Tests/CyberKitCocoa/Ahem-10000A.ttf)
         "OKCJZv9fAWEfrno3PhsS4LJwGfHZ7TqRI2lXGxNUVLk="_s,
         // fonts from app.slack.com
         "7E9jikb2q8/UabqKh32bUXDsUc3kCdzoQui01VIUgVQ="_s,

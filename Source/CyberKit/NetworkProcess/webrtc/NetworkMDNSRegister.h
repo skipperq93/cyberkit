@@ -54,7 +54,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkConnectionToWebProcess;
 
@@ -77,6 +77,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_RTC)

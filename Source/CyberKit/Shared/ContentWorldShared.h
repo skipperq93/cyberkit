@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum ContentWorldIdentifierType { };
 using ContentWorldIdentifier = ObjectIdentifier<ContentWorldIdentifierType>;
@@ -38,4 +38,4 @@ inline ContentWorldIdentifier pageContentWorldIdentifier()
     return identifier;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

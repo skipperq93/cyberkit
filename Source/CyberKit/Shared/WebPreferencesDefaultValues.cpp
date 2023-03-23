@@ -38,7 +38,7 @@
 #import <wtf/cocoa/Entitlements.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -95,7 +95,7 @@ bool defaultWheelEventGesturesBecomeNonBlocking()
 bool defaultDisallowSyncXHRDuringPageDismissalEnabled()
 {
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
-    if (CFPreferencesGetAppBooleanValue(CFSTR("allowDeprecatedSynchronousXMLHttpRequestDuringUnload"), CFSTR("com.apple.WebKit"), nullptr)) {
+    if (CFPreferencesGetAppBooleanValue(CFSTR("allowDeprecatedSynchronousXMLHttpRequestDuringUnload"), CFSTR("com.apple.CyberKit"), nullptr)) {
         WTFLogAlways("Allowing synchronous XHR during page unload due to managed preference");
         return false;
     }
@@ -126,7 +126,7 @@ bool defaultOfflineWebApplicationCacheEnabled()
     return !newSDK;
 #else
     // FIXME: Other platforms should consider turning this off.
-    // ApplicationCache is on its way to being removed from WebKit.
+    // ApplicationCache is on its way to being removed from CyberKit.
     return true;
 #endif
 }
@@ -235,4 +235,4 @@ bool defaultShouldEnableScreenOrientationAPI()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

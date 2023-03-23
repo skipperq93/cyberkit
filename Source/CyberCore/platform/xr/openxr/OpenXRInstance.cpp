@@ -56,7 +56,7 @@ Instance::Impl::Impl()
         if (!m_extensions)
             return;
 
-        static const char* s_applicationName = "WebXR (WebKit)";
+        static const char* s_applicationName = "WebXR (CyberKit)";
         static const uint32_t s_applicationVersion = 1;
 
         const char* const enabledExtensions[] = {

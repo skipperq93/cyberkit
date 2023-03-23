@@ -36,7 +36,7 @@ namespace CyberCore {
 class TextureMapperPlatformLayer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCContentBuffer;
 
@@ -55,6 +55,6 @@ private:
     HashMap<CyberCore::ProcessIdentifier, std::unique_ptr<ProcessInfo>> m_processMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

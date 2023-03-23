@@ -32,7 +32,7 @@
 #include "GPUProcess.h"
 #include "RemoteRemoteCommandListenerMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

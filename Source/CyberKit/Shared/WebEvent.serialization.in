@@ -20,7 +20,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-[OptionSet] enum class WebKit::WebEventModifier : uint8_t {
+[OptionSet] enum class CyberKit::WebEventModifier : uint8_t {
     ShiftKey,
     ControlKey,
     AltKey,
@@ -28,13 +28,13 @@
     CapsLockKey
 };
 
-class WebKit::WebEvent {
-    WebKit::WebEventType type();
-    OptionSet<WebKit::WebEventModifier> modifiers();
+class CyberKit::WebEvent {
+    CyberKit::WebEventType type();
+    OptionSet<CyberKit::WebEventModifier> modifiers();
     WallTime timestamp();
 };
 
-enum class WebKit::WebEventType : int8_t {
+enum class CyberKit::WebEventType : int8_t {
     NoType,
     MouseDown,
     MouseUp,
@@ -60,7 +60,7 @@ enum class WebKit::WebEventType : int8_t {
 #endif
 };
 
-class WebKit::WebKeyboardEvent : WebKit::WebEvent {
+class CyberKit::WebKeyboardEvent : CyberKit::WebEvent {
     String text();
 #if !PLATFORM(GTK) && !USE(LIBWPE)
     String unmodifiedText();
@@ -78,7 +78,7 @@ class WebKit::WebKeyboardEvent : WebKit::WebEvent {
 #endif
 #if PLATFORM(GTK) || USE(LIBWPE)
     std::optional<Vector<CyberCore::CompositionUnderline>> preeditUnderlines();
-    std::optional<WebKit::EditingRange> preeditSelectionRange();
+    std::optional<CyberKit::EditingRange> preeditSelectionRange();
 #endif
 #if USE(APPKIT)
     Vector<CyberCore::KeypressCommand> commands();
@@ -97,8 +97,8 @@ class WebKit::WebKeyboardEvent : WebKit::WebEvent {
 
 
 #if ENABLE(TOUCH_EVENTS)
-class WebKit::WebTouchEvent : WebKit::WebEvent {
-    Vector<WebKit::WebPlatformTouchPoint> touchPoints();
+class CyberKit::WebTouchEvent : CyberKit::WebEvent {
+    Vector<CyberKit::WebPlatformTouchPoint> touchPoints();
 #if PLATFORM(IOS_FAMILY)
     CyberCore::IntPoint position();
     bool isPotentialTap();
@@ -110,21 +110,21 @@ class WebKit::WebTouchEvent : WebKit::WebEvent {
 };
 #endif // ENABLE(TOUCH_EVENTS)
 
-[CustomHeader] enum class WebKit::WebMouseEventButton : int32_t {
+[CustomHeader] enum class CyberKit::WebMouseEventButton : int32_t {
     LeftButton,
     MiddleButton,
     RightButton,
     NoButton
 };
 
-[CustomHeader] enum class WebKit::WebMouseEventSyntheticClickType : uint32_t {
+[CustomHeader] enum class CyberKit::WebMouseEventSyntheticClickType : uint32_t {
     NoTap,
     OneFingerTap,
     TwoFingerTap
 };
 
-class WebKit::WebMouseEvent : WebKit::WebEvent {
-    WebKit::WebMouseEventButton button();
+class CyberKit::WebMouseEvent : CyberKit::WebEvent {
+    CyberKit::WebMouseEventButton button();
     unsigned short buttons();
     CyberCore::IntPoint position();
     CyberCore::IntPoint globalPosition();
@@ -133,7 +133,7 @@ class WebKit::WebMouseEvent : WebKit::WebEvent {
     float deltaZ();
     int32_t clickCount();
     double force();
-    WebKit::WebMouseEventSyntheticClickType syntheticClickType();
+    CyberKit::WebMouseEventSyntheticClickType syntheticClickType();
 #if PLATFORM(MAC)
     int32_t eventNumber();
     int32_t menuTypeForEvent();;
@@ -145,23 +145,23 @@ class WebKit::WebMouseEvent : WebKit::WebEvent {
     CyberCore::PointerID pointerId();
     String pointerType();
 #endif
-    WebKit::GestureWasCancelled gestureWasCancelled();
+    CyberKit::GestureWasCancelled gestureWasCancelled();
 }
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-class WebKit::WebGestureEvent : WebKit::WebEvent {
+class CyberKit::WebGestureEvent : CyberKit::WebEvent {
     CyberCore::IntPoint position();
     float gestureScale();
     float gestureRotation();
 };
 #endif
 
-[Nested] enum class WebKit::WebWheelEvent::Granularity : uint8_t {
+[Nested] enum class CyberKit::WebWheelEvent::Granularity : uint8_t {
     ScrollByPageWheelEvent,
     ScrollByPixelWheelEvent
 };
 
-[Nested] enum class WebKit::WebWheelEvent::Phase : uint32_t {
+[Nested] enum class CyberKit::WebWheelEvent::Phase : uint32_t {
     PhaseNone,
     PhaseBegan,
     PhaseStationary,
@@ -171,24 +171,24 @@ class WebKit::WebGestureEvent : WebKit::WebEvent {
     PhaseMayBegin,
 };
 
-[Nested] enum class WebKit::WebWheelEvent::MomentumEndType : uint8_t {
+[Nested] enum class CyberKit::WebWheelEvent::MomentumEndType : uint8_t {
     Unknown,
     Interrupted,
     Natural,
 };
 
-class WebKit::WebWheelEvent : WebKit::WebEvent {
+class CyberKit::WebWheelEvent : CyberKit::WebEvent {
     CyberCore::IntPoint position();
     CyberCore::IntPoint globalPosition();
     CyberCore::FloatSize delta();
     CyberCore::FloatSize wheelTicks();
-    WebKit::WebWheelEvent::Granularity granularity();
+    CyberKit::WebWheelEvent::Granularity granularity();
 #if PLATFORM(COCOA)
     bool directionInvertedFromDevice();
 #endif
 #if PLATFORM(COCOA) || PLATFORM(GTK) || USE(LIBWPE)
-    WebKit::WebWheelEvent::Phase phase();
-    WebKit::WebWheelEvent::Phase momentumPhase();
+    CyberKit::WebWheelEvent::Phase phase();
+    CyberKit::WebWheelEvent::Phase momentumPhase();
     bool hasPreciseScrollingDeltas();
 #endif
 #if PLATFORM(COCOA)
@@ -196,6 +196,6 @@ class WebKit::WebWheelEvent : WebKit::WebEvent {
     CyberCore::FloatSize unacceleratedScrollingDelta();
     WallTime ioHIDEventTimestamp();
     std::optional<CyberCore::FloatSize> rawPlatformDelta();
-    WebKit::WebWheelEvent::MomentumEndType momentumEndType();
+    CyberKit::WebWheelEvent::MomentumEndType momentumEndType();
 #endif
 };

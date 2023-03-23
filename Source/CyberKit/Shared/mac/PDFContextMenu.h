@@ -26,7 +26,7 @@
 #pragma once
 
 #if ENABLE(PDFKIT_PLUGIN)
-namespace WebKit {
+namespace CyberKit {
     
 struct PDFContextMenuItem {
     String title;

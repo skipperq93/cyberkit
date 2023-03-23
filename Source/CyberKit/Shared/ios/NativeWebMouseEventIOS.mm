@@ -30,7 +30,7 @@
 
 #import "WebIOSEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebMouseEvent::NativeWebMouseEvent(::WebEvent *event)
     : WebMouseEvent(WebIOSEventFactory::createWebMouseEvent(event))
@@ -48,6 +48,6 @@ NativeWebMouseEvent::NativeWebMouseEvent(const NativeWebMouseEvent& otherEvent, 
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

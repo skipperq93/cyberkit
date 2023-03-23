@@ -34,7 +34,7 @@
 #include <CyberCore/SecurityOriginData.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteMediaPlayerProxyConfiguration {
     String referrer;
@@ -62,6 +62,6 @@ struct RemoteMediaPlayerProxyConfiguration {
     bool shouldDisableHDR { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -26,7 +26,7 @@
 #import <CyberCore/DragActions.h>
 #import <CyberKit/WKDragDestinationAction.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 inline OptionSet<CyberCore::DragDestinationAction> coreDragDestinationActionMask(WKDragDestinationAction action)
 {
@@ -60,4 +60,4 @@ inline OptionSet<CyberCore::DragOperation> coreDragOperationMask(NSDragOperation
 }
 #endif // USE(APPKIT)
 
-} // namespace WebKit
+} // namespace CyberKit

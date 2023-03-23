@@ -24,7 +24,7 @@
 
 messages -> NetworkMDNSRegister NotRefCounted {
     UnregisterMDNSNames(CyberCore::ScriptExecutionContextIdentifier documentIdentifier)
-    RegisterMDNSName(WebKit::MDNSRegisterIdentifier requestIdentifier, CyberCore::ScriptExecutionContextIdentifier documentIdentifier, String ipAddress)
+    RegisterMDNSName(CyberKit::MDNSRegisterIdentifier requestIdentifier, CyberCore::ScriptExecutionContextIdentifier documentIdentifier, String ipAddress)
 }
 
 #endif // ENABLE(WEB_RTC)

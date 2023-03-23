@@ -28,7 +28,7 @@
 #include <stdint.h>
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class LayerHostingMode : uint8_t {
     InProcess,
@@ -58,13 +58,13 @@ inline bool operator!=(const LayerTreeContext& a, const LayerTreeContext& b)
 }
 
 namespace WTF {
-template<> struct EnumTraits<WebKit::LayerHostingMode> {
+template<> struct EnumTraits<CyberKit::LayerHostingMode> {
     using values = EnumValues<
-        WebKit::LayerHostingMode,
+        CyberKit::LayerHostingMode,
 #if HAVE(OUT_OF_PROCESS_LAYER_HOSTING)
-        WebKit::LayerHostingMode::OutOfProcess,
+        CyberKit::LayerHostingMode::OutOfProcess,
 #endif
-        WebKit::LayerHostingMode::InProcess
+        CyberKit::LayerHostingMode::InProcess
     >;
 };
 }

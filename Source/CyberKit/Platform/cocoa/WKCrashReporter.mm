@@ -29,7 +29,7 @@
 
 #import <cstdlib>
 
-namespace WebKit {
+namespace CyberKit {
 
 void logAndSetCrashLogMessage(const char* infoString)
 {

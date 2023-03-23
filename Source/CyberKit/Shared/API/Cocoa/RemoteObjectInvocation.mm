@@ -29,7 +29,7 @@
 #import "ArgumentCoders.h"
 #import "UserData.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteObjectInvocation::RemoteObjectInvocation()
 {

@@ -33,7 +33,7 @@
 #include <CyberKit/WKRetainPtr.h>
 #include <cmath>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool done;
 static bool loadDone;
@@ -65,7 +65,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
         done = true;
 }
 
-TEST(WebKit, InjectedBundleAppleEvent)
+TEST(CyberKit, InjectedBundleAppleEvent)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("InjectedBundleAppleEventTest"));
 
@@ -93,6 +93,6 @@ TEST(WebKit, InjectedBundleAppleEvent)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

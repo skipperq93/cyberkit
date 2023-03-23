@@ -28,5 +28,5 @@
 
 #include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
-#include <CyberKit/WebKit2_C.h>
+#include <CyberKit/CyberKit2_C.h>
 #include <pal/ExportMacros.h>

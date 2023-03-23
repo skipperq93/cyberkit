@@ -28,9 +28,9 @@ public:
     static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new DOMElementTest()); }
 
 private:
-    bool testAutoFill(WebKitWebPage* page)
+    bool testAutoFill(CyberKitWebPage* page)
     {
-        WebKitFrame* frame = webkit_web_page_get_main_frame(page);
+        CyberKitFrame* frame = webkit_web_page_get_main_frame(page);
         g_assert_true(WEBKIT_IS_FRAME(frame));
 
         GRefPtr<JSCContext> jsContext = adoptGRef(webkit_frame_get_js_context(frame));
@@ -61,7 +61,7 @@ private:
         return true;
     }
 
-    bool runTest(const char* testName, WebKitWebPage* page) override
+    bool runTest(const char* testName, CyberKitWebPage* page) override
     {
         if (!strcmp(testName, "auto-fill"))
             return testAutoFill(page);
@@ -73,5 +73,5 @@ private:
 
 static void __attribute__((constructor)) registerTests()
 {
-    REGISTER_TEST(DOMElementTest, "WebKitDOMElement/auto-fill");
+    REGISTER_TEST(DOMElementTest, "CyberKitDOMElement/auto-fill");
 }

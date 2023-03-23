@@ -26,7 +26,7 @@
 #include "config.h"
 #include "LifecycleLogger.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 LifecycleLogger::LifecycleLogger()
 {

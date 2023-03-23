@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
     
 enum class WebsiteAutoplayPolicy {
     Default,
@@ -40,13 +40,13 @@ enum class WebsiteAutoplayPolicy {
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::WebsiteAutoplayPolicy> {
+template<> struct EnumTraits<CyberKit::WebsiteAutoplayPolicy> {
     using values = EnumValues<
-        WebKit::WebsiteAutoplayPolicy,
-        WebKit::WebsiteAutoplayPolicy::Default,
-        WebKit::WebsiteAutoplayPolicy::Allow,
-        WebKit::WebsiteAutoplayPolicy::AllowWithoutSound,
-        WebKit::WebsiteAutoplayPolicy::Deny
+        CyberKit::WebsiteAutoplayPolicy,
+        CyberKit::WebsiteAutoplayPolicy::Default,
+        CyberKit::WebsiteAutoplayPolicy::Allow,
+        CyberKit::WebsiteAutoplayPolicy::AllowWithoutSound,
+        CyberKit::WebsiteAutoplayPolicy::Deny
     >;
 };
 

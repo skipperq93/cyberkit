@@ -32,7 +32,7 @@
 #import "runtime_object.h"
 #import "types.h"
 #import <Foundation/Foundation.h>
-#import <WebKit/WebScriptObject.h>
+#import <CyberKit/WebScriptObject.h>
 #import <stdio.h>
 #import <string.h>
 

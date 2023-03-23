@@ -41,16 +41,16 @@ static void waitUntilBufferingPolicyIsEqualTo(WKWebView* webView, const char* ex
         if ([observed isEqualToString:@(expected)])
             break;
 
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     } while (++tries <= 100);
 
     EXPECT_WK_STREQ(expected, observed);
 }
 
-TEST(WebKit, MediaBufferingPolicy)
+TEST(CyberKit, MediaBufferingPolicy)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     configuration.get()._mediaDataLoadsAutomatically = YES;
     configuration.get().mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
@@ -60,7 +60,7 @@ TEST(WebKit, MediaBufferingPolicy)
     [webView performAfterReceivingMessage:@"playing" action:^() { isPlaying = true; }];
 
     [webView synchronouslyLoadTestPageNamed:@"video-with-audio"];
-    TestWebKitAPI::Util::run(&isPlaying);
+    TestCyberKitAPI::Util::run(&isPlaying);
 
     waitUntilBufferingPolicyIsEqualTo(webView.get(), "Default");
 
@@ -91,7 +91,7 @@ TEST(WebKit, MediaBufferingPolicy)
     // Policy should go back to default when playback starts.
     isPlaying = false;
     [webView stringByEvaluatingJavaScript:@"go()"];
-    TestWebKitAPI::Util::run(&isPlaying);
+    TestCyberKitAPI::Util::run(&isPlaying);
 
     waitUntilBufferingPolicyIsEqualTo(webView.get(), "Default");
 }

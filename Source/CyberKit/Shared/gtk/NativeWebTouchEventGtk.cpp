@@ -32,7 +32,7 @@
 #include "WebEventFactory.h"
 #include <gdk/gdk.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if USE(GTK4)
 #define constructNativeEvent(event) event
@@ -52,7 +52,7 @@ NativeWebTouchEvent::NativeWebTouchEvent(const NativeWebTouchEvent& event)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef constructNativeEvent
 

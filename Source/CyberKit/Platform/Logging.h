@@ -31,7 +31,7 @@
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
 #ifndef LOG_CHANNEL_PREFIX
-#define LOG_CHANNEL_PREFIX WebKit2Log
+#define LOG_CHANNEL_PREFIX CyberKit2Log
 #endif
 
 #ifdef __cplusplus

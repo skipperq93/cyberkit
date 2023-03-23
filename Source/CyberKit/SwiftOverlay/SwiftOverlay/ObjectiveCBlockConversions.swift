@@ -48,7 +48,7 @@ enum ObjCBlockConversion {
             } else if let error = error {
                 handler(.failure(error))
             } else {
-                preconditionFailure("Bug in WebKit: Received neither result or failure.")
+                preconditionFailure("Bug in CyberKit: Received neither result or failure.")
             }
         }
     }

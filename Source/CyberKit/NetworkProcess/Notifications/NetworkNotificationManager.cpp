@@ -36,7 +36,7 @@
 #include "WebPushMessage.h"
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 NetworkNotificationManager::NetworkNotificationManager(NetworkSession& networkSession, const String& webPushMachServiceName, WebPushD::WebPushDaemonConnectionConfiguration&& configuration)
@@ -367,5 +367,5 @@ void NetworkNotificationManager::sendMessageWithReply(CompletionHandler<void(Rep
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 #endif // ENABLE(BUILT_IN_NOTIFICATIONS)

@@ -29,7 +29,7 @@
 #include <CyberCore/GeometryUtilities.h>
 #include <wtf/text/TextStream.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 
 static bool areApproximatelyEqual(float a, float b)
@@ -166,4 +166,4 @@ TEST(FloatQuad, IsEmpty)
     });
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

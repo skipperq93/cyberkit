@@ -28,7 +28,7 @@
 
 #include "FileSystemStorageHandle.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 FileSystemStorageHandleRegistry::FileSystemStorageHandleRegistry() = default;
 
@@ -54,5 +54,5 @@ FileSystemStorageHandle* FileSystemStorageHandleRegistry::getHandle(CyberCore::F
     return nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

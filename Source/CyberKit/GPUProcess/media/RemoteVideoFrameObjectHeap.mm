@@ -31,7 +31,7 @@
 #include <CyberCore/PixelBufferConformerCV.h>
 #include <CyberCore/CoreVideoSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RefPtr<CyberCore::VideoFrame> RemoteVideoFrameObjectHeap::get(RemoteVideoFrameReadReference&& read)
 {

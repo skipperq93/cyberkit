@@ -35,7 +35,7 @@
 #include <pal/graphics/WebGPU/WebGPUBindGroupLayout.h>
 #include <pal/graphics/WebGPU/WebGPUComputePipeline.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteComputePipeline::RemoteComputePipeline(PAL::WebGPU::ComputePipeline& computePipeline, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(computePipeline)
@@ -66,6 +66,6 @@ void RemoteComputePipeline::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

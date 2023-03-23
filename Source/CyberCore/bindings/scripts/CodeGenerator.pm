@@ -1,5 +1,5 @@
 #
-# WebKit IDL parser
+# CyberKit IDL parser
 #
 # Copyright (C) 2005 Nikolas Zimmermann <wildfox@kde.org>
 # Copyright (C) 2006 Samuel Weinig <sam.weinig@gmail.com>
@@ -962,7 +962,7 @@ sub IsPromiseType
 }
 
 # These match WK_lcfirst and WK_ucfirst defined in builtins_generator.py.
-# Uppercase the first letter while respecting WebKit style guidelines.
+# Uppercase the first letter while respecting CyberKit style guidelines.
 # E.g., xmlEncoding becomes XMLEncoding, but xmlllang becomes Xmllang.
 sub WK_ucfirst
 {
@@ -981,7 +981,7 @@ sub WK_ucfirst
     return $ret;
 }
 
-# Lowercase the first letter while respecting WebKit style guidelines.
+# Lowercase the first letter while respecting CyberKit style guidelines.
 # URL becomes url, but SetURL becomes setURL.
 sub WK_lcfirst
 {

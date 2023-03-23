@@ -30,7 +30,7 @@
 #include "ArgumentCoders.h"
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool SharedMemory::Handle::isNull() const
 {
@@ -158,4 +158,4 @@ auto SharedMemory::createHandle(Protection protection) -> std::optional<Handle>
     return WTFMove(handle);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

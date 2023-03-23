@@ -25,7 +25,7 @@
 
 [
     Exposed=Window
-] interface WebKitPoint {
+] interface CyberKitPoint {
     constructor(optional unrestricted float x = 0, optional unrestricted float y = 0);
 
     attribute unrestricted float x;

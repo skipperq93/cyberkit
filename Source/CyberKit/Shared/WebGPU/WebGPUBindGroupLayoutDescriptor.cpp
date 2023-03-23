@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUBindGroupLayoutDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<BindGroupLayoutDescriptor> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::BindGroupLayoutDescriptor& bindGroupLayoutDescriptor)
 {
@@ -70,6 +70,6 @@ std::optional<PAL::WebGPU::BindGroupLayoutDescriptor> ConvertFromBackingContext:
     return { { WTFMove(*base), WTFMove(entries) } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

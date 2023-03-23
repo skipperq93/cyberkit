@@ -27,7 +27,7 @@
 
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace {
 
@@ -67,7 +67,7 @@ public:
 
 }
 
-// Tests that WebKitTestRunner supports value-parametrized tests.
+// Tests that CyberKitTestRunner supports value-parametrized tests.
 // See: https://github.com/google/googletest/blob/master/docs/advanced.md#value-parameterized-tests
 // At the time of writing the test runner python script couldn't parse the
 // results of --gtest_list_tests.
@@ -83,4 +83,4 @@ INSTANTIATE_TEST_SUITE_P(Misc,
         testing::Values(TestEnum2::Red, TestEnum2::Green)),
     TestParametersToStringFormatter());
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

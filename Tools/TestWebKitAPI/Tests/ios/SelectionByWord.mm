@@ -147,8 +147,8 @@ TEST(SelectionTests, SelectedTextAfterSelectingWordForReplacement)
     [contentView selectWordForReplacement];
     [webView waitForNextPresentationUpdate];
 
-    TestWebKitAPI::Util::run(&selectionWillChange);
-    TestWebKitAPI::Util::run(&selectionDidChange);
+    TestCyberKitAPI::Util::run(&selectionWillChange);
+    TestCyberKitAPI::Util::run(&selectionDidChange);
     EXPECT_WK_STREQ("Hello", [contentView textInRange:contentView.selectedTextRange]);
 }
 

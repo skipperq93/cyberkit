@@ -35,11 +35,11 @@ namespace CyberCore {
 struct ApplePayPaymentTokenContext;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<PKPaymentTokenContext> platformPaymentTokenContext(const CyberCore::ApplePayPaymentTokenContext&);
 RetainPtr<NSArray<PKPaymentTokenContext *>> platformPaymentTokenContexts(const Vector<CyberCore::ApplePayPaymentTokenContext>&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(PASSKIT_MULTI_MERCHANT_PAYMENTS)

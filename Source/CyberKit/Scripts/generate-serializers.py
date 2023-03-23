@@ -653,7 +653,7 @@ def generate_serialized_type_info(serialized_types, serialized_enums, headers, t
     result.append('')
     result.append('#if ENABLE(IPC_TESTING_API)')
     result.append('')
-    result.append('namespace WebKit {')
+    result.append('namespace CyberKit {')
     result.append('')
     result.append('Vector<SerializedTypeInfo> allSerializedTypes()')
     result.append('{')
@@ -706,7 +706,7 @@ def generate_serialized_type_info(serialized_types, serialized_enums, headers, t
     result.append('    };')
     result.append('}')
     result.append('')
-    result.append('} // namespace WebKit')
+    result.append('} // namespace CyberKit')
     result.append('')
     result.append('#endif // ENABLE(IPC_TESTING_API)')
     result.append('')
@@ -750,11 +750,11 @@ def parse_serialized_types(file, file_name):
             else:
                 serialized_types.append(SerializedType(struct_or_class, namespace, name, parent_class_name, members, type_condition, attributes, metadata))
                 if namespace is not None and (attributes is None or 'CustomHeader' not in attributes and 'Nested' not in attributes):
-                    if namespace == 'WebKit':
+                    if namespace == 'CyberKit':
                         headers.append(ConditionalHeader('"' + name + '.h"', type_condition))
                     elif namespace == 'WTF':
                         headers.append(ConditionalHeader('<wtf/' + name + '.h>', type_condition))
-                    elif namespace == 'WebKit::WebGPU':
+                    elif namespace == 'CyberKit::WebGPU':
                         headers.append(ConditionalHeader('"WebGPU' + name + '.h"', type_condition))
                     elif namespace == 'CyberKitLegacy':
                     	headers.append(ConditionalHeader('<CyberKitLegacy/' + name + '.h>', type_condition))

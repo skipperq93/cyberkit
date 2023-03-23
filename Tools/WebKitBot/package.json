@@ -1,7 +1,7 @@
 {
-  "name": "WebKitBot",
+  "name": "CyberKitBot",
   "version": "1.0.0",
-  "description": "WebKitBot + WKR implementation",
+  "description": "CyberKitBot + WKR implementation",
   "type": "module",
   "main": "src/index.mjs",
   "dependencies": {

@@ -29,7 +29,7 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
 TEST(WKWebView, GetContentsShouldReturnString)
@@ -46,7 +46,7 @@ TEST(WKWebView, GetContentsShouldReturnString)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(WKWebView, GetContentsShouldFailWhenClosingPage)
@@ -63,7 +63,7 @@ TEST(WKWebView, GetContentsShouldFailWhenClosingPage)
 
     [webView _close];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(WKWebView, GetContentsOfAllFramesShouldReturnString)
@@ -79,7 +79,7 @@ TEST(WKWebView, GetContentsOfAllFramesShouldReturnString)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(WKWebView, GetContentsShouldReturnAttributedString)
@@ -128,7 +128,7 @@ TEST(WKWebView, GetContentsShouldReturnAttributedString)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(WKWebView, GetContentsWithOpticallySizedFontShouldReturnAttributedString)
@@ -167,14 +167,14 @@ TEST(WKWebView, GetContentsWithOpticallySizedFontShouldReturnAttributedString)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(WKWebView, AttributedStringAccessibilityLabel)
 {
     auto webView = adoptNS([TestWKWebView new]);
 
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"];
     [webView synchronouslyLoadHTMLString:[NSString stringWithFormat:@"<html><body><b>Hello</b> <img src='file://%@' width='100' height='100' alt='alt text'> <img src='file://%@' width='100' height='100' alt='aria label text'></body></html>", imagePath, imagePath]];
 
     __block bool finished = false;
@@ -201,5 +201,5 @@ TEST(WKWebView, AttributedStringAccessibilityLabel)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }

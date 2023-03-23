@@ -85,7 +85,7 @@ Platform/cocoa/NetworkConnectionIntegrityHelpers.mm
 Platform/cocoa/PaymentAuthorizationPresenter.mm
 Platform/cocoa/PaymentAuthorizationViewController.mm
 Platform/cocoa/WKPaymentAuthorizationDelegate.mm
-Platform/cocoa/WebKitAdditions.mm @no-unify
+Platform/cocoa/CyberKitAdditions.mm @no-unify
 
 Platform/ios/PaymentAuthorizationController.mm
 
@@ -166,7 +166,7 @@ Shared/Cocoa/SharedCARingBuffer.cpp
 Shared/Cocoa/TCCSoftLink.mm
 Shared/Cocoa/CyberCoreArgumentCodersCocoa.mm
 Shared/Cocoa/WebErrorsCocoa.mm
-Shared/Cocoa/WebKit2InitializeCocoa.mm
+Shared/Cocoa/CyberKit2InitializeCocoa.mm
 Shared/Cocoa/WKNSArray.mm
 Shared/Cocoa/WKNSData.mm
 Shared/Cocoa/WKNSDictionary.mm

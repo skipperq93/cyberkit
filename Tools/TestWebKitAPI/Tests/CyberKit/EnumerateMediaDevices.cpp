@@ -31,7 +31,7 @@
 #include <string.h>
 #include <vector>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loadedFirstTime;
 static bool loadedSecondTime;
@@ -47,7 +47,7 @@ void checkUserMediaPermissionCallback(WKPageRef, WKFrameRef, WKSecurityOriginRef
     loadedSecondTime = true;
 }
 
-TEST(WebKit, EnumerateDevices)
+TEST(CyberKit, EnumerateDevices)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -78,7 +78,7 @@ TEST(WebKit, EnumerateDevices)
     Util::run(&loadedSecondTime);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)
 

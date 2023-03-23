@@ -90,7 +90,7 @@ unsigned initializeMaximumHTTPConnectionCountPerHost()
     unsigned maximumHTTPConnectionCountPerHost = _CFNetworkHTTPConnectionCacheGetLimit(kHTTPLoadWidth);
 
     Boolean keyExistsAndHasValidFormat = false;
-    Boolean prefValue = CFPreferencesGetAppBooleanValue(CFSTR("WebKitEnableHTTPPipelining"), kCFPreferencesCurrentApplication, &keyExistsAndHasValidFormat);
+    Boolean prefValue = CFPreferencesGetAppBooleanValue(CFSTR("CyberKitEnableHTTPPipelining"), kCFPreferencesCurrentApplication, &keyExistsAndHasValidFormat);
     if (keyExistsAndHasValidFormat)
         ResourceRequest::setHTTPPipeliningEnabled(prefValue);
 
@@ -107,7 +107,7 @@ unsigned initializeMaximumHTTPConnectionCountPerHost()
 #if PLATFORM(IOS_FAMILY)
 void initializeHTTPConnectionSettingsOnStartup()
 {
-    // This need to be called from WebKitInitialize so the calls happen early enough, before any requests are made. <rdar://problem/9691871>
+    // This need to be called from CyberKitInitialize so the calls happen early enough, before any requests are made. <rdar://problem/9691871>
     // Desktop doesn't have early initialization so it is not clear how this should be done there. The CFNetwork SPI probably
     // needs to become more forgiving.
     // We can't read settings here as this is called too early for that. All values need to be constants.

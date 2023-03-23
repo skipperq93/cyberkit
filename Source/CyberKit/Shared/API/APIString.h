@@ -70,4 +70,4 @@ private:
     const WTF::String m_string;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

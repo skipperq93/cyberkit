@@ -30,7 +30,7 @@
 #include <CyberCore/HTTPCookieAcceptPolicy.h>
 #include <CyberCore/NetworkStorageSession.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -58,4 +58,4 @@ void WebCookieManager::platformSetHTTPCookieAcceptPolicy(HTTPCookieAcceptPolicy 
     completionHandler();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

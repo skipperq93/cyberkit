@@ -39,7 +39,7 @@
 #include <CyberCore/ARKitBadgeSystemImage.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteDisplayListRecorder::RemoteDisplayListRecorder(ImageBuffer& imageBuffer, QualifiedRenderingResourceIdentifier imageBufferIdentifier, ProcessIdentifier webProcessIdentifier, RemoteRenderingBackend& renderingBackend)
@@ -590,6 +590,6 @@ void RemoteDisplayListRecorder::flushContext(DisplayListRecorderFlushIdentifier 
     m_renderingBackend->didFlush(identifier);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

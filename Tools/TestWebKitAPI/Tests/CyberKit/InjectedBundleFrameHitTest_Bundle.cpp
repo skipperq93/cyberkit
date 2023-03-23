@@ -35,7 +35,7 @@
 #include <CyberKit/WKBundlePage.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleFrameHitTestTest : public InjectedBundleTest {
 public:
@@ -78,6 +78,6 @@ void InjectedBundleFrameHitTestTest::frameLoadFinished(WKBundleFrameRef frame)
     WKBundlePostMessage(m_bundle, Util::toWK("InjectedBundleFrameHitTestDone").get(), linkTitle.get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

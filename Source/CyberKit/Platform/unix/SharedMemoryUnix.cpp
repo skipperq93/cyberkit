@@ -50,7 +50,7 @@
 #include <sys/syscall.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void SharedMemory::Handle::clear()
 {
@@ -109,7 +109,7 @@ static UnixFileDescriptor createSharedMemory()
     static bool isMemFdAvailable = true;
     if (isMemFdAvailable) {
         do {
-            fileDescriptor = syscall(__NR_memfd_create, "WebKitSharedMemory", MFD_CLOEXEC);
+            fileDescriptor = syscall(__NR_memfd_create, "CyberKitSharedMemory", MFD_CLOEXEC);
         } while (fileDescriptor == -1 && errno == EINTR);
 
         if (fileDescriptor != -1)
@@ -221,7 +221,7 @@ auto SharedMemory::createHandle(Protection) -> std::optional<Handle>
     return { WTFMove(handle) };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif
 

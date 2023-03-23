@@ -33,7 +33,7 @@
 #include <CyberKit/WKBundleFrame.h>
 #include <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class WillSendSubmitEventTest : public InjectedBundleTest {
 public:
@@ -76,6 +76,6 @@ void WillSendSubmitEventTest::didCreatePage(WKBundleRef bundle, WKBundlePageRef 
     WKBundlePageSetFormClient(page, &formClient.base);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -37,7 +37,7 @@
 #include "WebSharedWorkerServer.h"
 #include <CyberCore/WorkerFetchResult.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #define CONNECTION_MESSAGE_CHECK(assertion) CONNECTION_MESSAGE_CHECK_COMPLETION(assertion, (void)0)
 #define CONNECTION_MESSAGE_CHECK_COMPLETION(assertion, completion) do { \
@@ -138,4 +138,4 @@ void WebSharedWorkerServerConnection::postExceptionToWorkerObject(CyberCore::Sha
 #undef CONNECTION_MESSAGE_CHECK
 #undef CONNECTION_MESSAGE_CHECK_COMPLETION
 
-} // namespace WebKit
+} // namespace CyberKit

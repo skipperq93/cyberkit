@@ -25,16 +25,16 @@
 
 #pragma once
 
-#if PLATFORM(COCOA) && ((USE(SYSTEM_PREVIEW) && HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)) || (USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/ARKitSoftLinkAdditions.h>)))
+#if PLATFORM(COCOA) && ((USE(SYSTEM_PREVIEW) && HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)) || (USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/ARKitSoftLinkAdditions.h>)))
 
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_FOR_HEADER(WebKit, ARKit)
+SOFT_LINK_FRAMEWORK_FOR_HEADER(CyberKit, ARKit)
 
-SOFT_LINK_CLASS_FOR_HEADER(WebKit, ARQuickLookPreviewItem);
+SOFT_LINK_CLASS_FOR_HEADER(CyberKit, ARQuickLookPreviewItem);
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/ARKitSoftLinkAdditions.h>)
-#import <WebKitAdditions/ARKitSoftLinkAdditions.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/ARKitSoftLinkAdditions.h>)
+#import <CyberKitAdditions/ARKitSoftLinkAdditions.h>
 #endif
 
 #endif

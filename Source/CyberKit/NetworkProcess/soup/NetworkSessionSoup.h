@@ -37,7 +37,7 @@ class SoupNetworkSession;
 struct SoupNetworkProxySettings;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkSocketChannel;
 class WebSocketTask;
@@ -72,4 +72,4 @@ private:
     bool m_persistentCredentialStorageEnabled { true };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

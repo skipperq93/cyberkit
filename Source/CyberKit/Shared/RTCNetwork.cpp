@@ -31,7 +31,7 @@
 #include "DataReference.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RTCNetwork::RTCNetwork(const rtc::Network& network)
     : name(network.name())

@@ -33,14 +33,14 @@ namespace API {
 
 const WTF::String& Error::webKitErrorDomain()
 {
-    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("WebKitErrorDomain"));
+    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("CyberKitErrorDomain"));
     return webKitErrorDomainString;
 }
 
 const WTF::String& Error::webKitNetworkErrorDomain()
 {
 #if USE(GLIB)
-    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("WebKitNetworkError"));
+    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("CyberKitNetworkError"));
     return webKitErrorDomainString;
 #else
     return webKitErrorDomain();
@@ -50,7 +50,7 @@ const WTF::String& Error::webKitNetworkErrorDomain()
 const WTF::String& Error::webKitPolicyErrorDomain()
 {
 #if USE(GLIB)
-    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("WebKitPolicyError"));
+    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("CyberKitPolicyError"));
     return webKitErrorDomainString;
 #else
     return webKitErrorDomain();
@@ -61,9 +61,9 @@ const WTF::String& Error::webKitPluginErrorDomain()
 {
 #if USE(GLIB)
 #if ENABLE(2022_GLIB_API)
-    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("WebKitMediaError"));
+    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("CyberKitMediaError"));
 #else
-    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("WebKitPluginError"));
+    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("CyberKitPluginError"));
 #endif
     return webKitErrorDomainString;
 #else
@@ -74,7 +74,7 @@ const WTF::String& Error::webKitPluginErrorDomain()
 #if USE(SOUP)
 const WTF::String& Error::webKitDownloadErrorDomain()
 {
-    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("WebKitDownloadError"));
+    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("CyberKitDownloadError"));
     return webKitErrorDomainString;
 }
 #endif
@@ -82,9 +82,9 @@ const WTF::String& Error::webKitDownloadErrorDomain()
 #if PLATFORM(GTK)
 const WTF::String& Error::webKitPrintErrorDomain()
 {
-    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("WebKitPrintError"));
+    static NeverDestroyed<WTF::String> webKitErrorDomainString(MAKE_STATIC_STRING_IMPL("CyberKitPrintError"));
     return webKitErrorDomainString;
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

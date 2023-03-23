@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUCanvasConfiguration.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<CanvasConfiguration> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::CanvasConfiguration& canvasConfiguration)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::CanvasConfiguration> ConvertFromBackingContext::conve
     return { { *device, canvasConfiguration.format, canvasConfiguration.usage, canvasConfiguration.viewFormats, canvasConfiguration.colorSpace, canvasConfiguration.compositingAlphaMode } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

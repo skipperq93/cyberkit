@@ -30,7 +30,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/OptionSetHash.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class ExampleFlags : uint64_t {
     A = 1 << 0,
@@ -480,4 +480,4 @@ TEST(WTF_OptionSet, HashSet)
     EXPECT_TRUE(hashSet.add({ ExampleFlags::A, ExampleFlags::B }).isNewEntry);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

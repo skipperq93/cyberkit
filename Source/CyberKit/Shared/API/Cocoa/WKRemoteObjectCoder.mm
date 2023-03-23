@@ -52,7 +52,7 @@ static NSString * const isReplyBlockKey = @"isReplyBlock";
 
 static RefPtr<API::Dictionary> createEncodedObject(WKRemoteObjectEncoder *, id);
 
-namespace WebKit {
+namespace CyberKit {
 
 bool methodSignaturesAreCompatible(NSString *wire, NSString *local)
 {
@@ -968,7 +968,7 @@ static NSInvocation *decodeInvocation(WKRemoteObjectDecoder *decoder)
         [NSException raise:NSInvalidUnarchiveOperationException format:@"Invocation had no type signature"];
 
     NSString *localMethodSignature = [invocation methodSignature]._typeString;
-    if (!WebKit::methodSignaturesAreCompatible(typeSignature, localMethodSignature))
+    if (!CyberKit::methodSignaturesAreCompatible(typeSignature, localMethodSignature))
         [NSException raise:NSInvalidUnarchiveOperationException format:@"Local and remote method signatures are not compatible for method \"%s\"", selector ? sel_getName(selector) : "(no selector)"];
 
     if (isReplyBlock) {

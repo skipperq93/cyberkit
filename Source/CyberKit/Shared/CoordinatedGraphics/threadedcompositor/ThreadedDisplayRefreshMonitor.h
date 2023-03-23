@@ -30,7 +30,7 @@
 #if USE(COORDINATED_GRAPHICS)
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ThreadedCompositor;
 
@@ -69,6 +69,6 @@ private:
     CyberCore::DisplayUpdate m_currentUpdate;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

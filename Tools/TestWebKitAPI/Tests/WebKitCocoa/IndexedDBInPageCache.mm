@@ -32,7 +32,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
@@ -60,26 +60,26 @@ TEST(IndexedDB, IndexedDBInPageCache)
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
     // Load page that holds open database connection.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBInPageCache" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBInPageCache" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string1 = (NSString *)[lastScriptMessage body];
     EXPECT_WK_STREQ(@"First Database Connection Opened", string1.get());
 
     // Load another page that deletes database.
-    NSURLRequest *request2 = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBNotInPageCache" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request2 = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBNotInPageCache" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request2];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string2 = (NSString *)[lastScriptMessage body];
     EXPECT_WK_STREQ(@"Database Deleted", string2.get());
 
     [webView goBack];
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string3 = (NSString *)[lastScriptMessage body];
     EXPECT_WK_STREQ(@"First Database Connection Closed, Second Database Connection Not Failed, Third Database Connection Opened", string3.get());
 }

@@ -77,7 +77,7 @@
 #include <pal/graphics/WebGPU/WebGPUTexture.h>
 #include <pal/graphics/WebGPU/WebGPUTextureDescriptor.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteDevice::RemoteDevice(PAL::WebGPU::Device& device, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier, WebGPUIdentifier queueIdentifier)
     : m_backing(device)
@@ -323,6 +323,6 @@ void RemoteDevice::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

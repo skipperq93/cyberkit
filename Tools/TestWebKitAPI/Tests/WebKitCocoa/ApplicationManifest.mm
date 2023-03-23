@@ -38,7 +38,7 @@
 #import <CyberKit/_WKApplicationManifest.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(ApplicationManifest, Coding)
 {
@@ -129,7 +129,7 @@ TEST(ApplicationManifest, DisplayMode)
         @"fullscreen": @"(display-mode) (display-mode: fullscreen)",
     };
 
-    NSURL *baseURL = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestWebKitAPI.resources"];
+    NSURL *baseURL = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestCyberKitAPI.resources"];
     [displayModesAndExpectedContent enumerateKeysAndObjectsUsingBlock:^(NSString *displayMode, NSString *expectedPageContent, BOOL* stop) {
         @autoreleasepool {
             NSString *m2 = displayMode.length ? [NSString stringWithFormat:@"{\"display\": \"%@\"}", displayMode] : @"{}";
@@ -389,6 +389,6 @@ TEST(ApplicationManifest, IconCoding)
     EXPECT_EQ(decodedIcon.purposes[1].unsignedLongValue, 4ul);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(APPLICATION_MANIFEST)

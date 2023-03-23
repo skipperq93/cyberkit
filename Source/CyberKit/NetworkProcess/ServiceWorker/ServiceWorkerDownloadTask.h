@@ -41,7 +41,7 @@ class FormDataReference;
 class SharedBufferReference;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoad;
 class NetworkProcess;

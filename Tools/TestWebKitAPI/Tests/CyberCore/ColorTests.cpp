@@ -35,7 +35,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Color, RGBToHSL_White)
 {
@@ -429,4 +429,4 @@ TEST(Color, ColorWithAlphaMultipliedBy)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

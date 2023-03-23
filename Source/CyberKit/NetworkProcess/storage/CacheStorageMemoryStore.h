@@ -30,7 +30,7 @@
 #include "NetworkCacheKey.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class CacheStorageMemoryStore final : public CacheStorageStore {
 public:

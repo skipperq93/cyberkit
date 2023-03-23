@@ -33,7 +33,7 @@
 #include "WebConnectionClient.h"
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserData;
 class WebConnection : public API::ObjectImpl<API::Object::Type::Connection>, public IPC::MessageReceiver, public IPC::MessageSender {
@@ -62,6 +62,6 @@ protected:
     WebConnectionClient m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebConnection_h

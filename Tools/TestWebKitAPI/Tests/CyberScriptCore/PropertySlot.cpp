@@ -30,7 +30,7 @@
 #include <CyberScriptCore/VM.h>
 #include <wtf/Platform.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using JSC::JSLockHolder;
 using JSC::HeapType;
@@ -160,4 +160,4 @@ TEST(JavaScriptCore_PropertySlot, CopyAssignment)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

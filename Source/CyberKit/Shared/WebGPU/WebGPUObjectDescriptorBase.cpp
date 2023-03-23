@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUObjectDescriptorBase.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ObjectDescriptorBase> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ObjectDescriptorBase& objectDescriptorBase)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::ObjectDescriptorBase> ConvertFromBackingContext::conv
     return { { objectDescriptorBase.label } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

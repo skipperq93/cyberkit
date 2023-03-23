@@ -32,7 +32,7 @@ namespace CyberCore {
 class StorageMap;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MemoryStorageArea final : public StorageAreaBase {
 public:
@@ -56,8 +56,8 @@ private:
     StorageAreaBase::StorageType m_storageType;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::MemoryStorageArea)
-    static bool isType(const WebKit::StorageAreaBase& area) { return area.type() == WebKit::StorageAreaBase::Type::Memory; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::MemoryStorageArea)
+    static bool isType(const CyberKit::StorageAreaBase& area) { return area.type() == CyberKit::StorageAreaBase::Type::Memory; }
 SPECIALIZE_TYPE_TRAITS_END()

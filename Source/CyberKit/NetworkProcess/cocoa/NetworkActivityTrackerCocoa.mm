@@ -28,7 +28,7 @@
 
 #if HAVE(NW_ACTIVITY)
 
-namespace WebKit {
+namespace CyberKit {
 
 NetworkActivityTracker::NetworkActivityTracker(Label label, Domain domain)
     : m_domain(domain)
@@ -84,6 +84,6 @@ void NetworkActivityTracker::complete(CompletionCode code)
     m_networkActivity.clear();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(NW_ACTIVITY)

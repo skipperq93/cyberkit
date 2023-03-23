@@ -146,12 +146,12 @@ static NSMenuItem *itemMatchingFilter(NSMenu *menu, MenuItemFilter filter)
     [self.window orderFrontRegardless];
     [self mouseDownAtPoint:NSMakePoint(50, 350) simulatePressure:NO withFlags:0 eventType:NSEventTypeRightMouseDown];
     [self mouseUpAtPoint:NSMakePoint(50, 350) withFlags:0 eventType:NSEventTypeRightMouseUp];
-    TestWebKitAPI::Util::run(&selectedItem);
+    TestCyberKitAPI::Util::run(&selectedItem);
 }
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(ContextMenuTests, ProposedMenuContainsSpellingMenu)
 {
@@ -187,7 +187,7 @@ TEST(ContextMenuTests, NavigationTypeWhenOpeningLink)
     auto navigationDelegate = adoptNS([[TestNavigationDelegate alloc] init]);
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
     [webView setNavigationDelegate:navigationDelegate.get()];
-    [webView loadHTMLString:@"<a href='simple.html' style='font-size: 100px;'>Hello world</a>" baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestWebKitAPI.resources"]];
+    [webView loadHTMLString:@"<a href='simple.html' style='font-size: 100px;'>Hello world</a>" baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestCyberKitAPI.resources"]];
     [navigationDelegate waitForDidFinishNavigation];
 
     __block bool didDecideNavigationPolicy = false;
@@ -251,7 +251,7 @@ TEST(ContextMenuTests, SharePopoverDoesNotClearSelection)
         return [item.title containsString:@"Share"];
     }];
 
-    TestWebKitAPI::Util::run(&didShowPopover);
+    TestCyberKitAPI::Util::run(&didShowPopover);
     EXPECT_WK_STREQ("Hello world this is a test", [webView selectedText]);
 }
 
@@ -305,6 +305,6 @@ TEST(ContextMenuTests, HitTestResultDoesNotContainEmptyURLs)
     Util::run(&gotProposedMenu);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

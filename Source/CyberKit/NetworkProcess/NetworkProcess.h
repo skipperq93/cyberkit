@@ -99,7 +99,7 @@ class SecurityOriginData;
 struct SoupNetworkProxySettings;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuthenticationManager;
 class NetworkConnectionToWebProcess;
@@ -564,4 +564,4 @@ inline const String& NetworkProcess::uiProcessBundleIdentifier() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

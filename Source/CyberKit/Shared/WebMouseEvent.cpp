@@ -29,7 +29,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/NavigationAction.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebMouseEvent::WebMouseEvent() = default;
@@ -88,4 +88,4 @@ WebMouseEventSyntheticClickType syntheticClickType(const CyberCore::NavigationAc
     return WebMouseEventSyntheticClickType::NoTap;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

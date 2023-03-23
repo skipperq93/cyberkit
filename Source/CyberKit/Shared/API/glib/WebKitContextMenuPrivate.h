@@ -20,22 +20,22 @@
 #pragma once
 
 #include "WebContextMenuItemGlib.h"
-#include "WebKitContextMenu.h"
+#include "CyberKitContextMenu.h"
 
 #if PLATFORM(GTK)
 #include <CyberCore/GRefPtrGtk.h>
 #include <CyberCore/GUniquePtrGtk.h>
 #endif
 
-WebKitContextMenu* webkitContextMenuCreate(const Vector<WebKit::WebContextMenuItemData>&);
-void webkitContextMenuPopulate(WebKitContextMenu*, Vector<WebKit::WebContextMenuItemGlib>&);
-void webkitContextMenuPopulate(WebKitContextMenu*, Vector<WebKit::WebContextMenuItemData>&);
-void webkitContextMenuSetParentItem(WebKitContextMenu*, WebKitContextMenuItem*);
-WebKitContextMenuItem* webkitContextMenuGetParentItem(WebKitContextMenu*);
+CyberKitContextMenu* webkitContextMenuCreate(const Vector<CyberKit::WebContextMenuItemData>&);
+void webkitContextMenuPopulate(CyberKitContextMenu*, Vector<CyberKit::WebContextMenuItemGlib>&);
+void webkitContextMenuPopulate(CyberKitContextMenu*, Vector<CyberKit::WebContextMenuItemData>&);
+void webkitContextMenuSetParentItem(CyberKitContextMenu*, CyberKitContextMenuItem*);
+CyberKitContextMenuItem* webkitContextMenuGetParentItem(CyberKitContextMenu*);
 #if PLATFORM(GTK)
 #if USE(GTK4)
-void webkitContextMenuSetEvent(WebKitContextMenu*, GRefPtr<GdkEvent>&&);
+void webkitContextMenuSetEvent(CyberKitContextMenu*, GRefPtr<GdkEvent>&&);
 #else
-void webkitContextMenuSetEvent(WebKitContextMenu*, GUniquePtr<GdkEvent>&&);
+void webkitContextMenuSetEvent(CyberKitContextMenu*, GUniquePtr<GdkEvent>&&);
 #endif
 #endif

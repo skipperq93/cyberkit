@@ -37,7 +37,7 @@ namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlatformXRSystemProxy;
 
@@ -71,6 +71,6 @@ private:
     CyberCore::IntSize m_recommendedResolution { 0, 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBXR)

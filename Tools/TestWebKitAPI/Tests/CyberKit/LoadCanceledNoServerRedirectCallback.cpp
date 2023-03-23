@@ -35,7 +35,7 @@
 #include <CyberKit/WKFrame.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loadedAllFrames;
 
@@ -51,7 +51,7 @@ static void didPerformServerRedirect(WKContextRef context, WKPageRef page, WKURL
     performedServerRedirect = true;
 }
 
-TEST(WebKit, LoadCanceledNoServerRedirectCallback)
+TEST(CyberKit, LoadCanceledNoServerRedirectCallback)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("LoadCanceledNoServerRedirectCallbackTest"));
     
@@ -88,6 +88,6 @@ TEST(WebKit, LoadCanceledNoServerRedirectCallback)
     EXPECT_FALSE(performedServerRedirect);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

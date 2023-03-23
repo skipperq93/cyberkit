@@ -39,7 +39,7 @@ namespace CyberCore {
 class HTMLMenuElement;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class TouchBarMenuData {
 public:

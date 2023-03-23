@@ -40,7 +40,7 @@ typedef struct _GdkEvent GdkEvent;
 typedef union _GdkEvent GdkEvent;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebEventFactory {
 public:
@@ -58,4 +58,4 @@ public:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

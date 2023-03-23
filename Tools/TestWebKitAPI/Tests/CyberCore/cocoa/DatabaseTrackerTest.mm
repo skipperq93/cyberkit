@@ -34,7 +34,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -341,5 +341,5 @@ TEST(DatabaseTracker, DeleteDatabaseWhenDatabaseDoesNotExist)
 
 #endif // PLATFORM(COCOA)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

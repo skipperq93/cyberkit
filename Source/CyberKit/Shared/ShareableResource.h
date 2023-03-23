@@ -36,7 +36,7 @@ namespace CyberCore {
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
     
 class ShareableResource : public ThreadSafeRefCounted<ShareableResource> {
 public:
@@ -87,7 +87,7 @@ private:
     const unsigned m_size;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SHAREABLE_RESOURCE)
 

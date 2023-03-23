@@ -26,7 +26,7 @@
 #import "SameDocumentNavigationType.h"
 #import <CyberKit/_WKSameDocumentNavigationType.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static _WKSameDocumentNavigationType toWKSameDocumentNavigationType(SameDocumentNavigationType navigationType)
 {

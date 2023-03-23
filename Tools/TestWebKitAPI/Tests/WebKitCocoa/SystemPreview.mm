@@ -32,7 +32,7 @@
 #import "WKWebViewConfigurationExtras.h"
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/text/WTFString.h>
 
 static bool hasTriggerInfo;
@@ -82,9 +82,9 @@ static String documentID;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, SystemPreviewTriggered)
+TEST(CyberKit, SystemPreviewTriggered)
 {
     auto *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
     auto messageHandler = adoptNS([[TestSystemPreviewTriggeredHandler alloc] init]);
@@ -98,7 +98,7 @@ TEST(WebKit, SystemPreviewTriggered)
     Util::run(&wasTriggered);
 }
 
-TEST(WebKit, SystemPreviewTriggeredOnDetachedElement)
+TEST(CyberKit, SystemPreviewTriggeredOnDetachedElement)
 {
     auto *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
     auto messageHandler = adoptNS([[TestSystemPreviewTriggeredOnDetachedElementHandler alloc] init]);

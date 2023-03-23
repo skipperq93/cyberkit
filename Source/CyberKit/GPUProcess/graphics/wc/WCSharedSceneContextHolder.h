@@ -31,11 +31,11 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // Creating a WCSceneContext for a window fails if the window already
 // has one. While navigating to a new page with a new WebProcess, the
-// provisional WebKit::WebPage in the new WebProcess has the same
+// provisional CyberKit::WebPage in the new WebProcess has the same
 // window handle. WCSceneContext should be shared among all
 // RemoteWCLayerTreeHosts that render to the same native window.
 class WCSharedSceneContextHolder {
@@ -75,6 +75,6 @@ private:
     HashMap<int64_t, Holder*> m_hash;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

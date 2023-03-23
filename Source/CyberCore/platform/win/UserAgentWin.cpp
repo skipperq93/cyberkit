@@ -34,7 +34,7 @@ namespace CyberCore {
 String standardUserAgent(const String& applicationName, const String& applicationVersion)
 {
     auto version = applicationName.isEmpty() ? emptyString() : applicationVersion;
-    return makeString("Mozilla/5.0 (", windowsVersionForUAString(), ") AppleWebKit/605.1.15 (KHTML, like Gecko)",
+    return makeString("Mozilla/5.0 (", windowsVersionForUAString(), ") AppleCyberKit/605.1.15 (KHTML, like Gecko)",
         applicationName.isEmpty() ? "" : " ", applicationName, version.isEmpty() ? "" : "/", version);
 }
 

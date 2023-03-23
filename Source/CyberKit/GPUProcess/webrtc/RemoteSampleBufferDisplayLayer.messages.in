@@ -32,12 +32,12 @@ messages -> RemoteSampleBufferDisplayLayer NotRefCounted {
     UpdateBoundsAndPosition(CGRect bounds, CyberCore::VideoFrame::Rotation rotation)
     Flush()
     FlushAndRemoveImage()
-    EnqueueVideoFrame(struct WebKit::SharedVideoFrame frame)
+    EnqueueVideoFrame(struct CyberKit::SharedVideoFrame frame)
     ClearVideoFrames()
     Play()
     Pause()
     SetSharedVideoFrameSemaphore(IPC::Semaphore semaphore)
-    SetSharedVideoFrameMemory(WebKit::SharedMemory::Handle storageHandle)
+    SetSharedVideoFrameMemory(CyberKit::SharedMemory::Handle storageHandle)
 }
 
 #endif

@@ -18,9 +18,9 @@
  */
 
 #include "config.h"
-#include "WebKitURIResponse.h"
+#include "CyberKitURIResponse.h"
 
-#include "WebKitURIResponsePrivate.h"
+#include "CyberKitURIResponsePrivate.h"
 #include <CyberCore/GUniquePtrSoup.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
@@ -29,11 +29,11 @@
 using namespace CyberCore;
 
 /**
- * WebKitURIResponse:
+ * CyberKitURIResponse:
  *
  * Represents an URI response.
  *
- * A #WebKitURIResponse contains information such as the URI, the
+ * A #CyberKitURIResponse contains information such as the URI, the
  * status code, the content length, the mime type, the HTTP status or
  * the suggested filename.
  */
@@ -49,7 +49,7 @@ enum {
     PROP_HTTP_HEADERS
 };
 
-struct _WebKitURIResponsePrivate {
+struct _CyberKitURIResponsePrivate {
     ResourceResponse resourceResponse;
     CString uri;
     CString mimeType;
@@ -57,11 +57,11 @@ struct _WebKitURIResponsePrivate {
     GUniquePtr<SoupMessageHeaders> httpHeaders;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitURIResponse, webkit_uri_response, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitURIResponse, webkit_uri_response, G_TYPE_OBJECT, GObject)
 
 static void webkitURIResponseGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitURIResponse* response = WEBKIT_URI_RESPONSE(object);
+    CyberKitURIResponse* response = WEBKIT_URI_RESPONSE(object);
 
     switch (propId) {
     case PROP_URI:
@@ -87,13 +87,13 @@ static void webkitURIResponseGetProperty(GObject* object, guint propId, GValue* 
     }
 }
 
-static void webkit_uri_response_class_init(WebKitURIResponseClass* responseClass)
+static void webkit_uri_response_class_init(CyberKitURIResponseClass* responseClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(responseClass);
     objectClass->get_property = webkitURIResponseGetProperty;
 
     /**
-     * WebKitURIResponse:uri:
+     * CyberKitURIResponse:uri:
      *
      * The URI for which the response was made.
      */
@@ -104,7 +104,7 @@ static void webkit_uri_response_class_init(WebKitURIResponseClass* responseClass
                                                         0,
                                                         WEBKIT_PARAM_READABLE));
     /**
-     * WebKitURIResponse:status-code:
+     * CyberKitURIResponse:status-code:
      *
      * The status code of the response as returned by the server.
      */
@@ -116,7 +116,7 @@ static void webkit_uri_response_class_init(WebKitURIResponseClass* responseClass
                                                       WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitURIResponse:content-length:
+     * CyberKitURIResponse:content-length:
      *
      * The expected content length of the response.
      */
@@ -128,7 +128,7 @@ static void webkit_uri_response_class_init(WebKitURIResponseClass* responseClass
                                                         WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitURIResponse:mime-type:
+     * CyberKitURIResponse:mime-type:
      *
      * The MIME type of the response.
      */
@@ -140,7 +140,7 @@ static void webkit_uri_response_class_init(WebKitURIResponseClass* responseClass
                                                         WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitURIResponse:suggested-filename:
+     * CyberKitURIResponse:suggested-filename:
      *
      * The suggested filename for the URI response.
      */
@@ -152,7 +152,7 @@ static void webkit_uri_response_class_init(WebKitURIResponseClass* responseClass
                                                         WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitURIResponse:http-headers:
+     * CyberKitURIResponse:http-headers:
      *
      * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
      *
@@ -170,13 +170,13 @@ static void webkit_uri_response_class_init(WebKitURIResponseClass* responseClass
 
 /**
  * webkit_uri_response_get_uri:
- * @response: a #WebKitURIResponse
+ * @response: a #CyberKitURIResponse
  *
  * Gets the URI which resulted in the response.
  *
  * Returns: response URI, as a string.
  */
-const gchar* webkit_uri_response_get_uri(WebKitURIResponse* response)
+const gchar* webkit_uri_response_get_uri(CyberKitURIResponse* response)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_RESPONSE(response), 0);
 
@@ -186,18 +186,18 @@ const gchar* webkit_uri_response_get_uri(WebKitURIResponse* response)
 
 /**
  * webkit_uri_response_get_status_code:
- * @response: a #WebKitURIResponse
+ * @response: a #CyberKitURIResponse
  *
- * Get the status code of the #WebKitURIResponse.
+ * Get the status code of the #CyberKitURIResponse.
  *
- * Get the status code of the #WebKitURIResponse as returned by
+ * Get the status code of the #CyberKitURIResponse as returned by
  * the server. It will normally be a #SoupKnownStatusCode, for
  * example %SOUP_STATUS_OK, though the server can respond with any
  * unsigned integer.
  *
  * Returns: the status code of @response
  */
-guint webkit_uri_response_get_status_code(WebKitURIResponse* response)
+guint webkit_uri_response_get_status_code(CyberKitURIResponse* response)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_RESPONSE(response), SOUP_STATUS_NONE);
 
@@ -206,15 +206,15 @@ guint webkit_uri_response_get_status_code(WebKitURIResponse* response)
 
 /**
  * webkit_uri_response_get_content_length:
- * @response: a #WebKitURIResponse
+ * @response: a #CyberKitURIResponse
  *
- * Get the expected content length of the #WebKitURIResponse.
+ * Get the expected content length of the #CyberKitURIResponse.
  *
  * It can be 0 if the server provided an incorrect or missing Content-Length.
  *
  * Returns: the expected content length of @response.
  */
-guint64 webkit_uri_response_get_content_length(WebKitURIResponse* response)
+guint64 webkit_uri_response_get_content_length(CyberKitURIResponse* response)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_RESPONSE(response), 0);
 
@@ -223,13 +223,13 @@ guint64 webkit_uri_response_get_content_length(WebKitURIResponse* response)
 
 /**
  * webkit_uri_response_get_mime_type:
- * @response: a #WebKitURIResponse
+ * @response: a #CyberKitURIResponse
  *
  * Gets the MIME type of the response.
  *
  * Returns: MIME type, as a string.
  */
-const gchar* webkit_uri_response_get_mime_type(WebKitURIResponse* response)
+const gchar* webkit_uri_response_get_mime_type(CyberKitURIResponse* response)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_RESPONSE(response), 0);
 
@@ -239,7 +239,7 @@ const gchar* webkit_uri_response_get_mime_type(WebKitURIResponse* response)
 
 /**
  * webkit_uri_response_get_suggested_filename:
- * @response: a #WebKitURIResponse
+ * @response: a #CyberKitURIResponse
  *
  * Get the suggested filename for @response.
  *
@@ -250,7 +250,7 @@ const gchar* webkit_uri_response_get_mime_type(WebKitURIResponse* response)
  * Returns: (transfer none): the suggested filename or %NULL if
  *    the 'Content-Disposition' HTTP header is not present.
  */
-const gchar* webkit_uri_response_get_suggested_filename(WebKitURIResponse* response)
+const gchar* webkit_uri_response_get_suggested_filename(CyberKitURIResponse* response)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_RESPONSE(response), 0);
 
@@ -263,15 +263,15 @@ const gchar* webkit_uri_response_get_suggested_filename(WebKitURIResponse* respo
 
 /**
  * webkit_uri_response_get_http_headers:
- * @response: a #WebKitURIResponse
+ * @response: a #CyberKitURIResponse
  *
- * Get the HTTP headers of a #WebKitURIResponse as a #SoupMessageHeaders.
+ * Get the HTTP headers of a #CyberKitURIResponse as a #SoupMessageHeaders.
  *
  * Returns: (transfer none): a #SoupMessageHeaders with the HTTP headers of @response
  *    or %NULL if @response is not an HTTP response.
  * Since: 2.6
  */
-SoupMessageHeaders* webkit_uri_response_get_http_headers(WebKitURIResponse* response)
+SoupMessageHeaders* webkit_uri_response_get_http_headers(CyberKitURIResponse* response)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_RESPONSE(response), nullptr);
 
@@ -286,14 +286,14 @@ SoupMessageHeaders* webkit_uri_response_get_http_headers(WebKitURIResponse* resp
     return response->priv->httpHeaders.get();
 }
 
-WebKitURIResponse* webkitURIResponseCreateForResourceResponse(const CyberCore::ResourceResponse& resourceResponse)
+CyberKitURIResponse* webkitURIResponseCreateForResourceResponse(const CyberCore::ResourceResponse& resourceResponse)
 {
-    WebKitURIResponse* uriResponse = WEBKIT_URI_RESPONSE(g_object_new(WEBKIT_TYPE_URI_RESPONSE, NULL));
+    CyberKitURIResponse* uriResponse = WEBKIT_URI_RESPONSE(g_object_new(WEBKIT_TYPE_URI_RESPONSE, NULL));
     uriResponse->priv->resourceResponse = resourceResponse;
     return uriResponse;
 }
 
-const CyberCore::ResourceResponse& webkitURIResponseGetResourceResponse(WebKitURIResponse* uriResponse)
+const CyberCore::ResourceResponse& webkitURIResponseGetResourceResponse(CyberKitURIResponse* uriResponse)
 {
     return uriResponse->priv->resourceResponse;
 }

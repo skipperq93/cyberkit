@@ -26,6 +26,6 @@
 #import "config.h"
 #import "NetworkIssueReporter.h"
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/NetworkIssueReporterAdditions.mm>)
-#import <WebKitAdditions/NetworkIssueReporterAdditions.mm>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/NetworkIssueReporterAdditions.mm>)
+#import <CyberKitAdditions/NetworkIssueReporterAdditions.mm>
 #endif

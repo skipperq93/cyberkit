@@ -659,6 +659,6 @@ Frame& ServicesOverlayController::mainFrame() const
     return *localMainFrame;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // (ENABLE(SERVICE_CONTROLS) || ENABLE(TELEPHONE_NUMBER_DETECTION)) && PLATFORM(MAC)

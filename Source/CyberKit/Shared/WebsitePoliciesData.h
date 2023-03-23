@@ -48,7 +48,7 @@ namespace CyberCore {
 class DocumentLoader;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebsitePoliciesData {
     static void applyToDocumentLoader(WebsitePoliciesData&&, CyberCore::DocumentLoader&);
@@ -79,4 +79,4 @@ struct WebsitePoliciesData {
     bool allowPrivacyProxy { true };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

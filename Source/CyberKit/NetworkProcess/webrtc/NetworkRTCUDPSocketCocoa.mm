@@ -45,7 +45,7 @@ SOFT_LINK_LIBRARY_OPTIONAL(libnetwork)
 SOFT_LINK_OPTIONAL(libnetwork, nw_parameters_allow_sharing_port_with_listener, void, __cdecl, (nw_parameters_t, nw_listener_t))
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -379,6 +379,6 @@ void NetworkRTCUDPSocketCocoaConnections::sendTo(const uint8_t* data, size_t siz
     }).get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC) && PLATFORM(COCOA)

@@ -34,7 +34,7 @@
 #import <pal/spi/cocoa/IOKitSPI.h>
 #import <wtf/cf/TypeCastsCF.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static float fromFixedPoint(float value)
 {
@@ -177,6 +177,6 @@ std::optional<ScrollingAccelerationCurve> ScrollingAccelerationCurve::fromNative
     return fromIOHIDDevice(IOHIDEventGetSenderID(hidEvent.get()));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MOMENTUM_EVENT_DISPATCHER) && PLATFORM(MAC)

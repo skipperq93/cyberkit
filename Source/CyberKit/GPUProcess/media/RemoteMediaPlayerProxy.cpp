@@ -72,7 +72,7 @@
 #include <CyberCore/VideoFrameCV.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -1208,6 +1208,6 @@ WTFLogChannel& RemoteMediaPlayerProxy::logChannel() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

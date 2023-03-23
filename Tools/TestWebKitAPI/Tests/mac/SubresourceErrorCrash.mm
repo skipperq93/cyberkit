@@ -27,7 +27,7 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, SubresourceErrorCrash)
 {
@@ -36,4 +36,4 @@ TEST(CyberKitLegacy, SubresourceErrorCrash)
     webView = nil;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

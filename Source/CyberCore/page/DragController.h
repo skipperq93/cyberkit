@@ -159,7 +159,7 @@ private:
     OptionSet<DragDestinationAction> m_dragDestinationActionMask;
     OptionSet<DragSourceAction> m_dragSourceAction;
     bool m_didInitiateDrag { false };
-    OptionSet<DragOperation> m_sourceDragOperationMask; // Set in startDrag when a drag starts from a mouse down within WebKit.
+    OptionSet<DragOperation> m_sourceDragOperationMask; // Set in startDrag when a drag starts from a mouse down within CyberKit.
     IntPoint m_dragOffset;
     URL m_draggingImageURL;
     bool m_isPerformingDrop { false };

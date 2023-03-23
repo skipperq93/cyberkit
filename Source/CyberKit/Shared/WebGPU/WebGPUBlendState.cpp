@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUBlendState.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<BlendState> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::BlendState& blendState)
 {
@@ -60,6 +60,6 @@ std::optional<PAL::WebGPU::BlendState> ConvertFromBackingContext::convertFromBac
     return { { WTFMove(*color), WTFMove(*alpha) } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

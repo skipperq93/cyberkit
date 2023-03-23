@@ -46,7 +46,7 @@ struct _UIWebTouchEvent;
 
 #endif // ENABLE(TOUCH_EVENTS)
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(TOUCH_EVENTS)
 
@@ -87,4 +87,4 @@ private:
 OptionSet<WebEventModifier> webEventModifierFlags(UIKeyModifierFlags);
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

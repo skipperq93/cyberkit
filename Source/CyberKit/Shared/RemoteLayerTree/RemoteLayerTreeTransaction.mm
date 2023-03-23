@@ -38,7 +38,7 @@
 #import <wtf/text/CString.h>
 #import <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteLayerTreeTransaction::RemoteLayerTreeTransaction(RemoteLayerTreeTransaction&&) = default;
 RemoteLayerTreeTransaction& RemoteLayerTreeTransaction::operator=(RemoteLayerTreeTransaction&&) = default;
@@ -1080,4 +1080,4 @@ String RemoteLayerTreeTransaction::description() const
 
 #endif // !defined(NDEBUG) || !LOG_DISABLED
 
-} // namespace WebKit
+} // namespace CyberKit

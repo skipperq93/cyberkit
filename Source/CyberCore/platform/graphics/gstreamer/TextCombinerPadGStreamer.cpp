@@ -33,7 +33,7 @@
 #include "TextCombinerGStreamer.h"
 #include <wtf/glib/WTFGType.h>
 
-struct _WebKitTextCombinerPadPrivate {
+struct _CyberKitTextCombinerPadPrivate {
     GRefPtr<GstTagList> tags;
     GRefPtr<GstPad> innerCombinerPad;
     bool shouldProcessStickyEvents { true };
@@ -49,7 +49,7 @@ enum {
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
 #define webkit_text_combiner_pad_parent_class parent_class
-WEBKIT_DEFINE_TYPE(WebKitTextCombinerPad, webkit_text_combiner_pad, GST_TYPE_GHOST_PAD);
+WEBKIT_DEFINE_TYPE(CyberKitTextCombinerPad, webkit_text_combiner_pad, GST_TYPE_GHOST_PAD);
 
 static gboolean webkitTextCombinerPadEvent(GstPad* pad, GstObject* parent, GstEvent* event)
 {
@@ -143,7 +143,7 @@ static void webkitTextCombinerPadConstructed(GObject* object)
     gst_pad_set_chain_function(GST_PAD_CAST(object), webkitTextCombinerPadChain);
 }
 
-static void webkit_text_combiner_pad_class_init(WebKitTextCombinerPadClass* klass)
+static void webkit_text_combiner_pad_class_init(CyberKitTextCombinerPadClass* klass)
 {
     auto* gobjectClass = G_OBJECT_CLASS(klass);
 
@@ -162,7 +162,7 @@ static void webkit_text_combiner_pad_class_init(WebKitTextCombinerPadClass* klas
     g_object_class_install_properties(gobjectClass, N_PROPERTIES, sObjProperties);
 }
 
-GstPad* webKitTextCombinerPadLeakInternalPadRef(WebKitTextCombinerPad* pad)
+GstPad* webKitTextCombinerPadLeakInternalPadRef(CyberKitTextCombinerPad* pad)
 {
     return pad->priv->innerCombinerPad.leakRef();
 }

@@ -27,9 +27,9 @@
 
 #include "MonotonicObjectIdentifier.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 enum TransactionIDType { };
 using TransactionID = MonotonicObjectIdentifier<TransactionIDType>;
 
-} // namespace WebKit
+} // namespace CyberKit

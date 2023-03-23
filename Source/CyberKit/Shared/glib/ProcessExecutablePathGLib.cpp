@@ -30,7 +30,7 @@
 #include <glib.h>
 #include <wtf/FileSystem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(DEVELOPER_MODE)
 static String getExecutablePath()
@@ -42,7 +42,7 @@ static String getExecutablePath()
 }
 #endif
 
-static String findWebKitProcess(const char* processName)
+static String findCyberKitProcess(const char* processName)
 {
 #if ENABLE(DEVELOPER_MODE)
     static const char* execDirectory = g_getenv("WEBKIT_EXEC_PATH");
@@ -66,27 +66,27 @@ static String findWebKitProcess(const char* processName)
 String executablePathOfWebProcess()
 {
 #if PLATFORM(WPE)
-    return findWebKitProcess("WPEWebProcess");
+    return findCyberKitProcess("WPEWebProcess");
 #else
-    return findWebKitProcess("WebKitWebProcess");
+    return findCyberKitProcess("CyberKitWebProcess");
 #endif
 }
 
 String executablePathOfPluginProcess()
 {
 #if PLATFORM(WPE)
-    return findWebKitProcess("WPEPluginProcess");
+    return findCyberKitProcess("WPEPluginProcess");
 #else
-    return findWebKitProcess("WebKitPluginProcess");
+    return findCyberKitProcess("CyberKitPluginProcess");
 #endif
 }
 
 String executablePathOfNetworkProcess()
 {
 #if PLATFORM(WPE)
-    return findWebKitProcess("WPENetworkProcess");
+    return findCyberKitProcess("WPENetworkProcess");
 #else
-    return findWebKitProcess("WebKitNetworkProcess");
+    return findCyberKitProcess("CyberKitNetworkProcess");
 #endif
 }
 
@@ -94,11 +94,11 @@ String executablePathOfNetworkProcess()
 String executablePathOfGPUProcess()
 {
 #if PLATFORM(WPE)
-    return findWebKitProcess("WPEGPUProcess");
+    return findCyberKitProcess("WPEGPUProcess");
 #else
-    return findWebKitProcess("WebKitGPUProcess");
+    return findCyberKitProcess("CyberKitGPUProcess");
 #endif
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

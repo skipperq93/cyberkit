@@ -22,7 +22,7 @@
 
 #if ENABLE(GPU_PROCESS)
 header: "WebGPUOrigin2D.h"
-[AdditionalEncoder=StreamConnectionEncoder, CustomHeader] struct WebKit::WebGPU::Origin2DDict {
+[AdditionalEncoder=StreamConnectionEncoder, CustomHeader] struct CyberKit::WebGPU::Origin2DDict {
     PAL::WebGPU::IntegerCoordinate x;
     PAL::WebGPU::IntegerCoordinate y;
 };

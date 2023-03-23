@@ -44,7 +44,7 @@ namespace IPC {
 class StreamServerConnection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace WebGPU {
 struct BindGroupDescriptor;
@@ -125,6 +125,6 @@ private:
     Ref<RemoteQueue> m_queue;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

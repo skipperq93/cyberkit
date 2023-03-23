@@ -65,7 +65,7 @@ static constexpr auto httpNotAllowedText = "Not Allowed"_s;
 static constexpr auto httpRequestedRangeNotSatisfiableText = "Requested Range Not Satisfiable"_s;
 static constexpr auto httpInternalErrorText = "Internal Server Error"_s;
 
-static constexpr auto webKitBlobResourceDomain = "WebKitBlobResource"_s;
+static constexpr auto webKitBlobResourceDomain = "CyberKitBlobResource"_s;
 
 ///////////////////////////////////////////////////////////////////////////////
 // BlobResourceSynchronousLoader

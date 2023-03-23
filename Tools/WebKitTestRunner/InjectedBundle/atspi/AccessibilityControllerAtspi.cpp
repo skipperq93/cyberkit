@@ -36,7 +36,7 @@
 #include "StringFunctions.h"
 #include <CyberCore/AccessibilityObjectAtspi.h>
 #include <CyberCore/AccessibilityRootAtspi.h>
-#include <WebKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundlePagePrivate.h>
 
 namespace WTR {
 

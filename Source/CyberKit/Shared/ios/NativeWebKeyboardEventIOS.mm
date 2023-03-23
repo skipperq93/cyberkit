@@ -32,7 +32,7 @@
 #import "WebIOSEventFactory.h"
 #import <CyberCore/RuntimeApplicationChecks.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebKeyboardEvent::NativeWebKeyboardEvent(::WebEvent *event, HandledByInputMethod handledByInputMethod)
     : WebKeyboardEvent(WebIOSEventFactory::createWebKeyboardEvent(event, handledByInputMethod == HandledByInputMethod::Yes))
@@ -40,6 +40,6 @@ NativeWebKeyboardEvent::NativeWebKeyboardEvent(::WebEvent *event, HandledByInput
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

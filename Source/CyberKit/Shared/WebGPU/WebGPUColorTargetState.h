@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUColorWrite.h>
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ColorTargetState {
     PAL::WebGPU::TextureFormat format { PAL::WebGPU::TextureFormat::R8unorm };
@@ -41,6 +41,6 @@ struct ColorTargetState {
     PAL::WebGPU::ColorWriteFlags writeMask { PAL::WebGPU::ColorWrite::All };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

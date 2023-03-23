@@ -28,7 +28,7 @@
 
 #include "CacheStorageCache.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 CacheStorageRegistry::CacheStorageRegistry() = default;
 
@@ -51,4 +51,4 @@ CacheStorageCache* CacheStorageRegistry::cache(CyberCore::DOMCacheIdentifier ide
     return m_caches.get(identifier).get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,12 +32,12 @@
 #include <optional>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct VertexState : public ProgrammableStage {
     Vector<std::optional<VertexBufferLayout>> buffers;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

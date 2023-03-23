@@ -30,7 +30,7 @@
 #include <wtf/WorkQueue.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class CacheStorageDiskStore final : public CacheStorageStore {
 public:

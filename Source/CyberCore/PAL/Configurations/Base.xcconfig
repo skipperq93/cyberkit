@@ -94,7 +94,7 @@ DEAD_CODE_STRIPPING[config=Debug] = NO;
 DEBUG_DEFINES = NDEBUG;
 DEBUG_DEFINES[config=Debug] = ;
 
-EXCLUDED_SOURCE_FILE_NAMES = libWebKitAdditions.a;
+EXCLUDED_SOURCE_FILE_NAMES = libCyberKitAdditions.a;
 
 WK_DEFAULT_GCC_OPTIMIZATION_LEVEL[sdk=iphone*] = 3;
 WK_DEFAULT_GCC_OPTIMIZATION_LEVEL[sdk=iphone*][config=Debug] = 0;

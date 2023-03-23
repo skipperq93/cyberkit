@@ -48,7 +48,7 @@ namespace IPC {
 class StreamServerConnection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 class RemoteRenderingBackend;
@@ -151,6 +151,6 @@ private:
     const CyberCore::ProcessIdentifier m_webProcessIdentifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

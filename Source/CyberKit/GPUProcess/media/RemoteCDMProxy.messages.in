@@ -27,7 +27,7 @@
 
 messages -> RemoteCDMProxy NotRefCounted {
     GetSupportedConfiguration(struct CyberCore::CDMKeySystemConfiguration candidateConfiguration, enum:bool CyberCore::CDMPrivate::LocalStorageAccess access) -> (std::optional<CyberCore::CDMKeySystemConfiguration> accumulatedConfiguration)
-    CreateInstance() -> (WebKit::RemoteCDMInstanceIdentifier identifier, struct WebKit::RemoteCDMInstanceConfiguration configuration) Synchronous
+    CreateInstance() -> (CyberKit::RemoteCDMInstanceIdentifier identifier, struct CyberKit::RemoteCDMInstanceConfiguration configuration) Synchronous
     LoadAndInitialize()
     SetLogIdentifier(uint64_t logIdentifier)
 }

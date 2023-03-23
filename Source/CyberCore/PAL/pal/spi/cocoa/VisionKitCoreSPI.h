@@ -27,7 +27,7 @@
 
 #if USE(APPLE_INTERNAL_SDK)
 
-#import <VisionKitCore/VKImageAnalysis_WebKit.h>
+#import <VisionKitCore/VKImageAnalysis_CyberKit.h>
 #import <VisionKitCore/VisionKitCore.h>
 
 #else
@@ -149,7 +149,7 @@ typedef NS_ENUM(NSInteger, VKImageOrientation) {
 @property (nonatomic, readonly) NSArray<VKQuad *> *boundingQuads;
 @end
 
-@interface VKImageAnalysis (WebKitSPI)
+@interface VKImageAnalysis (CyberKitSPI)
 @property (nonatomic, readonly) NSArray<VKWKLineInfo *> *allLines;
 @property (nonatomic, readonly) NSArray<VKWKDataDetectorInfo *> *textDataDetectors;
 #if HAVE(VK_IMAGE_ANALYSIS_FOR_MACHINE_READABLE_CODES)

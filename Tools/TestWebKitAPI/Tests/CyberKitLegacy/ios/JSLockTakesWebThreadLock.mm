@@ -36,7 +36,7 @@
 #import <wtf/DataLog.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, JSLockTakesWebThreadLock)
 {

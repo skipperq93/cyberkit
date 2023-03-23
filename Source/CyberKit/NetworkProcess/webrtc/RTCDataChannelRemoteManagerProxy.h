@@ -33,7 +33,7 @@
 #include <CyberCore/RTCDataChannelRemoteSourceConnection.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkConnectionToWebProcess;
 
@@ -64,6 +64,6 @@ private:
     HashMap<CyberCore::ProcessIdentifier, IPC::Connection::UniqueID> m_webProcessConnections;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_RTC)

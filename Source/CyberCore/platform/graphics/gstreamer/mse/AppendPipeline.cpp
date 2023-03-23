@@ -66,8 +66,8 @@ void AppendPipeline::staticInitialization()
     ASSERT(isMainThread());
 
     const char* tags[] = { nullptr };
-    s_endOfAppendMetaType = gst_meta_api_type_register("WebKitEndOfAppendMetaAPI", tags);
-    s_webKitEndOfAppendMetaInfo = gst_meta_register(s_endOfAppendMetaType, "WebKitEndOfAppendMeta", sizeof(EndOfAppendMeta), EndOfAppendMeta::init, EndOfAppendMeta::free, EndOfAppendMeta::transform);
+    s_endOfAppendMetaType = gst_meta_api_type_register("CyberKitEndOfAppendMetaAPI", tags);
+    s_webKitEndOfAppendMetaInfo = gst_meta_register(s_endOfAppendMetaType, "CyberKitEndOfAppendMeta", sizeof(EndOfAppendMeta), EndOfAppendMeta::init, EndOfAppendMeta::free, EndOfAppendMeta::transform);
 }
 
 #if !LOG_DISABLED
@@ -798,7 +798,7 @@ std::pair<AppendPipeline::CreateTrackResult, AppendPipeline::Track*> AppendPipel
     m_tracks.append(makeUnique<Track>(trackId, streamType, parsedCaps, presentationSize));
     Track& track = *m_tracks.at(newTrackIndex);
     track.initializeElements(this, GST_BIN(m_pipeline.get()));
-    track.webKitTrack = makeWebKitTrack(newTrackIndex);
+    track.webKitTrack = makeCyberKitTrack(newTrackIndex);
     hookTrackEvents(track);
     return { CreateTrackResult::TrackCreated, &track };
 }
@@ -873,7 +873,7 @@ void AppendPipeline::linkPadWithTrack(GstPad* demuxerSrcPad, Track& track)
     GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS(GST_BIN(m_pipeline.get()), GST_DEBUG_GRAPH_SHOW_ALL, "append-pipeline-after-link");
 }
 
-Ref<CyberCore::TrackPrivateBase> AppendPipeline::makeWebKitTrack(int trackIndex)
+Ref<CyberCore::TrackPrivateBase> AppendPipeline::makeCyberKitTrack(int trackIndex)
 {
     Track& appendPipelineTrack = *m_tracks.at(trackIndex);
 

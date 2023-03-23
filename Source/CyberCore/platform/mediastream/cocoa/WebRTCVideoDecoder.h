@@ -52,7 +52,7 @@ public:
 }
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/WebRTCVideoDecoderAdditions.h>
+#import <CyberKitAdditions/WebRTCVideoDecoderAdditions.h>
 #endif
 
 #endif // USE(LIBWEBRTC)

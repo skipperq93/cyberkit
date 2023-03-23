@@ -33,7 +33,7 @@
 #include <CyberCore/IDBResultData.h>
 #include <CyberCore/UniqueIDBDatabaseConnection.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 IDBStorageConnectionToClient::IDBStorageConnectionToClient(IPC::Connection::UniqueID connection, CyberCore::IDBConnectionIdentifier identifier)
     : m_connection(connection)
@@ -188,4 +188,4 @@ void IDBStorageConnectionToClient::notifyOpenDBRequestBlocked(const CyberCore::I
     IPC::Connection::send(m_connection, Messages::WebIDBConnectionToServer::NotifyOpenDBRequestBlocked(requestIdentifier, oldVersion, newVersion), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

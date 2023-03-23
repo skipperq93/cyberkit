@@ -28,7 +28,7 @@
 
 #include <CyberCore/HTTPHeaderNames.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 PrefetchCache::Entry::Entry(CyberCore::ResourceResponse&& response, PrivateRelayed privateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&& buffer)
     : response(WTFMove(response))

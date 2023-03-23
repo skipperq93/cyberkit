@@ -32,7 +32,7 @@
 #include "WebConnectionMessages.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebConnection::WebConnection()
 {
@@ -65,4 +65,4 @@ void WebConnection::handleMessage(const String& messageName, const UserData& mes
     m_client.didReceiveMessage(this, messageName, transformHandlesToObjects(messageBody.object()).get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

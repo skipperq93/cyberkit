@@ -55,7 +55,7 @@ struct _CFNFrameworksStubs {
 
 extern "C" void _CFURLConnectionSetFrameworkStubs(const struct _CFNFrameworksStubs* stubs);
 
-namespace WebKit {
+namespace CyberKit {
 
 static WeakPtr<NetworkProcess>& globalNetworkProcess()
 {
@@ -105,7 +105,7 @@ static OSStatus webSecItemCopyMatching(CFDictionaryRef query, CFTypeRef* result)
 
 static OSStatus webSecItemAdd(CFDictionaryRef query, CFTypeRef* unusedResult)
 {
-    // Return value of SecItemAdd should be ignored for WebKit use cases. WebKit can't serialize SecKeychainItemRef, so we do not use it.
+    // Return value of SecItemAdd should be ignored for CyberKit use cases. CyberKit can't serialize SecKeychainItemRef, so we do not use it.
     // If someone passes a result value to be populated, the API contract is being violated so we should assert.
     if (unusedResult) {
         ASSERT_NOT_REACHED();
@@ -152,6 +152,6 @@ void initializeSecItemShim(NetworkProcess& process)
     _CFURLConnectionSetFrameworkStubs(&stubs);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SEC_ITEM_SHIM)

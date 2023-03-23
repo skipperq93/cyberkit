@@ -32,7 +32,7 @@
 #import "CyberCoreArgumentCoders.h"
 #import <CyberCore/ElementContext.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline NSRange toNSRange(DocumentEditingContext::Range range)
 {
@@ -74,15 +74,15 @@ UIWKDocumentContext *DocumentEditingContext::toPlatformContext(OptionSet<Documen
 
 namespace IPC {
 
-void ArgumentCoder<WebKit::DocumentEditingContext::Range>::encode(Encoder& encoder, const WebKit::DocumentEditingContext::Range& range)
+void ArgumentCoder<CyberKit::DocumentEditingContext::Range>::encode(Encoder& encoder, const CyberKit::DocumentEditingContext::Range& range)
 {
     encoder << range.location;
     encoder << range.length;
 }
 
-std::optional<WebKit::DocumentEditingContext::Range> ArgumentCoder<WebKit::DocumentEditingContext::Range>::decode(Decoder& decoder)
+std::optional<CyberKit::DocumentEditingContext::Range> ArgumentCoder<CyberKit::DocumentEditingContext::Range>::decode(Decoder& decoder)
 {
-    WebKit::DocumentEditingContext::Range range;
+    CyberKit::DocumentEditingContext::Range range;
 
     if (!decoder.decode(range.location))
         return std::nullopt;
@@ -92,20 +92,20 @@ std::optional<WebKit::DocumentEditingContext::Range> ArgumentCoder<WebKit::Docum
     return range;
 }
 
-void ArgumentCoder<WebKit::DocumentEditingContext::TextRectAndRange>::encode(Encoder& encoder, const WebKit::DocumentEditingContext::TextRectAndRange& rect)
+void ArgumentCoder<CyberKit::DocumentEditingContext::TextRectAndRange>::encode(Encoder& encoder, const CyberKit::DocumentEditingContext::TextRectAndRange& rect)
 {
     encoder << rect.rect;
     encoder << rect.range;
 }
 
-std::optional<WebKit::DocumentEditingContext::TextRectAndRange> ArgumentCoder<WebKit::DocumentEditingContext::TextRectAndRange>::decode(Decoder& decoder)
+std::optional<CyberKit::DocumentEditingContext::TextRectAndRange> ArgumentCoder<CyberKit::DocumentEditingContext::TextRectAndRange>::decode(Decoder& decoder)
 {
-    WebKit::DocumentEditingContext::TextRectAndRange rect;
+    CyberKit::DocumentEditingContext::TextRectAndRange rect;
 
     if (!decoder.decode(rect.rect))
         return std::nullopt;
 
-    std::optional<WebKit::DocumentEditingContext::Range> range;
+    std::optional<CyberKit::DocumentEditingContext::Range> range;
     decoder >> range;
     if (!range)
         return std::nullopt;
@@ -114,7 +114,7 @@ std::optional<WebKit::DocumentEditingContext::TextRectAndRange> ArgumentCoder<We
     return rect;
 }
 
-void ArgumentCoder<WebKit::DocumentEditingContext>::encode(Encoder& encoder, const WebKit::DocumentEditingContext& context)
+void ArgumentCoder<CyberKit::DocumentEditingContext>::encode(Encoder& encoder, const CyberKit::DocumentEditingContext& context)
 {
     encoder << context.contextBefore;
     encoder << context.selectedText;
@@ -127,9 +127,9 @@ void ArgumentCoder<WebKit::DocumentEditingContext>::encode(Encoder& encoder, con
     encoder << context.textRects;
 }
 
-std::optional<WebKit::DocumentEditingContext> ArgumentCoder<WebKit::DocumentEditingContext>::decode(Decoder& decoder)
+std::optional<CyberKit::DocumentEditingContext> ArgumentCoder<CyberKit::DocumentEditingContext>::decode(Decoder& decoder)
 {
-    WebKit::DocumentEditingContext context;
+    CyberKit::DocumentEditingContext context;
 
     std::optional<CyberCore::AttributedString> contextBefore;
     decoder >> contextBefore;
@@ -161,7 +161,7 @@ std::optional<WebKit::DocumentEditingContext> ArgumentCoder<WebKit::DocumentEdit
         return std::nullopt;
     context.annotatedText = *annotatedText;
 
-    std::optional<WebKit::DocumentEditingContext::Range> selectedRangeInMarkedText;
+    std::optional<CyberKit::DocumentEditingContext::Range> selectedRangeInMarkedText;
     decoder >> selectedRangeInMarkedText;
     if (!selectedRangeInMarkedText)
         return std::nullopt;
@@ -173,7 +173,7 @@ std::optional<WebKit::DocumentEditingContext> ArgumentCoder<WebKit::DocumentEdit
     return context;
 }
 
-void ArgumentCoder<WebKit::DocumentEditingContextRequest>::encode(Encoder& encoder, const WebKit::DocumentEditingContextRequest& request)
+void ArgumentCoder<CyberKit::DocumentEditingContextRequest>::encode(Encoder& encoder, const CyberKit::DocumentEditingContextRequest& request)
 {
     encoder << request.options;
     encoder << request.surroundingGranularity;
@@ -182,9 +182,9 @@ void ArgumentCoder<WebKit::DocumentEditingContextRequest>::encode(Encoder& encod
     encoder << request.textInputContext;
 }
 
-std::optional<WebKit::DocumentEditingContextRequest> ArgumentCoder<WebKit::DocumentEditingContextRequest>::decode(Decoder& decoder)
+std::optional<CyberKit::DocumentEditingContextRequest> ArgumentCoder<CyberKit::DocumentEditingContextRequest>::decode(Decoder& decoder)
 {
-    WebKit::DocumentEditingContextRequest request;
+    CyberKit::DocumentEditingContextRequest request;
 
     if (!decoder.decode(request.options))
         return std::nullopt;

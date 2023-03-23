@@ -55,7 +55,7 @@ public:
             callback(result);
             complete = true;
         }];
-        TestWebKitAPI::Util::run(&complete);
+        TestCyberKitAPI::Util::run(&complete);
     }
 
     void callAsyncFunctionBody(const String& functionBody, Function<void(id)>&& callback)
@@ -66,7 +66,7 @@ public:
             callback(result);
             complete = true;
         }];
-        TestWebKitAPI::Util::run(&complete);
+        TestCyberKitAPI::Util::run(&complete);
     }
 
 

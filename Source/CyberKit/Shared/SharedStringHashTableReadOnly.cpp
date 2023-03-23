@@ -28,7 +28,7 @@
 
 #include "SharedMemory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -110,4 +110,4 @@ SharedStringHash* SharedStringHashTableReadOnly::findSlot(SharedStringHash share
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

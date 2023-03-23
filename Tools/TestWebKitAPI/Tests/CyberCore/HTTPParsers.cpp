@@ -31,7 +31,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(HTTPParsers, ParseCrossOriginResourcePolicyHeader)
 {
@@ -61,12 +61,12 @@ TEST(HTTPParsers, ParseCrossOriginResourcePolicyHeader)
 TEST(HTTPParsers, ValidateUserAgentValues)
 {
     EXPECT_TRUE(isValidUserAgentHeaderValue("Safari"_s));
-    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari WebKit"_s));
+    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari CyberKit"_s));
     EXPECT_TRUE(isValidUserAgentHeaderValue("Safari/10.0"_s));
-    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari WebKit/163"_s));
-    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari/10.0 WebKit"_s));
-    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari/10.0 WebKit/163"_s));
-    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari/10.0 WebKit/163 (Mozilla; like Gecko)"_s));
+    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari CyberKit/163"_s));
+    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari/10.0 CyberKit"_s));
+    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari/10.0 CyberKit/163"_s));
+    EXPECT_TRUE(isValidUserAgentHeaderValue("Safari/10.0 CyberKit/163 (Mozilla; like Gecko)"_s));
     EXPECT_TRUE(isValidUserAgentHeaderValue("Safari (comment (nested comment))"_s));
     EXPECT_TRUE(isValidUserAgentHeaderValue("Safari () (<- Empty comment)"_s));
     EXPECT_TRUE(isValidUserAgentHeaderValue("Safari (left paren \\( as quoted pair)"_s));
@@ -84,7 +84,7 @@ TEST(HTTPParsers, ValidateUserAgentValues)
     EXPECT_FALSE(isValidUserAgentHeaderValue("Safari unopened commanent)"_s));
     EXPECT_FALSE(isValidUserAgentHeaderValue("\x1B (contains control character)"_s));
     EXPECT_FALSE(isValidUserAgentHeaderValue("Safari/\n10.0 (embeded newline)"_s));
-    EXPECT_FALSE(isValidUserAgentHeaderValue("WPE\\ WebKit (quoted pair in token)"_s));
+    EXPECT_FALSE(isValidUserAgentHeaderValue("WPE\\ CyberKit (quoted pair in token)"_s));
     EXPECT_FALSE(isValidUserAgentHeaderValue("/123 (missing product token)"_s));
 }
 #endif
@@ -218,4 +218,4 @@ TEST(RFC8941, ParseDictionaryStructuredFieldValue)
     EXPECT_TRUE(valueList->isEmpty());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -32,7 +32,7 @@
 #include "RemoteMediaPlayerManagerProxy.h"
 #include "RemoteMediaPlayerProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

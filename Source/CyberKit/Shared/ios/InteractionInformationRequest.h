@@ -34,7 +34,7 @@
 #include <CyberCore/TextIndicator.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct InteractionInformationRequest {
     CyberCore::IntPoint point;

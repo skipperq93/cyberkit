@@ -43,7 +43,7 @@
 
 - (void)webProcessPlugIn:(WKWebProcessPlugInController *)plugInController initializeWithObject:(id)initializationObject
 {
-    NSString *testPlugInClassName = [plugInController.parameters valueForKey:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+    NSString *testPlugInClassName = [plugInController.parameters valueForKey:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
     ASSERT(testPlugInClassName);
     ASSERT([testPlugInClassName isKindOfClass:[NSString class]]);
 

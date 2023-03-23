@@ -37,7 +37,7 @@
 - (void)_lookup:(id)sender;
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool doneWaitingForLookup = false;
 static NSRange lastLookupRange = NSMakeRange(0, 0);
@@ -61,7 +61,7 @@ TEST(TextServicesTests, LookUpPresentationRect)
 
     doneWaitingForLookup = false;
     [webView _lookup:nil];
-    TestWebKitAPI::Util::run(&doneWaitingForLookup);
+    TestCyberKitAPI::Util::run(&doneWaitingForLookup);
 
     EXPECT_EQ(lastLookupRange.location, 0U);
     EXPECT_EQ(lastLookupRange.length, 3U);
@@ -72,7 +72,7 @@ TEST(TextServicesTests, LookUpPresentationRect)
 
     doneWaitingForLookup = false;
     [webView _lookup:nil];
-    TestWebKitAPI::Util::run(&doneWaitingForLookup);
+    TestCyberKitAPI::Util::run(&doneWaitingForLookup);
 
     EXPECT_EQ(lastLookupRange.location, 0U);
     EXPECT_EQ(lastLookupRange.length, 16U);
@@ -82,6 +82,6 @@ TEST(TextServicesTests, LookUpPresentationRect)
     EXPECT_GT(rectWhenLookingUpBothLines.size.height, rectWhenLookingUpFirstLine.size.height);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

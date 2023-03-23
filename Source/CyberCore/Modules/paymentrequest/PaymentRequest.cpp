@@ -228,7 +228,7 @@ static ExceptionOr<std::tuple<String, Vector<String>>> checkAndCanonicalizeDetai
                 if (!selectedShippingOption)
                     selectedShippingOption = shippingOption.id;
                 else if (!didLog && shippingOption.selected) {
-                    context.addConsoleMessage(JSC::MessageSource::PaymentRequest, JSC::MessageLevel::Warning, "WebKit currently uses the first shipping option even if other shipping options are marked as selected."_s);
+                    context.addConsoleMessage(JSC::MessageSource::PaymentRequest, JSC::MessageLevel::Warning, "CyberKit currently uses the first shipping option even if other shipping options are marked as selected."_s);
                     didLog = true;
                 }
 #endif

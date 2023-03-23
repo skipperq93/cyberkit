@@ -251,7 +251,7 @@ set(WebCore_IDL_INCLUDES
 )
 
 set(WebCore_NON_SVG_IDL_FILES
-    Modules/airplay/WebKitPlaybackTargetAvailabilityEvent.idl
+    Modules/airplay/CyberKitPlaybackTargetAvailabilityEvent.idl
 
     Modules/async-clipboard/Clipboard.idl
     Modules/async-clipboard/ClipboardItem.idl
@@ -1310,7 +1310,7 @@ set(WebCore_NON_SVG_IDL_FILES
     page/UndoItem.idl
     page/UndoManager.idl
     page/VisualViewport.idl
-    page/WebKitPoint.idl
+    page/CyberKitPoint.idl
     page/WindowEventHandlers.idl
     page/WindowLocalStorage.idl
     page/WindowOrWorkerGlobalScope+Crypto.idl
@@ -1839,10 +1839,10 @@ if (ENABLE_LEGACY_ENCRYPTED_MEDIA)
         Modules/encryptedmedia/legacy/LegacyCDMPrivateMediaPlayer.cpp
         Modules/encryptedmedia/legacy/LegacyCDMSessionClearKey.cpp
 
-        Modules/encryptedmedia/legacy/WebKitMediaKeyMessageEvent.cpp
-        Modules/encryptedmedia/legacy/WebKitMediaKeyNeededEvent.cpp
-        Modules/encryptedmedia/legacy/WebKitMediaKeySession.cpp
-        Modules/encryptedmedia/legacy/WebKitMediaKeys.cpp
+        Modules/encryptedmedia/legacy/CyberKitMediaKeyMessageEvent.cpp
+        Modules/encryptedmedia/legacy/CyberKitMediaKeyNeededEvent.cpp
+        Modules/encryptedmedia/legacy/CyberKitMediaKeySession.cpp
+        Modules/encryptedmedia/legacy/CyberKitMediaKeys.cpp
     )
     list(APPEND WebCoreTestSupport_SOURCES
         testing/LegacyMockCDM.cpp
@@ -1850,12 +1850,12 @@ if (ENABLE_LEGACY_ENCRYPTED_MEDIA)
 endif ()
 
 list(APPEND WebCore_IDL_FILES
-    Modules/encryptedmedia/legacy/WebKitMediaKeyMessageEvent.idl
-    Modules/encryptedmedia/legacy/WebKitMediaKeyNeededEvent.idl
-    Modules/encryptedmedia/legacy/WebKitMediaKeySession.idl
-    Modules/encryptedmedia/legacy/WebKitMediaKeys.idl
+    Modules/encryptedmedia/legacy/CyberKitMediaKeyMessageEvent.idl
+    Modules/encryptedmedia/legacy/CyberKitMediaKeyNeededEvent.idl
+    Modules/encryptedmedia/legacy/CyberKitMediaKeySession.idl
+    Modules/encryptedmedia/legacy/CyberKitMediaKeys.idl
 
-    html/WebKitMediaKeyError.idl
+    html/CyberKitMediaKeyError.idl
 )
 
 if (ENABLE_ENCRYPTED_MEDIA)
@@ -2048,7 +2048,7 @@ endif ()
 list(APPEND WebCore_IDL_FILES
     page/UserMessageHandler.idl
     page/UserMessageHandlersNamespace.idl
-    page/WebKitNamespace.idl
+    page/CyberKitNamespace.idl
 )
 
 if (ENABLE_USER_MESSAGE_HANDLERS)
@@ -2056,7 +2056,7 @@ if (ENABLE_USER_MESSAGE_HANDLERS)
         page/UserMessageHandler.cpp
         page/UserMessageHandlerDescriptor.cpp
         page/UserMessageHandlersNamespace.cpp
-        page/WebKitNamespace.cpp
+        page/CyberKitNamespace.cpp
     )
 endif ()
 
@@ -2628,8 +2628,8 @@ list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/EventTargetInterfaces
 list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/EventTargetFactory.cpp)
 
 
-GENERATE_FONT_NAMES(${WEBCORE_DIR}/css/WebKitFontFamilyNames.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/WebKitFontFamilyNames.cpp)
+GENERATE_FONT_NAMES(${WEBCORE_DIR}/css/CyberKitFontFamilyNames.in)
+list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.cpp)
 
 
 GENERATE_DOM_NAMES(MathML ${WEBCORE_DIR}/mathml/mathattrs.in ${WEBCORE_DIR}/mathml/mathtags.in)
@@ -2684,7 +2684,7 @@ endif ()
 WEBKIT_FRAMEWORK(WebCore)
 
 if (APPLE)
-    set_target_properties(WebCore PROPERTIES LINK_FLAGS "-sub_library libobjc -umbrella WebKit -allowable_client WebCoreTestSupport -allowable_client WebKit2 -allowable_client CyberKitLegacy")
+    set_target_properties(WebCore PROPERTIES LINK_FLAGS "-sub_library libobjc -umbrella CyberKit -allowable_client WebCoreTestSupport -allowable_client CyberKit2 -allowable_client CyberKitLegacy")
 endif ()
 
 # The -ftree-sra optimization (implicit with -O2) causes crashes when

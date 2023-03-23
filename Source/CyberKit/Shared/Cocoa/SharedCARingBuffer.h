@@ -33,7 +33,7 @@
 #include <wtf/Atomics.h>
 #include <wtf/Function.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedCARingBufferBase : public CyberCore::CARingBuffer {
 protected:

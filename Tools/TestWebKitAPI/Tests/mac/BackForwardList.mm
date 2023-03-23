@@ -50,7 +50,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, ReloadBackForward)
 {
@@ -69,4 +69,4 @@ TEST(CyberKitLegacy, ReloadBackForward)
     EXPECT_EQ(0, [bfList backListCount]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

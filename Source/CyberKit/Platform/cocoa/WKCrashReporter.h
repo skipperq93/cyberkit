@@ -27,7 +27,7 @@
 
 #include <CyberKit/WKBase.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WK_EXPORT void logAndSetCrashLogMessage(const char*);
 

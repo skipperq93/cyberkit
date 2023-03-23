@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class AuthenticationChallengeDisposition : uint8_t {
     UseCredential,
@@ -36,17 +36,17 @@ enum class AuthenticationChallengeDisposition : uint8_t {
     RejectProtectionSpaceAndContinue
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::AuthenticationChallengeDisposition> {
+template<> struct EnumTraits<CyberKit::AuthenticationChallengeDisposition> {
     using values = EnumValues<
-        WebKit::AuthenticationChallengeDisposition,
-        WebKit::AuthenticationChallengeDisposition::UseCredential,
-        WebKit::AuthenticationChallengeDisposition::PerformDefaultHandling,
-        WebKit::AuthenticationChallengeDisposition::Cancel,
-        WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue
+        CyberKit::AuthenticationChallengeDisposition,
+        CyberKit::AuthenticationChallengeDisposition::UseCredential,
+        CyberKit::AuthenticationChallengeDisposition::PerformDefaultHandling,
+        CyberKit::AuthenticationChallengeDisposition::Cancel,
+        CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue
     >;
 };
 

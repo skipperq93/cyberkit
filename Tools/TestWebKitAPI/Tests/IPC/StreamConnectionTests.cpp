@@ -37,7 +37,7 @@
 #include <wtf/Scope.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace {
 static constexpr Seconds defaultSendTimeout = 1_s;

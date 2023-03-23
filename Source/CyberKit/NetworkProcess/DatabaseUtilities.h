@@ -36,7 +36,7 @@ class SQLiteStatement;
 class SQLiteStatementAutoResetScope;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class PrivateClickMeasurementAttributionType : bool;
 
@@ -74,4 +74,4 @@ protected:
     mutable CyberCore::SQLiteTransaction m_transaction;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

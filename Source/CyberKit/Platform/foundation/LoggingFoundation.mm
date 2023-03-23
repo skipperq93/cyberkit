@@ -30,17 +30,17 @@
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-namespace WebKit {
+namespace CyberKit {
 
 String logLevelString()
 {
 #if !LOG_DISABLED
-    return [[NSUserDefaults standardUserDefaults] stringForKey:@"WebKit2Logging"];
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"CyberKit2Logging"];
 #else
     return String();
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

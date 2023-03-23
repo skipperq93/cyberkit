@@ -30,7 +30,7 @@
 #include "IPCConnectionTesterMessages.h"
 #include "IPCUtilities.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<IPCConnectionTester> IPCConnectionTester::create(IPC::Connection& connection, IPCConnectionTesterIdentifier identifier, IPC::Connection::Handle&& handle)
 {

@@ -34,7 +34,7 @@ OBJC_CLASS NSArray;
 OBJC_CLASS NSError;
 OBJC_CLASS UIViewController;
 
-namespace WebKit {
+namespace CyberKit {
 
 class PaymentAuthorizationPresenter;
 
@@ -52,7 +52,7 @@ using DidChangeCouponCodeCompletion = BlockPtr<void(PKPaymentRequestCouponCodeUp
 
 @interface WKPaymentAuthorizationDelegate : NSObject {
     RetainPtr<PKPaymentRequest> _request;
-    WeakPtr<WebKit::PaymentAuthorizationPresenter> _presenter;
+    WeakPtr<CyberKit::PaymentAuthorizationPresenter> _presenter;
 }
 
 - (instancetype)init NS_UNAVAILABLE;
@@ -75,16 +75,16 @@ using DidChangeCouponCodeCompletion = BlockPtr<void(PKPaymentRequestCouponCodeUp
 // Helper methods called by WKPaymentAuthorizationSession's subclasses
 @interface WKPaymentAuthorizationDelegate (Protected)
 
-- (instancetype)_initWithRequest:(PKPaymentRequest *)request presenter:(WebKit::PaymentAuthorizationPresenter&)presenter;
+- (instancetype)_initWithRequest:(PKPaymentRequest *)request presenter:(CyberKit::PaymentAuthorizationPresenter&)presenter;
 
-- (void)_didAuthorizePayment:(PKPayment *)payment completion:(WebKit::DidAuthorizePaymentCompletion::BlockType)completion;
+- (void)_didAuthorizePayment:(PKPayment *)payment completion:(CyberKit::DidAuthorizePaymentCompletion::BlockType)completion;
 - (void)_didFinish;
-- (void)_didRequestMerchantSession:(WebKit::DidRequestMerchantSessionCompletion::BlockType)completion;
-- (void)_didSelectPaymentMethod:(PKPaymentMethod *)paymentMethod completion:(WebKit::DidSelectPaymentMethodCompletion::BlockType)completion;
-- (void)_didSelectShippingContact:(PKContact *)contact completion:(WebKit::DidSelectShippingContactCompletion::BlockType)completion;
-- (void)_didSelectShippingMethod:(PKShippingMethod *)shippingMethod completion:(WebKit::DidSelectShippingMethodCompletion::BlockType)completion;
+- (void)_didRequestMerchantSession:(CyberKit::DidRequestMerchantSessionCompletion::BlockType)completion;
+- (void)_didSelectPaymentMethod:(PKPaymentMethod *)paymentMethod completion:(CyberKit::DidSelectPaymentMethodCompletion::BlockType)completion;
+- (void)_didSelectShippingContact:(PKContact *)contact completion:(CyberKit::DidSelectShippingContactCompletion::BlockType)completion;
+- (void)_didSelectShippingMethod:(PKShippingMethod *)shippingMethod completion:(CyberKit::DidSelectShippingMethodCompletion::BlockType)completion;
 #if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
-- (void)_didChangeCouponCode:(NSString *)couponCode completion:(WebKit::DidChangeCouponCodeCompletion::BlockType)completion;
+- (void)_didChangeCouponCode:(NSString *)couponCode completion:(CyberKit::DidChangeCouponCodeCompletion::BlockType)completion;
 #endif
 - (void)_getPaymentServicesMerchantURL:(void(^)(NSURL *, NSError *))completion;
 - (void)_willFinishWithError:(NSError *)error;

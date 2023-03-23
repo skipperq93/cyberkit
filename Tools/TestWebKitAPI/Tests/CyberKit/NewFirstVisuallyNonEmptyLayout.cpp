@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include <CyberKit/WKContextPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFirstLayoutAchieved;
 static bool didFirstVisuallyNonEmptyLayoutAchieved;
@@ -73,7 +73,7 @@ static void setPageLoaderClient(WKPageRef page)
 // the frame load is completing before didLayout() manages to unlock the
 // kWKDidHitRelevantRepaintedObjectsAreaThreshold achievement. We probably need to fix this by making
 // this test have a long-running resource.
-TEST(WebKit, DISABLED_NewFirstVisuallyNonEmptyLayout)
+TEST(CyberKit, DISABLED_NewFirstVisuallyNonEmptyLayout)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("NewFirstVisuallyNonEmptyLayoutTest"));
 
@@ -88,6 +88,6 @@ TEST(WebKit, DISABLED_NewFirstVisuallyNonEmptyLayout)
     EXPECT_TRUE(didUnlockAllLayoutMilestones);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

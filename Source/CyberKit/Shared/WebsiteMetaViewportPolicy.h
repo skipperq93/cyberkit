@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsiteMetaViewportPolicy : uint8_t {
     Default,

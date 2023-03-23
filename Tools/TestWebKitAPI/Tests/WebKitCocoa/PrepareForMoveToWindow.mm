@@ -41,7 +41,7 @@ TEST(WKWebView, PrepareForMoveToWindow)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     [webView _test_waitForDidFinishNavigation];
@@ -53,7 +53,7 @@ TEST(WKWebView, PrepareForMoveToWindow)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, PrepareToUnparentView)
@@ -67,7 +67,7 @@ TEST(WKWebView, PrepareToUnparentView)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebView, PrepareForMoveToWindowShouldNotCrashWhenRemovingWindowObservers)
@@ -84,14 +84,14 @@ TEST(WKWebView, PrepareForMoveToWindowShouldNotCrashWhenRemovingWindowObservers)
     [webView _prepareForMoveToWindow:nil completionHandler:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebView, PrepareForMoveToWindowThenClose)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     [webView _test_waitForDidFinishNavigation];
@@ -104,7 +104,7 @@ TEST(WKWebView, PrepareForMoveToWindowThenClose)
 
     [webView _close];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, PrepareForMoveToWindowThenViewDeallocBeforeMoving)
@@ -117,7 +117,7 @@ TEST(WKWebView, PrepareForMoveToWindowThenViewDeallocBeforeMoving)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         webView = nil;
@@ -128,7 +128,7 @@ TEST(WKWebView, PrepareForMoveToWindowThenViewDeallocBeforeMoving)
         isDone = true;
     });
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, PrepareForMoveToWindowThenWindowDeallocBeforeMoving)
@@ -143,7 +143,7 @@ TEST(WKWebView, PrepareForMoveToWindowThenWindowDeallocBeforeMoving)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         window = nil;

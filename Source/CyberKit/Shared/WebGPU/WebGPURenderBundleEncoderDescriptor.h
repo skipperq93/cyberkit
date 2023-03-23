@@ -30,13 +30,13 @@
 #include "WebGPURenderPassLayout.h"
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderBundleEncoderDescriptor : public RenderPassLayout {
     bool depthReadOnly { false };
     bool stencilReadOnly { false };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

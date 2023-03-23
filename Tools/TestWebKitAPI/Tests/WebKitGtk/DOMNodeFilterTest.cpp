@@ -31,32 +31,32 @@
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-typedef struct _WebKitNodeFilter {
+typedef struct _CyberKitNodeFilter {
     GObject parent;
-} WebKitNodeFilter;
+} CyberKitNodeFilter;
 
-typedef struct _WebKitNodeFilterClass {
+typedef struct _CyberKitNodeFilterClass {
     GObjectClass parentClass;
-} WebKitNodeFilterClass;
+} CyberKitNodeFilterClass;
 
-static short webkitNodeFilterAcceptNode(WebKitDOMNodeFilter*, WebKitDOMNode* node)
+static short webkitNodeFilterAcceptNode(CyberKitDOMNodeFilter*, CyberKitDOMNode* node)
 {
     // Filter out input elements.
     return WEBKIT_DOM_IS_HTML_INPUT_ELEMENT(node) ? WEBKIT_DOM_NODE_FILTER_REJECT : WEBKIT_DOM_NODE_FILTER_ACCEPT;
 }
 
-static void webkitNodeFilterDOMNodeFilterIfaceInit(WebKitDOMNodeFilterIface* iface)
+static void webkitNodeFilterDOMNodeFilterIfaceInit(CyberKitDOMNodeFilterIface* iface)
 {
     iface->accept_node = webkitNodeFilterAcceptNode;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitNodeFilter, webkit_node_filter, G_TYPE_OBJECT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_NODE_FILTER, webkitNodeFilterDOMNodeFilterIfaceInit))
+G_DEFINE_TYPE_WITH_CODE(CyberKitNodeFilter, webkit_node_filter, G_TYPE_OBJECT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_NODE_FILTER, webkitNodeFilterDOMNodeFilterIfaceInit))
 
-static void webkit_node_filter_init(WebKitNodeFilter*)
+static void webkit_node_filter_init(CyberKitNodeFilter*)
 {
 }
 
-static void webkit_node_filter_class_init(WebKitNodeFilterClass*)
+static void webkit_node_filter_class_init(CyberKitNodeFilterClass*)
 {
 }
 
@@ -64,29 +64,29 @@ static const char* expectedNodesAll[] = { "HTML", "HEAD", "TITLE", "#text", "BOD
 static const char* expectedNodesNoInput[] = { "HTML", "HEAD", "TITLE", "#text", "BODY", "BR" };
 static const char* expectedElementsNoInput[] = { "HTML", "HEAD", "TITLE", "BODY", "BR" };
 
-class WebKitDOMNodeFilterTest : public WebProcessTest {
+class CyberKitDOMNodeFilterTest : public WebProcessTest {
 public:
-    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new WebKitDOMNodeFilterTest()); }
+    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new CyberKitDOMNodeFilterTest()); }
 
 private:
-    bool testTreeWalker(WebKitWebPage* page)
+    bool testTreeWalker(CyberKitWebPage* page)
     {
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
-        WebKitDOMElement* root = webkit_dom_document_get_element_by_id(document, "root");
+        CyberKitDOMElement* root = webkit_dom_document_get_element_by_id(document, "root");
         g_assert_true(WEBKIT_DOM_IS_NODE(root));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(root));
 
         // No filter.
-        GRefPtr<WebKitDOMTreeWalker> walker = adoptGRef(webkit_dom_document_create_tree_walker(document, WEBKIT_DOM_NODE(root), WEBKIT_DOM_NODE_FILTER_SHOW_ALL, nullptr, FALSE, nullptr));
+        GRefPtr<CyberKitDOMTreeWalker> walker = adoptGRef(webkit_dom_document_create_tree_walker(document, WEBKIT_DOM_NODE(root), WEBKIT_DOM_NODE_FILTER_SHOW_ALL, nullptr, FALSE, nullptr));
         g_assert_true(WEBKIT_DOM_IS_TREE_WALKER(walker.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(walker.get()));
         g_assert_null(webkit_dom_tree_walker_get_filter(walker.get()));
 
         unsigned i = 0;
-        for (WebKitDOMNode* node = WEBKIT_DOM_NODE(root); node; node = webkit_dom_tree_walker_next_node(walker.get()), ++i) {
+        for (CyberKitDOMNode* node = WEBKIT_DOM_NODE(root); node; node = webkit_dom_tree_walker_next_node(walker.get()), ++i) {
             assertObjectIsDeletedWhenTestFinishes(G_OBJECT(node));
             g_assert_cmpuint(i, <, G_N_ELEMENTS(expectedNodesAll));
             GUniquePtr<char> nodeName(webkit_dom_node_get_node_name(node));
@@ -95,14 +95,14 @@ private:
         g_assert_cmpuint(i, ==, G_N_ELEMENTS(expectedNodesAll));
 
         // Input elements filter.
-        GRefPtr<WebKitDOMNodeFilter> filter = adoptGRef(static_cast<WebKitDOMNodeFilter*>(g_object_new(webkit_node_filter_get_type(), nullptr)));
+        GRefPtr<CyberKitDOMNodeFilter> filter = adoptGRef(static_cast<CyberKitDOMNodeFilter*>(g_object_new(webkit_node_filter_get_type(), nullptr)));
         walker = adoptGRef(webkit_dom_document_create_tree_walker(document, WEBKIT_DOM_NODE(root), WEBKIT_DOM_NODE_FILTER_SHOW_ALL, filter.get(), FALSE, nullptr));
         g_assert_true(WEBKIT_DOM_IS_TREE_WALKER(walker.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(filter.get()));
         g_assert_true(webkit_dom_tree_walker_get_filter(walker.get()) == filter.get());
 
         i = 0;
-        for (WebKitDOMNode* node = WEBKIT_DOM_NODE(root); node; node = webkit_dom_tree_walker_next_node(walker.get()), ++i) {
+        for (CyberKitDOMNode* node = WEBKIT_DOM_NODE(root); node; node = webkit_dom_tree_walker_next_node(walker.get()), ++i) {
             assertObjectIsDeletedWhenTestFinishes(G_OBJECT(node));
             g_assert_cmpuint(i, <, G_N_ELEMENTS(expectedNodesNoInput));
             GUniquePtr<char> nodeName(webkit_dom_node_get_node_name(node));
@@ -117,7 +117,7 @@ private:
         g_assert_true(webkit_dom_tree_walker_get_filter(walker.get()) == filter.get());
 
         i = 0;
-        for (WebKitDOMNode* node = WEBKIT_DOM_NODE(root); node; node = webkit_dom_tree_walker_next_node(walker.get()), ++i) {
+        for (CyberKitDOMNode* node = WEBKIT_DOM_NODE(root); node; node = webkit_dom_tree_walker_next_node(walker.get()), ++i) {
             assertObjectIsDeletedWhenTestFinishes(G_OBJECT(node));
             g_assert_cmpuint(i, <, G_N_ELEMENTS(expectedElementsNoInput));
             GUniquePtr<char> nodeName(webkit_dom_node_get_node_name(node));
@@ -128,24 +128,24 @@ private:
         return true;
     }
 
-    bool testNodeIterator(WebKitWebPage* page)
+    bool testNodeIterator(CyberKitWebPage* page)
     {
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
-        WebKitDOMElement* root = webkit_dom_document_get_element_by_id(document, "root");
+        CyberKitDOMElement* root = webkit_dom_document_get_element_by_id(document, "root");
         g_assert_true(WEBKIT_DOM_IS_NODE(root));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(root));
 
         // No filter.
-        GRefPtr<WebKitDOMNodeIterator> iter = adoptGRef(webkit_dom_document_create_node_iterator(document, WEBKIT_DOM_NODE(root), WEBKIT_DOM_NODE_FILTER_SHOW_ALL, nullptr, FALSE, nullptr));
+        GRefPtr<CyberKitDOMNodeIterator> iter = adoptGRef(webkit_dom_document_create_node_iterator(document, WEBKIT_DOM_NODE(root), WEBKIT_DOM_NODE_FILTER_SHOW_ALL, nullptr, FALSE, nullptr));
         g_assert_true(WEBKIT_DOM_IS_NODE_ITERATOR(iter.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(iter.get()));
         g_assert_null(webkit_dom_node_iterator_get_filter(iter.get()));
 
         unsigned i = 0;
-        while (WebKitDOMNode* node = webkit_dom_node_iterator_next_node(iter.get(), nullptr)) {
+        while (CyberKitDOMNode* node = webkit_dom_node_iterator_next_node(iter.get(), nullptr)) {
             assertObjectIsDeletedWhenTestFinishes(G_OBJECT(node));
             g_assert_cmpuint(i, <, G_N_ELEMENTS(expectedNodesAll));
             GUniquePtr<char> nodeName(webkit_dom_node_get_node_name(node));
@@ -155,14 +155,14 @@ private:
         g_assert_cmpuint(i, ==, G_N_ELEMENTS(expectedNodesAll));
 
         // Input elements filter.
-        GRefPtr<WebKitDOMNodeFilter> filter = adoptGRef(static_cast<WebKitDOMNodeFilter*>(g_object_new(webkit_node_filter_get_type(), nullptr)));
+        GRefPtr<CyberKitDOMNodeFilter> filter = adoptGRef(static_cast<CyberKitDOMNodeFilter*>(g_object_new(webkit_node_filter_get_type(), nullptr)));
         iter = adoptGRef(webkit_dom_document_create_node_iterator(document, WEBKIT_DOM_NODE(root), WEBKIT_DOM_NODE_FILTER_SHOW_ALL, filter.get(), FALSE, nullptr));
         g_assert_true(WEBKIT_DOM_IS_NODE_ITERATOR(iter.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(iter.get()));
         g_assert_true(webkit_dom_node_iterator_get_filter(iter.get()) == filter.get());
 
         i = 0;
-        while (WebKitDOMNode* node = webkit_dom_node_iterator_next_node(iter.get(), nullptr)) {
+        while (CyberKitDOMNode* node = webkit_dom_node_iterator_next_node(iter.get(), nullptr)) {
             assertObjectIsDeletedWhenTestFinishes(G_OBJECT(node));
             g_assert_cmpuint(i, <, G_N_ELEMENTS(expectedNodesNoInput));
             GUniquePtr<char> nodeName(webkit_dom_node_get_node_name(node));
@@ -178,7 +178,7 @@ private:
         g_assert_true(webkit_dom_node_iterator_get_filter(iter.get()) == filter.get());
 
         i = 0;
-        while (WebKitDOMNode* node = webkit_dom_node_iterator_next_node(iter.get(), nullptr)) {
+        while (CyberKitDOMNode* node = webkit_dom_node_iterator_next_node(iter.get(), nullptr)) {
             assertObjectIsDeletedWhenTestFinishes(G_OBJECT(node));
             g_assert_cmpuint(i, <, G_N_ELEMENTS(expectedElementsNoInput));
             GUniquePtr<char> nodeName(webkit_dom_node_get_node_name(node));
@@ -190,7 +190,7 @@ private:
         return true;
     }
 
-    bool runTest(const char* testName, WebKitWebPage* page) override
+    bool runTest(const char* testName, CyberKitWebPage* page) override
     {
         if (!strcmp(testName, "tree-walker"))
             return testTreeWalker(page);
@@ -204,8 +204,8 @@ private:
 
 static void __attribute__((constructor)) registerTests()
 {
-    REGISTER_TEST(WebKitDOMNodeFilterTest, "WebKitDOMNodeFilter/tree-walker");
-    REGISTER_TEST(WebKitDOMNodeFilterTest, "WebKitDOMNodeFilter/node-iterator");
+    REGISTER_TEST(CyberKitDOMNodeFilterTest, "CyberKitDOMNodeFilter/tree-walker");
+    REGISTER_TEST(CyberKitDOMNodeFilterTest, "CyberKitDOMNodeFilter/node-iterator");
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

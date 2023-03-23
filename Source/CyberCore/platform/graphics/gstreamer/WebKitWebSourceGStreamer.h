@@ -32,30 +32,30 @@ class SecurityOrigin;
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_SRC            (webkit_web_src_get_type ())
-#define WEBKIT_WEB_SRC(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_WEB_SRC, WebKitWebSrc))
-#define WEBKIT_WEB_SRC_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_WEB_SRC, WebKitWebSrcClass))
+#define WEBKIT_WEB_SRC(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_WEB_SRC, CyberKitWebSrc))
+#define WEBKIT_WEB_SRC_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_WEB_SRC, CyberKitWebSrcClass))
 #define WEBKIT_IS_WEB_SRC(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_TYPE_WEB_SRC))
 #define WEBKIT_IS_WEB_SRC_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), WEBKIT_TYPE_WEB_SRC))
-#define WEBKIT_WEB_SRC_CAST(obj)       ((WebKitWebSrc*)(obj))
+#define WEBKIT_WEB_SRC_CAST(obj)       ((CyberKitWebSrc*)(obj))
 
 #define WEBKIT_WEB_SRC_PLAYER_CONTEXT_TYPE_NAME  "webkit.media-player"
 
-struct WebKitWebSrcPrivate;
+struct CyberKitWebSrcPrivate;
 
-struct WebKitWebSrc {
+struct CyberKitWebSrc {
     GstPushSrc parent;
 
-    WebKitWebSrcPrivate *priv;
+    CyberKitWebSrcPrivate *priv;
 };
 
-struct WebKitWebSrcClass {
+struct CyberKitWebSrcClass {
     GstPushSrcClass parentClass;
 };
 
 GType webkit_web_src_get_type(void);
-void webKitWebSrcSetMediaPlayer(WebKitWebSrc*, CyberCore::MediaPlayer*, const String&);
-bool webKitSrcPassedCORSAccessCheck(WebKitWebSrc*);
-bool webKitSrcIsCrossOrigin(WebKitWebSrc*, const CyberCore::SecurityOrigin&);
+void webKitWebSrcSetMediaPlayer(CyberKitWebSrc*, CyberCore::MediaPlayer*, const String&);
+bool webKitSrcPassedCORSAccessCheck(CyberKitWebSrc*);
+bool webKitSrcIsCrossOrigin(CyberKitWebSrc*, const CyberCore::SecurityOrigin&);
 
 G_END_DECLS
 

@@ -29,7 +29,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(MIMETypeRegistry, JSONMIMETypes)
 {
@@ -80,4 +80,4 @@ TEST(MIMETypeRegistry, CanShowMIMEType)
     ASSERT_FALSE(MIMETypeRegistry::canShowMIMEType("text/vcard"_s));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

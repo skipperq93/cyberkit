@@ -30,7 +30,7 @@
 #include "TrackPrivateRemoteConfiguration.h"
 #include <CyberCore/AudioTrackPrivate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct AudioTrackPrivateRemoteConfiguration : TrackPrivateRemoteConfiguration {
     bool enabled;
@@ -56,6 +56,6 @@ struct AudioTrackPrivateRemoteConfiguration : TrackPrivateRemoteConfiguration {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

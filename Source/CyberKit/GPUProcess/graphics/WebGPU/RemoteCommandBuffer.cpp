@@ -33,7 +33,7 @@
 #include "WebGPUObjectHeap.h"
 #include <pal/graphics/WebGPU/WebGPUCommandBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteCommandBuffer::RemoteCommandBuffer(PAL::WebGPU::CommandBuffer& commandBuffer, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(commandBuffer)
@@ -56,6 +56,6 @@ void RemoteCommandBuffer::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

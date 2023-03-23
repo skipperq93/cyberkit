@@ -284,7 +284,7 @@ void PlatformSpeechSynthesizer::initializeVoiceList()
         bool isDefault = true;
         NSString *voiceURI = [voice identifier];
         NSString *name = [voice name];
-        // Only show built-in voices when requesting through WebKit to reduce fingerprinting surface area.
+        // Only show built-in voices when requesting through CyberKit to reduce fingerprinting surface area.
 #if HAVE(AVSPEECHSYNTHESIS_SYSTEMVOICE)
         // FIXME: Remove respondsToSelector check when is available on all SDKs.
         BOOL includeVoice = NO;

@@ -47,7 +47,7 @@ class MediaSourcePrivate;
 class PlatformTimeRanges;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 class RemoteMediaPlayerProxy;
@@ -103,6 +103,6 @@ private:
     Vector<RefPtr<RemoteSourceBufferProxy>> m_sourceBuffers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

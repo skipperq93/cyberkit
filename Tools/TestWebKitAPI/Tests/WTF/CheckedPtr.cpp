@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WallTime.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class CheckedObject : public CanMakeCheckedPtr {
 public:
@@ -384,4 +384,4 @@ TEST(WTF_CheckedPtr, CanMakeThreadSafeCheckedPtr)
         thread->waitForCompletion();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

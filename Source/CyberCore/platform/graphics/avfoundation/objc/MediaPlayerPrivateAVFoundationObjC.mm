@@ -151,7 +151,7 @@ template <> struct iterator_traits<HashSet<RefPtr<CyberCore::MediaSelectionOptio
 @end
 #endif
 
-@interface AVURLAsset (WebKitExtensions)
+@interface AVURLAsset (CyberKitExtensions)
 @property (nonatomic, readonly) NSURL *resolvedURL;
 @end
 
@@ -991,8 +991,8 @@ void MediaPlayerPrivateAVFoundationObjC::createAVAssetForURL(const URL& url, Ret
         registerFormatReaderIfNecessary();
 
 #if HAVE(AVCONTENTKEYREQUEST_COMPATABILITIY_MODE) && HAVE(AVCONTENTKEYSPECIFIER)
-    if (!MediaSessionManagerCocoa::sampleBufferContentKeySessionSupportEnabled() && PAL::canLoad_AVFoundation_AVURLAssetShouldEnableLegacyWebKitCompatibilityModeForContentKeyRequests())
-        [options setObject:@YES forKey:AVURLAssetShouldEnableLegacyWebKitCompatibilityModeForContentKeyRequests];
+    if (!MediaSessionManagerCocoa::sampleBufferContentKeySessionSupportEnabled() && PAL::canLoad_AVFoundation_AVURLAssetShouldEnableLegacyCyberKitCompatibilityModeForContentKeyRequests())
+        [options setObject:@YES forKey:AVURLAssetShouldEnableLegacyCyberKitCompatibilityModeForContentKeyRequests];
 #endif
 
     NSURL *cocoaURL = canonicalURL(url);
@@ -2888,7 +2888,7 @@ void MediaPlayerPrivateAVFoundationObjC::outputObscuredDueToInsufficientExternal
 {
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
     if (m_session && newValue)
-        m_session->playerDidReceiveError([NSError errorWithDomain:@"com.apple.WebKit" code:'HDCP' userInfo:nil]);
+        m_session->playerDidReceiveError([NSError errorWithDomain:@"com.apple.CyberKit" code:'HDCP' userInfo:nil]);
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA) && HAVE(AVCONTENTKEYSESSION)

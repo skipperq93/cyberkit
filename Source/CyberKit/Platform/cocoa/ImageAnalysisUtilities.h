@@ -47,7 +47,7 @@ namespace CyberCore {
 struct TextRecognitionResult;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 bool isLiveTextAvailableAndEnabled();
 bool languageIdentifierSupportsLiveText(NSString *);

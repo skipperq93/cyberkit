@@ -40,7 +40,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PaymentSetupFeatures {
 public:
@@ -55,6 +55,6 @@ private:
     RetainPtr<NSArray> m_platformFeatures;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(APPLE_PAY)

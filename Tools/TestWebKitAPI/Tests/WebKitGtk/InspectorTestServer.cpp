@@ -44,9 +44,9 @@ int main(int argc, char** argv)
 
     int eventFD = argc == 2 ? atoi(argv[1]) : -1;
 
-    WebKitWebView* webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
+    CyberKitWebView* webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
     webkit_settings_set_enable_developer_extras(webkit_web_view_get_settings(webView), TRUE);
-    g_signal_connect(webView, "load-changed", G_CALLBACK(+[](WebKitWebView*, WebKitLoadEvent loadEvent, int* eventFD) {
+    g_signal_connect(webView, "load-changed", G_CALLBACK(+[](CyberKitWebView*, CyberKitLoadEvent loadEvent, int* eventFD) {
         if (loadEvent != WEBKIT_LOAD_FINISHED)
             return;
 
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
     }), &eventFD);
 
     webkit_web_view_load_html(webView,
-        "<html><body><p>WebKitGTK Inspector Test Server</p></body></html>",
+        "<html><body><p>CyberKitGTK Inspector Test Server</p></body></html>",
         "http://127.0.0.1:2999/");
 
 #if USE(GTK4)

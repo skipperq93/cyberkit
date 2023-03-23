@@ -22,7 +22,7 @@
 
 #if ENABLE(ARKIT_INLINE_PREVIEW)
 
-struct WebKit::ModelIdentifier {
+struct CyberKit::ModelIdentifier {
 #if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
     String uuid;
 #endif

@@ -35,7 +35,7 @@
 #include <CyberCore/ImageTransferSessionVT.h>
 #include <CyberCore/LocalSampleBufferDisplayLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

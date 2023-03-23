@@ -33,7 +33,7 @@
 #include <CyberKit/WKContextPrivate.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didHitRelevantRepaintedObjectsAreaThresholdAchieved;
 static bool test1Done;
@@ -69,7 +69,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, NewFirstVisuallyNonEmptyLayoutFails)
+TEST(CyberKit, NewFirstVisuallyNonEmptyLayoutFails)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("NewFirstVisuallyNonEmptyLayoutFailsTest"));
 
@@ -88,6 +88,6 @@ TEST(WebKit, NewFirstVisuallyNonEmptyLayoutFails)
     EXPECT_FALSE(didHitRelevantRepaintedObjectsAreaThresholdAchieved);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

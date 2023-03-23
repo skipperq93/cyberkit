@@ -32,7 +32,7 @@
 #import "PlatformWebView.h"
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 
@@ -52,7 +52,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, DeferredViewInWindowStateChange)
+TEST(CyberKit, DeferredViewInWindowStateChange)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("MouseMoveAfterCrashTest"));
 
@@ -85,6 +85,6 @@ TEST(WebKit, DeferredViewInWindowStateChange)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

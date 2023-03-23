@@ -31,7 +31,7 @@
 #import "ArgumentCodersCocoa.h"
 #import "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void LoadParameters::platformEncode(IPC::Encoder& encoder) const
 {
@@ -75,6 +75,6 @@ bool LoadParameters::platformDecode(IPC::Decoder& decoder, LoadParameters& param
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -593,7 +593,7 @@ void RenderLayerBacking::layerWillBeDestroyed()
 bool RenderLayerBacking::needsIOSDumpRenderTreeMainFrameRenderViewLayerIsAlwaysOpaqueHack(const GraphicsLayer& layer) const
 {
     if (m_isMainFrameRenderViewLayer && IOSApplication::isDumpRenderTree()) {
-        // In iOS WebKit1 the main frame's RenderView layer is always transparent. We lie that it is opaque so that
+        // In iOS CyberKit1 the main frame's RenderView layer is always transparent. We lie that it is opaque so that
         // internals.layerTreeAsText() tests succeed.
         ASSERT_UNUSED(layer, !layer.contentsOpaque());
         return true;
@@ -3810,7 +3810,7 @@ bool RenderLayerBacking::shouldSkipLayerInDump(const GraphicsLayer* layer, Optio
 
 bool RenderLayerBacking::shouldDumpPropertyForLayer(const GraphicsLayer* layer, const char* propertyName, OptionSet<LayerTreeAsTextOptions> options) const
 {
-    // For backwards compatibility with WebKit1 and other platforms,
+    // For backwards compatibility with CyberKit1 and other platforms,
     // skip some properties on the root tile cache.
     if (m_isMainFrameRenderViewLayer && layer == m_graphicsLayer.get() && !(options & LayerTreeAsTextOptions::IncludeRootLayerProperties)) {
         if (!strcmp(propertyName, "drawsContent"))

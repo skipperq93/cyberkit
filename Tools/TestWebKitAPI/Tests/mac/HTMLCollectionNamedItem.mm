@@ -46,7 +46,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, HTMLCollectionNamedItemTest)
 {
@@ -55,7 +55,7 @@ TEST(CyberKitLegacy, HTMLCollectionNamedItemTest)
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"HTMLCollectionNamedItem" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"HTMLCollectionNamedItem" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -77,4 +77,4 @@ TEST(CyberKitLegacy, HTMLCollectionNamedItemTest)
     EXPECT_WK_STREQ([(DOMHTMLElement *)[collection item:2] title], @"thirdItem");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

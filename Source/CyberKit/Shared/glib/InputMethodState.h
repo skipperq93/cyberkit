@@ -39,7 +39,7 @@ namespace CyberCore {
 class HTMLInputElement;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct InputMethodState {
     enum class Purpose {
@@ -78,33 +78,33 @@ inline bool operator==(const InputMethodState& a, const InputMethodState& b)
     return a.purpose == b.purpose && a.hints == b.hints;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::InputMethodState::Hint> {
+template<> struct EnumTraits<CyberKit::InputMethodState::Hint> {
     using values = EnumValues<
-        WebKit::InputMethodState::Hint,
-        WebKit::InputMethodState::Hint::None,
-        WebKit::InputMethodState::Hint::Spellcheck,
-        WebKit::InputMethodState::Hint::Lowercase,
-        WebKit::InputMethodState::Hint::UppercaseChars,
-        WebKit::InputMethodState::Hint::UppercaseWords,
-        WebKit::InputMethodState::Hint::UppercaseSentences,
-        WebKit::InputMethodState::Hint::InhibitOnScreenKeyboard
+        CyberKit::InputMethodState::Hint,
+        CyberKit::InputMethodState::Hint::None,
+        CyberKit::InputMethodState::Hint::Spellcheck,
+        CyberKit::InputMethodState::Hint::Lowercase,
+        CyberKit::InputMethodState::Hint::UppercaseChars,
+        CyberKit::InputMethodState::Hint::UppercaseWords,
+        CyberKit::InputMethodState::Hint::UppercaseSentences,
+        CyberKit::InputMethodState::Hint::InhibitOnScreenKeyboard
     >;
 };
 
-template<> struct EnumTraits<WebKit::InputMethodState::Purpose> {
+template<> struct EnumTraits<CyberKit::InputMethodState::Purpose> {
     using values = EnumValues<
-        WebKit::InputMethodState::Purpose,
-        WebKit::InputMethodState::Purpose::FreeForm,
-        WebKit::InputMethodState::Purpose::Digits,
-        WebKit::InputMethodState::Purpose::Number,
-        WebKit::InputMethodState::Purpose::Phone,
-        WebKit::InputMethodState::Purpose::Url,
-        WebKit::InputMethodState::Purpose::Email,
-        WebKit::InputMethodState::Purpose::Password
+        CyberKit::InputMethodState::Purpose,
+        CyberKit::InputMethodState::Purpose::FreeForm,
+        CyberKit::InputMethodState::Purpose::Digits,
+        CyberKit::InputMethodState::Purpose::Number,
+        CyberKit::InputMethodState::Purpose::Phone,
+        CyberKit::InputMethodState::Purpose::Url,
+        CyberKit::InputMethodState::Purpose::Email,
+        CyberKit::InputMethodState::Purpose::Password
     >;
 };
 

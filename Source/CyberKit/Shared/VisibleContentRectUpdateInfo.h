@@ -44,7 +44,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class ViewStabilityFlag : uint8_t {
     ScrollViewInteracting               = 1 << 0, // Dragging, zooming, interrupting deceleration
@@ -141,18 +141,18 @@ inline bool operator==(const VisibleContentRectUpdateInfo& a, const VisibleConte
 WTF::TextStream& operator<<(WTF::TextStream&, ViewStabilityFlag);
 WTF::TextStream& operator<<(WTF::TextStream&, const VisibleContentRectUpdateInfo&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::ViewStabilityFlag> {
+template<> struct EnumTraits<CyberKit::ViewStabilityFlag> {
     using values = EnumValues<
-        WebKit::ViewStabilityFlag,
-        WebKit::ViewStabilityFlag::ScrollViewInteracting,
-        WebKit::ViewStabilityFlag::ScrollViewAnimatedScrollOrZoom,
-        WebKit::ViewStabilityFlag::ScrollViewRubberBanding,
-        WebKit::ViewStabilityFlag::ChangingObscuredInsetsInteractively,
-        WebKit::ViewStabilityFlag::UnstableForTesting
+        CyberKit::ViewStabilityFlag,
+        CyberKit::ViewStabilityFlag::ScrollViewInteracting,
+        CyberKit::ViewStabilityFlag::ScrollViewAnimatedScrollOrZoom,
+        CyberKit::ViewStabilityFlag::ScrollViewRubberBanding,
+        CyberKit::ViewStabilityFlag::ChangingObscuredInsetsInteractively,
+        CyberKit::ViewStabilityFlag::UnstableForTesting
     >;
 };
 

@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct CacheStorageRecord;
 struct CacheStorageRecordInformation;
@@ -48,5 +48,5 @@ protected:
     CacheStorageStore() = default;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

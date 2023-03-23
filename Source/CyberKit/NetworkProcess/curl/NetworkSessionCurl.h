@@ -27,7 +27,7 @@
 
 #include "NetworkSession.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct NetworkSessionCreationParameters;
 
@@ -44,4 +44,4 @@ private:
     std::unique_ptr<WebSocketTask> createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel&, const CyberCore::ResourceRequest&, const String& protocol, const CyberCore::ClientOrigin&, bool, bool, OptionSet<CyberCore::NetworkConnectionIntegrity>) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

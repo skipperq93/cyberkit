@@ -37,11 +37,11 @@ OBJC_CLASS UIView;
 OBJC_CLASS UIWindow;
 OBJC_CLASS TestRunnerWKWebView;
 OBJC_CLASS WKWebViewConfiguration;
-OBJC_CLASS WebKitTestRunnerWindow;
+OBJC_CLASS CyberKitTestRunnerWindow;
 typedef struct CGImage *CGImageRef;
 
 using PlatformWKView = TestRunnerWKWebView*;
-using PlatformWindow = WebKitTestRunnerWindow*;
+using PlatformWindow = CyberKitTestRunnerWindow*;
 using PlatformImage = RetainPtr<CGImageRef>;
 #elif defined(BUILDING_GTK__)
 typedef struct _GtkWidget GtkWidget;

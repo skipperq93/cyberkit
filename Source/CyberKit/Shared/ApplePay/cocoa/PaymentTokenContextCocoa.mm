@@ -35,7 +35,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static NSDecimalNumber *toDecimalNumber(const String& amount)
@@ -58,6 +58,6 @@ RetainPtr<NSArray<PKPaymentTokenContext *>> platformPaymentTokenContexts(const V
     return createNSArray(webTokenContexts, platformPaymentTokenContext);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(PASSKIT_MULTI_MERCHANT_PAYMENTS)

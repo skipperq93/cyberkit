@@ -26,12 +26,12 @@
 #pragma once
 
 #if ENABLE(BREAKPAD)
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void installBreakpadExceptionHandler();
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(BREAKPAD)

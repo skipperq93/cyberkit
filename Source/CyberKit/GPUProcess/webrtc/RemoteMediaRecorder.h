@@ -47,7 +47,7 @@ class WebAudioBufferList;
 struct MediaRecorderPrivateOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 

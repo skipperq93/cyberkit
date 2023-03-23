@@ -28,8 +28,8 @@
     Conditional=LEGACY_ENCRYPTED_MEDIA,
     EnabledBySetting=LegacyEncryptedMediaAPIEnabled,
     Exposed=Window
-] interface WebKitMediaKeySession : EventTarget {
-    readonly attribute WebKitMediaKeyError error;
+] interface CyberKitMediaKeySession : EventTarget {
+    readonly attribute CyberKitMediaKeyError error;
 
     readonly attribute DOMString keySystem;
     readonly attribute DOMString sessionId;

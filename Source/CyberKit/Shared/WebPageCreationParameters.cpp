@@ -28,7 +28,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPageCreationParameters::encode(IPC::Encoder& encoder) const
 {
@@ -673,4 +673,4 @@ std::optional<WebPageCreationParameters> WebPageCreationParameters::decode(IPC::
     return { WTFMove(parameters) };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

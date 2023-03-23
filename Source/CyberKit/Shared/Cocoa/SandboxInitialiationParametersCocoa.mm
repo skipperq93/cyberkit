@@ -26,7 +26,7 @@
 #import "config.h"
 #import "SandboxInitializationParameters.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 SandboxInitializationParameters::SandboxInitializationParameters()
     : m_profileSelectionMode(ProfileSelectionMode::UseDefaultSandboxProfilePath)
@@ -100,4 +100,4 @@ const char* SandboxInitializationParameters::value(size_t index) const
     return m_namedParameters[index * 2 + 1];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -105,13 +105,13 @@ private:
 inline bool CSSParserSelector::needsImplicitShadowCombinatorForMatching() const
 {
     return match() == CSSSelector::PseudoElement
-        && (pseudoElementType() == CSSSelector::PseudoElementWebKitCustom
+        && (pseudoElementType() == CSSSelector::PseudoElementCyberKitCustom
 #if ENABLE(VIDEO)
             || pseudoElementType() == CSSSelector::PseudoElementCue
 #endif
             || pseudoElementType() == CSSSelector::PseudoElementPart
             || pseudoElementType() == CSSSelector::PseudoElementSlotted
-            || pseudoElementType() == CSSSelector::PseudoElementWebKitCustomLegacyPrefixed);
+            || pseudoElementType() == CSSSelector::PseudoElementCyberKitCustomLegacyPrefixed);
 }
 
 inline bool CSSParserSelector::isPseudoElementCueFunction() const

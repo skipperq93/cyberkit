@@ -76,10 +76,10 @@ static RetainPtr<NSURL> secondURL;
 
 @end
 
-TEST(WebKit, JavaScriptDuringNavigation)
+TEST(CyberKit, JavaScriptDuringNavigation)
 {
-    firstURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    secondURL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    firstURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    secondURL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[JSNavigationDelegate alloc] init]);
@@ -87,8 +87,8 @@ TEST(WebKit, JavaScriptDuringNavigation)
     [webView setUIDelegate:delegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:firstURL.get()]];
-    TestWebKitAPI::Util::run(&navigationComplete);
+    TestCyberKitAPI::Util::run(&navigationComplete);
 
     [webView loadRequest:[NSURLRequest requestWithURL:secondURL.get()]];
-    TestWebKitAPI::Util::run(&receivedBothAlerts);
+    TestCyberKitAPI::Util::run(&receivedBothAlerts);
 }

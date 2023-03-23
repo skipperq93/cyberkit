@@ -78,7 +78,7 @@ struct ThreadCPUInfo {
     enum class Type : uint8_t {
         Unknown,
         Main,
-        WebKit,
+        CyberKit,
     };
 
     String name;

@@ -642,15 +642,15 @@ void LegacyLineLayout::updateLogicalWidthForAlignment(RenderBlockFlow& flow, con
     // justifying text.
     switch (textAlign) {
     case TextAlignMode::Left:
-    case TextAlignMode::WebKitLeft:
+    case TextAlignMode::CyberKitLeft:
         updateLogicalWidthForLeftAlignedBlock(isLeftToRightDirection, trailingSpaceRun, logicalLeft, totalLogicalWidth, availableLogicalWidth);
         break;
     case TextAlignMode::Right:
-    case TextAlignMode::WebKitRight:
+    case TextAlignMode::CyberKitRight:
         updateLogicalWidthForRightAlignedBlock(isLeftToRightDirection, trailingSpaceRun, logicalLeft, totalLogicalWidth, availableLogicalWidth);
         break;
     case TextAlignMode::Center:
-    case TextAlignMode::WebKitCenter:
+    case TextAlignMode::CyberKitCenter:
         updateLogicalWidthForCenterAlignedBlock(isLeftToRightDirection, trailingSpaceRun, logicalLeft, totalLogicalWidth, availableLogicalWidth);
         break;
     case TextAlignMode::Justify:

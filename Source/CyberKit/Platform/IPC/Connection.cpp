@@ -838,7 +838,7 @@ void Connection::processIncomingSyncReply(std::unique_ptr<Decoder> decoder)
 static NEVER_INLINE NO_RETURN_DUE_TO_CRASH void terminateDueToIPCTerminateMessage()
 {
 #if PLATFORM(COCOA)
-    WebKit::logAndSetCrashLogMessage("Receives Terminate message");
+    CyberKit::logAndSetCrashLogMessage("Receives Terminate message");
 #else
     WTFLogAlways("Receives Terminate message");
 #endif
@@ -926,7 +926,7 @@ uint64_t Connection::installIncomingSyncMessageCallback(WTF::Function<void ()>&&
     m_nextIncomingSyncMessageCallbackID++;
 
     if (!m_incomingSyncMessageCallbackQueue)
-        m_incomingSyncMessageCallbackQueue = WorkQueue::create("com.apple.WebKit.IPC.IncomingSyncMessageCallbackQueue");
+        m_incomingSyncMessageCallbackQueue = WorkQueue::create("com.apple.CyberKit.IPC.IncomingSyncMessageCallbackQueue");
 
     m_incomingSyncMessageCallbacks.add(m_nextIncomingSyncMessageCallbackID, WTFMove(callback));
 

@@ -42,7 +42,7 @@ class CAAudioStreamDescription;
 }
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 class RemoteAudioDestination;
@@ -73,6 +73,6 @@ private:
     GPUConnectionToWebProcess& m_gpuConnectionToWebProcess;
 };
 
-} // namespace WebKit;
+} // namespace CyberKit;
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO)

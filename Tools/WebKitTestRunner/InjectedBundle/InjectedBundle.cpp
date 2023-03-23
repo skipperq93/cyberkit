@@ -36,7 +36,7 @@
 #include <CyberKit/WKBundlePagePrivate.h>
 #include <CyberKit/WKBundlePrivate.h>
 #include <CyberKit/WKRetainPtr.h>
-#include <CyberKit/WebKit2_C.h>
+#include <CyberKit/CyberKit2_C.h>
 #include <wtf/text/CString.h>
 #include <wtf/text/StringBuilder.h>
 #include <wtf/Vector.h>

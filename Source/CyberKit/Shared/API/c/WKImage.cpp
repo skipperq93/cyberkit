@@ -31,16 +31,16 @@
 
 WKTypeID WKImageGetTypeID(void)
 {
-    return WebKit::toAPI(WebKit::WebImage::APIType);
+    return CyberKit::toAPI(CyberKit::WebImage::APIType);
 }
 
 WKImageRef WKImageCreate(WKSize size, WKImageOptions options)
 {
-    auto webImage = WebKit::WebImage::create(WebKit::toIntSize(size), WebKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
+    auto webImage = CyberKit::WebImage::create(CyberKit::toIntSize(size), CyberKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
     return toAPI(webImage.leakRef());
 }
 
 WKSize WKImageGetSize(WKImageRef imageRef)
 {
-    return WebKit::toAPI(WebKit::toImpl(imageRef)->size());
+    return CyberKit::toAPI(CyberKit::toImpl(imageRef)->size());
 }

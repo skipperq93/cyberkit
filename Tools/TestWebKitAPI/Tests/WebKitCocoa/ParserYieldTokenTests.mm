@@ -86,7 +86,7 @@ static void waitForDelay(Seconds delay)
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay.nanoseconds()), dispatch_get_main_queue(), ^{
         done = true;
     });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(ParserYieldTokenTests, PreventDocumentLoadByTakingParserYieldToken)
@@ -176,7 +176,7 @@ TEST(ParserYieldTokenTests, AsyncScriptRunsWhenFetched)
 
     [[webView bundle] takeDocumentParserTokenAfterCommittingLoad];
 
-    NSURL *pageURL = [[NSBundle mainBundle] URLForResource:@"text-with-async-script" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *pageURL = [[NSBundle mainBundle] URLForResource:@"text-with-async-script" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadHTMLString:[NSString stringWithContentsOfURL:pageURL encoding:NSUTF8StringEncoding error:nil] baseURL:[NSURL URLWithString:@"custom://"]];
 
     waitForDelay(0.5_s);

@@ -35,7 +35,7 @@
 #import <CyberKit/WKPDFConfiguration.h>
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(PDFSnapshot, FullContent)
 {

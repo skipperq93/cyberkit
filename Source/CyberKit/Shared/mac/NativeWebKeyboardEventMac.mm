@@ -32,7 +32,7 @@
 #import <CyberCore/KeyboardEvent.h>
 
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 NativeWebKeyboardEvent::NativeWebKeyboardEvent(NSEvent *event, bool handledByInputMethod, bool replacesSoftSpace, const Vector<KeypressCommand>& commands)
@@ -41,6 +41,6 @@ NativeWebKeyboardEvent::NativeWebKeyboardEvent(NSEvent *event, bool handledByInp
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(APPKIT)

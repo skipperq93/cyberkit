@@ -25,16 +25,16 @@
 
 #import "config.h"
 
-#if ((USE(SYSTEM_PREVIEW) && HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)) || (PLATFORM(IOS) && USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/ARKitSoftLinkAdditions.mm>)))
+#if ((USE(SYSTEM_PREVIEW) && HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)) || (PLATFORM(IOS) && USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/ARKitSoftLinkAdditions.mm>)))
 
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_FOR_SOURCE(WebKit, ARKit);
+SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, ARKit);
 
-SOFT_LINK_CLASS_FOR_SOURCE(WebKit, ARKit, ARQuickLookPreviewItem);
+SOFT_LINK_CLASS_FOR_SOURCE(CyberKit, ARKit, ARQuickLookPreviewItem);
 
-#if PLATFORM(IOS) && USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/ARKitSoftLinkAdditions.mm>)
-#import <WebKitAdditions/ARKitSoftLinkAdditions.mm>
+#if PLATFORM(IOS) && USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/ARKitSoftLinkAdditions.mm>)
+#import <CyberKitAdditions/ARKitSoftLinkAdditions.mm>
 #endif
 
 #endif

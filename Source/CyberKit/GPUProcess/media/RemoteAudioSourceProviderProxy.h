@@ -39,7 +39,7 @@ class AudioSourceProviderAVFObjC;
 class CARingBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioSourceProviderProxy : public ThreadSafeRefCounted<RemoteAudioSourceProviderProxy>
     , public CyberCore::AudioSourceProviderClient {
@@ -60,6 +60,6 @@ private:
     Ref<IPC::Connection> m_connection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO) && PLATFORM(COCOA)

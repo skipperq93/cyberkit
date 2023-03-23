@@ -40,7 +40,7 @@
 OBJC_CLASS WKNetworkConnectionIntegrityNotificationListener;
 OBJC_CLASS NSURLSession;
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(NETWORK_CONNECTION_INTEGRITY)
 
@@ -91,4 +91,4 @@ void configureForNetworkConnectionIntegrity(NSURLSession *);
 
 #endif // ENABLE(NETWORK_CONNECTION_INTEGRITY)
 
-} // namespace WebKit
+} // namespace CyberKit

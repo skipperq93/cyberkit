@@ -30,7 +30,7 @@
 
 #include "LegacyCDM.h"
 #include "LegacyCDMSession.h"
-#include "WebKitMediaKeyError.h"
+#include "CyberKitMediaKeyError.h"
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <CyberScriptCore/Uint8Array.h>
@@ -117,7 +117,7 @@ RefPtr<Uint8Array> MockCDMSession::generateKeyRequest(const String&, Uint8Array*
 {
     for (unsigned i = 0; i < initDataPrefix()->length(); ++i) {
         if (!initData || i >= initData->length() || initData->item(i) != initDataPrefix()->item(i)) {
-            errorCode = WebKitMediaKeyError::MEDIA_KEYERR_UNKNOWN;
+            errorCode = CyberKitMediaKeyError::MEDIA_KEYERR_UNKNOWN;
             return nullptr;
         }
     }
@@ -133,7 +133,7 @@ bool MockCDMSession::update(Uint8Array* key, RefPtr<Uint8Array>&, unsigned short
 {
     for (unsigned i = 0; i < keyPrefix()->length(); ++i) {
         if (i >= key->length() || key->item(i) != keyPrefix()->item(i)) {
-            errorCode = WebKitMediaKeyError::MEDIA_KEYERR_CLIENT;
+            errorCode = CyberKitMediaKeyError::MEDIA_KEYERR_CLIENT;
             return false;
         }
     }

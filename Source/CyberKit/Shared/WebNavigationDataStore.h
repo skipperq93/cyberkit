@@ -33,7 +33,7 @@
 #include <CyberCore/ResourceResponse.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebNavigationDataStore {
     void encode(IPC::Encoder& encoder) const
@@ -64,6 +64,6 @@ struct WebNavigationDataStore {
     CyberCore::ResourceResponse response;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebNavigationDataStore_h

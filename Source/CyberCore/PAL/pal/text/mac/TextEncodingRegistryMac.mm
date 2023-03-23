@@ -43,7 +43,7 @@ CFStringEncoding webDefaultCFStringEncoding()
 
     // FIXME: Switch away from using Script Manager, as it does not support some languages newly added in OS X.
     // <rdar://problem/4433165> Need API that can get preferred web (and mail) encoding(s) w/o region code.
-    // Alternatively, we could have our own table of preferred encodings in WebKit.
+    // Alternatively, we could have our own table of preferred encodings in CyberKit.
     //
     // Also, language changes do not apply to _CFStringGetUserDefaultEncoding() until re-login, which could be very confusing.
 

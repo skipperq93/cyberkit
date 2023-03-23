@@ -30,7 +30,7 @@
 #import "APIHitTestResult.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::HitTestResult> {
     using WrapperClass = _WKHitTestResult;

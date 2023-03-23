@@ -2683,7 +2683,7 @@ void InspectorDOMAgent::willDestroyDOMNode(Node& node)
     if (auto* cssAgent = m_instrumentingAgents.enabledCSSAgent())
         cssAgent->didRemoveDOMNode(node, nodeId);
 
-    // This can be called in response to GC. Due to the single-process model used in WebKit1, the
+    // This can be called in response to GC. Due to the single-process model used in CyberKit1, the
     // event must be dispatched from a timer to prevent the frontend from making JS allocations
     // while the GC is still active.
 

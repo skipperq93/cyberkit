@@ -28,7 +28,7 @@
 
 #include <wtf/RunLoop.h>
 
-namespace TestWebKitAPI::Util {
+namespace TestCyberKitAPI::Util {
 
 #if !PLATFORM(COCOA)
 

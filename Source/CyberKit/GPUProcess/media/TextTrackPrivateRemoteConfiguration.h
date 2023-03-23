@@ -31,7 +31,7 @@
 #include <CyberCore/TrackPrivateBase.h>
 #include <wtf/MediaTime.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct TextTrackPrivateRemoteConfiguration {
     AtomString trackId;
@@ -52,6 +52,6 @@ struct TextTrackPrivateRemoteConfiguration {
     bool isDefault { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

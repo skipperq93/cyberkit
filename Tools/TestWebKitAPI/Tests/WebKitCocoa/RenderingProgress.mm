@@ -36,7 +36,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKUserScriptPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKRemoteObjectInterface.h>
 #import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
@@ -69,5 +69,5 @@ TEST(RenderingProgress, FirstMeaningfulPaint)
 
     [webView loadHTMLString:@"<body style='background-color: red;'></body>" baseURL:nil];
 
-    TestWebKitAPI::Util::run(&didObserveFirstMeaningfulPaint);
+    TestCyberKitAPI::Util::run(&didObserveFirstMeaningfulPaint);
 }

@@ -34,7 +34,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void installBreakpadExceptionHandler()
 {

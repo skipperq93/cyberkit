@@ -39,7 +39,7 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void setValue2(id self, SEL _cmd, int* value)
 {
@@ -51,7 +51,7 @@ static void setValue3(id self, SEL _cmd, int* value)
     *value = 3;
 }
 
-TEST(TestWebKitAPI, InstanceMethodSwizzler)
+TEST(TestCyberKitAPI, InstanceMethodSwizzler)
 {
     RetainPtr<SimpleObject> object = adoptNS([[SimpleObject alloc] init]);
 
@@ -81,4 +81,4 @@ TEST(TestWebKitAPI, InstanceMethodSwizzler)
     EXPECT_EQ(value, 1);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

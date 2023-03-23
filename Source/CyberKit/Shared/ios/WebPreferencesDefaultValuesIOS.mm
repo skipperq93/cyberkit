@@ -33,7 +33,7 @@
 #import <pal/ios/ManagedConfigurationSoftLink.h>
 #import <pal/spi/ios/ManagedConfigurationSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(TEXT_AUTOSIZING)
 
@@ -54,7 +54,7 @@ static std::optional<bool>& cachedAllowsRequest()
 bool allowsDeprecatedSynchronousXMLHttpRequestDuringUnload()
 {
     if (!cachedAllowsRequest())
-        cachedAllowsRequest() = [[PAL::getMCProfileConnectionClass() sharedConnection] effectiveBoolValueForSetting:@"allowDeprecatedWebKitSynchronousXHRLoads"] == MCRestrictedBoolExplicitYes;
+        cachedAllowsRequest() = [[PAL::getMCProfileConnectionClass() sharedConnection] effectiveBoolValueForSetting:@"allowDeprecatedCyberKitSynchronousXHRLoads"] == MCRestrictedBoolExplicitYes;
     return *cachedAllowsRequest();
 }
 
@@ -73,6 +73,6 @@ bool defaultMediaSourceEnabled()
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -59,7 +59,7 @@ struct MessageWithMessagePorts;
 struct ServiceWorkerClientData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 class NetworkResourceLoadParameters;
@@ -161,6 +161,6 @@ private:
     bool m_isThrottleable { true };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -31,7 +31,7 @@
 #include "QualifiedResourceHeap.h"
 #include <CyberCore/ProcessIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteImageBuffer;
 class RemoteRenderingBackend;
@@ -60,6 +60,6 @@ private:
     QualifiedResourceHeap m_resourceHeap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

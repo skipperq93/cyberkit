@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKitFormDataInputStream.h"
+#include "CyberKitFormDataInputStream.h"
 
 #include "BlobData.h"
 #include <wtf/FileSystem.h>
@@ -32,7 +32,7 @@
 
 using namespace CyberCore;
 
-struct _WebKitFormDataInputStreamPrivate {
+struct _CyberKitFormDataInputStreamPrivate {
     RefPtr<FormData> formData;
     GRefPtr<GInputStream> currentStream;
     unsigned nextIndex;
@@ -42,10 +42,10 @@ struct _WebKitFormDataInputStreamPrivate {
 
 static void webkitFormDataInputStreamPollableInterfaceInit(GPollableInputStreamInterface*);
 
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitFormDataInputStream, webkit_form_data_input_stream, G_TYPE_INPUT_STREAM,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitFormDataInputStream, webkit_form_data_input_stream, G_TYPE_INPUT_STREAM,
     G_IMPLEMENT_INTERFACE(G_TYPE_POLLABLE_INPUT_STREAM, webkitFormDataInputStreamPollableInterfaceInit))
 
-static bool webkitFormDataInputStreamCreateNextStream(WebKitFormDataInputStream* stream, GCancellable* cancellable)
+static bool webkitFormDataInputStreamCreateNextStream(CyberKitFormDataInputStream* stream, GCancellable* cancellable)
 {
     auto* priv = stream->priv;
     if (priv->currentStream) {
@@ -121,7 +121,7 @@ static gboolean webkitFormDataInputStreamClose(GInputStream* input, GCancellable
     return TRUE;
 }
 
-static void webkit_form_data_input_stream_class_init(WebKitFormDataInputStreamClass* klass)
+static void webkit_form_data_input_stream_class_init(CyberKitFormDataInputStreamClass* klass)
 {
     auto* inputStreamClass = G_INPUT_STREAM_CLASS(klass);
     inputStreamClass->read_fn = webkitFormDataInputStreamRead;
@@ -146,7 +146,7 @@ GRefPtr<GInputStream> webkitFormDataInputStreamNew(Ref<FormData>&& formData)
     return adoptGRef(G_INPUT_STREAM((stream)));
 }
 
-GBytes* webkitFormDataInputStreamReadAll(WebKitFormDataInputStream* stream)
+GBytes* webkitFormDataInputStreamReadAll(CyberKitFormDataInputStream* stream)
 {
     g_return_val_if_fail(WEBKIT_IS_FORM_DATA_INPUT_STREAM(stream), nullptr);
 

@@ -31,10 +31,10 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Test that there is no crash when BitmapImage::getHBITMAPOfSize() is called
-// for an image with empty frames (BitmapImage::frameAtIndex(i) return null), WebKit Bug 102689.
+// for an image with empty frames (BitmapImage::frameAtIndex(i) return null), CyberKit Bug 102689.
 
 TEST(CyberCore, BitmapImageEmptyFrameTest)
 {
@@ -58,4 +58,4 @@ TEST(CyberCore, BitmapImageEmptyFrameTest)
     bitmapImageTest->getHBITMAPOfSize(bitmap.get(), &sz);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum DataTaskIdentifierType { };
 using DataTaskIdentifier = ObjectIdentifier<DataTaskIdentifierType>;

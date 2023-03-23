@@ -1,4 +1,4 @@
-list(APPEND WebKitTestRunner_SOURCES
+list(APPEND CyberKitTestRunner_SOURCES
     cairo/TestInvocationCairo.cpp
 
     win/EventSenderProxyWin.cpp
@@ -10,25 +10,25 @@ list(APPEND WebKitTestRunner_SOURCES
 
 set(wrapper_DEFINITIONS USE_CONSOLE_ENTRY_POINT)
 
-list(APPEND WebKitTestRunner_INCLUDE_DIRECTORIES
-    ${WebKitTestRunner_DIR}/InjectedBundle/win
+list(APPEND CyberKitTestRunner_INCLUDE_DIRECTORIES
+    ${CyberKitTestRunner_DIR}/InjectedBundle/win
 )
 
-list(APPEND WebKitTestRunner_LIBRARIES
+list(APPEND CyberKitTestRunner_LIBRARIES
     Comsuppw
     Oleacc
 )
 
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${MSVC_RUNTIME_LINKER_FLAGS}")
 
-WEBKIT_WRAP_EXECUTABLE(WebKitTestRunner
+WEBKIT_WRAP_EXECUTABLE(CyberKitTestRunner
     SOURCES ${TOOLS_DIR}/win/DLLLauncher/DLLLauncherMain.cpp
     LIBRARIES shlwapi
 )
-target_compile_definitions(WebKitTestRunner PRIVATE ${wrapper_DEFINITIONS})
+target_compile_definitions(CyberKitTestRunner PRIVATE ${wrapper_DEFINITIONS})
 
 # Add precompiled headers to wrapper library
-target_precompile_headers(WebKitTestRunnerLib PRIVATE WebKitTestRunnerPrefix.h)
+target_precompile_headers(CyberKitTestRunnerLib PRIVATE CyberKitTestRunnerPrefix.h)
 
 list(APPEND TestRunnerInjectedBundle_SOURCES
     InjectedBundle/win/AccessibilityControllerWin.cpp

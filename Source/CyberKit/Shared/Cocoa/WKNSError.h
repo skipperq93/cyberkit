@@ -28,7 +28,7 @@
 #import "APIError.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::Error> {
     using WrapperClass = NSError;

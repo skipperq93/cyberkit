@@ -30,14 +30,14 @@
 
 #import <CyberKit/WKMutableDictionary.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKNSDictionaryEmptyDictionaryCrash)
+TEST(CyberKit, WKNSDictionaryEmptyDictionaryCrash)
 {
     NSDictionary *dictionary = (NSDictionary *)WKMutableDictionaryCreate();
     RELEASE_ASSERT([dictionary objectForKey:@"key"] == nil);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -39,7 +39,7 @@
 OBJC_PROTOCOL(MTLDevice);
 OBJC_PROTOCOL(MTLDeviceSPI);
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr Seconds freeRenderingResourcesTimeout = 1_s;
 static bool didScheduleFreeRenderingResources;

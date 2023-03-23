@@ -39,7 +39,7 @@
 #include "WebPageProxyMessages.h"
 #include <CyberCore/AuthenticationChallenge.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static bool canCoalesceChallenge(const CyberCore::AuthenticationChallenge& challenge)
@@ -147,4 +147,4 @@ void AuthenticationManager::negotiatedLegacyTLS(WebPageProxyIdentifier pageID) c
     m_process.send(Messages::NetworkProcessProxy::NegotiatedLegacyTLS(pageID));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

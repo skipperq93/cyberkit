@@ -98,7 +98,7 @@ static CString topLevelPath()
         return topLevelDirectory;
 
     // If the environment variable wasn't provided then assume we were built into
-    // WebKitBuild/Debug or WebKitBuild/Release. Obviously this will fail if the build
+    // CyberKitBuild/Debug or CyberKitBuild/Release. Obviously this will fail if the build
     // directory is non-standard, but we can't do much more about this.
     GUniquePtr<char> parentPath(g_path_get_dirname(FileSystem::currentExecutablePath().data()));
     GUniquePtr<char> layoutTestsPath(g_build_filename(parentPath.get(), "..", "..", "..", nullptr));
@@ -112,7 +112,7 @@ static CString webkitBuildDirectory()
     if (webkitOutputDir)
         return webkitOutputDir;
 
-    GUniquePtr<char> outputDir(g_build_filename(topLevelPath().data(), "WebKitBuild", nullptr));
+    GUniquePtr<char> outputDir(g_build_filename(topLevelPath().data(), "CyberKitBuild", nullptr));
     return outputDir.get();
 }
 #endif // PLATFORM(GTK)
@@ -121,7 +121,7 @@ static void scanTestDictionariesDirectoryIfNecessary(HashMap<AtomString, Vector<
 {
     // It's unfortunate that we need to look for the dictionaries this way, but
     // libhyphen doesn't have the concept of installed dictionaries. Instead,
-    // we have this special case for WebKit tests.
+    // we have this special case for CyberKit tests.
 #if PLATFORM(GTK)
     // Try alternative dictionaries path for people using Flatpak.
     GUniquePtr<char> dictionariesPath(g_build_filename("/usr", "share", "webkitgtk-test-dicts", nullptr));

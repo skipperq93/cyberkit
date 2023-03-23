@@ -41,14 +41,14 @@
 #include "ScriptExecutionContext.h"
 #include "Settings.h"
 #include "StyleFontSizeFunctions.h"
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 
 namespace CyberCore {
 
 namespace Style {
 
 using namespace CSSPropertyParserHelpers;
-using namespace WebKitFontFamilyNames;
+using namespace CyberKitFontFamilyNames;
 
 static bool useFixedDefaultSize(const FontCascadeDescription& fontDescription)
 {

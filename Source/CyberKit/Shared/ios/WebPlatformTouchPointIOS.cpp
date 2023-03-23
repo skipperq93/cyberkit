@@ -30,7 +30,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebPlatformTouchPoint::encode(IPC::Encoder& encoder) const
@@ -77,6 +77,6 @@ std::optional<WebPlatformTouchPoint> WebPlatformTouchPoint::decode(IPC::Decoder&
     return WTFMove(result);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(TOUCH_EVENTS)

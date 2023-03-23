@@ -37,7 +37,7 @@
 #include <dispatch/dispatch.h>
 #include <wtf/BlockPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -196,6 +196,6 @@ void NetworkRTCTCPSocketCocoa::sendTo(const uint8_t* data, size_t size, const rt
     }).get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC) && PLATFORM(COCOA)

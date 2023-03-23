@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 
@@ -63,7 +63,7 @@ static WKRetainPtr<WKSessionStateRef> createSessionState(WKContextRef context)
     return adoptWK(static_cast<WKSessionStateRef>(WKPageCopySessionState(webView.page(), reinterpret_cast<void*>(1), nullptr)));
 }
 
-TEST(WebKit, WKPageGetScaleFactorNotZero)
+TEST(CyberKit, WKPageGetScaleFactorNotZero)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -79,6 +79,6 @@ TEST(WebKit, WKPageGetScaleFactorNotZero)
     EXPECT_TRUE(WKPageGetScaleFactor(webView.page()) == 1.0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

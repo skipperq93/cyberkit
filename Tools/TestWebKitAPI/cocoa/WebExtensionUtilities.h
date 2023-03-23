@@ -59,7 +59,7 @@ OBJC_CLASS TestWebExtensionManager;
 
 #endif // __OBJC__
 
-namespace TestWebKitAPI::Util {
+namespace TestCyberKitAPI::Util {
 
 #ifdef __OBJC__
 
@@ -72,4 +72,4 @@ RetainPtr<TestWebExtensionManager> loadAndRunExtension(NSDictionary *manifest, N
 RetainPtr<TestWebExtensionManager> loadAndRunExtension(NSDictionary *resources);
 RetainPtr<TestWebExtensionManager> loadAndRunExtension(NSURL *baseURL);
 
-} // namespace TestWebKitAPI::Util
+} // namespace TestCyberKitAPI::Util

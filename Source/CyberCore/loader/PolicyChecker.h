@@ -101,7 +101,7 @@ private:
     bool m_delegateIsHandlingUnimplementablePolicy;
 
     // This identifies the type of navigation action which prompted this load. Note 
-    // that WebKit conveys this value as the WebActionNavigationTypeKey value
+    // that CyberKit conveys this value as the WebActionNavigationTypeKey value
     // on navigation action delegate callbacks.
     FrameLoadType m_loadType;
 

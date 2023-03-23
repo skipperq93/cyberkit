@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 #import "PlatformUtilities.h"
 #import "Utilities.h"
@@ -34,7 +34,7 @@
 #import <CyberKit/_WKInputDelegate.h>
 #import <wtf/RetainPtr.h>
 
-using namespace TestWebKitAPI;
+using namespace TestCyberKitAPI;
 
 static bool testFinished;
 
@@ -122,7 +122,7 @@ static void expectException(void (^completionHandler)())
 
 @end
 
-TEST(WebKit, DuplicateCompletionHandlerCalls)
+TEST(CyberKit, DuplicateCompletionHandlerCalls)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto preferences = (__bridge WKPreferencesRef)[[webView configuration] preferences];
@@ -132,7 +132,7 @@ TEST(WebKit, DuplicateCompletionHandlerCalls)
     [webView setNavigationDelegate:delegate.get()];
     [webView setUIDelegate:delegate.get()];
     [webView _setInputDelegate:delegate.get()];
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"duplicate-completion-handler-calls" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"duplicate-completion-handler-calls" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&testFinished);
 }

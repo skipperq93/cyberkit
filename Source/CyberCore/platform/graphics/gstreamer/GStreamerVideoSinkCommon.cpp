@@ -33,7 +33,7 @@ void webKitVideoSinkSetMediaPlayerPrivate(GstElement* appSink, MediaPlayerPrivat
 {
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_gst_video_sink_common_debug, "webkitvideosinkcommon", 0, "WebKit Video Sink Common utilities");
+        GST_DEBUG_CATEGORY_INIT(webkit_gst_video_sink_common_debug, "webkitvideosinkcommon", 0, "CyberKit Video Sink Common utilities");
     });
 
     g_signal_connect(appSink, "new-sample", G_CALLBACK(+[](GstElement* sink, MediaPlayerPrivateGStreamer* player) -> GstFlowReturn {
@@ -93,7 +93,7 @@ void webKitVideoSinkSetMediaPlayerPrivate(GstElement* appSink, MediaPlayerPrivat
         // user, and has been having this issue for a long time. This is definitely a bug, and needs
         // to be fixed eventually.
         //
-        // For more info: https://github.com/WebKit/WebKit/pull/3802#issuecomment-1234529142
+        // For more info: https://github.com/CyberKit/CyberKit/pull/3802#issuecomment-1234529142
         if (info->type & GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM && GST_QUERY_TYPE(GST_PAD_PROBE_INFO_QUERY(info)) == GST_QUERY_DRAIN) {
             GST_DEBUG_OBJECT(pad, "Flushing current buffer in response to %" GST_PTR_FORMAT, info->data);
             player->flushCurrentBuffer();

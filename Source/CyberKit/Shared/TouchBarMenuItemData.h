@@ -40,7 +40,7 @@ namespace CyberCore {
 class HTMLMenuItemElement;
 }
 
-namespace WebKit {
+namespace CyberKit {
     
 // Based on NSTouchBarItem types.
 enum class ItemType : uint8_t {
@@ -91,6 +91,6 @@ inline bool operator!=(const TouchBarMenuItemData& lhs, const TouchBarMenuItemDa
     return !(lhs == rhs);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(TOUCH_BAR)

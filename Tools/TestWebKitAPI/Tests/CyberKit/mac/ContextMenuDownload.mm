@@ -36,7 +36,7 @@
 #import <CyberKit/WKRetainPtr.h>
 #import <CyberKit/_WKDownload.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 static bool didDecideDownloadDestination;
@@ -74,7 +74,7 @@ static WKStringRef decideDestinationWithSuggestedFilename(WKDownloadRef download
     EXPECT_EQ(expectedOriginatingPage, WKDownloadGetOriginatingPage(download));
     EXPECT_TRUE(WKDownloadGetWasUserInitiated(download)); // Download was started via context menu so it is user initiated.
 
-    return Util::toWK("/tmp/WebKitAPITest/ContextMenuDownload").leakRef();
+    return Util::toWK("/tmp/CyberKitAPITest/ContextMenuDownload").leakRef();
 }
 
 static void contextMenuDidCreateDownload(WKPageRef page, WKDownloadRef download, const void* clientInfo)
@@ -88,7 +88,7 @@ static void contextMenuDidCreateDownload(WKPageRef page, WKDownloadRef download,
 
 // Checks that the HTML download attribute is used as suggested filename when selecting
 // the "Download Linked File" item in the context menu.
-TEST(WebKit, ContextMenuDownloadHTMLDownloadAttribute)
+TEST(CyberKit, ContextMenuDownloadHTMLDownloadAttribute)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextWithInjectedBundle());
 
@@ -127,7 +127,7 @@ static WKStringRef decideDestinationWithSuggestedFilenameContainingSlashes(WKDow
     WKDownloadCancel(download, nullptr, nullptr);
     didDecideDownloadDestination = true;
 
-    return Util::toWK("/tmp/WebKitAPITest/ContextMenuDownload").leakRef();
+    return Util::toWK("/tmp/CyberKitAPITest/ContextMenuDownload").leakRef();
 }
 
 static void contextMenuDidCreateDownloadWithSuggestedFilenameContainingSlashes(WKPageRef page, WKDownloadRef download, const void* clientInfo)
@@ -139,7 +139,7 @@ static void contextMenuDidCreateDownloadWithSuggestedFilenameContainingSlashes(W
     WKDownloadSetClient(download, &client.base);
 }
 
-TEST(WebKit, ContextMenuDownloadHTMLDownloadAttributeWithSlashes)
+TEST(CyberKit, ContextMenuDownloadHTMLDownloadAttributeWithSlashes)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextWithInjectedBundle());
 

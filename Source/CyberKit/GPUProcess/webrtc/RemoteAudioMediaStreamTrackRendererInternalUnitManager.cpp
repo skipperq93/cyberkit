@@ -45,7 +45,7 @@
 #include <CyberCore/WebAudioBufferList.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioMediaStreamTrackRendererInternalUnitManager::Unit
     : public CanMakeWeakPtr<RemoteAudioMediaStreamTrackRendererInternalUnitManager::Unit>
@@ -289,6 +289,6 @@ void RemoteAudioMediaStreamTrackRendererInternalUnitManager::Unit::endAudioSessi
     m_localUnit->start();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)

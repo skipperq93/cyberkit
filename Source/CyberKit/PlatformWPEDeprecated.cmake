@@ -1,20 +1,20 @@
 file(MAKE_DIRECTORY ${FORWARDING_HEADERS_WPE_DOM_DIR})
 
-list(APPEND WebKit_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberKit_UNIFIED_SOURCE_LIST_FILES
     "SourcesWPEDeprecated.txt"
 )
 
 list(APPEND WPE_API_HEADER_TEMPLATES
-    ${WEBKIT_DIR}/UIProcess/API/glib/WebKitFaviconDatabase.h.in
-    ${WEBKIT_DIR}/UIProcess/API/glib/WebKitMimeInfo.h.in
-    ${WEBKIT_DIR}/UIProcess/API/glib/WebKitPlugin.h.in
+    ${WEBKIT_DIR}/UIProcess/API/glib/CyberKitFaviconDatabase.h.in
+    ${WEBKIT_DIR}/UIProcess/API/glib/CyberKitMimeInfo.h.in
+    ${WEBKIT_DIR}/UIProcess/API/glib/CyberKitPlugin.h.in
 )
 
 list(APPEND WPE_WEB_EXTENSION_API_HEADER_TEMPLATES
-    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/glib/WebKitConsoleMessage.h.in
+    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/glib/CyberKitConsoleMessage.h.in
 )
 
-list(APPEND WebKit_INCLUDE_DIRECTORIES
+list(APPEND CyberKit_INCLUDE_DIRECTORIES
     "${FORWARDING_HEADERS_WPE_DOM_DIR}"
     "${WEBKIT_DIR}/WebProcess/InjectedBundle/API/glib/DOM"
     "${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM"
@@ -22,15 +22,15 @@ list(APPEND WebKit_INCLUDE_DIRECTORIES
 
 list(APPEND WPE_WEB_EXTENSION_API_INSTALLED_HEADERS
     ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/webkitdom.h
-    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/WebKitDOMDefines.h
-    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/WebKitDOMDocument.h
-    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/WebKitDOMElement.h
-    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/WebKitDOMNode.h
-    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/WebKitDOMObject.h
+    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/CyberKitDOMDefines.h
+    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/CyberKitDOMDocument.h
+    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/CyberKitDOMElement.h
+    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/CyberKitDOMNode.h
+    ${WEBKIT_DIR}/WebProcess/InjectedBundle/API/wpe/DOM/CyberKitDOMObject.h
 )
 
 set(WPE_DOM_SOURCES_FOR_INTROSPECTION
-    WebProcess/InjectedBundle/API/glib/DOM/WebKitDOMNode.cpp
+    WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMNode.cpp
 )
 
 list(APPEND WPE_FAKE_API_HEADERS

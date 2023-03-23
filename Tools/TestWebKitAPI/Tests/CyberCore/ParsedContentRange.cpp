@@ -31,7 +31,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberCore, ParsedContentRangeFromString)
 {

@@ -51,7 +51,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, StopLoadingFromDidReceiveResponse)
 {
@@ -61,11 +61,11 @@ TEST(CyberKitLegacy, StopLoadingFromDidReceiveResponse)
         RetainPtr<StopLoadingFromDidReceiveResponse> resourceLoadDelegate = adoptNS([[StopLoadingFromDidReceiveResponse alloc] init]);
         webView.get().resourceLoadDelegate = resourceLoadDelegate.get();
 
-        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StopLoadingFromDidReceiveResponse" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StopLoadingFromDidReceiveResponse" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&didFinishLoad);
     }
     // If we finished without crashing, the test passed.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

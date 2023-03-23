@@ -35,7 +35,7 @@ class WebProcessTest {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     virtual ~WebProcessTest() { }
-    virtual bool runTest(const char* testName, WebKitWebPage*) = 0;
+    virtual bool runTest(const char* testName, CyberKitWebPage*) = 0;
 
     static void assertObjectIsDeletedWhenTestFinishes(GObject*);
 

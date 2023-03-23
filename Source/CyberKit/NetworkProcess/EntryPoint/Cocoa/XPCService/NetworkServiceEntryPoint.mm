@@ -30,7 +30,7 @@
 #import "WKBase.h"
 #import "XPCServiceEntryPoint.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkServiceInitializerDelegate : public XPCServiceInitializerDelegate {
 public:
@@ -46,9 +46,9 @@ void initializeAuxiliaryProcess<NetworkProcess>(AuxiliaryProcessInitializationPa
     static NeverDestroyed<NetworkProcess> networkProcess(WTFMove(parameters));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-using namespace WebKit;
+using namespace CyberKit;
 
 extern "C" WK_EXPORT void NETWORK_SERVICE_INITIALIZER(xpc_connection_t connection, xpc_object_t initializerMessage);
 

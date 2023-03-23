@@ -28,7 +28,7 @@
 #import <wtf/Forward.h>
 #import <wtf/ThreadSafeRefCounted.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class CompletionHandlerCallChecker : public WTF::ThreadSafeRefCounted<CompletionHandlerCallChecker> {
 public:
@@ -49,4 +49,4 @@ private:
     bool m_didCallCompletionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

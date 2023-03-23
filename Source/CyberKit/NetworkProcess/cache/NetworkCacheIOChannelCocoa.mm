@@ -34,7 +34,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 static long dispatchQueueIdentifier(WorkQueue::QOS qos)

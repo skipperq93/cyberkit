@@ -40,7 +40,7 @@
 #include <wtf/linux/CurrentProcessMemoryStatus.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace JSC;
 using namespace CyberCore;
@@ -91,7 +91,7 @@ String WebMemorySampler::processName() const
     return processName;
 }
 
-WebMemoryStatistics WebMemorySampler::sampleWebKit() const
+WebMemoryStatistics WebMemorySampler::sampleCyberKit() const
 {
     WebMemoryStatistics webKitMemoryStats;
 

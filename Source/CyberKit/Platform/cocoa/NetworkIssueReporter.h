@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSURLSessionTaskMetrics;
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkIssueReporter {
     WTF_MAKE_FAST_ALLOCATED;
@@ -51,6 +51,6 @@ private:
     size_t m_stackTraceSize { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NETWORK_ISSUE_REPORTING)

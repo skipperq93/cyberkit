@@ -36,7 +36,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/Function.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 LibWebRTCSocketClient::LibWebRTCSocketClient(CyberCore::LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, std::unique_ptr<rtc::AsyncPacketSocket>&& socket, Type type, Ref<IPC::Connection>&& connection)
     : m_identifier(identifier)
@@ -133,6 +133,6 @@ void LibWebRTCSocketClient::signalClose(rtc::AsyncPacketSocket* socket, int erro
     m_rtcProvider.callOnRTCNetworkThread([socket = m_rtcProvider.takeSocket(m_identifier)] { });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

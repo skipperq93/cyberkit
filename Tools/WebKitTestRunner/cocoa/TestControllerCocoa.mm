@@ -121,7 +121,7 @@ void TestController::cocoaPlatformInitialize(const Options& options)
         [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:options.webCoreLogChannels.c_str()] forKey:@"CyberCoreLogging"];
 
     if (options.webKitLogChannels.length())
-        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:options.webKitLogChannels.c_str()] forKey:@"WebKit2Logging"];
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:options.webKitLogChannels.c_str()] forKey:@"CyberKit2Logging"];
 }
 
 WKContextRef TestController::platformContext()

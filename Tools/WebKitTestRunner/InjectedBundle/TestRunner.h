@@ -57,7 +57,7 @@ public:
 #endif
     }
 
-    bool isWebKit2() const { return true; }
+    bool isCyberKit2() const { return true; }
 
     // The basics.
     WKURLRef testURL() const { return m_testURL.get(); }

@@ -57,7 +57,7 @@ ALLOW_COMMA_END
 #include "NetworkSessionCocoa.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #define RTC_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - NetworkRTCProvider::" fmt, this, ##__VA_ARGS__)
@@ -102,7 +102,7 @@ NetworkRTCProvider::NetworkRTCProvider(NetworkConnectionToWebProcess& connection
         m_applicationBundleIdentifier = session->sourceApplicationBundleIdentifier().utf8();
 #endif
 #if !RELEASE_LOG_DISABLED
-    rtc::LogMessage::SetLogOutput(WebKit2LogWebRTC.state == WTFLogChannelState::On ? rtc::LS_INFO : rtc::LS_WARNING, doReleaseLogging);
+    rtc::LogMessage::SetLogOutput(CyberKit2LogWebRTC.state == WTFLogChannelState::On ? rtc::LS_INFO : rtc::LS_WARNING, doReleaseLogging);
 #endif
 }
 
@@ -388,6 +388,6 @@ void NetworkRTCProvider::signalSocketIsClosed(LibWebRTCSocketIdentifier identifi
 #undef RTC_RELEASE_LOG
 #undef RTC_RELEASE_LOG_ERROR
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

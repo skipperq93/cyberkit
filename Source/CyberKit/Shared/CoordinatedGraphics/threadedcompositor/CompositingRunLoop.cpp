@@ -37,7 +37,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 CompositingRunLoop::CompositingRunLoop(Function<void ()>&& updateFunction)
     : m_runLoop(RunLoop::create("org.webkit.ThreadedCompositor"_s, ThreadType::Graphics))
@@ -46,7 +46,7 @@ CompositingRunLoop::CompositingRunLoop(Function<void ()>&& updateFunction)
 {
 #if USE(GLIB_EVENT_LOOP)
     m_updateTimer.setPriority(RunLoopSourcePriority::CompositingThreadUpdateTimer);
-    m_updateTimer.setName("[WebKit] CompositingRunLoop");
+    m_updateTimer.setName("[CyberKit] CompositingRunLoop");
 #endif
 }
 
@@ -179,6 +179,6 @@ void CompositingRunLoop::updateTimerFired()
     m_updateFunction();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

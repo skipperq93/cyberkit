@@ -40,7 +40,7 @@
 #include <CyberCore/ScriptExecutionContextIdentifier.h>
 #include <wtf/MemoryPressureHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #define CONTEXT_CONNECTION_RELEASE_LOG(fmt, ...) RELEASE_LOG(SharedWorker, "%p - [webProcessIdentifier=%" PRIu64 "] WebSharedWorkerServerToContextConnection::" fmt, this, webProcessIdentifier().toUInt64(), ##__VA_ARGS__)
 
@@ -199,4 +199,4 @@ void WebSharedWorkerServerToContextConnection::idleTerminationTimerFired()
 
 #undef CONTEXT_CONNECTION_RELEASE_LOG
 
-} // namespace WebKit
+} // namespace CyberKit

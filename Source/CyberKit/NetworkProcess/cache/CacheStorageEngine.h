@@ -45,7 +45,7 @@ namespace CyberCore {
 struct RetrieveRecordsOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 class NetworkSession;
@@ -158,4 +158,4 @@ private:
 
 } // namespace CacheStorage
 
-} // namespace WebKit
+} // namespace CyberKit

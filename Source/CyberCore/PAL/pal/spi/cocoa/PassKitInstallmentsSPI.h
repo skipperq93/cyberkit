@@ -107,7 +107,7 @@ typedef NS_ENUM(NSUInteger, PKPaymentRequestType) {
 @property (nonatomic, copy) NSString *installmentGroupIdentifier;
 @end
 
-// FIXME: The SPIs above can be declared by WebKit without causing redeclaration errors on Catalina
+// FIXME: The SPIs above can be declared by CyberKit without causing redeclaration errors on Catalina
 // internal SDKs because we can avoid including the SPIs' private headers from PassKit, but we can't
 // avoid importing PKPaymentSetupFeature.h due to how many other private headers include it. To avoid
 // redeclaration errors while continuing to support all Catalina SDKs, declare -supportedOptions

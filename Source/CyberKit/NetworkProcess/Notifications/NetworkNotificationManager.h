@@ -41,7 +41,7 @@ class NotificationResources;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace WebPushD {
 enum class MessageType : uint8_t;
@@ -86,6 +86,6 @@ private:
     void sendMessageWithReply(CompletionHandler<void(ReplyArgs...)>&&, Args&&...) const;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(BUILT_IN_NOTIFICATIONS)

@@ -31,7 +31,7 @@
 #include "WCContentBuffer.h"
 #include <wtf/HashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCContentBufferManager::ProcessInfo {
     WTF_MAKE_FAST_ALLOCATED;
@@ -104,6 +104,6 @@ void WCContentBufferManager::removeAllContentBuffersForProcess(CyberCore::Proces
     m_processMap.remove(processIdentifier);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

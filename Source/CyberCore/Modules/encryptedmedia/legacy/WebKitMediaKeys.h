@@ -38,14 +38,14 @@ namespace WebCore {
 class Document;
 class WeakPtrImplWithEventTargetData;
 class HTMLMediaElement;
-class WebKitMediaKeySession;
+class CyberKitMediaKeySession;
 
-class WebKitMediaKeys final : public RefCounted<WebKitMediaKeys>, private LegacyCDMClient {
+class CyberKitMediaKeys final : public RefCounted<CyberKitMediaKeys>, private LegacyCDMClient {
 public:
-    static ExceptionOr<Ref<WebKitMediaKeys>> create(const String& keySystem);
-    virtual ~WebKitMediaKeys();
+    static ExceptionOr<Ref<CyberKitMediaKeys>> create(const String& keySystem);
+    virtual ~CyberKitMediaKeys();
 
-    ExceptionOr<Ref<WebKitMediaKeySession>> createSession(Document&, const String& mimeType, Ref<Uint8Array>&& initData);
+    ExceptionOr<Ref<CyberKitMediaKeySession>> createSession(Document&, const String& mimeType, Ref<Uint8Array>&& initData);
     static bool isTypeSupported(const String& keySystem, const String& mimeType);
     const String& keySystem() const { return m_keySystem; }
 
@@ -59,9 +59,9 @@ public:
 private:
     RefPtr<MediaPlayer> cdmMediaPlayer(const LegacyCDM*) const final;
 
-    WebKitMediaKeys(const String& keySystem, std::unique_ptr<LegacyCDM>&&);
+    CyberKitMediaKeys(const String& keySystem, std::unique_ptr<LegacyCDM>&&);
 
-    Vector<Ref<WebKitMediaKeySession>> m_sessions;
+    Vector<Ref<CyberKitMediaKeySession>> m_sessions;
     WeakPtr<HTMLMediaElement, WeakPtrImplWithEventTargetData> m_mediaElement;
     String m_keySystem;
     std::unique_ptr<LegacyCDM> m_cdm;

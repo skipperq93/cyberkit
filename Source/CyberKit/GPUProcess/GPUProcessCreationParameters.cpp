@@ -35,7 +35,7 @@
 #include "ArgumentCodersCF.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 GPUProcessCreationParameters::GPUProcessCreationParameters() = default;
 
@@ -125,6 +125,6 @@ bool GPUProcessCreationParameters::decode(IPC::Decoder& decoder, GPUProcessCreat
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

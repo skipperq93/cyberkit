@@ -294,4 +294,4 @@ std::optional<SVGPathSource::ArcToSegment> SVGPathStringSource::parseArcToSegmen
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

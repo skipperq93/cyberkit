@@ -33,7 +33,7 @@
 #include <CyberCore/LengthBox.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void VisibleContentRectUpdateInfo::encode(IPC::Encoder& encoder) const
@@ -139,6 +139,6 @@ TextStream& operator<<(TextStream& ts, const VisibleContentRectUpdateInfo& info)
     return ts;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

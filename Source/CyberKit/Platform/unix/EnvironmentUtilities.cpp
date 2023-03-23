@@ -30,7 +30,7 @@
 #include <cstdlib>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace EnvironmentUtilities {
 
@@ -71,4 +71,4 @@ void removeValuesEndingWith(const char* environmentVariable, const char* searchV
 
 } // namespace EnvironmentUtilities
 
-} // namespace WebKit
+} // namespace CyberKit

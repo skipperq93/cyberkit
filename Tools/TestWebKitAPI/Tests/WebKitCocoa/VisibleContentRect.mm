@@ -49,9 +49,9 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, VisibleContentRect_FullBounds)
+TEST(CyberKit, VisibleContentRect_FullBounds)
 {
     auto config = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[TestWKWebViewWithEnclosingView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:config.get()]);
@@ -59,7 +59,7 @@ TEST(WebKit, VisibleContentRect_FullBounds)
     EXPECT_TRUE(CGRectEqualToRect([webView _visibleContentRect], CGRectMake(0, 0, 800, 600)));
 }
 
-TEST(WebKit, VisibleContentRect_FullBoundsWithinScrollView)
+TEST(CyberKit, VisibleContentRect_FullBoundsWithinScrollView)
 {
     auto config = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[TestWKWebViewWithEnclosingView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:config.get()]);
@@ -71,7 +71,7 @@ TEST(WebKit, VisibleContentRect_FullBoundsWithinScrollView)
     EXPECT_TRUE(CGRectEqualToRect([webView _visibleContentRect], CGRectMake(0, 0, 800, 600)));
 }
 
-TEST(WebKit, VisibleContentRect_FullBoundsWhenClippedByNonScrollView)
+TEST(CyberKit, VisibleContentRect_FullBoundsWhenClippedByNonScrollView)
 {
     auto config = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[TestWKWebViewWithEnclosingView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:config.get()]);
@@ -85,7 +85,7 @@ TEST(WebKit, VisibleContentRect_FullBoundsWhenClippedByNonScrollView)
     EXPECT_TRUE(CGRectEqualToRect([webView _visibleContentRect], CGRectMake(0, 0, 1000, 800)));
 }
 
-TEST(WebKit, VisibleContentRect_ClippedBoundsWhenClippedByScrollView)
+TEST(CyberKit, VisibleContentRect_ClippedBoundsWhenClippedByScrollView)
 {
     CGRect windowBounds = CGRectMake(0, 0, 800, 600);
     auto config = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -102,7 +102,7 @@ TEST(WebKit, VisibleContentRect_ClippedBoundsWhenClippedByScrollView)
     EXPECT_TRUE(CGRectEqualToRect([webView _visibleContentRect], CGRectMake(150, 150, 800, 600)));
 }
 
-TEST(WebKit, VisibleContentRect_ClippedBoundsWhenClippedByEnclosingView)
+TEST(CyberKit, VisibleContentRect_ClippedBoundsWhenClippedByEnclosingView)
 {
     auto config = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[TestWKWebViewWithEnclosingView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:config.get()]);
@@ -117,7 +117,7 @@ TEST(WebKit, VisibleContentRect_ClippedBoundsWhenClippedByEnclosingView)
     EXPECT_TRUE(CGRectEqualToRect([webView _visibleContentRect], CGRectMake(100, 100, 800, 600)));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)
 

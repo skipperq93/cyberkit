@@ -120,7 +120,7 @@
 #include <CyberCore/CurlContext.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static void callExitSoon(IPC::Connection*)
@@ -129,7 +129,7 @@ static void callExitSoon(IPC::Connection*)
     // the process will exit forcibly.
     auto watchdogDelay = 10_s;
 
-    WorkQueue::create("com.apple.WebKit.NetworkProcess.WatchDogQueue")->dispatchAfter(watchdogDelay, [] {
+    WorkQueue::create("com.apple.CyberKit.NetworkProcess.WatchDogQueue")->dispatchAfter(watchdogDelay, [] {
         // We use _exit here since the watchdog callback is called from another thread and we don't want
         // global destructors or atexit handlers to be called from this thread while the main thread is busy
         // doing its thing.
@@ -527,7 +527,7 @@ std::unique_ptr<CyberCore::NetworkStorageSession> NetworkProcess::newTestingSess
 {
 #if PLATFORM(COCOA)
     // Session name should be short enough for shared memory region name to be under the limit, otherwise sandbox rules won't work (see <rdar://problem/13642852>).
-    auto session = CyberCore::createPrivateStorageSession(makeString("WebKit Test-", getCurrentProcessID()).createCFString().get(), std::nullopt, NetworkStorageSession::ShouldDisableCFURLCache::Yes);
+    auto session = CyberCore::createPrivateStorageSession(makeString("CyberKit Test-", getCurrentProcessID()).createCFString().get(), std::nullopt, NetworkStorageSession::ShouldDisableCFURLCache::Yes);
     RetainPtr<CFHTTPCookieStorageRef> cookieStorage;
     if (CyberCore::NetworkStorageSession::processMayUseCookieAPI()) {
         ASSERT(hasProcessPrivilege(ProcessPrivilege::CanAccessRawCookies));
@@ -1383,7 +1383,7 @@ bool NetworkProcess::privateClickMeasurementEnabled() const
 void NetworkProcess::notifyMediaStreamingActivity(bool activity)
 {
 #if PLATFORM(COCOA)
-    static const char* notifyMediaStreamingName = "com.apple.WebKit.mediaStreamingActivity";
+    static const char* notifyMediaStreamingName = "com.apple.CyberKit.mediaStreamingActivity";
 
     if (m_mediaStreamingActivitityToken == NOTIFY_TOKEN_INVALID) {
         auto status = notify_register_check(notifyMediaStreamingName, &m_mediaStreamingActivitityToken);
@@ -2061,7 +2061,7 @@ void NetworkProcess::downloadRequest(PAL::SessionID sessionID, DownloadID downlo
     downloadManager().startDownload(sessionID, downloadID, request, isNavigatingToAppBoundDomain, suggestedFilename);
 }
 
-void NetworkProcess::resumeDownload(PAL::SessionID sessionID, DownloadID downloadID, const IPC::DataReference& resumeData, const String& path, WebKit::SandboxExtension::Handle&& sandboxExtensionHandle, CallDownloadDidStart callDownloadDidStart)
+void NetworkProcess::resumeDownload(PAL::SessionID sessionID, DownloadID downloadID, const IPC::DataReference& resumeData, const String& path, CyberKit::SandboxExtension::Handle&& sandboxExtensionHandle, CallDownloadDidStart callDownloadDidStart)
 {
     downloadManager().resumeDownload(sessionID, downloadID, resumeData, path, WTFMove(sandboxExtensionHandle), callDownloadDidStart);
 }
@@ -2867,4 +2867,4 @@ void NetworkProcess::requestBackgroundFetchPermission(PAL::SessionID sessionID, 
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

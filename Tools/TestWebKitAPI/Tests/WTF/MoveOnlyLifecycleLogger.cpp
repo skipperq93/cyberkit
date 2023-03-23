@@ -26,7 +26,7 @@
 #include "config.h"
 #include "MoveOnlyLifecycleLogger.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 MoveOnlyLifecycleLogger::MoveOnlyLifecycleLogger()
 {

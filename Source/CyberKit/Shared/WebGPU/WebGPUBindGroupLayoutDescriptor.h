@@ -32,12 +32,12 @@
 #include <optional>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BindGroupLayoutDescriptor : public ObjectDescriptorBase {
     Vector<BindGroupLayoutEntry> entries;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

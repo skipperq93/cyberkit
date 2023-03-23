@@ -37,9 +37,9 @@ using CocoaImage = UIImage;
 
 OBJC_CLASS NSData;
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<NSData> transcode(CGImageRef, CFStringRef typeIdentifier);
 std::pair<RetainPtr<NSData>, RetainPtr<CFStringRef>> transcodeWithPreferredMIMEType(CGImageRef, CFStringRef preferredMIMEType);
 
-} // namespace WebKit
+} // namespace CyberKit

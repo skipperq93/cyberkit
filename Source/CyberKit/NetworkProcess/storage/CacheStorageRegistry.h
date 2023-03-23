@@ -28,7 +28,7 @@
 #include <CyberCore/DOMCacheIdentifier.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class CacheStorageCache;
 

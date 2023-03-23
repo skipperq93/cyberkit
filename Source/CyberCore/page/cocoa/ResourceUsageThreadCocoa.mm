@@ -159,13 +159,13 @@ void ResourceUsageThread::platformCollectCPUData(JSC::VM*, ResourceUsageData& da
     mach_port_t resourceUsageMachThread = mach_thread_self();
     mach_port_t mainThreadMachThread = threads[0].sendRight.sendRight();
 
-    HashSet<mach_port_t> knownWebKitThreads;
+    HashSet<mach_port_t> knownCyberKitThreads;
     {
         Locker locker { Thread::allThreadsLock() };
         for (auto* thread : Thread::allThreads()) {
             mach_port_t machThread = thread->machThread();
             if (MACH_PORT_VALID(machThread))
-                knownWebKitThreads.add(machThread);
+                knownCyberKitThreads.add(machThread);
         }
     }
 
@@ -193,18 +193,18 @@ void ResourceUsageThread::platformCollectCPUData(JSC::VM*, ResourceUsageData& da
         return false;
     };
 
-    auto isWebKitThread = [&](const ThreadInfo& thread) -> bool {
+    auto isCyberKitThread = [&](const ThreadInfo& thread) -> bool {
         mach_port_t machThread = thread.sendRight.sendRight();
-        if (knownWebKitThreads.contains(machThread))
+        if (knownCyberKitThreads.contains(machThread))
             return true;
 
         // The bmalloc scavenger thread is below WTF. Detect it by its name.
         if (thread.threadName == "JavaScriptCore bmalloc scavenger"_s)
             return true;
 
-        // WebKit uses many WorkQueues with common prefixes.
+        // CyberKit uses many WorkQueues with common prefixes.
         if (thread.dispatchQueueName.startsWith("com.apple.IPC."_s)
-            || thread.dispatchQueueName.startsWith("com.apple.WebKit."_s)
+            || thread.dispatchQueueName.startsWith("com.apple.CyberKit."_s)
             || thread.dispatchQueueName.startsWith("org.webkit."_s))
             return true;
 
@@ -226,7 +226,7 @@ void ResourceUsageThread::platformCollectCPUData(JSC::VM*, ResourceUsageData& da
 
         String threadIdentifier = knownWorkerThreads.get(machThread);
         bool isWorkerThread = !threadIdentifier.isEmpty();
-        ThreadCPUInfo::Type type = (isWorkerThread || isWebKitThread(thread)) ? ThreadCPUInfo::Type::WebKit : ThreadCPUInfo::Type::Unknown;
+        ThreadCPUInfo::Type type = (isWorkerThread || isCyberKitThread(thread)) ? ThreadCPUInfo::Type::CyberKit : ThreadCPUInfo::Type::Unknown;
         data.cpuThreads.append(ThreadCPUInfo { thread.threadName, threadIdentifier, thread.usage, type });
     }
 }

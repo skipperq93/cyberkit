@@ -39,7 +39,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct InteractionInformationAtPosition {
     static InteractionInformationAtPosition invalidInformation()
@@ -125,6 +125,6 @@ struct InteractionInformationAtPosition {
     bool isSelectable() const { return selectability == Selectability::Selectable; }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

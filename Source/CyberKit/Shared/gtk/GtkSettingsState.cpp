@@ -28,7 +28,7 @@
 
 #include "ArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void GtkSettingsState::encode(IPC::Encoder& encoder) const
 {
@@ -85,4 +85,4 @@ std::optional<GtkSettingsState> GtkSettingsState::decode(IPC::Decoder& decoder)
     return state;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

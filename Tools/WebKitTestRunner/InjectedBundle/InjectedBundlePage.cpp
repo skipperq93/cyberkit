@@ -376,7 +376,7 @@ void InjectedBundlePage::resetAfterTest()
 {
     WKBundleFrameRef frame = WKBundlePageGetMainFrame(m_page);
 
-    // WebKit currently doesn't reset focus even when navigating to a new page. This may or may not be a bug
+    // CyberKit currently doesn't reset focus even when navigating to a new page. This may or may not be a bug
     // (see <https://bugs.webkit.org/show_bug.cgi?id=138334>), however for tests, we want to start each one with a clean state.
     WKBundleFrameFocus(frame);
 
@@ -440,12 +440,12 @@ static inline void dumpErrorDescriptionSuitableForTestResult(WKErrorRef error, S
     auto errorCode = WKErrorGetErrorCode(error);
 
     // We need to do some error mapping here to match the test expectations (Mac error names are expected).
-    if (errorDomain == "WebKitNetworkError"_s) {
+    if (errorDomain == "CyberKitNetworkError"_s) {
         errorDomain = "NSURLErrorDomain"_s;
         errorCode = -999;
     }
-    if (errorDomain == "WebKitPolicyError"_s)
-        errorDomain = "WebKitErrorDomain"_s;
+    if (errorDomain == "CyberKitPolicyError"_s)
+        errorDomain = "CyberKitErrorDomain"_s;
 
     stringBuilder.append("<NSError domain ", errorDomain, ", code ", errorCode);
     if (auto url = adoptWK(WKErrorCopyFailingURL(error)))

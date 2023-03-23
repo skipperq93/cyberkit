@@ -45,7 +45,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DOMHTMLVideoElementWrapper)
 {
@@ -62,4 +62,4 @@ TEST(CyberKitLegacy, DOMHTMLVideoElementWrapper)
     EXPECT_TRUE([video isKindOfClass:[DOMHTMLVideoElement class]]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

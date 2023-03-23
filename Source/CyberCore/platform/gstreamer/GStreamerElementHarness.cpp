@@ -93,7 +93,7 @@ GStreamerElementHarness::GStreamerElementHarness(GRefPtr<GstElement>&& element, 
 {
     static std::once_flag debugRegisteredFlag;
     std::call_once(debugRegisteredFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_element_harness_debug, "webkitelementharness", 0, "WebKit Element Harness");
+        GST_DEBUG_CATEGORY_INIT(webkit_element_harness_debug, "webkitelementharness", 0, "CyberKit Element Harness");
     });
 
     auto clock = adoptGRef(gst_system_clock_obtain());

@@ -36,7 +36,7 @@
 #include "CyberCoreArgumentCoders.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void NetworkSessionCreationParameters::encode(IPC::Encoder& encoder) const
 {
@@ -511,4 +511,4 @@ std::optional<NetworkSessionCreationParameters> NetworkSessionCreationParameters
     }};
 }
 
-} // namespace WebKit
+} // namespace CyberKit

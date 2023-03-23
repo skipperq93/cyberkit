@@ -460,7 +460,7 @@ private:
 
     void didReceiveLiveDocumentsList(WKArrayRef);
     void dumpResponse(const String&);
-    void findAndDumpWebKitProcessIdentifiers();
+    void findAndDumpCyberKitProcessIdentifiers();
     void findAndDumpWorldLeaks();
 
     void decidePolicyForGeolocationPermissionRequestIfPossible();

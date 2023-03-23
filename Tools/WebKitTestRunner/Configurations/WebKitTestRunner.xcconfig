@@ -27,10 +27,10 @@
 
 LD_RUNPATH_SEARCH_PATHS = "@loader_path";
 
-PRODUCT_NAME = WebKitTestRunner;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.WebKitTestRunner;
+PRODUCT_NAME = CyberKitTestRunner;
+PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.CyberKitTestRunner;
 GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -lWebKitTestRunner -framework Carbon -framework Cocoa -framework CyberScriptCore -framework CyberKit;
+OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -lCyberKitTestRunner -framework Carbon -framework Cocoa -framework CyberScriptCore -framework CyberKit;
 STRIP_STYLE = debugging;
 SKIP_INSTALL[sdk=embedded*] = YES;
 
@@ -40,8 +40,8 @@ EXCLUDED_SOURCE_FILE_NAMES_cocoatouch = mac/*;
 INCLUDED_SOURCE_FILE_NAMES = mac/main.mm;
 
 MAC_CODE_SIGN_ENTITLEMENTS = $(MAC_CODE_SIGN_ENTITLEMENTS_$(USE_INTERNAL_SDK));
-MAC_CODE_SIGN_ENTITLEMENTS_ = Configurations/WebKitTestRunner.entitlements;
-MAC_CODE_SIGN_ENTITLEMENTS_YES = Configurations/WebKitTestRunner-internal.entitlements;
+MAC_CODE_SIGN_ENTITLEMENTS_ = Configurations/CyberKitTestRunner.entitlements;
+MAC_CODE_SIGN_ENTITLEMENTS_YES = Configurations/CyberKitTestRunner-internal.entitlements;
 
 CODE_SIGN_ENTITLEMENTS[sdk=macosx*] = $(MAC_CODE_SIGN_ENTITLEMENTS);
 

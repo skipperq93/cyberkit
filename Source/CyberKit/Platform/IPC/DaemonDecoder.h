@@ -27,7 +27,7 @@
 
 #include "DaemonCoders.h"
 
-namespace WebKit::Daemon {
+namespace CyberKit::Daemon {
 
 class Decoder {
 public:
@@ -69,4 +69,4 @@ private:
     size_t m_bufferPosition { 0 };
 };
 
-} // namespace WebKit::Daemon
+} // namespace CyberKit::Daemon

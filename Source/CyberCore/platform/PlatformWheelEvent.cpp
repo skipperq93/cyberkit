@@ -39,7 +39,7 @@ namespace CyberCore {
 
 PlatformWheelEvent PlatformWheelEvent::createFromGesture(const PlatformGestureEvent& platformGestureEvent, double deltaY)
 {
-    // This tries to match as much of the behavior of `WebKit::WebEventFactory::createWebWheelEvent` as
+    // This tries to match as much of the behavior of `CyberKit::WebEventFactory::createWebWheelEvent` as
     // possible assuming `-[NSEvent hasPreciseScrollingDeltas]` and no `-[NSEvent _scrollCount]`.
 
     double deltaX = 0;

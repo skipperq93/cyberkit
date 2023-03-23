@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSEvent;
 
-namespace WebKit {
+namespace CyberKit {
 
 class NativeWebGestureEvent final : public WebGestureEvent {
 public:
@@ -43,6 +43,6 @@ private:
     RetainPtr<NSEvent> m_nativeEvent;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MAC_GESTURE_EVENTS)

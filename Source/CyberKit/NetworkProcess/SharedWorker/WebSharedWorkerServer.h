@@ -46,7 +46,7 @@ struct WorkerInitializationData;
 struct WorkerOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkSession;
 class WebSharedWorker;
@@ -89,4 +89,4 @@ private:
     HashMap<CyberCore::SharedWorkerKey, std::unique_ptr<WebSharedWorker>> m_sharedWorkers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

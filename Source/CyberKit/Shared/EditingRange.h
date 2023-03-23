@@ -34,7 +34,7 @@ class Frame;
 struct SimpleRange;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class EditingRangeIsRelativeTo : uint8_t {
     EditableRoot,
@@ -88,14 +88,14 @@ struct EditingRange {
 }
 
 namespace IPC {
-template<> struct ArgumentCoder<WebKit::EditingRange> {
-    static void encode(Encoder&, const WebKit::EditingRange&);
-    static std::optional<WebKit::EditingRange> decode(Decoder&);
+template<> struct ArgumentCoder<CyberKit::EditingRange> {
+    static void encode(Encoder&, const CyberKit::EditingRange&);
+    static std::optional<CyberKit::EditingRange> decode(Decoder&);
 };
 }
 
 namespace WTF {
-template<> struct EnumTraits<WebKit::EditingRangeIsRelativeTo> {
-    using values = EnumValues<WebKit::EditingRangeIsRelativeTo, WebKit::EditingRangeIsRelativeTo::EditableRoot, WebKit::EditingRangeIsRelativeTo::Paragraph>;
+template<> struct EnumTraits<CyberKit::EditingRangeIsRelativeTo> {
+    using values = EnumValues<CyberKit::EditingRangeIsRelativeTo, CyberKit::EditingRangeIsRelativeTo::EditableRoot, CyberKit::EditingRangeIsRelativeTo::Paragraph>;
 };
 }

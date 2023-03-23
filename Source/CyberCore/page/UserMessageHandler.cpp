@@ -46,7 +46,7 @@ UserMessageHandler::~UserMessageHandler() = default;
 ExceptionOr<void> UserMessageHandler::postMessage(RefPtr<SerializedScriptValue>&& value, Ref<DeferredPromise>&& promise)
 {
     // Check to see if the descriptor has been removed. This can happen if the host application has
-    // removed the named message handler at the WebKit2 API level.
+    // removed the named message handler at the CyberKit2 API level.
     if (!m_descriptor) {
         promise->reject(Exception { InvalidAccessError });
         return Exception { InvalidAccessError };

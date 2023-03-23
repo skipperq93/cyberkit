@@ -31,11 +31,11 @@
 
 WKMutableDictionaryRef WKMutableDictionaryCreate()
 {
-    return const_cast<WKMutableDictionaryRef>(WebKit::toAPI(&API::Dictionary::create().leakRef()));
+    return const_cast<WKMutableDictionaryRef>(CyberKit::toAPI(&API::Dictionary::create().leakRef()));
 }
 
 bool WKDictionarySetItem(WKMutableDictionaryRef dictionaryRef, WKStringRef keyRef, WKTypeRef itemRef)
 {
-    return WebKit::toImpl(dictionaryRef)->set(WebKit::toImpl(keyRef)->string(), WebKit::toImpl(itemRef));
+    return CyberKit::toImpl(dictionaryRef)->set(CyberKit::toImpl(keyRef)->string(), CyberKit::toImpl(itemRef));
 }
 

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8DD76F960486AA7600D96B5E"
-               BuildableName = "WebKitTestRunner"
-               BlueprintName = "WebKitTestRunner"
-               ReferencedContainer = "container:WebKitTestRunner.xcodeproj">
+               BuildableName = "CyberKitTestRunner"
+               BlueprintName = "CyberKitTestRunner"
+               ReferencedContainer = "container:CyberKitTestRunner.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DD76F960486AA7600D96B5E"
-            BuildableName = "WebKitTestRunner"
-            BlueprintName = "WebKitTestRunner"
-            ReferencedContainer = "container:WebKitTestRunner.xcodeproj">
+            BuildableName = "CyberKitTestRunner"
+            BlueprintName = "CyberKitTestRunner"
+            ReferencedContainer = "container:CyberKitTestRunner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DD76F960486AA7600D96B5E"
-            BuildableName = "WebKitTestRunner"
-            BlueprintName = "WebKitTestRunner"
-            ReferencedContainer = "container:WebKitTestRunner.xcodeproj">
+            BuildableName = "CyberKitTestRunner"
+            BlueprintName = "CyberKitTestRunner"
+            ReferencedContainer = "container:CyberKitTestRunner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -35,13 +35,13 @@
 #include <wtf/KeyValuePair.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct DeviceDescriptor : public ObjectDescriptorBase {
     Vector<PAL::WebGPU::FeatureName> requiredFeatures;
     Vector<KeyValuePair<String, uint64_t>> requiredLimits;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

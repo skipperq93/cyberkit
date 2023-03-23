@@ -37,7 +37,7 @@ class CurlStreamScheduler;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkSocketChannel;
 struct SessionSet;
@@ -116,4 +116,4 @@ private:
     bool m_receivedDidFail { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

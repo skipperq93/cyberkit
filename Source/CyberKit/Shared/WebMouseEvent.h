@@ -39,7 +39,7 @@ namespace CyberCore {
 class NavigationAction;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class GestureWasCancelled : bool { No, Yes };
 
@@ -115,4 +115,4 @@ private:
     GestureWasCancelled m_gestureWasCancelled { GestureWasCancelled::No };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

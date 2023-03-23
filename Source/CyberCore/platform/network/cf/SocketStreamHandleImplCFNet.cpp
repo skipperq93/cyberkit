@@ -452,7 +452,7 @@ void SocketStreamHandleImpl::addCONNECTCredentials(CFHTTPMessageRef proxyRespons
 CFStringRef SocketStreamHandleImpl::copyCFStreamDescription(void* info)
 {
     SocketStreamHandleImpl* handle = static_cast<SocketStreamHandleImpl*>(info);
-    return String("WebKit socket stream, " + handle->m_url.string()).createCFString().leakRef();
+    return String("CyberKit socket stream, " + handle->m_url.string()).createCFString().leakRef();
 }
 
 void SocketStreamHandleImpl::readStreamCallback(CFReadStreamRef stream, CFStreamEventType type, void* clientCallBackInfo)

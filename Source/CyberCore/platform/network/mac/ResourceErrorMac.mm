@@ -33,8 +33,8 @@
 #import <wtf/URL.h>
 #import <wtf/text/WTFString.h>
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/ResourceErrorMacAdditions.mm>)
-#import <WebKitAdditions/ResourceErrorMacAdditions.mm>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/ResourceErrorMacAdditions.mm>)
+#import <CyberKitAdditions/ResourceErrorMacAdditions.mm>
 #else
 static bool dueToCompromisingNetworkConnectionIntegrity(NSError *)
 {

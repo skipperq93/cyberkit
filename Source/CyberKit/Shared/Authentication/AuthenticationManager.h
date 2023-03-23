@@ -53,7 +53,7 @@ class Credential;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class Download;
 class NetworkProcess;
@@ -109,4 +109,4 @@ private:
     HashMap<AuthenticationChallengeIdentifier, UniqueRef<Challenge>> m_challenges;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

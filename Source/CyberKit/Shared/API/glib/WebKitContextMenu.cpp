@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitContextMenu.h"
+#include "CyberKitContextMenu.h"
 
 #include "APIArray.h"
 #include "WebContextMenuItem.h"
-#include "WebKitContextMenuItemPrivate.h"
-#include "WebKitContextMenuPrivate.h"
+#include "CyberKitContextMenuItemPrivate.h"
+#include "CyberKitContextMenuPrivate.h"
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 
@@ -32,30 +32,30 @@
 #include <CyberCore/GUniquePtrGtk.h>
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitContextMenu:
+ * CyberKitContextMenu:
  *
- * Represents the context menu in a #WebKitWebView.
+ * Represents the context menu in a #CyberKitWebView.
  *
- * #WebKitContextMenu represents a context menu containing
- * #WebKitContextMenuItem<!-- -->s in a #WebKitWebView.
+ * #CyberKitContextMenu represents a context menu containing
+ * #CyberKitContextMenuItem<!-- -->s in a #CyberKitWebView.
  *
- * When a #WebKitWebView is about to display the context menu, it
- * emits the #WebKitWebView::context-menu signal, which has the
- * #WebKitContextMenu as an argument. You can modify it, adding new
+ * When a #CyberKitWebView is about to display the context menu, it
+ * emits the #CyberKitWebView::context-menu signal, which has the
+ * #CyberKitContextMenu as an argument. You can modify it, adding new
  * submenus that you can create with webkit_context_menu_new(), adding
- * new #WebKitContextMenuItem<!-- -->s with
+ * new #CyberKitContextMenuItem<!-- -->s with
  * webkit_context_menu_prepend(), webkit_context_menu_append() or
  * webkit_context_menu_insert(), maybe after having removed the
  * existing ones with webkit_context_menu_remove_all().
  */
 
-struct _WebKitContextMenuPrivate {
+struct _CyberKitContextMenuPrivate {
     GList* items;
-    WebKitContextMenuItem* parentItem;
+    CyberKitContextMenuItem* parentItem;
     GRefPtr<GVariant> userData;
 #if PLATFORM(GTK)
 #if USE(GTK4)
@@ -66,7 +66,7 @@ struct _WebKitContextMenuPrivate {
 #endif
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitContextMenu, webkit_context_menu, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitContextMenu, webkit_context_menu, G_TYPE_OBJECT, GObject)
 
 static void webkitContextMenuDispose(GObject* object)
 {
@@ -74,31 +74,31 @@ static void webkitContextMenuDispose(GObject* object)
     G_OBJECT_CLASS(webkit_context_menu_parent_class)->dispose(object);
 }
 
-static void webkit_context_menu_class_init(WebKitContextMenuClass* listClass)
+static void webkit_context_menu_class_init(CyberKitContextMenuClass* listClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(listClass);
     gObjectClass->dispose = webkitContextMenuDispose;
 }
 
-void webkitContextMenuPopulate(WebKitContextMenu* menu, Vector<WebContextMenuItemData>& contextMenuItems)
+void webkitContextMenuPopulate(CyberKitContextMenu* menu, Vector<WebContextMenuItemData>& contextMenuItems)
 {
     for (GList* item = menu->priv->items; item; item = g_list_next(item)) {
-        WebKitContextMenuItem* menuItem = WEBKIT_CONTEXT_MENU_ITEM(item->data);
+        CyberKitContextMenuItem* menuItem = WEBKIT_CONTEXT_MENU_ITEM(item->data);
         contextMenuItems.append(webkitContextMenuItemToWebContextMenuItemData(menuItem));
     }
 }
 
-void webkitContextMenuPopulate(WebKitContextMenu* menu, Vector<WebContextMenuItemGlib>& contextMenuItems)
+void webkitContextMenuPopulate(CyberKitContextMenu* menu, Vector<WebContextMenuItemGlib>& contextMenuItems)
 {
     for (GList* item = menu->priv->items; item; item = g_list_next(item)) {
-        WebKitContextMenuItem* menuItem = WEBKIT_CONTEXT_MENU_ITEM(item->data);
+        CyberKitContextMenuItem* menuItem = WEBKIT_CONTEXT_MENU_ITEM(item->data);
         contextMenuItems.append(webkitContextMenuItemToWebContextMenuItemGlib(menuItem));
     }
 }
 
-WebKitContextMenu* webkitContextMenuCreate(const Vector<WebContextMenuItemData>& items)
+CyberKitContextMenu* webkitContextMenuCreate(const Vector<WebContextMenuItemData>& items)
 {
-    WebKitContextMenu* menu = webkit_context_menu_new();
+    CyberKitContextMenu* menu = webkit_context_menu_new();
     for (const auto& item : items)
         webkit_context_menu_prepend(menu, webkitContextMenuItemCreate(item));
     menu->priv->items = g_list_reverse(menu->priv->items);
@@ -108,21 +108,21 @@ WebKitContextMenu* webkitContextMenuCreate(const Vector<WebContextMenuItemData>&
 
 #if PLATFORM(GTK)
 #if USE(GTK4)
-void webkitContextMenuSetEvent(WebKitContextMenu* menu, GRefPtr<GdkEvent>&& event)
+void webkitContextMenuSetEvent(CyberKitContextMenu* menu, GRefPtr<GdkEvent>&& event)
 #else
-void webkitContextMenuSetEvent(WebKitContextMenu* menu, GUniquePtr<GdkEvent>&& event)
+void webkitContextMenuSetEvent(CyberKitContextMenu* menu, GUniquePtr<GdkEvent>&& event)
 #endif
 {
     menu->priv->event = WTFMove(event);
 }
 #endif
 
-void webkitContextMenuSetParentItem(WebKitContextMenu* menu, WebKitContextMenuItem* item)
+void webkitContextMenuSetParentItem(CyberKitContextMenu* menu, CyberKitContextMenuItem* item)
 {
     menu->priv->parentItem = item;
 }
 
-WebKitContextMenuItem* webkitContextMenuGetParentItem(WebKitContextMenu* menu)
+CyberKitContextMenuItem* webkitContextMenuGetParentItem(CyberKitContextMenu* menu)
 {
     return menu->priv->parentItem;
 }
@@ -130,38 +130,38 @@ WebKitContextMenuItem* webkitContextMenuGetParentItem(WebKitContextMenu* menu)
 /**
  * webkit_context_menu_new:
  *
- * Creates a new #WebKitContextMenu object.
+ * Creates a new #CyberKitContextMenu object.
  *
- * Creates a new #WebKitContextMenu object to be used as a submenu of an existing
- * #WebKitContextMenu. The context menu of a #WebKitWebView is created by the view
- * and passed as an argument of #WebKitWebView::context-menu signal.
+ * Creates a new #CyberKitContextMenu object to be used as a submenu of an existing
+ * #CyberKitContextMenu. The context menu of a #CyberKitWebView is created by the view
+ * and passed as an argument of #CyberKitWebView::context-menu signal.
  * To add items to the menu use webkit_context_menu_prepend(),
  * webkit_context_menu_append() or webkit_context_menu_insert().
- * See also webkit_context_menu_new_with_items() to create a #WebKitContextMenu with
+ * See also webkit_context_menu_new_with_items() to create a #CyberKitContextMenu with
  * a list of initial items.
  *
- * Returns: The newly created #WebKitContextMenu object
+ * Returns: The newly created #CyberKitContextMenu object
  */
-WebKitContextMenu* webkit_context_menu_new()
+CyberKitContextMenu* webkit_context_menu_new()
 {
     return WEBKIT_CONTEXT_MENU(g_object_new(WEBKIT_TYPE_CONTEXT_MENU, NULL));
 }
 
 /**
  * webkit_context_menu_new_with_items:
- * @items: (element-type WebKitContextMenuItem): a #GList of #WebKitContextMenuItem
+ * @items: (element-type CyberKitContextMenuItem): a #GList of #CyberKitContextMenuItem
  *
- * Creates a new #WebKitContextMenu object with the given items.
+ * Creates a new #CyberKitContextMenu object with the given items.
  *
- * Creates a new #WebKitContextMenu object to be used as a submenu of an existing
- * #WebKitContextMenu with the given initial items.
+ * Creates a new #CyberKitContextMenu object to be used as a submenu of an existing
+ * #CyberKitContextMenu with the given initial items.
  * See also webkit_context_menu_new()
  *
- * Returns: The newly created #WebKitContextMenu object
+ * Returns: The newly created #CyberKitContextMenu object
  */
-WebKitContextMenu* webkit_context_menu_new_with_items(GList* items)
+CyberKitContextMenu* webkit_context_menu_new_with_items(GList* items)
 {
-    WebKitContextMenu* menu = webkit_context_menu_new();
+    CyberKitContextMenu* menu = webkit_context_menu_new();
     g_list_foreach(items, reinterpret_cast<GFunc>(reinterpret_cast<GCallback>(g_object_ref_sink)), 0);
     menu->priv->items = g_list_copy(items);
 
@@ -170,41 +170,41 @@ WebKitContextMenu* webkit_context_menu_new_with_items(GList* items)
 
 /**
  * webkit_context_menu_prepend:
- * @menu: a #WebKitContextMenu
- * @item: the #WebKitContextMenuItem to add
+ * @menu: a #CyberKitContextMenu
+ * @item: the #CyberKitContextMenuItem to add
  *
  * Adds @item at the beginning of the @menu.
  */
-void webkit_context_menu_prepend(WebKitContextMenu* menu, WebKitContextMenuItem* item)
+void webkit_context_menu_prepend(CyberKitContextMenu* menu, CyberKitContextMenuItem* item)
 {
     webkit_context_menu_insert(menu, item, 0);
 }
 
 /**
  * webkit_context_menu_append:
- * @menu: a #WebKitContextMenu
- * @item: the #WebKitContextMenuItem to add
+ * @menu: a #CyberKitContextMenu
+ * @item: the #CyberKitContextMenuItem to add
  *
  * Adds @item at the end of the @menu.
  */
-void webkit_context_menu_append(WebKitContextMenu* menu, WebKitContextMenuItem* item)
+void webkit_context_menu_append(CyberKitContextMenu* menu, CyberKitContextMenuItem* item)
 {
     webkit_context_menu_insert(menu, item, -1);
 }
 
 /**
  * webkit_context_menu_insert:
- * @menu: a #WebKitContextMenu
- * @item: the #WebKitContextMenuItem to add
+ * @menu: a #CyberKitContextMenu
+ * @item: the #CyberKitContextMenuItem to add
  * @position: the position to insert the item
  *
  * Inserts @item into the @menu at the given position.
  *
  * If @position is negative, or is larger than the number of items
- * in the #WebKitContextMenu, the item is added on to the end of
+ * in the #CyberKitContextMenu, the item is added on to the end of
  * the @menu. The first position is 0.
  */
-void webkit_context_menu_insert(WebKitContextMenu* menu, WebKitContextMenuItem* item, int position)
+void webkit_context_menu_insert(CyberKitContextMenu* menu, CyberKitContextMenuItem* item, int position)
 {
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU(menu));
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item));
@@ -215,18 +215,18 @@ void webkit_context_menu_insert(WebKitContextMenu* menu, WebKitContextMenuItem* 
 
 /**
  * webkit_context_menu_move_item:
- * @menu: a #WebKitContextMenu
- * @item: the #WebKitContextMenuItem to add
+ * @menu: a #CyberKitContextMenu
+ * @item: the #CyberKitContextMenuItem to add
  * @position: the new position to move the item
  *
  * Moves @item to the given position in the @menu.
  *
  * If @position is negative, or is larger than the number of items
- * in the #WebKitContextMenu, the item is added on to the end of
+ * in the #CyberKitContextMenu, the item is added on to the end of
  * the @menu.
  * The first position is 0.
  */
-void webkit_context_menu_move_item(WebKitContextMenu* menu, WebKitContextMenuItem* item, int position)
+void webkit_context_menu_move_item(CyberKitContextMenu* menu, CyberKitContextMenuItem* item, int position)
 {
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU(menu));
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item));
@@ -240,14 +240,14 @@ void webkit_context_menu_move_item(WebKitContextMenu* menu, WebKitContextMenuIte
 
 /**
  * webkit_context_menu_get_items:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  *
  * Returns the item list of @menu.
  *
- * Returns: (element-type WebKitContextMenuItem) (transfer none): a #GList of
- *    #WebKitContextMenuItem<!-- -->s
+ * Returns: (element-type CyberKitContextMenuItem) (transfer none): a #GList of
+ *    #CyberKitContextMenuItem<!-- -->s
  */
-GList* webkit_context_menu_get_items(WebKitContextMenu* menu)
+GList* webkit_context_menu_get_items(CyberKitContextMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(menu), 0);
 
@@ -256,13 +256,13 @@ GList* webkit_context_menu_get_items(WebKitContextMenu* menu)
 
 /**
  * webkit_context_menu_get_n_items:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  *
  * Gets the length of the @menu.
  *
- * Returns: the number of #WebKitContextMenuItem<!-- -->s in @menu
+ * Returns: the number of #CyberKitContextMenuItem<!-- -->s in @menu
  */
-guint webkit_context_menu_get_n_items(WebKitContextMenu* menu)
+guint webkit_context_menu_get_n_items(CyberKitContextMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(menu), 0);
 
@@ -271,14 +271,14 @@ guint webkit_context_menu_get_n_items(WebKitContextMenu* menu)
 
 /**
  * webkit_context_menu_first:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  *
  * Gets the first item in the @menu.
  *
- * Returns: (transfer none): the first #WebKitContextMenuItem of @menu,
- *    or %NULL if the #WebKitContextMenu is empty.
+ * Returns: (transfer none): the first #CyberKitContextMenuItem of @menu,
+ *    or %NULL if the #CyberKitContextMenu is empty.
  */
-WebKitContextMenuItem* webkit_context_menu_first(WebKitContextMenu* menu)
+CyberKitContextMenuItem* webkit_context_menu_first(CyberKitContextMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(menu), 0);
 
@@ -287,14 +287,14 @@ WebKitContextMenuItem* webkit_context_menu_first(WebKitContextMenu* menu)
 
 /**
  * webkit_context_menu_last:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  *
  * Gets the last item in the @menu.
  *
- * Returns: (transfer none): the last #WebKitContextMenuItem of @menu,
- *    or %NULL if the #WebKitContextMenu is empty.
+ * Returns: (transfer none): the last #CyberKitContextMenuItem of @menu,
+ *    or %NULL if the #CyberKitContextMenu is empty.
  */
-WebKitContextMenuItem* webkit_context_menu_last(WebKitContextMenu* menu)
+CyberKitContextMenuItem* webkit_context_menu_last(CyberKitContextMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(menu), 0);
 
@@ -304,15 +304,15 @@ WebKitContextMenuItem* webkit_context_menu_last(WebKitContextMenu* menu)
 
 /**
  * webkit_context_menu_get_item_at_position:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  * @position: the position of the item, counting from 0
  *
  * Gets the item at the given position in the @menu.
  *
- * Returns: (transfer none): the #WebKitContextMenuItem at position @position in @menu,
+ * Returns: (transfer none): the #CyberKitContextMenuItem at position @position in @menu,
  *    or %NULL if the position is off the end of the @menu.
  */
-WebKitContextMenuItem* webkit_context_menu_get_item_at_position(WebKitContextMenu* menu, unsigned position)
+CyberKitContextMenuItem* webkit_context_menu_get_item_at_position(CyberKitContextMenu* menu, unsigned position)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(menu), 0);
 
@@ -322,14 +322,14 @@ WebKitContextMenuItem* webkit_context_menu_get_item_at_position(WebKitContextMen
 
 /**
  * webkit_context_menu_remove:
- * @menu: a #WebKitContextMenu
- * @item: the #WebKitContextMenuItem to remove
+ * @menu: a #CyberKitContextMenu
+ * @item: the #CyberKitContextMenuItem to remove
  *
  * Removes @item from the @menu.
  *
  * See also webkit_context_menu_remove_all() to remove all items.
  */
-void webkit_context_menu_remove(WebKitContextMenu* menu, WebKitContextMenuItem* item)
+void webkit_context_menu_remove(CyberKitContextMenu* menu, CyberKitContextMenuItem* item)
 {
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU(menu));
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item));
@@ -343,11 +343,11 @@ void webkit_context_menu_remove(WebKitContextMenu* menu, WebKitContextMenuItem* 
 
 /**
  * webkit_context_menu_remove_all:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  *
  * Removes all items of the @menu.
  */
-void webkit_context_menu_remove_all(WebKitContextMenu* menu)
+void webkit_context_menu_remove_all(CyberKitContextMenu* menu)
 {
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU(menu));
 
@@ -357,7 +357,7 @@ void webkit_context_menu_remove_all(WebKitContextMenu* menu)
 
 /**
  * webkit_context_menu_set_user_data:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  * @user_data: a #GVariant
  *
  * Sets user data to @menu.
@@ -368,7 +368,7 @@ void webkit_context_menu_remove_all(WebKitContextMenu* menu)
  *
  * Since: 2.8
  */
-void webkit_context_menu_set_user_data(WebKitContextMenu* menu, GVariant* userData)
+void webkit_context_menu_set_user_data(CyberKitContextMenu* menu, GVariant* userData)
 {
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU(menu));
     g_return_if_fail(userData);
@@ -378,7 +378,7 @@ void webkit_context_menu_set_user_data(WebKitContextMenu* menu, GVariant* userDa
 
 /**
  * webkit_context_menu_get_user_data:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  *
  * Gets the user data of @menu.
  *
@@ -389,7 +389,7 @@ void webkit_context_menu_set_user_data(WebKitContextMenu* menu, GVariant* userDa
  *
  * Since: 2.8
  */
-GVariant* webkit_context_menu_get_user_data(WebKitContextMenu* menu)
+GVariant* webkit_context_menu_get_user_data(CyberKitContextMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(menu), nullptr);
 
@@ -399,10 +399,10 @@ GVariant* webkit_context_menu_get_user_data(WebKitContextMenu* menu)
 #if PLATFORM(GTK)
 /**
  * webkit_context_menu_get_event:
- * @menu: a #WebKitContextMenu
+ * @menu: a #CyberKitContextMenu
  *
  * Gets the #GdkEvent that triggered the context menu. This function only returns a valid
- * #GdkEvent when called for a #WebKitContextMenu passed to #WebKitWebView::context-menu
+ * #GdkEvent when called for a #CyberKitContextMenu passed to #CyberKitWebView::context-menu
  * signal; in all other cases, %NULL is returned.
  *
  * The returned #GdkEvent is expected to be one of the following types:
@@ -422,7 +422,7 @@ GVariant* webkit_context_menu_get_user_data(WebKitContextMenu* menu)
  *
  * Since: 2.40
  */
-GdkEvent* webkit_context_menu_get_event(WebKitContextMenu* menu)
+GdkEvent* webkit_context_menu_get_event(CyberKitContextMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(menu), nullptr);
 

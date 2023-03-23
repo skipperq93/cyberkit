@@ -113,7 +113,7 @@ Ref<Node> Attr::cloneNodeInternal(Document& targetDocument, CloningOperation)
 
 CSSStyleDeclaration* Attr::style()
 {
-    // This is not part of the DOM API, and therefore not available to webpages. However, WebKit SPI
+    // This is not part of the DOM API, and therefore not available to webpages. However, CyberKit SPI
     // lets clients use this via the Objective-C and JavaScript bindings.
     RefPtr styledElement = dynamicDowncast<StyledElement>(m_element.get());
     if (!styledElement)

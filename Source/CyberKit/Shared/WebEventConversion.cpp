@@ -35,7 +35,7 @@
 #include "WebGestureEvent.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 OptionSet<CyberCore::PlatformEvent::Modifier> platform(OptionSet<WebEventModifier> modifiers)
 {
@@ -53,9 +53,9 @@ OptionSet<CyberCore::PlatformEvent::Modifier> platform(OptionSet<WebEventModifie
     return result;
 }
 
-class WebKit2PlatformMouseEvent : public CyberCore::PlatformMouseEvent {
+class CyberKit2PlatformMouseEvent : public CyberCore::PlatformMouseEvent {
 public:
-    WebKit2PlatformMouseEvent(const WebMouseEvent& webEvent)
+    CyberKit2PlatformMouseEvent(const WebMouseEvent& webEvent)
     {
         // PlatformEvent
         switch (webEvent.type()) {
@@ -138,12 +138,12 @@ public:
 
 CyberCore::PlatformMouseEvent platform(const WebMouseEvent& webEvent)
 {
-    return WebKit2PlatformMouseEvent(webEvent);
+    return CyberKit2PlatformMouseEvent(webEvent);
 }
 
-class WebKit2PlatformWheelEvent : public CyberCore::PlatformWheelEvent {
+class CyberKit2PlatformWheelEvent : public CyberCore::PlatformWheelEvent {
 public:
-    WebKit2PlatformWheelEvent(const WebWheelEvent& webEvent)
+    CyberKit2PlatformWheelEvent(const WebWheelEvent& webEvent)
     {
         // PlatformEvent
         m_type = PlatformEvent::Type::Wheel;
@@ -180,12 +180,12 @@ public:
 
 CyberCore::PlatformWheelEvent platform(const WebWheelEvent& webEvent)
 {
-    return WebKit2PlatformWheelEvent(webEvent);
+    return CyberKit2PlatformWheelEvent(webEvent);
 }
 
-class WebKit2PlatformKeyboardEvent : public CyberCore::PlatformKeyboardEvent {
+class CyberKit2PlatformKeyboardEvent : public CyberCore::PlatformKeyboardEvent {
 public:
-    WebKit2PlatformKeyboardEvent(const WebKeyboardEvent& webEvent)
+    CyberKit2PlatformKeyboardEvent(const WebKeyboardEvent& webEvent)
     {
         // PlatformEvent
         switch (webEvent.type()) {
@@ -237,7 +237,7 @@ public:
 
 CyberCore::PlatformKeyboardEvent platform(const WebKeyboardEvent& webEvent)
 {
-    return WebKit2PlatformKeyboardEvent(webEvent);
+    return CyberKit2PlatformKeyboardEvent(webEvent);
 }
 
 #if ENABLE(TOUCH_EVENTS)
@@ -270,9 +270,9 @@ static CyberCore::PlatformTouchPoint::TouchType webPlatformTouchTypeToPlatform(c
     }
 }
 
-class WebKit2PlatformTouchPoint : public CyberCore::PlatformTouchPoint {
+class CyberKit2PlatformTouchPoint : public CyberCore::PlatformTouchPoint {
 public:
-WebKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
+CyberKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
     : PlatformTouchPoint(webTouchPoint.identifier(), webTouchPoint.location(), touchEventType(webTouchPoint)
 #if ENABLE(IOS_TOUCH_EVENTS)
         , webTouchPoint.radiusX(), webTouchPoint.radiusY(), webTouchPoint.rotationAngle(), webTouchPoint.force(), webTouchPoint.altitudeAngle(), webTouchPoint.azimuthAngle(), webPlatformTouchTypeToPlatform(webTouchPoint.touchType())
@@ -284,9 +284,9 @@ WebKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
 
 #else
 
-class WebKit2PlatformTouchPoint : public CyberCore::PlatformTouchPoint {
+class CyberKit2PlatformTouchPoint : public CyberCore::PlatformTouchPoint {
 public:
-    WebKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
+    CyberKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
     {
         m_id = webTouchPoint.id();
 
@@ -320,9 +320,9 @@ public:
 };
 #endif // PLATFORM(IOS_FAMILY)
 
-class WebKit2PlatformTouchEvent : public CyberCore::PlatformTouchEvent {
+class CyberKit2PlatformTouchEvent : public CyberCore::PlatformTouchEvent {
 public:
-    WebKit2PlatformTouchEvent(const WebTouchEvent& webEvent)
+    CyberKit2PlatformTouchEvent(const WebTouchEvent& webEvent)
     {
         // PlatformEvent
         switch (webEvent.type()) {
@@ -350,7 +350,7 @@ public:
         unsigned touchCount = webEvent.touchPoints().size();
         m_touchPoints.reserveInitialCapacity(touchCount);
         for (unsigned i = 0; i < touchCount; ++i)
-            m_touchPoints.uncheckedAppend(WebKit2PlatformTouchPoint(webEvent.touchPoints().at(i)));
+            m_touchPoints.uncheckedAppend(CyberKit2PlatformTouchPoint(webEvent.touchPoints().at(i)));
 
         m_gestureScale = webEvent.gestureScale();
         m_gestureRotation = webEvent.gestureRotation();
@@ -362,21 +362,21 @@ public:
 #else
         // PlatformTouchEvent
         for (size_t i = 0; i < webEvent.touchPoints().size(); ++i)
-            m_touchPoints.append(WebKit2PlatformTouchPoint(webEvent.touchPoints().at(i)));
+            m_touchPoints.append(CyberKit2PlatformTouchPoint(webEvent.touchPoints().at(i)));
 #endif //PLATFORM(IOS_FAMILY)
     }
 };
 
 CyberCore::PlatformTouchEvent platform(const WebTouchEvent& webEvent)
 {
-    return WebKit2PlatformTouchEvent(webEvent);
+    return CyberKit2PlatformTouchEvent(webEvent);
 }
 #endif
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-class WebKit2PlatformGestureEvent : public CyberCore::PlatformGestureEvent {
+class CyberKit2PlatformGestureEvent : public CyberCore::PlatformGestureEvent {
 public:
-    WebKit2PlatformGestureEvent(const WebGestureEvent& webEvent)
+    CyberKit2PlatformGestureEvent(const WebGestureEvent& webEvent)
     {
         switch (webEvent.type()) {
         case WebEventType::GestureStart:
@@ -405,8 +405,8 @@ public:
 
 CyberCore::PlatformGestureEvent platform(const WebGestureEvent& webEvent)
 {
-    return WebKit2PlatformGestureEvent(webEvent);
+    return CyberKit2PlatformGestureEvent(webEvent);
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

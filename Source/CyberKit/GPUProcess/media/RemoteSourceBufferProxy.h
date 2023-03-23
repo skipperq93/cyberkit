@@ -51,7 +51,7 @@ class MediaSample;
 class PlatformTimeRanges;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct MediaDescriptionInfo;
 class RemoteMediaPlayerProxy;
@@ -88,7 +88,7 @@ private:
     void setActive(bool);
     void canSwitchToType(const CyberCore::ContentType&, CompletionHandler<void(bool)>&&);
     void setMode(CyberCore::SourceBufferAppendMode);
-    void append(IPC::SharedBufferReference&&, CompletionHandler<void(std::optional<WebKit::SharedMemory::Handle>&&)>&&);
+    void append(IPC::SharedBufferReference&&, CompletionHandler<void(std::optional<CyberKit::SharedMemory::Handle>&&)>&&);
     void abort();
     void resetParserState();
     void removedFromMediaSource();
@@ -125,6 +125,6 @@ private:
     HashMap<TrackPrivateRemoteIdentifier, Ref<CyberCore::MediaDescription>> m_mediaDescriptions;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

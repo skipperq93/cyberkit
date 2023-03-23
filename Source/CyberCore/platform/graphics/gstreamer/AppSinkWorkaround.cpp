@@ -68,7 +68,7 @@ static std::once_flag appSinkWorkaroundOnceFlag;
 void registerAppsinkWorkaroundIfNeeded()
 {
     std::call_once(appSinkWorkaroundOnceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_app_sink_workaround_debug, "webkitappsink", 0, "WebKit AppSink Workarounds");
+        GST_DEBUG_CATEGORY_INIT(webkit_app_sink_workaround_debug, "webkitappsink", 0, "CyberKit AppSink Workarounds");
         bool needsWorkaround = checkNeedsAppsinkWorkaround();
         GST_DEBUG("appsink workaround will%s be registered.", needsWorkaround ? "" : " NOT");
         if (!needsWorkaround)
@@ -80,17 +80,17 @@ void registerAppsinkWorkaroundIfNeeded()
 
 } // namespace CyberCore
 
-struct WebKitAppSinkWithWorkaroundPrivate {
+struct CyberKitAppSinkWithWorkaroundPrivate {
     // Must only be read and written with the pad lock.
     bool needsResendCaps { false };
 };
 
 #define webkit_app_sink_with_workaround_parent_class parent_class
-WEBKIT_DEFINE_TYPE(WebKitAppSinkWithWorkaround, webkit_app_sink_with_workaround, GST_TYPE_APP_SINK);
+WEBKIT_DEFINE_TYPE(CyberKitAppSinkWithWorkaround, webkit_app_sink_with_workaround, GST_TYPE_APP_SINK);
 
 static GstPadProbeReturn appsinkWorkaroundProbe(GstPad* pad, GstPadProbeInfo* info, void* userData)
 {
-    auto priv = static_cast<WebKitAppSinkWithWorkaroundPrivate*>(userData);
+    auto priv = static_cast<CyberKitAppSinkWithWorkaroundPrivate*>(userData);
 
     // Changes to the flushing flag of a pad only occur while the pad lock is held.
     // By holding it, we can reliably prevent the flushing flag from changing during the execution of our code.
@@ -124,7 +124,7 @@ static void webkitAppSinkWithWorkAroundConstructed(GObject* object)
 {
     G_OBJECT_CLASS(webkit_app_sink_with_workaround_parent_class)->constructed(object);
 
-    WebKitAppSinkWithWorkaroundPrivate* priv = WEBKIT_APP_SINK_WITH_WORKAROUND(object)->priv;
+    CyberKitAppSinkWithWorkaroundPrivate* priv = WEBKIT_APP_SINK_WITH_WORKAROUND(object)->priv;
     GstElement* element = GST_ELEMENT(object);
     GRefPtr<GstPad> pad = adoptGRef(gst_element_get_static_pad(element, "sink"));
     gst_pad_add_probe(pad.get(), static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BUFFER
@@ -133,7 +133,7 @@ static void webkitAppSinkWithWorkAroundConstructed(GObject* object)
     GST_DEBUG_OBJECT(object, "appsink with workaround probe instantiated.");
 }
 
-static void webkit_app_sink_with_workaround_class_init(WebKitAppSinkWithWorkaroundClass* klass)
+static void webkit_app_sink_with_workaround_class_init(CyberKitAppSinkWithWorkaroundClass* klass)
 {
     auto* gobjectClass = G_OBJECT_CLASS(klass);
     gobjectClass->constructed = webkitAppSinkWithWorkAroundConstructed;

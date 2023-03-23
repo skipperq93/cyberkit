@@ -32,7 +32,7 @@
 #include <variant>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct Origin3DDict {
     PAL::WebGPU::IntegerCoordinate x { 0 };
@@ -42,6 +42,6 @@ struct Origin3DDict {
 
 using Origin3D = std::variant<Vector<PAL::WebGPU::IntegerCoordinate>, Origin3DDict>;
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

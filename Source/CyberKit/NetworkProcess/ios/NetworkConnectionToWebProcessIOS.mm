@@ -33,7 +33,7 @@
 #import "NetworkSessionCocoa.h"
 #import "PaymentAuthorizationController.h"
 
-namespace WebKit {
+namespace CyberKit {
     
 #if ENABLE(APPLE_PAY_REMOTE_UI)
 
@@ -104,6 +104,6 @@ void NetworkConnectionToWebProcess::paymentCoordinatorRemoveMessageReceiver(WebP
 
 #endif // ENABLE(APPLE_PAY_REMOTE_UI)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

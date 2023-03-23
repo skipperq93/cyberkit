@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUShaderModuleCompilationHint.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ShaderModuleCompilationHint> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ShaderModuleCompilationHint& shaderModuleCompilationHint)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::ShaderModuleCompilationHint> ConvertFromBackingContex
     return { { *pipelineLayout } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

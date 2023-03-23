@@ -468,7 +468,7 @@ platform/graphics/mac/PDFDocumentImageMac.mm
 platform/graphics/mac/ScrollbarTrackCornerSystemImageMac.mm
 platform/graphics/mac/SimpleFontDataCoreText.cpp
 platform/graphics/mac/SwitchingGPUClient.cpp
-platform/graphics/mac/WebKitNSImageExtras.mm
+platform/graphics/mac/CyberKitNSImageExtras.mm
 platform/graphics/mac/WebLayer.mm
 platform/graphics/mac/controls/ButtonMac.mm
 platform/graphics/mac/controls/ButtonControlMac.mm

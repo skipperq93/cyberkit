@@ -44,7 +44,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void expectCellAboveCell(DOMDocument *document, NSString *cellID, NSString *cellAboveID)
 {
@@ -61,7 +61,7 @@ TEST(CyberKitLegacy, HTMLTableCellElementCellAbove)
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"DOMHTMLTableCellElementCellAbove" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"DOMHTMLTableCellElementCellAbove" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -74,4 +74,4 @@ TEST(CyberKitLegacy, HTMLTableCellElementCellAbove)
     expectCellAboveCell(document, @"cell-1-2", @"cell-h-2");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

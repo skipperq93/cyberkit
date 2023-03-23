@@ -28,8 +28,8 @@
 #include <wtf/Vector.h>
 #include <wtf/spi/darwin/XPCSPI.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 void addVersionAndEncodedMessageToDictionary(Vector<uint8_t>&&, xpc_object_t);
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

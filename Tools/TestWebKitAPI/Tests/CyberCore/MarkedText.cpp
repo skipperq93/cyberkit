@@ -78,7 +78,7 @@ std::ostream& operator<<(std::ostream& os, const MarkedText& markedText)
 
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(MarkedText, SubdivideEmpty)
 {

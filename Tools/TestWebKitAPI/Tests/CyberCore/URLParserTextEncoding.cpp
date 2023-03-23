@@ -32,7 +32,7 @@
 #include <wtf/URLParser.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class URLParserTextEncodingTest : public testing::Test {
 public:
@@ -173,4 +173,4 @@ TEST_F(URLParserTextEncodingTest, QueryEncoding)
     // FIXME: Add more tests with other encodings and things like non-ascii characters, emoji and unmatched surrogate pairs.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

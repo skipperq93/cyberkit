@@ -30,7 +30,7 @@
 #include "WebExtensionContextParameters.h"
 #include "WebExtensionControllerIdentifier.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebExtensionControllerParameters {
     WebExtensionControllerIdentifier identifier;
@@ -40,6 +40,6 @@ struct WebExtensionControllerParameters {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

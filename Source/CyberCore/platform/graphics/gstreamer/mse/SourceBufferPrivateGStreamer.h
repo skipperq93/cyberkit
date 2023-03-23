@@ -41,7 +41,7 @@
 #include "SourceBufferPrivate.h"
 #include "SourceBufferPrivateClient.h"
 #include "TrackPrivateBaseGStreamer.h"
-#include "WebKitMediaSourceGStreamer.h"
+#include "CyberKitMediaSourceGStreamer.h"
 #include <wtf/LoggerHelper.h>
 
 namespace CyberCore {

@@ -34,7 +34,7 @@
 #include <CyberKit/WKRetainPtr.h>
 #include <CyberKit/WKWebsiteDataStoreRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didNavigate;
 static bool didSameDocumentNavigation;
@@ -50,7 +50,7 @@ static void didNavigateWithNavigationData(WKContextRef context, WKPageRef page, 
     didNavigate = true;
 }
 
-TEST(WebKit, PrivateBrowsingPushStateNoHistoryCallback)
+TEST(CyberKit, PrivateBrowsingPushStateNoHistoryCallback)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     
@@ -102,6 +102,6 @@ TEST(WebKit, PrivateBrowsingPushStateNoHistoryCallback)
     Util::run(&didNavigate);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

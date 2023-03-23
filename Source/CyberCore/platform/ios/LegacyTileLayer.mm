@@ -78,10 +78,10 @@ using CyberCore::LegacyTileCache;
 
 - (void)setNeedsDisplayInRect:(CGRect)rect
 {
-    // We need to do WebKit layout before painting. Layout may generate new repaint rects and
+    // We need to do CyberKit layout before painting. Layout may generate new repaint rects and
     // invalidate more tiles, something that is not allowed in drawInContext.
     // Calling setNeedsLayout ensures that layoutSublayers will get called before drawInContext and
-    // we do WebKit layout there.
+    // we do CyberKit layout there.
     [self setNeedsLayout];
     [super setNeedsDisplayInRect:rect];
 }
@@ -90,7 +90,7 @@ using CyberCore::LegacyTileCache;
 {
     if (pthread_main_np())
         WebThreadLock();
-    // This may trigger WebKit layout and generate more repaint rects.
+    // This may trigger CyberKit layout and generate more repaint rects.
     if (_tileGrid)
         _tileGrid->tileCache().prepareToDraw();
 }

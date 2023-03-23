@@ -42,7 +42,7 @@
 - (CGFloat)_unacceleratedScrollingDeltaY;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: This is a huge copy/paste from CyberCore/PlatformEventFactoryMac.mm. The code should be merged.
 
@@ -472,7 +472,7 @@ WebKeyboardEvent WebEventFactory::createWebKeyboardEvent(NSEvent *event, bool ha
     return WebKeyboardEvent({ type, modifiers, timestamp }, text, unmodifiedText, key, code, keyIdentifier, windowsVirtualKeyCode, nativeVirtualKeyCode, macCharCode, handledByInputMethod, commands, autoRepeat, isKeypad, isSystemKey);
 }
 
-OptionSet<WebKit::WebEventModifier> WebEventFactory::webEventModifiersForNSEventModifierFlags(NSEventModifierFlags modifierFlags)
+OptionSet<CyberKit::WebEventModifier> WebEventFactory::webEventModifiersForNSEventModifierFlags(NSEventModifierFlags modifierFlags)
 {
     OptionSet<WebEventModifier> modifiers;
     if (modifierFlags & NSEventModifierFlagCapsLock)
@@ -488,38 +488,38 @@ OptionSet<WebKit::WebEventModifier> WebEventFactory::webEventModifiersForNSEvent
     return modifiers;
 }
 
-NSEventModifierFlags WebEventFactory::toNSEventModifierFlags(OptionSet<WebKit::WebEventModifier> modifiers)
+NSEventModifierFlags WebEventFactory::toNSEventModifierFlags(OptionSet<CyberKit::WebEventModifier> modifiers)
 {
     NSEventModifierFlags modifierFlags = 0;
-    if (modifiers.contains(WebKit::WebEventModifier::CapsLockKey))
+    if (modifiers.contains(CyberKit::WebEventModifier::CapsLockKey))
         modifierFlags |= NSEventModifierFlagCapsLock;
-    if (modifiers.contains(WebKit::WebEventModifier::ShiftKey))
+    if (modifiers.contains(CyberKit::WebEventModifier::ShiftKey))
         modifierFlags |= NSEventModifierFlagShift;
-    if (modifiers.contains(WebKit::WebEventModifier::ControlKey))
+    if (modifiers.contains(CyberKit::WebEventModifier::ControlKey))
         modifierFlags |= NSEventModifierFlagControl;
-    if (modifiers.contains(WebKit::WebEventModifier::AltKey))
+    if (modifiers.contains(CyberKit::WebEventModifier::AltKey))
         modifierFlags |= NSEventModifierFlagOption;
-    if (modifiers.contains(WebKit::WebEventModifier::MetaKey))
+    if (modifiers.contains(CyberKit::WebEventModifier::MetaKey))
         modifierFlags |= NSEventModifierFlagCommand;
     return modifierFlags;
 }
 
-NSInteger WebEventFactory::toNSButtonNumber(WebKit::WebMouseEventButton mouseButton)
+NSInteger WebEventFactory::toNSButtonNumber(CyberKit::WebMouseEventButton mouseButton)
 {
     switch (mouseButton) {
-    case WebKit::WebMouseEventButton::NoButton:
+    case CyberKit::WebMouseEventButton::NoButton:
         return 0;
-    case WebKit::WebMouseEventButton::LeftButton:
+    case CyberKit::WebMouseEventButton::LeftButton:
         return 1 << 0;
-    case WebKit::WebMouseEventButton::RightButton:
+    case CyberKit::WebMouseEventButton::RightButton:
         return 1 << 1;
-    case WebKit::WebMouseEventButton::MiddleButton:
+    case CyberKit::WebMouseEventButton::MiddleButton:
         return 1 << 2;
     }
     ASSERT_NOT_REACHED();
     return 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(APPKIT)

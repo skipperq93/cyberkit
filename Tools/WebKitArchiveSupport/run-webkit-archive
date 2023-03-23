@@ -28,7 +28,7 @@
 
 import os, platform, subprocess
 
-SAFARI_FOR_WEBKIT_DEVELOPMENT='/Applications/Safari.app/Contents/MacOS/SafariForWebKitDevelopment'
+SAFARI_FOR_WEBKIT_DEVELOPMENT='/Applications/Safari.app/Contents/MacOS/SafariForCyberKitDevelopment'
 
 def check_for_valid_platform():
     if 'Darwin' not in platform.system():

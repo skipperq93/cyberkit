@@ -51,7 +51,7 @@ static const size_t logChannelCount = sizeof(testLogChannels) / sizeof(testLogCh
 // non-blocking pipe fails on some of the bots.
 #define TEST_OUTPUT 0
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class LoggingTest : public testing::Test, public LoggerHelper {
 public:
@@ -414,4 +414,4 @@ TEST_F(LoggingTest, LogObserver)
 
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

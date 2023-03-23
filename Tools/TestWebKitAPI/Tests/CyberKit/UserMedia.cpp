@@ -33,7 +33,7 @@
 #include <string.h>
 #include <vector>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didCrash;
 static bool wasPrompted;
@@ -67,7 +67,7 @@ static void checkUserMediaPermissionCallback(WKPageRef, WKFrameRef, WKSecurityOr
     WKUserMediaPermissionCheckSetUserMediaAccessInfo(permissionRequest, WKStringCreateWithUTF8CString("0x123456789"), false);
 }
 
-TEST(WebKit, UserMediaBasic)
+TEST(CyberKit, UserMediaBasic)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -106,7 +106,7 @@ static void didCrashCallback(WKPageRef, const void*)
     wasPrompted = true;
 }
 
-TEST(WebKit, OnDeviceChangeCrash)
+TEST(CyberKit, OnDeviceChangeCrash)
 {
     auto configuration = adoptWK(WKPageConfigurationCreate());
     auto preferences = adoptWK(WKPreferencesCreate());
@@ -166,7 +166,7 @@ static void didFinishNavigation(WKPageRef, WKNavigationRef, WKTypeRef, const voi
     didReceiveMessage = true;
 }
 
-TEST(WebKit, EnumerateDevicesCrash)
+TEST(CyberKit, EnumerateDevicesCrash)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -199,7 +199,7 @@ TEST(WebKit, EnumerateDevicesCrash)
     Util::run(&didReceiveMessage);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)
 

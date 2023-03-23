@@ -98,11 +98,11 @@ GstStream* webkitMediaStreamNew(MediaStreamTrackPrivate* track)
     return stream;
 }
 
-class WebKitMediaStreamObserver : public MediaStreamPrivate::Observer {
+class CyberKitMediaStreamObserver : public MediaStreamPrivate::Observer {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    virtual ~WebKitMediaStreamObserver() { };
-    WebKitMediaStreamObserver(GstElement* src)
+    virtual ~CyberKitMediaStreamObserver() { };
+    CyberKitMediaStreamObserver(GstElement* src)
         : m_src(src) { }
 
     void characteristicsChanged() final
@@ -124,7 +124,7 @@ private:
     GstElement* m_src;
 };
 
-static void webkitMediaStreamSrcEnsureStreamCollectionPosted(WebKitMediaStreamSrc*);
+static void webkitMediaStreamSrcEnsureStreamCollectionPosted(CyberKitMediaStreamSrc*);
 
 class InternalSource final : public MediaStreamTrackPrivate::Observer,
     public RealtimeMediaSource::Observer,
@@ -478,10 +478,10 @@ private:
     bool m_eosPending WTF_GUARDED_BY_LOCK(m_eosLock) { false };
 };
 
-struct _WebKitMediaStreamSrcPrivate {
+struct _CyberKitMediaStreamSrcPrivate {
     CString uri;
     Vector<std::unique_ptr<InternalSource>> sources;
-    std::unique_ptr<WebKitMediaStreamObserver> mediaStreamObserver;
+    std::unique_ptr<CyberKitMediaStreamObserver> mediaStreamObserver;
     RefPtr<MediaStreamPrivate> stream;
     Vector<RefPtr<MediaStreamTrackPrivate>> tracks;
     GUniquePtr<GstFlowCombiner> flowCombiner;
@@ -497,9 +497,9 @@ enum {
     PROP_LAST
 };
 
-static void webkitMediaStreamSrcPostStreamCollection(WebKitMediaStreamSrc*);
+static void webkitMediaStreamSrcPostStreamCollection(CyberKitMediaStreamSrc*);
 
-void WebKitMediaStreamObserver::didRemoveTrack(MediaStreamTrackPrivate& track)
+void CyberKitMediaStreamObserver::didRemoveTrack(MediaStreamTrackPrivate& track)
 {
     if (!m_src)
         return;
@@ -541,13 +541,13 @@ static const char* const* webkitMediaStreamSrcUriGetProtocols(GType)
 
 static char* webkitMediaStreamSrcUriGetUri(GstURIHandler* handler)
 {
-    WebKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(handler);
+    CyberKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(handler);
     return g_strdup(self->priv->uri.data());
 }
 
 static gboolean webkitMediaStreamSrcUriSetUri(GstURIHandler* handler, const char* uri, GError**)
 {
-    WebKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(handler);
+    CyberKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(handler);
     self->priv->uri = CString(uri);
     return TRUE;
 }
@@ -569,7 +569,7 @@ static void webkitMediaStreamSrcUriHandlerInit(gpointer gIface, gpointer)
     gst_tag_register_static(WEBKIT_MEDIA_TRACK_TAG_KIND, GST_TAG_FLAG_META, G_TYPE_INT, "Webkit MediaStream Kind", "Webkit MediaStream Kind", gst_tag_merge_use_first);
 
 #define webkit_media_stream_src_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitMediaStreamSrc, webkit_media_stream_src, GST_TYPE_BIN, doInit)
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitMediaStreamSrc, webkit_media_stream_src, GST_TYPE_BIN, doInit)
 
 static void webkitMediaStreamSrcSetProperty(GObject* object, guint propertyId, const GValue*, GParamSpec* pspec)
 {
@@ -595,13 +595,13 @@ static void webkitMediaStreamSrcGetProperty(GObject* object, guint propertyId, G
 static void webkitMediaStreamSrcConstructed(GObject* object)
 {
     GST_CALL_PARENT(G_OBJECT_CLASS, constructed, (object));
-    WebKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(object);
+    CyberKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(object);
     auto* priv = self->priv;
 
     GST_OBJECT_FLAG_SET(GST_OBJECT_CAST(self), static_cast<GstElementFlags>(GST_ELEMENT_FLAG_SOURCE | static_cast<GstElementFlags>(GST_BIN_FLAG_STREAMS_AWARE)));
     gst_bin_set_suppressed_flags(GST_BIN_CAST(self), static_cast<GstElementFlags>(GST_ELEMENT_FLAG_SOURCE | GST_ELEMENT_FLAG_SINK));
 
-    priv->mediaStreamObserver = makeUnique<WebKitMediaStreamObserver>(GST_ELEMENT_CAST(self));
+    priv->mediaStreamObserver = makeUnique<CyberKitMediaStreamObserver>(GST_ELEMENT_CAST(self));
     priv->flowCombiner = GUniquePtr<GstFlowCombiner>(gst_flow_combiner_new());
 
     // https://bugs.webkit.org/show_bug.cgi?id=214150
@@ -612,7 +612,7 @@ static void webkitMediaStreamSrcConstructed(GObject* object)
 static void webkitMediaStreamSrcDispose(GObject* object)
 {
     {
-        WebKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(object);
+        CyberKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(object);
         auto locker = GstObjectLocker(self);
         auto* priv = self->priv;
         if (priv->stream) {
@@ -627,7 +627,7 @@ static void webkitMediaStreamSrcDispose(GObject* object)
 static GstStateChangeReturn webkitMediaStreamSrcChangeState(GstElement* element, GstStateChange transition)
 {
     GST_DEBUG_OBJECT(element, "%s", gst_state_change_get_name(transition));
-    WebKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(element);
+    CyberKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(element);
     GstStateChangeReturn result;
     bool noPreroll = false;
 
@@ -687,7 +687,7 @@ static gboolean webkitMediaStreamSrcQuery(GstElement* element, GstQuery* query)
     return TRUE;
 }
 
-static void webkit_media_stream_src_class_init(WebKitMediaStreamSrcClass* klass)
+static void webkit_media_stream_src_class_init(CyberKitMediaStreamSrcClass* klass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(klass);
     GstElementClass* gstElementClass = GST_ELEMENT_CLASS(klass);
@@ -754,7 +754,7 @@ static GstFlowReturn webkitMediaStreamSrcChain(GstPad* pad, GstObject* parent, G
     return result;
 }
 
-static void webkitMediaStreamSrcPostStreamCollection(WebKitMediaStreamSrc* self)
+static void webkitMediaStreamSrcPostStreamCollection(CyberKitMediaStreamSrc* self)
 {
     auto* priv = self->priv;
 
@@ -776,7 +776,7 @@ static void webkitMediaStreamSrcPostStreamCollection(WebKitMediaStreamSrc* self)
     gst_element_post_message(GST_ELEMENT_CAST(self), gst_message_new_stream_collection(GST_OBJECT_CAST(self), priv->streamCollection.get()));
 }
 
-static void webkitMediaStreamSrcEnsureStreamCollectionPosted(WebKitMediaStreamSrc* self)
+static void webkitMediaStreamSrcEnsureStreamCollectionPosted(CyberKitMediaStreamSrc* self)
 {
     if (self->priv->streamCollectionPosted.load())
         return;
@@ -790,7 +790,7 @@ static void webkitMediaStreamSrcEnsureStreamCollectionPosted(WebKitMediaStreamSr
     GST_DEBUG_OBJECT(self, "Stream collection posted");
 }
 
-static void webkitMediaStreamSrcAddPad(WebKitMediaStreamSrc* self, GstPad* target, GstStaticPadTemplate* padTemplate, GRefPtr<GstTagList>&& tags, const String& padName)
+static void webkitMediaStreamSrcAddPad(CyberKitMediaStreamSrc* self, GstPad* target, GstStaticPadTemplate* padTemplate, GRefPtr<GstTagList>&& tags, const String& padName)
 {
     GST_DEBUG_OBJECT(self, "%s Ghosting %" GST_PTR_FORMAT, gst_object_get_path_string(GST_OBJECT_CAST(self)), target);
 
@@ -840,7 +840,7 @@ struct ProbeData {
 static GstPadProbeReturn webkitMediaStreamSrcPadProbeCb(GstPad* pad, GstPadProbeInfo* info, ProbeData* data)
 {
     GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
-    WebKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(data->element.get());
+    CyberKitMediaStreamSrc* self = WEBKIT_MEDIA_STREAM_SRC_CAST(data->element.get());
 
     GST_DEBUG_OBJECT(self, "Event %" GST_PTR_FORMAT, event);
     switch (GST_EVENT_TYPE(event)) {
@@ -866,7 +866,7 @@ static GstPadProbeReturn webkitMediaStreamSrcPadProbeCb(GstPad* pad, GstPadProbe
     return GST_PAD_PROBE_OK;
 }
 
-void webkitMediaStreamSrcAddTrack(WebKitMediaStreamSrc* self, MediaStreamTrackPrivate* track, bool onlyTrack)
+void webkitMediaStreamSrcAddTrack(CyberKitMediaStreamSrc* self, MediaStreamTrackPrivate* track, bool onlyTrack)
 {
     const char* sourceType;
     unsigned counter;
@@ -918,7 +918,7 @@ void webkitMediaStreamSrcAddTrack(WebKitMediaStreamSrc* self, MediaStreamTrackPr
     self->priv->tracks.append(track);
 }
 
-void webkitMediaStreamSrcSignalEndOfStream(WebKitMediaStreamSrc* self)
+void webkitMediaStreamSrcSignalEndOfStream(CyberKitMediaStreamSrc* self)
 {
     GST_DEBUG_OBJECT(self, "Signaling EOS");
     for (auto& source : self->priv->sources)
@@ -926,7 +926,7 @@ void webkitMediaStreamSrcSignalEndOfStream(WebKitMediaStreamSrc* self)
     self->priv->sources.clear();
 }
 
-void webkitMediaStreamSrcSetStream(WebKitMediaStreamSrc* self, MediaStreamPrivate* stream, bool isVideoPlayer)
+void webkitMediaStreamSrcSetStream(CyberKitMediaStreamSrc* self, MediaStreamPrivate* stream, bool isVideoPlayer)
 {
     ASSERT(WEBKIT_IS_MEDIA_STREAM_SRC(self));
     ASSERT(!self->priv->stream);
@@ -944,7 +944,7 @@ void webkitMediaStreamSrcSetStream(WebKitMediaStreamSrc* self, MediaStreamPrivat
     webkitMediaStreamSrcPostStreamCollection(self);
 }
 
-void webkitMediaStreamSrcConfigureAudioTracks(WebKitMediaStreamSrc* self, float volume, bool isMuted, bool isPlaying)
+void webkitMediaStreamSrcConfigureAudioTracks(CyberKitMediaStreamSrc* self, float volume, bool isMuted, bool isPlaying)
 {
     for (auto& source : self->priv->sources) {
         if (source->track().isAudio())

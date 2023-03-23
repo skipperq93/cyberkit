@@ -834,7 +834,7 @@ void WebGL2RenderingContext::readBuffer(GCGLenum src)
         return;
 
     if (src == GraphicsContextGL::BACK) {
-        // Because the backbuffer is simulated on all current WebKit ports, we need to change BACK to COLOR_ATTACHMENT0.
+        // Because the backbuffer is simulated on all current CyberKit ports, we need to change BACK to COLOR_ATTACHMENT0.
         if (m_readFramebufferBinding) {
             synthesizeGLError(GraphicsContextGL::INVALID_OPERATION, "readBuffer", "BACK is valid for default framebuffer only");
             return;
@@ -1677,7 +1677,7 @@ void WebGL2RenderingContext::drawBuffers(const Vector<GCGLenum>& buffers)
             synthesizeGLError(GraphicsContextGL::INVALID_OPERATION, "drawBuffers", "BACK or NONE");
             return;
         }
-        // Because the backbuffer is simulated on all current WebKit ports, we need to change BACK to COLOR_ATTACHMENT0.
+        // Because the backbuffer is simulated on all current CyberKit ports, we need to change BACK to COLOR_ATTACHMENT0.
         GCGLenum value[1] { (bufs[0] == GraphicsContextGL::BACK) ? GraphicsContextGL::COLOR_ATTACHMENT0 : GraphicsContextGL::NONE };
         m_context->drawBuffers(value);
         setBackDrawBuffer(bufs[0]);

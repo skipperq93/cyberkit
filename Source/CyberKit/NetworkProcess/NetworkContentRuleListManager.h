@@ -36,7 +36,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 
@@ -61,6 +61,6 @@ private:
     NetworkProcess& m_networkProcess;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

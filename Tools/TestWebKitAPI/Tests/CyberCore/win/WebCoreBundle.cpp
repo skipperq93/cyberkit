@@ -39,7 +39,7 @@ public:
             return;
 
         String path(buffer, length);
-        m_root = FileSystem::pathByAppendingComponent(FileSystem::parentPath(path), "WebKit.resources"_s);
+        m_root = FileSystem::pathByAppendingComponent(FileSystem::parentPath(path), "CyberKit.resources"_s);
     }
 
 protected:

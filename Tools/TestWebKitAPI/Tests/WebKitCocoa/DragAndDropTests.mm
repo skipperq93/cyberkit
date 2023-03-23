@@ -154,7 +154,7 @@ TEST(DragAndDropTests, DragAndDropOnEmptyView)
     simulator.get().dragDestinationAction = WKDragDestinationActionAny;
     auto webView = [simulator webView];
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     NSPasteboard *pasteboard = [NSPasteboard pasteboardWithUniqueName];
     [pasteboard writeObjects:@[ url ]];
@@ -166,7 +166,7 @@ TEST(DragAndDropTests, DragAndDropOnEmptyView)
     [webView performAfterLoading:^{
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     EXPECT_WK_STREQ("Simple HTML file.", [webView stringByEvaluatingJavaScript:@"document.body.innerText"]);
 }
@@ -389,8 +389,8 @@ TEST(DragAndDropTests, ColorInputEvents)
     }];
 
     [simulator runFrom:CGPointMake(50, 50) to:CGPointMake(150, 50)];
-    TestWebKitAPI::Util::run(&inputEventFired);
-    TestWebKitAPI::Util::run(&changeEventFired);
+    TestCyberKitAPI::Util::run(&inputEventFired);
+    TestCyberKitAPI::Util::run(&changeEventFired);
 }
 
 #endif // ENABLE(INPUT_TYPE_COLOR)
@@ -437,15 +437,15 @@ TEST(DragAndDropTests, DragSelectedTextInImageOverlay)
         draggedText = adoptNS([string copy]);
         doneLoadingString = true;
     }];
-    TestWebKitAPI::Util::run(&doneLoadingString);
+    TestCyberKitAPI::Util::run(&doneLoadingString);
 #endif
     EXPECT_WK_STREQ(draggedText.get(), "foobar");
 }
 
 #endif // ENABLE(IMAGE_ANALYSIS)
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/DragAndDropTestsAdditions.mm>)
-#import <WebKitAdditions/DragAndDropTestsAdditions.mm>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/DragAndDropTestsAdditions.mm>)
+#import <CyberKitAdditions/DragAndDropTestsAdditions.mm>
 #endif
 
 #endif // ENABLE(DRAG_SUPPORT) && !PLATFORM(MACCATALYST)

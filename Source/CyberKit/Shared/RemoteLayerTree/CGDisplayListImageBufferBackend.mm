@@ -32,7 +32,7 @@
 #import "Logging.h"
 #import <CyberCore/GraphicsContextCG.h>
 #import <CyberCore/PixelBuffer.h>
-#import <WebKitAdditions/CGDisplayListImageBufferAdditions.h>
+#import <CyberKitAdditions/CGDisplayListImageBufferAdditions.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/IsoMallocInlines.h>
 #import <wtf/MachSendRight.h>
@@ -43,7 +43,7 @@ template<> struct WTF::CFTypeTrait<CAMachPortRef> {
     static inline CFTypeID typeID(void) { return CAMachPortGetTypeID(); }
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 static CFDictionaryRef makeContextOptions(const CGDisplayListImageBufferBackend::Parameters& parameters)
 {

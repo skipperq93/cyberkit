@@ -248,7 +248,7 @@ static void testJSCBasic()
         checker.watch(context.get());
         ExceptionHandler exceptionHandler(context.get());
 
-        GUniquePtr<char> scriptFile(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestWebKitAPI", "Tests", "JavaScriptCore", "glib", "script.js", nullptr));
+        GUniquePtr<char> scriptFile(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "JavaScriptCore", "glib", "script.js", nullptr));
         GUniqueOutPtr<char> contents;
         gsize contentsSize;
         g_assert_true(g_file_get_contents(scriptFile.get(), &contents.outPtr(), &contentsSize, nullptr));

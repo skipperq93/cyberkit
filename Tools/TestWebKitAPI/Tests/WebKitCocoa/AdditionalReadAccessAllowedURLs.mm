@@ -47,19 +47,19 @@ static std::pair<RetainPtr<NSURL>, RetainPtr<NSURL>> readableAndUnreadableDirect
     confstr(_CS_DARWIN_USER_TEMP_DIR, temporaryDirectory, sizeof(temporaryDirectory));
 
     char readableDirectory[PATH_MAX];
-    strlcpy(readableDirectory, [[[NSFileManager defaultManager] stringWithFileSystemRepresentation:temporaryDirectory length:strlen(temporaryDirectory)] stringByAppendingPathComponent:@"WebKitTestRunner.AdditionalReadAccessAllowedURLs-XXXXXX"].fileSystemRepresentation, sizeof(temporaryDirectory));
+    strlcpy(readableDirectory, [[[NSFileManager defaultManager] stringWithFileSystemRepresentation:temporaryDirectory length:strlen(temporaryDirectory)] stringByAppendingPathComponent:@"CyberKitTestRunner.AdditionalReadAccessAllowedURLs-XXXXXX"].fileSystemRepresentation, sizeof(temporaryDirectory));
     mkdtemp(readableDirectory);
     NSURL *readableDirectoryURL = [NSURL fileURLWithFileSystemRepresentation:readableDirectory isDirectory:YES relativeToURL:nil];
 
     char unreadableDirectory[PATH_MAX];
-    strlcpy(unreadableDirectory, [[[NSFileManager defaultManager] stringWithFileSystemRepresentation:temporaryDirectory length:strlen(temporaryDirectory)] stringByAppendingPathComponent:@"WebKitTestRunner.AdditionalReadAccessAllowedURLs-XXXXXX"].fileSystemRepresentation, sizeof(temporaryDirectory));
+    strlcpy(unreadableDirectory, [[[NSFileManager defaultManager] stringWithFileSystemRepresentation:temporaryDirectory length:strlen(temporaryDirectory)] stringByAppendingPathComponent:@"CyberKitTestRunner.AdditionalReadAccessAllowedURLs-XXXXXX"].fileSystemRepresentation, sizeof(temporaryDirectory));
     mkdtemp(unreadableDirectory);
     NSURL *unreadableDirectoryURL = [NSURL fileURLWithFileSystemRepresentation:unreadableDirectory isDirectory:YES relativeToURL:nil];
 
     return std::make_pair(readableDirectoryURL, unreadableDirectoryURL);
 }
 
-TEST(WebKit, AdditionalReadAccessAllowedURLs)
+TEST(CyberKit, AdditionalReadAccessAllowedURLs)
 {
     RetainPtr<WKWebViewConfiguration> configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"AdditionalReadAccessAllowedURLsPlugIn"]);
 
@@ -83,7 +83,7 @@ TEST(WebKit, AdditionalReadAccessAllowedURLs)
     processPoolConfiguration.additionalReadAccessAllowedURLs = @[ readableDirectoryURL.get() ];
 
     auto processPool = adoptNS([[WKProcessPool alloc] _initWithConfiguration:processPoolConfiguration]);
-    [processPool _setObject:@"AdditionalReadAccessAllowedURLsPlugIn" forBundleParameter:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+    [processPool _setObject:@"AdditionalReadAccessAllowedURLsPlugIn" forBundleParameter:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
     [configuration setProcessPool:processPool.get()];
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -101,7 +101,7 @@ TEST(WebKit, AdditionalReadAccessAllowedURLs)
         EXPECT_WK_STREQ(@"hello", string);
         EXPECT_EQ(nullptr, error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [proxy readStringFromURL:unreadableFileURL completionHandler:^(NSString *string, NSError *error) {
@@ -110,22 +110,22 @@ TEST(WebKit, AdditionalReadAccessAllowedURLs)
         EXPECT_WK_STREQ(NSCocoaErrorDomain, error.domain);
         EXPECT_EQ(NSFileReadNoPermissionError, error.code);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, NSAttributedStringWithReadOnlyPaths)
+TEST(CyberKit, NSAttributedStringWithReadOnlyPaths)
 {
     __block bool done = false;
 
     auto [readableDirectoryURL, unreadableDirectoryURL] = readableAndUnreadableDirectories();
 
-    NSURL *iconImagePath = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *iconImagePath = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *readableFileURL = [readableDirectoryURL URLByAppendingPathComponent:@"readable.png"];
     NSError *error;
     if (![NSFileManager.defaultManager copyItemAtURL:iconImagePath toURL:readableFileURL error:&error])
         EXPECT_TRUE(error.code == NSFileWriteFileExistsError);
 
-    NSURL *redImagePath = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *redImagePath = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *unreadableFileURL = [unreadableDirectoryURL URLByAppendingPathComponent:@"unreadable.png"];
     if (![NSFileManager.defaultManager copyItemAtURL:redImagePath toURL:unreadableFileURL error:&error])
         EXPECT_TRUE(error.code == NSFileWriteFileExistsError);
@@ -162,22 +162,22 @@ TEST(WebKit, NSAttributedStringWithReadOnlyPaths)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, NSAttributedStringWithAndWithoutReadOnlyPaths)
+TEST(CyberKit, NSAttributedStringWithAndWithoutReadOnlyPaths)
 {
     __block bool done = false;
 
     auto [readableDirectoryURL, unreadableDirectoryURL] = readableAndUnreadableDirectories();
 
-    NSURL *iconImagePath = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *iconImagePath = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *readableFileURL = [readableDirectoryURL URLByAppendingPathComponent:@"readable.png"];
     NSError *error;
     if (![NSFileManager.defaultManager copyItemAtURL:iconImagePath toURL:readableFileURL error:&error])
         EXPECT_TRUE(error.code == NSFileWriteFileExistsError);
 
-    NSURL *redImagePath = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *redImagePath = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *unreadableFileURL = [unreadableDirectoryURL URLByAppendingPathComponent:@"unreadable.png"];
     if (![NSFileManager.defaultManager copyItemAtURL:redImagePath toURL:unreadableFileURL error:&error])
         EXPECT_TRUE(error.code == NSFileWriteFileExistsError);
@@ -214,7 +214,7 @@ TEST(WebKit, NSAttributedStringWithAndWithoutReadOnlyPaths)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [NSAttributedString loadFromHTMLWithString:testString options:@{ } completionHandler:^(NSAttributedString *attributedString, NSDictionary<NSAttributedStringDocumentAttributeKey, id> *attributes, NSError *error) {
@@ -227,10 +227,10 @@ TEST(WebKit, NSAttributedStringWithAndWithoutReadOnlyPaths)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, NSAttributedStringWithoutReadOnlyPaths)
+TEST(CyberKit, NSAttributedStringWithoutReadOnlyPaths)
 {
     __block bool done = false;
     [NSAttributedString loadFromHTMLWithString:@"Hello World" options:@{ } completionHandler:^(NSAttributedString *attributedString, NSDictionary<NSAttributedStringDocumentAttributeKey, id> *attributes, NSError *error) {
@@ -238,7 +238,7 @@ TEST(WebKit, NSAttributedStringWithoutReadOnlyPaths)
         
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
     done = false;
     [NSAttributedString loadFromHTMLWithString:@"Hello Again!" options:@{ } completionHandler:^(NSAttributedString *attributedString, NSDictionary<NSAttributedStringDocumentAttributeKey, id> *attributes, NSError *error) {
@@ -246,10 +246,10 @@ TEST(WebKit, NSAttributedStringWithoutReadOnlyPaths)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, NSAttributedStringWithTooManyReadOnlyPaths)
+TEST(CyberKit, NSAttributedStringWithTooManyReadOnlyPaths)
 {
     __block bool done = false;
 
@@ -268,7 +268,7 @@ TEST(WebKit, NSAttributedStringWithTooManyReadOnlyPaths)
 
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
     } @catch (NSException *exception) {
         EXPECT_WK_STREQ(NSInvalidArgumentException, exception.name);
         exceptionRaised = true;
@@ -276,7 +276,7 @@ TEST(WebKit, NSAttributedStringWithTooManyReadOnlyPaths)
     EXPECT_TRUE(exceptionRaised);
 }
 
-TEST(WebKit, NSAttributedStringWithInvalidReadOnlyPaths)
+TEST(CyberKit, NSAttributedStringWithInvalidReadOnlyPaths)
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunguarded-availability-new"
@@ -290,7 +290,7 @@ TEST(WebKit, NSAttributedStringWithInvalidReadOnlyPaths)
 
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
     } @catch (NSException *exception) {
         EXPECT_WK_STREQ(NSInvalidArgumentException, exception.name);
         exceptionRaised = true;
@@ -311,7 +311,7 @@ TEST(WebKit, NSAttributedStringWithInvalidReadOnlyPaths)
 
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
     } @catch (NSException *exception) {
         EXPECT_WK_STREQ(NSInvalidArgumentException, exception.name);
         exceptionRaised = true;

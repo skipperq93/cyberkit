@@ -32,7 +32,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageNetworkParameters {
 public:
@@ -54,16 +54,16 @@ private:
     String m_attributedBundleIdentifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct DefaultHash<WebKit::WebPageNetworkParameters> {
-    static unsigned hash(const WebKit::WebPageNetworkParameters& key) { return key.hash(); }
-    static bool equal(const WebKit::WebPageNetworkParameters& a, const WebKit::WebPageNetworkParameters& b) { return a == b; }
+template<> struct DefaultHash<CyberKit::WebPageNetworkParameters> {
+    static unsigned hash(const CyberKit::WebPageNetworkParameters& key) { return key.hash(); }
+    static bool equal(const CyberKit::WebPageNetworkParameters& a, const CyberKit::WebPageNetworkParameters& b) { return a == b; }
     static constexpr bool safeToCompareToEmptyOrDeleted = false;
 };
 
-template<> struct HashTraits<WebKit::WebPageNetworkParameters> : public SimpleClassHashTraits<WebKit::WebPageNetworkParameters> { };
+template<> struct HashTraits<CyberKit::WebPageNetworkParameters> : public SimpleClassHashTraits<CyberKit::WebPageNetworkParameters> { };
 
 } // namespace WTF

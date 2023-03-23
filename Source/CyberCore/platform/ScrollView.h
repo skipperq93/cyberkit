@@ -66,7 +66,7 @@ class Scrollbar;
 enum class DelegatedScrollingMode : uint8_t {
     NotDelegated,
     DelegatedToNativeScrollView,
-    DelegatedToWebKit,
+    DelegatedToCyberKit,
 };
 
 class ScrollView : public Widget, public ScrollableArea {
@@ -135,7 +135,7 @@ public:
     bool paintsEntireContents() const { return m_paintsEntireContents; }
     WEBCORE_EXPORT void setPaintsEntireContents(bool);
 
-    // By default scrolling is handled by CyberCore, but some WebKit implementations take over scrolling,
+    // By default scrolling is handled by CyberCore, but some CyberKit implementations take over scrolling,
     // delegating it to a native scrolling widget or the UI process.
     DelegatedScrollingMode delegatedScrollingMode() const { return m_delegatedScrollingMode; }
     WEBCORE_EXPORT void setDelegatedScrollingMode(DelegatedScrollingMode);
@@ -562,7 +562,7 @@ private:
     IntSize m_fixedLayoutSize;
     IntSize m_contentsSize;
 
-    std::optional<IntSize> m_deferredScrollDelta; // Needed for WebKit scrolling
+    std::optional<IntSize> m_deferredScrollDelta; // Needed for CyberKit scrolling
     std::optional<std::pair<ScrollOffset, ScrollOffset>> m_deferredScrollOffsets; // Needed for platform widget scrolling
 
     IntPoint m_panScrollIconPoint;

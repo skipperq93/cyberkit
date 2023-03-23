@@ -37,7 +37,7 @@
 #include <CyberKit/WKString.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void showWebNotification(WKPageRef page, WKNotificationRef notification, const void* clientInfo)
 {
@@ -59,12 +59,12 @@ TestNotificationProvider::TestNotificationProvider(Vector<WKNotificationManagerR
 {
     m_provider = {
         WKNotificationProviderBase { 0, this },
-        &TestWebKitAPI::showWebNotification,
-        &TestWebKitAPI::closeWebNotification,
+        &TestCyberKitAPI::showWebNotification,
+        &TestCyberKitAPI::closeWebNotification,
         0, // didDestroyNotification
         0, // addNotificationManager
         0, // removeNotificationManager
-        &TestWebKitAPI::notificationPermissions,
+        &TestCyberKitAPI::notificationPermissions,
         0, // clearNotifications
     };
 
@@ -179,4 +179,4 @@ bool TestNotificationProvider::simulateNotificationClose()
     return true;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

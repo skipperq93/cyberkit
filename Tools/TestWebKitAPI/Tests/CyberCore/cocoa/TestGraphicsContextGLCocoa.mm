@@ -36,7 +36,7 @@
 #import <wtf/HashSet.h>
 #import <wtf/MemoryFootprint.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace {
 

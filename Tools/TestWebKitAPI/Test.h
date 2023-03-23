@@ -48,9 +48,9 @@
     ASSERT_TRUE(!(expression))
 
 #define EXPECT_STRONG_ENUM_EQ(expected, actual) \
-    EXPECT_PRED_FORMAT2(TestWebKitAPI::assertStrongEnum, expected, actual)
+    EXPECT_PRED_FORMAT2(TestCyberKitAPI::assertStrongEnum, expected, actual)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template<typename T>
 static inline ::testing::AssertionResult assertStrongEnum(const char* expected_expression, const char* actual_expression, T expected, T actual)
@@ -79,7 +79,7 @@ struct TestParametersToStringFormatter {
     }
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 namespace WTF {
 

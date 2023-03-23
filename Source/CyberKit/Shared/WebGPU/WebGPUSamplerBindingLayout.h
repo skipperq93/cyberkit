@@ -30,12 +30,12 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUSamplerBindingType.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct SamplerBindingLayout {
     PAL::WebGPU::SamplerBindingType type { PAL::WebGPU::SamplerBindingType::Filtering };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

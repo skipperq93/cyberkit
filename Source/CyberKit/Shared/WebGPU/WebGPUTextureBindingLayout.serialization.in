@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::TextureBindingLayout {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::TextureBindingLayout {
     PAL::WebGPU::TextureSampleType sampleType
     PAL::WebGPU::TextureViewDimension viewDimension
     bool multisampled

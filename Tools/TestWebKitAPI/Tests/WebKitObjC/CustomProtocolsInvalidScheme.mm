@@ -53,15 +53,15 @@ static bool testFinished = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit2CustomProtocolsTest, RegisterNilScheme)
+TEST(CyberKit2CustomProtocolsTest, RegisterNilScheme)
 {
     [WKBrowsingContextController registerSchemeForCustomProtocol:nil];
     [WKBrowsingContextController unregisterSchemeForCustomProtocol:nil];
 }
 
-TEST(WebKit2CustomProtocolsTest, LoadInvalidScheme)
+TEST(CyberKit2CustomProtocolsTest, LoadInvalidScheme)
 {
     [WKBrowsingContextController registerSchemeForCustomProtocol:@"custom"];
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("CustomProtocolInvalidSchemeTest"));
@@ -78,6 +78,6 @@ TEST(WebKit2CustomProtocolsTest, LoadInvalidScheme)
     Util::run(&testFinished);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

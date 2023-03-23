@@ -48,7 +48,7 @@ enum class StorageAccessWasGranted : bool;
 struct ResourceLoadStatistics;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class OperatingDate {
 public:
@@ -299,6 +299,6 @@ private:
     HashSet<RegistrableDomain> m_managedDomains;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

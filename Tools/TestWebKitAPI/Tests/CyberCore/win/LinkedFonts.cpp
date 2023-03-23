@@ -33,7 +33,7 @@ namespace CyberCore {
 void appendLinkedFonts(WCHAR* linkedFonts, unsigned length, Vector<String>* result);
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Test the appendLinkedFonts function with normal input data (string with pairs of font filenames and font names separated with \0).
 TEST(CyberCore, appendLinkedFontsTest)
@@ -60,4 +60,4 @@ TEST(CyberCore, appendLinkedFontsWithMissingCommaTest)
     ASSERT(!result.size());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

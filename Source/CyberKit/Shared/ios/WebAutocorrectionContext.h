@@ -30,7 +30,7 @@
 #include "Encoder.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebAutocorrectionContext {
     String contextBefore;
@@ -40,4 +40,4 @@ struct WebAutocorrectionContext {
     EditingRange markedTextRange;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

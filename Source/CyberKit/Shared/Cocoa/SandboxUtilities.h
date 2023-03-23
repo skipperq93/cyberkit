@@ -29,7 +29,7 @@
 #import <wtf/Forward.h>
 #import <wtf/spi/darwin/XPCSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool connectedProcessIsSandboxed(xpc_connection_t);
 bool currentProcessIsSandboxed();

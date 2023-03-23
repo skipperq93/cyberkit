@@ -65,7 +65,7 @@ static bool testFinished = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, CloseNewWindowInNavigationPolicyDelegate)
 {
@@ -73,10 +73,10 @@ TEST(CyberKitLegacy, CloseNewWindowInNavigationPolicyDelegate)
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] init]);
         webView.get().preferences.javaScriptCanOpenWindowsAutomatically = YES;
         webView.get().UIDelegate = [TestDelegate shared];
-        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"OpenNewWindow" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"OpenNewWindow" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&testFinished);
     }
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

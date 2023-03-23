@@ -33,7 +33,7 @@
 #include <CyberKit/WKBundlePage.h>
 #include <wtf/Assertions.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 class DenyWillSendRequestTest : public InjectedBundleTest {
 public:
@@ -62,6 +62,6 @@ public:
 
 static InjectedBundleTest::Register<DenyWillSendRequestTest> registrar("DenyWillSendRequestTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif 

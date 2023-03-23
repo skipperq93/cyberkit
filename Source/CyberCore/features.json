@@ -615,7 +615,7 @@
         "url": "http://www.w3.org/TR/IndexedDB/",
         "webkit-url": "https://bugs.webkit.org/show_bug.cgi?id=149117",
         "keywords": ["indexeddb", "index db", "indexed db", "indexed database", "idb"],
-        "description": "A standard interface to a database of records for simple values and objects. WebKit supports the full W3C recommended standard.",
+        "description": "A standard interface to a database of records for simple values and objects. CyberKit supports the full W3C recommended standard.",
         "contact": {
             "name": "Brady Eidson",
             "twitter": "@bradeeoh",
@@ -997,7 +997,7 @@
         "url": "https://www.w3.org/TR/webaudio/",
         "keywords": ["audio", "webaudio"],
         "description": "A high-level JavaScript API for processing and synthesizing audio in web applications.",
-        "comment": "WebKit's implementation does not match the current specification."
+        "comment": "CyberKit's implementation does not match the current specification."
     },
     {
         "name": "Web Authentication",
@@ -1379,7 +1379,7 @@
         "url": "http://dev.w3.org/csswg/selectors-4/#placeholder",
         "specification": "CSS Selectors Level 4",
         "description": "The selector :placeholder-shown matches any input element that has a visible placeholder.",
-        "comment": "Styling the placeholder can be done through the WebKit pseudo-element \"::placeholder\".",
+        "comment": "Styling the placeholder can be done through the CyberKit pseudo-element \"::placeholder\".",
         "contact": {
             "name": "Benjamin Poulain",
             "twitter": "@awfulben",
@@ -1652,7 +1652,7 @@
         "url": "https://html.spec.whatwg.org/multipage/microdata.html",
         "webkit-url": "https://bugs.webkit.org/show_bug.cgi?id=119480",
         "specification": "HTML5",
-        "comment": "WebKit used to support MicroData. The feature never gained any traction and was eventually removed to clean up the codebase."
+        "comment": "CyberKit used to support MicroData. The feature never gained any traction and was eventually removed to clean up the codebase."
     },
     {
         "name": "Model element",
@@ -1660,7 +1660,7 @@
             "status": "In Development",
             "enabled-by-default": false
         },
-        "url": "https://github.com/WebKit/explainers/tree/main/model",
+        "url": "https://github.com/CyberKit/explainers/tree/main/model",
         "webkit-url": "https://bugs.webkit.org/show_bug.cgi?id=218991",
         "specification": "HTML5",
         "category": "html",

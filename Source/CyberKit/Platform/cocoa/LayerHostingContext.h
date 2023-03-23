@@ -36,7 +36,7 @@ namespace WTF {
 class MachSendRight;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 using LayerHostingContextID = uint32_t;
 enum class LayerHostingMode : uint8_t;
@@ -95,5 +95,5 @@ private:
     RetainPtr<CAContext> m_context;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

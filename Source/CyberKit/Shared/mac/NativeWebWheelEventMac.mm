@@ -30,7 +30,7 @@
 
 #import "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebWheelEvent::NativeWebWheelEvent(NSEvent* event, NSView* view)
     : WebWheelEvent(WebEventFactory::createWebWheelEvent(event, view))
@@ -38,6 +38,6 @@ NativeWebWheelEvent::NativeWebWheelEvent(NSEvent* event, NSView* view)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(APPKIT)

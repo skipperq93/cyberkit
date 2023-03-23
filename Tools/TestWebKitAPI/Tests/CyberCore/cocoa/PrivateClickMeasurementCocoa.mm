@@ -33,7 +33,7 @@
 #include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/spi/cocoa/SecuritySPI.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 
 TEST(PrivateClickMeasurement, ValidBlindedSecret)
@@ -101,6 +101,6 @@ TEST(PrivateClickMeasurement, ValidBlindedSecret)
     EXPECT_FALSE(persistentToken->signatureBase64URL.isEmpty());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // EHAVE(RSA_BSSA)

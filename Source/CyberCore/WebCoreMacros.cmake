@@ -161,7 +161,7 @@ endfunction()
 macro(GENERATE_FONT_NAMES _infile)
     set(NAMES_GENERATOR ${WEBCORE_DIR}/dom/make_names.pl)
     set(_arguments  --fonts ${_infile})
-    set(_outputfiles ${WebCore_DERIVED_SOURCES_DIR}/WebKitFontFamilyNames.cpp ${WebCore_DERIVED_SOURCES_DIR}/WebKitFontFamilyNames.h)
+    set(_outputfiles ${WebCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.cpp ${WebCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.h)
 
     add_custom_command(
         OUTPUT  ${_outputfiles}

@@ -31,7 +31,7 @@
 #include "SharedFileHandle.h"
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if OS(WINDOWS)
 constexpr char pathSeparator = '\\';
@@ -326,4 +326,4 @@ void FileSystemStorageHandle::requestNewCapacityForSyncAccessHandle(CyberCore::F
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

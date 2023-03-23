@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUFragmentState.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<FragmentState> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::FragmentState& fragmentState)
 {
@@ -76,6 +76,6 @@ std::optional<PAL::WebGPU::FragmentState> ConvertFromBackingContext::convertFrom
     return { { WTFMove(*base), WTFMove(targets) } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

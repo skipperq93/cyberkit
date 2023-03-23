@@ -204,17 +204,17 @@ std::unique_ptr<ResourceRequest> WorkerScriptLoader::createResourceRequest(const
 static ResourceError constructJavaScriptMIMETypeError(const ResourceResponse& response)
 {
     auto message = makeString("Refused to execute ", response.url().stringCenterEllipsizedToLength(), " as script because ", response.mimeType(), " is not a script MIME type.");
-    return { errorDomainWebKitInternal, 0, response.url(), WTFMove(message), ResourceError::Type::AccessControl };
+    return { errorDomainCyberKitInternal, 0, response.url(), WTFMove(message), ResourceError::Type::AccessControl };
 }
 
 ResourceError WorkerScriptLoader::validateWorkerResponse(const ResourceResponse& response, Source source, FetchOptions::Destination destination)
 {
     if (response.httpStatusCode() / 100 != 2 && response.httpStatusCode())
-        return { errorDomainWebKitInternal, 0, response.url(), "Response is not 2xx"_s, ResourceError::Type::General };
+        return { errorDomainCyberKitInternal, 0, response.url(), "Response is not 2xx"_s, ResourceError::Type::General };
 
     if (!isScriptAllowedByNosniff(response)) {
         auto message = makeString("Refused to execute ", response.url().stringCenterEllipsizedToLength(), " as script because \"X-Content-Type-Options: nosniff\" was given and its Content-Type is not a script MIME type.");
-        return { errorDomainWebKitInternal, 0, response.url(), WTFMove(message), ResourceError::Type::General };
+        return { errorDomainCyberKitInternal, 0, response.url(), WTFMove(message), ResourceError::Type::General };
     }
 
     switch (source) {
@@ -327,7 +327,7 @@ void WorkerScriptLoader::notifyError()
 {
     m_failed = true;
     if (m_error.isNull())
-        m_error = { errorDomainWebKitInternal, 0, url(), "Failed to load script"_s, ResourceError::Type::General };
+        m_error = { errorDomainCyberKitInternal, 0, url(), "Failed to load script"_s, ResourceError::Type::General };
     notifyFinished();
 }
 

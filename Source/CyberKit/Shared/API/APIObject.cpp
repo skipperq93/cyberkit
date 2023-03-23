@@ -31,13 +31,13 @@
 #include "config.h"
 #include "APIObject.h"
 
-#include "WebKit2Initialize.h"
+#include "CyberKit2Initialize.h"
 
 namespace API {
 
 Object::Object()
 {
-    WebKit::InitializeWebKit2();
+    CyberKit::InitializeCyberKit2();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

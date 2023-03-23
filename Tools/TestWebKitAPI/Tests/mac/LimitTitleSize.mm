@@ -63,9 +63,9 @@ TEST(CyberKitLegacy, LimitTitleSize)
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
-    TestWebKitAPI::Util::run(&didFinishLoad);
+    TestCyberKitAPI::Util::run(&didFinishLoad);
 }
 
 @interface LimitTitleSizeTestObserver : NSObject
@@ -83,14 +83,14 @@ TEST(CyberKitLegacy, LimitTitleSize)
 
 @end
 
-TEST(WebKit, LimitTitleSize)
+TEST(CyberKit, LimitTitleSize)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     auto observer = adoptNS([LimitTitleSizeTestObserver new]);
     [webView addObserver:observer.get() forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     
-    TestWebKitAPI::Util::run(&waitUntilLongTitleReceived);
+    TestCyberKitAPI::Util::run(&waitUntilLongTitleReceived);
     [webView removeObserver:observer.get() forKeyPath:@"title"];
 }

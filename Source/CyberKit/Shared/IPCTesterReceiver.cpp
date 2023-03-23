@@ -28,7 +28,7 @@
 
 #if ENABLE(IPC_TESTING_API)
 
-namespace WebKit {
+namespace CyberKit {
 
 void IPCTesterReceiver::asyncMessage(uint32_t arg0, CompletionHandler<void(uint32_t)>&& completionHandler)
 {

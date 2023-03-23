@@ -30,12 +30,12 @@
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-class WebKitDOMClientRectTest : public WebProcessTest {
+class CyberKitDOMClientRectTest : public WebProcessTest {
 public:
-    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebKitDOMClientRectTest>(new WebKitDOMClientRectTest()); }
+    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<CyberKitDOMClientRectTest>(new CyberKitDOMClientRectTest()); }
 
 private:
-    static void checkClientRectPosition(WebKitDOMClientRect* clientRect)
+    static void checkClientRectPosition(CyberKitDOMClientRect* clientRect)
     {
         // Expected values correspond to CSS in TestDOMClientRect.cpp
         g_assert_cmpfloat(webkit_dom_client_rect_get_top(clientRect), ==, -25);
@@ -47,17 +47,17 @@ private:
     }
 
 
-    bool testDivBoundingClientRectPosition(WebKitWebPage* page)
+    bool testDivBoundingClientRectPosition(CyberKitWebPage* page)
     {
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
-        WebKitDOMElement* div = webkit_dom_document_get_element_by_id(document, "rect");
+        CyberKitDOMElement* div = webkit_dom_document_get_element_by_id(document, "rect");
         g_assert_true(WEBKIT_DOM_IS_HTML_ELEMENT(div));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(div));
 
-        GRefPtr<WebKitDOMClientRect> clientRect = adoptGRef(webkit_dom_element_get_bounding_client_rect(div));
+        GRefPtr<CyberKitDOMClientRect> clientRect = adoptGRef(webkit_dom_element_get_bounding_client_rect(div));
         g_assert_true(WEBKIT_DOM_IS_CLIENT_RECT(clientRect.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(clientRect.get()));
         checkClientRectPosition(clientRect.get());
@@ -65,35 +65,35 @@ private:
         return true;
     }
 
-    bool testDivClientRectsPositionAndLength(WebKitWebPage* page)
+    bool testDivClientRectsPositionAndLength(CyberKitWebPage* page)
     {
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
-        WebKitDOMElement* div = webkit_dom_document_get_element_by_id(document, "rect");
+        CyberKitDOMElement* div = webkit_dom_document_get_element_by_id(document, "rect");
         g_assert_true(WEBKIT_DOM_IS_HTML_ELEMENT(div));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(div));
 
-        GRefPtr<WebKitDOMClientRectList> clientRectList = adoptGRef(webkit_dom_element_get_client_rects(div));
+        GRefPtr<CyberKitDOMClientRectList> clientRectList = adoptGRef(webkit_dom_element_get_client_rects(div));
         g_assert_true(WEBKIT_DOM_IS_CLIENT_RECT_LIST(clientRectList.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(clientRectList.get()));
 
         g_assert_cmpuint(webkit_dom_client_rect_list_get_length(clientRectList.get()), ==, 1);
 
-        GRefPtr<WebKitDOMClientRect> clientRect = adoptGRef(webkit_dom_client_rect_list_item(clientRectList.get(), 0));
+        GRefPtr<CyberKitDOMClientRect> clientRect = adoptGRef(webkit_dom_client_rect_list_item(clientRectList.get(), 0));
         g_assert_true(WEBKIT_DOM_IS_CLIENT_RECT(clientRect.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(clientRect.get()));
         checkClientRectPosition(clientRect.get());
 
         // Getting the clientRect twice should return the same pointer.
-        GRefPtr<WebKitDOMClientRect> clientRect2 = adoptGRef(webkit_dom_client_rect_list_item(clientRectList.get(), 0));
+        GRefPtr<CyberKitDOMClientRect> clientRect2 = adoptGRef(webkit_dom_client_rect_list_item(clientRectList.get(), 0));
         g_assert_true(clientRect.get() == clientRect2.get());
 
         return true;
     }
 
-    bool runTest(const char* testName, WebKitWebPage* page) override
+    bool runTest(const char* testName, CyberKitWebPage* page) override
     {
         if (!strcmp(testName, "div-bounding-client-rect-position"))
             return testDivBoundingClientRectPosition(page);
@@ -107,8 +107,8 @@ private:
 
 static void __attribute__((constructor)) registerTests()
 {
-    REGISTER_TEST(WebKitDOMClientRectTest, "WebKitDOMClientRect/div-bounding-client-rect-position");
-    REGISTER_TEST(WebKitDOMClientRectTest, "WebKitDOMClientRect/div-client-rects-position-and-length");
+    REGISTER_TEST(CyberKitDOMClientRectTest, "CyberKitDOMClientRect/div-bounding-client-rect-position");
+    REGISTER_TEST(CyberKitDOMClientRectTest, "CyberKitDOMClientRect/div-client-rects-position-and-length");
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

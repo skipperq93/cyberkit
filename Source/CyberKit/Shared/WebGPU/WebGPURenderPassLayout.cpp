@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPURenderPassLayout.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<RenderPassLayout> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::RenderPassLayout& renderPassLayout)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::RenderPassLayout> ConvertFromBackingContext::convertF
     return { { WTFMove(*base), renderPassLayout.colorFormats, renderPassLayout.depthStencilFormat, renderPassLayout.sampleCount } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

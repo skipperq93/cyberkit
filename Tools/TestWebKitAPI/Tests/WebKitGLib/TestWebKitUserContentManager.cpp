@@ -19,14 +19,14 @@
 
 #include "config.h"
 
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
 #include <CyberCore/SoupVersioning.h>
 #include <cstdarg>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 // These are all here so that they can be changed easily, if necessary.
 static const char* kTestHTML =
@@ -66,7 +66,7 @@ static const char* kJSONFilter =
 
 static void testWebViewNewWithUserContentManager(Test* test, gconstpointer)
 {
-    GRefPtr<WebKitUserContentManager> userContentManager1 = adoptGRef(webkit_user_content_manager_new());
+    GRefPtr<CyberKitUserContentManager> userContentManager1 = adoptGRef(webkit_user_content_manager_new());
     test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(userContentManager1.get()));
     auto webView1 = Test::adoptView(Test::createWebView(userContentManager1.get()));
     g_assert_true(webkit_web_view_get_user_content_manager(webView1.get()) == userContentManager1.get());
@@ -81,7 +81,7 @@ static bool isStyleSheetInjectedForURLAtPath(WebViewTest* test, const char* path
     test->waitUntilLoadFinished();
 
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = world ? test->runJavaScriptInWorldAndWaitUntilFinished(kStyleSheetTestScript, world, nullptr, &error.outPtr())
+    CyberKitJavascriptResult* javascriptResult = world ? test->runJavaScriptInWorldAndWaitUntilFinished(kStyleSheetTestScript, world, nullptr, &error.outPtr())
         : test->runJavaScriptAndWaitUntilFinished(kStyleSheetTestScript, &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
@@ -96,7 +96,7 @@ static bool isScriptInjectedForURLAtPath(WebViewTest* test, const char* path, co
     test->waitUntilLoadFinished();
 
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = world ? test->runJavaScriptInWorldAndWaitUntilFinished(kScriptTestScript, world, nullptr, &error.outPtr())
+    CyberKitJavascriptResult* javascriptResult = world ? test->runJavaScriptInWorldAndWaitUntilFinished(kScriptTestScript, world, nullptr, &error.outPtr())
         : test->runJavaScriptAndWaitUntilFinished(kScriptTestScript, &error.outPtr());
     if (javascriptResult) {
         g_assert_no_error(error.get());
@@ -121,7 +121,7 @@ static void fillURLListFromPaths(char** list, const char* path, ...)
     }
 }
 
-static void removeOldInjectedContentAndResetLists(WebKitUserContentManager* userContentManager, char** allowList, char** blockList)
+static void removeOldInjectedContentAndResetLists(CyberKitUserContentManager* userContentManager, char** allowList, char** blockList)
 {
     webkit_user_content_manager_remove_all_style_sheets(userContentManager);
     webkit_user_content_manager_remove_all_scripts(userContentManager);
@@ -150,7 +150,7 @@ static void testUserContentManagerInjectedStyleSheet(WebViewTest* test, gconstpo
     // Without a allowList or a blockList all URLs should have the injected style sheet.
     static const char* randomPath = "somerandompath";
     g_assert_false(isStyleSheetInjectedForURLAtPath(test, randomPath));
-    WebKitUserStyleSheet* styleSheet = webkit_user_style_sheet_new(kInjectedStyleSheet, WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES, WEBKIT_USER_STYLE_LEVEL_USER, nullptr, nullptr);
+    CyberKitUserStyleSheet* styleSheet = webkit_user_style_sheet_new(kInjectedStyleSheet, WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES, WEBKIT_USER_STYLE_LEVEL_USER, nullptr, nullptr);
     webkit_user_content_manager_add_style_sheet(test->m_userContentManager.get(), styleSheet);
     webkit_user_style_sheet_unref(styleSheet);
     g_assert_true(isStyleSheetInjectedForURLAtPath(test, randomPath));
@@ -211,7 +211,7 @@ static void testUserContentManagerInjectedScript(WebViewTest* test, gconstpointe
     // Without a allowList or a blockList all URLs should have the injected script.
     static const char* randomPath = "somerandompath";
     g_assert_false(isScriptInjectedForURLAtPath(test, randomPath));
-    WebKitUserScript* script = webkit_user_script_new(kInjectedScript, WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES, WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_END, nullptr, nullptr);
+    CyberKitUserScript* script = webkit_user_script_new(kInjectedScript, WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES, WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_END, nullptr, nullptr);
     webkit_user_content_manager_add_script(test->m_userContentManager.get(), script);
     webkit_user_script_unref(script);
     g_assert_true(isScriptInjectedForURLAtPath(test, randomPath));
@@ -299,7 +299,7 @@ public:
 #endif
     }
 
-    static void scriptMessageReceived(WebKitUserContentManager* userContentManager, WebKitJavascriptResult* jsResult, UserScriptMessageTest* test)
+    static void scriptMessageReceived(CyberKitUserContentManager* userContentManager, CyberKitJavascriptResult* jsResult, UserScriptMessageTest* test)
     {
         g_signal_handlers_disconnect_by_func(userContentManager, reinterpret_cast<gpointer>(scriptMessageReceived), test);
         if (!test->m_waitForScriptRun)
@@ -309,7 +309,7 @@ public:
         test->m_scriptMessage = webkit_javascript_result_ref(jsResult);
     }
 
-    WebKitJavascriptResult* waitUntilMessageReceived(const char* handlerName)
+    CyberKitJavascriptResult* waitUntilMessageReceived(const char* handlerName)
     {
         if (m_scriptMessage) {
             webkit_javascript_result_unref(m_scriptMessage);
@@ -332,7 +332,7 @@ public:
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    WebKitJavascriptResult* postMessageAndWaitUntilReceived(const char* handlerName, const char* javascriptValueAsText, const char* worldName = nullptr)
+    CyberKitJavascriptResult* postMessageAndWaitUntilReceived(const char* handlerName, const char* javascriptValueAsText, const char* worldName = nullptr)
     {
         GUniquePtr<char> javascriptSnippet(g_strdup_printf("window.webkit.messageHandlers.%s.postMessage(%s);", handlerName, javascriptValueAsText));
         m_waitForScriptRun = true;
@@ -340,7 +340,7 @@ public:
         return waitUntilMessageReceived(handlerName);
     }
 
-    static gboolean asyncScriptMessageReceived(WebKitUserContentManager* userContentManager, WebKitJavascriptResult* jsResult, WebKitScriptMessageReply* scriptMessageReply, UserScriptMessageTest* test)
+    static gboolean asyncScriptMessageReceived(CyberKitUserContentManager* userContentManager, CyberKitJavascriptResult* jsResult, CyberKitScriptMessageReply* scriptMessageReply, UserScriptMessageTest* test)
     {
         g_signal_handlers_disconnect_by_func(userContentManager, reinterpret_cast<gpointer>(asyncScriptMessageReceived), test);
         if (!test->m_waitForScriptRun)
@@ -364,7 +364,7 @@ public:
         return TRUE;
     }
 
-    WebKitJavascriptResult* waitUntilPromiseResolved(const char* handlerName, GUniquePtr<GError>& error)
+    CyberKitJavascriptResult* waitUntilPromiseResolved(const char* handlerName, GUniquePtr<GError>& error)
     {
         if (m_scriptMessage) {
             webkit_javascript_result_unref(m_scriptMessage);
@@ -389,7 +389,7 @@ public:
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    WebKitJavascriptResult* postMessageAndWaitForPromiseResolved(const char* handlerName, const char* javascriptValueAsText, const char* worldName, GUniquePtr<GError>& error)
+    CyberKitJavascriptResult* postMessageAndWaitForPromiseResolved(const char* handlerName, const char* javascriptValueAsText, const char* worldName, GUniquePtr<GError>& error)
     {
         GUniquePtr<char> javascriptSnippet(g_strdup_printf("var p = window.webkit.messageHandlers.%s.postMessage(%s); await p; return p;", handlerName, javascriptValueAsText));
         m_waitForScriptRun = true;
@@ -400,7 +400,7 @@ public:
     }
 
 private:
-    WebKitJavascriptResult* m_scriptMessage;
+    CyberKitJavascriptResult* m_scriptMessage;
     GUniqueOutPtr<GError> m_scriptError;
     bool m_waitForScriptRun { false };
 };
@@ -417,7 +417,7 @@ static void testUserContentManagerScriptMessageReceived(UserScriptMessageTest* t
 
     // Check that the "window.webkit.messageHandlers" namespace exists.
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("window.webkit.messageHandlers ? 'y' : 'n';", &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("window.webkit.messageHandlers ? 'y' : 'n';", &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
     GUniquePtr<char> valueString(WebViewTest::javascriptResultToCString(javascriptResult));
@@ -480,7 +480,7 @@ static void testUserContentManagerScriptMessageInWorldReceived(UserScriptMessage
 
     // Check that the "window.webkit.messageHandlers" namespace doesn't exist in isolated worlds.
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptInWorldAndWaitUntilFinished("window.webkit.messageHandlers ? 'y' : 'n';", "WebExtensionTestScriptWorld", nullptr, &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptInWorldAndWaitUntilFinished("window.webkit.messageHandlers ? 'y' : 'n';", "WebExtensionTestScriptWorld", nullptr, &error.outPtr());
     g_assert_null(javascriptResult);
     g_assert_error(error.get(), WEBKIT_JAVASCRIPT_ERROR, WEBKIT_JAVASCRIPT_ERROR_SCRIPT_FAILED);
     test->unregisterHandler("msg");
@@ -517,7 +517,7 @@ static void testUserContentManagerScriptMessageWithReplyReceived(UserScriptMessa
 
     // Check that the "window.webkit.messageHandlers" namespace exists.
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("window.webkit.messageHandlers ? 'y' : 'n';", &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("window.webkit.messageHandlers ? 'y' : 'n';", &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
     GUniquePtr<char> valueString(WebViewTest::javascriptResultToCString(javascriptResult));
@@ -592,7 +592,7 @@ static void testUserContentManagerScriptMessageFromDOMBindings(UserScriptMessage
     g_assert_true(test->registerHandler("dom"));
 
     test->loadHtml("<html>1</html>", nullptr);
-    WebKitJavascriptResult* javascriptResult = test->waitUntilMessageReceived("dom");
+    CyberKitJavascriptResult* javascriptResult = test->waitUntilMessageReceived("dom");
     g_assert_nonnull(javascriptResult);
     GUniquePtr<char> valueString(WebViewTest::javascriptResultToCString(javascriptResult));
     g_assert_cmpstr(valueString.get(), ==, "DocumentLoaded");
@@ -607,7 +607,7 @@ static bool isCSSBlockedForURLAtPath(WebViewTest* test, const char* path)
     test->waitUntilLoadFinished();
 
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished(kScriptTestCSSBlocked, &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished(kScriptTestCSSBlocked, &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
 
@@ -615,15 +615,15 @@ static bool isCSSBlockedForURLAtPath(WebViewTest* test, const char* path)
     return !g_strcmp0(valueString.get(), kScriptTestCSSBlockedResult);
 }
 
-static WebKitUserContentFilter* getUserContentFilter(WebViewTest* test)
+static CyberKitUserContentFilter* getUserContentFilter(WebViewTest* test)
 {
     GUniquePtr<char> filtersPath(g_build_filename(test->dataDirectory(), "filters", nullptr));
-    WebKitUserContentFilterStore* store = webkit_user_content_filter_store_new(filtersPath.get());
+    CyberKitUserContentFilterStore* store = webkit_user_content_filter_store_new(filtersPath.get());
     test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(store));
 
     struct Data {
         GMainLoop* mainLoop;
-        WebKitUserContentFilter* filter;
+        CyberKitUserContentFilter* filter;
     };
     Data data { test->m_mainLoop, nullptr, };
 
@@ -654,7 +654,7 @@ static void testUserContentManagerContentFilter(WebViewTest* test, gconstpointer
     static const char* somePath = "somepath";
     g_assert_false(isCSSBlockedForURLAtPath(test, somePath));
 
-    WebKitUserContentFilter* filter = getUserContentFilter(test);
+    CyberKitUserContentFilter* filter = getUserContentFilter(test);
     webkit_user_content_manager_add_filter(test->m_userContentManager.get(), filter);
     g_assert_true(isCSSBlockedForURLAtPath(test, somePath));
 
@@ -687,19 +687,19 @@ static void serverCallback(SoupServer* server, SoupServerMessage* message, const
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
-    Test::add("WebKitWebView", "new-with-user-content-manager", testWebViewNewWithUserContentManager);
-    WebViewTest::add("WebKitUserContentManager", "injected-style-sheet", testUserContentManagerInjectedStyleSheet);
-    WebViewTest::add("WebKitUserContentManager", "injected-script", testUserContentManagerInjectedScript);
-    UserScriptMessageTest::add("WebKitUserContentManager", "script-message-received", testUserContentManagerScriptMessageReceived);
-    UserScriptMessageTest::add("WebKitUserContentManager", "script-message-in-world-received", testUserContentManagerScriptMessageInWorldReceived);
-    UserScriptMessageTest::add("WebKitUserContentManager", "script-message-with-reply-received", testUserContentManagerScriptMessageWithReplyReceived);
+    Test::add("CyberKitWebView", "new-with-user-content-manager", testWebViewNewWithUserContentManager);
+    WebViewTest::add("CyberKitUserContentManager", "injected-style-sheet", testUserContentManagerInjectedStyleSheet);
+    WebViewTest::add("CyberKitUserContentManager", "injected-script", testUserContentManagerInjectedScript);
+    UserScriptMessageTest::add("CyberKitUserContentManager", "script-message-received", testUserContentManagerScriptMessageReceived);
+    UserScriptMessageTest::add("CyberKitUserContentManager", "script-message-in-world-received", testUserContentManagerScriptMessageInWorldReceived);
+    UserScriptMessageTest::add("CyberKitUserContentManager", "script-message-with-reply-received", testUserContentManagerScriptMessageWithReplyReceived);
 #if PLATFORM(GTK) && !USE(GTK4)
-    UserScriptMessageTest::add("WebKitUserContentManager", "script-message-from-dom-bindings", testUserContentManagerScriptMessageFromDOMBindings);
+    UserScriptMessageTest::add("CyberKitUserContentManager", "script-message-from-dom-bindings", testUserContentManagerScriptMessageFromDOMBindings);
 #endif
-    WebViewTest::add("WebKitUserContentManager", "content-filter", testUserContentManagerContentFilter);
+    WebViewTest::add("CyberKitUserContentManager", "content-filter", testUserContentManagerContentFilter);
 }
 
 void afterAll()

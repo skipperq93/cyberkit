@@ -42,7 +42,7 @@ WebGLMultiDrawInstancedBaseVertexBaseInstance::WebGLMultiDrawInstancedBaseVertex
     context.graphicsContextGL()->ensureExtensionEnabled("GL_ANGLE_base_vertex_base_instance"_s);
 
     // Spec requires WEBGL_multi_draw to be turned on implicitly here.
-    // Enable it both in the backend and in WebKit.
+    // Enable it both in the backend and in CyberKit.
     context.getExtension("WEBGL_multi_draw"_s);
 }
 

@@ -32,7 +32,7 @@
 #include "Test.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: This should also test the that the load state after didFailLoadWithErrorForFrame is kWKFrameLoadStateFinished
 
@@ -49,7 +49,7 @@ static void didFailProvisionalNavigation(WKPageRef page, WKNavigationRef, WKErro
     testDone = true;
 }
 
-TEST(WebKit, FailedLoad)
+TEST(CyberKit, FailedLoad)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -68,6 +68,6 @@ TEST(WebKit, FailedLoad)
     Util::run(&testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

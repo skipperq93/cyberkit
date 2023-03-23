@@ -30,7 +30,7 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ImageDataLayout {
     PAL::WebGPU::Size64 offset { 0 };
@@ -38,6 +38,6 @@ struct ImageDataLayout {
     std::optional<PAL::WebGPU::Size32> rowsPerImage;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

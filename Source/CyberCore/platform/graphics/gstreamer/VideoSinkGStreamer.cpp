@@ -21,8 +21,8 @@
 
 /*
  *
- * WebKitVideoSink is a GStreamer sink element that triggers
- * repaints in the WebKit GStreamer media player for the
+ * CyberKitVideoSink is a GStreamer sink element that triggers
+ * repaints in the CyberKit GStreamer media player for the
  * current video buffer.
  */
 
@@ -64,8 +64,8 @@ enum {
 
 static guint webkitVideoSinkSignals[LAST_SIGNAL] = { 0, };
 
-static void webkitVideoSinkRepaintRequested(WebKitVideoSink*, GstSample*);
-static GRefPtr<GstSample> webkitVideoSinkRequestRender(WebKitVideoSink*, GstBuffer*);
+static void webkitVideoSinkRepaintRequested(CyberKitVideoSink*, GstSample*);
+static GRefPtr<GstSample> webkitVideoSinkRequestRender(CyberKitVideoSink*, GstBuffer*);
 
 class VideoRenderRequestScheduler {
 public:
@@ -88,7 +88,7 @@ public:
         m_sample = nullptr;
     }
 
-    bool requestRender(WebKitVideoSink* sink, GstBuffer* buffer)
+    bool requestRender(CyberKitVideoSink* sink, GstBuffer* buffer)
     {
         GRefPtr<GstSample> sample;
         {
@@ -124,13 +124,13 @@ private:
     bool m_unlocked { false };
 };
 
-struct _WebKitVideoSinkPrivate {
-    _WebKitVideoSinkPrivate()
+struct _CyberKitVideoSinkPrivate {
+    _CyberKitVideoSinkPrivate()
     {
         gst_video_info_init(&info);
     }
 
-    ~_WebKitVideoSinkPrivate()
+    ~_CyberKitVideoSinkPrivate()
     {
         if (currentCaps)
             gst_caps_unref(currentCaps);
@@ -142,7 +142,7 @@ struct _WebKitVideoSinkPrivate {
 };
 
 #define webkit_video_sink_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitVideoSink, webkit_video_sink, GST_TYPE_VIDEO_SINK, GST_DEBUG_CATEGORY_INIT(webkitVideoSinkDebug, "webkitsink", 0, "webkit video sink"))
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitVideoSink, webkit_video_sink, GST_TYPE_VIDEO_SINK, GST_DEBUG_CATEGORY_INIT(webkitVideoSinkDebug, "webkitsink", 0, "webkit video sink"))
 
 static void webkitVideoSinkConstructed(GObject* object)
 {
@@ -150,19 +150,19 @@ static void webkitVideoSinkConstructed(GObject* object)
     g_object_set(GST_BASE_SINK(object), "enable-last-sample", FALSE, nullptr);
 }
 
-static void webkitVideoSinkRepaintRequested(WebKitVideoSink* sink, GstSample* sample)
+static void webkitVideoSinkRepaintRequested(CyberKitVideoSink* sink, GstSample* sample)
 {
     g_signal_emit(sink, webkitVideoSinkSignals[REPAINT_REQUESTED], 0, sample);
 }
 
-static void webkitVideoSinkRepaintCancelled(WebKitVideoSink* sink)
+static void webkitVideoSinkRepaintCancelled(CyberKitVideoSink* sink)
 {
     g_signal_emit(sink, webkitVideoSinkSignals[REPAINT_CANCELLED], 0);
 }
 
-static GRefPtr<GstSample> webkitVideoSinkRequestRender(WebKitVideoSink* sink, GstBuffer* buffer)
+static GRefPtr<GstSample> webkitVideoSinkRequestRender(CyberKitVideoSink* sink, GstBuffer* buffer)
 {
-    WebKitVideoSinkPrivate* priv = sink->priv;
+    CyberKitVideoSinkPrivate* priv = sink->priv;
     GRefPtr<GstSample> sample = adoptGRef(gst_sample_new(buffer, priv->currentCaps, nullptr, nullptr));
 
     // The video info structure is valid only if the sink handled an allocation query.
@@ -175,13 +175,13 @@ static GRefPtr<GstSample> webkitVideoSinkRequestRender(WebKitVideoSink* sink, Gs
 
 static GstFlowReturn webkitVideoSinkRender(GstBaseSink* baseSink, GstBuffer* buffer)
 {
-    WebKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
+    CyberKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
     return sink->priv->scheduler.requestRender(sink, buffer) ? GST_FLOW_OK : GST_FLOW_ERROR;
 }
 
 static gboolean webkitVideoSinkUnlock(GstBaseSink* baseSink)
 {
-    WebKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
+    CyberKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
 
     priv->scheduler.stop();
     webkitVideoSinkRepaintCancelled(WEBKIT_VIDEO_SINK(baseSink));
@@ -191,7 +191,7 @@ static gboolean webkitVideoSinkUnlock(GstBaseSink* baseSink)
 
 static gboolean webkitVideoSinkUnlockStop(GstBaseSink* baseSink)
 {
-    WebKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
+    CyberKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
 
     priv->scheduler.start();
 
@@ -200,7 +200,7 @@ static gboolean webkitVideoSinkUnlockStop(GstBaseSink* baseSink)
 
 static gboolean webkitVideoSinkStop(GstBaseSink* baseSink)
 {
-    WebKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
+    CyberKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
 
     priv->scheduler.stop();
     webkitVideoSinkRepaintCancelled(WEBKIT_VIDEO_SINK(baseSink));
@@ -214,7 +214,7 @@ static gboolean webkitVideoSinkStop(GstBaseSink* baseSink)
 
 static gboolean webkitVideoSinkStart(GstBaseSink* baseSink)
 {
-    WebKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
+    CyberKitVideoSinkPrivate* priv = WEBKIT_VIDEO_SINK(baseSink)->priv;
 
     priv->scheduler.start();
 
@@ -223,8 +223,8 @@ static gboolean webkitVideoSinkStart(GstBaseSink* baseSink)
 
 static gboolean webkitVideoSinkSetCaps(GstBaseSink* baseSink, GstCaps* caps)
 {
-    WebKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
-    WebKitVideoSinkPrivate* priv = sink->priv;
+    CyberKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
+    CyberKitVideoSinkPrivate* priv = sink->priv;
 
     GST_DEBUG_OBJECT(sink, "Current caps %" GST_PTR_FORMAT ", setting caps %" GST_PTR_FORMAT, priv->currentCaps, caps);
 
@@ -247,7 +247,7 @@ static gboolean webkitVideoSinkProposeAllocation(GstBaseSink* baseSink, GstQuery
     if (!caps)
         return FALSE;
 
-    WebKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
+    CyberKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
     if (!gst_video_info_from_caps(&sink->priv->info, caps))
         return FALSE;
 
@@ -261,7 +261,7 @@ static gboolean webkitVideoSinkEvent(GstBaseSink* baseSink, GstEvent* event)
 {
     switch (GST_EVENT_TYPE(event)) {
     case GST_EVENT_FLUSH_START: {
-        WebKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
+        CyberKitVideoSink* sink = WEBKIT_VIDEO_SINK(baseSink);
         sink->priv->scheduler.drain();
 
         GST_DEBUG_OBJECT(sink, "Flush-start, releasing m_sample");
@@ -272,14 +272,14 @@ static gboolean webkitVideoSinkEvent(GstBaseSink* baseSink, GstEvent* event)
     }
 }
 
-static void webkit_video_sink_class_init(WebKitVideoSinkClass* klass)
+static void webkit_video_sink_class_init(CyberKitVideoSinkClass* klass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(klass);
     GstBaseSinkClass* baseSinkClass = GST_BASE_SINK_CLASS(klass);
     GstElementClass* elementClass = GST_ELEMENT_CLASS(klass);
 
     gst_element_class_add_pad_template(elementClass, gst_static_pad_template_get(&s_sinkTemplate));
-    gst_element_class_set_metadata(elementClass, "WebKit video sink", "Sink/Video", "Sends video data from a GStreamer pipeline to WebKit", "Igalia, Alp Toker <alp@atoker.com>");
+    gst_element_class_set_metadata(elementClass, "CyberKit video sink", "Sink/Video", "Sends video data from a GStreamer pipeline to CyberKit", "Igalia, Alp Toker <alp@atoker.com>");
 
     gobjectClass->constructed = webkitVideoSinkConstructed;
 

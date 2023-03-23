@@ -41,7 +41,7 @@ class SecurityOrigin;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 class NetworkResourceLoader;
@@ -93,4 +93,4 @@ private:
     WeakPtr<NetworkResourceLoader> m_networkResourceLoader;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

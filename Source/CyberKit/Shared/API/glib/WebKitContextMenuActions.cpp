@@ -18,15 +18,15 @@
  */
 
 #include "config.h"
-#include "WebKitContextMenuActions.h"
+#include "CyberKitContextMenuActions.h"
 
-#include "WebKitContextMenuActionsPrivate.h"
+#include "CyberKitContextMenuActionsPrivate.h"
 #include <CyberCore/LocalizedStrings.h>
 #include <wtf/text/WTFString.h>
 
 using namespace CyberCore;
 
-bool webkitContextMenuActionIsCheckable(WebKitContextMenuAction action)
+bool webkitContextMenuActionIsCheckable(CyberKitContextMenuAction action)
 {
     switch (action) {
     case WEBKIT_CONTEXT_MENU_ACTION_BOLD:
@@ -40,7 +40,7 @@ bool webkitContextMenuActionIsCheckable(WebKitContextMenuAction action)
     }
 }
 
-ContextMenuAction webkitContextMenuActionGetActionTag(WebKitContextMenuAction action)
+ContextMenuAction webkitContextMenuActionGetActionTag(CyberKitContextMenuAction action)
 {
     switch (action) {
     case WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION:
@@ -144,7 +144,7 @@ ContextMenuAction webkitContextMenuActionGetActionTag(WebKitContextMenuAction ac
     return ContextMenuItemBaseApplicationTag;
 }
 
-WebKitContextMenuAction webkitContextMenuActionGetForContextMenuItem(const WebKit::WebContextMenuItemGlib& menuItem)
+CyberKitContextMenuAction webkitContextMenuActionGetForContextMenuItem(const CyberKit::WebContextMenuItemGlib& menuItem)
 {
     switch (menuItem.action()) {
     case ContextMenuItemTagNoAction:
@@ -248,7 +248,7 @@ WebKitContextMenuAction webkitContextMenuActionGetForContextMenuItem(const WebKi
     return WEBKIT_CONTEXT_MENU_ACTION_CUSTOM;
 }
 
-String webkitContextMenuActionGetLabel(WebKitContextMenuAction action)
+String webkitContextMenuActionGetLabel(CyberKitContextMenuAction action)
 {
     switch (action) {
     case WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK:

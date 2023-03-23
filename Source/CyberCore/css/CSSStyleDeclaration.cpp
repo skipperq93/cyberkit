@@ -41,7 +41,7 @@ WTF_MAKE_ISO_ALLOCATED_IMPL(CSSStyleDeclaration);
 
 namespace {
 
-enum class PropertyNamePrefix { None, Epub, WebKit };
+enum class PropertyNamePrefix { None, Epub, CyberKit };
 
 template<size_t prefixCStringLength>
 static inline bool matchesCSSPropertyNamePrefix(const StringImpl& propertyName, const char (&prefix)[prefixCStringLength])
@@ -87,7 +87,7 @@ static PropertyNamePrefix propertyNamePrefix(const StringImpl& propertyName)
         break;
     case 'w':
         if (matchesCSSPropertyNamePrefix(propertyName, "webkit"))
-            return PropertyNamePrefix::WebKit;
+            return PropertyNamePrefix::CyberKit;
         break;
     default:
         break;
@@ -95,7 +95,7 @@ static PropertyNamePrefix propertyNamePrefix(const StringImpl& propertyName)
     return PropertyNamePrefix::None;
 }
 
-static inline void writeWebKitPrefix(char*& buffer)
+static inline void writeCyberKitPrefix(char*& buffer)
 {
     *buffer++ = '-';
     *buffer++ = 'w';
@@ -148,8 +148,8 @@ static CSSPropertyID parseJavaScriptCSSPropertyName(const AtomString& propertyNa
         writeEpubPrefix(bufferPtr);
         i += 4;
         break;
-    case PropertyNamePrefix::WebKit:
-        writeWebKitPrefix(bufferPtr);
+    case PropertyNamePrefix::CyberKit:
+        writeCyberKitPrefix(bufferPtr);
         i += 6;
         break;
     }
@@ -264,14 +264,14 @@ ExceptionOr<void> CSSStyleDeclaration::setPropertyValueForCamelCasedIDLAttribute
     return setPropertyInternal(propertyID, value, false);
 }
 
-String CSSStyleDeclaration::propertyValueForWebKitCasedIDLAttribute(const AtomString& attribute)
+String CSSStyleDeclaration::propertyValueForCyberKitCasedIDLAttribute(const AtomString& attribute)
 {
     auto propertyID = lookupCSSPropertyFromIDLAttribute<CSSPropertyLookupMode::ConvertUsingDashPrefix>(attribute);
     ASSERT_WITH_MESSAGE(propertyID != CSSPropertyInvalid, "Invalid attribute: %s", attribute.string().utf8().data());
     return getPropertyValueInternal(propertyID);
 }
 
-ExceptionOr<void> CSSStyleDeclaration::setPropertyValueForWebKitCasedIDLAttribute(const AtomString& attribute, const String& value)
+ExceptionOr<void> CSSStyleDeclaration::setPropertyValueForCyberKitCasedIDLAttribute(const AtomString& attribute, const String& value)
 {
     auto propertyID = lookupCSSPropertyFromIDLAttribute<CSSPropertyLookupMode::ConvertUsingDashPrefix>(attribute);
     ASSERT_WITH_MESSAGE(propertyID != CSSPropertyInvalid, "Invalid attribute: %s", attribute.string().utf8().data());

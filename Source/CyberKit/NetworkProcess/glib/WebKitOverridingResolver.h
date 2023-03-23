@@ -31,14 +31,14 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_OVERRIDING_RESOLVER            (webkit_overriding_resolver_get_type())
-#define WEBKIT_OVERRIDING_RESOLVER(object)         (G_TYPE_CHECK_INSTANCE_CAST((object), WEBKIT_TYPE_OVERRIDING_RESOLVER, WebKitOverridingResolver))
+#define WEBKIT_OVERRIDING_RESOLVER(object)         (G_TYPE_CHECK_INSTANCE_CAST((object), WEBKIT_TYPE_OVERRIDING_RESOLVER, CyberKitOverridingResolver))
 #define WEBKIT_IS_OVERRIDING_RESOLVER(object)      (G_TYPE_CHECK_INSTANCE_TYPE((object), WEBKIT_TYPE_OVERRIDING_RESOLVER))
-#define WEBKIT_OVERRIDING_RESOLVER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_OVERRIDING_RESOLVER, WebKitOverridingResolverClass))
+#define WEBKIT_OVERRIDING_RESOLVER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_OVERRIDING_RESOLVER, CyberKitOverridingResolverClass))
 #define WEBKIT_IS_OVERRIDING_RESOLVER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_OVERRIDING_RESOLVER))
-#define WEBKIT_OVERRIDING_RESOLVER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_OVERRIDING_RESOLVER, WebKitOverridingResolverClass))
+#define WEBKIT_OVERRIDING_RESOLVER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_OVERRIDING_RESOLVER, CyberKitOverridingResolverClass))
 
-typedef struct _WebKitOverridingResolver WebKitOverridingResolver;
-typedef struct _WebKitOverridingResolverClass WebKitOverridingResolverClass;
+typedef struct _CyberKitOverridingResolver CyberKitOverridingResolver;
+typedef struct _CyberKitOverridingResolverClass CyberKitOverridingResolverClass;
 
 GType webkit_overriding_resolver_get_type(void);
 

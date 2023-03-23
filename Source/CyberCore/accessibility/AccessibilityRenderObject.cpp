@@ -546,8 +546,8 @@ bool AccessibilityRenderObject::isAttachment() const
     if (!renderer)
         return false;
 
-    // WebKit2 plugins need to be treated differently than attachments, so return false here.
-    // Only WebKit1 plugins have an associated platformWidget.
+    // CyberKit2 plugins need to be treated differently than attachments, so return false here.
+    // Only CyberKit1 plugins have an associated platformWidget.
     if (is<PluginViewBase>(widget()) && !widget()->platformWidget())
         return false;
 
@@ -2214,7 +2214,7 @@ void AccessibilityRenderObject::setSelectedVisiblePositionRange(const VisiblePos
     if (range.isNull())
         return;
 
-    // In WebKit1, when the top web area sets the selection to be an input element in an iframe, the caret will disappear.
+    // In CyberKit1, when the top web area sets the selection to be an input element in an iframe, the caret will disappear.
     // FrameSelection::setSelectionWithoutUpdatingAppearance is setting the selection on the new frame in this case, and causing this behavior.
     if (isWebArea() && parentObject() && parentObject()->isAttachment()
         && isVisiblePositionRangeInDifferentDocument(range))

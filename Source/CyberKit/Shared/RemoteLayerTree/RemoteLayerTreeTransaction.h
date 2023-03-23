@@ -54,7 +54,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class LayerChange : uint64_t {
     NameChanged                         = 1LLU << 1,
@@ -382,4 +382,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

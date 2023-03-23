@@ -34,7 +34,7 @@
 #include <CyberCore/ResourceError.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static String computeKeyURL(const URL& url)
 {
@@ -379,4 +379,4 @@ void CacheStorageCache::close()
     m_isInitialized = false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

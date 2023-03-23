@@ -36,7 +36,7 @@
 @class VKWKTextInfo;
 @class VKWKLineInfo;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 RetainPtr<VKImageAnalysis> createImageAnalysisWithSimpleFixedResults();
 
@@ -59,6 +59,6 @@ private:
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // HAVE(VK_IMAGE_ANALYSIS)

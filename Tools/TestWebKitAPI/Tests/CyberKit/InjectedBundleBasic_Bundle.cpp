@@ -30,7 +30,7 @@
 #include "InjectedBundleTest.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleBasicTest : public InjectedBundleTest {
 public:
@@ -49,6 +49,6 @@ public:
 
 static InjectedBundleTest::Register<InjectedBundleBasicTest> registrar("InjectedBundleBasicTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

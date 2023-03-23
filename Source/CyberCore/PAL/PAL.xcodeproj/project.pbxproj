@@ -450,7 +450,7 @@
 		DD20DE6327BC90D80093D175 /* SessionID.h in Headers */ = {isa = PBXBuildFile; fileRef = A3C66CDB1F462D6A009E6EE9 /* SessionID.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DD20DE6427BC90D80093D175 /* ThreadGlobalData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C5C57DE275719F4003B540D /* ThreadGlobalData.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DD20DE6527BC90F90093D175 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C09D0571E31C57E00725F18 /* config.h */; };
-		DDB04F32278E4F1B008D3678 /* libWebKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE99300278D07B800F60D26 /* libWebKitAdditions.a */; };
+		DDB04F32278E4F1B008D3678 /* libCyberKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE99300278D07B800F60D26 /* libCyberKitAdditions.a */; };
 		E34F26F62846D0D90076E549 /* PowerLogSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = E34F26F52846B7550076E549 /* PowerLogSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F44291641FA52670002CC93E /* FileSizeFormatter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F44291621FA52670002CC93E /* FileSizeFormatter.cpp */; };
 		F44291681FA52705002CC93E /* FileSizeFormatterCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = F44291661FA52705002CC93E /* FileSizeFormatterCocoa.mm */; };
@@ -552,7 +552,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				DDB04F32278E4F1B008D3678 /* libWebKitAdditions.a in Product Dependencies */,
+				DDB04F32278E4F1B008D3678 /* libCyberKitAdditions.a in Product Dependencies */,
 				DD05A36027BF0ACE0096EFAB /* libWTF.a in Product Dependencies */,
 				DD0B43C227F679A7009E31FC /* WebGPU.framework in Product Dependencies */,
 			);
@@ -997,7 +997,7 @@
 		CE5673862151A7B9002F92D7 /* IOKitSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitSPI.h; sourceTree = "<group>"; };
 		DD05A35F27BF0AC40096EFAB /* libWTF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWTF.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD0B43C127F67999009E31FC /* WebGPU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WebGPU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDE99300278D07B800F60D26 /* libWebKitAdditions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWebKitAdditions.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDE99300278D07B800F60D26 /* libCyberKitAdditions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCyberKitAdditions.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF83E208263734F1000825EF /* CryptoKitPrivateSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoKitPrivateSPI.h; sourceTree = "<group>"; };
 		E327C0DE260BDC90002281C5 /* NotifySPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifySPI.h; sourceTree = "<group>"; };
 		E34F26F52846B7550076E549 /* PowerLogSPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PowerLogSPI.h; sourceTree = "<group>"; };
@@ -1748,7 +1748,7 @@
 		DDE99321278D103900F60D26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DDE99300278D07B800F60D26 /* libWebKitAdditions.a */,
+				DDE99300278D07B800F60D26 /* libCyberKitAdditions.a */,
 				DD05A35F27BF0AC40096EFAB /* libWTF.a */,
 				DD0B43C127F67999009E31FC /* WebGPU.framework */,
 			);

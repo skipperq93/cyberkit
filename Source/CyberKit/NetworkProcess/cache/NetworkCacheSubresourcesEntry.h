@@ -31,7 +31,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <wtf/URL.h>
 
-namespace WebKit::NetworkCache {
+namespace CyberKit::NetworkCache {
 
 class SubresourceInfo {
     WTF_MAKE_FAST_ALLOCATED;
@@ -116,6 +116,6 @@ private:
     Vector<SubresourceInfo> m_subresources;
 };
 
-} // namespace WebKit::NetworkCache
+} // namespace CyberKit::NetworkCache
 
 #endif // ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)

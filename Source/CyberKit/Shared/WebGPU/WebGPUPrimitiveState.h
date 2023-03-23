@@ -34,7 +34,7 @@
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 #include <pal/graphics/WebGPU/WebGPUPrimitiveTopology.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct PrimitiveState {
     PAL::WebGPU::PrimitiveTopology topology { PAL::WebGPU::PrimitiveTopology::TriangleList };
@@ -46,6 +46,6 @@ struct PrimitiveState {
     bool unclippedDepth;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

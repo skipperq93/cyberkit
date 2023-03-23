@@ -53,7 +53,7 @@ static bool didExitFullscreen;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: Re-enable this test once webkit.org/b/248093 is resolved.
 #if !defined(NDEBUG)

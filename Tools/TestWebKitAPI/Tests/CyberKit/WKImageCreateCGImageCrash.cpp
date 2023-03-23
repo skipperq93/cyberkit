@@ -29,13 +29,13 @@
 
 #include <CyberKit/WKImageCG.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKImageCreateCGImageCrash)
+TEST(CyberKit, WKImageCreateCGImageCrash)
 {
     EXPECT_FALSE(WKImageCreateCGImage(nullptr));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

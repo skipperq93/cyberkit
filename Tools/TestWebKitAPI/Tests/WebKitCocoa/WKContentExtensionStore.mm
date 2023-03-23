@@ -64,7 +64,7 @@ TEST_F(WKContentRuleListStoreTest, Compile)
 
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 }
 
 static NSString *invalidFilter = @"[";
@@ -87,7 +87,7 @@ TEST_F(WKContentRuleListStoreTest, InvalidRuleList)
 
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 }
 
 TEST_F(WKContentRuleListStoreTest, Lookup)
@@ -100,7 +100,7 @@ TEST_F(WKContentRuleListStoreTest, Lookup)
 
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     __block bool doneLookingUp = false;
     [[WKContentRuleListStore defaultStore] lookUpContentRuleListForIdentifier:@"TestRuleList" completionHandler:^(WKContentRuleList *filter, NSError *error) {
@@ -111,7 +111,7 @@ TEST_F(WKContentRuleListStoreTest, Lookup)
 
         doneLookingUp = true;
     }];
-    TestWebKitAPI::Util::run(&doneLookingUp);
+    TestCyberKitAPI::Util::run(&doneLookingUp);
 }
 
 TEST_F(WKContentRuleListStoreTest, EncodedIdentifier)
@@ -132,7 +132,7 @@ TEST_F(WKContentRuleListStoreTest, EncodedIdentifier)
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST_F(WKContentRuleListStoreTest, NonExistingIdentifierLookup)
@@ -148,7 +148,7 @@ TEST_F(WKContentRuleListStoreTest, NonExistingIdentifierLookup)
         
         doneLookingUp = true;
     }];
-    TestWebKitAPI::Util::run(&doneLookingUp);
+    TestCyberKitAPI::Util::run(&doneLookingUp);
 }
 
 TEST_F(WKContentRuleListStoreTest, VersionMismatch)
@@ -162,7 +162,7 @@ TEST_F(WKContentRuleListStoreTest, VersionMismatch)
         
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     [[WKContentRuleListStore defaultStore] _invalidateContentRuleListVersionForIdentifier:@"TestRuleList"];
     
@@ -178,14 +178,14 @@ TEST_F(WKContentRuleListStoreTest, VersionMismatch)
         
         doneLookingUp = true;
     }];
-    TestWebKitAPI::Util::run(&doneLookingUp);
+    TestCyberKitAPI::Util::run(&doneLookingUp);
 
     __block bool doneGettingSource = false;
     [[WKContentRuleListStore defaultStore] _getContentRuleListSourceForIdentifier:@"TestRuleList" completionHandler:^(NSString* source) {
         EXPECT_NULL(source);
         doneGettingSource = true;
     }];
-    TestWebKitAPI::Util::run(&doneGettingSource);
+    TestCyberKitAPI::Util::run(&doneGettingSource);
 }
 
 TEST_F(WKContentRuleListStoreTest, Removal)
@@ -198,7 +198,7 @@ TEST_F(WKContentRuleListStoreTest, Removal)
 
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     __block bool doneRemoving = false;
     [[WKContentRuleListStore defaultStore] removeContentRuleListForIdentifier:@"TestRuleList" completionHandler:^(NSError *error) {
@@ -206,7 +206,7 @@ TEST_F(WKContentRuleListStoreTest, Removal)
 
         doneRemoving = true;
     }];
-    TestWebKitAPI::Util::run(&doneRemoving);
+    TestCyberKitAPI::Util::run(&doneRemoving);
 }
 
 #if CPU(ARM64) && defined(NDEBUG)
@@ -217,7 +217,7 @@ TEST_F(WKContentRuleListStoreTest, DISABLED_CrossOriginCookieBlocking)
 TEST_F(WKContentRuleListStoreTest, CrossOriginCookieBlocking)
 #endif
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     auto cookiePresentWhenBlocking = [] (bool blockCookies) {
 
@@ -269,7 +269,7 @@ TEST_F(WKContentRuleListStoreTest, CrossOriginCookieBlocking)
                 [[viewConfiguration userContentController] addContentRuleList:compiledRuleList];
                 doneCompiling = true;
             }];
-            TestWebKitAPI::Util::run(&doneCompiling);
+            TestCyberKitAPI::Util::run(&doneCompiling);
         }
 
         auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectZero configuration:viewConfiguration.get()]);
@@ -303,7 +303,7 @@ TEST_F(WKContentRuleListStoreTest, NonExistingIdentifierRemove)
 
         doneRemoving = true;
     }];
-    TestWebKitAPI::Util::run(&doneRemoving);
+    TestCyberKitAPI::Util::run(&doneRemoving);
 }
 
 TEST_F(WKContentRuleListStoreTest, NonDefaultStore)
@@ -319,7 +319,7 @@ TEST_F(WKContentRuleListStoreTest, NonDefaultStore)
         EXPECT_EQ(identifiers.count, 0u);
         doneGettingAvailableIdentifiers = true;
     }];
-    TestWebKitAPI::Util::run(&doneGettingAvailableIdentifiers);
+    TestCyberKitAPI::Util::run(&doneGettingAvailableIdentifiers);
     
     __block bool doneCompiling = false;
     [store compileContentRuleListForIdentifier:identifier encodedContentRuleList:basicFilter completionHandler:^(WKContentRuleList *filter, NSError *error) {
@@ -327,7 +327,7 @@ TEST_F(WKContentRuleListStoreTest, NonDefaultStore)
         EXPECT_NULL(error);
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     doneGettingAvailableIdentifiers = false;
     [store getAvailableContentRuleListIdentifiers:^(NSArray<NSString *> *identifiers) {
@@ -336,7 +336,7 @@ TEST_F(WKContentRuleListStoreTest, NonDefaultStore)
         EXPECT_STREQ(identifiers[0].UTF8String, "TestRuleList");
         doneGettingAvailableIdentifiers = true;
     }];
-    TestWebKitAPI::Util::run(&doneGettingAvailableIdentifiers);
+    TestCyberKitAPI::Util::run(&doneGettingAvailableIdentifiers);
 
     NSData *data = [NSData dataWithContentsOfURL:[tempDir URLByAppendingPathComponent:fileName]];
     EXPECT_NOT_NULL(data);
@@ -348,14 +348,14 @@ TEST_F(WKContentRuleListStoreTest, NonDefaultStore)
         EXPECT_STREQ(basicFilter.UTF8String, source.UTF8String);
         doneCheckingSource = true;
     }];
-    TestWebKitAPI::Util::run(&doneCheckingSource);
+    TestCyberKitAPI::Util::run(&doneCheckingSource);
     
     __block bool doneRemoving = false;
     [store removeContentRuleListForIdentifier:identifier completionHandler:^(NSError *error) {
         EXPECT_NULL(error);
         doneRemoving = true;
     }];
-    TestWebKitAPI::Util::run(&doneRemoving);
+    TestCyberKitAPI::Util::run(&doneRemoving);
 
     NSData *dataAfterRemoving = [NSData dataWithContentsOfURL:[tempDir URLByAppendingPathComponent:fileName]];
     EXPECT_NULL(dataAfterRemoving);
@@ -379,7 +379,7 @@ TEST_F(WKContentRuleListStoreTest, MultipleRuleLists)
             }];
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST_F(WKContentRuleListStoreTest, NonASCIISource)
@@ -406,7 +406,7 @@ TEST_F(WKContentRuleListStoreTest, NonASCIISource)
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static size_t alertCount { 0 };
@@ -449,7 +449,7 @@ TEST_F(WKContentRuleListStoreTest, AddRemove)
         ruleList = compiledRuleList;
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
     EXPECT_NOT_NULL(ruleList);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -460,17 +460,17 @@ TEST_F(WKContentRuleListStoreTest, AddRemove)
     auto delegate = adoptNS([[ContentRuleListDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"contentBlockerCheck" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"contentBlockerCheck" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     alertCount = 0;
     receivedAlert = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
 
     [[configuration userContentController] removeContentRuleList:ruleList.get()];
 
     receivedAlert = false;
     [webView reload];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
 }
 
 #if PLATFORM(IOS_FAMILY)
@@ -490,7 +490,7 @@ TEST_F(WKContentRuleListStoreTest, UnsafeMMap)
         EXPECT_NULL(error);
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     auto hasCompleteProtection = [] (const RetainPtr<NSString>& path) {
         NSError *error = nil;
@@ -515,7 +515,7 @@ TEST_F(WKContentRuleListStoreTest, UnsafeMMap)
         EXPECT_NULL(error);
         doneLookingUp = true;
     }];
-    TestWebKitAPI::Util::run(&doneLookingUp);
+    TestCyberKitAPI::Util::run(&doneLookingUp);
     EXPECT_FALSE(hasCompleteProtection(copiedFilePath));
     
     __block bool doneRemoving = false;
@@ -526,7 +526,7 @@ TEST_F(WKContentRuleListStoreTest, UnsafeMMap)
             doneRemoving = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&doneRemoving);
+    TestCyberKitAPI::Util::run(&doneRemoving);
 }
 #endif // PLATFORM(IOS_FAMILY)
 
@@ -541,7 +541,7 @@ static RetainPtr<WKContentRuleList> compileContentRuleList(const char* json, NSS
         list = filter;
     }];
     while (!list)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     return list;
 }
@@ -633,8 +633,8 @@ TEST_F(WKContentRuleListStoreTest, ModifyHeaders)
         receivedActionNotification = true;
     };
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
-    TestWebKitAPI::Util::run(&receivedAllRequests);
-    TestWebKitAPI::Util::run(&receivedActionNotification);
+    TestCyberKitAPI::Util::run(&receivedAllRequests);
+    TestCyberKitAPI::Util::run(&receivedActionNotification);
     checkURLs(urls, {
         "testscheme://testhost/main.html"_s,
         "testscheme://testhost/fetch.txt"_s
@@ -719,8 +719,8 @@ TEST_F(WKContentRuleListStoreTest, ModifyHeadersWithCompetingRulesWhereAppendWin
         receivedActionNotification = true;
     };
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
-    TestWebKitAPI::Util::run(&receivedAllRequests);
-    TestWebKitAPI::Util::run(&receivedActionNotification);
+    TestCyberKitAPI::Util::run(&receivedAllRequests);
+    TestCyberKitAPI::Util::run(&receivedActionNotification);
     checkURLs(urls, {
         "testscheme://testhost/main.html"_s,
     });
@@ -808,8 +808,8 @@ TEST_F(WKContentRuleListStoreTest, ModifyHeadersWithCompetingRulesWhereSetWins)
         receivedActionNotification = true;
     };
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
-    TestWebKitAPI::Util::run(&receivedAllRequests);
-    TestWebKitAPI::Util::run(&receivedActionNotification);
+    TestCyberKitAPI::Util::run(&receivedAllRequests);
+    TestCyberKitAPI::Util::run(&receivedActionNotification);
     checkURLs(urls, {
         "testscheme://testhost/main.html"_s,
     });
@@ -874,8 +874,8 @@ TEST_F(WKContentRuleListStoreTest, ModifyHeadersWithCompetingRulesWhereRemoveWin
         receivedActionNotification = true;
     };
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
-    TestWebKitAPI::Util::run(&receivedAllRequests);
-    TestWebKitAPI::Util::run(&receivedActionNotification);
+    TestCyberKitAPI::Util::run(&receivedAllRequests);
+    TestCyberKitAPI::Util::run(&receivedActionNotification);
     checkURLs(urls, {
         "testscheme://testhost/main.html"_s,
     });
@@ -946,8 +946,8 @@ TEST_F(WKContentRuleListStoreTest, ModifyHeadersWithMultipleRuleLists)
         receivedActionNotification = true;
     };
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
-    TestWebKitAPI::Util::run(&receivedAllRequests);
-    TestWebKitAPI::Util::run(&receivedActionNotification);
+    TestCyberKitAPI::Util::run(&receivedAllRequests);
+    TestCyberKitAPI::Util::run(&receivedActionNotification);
     checkURLs(urls, {
         "testscheme://testhost/main.html"_s,
         "testscheme://testhost/main.html"_s,
@@ -1067,8 +1067,8 @@ TEST_F(WKContentRuleListStoreTest, Redirect)
     };
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
-    TestWebKitAPI::Util::run(&receivedAllRequests);
-    TestWebKitAPI::Util::run(&receivedActionNotification);
+    TestCyberKitAPI::Util::run(&receivedAllRequests);
+    TestCyberKitAPI::Util::run(&receivedActionNotification);
 
     Vector<String> expectedRequestedURLs {
         "testscheme://testhost/main.html"_s,
@@ -1149,7 +1149,7 @@ TEST_F(WKContentRuleListStoreTest, NullPatternSet)
         redirectedResult = std::nullopt;
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
         while (!redirectedResult)
-            TestWebKitAPI::Util::spinRunLoop();
+            TestCyberKitAPI::Util::spinRunLoop();
         return *redirectedResult;
     };
     EXPECT_TRUE(getRedirectResult(DelegateAction::AllowAll));
@@ -1190,6 +1190,6 @@ TEST_F(WKContentRuleListStoreTest, ExtensionPath)
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme://testhost/main.html"]]];
     while (!redirectedURL)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_WK_STREQ([redirectedURL absoluteString], "extension-scheme://extension-host/redirected-to-extension%3Fno-query%23no-fragment");
 }

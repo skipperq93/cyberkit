@@ -40,17 +40,17 @@ static GstStaticPadTemplate srcTemplate = GST_STATIC_PAD_TEMPLATE("src", GST_PAD
 GST_DEBUG_CATEGORY_STATIC(webkitTextCombinerDebug);
 #define GST_CAT_DEFAULT webkitTextCombinerDebug
 
-struct _WebKitTextCombinerPrivate {
+struct _CyberKitTextCombinerPrivate {
     GRefPtr<GstElement> combinerElement;
 };
 
 #define webkit_text_combiner_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitTextCombiner, webkit_text_combiner, GST_TYPE_BIN,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitTextCombiner, webkit_text_combiner, GST_TYPE_BIN,
     GST_DEBUG_CATEGORY_INIT(webkitTextCombinerDebug, "webkittextcombiner", 0, "webkit text combiner"))
 
 using namespace CyberCore;
 
-void webKitTextCombinerHandleCaps(WebKitTextCombiner* combiner, GstPad* pad, const GstCaps* caps)
+void webKitTextCombinerHandleCaps(CyberKitTextCombiner* combiner, GstPad* pad, const GstCaps* caps)
 {
     ASSERT(caps);
     GST_DEBUG_OBJECT(combiner, "Handling caps %" GST_PTR_FORMAT, caps);
@@ -197,7 +197,7 @@ static void webKitTextCombinerConstructed(GObject* object)
     gst_element_add_pad(GST_ELEMENT_CAST(combiner), gst_ghost_pad_new("src", pad.get()));
 }
 
-static void webkit_text_combiner_class_init(WebKitTextCombinerClass* klass)
+static void webkit_text_combiner_class_init(CyberKitTextCombinerClass* klass)
 {
     auto* elementClass = GST_ELEMENT_CLASS(klass);
     auto* objectClass = G_OBJECT_CLASS(klass);
@@ -207,7 +207,7 @@ static void webkit_text_combiner_class_init(WebKitTextCombinerClass* klass)
     gst_element_class_add_pad_template(elementClass, gst_static_pad_template_get(&sinkTemplate));
     gst_element_class_add_pad_template(elementClass, gst_static_pad_template_get(&srcTemplate));
 
-    gst_element_class_set_metadata(elementClass, "WebKit text combiner", "Generic",
+    gst_element_class_set_metadata(elementClass, "CyberKit text combiner", "Generic",
         "A combiner that accepts any caps, but converts plain text to WebVTT",
         "Brendan Long <b.long@cablelabs.com>");
 
@@ -219,7 +219,7 @@ GstElement* webkitTextCombinerNew()
 {
     // The combiner relies on webvttenc, fail early if it's not there.
     if (!isGStreamerPluginAvailable("subenc")) {
-        WTFLogAlways("WebKit wasn't able to find a WebVTT encoder. Subtitles handling will be degraded unless gst-plugins-bad is installed.");
+        WTFLogAlways("CyberKit wasn't able to find a WebVTT encoder. Subtitles handling will be degraded unless gst-plugins-bad is installed.");
         return nullptr;
     }
 

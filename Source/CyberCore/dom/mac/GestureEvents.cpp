@@ -27,6 +27,6 @@
 
 #if ENABLE(MAC_GESTURE_EVENTS)
 
-#include <WebKitAdditions/GestureEvent.cpp>
+#include <CyberKitAdditions/GestureEvent.cpp>
 
 #endif

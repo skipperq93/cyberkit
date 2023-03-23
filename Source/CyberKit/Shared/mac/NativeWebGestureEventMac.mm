@@ -32,7 +32,7 @@
 #import <CyberCore/IntPoint.h>
 #import <CyberCore/PlatformEventFactoryMac.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline WebEventType webEventTypeForNSEvent(NSEvent *event)
 {
@@ -68,6 +68,6 @@ NativeWebGestureEvent::NativeWebGestureEvent(NSEvent *event, NSView *view)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MAC_GESTURE_EVENTS)

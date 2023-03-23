@@ -36,7 +36,7 @@
 #import <CyberKit/WKURLSchemeHandler.h>
 #import <CyberKit/WKURLSchemeTaskPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>
@@ -200,7 +200,7 @@ TEST(WKWebView, JavascriptURLNavigation)
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"jsurl://host1/main.html"]]];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif // PLATFORM(MAC)

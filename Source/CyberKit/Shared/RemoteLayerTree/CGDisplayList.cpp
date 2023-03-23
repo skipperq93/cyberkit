@@ -30,7 +30,7 @@
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
 
-namespace WebKit {
+namespace CyberKit {
 
 void CGDisplayList::encode(IPC::Encoder& encoder) const
 {

@@ -29,7 +29,7 @@
 #include "FormDataReference.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void LoadParameters::encode(IPC::Encoder& encoder) const
 {
@@ -189,4 +189,4 @@ bool LoadParameters::platformDecode(IPC::Decoder&, LoadParameters&)
 #endif // !PLATFORM(COCOA)
 
 
-} // namespace WebKit
+} // namespace CyberKit

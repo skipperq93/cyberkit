@@ -29,7 +29,7 @@
 #include <CyberCore/BlobRegistry.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void NetworkProcessPlatformStrategies::initialize()

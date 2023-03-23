@@ -28,11 +28,11 @@
 
 #include "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebMouseEvent::NativeWebMouseEvent(struct wpe_input_pointer_event* event, float deviceScaleFactor)
     : WebMouseEvent(WebEventFactory::createWebMouseEvent(event, deviceScaleFactor))
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

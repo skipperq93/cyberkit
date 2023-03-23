@@ -23,7 +23,7 @@
 header: "WebGPUPrimitiveState.h"
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::PrimitiveState {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::PrimitiveState {
     PAL::WebGPU::PrimitiveTopology topology
     std::optional<PAL::WebGPU::IndexFormat> stripIndexFormat
     PAL::WebGPU::FrontFace frontFace

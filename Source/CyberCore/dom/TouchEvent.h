@@ -27,7 +27,7 @@
 #pragma once
 
 #if ENABLE(IOS_TOUCH_EVENTS)
-#include <WebKitAdditions/TouchEventIOS.h>
+#include <CyberKitAdditions/TouchEventIOS.h>
 #elif ENABLE(TOUCH_EVENTS)
 
 #include "MouseRelatedEvent.h"

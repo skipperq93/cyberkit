@@ -780,7 +780,7 @@ void RenderObject::collectSelectionGeometries(Vector<SelectionGeometry>& geometr
     Vector<FloatQuad> quads;
 
     if (!firstChildSlow()) {
-        // FIXME: WebKit's position for an empty span after a BR is incorrect, so we can't trust 
+        // FIXME: CyberKit's position for an empty span after a BR is incorrect, so we can't trust 
         // quads for them. We don't need selection geometries for those anyway though, since they 
         // are just empty containers. See <https://bugs.webkit.org/show_bug.cgi?id=49358>.
         RenderObject* previous = previousSibling();

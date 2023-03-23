@@ -31,7 +31,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool createWrapper(CFAllocatorRef allocator, const CMBaseVTable* baseVTable, CMBaseClassID classID, CMBaseObjectRef* wrapper)
 {
@@ -48,6 +48,6 @@ const CMBaseVTable* wrapperVTable(CMBaseObjectRef wrapper)
     return PAL::CMBaseObjectGetVTable(wrapper);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

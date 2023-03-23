@@ -22,12 +22,12 @@
 
 #if HAVE(TOUCH_BAR)
 
-enum class WebKit::ItemType : uint8_t {
+enum class CyberKit::ItemType : uint8_t {
     Button
 };
 
-struct WebKit::TouchBarMenuItemData {
-    WebKit::ItemType type;
+struct CyberKit::TouchBarMenuItemData {
+    CyberKit::ItemType type;
     String identifier;
     float priority;
 };

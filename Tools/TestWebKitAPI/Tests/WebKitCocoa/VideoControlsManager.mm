@@ -66,7 +66,7 @@
     }];
 
     setupAction();
-    TestWebKitAPI::Util::run(&doneWaiting);
+    TestCyberKitAPI::Util::run(&doneWaiting);
 }
 
 - (void)waitForMediaControlsToShow
@@ -101,15 +101,15 @@
         }];
     }
 
-    TestWebKitAPI::Util::run(&pageHasLoaded);
-    TestWebKitAPI::Util::run(&autoplayingIsFinished);
+    TestCyberKitAPI::Util::run(&pageHasLoaded);
+    TestCyberKitAPI::Util::run(&autoplayingIsFinished);
 }
 
 - (NSString *)controlledElementID
 {
     _isDoneQueryingControlledElementID = false;
     [self _requestControlledElementID];
-    TestWebKitAPI::Util::run(&_isDoneQueryingControlledElementID);
+    TestCyberKitAPI::Util::run(&_isDoneQueryingControlledElementID);
     return _controlledElementID;
 }
 
@@ -121,7 +121,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 RetainPtr<VideoControlsManagerTestWebView> setUpWebViewForTestingVideoControlsManager(NSRect frame)
 {
@@ -232,7 +232,7 @@ TEST(VideoControlsManager, VideoControlsManagerMultipleVideosShowControlsForLast
         firstVideoPaused = true;
     }];
 
-    TestWebKitAPI::Util::run(&secondVideoPaused);
+    TestCyberKitAPI::Util::run(&secondVideoPaused);
 }
 
 TEST(VideoControlsManager, VideoControlsManagerMultipleVideosSwitchControlledVideoWhenScrolling)
@@ -360,7 +360,7 @@ TEST(VideoControlsManager, VideoControlsManagerAudioElementFollowingUserInteract
 
     [webView mouseDownAtPoint:NSMakePoint(200, 200) simulatePressure:YES];
 
-    TestWebKitAPI::Util::run(&secondAudioPlaying);
+    TestCyberKitAPI::Util::run(&secondAudioPlaying);
     while ([[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]]) {
         if ([webView _hasActiveVideoForControlsManager] && [[webView controlledElementID] isEqualToString:@"second"])
             break;
@@ -371,7 +371,7 @@ TEST(VideoControlsManager, VideoControlsManagerTearsDownMediaControlsOnDealloc)
 {
     RetainPtr<VideoControlsManagerTestWebView> webView = setUpWebViewForTestingVideoControlsManager(NSMakeRect(0, 0, 100, 100));
 
-    NSURL *urlOfVideo = [[NSBundle mainBundle] URLForResource:@"video-with-audio" withExtension:@"mp4" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *urlOfVideo = [[NSBundle mainBundle] URLForResource:@"video-with-audio" withExtension:@"mp4" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadFileURL:urlOfVideo allowingReadAccessToURL:[urlOfVideo URLByDeletingLastPathComponent]];
 
     __block bool finishedTest = false;
@@ -383,7 +383,7 @@ TEST(VideoControlsManager, VideoControlsManagerTearsDownMediaControlsOnDealloc)
         finishedTest = true;
     }];
 
-    TestWebKitAPI::Util::run(&finishedTest);
+    TestCyberKitAPI::Util::run(&finishedTest);
 }
 
 TEST(VideoControlsManager, VideoControlsManagerDoesNotShowMediaControlsForOffscreenVideo)
@@ -423,10 +423,10 @@ TEST(VideoControlsManager, VideoControlsManagerSmallVideoInMediaDocument)
         finishedLoad = true;
     }];
     
-    NSURL *urlOfVideo = [[NSBundle mainBundle] URLForResource:@"video-with-audio" withExtension:@"mp4" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *urlOfVideo = [[NSBundle mainBundle] URLForResource:@"video-with-audio" withExtension:@"mp4" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadFileURL:urlOfVideo allowingReadAccessToURL:[urlOfVideo URLByDeletingLastPathComponent]];
     
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
     
     // We expect the media controller to be present because this is a media document.
     EXPECT_TRUE([webView _hasActiveVideoForControlsManager]);
@@ -500,6 +500,6 @@ TEST(VideoControlsManager, VideoControlsManagerDoesNotChangeValuesExposedToJavaS
     EXPECT_EQ(1.0, [[webView objectByEvaluatingJavaScript:@"document.getElementsByTagName('video')[0].defaultPlaybackRate"] doubleValue]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

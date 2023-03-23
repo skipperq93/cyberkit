@@ -30,23 +30,23 @@
 #include <wtf/text/CString.h>
 
 #define WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER            (webkit_autoconfig_proxy_resolver_get_type ())
-#define WEBKIT_AUTOCONFIG_PROXY_RESOLVER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER, WebKitAutoconfigProxyResolver))
+#define WEBKIT_AUTOCONFIG_PROXY_RESOLVER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER, CyberKitAutoconfigProxyResolver))
 #define WEBKIT_IS_AUTOCONFIG_PROXY_RESOLVER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER))
-#define WEBKIT_AUTOCONFIG_PROXY_RESOLVER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER, WebKitAutoconfigProxyResolverClass))
+#define WEBKIT_AUTOCONFIG_PROXY_RESOLVER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER, CyberKitAutoconfigProxyResolverClass))
 #define WEBKIT_IS_AUTOCONFIG_PROXY_RESOLVER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER))
-#define WEBKIT_AUTOCONFIG_PROXY_RESOLVER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER, WebKitAutoconfigProxyResolverClass))
+#define WEBKIT_AUTOCONFIG_PROXY_RESOLVER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), WEBKIT_TYPE_AUTOCONFIG_PROXY_RESOLVER, CyberKitAutoconfigProxyResolverClass))
 
-typedef struct _WebKitAutoconfigProxyResolver WebKitAutoconfigProxyResolver;
-typedef struct _WebKitAutoconfigProxyResolverClass WebKitAutoconfigProxyResolverClass;
-typedef struct _WebKitAutoconfigProxyResolverPrivate WebKitAutoconfigProxyResolverPrivate;
+typedef struct _CyberKitAutoconfigProxyResolver CyberKitAutoconfigProxyResolver;
+typedef struct _CyberKitAutoconfigProxyResolverClass CyberKitAutoconfigProxyResolverClass;
+typedef struct _CyberKitAutoconfigProxyResolverPrivate CyberKitAutoconfigProxyResolverPrivate;
 
-struct _WebKitAutoconfigProxyResolver {
+struct _CyberKitAutoconfigProxyResolver {
     GObject parent;
 
-    WebKitAutoconfigProxyResolverPrivate* priv;
+    CyberKitAutoconfigProxyResolverPrivate* priv;
 };
 
-struct _WebKitAutoconfigProxyResolverClass {
+struct _CyberKitAutoconfigProxyResolverClass {
     GObjectClass parentClass;
 };
 

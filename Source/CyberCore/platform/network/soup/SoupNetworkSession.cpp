@@ -33,7 +33,7 @@
 #include "GUniquePtrSoup.h"
 #include "Logging.h"
 #include "SoupVersioning.h"
-#include "WebKitAutoconfigProxyResolver.h"
+#include "CyberKitAutoconfigProxyResolver.h"
 #include <glib/gstdio.h>
 #include <libsoup/soup.h>
 #include <pal/crypto/CryptoDigest.h>
@@ -259,7 +259,7 @@ static inline bool stringIsNumeric(const char* str)
     return true;
 }
 
-// Old versions of WebKit created this cache.
+// Old versions of CyberKit created this cache.
 void SoupNetworkSession::clearOldSoupCache(const String& cacheDirectory)
 {
     CString cachePath = FileSystem::fileSystemRepresentation(cacheDirectory);

@@ -34,7 +34,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteScrollingCoordinatorTransaction {
 public:
@@ -62,6 +62,6 @@ private:
     bool m_clearScrollLatching { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

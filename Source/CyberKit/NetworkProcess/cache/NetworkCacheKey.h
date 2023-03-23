@@ -33,7 +33,7 @@ namespace WTF::Persistence {
 template<typename> struct Coder;
 }
 
-namespace WebKit::NetworkCache {
+namespace CyberKit::NetworkCache {
 
 struct DataKey {
     String partition;
@@ -108,13 +108,13 @@ private:
 namespace WTF {
 
 struct NetworkCacheKeyHash {
-    static unsigned hash(const WebKit::NetworkCache::Key& key)
+    static unsigned hash(const CyberKit::NetworkCache::Key& key)
     {
         static_assert(SHA1::hashSize >= sizeof(unsigned), "Hash size must be greater than sizeof(unsigned)");
         return *reinterpret_cast<const unsigned*>(key.hash().data());
     }
 
-    static bool equal(const WebKit::NetworkCache::Key& a, const WebKit::NetworkCache::Key& b)
+    static bool equal(const CyberKit::NetworkCache::Key& a, const CyberKit::NetworkCache::Key& b)
     {
         return a == b;
     }
@@ -123,13 +123,13 @@ struct NetworkCacheKeyHash {
 };
 
 template<typename T> struct DefaultHash;
-template<> struct DefaultHash<WebKit::NetworkCache::Key> : NetworkCacheKeyHash { };
+template<> struct DefaultHash<CyberKit::NetworkCache::Key> : NetworkCacheKeyHash { };
 
-template<> struct HashTraits<WebKit::NetworkCache::Key> : SimpleClassHashTraits<WebKit::NetworkCache::Key> {
+template<> struct HashTraits<CyberKit::NetworkCache::Key> : SimpleClassHashTraits<CyberKit::NetworkCache::Key> {
     static const bool emptyValueIsZero = false;
 
     static const bool hasIsEmptyValueFunction = true;
-    static bool isEmptyValue(const WebKit::NetworkCache::Key& key) { return key.isNull(); }
+    static bool isEmptyValue(const CyberKit::NetworkCache::Key& key) { return key.isNull(); }
 };
 
 } // namespace WTF

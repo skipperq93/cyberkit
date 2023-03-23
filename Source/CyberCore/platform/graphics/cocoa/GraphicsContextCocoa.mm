@@ -148,7 +148,7 @@ static inline void drawDotsForDocumentMarker(CGContextRef context, const FloatRe
 }
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/GraphicsContextCocoaAdditions.mm>
+#include <CyberKitAdditions/GraphicsContextCocoaAdditions.mm>
 #else
 void GraphicsContextCG::drawDotsForDocumentMarker(const FloatRect& rect, DocumentMarkerLineStyle style)
 {

@@ -92,7 +92,7 @@ class VideoFrameCV;
 typedef struct __CVBuffer* CVPixelBufferRef;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using LayerHostingContextID = uint32_t;
 class LayerHostingContext;
@@ -415,6 +415,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

@@ -24,7 +24,7 @@
  */
 
 import XCTest
-import WebKit
+import CyberKit
 
 final class JavaScriptToSwiftConversions : XCTestCase {
     #if os(macOS)

@@ -42,7 +42,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, ElementAtPoint)
 {
@@ -70,4 +70,4 @@ TEST(CyberKitLegacy, ElementAtPoint)
     EXPECT_WK_STREQ(@"BODY", [domElement tagName]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

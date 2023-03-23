@@ -35,7 +35,7 @@
 #include <variant>
 #include <wtf/Ref.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderPassDepthStencilAttachment {
     WebGPUIdentifier view;
@@ -51,6 +51,6 @@ struct RenderPassDepthStencilAttachment {
     bool stencilReadOnly { false };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

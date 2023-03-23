@@ -30,7 +30,7 @@
 #include "DataReference.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void UserMessage::encode(IPC::Encoder& encoder) const
 {

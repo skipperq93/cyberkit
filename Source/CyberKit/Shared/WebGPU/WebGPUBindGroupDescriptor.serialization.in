@@ -21,8 +21,8 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::BindGroupDescriptor : WebKit::WebGPU::ObjectDescriptorBase {
-    WebKit::WebGPUIdentifier bindGroupLayout;
-    Vector<WebKit::WebGPU::BindGroupEntry> entries;
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::BindGroupDescriptor : CyberKit::WebGPU::ObjectDescriptorBase {
+    CyberKit::WebGPUIdentifier bindGroupLayout;
+    Vector<CyberKit::WebGPU::BindGroupEntry> entries;
 };
 #endif

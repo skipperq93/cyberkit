@@ -117,7 +117,7 @@
     _downloadDidFinish = ^(WKDownload *) {
         finished = true;
     };
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 - (Vector<DownloadCallback>)takeCallbackRecord

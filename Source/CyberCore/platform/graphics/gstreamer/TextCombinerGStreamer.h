@@ -32,30 +32,30 @@
 
 #define WEBKIT_TYPE_TEXT_COMBINER webkit_text_combiner_get_type()
 
-#define WEBKIT_TEXT_COMBINER(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_TEXT_COMBINER, WebKitTextCombiner))
-#define WEBKIT_TEXT_COMBINER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_TEXT_COMBINER, WebKitTextCombinerClass))
+#define WEBKIT_TEXT_COMBINER(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_TEXT_COMBINER, CyberKitTextCombiner))
+#define WEBKIT_TEXT_COMBINER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_TEXT_COMBINER, CyberKitTextCombinerClass))
 #define WEBKIT_IS_TEXT_COMBINER(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_TEXT_COMBINER))
 #define WEBKIT_IS_TEXT_COMBINER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_TEXT_COMBINER))
-#define WEBKIT_TEXT_COMBINER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_TEXT_COMBINER, WebKitTextCombinerClass))
+#define WEBKIT_TEXT_COMBINER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_TEXT_COMBINER, CyberKitTextCombinerClass))
 
 GType webkit_text_combiner_get_type(void);
 
-typedef struct _WebKitTextCombiner WebKitTextCombiner;
-typedef struct _WebKitTextCombinerClass WebKitTextCombinerClass;
-typedef struct _WebKitTextCombinerPrivate WebKitTextCombinerPrivate;
+typedef struct _CyberKitTextCombiner CyberKitTextCombiner;
+typedef struct _CyberKitTextCombinerClass CyberKitTextCombinerClass;
+typedef struct _CyberKitTextCombinerPrivate CyberKitTextCombinerPrivate;
 
-struct _WebKitTextCombiner {
+struct _CyberKitTextCombiner {
     GstBin parent;
 
-    WebKitTextCombinerPrivate* priv;
+    CyberKitTextCombinerPrivate* priv;
 };
 
-struct _WebKitTextCombinerClass {
+struct _CyberKitTextCombinerClass {
     GstBinClass parentClass;
 };
 
 GstElement* webkitTextCombinerNew();
 
-void webKitTextCombinerHandleCaps(WebKitTextCombiner*, GstPad*, const GstCaps*);
+void webKitTextCombinerHandleCaps(CyberKitTextCombiner*, GstPad*, const GstCaps*);
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

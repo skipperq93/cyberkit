@@ -28,7 +28,7 @@
 #import "APIFrameHandle.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::FrameHandle> {
     using WrapperClass = _WKFrameHandle;

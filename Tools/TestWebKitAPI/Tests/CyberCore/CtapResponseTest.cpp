@@ -44,7 +44,7 @@
 #include <CyberCore/U2fResponseConverter.h>
 #include <CyberCore/WebAuthenticationUtils.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 using namespace fido;
 
@@ -654,6 +654,6 @@ TEST(CTAPResponseTest, TestSerializeGetInfoResponse)
     EXPECT_EQ(memcmp(responseAsCBOR.data(), TestData::kTestGetInfoResponsePlatformDevice + 1, responseAsCBOR.size()), 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

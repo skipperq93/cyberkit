@@ -67,7 +67,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebProcessCreationParameters {
     WebProcessCreationParameters();
@@ -266,4 +266,4 @@ struct WebProcessCreationParameters {
     String timeZoneOverride;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

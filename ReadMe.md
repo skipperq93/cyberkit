@@ -1,18 +1,18 @@
-# WebKit
+# CyberKit
 
-WebKit is a cross-platform web browser engine. On iOS and macOS, it powers Safari, Mail, iBooks, and many other applications.
+CyberKit is a cross-platform web browser engine. On iOS and macOS, it powers Safari, Mail, iBooks, and many other applications.
 
 ## Feature Status
 
-Visit [WebKit Feature Status](https://webkit.org/status/) page to see which Web API has been implemented, in development, or under consideration.
+Visit [CyberKit Feature Status](https://webkit.org/status/) page to see which Web API has been implemented, in development, or under consideration.
 
 ## Trying the Latest
 
-On macOS, [download Safari Technology Preview](https://webkit.org/downloads/) to test the latest version of WebKit. On Linux, download [Epiphany Technology Preview](https://webkitgtk.org/epiphany-tech-preview). On Windows, you'll have to build it yourself.
+On macOS, [download Safari Technology Preview](https://webkit.org/downloads/) to test the latest version of CyberKit. On Linux, download [Epiphany Technology Preview](https://webkitgtk.org/epiphany-tech-preview). On Windows, you'll have to build it yourself.
 
 ## Reporting Bugs
 
-1. [Search WebKit Bugzilla](https://bugs.webkit.org/query.cgi?format=specific&product=WebKit) to see if there is an existing report for the bug you've encountered.
+1. [Search CyberKit Bugzilla](https://bugs.webkit.org/query.cgi?format=specific&product=CyberKit) to see if there is an existing report for the bug you've encountered.
 2. [Create a Bugzilla account](https://bugs.webkit.org/createaccount.cgi) to to report bugs (and to comment on them) if you haven't done so already.
 3. File a bug in accordance with [our guidelines](https://webkit.org/bug-report-guidelines/).
 
@@ -20,19 +20,19 @@ Once your bug is filed, you will receive email when it is updated at each stage 
 
 ## Getting the Code
 
-Run the following command to clone WebKit's Git repository:
+Run the following command to clone CyberKit's Git repository:
 
 ```
-git clone https://github.com/WebKit/WebKit.git WebKit
+git clone https://github.com/CyberKit/CyberKit.git CyberKit
 ```
 
-## Building WebKit
+## Building CyberKit
 
 ### Building macOS Port
 
 Install Xcode and its command line tools if you haven't done so already:
 
-1. **Install Xcode** Get Xcode from https://developer.apple.com/downloads. To build WebKit for OS X, Xcode 5.1.1 or later is required. To build WebKit for iOS Simulator, Xcode 7 or later is required.
+1. **Install Xcode** Get Xcode from https://developer.apple.com/downloads. To build CyberKit for OS X, Xcode 5.1.1 or later is required. To build CyberKit for iOS Simulator, Xcode 7 or later is required.
 2. **Install the Xcode Command Line Tools** In Terminal, run the command: `xcode-select --install`
 
 Run the following command to build a debug build with debugging symbols and assertions:
@@ -45,9 +45,9 @@ For performance testing, and other purposes, use `--release` instead.
 
 ### Using Xcode
 
-You can open `WebKit.xcworkspace` to build and debug WebKit within Xcode.
+You can open `CyberKit.xcworkspace` to build and debug CyberKit within Xcode.
 
-If you don't use a custom build location in Xcode preferences, you have to update the workspace settings to use `WebKitBuild` directory.  In menu bar, choose File > Workspace Settings, then click the Advanced button, select "Custom", "Relative to Workspace", and enter `WebKitBuild` for both Products and Intermediates.
+If you don't use a custom build location in Xcode preferences, you have to update the workspace settings to use `CyberKitBuild` directory.  In menu bar, choose File > Workspace Settings, then click the Advanced button, select "Custom", "Relative to Workspace", and enter `CyberKitBuild` for both Products and Intermediates.
 
 ### Embedded Builds
 
@@ -90,7 +90,7 @@ Tools/Scripts/update-webkitgtk-libs
 Tools/Scripts/build-webkit --gtk --debug
 ```
 
-For more information on building WebKitGTK+, see the [wiki page](https://trac.webkit.org/wiki/BuildingGtk).
+For more information on building CyberKitGTK+, see the [wiki page](https://trac.webkit.org/wiki/BuildingGtk).
 
 ### Building the WPE Port
 
@@ -112,13 +112,13 @@ Tools/Scripts/build-webkit --wpe --debug
 
 ### Building Windows Port
 
-For building WebKit on Windows, see the [WebKit on Windows page](https://webkit.org/webkit-on-windows/).
+For building CyberKit on Windows, see the [CyberKit on Windows page](https://webkit.org/webkit-on-windows/).
 
-## Running WebKit
+## Running CyberKit
 
 ### With Safari and Other macOS Applications
 
-Run the following command to launch Safari with your local build of WebKit:
+Run the following command to launch Safari with your local build of CyberKit:
 
 ```
 Tools/Scripts/run-safari --debug
@@ -126,7 +126,7 @@ Tools/Scripts/run-safari --debug
 
 The `run-safari` script sets the `DYLD_FRAMEWORK_PATH` environment variable to point to your build products, and then launches `/Applications/Safari.app`. `DYLD_FRAMEWORK_PATH` tells the system loader to prefer your build products over the frameworks installed in `/System/Library/Frameworks`.
 
-To run other applications with your local build of WebKit, run the following command:
+To run other applications with your local build of CyberKit, run the following command:
 
 ```
 Tools/Scripts/run-webkit-app <application-path>
@@ -134,7 +134,7 @@ Tools/Scripts/run-webkit-app <application-path>
 
 ### iOS Simulator
 
-Run the following command to launch iOS simulator with your local build of WebKit:
+Run the following command to launch iOS simulator with your local build of CyberKit:
 
 ```
 run-safari --debug --ios-simulator
@@ -154,5 +154,5 @@ Pass one of `--gtk`, `--jsc-only`, or `--wpe` to indicate the port to use.
 
 ## Contribute
 
-Congratulations! You’re up and running. Now you can begin coding in WebKit and contribute your fixes and new features to the project. For details on submitting your code to the project, read [Contributing Code](https://webkit.org/contributing-code/).
+Congratulations! You’re up and running. Now you can begin coding in CyberKit and contribute your fixes and new features to the project. For details on submitting your code to the project, read [Contributing Code](https://webkit.org/contributing-code/).
 

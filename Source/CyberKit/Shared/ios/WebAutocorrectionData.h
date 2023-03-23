@@ -41,13 +41,13 @@ class FloatRect;
 
 OBJC_CLASS UIFont;
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebAutocorrectionData {
     Vector<CyberCore::FloatRect> textRects;
     RetainPtr<UIFont> font;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

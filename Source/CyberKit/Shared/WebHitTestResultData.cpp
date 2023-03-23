@@ -33,7 +33,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebHitTestResultData::WebHitTestResultData()
@@ -86,7 +86,7 @@ WebHitTestResultData::WebHitTestResultData(const HitTestResult& hitTestResult, b
     if (Image* image = hitTestResult.image()) {
         RefPtr<FragmentedSharedBuffer> buffer = image->data();
         if (buffer)
-            imageSharedMemory = WebKit::SharedMemory::copyBuffer(*buffer);
+            imageSharedMemory = CyberKit::SharedMemory::copyBuffer(*buffer);
     }
 
     if (auto target = RefPtr { hitTestResult.innerNonSharedNode() }) {
@@ -110,7 +110,7 @@ WebHitTestResultData::WebHitTestResultData(const HitTestResult& hitTestResult, b
     }
 }
 
-WebHitTestResultData::WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const CyberCore::IntRect& elementBoundingBox, const WebKit::WebHitTestResultData::IsScrollbar& isScrollbar, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<WebKit::SharedMemory::Handle>& imageHandle, const RefPtr<WebKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
+WebHitTestResultData::WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const CyberCore::IntRect& elementBoundingBox, const CyberKit::WebHitTestResultData::IsScrollbar& isScrollbar, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<CyberKit::SharedMemory::Handle>& imageHandle, const RefPtr<CyberKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
 #if PLATFORM(MAC)
     const WebHitTestResultPlatformData& platformData,
 #endif
@@ -141,7 +141,7 @@ WebHitTestResultData::WebHitTestResultData(const String& absoluteImageURL, const
         , linkTextIndicator(linkTextIndicator)
 {
     if (imageHandle && !imageHandle->isNull())
-        imageSharedMemory = WebKit::SharedMemory::map(*imageHandle, WebKit::SharedMemory::Protection::ReadOnly);
+        imageSharedMemory = CyberKit::SharedMemory::map(*imageHandle, CyberKit::SharedMemory::Protection::ReadOnly);
 }
 
 WebHitTestResultData::~WebHitTestResultData()
@@ -169,14 +169,14 @@ IntRect WebHitTestResultData::elementBoundingBoxInWindowCoordinates(const CyberC
     return view->contentsToWindow(renderer->absoluteBoundingBoxRect());
 }
 
-std::optional<WebKit::SharedMemory::Handle> WebHitTestResultData::getImageSharedMemoryHandle() const
+std::optional<CyberKit::SharedMemory::Handle> WebHitTestResultData::getImageSharedMemoryHandle() const
 {
-    std::optional<WebKit::SharedMemory::Handle> imageHandle = std::nullopt;
+    std::optional<CyberKit::SharedMemory::Handle> imageHandle = std::nullopt;
     if (imageSharedMemory && imageSharedMemory->data()) {
-        if (auto handle = imageSharedMemory->createHandle(WebKit::SharedMemory::Protection::ReadOnly))
+        if (auto handle = imageSharedMemory->createHandle(CyberKit::SharedMemory::Protection::ReadOnly))
             imageHandle = WTFMove(*handle);
     }
     return imageHandle;
 }
 
-} // WebKit
+} // CyberKit

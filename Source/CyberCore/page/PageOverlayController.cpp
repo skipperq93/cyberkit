@@ -453,4 +453,4 @@ void PageOverlayController::tiledBackingUsageChanged(const GraphicsLayer* graphi
         graphicsLayer->tiledBacking()->setIsInWindow(m_page.isInWindow());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

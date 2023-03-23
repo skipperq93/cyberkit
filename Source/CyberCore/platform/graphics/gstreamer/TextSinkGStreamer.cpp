@@ -39,17 +39,17 @@ GST_DEBUG_CATEGORY_STATIC(webkitTextSinkDebug);
 
 using namespace CyberCore;
 
-struct _WebKitTextSinkPrivate {
+struct _CyberKitTextSinkPrivate {
     GRefPtr<GstElement> appSink;
     WeakPtr<MediaPlayerPrivateGStreamer> mediaPlayerPrivate;
     const char* streamId { nullptr };
 };
 
 #define webkit_text_sink_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitTextSink, webkit_text_sink, GST_TYPE_BIN,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitTextSink, webkit_text_sink, GST_TYPE_BIN,
     GST_DEBUG_CATEGORY_INIT(webkitTextSinkDebug, "webkittextsink", 0, "webkit text sink"))
 
-static void webkitTextSinkHandleSample(WebKitTextSink* self, GRefPtr<GstSample>&& sample)
+static void webkitTextSinkHandleSample(CyberKitTextSink* self, GRefPtr<GstSample>&& sample)
 {
     auto* priv = self->priv;
     if (!priv->streamId) {
@@ -90,17 +90,17 @@ static void webkitTextSinkConstructed(GObject* object)
     auto textCaps = adoptGRef(gst_caps_new_empty_simple("application/x-subtitle-vtt"));
     g_object_set(priv->appSink.get(), "emit-signals", TRUE, "enable-last-sample", FALSE, "caps", textCaps.get(), nullptr);
 
-    g_signal_connect(priv->appSink.get(), "new-sample", G_CALLBACK(+[](GstElement* appSink, WebKitTextSink* sink) -> GstFlowReturn {
+    g_signal_connect(priv->appSink.get(), "new-sample", G_CALLBACK(+[](GstElement* appSink, CyberKitTextSink* sink) -> GstFlowReturn {
         webkitTextSinkHandleSample(sink, adoptGRef(gst_app_sink_pull_sample(GST_APP_SINK(appSink))));
         return GST_FLOW_OK;
     }), sink);
 
-    g_signal_connect(priv->appSink.get(), "new-preroll", G_CALLBACK(+[](GstElement* appSink, WebKitTextSink* sink) -> GstFlowReturn {
+    g_signal_connect(priv->appSink.get(), "new-preroll", G_CALLBACK(+[](GstElement* appSink, CyberKitTextSink* sink) -> GstFlowReturn {
         webkitTextSinkHandleSample(sink, adoptGRef(gst_app_sink_pull_preroll(GST_APP_SINK(appSink))));
         return GST_FLOW_OK;
     }), sink);
 
-    // We want to get cues as quickly as possible so WebKit has time to handle them,
+    // We want to get cues as quickly as possible so CyberKit has time to handle them,
     // and we don't want cues to block when they come in the wrong order.
     gst_base_sink_set_sync(GST_BASE_SINK_CAST(sink->priv->appSink.get()), false);
 }
@@ -117,13 +117,13 @@ static gboolean webkitTextSinkQuery(GstElement* element, GstQuery* query)
     }
 }
 
-static void webkit_text_sink_class_init(WebKitTextSinkClass* klass)
+static void webkit_text_sink_class_init(CyberKitTextSinkClass* klass)
 {
     auto* gobjectClass = G_OBJECT_CLASS(klass);
     auto* elementClass = GST_ELEMENT_CLASS(klass);
 
-    gst_element_class_set_metadata(elementClass, "WebKit text sink", GST_ELEMENT_FACTORY_KLASS_SINK,
-        "WebKit's text sink collecting cues encoded in WebVTT by the WebKit text-combiner",
+    gst_element_class_set_metadata(elementClass, "CyberKit text sink", GST_ELEMENT_FACTORY_KLASS_SINK,
+        "CyberKit's text sink collecting cues encoded in WebVTT by the CyberKit text-combiner",
         "Brendan Long <b.long@cablelabs.com>");
 
     gobjectClass->constructed = GST_DEBUG_FUNCPTR(webkitTextSinkConstructed);

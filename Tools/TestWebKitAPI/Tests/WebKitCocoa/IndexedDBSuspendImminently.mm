@@ -33,7 +33,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
@@ -57,7 +57,7 @@ static bool idbActivitiesStarted;
 
 static void runUntilMessageReceived(NSString* expectedMessage)
 {
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string = (NSString *)[lastScriptMessage body];
     EXPECT_WK_STREQ(expectedMessage, string.get());
     receivedScriptMessage = false;
@@ -77,13 +77,13 @@ TEST(IndexedDB, IndexedDBSuspendImminently)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     auto handler = adoptNS([[IndexedDBSuspendImminentlyMessageHandler alloc] init]);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBSuspendImminently" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBSuspendImminently" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     runUntilMessageReceived(@"Continue");
 

@@ -38,7 +38,7 @@ namespace CyberCore {
 class FragmentedSharedBuffer;
 }
 
-namespace WebKit::NetworkCache {
+namespace CyberKit::NetworkCache {
 
 class Entry {
     WTF_MAKE_FAST_ALLOCATED;

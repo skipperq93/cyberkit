@@ -72,19 +72,19 @@ public:
     // once it's deserialised over IPC.
     RefPtr<CyberCore::SharedBuffer> unsafeBuffer() const;
     const uint8_t* data() const;
-    RefPtr<WebKit::SharedMemory> sharedCopy() const;
+    RefPtr<CyberKit::SharedMemory> sharedCopy() const;
 
     void encode(Encoder&) const;
     static WARN_UNUSED_RETURN std::optional<SharedBufferReference> decode(Decoder&);
 
 private:
-    SharedBufferReference(Ref<WebKit::SharedMemory>&& memory, size_t size)
+    SharedBufferReference(Ref<CyberKit::SharedMemory>&& memory, size_t size)
         : m_size(size)
         , m_memory(WTFMove(memory)) { }
 
     size_t m_size { 0 };
     RefPtr<CyberCore::FragmentedSharedBuffer> m_buffer;
-    RefPtr<WebKit::SharedMemory> m_memory; // Only set on the receiver side and if m_size isn't 0.
+    RefPtr<CyberKit::SharedMemory> m_memory; // Only set on the receiver side and if m_size isn't 0.
 };
 
 } // namespace IPC

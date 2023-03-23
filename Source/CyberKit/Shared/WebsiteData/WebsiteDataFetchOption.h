@@ -25,11 +25,11 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsiteDataFetchOption : uint8_t {
     ComputeSizes = 1 << 0,
     DoNotCreateProcesses = 1 << 1,
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsiteMediaSourcePolicy : uint8_t {
     Default,
@@ -35,4 +35,4 @@ enum class WebsiteMediaSourcePolicy : uint8_t {
     Enable
 };
 
-} // namespace WebKit
+} // namespace CyberKit

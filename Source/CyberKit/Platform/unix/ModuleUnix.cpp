@@ -26,7 +26,7 @@
 #include "config.h"
 #include "Module.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 bool Module::load()
 {

@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUOrigin2D.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<Origin2DDict> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::Origin2DDict& origin2DDict)
 {
@@ -68,6 +68,6 @@ std::optional<PAL::WebGPU::Origin2D> ConvertFromBackingContext::convertFromBacki
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

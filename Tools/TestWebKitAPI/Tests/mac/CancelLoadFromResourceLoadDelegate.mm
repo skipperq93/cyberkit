@@ -58,7 +58,7 @@ static bool didFinishLoad = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, CancelLoadFromResourceLoadDelegate)
 {
@@ -70,11 +70,11 @@ TEST(CyberKitLegacy, CancelLoadFromResourceLoadDelegate)
         RetainPtr<CancelLoadFromResourceLoadDelegateFrameLoadDelegate> frameLoadDelegate = adoptNS([[CancelLoadFromResourceLoadDelegateFrameLoadDelegate alloc] init]);
         webView.get().frameLoadDelegate = frameLoadDelegate.get();
 
-        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CancelLoadFromResourceLoadDelegate" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CancelLoadFromResourceLoadDelegate" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&didFinishLoad);
     }
     // If we finished without crashing, the test passed.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

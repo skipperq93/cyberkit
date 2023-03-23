@@ -46,7 +46,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct PrintInfo {
     PrintInfo() = default;
@@ -82,16 +82,16 @@ struct PrintInfo {
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, PrintInfo&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if PLATFORM(GTK)
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::PrintInfo::PrintMode> {
+template<> struct EnumTraits<CyberKit::PrintInfo::PrintMode> {
     using values = EnumValues<
-        WebKit::PrintInfo::PrintMode,
-        WebKit::PrintInfo::PrintMode::PrintModeAsync,
-        WebKit::PrintInfo::PrintMode::PrintModeSync
+        CyberKit::PrintInfo::PrintMode,
+        CyberKit::PrintInfo::PrintMode::PrintModeAsync,
+        CyberKit::PrintInfo::PrintMode::PrintModeSync
     >;
 };
 

@@ -30,7 +30,7 @@
 #include "Decoder.h"
 #include "Encoder.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void UserContentControllerParameters::encode(IPC::Encoder& encoder) const
 {
@@ -90,4 +90,4 @@ std::optional<UserContentControllerParameters> UserContentControllerParameters::
     }};
 }
     
-} // namespace WebKit
+} // namespace CyberKit

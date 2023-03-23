@@ -35,7 +35,7 @@
 #include <unistd.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 Data Data::mapToFile(const String& path) const
@@ -103,4 +103,4 @@ bool bytesEqual(const Data& a, const Data& b)
 }
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit

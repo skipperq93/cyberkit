@@ -35,7 +35,7 @@ namespace IPC {
 class SharedFileHandle;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class FileSystemStorageManager;
 enum class FileSystemStorageError : uint8_t;
@@ -83,4 +83,4 @@ private:
     std::optional<SyncAccessHandleInfo> m_activeSyncAccessHandle;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

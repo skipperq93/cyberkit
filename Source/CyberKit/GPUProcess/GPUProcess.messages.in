@@ -23,22 +23,22 @@
 #if ENABLE(GPU_PROCESS)
 
 messages -> GPUProcess LegacyReceiver {
-    InitializeGPUProcess(struct WebKit::GPUProcessCreationParameters processCreationParameters)
+    InitializeGPUProcess(struct CyberKit::GPUProcessCreationParameters processCreationParameters)
 
-    CreateGPUConnectionToWebProcess(CyberCore::ProcessIdentifier processIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle connectionHandle, struct WebKit::GPUProcessConnectionParameters parameters) -> () AllowedWhenWaitingForSyncReply
+    CreateGPUConnectionToWebProcess(CyberCore::ProcessIdentifier processIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle connectionHandle, struct CyberKit::GPUProcessConnectionParameters parameters) -> () AllowedWhenWaitingForSyncReply
     
-    UpdateGPUProcessPreferences(struct WebKit::GPUProcessPreferences preferences)
+    UpdateGPUProcessPreferences(struct CyberKit::GPUProcessPreferences preferences)
 
     PrepareToSuspend(bool isSuspensionImminent, MonotonicTime estimatedSuspendTime) -> ()
     ProcessDidResume()
 
-    AddSession(PAL::SessionID sessionID, struct WebKit::GPUProcessSessionParameters parameters)
+    AddSession(PAL::SessionID sessionID, struct CyberKit::GPUProcessSessionParameters parameters)
     RemoveSession(PAL::SessionID sessionID)
 
 #if ENABLE(MEDIA_STREAM)
     SetMockCaptureDevicesEnabled(bool isEnabled)
     SetOrientationForMediaCapture(uint64_t orientation);
-    UpdateSandboxAccess(Vector<WebKit::SandboxExtension::Handle> extensions);
+    UpdateSandboxAccess(Vector<CyberKit::SandboxExtension::Handle> extensions);
     UpdateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, CyberCore::ProcessIdentifier processID) -> ()
     UpdateCaptureOrigin(CyberCore::SecurityOriginData originData, CyberCore::ProcessIdentifier processID)
     AddMockMediaDevice(struct CyberCore::MockMediaDevice device)
@@ -62,7 +62,7 @@ messages -> GPUProcess LegacyReceiver {
 #endif
 
 #if ENABLE(VIDEO)
-    RequestBitmapImageForCurrentTime(CyberCore::ProcessIdentifier processIdentifier, CyberCore::MediaPlayerIdentifier playerIdentifier) -> (WebKit::ShareableBitmapHandle handle)
+    RequestBitmapImageForCurrentTime(CyberCore::ProcessIdentifier processIdentifier, CyberCore::MediaPlayerIdentifier playerIdentifier) -> (CyberKit::ShareableBitmapHandle handle)
 #endif
 
 #if ENABLE(CFPREFS_DIRECT_MODE)
@@ -70,7 +70,7 @@ messages -> GPUProcess LegacyReceiver {
 #endif
 
 #if PLATFORM(MAC)
-    OpenDirectoryCacheInvalidated(WebKit::SandboxExtension::Handle handle)
+    OpenDirectoryCacheInvalidated(CyberKit::SandboxExtension::Handle handle)
 #endif
 
 #if HAVE(AUDIO_COMPONENT_SERVER_REGISTRATIONS)
@@ -78,7 +78,7 @@ messages -> GPUProcess LegacyReceiver {
 #endif
 
 #if HAVE(POWERLOG_TASK_MODE_QUERY)
-    EnablePowerLogging(WebKit::SandboxExtension::Handle handle)
+    EnablePowerLogging(CyberKit::SandboxExtension::Handle handle)
 #endif
 
     WebProcessConnectionCountForTesting() -> (uint64_t count)

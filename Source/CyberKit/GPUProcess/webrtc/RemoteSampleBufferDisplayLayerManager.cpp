@@ -36,7 +36,7 @@
 #include "RemoteSampleBufferDisplayLayerMessages.h"
 #include <CyberCore/IntSize.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteSampleBufferDisplayLayerManager::RemoteSampleBufferDisplayLayerManager(GPUConnectionToWebProcess& gpuConnectionToWebProcess)
     : m_connectionToWebProcess(gpuConnectionToWebProcess)

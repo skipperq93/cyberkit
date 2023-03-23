@@ -24,8 +24,8 @@
 #if PLATFORM(COCOA) && ENABLE(GPU_PROCESS) && ENABLE(MEDIA_STREAM)
 
 messages -> RemoteMediaRecorderManager NotRefCounted {
-    CreateRecorder(WebKit::MediaRecorderIdentifier id, bool hasAudio, bool hasVideo, struct CyberCore::MediaRecorderPrivateOptions options) -> (std::optional<CyberCore::ExceptionData> creationError, String mimeType, unsigned audioBitRate, unsigned videoBitRate)
-    ReleaseRecorder(WebKit::MediaRecorderIdentifier id)
+    CreateRecorder(CyberKit::MediaRecorderIdentifier id, bool hasAudio, bool hasVideo, struct CyberCore::MediaRecorderPrivateOptions options) -> (std::optional<CyberCore::ExceptionData> creationError, String mimeType, unsigned audioBitRate, unsigned videoBitRate)
+    ReleaseRecorder(CyberKit::MediaRecorderIdentifier id)
 }
 
 #endif

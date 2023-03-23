@@ -439,7 +439,7 @@ static std::optional<RetainPtr<id>> decodeFontInternal(Decoder& decoder)
 
     BEGIN_BLOCK_OBJC_EXCEPTIONS
 
-    return { WebKit::fontWithAttributes(fontAttributes.get(), 0) };
+    return { CyberKit::fontWithAttributes(fontAttributes.get(), 0) };
 
     END_BLOCK_OBJC_EXCEPTIONS
 

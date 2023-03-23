@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 #include <pal/graphics/WebGPU/WebGPUVertexFormat.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct VertexAttribute {
     PAL::WebGPU::VertexFormat format { PAL::WebGPU::VertexFormat::Uint8x2 };
@@ -40,6 +40,6 @@ struct VertexAttribute {
     PAL::WebGPU::Index32 shaderLocation { 0 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

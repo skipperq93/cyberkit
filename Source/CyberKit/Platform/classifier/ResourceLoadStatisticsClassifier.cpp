@@ -29,7 +29,7 @@
 #include "Logging.h"
 #include <CyberCore/ResourceLoadStatistics.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static double vectorLength(unsigned a, unsigned b, unsigned c)

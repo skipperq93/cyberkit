@@ -31,7 +31,7 @@
 #include <CyberCore/CookieRequestHeaderFieldProxy.h>
 #include <CyberCore/SocketStreamError.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<NetworkSocketStream> NetworkSocketStream::create(NetworkProcess& networkProcess, URL&& url, PAL::SessionID sessionID, const String& credentialPartition, WebSocketIdentifier identifier, IPC::Connection& connection, SourceApplicationAuditToken&& auditData, bool shouldAcceptInsecureCertificates)
@@ -129,4 +129,4 @@ uint64_t NetworkSocketStream::messageSenderDestinationID() const
     return m_identifier.toUInt64();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

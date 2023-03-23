@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class ProcessTerminationReason {
     ExceededMemoryLimit,

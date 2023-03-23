@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 header: "CacheStoragePolicy.h"
-enum class WebKit::CacheStoragePolicy : uint8_t {
+enum class CyberKit::CacheStoragePolicy : uint8_t {
     Allowed,
     AllowedInMemoryOnly,
     NotAllowed

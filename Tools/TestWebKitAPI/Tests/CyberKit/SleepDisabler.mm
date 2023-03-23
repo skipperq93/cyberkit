@@ -33,10 +33,10 @@
 
 #if WK_HAVE_C_SPI
 
-TEST(WebKit, SleepDisabler)
+TEST(CyberKit, SleepDisabler)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
@@ -88,7 +88,7 @@ public:
 
         function();
 
-        TestWebKitAPI::Util::run(&isPlaying);
+        TestCyberKitAPI::Util::run(&isPlaying);
         [webView clearMessageHandlers:@[@"playing"]];
     }
 
@@ -106,7 +106,7 @@ public:
             if ([webView _hasSleepDisabler] == shouldHaveSleepDisabler)
                 break;
 
-            TestWebKitAPI::Util::runFor(0.1_s);
+            TestCyberKitAPI::Util::runFor(0.1_s);
         } while (++tries <= 100);
 
         EXPECT_EQ(shouldHaveSleepDisabler, [webView _hasSleepDisabler]);

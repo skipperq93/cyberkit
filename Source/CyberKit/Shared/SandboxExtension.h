@@ -39,7 +39,7 @@ class Encoder;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
     
 class SandboxExtensionImpl;
 
@@ -153,4 +153,4 @@ inline String resolveAndCreateReadWriteDirectoryForSandboxExtension(StringView p
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

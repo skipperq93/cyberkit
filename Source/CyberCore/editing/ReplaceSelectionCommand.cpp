@@ -235,7 +235,7 @@ void ReplacementFragment::removeContentsWithSideEffects()
     auto end = descendantsOfType<Element>(*m_fragment).end();
     while (it != end) {
         Ref element = *it;
-        if (isScriptElement(element) || (is<HTMLStyleElement>(element) && element->getAttribute(classAttr) != WebKitMSOListQuirksStyle)
+        if (isScriptElement(element) || (is<HTMLStyleElement>(element) && element->getAttribute(classAttr) != CyberKitMSOListQuirksStyle)
             || is<HTMLBaseElement>(element) || is<HTMLLinkElement>(element) || is<HTMLMetaElement>(element) || is<HTMLTitleElement>(element)) {
             elementsToRemove.append(WTFMove(element));
             it.traverseNextSkippingChildren();
@@ -705,7 +705,7 @@ void ReplaceSelectionCommand::removeRedundantStylesAndKeepStyleSpanInline(Insert
         if (element->parentNode() && element->parentNode()->hasRichlyEditableStyle())
             removeNodeAttribute(*element, contenteditableAttr);
 
-        // WebKit used to not add display: inline and float: none on copy.
+        // CyberKit used to not add display: inline and float: none on copy.
         // Keep this code around for backward compatibility
         if (isLegacyAppleStyleSpan(element)) {
             if (!element->firstChild()) {
@@ -924,7 +924,7 @@ static bool handleStyleSpansBeforeInsertion(ReplacementFragment& fragment, const
     if (isMailPasteAsQuotationNode(topNode.get()) || enclosingNodeOfType(firstPositionInOrBeforeNode(topNode.get()), isMailBlockquote, CanCrossEditingBoundary))
         return false;
 
-    // Either there are no style spans in the fragment or a WebKit client has added content to the fragment
+    // Either there are no style spans in the fragment or a CyberKit client has added content to the fragment
     // before inserting it.  Look for and handle style spans after insertion.
     if (!isLegacyAppleStyleSpan(topNode.get()))
         return false;
@@ -942,7 +942,7 @@ static bool handleStyleSpansBeforeInsertion(ReplacementFragment& fragment, const
     return true;
 }
 
-// At copy time, WebKit wraps copied content in a span that contains the source document's 
+// At copy time, CyberKit wraps copied content in a span that contains the source document's 
 // default styles.  If the copied Range inherits any other styles from its ancestors, we put 
 // those styles on a second span.
 // This function removes redundant styles from those spans, and removes the spans if all their 
@@ -989,7 +989,7 @@ void ReplaceSelectionCommand::handleStyleSpans(InsertedNodes& insertedNodes)
     // currently from affecting blocks later if the style is cloned for a new block element during a future 
     // editing operation.
     // FIXME: They *can* have an effect currently if blocks beneath the style span aren't individually marked
-    // with block styles by the editing engine used to style them.  WebKit doesn't do this, but others might.
+    // with block styles by the editing engine used to style them.  CyberKit doesn't do this, but others might.
     style->removeBlockProperties();
 
     if (style->isEmpty() || !wrappingStyleSpan->firstChild()) {

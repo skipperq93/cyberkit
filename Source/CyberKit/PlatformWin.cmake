@@ -1,12 +1,12 @@
-set(WebKit_OUTPUT_NAME WebKit2)
-set(WebProcess_OUTPUT_NAME WebKitWebProcess)
-set(NetworkProcess_OUTPUT_NAME WebKitNetworkProcess)
-set(GPUProcess_OUTPUT_NAME WebKitGPUProcess)
-set(PluginProcess_OUTPUT_NAME WebKitPluginProcess)
+set(CyberKit_OUTPUT_NAME CyberKit2)
+set(WebProcess_OUTPUT_NAME CyberKitWebProcess)
+set(NetworkProcess_OUTPUT_NAME CyberKitNetworkProcess)
+set(GPUProcess_OUTPUT_NAME CyberKitGPUProcess)
+set(PluginProcess_OUTPUT_NAME CyberKitPluginProcess)
 
 include(Headers.cmake)
 
-list(APPEND WebKit_SOURCES
+list(APPEND CyberKit_SOURCES
     GPUProcess/graphics/RemoteGraphicsContextGLWC.cpp
 
     GPUProcess/graphics/wc/RemoteWCLayerTreeHost.cpp
@@ -129,7 +129,7 @@ list(APPEND WebKit_SOURCES
     WebProcess/win/WebProcessWin.cpp
 )
 
-list(APPEND WebKit_INCLUDE_DIRECTORIES
+list(APPEND CyberKit_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/GPUProcess/graphics/wc"
     "${WEBKIT_DIR}/NetworkProcess/curl"
     "${WEBKIT_DIR}/Platform/IPC/win"
@@ -165,11 +165,11 @@ list(APPEND WebKit_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/win"
 )
 
-list(APPEND WebKit_MESSAGES_IN_FILES
+list(APPEND CyberKit_MESSAGES_IN_FILES
     GPUProcess/graphics/wc/RemoteWCLayerTreeHost
 )
 
-list(APPEND WebKit_PRIVATE_LIBRARIES
+list(APPEND CyberKit_PRIVATE_LIBRARIES
     comctl32
 )
 
@@ -186,19 +186,19 @@ list(APPEND GPUProcess_SOURCES
 )
 
 if (ENABLE_REMOTE_INSPECTOR)
-    list(APPEND WebKit_SOURCES
+    list(APPEND CyberKit_SOURCES
         UIProcess/Inspector/socket/RemoteInspectorClient.cpp
         UIProcess/Inspector/socket/RemoteInspectorProtocolHandler.cpp
 
         UIProcess/Inspector/win/RemoteWebInspectorUIProxyWin.cpp
     )
 
-    list(APPEND WebKit_INCLUDE_DIRECTORIES
+    list(APPEND CyberKit_INCLUDE_DIRECTORIES
         "${WEBKIT_DIR}/UIProcess/socket"
     )
 endif ()
 
-list(APPEND WebKit_PUBLIC_FRAMEWORK_HEADERS
+list(APPEND CyberKit_PUBLIC_FRAMEWORK_HEADERS
     Shared/API/c/cairo/WKImageCairo.h
 
     Shared/API/c/curl/WKCertificateInfoCurl.h

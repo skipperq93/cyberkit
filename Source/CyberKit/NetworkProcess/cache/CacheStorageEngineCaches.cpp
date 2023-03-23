@@ -36,7 +36,7 @@
 #include <wtf/persistence/PersistentEncoder.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace CacheStorage {
 using namespace CyberCore::DOMCacheEngine;
@@ -709,4 +709,4 @@ uint64_t Caches::storageSize() const
 
 } // namespace CacheStorage
 
-} // namespace WebKit
+} // namespace CyberKit

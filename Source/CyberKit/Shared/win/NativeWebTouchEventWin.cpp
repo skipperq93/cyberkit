@@ -31,13 +31,13 @@
 
 #include "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebTouchEvent::NativeWebTouchEvent()
     : WebTouchEvent(WebEventFactory::createWebTouchEvent())
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(TOUCH_EVENTS)

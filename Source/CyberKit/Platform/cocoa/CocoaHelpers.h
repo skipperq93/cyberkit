@@ -36,7 +36,7 @@ OBJC_CLASS NSSet;
 OBJC_CLASS NSString;
 OBJC_CLASS NSUUID;
 
-namespace WebKit {
+namespace CyberKit {
 
 template<typename T> T *filterObjects(T *container, bool NS_NOESCAPE (^block)(__kindof id key, __kindof id value));
 template<> NSArray *filterObjects<NSArray>(NSArray *, bool NS_NOESCAPE (^block)(__kindof id key, __kindof id value));
@@ -83,4 +83,4 @@ WallTime toImpl(NSDate *);
 NSSet *toAPI(HashSet<String>&);
 NSArray *toAPIArray(HashSet<String>&);
 
-} // namespace WebKit
+} // namespace CyberKit

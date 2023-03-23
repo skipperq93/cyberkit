@@ -56,7 +56,7 @@ class FrameRateMonitor;
 class PixelBufferConformerCV;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 class RemoteVideoFrameObjectHeap;

@@ -1,6 +1,6 @@
 #! /usr/bin/env perl
 #
-#   This file is part of the WebKit project
+#   This file is part of the CyberKit project
 #
 #   Copyright (C) 2010 Andras Becsi (abecsi@inf.u-szeged.hu), University of Szeged
 #   Copyright (C) 2012 Apple Inc. All rights reserved.

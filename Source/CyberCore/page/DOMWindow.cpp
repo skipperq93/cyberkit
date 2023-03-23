@@ -115,7 +115,7 @@
 #include "UserGestureIndicator.h"
 #include "VisualViewport.h"
 #include "CyberCoreOpaqueRoot.h"
-#include "WebKitPoint.h"
+#include "CyberKitPoint.h"
 #include "WindowFeatures.h"
 #include "WindowFocusAllowedIndicator.h"
 #include "WindowProxy.h"
@@ -137,7 +137,7 @@
 #if ENABLE(USER_MESSAGE_HANDLERS)
 #include "UserContentController.h"
 #include "UserMessageHandlerDescriptor.h"
-#include "WebKitNamespace.h"
+#include "CyberKitNamespace.h"
 #endif
 
 #if ENABLE(GAMEPAD)
@@ -796,7 +796,7 @@ VisualViewport& DOMWindow::visualViewport()
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
 
-bool DOMWindow::shouldHaveWebKitNamespaceForWorld(DOMWrapperWorld& world)
+bool DOMWindow::shouldHaveCyberKitNamespaceForWorld(DOMWrapperWorld& world)
 {
     RefPtr frame = this->frame();
     if (!frame)
@@ -817,7 +817,7 @@ bool DOMWindow::shouldHaveWebKitNamespaceForWorld(DOMWrapperWorld& world)
     return hasUserMessageHandler;
 }
 
-WebKitNamespace* DOMWindow::webkitNamespace()
+CyberKitNamespace* DOMWindow::webkitNamespace()
 {
     if (!isCurrentlyDisplayedInFrame())
         return nullptr;
@@ -825,7 +825,7 @@ WebKitNamespace* DOMWindow::webkitNamespace()
     if (!page)
         return nullptr;
     if (!m_webkitNamespace)
-        m_webkitNamespace = WebKitNamespace::create(*this, page->userContentProvider());
+        m_webkitNamespace = CyberKitNamespace::create(*this, page->userContentProvider());
     return m_webkitNamespace.get();
 }
 
@@ -1683,7 +1683,7 @@ RefPtr<CSSRuleList> DOMWindow::getMatchedCSSRules(Element* element, const String
     return ruleList;
 }
 
-RefPtr<WebKitPoint> DOMWindow::webkitConvertPointFromNodeToPage(Node* node, const WebKitPoint* p) const
+RefPtr<CyberKitPoint> DOMWindow::webkitConvertPointFromNodeToPage(Node* node, const CyberKitPoint* p) const
 {
     if (!node || !p)
         return nullptr;
@@ -1695,10 +1695,10 @@ RefPtr<WebKitPoint> DOMWindow::webkitConvertPointFromNodeToPage(Node* node, cons
 
     FloatPoint pagePoint(p->x(), p->y());
     pagePoint = node->convertToPage(pagePoint);
-    return WebKitPoint::create(pagePoint.x(), pagePoint.y());
+    return CyberKitPoint::create(pagePoint.x(), pagePoint.y());
 }
 
-RefPtr<WebKitPoint> DOMWindow::webkitConvertPointFromPageToNode(Node* node, const WebKitPoint* p) const
+RefPtr<CyberKitPoint> DOMWindow::webkitConvertPointFromPageToNode(Node* node, const CyberKitPoint* p) const
 {
     if (!node || !p)
         return nullptr;
@@ -1710,7 +1710,7 @@ RefPtr<WebKitPoint> DOMWindow::webkitConvertPointFromPageToNode(Node* node, cons
 
     FloatPoint nodePoint(p->x(), p->y());
     nodePoint = node->convertFromPage(nodePoint);
-    return WebKitPoint::create(nodePoint.x(), nodePoint.y());
+    return CyberKitPoint::create(nodePoint.x(), nodePoint.y());
 }
 
 double DOMWindow::devicePixelRatio() const

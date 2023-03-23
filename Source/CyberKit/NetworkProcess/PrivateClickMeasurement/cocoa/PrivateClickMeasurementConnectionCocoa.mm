@@ -30,7 +30,7 @@
 #import "PrivateClickMeasurementXPCUtilities.h"
 #import <wtf/NeverDestroyed.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 void Connection::newConnectionWasInitialized() const
 {
@@ -67,4 +67,4 @@ RetainPtr<xpc_object_t> Connection::dictionaryFromMessage(MessageType messageTyp
     return dictionary;
 }
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

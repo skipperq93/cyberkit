@@ -33,7 +33,7 @@ download = importlib.import_module('download-github-release')
 
 repo = 'WebKitForWindows/WebKitRequirements'
 file = 'WebKitRequirementsWin64.zip'
-output = os.getenv('WEBKIT_LIBRARIES', 'WebKitLibraries/win')
+output = os.getenv('WEBKIT_LIBRARIES', 'CyberKitLibraries/win')
 options = [repo, file, '-o', output]
 
 # Check if there's a specific version to request

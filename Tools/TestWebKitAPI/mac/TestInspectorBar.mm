@@ -52,7 +52,7 @@
 - (void)updateSelectedAttributes
 {
     // Older versions of AppKit only invoke synchronous NSTextInputClient methods, which immediately causes a debug
-    // assertion in WebKit. To prevent this assertion, we suppress selection updates for versions of macOS where AppKit
+    // assertion in CyberKit. To prevent this assertion, we suppress selection updates for versions of macOS where AppKit
     // only knows how to update selected attributes using synchronous text input client methods. That being said, the
     // inspector bar item controller still needs to set its _client pointer to the inspector bar's client; otherwise,
     // attempts to send @selector(changeAttributes:) when changing font attributes will become no-ops.

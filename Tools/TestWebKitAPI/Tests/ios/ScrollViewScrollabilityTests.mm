@@ -34,7 +34,7 @@
 #import <UIKit/UIKit.h>
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSString *scrollableDocumentMarkup = @"<meta name='viewport' content='width=device-width, initial-scale=1'><body style='width: 100%; height: 5000px;'>";
 static NSString *nonScrollableDocumentMarkup = @"<meta name='viewport' content='width=device-width, initial-scale=1'><body style='width: 100%; height: 5000px; overflow: hidden'>";
@@ -54,7 +54,7 @@ static RetainPtr<TestWKWebView> webViewWithAutofocusedInput(const RetainPtr<Test
     [webView _setInputDelegate:inputDelegate.get()];
     [webView synchronouslyLoadHTMLString:nonScrollableWithInputDocumentMarkup];
 
-    TestWebKitAPI::Util::run(&doneWaiting);
+    TestCyberKitAPI::Util::run(&doneWaiting);
     doneWaiting = false;
     return webView;
 }
@@ -149,7 +149,7 @@ TEST(ScrollViewScrollabilityTests, ScrollableAfterNavigateToPDF)
     [webView waitForNextPresentationUpdate];
     EXPECT_EQ([[webView scrollView] isScrollEnabled], NO);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     [webView _test_waitForDidFinishNavigation];
@@ -157,6 +157,6 @@ TEST(ScrollViewScrollabilityTests, ScrollableAfterNavigateToPDF)
     EXPECT_EQ([[webView scrollView] isScrollEnabled], YES);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

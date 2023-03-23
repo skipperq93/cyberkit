@@ -31,7 +31,7 @@
 #include <wtf/SmallSet.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template<typename T>
 void testSmallSetOfUnsigned(unsigned n)
@@ -151,4 +151,4 @@ TEST(WTF_SmallSet, VectorUint16) { testVectorsOfSmallSetsOfUnsigned<uint16_t>();
 TEST(WTF_SmallSet, VectorUint32) { testVectorsOfSmallSetsOfUnsigned<uint32_t>(); }
 TEST(WTF_SmallSet, VectorUint64) { testVectorsOfSmallSetsOfUnsigned<uint64_t>(); }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

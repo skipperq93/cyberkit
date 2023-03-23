@@ -34,7 +34,7 @@
 #include <pal/graphics/WebGPU/WebGPUCompareFunction.h>
 #include <pal/graphics/WebGPU/WebGPUFilterMode.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct SamplerDescriptor : public ObjectDescriptorBase {
     PAL::WebGPU::AddressMode addressModeU { PAL::WebGPU::AddressMode::ClampToEdge };
@@ -49,6 +49,6 @@ struct SamplerDescriptor : public ObjectDescriptorBase {
     uint16_t maxAnisotropy { 1 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

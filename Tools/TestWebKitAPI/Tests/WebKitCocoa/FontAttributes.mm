@@ -111,7 +111,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct ListExpectation {
     NSString *markerFormat { nil };
@@ -465,9 +465,9 @@ TEST(FontAttributes, FontTextStyle)
 
     EXPECT_WK_STREQ("UICTFontTextStyleTitle1", [webView stylePropertyAtSelectionStart:@"font-family"]);
 
-    TestWebKitAPI::Util::run(&uiDelegate->_done);
+    TestCyberKitAPI::Util::run(&uiDelegate->_done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

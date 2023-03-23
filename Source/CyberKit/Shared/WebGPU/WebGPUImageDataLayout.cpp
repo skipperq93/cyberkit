@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUImageDataLayout.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ImageDataLayout> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ImageDataLayout& imageDataLayout)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::ImageDataLayout> ConvertFromBackingContext::convertFr
     return { { imageDataLayout.offset, imageDataLayout.bytesPerRow, imageDataLayout.rowsPerImage } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

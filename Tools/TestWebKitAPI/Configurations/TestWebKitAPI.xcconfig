@@ -21,8 +21,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-PRODUCT_NAME = TestWebKitAPI;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.TestWebKitAPI;
+PRODUCT_NAME = TestCyberKitAPI;
+PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.TestCyberKitAPI;
 GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) GTEST_API_=
@@ -96,19 +96,19 @@ WK_WEBCORE_LDFLAGS_watchsimulator = -framework CyberCore
 
 OTHER_CPLUSPLUSFLAGS = $(inherited) -isystem $(SDKROOT)/System/Library/Frameworks/System.framework/PrivateHeaders;
 
-OTHER_LDFLAGS = $(inherited) -lgtest -force_load $(BUILT_PRODUCTS_DIR)/libTestWebKitAPI.a -framework CyberScriptCore -framework CyberKit -lCyberCoreTestSupport -framework Metal -framework IOSurface $(WK_APPSERVERSUPPORT_LDFLAGS) $(WK_AUTHKIT_LDFLAGS) -framework Network $(WK_HID_LDFLAGS) $(WK_OPENGL_LDFLAGS) $(WK_PDFKIT_LDFLAGS) $(WK_SYSTEM_LDFLAGS) $(WK_UIKITMACHELPER_LDFLAGS) $(WK_UNIFORM_TYPE_IDENTIFIERS_LDFLAGS) $(WK_VISIONKITCORE_LDFLAGS) $(WK_WEBCORE_LDFLAGS) $(WK_REVEAL_LDFLAGS) $(OTHER_LDFLAGS_PLATFORM_$(WK_COCOA_TOUCH));
+OTHER_LDFLAGS = $(inherited) -lgtest -force_load $(BUILT_PRODUCTS_DIR)/libTestCyberKitAPI.a -framework CyberScriptCore -framework CyberKit -lCyberCoreTestSupport -framework Metal -framework IOSurface $(WK_APPSERVERSUPPORT_LDFLAGS) $(WK_AUTHKIT_LDFLAGS) -framework Network $(WK_HID_LDFLAGS) $(WK_OPENGL_LDFLAGS) $(WK_PDFKIT_LDFLAGS) $(WK_SYSTEM_LDFLAGS) $(WK_UIKITMACHELPER_LDFLAGS) $(WK_UNIFORM_TYPE_IDENTIFIERS_LDFLAGS) $(WK_VISIONKITCORE_LDFLAGS) $(WK_WEBCORE_LDFLAGS) $(WK_REVEAL_LDFLAGS) $(OTHER_LDFLAGS_PLATFORM_$(WK_COCOA_TOUCH));
 OTHER_LDFLAGS_PLATFORM_ = -framework Cocoa -framework Carbon;
 
-// FIXME: This should not be built on iOS. Instead we should create and use a TestWebKitAPI application.
+// FIXME: This should not be built on iOS. Instead we should create and use a TestCyberKitAPI application.
 OTHER_LDFLAGS_PLATFORM_cocoatouch = -framework CyberCore -framework CoreGraphics -framework UIKit -framework MobileCoreServices;
 
 LD_RUNPATH_SEARCH_PATHS = "@loader_path";
 
 MAC_CODE_SIGN_ENTITLEMENTS = $(MAC_CODE_SIGN_ENTITLEMENTS_$(USE_INTERNAL_SDK));
-MAC_CODE_SIGN_ENTITLEMENTS_ = Configurations/TestWebKitAPI-macOS.entitlements;
-MAC_CODE_SIGN_ENTITLEMENTS_YES = Configurations/TestWebKitAPI-macOS-internal.entitlements;
+MAC_CODE_SIGN_ENTITLEMENTS_ = Configurations/TestCyberKitAPI-macOS.entitlements;
+MAC_CODE_SIGN_ENTITLEMENTS_YES = Configurations/TestCyberKitAPI-macOS-internal.entitlements;
 
-CODE_SIGN_ENTITLEMENTS[sdk=embedded*] = Configurations/TestWebKitAPI-iOS.entitlements;
+CODE_SIGN_ENTITLEMENTS[sdk=embedded*] = Configurations/TestCyberKitAPI-iOS.entitlements;
 CODE_SIGN_ENTITLEMENTS[sdk=macosx*] = $(MAC_CODE_SIGN_ENTITLEMENTS);
 
 STRIP_STYLE = debugging;

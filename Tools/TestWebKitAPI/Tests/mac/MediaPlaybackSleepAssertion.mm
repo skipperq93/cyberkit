@@ -85,7 +85,7 @@ static bool didEndRemotePlayback = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void simulateKeyDown(NSWindow *window)
 {
@@ -164,7 +164,7 @@ TEST(CyberKitLegacy, MediaPlaybackSleepAssertion)
         webView.get().frameLoadDelegate = frameLoadDelegate.get();
         WebFrame *mainFrame = webView.get().mainFrame;
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MediaPlaybackSleepAssertion" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MediaPlaybackSleepAssertion" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
         [mainFrame loadRequest:request];
 
         Util::run(&didFinishLoad);

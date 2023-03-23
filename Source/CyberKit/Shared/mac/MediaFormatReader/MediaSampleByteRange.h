@@ -29,7 +29,7 @@
 
 #include <CyberCore/MediaSample.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaSampleByteRange final : public CyberCore::MediaSample {
 public:
@@ -64,6 +64,6 @@ private:
     RetainPtr<MTPluginByteSourceRef> m_byteSource;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

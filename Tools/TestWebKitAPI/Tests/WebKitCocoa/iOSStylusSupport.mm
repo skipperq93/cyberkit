@@ -32,7 +32,7 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import <CyberKit/WKWebViewPrivateForTesting.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 #if HAVE(STYLUS_DEVICE_OBSERVATION)
 
@@ -134,7 +134,7 @@ TEST(iOSStylusSupport, StylusDisconnectedTimeoutFire)
     [NSTimer scheduledTimerWithTimeInterval:0.05 repeats:NO block:^(NSTimer *timer) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE([webView evaluateMediaQuery:@"pointer"]);
     EXPECT_FALSE([webView evaluateMediaQuery:@"pointer: none"]);
@@ -159,7 +159,7 @@ TEST(iOSStylusSupport, StylusDisconnectedTimeoutCancel)
     [NSTimer scheduledTimerWithTimeInterval:0.05 repeats:NO block:^(NSTimer *timer) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE([webView evaluateMediaQuery:@"pointer"]);
     EXPECT_FALSE([webView evaluateMediaQuery:@"pointer: none"]);

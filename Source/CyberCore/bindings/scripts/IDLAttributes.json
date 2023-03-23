@@ -397,7 +397,7 @@
         },
         "PassContext": {
             "contextsAllowed": ["operation"],
-            "notes" : "Only used by WebKitTestRunner and DumpRenderTree"
+            "notes" : "Only used by CyberKitTestRunner and DumpRenderTree"
         },
         "Plugin": {
             "contextsAllowed": ["interface"],

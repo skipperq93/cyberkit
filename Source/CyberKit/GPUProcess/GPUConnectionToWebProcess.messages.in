@@ -23,18 +23,18 @@
 #if ENABLE(GPU_PROCESS)
 
 messages -> GPUConnectionToWebProcess WantsDispatchMessage {
-    void CreateRenderingBackend(struct WebKit::RemoteRenderingBackendCreationParameters creationParameters, IPC::StreamServerConnection::Handle connectionHandle) AllowedWhenWaitingForSyncReply
-    void ReleaseRenderingBackend(WebKit::RenderingBackendIdentifier renderingBackendIdentifier) AllowedWhenWaitingForSyncReply
-    void ReleaseSerializedImageBuffer(WebKit::RemoteSerializedImageBufferWriteReference reference)
+    void CreateRenderingBackend(struct CyberKit::RemoteRenderingBackendCreationParameters creationParameters, IPC::StreamServerConnection::Handle connectionHandle) AllowedWhenWaitingForSyncReply
+    void ReleaseRenderingBackend(CyberKit::RenderingBackendIdentifier renderingBackendIdentifier) AllowedWhenWaitingForSyncReply
+    void ReleaseSerializedImageBuffer(CyberKit::RemoteSerializedImageBufferWriteReference reference)
 #if ENABLE(WEBGL)
-    void CreateGraphicsContextGL(struct CyberCore::GraphicsContextGLAttributes attributes, WebKit::GraphicsContextGLIdentifier graphicsContextGLIdentifier, WebKit::RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle serverConnection) AllowedWhenWaitingForSyncReply
-    void ReleaseGraphicsContextGL(WebKit::GraphicsContextGLIdentifier graphicsContextGLIdentifier) AllowedWhenWaitingForSyncReply
+    void CreateGraphicsContextGL(struct CyberCore::GraphicsContextGLAttributes attributes, CyberKit::GraphicsContextGLIdentifier graphicsContextGLIdentifier, CyberKit::RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle serverConnection) AllowedWhenWaitingForSyncReply
+    void ReleaseGraphicsContextGL(CyberKit::GraphicsContextGLIdentifier graphicsContextGLIdentifier) AllowedWhenWaitingForSyncReply
 #endif
-    void CreateRemoteGPU(WebKit::WebGPUIdentifier identifier, WebKit::RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle serverConnection) AllowedWhenWaitingForSyncReply
+    void CreateRemoteGPU(CyberKit::WebGPUIdentifier identifier, CyberKit::RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle serverConnection) AllowedWhenWaitingForSyncReply
     void ClearNowPlayingInfo()
     void SetNowPlayingInfo(struct CyberCore::NowPlayingInfo nowPlayingInfo)
 #if USE(AUDIO_SESSION)
-    EnsureAudioSession() -> (struct WebKit::RemoteAudioSessionConfiguration configuration) Synchronous
+    EnsureAudioSession() -> (struct CyberKit::RemoteAudioSessionConfiguration configuration) Synchronous
 #endif
 #if PLATFORM(IOS_FAMILY)
     EnsureMediaSessionHelper()
@@ -43,19 +43,19 @@ messages -> GPUConnectionToWebProcess WantsDispatchMessage {
     EnableVP9Decoders(bool shouldEnableVP8Decoder, bool shouldEnableVP9Decoder, bool shouldEnableVP9SWDecoder)
 #endif
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    CreateVisibilityPropagationContextForPage(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID, bool canShowWhileLocked);
-    DestroyVisibilityPropagationContextForPage(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID);
+    CreateVisibilityPropagationContextForPage(CyberKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID, bool canShowWhileLocked);
+    DestroyVisibilityPropagationContextForPage(CyberKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID);
 #endif
-    SetMediaOverridesForTesting(struct WebKit::MediaOverridesForTesting configuration)
-    CreateAudioHardwareListener(WebKit::RemoteAudioHardwareListenerIdentifier identifier)
-    ReleaseAudioHardwareListener(WebKit::RemoteAudioHardwareListenerIdentifier identifier)
-    CreateRemoteCommandListener(WebKit::RemoteRemoteCommandListenerIdentifier identifier)
-    ReleaseRemoteCommandListener(WebKit::RemoteRemoteCommandListenerIdentifier identifier)
+    SetMediaOverridesForTesting(struct CyberKit::MediaOverridesForTesting configuration)
+    CreateAudioHardwareListener(CyberKit::RemoteAudioHardwareListenerIdentifier identifier)
+    ReleaseAudioHardwareListener(CyberKit::RemoteAudioHardwareListenerIdentifier identifier)
+    CreateRemoteCommandListener(CyberKit::RemoteRemoteCommandListenerIdentifier identifier)
+    ReleaseRemoteCommandListener(CyberKit::RemoteRemoteCommandListenerIdentifier identifier)
     SetUserPreferredLanguages(Vector<String> languages)
     ConfigureLoggingChannel(String channelName, enum:uint8_t WTFLogChannelState state, enum:uint8_t WTFLogLevel level)
 #if USE(GRAPHICS_LAYER_WC)
-    CreateWCLayerTreeHost(WebKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering) AllowedWhenWaitingForSyncReply
-    ReleaseWCLayerTreeHost(WebKit::WCLayerTreeHostIdentifier identifier) AllowedWhenWaitingForSyncReply
+    CreateWCLayerTreeHost(CyberKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering) AllowedWhenWaitingForSyncReply
+    ReleaseWCLayerTreeHost(CyberKit::WCLayerTreeHostIdentifier identifier) AllowedWhenWaitingForSyncReply
 #endif
 }
 

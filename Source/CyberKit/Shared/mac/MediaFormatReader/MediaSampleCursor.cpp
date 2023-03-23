@@ -43,7 +43,7 @@
 
 WTF_DECLARE_CF_TYPE_TRAIT(MTPluginSampleCursor);
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -438,6 +438,6 @@ WTFLogChannel& MediaSampleCursor::logChannel() const
     return JOIN_LOG_CHANNEL_WITH_PREFIX(LOG_CHANNEL_PREFIX, Media);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

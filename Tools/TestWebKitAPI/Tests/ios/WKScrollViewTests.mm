@@ -104,7 +104,7 @@ TEST(WKScrollViewTests, PositionFixedLayerAfterScrolling)
     // opportunity to arrive in the UI process before dispatching the next visible content rect update.
     usleep(USEC_PER_SEC * 0.25);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     bool foundLayerForFixedNavigationBar = false;
     traverseLayerTree([webView layer], [&] (CALayer *layer) {
@@ -145,7 +145,7 @@ TEST(WKScrollViewTests, AsynchronousWheelEventHandling)
             wasHandled = handled;
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
     };
 
     // Don't preventDefault() at all.

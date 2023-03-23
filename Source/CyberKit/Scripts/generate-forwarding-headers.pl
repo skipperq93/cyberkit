@@ -23,7 +23,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# A script which searches for headers included by WebKit2 files
+# A script which searches for headers included by CyberKit2 files
 # and generates forwarding headers for these headers.
 
 use strict;
@@ -37,7 +37,7 @@ use Getopt::Long;
 
 my $srcRoot = realpath(File::Spec->catfile(dirname(abs_path($0)), "../.."));
 my @platformPrefixes = ("ca", "cf", "cocoa", "Cocoa", "curl", "gtk", "ios", "mac", "playstation", "soup", "win", "wpe");
-my @frameworks = ("WebKit");
+my @frameworks = ("CyberKit");
 my @skippedPrefixes = ("PAL");
 my @frameworkHeaders;
 my $framework;

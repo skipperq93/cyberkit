@@ -29,7 +29,7 @@
 
 #include "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebWheelEvent::NativeWebWheelEvent(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     : WebWheelEvent(WebEventFactory::createWebWheelEvent(hwnd, message, wParam, lParam))
@@ -37,4 +37,4 @@ NativeWebWheelEvent::NativeWebWheelEvent(HWND hwnd, UINT message, WPARAM wParam,
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

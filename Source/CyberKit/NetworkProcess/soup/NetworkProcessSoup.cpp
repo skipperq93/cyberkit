@@ -32,8 +32,8 @@
 #include "NetworkProcessProxyMessages.h"
 #include "NetworkSessionSoup.h"
 #include "WebCookieManager.h"
-#include "WebKitCachedResolver.h"
-#include "WebKitOverridingResolver.h"
+#include "CyberKitCachedResolver.h"
+#include "CyberKitOverridingResolver.h"
 #include <CyberCore/CertificateInfo.h>
 #include <CyberCore/NetworkStorageSession.h>
 #include <CyberCore/NotImplemented.h>
@@ -48,7 +48,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static CString buildAcceptLanguages(const Vector<String>& languages)
@@ -193,4 +193,4 @@ void NetworkProcess::setPersistentCredentialStorageEnabled(PAL::SessionID sessio
         static_cast<NetworkSessionSoup&>(*session).setPersistentCredentialStorageEnabled(enabled);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

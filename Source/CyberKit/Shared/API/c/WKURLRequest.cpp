@@ -33,34 +33,34 @@
 
 WKTypeID WKURLRequestGetTypeID()
 {
-    return WebKit::toAPI(API::URLRequest::APIType);
+    return CyberKit::toAPI(API::URLRequest::APIType);
 }
 
 WKURLRequestRef WKURLRequestCreateWithWKURL(WKURLRef url)
 {
-    return WebKit::toAPI(&API::URLRequest::create(URL { WebKit::toImpl(url)->string() }).leakRef());
+    return CyberKit::toAPI(&API::URLRequest::create(URL { CyberKit::toImpl(url)->string() }).leakRef());
 }
 
 WKURLRef WKURLRequestCopyURL(WKURLRequestRef requestRef)
 {
-    return WebKit::toCopiedURLAPI(WebKit::toImpl(requestRef)->resourceRequest().url());
+    return CyberKit::toCopiedURLAPI(CyberKit::toImpl(requestRef)->resourceRequest().url());
 }
 
 WKURLRef WKURLRequestCopyFirstPartyForCookies(WKURLRequestRef requestRef)
 {
-    return WebKit::toCopiedURLAPI(WebKit::toImpl(requestRef)->resourceRequest().firstPartyForCookies());
+    return CyberKit::toCopiedURLAPI(CyberKit::toImpl(requestRef)->resourceRequest().firstPartyForCookies());
 }
 
 WKStringRef WKURLRequestCopyHTTPMethod(WKURLRequestRef requestRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(requestRef)->resourceRequest().httpMethod());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(requestRef)->resourceRequest().httpMethod());
 }
 
 WKURLRequestRef WKURLRequestCopySettingHTTPBody(WKURLRequestRef requestRef, WKDataRef body)
 {
-    CyberCore::ResourceRequest requestCopy(WebKit::toImpl(requestRef)->resourceRequest());
+    CyberCore::ResourceRequest requestCopy(CyberKit::toImpl(requestRef)->resourceRequest());
     requestCopy.setHTTPBody(CyberCore::FormData::create(WKDataGetBytes(body), WKDataGetSize(body)));
-    return WebKit::toAPI(&API::URLRequest::create(requestCopy).leakRef());
+    return CyberKit::toAPI(&API::URLRequest::create(requestCopy).leakRef());
 }
 
 void WKURLRequestSetDefaultTimeoutInterval(double timeoutInterval)

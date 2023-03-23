@@ -33,7 +33,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static std::string ToString(const TimeRanges& ranges)
 {

@@ -60,7 +60,7 @@ const double ForceAtForceClick = 2;
         {
         }
 
-        // This position is relative to the enclosing NSWindow in WebKit1, and is WKWebView-relative in WebKit2.
+        // This position is relative to the enclosing NSWindow in CyberKit1, and is WKWebView-relative in CyberKit2.
         // Use ScrollView::windowToContents() to convert it to into the contents of a given view.
         const IntPoint& position() const { return m_position; }
         const IntPoint& globalPosition() const { return m_globalPosition; }

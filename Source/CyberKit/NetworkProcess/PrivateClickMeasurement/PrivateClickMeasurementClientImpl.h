@@ -30,7 +30,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkSession;
 class NetworkProcess;
@@ -54,4 +54,4 @@ private:
 
 } // namespace PCM
 
-} // namespace WebKit
+} // namespace CyberKit

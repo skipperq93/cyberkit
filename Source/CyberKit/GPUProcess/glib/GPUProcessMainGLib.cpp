@@ -31,7 +31,7 @@
 #include "GPUProcess.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(GPU_PROCESS) && (PLATFORM(GTK) || PLATFORM(WPE))
 class GPUProcessMainGStreamer final: public AuxiliaryProcessMainBaseNoSingleton<GPUProcess> {
@@ -47,4 +47,4 @@ int GPUProcessMain(int argc, char** argv)
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

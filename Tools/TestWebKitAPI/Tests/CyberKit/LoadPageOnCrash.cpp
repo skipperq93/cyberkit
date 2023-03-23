@@ -32,13 +32,13 @@
 #include "Test.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void didFinishLoad(WKPageRef, WKNavigationRef, WKTypeRef, const void*);
 
-class WebKit2CrashLoader {
+class CyberKit2CrashLoader {
 public:
-    WebKit2CrashLoader()
+    CyberKit2CrashLoader()
         : context(adoptWK(WKContextCreateWithConfiguration(nullptr)))
         , webView(context.get())
         , url(adoptWK(WKURLCreateWithUTF8CString("about:blank")))
@@ -77,7 +77,7 @@ public:
 // (i.e. Load -> Crash -> Load).
 void didFinishLoad(WKPageRef page, WKNavigationRef, WKTypeRef userData, const void* clientInfo)
 {
-    WebKit2CrashLoader* testHelper = const_cast<WebKit2CrashLoader*>(static_cast<const WebKit2CrashLoader*>(clientInfo));
+    CyberKit2CrashLoader* testHelper = const_cast<CyberKit2CrashLoader*>(static_cast<const CyberKit2CrashLoader*>(clientInfo));
 
     // First load worked, let's crash WebProcess.
     if (!testHelper->firstSuccessfulLoad) {
@@ -95,9 +95,9 @@ void didFinishLoad(WKPageRef page, WKNavigationRef, WKTypeRef userData, const vo
 
 // This test will load a blank page and next kill WebProcess, the expected
 // result is that a call to page load should spawn a new WebProcess.
-TEST(WebKit, LoadPageAfterCrash)
+TEST(CyberKit, LoadPageAfterCrash)
 {
-    WebKit2CrashLoader helper;
+    CyberKit2CrashLoader helper;
     helper.loadUrl();
     Util::run(&helper.firstSuccessfulLoad);
     helper.terminateWebProcess();
@@ -105,6 +105,6 @@ TEST(WebKit, LoadPageAfterCrash)
     Util::run(&helper.secondSuccessfulLoad);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

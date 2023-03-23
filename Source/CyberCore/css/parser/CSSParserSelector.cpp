@@ -60,7 +60,7 @@ std::unique_ptr<CSSParserSelector> CSSParserSelector::parsePseudoElementSelector
     selector->m_selector->setMatch(CSSSelector::PseudoElement);
     selector->m_selector->setPseudoElementType(pseudoType);
     AtomString name;
-    if (pseudoType != CSSSelector::PseudoElementWebKitCustomLegacyPrefixed)
+    if (pseudoType != CSSSelector::PseudoElementCyberKitCustomLegacyPrefixed)
         name = pseudoTypeString.convertToASCIILowercaseAtom();
     else {
         if (equalLettersIgnoringASCIICase(pseudoTypeString, "-webkit-input-placeholder"_s))

@@ -33,7 +33,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 using PipelineConstantValue = double; // May represent WGSL’s bool, f32, i32, u32.
 
@@ -43,6 +43,6 @@ struct ProgrammableStage {
     Vector<KeyValuePair<String, PipelineConstantValue>> constants;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

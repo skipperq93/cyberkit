@@ -30,7 +30,7 @@
 #include "Encoder.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void URLSchemeTaskParameters::encode(IPC::Encoder& encoder) const
 {
@@ -86,4 +86,4 @@ std::optional<URLSchemeTaskParameters> URLSchemeTaskParameters::decode(IPC::Deco
     }};
 }
     
-} // namespace WebKit
+} // namespace CyberKit

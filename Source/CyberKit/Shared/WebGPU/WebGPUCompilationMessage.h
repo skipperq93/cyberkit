@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUCompilationMessageType.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct CompilationMessage {
     String message;
@@ -43,6 +43,6 @@ struct CompilationMessage {
     uint64_t length { 0 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

@@ -35,7 +35,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/unicode/CharacterNames.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(InsertTextAlternatives, Simple)
 {
@@ -387,7 +387,7 @@ TEST(InsertTextAlternatives, InsertMultipleWordsWithAlternatives)
     EXPECT_TRUE([[webView objectByEvaluatingJavaScript:@"internals.hasDictationAlternativesMarker(6, 5)"] boolValue]); // worlds
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)
 

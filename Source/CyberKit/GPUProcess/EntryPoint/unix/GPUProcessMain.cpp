@@ -28,5 +28,5 @@
 
 int main(int argc, char** argv)
 {
-    WebKit::GPUProcessMain(argc, argv);
+    CyberKit::GPUProcessMain(argc, argv);
 }

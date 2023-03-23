@@ -32,7 +32,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/LibWebRTCEnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void RTCPacketOptions::encode(IPC::Encoder& encoder) const
 {

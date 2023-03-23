@@ -29,7 +29,7 @@
 #include <wtf/HashTraits.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebFoundTextRange {
     uint64_t location { 0 };
@@ -43,23 +43,23 @@ struct WebFoundTextRange {
     static std::optional<WebFoundTextRange> decode(IPC::Decoder&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
 struct WebFoundTextRangeHash {
-    static unsigned hash(const WebKit::WebFoundTextRange& range) { return pairIntHash(range.location, range.length); }
-    static bool equal(const WebKit::WebFoundTextRange& a, const WebKit::WebFoundTextRange& b) { return a == b; }
+    static unsigned hash(const CyberKit::WebFoundTextRange& range) { return pairIntHash(range.location, range.length); }
+    static bool equal(const CyberKit::WebFoundTextRange& a, const CyberKit::WebFoundTextRange& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct HashTraits<WebKit::WebFoundTextRange> : GenericHashTraits<WebKit::WebFoundTextRange> {
-    static WebKit::WebFoundTextRange emptyValue() { return { }; }
+template<> struct HashTraits<CyberKit::WebFoundTextRange> : GenericHashTraits<CyberKit::WebFoundTextRange> {
+    static CyberKit::WebFoundTextRange emptyValue() { return { }; }
 
-    static void constructDeletedValue(WebKit::WebFoundTextRange& slot) { new (NotNull, &slot.frameIdentifier) AtomString { HashTableDeletedValue }; }
-    static bool isDeletedValue(const WebKit::WebFoundTextRange& range) { return range.frameIdentifier.isHashTableDeletedValue(); }
+    static void constructDeletedValue(CyberKit::WebFoundTextRange& slot) { new (NotNull, &slot.frameIdentifier) AtomString { HashTableDeletedValue }; }
+    static bool isDeletedValue(const CyberKit::WebFoundTextRange& range) { return range.frameIdentifier.isHashTableDeletedValue(); }
 };
 
-template<> struct DefaultHash<WebKit::WebFoundTextRange> : WebFoundTextRangeHash { };
+template<> struct DefaultHash<CyberKit::WebFoundTextRange> : WebFoundTextRangeHash { };
 
 }

@@ -36,7 +36,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(FocusWebView, DoNotFocusWebViewWhenUnparented)
 {
@@ -69,6 +69,6 @@ TEST(FocusWebView, DoNotFocusWebViewWhenUnparented)
     EXPECT_FALSE(calledFocusWebView);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

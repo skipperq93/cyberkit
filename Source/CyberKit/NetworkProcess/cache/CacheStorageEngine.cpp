@@ -43,7 +43,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace CacheStorage {
 
@@ -227,7 +227,7 @@ Engine::Engine(NetworkSession& networkSession, const String& rootPath)
     , m_rootPath(rootPath)
 {
     if (!m_rootPath.isNull())
-        m_ioQueue = WorkQueue::create("com.apple.WebKit.CacheStorageEngine.serial.default", WorkQueue::QOS::Default);
+        m_ioQueue = WorkQueue::create("com.apple.CyberKit.CacheStorageEngine.serial.default", WorkQueue::QOS::Default);
 }
 
 void Engine::open(const CyberCore::ClientOrigin& origin, const String& cacheName, CacheIdentifierCallback&& callback)
@@ -767,4 +767,4 @@ String Engine::representation()
 
 } // namespace CacheStorage
 
-} // namespace WebKit
+} // namespace CyberKit

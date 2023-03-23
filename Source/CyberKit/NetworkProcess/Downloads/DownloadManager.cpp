@@ -36,7 +36,7 @@
 #include <pal/SessionID.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 DownloadManager::DownloadManager(Client& client)
@@ -178,4 +178,4 @@ void DownloadManager::applicationWillEnterForeground()
         download->applicationWillEnterForeground();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

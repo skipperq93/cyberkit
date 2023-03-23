@@ -22,7 +22,7 @@
 
 headers: "WebsiteDataType.h"
 
-[OptionSet] enum class WebKit::WebsiteDataType : uint32_t {
+[OptionSet] enum class CyberKit::WebsiteDataType : uint32_t {
     Cookies,
     DiskCache,
     MemoryCache,

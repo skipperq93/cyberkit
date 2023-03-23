@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 #include <pal/graphics/WebGPU/WebGPUTextureViewDimension.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct StorageTextureBindingLayout {
     PAL::WebGPU::StorageTextureAccess access { PAL::WebGPU::StorageTextureAccess::WriteOnly };
@@ -40,6 +40,6 @@ struct StorageTextureBindingLayout {
     PAL::WebGPU::TextureViewDimension viewDimension { PAL::WebGPU::TextureViewDimension::_2d };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

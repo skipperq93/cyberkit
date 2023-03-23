@@ -98,7 +98,7 @@ void DragController::cleanupAfterSystemDrag()
     // for the UIDelegate to take over the drag, and fail to send the appropriate
     // drag termination event.  As dragEnded just resets drag variables, we just
     // call it anyway to be on the safe side.
-    // We don't want to do this for WebKit2, since the client call to start the drag
+    // We don't want to do this for CyberKit2, since the client call to start the drag
     // is asynchronous.
     if (auto* localMainFrame = dynamicDowncast<LocalFrame>(m_page.mainFrame())) {
         if (localMainFrame->view()->platformWidget())

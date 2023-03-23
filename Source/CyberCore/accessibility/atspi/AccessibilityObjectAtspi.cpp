@@ -868,9 +868,9 @@ HashMap<String, String> AccessibilityObjectAtspi::attributes() const
 {
     HashMap<String, String> map;
 #if PLATFORM(GTK)
-    map.add("toolkit"_s, "WebKitGTK"_s);
+    map.add("toolkit"_s, "CyberKitGTK"_s);
 #elif PLATFORM(WPE)
-    map.add("toolkit"_s, "WPEWebKit"_s);
+    map.add("toolkit"_s, "WPECyberKit"_s);
 #endif
     if (!m_coreObject)
         return map;

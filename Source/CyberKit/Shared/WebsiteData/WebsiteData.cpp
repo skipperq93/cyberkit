@@ -33,7 +33,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebsiteDataProcessType WebsiteData::ownerProcess(WebsiteDataType dataType)
 {

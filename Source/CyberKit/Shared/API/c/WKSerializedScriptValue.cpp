@@ -31,16 +31,16 @@
 
 WKTypeID WKSerializedScriptValueGetTypeID()
 {
-    return WebKit::toAPI(API::SerializedScriptValue::APIType);
+    return CyberKit::toAPI(API::SerializedScriptValue::APIType);
 }
 
 WKSerializedScriptValueRef WKSerializedScriptValueCreate(JSContextRef context, JSValueRef value, JSValueRef* exception)
 {
     auto serializedValue = API::SerializedScriptValue::create(context, value, exception);
-    return WebKit::toAPI(serializedValue.leakRef());
+    return CyberKit::toAPI(serializedValue.leakRef());
 }
 
 JSValueRef WKSerializedScriptValueDeserialize(WKSerializedScriptValueRef scriptValueRef, JSContextRef contextRef, JSValueRef* exception)
 {
-    return WebKit::toImpl(scriptValueRef)->deserialize(contextRef, exception);
+    return CyberKit::toImpl(scriptValueRef)->deserialize(contextRef, exception);
 }

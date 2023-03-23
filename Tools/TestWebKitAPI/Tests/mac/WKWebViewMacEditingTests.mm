@@ -97,7 +97,7 @@ TEST(WKWebViewMacEditingTests, DoubleClickDoesNotSelectTrailingSpace)
         finishedSelectingText = true;
     }];
     [webView sendClicksAtPoint:NSMakePoint(200, 200) numberOfClicks:2];
-    TestWebKitAPI::Util::run(&finishedSelectingText);
+    TestCyberKitAPI::Util::run(&finishedSelectingText);
 
     NSString *selectedText = [webView stringByEvaluatingJavaScript:@"getSelection().getRangeAt(0).toString()"];
     EXPECT_STREQ("Hello", selectedText.UTF8String);
@@ -138,7 +138,7 @@ TEST(WKWebViewMacEditingTests, DoNotCrashWhenInterpretingKeyEventWhileDeallocati
         };
     }
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebViewMacEditingTests, ProcessSwapAfterSettingMarkedText)
@@ -175,7 +175,7 @@ TEST(WKWebViewMacEditingTests, ProcessSwapAfterSettingMarkedText)
         EXPECT_FALSE(hasMarkedText);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif // PLATFORM(MAC)

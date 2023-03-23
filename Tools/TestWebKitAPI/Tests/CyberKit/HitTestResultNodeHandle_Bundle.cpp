@@ -36,7 +36,7 @@
 #include <CyberKit/WKBundleHitTestResult.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class HitTestResultNodeHandleTest : public InjectedBundleTest {
 public:
@@ -68,7 +68,7 @@ public:
 
 static InjectedBundleTest::Register<HitTestResultNodeHandleTest> registrar("HitTestResultNodeHandleTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif
 

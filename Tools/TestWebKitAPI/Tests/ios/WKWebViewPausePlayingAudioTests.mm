@@ -32,7 +32,7 @@
 #import "TestWKWebView.h"
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<WKWebViewConfiguration> autoplayingConfiguration()
 {

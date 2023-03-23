@@ -51,7 +51,7 @@ static std::pair<RetainPtr<TestWKWebView>, RetainPtr<TestInputDelegate>> webView
     return { webView, inputDelegate };
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(FocusPreservationTests, PreserveAndRestoreFocus)
 {
@@ -110,6 +110,6 @@ TEST(FocusPreservationTests, DISABLED_ChangingFocusedNodeResetsFocusPreservation
     [webView.textInputContentView _restoreFocusWithToken:focusToken];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

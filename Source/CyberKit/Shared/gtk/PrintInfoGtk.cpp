@@ -31,7 +31,7 @@
 #include <gtk/gtkunixprint.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if HAVE(GTK_UNIX_PRINTING)
 PrintInfo::PrintInfo(GtkPrintJob* job, PrintMode printMode)
@@ -78,4 +78,4 @@ PrintInfo::PrintInfo(GtkPrintJob* job, PrintMode printMode)
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

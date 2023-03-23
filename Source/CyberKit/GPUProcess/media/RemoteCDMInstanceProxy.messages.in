@@ -26,7 +26,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(ENCRYPTED_MEDIA)
 
 messages -> RemoteCDMInstanceProxy NotRefCounted {
-    CreateSession(uint64_t logIdentifier) -> (WebKit::RemoteCDMInstanceSessionIdentifier identifier) Synchronous
+    CreateSession(uint64_t logIdentifier) -> (CyberKit::RemoteCDMInstanceSessionIdentifier identifier) Synchronous
     InitializeWithConfiguration(struct CyberCore::CDMKeySystemConfiguration configuration, enum:bool CyberCore::CDMInstance::AllowDistinctiveIdentifiers distinctiveIdentifiersAllowed, enum:bool CyberCore::CDMInstance::AllowPersistentState persistentStateAllowed) -> (enum:bool CyberCore::CDMInstance::SuccessValue success)
     SetServerCertificate(Ref<CyberCore::SharedBuffer> certificate) -> (enum:bool CyberCore::CDMInstance::SuccessValue success)
     SetStorageDirectory(String directory)

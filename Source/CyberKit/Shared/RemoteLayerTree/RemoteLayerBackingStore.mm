@@ -51,10 +51,10 @@
 #import <wtf/text/TextStream.h>
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-#import <WebKitAdditions/CGDisplayListImageBufferAdditions.h>
+#import <CyberKitAdditions/CGDisplayListImageBufferAdditions.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -736,4 +736,4 @@ bool RemoteLayerBackingStore::Parameters::decode(IPC::Decoder& decoder, RemoteLa
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

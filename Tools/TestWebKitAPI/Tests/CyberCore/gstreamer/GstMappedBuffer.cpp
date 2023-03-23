@@ -35,7 +35,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST_F(GStreamerTest, mappedBufferBasics)
 {
@@ -170,6 +170,6 @@ TEST_F(GStreamerTest, mappedOwnedBufferDestruction)
     ASSERT_EQ(capturedStderrBuffer[0], 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(GSTREAMER)

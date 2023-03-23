@@ -373,7 +373,7 @@ Color RenderThemeMac::platformDefaultButtonTextColor(OptionSet<StyleColorOptions
 }
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/RenderThemeMacAdditions.mm>
+#include <CyberKitAdditions/RenderThemeMacAdditions.mm>
 #else
 #if HAVE(NSSPELLCHECKER_CORRECTION_INDICATOR_UNDERLINE_COLOR)
 static inline bool usePlatformColorForAutocorrectionReplacementMarker()

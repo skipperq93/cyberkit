@@ -25,7 +25,7 @@
 #include "config.h"
 #include <wtf/BumpPointerAllocator.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_BumpPointerAllocator, AllocationWithOnlySmallerPoolsAvailable)
 {
@@ -49,4 +49,4 @@ TEST(WTF_BumpPointerAllocator, AllocationWithOnlySmallerPoolsAvailable)
     allocator.stopAllocator();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -30,7 +30,7 @@ messages -> WebPaymentCoordinatorProxy NotRefCounted {
     CanMakePaymentsWithActiveCard(String merchantIdentifier, String domainName) -> (bool canMakePayments)
     OpenPaymentSetup(String merchantIdentifier, String domainName) -> (bool result)
 
-    ShowPaymentUI(CyberCore::PageIdentifier destinationID, WebKit::WebPageProxyIdentifier webPageProxyIdentifier, String originatingURLString, Vector<String> linkIconURLStrings, CyberCore::ApplePaySessionPaymentRequest paymentRequest) -> (bool result) Synchronous
+    ShowPaymentUI(CyberCore::PageIdentifier destinationID, CyberKit::WebPageProxyIdentifier webPageProxyIdentifier, String originatingURLString, Vector<String> linkIconURLStrings, CyberCore::ApplePaySessionPaymentRequest paymentRequest) -> (bool result) Synchronous
     CompleteMerchantValidation(CyberCore::PaymentMerchantSession paymentMerchantSession)
     CompleteShippingMethodSelection(std::optional<CyberCore::ApplePayShippingMethodUpdate> update)
     CompleteShippingContactSelection(std::optional<CyberCore::ApplePayShippingContactUpdate> update)
@@ -42,8 +42,8 @@ messages -> WebPaymentCoordinatorProxy NotRefCounted {
     AbortPaymentSession()
     CancelPaymentSession()
 
-    GetSetupFeatures(WebKit::PaymentSetupConfiguration configuration) -> (WebKit::PaymentSetupFeatures features)
-    BeginApplePaySetup(WebKit::PaymentSetupConfiguration configuration, WebKit::PaymentSetupFeatures features) -> (bool result)
+    GetSetupFeatures(CyberKit::PaymentSetupConfiguration configuration) -> (CyberKit::PaymentSetupFeatures features)
+    BeginApplePaySetup(CyberKit::PaymentSetupConfiguration configuration, CyberKit::PaymentSetupFeatures features) -> (bool result)
     EndApplePaySetup()
 }
 

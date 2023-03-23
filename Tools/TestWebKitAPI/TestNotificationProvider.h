@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class TestNotificationProvider {
     WTF_MAKE_FAST_ALLOCATED;

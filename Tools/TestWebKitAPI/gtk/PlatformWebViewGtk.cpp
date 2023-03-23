@@ -28,13 +28,13 @@
 
 #include <CyberCore/GUniquePtrGtk.h>
 #include <CyberCore/GtkVersioning.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKView.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKView.h>
 #include <gtk/gtk.h>
-#include <webkit/WebKitWebViewBaseInternal.h>
+#include <webkit/CyberKitWebViewBaseInternal.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 PlatformWebView::PlatformWebView(WKContextRef contextRef, WKPageGroupRef pageGroupRef)
 {
@@ -93,9 +93,9 @@ void PlatformWebView::resizeTo(unsigned width, unsigned height)
     gtk_window_resize(GTK_WINDOW(m_window), width, height);
 }
 
-static inline WebKitWebViewBase* toWebKitGLibAPI(PlatformWKView view)
+static inline CyberKitWebViewBase* toCyberKitGLibAPI(PlatformWKView view)
 {
-    return const_cast<WebKitWebViewBase*>(reinterpret_cast<const WebKitWebViewBase*>(view));
+    return const_cast<CyberKitWebViewBase*>(reinterpret_cast<const CyberKitWebViewBase*>(view));
 }
 
 void PlatformWebView::simulateSpacebarKeyPress()
@@ -103,7 +103,7 @@ void PlatformWebView::simulateSpacebarKeyPress()
     GtkWidget* viewWidget = GTK_WIDGET(m_view);
     if (!gtk_widget_get_realized(viewWidget))
         gtk_widget_show(m_window);
-    webkitWebViewBaseSynthesizeKeyEvent(toWebKitGLibAPI(m_view), KeyEventType::Insert, GDK_KEY_KP_Space, 0, ShouldTranslateKeyboardState::No);
+    webkitWebViewBaseSynthesizeKeyEvent(toCyberKitGLibAPI(m_view), KeyEventType::Insert, GDK_KEY_KP_Space, 0, ShouldTranslateKeyboardState::No);
 }
 
 void PlatformWebView::simulateAltKeyPress()
@@ -111,7 +111,7 @@ void PlatformWebView::simulateAltKeyPress()
     GtkWidget* viewWidget = GTK_WIDGET(m_view);
     if (!gtk_widget_get_realized(viewWidget))
         gtk_widget_show(m_window);
-    webkitWebViewBaseSynthesizeKeyEvent(toWebKitGLibAPI(m_view), KeyEventType::Insert, GDK_KEY_Alt_L, 0, ShouldTranslateKeyboardState::No);
+    webkitWebViewBaseSynthesizeKeyEvent(toCyberKitGLibAPI(m_view), KeyEventType::Insert, GDK_KEY_Alt_L, 0, ShouldTranslateKeyboardState::No);
 }
 
 void PlatformWebView::simulateRightClick(unsigned x, unsigned y)
@@ -119,13 +119,13 @@ void PlatformWebView::simulateRightClick(unsigned x, unsigned y)
     GtkWidget* viewWidget = GTK_WIDGET(m_view);
     if (!gtk_widget_get_realized(viewWidget))
         gtk_widget_show(m_window);
-    webkitWebViewBaseSynthesizeMouseEvent(toWebKitGLibAPI(m_view), MouseEventType::Press, 3, 0, x, y, 0, 1);
-    webkitWebViewBaseSynthesizeMouseEvent(toWebKitGLibAPI(m_view), MouseEventType::Release, 3, 0, x, y, 0, 0);
+    webkitWebViewBaseSynthesizeMouseEvent(toCyberKitGLibAPI(m_view), MouseEventType::Press, 3, 0, x, y, 0, 1);
+    webkitWebViewBaseSynthesizeMouseEvent(toCyberKitGLibAPI(m_view), MouseEventType::Release, 3, 0, x, y, 0, 0);
 }
 
 void PlatformWebView::simulateMouseMove(unsigned x, unsigned y, WKEventModifiers)
 {
-    webkitWebViewBaseSynthesizeMouseEvent(toWebKitGLibAPI(m_view), MouseEventType::Motion, 0, 0, x, y, 0, 0);
+    webkitWebViewBaseSynthesizeMouseEvent(toCyberKitGLibAPI(m_view), MouseEventType::Motion, 0, 0, x, y, 0, 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -30,7 +30,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(HTTPHeaderMap, ComparisonOperator)
 {

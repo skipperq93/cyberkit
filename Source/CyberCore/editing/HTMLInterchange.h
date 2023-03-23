@@ -34,7 +34,7 @@ class Text;
 
 #define AppleInterchangeNewline   "Apple-interchange-newline"
 #define AppleConvertedSpace       "Apple-converted-space"
-constexpr auto WebKitMSOListQuirksStyle = "WebKit-mso-list-quirks-style"_s;
+constexpr auto CyberKitMSOListQuirksStyle = "CyberKit-mso-list-quirks-style"_s;
 
 constexpr auto ApplePasteAsQuotation = "Apple-paste-as-quotation"_s;
 constexpr auto AppleStyleSpanClass = "Apple-style-span"_s;

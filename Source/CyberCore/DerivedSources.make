@@ -194,7 +194,7 @@ JS_BINDING_IDLS := \
     $(WebCore)/Modules/WebGPU/GPUVertexState.idl \
     $(WebCore)/Modules/WebGPU/GPUVertexStepMode.idl \
     $(WebCore)/Modules/WebGPU/NavigatorGPU.idl \
-    $(WebCore)/Modules/airplay/WebKitPlaybackTargetAvailabilityEvent.idl \
+    $(WebCore)/Modules/airplay/CyberKitPlaybackTargetAvailabilityEvent.idl \
     $(WebCore)/Modules/applepay/ApplePayAutomaticReloadPaymentRequest.idl \
     $(WebCore)/Modules/applepay/ApplePayCancelEvent.idl \
     $(WebCore)/Modules/applepay/ApplePayContactField.idl \
@@ -290,10 +290,10 @@ JS_BINDING_IDLS := \
     $(WebCore)/Modules/encryptedmedia/MediaKeys.idl \
     $(WebCore)/Modules/encryptedmedia/MediaKeysRequirement.idl \
     $(WebCore)/Modules/encryptedmedia/Navigator+EME.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/WebKitMediaKeyMessageEvent.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/WebKitMediaKeyNeededEvent.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/WebKitMediaKeySession.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/WebKitMediaKeys.idl \
+    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeyMessageEvent.idl \
+    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeyNeededEvent.idl \
+    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeySession.idl \
+    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeys.idl \
     $(WebCore)/Modules/entriesapi/DOMFileSystem.idl \
     $(WebCore)/Modules/entriesapi/ErrorCallback.idl \
     $(WebCore)/Modules/entriesapi/FileCallback.idl \
@@ -1171,7 +1171,7 @@ JS_BINDING_IDLS := \
     $(WebCore)/html/VideoFrameMetadata.idl \
     $(WebCore)/html/VideoFrameRequestCallback.idl \
     $(WebCore)/html/VoidCallback.idl \
-    $(WebCore)/html/WebKitMediaKeyError.idl \
+    $(WebCore)/html/CyberKitMediaKeyError.idl \
     $(WebCore)/html/canvas/ANGLEInstancedArrays.idl \
     $(WebCore)/html/canvas/CanvasCompositing.idl \
     $(WebCore)/html/canvas/CanvasDirection.idl \
@@ -1364,8 +1364,8 @@ JS_BINDING_IDLS := \
     $(WebCore)/page/UserMessageHandler.idl \
     $(WebCore)/page/UserMessageHandlersNamespace.idl \
     $(WebCore)/page/VisualViewport.idl \
-    $(WebCore)/page/WebKitNamespace.idl \
-    $(WebCore)/page/WebKitPoint.idl \
+    $(WebCore)/page/CyberKitNamespace.idl \
+    $(WebCore)/page/CyberKitPoint.idl \
     $(WebCore)/page/WindowEventHandlers.idl \
     $(WebCore)/page/WindowLocalStorage.idl \
     $(WebCore)/page/WindowOrWorkerGlobalScope+Crypto.idl \
@@ -1629,8 +1629,8 @@ ADDITIONAL_EVENT_TARGET_FACTORY =
 IDL_PATHS := $(sort $(foreach IDL_FILE, $(JS_BINDING_IDLS), $(realpath $(dir $(IDL_FILE)))))
 
 ADDITIONS_PATHS = \
-    $(BUILT_PRODUCTS_DIR)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/WebKitAdditions \
-    $(SDKROOT)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/WebKitAdditions
+    $(BUILT_PRODUCTS_DIR)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/CyberKitAdditions \
+    $(SDKROOT)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/CyberKitAdditions
 
 ADDITIONAL_BINDING_IDLS_PATHS = \
     $(ADDITIONS_PATHS) \
@@ -1700,8 +1700,8 @@ all : \
     TagName.cpp \
     TagName.h \
     CSSStyleDeclaration+PropertyNames.idl \
-    WebKitFontFamilyNames.cpp \
-    WebKitFontFamilyNames.h \
+    CyberKitFontFamilyNames.cpp \
+    CyberKitFontFamilyNames.h \
     MathMLElementFactory.cpp \
     MathMLElementFactory.h \
     MathMLElementTypeHelpers.h \
@@ -2037,14 +2037,14 @@ $(PLUG_INS_RESOURCES_FILES_PATTERNS) : $(WebCore)/css/make-css-file-arrays.pl $(
 # --------
 
 WEBKIT_FONT_FAMILY_NAME_FILES = \
-    WebKitFontFamilyNames.cpp \
-    WebKitFontFamilyNames.h \
+    CyberKitFontFamilyNames.cpp \
+    CyberKitFontFamilyNames.h \
 #
 WEBKIT_FONT_FAMILY_NAME_FILES_PATTERNS = $(subst .,%,$(WEBKIT_FONT_FAMILY_NAME_FILES))
 
 all : $(WEBKIT_FONT_FAMILY_NAME_FILES)
-$(WEBKIT_FONT_FAMILY_NAME_FILES_PATTERNS): $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/css/WebKitFontFamilyNames.in
-	$(PERL) $< --fonts $(WebCore)/css/WebKitFontFamilyNames.in
+$(WEBKIT_FONT_FAMILY_NAME_FILES_PATTERNS): $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/css/CyberKitFontFamilyNames.in
+	$(PERL) $< --fonts $(WebCore)/css/CyberKitFontFamilyNames.in
 
 # HTML tag and attribute names
 
@@ -2308,7 +2308,7 @@ $(IDL_INTERMEDIATE_PATTERNS) : $(PREPROCESS_IDLS_SCRIPTS) $(IDL_ATTRIBUTES_FILE)
 # several scenarios we need to support:
 #
 # * Files such as GestureEvent.idl can be provided by some facility external to
-#   the WebKit repository. The file can be made available by appearing in
+#   the CyberKit repository. The file can be made available by appearing in
 #   BUILT_PRODUCTS_DIR or SDKROOT. If found in either of those locations, the
 #   file will be used, otherwise, there will be no GestureEvent facility.
 #

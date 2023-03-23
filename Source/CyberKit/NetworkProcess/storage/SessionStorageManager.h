@@ -34,7 +34,7 @@ namespace CyberCore {
 struct ClientOrigin;
 } // namespace CyberCore
 
-namespace WebKit {
+namespace CyberKit {
 
 class MemoryStorageArea;
 class StorageAreaRegistry;
@@ -62,4 +62,4 @@ private:
     HashMap<StorageNamespaceIdentifier, StorageAreaIdentifier> m_storageAreasByNamespace;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

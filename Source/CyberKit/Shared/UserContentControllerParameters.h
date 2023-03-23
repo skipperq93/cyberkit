@@ -34,7 +34,7 @@ class Encoder;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct UserContentControllerParameters {
 
@@ -51,4 +51,4 @@ struct UserContentControllerParameters {
     static std::optional<UserContentControllerParameters> decode(IPC::Decoder&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

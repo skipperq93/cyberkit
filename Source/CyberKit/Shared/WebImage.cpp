@@ -30,7 +30,7 @@
 #include <CyberCore/ChromeClient.h>
 #include <CyberCore/ImageBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RefPtr<WebImage> WebImage::create(const IntSize& size, ImageOptions options, const DestinationColorSpace& colorSpace, ChromeClient* client)
@@ -144,4 +144,4 @@ ShareableBitmapHandle WebImage::createHandle(SharedMemory::Protection protection
     return { };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace WebPreferencesKey {
 
 <%- for @pref in @exposedPreferences do -%>
@@ -37,4 +37,4 @@ const String& <%= @pref.nameLower %>Key();
 <%- end -%>
 
 } // namespace WebPreferencesKey
-} // namespace WebKit
+} // namespace CyberKit

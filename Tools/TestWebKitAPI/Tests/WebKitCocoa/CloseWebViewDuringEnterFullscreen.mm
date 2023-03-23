@@ -55,7 +55,7 @@ static bool willExitFullscreen;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CloseWebViewDuringEnterFullscreen, VideoFullscreen)
 {
@@ -69,8 +69,8 @@ TEST(CloseWebViewDuringEnterFullscreen, VideoFullscreen)
 
     willEnterFullscreen = false;
     [webView evaluateJavaScript:@"document.querySelector('video').webkitEnterFullscreen()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&willEnterFullscreen);
-    TestWebKitAPI::Util::runFor(0.2_s);
+    TestCyberKitAPI::Util::run(&willEnterFullscreen);
+    TestCyberKitAPI::Util::runFor(0.2_s);
 
     // Should not crash:
     [webView _close];
@@ -89,13 +89,13 @@ TEST(CloseWebViewDuringEnterFullscreen, ElementFullscreen)
 
     willEnterFullscreen = false;
     [webView evaluateJavaScript:@"document.querySelector('div').webkitRequestFullscreen()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&willEnterFullscreen);
-    TestWebKitAPI::Util::runFor(0.2_s);
+    TestCyberKitAPI::Util::run(&willEnterFullscreen);
+    TestCyberKitAPI::Util::runFor(0.2_s);
 
     // Should not crash:
     [webView _close];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -32,7 +32,7 @@
 
 namespace CyberCore {
 
-// SYCC to RGB conversion code from libopenjpeg (BSD), adapted to WebKit coding style.
+// SYCC to RGB conversion code from libopenjpeg (BSD), adapted to CyberKit coding style.
 // --------------------------------------------------------
 // Matrix for sYCC, Amendment 1 to IEC 61966-2-1
 //

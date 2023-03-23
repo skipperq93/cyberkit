@@ -33,7 +33,7 @@
 #include "RemoteMediaSessionHelperMessages.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteMediaSessionHelperProxy::RemoteMediaSessionHelperProxy(GPUConnectionToWebProcess& gpuConnection)

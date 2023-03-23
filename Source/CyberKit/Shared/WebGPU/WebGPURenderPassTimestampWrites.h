@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderPassTimestampWrite {
     WebGPUIdentifier querySet;
@@ -44,6 +44,6 @@ struct RenderPassTimestampWrite {
 
 using RenderPassTimestampWrites = Vector<RenderPassTimestampWrite>;
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

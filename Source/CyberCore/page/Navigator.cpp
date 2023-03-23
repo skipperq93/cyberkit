@@ -248,7 +248,7 @@ static const Vector<String>& dummyPDFPluginNames()
         "Chrome PDF Viewer"_s,
         "Chromium PDF Viewer"_s,
         "Microsoft Edge PDF Viewer"_s,
-        "WebKit built-in PDF"_s,
+        "CyberKit built-in PDF"_s,
     });
     return dummyPluginNames;
 }

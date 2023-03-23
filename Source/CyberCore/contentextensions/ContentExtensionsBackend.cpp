@@ -53,7 +53,7 @@
 namespace WebCore::ContentExtensions {
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/ContentRuleListAdditions.mm>
+#import <CyberKitAdditions/ContentRuleListAdditions.mm>
 #else
 static void makeSecureIfNecessary(ContentRuleListResults& results, const URL& url, const URL& redirectFrom = { })
 {

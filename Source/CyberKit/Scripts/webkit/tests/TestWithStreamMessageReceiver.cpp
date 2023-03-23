@@ -41,7 +41,7 @@
 #include "JSIPCBinding.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void TestWithStream::didReceiveStreamMessage(IPC::StreamServerConnection& connection, IPC::Decoder& decoder)
 {
@@ -72,7 +72,7 @@ void TestWithStream::didReceiveStreamMessage(IPC::StreamServerConnection& connec
     ASSERT_NOT_REACHED_WITH_MESSAGE("Unhandled stream message %s to %" PRIu64, IPC::description(decoder.messageName()), decoder.destinationID());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if ENABLE(IPC_TESTING_API)
 

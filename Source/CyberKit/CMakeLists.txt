@@ -1,15 +1,15 @@
-set_property(DIRECTORY . PROPERTY FOLDER "WebKit")
+set_property(DIRECTORY . PROPERTY FOLDER "CyberKit")
 
-set(WebKit_PRIVATE_INCLUDE_DIRECTORIES
+set(CyberKit_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}"
 )
 
-set(WebKit_INCLUDE_DIRECTORIES
+set(CyberKit_INCLUDE_DIRECTORIES
     "${PAL_FRAMEWORK_HEADERS_DIR}"
     "${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}"
-    "${WebKit_FRAMEWORK_HEADERS_DIR}"
-    "${WebKit_DERIVED_SOURCES_DIR}"
-    "${WebKit_DERIVED_SOURCES_DIR}/include"
+    "${CyberKit_FRAMEWORK_HEADERS_DIR}"
+    "${CyberKit_DERIVED_SOURCES_DIR}"
+    "${CyberKit_DERIVED_SOURCES_DIR}/include"
     "${WEBKIT_DIR}"
     "${WEBKIT_DIR}/GPUProcess"
     "${WEBKIT_DIR}/GPUProcess/graphics"
@@ -118,18 +118,18 @@ set(WebKit_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/WebProcess/WebStorage"
     "${WEBKIT_DIR}/WebProcess/XR"
     "${CMAKE_SOURCE_DIR}/Source"
-    "${CMAKE_SOURCE_DIR}/WebKitLibraries"
+    "${CMAKE_SOURCE_DIR}/CyberKitLibraries"
 )
 
 set(PROTOCOL_GENERATOR_SCRIPTS_DIR "${JAVASCRIPTCORE_DIR}/inspector/scripts")
 
-list(APPEND WebKit_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberKit_UNIFIED_SOURCE_LIST_FILES
     "Sources.txt"
 
     "Platform/Sources.txt"
 )
 
-set(WebKit_MESSAGES_IN_FILES
+set(CyberKit_MESSAGES_IN_FILES
     GPUProcess/GPUConnectionToWebProcess
     GPUProcess/GPUProcess
 
@@ -338,23 +338,23 @@ set(WebKit_MESSAGES_IN_FILES
     WebProcess/XR/PlatformXRSystemProxy
 )
 
-set(WebKit_FRAMEWORKS
+set(CyberKit_FRAMEWORKS
     JavaScriptCore
     PAL
     WTF
     CyberCore
 )
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND WebKit_FRAMEWORKS bmalloc)
+    list(APPEND CyberKit_FRAMEWORKS bmalloc)
 endif ()
 
-set(WebProcess_LIBRARIES WebKit)
-set(NetworkProcess_LIBRARIES WebKit)
-set(GPUProcess_LIBRARIES WebKit)
-set(PluginProcess_LIBRARIES WebKit)
+set(WebProcess_LIBRARIES CyberKit)
+set(NetworkProcess_LIBRARIES CyberKit)
+set(GPUProcess_LIBRARIES CyberKit)
+set(PluginProcess_LIBRARIES CyberKit)
 
 if (ENABLE_ENCRYPTED_MEDIA AND ENABLE_OPENCDM)
-  list(APPEND WebKit_SYSTEM_INCLUDE_DIRECTORIES
+  list(APPEND CyberKit_SYSTEM_INCLUDE_DIRECTORIES
       ${OPENCDM_INCLUDE_DIRS}
   )
 endif ()
@@ -363,25 +363,25 @@ endif ()
 # these include directories, libraries or definitions need to be
 # added before the ANGLE directories.
 if (USE_LIBEPOXY)
-    list(APPEND WebKit_SYSTEM_INCLUDE_DIRECTORIES
+    list(APPEND CyberKit_SYSTEM_INCLUDE_DIRECTORIES
         ${LIBEPOXY_INCLUDE_DIRS}
     )
-    list(APPEND WebKit_PRIVATE_LIBRARIES
+    list(APPEND CyberKit_PRIVATE_LIBRARIES
         ${LIBEPOXY_LIBRARIES}
     )
     add_definitions(${LIBEPOXY_DEFINITIONS})
 elseif (USE_ANGLE_EGL)
     # Prepend to make sure the ANGLE headers are found before system headers
-    list(PREPEND WebKit_PRIVATE_LIBRARIES
+    list(PREPEND CyberKit_PRIVATE_LIBRARIES
         ANGLE::GLES
         ANGLE::EGL
     )
 else ()
     if (USE_EGL)
-        list(APPEND WebKit_SYSTEM_INCLUDE_DIRECTORIES
+        list(APPEND CyberKit_SYSTEM_INCLUDE_DIRECTORIES
             ${EGL_INCLUDE_DIRS}
         )
-        list(APPEND WebKit_PRIVATE_LIBRARIES
+        list(APPEND CyberKit_PRIVATE_LIBRARIES
             ${EGL_LIBRARIES}
         )
         add_definitions(${EGL_DEFINITIONS})
@@ -389,14 +389,14 @@ else ()
 endif ()
 
 if (USE_LIBWEBRTC)
-    list(APPEND WebKit_SYSTEM_INCLUDE_DIRECTORIES "${THIRDPARTY_DIR}/libwebrtc/Source/"
+    list(APPEND CyberKit_SYSTEM_INCLUDE_DIRECTORIES "${THIRDPARTY_DIR}/libwebrtc/Source/"
         "${THIRDPARTY_DIR}/libwebrtc/Source/webrtc"
         "${THIRDPARTY_DIR}/libwebrtc/Source/third_party/abseil-cpp")
-    list(APPEND WebKit_LIBRARIES webrtc)
+    list(APPEND CyberKit_LIBRARIES webrtc)
 endif ()
 
 if (ATOMICS_REQUIRE_LIBATOMIC)
-    list(APPEND WebKit_PRIVATE_LIBRARIES atomic)
+    list(APPEND CyberKit_PRIVATE_LIBRARIES atomic)
 endif ()
 
 if (UNIX)
@@ -405,32 +405,32 @@ if (UNIX)
         set(CMAKE_REQUIRED_LIBRARIES rt)
         check_function_exists(shm_open SHM_OPEN_REQUIRES_LIBRT)
         if (SHM_OPEN_REQUIRES_LIBRT)
-            list(APPEND WebKit_PRIVATE_LIBRARIES rt)
+            list(APPEND CyberKit_PRIVATE_LIBRARIES rt)
         endif ()
         unset(CMAKE_REQUIRED_LIBRARIES)
     endif ()
 endif ()
 
 macro(ADD_WEBKIT_PREFIX_HEADER _target)
-    if (WebKit_USE_PREFIX_HEADER)
+    if (CyberKit_USE_PREFIX_HEADER)
         get_target_property(OLD_COMPILE_FLAGS ${_target} COMPILE_FLAGS)
         if (${OLD_COMPILE_FLAGS} STREQUAL "OLD_COMPILE_FLAGS-NOTFOUND")
             set(OLD_COMPILE_FLAGS "")
         endif ()
-        set_target_properties(${_target} PROPERTIES COMPILE_FLAGS "${OLD_COMPILE_FLAGS} -include ${WEBKIT_DIR}/WebKit2Prefix.h")
+        set_target_properties(${_target} PROPERTIES COMPILE_FLAGS "${OLD_COMPILE_FLAGS} -include ${WEBKIT_DIR}/CyberKit2Prefix.h")
     else ()
-        target_precompile_headers(${_target} PRIVATE WebKit2Prefix.h)
+        target_precompile_headers(${_target} PRIVATE CyberKit2Prefix.h)
     endif ()
 endmacro()
 
-set(WebKit_AUTOMATION_PROTOCOL_GENERATOR_EXTRA_FLAGS)
+set(CyberKit_AUTOMATION_PROTOCOL_GENERATOR_EXTRA_FLAGS)
 
-set(WebKit_INTERFACE_LIBRARIES WebKit)
-set(WebKit_INTERFACE_INCLUDE_DIRECTORIES
-    ${WebKit_FRAMEWORK_HEADERS_DIR}
-    ${WebKit_PRIVATE_FRAMEWORK_HEADERS_DIR}
+set(CyberKit_INTERFACE_LIBRARIES CyberKit)
+set(CyberKit_INTERFACE_INCLUDE_DIRECTORIES
+    ${CyberKit_FRAMEWORK_HEADERS_DIR}
+    ${CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR}
 )
-set(WebKit_INTERFACE_DEPENDENCIES
+set(CyberKit_INTERFACE_DEPENDENCIES
     NetworkProcess
     WebProcess
 )
@@ -440,37 +440,37 @@ WEBKIT_EXECUTABLE_DECLARE(NetworkProcess)
 
 if (ENABLE_GPU_PROCESS)
     WEBKIT_EXECUTABLE_DECLARE(GPUProcess)
-    list(APPEND WebKit_INTERFACE_DEPENDENCIES GPUProcess)
+    list(APPEND CyberKit_INTERFACE_DEPENDENCIES GPUProcess)
 endif ()
 
 if (ENABLE_PLUGIN_PROCESS)
     WEBKIT_EXECUTABLE_DECLARE(PluginProcess)
-    list(APPEND WebKit_INTERFACE_DEPENDENCIES PluginProcess)
+    list(APPEND CyberKit_INTERFACE_DEPENDENCIES PluginProcess)
 endif ()
 
-WEBKIT_FRAMEWORK_DECLARE(WebKit)
+WEBKIT_FRAMEWORK_DECLARE(CyberKit)
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 
-if (WebKit_PUBLIC_FRAMEWORK_HEADERS)
-    WEBKIT_COPY_FILES(WebKit_CopyHeaders
-        DESTINATION ${WebKit_FRAMEWORK_HEADERS_DIR}/WebKit
-        FILES ${WebKit_PUBLIC_FRAMEWORK_HEADERS}
+if (CyberKit_PUBLIC_FRAMEWORK_HEADERS)
+    WEBKIT_COPY_FILES(CyberKit_CopyHeaders
+        DESTINATION ${CyberKit_FRAMEWORK_HEADERS_DIR}/CyberKit
+        FILES ${CyberKit_PUBLIC_FRAMEWORK_HEADERS}
         FLATTENED
     )
-    list(APPEND WebKit_DEPENDENCIES WebKit_CopyHeaders)
+    list(APPEND CyberKit_DEPENDENCIES CyberKit_CopyHeaders)
 endif ()
 
-if (WebKit_PRIVATE_FRAMEWORK_HEADERS)
-    WEBKIT_COPY_FILES(WebKit_CopyPrivateHeaders
-        DESTINATION ${WebKit_PRIVATE_FRAMEWORK_HEADERS_DIR}/WebKit
-        FILES ${WebKit_PRIVATE_FRAMEWORK_HEADERS}
+if (CyberKit_PRIVATE_FRAMEWORK_HEADERS)
+    WEBKIT_COPY_FILES(CyberKit_CopyPrivateHeaders
+        DESTINATION ${CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR}/CyberKit
+        FILES ${CyberKit_PRIVATE_FRAMEWORK_HEADERS}
         FLATTENED
     )
-    list(APPEND WebKit_INTERFACE_DEPENDENCIES WebKit_CopyPrivateHeaders)
+    list(APPEND CyberKit_INTERFACE_DEPENDENCIES CyberKit_CopyPrivateHeaders)
 endif ()
 
 # Helper macro which wraps the generate-message-receiver.py script
-#   _output_source is a list name which will contain generated sources.(eg. WebKit_SOURCES)
+#   _output_source is a list name which will contain generated sources.(eg. CyberKit_SOURCES)
 #   _inputs are messages.in files to generate.
 macro(GENERATE_MESSAGE_SOURCES _output_source _inputs)
     unset(_input_files)
@@ -479,22 +479,22 @@ macro(GENERATE_MESSAGE_SOURCES _output_source _inputs)
         get_filename_component(_name ${_file} NAME_WE)
         list(APPEND _input_files ${WEBKIT_DIR}/${_file}.messages.in)
         list(APPEND _outputs
-            ${WebKit_DERIVED_SOURCES_DIR}/${_name}MessageReceiver.cpp
-            ${WebKit_DERIVED_SOURCES_DIR}/${_name}Messages.h
+            ${CyberKit_DERIVED_SOURCES_DIR}/${_name}MessageReceiver.cpp
+            ${CyberKit_DERIVED_SOURCES_DIR}/${_name}Messages.h
         )
-        list(APPEND ${_output_source} ${WebKit_DERIVED_SOURCES_DIR}/${_name}MessageReceiver.cpp)
+        list(APPEND ${_output_source} ${CyberKit_DERIVED_SOURCES_DIR}/${_name}MessageReceiver.cpp)
     endforeach ()
 
     list(APPEND ${_output_source}
-        ${WebKit_DERIVED_SOURCES_DIR}/MessageArgumentDescriptions.cpp
-        ${WebKit_DERIVED_SOURCES_DIR}/MessageNames.cpp
+        ${CyberKit_DERIVED_SOURCES_DIR}/MessageArgumentDescriptions.cpp
+        ${CyberKit_DERIVED_SOURCES_DIR}/MessageNames.cpp
     )
 
     add_custom_command(
         OUTPUT
-            ${WebKit_DERIVED_SOURCES_DIR}/MessageArgumentDescriptions.cpp
-            ${WebKit_DERIVED_SOURCES_DIR}/MessageNames.cpp
-            ${WebKit_DERIVED_SOURCES_DIR}/MessageNames.h
+            ${CyberKit_DERIVED_SOURCES_DIR}/MessageArgumentDescriptions.cpp
+            ${CyberKit_DERIVED_SOURCES_DIR}/MessageNames.cpp
+            ${CyberKit_DERIVED_SOURCES_DIR}/MessageNames.h
             ${_outputs}
         MAIN_DEPENDENCY ${WEBKIT_DIR}/Scripts/generate-message-receiver.py
         DEPENDS
@@ -504,13 +504,13 @@ macro(GENERATE_MESSAGE_SOURCES _output_source _inputs)
             ${WEBKIT_DIR}/Scripts/webkit/parser.py
             ${_input_files}
         COMMAND ${PYTHON_EXECUTABLE} ${WEBKIT_DIR}/Scripts/generate-message-receiver.py ${WEBKIT_DIR} ${_inputs}
-        WORKING_DIRECTORY ${WebKit_DERIVED_SOURCES_DIR}
+        WORKING_DIRECTORY ${CyberKit_DERIVED_SOURCES_DIR}
         VERBATIM
     )
 endmacro()
-GENERATE_MESSAGE_SOURCES(WebKit_DERIVED_SOURCES "${WebKit_MESSAGES_IN_FILES}")
+GENERATE_MESSAGE_SOURCES(CyberKit_DERIVED_SOURCES "${CyberKit_MESSAGES_IN_FILES}")
 
-set(WebKit_SERIALIZATION_IN_FILES
+set(CyberKit_SERIALIZATION_IN_FILES
     GPUProcess/GPUProcessSessionParameters.serialization.in
 
     GPUProcess/graphics/InlinePathData.serialization.in
@@ -651,26 +651,26 @@ set(WebKit_SERIALIZATION_IN_FILES
     WebProcess/GPU/media/RemoteMediaPlayerState.serialization.in
 )
 
-list(APPEND WebKit_DERIVED_SOURCES
-    ${WebKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.h
-    ${WebKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.cpp
-    ${WebKit_DERIVED_SOURCES_DIR}/SerializedTypeInfo.cpp
+list(APPEND CyberKit_DERIVED_SOURCES
+    ${CyberKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.h
+    ${CyberKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.cpp
+    ${CyberKit_DERIVED_SOURCES_DIR}/SerializedTypeInfo.cpp
 )
 
 add_custom_command(
     OUTPUT
-        ${WebKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.h
-        ${WebKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.cpp
-        ${WebKit_DERIVED_SOURCES_DIR}/SerializedTypeInfo.cpp
+        ${CyberKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.h
+        ${CyberKit_DERIVED_SOURCES_DIR}/GeneratedSerializers.cpp
+        ${CyberKit_DERIVED_SOURCES_DIR}/SerializedTypeInfo.cpp
     MAIN_DEPENDENCY ${WEBKIT_DIR}/Scripts/generate-serializers.py
     DEPENDS
-        ${WebKit_SERIALIZATION_IN_FILES}
-    COMMAND ${PYTHON_EXECUTABLE} ${WEBKIT_DIR}/Scripts/generate-serializers.py cpp ${WEBKIT_DIR}/ ${WebKit_SERIALIZATION_IN_FILES}
-    WORKING_DIRECTORY ${WebKit_DERIVED_SOURCES_DIR}
+        ${CyberKit_SERIALIZATION_IN_FILES}
+    COMMAND ${PYTHON_EXECUTABLE} ${WEBKIT_DIR}/Scripts/generate-serializers.py cpp ${WEBKIT_DIR}/ ${CyberKit_SERIALIZATION_IN_FILES}
+    WORKING_DIRECTORY ${CyberKit_DERIVED_SOURCES_DIR}
     VERBATIM
 )
 
-set(WebKit_AUTOMATION_PROTOCOL_GENERATOR_SCRIPTS
+set(CyberKit_AUTOMATION_PROTOCOL_GENERATOR_SCRIPTS
     ${PROTOCOL_GENERATOR_SCRIPTS_DIR}/generate-inspector-protocol-bindings.py
     ${PROTOCOL_GENERATOR_SCRIPTS_DIR}/codegen/cpp_generator.py
     ${PROTOCOL_GENERATOR_SCRIPTS_DIR}/codegen/cpp_generator_templates.py
@@ -685,43 +685,43 @@ set(WebKit_AUTOMATION_PROTOCOL_GENERATOR_SCRIPTS
     ${PROTOCOL_GENERATOR_SCRIPTS_DIR}/codegen/models.py
 )
 
-set(WebKit_AUTOMATION_PROTOCOL_GENERATOR_INPUTS
+set(CyberKit_AUTOMATION_PROTOCOL_GENERATOR_INPUTS
     ${WEBKIT_DIR}/UIProcess/Automation/Automation.json
 )
 
 add_custom_command(
-    OUTPUT ${WebKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.h ${WebKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.cpp ${WebKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.h ${WebKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.cpp ${WebKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.h ${WebKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.cpp
-    MAIN_DEPENDENCY ${WebKit_AUTOMATION_PROTOCOL_GENERATOR_INPUTS}
-    DEPENDS ${WebKit_AUTOMATION_PROTOCOL_GENERATOR_SCRIPTS}
-    COMMAND ${PYTHON_EXECUTABLE} ${PROTOCOL_GENERATOR_SCRIPTS_DIR}/generate-inspector-protocol-bindings.py --outputDir "${WebKit_DERIVED_SOURCES_DIR}" --framework WebKit ${WebKit_AUTOMATION_PROTOCOL_GENERATOR_EXTRA_FLAGS} --backend ${WebKit_AUTOMATION_PROTOCOL_GENERATOR_INPUTS}
+    OUTPUT ${CyberKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.h ${CyberKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.cpp ${CyberKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.h ${CyberKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.cpp ${CyberKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.h ${CyberKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.cpp
+    MAIN_DEPENDENCY ${CyberKit_AUTOMATION_PROTOCOL_GENERATOR_INPUTS}
+    DEPENDS ${CyberKit_AUTOMATION_PROTOCOL_GENERATOR_SCRIPTS}
+    COMMAND ${PYTHON_EXECUTABLE} ${PROTOCOL_GENERATOR_SCRIPTS_DIR}/generate-inspector-protocol-bindings.py --outputDir "${CyberKit_DERIVED_SOURCES_DIR}" --framework CyberKit ${CyberKit_AUTOMATION_PROTOCOL_GENERATOR_EXTRA_FLAGS} --backend ${CyberKit_AUTOMATION_PROTOCOL_GENERATOR_INPUTS}
     VERBATIM)
 
-list(APPEND WebKit_HEADERS
-    ${WebKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.h
-    ${WebKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.h
-    ${WebKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.h
+list(APPEND CyberKit_HEADERS
+    ${CyberKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.h
+    ${CyberKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.h
+    ${CyberKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.h
 )
 
-list(APPEND WebKit_SOURCES
-    ${WebKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.cpp
-    ${WebKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.cpp
-    ${WebKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.cpp
+list(APPEND CyberKit_SOURCES
+    ${CyberKit_DERIVED_SOURCES_DIR}/AutomationBackendDispatchers.cpp
+    ${CyberKit_DERIVED_SOURCES_DIR}/AutomationFrontendDispatchers.cpp
+    ${CyberKit_DERIVED_SOURCES_DIR}/AutomationProtocolObjects.cpp
 )
 
 add_custom_command(
-    OUTPUT ${WebKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h ${WebKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
+    OUTPUT ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
     MAIN_DEPENDENCY ${WEBKIT_DIR}/WebProcess/Automation/WebAutomationSessionProxy.js
     DEPENDS ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py
-    COMMAND ${CMAKE_COMMAND} -E echo "//# sourceURL=__InjectedScript_WebAutomationSessionProxy.js" > ${WebKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py < ${WEBKIT_DIR}/WebProcess/Automation/WebAutomationSessionProxy.js >> ${WebKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
-    COMMAND ${PERL_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl WebAutomationSessionProxyScriptSource ${WebKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js ${WebKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h
+    COMMAND ${CMAKE_COMMAND} -E echo "//# sourceURL=__InjectedScript_WebAutomationSessionProxy.js" > ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
+    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py < ${WEBKIT_DIR}/WebProcess/Automation/WebAutomationSessionProxy.js >> ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
+    COMMAND ${PERL_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl WebAutomationSessionProxyScriptSource ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h
     VERBATIM)
 
-list(APPEND WebKit_HEADERS
-    ${WebKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h
+list(APPEND CyberKit_HEADERS
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h
 )
 
-set(WebKit_WEB_PREFERENCES_TEMPLATES
+set(CyberKit_WEB_PREFERENCES_TEMPLATES
     ${WEBKIT_DIR}/Scripts/PreferencesTemplates/WebPageUpdatePreferences.cpp.erb
     ${WEBKIT_DIR}/Scripts/PreferencesTemplates/WebPreferencesDefinitions.h.erb
     ${WEBKIT_DIR}/Scripts/PreferencesTemplates/WebPreferencesFeatures.cpp.erb
@@ -731,60 +731,60 @@ set(WebKit_WEB_PREFERENCES_TEMPLATES
     ${WEBKIT_DIR}/Scripts/PreferencesTemplates/WebPreferencesStoreDefaultsMap.cpp.erb
 )
 
-set(WebKit_WEB_PREFERENCES
+set(CyberKit_WEB_PREFERENCES
     ${WTF_SCRIPTS_DIR}/Preferences/UnifiedWebPreferences.yaml
 )
 
-set_source_files_properties(${WebKit_WEB_PREFERENCES} PROPERTIES GENERATED TRUE)
+set_source_files_properties(${CyberKit_WEB_PREFERENCES} PROPERTIES GENERATED TRUE)
 
 add_custom_command(
-    OUTPUT ${WebKit_DERIVED_SOURCES_DIR}/WebPageUpdatePreferences.cpp ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesDefinitions.h ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesFeatures.cpp ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesGetterSetters.cpp ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.cpp ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.h ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesStoreDefaultsMap.cpp
-    DEPENDS ${WebKit_WEB_PREFERENCES_TEMPLATES} ${WebKit_WEB_PREFERENCES} WTF_CopyPreferences
-    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend WebKit --outputDir "${WebKit_DERIVED_SOURCES_DIR}" --template "$<JOIN:${WebKit_WEB_PREFERENCES_TEMPLATES},;--template;>" ${WebKit_WEB_PREFERENCES}
+    OUTPUT ${CyberKit_DERIVED_SOURCES_DIR}/WebPageUpdatePreferences.cpp ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesDefinitions.h ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesFeatures.cpp ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesGetterSetters.cpp ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.cpp ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.h ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesStoreDefaultsMap.cpp
+    DEPENDS ${CyberKit_WEB_PREFERENCES_TEMPLATES} ${CyberKit_WEB_PREFERENCES} WTF_CopyPreferences
+    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend CyberKit --outputDir "${CyberKit_DERIVED_SOURCES_DIR}" --template "$<JOIN:${CyberKit_WEB_PREFERENCES_TEMPLATES},;--template;>" ${CyberKit_WEB_PREFERENCES}
     COMMAND_EXPAND_LISTS
     VERBATIM)
 
-list(APPEND WebKit_HEADERS
-    ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesDefinitions.h
-    ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.h
+list(APPEND CyberKit_HEADERS
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesDefinitions.h
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.h
 )
 
-list(APPEND WebKit_SOURCES
-    ${WebKit_DERIVED_SOURCES_DIR}/WebPageUpdatePreferences.cpp
-    ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesFeatures.cpp
-    ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesGetterSetters.cpp
-    ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.cpp
-    ${WebKit_DERIVED_SOURCES_DIR}/WebPreferencesStoreDefaultsMap.cpp
+list(APPEND CyberKit_SOURCES
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebPageUpdatePreferences.cpp
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesFeatures.cpp
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesGetterSetters.cpp
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesKeys.cpp
+    ${CyberKit_DERIVED_SOURCES_DIR}/WebPreferencesStoreDefaultsMap.cpp
 )
 
-list(APPEND WebKit_SOURCES ${WebKit_DERIVED_SOURCES})
+list(APPEND CyberKit_SOURCES ${CyberKit_DERIVED_SOURCES})
 
-WEBKIT_COMPUTE_SOURCES(WebKit)
-WEBKIT_FRAMEWORK(WebKit)
-ADD_WEBKIT_PREFIX_HEADER(WebKit)
+WEBKIT_COMPUTE_SOURCES(CyberKit)
+WEBKIT_FRAMEWORK(CyberKit)
+ADD_WEBKIT_PREFIX_HEADER(CyberKit)
 
-list(APPEND WebProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:WebKit,INCLUDE_DIRECTORIES>)
+list(APPEND WebProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:CyberKit,INCLUDE_DIRECTORIES>)
 WEBKIT_EXECUTABLE(WebProcess)
 ADD_WEBKIT_PREFIX_HEADER(WebProcess)
 
-list(APPEND NetworkProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:WebKit,INCLUDE_DIRECTORIES>)
+list(APPEND NetworkProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:CyberKit,INCLUDE_DIRECTORIES>)
 WEBKIT_EXECUTABLE(NetworkProcess)
 ADD_WEBKIT_PREFIX_HEADER(NetworkProcess)
 
 if (ENABLE_GPU_PROCESS)
-    list(APPEND GPUProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:WebKit,INCLUDE_DIRECTORIES>)
+    list(APPEND GPUProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:CyberKit,INCLUDE_DIRECTORIES>)
     WEBKIT_EXECUTABLE(GPUProcess)
     ADD_WEBKIT_PREFIX_HEADER(GPUProcess)
 endif ()
 
 if (ENABLE_PLUGIN_PROCESS)
-    list(APPEND PluginProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:WebKit,INCLUDE_DIRECTORIES>)
+    list(APPEND PluginProcess_PRIVATE_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:CyberKit,INCLUDE_DIRECTORIES>)
     WEBKIT_EXECUTABLE(PluginProcess)
     ADD_WEBKIT_PREFIX_HEADER(PluginProcess)
 endif ()
 
 if (COMPILER_IS_GCC_OR_CLANG)
-    WEBKIT_ADD_TARGET_CXX_FLAGS(WebKit -Wno-unused-parameter)
+    WEBKIT_ADD_TARGET_CXX_FLAGS(CyberKit -Wno-unused-parameter)
     WEBKIT_ADD_TARGET_CXX_FLAGS(WebProcess -Wno-unused-parameter)
     WEBKIT_ADD_TARGET_CXX_FLAGS(NetworkProcess -Wno-unused-parameter)
     if (ENABLE_GPU_PROCESS)
@@ -796,7 +796,7 @@ if (COMPILER_IS_GCC_OR_CLANG)
 endif ()
 
 if (APPLE)
-    WEBKIT_ADD_TARGET_CXX_FLAGS(WebKit -fobjc-weak)
+    WEBKIT_ADD_TARGET_CXX_FLAGS(CyberKit -fobjc-weak)
 endif ()
 
 if ("${PORT}" STREQUAL "Mac")
@@ -804,9 +804,9 @@ if ("${PORT}" STREQUAL "Mac")
 else ()
     WEBKIT_POPULATE_LIBRARY_VERSION(WEBKIT)
 
-    set_target_properties(WebKit PROPERTIES VERSION ${WEBKIT_VERSION} SOVERSION ${WEBKIT_VERSION_MAJOR})
+    set_target_properties(CyberKit PROPERTIES VERSION ${WEBKIT_VERSION} SOVERSION ${WEBKIT_VERSION_MAJOR})
 
-    install(TARGETS WebKit WebProcess NetworkProcess
+    install(TARGETS CyberKit WebProcess NetworkProcess
         LIBRARY DESTINATION "${LIB_INSTALL_DIR}"
         RUNTIME DESTINATION "${LIBEXEC_INSTALL_DIR}"
     )

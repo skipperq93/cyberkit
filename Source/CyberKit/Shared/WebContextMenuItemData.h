@@ -39,7 +39,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItemData {
 public:
@@ -78,6 +78,6 @@ private:
 Vector<WebContextMenuItemData> kitItems(const Vector<CyberCore::ContextMenuItem>&);
 Vector<CyberCore::ContextMenuItem> coreItems(const Vector<WebContextMenuItemData>&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

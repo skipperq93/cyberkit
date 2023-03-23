@@ -42,7 +42,7 @@ TEST(VisibilityState, InitialHiddenState)
         EXPECT_WK_STREQ("hidden", visibilityState);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(VisibilityState, InitialVisibleState)
@@ -57,5 +57,5 @@ TEST(VisibilityState, InitialVisibleState)
         EXPECT_WK_STREQ("visible", visibilityState);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }

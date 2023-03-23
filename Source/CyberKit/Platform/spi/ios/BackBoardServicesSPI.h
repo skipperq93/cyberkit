@@ -54,7 +54,7 @@
 
 // Unfortunately, the following declarations need to be forward declared even when using the internal SDK,
 // since the headers that define these symbols (BKSHIDEventKeyCommand.h and BKSHIDEventAttributes.h) include
-// additional private headers that attempt to define macros, which conflict with other macros within WebKit
+// additional private headers that attempt to define macros, which conflict with other macros within CyberKit
 // (in particular, `kB` being defined in BrightnessSystemKeys.h, and Sizes.h in bmalloc).
 
 typedef NS_OPTIONS(NSInteger, BKSKeyModifierFlags) {

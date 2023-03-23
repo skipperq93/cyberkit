@@ -68,9 +68,9 @@ static bool webViewSeen;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ResponsivenessTimerCrash)
+TEST(CyberKit, ResponsivenessTimerCrash)
 {
     RetainPtr<ResponsivenessTimerObserver> observer = adoptNS([[ResponsivenessTimerObserver alloc] init]);
     @autoreleasepool {
@@ -95,7 +95,7 @@ TEST(WebKit, ResponsivenessTimerCrash)
     [webView removeObserver:observer.get() forKeyPath:@"_webProcessIsResponsive"];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // defined(NDEBUG) && !ASAN_ENABLED
 

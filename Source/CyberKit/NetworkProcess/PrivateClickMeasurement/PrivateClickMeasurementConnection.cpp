@@ -28,7 +28,7 @@
 
 #include "NetworkSession.h"
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 Connection::Connection(CString&& machServiceName, NetworkSession& networkSession)
     : Daemon::ConnectionToMachService<ConnectionTraits>(WTFMove(machServiceName))
@@ -42,4 +42,4 @@ void Connection::newConnectionWasInitialized() const
 }
 #endif
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "ApplePayPaymentSetupFeaturesWebKit.h"
+#import "ApplePayPaymentSetupFeaturesCyberKit.h"
 
 #if ENABLE(APPLE_PAY)
 
@@ -35,7 +35,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSArray<PKPaymentSetupFeature *> *toPlatformFeatures(Vector<RefPtr<CyberCore::ApplePaySetupFeature>>&& features)
 {
@@ -68,6 +68,6 @@ PaymentSetupFeatures::operator Vector<Ref<CyberCore::ApplePaySetupFeature>>() co
     return features;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(APPLE_PAY)

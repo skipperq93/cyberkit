@@ -45,7 +45,7 @@
 #include <wtf/SuspendableWorkQueue.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 constexpr Seconds minimumStatisticsProcessingInterval { 5_s };
@@ -535,6 +535,6 @@ bool ResourceLoadStatisticsStore::shouldExemptFromWebsiteDataDeletion(const Regi
     return !domain.isEmpty() && (domain == m_standaloneApplicationDomain || m_appBoundDomains.contains(domain) || m_managedDomains.contains(domain));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -50,13 +50,13 @@ static NSData *mainResourceData()
 
 static NSData *defaultFaviconData()
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     return [NSData dataWithContentsOfURL:url];
 }
 
 static NSData *customFaviconData()
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     return [NSData dataWithContentsOfURL:url];
 }
 
@@ -153,7 +153,7 @@ static NSImage *imageFromData(NSData *data)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, IconLoadingDelegateDefaultFirst)
 {
@@ -236,4 +236,4 @@ TEST(CyberKitLegacy, IconLoadingDelegateCustomFirst)
     [NSURLProtocol unregisterClass:[IconLoadingProtocol class]];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

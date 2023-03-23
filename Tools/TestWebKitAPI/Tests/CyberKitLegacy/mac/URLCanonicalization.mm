@@ -28,13 +28,13 @@
 #import "Test.h"
 #import <CyberKit/WebNSURLExtras.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, URLCanonicalization)
+TEST(CyberKit, URLCanonicalization)
 {
     NSURL *url = [NSURL URLWithString:@"http://a@/"];
     EXPECT_NOT_NULL(url);
     EXPECT_NULL([url _webkit_canonicalize_with_wtf]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

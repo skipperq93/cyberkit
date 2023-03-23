@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsiteDataType : uint32_t {
     Cookies = 1 << 0,
@@ -53,4 +53,4 @@ enum class WebsiteDataType : uint32_t {
     FileSystem = 1 << 19,
 };
 
-} // namespace WebKit
+} // namespace CyberKit

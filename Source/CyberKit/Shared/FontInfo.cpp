@@ -32,7 +32,7 @@
 #include "ArgumentCodersCF.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void FontInfo::encode(IPC::Encoder& encoder) const
 {
@@ -65,4 +65,4 @@ bool FontInfo::decode(IPC::Decoder& decoder, FontInfo& fontInfo)
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

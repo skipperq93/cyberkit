@@ -32,7 +32,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebPreferencesStore {
     WebPreferencesStore();
@@ -69,7 +69,7 @@ struct WebPreferencesStore {
 
     void deleteKey(const String& key);
 
-    // For WebKitTestRunner usage.
+    // For CyberKitTestRunner usage.
     static void overrideBoolValueForKey(const String& key, bool value);
     static void removeTestRunnerOverrides();
 
@@ -82,4 +82,4 @@ struct WebPreferencesStore {
     static ValueMap& defaults();
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -35,7 +35,7 @@
 #import <CyberCore/NotImplemented.h>
 #import <CyberCore/CyberCoreThreadSystemInterface.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void GPUProcess::initializeProcess(const AuxiliaryProcessInitializationParameters&)
@@ -52,6 +52,6 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)

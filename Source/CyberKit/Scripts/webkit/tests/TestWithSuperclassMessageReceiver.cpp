@@ -40,7 +40,7 @@
 #include "JSIPCBinding.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void TestWithSuperclass::didReceiveMessage(IPC::Connection& connection, IPC::Decoder& decoder)
 {
@@ -78,7 +78,7 @@ bool TestWithSuperclass::didReceiveSyncMessage(IPC::Connection& connection, IPC:
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if ENABLE(IPC_TESTING_API)
 

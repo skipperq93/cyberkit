@@ -32,7 +32,7 @@
 #include "WebSWServerConnection.h"
 #include <CyberCore/SecurityOrigin.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -95,6 +95,6 @@ void WebSWOriginStore::didInvalidateSharedMemory()
         sendStoreHandle(connection);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -41,7 +41,7 @@ namespace CyberCore {
 struct ApplePaySetupConfiguration;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PaymentSetupConfiguration {
 public:
@@ -57,7 +57,7 @@ private:
     RetainPtr<PKPaymentSetupConfiguration> m_configuration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(APPLE_PAY)
 

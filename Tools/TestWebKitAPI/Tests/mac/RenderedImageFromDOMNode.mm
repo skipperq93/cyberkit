@@ -44,7 +44,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, RenderedImageFromDOMNode)
 {
@@ -63,4 +63,4 @@ TEST(CyberKitLegacy, RenderedImageFromDOMNode)
     EXPECT_TRUE([image1.TIFFRepresentation isEqual:image2.TIFFRepresentation]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

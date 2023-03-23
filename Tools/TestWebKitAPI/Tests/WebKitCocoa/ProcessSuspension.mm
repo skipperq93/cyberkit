@@ -52,7 +52,7 @@ TEST(ProcessSuspension, CancelWebProcessSuspension)
         EXPECT_EQ(pid1, pid2);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(ProcessSuspension, DestroyWebPageDuringWebProcessSuspension)
@@ -78,11 +78,11 @@ TEST(ProcessSuspension, DestroyWebPageDuringWebProcessSuspension)
 
     [webView3 _processWillSuspendForTesting:^{ }];
     [webView1 _close];
-    TestWebKitAPI::Util::runFor(0.1_s);
+    TestCyberKitAPI::Util::runFor(0.1_s);
     [webView2 _close];
 
     EXPECT_EQ(pid1, [webView3 _webProcessIdentifier]);
-    TestWebKitAPI::Util::runFor(1_s);
+    TestCyberKitAPI::Util::runFor(1_s);
     EXPECT_EQ(pid1, [webView3 _webProcessIdentifier]);
 }
 
@@ -106,7 +106,7 @@ TEST(ProcessSuspension, WKWebViewSuspendPage)
     // The timer should be firing.
     auto lastTimerFireCount = timerFiredCount;
     while (lastTimerFireCount == timerFiredCount)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_TRUE(timerFiredCount > lastTimerFireCount);
 
     auto testRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://webkit.org/"]];
@@ -120,11 +120,11 @@ TEST(ProcessSuspension, WKWebViewSuspendPage)
         EXPECT_TRUE(success);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // The timer should no longer be firing.
     lastTimerFireCount = timerFiredCount;
-    TestWebKitAPI::Util::spinRunLoop(100);
+    TestCyberKitAPI::Util::spinRunLoop(100);
     EXPECT_EQ(lastTimerFireCount, timerFiredCount);
 
     auto checkThrows = [](Function<void()>&& f) {
@@ -202,13 +202,13 @@ TEST(ProcessSuspension, WKWebViewSuspendPage)
         EXPECT_TRUE(success);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [webView addToTestWindow];
 
     // The timer should start firing again.
     lastTimerFireCount = timerFiredCount;
     while (lastTimerFireCount == timerFiredCount)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_TRUE(timerFiredCount > lastTimerFireCount);
 
     // Make sure we did not crash.
@@ -220,7 +220,7 @@ TEST(ProcessSuspension, DeallocateSuspendedView)
     // Deallocating a suspended WebView should not throw or crash.
     @autoreleasepool {
         auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
-        [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
         [webView _test_waitForDidFinishNavigation];
 
         __block bool done = false;
@@ -228,7 +228,7 @@ TEST(ProcessSuspension, DeallocateSuspendedView)
             EXPECT_TRUE(success);
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
 
         [webView _close];
     }

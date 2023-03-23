@@ -157,4 +157,4 @@ private:
     bool m_shouldIgnoreMouseEventsOutsideBounds { true };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

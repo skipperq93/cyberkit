@@ -51,7 +51,7 @@ class CoordinatedBackingStore;
 class TextureMapperGL;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class CoordinatedGraphicsSceneClient {
 public:
@@ -106,7 +106,7 @@ private:
     CyberCore::TextureMapperFPSCounter m_fpsCounter;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)
 

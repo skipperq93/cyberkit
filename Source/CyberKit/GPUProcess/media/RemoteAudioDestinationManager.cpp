@@ -61,7 +61,7 @@
     } \
 } while (0)
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioDestination final
 #if PLATFORM(COCOA)
@@ -230,7 +230,7 @@ bool RemoteAudioDestinationManager::allowsExitUnderMemoryPressure() const
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK
 #undef TERMINATE_WEB_PROCESS_WITH_MESSAGE

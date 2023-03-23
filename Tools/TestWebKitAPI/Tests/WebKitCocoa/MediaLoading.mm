@@ -35,7 +35,7 @@
 
 #if ENABLE(VIDEO) && USE(AVFOUNDATION)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static String parseUserAgent(const Vector<char>& request)
 {
@@ -51,14 +51,14 @@ TEST(MediaLoading, UserAgentStringCRABS)
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     configuration.get().mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
-    webView.get().customUserAgent = @"TestWebKitAPI";
+    webView.get().customUserAgent = @"TestCyberKitAPI";
 
     bool receivedMediaRequest = false;
 
     HTTPServer server([&](Connection connection) mutable {
         connection.receiveHTTPRequest([&] (auto&& request) {
             auto userAgent = parseUserAgent(request);
-            EXPECT_STREQ("User-Agent: TestWebKitAPI", userAgent.utf8().data());
+            EXPECT_STREQ("User-Agent: TestCyberKitAPI", userAgent.utf8().data());
 
             receivedMediaRequest = true;
         });
@@ -74,7 +74,7 @@ TEST(MediaLoading, UserAgentStringHLS)
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     configuration.get().mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
-    webView.get().customUserAgent = @"TestWebKitAPI";
+    webView.get().customUserAgent = @"TestCyberKitAPI";
 
     bool receivedManifestRequest = false;
     bool receivedMediaRequest = false;
@@ -82,7 +82,7 @@ TEST(MediaLoading, UserAgentStringHLS)
     HTTPServer mediaServer([&](Connection connection) mutable {
         connection.receiveHTTPRequest([connection, &receivedMediaRequest] (Vector<char>&& request) {
             auto userAgent = parseUserAgent(request);
-            EXPECT_STREQ("User-Agent: TestWebKitAPI", userAgent.utf8().data());
+            EXPECT_STREQ("User-Agent: TestCyberKitAPI", userAgent.utf8().data());
             receivedMediaRequest = true;
         });
     });
@@ -91,7 +91,7 @@ TEST(MediaLoading, UserAgentStringHLS)
     HTTPServer manifestServer([&](Connection connection) mutable {
         connection.receiveHTTPRequest([connection, mediaServerPort, &receivedManifestRequest] (Vector<char>&& request) {
             auto userAgent = parseUserAgent(request);
-            EXPECT_STREQ("User-Agent: TestWebKitAPI", userAgent.utf8().data());
+            EXPECT_STREQ("User-Agent: TestCyberKitAPI", userAgent.utf8().data());
 
             auto payload = makeString(
                 "#EXTM3U\n"
@@ -133,7 +133,7 @@ constexpr auto videoPlayTestHTML ="<script>"
 
 static Vector<uint8_t> testVideoBytes()
 {
-    NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mp4" subdirectory:@"TestWebKitAPI.resources"]];
+    NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mp4" subdirectory:@"TestCyberKitAPI.resources"]];
     Vector<uint8_t> vector;
     vector.append(static_cast<const uint8_t*>(data.bytes), data.length);
     return vector;
@@ -205,7 +205,7 @@ TEST(MediaLoading, LockdownModeHLS)
     "<body onload='createVideoElement()'></body>"_s;
 
     auto testTransportStreamBytes = [&] () -> Vector<uint8_t> {
-        NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"start-offset" withExtension:@"ts" subdirectory:@"TestWebKitAPI.resources"]];
+        NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"start-offset" withExtension:@"ts" subdirectory:@"TestCyberKitAPI.resources"]];
         Vector<uint8_t> vector;
         vector.append(static_cast<const uint8_t*>(data.bytes), data.length);
         return vector;
@@ -244,6 +244,6 @@ TEST(MediaLoading, LockdownModeHLS)
     EXPECT_WK_STREQ([webView _test_waitForAlert], "playing");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(VIDEO) && USE(AVFOUNDATION)

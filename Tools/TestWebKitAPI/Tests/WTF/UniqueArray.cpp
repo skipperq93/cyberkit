@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/UniqueArray.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static unsigned numberOfConstructions { 0 };
 class NonTrivialDestructor {
@@ -79,4 +79,4 @@ TEST(WTF_UniqueArray, TrivialDestructor)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -223,8 +223,8 @@ if (!isCMakeBuild()) {
     }
 }
 
-if ((isAppleWebKit() || isWinCairo() || isPlayStation()) && !-d "WebKitLibraries") {
-    die "Error: No WebKitLibraries directory found. Please do a fresh checkout.\n";
+if ((isAppleWebKit() || isWinCairo() || isPlayStation()) && !-d "CyberKitLibraries") {
+    die "Error: No CyberKitLibraries directory found. Please do a fresh checkout.\n";
 }
 
 my @options = ();

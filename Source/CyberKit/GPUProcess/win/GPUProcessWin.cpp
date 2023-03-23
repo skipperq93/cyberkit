@@ -30,7 +30,7 @@
 
 #include "GPUProcessCreationParameters.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void GPUProcess::initializeProcess(const AuxiliaryProcessInitializationParameters&)
 {
@@ -44,6 +44,6 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

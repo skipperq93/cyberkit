@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::QuerySetDescriptor : WebKit::WebGPU::ObjectDescriptorBase {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::QuerySetDescriptor : CyberKit::WebGPU::ObjectDescriptorBase {
     PAL::WebGPU::QueryType type;
     PAL::WebGPU::Size32 count;
 };

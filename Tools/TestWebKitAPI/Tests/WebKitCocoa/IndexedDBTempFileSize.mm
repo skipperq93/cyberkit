@@ -34,7 +34,7 @@
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
@@ -66,7 +66,7 @@ TEST(IndexedDB, IndexedDBTempFileSize)
         databaseRootDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *databaseRootDirectory = [NSURL fileURLWithPath:databaseRootDirectoryString isDirectory:YES];
     NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("IndexedDBTempFileSize"_s);
     NSURL *databaseDirectory = [databaseRootDirectory URLByAppendingPathComponent:hash];
@@ -77,19 +77,19 @@ TEST(IndexedDB, IndexedDBTempFileSize)
         readyToContinue = true;
     }];
     readyToContinue = false;
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     // Do some IndexedDB operations to generate WAL file.
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBTempFileSize-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBTempFileSize-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string1 = (NSString *)[lastScriptMessage body];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string2 = (NSString *)[lastScriptMessage body];
 
     // Terminate network process to keep WAL on disk.
@@ -102,11 +102,11 @@ TEST(IndexedDB, IndexedDBTempFileSize)
 
     // Open the same database again.
     webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBTempFileSize-2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBTempFileSize-2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string3 = (NSString *)[lastScriptMessage body];
 
     fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:walFilePath.path error:nil];

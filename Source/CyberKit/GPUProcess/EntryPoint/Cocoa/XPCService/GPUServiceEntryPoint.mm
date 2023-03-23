@@ -32,7 +32,7 @@
 
 #if ENABLE(GPU_PROCESS)
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUServiceInitializerDelegate : public XPCServiceInitializerDelegate {
 public:
@@ -48,7 +48,7 @@ void initializeAuxiliaryProcess<GPUProcess>(AuxiliaryProcessInitializationParame
     static NeverDestroyed<GPUProcess> gpuProcess(WTFMove(parameters));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)
 
@@ -59,6 +59,6 @@ void GPU_SERVICE_INITIALIZER(xpc_connection_t connection, xpc_object_t initializ
     WTF::initializeMainThread();
 
 #if ENABLE(GPU_PROCESS)
-    WebKit::XPCServiceInitializer<WebKit::GPUProcess, WebKit::GPUServiceInitializerDelegate>(connection, initializerMessage);
+    CyberKit::XPCServiceInitializer<CyberKit::GPUProcess, CyberKit::GPUServiceInitializerDelegate>(connection, initializerMessage);
 #endif // ENABLE(GPU_PROCESS)
 }

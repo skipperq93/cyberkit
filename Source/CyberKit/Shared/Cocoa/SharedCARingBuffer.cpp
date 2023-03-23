@@ -31,7 +31,7 @@
 #include "Logging.h"
 #include <CyberCore/CARingBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 SharedCARingBufferBase::SharedCARingBufferBase(size_t bytesPerFrame, size_t frameCount, uint32_t numChannelStream, Ref<SharedMemory> storage)
     : CARingBuffer(bytesPerFrame, frameCount, numChannelStream)
@@ -89,6 +89,6 @@ ProducerSharedCARingBuffer::Pair ProducerSharedCARingBuffer::allocate(const Cybe
     return { WTFMove(result), { WTFMove(*handle), frameCount } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

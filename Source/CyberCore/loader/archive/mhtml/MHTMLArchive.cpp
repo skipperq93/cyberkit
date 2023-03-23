@@ -144,7 +144,7 @@ Ref<FragmentedSharedBuffer> MHTMLArchive::generateMHTMLData(Page* page)
     String dateString = makeRFC2822DateString(now.weekDay(), now.monthDay(), now.month(), now.year(), now.hour(), now.minute(), now.second(), now.utcOffsetInMinute());
 
     StringBuilder stringBuilder;
-    stringBuilder.append("From: <Saved by WebKit>\r\n");
+    stringBuilder.append("From: <Saved by CyberKit>\r\n");
     auto* localMainFrame = dynamicDowncast<LocalFrame>(page->mainFrame());
     if (localMainFrame) {
         stringBuilder.append("Subject: ");

@@ -87,6 +87,6 @@ private:
     float m_scale;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

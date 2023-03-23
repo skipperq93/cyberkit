@@ -621,13 +621,13 @@ static void getListFromNSArray(JSC::JSGlobalObject* lexicalGlobalObject, NSArray
 
 @end
 
-@interface WebScriptObject (WebKitCocoaBindings)
+@interface WebScriptObject (CyberKitCocoaBindings)
 
 - (id)objectAtIndex:(unsigned)index;
 
 @end
 
-@implementation WebScriptObject (WebKitCocoaBindings)
+@implementation WebScriptObject (CyberKitCocoaBindings)
 
 #if 0
 

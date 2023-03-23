@@ -31,12 +31,12 @@
 #include "WebGPUProgrammableStage.h"
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ComputePipelineDescriptor : public PipelineDescriptorBase {
     ProgrammableStage compute;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

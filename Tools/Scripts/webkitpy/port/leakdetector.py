@@ -47,7 +47,7 @@ class LeakDetector(object):
         self._executive = port._executive
         self._filesystem = port._filesystem
 
-    # We exclude the following reported leaks so they do not get in our way when looking for WebKit leaks:
+    # We exclude the following reported leaks so they do not get in our way when looking for CyberKit leaks:
     # This allows us ignore known leaks and only be alerted when new leaks occur. Some leaks are in the old
     # versions of the system frameworks that are being used by the leaks bots. Even though a leak has been
     # fixed, it will be listed here until the bot has been updated with the newer frameworks.

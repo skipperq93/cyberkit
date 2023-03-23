@@ -22,8 +22,8 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-struct WebKit::WebExtensionContextParameters {
-    WebKit::WebExtensionContextIdentifier identifier;
+struct CyberKit::WebExtensionContextParameters {
+    CyberKit::WebExtensionContextIdentifier identifier;
 
 #if PLATFORM(COCOA)
     URL baseURL;

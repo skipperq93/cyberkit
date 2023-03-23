@@ -47,7 +47,7 @@
 #include "NetworkDataTaskCurl.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<NetworkDataTask> NetworkDataTask::create(NetworkSession& session, NetworkDataTaskClient& client, const NetworkLoadParameters& parameters)
@@ -195,4 +195,4 @@ String NetworkDataTask::attributedBundleIdentifier(WebPageProxyIdentifier pageID
     return { };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

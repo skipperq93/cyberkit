@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/Span.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTFSpan, Constructor)
 {

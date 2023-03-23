@@ -30,7 +30,7 @@
 #include <CyberCore/ElementInlines.h>
 #include <CyberCore/HTMLInputElement.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void InputMethodState::setPurposeOrHintForInputMode(CyberCore::InputMode inputMode)
 {
@@ -120,4 +120,4 @@ std::optional<InputMethodState> InputMethodState::decode(IPC::Decoder& decoder)
     return state;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

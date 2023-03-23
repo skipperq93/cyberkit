@@ -32,25 +32,25 @@
 
 #define WEBKIT_TYPE_TEXT_COMBINER_PAD webkit_text_combiner_pad_get_type()
 
-#define WEBKIT_TEXT_COMBINER_PAD(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_TEXT_COMBINER_PAD, WebKitTextCombinerPad))
-#define WEBKIT_TEXT_COMBINER_PAD_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_TEXT_COMBINER_PAD, WebKitTextCombinerPadClass))
+#define WEBKIT_TEXT_COMBINER_PAD(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_TEXT_COMBINER_PAD, CyberKitTextCombinerPad))
+#define WEBKIT_TEXT_COMBINER_PAD_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_TEXT_COMBINER_PAD, CyberKitTextCombinerPadClass))
 #define WEBKIT_IS_TEXT_COMBINER_PAD(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_TEXT_COMBINER_PAD))
 #define WEBKIT_IS_TEXT_COMBINER_PAD_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_TEXT_COMBINER_PAD))
-#define WEBKIT_TEXT_COMBINER_PAD_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_TEXT_COMBINER_PAD, WebKitTextCombinerPadClass))
+#define WEBKIT_TEXT_COMBINER_PAD_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_TEXT_COMBINER_PAD, CyberKitTextCombinerPadClass))
 
-typedef struct _WebKitTextCombinerPadPrivate WebKitTextCombinerPadPrivate;
+typedef struct _CyberKitTextCombinerPadPrivate CyberKitTextCombinerPadPrivate;
 
-struct WebKitTextCombinerPad {
+struct CyberKitTextCombinerPad {
     GstGhostPad parent;
-    WebKitTextCombinerPadPrivate* priv;
+    CyberKitTextCombinerPadPrivate* priv;
 };
 
-struct WebKitTextCombinerPadClass {
+struct CyberKitTextCombinerPadClass {
     GstGhostPadClass parent;
 };
 
 GType webkit_text_combiner_pad_get_type(void);
 
-GstPad* webKitTextCombinerPadLeakInternalPadRef(WebKitTextCombinerPad*);
+GstPad* webKitTextCombinerPadLeakInternalPadRef(CyberKitTextCombinerPad*);
 
 #endif

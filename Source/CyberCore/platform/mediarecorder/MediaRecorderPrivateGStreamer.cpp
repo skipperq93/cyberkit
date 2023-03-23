@@ -40,10 +40,10 @@ GST_DEBUG_CATEGORY(webkit_media_recorder_debug);
 std::unique_ptr<MediaRecorderPrivateGStreamer> MediaRecorderPrivateGStreamer::create(MediaStreamPrivate& stream, const MediaRecorderPrivateOptions& options)
 {
     ensureGStreamerInitialized();
-    registerWebKitGStreamerElements();
+    registerCyberKitGStreamerElements();
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_media_recorder_debug, "webkitmediarecorder", 0, "WebKit MediaStream recorder");
+        GST_DEBUG_CATEGORY_INIT(webkit_media_recorder_debug, "webkitmediarecorder", 0, "CyberKit MediaStream recorder");
     });
 
     auto recorder = makeUnique<MediaRecorderPrivateGStreamer>(stream, options);

@@ -71,12 +71,12 @@ static NSString *InjectedBundlePasteboardDataType = @"org.webkit.data";
 
 static UIImage *testIconImage()
 {
-    return [UIImage imageNamed:@"TestWebKitAPI.resources/icon.png"];
+    return [UIImage imageNamed:@"TestCyberKitAPI.resources/icon.png"];
 }
 
 static NSData *testZIPArchive()
 {
-    NSURL *zipFileURL = [[NSBundle mainBundle] URLForResource:@"compressed-files" withExtension:@"zip" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *zipFileURL = [[NSBundle mainBundle] URLForResource:@"compressed-files" withExtension:@"zip" subdirectory:@"TestCyberKitAPI.resources"];
     return [NSData dataWithContentsOfURL:zipFileURL];
 }
 
@@ -188,7 +188,7 @@ static void checkDragCaretRectIsContainedInRect(CGRect caretRect, CGRect contain
 
 static void checkJSONWithLogging(NSString *jsonString, NSDictionary *expected)
 {
-    BOOL success = TestWebKitAPI::Util::jsonMatchesExpectedValues(jsonString, expected);
+    BOOL success = TestCyberKitAPI::Util::jsonMatchesExpectedValues(jsonString, expected);
     EXPECT_TRUE(success);
     if (!success)
         NSLog(@"Expected JSON: %@ to match values: %@", jsonString, expected);
@@ -196,7 +196,7 @@ static void checkJSONWithLogging(NSString *jsonString, NSDictionary *expected)
 
 static NSData *testIconImageData()
 {
-    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]];
+    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]];
 }
 
 static void runTestWithTemporaryTextFile(void(^runTest)(NSURL *fileURL))
@@ -248,7 +248,7 @@ static void runTestWithTemporaryFolder(void(^runTest)(NSURL *folderURL))
     }
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(DragAndDropTests, ImageToContentEditable)
 {
@@ -543,7 +543,7 @@ TEST(DragAndDropTests, LinkToInput)
         EXPECT_WK_STREQ("Hello world", url._title.UTF8String ?: "");
         doneLoadingURL = true;
     }];
-    TestWebKitAPI::Util::run(&doneLoadingURL);
+    TestCyberKitAPI::Util::run(&doneLoadingURL);
 
     NSArray *observedEventNames = [simulator observedEventNames];
     EXPECT_TRUE([observedEventNames containsObject:@"dragenter"]);
@@ -1214,7 +1214,7 @@ TEST(DragAndDropTests, ExternalSourceDataTransferItemGetFolderAsEntry)
         [simulator runFrom:CGPointMake(50, 50) to:CGPointMake(150, 50)];
     });
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ([expectedOutput componentsJoinedByString:@"\n"], [webView stringByEvaluatingJavaScript:@"output.value"]);
 }
 
@@ -1244,7 +1244,7 @@ TEST(DragAndDropTests, ExternalSourceDataTransferItemGetPlainTextFileAsEntry)
         [simulator runFrom:CGPointMake(50, 50) to:CGPointMake(150, 50)];
     });
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ([expectedOutput componentsJoinedByString:@"\n"], [webView stringByEvaluatingJavaScript:@"output.value"]);
 }
 
@@ -1301,7 +1301,7 @@ TEST(DragAndDropTests, OverrideDrop)
         }];
     }];
     [simulator runFrom:CGPointMake(300, 400) to:CGPointMake(100, 300)];
-    TestWebKitAPI::Util::run(&finishedLoadingData);
+    TestCyberKitAPI::Util::run(&finishedLoadingData);
 }
 
 TEST(DragAndDropTests, InjectedBundleOverridePerformTwoStepDrop)
@@ -1572,7 +1572,7 @@ TEST(DragAndDropTests, UnresponsivePageDoesNotHangUI)
 
     // The test passes if we can prepare for a drag session without timing out.
     auto dragSession = adoptNS([[MockDragSession alloc] init]);
-    [(id <UIDragInteractionDelegate_ForWebKitOnly>)[webView dragInteractionDelegate] _dragInteraction:[webView dragInteraction] prepareForSession:dragSession.get() completion:^() { }];
+    [(id <UIDragInteractionDelegate_ForCyberKitOnly>)[webView dragInteractionDelegate] _dragInteraction:[webView dragInteraction] prepareForSession:dragSession.get() completion:^() { }];
 }
 
 TEST(DragAndDropTests, WebItemProviderPasteboardLoading)
@@ -1618,7 +1618,7 @@ TEST(DragAndDropTests, WebItemProviderPasteboardLoading)
         hasRunSecondCompletionBlock = true;
     } synchronousTimeout:0];
     EXPECT_FALSE(hasRunSecondCompletionBlock);
-    TestWebKitAPI::Util::run(&hasRunSecondCompletionBlock);
+    TestCyberKitAPI::Util::run(&hasRunSecondCompletionBlock);
 }
 
 TEST(DragAndDropTests, DoNotCrashWhenSelectionMovesOffscreenAfterDragStart)
@@ -1691,7 +1691,7 @@ TEST(DragAndDropTests, DragLiftPreviewDataTransferSetDragImage)
 
 static NSData *testIconImageData()
 {
-    return [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"]];
+    return [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"]];
 }
 
 TEST(DragAndDropTests, DataTransferGetDataWhenDroppingImageAndMarkup)
@@ -1788,7 +1788,7 @@ TEST(DragAndDropTests, DataTransferGetDataWhenDroppingImageWithFileURL)
     auto simulator = adoptNS([[DragAndDropSimulator alloc] initWithWebView:webView.get()]);
 
     auto itemProvider = adoptNS([[NSItemProvider alloc] init]);
-    NSURL *iconURL = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *iconURL = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     [itemProvider registerFileRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypePNG fileOptions:0 visibility:NSItemProviderRepresentationVisibilityAll loadHandler:[protectedIconURL = retainPtr(iconURL)] (FileLoadCompletionBlock completionHandler) -> NSProgress * {
         completionHandler(protectedIconURL.get(), NO, nil);
         return nil;
@@ -1889,18 +1889,18 @@ TEST(DragAndDropTests, DataTransferGetDataReadPlainAndRichText)
 
     auto itemProvider = adoptNS([[NSItemProvider alloc] init]);
     NSDictionary *textAttributes = @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:20] };
-    auto richText = adoptNS([[NSAttributedString alloc] initWithString:@"WebKit" attributes:textAttributes]);
+    auto richText = adoptNS([[NSAttributedString alloc] initWithString:@"CyberKit" attributes:textAttributes]);
     [itemProvider registerObject:richText.get() visibility:NSItemProviderRepresentationVisibilityAll];
     [itemProvider registerObject:[NSURL URLWithString:@"https://www.webkit.org/"] visibility:NSItemProviderRepresentationVisibilityAll];
-    [itemProvider registerObject:@"WebKit" visibility:NSItemProviderRepresentationVisibilityAll];
+    [itemProvider registerObject:@"CyberKit" visibility:NSItemProviderRepresentationVisibilityAll];
 
     [simulator setExternalItemProviders:@[ itemProvider.get() ]];
     [simulator runFrom:CGPointZero to:CGPointMake(50, 100)];
 
     EXPECT_WK_STREQ("text/html, text/plain, text/uri-list", [webView stringByEvaluatingJavaScript:@"types.textContent"]);
-    EXPECT_WK_STREQ("WebKit", [webView stringByEvaluatingJavaScript:@"textData.textContent"]);
+    EXPECT_WK_STREQ("CyberKit", [webView stringByEvaluatingJavaScript:@"textData.textContent"]);
     EXPECT_WK_STREQ("https://www.webkit.org/", [webView stringByEvaluatingJavaScript:@"urlData.textContent"]);
-    EXPECT_WK_STREQ("WebKit", [webView stringByEvaluatingJavaScript:@"htmlData.textContent"]);
+    EXPECT_WK_STREQ("CyberKit", [webView stringByEvaluatingJavaScript:@"htmlData.textContent"]);
     EXPECT_WK_STREQ("(STRING, text/html), (STRING, text/plain), (STRING, text/uri-list)", [webView stringByEvaluatingJavaScript:@"items.textContent"]);
     EXPECT_WK_STREQ("", [webView stringByEvaluatingJavaScript:@"files.textContent"]);
 }
@@ -1964,7 +1964,7 @@ TEST(DragAndDropTests, DataTransferGetDataCannotReadPrivateArbitraryTypes)
         completionHandler([@"this is a test" dataUsingEncoding:NSUTF8StringEncoding], nil);
         return nil;
     }];
-    [itemProvider registerDataRepresentationForTypeIdentifier:@"org.WebKit.TestWebKitAPI.custom-pasteboard-type" visibility:NSItemProviderRepresentationVisibilityAll loadHandler:^NSProgress *(DataLoadCompletionBlock completionHandler)
+    [itemProvider registerDataRepresentationForTypeIdentifier:@"org.CyberKit.TestCyberKitAPI.custom-pasteboard-type" visibility:NSItemProviderRepresentationVisibilityAll loadHandler:^NSProgress *(DataLoadCompletionBlock completionHandler)
     {
         completionHandler([@"this is another test" dataUsingEncoding:NSUTF8StringEncoding], nil);
         return nil;
@@ -2012,7 +2012,7 @@ TEST(DragAndDropTests, DataTransferSetDataValidURL)
             @"text/uri-list": @"https://webkit.org/b/123",
         }
     });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(DragAndDropTests, DataTransferSetDataUnescapedURL)
@@ -2049,7 +2049,7 @@ TEST(DragAndDropTests, DataTransferSetDataUnescapedURL)
             @"text/uri-list": @"http://webkit.org/b/\u4F60\u597D;?x=8 + 6",
         }
     });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(DragAndDropTests, DataTransferSetDataInvalidURL)
@@ -2112,7 +2112,7 @@ TEST(DragAndDropTests, DataTransferSanitizeHTML)
             @"text/html": @"<meta content=\"secret\"><b onmouseover=\"dangerousCode()\">hello</b><!-- secret-->, world<script>dangerousCode()</script>",
         }
     });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static BOOL isCompletelyWhite(UIImage *image)
@@ -2201,7 +2201,7 @@ TEST(DragAndDropTests, CanStartDragOnModel)
     // FIXME: Remove this after <rdar://problem/83863149> is fixed.
     // It should not be necessary to use WKURLSchemeHandler here, but CFNetwork does not correctly identify USDZ files.
     auto handler = adoptNS([TestURLSchemeHandler new]);
-    RetainPtr<NSData> modelData = [NSData dataWithContentsOfURL:[NSBundle.mainBundle URLForResource:@"cube" withExtension:@"usdz" subdirectory:@"TestWebKitAPI.resources"]];
+    RetainPtr<NSData> modelData = [NSData dataWithContentsOfURL:[NSBundle.mainBundle URLForResource:@"cube" withExtension:@"usdz" subdirectory:@"TestCyberKitAPI.resources"]];
     [handler setStartURLSchemeTaskHandler:^(WKWebView *, id<WKURLSchemeTask> task) {
         NSURLResponse *response = [[[NSURLResponse alloc] initWithURL:task.request.URL MIMEType:@"model/vnd.usdz+zip" expectedContentLength:[modelData length] textEncodingName:nil] autorelease];
         [task didReceiveResponse:response];
@@ -2226,6 +2226,6 @@ TEST(DragAndDropTests, CanStartDragOnModel)
     EXPECT_WK_STREQ("com.pixar.universal-scene-description-mobile", [registeredTypes firstObject]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(DRAG_SUPPORT) && PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)

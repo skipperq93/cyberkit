@@ -28,7 +28,7 @@
 #import <CyberCore/SerializedCryptoKeyWrap.h>
 #import <wtf/MainThread.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class SerializedCryptoKeyWrapTest : public testing::Test {
 public:
@@ -94,4 +94,4 @@ TEST_F(SerializedCryptoKeyWrapTest, SerializedCryptoKeyWrapUnwrap)
     EXPECT_TRUE(unwrappedKey == cryptoKey);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

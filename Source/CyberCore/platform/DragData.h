@@ -88,7 +88,7 @@ public:
 #if PLATFORM(COCOA)
     WEBCORE_EXPORT DragData(const String& dragStorageName, const IntPoint& clientPosition, const IntPoint& globalPosition, const Vector<String>&, OptionSet<DragOperation>, OptionSet<DragApplicationFlags> = { }, OptionSet<DragDestinationAction> = anyDragDestinationAction(), std::optional<PageIdentifier> pageID = std::nullopt);
 #endif
-    // This constructor should used only by WebKit2 IPC because DragData
+    // This constructor should used only by CyberKit2 IPC because DragData
     // is initialized by the decoder and not in the constructor.
     DragData() = default;
 #if PLATFORM(WIN)

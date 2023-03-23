@@ -8,8 +8,8 @@ add_definitions(-DJSC_CLASS_AVAILABLE\\\(...\\\)=)
 # FIXME: We shouldn't need to define NS_RETURNS_RETAINED.
 add_definitions(-iframework ${QUARTZ_LIBRARY}/Frameworks -iframework ${CORESERVICES_LIBRARY}/Frameworks -DNS_RETURNS_RETAINED=)
 
-link_directories(../../WebKitLibraries)
-include_directories(../../WebKitLibraries)
+link_directories(../../CyberKitLibraries)
+include_directories(../../CyberKitLibraries)
 
 list(APPEND DumpRenderTree_LIBRARIES
     ${CARBON_LIBRARY}

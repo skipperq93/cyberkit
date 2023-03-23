@@ -38,7 +38,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct UserMessage {
     enum class Type { Null, Message, Error };
@@ -65,16 +65,16 @@ struct UserMessage {
     uint32_t errorCode { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::UserMessage::Type> {
+template<> struct EnumTraits<CyberKit::UserMessage::Type> {
     using values = EnumValues<
-        WebKit::UserMessage::Type,
-        WebKit::UserMessage::Type::Null,
-        WebKit::UserMessage::Type::Message,
-        WebKit::UserMessage::Type::Error
+        CyberKit::UserMessage::Type,
+        CyberKit::UserMessage::Type::Null,
+        CyberKit::UserMessage::Type::Message,
+        CyberKit::UserMessage::Type::Error
     >;
 };
 

@@ -86,7 +86,7 @@ HTMLTextFormControlElement::~HTMLTextFormControlElement() = default;
 bool HTMLTextFormControlElement::childShouldCreateRenderer(const Node& child) const
 {
     // FIXME: We shouldn't force the pseudo elements down into the shadow, but
-    // this perserves the current behavior of WebKit.
+    // this perserves the current behavior of CyberKit.
     if (child.isPseudoElement())
         return HTMLFormControlElement::childShouldCreateRenderer(child);
     return hasShadowRootParent(child) && HTMLFormControlElement::childShouldCreateRenderer(child);
@@ -869,9 +869,9 @@ void HTMLTextFormControlElement::adjustInnerTextStyle(const RenderStyle& parentS
         case TextAlignMode::Left:
         case TextAlignMode::Right:
         case TextAlignMode::Center:
-        case TextAlignMode::WebKitLeft:
-        case TextAlignMode::WebKitRight:
-        case TextAlignMode::WebKitCenter:
+        case TextAlignMode::CyberKitLeft:
+        case TextAlignMode::CyberKitRight:
+        case TextAlignMode::CyberKitCenter:
             break;
         }
 

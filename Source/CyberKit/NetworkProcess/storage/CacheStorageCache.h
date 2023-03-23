@@ -31,7 +31,7 @@
 #include <CyberCore/RetrieveRecordsOptions.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class CacheStorageManager;
 
@@ -66,4 +66,4 @@ private:
     Ref<CacheStorageStore> m_store;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

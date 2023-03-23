@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class UndoOrRedo : bool { Undo, Redo };
 
@@ -35,11 +35,11 @@ enum class UndoOrRedo : bool { Undo, Redo };
 
 namespace WTF {
     
-template<> struct EnumTraits<WebKit::UndoOrRedo> {
+template<> struct EnumTraits<CyberKit::UndoOrRedo> {
     using values = EnumValues<
-        WebKit::UndoOrRedo,
-        WebKit::UndoOrRedo::Undo,
-        WebKit::UndoOrRedo::Redo
+        CyberKit::UndoOrRedo,
+        CyberKit::UndoOrRedo::Undo,
+        CyberKit::UndoOrRedo::Redo
     >;
 };
 

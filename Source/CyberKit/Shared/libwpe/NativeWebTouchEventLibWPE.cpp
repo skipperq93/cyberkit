@@ -30,7 +30,7 @@
 
 #include "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebTouchEvent::NativeWebTouchEvent(struct wpe_input_touch_event* event, float deviceScaleFactor)
     : WebTouchEvent(WebEventFactory::createWebTouchEvent(event, deviceScaleFactor))
@@ -45,6 +45,6 @@ NativeWebTouchEvent::NativeWebTouchEvent(struct wpe_input_touch_event* event, fl
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(TOUCH_EVENTS)

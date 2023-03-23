@@ -33,7 +33,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool isInFullscreen = false;
 static bool isOutOfFullscreen = false;
@@ -61,13 +61,13 @@ TEST(Fullscreen, DISABLED_Alert)
 
     [webView evaluateJavaScript:@"enterFullscreen()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&isInFullscreen);
+    TestCyberKitAPI::Util::run(&isInFullscreen);
 
     [webView evaluateJavaScript:@"alert()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&isOutOfFullscreen);
+    TestCyberKitAPI::Util::run(&isOutOfFullscreen);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

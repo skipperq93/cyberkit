@@ -107,10 +107,10 @@ class WinPort(ApplePort):
             self._os_version = self.host.platform.os_version
 
     def do_text_results_differ(self, expected_text, actual_text):
-        # Sanity was restored in WebKitTestRunner, so we don't need this hack there.
+        # Sanity was restored in CyberKitTestRunner, so we don't need this hack there.
         if not self.get_option('webkit_test_runner'):
             # Windows does not have an EDITING DELEGATE, so strip those messages to make more tests pass.
-            # It's possible other ports might want this, and if so, this could move down into WebKitPort.
+            # It's possible other ports might want this, and if so, this could move down into CyberKitPort.
             delegate_regexp = re.compile("^EDITING DELEGATE: .*?\n", re.MULTILINE)
             expected_text = delegate_regexp.sub("", expected_text)
             actual_text = delegate_regexp.sub("", actual_text)
@@ -203,7 +203,7 @@ class WinPort(ApplePort):
     def _path_to_default_image_diff(self):
         return self._build_path('ImageDiff.exe')
 
-    API_TEST_BINARY_NAMES = ['TestWTF.exe', 'TestCyberCore.exe', 'TestWebKit.exe']
+    API_TEST_BINARY_NAMES = ['TestWTF.exe', 'TestCyberCore.exe', 'TestCyberKit.exe']
 
     def path_to_api_test_binaries(self):
         return {binary.split('.')[0]: self._build_path(binary) for binary in self.API_TEST_BINARY_NAMES}

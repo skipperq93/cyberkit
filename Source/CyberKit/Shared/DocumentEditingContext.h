@@ -37,7 +37,7 @@
 
 OBJC_CLASS UIWKDocumentContext;
 
-namespace WebKit {
+namespace CyberKit {
 
 struct DocumentEditingContextRequest {
     enum class Options : uint8_t {
@@ -61,7 +61,7 @@ struct DocumentEditingContextRequest {
 };
 
 struct DocumentEditingContext {
-    UIWKDocumentContext *toPlatformContext(OptionSet<WebKit::DocumentEditingContextRequest::Options>);
+    UIWKDocumentContext *toPlatformContext(OptionSet<CyberKit::DocumentEditingContextRequest::Options>);
 
     CyberCore::AttributedString contextBefore;
     CyberCore::AttributedString selectedText;
@@ -87,39 +87,39 @@ struct DocumentEditingContext {
 }
 
 namespace IPC {
-template<> struct ArgumentCoder<WebKit::DocumentEditingContext::Range> {
-    static void encode(Encoder&, const WebKit::DocumentEditingContext::Range&);
-    static std::optional<WebKit::DocumentEditingContext::Range> decode(Decoder&);
+template<> struct ArgumentCoder<CyberKit::DocumentEditingContext::Range> {
+    static void encode(Encoder&, const CyberKit::DocumentEditingContext::Range&);
+    static std::optional<CyberKit::DocumentEditingContext::Range> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebKit::DocumentEditingContext::TextRectAndRange> {
-    static void encode(Encoder&, const WebKit::DocumentEditingContext::TextRectAndRange&);
-    static std::optional<WebKit::DocumentEditingContext::TextRectAndRange> decode(Decoder&);
+template<> struct ArgumentCoder<CyberKit::DocumentEditingContext::TextRectAndRange> {
+    static void encode(Encoder&, const CyberKit::DocumentEditingContext::TextRectAndRange&);
+    static std::optional<CyberKit::DocumentEditingContext::TextRectAndRange> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebKit::DocumentEditingContext> {
-    static void encode(Encoder&, const WebKit::DocumentEditingContext&);
-    static std::optional<WebKit::DocumentEditingContext> decode(Decoder&);
+template<> struct ArgumentCoder<CyberKit::DocumentEditingContext> {
+    static void encode(Encoder&, const CyberKit::DocumentEditingContext&);
+    static std::optional<CyberKit::DocumentEditingContext> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebKit::DocumentEditingContextRequest> {
-    static void encode(Encoder&, const WebKit::DocumentEditingContextRequest&);
-    static std::optional<WebKit::DocumentEditingContextRequest> decode(Decoder&);
+template<> struct ArgumentCoder<CyberKit::DocumentEditingContextRequest> {
+    static void encode(Encoder&, const CyberKit::DocumentEditingContextRequest&);
+    static std::optional<CyberKit::DocumentEditingContextRequest> decode(Decoder&);
 };
 }
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::DocumentEditingContextRequest::Options> {
+template<> struct EnumTraits<CyberKit::DocumentEditingContextRequest::Options> {
     using values = EnumValues<
-        WebKit::DocumentEditingContextRequest::Options,
-        WebKit::DocumentEditingContextRequest::Options::Text,
-        WebKit::DocumentEditingContextRequest::Options::AttributedText,
-        WebKit::DocumentEditingContextRequest::Options::Rects,
-        WebKit::DocumentEditingContextRequest::Options::Spatial,
-        WebKit::DocumentEditingContextRequest::Options::Annotation,
-        WebKit::DocumentEditingContextRequest::Options::MarkedTextRects,
-        WebKit::DocumentEditingContextRequest::Options::SpatialAndCurrentSelection
+        CyberKit::DocumentEditingContextRequest::Options,
+        CyberKit::DocumentEditingContextRequest::Options::Text,
+        CyberKit::DocumentEditingContextRequest::Options::AttributedText,
+        CyberKit::DocumentEditingContextRequest::Options::Rects,
+        CyberKit::DocumentEditingContextRequest::Options::Spatial,
+        CyberKit::DocumentEditingContextRequest::Options::Annotation,
+        CyberKit::DocumentEditingContextRequest::Options::MarkedTextRects,
+        CyberKit::DocumentEditingContextRequest::Options::SpatialAndCurrentSelection
     >;
 };
 

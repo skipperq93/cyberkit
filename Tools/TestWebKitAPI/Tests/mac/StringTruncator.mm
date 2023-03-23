@@ -28,7 +28,7 @@
 
 #import <CyberKit/WebStringTruncator.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, StringTruncator)
 {
@@ -46,4 +46,4 @@ TEST(CyberKitLegacy, StringTruncator)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

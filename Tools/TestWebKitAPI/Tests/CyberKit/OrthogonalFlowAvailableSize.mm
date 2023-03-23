@@ -31,12 +31,12 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, OrthogonalFlowAvailableSize)
+TEST(CyberKit, OrthogonalFlowAvailableSize)
 {
     CGPoint origin = CGPointMake(0, 0);
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(origin.x, origin.y, 500, 500)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"orthogonal-flow-available-size" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"orthogonal-flow-available-size" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -45,7 +45,7 @@ TEST(WebKit, OrthogonalFlowAvailableSize)
         EXPECT_EQ(500, result.intValue);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView setFrame:CGRectMake(origin.x, origin.y, 500, 400)];
@@ -53,7 +53,7 @@ TEST(WebKit, OrthogonalFlowAvailableSize)
         EXPECT_EQ(400, result.intValue);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView setFrame:CGRectMake(origin.x, origin.y, 500, 600)];
@@ -61,6 +61,6 @@ TEST(WebKit, OrthogonalFlowAvailableSize)
         EXPECT_EQ(600, result.intValue);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }

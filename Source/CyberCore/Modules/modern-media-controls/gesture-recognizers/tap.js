@@ -75,8 +75,8 @@ class TapGestureRecognizer extends GestureRecognizer
         if (!element)
             return p;
 
-        // FIXME: are WebKitPoint and DOMPoint interchangeable?
-        const wkPoint = window.webkitConvertPointFromPageToNode(element, new WebKitPoint(p.x, p.y));
+        // FIXME: are CyberKitPoint and DOMPoint interchangeable?
+        const wkPoint = window.webkitConvertPointFromPageToNode(element, new CyberKitPoint(p.x, p.y));
         return new DOMPoint(wkPoint.x, wkPoint.y);
     }
 

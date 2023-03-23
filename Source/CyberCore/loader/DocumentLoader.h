@@ -290,7 +290,7 @@ public:
     // These accessors accommodate WebCore's somewhat fickle custom of creating history
     // items for redirects, but only sometimes. For "source" and "destination",
     // these accessors return the URL that would have been used if a history
-    // item were created. This allows WebKit to link history items reflecting
+    // item were created. This allows CyberKit to link history items reflecting
     // redirects into a chain from start to finish.
     String clientRedirectSourceForHistory() const { return m_clientRedirectSourceForHistory; } // null if no client redirect occurred.
     String clientRedirectDestinationForHistory() const { return urlForHistory().string(); }
@@ -390,7 +390,7 @@ public:
     DocumentLoadTiming& timing() { return m_loadTiming; }
     void resetTiming() { m_loadTiming = { }; }
 
-    // The WebKit layer calls this function when it's ready for the data to actually be added to the document.
+    // The CyberKit layer calls this function when it's ready for the data to actually be added to the document.
     WEBCORE_EXPORT void commitData(const SharedBuffer&);
 
     ApplicationCacheHost& applicationCacheHost() const;

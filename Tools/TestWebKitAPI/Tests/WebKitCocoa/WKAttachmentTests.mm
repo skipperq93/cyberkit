@@ -43,7 +43,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <CyberKit/WebArchive.h>
-#import <CyberKit/WebKitPrivate.h>
+#import <CyberKit/CyberKitPrivate.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
@@ -150,7 +150,7 @@ using CocoaPasteboard = UIPasteboard;
 
 static NSURL *testiWorkAttachmentFileURL()
 {
-    return [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pages" subdirectory:@"TestWebKitAPI.resources"];
+    return [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pages" subdirectory:@"TestCyberKitAPI.resources"];
 }
 
 static NSData *testiWorkAttachmentData()
@@ -185,7 +185,7 @@ static NSURL *testDirectoryAttachmentFileURL()
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class ObserveAttachmentUpdatesForScope {
 public:
@@ -273,7 +273,7 @@ static RetainPtr<TestWKWebView> webViewForTestingAttachments()
 
 static NSData *testZIPData()
 {
-    NSURL *zipFileURL = [[NSBundle mainBundle] URLForResource:@"compressed-files" withExtension:@"zip" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *zipFileURL = [[NSBundle mainBundle] URLForResource:@"compressed-files" withExtension:@"zip" subdirectory:@"TestCyberKitAPI.resources"];
     return [NSData dataWithContentsOfURL:zipFileURL];
 }
 
@@ -284,7 +284,7 @@ static NSData *testHTMLData()
 
 static NSURL *testImageFileURL()
 {
-    return [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    return [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
 }
 
 static NSData *testImageData()
@@ -294,7 +294,7 @@ static NSData *testImageData()
 
 static NSURL *testGIFFileURL()
 {
-    return [[NSBundle mainBundle] URLForResource:@"apple" withExtension:@"gif" subdirectory:@"TestWebKitAPI.resources"];
+    return [[NSBundle mainBundle] URLForResource:@"apple" withExtension:@"gif" subdirectory:@"TestCyberKitAPI.resources"];
 }
 
 static NSData *testGIFData()
@@ -304,7 +304,7 @@ static NSData *testGIFData()
 
 static NSURL *testPDFFileURL()
 {
-    return [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"];
+    return [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"];
 }
 
 static NSData *testPDFData()
@@ -314,7 +314,7 @@ static NSData *testPDFData()
 
 static NSURL *testJPEGFileURL()
 {
-    return [[NSBundle mainBundle] URLForResource:@"sunset-in-cupertino-600px" withExtension:@"jpg" subdirectory:@"TestWebKitAPI.resources"];
+    return [[NSBundle mainBundle] URLForResource:@"sunset-in-cupertino-600px" withExtension:@"jpg" subdirectory:@"TestCyberKitAPI.resources"];
 }
 
 static NSData *testJPEGData()
@@ -330,7 +330,7 @@ static NSData *testJPEGData()
     RetainPtr<_WKAttachment> attachment = [self _insertAttachmentWithFileWrapper:fileWrapper contentType:contentType completion:^(BOOL) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return attachment.autorelease();
 }
 
@@ -343,7 +343,7 @@ static NSData *testJPEGData()
     RetainPtr<_WKAttachment> attachment = [self _insertAttachmentWithFileWrapper:fileWrapper.get() contentType:contentType completion:^(BOOL) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return attachment.autorelease();
 }
 
@@ -362,7 +362,7 @@ static NSData *testJPEGData()
         }
         doneEvaluatingScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingScript);
     return rects.autorelease();
 }
 
@@ -374,7 +374,7 @@ static NSData *testJPEGData()
         midPoint = CGPointMake(result.firstObject.floatValue, result.lastObject.floatValue);
         doneEvaluatingScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingScript);
     return midPoint;
 }
 
@@ -386,7 +386,7 @@ static NSData *testJPEGData()
         size = CGSizeMake(sizeResult.firstObject.floatValue, sizeResult.lastObject.floatValue);
         doneEvaluatingScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingScript);
     return size;
 }
 
@@ -398,7 +398,7 @@ static NSData *testJPEGData()
         size = CGSizeMake(sizeResult.firstObject.floatValue, sizeResult.lastObject.floatValue);
         doneEvaluatingScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingScript);
     return size;
 }
 
@@ -422,7 +422,7 @@ static NSData *testJPEGData()
 
 - (void)expectUpdatesAfterCommand:(NSString *)command withArgument:(NSString *)argument expectedRemovals:(NSArray<_WKAttachment *> *)removed expectedInsertions:(NSArray<_WKAttachment *> *)inserted
 {
-    TestWebKitAPI::ObserveAttachmentUpdatesForScope observer(self);
+    TestCyberKitAPI::ObserveAttachmentUpdatesForScope observer(self);
     EXPECT_TRUE([self _synchronouslyExecuteEditCommand:command argument:argument]);
     observer.expectAttachmentUpdates(removed, inserted);
 }
@@ -440,7 +440,7 @@ static NSData *testJPEGData()
         "identifier";
 
     RetainPtr attachmentIdentifier = [self stringByEvaluatingJavaScript:@(scriptForEnsuringAttachmentIdentifier)];
-    TestWebKitAPI::Util::run(&doneWaitingForAttachmentInsertion);
+    TestCyberKitAPI::Util::run(&doneWaitingForAttachmentInsertion);
 
     return attachmentIdentifier.autorelease();
 }
@@ -468,7 +468,7 @@ static NSData *testJPEGData()
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     BOOL errorOccurred = !!resultError;
     if (error)
@@ -490,7 +490,7 @@ static NSData *testJPEGData()
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     BOOL errorOccurred = !!resultError;
     if (error)
@@ -620,7 +620,7 @@ typedef void(^ItemProviderDataLoadHandler)(NSData *, NSError *);
             NSLog(@"Encountered error when loading data: %@", error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @end
@@ -735,7 +735,7 @@ PlatformImage *platformImageWithData(NSData *data)
 @implementation FileWrapper
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #pragma mark - Platform-agnostic tests
 
@@ -1432,7 +1432,7 @@ TEST(WKAttachmentTests, InvalidateAttachmentsAfterWebProcessTermination)
 
     ObserveAttachmentUpdatesForScope observer(webView.get());
     [webView _killWebContentProcess];
-    TestWebKitAPI::Util::run(&webProcessTerminated);
+    TestCyberKitAPI::Util::run(&webProcessTerminated);
 
     observer.expectAttachmentUpdates(@[ pdfAttachment.get() ], @[ ]);
     EXPECT_FALSE([pdfAttachment isConnected]);
@@ -2211,7 +2211,7 @@ TEST(WKAttachmentTestsMac, DragDirectoryAttachment)
     auto fileWrapper = adoptNS([[NSFileWrapper alloc] initWithURL:testDirectoryAttachmentFileURL() options:0 error:nil]);
     auto attachment = retainPtr([webView synchronouslyInsertAttachmentWithFileWrapper:fileWrapper.get() contentType:nil]);
     [simulator runFrom:[webView attachmentElementMidPoint] to:CGPointMake(300, 300)];
-    TestWebKitAPI::Util::run(&didLoadIcon);
+    TestCyberKitAPI::Util::run(&didLoadIcon);
 }
 
 TEST(WKAttachmentTestsMac, CallAcceptsFirstMouseWhileDraggingAttachment)
@@ -2297,7 +2297,7 @@ TEST(WKAttachmentTestsIOS, TargetedPreviewIsClippedWhenDroppingTallImage)
     [webView stringByEvaluatingJavaScript:@"document.body.style.margin = '0'"];
     [webView _setEditable:YES];
 
-    auto imageData = retainPtr([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"400x400-green" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]]);
+    auto imageData = retainPtr([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"400x400-green" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]]);
     auto simulator = adoptNS([[DragAndDropSimulator alloc] initWithWebView:webView.get()]);
 
     auto preview = targetedImageDragPreview(webView.get(), imageData.get(), CGSizeMake(100, 100));
@@ -2389,7 +2389,7 @@ TEST(WKAttachmentTestsIOS, InsertDroppedAttributedStringContainingAttachment)
 
 TEST(WKAttachmentTestsIOS, InsertDroppedRichAndPlainTextFilesAsAttachments)
 {
-    // Here, both rich text and plain text are content types that WebKit already understands how to insert in editable
+    // Here, both rich text and plain text are content types that CyberKit already understands how to insert in editable
     // areas in the absence of attachment elements. However, due to the explicitly set attachment presentation style
     // on the item providers, we should instead treat them as dropped files and insert attachment elements.
     // This exercises the scenario of dragging rich and plain text files from Files to Mail.
@@ -2425,7 +2425,7 @@ TEST(WKAttachmentTestsIOS, InsertDroppedRichAndPlainTextFilesAsAttachments)
 
 TEST(WKAttachmentTestsIOS, InsertDroppedZipArchiveAsAttachment)
 {
-    // Since WebKit doesn't have any default DOM representation for ZIP archives, we should fall back to inserting
+    // Since CyberKit doesn't have any default DOM representation for ZIP archives, we should fall back to inserting
     // attachment elements. This exercises the flow of dragging a ZIP file from an app that doesn't specify a preferred
     // presentation style (e.g. Notes) into Mail.
     auto item = adoptNS([[NSItemProvider alloc] init]);
@@ -2746,7 +2746,7 @@ TEST(WKAttachmentTestsIOS, CopyAttachmentUsingElementAction)
         EXPECT_TRUE([[document regularFileContents] isEqualToData:data]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKAttachmentTestsIOS, PasteRichTextCopiedFromNotes)
@@ -2765,6 +2765,6 @@ TEST(WKAttachmentTestsIOS, PasteRichTextCopiedFromNotes)
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC) || PLATFORM(IOS)

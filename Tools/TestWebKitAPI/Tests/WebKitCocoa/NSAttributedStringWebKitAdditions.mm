@@ -30,7 +30,7 @@
 #import <CyberKit/NSAttributedString.h>
 #import <wtf/RetainPtr.h>
 
-TEST(NSAttributedStringWebKitAdditions, DefaultFontSize)
+TEST(NSAttributedStringCyberKitAdditions, DefaultFontSize)
 {
     __block bool done = false;
     [NSAttributedString loadFromHTMLWithString:@"Hello World" options:@{ } completionHandler:^(NSAttributedString *attributedString, NSDictionary<NSAttributedStringDocumentAttributeKey, id> *attributes, NSError *error) {
@@ -38,10 +38,10 @@ TEST(NSAttributedStringWebKitAdditions, DefaultFontSize)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(NSAttributedStringWebKitAdditions, MultipleParagraphs)
+TEST(NSAttributedStringCyberKitAdditions, MultipleParagraphs)
 {
     __block bool done = false;
     [NSAttributedString loadFromHTMLWithString:@"<p style='margin-bottom:1px'>Hello</p><p style='margin-bottom:2px'>World</p>" options:@{ } completionHandler:^(NSAttributedString *attributedString, NSDictionary<NSAttributedStringDocumentAttributeKey, id> *attributes, NSError *error) {
@@ -50,11 +50,11 @@ TEST(NSAttributedStringWebKitAdditions, MultipleParagraphs)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #if PLATFORM(IOS_FAMILY)
-TEST(NSAttributedStringWebKitAdditions, DirectoriesNotCreated)
+TEST(NSAttributedStringCyberKitAdditions, DirectoriesNotCreated)
 {
     NSString *directory = [NSHomeDirectory() stringByAppendingString:@"/Library/Cookies"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -64,7 +64,7 @@ TEST(NSAttributedStringWebKitAdditions, DirectoriesNotCreated)
     [NSAttributedString loadFromHTMLWithData:[NSData data] options:@{ } completionHandler:^(NSAttributedString *attributedString, NSDictionary<NSAttributedStringDocumentAttributeKey, id> *attributes, NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto cookieDirectoryExists = [&] {
         return [[NSFileManager defaultManager] fileExistsAtPath:directory];

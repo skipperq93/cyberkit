@@ -42,7 +42,7 @@
 #import <wtf/SoftLinking.h>
 #import <wtf/text/CString.h>
 
-@interface AVAssetResourceLoadingContentInformationRequest (WebKitExtensions)
+@interface AVAssetResourceLoadingContentInformationRequest (CyberKitExtensions)
 @property (nonatomic, getter=isEntireLengthAvailableOnDemand) BOOL entireLengthAvailableOnDemand;
 @end
 

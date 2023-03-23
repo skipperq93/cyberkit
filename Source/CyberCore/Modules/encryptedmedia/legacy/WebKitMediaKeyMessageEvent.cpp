@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKitMediaKeyMessageEvent.h"
+#include "CyberKitMediaKeyMessageEvent.h"
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
@@ -33,9 +33,9 @@
 
 namespace WebCore {
 
-WTF_MAKE_ISO_ALLOCATED_IMPL(WebKitMediaKeyMessageEvent);
+WTF_MAKE_ISO_ALLOCATED_IMPL(CyberKitMediaKeyMessageEvent);
 
-WebKitMediaKeyMessageEvent::WebKitMediaKeyMessageEvent(const AtomString& type, Uint8Array* message, const String& destinationURL)
+CyberKitMediaKeyMessageEvent::CyberKitMediaKeyMessageEvent(const AtomString& type, Uint8Array* message, const String& destinationURL)
     : Event(type, CanBubble::No, IsCancelable::No)
     , m_message(message)
     , m_destinationURL(destinationURL)
@@ -43,18 +43,18 @@ WebKitMediaKeyMessageEvent::WebKitMediaKeyMessageEvent(const AtomString& type, U
 }
 
 
-WebKitMediaKeyMessageEvent::WebKitMediaKeyMessageEvent(const AtomString& type, const Init& initializer, IsTrusted isTrusted)
+CyberKitMediaKeyMessageEvent::CyberKitMediaKeyMessageEvent(const AtomString& type, const Init& initializer, IsTrusted isTrusted)
     : Event(type, initializer, isTrusted)
     , m_message(initializer.message)
     , m_destinationURL(initializer.destinationURL)
 {
 }
 
-WebKitMediaKeyMessageEvent::~WebKitMediaKeyMessageEvent() = default;
+CyberKitMediaKeyMessageEvent::~CyberKitMediaKeyMessageEvent() = default;
 
-EventInterface WebKitMediaKeyMessageEvent::eventInterface() const
+EventInterface CyberKitMediaKeyMessageEvent::eventInterface() const
 {
-    return WebKitMediaKeyMessageEventInterfaceType;
+    return CyberKitMediaKeyMessageEventInterfaceType;
 }
 
 } // namespace WebCore

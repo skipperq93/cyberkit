@@ -42,7 +42,7 @@ struct WorkerFetchResult;
 class TextResourceDecoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoad;
 class NetworkSession;
@@ -87,7 +87,7 @@ private:
     CyberCore::CertificateInfo m_certificateInfo;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)
 

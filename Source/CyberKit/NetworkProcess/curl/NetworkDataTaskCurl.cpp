@@ -50,7 +50,7 @@
 #include <pal/text/TextEncoding.h>
 #include <wtf/FileSystem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -606,4 +606,4 @@ void NetworkDataTaskCurl::updateNetworkLoadMetrics(CyberCore::NetworkLoadMetrics
     networkLoadMetrics.hasCrossOriginRedirect = m_hasCrossOriginRedirect;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

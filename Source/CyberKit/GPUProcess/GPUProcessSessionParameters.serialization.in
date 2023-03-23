@@ -22,13 +22,13 @@
 
 #if ENABLE(GPU_PROCESS)
 
-struct WebKit::GPUProcessSessionParameters {
+struct CyberKit::GPUProcessSessionParameters {
     String mediaCacheDirectory;
-    WebKit::SandboxExtension::Handle mediaCacheDirectorySandboxExtensionHandle;
+    CyberKit::SandboxExtension::Handle mediaCacheDirectorySandboxExtensionHandle;
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
     String mediaKeysStorageDirectory;
-    WebKit::SandboxExtension::Handle mediaKeysStorageDirectorySandboxExtensionHandle;
+    CyberKit::SandboxExtension::Handle mediaKeysStorageDirectorySandboxExtensionHandle;
 #endif
 };
 

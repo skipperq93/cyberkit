@@ -31,7 +31,7 @@
 #include <CyberCore/TextIterator.h>
 #include <CyberCore/VisibleUnits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 std::optional<CyberCore::SimpleRange> EditingRange::toRange(CyberCore::Frame& frame, const EditingRange& editingRange, EditingRangeIsRelativeTo base)
 {
@@ -76,19 +76,19 @@ EditingRange EditingRange::fromRange(CyberCore::Frame& frame, const std::optiona
     return EditingRange(relativeRange.location, relativeRange.length);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace IPC {
 
-void ArgumentCoder<WebKit::EditingRange>::encode(Encoder& encoder, const WebKit::EditingRange& editingRange)
+void ArgumentCoder<CyberKit::EditingRange>::encode(Encoder& encoder, const CyberKit::EditingRange& editingRange)
 {
     encoder << editingRange.location;
     encoder << editingRange.length;
 }
 
-std::optional<WebKit::EditingRange> ArgumentCoder<WebKit::EditingRange>::decode(Decoder& decoder)
+std::optional<CyberKit::EditingRange> ArgumentCoder<CyberKit::EditingRange>::decode(Decoder& decoder)
 {
-    WebKit::EditingRange editingRange;
+    CyberKit::EditingRange editingRange;
 
     if (!decoder.decode(editingRange.location))
         return std::nullopt;

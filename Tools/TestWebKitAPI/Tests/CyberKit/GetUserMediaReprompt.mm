@@ -51,14 +51,14 @@
         if (result.boolValue == expected)
             return YES;
 
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     }
 
     return NO;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void initializeMediaCaptureConfiguration(WKWebViewConfiguration* configuration)
 {
@@ -70,7 +70,7 @@ static void initializeMediaCaptureConfiguration(WKWebViewConfiguration* configur
     preferences._getUserMediaRequiresFocus = NO;
 }
 
-TEST(WebKit2, GetUserMediaReprompt)
+TEST(CyberKit2, GetUserMediaReprompt)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -104,7 +104,7 @@ TEST(WebKit2, GetUserMediaReprompt)
     [delegate waitUntilPrompted];
 }
 
-TEST(WebKit2, GetUserMediaRepromptAfterAudioVideoBeingDenied)
+TEST(CyberKit2, GetUserMediaRepromptAfterAudioVideoBeingDenied)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -124,7 +124,7 @@ TEST(WebKit2, GetUserMediaRepromptAfterAudioVideoBeingDenied)
     EXPECT_TRUE([webView haveStream:YES]);
 }
 
-TEST(WebKit2, MultipleGetUserMediaSynchronously)
+TEST(CyberKit2, MultipleGetUserMediaSynchronously)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -142,6 +142,6 @@ TEST(WebKit2, MultipleGetUserMediaSynchronously)
     EXPECT_EQ([delegate numberOfPrompts], 2);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)

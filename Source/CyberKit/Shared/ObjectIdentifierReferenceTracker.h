@@ -33,7 +33,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // Type for the key in mapping from object identifier references to object state.
 template<typename T>
@@ -193,21 +193,21 @@ template<typename T> inline void add(Hasher& hasher, ObjectIdentifierReference<T
 }
 
 template<typename T>
-TextStream& operator<<(TextStream& ts, const WebKit::ObjectIdentifierReference<T>& reference)
+TextStream& operator<<(TextStream& ts, const CyberKit::ObjectIdentifierReference<T>& reference)
 {
     ts << "ObjectIdentifierReference(" << reference.identifier() << ", " << reference.version() << ")";
     return ts;
 }
 
 template<typename T>
-TextStream& operator<<(TextStream& ts, const WebKit::ObjectIdentifierReadReference<T>& reference)
+TextStream& operator<<(TextStream& ts, const CyberKit::ObjectIdentifierReadReference<T>& reference)
 {
     ts << "ObjectIdentifierReadReference(" << reference.identifier() << ", " << reference.version() << ")";
     return ts;
 }
 
 template<typename T>
-TextStream& operator<<(TextStream& ts, const WebKit::ObjectIdentifierWriteReference<T>& reference)
+TextStream& operator<<(TextStream& ts, const CyberKit::ObjectIdentifierWriteReference<T>& reference)
 {
     ts << "ObjectIdentifierWriteReference(" << reference.identifier() << ", " << reference.version() << ", " << reference.pendingReads() << ")";
     return ts;
@@ -217,16 +217,16 @@ TextStream& operator<<(TextStream& ts, const WebKit::ObjectIdentifierWriteRefere
 
 namespace WTF {
 
-template<typename T> struct HashTraits<WebKit::ObjectIdentifierReference<T>> : SimpleClassHashTraits<WebKit::ObjectIdentifierReference<T>> {
+template<typename T> struct HashTraits<CyberKit::ObjectIdentifierReference<T>> : SimpleClassHashTraits<CyberKit::ObjectIdentifierReference<T>> {
     static constexpr bool emptyValueIsZero = HashTraits<T>::emptyValueIsZero;
 };
 
-template<typename T> struct DefaultHash<WebKit::ObjectIdentifierReference<T>> {
-    static unsigned hash(const WebKit::ObjectIdentifierReference<T>& reference)
+template<typename T> struct DefaultHash<CyberKit::ObjectIdentifierReference<T>> {
+    static unsigned hash(const CyberKit::ObjectIdentifierReference<T>& reference)
     {
         return computeHash(reference);
     }
-    static bool equal(const WebKit::ObjectIdentifierReference<T>& a, const WebKit::ObjectIdentifierReference<T>& b)
+    static bool equal(const CyberKit::ObjectIdentifierReference<T>& a, const CyberKit::ObjectIdentifierReference<T>& b)
     {
         return a == b;
     }

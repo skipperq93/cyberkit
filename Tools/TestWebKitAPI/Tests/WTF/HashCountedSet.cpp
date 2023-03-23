@@ -33,7 +33,7 @@
 #include <wtf/HashCountedSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 typedef WTF::HashCountedSet<int> IntHashCountedSet;
 
@@ -506,4 +506,4 @@ TEST(WTF_HashCountedSet, Values)
     EXPECT_EQ(3, vector[2]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

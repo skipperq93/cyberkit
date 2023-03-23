@@ -22,7 +22,7 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)
 
-struct WebKit::MediaDescriptionInfo {
+struct CyberKit::MediaDescriptionInfo {
     AtomString m_codec;
     bool m_isVideo;
     bool m_isAudio;

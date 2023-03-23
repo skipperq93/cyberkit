@@ -36,7 +36,7 @@
 #include <CyberCore/HTMLMenuItemElement.h>
 #include <CyberCore/HTMLNames.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static ItemType itemType(const String&)
 {

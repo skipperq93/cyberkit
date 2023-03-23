@@ -41,7 +41,7 @@
 // WKPageUIClient::isPlayingAudioDidChange() to get called, and checks that WKPageIsPlayingAudio() now
 // returns true for the page.
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool isMSEEnabledChanged;
 static bool isMSEEnabled;
@@ -94,7 +94,7 @@ static void setUpClients(WKPageRef page)
     WKPageSetPageUIClient(page, &uiClient.base);
 }
 
-TEST(WebKit, WKPageIsPlayingAudio)
+TEST(CyberKit, WKPageIsPlayingAudio)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -113,7 +113,7 @@ TEST(WebKit, WKPageIsPlayingAudio)
     EXPECT_TRUE(WKPageIsPlayingAudio(webView.page()));
 }
 
-TEST(WebKit, MSEIsPlayingAudio)
+TEST(CyberKit, MSEIsPlayingAudio)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -148,6 +148,6 @@ TEST(WebKit, MSEIsPlayingAudio)
     EXPECT_TRUE(WKPageIsPlayingAudio(webView.page()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

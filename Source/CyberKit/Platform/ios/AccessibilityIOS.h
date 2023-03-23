@@ -28,8 +28,8 @@
 OBJC_CLASS NSData;
 OBJC_CLASS NSUUID;
 
-namespace WebKit {
+namespace CyberKit {
 
 NSData *newAccessibilityRemoteToken(NSUUID *);
 
-} // namespace WebKit
+} // namespace CyberKit

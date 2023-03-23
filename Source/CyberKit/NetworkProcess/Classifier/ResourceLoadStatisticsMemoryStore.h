@@ -41,7 +41,7 @@ enum class StorageAccessWasGranted : bool;
 struct ResourceLoadStatistics;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // This is always constructed / used / destroyed on the WebResourceLoadStatisticsStore's statistics queue.
 class ResourceLoadStatisticsMemoryStore final : public ResourceLoadStatisticsStore {
@@ -141,10 +141,10 @@ private:
     Vector<OperatingDate> m_operatingDates;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::ResourceLoadStatisticsMemoryStore)
-    static bool isType(const WebKit::ResourceLoadStatisticsStore& store) { return store.isMemoryStore(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::ResourceLoadStatisticsMemoryStore)
+    static bool isType(const CyberKit::ResourceLoadStatisticsStore& store) { return store.isMemoryStore(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

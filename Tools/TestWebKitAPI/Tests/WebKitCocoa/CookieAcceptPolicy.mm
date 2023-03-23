@@ -47,7 +47,7 @@
 
 @end
 
-TEST(WebKit, CookieAcceptPolicy)
+TEST(CyberKit, CookieAcceptPolicy)
 {
     auto originalCookieAcceptPolicy = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookieAcceptPolicy];
 
@@ -58,19 +58,19 @@ TEST(WebKit, CookieAcceptPolicy)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CookieMessage" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CookieMessage" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     __block bool setPolicy = false;
     [configuration.get().websiteDataStore.httpCookieStore _setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyNever completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_STREQ([(NSString *)[lastScriptMessage body] UTF8String], "COOKIE:");
 
     setPolicy = false;
     [configuration.get().websiteDataStore.httpCookieStore _setCookieAcceptPolicy:originalCookieAcceptPolicy completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
 }

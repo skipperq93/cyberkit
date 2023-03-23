@@ -156,7 +156,7 @@ static bool handleOptionCyberCoreLogging(Options& options, const char*, const ch
     return true;
 }
 
-static bool handleOptionWebKitLogging(Options& options, const char*, const char* channels)
+static bool handleOptionCyberKitLogging(Options& options, const char*, const char* channels)
 {
     options.webKitLogChannels = channels;
     return true;
@@ -195,12 +195,12 @@ OptionsHandler::OptionsHandler(Options& o)
     optionList.append(Option("--accessibility-isolated-tree", "Enable accessibility isolated tree mode for tests", handleOptionAccessibilityIsolatedTreeMode));
 #endif
     optionList.append(Option("--webcore-logging", "Enable CyberCore log channels", handleOptionCyberCoreLogging, true));
-    optionList.append(Option("--webkit-logging", "Enable WebKit log channels", handleOptionWebKitLogging, true));
+    optionList.append(Option("--webkit-logging", "Enable CyberKit log channels", handleOptionCyberKitLogging, true));
     
     optionList.append(Option(0, 0, handleOptionUnmatched));
 }
 
-const char * OptionsHandler::usage = "Usage: WebKitTestRunner [options] filename [filename2..n]";
+const char * OptionsHandler::usage = "Usage: CyberKitTestRunner [options] filename [filename2..n]";
 const char * OptionsHandler::help = "Displays this help.";
 
 Option::Option(const char* name, const char* description, std::function<bool(Options&, const char*, const char*)> parameterHandler, bool hasArgument)

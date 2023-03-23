@@ -22,16 +22,16 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)
 
-struct WebKit::InitializationSegmentInfo {
+struct CyberKit::InitializationSegmentInfo {
     MediaTime duration;
-    Vector<WebKit::InitializationSegmentInfo::TrackInformation> audioTracks;
-    Vector<WebKit::InitializationSegmentInfo::TrackInformation> videoTracks;
-    Vector<WebKit::InitializationSegmentInfo::TrackInformation> textTracks;
+    Vector<CyberKit::InitializationSegmentInfo::TrackInformation> audioTracks;
+    Vector<CyberKit::InitializationSegmentInfo::TrackInformation> videoTracks;
+    Vector<CyberKit::InitializationSegmentInfo::TrackInformation> textTracks;
 };
 
-[Nested] struct WebKit::InitializationSegmentInfo::TrackInformation {
-    WebKit::MediaDescriptionInfo description;
-    WebKit::TrackPrivateRemoteIdentifier identifier;
+[Nested] struct CyberKit::InitializationSegmentInfo::TrackInformation {
+    CyberKit::MediaDescriptionInfo description;
+    CyberKit::TrackPrivateRemoteIdentifier identifier;
 };
 
 #endif

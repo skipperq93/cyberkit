@@ -1112,7 +1112,7 @@ void ContextMenuController::populate()
                         appendItem(ForwardItem, m_contextMenu.get());
 
                     // Here we use isLoadingInAPISense rather than isLoading because Stop/Reload are
-                    // intended to match WebKit's API, not CyberCore's internal notion of loading status.
+                    // intended to match CyberKit's API, not CyberCore's internal notion of loading status.
                     if (loader.documentLoader()->isLoadingInAPISense())
                         appendItem(StopItem, m_contextMenu.get());
                     else

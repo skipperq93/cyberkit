@@ -34,7 +34,7 @@
 #include <cmath>
 #include <wtf/MemoryFootprint.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 
 static ::testing::AssertionResult imageBufferPixelIs(Color expected, ImageBuffer& imageBuffer, int x, int y)

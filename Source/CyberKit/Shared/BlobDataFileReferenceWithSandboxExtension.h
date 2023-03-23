@@ -28,7 +28,7 @@
 
 #include <CyberCore/BlobDataFileReference.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SandboxExtension;
 

@@ -33,7 +33,7 @@
 #import <CyberCore/IntPoint.h>
 #import <CyberCore/WAKAppKitStubs.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(TOUCH_EVENTS)
 
@@ -152,6 +152,6 @@ OptionSet<WebEventModifier> webEventModifierFlags(UIKeyModifierFlags flags)
     return modifiers;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

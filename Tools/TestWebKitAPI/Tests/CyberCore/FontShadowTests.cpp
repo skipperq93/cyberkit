@@ -32,7 +32,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class FontShadowTest : public testing::Test {
 public:
@@ -110,4 +110,4 @@ TEST_F(FontShadowTest, AllNegative)
     EXPECT_EQ(serializationForCSS(fontShadow), "-1.1px -2.2px rgb(255, 0, 0) -3.3px"_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

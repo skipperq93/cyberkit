@@ -78,7 +78,7 @@
     } \
 } while (0)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<RemoteRenderingBackend> RemoteRenderingBackend::create(GPUConnectionToWebProcess& gpuConnectionToWebProcess, RemoteRenderingBackendCreationParameters&& creationParameters, IPC::StreamServerConnection::Handle&& connectionHandle)
@@ -244,7 +244,7 @@ void RemoteRenderingBackend::getPixelBufferForImageBuffer(RenderingResourceIdent
 void RemoteRenderingBackend::getPixelBufferForImageBufferWithNewMemory(RenderingResourceIdentifier imageBuffer, SharedMemory::Handle&& handle, PixelBufferFormat&& destinationFormat, IntRect&& srcRect, CompletionHandler<void()>&& completionHandler)
 {
     m_getPixelBufferSharedMemory = nullptr;
-    auto sharedMemory = WebKit::SharedMemory::map(handle, WebKit::SharedMemory::Protection::ReadWrite);
+    auto sharedMemory = CyberKit::SharedMemory::map(handle, CyberKit::SharedMemory::Protection::ReadWrite);
     MESSAGE_CHECK(sharedMemory, "Shared memory could not be mapped.");
     MESSAGE_CHECK(sharedMemory->size() <= HTMLCanvasElement::maxActivePixelMemory(), "Shared memory too big.");
     m_getPixelBufferSharedMemory = WTFMove(sharedMemory);
@@ -539,7 +539,7 @@ void RemoteRenderingBackend::lowMemoryHandler(Critical, Synchronous)
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK
 #undef MESSAGE_CHECK_WITH_RETURN_VALUE

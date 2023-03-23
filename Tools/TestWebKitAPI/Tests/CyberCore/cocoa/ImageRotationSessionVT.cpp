@@ -30,7 +30,7 @@
 #import <CyberCore/ImageRotationSessionVT.h>
 #import <CyberCore/VideoFrameCV.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace CyberCore;
 
@@ -55,4 +55,4 @@ TEST(ImageRotationSessionVT, ChangeOfRotationAngle)
 
 #endif
 
-}; // namespace TestWebKitAPI
+}; // namespace TestCyberKitAPI

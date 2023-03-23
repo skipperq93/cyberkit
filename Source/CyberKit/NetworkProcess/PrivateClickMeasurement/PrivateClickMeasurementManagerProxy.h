@@ -30,7 +30,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkSession;
 
@@ -74,4 +74,4 @@ private:
 
 } // namespace PCM
 
-} // namespace WebKit
+} // namespace CyberKit

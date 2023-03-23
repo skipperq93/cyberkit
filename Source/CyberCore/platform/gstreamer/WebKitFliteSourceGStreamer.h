@@ -28,13 +28,13 @@ class PlatformSpeechSynthesisVoice;
 }
 
 #define WEBKIT_TYPE_FLITE_SRC (webkit_flite_src_get_type())
-#define WEBKIT_FLITE_SRC(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FLITE_SRC, WebKitFliteSrc))
+#define WEBKIT_FLITE_SRC(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FLITE_SRC, CyberKitFliteSrc))
 
-typedef struct _WebKitFliteSrc WebKitFliteSrc;
+typedef struct _CyberKitFliteSrc CyberKitFliteSrc;
 
 GType webkit_flite_src_get_type();
 
 Vector<Ref<CyberCore::PlatformSpeechSynthesisVoice>>& ensureFliteVoicesInitialized();
-void webKitFliteSrcSetUtterance(WebKitFliteSrc*, const CyberCore::PlatformSpeechSynthesisVoice*, const String&);
+void webKitFliteSrcSetUtterance(CyberKitFliteSrc*, const CyberCore::PlatformSpeechSynthesisVoice*, const String&);
 
 #endif // ENABLE(SPEECH_SYNTHESIS) && USE(GSTREAMER)

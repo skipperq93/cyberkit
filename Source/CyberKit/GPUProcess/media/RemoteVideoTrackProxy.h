@@ -41,7 +41,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 struct VideoTrackPrivateRemoteConfiguration;
@@ -87,6 +87,6 @@ private:
     bool m_selected { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

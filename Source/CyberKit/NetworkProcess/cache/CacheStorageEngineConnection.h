@@ -50,7 +50,7 @@ template<> struct AsyncReplyError<CyberCore::DOMCacheEngine::RecordsOrError> {
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkConnectionToWebProcess;
 

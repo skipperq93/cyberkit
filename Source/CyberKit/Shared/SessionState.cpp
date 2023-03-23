@@ -28,7 +28,7 @@
 
 #include <CyberCore/BackForwardItemIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool FrameState::validateDocumentState(const Vector<AtomString>& documentState)
 {
@@ -57,4 +57,4 @@ void FrameState::setDocumentState(const Vector<AtomString>& documentState, Shoul
         validateDocumentState(m_documentState);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

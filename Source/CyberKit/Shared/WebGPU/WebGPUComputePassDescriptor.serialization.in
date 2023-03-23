@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::ComputePassDescriptor : WebKit::WebGPU::ObjectDescriptorBase {
-    WebKit::WebGPU::ComputePassTimestampWrites timestampWrites;
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::ComputePassDescriptor : CyberKit::WebGPU::ObjectDescriptorBase {
+    CyberKit::WebGPU::ComputePassTimestampWrites timestampWrites;
 };
 #endif

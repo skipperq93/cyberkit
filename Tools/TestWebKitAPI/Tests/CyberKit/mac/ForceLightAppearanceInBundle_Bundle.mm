@@ -36,7 +36,7 @@
 #import <CyberKit/WKBundlePagePrivate.h>
 #import <wtf/UniqueArray.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class ForceLightAppearanceInBundleTest : public InjectedBundleTest {
 public:
@@ -88,6 +88,6 @@ private:
 
 static InjectedBundleTest::Register<ForceLightAppearanceInBundleTest> registrar("ForceLightAppearanceInBundleTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

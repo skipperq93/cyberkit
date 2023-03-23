@@ -34,7 +34,7 @@
 #include <CyberCore/CBORValue.h>
 #include <utility>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace cbor;
 
@@ -389,6 +389,6 @@ TEST(CBORValueTest, SelfSwap)
     EXPECT_EQ(test.getInteger(), 1u);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

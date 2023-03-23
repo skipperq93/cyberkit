@@ -197,7 +197,7 @@ void NetworkStorageSession::getHostnamesWithCookies(HashSet<String>& hostnames)
 
 Vector<Cookie> NetworkStorageSession::getCookies(const URL&)
 {
-    // FIXME: Implement for WebKit to use.
+    // FIXME: Implement for CyberKit to use.
     return { };
 }
 

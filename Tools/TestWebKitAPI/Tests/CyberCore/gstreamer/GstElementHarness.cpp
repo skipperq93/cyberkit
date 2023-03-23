@@ -35,7 +35,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST_F(GStreamerTest, harnessBasic)
 {
@@ -249,7 +249,7 @@ TEST_F(GStreamerTest, harnessParseMP4)
     });
 
     // Feed the contents of a MP4 file to the harnessed parsebin.
-    GUniquePtr<char> filePath(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestWebKitAPI", "Tests", "WebKit", "test.mp4", nullptr));
+    GUniquePtr<char> filePath(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "CyberKit", "test.mp4", nullptr));
     auto handle = FileSystem::openFile(makeString(filePath.get()), FileSystem::FileOpenMode::Read);
 
     size_t totalRead = 0;
@@ -327,7 +327,7 @@ TEST_F(GStreamerTest, harnessDecodeMP4Video)
 
     // Feed the contents of a MP4 file to the harnessed decodebin3, until it is able to figure out
     // the stream topology.
-    GUniquePtr<char> filePath(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestWebKitAPI", "Tests", "WebKit", "test.mp4", nullptr));
+    GUniquePtr<char> filePath(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "CyberKit", "test.mp4", nullptr));
     auto handle = FileSystem::openFile(makeString(filePath.get()), FileSystem::FileOpenMode::Read);
 
     size_t totalRead = 0;
@@ -410,6 +410,6 @@ TEST_F(GStreamerTest, harnessDecodeMP4Video)
     ASSERT_GT(bufferTracker.totalVideoBuffers, 100);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(GSTREAMER)

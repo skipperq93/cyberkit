@@ -31,12 +31,12 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUPredefinedColorSpace.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ExternalTextureDescriptor : public ObjectDescriptorBase {
     PAL::WebGPU::PredefinedColorSpace colorSpace { PAL::WebGPU::PredefinedColorSpace::SRGB };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

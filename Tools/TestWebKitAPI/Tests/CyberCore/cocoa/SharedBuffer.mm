@@ -31,7 +31,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void expectDataArraysEqual(NSArray<NSData *> *expected, NSArray<NSData *> *actual)
 {
@@ -101,4 +101,4 @@ TEST_F(FragmentedSharedBufferTest, createNSDataForDataSegment)
     }
 }
 
-}; // namespace TestWebKitAPI
+}; // namespace TestCyberKitAPI

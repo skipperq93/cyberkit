@@ -30,7 +30,7 @@
 #include "WebPreferencesKeys.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 typedef HashMap<String, bool> BoolOverridesMap;
 
@@ -179,4 +179,4 @@ void WebPreferencesStore::deleteKey(const String& key)
     m_overriddenDefaults.remove(key);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

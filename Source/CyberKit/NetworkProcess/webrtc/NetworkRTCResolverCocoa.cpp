@@ -31,7 +31,7 @@
 #include <wtf/Expected.h>
 #include <wtf/cf/VectorCF.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void resolvedName(CFHostRef hostRef, CFHostInfoType typeInfo, const CFStreamError *error, void *info)
 {
@@ -99,6 +99,6 @@ void NetworkRTCResolverCocoa::completed(CyberCore::DNSAddressesOrError&& address
         completionHandler(WTFMove(addressesOrError));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

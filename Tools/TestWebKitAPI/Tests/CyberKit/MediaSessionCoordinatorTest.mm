@@ -181,7 +181,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class MediaSessionCoordinatorTest : public testing::Test {
 public:
@@ -215,7 +215,7 @@ public:
             result = success;
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
 
         listenForEventMessages({ "coordinatorstatechange"_s });
 
@@ -581,6 +581,6 @@ TEST_F(MediaSessionCoordinatorTest, JoinAndPrivateLeave)
     EXPECT_STREQ("closed", [state UTF8String]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_SESSION_COORDINATOR)

@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 static WKRetainPtr<WKSessionStateRef> sessionStateWithFirstItemRemoved;
@@ -103,7 +103,7 @@ static void createSessionStates(WKContextRef context)
     sessionStateWithAllItemsRemoved = adoptWK(static_cast<WKSessionStateRef>(WKPageCopySessionState(webView.page(), reinterpret_cast<void*>(1), filterAllItemsCallback)));
 }
 
-TEST(WebKit, WKPageCopySessionStateWithFiltering)
+TEST(CyberKit, WKPageCopySessionStateWithFiltering)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -131,6 +131,6 @@ TEST(WebKit, WKPageCopySessionStateWithFiltering)
     EXPECT_EQ(0u, WKBackForwardListGetForwardListCount(backForwardList2));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

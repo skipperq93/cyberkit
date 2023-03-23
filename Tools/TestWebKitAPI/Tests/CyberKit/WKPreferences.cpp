@@ -31,9 +31,9 @@
 #include <CyberKit/WKPreferencesRefPrivate.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKPreferencesBasic)
+TEST(CyberKit, WKPreferencesBasic)
 {
     WKPreferencesRef preference = WKPreferencesCreate();
 
@@ -42,7 +42,7 @@ TEST(WebKit, WKPreferencesBasic)
     WKRelease(preference);
 }
 
-TEST(WebKit, WKPreferencesDefaults)
+TEST(CyberKit, WKPreferencesDefaults)
 {
 #if PLATFORM(GTK) || PLATFORM(PLAYSTATION) || PLATFORM(WPE)
     static const char* expectedStandardFontFamily = "Times";
@@ -108,7 +108,7 @@ TEST(WebKit, WKPreferencesDefaults)
     WKRelease(preference);
 }
 
-TEST(WebKit, WKPreferencesCopying)
+TEST(CyberKit, WKPreferencesCopying)
 {
     WKRetainPtr<WKStringRef> identifier = adoptWK(WKStringCreateWithUTF8CString("identifier"));
 
@@ -122,6 +122,6 @@ TEST(WebKit, WKPreferencesCopying)
     EXPECT_EQ(36u, WKPreferencesGetDefaultFontSize(copy.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

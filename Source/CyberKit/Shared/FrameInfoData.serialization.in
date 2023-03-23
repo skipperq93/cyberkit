@@ -22,7 +22,7 @@
 
 headers: "FrameInfoData.h" "CyberCoreArgumentCoders.h"
 
-struct WebKit::FrameInfoData {
+struct CyberKit::FrameInfoData {
     bool isMainFrame
     CyberCore::ResourceRequest request
     CyberCore::SecurityOriginData securityOrigin

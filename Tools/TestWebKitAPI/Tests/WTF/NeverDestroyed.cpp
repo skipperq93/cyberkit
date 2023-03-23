@@ -30,7 +30,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_NeverDestroyed, Construct)
 {
@@ -81,4 +81,4 @@ TEST(WTF_NeverDestroyed, Basic)
     ASSERT_EQ(&list(), &list());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

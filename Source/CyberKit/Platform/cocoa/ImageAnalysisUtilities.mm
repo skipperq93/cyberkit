@@ -42,7 +42,7 @@
 
 #import <pal/cocoa/VisionKitCoreSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RetainPtr<CocoaImageAnalyzer> createImageAnalyzer()
@@ -211,7 +211,7 @@ static bool shouldLogFullImageTranslationResults()
     static std::once_flag onceFlag;
     static bool shouldLog = false;
     std::call_once(onceFlag, [&] {
-        shouldLog = [NSUserDefaults.standardUserDefaults boolForKey:@"WebKitLogFullImageTranslationResults"];
+        shouldLog = [NSUserDefaults.standardUserDefaults boolForKey:@"CyberKitLogFullImageTranslationResults"];
     });
     return shouldLog;
 }
@@ -370,6 +370,6 @@ std::pair<RetainPtr<NSData>, RetainPtr<CFStringRef>> imageDataForRemoveBackgroun
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(IMAGE_ANALYSIS)

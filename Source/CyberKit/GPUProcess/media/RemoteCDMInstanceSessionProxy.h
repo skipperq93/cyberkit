@@ -40,7 +40,7 @@ namespace CyberCore {
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteCDMInstanceSessionProxy final : private IPC::MessageReceiver, private CyberCore::CDMInstanceSessionClient {
 public:

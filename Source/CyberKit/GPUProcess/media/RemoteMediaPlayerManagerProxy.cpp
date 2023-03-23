@@ -45,7 +45,7 @@
 #include <CyberCore/AVAssetMIMETypeCache.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -223,6 +223,6 @@ ShareableBitmapHandle RemoteMediaPlayerManagerProxy::bitmapImageForCurrentTime(C
     return WTFMove(*bitmapHandle);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

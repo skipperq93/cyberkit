@@ -134,7 +134,7 @@ Vector<char> generateUniqueBoundaryString()
     };
 
     // Start with an informative prefix.
-    append(boundary, "----WebKitFormBoundary");
+    append(boundary, "----CyberKitFormBoundary");
 
     // Append 16 random 7-bit ASCII alphanumeric characters.
     for (unsigned i = 0; i < 4; ++i) {

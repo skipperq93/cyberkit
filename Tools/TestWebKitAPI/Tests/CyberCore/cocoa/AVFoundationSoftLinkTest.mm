@@ -29,7 +29,7 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(AVFoundationSoftLink, Classes)
 {
@@ -206,5 +206,5 @@ TEST(AVFoundationSoftLink, Constants)
 
 #endif // PLATFORM(COCOA)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

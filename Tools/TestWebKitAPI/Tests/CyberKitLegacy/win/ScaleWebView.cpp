@@ -27,15 +27,15 @@
 #include "HostWindow.h"
 #include "Test.h"
 #include <CyberCore/COMPtr.h>
-#include <CyberKitLegacy/WebKit.h>
-#include <CyberKitLegacy/WebKitCOMAPI.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template <typename T>
-static HRESULT WebKitCreateInstance(REFCLSID clsid, T** object)
+static HRESULT CyberKitCreateInstance(REFCLSID clsid, T** object)
 {
-    return WebKitCreateInstance(clsid, 0, __uuidof(T), reinterpret_cast<void**>(object));
+    return CyberKitCreateInstance(clsid, 0, __uuidof(T), reinterpret_cast<void**>(object));
 }
 
 class ScaleWebView : public ::testing::Test {
@@ -49,7 +49,7 @@ protected:
 
 void ScaleWebView::SetUp()
 {
-    EXPECT_HRESULT_SUCCEEDED(WebKitCreateInstance(__uuidof(WebView), &m_webView));
+    EXPECT_HRESULT_SUCCEEDED(CyberKitCreateInstance(__uuidof(WebView), &m_webView));
     EXPECT_TRUE(m_window.initialize());
     EXPECT_HRESULT_SUCCEEDED(m_webView->setHostWindow(m_window.window()));
 }
@@ -57,7 +57,7 @@ void ScaleWebView::SetUp()
 void ScaleWebView::TearDown()
 {
     m_webView = 0;
-    shutDownWebKit();
+    shutDownCyberKit();
 }
 
 // Tests that scaling a WebView before calling IWebView::initWithFrame doesn't crash.
@@ -69,4 +69,4 @@ TEST_F(ScaleWebView, ScaleBeforeInitWithFrame)
     EXPECT_HRESULT_SUCCEEDED(m_webView->initWithFrame(m_window.clientRect(), 0, 0));
 }
 
-} // namespace WebKitAPITest
+} // namespace CyberKitAPITest

@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUBufferUsage.h>
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BufferDescriptor : public ObjectDescriptorBase {
     PAL::WebGPU::Size64 size { 0 };
@@ -40,6 +40,6 @@ struct BufferDescriptor : public ObjectDescriptorBase {
     bool mappedAtCreation { false };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

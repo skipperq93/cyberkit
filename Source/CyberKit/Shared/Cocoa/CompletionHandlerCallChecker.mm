@@ -31,7 +31,7 @@
 #import <wtf/Ref.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<CompletionHandlerCallChecker> CompletionHandlerCallChecker::create(id delegate, SEL delegateMethodSelector)
 {
@@ -98,4 +98,4 @@ Class CompletionHandlerCallChecker::classImplementingDelegateMethod() const
     return delegateClass;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

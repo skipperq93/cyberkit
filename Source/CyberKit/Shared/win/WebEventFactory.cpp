@@ -38,7 +38,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -397,7 +397,7 @@ WebMouseEvent WebEventFactory::createWebMouseEvent(HWND hWnd, UINT message, WPAR
 
     double timestamp = ::GetTickCount() * 0.001; // ::GetTickCount returns milliseconds (Chrome uses GetMessageTime() / 1000.0)
 
-    int clickCount = WebKit::clickCount(type, button, position, timestamp);
+    int clickCount = CyberKit::clickCount(type, button, position, timestamp);
     auto modifiers = modifiersForEvent(wParam);
     auto buttons = buttonsForEvent(wParam);
 
@@ -480,4 +480,4 @@ WebTouchEvent WebEventFactory::createWebTouchEvent(const GdkEvent* event, Vector
 }
 #endif // ENABLE(TOUCH_EVENTS)
 
-} // namespace WebKit
+} // namespace CyberKit

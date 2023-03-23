@@ -83,7 +83,7 @@
 #define LOADER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - [pageProxyID=%" PRIu64 ", webPageID=%" PRIu64 ", frameID=%" PRIu64 ", resourceID=%" PRIu64 ", isMainResource=%d, destination=%u, isSynchronous=%d] NetworkResourceLoader::" fmt, this, m_parameters.webPageProxyID.toUInt64(), m_parameters.webPageID.toUInt64(), m_parameters.webFrameID.object().toUInt64(), m_parameters.identifier.toUInt64(), isMainResource(), static_cast<unsigned>(m_parameters.options.destination), isSynchronous(), ##__VA_ARGS__)
 #define LOADER_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(Network, "%p - [pageProxyID=%" PRIu64 ", webPageID=%" PRIu64 ", frameID=%" PRIu64 ", resourceID=%" PRIu64 ", isMainResource=%d, destination=%u, isSynchronous=%d] NetworkResourceLoader::" fmt, this, m_parameters.webPageProxyID.toUInt64(), m_parameters.webPageID.toUInt64(), m_parameters.webFrameID.object().toUInt64(), m_parameters.identifier.toUInt64(), isMainResource(), static_cast<unsigned>(m_parameters.options.destination), isSynchronous(), ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 struct NetworkResourceLoader::SynchronousLoadData {
@@ -742,7 +742,7 @@ std::optional<ResourceError> NetworkResourceLoader::doCrossOriginOpenerHandlingO
 
     m_currentCoopEnforcementResult = CyberCore::doCrossOriginOpenerHandlingOfResponse(*this, response, m_parameters.navigationRequester, contentSecurityPolicy.get(), m_parameters.effectiveSandboxFlags, originalRequest().httpReferrer(), m_parameters.isDisplayingInitialEmptyDocument, *m_currentCoopEnforcementResult);
     if (!m_currentCoopEnforcementResult)
-        return ResourceError { errorDomainWebKitInternal, 0, response.url(), "Navigation was blocked by Cross-Origin-Opener-Policy"_s, ResourceError::Type::AccessControl };
+        return ResourceError { errorDomainCyberKitInternal, 0, response.url(), "Navigation was blocked by Cross-Origin-Opener-Policy"_s, ResourceError::Type::AccessControl };
     return std::nullopt;
 }
 
@@ -908,7 +908,7 @@ void NetworkResourceLoader::didReceiveResponse(ResourceResponse&& receivedRespon
         LOADER_RELEASE_LOG_ERROR("didReceiveResponse: Interrupting worker load due to Cross-Origin-Opener-Policy");
         RunLoop::main().dispatch([protectedThis = Ref { *this }, url = m_response.url()] {
             if (protectedThis->m_networkLoad)
-                protectedThis->didFailLoading(ResourceError { errorDomainWebKitInternal, 0, url, "Worker load was blocked by Cross-Origin-Embedder-Policy"_s, ResourceError::Type::AccessControl });
+                protectedThis->didFailLoading(ResourceError { errorDomainCyberKitInternal, 0, url, "Worker load was blocked by Cross-Origin-Embedder-Policy"_s, ResourceError::Type::AccessControl });
         });
         return completionHandler(PolicyAction::Ignore);
     }
@@ -1172,7 +1172,7 @@ void NetworkResourceLoader::willSendRedirectedRequestInternal(ResourceRequest&& 
     }
 
     if (isMainResource() && shouldInterruptNavigationForCrossOriginEmbedderPolicy(redirectResponse)) {
-        this->didFailLoading(ResourceError { errorDomainWebKitInternal, 0, redirectRequest.url(), "Redirection was blocked by Cross-Origin-Embedder-Policy"_s, ResourceError::Type::AccessControl });
+        this->didFailLoading(ResourceError { errorDomainCyberKitInternal, 0, redirectRequest.url(), "Redirection was blocked by Cross-Origin-Embedder-Policy"_s, ResourceError::Type::AccessControl });
         return;
     }
 
@@ -1980,7 +1980,7 @@ void NetworkResourceLoader::dataReceivedThroughContentFilter(const SharedBuffer&
 
 CyberCore::ResourceError NetworkResourceLoader::contentFilterDidBlock(CyberCore::ContentFilterUnblockHandler unblockHandler, String&& unblockRequestDeniedScript)
 {
-    auto error = WebKit::blockedByContentFilterError(m_parameters.request);
+    auto error = CyberKit::blockedByContentFilterError(m_parameters.request);
 
     m_unblockHandler = unblockHandler;
     m_unblockRequestDeniedScript = unblockRequestDeniedScript;
@@ -1997,7 +1997,7 @@ CyberCore::ResourceError NetworkResourceLoader::contentFilterDidBlock(CyberCore:
                 request = m_parameters.request;
             else
                 request = ResourceRequest(aboutBlankURL());
-            auto error = WebKit::blockedByContentFilterError(request);
+            auto error = CyberKit::blockedByContentFilterError(request);
             m_contentFilter->setBlockedError(error);
             m_contentFilter->handleProvisionalLoadFailure(error);
         });
@@ -2017,7 +2017,7 @@ void NetworkResourceLoader::handleProvisionalLoadFailureFromContentFilter(const 
 }
 #endif // ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef LOADER_RELEASE_LOG
 #undef LOADER_RELEASE_LOG_ERROR

@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUQuerySetDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<QuerySetDescriptor> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::QuerySetDescriptor& querySetDescriptor)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::QuerySetDescriptor> ConvertFromBackingContext::conver
     return { { WTFMove(*base), querySetDescriptor.type, querySetDescriptor.count } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

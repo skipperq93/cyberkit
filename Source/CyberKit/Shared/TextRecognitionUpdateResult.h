@@ -29,7 +29,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class TextRecognitionUpdateResult : uint8_t {
     NoText,
@@ -37,16 +37,16 @@ enum class TextRecognitionUpdateResult : uint8_t {
     DataDetector,
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::TextRecognitionUpdateResult> {
+template<> struct EnumTraits<CyberKit::TextRecognitionUpdateResult> {
     using values = EnumValues<
-        WebKit::TextRecognitionUpdateResult,
-        WebKit::TextRecognitionUpdateResult::NoText,
-        WebKit::TextRecognitionUpdateResult::Text,
-        WebKit::TextRecognitionUpdateResult::DataDetector
+        CyberKit::TextRecognitionUpdateResult,
+        CyberKit::TextRecognitionUpdateResult::NoText,
+        CyberKit::TextRecognitionUpdateResult::Text,
+        CyberKit::TextRecognitionUpdateResult::DataDetector
     >;
 };
 

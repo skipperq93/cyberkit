@@ -37,7 +37,7 @@ namespace CyberCore {
 class Color;
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Annotations aren't ref counted. They remain valid as long as their containing TestPDFPage remains valid
 class TestPDFAnnotation {
@@ -88,5 +88,5 @@ private:
     Vector<RefPtr<TestPDFPage>> m_pages;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 #endif // HAVE(PDFKIT)

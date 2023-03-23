@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, ParseInteger)
 {
@@ -82,4 +82,4 @@ TEST(WTF, ParseIntegerAllowingTrailingJunk)
     EXPECT_EQ(std::nullopt, parseIntegerAllowingTrailingJunk<uint16_t>("65536"_s));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

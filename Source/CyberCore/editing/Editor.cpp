@@ -3437,7 +3437,7 @@ void Editor::removeTextPlaceholder(TextPlaceholderElement& placeholder)
     // and restore it after text insertion.
     placeholder.remove();
 
-    // To match the Legacy WebKit implementation, set the text insertion point to be before where the placeholder use to be.
+    // To match the Legacy CyberKit implementation, set the text insertion point to be before where the placeholder use to be.
     if (m_document.selection().isFocusedAndActive() && document->focusedElement() == savedRootEditableElement)
         m_document.selection().setSelection(VisibleSelection { savedPositionBeforePlaceholder }, FrameSelection::defaultSetSelectionOptions(UserTriggered));
 }
@@ -4158,15 +4158,15 @@ FontAttributes Editor::fontAttributesAtSelectionStart()
 
     switch (style->textAlign()) {
     case TextAlignMode::Right:
-    case TextAlignMode::WebKitRight:
+    case TextAlignMode::CyberKitRight:
         attributes.horizontalAlignment = FontAttributes::HorizontalAlignment::Right;
         break;
     case TextAlignMode::Left:
-    case TextAlignMode::WebKitLeft:
+    case TextAlignMode::CyberKitLeft:
         attributes.horizontalAlignment = FontAttributes::HorizontalAlignment::Left;
         break;
     case TextAlignMode::Center:
-    case TextAlignMode::WebKitCenter:
+    case TextAlignMode::CyberKitCenter:
         attributes.horizontalAlignment = FontAttributes::HorizontalAlignment::Center;
         break;
     case TextAlignMode::Justify:

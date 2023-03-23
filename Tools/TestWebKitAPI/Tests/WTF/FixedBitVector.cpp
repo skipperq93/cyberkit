@@ -27,7 +27,7 @@
 #include <wtf/FixedBitVector.h>
 #include <wtf/MathExtras.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 constexpr size_t size = 128;
 constexpr size_t smallSize = 9;
@@ -279,4 +279,4 @@ TEST(WTF_FixedBitVector, testIteration) { testFixedBitVectorIteration(); }
 TEST(WTF_FixedBitVector, testOperatorEqual) { testFixedBitVectorOperatorEqual(); }
 TEST(WTF_FixedBitVector, testHash) { testFixedBitVectorHash(); }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

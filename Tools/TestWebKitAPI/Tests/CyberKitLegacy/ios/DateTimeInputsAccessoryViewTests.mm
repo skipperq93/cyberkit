@@ -55,7 +55,7 @@ static UITableViewCell * cellForRowAtIndexPath(id, SEL)
 
 static void runTestWithInputType(NSString *type)
 {
-    TestWebKitAPI::IPhoneUserInterfaceSwizzler userInterfaceSwizzler;
+    TestCyberKitAPI::IPhoneUserInterfaceSwizzler userInterfaceSwizzler;
     InstanceMethodSwizzler overrideCellForRowAtIndexPath { [UITableView class], @selector(cellForRowAtIndexPath:), reinterpret_cast<IMP>(cellForRowAtIndexPath) };
 
     NSInteger width = 800;
@@ -72,7 +72,7 @@ static void runTestWithInputType(NSString *type)
 
     NSString *elementString = [NSString stringWithFormat:@"<input type='%@'>", type];
     [uiWebView loadHTMLString:elementString baseURL:nil];
-    TestWebKitAPI::Util::run(&didFinishLoad);
+    TestCyberKitAPI::Util::run(&didFinishLoad);
 
     [uiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('input')[0].focus();"];
     EXPECT_TRUE([[[uiWebView _browserView] inputView] isKindOfClass:[UIDatePicker class]]);

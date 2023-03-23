@@ -45,7 +45,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, SimplifyMarkupTest)
 {
@@ -54,13 +54,13 @@ TEST(CyberKitLegacy, SimplifyMarkupTest)
     RetainPtr<SimplifyMarkupTest> testController = adoptNS([SimplifyMarkupTest new]);
     
     webView1.get().frameLoadDelegate = testController.get();
-    [[webView1.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView1.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     Util::run(&didFinishLoad);
     didFinishLoad = false;
 
     webView2.get().frameLoadDelegate = testController.get();
-    [[webView2.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView2.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -110,4 +110,4 @@ TEST(CyberKitLegacy, SimplifyMarkupTest)
     EXPECT_GT([markupBefore length], [markupAfter length]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

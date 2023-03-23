@@ -30,13 +30,13 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUPowerPreference.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RequestAdapterOptions {
     std::optional<PAL::WebGPU::PowerPreference> powerPreference;
     bool forceFallbackAdapter { false };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

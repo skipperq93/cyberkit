@@ -33,7 +33,7 @@
 
 struct svm_model;
 
-namespace WebKit {
+namespace CyberKit {
 
 class ResourceLoadStatisticsClassifierCocoa : public ResourceLoadStatisticsClassifier {
 private:

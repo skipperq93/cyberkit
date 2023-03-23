@@ -59,7 +59,7 @@ enum class IncludeHttpOnlyCookies : bool;
 enum class ThirdPartyCookieBlockingMode : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkSession;
 class ResourceLoadStatisticsStore;
@@ -282,6 +282,6 @@ private:
     bool m_firstNetworkProcessCreated { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

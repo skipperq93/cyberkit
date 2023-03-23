@@ -865,7 +865,7 @@ void RenderImage::computeIntrinsicRatioInformation(FloatSize& intrinsicSize, Flo
         }
     }
 
-    // Don't compute an intrinsic ratio to preserve historical WebKit behavior if we're painting alt text and/or a broken image.
+    // Don't compute an intrinsic ratio to preserve historical CyberKit behavior if we're painting alt text and/or a broken image.
     if (shouldDisplayBrokenImageIcon()) {
         if (settings().aspectRatioOfImgFromWidthAndHeightEnabled()
             && style().aspectRatioType() == AspectRatioType::AutoAndRatio && !isShowingAltText())

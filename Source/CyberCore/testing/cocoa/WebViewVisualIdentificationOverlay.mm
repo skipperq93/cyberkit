@@ -55,7 +55,7 @@ const void* const webViewVisualIdentificationOverlayKey = &webViewVisualIdentifi
 {
     static std::optional<BOOL> shouldIdentifyWebViews;
     if (!shouldIdentifyWebViews)
-        shouldIdentifyWebViews = [[NSUserDefaults standardUserDefaults] boolForKey:@"WebKitDebugIdentifyWebViews"];
+        shouldIdentifyWebViews = [[NSUserDefaults standardUserDefaults] boolForKey:@"CyberKitDebugIdentifyWebViews"];
     return *shouldIdentifyWebViews;
 }
 

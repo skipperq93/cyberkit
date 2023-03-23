@@ -43,9 +43,9 @@ static bool finishedLoad = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, FirstResponderSuppression)
+TEST(CyberKit, FirstResponderSuppression)
 {
     RetainPtr<NSWindow> window = adoptNS([[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 800, 600) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO]);
     [window makeKeyAndOrderFront:nil];
@@ -64,7 +64,7 @@ TEST(WebKit, FirstResponderSuppression)
     // Ensure having an autofocused input field does not steal focus.
     NSString *testHTML = @"<!doctype html><html><body><input type=\"text\" autofocus /></body></html>";
     [webView loadHTMLString:testHTML baseURL:nil];
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
     EXPECT_EQ([window firstResponder], [window contentView]);
     finishedLoad = false;
 
@@ -72,10 +72,10 @@ TEST(WebKit, FirstResponderSuppression)
 
     // Ensure having an autofocused input field does steal focus.
     [webView loadHTMLString:testHTML baseURL:nil];
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
     EXPECT_NE([window firstResponder], [window contentView]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

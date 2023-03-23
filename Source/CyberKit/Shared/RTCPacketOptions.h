@@ -42,7 +42,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RTCPacketOptions {
     void encode(IPC::Encoder&) const;

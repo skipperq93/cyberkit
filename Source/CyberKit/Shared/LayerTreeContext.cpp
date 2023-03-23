@@ -30,7 +30,7 @@
 #include "Decoder.h"
 #include "Encoder.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 LayerTreeContext::LayerTreeContext()
     : contextID(0)
@@ -51,4 +51,4 @@ bool operator==(const LayerTreeContext& a, const LayerTreeContext& b)
     return a.contextID == b.contextID;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

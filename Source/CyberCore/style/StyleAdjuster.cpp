@@ -284,7 +284,7 @@ void Adjuster::adjust(RenderStyle& style, const RenderStyle* userAgentAppearance
     if (style.display() != DisplayType::None && style.display() != DisplayType::Contents) {
         if (m_element) {
             // Tables never support the -webkit-* values for text-align and will reset back to the default.
-            if (is<HTMLTableElement>(*m_element) && (style.textAlign() == TextAlignMode::WebKitLeft || style.textAlign() == TextAlignMode::WebKitCenter || style.textAlign() == TextAlignMode::WebKitRight))
+            if (is<HTMLTableElement>(*m_element) && (style.textAlign() == TextAlignMode::CyberKitLeft || style.textAlign() == TextAlignMode::CyberKitCenter || style.textAlign() == TextAlignMode::CyberKitRight))
                 style.setTextAlign(TextAlignMode::Start);
 
             // Frames and framesets never honor position:relative or position:absolute. This is necessary to

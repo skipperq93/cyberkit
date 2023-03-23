@@ -134,8 +134,8 @@ void Pasteboard::finishCreatingPasteboard()
 
     HTMLClipboardFormat = ::RegisterClipboardFormat(L"HTML Format");
     BookmarkClipboardFormat = ::RegisterClipboardFormat(L"UniformResourceLocatorW");
-    WebSmartPasteFormat = ::RegisterClipboardFormat(L"WebKit Smart Paste Format");
-    CustomDataClipboardFormat = ::RegisterClipboardFormat(L"WebKit Custom Data Format");
+    WebSmartPasteFormat = ::RegisterClipboardFormat(L"CyberKit Smart Paste Format");
+    CustomDataClipboardFormat = ::RegisterClipboardFormat(L"CyberKit Custom Data Format");
 }
 
 Pasteboard::Pasteboard(std::unique_ptr<PasteboardContext>&& context)

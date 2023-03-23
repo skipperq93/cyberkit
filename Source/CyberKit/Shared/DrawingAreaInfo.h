@@ -28,7 +28,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class DrawingAreaType : uint8_t {
 #if PLATFORM(COCOA)
@@ -52,23 +52,23 @@ typedef uint64_t ActivityStateChangeID;
 enum DrawingAreaIdentifierType { };
 using DrawingAreaIdentifier = ObjectIdentifier<DrawingAreaIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::DrawingAreaType> {
+template<> struct EnumTraits<CyberKit::DrawingAreaType> {
     using values = EnumValues<
-        WebKit::DrawingAreaType
+        CyberKit::DrawingAreaType
 #if PLATFORM(COCOA)
 #if !PLATFORM(IOS_FAMILY)
-        , WebKit::DrawingAreaType::TiledCoreAnimation
+        , CyberKit::DrawingAreaType::TiledCoreAnimation
 #endif
-        , WebKit::DrawingAreaType::RemoteLayerTree
+        , CyberKit::DrawingAreaType::RemoteLayerTree
 #elif USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
-        , WebKit::DrawingAreaType::CoordinatedGraphics
+        , CyberKit::DrawingAreaType::CoordinatedGraphics
 #endif
 #if USE(GRAPHICS_LAYER_WC)
-        , WebKit::DrawingAreaType::WC
+        , CyberKit::DrawingAreaType::WC
 #endif
     >;
 };

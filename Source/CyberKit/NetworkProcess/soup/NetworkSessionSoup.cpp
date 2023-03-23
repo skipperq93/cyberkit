@@ -36,7 +36,7 @@
 #include <CyberCore/SoupNetworkSession.h>
 #include <libsoup/soup.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 NetworkSessionSoup::NetworkSessionSoup(NetworkProcess& networkProcess, const NetworkSessionCreationParameters& parameters)
@@ -155,4 +155,4 @@ void NetworkSessionSoup::setProxySettings(const SoupNetworkProxySettings& settin
     m_networkSession->setProxySettings(settings);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -60,7 +60,7 @@ public:
         for (int i = childCount - 1; i >= 0; --i)  {
             GRefPtr<AtspiAccessible> current = adoptGRef(atspi_accessible_get_child_at_index(desktop.get(), i, nullptr));
             GUniquePtr<char> name(atspi_accessible_get_name(current.get(), nullptr));
-            if (!g_strcmp0(name.get(), "TestWebKitAccessibility"))
+            if (!g_strcmp0(name.get(), "TestCyberKitAccessibility"))
                 return current;
         }
 
@@ -111,7 +111,7 @@ public:
     {
         GRefPtr<AtspiAccessible> application = adoptGRef(atspi_accessible_get_application(accessible, nullptr));
         GUniquePtr<char> applicationName(atspi_accessible_get_name(application.get(), nullptr));
-        return !g_strcmp0(applicationName.get(), "TestWebKitAccessibility");
+        return !g_strcmp0(applicationName.get(), "TestCyberKitAccessibility");
     }
 
     bool shouldProcessEvent(AtspiEvent* event)
@@ -208,7 +208,7 @@ static void testAccessibleBasicHierarchy(AccessibilityTest* test, gconstpointer)
     auto testApp = test->findTestApplication();
     g_assert_true(ATSPI_IS_ACCESSIBLE(testApp.get()));
     GUniquePtr<char> name(atspi_accessible_get_name(testApp.get(), nullptr));
-    g_assert_cmpstr(name.get(), ==, "TestWebKitAccessibility");
+    g_assert_cmpstr(name.get(), ==, "TestCyberKitAccessibility");
     g_assert_cmpint(atspi_accessible_get_role(testApp.get(), nullptr), ==, ATSPI_ROLE_APPLICATION);
 
     auto rootObject = test->findRootObject(testApp.get());
@@ -422,7 +422,7 @@ static void testAccessibleAttributes(AccessibilityTest* test, gconstpointer)
         nullptr);
     test->waitUntilLoadFinished();
 
-    static const char* toolkitName = "WebKitGTK";
+    static const char* toolkitName = "CyberKitGTK";
 
     auto testApp = test->findTestApplication();
     g_assert_true(ATSPI_IS_ACCESSIBLE(testApp.get()));
@@ -2014,7 +2014,7 @@ static void testHyperlinkBasic(AccessibilityTest* test, gconstpointer)
     test->loadHtml(
         "<html>"
         "  <body>"
-        "    <a href='https://www.webkitgtk.org'>WebKitGTK</a>"
+        "    <a href='https://www.webkitgtk.org'>CyberKitGTK</a>"
         "    <div role='link'>Link</div>"
         "    <p>This is <button>button1</button> and <button>button2</button> in a paragraph</p>"
         "    <p>This is <a href='https://www.webkitgtk.org'>link1</a> and <a href='https://www.gnome.org'>link2</a> in paragraph</p>"
@@ -3381,38 +3381,38 @@ static void testCollectionGetMatches(AccessibilityTest* test, gconstpointer)
 
 void beforeAll()
 {
-    AccessibilityTest::add("WebKitAccessibility", "accessible/basic-hierarchy", testAccessibleBasicHierarchy);
-    AccessibilityTest::add("WebKitAccessibility", "accessible/ignored-objects", testAccessibleIgnoredObjects);
-    AccessibilityTest::add("WebKitAccessibility", "accessible/children-changed", testAccessibleChildrenChanged);
-    AccessibilityTest::add("WebKitAccessibility", "accessible/attributes", testAccessibleAttributes);
-    AccessibilityTest::add("WebKitAccessibility", "accessible/state", testAccessibleState);
-    AccessibilityTest::add("WebKitAccessibility", "accessible/state-changed", testAccessibleStateChanged);
-    AccessibilityTest::add("WebKitAccessibility", "accessible/event-listener", testAccessibleEventListener);
-    AccessibilityTest::add("WebKitAccessibility", "accessible/list-markers", testAccessibleListMarkers);
-    AccessibilityTest::add("WebKitAccessibility", "component/hit-test", testComponentHitTest);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/basic-hierarchy", testAccessibleBasicHierarchy);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/ignored-objects", testAccessibleIgnoredObjects);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/children-changed", testAccessibleChildrenChanged);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/attributes", testAccessibleAttributes);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/state", testAccessibleState);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/state-changed", testAccessibleStateChanged);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/event-listener", testAccessibleEventListener);
+    AccessibilityTest::add("CyberKitAccessibility", "accessible/list-markers", testAccessibleListMarkers);
+    AccessibilityTest::add("CyberKitAccessibility", "component/hit-test", testComponentHitTest);
 #ifdef ATSPI_SCROLLTYPE_COUNT
-    AccessibilityTest::add("WebKitAccessibility", "component/scroll-to", testComponentScrollTo);
+    AccessibilityTest::add("CyberKitAccessibility", "component/scroll-to", testComponentScrollTo);
 #endif
-    AccessibilityTest::add("WebKitAccessibility", "text/basic", testTextBasic);
-    AccessibilityTest::add("WebKitAccessibility", "text/surrogate-pair", testTextSurrogatePair);
-    AccessibilityTest::add("WebKitAccessibility", "text/iterator", testTextIterator);
-    AccessibilityTest::add("WebKitAccessibility", "text/extents", testTextExtents);
-    AccessibilityTest::add("WebKitAccessibility", "text/selections", testTextSelections);
-    AccessibilityTest::add("WebKitAccessibility", "text/attributes", testTextAttributes);
-    AccessibilityTest::add("WebKitAccessibility", "text/state-changed", testTextStateChanged);
-    AccessibilityTest::add("WebKitAccessibility", "text/replaced-objects", testTextReplacedObjects);
-    AccessibilityTest::add("WebKitAccessibility", "text/list-markers", testTextListMarkers);
-    AccessibilityTest::add("WebKitAccessibility", "value/basic", testValueBasic);
-    AccessibilityTest::add("WebKitAccessibility", "hyperlink/basic", testHyperlinkBasic);
-    AccessibilityTest::add("WebKitAccessibility", "hypertext/basic", testHypertextBasic);
-    AccessibilityTest::add("WebKitAccessibility", "action/basic", testActionBasic);
-    AccessibilityTest::add("WebKitAccessibility", "document/basic", testDocumentBasic);
-    AccessibilityTest::add("WebKitAccessibility", "document/load-events", testDocumentLoadEvents);
-    AccessibilityTest::add("WebKitAccessibility", "image/basic", testImageBasic);
-    AccessibilityTest::add("WebKitAccessibility", "selection/listbox", testSelectionListBox);
-    AccessibilityTest::add("WebKitAccessibility", "selection/menulist", testSelectionMenuList);
-    AccessibilityTest::add("WebKitAccessibility", "table/basic", testTableBasic);
-    AccessibilityTest::add("WebKitAccessibility", "collection/get-matches", testCollectionGetMatches);
+    AccessibilityTest::add("CyberKitAccessibility", "text/basic", testTextBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "text/surrogate-pair", testTextSurrogatePair);
+    AccessibilityTest::add("CyberKitAccessibility", "text/iterator", testTextIterator);
+    AccessibilityTest::add("CyberKitAccessibility", "text/extents", testTextExtents);
+    AccessibilityTest::add("CyberKitAccessibility", "text/selections", testTextSelections);
+    AccessibilityTest::add("CyberKitAccessibility", "text/attributes", testTextAttributes);
+    AccessibilityTest::add("CyberKitAccessibility", "text/state-changed", testTextStateChanged);
+    AccessibilityTest::add("CyberKitAccessibility", "text/replaced-objects", testTextReplacedObjects);
+    AccessibilityTest::add("CyberKitAccessibility", "text/list-markers", testTextListMarkers);
+    AccessibilityTest::add("CyberKitAccessibility", "value/basic", testValueBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "hyperlink/basic", testHyperlinkBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "hypertext/basic", testHypertextBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "action/basic", testActionBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "document/basic", testDocumentBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "document/load-events", testDocumentLoadEvents);
+    AccessibilityTest::add("CyberKitAccessibility", "image/basic", testImageBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "selection/listbox", testSelectionListBox);
+    AccessibilityTest::add("CyberKitAccessibility", "selection/menulist", testSelectionMenuList);
+    AccessibilityTest::add("CyberKitAccessibility", "table/basic", testTableBasic);
+    AccessibilityTest::add("CyberKitAccessibility", "collection/get-matches", testCollectionGetMatches);
 }
 
 void afterAll()

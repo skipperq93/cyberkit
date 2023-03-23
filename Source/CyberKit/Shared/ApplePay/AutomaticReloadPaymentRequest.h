@@ -35,10 +35,10 @@ namespace CyberCore {
 struct ApplePayAutomaticReloadPaymentRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<PKAutomaticReloadPaymentRequest> platformAutomaticReloadPaymentRequest(const CyberCore::ApplePayAutomaticReloadPaymentRequest&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(PASSKIT_AUTOMATIC_RELOAD_PAYMENTS)

@@ -306,7 +306,7 @@ bool AccessibilityObject::accessibleNameDerivesFromContent() const
 
 String AccessibilityObject::computedLabel()
 {
-    // This method is being called by WebKit inspector, which may happen at any time, so we need to update our backing store now.
+    // This method is being called by CyberKit inspector, which may happen at any time, so we need to update our backing store now.
     // Also hold onto this object in case updateBackingStore deletes this node.
     RefPtr<AccessibilityObject> protectedThis(this);
     updateBackingStore();
@@ -2920,17 +2920,17 @@ void AccessibilityObject::setFocused(bool focus)
         if (!frameView)
             return;
 
-        // Legacy WebKit1 case.
+        // Legacy CyberKit1 case.
         if (frameView->platformWidget())
             page->chrome().client().makeFirstResponder((NSResponder *)frameView->platformWidget());
 #endif
 #if PLATFORM(MAC)
         else
             page->chrome().client().assistiveTechnologyMakeFirstResponder();
-        // WebChromeClient::assistiveTechnologyMakeFirstResponder (the WebKit2 codepath) is intentionally
+        // WebChromeClient::assistiveTechnologyMakeFirstResponder (the CyberKit2 codepath) is intentionally
         // not called on iOS because stealing first-respondership causes issues such as:
         //   1. VoiceOver Speak Screen focus erroneously jumping to the top of the page when encountering an embedded WKWebView
-        //   2. Third-party apps relying on WebKit to not steal first-respondership (https://bugs.webkit.org/show_bug.cgi?id=249976)
+        //   2. Third-party apps relying on CyberKit to not steal first-respondership (https://bugs.webkit.org/show_bug.cgi?id=249976)
 #endif
     }
 }

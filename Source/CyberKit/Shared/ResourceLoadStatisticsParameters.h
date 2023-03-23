@@ -31,7 +31,7 @@
 #include <CyberCore/RegistrableDomain.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct ResourceLoadStatisticsParameters {
 
@@ -167,4 +167,4 @@ struct ResourceLoadStatisticsParameters {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

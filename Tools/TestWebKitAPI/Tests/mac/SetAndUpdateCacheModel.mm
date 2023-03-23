@@ -33,11 +33,11 @@
 + (WebCacheModel)_cacheModel;
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void resetTestState()
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"WebKitCacheModelPreferenceKey"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CyberKitCacheModelPreferenceKey"];
 }
 
 TEST(CyberKitLegacy, SetAndUpdateCacheModelInitialModel)
@@ -111,4 +111,4 @@ TEST(CyberKitLegacy, SetAndUpdateCacheModelPreferencesChangeMix)
     EXPECT_EQ((int)WebCacheModelDocumentViewer, (int)[WebView _cacheModel]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

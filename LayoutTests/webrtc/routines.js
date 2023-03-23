@@ -337,7 +337,7 @@ function getImageDataPixel(imageData, p)
     return imageData.data.slice(i, i + 4);
 }
 
-// Asserts that ImageData instance contains mock camera image rendered by MiniBrowser and WebKitTestRunner.
+// Asserts that ImageData instance contains mock camera image rendered by MiniBrowser and CyberKitTestRunner.
 // Obtain full camera image of size `width`:
 //  await navigator.mediaDevices.getUserMedia({ video: { width: { exact: width } } });
 function assertImageDataContainsMockCameraImage(imageData, angle, desc)

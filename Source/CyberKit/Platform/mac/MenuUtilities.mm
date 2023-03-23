@@ -78,7 +78,7 @@ SOFT_LINK_CLASS(TelephonyUtilities, TUCall)
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(TELEPHONE_NUMBER_DETECTION)
 
@@ -152,6 +152,6 @@ RetainPtr<NSMenu> menuForTelephoneNumber(const String& telephoneNumber, NSView *
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

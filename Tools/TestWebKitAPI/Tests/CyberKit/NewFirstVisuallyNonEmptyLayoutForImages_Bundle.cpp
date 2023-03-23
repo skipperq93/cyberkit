@@ -33,7 +33,7 @@
 #include <CyberKit/WKBundlePage.h>
 #include <CyberKit/WKBundlePagePrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class NewFirstVisuallyNonEmptyLayoutForImagesTest : public InjectedBundleTest {
 public:
@@ -51,6 +51,6 @@ public:
 
 static InjectedBundleTest::Register<NewFirstVisuallyNonEmptyLayoutForImagesTest> registrar("NewFirstVisuallyNonEmptyLayoutForImagesTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

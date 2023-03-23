@@ -64,7 +64,7 @@ static inline IntPoint pointForEvent(WebEvent *event)
 
 static inline IntPoint globalPointForEvent(WebEvent *event)
 {
-    // iOS WebKit works as if it is full screen. Therefore Web coords are Global coords.
+    // iOS CyberKit works as if it is full screen. Therefore Web coords are Global coords.
     return pointForEvent(event);
 }
 

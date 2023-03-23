@@ -29,7 +29,7 @@
 #import <pal/spi/cocoa/LaunchServicesSPI.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(MAC)
 
@@ -61,4 +61,4 @@ void NetworkConnectionToWebProcess::getProcessDisplayName(audit_token_t auditTok
 
 #endif // PLATFORM(MAC)
 
-} // namespace WebKit
+} // namespace CyberKit

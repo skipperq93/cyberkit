@@ -47,7 +47,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void runTest(NSArray *additionalSupportedImageTypes, Boolean expectedToLoad)
 {
@@ -60,7 +60,7 @@ static void runTest(NSArray *additionalSupportedImageTypes, Boolean expectedToLo
     RetainPtr<AdditionalSupportedImageTypesTest> testController = adoptNS([AdditionalSupportedImageTypesTest new]);
     webView.get().frameLoadDelegate = testController.get();
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"AdditionalSupportedImageTypes" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"AdditionalSupportedImageTypes" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
 
     Util::run(&didFinishLoad);
@@ -100,4 +100,4 @@ TEST(CyberKitLegacy, AdditionalArrayOfArrayImageType)
     runTest(@[@[@"com.truevision.tga-image"]], false);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

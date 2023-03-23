@@ -30,7 +30,7 @@
 
 #include "RemoteImageBuffer.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteResourceCache::RemoteResourceCache(ProcessIdentifier webProcessIdentifier)
@@ -113,6 +113,6 @@ bool RemoteResourceCache::releaseResource(QualifiedRenderingResourceIdentifier r
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

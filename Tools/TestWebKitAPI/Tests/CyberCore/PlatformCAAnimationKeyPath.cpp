@@ -27,7 +27,7 @@
 
 #include <CyberCore/PlatformCAAnimation.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(PlatformCAAnimation, makeKeyPath)
 {

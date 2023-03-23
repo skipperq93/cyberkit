@@ -46,7 +46,7 @@ namespace WTF {
 class TextStream;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 enum TypingAttributes {
     AttributeNone = 0,
@@ -170,4 +170,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const EditorState&);
 
-} // namespace WebKit
+} // namespace CyberKit

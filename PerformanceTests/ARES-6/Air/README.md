@@ -30,7 +30,7 @@ backend, called
 very CPU-intensive and uses a combination of object-oriented and functional
 idioms in C++. Additionally, it relies heavily on high speed maps and sets. It
 goes so far as to use customized map/set implementations - even more so than
-the rest of WebKit. This makes Air a great candidate for ES6 benchmarking.
+the rest of CyberKit. This makes Air a great candidate for ES6 benchmarking.
 Air.js is a faithful ES6 implementation of Air. It pulls no punches: just as
 the original C++ Air was written with expressiveness as a top priority, Air.js
 is liberal in its use of modern ES6 idioms whenever this helps make the code

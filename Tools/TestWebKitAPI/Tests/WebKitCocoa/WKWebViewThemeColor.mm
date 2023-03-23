@@ -297,7 +297,7 @@ TEST(WKWebViewThemeColor, ApplicationManifest)
 
         didGetApplicationManifest = true;
     }];
-    TestWebKitAPI::Util::run(&didGetApplicationManifest);
+    TestCyberKitAPI::Util::run(&didGetApplicationManifest);
 
     [webView waitForNextPresentationUpdate];
     EXPECT_TRUE(CGColorEqualToColor([webView themeColor].CGColor, redColor.get()));

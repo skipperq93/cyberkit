@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebFindOptions.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 CyberCore::FindOptions core(OptionSet<FindOptions> options)
 {
@@ -46,4 +46,4 @@ CyberCore::FindOptions core(OptionSet<FindOptions> options)
     return result;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

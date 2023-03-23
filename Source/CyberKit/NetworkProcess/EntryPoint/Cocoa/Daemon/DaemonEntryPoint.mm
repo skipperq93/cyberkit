@@ -26,7 +26,7 @@
 #import "config.h"
 #import "DaemonEntryPoint.h"
 
-namespace WebKit {
+namespace CyberKit {
     
 int DaemonMain(int, const char**)
 {

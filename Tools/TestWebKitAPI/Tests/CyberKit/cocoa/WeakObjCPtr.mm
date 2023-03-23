@@ -27,7 +27,7 @@
 
 #import <wtf/WeakObjCPtr.h>
 
-TEST(WebKit2_WeakObjCPtr, Construction)
+TEST(CyberKit2_WeakObjCPtr, Construction)
 {
     NSObject *object = [[NSObject alloc] init];
 
@@ -40,7 +40,7 @@ TEST(WebKit2_WeakObjCPtr, Construction)
     EXPECT_EQ(weak.get(), (void*)nil);
 }
 
-TEST(WebKit2_WeakObjCPtr, Assignment)
+TEST(CyberKit2_WeakObjCPtr, Assignment)
 {
     NSObject *object1 = [[NSObject alloc] init];
 
@@ -60,7 +60,7 @@ TEST(WebKit2_WeakObjCPtr, Assignment)
     EXPECT_EQ(weak.get(), (void*)nil);
 }
 
-TEST(WebKit2_WeakObjCPtr, ObjectOutlivesItsWeakPointer)
+TEST(CyberKit2_WeakObjCPtr, ObjectOutlivesItsWeakPointer)
 {
     NSObject *object = [[NSObject alloc] init];
 
@@ -73,7 +73,7 @@ TEST(WebKit2_WeakObjCPtr, ObjectOutlivesItsWeakPointer)
     [object release];
 }
 
-TEST(WebKit2_WeakObjCPtr, GetAutoreleased)
+TEST(CyberKit2_WeakObjCPtr, GetAutoreleased)
 {
     WeakObjCPtr<NSObject> weak;
 
@@ -93,7 +93,7 @@ TEST(WebKit2_WeakObjCPtr, GetAutoreleased)
     EXPECT_EQ(weak.getAutoreleased(), (id)nil);
 }
 
-TEST(WebKit2_WeakObjCPtr, Id)
+TEST(CyberKit2_WeakObjCPtr, Id)
 {
     id object = [[NSObject alloc] init];
     WeakObjCPtr<id> weak(object);
@@ -105,7 +105,7 @@ TEST(WebKit2_WeakObjCPtr, Id)
     EXPECT_EQ(weak.get(), (void*)nil);
 }
 
-TEST(WebKit2_WeakObjCPtr, LogicalNegation)
+TEST(CyberKit2_WeakObjCPtr, LogicalNegation)
 {
     id object = [[NSObject alloc] init];
     WeakObjCPtr<id> weak(object);
@@ -117,7 +117,7 @@ TEST(WebKit2_WeakObjCPtr, LogicalNegation)
     EXPECT_TRUE(!weak);
 }
 
-TEST(WebKit2_WeakObjCPtr, CopyConstructor)
+TEST(CyberKit2_WeakObjCPtr, CopyConstructor)
 {
     id object = [[NSObject alloc] init];
     WeakObjCPtr<id> weak1(object);
@@ -136,7 +136,7 @@ TEST(WebKit2_WeakObjCPtr, CopyConstructor)
     EXPECT_EQ(weak2.get(), (void*)nil);
 }
 
-TEST(WebKit2_WeakObjCPtr, MoveConstructor)
+TEST(CyberKit2_WeakObjCPtr, MoveConstructor)
 {
     id object = [[NSObject alloc] init];
     WeakObjCPtr<id> weak1(object);

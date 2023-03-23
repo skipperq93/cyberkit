@@ -92,5 +92,5 @@ TEST(WKWebView, DiagnosticLoggingDictionary)
     [webView configuration].preferences._diagnosticLoggingEnabled = YES;
 
     [webView loadHTMLString:@"<script>window.internals.testDictionaryLogging()</script>" baseURL:nil];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }

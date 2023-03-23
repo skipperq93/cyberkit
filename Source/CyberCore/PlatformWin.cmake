@@ -176,7 +176,7 @@ list(APPEND WebCore_LIBRARIES
 
 file(COPY ${ModernMediaControlsImageFiles}
     DESTINATION
-    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/WebKit.resources/media-controls
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/CyberKit.resources/media-controls
 )
 
 if (USE_CF)
@@ -251,5 +251,5 @@ list(APPEND WebCoreTestSupport_LIBRARIES
 file(COPY
     "${WEBCORE_DIR}/en.lproj/Localizable.strings"
     DESTINATION
-    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/WebKit.resources/en.lproj
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/CyberKit.resources/en.lproj
 )

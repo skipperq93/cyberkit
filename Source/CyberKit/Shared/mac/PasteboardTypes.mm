@@ -31,13 +31,13 @@
 
 #if PLATFORM(MAC)
 
-namespace WebKit {
+namespace CyberKit {
 
 NSString * const PasteboardTypes::WebArchivePboardType = @"Apple Web Archive pasteboard type";
 NSString * const PasteboardTypes::WebURLsWithTitlesPboardType = @"WebURLsWithTitlesPboardType";
 NSString * const PasteboardTypes::WebURLPboardType = @"public.url";
 NSString * const PasteboardTypes::WebURLNamePboardType = @"public.url-name";
-NSString * const PasteboardTypes::WebDummyPboardType = @"Apple WebKit dummy pasteboard type";
+NSString * const PasteboardTypes::WebDummyPboardType = @"Apple CyberKit dummy pasteboard type";
     
 NSArray* PasteboardTypes::forEditing()
 {
@@ -74,6 +74,6 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     return types.get().get();
 }
     
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

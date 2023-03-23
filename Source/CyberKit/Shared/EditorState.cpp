@@ -29,7 +29,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 TextStream& operator<<(TextStream& ts, const EditorState& editorState)
@@ -144,4 +144,4 @@ TextStream& operator<<(TextStream& ts, const EditorState& editorState)
     return ts;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

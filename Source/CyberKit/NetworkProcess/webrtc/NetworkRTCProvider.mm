@@ -34,7 +34,7 @@
 #import <webrtc/rtc_base/logging.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline bool isEnabled(CFDictionaryRef proxy, CFStringRef key)
 {
@@ -90,6 +90,6 @@ rtc::ProxyInfo NetworkRTCProvider::proxyInfoFromSession(const RTCNetwork::Socket
     return { };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

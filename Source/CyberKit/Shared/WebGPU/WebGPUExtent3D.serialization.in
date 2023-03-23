@@ -22,7 +22,7 @@
 
 #if ENABLE(GPU_PROCESS)
 header: "WebGPUExtent3D.h"
-[AdditionalEncoder=StreamConnectionEncoder, CustomHeader] struct WebKit::WebGPU::Extent3DDict {
+[AdditionalEncoder=StreamConnectionEncoder, CustomHeader] struct CyberKit::WebGPU::Extent3DDict {
     PAL::WebGPU::IntegerCoordinate width;
     PAL::WebGPU::IntegerCoordinate height;
     PAL::WebGPU::IntegerCoordinate depthOrArrayLayers;

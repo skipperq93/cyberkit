@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class SwapBuffersDisplayRequirement : uint8_t {
     NeedsFullDisplay,
@@ -33,4 +33,4 @@ enum class SwapBuffersDisplayRequirement : uint8_t {
     NeedsNoDisplay
 };
 
-} // namespace WebKit
+} // namespace CyberKit

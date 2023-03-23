@@ -32,17 +32,17 @@
 
 @implementation WKBrowsingContextHandle
 
-- (id)_initWithPageProxy:(NakedRef<WebKit::WebPageProxy>)page
+- (id)_initWithPageProxy:(NakedRef<CyberKit::WebPageProxy>)page
 {
     return [self _initWithPageProxyID:page->identifier() andWebPageID:page->webPageID()];
 }
 
-- (id)_initWithPage:(NakedRef<WebKit::WebPage>)page
+- (id)_initWithPage:(NakedRef<CyberKit::WebPage>)page
 {
     return [self _initWithPageProxyID:page->webPageProxyIdentifier() andWebPageID:page->identifier()];
 }
 
-- (id)_initWithPageProxyID:(WebKit::WebPageProxyIdentifier)pageProxyID andWebPageID:(CyberCore::PageIdentifier)webPageID
+- (id)_initWithPageProxyID:(CyberKit::WebPageProxyIdentifier)pageProxyID andWebPageID:(CyberCore::PageIdentifier)webPageID
 {
     if (!(self = [super init]))
         return nil;
@@ -74,7 +74,7 @@
 
 - (id)initWithCoder:(NSCoder *)coder
 {
-    return [self _initWithPageProxyID:makeObjectIdentifier<WebKit::WebPageProxyIdentifierType>([coder decodeInt64ForKey:@"pageProxyID"]) andWebPageID:makeObjectIdentifier<CyberCore::PageIdentifierType>([coder decodeInt64ForKey:@"webPageID"])];
+    return [self _initWithPageProxyID:makeObjectIdentifier<CyberKit::WebPageProxyIdentifierType>([coder decodeInt64ForKey:@"pageProxyID"]) andWebPageID:makeObjectIdentifier<CyberCore::PageIdentifierType>([coder decodeInt64ForKey:@"webPageID"])];
 }
 
 + (BOOL)supportsSecureCoding

@@ -36,7 +36,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsiteDataType : uint32_t;
 

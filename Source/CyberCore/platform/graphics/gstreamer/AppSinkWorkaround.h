@@ -31,19 +31,19 @@ void registerAppsinkWorkaroundIfNeeded();
 
 #define WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND (webkit_app_sink_with_workaround_get_type())
 
-#define WEBKIT_APP_SINK_WITH_WORKAROUND(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND, WebKitAppSinkWithWorkaround))
-#define WEBKIT_APP_SINK_WITH_WORKAROUND_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND, WebKitAppSinkWithWorkaroundClass))
+#define WEBKIT_APP_SINK_WITH_WORKAROUND(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND, CyberKitAppSinkWithWorkaround))
+#define WEBKIT_APP_SINK_WITH_WORKAROUND_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND, CyberKitAppSinkWithWorkaroundClass))
 #define WEBKIT_IS_APP_SINK_WITH_WORKAROUND(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND))
 #define WEBKIT_IS_APP_SINK_WITH_WORKAROUND_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND))
-#define WEBKIT_APP_SINK_WITH_WORKAROUND_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND, WebKitAppSinkWithWorkaroundClass))
+#define WEBKIT_APP_SINK_WITH_WORKAROUND_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND, CyberKitAppSinkWithWorkaroundClass))
 
-struct WebKitAppSinkWithWorkaroundPrivate;
-struct WebKitAppSinkWithWorkaround {
+struct CyberKitAppSinkWithWorkaroundPrivate;
+struct CyberKitAppSinkWithWorkaround {
     GstAppSink parent;
-    WebKitAppSinkWithWorkaroundPrivate* priv;
+    CyberKitAppSinkWithWorkaroundPrivate* priv;
 };
 
-struct WebKitAppSinkWithWorkaroundClass {
+struct CyberKitAppSinkWithWorkaroundClass {
     GstAppSinkClass parent;
 };
 

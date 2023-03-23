@@ -56,7 +56,7 @@ static NSMenuItem *findMenuItemWithTitle(NSPopUpButton *button, NSString *title)
     return nil;
 }
 
-@implementation NSFontPanel (TestWebKitAPI)
+@implementation NSFontPanel (TestCyberKitAPI)
 
 - (NSBox *)fontEffectsBox
 {

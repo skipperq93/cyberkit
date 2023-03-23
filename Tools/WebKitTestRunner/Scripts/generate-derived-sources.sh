@@ -4,10 +4,10 @@ set -e
 
 ARGS=("$@")
 
-mkdir -p "${BUILT_PRODUCTS_DIR}/DerivedSources/WebKitTestRunner"
-cd "${BUILT_PRODUCTS_DIR}/DerivedSources/WebKitTestRunner"
+mkdir -p "${BUILT_PRODUCTS_DIR}/DerivedSources/CyberKitTestRunner"
+cd "${BUILT_PRODUCTS_DIR}/DerivedSources/CyberKitTestRunner"
 
-export WebKitTestRunner="${SRCROOT}"
+export CyberKitTestRunner="${SRCROOT}"
 /bin/ln -sfh "${WEBCORE_PRIVATE_HEADERS_DIR}" CyberCorePrivateHeaders
 export CyberCoreScripts="CyberCorePrivateHeaders"
 
@@ -16,5 +16,5 @@ if [ ! "$CC" ]; then
 fi
 
 if [ "${ACTION}" = "analyze" -o "${ACTION}" = "build" -o "${ACTION}" = "install" -o "${ACTION}" = "installhdrs" ]; then
-    make -f "${WebKitTestRunner}/DerivedSources.make" -j `/usr/sbin/sysctl -n hw.activecpu` SDKROOT="${SDKROOT}" "${ARGS[@]}"
+    make -f "${CyberKitTestRunner}/DerivedSources.make" -j `/usr/sbin/sysctl -n hw.activecpu` SDKROOT="${SDKROOT}" "${ARGS[@]}"
 fi

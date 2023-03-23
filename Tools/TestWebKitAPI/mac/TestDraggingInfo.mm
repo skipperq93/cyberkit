@@ -120,7 +120,7 @@
     }
 }
 
-// The following methods are not currently used by WebKit.
+// The following methods are not currently used by CyberKit.
 
 @synthesize draggedImageLocation = _draggedImageLocation;
 @synthesize draggingSequenceNumber = _draggingSequenceNumber;

@@ -32,7 +32,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(AbortableTaskQueue, AsyncTasks)
 {
@@ -313,4 +313,4 @@ TEST(AbortableTaskQueue, AbortedBySyncTaskHandler)
     Util::run(&testFinished);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

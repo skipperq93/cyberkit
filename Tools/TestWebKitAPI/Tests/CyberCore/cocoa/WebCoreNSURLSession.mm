@@ -51,8 +51,8 @@ static bool didRecieveData;
 static bool didComplete;
 static bool didInvalidate;
 
-static NSURL *documentURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-static NSURL *resourceURL = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mp4" subdirectory:@"TestWebKitAPI.resources"];
+static NSURL *documentURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+static NSURL *resourceURL = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mp4" subdirectory:@"TestCyberKitAPI.resources"];
 
 @interface TestNSURLSessionLoaderDelegate : NSObject<WebFrameLoadDelegate>
 @end
@@ -102,7 +102,7 @@ using namespace CyberCore;
 - (CyberCore::Frame*)_mainCoreFrame;
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class CyberCoreNSURLSessionTest : public testing::Test {
 public:
@@ -122,7 +122,7 @@ public:
 
         didLoadMainResource = false;
         [view setMainFrameURL:documentURL.absoluteString];
-        TestWebKitAPI::Util::run(&didLoadMainResource);
+        TestCyberKitAPI::Util::run(&didLoadMainResource);
 
         delegate = adoptNS([[TestNSURLSessionDataDelegate alloc] init]);
         frame = [view _mainCoreFrame];
@@ -146,9 +146,9 @@ TEST_F(CyberCoreNSURLSessionTest, BasicOperation)
     NSURLSessionDataTask *task = [session dataTaskWithURL:resourceURL];
     [task resume];
 
-    TestWebKitAPI::Util::run(&didRecieveResponse);
-    TestWebKitAPI::Util::run(&didRecieveData);
-    TestWebKitAPI::Util::run(&didComplete);
+    TestCyberKitAPI::Util::run(&didRecieveResponse);
+    TestCyberKitAPI::Util::run(&didRecieveData);
+    TestCyberKitAPI::Util::run(&didComplete);
 
     didInvalidate = false;
 
@@ -156,7 +156,7 @@ TEST_F(CyberCoreNSURLSessionTest, BasicOperation)
     [task resume];
     [session finishTasksAndInvalidate];
 
-    TestWebKitAPI::Util::run(&didInvalidate);
+    TestCyberKitAPI::Util::run(&didInvalidate);
 }
 
 TEST_F(CyberCoreNSURLSessionTest, InvalidateEmpty)
@@ -164,7 +164,7 @@ TEST_F(CyberCoreNSURLSessionTest, InvalidateEmpty)
     auto session = adoptNS([[CyberCoreNSURLSession alloc] initWithResourceLoader:*loader delegate:delegate.get() delegateQueue:[NSOperationQueue mainQueue]]);
     didInvalidate = false;
     [session finishTasksAndInvalidate];
-    TestWebKitAPI::Util::run(&didInvalidate);
+    TestCyberKitAPI::Util::run(&didInvalidate);
 }
 
 }

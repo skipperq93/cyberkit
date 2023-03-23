@@ -34,7 +34,7 @@
 #include <wtf/DebugUtilities.h>
 #include <wtf/URL.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<WebBackForwardListItem> WebBackForwardListItem::create(BackForwardListItemState&& backForwardListItemState, WebPageProxyIdentifier pageID)
@@ -192,4 +192,4 @@ const char* WebBackForwardListItem::loggingString()
 }
 #endif // !LOG_DISABLED
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -82,8 +82,8 @@ public:
     ExceptionOr<void> setPropertyValueForCamelCasedIDLAttribute(const AtomString&, const String&);
 
     // Shared implementation for all properties that match https://drafts.csswg.org/cssom/#dom-cssstyledeclaration-webkit_cased_attribute.
-    String propertyValueForWebKitCasedIDLAttribute(const AtomString&);
-    ExceptionOr<void> setPropertyValueForWebKitCasedIDLAttribute(const AtomString&, const String&);
+    String propertyValueForCyberKitCasedIDLAttribute(const AtomString&);
+    ExceptionOr<void> setPropertyValueForCyberKitCasedIDLAttribute(const AtomString&, const String&);
 
     // Shared implementation for all properties that match https://drafts.csswg.org/cssom/#dom-cssstyledeclaration-dashed_attribute.
     String propertyValueForDashedIDLAttribute(const AtomString&);

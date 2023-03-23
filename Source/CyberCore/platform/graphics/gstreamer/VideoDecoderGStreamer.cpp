@@ -67,7 +67,7 @@ bool GStreamerVideoDecoder::create(const String& codecName, const Config& config
 {
     static std::once_flag debugRegisteredFlag;
     std::call_once(debugRegisteredFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_video_decoder_debug, "webkitvideodecoder", 0, "WebKit WebCodecs Video Decoder");
+        GST_DEBUG_CATEGORY_INIT(webkit_video_decoder_debug, "webkitvideodecoder", 0, "CyberKit WebCodecs Video Decoder");
     });
 
     auto& scanner = GStreamerRegistryScanner::singleton();

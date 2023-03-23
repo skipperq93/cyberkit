@@ -116,7 +116,7 @@ static BOOL viewIsFirstResponder(NSView *view)
 }
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebViewFindString, DoNotFocusMatchWhenWebViewResignedAndHardwareKeyboardAttached)
 {
@@ -189,4 +189,4 @@ TEST(WKWebViewFindString, DoNotUpdateMatchIndexWhenGivenNoIndexChangeOption)
     EXPECT_EQ(0, [findDelegate matchIndex]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

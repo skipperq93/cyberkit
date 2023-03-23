@@ -45,7 +45,7 @@ namespace IPC {
 class SharedBufferReference;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteCDMInstanceConfiguration;
 class RemoteCDMInstanceSessionProxy;

@@ -405,7 +405,7 @@ template<typename... T> struct JSConverter<IDLUnion<T...>> {
     }
 };
 
-// BufferSource specialization. In WebKit, BufferSource is defined as IDLUnion<IDLArrayBufferView, IDLArrayBuffer> as a hack, and it is not compatible to
+// BufferSource specialization. In CyberKit, BufferSource is defined as IDLUnion<IDLArrayBufferView, IDLArrayBuffer> as a hack, and it is not compatible to
 // annotation described in WebIDL.
 template<> struct Converter<IDLAllowSharedAdaptor<IDLUnion<IDLArrayBufferView, IDLArrayBuffer>>> : DefaultConverter<IDLUnion<IDLArrayBufferView, IDLArrayBuffer>> {
     static auto convert(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSValue value) -> decltype(auto)

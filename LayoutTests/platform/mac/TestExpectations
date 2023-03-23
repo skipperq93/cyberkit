@@ -1,4 +1,4 @@
-# These are the layout test expectations for Apple's Mac port of WebKit.
+# These are the layout test expectations for Apple's Mac port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -146,7 +146,7 @@ accessibility/multiselect-list-reports-active-option.html
 accessibility/aria-listbox-clear-selection-crash.html
 accessibility/listbox-clear-selection.html
 
-# Need to implement this in plugins code in WebKit
+# Need to implement this in plugins code in CyberKit
 plugins/reloadplugins-and-pages.html
 
 # These tests require touch support
@@ -441,10 +441,10 @@ plugins/nested-plugin-objects.html [ WontFix ]
 plugins/netscape-destroy-plugin-script-objects.html [ WontFix ]
 plugins/open-and-close-window-with-plugin.html [ WontFix ]
 
-# WebKit1 OOP plug-ins: No support for getting the form value.
+# CyberKit1 OOP plug-ins: No support for getting the form value.
 plugins/form-value.html
 
-# WebKit1 OOP plug-ins: Exceptions aren't thrown on invoke failure.
+# CyberKit1 OOP plug-ins: Exceptions aren't thrown on invoke failure.
 plugins/npruntime/invoke-failure.html
 
 # CSS image-resolution is not yet enabled.
@@ -560,7 +560,7 @@ webkit.org/b/112176 fast/css/sticky/inline-sticky.html [ ImageOnlyFailure Pass ]
 webkit.org/b/112176 fast/css/sticky/sticky-both-sides.html [ ImageOnlyFailure Pass ]
 # Once the bug 112176 is fixed, potentially restore the following test expectations.
 
-# WebKit1-only
+# CyberKit1-only
 webkit.org/b/103857 fast/events/mouse-cursor-change.html [ Failure ]
 
 webkit.org/b/120387 svg/animations/svglengthlist-animation-3.html [ Pass Failure ]
@@ -828,7 +828,7 @@ webkit.org/b/103926 media/track/opera/track/webvtt/rendering/adhoc/cue_font_size
 webkit.org/b/103926 media/track/opera/track/webvtt/rendering/adhoc/voice_with_evil_timestamp.html [ Skip ]
 
 # WebVTT tests don't work because they need more than a 800x600 snapshot.
-# They are also flakily failing on WebKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
+# They are also flakily failing on CyberKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
 webkit.org/b/131476 media/track/w3c/track/webvtt [ Skip ]
 
 webkit.org/b/75184 media/W3C/video/canPlayType/canPlayType_codecs_order_2.html [ Failure ]
@@ -1739,7 +1739,7 @@ editing/selection/select-bidi-run.html [ Pass Timeout ]
 # <rdar://problem/60873976> [ Mac Guard Malloc ] imported/w3c/web-platform-tests/WebCryptoAPI/generateKey/failures_AES-CBC.https.any.worker.html is flaky crashing.
 imported/w3c/web-platform-tests/WebCryptoAPI/generateKey/failures_AES-CBC.https.any.worker.html [ Pass Crash ]
 
-# In-App Browser Privacy requires functions that are currently in WebKitAdditions.
+# In-App Browser Privacy requires functions that are currently in CyberKitAdditions.
 http/tests/in-app-browser-privacy/ [ Skip ]
 
 # <rdar://problem/61264058> [ iOS and Mac with Guard-Malloc and wk2 or Stress-GC ] imported/w3c/web-platform-tests/css/css-sizing/percentage-height-in-flexbox.html is flaky failing.

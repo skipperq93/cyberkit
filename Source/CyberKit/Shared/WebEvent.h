@@ -42,7 +42,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebEventType : int8_t {
     NoType = -1,
@@ -107,4 +107,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, WebEventType);
 
-} // namespace WebKit
+} // namespace CyberKit

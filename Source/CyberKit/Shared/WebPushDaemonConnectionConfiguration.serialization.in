@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 header: "WebPushDaemonConnectionConfiguration.h"
-[CustomHeader] struct WebKit::WebPushD::WebPushDaemonConnectionConfiguration {
+[CustomHeader] struct CyberKit::WebPushD::WebPushDaemonConnectionConfiguration {
     bool useMockBundlesForTesting;
     std::optional<Vector<uint8_t>> hostAppAuditTokenData;
     String pushPartitionString;

@@ -32,7 +32,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 constexpr uint32_t min6BitValue { 0 };
 
@@ -332,4 +332,4 @@ TEST(PrivateClickMeasurement, InvalidBlindedSecret)
 }
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

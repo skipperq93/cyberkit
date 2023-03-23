@@ -33,7 +33,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/SuspendableWorkQueue.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 static Ref<SuspendableWorkQueue> sharedWorkQueue()
 {
@@ -186,4 +186,4 @@ void Store::close(CompletionHandler<void()>&& completionHandler)
     });
 }
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

@@ -28,7 +28,7 @@
 
 #include "StorageAreaMapMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 uint64_t StorageAreaBase::nextMessageIdentifier()
 {
@@ -80,4 +80,4 @@ void StorageAreaBase::dispatchEvents(IPC::Connection::UniqueID sourceConnection,
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

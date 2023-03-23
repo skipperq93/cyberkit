@@ -59,7 +59,7 @@
 #include <CyberScriptCore/Structure.h>
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
-#include "JSWebKitNamespace.h"
+#include "JSCyberKitNamespace.h"
 #endif
 
 #if PLATFORM(COCOA)
@@ -217,7 +217,7 @@ bool JSDOMWindow::getOwnPropertySlot(JSObject* object, JSGlobalObject* lexicalGl
         return false;
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
-    if (propertyName == builtinNames(lexicalGlobalObject->vm()).webkitPublicName() && thisObject->wrapped().shouldHaveWebKitNamespaceForWorld(thisObject->world())) {
+    if (propertyName == builtinNames(lexicalGlobalObject->vm()).webkitPublicName() && thisObject->wrapped().shouldHaveCyberKitNamespaceForWorld(thisObject->world())) {
         slot.setCacheableCustom(thisObject, JSC::PropertyAttribute::DontDelete | JSC::PropertyAttribute::ReadOnly, jsDOMWindow_webkit);
         return true;
     }

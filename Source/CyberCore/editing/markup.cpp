@@ -864,7 +864,7 @@ bool StyledMarkupAccumulator::appendNodeToPreserveMSOList(Node& node)
         if (msoListDefinitionsEnd == notFound || start >= msoListDefinitionsEnd)
             return false;
 
-        append("<head><style class=\"", WebKitMSOListQuirksStyle, "\">\n<!--\n",
+        append("<head><style class=\"", CyberKitMSOListQuirksStyle, "\">\n<!--\n",
             StringView(textChild.data()).substring(start, msoListDefinitionsEnd - start + 3),
             "\n-->\n</style></head>");
 

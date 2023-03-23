@@ -35,10 +35,10 @@ namespace CyberCore {
 struct ApplePayRecurringPaymentRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<PKRecurringPaymentRequest> platformRecurringPaymentRequest(const CyberCore::ApplePayRecurringPaymentRequest&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(PASSKIT_RECURRING_PAYMENTS)

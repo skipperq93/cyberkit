@@ -456,7 +456,7 @@ public:
     WEBCORE_EXPORT void pasteAsFragment(Ref<DocumentFragment>&&, bool smartReplace, bool matchStyle, MailBlockquoteHandling = MailBlockquoteHandling::RespectBlockquote, EditAction = EditAction::Paste);
     WEBCORE_EXPORT void pasteAsPlainText(const String&, bool smartReplace);
 
-    // This is only called on the mac where paste is implemented primarily at the WebKit level.
+    // This is only called on the mac where paste is implemented primarily at the CyberKit level.
     WEBCORE_EXPORT void pasteAsPlainTextBypassingDHTML();
  
     void clearMisspellingsAndBadGrammar(const VisibleSelection&);

@@ -32,7 +32,7 @@
 #include <Carbon/Carbon.h> // Needed for AppleEvents
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleAppleEventTest : public InjectedBundleTest {
 public:
@@ -59,6 +59,6 @@ public:
 
 static InjectedBundleTest::Register<InjectedBundleAppleEventTest> registrar("InjectedBundleAppleEventTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

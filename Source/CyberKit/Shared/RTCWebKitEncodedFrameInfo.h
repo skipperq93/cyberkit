@@ -29,7 +29,7 @@
 
 ALLOW_COMMA_BEGIN
 
-#include <webrtc/sdk/WebKit/WebKitEncoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitEncoder.h>
 
 ALLOW_COMMA_END
 

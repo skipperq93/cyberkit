@@ -52,11 +52,11 @@ if (ENABLE_VIDEO OR ENABLE_WEB_AUDIO)
         platform/graphics/gstreamer/VideoFrameMetadataGStreamer.cpp
         platform/graphics/gstreamer/VideoSinkGStreamer.cpp
         platform/graphics/gstreamer/VideoTrackPrivateGStreamer.cpp
-        platform/graphics/gstreamer/WebKitAudioSinkGStreamer.cpp
-        platform/graphics/gstreamer/WebKitWebSourceGStreamer.cpp
+        platform/graphics/gstreamer/CyberKitAudioSinkGStreamer.cpp
+        platform/graphics/gstreamer/CyberKitWebSourceGStreamer.cpp
 
         platform/graphics/gstreamer/eme/GStreamerEMEUtilities.cpp
-        platform/graphics/gstreamer/eme/WebKitCommonEncryptionDecryptorGStreamer.cpp
+        platform/graphics/gstreamer/eme/CyberKitCommonEncryptionDecryptorGStreamer.cpp
 
         platform/graphics/gstreamer/mse/AppendPipeline.cpp
         platform/graphics/gstreamer/mse/GStreamerMediaDescription.cpp
@@ -66,13 +66,13 @@ if (ENABLE_VIDEO OR ENABLE_WEB_AUDIO)
         platform/graphics/gstreamer/mse/MediaSourceTrackGStreamer.cpp
         platform/graphics/gstreamer/mse/SourceBufferPrivateGStreamer.cpp
         platform/graphics/gstreamer/mse/TrackQueue.cpp
-        platform/graphics/gstreamer/mse/WebKitMediaSourceGStreamer.cpp
+        platform/graphics/gstreamer/mse/CyberKitMediaSourceGStreamer.cpp
 
         platform/gstreamer/GStreamerCodecUtilities.cpp
         platform/gstreamer/GStreamerElementHarness.cpp
         platform/gstreamer/PlatformSpeechSynthesizerGStreamer.cpp
         platform/gstreamer/VideoEncoderPrivateGStreamer.cpp
-        platform/gstreamer/WebKitFliteSourceGStreamer.cpp
+        platform/gstreamer/CyberKitFliteSourceGStreamer.cpp
 
         platform/mediarecorder/MediaRecorderPrivateGStreamer.cpp
 
@@ -145,7 +145,7 @@ if (ENABLE_VIDEO OR ENABLE_WEB_AUDIO)
     endif ()
 
     # Avoiding a GLib deprecation warning due to GStreamer API using deprecated classes.
-    set_source_files_properties(platform/audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp PROPERTIES COMPILE_DEFINITIONS "GLIB_DISABLE_DEPRECATION_WARNINGS=1")
+    set_source_files_properties(platform/audio/gstreamer/CyberKitWebAudioSourceGStreamer.cpp PROPERTIES COMPILE_DEFINITIONS "GLIB_DISABLE_DEPRECATION_WARNINGS=1")
 
     if (VIDEO_DECODING_LIMIT)
         # Specify video decoding limits.
@@ -236,7 +236,7 @@ if (ENABLE_WEB_AUDIO)
         platform/audio/gstreamer/AudioFileReaderGStreamer.cpp
         platform/audio/gstreamer/AudioSourceProviderGStreamer.cpp
         platform/audio/gstreamer/FFTFrameGStreamer.cpp
-        platform/audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp
+        platform/audio/gstreamer/CyberKitWebAudioSourceGStreamer.cpp
     )
 
     if (NOT USE_GSTREAMER_FULL)
@@ -268,7 +268,7 @@ if (ENABLE_ENCRYPTED_MEDIA)
         list(APPEND CyberCore_SOURCES
             platform/graphics/gstreamer/eme/CDMProxyThunder.cpp
             platform/graphics/gstreamer/eme/CDMThunder.cpp
-            platform/graphics/gstreamer/eme/WebKitThunderDecryptorGStreamer.cpp
+            platform/graphics/gstreamer/eme/CyberKitThunderDecryptorGStreamer.cpp
         )
     endif ()
 endif ()

@@ -39,7 +39,7 @@ static void loadLibraryOrExit(const char* name)
 int main(int argc, char** argv)
 {
     loadLibraryOrExit(ICU_LOAD_AT);
-#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestWebKit)
+#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestCyberKit)
     loadLibraryOrExit(PNG_LOAD_AT);
 #if defined(JPEG_LOAD_AT)
     loadLibraryOrExit(JPEG_LOAD_AT);
@@ -51,17 +51,17 @@ int main(int argc, char** argv)
     loadLibraryOrExit(Freetype_LOAD_AT);
     loadLibraryOrExit(HarfBuzz_LOAD_AT);
     loadLibraryOrExit(Cairo_LOAD_AT);
-    loadLibraryOrExit(WebKitRequirements_LOAD_AT);
+    loadLibraryOrExit(CyberKitRequirements_LOAD_AT);
 #endif
-#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestWebKit) || defined(BUILDING_TestJavaScriptCore)
+#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestCyberKit) || defined(BUILDING_TestJavaScriptCore)
 #if !ENABLE(STATIC_JSC)
     loadLibraryOrExit("libJavaScriptCore");
 #endif
 #endif
-#if defined(BUILDING_TestWebKit)
+#if defined(BUILDING_TestCyberKit)
     loadLibraryOrExit(OpenSSL_LOAD_AT);
     loadLibraryOrExit(CURL_LOAD_AT);
-    loadLibraryOrExit("libWebKit");
+    loadLibraryOrExit("libCyberKit");
 #endif
-    return TestWebKitAPI::TestsController::singleton().run(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
+    return TestCyberKitAPI::TestsController::singleton().run(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
 }

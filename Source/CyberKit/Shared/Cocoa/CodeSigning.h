@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/spi/darwin/XPCSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // These functions return a null string if the process is unsigned.
 String codeSigningIdentifierForCurrentProcess();
@@ -37,4 +37,4 @@ String codeSigningIdentifier(audit_token_t);
 bool currentProcessIsPlatformBinary();
 std::pair<String, bool> codeSigningIdentifierAndPlatformBinaryStatus(xpc_connection_t);
 
-} // namespace WebKit
+} // namespace CyberKit

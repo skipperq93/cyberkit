@@ -29,7 +29,7 @@
 #include "RemoteLayerTreeTransaction.h"
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeHost;
 
@@ -48,4 +48,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUPrimitiveState.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<PrimitiveState> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::PrimitiveState& primitiveState)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::PrimitiveState> ConvertFromBackingContext::convertFro
     return { { primitiveState.topology, primitiveState.stripIndexFormat, primitiveState.frontFace, primitiveState.cullMode, primitiveState.unclippedDepth } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

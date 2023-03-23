@@ -31,27 +31,27 @@
 #include <wtf/glib/GRefPtr.h>
 
 #define WEBKIT_TYPE_FORM_DATA_INPUT_STREAM            (webkit_form_data_input_stream_get_type ())
-#define WEBKIT_FORM_DATA_INPUT_STREAM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM, WebKitFormDataInputStream))
+#define WEBKIT_FORM_DATA_INPUT_STREAM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM, CyberKitFormDataInputStream))
 #define WEBKIT_IS_FORM_DATA_INPUT_STREAM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM))
-#define WEBKIT_FORM_DATA_INPUT_STREAM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM, WebKitFormDataInputStreamClass))
+#define WEBKIT_FORM_DATA_INPUT_STREAM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM, CyberKitFormDataInputStreamClass))
 #define WEBKIT_IS_FORM_DATA_INPUT_STREAM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM))
-#define WEBKIT_FORM_DATA_INPUT_STREAM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM, WebKitFormDataInputStreamClass))
+#define WEBKIT_FORM_DATA_INPUT_STREAM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), WEBKIT_TYPE_FORM_DATA_INPUT_STREAM, CyberKitFormDataInputStreamClass))
 
-typedef struct _WebKitFormDataInputStream WebKitFormDataInputStream;
-typedef struct _WebKitFormDataInputStreamClass WebKitFormDataInputStreamClass;
-typedef struct _WebKitFormDataInputStreamPrivate WebKitFormDataInputStreamPrivate;
+typedef struct _CyberKitFormDataInputStream CyberKitFormDataInputStream;
+typedef struct _CyberKitFormDataInputStreamClass CyberKitFormDataInputStreamClass;
+typedef struct _CyberKitFormDataInputStreamPrivate CyberKitFormDataInputStreamPrivate;
 
-struct _WebKitFormDataInputStream {
+struct _CyberKitFormDataInputStream {
     GInputStream parent;
 
-    WebKitFormDataInputStreamPrivate* priv;
+    CyberKitFormDataInputStreamPrivate* priv;
 };
 
-struct _WebKitFormDataInputStreamClass {
+struct _CyberKitFormDataInputStreamClass {
     GInputStreamClass parentClass;
 };
 
 GType webkit_form_data_input_stream_get_type(void);
 
 GRefPtr<GInputStream> webkitFormDataInputStreamNew(Ref<CyberCore::FormData>&&);
-GBytes* webkitFormDataInputStreamReadAll(WebKitFormDataInputStream*);
+GBytes* webkitFormDataInputStreamReadAll(CyberKitFormDataInputStream*);

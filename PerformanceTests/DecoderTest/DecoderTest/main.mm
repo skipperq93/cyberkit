@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
 
     @autoreleasepool {
         WTF::initializeMainThread();
-        registerWebKitVP9Decoder();
+        registerCyberKitVP9Decoder();
         registerSupplementalVP9Decoder();
         RuntimeEnabledFeatures::sharedFeatures().setWebMParserEnabled(true);
 

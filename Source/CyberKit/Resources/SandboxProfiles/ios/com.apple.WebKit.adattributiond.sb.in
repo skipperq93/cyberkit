@@ -206,7 +206,7 @@
     (global-name "com.apple.cfnetwork.cfnetworkagent"))
     
 #if ENABLE(SYSTEM_CONTENT_PATH_SANDBOX_RULES)
-#include <WebKitAdditions/SystemContentSandbox-ios.defs>
+#include <CyberKitAdditions/SystemContentSandbox-ios.defs>
 
 (allow file-read* file-test-existence
     (apply subpath file-read-existence-secondary-paths))

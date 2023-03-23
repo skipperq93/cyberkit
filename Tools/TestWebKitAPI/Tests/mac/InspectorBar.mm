@@ -48,7 +48,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, InspectorBarTest)
 {
@@ -87,4 +87,4 @@ TEST(CyberKitLegacy, InspectorBarTest)
     EXPECT_WK_STREQ(@"rgb(0, 0, 0)", [style color]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -54,7 +54,7 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 RetainPtr<_WKAppHighlight> createAppHighlightWithHTML(NSString *HTMLString, NSString *javaScript, NSString *highlightText)
 {
@@ -75,7 +75,7 @@ RetainPtr<_WKAppHighlight> createAppHighlightWithHTML(NSString *HTMLString, NSSt
         done = true;
     }];
     [webViewCreate _addAppHighlight];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return resultHighlight;
 }
 
@@ -95,7 +95,7 @@ TEST(AppHighlights, AppHighlightCreateAndRestore)
     
     [webViewRestore _restoreAppHighlights:@[[highlight highlight]]];
     
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue == 1;
     }, 2, @"Expected Highlights to be populated.");
 }
@@ -107,7 +107,7 @@ TEST(AppHighlights, AppHighlightCreateAndRestoreAndScroll)
 
     [webViewRestore _restoreAndScrollToAppHighlight:[highlight highlight]];
 
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue == 1
             && [[webViewRestore objectByEvaluatingJavaScript:@"pageYOffset"] floatValue] > 0;
     }, 2, @"Expected Highlights to be populated and the page to scroll.");
@@ -120,12 +120,12 @@ TEST(AppHighlights, AppHighlightRestoreFailure)
     
     [webViewRestore _restoreAppHighlights:@[[highlight highlight]]];
     
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return ![webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue;
     }, 2, @"Expected Highlights not to be populated.");
 }
 
-// Ensure that future versions of the blob format can add additional data and still be decoded successfully by version of WebKit that only know about the current format.
+// Ensure that future versions of the blob format can add additional data and still be decoded successfully by version of CyberKit that only know about the current format.
 TEST(AppHighlights, AppHighlightCreateAndRestoreWithExtraBytes)
 {
     auto highlight = createAppHighlightWithHTML(@"Test", @"document.execCommand('SelectAll')", @"Test");
@@ -137,12 +137,12 @@ TEST(AppHighlights, AppHighlightCreateAndRestoreWithExtraBytes)
     [webViewRestore synchronouslyLoadHTMLString:@"Test"];
     [webViewRestore _restoreAppHighlights:@[ modifiedHighlightData ]];
     
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue == 1;
     }, 2, @"Expected Highlights to be populated.");
 }
 
-// Older versions of WebKit need to be able to decode blobs encoded on newer versions of WebKit, so ensure that is possible.
+// Older versions of CyberKit need to be able to decode blobs encoded on newer versions of CyberKit, so ensure that is possible.
 TEST(AppHighlights, AppHighlightCreateAndRestoreWithLaterVersion)
 {
     auto highlight = createAppHighlightWithHTML(@"Test", @"document.execCommand('SelectAll')", @"Test");
@@ -157,7 +157,7 @@ TEST(AppHighlights, AppHighlightCreateAndRestoreWithLaterVersion)
     [webViewRestore synchronouslyLoadHTMLString:@"Test"];
     [webViewRestore _restoreAppHighlights:@[ modifiedHighlightData ]];
     
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue == 1;
     }, 2, @"Expected Highlights to be populated.");
 }
@@ -173,7 +173,7 @@ TEST(AppHighlights, AppHighlightCreateAndRestoreAndDropBytes)
     [webViewRestore synchronouslyLoadHTMLString:@"Test"];
     [webViewRestore _restoreAppHighlights:@[ modifiedHighlightData ]];
     
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return ![webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue;
     }, 2, @"Expected Highlights not to be populated.");
 }
@@ -191,7 +191,7 @@ TEST(AppHighlights, AppHighlightRestoreFromStorageV0)
     [webViewRestore synchronouslyLoadHTMLString:@"Test"];
     [webViewRestore _restoreAppHighlights:@[ storedData ]];
     
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue == 1;
     }, 2, @"Expected Highlights to be populated.");
 }
@@ -210,7 +210,7 @@ TEST(AppHighlights, AppHighlightRestoreFromStorageV1)
     [webViewRestore synchronouslyLoadHTMLString:@"Test"];
     [webViewRestore _restoreAppHighlights:@[ storedData ]];
     
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webViewRestore stringByEvaluatingJavaScript:@"internals.numberOfAppHighlights()"].intValue == 1;
     }, 2, @"Expected Highlights to be populated.");
 }
@@ -230,6 +230,6 @@ TEST(AppHighlights, AvoidForcingCalloutBarInitialization)
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(APP_HIGHLIGHTS)

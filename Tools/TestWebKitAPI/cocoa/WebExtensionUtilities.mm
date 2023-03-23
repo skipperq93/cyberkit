@@ -75,7 +75,7 @@
 - (void)run
 {
     _done = false;
-    TestWebKitAPI::Util::run(&_done);
+    TestCyberKitAPI::Util::run(&_done);
 }
 
 - (void)loadAndRun
@@ -135,7 +135,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 RetainPtr<TestWebExtensionManager> loadAndRunExtension(_WKWebExtension *extension)
@@ -161,4 +161,4 @@ RetainPtr<TestWebExtensionManager> loadAndRunExtension(NSURL *baseURL)
 }
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

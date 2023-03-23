@@ -31,5 +31,5 @@
 
 int main(int argc, char** argv)
 {
-    WebKit::NetworkProcessMain(argc, argv);
+    CyberKit::NetworkProcessMain(argc, argv);
 }

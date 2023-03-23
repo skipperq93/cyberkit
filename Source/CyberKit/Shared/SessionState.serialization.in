@@ -21,23 +21,23 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 header: "SessionState.h"
-[CustomHeader] struct WebKit::HTTPBody {
+[CustomHeader] struct CyberKit::HTTPBody {
     String contentType;
-    Vector<WebKit::HTTPBody::Element> elements;
+    Vector<CyberKit::HTTPBody::Element> elements;
 };
 
-[Nested] struct WebKit::HTTPBody::Element {
-    std::variant<Vector<uint8_t>, WebKit::HTTPBody::Element::FileData, String> data;
+[Nested] struct CyberKit::HTTPBody::Element {
+    std::variant<Vector<uint8_t>, CyberKit::HTTPBody::Element::FileData, String> data;
 };
 
-[Nested] struct WebKit::HTTPBody::Element::FileData {
+[Nested] struct CyberKit::HTTPBody::Element::FileData {
     String filePath;
     int64_t fileStart;
     std::optional<int64_t> fileLength;
     std::optional<WallTime> expectedFileModificationTime;
 };
 
-[CustomHeader, LegacyPopulateFromEmptyConstructor] class WebKit::FrameState {
+[CustomHeader, LegacyPopulateFromEmptyConstructor] class CyberKit::FrameState {
     String urlString;
     String originalURLString;
     String referrer;
@@ -52,7 +52,7 @@ header: "SessionState.h"
     bool shouldRestoreScrollPosition;
     float pageScaleFactor;
 
-    std::optional<WebKit::HTTPBody> httpBody;
+    std::optional<CyberKit::HTTPBody> httpBody;
 
 #if PLATFORM(IOS_FAMILY)
     CyberCore::FloatRect exposedContentRect;
@@ -63,27 +63,27 @@ header: "SessionState.h"
     CyberCore::FloatBoxExtent obscuredInsets;
 #endif
 
-    Vector<WebKit::FrameState> children;
-    [Validator='WebKit::FrameState::validateDocumentState(*m_documentState)'] Vector<AtomString> m_documentState;
+    Vector<CyberKit::FrameState> children;
+    [Validator='CyberKit::FrameState::validateDocumentState(*m_documentState)'] Vector<AtomString> m_documentState;
 };
 
-[CustomHeader] struct WebKit::PageState {
+[CustomHeader] struct CyberKit::PageState {
     String title;
-    WebKit::FrameState mainFrameState;
+    CyberKit::FrameState mainFrameState;
     CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
     RefPtr<CyberCore::SerializedScriptValue> sessionStateObject;
     bool wasCreatedByJSWithoutUserInteraction;
 };
 
-[CustomHeader] struct WebKit::BackForwardListItemState {
+[CustomHeader] struct CyberKit::BackForwardListItemState {
     CyberCore::BackForwardItemIdentifier identifier;
 
-    WebKit::PageState pageState;
+    CyberKit::PageState pageState;
     bool hasCachedPage;
     # snapshot is not serialized.
 };
 
-[CustomHeader] struct WebKit::BackForwardListState {
-    Vector<WebKit::BackForwardListItemState> items;
+[CustomHeader] struct CyberKit::BackForwardListState {
+    Vector<CyberKit::BackForwardListItemState> items;
     std::optional<uint32_t> currentIndex;
 };

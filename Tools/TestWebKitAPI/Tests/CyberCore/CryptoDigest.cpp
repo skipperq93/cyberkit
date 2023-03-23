@@ -28,7 +28,7 @@
 #include <PAL/crypto/CryptoDigest.h>
 #include <wtf/text/CString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static CString toHex(WTF::Vector<uint8_t>&& hash)
 {

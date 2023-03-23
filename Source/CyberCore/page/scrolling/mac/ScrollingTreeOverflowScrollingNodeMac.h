@@ -59,6 +59,6 @@ private:
     void willBeDestroyed() final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ASYNC_SCROLLING) && PLATFORM(MAC)

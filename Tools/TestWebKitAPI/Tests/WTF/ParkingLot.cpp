@@ -34,7 +34,7 @@
 #include <wtf/Threading.h>
 #include <wtf/ThreadingPrimitives.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace {
 
@@ -265,5 +265,5 @@ TEST(WTF_ParkingLot, HundredUnparkAllOne)
     repeatParkingTest(1, 100, 10000, 1, 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

@@ -28,7 +28,7 @@
 #include "StorageAreaIdentifier.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageAreaBase;
 
@@ -44,4 +44,4 @@ private:
     HashMap<StorageAreaIdentifier, WeakPtr<StorageAreaBase>> m_storageAreas;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

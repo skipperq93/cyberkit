@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// FIXME: Should be [LegacyWindowAlias=(SVGMatrix, WebKitCSSMatrix)].
+// FIXME: Should be [LegacyWindowAlias=(SVGMatrix, CyberKitCSSMatrix)].
 [
     ExportMacro=WEBCORE_EXPORT,
     Exposed=(Window,Worker),
-    LegacyWindowAlias=WebKitCSSMatrix,
+    LegacyWindowAlias=CyberKitCSSMatrix,
     JSGenerateToNativeObject,
 ] interface DOMMatrix : DOMMatrixReadOnly {
     [CallWith=CurrentScriptExecutionContext] constructor(optional (DOMString or sequence<unrestricted double>) init);

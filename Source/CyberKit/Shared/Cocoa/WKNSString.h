@@ -28,7 +28,7 @@
 #import "APIString.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::String> {
     using WrapperClass = NSString;

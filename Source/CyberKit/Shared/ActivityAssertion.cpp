@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ActivityAssertion.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 ActivityAssertion::ActivityAssertion(CountedUserActivity& activity)
     : m_activity(activity)

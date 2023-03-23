@@ -30,10 +30,10 @@
 #include "WebGPUObjectDescriptorBase.h"
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderBundleDescriptor : public ObjectDescriptorBase { };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

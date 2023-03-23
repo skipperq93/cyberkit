@@ -34,7 +34,7 @@
 #include "IntSize.h"
 #include "RuntimeApplicationChecks.h"
 #include "SharedBuffer.h"
-#include "WebKitAudioSinkGStreamer.h"
+#include "CyberKitAudioSinkGStreamer.h"
 #include <gst/audio/audio-info.h>
 #include <gst/gst.h>
 #include <mutex>
@@ -51,7 +51,7 @@
 #endif
 
 #if ENABLE(MEDIA_SOURCE)
-#include "WebKitMediaSourceGStreamer.h"
+#include "CyberKitMediaSourceGStreamer.h"
 #endif
 
 #if ENABLE(MEDIA_STREAM)
@@ -59,17 +59,17 @@
 #endif
 
 #if ENABLE(SPEECH_SYNTHESIS)
-#include "WebKitFliteSourceGStreamer.h"
+#include "CyberKitFliteSourceGStreamer.h"
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA) && ENABLE(THUNDER)
 #include "CDMThunder.h"
-#include "WebKitThunderDecryptorGStreamer.h"
+#include "CyberKitThunderDecryptorGStreamer.h"
 #endif
 
 #if ENABLE(VIDEO)
 #include "VideoEncoderPrivateGStreamer.h"
-#include "WebKitWebSourceGStreamer.h"
+#include "CyberKitWebSourceGStreamer.h"
 #endif
 
 #if USE(GSTREAMER_WEBRTC)
@@ -301,7 +301,7 @@ bool ensureGStreamerInitialized()
         s_webkitGstInitTime = gst_util_get_timestamp();
         ASSERT_WITH_MESSAGE(isGStreamerInitialized, "GStreamer initialization failed: %s", error ? error->message : "unknown error occurred");
         g_strfreev(argv);
-        GST_DEBUG_CATEGORY_INIT(webkit_gst_common_debug, "webkitcommon", 0, "WebKit Common utilities");
+        GST_DEBUG_CATEGORY_INIT(webkit_gst_common_debug, "webkitcommon", 0, "CyberKit Common utilities");
 
         if (isFastMallocEnabled()) {
             const char* disableFastMalloc = getenv("WEBKIT_GST_DISABLE_FAST_MALLOC");
@@ -328,7 +328,7 @@ static void registerInternalVideoEncoder()
 #endif
 }
 
-void registerWebKitGStreamerElements()
+void registerCyberKitGStreamerElements()
 {
     static std::once_flag onceFlag;
     bool registryWasUpdated = false;
@@ -336,10 +336,10 @@ void registerWebKitGStreamerElements()
 
         // Rank guidelines are as following:
         // - Use GST_RANK_PRIMARY for elements meant to be auto-plugged and for which we know
-        //   there's no other alternative outside of WebKit.
+        //   there's no other alternative outside of CyberKit.
         // - Use GST_RANK_PRIMARY+100 for elements meant to be auto-plugged and that we know there
-        //   is an alternative outside of WebKit.
-        // - Use GST_RANK_NONE for elements explicitely created by WebKit (no auto-plugging).
+        //   is an alternative outside of CyberKit.
+        // - Use GST_RANK_NONE for elements explicitely created by CyberKit (no auto-plugging).
 
 #if ENABLE(ENCRYPTED_MEDIA) && ENABLE(THUNDER)
         if (!CDMFactoryThunder::singleton().supportedKeySystems().isEmpty())
@@ -392,7 +392,7 @@ void registerWebKitGStreamerElements()
                 gst_plugin_feature_set_rank(GST_PLUGIN_FEATURE_CAST(factory.get()), GST_RANK_NONE);
         }
 
-        // The new demuxers based on adaptivedemux2 cannot be used in WebKit yet because this new
+        // The new demuxers based on adaptivedemux2 cannot be used in CyberKit yet because this new
         // base class does not abstract away network access. They can't work in a sandboxed
         // media process, so demote their rank in order to prevent decodebin3 from auto-plugging them.
         if (webkitGstCheckVersion(1, 22, 0)) {
@@ -421,7 +421,7 @@ void registerWebKitGStreamerElements()
         GStreamerRegistryScanner::singleton().refresh();
 }
 
-void registerWebKitGStreamerVideoEncoder()
+void registerCyberKitGStreamerVideoEncoder()
 {
     static std::once_flag onceFlag;
     bool registryWasUpdated = false;
@@ -573,7 +573,7 @@ GstElement* createPlatformAudioSink(const String& role)
 {
     GstElement* audioSink = webkitAudioSinkNew();
     if (!audioSink) {
-        // This means the WebKit audio sink configuration failed. It can happen for the following reasons:
+        // This means the CyberKit audio sink configuration failed. It can happen for the following reasons:
         // - audio mixing was not requested using the WEBKIT_GST_ENABLE_AUDIO_MIXER
         // - audio mixing was requested using the WEBKIT_GST_ENABLE_AUDIO_MIXER but the audio mixer
         //   runtime requirements are not fullfilled.

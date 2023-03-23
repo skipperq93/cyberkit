@@ -38,7 +38,7 @@ CString topLevelPath()
         return topLevelDirectory;
 
     // If the environment variable wasn't provided then assume we were built into
-    // WebKitBuild/Debug or WebKitBuild/Release. Obviously this will fail if the build
+    // CyberKitBuild/Debug or CyberKitBuild/Release. Obviously this will fail if the build
     // directory is non-standard, but we can't do much more about this.
     GUniquePtr<char> parentPath(g_path_get_dirname(FileSystem::currentExecutablePath().data()));
     GUniquePtr<char> layoutTestsPath(g_build_filename(parentPath.get(), "..", "..", "..", nullptr));
@@ -52,7 +52,7 @@ CString getOutputDir()
     if (webkitOutputDir)
         return webkitOutputDir;
 
-    GUniquePtr<char> outputDir(g_build_filename(topLevelPath().data(), "WebKitBuild", nullptr));
+    GUniquePtr<char> outputDir(g_build_filename(topLevelPath().data(), "CyberKitBuild", nullptr));
     return outputDir.get();
 }
 
@@ -122,15 +122,15 @@ void activateFonts()
         g_error("Could not load font at %s!", ahemFontFilename.get()); 
 
     static const char* fontFilenames[] = {
-        "WebKitWeightWatcher100.ttf",
-        "WebKitWeightWatcher200.ttf",
-        "WebKitWeightWatcher300.ttf",
-        "WebKitWeightWatcher400.ttf",
-        "WebKitWeightWatcher500.ttf",
-        "WebKitWeightWatcher600.ttf",
-        "WebKitWeightWatcher700.ttf",
-        "WebKitWeightWatcher800.ttf",
-        "WebKitWeightWatcher900.ttf",
+        "CyberKitWeightWatcher100.ttf",
+        "CyberKitWeightWatcher200.ttf",
+        "CyberKitWeightWatcher300.ttf",
+        "CyberKitWeightWatcher400.ttf",
+        "CyberKitWeightWatcher500.ttf",
+        "CyberKitWeightWatcher600.ttf",
+        "CyberKitWeightWatcher700.ttf",
+        "CyberKitWeightWatcher800.ttf",
+        "CyberKitWeightWatcher900.ttf",
         0
     };
 

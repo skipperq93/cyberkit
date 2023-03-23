@@ -84,7 +84,7 @@ static void* const SelectionAttributesObservationContext = (void*)&SelectionAttr
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<EditingTestHarness> setUpEditorStateTestHarness()
 {
@@ -528,4 +528,4 @@ TEST(EditorStateTests, MarkedTextRange_VerticalRangeSelection)
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

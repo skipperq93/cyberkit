@@ -72,7 +72,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebPageCreationParameters {
     void encode(IPC::Encoder&) const;
@@ -298,4 +298,4 @@ struct WebPageCreationParameters {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -70,7 +70,7 @@
         result = attributes;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return result.autorelease();
 }
 
@@ -115,7 +115,7 @@ static RetainPtr<NSMenuItemCell> menuItemCellForFontAction(NSUInteger tag)
     return menuItemCell;
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(FontManagerTests, ToggleBoldAndItalicWithMenuItems)
 {
@@ -562,6 +562,6 @@ TEST(FontManagerTests, ObservingFontPanelShouldNotCrashWhenUnparentingViewTwice)
 
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

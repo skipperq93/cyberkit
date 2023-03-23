@@ -27,7 +27,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSImage (WebKitExtras)
+@interface NSImage (CyberKitExtras)
 
 - (void)_web_lockFocusWithDeviceScaleFactor:(CGFloat)deviceScaleFactor;
 

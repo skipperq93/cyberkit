@@ -39,7 +39,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebGestureEvent : public WebEvent {
 public:
@@ -66,6 +66,6 @@ private:
     float m_gestureRotation;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MAC_GESTURE_EVENTS)

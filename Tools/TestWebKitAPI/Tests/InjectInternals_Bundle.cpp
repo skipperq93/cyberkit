@@ -34,9 +34,9 @@
 #import <CyberKit/WKBundleFrame.h>
 #import <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class InternalsInjectedBundleTest : public TestWebKitAPI::InjectedBundleTest {
+class InternalsInjectedBundleTest : public TestCyberKitAPI::InjectedBundleTest {
 public:
     InternalsInjectedBundleTest(const std::string& identifier)
         : InjectedBundleTest(identifier)
@@ -67,8 +67,8 @@ private:
     }
 };
 
-static TestWebKitAPI::InjectedBundleTest::Register<InternalsInjectedBundleTest> registrar("InternalsInjectedBundleTest");
+static TestCyberKitAPI::InjectedBundleTest::Register<InternalsInjectedBundleTest> registrar("InternalsInjectedBundleTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

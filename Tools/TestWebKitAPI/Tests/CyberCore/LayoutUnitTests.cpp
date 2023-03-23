@@ -34,7 +34,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberCoreLayoutUnit, LayoutUnitInt)
 {
@@ -245,4 +245,4 @@ TEST(CyberCoreLayoutUnit, LayoutUnitPixelSnapping)
         ASSERT_FLOAT_EQ(roundToDevicePixel(LayoutUnit(i), 2), i + 0.25);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

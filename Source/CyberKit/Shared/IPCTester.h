@@ -43,7 +43,7 @@
 
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(IPC_TESTING_API)
 

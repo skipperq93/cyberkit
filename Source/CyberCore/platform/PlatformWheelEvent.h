@@ -47,7 +47,7 @@ enum class WheelScrollGestureState : uint8_t {
 // It is sent directly by touch pads on macOS, or synthesized when platforms generate line-by-line scrolling events.
 //
 // The ScrollByPageWheelEvent indicates that the wheel event should scroll an entire page.
-// In this case, WebKit built in paging behavior is used to page up and down.
+// In this case, CyberKit built in paging behavior is used to page up and down.
 // This yields the same behavior as clicking in a scrollbar track to page up and down.
 
 enum PlatformWheelEventGranularity : uint8_t {

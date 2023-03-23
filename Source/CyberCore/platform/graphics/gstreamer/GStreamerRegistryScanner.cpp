@@ -260,7 +260,7 @@ GStreamerRegistryScanner::GStreamerRegistryScanner(bool isMediaSource)
         gst_init(nullptr, nullptr);
     }
 
-    GST_DEBUG_CATEGORY_INIT(webkit_media_gst_registry_scanner_debug, "webkitregistryscanner", 0, "WebKit GStreamer registry scanner");
+    GST_DEBUG_CATEGORY_INIT(webkit_media_gst_registry_scanner_debug, "webkitregistryscanner", 0, "CyberKit GStreamer registry scanner");
 
     refresh();
 }
@@ -311,7 +311,7 @@ bool GStreamerRegistryScanner::isContainerTypeSupported(Configuration configurat
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-void GStreamerRegistryScanner::fillMimeTypeSetFromCapsMapping(const GStreamerRegistryScanner::ElementFactories& factories, const Vector<GstCapsWebKitMapping>& mapping)
+void GStreamerRegistryScanner::fillMimeTypeSetFromCapsMapping(const GStreamerRegistryScanner::ElementFactories& factories, const Vector<GstCapsCyberKitMapping>& mapping)
 {
     for (const auto& current : mapping) {
         if (auto result = factories.hasElementForMediaType(current.elementType, current.capsString)) {
@@ -423,7 +423,7 @@ void GStreamerRegistryScanner::initializeDecoders(const GStreamerRegistryScanner
         m_decoderCodecMap.add(AtomString("x-av1"_s), av1DecoderAvailable);
     }
 
-    Vector<GstCapsWebKitMapping> mseCompatibleMapping = {
+    Vector<GstCapsCyberKitMapping> mseCompatibleMapping = {
         { ElementFactories::Type::AudioDecoder, "audio/x-ac3", { }, { "x-ac3"_s, "ac-3"_s, "ac3"_s } },
         { ElementFactories::Type::AudioDecoder, "audio/x-eac3", { "audio/x-ac3"_s },  { "x-eac3"_s, "ec3"_s, "ec-3"_s, "eac3"_s } },
         { ElementFactories::Type::AudioDecoder, "audio/x-flac", { "audio/x-flac"_s, "audio/flac"_s }, {"x-flac"_s, "flac"_s } },
@@ -435,7 +435,7 @@ void GStreamerRegistryScanner::initializeDecoders(const GStreamerRegistryScanner
 
     // The mime-types initialized below are not supported by the MSE backend.
 
-    Vector<GstCapsWebKitMapping> mapping = {
+    Vector<GstCapsCyberKitMapping> mapping = {
         { ElementFactories::Type::AudioDecoder, "audio/midi", { "audio/midi"_s, "audio/riff-midi"_s }, { } },
         { ElementFactories::Type::AudioDecoder, "audio/x-dts", { }, { } },
         { ElementFactories::Type::AudioDecoder, "audio/x-sbc", { }, { } },

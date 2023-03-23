@@ -30,7 +30,7 @@
 #import <wtf/cocoa/Entitlements.h>
 #import <wtf/text/ASCIILiteral.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void startListeningForMachServiceConnections(const char* serviceName, ASCIILiteral entitlement, void(*connectionAdded)(xpc_connection_t), void(*connectionRemoved)(xpc_connection_t), void(*eventHandler)(xpc_object_t))
 {
@@ -85,4 +85,4 @@ RetainPtr<xpc_object_t> vectorToXPCData(Vector<uint8_t>&& vector)
     return adoptNS(xpc_data_create_with_dispatch_data(dispatchData.get()));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

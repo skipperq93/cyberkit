@@ -22,7 +22,7 @@
 #include "WebViewTest.h"
 
 #include <JavaScriptCore/JSRetainPtr.h>
-#include <WebKitWebViewInternal.h>
+#include <CyberKitWebViewInternal.h>
 
 bool WebViewTest::shouldInitializeWebViewInConstructor = true;
 bool WebViewTest::shouldCreateEphemeralWebView = false;
@@ -51,7 +51,7 @@ void WebViewTest::initializeWebView()
     g_assert_null(m_webView);
 
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> networkSession = shouldCreateEphemeralWebView ? adoptGRef(webkit_network_session_new_ephemeral()) : m_networkSession;
+    GRefPtr<CyberKitNetworkSession> networkSession = shouldCreateEphemeralWebView ? adoptGRef(webkit_network_session_new_ephemeral()) : m_networkSession;
 #endif
 
     m_webView = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
@@ -73,7 +73,7 @@ void WebViewTest::initializeWebView()
     g_signal_connect(m_webView, "web-process-terminated", G_CALLBACK(WebViewTest::webProcessTerminated), this);
 }
 
-gboolean WebViewTest::webProcessTerminated(WebKitWebView*, WebKitWebProcessTerminationReason, WebViewTest* test)
+gboolean WebViewTest::webProcessTerminated(CyberKitWebView*, CyberKitWebProcessTerminationReason, WebViewTest* test)
 {
     if (test->m_expectedWebProcessCrash) {
         test->m_expectedWebProcessCrash = false;
@@ -91,7 +91,7 @@ void WebViewTest::loadURI(const char* uri)
     g_assert_cmpstr(webkit_web_view_get_uri(m_webView), ==, m_activeURI.data());
 }
 
-void WebViewTest::loadHtml(const char* html, const char* baseURI, WebKitWebView* webView)
+void WebViewTest::loadHtml(const char* html, const char* baseURI, CyberKitWebView* webView)
 {
     if (!baseURI)
         m_activeURI = "about:blank";
@@ -125,7 +125,7 @@ void WebViewTest::loadBytes(GBytes* bytes, const char* mimeType, const char* enc
     g_assert_cmpstr(webkit_web_view_get_uri(m_webView), ==, m_activeURI.data());
 }
 
-void WebViewTest::loadRequest(WebKitURIRequest* request)
+void WebViewTest::loadRequest(CyberKitURIRequest* request)
 {
     m_activeURI = webkit_uri_request_get_uri(request);
     webkit_web_view_load_request(m_webView, request);
@@ -145,8 +145,8 @@ void WebViewTest::goBack()
 {
     bool canGoBack = webkit_web_view_can_go_back(m_webView);
     if (canGoBack) {
-        WebKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
-        WebKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, -1);
+        CyberKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
+        CyberKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, -1);
         m_activeURI = webkit_back_forward_list_item_get_original_uri(item);
     }
 
@@ -162,8 +162,8 @@ void WebViewTest::goForward()
 {
     bool canGoForward = webkit_web_view_can_go_forward(m_webView);
     if (canGoForward) {
-        WebKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
-        WebKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, 1);
+        CyberKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
+        CyberKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, 1);
         m_activeURI = webkit_back_forward_list_item_get_original_uri(item);
     }
 
@@ -175,7 +175,7 @@ void WebViewTest::goForward()
     }
 }
 
-void WebViewTest::goToBackForwardListItem(WebKitBackForwardListItem* item)
+void WebViewTest::goToBackForwardListItem(CyberKitBackForwardListItem* item)
 {
     m_activeURI = webkit_back_forward_list_item_get_original_uri(item);
     webkit_web_view_go_to_back_forward_list_item(m_webView, item);
@@ -197,7 +197,7 @@ void WebViewTest::wait(double seconds)
     g_main_loop_run(m_mainLoop);
 }
 
-static void loadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, WebViewTest* test)
+static void loadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, WebViewTest* test)
 {
     if (loadEvent != WEBKIT_LOAD_FINISHED)
         return;
@@ -205,7 +205,7 @@ static void loadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, WebVi
     g_main_loop_quit(test->m_mainLoop);
 }
 
-void WebViewTest::waitUntilLoadFinished(WebKitWebView* webView)
+void WebViewTest::waitUntilLoadFinished(CyberKitWebView* webView)
 {
     if (!webView)
         webView = m_webView;
@@ -213,7 +213,7 @@ void WebViewTest::waitUntilLoadFinished(WebKitWebView* webView)
     g_main_loop_run(m_mainLoop);
 }
 
-static void titleChanged(WebKitWebView* webView, GParamSpec*, WebViewTest* test)
+static void titleChanged(CyberKitWebView* webView, GParamSpec*, WebViewTest* test)
 {
     if (!test->m_expectedTitle.isNull() && test->m_expectedTitle != webkit_web_view_get_title(webView))
         return;
@@ -238,7 +238,7 @@ void WebViewTest::waitUntilTitleChanged()
     waitUntilTitleChangedTo(nullptr);
 }
 
-static void isWebProcessResponsiveChanged(WebKitWebView* webView, GParamSpec*, WebViewTest* test)
+static void isWebProcessResponsiveChanged(CyberKitWebView* webView, GParamSpec*, WebViewTest* test)
 {
     g_signal_handlers_disconnect_by_func(webView, reinterpret_cast<void*>(isWebProcessResponsiveChanged), test);
     g_main_loop_quit(test->m_mainLoop);
@@ -308,7 +308,7 @@ const char* WebViewTest::mainResourceData(size_t& mainResourceDataSize)
 {
     m_resourceDataSize = 0;
     m_resourceData.reset();
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(m_webView);
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(m_webView);
     g_assert_nonnull(resource);
 
     webkit_web_resource_get_data(resource, 0, resourceGetDataCallback, this);
@@ -330,7 +330,7 @@ static void runAsyncJavaScriptFunctionInWorldReadyCallback(GObject*, GAsyncResul
     g_main_loop_quit(test->m_mainLoop);
 }
 
-WebKitJavascriptResult* WebViewTest::runJavaScriptAndWaitUntilFinished(const char* javascript, gsize length, GError** error)
+CyberKitJavascriptResult* WebViewTest::runJavaScriptAndWaitUntilFinished(const char* javascript, gsize length, GError** error)
 {
     g_clear_pointer(&m_javascriptResult, webkit_javascript_result_unref);
     m_javascriptError = error;
@@ -339,7 +339,7 @@ WebKitJavascriptResult* WebViewTest::runJavaScriptAndWaitUntilFinished(const cha
     return m_javascriptResult;
 }
 
-WebKitJavascriptResult* WebViewTest::runJavaScriptAndWaitUntilFinished(const char* javascript, GError** error, WebKitWebView* webView)
+CyberKitJavascriptResult* WebViewTest::runJavaScriptAndWaitUntilFinished(const char* javascript, GError** error, CyberKitWebView* webView)
 {
     g_clear_pointer(&m_javascriptResult, webkit_javascript_result_unref);
     m_javascriptError = error;
@@ -350,7 +350,7 @@ WebKitJavascriptResult* WebViewTest::runJavaScriptAndWaitUntilFinished(const cha
     return m_javascriptResult;
 }
 
-WebKitJavascriptResult* WebViewTest::runJavaScriptFromGResourceAndWaitUntilFinished(const char* resource, GError** error)
+CyberKitJavascriptResult* WebViewTest::runJavaScriptFromGResourceAndWaitUntilFinished(const char* resource, GError** error)
 {
     g_clear_pointer(&m_javascriptResult, webkit_javascript_result_unref);
     GRefPtr<GBytes> bytes = adoptGRef(g_resources_lookup_data(resource, G_RESOURCE_LOOKUP_FLAGS_NONE, error));
@@ -367,7 +367,7 @@ WebKitJavascriptResult* WebViewTest::runJavaScriptFromGResourceAndWaitUntilFinis
     return m_javascriptResult;
 }
 
-WebKitJavascriptResult* WebViewTest::runJavaScriptInWorldAndWaitUntilFinished(const char* javascript, const char* world, const char* sourceURI, GError** error)
+CyberKitJavascriptResult* WebViewTest::runJavaScriptInWorldAndWaitUntilFinished(const char* javascript, const char* world, const char* sourceURI, GError** error)
 {
     g_clear_pointer(&m_javascriptResult, webkit_javascript_result_unref);
     m_javascriptError = error;
@@ -376,7 +376,7 @@ WebKitJavascriptResult* WebViewTest::runJavaScriptInWorldAndWaitUntilFinished(co
     return m_javascriptResult;
 }
 
-WebKitJavascriptResult* WebViewTest::runAsyncJavaScriptFunctionInWorldAndWaitUntilFinished(const char* body, GVariant* arguments, const char* world, GError** error)
+CyberKitJavascriptResult* WebViewTest::runAsyncJavaScriptFunctionInWorldAndWaitUntilFinished(const char* body, GVariant* arguments, const char* world, GError** error)
 {
     g_clear_pointer(&m_javascriptResult, webkit_javascript_result_unref);
     m_javascriptError = error;
@@ -385,7 +385,7 @@ WebKitJavascriptResult* WebViewTest::runAsyncJavaScriptFunctionInWorldAndWaitUnt
     return m_javascriptResult;
 }
 
-WebKitJavascriptResult* WebViewTest::runJavaScriptWithoutForcedUserGesturesAndWaitUntilFinished(const char* javascript, GError** error)
+CyberKitJavascriptResult* WebViewTest::runJavaScriptWithoutForcedUserGesturesAndWaitUntilFinished(const char* javascript, GError** error)
 {
     g_clear_pointer(&m_javascriptResult, webkit_javascript_result_unref);
     m_javascriptError = error;
@@ -400,7 +400,7 @@ void WebViewTest::runJavaScriptAndWait(const char* javascript)
     g_main_loop_run(m_mainLoop);
 }
 
-char* WebViewTest::javascriptResultToCString(WebKitJavascriptResult* javascriptResult)
+char* WebViewTest::javascriptResultToCString(CyberKitJavascriptResult* javascriptResult)
 {
     auto* value = webkit_javascript_result_get_js_value(javascriptResult);
     g_assert_true(JSC_IS_VALUE(value));
@@ -408,7 +408,7 @@ char* WebViewTest::javascriptResultToCString(WebKitJavascriptResult* javascriptR
     return jsc_value_to_string(value);
 }
 
-double WebViewTest::javascriptResultToNumber(WebKitJavascriptResult* javascriptResult)
+double WebViewTest::javascriptResultToNumber(CyberKitJavascriptResult* javascriptResult)
 {
     auto* value = webkit_javascript_result_get_js_value(javascriptResult);
     g_assert_true(JSC_IS_VALUE(value));
@@ -416,7 +416,7 @@ double WebViewTest::javascriptResultToNumber(WebKitJavascriptResult* javascriptR
     return jsc_value_to_double(value);
 }
 
-bool WebViewTest::javascriptResultToBoolean(WebKitJavascriptResult* javascriptResult)
+bool WebViewTest::javascriptResultToBoolean(CyberKitJavascriptResult* javascriptResult)
 {
     auto* value = webkit_javascript_result_get_js_value(javascriptResult);
     g_assert_true(JSC_IS_VALUE(value));
@@ -424,14 +424,14 @@ bool WebViewTest::javascriptResultToBoolean(WebKitJavascriptResult* javascriptRe
     return jsc_value_to_boolean(value);
 }
 
-bool WebViewTest::javascriptResultIsNull(WebKitJavascriptResult* javascriptResult)
+bool WebViewTest::javascriptResultIsNull(CyberKitJavascriptResult* javascriptResult)
 {
     auto* value = webkit_javascript_result_get_js_value(javascriptResult);
     g_assert_true(JSC_IS_VALUE(value));
     return jsc_value_is_null(value);
 }
 
-bool WebViewTest::javascriptResultIsUndefined(WebKitJavascriptResult* javascriptResult)
+bool WebViewTest::javascriptResultIsUndefined(CyberKitJavascriptResult* javascriptResult)
 {
     auto* value = webkit_javascript_result_get_js_value(javascriptResult);
     g_assert_true(JSC_IS_VALUE(value));
@@ -451,7 +451,7 @@ bool WebViewTest::runWebProcessTest(const char* suiteName, const char* testName,
 
     GUniquePtr<char> script(g_strdup_printf("WebProcessTestRunner.runTest('%s/%s');", suiteName, testName));
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = runJavaScriptAndWaitUntilFinished(script.get(), &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = runJavaScriptAndWaitUntilFinished(script.get(), &error.outPtr());
     g_assert_no_error(error.get());
     loadURI("about:blank");
     waitUntilLoadFinished();

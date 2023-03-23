@@ -32,7 +32,7 @@
 #include "WebPageProxyIdentifier.h"
 #include <CyberCore/PageIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteRenderingBackendCreationParameters {
     RenderingBackendIdentifier identifier;
@@ -40,6 +40,6 @@ struct RemoteRenderingBackendCreationParameters {
     CyberCore::PageIdentifier pageID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

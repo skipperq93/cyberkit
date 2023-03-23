@@ -28,7 +28,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 bool WebFoundTextRange::operator==(const WebFoundTextRange& other) const
 {
@@ -70,4 +70,4 @@ std::optional<WebFoundTextRange> WebFoundTextRange::decode(IPC::Decoder& decoder
     return result;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

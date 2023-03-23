@@ -44,7 +44,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, RenderedImageFromDOMRange)
 {
@@ -72,4 +72,4 @@ TEST(CyberKitLegacy, RenderedImageFromDOMRange)
     EXPECT_TRUE([actualImageWithUserSelectNone.TIFFRepresentation isEqual:expectedImage.TIFFRepresentation]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

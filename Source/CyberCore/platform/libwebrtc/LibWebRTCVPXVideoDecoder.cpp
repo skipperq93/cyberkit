@@ -42,7 +42,7 @@ ALLOW_COMMA_BEGIN
 
 #include <webrtc/modules/video_coding/codecs/vp8/include/vp8.h>
 #include <webrtc/modules/video_coding/codecs/vp9/include/vp9.h>
-#include <webrtc/sdk/WebKit/WebKitDecoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitDecoder.h>
 #include <webrtc/system_wrappers/include/cpu_info.h>
 
 ALLOW_COMMA_END
@@ -129,7 +129,7 @@ void LibWebRTCVPXInternalVideoDecoder::decode(Span<const uint8_t> data, bool isK
     m_duration = duration;
 
     webrtc::EncodedImage image;
-    image.SetEncodedData(webrtc::WebKitEncodedImageBufferWrapper::create(const_cast<uint8_t*>(data.data()), data.size()));
+    image.SetEncodedData(webrtc::CyberKitEncodedImageBufferWrapper::create(const_cast<uint8_t*>(data.data()), data.size()));
     image._frameType = isKeyFrame ? webrtc::VideoFrameType::kVideoFrameKey : webrtc::VideoFrameType::kVideoFrameDelta;
 
     auto error = m_internalDecoder->Decode(image, false, 0);

@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUBufferBindingType.h>
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BufferBindingLayout {
     PAL::WebGPU::BufferBindingType type { PAL::WebGPU::BufferBindingType::Uniform };
@@ -39,6 +39,6 @@ struct BufferBindingLayout {
     PAL::WebGPU::Size64 minBindingSize { 0 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

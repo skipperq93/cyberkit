@@ -43,7 +43,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/Seconds.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace NetworkCache {
 
@@ -69,7 +69,7 @@ static void printSpeculativeLoadingDiagnosticMessageCounts()
 static void logSpeculativeLoadingDiagnosticMessage(NetworkProcess& networkProcess, const GlobalFrameID& frameID, const String& message)
 {
 #if !LOG_DISABLED
-    if (WebKit2LogNetworkCacheSpeculativePreloading.state == WTFLogChannelState::On)
+    if (CyberKit2LogNetworkCacheSpeculativePreloading.state == WTFLogChannelState::On)
         allSpeculativeLoadingDiagnosticMessages().add(message);
 #endif
     networkProcess.logDiagnosticMessage(frameID.webPageProxyID, CyberCore::DiagnosticLoggingKeys::networkCacheKey(), message, CyberCore::ShouldSample::Yes);
@@ -633,6 +633,6 @@ void SpeculativeLoadManager::retrieveSubresourcesEntry(const Key& storageKey, WT
 
 } // namespace NetworkCache
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)

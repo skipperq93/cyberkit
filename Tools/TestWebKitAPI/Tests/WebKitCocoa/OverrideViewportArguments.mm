@@ -34,7 +34,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-TEST(WebKit, OverrideViewportArguments)
+TEST(CyberKit, OverrideViewportArguments)
 {
     RetainPtr<TestWKWebView> webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)]);
 

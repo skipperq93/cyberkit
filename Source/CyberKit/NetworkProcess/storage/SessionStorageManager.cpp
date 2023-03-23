@@ -29,7 +29,7 @@
 #include "MemoryStorageArea.h"
 #include "StorageAreaRegistry.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 SessionStorageManager::SessionStorageManager(StorageAreaRegistry& registry)
     : m_registry(registry)
@@ -128,4 +128,4 @@ void SessionStorageManager::cloneStorageArea(StorageNamespaceIdentifier sourceNa
         addStorageArea(storageArea->clone(), targetNamespaceIdentifier);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

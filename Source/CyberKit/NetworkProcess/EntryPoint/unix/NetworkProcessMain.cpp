@@ -28,5 +28,5 @@
 
 int main(int argc, char** argv)
 {
-    return WebKit::NetworkProcessMain(argc, argv);
+    return CyberKit::NetworkProcessMain(argc, argv);
 }

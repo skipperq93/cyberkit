@@ -32,12 +32,12 @@
 #include <optional>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct FragmentState : public ProgrammableStage {
     Vector<std::optional<ColorTargetState>> targets;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

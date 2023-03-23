@@ -42,7 +42,7 @@
 #include <QuartzCore/QuartzCore.h>
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void testIdentity(const CyberCore::TransformationMatrix& transform)
 {

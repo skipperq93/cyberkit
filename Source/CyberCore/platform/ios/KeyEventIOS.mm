@@ -244,9 +244,9 @@ int windowsKeyCodeForCharCode(unichar charCode)
     case 'y': case 'Y': return VK_Y;
     case 'z': case 'Z': return VK_Z;
 
-    case 0x1B: return VK_ESCAPE; // WebKit generated code for Escape.
+    case 0x1B: return VK_ESCAPE; // CyberKit generated code for Escape.
 
-    // WebKit uses Unicode PUA codes in the OpenStep reserve range for some special keys.
+    // CyberKit uses Unicode PUA codes in the OpenStep reserve range for some special keys.
     case NSUpArrowFunctionKey: return VK_UP;
     case NSDownArrowFunctionKey: return VK_DOWN;
     case NSLeftArrowFunctionKey: return VK_LEFT;
@@ -274,7 +274,7 @@ int windowsKeyCodeForCharCode(unichar charCode)
 static bool isFunctionKey(UChar charCode)
 {
     switch (charCode) {
-    // WebKit uses Unicode PUA codes in the OpenStep reserve range for some special keys.
+    // CyberKit uses Unicode PUA codes in the OpenStep reserve range for some special keys.
     case NSUpArrowFunctionKey:
     case NSDownArrowFunctionKey:
     case NSLeftArrowFunctionKey:

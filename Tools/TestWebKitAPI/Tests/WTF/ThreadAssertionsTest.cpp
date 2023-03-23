@@ -30,7 +30,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace {
 class MyClass {
 public:
@@ -93,4 +93,4 @@ TEST(WTF_ThreadAssertions, TestMainRunLoopNamedAssertion)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

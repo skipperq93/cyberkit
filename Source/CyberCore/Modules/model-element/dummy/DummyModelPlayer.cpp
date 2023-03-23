@@ -46,7 +46,7 @@ DummyModelPlayer::~DummyModelPlayer() = default;
 void DummyModelPlayer::load(Model& model, LayoutSize)
 {
     if (m_client)
-        m_client->didFailLoading(*this, ResourceError { errorDomainWebKitInternal, 0, model.url(), "Trying to load model via DummyModelPlayer"_s });
+        m_client->didFailLoading(*this, ResourceError { errorDomainCyberKitInternal, 0, model.url(), "Trying to load model via DummyModelPlayer"_s });
 }
 
 PlatformLayer* DummyModelPlayer::layer()

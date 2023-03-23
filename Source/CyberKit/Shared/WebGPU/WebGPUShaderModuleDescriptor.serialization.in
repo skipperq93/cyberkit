@@ -21,8 +21,8 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::ShaderModuleDescriptor : WebKit::WebGPU::ObjectDescriptorBase {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::ShaderModuleDescriptor : CyberKit::WebGPU::ObjectDescriptorBase {
     String code;
-    Vector<KeyValuePair<String, WebKit::WebGPU::ShaderModuleCompilationHint>> hints;
+    Vector<KeyValuePair<String, CyberKit::WebGPU::ShaderModuleCompilationHint>> hints;
 };
 #endif

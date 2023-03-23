@@ -27,7 +27,7 @@
 
 #include <wtf/text/StringHasher.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static const LChar nullLChars[2] = { 0, 0 };
 static const UChar nullUChars[2] = { 0, 0 };
@@ -462,4 +462,4 @@ TEST(WTF, StringHasher_computeHashAndMaskTop8Bits)
     ASSERT_EQ(testBHash5 & 0xFFFFFF, StringHasher::computeHashAndMaskTop8Bits(testBUChars, 5));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -36,7 +36,7 @@
 #include <pal/graphics/WebGPU/WebGPUPresentationContext.h>
 #include <pal/graphics/WebGPU/WebGPUTexture.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemotePresentationContext::RemotePresentationContext(PAL::WebGPU::PresentationContext& presentationContext, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(presentationContext)
@@ -85,6 +85,6 @@ void RemotePresentationContext::getCurrentTexture(WebGPUIdentifier identifier)
     m_objectHeap.addObject(identifier, remoteTexture);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -38,7 +38,7 @@ std::atomic<int> wtfStringCopyCount;
 #define MAYBE_COPY_COUNT_TEST(test) test
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #define EXPECT_N_WTF_STRING_COPIES(count, expr) \
     do { \
@@ -274,4 +274,4 @@ TEST(WTF, ConcatenateCharacterArrayAndEmptyString)
     ASSERT_TRUE(concatenation8 == String(lcharArray, 4));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -54,7 +54,7 @@ public:
 private:
     static constexpr size_t minimumMessageSize = StreamConnectionEncoder::minimumMessageSize;
     static constexpr size_t messageAlignment = StreamConnectionEncoder::messageAlignment;
-    explicit StreamClientConnectionBuffer(Ref<WebKit::SharedMemory>);
+    explicit StreamClientConnectionBuffer(Ref<CyberKit::SharedMemory>);
 
     size_t size(size_t offset, size_t limit);
     size_t alignOffset(size_t offset) const { return StreamConnectionBuffer::alignOffset<messageAlignment>(offset, minimumMessageSize); }
@@ -84,13 +84,13 @@ inline std::optional<StreamClientConnectionBuffer> StreamClientConnectionBuffer:
         return std::nullopt;
 
     auto size = (static_cast<size_t>(1) << dataSizeLog2) + headerSize();
-    auto memory = WebKit::SharedMemory::allocate(size);
+    auto memory = CyberKit::SharedMemory::allocate(size);
     if (!memory)
         return std::nullopt;
     return StreamClientConnectionBuffer { memory.releaseNonNull() };
 }
 
-inline StreamClientConnectionBuffer::StreamClientConnectionBuffer(Ref<WebKit::SharedMemory> memory)
+inline StreamClientConnectionBuffer::StreamClientConnectionBuffer(Ref<CyberKit::SharedMemory> memory)
     : StreamConnectionBuffer(WTFMove(memory))
 {
     RELEASE_ASSERT_WITH_SECURITY_IMPLICATION(sharedMemorySizeIsValid(m_sharedMemory->size()));

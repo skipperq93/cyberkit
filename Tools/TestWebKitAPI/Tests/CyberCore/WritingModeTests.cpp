@@ -34,7 +34,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 constexpr std::array<TextFlow, 8> allTextFlows = {
     InlineEastBlockSouth,

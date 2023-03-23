@@ -29,7 +29,7 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(WEBGL) && USE(LIBGBM)
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteGraphicsContextGLGBM final : public RemoteGraphicsContextGL {
 public:
@@ -73,6 +73,6 @@ Ref<RemoteGraphicsContextGL> RemoteGraphicsContextGL::create(GPUConnectionToWebP
     return instance;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEBGL) && USE(LIBGBM)

@@ -31,7 +31,7 @@
 #include <CyberCore/CurlStreamScheduler.h>
 #include <CyberCore/DeprecatedGlobalSettings.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebSocketTask::WebSocketTask(NetworkSocketChannel& channel, const CyberCore::ResourceRequest& request, const String& protocol)
     : m_channel(channel)
@@ -442,4 +442,4 @@ void WebSocketTask::destructStream()
     m_streamID = CyberCore::invalidCurlStreamID;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

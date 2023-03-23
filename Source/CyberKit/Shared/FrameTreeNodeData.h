@@ -27,7 +27,7 @@
 
 #include "FrameInfoData.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct FrameTreeNodeData {
     FrameInfoData info;

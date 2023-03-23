@@ -2326,7 +2326,7 @@ WebGLAny WebGLRenderingContextBase::getParameter(GCGLenum pname)
     case GraphicsContextGL::RENDERBUFFER_BINDING:
         return m_renderbufferBinding;
     case GraphicsContextGL::RENDERER:
-        return "WebKit WebGL"_str;
+        return "CyberKit WebGL"_str;
     case GraphicsContextGL::SAMPLE_ALPHA_TO_COVERAGE:
         return getBooleanParameter(pname);
     case GraphicsContextGL::SAMPLE_BUFFERS:
@@ -2398,7 +2398,7 @@ WebGLAny WebGLRenderingContextBase::getParameter(GCGLenum pname)
     case GraphicsContextGL::UNPACK_COLORSPACE_CONVERSION_WEBGL:
         return m_unpackColorspaceConversion;
     case GraphicsContextGL::VENDOR:
-        return "WebKit"_str;
+        return "CyberKit"_str;
     case GraphicsContextGL::VERSION:
         return "WebGL 1.0"_str;
     case GraphicsContextGL::VIEWPORT:

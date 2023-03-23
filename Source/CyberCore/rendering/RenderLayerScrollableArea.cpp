@@ -132,7 +132,7 @@ bool RenderLayerScrollableArea::shouldPlaceVerticalScrollbarOnLeft() const
 #if ENABLE(IOS_TOUCH_EVENTS)
 bool RenderLayerScrollableArea::handleTouchEvent(const PlatformTouchEvent& touchEvent)
 {
-    // If we have accelerated scrolling, let the scrolling be handled outside of WebKit.
+    // If we have accelerated scrolling, let the scrolling be handled outside of CyberKit.
     if (hasCompositedScrollableOverflow())
         return false;
 

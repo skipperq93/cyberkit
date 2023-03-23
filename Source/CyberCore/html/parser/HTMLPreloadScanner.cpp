@@ -166,7 +166,7 @@ public:
         request->setScriptIsAsync(m_scriptIsAsync);
 
         // According to the spec, the module tag ignores the "charset" attribute as the same to the worker's
-        // importScript. But WebKit supports the "charset" for importScript intentionally. So to be consistent,
+        // importScript. But CyberKit supports the "charset" for importScript intentionally. So to be consistent,
         // even for the module tags, we handle the "charset" attribute.
         request->setCharset(charset());
         return request;

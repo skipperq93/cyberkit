@@ -34,7 +34,7 @@ namespace rtc {
 class SocketAddress;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkRTCTCPSocketCocoa final : public NetworkRTCProvider::Socket {
     WTF_MAKE_FAST_ALLOCATED;
@@ -60,6 +60,6 @@ private:
     bool m_isSTUN { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC) && PLATFORM(COCOA)

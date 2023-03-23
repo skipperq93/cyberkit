@@ -36,7 +36,7 @@ class Encoder;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class CGDisplayList {
     WTF_MAKE_NONCOPYABLE(CGDisplayList);

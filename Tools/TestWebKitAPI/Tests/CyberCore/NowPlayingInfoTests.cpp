@@ -27,7 +27,7 @@
 
 #include <CyberCore/NowPlayingInfo.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void testEmptyArtwork(const CyberCore::NowPlayingInfoArtwork& artwork)
 {

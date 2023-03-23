@@ -29,10 +29,10 @@
 
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ExternalTextureBindingLayout { };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

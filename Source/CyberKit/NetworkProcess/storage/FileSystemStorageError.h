@@ -28,7 +28,7 @@
 #include <CyberCore/ExceptionOr.h>
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class FileSystemStorageError : uint8_t {
     AccessHandleActive,
@@ -73,21 +73,21 @@ inline CyberCore::ExceptionOr<void> convertToExceptionOr(std::optional<FileSyste
     return convertToException(*error);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::FileSystemStorageError> {
+template<> struct EnumTraits<CyberKit::FileSystemStorageError> {
     using values = EnumValues<
-        WebKit::FileSystemStorageError,
-        WebKit::FileSystemStorageError::AccessHandleActive,
-        WebKit::FileSystemStorageError::BackendNotSupported,
-        WebKit::FileSystemStorageError::FileNotFound,
-        WebKit::FileSystemStorageError::InvalidModification,
-        WebKit::FileSystemStorageError::InvalidName,
-        WebKit::FileSystemStorageError::InvalidState,
-        WebKit::FileSystemStorageError::TypeMismatch,
-        WebKit::FileSystemStorageError::Unknown
+        CyberKit::FileSystemStorageError,
+        CyberKit::FileSystemStorageError::AccessHandleActive,
+        CyberKit::FileSystemStorageError::BackendNotSupported,
+        CyberKit::FileSystemStorageError::FileNotFound,
+        CyberKit::FileSystemStorageError::InvalidModification,
+        CyberKit::FileSystemStorageError::InvalidName,
+        CyberKit::FileSystemStorageError::InvalidState,
+        CyberKit::FileSystemStorageError::TypeMismatch,
+        CyberKit::FileSystemStorageError::Unknown
     >;
 };
 

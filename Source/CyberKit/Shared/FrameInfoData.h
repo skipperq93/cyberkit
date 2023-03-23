@@ -29,7 +29,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct FrameInfoData {
     bool isMainFrame { false };

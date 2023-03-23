@@ -36,7 +36,7 @@
 #include "unix/BreakpadExceptionHandler.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 AuxiliaryProcessMainCommon::AuxiliaryProcessMainCommon()
 {
@@ -69,4 +69,4 @@ void AuxiliaryProcess::platformInitialize(const AuxiliaryProcessInitializationPa
     RELEASE_ASSERT(!sigaction(SIGPIPE, &signalAction, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

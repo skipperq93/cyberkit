@@ -31,7 +31,7 @@
 #include <CyberCore/GLContext.h>
 #include <CyberCore/TextureMapperGL.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WCSceneContext::WCSceneContext(uint64_t nativeWindow)
 {
@@ -55,6 +55,6 @@ void WCSceneContext::swapBuffers()
     m_glContext->swapBuffers();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

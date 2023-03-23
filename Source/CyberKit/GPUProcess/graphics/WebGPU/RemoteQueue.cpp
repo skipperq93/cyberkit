@@ -33,7 +33,7 @@
 #include "WebGPUObjectHeap.h"
 #include <pal/graphics/WebGPU/WebGPUQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteQueue::RemoteQueue(PAL::WebGPU::Queue& queue, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(queue)
@@ -125,6 +125,6 @@ void RemoteQueue::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

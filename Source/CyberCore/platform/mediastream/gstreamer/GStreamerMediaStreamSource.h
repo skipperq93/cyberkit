@@ -34,30 +34,30 @@ class MediaStreamTrackPrivate;
 #define WEBKIT_MEDIA_TRACK_TAG_HEIGHT "webkit-media-stream-height"
 #define WEBKIT_MEDIA_TRACK_TAG_KIND "webkit-media-stream-kind"
 
-#define WEBKIT_MEDIA_STREAM_SRC(o) (G_TYPE_CHECK_INSTANCE_CAST((o), WEBKIT_TYPE_MEDIA_STREAM_SRC, WebKitMediaStreamSrc))
+#define WEBKIT_MEDIA_STREAM_SRC(o) (G_TYPE_CHECK_INSTANCE_CAST((o), WEBKIT_TYPE_MEDIA_STREAM_SRC, CyberKitMediaStreamSrc))
 #define WEBKIT_IS_MEDIA_STREAM_SRC(o) (G_TYPE_CHECK_INSTANCE_TYPE((o), WEBKIT_TYPE_MEDIA_STREAM_SRC))
-#define WEBKIT_MEDIA_STREAM_SRC_CAST(o) ((WebKitMediaStreamSrc*) o)
+#define WEBKIT_MEDIA_STREAM_SRC_CAST(o) ((CyberKitMediaStreamSrc*) o)
 
 #define WEBKIT_TYPE_MEDIA_STREAM_SRC (webkit_media_stream_src_get_type())
 GType webkit_media_stream_src_get_type(void);
 
-typedef struct _WebKitMediaStreamSrc WebKitMediaStreamSrc;
-typedef struct _WebKitMediaStreamSrcClass WebKitMediaStreamSrcClass;
-typedef struct _WebKitMediaStreamSrcPrivate WebKitMediaStreamSrcPrivate;
+typedef struct _CyberKitMediaStreamSrc CyberKitMediaStreamSrc;
+typedef struct _CyberKitMediaStreamSrcClass CyberKitMediaStreamSrcClass;
+typedef struct _CyberKitMediaStreamSrcPrivate CyberKitMediaStreamSrcPrivate;
 
-struct _WebKitMediaStreamSrc {
+struct _CyberKitMediaStreamSrc {
     GstBin parent;
-    WebKitMediaStreamSrcPrivate* priv;
+    CyberKitMediaStreamSrcPrivate* priv;
 };
 
-struct _WebKitMediaStreamSrcClass {
+struct _CyberKitMediaStreamSrcClass {
     GstBinClass parentClass;
 };
 
 GstElement* webkitMediaStreamSrcNew();
-void webkitMediaStreamSrcSetStream(WebKitMediaStreamSrc*, CyberCore::MediaStreamPrivate*, bool isVideoPlayer);
-void webkitMediaStreamSrcAddTrack(WebKitMediaStreamSrc*, CyberCore::MediaStreamTrackPrivate*, bool onlyTrack);
-void webkitMediaStreamSrcConfigureAudioTracks(WebKitMediaStreamSrc*, float volume, bool isMuted, bool isPlaying);
-void webkitMediaStreamSrcSignalEndOfStream(WebKitMediaStreamSrc*);
+void webkitMediaStreamSrcSetStream(CyberKitMediaStreamSrc*, CyberCore::MediaStreamPrivate*, bool isVideoPlayer);
+void webkitMediaStreamSrcAddTrack(CyberKitMediaStreamSrc*, CyberCore::MediaStreamTrackPrivate*, bool onlyTrack);
+void webkitMediaStreamSrcConfigureAudioTracks(CyberKitMediaStreamSrc*, float volume, bool isMuted, bool isPlaying);
+void webkitMediaStreamSrcSignalEndOfStream(CyberKitMediaStreamSrc*);
 
 #endif // ENABLE(VIDEO) && ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

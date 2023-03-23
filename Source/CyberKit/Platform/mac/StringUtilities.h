@@ -28,7 +28,7 @@
 #import <CyberKit/WKDeclarationSpecifiers.h>
 #import <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #ifdef __OBJC__
 

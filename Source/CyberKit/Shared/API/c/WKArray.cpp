@@ -31,7 +31,7 @@
 
 WKTypeID WKArrayGetTypeID()
 {
-    return WebKit::toAPI(API::Array::APIType);
+    return CyberKit::toAPI(API::Array::APIType);
 }
 
 WKArrayRef WKArrayCreate(WKTypeRef* values, size_t numberOfValues)
@@ -40,9 +40,9 @@ WKArrayRef WKArrayCreate(WKTypeRef* values, size_t numberOfValues)
     elements.reserveInitialCapacity(numberOfValues);
 
     for (size_t i = 0; i < numberOfValues; ++i)
-        elements.uncheckedAppend(WebKit::toImpl(values[i]));
+        elements.uncheckedAppend(CyberKit::toImpl(values[i]));
 
-    return WebKit::toAPI(&API::Array::create(WTFMove(elements)).leakRef());
+    return CyberKit::toAPI(&API::Array::create(WTFMove(elements)).leakRef());
 }
 
 WKArrayRef WKArrayCreateAdoptingValues(WKTypeRef* values, size_t numberOfValues)
@@ -51,17 +51,17 @@ WKArrayRef WKArrayCreateAdoptingValues(WKTypeRef* values, size_t numberOfValues)
     elements.reserveInitialCapacity(numberOfValues);
 
     for (size_t i = 0; i < numberOfValues; ++i)
-        elements.uncheckedAppend(adoptRef(WebKit::toImpl(values[i])));
+        elements.uncheckedAppend(adoptRef(CyberKit::toImpl(values[i])));
 
-    return WebKit::toAPI(&API::Array::create(WTFMove(elements)).leakRef());
+    return CyberKit::toAPI(&API::Array::create(WTFMove(elements)).leakRef());
 }
 
 WKTypeRef WKArrayGetItemAtIndex(WKArrayRef arrayRef, size_t index)
 {
-    return WebKit::toAPI(WebKit::toImpl(arrayRef)->at(index));
+    return CyberKit::toAPI(CyberKit::toImpl(arrayRef)->at(index));
 }
 
 size_t WKArrayGetSize(WKArrayRef arrayRef)
 {
-    return WebKit::toImpl(arrayRef)->size();
+    return CyberKit::toImpl(arrayRef)->size();
 }

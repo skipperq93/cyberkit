@@ -34,7 +34,7 @@ typedef struct _GtkAction GtkAction;
 #endif // PLATFORM(GTK) && !USE(GTK4)
 typedef struct _GAction GAction;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItemGlib final : public WebContextMenuItemData {
     WTF_MAKE_FAST_ALLOCATED;
@@ -70,4 +70,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -30,7 +30,7 @@
 
 #include "WebPreferencesKeys.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 <%- for @pref in @exposedPreferences do -%>
 void WebPreferences::set<%= @pref.name %>(const <%= @pref.type %>& value)

@@ -50,11 +50,11 @@ public:
 
         encoder << *m_data;
 
-        Vector<WebKit::SandboxExtension::Handle> sandboxExtensionHandles;
+        Vector<CyberKit::SandboxExtension::Handle> sandboxExtensionHandles;
         for (auto& element : m_data->elements()) {
             if (auto* fileData = std::get_if<CyberCore::FormDataElement::EncodedFileData>(&element.data)) {
                 const String& path = fileData->filename;
-                if (auto handle = WebKit::SandboxExtension::createHandle(path, WebKit::SandboxExtension::Type::ReadOnly))
+                if (auto handle = CyberKit::SandboxExtension::createHandle(path, CyberKit::SandboxExtension::Type::ReadOnly))
                     sandboxExtensionHandles.append(WTFMove(*handle));
             }
         }
@@ -75,12 +75,12 @@ public:
         if (!formData)
             return std::nullopt;
 
-        std::optional<Vector<WebKit::SandboxExtension::Handle>> sandboxExtensionHandles;
+        std::optional<Vector<CyberKit::SandboxExtension::Handle>> sandboxExtensionHandles;
         decoder >> sandboxExtensionHandles;
         if (!sandboxExtensionHandles)
             return std::nullopt;
 
-        WebKit::SandboxExtension::consumePermanently(*sandboxExtensionHandles);
+        CyberKit::SandboxExtension::consumePermanently(*sandboxExtensionHandles);
 
         return FormDataReference { WTFMove(*formData) };
     }

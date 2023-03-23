@@ -36,7 +36,7 @@ namespace CyberCore {
 struct ClientOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class StorageError : uint8_t {
     Database,
@@ -82,4 +82,4 @@ private:
     HashMap<IPC::Connection::UniqueID, StorageAreaMapIdentifier> m_listeners;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

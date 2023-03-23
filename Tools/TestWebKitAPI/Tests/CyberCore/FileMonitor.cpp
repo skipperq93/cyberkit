@@ -41,7 +41,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 const String FileMonitorTestData("This is a test"_s);
 const String FileMonitorRevisedData("This is some changed text for the test"_s);

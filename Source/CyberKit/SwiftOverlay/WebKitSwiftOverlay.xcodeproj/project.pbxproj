@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D20070C22F4EB72008DF640 /* libswiftWebKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D20067522F2652E008DF640 /* libswiftWebKit.dylib */; };
-		7D20071B22F4ECCA008DF640 /* libswiftWebKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D20068722F26721008DF640 /* libswiftWebKit.dylib */; };
-		B3A5D38F23F78F5400B17727 /* WebKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D38823F78F5400B17727 /* WebKitTests.swift */; };
-		B3A5D39023F78F5400B17727 /* WebKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D38823F78F5400B17727 /* WebKitTests.swift */; };
-		B3A5D39223F790DB00B17727 /* WebKitSwiftOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D39123F790DB00B17727 /* WebKitSwiftOverlay.swift */; };
-		B3A5D39323F790DB00B17727 /* WebKitSwiftOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D39123F790DB00B17727 /* WebKitSwiftOverlay.swift */; };
+		7D20070C22F4EB72008DF640 /* libswiftCyberKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D20067522F2652E008DF640 /* libswiftCyberKit.dylib */; };
+		7D20071B22F4ECCA008DF640 /* libswiftCyberKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D20068722F26721008DF640 /* libswiftCyberKit.dylib */; };
+		B3A5D38F23F78F5400B17727 /* CyberKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D38823F78F5400B17727 /* CyberKitTests.swift */; };
+		B3A5D39023F78F5400B17727 /* CyberKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D38823F78F5400B17727 /* CyberKitTests.swift */; };
+		B3A5D39223F790DB00B17727 /* CyberKitSwiftOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D39123F790DB00B17727 /* CyberKitSwiftOverlay.swift */; };
+		B3A5D39323F790DB00B17727 /* CyberKitSwiftOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A5D39123F790DB00B17727 /* CyberKitSwiftOverlay.swift */; };
 		B3B8FECC250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FECB250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift */; };
 		B3B8FECD250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FECB250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift */; };
 		B3B8FEEF2502BAA0006172CA /* ObjectiveCBlockConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FEEE2502BAA0006172CA /* ObjectiveCBlockConversions.swift */; };
@@ -25,31 +25,31 @@
 			containerPortal = 7D81A8D522E936E700739BB9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7D20067422F2652E008DF640;
-			remoteInfo = "WebKit-macOS";
+			remoteInfo = "CyberKit-macOS";
 		};
 		7D20071C22F4ECCA008DF640 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7D81A8D522E936E700739BB9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7D20068622F26721008DF640;
-			remoteInfo = "WebKit-iOS";
+			remoteInfo = "CyberKit-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D20067522F2652E008DF640 /* libswiftWebKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libswiftWebKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D20068722F26721008DF640 /* libswiftWebKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libswiftWebKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D20070722F4EB72008DF640 /* WebKitSwiftOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebKitSwiftOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D20071622F4ECCA008DF640 /* WebKitSwiftOverlayTests-maccatalyst.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WebKitSwiftOverlayTests-maccatalyst.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3A5D38823F78F5400B17727 /* WebKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebKitTests.swift; sourceTree = "<group>"; };
-		B3A5D39123F790DB00B17727 /* WebKitSwiftOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebKitSwiftOverlay.swift; path = ../UIProcess/API/Cocoa/WebKitSwiftOverlay.swift; sourceTree = SOURCE_ROOT; };
-		B3A5D39423F790E100B17727 /* WebKitSwiftOverlay.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WebKitSwiftOverlay.xcconfig; sourceTree = "<group>"; };
+		7D20067522F2652E008DF640 /* libswiftCyberKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libswiftCyberKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D20068722F26721008DF640 /* libswiftCyberKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libswiftCyberKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D20070722F4EB72008DF640 /* CyberKitSwiftOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CyberKitSwiftOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D20071622F4ECCA008DF640 /* CyberKitSwiftOverlayTests-maccatalyst.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CyberKitSwiftOverlayTests-maccatalyst.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3A5D38823F78F5400B17727 /* CyberKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyberKitTests.swift; sourceTree = "<group>"; };
+		B3A5D39123F790DB00B17727 /* CyberKitSwiftOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CyberKitSwiftOverlay.swift; path = ../UIProcess/API/Cocoa/CyberKitSwiftOverlay.swift; sourceTree = SOURCE_ROOT; };
+		B3A5D39423F790E100B17727 /* CyberKitSwiftOverlay.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CyberKitSwiftOverlay.xcconfig; sourceTree = "<group>"; };
 		B3A5D39523F790E100B17727 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
-		B3A5D39623F790E100B17727 /* WebKitSwiftOverlay-maccatalyst.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "WebKitSwiftOverlay-maccatalyst.xcconfig"; sourceTree = "<group>"; };
-		B3A5D39723F790E100B17727 /* WebKitSwiftOverlayTests-maccatalyst.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "WebKitSwiftOverlayTests-maccatalyst.xcconfig"; sourceTree = "<group>"; };
-		B3A5D39823F790E100B17727 /* WebKitSwiftOverlayTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WebKitSwiftOverlayTests.xcconfig; sourceTree = "<group>"; };
+		B3A5D39623F790E100B17727 /* CyberKitSwiftOverlay-maccatalyst.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CyberKitSwiftOverlay-maccatalyst.xcconfig"; sourceTree = "<group>"; };
+		B3A5D39723F790E100B17727 /* CyberKitSwiftOverlayTests-maccatalyst.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CyberKitSwiftOverlayTests-maccatalyst.xcconfig"; sourceTree = "<group>"; };
+		B3A5D39823F790E100B17727 /* CyberKitSwiftOverlayTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CyberKitSwiftOverlayTests.xcconfig; sourceTree = "<group>"; };
 		B3A5D39923F790E100B17727 /* install-swiftmodules.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "install-swiftmodules.sh"; sourceTree = "<group>"; };
-		B3A5D39A23F790E700B17727 /* WebKitSwiftOverlayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WebKitSwiftOverlayTests-Info.plist"; sourceTree = "<group>"; };
+		B3A5D39A23F790E700B17727 /* CyberKitSwiftOverlayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CyberKitSwiftOverlayTests-Info.plist"; sourceTree = "<group>"; };
 		B3B8FECB250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptToSwiftTypeConversions.swift; sourceTree = "<group>"; };
 		B3B8FEEE2502BAA0006172CA /* ObjectiveCBlockConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveCBlockConversions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D20070C22F4EB72008DF640 /* libswiftWebKit.dylib in Frameworks */,
+				7D20070C22F4EB72008DF640 /* libswiftCyberKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D20071B22F4ECCA008DF640 /* libswiftWebKit.dylib in Frameworks */,
+				7D20071B22F4ECCA008DF640 /* libswiftCyberKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			children = (
 				B3A5D39923F790E100B17727 /* install-swiftmodules.sh */,
 				B3B8FEEE2502BAA0006172CA /* ObjectiveCBlockConversions.swift */,
-				B3A5D39123F790DB00B17727 /* WebKitSwiftOverlay.swift */,
+				B3A5D39123F790DB00B17727 /* CyberKitSwiftOverlay.swift */,
 			);
 			name = "Swift Overlay";
 			path = SwiftOverlay;
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				B3B8FECB250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift */,
-				B3A5D39A23F790E700B17727 /* WebKitSwiftOverlayTests-Info.plist */,
-				B3A5D38823F78F5400B17727 /* WebKitTests.swift */,
+				B3A5D39A23F790E700B17727 /* CyberKitSwiftOverlayTests-Info.plist */,
+				B3A5D38823F78F5400B17727 /* CyberKitTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -130,10 +130,10 @@
 		7D81A8DE22E936E700739BB9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D20067522F2652E008DF640 /* libswiftWebKit.dylib */,
-				7D20068722F26721008DF640 /* libswiftWebKit.dylib */,
-				7D20071622F4ECCA008DF640 /* WebKitSwiftOverlayTests-maccatalyst.xctest */,
-				7D20070722F4EB72008DF640 /* WebKitSwiftOverlayTests.xctest */,
+				7D20067522F2652E008DF640 /* libswiftCyberKit.dylib */,
+				7D20068722F26721008DF640 /* libswiftCyberKit.dylib */,
+				7D20071622F4ECCA008DF640 /* CyberKitSwiftOverlayTests-maccatalyst.xctest */,
+				7D20070722F4EB72008DF640 /* CyberKitSwiftOverlayTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,10 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				B3A5D39523F790E100B17727 /* Base.xcconfig */,
-				B3A5D39623F790E100B17727 /* WebKitSwiftOverlay-maccatalyst.xcconfig */,
-				B3A5D39423F790E100B17727 /* WebKitSwiftOverlay.xcconfig */,
-				B3A5D39723F790E100B17727 /* WebKitSwiftOverlayTests-maccatalyst.xcconfig */,
-				B3A5D39823F790E100B17727 /* WebKitSwiftOverlayTests.xcconfig */,
+				B3A5D39623F790E100B17727 /* CyberKitSwiftOverlay-maccatalyst.xcconfig */,
+				B3A5D39423F790E100B17727 /* CyberKitSwiftOverlay.xcconfig */,
+				B3A5D39723F790E100B17727 /* CyberKitSwiftOverlayTests-maccatalyst.xcconfig */,
+				B3A5D39823F790E100B17727 /* CyberKitSwiftOverlayTests.xcconfig */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -170,9 +170,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7D20067422F2652E008DF640 /* WebKitSwiftOverlay */ = {
+		7D20067422F2652E008DF640 /* CyberKitSwiftOverlay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D20067B22F2652E008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlay" */;
+			buildConfigurationList = 7D20067B22F2652E008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlay" */;
 			buildPhases = (
 				7D20067122F2652E008DF640 /* Headers */,
 				7D20067222F2652E008DF640 /* Sources */,
@@ -183,14 +183,14 @@
 			);
 			dependencies = (
 			);
-			name = WebKitSwiftOverlay;
+			name = CyberKitSwiftOverlay;
 			productName = SafariServices;
-			productReference = 7D20067522F2652E008DF640 /* libswiftWebKit.dylib */;
+			productReference = 7D20067522F2652E008DF640 /* libswiftCyberKit.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		7D20068622F26721008DF640 /* WebKitSwiftOverlay-maccatalyst */ = {
+		7D20068622F26721008DF640 /* CyberKitSwiftOverlay-maccatalyst */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D20068D22F26721008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlay-maccatalyst" */;
+			buildConfigurationList = 7D20068D22F26721008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlay-maccatalyst" */;
 			buildPhases = (
 				7D20068322F26721008DF640 /* Headers */,
 				7D20068422F26721008DF640 /* Sources */,
@@ -201,14 +201,14 @@
 			);
 			dependencies = (
 			);
-			name = "WebKitSwiftOverlay-maccatalyst";
-			productName = "WebKit-iOS";
-			productReference = 7D20068722F26721008DF640 /* libswiftWebKit.dylib */;
+			name = "CyberKitSwiftOverlay-maccatalyst";
+			productName = "CyberKit-iOS";
+			productReference = 7D20068722F26721008DF640 /* libswiftCyberKit.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		7D20070622F4EB72008DF640 /* WebKitSwiftOverlayTests */ = {
+		7D20070622F4EB72008DF640 /* CyberKitSwiftOverlayTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D20070F22F4EB72008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlayTests" */;
+			buildConfigurationList = 7D20070F22F4EB72008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlayTests" */;
 			buildPhases = (
 				7D20070322F4EB72008DF640 /* Sources */,
 				7D20070422F4EB72008DF640 /* Frameworks */,
@@ -219,14 +219,14 @@
 			dependencies = (
 				7D20070E22F4EB72008DF640 /* PBXTargetDependency */,
 			);
-			name = WebKitSwiftOverlayTests;
-			productName = WebKitTests;
-			productReference = 7D20070722F4EB72008DF640 /* WebKitSwiftOverlayTests.xctest */;
+			name = CyberKitSwiftOverlayTests;
+			productName = CyberKitTests;
+			productReference = 7D20070722F4EB72008DF640 /* CyberKitSwiftOverlayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7D20071522F4ECCA008DF640 /* WebKitSwiftOverlayTests-maccatalyst */ = {
+		7D20071522F4ECCA008DF640 /* CyberKitSwiftOverlayTests-maccatalyst */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D20071E22F4ECCA008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlayTests-maccatalyst" */;
+			buildConfigurationList = 7D20071E22F4ECCA008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlayTests-maccatalyst" */;
 			buildPhases = (
 				7D20071222F4ECCA008DF640 /* Sources */,
 				7D20071322F4ECCA008DF640 /* Frameworks */,
@@ -237,9 +237,9 @@
 			dependencies = (
 				7D20071D22F4ECCA008DF640 /* PBXTargetDependency */,
 			);
-			name = "WebKitSwiftOverlayTests-maccatalyst";
-			productName = "WebKitTests-iOS";
-			productReference = 7D20071622F4ECCA008DF640 /* WebKitSwiftOverlayTests-maccatalyst.xctest */;
+			name = "CyberKitSwiftOverlayTests-maccatalyst";
+			productName = "CyberKitTests-iOS";
+			productReference = 7D20071622F4ECCA008DF640 /* CyberKitSwiftOverlayTests-maccatalyst.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -270,7 +270,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7D81A8D822E936E700739BB9 /* Build configuration list for PBXProject "WebKitSwiftOverlay" */;
+			buildConfigurationList = 7D81A8D822E936E700739BB9 /* Build configuration list for PBXProject "CyberKitSwiftOverlay" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -283,10 +283,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7D20067422F2652E008DF640 /* WebKitSwiftOverlay */,
-				7D20068622F26721008DF640 /* WebKitSwiftOverlay-maccatalyst */,
-				7D20070622F4EB72008DF640 /* WebKitSwiftOverlayTests */,
-				7D20071522F4ECCA008DF640 /* WebKitSwiftOverlayTests-maccatalyst */,
+				7D20067422F2652E008DF640 /* CyberKitSwiftOverlay */,
+				7D20068622F26721008DF640 /* CyberKitSwiftOverlay-maccatalyst */,
+				7D20070622F4EB72008DF640 /* CyberKitSwiftOverlayTests */,
+				7D20071522F4ECCA008DF640 /* CyberKitSwiftOverlayTests-maccatalyst */,
 			);
 		};
 /* End PBXProject section */
@@ -353,7 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B8FEEF2502BAA0006172CA /* ObjectiveCBlockConversions.swift in Sources */,
-				B3A5D39223F790DB00B17727 /* WebKitSwiftOverlay.swift in Sources */,
+				B3A5D39223F790DB00B17727 /* CyberKitSwiftOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B8FEF02502BAA0006172CA /* ObjectiveCBlockConversions.swift in Sources */,
-				B3A5D39323F790DB00B17727 /* WebKitSwiftOverlay.swift in Sources */,
+				B3A5D39323F790DB00B17727 /* CyberKitSwiftOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B8FECC250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift in Sources */,
-				B3A5D38F23F78F5400B17727 /* WebKitTests.swift in Sources */,
+				B3A5D38F23F78F5400B17727 /* CyberKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B8FECD250090B1006172CA /* JavaScriptToSwiftTypeConversions.swift in Sources */,
-				B3A5D39023F78F5400B17727 /* WebKitTests.swift in Sources */,
+				B3A5D39023F78F5400B17727 /* CyberKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,12 +389,12 @@
 /* Begin PBXTargetDependency section */
 		7D20070E22F4EB72008DF640 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7D20067422F2652E008DF640 /* WebKitSwiftOverlay */;
+			target = 7D20067422F2652E008DF640 /* CyberKitSwiftOverlay */;
 			targetProxy = 7D20070D22F4EB72008DF640 /* PBXContainerItemProxy */;
 		};
 		7D20071D22F4ECCA008DF640 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7D20068622F26721008DF640 /* WebKitSwiftOverlay-maccatalyst */;
+			target = 7D20068622F26721008DF640 /* CyberKitSwiftOverlay-maccatalyst */;
 			targetProxy = 7D20071C22F4ECCA008DF640 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -402,56 +402,56 @@
 /* Begin XCBuildConfiguration section */
 		7D20067C22F2652E008DF640 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39423F790E100B17727 /* WebKitSwiftOverlay.xcconfig */;
+			baseConfigurationReference = B3A5D39423F790E100B17727 /* CyberKitSwiftOverlay.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		7D20067D22F2652E008DF640 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39423F790E100B17727 /* WebKitSwiftOverlay.xcconfig */;
+			baseConfigurationReference = B3A5D39423F790E100B17727 /* CyberKitSwiftOverlay.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		7D20068E22F26721008DF640 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39623F790E100B17727 /* WebKitSwiftOverlay-maccatalyst.xcconfig */;
+			baseConfigurationReference = B3A5D39623F790E100B17727 /* CyberKitSwiftOverlay-maccatalyst.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		7D20068F22F26721008DF640 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39623F790E100B17727 /* WebKitSwiftOverlay-maccatalyst.xcconfig */;
+			baseConfigurationReference = B3A5D39623F790E100B17727 /* CyberKitSwiftOverlay-maccatalyst.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		7D20071022F4EB72008DF640 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39823F790E100B17727 /* WebKitSwiftOverlayTests.xcconfig */;
+			baseConfigurationReference = B3A5D39823F790E100B17727 /* CyberKitSwiftOverlayTests.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		7D20071122F4EB72008DF640 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39823F790E100B17727 /* WebKitSwiftOverlayTests.xcconfig */;
+			baseConfigurationReference = B3A5D39823F790E100B17727 /* CyberKitSwiftOverlayTests.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		7D20071F22F4ECCA008DF640 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39723F790E100B17727 /* WebKitSwiftOverlayTests-maccatalyst.xcconfig */;
+			baseConfigurationReference = B3A5D39723F790E100B17727 /* CyberKitSwiftOverlayTests-maccatalyst.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		7D20072022F4ECCA008DF640 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A5D39723F790E100B17727 /* WebKitSwiftOverlayTests-maccatalyst.xcconfig */;
+			baseConfigurationReference = B3A5D39723F790E100B17727 /* CyberKitSwiftOverlayTests-maccatalyst.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -473,7 +473,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7D20067B22F2652E008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlay" */ = {
+		7D20067B22F2652E008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D20067C22F2652E008DF640 /* Debug */,
@@ -482,7 +482,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D20068D22F26721008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlay-maccatalyst" */ = {
+		7D20068D22F26721008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlay-maccatalyst" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D20068E22F26721008DF640 /* Debug */,
@@ -491,7 +491,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D20070F22F4EB72008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlayTests" */ = {
+		7D20070F22F4EB72008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlayTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D20071022F4EB72008DF640 /* Debug */,
@@ -500,7 +500,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D20071E22F4ECCA008DF640 /* Build configuration list for PBXNativeTarget "WebKitSwiftOverlayTests-maccatalyst" */ = {
+		7D20071E22F4ECCA008DF640 /* Build configuration list for PBXNativeTarget "CyberKitSwiftOverlayTests-maccatalyst" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D20071F22F4ECCA008DF640 /* Debug */,
@@ -509,7 +509,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D81A8D822E936E700739BB9 /* Build configuration list for PBXProject "WebKitSwiftOverlay" */ = {
+		7D81A8D822E936E700739BB9 /* Build configuration list for PBXProject "CyberKitSwiftOverlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D81A8E422E936E700739BB9 /* Debug */,

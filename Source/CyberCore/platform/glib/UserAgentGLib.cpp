@@ -95,7 +95,7 @@ static String buildUserAgentString(const UserAgentQuirks& quirks)
         return uaString.toString();
     }
 
-    uaString.append(") AppleWebKit/605.1.15 (KHTML, like Gecko) ");
+    uaString.append(") AppleCyberKit/605.1.15 (KHTML, like Gecko) ");
 
     // Note that Chrome UAs advertise *both* Chrome/X and Safari/X, but it does
     // not advertise Version/X.
@@ -125,7 +125,7 @@ String standardUserAgent(const String& applicationName, const String& applicatio
     // https://developer.mozilla.org/en-US/docs/User_Agent_Strings_Reference
     //
     // Forming a functional user agent is really difficult. We must mention Safari, because some
-    // sites check for that when detecting WebKit browsers. Additionally some sites assume that
+    // sites check for that when detecting CyberKit browsers. Additionally some sites assume that
     // browsers that are "Safari" but not running on OS X are the Safari iOS browser. Getting this
     // wrong can cause sites to load the wrong JavaScript, CSS, or custom fonts. In some cases
     // sites won't load resources at all.

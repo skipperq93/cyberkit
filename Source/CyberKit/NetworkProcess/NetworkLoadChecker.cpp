@@ -43,7 +43,7 @@
 
 #define LOAD_CHECKER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - NetworkLoadChecker::" fmt, this, ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -500,6 +500,6 @@ void NetworkLoadChecker::storeRedirectionIfNeeded(const ResourceRequest& request
     m_loadInformation.transactions.append(NetworkTransactionInformation { NetworkTransactionInformation::Type::Redirection, ResourceRequest { request }, ResourceResponse { response }, { } });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef LOAD_CHECKER_RELEASE_LOG

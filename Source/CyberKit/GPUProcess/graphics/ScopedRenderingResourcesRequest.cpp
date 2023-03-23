@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ScopedRenderingResourcesRequest.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 std::atomic<unsigned> ScopedRenderingResourcesRequest::s_requests;
 

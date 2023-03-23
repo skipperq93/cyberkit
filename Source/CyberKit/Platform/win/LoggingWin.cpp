@@ -33,12 +33,12 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 String logLevelString()
 {
 #if !LOG_DISABLED
-    static constexpr const char* loggingEnvironmentVariable = "WebKitLogging";
+    static constexpr const char* loggingEnvironmentVariable = "CyberKitLogging";
     DWORD length = GetEnvironmentVariableA(loggingEnvironmentVariable, 0, 0);
     if (!length)
         return emptyString();
@@ -54,6 +54,6 @@ String logLevelString()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED

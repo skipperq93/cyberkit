@@ -15,13 +15,13 @@ add_definitions(-iframework ${CARBON_LIBRARY}/Frameworks)
 add_definitions(-iframework ${APPLICATIONSERVICES_LIBRARY}/Versions/Current/Frameworks)
 add_definitions(-DWK_XPC_SERVICE_SUFFIX=".Development")
 
-set(MACOSX_FRAMEWORK_IDENTIFIER com.apple.WebKit)
+set(MACOSX_FRAMEWORK_IDENTIFIER com.apple.CyberKit)
 
 add_definitions(-iframework ${CORESERVICES_LIBRARY}/Versions/Current/Frameworks)
 
 include(Headers.cmake)
 
-list(APPEND WebKit_PRIVATE_LIBRARIES
+list(APPEND CyberKit_PRIVATE_LIBRARIES
     Accessibility
     CyberKitLegacy
     ${APPLICATIONSERVICES_LIBRARY}
@@ -33,16 +33,16 @@ list(APPEND WebKit_PRIVATE_LIBRARIES
 )
 
 if (NOT AVFAUDIO_LIBRARY-NOTFOUND)
-    list(APPEND WebKit_LIBRARIES ${AVFAUDIO_LIBRARY})
+    list(APPEND CyberKit_LIBRARIES ${AVFAUDIO_LIBRARY})
 endif ()
 
-list(APPEND WebKit_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberKit_UNIFIED_SOURCE_LIST_FILES
     "SourcesCocoa.txt"
 
     "Platform/SourcesCocoa.txt"
 )
 
-list(APPEND WebKit_SOURCES
+list(APPEND CyberKit_SOURCES
     GPUProcess/media/RemoteAudioDestinationManager.cpp
 
     NetworkProcess/cocoa/LaunchServicesDatabaseObserver.mm
@@ -94,7 +94,7 @@ list(APPEND WebKit_SOURCES
     WebProcess/cocoa/LaunchServicesDatabaseManager.mm
 )
 
-list(APPEND WebKit_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberKit_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}/libwebrtc/PrivateHeaders"
     "${ICU_INCLUDE_DIRS}"
     "${WEBKIT_DIR}/GPUProcess/mac"
@@ -189,16 +189,16 @@ set(GPUProcess_SOURCES
 )
 
 # FIXME: These should not have Development in production builds.
-set(WebProcess_OUTPUT_NAME com.apple.WebKit.WebContent.Development)
-set(NetworkProcess_OUTPUT_NAME com.apple.WebKit.Networking.Development)
-set(GPUProcess_OUTPUT_NAME com.apple.WebKit.GPU.Development)
+set(WebProcess_OUTPUT_NAME com.apple.CyberKit.WebContent.Development)
+set(NetworkProcess_OUTPUT_NAME com.apple.CyberKit.Networking.Development)
+set(GPUProcess_OUTPUT_NAME com.apple.CyberKit.GPU.Development)
 
 set(WebProcess_INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR})
 set(NetworkProcess_INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR})
 
-add_definitions("-include WebKit2Prefix.h")
+add_definitions("-include CyberKit2Prefix.h")
 
-set(WebKit_FORWARDING_HEADERS_FILES
+set(CyberKit_FORWARDING_HEADERS_FILES
     Platform/cocoa/WKCrashReporter.h
 
     Shared/API/c/WKDiagnosticLoggingResultType.h
@@ -208,7 +208,7 @@ set(WebKit_FORWARDING_HEADERS_FILES
     UIProcess/API/C/WKPageRenderingProgressEvents.h
 )
 
-list(APPEND WebKit_MESSAGES_IN_FILES
+list(APPEND CyberKit_MESSAGES_IN_FILES
     GPUProcess/media/RemoteImageDecoderAVFProxy
 
     GPUProcess/media/ios/RemoteMediaSessionHelperProxy
@@ -258,14 +258,14 @@ list(APPEND WebKit_MESSAGES_IN_FILES
     WebProcess/cocoa/VideoFullscreenManager
 )
 
-list(APPEND WebKit_SERIALIZATION_IN_FILES
+list(APPEND CyberKit_SERIALIZATION_IN_FILES
     Shared/Cocoa/CacheStoragePolicy.serialization.in
     Shared/Cocoa/DataDetectionResult.serialization.in
     Shared/Cocoa/RevealItem.serialization.in
     Shared/Cocoa/CyberCoreArgumentCodersCocoa.serialization.in
 )
 
-list(APPEND WebKit_PUBLIC_FRAMEWORK_HEADERS
+list(APPEND CyberKit_PUBLIC_FRAMEWORK_HEADERS
     Shared/API/Cocoa/RemoteObjectInvocation.h
     Shared/API/Cocoa/RemoteObjectRegistry.h
     Shared/API/Cocoa/WKBrowsingContextHandle.h
@@ -275,8 +275,8 @@ list(APPEND WebKit_PUBLIC_FRAMEWORK_HEADERS
     Shared/API/Cocoa/WKMain.h
     Shared/API/Cocoa/WKRemoteObject.h
     Shared/API/Cocoa/WKRemoteObjectCoder.h
-    Shared/API/Cocoa/WebKit.h
-    Shared/API/Cocoa/WebKitPrivate.h
+    Shared/API/Cocoa/CyberKit.h
+    Shared/API/Cocoa/CyberKitPrivate.h
     Shared/API/Cocoa/_WKFrameHandle.h
     Shared/API/Cocoa/_WKHitTestResult.h
     Shared/API/Cocoa/_WKNSFileManagerExtras.h
@@ -518,7 +518,7 @@ list(APPEND WebKit_PUBLIC_FRAMEWORK_HEADERS
     WebProcess/InjectedBundle/API/mac/WKWebProcessPlugInPrivate.h
 )
 
-set(WebKit_FORWARDING_HEADERS_DIRECTORIES
+set(CyberKit_FORWARDING_HEADERS_DIRECTORIES
     Platform
     Shared
 
@@ -585,7 +585,7 @@ set(CyberKitLegacyForwardingHeaders
     WebIconDatabasePrivate.h
     WebInspector.h
     WebInspectorPrivate.h
-    WebKitNSStringExtras.h
+    CyberKitNSStringExtras.h
     WebNSURLExtras.h
     WebNavigationData.h
     WebNotification.h
@@ -737,10 +737,10 @@ set(ObjCForwardingHeaders
     DOMTreeWalker.h
     DOMUIEvent.h
     DOMValidityState.h
-    DOMWebKitCSSFilterValue.h
-    DOMWebKitCSSRegionRule.h
-    DOMWebKitCSSTransformValue.h
-    DOMWebKitNamedFlow.h
+    DOMCyberKitCSSFilterValue.h
+    DOMCyberKitCSSRegionRule.h
+    DOMCyberKitCSSTransformValue.h
+    DOMCyberKitNamedFlow.h
     DOMWheelEvent.h
     DOMXPathException.h
     DOMXPathExpression.h
@@ -749,19 +749,19 @@ set(ObjCForwardingHeaders
 )
 
 set(CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS} "-compatibility_version 1 -current_version ${WEBKIT_MAC_VERSION}")
-target_link_options(WebKit PRIVATE -weak_framework SafariSafeBrowsing -lsandbox -framework AuthKit)
+target_link_options(CyberKit PRIVATE -weak_framework SafariSafeBrowsing -lsandbox -framework AuthKit)
 
-set(WebKit_OUTPUT_NAME WebKit)
+set(CyberKit_OUTPUT_NAME CyberKit)
 
 # XPC Services
 
 function(WEBKIT_DEFINE_XPC_SERVICES)
-    set(RUNLOOP_TYPE _WebKit)
-    set(WebKit_XPC_SERVICE_DIR ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/WebKit.framework/Versions/A/XPCServices)
-    WEBKIT_CREATE_SYMLINK(WebProcess ${WebKit_XPC_SERVICE_DIR} ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/WebKit.framework/XPCServices)
+    set(RUNLOOP_TYPE _CyberKit)
+    set(CyberKit_XPC_SERVICE_DIR ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/CyberKit.framework/Versions/A/XPCServices)
+    WEBKIT_CREATE_SYMLINK(WebProcess ${CyberKit_XPC_SERVICE_DIR} ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/CyberKit.framework/XPCServices)
 
     function(WEBKIT_XPC_SERVICE _target _bundle_identifier _info_plist _executable_name)
-        set(_service_dir ${WebKit_XPC_SERVICE_DIR}/${_bundle_identifier}.xpc/Contents)
+        set(_service_dir ${CyberKit_XPC_SERVICE_DIR}/${_bundle_identifier}.xpc/Contents)
         make_directory(${_service_dir}/MacOS)
         make_directory(${_service_dir}/_CodeSignature)
         make_directory(${_service_dir}/Resources)
@@ -779,51 +779,51 @@ function(WEBKIT_DEFINE_XPC_SERVICES)
     endfunction()
 
     WEBKIT_XPC_SERVICE(WebProcess
-        "com.apple.WebKit.WebContent"
+        "com.apple.CyberKit.WebContent"
         ${WEBKIT_DIR}/WebProcess/EntryPoint/Cocoa/XPCService/WebContentService/Info-OSX.plist
         ${WebProcess_OUTPUT_NAME})
 
     WEBKIT_XPC_SERVICE(NetworkProcess
-        "com.apple.WebKit.Networking"
+        "com.apple.CyberKit.Networking"
         ${WEBKIT_DIR}/NetworkProcess/EntryPoint/Cocoa/XPCService/NetworkService/Info-OSX.plist
         ${NetworkProcess_OUTPUT_NAME})
 
     if (ENABLE_GPU_PROCESS)
         WEBKIT_XPC_SERVICE(GPUProcess
-            "com.apple.WebKit.GPU"
+            "com.apple.CyberKit.GPU"
             ${WEBKIT_DIR}/GPUProcess/EntryPoint/Cocoa/XPCService/GPUService/Info-OSX.plist
             ${GPUProcess_OUTPUT_NAME})
     endif ()
 
-    set(WebKit_RESOURCES_DIR ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/WebKit.framework/Versions/A/Resources)
-    add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.apple.WebProcess.sb COMMAND
-        grep -o "^[^;]*" ${WEBKIT_DIR}/WebProcess/com.apple.WebProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.apple.WebProcess.sb
+    set(CyberKit_RESOURCES_DIR ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/CyberKit.framework/Versions/A/Resources)
+    add_custom_command(OUTPUT ${CyberKit_RESOURCES_DIR}/com.apple.WebProcess.sb COMMAND
+        grep -o "^[^;]*" ${WEBKIT_DIR}/WebProcess/com.apple.WebProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${CyberKit_RESOURCES_DIR}/com.apple.WebProcess.sb
         VERBATIM)
-    list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebProcess.sb)
+    list(APPEND CyberKit_SB_FILES ${CyberKit_RESOURCES_DIR}/com.apple.WebProcess.sb)
 
-    add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.apple.WebKit.NetworkProcess.sb COMMAND
-        grep -o "^[^;]*" ${WEBKIT_DIR}/NetworkProcess/mac/com.apple.WebKit.NetworkProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.apple.WebKit.NetworkProcess.sb
+    add_custom_command(OUTPUT ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.NetworkProcess.sb COMMAND
+        grep -o "^[^;]*" ${WEBKIT_DIR}/NetworkProcess/mac/com.apple.CyberKit.NetworkProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.NetworkProcess.sb
         VERBATIM)
-    list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebKit.NetworkProcess.sb)
+    list(APPEND CyberKit_SB_FILES ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.NetworkProcess.sb)
 
     if (ENABLE_GPU_PROCESS)
-        add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.apple.WebKit.GPUProcess.sb COMMAND
-            grep -o "^[^;]*" ${WEBKIT_DIR}/GPUProcess/mac/com.apple.WebKit.GPUProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.apple.WebKit.GPUProcess.sb
+        add_custom_command(OUTPUT ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.GPUProcess.sb COMMAND
+            grep -o "^[^;]*" ${WEBKIT_DIR}/GPUProcess/mac/com.apple.CyberKit.GPUProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.GPUProcess.sb
             VERBATIM)
-        list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebKit.GPUProcess.sb)
+        list(APPEND CyberKit_SB_FILES ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.GPUProcess.sb)
     endif ()
     if (ENABLE_BUILT_IN_NOTIFICATIONS)
-        add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.apple.WebKit.webpushd.mac.sb COMMAND
-            grep -o "^[^;]*" ${WEBKIT_DIR}/webpushd/mac/com.apple.WebKit.webpushd.mac.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.apple.WebKit.webpushd.mac.sb
+        add_custom_command(OUTPUT ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.webpushd.mac.sb COMMAND
+            grep -o "^[^;]*" ${WEBKIT_DIR}/webpushd/mac/com.apple.CyberKit.webpushd.mac.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.webpushd.mac.sb
             VERBATIM)
-        list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebKit.webpushd.mac.sb)
+        list(APPEND CyberKit_SB_FILES ${CyberKit_RESOURCES_DIR}/com.apple.CyberKit.webpushd.mac.sb)
     endif ()
-    add_custom_target(WebKitSandboxProfiles ALL DEPENDS ${WebKit_SB_FILES})
-    add_dependencies(WebKit WebKitSandboxProfiles)
+    add_custom_target(CyberKitSandboxProfiles ALL DEPENDS ${CyberKit_SB_FILES})
+    add_dependencies(CyberKit CyberKitSandboxProfiles)
 
-    add_custom_command(OUTPUT ${WebKit_XPC_SERVICE_DIR}/com.apple.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib COMMAND
-        ibtool --compile ${WebKit_XPC_SERVICE_DIR}/com.apple.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib ${WEBKIT_DIR}/Resources/WebContentProcess.xib
+    add_custom_command(OUTPUT ${CyberKit_XPC_SERVICE_DIR}/com.apple.CyberKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib COMMAND
+        ibtool --compile ${CyberKit_XPC_SERVICE_DIR}/com.apple.CyberKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib ${WEBKIT_DIR}/Resources/WebContentProcess.xib
         VERBATIM)
-    add_custom_target(WebContentProcessNib ALL DEPENDS ${WebKit_XPC_SERVICE_DIR}/com.apple.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib)
-    add_dependencies(WebKit WebContentProcessNib)
+    add_custom_target(WebContentProcessNib ALL DEPENDS ${CyberKit_XPC_SERVICE_DIR}/com.apple.CyberKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib)
+    add_dependencies(CyberKit WebContentProcessNib)
 endfunction()

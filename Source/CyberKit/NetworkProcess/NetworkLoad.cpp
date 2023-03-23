@@ -40,7 +40,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Seconds.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -192,7 +192,7 @@ void NetworkLoad::willPerformHTTPRedirection(ResourceResponse&& redirectResponse
         m_task->clearClient();
         m_task = nullptr;
         CyberCore::NetworkLoadMetrics emptyMetrics;
-        didCompleteWithError(ResourceError { errorDomainWebKitInternal, 0, url(), "FTP URLs are disabled"_s, ResourceError::Type::AccessControl }, emptyMetrics);
+        didCompleteWithError(ResourceError { errorDomainCyberKitInternal, 0, url(), "FTP URLs are disabled"_s, ResourceError::Type::AccessControl }, emptyMetrics);
         
         if (completionHandler)
             completionHandler({ });
@@ -334,4 +334,4 @@ String NetworkLoad::attributedBundleIdentifier(WebPageProxyIdentifier pageID)
     return { };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

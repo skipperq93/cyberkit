@@ -30,7 +30,7 @@
 #import "config.h"
 #import "CocoaHelpers.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<>
 NSArray *filterObjects<NSArray>(NSArray *array, bool NS_NOESCAPE (^block)(__kindof id key, __kindof id value))
@@ -253,4 +253,4 @@ NSArray *toAPIArray(HashSet<String>& set)
     return [result copy];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

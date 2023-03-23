@@ -37,7 +37,7 @@ class ThreadSafeImageBufferFlusher;
 enum class SetNonVolatileResult : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerBackingStore;
 class RemoteLayerTreeContext;
@@ -110,4 +110,4 @@ protected:
     bool m_inLayerFlush { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

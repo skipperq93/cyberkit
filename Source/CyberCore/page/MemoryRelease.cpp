@@ -196,7 +196,7 @@ void logMemoryStatistics(LogMemoryStatisticsReason reason)
 {
     const char* description = logMemoryStatisticsReasonDescription(reason);
 
-    RELEASE_LOG(MemoryPressure, "WebKit memory usage statistics at time of %" PUBLIC_LOG_STRING ":", description);
+    RELEASE_LOG(MemoryPressure, "CyberKit memory usage statistics at time of %" PUBLIC_LOG_STRING ":", description);
     RELEASE_LOG(MemoryPressure, "Websam state: %" PUBLIC_LOG_STRING, MemoryPressureHandler::processStateDescription().characters());
     auto stats = PerformanceLogging::memoryUsageStatistics(ShouldIncludeExpensiveComputations::Yes);
     for (auto& [key, val] : stats)
@@ -217,7 +217,7 @@ void logMemoryStatistics(LogMemoryStatisticsReason reason)
         RELEASE_LOG(MemoryPressure, "  %" PUBLIC_LOG_STRING ": %lu MB in %zu regions", tagName.latin1().data(), dirty / MB, pages[i].regionCount);
     }
 
-    bool shouldLogJavaScriptObjectCounts = os_variant_allows_internal_security_policies("com.apple.WebKit");
+    bool shouldLogJavaScriptObjectCounts = os_variant_allows_internal_security_policies("com.apple.CyberKit");
     if (!shouldLogJavaScriptObjectCounts)
         return;
 #endif

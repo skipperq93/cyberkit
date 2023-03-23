@@ -36,7 +36,7 @@ CFStringEncoding webDefaultCFStringEncoding()
 {
     // FIXME: we can do better than this hard-coded list once this radar is addressed:
     // <rdar://problem/4433165> Need API that can get preferred web (and mail) encoding(s) w/o region code.
-    // Alternatively, we could have our own table of preferred encodings in WebKit, shared with Mac.
+    // Alternatively, we could have our own table of preferred encodings in CyberKit, shared with Mac.
 
     NSArray *preferredLanguages = [NSLocale preferredLanguages];
     if (!preferredLanguages.count)

@@ -35,7 +35,7 @@
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKWebsiteDataRecordPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKErrorRecoveryAttempting.h>
 #import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/BlockPtr.h>
@@ -48,7 +48,7 @@ static bool navigationFinished;
 
 RetainPtr<SecCertificateRef> testCertificate()
 {
-    auto certificateBytes = TestWebKitAPI::HTTPServer::testCertificate();
+    auto certificateBytes = TestCyberKitAPI::HTTPServer::testCertificate();
     return adoptCF(SecCertificateCreateWithData(nullptr, (__bridge CFDataRef)[NSData dataWithBytes:certificateBytes.data() length:certificateBytes.size()]));
 }
 
@@ -73,7 +73,7 @@ static RetainPtr<SecIdentityRef> createTestIdentity(const Vector<uint8_t>& priva
 
 RetainPtr<SecIdentityRef> testIdentity()
 {
-    return createTestIdentity(TestWebKitAPI::HTTPServer::testPrivateKey(), TestWebKitAPI::HTTPServer::testCertificate());
+    return createTestIdentity(TestCyberKitAPI::HTTPServer::testPrivateKey(), TestCyberKitAPI::HTTPServer::testCertificate());
 }
 
 RetainPtr<SecIdentityRef> testIdentity2()
@@ -220,7 +220,7 @@ static RetainPtr<NSURLCredential> credentialWithIdentity()
 
 TEST(Challenge, SecIdentity)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server(HTTPServer::respondWithChallengeThenOK);
 
     auto webView = adoptNS([WKWebView new]);
@@ -238,7 +238,7 @@ TEST(Challenge, SecIdentity)
 
 TEST(Challenge, DeallocateDuringChallenge)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({{ "/"_s, { "hi"_s }}}, HTTPServer::Protocol::Https);
 
     auto delegate = adoptNS([TestNavigationDelegate new]);
@@ -293,7 +293,7 @@ TEST(Challenge, DeallocateDuringChallenge)
 #if HAVE(SEC_KEY_PROXY)
 TEST(Challenge, ClientCertificate)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({ { "/"_s, { "hello"_s } } }, HTTPServer::Protocol::Https, [](sec_protocol_metadata_t, sec_trust_t, sec_protocol_verify_complete_t complete) {
         complete(true);
     });
@@ -341,7 +341,7 @@ static RetainPtr<NSURLCredential> persistentCredential;
 
 TEST(Challenge, BasicProposedCredential)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server(HTTPServer::respondWithChallengeThenOK);
     auto configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"BasicProposedCredentialPlugIn"]);
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration.get()]);
@@ -366,7 +366,7 @@ TEST(Challenge, BasicProposedCredential)
 
 TEST(Challenge, BasicPersistentCredential)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server(HTTPServer::respondWithChallengeThenOK);
     auto delegate = adoptNS([TestNavigationDelegate new]);
     __block RetainPtr<NSURLProtectionSpace> protectionSpace;
@@ -573,13 +573,13 @@ static void verifyCertificateAndPublicKey(SecTrustRef trust)
 
 - (void)waitForDidFinishNavigation
 {
-    TestWebKitAPI::Util::run(&_navigationFinished);
+    TestCyberKitAPI::Util::run(&_navigationFinished);
 }
 
 - (NSError *)waitForDidFailProvisionalNavigationError
 {
     while (!_provisionalNavigationFailedError)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     return _provisionalNavigationFailedError.autorelease();
 }
 
@@ -598,9 +598,9 @@ static void verifyCertificateAndPublicKey(SecTrustRef trust)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ServerTrust)
+TEST(CyberKit, ServerTrust)
 {
     HTTPServer server(HTTPServer::respondWithOK, HTTPServer::Protocol::Https);
 
@@ -615,7 +615,7 @@ TEST(WebKit, ServerTrust)
     EXPECT_EQ([delegate authenticationChallengeCount], 1u);
 }
 
-TEST(WebKit, FastServerTrust)
+TEST(CyberKit, FastServerTrust)
 {
     HTTPServer server(HTTPServer::respondWithOK, HTTPServer::Protocol::Https);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -630,7 +630,7 @@ TEST(WebKit, FastServerTrust)
     EXPECT_EQ([delegate authenticationChallengeCount], 1ull);
 }
 
-TEST(WebKit, ErrorSecureCoding)
+TEST(CyberKit, ErrorSecureCoding)
 {
     HTTPServer server({{ "/"_s, { HTTPResponse::TerminateConnection::Yes }}});
     auto webView = [[WKWebView new] autorelease];
@@ -650,4 +650,4 @@ TEST(WebKit, ErrorSecureCoding)
     EXPECT_WK_STREQ(NSStringFromClass([decodedError.userInfo[_WKRecoveryAttempterErrorKey] class]), @"WKReloadFrameErrorRecoveryAttempter");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

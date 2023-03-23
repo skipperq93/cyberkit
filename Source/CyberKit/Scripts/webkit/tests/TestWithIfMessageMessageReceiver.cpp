@@ -39,7 +39,7 @@
 #include "JSIPCBinding.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void TestWithIfMessage::didReceiveMessage(IPC::Connection& connection, IPC::Decoder& decoder)
 {
@@ -61,7 +61,7 @@ void TestWithIfMessage::didReceiveMessage(IPC::Connection& connection, IPC::Deco
     ASSERT_NOT_REACHED_WITH_MESSAGE("Unhandled message %s to %" PRIu64, IPC::description(decoder.messageName()), decoder.destinationID());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if ENABLE(IPC_TESTING_API)
 

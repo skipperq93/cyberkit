@@ -50,7 +50,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void initializeNetworkSettings()
 {
@@ -59,7 +59,7 @@ static void initializeNetworkSettings()
     _CFNetworkHTTPConnectionCacheSetLimit(kHTTPLoadWidth, preferredConnectionCount);
 
     Boolean keyExistsAndHasValidFormat = false;
-    Boolean prefValue = CFPreferencesGetAppBooleanValue(CFSTR("WebKitEnableHTTPPipelining"), kCFPreferencesCurrentApplication, &keyExistsAndHasValidFormat);
+    Boolean prefValue = CFPreferencesGetAppBooleanValue(CFSTR("CyberKitEnableHTTPPipelining"), kCFPreferencesCurrentApplication, &keyExistsAndHasValidFormat);
     if (keyExistsAndHasValidFormat)
         CyberCore::ResourceRequest::setHTTPPipeliningEnabled(prefValue);
 
@@ -226,4 +226,4 @@ void NetworkProcess::setBackupExclusionPeriodForTesting(PAL::SessionID sessionID
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

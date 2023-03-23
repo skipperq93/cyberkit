@@ -30,23 +30,23 @@
 #include <wtf/text/CString.h>
 
 #define WEBKIT_TYPE_DIRECTORY_INPUT_STREAM            (webkit_directory_input_stream_get_type ())
-#define WEBKIT_DIRECTORY_INPUT_STREAM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM, WebKitDirectoryInputStream))
+#define WEBKIT_DIRECTORY_INPUT_STREAM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM, CyberKitDirectoryInputStream))
 #define WEBKIT_IS_DIRECTORY_INPUT_STREAM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM))
-#define WEBKIT_DIRECTORY_INPUT_STREAM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM, WebKitDirectoryInputStreamClass))
+#define WEBKIT_DIRECTORY_INPUT_STREAM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM, CyberKitDirectoryInputStreamClass))
 #define WEBKIT_IS_DIRECTORY_INPUT_STREAM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM))
-#define WEBKIT_DIRECTORY_INPUT_STREAM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM, WebKitDirectoryInputStreamClass))
+#define WEBKIT_DIRECTORY_INPUT_STREAM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), WEBKIT_TYPE_DIRECTORY_INPUT_STREAM, CyberKitDirectoryInputStreamClass))
 
-typedef struct _WebKitDirectoryInputStream WebKitDirectoryInputStream;
-typedef struct _WebKitDirectoryInputStreamClass WebKitDirectoryInputStreamClass;
-typedef struct _WebKitDirectoryInputStreamPrivate WebKitDirectoryInputStreamPrivate;
+typedef struct _CyberKitDirectoryInputStream CyberKitDirectoryInputStream;
+typedef struct _CyberKitDirectoryInputStreamClass CyberKitDirectoryInputStreamClass;
+typedef struct _CyberKitDirectoryInputStreamPrivate CyberKitDirectoryInputStreamPrivate;
 
-struct _WebKitDirectoryInputStream {
+struct _CyberKitDirectoryInputStream {
     GInputStream parent;
 
-    WebKitDirectoryInputStreamPrivate* priv;
+    CyberKitDirectoryInputStreamPrivate* priv;
 };
 
-struct _WebKitDirectoryInputStreamClass {
+struct _CyberKitDirectoryInputStreamClass {
     GInputStreamClass parentClass;
 };
 

@@ -391,7 +391,7 @@ template<> ALWAYS_INLINE void unpack<GraphicsContextGL::DataFormat::RGBA2_10_10_
     }
 }
 
-// Unpacking routines needed by various WebKit ports, for example to
+// Unpacking routines needed by various CyberKit ports, for example to
 // handle the internal representations of grayscale PNGs.
 
 template<> ALWAYS_INLINE void unpack<GraphicsContextGL::DataFormat::R8, uint8_t, uint8_t>(const uint8_t* source, uint8_t* destination, unsigned pixelsPerRow)
@@ -1606,7 +1606,7 @@ void FormatConverter::convert(GraphicsContextGL::DataFormat srcFormat, GraphicsC
             FORMATCONVERTER_CASE_SRCFORMAT(GraphicsContextGL::DataFormat::RGBA4444)
             FORMATCONVERTER_CASE_SRCFORMAT(GraphicsContextGL::DataFormat::RGBA32F)
             FORMATCONVERTER_CASE_SRCFORMAT(GraphicsContextGL::DataFormat::RGBA2_10_10_10)
-            // Additional input formats needed by various WebKit ports.
+            // Additional input formats needed by various CyberKit ports.
             FORMATCONVERTER_CASE_SRCFORMAT(GraphicsContextGL::DataFormat::R8)
             FORMATCONVERTER_CASE_SRCFORMAT(GraphicsContextGL::DataFormat::A8)
             FORMATCONVERTER_CASE_SRCFORMAT(GraphicsContextGL::DataFormat::R32F)

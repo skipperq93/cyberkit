@@ -29,7 +29,7 @@
 #include <VideoToolbox/VTCompressionSession.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/VideoToolboxSPIAdditions.h>
+#import <CyberKitAdditions/VideoToolboxSPIAdditions.h>
 #endif
 
 #include <wtf/SoftLinking.h>
@@ -71,7 +71,7 @@ SOFT_LINK_FUNCTION_FOR_HEADER(PAL, VideoToolbox, VTCompressionSessionInvalidate,
 #define VTCompressionSessionInvalidate softLink_VideoToolbox_VTCompressionSessionInvalidate
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/VideoToolboxSoftLinkAdditions.h>
+#import <CyberKitAdditions/VideoToolboxSoftLinkAdditions.h>
 #endif
 
 #endif // USE(AVFOUNDATION)

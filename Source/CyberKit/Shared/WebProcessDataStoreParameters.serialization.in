@@ -20,17 +20,17 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-struct WebKit::WebProcessDataStoreParameters {
+struct CyberKit::WebProcessDataStoreParameters {
     PAL::SessionID sessionID;
     String applicationCacheDirectory;
-    WebKit::SandboxExtension::Handle applicationCacheDirectoryExtensionHandle;
+    CyberKit::SandboxExtension::Handle applicationCacheDirectoryExtensionHandle;
     String applicationCacheFlatFileSubdirectoryName;
     String mediaCacheDirectory;
-    WebKit::SandboxExtension::Handle mediaCacheDirectoryExtensionHandle;
+    CyberKit::SandboxExtension::Handle mediaCacheDirectoryExtensionHandle;
     String mediaKeyStorageDirectory;
-    WebKit::SandboxExtension::Handle mediaKeyStorageDirectoryExtensionHandle;
+    CyberKit::SandboxExtension::Handle mediaKeyStorageDirectoryExtensionHandle;
     String javaScriptConfigurationDirectory;
-    WebKit::SandboxExtension::Handle javaScriptConfigurationDirectoryExtensionHandle;
+    CyberKit::SandboxExtension::Handle javaScriptConfigurationDirectoryExtensionHandle;
 #if ENABLE(TRACKING_PREVENTION)
     CyberCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode;
     HashSet<CyberCore::RegistrableDomain> domainsWithUserInteraction;
@@ -38,12 +38,12 @@ struct WebKit::WebProcessDataStoreParameters {
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW)
     String modelElementCacheDirectory;
-    WebKit::SandboxExtension::Handle modelElementCacheDirectoryExtensionHandle;
+    CyberKit::SandboxExtension::Handle modelElementCacheDirectoryExtensionHandle;
 #endif
 #if PLATFORM(IOS_FAMILY)
-    std::optional<WebKit::SandboxExtension::Handle> cookieStorageDirectoryExtensionHandle;
-    std::optional<WebKit::SandboxExtension::Handle> containerCachesDirectoryExtensionHandle;
-    std::optional<WebKit::SandboxExtension::Handle> containerTemporaryDirectoryExtensionHandle;
+    std::optional<CyberKit::SandboxExtension::Handle> cookieStorageDirectoryExtensionHandle;
+    std::optional<CyberKit::SandboxExtension::Handle> containerCachesDirectoryExtensionHandle;
+    std::optional<CyberKit::SandboxExtension::Handle> containerTemporaryDirectoryExtensionHandle;
 #endif
     bool trackingPreventionEnabled;
 };

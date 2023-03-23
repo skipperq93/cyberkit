@@ -31,12 +31,12 @@
 #include "WebGPUObjectDescriptorBase.h"
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct PipelineDescriptorBase : public ObjectDescriptorBase {
     WebGPUIdentifier layout;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

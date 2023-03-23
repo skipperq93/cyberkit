@@ -24,22 +24,22 @@
  */
 
 #include "config.h"
-#include "WebKitAutoconfigProxyResolver.h"
+#include "CyberKitAutoconfigProxyResolver.h"
 
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 
-struct _WebKitAutoconfigProxyResolverPrivate {
+struct _CyberKitAutoconfigProxyResolverPrivate {
     GRefPtr<GDBusProxy> pacRunner;
     CString autoconfigURL;
 };
 
 static void webkitAutoconfigProxyResolverInterfaceInit(GProxyResolverInterface*);
 
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitAutoconfigProxyResolver, webkit_autoconfig_proxy_resolver, G_TYPE_OBJECT,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitAutoconfigProxyResolver, webkit_autoconfig_proxy_resolver, G_TYPE_OBJECT,
     G_IMPLEMENT_INTERFACE(G_TYPE_PROXY_RESOLVER, webkitAutoconfigProxyResolverInterfaceInit))
 
-static void webkit_autoconfig_proxy_resolver_class_init(WebKitAutoconfigProxyResolverClass*)
+static void webkit_autoconfig_proxy_resolver_class_init(CyberKitAutoconfigProxyResolverClass*)
 {
 }
 

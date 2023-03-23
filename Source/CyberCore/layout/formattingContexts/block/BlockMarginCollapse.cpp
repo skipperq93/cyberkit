@@ -75,7 +75,7 @@ static bool hasPaddingAfter(const ElementBox& layoutBox)
 
 static bool establishesBlockFormattingContext(const ElementBox& layoutBox)
 {
-    // WebKit treats the document element renderer as a block formatting context root. It probably only impacts margin collapsing, so let's not do
+    // CyberKit treats the document element renderer as a block formatting context root. It probably only impacts margin collapsing, so let's not do
     // a layout wide quirk on this for now.
     if (layoutBox.isDocumentBox())
         return true;

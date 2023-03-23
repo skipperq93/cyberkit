@@ -40,7 +40,7 @@ using WlUniquePtr = std::unique_ptr<T, WlPtrDeleter<T>>;
 
 // wl_display is omitted because there are two different destruction functions,
 // wl_display_disconnect() for the client process API and wl_display_destroy()
-// for the server process API. WebKit uses both, so specializing a deleter here
+// for the server process API. CyberKit uses both, so specializing a deleter here
 // would be a footgun.
 #define FOR_EACH_WAYLAND_DELETER(macro) \
     macro(struct wl_global, wl_global_destroy) \

@@ -34,7 +34,7 @@ class Encoder;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserData {
 public:
@@ -63,6 +63,6 @@ private:
     RefPtr<API::Object> m_object;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // UserData_h

@@ -46,7 +46,7 @@ static size_t loadsFinished;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, ScheduleInRunLoop)
 {
@@ -58,7 +58,7 @@ TEST(CyberKitLegacy, ScheduleInRunLoop)
         [webView setFrameLoadDelegate:delegate.get()];
         [webView unscheduleFromRunLoop:[NSRunLoop currentRunLoop] forMode:(NSString *)kCFRunLoopCommonModes];
         [webView scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:@"TestRunLoopMode"];
-        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
         webViews.append(WTFMove(webView));
     }
 
@@ -66,4 +66,4 @@ TEST(CyberKitLegacy, ScheduleInRunLoop)
         CFRunLoopRunInMode(CFSTR("TestRunLoopMode"), .001, true);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -37,7 +37,7 @@
 #include <wtf/Deque.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace fido;
 
@@ -245,6 +245,6 @@ TEST(FidoHidMessageTest, TestProperties)
     EXPECT_EQ(FidoHidDeviceCommand::kCancel, message->cmd());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

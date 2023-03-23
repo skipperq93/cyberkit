@@ -49,7 +49,7 @@ GType videoFrameMetadataAPIGetType()
     static const gchar* tags[] = { nullptr };
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [&] {
-        type = gst_meta_api_type_register("WebKitVideoFrameMetadataAPI", tags);
+        type = gst_meta_api_type_register("CyberKitVideoFrameMetadataAPI", tags);
     });
     return type;
 }
@@ -75,7 +75,7 @@ const GstMetaInfo* videoFrameMetadataGetInfo()
     static const GstMetaInfo* metaInfo = nullptr;
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [&] {
-        metaInfo = gst_meta_register(VIDEO_FRAME_METADATA_API_TYPE, "WebKitVideoFrameMetadata", sizeof(VideoFrameMetadataGStreamer),
+        metaInfo = gst_meta_register(VIDEO_FRAME_METADATA_API_TYPE, "CyberKitVideoFrameMetadata", sizeof(VideoFrameMetadataGStreamer),
             [](GstMeta* meta, gpointer, GstBuffer*) -> gboolean {
                 auto* frameMeta = VIDEO_FRAME_METADATA_CAST(meta);
                 frameMeta->priv = createVideoFrameMetadataPrivate();

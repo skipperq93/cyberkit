@@ -27,7 +27,7 @@
 
 #if HAVE(ASC_AUTH_UI) || HAVE(UNIFIED_ASC_AUTH_UI)
 
-@interface ASCWebKitSPISupport : NSObject
+@interface ASCCyberKitSPISupport : NSObject
 @property (class, nonatomic) BOOL shouldUseAlternateCredentialStore;
 + (BOOL)arePasskeysDisallowedForRelyingParty:(nonnull NSString *)relyingParty;
 + (BOOL)canCurrentProcessAccessPasskeysForRelyingParty:(nonnull NSString *)relyingParty;

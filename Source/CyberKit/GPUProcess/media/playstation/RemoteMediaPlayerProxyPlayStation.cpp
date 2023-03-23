@@ -31,7 +31,7 @@
 #include "LayerHostingContext.h"
 #include <CyberCore/NotImplemented.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void RemoteMediaPlayerProxy::mediaPlayerFirstVideoFrameAvailable()
 {
@@ -50,6 +50,6 @@ void RemoteMediaPlayerProxy::exitFullscreen(CompletionHandler<void()>&& completi
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

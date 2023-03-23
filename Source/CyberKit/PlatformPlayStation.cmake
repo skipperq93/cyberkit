@@ -1,8 +1,8 @@
 include(Headers.cmake)
 
-set(WebKit_USE_PREFIX_HEADER ON)
+set(CyberKit_USE_PREFIX_HEADER ON)
 
-WEBKIT_ADD_TARGET_CXX_FLAGS(WebKit -Wno-unused-lambda-capture)
+WEBKIT_ADD_TARGET_CXX_FLAGS(CyberKit -Wno-unused-lambda-capture)
 
 list(APPEND WebProcess_SOURCES
     WebProcess/EntryPoint/playstation/WebProcessMain.cpp
@@ -29,7 +29,7 @@ list(APPEND GPUProcess_PRIVATE_LIBRARIES
     ${EGL_LIBRARIES}
 )
 
-list(APPEND WebKit_SOURCES
+list(APPEND CyberKit_SOURCES
     GPUProcess/media/playstation/RemoteMediaPlayerProxyPlayStation.cpp
 
     GPUProcess/playstation/GPUProcessMainPlayStation.cpp
@@ -135,7 +135,7 @@ list(APPEND WebKit_SOURCES
     WebProcess/playstation/WebProcessPlayStation.cpp
 )
 
-list(APPEND WebKit_INCLUDE_DIRECTORIES
+list(APPEND CyberKit_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/NetworkProcess/curl"
     "${WEBKIT_DIR}/Platform/IPC/unix"
     "${WEBKIT_DIR}/Platform/classifier"
@@ -155,19 +155,19 @@ list(APPEND WebKit_INCLUDE_DIRECTORIES
 )
 
 if (ENABLE_GAMEPAD)
-    list(APPEND WebKit_SOURCES
+    list(APPEND CyberKit_SOURCES
         UIProcess/Gamepad/libwpe/UIGamepadProviderLibWPE.cpp
     )
 endif ()
 
 if (ENABLE_WEBDRIVER AND USE_WPE_BACKEND_PLAYSTATION)
-    list(APPEND WebKit_SOURCES
+    list(APPEND CyberKit_SOURCES
         UIProcess/Automation/libwpe/WebAutomationSessionLibWPE.cpp
     )
 endif ()
 
 if (USE_COORDINATED_GRAPHICS)
-    list(APPEND WebKit_SOURCES
+    list(APPEND CyberKit_SOURCES
         Shared/CoordinatedGraphics/CoordinatedGraphicsScene.cpp
         Shared/CoordinatedGraphics/SimpleViewportController.cpp
 
@@ -180,7 +180,7 @@ if (USE_COORDINATED_GRAPHICS)
 endif ()
 
 if (USE_GRAPHICS_LAYER_WC)
-    list(APPEND WebKit_SOURCES
+    list(APPEND CyberKit_SOURCES
         GPUProcess/graphics/RemoteGraphicsContextGLWC.cpp
 
         GPUProcess/graphics/wc/RemoteWCLayerTreeHost.cpp
@@ -201,7 +201,7 @@ if (USE_GRAPHICS_LAYER_WC)
         WebProcess/WebPage/wc/WCTileGrid.cpp
     )
 
-    list(APPEND WebKit_INCLUDE_DIRECTORIES
+    list(APPEND CyberKit_INCLUDE_DIRECTORIES
         "${WEBKIT_DIR}/GPUProcess/graphics/wc"
         "${WEBKIT_DIR}/Shared/wc"
         "${WEBKIT_DIR}/UIProcess/wc"
@@ -209,22 +209,22 @@ if (USE_GRAPHICS_LAYER_WC)
         "${WEBKIT_DIR}/WebProcess/WebPage/wc"
     )
 
-    list(APPEND WebKit_MESSAGES_IN_FILES
+    list(APPEND CyberKit_MESSAGES_IN_FILES
         GPUProcess/graphics/wc/RemoteWCLayerTreeHost
     )
 endif ()
 
 if (USE_WPE_BACKEND_PLAYSTATION)
-    list(APPEND WebKit_SOURCES
+    list(APPEND CyberKit_SOURCES
         UIProcess/Launcher/libwpe/ProcessProviderLibWPE.cpp
 
         UIProcess/Launcher/playstation/ProcessProviderPlayStation.cpp
     )
-    list(APPEND WebKit_INCLUDE_DIRECTORIES "${WEBKIT_DIR}/UIProcess/Launcher/libwpe")
+    list(APPEND CyberKit_INCLUDE_DIRECTORIES "${WEBKIT_DIR}/UIProcess/Launcher/libwpe")
 endif ()
 
 # PlayStation specific
-list(APPEND WebKit_PUBLIC_FRAMEWORK_HEADERS
+list(APPEND CyberKit_PUBLIC_FRAMEWORK_HEADERS
     Shared/API/c/cairo/WKImageCairo.h
 
     Shared/API/c/curl/WKCertificateInfoCurl.h

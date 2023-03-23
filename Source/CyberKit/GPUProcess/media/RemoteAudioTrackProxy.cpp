@@ -35,7 +35,7 @@
 #include "MediaPlayerPrivateRemoteMessages.h"
 #include "RemoteMediaPlayerProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -111,6 +111,6 @@ void RemoteAudioTrackProxy::languageChanged(const AtomString&)
     configurationChanged();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

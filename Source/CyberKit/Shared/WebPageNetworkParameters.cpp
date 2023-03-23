@@ -28,7 +28,7 @@
 
 #include "ArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPageNetworkParameters::encode(IPC::Encoder& encoder) const
 {

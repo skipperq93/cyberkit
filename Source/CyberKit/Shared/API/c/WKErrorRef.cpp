@@ -31,22 +31,22 @@
 
 WKTypeID WKErrorGetTypeID()
 {
-    return WebKit::toAPI(API::Error::APIType);
+    return CyberKit::toAPI(API::Error::APIType);
 }
 
 WKStringRef WKErrorCopyWKErrorDomain()
 {
-    return WebKit::toCopiedAPI(API::Error::webKitErrorDomain());
+    return CyberKit::toCopiedAPI(API::Error::webKitErrorDomain());
 }
 
 WKStringRef WKErrorCopyDomain(WKErrorRef errorRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(errorRef)->domain());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(errorRef)->domain());
 }
 
 int WKErrorGetErrorCode(WKErrorRef errorRef)
 {
-    auto errorCode = WebKit::toImpl(errorRef)->errorCode();
+    auto errorCode = CyberKit::toImpl(errorRef)->errorCode();
     switch (errorCode) {
     case API::Error::Policy::CannotShowMIMEType:
         return kWKErrorCodeCannotShowMIMEType;
@@ -87,10 +87,10 @@ int WKErrorGetErrorCode(WKErrorRef errorRef)
 
 WKURLRef WKErrorCopyFailingURL(WKErrorRef errorRef)
 {
-    return WebKit::toCopiedURLAPI(WebKit::toImpl(errorRef)->failingURL());
+    return CyberKit::toCopiedURLAPI(CyberKit::toImpl(errorRef)->failingURL());
 }
 
 WKStringRef WKErrorCopyLocalizedDescription(WKErrorRef errorRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(errorRef)->localizedDescription());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(errorRef)->localizedDescription());
 }

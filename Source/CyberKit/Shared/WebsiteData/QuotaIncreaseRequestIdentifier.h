@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum QuotaIncreaseRequestIdentifierType { };
 using QuotaIncreaseRequestIdentifier = ObjectIdentifier<QuotaIncreaseRequestIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit

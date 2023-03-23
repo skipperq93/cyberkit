@@ -196,7 +196,7 @@
 
 namespace IPC {
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 void ArgumentCoder<DOMCacheEngine::Record>::encode(Encoder& encoder, const DOMCacheEngine::Record& record)
 {
@@ -513,7 +513,7 @@ bool ArgumentCoder<RefPtr<Image>>::decode(Decoder& decoder, RefPtr<Image>& image
     if (!didCreateGraphicsContext || !*didCreateGraphicsContext)
         return false;
 
-    std::optional<RefPtr<WebKit::ShareableBitmap>> bitmap;
+    std::optional<RefPtr<CyberKit::ShareableBitmap>> bitmap;
     decoder >> bitmap;
     if (!bitmap)
         return false;

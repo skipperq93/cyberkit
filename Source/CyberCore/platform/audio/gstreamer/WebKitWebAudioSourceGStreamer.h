@@ -24,13 +24,13 @@
 #include <wtf/Forward.h>
 
 #define WEBKIT_TYPE_WEB_AUDIO_SRC (webkit_web_audio_src_get_type())
-#define WEBKIT_WEB_AUDIO_SRC(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_AUDIO_SRC, WebKitWebAudioSrc))
+#define WEBKIT_WEB_AUDIO_SRC(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_AUDIO_SRC, CyberKitWebAudioSrc))
 
-typedef struct _WebKitWebAudioSrc WebKitWebAudioSrc;
+typedef struct _CyberKitWebAudioSrc CyberKitWebAudioSrc;
 
 GType webkit_web_audio_src_get_type();
 
-void webkitWebAudioSourceSetDispatchToRenderThreadFunction(WebKitWebAudioSrc*, Function<void(Function<void()>&&)>&&);
+void webkitWebAudioSourceSetDispatchToRenderThreadFunction(CyberKitWebAudioSrc*, Function<void(Function<void()>&&)>&&);
 
 #endif // USE(GSTREAMER)
 

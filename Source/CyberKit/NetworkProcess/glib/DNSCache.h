@@ -35,7 +35,7 @@
 
 typedef struct _GInetAddress GInetAddress;
 
-namespace WebKit {
+namespace CyberKit {
 
 class DNSCache {
 public:
@@ -69,4 +69,4 @@ private:
     RunLoop::Timer m_expiredTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

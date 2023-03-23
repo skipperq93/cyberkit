@@ -20,8 +20,8 @@
 #pragma once
 
 #include "UserMessage.h"
-#include "WebKitUserMessage.h"
+#include "CyberKitUserMessage.h"
 
-WebKitUserMessage* webkitUserMessageCreate(WebKit::UserMessage&&);
-WebKitUserMessage* webkitUserMessageCreate(WebKit::UserMessage&&, CompletionHandler<void(WebKit::UserMessage&&)>&&);
-WebKit::UserMessage& webkitUserMessageGetMessage(WebKitUserMessage*);
+CyberKitUserMessage* webkitUserMessageCreate(CyberKit::UserMessage&&);
+CyberKitUserMessage* webkitUserMessageCreate(CyberKit::UserMessage&&, CompletionHandler<void(CyberKit::UserMessage&&)>&&);
+CyberKit::UserMessage& webkitUserMessageGetMessage(CyberKitUserMessage*);

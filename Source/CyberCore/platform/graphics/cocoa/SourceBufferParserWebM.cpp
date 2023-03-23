@@ -516,11 +516,11 @@ static bool canLoadFormatReader()
 #elif USE(APPLE_INTERNAL_SDK)
     return true;
 #else
-    // FIXME (rdar://72320419): If WebKit was built with ad-hoc code-signing,
+    // FIXME (rdar://72320419): If CyberKit was built with ad-hoc code-signing,
     // CoreMedia will only load the format reader plug-in when a user default
     // is set on Apple internal OSs. That means we cannot currently support WebM
     // in public SDK builds on customer OSs.
-    static bool allowsInternalSecurityPolicies = os_variant_allows_internal_security_policies("com.apple.WebKit");
+    static bool allowsInternalSecurityPolicies = os_variant_allows_internal_security_policies("com.apple.CyberKit");
     return allowsInternalSecurityPolicies;
 #endif // !USE(APPLE_INTERNAL_SDK)
 }

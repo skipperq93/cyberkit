@@ -29,7 +29,7 @@
 #include <VideoToolbox/VTCompressionSession.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/VideoToolboxSPIAdditions.h>
+#import <CyberKitAdditions/VideoToolboxSPIAdditions.h>
 #endif
 
 #include <wtf/SoftLinking.h>
@@ -55,7 +55,7 @@ SOFT_LINK_FUNCTION_FOR_SOURCE(PAL, VideoToolbox, VTCompressionSessionPrepareToEn
 SOFT_LINK_FUNCTION_FOR_SOURCE(PAL, VideoToolbox, VTCompressionSessionInvalidate, void, (VTCompressionSessionRef session), (session))
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/VideoToolboxSoftLinkAdditionsImplementation.h>
+#import <CyberKitAdditions/VideoToolboxSoftLinkAdditionsImplementation.h>
 #endif
 
 #endif // USE(AVFOUNDATION)

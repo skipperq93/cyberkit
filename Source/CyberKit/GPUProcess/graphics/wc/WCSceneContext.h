@@ -34,7 +34,7 @@ class GLContext;
 class TextureMapper;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCSceneContext {
     WTF_MAKE_FAST_ALLOCATED;
@@ -50,6 +50,6 @@ private:
     std::unique_ptr<CyberCore::GLContext> m_glContext;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

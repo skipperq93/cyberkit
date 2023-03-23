@@ -31,7 +31,7 @@
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-#import <WebKitAdditions/CGDisplayListImageBufferAdditions.h>
+#import <CyberKitAdditions/CGDisplayListImageBufferAdditions.h>
 #endif
 
 @implementation CALayer (CyberCoreCALayerExtras)

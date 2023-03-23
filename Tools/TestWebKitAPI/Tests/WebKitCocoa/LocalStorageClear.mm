@@ -33,7 +33,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebsiteDataStore.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
@@ -61,21 +61,21 @@ TEST(WKWebView, LocalStorageClear)
     @autoreleasepool {
         RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"LocalStorageClear" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"LocalStorageClear" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&readyToContinue);
+        TestCyberKitAPI::Util::run(&readyToContinue);
         readyToContinue = false;
 
         webView = nil;
     }
 
-    NSString *dbPath = [@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/LocalStorage/file__0.localstorage" stringByExpandingTildeInPath];
-    NSString *dbSHMPath = [@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/LocalStorage/file__0.localstorage-shm" stringByExpandingTildeInPath];
-    NSString *dbWALPath = [@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/LocalStorage/file__0.localstorage-wal" stringByExpandingTildeInPath];
-    NSString *trackerPath = [@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/LocalStorage/StorageTracker.db" stringByExpandingTildeInPath];
-    NSString *trackerSHMPath = [@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/LocalStorage/StorageTracker.db-shm" stringByExpandingTildeInPath];
-    NSString *trackerWALPath = [@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/LocalStorage/StorageTracker.db-wal" stringByExpandingTildeInPath];
+    NSString *dbPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage" stringByExpandingTildeInPath];
+    NSString *dbSHMPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage-shm" stringByExpandingTildeInPath];
+    NSString *dbWALPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage-wal" stringByExpandingTildeInPath];
+    NSString *trackerPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db" stringByExpandingTildeInPath];
+    NSString *trackerSHMPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db-shm" stringByExpandingTildeInPath];
+    NSString *trackerWALPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db-wal" stringByExpandingTildeInPath];
 
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:dbPath]);
@@ -87,7 +87,7 @@ TEST(WKWebView, LocalStorageClear)
         readyToContinue = true;
     }];
 
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 static long long fileSize(NSURL* url)
@@ -109,7 +109,7 @@ NSString *defaultWebsiteCacheDirectory()
 #if PLATFORM(IOS_FAMILY)
     return nil;
 #else
-    return @"~/Library/Caches/com.apple.WebKit.TestWebKitAPI/WebKit";
+    return @"~/Library/Caches/com.apple.CyberKit.TestCyberKitAPI/CyberKit";
 #endif
 }
 
@@ -135,7 +135,7 @@ TEST(WKWebView, ClearAppCache)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     // Start with a clean slate of Website caches.
     if (auto *websiteCacheDirectory = defaultWebsiteCacheDirectory()) {
@@ -148,9 +148,9 @@ TEST(WKWebView, ClearAppCache)
         [[NSFileManager defaultManager] removeItemAtURL:appCacheURL error:nil];
     }
 
-    NSURL *dbResourceURL = [[NSBundle mainBundle] URLForResource:@"ApplicationCache" withExtension:@"db" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *shmResourceURL = [[NSBundle mainBundle] URLForResource:@"ApplicationCache" withExtension:@"db-shm" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *walResourceURL = [[NSBundle mainBundle] URLForResource:@"ApplicationCache" withExtension:@"db-wal" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *dbResourceURL = [[NSBundle mainBundle] URLForResource:@"ApplicationCache" withExtension:@"db" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *shmResourceURL = [[NSBundle mainBundle] URLForResource:@"ApplicationCache" withExtension:@"db-shm" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *walResourceURL = [[NSBundle mainBundle] URLForResource:@"ApplicationCache" withExtension:@"db-wal" subdirectory:@"TestCyberKitAPI.resources"];
 
     NSURL *targetURL = [NSURL fileURLWithPath:[defaultApplicationCacheDirectory() stringByExpandingTildeInPath]];
     [[NSFileManager defaultManager] createDirectoryAtURL:targetURL withIntermediateDirectories:YES attributes:nil error:nil];
@@ -187,7 +187,7 @@ TEST(WKWebView, ClearAppCache)
         originalWebsiteDataRecordCount = websiteDataRecords.count;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^()
@@ -203,5 +203,5 @@ TEST(WKWebView, ClearAppCache)
             readyToContinue = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }

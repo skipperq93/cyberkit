@@ -34,7 +34,7 @@
 #include <CyberCore/SQLiteStatementAutoResetScope.h>
 #include <CyberCore/SQLiteTransaction.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 constexpr auto setUnattributedPrivateClickMeasurementAsExpiredQuery = "UPDATE UnattributedPrivateClickMeasurement SET timeOfAdClick = -1.0"_s;
 constexpr auto insertUnattributedPrivateClickMeasurementQuery = "INSERT OR REPLACE INTO UnattributedPrivateClickMeasurement (sourceSiteDomainID, destinationSiteDomainID, "
@@ -723,4 +723,4 @@ void Database::addDestinationTokenColumnsIfNecessary()
     }
 }
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

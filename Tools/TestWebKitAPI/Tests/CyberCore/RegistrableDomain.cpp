@@ -30,7 +30,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(RegistrableDomain, StringVsURL)
 {
@@ -99,4 +99,4 @@ TEST(RegistrableDomain, UncheckedCreateFromHost)
     ASSERT_EQ(dotWebkitDomainFromHost, webkitDomainFromString);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

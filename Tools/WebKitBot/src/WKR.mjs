@@ -33,7 +33,7 @@ import {dataLogLn} from "./Utility.mjs";
 // Change to true when debugging to avoid posting notifications to Slack.
 const DRY = false;
 
-const commitEndpointURL = "https://git.webkit.org/?p=WebKit-https.git;a=atom";
+const commitEndpointURL = "https://git.webkit.org/?p=CyberKit-https.git;a=atom";
 const defaultInterval = 60 * 1000;
 
 async function sleep(milliseconds)

@@ -46,7 +46,7 @@ class NetworkLoadMetrics;
 class ResourceRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteMediaResource;
 
@@ -67,7 +67,7 @@ private:
     void responseReceived(RemoteMediaResourceIdentifier, const CyberCore::ResourceResponse&, bool, CompletionHandler<void(CyberCore::ShouldContinuePolicyCheck)>&&);
     void redirectReceived(RemoteMediaResourceIdentifier, CyberCore::ResourceRequest&&, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&&);
     void dataSent(RemoteMediaResourceIdentifier, uint64_t, uint64_t);
-    void dataReceived(RemoteMediaResourceIdentifier, IPC::SharedBufferReference&&, CompletionHandler<void(std::optional<WebKit::SharedMemory::Handle>&&)>&&);
+    void dataReceived(RemoteMediaResourceIdentifier, IPC::SharedBufferReference&&, CompletionHandler<void(std::optional<CyberKit::SharedMemory::Handle>&&)>&&);
     void accessControlCheckFailed(RemoteMediaResourceIdentifier, const CyberCore::ResourceError&);
     void loadFailed(RemoteMediaResourceIdentifier, const CyberCore::ResourceError&);
     void loadFinished(RemoteMediaResourceIdentifier, const CyberCore::NetworkLoadMetrics&);
@@ -75,6 +75,6 @@ private:
     HashMap<RemoteMediaResourceIdentifier, RemoteMediaResource*> m_remoteMediaResources;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

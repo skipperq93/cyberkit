@@ -154,13 +154,13 @@ protected:
 
     RegistryLookupResult isConfigurationSupported(Configuration, const MediaConfiguration&) const;
 
-    struct GstCapsWebKitMapping {
+    struct GstCapsCyberKitMapping {
         ElementFactories::Type elementType;
         const char* capsString;
         Vector<AtomString> webkitMimeTypes;
         Vector<AtomString> webkitCodecPatterns;
     };
-    void fillMimeTypeSetFromCapsMapping(const ElementFactories&, const Vector<GstCapsWebKitMapping>&);
+    void fillMimeTypeSetFromCapsMapping(const ElementFactories&, const Vector<GstCapsCyberKitMapping>&);
 
     CodecLookupResult isAVC1CodecSupported(Configuration, const String& codec, bool shouldCheckForHardwareUse) const;
 

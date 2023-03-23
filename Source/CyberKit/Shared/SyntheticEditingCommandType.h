@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
     
 enum class SyntheticEditingCommandType : uint8_t  {
     Undo,
@@ -35,18 +35,18 @@ enum class SyntheticEditingCommandType : uint8_t  {
     ToggleUnderline
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::SyntheticEditingCommandType> {
+template<> struct EnumTraits<CyberKit::SyntheticEditingCommandType> {
     using values = EnumValues <
-    WebKit::SyntheticEditingCommandType,
-    WebKit::SyntheticEditingCommandType::Undo,
-    WebKit::SyntheticEditingCommandType::Redo,
-    WebKit::SyntheticEditingCommandType::ToggleBoldface,
-    WebKit::SyntheticEditingCommandType::ToggleItalic,
-    WebKit::SyntheticEditingCommandType::ToggleUnderline
+    CyberKit::SyntheticEditingCommandType,
+    CyberKit::SyntheticEditingCommandType::Undo,
+    CyberKit::SyntheticEditingCommandType::Redo,
+    CyberKit::SyntheticEditingCommandType::ToggleBoldface,
+    CyberKit::SyntheticEditingCommandType::ToggleItalic,
+    CyberKit::SyntheticEditingCommandType::ToggleUnderline
     >;
 };
 

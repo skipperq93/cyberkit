@@ -32,7 +32,7 @@
 #endif
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebProcessCreationParameters::WebProcessCreationParameters(WebProcessCreationParameters&&) = default;
 WebProcessCreationParameters& WebProcessCreationParameters::operator=(WebProcessCreationParameters&&) = default;
@@ -601,4 +601,4 @@ bool WebProcessCreationParameters::decode(IPC::Decoder& decoder, WebProcessCreat
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

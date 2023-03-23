@@ -31,7 +31,7 @@
 #include <optional>
 #include <variant>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ImageCopyExternalImage {
     // FIXME: Handle the source.
@@ -39,6 +39,6 @@ struct ImageCopyExternalImage {
     bool flipY { false };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

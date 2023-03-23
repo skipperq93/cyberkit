@@ -1562,7 +1562,7 @@ static void appendStringToResult(NSMutableString *result, NSString *string)
             return [NSString stringWithFormat:@"%d", heading->headingLevel()];
     }
 
-    // rdar://8131388 WebKit should expose the same info as UIKit for its password fields.
+    // rdar://8131388 CyberKit should expose the same info as UIKit for its password fields.
     if (backingObject->isPasswordField() && ![self _accessibilityIsStrongPasswordField]) {
         int passwordLength = backingObject->accessibilityPasswordFieldLength();
         NSMutableString* string = [NSMutableString string];

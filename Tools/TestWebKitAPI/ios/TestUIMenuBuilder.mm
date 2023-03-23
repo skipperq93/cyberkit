@@ -40,7 +40,7 @@
         return nil;
 
     // FIXME: A flat dictionary containing all UIMenus is sufficient to test all of the
-    // non-default items currently supplied by WebKit. We'll want to augment this in the
+    // non-default items currently supplied by CyberKit. We'll want to augment this in the
     // future if we need to test menu nesting or item ordering.
     _menusByIdentifier = adoptNS([NSMutableDictionary<UIMenuIdentifier, UIMenu *> new]);
     return self;

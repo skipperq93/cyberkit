@@ -27,7 +27,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 String executablePathOfWebProcess();
 String executablePathOfPluginProcess();

@@ -57,7 +57,7 @@
 #include <wtf/SuspendableWorkQueue.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 const OptionSet<WebsiteDataType>& WebResourceLoadStatisticsStore::monitoredDataTypes()
@@ -1578,6 +1578,6 @@ bool WebResourceLoadStatisticsStore::ThirdPartyData::operator<(const ThirdPartyD
     return underFirstParties.size() < other.underFirstParties.size();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -54,7 +54,7 @@ std::ostream& operator<<(std::ostream& out, const MediaTime& val)
 
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // MediaTime values should be able to be declared static anywhere, just like you can do so with integers.
 // This should not require global constructors or destructors.

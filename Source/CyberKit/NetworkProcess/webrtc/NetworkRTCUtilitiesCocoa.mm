@@ -43,7 +43,7 @@ SOFT_LINK_LIBRARY_OPTIONAL(libnetwork)
 SOFT_LINK_OPTIONAL(libnetwork, nw_parameters_set_attributed_bundle_identifier, void, __cdecl, (nw_parameters_t, const char*))
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void setNWParametersApplicationIdentifiers(nw_parameters_t parameters, const char* sourceApplicationBundleIdentifier, std::optional<audit_token_t> sourceApplicationAuditToken, const String& attributedBundleIdentifier)
 {
@@ -80,6 +80,6 @@ bool isKnownTracker(const CyberCore::RegistrableDomain& domain)
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

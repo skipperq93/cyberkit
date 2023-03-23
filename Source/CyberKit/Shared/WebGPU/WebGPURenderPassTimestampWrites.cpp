@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPURenderPassTimestampWrites.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<RenderPassTimestampWrite> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::RenderPassTimestampWrite& renderPassTimestampWrite)
 {
@@ -78,6 +78,6 @@ std::optional<PAL::WebGPU::RenderPassTimestampWrites> ConvertFromBackingContext:
     return timestampWrites;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -29,7 +29,7 @@
 
 #include "MediaDescriptionInfo.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteMediaDescription : public CyberCore::MediaDescription {
 public:
@@ -60,6 +60,6 @@ private:
     bool m_isText { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

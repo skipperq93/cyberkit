@@ -39,7 +39,7 @@
 #include <wtf/Logger.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteMediaPlayerProxy;
 struct RemoteMediaPlayerConfiguration;
@@ -93,6 +93,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

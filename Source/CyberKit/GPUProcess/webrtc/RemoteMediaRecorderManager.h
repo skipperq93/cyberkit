@@ -42,7 +42,7 @@ struct ExceptionData;
 struct MediaRecorderPrivateOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 class RemoteMediaRecorder;

@@ -1,9 +1,9 @@
-# WebKitBot
+# CyberKitBot
 
-New WebKitBot implementation for WebKit Slack #changes and #dev channels.
-This node.js app has two bot features, WKR and WebKitBot.
+New CyberKitBot implementation for CyberKit Slack #changes and #dev channels.
+This node.js app has two bot features, WKR and CyberKitBot.
 WKR is fetching git.webkit.org RSS feed periodically, extracting data from that, and posting them to #changes channel.
-WebKitBot is an interactive bot in #dev to serve `revert` feature for you without clobbering your WebKit working copy.
+CyberKitBot is an interactive bot in #dev to serve `revert` feature for you without clobbering your CyberKit working copy.
 
 ## Steps to run
 
@@ -18,13 +18,13 @@ Put `.env` file including the followings.
 ```
 slackURL="<Slack Endpoint URL>"
 SLACK_TOKEN="<Slack API Token>"
-webkitWorkingDirectory="/path/to/WebKit/repository/used/used/by/revert/command"
+webkitWorkingDirectory="/path/to/CyberKit/repository/used/used/by/revert/command"
 webkitBugzillaUsername="commit-queue@webkit.org"
 webkitBugzillaPassword="<commit-queue's password>"
 ```
 
 - Find Slack endpoint URL from [https://webkit.slack.com/apps/A0F7XDUAZ-incoming-webhooks?next_id=0](Incomming WebHook page).
-- Find Slack API Token (called `Bot User OAuth Access Token`) from [https://api.slack.com/apps/A013CJ77QFM](WebKitBot's app page).
+- Find Slack API Token (called `Bot User OAuth Access Token`) from [https://api.slack.com/apps/A013CJ77QFM](CyberKitBot's app page).
 
 ## How to test
 

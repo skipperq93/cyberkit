@@ -42,7 +42,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 using SourceSite = CyberCore::PCM::SourceSite;
@@ -776,4 +776,4 @@ void PrivateClickMeasurementManager::allowTLSCertificateChainForLocalPCMTesting(
     PCM::NetworkLoader::allowTLSCertificateChainForLocalPCMTesting(certificateInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

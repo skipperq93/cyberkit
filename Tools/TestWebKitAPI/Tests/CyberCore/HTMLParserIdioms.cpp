@@ -31,7 +31,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static int testParseHTMLInteger(StringView input)
 {
@@ -161,4 +161,4 @@ TEST(CyberCoreHTMLParserIdioms, parseHTMLNonNegativeInteger)
     EXPECT_TRUE(parseHTMLNonNegativeIntegerFails("infinity"_s));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

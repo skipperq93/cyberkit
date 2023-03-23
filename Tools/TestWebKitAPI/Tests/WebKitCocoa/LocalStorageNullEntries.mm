@@ -31,7 +31,7 @@
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
@@ -58,10 +58,10 @@ TEST(WKWebView, LocalStorageNullEntries)
     [configuration _setAllowUniversalAccessFromFileURLs:YES];
 
     // Copy the inconsistent database files to the LocalStorage directory
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"localstorage" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"localstorage-shm" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"localstorage" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"localstorage-shm" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/LocalStorage/" stringByExpandingTildeInPath]];
+    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/" stringByExpandingTildeInPath]];
     [[NSFileManager defaultManager] createDirectoryAtURL:targetURL withIntermediateDirectories:YES attributes:nil error:nil];
 
     [[NSFileManager defaultManager] copyItemAtURL:url1 toURL:[targetURL URLByAppendingPathComponent:@"file__0.localstorage"] error:nil];
@@ -69,11 +69,11 @@ TEST(WKWebView, LocalStorageNullEntries)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     readyToContinue = false;
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     webView = nil;
 

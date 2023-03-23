@@ -248,7 +248,7 @@ Shared/WebGeolocationPosition.cpp
 Shared/WebHitTestResultData.cpp
 Shared/WebImage.cpp
 Shared/WebKeyboardEvent.cpp
-Shared/WebKit2Initialize.cpp
+Shared/CyberKit2Initialize.cpp
 Shared/WebMemorySampler.cpp
 Shared/WebMouseEvent.cpp
 Shared/WebPageCreationParameters.cpp

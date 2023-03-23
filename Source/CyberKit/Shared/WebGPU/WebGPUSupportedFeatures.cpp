@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUSupportedFeatures.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<SupportedFeatures> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::SupportedFeatures& supportedFeatures)
 {
@@ -44,6 +44,6 @@ RefPtr<PAL::WebGPU::SupportedFeatures> ConvertFromBackingContext::convertFromBac
     return { PAL::WebGPU::SupportedFeatures::create(supportedFeatures.features) };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -50,7 +50,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void contextMenuCopyLink(WebView* webView, int itemIndex)
 {
@@ -94,7 +94,7 @@ TEST(CyberKitLegacy, ContextMenuCanCopyURL)
     [window.get().contentView addSubview:webView.get()];
     webView.get().frameLoadDelegate = delegate.get();
 
-    [webView.get().mainFrame loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"ContextMenuCanCopyURL" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView.get().mainFrame loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"ContextMenuCanCopyURL" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     Util::run(&didFinishLoad);
 
@@ -125,4 +125,4 @@ TEST(CyberKitLegacy, ContextMenuCanCopyURL)
     EXPECT_WK_STREQ(@"File:Texas_Wheelers_cast.JPG", [titles objectAtIndex:0]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

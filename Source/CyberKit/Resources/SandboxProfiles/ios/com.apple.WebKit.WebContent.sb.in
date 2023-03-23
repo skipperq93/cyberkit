@@ -308,7 +308,7 @@
     )
 
 #if !ENABLE(WEBCONTENT_GPU_SANDBOX_EXTENSIONS_BLOCKING)
-    ; WebKit-required IOKit classes
+    ; CyberKit-required IOKit classes
     (allow iokit-open-user-client
         (require-all
             (extension "com.apple.webkit.extension.iokit")
@@ -640,7 +640,7 @@
 
 (deny file-read* (with no-report)
     (home-literal
-        "/Library/Preferences/com.apple.WebKit.WebContent.plist"
+        "/Library/Preferences/com.apple.CyberKit.WebContent.plist"
         "/Library/Preferences/com.apple.CFNetwork.plist"
         "/Library/Preferences/com.apple.AppSupport.plist"
     )
@@ -883,9 +883,9 @@
 (deny iokit-open-service)
 #elif HAVE(SANDBOX_STATE_FLAGS)
 ;; This rule enables the WebContent process to enable the "BlockIOKitInWebContentSandbox" sandbox variable
-;; by reading a preference from the domain "com.apple.WebKit.WebContent.BlockIOKitInWebContentSandbox".
+;; by reading a preference from the domain "com.apple.CyberKit.WebContent.BlockIOKitInWebContentSandbox".
 (deny user-preference-read (with enable-state-flag "BlockIOKitInWebContentSandbox")
-    (preference-domain "com.apple.WebKit.WebContent.BlockIOKitInWebContentSandbox"))
+    (preference-domain "com.apple.CyberKit.WebContent.BlockIOKitInWebContentSandbox"))
 
 (with-filter (state-flag "BlockIOKitInWebContentSandbox")
     (deny iokit-open-service)
@@ -1207,9 +1207,9 @@
             
 #if HAVE(SANDBOX_STATE_FLAGS)
     ;; This rule enables the WebContent process to flip the "AppCacheDisabled" sandbox variable
-    ;; by reading a preference from the domain "com.apple.WebKit.WebContent.AppCacheDisabled".
+    ;; by reading a preference from the domain "com.apple.CyberKit.WebContent.AppCacheDisabled".
     (deny user-preference-read (with enable-state-flag "AppCacheDisabled")
-        (preference-domain "com.apple.WebKit.WebContent.AppCacheDisabled"))
+        (preference-domain "com.apple.CyberKit.WebContent.AppCacheDisabled"))
  
     (with-filter (require-not (state-flag "AppCacheDisabled"))
         (allow system-fcntl (appcache-fcntl-commands)))
@@ -1492,7 +1492,7 @@
         "com.apple.webinspectord.availability_check"))
 
 #if ENABLE(SYSTEM_CONTENT_PATH_SANDBOX_RULES)
-#include <WebKitAdditions/SystemContentSandbox-ios.defs>
+#include <CyberKitAdditions/SystemContentSandbox-ios.defs>
 
 (allow file-read* file-test-existence
     (apply subpath file-read-existence-secondary-paths))

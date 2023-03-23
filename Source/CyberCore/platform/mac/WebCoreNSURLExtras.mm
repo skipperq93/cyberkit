@@ -54,7 +54,7 @@ NSURL *URLByCanonicalizingURL(NSURL *URL)
     // This applies NSURL's concept of canonicalization, but not URL's concept. It would
     // make sense to apply both, but when we tried that it caused a performance degradation
     // (see 5315926). It might make sense to apply only the URL concept and not the NSURL
-    // concept, but it's too risky to make that change for WebKit 3.0.
+    // concept, but it's too risky to make that change for CyberKit 3.0.
     NSURLRequest *newRequest = [concreteClass canonicalRequestForRequest:request.get()];
     return retainPtr([newRequest URL]).autorelease();
 }

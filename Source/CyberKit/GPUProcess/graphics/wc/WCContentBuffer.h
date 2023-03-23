@@ -32,7 +32,7 @@
 #include <CyberCore/ProcessIdentifier.h>
 #include <CyberCore/TextureMapperPlatformLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCContentBuffer final : CyberCore::TextureMapperPlatformLayer::Client {
     WTF_MAKE_FAST_ALLOCATED;
@@ -86,6 +86,6 @@ private:
     Client* m_client { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

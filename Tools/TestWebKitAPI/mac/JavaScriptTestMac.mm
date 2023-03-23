@@ -31,7 +31,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WebView.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 ::testing::AssertionResult runJSTest(const char*, const char*, const char*, WebView *webView, const char* script, const char* expectedResult)
 {
@@ -44,6 +44,6 @@ namespace TestWebKitAPI {
     return runJSTest(viewExpr, scriptExpr, expectedResultExpr, [view _pageRefForTransitionToWKWebView], script, expectedResult);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

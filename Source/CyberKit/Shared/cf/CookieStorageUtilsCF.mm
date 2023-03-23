@@ -30,7 +30,7 @@
 #import <wtf/ProcessPrivilege.h>
 #import <wtf/cf/VectorCF.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<CFHTTPCookieStorageRef> cookieStorageFromIdentifyingData(const Vector<uint8_t>& data)
 {
@@ -54,4 +54,4 @@ Vector<uint8_t> identifyingDataFromCookieStorage(CFHTTPCookieStorageRef cookieSt
     return vectorFromCFData(cfData.get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

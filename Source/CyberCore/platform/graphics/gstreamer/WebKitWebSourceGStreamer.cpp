@@ -19,7 +19,7 @@
  */
 
 #include "config.h"
-#include "WebKitWebSourceGStreamer.h"
+#include "CyberKitWebSourceGStreamer.h"
 
 #if ENABLE(VIDEO) && USE(GSTREAMER)
 
@@ -59,12 +59,12 @@ class CachedResourceStreamingClient final : public PlatformMediaResourceClient {
     WTF_MAKE_FAST_ALLOCATED;
     WTF_MAKE_NONCOPYABLE(CachedResourceStreamingClient);
 public:
-    CachedResourceStreamingClient(WebKitWebSrc*, ResourceRequest&&, unsigned requestNumber);
+    CachedResourceStreamingClient(CyberKitWebSrc*, ResourceRequest&&, unsigned requestNumber);
     virtual ~CachedResourceStreamingClient();
 
     const HashSet<RefPtr<CyberCore::SecurityOrigin>>& securityOrigins() const { return m_origins; }
 
-    void setSourceElement(WebKitWebSrc* src) { m_src = GST_ELEMENT_CAST(src); }
+    void setSourceElement(CyberKitWebSrc* src) { m_src = GST_ELEMENT_CAST(src); }
 
 private:
     void checkUpdateBlocksize(unsigned bytesRead);
@@ -92,11 +92,11 @@ private:
     HashSet<RefPtr<CyberCore::SecurityOrigin>> m_origins;
 };
 
-struct WebKitWebSrcPrivate {
+struct CyberKitWebSrcPrivate {
     // Constants initialized during construction:
     unsigned minimumBlocksize;
 
-    // Configuration of the element (properties set by the user of WebKitWebSrc):
+    // Configuration of the element (properties set by the user of CyberKitWebSrc):
     // They can only change when state < PAUSED.
     CString originalURI;
     bool keepAlive;
@@ -108,7 +108,7 @@ struct WebKitWebSrcPrivate {
 #ifndef NDEBUG
         ~StreamingMembers()
         {
-            // By the time we're destroying WebKitWebSrcPrivate unLock() should have been called and therefore resource
+            // By the time we're destroying CyberKitWebSrcPrivate unLock() should have been called and therefore resource
             // should have already been cleared.
             ASSERT(!resource);
         }
@@ -132,7 +132,7 @@ struct WebKitWebSrcPrivate {
         bool isDownloadSuspended { false }; // Set to true from the network handler when the high water level is reached.
 
         // Obtained by means of GstContext queries before making the first HTTP request.
-        // We use it for getting access to WebKit networking objects: the PlatformMediaResourceLoader factory [createResourceLoader()]
+        // We use it for getting access to CyberKit networking objects: the PlatformMediaResourceLoader factory [createResourceLoader()]
         // and the player HTTP referrer string.
         CyberCore::MediaPlayer* player;
 
@@ -183,7 +183,7 @@ static void webKitWebSrcConstructed(GObject*);
 static void webKitWebSrcSetProperty(GObject*, guint propertyID, const GValue*, GParamSpec*);
 static void webKitWebSrcGetProperty(GObject*, guint propertyID, GValue*, GParamSpec*);
 static GstFlowReturn webKitWebSrcCreate(GstPushSrc*, GstBuffer**);
-static void webKitWebSrcMakeRequest(WebKitWebSrc*, DataMutexLocker<WebKitWebSrcPrivate::StreamingMembers>&);
+static void webKitWebSrcMakeRequest(CyberKitWebSrc*, DataMutexLocker<CyberKitWebSrcPrivate::StreamingMembers>&);
 static gboolean webKitWebSrcStart(GstBaseSrc*);
 static gboolean webKitWebSrcStop(GstBaseSrc*);
 static gboolean webKitWebSrcGetSize(GstBaseSrc*, guint64* size);
@@ -193,16 +193,16 @@ static gboolean webKitWebSrcQuery(GstBaseSrc*, GstQuery*);
 static gboolean webKitWebSrcUnLock(GstBaseSrc*);
 static gboolean webKitWebSrcUnLockStop(GstBaseSrc*);
 static void webKitWebSrcSetContext(GstElement*, GstContext*);
-static void restartLoaderIfNeeded(WebKitWebSrc*, DataMutexLocker<WebKitWebSrcPrivate::StreamingMembers>&);
-static void stopLoaderIfNeeded(WebKitWebSrc*, DataMutexLocker<WebKitWebSrcPrivate::StreamingMembers>&);
+static void restartLoaderIfNeeded(CyberKitWebSrc*, DataMutexLocker<CyberKitWebSrcPrivate::StreamingMembers>&);
+static void stopLoaderIfNeeded(CyberKitWebSrc*, DataMutexLocker<CyberKitWebSrcPrivate::StreamingMembers>&);
 
 #define webkit_web_src_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitWebSrc, webkit_web_src, GST_TYPE_PUSH_SRC,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitWebSrc, webkit_web_src, GST_TYPE_PUSH_SRC,
     G_IMPLEMENT_INTERFACE(GST_TYPE_URI_HANDLER, webKitWebSrcUriHandlerInit);
     GST_DEBUG_CATEGORY_INIT(webkit_web_src_debug, "webkitwebsrc", 0, "websrc element");
 )
 
-static void webkit_web_src_class_init(WebKitWebSrcClass* klass)
+static void webkit_web_src_class_init(CyberKitWebSrcClass* klass)
 {
     GObjectClass* oklass = G_OBJECT_CLASS(klass);
 
@@ -213,7 +213,7 @@ static void webkit_web_src_class_init(WebKitWebSrcClass* klass)
     GstElementClass* eklass = GST_ELEMENT_CLASS(klass);
     gst_element_class_add_static_pad_template(eklass, &srcTemplate);
 
-    gst_element_class_set_metadata(eklass, "WebKit Web source element", "Source/Network", "Handles HTTP/HTTPS uris",
+    gst_element_class_set_metadata(eklass, "CyberKit Web source element", "Source/Network", "Handles HTTP/HTTPS uris",
         "Philippe Normand <philn@igalia.com>");
 
     /* Allows setting the uri using the 'location' property, which is used
@@ -263,7 +263,7 @@ enum class ResetType {
     Hard
 };
 
-static void webkitWebSrcReset(WebKitWebSrc* src, DataMutexLocker<WebKitWebSrcPrivate::StreamingMembers>& members, ResetType resetType)
+static void webkitWebSrcReset(CyberKitWebSrc* src, DataMutexLocker<CyberKitWebSrcPrivate::StreamingMembers>& members, ResetType resetType)
 {
     GST_DEBUG_OBJECT(src, "Resetting internal state");
     gst_adapter_clear(members->adapter.get());
@@ -298,8 +298,8 @@ static void webKitWebSrcConstructed(GObject* object)
 {
     GST_CALL_PARENT(G_OBJECT_CLASS, constructed, (object));
 
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(object);
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(object);
+    CyberKitWebSrcPrivate* priv = src->priv;
 
     priv->minimumBlocksize = gst_base_src_get_blocksize(GST_BASE_SRC_CAST(src));
 
@@ -312,7 +312,7 @@ static void webKitWebSrcConstructed(GObject* object)
 
 static void webKitWebSrcSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* pspec)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(object);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(object);
 
     switch (propID) {
     case PROP_LOCATION:
@@ -340,8 +340,8 @@ static void webKitWebSrcSetProperty(GObject* object, guint propID, const GValue*
 
 static void webKitWebSrcGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* pspec)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(object);
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(object);
+    CyberKitWebSrcPrivate* priv = src->priv;
 
     switch (propID) {
     case PROP_LOCATION:
@@ -372,8 +372,8 @@ static void webKitWebSrcGetProperty(GObject* object, guint propID, GValue* value
 
 static void webKitWebSrcSetContext(GstElement* element, GstContext* context)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(element);
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(element);
+    CyberKitWebSrcPrivate* priv = src->priv;
 
     GST_DEBUG_OBJECT(src, "context type: %s", gst_context_get_context_type(context));
     if (gst_context_has_context_type(context, WEBKIT_WEB_SRC_PLAYER_CONTEXT_TYPE_NAME)) {
@@ -384,7 +384,7 @@ static void webKitWebSrcSetContext(GstElement* element, GstContext* context)
     GST_ELEMENT_CLASS(parent_class)->set_context(element, context);
 }
 
-static void restartLoaderIfNeeded(WebKitWebSrc* src, DataMutexLocker<WebKitWebSrcPrivate::StreamingMembers>& members)
+static void restartLoaderIfNeeded(CyberKitWebSrc* src, DataMutexLocker<CyberKitWebSrcPrivate::StreamingMembers>& members)
 {
     if (!members->isDownloadSuspended) {
         GST_TRACE_OBJECT(src, "download already active");
@@ -421,7 +421,7 @@ static void restartLoaderIfNeeded(WebKitWebSrc* src, DataMutexLocker<WebKitWebSr
 }
 
 
-static void stopLoaderIfNeeded(WebKitWebSrc* src, DataMutexLocker<WebKitWebSrcPrivate::StreamingMembers>& members)
+static void stopLoaderIfNeeded(CyberKitWebSrc* src, DataMutexLocker<CyberKitWebSrcPrivate::StreamingMembers>& members)
 {
     ASSERT(isMainThread());
 
@@ -459,14 +459,14 @@ static GstFlowReturn webKitWebSrcCreate(GstPushSrc* pushSrc, GstBuffer** buffer)
 {
     ASSERT(!isMainThread());
     GstBaseSrc* baseSrc = GST_BASE_SRC_CAST(pushSrc);
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrcPrivate* priv = src->priv;
     DataMutexLocker members { priv->dataMutex };
 
     // We need members->player to make requests. There are two mechanisms for this.
     //
     // 1) webKitWebSrcSetMediaPlayer() is called by MediaPlayerPrivateGStreamer by means of hooking playbin's
-    //    "source-setup" event. This doesn't work for additional WebKitWebSrc elements created by adaptivedemux.
+    //    "source-setup" event. This doesn't work for additional CyberKitWebSrc elements created by adaptivedemux.
     //
     // 2) A GstContext query made here.
     if (!members->player) {
@@ -484,7 +484,7 @@ static GstFlowReturn webKitWebSrcCreate(GstPushSrc* pushSrc, GstBuffer** buffer)
             return GST_FLOW_FLUSHING;
     }
     if (!members->player) {
-        GST_ERROR_OBJECT(src, "Couldn't obtain WebKitWebSrcPlayerContext, which is necessary to make network requests");
+        GST_ERROR_OBJECT(src, "Couldn't obtain CyberKitWebSrcPlayerContext, which is necessary to make network requests");
         return GST_FLOW_ERROR;
     }
 
@@ -628,7 +628,7 @@ static gboolean webKitWebSrcProcessExtraHeaders(GQuark fieldId, const GValue* va
 
 static gboolean webKitWebSrcStart(GstBaseSrc* baseSrc)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
 
     if (src->priv->originalURI.isNull()) {
         GST_ERROR_OBJECT(src, "No URI provided");
@@ -637,9 +637,9 @@ static gboolean webKitWebSrcStart(GstBaseSrc* baseSrc)
     return TRUE;
 }
 
-static void webKitWebSrcMakeRequest(WebKitWebSrc* src, DataMutexLocker<WebKitWebSrcPrivate::StreamingMembers>& members)
+static void webKitWebSrcMakeRequest(CyberKitWebSrc* src, DataMutexLocker<CyberKitWebSrcPrivate::StreamingMembers>& members)
 {
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrcPrivate* priv = src->priv;
 
     ASSERT(!priv->originalURI.isNull());
     ASSERT(members->requestedPosition != members->stopPosition);
@@ -696,9 +696,9 @@ static void webKitWebSrcMakeRequest(WebKitWebSrc* src, DataMutexLocker<WebKitWeb
 
     ASSERT(!isMainThread());
     RunLoop::main().dispatch([protector = WTF::ensureGRef(src), request = WTFMove(request), requestNumber = members->requestNumber] {
-        WebKitWebSrcPrivate* priv = protector->priv;
+        CyberKitWebSrcPrivate* priv = protector->priv;
         DataMutexLocker members { priv->dataMutex };
-        // Ignore this task (not making any HTTP request) if by now WebKitWebSrc streaming thread is already waiting
+        // Ignore this task (not making any HTTP request) if by now CyberKitWebSrc streaming thread is already waiting
         // for a different request. There is no point anymore in sending this one.
         if (members->requestNumber != requestNumber) {
             GST_DEBUG_OBJECT(protector.get(), "Skipping R%u, current request number is %u", requestNumber, members->requestNumber);
@@ -722,17 +722,17 @@ static void webKitWebSrcMakeRequest(WebKitWebSrc* src, DataMutexLocker<WebKitWeb
 
 static gboolean webKitWebSrcStop(GstBaseSrc* baseSrc)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
     // basesrc will always call unLock() and unLockStop() before calling this. See gst_base_src_stop().
     DataMutexLocker members { src->priv->dataMutex };
     webkitWebSrcReset(src, members, ResetType::Hard);
-    GST_DEBUG_OBJECT(src, "Stopped WebKitWebSrc");
+    GST_DEBUG_OBJECT(src, "Stopped CyberKitWebSrc");
     return TRUE;
 }
 
 static gboolean webKitWebSrcGetSize(GstBaseSrc* baseSrc, guint64* size)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
     DataMutexLocker members { src->priv->dataMutex };
 
     GST_DEBUG_OBJECT(src, "haveSize: %s, size: %" G_GUINT64_FORMAT, boolForPrinting(members->haveSize), members->size);
@@ -746,7 +746,7 @@ static gboolean webKitWebSrcGetSize(GstBaseSrc* baseSrc, guint64* size)
 
 static gboolean webKitWebSrcIsSeekable(GstBaseSrc* baseSrc)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
     DataMutexLocker members { src->priv->dataMutex };
     GST_DEBUG_OBJECT(src, "isSeekable: %s", boolForPrinting(members->isSeekable));
     return members->isSeekable;
@@ -763,7 +763,7 @@ static gboolean webKitWebSrcDoSeek(GstBaseSrc* baseSrc, GstSegment* segment)
     // Except for the initial seek, this function is only called if isSeekable() returns true.
     ASSERT(GST_ELEMENT(baseSrc)->current_state < GST_STATE_PAUSED || webKitWebSrcIsSeekable(baseSrc));
 
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
     DataMutexLocker members { src->priv->dataMutex };
 
     GST_DEBUG_OBJECT(src, "Seek segment: (%" G_GUINT64_FORMAT "-%" G_GUINT64_FORMAT ") Position previous to seek: %" G_GUINT64_FORMAT, segment->start, segment->stop, members->readPosition);
@@ -788,8 +788,8 @@ static gboolean webKitWebSrcDoSeek(GstBaseSrc* baseSrc, GstSegment* segment)
 
 static gboolean webKitWebSrcQuery(GstBaseSrc* baseSrc, GstQuery* query)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrcPrivate* priv = src->priv;
     gboolean result = FALSE;
 
     if (GST_QUERY_TYPE(query) == GST_QUERY_URI) {
@@ -816,7 +816,7 @@ static gboolean webKitWebSrcQuery(GstBaseSrc* baseSrc, GstQuery* query)
 
 static gboolean webKitWebSrcUnLock(GstBaseSrc* baseSrc)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
     DataMutexLocker members { src->priv->dataMutex };
 
     GST_DEBUG_OBJECT(src, "Unlock");
@@ -836,7 +836,7 @@ static gboolean webKitWebSrcUnLock(GstBaseSrc* baseSrc)
     if (!src->priv->keepAlive)
         members->loader = nullptr;
 
-    // Ensure all network callbacks from the old request don't feed data to WebKitWebSrc anymore.
+    // Ensure all network callbacks from the old request don't feed data to CyberKitWebSrc anymore.
     members->requestNumber++;
 
     // Wake up streaming thread.
@@ -847,7 +847,7 @@ static gboolean webKitWebSrcUnLock(GstBaseSrc* baseSrc)
 
 static gboolean webKitWebSrcUnLockStop(GstBaseSrc* baseSrc)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(baseSrc);
     DataMutexLocker members { src->priv->dataMutex };
     GST_DEBUG_OBJECT(src, "Unlock stop");
     members->isFlushing = false;
@@ -885,15 +885,15 @@ static URL convertPlaybinURI(const char* uriString)
 
 static gchar* webKitWebSrcGetUri(GstURIHandler* handler)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(handler);
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(handler);
     gchar* ret = g_strdup(src->priv->originalURI.data());
     return ret;
 }
 
 static gboolean webKitWebSrcSetUri(GstURIHandler* handler, const gchar* uri, GError** error)
 {
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(handler);
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(handler);
+    CyberKitWebSrcPrivate* priv = src->priv;
 
     if (GST_STATE(src) >= GST_STATE_PAUSED) {
         GST_ERROR_OBJECT(src, "URI can only be set in states < PAUSED");
@@ -930,7 +930,7 @@ static void webKitWebSrcUriHandlerInit(gpointer gIface, gpointer)
     iface->set_uri = webKitWebSrcSetUri;
 }
 
-void webKitWebSrcSetMediaPlayer(WebKitWebSrc* src, CyberCore::MediaPlayer* player, const String& referrer)
+void webKitWebSrcSetMediaPlayer(CyberKitWebSrc* src, CyberCore::MediaPlayer* player, const String& referrer)
 {
     ASSERT(player);
     DataMutexLocker members { src->priv->dataMutex };
@@ -938,13 +938,13 @@ void webKitWebSrcSetMediaPlayer(WebKitWebSrc* src, CyberCore::MediaPlayer* playe
     members->referrer = referrer;
 }
 
-bool webKitSrcPassedCORSAccessCheck(WebKitWebSrc* src)
+bool webKitSrcPassedCORSAccessCheck(CyberKitWebSrc* src)
 {
     DataMutexLocker members { src->priv->dataMutex };
     return members->didPassAccessControlCheck;
 }
 
-CachedResourceStreamingClient::CachedResourceStreamingClient(WebKitWebSrc* src, ResourceRequest&& request, unsigned requestNumber)
+CachedResourceStreamingClient::CachedResourceStreamingClient(CyberKitWebSrc* src, ResourceRequest&& request, unsigned requestNumber)
     : m_requestNumber(requestNumber)
     , m_src(GST_ELEMENT(src))
     , m_request(WTFMove(request))
@@ -956,9 +956,9 @@ CachedResourceStreamingClient::~CachedResourceStreamingClient() = default;
 void CachedResourceStreamingClient::checkUpdateBlocksize(unsigned bytesRead)
 {
     ASSERT(isMainThread());
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
     GstBaseSrc* baseSrc = GST_BASE_SRC_CAST(src);
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrcPrivate* priv = src->priv;
 
     unsigned blocksize = gst_base_src_get_blocksize(baseSrc);
     GST_LOG_OBJECT(src, "Checking to update blocksize. Read: %u, current blocksize: %u", bytesRead, blocksize);
@@ -993,8 +993,8 @@ void CachedResourceStreamingClient::checkUpdateBlocksize(unsigned bytesRead)
 void CachedResourceStreamingClient::responseReceived(PlatformMediaResource&, const ResourceResponse& response, CompletionHandler<void(ShouldContinuePolicyCheck)>&& completionHandler)
 {
     ASSERT(isMainThread());
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
+    CyberKitWebSrcPrivate* priv = src->priv;
     DataMutexLocker members { priv->dataMutex };
     if (members->requestNumber != m_requestNumber) {
         completionHandler(ShouldContinuePolicyCheck::No);
@@ -1104,8 +1104,8 @@ void CachedResourceStreamingClient::redirectReceived(PlatformMediaResource&, Res
 void CachedResourceStreamingClient::dataReceived(PlatformMediaResource&, const SharedBuffer& data)
 {
     ASSERT(isMainThread());
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
-    WebKitWebSrcPrivate* priv = src->priv;
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
+    CyberKitWebSrcPrivate* priv = src->priv;
 
     DataMutexLocker members { priv->dataMutex };
     if (members->requestNumber != m_requestNumber)
@@ -1143,7 +1143,7 @@ void CachedResourceStreamingClient::dataReceived(PlatformMediaResource&, const S
 void CachedResourceStreamingClient::accessControlCheckFailed(PlatformMediaResource&, const ResourceError& error)
 {
     ASSERT(isMainThread());
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
     DataMutexLocker members { src->priv->dataMutex };
     if (members->requestNumber != m_requestNumber)
         return;
@@ -1156,7 +1156,7 @@ void CachedResourceStreamingClient::accessControlCheckFailed(PlatformMediaResour
 void CachedResourceStreamingClient::loadFailed(PlatformMediaResource&, const ResourceError& error)
 {
     ASSERT(isMainThread());
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
     DataMutexLocker members { src->priv->dataMutex };
     if (members->requestNumber != m_requestNumber)
         return;
@@ -1174,7 +1174,7 @@ void CachedResourceStreamingClient::loadFailed(PlatformMediaResource&, const Res
 void CachedResourceStreamingClient::loadFinished(PlatformMediaResource&, const NetworkLoadMetrics&)
 {
     ASSERT(isMainThread());
-    WebKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
+    CyberKitWebSrc* src = WEBKIT_WEB_SRC(m_src.get());
     DataMutexLocker members { src->priv->dataMutex };
     if (members->requestNumber != m_requestNumber)
         return;
@@ -1185,7 +1185,7 @@ void CachedResourceStreamingClient::loadFinished(PlatformMediaResource&, const N
     members->responseCondition.notifyOne();
 }
 
-bool webKitSrcIsCrossOrigin(WebKitWebSrc* src, const SecurityOrigin& origin)
+bool webKitSrcIsCrossOrigin(CyberKitWebSrc* src, const SecurityOrigin& origin)
 {
     DataMutexLocker members { src->priv->dataMutex };
 

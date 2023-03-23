@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUSupportedLimits.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<SupportedLimits> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::SupportedLimits& supportedLimits)
 {
@@ -108,6 +108,6 @@ RefPtr<PAL::WebGPU::SupportedLimits> ConvertFromBackingContext::convertFromBacki
     ) };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -66,7 +66,7 @@ public:
     //
     // We're supposed to use "http://example.com" as the origin.
     //
-    // Generally, we add URL schemes to this list when WebKit support them. For
+    // Generally, we add URL schemes to this list when CyberKit support them. For
     // example, we don't include the "jar" scheme, even though Firefox
     // understands that "jar" uses an inner URL for it's security origin.
     static bool shouldUseInnerURL(const URL&);
@@ -132,7 +132,7 @@ public:
     // SecurityOrigin.
     //
     // Note: This method exists only to support backwards compatibility
-    //       with older versions of WebKit.
+    //       with older versions of CyberKit.
     void grantLoadLocalResources();
 
     // Explicitly grant the ability to access very other SecurityOrigin.

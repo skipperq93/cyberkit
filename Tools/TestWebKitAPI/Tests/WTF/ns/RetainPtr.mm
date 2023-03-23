@@ -49,7 +49,7 @@
 #define AUTORELEASEPOOL_FOR_ARC_DEBUG
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(RETAIN_PTR_TEST_NAME, AdoptNS)
 {
@@ -323,4 +323,4 @@ TEST(RETAIN_PTR_TEST_NAME, RetainPtrNS)
     EXPECT_EQ(1L, CFGetRetainCount((CFTypeRef)objectPtr3));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -35,7 +35,7 @@
 #import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CustomContentViewGestures, DoNotCrashWhenCheckingGestureDelegateInNewWebView)
 {
@@ -60,6 +60,6 @@ TEST(CustomContentViewGestures, DoNotCrashWhenCheckingGestureDelegateInNewWebVie
     [contentView gestureRecognizer:gesture1.get() shouldRecognizeSimultaneouslyWithGestureRecognizer:gesture2.get()];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

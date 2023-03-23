@@ -30,7 +30,7 @@
 #include <glib/gi18n-lib.h>
 #include <wtf/URL.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ResourceError invalidPageRangeToPrint(const URL& failingURL)
@@ -38,4 +38,4 @@ ResourceError invalidPageRangeToPrint(const URL& failingURL)
     return ResourceError(API::Error::webKitPrintErrorDomain(), API::Error::Print::InvalidPageRange, failingURL, String::fromUTF8(_("Invalid page range")));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

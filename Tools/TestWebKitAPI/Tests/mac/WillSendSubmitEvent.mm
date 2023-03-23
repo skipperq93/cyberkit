@@ -55,7 +55,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, WillSendSubmitEvent)
 {
@@ -65,7 +65,7 @@ TEST(CyberKitLegacy, WillSendSubmitEvent)
         RetainPtr<FormDelegate> formDelegate = adoptNS([[FormDelegate alloc] init]);
         [webView _setFormDelegate:formDelegate.get()];
 
-        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"auto-submitting-form" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"auto-submitting-form" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&didFinishLoad);
     }

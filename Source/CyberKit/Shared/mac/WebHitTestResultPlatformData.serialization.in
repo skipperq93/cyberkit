@@ -24,7 +24,7 @@ headers: <CyberCore/TextIndicator.h>
 
 #if PLATFORM(MAC)
 header: "WebHitTestResultData.h" <pal/mac/DataDetectorsSoftLink.h>
-[CustomHeader] struct WebKit::WebHitTestResultPlatformData {
+[CustomHeader] struct CyberKit::WebHitTestResultPlatformData {
     [Nullable, SoftLinkedClass='PAL::getDDActionContextClass()'] RetainPtr<DDActionContext> detectedDataActionContext;
     CyberCore::FloatRect detectedDataBoundingBox;
     RefPtr<CyberCore::TextIndicator> detectedDataTextIndicator;

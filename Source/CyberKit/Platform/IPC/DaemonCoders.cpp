@@ -43,7 +43,7 @@
 #include <wtf/spi/cocoa/SecuritySPI.h>
 #endif
 
-namespace WebKit::Daemon {
+namespace CyberKit::Daemon {
 
 #if ENABLE(SERVICE_WORKER)
 void Coder<CyberCore::PushSubscriptionData>::encode(Encoder& encoder, const CyberCore::PushSubscriptionData& instance)

@@ -28,7 +28,7 @@
 #include <atomic>
 #include <utility>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ScopedRenderingResourcesRequest {
 public:

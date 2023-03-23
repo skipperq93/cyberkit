@@ -28,7 +28,7 @@
 
 #include "ArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -41,4 +41,4 @@ WebGeolocationPosition::~WebGeolocationPosition()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

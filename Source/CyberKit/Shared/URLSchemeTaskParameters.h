@@ -35,7 +35,7 @@ class Encoder;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct URLSchemeTaskParameters {
     WebURLSchemeHandlerIdentifier handlerIdentifier;
@@ -47,4 +47,4 @@ struct URLSchemeTaskParameters {
     static std::optional<URLSchemeTaskParameters> decode(IPC::Decoder&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

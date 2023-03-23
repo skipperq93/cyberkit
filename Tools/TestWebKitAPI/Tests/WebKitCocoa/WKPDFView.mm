@@ -46,7 +46,7 @@
 #if PLATFORM(IOS) || ENABLE(UI_PROCESS_PDF_HUD) || PLATFORM(MAC)
 static NSData *pdfData()
 {
-    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
 }
 #endif
 
@@ -60,11 +60,11 @@ static NSData *pdfData()
 - (BOOL)isBackground;
 @end
 
-TEST(WebKit, WKPDFViewResizeCrash)
+TEST(CyberKit, WKPDFViewResizeCrash)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -76,14 +76,14 @@ TEST(WebKit, WKPDFViewResizeCrash)
         finishedDispatch = true;
     });
 
-    TestWebKitAPI::Util::run(&finishedDispatch);
+    TestCyberKitAPI::Util::run(&finishedDispatch);
 }
 
-TEST(WebKit, WKPDFViewStablePresentationUpdateCallback)
+TEST(CyberKit, WKPDFViewStablePresentationUpdateCallback)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -92,7 +92,7 @@ TEST(WebKit, WKPDFViewStablePresentationUpdateCallback)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 static BOOL sIsBackground;
@@ -105,7 +105,7 @@ static void createHostViewForExtensionIdentifier(void(^callback)(id hostViewCont
 {
 }
 
-TEST(WebKit, WKPDFViewLosesApplicationForegroundNotification)
+TEST(CyberKit, WKPDFViewLosesApplicationForegroundNotification)
 {
     std::unique_ptr<ClassMethodSwizzler> pdfHostViewControllerSwizzler = makeUnique<ClassMethodSwizzler>([PDFHostViewController class], @selector(createHostView:forExtensionIdentifier:), reinterpret_cast<IMP>(createHostViewForExtensionIdentifier));
 
@@ -144,16 +144,16 @@ TEST(WebKit, WKPDFViewLosesApplicationForegroundNotification)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 #if HAVE(UIFINDINTERACTION)
 
-TEST(WebKit, WKPDFViewFindActions)
+TEST(CyberKit, WKPDFViewFindActions)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -179,10 +179,10 @@ TEST(WKPDFView, BackgroundColor)
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
-    [webView synchronouslyLoadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"red" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView synchronouslyLoadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"red" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     EXPECT_TRUE(CGColorEqualToColor([webView scrollView].backgroundColor.CGColor, redColor.get()));
 
-    [webView synchronouslyLoadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView synchronouslyLoadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]]];
     EXPECT_FALSE(CGColorEqualToColor([webView scrollView].backgroundColor.CGColor, redColor.get()));
 
     [webView synchronouslyGoBack];
@@ -221,12 +221,12 @@ TEST(PDFHUD, MainResourcePDF)
         saveRequestReceived = true;
     };
     [[webView _pdfHUDs].anyObject performSelector:NSSelectorFromString(@"_performActionForControl:") withObject:@"arrow.down.circle"];
-    TestWebKitAPI::Util::run(&saveRequestReceived);
+    TestCyberKitAPI::Util::run(&saveRequestReceived);
 
     EXPECT_EQ([webView _pdfHUDs].count, 1u);
     [webView _killWebContentProcess];
     while ([webView _pdfHUDs].count)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 // FIXME: Re-enable this test once rdar://68639688 is resolved.
@@ -267,25 +267,25 @@ TEST(PDFHUD, MoveIFrame)
 
     [webView evaluateJavaScript:@"pdfframe.width=400" completionHandler:nil];
     while ([webView _pdfHUDs].anyObject.frame.size.width != 400)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     checkFrame([webView _pdfHUDs].anyObject.frame, 10, 28, 400, 150);
 
     [webView evaluateJavaScript:@"var frameReference = pdfframe; document.body.removeChild(pdfframe)" completionHandler:nil];
     while ([webView _pdfHUDs].count)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     [webView evaluateJavaScript:@"document.body.appendChild(frameReference)" completionHandler:nil];
     while (![webView _pdfHUDs].count)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_EQ([webView _pdfHUDs].count, 1u);
     checkFrame([webView _pdfHUDs].anyObject.frame, 0, 0, 0, 0);
     while ([webView _pdfHUDs].anyObject.frame.size.width != 400)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_EQ([webView _pdfHUDs].count, 1u);
     checkFrame([webView _pdfHUDs].anyObject.frame, 10, 28, 400, 150);
 
     [webView setPageZoom:1.4];
     while ([webView _pdfHUDs].anyObject.frame.size.width != 560)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_EQ([webView _pdfHUDs].count, 1u);
     checkFrame([webView _pdfHUDs].anyObject.frame, 14, 40, 560, 210);
 }
@@ -327,7 +327,7 @@ TEST(PDFHUD, NestedIFrames)
     
     [webView evaluateJavaScript:@"document.body.removeChild(parentframe)" completionHandler:nil];
     while ([webView _pdfHUDs].count)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 TEST(PDFHUD, IFrame3DTransform)
@@ -443,7 +443,7 @@ TEST(PDFHUD, LoadPDFTypeWithPluginsBlocked)
 {
     _receivedSize = false;
     while (!_receivedSize)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     return _pageSize;
 }
 
@@ -477,7 +477,7 @@ TEST(PDF, PrintSize)
         } else {
             EXPECT_WK_STREQ(url.path, "/test_print.pdf");
             mimeType = @"application/pdf";
-            data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test_print" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+            data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test_print" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
         }
         auto response = adoptNS([[NSURLResponse alloc] initWithURL:url MIMEType:mimeType expectedContentLength:data.length textEncodingName:nil]);
         [task didReceiveResponse:response.get()];
@@ -496,7 +496,7 @@ TEST(PDF, PrintSize)
         EXPECT_EQ(requestedSize.width, 612.0);
         receivedSize = true;
     }];
-    TestWebKitAPI::Util::run(&receivedSize);
+    TestCyberKitAPI::Util::run(&receivedSize);
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test:///main.html"]]];
     [webView _test_waitForDidFinishNavigation];
@@ -511,7 +511,7 @@ TEST(PDF, PrintSize)
         EXPECT_EQ(requestedSize.width, 0.0);
         receivedSize = true;
     }];
-    TestWebKitAPI::Util::run(&receivedSize);
+    TestCyberKitAPI::Util::run(&receivedSize);
 
     [webView evaluateJavaScript:@"pdfframe.contentWindow.print()" completionHandler:nil];
     auto pdfFrameSize = [delegate waitForPageSize];
@@ -524,7 +524,7 @@ TEST(PDF, PrintSize)
         EXPECT_NEAR(requestedSize.width, 129.600006, .00001);
         receivedSize = true;
     }];
-    TestWebKitAPI::Util::run(&receivedSize);
+    TestCyberKitAPI::Util::run(&receivedSize);
 }
 
 #endif

@@ -32,7 +32,7 @@
 #import <CyberKit/WKWebViewConfiguration.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(DataDetectorTests, LoadWKWebViewWithDataDetectorTypePhoneNumber)
 {
@@ -54,6 +54,6 @@ TEST(DataDetectorTests, LoadWKWebViewWithDataDetectorTypePhoneNumber)
     EXPECT_WK_STREQ(expectedLinkURL, linkURL);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(DATA_DETECTION) && PLATFORM(IOS_FAMILY)

@@ -35,7 +35,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_Vector, Basic)
 {
@@ -1910,4 +1910,4 @@ TEST(WTF_Vector, MoveAssignmentOperator)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

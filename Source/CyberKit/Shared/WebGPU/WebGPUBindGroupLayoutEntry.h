@@ -36,7 +36,7 @@
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 #include <pal/graphics/WebGPU/WebGPUShaderStage.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BindGroupLayoutEntry {
     PAL::WebGPU::Index32 binding { 0 };
@@ -49,6 +49,6 @@ struct BindGroupLayoutEntry {
     std::optional<ExternalTextureBindingLayout> externalTexture;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

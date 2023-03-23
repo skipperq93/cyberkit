@@ -30,7 +30,7 @@
 #include <CyberScriptCore/BuiltinUtils.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/WebCoreBuiltinNamesAdditions.h>
+#include <CyberKitAdditions/WebCoreBuiltinNamesAdditions.h>
 #endif
 
 namespace WebCore {
@@ -434,11 +434,11 @@ namespace WebCore {
     macro(WebGLTransformFeedback) \
     macro(WebGLUniformLocation) \
     macro(WebGLVertexArrayObject) \
-    macro(WebKitMediaKeyError) \
-    macro(WebKitMediaKeyMessageEvent) \
-    macro(WebKitMediaKeyNeededEvent) \
-    macro(WebKitMediaKeySession) \
-    macro(WebKitMediaKeys) \
+    macro(CyberKitMediaKeyError) \
+    macro(CyberKitMediaKeyMessageEvent) \
+    macro(CyberKitMediaKeyNeededEvent) \
+    macro(CyberKitMediaKeySession) \
+    macro(CyberKitMediaKeys) \
     macro(WebSocket) \
     macro(WindowClient) \
     macro(Worklet) \

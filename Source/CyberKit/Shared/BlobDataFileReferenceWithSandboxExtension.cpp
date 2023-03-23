@@ -28,7 +28,7 @@
 
 #include "SandboxExtension.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 BlobDataFileReferenceWithSandboxExtension::BlobDataFileReferenceWithSandboxExtension(const String& path, const String& replacementPath, RefPtr<SandboxExtension>&& sandboxExtension)
     : BlobDataFileReference(path, replacementPath)

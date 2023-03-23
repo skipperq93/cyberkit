@@ -49,7 +49,7 @@ IGNORE_WARNINGS_BEGIN("deprecated-implementations")
 - (void)waitForDidFinishLoad
 {
     EXPECT_FALSE(_loadComplete);
-    TestWebKitAPI::Util::run(&_loadComplete);
+    TestCyberKitAPI::Util::run(&_loadComplete);
 }
 
 @end

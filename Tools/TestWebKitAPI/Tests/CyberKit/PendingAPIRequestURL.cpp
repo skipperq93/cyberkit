@@ -32,11 +32,11 @@
 #include "Test.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool done;
 
-TEST(WebKit, PendingAPIRequestURL)
+TEST(CyberKit, PendingAPIRequestURL)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -164,6 +164,6 @@ TEST(WebKit, PendingAPIRequestURL)
     WKPageStopLoading(webView.page());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

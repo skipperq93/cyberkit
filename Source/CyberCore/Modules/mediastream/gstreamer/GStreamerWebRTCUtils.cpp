@@ -194,7 +194,7 @@ static void ensureDebugCategoryInitialized()
 {
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_webrtc_utils_debug, "webkitwebrtcutils", 0, "WebKit WebRTC utilities");
+        GST_DEBUG_CATEGORY_INIT(webkit_webrtc_utils_debug, "webkitwebrtcutils", 0, "CyberKit WebRTC utilities");
     });
 }
 

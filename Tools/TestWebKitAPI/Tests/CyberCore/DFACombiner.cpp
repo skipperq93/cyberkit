@@ -34,7 +34,7 @@
 using namespace CyberCore;
 using namespace ContentExtensions;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class DFACombinerTest : public testing::Test {
 public:
@@ -93,11 +93,11 @@ TEST_F(DFACombinerTest, NoInput)
 
 TEST_F(DFACombinerTest, SingleInput)
 {
-    Vector<DFA> dfas = { buildDFAFromPatterns({ "WebKit"_s }) };
+    Vector<DFA> dfas = { buildDFAFromPatterns({ "CyberKit"_s }) };
     Vector<DFA> combinedDFAs = combine(dfas, 10000);
     EXPECT_EQ(static_cast<size_t>(1), combinedDFAs.size());
 
-    DFA reference = buildDFAFromPatterns({ "WebKit"_s });
+    DFA reference = buildDFAFromPatterns({ "CyberKit"_s });
     reference.minimize();
     EXPECT_EQ(countLiveNodes(reference), countLiveNodes(combinedDFAs.first()));
 }
@@ -113,13 +113,13 @@ TEST_F(DFACombinerTest, InputTooLargeForMinimumSize)
 
 TEST_F(DFACombinerTest, CombinedInputReachesMinimumSize)
 {
-    Vector<DFA> dfas = { buildDFAFromPatterns({ "foo"_s }), buildDFAFromPatterns({ "bar"_s }), buildDFAFromPatterns({ "WebKit"_s }) };
+    Vector<DFA> dfas = { buildDFAFromPatterns({ "foo"_s }), buildDFAFromPatterns({ "bar"_s }), buildDFAFromPatterns({ "CyberKit"_s }) };
     Vector<DFA> combinedDFAs = combine(dfas, 5);
     EXPECT_EQ(static_cast<size_t>(2), combinedDFAs.size());
     EXPECT_EQ(static_cast<size_t>(7), countLiveNodes(combinedDFAs[0]));
     EXPECT_EQ(static_cast<size_t>(6), countLiveNodes(combinedDFAs[1]));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

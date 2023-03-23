@@ -37,16 +37,16 @@
 
 namespace WebCore {
 
-class WebKitMediaKeyError;
-class WebKitMediaKeys;
+class CyberKitMediaKeyError;
+class CyberKitMediaKeys;
 
-class WebKitMediaKeySession final : public RefCounted<WebKitMediaKeySession>, public EventTarget, public ActiveDOMObject, private LegacyCDMSessionClient {
-    WTF_MAKE_ISO_ALLOCATED(WebKitMediaKeySession);
+class CyberKitMediaKeySession final : public RefCounted<CyberKitMediaKeySession>, public EventTarget, public ActiveDOMObject, private LegacyCDMSessionClient {
+    WTF_MAKE_ISO_ALLOCATED(CyberKitMediaKeySession);
 public:
-    static Ref<WebKitMediaKeySession> create(Document&, WebKitMediaKeys&, const String& keySystem);
-    ~WebKitMediaKeySession();
+    static Ref<CyberKitMediaKeySession> create(Document&, CyberKitMediaKeys&, const String& keySystem);
+    ~CyberKitMediaKeySession();
 
-    WebKitMediaKeyError* error() { return m_error.get(); }
+    CyberKitMediaKeyError* error() { return m_error.get(); }
     const String& keySystem() const { return m_keySystem; }
     const String& sessionId() const { return m_sessionId; }
     ExceptionOr<void> update(Ref<Uint8Array>&& key);
@@ -63,7 +63,7 @@ public:
     using RefCounted::deref;
 
 private:
-    WebKitMediaKeySession(Document&, WebKitMediaKeys&, const String& keySystem);
+    CyberKitMediaKeySession(Document&, CyberKitMediaKeys&, const String& keySystem);
     void keyRequestTimerFired();
     void addKeyTimerFired();
 
@@ -79,23 +79,23 @@ private:
     const char* activeDOMObjectName() const final;
     bool virtualHasPendingActivity() const final;
 
-    EventTargetInterface eventTargetInterface() const final { return WebKitMediaKeySessionEventTargetInterfaceType; }
+    EventTargetInterface eventTargetInterface() const final { return CyberKitMediaKeySessionEventTargetInterfaceType; }
     ScriptExecutionContext* scriptExecutionContext() const final { return ActiveDOMObject::scriptExecutionContext(); }
 
 #if !RELEASE_LOG_DISABLED
     const Logger& logger() const final { return m_logger; }
     const void* logIdentifier() const final { return m_logIdentifier; }
-    const char* logClassName() const { return "WebKitMediaKeySession"; }
+    const char* logClassName() const { return "CyberKitMediaKeySession"; }
     WTFLogChannel& logChannel() const;
 
     Ref<Logger> m_logger;
     const void* m_logIdentifier;
 #endif
 
-    WebKitMediaKeys* m_keys;
+    CyberKitMediaKeys* m_keys;
     String m_keySystem;
     String m_sessionId;
-    RefPtr<WebKitMediaKeyError> m_error;
+    RefPtr<CyberKitMediaKeyError> m_error;
     std::unique_ptr<LegacyCDMSession> m_session;
 
     struct PendingKeyRequest {

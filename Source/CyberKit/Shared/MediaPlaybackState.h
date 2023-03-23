@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class MediaPlaybackState : uint8_t {
     NoMediaPlayback,
@@ -34,17 +34,17 @@ enum class MediaPlaybackState : uint8_t {
     MediaPlaybackPlaying
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::MediaPlaybackState> {
+template<> struct EnumTraits<CyberKit::MediaPlaybackState> {
     using values = EnumValues<
-        WebKit::MediaPlaybackState,
-        WebKit::MediaPlaybackState::NoMediaPlayback,
-        WebKit::MediaPlaybackState::MediaPlaybackPaused,
-        WebKit::MediaPlaybackState::MediaPlaybackSuspended,
-        WebKit::MediaPlaybackState::MediaPlaybackPlaying
+        CyberKit::MediaPlaybackState,
+        CyberKit::MediaPlaybackState::NoMediaPlayback,
+        CyberKit::MediaPlaybackState::MediaPlaybackPaused,
+        CyberKit::MediaPlaybackState::MediaPlaybackSuspended,
+        CyberKit::MediaPlaybackState::MediaPlaybackPlaying
     >;
 };
 

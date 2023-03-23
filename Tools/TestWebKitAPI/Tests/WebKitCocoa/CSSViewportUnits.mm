@@ -1653,7 +1653,7 @@ TEST(CSSViewportUnits, DifferentUnobscuredSizeOverrides)
 TEST(CSSViewportUnits, SVGDocument)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CSSViewportUnits" withExtension:@"svg" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CSSViewportUnits" withExtension:@"svg" subdirectory:@"TestCyberKitAPI.resources"]]];
     [webView _test_waitForDidFinishNavigation];
     [webView waitForNextPresentationUpdate];
 

@@ -52,7 +52,7 @@ bool InlineFormattingQuirks::shouldPreserveTrailingWhitespace(bool isInIntrinsic
     auto isTextAlignRight = [&] {
         auto textAlign = formattingContext().root().style().textAlign();
         return textAlign == TextAlignMode::Right
-            || textAlign == TextAlignMode::WebKitRight
+            || textAlign == TextAlignMode::CyberKitRight
             || textAlign == TextAlignMode::End;
     };
     return lineEndWithLineBreak && !isTextAlignRight();

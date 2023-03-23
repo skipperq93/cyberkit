@@ -32,7 +32,7 @@
 #include "StreamServerConnection.h"
 #include "WebGPUObjectHeap.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteBuffer::RemoteBuffer(PAL::WebGPU::Buffer& buffer, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(buffer)
@@ -104,6 +104,6 @@ void RemoteBuffer::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

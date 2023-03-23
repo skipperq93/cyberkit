@@ -231,12 +231,12 @@ void ResourceUsageThread::platformCollectCPUData(JSC::VM*, ResourceUsageData& da
 
     pid_t resourceUsageThreadID = Thread::currentID();
 
-    HashSet<pid_t> knownWebKitThreads;
+    HashSet<pid_t> knownCyberKitThreads;
     {
         Locker locker { Thread::allThreadsLock() };
         for (auto* thread : Thread::allThreads()) {
             if (auto id = thread->id())
-                knownWebKitThreads.add(id);
+                knownCyberKitThreads.add(id);
         }
     }
 
@@ -263,8 +263,8 @@ void ResourceUsageThread::platformCollectCPUData(JSC::VM*, ResourceUsageData& da
         return false;
     };
 
-    auto isWebKitThread = [&](pid_t id, const String& name) -> bool {
-        if (knownWebKitThreads.contains(id))
+    auto isCyberKitThread = [&](pid_t id, const String& name) -> bool {
+        if (knownCyberKitThreads.contains(id))
             return true;
 
         // The bmalloc scavenger thread is below WTF. Detect it by its name.
@@ -292,7 +292,7 @@ void ResourceUsageThread::platformCollectCPUData(JSC::VM*, ResourceUsageData& da
             String threadIdentifier = knownWorkerThreads.get(id);
             bool isWorkerThread = !threadIdentifier.isEmpty();
             String name = it.value.name.value_or(emptyString());
-            ThreadCPUInfo::Type type = (isWorkerThread || isWebKitThread(id, name)) ? ThreadCPUInfo::Type::WebKit : ThreadCPUInfo::Type::Unknown;
+            ThreadCPUInfo::Type type = (isWorkerThread || isCyberKitThread(id, name)) ? ThreadCPUInfo::Type::CyberKit : ThreadCPUInfo::Type::Unknown;
             data.cpuThreads.append(ThreadCPUInfo { name, threadIdentifier, cpuUsage, type });
         }
     }

@@ -31,16 +31,16 @@
 
 WKTypeID WKConnectionGetTypeID()
 {
-    return WebKit::toAPI(WebKit::WebConnection::APIType);
+    return CyberKit::toAPI(CyberKit::WebConnection::APIType);
 }
 
 void WKConnectionSetConnectionClient(WKConnectionRef connectionRef, const WKConnectionClientBase* wkClient)
 {
-    WebKit::toImpl(connectionRef)->initializeConnectionClient(wkClient);
+    CyberKit::toImpl(connectionRef)->initializeConnectionClient(wkClient);
 }
 
 void WKConnectionPostMessage(WKConnectionRef connectionRef, WKStringRef messageNameRef, WKTypeRef messageBodyRef)
 {
-    WebKit::toImpl(connectionRef)->postMessage(WebKit::toImpl(messageNameRef)->string(), WebKit::toImpl(messageBodyRef));
+    CyberKit::toImpl(connectionRef)->postMessage(CyberKit::toImpl(messageNameRef)->string(), CyberKit::toImpl(messageBodyRef));
 }
 

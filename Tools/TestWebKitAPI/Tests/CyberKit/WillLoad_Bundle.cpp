@@ -33,7 +33,7 @@
 #include <CyberKit/WKBundlePage.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class WillLoadTest : public InjectedBundleTest {
 public:
@@ -84,6 +84,6 @@ private:
 
 static InjectedBundleTest::Register<WillLoadTest> registrar("WillLoadTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

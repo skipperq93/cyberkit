@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUImageCopyTexture.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ImageCopyTexture> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ImageCopyTexture& imageCopyTexture)
 {
@@ -66,6 +66,6 @@ std::optional<PAL::WebGPU::ImageCopyTexture> ConvertFromBackingContext::convertF
     return { { *texture, imageCopyTexture.mipLevel, WTFMove(origin), imageCopyTexture.aspect } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

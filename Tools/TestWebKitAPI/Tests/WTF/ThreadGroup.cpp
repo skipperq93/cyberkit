@@ -29,7 +29,7 @@
 #include <wtf/ThreadGroup.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class Mode { Add, AddCurrentThread };
 static void testThreadGroup(Mode mode)
@@ -201,4 +201,4 @@ TEST(WTF, ThreadGroupRemove)
         threads[i]->waitForCompletion();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

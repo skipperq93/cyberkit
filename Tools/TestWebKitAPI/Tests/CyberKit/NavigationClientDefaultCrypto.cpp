@@ -33,7 +33,7 @@
 #import "Test.h"
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool receivedAlert;
 static RetainPtr<WKStringRef> lastAlert;
@@ -54,13 +54,13 @@ static void decidePolicyForNavigationResponse(WKPageRef, WKNavigationResponseRef
     WKFramePolicyListenerUse(listener);
 }
 
-TEST(WebKit, NavigationClientDefaultCrypto)
+TEST(CyberKit, NavigationClientDefaultCrypto)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
 
     // The navigationClient quite explicitly does *not* have a copyWebCryptoMasterKey callback,
-    // which allows this test to make sure that WebKit2 instead creates a default crypto master key.
+    // which allows this test to make sure that CyberKit2 instead creates a default crypto master key.
     WKPageNavigationClientV0 navigationClient;
     memset(&navigationClient, 0, sizeof(navigationClient));
     navigationClient.base.version = 0;
@@ -87,6 +87,6 @@ TEST(WebKit, NavigationClientDefaultCrypto)
     EXPECT_TRUE(WKStringIsEqualToUTF8CString(lastAlert.get(), "retrieved valid key"));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // WK_HAVE_C_SPI

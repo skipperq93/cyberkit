@@ -29,7 +29,7 @@
 
 #import "WebExtensionUtilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static auto *manifest = @{ @"manifest_version": @3, @"background": @{ @"scripts": @[ @"background.js" ], @"type": @"module", @"persistent": @NO } };
 
@@ -154,6 +154,6 @@ TEST(WKWebExtensionAPIRuntime, LastError)
     Util::loadAndRunExtension(manifest, @{ @"background.js": backgroundScript });
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

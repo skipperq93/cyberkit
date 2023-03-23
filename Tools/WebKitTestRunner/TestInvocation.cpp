@@ -62,7 +62,7 @@
 #endif
 
 using namespace JSC;
-using namespace WebKit;
+using namespace CyberKit;
 using namespace std;
 
 namespace WTR {
@@ -236,7 +236,7 @@ void TestInvocation::dump(const char* textToStdout, const char* textToStderr, bo
 
 void TestInvocation::forceRepaintDoneCallback(WKErrorRef error, void* context)
 {
-    // The context may not be valid any more, e.g. if WebKit is invalidating callbacks at process exit.
+    // The context may not be valid any more, e.g. if CyberKit is invalidating callbacks at process exit.
     if (error)
         return;
 

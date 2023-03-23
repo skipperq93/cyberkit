@@ -33,7 +33,7 @@ using DFABytecode = uint8_t;
 
 // Increment ContentExtensionStore::CurrentContentExtensionFileVersion
 // when making any non-backwards-compatible changes to the bytecode.
-// FIXME: Changes here should not require changes in WebKit2.  Move all versioning to WebCore.
+// FIXME: Changes here should not require changes in CyberKit2.  Move all versioning to WebCore.
 enum class DFABytecodeInstruction : uint8_t {
 
     // CheckValue has two arguments:

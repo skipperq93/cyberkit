@@ -35,7 +35,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #define MDNS_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - NetworkMDNSRegister::" fmt, this, ##__VA_ARGS__)
 #define MDNS_RELEASE_LOG_IN_CALLBACK(sessionID, fmt, ...) RELEASE_LOG(Network, "NetworkMDNSRegister callback - " fmt, ##__VA_ARGS__)
@@ -184,7 +184,7 @@ PAL::SessionID NetworkMDNSRegister::sessionID() const
     return m_connection.sessionID();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MDNS_RELEASE_LOG
 #undef MDNS_RELEASE_LOG_IN_CALLBACK

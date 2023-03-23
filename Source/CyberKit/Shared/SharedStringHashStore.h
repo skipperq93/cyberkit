@@ -30,7 +30,7 @@
 #include <CyberCore/SharedStringHash.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedStringHashStore {
 public:
@@ -74,4 +74,4 @@ private:
     RunLoop::Timer m_pendingOperationsTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

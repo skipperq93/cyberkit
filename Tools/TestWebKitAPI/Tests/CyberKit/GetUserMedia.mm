@@ -113,7 +113,7 @@ static WKMediaCaptureState microphoneCaptureState;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static String wkMediaCaptureStateString(_WKMediaCaptureStateDeprecated flags)
 {
@@ -142,7 +142,7 @@ bool waitUntilCaptureState(WKWebView *webView, _WKMediaCaptureStateDeprecated ex
         if (state == expectedState)
             return true;
 
-        TestWebKitAPI::Util::spinRunLoop(1);
+        TestCyberKitAPI::Util::spinRunLoop(1);
         
         if ([[NSDate date] timeIntervalSinceReferenceDate] > end)
             break;
@@ -208,14 +208,14 @@ void doCaptureMuteTest(const Function<void(TestWKWebView*, _WKMediaMutedState)>&
     EXPECT_TRUE(waitUntilCaptureState(webView.get(), _WKMediaCaptureStateDeprecatedNone));
 }
 
-TEST(WebKit2, CaptureMute)
+TEST(CyberKit2, CaptureMute)
 {
     doCaptureMuteTest([](auto* webView, auto state) {
         [webView _setPageMuted: state];
     });
 }
 
-TEST(WebKit2, CaptureMute2)
+TEST(CyberKit2, CaptureMute2)
 {
     doCaptureMuteTest([](auto* webView, auto state) {
         WKPageSetMuted([webView _pageForTesting], state);
@@ -226,7 +226,7 @@ bool waitUntilCameraState(WKWebView *webView, WKMediaCaptureState expectedState)
 {
     if (expectedState == cameraCaptureState)
         return true;
-    TestWebKitAPI::Util::run(&cameraCaptureStateChange);
+    TestCyberKitAPI::Util::run(&cameraCaptureStateChange);
     return expectedState == cameraCaptureState;
 }
 
@@ -234,11 +234,11 @@ bool waitUntilMicrophoneState(WKWebView *webView, WKMediaCaptureState expectedSt
 {
     if (expectedState == microphoneCaptureState)
         return true;
-    TestWebKitAPI::Util::run(&microphoneCaptureStateChange);
+    TestCyberKitAPI::Util::run(&microphoneCaptureStateChange);
     return expectedState == microphoneCaptureState;
 }
 
-TEST(WebKit2, CaptureMuteAPI)
+TEST(CyberKit2, CaptureMuteAPI)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -340,7 +340,7 @@ TEST(WebKit2, CaptureMuteAPI)
     [webView removeObserver:observer.get() forKeyPath:@"cameraCaptureState"];
 }
 
-TEST(WebKit2, CaptureStop)
+TEST(CyberKit2, CaptureStop)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -366,7 +366,7 @@ TEST(WebKit2, CaptureStop)
     [webView stringByEvaluatingJavaScript:@"notifyEndedEvent()"];
     [webView _stopMediaCapture];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_TRUE(waitUntilCaptureState(webView.get(), _WKMediaCaptureStateDeprecatedNone));
@@ -375,7 +375,7 @@ TEST(WebKit2, CaptureStop)
     [delegate waitUntilPrompted];
 }
 
-TEST(WebKit2, CaptureIndicatorDelay)
+TEST(CyberKit2, CaptureIndicatorDelay)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -395,7 +395,7 @@ TEST(WebKit2, CaptureIndicatorDelay)
 
     int retryCount = 1000;
     while (--retryCount && ![webView stringByEvaluatingJavaScript:@"haveStream()"].boolValue)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_TRUE(!!retryCount);
 
     [webView stringByEvaluatingJavaScript:@"stop()"];
@@ -408,7 +408,7 @@ TEST(WebKit2, CaptureIndicatorDelay)
     EXPECT_TRUE(waitUntilCaptureState(webView.get(), _WKMediaCaptureStateDeprecatedNone));
 }
 
-TEST(WebKit2, CaptureIndicatorDelayWhenClosed)
+TEST(CyberKit2, CaptureIndicatorDelayWhenClosed)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -433,7 +433,7 @@ TEST(WebKit2, CaptureIndicatorDelayWhenClosed)
     EXPECT_EQ([webView _mediaCaptureState], _WKMediaCaptureStateDeprecatedNone);
 }
 
-TEST(WebKit2, GetCapabilities)
+TEST(CyberKit2, GetCapabilities)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -454,10 +454,10 @@ TEST(WebKit2, GetCapabilities)
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkGetCapabilities()"];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, InterruptionBetweenSameProcessPages)
+TEST(CyberKit, InterruptionBetweenSameProcessPages)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -475,7 +475,7 @@ TEST(WebKit, InterruptionBetweenSameProcessPages)
     auto delegate = adoptNS([[UserMediaCaptureUIDelegate alloc] init]);
     webView1.get().UIDelegate = delegate.get();
     [webView1 loadTestPageNamed:@"getUserMedia2"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     configuration.get()._relatedWebView = webView1.get();
 
@@ -483,7 +483,7 @@ TEST(WebKit, InterruptionBetweenSameProcessPages)
     auto webView2 = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
     webView2.get().UIDelegate = delegate.get();
     [webView2 loadTestPageNamed:@"getUserMedia2"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
 #if PLATFORM(IOS)
@@ -491,7 +491,7 @@ TEST(WebKit, InterruptionBetweenSameProcessPages)
 #else
     [webView1 stringByEvaluatingJavaScript:@"checkIsPlaying()"];
 #endif
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static constexpr auto mainFrameText = R"DOCDOCDOC(
@@ -505,15 +505,15 @@ navigator.mediaDevices.getUserMedia({video:true});
 </script></body></html>
 )DOCDOCDOC"_s;
 
-TEST(WebKit, PermissionDelegateParameters)
+TEST(CyberKit, PermissionDelegateParameters)
 {
-    TestWebKitAPI::HTTPServer server1({
+    TestCyberKitAPI::HTTPServer server1({
         { "/"_s, { mainFrameText } }
-    }, TestWebKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9090);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9090);
 
-    TestWebKitAPI::HTTPServer server2({
+    TestCyberKitAPI::HTTPServer server2({
         { "/frame"_s, { frameText } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9091);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9091);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -528,16 +528,16 @@ TEST(WebKit, PermissionDelegateParameters)
     auto delegate = adoptNS([[UserMediaCaptureUIDelegateForParameters alloc] init]);
     webView.get().UIDelegate = delegate.get();
     [webView loadRequest:server1.request()];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #if WK_HAVE_C_SPI
-TEST(WebKit, WebAudioAndGetUserMedia)
+TEST(CyberKit, WebAudioAndGetUserMedia)
 {
     done = false;
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     configuration.get().processPool._configuration.shouldCaptureAudioInUIProcess = NO;
 
@@ -554,13 +554,13 @@ TEST(WebKit, WebAudioAndGetUserMedia)
     auto url = adoptWK(Util::createURLForResource("getUserMedia-webaudio", "html"));
     [webView loadTestPageNamed:@"getUserMedia-webaudio"];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 #endif
 
 #if ENABLE(GPU_PROCESS)
-TEST(WebKit2, CrashGPUProcessWhileCapturing)
+TEST(CyberKit2, CrashGPUProcessWhileCapturing)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto preferences = [configuration preferences];
@@ -589,7 +589,7 @@ TEST(WebKit2, CrashGPUProcessWhileCapturing)
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"captureAudioAndVideo(true)"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto webViewPID = [webView _webProcessIdentifier];
 
@@ -597,7 +597,7 @@ TEST(WebKit2, CrashGPUProcessWhileCapturing)
     auto* processPool = configuration.get().processPool;
     unsigned timeout = 0;
     while (![processPool _gpuProcessIdentifier] && timeout++ < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_NE([processPool _gpuProcessIdentifier], 0);
     if (![processPool _gpuProcessIdentifier])
@@ -610,7 +610,7 @@ TEST(WebKit2, CrashGPUProcessWhileCapturing)
     // GPU Process should get relaunched.
     timeout = 0;
     while ((![processPool _gpuProcessIdentifier] || [processPool _gpuProcessIdentifier] == gpuProcessPID) && timeout++ < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     EXPECT_NE([processPool _gpuProcessIdentifier], 0);
     EXPECT_NE([processPool _gpuProcessIdentifier], gpuProcessPID);
     gpuProcessPID = [processPool _gpuProcessIdentifier];
@@ -620,21 +620,21 @@ TEST(WebKit2, CrashGPUProcessWhileCapturing)
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"createConnection()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkVideoStatus()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkAudioStatus()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(gpuProcessPID, [processPool _gpuProcessIdentifier]);
     EXPECT_EQ(webViewPID, [webView _webProcessIdentifier]);
 }
 
-TEST(WebKit2, CrashGPUProcessAfterApplyingConstraints)
+TEST(CyberKit2, CrashGPUProcessAfterApplyingConstraints)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto preferences = [configuration preferences];
@@ -666,11 +666,11 @@ TEST(WebKit2, CrashGPUProcessAfterApplyingConstraints)
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"captureAudioAndVideo(true)"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"changeConstraints()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto webViewPID = [webView _webProcessIdentifier];
 
@@ -678,7 +678,7 @@ TEST(WebKit2, CrashGPUProcessAfterApplyingConstraints)
     auto* processPool = configuration.get().processPool;
     unsigned timeout = 0;
     while (![processPool _gpuProcessIdentifier] && timeout++ < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_NE([processPool _gpuProcessIdentifier], 0);
     if (![processPool _gpuProcessIdentifier])
@@ -691,7 +691,7 @@ TEST(WebKit2, CrashGPUProcessAfterApplyingConstraints)
     // GPU Process should get relaunched.
     timeout = 0;
     while ((![processPool _gpuProcessIdentifier] || [processPool _gpuProcessIdentifier] == gpuProcessPID) && timeout++ < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     EXPECT_NE([processPool _gpuProcessIdentifier], 0);
     EXPECT_NE([processPool _gpuProcessIdentifier], gpuProcessPID);
     gpuProcessPID = [processPool _gpuProcessIdentifier];
@@ -701,13 +701,13 @@ TEST(WebKit2, CrashGPUProcessAfterApplyingConstraints)
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkConstraintsStatus()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(gpuProcessPID, [processPool _gpuProcessIdentifier]);
     EXPECT_EQ(webViewPID, [webView _webProcessIdentifier]);
 }
 
-TEST(WebKit2, CrashGPUProcessWhileCapturingAndCalling)
+TEST(CyberKit2, CrashGPUProcessWhileCapturingAndCalling)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto preferences = [configuration preferences];
@@ -738,15 +738,15 @@ TEST(WebKit2, CrashGPUProcessWhileCapturingAndCalling)
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"captureAudioAndVideo(true)"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"createConnection()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkDecodingVideo('first')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto webViewPID = [webView _webProcessIdentifier];
 
@@ -754,7 +754,7 @@ TEST(WebKit2, CrashGPUProcessWhileCapturingAndCalling)
     auto* processPool = configuration.get().processPool;
     unsigned timeout = 0;
     while (![processPool _gpuProcessIdentifier] && timeout++ < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_NE([processPool _gpuProcessIdentifier], 0);
     if (![processPool _gpuProcessIdentifier])
@@ -767,7 +767,7 @@ TEST(WebKit2, CrashGPUProcessWhileCapturingAndCalling)
     // GPU Process should get relaunched.
     timeout = 0;
     while ((![processPool _gpuProcessIdentifier] || [processPool _gpuProcessIdentifier] == gpuProcessPID) && timeout++ < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     EXPECT_NE([processPool _gpuProcessIdentifier], 0);
     EXPECT_NE([processPool _gpuProcessIdentifier], gpuProcessPID);
     gpuProcessPID = [processPool _gpuProcessIdentifier];
@@ -777,15 +777,15 @@ TEST(WebKit2, CrashGPUProcessWhileCapturingAndCalling)
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkVideoStatus()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkAudioStatus()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkDecodingVideo('second')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(gpuProcessPID, [processPool _gpuProcessIdentifier]);
     EXPECT_EQ(webViewPID, [webView _webProcessIdentifier]);
@@ -851,15 +851,15 @@ function stop()
 </body></html>
 )DOCDOCDOC"_s;
 
-TEST(WebKit, AutoplayOnVisibilityChange)
+TEST(CyberKit, AutoplayOnVisibilityChange)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { visibilityTestText } }
-    }, TestWebKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9090);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9090);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
 
     auto messageHandler = adoptNS([[GUMMessageHandler alloc] init]);
@@ -876,18 +876,18 @@ TEST(WebKit, AutoplayOnVisibilityChange)
     NSLog(@"AutoplayOnVisibilityChange 1\n");
 
     [webView loadRequest:server.request()];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSLog(@"AutoplayOnVisibilityChange 2\n");
     done = false;
     auto *hostWindow = [webView hostWindow];
     [hostWindow miniaturize:hostWindow];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSLog(@"AutoplayOnVisibilityChange 3\n");
     done = false;
     [webView stringByEvaluatingJavaScript:@"capture()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     bool hasSleepDisabler = [webView stringByEvaluatingJavaScript:@"hasSleepDisabler()"].boolValue;
     EXPECT_TRUE(hasSleepDisabler);
@@ -895,17 +895,17 @@ TEST(WebKit, AutoplayOnVisibilityChange)
     NSLog(@"AutoplayOnVisibilityChange 4\n");
     done = false;
     [hostWindow deminiaturize:hostWindow];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSLog(@"AutoplayOnVisibilityChange 5\n");
     done = false;
     [webView stringByEvaluatingJavaScript:@"doTest()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSLog(@"AutoplayOnVisibilityChange 6\n");
     done = false;
     [webView stringByEvaluatingJavaScript:@"stop()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSLog(@"AutoplayOnVisibilityChange 7\n");
     hasSleepDisabler = [webView stringByEvaluatingJavaScript:@"hasSleepDisabler()"].boolValue;
@@ -930,15 +930,15 @@ function capture()
 </body></html>
 )DOCDOCDOC"_s;
 
-TEST(WebKit, GetUserMediaFocus)
+TEST(CyberKit, GetUserMediaFocus)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { getUserMediaFocusText } }
-    }, TestWebKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9090);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Http, nullptr, nullptr, 9090);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
 
     auto messageHandler = adoptNS([[GUMMessageHandler alloc] init]);
@@ -956,28 +956,28 @@ TEST(WebKit, GetUserMediaFocus)
 
     // Load page.
     [webView loadRequest:server.request()];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Minimize
     done = false;
     auto *hostWindow = [webView hostWindow];
     [hostWindow miniaturize:hostWindow];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // We call capture while minimizing.
     done = false;
     [webView stringByEvaluatingJavaScript:@"capture()"];
 
     // Make sure that getUserMedia does not resolve too soon.
-    TestWebKitAPI::Util::spinRunLoop(100);
+    TestCyberKitAPI::Util::spinRunLoop(100);
     EXPECT_FALSE(done);
 
     [hostWindow deminiaturize:hostWindow];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 #endif // PLATFORM(MAC)
 
-TEST(WebKit, InvalidDeviceIdHashSalts)
+TEST(CyberKit, InvalidDeviceIdHashSalts)
 {
     NSURL *tempDir = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"InvalidDeviceIdHashSaltsPathsTest"] isDirectory:YES];
     NSURL *hashSaltLocation = [tempDir URLByAppendingPathComponent:@"1"];
@@ -990,7 +990,7 @@ TEST(WebKit, InvalidDeviceIdHashSalts)
     // Prepare invalid data.
     if ([fileManager fileExistsAtPath:filePath.path])
         [fileManager removeItemAtPath:filePath.path error:nil];
-    auto *fileData = [NSData dataWithContentsOfURL:[NSBundle.mainBundle URLForResource:@"invalidDeviceIDHashSalts" withExtension:@"" subdirectory:@"TestWebKitAPI.resources"]];
+    auto *fileData = [NSData dataWithContentsOfURL:[NSBundle.mainBundle URLForResource:@"invalidDeviceIDHashSalts" withExtension:@"" subdirectory:@"TestCyberKitAPI.resources"]];
     EXPECT_TRUE([fileManager createFileAtPath:filePath.path contents:fileData attributes: nil]);
     while (![fileManager fileExistsAtPath:filePath.path])
         Util::spinRunLoop();
@@ -1028,7 +1028,7 @@ static _WKFeature *permissionsAPIEnabledExperimentalFeature()
     return theFeature.get();
 }
 
-TEST(WebKit2, CapturePermission)
+TEST(CyberKit2, CapturePermission)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -1044,59 +1044,59 @@ TEST(WebKit2, CapturePermission)
 
     done = false;
     [webView loadTestPageNamed:@"getUserMediaPermission"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [delegate setAudioDecision:WKPermissionDecisionPrompt];
     [delegate setVideoDecision:WKPermissionDecisionPrompt];
     [webView stringByEvaluatingJavaScript:@"checkPermission('microphone', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView stringByEvaluatingJavaScript:@"checkPermission('camera', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [delegate setAudioDecision:WKPermissionDecisionGrant];
     [delegate setVideoDecision:WKPermissionDecisionGrant];
     [webView stringByEvaluatingJavaScript:@"checkPermission('microphone', 'granted')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkPermission('camera', 'granted')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Although Deny, we expect prompt is exposed since we do not trust the page to call getUserMedia.
     [delegate setAudioDecision:WKPermissionDecisionDeny];
     [delegate setVideoDecision:WKPermissionDecisionDeny];
     [webView stringByEvaluatingJavaScript:@"checkPermission('microphone', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkPermission('camera', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Now that we getUserMedia has been called, we can go with deny.
     [webView stringByEvaluatingJavaScript:@"captureVideo()"];
     [delegate waitUntilPrompted];
     [webView stringByEvaluatingJavaScript:@"checkPermission('microphone', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkPermission('camera', 'denied')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView stringByEvaluatingJavaScript:@"captureAudio()"];
     [delegate waitUntilPrompted];
     [webView stringByEvaluatingJavaScript:@"checkPermission('microphone', 'denied')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkPermission('camera', 'denied')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
-TEST(WebKit2, EnumerateDevicesAfterMuting)
+TEST(CyberKit2, EnumerateDevicesAfterMuting)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration preferences]._inactiveMediaCaptureSteamRepromptIntervalInMinutes = .5 / 60;
@@ -1127,11 +1127,11 @@ TEST(WebKit2, EnumerateDevicesAfterMuting)
     // Verify enumerateDevices still works fine.
     done = false;
     [webView stringByEvaluatingJavaScript:@"checkEnumerateDevicesDoesNotFilter()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #if PLATFORM(IOS_FAMILY)
-TEST(WebKit2, CapturePermissionWithSystemBlocking)
+TEST(CyberKit2, CapturePermissionWithSystemBlocking)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     configuration.get()._mediaCaptureEnabled = YES;
@@ -1152,7 +1152,7 @@ TEST(WebKit2, CapturePermissionWithSystemBlocking)
 
     done = false;
     [webView loadTestPageNamed:@"getUserMediaPermission"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [delegate setAudioDecision:WKPermissionDecisionGrant];
@@ -1161,24 +1161,24 @@ TEST(WebKit2, CapturePermissionWithSystemBlocking)
     // Given mock capture is not enabled, system is forbidding access to camera and microphone.
     // Permission API should not show granted even if our callback grants access.
     [webView stringByEvaluatingJavaScript:@"checkPermission('microphone', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView stringByEvaluatingJavaScript:@"checkPermission('camera', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Permission API should show denied now that getUserMedia was called.
     [webView stringByEvaluatingJavaScript:@"callGetUserMedia(true, false)"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView stringByEvaluatingJavaScript:@"checkPermission('microphone', 'denied')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView stringByEvaluatingJavaScript:@"checkPermission('camera', 'prompt')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We cannot start camera on iOS simulator as there might not be any camera available.
@@ -1186,7 +1186,7 @@ TEST(WebKit2, CapturePermissionWithSystemBlocking)
 #endif
 
 #if PLATFORM(MAC)
-TEST(WebKit2, ConnectedToHardwareConsole)
+TEST(CyberKit2, ConnectedToHardwareConsole)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -1213,7 +1213,7 @@ TEST(WebKit2, ConnectedToHardwareConsole)
     [webView setCameraCaptureState:WKMediaCaptureStateActive completionHandler:nil];
     int retryCount = 1000;
     while (--retryCount && cameraCaptureState == WKMediaCaptureStateMuted)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_TRUE(cameraCaptureState == WKMediaCaptureStateMuted);
 
     // Capture should be unmuted if it was active when the disconnect happened.
@@ -1229,17 +1229,17 @@ TEST(WebKit2, ConnectedToHardwareConsole)
     [webView _setConnectedToHardwareConsoleForTesting:NO];
     retryCount = 1000;
     while (--retryCount)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_TRUE(cameraCaptureState == WKMediaCaptureStateMuted);
 
     [webView _setConnectedToHardwareConsoleForTesting:YES];
     retryCount = 1000;
     while (--retryCount)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_TRUE(cameraCaptureState == WKMediaCaptureStateMuted);
 }
 
-TEST(WebKit2, DoNotUnmuteWhenTakingAThumbnail)
+TEST(CyberKit2, DoNotUnmuteWhenTakingAThumbnail)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -1264,17 +1264,17 @@ TEST(WebKit2, DoNotUnmuteWhenTakingAThumbnail)
     [webView _setThumbnailView:nil];
     int retryCount = 1000;
     while (--retryCount && cameraCaptureState == WKMediaCaptureStateMuted) {
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     }
     EXPECT_TRUE(cameraCaptureState == WKMediaCaptureStateMuted);
 }
 #endif
 
 #if WK_HAVE_C_SPI
-TEST(WebKit2, WebRTCAndRemoteCommands)
+TEST(CyberKit2, WebRTCAndRemoteCommands)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     configuration.get().processPool._configuration.shouldCaptureAudioInUIProcess = NO;
 
@@ -1304,7 +1304,7 @@ TEST(WebKit2, WebRTCAndRemoteCommands)
 
     done = false;
     [webView stringByEvaluatingJavaScript:@"startTest()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     cameraCaptureStateChange = false;
@@ -1328,18 +1328,18 @@ TEST(WebKit2, WebRTCAndRemoteCommands)
     done = false;
     // register handlers will catch commands, so capture should not muted.
     [webView stringByEvaluatingJavaScript:@"registerHandlers()"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView stringByEvaluatingJavaScript:@"sendCommand('pause')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_TRUE(waitUntilCameraState(webView.get(), WKMediaCaptureStateActive));
     EXPECT_TRUE(waitUntilMicrophoneState(webView.get(), WKMediaCaptureStateActive));
 
     [webView stringByEvaluatingJavaScript:@"sendCommand('play')"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_TRUE(waitUntilCameraState(webView.get(), WKMediaCaptureStateActive));
@@ -1347,6 +1347,6 @@ TEST(WebKit2, WebRTCAndRemoteCommands)
 }
 #endif // WK_HAVE_C_SPI
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)

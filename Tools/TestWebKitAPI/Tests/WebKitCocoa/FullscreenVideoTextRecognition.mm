@@ -56,7 +56,7 @@ static void swizzledPresentViewController(UIViewController *, SEL, UIViewControl
 static int32_t swizzledProcessRequest(VKCImageAnalyzer *, SEL, id request, void (^)(double progress), void (^completion)(VKImageAnalysis *, NSError *))
 {
     dispatch_async(dispatch_get_main_queue(), [completion = makeBlockPtr(completion)] {
-        completion(TestWebKitAPI::createImageAnalysisWithSimpleFixedResults().get(), nil);
+        completion(TestCyberKitAPI::createImageAnalysisWithSimpleFixedResults().get(), nil);
     });
     return 100;
 }
@@ -106,7 +106,7 @@ static void swizzledSetAnalysis(VKCImageAnalysisInteraction *, SEL, VKCImageAnal
         @selector(setAnalysis:),
         reinterpret_cast<IMP>(swizzledSetAnalysis)
     );
-    // Work around lack of a real UIApplication in TestWebKitAPIApp on iOS. Without this,
+    // Work around lack of a real UIApplication in TestCyberKitAPIApp on iOS. Without this,
     // -presentViewController:animated:completion: never calls the completion handler,
     // which means we never transition into WKFullscreenStateInFullscreen.
     _viewControllerPresentationSwizzler = WTF::makeUnique<InstanceMethodSwizzler>(
@@ -132,7 +132,7 @@ static void swizzledSetAnalysis(VKCImageAnalysisInteraction *, SEL, VKCImageAnal
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [self waitForNextPresentationUpdate];
 }
 
@@ -140,7 +140,7 @@ static void swizzledSetAnalysis(VKCImageAnalysisInteraction *, SEL, VKCImageAnal
 {
     _doneEnteringFullscreen = false;
     [self evaluateJavaScript:@"enterFullscreen()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&_doneEnteringFullscreen);
+    TestCyberKitAPI::Util::run(&_doneEnteringFullscreen);
     [self waitForNextPresentationUpdate];
 }
 
@@ -148,7 +148,7 @@ static void swizzledSetAnalysis(VKCImageAnalysisInteraction *, SEL, VKCImageAnal
 {
     _doneExitingFullscreen = false;
     [self evaluateJavaScript:@"exitFullscreen()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&_doneExitingFullscreen);
+    TestCyberKitAPI::Util::run(&_doneExitingFullscreen);
     [self waitForNextPresentationUpdate];
 }
 
@@ -185,7 +185,7 @@ static void swizzledSetAnalysis(VKCImageAnalysisInteraction *, SEL, VKCImageAnal
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [self waitForNextPresentationUpdate];
 }
 
@@ -198,7 +198,7 @@ static void swizzledSetAnalysis(VKCImageAnalysisInteraction *, SEL, VKCImageAnal
         result = timestamp.doubleValue;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return result;
 }
 
@@ -220,21 +220,21 @@ static void swizzledSetAnalysis(VKCImageAnalysisInteraction *, SEL, VKCImageAnal
 
 - (void)waitForImageAnalysisToBegin
 {
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] {
         return self.hasActiveImageAnalysis;
     }, 3, @"Expected image analysis to begin.");
 }
 
 - (void)waitForImageAnalysisToEnd
 {
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] {
         return !self.hasActiveImageAnalysis;
     }, 3, @"Expected image analysis to end.");
 }
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: Re-enable this test for iOS once webkit.org/b/248094 is resolved
 #if PLATFORM(IOS)
@@ -297,6 +297,6 @@ TEST(FullscreenVideoTextRecognition, DoNotAnalyzeVideoAfterExitingFullscreen)
     Util::run(&doneWaiting);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)

@@ -37,7 +37,7 @@
 #include <CyberKit/WKPreferencesRefPrivate.h>
 #include <CyberKit/WKSerializedScriptValue.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testDone;
 
@@ -69,7 +69,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
     testDone = true;
 }
 
-TEST(WebKit, ScrollPinningBehaviors)
+TEST(CyberKit, ScrollPinningBehaviors)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -97,6 +97,6 @@ TEST(WebKit, ScrollPinningBehaviors)
     EXPECT_TRUE(testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -77,7 +77,7 @@ GStreamerDataChannelHandler::GStreamerDataChannelHandler(GRefPtr<GstWebRTCDataCh
     ASSERT(m_channel);
     static std::once_flag debugRegisteredFlag;
     std::call_once(debugRegisteredFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_webrtc_data_channel_debug, "webkitwebrtcdatachannel", 0, "WebKit WebRTC data-channel");
+        GST_DEBUG_CATEGORY_INIT(webkit_webrtc_data_channel_debug, "webkitwebrtcdatachannel", 0, "CyberKit WebRTC data-channel");
     });
     GST_DEBUG("New GStreamerDataChannelHandler for channel %p", m_channel.get());
 

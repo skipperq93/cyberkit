@@ -18,9 +18,9 @@
  */
 
 #include "config.h"
-#include "WebKitURIRequest.h"
+#include "CyberKitURIRequest.h"
 
-#include "WebKitURIRequestPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
 #include <CyberCore/GUniquePtrSoup.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
@@ -37,27 +37,27 @@ static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 using namespace CyberCore;
 
 /**
- * WebKitURIRequest:
+ * CyberKitURIRequest:
  *
  * Represents a URI request.
  *
- * A #WebKitURIRequest can be created with a URI using the
+ * A #CyberKitURIRequest can be created with a URI using the
  * webkit_uri_request_new() method, and you can get the URI of an
  * existing request with the webkit_uri_request_get_uri() one.
  */
 
-struct _WebKitURIRequestPrivate {
+struct _CyberKitURIRequestPrivate {
     CyberCore::ResourceRequest resourceRequest;
     CString uri;
     const char* httpMethod;
     GUniquePtr<SoupMessageHeaders> httpHeaders;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitURIRequest, webkit_uri_request, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitURIRequest, webkit_uri_request, G_TYPE_OBJECT, GObject)
 
 static void webkitURIRequestGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitURIRequest* request = WEBKIT_URI_REQUEST(object);
+    CyberKitURIRequest* request = WEBKIT_URI_REQUEST(object);
 
     switch (propId) {
     case PROP_URI:
@@ -70,7 +70,7 @@ static void webkitURIRequestGetProperty(GObject* object, guint propId, GValue* v
 
 static void webkitURIRequestSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitURIRequest* request = WEBKIT_URI_REQUEST(object);
+    CyberKitURIRequest* request = WEBKIT_URI_REQUEST(object);
 
     switch (propId) {
     case PROP_URI:
@@ -81,14 +81,14 @@ static void webkitURIRequestSetProperty(GObject* object, guint propId, const GVa
     }
 }
 
-static void webkit_uri_request_class_init(WebKitURIRequestClass* requestClass)
+static void webkit_uri_request_class_init(CyberKitURIRequestClass* requestClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(requestClass);
     objectClass->get_property = webkitURIRequestGetProperty;
     objectClass->set_property = webkitURIRequestSetProperty;
 
     /**
-     * WebKitURIRequest:uri:
+     * CyberKitURIRequest:uri:
      *
      * The URI to which the request will be made.
      */
@@ -106,11 +106,11 @@ static void webkit_uri_request_class_init(WebKitURIRequestClass* requestClass)
  * webkit_uri_request_new:
  * @uri: an URI
  *
- * Creates a new #WebKitURIRequest for the given URI.
+ * Creates a new #CyberKitURIRequest for the given URI.
  *
- * Returns: a new #WebKitURIRequest
+ * Returns: a new #CyberKitURIRequest
  */
-WebKitURIRequest* webkit_uri_request_new(const gchar* uri)
+CyberKitURIRequest* webkit_uri_request_new(const gchar* uri)
 {
     g_return_val_if_fail(uri, 0);
 
@@ -119,13 +119,13 @@ WebKitURIRequest* webkit_uri_request_new(const gchar* uri)
 
 /**
  * webkit_uri_request_get_uri:
- * @request: a #WebKitURIRequest
+ * @request: a #CyberKitURIRequest
  *
  * Obtains the request URI.
  *
  * Returns: request URI, as a string.
  */
-const gchar* webkit_uri_request_get_uri(WebKitURIRequest* request)
+const gchar* webkit_uri_request_get_uri(CyberKitURIRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_REQUEST(request), 0);
 
@@ -135,12 +135,12 @@ const gchar* webkit_uri_request_get_uri(WebKitURIRequest* request)
 
 /**
  * webkit_uri_request_set_uri:
- * @request: a #WebKitURIRequest
+ * @request: a #CyberKitURIRequest
  * @uri: an URI
  *
  * Set the URI of @request
  */
-void webkit_uri_request_set_uri(WebKitURIRequest* request, const char* uri)
+void webkit_uri_request_set_uri(CyberKitURIRequest* request, const char* uri)
 {
     g_return_if_fail(WEBKIT_IS_URI_REQUEST(request));
     g_return_if_fail(uri);
@@ -155,14 +155,14 @@ void webkit_uri_request_set_uri(WebKitURIRequest* request, const char* uri)
 
 /**
  * webkit_uri_request_get_http_headers:
- * @request: a #WebKitURIRequest
+ * @request: a #CyberKitURIRequest
  *
- * Get the HTTP headers of a #WebKitURIRequest as a #SoupMessageHeaders.
+ * Get the HTTP headers of a #CyberKitURIRequest as a #SoupMessageHeaders.
  *
  * Returns: (transfer none): a #SoupMessageHeaders with the HTTP headers of @request
  *    or %NULL if @request is not an HTTP request.
  */
-SoupMessageHeaders* webkit_uri_request_get_http_headers(WebKitURIRequest* request)
+SoupMessageHeaders* webkit_uri_request_get_http_headers(CyberKitURIRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_REQUEST(request), 0);
 
@@ -179,16 +179,16 @@ SoupMessageHeaders* webkit_uri_request_get_http_headers(WebKitURIRequest* reques
 
 /**
  * webkit_uri_request_get_http_method:
- * @request: a #WebKitURIRequest
+ * @request: a #CyberKitURIRequest
  *
- * Get the HTTP method of the #WebKitURIRequest.
+ * Get the HTTP method of the #CyberKitURIRequest.
  *
- * Returns: the HTTP method of the #WebKitURIRequest or %NULL if @request is not
+ * Returns: the HTTP method of the #CyberKitURIRequest or %NULL if @request is not
  *    an HTTP request.
  *
  * Since: 2.12
  */
-const gchar* webkit_uri_request_get_http_method(WebKitURIRequest* request)
+const gchar* webkit_uri_request_get_http_method(CyberKitURIRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_REQUEST(request), nullptr);
 
@@ -203,14 +203,14 @@ const gchar* webkit_uri_request_get_http_method(WebKitURIRequest* request)
     return request->priv->httpMethod;
 }
 
-WebKitURIRequest* webkitURIRequestCreateForResourceRequest(const ResourceRequest& resourceRequest)
+CyberKitURIRequest* webkitURIRequestCreateForResourceRequest(const ResourceRequest& resourceRequest)
 {
-    WebKitURIRequest* uriRequest = WEBKIT_URI_REQUEST(g_object_new(WEBKIT_TYPE_URI_REQUEST, NULL));
+    CyberKitURIRequest* uriRequest = WEBKIT_URI_REQUEST(g_object_new(WEBKIT_TYPE_URI_REQUEST, NULL));
     uriRequest->priv->resourceRequest = resourceRequest;
     return uriRequest;
 }
 
-void webkitURIRequestGetResourceRequest(WebKitURIRequest* request, ResourceRequest& resourceRequest)
+void webkitURIRequestGetResourceRequest(CyberKitURIRequest* request, ResourceRequest& resourceRequest)
 {
     resourceRequest = request->priv->resourceRequest;
     if (request->priv->httpHeaders)

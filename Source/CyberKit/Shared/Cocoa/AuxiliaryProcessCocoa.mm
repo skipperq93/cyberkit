@@ -55,7 +55,7 @@ SOFT_LINK_LIBRARY_OPTIONAL(libAccessibility)
 SOFT_LINK_OPTIONAL(libAccessibility, _AXSUpdateWebAccessibilitySettings, void, (), ());
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
 static void initializeTimerCoalescingPolicy()
@@ -260,4 +260,4 @@ void AuxiliaryProcess::consumeAudioComponentRegistrations(const IPC::SharedBuffe
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

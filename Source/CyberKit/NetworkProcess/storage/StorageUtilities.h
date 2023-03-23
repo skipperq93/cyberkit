@@ -31,7 +31,7 @@
 #include <wtf/Scope.h>
 #include <wtf/persistence/PersistentCoders.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline std::optional<CyberCore::ClientOrigin> readOriginFromFile(const String& filePath)
 {

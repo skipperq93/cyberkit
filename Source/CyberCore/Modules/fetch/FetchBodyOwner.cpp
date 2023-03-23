@@ -381,7 +381,7 @@ ResourceError FetchBodyOwner::loadingError() const
     return WTF::switchOn(m_loadingError, [](const ResourceError& error) {
         return ResourceError { error };
     }, [](const Exception& exception) {
-        return ResourceError { errorDomainWebKitInternal, 0, { }, exception.message() };
+        return ResourceError { errorDomainCyberKitInternal, 0, { }, exception.message() };
     }, [](auto&&) {
         return ResourceError { };
     });

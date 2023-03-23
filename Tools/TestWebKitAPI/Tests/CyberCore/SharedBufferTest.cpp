@@ -29,7 +29,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/MainThread.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 void FragmentedSharedBufferTest::SetUp()
 {
@@ -51,4 +51,4 @@ void FragmentedSharedBufferTest::TearDown()
     FileSystem::deleteFile(m_tempEmptyFilePath);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

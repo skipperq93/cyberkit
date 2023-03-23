@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RemoteAudioDestinationIdentifierType { };
 using RemoteAudioDestinationIdentifier = ObjectIdentifier<RemoteAudioDestinationIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -40,7 +40,7 @@
 
 #if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/SeparatedLayerAdditions.h>
+#import <CyberKitAdditions/SeparatedLayerAdditions.h>
 #else
 static void configureSeparatedLayer(CALayer *) { }
 #endif
@@ -101,7 +101,7 @@ static void configureSeparatedLayer(CALayer *) { }
 @end
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static RetainPtr<CGColorRef> cgColorFromColor(const Color& color)
@@ -422,4 +422,4 @@ void RemoteLayerTreePropertyApplier::applyPropertiesToUIView(UIView *view, const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

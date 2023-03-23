@@ -34,7 +34,7 @@
 #import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if HAVE(CFNETWORK_NSURLSESSION_HSTS_WITH_UNTRUSTED_ROOT)
 
@@ -176,18 +176,18 @@ TEST(HSTS, Preconnect)
     };
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://example.com/"]]];
-    TestWebKitAPI::Util::run(&responseSent);
+    TestCyberKitAPI::Util::run(&responseSent);
 
     bool cancelledAllConnections { false };
     server.terminateAllConnections([&] {
         cancelledAllConnections = true;
     });
-    TestWebKitAPI::Util::run(&cancelledAllConnections);
+    TestCyberKitAPI::Util::run(&cancelledAllConnections);
 
     [webView _preconnectToServer:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&preconnectSuccessful);
+    TestCyberKitAPI::Util::run(&preconnectSuccessful);
 }
 
 #endif // HAVE(CFNETWORK_NSURLSESSION_HSTS_WITH_UNTRUSTED_ROOT)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

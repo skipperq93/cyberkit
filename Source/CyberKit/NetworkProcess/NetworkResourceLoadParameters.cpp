@@ -28,7 +28,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 NetworkResourceLoadParameters::NetworkResourceLoadParameters(
@@ -170,4 +170,4 @@ std::optional<SandboxExtension::Handle> NetworkResourceLoadParameters::sandboxEx
     return requestSandboxExtension;
 }
     
-} // namespace WebKit
+} // namespace CyberKit

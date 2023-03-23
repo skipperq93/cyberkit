@@ -43,7 +43,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RTCNetwork {
     RTCNetwork() = default;

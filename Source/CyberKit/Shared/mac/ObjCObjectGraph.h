@@ -35,7 +35,7 @@ class Encoder;
 
 typedef struct objc_object* id;
 
-namespace WebKit {
+namespace CyberKit {
 
 class ObjCObjectGraph : public API::ObjectImpl<API::Object::Type::ObjCObjectGraph> {
 public:
@@ -68,4 +68,4 @@ private:
     RetainPtr<id> m_rootObject;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

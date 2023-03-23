@@ -81,9 +81,9 @@ void GStreamerVideoEncoder::create(const String& codecName, const VideoEncoder::
 {
     static std::once_flag debugRegisteredFlag;
     std::call_once(debugRegisteredFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_video_encoder_debug, "webkitvideoencoder", 0, "WebKit WebCodecs Video Encoder");
+        GST_DEBUG_CATEGORY_INIT(webkit_video_encoder_debug, "webkitvideoencoder", 0, "CyberKit WebCodecs Video Encoder");
     });
-    registerWebKitGStreamerVideoEncoder();
+    registerCyberKitGStreamerVideoEncoder();
     auto& scanner = GStreamerRegistryScanner::singleton();
     if (!scanner.isCodecSupported(GStreamerRegistryScanner::Configuration::Encoding, codecName)) {
         gstWorkQueue().dispatch([callback = WTFMove(callback), codecName]() mutable {

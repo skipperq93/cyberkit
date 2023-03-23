@@ -31,7 +31,7 @@
 #include <CyberCore/IntPoint.h>
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebWheelEvent : public WebEvent {
 public:
@@ -108,4 +108,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -33,7 +33,7 @@
 #include "Test.h"
 #include <CyberKit/WKSessionStateRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 
@@ -70,7 +70,7 @@ static WKRetainPtr<WKDataRef> createSessionStateDataContainingFormData(WKContext
     return adoptWK(WKSessionStateCopyData(sessionState.get()));
 }
 
-TEST(WebKit, RestoreSessionStateContainingFormData)
+TEST(CyberKit, RestoreSessionStateContainingFormData)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -91,6 +91,6 @@ TEST(WebKit, RestoreSessionStateContainingFormData)
     EXPECT_TRUE(WKPageCanGoBack(webView.page()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

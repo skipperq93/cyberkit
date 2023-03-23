@@ -41,7 +41,7 @@ typedef struct _GModule GModule;
 #include <windows.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class Module {
     WTF_MAKE_FAST_ALLOCATED;

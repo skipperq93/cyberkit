@@ -37,7 +37,7 @@
 #include "WebGPUObjectHeap.h"
 #include <pal/graphics/WebGPU/WebGPUCommandEncoder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteCommandEncoder::RemoteCommandEncoder(PAL::WebGPU::CommandEncoder& commandEncoder, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(commandEncoder)
@@ -223,6 +223,6 @@ void RemoteCommandEncoder::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

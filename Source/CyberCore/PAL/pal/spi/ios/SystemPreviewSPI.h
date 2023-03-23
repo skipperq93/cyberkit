@@ -26,7 +26,7 @@
 #if USE(APPLE_INTERNAL_SDK)
 
 #if HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)
-#import <AssetViewer/ARQuickLookWebKitItem.h>
+#import <AssetViewer/ARQuickLookCyberKitItem.h>
 #endif
 
 #if PLATFORM(IOS)
@@ -72,14 +72,14 @@ NS_ASSUME_NONNULL_END
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol ARQuickLookWebKitItemDelegate
+@protocol ARQuickLookCyberKitItemDelegate
 @end
 
-@class ARQuickLookWebKitItem;
+@class ARQuickLookCyberKitItem;
 
-@interface ARQuickLookWebKitItem : QLItem
+@interface ARQuickLookCyberKitItem : QLItem
 - (instancetype)initWithPreviewItemProvider:(NSItemProvider *)itemProvider contentType:(NSString *)contentType previewTitle:(NSString *)previewTitle fileSize:(NSNumber *)fileSize previewItem:(ARQuickLookPreviewItem *)previewItem;
-- (void)setDelegate:(id <ARQuickLookWebKitItemDelegate>)delegate;
+- (void)setDelegate:(id <ARQuickLookCyberKitItemDelegate>)delegate;
 @end
 
 NS_ASSUME_NONNULL_END

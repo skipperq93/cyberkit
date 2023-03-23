@@ -85,14 +85,14 @@ static _WKCaptureDevices requestedDevices = 0;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class GetDisplayMediaTest : public testing::Test {
 public:
     virtual void SetUp()
     {
         m_configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-        auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+        auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
         m_configuration.get().processPool = (WKProcessPool *)context.get();
 
         auto handler = adoptNS([[GetDisplayMediaMessageHandler alloc] init]);
@@ -121,7 +121,7 @@ public:
             if (result.boolValue == expected)
                 return YES;
 
-            TestWebKitAPI::Util::spinRunLoop(10);
+            TestCyberKitAPI::Util::spinRunLoop(10);
         }
 
         return NO;
@@ -138,7 +138,7 @@ public:
         NSString *script = [NSString stringWithFormat:@"promptForCapture(%@)", constraints];
         [m_webView stringByEvaluatingJavaScript:script];
 
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         if (shouldSucceed) {
             EXPECT_STREQ([(NSString *)[lastScriptMessage body] UTF8String], "allowed");
             EXPECT_TRUE(haveStream(true));
@@ -183,6 +183,6 @@ TEST_F(GetDisplayMediaTest, PromptOnceAfterDenial)
     promptForCapture(@"{ video: true }", true);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

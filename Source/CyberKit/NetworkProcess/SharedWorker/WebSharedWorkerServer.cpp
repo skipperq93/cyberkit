@@ -39,7 +39,7 @@
 #include <CyberCore/WorkerFetchResult.h>
 #include <CyberCore/WorkerOptions.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebSharedWorkerServer::WebSharedWorkerServer(NetworkSession& session)
     : m_session(session)
@@ -306,4 +306,4 @@ void WebSharedWorkerServer::terminateContextConnectionWhenPossible(const CyberCo
     contextConnection->terminateWhenPossible();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

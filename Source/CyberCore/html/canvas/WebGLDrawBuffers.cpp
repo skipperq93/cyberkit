@@ -68,7 +68,7 @@ void WebGLDrawBuffers::drawBuffersWEBGL(const Vector<GCGLenum>& buffers)
             context->synthesizeGLError(GraphicsContextGL::INVALID_OPERATION, "drawBuffersWEBGL", "BACK or NONE");
             return;
         }
-        // Because the backbuffer is simulated on all current WebKit ports, we need to change BACK to COLOR_ATTACHMENT0.
+        // Because the backbuffer is simulated on all current CyberKit ports, we need to change BACK to COLOR_ATTACHMENT0.
         GCGLenum value[1] { bufs[0] == GraphicsContextGL::BACK ? GraphicsContextGL::COLOR_ATTACHMENT0 : GraphicsContextGL::NONE };
         context->graphicsContextGL()->drawBuffersEXT(value);
         context->setBackDrawBuffer(bufs[0]);

@@ -32,7 +32,7 @@
 #include "NetworkProcessProxyMessages.h"
 #include "WebCompiledContentRuleList.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 NetworkContentRuleListManager::NetworkContentRuleListManager(NetworkProcess& networkProcess)
@@ -108,6 +108,6 @@ void NetworkContentRuleListManager::remove(UserContentControllerIdentifier ident
     m_contentExtensionBackends.remove(identifier);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

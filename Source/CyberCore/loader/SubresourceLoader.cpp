@@ -249,7 +249,7 @@ void SubresourceLoader::willSendRequestInternal(ResourceRequest&& newRequest, co
     if (!redirectResponse.isNull()) {
         if (options().redirect != FetchOptions::Redirect::Follow) {
             if (options().redirect == FetchOptions::Redirect::Error) {
-                ResourceError error { errorDomainWebKitInternal, 0, request().url(), makeString("Not allowed to follow a redirection while loading ", request().url().string()), ResourceError::Type::AccessControl };
+                ResourceError error { errorDomainCyberKitInternal, 0, request().url(), makeString("Not allowed to follow a redirection while loading ", request().url().string()), ResourceError::Type::AccessControl };
 
                 if (m_frame && m_frame->document())
                     m_frame->document()->addConsoleMessage(MessageSource::Security, MessageLevel::Error, error.localizedDescription());
@@ -378,7 +378,7 @@ void SubresourceLoader::didReceiveResponse(const ResourceResponse& response, Com
     CompletionHandlerCallingScope completionHandlerCaller(WTFMove(policyCompletionHandler));
 
     if (response.containsInvalidHTTPHeaders()) {
-        didFail(ResourceError(errorDomainWebKitInternal, 0, request().url(), "Response contained invalid HTTP headers"_s, ResourceError::Type::General));
+        didFail(ResourceError(errorDomainCyberKitInternal, 0, request().url(), "Response contained invalid HTTP headers"_s, ResourceError::Type::General));
         return;
     }
 

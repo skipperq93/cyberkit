@@ -33,7 +33,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, GetTextFragmentMatch)
+TEST(CyberKit, GetTextFragmentMatch)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 100, 100) configuration:configuration.get() addToWindow:YES]);
@@ -49,7 +49,7 @@ TEST(WebKit, GetTextFragmentMatch)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
     };
 
     testTextFragment(@"hello world", @"#:~:text=hello%20world", @"hello world");

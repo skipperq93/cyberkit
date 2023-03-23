@@ -31,10 +31,10 @@
 #include "WebGPUValidationError.h"
 #include <variant>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 using Error = std::variant<OutOfMemoryError, ValidationError>;
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

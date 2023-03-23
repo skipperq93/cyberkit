@@ -18,15 +18,15 @@
  */
 
 #include "config.h"
-#include "WebKitUserMessage.h"
+#include "CyberKitUserMessage.h"
 
-#include "WebKitUserMessagePrivate.h"
+#include "CyberKitUserMessagePrivate.h"
 #include <gio/gunixfdlist.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 enum {
     PROP_0,
@@ -37,26 +37,26 @@ enum {
 };
 
 /**
- * WebKitUserMessage:
- * @See_also: #WebKitWebContext, #WebKitWebView, #WebKitWebExtension, #WebKitWebPage
+ * CyberKitUserMessage:
+ * @See_also: #CyberKitWebContext, #CyberKitWebView, #CyberKitWebExtension, #CyberKitWebPage
  *
  * Message that can be sent between the UI process and web extensions.
  *
- * A WebKitUserMessage is a message that can be used for the communication between the UI process
- * and web extensions. A WebKitUserMessage always has a name, and it can also include parameters and
- * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all #WebKitWebExtension<!-- -->s,
- * from a #WebKitWebExtension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
- * corresponding #WebKitWebPage (and vice versa). One to one messages can be replied to directly with
+ * A CyberKitUserMessage is a message that can be used for the communication between the UI process
+ * and web extensions. A CyberKitUserMessage always has a name, and it can also include parameters and
+ * UNIX file descriptors. Messages can be sent from a #CyberKitWebContext to all #CyberKitWebExtension<!-- -->s,
+ * from a #CyberKitWebExtension to its corresponding #CyberKitWebContext, and from a #CyberKitWebView to its
+ * corresponding #CyberKitWebPage (and vice versa). One to one messages can be replied to directly with
  * webkit_user_message_send_reply().
  *
  * Since: 2.28
  */
-struct _WebKitUserMessagePrivate {
+struct _CyberKitUserMessagePrivate {
     UserMessage message;
     CompletionHandler<void(UserMessage&&)> replyHandler;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitUserMessage, webkit_user_message, G_TYPE_INITIALLY_UNOWNED, GInitiallyUnowned)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitUserMessage, webkit_user_message, G_TYPE_INITIALLY_UNOWNED, GInitiallyUnowned)
 
 /**
  * webkit_user_message_error_quark:
@@ -65,11 +65,11 @@ WEBKIT_DEFINE_FINAL_TYPE(WebKitUserMessage, webkit_user_message, G_TYPE_INITIALL
  *
  * Returns: user message error domain.
  */
-G_DEFINE_QUARK(WebKitUserMessageError, webkit_user_message_error)
+G_DEFINE_QUARK(CyberKitUserMessageError, webkit_user_message_error)
 
 static void webkitUserMessageDispose(GObject* object)
 {
-    WebKitUserMessage* message = WEBKIT_USER_MESSAGE(object);
+    CyberKitUserMessage* message = WEBKIT_USER_MESSAGE(object);
 
     if (auto replyHandler = std::exchange(message->priv->replyHandler, nullptr))
         replyHandler(UserMessage(message->priv->message.name, WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE));
@@ -79,7 +79,7 @@ static void webkitUserMessageDispose(GObject* object)
 
 static void webkitUserMessageGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitUserMessage* message = WEBKIT_USER_MESSAGE(object);
+    CyberKitUserMessage* message = WEBKIT_USER_MESSAGE(object);
 
     switch (propId) {
     case PROP_NAME:
@@ -98,7 +98,7 @@ static void webkitUserMessageGetProperty(GObject* object, guint propId, GValue* 
 
 static void webkitUserMessageSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitUserMessage* message = WEBKIT_USER_MESSAGE(object);
+    CyberKitUserMessage* message = WEBKIT_USER_MESSAGE(object);
 
     switch (propId) {
     case PROP_NAME:
@@ -116,7 +116,7 @@ static void webkitUserMessageSetProperty(GObject* object, guint propId, const GV
     }
 }
 
-static void webkit_user_message_class_init(WebKitUserMessageClass* klass)
+static void webkit_user_message_class_init(CyberKitUserMessageClass* klass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(klass);
 
@@ -125,7 +125,7 @@ static void webkit_user_message_class_init(WebKitUserMessageClass* klass)
     gObjectClass->set_property = webkitUserMessageSetProperty;
 
     /**
-     * WebKitUserMessage:name:
+     * CyberKitUserMessage:name:
      *
      * The name of the user message.
      *
@@ -141,7 +141,7 @@ static void webkit_user_message_class_init(WebKitUserMessageClass* klass)
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 
     /**
-     * WebKitUserMessage:parameters:
+     * CyberKitUserMessage:parameters:
      *
      * The parameters of the user message as a #GVariant, or %NULL
      * if the message doesn't include parameters. Note that only complete types are
@@ -160,7 +160,7 @@ static void webkit_user_message_class_init(WebKitUserMessageClass* klass)
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 
     /**
-     * WebKitUserMessage:fd-list:
+     * CyberKitUserMessage:fd-list:
      *
      * The UNIX file descriptors of the user message.
      *
@@ -176,22 +176,22 @@ static void webkit_user_message_class_init(WebKitUserMessageClass* klass)
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 }
 
-WebKitUserMessage* webkitUserMessageCreate(UserMessage&& message)
+CyberKitUserMessage* webkitUserMessageCreate(UserMessage&& message)
 {
-    WebKitUserMessage* returnValue = WEBKIT_USER_MESSAGE(g_object_new(WEBKIT_TYPE_USER_MESSAGE, nullptr));
+    CyberKitUserMessage* returnValue = WEBKIT_USER_MESSAGE(g_object_new(WEBKIT_TYPE_USER_MESSAGE, nullptr));
     returnValue->priv->message = WTFMove(message);
     return returnValue;
 }
 
-WebKitUserMessage* webkitUserMessageCreate(UserMessage&& message, CompletionHandler<void(UserMessage&&)>&& replyHandler)
+CyberKitUserMessage* webkitUserMessageCreate(UserMessage&& message, CompletionHandler<void(UserMessage&&)>&& replyHandler)
 {
-    WebKitUserMessage* returnValue = WEBKIT_USER_MESSAGE(g_object_new(WEBKIT_TYPE_USER_MESSAGE, nullptr));
+    CyberKitUserMessage* returnValue = WEBKIT_USER_MESSAGE(g_object_new(WEBKIT_TYPE_USER_MESSAGE, nullptr));
     returnValue->priv->message = WTFMove(message);
     returnValue->priv->replyHandler = WTFMove(replyHandler);
     return returnValue;
 }
 
-UserMessage& webkitUserMessageGetMessage(WebKitUserMessage* message)
+UserMessage& webkitUserMessageGetMessage(CyberKitUserMessage* message)
 {
     return message->priv->message;
 }
@@ -201,13 +201,13 @@ UserMessage& webkitUserMessageGetMessage(WebKitUserMessage* message)
  * @name: the message name
  * @parameters: (nullable): the message parameters as a #GVariant, or %NULL
  *
- * Create a new #WebKitUserMessage with @name.
+ * Create a new #CyberKitUserMessage with @name.
  *
- * Returns: the newly created #WebKitUserMessage object.
+ * Returns: the newly created #CyberKitUserMessage object.
  *
  * Since: 2.28
  */
-WebKitUserMessage* webkit_user_message_new(const char* name, GVariant* parameters)
+CyberKitUserMessage* webkit_user_message_new(const char* name, GVariant* parameters)
 {
     return webkit_user_message_new_with_fd_list(name, parameters, nullptr);
 }
@@ -218,13 +218,13 @@ WebKitUserMessage* webkit_user_message_new(const char* name, GVariant* parameter
  * @parameters: (nullable): the message parameters as a #GVariant
  * @fd_list: (nullable): the message file descriptors
  *
- * Create a new #WebKitUserMessage including also a list of UNIX file descriptors to be sent.
+ * Create a new #CyberKitUserMessage including also a list of UNIX file descriptors to be sent.
  *
- * Returns: the newly created #WebKitUserMessage object.
+ * Returns: the newly created #CyberKitUserMessage object.
  *
  * Since: 2.28
  */
-WebKitUserMessage* webkit_user_message_new_with_fd_list(const char* name, GVariant* parameters, GUnixFDList* fdList)
+CyberKitUserMessage* webkit_user_message_new_with_fd_list(const char* name, GVariant* parameters, GUnixFDList* fdList)
 {
     g_return_val_if_fail(name, nullptr);
     g_return_val_if_fail(!fdList || G_IS_UNIX_FD_LIST(fdList), nullptr);
@@ -234,7 +234,7 @@ WebKitUserMessage* webkit_user_message_new_with_fd_list(const char* name, GVaria
 
 /**
  * webkit_user_message_get_name:
- * @message: a #WebKitUserMessage
+ * @message: a #CyberKitUserMessage
  *
  * Get the @message name.
  *
@@ -242,7 +242,7 @@ WebKitUserMessage* webkit_user_message_new_with_fd_list(const char* name, GVaria
  *
  * Since: 2.28
  */
-const char* webkit_user_message_get_name(WebKitUserMessage* message)
+const char* webkit_user_message_get_name(CyberKitUserMessage* message)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_MESSAGE(message), nullptr);
 
@@ -251,7 +251,7 @@ const char* webkit_user_message_get_name(WebKitUserMessage* message)
 
 /**
  * webkit_user_message_get_parameters:
- * @message: a #WebKitUserMessage
+ * @message: a #CyberKitUserMessage
  *
  * Get the @message parameters.
  *
@@ -259,7 +259,7 @@ const char* webkit_user_message_get_name(WebKitUserMessage* message)
  *
  * Since: 2.28
  */
-GVariant* webkit_user_message_get_parameters(WebKitUserMessage* message)
+GVariant* webkit_user_message_get_parameters(CyberKitUserMessage* message)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_MESSAGE(message), nullptr);
 
@@ -268,7 +268,7 @@ GVariant* webkit_user_message_get_parameters(WebKitUserMessage* message)
 
 /**
  * webkit_user_message_get_fd_list:
- * @message: a #WebKitUserMessage
+ * @message: a #CyberKitUserMessage
  *
  * Get the @message list of file descritpor.
  *
@@ -276,7 +276,7 @@ GVariant* webkit_user_message_get_parameters(WebKitUserMessage* message)
  *
  * Since: 2.28
  */
-GUnixFDList* webkit_user_message_get_fd_list(WebKitUserMessage* message)
+GUnixFDList* webkit_user_message_get_fd_list(CyberKitUserMessage* message)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_MESSAGE(message), nullptr);
 
@@ -285,25 +285,25 @@ GUnixFDList* webkit_user_message_get_fd_list(WebKitUserMessage* message)
 
 /**
  * webkit_user_message_send_reply:
- * @message: a #WebKitUserMessage
- * @reply: a #WebKitUserMessage to send as reply
+ * @message: a #CyberKitUserMessage
+ * @reply: a #CyberKitUserMessage to send as reply
  *
  * Send a reply to an user message.
  *
  * If @reply is floating, it's consumed.
- * You can only send a reply to a #WebKitUserMessage that has been
+ * You can only send a reply to a #CyberKitUserMessage that has been
  * received.
  *
  * Since: 2.28
  */
-void webkit_user_message_send_reply(WebKitUserMessage* message, WebKitUserMessage* reply)
+void webkit_user_message_send_reply(CyberKitUserMessage* message, CyberKitUserMessage* reply)
 {
     g_return_if_fail(WEBKIT_IS_USER_MESSAGE(message));
     g_return_if_fail(WEBKIT_IS_USER_MESSAGE(reply));
     g_return_if_fail(message->priv->replyHandler);
 
     // We sink the reference in case of being floating.
-    GRefPtr<WebKitUserMessage> adoptedReply = reply;
+    GRefPtr<CyberKitUserMessage> adoptedReply = reply;
     if (auto replyHandler = std::exchange(message->priv->replyHandler, nullptr))
         replyHandler(reply ? reply->priv->message : UserMessage());
 }

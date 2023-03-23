@@ -170,11 +170,11 @@ static const float minSearchFieldResultsDecorationSize = 9;
 static const float maxSearchFieldResultsDecorationSize = 30;
 static const float defaultSearchFieldResultsButtonWidth = 18;
 
-static bool gWebKitIsBeingUnloaded;
+static bool gCyberKitIsBeingUnloaded;
 
-void RenderThemeWin::setWebKitIsBeingUnloaded()
+void RenderThemeWin::setCyberKitIsBeingUnloaded()
 {
-    gWebKitIsBeingUnloaded = true;
+    gCyberKitIsBeingUnloaded = true;
 }
 
 RenderTheme& RenderTheme::singleton()
@@ -196,8 +196,8 @@ RenderThemeWin::RenderThemeWin()
 
 RenderThemeWin::~RenderThemeWin()
 {
-    // If WebKit is being unloaded, then uxtheme.dll is no longer available.
-    if (gWebKitIsBeingUnloaded || !uxthemeLibrary())
+    // If CyberKit is being unloaded, then uxtheme.dll is no longer available.
+    if (gCyberKitIsBeingUnloaded || !uxthemeLibrary())
         return;
     close();
 }

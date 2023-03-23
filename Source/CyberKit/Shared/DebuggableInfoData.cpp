@@ -29,7 +29,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/InspectorDebuggableType.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 DebuggableInfoData DebuggableInfoData::empty()
 {
@@ -87,4 +87,4 @@ std::optional<DebuggableInfoData> DebuggableInfoData::decode(IPC::Decoder& decod
     }};
 }
 
-} // namespace WebKit
+} // namespace CyberKit

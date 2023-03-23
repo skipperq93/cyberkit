@@ -133,7 +133,7 @@ private:
     
     struct UIScriptInvocationData {
         unsigned callbackID;
-        WebKit::WKRetainPtr<WKStringRef> scriptString;
+        CyberKit::WKRetainPtr<WKStringRef> scriptString;
         TestInvocation* testInvocation;
     };
     static void runUISideScriptAfterUpdateCallback(WKErrorRef, void* context);

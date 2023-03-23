@@ -339,7 +339,7 @@ Value FunId::evaluate() const
             ++endPos;
 
         // If there are several nodes with the same id, id() should return the first one.
-        // In WebKit, getElementById behaves so, too, although its behavior in this case is formally undefined.
+        // In CyberKit, getElementById behaves so, too, although its behavior in this case is formally undefined.
         Node* node = contextScope.getElementById(StringView(idList).substring(startPos, endPos - startPos));
         if (node && resultSet.add(*node).isNewEntry)
             result.append(node);

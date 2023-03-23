@@ -13,11 +13,11 @@
 #import "PassKitSoftLinkAdditions.h"
 #import <wtf/URL.h>
 
-@interface PKPaymentSetupConfiguration (WebKit)
+@interface PKPaymentSetupConfiguration (CyberKit)
 @property (nonatomic, copy) NSArray<NSString *> *signedFields;
 @end
 
-namespace WebKitAdditions {
+namespace CyberKitAdditions {
 
 static RetainPtr<PKPaymentSetupConfiguration> toPlatformConfiguration(const CyberCore::ApplePaySetup::Configuration& coreConfiguration, const URL& url)
 {
@@ -77,6 +77,6 @@ std::optional<PaymentSetupConfiguration> PaymentSetupConfiguration::decode(IPC::
     return PaymentSetupConfiguration { WTFMove(*configuration) };
 }
 
-} // namespace WebKitAdditions
+} // namespace CyberKitAdditions
 
 #endif // HAVE(PASSKIT_PAYMENT_SETUP)

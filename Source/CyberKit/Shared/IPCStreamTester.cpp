@@ -38,7 +38,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 RefPtr<IPCStreamTester> IPCStreamTester::create(IPCStreamTesterIdentifier identifier, IPC::StreamServerConnection::Handle&& connectionHandle)
 {
@@ -75,7 +75,7 @@ void IPCStreamTester::stopListeningForIPC(Ref<IPCStreamTester>&& refFromConnecti
 void IPCStreamTester::syncMessageReturningSharedMemory1(uint32_t byteCount, CompletionHandler<void(SharedMemory::Handle)>&& completionHandler)
 {
     auto result = [&]() -> SharedMemory::Handle {
-        auto sharedMemory = WebKit::SharedMemory::allocate(byteCount);
+        auto sharedMemory = CyberKit::SharedMemory::allocate(byteCount);
         if (!sharedMemory)
             return { };
         auto handle = sharedMemory->createHandle(SharedMemory::Protection::ReadOnly);

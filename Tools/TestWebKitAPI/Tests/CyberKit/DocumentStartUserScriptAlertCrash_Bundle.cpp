@@ -34,7 +34,7 @@
 #include <CyberKit/WKRetainPtr.h>
 #include <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class DocumentStartUserScriptAlertCrashTest : public InjectedBundleTest {
 public:
@@ -52,6 +52,6 @@ public:
 
 static InjectedBundleTest::Register<DocumentStartUserScriptAlertCrashTest> registrar("DocumentStartUserScriptAlertCrashTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -243,7 +243,7 @@ static String formStateSignature()
     // In the legacy version of serialized state, the first item was a name attribute
     // value of a form control. The following string literal contains some characters
     // which are rarely used for name attribute values so it won't match.
-    static MainThreadNeverDestroyed<String> signature(MAKE_STATIC_STRING_IMPL("\n\r?% WebKit serialized form state version 8 \n\r=&"));
+    static MainThreadNeverDestroyed<String> signature(MAKE_STATIC_STRING_IMPL("\n\r?% CyberKit serialized form state version 8 \n\r=&"));
     return signature;
 }
 

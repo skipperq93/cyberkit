@@ -70,7 +70,7 @@ namespace WTF {
 enum class Critical : bool;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkBroadcastChannelRegistry;
 class NetworkDataTask;
@@ -362,4 +362,4 @@ protected:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

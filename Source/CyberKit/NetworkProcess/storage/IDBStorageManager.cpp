@@ -33,7 +33,7 @@
 #include <CyberCore/SQLiteFileSystem.h>
 #include <CyberCore/SQLiteIDBBackingStore.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static bool migrateOriginDataImpl(const String& oldOriginDirectory, const String& newOriginDirectory, Function<String(const String&)>&& createFileNameFunction)
 {
@@ -285,4 +285,4 @@ void IDBStorageManager::handleLowMemoryWarning()
         database->handleLowMemoryWarning();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

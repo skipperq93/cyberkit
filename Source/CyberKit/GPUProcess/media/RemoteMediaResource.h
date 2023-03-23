@@ -38,7 +38,7 @@ class FragmentedSharedBuffer;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteMediaPlayerProxy;
 class RemoteMediaResourceManager;
@@ -69,7 +69,7 @@ private:
     bool m_didPassAccessControlCheck { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

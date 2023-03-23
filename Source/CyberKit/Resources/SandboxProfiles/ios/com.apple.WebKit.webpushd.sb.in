@@ -146,7 +146,7 @@
 (allow system-fsctl (fsctl-command (_IO "h" 47)))
 
 #if ENABLE(SYSTEM_CONTENT_PATH_SANDBOX_RULES)
-#include <WebKitAdditions/SystemContentSandbox-ios.defs>
+#include <CyberKitAdditions/SystemContentSandbox-ios.defs>
 
 (allow file-read* file-test-existence
     (apply subpath file-read-existence-secondary-paths))
@@ -193,18 +193,18 @@
          "com.apple.LaunchServices"
          "kCFPreferencesAnyApplication"))
 
-;; We might need to create ~/Library/WebKit and ~/Library/WebKit/WebPush on a clean install.
+;; We might need to create ~/Library/CyberKit and ~/Library/CyberKit/WebPush on a clean install.
 (allow file-write-create
-    (require-all (vnode-type DIRECTORY) (home-literal "/Library/WebKit"))
-    (require-all (vnode-type DIRECTORY) (home-literal "/Library/WebKit/WebPush")))
+    (require-all (vnode-type DIRECTORY) (home-literal "/Library/CyberKit"))
+    (require-all (vnode-type DIRECTORY) (home-literal "/Library/CyberKit/WebPush")))
 
 ;; Push database.
 (allow file*
-    (home-literal "/Library/WebKit/WebPush/PushDatabase.db")
-    (home-literal "/Library/WebKit/WebPush/PushDatabase.db-shm")
-    (home-literal "/Library/WebKit/WebPush/PushDatabase.db-wal")
-    (home-literal "/Library/WebKit/WebPush/PushDatabase.db-lock")
-    (home-literal "/Library/WebKit/WebPush/PushDatabase.db-journal"))
+    (home-literal "/Library/CyberKit/WebPush/PushDatabase.db")
+    (home-literal "/Library/CyberKit/WebPush/PushDatabase.db-shm")
+    (home-literal "/Library/CyberKit/WebPush/PushDatabase.db-wal")
+    (home-literal "/Library/CyberKit/WebPush/PushDatabase.db-lock")
+    (home-literal "/Library/CyberKit/WebPush/PushDatabase.db-journal"))
 
 ;; Let SQLite open the parent directory of the database for fsync purposes.
-(allow file-read-data (require-all (vnode-type DIRECTORY) (home-prefix "/Library/WebKit/WebPush")))
+(allow file-read-data (require-all (vnode-type DIRECTORY) (home-prefix "/Library/CyberKit/WebPush")))

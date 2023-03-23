@@ -85,7 +85,7 @@ SOFT_LINK_OPTIONAL(HIServices, HIS_XPC_ResetMessageConnection, void, (), ())
 
 extern const char* const SANDBOX_BUILD_ID; // Defined by the Sandbox framework
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if USE(CACHE_COMPILED_SANDBOX)
@@ -228,14 +228,14 @@ constexpr const char* processStorageClass(CyberCore::AuxiliaryProcessType type)
 {
     switch (type) {
     case CyberCore::AuxiliaryProcessType::WebContent:
-        return "WebKitWebContentSandbox";
+        return "CyberKitWebContentSandbox";
     case CyberCore::AuxiliaryProcessType::Network:
-        return "WebKitNetworkingSandbox";
+        return "CyberKitNetworkingSandbox";
     case CyberCore::AuxiliaryProcessType::Plugin:
-        return "WebKitPluginSandbox";
+        return "CyberKitPluginSandbox";
 #if ENABLE(GPU_PROCESS)
     case CyberCore::AuxiliaryProcessType::GPU:
-        return "WebKitGPUSandbox";
+        return "CyberKitGPUSandbox";
 #endif
     }
 }
@@ -286,10 +286,10 @@ static String sandboxDirectory(CyberCore::AuxiliaryProcessType processType, cons
     directory.append(parentDirectory);
     switch (processType) {
     case CyberCore::AuxiliaryProcessType::WebContent:
-        directory.append("/com.apple.WebKit.WebContent.Sandbox");
+        directory.append("/com.apple.CyberKit.WebContent.Sandbox");
         break;
     case CyberCore::AuxiliaryProcessType::Network:
-        directory.append("/com.apple.WebKit.Networking.Sandbox");
+        directory.append("/com.apple.CyberKit.Networking.Sandbox");
         break;
     case CyberCore::AuxiliaryProcessType::Plugin:
         WTFLogAlways("sandboxDirectory: Unexpected Plugin process initialization.");
@@ -297,7 +297,7 @@ static String sandboxDirectory(CyberCore::AuxiliaryProcessType processType, cons
         break;
 #if ENABLE(GPU_PROCESS)
     case CyberCore::AuxiliaryProcessType::GPU:
-        directory.append("/com.apple.WebKit.GPU.Sandbox");
+        directory.append("/com.apple.CyberKit.GPU.Sandbox");
         break;
 #endif
     }
@@ -524,7 +524,7 @@ static bool tryApplyCachedSandbox(const SandboxInfo& info)
 
 static inline const NSBundle *webKit2Bundle()
 {
-    const static NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.apple.WebKit"];
+    const static NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
     return bundle;
 }
 
@@ -812,16 +812,16 @@ void AuxiliaryProcess::setQOS(int latencyQOS, int throughputQOS)
 }
 
 #if PLATFORM(MAC)
-bool AuxiliaryProcess::isSystemWebKit()
+bool AuxiliaryProcess::isSystemCyberKit()
 {
-    static bool isSystemWebKit = []() -> bool {
+    static bool isSystemCyberKit = []() -> bool {
 #if HAVE(READ_ONLY_SYSTEM_VOLUME)
         if ([[webKit2Bundle() bundlePath] hasPrefix:@"/Library/Apple/System/"])
             return true;
 #endif
         return [[webKit2Bundle() bundlePath] hasPrefix:@"/System/"];
     }();
-    return isSystemWebKit;
+    return isSystemCyberKit;
 }
 
 void AuxiliaryProcess::openDirectoryCacheInvalidated(SandboxExtension::Handle&& handle)
@@ -842,6 +842,6 @@ void AuxiliaryProcess::openDirectoryCacheInvalidated(SandboxExtension::Handle&& 
 }
 #endif // PLATFORM(MAC)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

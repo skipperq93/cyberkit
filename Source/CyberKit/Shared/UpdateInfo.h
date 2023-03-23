@@ -37,7 +37,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class UpdateInfo {
     WTF_MAKE_NONCOPYABLE(UpdateInfo);
@@ -74,6 +74,6 @@ public:
     CyberCore::IntPoint bitmapOffset;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

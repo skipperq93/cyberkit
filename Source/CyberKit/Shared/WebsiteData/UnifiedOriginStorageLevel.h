@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class UnifiedOriginStorageLevel : uint8_t {
     None = 0,
@@ -43,16 +43,16 @@ inline std::optional<UnifiedOriginStorageLevel> convertToUnifiedOriginStorageLev
     return static_cast<UnifiedOriginStorageLevel>(value);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::UnifiedOriginStorageLevel> {
+template<> struct EnumTraits<CyberKit::UnifiedOriginStorageLevel> {
     using values = EnumValues<
-        WebKit::UnifiedOriginStorageLevel,
-        WebKit::UnifiedOriginStorageLevel::None,
-        WebKit::UnifiedOriginStorageLevel::Basic,
-        WebKit::UnifiedOriginStorageLevel::Standard
+        CyberKit::UnifiedOriginStorageLevel,
+        CyberKit::UnifiedOriginStorageLevel::None,
+        CyberKit::UnifiedOriginStorageLevel::Basic,
+        CyberKit::UnifiedOriginStorageLevel::Standard
     >;
 };
 

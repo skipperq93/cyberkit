@@ -31,7 +31,7 @@
 #include "WebPushDaemonConnectionConfiguration.h"
 #include "WebPushDaemonConstants.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkNotificationManager;
 class NetworkSession;
@@ -73,7 +73,7 @@ private:
 };
 
 } // namespace WebPushD
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(BUILT_IN_NOTIFICATIONS)
 

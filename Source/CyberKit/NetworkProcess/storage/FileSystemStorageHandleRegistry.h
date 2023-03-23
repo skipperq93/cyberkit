@@ -29,7 +29,7 @@
 #include <CyberCore/FileSystemHandleIdentifier.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class FileSystemStorageHandle;
 
@@ -45,5 +45,5 @@ private:
     HashMap<CyberCore::FileSystemHandleIdentifier, WeakPtr<FileSystemStorageHandle>> m_handles;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

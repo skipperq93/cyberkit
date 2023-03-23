@@ -1018,7 +1018,7 @@ Ref<TextResourceDecoder> XMLHttpRequest::createDecoder() const
     case ResponseType::EmptyString:
         if (MIMETypeRegistry::isXMLMIMEType(responseMIMEType())) {
             auto decoder = TextResourceDecoder::create("application/xml"_s);
-            // Don't stop on encoding errors, unlike it is done for other kinds of XML resources. This matches the behavior of previous WebKit versions, Firefox and Opera.
+            // Don't stop on encoding errors, unlike it is done for other kinds of XML resources. This matches the behavior of previous CyberKit versions, Firefox and Opera.
             decoder->useLenientXMLDecoding();
             return decoder;
         }
@@ -1034,7 +1034,7 @@ Ref<TextResourceDecoder> XMLHttpRequest::createDecoder() const
         if (equalLettersIgnoringASCIICase(responseMIMEType(), "text/html"_s))
             return TextResourceDecoder::create("text/html"_s, "UTF-8");
         auto decoder = TextResourceDecoder::create("application/xml"_s);
-        // Don't stop on encoding errors, unlike it is done for other kinds of XML resources. This matches the behavior of previous WebKit versions, Firefox and Opera.
+        // Don't stop on encoding errors, unlike it is done for other kinds of XML resources. This matches the behavior of previous CyberKit versions, Firefox and Opera.
         decoder->useLenientXMLDecoding();
         return decoder;
     }

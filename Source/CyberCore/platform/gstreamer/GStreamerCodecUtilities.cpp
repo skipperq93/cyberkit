@@ -35,7 +35,7 @@ static void ensureDebugCategoryInitialized()
 {
     static std::once_flag debugRegisteredFlag;
     std::call_once(debugRegisteredFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_gst_codec_utilities_debug, "webkitcodec", 0, "WebKit Codecs Utilities");
+        GST_DEBUG_CATEGORY_INIT(webkit_gst_codec_utilities_debug, "webkitcodec", 0, "CyberKit Codecs Utilities");
     });
 }
 

@@ -30,7 +30,7 @@
 #include <CyberCore/STUNMessageParsing.h>
 #include <utility>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace CyberCore;
 
@@ -48,6 +48,6 @@ TEST(STUNMessageParsing, MessageLength)
     EXPECT_EQ(buffer[2], 4u);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

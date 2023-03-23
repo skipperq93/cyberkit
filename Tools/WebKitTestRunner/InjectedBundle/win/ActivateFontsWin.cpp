@@ -58,15 +58,15 @@ void activateFonts()
 {
     static const wchar_t* fontFilenames[] = {
         L"AHEM____.TTF",
-        L"WebKitWeightWatcher100.ttf",
-        L"WebKitWeightWatcher200.ttf",
-        L"WebKitWeightWatcher300.ttf",
-        L"WebKitWeightWatcher400.ttf",
-        L"WebKitWeightWatcher500.ttf",
-        L"WebKitWeightWatcher600.ttf",
-        L"WebKitWeightWatcher700.ttf",
-        L"WebKitWeightWatcher800.ttf",
-        L"WebKitWeightWatcher900.ttf",
+        L"CyberKitWeightWatcher100.ttf",
+        L"CyberKitWeightWatcher200.ttf",
+        L"CyberKitWeightWatcher300.ttf",
+        L"CyberKitWeightWatcher400.ttf",
+        L"CyberKitWeightWatcher500.ttf",
+        L"CyberKitWeightWatcher600.ttf",
+        L"CyberKitWeightWatcher700.ttf",
+        L"CyberKitWeightWatcher800.ttf",
+        L"CyberKitWeightWatcher900.ttf",
         0
     };
 

@@ -1,1 +1,1 @@
-PASS: WebKit did not crash in Asan or assert in Debug.
+PASS: CyberKit did not crash in Asan or assert in Debug.

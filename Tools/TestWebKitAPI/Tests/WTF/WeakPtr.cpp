@@ -32,7 +32,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakListHashSet.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static unsigned s_baseWeakReferences = 0;
 
@@ -1227,9 +1227,9 @@ TEST(WTF_WeakPtr, WeakHashMapConstObjects)
         EXPECT_EQ(s_baseWeakReferences, 1u);
         EXPECT_EQ(computeSizeOfWeakHashMap(weakHashMap), 1u);
         weakHashMap.checkConsistency();
-        weakHashMap.set(object, "WebKit"_s);
+        weakHashMap.set(object, "CyberKit"_s);
         EXPECT_TRUE(weakHashMap.contains(object));
-        EXPECT_STREQ(weakHashMap.get(object).utf8().data(), "WebKit");
+        EXPECT_STREQ(weakHashMap.get(object).utf8().data(), "CyberKit");
         EXPECT_EQ(s_baseWeakReferences, 1u);
         EXPECT_EQ(computeSizeOfWeakHashMap(weakHashMap), 1u);
         weakHashMap.checkConsistency();
@@ -2887,4 +2887,4 @@ TEST(WTF_ThreadSafeWeakPtr, ThreadSafeWeakHashSet)
     EXPECT_EQ(ThreadSafeInstanceCounter::instanceCount, 0u);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

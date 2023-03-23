@@ -33,7 +33,7 @@
 #include <pal/graphics/WebGPU/WebGPUVertexStepMode.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct VertexBufferLayout {
     PAL::WebGPU::Size64 arrayStride { 0 };
@@ -41,6 +41,6 @@ struct VertexBufferLayout {
     Vector<VertexAttribute> attributes;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

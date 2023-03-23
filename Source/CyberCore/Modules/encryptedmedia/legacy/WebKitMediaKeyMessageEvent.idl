@@ -27,14 +27,14 @@
     Conditional=LEGACY_ENCRYPTED_MEDIA,
     EnabledBySetting=LegacyEncryptedMediaAPIEnabled,
     Exposed=Window
-] interface WebKitMediaKeyMessageEvent : Event {
-    constructor([AtomString] DOMString type, optional WebKitMediaKeyMessageEventInit eventInitDict);
+] interface CyberKitMediaKeyMessageEvent : Event {
+    constructor([AtomString] DOMString type, optional CyberKitMediaKeyMessageEventInit eventInitDict);
 
     readonly attribute Uint8Array message;
     readonly attribute DOMString destinationURL;
 };
 
-dictionary WebKitMediaKeyMessageEventInit : EventInit {
+dictionary CyberKitMediaKeyMessageEventInit : EventInit {
     Uint8Array? message = null;
     DOMString destinationURL = "";
 };

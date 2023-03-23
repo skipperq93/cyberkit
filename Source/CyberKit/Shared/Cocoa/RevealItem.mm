@@ -30,7 +30,7 @@
 #import "CyberCoreArgumentCoders.h"
 #import <pal/cocoa/RevealSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(REVEAL)
 

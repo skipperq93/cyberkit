@@ -32,7 +32,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct InitializationSegmentInfo {
     MediaTime duration;
@@ -47,6 +47,6 @@ struct InitializationSegmentInfo {
     Vector<TrackInformation> textTracks;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

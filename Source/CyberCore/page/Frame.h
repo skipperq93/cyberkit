@@ -264,7 +264,7 @@ public:
     WEBCORE_EXPORT NSRect caretRect();
     WEBCORE_EXPORT NSRect rectForScrollToVisible();
 
-    // This function is used by Legacy WebKit.
+    // This function is used by Legacy CyberKit.
     WEBCORE_EXPORT void setTimersPaused(bool);
 
     WEBCORE_EXPORT void dispatchPageHideEventBeforePause();
@@ -357,7 +357,7 @@ private:
 
 using LocalFrame = Frame;
 
-// FIXME: Remove after WebKitAdditions transitions to this change.
+// FIXME: Remove after CyberKitAdditions transitions to this change.
 #define WEBCORE_HAS_LOCAL_FRAME 1
 
 inline NavigationScheduler& Frame::navigationScheduler() const

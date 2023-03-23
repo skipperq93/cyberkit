@@ -36,7 +36,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static constexpr auto base64EncodedSinfWithKeyID3 = "AAAAYXNpbmYAAAAMZnJtYW1wNGEAAAAUc2NobQAAAABjYmNzAAEAAAAAADlzY2hpAAAAMXRlbmMBAAAAAAABAAAAAAAAAAAAAAAAAAAAAAMQ1fvWuC7ZPk75iuQJMe4ztw=="_s;
 

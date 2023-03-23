@@ -97,7 +97,7 @@ ResourceHandle::~ResourceHandle()
 
 static bool synchronousWillSendRequestEnabled()
 {
-    static bool disabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"WebKitDisableSynchronousWillSendRequestPreferenceKey"] || CocoaApplication::isIBooks();
+    static bool disabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"CyberKitDisableSynchronousWillSendRequestPreferenceKey"] || CocoaApplication::isIBooks();
     return !disabled;
 }
 
@@ -185,7 +185,7 @@ void ResourceHandle::createNSURLConnection(id delegate, bool shouldUseCredential
 
     if (!shouldUseCredentialStorage) {
         // Avoid using existing connections, because they may be already authenticated.
-        [streamProperties setObject:@"WebKitPrivateSession" forKey:@"_kCFURLConnectionSessionID"];
+        [streamProperties setObject:@"CyberKitPrivateSession" forKey:@"_kCFURLConnectionSessionID"];
     }
 
     if (schedulingBehavior == SchedulingBehavior::Synchronous) {
@@ -194,7 +194,7 @@ void ResourceHandle::createNSURLConnection(id delegate, bool shouldUseCredential
         // requests may get stuck waiting for delegate calls while we are in nested run loop, and the sync
         // request won't start because there are no available connections.
         // Connections are grouped by their socket stream properties, with each group having a separate count.
-        [streamProperties setObject:@TRUE forKey:@"_WebKitSynchronousRequest"];
+        [streamProperties setObject:@TRUE forKey:@"_CyberKitSynchronousRequest"];
     }
 
     RetainPtr<CFDataRef> sourceApplicationAuditData = d->m_context->sourceApplicationAuditData();

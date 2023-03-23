@@ -34,7 +34,7 @@ class Connection;
 class IPCSemaphore;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // Proxy interface to test various IPC stream related activities.
 // Currently this is not instantiated. This only exists due to the IPCStreamTesterProxy

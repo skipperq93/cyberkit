@@ -43,7 +43,7 @@
 #include <CyberCore/StorageEstimate.h>
 #include <wtf/FileSystem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr auto originFileName = "origin"_s;
 enum class OriginStorageManager::StorageBucketMode : bool { BestEffort, Persistent };
@@ -765,5 +765,5 @@ void OriginStorageManager::closeCacheStorageManager()
         m_defaultBucket->closeCacheStorageManager();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

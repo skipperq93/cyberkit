@@ -29,7 +29,7 @@
 #include "ArgumentCoders.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 AuxiliaryProcessCreationParameters::AuxiliaryProcessCreationParameters() = default;
 

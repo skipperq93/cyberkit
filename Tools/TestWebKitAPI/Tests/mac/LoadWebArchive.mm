@@ -71,12 +71,12 @@ static RetainPtr<WKWebView> newWebView;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(LoadWebArchive, FailNavigation1)
 {
     // Using `document.location.href = 'helloworld.webarchive';`.
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"load-web-archive-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"load-web-archive-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[TestLoadWebArchiveNavigationDelegate alloc] init]);
@@ -92,7 +92,7 @@ TEST(LoadWebArchive, FailNavigation1)
 TEST(LoadWebArchive, FailNavigation2)
 {
     // Using `window.open('helloworld.webarchive');`.
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"load-web-archive-2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"load-web-archive-2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     auto delegate = adoptNS([[TestLoadWebArchiveNavigationDelegate alloc] init]);
     gDelegate = delegate.get();
@@ -110,7 +110,7 @@ TEST(LoadWebArchive, FailNavigation2)
 
 TEST(LoadWebArchive, ClientNavigationSucceed)
 {
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestCyberKitAPI.resources"];
 
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[TestLoadWebArchiveNavigationDelegate alloc] init]);
@@ -125,7 +125,7 @@ TEST(LoadWebArchive, ClientNavigationSucceed)
 
 TEST(LoadWebArchive, ClientNavigationReload)
 {
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestCyberKitAPI.resources"];
 
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[TestLoadWebArchiveNavigationDelegate alloc] init]);
@@ -144,8 +144,8 @@ TEST(LoadWebArchive, ClientNavigationReload)
 
 TEST(LoadWebArchive, DragNavigationSucceed)
 {
-    RetainPtr<NSURL> webArchiveURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestWebKitAPI.resources"];
-    RetainPtr<NSURL> simpleURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> webArchiveURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestCyberKitAPI.resources"];
+    RetainPtr<NSURL> simpleURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
@@ -173,8 +173,8 @@ TEST(LoadWebArchive, DragNavigationSucceed)
 
 TEST(LoadWebArchive, DragNavigationReload)
 {
-    RetainPtr<NSURL> webArchiveURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestWebKitAPI.resources"];
-    RetainPtr<NSURL> simpleURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> webArchiveURL = [[NSBundle mainBundle] URLForResource:@"helloworld" withExtension:@"webarchive" subdirectory:@"TestCyberKitAPI.resources"];
+    RetainPtr<NSURL> simpleURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
@@ -251,4 +251,4 @@ TEST(LoadWebArchive, DisallowedNetworkHosts)
     EXPECT_WK_STREQ([webView _test_waitForAlert], "loaded http subresource successfully");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

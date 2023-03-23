@@ -34,7 +34,7 @@ namespace CyberCore {
 struct MessageWithMessagePorts;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 
@@ -57,4 +57,4 @@ private:
     HashMap<CyberCore::ClientOrigin, NameToConnectionIdentifiersMap> m_broadcastChannels;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

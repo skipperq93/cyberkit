@@ -31,12 +31,12 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct SupportedFeatures {
     Vector<String> features;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

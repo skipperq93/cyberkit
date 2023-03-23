@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureSampleType.h>
 #include <pal/graphics/WebGPU/WebGPUTextureViewDimension.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct TextureBindingLayout {
     PAL::WebGPU::TextureSampleType sampleType { PAL::WebGPU::TextureSampleType::Float };
@@ -39,6 +39,6 @@ struct TextureBindingLayout {
     bool multisampled { false };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

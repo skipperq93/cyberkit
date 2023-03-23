@@ -43,7 +43,7 @@
 #include <CyberCore/SWServer.h>
 #include <CyberCore/ServiceWorkerContextData.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebSWServerToContextConnection::WebSWServerToContextConnection(NetworkConnectionToWebProcess& connection, WebPageProxyIdentifier webPageProxyID, RegistrableDomain&& registrableDomain, std::optional<ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, SWServer& server)
@@ -333,6 +333,6 @@ void WebSWServerToContextConnection::navigate(ScriptExecutionContextIdentifier c
     }, 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

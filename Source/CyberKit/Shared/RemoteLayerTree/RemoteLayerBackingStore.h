@@ -41,7 +41,7 @@ class ThreadSafeImageBufferFlusher;
 typedef Vector<CyberCore::FloatRect, 5> RepaintRectList;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlatformCALayerRemote;
 class RemoteLayerBackingStoreCollection;
@@ -217,4 +217,4 @@ private:
     MonotonicTime m_lastDisplayTime;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -27,7 +27,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsiteAutoplayQuirk : uint8_t {
     SynthesizedPauseEvents = 1 << 0,
@@ -40,13 +40,13 @@ enum class WebsiteAutoplayQuirk : uint8_t {
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::WebsiteAutoplayQuirk> {
+template<> struct EnumTraits<CyberKit::WebsiteAutoplayQuirk> {
     using values = EnumValues<
-        WebKit::WebsiteAutoplayQuirk,
-        WebKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents,
-        WebKit::WebsiteAutoplayQuirk::InheritedUserGestures,
-        WebKit::WebsiteAutoplayQuirk::ArbitraryUserGestures,
-        WebKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior
+        CyberKit::WebsiteAutoplayQuirk,
+        CyberKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents,
+        CyberKit::WebsiteAutoplayQuirk::InheritedUserGestures,
+        CyberKit::WebsiteAutoplayQuirk::ArbitraryUserGestures,
+        CyberKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior
     >;
 };
 

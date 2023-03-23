@@ -35,7 +35,7 @@
 #include "RemoteMediaRecorder.h"
 #include <CyberCore/ExceptionData.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteMediaRecorderManager::RemoteMediaRecorderManager(GPUConnectionToWebProcess& gpuConnectionToWebProcess)

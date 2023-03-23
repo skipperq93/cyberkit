@@ -40,7 +40,7 @@ OESTextureFloat::OESTextureFloat(WebGLRenderingContextBase& context)
     context.graphicsContextGL()->ensureExtensionEnabled("GL_OES_texture_float"_s);
 
     // Spec requires WEBGL_color_buffer_float to be turned on implicitly here.
-    // Enable it both in the backend and in WebKit.
+    // Enable it both in the backend and in CyberKit.
     context.getExtension("WEBGL_color_buffer_float"_s);
 
     // https://github.com/KhronosGroup/WebGL/pull/2830

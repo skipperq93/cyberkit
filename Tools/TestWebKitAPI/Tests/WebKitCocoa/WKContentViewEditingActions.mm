@@ -38,10 +38,10 @@
 #import "WKWebViewConfigurationExtras.h"
 #import <CyberCore/LocalizedStrings.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, WKContentViewEditingActions)
+TEST(CyberKit, WKContentViewEditingActions)
 {
     [UIPasteboard generalPasteboard].items = @[];
 
@@ -64,12 +64,12 @@ TEST(WebKit, WKContentViewEditingActions)
         }];
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("Hello world", [[UIPasteboard generalPasteboard] string]);
 }
 
-TEST(WebKit, InvokeShareWithoutSelection)
+TEST(CyberKit, InvokeShareWithoutSelection)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)]);
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -77,7 +77,7 @@ TEST(WebKit, InvokeShareWithoutSelection)
     [webView waitForNextPresentationUpdate];
 }
 
-TEST(WebKit, CopyInAutoFilledAndViewablePasswordField)
+TEST(CyberKit, CopyInAutoFilledAndViewablePasswordField)
 {
     RetainPtr configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
 
@@ -100,7 +100,7 @@ TEST(WebKit, CopyInAutoFilledAndViewablePasswordField)
 
 #if ENABLE(APP_HIGHLIGHTS)
 
-TEST(WebKit, AppHighlightsInImageOverlays)
+TEST(CyberKit, AppHighlightsInImageOverlays)
 {
     auto configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES]);
     [configuration _setAppHighlightsEnabled:YES];
@@ -133,7 +133,7 @@ static BOOL canPerformActionWithSender(id /* instance */, SEL, SEL /* action */,
     return gCanPerformActionWithSenderResult;
 }
 
-TEST(WebKit, CaptureTextFromCamera)
+TEST(CyberKit, CaptureTextFromCamera)
 {
     gCanPerformActionWithSenderResult = YES;
     InstanceMethodSwizzler swizzler { UIResponder.class, @selector(canPerformAction:withSender:), reinterpret_cast<IMP>(canPerformActionWithSender) };
@@ -178,7 +178,7 @@ TEST(WebKit, CaptureTextFromCamera)
         EXPECT_FALSE([webView canPerformAction:@selector(captureTextFromCamera:) withSender:nil]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 #endif
 }
 

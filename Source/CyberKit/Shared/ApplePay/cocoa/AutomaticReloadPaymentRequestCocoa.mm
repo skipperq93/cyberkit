@@ -34,7 +34,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RetainPtr<PKAutomaticReloadPaymentRequest> platformAutomaticReloadPaymentRequest(const ApplePayAutomaticReloadPaymentRequest& webAutomaticReloadPaymentRequest)
@@ -47,6 +47,6 @@ RetainPtr<PKAutomaticReloadPaymentRequest> platformAutomaticReloadPaymentRequest
     return pkAutomaticReloadPaymentRequest;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(PASSKIT_AUTOMATIC_RELOAD_PAYMENTS)

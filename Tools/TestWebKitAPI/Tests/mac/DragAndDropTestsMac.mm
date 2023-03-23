@@ -94,7 +94,7 @@ TEST(DragAndDropTests, DragImageElementIntoFileUpload)
     [webView synchronouslyLoadTestPageNamed:@"image-and-file-upload"];
     [simulator runFrom:NSMakePoint(100, 100) to:NSMakePoint(100, 300)];
 
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webView stringByEvaluatingJavaScript:@"imageload.textContent"].boolValue;
     }, 2, @"Expected image to finish loading.");
     EXPECT_EQ(1, [webView stringByEvaluatingJavaScript:@"filecount.textContent"].integerValue);
@@ -106,11 +106,11 @@ TEST(DragAndDropTests, DragPromisedImageFileIntoFileUpload)
     TestWKWebView *webView = [simulator webView];
     [webView synchronouslyLoadTestPageNamed:@"image-and-file-upload"];
 
-    NSURL *imageURL = [NSBundle.mainBundle URLForResource:@"apple" withExtension:@"gif" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *imageURL = [NSBundle.mainBundle URLForResource:@"apple" withExtension:@"gif" subdirectory:@"TestCyberKitAPI.resources"];
     [simulator writePromisedFiles:@[ imageURL ]];
     [simulator runFrom:NSMakePoint(100, 100) to:NSMakePoint(100, 300)];
 
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webView stringByEvaluatingJavaScript:@"imageload.textContent"].boolValue;
     }, 2, @"Expected image to finish loading.");
     EXPECT_EQ(1, [webView stringByEvaluatingJavaScript:@"filecount.textContent"].integerValue);
@@ -126,7 +126,7 @@ TEST(DragAndDropTests, ReadURLWhenDroppingPromisedWebLoc)
     [simulator runFrom:CGPointMake(0, 0) to:CGPointMake(375, 375)];
 
     NSString *s = [webView stringByEvaluatingJavaScript:@"output.value"];
-    BOOL success = TestWebKitAPI::Util::jsonMatchesExpectedValues(s, @{
+    BOOL success = TestCyberKitAPI::Util::jsonMatchesExpectedValues(s, @{
         @"dragover" : @{
             @"Files": @"",
             @"text/uri-list": @""
@@ -145,11 +145,11 @@ TEST(DragAndDropTests, DragImageFileIntoFileUpload)
     TestWKWebView *webView = [simulator webView];
     [webView synchronouslyLoadTestPageNamed:@"image-and-file-upload"];
 
-    NSURL *imageURL = [NSBundle.mainBundle URLForResource:@"apple" withExtension:@"gif" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *imageURL = [NSBundle.mainBundle URLForResource:@"apple" withExtension:@"gif" subdirectory:@"TestCyberKitAPI.resources"];
     [simulator writeFiles:@[ imageURL ]];
     [simulator runFrom:NSMakePoint(100, 100) to:NSMakePoint(100, 300)];
 
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] () -> bool {
         return [webView stringByEvaluatingJavaScript:@"imageload.textContent"].boolValue;
     }, 2, @"Expected image to finish loading.");
     EXPECT_EQ(1, [webView stringByEvaluatingJavaScript:@"filecount.textContent"].integerValue);

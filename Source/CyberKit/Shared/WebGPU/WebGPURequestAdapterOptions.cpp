@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPURequestAdapterOptions.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<RequestAdapterOptions> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::RequestAdapterOptions& requestAdapterOptions)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::RequestAdapterOptions> ConvertFromBackingContext::con
     return { { requestAdapterOptions.powerPreference, requestAdapterOptions.forceFallbackAdapter } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

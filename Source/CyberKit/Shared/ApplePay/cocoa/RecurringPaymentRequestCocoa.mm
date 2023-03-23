@@ -34,7 +34,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RetainPtr<PKRecurringPaymentRequest> platformRecurringPaymentRequest(const ApplePayRecurringPaymentRequest& webRecurringPaymentRequest)
@@ -49,6 +49,6 @@ RetainPtr<PKRecurringPaymentRequest> platformRecurringPaymentRequest(const Apple
     return pkRecurringPaymentRequest;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(PASSKIT_RECURRING_PAYMENTS)

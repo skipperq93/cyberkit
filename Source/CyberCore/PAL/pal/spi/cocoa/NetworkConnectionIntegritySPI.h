@@ -25,6 +25,6 @@
 
 #pragma once
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/NetworkConnectionIntegritySPIAdditions.h>)
-#import <WebKitAdditions/NetworkConnectionIntegritySPIAdditions.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/NetworkConnectionIntegritySPIAdditions.h>)
+#import <CyberKitAdditions/NetworkConnectionIntegritySPIAdditions.h>
 #endif

@@ -39,7 +39,7 @@ class IntSize;
 class NativeImage;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // WebImage - An image type suitable for vending to an API.
 
@@ -68,4 +68,4 @@ private:
     Ref<CyberCore::ImageBuffer> m_buffer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

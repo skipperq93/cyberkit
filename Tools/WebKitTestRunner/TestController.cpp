@@ -198,7 +198,7 @@ TestController::TestController(int argc, const char* argv[])
 
 TestController::~TestController()
 {
-    // The context will be null if WebKitTestRunner was in server mode, but ran no tests.
+    // The context will be null if CyberKitTestRunner was in server mode, but ran no tests.
     if (m_context)
         WKIconDatabaseClose(WKContextGetIconDatabase(m_context.get()));
 
@@ -324,7 +324,7 @@ static bool shouldAllowDeviceOrientationAndMotionAccess(WKPageRef, WKSecurityOri
     return TestController::singleton().handleDeviceOrientationAndMotionAccessRequest(origin, frame);
 }
 
-// A placeholder to tell WebKit the client is WebKitTestRunner.
+// A placeholder to tell CyberKit the client is CyberKitTestRunner.
 static void runWebAuthenticationPanel()
 {
 }
@@ -629,7 +629,7 @@ void TestController::initialize(int argc, const char* argv[])
     CyberCoreTestSupport::installMockGamepadProvider();
 #endif
 
-    m_pageGroup.adopt(WKPageGroupCreateWithIdentifier(toWK("WebKitTestRunnerPageGroup").get()));
+    m_pageGroup.adopt(WKPageGroupCreateWithIdentifier(toWK("CyberKitTestRunnerPageGroup").get()));
 
     m_eventSenderProxy = makeUnique<EventSenderProxy>(this);
 }
@@ -721,7 +721,7 @@ WKRetainPtr<WKPageConfigurationRef> TestController::generatePageConfiguration(co
 
             // FIXME: This should be migrated to WKContextConfigurationRef.
             // Disable icon database to avoid fetching <http://127.0.0.1:8000/favicon.ico> and making tests flaky.
-            // Invividual tests can enable it using testRunner.setIconDatabaseEnabled, although it's not currently supported in WebKitTestRunner.
+            // Invividual tests can enable it using testRunner.setIconDatabaseEnabled, although it's not currently supported in CyberKitTestRunner.
             WKContextSetIconDatabasePath(m_context.get(), toWK(emptyString()).get());
         }
 
@@ -1293,7 +1293,7 @@ void TestController::dumpResponse(const String& result)
     fflush(stderr);
 }
 
-void TestController::findAndDumpWebKitProcessIdentifiers()
+void TestController::findAndDumpCyberKitProcessIdentifiers()
 {
 #if PLATFORM(COCOA)
     auto page = TestController::singleton().mainWebView()->page();
@@ -1363,11 +1363,11 @@ const char* TestController::webProcessName()
 {
     // FIXME: Find a way to not hardcode the process name.
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)
-    return "com.apple.WebKit.WebContent";
+    return "com.apple.CyberKit.WebContent";
 #elif PLATFORM(COCOA)
-    return "com.apple.WebKit.WebContent.Development";
+    return "com.apple.CyberKit.WebContent.Development";
 #elif PLATFORM(GTK)
-    return "WebKitWebProcess";
+    return "CyberKitWebProcess";
 #elif PLATFORM(WPE)
     return "WPEWebProcess";
 #else
@@ -1379,11 +1379,11 @@ const char* TestController::networkProcessName()
 {
     // FIXME: Find a way to not hardcode the process name.
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)
-    return "com.apple.WebKit.Networking";
+    return "com.apple.CyberKit.Networking";
 #elif PLATFORM(COCOA)
-    return "com.apple.WebKit.Networking.Development";
+    return "com.apple.CyberKit.Networking.Development";
 #elif PLATFORM(GTK)
-    return "WebKitNetworkProcess";
+    return "CyberKitNetworkProcess";
 #elif PLATFORM(WPE)
     return "WPENetworkProcess";
 #else
@@ -1395,9 +1395,9 @@ const char* TestController::gpuProcessName()
 {
     // FIXME: Find a way to not hardcode the process name.
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)
-    return "com.apple.WebKit.GPU";
+    return "com.apple.CyberKit.GPU";
 #elif PLATFORM(COCOA)
-    return "com.apple.WebKit.GPU.Development";
+    return "com.apple.CyberKit.GPU.Development";
 #else
     return "GPUProcess";
 #endif
@@ -1656,12 +1656,12 @@ bool TestController::handleControlCommand(const char* command)
         if (m_checkForWorldLeaks)
             findAndDumpWorldLeaks();
         else
-            WTFLogAlways("WebKitTestRunner asked to check for world leaks, but was not run with --world-leaks");
+            WTFLogAlways("CyberKitTestRunner asked to check for world leaks, but was not run with --world-leaks");
         return true;
     }
 
     if (!strncmp("#LIST CHILD PROCESSES", command, 21)) {
-        findAndDumpWebKitProcessIdentifiers();
+        findAndDumpCyberKitProcessIdentifiers();
         return true;
     }
 
@@ -2230,7 +2230,7 @@ void TestController::setPluginSupportedMode(const String& mode)
     auto nameNetscape = toWK("com.apple.testnetscapeplugin");
     auto mimeTypesNetscape = adoptWK(WKMutableArrayCreate());
     WKArrayAppendItem(mimeTypesNetscape.get(), toWK("application/x-webkit-test-netscape").get());
-    auto namePdf = toWK("WebKit built-in PDF");
+    auto namePdf = toWK("CyberKit built-in PDF");
 
     if (m_unsupportedPluginMode == "allOrigins"_s) {
         WKContextAddSupportedPlugin(m_context.get(), toWK("").get(), nameNetscape.get(), mimeTypesNetscape.get(), emptyArray.get());

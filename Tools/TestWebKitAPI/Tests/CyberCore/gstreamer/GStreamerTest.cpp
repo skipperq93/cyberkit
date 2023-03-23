@@ -34,7 +34,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 void GStreamerTest::SetUp()
 {
@@ -62,6 +62,6 @@ TEST_F(GStreamerTest, gstStructureJSONSerializing)
     ASSERT_EQ(jsonString, "{\"int-val\":5,\"str-val\":\"foo\",\"bool-val\":1,\"inner\":{\"boo\":0,\"double-val\":2.42}}"_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(GSTREAMER)

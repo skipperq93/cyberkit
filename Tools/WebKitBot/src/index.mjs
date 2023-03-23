@@ -25,7 +25,7 @@
 
 import dotenv from "dotenv";
 import storage from "node-persist";
-import WebKitBot from "./WebKitBot.mjs";
+import CyberKitBot from "./CyberKitBot.mjs";
 import SlackWebAPI from "@slack/web-api";
 
 dotenv.config();
@@ -38,7 +38,7 @@ async function main() {
     let webClient = new SlackWebAPI.WebClient(process.env.SLACK_TOKEN);
     let auth = await webClient.auth.test();
 
-    WebKitBot.main(webClient, auth);
+    CyberKitBot.main(webClient, auth);
 }
 
 main();

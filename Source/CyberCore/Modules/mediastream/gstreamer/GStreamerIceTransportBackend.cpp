@@ -124,7 +124,7 @@ void GStreamerIceTransportBackend::gatheringStateChanged() const
 void GStreamerIceTransportBackend::selectedCandidatePairChanged()
 {
     // FIXME: call m_client->onSelectedCandidatePairChanged(). See also
-    // https://github.com/WebKit/WebKit/commit/0692fae10c8e53deba214fd080a35f7c54bd6985
+    // https://github.com/CyberKit/CyberKit/commit/0692fae10c8e53deba214fd080a35f7c54bd6985
     notImplemented();
 }
 

@@ -34,7 +34,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 void PlatformWebView::initialize(WKPageConfigurationRef pageConfiguration, Class wkViewSubclass)
 {
@@ -233,4 +233,4 @@ void PlatformWebView::simulateButtonClick(WKEventMouseButton button, unsigned x,
     [m_view mouseDown:event];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

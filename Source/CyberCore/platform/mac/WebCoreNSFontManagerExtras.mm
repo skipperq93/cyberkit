@@ -57,7 +57,7 @@ static FontChanges computedFontChanges(NSFontManager *fontManager, NSFont *origi
     // what style change it was doing by looking at what happened to each of the two fonts.
     // So if it was making the text bold, both fonts will be bold after the fact.
     // This logic was originally from WebHTMLView, and is now in CyberCore so that it is shared
-    // between CyberKitLegacy and WebKit.
+    // between CyberKitLegacy and CyberKit.
     const double minimumBoldWeight = 7.;
 
     NSString *convertedFamilyNameA = convertedFontA.familyName;

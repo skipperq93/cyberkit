@@ -29,7 +29,7 @@ namespace IPC {
 class Connection;
 } // namespace IPC
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuxiliaryProcessSupplement {
 public:
@@ -42,4 +42,4 @@ public:
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -302,7 +302,7 @@ void ResourceLoader::loadDataURL()
             return;
         if (!decodeResult) {
             RESOURCELOADER_RELEASE_LOG("loadDataURL: decoding of data failed");
-            protectedThis->didFail(ResourceError(errorDomainWebKitInternal, 0, url, "Data URL decoding failed"_s));
+            protectedThis->didFail(ResourceError(errorDomainCyberKitInternal, 0, url, "Data URL decoding failed"_s));
             return;
         }
         if (this->wasCancelled()) {

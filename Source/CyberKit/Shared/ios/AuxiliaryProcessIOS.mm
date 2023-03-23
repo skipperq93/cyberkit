@@ -40,7 +40,7 @@
 #import <sysexits.h>
 #import <wtf/FileSystem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void AuxiliaryProcess::initializeSandbox(const AuxiliaryProcessInitializationParameters&, SandboxInitializationParameters&)
 {
@@ -89,6 +89,6 @@ void AuxiliaryProcess::populateMobileGestaltCache(std::optional<SandboxExtension
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

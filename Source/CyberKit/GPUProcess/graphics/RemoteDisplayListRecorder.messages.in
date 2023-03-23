@@ -97,12 +97,12 @@ messages -> RemoteDisplayListRecorder NotRefCounted Stream {
     ApplyFillPattern()
 #endif
     ApplyDeviceScaleFactor(float scaleFactor)
-    FlushContext(WebKit::DisplayListRecorderFlushIdentifier identifier)
+    FlushContext(CyberKit::DisplayListRecorderFlushIdentifier identifier)
 
 #if PLATFORM(COCOA) && ENABLE(VIDEO)
-    PaintVideoFrame(struct WebKit::SharedVideoFrame frame, CyberCore::FloatRect rect, bool shouldDiscardAlpha) NotStreamEncodable
+    PaintVideoFrame(struct CyberKit::SharedVideoFrame frame, CyberCore::FloatRect rect, bool shouldDiscardAlpha) NotStreamEncodable
     SetSharedVideoFrameSemaphore(IPC::Semaphore semaphore) NotStreamEncodable
-    SetSharedVideoFrameMemory(WebKit::SharedMemory::Handle storageHandle) NotStreamEncodable
+    SetSharedVideoFrameMemory(CyberKit::SharedMemory::Handle storageHandle) NotStreamEncodable
 #endif
 }
 

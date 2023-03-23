@@ -17,7 +17,7 @@
                BlueprintIdentifier = "517B5F5A275A8D3E002DC22D"
                BuildableName = "webpushtool"
                BlueprintName = "webpushtool"
-               ReferencedContainer = "container:WebKit.xcodeproj">
+               ReferencedContainer = "container:CyberKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "517B5F5A275A8D3E002DC22D"
             BuildableName = "webpushtool"
             BlueprintName = "webpushtool"
-            ReferencedContainer = "container:WebKit.xcodeproj">
+            ReferencedContainer = "container:CyberKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "517B5F5A275A8D3E002DC22D"
             BuildableName = "webpushtool"
             BlueprintName = "webpushtool"
-            ReferencedContainer = "container:WebKit.xcodeproj">
+            ReferencedContainer = "container:CyberKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

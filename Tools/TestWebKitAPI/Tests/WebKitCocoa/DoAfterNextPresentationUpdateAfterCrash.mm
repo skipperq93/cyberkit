@@ -33,7 +33,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-TEST(WebKit, DoAfterNextPresentationUpdateAfterCrash)
+TEST(CyberKit, DoAfterNextPresentationUpdateAfterCrash)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
 
@@ -50,10 +50,10 @@ TEST(WebKit, DoAfterNextPresentationUpdateAfterCrash)
     [webView loadHTMLString:@"test" baseURL:nil];
     [webView _test_waitForDidFinishNavigation];
 
-    TestWebKitAPI::Util::run(&gotCallback);
+    TestCyberKitAPI::Util::run(&gotCallback);
 }
 
-TEST(WebKit, DoAfterNextStablePresentationUpdateAfterCrash)
+TEST(CyberKit, DoAfterNextStablePresentationUpdateAfterCrash)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
     
@@ -70,7 +70,7 @@ TEST(WebKit, DoAfterNextStablePresentationUpdateAfterCrash)
     [webView loadHTMLString:@"test" baseURL:nil];
     [webView _test_waitForDidFinishNavigation];
     
-    TestWebKitAPI::Util::run(&gotCallback);
+    TestCyberKitAPI::Util::run(&gotCallback);
 }
 
 #endif

@@ -26,7 +26,7 @@
 #import "config.h"
 #import <CyberKit/WKFoundation.h>
 
-#if PLATFORM(MAC) // FIXME: https://bugs.webkit.org/show_bug.cgi?id=165384 REGRESSION: [ios-simulator] API test WebKit2.WKWebProcessPlugInEditingDelegate crashing
+#if PLATFORM(MAC) // FIXME: https://bugs.webkit.org/show_bug.cgi?id=165384 REGRESSION: [ios-simulator] API test CyberKit2.WKWebProcessPlugInEditingDelegate crashing
 
 #import "BundleEditingDelegateProtocol.h"
 #import "PlatformUtilities.h"
@@ -69,7 +69,7 @@ static bool didWriteToPasteboard;
 
 @end
 
-TEST(WebKit, WKWebProcessPlugInEditingDelegate)
+TEST(CyberKit, WKWebProcessPlugInEditingDelegate)
 {
     RetainPtr<WKWebViewConfiguration> configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"BundleEditingDelegatePlugIn"]);
     [[configuration processPool] _setObject:@NO forBundleParameter:@"EditingDelegateShouldInsertText"];
@@ -85,7 +85,7 @@ TEST(WebKit, WKWebProcessPlugInEditingDelegate)
 
     [webView performSelector:@selector(copy:) withObject:nil];
 
-    TestWebKitAPI::Util::run(&didWriteToPasteboard);
+    TestCyberKitAPI::Util::run(&didWriteToPasteboard);
 
     RetainPtr<NSString> copiedString;
 #if PLATFORM(MAC)
@@ -102,7 +102,7 @@ TEST(WebKit, WKWebProcessPlugInEditingDelegate)
 #endif
     [webView performSelector:@selector(paste:) withObject:nil];
 
-    TestWebKitAPI::Util::run(&shouldInsertTextCalled);
+    TestCyberKitAPI::Util::run(&shouldInsertTextCalled);
 
     __block bool doneEvaluatingJavaScript = false;
     [webView evaluateJavaScript:@"document.body.firstChild.textContent" completionHandler:^(id _Nullable value, NSError * _Nullable error) {
@@ -112,10 +112,10 @@ TEST(WebKit, WKWebProcessPlugInEditingDelegate)
         doneEvaluatingJavaScript = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 }
 
-TEST(WebKit, WKWebProcessPlugInDoNotCrashWhenCopyingEmptyClientData)
+TEST(CyberKit, WKWebProcessPlugInDoNotCrashWhenCopyingEmptyClientData)
 {
     auto configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"BundleEditingDelegatePlugIn"]);
     [[configuration processPool] _setObject:@YES forBundleParameter:@"EditingDelegateShouldWriteEmptyData"];
@@ -129,7 +129,7 @@ TEST(WebKit, WKWebProcessPlugInDoNotCrashWhenCopyingEmptyClientData)
     [[webView _remoteObjectRegistry] registerExportedObject:object.get() interface:interface];
 
     [webView performSelector:@selector(copy:) withObject:nil];
-    TestWebKitAPI::Util::run(&didWriteToPasteboard);
+    TestCyberKitAPI::Util::run(&didWriteToPasteboard);
 }
 
 #endif // PLATFORM(MAC)

@@ -29,7 +29,7 @@
 #include <wtf/Ref.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class PrivateClickMeasurementAttributionType : bool;
 
@@ -52,7 +52,7 @@ public:
     static void prepareForProcessToSuspend(CompletionHandler<void()>&&);
     static void processDidResume();
 
-    void insertPrivateClickMeasurement(CyberCore::PrivateClickMeasurement&&, WebKit::PrivateClickMeasurementAttributionType, CompletionHandler<void()>&&);
+    void insertPrivateClickMeasurement(CyberCore::PrivateClickMeasurement&&, CyberKit::PrivateClickMeasurementAttributionType, CompletionHandler<void()>&&);
     void attributePrivateClickMeasurement(CyberCore::PCM::SourceSite&&, CyberCore::PCM::AttributionDestinationSite&&, const ApplicationBundleIdentifier&, CyberCore::PCM::AttributionTriggerData&&, CyberCore::PrivateClickMeasurement::IsRunningLayoutTest, CompletionHandler<void(std::optional<CyberCore::PCM::AttributionSecondsUntilSendData>&&, DebugInfo&&)>&&);
 
     void privateClickMeasurementToStringForTesting(CompletionHandler<void(String)>&&) const;
@@ -79,4 +79,4 @@ private:
 
 } // namespace PCM
 
-} // namespace WebKit
+} // namespace CyberKit

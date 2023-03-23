@@ -93,7 +93,7 @@ bool RenderRubyRun::isChildAllowed(const RenderObject& child, const RenderStyle&
 RenderPtr<RenderRubyBase> RenderRubyRun::createRubyBase() const
 {
     auto newStyle = RenderStyle::createAnonymousStyleWithDisplay(style(), DisplayType::Block);
-    newStyle.setTextAlign(TextAlignMode::Center); // FIXME: use TextAlignMode::WebKitCenter?
+    newStyle.setTextAlign(TextAlignMode::Center); // FIXME: use TextAlignMode::CyberKitCenter?
     auto renderer = createRenderer<RenderRubyBase>(document(), WTFMove(newStyle));
     renderer->initializeStyle();
     return renderer;

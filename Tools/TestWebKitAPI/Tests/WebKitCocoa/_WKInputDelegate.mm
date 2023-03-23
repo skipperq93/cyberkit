@@ -88,7 +88,7 @@ static bool willSubmitFormValuesCalled;
 
 @end
 
-TEST(WebKit, FormSubmission)
+TEST(CyberKit, FormSubmission)
 {
     auto delegate = adoptNS([[InputDelegate alloc] init]);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -100,12 +100,12 @@ TEST(WebKit, FormSubmission)
         "<input type='password' name='testname2' value='testvalue2'/>"
         "<input type='hidden' name='testname3' value='testvalue3'/>"
     "</form></body>" baseURL:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #if PLATFORM(IOS_FAMILY)
 
-TEST(WebKit, FocusedElementInfo)
+TEST(CyberKit, FocusedElementInfo)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     auto delegate = adoptNS([[InputDelegate alloc] init]);

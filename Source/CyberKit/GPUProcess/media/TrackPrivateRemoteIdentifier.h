@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum TrackPrivateRemoteIdentifierType { };
 using TrackPrivateRemoteIdentifier = ObjectIdentifier<TrackPrivateRemoteIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

@@ -29,7 +29,7 @@
 
 #include "NetscapePluginModule.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -42,6 +42,6 @@ void NetscapePluginModule::determineQuirks()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

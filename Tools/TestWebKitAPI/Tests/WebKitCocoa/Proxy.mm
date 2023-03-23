@@ -33,7 +33,7 @@
 #import "Utilities.h"
 #import <CyberKit/WKHTTPCookieStorePrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
@@ -56,7 +56,7 @@
 - (NSString *)waitForAlert
 {
     while (!_alert)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     return _alert.autorelease();
 }
 
@@ -71,9 +71,9 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, HTTPSProxy)
+TEST(CyberKit, HTTPSProxy)
 {
     HTTPServer server(HTTPServer::respondWithOK, HTTPServer::Protocol::HttpsProxy);
 
@@ -91,7 +91,7 @@ TEST(WebKit, HTTPSProxy)
     EXPECT_WK_STREQ([delegate waitForAlert], "success!");
 }
 
-TEST(WebKit, SOCKS5)
+TEST(CyberKit, SOCKS5)
 {
     constexpr uint8_t socks5Version = 0x5; // https://tools.ietf.org/html/rfc1928#section-3
     constexpr uint8_t noAuthenticationRequired = 0x00; // https://tools.ietf.org/html/rfc1928#section-3
@@ -100,7 +100,7 @@ TEST(WebKit, SOCKS5)
     constexpr uint8_t domainName = 0x03; // https://tools.ietf.org/html/rfc1928#section-4
     constexpr uint8_t requestSucceeded = 0x00; // https://tools.ietf.org/html/rfc1928#section-6
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server([](Connection connection) {
         connection.receiveBytes([=] (Vector<uint8_t>&& bytes) {
             constexpr uint8_t expectedAuthenticationMethodCount = 1;
@@ -179,7 +179,7 @@ static std::pair<RetainPtr<WKWebView>, RetainPtr<ProxyDelegate>> webViewAndDeleg
     return { webView, delegate };
 }
 
-TEST(WebKit, HTTPProxyAuthentication)
+TEST(CyberKit, HTTPProxyAuthentication)
 {
     auto server = proxyAuthenticationServer();
     auto [webView, delegate] = webViewAndDelegate(server);
@@ -188,7 +188,7 @@ TEST(WebKit, HTTPProxyAuthentication)
     EXPECT_WK_STREQ([delegate waitForAlert], "success!");
 }
 
-TEST(WebKit, HTTPProxyAuthenticationCrossOrigin)
+TEST(CyberKit, HTTPProxyAuthenticationCrossOrigin)
 {
     auto server = proxyAuthenticationServer();
     auto [webView, delegate] = webViewAndDelegate(server);
@@ -197,7 +197,7 @@ TEST(WebKit, HTTPProxyAuthenticationCrossOrigin)
     EXPECT_WK_STREQ([delegate waitForAlert], "fetched successfully!");
 }
 
-TEST(WebKit, SecureProxyConnection)
+TEST(CyberKit, SecureProxyConnection)
 {
     bool receivedValidClientHello = false;
     HTTPServer server([&] (const Connection& connection) {
@@ -234,10 +234,10 @@ TEST(WebKit, SecureProxyConnection)
     [viewConfiguration setWebsiteDataStore:adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:storeConfiguration.get()]).get()];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 100, 100) configuration:viewConfiguration.get()]);
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://example.com/"]]];
-    TestWebKitAPI::Util::run(&receivedValidClientHello);
+    TestCyberKitAPI::Util::run(&receivedValidClientHello);
 }
 
-TEST(WebKit, RelaxThirdPartyCookieBlocking)
+TEST(CyberKit, RelaxThirdPartyCookieBlocking)
 {
     __block bool setDefaultCookieAcceptPolicy = false;
     [[WKWebsiteDataStore defaultDataStore].httpCookieStore _setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain completionHandler:^{
@@ -329,4 +329,4 @@ TEST(WebKit, RelaxThirdPartyCookieBlocking)
     runTest(false);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

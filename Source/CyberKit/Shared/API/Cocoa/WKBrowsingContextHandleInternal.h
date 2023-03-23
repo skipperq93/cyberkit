@@ -28,17 +28,17 @@
 #import <CyberCore/PageIdentifier.h>
 #import <wtf/NakedRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebPage;
 class WebPageProxy;
 }
 
 @interface WKBrowsingContextHandle ()
 
-@property (nonatomic, readonly, getter=_pageProxyID) WebKit::WebPageProxyIdentifier pageProxyID;
+@property (nonatomic, readonly, getter=_pageProxyID) CyberKit::WebPageProxyIdentifier pageProxyID;
 @property (nonatomic, readonly, getter=_webPageID) uint64_t webPageID;
 
-- (id)_initWithPageProxy:(NakedRef<WebKit::WebPageProxy>)page;
-- (id)_initWithPage:(NakedRef<WebKit::WebPage>)page;
-- (id)_initWithPageProxyID:(WebKit::WebPageProxyIdentifier)pageProxyID andWebPageID:(CyberCore::PageIdentifier)webPageID;
+- (id)_initWithPageProxy:(NakedRef<CyberKit::WebPageProxy>)page;
+- (id)_initWithPage:(NakedRef<CyberKit::WebPage>)page;
+- (id)_initWithPageProxyID:(CyberKit::WebPageProxyIdentifier)pageProxyID andWebPageID:(CyberCore::PageIdentifier)webPageID;
 @end

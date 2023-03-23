@@ -44,7 +44,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, ContextMenuDefaultItemsHaveTags)
 {
@@ -70,4 +70,4 @@ TEST(CyberKitLegacy, ContextMenuDefaultItemsHaveTags)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -28,7 +28,7 @@
 #import "APIURLRequest.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::URLRequest> {
     using WrapperClass = NSURLRequest;

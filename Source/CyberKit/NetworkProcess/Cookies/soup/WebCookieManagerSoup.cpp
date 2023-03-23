@@ -34,7 +34,7 @@
 #include <CyberCore/SoupNetworkSession.h>
 #include <libsoup/soup.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebCookieManager::platformSetHTTPCookieAcceptPolicy(HTTPCookieAcceptPolicy policy, CompletionHandler<void()>&& completionHandler)
@@ -51,4 +51,4 @@ void WebCookieManager::setCookiePersistentStorage(PAL::SessionID sessionID, cons
         static_cast<NetworkSessionSoup&>(*networkSession).setCookiePersistentStorage(storagePath, storageType);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

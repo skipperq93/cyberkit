@@ -38,7 +38,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/LoggerHelper.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -189,6 +189,6 @@ WTFLogChannel& RemoteLegacyCDMSessionProxy::logChannel() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

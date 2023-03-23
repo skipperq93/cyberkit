@@ -32,7 +32,7 @@
 #import <CyberCore/CyberCoreThread.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, NestedRunLoopUnderRunLoopObserverDoubleUnlock)
 {

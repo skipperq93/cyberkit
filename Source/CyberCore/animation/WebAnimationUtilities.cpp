@@ -327,7 +327,7 @@ ExceptionOr<PseudoId> pseudoIdFromString(const String& pseudoElement)
     if (!isLegacy && !pseudoElement.startsWith("::"_s))
         return Exception { SyntaxError };
     auto pseudoType = CSSSelector::parsePseudoElementType(StringView(pseudoElement).substring(isLegacy ? 1 : 2));
-    if (pseudoType == CSSSelector::PseudoElementUnknown || pseudoType == CSSSelector::PseudoElementWebKitCustom)
+    if (pseudoType == CSSSelector::PseudoElementUnknown || pseudoType == CSSSelector::PseudoElementCyberKitCustom)
         return Exception { SyntaxError };
     return CSSSelector::pseudoId(pseudoType);
 }

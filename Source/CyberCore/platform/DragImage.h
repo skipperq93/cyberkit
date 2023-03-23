@@ -46,7 +46,7 @@ typedef struct HBITMAP__* HBITMAP;
 #include "RefPtrCairo.h"
 #endif
 
-// We need to #define YOffset as it needs to be shared with WebKit
+// We need to #define YOffset as it needs to be shared with CyberKit
 #define DragLabelBorderYOffset 2
 
 namespace CyberCore {

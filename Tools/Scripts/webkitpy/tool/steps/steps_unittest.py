@@ -129,7 +129,7 @@ class StepsTest(unittest.TestCase):
             step.run({})
         self.assertEqual(
             captured.root.log.getvalue(),
-            '''Building WebKit
+            '''Building CyberKit
 MOCK run_and_throw_if_fail: ['Tools/Scripts/build-jsc', '--debug', 'ARCHS=True'], cwd=/mock-checkout, env={'MOCK_ENVIRON_COPY': '1', 'TERM': 'dumb'}
 ''',
         )
@@ -149,7 +149,7 @@ MOCK run_and_throw_if_fail: ['Tools/Scripts/build-jsc', '--debug', 'ARCHS=True']
             step.run({})
         self.assertEqual(
             captured.root.log.getvalue(),
-            '''Building WebKit
+            '''Building CyberKit
 MOCK run_and_throw_if_fail: ['Tools/Scripts/build-jsc', '--release', 'ARCHS=True'], cwd=/mock-checkout, env={'MOCK_ENVIRON_COPY': '1', 'TERM': 'dumb'}
 ''',
         )

@@ -34,7 +34,7 @@
 #include "WCSharedSceneContextHolder.h"
 #include <CyberCore/ProcessIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 class GPUConnectionToWebProcess;
 class UpdateInfo;
 class WCScene;
@@ -43,11 +43,11 @@ struct WCUpateInfo;
 class RemoteWCLayerTreeHost : public IPC::MessageReceiver, private IPC::MessageSender {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<RemoteWCLayerTreeHost> create(GPUConnectionToWebProcess&, WebKit::WCLayerTreeHostIdentifier, uint64_t nativeWindow, bool usesOffscreenRendering);
-    RemoteWCLayerTreeHost(GPUConnectionToWebProcess&, WebKit::WCLayerTreeHostIdentifier, uint64_t nativeWindow, bool usesOffscreenRendering);
+    static std::unique_ptr<RemoteWCLayerTreeHost> create(GPUConnectionToWebProcess&, CyberKit::WCLayerTreeHostIdentifier, uint64_t nativeWindow, bool usesOffscreenRendering);
+    RemoteWCLayerTreeHost(GPUConnectionToWebProcess&, CyberKit::WCLayerTreeHostIdentifier, uint64_t nativeWindow, bool usesOffscreenRendering);
     ~RemoteWCLayerTreeHost();
     // message handlers
-    void update(WCUpateInfo&&, CompletionHandler<void(std::optional<WebKit::UpdateInfo>)>&&);
+    void update(WCUpateInfo&&, CompletionHandler<void(std::optional<CyberKit::UpdateInfo>)>&&);
 
 private:
     // IPC::MessageReceiver
@@ -63,6 +63,6 @@ private:
     std::unique_ptr<WCScene> m_scene;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

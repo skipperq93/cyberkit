@@ -23,81 +23,81 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WPE_WebKit_h
-#define WPE_WebKit_h
+#ifndef WPE_CyberKit_h
+#define WPE_CyberKit_h
 
 #define BUILDING_WPE__
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKType.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKType.h>
 
-// From Source/WebKit/Shared/API/c/
-#include <WebKit/WKArray.h>
-#include <WebKit/WKData.h>
-#include <WebKit/WKDeclarationSpecifiers.h>
-#include <WebKit/WKDictionary.h>
-#include <WebKit/WKErrorRef.h>
-#include <WebKit/WKGeometry.h>
-#include <WebKit/WKMutableArray.h>
-#include <WebKit/WKMutableDictionary.h>
-#include <WebKit/WKNumber.h>
-#include <WebKit/WKSecurityOriginRef.h>
-#include <WebKit/WKString.h>
-#include <WebKit/WKURL.h>
-#include <WebKit/WKURLRequest.h>
-#include <WebKit/WKURLResponse.h>
-#include <WebKit/WKUserContentInjectedFrames.h>
-#include <WebKit/WKUserScriptInjectionTime.h>
+// From Source/CyberKit/Shared/API/c/
+#include <CyberKit/WKArray.h>
+#include <CyberKit/WKData.h>
+#include <CyberKit/WKDeclarationSpecifiers.h>
+#include <CyberKit/WKDictionary.h>
+#include <CyberKit/WKErrorRef.h>
+#include <CyberKit/WKGeometry.h>
+#include <CyberKit/WKMutableArray.h>
+#include <CyberKit/WKMutableDictionary.h>
+#include <CyberKit/WKNumber.h>
+#include <CyberKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKString.h>
+#include <CyberKit/WKURL.h>
+#include <CyberKit/WKURLRequest.h>
+#include <CyberKit/WKURLResponse.h>
+#include <CyberKit/WKUserContentInjectedFrames.h>
+#include <CyberKit/WKUserScriptInjectionTime.h>
 
-// From Source/WebKit/WebProcess/InjectedBundle/API/c/
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKBundleBackForwardList.h>
-#include <WebKit/WKBundleBackForwardListItem.h>
-#include <WebKit/WKBundleFileHandleRef.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundleHitTestResult.h>
-#include <WebKit/WKBundleInitialize.h>
-#include <WebKit/WKBundleInspector.h>
-#include <WebKit/WKBundleNavigationAction.h>
-#include <WebKit/WKBundleNodeHandle.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundlePageBanner.h>
-#include <WebKit/WKBundlePageContextMenuClient.h>
-#include <WebKit/WKBundlePageEditorClient.h>
-#include <WebKit/WKBundlePageFormClient.h>
-#include <WebKit/WKBundlePageFullScreenClient.h>
-#include <WebKit/WKBundlePageLoaderClient.h>
-#include <WebKit/WKBundlePageOverlay.h>
-#include <WebKit/WKBundlePagePolicyClient.h>
-#include <WebKit/WKBundlePageResourceLoadClient.h>
-#include <WebKit/WKBundlePageUIClient.h>
-#include <WebKit/WKBundleRangeHandle.h>
-#include <WebKit/WKBundleScriptWorld.h>
+// From Source/CyberKit/WebProcess/InjectedBundle/API/c/
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKBundleBackForwardList.h>
+#include <CyberKit/WKBundleBackForwardListItem.h>
+#include <CyberKit/WKBundleFileHandleRef.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundleHitTestResult.h>
+#include <CyberKit/WKBundleInitialize.h>
+#include <CyberKit/WKBundleInspector.h>
+#include <CyberKit/WKBundleNavigationAction.h>
+#include <CyberKit/WKBundleNodeHandle.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePageBanner.h>
+#include <CyberKit/WKBundlePageContextMenuClient.h>
+#include <CyberKit/WKBundlePageEditorClient.h>
+#include <CyberKit/WKBundlePageFormClient.h>
+#include <CyberKit/WKBundlePageFullScreenClient.h>
+#include <CyberKit/WKBundlePageLoaderClient.h>
+#include <CyberKit/WKBundlePageOverlay.h>
+#include <CyberKit/WKBundlePagePolicyClient.h>
+#include <CyberKit/WKBundlePageResourceLoadClient.h>
+#include <CyberKit/WKBundlePageUIClient.h>
+#include <CyberKit/WKBundleRangeHandle.h>
+#include <CyberKit/WKBundleScriptWorld.h>
 
-// From Source/WebKit/UIProcess/API/C
-#include <WebKit/WKBackForwardListItemRef.h>
-#include <WebKit/WKBackForwardListRef.h>
-#include <WebKit/WKContext.h>
-#include <WebKit/WKContextConfigurationRef.h>
-#include <WebKit/WKCredential.h>
-#include <WebKit/WKCredentialTypes.h>
-#include <WebKit/WKFrame.h>
-#include <WebKit/WKFrameInfoRef.h>
-#include <WebKit/WKFramePolicyListener.h>
-#include <WebKit/WKHitTestResult.h>
-#include <WebKit/WKNavigationActionRef.h>
-#include <WebKit/WKNavigationDataRef.h>
-#include <WebKit/WKNavigationRef.h>
-#include <WebKit/WKNavigationResponseRef.h>
-#include <WebKit/WKPage.h>
-#include <WebKit/WKPageConfigurationRef.h>
-#include <WebKit/WKPageGroup.h>
-#include <WebKit/WKPreferencesRef.h>
-#include <WebKit/WKSessionStateRef.h>
-#include <WebKit/WKUserContentControllerRef.h>
-#include <WebKit/WKUserScriptRef.h>
-#include <WebKit/WKView.h>
-#include <WebKit/WKViewportAttributes.h>
-#include <WebKit/WKWindowFeaturesRef.h>
+// From Source/CyberKit/UIProcess/API/C
+#include <CyberKit/WKBackForwardListItemRef.h>
+#include <CyberKit/WKBackForwardListRef.h>
+#include <CyberKit/WKContext.h>
+#include <CyberKit/WKContextConfigurationRef.h>
+#include <CyberKit/WKCredential.h>
+#include <CyberKit/WKCredentialTypes.h>
+#include <CyberKit/WKFrame.h>
+#include <CyberKit/WKFrameInfoRef.h>
+#include <CyberKit/WKFramePolicyListener.h>
+#include <CyberKit/WKHitTestResult.h>
+#include <CyberKit/WKNavigationActionRef.h>
+#include <CyberKit/WKNavigationDataRef.h>
+#include <CyberKit/WKNavigationRef.h>
+#include <CyberKit/WKNavigationResponseRef.h>
+#include <CyberKit/WKPage.h>
+#include <CyberKit/WKPageConfigurationRef.h>
+#include <CyberKit/WKPageGroup.h>
+#include <CyberKit/WKPreferencesRef.h>
+#include <CyberKit/WKSessionStateRef.h>
+#include <CyberKit/WKUserContentControllerRef.h>
+#include <CyberKit/WKUserScriptRef.h>
+#include <CyberKit/WKView.h>
+#include <CyberKit/WKViewportAttributes.h>
+#include <CyberKit/WKWindowFeaturesRef.h>
 
-#endif // WPE_WebKit_h
+#endif // WPE_CyberKit_h

@@ -37,7 +37,7 @@
 #include <CyberCore/NotImplemented.h>
 #include <CyberCore/SourceBufferPrivate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -164,6 +164,6 @@ void RemoteMediaSourceProxy::setTimeFudgeFactor(const MediaTime& fudgeFactor)
         m_private->setTimeFudgeFactor(fudgeFactor);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

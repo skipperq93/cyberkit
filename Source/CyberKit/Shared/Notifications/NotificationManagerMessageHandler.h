@@ -35,7 +35,7 @@ class NotificationResources;
 struct NotificationData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NotificationManagerMessageHandler : public IPC::MessageReceiver {
 public:
@@ -52,4 +52,4 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -40,7 +40,7 @@ class ResourceRequest;
 struct ClientOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class NetworkSession;
 class NetworkSessionCocoa;
 class NetworkSocketChannel;
@@ -85,6 +85,6 @@ private:
     CyberCore::SecurityOriginData m_topOrigin;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

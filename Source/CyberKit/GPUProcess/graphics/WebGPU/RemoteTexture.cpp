@@ -37,7 +37,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureView.h>
 #include <pal/graphics/WebGPU/WebGPUTextureViewDescriptor.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteTexture::RemoteTexture(PAL::WebGPU::Texture& texture, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(texture)
@@ -81,6 +81,6 @@ void RemoteTexture::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

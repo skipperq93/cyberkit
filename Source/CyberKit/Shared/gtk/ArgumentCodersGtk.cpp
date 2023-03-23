@@ -37,7 +37,7 @@
 
 namespace IPC {
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 static void encodeImage(Encoder& encoder, Image& image)
 {

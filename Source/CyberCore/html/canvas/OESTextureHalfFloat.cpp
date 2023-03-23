@@ -40,7 +40,7 @@ OESTextureHalfFloat::OESTextureHalfFloat(WebGLRenderingContextBase& context)
     context.graphicsContextGL()->ensureExtensionEnabled("GL_OES_texture_half_float"_s);
 
     // Spec requires EXT_color_buffer_half_float to be turned on implicitly here.
-    // Enable it both in the backend and in WebKit.
+    // Enable it both in the backend and in CyberKit.
     context.getExtension("EXT_color_buffer_half_float"_s);
 }
 

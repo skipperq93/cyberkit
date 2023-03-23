@@ -27,7 +27,7 @@
 
 #import "JavaScriptTest.h"
 #import "Test.h"
-#import "WebKitAgnosticTest.h"
+#import "CyberKitAgnosticTest.h"
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
@@ -35,7 +35,7 @@
 static bool isWaitingForPageSignalToContinue = false;
 static bool didGetPageSignalToContinue = false;
 
-// WebKit1 WebUIDelegate
+// CyberKit1 WebUIDelegate
 
 @interface PageVisibilityStateDelegate : NSObject <WebUIDelegate>
 @end
@@ -51,7 +51,7 @@ static bool didGetPageSignalToContinue = false;
 
 @end
 
-// WebKit2 WKPageUIClient
+// CyberKit2 WKPageUIClient
 
 static void runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef frame, const void* clientInfo)
 {
@@ -60,16 +60,16 @@ static void runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef
     didGetPageSignalToContinue = true;
 }
 
-// WebKitAgnosticTest
+// CyberKitAgnosticTest
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class PageVisibilityStateWithWindowChanges : public WebKitAgnosticTest {
+class PageVisibilityStateWithWindowChanges : public CyberKitAgnosticTest {
 public:
     template <typename View> void runTest(View);
 
-    // WebKitAgnosticTest
-    NSURL *url() const override { return [[NSBundle mainBundle] URLForResource:@"PageVisibilityStateWithWindowChanges" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]; }
+    // CyberKitAgnosticTest
+    NSURL *url() const override { return [[NSBundle mainBundle] URLForResource:@"PageVisibilityStateWithWindowChanges" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]; }
     void didLoadURL(WebView *webView) override { runTest(webView); }
     void didLoadURL(WKWebView *wkView) override { runTest(wkView); }
 
@@ -170,14 +170,14 @@ void PageVisibilityStateWithWindowChanges::runTest(View view)
     EXPECT_JS_EQ(view, "document.hidden", "true");
 }
     
-TEST_F(PageVisibilityStateWithWindowChanges, WebKit)
+TEST_F(PageVisibilityStateWithWindowChanges, CyberKit)
 {
-    runWebKit1Test();
+    runCyberKit1Test();
 }
 
-TEST_F(PageVisibilityStateWithWindowChanges, WebKit2)
+TEST_F(PageVisibilityStateWithWindowChanges, CyberKit2)
 {
-    runWebKit2Test();
+    runCyberKit2Test();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

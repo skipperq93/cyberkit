@@ -31,7 +31,7 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WKWebView, ShouldHaveInputContextForEditableContent)

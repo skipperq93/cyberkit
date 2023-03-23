@@ -36,7 +36,7 @@
 #include <CyberCore/CDMFactory.h>
 #include <wtf/Algorithms.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

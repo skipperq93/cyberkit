@@ -32,12 +32,12 @@
 #include <optional>
 #include <wtf/Ref.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ImageCopyBuffer : public ImageDataLayout {
     WebGPUIdentifier buffer;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

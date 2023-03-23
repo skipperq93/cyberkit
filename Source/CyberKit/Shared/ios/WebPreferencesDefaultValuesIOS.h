@@ -27,8 +27,8 @@
 
 #include "WebPreferencesDefaultValues.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void setAllowsDeprecatedSynchronousXMLHttpRequestDuringUnload(bool allowsRequest);
 
-} // namespace WebKit
+} // namespace CyberKit

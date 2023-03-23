@@ -28,7 +28,7 @@
 #include "SystemFontDatabase.h"
 
 #include "NotImplemented.h"
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 #include <wtf/NeverDestroyed.h>
 
 namespace CyberCore {
@@ -42,7 +42,7 @@ SystemFontDatabase& SystemFontDatabase::singleton()
 auto SystemFontDatabase::platformSystemFontShorthandInfo(FontShorthand) -> SystemFontShorthandInfo
 {
     notImplemented();
-    return { WebKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
+    return { CyberKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
 }
 
 void SystemFontDatabase::platformInvalidate()

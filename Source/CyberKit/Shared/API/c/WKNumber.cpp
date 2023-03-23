@@ -31,48 +31,48 @@
 
 WKTypeID WKBooleanGetTypeID()
 {
-    return WebKit::toAPI(API::Boolean::APIType);
+    return CyberKit::toAPI(API::Boolean::APIType);
 }
 
 WKBooleanRef WKBooleanCreate(bool value)
 {
     auto booleanObject = API::Boolean::create(value);
-    return WebKit::toAPI(&booleanObject.leakRef());
+    return CyberKit::toAPI(&booleanObject.leakRef());
 }
 
 bool WKBooleanGetValue(WKBooleanRef booleanRef)
 {
-    return WebKit::toImpl(booleanRef)->value();
+    return CyberKit::toImpl(booleanRef)->value();
 }
 
 WKTypeID WKDoubleGetTypeID()
 {
-    return WebKit::toAPI(API::Double::APIType);
+    return CyberKit::toAPI(API::Double::APIType);
 }
 
 WKDoubleRef WKDoubleCreate(double value)
 {
     auto doubleObject = API::Double::create(value);
-    return WebKit::toAPI(&doubleObject.leakRef());
+    return CyberKit::toAPI(&doubleObject.leakRef());
 }
 
 double WKDoubleGetValue(WKDoubleRef doubleRef)
 {
-    return WebKit::toImpl(doubleRef)->value();
+    return CyberKit::toImpl(doubleRef)->value();
 }
 
 WKTypeID WKUInt64GetTypeID()
 {
-    return WebKit::toAPI(API::UInt64::APIType);
+    return CyberKit::toAPI(API::UInt64::APIType);
 }
 
 WKUInt64Ref WKUInt64Create(uint64_t value)
 {
     auto uint64Object = API::UInt64::create(value);
-    return WebKit::toAPI(&uint64Object.leakRef());
+    return CyberKit::toAPI(&uint64Object.leakRef());
 }
 
 uint64_t WKUInt64GetValue(WKUInt64Ref uint64Ref)
 {
-    return WebKit::toImpl(uint64Ref)->value();
+    return CyberKit::toImpl(uint64Ref)->value();
 }

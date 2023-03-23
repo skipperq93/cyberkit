@@ -30,7 +30,7 @@
 #include "MessageReceiver.h"
 #include <CyberCore/MediaSessionHelperIOS.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 

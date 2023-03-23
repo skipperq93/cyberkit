@@ -34,7 +34,7 @@
 #include <CyberKit/WKRetainPtr.h>
 #include <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleMakeAllShadowRootOpenTest : public InjectedBundleTest {
 public:
@@ -90,6 +90,6 @@ public:
 
 static InjectedBundleTest::Register<InjectedBundleMakeAllShadowRootOpenTest> registrar("InjectedBundleMakeAllShadowRootOpenTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

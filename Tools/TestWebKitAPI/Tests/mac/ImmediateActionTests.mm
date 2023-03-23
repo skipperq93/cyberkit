@@ -94,7 +94,7 @@ using ImmediateActionHitTestResult = std::pair<RetainPtr<_WKHitTestResult>, _WKI
     gSwizzledImmediateActionLocation = location;
     [immediateActionGesture.delegate immediateActionRecognizerWillPrepare:immediateActionGesture];
 
-    TestWebKitAPI::Util::run(&_hasReturnedImmediateActionController);
+    TestCyberKitAPI::Util::run(&_hasReturnedImmediateActionController);
 
     _hasReturnedImmediateActionController = false;
     return { std::exchange(_hitTestResult, nil), std::exchange(_actionType, _WKImmediateActionNone) };
@@ -118,7 +118,7 @@ static RetainPtr<RVPresentingContext> lastPresentingContext;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void swizzlePresentingContextInitialization()
 {
@@ -171,6 +171,6 @@ TEST(ImmediateActionTests, ImmediateActionOverImageOverlay)
 
 #endif // ENABLE(IMAGE_ANALYSIS)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

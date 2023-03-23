@@ -34,7 +34,7 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <CyberKit/WKUserContentControllerPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 static NSString * const userScriptSource = @"window.wkUserScriptInjected = true";
 
@@ -85,7 +85,7 @@ static NSString * const userScriptSource = @"window.wkUserScriptInjected = true"
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 TEST(ApplePay, ApplePayAvailableByDefault)
 {
@@ -270,6 +270,6 @@ TEST(ApplePay, CanMakePaymentFalseDoesNotBlockUserAgentScripts)
     runActiveSessionTest([NSURL URLWithString:@"https://bundle-file/apple-pay-can-make-payment.html?false"], NO);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(APPLE_PAY_REMOTE_UI)

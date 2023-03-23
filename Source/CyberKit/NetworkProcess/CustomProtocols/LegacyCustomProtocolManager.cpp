@@ -34,7 +34,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ResourceRequest.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 const char* LegacyCustomProtocolManager::supplementName()
 {
@@ -79,4 +79,4 @@ void LegacyCustomProtocolManager::stopLoading(LegacyCustomProtocolID customProto
     m_networkProcess.send(Messages::LegacyCustomProtocolManagerProxy::StopLoading(customProtocolID), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

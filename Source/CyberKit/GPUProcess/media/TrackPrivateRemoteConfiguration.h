@@ -29,7 +29,7 @@
 
 #include <wtf/MediaTime.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct TrackPrivateRemoteConfiguration {
     AtomString trackId;
@@ -59,6 +59,6 @@ struct TrackPrivateRemoteConfiguration {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

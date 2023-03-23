@@ -51,7 +51,7 @@ JSC::VM& commonVMSlow()
     ASSERT(!g_commonVMOrNull);
 
     // FIXME: Remove this call to ScriptController::initializeMainThread(). The
-    // main thread should have been initialized by a WebKit entrypoint already.
+    // main thread should have been initialized by a CyberKit entrypoint already.
     // Also, initializeMainThread() does nothing on iOS.
     ScriptController::initializeMainThread();
 

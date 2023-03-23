@@ -39,7 +39,7 @@
 #include <pal/graphics/WebGPU/WebGPUAdapter.h>
 #include <pal/graphics/WebGPU/WebGPUDevice.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteAdapter::RemoteAdapter(PAL::WebGPU::Adapter& adapter, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(adapter)
@@ -114,6 +114,6 @@ void RemoteAdapter::requestDevice(const WebGPU::DeviceDescriptor& descriptor, We
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(GPU_PROCESS)

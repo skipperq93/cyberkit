@@ -42,7 +42,7 @@ namespace WTF {
 class Logger;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaTrackReader;
 
@@ -84,7 +84,7 @@ private:
     OSStatus stepInPresentationTime(const MediaTime&, Boolean& wasPinned);
 
     // CoreMediaWrapped
-    String debugDescription() const final { return "WebKit::MediaSampleCursor"_s; }
+    String debugDescription() const final { return "CyberKit::MediaSampleCursor"_s; }
     OSStatus copyProperty(CFStringRef, CFAllocatorRef, void* copiedValue) final;
 
     // WrapperClass
@@ -161,6 +161,6 @@ constexpr MediaSampleCursor::WrapperClass MediaSampleCursor::wrapperClass()
     };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

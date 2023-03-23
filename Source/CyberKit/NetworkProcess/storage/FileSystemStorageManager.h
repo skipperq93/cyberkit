@@ -28,7 +28,7 @@
 #include "FileSystemStorageHandle.h"
 #include <CyberCore/FileSystemHandleIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class FileSystemStorageHandle;
 class FileSystemStorageHandleRegistry;
@@ -63,4 +63,4 @@ private:
     HashMap<String, CyberCore::FileSystemHandleIdentifier> m_lockMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

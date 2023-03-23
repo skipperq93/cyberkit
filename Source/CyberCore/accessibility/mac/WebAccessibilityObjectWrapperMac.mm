@@ -1593,7 +1593,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
         if (!parent)
             return nil;
 
-        // In WebKit1, the scroll view is provided by the system (the attachment view), so the parent
+        // In CyberKit1, the scroll view is provided by the system (the attachment view), so the parent
         // should be reported directly as such.
         if (backingObject->isWebArea() && parent->isAttachment())
             return [parent->wrapper() attachmentView];

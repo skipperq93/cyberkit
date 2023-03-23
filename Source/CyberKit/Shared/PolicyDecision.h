@@ -31,7 +31,7 @@
 #include "WebsitePoliciesData.h"
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct PolicyDecision {
     CyberCore::PolicyCheckIdentifier identifier { };
@@ -43,4 +43,4 @@ struct PolicyDecision {
     std::optional<SandboxExtension::Handle> sandboxExtensionHandle { std::nullopt };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

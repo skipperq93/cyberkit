@@ -74,11 +74,11 @@ LibWebRTCProvider::~LibWebRTCProvider()
 }
 
 #if !PLATFORM(COCOA)
-void LibWebRTCProvider::registerWebKitVP9Decoder()
+void LibWebRTCProvider::registerCyberKitVP9Decoder()
 {
 }
 
-void LibWebRTCProvider::registerWebKitVP8Decoder()
+void LibWebRTCProvider::registerCyberKitVP8Decoder()
 {
 }
 
@@ -189,12 +189,12 @@ static void initializePeerConnectionFactoryAndThreads(PeerConnectionFactoryAndTh
     ASSERT(!factoryAndThreads.networkThread);
 
     factoryAndThreads.networkThread = factoryAndThreads.networkThreadWithSocketServer ? rtc::Thread::CreateWithSocketServer() : rtc::Thread::Create();
-    factoryAndThreads.networkThread->SetName("WebKitWebRTCNetwork", nullptr);
+    factoryAndThreads.networkThread->SetName("CyberKitWebRTCNetwork", nullptr);
     bool result = factoryAndThreads.networkThread->Start();
     ASSERT_UNUSED(result, result);
 
     factoryAndThreads.signalingThread = rtc::Thread::Create();
-    factoryAndThreads.signalingThread->SetName("WebKitWebRTCSignaling", nullptr);
+    factoryAndThreads.signalingThread->SetName("CyberKitWebRTCSignaling", nullptr);
 
     result = factoryAndThreads.signalingThread->Start();
     ASSERT(result);

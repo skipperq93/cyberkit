@@ -30,7 +30,7 @@
 
 #include "ArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !PLATFORM(IOS_FAMILY)
 
@@ -58,6 +58,6 @@ bool WebTouchEvent::allTouchPointsAreReleased() const
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(TOUCH_EVENTS)

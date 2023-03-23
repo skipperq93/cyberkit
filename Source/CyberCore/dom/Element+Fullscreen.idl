@@ -33,7 +33,7 @@
     [EnabledBySetting=UnprefixedFullscreenAPIEnabled] attribute EventHandler onfullscreenchange;
     [EnabledBySetting=UnprefixedFullscreenAPIEnabled] attribute EventHandler onfullscreenerror;
 
-    // Non-standard: WebKit prefixed variants.
+    // Non-standard: CyberKit prefixed variants.
     [ImplementedAs=webkitRequestFullscreen] undefined webkitRequestFullScreen(); // Prefixed Mozilla version.
     undefined webkitRequestFullscreen(); // Prefixed W3C version.
     [NotEnumerable] attribute EventHandler onwebkitfullscreenchange;

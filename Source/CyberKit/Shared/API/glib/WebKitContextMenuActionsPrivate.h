@@ -20,9 +20,9 @@
 #pragma once
 
 #include "WebContextMenuItemGlib.h"
-#include "WebKitContextMenuActions.h"
+#include "CyberKitContextMenuActions.h"
 
-bool webkitContextMenuActionIsCheckable(WebKitContextMenuAction);
-CyberCore::ContextMenuAction webkitContextMenuActionGetActionTag(WebKitContextMenuAction);
-WebKitContextMenuAction webkitContextMenuActionGetForContextMenuItem(const WebKit::WebContextMenuItemGlib&);
-String webkitContextMenuActionGetLabel(WebKitContextMenuAction);
+bool webkitContextMenuActionIsCheckable(CyberKitContextMenuAction);
+CyberCore::ContextMenuAction webkitContextMenuActionGetActionTag(CyberKitContextMenuAction);
+CyberKitContextMenuAction webkitContextMenuActionGetForContextMenuItem(const CyberKit::WebContextMenuItemGlib&);
+String webkitContextMenuActionGetLabel(CyberKitContextMenuAction);

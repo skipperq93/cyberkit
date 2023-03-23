@@ -224,7 +224,7 @@ RetainPtr<CFURLStorageSessionRef> createPrivateStorageSession(CFStringRef identi
     else
         nsCookieAcceptPolicy = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookieAcceptPolicy];
 
-    // FIXME: Use _CFHTTPCookieStorageGetDefault when USE(CFNETWORK) is defined in WebKit for consistency.
+    // FIXME: Use _CFHTTPCookieStorageGetDefault when USE(CFNETWORK) is defined in CyberKit for consistency.
     CFHTTPCookieStorageSetCookieAcceptPolicy(cookieStorage.get(), nsCookieAcceptPolicy);
 
     return storageSession;

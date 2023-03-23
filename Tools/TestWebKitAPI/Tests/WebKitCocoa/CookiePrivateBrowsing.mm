@@ -54,7 +54,7 @@ static bool didRunJavaScriptAlertForCookiePrivateBrowsing;
 
 @end
 
-TEST(WebKit, CookiePrivateBrowsing)
+TEST(CyberKit, CookiePrivateBrowsing)
 {
     auto delegate = adoptNS([[CookiePrivateBrowsingDelegate alloc] init]);
 
@@ -69,19 +69,19 @@ TEST(WebKit, CookiePrivateBrowsing)
     [view2 setUIDelegate:delegate.get()];
     NSString *alertOldCookie = @"<script>var oldCookie = document.cookie; document.cookie = 'key=value'; alert('old cookie: <' + oldCookie + '>');</script>";
     [view1 loadHTMLString:alertOldCookie baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
+    TestCyberKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
     didRunJavaScriptAlertForCookiePrivateBrowsing = false;
     [view2 loadHTMLString:alertOldCookie baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
+    TestCyberKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
 }
 
-TEST(WebKit, CookieCacheSyncAcrossProcess)
+TEST(CyberKit, CookieCacheSyncAcrossProcess)
 {
     __block bool setDefaultCookieAcceptPolicy = false;
     [[WKWebsiteDataStore defaultDataStore].httpCookieStore _setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain completionHandler:^{
         setDefaultCookieAcceptPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setDefaultCookieAcceptPolicy);
+    TestCyberKitAPI::Util::run(&setDefaultCookieAcceptPolicy);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:[WKWebsiteDataStore nonPersistentDataStore]];
@@ -98,7 +98,7 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
         EXPECT_WK_STREQ("", (NSString *)cookie);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     // Cache DOM cookies in second WebView.
     doneEvaluatingJavaScript = false;
@@ -108,7 +108,7 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
         EXPECT_WK_STREQ("", (NSString *)cookie);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     // Setting cookie in first Webview / process.
     doneEvaluatingJavaScript = false;
@@ -118,13 +118,13 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
         EXPECT_WK_STREQ("foo=bar", (NSString *)cookie);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     // Making sure new cookie gets sync'd to second WebView process.
     int timeout = 0;
     __block String cookieString;
     do {
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         doneEvaluatingJavaScript = false;
         [view2 evaluateJavaScript:@"document.cookie;" completionHandler:^(id _Nullable cookie, NSError * _Nullable error) {
             EXPECT_NULL(error);
@@ -132,13 +132,13 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
             cookieString = (NSString *)cookie;
             doneEvaluatingJavaScript = true;
         }];
-        TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+        TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
         ++timeout;
     } while (!cookieString.isEmpty() && timeout < 50);
     EXPECT_WK_STREQ("foo=bar", cookieString);
 }
 
-TEST(WebKit, CookieCachePruning)
+TEST(CyberKit, CookieCachePruning)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto view = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -153,6 +153,6 @@ TEST(WebKit, CookieCachePruning)
             EXPECT_WK_STREQ("", (NSString *)cookie);
             doneEvaluatingJavaScript = true;
         }];
-        TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+        TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     }
 }

@@ -57,7 +57,7 @@
 
 namespace WebCore {
 
-using namespace WebKitFontFamilyNames;
+using namespace CyberKitFontFamilyNames;
 
 static unsigned fontSelectorId;
 

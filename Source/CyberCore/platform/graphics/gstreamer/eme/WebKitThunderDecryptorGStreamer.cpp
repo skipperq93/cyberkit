@@ -20,7 +20,7 @@
  */
 
 #include "config.h"
-#include "WebKitThunderDecryptorGStreamer.h"
+#include "CyberKitThunderDecryptorGStreamer.h"
 
 #if ENABLE(ENCRYPTED_MEDIA) && ENABLE(THUNDER) && USE(GSTREAMER)
 
@@ -34,13 +34,13 @@
 
 using namespace CyberCore;
 
-struct WebKitMediaThunderDecryptPrivate {
+struct CyberKitMediaThunderDecryptPrivate {
     RefPtr<CDMProxyThunder> cdmProxy;
 };
 
-static const char* protectionSystemId(WebKitMediaCommonEncryptionDecrypt*);
-static bool cdmProxyAttached(WebKitMediaCommonEncryptionDecrypt*, const RefPtr<CDMProxy>&);
-static bool decrypt(WebKitMediaCommonEncryptionDecrypt*, GstBuffer* iv, GstBuffer* keyid, GstBuffer* sample, unsigned subSamplesCount,
+static const char* protectionSystemId(CyberKitMediaCommonEncryptionDecrypt*);
+static bool cdmProxyAttached(CyberKitMediaCommonEncryptionDecrypt*, const RefPtr<CDMProxy>&);
+static bool decrypt(CyberKitMediaCommonEncryptionDecrypt*, GstBuffer* iv, GstBuffer* keyid, GstBuffer* sample, unsigned subSamplesCount,
     GstBuffer* subSamples);
 
 GST_DEBUG_CATEGORY(webkitMediaThunderDecryptDebugCategory);
@@ -68,7 +68,7 @@ static GstStaticPadTemplate srcTemplate = GST_STATIC_PAD_TEMPLATE("src",
         "audio/x-opus; audio/x-vorbis"));
 
 #define webkit_media_thunder_decrypt_parent_class parent_class
-WEBKIT_DEFINE_TYPE(WebKitMediaThunderDecrypt, webkit_media_thunder_decrypt, WEBKIT_TYPE_MEDIA_CENC_DECRYPT)
+WEBKIT_DEFINE_TYPE(CyberKitMediaThunderDecrypt, webkit_media_thunder_decrypt, WEBKIT_TYPE_MEDIA_CENC_DECRYPT)
 
 static GRefPtr<GstCaps> createSinkPadTemplateCaps()
 {
@@ -109,7 +109,7 @@ static GRefPtr<GstCaps> createSinkPadTemplateCaps()
     return caps;
 }
 
-static void webkit_media_thunder_decrypt_class_init(WebKitMediaThunderDecryptClass* klass)
+static void webkit_media_thunder_decrypt_class_init(CyberKitMediaThunderDecryptClass* klass)
 {
     GST_DEBUG_CATEGORY_INIT(webkitMediaThunderDecryptDebugCategory, "webkitthunderdecrypt", 0, "Thunder decrypt");
 
@@ -121,27 +121,27 @@ static void webkit_media_thunder_decrypt_class_init(WebKitMediaThunderDecryptCla
     gst_element_class_set_static_metadata(elementClass, "Decrypt encrypted content using Thunder", GST_ELEMENT_FACTORY_KLASS_DECRYPTOR,
         "Decrypts encrypted media using Thunder.", "Xabier Rodríguez Calvar <calvaris@igalia.com>");
 
-    WebKitMediaCommonEncryptionDecryptClass* commonClass = WEBKIT_MEDIA_CENC_DECRYPT_CLASS(klass);
+    CyberKitMediaCommonEncryptionDecryptClass* commonClass = WEBKIT_MEDIA_CENC_DECRYPT_CLASS(klass);
     commonClass->protectionSystemId = GST_DEBUG_FUNCPTR(protectionSystemId);
     commonClass->cdmProxyAttached = GST_DEBUG_FUNCPTR(cdmProxyAttached);
     commonClass->decrypt = GST_DEBUG_FUNCPTR(decrypt);
 }
 
-static const char* protectionSystemId(WebKitMediaCommonEncryptionDecrypt* decryptor)
+static const char* protectionSystemId(CyberKitMediaCommonEncryptionDecrypt* decryptor)
 {
     auto* self = WEBKIT_MEDIA_THUNDER_DECRYPT(decryptor);
     ASSERT(self->priv->cdmProxy);
     return GStreamerEMEUtilities::keySystemToUuid(self->priv->cdmProxy->keySystem());
 }
 
-static bool cdmProxyAttached(WebKitMediaCommonEncryptionDecrypt* decryptor, const RefPtr<CDMProxy>& cdmProxy)
+static bool cdmProxyAttached(CyberKitMediaCommonEncryptionDecrypt* decryptor, const RefPtr<CDMProxy>& cdmProxy)
 {
     auto* self = WEBKIT_MEDIA_THUNDER_DECRYPT(decryptor);
     self->priv->cdmProxy = reinterpret_cast<CDMProxyThunder*>(cdmProxy.get());
     return self->priv->cdmProxy;
 }
 
-static bool decrypt(WebKitMediaCommonEncryptionDecrypt* decryptor, GstBuffer* ivBuffer, GstBuffer* keyIDBuffer, GstBuffer* buffer, unsigned subsampleCount,
+static bool decrypt(CyberKitMediaCommonEncryptionDecrypt* decryptor, GstBuffer* ivBuffer, GstBuffer* keyIDBuffer, GstBuffer* buffer, unsigned subsampleCount,
     GstBuffer* subsamplesBuffer)
 {
     auto* self = WEBKIT_MEDIA_THUNDER_DECRYPT(decryptor);

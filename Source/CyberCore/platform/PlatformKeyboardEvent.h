@@ -129,7 +129,7 @@ namespace CyberCore {
 #endif
 
 #if PLATFORM(GTK)
-        // Used by WebKit2
+        // Used by CyberKit2
         static String keyValueForGdkKeyCode(unsigned);
         static String keyCodeForHardwareKeyCode(unsigned);
         static String keyIdentifierForGdkKeyCode(unsigned);
@@ -180,7 +180,7 @@ namespace CyberCore {
         RetainPtr<::WebEvent> m_Event;
 #endif
 #endif
-        // The modifier state is optional, since it is not needed in the UI process or in legacy WebKit.
+        // The modifier state is optional, since it is not needed in the UI process or in legacy CyberKit.
         static std::optional<OptionSet<Modifier>> s_currentModifiers;
     };
     

@@ -39,7 +39,7 @@
 #include <gio/gfiledescriptorbased.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 Data::Data(const uint8_t* data, size_t size)
@@ -150,6 +150,6 @@ RefPtr<SharedMemory> Data::tryCreateSharedMemory() const
 }
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GLIB)

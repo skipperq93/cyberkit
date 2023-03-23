@@ -33,7 +33,7 @@
 
 typedef CF_ENUM(short, PLClientID)
 {
-    PLClientIDWebKit = 134
+    PLClientIDCyberKit = 134
 };
 
 WTF_EXTERN_C_BEGIN

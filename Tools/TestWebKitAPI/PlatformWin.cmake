@@ -70,7 +70,7 @@ if (ENABLE_WEBKIT_LEGACY)
     )
 
     list(APPEND TestCyberKitLegacy_LIBRARIES
-        WebKit::WTF
+        CyberKit::WTF
     )
 
     list(APPEND TestCyberKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
@@ -84,26 +84,26 @@ if (ENABLE_WEBKIT_LEGACY)
     target_compile_definitions(TestCyberKitLegacy PRIVATE ${wrapper_DEFINITIONS})
 endif ()
 
-# TestWebKit
+# TestCyberKit
 if (ENABLE_WEBKIT)
-    target_sources(TestWebKitAPIInjectedBundle PRIVATE
+    target_sources(TestCyberKitAPIInjectedBundle PRIVATE
         win/PlatformUtilitiesWin.cpp
     )
 
-    list(APPEND TestWebKit_SOURCES
+    list(APPEND TestCyberKit_SOURCES
         ${test_main_SOURCES}
 
-        Tests/WebKit/CookieStorageFile.cpp
+        Tests/CyberKit/CookieStorageFile.cpp
 
-        Tests/WebKit/curl/Certificates.cpp
+        Tests/CyberKit/curl/Certificates.cpp
 
         win/PlatformUtilitiesWin.cpp
         win/PlatformWebViewWin.cpp
     )
 
-    WEBKIT_WRAP_EXECUTABLE(TestWebKit
+    WEBKIT_WRAP_EXECUTABLE(TestCyberKit
         SOURCES ${TOOLS_DIR}/win/DLLLauncher/DLLLauncherMain.cpp
         LIBRARIES shlwapi
     )
-    target_compile_definitions(TestWebKit PRIVATE ${wrapper_DEFINITIONS})
+    target_compile_definitions(TestCyberKit PRIVATE ${wrapper_DEFINITIONS})
 endif ()

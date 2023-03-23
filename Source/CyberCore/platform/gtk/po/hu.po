@@ -663,493 +663,493 @@ msgctxt "Click to restart"
 msgid "Subtitle of the label to show on a snapshotted plug-in"
 msgstr "A bővítményről készített pillanatképen megjelenítendő címke alcíme"
 
-#: ../../../../WebKit2/NetworkProcess/Downloads/soup/DownloadSoup.cpp:100
+#: ../../../../CyberKit2/NetworkProcess/Downloads/soup/DownloadSoup.cpp:100
 #, c-format
 msgid ""
 "Cannot determine destination URI for download with suggested filename %s"
 msgstr "Nem határozható meg a cél URI a(z) %s javasolt fájlnevű letöltéshez"
 
 #. Title of the HTTP authentication dialog.
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:93
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:93
 msgid "Authentication Required"
 msgstr "Hitelesítés szükséges"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:104
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:104
 msgid "_Cancel"
 msgstr "Mé_gse"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:110
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:110
 msgid "_Authenticate"
 msgstr "_Hitelesítés"
 
 #. Prompt on the HTTP authentication dialog.
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:122
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:122
 #, c-format
 msgid "Authentication required by %s:%i"
 msgstr "Hitelesítés szükséges ehhez: %s:%i"
 
 #. Label on the HTTP authentication dialog. %s is a (probably English) message from the website.
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:131
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:131
 #, c-format
 msgid "The site says: “%s”"
 msgstr "Az oldal válasza: „%s”"
 
 #. Check button on the HTTP authentication dialog.
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:138
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:138
 msgid "_Remember password"
 msgstr "Jelszó _megjegyzése"
 
 #. Entry on the HTTP authentication dialog.
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:147
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:147
 msgid "_Username"
 msgstr "_Felhasználónév"
 
 #. Entry on the HTTP authentication dialog.
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:159
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:159
 msgid "_Password"
 msgstr "_Jelszó"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:164
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:164
 msgid "Destination"
 msgstr "Cél"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:165
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:165
 msgid "The local URI to where the download will be saved"
 msgstr "Helyi URI, ahová a letöltés mentésre kerül"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:177
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:123
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:177
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:123
 msgid "Response"
 msgstr "Válasz"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:178
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:178
 msgid "The response of the download"
 msgstr "A letöltés válasza"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:195
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:195
 msgid "Estimated Progress"
 msgstr "Becsült előrehaladás"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:196
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:196
 msgid "Determines the current progress of the download"
 msgstr "Meghatározza a letöltés jelenlegi előrehaladását"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:214
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:214
 msgid "Allow Overwrite"
 msgstr "Felülírás engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:215
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:215
 msgid "Whether the destination may be overwritten"
 msgstr "A cél felülírható-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:142
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:328
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:142
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:328
 #, c-format
 msgid "Unknown favicon for page %s"
 msgstr "Ismeretlen favicon ezen oldalhoz: %s"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:148
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:284
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:148
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:284
 #, c-format
 msgid "Page %s does not have a favicon"
 msgstr "A(z) %s oldal nem rendelkezik faviconnal"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:278
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:278
 msgid "Favicons database not initialized yet"
 msgstr "A faviconok adatbázisa még nincs előkészítve"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:129
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:129
 msgid "MIME types filter"
 msgstr "MIME-típusok szűrője"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:130
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:130
 msgid "The filter currently associated with the request"
 msgstr "A kéréshez jelenleg társított szűrő"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:143
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:143
 msgid "MIME types"
 msgstr "MIME-típusok"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:144
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:144
 msgid "The list of MIME types associated with the request"
 msgstr "A kéréshez társított MIME-típusok listája"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:158
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:158
 msgid "Select multiple files"
 msgstr "Válasszon ki több fájlt"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:159
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:159
 msgid "Whether the file chooser should allow selecting multiple files"
 msgstr "A fájlválasztó engedélyezze-e több fájl kiválasztását"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:172
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:172
 msgid "Selected files"
 msgstr "Kijelölt fájlok"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:173
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:173
 msgid "The list of selected files associated with the request"
 msgstr "A kéréshez társított kijelölt fájlok listája"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:190
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:190
 msgid "Search text"
 msgstr "Szöveg keresése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:191
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:191
 msgid "Text to search for in the view"
 msgstr "A nézetben keresendő szöveg"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:203
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:203
 msgid "Search Options"
 msgstr "Keresési beállítások"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:204
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:204
 msgid "Search options to be used in the search operation"
 msgstr "A keresési műveletben használandó keresési beállítások"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:217
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:217
 msgid "Maximum matches count"
 msgstr "Találatok maximális száma"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:218
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:218
 msgid "The maximum number of matches in a given text to report"
 msgstr "Adott szövegben jelentendő találatok maximális száma"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:230
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:230
 msgid "WebView"
 msgstr "Webnézet"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:231
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:231
 msgid "The WebView associated with this find controller"
 msgstr "A keresés vezérlőhöz társított webnézet"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:152
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:152
 msgid "Context"
 msgstr "Környezet"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:153
-msgid "Flags with the context of the WebKitHitTestResult"
-msgstr "A WebKitHitTestResult kontextusát tartalmazó jelzők"
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:153
+msgid "Flags with the context of the CyberKitHitTestResult"
+msgstr "A CyberKitHitTestResult kontextusát tartalmazó jelzők"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:166
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:166
 msgid "Link URI"
 msgstr "Hivatkozás URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:167
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:167
 msgid "The link URI"
 msgstr "A hivatkozás URI-címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:179
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:179
 msgid "Link Title"
 msgstr "Hivatkozás címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:180
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:180
 msgid "The link title"
 msgstr "A hivatkozás címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:192
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:192
 msgid "Link Label"
 msgstr "Hivatkozás felirata"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:193
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:193
 msgid "The link label"
 msgstr "A hivatkozás felirata"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:205
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:205
 msgid "Image URI"
 msgstr "Kép URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:206
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:206
 msgid "The image URI"
 msgstr "A kép URI-címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:218
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:218
 msgid "Media URI"
 msgstr "Média URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:219
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:219
 msgid "The media URI"
 msgstr "A média URI-címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:113
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:113
 msgid "Navigation action"
 msgstr "Navigációs akció"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:114
-msgid "The WebKitNavigationAction triggering this decision"
-msgstr "A döntést kiváltó WebKitNavigationAction"
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:114
+msgid "The CyberKitNavigationAction triggering this decision"
+msgstr "A döntést kiváltó CyberKitNavigationAction"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:130
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:130
 msgid "Navigation type"
 msgstr "Navigáció típusa"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:131
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:131
 msgid "The type of navigation triggering this decision"
 msgstr "A döntést kiváltó navigáció típusa"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:150
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:150
 msgid "Mouse button"
 msgstr "Egérgomb"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:151
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:151
 msgid "The mouse button used if this decision was triggered by a mouse event"
 msgstr "A használt egérgomb, ha ezt a döntést egéresemény váltotta ki"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:169
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:169
 msgid "Mouse event modifiers"
 msgstr "Egéresemény módosítói"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:170
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:170
 msgid "The modifiers active if this decision was triggered by a mouse event"
 msgstr "Az aktív módosítók, ha ezt a döntést egéresemény váltotta ki"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:185
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:185
 msgid "Navigation URI request"
 msgstr "Navigációs URI kérés"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:186
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:186
 msgid "The URI request that is associated with this navigation"
 msgstr "A navigációhoz társított URI kérés"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:201
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:201
 msgid "Frame name"
 msgstr "Keretnév"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:202
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:202
 msgid "The name of the new frame this navigation action targets"
 msgstr "A navigációs művelet által célzott új keret neve"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:146
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:146
 msgid "Web View"
 msgstr "Webnézet"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:147
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:147
 msgid "The web view that will be printed"
 msgstr "A nyomtatandó webnézet"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:159
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:159
 msgid "Print Settings"
 msgstr "Nyomtatási beállítások"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:160
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:160
 msgid "The initial print settings for the print operation"
 msgstr "A nyomtatási művelet kiinduló nyomtatási beállításai"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:171
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:171
 msgid "Page Setup"
 msgstr "Oldalbeállítás"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:172
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:172
 msgid "The initial page setup for the print operation"
 msgstr "A nyomtatási művelet kiinduló oldalbeállításai"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:91
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:91
 msgid "Response URI request"
 msgstr "Válasz URI kérés"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:92
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:92
 msgid "The URI request that is associated with this policy decision"
 msgstr "A házirenddöntéshez társított URI kérés"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:105
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:105
 msgid "URI response"
 msgstr "URI válasz"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:106
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:106
 msgid "The URI response that is associated with this policy decision"
 msgstr "A házirenddöntéshez társított URI válasz"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:508
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:508
 msgid "Enable JavaScript"
 msgstr "JavaScript engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:509
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:509
 msgid "Enable JavaScript."
 msgstr "JavaScript engedélyezése."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:523
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:523
 msgid "Auto load images"
 msgstr "Képek automatikus betöltése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:524
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:524
 msgid "Load images automatically."
 msgstr "Képek automatikus betöltése."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:537
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:537
 msgid "Load icons ignoring image load setting"
 msgstr "Ikonok betöltése a képbetöltési beállítást figyelmen kívül hagyva"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:538
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:538
 msgid "Whether to load site icons ignoring image load setting."
 msgstr ""
 "Betöltendők-e az oldal ikonjai a képbetöltési beállítások figyelmen kívül "
 "hagyásával."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:555
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:555
 msgid "Enable offline web application cache"
 msgstr "Kapcsolat nélküli webalkalmazás-gyorsítótár engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:556
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:556
 msgid "Whether to enable offline web application cache."
 msgstr "Webalkalmazások kapcsolat nélküli gyorsítótárának engedélyezése."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:572
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:572
 msgid "Enable HTML5 local storage"
 msgstr "HTML5 helyi tárolás engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:573
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:573
 msgid "Whether to enable HTML5 Local Storage support."
 msgstr "HTML5 helyi tárolás támogatásának engedélyezése."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:590
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:590
 msgid "Enable HTML5 database"
 msgstr "HTML5 adatbázis engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:591
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:591
 msgid "Whether to enable HTML5 database support."
 msgstr "A HTML5 adatbázis-támogatás engedélyezése."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:604
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:604
 msgid "Enable XSS auditor"
 msgstr "XSS-auditáló engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:605
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:605
 msgid "Whether to enable the XSS auditor."
 msgstr "Az XSS auditáló bekapcsolandó-e."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:620
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:620
 msgid "Enable frame flattening"
 msgstr "Keretlapítás bekapcsolása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:621
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:621
 msgid "Whether to enable frame flattening."
 msgstr "A keretlapítás bekapcsolandó-e."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:633
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:633
 msgid "Enable plugins"
 msgstr "Bővítmények engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:634
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:634
 msgid "Enable embedded plugin objects."
 msgstr "Beágyazott bővítményobjektumok engedélyezése."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:646
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:646
 msgid "Enable Java"
 msgstr "Java engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:647
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:647
 msgid "Whether Java support should be enabled."
 msgstr "A Java támogatása engedélyezett-e."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:660
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:660
 msgid "JavaScript can open windows automatically"
 msgstr "A JavaScript automatikusan megnyithat ablakokat"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:661
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:661
 msgid "Whether JavaScript can open windows automatically."
 msgstr "A JavaScript megnyithat-e automatikusan ablakokat."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:676
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:676
 msgid "Enable hyperlink auditing"
 msgstr "Hiperhivatkozás-auditálás bekapcsolása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:677
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:677
 msgid "Whether <a ping> should be able to send pings."
 msgstr "Az <a ping> képes legyen-e pingek küldésére."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:689
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:689
 msgid "Default font family"
 msgstr "Alapértelmezett betűkészletcsalád"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:690
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:690
 msgid ""
 "The font family to use as the default for content that does not specify a "
 "font."
 msgstr "A betűt meg nem adó tartalom alapértelmezett betűkészletcsaládja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:703
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:703
 msgid "Monospace font family"
 msgstr "Rögzített szélességű betűkészletcsalád"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:704
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:704
 msgid "The font family used as the default for content using monospace font."
 msgstr ""
 "A rögzített szélességű betűt használó tartalom alapértelmezett "
 "betűkészletcsaládja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:716
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:716
 msgid "Serif font family"
 msgstr "Talpas betűkészletcsalád"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:717
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:717
 msgid "The font family used as the default for content using serif font."
 msgstr "A talpas betűt használó tartalom alapértelmezett betűkészletcsaládja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:729
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:729
 msgid "Sans-serif font family"
 msgstr "Talpatlan betűkészletcsalád"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:730
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:730
 msgid "The font family used as the default for content using sans-serif font."
 msgstr ""
 "A talpatlan betűt használó tartalom alapértelmezett betűkészletcsaládja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:742
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:742
 msgid "Cursive font family"
 msgstr "Dőlt betűkészletcsalád"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:743
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:743
 msgid "The font family used as the default for content using cursive font."
 msgstr "A dőlt betűt használó tartalom alapértelmezett betűkészletcsaládja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:755
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:755
 msgid "Fantasy font family"
 msgstr "Fantázia betűkészletcsalád"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:756
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:756
 msgid "The font family used as the default for content using fantasy font."
 msgstr ""
 "A „fantázia” betűt használó tartalom alapértelmezett betűkészletcsaládja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:768
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:768
 msgid "Pictograph font family"
 msgstr "Piktográf betűkészlet-család"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:769
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:769
 msgid "The font family used as the default for content using pictograph font."
 msgstr ""
 "A „piktográf” betűt használó tartalom alapértelmezett betűkészletcsaládja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:782
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:782
 msgid "Default font size"
 msgstr "Alapértelmezett betűméret"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:783
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:783
 msgid "The default font size used to display text."
 msgstr "A szöveg megjelenítésére használt alapértelmezett betűméret."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:796
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:796
 msgid "Default monospace font size"
 msgstr "Alapértelmezett rögzített szélességű betűméret"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:797
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:797
 msgid "The default font size used to display monospace text."
 msgstr ""
 "A rögzített szélességű szöveg megjelenítésére használt alapértelmezett "
 "betűméret."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:811
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:811
 msgid "Minimum font size"
 msgstr "Minimális betűméret"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:812
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:812
 msgid "The minimum font size used to display text."
 msgstr "A szöveg megjelenítésére használt minimális betűméret."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:824
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:824
 msgid "Default charset"
 msgstr "Alapértelmezett karakterkészlet"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:825
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:825
 msgid ""
 "The default text charset used when interpreting content with unspecified "
 "charset."
@@ -1157,509 +1157,509 @@ msgstr ""
 "A meg nem adott karakterkészletű tartalom értelmezéséhez alapértelmezetten "
 "használandó karakterkódolás."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:838
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:838
 msgid "Enable private browsing"
 msgstr "Privát böngészés engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:839
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:839
 msgid "Whether to enable private browsing"
 msgstr "Privát böngészés engedélyezendő-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:851
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:851
 msgid "Enable developer extras"
 msgstr "Fejlesztői extrák engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:852
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:852
 msgid "Whether to enable developer extras"
 msgstr "Engedélyezve legyenek-e a fejlesztői extrák"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:864
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:864
 msgid "Enable resizable text areas"
 msgstr "Átméretezhető szövegterületek engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:865
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:865
 msgid "Whether to enable resizable text areas"
 msgstr "Engedélyezve legyenek-e az átméretezhető szövegterületek"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:880
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:880
 msgid "Enable tabs to links"
 msgstr "Lapok engedélyezése a hivatkozásokra"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:881
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:881
 msgid "Whether to enable tabs to links"
 msgstr "Engedélyezve legyenek-e lapok a hivatkozásokra"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:894
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:894
 msgid "Enable DNS prefetching"
 msgstr "DNS-előtöltés engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:895
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:895
 msgid "Whether to enable DNS prefetching"
 msgstr "Engedélyezve legyen-e DNS-előtöltés"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:907
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:907
 msgid "Enable Caret Browsing"
 msgstr "Kurzoros böngészés engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:908
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:908
 msgid "Whether to enable accessibility enhanced keyboard navigation"
 msgstr "Akadálymentes billentyűzetnavigáció engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:923
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:923
 msgid "Enable Fullscreen"
 msgstr "Teljes képernyős mód bekapcsolása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:924
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:924
 msgid "Whether to enable the Javascript Fullscreen API"
 msgstr "A JavaScript Fullscreen API engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:936
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:936
 msgid "Print Backgrounds"
 msgstr "Hátterek nyomtatása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:937
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:937
 msgid "Whether background images should be drawn during printing"
 msgstr "A háttérképeket ki kell-e rajzolni nyomtatáskor"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:955
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:955
 msgid "Enable WebAudio"
 msgstr "WebAudio engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:956
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:956
 msgid "Whether WebAudio content should be handled"
 msgstr "A WebAudio tartalom kezelendő-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:970
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:970
 msgid "Enable WebGL"
 msgstr "WebGL engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:971
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:971
 msgid "Whether WebGL content should be rendered"
 msgstr "A WebGL tartalom megjelenítendő-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:988
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:988
 msgid "Allow modal dialogs"
 msgstr "Kizárólagos párbeszédablakok engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:989
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:989
 msgid "Whether it is possible to create modal dialogs"
 msgstr "Lehetséges-e kizárólagos ablakok létrehozása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1004
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1004
 msgid "Zoom Text Only"
 msgstr "Csak a szöveg nagyítása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1005
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1005
 msgid "Whether zoom level of web view changes only the text size"
 msgstr "A webnézet nagyítási szintje csak a szövegméretet változtatja-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1019
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1019
 msgid "JavaScript can access clipboard"
 msgstr "A vágólap elérhető JavaScriptből"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1020
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1020
 msgid "Whether JavaScript can access Clipboard"
 msgstr "A vágólap elérhető-e JavaScriptből"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1036
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1036
 msgid "Media playback requires user gesture"
 msgstr "A médialejátszás felhasználói gesztust igényel"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1037
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1037
 msgid "Whether media playback requires user gesture"
 msgstr "A médialejátszás felhasználói gesztust igényel-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1051
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1051
 msgid "Media playback allows inline"
 msgstr "A médialejátszás engedélyezi a beágyazást"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1052
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1052
 msgid "Whether media playback allows inline"
 msgstr "A médialejátszás engedélyezi-e a beágyazást"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1066
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1066
 msgid "Draw compositing indicators"
 msgstr "Kompozitálásjelzők rajzolása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1067
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1067
 msgid "Whether to draw compositing borders and repaint counters"
 msgstr "A kompozitálási szegélyek és újrarajzolás-számlálók kirajzolandók-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1086
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1086
 msgid "Enable Site Specific Quirks"
 msgstr "Oldalspecifikus kerülő megoldások engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1087
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1087
 msgid "Enables the site-specific compatibility workarounds"
 msgstr "Engedélyezi az oldalspecifikus kompatibilitási kerülő megoldásokat"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1107
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1107
 msgid "Enable page cache"
 msgstr "Oldalgyorsítótár engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1108
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1108
 msgid "Whether the page cache should be used"
 msgstr "Az oldalgyorsítótár használható-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1127
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1127
 msgid "User agent string"
 msgstr "Felhasználói ügynök karakterlánc"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1128
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1128
 msgid "The user agent string"
 msgstr "A felhasználói ügynököt jelző karakterlánc"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1140
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1140
 msgid "Enable smooth scrolling"
 msgstr "Finom görgetés bekapcsolása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1141
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1141
 msgid "Whether to enable smooth scrolling"
 msgstr "A finom görgetés engedélyezve van-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1158
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1158
 msgid "Enable accelerated 2D canvas"
 msgstr "Gyorsított 2D vászon engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1159
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1159
 msgid "Whether to enable accelerated 2D canvas"
 msgstr "A gyorsított 2D vászon engedélyezett-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1174
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1174
 msgid "Write console messages on stdout"
 msgstr "Konzolos üzenetek kiírása a szabványos kimenetre"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1175
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1175
 msgid "Whether to write console messages on stdout"
 msgstr "A konzolos üzenetek kiírandók-e a szabványos kimenetre"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1193
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1193
 msgid "Enable MediaStream"
 msgstr "MediaStream engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1194
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1194
 msgid "Whether MediaStream content should be handled"
 msgstr "A MediaStream tartalom kezelendő-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1213
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1213
 msgid "Enable Spatial Navigation"
 msgstr "Térbeli navigáció bekapcsolása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1214
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1214
 msgid "Whether to enable Spatial Navigation support."
 msgstr "A térbeli navigáció támogatása bekapcsolandó-e."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1233
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1233
 msgid "Enable MediaSource"
 msgstr "MediaSource engedélyezése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1234
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1234
 msgid "Whether MediaSource should be enabled."
 msgstr "A MediaSource engedélyezett-e."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1252
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1252
 msgid "Allow file access from file URLs"
 msgstr "Fájlelérés engedélyezése fájl URL-címekből"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1253
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1253
 msgid "Whether file access is allowed from file URLs."
 msgstr "A fájlelérés engedélyezett-e fájl URL-címekből."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1272
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1272
 msgid "Allow universal access from the context of file scheme URLs"
 msgstr "Akadálymentesítés engedélyezése a fájlséma URL-címeinek környezetéből"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1273
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1273
 msgid ""
 "Whether or not universal access is allowed from the context of file scheme "
 "URLs"
 msgstr ""
 "Az akadálymentesítés engedélyezett-e a fájlséma URL-címeinek környezetéből."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIRequest.cpp:96
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:105
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:110
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:917
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIRequest.cpp:96
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:105
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:110
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:917
 msgid "URI"
 msgstr "URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIRequest.cpp:97
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIRequest.cpp:97
 msgid "The URI to which the request will be made."
 msgstr "A lekérdezés erre az UTI-címre fog vonatkozni."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:106
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:106
 msgid "The URI for which the response was made."
 msgstr "A válasz erre az URI-címre készült."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:117
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:117
 msgid "Status Code"
 msgstr "Állapotkód"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:118
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:118
 msgid "The status code of the response as returned by the server."
 msgstr "A kiszolgáló által visszaadott válasz állapotkódja."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:130
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:130
 msgid "Content Length"
 msgstr "Tartalomhossz"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:131
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:131
 msgid "The expected content length of the response."
 msgstr "A válasz várt tartalomhossza."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:143
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:143
 msgid "MIME Type"
 msgstr "MIME-típus"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:144
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:144
 msgid "The MIME type of the response"
 msgstr "A válasz MIME-típusa"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:156
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:156
 msgid "Suggested Filename"
 msgstr "Javasolt fájlnév"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:157
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:157
 msgid "The suggested filename for the URI response"
 msgstr "Az URI válasz javasolt fájlneve"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:173
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:173
 msgid "HTTP Headers"
 msgstr "HTTP-fejlécek"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:174
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:174
 msgid "The The HTTP headers of the response"
 msgstr "A válasz HTTP fejlécei"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:127
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:127
 msgid "Inspected URI"
 msgstr "Vizsgált URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:128
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:128
 msgid "The URI that is currently being inspected"
 msgstr "A jelenleg vizsgált URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:139
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:139
 msgid "Attached Height"
 msgstr "Csatolt magasság"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:140
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:140
 msgid "The height that the inspector view should have when it is attached"
 msgstr "A vizsgálónézet magassága, amikor csatolásra kerül"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:157
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:157
 msgid "Can Attach"
 msgstr "Csatolható"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:158
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:158
 msgid ""
 "Whether the inspector can be attached to the same window that contains the "
 "inspected view"
 msgstr "A vizsgáló csatlakoztatható a vizsgált nézetet tartalmazó ablakhoz"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:111
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:111
 msgid "The current active URI of the resource"
 msgstr "Az erőforrás aktuális aktív URI-címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:124
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:124
 msgid "The response of the resource"
 msgstr "Az erőforrás válasza"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebViewBase.cpp:1242
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebViewBase.cpp:1242
 msgid "Website running in fullscreen mode"
 msgstr "A weboldal teljes képernyős módban van"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:362
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:362
 msgid "Are you sure you want to leave this page?"
 msgstr "Biztosan elhagyja ezt az oldalt?"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:363
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:363
 msgid "Stay on Page"
 msgstr "Maradás ezen az oldalon"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:363
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:363
 msgid "Leave Page"
 msgstr "Oldal elhagyása"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:558
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:558
 msgid "Select Files"
 msgstr "Válasszon fájlokat"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:558
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:558
 msgid "Select File"
 msgstr "Válasszon fájlt"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:620
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:620
 msgid "Acknowledge"
 msgstr "Tudomásul vettem"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:807
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:807
 msgid "Web Context"
 msgstr "Webkontextus"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:808
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:808
 msgid "The web context for the view"
 msgstr "A nézet webes kontextusa"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:825
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:825
 msgid "Related WebView"
 msgstr "Kapcsolódó webnézet"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:826
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:826
 msgid ""
-"The related WebKitWebView used when creating the view to share the same web "
+"The related CyberKitWebView used when creating the view to share the same web "
 "process"
 msgstr ""
 "A webfolyamat megosztásához használt nézet létrehozásakor használt, "
-"kapcsolódó WebKitWebView"
+"kapcsolódó CyberKitWebView"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:842
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:842
 msgid "WebView settings"
 msgstr "Webnézet beállításai"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:843
-msgid "The WebKitSettings of the view"
-msgstr "A nézet WebKitSettings-ei"
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:843
+msgid "The CyberKitSettings of the view"
+msgstr "A nézet CyberKitSettings-ei"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:859
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:859
 msgid "WebView user content manager"
 msgstr "WebView felhasználóitartalom-kezelő"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:860
-msgid "The WebKitUserContentManager of the view"
-msgstr "A nézet WebKitUserContentManager-e"
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:860
+msgid "The CyberKitUserContentManager of the view"
+msgstr "A nézet CyberKitUserContentManager-e"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:873
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:873
 msgid "Title"
 msgstr "Cím"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:874
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:874
 msgid "Main frame document title"
 msgstr "Fő keretdokumentum címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:892
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:892
 msgid "Estimated Load Progress"
 msgstr "Becsült betöltési haladás"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:893
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:893
 msgid "An estimate of the percent completion for a document load"
 msgstr "Egy dokumentumbetöltés százalékos készültségének becslése"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:905
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:905
 msgid "Favicon"
 msgstr "Favicon"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:906
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:906
 msgid "The favicon associated to the view, if any"
 msgstr "A nézethez társított favicon, ha van"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:918
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:918
 msgid "The current active URI of the view"
 msgstr "A nézet aktuális aktív URI-címe"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:933
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:933
 msgid "Zoom level"
 msgstr "Nagyítás mértéke"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:934
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:934
 msgid "The zoom level of the view content"
 msgstr "A nézettartalom nagyítási szintje"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:953
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:953
 msgid "Is Loading"
 msgstr "Betölt"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:954
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:954
 msgid "Whether the view is loading a page"
 msgstr "A nézet egy oldalt tölt-e be"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:974
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:974
 msgid "Whether the view is playing audio"
 msgstr "A nézet hangot játszik-e le"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:991
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:991
 msgid "Editable"
 msgstr "Szerkeszthető"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:992
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:992
 msgid "Whether the content can be modified by the user."
 msgstr "A tartalom módosítható-e a felhasználó által."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:2955
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:2955
 msgid "An exception was raised in JavaScript"
 msgstr "A JavaScript kivételt dobott"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:3415
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:3415
 msgid "There was an error creating the snapshot"
 msgstr "Hiba történt a pillanatkép létrehozásakor"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:210
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:210
 msgid "Geometry"
 msgstr "Geometria"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:211
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:211
 msgid "The size and position of the window on the screen."
 msgstr "Az ablak mérete és pozíciója a képernyőn."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:223
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:223
 msgid "Toolbar Visible"
 msgstr "Az eszköztár látható"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:224
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:224
 msgid "Whether the toolbar should be visible for the window."
 msgstr "Az ablakhoz megjelenjen-e az eszköztár."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:236
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:236
 msgid "Statusbar Visible"
 msgstr "Állapotsor látható"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:237
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:237
 msgid "Whether the statusbar should be visible for the window."
 msgstr "Az ablakhoz megjelenjen-e az állapotsor."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:249
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:249
 msgid "Scrollbars Visible"
 msgstr "Görgetősávok láthatók"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:250
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:250
 msgid "Whether the scrollbars should be visible for the window."
 msgstr "Az ablakhoz megjelenjenek-e a görgetősávok."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:262
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:262
 msgid "Menubar Visible"
 msgstr "Menüsáv látható"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:263
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:263
 msgid "Whether the menubar should be visible for the window."
 msgstr "Az ablakhoz megjelenjen-e a menüsáv."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:275
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:275
 msgid "Locationbar Visible"
 msgstr "Címsáv látható"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:276
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:276
 msgid "Whether the locationbar should be visible for the window."
 msgstr "Az ablakhoz megjelenjen-e a címsáv."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:287
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:287
 msgid "Resizable"
 msgstr "Átméretezhető"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:288
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:288
 msgid "Whether the window can be resized."
 msgstr "Az ablak átméretezhető-e."
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:300
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:300
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:301
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:301
 msgid "Whether window will be displayed fullscreen."
 msgstr "Az ablak teljes képernyőn jelenik-e meg."
 
-#: ../../../../WebKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:178
-#: ../../../../WebKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:183
-#: ../../../../WebKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:186
+#: ../../../../CyberKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:178
+#: ../../../../CyberKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:183
+#: ../../../../CyberKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:186
 msgid "Web Inspector"
 msgstr "Webfigyelő"
 

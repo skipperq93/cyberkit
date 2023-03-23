@@ -35,7 +35,7 @@
 #include "RemoteAudioSessionProxyMessages.h"
 #include <CyberCore/AudioSession.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

@@ -28,7 +28,7 @@
 
 #include <wtf/MathExtras.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, Lrint)
 {
@@ -640,4 +640,4 @@ TEST(WTF, fastLog2)
     EXPECT_EQ(WTF::fastLog2(std::numeric_limits<uint32_t>::max()), 32u);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

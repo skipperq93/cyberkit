@@ -43,7 +43,7 @@
 #include <CyberCore/WebAuthenticationUtils.h>
 #include <pal/crypto/CryptoDigest.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 using namespace cbor;
 using namespace fido;
@@ -302,6 +302,6 @@ TEST(CtapPinTest, TestPinAuth)
     EXPECT_EQ(memcmp(pinAuth.data(), expectedPinAuth, pinAuth.size()), 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

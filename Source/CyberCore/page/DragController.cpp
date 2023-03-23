@@ -611,7 +611,7 @@ bool DragController::concludeEditDrag(const DragData& dragData)
     auto range = dragCaret.toNormalizedRange();
     RefPtr<Element> rootEditableElement = innerFrame->selection().selection().rootEditableElement();
 
-    // For range to be null a WebKit client must have done something bad while
+    // For range to be null a CyberKit client must have done something bad while
     // manually controlling drag behaviour
     if (!range)
         return false;
@@ -1042,7 +1042,7 @@ bool DragController::startDrag(Frame& src, const DragState& state, OptionSet<Dra
     if (state.type == DragSourceAction::Selection || !imageURL.isEmpty() || !linkURL.isEmpty()) {
         // Selection, image, and link drags receive a default set of allowed drag operations that
         // follows from:
-        // http://trac.webkit.org/browser/trunk/WebKit/mac/WebView/WebHTMLView.mm?rev=48526#L3430
+        // http://trac.webkit.org/browser/trunk/CyberKit/mac/WebView/WebHTMLView.mm?rev=48526#L3430
         m_sourceDragOperationMask.add({ DragOperation::Generic, DragOperation::Copy });
     }
 

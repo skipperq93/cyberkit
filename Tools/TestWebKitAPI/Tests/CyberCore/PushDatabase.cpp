@@ -70,7 +70,7 @@ static bool operator==(PushTopics a, PushTopics b)
 
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template <typename T>
 static HashSet<String> getTopicsFromRecords(const T& records) {
@@ -805,7 +805,7 @@ TEST(PushDatabase, CanMigrateV2DatabaseToCurrentSchema)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(SERVICE_WORKER)
 

@@ -33,7 +33,7 @@
 
 using CyberCore::SharedGamepadValue;
 
-namespace WebKit {
+namespace CyberKit {
 
 GamepadData::GamepadData(unsigned index, const String& id, const String& mapping, const Vector<SharedGamepadValue>& axisValues, const Vector<SharedGamepadValue>& buttonValues, MonotonicTime lastUpdateTime, const CyberCore::GamepadHapticEffectTypeSet& supportedEffectTypes)
     : m_index(index)
@@ -78,6 +78,6 @@ String GamepadData::loggingString() const
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GAMEPAD)

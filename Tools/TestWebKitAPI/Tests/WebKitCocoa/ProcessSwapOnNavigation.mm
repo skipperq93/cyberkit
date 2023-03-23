@@ -49,7 +49,7 @@
 #import <CyberKit/WKWebpagePreferencesPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
 #import <CyberKit/WKWebsiteDataStoreRef.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKFeature.h>
 #import <CyberKit/_WKInspector.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
@@ -331,7 +331,7 @@ static RetainPtr<WKWebView> createdWebView;
 - (void)webView:(WKWebView *)webView startURLSchemeTask:(id <WKURLSchemeTask>)task
 {
     if ([(id<WKURLSchemeTaskPrivate>)task _requestOnlyIfCached]) {
-        [task didFailWithError:[NSError errorWithDomain:@"TestWebKitAPI" code:1 userInfo:nil]];
+        [task didFailWithError:[NSError errorWithDomain:@"TestCyberKitAPI" code:1 userInfo:nil]];
         return;
     }
 
@@ -586,7 +586,7 @@ static void runBasicTest(SchemeHandlerShouldBeAsync schemeHandlerShouldBeAsync)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -594,7 +594,7 @@ static void runBasicTest(SchemeHandlerShouldBeAsync schemeHandlerShouldBeAsync)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -602,7 +602,7 @@ static void runBasicTest(SchemeHandlerShouldBeAsync schemeHandlerShouldBeAsync)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid3 = [webView _webProcessIdentifier];
@@ -641,35 +641,35 @@ TEST(ProcessSwap, NoProcessSwappingWithinSameNonHTTPFamilyProtocol)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"custom://abc/main1.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"custom://def/main2.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(pid1, [webView _webProcessIdentifier]);
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"custom://ghi/main3.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(pid1, [webView _webProcessIdentifier]);
 
     // Switch to the file protocol.
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&done);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, pid2);
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&done);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(pid2, [webView _webProcessIdentifier]);
@@ -692,7 +692,7 @@ TEST(ProcessSwap, LoadAfterPolicyDecision)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     navigationDelegate->decidePolicyForNavigationAction = ^(WKNavigationAction *, void (^decisionHandler)(WKNavigationActionPolicy)) {
@@ -708,7 +708,7 @@ TEST(ProcessSwap, LoadAfterPolicyDecision)
     [webView loadRequest:request];
 
     while (![[[webView URL] absoluteString] isEqualToString:@"pson://www.webkit.org/main2.html"])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 TEST(ProcessSwap, KillWebContentProcessAfterServerRedirectPolicyDecision)
@@ -731,7 +731,7 @@ TEST(ProcessSwap, KillWebContentProcessAfterServerRedirectPolicyDecision)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     __block BOOL isRedirection = NO;
@@ -750,23 +750,23 @@ TEST(ProcessSwap, KillWebContentProcessAfterServerRedirectPolicyDecision)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
     [webView reload];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
 TEST(ProcessSwap, PSONRedirectionToExternal)
 {
-    TestWebKitAPI::HTTPServer server(std::initializer_list<std::pair<String, TestWebKitAPI::HTTPResponse>> { }, TestWebKitAPI::HTTPServer::Protocol::Https);
+    TestCyberKitAPI::HTTPServer server(std::initializer_list<std::pair<String, TestCyberKitAPI::HTTPResponse>> { }, TestCyberKitAPI::HTTPServer::Protocol::Https);
 
     HashMap<String, String> redirectHeaders;
     redirectHeaders.add("location"_s, "other://test"_s);
-    TestWebKitAPI::HTTPResponse redirectResponse(301, WTFMove(redirectHeaders));
+    TestCyberKitAPI::HTTPResponse redirectResponse(301, WTFMove(redirectHeaders));
 
     server.addResponse("/popup.html"_s, WTFMove(redirectResponse));
     auto popupURL = makeString("https://localhost:", server.port(), "/popup.html");
@@ -799,7 +799,7 @@ TEST(ProcessSwap, PSONRedirectionToExternal)
         done = true;
     };
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(ProcessSwap, KillProvisionalWebContentProcessThenStartNewLoad)
@@ -819,7 +819,7 @@ TEST(ProcessSwap, KillProvisionalWebContentProcessThenStartNewLoad)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     
     // When the provisional load starts in the provisional process, kill the WebView's processes.
@@ -832,7 +832,7 @@ TEST(ProcessSwap, KillProvisionalWebContentProcessThenStartNewLoad)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
     
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     
     navigationDelegate->didStartProvisionalNavigationHandler = nil;
@@ -840,7 +840,7 @@ TEST(ProcessSwap, KillProvisionalWebContentProcessThenStartNewLoad)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -861,7 +861,7 @@ TEST(ProcessSwap, NoSwappingForeTLDPlus2)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www1.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -869,7 +869,7 @@ TEST(ProcessSwap, NoSwappingForeTLDPlus2)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www2.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -904,9 +904,9 @@ TEST(ProcessSwap, Back)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -914,7 +914,7 @@ TEST(ProcessSwap, Back)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -923,7 +923,7 @@ TEST(ProcessSwap, Back)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto googlePID = [webView _webProcessIdentifier];
@@ -932,7 +932,7 @@ TEST(ProcessSwap, Back)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.bing.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto bingPID = [webView _webProcessIdentifier];
@@ -940,9 +940,9 @@ TEST(ProcessSwap, Back)
 
     [webView goBack]; // Back to google.com.
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterFirstBackNavigation = [webView _webProcessIdentifier];
@@ -950,9 +950,9 @@ TEST(ProcessSwap, Back)
 
     [webView goBack]; // Back to apple.com.
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterSecondBackNavigation = [webView _webProcessIdentifier];
@@ -1004,7 +1004,7 @@ TEST(ProcessSwap, HistoryNavigationToFragmentURL)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -1012,19 +1012,19 @@ TEST(ProcessSwap, HistoryNavigationToFragmentURL)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html#foo"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
@@ -1035,7 +1035,7 @@ TEST(ProcessSwap, HistoryNavigationToFragmentURL)
         EXPECT_WK_STREQ(@"TEST", innerText);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 }
 
 TEST(ProcessSwap, SuspendedPageDiesAfterBackForwardListItemIsGone)
@@ -1057,7 +1057,7 @@ TEST(ProcessSwap, SuspendedPageDiesAfterBackForwardListItemIsGone)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -1065,7 +1065,7 @@ TEST(ProcessSwap, SuspendedPageDiesAfterBackForwardListItemIsGone)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -1075,7 +1075,7 @@ TEST(ProcessSwap, SuspendedPageDiesAfterBackForwardListItemIsGone)
     EXPECT_EQ(2U, [processPool _webProcessCountIgnoringPrewarmedAndCached]);
 
     [webView goBack]; // Back to webkit.org.
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -1086,14 +1086,14 @@ TEST(ProcessSwap, SuspendedPageDiesAfterBackForwardListItemIsGone)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
 
     // apple.com is not longer present in the back/forward list and there should therefore be no-suspended page for it.
     while ([processPool _webProcessCountIgnoringPrewarmedAndCached] > 1u)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 #if PLATFORM(MAC)
@@ -1119,7 +1119,7 @@ TEST(ProcessSwap, SuspendedPagesInActivityMonitor)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -1128,13 +1128,13 @@ TEST(ProcessSwap, SuspendedPagesInActivityMonitor)
         EXPECT_WK_STREQ(@"pson://www.webkit.org", activeDomains[0]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto googlePID = [webView _webProcessIdentifier];
@@ -1145,7 +1145,7 @@ TEST(ProcessSwap, SuspendedPagesInActivityMonitor)
         EXPECT_WK_STREQ(@"pson://www.google.com", activeDomains[0]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [processPool _getActivePagesOriginsInWebProcessForTesting:webkitPID completionHandler:^(NSArray<NSString *> *activeDomains) {
@@ -1153,14 +1153,14 @@ TEST(ProcessSwap, SuspendedPagesInActivityMonitor)
         EXPECT_WK_STREQ(@"pson://www.webkit.org", activeDomains[0]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goBack]; // Back to webkit.org.
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterBackNavigation = [webView _webProcessIdentifier];
@@ -1171,7 +1171,7 @@ TEST(ProcessSwap, SuspendedPagesInActivityMonitor)
         EXPECT_WK_STREQ(@"pson://www.google.com", activeDomains[0]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [processPool _getActivePagesOriginsInWebProcessForTesting:webkitPID completionHandler:^(NSArray<NSString *> *activeDomains) {
@@ -1179,7 +1179,7 @@ TEST(ProcessSwap, SuspendedPagesInActivityMonitor)
         EXPECT_WK_STREQ(@"pson://www.webkit.org", activeDomains[0]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -1206,9 +1206,9 @@ TEST(ProcessSwap, BackWithoutSuspendedPage)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView1 _webProcessIdentifier];
@@ -1224,16 +1224,16 @@ TEST(ProcessSwap, BackWithoutSuspendedPage)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView2 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView2 _webProcessIdentifier];
 
     [webView2 goBack];
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid3 = [webView2 _webProcessIdentifier];
@@ -1259,7 +1259,7 @@ TEST(ProcessSwap, BackNavigationAfterSessionRestore)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView1 _webProcessIdentifier];
@@ -1267,7 +1267,7 @@ TEST(ProcessSwap, BackNavigationAfterSessionRestore)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView1 _webProcessIdentifier];
@@ -1281,14 +1281,14 @@ TEST(ProcessSwap, BackNavigationAfterSessionRestore)
     [webView2 setNavigationDelegate:delegate.get()];
 
     [webView2 _restoreSessionState:sessionState.get() andNavigate:YES];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView2 URL] absoluteString]);
     auto pid3 = [webView2 _webProcessIdentifier];
 
     [webView2 goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html", [[webView2 URL] absoluteString]);
@@ -1318,13 +1318,13 @@ TEST(ProcessSwap, CrossSiteWindowOpenNoOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(2, numberOfDecidePolicyCalls);
 
@@ -1358,13 +1358,13 @@ TEST(ProcessSwap, CrossOriginButSameSiteWindowOpenNoOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(2, numberOfDecidePolicyCalls);
 
@@ -1400,13 +1400,13 @@ TEST(ProcessSwap, CrossSiteWindowOpenWithOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(2, numberOfDecidePolicyCalls);
 
@@ -1445,13 +1445,13 @@ static void runSameSiteWindowOpenNoOpenerTest(WindowHasName windowHasName, Expec
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(2, numberOfDecidePolicyCalls);
 
@@ -1469,14 +1469,14 @@ static void runSameSiteWindowOpenNoOpenerTest(WindowHasName windowHasName, Expec
     done = false;
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/popup2.html"]];
     [createdWebView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     EXPECT_EQ(pid2, [createdWebView _webProcessIdentifier]);
 
     // Since the window was opened via JS, it should be able to close itself.
     didCloseWindow = false;
     [createdWebView evaluateJavaScript:@"window.close()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didCloseWindow);
+    TestCyberKitAPI::Util::run(&didCloseWindow);
 }
 
 TEST(ProcessSwap, SameSiteWindowOpenNoOpener)
@@ -1515,13 +1515,13 @@ TEST(ProcessSwap, CrossSiteBlankTargetWithOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(3, numberOfDecidePolicyCalls);
 
@@ -1555,13 +1555,13 @@ TEST(ProcessSwap, CrossSiteBlankTargetImplicitNoOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(3, numberOfDecidePolicyCalls);
 
@@ -1595,13 +1595,13 @@ TEST(ProcessSwap, CrossSiteBlankTargetNoOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(3, numberOfDecidePolicyCalls);
 
@@ -1635,13 +1635,13 @@ TEST(ProcessSwap, SameSiteBlankTargetNoOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(3, numberOfDecidePolicyCalls);
 
@@ -1672,12 +1672,12 @@ TEST(ProcessSwap, ServerRedirectFromNewWebView)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&serverRedirected);
+    TestCyberKitAPI::Util::run(&serverRedirected);
     serverRedirected = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
@@ -1705,7 +1705,7 @@ TEST(ProcessSwap, ServerRedirect)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterFirstLoad = [webView _webProcessIdentifier];
@@ -1717,14 +1717,14 @@ TEST(ProcessSwap, ServerRedirect)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&serverRedirected);
+    TestCyberKitAPI::Util::run(&serverRedirected);
     serverRedirected = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
     if (auto provisionalPID = [webView _provisionalWebProcessIdentifier])
         seenPIDs.add(provisionalPID);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
@@ -1757,7 +1757,7 @@ TEST(ProcessSwap, ServerRedirect2)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterFirstLoad = [webView _webProcessIdentifier];
@@ -1770,14 +1770,14 @@ TEST(ProcessSwap, ServerRedirect2)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&serverRedirected);
+    TestCyberKitAPI::Util::run(&serverRedirected);
     serverRedirected = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
     if (auto provisionalPID = [webView _provisionalWebProcessIdentifier])
         seenPIDs.add(provisionalPID);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
@@ -1792,7 +1792,7 @@ TEST(ProcessSwap, ServerRedirect2)
 
     [webView goBack];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main1.html", [[webView URL] absoluteString]);
@@ -1822,7 +1822,7 @@ static void runSameOriginServerRedirectTest(ShouldCacheProcessFirst shouldCacheP
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main3.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
     }
 
@@ -1838,13 +1838,13 @@ static void runSameOriginServerRedirectTest(ShouldCacheProcessFirst shouldCacheP
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&willPerformClientRedirect);
+    TestCyberKitAPI::Util::run(&willPerformClientRedirect);
 
     seenPIDs.add([webView _webProcessIdentifier]);
     if (auto provisionalPID = [webView _provisionalWebProcessIdentifier])
         seenPIDs.add(provisionalPID);
 
-    TestWebKitAPI::Util::run(&didPerformClientRedirect);
+    TestCyberKitAPI::Util::run(&didPerformClientRedirect);
     didPerformClientRedirect = false;
     willPerformClientRedirect = false;
 
@@ -1852,14 +1852,14 @@ static void runSameOriginServerRedirectTest(ShouldCacheProcessFirst shouldCacheP
     if (auto provisionalPID = [webView _provisionalWebProcessIdentifier])
         seenPIDs.add(provisionalPID);
 
-    TestWebKitAPI::Util::run(&serverRedirected);
+    TestCyberKitAPI::Util::run(&serverRedirected);
     serverRedirected = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
     if (auto provisionalPID = [webView _provisionalWebProcessIdentifier])
         seenPIDs.add(provisionalPID);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     seenPIDs.add([webView _webProcessIdentifier]);
@@ -1898,7 +1898,7 @@ TEST(ProcessSwap, TerminateProcessRightAfterSwap)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     delegate->didStartProvisionalNavigationHandler = ^{
@@ -1909,10 +1909,10 @@ TEST(ProcessSwap, TerminateProcessRightAfterSwap)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 }
 
-static const char* linkToWebKitBytes = R"PSONRESOURCE(
+static const char* linkToCyberKitBytes = R"PSONRESOURCE(
 <body>
   <a id="testLink" href="pson://www.webkit.org/main.html">Link</a>
 </body>
@@ -1926,7 +1926,7 @@ TEST(ProcessSwap, PolicyCancelAfterServerRedirect)
     auto webViewConfiguration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [webViewConfiguration setProcessPool:processPool.get()];
     auto handler = adoptNS([[PSONScheme alloc] init]);
-    [handler addMappingFromURLString:@"pson://www.google.com/main.html" toData:linkToWebKitBytes];
+    [handler addMappingFromURLString:@"pson://www.google.com/main.html" toData:linkToCyberKitBytes];
     [handler addRedirectFromURLString:@"pson://www.webkit.org/main.html" toURLString:@"pson://www.apple.com/ignore.html"];
     [webViewConfiguration setURLSchemeHandler:handler.get() forURLScheme:@"pson"];
 
@@ -1945,7 +1945,7 @@ TEST(ProcessSwap, PolicyCancelAfterServerRedirect)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pidAfterFirstLoad = [webView _webProcessIdentifier];
 
@@ -1953,7 +1953,7 @@ TEST(ProcessSwap, PolicyCancelAfterServerRedirect)
 
     [webView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&failed);
+    TestCyberKitAPI::Util::run(&failed);
     failed = false;
     done = false;
 
@@ -1967,7 +1967,7 @@ TEST(ProcessSwap, PolicyCancelAfterServerRedirect)
         EXPECT_WK_STREQ(@"Link", innerText);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -1979,7 +1979,7 @@ TEST(ProcessSwap, CrossSiteDownload)
     auto webViewConfiguration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [webViewConfiguration setProcessPool:processPool.get()];
     auto handler = adoptNS([[PSONScheme alloc] init]);
-    [handler addMappingFromURLString:@"pson://www.google.com/main.html" toData:linkToWebKitBytes];
+    [handler addMappingFromURLString:@"pson://www.google.com/main.html" toData:linkToCyberKitBytes];
     [handler addMappingFromURLString:@"pson://www.webkit.org/main.html" toData:"Hello"];
     [webViewConfiguration setURLSchemeHandler:handler.get() forURLScheme:@"pson"];
 
@@ -1990,14 +1990,14 @@ TEST(ProcessSwap, CrossSiteDownload)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pidAfterFirstLoad = [webView _webProcessIdentifier];
 
     shouldConvertToDownload = true;
     [webView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&failed);
+    TestCyberKitAPI::Util::run(&failed);
     failed = false;
     shouldConvertToDownload = false;
 
@@ -2009,7 +2009,7 @@ TEST(ProcessSwap, CrossSiteDownload)
         EXPECT_WK_STREQ(@"Link", innerText);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -2053,14 +2053,14 @@ TEST(ProcessSwap, SameOriginSystemPreview)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pidAfterFirstLoad = [webView _webProcessIdentifier];
 
     didStartProvisionalLoad = false;
     [webView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 
     // We should still be on webkit.org.
     EXPECT_EQ(pidAfterFirstLoad, [webView _webProcessIdentifier]);
@@ -2090,14 +2090,14 @@ TEST(ProcessSwap, CrossOriginSystemPreview)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pidAfterFirstLoad = [webView _webProcessIdentifier];
 
     didStartProvisionalLoad = false;
     [webView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 
     // We should still be on webkit.org.
     EXPECT_EQ(pidAfterFirstLoad, [webView _webProcessIdentifier]);
@@ -2128,7 +2128,7 @@ static void runClientSideRedirectTest(ShouldEnablePSON shouldEnablePSON)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2136,7 +2136,7 @@ static void runClientSideRedirectTest(ShouldEnablePSON shouldEnablePSON)
     // Navigate to the page doing a client-side redirect to apple.com.
     [webView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.google.com/clientSideRedirect.html", [[webView URL] absoluteString]);
@@ -2146,7 +2146,7 @@ static void runClientSideRedirectTest(ShouldEnablePSON shouldEnablePSON)
     else
         EXPECT_EQ(webkitPID, googlePID);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
@@ -2185,7 +2185,7 @@ static void runClientSideRedirectTest(ShouldEnablePSON shouldEnablePSON)
 
     // Navigate back.
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html", [[webView URL] absoluteString]);
@@ -2210,7 +2210,7 @@ static void runClientSideRedirectTest(ShouldEnablePSON shouldEnablePSON)
 
     // Navigate forward.
     [webView goForward];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
@@ -2260,15 +2260,15 @@ TEST(ProcessSwap, CrossSiteClientSideRedirectFromFileURL)
     willPerformClientRedirect = false;
     didPerformClientRedirect = false;
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"client-side-redirect" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"client-side-redirect" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -2298,7 +2298,7 @@ TEST(ProcessSwap, NavigateBackAfterClientSideRedirect)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2309,14 +2309,14 @@ TEST(ProcessSwap, NavigateBackAfterClientSideRedirect)
     // Navigate to the page doing a client-side redirect to apple.com.
     [webView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.google.com/clientSideRedirect.html", [[webView URL] absoluteString]);
     auto googlePID = [webView _webProcessIdentifier];
     EXPECT_NE(webkitPID, googlePID);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
@@ -2336,14 +2336,14 @@ TEST(ProcessSwap, NavigateBackAfterClientSideRedirect)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
 
     [webView goBack];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
@@ -2376,13 +2376,13 @@ static void runNavigationWithLockedHistoryTest(ShouldEnablePSON shouldEnablePSON
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
 
     // Page redirects to apple.com.
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -2399,9 +2399,9 @@ static void runNavigationWithLockedHistoryTest(ShouldEnablePSON shouldEnablePSON
 
     receivedMessage = false;
     [webView goBack];
-    TestWebKitAPI::Util::run(&receivedMessage); // Should be restored from PageCache.
+    TestCyberKitAPI::Util::run(&receivedMessage); // Should be restored from PageCache.
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -2411,8 +2411,8 @@ static void runNavigationWithLockedHistoryTest(ShouldEnablePSON shouldEnablePSON
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [backForwardList.forwardItem.URL absoluteString]);
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&done);
-    TestWebKitAPI::Util::run(&receivedMessage); // Should be restored from PageCache.
+    TestCyberKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&receivedMessage); // Should be restored from PageCache.
     receivedMessage = false;
     done = false;
 
@@ -2449,7 +2449,7 @@ static void runQuickBackForwardNavigationTest(ShouldEnablePSON shouldEnablePSON)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2457,7 +2457,7 @@ static void runQuickBackForwardNavigationTest(ShouldEnablePSON shouldEnablePSON)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -2465,7 +2465,7 @@ static void runQuickBackForwardNavigationTest(ShouldEnablePSON shouldEnablePSON)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -2476,12 +2476,12 @@ static void runQuickBackForwardNavigationTest(ShouldEnablePSON shouldEnablePSON)
 
     for (unsigned i = 0; i < 10; ++i) {
         [webView goBack];
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         [webView goForward];
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     }
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     Vector<String> backForwardListURLs;
@@ -2553,9 +2553,9 @@ TEST(ProcessSwap, SessionStorage)
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&receivedMessage);
+        TestCyberKitAPI::Util::run(&receivedMessage);
         receivedMessage = false;
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         auto webkitPID = [webView _webProcessIdentifier];
@@ -2563,7 +2563,7 @@ TEST(ProcessSwap, SessionStorage)
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         auto applePID = [webView _webProcessIdentifier];
@@ -2574,9 +2574,9 @@ TEST(ProcessSwap, SessionStorage)
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&receivedMessage);
+        TestCyberKitAPI::Util::run(&receivedMessage);
         receivedMessage = false;
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         // We should have gone back to the webkit.org process for this load since we reuse SuspendedPages' process when possible.
@@ -2607,7 +2607,7 @@ TEST(ProcessSwap, ReuseSuspendedProcess)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2615,7 +2615,7 @@ TEST(ProcessSwap, ReuseSuspendedProcess)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -2625,7 +2625,7 @@ TEST(ProcessSwap, ReuseSuspendedProcess)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We should have gone back to the webkit.org process for this load since we reuse SuspendedPages' process when possible.
@@ -2634,7 +2634,7 @@ TEST(ProcessSwap, ReuseSuspendedProcess)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We should have gone back to the apple.com process for this load since we reuse SuspendedPages' process when possible.
@@ -2668,7 +2668,7 @@ TEST(ProcessSwap, ReuseSuspendedProcessEvenIfPageCacheFails)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2676,7 +2676,7 @@ TEST(ProcessSwap, ReuseSuspendedProcessEvenIfPageCacheFails)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -2686,7 +2686,7 @@ TEST(ProcessSwap, ReuseSuspendedProcessEvenIfPageCacheFails)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We should have gone back to the webkit.org process for this load since we reuse SuspendedPages' process when possible.
@@ -2695,7 +2695,7 @@ TEST(ProcessSwap, ReuseSuspendedProcessEvenIfPageCacheFails)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We should have gone back to the apple.com process for this load since we reuse SuspendedPages' process when possible.
@@ -2720,7 +2720,7 @@ TEST(ProcessSwap, ReuseSuspendedProcessOnBackEvenIfPageCacheFails)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2728,7 +2728,7 @@ TEST(ProcessSwap, ReuseSuspendedProcessOnBackEvenIfPageCacheFails)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -2737,7 +2737,7 @@ TEST(ProcessSwap, ReuseSuspendedProcessOnBackEvenIfPageCacheFails)
 
     [webView goBack];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -2769,7 +2769,7 @@ TEST(ProcessSwap, HistoryItemIDConfusion)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2777,7 +2777,7 @@ TEST(ProcessSwap, HistoryItemIDConfusion)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -2786,7 +2786,7 @@ TEST(ProcessSwap, HistoryItemIDConfusion)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto googlePID = [webView _webProcessIdentifier];
@@ -2795,14 +2795,14 @@ TEST(ProcessSwap, HistoryItemIDConfusion)
 
     [webView goBack];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
 
     [webView goBack];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -2835,7 +2835,7 @@ TEST(ProcessSwap, GoToSecondItemInBackHistory)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -2843,7 +2843,7 @@ TEST(ProcessSwap, GoToSecondItemInBackHistory)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -2851,21 +2851,21 @@ TEST(ProcessSwap, GoToSecondItemInBackHistory)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
     EXPECT_NE(webkitPID, applePID);
 
     [webView goToBackForwardListItem:webView.get().backForwardList.backList[0]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main1.html", [[webView URL] absoluteString]);
 
     [webView goToBackForwardListItem:webView.get().backForwardList.forwardList[1]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
@@ -2895,7 +2895,7 @@ TEST(ProcessSwap, PrivateAndRegularSessionsShouldGetDifferentProcesses)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [regularWebView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [regularWebView1 _close];
@@ -2907,7 +2907,7 @@ TEST(ProcessSwap, PrivateAndRegularSessionsShouldGetDifferentProcesses)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [privateWebView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto privateSessionWebkitPID = [privateWebView _webProcessIdentifier];
@@ -2915,7 +2915,7 @@ TEST(ProcessSwap, PrivateAndRegularSessionsShouldGetDifferentProcesses)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [privateWebView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto privateSessionApplePID = [privateWebView _webProcessIdentifier];
@@ -2930,7 +2930,7 @@ TEST(ProcessSwap, PrivateAndRegularSessionsShouldGetDifferentProcesses)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [regularWebView2 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto regularSessionGooglePID = [regularWebView2 _webProcessIdentifier];
@@ -2938,7 +2938,7 @@ TEST(ProcessSwap, PrivateAndRegularSessionsShouldGetDifferentProcesses)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [regularWebView2 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto regularSessionWebkitPID = [regularWebView2 _webProcessIdentifier];
@@ -2979,10 +2979,10 @@ void testReuseSuspendedProcessForRegularNavigation(RetainPageInBundle retainPage
 {
     auto processPoolConfiguration = psonProcessPoolConfiguration();
     if (retainPageInBundle == RetainPageInBundle::Yes)
-        [processPoolConfiguration setInjectedBundleURL:[[NSBundle mainBundle] URLForResource:@"TestWebKitAPI" withExtension:@"wkbundle"]];
+        [processPoolConfiguration setInjectedBundleURL:[[NSBundle mainBundle] URLForResource:@"TestCyberKitAPI" withExtension:@"wkbundle"]];
     auto processPool = adoptNS([[WKProcessPool alloc] _initWithConfiguration:processPoolConfiguration.get()]);
     if (retainPageInBundle == RetainPageInBundle::Yes)
-        [processPool _setObject:@"BundleRetainPagePlugIn" forBundleParameter:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+        [processPool _setObject:@"BundleRetainPagePlugIn" forBundleParameter:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
 
     auto webViewConfiguration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [webViewConfiguration setProcessPool:processPool.get()];
@@ -2997,7 +2997,7 @@ void testReuseSuspendedProcessForRegularNavigation(RetainPageInBundle retainPage
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -3005,7 +3005,7 @@ void testReuseSuspendedProcessForRegularNavigation(RetainPageInBundle retainPage
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -3014,7 +3014,7 @@ void testReuseSuspendedProcessForRegularNavigation(RetainPageInBundle retainPage
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -3076,7 +3076,7 @@ TEST(ProcessSwap, MainFramesOnly)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
 
     EXPECT_EQ(1u, seenPIDs.size());
@@ -3103,13 +3103,13 @@ static unsigned waitUntilClientWidthIs(WKWebView *webView, unsigned expectedClie
     unsigned clientWidth = 0;
     do {
         if (timeout != 10)
-            TestWebKitAPI::Util::runFor(0.1_s);
+            TestCyberKitAPI::Util::runFor(0.1_s);
 
         [webView evaluateJavaScript:@"getClientWidth()" completionHandler: [&] (id result, NSError *error) {
             clientWidth = [result integerValue];
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
         --timeout;
     } while (clientWidth != expectedClientWidth && timeout >= 0);
@@ -3141,7 +3141,7 @@ TEST(ProcessSwap, PageZoomLevelAfterSwap)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     unsigned clientWidth = waitUntilClientWidthIs(webView.get(), 400);
@@ -3150,7 +3150,7 @@ TEST(ProcessSwap, PageZoomLevelAfterSwap)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     clientWidth = waitUntilClientWidthIs(webView.get(), 400);
@@ -3159,7 +3159,7 @@ TEST(ProcessSwap, PageZoomLevelAfterSwap)
     // Kill the WebProcess, the page should reload automatically and the page zoom level should be maintained.
     kill([webView _webProcessIdentifier], 9);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     clientWidth = waitUntilClientWidthIs(webView.get(), 400);
@@ -3207,7 +3207,7 @@ TEST(ProcessSwap, MediaTypeAfterSwap)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     NSString *innerText = [[webView stringByEvaluatingJavaScript:@"document.body.innerText"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -3221,7 +3221,7 @@ TEST(ProcessSwap, MediaTypeAfterSwap)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     innerText = [[webView stringByEvaluatingJavaScript:@"document.body.innerText"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -3230,7 +3230,7 @@ TEST(ProcessSwap, MediaTypeAfterSwap)
     // Kill the WebProcess, the page should reload automatically and the media type should be maintained.
     kill([webView _webProcessIdentifier], 9);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     innerText = [[webView stringByEvaluatingJavaScript:@"document.body.innerText"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -3275,7 +3275,7 @@ TEST(ProcessSwap, NavigateCrossSiteBeforePageLoadEnd)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_FALSE(failed);
@@ -3301,7 +3301,7 @@ static void runCancelCrossSiteProvisionalLoadTest(ShouldEnablePSON shouldEnableP
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_FALSE(failed);
@@ -3313,7 +3313,7 @@ static void runCancelCrossSiteProvisionalLoadTest(ShouldEnablePSON shouldEnableP
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&failed);
+    TestCyberKitAPI::Util::run(&failed);
     failed = false;
 }
 
@@ -3346,7 +3346,7 @@ TEST(ProcessSwap, DoSameSiteNavigationAfterCrossSiteProvisionalLoadStarted)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -3361,7 +3361,7 @@ TEST(ProcessSwap, DoSameSiteNavigationAfterCrossSiteProvisionalLoadStarted)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main2.html", [[webView URL] absoluteString]);
@@ -3388,31 +3388,31 @@ TEST(ProcessSwap, SuspendedPageLimit)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.bing.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.yahoo.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Navigations to 5 different domains, we expect to have seen 5 different PIDs
@@ -3422,7 +3422,7 @@ TEST(ProcessSwap, SuspendedPageLimit)
     auto expectedProcessCount = 1 + maximumSuspendedPageCount;
     int timeout = 20;
     while ([processPool _webProcessCountIgnoringPrewarmedAndCached] != expectedProcessCount && timeout >= 0) {
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         --timeout;
     }
 
@@ -3451,7 +3451,7 @@ TEST(ProcessSwap, PageCache1)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad1 = [webView _webProcessIdentifier];
@@ -3461,7 +3461,7 @@ TEST(ProcessSwap, PageCache1)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad2 = [webView _webProcessIdentifier];
@@ -3470,9 +3470,9 @@ TEST(ProcessSwap, PageCache1)
     EXPECT_NE(pidAfterLoad1, pidAfterLoad2);
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad3 = [webView _webProcessIdentifier];
@@ -3484,9 +3484,9 @@ TEST(ProcessSwap, PageCache1)
     EXPECT_EQ(2u, seenPIDs.size());
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad4 = [webView _webProcessIdentifier];
@@ -3547,7 +3547,7 @@ TEST(ProcessSwap, BackForwardCacheSkipBackForwardListItem)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -3555,7 +3555,7 @@ TEST(ProcessSwap, BackForwardCacheSkipBackForwardListItem)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html#foo"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -3564,7 +3564,7 @@ TEST(ProcessSwap, BackForwardCacheSkipBackForwardListItem)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -3574,7 +3574,7 @@ TEST(ProcessSwap, BackForwardCacheSkipBackForwardListItem)
     // Go 2 items back.
     EXPECT_EQ(2U, [[[webView backForwardList] backList] count]);
     [webView goToBackForwardListItem:[[webView backForwardList] itemAtIndex:-2]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -3583,7 +3583,7 @@ TEST(ProcessSwap, BackForwardCacheSkipBackForwardListItem)
     // Go 2 items forward.
     EXPECT_EQ(2U, [[[webView backForwardList] forwardList] count]);
     [webView goToBackForwardListItem:[[webView backForwardList] itemAtIndex:2]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
@@ -3592,7 +3592,7 @@ TEST(ProcessSwap, BackForwardCacheSkipBackForwardListItem)
     // Go back.
     EXPECT_EQ(2U, [[[webView backForwardList] backList] count]);
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -3623,7 +3623,7 @@ TEST(ProcessSwap, ClearWebsiteDataWithSuspendedPage)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad1 = [webView _webProcessIdentifier];
@@ -3632,7 +3632,7 @@ TEST(ProcessSwap, ClearWebsiteDataWithSuspendedPage)
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad2 = [webView _webProcessIdentifier];
@@ -3640,7 +3640,7 @@ TEST(ProcessSwap, ClearWebsiteDataWithSuspendedPage)
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad3 = [webView _webProcessIdentifier];
@@ -3650,7 +3650,7 @@ TEST(ProcessSwap, ClearWebsiteDataWithSuspendedPage)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore _allWebsiteDataTypesIncludingPrivate] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 TEST(ProcessSwap, PageCacheAfterProcessSwapByClient)
@@ -3675,7 +3675,7 @@ TEST(ProcessSwap, PageCacheAfterProcessSwapByClient)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad1 = [webView _webProcessIdentifier];
@@ -3690,7 +3690,7 @@ TEST(ProcessSwap, PageCacheAfterProcessSwapByClient)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad2 = [webView _webProcessIdentifier];
@@ -3701,9 +3701,9 @@ TEST(ProcessSwap, PageCacheAfterProcessSwapByClient)
     delegate->decidePolicyForNavigationAction = nil;
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad3 = [webView _webProcessIdentifier];
@@ -3715,9 +3715,9 @@ TEST(ProcessSwap, PageCacheAfterProcessSwapByClient)
     EXPECT_EQ(2u, seenPIDs.size());
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad4 = [webView _webProcessIdentifier];
@@ -3751,7 +3751,7 @@ TEST(ProcessSwap, PageCacheWhenNavigatingFromJS)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad1 = [webView _webProcessIdentifier];
@@ -3761,7 +3761,7 @@ TEST(ProcessSwap, PageCacheWhenNavigatingFromJS)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad2 = [webView _webProcessIdentifier];
@@ -3770,9 +3770,9 @@ TEST(ProcessSwap, PageCacheWhenNavigatingFromJS)
     EXPECT_NE(pidAfterLoad1, pidAfterLoad2);
 
     [webView evaluateJavaScript:@"history.back()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad3 = [webView _webProcessIdentifier];
@@ -3784,9 +3784,9 @@ TEST(ProcessSwap, PageCacheWhenNavigatingFromJS)
     EXPECT_EQ(2u, seenPIDs.size());
 
     [webView evaluateJavaScript:@"history.forward()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pidAfterLoad4 = [webView _webProcessIdentifier];
@@ -3824,7 +3824,7 @@ TEST(ProcessSwap, UseWebProcessCacheAfterTermination)
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
         [webView loadRequest:request];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
         webkitPID = [webView _webProcessIdentifier];
     }
@@ -3836,7 +3836,7 @@ TEST(ProcessSwap, UseWebProcessCacheAfterTermination)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto applePID = [webView _webProcessIdentifier];
 
@@ -3850,14 +3850,14 @@ TEST(ProcessSwap, UseWebProcessCacheAfterTermination)
     }];
 
     kill(applePID, 9);
-    TestWebKitAPI::Util::run(&webProcessTerminated);
+    TestCyberKitAPI::Util::run(&webProcessTerminated);
     webProcessTerminated = false;
 
     EXPECT_EQ(0, [webView _webProcessIdentifier]);
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -3888,18 +3888,18 @@ TEST(ProcessSwap, ProcessCrashedWhileInTheCache)
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
         [webView loadRequest:request];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
         webkitPID = [webView _webProcessIdentifier];
     }
 
     while ([processPool _processCacheSize] != 1)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     kill(webkitPID, 9);
 
     while ([processPool _processCacheSize])
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:webViewConfiguration.get()]);
     [webView setNavigationDelegate:navigationDelegate.get()];
@@ -3907,7 +3907,7 @@ TEST(ProcessSwap, ProcessCrashedWhileInTheCache)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_NE(webkitPID, [webView _webProcessIdentifier]);
@@ -3937,16 +3937,16 @@ TEST(ProcessSwap, ProcessTerminatedWhileInTheCache)
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
         [webView loadRequest:request];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
         webkitPID = [webView _webProcessIdentifier];
     }
 
     while ([processPool _processCacheSize] != 1)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_TRUE([processPool _requestWebProcessTermination:webkitPID]);
-    TestWebKitAPI::Util::spinRunLoop(100);
+    TestCyberKitAPI::Util::spinRunLoop(100);
 
     EXPECT_EQ(0U, [processPool _processCacheSize]);
 
@@ -3956,7 +3956,7 @@ TEST(ProcessSwap, ProcessTerminatedWhileInTheCache)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_NE(webkitPID, [webView _webProcessIdentifier]);
@@ -3982,19 +3982,19 @@ TEST(ProcessSwap, UseWebProcessCacheForLoadInNewView)
 
         // Process launch should be delayed until a load actually happens.
         EXPECT_EQ(0, [webView _webProcessIdentifier]);
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         EXPECT_EQ(0, [webView _webProcessIdentifier]);
 
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
         [webView loadRequest:request];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
         webkitPID = [webView _webProcessIdentifier];
         EXPECT_NE(0, webkitPID);
     }
 
     while ([processPool _processCacheSize] != 1)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_EQ(1U, [processPool _webProcessCountIgnoringPrewarmed]);
 
@@ -4004,7 +4004,7 @@ TEST(ProcessSwap, UseWebProcessCacheForLoadInNewView)
 
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
         [webView loadRequest:request];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -4012,7 +4012,7 @@ TEST(ProcessSwap, UseWebProcessCacheForLoadInNewView)
     }
 
     while ([processPool _processCacheSize] != 1)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_EQ(1U, [processPool _webProcessCountIgnoringPrewarmed]);
 
@@ -4022,7 +4022,7 @@ TEST(ProcessSwap, UseWebProcessCacheForLoadInNewView)
 
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
         [webView loadRequest:request];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         EXPECT_NE(webkitPID, [webView _webProcessIdentifier]);
@@ -4049,7 +4049,7 @@ TEST(ProcessSwap, NumberOfPrewarmedProcesses)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(2u, [processPool _webProcessCount]);
@@ -4058,7 +4058,7 @@ TEST(ProcessSwap, NumberOfPrewarmedProcesses)
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(3u, [processPool _webProcessCount]);
@@ -4093,7 +4093,7 @@ TEST(ProcessSwap, NumberOfCachedProcesses)
     for (unsigned i = 0; i < maxSuspendedPageCount + 1; i++) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:makeString("pson://www.domain-", i, ".com")]];
         [webView loadRequest:request];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         EXPECT_EQ(i + 1, [processPool _webProcessCount]);
@@ -4103,12 +4103,12 @@ TEST(ProcessSwap, NumberOfCachedProcesses)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:makeString("pson://www.domain-", maxSuspendedPageCount + 1, ".com")]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     int timeout = 100;
     while (([processPool _webProcessCount] > (maxSuspendedPageCount + 2) &&  [processPool _webProcessCountIgnoringPrewarmedAndCached] > (maxSuspendedPageCount + 1)) && timeout > 0) {
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         --timeout;
     }
 
@@ -4120,11 +4120,11 @@ TEST(ProcessSwap, NumberOfCachedProcesses)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore _allWebsiteDataTypesIncludingPrivate] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     timeout = 100;
     while ([processPool _webProcessCount] > 1 && timeout > 0) {
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         --timeout;
     }
 
@@ -4173,33 +4173,33 @@ TEST(ProcessSwap, PageShowHide)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     while ([receivedMessages count] < 7)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_EQ(7u, [receivedMessages count]);
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html - pageshow NOT persisted", receivedMessages.get()[0]);
@@ -4265,33 +4265,33 @@ TEST(ProcessSwap, LoadUnload)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     while ([receivedMessages count] < 7)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_EQ(7u, [receivedMessages count]);
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html - load", receivedMessages.get()[0]);
@@ -4337,7 +4337,7 @@ TEST(ProcessSwap, WebInspector)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -4347,7 +4347,7 @@ TEST(ProcessSwap, WebInspector)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -4357,7 +4357,7 @@ TEST(ProcessSwap, WebInspector)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid3 = [webView _webProcessIdentifier];
@@ -4379,7 +4379,7 @@ TEST(ProcessSwap, WebInspectorDelayedProcessLaunch)
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:webViewConfiguration.get()]);
 
     EXPECT_EQ(0, [webView _webProcessIdentifier]);
-    TestWebKitAPI::Util::spinRunLoop(100);
+    TestCyberKitAPI::Util::spinRunLoop(100);
     EXPECT_EQ(0, [webView _webProcessIdentifier]);
 
     [[webView _inspector] show];
@@ -4387,7 +4387,7 @@ TEST(ProcessSwap, WebInspectorDelayedProcessLaunch)
 
     // Trying to inspect the view should launch a WebProcess.
     while (![webView _webProcessIdentifier])
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_NE(0, [webView _webProcessIdentifier]);
 
     [[webView _inspector] close];
@@ -4425,14 +4425,14 @@ TEST(ProcessSwap, SameOriginBlobNavigation)
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid1);
 
     [webView _evaluateJavaScriptWithoutUserGesture:@"document.getElementById('link').click()" completionHandler: nil];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid2);
@@ -4458,7 +4458,7 @@ TEST(ProcessSwap, CrossOriginBlobNavigation)
 
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid1);
@@ -4469,10 +4469,10 @@ TEST(ProcessSwap, CrossOriginBlobNavigation)
         blobURL = String([NSString stringWithFormat:@"%@", result]);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid2);
@@ -4482,13 +4482,13 @@ TEST(ProcessSwap, CrossOriginBlobNavigation)
     [webView _evaluateJavaScriptWithoutUserGesture:(NSString *)script completionHandler: [&] (id result, NSError *error) {
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
     // This navigation will fail.
     [webView _evaluateJavaScriptWithoutUserGesture:@"document.getElementById('link').click()" completionHandler: [&] (id result, NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid3 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid3);
@@ -4516,13 +4516,13 @@ TEST(ProcessSwap, NavigateToAboutBlank)
 
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid1);
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid2);
@@ -4549,13 +4549,13 @@ TEST(ProcessSwap, NavigateToDataURL)
 
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid1);
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"data:text/plain,PASS"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid2);
@@ -4581,7 +4581,7 @@ TEST(ProcessSwap, ProcessReuse)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -4589,7 +4589,7 @@ TEST(ProcessSwap, ProcessReuse)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -4597,7 +4597,7 @@ TEST(ProcessSwap, ProcessReuse)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid3 = [webView _webProcessIdentifier];
@@ -4626,7 +4626,7 @@ TEST(ProcessSwap, ProcessReuseeTLDPlus2)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www1.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -4634,7 +4634,7 @@ TEST(ProcessSwap, ProcessReuseeTLDPlus2)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -4642,7 +4642,7 @@ TEST(ProcessSwap, ProcessReuseeTLDPlus2)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www2.webkit.org/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid3 = [webView _webProcessIdentifier];
@@ -4669,13 +4669,13 @@ TEST(ProcessSwap, ConcurrentHistoryNavigations)
     [webView setNavigationDelegate:navigationDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView _webProcessIdentifier];
@@ -4683,7 +4683,7 @@ TEST(ProcessSwap, ConcurrentHistoryNavigations)
     EXPECT_NE(webkitPID, applePID);
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
@@ -4699,7 +4699,7 @@ TEST(ProcessSwap, ConcurrentHistoryNavigations)
     [webView goForward];
     [webView goForward];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
@@ -4711,7 +4711,7 @@ TEST(ProcessSwap, ConcurrentHistoryNavigations)
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html", [backForwardList.backItem.URL absoluteString]);
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_NE(applePID, [webView _webProcessIdentifier]);
@@ -4741,7 +4741,7 @@ TEST(ProcessSwap, NavigateToInvalidURL)
 
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid1);
@@ -4755,9 +4755,9 @@ TEST(ProcessSwap, NavigateToInvalidURL)
         evaluated = true;
     }];
 
-    TestWebKitAPI::Util::run(&evaluated);
+    TestCyberKitAPI::Util::run(&evaluated);
 
-    TestWebKitAPI::Util::spinRunLoop(1);
+    TestCyberKitAPI::Util::spinRunLoop(1);
 
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_TRUE(!!pid2);
@@ -4802,15 +4802,15 @@ TEST(ProcessSwap, NavigateToDataURLThenBack)
 
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid2 = [webView _webProcessIdentifier];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid3 = [webView _webProcessIdentifier];
 
@@ -4836,19 +4836,19 @@ TEST(ProcessSwap, NavigateCrossSiteWithPageCacheDisabled)
     [webView setNavigationDelegate:navigationDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto webkitPID = [webView _webProcessIdentifier];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto applePID = [webView _webProcessIdentifier];
 
     EXPECT_NE(webkitPID, applePID);
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_NE(applePID, [webView _webProcessIdentifier]);
@@ -4866,13 +4866,13 @@ TEST(ProcessSwap, APIControlledProcessSwapping)
 
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/1"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
 
     // Navigating from the above URL to this URL normally should not process swap.
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/2"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid2 = [webView _webProcessIdentifier];
 
@@ -4885,7 +4885,7 @@ TEST(ProcessSwap, APIControlledProcessSwapping)
         decisionHandler(_WKNavigationActionPolicyAllowInNewProcess);
     };
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/3"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid3 = [webView _webProcessIdentifier];
 
@@ -4906,7 +4906,7 @@ static void runAPIControlledProcessSwappingThenBackTest(WithDelay withDelay)
     [webView setNavigationDelegate:navigationDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     
     auto pid1 = [webView _webProcessIdentifier];
@@ -4916,7 +4916,7 @@ static void runAPIControlledProcessSwappingThenBackTest(WithDelay withDelay)
     };
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     
     auto pid2 = [webView _webProcessIdentifier];
@@ -4924,11 +4924,11 @@ static void runAPIControlledProcessSwappingThenBackTest(WithDelay withDelay)
     
     // Give time to the suspended WebPage to close.
     if (withDelay == WithDelay::Yes)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     
     navigationDelegate->decidePolicyForNavigationAction = nil;
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     
     EXPECT_EQ(pid1, [webView _webProcessIdentifier]);
@@ -4961,13 +4961,13 @@ TEST(ProcessSwap, NavigateToCrossSiteThenBackFromJS)
 
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto webkitPID = [webView _webProcessIdentifier];
 
     [webView evaluateJavaScript:@"location.href = 'pson://www.apple.com/main.html';" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto applePID = [webView _webProcessIdentifier];
     EXPECT_NE(webkitPID, applePID); // Should have process-swapped when going from webkit.org to apple.com.
@@ -4975,7 +4975,7 @@ TEST(ProcessSwap, NavigateToCrossSiteThenBackFromJS)
     [webView evaluateJavaScript:@"history.back();" completionHandler:nil];
 
     // Page now calls history.back() to navigate back to webkit.org.
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(3, numberOfDecidePolicyCalls);
@@ -5010,38 +5010,38 @@ TEST(ProcessSwap, SwapOnFormSubmission)
     [webView setNavigationDelegate:navigationDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto webkitPID = [webView _webProcessIdentifier];
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html", [[webView URL] absoluteString]);
 
     [webView evaluateJavaScript:@"submitButton.click()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto applePID = [webView _webProcessIdentifier];
     EXPECT_NE(webkitPID, applePID);
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
 
     [webView reload];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     EXPECT_EQ(webkitPID, [webView _webProcessIdentifier]);
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html", [[webView URL] absoluteString]);
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     EXPECT_EQ(applePID, [webView _webProcessIdentifier]);
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 #if !PLATFORM(IOS_FAMILY)
     // This is not guaranteed on iOS because the WebProcess cache is disabled on devices with too little RAM.
@@ -5069,11 +5069,11 @@ TEST(ProcessSwap, ClosePageAfterCrossSiteProvisionalLoad)
     [webView configuration].preferences.fraudulentWebsiteWarningEnabled = NO;
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     didStartProvisionalLoad = false;
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     navigationDelegate->decidePolicyForNavigationAction = ^(WKNavigationAction *, void (^decisionHandler)(WKNavigationActionPolicy)) {
         decisionHandler(WKNavigationActionPolicyAllow);
@@ -5082,10 +5082,10 @@ TEST(ProcessSwap, ClosePageAfterCrossSiteProvisionalLoad)
         done = true;
     };
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 }
 
 static Vector<bool> loadingStateChanges;
@@ -5127,7 +5127,7 @@ TEST(ProcessSwap, LoadingStateAfterPolicyDecision)
     [webView configuration].preferences.fraudulentWebsiteWarningEnabled = NO;
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto loadObserver = adoptNS([[PSONLoadingObserver alloc] init]);
@@ -5156,7 +5156,7 @@ TEST(ProcessSwap, LoadingStateAfterPolicyDecision)
 
     EXPECT_EQ(1U, loadingStateChanges.size());
 
-    TestWebKitAPI::Util::run(&didStartProvisionalLoad);
+    TestCyberKitAPI::Util::run(&didStartProvisionalLoad);
     didStartProvisionalLoad = false;
 
     EXPECT_EQ(1U, loadingStateChanges.size());
@@ -5165,7 +5165,7 @@ TEST(ProcessSwap, LoadingStateAfterPolicyDecision)
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
     EXPECT_TRUE([webView isLoading]);
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
@@ -5205,14 +5205,14 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpener)
     [webView setUIDelegate:uiDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(pid1, [createdWebView _webProcessIdentifier]);
@@ -5222,7 +5222,7 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpener)
         EXPECT_WK_STREQ(@"pson://www.webkit.org/main1.html", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We force a proces-swap via client API.
@@ -5232,7 +5232,7 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpener)
 
     // Navigating from the above URL to this URL normally should not process swap.
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main3.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -5242,14 +5242,14 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpener)
     int timeout = 50;
     do {
         if (timeout != 50)
-            TestWebKitAPI::Util::runFor(0.1_s);
+            TestCyberKitAPI::Util::runFor(0.1_s);
         
         // Auxiliary window's opener should no longer have an opener.
         [createdWebView evaluateJavaScript:@"window.opener ? 'true' : 'false'" completionHandler: [&] (id hasOpenerString, NSError *error) {
             hasOpener = [hasOpenerString isEqualToString:@"true"];
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
     } while (hasOpener && (--timeout));
     EXPECT_FALSE(hasOpener);
@@ -5258,7 +5258,7 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpener)
         EXPECT_WK_STREQ(@"true", savedOpenerIsClosed);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -5279,14 +5279,14 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpenee)
     [webView setUIDelegate:uiDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     auto pid1 = [webView _webProcessIdentifier];
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(pid1, [createdWebView _webProcessIdentifier]);
@@ -5296,7 +5296,7 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpenee)
         EXPECT_WK_STREQ(@"pson://www.webkit.org/main1.html", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We force a proces-swap via client API.
@@ -5306,7 +5306,7 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpenee)
 
     // Navigating from the above URL to this URL normally should not process swap.
     [createdWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main3.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [createdWebView _webProcessIdentifier];
@@ -5317,7 +5317,7 @@ TEST(ProcessSwap, OpenerLinkAfterAPIControlledProcessSwappingOfOpenee)
         EXPECT_WK_STREQ(@"false", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -5339,7 +5339,7 @@ static void runProcessSwapDueToRelatedWebViewTest(NSURL* relatedViewURL, NSURL* 
     NSURLRequest *request = [NSURLRequest requestWithURL:relatedViewURL];
     [webView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView1 _webProcessIdentifier];
@@ -5354,7 +5354,7 @@ static void runProcessSwapDueToRelatedWebViewTest(NSURL* relatedViewURL, NSURL* 
     request = [NSURLRequest requestWithURL:targetURL];
     [webView2 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView2 _webProcessIdentifier];
@@ -5401,7 +5401,7 @@ TEST(ProcessSwap, RelatedWebViewBeforeWebProcessLaunch)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView1 _webProcessIdentifier];
@@ -5409,7 +5409,7 @@ TEST(ProcessSwap, RelatedWebViewBeforeWebProcessLaunch)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView2 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView2 _webProcessIdentifier];
@@ -5450,7 +5450,7 @@ TEST(ProcessSwap, ReloadRelatedWebViewAfterCrash)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView1 _webProcessIdentifier];
@@ -5458,7 +5458,7 @@ TEST(ProcessSwap, ReloadRelatedWebViewAfterCrash)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView2 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView2 _webProcessIdentifier];
@@ -5470,10 +5470,10 @@ TEST(ProcessSwap, ReloadRelatedWebViewAfterCrash)
 
     kill(pid1, 9);
 
-    TestWebKitAPI::Util::run(&didCrash);
+    TestCyberKitAPI::Util::run(&didCrash);
     didCrash = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -5494,7 +5494,7 @@ TEST(ProcessSwap, TerminatedSuspendedPageProcess)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -5509,7 +5509,7 @@ TEST(ProcessSwap, TerminatedSuspendedPageProcess)
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]];
         [webView2 loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         auto pid2 = [webView2 _webProcessIdentifier];
@@ -5518,7 +5518,7 @@ TEST(ProcessSwap, TerminatedSuspendedPageProcess)
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main2.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         [webView2 _killWebContentProcessAndResetState];
@@ -5532,7 +5532,7 @@ TEST(ProcessSwap, TerminatedSuspendedPageProcess)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main2.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid4 = [webView _webProcessIdentifier];
@@ -5558,7 +5558,7 @@ TEST(ProcessSwap, CommittedProcessCrashDuringCrossSiteNavigation)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -5577,9 +5577,9 @@ TEST(ProcessSwap, CommittedProcessCrashDuringCrossSiteNavigation)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&didKill);
+    TestCyberKitAPI::Util::run(&didKill);
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 }
 
 TEST(ProcessSwap, NavigateBackAndForth)
@@ -5599,13 +5599,13 @@ TEST(ProcessSwap, NavigateBackAndForth)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto* backForwardList = [webView backForwardList];
@@ -5615,7 +5615,7 @@ TEST(ProcessSwap, NavigateBackAndForth)
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html", [backForwardList.backItem.URL absoluteString]);
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main.html", [backForwardList.currentItem.URL absoluteString]);
@@ -5624,7 +5624,7 @@ TEST(ProcessSwap, NavigateBackAndForth)
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [backForwardList.forwardItem.URL absoluteString]);
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [backForwardList.currentItem.URL absoluteString]);
@@ -5652,7 +5652,7 @@ TEST(ProcessSwap, SwapOnLoadHTMLString)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -5660,7 +5660,7 @@ TEST(ProcessSwap, SwapOnLoadHTMLString)
     NSString *htmlString = @"<html><body>substituteData</body></html>";
     [webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://example.com"]];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
@@ -5672,7 +5672,7 @@ TEST(ProcessSwap, SwapOnLoadHTMLString)
         EXPECT_WK_STREQ(@"substituteData", (NSString *)innerText);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -5693,59 +5693,59 @@ TEST(ProcessSwap, EphemeralWebStorage)
     [webView setNavigationDelegate:delegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://webkit.org/"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView evaluateJavaScript:@"window.localStorage.setItem('a','b')" completionHandler:^(id, NSError *) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView evaluateJavaScript:@"window.sessionStorage.setItem('b','a')" completionHandler:^(id, NSError *) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://example.com/"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://webkit.org/"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView evaluateJavaScript:@"window.localStorage.getItem('a')" completionHandler:^(id result, NSError *) {
         EXPECT_TRUE([@"b" isEqualToString:result]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView evaluateJavaScript:@"window.sessionStorage.getItem('b')" completionHandler:^(id result, NSError *) {
         EXPECT_TRUE([@"a" isEqualToString:result]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
     done = false;
     [webView loadHTMLString:@"<html><iframe src='pson://www.webkit.org/iframe.html'></iframe></html>" baseURL:[NSURL URLWithString:@"http://www.example.com/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView evaluateJavaScript:@"window.localStorage.getItem('a')" completionHandler:^(id result, NSError *) {
         EXPECT_FALSE([@"b" isEqualToString:result]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView evaluateJavaScript:@"window.sessionStorage.getItem('b')" completionHandler:^(id result, NSError *) {
         EXPECT_FALSE([@"a" isEqualToString:result]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(ProcessSwap, UsePrewarmedProcessAfterTerminatingNetworkProcess)
@@ -5763,22 +5763,22 @@ TEST(ProcessSwap, UsePrewarmedProcessAfterTerminatingNetworkProcess)
     auto delegate = adoptNS([[PSONNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::spinRunLoop(1);
+    TestCyberKitAPI::Util::spinRunLoop(1);
 
     [webViewConfiguration.get().websiteDataStore _terminateNetworkProcess];
 
     auto webView2 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:webViewConfiguration.get()]);
     [webView2 setNavigationDelegate:delegate.get()];
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView2 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -5808,12 +5808,12 @@ TEST(ProcessSwap, UseSessionCookiesAfterProcessSwapInPrivateBrowsing)
     [webView.get().configuration.websiteDataStore.httpCookieStore _setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetSessionCookie" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetSessionCookie" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -5822,23 +5822,23 @@ TEST(ProcessSwap, UseSessionCookiesAfterProcessSwapInPrivateBrowsing)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, pid2);
 
     // Should process-swap.
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"GetSessionCookie" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"GetSessionCookie" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid3 = [webView _webProcessIdentifier];
     EXPECT_NE(pid2, pid3);
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
 
     EXPECT_EQ(1u, [receivedMessages count]);
@@ -5848,7 +5848,7 @@ TEST(ProcessSwap, UseSessionCookiesAfterProcessSwapInPrivateBrowsing)
     [webView.get().configuration.websiteDataStore.httpCookieStore _setCookieAcceptPolicy:originalCookieAcceptPolicy completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
 }
 
 TEST(ProcessSwap, UseSessionCookiesAfterProcessSwapInNonDefaultPersistentSession)
@@ -5886,12 +5886,12 @@ TEST(ProcessSwap, UseSessionCookiesAfterProcessSwapInNonDefaultPersistentSession
     [webView.get().configuration.websiteDataStore.httpCookieStore _setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetSessionCookie" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetSessionCookie" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [webView _webProcessIdentifier];
@@ -5900,24 +5900,24 @@ TEST(ProcessSwap, UseSessionCookiesAfterProcessSwapInNonDefaultPersistentSession
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, pid2);
 
     // Should process-swap.
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"GetSessionCookie" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"GetSessionCookie" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid3 = [webView _webProcessIdentifier];
     EXPECT_NE(pid2, pid3);
     EXPECT_NE(pid1, pid3);
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
 
     EXPECT_EQ(1u, [receivedMessages count]);
@@ -5927,7 +5927,7 @@ TEST(ProcessSwap, UseSessionCookiesAfterProcessSwapInNonDefaultPersistentSession
     [webView.get().configuration.websiteDataStore.httpCookieStore _setCookieAcceptPolicy:originalCookieAcceptPolicy completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
 }
 
 TEST(ProcessSwap, ProcessSwapInRelatedView)
@@ -5948,7 +5948,7 @@ TEST(ProcessSwap, ProcessSwapInRelatedView)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView1 loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto applePID = [webView1 _webProcessIdentifier];
@@ -5965,7 +5965,7 @@ TEST(ProcessSwap, ProcessSwapInRelatedView)
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView2 loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView2 _webProcessIdentifier];
@@ -6002,7 +6002,7 @@ TEST(ProcessSwap, TerminateProcessAfterProcessSwap)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto webkitPID = [webView _webProcessIdentifier];
@@ -6010,7 +6010,7 @@ TEST(ProcessSwap, TerminateProcessAfterProcessSwap)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_NE(webkitPID, [webView _webProcessIdentifier]);
@@ -6018,12 +6018,12 @@ TEST(ProcessSwap, TerminateProcessAfterProcessSwap)
     webProcessTerminated = false;
     kill([webView _webProcessIdentifier], 9);
 
-    TestWebKitAPI::Util::run(&webProcessTerminated);
+    TestCyberKitAPI::Util::run(&webProcessTerminated);
 
-    TestWebKitAPI::Util::spinRunLoop(1);
+    TestCyberKitAPI::Util::spinRunLoop(1);
 
     [webView reload];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -6059,7 +6059,7 @@ TEST(ProcessSwap, SwapWithGestureController)
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         // Ensure a ViewGestureController is created.
@@ -6071,7 +6071,7 @@ TEST(ProcessSwap, SwapWithGestureController)
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
 #if PLATFORM(IOS_FAMILY)
@@ -6106,7 +6106,7 @@ TEST(ProcessSwap, CrashWithGestureController)
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
         [webView loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         // Ensure a ViewGestureController is created.
@@ -6118,12 +6118,12 @@ TEST(ProcessSwap, CrashWithGestureController)
         webProcessTerminated = false;
         kill([webView _webProcessIdentifier], 9);
 
-        TestWebKitAPI::Util::run(&webProcessTerminated);
+        TestCyberKitAPI::Util::run(&webProcessTerminated);
 
-        TestWebKitAPI::Util::spinRunLoop(1);
+        TestCyberKitAPI::Util::spinRunLoop(1);
 
         [webView reload];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
 #if PLATFORM(IOS_FAMILY)
@@ -6157,13 +6157,13 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpenee)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ([webView _webProcessIdentifier], [createdWebView _webProcessIdentifier]);
@@ -6177,14 +6177,14 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpenee)
         EXPECT_WK_STREQ(@"true", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Navigate cross-origin.
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[webView URL] absoluteString]);
@@ -6194,7 +6194,7 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpenee)
         EXPECT_WK_STREQ(@"true", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We should not have process-swapped since an auxiliary window has an opener link to us.
@@ -6234,16 +6234,16 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
 
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Opens "pson://www.webkit.org/main2.html" in an auxiliary window.
     [webView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ([webView _webProcessIdentifier], [createdWebView _webProcessIdentifier]);
@@ -6255,14 +6255,14 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
     [webView evaluateJavaScript:@"saveOpenee()" completionHandler: [&] (id, NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"openee.location.href" completionHandler: [&] (id openeeURL, NSError *error) {
         EXPECT_WK_STREQ(@"pson://www.webkit.org/main2.html", openeeURL);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // New window should have an opener.
@@ -6270,13 +6270,13 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
         EXPECT_WK_STREQ(@"true", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Navigate auxiliary window cross-origin.
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [createdWebView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.apple.com/main.html", [[createdWebView URL] absoluteString]);
@@ -6286,13 +6286,13 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
         EXPECT_WK_STREQ(@"true", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     [createdWebView evaluateJavaScript:@"window.opener.closed ? 'true' : 'false'" completionHandler: [&] (id openerIsClosed, NSError *error) {
         EXPECT_WK_STREQ(@"false", openerIsClosed);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // We should not have process-swapped since the auxiliary window has an opener.
@@ -6302,7 +6302,7 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
     [createdWebView evaluateJavaScript:@"window.opener = null" completionHandler: [&] (id, NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Auxiliary window should not have an opener.
@@ -6310,13 +6310,13 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
         EXPECT_WK_STREQ(@"false", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Navigate openee cross-origin again.
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
     [createdWebView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Auxiliary window should not have an opener.
@@ -6324,7 +6324,7 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
         EXPECT_WK_STREQ(@"false", hasOpener);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.google.com/main.html", [[createdWebView URL] absoluteString]);
@@ -6335,7 +6335,7 @@ TEST(ProcessSwap, NavigateCrossOriginWithOpener)
         EXPECT_WK_STREQ(@"false", openeeIsClosed);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -6363,16 +6363,16 @@ TEST(ProcessSwap, GoBackToSuspendedPageWithMainFrameIDThatIsNotOne)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html"]];
 
     [webView1 loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main1.html", [[webView1 URL] absoluteString]);
     auto pid1 = [webView1 _webProcessIdentifier];
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // New WKWebView has now navigated to webkit.org.
@@ -6384,7 +6384,7 @@ TEST(ProcessSwap, GoBackToSuspendedPageWithMainFrameIDThatIsNotOne)
 
     // Click link in new WKWebView so that it navigates cross-site to apple.com.
     [createdWebView evaluateJavaScript:@"testLink.click()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // New WKWebView has now navigated to apple.com.
@@ -6394,7 +6394,7 @@ TEST(ProcessSwap, GoBackToSuspendedPageWithMainFrameIDThatIsNotOne)
 
     // Navigate back to the suspended page (should use the back/forward cache).
     [createdWebView goBack];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     receivedMessage = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main2.html", [[createdWebView URL] absoluteString]);
@@ -6404,7 +6404,7 @@ TEST(ProcessSwap, GoBackToSuspendedPageWithMainFrameIDThatIsNotOne)
     // Do a fragment navigation in the original WKWebView and make sure this does not crash.
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main1.html#testLink"]];
     [webView1 loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_WK_STREQ(@"pson://www.webkit.org/main1.html#testLink", [[webView1 URL] absoluteString]);
@@ -6445,7 +6445,7 @@ static unsigned waitUntilScrollPositionIsRestored(WKWebView *webView)
             scrollPosition = [result integerValue];
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
     } while (!scrollPosition);
 
@@ -6469,33 +6469,33 @@ TEST(ProcessSwap, ScrollPositionRestoration)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"scroll(0, 5000)" completionHandler: [&] (id result, NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     do {
-        TestWebKitAPI::Util::runFor(0.05_s);
+        TestCyberKitAPI::Util::runFor(0.05_s);
     } while (lroundf([[[webView backForwardList] currentItem] _scrollPosition].y) != 5000);
 
     [webView evaluateJavaScript:@"testLink.click()" completionHandler: nil];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"window.scrollY" completionHandler: [&] (id result, NSError *error) {
         EXPECT_EQ(0, [result integerValue]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto scrollPosition = waitUntilScrollPositionIsRestored(webView.get());
@@ -6504,27 +6504,27 @@ TEST(ProcessSwap, ScrollPositionRestoration)
     [webView evaluateJavaScript:@"scroll(0, 4000)" completionHandler: [&] (id result, NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     do {
-        TestWebKitAPI::Util::runFor(0.05_s);
+        TestCyberKitAPI::Util::runFor(0.05_s);
     } while (lroundf([[[webView backForwardList] currentItem] _scrollPosition].y) != 4000);
 
     [webView evaluateJavaScript:@"testLink.click()" completionHandler: nil];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"window.scrollY" completionHandler: [&] (id result, NSError *error) {
         EXPECT_EQ(0, [result integerValue]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     scrollPosition = waitUntilScrollPositionIsRestored(webView.get());
@@ -6555,7 +6555,7 @@ TEST(ProcessSwap, ContentBlockingAfterProcessSwap)
     [[WKContentRuleListStore defaultStore] removeContentRuleListForIdentifier:@"ContentBlockingAfterProcessSwapExtension" completionHandler:^(NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto processPoolConfiguration = psonProcessPoolConfiguration();
@@ -6574,7 +6574,7 @@ TEST(ProcessSwap, ContentBlockingAfterProcessSwap)
 
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     auto handler = adoptNS([[PSONScheme alloc] init]);
     [handler addMappingFromURLString:@"pson://www.webkit.org/main.html" toData:contentBlockingAfterProcessSwapTestBytes];
@@ -6589,7 +6589,7 @@ TEST(ProcessSwap, ContentBlockingAfterProcessSwap)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"window.wasSubframeLoaded ? 'FAIL' : 'PASS'" completionHandler: [&] (id result, NSError *error) {
@@ -6597,12 +6597,12 @@ TEST(ProcessSwap, ContentBlockingAfterProcessSwap)
         EXPECT_WK_STREQ(@"PASS", blockSuccess);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"window.wasSubframeLoaded ? 'FAIL' : 'PASS'" completionHandler: [&] (id result, NSError *error) {
@@ -6610,11 +6610,11 @@ TEST(ProcessSwap, ContentBlockingAfterProcessSwap)
         EXPECT_WK_STREQ(@"PASS", blockSuccess);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"window.wasSubframeLoaded ? 'FAIL' : 'PASS'" completionHandler: [&] (id result, NSError *error) {
@@ -6622,11 +6622,11 @@ TEST(ProcessSwap, ContentBlockingAfterProcessSwap)
         EXPECT_WK_STREQ(@"PASS", blockSuccess);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView evaluateJavaScript:@"window.wasSubframeLoaded ? 'FAIL' : 'PASS'" completionHandler: [&] (id result, NSError *error) {
@@ -6634,13 +6634,13 @@ TEST(ProcessSwap, ContentBlockingAfterProcessSwap)
         EXPECT_WK_STREQ(@"PASS", blockSuccess);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [[WKContentRuleListStore defaultStore] removeContentRuleListForIdentifier:@"ContentBlockingAfterProcessSwapExtension" completionHandler:^(NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -6655,7 +6655,7 @@ TEST(ProcessSwap, ContentExtensionBlocksMainLoadThenReloadWithoutExtensions)
     [[WKContentRuleListStore defaultStore] removeContentRuleListForIdentifier:@"ContentBlockingAfterProcessSwapExtension" completionHandler:^(NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto processPoolConfiguration = psonProcessPoolConfiguration();
@@ -6678,7 +6678,7 @@ TEST(ProcessSwap, ContentExtensionBlocksMainLoadThenReloadWithoutExtensions)
 
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     auto handler = adoptNS([[PSONScheme alloc] init]);
     [handler addMappingFromURLString:@"pson://www.apple.com/blockme.html" toData:notifyLoadedBytes];
@@ -6690,23 +6690,23 @@ TEST(ProcessSwap, ContentExtensionBlocksMainLoadThenReloadWithoutExtensions)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     receivedMessage = false;
     failed = false;
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/blockme.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&failed);
+    TestCyberKitAPI::Util::run(&failed);
     failed = false;
     EXPECT_FALSE(receivedMessage);
 
     [webView _loadAlternateHTMLString:@"Blocked" baseURL:[NSURL URLWithString:@"data:text/html,"] forUnreachableURL:[NSURL URLWithString:@"pson://www.apple.com/blockme.html"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView _reloadWithoutContentBlockers];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_FALSE(failed);
@@ -6716,7 +6716,7 @@ TEST(ProcessSwap, ContentExtensionBlocksMainLoadThenReloadWithoutExtensions)
     [[WKContentRuleListStore defaultStore] removeContentRuleListForIdentifier:@"ContentBlockingAfterProcessSwapExtension" completionHandler:^(NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -6725,7 +6725,7 @@ TEST(ProcessSwap, LoadAlternativeHTML)
     [[WKContentRuleListStore defaultStore] removeContentRuleListForIdentifier:@"ContentBlockingAfterProcessSwapExtension" completionHandler:^(NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto processPoolConfiguration = psonProcessPoolConfiguration();
@@ -6748,7 +6748,7 @@ TEST(ProcessSwap, LoadAlternativeHTML)
 
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     auto handler = adoptNS([[PSONScheme alloc] init]);
     [handler addMappingFromURLString:@"pson://www.apple.com/blockme.html" toData:notifyLoadedBytes];
@@ -6760,24 +6760,24 @@ TEST(ProcessSwap, LoadAlternativeHTML)
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     receivedMessage = false;
     failed = false;
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/blockme.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&failed);
+    TestCyberKitAPI::Util::run(&failed);
     failed = false;
     EXPECT_FALSE(receivedMessage);
 
     [webView _loadAlternateHTMLString:@"Blocked" baseURL:[NSURL URLWithString:@"foo:blockedWarning.html"] forUnreachableURL:[NSURL URLWithString:@"pson://www.apple.com/blockme.html"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -6838,21 +6838,21 @@ TEST(ProcessSwap, GetUserMediaCaptureState)
     auto request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/getUserMedia.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&isCapturing);
+    TestCyberKitAPI::Util::run(&isCapturing);
 
     auto pid1 = [webView _webProcessIdentifier];
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.org/test.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid2 = [webView _webProcessIdentifier];
-    TestWebKitAPI::Util::run(&isNotCapturing);
+    TestCyberKitAPI::Util::run(&isNotCapturing);
 
     EXPECT_FALSE(isCapturing);
     EXPECT_FALSE(pid1 == pid2);
@@ -6860,7 +6860,7 @@ TEST(ProcessSwap, GetUserMediaCaptureState)
     isCapturing = false;
     [webView goBack];
 
-    TestWebKitAPI::Util::run(&isCapturing);
+    TestCyberKitAPI::Util::run(&isCapturing);
     isCapturing = false;
     isNotCapturing = true;
 }
@@ -6889,9 +6889,9 @@ static bool hasOverlay(CALayer *layer)
 TEST(ProcessSwap, PageOverlayLayerPersistence)
 {
     auto processPoolConfiguration = psonProcessPoolConfiguration();
-    [processPoolConfiguration setInjectedBundleURL:[[NSBundle mainBundle] URLForResource:@"TestWebKitAPI" withExtension:@"wkbundle"]];
+    [processPoolConfiguration setInjectedBundleURL:[[NSBundle mainBundle] URLForResource:@"TestCyberKitAPI" withExtension:@"wkbundle"]];
     auto processPool = adoptNS([[WKProcessPool alloc] _initWithConfiguration:processPoolConfiguration.get()]);
-    [processPool _setObject:@"PageOverlayPlugIn" forBundleParameter:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+    [processPool _setObject:@"PageOverlayPlugIn" forBundleParameter:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
 
     auto webViewConfiguration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [webViewConfiguration setProcessPool:processPool.get()];
@@ -6909,7 +6909,7 @@ TEST(ProcessSwap, PageOverlayLayerPersistence)
     auto request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/page-overlay"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView waitForNextPresentationUpdate];
@@ -6923,7 +6923,7 @@ TEST(ProcessSwap, PageOverlayLayerPersistence)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/page-overlay"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView waitForNextPresentationUpdate];
@@ -6958,19 +6958,19 @@ TEST(ProcessSwap, QuickLookRequestsPasswordAfterSwap)
     auto* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"password-protected" withExtension:@"pages" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"password-protected" withExtension:@"pages" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&didStartQuickLookLoad);
+    TestCyberKitAPI::Util::run(&didStartQuickLookLoad);
     didStartQuickLookLoad = false;
 
-    TestWebKitAPI::Util::run(&requestedQuickLookPassword);
+    TestCyberKitAPI::Util::run(&requestedQuickLookPassword);
     requestedQuickLookPassword = false;
 
-    TestWebKitAPI::Util::run(&didFinishQuickLookLoad);
+    TestCyberKitAPI::Util::run(&didFinishQuickLookLoad);
     didFinishQuickLookLoad = false;
 }
 #endif
@@ -7016,7 +7016,7 @@ TEST(ProcessSwap, PassMinimumDeviceWidthOnNewWebView)
     auto* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     bool finishedRunningScript = false;
@@ -7025,7 +7025,7 @@ TEST(ProcessSwap, PassMinimumDeviceWidthOnNewWebView)
         EXPECT_EQ(1024, [width intValue]);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 }
 
 #endif
@@ -7050,14 +7050,14 @@ TEST(ProcessSwap, SuspendAllMediaPlayback)
     [webView performAfterLoading:^{ loaded = true; }];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
 
-    TestWebKitAPI::Util::run(&loaded);
+    TestCyberKitAPI::Util::run(&loaded);
 
     [webView _suspendAllMediaPlayback];
 
     __block bool notPlaying = false;
     [webView performAfterReceivingMessage:@"not playing" action:^() { notPlaying = true; }];
     [webView synchronouslyLoadTestPageNamed:@"video-with-audio"];
-    TestWebKitAPI::Util::run(&notPlaying);
+    TestCyberKitAPI::Util::run(&notPlaying);
 }
 
 TEST(ProcessSwap, PassSandboxExtension)
@@ -7080,10 +7080,10 @@ TEST(ProcessSwap, PassSandboxExtension)
     [webView setNavigationDelegate:navigationDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    NSURL *file = [[NSBundle mainBundle] URLForResource:@"autoplay-with-controls" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *file = [[NSBundle mainBundle] URLForResource:@"autoplay-with-controls" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadFileURL:file allowingReadAccessToURL:file.URLByDeletingLastPathComponent];
     [webView waitForMessage:@"loaded"];
 
@@ -7125,13 +7125,13 @@ TEST(ProcessSwap, SameSiteWindowWithOpenerNavigateToFile)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(2, numberOfDecidePolicyCalls);
@@ -7143,12 +7143,12 @@ TEST(ProcessSwap, SameSiteWindowWithOpenerNavigateToFile)
 
     EXPECT_EQ(pid1, pid2);
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"blinking-div" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"blinking-div" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     EXPECT_TRUE([url.scheme isEqualToString:@"file"]);
 
     [createdWebView loadRequest:[NSURLRequest requestWithURL:url]];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(3, numberOfDecidePolicyCalls);
@@ -7157,7 +7157,7 @@ TEST(ProcessSwap, SameSiteWindowWithOpenerNavigateToFile)
     EXPECT_NE(pid2, pid3);
 
     [createdWebView goBack];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(4, numberOfDecidePolicyCalls);
@@ -7165,7 +7165,7 @@ TEST(ProcessSwap, SameSiteWindowWithOpenerNavigateToFile)
     EXPECT_NE(pid3, pid4);
 
     [createdWebView goForward];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     EXPECT_EQ(5, numberOfDecidePolicyCalls);
@@ -7201,7 +7201,7 @@ TEST(ProcessSwap, ResizeWebViewDuringCrossSiteProvisionalNavigation)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     __block bool finishedRunningScript = false;
@@ -7210,7 +7210,7 @@ TEST(ProcessSwap, ResizeWebViewDuringCrossSiteProvisionalNavigation)
         EXPECT_EQ(800, [width intValue]);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
     finishedRunningScript = false;
 
     delegate->didStartProvisionalNavigationHandler = ^{
@@ -7221,7 +7221,7 @@ TEST(ProcessSwap, ResizeWebViewDuringCrossSiteProvisionalNavigation)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView _doAfterNextPresentationUpdate:^{
@@ -7230,7 +7230,7 @@ TEST(ProcessSwap, ResizeWebViewDuringCrossSiteProvisionalNavigation)
             EXPECT_EQ(200, [width intValue]);
             finishedRunningScript = true;
         }];
-        TestWebKitAPI::Util::run(&finishedRunningScript);
+        TestCyberKitAPI::Util::run(&finishedRunningScript);
     }];
 }
 
@@ -7258,23 +7258,23 @@ TEST(WebProcessCache, ClearWhenEnteringCache)
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main.html"]];
         [webView1 loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.apple.com/main.html"]];
         [webView2 loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.google.com/main.html"]];
         [webView3 loadRequest:request];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
     }
 
-    TestWebKitAPI::Util::spinRunLoop();
+    TestCyberKitAPI::Util::spinRunLoop();
 
     // Clear the WebProcess cache while the processes are being checked for responsiveness.
     [processPool _clearWebProcessCache];
@@ -7282,7 +7282,7 @@ TEST(WebProcessCache, ClearWhenEnteringCache)
 
 TEST(ProcessSwap, ResponsePolicyDownloadAfterCOOPProcessSwap)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     HTTPServer server({
         { "/source.html"_s, { "foo"_s } },
@@ -7340,7 +7340,7 @@ TEST(ProcessSwap, ResponsePolicyDownloadAfterCOOPProcessSwap)
 
 TEST(ProcessSwap, NavigateBackAfterNavigatingAwayFromCOOP)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     auto verifyCookieAccessDoesNotAssert = "<script>document.cookie='key=value'</script>"_s;
 
     HTTPServer server({
@@ -7380,7 +7380,7 @@ TEST(ProcessSwap, NavigateBackAfterNavigatingAwayFromCOOP)
 
 TEST(ProcessSwap, CommittedURLAfterNavigatingBackToCOOP)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     HTTPServer server({
         { "/source.html"_s, { "foo"_s } },
@@ -7443,7 +7443,7 @@ enum class IsSameOrigin : bool { No, Yes };
 enum class DoServerSideRedirect : bool { No, Yes };
 static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceCOEP, ASCIILiteral destinationCOOP, ASCIILiteral destinationCOEP, IsSameOrigin isSameOrigin, DoServerSideRedirect doServerSideRedirect, ExpectSwap expectSwap)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     HashMap<String, String> sourceHeaders;
     sourceHeaders.add("Content-Type"_s, "text/html"_s);
@@ -7510,13 +7510,13 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
     numberOfDecidePolicyCalls = 0;
     [webView loadRequest:server.request("/main.html"_s)];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     if (doServerSideRedirect == DoServerSideRedirect::Yes) {
         EXPECT_EQ(3, numberOfDecidePolicyCalls);
@@ -7547,7 +7547,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"false", isClosed);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
     finishedRunningScript = false;
     [webView evaluateJavaScript:@"w.name" completionHandler: [&] (id result, NSError *error) {
         NSString *windowName = (NSString *)result;
@@ -7557,7 +7557,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"", windowName);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
     finishedRunningScript = false;
     [webView evaluateJavaScript:@"self.crossOriginIsolated ? 'isolated' : 'not-isolated'" completionHandler: [&] (id result, NSError *error) {
         NSString *crossOriginIsolated = (NSString *)result;
@@ -7567,7 +7567,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"not-isolated", crossOriginIsolated);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
     finishedRunningScript = false;
     [webView evaluateJavaScript:@"self.SharedArrayBuffer ? 'has-sab' : 'does-not-have-sab'" completionHandler: [&] (id result, NSError *error) {
         NSString *hasSAB = (NSString *)result;
@@ -7577,7 +7577,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"does-not-have-sab", hasSAB);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
     // Openee should not have an opener or a name.
     finishedRunningScript = false;
@@ -7589,7 +7589,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"true", hasOpener);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
     finishedRunningScript = false;
     [createdWebView evaluateJavaScript:@"window.name" completionHandler: [&] (id result, NSError *error) {
         NSString *windowName = (NSString *)result;
@@ -7599,7 +7599,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"foo", windowName);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
     finishedRunningScript = false;
     [createdWebView evaluateJavaScript:@"document.body.innerText" completionHandler: [&] (id result, NSError *error) {
@@ -7607,7 +7607,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
         EXPECT_WK_STREQ(@"popup", innerText);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
     finishedRunningScript = false;
     [createdWebView evaluateJavaScript:@"self.crossOriginIsolated ? 'isolated' : 'not-isolated'" completionHandler: [&] (id result, NSError *error) {
         NSString *crossOriginIsolated = (NSString *)result;
@@ -7617,7 +7617,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"not-isolated", crossOriginIsolated);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
     finishedRunningScript = false;
     [createdWebView evaluateJavaScript:@"self.SharedArrayBuffer ? 'has-sab' : 'does-not-have-sab'" completionHandler: [&] (id result, NSError *error) {
         NSString *hasSAB = (NSString *)result;
@@ -7627,7 +7627,7 @@ static void runCOOPProcessSwapTest(ASCIILiteral sourceCOOP, ASCIILiteral sourceC
             EXPECT_WK_STREQ(@"does-not-have-sab", hasSAB);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
     createdWebView = nullptr;
 }
@@ -7849,7 +7849,7 @@ static bool isJITEnabled(WKWebView *webView)
         isJITEnabledResult = isJITEnabled;
         gotResponse = true;
     }];
-    TestWebKitAPI::Util::run(&gotResponse);
+    TestCyberKitAPI::Util::run(&gotResponse);
     EXPECT_NE([webView _webProcessIdentifier], 0);
     return isJITEnabledResult;
 }
@@ -7866,7 +7866,7 @@ static void checkSettingsControlledByLockdownMode(WKWebView *webView, ShouldBeEn
             checkResult = [result boolValue];
             finishedRunningScript = true;
         }];
-        TestWebKitAPI::Util::run(&finishedRunningScript);
+        TestCyberKitAPI::Util::run(&finishedRunningScript);
         return checkResult;
     };
 
@@ -7968,9 +7968,9 @@ TEST(ProcessSwap, NavigatingToLockdownMode)
         finishedNavigation = true;
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     pid_t pid1 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, 0);
@@ -7980,9 +7980,9 @@ TEST(ProcessSwap, NavigatingToLockdownMode)
 
     finishedNavigation = false;
     receivedScriptMessage = false;
-    url = [[NSBundle mainBundle] URLForResource:@"LockdownModePDF" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    url = [[NSBundle mainBundle] URLForResource:@"LockdownModePDF" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     EXPECT_FALSE(receivedScriptMessage);
     EXPECT_TRUE(scriptMessages.isEmpty());
@@ -7994,9 +7994,9 @@ TEST(ProcessSwap, NavigatingToLockdownMode)
     };
 
     finishedNavigation = false;
-    url = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    url = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     // We should have process-swap for transitioning to lockdown mode.
     EXPECT_NE(pid1, [webView _webProcessIdentifier]);
@@ -8005,9 +8005,9 @@ TEST(ProcessSwap, NavigatingToLockdownMode)
 
     finishedNavigation = false;
     receivedScriptMessage = false;
-    url = [[NSBundle mainBundle] URLForResource:@"LockdownModePDF" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    url = [[NSBundle mainBundle] URLForResource:@"LockdownModePDF" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     EXPECT_TRUE(receivedScriptMessage);
     EXPECT_WK_STREQ("Error loading PDF", getNextMessage().body);
@@ -8032,9 +8032,9 @@ TEST(ProcessSwap, LockdownModeSystemSettingChange)
         finishedNavigation = true;
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     pid_t pid1 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, 0);
@@ -8047,13 +8047,13 @@ TEST(ProcessSwap, LockdownModeSystemSettingChange)
     // Now change the global setting.
     [WKProcessPool _setCaptivePortalModeEnabledGloballyForTesting:YES];
 
-    TestWebKitAPI::Util::run(&didChangeLockdownMode);
+    TestCyberKitAPI::Util::run(&didChangeLockdownMode);
     EXPECT_FALSE(lockdownModeBeforeChange);
     EXPECT_TRUE(lockdownModeAfterChange);
     EXPECT_TRUE(webViewConfiguration.get().defaultWebpagePreferences.lockdownModeEnabled);
 
     // This should cause the WebView to reload with a WebProcess in lockdown mode.
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     EXPECT_FALSE(isJITEnabled(webView.get()));
 
@@ -8064,12 +8064,12 @@ TEST(ProcessSwap, LockdownModeSystemSettingChange)
     finishedNavigation = false;
     [WKProcessPool _clearCaptivePortalModeEnabledGloballyForTesting];
 
-    TestWebKitAPI::Util::run(&didChangeLockdownMode);
+    TestCyberKitAPI::Util::run(&didChangeLockdownMode);
     EXPECT_TRUE(lockdownModeBeforeChange);
     EXPECT_FALSE(lockdownModeAfterChange);
     EXPECT_FALSE(webViewConfiguration.get().defaultWebpagePreferences.lockdownModeEnabled);
 
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     EXPECT_TRUE(isJITEnabled(webView.get()));
 
@@ -8102,7 +8102,7 @@ TEST(ProcessSwap, CannotDisableLockdownModeWithoutBrowserEntitlement)
     delegate.get().decidePolicyForNavigationActionWithPreferences = ^(WKNavigationAction *action, WKWebpagePreferences *preferences, void (^completionHandler)(WKNavigationActionPolicy, WKWebpagePreferences *)) {
         EXPECT_TRUE(preferences.lockdownModeEnabled);
         bool didThrowWhenTryingToDisableLockdownMode = false;
-        // TestWebKitAPI doesn't have the web browser entitlement and thus shouldn't be able to disable lockdown mode.
+        // TestCyberKitAPI doesn't have the web browser entitlement and thus shouldn't be able to disable lockdown mode.
         @try {
             preferences.lockdownModeEnabled = NO;
         } @catch (NSException *exception) {
@@ -8112,9 +8112,9 @@ TEST(ProcessSwap, CannotDisableLockdownModeWithoutBrowserEntitlement)
         completionHandler(WKNavigationActionPolicyAllow, preferences);
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     EXPECT_EQ(pid1, [webView _webProcessIdentifier]); // Shouldn't have process-swapped since we're staying in lockdown mode.
     EXPECT_FALSE(isJITEnabled(webView.get()));
@@ -8148,18 +8148,18 @@ TEST(ProcessSwap, LockdownModeEnabledByDefaultThenOptOut)
         completionHandler(WKNavigationActionPolicyAllow, preferences);
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     EXPECT_FALSE(isJITEnabled(webView.get()));
     checkSettingsControlledByLockdownMode(webView.get(), ShouldBeEnabled::No);
     EXPECT_EQ(pid1, [webView _webProcessIdentifier]);
 
     finishedNavigation = false;
-    url = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    url = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     EXPECT_EQ(pid1, [webView _webProcessIdentifier]); // Shouldn't have process-swapped since we're staying in lockdown mode.
     EXPECT_FALSE(isJITEnabled(webView.get()));
@@ -8172,9 +8172,9 @@ TEST(ProcessSwap, LockdownModeEnabledByDefaultThenOptOut)
     };
 
     finishedNavigation = false;
-    url = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    url = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     // We should have process-swapped to get out of lockdown mode.
     EXPECT_NE(pid1, [webView _webProcessIdentifier]);
@@ -8194,9 +8194,9 @@ TEST(ProcessSwap, LockdownModeEnabledByDefaultThenOptOut)
     delegate.get().decidePolicyForNavigationActionWithPreferences = nil;
 
     finishedNavigation = false;
-    url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView2 loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     EXPECT_TRUE(isJITEnabled(webView2.get()));
     checkSettingsControlledByLockdownMode(webView2.get(), ShouldBeEnabled::Yes);
     EXPECT_EQ(pid2, [webView2 _webProcessIdentifier]);
@@ -8221,9 +8221,9 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
         finishedNavigation = true;
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     pid_t pid1 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, 0);
@@ -8235,7 +8235,7 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
     [WKProcessPool _setCaptivePortalModeEnabledGloballyForTesting:YES];
 
     // This should not reload the web view since the view has explicitly opted out of lockdown mode.
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_FALSE(finishedNavigation);
 
     pid_t pid2 = [webView _webProcessIdentifier];
@@ -8266,9 +8266,9 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
         finishedNavigation = true;
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     pid_t pid1 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, 0);
@@ -8280,7 +8280,7 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
     [WKProcessPool _clearCaptivePortalModeEnabledGloballyForTesting];
 
     // This should not reload the web view since the view has explicitly opted out of lockdown mode.
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_FALSE(finishedNavigation);
 
     pid_t pid2 = [webView _webProcessIdentifier];
@@ -8313,9 +8313,9 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
         completionHandler(WKNavigationActionPolicyAllow, preferences);
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     pid_t pid1 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, 0);
@@ -8327,7 +8327,7 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
     [WKProcessPool _setCaptivePortalModeEnabledGloballyForTesting:YES];
 
     // This should not reload the web view since the view has explicitly opted out of lockdown mode.
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_FALSE(finishedNavigation);
 
     pid_t pid2 = [webView _webProcessIdentifier];
@@ -8363,9 +8363,9 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
         completionHandler(WKNavigationActionPolicyAllow, preferences);
     };
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     pid_t pid1 = [webView _webProcessIdentifier];
     EXPECT_NE(pid1, 0);
@@ -8377,7 +8377,7 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
     [WKProcessPool _clearCaptivePortalModeEnabledGloballyForTesting];
 
     // This should not reload the web view since the view has explicitly opted out of lockdown mode.
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_FALSE(finishedNavigation);
 
     pid_t pid2 = [webView _webProcessIdentifier];
@@ -8392,7 +8392,7 @@ TEST(ProcessSwap, LockdownModeSystemSettingChangeDoesNotReloadViewsWhenModeIsSet
 #if PLATFORM(IOS_FAMILY)
 TEST(ProcessSwap, ContentModeInCaseOfCoopProcessSwap)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     HTTPServer server({
         { "/source.html"_s, { "foo"_s } },
@@ -8464,7 +8464,7 @@ TEST(ProcessSwap, ContentModeInCaseOfCoopProcessSwap)
 
 TEST(ProcessSwap, ContentModeInCaseOfPSONThenCoopProcessSwap)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     HTTPServer server1({
         { "/source.html"_s, { "foo"_s } },
@@ -8564,12 +8564,12 @@ TEST(WebProcessCache, ReusedCrashedCachedWebProcess)
 
     done = false;
     [webView1 loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     done = false;
     [webView2 loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto cachedProcessPID = [webView1 _webProcessIdentifier];
@@ -8580,7 +8580,7 @@ TEST(WebProcessCache, ReusedCrashedCachedWebProcess)
 
     // There should now be a process for apple.com in the process cache.
     while ([processPool _processCacheSize] != 1)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     crashCount = 0;
     done = false;
@@ -8591,7 +8591,7 @@ TEST(WebProcessCache, ReusedCrashedCachedWebProcess)
     sleep(1);
 
     // View should reload due to crash.
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(crashCount, 1u);
 }
@@ -8618,7 +8618,7 @@ TEST(WebProcessCache, ReusedCrashedBackForwardSuspendedWebProcess)
 
     done = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto firstWebProcessPID = [webView _webProcessIdentifier];
@@ -8631,7 +8631,7 @@ TEST(WebProcessCache, ReusedCrashedBackForwardSuspendedWebProcess)
     done = false;
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"pson://www.webkit.org/main2.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto secondWebProcessPID = [webView _webProcessIdentifier];
@@ -8646,7 +8646,7 @@ TEST(WebProcessCache, ReusedCrashedBackForwardSuspendedWebProcess)
     sleep(1);
 
     // View should reload due to crash.
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(crashCount, 1u);
 }

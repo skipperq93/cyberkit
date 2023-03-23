@@ -37,7 +37,7 @@
 #import <CyberCore/VideoFrameCV.h>
 #import <wtf/MachSendRight.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void RemoteMediaPlayerProxy::setVideoInlineSizeIfPossible(const CyberCore::FloatSize& size)
 {
@@ -142,6 +142,6 @@ void RemoteMediaPlayerProxy::willBeAskedToPaintGL()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && PLATFORM(COCOA)

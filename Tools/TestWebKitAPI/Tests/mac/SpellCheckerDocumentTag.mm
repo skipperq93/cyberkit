@@ -32,7 +32,7 @@
 #import "Utilities.h"
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSInteger lastDocumentSpellCheckingTag = 0;
 static bool handledCheckStringRequest = false;
@@ -62,6 +62,6 @@ TEST(SpellCheckerDocumentTag, SpellCheckerDocumentTagWhenCheckingString)
     EXPECT_EQ(lastDocumentSpellCheckingTag, [webView _spellCheckerDocumentTag]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

@@ -50,13 +50,13 @@
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return hasSelectableText;
 }
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<WKWebViewWithHitTester> createWebViewWithHitTester()
 {
@@ -91,4 +91,4 @@ TEST(InjectedBundleHitTest, ImageOverlay)
 
 #endif // ENABLE(IMAGE_ANALYSIS)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

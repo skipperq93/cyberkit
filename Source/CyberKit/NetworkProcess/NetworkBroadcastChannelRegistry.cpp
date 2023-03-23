@@ -32,7 +32,7 @@
 #include <CyberCore/MessageWithMessagePorts.h>
 #include <wtf/CallbackAggregator.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #define REGISTRY_MESSAGE_CHECK(assertion) REGISTRY_MESSAGE_CHECK_COMPLETION(assertion, (void)0)
 #define REGISTRY_MESSAGE_CHECK_COMPLETION(assertion, completion) do { \
@@ -131,4 +131,4 @@ void NetworkBroadcastChannelRegistry::removeConnection(IPC::Connection& connecti
 #undef REGISTRY_MESSAGE_CHECK
 #undef REGISTRY_MESSAGE_CHECK_COMPLETION
 
-} // namespace WebKit
+} // namespace CyberKit

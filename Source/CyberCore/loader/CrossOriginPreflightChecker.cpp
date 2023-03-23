@@ -75,7 +75,7 @@ void CrossOriginPreflightChecker::validatePreflightResponse(DocumentThreadableLo
     auto result = WebCore::validatePreflightResponse(page->sessionID(), request, response, loader.options().storedCredentialsPolicy, loader.securityOrigin(), &CrossOriginAccessControlCheckDisabler::singleton());
     if (!result) {
         loader.document().addConsoleMessage(MessageSource::Security, MessageLevel::Error, result.error());
-        loader.preflightFailure(identifier, ResourceError(errorDomainWebKitInternal, 0, request.url(), result.error(), ResourceError::Type::AccessControl));
+        loader.preflightFailure(identifier, ResourceError(errorDomainCyberKitInternal, 0, request.url(), result.error(), ResourceError::Type::AccessControl));
         return;
     }
 
@@ -162,7 +162,7 @@ void CrossOriginPreflightChecker::doPreflight(DocumentThreadableLoader& loader, 
         auto errorMessage = makeString("Preflight response is not successful. Status code: ", response.httpStatusCode());
         loader.document().addConsoleMessage(MessageSource::Security, MessageLevel::Error, errorMessage);
 
-        loader.preflightFailure(identifier, ResourceError { errorDomainWebKitInternal, 0, request.url(), errorMessage, ResourceError::Type::AccessControl });
+        loader.preflightFailure(identifier, ResourceError { errorDomainCyberKitInternal, 0, request.url(), errorMessage, ResourceError::Type::AccessControl });
         return;
     }
 

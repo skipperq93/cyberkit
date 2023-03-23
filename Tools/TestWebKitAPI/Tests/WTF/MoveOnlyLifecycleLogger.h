@@ -27,7 +27,7 @@
 
 #include "Logger.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct MoveOnlyLifecycleLogger {
     MoveOnlyLifecycleLogger();

@@ -33,7 +33,7 @@ namespace WTF {
 class TextStream;
 };
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static unsigned deletionCount;
 

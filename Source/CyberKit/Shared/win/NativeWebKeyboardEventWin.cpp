@@ -29,7 +29,7 @@
 
 #include "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -40,4 +40,4 @@ NativeWebKeyboardEvent::NativeWebKeyboardEvent(HWND hwnd, UINT message, WPARAM w
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

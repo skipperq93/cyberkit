@@ -59,7 +59,7 @@ SOFT_LINK_CONSTANT(Contacts, CNPostalAddressStreetKey, NSString *);
 SOFT_LINK_CONSTANT(Contacts, CNPostalAddressSubAdministrativeAreaKey, NSString *);
 SOFT_LINK_CONSTANT(Contacts, CNPostalAddressSubLocalityKey, NSString *);
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: Rather than having these free functions scattered about, Apple Pay data types should know
 // how to convert themselves to and from their platform representations.
@@ -369,6 +369,6 @@ void PaymentAuthorizationPresenter::completeCouponCodeChange(std::optional<Cyber
 
 #endif // HAVE(PASSKIT_COUPON_CODE)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(PASSKIT) && ENABLE(APPLE_PAY)

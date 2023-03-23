@@ -30,7 +30,7 @@
 #include "SandboxExtension.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct GPUProcessSessionParameters {
     String mediaCacheDirectory;
@@ -42,6 +42,6 @@ struct GPUProcessSessionParameters {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

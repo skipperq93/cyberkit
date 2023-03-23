@@ -31,7 +31,7 @@
 #include <cmath>
 #include <wpe/wpe.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline bool isWPEKeyCodeFromKeyPad(unsigned keyCode)
 {
@@ -258,24 +258,24 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(struct wpe_input_axis_event* 
 }
 
 #if ENABLE(TOUCH_EVENTS)
-static WebKit::WebPlatformTouchPoint::TouchPointState stateForTouchPoint(int mainEventId, const struct wpe_input_touch_event_raw* point)
+static CyberKit::WebPlatformTouchPoint::TouchPointState stateForTouchPoint(int mainEventId, const struct wpe_input_touch_event_raw* point)
 {
     if (point->id != mainEventId)
-        return WebKit::WebPlatformTouchPoint::TouchStationary;
+        return CyberKit::WebPlatformTouchPoint::TouchStationary;
 
     switch (point->type) {
     case wpe_input_touch_event_type_down:
-        return WebKit::WebPlatformTouchPoint::TouchPressed;
+        return CyberKit::WebPlatformTouchPoint::TouchPressed;
     case wpe_input_touch_event_type_motion:
-        return WebKit::WebPlatformTouchPoint::TouchMoved;
+        return CyberKit::WebPlatformTouchPoint::TouchMoved;
     case wpe_input_touch_event_type_up:
-        return WebKit::WebPlatformTouchPoint::TouchReleased;
+        return CyberKit::WebPlatformTouchPoint::TouchReleased;
     case wpe_input_touch_event_type_null:
         ASSERT_NOT_REACHED();
         break;
     };
 
-    return WebKit::WebPlatformTouchPoint::TouchStationary;
+    return CyberKit::WebPlatformTouchPoint::TouchStationary;
 }
 
 WebTouchEvent WebEventFactory::createWebTouchEvent(struct wpe_input_touch_event* event, float deviceScaleFactor)
@@ -295,7 +295,7 @@ WebTouchEvent WebEventFactory::createWebTouchEvent(struct wpe_input_touch_event*
         ASSERT_NOT_REACHED();
     }
 
-    Vector<WebKit::WebPlatformTouchPoint> touchPoints;
+    Vector<CyberKit::WebPlatformTouchPoint> touchPoints;
     touchPoints.reserveCapacity(event->touchpoints_length);
 
     for (unsigned i = 0; i < event->touchpoints_length; ++i) {
@@ -306,7 +306,7 @@ WebTouchEvent WebEventFactory::createWebTouchEvent(struct wpe_input_touch_event*
         CyberCore::IntPoint pointCoordinates(point.x, point.y);
         pointCoordinates.scale(1 / deviceScaleFactor);
         touchPoints.uncheckedAppend(
-            WebKit::WebPlatformTouchPoint(point.id, stateForTouchPoint(event->id, &point),
+            CyberKit::WebPlatformTouchPoint(point.id, stateForTouchPoint(event->id, &point),
                 pointCoordinates, pointCoordinates));
     }
 
@@ -314,4 +314,4 @@ WebTouchEvent WebEventFactory::createWebTouchEvent(struct wpe_input_touch_event*
 }
 #endif // ENABLE(TOUCH_EVENTS)
 
-} // namespace WebKit
+} // namespace CyberKit

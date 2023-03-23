@@ -34,7 +34,7 @@
 #include <wtf/Threading.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace {
 
@@ -258,5 +258,5 @@ TEST(WTF_Condition, Basic)
     EXPECT_FALSE(result);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

@@ -23,7 +23,7 @@
 headers: "FocusedElementInformation.h" "CyberCoreArgumentCoders.h"
 
 #if PLATFORM(IOS_FAMILY)
-[CustomHeader=True] struct WebKit::OptionItem {
+[CustomHeader=True] struct CyberKit::OptionItem {
     String text;
     bool isGroup;
     bool isSelected;
@@ -31,7 +31,7 @@ headers: "FocusedElementInformation.h" "CyberCoreArgumentCoders.h"
     int parentGroupID;
 }
 
-[CustomHeader=True] struct WebKit::FocusedElementInformation {
+[CustomHeader=True] struct CyberKit::FocusedElementInformation {
     CyberCore::IntRect interactionRect;
     CyberCore::ElementContext elementContext;
     CyberCore::IntPoint lastInteractionLocation;
@@ -51,11 +51,11 @@ headers: "FocusedElementInformation.h" "CyberCoreArgumentCoders.h"
     bool allowsUserScalingIgnoringAlwaysScalable;
     bool insideFixedPosition;
     CyberCore::AutocapitalizeType autocapitalizeType;
-    WebKit::InputType elementType;
+    CyberKit::InputType elementType;
     CyberCore::InputMode inputMode;
     CyberCore::EnterKeyHint enterKeyHint;
     String formAction;
-    Vector<WebKit::OptionItem> selectOptions;
+    Vector<CyberKit::OptionItem> selectOptions;
     int selectedIndex;
     String value;
     double valueAsNumber;
@@ -84,7 +84,7 @@ headers: "FocusedElementInformation.h" "CyberCoreArgumentCoders.h"
     bool isFocusingWithValidationMessage;
     bool preventScroll;
 
-    WebKit::FocusedElementInformationIdentifier identifier;
+    CyberKit::FocusedElementInformationIdentifier identifier;
     CyberCore::ScrollingNodeID containerScrollingNodeID;
     CyberCore::FrameIdentifier frameID;
 }

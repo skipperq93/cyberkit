@@ -101,7 +101,7 @@ FloatRect screenRect(Widget* widget)
         return FloatRect();
 
     if (NSView *platformWidget = widget->platformWidget()) {
-        // WebKit1
+        // CyberKit1
         WAKWindow *window = [platformWidget window];
         if (!window)
             return [platformWidget frame];
@@ -117,7 +117,7 @@ FloatRect screenAvailableRect(Widget* widget)
         return FloatRect();
 
     if (NSView *platformWidget = widget->platformWidget()) {
-        // WebKit1
+        // CyberKit1
         WAKWindow *window = [platformWidget window];
         if (!window)
             return FloatRect();
@@ -169,8 +169,8 @@ FloatSize availableScreenSize()
     return FloatSize([PAL::getUIScreenClass() mainScreen].bounds.size);
 }
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/PlatformScreenIOS.mm>)
-#import <WebKitAdditions/PlatformScreenIOS.mm>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/PlatformScreenIOS.mm>)
+#import <CyberKitAdditions/PlatformScreenIOS.mm>
 #else
 FloatSize overrideScreenSize()
 {
@@ -190,7 +190,7 @@ ScreenProperties collectScreenProperties()
 {
     ScreenProperties screenProperties;
 
-    // FIXME: This displayID doesn't match the synthetic displayIDs we use in iOS WebKit (see WebPageProxy::generateDisplayIDFromPageID()).
+    // FIXME: This displayID doesn't match the synthetic displayIDs we use in iOS CyberKit (see WebPageProxy::generateDisplayIDFromPageID()).
     PlatformDisplayID displayID = 0;
 
     for (UIScreen *screen in [PAL::getUIScreenClass() screens]) {

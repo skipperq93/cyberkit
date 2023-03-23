@@ -34,7 +34,7 @@
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(AsyncFunction, Basic)
 {
@@ -194,7 +194,7 @@ TEST(AsyncFunction, Promise)
         EXPECT_TRUE([result isEqualToNumber:@42]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     functionBody = @"return new Promise(function(resolve, reject) { setTimeout(function(){ reject('Rejected!') }, 0); })";
@@ -206,7 +206,7 @@ TEST(AsyncFunction, Promise)
         EXPECT_TRUE([[error description] containsString:@"Rejected!"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     functionBody = @"let p = new Proxy(function(resolve, reject) { setTimeout(function() { resolve(42); }, 0); }, { }); return { then: p };";
 
@@ -217,7 +217,7 @@ TEST(AsyncFunction, Promise)
         EXPECT_TRUE([result isEqualToNumber:@42]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     functionBody = @"let p = new Proxy(function(resolve, reject) { setTimeout(function() { reject('Rejected!'); }, 0); }, { }); return { then: p };";
 
@@ -228,7 +228,7 @@ TEST(AsyncFunction, Promise)
         EXPECT_TRUE([[error description] containsString:@"Rejected!"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Verify we can await for a promise to be resolved before returning.
     functionBody = @"var r = 0; var p = new Promise(function(fulfill, reject) { setTimeout(function(){ r = 42; fulfill(); }, 5);}); await p; return r;";
@@ -240,7 +240,7 @@ TEST(AsyncFunction, Promise)
         EXPECT_TRUE([result isEqualToNumber:@42]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Returning an already resolved promise gives the value it was resolved with.
     functionBody = @"var p = new Promise(function(fulfill, reject) { setTimeout(function(){ fulfill('Fulfilled!') }, 5);}); await p; return p;";
@@ -252,7 +252,7 @@ TEST(AsyncFunction, Promise)
         EXPECT_TRUE([result isEqualToString:@"Fulfilled!"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Chaining thenables should work.
     functionBody = @"var p = new Promise(function (r) { r(new Promise(function (r) { r(42); })); }); await p; return 'Done';";
@@ -264,7 +264,7 @@ TEST(AsyncFunction, Promise)
         EXPECT_TRUE([result isEqualToString:@"Done"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Promises known to become unreachable (e.g. via garbage collection) should call back with an error.
     done = false;
@@ -279,7 +279,7 @@ TEST(AsyncFunction, Promise)
     }
 
     [webView.get().configuration.processPool _garbageCollectJavaScriptObjectsForTesting];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(AsyncFunction, PromiseDetachedFrame)
@@ -298,7 +298,7 @@ TEST(AsyncFunction, PromiseDetachedFrame)
 
     [webView synchronouslyLoadHTMLString:@"<iframe src='javascript:alert()'></iframe>"];
 
-    TestWebKitAPI::Util::run(&doneGettingSubframe);
+    TestCyberKitAPI::Util::run(&doneGettingSubframe);
 
     ASSERT_TRUE(!!subframe);
     EXPECT_FALSE([subframe isMainFrame]);
@@ -315,7 +315,7 @@ TEST(AsyncFunction, PromiseDetachedFrame)
         EXPECT_TRUE([result isEqualToNumber:@42]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ([webView _webProcessIdentifier], pid);
 }

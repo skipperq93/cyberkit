@@ -68,7 +68,7 @@ OBJC_CLASS UIViewController;
 OBJC_CLASS PKPaymentSetupViewController;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class PaymentSetupConfiguration;
 class PaymentSetupFeatures;

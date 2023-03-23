@@ -30,7 +30,7 @@
 #import <CyberKit/WebViewPrivate.h>
 #import <CyberKit/DOM.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, WebViewCanPasteURL)
 {
@@ -49,4 +49,4 @@ TEST(CyberKitLegacy, WebViewCanPasteURL)
     EXPECT_EQ(String(text), "http://www.webkit.org/"_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

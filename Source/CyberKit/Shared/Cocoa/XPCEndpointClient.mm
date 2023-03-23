@@ -29,7 +29,7 @@
 #import <wtf/cocoa/Entitlements.h>
 #import <wtf/text/ASCIILiteral.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void XPCEndpointClient::setEndpoint(xpc_endpoint_t endpoint)
 {

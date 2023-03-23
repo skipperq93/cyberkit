@@ -153,6 +153,6 @@ LegacyWebArchive* WebArchive::coreLegacyWebArchive()
     return m_legacyWebArchive.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

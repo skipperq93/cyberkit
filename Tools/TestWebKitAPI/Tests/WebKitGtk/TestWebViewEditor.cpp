@@ -189,7 +189,7 @@ public:
         return m_clipboard.readText();
     }
 
-    WebKitEditorState* editorState()
+    CyberKitEditorState* editorState()
     {
         if (m_editorState)
             return m_editorState;
@@ -219,7 +219,7 @@ public:
 
     Clipboard m_clipboard;
     bool m_canExecuteEditingCommand { false };
-    WebKitEditorState* m_editorState { nullptr };
+    CyberKitEditorState* m_editorState { nullptr };
 };
 
 static const char* selectedSpanHTMLFormat =
@@ -508,7 +508,7 @@ static void testWebViewEditorInsertImage(EditorTest* test, gconstpointer)
     GUniquePtr<char> imageURI(g_filename_to_uri(imagePath.get(), nullptr, nullptr));
     webkit_web_view_execute_editing_command_with_argument(test->m_webView, WEBKIT_EDITING_COMMAND_INSERT_IMAGE, imageURI.get());
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByTagName('IMG')[0].src", &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByTagName('IMG')[0].src", &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
     GUniquePtr<char> resultString(WebViewTest::javascriptResultToCString(javascriptResult));
@@ -525,7 +525,7 @@ static void testWebViewEditorCreateLink(EditorTest* test, gconstpointer)
     static const char* webkitGTKURL = "http://www.webkitgtk.org/";
     webkit_web_view_execute_editing_command_with_argument(test->m_webView, WEBKIT_EDITING_COMMAND_CREATE_LINK, webkitGTKURL);
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByTagName('A')[0].href;", &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByTagName('A')[0].href;", &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
     GUniquePtr<char> resultString(WebViewTest::javascriptResultToCString(javascriptResult));
@@ -553,14 +553,14 @@ static void testWebViewEditorCreateLink(EditorTest* test, gconstpointer)
 
 void beforeAll()
 {
-    EditorTest::add("WebKitWebView", "editable/editable", testWebViewEditorEditable);
-    EditorTest::add("WebKitWebView", "cut-copy-paste/non-editable", testWebViewEditorCutCopyPasteNonEditable);
-    EditorTest::add("WebKitWebView", "cut-copy-paste/editable", testWebViewEditorCutCopyPasteEditable);
-    EditorTest::add("WebKitWebView", "select-all/non-editable", testWebViewEditorSelectAllNonEditable);
-    EditorTest::add("WebKitWebView", "select-all/editable", testWebViewEditorSelectAllEditable);
-    EditorTest::add("WebKitWebView", "editor-state/typing-attributes", testWebViewEditorEditorStateTypingAttributes);
-    EditorTest::add("WebKitWebView", "insert/image", testWebViewEditorInsertImage);
-    EditorTest::add("WebKitWebView", "insert/link", testWebViewEditorCreateLink);
+    EditorTest::add("CyberKitWebView", "editable/editable", testWebViewEditorEditable);
+    EditorTest::add("CyberKitWebView", "cut-copy-paste/non-editable", testWebViewEditorCutCopyPasteNonEditable);
+    EditorTest::add("CyberKitWebView", "cut-copy-paste/editable", testWebViewEditorCutCopyPasteEditable);
+    EditorTest::add("CyberKitWebView", "select-all/non-editable", testWebViewEditorSelectAllNonEditable);
+    EditorTest::add("CyberKitWebView", "select-all/editable", testWebViewEditorSelectAllEditable);
+    EditorTest::add("CyberKitWebView", "editor-state/typing-attributes", testWebViewEditorEditorStateTypingAttributes);
+    EditorTest::add("CyberKitWebView", "insert/image", testWebViewEditorInsertImage);
+    EditorTest::add("CyberKitWebView", "insert/link", testWebViewEditorCreateLink);
 }
 
 void afterAll()

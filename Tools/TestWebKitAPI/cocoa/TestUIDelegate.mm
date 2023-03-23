@@ -91,7 +91,7 @@
         completionHandler();
     };
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     self.runJavaScriptAlertPanelWithMessage = nil;
     return result.autorelease();
@@ -105,7 +105,7 @@
 - (void)waitForInspectorToShow
 {
     while (!_showedInspector)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 @end

@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/text/StringSearch.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_StringSearch, ConstexprBMHFind)
 {
@@ -57,4 +57,4 @@ TEST(WTF_StringSearch, Basic)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

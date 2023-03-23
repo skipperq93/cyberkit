@@ -35,7 +35,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class SecurityOriginTest : public testing::Test {
 public:
@@ -321,4 +321,4 @@ TEST_F(SecurityOriginTest, SecurityOriginHash)
     EXPECT_TRUE(set.remove(o2->data()));
     EXPECT_FALSE(set.contains(o1->data()));
 }
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

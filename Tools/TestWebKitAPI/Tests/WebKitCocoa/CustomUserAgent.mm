@@ -28,7 +28,7 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 TEST(CustomUserAgent, UpdateCachedNavigatorUserAgent)
@@ -47,7 +47,7 @@ TEST(CustomUserAgent, UpdateCachedNavigatorUserAgent)
         webView.get().customUserAgent = @"Custom UserAgent";
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Query navigator.userAgent again to make sure its cache was invalidated and it returns the updated value.
@@ -58,6 +58,6 @@ TEST(CustomUserAgent, UpdateCachedNavigatorUserAgent)
         EXPECT_WK_STREQ(@"Custom UserAgent", userAgent);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }

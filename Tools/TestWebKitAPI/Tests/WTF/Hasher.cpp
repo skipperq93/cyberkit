@@ -30,7 +30,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Test against actual hash values.
 // We don't really depend on specific values, but it makes testing simpler.
@@ -251,18 +251,18 @@ struct HasherAddTupleLikeClass3 {
 
 namespace std {
 
-template<> class tuple_size<TestWebKitAPI::HasherAddTupleLikeClass1> : public integral_constant<size_t, 4> { };
-template<size_t I> class tuple_element<I, TestWebKitAPI::HasherAddTupleLikeClass1> { public: using type = int; };
+template<> class tuple_size<TestCyberKitAPI::HasherAddTupleLikeClass1> : public integral_constant<size_t, 4> { };
+template<size_t I> class tuple_element<I, TestCyberKitAPI::HasherAddTupleLikeClass1> { public: using type = int; };
 
-template<> class tuple_size<TestWebKitAPI::HasherAddTupleLikeClass2> : public integral_constant<size_t, 4> { };
-template<size_t I> class tuple_element<I, TestWebKitAPI::HasherAddTupleLikeClass2> { public: using type = int; };
+template<> class tuple_size<TestCyberKitAPI::HasherAddTupleLikeClass2> : public integral_constant<size_t, 4> { };
+template<size_t I> class tuple_element<I, TestCyberKitAPI::HasherAddTupleLikeClass2> { public: using type = int; };
 
-template<> class tuple_size<TestWebKitAPI::HasherAddTupleLikeClass3> : public integral_constant<size_t, 2> { };
-template<size_t I> class tuple_element<I, TestWebKitAPI::HasherAddTupleLikeClass3> { public: using type = decltype(declval<TestWebKitAPI::HasherAddTupleLikeClass3>().template get<I>()); };
+template<> class tuple_size<TestCyberKitAPI::HasherAddTupleLikeClass3> : public integral_constant<size_t, 2> { };
+template<size_t I> class tuple_element<I, TestCyberKitAPI::HasherAddTupleLikeClass3> { public: using type = decltype(declval<TestCyberKitAPI::HasherAddTupleLikeClass3>().template get<I>()); };
 
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, Hasher_tupleLike)
 {
@@ -271,4 +271,4 @@ TEST(WTF, Hasher_tupleLike)
     EXPECT_EQ(3489601216U, computeHash(HasherAddTupleLikeClass3 { }));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

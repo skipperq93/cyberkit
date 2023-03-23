@@ -31,8 +31,8 @@ CLANG_WARN_CXX0X_EXTENSIONS = NO;
 ALTERNATE_HEADER_SEARCH_PATHS = $(ALTERNATE_HEADER_SEARCH_PATHS_$(SDK_VARIANT));
 ALTERNATE_HEADER_SEARCH_PATHS_iosmac = $(BUILT_PRODUCTS_DIR)$(WK_ALTERNATE_FRAMEWORKS_DIR)/usr/local/include
 
-PROJECT_HEADER_SEARCH_PATHS = $(SRCROOT)/../../Source/WebKit/Platform/cocoa $(PROJECT_HEADER_SEARCH_PATHS_$(WK_COCOA_TOUCH));
-PROJECT_HEADER_SEARCH_PATHS_cocoatouch = $(inherited) $(SRCROOT)/../../Source/WebKit/Platform/spi/ios;
+PROJECT_HEADER_SEARCH_PATHS = $(SRCROOT)/../../Source/CyberKit/Platform/cocoa $(PROJECT_HEADER_SEARCH_PATHS_$(WK_COCOA_TOUCH));
+PROJECT_HEADER_SEARCH_PATHS_cocoatouch = $(inherited) $(SRCROOT)/../../Source/CyberKit/Platform/spi/ios;
 
 HEADER_SEARCH_PATHS = $(ALTERNATE_HEADER_SEARCH_PATHS) ${BUILT_PRODUCTS_DIR}/usr/local/include $(WEBCORE_PRIVATE_HEADERS_DIR)/ForwardingHeaders $(BUILT_PRODUCTS_DIR)/CyberCoreTestSupport ${SRCROOT} $(PROJECT_HEADER_SEARCH_PATHS);
 
@@ -93,7 +93,7 @@ EXCLUDED_SOURCE_FILE_NAMES = $(EXCLUDED_SOURCE_FILE_NAMES_$(WK_COCOA_TOUCH));
 EXCLUDED_SOURCE_FILE_NAMES_ = *IOS.h *IOS.cpp *IOS.mm;
 EXCLUDED_SOURCE_FILE_NAMES_cocoatouch = *Mac.h *Mac.cpp *Mac.mm */mac/*;
 
-OTHER_CFLAGS = $(inherited) --system-header-prefix=WebKit/;
+OTHER_CFLAGS = $(inherited) --system-header-prefix=CyberKit/;
 OTHER_CFLAGS[sdk=macosx*] = $(inherited) -iframework $(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;
 
 WK_WHICH_BUILD_SYSTEM = not_;

@@ -198,7 +198,7 @@ ExceptionOr<Ref<Database>> DatabaseManager::openDatabase(Document& document, con
     ASSERT(isMainThread());
 
     // FIXME: Remove this call to ScriptController::initializeMainThread(). The
-    // main thread should have been initialized by a WebKit entrypoint already.
+    // main thread should have been initialized by a CyberKit entrypoint already.
     // Also, initializeMainThread() does nothing on iOS.
     ScriptController::initializeMainThread();
 

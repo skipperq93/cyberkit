@@ -49,7 +49,7 @@ namespace IPC {
 class DummyType;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebPreferencesStore;
 class WebTouchEvent;
 }
@@ -109,12 +109,12 @@ private:
 #if (ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION || SOME_OTHER_MESSAGE_CONDITION))
 class TouchEvent {
 public:
-    using Arguments = std::tuple<WebKit::WebTouchEvent>;
+    using Arguments = std::tuple<CyberKit::WebTouchEvent>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithoutAttributes_TouchEvent; }
     static constexpr bool isSync = false;
 
-    explicit TouchEvent(const WebKit::WebTouchEvent& event)
+    explicit TouchEvent(const CyberKit::WebTouchEvent& event)
         : m_arguments(event)
     {
     }
@@ -125,19 +125,19 @@ public:
     }
 
 private:
-    std::tuple<const WebKit::WebTouchEvent&> m_arguments;
+    std::tuple<const CyberKit::WebTouchEvent&> m_arguments;
 };
 #endif
 
 #if (ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION && SOME_OTHER_MESSAGE_CONDITION))
 class AddEvent {
 public:
-    using Arguments = std::tuple<WebKit::WebTouchEvent>;
+    using Arguments = std::tuple<CyberKit::WebTouchEvent>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithoutAttributes_AddEvent; }
     static constexpr bool isSync = false;
 
-    explicit AddEvent(const WebKit::WebTouchEvent& event)
+    explicit AddEvent(const CyberKit::WebTouchEvent& event)
         : m_arguments(event)
     {
     }
@@ -148,7 +148,7 @@ public:
     }
 
 private:
-    std::tuple<const WebKit::WebTouchEvent&> m_arguments;
+    std::tuple<const CyberKit::WebTouchEvent&> m_arguments;
 };
 #endif
 
@@ -214,12 +214,12 @@ private:
 
 class PreferencesDidChange {
 public:
-    using Arguments = std::tuple<WebKit::WebPreferencesStore>;
+    using Arguments = std::tuple<CyberKit::WebPreferencesStore>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithoutAttributes_PreferencesDidChange; }
     static constexpr bool isSync = false;
 
-    explicit PreferencesDidChange(const WebKit::WebPreferencesStore& store)
+    explicit PreferencesDidChange(const CyberKit::WebPreferencesStore& store)
         : m_arguments(store)
     {
     }
@@ -230,7 +230,7 @@ public:
     }
 
 private:
-    std::tuple<const WebKit::WebPreferencesStore&> m_arguments;
+    std::tuple<const CyberKit::WebPreferencesStore&> m_arguments;
 };
 
 class SendDoubleAndFloat {
@@ -277,7 +277,7 @@ private:
 
 class CreatePlugin {
 public:
-    using Arguments = std::tuple<uint64_t, WebKit::Plugin::Parameters>;
+    using Arguments = std::tuple<uint64_t, CyberKit::Plugin::Parameters>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithoutAttributes_CreatePlugin; }
     static constexpr bool isSync = false;
@@ -285,7 +285,7 @@ public:
     static IPC::MessageName asyncMessageReplyName() { return IPC::MessageName::TestWithoutAttributes_CreatePluginReply; }
     static constexpr auto callbackThread = WTF::CompletionHandlerCallThread::ConstructionThread;
     using ReplyArguments = std::tuple<bool>;
-    CreatePlugin(uint64_t pluginInstanceID, const WebKit::Plugin::Parameters& parameters)
+    CreatePlugin(uint64_t pluginInstanceID, const CyberKit::Plugin::Parameters& parameters)
         : m_arguments(pluginInstanceID, parameters)
     {
     }
@@ -296,7 +296,7 @@ public:
     }
 
 private:
-    std::tuple<uint64_t, const WebKit::Plugin::Parameters&> m_arguments;
+    std::tuple<uint64_t, const CyberKit::Plugin::Parameters&> m_arguments;
 };
 
 class RunJavaScriptAlert {
@@ -454,12 +454,12 @@ private:
 #if PLATFORM(MAC)
 class DidCreateWebProcessConnection {
 public:
-    using Arguments = std::tuple<MachSendRight, OptionSet<WebKit::SelectionFlags>>;
+    using Arguments = std::tuple<MachSendRight, OptionSet<CyberKit::SelectionFlags>>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithoutAttributes_DidCreateWebProcessConnection; }
     static constexpr bool isSync = false;
 
-    DidCreateWebProcessConnection(const MachSendRight& connectionIdentifier, const OptionSet<WebKit::SelectionFlags>& flags)
+    DidCreateWebProcessConnection(const MachSendRight& connectionIdentifier, const OptionSet<CyberKit::SelectionFlags>& flags)
         : m_arguments(connectionIdentifier, flags)
     {
     }
@@ -470,7 +470,7 @@ public:
     }
 
 private:
-    std::tuple<const MachSendRight&, const OptionSet<WebKit::SelectionFlags>&> m_arguments;
+    std::tuple<const MachSendRight&, const OptionSet<CyberKit::SelectionFlags>&> m_arguments;
 };
 #endif
 

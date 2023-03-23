@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUExternalTextureBindingLayout.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ExternalTextureBindingLayout> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ExternalTextureBindingLayout& externalTextureBindingLayout)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::ExternalTextureBindingLayout> ConvertFromBackingConte
     return { { } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

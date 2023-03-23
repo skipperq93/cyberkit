@@ -32,7 +32,7 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct DataDetectionResult {
     RetainPtr<NSArray> results;

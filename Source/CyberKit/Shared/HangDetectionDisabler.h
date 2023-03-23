@@ -26,7 +26,7 @@
 #ifndef HangDetectionDisabler_h
 #define HangDetectionDisabler_h
 
-namespace WebKit {
+namespace CyberKit {
 
 class HangDetectionDisabler {
 public:

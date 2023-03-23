@@ -36,7 +36,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKUserScriptPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKRemoteObjectInterface.h>
 #import <CyberKit/_WKRemoteObjectRegistry.h>
@@ -74,7 +74,7 @@ TEST(ContentWorld, NormalWorldUserScript)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(ContentWorld, IsolatedWorld)
@@ -110,7 +110,7 @@ TEST(ContentWorld, IsolatedWorldUserScript)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 static bool didObserveNormalWorld;
@@ -179,8 +179,8 @@ TEST(UserContentWorld, IsolatedWorldPlugIn)
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme:///mainresource"]]];
 
-    TestWebKitAPI::Util::run(&didObserveNormalWorld);
-    TestWebKitAPI::Util::run(&didObserveWorldWithName);
-    TestWebKitAPI::Util::run(&didObserveMainFrame);
-    TestWebKitAPI::Util::run(&didObserveSubframe);
+    TestCyberKitAPI::Util::run(&didObserveNormalWorld);
+    TestCyberKitAPI::Util::run(&didObserveWorldWithName);
+    TestCyberKitAPI::Util::run(&didObserveMainFrame);
+    TestCyberKitAPI::Util::run(&didObserveSubframe);
 }

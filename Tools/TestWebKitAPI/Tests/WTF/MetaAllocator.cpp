@@ -35,7 +35,7 @@
 #undef small
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace WTF;
 
@@ -959,7 +959,7 @@ TEST_F(MetaAllocatorTest, DemandAllocDontCoalescePageThenDoubleHeap)
     testDemandAllocDontCoalesce(pageSize(), defaultPagesInHeap, defaultPagesInHeap * pageSize());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #if USE(POINTER_PROFILING)
 

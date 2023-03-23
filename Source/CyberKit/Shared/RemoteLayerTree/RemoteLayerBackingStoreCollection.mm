@@ -38,7 +38,7 @@
 
 const Seconds volatilityTimerInterval = 200_ms;
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteLayerBackingStoreCollection::RemoteLayerBackingStoreCollection(RemoteLayerTreeContext& layerTreeContext)
     : m_layerTreeContext(layerTreeContext)
@@ -271,4 +271,4 @@ RefPtr<CyberCore::ImageBuffer> RemoteLayerBackingStoreCollection::allocateBuffer
     return nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

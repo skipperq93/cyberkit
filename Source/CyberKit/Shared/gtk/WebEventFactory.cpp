@@ -38,7 +38,7 @@
 #include <wtf/ASCIICType.h>
 #include <wtf/MathExtras.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -76,7 +76,7 @@ static inline OptionSet<WebEventModifier> modifiersForEvent(const GdkEvent* even
     if (type != GDK_KEY_PRESS)
         return modifiers;
 
-    // Modifier masks are set different in X than other platforms. This code makes WebKitGTK
+    // Modifier masks are set different in X than other platforms. This code makes CyberKitGTK
     // to behave similar to other platforms and other browsers under X (see http://crbug.com/127142#c8).
 
     guint keyval;
@@ -399,4 +399,4 @@ WebTouchEvent WebEventFactory::createWebTouchEvent(const GdkEvent* event, Vector
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

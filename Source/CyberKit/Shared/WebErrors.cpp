@@ -34,59 +34,59 @@
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/ResourceResponse.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ResourceError blockedError(const ResourceRequest& request)
 {
-    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::CannotUseRestrictedPort, request.url(), WEB_UI_STRING("Not allowed to use restricted network port", "WebKitErrorCannotUseRestrictedPort description"));
+    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::CannotUseRestrictedPort, request.url(), WEB_UI_STRING("Not allowed to use restricted network port", "CyberKitErrorCannotUseRestrictedPort description"));
 }
 
 ResourceError blockedByContentBlockerError(const ResourceRequest& request)
 {
-    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadBlockedByContentBlocker, request.url(), WEB_UI_STRING("The URL was blocked by a content blocker", "WebKitErrorBlockedByContentBlocker description"));
+    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadBlockedByContentBlocker, request.url(), WEB_UI_STRING("The URL was blocked by a content blocker", "CyberKitErrorBlockedByContentBlocker description"));
 }
 
 ResourceError cannotShowURLError(const ResourceRequest& request)
 {
-    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::CannotShowURL, request.url(), WEB_UI_STRING("The URL can’t be shown", "WebKitErrorCannotShowURL description"));
+    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::CannotShowURL, request.url(), WEB_UI_STRING("The URL can’t be shown", "CyberKitErrorCannotShowURL description"));
 }
 
 ResourceError wasBlockedByRestrictionsError(const ResourceRequest& request)
 {
-    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadBlockedByRestrictions, request.url(), WEB_UI_STRING("The URL was blocked by device restrictions", "WebKitErrorFrameLoadBlockedByRestrictions description"));
+    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadBlockedByRestrictions, request.url(), WEB_UI_STRING("The URL was blocked by device restrictions", "CyberKitErrorFrameLoadBlockedByRestrictions description"));
 }
 
 ResourceError interruptedForPolicyChangeError(const ResourceRequest& request)
 {
-    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadInterruptedByPolicyChange, request.url(), WEB_UI_STRING("Frame load interrupted", "WebKitErrorFrameLoadInterruptedByPolicyChange description"));
+    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadInterruptedByPolicyChange, request.url(), WEB_UI_STRING("Frame load interrupted", "CyberKitErrorFrameLoadInterruptedByPolicyChange description"));
 }
 
 ResourceError ftpDisabledError(const ResourceRequest& request)
 {
-    return ResourceError(errorDomainWebKitInternal, 0, request.url(), "FTP URLs are disabled"_s, ResourceError::Type::AccessControl);
+    return ResourceError(errorDomainCyberKitInternal, 0, request.url(), "FTP URLs are disabled"_s, ResourceError::Type::AccessControl);
 }
 
 ResourceError failedCustomProtocolSyncLoad(const ResourceRequest& request)
 {
-    return ResourceError(errorDomainWebKitInternal, 0, request.url(), WEB_UI_STRING("Error handling synchronous load with custom protocol", "Custom protocol synchronous load failure description"));
+    return ResourceError(errorDomainCyberKitInternal, 0, request.url(), WEB_UI_STRING("Error handling synchronous load with custom protocol", "Custom protocol synchronous load failure description"));
 }
 
 #if ENABLE(CONTENT_FILTERING)
 ResourceError blockedByContentFilterError(const ResourceRequest& request)
 {
-    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadBlockedByContentFilter, request.url(), WEB_UI_STRING("The URL was blocked by a content filter", "WebKitErrorFrameLoadBlockedByContentFilter description"));
+    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::FrameLoadBlockedByContentFilter, request.url(), WEB_UI_STRING("The URL was blocked by a content filter", "CyberKitErrorFrameLoadBlockedByContentFilter description"));
 }
 #endif
 
 ResourceError cannotShowMIMETypeError(const ResourceResponse& response)
 {
-    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::CannotShowMIMEType, response.url(), WEB_UI_STRING("Content with specified MIME type can’t be shown", "WebKitErrorCannotShowMIMEType description"));
+    return ResourceError(API::Error::webKitPolicyErrorDomain(), API::Error::Policy::CannotShowMIMEType, response.url(), WEB_UI_STRING("Content with specified MIME type can’t be shown", "CyberKitErrorCannotShowMIMEType description"));
 }
 
 ResourceError pluginWillHandleLoadError(const ResourceResponse& response)
 {
-    return ResourceError(API::Error::webKitPluginErrorDomain(), API::Error::Plugin::PlugInWillHandleLoad, response.url(), WEB_UI_STRING("Plug-in handled load", "WebKitErrorPlugInWillHandleLoad description"));
+    return ResourceError(API::Error::webKitPluginErrorDomain(), API::Error::Plugin::PlugInWillHandleLoad, response.url(), WEB_UI_STRING("Plug-in handled load", "CyberKitErrorPlugInWillHandleLoad description"));
 }
 
 #if !PLATFORM(COCOA)
@@ -101,4 +101,4 @@ ResourceError fileDoesNotExistError(const ResourceResponse& response)
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

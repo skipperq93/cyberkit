@@ -31,13 +31,13 @@
 #include "ArgumentCoders.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 bool WebGestureEvent::isGestureEventType(WebEventType type) const
 {
     return type == WebEventType::GestureStart || type == WebEventType::GestureChange || type == WebEventType::GestureEnd;
 }
     
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MAC_GESTURE_EVENTS)

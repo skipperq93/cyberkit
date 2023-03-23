@@ -36,7 +36,7 @@
 
 #include <windows.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebEventFactory {
 public:
@@ -50,4 +50,4 @@ public:
 
 inline MSG createNativeEvent(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) { return { hwnd, message, wParam, lParam }; }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -26,13 +26,13 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 messages -> RemoteMediaResourceManager NotRefCounted {
-    ResponseReceived(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceResponse response, bool didPassAccessControlCheck) -> (enum:bool CyberCore::ShouldContinuePolicyCheck shouldContinue)
-    RedirectReceived(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceRequest request, CyberCore::ResourceResponse response) -> (CyberCore::ResourceRequest returnRequest)
-    DataSent(WebKit::RemoteMediaResourceIdentifier identifier, uint64_t bytesSent, uint64_t totalBytesToBeSent)
-    DataReceived(WebKit::RemoteMediaResourceIdentifier identifier, IPC::SharedBufferReference data) -> (std::optional<WebKit::SharedMemory::Handle> remoteData)
-    AccessControlCheckFailed(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceError error)
-    LoadFailed(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceError error)
-    LoadFinished(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::NetworkLoadMetrics metrics)
+    ResponseReceived(CyberKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceResponse response, bool didPassAccessControlCheck) -> (enum:bool CyberCore::ShouldContinuePolicyCheck shouldContinue)
+    RedirectReceived(CyberKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceRequest request, CyberCore::ResourceResponse response) -> (CyberCore::ResourceRequest returnRequest)
+    DataSent(CyberKit::RemoteMediaResourceIdentifier identifier, uint64_t bytesSent, uint64_t totalBytesToBeSent)
+    DataReceived(CyberKit::RemoteMediaResourceIdentifier identifier, IPC::SharedBufferReference data) -> (std::optional<CyberKit::SharedMemory::Handle> remoteData)
+    AccessControlCheckFailed(CyberKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceError error)
+    LoadFailed(CyberKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceError error)
+    LoadFinished(CyberKit::RemoteMediaResourceIdentifier identifier, CyberCore::NetworkLoadMetrics metrics)
 }
 
 #endif

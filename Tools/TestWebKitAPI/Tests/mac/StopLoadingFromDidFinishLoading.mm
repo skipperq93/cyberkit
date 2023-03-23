@@ -43,7 +43,7 @@ static bool finished = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, StopLoadingFromDidFinishLoading)
 {
@@ -57,4 +57,4 @@ TEST(CyberKitLegacy, StopLoadingFromDidFinishLoading)
     // No crash means the test passed.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

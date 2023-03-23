@@ -32,7 +32,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadAssertions.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // Container that holds identifier -> object mapping between two processes.
 // Used in scenarios where the holder process processes messages with the object references in multiple

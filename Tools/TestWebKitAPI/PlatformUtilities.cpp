@@ -30,7 +30,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/UniqueArray.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 #if WK_HAVE_C_SPI
@@ -94,4 +94,4 @@ std::string toSTD(const char* string)
 }
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

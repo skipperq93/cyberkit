@@ -29,14 +29,14 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_CACHED_RESOLVER            (webkit_cached_resolver_get_type())
-#define WEBKIT_CACHED_RESOLVER(object)         (G_TYPE_CHECK_INSTANCE_CAST((object), WEBKIT_TYPE_CACHED_RESOLVER, WebKitCachedResolver))
+#define WEBKIT_CACHED_RESOLVER(object)         (G_TYPE_CHECK_INSTANCE_CAST((object), WEBKIT_TYPE_CACHED_RESOLVER, CyberKitCachedResolver))
 #define WEBKIT_IS_CACHED_RESOLVER(object)      (G_TYPE_CHECK_INSTANCE_TYPE((object), WEBKIT_TYPE_CACHED_RESOLVER))
-#define WEBKIT_CACHED_RESOLVER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_CACHED_RESOLVER, WebKitCachedResolverClass))
+#define WEBKIT_CACHED_RESOLVER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_CACHED_RESOLVER, CyberKitCachedResolverClass))
 #define WEBKIT_IS_CACHED_RESOLVER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_CACHED_RESOLVER))
-#define WEBKIT_CACHED_RESOLVER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_CACHED_RESOLVER, WebKitCachedResolverClass))
+#define WEBKIT_CACHED_RESOLVER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_CACHED_RESOLVER, CyberKitCachedResolverClass))
 
-typedef struct _WebKitCachedResolver WebKitCachedResolver;
-typedef struct _WebKitCachedResolverClass WebKitCachedResolverClass;
+typedef struct _CyberKitCachedResolver CyberKitCachedResolver;
+typedef struct _CyberKitCachedResolverClass CyberKitCachedResolverClass;
 
 GType webkit_cached_resolver_get_type(void);
 

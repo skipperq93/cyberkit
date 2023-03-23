@@ -35,7 +35,7 @@
 #import "WebPushDaemonConstants.h"
 #import <wtf/spi/darwin/XPCSPI.h>
 
-namespace WebKit::WebPushD { 
+namespace CyberKit::WebPushD { 
 
 using Daemon::EncodedMessage;
 
@@ -59,7 +59,7 @@ void Connection::newConnectionWasInitialized() const
 
 namespace MessageInfo {
 
-#define FUNCTION(mf) struct mf { static constexpr auto MemberFunction = &WebKit::WebPushD::Connection::mf;
+#define FUNCTION(mf) struct mf { static constexpr auto MemberFunction = &CyberKit::WebPushD::Connection::mf;
 #define ARGUMENTS(...) using ArgsTuple = std::tuple<__VA_ARGS__>;
 #define END };
 
@@ -70,9 +70,9 @@ END
 } // namespace MessageInfo
 
 template<typename Info>
-void handleWebPushDaemonMessage(WebKit::WebPushD::Connection* connection, Span<const uint8_t> encodedMessage)
+void handleWebPushDaemonMessage(CyberKit::WebPushD::Connection* connection, Span<const uint8_t> encodedMessage)
 {
-    WebKit::Daemon::Decoder decoder(encodedMessage);
+    CyberKit::Daemon::Decoder decoder(encodedMessage);
 
     std::optional<typename Info::ArgsTuple> arguments;
     decoder >> arguments;
@@ -114,6 +114,6 @@ RetainPtr<xpc_object_t> Connection::dictionaryFromMessage(MessageType messageTyp
     return dictionary;
 }
 
-} // namespace WebKit::WebPushD
+} // namespace CyberKit::WebPushD
 
 #endif // PLATFORM(COCOA) && ENABLE(BUILT_IN_NOTIFICATIONS)

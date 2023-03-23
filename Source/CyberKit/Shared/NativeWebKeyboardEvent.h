@@ -58,7 +58,7 @@ struct wpe_input_keyboard_event;
 #include <windows.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 struct EditingRange;
 
 class NativeWebKeyboardEvent : public WebKeyboardEvent {
@@ -109,4 +109,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

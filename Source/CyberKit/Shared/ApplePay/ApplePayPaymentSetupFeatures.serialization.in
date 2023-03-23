@@ -24,8 +24,8 @@ headers: <pal/cocoa/PassKitSoftLink.h>
 
 #if ENABLE(APPLE_PAY)
 
-header: "ApplePayPaymentSetupFeaturesWebKit.h"
-[CustomHeader=True] class WebKit::PaymentSetupFeatures {
+header: "ApplePayPaymentSetupFeaturesCyberKit.h"
+[CustomHeader=True] class CyberKit::PaymentSetupFeatures {
     [SecureCodingAllowed=[NSArray.class, PAL::getPKPaymentSetupFeatureClass()]] RetainPtr<NSArray> m_platformFeatures;
 };
 

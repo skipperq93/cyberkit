@@ -53,7 +53,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: Re-enable after webkit.org/b/242014 is resolved
 TEST(PictureInPicture, DISABLED_ExitPiPOnSuspendVideoElement)
@@ -63,7 +63,7 @@ TEST(PictureInPicture, DISABLED_ExitPiPOnSuspendVideoElement)
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
         @"CyberCoreLogging": @"Fullscreen=debug",
-        @"WebKit2Logging": @"Fullscreen=debug",
+        @"CyberKit2Logging": @"Fullscreen=debug",
     }];
 
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -77,20 +77,20 @@ TEST(PictureInPicture, DISABLED_ExitPiPOnSuspendVideoElement)
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
         @"CyberCoreLogging": @"",
-        @"WebKit2Logging": @"",
+        @"CyberKit2Logging": @"",
     }];
 
     didEnterPiP = false;
     [webView evaluateJavaScript:@"document.getElementById('enter-pip').click()" completionHandler: nil];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didEnterPiP, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didEnterPiP, 10_s));
 
     sleep(1_s);
 
     didExitPiP = false;
     [webView synchronouslyLoadHTMLString:@"<body>Hello world</body>"];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didExitPiP, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didExitPiP, 10_s));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

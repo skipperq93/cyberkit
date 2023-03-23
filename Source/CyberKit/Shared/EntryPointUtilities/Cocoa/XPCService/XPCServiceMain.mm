@@ -39,7 +39,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/spi/darwin/XPCSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void setAppleLanguagesPreference()
 {
@@ -95,18 +95,18 @@ static void XPCServiceEventHandler(xpc_connection_t peer)
                 return;
             }
             CFStringRef entryPointFunctionName = nullptr;
-            if (!strncmp(serviceName, "com.apple.WebKit.WebContent", strlen("com.apple.WebKit.WebContent")))
+            if (!strncmp(serviceName, "com.apple.CyberKit.WebContent", strlen("com.apple.CyberKit.WebContent")))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(WEBCONTENT_SERVICE_INITIALIZER));
-            else if (!strcmp(serviceName, "com.apple.WebKit.Networking"))
+            else if (!strcmp(serviceName, "com.apple.CyberKit.Networking"))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(NETWORK_SERVICE_INITIALIZER));
-            else if (!strcmp(serviceName, "com.apple.WebKit.GPU"))
+            else if (!strcmp(serviceName, "com.apple.CyberKit.GPU"))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(GPU_SERVICE_INITIALIZER));
             else {
                 RELEASE_LOG_ERROR(IPC, "XPCServiceEventHandler: Unexpected 'service-name': %{public}s", serviceName);
                 return;
             }
 
-            CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.WebKit"));
+            CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.CyberKit"));
             typedef void (*InitializerFunction)(xpc_connection_t, xpc_object_t);
             InitializerFunction initializerFunctionPtr = reinterpret_cast<InitializerFunction>(CFBundleGetFunctionPointerForName(webKitBundle, entryPointFunctionName));
             if (!initializerFunctionPtr) {
@@ -146,7 +146,7 @@ static void XPCServiceEventHandler(xpc_connection_t peer)
 
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
 
-NEVER_INLINE NO_RETURN_DUE_TO_CRASH static void crashDueWebKitFrameworkVersionMismatch()
+NEVER_INLINE NO_RETURN_DUE_TO_CRASH static void crashDueCyberKitFrameworkVersionMismatch()
 {
     CRASH();
 }
@@ -189,18 +189,18 @@ int XPCServiceMain(int, const char**)
             }
         }
 #endif
-        auto webKitBundleVersion = String::fromLatin1(xpc_dictionary_get_string(bootstrap.get(), "WebKitBundleVersion"));
-        String expectedBundleVersion = [NSBundle bundleWithIdentifier:@"com.apple.WebKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey];
+        auto webKitBundleVersion = String::fromLatin1(xpc_dictionary_get_string(bootstrap.get(), "CyberKitBundleVersion"));
+        String expectedBundleVersion = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey];
         if (!webKitBundleVersion.isNull() && !expectedBundleVersion.isNull() && webKitBundleVersion != expectedBundleVersion) {
-            auto errorMessage = makeString("WebKit framework version mismatch: ", webKitBundleVersion, " != ", expectedBundleVersion);
+            auto errorMessage = makeString("CyberKit framework version mismatch: ", webKitBundleVersion, " != ", expectedBundleVersion);
             logAndSetCrashLogMessage(errorMessage.utf8().data());
-            crashDueWebKitFrameworkVersionMismatch();
+            crashDueCyberKitFrameworkVersionMismatch();
         }
 #endif
     }
 
 #if PLATFORM(MAC)
-    // Don't allow Apple Events in WebKit processes. This can be removed when <rdar://problem/14012823> is fixed.
+    // Don't allow Apple Events in CyberKit processes. This can be removed when <rdar://problem/14012823> is fixed.
     setenv("__APPLEEVENTSSERVICENAME", "", 1);
 #endif
 
@@ -208,4 +208,4 @@ int XPCServiceMain(int, const char**)
     return 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -46,7 +46,7 @@
 
 #define DOWNLOAD_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - Download::" fmt, this, ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Download::Download(DownloadManager& downloadManager, DownloadID downloadID, NetworkDataTask& download, NetworkSession& session, const String& suggestedName)
@@ -189,6 +189,6 @@ void Download::platformDestroyDownload()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef DOWNLOAD_RELEASE_LOG

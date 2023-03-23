@@ -24,14 +24,14 @@
  */
 
 #include "config.h"
-#include "WebKitDirectoryInputStream.h"
+#include "CyberKitDirectoryInputStream.h"
 
-#include "WebKitDirectoryInputStreamData.h"
+#include "CyberKitDirectoryInputStreamData.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 
-struct _WebKitDirectoryInputStreamPrivate {
+struct _CyberKitDirectoryInputStreamPrivate {
     GRefPtr<GFileEnumerator> enumerator;
     CString uri;
 
@@ -39,9 +39,9 @@ struct _WebKitDirectoryInputStreamPrivate {
     bool readDone;
 };
 
-WEBKIT_DEFINE_TYPE(WebKitDirectoryInputStream, webkit_directory_input_stream, G_TYPE_INPUT_STREAM)
+WEBKIT_DEFINE_TYPE(CyberKitDirectoryInputStream, webkit_directory_input_stream, G_TYPE_INPUT_STREAM)
 
-static GBytes* webkitDirectoryInputStreamCreateHeader(WebKitDirectoryInputStream *stream)
+static GBytes* webkitDirectoryInputStreamCreateHeader(CyberKitDirectoryInputStream *stream)
 {
     char* header = g_strdup_printf(
         "<html><head>"
@@ -65,13 +65,13 @@ static GBytes* webkitDirectoryInputStreamCreateHeader(WebKitDirectoryInputStream
     return g_bytes_new_with_free_func(header, strlen(header), g_free, header);
 }
 
-static GBytes* webkitDirectoryInputStreamCreateFooter(WebKitDirectoryInputStream *stream)
+static GBytes* webkitDirectoryInputStreamCreateFooter(CyberKitDirectoryInputStream *stream)
 {
     static const char* footer = "</table></body></html>";
     return g_bytes_new_static(footer, strlen(footer));
 }
 
-static GBytes* webkitDirectoryInputStreamCreateRow(WebKitDirectoryInputStream *stream, GFileInfo* info)
+static GBytes* webkitDirectoryInputStreamCreateRow(CyberKitDirectoryInputStream *stream, GFileInfo* info)
 {
     if (!g_file_info_get_name(info))
         return nullptr;
@@ -109,7 +109,7 @@ static GBytes* webkitDirectoryInputStreamCreateRow(WebKitDirectoryInputStream *s
     return g_bytes_new_with_free_func(row, strlen(row), g_free, row);
 }
 
-static GBytes* webkitDirectoryInputStreamReadNextFile(WebKitDirectoryInputStream* stream, GCancellable* cancellable, GError** error)
+static GBytes* webkitDirectoryInputStreamReadNextFile(CyberKitDirectoryInputStream* stream, GCancellable* cancellable, GError** error)
 {
     GBytes* buffer = nullptr;
     do {
@@ -172,7 +172,7 @@ static gboolean webkitDirectoryInputStreamClose(GInputStream* input, GCancellabl
 }
 
 static void
-webkit_directory_input_stream_class_init(WebKitDirectoryInputStreamClass* klass)
+webkit_directory_input_stream_class_init(CyberKitDirectoryInputStreamClass* klass)
 {
     auto* inputStreamClass = G_INPUT_STREAM_CLASS(klass);
     inputStreamClass->read_fn = webkitDirectoryInputStreamRead;

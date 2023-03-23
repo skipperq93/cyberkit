@@ -45,7 +45,7 @@
 #include "NotImplemented.h"
 #include "SourceBufferPrivateGStreamer.h"
 #include "TimeRanges.h"
-#include "WebKitMediaSourceGStreamer.h"
+#include "CyberKitMediaSourceGStreamer.h"
 #include <wtf/RefPtr.h>
 #include <wtf/glib/GRefPtr.h>
 

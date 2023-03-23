@@ -31,7 +31,7 @@
 #include "RTCDataChannelRemoteManagerMessages.h"
 #include "RTCDataChannelRemoteManagerProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RTCDataChannelRemoteManagerProxy::RTCDataChannelRemoteManagerProxy()
     : m_queue(WorkQueue::create("RTCDataChannelRemoteManagerProxy"))

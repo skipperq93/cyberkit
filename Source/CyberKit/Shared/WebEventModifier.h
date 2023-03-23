@@ -31,7 +31,7 @@ namespace CyberCore {
 class NavigationAction;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebEventModifier : uint8_t {
     ShiftKey    = 1 << 0,
@@ -43,4 +43,4 @@ enum class WebEventModifier : uint8_t {
 
 OptionSet<WebEventModifier> modifiersForNavigationAction(const CyberCore::NavigationAction&);
 
-} // namespace WebKit
+} // namespace CyberKit

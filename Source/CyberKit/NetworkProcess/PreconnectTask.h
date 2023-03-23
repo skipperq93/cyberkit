@@ -32,7 +32,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoad;
 class NetworkLoadParameters;
@@ -67,6 +67,6 @@ private:
     CyberCore::Timer m_timeoutTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVER_PRECONNECT)

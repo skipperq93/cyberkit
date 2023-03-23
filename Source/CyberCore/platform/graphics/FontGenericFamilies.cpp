@@ -31,7 +31,7 @@
 
 namespace CyberCore {
 
-using namespace WebKitFontFamilyNames;
+using namespace CyberKitFontFamilyNames;
 
 static bool setGenericFontFamilyForScript(ScriptFontFamilyMap& fontMap, const String& family, UScriptCode script)
 {

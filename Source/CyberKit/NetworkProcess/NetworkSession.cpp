@@ -66,7 +66,7 @@
 #include "NetworkSessionCurl.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 constexpr Seconds cachedNetworkResourceLoaderLifetime { 30_s };
@@ -157,7 +157,7 @@ NetworkSession::NetworkSession(NetworkProcess& networkProcess, const NetworkSess
             m_cache = NetworkCache::Cache::open(networkProcess, networkCacheDirectory, cacheOptions, m_sessionID);
 
             if (!m_cache)
-                RELEASE_LOG_ERROR(NetworkCache, "Failed to initialize the WebKit network disk cache");
+                RELEASE_LOG_ERROR(NetworkCache, "Failed to initialize the CyberKit network disk cache");
         }
 
         if (!parameters.resourceLoadStatisticsParameters.directory.isEmpty())
@@ -740,4 +740,4 @@ void NetworkSession::addAllowedFirstPartyForCookies(CyberCore::ProcessIdentifier
 }
 #endif // ENABLE(SERVICE_WORKER)
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -67,7 +67,7 @@ GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 GCC_THREADSAFE_STATICS = NO;
 GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-// FIXME: <http://webkit.org/b/109847> WebKit2 should build with -Wshorten-64-to-32
+// FIXME: <http://webkit.org/b/109847> CyberKit2 should build with -Wshorten-64-to-32
 GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -93,7 +93,7 @@ SWIFT_VERSION = 5.0;
 
 COPY_PHASE_STRIP = NO;
 // Dead code stripping needs to be on in the debug variant to avoid link errors.  This is due to unconditionally
-// building the MiG bindings for WebKitPluginClient even when the functions that the bindings wrap are not built.
+// building the MiG bindings for CyberKitPluginClient even when the functions that the bindings wrap are not built.
 // FIXME: This explanation isn't correct any more, because plug-ins are gone. But is there any reason to change this setting?
 DEAD_CODE_STRIPPING = YES;
 
@@ -135,10 +135,10 @@ WK_MACOS_WEAK_FRAMEWORK_ = -weak_framework
 
 WK_USE_RESTRICTED_ENTITLEMENTS = $(USE_INTERNAL_SDK);
 
-EXCLUDED_SOURCE_FILE_NAMES = libWebKitAdditions.a CyberScriptCore.framework 
+EXCLUDED_SOURCE_FILE_NAMES = libCyberKitAdditions.a CyberScriptCore.framework 
 
-WK_WEBKIT_DERIVEDSOURCES_INPUT_XCFILELIST_ADDITIONS = $(WK_WEBKITADDITIONS_HEADERS_FOLDER_PATH)/WebKit/DerivedSources-input.xcfilelist
-WK_WEBKIT_DERIVEDSOURCES_OUTPUT_XCFILELIST_ADDITIONS = $(WK_WEBKITADDITIONS_HEADERS_FOLDER_PATH)/WebKit/DerivedSources-output.xcfilelist
+WK_WEBKIT_DERIVEDSOURCES_INPUT_XCFILELIST_ADDITIONS = $(WK_WEBKITADDITIONS_HEADERS_FOLDER_PATH)/CyberKit/DerivedSources-input.xcfilelist
+WK_WEBKIT_DERIVEDSOURCES_OUTPUT_XCFILELIST_ADDITIONS = $(WK_WEBKITADDITIONS_HEADERS_FOLDER_PATH)/CyberKit/DerivedSources-output.xcfilelist
 
 LLVM_LTO = $(WK_LLVM_LTO_$(WK_XCODE_SUPPORTS_LTO));
 WK_LLVM_LTO_NO = NO;

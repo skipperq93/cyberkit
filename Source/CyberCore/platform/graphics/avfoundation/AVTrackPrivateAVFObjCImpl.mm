@@ -45,7 +45,7 @@
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
 @class AVMediaSelectionOption;
-@interface AVMediaSelectionOption (WebKitInternal)
+@interface AVMediaSelectionOption (CyberKitInternal)
 - (id)optionID;
 @end
 

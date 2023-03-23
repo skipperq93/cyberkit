@@ -29,7 +29,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/KeypressCommand.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebKeyboardEvent::WebKeyboardEvent()
 {
@@ -151,4 +151,4 @@ bool WebKeyboardEvent::isKeyboardEventType(WebEventType type)
     return type == WebEventType::RawKeyDown || type == WebEventType::KeyDown || type == WebEventType::KeyUp || type == WebEventType::Char;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

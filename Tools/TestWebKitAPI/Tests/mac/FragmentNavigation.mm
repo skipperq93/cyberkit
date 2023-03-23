@@ -30,19 +30,19 @@
 
 static bool testFinished;
 
-@interface WebKit1FragmentNavigationTestDelegate : NSObject <WebFrameLoadDelegate, WebPolicyDelegate, WebUIDelegate> {
+@interface CyberKit1FragmentNavigationTestDelegate : NSObject <WebFrameLoadDelegate, WebPolicyDelegate, WebUIDelegate> {
     unsigned _stage;
 }
 
-+ (WebKit1FragmentNavigationTestDelegate *)shared;
++ (CyberKit1FragmentNavigationTestDelegate *)shared;
 
 @end
 
-@implementation WebKit1FragmentNavigationTestDelegate
+@implementation CyberKit1FragmentNavigationTestDelegate
 
-+ (WebKit1FragmentNavigationTestDelegate *)shared
++ (CyberKit1FragmentNavigationTestDelegate *)shared
 {
-    static WebKit1FragmentNavigationTestDelegate *sharedTestDelegate = [[WebKit1FragmentNavigationTestDelegate alloc] init];
+    static CyberKit1FragmentNavigationTestDelegate *sharedTestDelegate = [[CyberKit1FragmentNavigationTestDelegate alloc] init];
     return sharedTestDelegate;
 }
 
@@ -108,20 +108,20 @@ static bool testFinished;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, FragmentNavigation)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
 
-        [webView setPolicyDelegate:[WebKit1FragmentNavigationTestDelegate shared]];
-        [webView setFrameLoadDelegate:[WebKit1FragmentNavigationTestDelegate shared]];
-        [webView setUIDelegate:[WebKit1FragmentNavigationTestDelegate shared]];
-        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FragmentNavigation" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [webView setPolicyDelegate:[CyberKit1FragmentNavigationTestDelegate shared]];
+        [webView setFrameLoadDelegate:[CyberKit1FragmentNavigationTestDelegate shared]];
+        [webView setUIDelegate:[CyberKit1FragmentNavigationTestDelegate shared]];
+        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FragmentNavigation" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&testFinished);
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

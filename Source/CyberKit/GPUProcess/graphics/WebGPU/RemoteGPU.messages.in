@@ -24,9 +24,9 @@
 #if ENABLE(GPU_PROCESS)
 
 messages -> RemoteGPU NotRefCounted Stream {
-    void RequestAdapter(WebKit::WebGPU::RequestAdapterOptions options, WebKit::WebGPUIdentifier identifier) -> (std::optional<WebKit::RemoteGPU::RequestAdapterResponse> response) Synchronous
-    void CreatePresentationContext(WebKit::WebGPU::PresentationContextDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateCompositorIntegration(WebKit::WebGPUIdentifier identifier)
+    void RequestAdapter(CyberKit::WebGPU::RequestAdapterOptions options, CyberKit::WebGPUIdentifier identifier) -> (std::optional<CyberKit::RemoteGPU::RequestAdapterResponse> response) Synchronous
+    void CreatePresentationContext(CyberKit::WebGPU::PresentationContextDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateCompositorIntegration(CyberKit::WebGPUIdentifier identifier)
 }
 
 #endif

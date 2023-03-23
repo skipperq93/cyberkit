@@ -38,7 +38,7 @@ namespace IPC {
 class MessageSender;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteObjectInvocation;
 class UserData;
@@ -72,4 +72,4 @@ private:
     HashMap<uint64_t, std::unique_ptr<ProcessThrottler::BackgroundActivity>> m_pendingReplies;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

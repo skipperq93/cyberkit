@@ -47,7 +47,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<TestWKWebView> createWebViewForTestingTextAlternatives()
 {
@@ -128,6 +128,6 @@ TEST(TextAlternatives, AddTextAlternativesWithoutMatch)
     EXPECT_EQ(0U, [webView dictationAlternativesMarkerCount:@"document.body.childNodes[0]"]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

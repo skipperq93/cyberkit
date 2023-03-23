@@ -29,7 +29,7 @@
 #include "WebEvent.h"
 #include <CyberCore/IntPoint.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(TOUCH_EVENTS)
 #if PLATFORM(IOS_FAMILY)
@@ -205,4 +205,4 @@ private:
 #endif // PLATFORM(IOS_FAMILY)
 #endif // ENABLE(TOUCH_EVENTS)
 
-} // namespace WebKit
+} // namespace CyberKit

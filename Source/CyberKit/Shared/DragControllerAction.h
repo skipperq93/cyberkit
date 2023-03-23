@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class DragControllerAction : uint8_t {
     Entered,
@@ -34,17 +34,17 @@ enum class DragControllerAction : uint8_t {
     PerformDragOperation
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::DragControllerAction> {
+template<> struct EnumTraits<CyberKit::DragControllerAction> {
     using values = EnumValues<
-        WebKit::DragControllerAction,
-        WebKit::DragControllerAction::Entered,
-        WebKit::DragControllerAction::Updated,
-        WebKit::DragControllerAction::Exited,
-        WebKit::DragControllerAction::PerformDragOperation
+        CyberKit::DragControllerAction,
+        CyberKit::DragControllerAction::Entered,
+        CyberKit::DragControllerAction::Updated,
+        CyberKit::DragControllerAction::Exited,
+        CyberKit::DragControllerAction::PerformDragOperation
     >;
 };
 

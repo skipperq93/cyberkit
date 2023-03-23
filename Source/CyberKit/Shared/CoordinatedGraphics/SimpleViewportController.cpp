@@ -24,7 +24,7 @@
 
 #if USE(COORDINATED_GRAPHICS)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 SimpleViewportController::SimpleViewportController(const IntSize& size)

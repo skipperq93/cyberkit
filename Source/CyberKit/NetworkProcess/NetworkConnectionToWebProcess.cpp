@@ -110,7 +110,7 @@
     } \
 } while (0)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<NetworkConnectionToWebProcess> NetworkConnectionToWebProcess::create(NetworkProcess& networkProcess, CyberCore::ProcessIdentifier webProcessIdentifier, PAL::SessionID sessionID, IPC::Connection::Identifier connectionIdentifier)
@@ -1431,7 +1431,7 @@ void NetworkConnectionToWebProcess::installMockContentFilter(CyberCore::MockCont
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef CONNECTION_RELEASE_LOG
 #undef NETWORK_PROCESS_MESSAGE_CHECK_COMPLETION

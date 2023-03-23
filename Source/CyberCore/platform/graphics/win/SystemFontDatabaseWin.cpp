@@ -22,7 +22,7 @@
 #include "config.h"
 #include "SystemFontDatabase.h"
 
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 #include <wtf/NeverDestroyed.h>
 
 namespace CyberCore {
@@ -75,9 +75,9 @@ auto SystemFontDatabase::platformSystemFontShorthandInfo(FontShorthand fontShort
     default: { // Everything else uses the stock GUI font.
         HGDIOBJ hGDI = ::GetStockObject(DEFAULT_GUI_FONT);
         if (!hGDI)
-            return { WebKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
+            return { CyberKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
         if (::GetObject(hGDI, sizeof(logFont), &logFont) <= 0)
-            return { WebKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
+            return { CyberKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
     }
     }
     float size = shouldUseDefaultControlFontPixelSize ? defaultControlFontPixelSize : abs(logFont.lfHeight);

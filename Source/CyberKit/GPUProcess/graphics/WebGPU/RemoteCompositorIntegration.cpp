@@ -33,7 +33,7 @@
 #include "WebGPUObjectHeap.h"
 #include <pal/graphics/WebGPU/WebGPUCompositorIntegration.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteCompositorIntegration::RemoteCompositorIntegration(PAL::WebGPU::CompositorIntegration& compositorIntegration, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(compositorIntegration)
@@ -65,6 +65,6 @@ void RemoteCompositorIntegration::prepareForDisplay(CompletionHandler<void(bool)
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

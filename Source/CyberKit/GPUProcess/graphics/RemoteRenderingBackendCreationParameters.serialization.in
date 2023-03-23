@@ -22,9 +22,9 @@
 
 #if ENABLE(GPU_PROCESS)
 
-struct WebKit::RemoteRenderingBackendCreationParameters {
-    WebKit::RenderingBackendIdentifier identifier;
-    WebKit::WebPageProxyIdentifier pageProxyID;
+struct CyberKit::RemoteRenderingBackendCreationParameters {
+    CyberKit::RenderingBackendIdentifier identifier;
+    CyberKit::WebPageProxyIdentifier pageProxyID;
     CyberCore::PageIdentifier pageID;
 };
 

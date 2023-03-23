@@ -51,7 +51,7 @@ namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class NegotiatedLegacyTLS : bool;
 class LegacyCustomProtocolManager;
@@ -117,7 +117,7 @@ public:
     static bool allowsSpecificHTTPSCertificateForHost(const CyberCore::AuthenticationChallenge&);
     void setClientAuditToken(const CyberCore::AuthenticationChallenge&);
 
-    void continueDidReceiveChallenge(SessionWrapper&, const CyberCore::AuthenticationChallenge&, NegotiatedLegacyTLS, NetworkDataTaskCocoa::TaskIdentifier, NetworkDataTaskCocoa*, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, const CyberCore::Credential&)>&&);
+    void continueDidReceiveChallenge(SessionWrapper&, const CyberCore::AuthenticationChallenge&, NegotiatedLegacyTLS, NetworkDataTaskCocoa::TaskIdentifier, NetworkDataTaskCocoa*, CompletionHandler<void(CyberKit::AuthenticationChallengeDisposition, const CyberCore::Credential&)>&&);
 
     SessionWrapper& sessionWrapperForDownloadResume() { return m_defaultSessionSet->sessionWithCredentialStorage; }
 
@@ -201,4 +201,4 @@ private:
     HashMap<DataTaskIdentifier, RetainPtr<NSURLSessionDataTask>> m_dataTasksForAPI;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

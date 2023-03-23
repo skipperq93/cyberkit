@@ -28,7 +28,7 @@
 
 namespace IPC {
 
-void ArgumentCoder<WebKit::InsertTextOptions>::encode(Encoder& encoder, const WebKit::InsertTextOptions& options)
+void ArgumentCoder<CyberKit::InsertTextOptions>::encode(Encoder& encoder, const CyberKit::InsertTextOptions& options)
 {
     encoder << options.registerUndoGroup;
     encoder << options.suppressSelectionUpdate;
@@ -37,9 +37,9 @@ void ArgumentCoder<WebKit::InsertTextOptions>::encode(Encoder& encoder, const We
     encoder << options.editingRangeIsRelativeTo;
 }
 
-std::optional<WebKit::InsertTextOptions> ArgumentCoder<WebKit::InsertTextOptions>::decode(Decoder& decoder)
+std::optional<CyberKit::InsertTextOptions> ArgumentCoder<CyberKit::InsertTextOptions>::decode(Decoder& decoder)
 {
-    WebKit::InsertTextOptions options;
+    CyberKit::InsertTextOptions options;
     if (!decoder.decode(options.registerUndoGroup))
         return std::nullopt;
     if (!decoder.decode(options.suppressSelectionUpdate))

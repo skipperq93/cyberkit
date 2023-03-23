@@ -33,7 +33,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
@@ -60,11 +60,11 @@ TEST(IndexedDB, IndexUpgradeToV2)
     [configuration.get().websiteDataStore _terminateNetworkProcess];
 
     // Copy the inconsistent database files to the database directory
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IndexUpgrade" withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IndexUpgrade" withExtension:@"blob" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IndexUpgrade" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IndexUpgrade" withExtension:@"blob" subdirectory:@"TestCyberKitAPI.resources"];
 
     NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("index-upgrade-test"_s);
-    NSString *originDirectory = @"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/IndexedDB/v1/file__0/";
+    NSString *originDirectory = @"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/v1/file__0/";
     NSString *databaseDirectory = [[originDirectory stringByAppendingString:hash] stringByExpandingTildeInPath];
     NSURL *targetURL = [NSURL fileURLWithPath:databaseDirectory];
     [[NSFileManager defaultManager] removeItemAtURL:targetURL error:nil];
@@ -75,10 +75,10 @@ TEST(IndexedDB, IndexUpgradeToV2)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBIndexUpgradeToV2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBIndexUpgradeToV2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     EXPECT_WK_STREQ(@"Object expected to be a blob: [object Blob]", [lastScriptMessage body]);
 }
@@ -90,7 +90,7 @@ static void runMultipleIndicesTestWithDatabase(NSString* databaseName)
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     [configuration.get().websiteDataStore _terminateNetworkProcess];
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:databaseName withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:databaseName withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
     NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("index-upgrade-test"_s);
     NSURL *originURL = [NSURL URLWithString:@"file://"];
     __block NSString *originDirectoryString = nil;
@@ -98,16 +98,16 @@ static void runMultipleIndicesTestWithDatabase(NSString* databaseName)
         originDirectoryString = result;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     NSURL *databaseDirectory = [[NSURL fileURLWithPath:originDirectoryString isDirectory:YES] URLByAppendingPathComponent:hash];
     [[NSFileManager defaultManager] removeItemAtURL:databaseDirectory error:nil];
     [[NSFileManager defaultManager] createDirectoryAtURL:databaseDirectory withIntermediateDirectories:YES attributes:nil error:nil];
     [[NSFileManager defaultManager] copyItemAtURL:url toURL:[databaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3"] error:nil];
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBIndexUpgradeToV2WithMultipleIndices" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBIndexUpgradeToV2WithMultipleIndices" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     EXPECT_WK_STREQ(@"Get object: {\"name\":\"apple\",\"color\":\"red\"}", [lastScriptMessage body]);
 }

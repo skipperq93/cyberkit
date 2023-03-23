@@ -31,7 +31,7 @@
 #include <CyberCore/ProcessIdentity.h>
 #include <wtf/MachSendRight.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct GPUProcessConnectionParameters {
     CyberCore::ProcessIdentity webProcessIdentity;
@@ -101,6 +101,6 @@ struct GPUProcessConnectionParameters {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

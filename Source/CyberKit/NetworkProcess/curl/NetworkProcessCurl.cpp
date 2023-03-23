@@ -34,7 +34,7 @@
 #include <CyberCore/NotImplemented.h>
 #include <wtf/CallbackAggregator.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -69,4 +69,4 @@ void NetworkProcess::setNetworkProxySettings(PAL::SessionID sessionID, CyberCore
         ASSERT_NOT_REACHED();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

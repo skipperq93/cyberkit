@@ -600,7 +600,7 @@ static Class classForTypeIdentifier(NSString *typeIdentifier, NSString *&outType
     }
 
     // If we were unable to load any object, check if the given type identifier is still something
-    // WebKit knows how to handle.
+    // CyberKit knows how to handle.
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     if ([typeIdentifier isEqualToString:(NSString *)kUTTypeHTML]) {
         // Load kUTTypeHTML as a plain text HTML string.

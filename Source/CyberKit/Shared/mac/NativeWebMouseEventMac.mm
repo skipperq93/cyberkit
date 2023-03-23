@@ -30,7 +30,7 @@
 
 #import "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebMouseEvent::NativeWebMouseEvent(NSEvent *event, NSEvent *lastPressureEvent, NSView *view)
     : WebMouseEvent(WebEventFactory::createWebMouseEvent(event, lastPressureEvent, view))
@@ -38,6 +38,6 @@ NativeWebMouseEvent::NativeWebMouseEvent(NSEvent *event, NSEvent *lastPressureEv
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(APPKIT)

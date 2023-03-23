@@ -33,7 +33,7 @@
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct DepthStencilState {
     PAL::WebGPU::TextureFormat format { PAL::WebGPU::TextureFormat::R8unorm };
@@ -52,6 +52,6 @@ struct DepthStencilState {
     float depthBiasClamp { 0 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

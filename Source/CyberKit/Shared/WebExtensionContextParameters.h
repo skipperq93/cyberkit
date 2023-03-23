@@ -34,7 +34,7 @@ OBJC_CLASS NSDictionary;
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebExtensionContextParameters {
     WebExtensionContextIdentifier identifier;
@@ -48,6 +48,6 @@ struct WebExtensionContextParameters {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

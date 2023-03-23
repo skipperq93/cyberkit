@@ -169,7 +169,7 @@ private:
     TextIndicatorData m_data;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 

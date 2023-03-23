@@ -268,7 +268,7 @@ void ScreenCaptureKitSharingSessionManager::promptForGetDisplayMedia(PromptType 
         return;
     }
 
-    SCContentSharingSession* session = [[PAL::getSCContentSharingSessionClass() alloc] initWithTitle:@"WebKit getDisplayMedia Prompt"];
+    SCContentSharingSession* session = [[PAL::getSCContentSharingSessionClass() alloc] initWithTitle:@"CyberKit getDisplayMedia Prompt"];
     if (!session) {
         RELEASE_LOG_ERROR(WebRTC, "ScreenCaptureKitSharingSessionManager::promptForGetDisplayMedia unable to create sharing session");
         completionHandler(std::nullopt);

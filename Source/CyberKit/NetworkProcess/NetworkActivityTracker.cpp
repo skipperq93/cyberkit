@@ -28,7 +28,7 @@
 
 #if !HAVE(NW_ACTIVITY)
 
-namespace WebKit {
+namespace CyberKit {
 
 NetworkActivityTracker::NetworkActivityTracker(Label, Domain)
 {
@@ -50,6 +50,6 @@ void NetworkActivityTracker::complete(CompletionCode)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // !HAVE(NW_ACTIVITY)

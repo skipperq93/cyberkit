@@ -28,7 +28,7 @@
 
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 DebugInfo DebugInfo::isolatedCopy() const &
 {
@@ -50,4 +50,4 @@ DebugInfo::Message DebugInfo::Message::isolatedCopy() &&
     return { messageLevel, WTFMove(message).isolatedCopy() };
 }
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

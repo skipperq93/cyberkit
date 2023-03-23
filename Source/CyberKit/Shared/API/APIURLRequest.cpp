@@ -30,7 +30,7 @@
 
 namespace API {
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 URLRequest::URLRequest(const ResourceRequest& request)
     : m_request(request)

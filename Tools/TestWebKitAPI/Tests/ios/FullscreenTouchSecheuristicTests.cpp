@@ -29,7 +29,7 @@
 #include <CoreGraphics/CGGeometry.h>
 #include <CyberKit/FullscreenTouchSecheuristic.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void configureSecheuristic(FullscreenTouchSecheuristic& secheuristic)
 {
@@ -43,7 +43,7 @@ static void configureSecheuristic(FullscreenTouchSecheuristic& secheuristic)
 
 TEST(FullscreenTouchSecheuristic, Basic)
 {
-    using namespace WebKit;
+    using namespace CyberKit;
     FullscreenTouchSecheuristic secheuristic;
     configureSecheuristic(secheuristic);
 
@@ -68,7 +68,7 @@ TEST(FullscreenTouchSecheuristic, Basic)
 
 TEST(FullscreenTouchSecheuristic, TapOnceVsTapTwice)
 {
-    using namespace WebKit;
+    using namespace CyberKit;
     FullscreenTouchSecheuristic twice;
     configureSecheuristic(twice);
 
@@ -106,7 +106,7 @@ TEST(FullscreenTouchSecheuristic, TapOnceVsTapTwice)
 
 TEST(FullscreenTouchSecheuristic, WKFullScreenViewControllerParameters)
 {
-    using namespace WebKit;
+    using namespace CyberKit;
 
     static const auto tapDelta = 0.25_s;
     static const auto tapDuration = 0.1_s;

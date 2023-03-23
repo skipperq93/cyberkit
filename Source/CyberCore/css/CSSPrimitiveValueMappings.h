@@ -1079,11 +1079,11 @@ constexpr CSSValueID toCSSValueID(TextAlignMode e)
         return CSSValueCenter;
     case TextAlignMode::Justify:
         return CSSValueJustify;
-    case TextAlignMode::WebKitLeft:
+    case TextAlignMode::CyberKitLeft:
         return CSSValueWebkitLeft;
-    case TextAlignMode::WebKitRight:
+    case TextAlignMode::CyberKitRight:
         return CSSValueWebkitRight;
-    case TextAlignMode::WebKitCenter:
+    case TextAlignMode::CyberKitCenter:
         return CSSValueWebkitCenter;
     }
     ASSERT_NOT_REACHED_UNDER_CONSTEXPR_CONTEXT();

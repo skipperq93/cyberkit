@@ -68,9 +68,9 @@ GDBusInterfaceVTable AccessibilityRootAtspi::s_accessibleFunctions = {
 
             g_variant_builder_open(&builder, G_VARIANT_TYPE("a{ss}"));
 #if PLATFORM(GTK)
-            g_variant_builder_add(&builder, "{ss}", "toolkit", "WebKitGTK");
+            g_variant_builder_add(&builder, "{ss}", "toolkit", "CyberKitGTK");
 #elif PLATFORM(WPE)
-            g_variant_builder_add(&builder, "{ss}", "toolkit", "WPEWebKit");
+            g_variant_builder_add(&builder, "{ss}", "toolkit", "WPECyberKit");
 #endif
             g_variant_builder_close(&builder);
 

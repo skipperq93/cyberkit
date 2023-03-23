@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUTextureViewDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<TextureViewDescriptor> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::TextureViewDescriptor& textureViewDescriptor)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::TextureViewDescriptor> ConvertFromBackingContext::con
     return { { WTFMove(*base), textureViewDescriptor.format, textureViewDescriptor.dimension, textureViewDescriptor.aspect, textureViewDescriptor.baseMipLevel, textureViewDescriptor.mipLevelCount, textureViewDescriptor.baseArrayLayer, textureViewDescriptor.arrayLayerCount } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

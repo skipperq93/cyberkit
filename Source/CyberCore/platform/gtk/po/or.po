@@ -612,28 +612,28 @@ msgctxt "Click to restart"
 msgid "Subtitle of the label to show on a snapshotted plug-in"
 msgstr "ସ୍ନାପସଟ୍ ପ୍ଲଗଇନ ଉପରେ ଦର୍ଶାଇବାକୁ ଥିବା ନାମପଟିର ଉପଶୀର୍ଷକ"
 
-#: ../WebKitAuthenticationWidget.cpp:155
+#: ../CyberKitAuthenticationWidget.cpp:155
 #, c-format
 msgid "The site %s:%i requests a username and password"
 msgstr "ସାଇଟ %s:%i ବ୍ୟବହାରକାରୀ ନାମ ଏବଂ ପ୍ରବେଶ ସଂକେତ ପଚାରିଥାଏ"
 
-#: ../WebKitAuthenticationWidget.cpp:159
+#: ../CyberKitAuthenticationWidget.cpp:159
 msgid "_Remember password"
 msgstr "ପ୍ରବେଶ ସଂକେତକୁ ମନେରଖନ୍ତୁ (_R)"
 
-#: ../WebKitAuthenticationWidget.cpp:167
+#: ../CyberKitAuthenticationWidget.cpp:167
 msgid "Server message:"
 msgstr "ସର୍ଭର ସଂଦେଶ:"
 
-#: ../WebKitAuthenticationWidget.cpp:168 ../WebKitAuthenticationWidget.cpp:177
+#: ../CyberKitAuthenticationWidget.cpp:168 ../CyberKitAuthenticationWidget.cpp:177
 msgid "Username:"
 msgstr "ବ୍ୟବହାରକାରୀ ନାମ:"
 
-#: ../WebKitAuthenticationWidget.cpp:169 ../WebKitAuthenticationWidget.cpp:178
+#: ../CyberKitAuthenticationWidget.cpp:169 ../CyberKitAuthenticationWidget.cpp:178
 msgid "Password:"
 msgstr "ପ୍ରବେଶ ସଙ୍କେତ:"
 
-#: ../../../../WebKit2/Shared/Downloads/soup/DownloadSoup.cpp:99
+#: ../../../../CyberKit2/Shared/Downloads/soup/DownloadSoup.cpp:99
 #, c-format
 msgid ""
 "Cannot determine destination URI for download with suggested filename %s"
@@ -641,363 +641,363 @@ msgstr ""
 "ପ୍ରସ୍ଥାବିତ ଫାଇଲ ନାମ %s ସହିତ ଆହରଣ ପାଇଁ ଲକ୍ଷ୍ଯସ୍ଥଳ URI ନିର୍ଦ୍ଧାରଣ କରିପାରିବେ "
 "ନାହିଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:164
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:164
 msgid "Destination"
 msgstr "ଗନ୍ତବ୍ଯ ସ୍ଥଳ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:165
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:165
 msgid "The local URI to where the download will be saved"
 msgstr "ଯେଉଁ ସ୍ଥାନିୟ URI ରେ ଆହରଣକୁ ସଂରକ୍ଷଣ କରାଯାଇଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:177
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:122
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:177
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:122
 msgid "Response"
 msgstr "ଉତ୍ତର ଦେବା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:178
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:178
 msgid "The response of the download"
 msgstr "ଆହରଣରର ଉତ୍ତର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:195
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:195
 msgid "Estimated Progress"
 msgstr "ଆନୁମାନିକ ପ୍ରଗତି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:196
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:196
 msgid "Determines the current progress of the download"
 msgstr "ଆହରଣର ପ୍ରଚଳିତ ଉନ୍ନତିକୁ ନିର୍ଦ୍ଧାରଣ କରିଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:214
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:214
 msgid "Allow Overwrite"
 msgstr "ନବଲିଖନ ପାଇଁ ଅନୁମତି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitDownload.cpp:215
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:215
 #| msgid "Whether the window can be resized."
 msgid "Whether the destination may be overwritten"
 msgstr "ଲକ୍ଷ୍ଯସ୍ଥଳଟି ନବଲିଖିତ ହୋଇପାରେ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:142
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:322
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:142
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:322
 #, c-format
 msgid "Unknown favicon for page %s"
 msgstr "ପୃଷ୍ଠା %s ପାଇଁ ଅଜଣା ଫେବିକନ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:148
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:278
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:148
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:278
 #, c-format
 msgid "Page %s does not have a favicon"
 msgstr "ପୃଷ୍ଠା %s ରେ ଫେବିକନ ନାହିଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFaviconDatabase.cpp:272
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:272
 msgid "Favicons database not initialized yet"
 msgstr "ଫେବିକନ ତଥ୍ୟାଧାର ଏପର୍ଯ୍ୟନ୍ତ ଆରମ୍ଭ ହୋଇନାହିଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:129
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:129
 msgid "MIME types filter"
 msgstr "MIME ପ୍ରକାର ଛାଣକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:130
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:130
 msgid "The filter currently associated with the request"
 msgstr "ଅନୁରୋଧ ସହିତ ଛାଣକଟି ବର୍ତ୍ତମାନ ସମ୍ପୃକ୍ତ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:143
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:143
 msgid "MIME types"
 msgstr "MIME ପ୍ରକାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:144
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:144
 msgid "The list of MIME types associated with the request"
 msgstr "ଅନୁରୋଧ ସହିତ ସମ୍ପୃକ୍ତ MIME ପ୍ରକାରର ତାଲିକା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:158
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:158
 msgid "Select multiple files"
 msgstr "ଏକାଧିକ ଫାଇଲ ବାଛନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:159
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:159
 msgid "Whether the file chooser should allow selecting multiple files"
 msgstr "ଫାଇଲ ଚୟକ ଏକାଧିକ ଫାଇଲଗୁଡ଼ିକୁ ବାଛିବାରେ ଅନୁମତି ଦେବା ଉଚିତ କି ନୁହଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:172
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:172
 msgid "Selected files"
 msgstr "ବଚ୍ଛିତ ଫାଇଲଗୁଡ଼ିକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFileChooserRequest.cpp:173
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:173
 msgid "The list of selected files associated with the request"
 msgstr "ଅନୁରୋଧ ସହିତ ସମ୍ପୃକ୍ତ ବଚ୍ଛିତ ଫାଇଲଗୁଡ଼ିକର ତାଲିକା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:190
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:190
 msgid "Search text"
 msgstr "ପାଠ୍ଯ ଖୋଜନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:191
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:191
 msgid "Text to search for in the view"
 msgstr "ଦୃଶ୍ୟରେ ସନ୍ଧାନ କରିବାକୁ ଥିବା ପାଠ୍ୟ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:203
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:203
 msgid "Search Options"
 msgstr "ବିକଳ୍ପଗୁଡିକୁ ସନ୍ଧାନ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:204
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:204
 msgid "Search options to be used in the search operation"
 msgstr "ସନ୍ଧାନ କାର୍ଯ୍ୟରେ ବ୍ୟବହାର ହେବାକୁ ଥିବା ସନ୍ଧାନ ବିକଳ୍ପଗୁଡ଼ିକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:217
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:217
 msgid "Maximum matches count"
 msgstr "ସର୍ବାଧିକ ମେଳକ ସଂଖ୍ୟା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:218
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:218
 msgid "The maximum number of matches in a given text to report"
 msgstr "ପ୍ରଦତ୍ତ ପାଠ୍ୟରେ ଖବର କରିବାକୁ ଥିବା ସର୍ବାଧିକ ସଂଖ୍ୟକ ମେଳକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:230
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:230
 msgid "WebView"
 msgstr "ୱେବ ଦୃଶ୍ଯ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitFindController.cpp:231
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:231
 msgid "The WebView associated with this find controller"
 msgstr "ଏହି ସନ୍ଧାନ ନିୟନ୍ତ୍ରକ ସହିତ ସମ୍ପୃକ୍ତ ୱେବ ଦୃଶ୍ୟ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:152
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:152
 msgid "Context"
 msgstr "ପ୍ରସଙ୍ଗ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:153
-msgid "Flags with the context of the WebKitHitTestResult"
-msgstr "WebKitHitTestResult ର ପ୍ରସଙ୍ଗ ସହିତ ଥିବା ସୂଚକଗୁଡ଼ିକ"
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:153
+msgid "Flags with the context of the CyberKitHitTestResult"
+msgstr "CyberKitHitTestResult ର ପ୍ରସଙ୍ଗ ସହିତ ଥିବା ସୂଚକଗୁଡ଼ିକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:166
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:166
 msgid "Link URI"
 msgstr "ଲିଙ୍କ URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:167
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:167
 msgid "The link URI"
 msgstr "ଲିଙ୍କ URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:179
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:179
 msgid "Link Title"
 msgstr "ଲିଙ୍କ ଶୀର୍ଷକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:180
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:180
 msgid "The link title"
 msgstr "ସଂଯୋଗିକୀ ଶୀର୍ଷକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:192
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:192
 msgid "Link Label"
 msgstr "ସଂଯୋଗିକୀ ନାମପଟି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:193
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:193
 msgid "The link label"
 msgstr "ସଂଯୋଗିକୀ ନାମପଟି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:205
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:205
 msgid "Image URI"
 msgstr "ପ୍ରତିଛବି URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:206
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:206
 msgid "The image URI"
 msgstr "ପ୍ରତିଛବି URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:218
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:218
 msgid "Media URI"
 msgstr "ମେଡିଆ URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitHitTestResult.cpp:219
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:219
 msgid "The media URI"
 msgstr "ମେଡିଆ URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:113
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:113
 #| msgid "Navigation type"
 msgid "Navigation action"
 msgstr "ଅନ୍ୱେଷଣ କାମ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:114
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:114
 #| msgid "The type of navigation triggering this decision"
-msgid "The WebKitNavigationAction triggering this decision"
-msgstr "WebKitNavigationAction ଏହି ସିଦ୍ଧାନ୍ତକୁ ଆରମ୍ଭ କରିଥାଏ"
+msgid "The CyberKitNavigationAction triggering this decision"
+msgstr "CyberKitNavigationAction ଏହି ସିଦ୍ଧାନ୍ତକୁ ଆରମ୍ଭ କରିଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:130
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:130
 msgid "Navigation type"
 msgstr "ଅନ୍ୱେଷଣ ପ୍ରକାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:131
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:131
 msgid "The type of navigation triggering this decision"
 msgstr "ଅନ୍ୱେଷଣ ପ୍ରକାର ଏହି ସିଦ୍ଧାନ୍ତକୁ ଆରମ୍ଭ କରିଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:150
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:150
 msgid "Mouse button"
 msgstr "ମାଉସ ବଟନ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:151
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:151
 msgid "The mouse button used if this decision was triggered by a mouse event"
 msgstr ""
 "ଯଦି ଏହି ସିଦ୍ଧାନ୍ତକୁ ଏକ ମାଉସ ଘଟଣା ଦ୍ୱାରା ଆରମ୍ଭ କରାଯାଇଥିଲା ତେବେ ମାଉସ ବଟନ "
 "ବ୍ୟବହାର ହୋଇଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:169
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:169
 msgid "Mouse event modifiers"
 msgstr "ମାଉସ ଘଟଣା ପରିବର୍ତ୍ତନକାରୀ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:170
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:170
 msgid "The modifiers active if this decision was triggered by a mouse event"
 msgstr ""
 "ପରିବର୍ତ୍ତନକାରୀମାନେ ସକ୍ରିୟ ଥାଏ ଯଦି ଏହି ସିଦ୍ଧାନ୍ତକୁ ଏକ ମାଉସ ଘଟଣା ଦ୍ୱାରା ଆରମ୍ଭ "
 "ହୋଇଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:185
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:185
 msgid "Navigation URI request"
 msgstr "ଅନ୍ୱେଷଣ URI ଅନୁରୋଧ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:186
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:186
 msgid "The URI request that is associated with this navigation"
 msgstr "ଏହି ଅନୁସରଣ ସହିତ ସମ୍ପୃକ୍ତ ଅନୁରୋଧ କରାଯାଇଥିବା URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:201
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:201
 msgid "Frame name"
 msgstr "ଫ୍ରେମ ନାମ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitNavigationPolicyDecision.cpp:202
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:202
 msgid "The name of the new frame this navigation action targets"
 msgstr "ନୂତନ ଫ୍ରେମର ନାମ ଯାହାକୁ ଅନ୍ୱଷଣ କାର୍ଯ୍ୟ ଲକ୍ଷ୍ଯ କରିଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:146
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:146
 msgid "Web View"
 msgstr "ୱେବ ଦୃଶ୍ଯ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:147
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:147
 msgid "The web view that will be printed"
 msgstr "ମୁଦ୍ରଣ କରିବାକୁ ଥିବା ୱେବ ଦୃଶ୍ୟ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:159
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:159
 msgid "Print Settings"
 msgstr "ମୂଦ୍ରଣୀ ସେଟିଙ୍ଗଗୁଡିକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:160
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:160
 msgid "The initial print settings for the print operation"
 msgstr "ମୁଦ୍ରଣ ପ୍ରୟୋଗ ପାଇଁ ପ୍ରାରମ୍ଭିକ ମୁଦ୍ରଣ ସଂରଚନା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:171
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:171
 msgid "Page Setup"
 msgstr "ପୃଷ୍ଠା ବ୍ଯବସ୍ଥା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitPrintOperation.cpp:172
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:172
 msgid "The initial page setup for the print operation"
 msgstr "ମୁଦ୍ରଣ ପାଇଁ ପ୍ରାରମ୍ଭିକ ପୃଷ୍ଠା ବିନ୍ୟାସ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:91
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:91
 msgid "Response URI request"
 msgstr "URI ଅନୁରୋଧର ଉତ୍ତର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:92
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:92
 msgid "The URI request that is associated with this policy decision"
 msgstr "URI ଅନୁରୋଧ ଯାହାକି ଏହି ନିତୀ ସିଦ୍ଧାନ୍ତ ସହିତ ସମ୍ପୃକ୍ତ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:105
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:105
 msgid "URI response"
 msgstr "URI ଉତ୍ତର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitResponsePolicyDecision.cpp:106
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:106
 msgid "The URI response that is associated with this policy decision"
 msgstr "URI ଉତ୍ତର ଯାହାକି ଏହି ନିତୀ ସିଦ୍ଧାନ୍ତ ସହିତ ସମ୍ପୃକ୍ତ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:487
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:487
 msgid "Enable JavaScript"
 msgstr "JavaScriptକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:488
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:488
 msgid "Enable JavaScript."
 msgstr "JavaScriptକୁ ସକ୍ରିୟ କରନ୍ତୁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:502
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:502
 msgid "Auto load images"
 msgstr "ପ୍ରତିଛବିଗୁଡ଼ିକୁ ସ୍ୱୟଂ ଧାରଣ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:503
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:503
 msgid "Load images automatically."
 msgstr "ସ୍ୱୟଂଚାଳିତ ଭାବରେ ପ୍ରତିଛବିଗୁଡ଼ିକୁ ଧାରଣ କରନ୍ତୁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:516
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:516
 msgid "Load icons ignoring image load setting"
 msgstr "ପ୍ରତିଛବି ଧାରଣ ସଂରଚନାକୁ ନଦେଖି ଚିତ୍ରସଂକେତଗୁଡ଼ିକୁ ଧାରଣ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:517
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:517
 msgid "Whether to load site icons ignoring image load setting."
 msgstr "ପ୍ରତିଛବି ଧାରଣ ବିନ୍ୟାସକୁ ନଦେଖି ସାଇଟ ଚିତ୍ର ସଂକେତକୁ ଧାରଣ କରିବା ଉଚିତ କି।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:534
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:534
 msgid "Enable offline web application cache"
 msgstr "ଅଫଲାଇନ ୱେବ ପ୍ରୟୋଗ କ୍ୟାଶେକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:535
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:535
 msgid "Whether to enable offline web application cache."
 msgstr "ଅଫଲାଇନ ୱେବ ପ୍ରୟୋଗ କ୍ୟାଶେକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:551
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:551
 msgid "Enable HTML5 local storage"
 msgstr "HTML5 ସ୍ଥାନୀୟ ସଂରକ୍ଷଣକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:552
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:552
 msgid "Whether to enable HTML5 Local Storage support."
 msgstr "HTML5 ସ୍ଥାନୀୟ ସଂରକ୍ଷଣକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:569
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:569
 msgid "Enable HTML5 database"
 msgstr "HTML5 ତଥ୍ୟାଧାରକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:570
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:570
 msgid "Whether to enable HTML5 database support."
 msgstr "HTML5 ତଥ୍ୟାଧାର ସହାୟତାକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:583
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:583
 msgid "Enable XSS auditor"
 msgstr "XSS ସମ୍ପାଦକକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:584
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:584
 msgid "Whether to enable the XSS auditor."
 msgstr "XSS ସମ୍ପାଦକକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:599
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:599
 msgid "Enable frame flattening"
 msgstr "ଫ୍ରେମ ସମାନ୍ତରାଳକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:600
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:600
 msgid "Whether to enable frame flattening."
 msgstr "ଫ୍ରେମ ସମାନ୍ତରାଳକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:612
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:612
 msgid "Enable plugins"
 msgstr "ପ୍ଲଗଇନଗୁଡ଼ିକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:613
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:613
 msgid "Enable embedded plugin objects."
 msgstr "ସନ୍ନିହିତ ପ୍ଲଗଇନ ବସ୍ତୁଗୁଡ଼ିକୁ ସକ୍ରିୟ କରନ୍ତୁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:625
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:625
 msgid "Enable Java"
 msgstr "Java ଆପଲେଟକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:626
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:626
 msgid "Whether Java support should be enabled."
 msgstr "Java ସହାୟତାକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:639
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:639
 msgid "JavaScript can open windows automatically"
 msgstr "JavaScript ସ୍ୱୟଂଚାଳିତ ଭାବରେ ୱିଣ୍ଡୋଗୁଡ଼ିକୁ ଖୋଲିଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:640
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:640
 msgid "Whether JavaScript can open windows automatically."
 msgstr "JavaScript ସ୍ୱୟଂଚାଳିତ ଭାବରେ ୱିଣ୍ଡୋଗୁଡ଼ିକୁ ଖୋଲିପାରିବ କି ନାହିଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:655
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:655
 msgid "Enable hyperlink auditing"
 msgstr "ହାଇପରଲିଙ୍କ ସମ୍ପାଦନକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:656
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:656
 msgid "Whether <a ping> should be able to send pings."
 msgstr "<a ping> ପିଙ୍ଗ ଅନୁରୋଧ ପଠାଇବାରେ ସକ୍ଷମ କି।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:668
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:668
 msgid "Default font family"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପରିବାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:669
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:669
 msgid ""
 "The font family to use as the default for content that does not specify a "
 "font."
@@ -1006,89 +1006,89 @@ msgstr ""
 "ହେବାକୁ ଥିବା ଅକ୍ଷରରୂପ "
 "ପରିବାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:682
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:682
 msgid "Monospace font family"
 msgstr "ମୋନୋସ୍ପେସ ଅକ୍ଷରରୂପ ପରିବାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:683
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:683
 msgid "The font family used as the default for content using monospace font."
 msgstr ""
 "ମୋନୋସ୍ପେସ ପାଠ୍ୟ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପରିବାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:695
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:695
 msgid "Serif font family"
 msgstr "ସେରିଫ ଅକ୍ଷରରୂପ ପରିବାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:696
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:696
 msgid "The font family used as the default for content using serif font."
 msgstr "ସେରିଫ ପାଠ୍ୟ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପରିବାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:708
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:708
 msgid "Sans-serif font family"
 msgstr "ସାନ୍ସ ସେରିଫ ଅକ୍ଷରରୂପ ପରିବାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:709
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:709
 msgid "The font family used as the default for content using sans-serif font."
 msgstr ""
 "ସାନ୍ସ ସେରିଫ ପାଠ୍ୟ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପରିବାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:721
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:721
 msgid "Cursive font family"
 msgstr "ପ୍ରବାହୀ ଅକ୍ଷରରୂପ ପରିବାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:722
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:722
 msgid "The font family used as the default for content using cursive font."
 msgstr ""
 "ପ୍ରବାହୀ  ଅକ୍ଷରରୂପ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପରିବାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:734
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:734
 msgid "Fantasy font family"
 msgstr "କଳ୍ପନାତ୍ମକ ଅକ୍ଷରରୂପ ପରିବାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:735
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:735
 msgid "The font family used as the default for content using fantasy font."
 msgstr ""
 "କଳ୍ପନାତ୍ମକ ଅକ୍ଷରରୂପ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପରିବାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:747
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:747
 msgid "Pictograph font family"
 msgstr "ଚିତ୍ରାଙ୍କନ ଅକ୍ଷରରୂପ ପରିବାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:748
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:748
 msgid "The font family used as the default for content using pictograph font."
 msgstr ""
 "ଚିତ୍ରାଙ୍କନ ଅକ୍ଷରରୂପ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପରିବାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:761
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:761
 msgid "Default font size"
 msgstr "ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ଆକାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:762
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:762
 msgid "The default font size used to display text."
 msgstr "ପାଠ୍ୟ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ଆକାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:775
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:775
 msgid "Default monospace font size"
 msgstr "ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ ମୋନୋସ୍ପେସ ଅକ୍ଷରରୂପ ଆକାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:776
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:776
 msgid "The default font size used to display monospace text."
 msgstr ""
 "ମୋନୋସ୍ପେସ ପାଠ୍ୟ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ  ଅକ୍ଷରରୂପ ଆକାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:790
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:790
 msgid "Minimum font size"
 msgstr "ସର୍ବନିମ୍ନ ଅକ୍ଷରରୂପ ଆକାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:791
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:791
 msgid "The minimum font size used to display text."
 msgstr "ପାଠ୍ୟ ଦର୍ଶାଇବା ପାଇଁ ବ୍ୟବହୃତ ସର୍ବନିମ୍ନ ଅକ୍ଷରରୂପ ଆକାର।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:803
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:803
 msgid "Default charset"
 msgstr "ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରସେଟ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:804
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:804
 msgid ""
 "The default text charset used when interpreting content with unspecified "
 "charset."
@@ -1097,450 +1097,450 @@ msgstr ""
 "ବିଷୟବସ୍ତୁକୁ ପରିବର୍ତ୍ତନ "
 "କରାଯାଇଥାଏ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:817
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:817
 msgid "Enable private browsing"
 msgstr "ବ୍ୟକ୍ତଗତ ବ୍ରାଉଜିଙ୍ଗକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:818
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:818
 msgid "Whether to enable private browsing"
 msgstr "ବ୍ୟକ୍ତଗତ ବ୍ରାଉଜିଙ୍ଗକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:830
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:830
 msgid "Enable developer extras"
 msgstr "ବିକାଶକାରୀ ଅତିରିକ୍ତଗୁଡ଼ିକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:831
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:831
 msgid "Whether to enable developer extras"
 msgstr "ବିକାଶକାରୀ ଅତିରିକ୍ତଗୁଡ଼ିକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:843
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:843
 msgid "Enable resizable text areas"
 msgstr "ଆକାର ପରିବର୍ତ୍ତନଶୀଳ ପାଠ୍ୟ ସ୍ଥାନକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:844
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:844
 msgid "Whether to enable resizable text areas"
 msgstr "ଆକାର ପରିବର୍ତ୍ତନଶୀଳ ପାଠ୍ୟ ସ୍ଥାନକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:859
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:859
 msgid "Enable tabs to links"
 msgstr "ଟ୍ୟାବଗୁଡ଼ିକୁ ସଂଯୋଗିକୀରେ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:860
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:860
 msgid "Whether to enable tabs to links"
 msgstr "ଟ୍ୟାବଗୁଡ଼ିକୁ ସଂଯୋଗିକୀରେ ସକ୍ରିୟ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:873
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:873
 msgid "Enable DNS prefetching"
 msgstr "DNS ପୂର୍ବ ଆନୟନକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:874
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:874
 msgid "Whether to enable DNS prefetching"
 msgstr "DNS ପୂର୍ବ ଆନୟନକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:886
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:886
 msgid "Enable Caret Browsing"
 msgstr "କେରେଟ ବ୍ରାଉଜିଙ୍ଗକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:887
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:887
 msgid "Whether to enable accessibility enhanced keyboard navigation"
 msgstr "ଅଭିଗମ୍ୟତା ଉନ୍ନତ କିବୋର୍ଡ ସଂଚାରଣକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:902
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:902
 msgid "Enable Fullscreen"
 msgstr "ସମ୍ପୂର୍ଣ୍ଣ ପରଦା ଅବସ୍ଥାକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:903
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:903
 #| msgid "Whether to enable the Javascriipt Fullscreen API"
 msgid "Whether to enable the Javascript Fullscreen API"
 msgstr "Javascript Fullscreen API କୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:915
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:915
 msgid "Print Backgrounds"
 msgstr "ପୃଷ୍ଠଭୂମିକୁ ମୁଦ୍ରଣ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:916
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:916
 msgid "Whether background images should be drawn during printing"
 msgstr "ପୃଷ୍ଠଭୂମି ପ୍ରତିଛବିଗୁଡ଼ିକୁ ମୁଦ୍ରଣ କରିବା ସମୟରେ ଆଣିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:934
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:934
 msgid "Enable WebAudio"
 msgstr "WebAudio କୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:935
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:935
 msgid "Whether WebAudio content should be handled"
 msgstr "WebAudio ବିଷୟବସ୍ତୁକୁ ନିୟନ୍ତ୍ରଣ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:949
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:949
 msgid "Enable WebGL"
 msgstr "WebGL କୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:950
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:950
 msgid "Whether WebGL content should be rendered"
 msgstr "WebGL ବିଷୟବସ୍ତୁକୁ ଚିତ୍ରଣ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:967
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:967
 msgid "Allow modal dialogs"
 msgstr "ମଡାଲ ସଂଳାପଗୁଡ଼ିକୁ ଅନୁମତି ଦିଅନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:968
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:968
 msgid "Whether it is possible to create modal dialogs"
 msgstr "ମଡାଲ ସଂଳାପ ନିର୍ମାଣ କରିବା ସମ୍ଭବ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:983
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:983
 msgid "Zoom Text Only"
 msgstr "କେବଳ ପାଠ୍ୟକୁ ବଡ଼ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:984
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:984
 msgid "Whether zoom level of web view changes only the text size"
 msgstr "ୱେବ ଦୃଶ୍ୟର ଆକାର ପରିବର୍ତ୍ତନ ସ୍ତର କେବଳ ପାଠ୍ୟ ଆକାରକୁ ପରିବର୍ତ୍ତନ କରିଥାଏ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:998
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:998
 msgid "JavaScript can access clipboard"
 msgstr "JavaScript କ୍ଲିପବୋର୍ଡରେ ପ୍ରବେଶ କରିପାରିବ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:999
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:999
 msgid "Whether JavaScript can access Clipboard"
 msgstr "JavaScript କ୍ଲିପବୋର୍ଡରେ ପ୍ରବେଶ କରିପାରିବ କି ନାହିଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1015
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1015
 msgid "Media playback requires user gesture"
 msgstr "ମିଡିଆ ପ୍ଲେବେକ୍ ବ୍ୟବହାରକାରୀ ଚେଷ୍ଟା ଆବଶ୍ୟକ କରିଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1016
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1016
 msgid "Whether media playback requires user gesture"
 msgstr "ମିଡିଆ ପ୍ଲେବେକ୍ ବ୍ୟବହାରକାରୀ ଚେଷ୍ଟା ଆବଶ୍ୟକ କରିଥାଏ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1030
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1030
 msgid "Media playback allows inline"
 msgstr "ମିଡିଆ ପ୍ଲେବେକ୍ ଇନଲାଇନରେ ଅନୁମତି ଦେଇଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1031
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1031
 msgid "Whether media playback allows inline"
 msgstr "ମିଡିଆ ପ୍ଲେବେକ୍ ଇନଲାଇନରେ ଅନୁମତି ଦେଇଥାଏ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1045
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1045
 msgid "Draw compositing indicators"
 msgstr "ମିଶ୍ରଣ ସୂଚକକୁ ଅଙ୍କନ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1046
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1046
 msgid "Whether to draw compositing borders and repaint counters"
 msgstr "ମିଶ୍ରଣ ଧାରଗୁଡ଼ିକୁ ଅଙ୍କନ କରିବା ଏବଂ କାଉଣ୍ଟରଗୁଡ଼ିକୁ ପୁଣି ରଙ୍ଗାଇବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1065
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1065
 msgid "Enable Site Specific Quirks"
 msgstr "ସାଇଟ ନିର୍ଦ୍ଦିଷ୍ଟ ବିଚିତ୍ରତାଗୁଡ଼ିକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1066
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1066
 msgid "Enables the site-specific compatibility workarounds"
 msgstr "ସାଇଟ ନିର୍ଦ୍ଦିଷ୍ଟ ସୁସଙ୍ଗତ କାର୍ଯ୍ୟଗୁଡ଼ିକୁ ସକ୍ରିୟ କରିଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1086
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1086
 msgid "Enable page cache"
 msgstr "ପୃଷ୍ଠା କ୍ୟାଶେକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1087
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1087
 msgid "Whether the page cache should be used"
 msgstr "ପୃଷ୍ଠା କ୍ୟାଶେକୁ ବ୍ୟବହାର କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1106
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1106
 msgid "User agent string"
 msgstr "ବ୍ୟବହାରକାରୀ ସଦସ୍ୟ ବାକ୍ୟଖଣ୍ଡ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1107
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1107
 msgid "The user agent string"
 msgstr "ବ୍ୟବହାରକାରୀ ସଦସ୍ୟ ବାକ୍ୟଖଣ୍ଡ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1119
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1119
 msgid "Enable smooth scrolling"
 msgstr "ସରଳ ଟଣାକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1120
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1120
 msgid "Whether to enable smooth scrolling"
 msgstr "ସରଳ ଟଣାକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1137
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1137
 msgid "Enable accelerated 2D canvas"
 msgstr "ତ୍ୱରାନିତ  2D କାନଭାସକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1138
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1138
 msgid "Whether to enable accelerated 2D canvas"
 msgstr "ତ୍ୱରାନିତ  2D କାନଭାସକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1153
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1153
 msgid "Write console messages on stdout"
 msgstr "stdout ରେ କୋନସୋଲ ସନ୍ଦେଶ ଲେଖନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1154
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1154
 msgid "Whether to write console messages on stdout"
 msgstr "stdout ରେ କୋନସୋଲ ସନ୍ଦେଶ ଲେଖିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1172
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1172
 #| msgid "Enable Media Stream"
 msgid "Enable MediaStream"
 msgstr "ମେଡିଆ ଧାରାକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1173
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1173
 #| msgid "Whether WebAudio content should be handled"
 msgid "Whether MediaStream content should be handled"
 msgstr "ମେଡିଆ ଧାରା ବିଷୟବସ୍ତୁକୁ ନିୟନ୍ତ୍ରଣ କରିବା ଉଚିତ କି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1192
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1192
 msgid "Enable Spatial Navigation"
 msgstr "ସ୍ପାସିଆଲ ଅନ୍ୱେଷଣକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1193
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1193
 #| msgid "Whether to enable Spatial Navigation"
 msgid "Whether to enable Spatial Navigation support."
 msgstr "ସ୍ପାସିଆଲ ଅନ୍ୱଷଣ ସହାୟତାକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି ନୁହଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1212
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1212
 #| msgid "Enable Media Stream"
 msgid "Enable MediaSource"
 msgstr "ମେଡିଆ ଉତ୍ସକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitSettings.cpp:1213
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1213
 #| msgid "Whether Media Stream should be enabled"
 msgid "Whether MediaSource should be enabled."
 msgstr "ମେଡିଆ ଉତ୍ସକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIRequest.cpp:95
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:105
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:109
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:743
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIRequest.cpp:95
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:105
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:109
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:743
 msgid "URI"
 msgstr "URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIRequest.cpp:96
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIRequest.cpp:96
 msgid "The URI to which the request will be made."
 msgstr "ଯେଉଁ URI ପାଇଁ ଏହି ଅନୁରୋଧଟି ପ୍ରସ୍ତୁତ ହୋଇଛି।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:106
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:106
 msgid "The URI for which the response was made."
 msgstr "ଯେଉଁ URI ପାଇଁ ଏହି ଉତ୍ତରଟି ପ୍ରସ୍ତୁତ ହୋଇଛି।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:117
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:117
 msgid "Status Code"
 msgstr "ସ୍ଥିତି ସଂକେତ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:118
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:118
 msgid "The status code of the response as returned by the server."
 msgstr "ସର୍ଭର ଠାରୁ ମିଳିଥିବା ଉତ୍ତରର ସ୍ଥିତି ସଂକେତ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:130
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:130
 msgid "Content Length"
 msgstr "ବିଷୟବସ୍ତୁ ଲମ୍ବ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:131
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:131
 msgid "The expected content length of the response."
 msgstr "ଉତ୍ତରର ଆଶାକରାଯାଇଥିବା ବିଷୟବସ୍ତୁ ଲମ୍ବ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:143
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:143
 msgid "MIME Type"
 msgstr "MIME ପ୍ରକାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:144
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:144
 msgid "The MIME type of the response"
 msgstr "ଉତ୍ତରର MIME ପ୍ରକାର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:156
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:156
 msgid "Suggested Filename"
 msgstr "ପ୍ରସ୍ଥାବିତ ଫାଇଲ ନାମ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:157
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:157
 msgid "The suggested filename for the URI response"
 msgstr "URI ଉତ୍ତର ପାଇଁ ପ୍ରସ୍ତାବିତ ଫାଇଲନାମ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:173
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:173
 msgid "HTTP Headers"
 msgstr "HTTP ଶୀର୍ଷକଗୁଡ଼ିକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitURIResponse.cpp:174
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:174
 #| msgid "The MIME type of the response"
 msgid "The The HTTP headers of the response"
 msgstr "ଉତ୍ତରର HTTP ଶୀର୍ଷକଗୁଡ଼ିକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:122
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:122
 msgid "Inspected URI"
 msgstr "ନିରୀକ୍ଷଣ କରୁଥିବା URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:123
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:123
 msgid "The URI that is currently being inspected"
 msgstr "ବର୍ତ୍ତମାନ ନିରୀକ୍ଷଣ କରାହୋଇଥିବା URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:134
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:134
 msgid "Attached Height"
 msgstr "ସଂଲଗ୍ନ ଉଚ୍ଚତା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebInspector.cpp:135
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:135
 msgid "The height that the inspector view should have when it is attached"
 msgstr "ସଂଲଗ୍ନ ଥିବା ସମୟରେ ନିରୀକ୍ଷକ ଦୃଶ୍ୟ ପାଖରେ ଥିବା ଉଚ୍ଚତା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:110
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:110
 msgid "The current active URI of the resource"
 msgstr "ଉତ୍ସର ବର୍ତ୍ତମାନ ସକ୍ରିୟ URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebResource.cpp:123
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:123
 msgid "The response of the resource"
 msgstr "ଉତ୍ସର ଉତ୍ତର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:460
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:460
 msgid "Select Files"
 msgstr "ଫାଇଲଗୁଡ଼ିକୁ ବାଛନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:460
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:460
 msgid "Select File"
 msgstr "ଫାଇଲକୁ ବାଛନ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:633
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:633
 msgid "Web Context"
 msgstr "ୱେବ ପ୍ରସଙ୍ଗ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:634
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:634
 msgid "The web context for the view"
 msgstr "ଦୃଶ୍ୟ  ପାଇଁ ଥିବା ୱେବ ବିଷୟବସ୍ତୁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:651
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:651
 #| msgid "WebView"
 msgid "Related WebView"
 msgstr "ସମ୍ପୃକ୍ତ ୱେବ ଦୃଶ୍ଯ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:652
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:652
 msgid ""
-"The related WebKitWebView used when creating the view to share the same web "
+"The related CyberKitWebView used when creating the view to share the same web "
 "process"
 msgstr ""
-"ସମ୍ପୃକ୍ତ WebKitWebView କୁ ସମାନ ୱେବ ପଦ୍ଧତିକୁ ସହଭାଗ କରିବା ସମୟରେ ପ୍ରସ୍ତୁତ "
+"ସମ୍ପୃକ୍ତ CyberKitWebView କୁ ସମାନ ୱେବ ପଦ୍ଧତିକୁ ସହଭାଗ କରିବା ସମୟରେ ପ୍ରସ୍ତୁତ "
 "କରିବାକୁ ବ୍ୟବହାର କରାଯାଇଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:668
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:668
 #| msgid "WebView"
 msgid "WebView settings"
 msgstr "ୱେବ ଦୃଶ୍ଯ ସେଟିଙ୍ଗଗୁଡିକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:669
-#| msgid "The WebKitWebViewGroup of the view"
-msgid "The WebKitSettings of the view"
-msgstr "ଦୃଶ୍ୟର WebKitSettings"
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:669
+#| msgid "The CyberKitWebViewGroup of the view"
+msgid "The CyberKitSettings of the view"
+msgstr "ଦୃଶ୍ୟର CyberKitSettings"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:685
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:685
 msgid "WebView user content manager"
 msgstr "WebView ବ୍ୟବହାରକାରୀ ବିଷୟବସ୍ତୁ ପରିଚାଳକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:686
-#| msgid "The WebKitWebViewGroup of the view"
-msgid "The WebKitUserContentManager of the view"
-msgstr "ଦୃଶ୍ୟର WebKitUserContentManager"
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:686
+#| msgid "The CyberKitWebViewGroup of the view"
+msgid "The CyberKitUserContentManager of the view"
+msgstr "ଦୃଶ୍ୟର CyberKitUserContentManager"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:699
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:699
 msgid "Title"
 msgstr "ଶୀର୍ଷକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:700
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:700
 msgid "Main frame document title"
 msgstr "ମୂଖ୍ୟ ଫ୍ରେମ ଦଲିଲ ଶୀର୍ଷକ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:718
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:718
 msgid "Estimated Load Progress"
 msgstr "ଆନୁମାନିକ ଧାରଣ ପ୍ରଗତି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:719
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:719
 msgid "An estimate of the percent completion for a document load"
 msgstr "ଏକ ଦଲିଲ ଧାରଣ ପାଇଁ ଆନୁମାନିକ ସମ୍ପର୍ଣ୍ଣତା ପ୍ରତିଶତ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:731
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:731
 msgid "Favicon"
 msgstr "ଫେଭିକନ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:732
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:732
 msgid "The favicon associated to the view, if any"
 msgstr "ଦୃଶ୍ୟ ସହିତ ସମ୍ପୃକ୍ତ ଫେଭିକନ, ଯଦି ଥାଏ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:744
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:744
 msgid "The current active URI of the view"
 msgstr "ଦୃଶ୍ଯର ବର୍ତ୍ତମାନ ସକ୍ରିୟ ଥିବା URI"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:758
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:758
 msgid "The zoom level of the view content"
 msgstr "ଦୃଶ୍ୟ ବିଷୟବସ୍ତୁର ସାନ ବଡ଼ କରିବା ସ୍ତର"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:776
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:776
 msgid "Whether the view is loading a page"
 msgstr "ଦୃଶ୍ୟଟି ପୃଷ୍ଠା ଧାରଣ କରୁଛି କି ନାହିଁ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:2725
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:2725
 msgid "An exception was raised in JavaScript"
 msgstr "JavaScript ରେ ଏକ ବ୍ୟତିକ୍ରମକୁ ଉଲ୍ଲେଖ କରାଯାଇଛି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWebView.cpp:3174
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:3174
 msgid "There was an error creating the snapshot"
 msgstr "ଆଶୁଚିତ୍ର ନିର୍ମାଣ କରିବା ସମୟରେ ଏକ ତ୍ରୁଟି ଘଟିଛି।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:210
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:210
 msgid "Geometry"
 msgstr "ଜ୍ଯାମିତି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:211
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:211
 msgid "The size and position of the window on the screen."
 msgstr "ପରଦାରେ ଥିବା ୱିଣ୍ଡୋର ଆକାର ଏବଂ ଅବସ୍ଥାନ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:223
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:223
 msgid "Toolbar Visible"
 msgstr "ସାଧନ ପଟି ଦେଖାଯାଉଛି"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:224
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:224
 msgid "Whether the toolbar should be visible for the window."
 msgstr "ୱିଣ୍ଡୋ ପାଇଁ ସାଧନ ପଟିକୁ ଦ୍ରୁଶ୍ଯ କରିବା ଉଚିତ କି ନୁହେଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:236
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:236
 msgid "Statusbar Visible"
 msgstr "ସ୍ଥିତିପଟିଟି ଦୃଶ୍ୟମାନ ଅଟେ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:237
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:237
 msgid "Whether the statusbar should be visible for the window."
 msgstr "ୱିଣ୍ଡୋ ପାଇଁ  ସ୍ଥିତି ପଟିକୁ ଦର୍ଶାଇବା ଉଚିତ କି ନୁହେଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:249
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:249
 msgid "Scrollbars Visible"
 msgstr "ସ୍କ୍ରୋଲବାର ଦୃଶ୍ଯମାନ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:250
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:250
 msgid "Whether the scrollbars should be visible for the window."
 msgstr "ୱିଣ୍ଡୋ ପାଇଁ ସ୍କ୍ରୋଲବାରଗୁଡ଼ିକୁ ଦର୍ଶାଇବା ଉଚିତ କି ନୁହେଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:262
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:262
 msgid "Menubar Visible"
 msgstr "ତାଲିକାପଟି ଦୃଶ୍ଯମାନ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:263
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:263
 msgid "Whether the menubar should be visible for the window."
 msgstr "ୱିଣ୍ଡୋ ପାଇଁ ତାଲିକା ପଟିକୁ ଦୃଶ୍ୟମାନ କରିବା ଉଚିତ କି ନୁହେଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:275
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:275
 msgid "Locationbar Visible"
 msgstr "ସ୍ଥିତିପଟି ଦୃଶ୍ୟମାନ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:276
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:276
 msgid "Whether the locationbar should be visible for the window."
 msgstr "ୱିଣ୍ଡୋ ପାଇଁ  ସ୍ଥିତି ପଟିକୁ ଦ୍ରୁଶ୍ଯମାନ କରିବା ଉଚିତ କି ନୁହେଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:287
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:287
 msgid "Resizable"
 msgstr "ଆକାର ପରିବର୍ତ୍ତନ ଯୋଗ୍ଯ"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:288
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:288
 msgid "Whether the window can be resized."
 msgstr "ୱିଣ୍ଡୋର ଆକାର ପରିବର୍ତ୍ତନଶୀଳ କି ନୁହଁ।"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:300
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:300
 msgid "Fullscreen"
 msgstr "ସମ୍ପୂର୍ଣ ପରଦା"
 
-#: ../../../../WebKit2/UIProcess/API/gtk/WebKitWindowProperties.cpp:301
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:301
 msgid "Whether window will be displayed fullscreen."
 msgstr "ୱିଣ୍ଡୋକୁ ସମ୍ପୂର୍ଣ୍ଣ ପରଦାରେ ଦର୍ଶାଯିବ କି।"
 
-#: ../../../../WebKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:82
-#: ../../../../WebKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:147
+#: ../../../../CyberKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:82
+#: ../../../../CyberKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:147
 msgid "Web Inspector"
 msgstr "ୱେବ ପରିଦର୍ଶକ"
 
@@ -2023,8 +2023,8 @@ msgstr "ୱେବ ପରିଦର୍ଶକ"
 #~ msgid "Respect Image Orientation"
 #~ msgstr "ପ୍ରତିଛବି ଆବର୍ତ୍ତନକୁ ଗ୍ରହଣ କରନ୍ତୁ"
 
-#~ msgid "Whether WebKit should respect image orientation."
-#~ msgstr "WebKit ପ୍ରତିଛବି ଆବର୍ତ୍ତନକୁ ଗ୍ରହଣ କରିବା ଉଚିତ କି ନୁହଁ।"
+#~ msgid "Whether CyberKit should respect image orientation."
+#~ msgstr "CyberKit ପ୍ରତିଛବି ଆବର୍ତ୍ତନକୁ ଗ୍ରହଣ କରିବା ଉଚିତ କି ନୁହଁ।"
 
 #~ msgid "Whether background images should be printed."
 #~ msgstr "ପୃଷ୍ଠଭୂମି ପ୍ରତିଛବିଗୁଡ଼ିକୁ ମୁଦ୍ରଣ କରିବା ଉଚିତ କି ନୁହଁ।"
@@ -2113,8 +2113,8 @@ msgstr "ୱେବ ପରିଦର୍ଶକ"
 #~ msgid "User Agent"
 #~ msgstr "ବ୍ୟବହାରକାରୀ ସଦସ୍ଯ"
 
-#~ msgid "The User-Agent string used by WebKitGtk"
-#~ msgstr "WebKitGtk ଦ୍ୱାରା ବ୍ୟବହୃତ ବ୍ୟବହାରକାରୀ ସଦସ୍ଯ"
+#~ msgid "The User-Agent string used by CyberKitGtk"
+#~ msgstr "CyberKitGtk ଦ୍ୱାରା ବ୍ୟବହୃତ ବ୍ୟବହାରକାରୀ ସଦସ୍ଯ"
 
 #~ msgid "Whether JavaScript can open windows automatically"
 #~ msgstr "JavaScript ସ୍ୱୟଂଚାଳିତ ଭାବରେ ୱିଣ୍ଡୋଗୁଡ଼ିକୁ ଖୋଲିପାରିବ କି ନାହିଁ"
@@ -2185,11 +2185,11 @@ msgstr "ୱେବ ପରିଦର୍ଶକ"
 #~ msgid "Whether accelerated compositing should be enabled"
 #~ msgstr "ତ୍ୱରାନିତ ସଂଯୋଜନକୁ ସକ୍ରିୟ କରିବା ଉଚିତ କି"
 
-#~ msgid "WebKit prefetches domain names"
-#~ msgstr "WebKit ଡମେନ ନାମଗୁଡ଼ିକୁ ପୂର୍ବରୁ ଆଣିଥାଏ"
+#~ msgid "CyberKit prefetches domain names"
+#~ msgstr "CyberKit ଡମେନ ନାମଗୁଡ଼ିକୁ ପୂର୍ବରୁ ଆଣିଥାଏ"
 
-#~ msgid "Whether WebKit prefetches domain names"
-#~ msgstr "WebKit ଡମେନ ନାମଗୁଡ଼ିକୁ ପୂର୍ବରୁ ଆଣିଥାଏ କି"
+#~ msgid "Whether CyberKit prefetches domain names"
+#~ msgstr "CyberKit ଡମେନ ନାମଗୁଡ଼ିକୁ ପୂର୍ବରୁ ଆଣିଥାଏ କି"
 
 #~ msgid "Enable display of insecure content"
 #~ msgstr "ଅସୁରକ୍ଷିତ ବିଷୟବସ୍ତୁର ପ୍ରଦର୍ଶନକୁ ସକ୍ରିୟ କରନ୍ତୁ"
@@ -2224,17 +2224,17 @@ msgstr "ୱେବ ପରିଦର୍ଶକ"
 #~ msgid "Settings"
 #~ msgstr "ସେଟିଙ୍ଗଗୁଡିକ"
 
-#~ msgid "An associated WebKitWebSettings instance"
-#~ msgstr "ଗୋଟିଏ ସମ୍ପୃକ୍ତ WebKitୱେବ ସଂରଚନା ସ୍ଥିତି"
+#~ msgid "An associated CyberKitWebSettings instance"
+#~ msgstr "ଗୋଟିଏ ସମ୍ପୃକ୍ତ CyberKitୱେବ ସଂରଚନା ସ୍ଥିତି"
 
-#~ msgid "The associated WebKitWebInspector instance"
-#~ msgstr "ସମ୍ପୃକ୍ତ WebKitୱେବ ନିରୀକ୍ଷକ ସ୍ଥିତି"
+#~ msgid "The associated CyberKitWebInspector instance"
+#~ msgstr "ସମ୍ପୃକ୍ତ CyberKitୱେବ ନିରୀକ୍ଷକ ସ୍ଥିତି"
 
 #~ msgid "Viewport Attributes"
 #~ msgstr "ଦୃଶ୍ୟ ପୋର୍ଟ ଗୁଣଗୁଡିକ"
 
-#~ msgid "The associated WebKitViewportAttributes instance"
-#~ msgstr "ସମ୍ପୃକ୍ତ WebKitଦୃଶ୍ୟ ପୋର୍ଟ ଗୁଣଗୁଡ଼ିକର ସ୍ଥିତି"
+#~ msgid "The associated CyberKitViewportAttributes instance"
+#~ msgstr "ସମ୍ପୃକ୍ତ CyberKitଦୃଶ୍ୟ ପୋର୍ଟ ଗୁଣଗୁଡ଼ିକର ସ୍ଥିତି"
 
 #~ msgid "Editable"
 #~ msgstr "ସମ୍ପାଦନଯୋଗ୍ୟ"
@@ -2272,8 +2272,8 @@ msgstr "ୱେବ ପରିଦର୍ଶକ"
 #~ msgid "Icon URI"
 #~ msgstr "ଚିତ୍ରସଙ୍କେତ URI"
 
-#~ msgid "The URI for the favicon for the #WebKitWebView."
-#~ msgstr "#WebKitୱେବ ଦୃଶ୍ୟ ପାଇଁ ଫେବିକନ URI"
+#~ msgid "The URI for the favicon for the #CyberKitWebView."
+#~ msgstr "#CyberKitୱେବ ଦୃଶ୍ୟ ପାଇଁ ଫେବିକନ URI"
 
 #~| msgid "WebView"
 #~ msgid "WebView Group"

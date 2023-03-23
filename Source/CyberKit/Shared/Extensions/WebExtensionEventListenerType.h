@@ -27,7 +27,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 // If you are adding a new event, you will also need to increase 'currentBackgroundPageListenerStateVersion'
 // so that your new event gets fired to non-persistent background pages.
@@ -91,6 +91,6 @@ enum class WebExtensionEventListenerType : uint8_t {
     DownloadsOnChanged,
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

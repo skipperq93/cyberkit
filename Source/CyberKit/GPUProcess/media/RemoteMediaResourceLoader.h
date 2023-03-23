@@ -31,7 +31,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteMediaPlayerProxy;
 
@@ -48,6 +48,6 @@ private:
     WeakPtr<RemoteMediaPlayerProxy> m_remoteMediaPlayerProxy;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

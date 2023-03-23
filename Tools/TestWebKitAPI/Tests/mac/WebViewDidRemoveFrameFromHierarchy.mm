@@ -48,7 +48,7 @@ static bool didRemoveFrame;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DidRemoveFrameFromHierarchy)
 {
@@ -80,4 +80,4 @@ TEST(CyberKitLegacy, DidRemoveFrameFromHierarchy)
     EXPECT_FALSE(didRemoveFrame);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

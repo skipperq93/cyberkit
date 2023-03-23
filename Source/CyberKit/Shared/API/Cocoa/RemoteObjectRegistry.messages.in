@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> RemoteObjectRegistry NotRefCounted {
-    InvokeMethod(WebKit::RemoteObjectInvocation invocation)
-    CallReplyBlock(uint64_t replyID, WebKit::UserData blockInvocation);
+    InvokeMethod(CyberKit::RemoteObjectInvocation invocation)
+    CallReplyBlock(uint64_t replyID, CyberKit::UserData blockInvocation);
     ReleaseUnusedReplyBlock(uint64_t replyID);
 }

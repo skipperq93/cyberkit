@@ -36,7 +36,7 @@
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
@@ -71,7 +71,7 @@ static void runUntilTasksInFlight(size_t count)
         if (WKGetWebURLSchemeTaskInstanceCount() == count)
             return;
 
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     }
 }
 

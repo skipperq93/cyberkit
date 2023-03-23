@@ -53,7 +53,7 @@
 #include "RemoteTexture.h"
 #include "RemoteTextureView.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 ObjectHeap::ObjectHeap() = default;
 
@@ -392,6 +392,6 @@ PAL::WebGPU::TextureView* ObjectHeap::convertTextureViewFromBacking(WebGPUIdenti
     return &std::get<IPC::ScopedActiveMessageReceiveQueue<RemoteTextureView>>(iterator->value)->backing();
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // HAVE(GPU_PROCESS)

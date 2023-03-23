@@ -28,7 +28,7 @@
 #include <CyberCore/LoaderStrategy.h>
 #include <CyberCore/PlatformStrategies.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcessPlatformStrategies : public CyberCore::PlatformStrategies {
 public:
@@ -42,4 +42,4 @@ private:
     CyberCore::BlobRegistry* createBlobRegistry() override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

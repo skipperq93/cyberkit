@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUVertexAttribute.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<VertexAttribute> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::VertexAttribute& vertexAttribute)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::VertexAttribute> ConvertFromBackingContext::convertFr
     return { { vertexAttribute.format, vertexAttribute.offset, vertexAttribute.shaderLocation } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -27,12 +27,12 @@
 
 #if ENABLE(GPU_PROCESS) && !PLATFORM(COCOA)
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WK_EXPORT int GPUProcessMain(int argc, char** argv);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

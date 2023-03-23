@@ -28,7 +28,7 @@
 #import "APIDictionary.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::Dictionary> {
     using WrapperClass = NSDictionary;

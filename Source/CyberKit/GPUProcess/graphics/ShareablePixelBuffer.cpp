@@ -28,7 +28,7 @@
 
 #include "SharedMemory.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RefPtr<ShareablePixelBuffer> ShareablePixelBuffer::tryCreate(const PixelBufferFormat& format, const IntSize& size)
@@ -60,4 +60,4 @@ RefPtr<PixelBuffer> ShareablePixelBuffer::createScratchPixelBuffer(const IntSize
     return ShareablePixelBuffer::tryCreate(m_format, size);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

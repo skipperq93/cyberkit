@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit::WebPushD {
+namespace CyberKit::WebPushD {
 
 // If an origin processes more than this many silent pushes, then it will be unsubscribed from push.
 constexpr unsigned maxSilentPushCount = 3;
@@ -106,4 +106,4 @@ inline bool daemonMessageTypeSendsReply(DaemonMessageType messageType)
     return false;
 }
 
-} // namespace WebKit::WebPushD
+} // namespace CyberKit::WebPushD

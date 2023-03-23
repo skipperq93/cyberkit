@@ -27,7 +27,7 @@
 
 #include <wtf/text/ASCIILiteral.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace LaunchServicesDatabaseXPCConstants {
 
@@ -38,4 +38,4 @@ constexpr auto xpcLaunchServicesDatabaseXPCEndpointNameKey = "xpc-endpoint-launc
 constexpr auto xpcLaunchServicesDatabaseXPCEndpointMessageName = "xpc-endpoint-launch-services-database-message"_s;
 } // namespace LaunchServicesDatabaseXPCConstants
 
-} // namespace WebKit
+} // namespace CyberKit

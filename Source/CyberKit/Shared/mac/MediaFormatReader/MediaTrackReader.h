@@ -47,7 +47,7 @@ class TrackPrivateBase;
 class VideoTrackPrivate;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaFormatReader;
 
@@ -79,7 +79,7 @@ private:
     MediaTrackReader(Allocator&&, const MediaFormatReader&, CMMediaType, uint64_t, std::optional<bool>);
 
     // CMBaseClass
-    String debugDescription() const final { return "WebKit::MediaTrackReader"_s; }
+    String debugDescription() const final { return "CyberKit::MediaTrackReader"_s; }
     OSStatus copyProperty(CFStringRef, CFAllocatorRef, void* copiedValue) final;
     void finalize() final;
 
@@ -135,6 +135,6 @@ constexpr MediaTrackReader::WrapperClass MediaTrackReader::wrapperClass()
     };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

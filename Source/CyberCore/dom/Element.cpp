@@ -1185,7 +1185,7 @@ void Element::scrollTo(const ScrollToOptions& options, ScrollClamping clamping, 
 
     if (!document().settings().CSSOMViewScrollingAPIEnabled()) {
         // If the element is the root element and document is in quirks mode, terminate these steps.
-        // Note that WebKit always uses quirks mode document scrolling behavior. See Document::scrollingElement().
+        // Note that CyberKit always uses quirks mode document scrolling behavior. See Document::scrollingElement().
         if (this == document().documentElement())
             return;
     }
@@ -1463,7 +1463,7 @@ int Element::clientWidth()
         // itself and any caption boxes, and table grid box is a block-level box that
         // contains the table's internal table boxes. When table's border is specified
         // in CSS, the border is added to table grid box, not table wrapper box.
-        // Currently, WebKit doesn't have table wrapper box, and we are supposed to
+        // Currently, CyberKit doesn't have table wrapper box, and we are supposed to
         // retrieve clientWidth/Height from table wrapper box, not table grid box. So
         // when we retrieve clientWidth/Height, it includes table's border size.
         if (renderer->isTable())
@@ -1496,7 +1496,7 @@ int Element::clientHeight()
         // itself and any caption boxes, and table grid box is a block-level box that
         // contains the table's internal table boxes. When table's border is specified
         // in CSS, the border is added to table grid box, not table wrapper box.
-        // Currently, WebKit doesn't have table wrapper box, and we are supposed to
+        // Currently, CyberKit doesn't have table wrapper box, and we are supposed to
         // retrieve clientWidth/Height from table wrapper box, not table grid box. So
         // when we retrieve clientWidth/Height, it includes table's border size.
         if (renderer->isTable())
@@ -3635,7 +3635,7 @@ void Element::dispatchBlurEvent(RefPtr<Element>&& newFocusedElement)
     dispatchEvent(FocusEvent::create(eventNames().blurEvent, Event::CanBubble::No, Event::IsCancelable::No, document().windowProxy(), 0, WTFMove(newFocusedElement)));
 }
 
-void Element::dispatchWebKitImageReadyEventForTesting()
+void Element::dispatchCyberKitImageReadyEventForTesting()
 {
     if (document().settings().webkitImageReadyEventEnabled())
         dispatchEvent(Event::create("webkitImageFrameReady"_s, Event::CanBubble::Yes, Event::IsCancelable::Yes));
@@ -3971,7 +3971,7 @@ const RenderStyle* Element::resolveComputedStyle(ResolveComputedStyleMode mode)
 
     auto* computedStyle = ancestorWithValidStyle ? ancestorWithValidStyle->existingComputedStyle() : nullptr;
 
-    // On iOS request delegates called during styleForElement may result in re-entering WebKit and killing the style resolver.
+    // On iOS request delegates called during styleForElement may result in re-entering CyberKit and killing the style resolver.
     Style::PostResolutionCallbackDisabler disabler(document(), Style::PostResolutionCallbackDisabler::DrainCallbacks::No);
 
     // Resolve and cache styles starting from the most distant ancestor.

@@ -54,7 +54,7 @@ enum class CurrentQueryBehavior { Interrupt, RunToCompletion };
 class DatabaseTracker {
     WTF_MAKE_NONCOPYABLE(DatabaseTracker); WTF_MAKE_FAST_ALLOCATED;
 public:
-    // FIXME: This is a hack so we can easily delete databases from the UI process in WebKit2.
+    // FIXME: This is a hack so we can easily delete databases from the UI process in CyberKit2.
     WEBCORE_EXPORT static std::unique_ptr<DatabaseTracker> trackerWithDatabasePath(const String& databasePath);
 
     static void initializeTracker(const String& databasePath);

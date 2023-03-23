@@ -42,7 +42,7 @@ enum {
     PROP_LAST
 };
 
-struct _WebKitGLVideoSinkPrivate {
+struct _CyberKitGLVideoSinkPrivate {
     GRefPtr<GstElement> appSink;
     MediaPlayerPrivateGStreamer* mediaPlayerPrivate;
 };
@@ -54,14 +54,14 @@ GST_DEBUG_CATEGORY_STATIC(webkit_gl_video_sink_debug);
 static GstStaticPadTemplate sinkTemplate = GST_STATIC_PAD_TEMPLATE("sink", GST_PAD_SINK, GST_PAD_ALWAYS, GST_STATIC_CAPS_ANY);
 
 #define webkit_gl_video_sink_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitGLVideoSink, webkit_gl_video_sink, GST_TYPE_BIN,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitGLVideoSink, webkit_gl_video_sink, GST_TYPE_BIN,
     GST_DEBUG_CATEGORY_INIT(webkit_gl_video_sink_debug, "webkitglvideosink", 0, "GL video sink element"))
 
 static void webKitGLVideoSinkConstructed(GObject* object)
 {
     GST_CALL_PARENT(G_OBJECT_CLASS, constructed, (object));
 
-    WebKitGLVideoSink* sink = WEBKIT_GL_VIDEO_SINK(object);
+    CyberKitGLVideoSink* sink = WEBKIT_GL_VIDEO_SINK(object);
 
     GST_OBJECT_FLAG_SET(GST_OBJECT_CAST(sink), GST_ELEMENT_FLAG_SINK);
     gst_bin_set_suppressed_flags(GST_BIN_CAST(sink), static_cast<GstElementFlags>(GST_ELEMENT_FLAG_SOURCE | GST_ELEMENT_FLAG_SINK));
@@ -112,13 +112,13 @@ void webKitGLVideoSinkFinalize(GObject* object)
 {
     ASSERT(isMainThread());
 
-    WebKitGLVideoSink* sink = WEBKIT_GL_VIDEO_SINK(object);
-    WebKitGLVideoSinkPrivate* priv = sink->priv;
+    CyberKitGLVideoSink* sink = WEBKIT_GL_VIDEO_SINK(object);
+    CyberKitGLVideoSinkPrivate* priv = sink->priv;
 
     if (priv->mediaPlayerPrivate)
         g_signal_handlers_disconnect_by_data(priv->appSink.get(), priv->mediaPlayerPrivate);
 
-    GST_DEBUG_OBJECT(object, "WebKitGLVideoSink finalized.");
+    GST_DEBUG_OBJECT(object, "CyberKitGLVideoSink finalized.");
 
     GST_CALL_PARENT(G_OBJECT_CLASS, finalize, (object));
 }
@@ -183,7 +183,7 @@ static GstStateChangeReturn webKitGLVideoSinkChangeState(GstElement* element, Gs
 
 static void webKitGLVideoSinkGetProperty(GObject* object, guint propertyId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitGLVideoSink* sink = WEBKIT_GL_VIDEO_SINK(object);
+    CyberKitGLVideoSink* sink = WEBKIT_GL_VIDEO_SINK(object);
 
     switch (propertyId) {
     case PROP_STATS:
@@ -200,7 +200,7 @@ static void webKitGLVideoSinkGetProperty(GObject* object, guint propertyId, GVal
     }
 }
 
-static void webkit_gl_video_sink_class_init(WebKitGLVideoSinkClass* klass)
+static void webkit_gl_video_sink_class_init(CyberKitGLVideoSinkClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     GstElementClass* elementClass = GST_ELEMENT_CLASS(klass);
@@ -210,7 +210,7 @@ static void webkit_gl_video_sink_class_init(WebKitGLVideoSinkClass* klass)
     objectClass->get_property = webKitGLVideoSinkGetProperty;
 
     gst_element_class_add_pad_template(elementClass, gst_static_pad_template_get(&sinkTemplate));
-    gst_element_class_set_static_metadata(elementClass, "WebKit GL video sink", "Sink/Video", "Renders video", "Philippe Normand <philn@igalia.com>");
+    gst_element_class_set_static_metadata(elementClass, "CyberKit GL video sink", "Sink/Video", "Renders video", "Philippe Normand <philn@igalia.com>");
 
     g_object_class_install_property(objectClass, PROP_STATS, g_param_spec_boxed("stats",
         nullptr, nullptr, GST_TYPE_STRUCTURE, static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
@@ -218,9 +218,9 @@ static void webkit_gl_video_sink_class_init(WebKitGLVideoSinkClass* klass)
     elementClass->change_state = GST_DEBUG_FUNCPTR(webKitGLVideoSinkChangeState);
 }
 
-void webKitGLVideoSinkSetMediaPlayerPrivate(WebKitGLVideoSink* sink, MediaPlayerPrivateGStreamer* player)
+void webKitGLVideoSinkSetMediaPlayerPrivate(CyberKitGLVideoSink* sink, MediaPlayerPrivateGStreamer* player)
 {
-    WebKitGLVideoSinkPrivate* priv = sink->priv;
+    CyberKitGLVideoSinkPrivate* priv = sink->priv;
 
     priv->mediaPlayerPrivate = player;
     webKitVideoSinkSetMediaPlayerPrivate(priv->appSink.get(), priv->mediaPlayerPrivate);
@@ -229,7 +229,7 @@ void webKitGLVideoSinkSetMediaPlayerPrivate(WebKitGLVideoSink* sink, MediaPlayer
 bool webKitGLVideoSinkProbePlatform()
 {
     if (!PlatformDisplay::sharedDisplayForCompositing().gstGLContext()) {
-        GST_WARNING("WebKit shared GL context is not available.");
+        GST_WARNING("CyberKit shared GL context is not available.");
         return false;
     }
 

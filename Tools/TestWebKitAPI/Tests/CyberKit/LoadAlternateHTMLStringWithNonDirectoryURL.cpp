@@ -36,7 +36,7 @@
 #include <CyberKit/WKPage.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 static bool didFinishLoad = false;
     
@@ -64,14 +64,14 @@ static void loadAlternateHTMLString(WKURLRef baseURL, WKURLRef unreachableURL)
     Util::run(&didFinishLoad);
 }
 
-TEST(WebKit, LoadAlternateHTMLStringWithNonDirectoryURL)
+TEST(CyberKit, LoadAlternateHTMLStringWithNonDirectoryURL)
 {
     // Call WKPageLoadAlternateHTMLString() with fileURL which does not point to a directory.
     WKRetainPtr<WKURLRef> fileURL = adoptWK(Util::createURLForResource("simple", "html"));
     loadAlternateHTMLString(fileURL.get(), fileURL.get());
 }
 
-TEST(WebKit, LoadAlternateHTMLStringWithEmptyBaseURL)
+TEST(CyberKit, LoadAlternateHTMLStringWithEmptyBaseURL)
 {
     // Call WKPageLoadAlternateHTMLString() with empty baseURL to make sure this test works
     // when baseURL does not grant read access to the unreachableURL. We use a separate test
@@ -80,6 +80,6 @@ TEST(WebKit, LoadAlternateHTMLStringWithEmptyBaseURL)
     loadAlternateHTMLString(nullptr, unreachableURL.get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

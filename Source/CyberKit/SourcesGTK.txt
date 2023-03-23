@@ -38,14 +38,14 @@ NetworkProcess/cache/NetworkCacheDataGLib.cpp
 NetworkProcess/cache/NetworkCacheIOChannelGLib.cpp
 
 NetworkProcess/glib/DNSCache.cpp
-NetworkProcess/glib/WebKitCachedResolver.cpp
-NetworkProcess/glib/WebKitOverridingResolver.cpp
+NetworkProcess/glib/CyberKitCachedResolver.cpp
+NetworkProcess/glib/CyberKitOverridingResolver.cpp
 
 NetworkProcess/soup/NetworkDataTaskSoup.cpp
 NetworkProcess/soup/NetworkProcessMainSoup.cpp
 NetworkProcess/soup/NetworkProcessSoup.cpp
 NetworkProcess/soup/NetworkSessionSoup.cpp
-NetworkProcess/soup/WebKitDirectoryInputStream.cpp
+NetworkProcess/soup/CyberKitDirectoryInputStream.cpp
 NetworkProcess/soup/WebSocketTaskSoup.cpp
 
 NetworkProcess/webrtc/LibWebRTCSocketClient.cpp
@@ -65,13 +65,13 @@ Platform/unix/SharedMemoryUnix.cpp
 
 Shared/API/c/cairo/WKImageCairo.cpp
 
-Shared/API/glib/WebKitContextMenu.cpp @no-unify
-Shared/API/glib/WebKitContextMenuActions.cpp @no-unify
-Shared/API/glib/WebKitContextMenuItem.cpp @no-unify
-Shared/API/glib/WebKitHitTestResult.cpp @no-unify
-Shared/API/glib/WebKitURIRequest.cpp @no-unify
-Shared/API/glib/WebKitURIResponse.cpp @no-unify
-Shared/API/glib/WebKitUserMessage.cpp @no-unify
+Shared/API/glib/CyberKitContextMenu.cpp @no-unify
+Shared/API/glib/CyberKitContextMenuActions.cpp @no-unify
+Shared/API/glib/CyberKitContextMenuItem.cpp @no-unify
+Shared/API/glib/CyberKitHitTestResult.cpp @no-unify
+Shared/API/glib/CyberKitURIRequest.cpp @no-unify
+Shared/API/glib/CyberKitURIResponse.cpp @no-unify
+Shared/API/glib/CyberKitUserMessage.cpp @no-unify
 
 Shared/CoordinatedGraphics/CoordinatedGraphicsScene.cpp
 Shared/CoordinatedGraphics/SimpleViewportController.cpp
@@ -126,75 +126,75 @@ UIProcess/API/glib/APIContentRuleListStoreGLib.cpp @no-unify
 UIProcess/API/glib/APISerializedScriptValueGLib.cpp @no-unify
 UIProcess/API/glib/IconDatabase.cpp @no-unify
 UIProcess/API/glib/InputMethodFilter.cpp @no-unify
-UIProcess/API/glib/WebKitApplicationInfo.cpp @no-unify
-UIProcess/API/glib/WebKitAuthenticationRequest.cpp @no-unify
-UIProcess/API/glib/WebKitAutomationSession.cpp @no-unify
-UIProcess/API/glib/WebKitBackForwardList.cpp @no-unify
-UIProcess/API/glib/WebKitBackForwardListItem.cpp @no-unify
-UIProcess/API/glib/WebKitContextMenuClient.cpp @no-unify
-UIProcess/API/glib/WebKitCookieManager.cpp @no-unify
-UIProcess/API/glib/WebKitCredential.cpp @no-unify
-UIProcess/API/glib/WebKitDeviceInfoPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitDownload.cpp @no-unify
-UIProcess/API/glib/WebKitDownloadClient.cpp @no-unify
-UIProcess/API/glib/WebKitEditorState.cpp @no-unify
-UIProcess/API/glib/WebKitError.cpp @no-unify
-UIProcess/API/glib/WebKitFaviconDatabase.cpp @no-unify
-UIProcess/API/glib/WebKitFileChooserRequest.cpp @no-unify
-UIProcess/API/glib/WebKitFindController.cpp @no-unify
-UIProcess/API/glib/WebKitFormClient.cpp @no-unify
-UIProcess/API/glib/WebKitFormSubmissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitGeolocationManager.cpp @no-unify
-UIProcess/API/glib/WebKitGeolocationPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitIconLoadingClient.cpp @no-unify
-UIProcess/API/glib/WebKitInitialize.cpp @no-unify
-UIProcess/API/glib/WebKitInjectedBundleClient.cpp @no-unify
-UIProcess/API/glib/WebKitInputMethodContext.cpp @no-unify
-UIProcess/API/glib/WebKitInstallMissingMediaPluginsPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitJavascriptResult.cpp @no-unify
-UIProcess/API/glib/WebKitMediaKeySystemPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitMemoryPressureSettings.cpp @no-unify
-UIProcess/API/glib/WebKitNavigationAction.cpp @no-unify
-UIProcess/API/glib/WebKitNavigationClient.cpp @no-unify
-UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp @no-unify
-UIProcess/API/glib/WebKitNetworkProxySettings.cpp @no-unify
-UIProcess/API/glib/WebKitNetworkSession.cpp @no-unify
-UIProcess/API/glib/WebKitNotification.cpp @no-unify
-UIProcess/API/glib/WebKitNotificationPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitNotificationProvider.cpp @no-unify
-UIProcess/API/glib/WebKitOptionMenu.cpp @no-unify
-UIProcess/API/glib/WebKitOptionMenuItem.cpp @no-unify
-UIProcess/API/glib/WebKitPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitPermissionStateQuery.cpp @no-unify
-UIProcess/API/glib/WebKitPointerLockPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitPolicyDecision.cpp @no-unify
-UIProcess/API/glib/WebKitPrivate.cpp @no-unify
-UIProcess/API/glib/WebKitProtocolHandler.cpp @no-unify
-UIProcess/API/glib/WebKitResponsePolicyDecision.cpp @no-unify
-UIProcess/API/glib/WebKitScriptDialog.cpp @no-unify
-UIProcess/API/glib/WebKitSecurityManager.cpp @no-unify
-UIProcess/API/glib/WebKitSecurityOrigin.cpp @no-unify
-UIProcess/API/glib/WebKitSettings.cpp @no-unify
-UIProcess/API/glib/WebKitUIClient.cpp @no-unify
-UIProcess/API/glib/WebKitURISchemeRequest.cpp @no-unify
-UIProcess/API/glib/WebKitURISchemeResponse.cpp @no-unify
-UIProcess/API/glib/WebKitURIUtilities.cpp @no-unify
-UIProcess/API/glib/WebKitUserContent.cpp @no-unify
-UIProcess/API/glib/WebKitUserContentFilterStore.cpp @no-unify
-UIProcess/API/glib/WebKitUserContentManager.cpp @no-unify
-UIProcess/API/glib/WebKitUserMediaPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitVersion.cpp @no-unify
-UIProcess/API/glib/WebKitWebContext.cpp @no-unify
-UIProcess/API/glib/WebKitWebResource.cpp @no-unify
-UIProcess/API/glib/WebKitWebResourceLoadManager.cpp @no-unify
-UIProcess/API/glib/WebKitWebView.cpp @no-unify
-UIProcess/API/glib/WebKitWebViewAccessible.cpp @no-unify
-UIProcess/API/glib/WebKitWebViewSessionState.cpp @no-unify
-UIProcess/API/glib/WebKitWebsiteData.cpp @no-unify
-UIProcess/API/glib/WebKitWebsiteDataAccessPermissionRequest.cpp @no-unify
-UIProcess/API/glib/WebKitWebsiteDataManager.cpp @no-unify
-UIProcess/API/glib/WebKitWindowProperties.cpp @no-unify
-UIProcess/API/glib/WebKitWebsitePolicies.cpp @no-unify
+UIProcess/API/glib/CyberKitApplicationInfo.cpp @no-unify
+UIProcess/API/glib/CyberKitAuthenticationRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitAutomationSession.cpp @no-unify
+UIProcess/API/glib/CyberKitBackForwardList.cpp @no-unify
+UIProcess/API/glib/CyberKitBackForwardListItem.cpp @no-unify
+UIProcess/API/glib/CyberKitContextMenuClient.cpp @no-unify
+UIProcess/API/glib/CyberKitCookieManager.cpp @no-unify
+UIProcess/API/glib/CyberKitCredential.cpp @no-unify
+UIProcess/API/glib/CyberKitDeviceInfoPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitDownload.cpp @no-unify
+UIProcess/API/glib/CyberKitDownloadClient.cpp @no-unify
+UIProcess/API/glib/CyberKitEditorState.cpp @no-unify
+UIProcess/API/glib/CyberKitError.cpp @no-unify
+UIProcess/API/glib/CyberKitFaviconDatabase.cpp @no-unify
+UIProcess/API/glib/CyberKitFileChooserRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitFindController.cpp @no-unify
+UIProcess/API/glib/CyberKitFormClient.cpp @no-unify
+UIProcess/API/glib/CyberKitFormSubmissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitGeolocationManager.cpp @no-unify
+UIProcess/API/glib/CyberKitGeolocationPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitIconLoadingClient.cpp @no-unify
+UIProcess/API/glib/CyberKitInitialize.cpp @no-unify
+UIProcess/API/glib/CyberKitInjectedBundleClient.cpp @no-unify
+UIProcess/API/glib/CyberKitInputMethodContext.cpp @no-unify
+UIProcess/API/glib/CyberKitInstallMissingMediaPluginsPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitJavascriptResult.cpp @no-unify
+UIProcess/API/glib/CyberKitMediaKeySystemPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitMemoryPressureSettings.cpp @no-unify
+UIProcess/API/glib/CyberKitNavigationAction.cpp @no-unify
+UIProcess/API/glib/CyberKitNavigationClient.cpp @no-unify
+UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp @no-unify
+UIProcess/API/glib/CyberKitNetworkProxySettings.cpp @no-unify
+UIProcess/API/glib/CyberKitNetworkSession.cpp @no-unify
+UIProcess/API/glib/CyberKitNotification.cpp @no-unify
+UIProcess/API/glib/CyberKitNotificationPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitNotificationProvider.cpp @no-unify
+UIProcess/API/glib/CyberKitOptionMenu.cpp @no-unify
+UIProcess/API/glib/CyberKitOptionMenuItem.cpp @no-unify
+UIProcess/API/glib/CyberKitPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitPermissionStateQuery.cpp @no-unify
+UIProcess/API/glib/CyberKitPointerLockPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitPolicyDecision.cpp @no-unify
+UIProcess/API/glib/CyberKitPrivate.cpp @no-unify
+UIProcess/API/glib/CyberKitProtocolHandler.cpp @no-unify
+UIProcess/API/glib/CyberKitResponsePolicyDecision.cpp @no-unify
+UIProcess/API/glib/CyberKitScriptDialog.cpp @no-unify
+UIProcess/API/glib/CyberKitSecurityManager.cpp @no-unify
+UIProcess/API/glib/CyberKitSecurityOrigin.cpp @no-unify
+UIProcess/API/glib/CyberKitSettings.cpp @no-unify
+UIProcess/API/glib/CyberKitUIClient.cpp @no-unify
+UIProcess/API/glib/CyberKitURISchemeRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitURISchemeResponse.cpp @no-unify
+UIProcess/API/glib/CyberKitURIUtilities.cpp @no-unify
+UIProcess/API/glib/CyberKitUserContent.cpp @no-unify
+UIProcess/API/glib/CyberKitUserContentFilterStore.cpp @no-unify
+UIProcess/API/glib/CyberKitUserContentManager.cpp @no-unify
+UIProcess/API/glib/CyberKitUserMediaPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitVersion.cpp @no-unify
+UIProcess/API/glib/CyberKitWebContext.cpp @no-unify
+UIProcess/API/glib/CyberKitWebResource.cpp @no-unify
+UIProcess/API/glib/CyberKitWebResourceLoadManager.cpp @no-unify
+UIProcess/API/glib/CyberKitWebView.cpp @no-unify
+UIProcess/API/glib/CyberKitWebViewAccessible.cpp @no-unify
+UIProcess/API/glib/CyberKitWebViewSessionState.cpp @no-unify
+UIProcess/API/glib/CyberKitWebsiteData.cpp @no-unify
+UIProcess/API/glib/CyberKitWebsiteDataAccessPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitWebsiteDataManager.cpp @no-unify
+UIProcess/API/glib/CyberKitWindowProperties.cpp @no-unify
+UIProcess/API/glib/CyberKitWebsitePolicies.cpp @no-unify
 
 UIProcess/API/gtk/DragSourceGtk3.cpp @no-unify
 UIProcess/API/gtk/DragSourceGtk4.cpp @no-unify
@@ -202,23 +202,23 @@ UIProcess/API/gtk/DropTargetGtk3.cpp @no-unify
 UIProcess/API/gtk/DropTargetGtk4.cpp @no-unify
 UIProcess/API/gtk/InputMethodFilterGtk.cpp @no-unify
 UIProcess/API/gtk/PageClientImpl.cpp @no-unify
-UIProcess/API/gtk/WebKitAuthenticationDialog.cpp @no-unify
-UIProcess/API/gtk/WebKitColorChooser.cpp @no-unify
-UIProcess/API/gtk/WebKitColorChooserRequest.cpp @no-unify
-UIProcess/API/gtk/WebKitEmojiChooser.cpp @no-unify
-UIProcess/API/gtk/WebKitInputMethodContextGtk.cpp @no-unify
-UIProcess/API/gtk/WebKitInputMethodContextImplGtk.cpp @no-unify
-UIProcess/API/gtk/WebKitPopupMenu.cpp @no-unify
-UIProcess/API/gtk/WebKitPrintOperation.cpp @no-unify
-UIProcess/API/gtk/WebKitRemoteInspectorProtocolHandler.cpp @no-unify
-UIProcess/API/gtk/WebKitScriptDialogGtk.cpp @no-unify
-UIProcess/API/gtk/WebKitScriptDialogImpl.cpp @no-unify
-UIProcess/API/gtk/WebKitWebInspector.cpp @no-unify
-UIProcess/API/gtk/WebKitWebViewBase.cpp @no-unify
-UIProcess/API/gtk/WebKitWebViewDialog.cpp @no-unify
-UIProcess/API/gtk/WebKitWebViewGtk.cpp @no-unify
-UIProcess/API/gtk/WebKitWebViewGtk3.cpp @no-unify
-UIProcess/API/gtk/WebKitWebViewGtk4.cpp @no-unify
+UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp @no-unify
+UIProcess/API/gtk/CyberKitColorChooser.cpp @no-unify
+UIProcess/API/gtk/CyberKitColorChooserRequest.cpp @no-unify
+UIProcess/API/gtk/CyberKitEmojiChooser.cpp @no-unify
+UIProcess/API/gtk/CyberKitInputMethodContextGtk.cpp @no-unify
+UIProcess/API/gtk/CyberKitInputMethodContextImplGtk.cpp @no-unify
+UIProcess/API/gtk/CyberKitPopupMenu.cpp @no-unify
+UIProcess/API/gtk/CyberKitPrintOperation.cpp @no-unify
+UIProcess/API/gtk/CyberKitRemoteInspectorProtocolHandler.cpp @no-unify
+UIProcess/API/gtk/CyberKitScriptDialogGtk.cpp @no-unify
+UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebInspector.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewBase.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewDialog.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewGtk.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewGtk3.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewGtk4.cpp @no-unify
 
 UIProcess/API/soup/HTTPCookieStoreSoup.cpp
 
@@ -238,7 +238,7 @@ UIProcess/Inspector/glib/RemoteInspectorHTTPServer.cpp
 
 UIProcess/Inspector/gtk/RemoteWebInspectorUIProxyGtk.cpp
 UIProcess/Inspector/gtk/WebInspectorUIProxyGtk.cpp
-UIProcess/Inspector/gtk/WebKitInspectorWindow.cpp
+UIProcess/Inspector/gtk/CyberKitInspectorWindow.cpp
 
 UIProcess/Launcher/glib/ProcessLauncherGLib.cpp @no-unify
 UIProcess/Launcher/glib/BubblewrapLauncher.cpp @no-unify
@@ -294,14 +294,14 @@ WebProcess/GPU/graphics/gbm/RemoteGraphicsContextGLProxyGBM.cpp
 
 WebProcess/GPU/media/gstreamer/VideoLayerRemoteGStreamer.cpp
 
-WebProcess/InjectedBundle/API/glib/WebKitExtensionManager.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/WebKitFrame.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/WebKitScriptWorld.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/WebKitWebEditor.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/WebKitWebExtension.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/WebKitWebFormManager.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/WebKitWebHitTestResult.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/WebKitWebPage.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitExtensionManager.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitFrame.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitScriptWorld.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebEditor.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebExtension.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebFormManager.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebHitTestResult.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebPage.cpp @no-unify
 
 WebProcess/InjectedBundle/glib/InjectedBundleGlib.cpp
 

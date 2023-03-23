@@ -59,7 +59,7 @@ static RetainPtr<WebView> webView;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, ClosingWebViewThenSendingItAKeyDownEvent)
 {
@@ -98,6 +98,6 @@ TEST(CyberKitLegacy, ClosingWebViewThenSendingItAKeyDownEvent)
     [webHTMLView keyDown:spaceBarDown];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(JSC_OBJC_API)

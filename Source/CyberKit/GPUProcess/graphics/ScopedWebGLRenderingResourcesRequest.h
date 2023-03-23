@@ -31,7 +31,7 @@
 #include <atomic>
 #include <wtf/StdLibExtras.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ScopedWebGLRenderingResourcesRequest {
 public:

@@ -25,22 +25,22 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_AUDIO_SINK            (webkit_audio_sink_get_type())
-#define WEBKIT_AUDIO_SINK(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUDIO_SINK, WebKitAudioSink))
-#define WEBKIT_AUDIO_SINK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_AUDIO_SINK, WebKitAudioSinkClass))
+#define WEBKIT_AUDIO_SINK(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUDIO_SINK, CyberKitAudioSink))
+#define WEBKIT_AUDIO_SINK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_AUDIO_SINK, CyberKitAudioSinkClass))
 #define WEBKIT_IS_AUDIO_SINK(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_AUDIO_SINK))
 #define WEBKIT_IS_AUDIO_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_AUDIO_SINK))
 
-typedef struct _WebKitAudioSink        WebKitAudioSink;
-typedef struct _WebKitAudioSinkClass   WebKitAudioSinkClass;
-typedef struct _WebKitAudioSinkPrivate WebKitAudioSinkPrivate;
+typedef struct _CyberKitAudioSink        CyberKitAudioSink;
+typedef struct _CyberKitAudioSinkClass   CyberKitAudioSinkClass;
+typedef struct _CyberKitAudioSinkPrivate CyberKitAudioSinkPrivate;
 
-struct _WebKitAudioSink {
+struct _CyberKitAudioSink {
     GstBin parent;
 
-    WebKitAudioSinkPrivate *priv;
+    CyberKitAudioSinkPrivate *priv;
 };
 
-struct _WebKitAudioSinkClass {
+struct _CyberKitAudioSinkClass {
     GstBinClass parentClass;
 };
 

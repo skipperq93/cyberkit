@@ -76,7 +76,7 @@ static CGPoint swizzledLocationInView(id, SEL, UIView *)
 
 - (void)waitForImageAnalysisRequests:(unsigned)numberOfRequests
 {
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] {
         return gDidProcessRequestCount == numberOfRequests;
     }, 3, @"Timed out waiting for %u image analysis requests to complete.", numberOfRequests);
 
@@ -102,7 +102,7 @@ static CGPoint swizzledLocationInView(id, SEL, UIView *)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: We can unify most of this helper class with the logic in `TestPDFPage::colorAtPoint`, and deploy this
 // helper class in several other tests that read pixel data from CGImages.
@@ -360,7 +360,7 @@ TEST(ImageAnalysisTests, ImageAnalysisWithTransparentImages)
 
 static RetainPtr<CGImageRef> iconImage()
 {
-    auto iconPath = [NSBundle.mainBundle pathForResource:@"icon" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"];
+    auto iconPath = [NSBundle.mainBundle pathForResource:@"icon" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"];
 #if PLATFORM(IOS_FAMILY)
     return [UIImage imageWithContentsOfFile:iconPath].CGImage;
 #else
@@ -558,6 +558,6 @@ TEST(ImageAnalysisTests, RemoveBackgroundItemInServicesMenu)
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS) && ENABLE(SERVICE_CONTROLS)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(IMAGE_ANALYSIS)

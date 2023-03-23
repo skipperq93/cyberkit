@@ -145,7 +145,7 @@ bool HTMLSelectElement::hasPlaceholderLabelOption() const
     // The select element has no placeholder label option if it has an attribute "multiple" specified or a display size of non-1.
     // 
     // The condition "size() > 1" is not compliant with the HTML5 spec as of Dec 3, 2010. "size() != 1" is correct.
-    // Using "size() > 1" here because size() may be 0 in WebKit.
+    // Using "size() > 1" here because size() may be 0 in CyberKit.
     // See the discussion at https://bugs.webkit.org/show_bug.cgi?id=43887
     //
     // "0 size()" happens when an attribute "size" is absent or an invalid size attribute is specified.

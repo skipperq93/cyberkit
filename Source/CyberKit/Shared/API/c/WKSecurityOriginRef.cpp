@@ -32,20 +32,20 @@
 
 WKTypeID WKSecurityOriginGetTypeID()
 {
-    return WebKit::toAPI(API::SecurityOrigin::APIType);
+    return CyberKit::toAPI(API::SecurityOrigin::APIType);
 }
 
 WKSecurityOriginRef WKSecurityOriginCreateFromString(WKStringRef string)
 {
-    return WebKit::toAPI(&API::SecurityOrigin::create(CyberCore::SecurityOrigin::createFromString(WebKit::toImpl(string)->string())).leakRef());
+    return CyberKit::toAPI(&API::SecurityOrigin::create(CyberCore::SecurityOrigin::createFromString(CyberKit::toImpl(string)->string())).leakRef());
 }
 
 WKSecurityOriginRef WKSecurityOriginCreateFromDatabaseIdentifier(WKStringRef identifier)
 {
-    auto origin = CyberCore::SecurityOriginData::fromDatabaseIdentifier(WebKit::toImpl(identifier)->string());
+    auto origin = CyberCore::SecurityOriginData::fromDatabaseIdentifier(CyberKit::toImpl(identifier)->string());
     if (!origin)
         return nullptr;
-    return WebKit::toAPI(&API::SecurityOrigin::create(origin.value().securityOrigin()).leakRef());
+    return CyberKit::toAPI(&API::SecurityOrigin::create(origin.value().securityOrigin()).leakRef());
 }
 
 WKSecurityOriginRef WKSecurityOriginCreate(WKStringRef protocol, WKStringRef host, int port)
@@ -53,31 +53,31 @@ WKSecurityOriginRef WKSecurityOriginCreate(WKStringRef protocol, WKStringRef hos
     std::optional<uint16_t> validPort;
     if (port && port <= std::numeric_limits<uint16_t>::max())
         validPort = port;
-    auto securityOrigin = API::SecurityOrigin::create(WebKit::toImpl(protocol)->string(), WebKit::toImpl(host)->string(), validPort);
-    return WebKit::toAPI(&securityOrigin.leakRef());
+    auto securityOrigin = API::SecurityOrigin::create(CyberKit::toImpl(protocol)->string(), CyberKit::toImpl(host)->string(), validPort);
+    return CyberKit::toAPI(&securityOrigin.leakRef());
 }
 
 WKStringRef WKSecurityOriginCopyDatabaseIdentifier(WKSecurityOriginRef securityOrigin)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(securityOrigin)->securityOrigin().databaseIdentifier());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(securityOrigin)->securityOrigin().databaseIdentifier());
 }
 
 WKStringRef WKSecurityOriginCopyToString(WKSecurityOriginRef securityOrigin)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(securityOrigin)->securityOrigin().toString());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(securityOrigin)->securityOrigin().toString());
 }
 
 WKStringRef WKSecurityOriginCopyProtocol(WKSecurityOriginRef securityOrigin)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(securityOrigin)->securityOrigin().protocol());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(securityOrigin)->securityOrigin().protocol());
 }
 
 WKStringRef WKSecurityOriginCopyHost(WKSecurityOriginRef securityOrigin)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(securityOrigin)->securityOrigin().host());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(securityOrigin)->securityOrigin().host());
 }
 
 unsigned short WKSecurityOriginGetPort(WKSecurityOriginRef securityOrigin)
 {
-    return WebKit::toImpl(securityOrigin)->securityOrigin().port().value_or(0);
+    return CyberKit::toImpl(securityOrigin)->securityOrigin().port().value_or(0);
 }

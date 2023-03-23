@@ -35,7 +35,7 @@
 #include <CyberCore/CoreAudioCaptureSource.h>
 #include <wtf/HashCountedSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

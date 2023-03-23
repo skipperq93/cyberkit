@@ -76,7 +76,7 @@ static WKWebView *globalWebView = nil;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static _UIWebTouchPoint globalTouchPoint { CGPointZero, CGPointZero, 100, UITouchPhaseBegan, 1, 0, 0, 0, UIWebTouchPointTypeDirect };
 static _UIWebTouchEvent globalTouchEvent { UIWebTouchEventTouchBegin, CACurrentMediaTime(), CGPointZero, CGPointZero, 1, 0, false, &globalTouchPoint, 1, true };
@@ -126,7 +126,7 @@ TEST(TouchEventTests, DestroyWebViewWhileHandlingTouchEnd)
         [hostWindow setHidden:NO];
         [hostWindow addSubview:globalWebView];
 
-        [globalWebView loadRequest:[NSURLRequest requestWithURL:[NSBundle.mainBundle URLForResource:@"active-touch-events" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [globalWebView loadRequest:[NSURLRequest requestWithURL:[NSBundle.mainBundle URLForResource:@"active-touch-events" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
         [globalWebView _test_waitForDidFinishNavigation];
 
         updateSimulatedTouchEvent(CGPointMake(100, 100), UITouchPhaseBegan);
@@ -140,9 +140,9 @@ TEST(TouchEventTests, DestroyWebViewWhileHandlingTouchEnd)
     dispatch_async(dispatch_get_main_queue(), ^{
         done = true;
     });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(IOS_TOUCH_EVENTS)

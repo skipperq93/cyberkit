@@ -41,7 +41,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, messageSenderConnection())
 
-namespace WebKit {
+namespace CyberKit {
 
 static WeakPtr<WebPaymentCoordinatorProxy>& activePaymentCoordinatorProxy()
 {

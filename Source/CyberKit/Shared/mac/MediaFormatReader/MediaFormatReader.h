@@ -41,7 +41,7 @@ class MediaSamplesBlock;
 class WebMParser;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaTrackReader;
 
@@ -77,7 +77,7 @@ private:
     void finishParsing();
 
     // CMBaseClass
-    String debugDescription() const final { return "WebKit::MediaFormatReader"_s; }
+    String debugDescription() const final { return "CyberKit::MediaFormatReader"_s; }
     OSStatus copyProperty(CFStringRef, CFAllocatorRef, void* copiedValue) final;
 
     // WrapperClass
@@ -109,6 +109,6 @@ constexpr MediaFormatReader::WrapperClass MediaFormatReader::wrapperClass()
     };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

@@ -22,8 +22,8 @@
 # THE POSSIBILITY OF SUCH DAMAGE.
 
 VPATH = \
-    $(WebKitTestRunner)/InjectedBundle/Bindings \
-    $(WebKitTestRunner)/../TestRunnerShared/UIScriptContext/Bindings \
+    $(CyberKitTestRunner)/InjectedBundle/Bindings \
+    $(CyberKitTestRunner)/../TestRunnerShared/UIScriptContext/Bindings \
 #
 
 PERL = perl
@@ -42,10 +42,10 @@ EXTERNAL_FLAGS := -DRELEASE_WITHOUT_OPTIMIZATIONS $(addprefix -D, $(GCC_PREPROCE
 FEATURE_AND_PLATFORM_DEFINES := $(shell $(CC) -std=c++2a -x c++ -E -P -dM $(SDK_FLAGS) $(TARGET_TRIPLE_FLAGS) $(FRAMEWORK_FLAGS) $(HEADER_FLAGS) $(EXTERNAL_FLAGS) -include "wtf/Platform.h" /dev/null | $(PERL) -ne "print if s/\#define ((HAVE_|USE_|ENABLE_|WTF_PLATFORM_)\w+) 1/\1/")
 
 # FIXME: This should list Platform.h and all the things it includes. Could do that by using the -MD flag in the CC line above.
-FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES = $(WebKitTestRunner)/DerivedSources.make
+FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES = $(CyberKitTestRunner)/DerivedSources.make
 
 WEB_PREFERENCES_TEMPLATES = \
-    $(WebKitTestRunner)/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb \
+    $(CyberKitTestRunner)/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb \
 #
 WEB_PREFERENCES_FILES = $(basename $(notdir $(WEB_PREFERENCES_TEMPLATES)))
 WEB_PREFERENCES_PATTERNS = $(subst .erb,,$(WEB_PREFERENCES_FILES))
@@ -53,7 +53,7 @@ WEB_PREFERENCES_PATTERNS = $(subst .erb,,$(WEB_PREFERENCES_FILES))
 all : $(WEB_PREFERENCES_FILES)
 
 $(WEB_PREFERENCES_PATTERNS) : $(WTF_BUILD_SCRIPTS_DIR)/GeneratePreferences.rb $(WEB_PREFERENCES_TEMPLATES) $(WTF_BUILD_SCRIPTS_DIR)/Preferences/UnifiedWebPreferences.yaml
-	$(RUBY) $< --frontend WebKit $(addprefix --template , $(WEB_PREFERENCES_TEMPLATES)) $(WTF_BUILD_SCRIPTS_DIR)/Preferences/UnifiedWebPreferences.yaml
+	$(RUBY) $< --frontend CyberKit $(addprefix --template , $(WEB_PREFERENCES_TEMPLATES)) $(WTF_BUILD_SCRIPTS_DIR)/Preferences/UnifiedWebPreferences.yaml
 
 
 INJECTED_BUNDLE_INTERFACES = \
@@ -73,7 +73,7 @@ UICONTEXT_INTERFACES = \
 
 SCRIPTS = \
     $(CyberCoreScripts)/CodeGenerator.pm \
-    $(WebKitTestRunner)/InjectedBundle/Bindings/CodeGeneratorTestRunner.pm \
+    $(CyberKitTestRunner)/InjectedBundle/Bindings/CodeGeneratorTestRunner.pm \
     $(CyberCoreScripts)/IDLParser.pm \
     $(CyberCoreScripts)/generate-bindings.pl \
     $(CyberCoreScripts)/preprocessor.pm \
@@ -85,7 +85,7 @@ IDL_ATTRIBUTES_FILE = $(CyberCoreScripts)/IDLAttributes.json
 
 JS%.h JS%.cpp : %.idl $(SCRIPTS) $(IDL_ATTRIBUTES_FILE) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	@echo Generating bindings for $*...
-	$(PERL) -I $(CyberCoreScripts) -I $(WebKitTestRunner)/InjectedBundle/Bindings -I $(WebKitTestRunner)/UIScriptContext/Bindings $(CyberCoreScripts)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include InjectedBundle/Bindings --include UIScriptContext/Bindings --outputDir . --generator TestRunner --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
+	$(PERL) -I $(CyberCoreScripts) -I $(CyberKitTestRunner)/InjectedBundle/Bindings -I $(CyberKitTestRunner)/UIScriptContext/Bindings $(CyberCoreScripts)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include InjectedBundle/Bindings --include UIScriptContext/Bindings --outputDir . --generator TestRunner --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
 
 all : \
     $(INJECTED_BUNDLE_INTERFACES:%=JS%.h) \

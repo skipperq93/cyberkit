@@ -46,7 +46,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, HTMLFormCollectionNamedItemTest)
 {
@@ -55,7 +55,7 @@ TEST(CyberKitLegacy, HTMLFormCollectionNamedItemTest)
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"HTMLFormCollectionNamedItem" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"HTMLFormCollectionNamedItem" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -72,4 +72,4 @@ TEST(CyberKitLegacy, HTMLFormCollectionNamedItemTest)
     EXPECT_WK_STREQ([(DOMHTMLInputElement *)[collection item:0] value], @"firstItem");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

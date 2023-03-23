@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class RemoteWorkerType : bool { ServiceWorker, SharedWorker };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -28,7 +28,7 @@
 #import "APIArray.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::Array> {
     using WrapperClass = NSArray;

@@ -67,7 +67,7 @@ template<class E> std::ostream& operator<<(std::ostream& os, const Expected<void
 }}} // namespace std::experimental::fundamentals_v3
 
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 constexpr const char* oops = "oops";
 constexpr const char* foof = "foof";

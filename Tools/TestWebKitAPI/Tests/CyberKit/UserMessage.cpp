@@ -31,11 +31,11 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class WebKit2UserMessageRoundTripTest : public ::testing::Test {
+class CyberKit2UserMessageRoundTripTest : public ::testing::Test {
 public:
-    WebKit2UserMessageRoundTripTest()
+    CyberKit2UserMessageRoundTripTest()
         : didFinishLoad(false)
         , didReceiveMessage(false)
     {
@@ -54,13 +54,13 @@ public:
         if (!WKStringIsEqualToUTF8CString(messageName, "RoundTripReturn"))
             return;
 
-        ((WebKit2UserMessageRoundTripTest*)clientInfo)->recievedBody = messageBody;
-        ((WebKit2UserMessageRoundTripTest*)clientInfo)->didReceiveMessage = true;
+        ((CyberKit2UserMessageRoundTripTest*)clientInfo)->recievedBody = messageBody;
+        ((CyberKit2UserMessageRoundTripTest*)clientInfo)->didReceiveMessage = true;
     }
 
     static void didFinishNavigation(WKPageRef, WKNavigationRef, WKTypeRef, const void* clientInfo)
     {
-        ((WebKit2UserMessageRoundTripTest*)clientInfo)->didFinishLoad = true;
+        ((CyberKit2UserMessageRoundTripTest*)clientInfo)->didFinishLoad = true;
     }
 
     static void setInjectedBundleClient(WKContextRef context, const void* clientInfo)
@@ -121,7 +121,7 @@ public:
 };
 
 
-TEST_F(WebKit2UserMessageRoundTripTest, WKURLRequestRef)
+TEST_F(CyberKit2UserMessageRoundTripTest, WKURLRequestRef)
 {
     WKRetainPtr<WKURLRef> url = adoptWK(WKURLCreateWithUTF8CString("http://webkit.org/"));
     WKRetainPtr<WKURLRequestRef> request = adoptWK(WKURLRequestCreateWithWKURL(url.get()));
@@ -134,7 +134,7 @@ TEST_F(WebKit2UserMessageRoundTripTest, WKURLRequestRef)
     EXPECT_TRUE(WKURLIsEqual(roundTrippedURL.get(), url.get()));
 }
 
-TEST_F(WebKit2UserMessageRoundTripTest, WKURL)
+TEST_F(CyberKit2UserMessageRoundTripTest, WKURL)
 {
     WKRetainPtr<WKURLRef> url = adoptWK(WKURLCreateWithUTF8CString("http://webkit.org/"));
     
@@ -145,7 +145,7 @@ TEST_F(WebKit2UserMessageRoundTripTest, WKURL)
     EXPECT_TRUE(WKURLIsEqual(roundTrippedURL.get(), url.get()));
 }
 
-TEST_F(WebKit2UserMessageRoundTripTest, WKString)
+TEST_F(CyberKit2UserMessageRoundTripTest, WKString)
 {
     WKRetainPtr<WKStringRef> string = adoptWK(WKStringCreateWithUTF8CString("An important string"));
     
@@ -156,6 +156,6 @@ TEST_F(WebKit2UserMessageRoundTripTest, WKString)
     EXPECT_TRUE(WKStringIsEqual(roundTrippedString.get(), string.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

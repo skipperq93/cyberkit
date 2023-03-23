@@ -29,9 +29,9 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<CFHTTPCookieStorageRef> cookieStorageFromIdentifyingData(const Vector<uint8_t>&);
 Vector<uint8_t> identifyingDataFromCookieStorage(CFHTTPCookieStorageRef);
 
-} // namespace WebKit
+} // namespace CyberKit

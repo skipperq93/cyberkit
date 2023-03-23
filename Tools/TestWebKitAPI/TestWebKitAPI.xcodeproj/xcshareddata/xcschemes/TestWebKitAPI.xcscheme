@@ -17,7 +17,7 @@
                BlueprintIdentifier = "7C83E02B1D0A5E1000FEBCF3"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+               ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -59,9 +59,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DD76F960486AA7600D96B5E"
-            BuildableName = "TestWebKitAPI"
-            BlueprintName = "TestWebKitAPI"
-            ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+            BuildableName = "TestCyberKitAPI"
+            BlueprintName = "TestCyberKitAPI"
+            ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DD76F960486AA7600D96B5E"
-            BuildableName = "TestWebKitAPI"
-            BlueprintName = "TestWebKitAPI"
-            ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+            BuildableName = "TestCyberKitAPI"
+            BlueprintName = "TestCyberKitAPI"
+            ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

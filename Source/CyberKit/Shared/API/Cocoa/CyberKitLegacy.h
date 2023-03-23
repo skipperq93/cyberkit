@@ -26,8 +26,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #if TARGET_OS_IPHONE
-#if defined(__has_include) && __has_include(<CyberKitLegacy/WebKit.h>)
-#import <CyberKitLegacy/WebKit.h>
+#if defined(__has_include) && __has_include(<CyberKitLegacy/CyberKit.h>)
+#import <CyberKitLegacy/CyberKit.h>
 #endif
 #else
 
@@ -44,7 +44,7 @@
 #import <CyberKit/WebFrameView.h>
 #import <CyberKit/WebHistory.h>
 #import <CyberKit/WebHistoryItem.h>
-#import <CyberKit/WebKitErrors.h>
+#import <CyberKit/CyberKitErrors.h>
 #import <CyberKit/WebPlugin.h>
 #import <CyberKit/WebPluginContainer.h>
 #import <CyberKit/WebPluginViewFactory.h>

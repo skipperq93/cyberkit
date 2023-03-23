@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool done;
 static bool loadDone;
@@ -51,7 +51,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
         done = true;
 }
 
-TEST(WebKit, InjectedBundleBasic)
+TEST(CyberKit, InjectedBundleBasic)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("InjectedBundleBasicTest"));
 
@@ -79,6 +79,6 @@ TEST(WebKit, InjectedBundleBasic)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

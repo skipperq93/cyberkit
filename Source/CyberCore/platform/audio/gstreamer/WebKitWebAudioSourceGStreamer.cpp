@@ -19,7 +19,7 @@
 
 #include "config.h"
 
-#include "WebKitWebAudioSourceGStreamer.h"
+#include "CyberKitWebAudioSourceGStreamer.h"
 
 #if ENABLE(WEB_AUDIO) && USE(GSTREAMER)
 
@@ -39,16 +39,16 @@
 
 using namespace CyberCore;
 
-typedef struct _WebKitWebAudioSrcClass   WebKitWebAudioSrcClass;
-typedef struct _WebKitWebAudioSrcPrivate WebKitWebAudioSrcPrivate;
+typedef struct _CyberKitWebAudioSrcClass   CyberKitWebAudioSrcClass;
+typedef struct _CyberKitWebAudioSrcPrivate CyberKitWebAudioSrcPrivate;
 
-struct _WebKitWebAudioSrc {
+struct _CyberKitWebAudioSrc {
     GstBin parent;
 
-    WebKitWebAudioSrcPrivate* priv;
+    CyberKitWebAudioSrcPrivate* priv;
 };
 
-struct _WebKitWebAudioSrcClass {
+struct _CyberKitWebAudioSrcClass {
     GstBinClass parentClass;
 };
 
@@ -57,7 +57,7 @@ static GstStaticPadTemplate srcTemplate = GST_STATIC_PAD_TEMPLATE("src",
     GST_PAD_ALWAYS,
     GST_STATIC_CAPS(GST_AUDIO_CAPS_MAKE(GST_AUDIO_NE(F32))));
 
-struct _WebKitWebAudioSrcPrivate {
+struct _CyberKitWebAudioSrcPrivate {
     gfloat sampleRate;
     AudioBus* bus;
     AudioDestinationGStreamer* destination;
@@ -86,14 +86,14 @@ struct _WebKitWebAudioSrcPrivate {
     Lock dispatchLock;
     Condition dispatchCondition;
 
-    _WebKitWebAudioSrcPrivate()
+    _CyberKitWebAudioSrcPrivate()
     {
         sourcePad = webkitGstGhostPadFromStaticTemplate(&srcTemplate, "src", nullptr);
 
         g_rec_mutex_init(&mutex);
     }
 
-    ~_WebKitWebAudioSrcPrivate()
+    ~_CyberKitWebAudioSrcPrivate()
     {
         g_rec_mutex_clear(&mutex);
     }
@@ -113,7 +113,7 @@ static void webKitWebAudioSrcConstructed(GObject*);
 static void webKitWebAudioSrcSetProperty(GObject*, guint propertyId, const GValue*, GParamSpec*);
 static void webKitWebAudioSrcGetProperty(GObject*, guint propertyId, GValue*, GParamSpec*);
 static GstStateChangeReturn webKitWebAudioSrcChangeState(GstElement*, GstStateChange);
-static void webKitWebAudioSrcRenderIteration(WebKitWebAudioSrc*);
+static void webKitWebAudioSrcRenderIteration(CyberKitWebAudioSrc*);
 
 static GstAudioChannelPosition webKitWebAudioGStreamerChannelPosition(int channelIndex)
 {
@@ -167,15 +167,15 @@ static GstCaps* getGStreamerAudioCaps(float sampleRate, unsigned numberOfChannel
 }
 
 #define webkit_web_audio_src_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitWebAudioSrc, webkit_web_audio_src, GST_TYPE_BIN, GST_DEBUG_CATEGORY_INIT(webkit_web_audio_src_debug, "webkitwebaudiosrc", 0, "webaudiosrc element"))
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitWebAudioSrc, webkit_web_audio_src, GST_TYPE_BIN, GST_DEBUG_CATEGORY_INIT(webkit_web_audio_src_debug, "webkitwebaudiosrc", 0, "webaudiosrc element"))
 
-static void webkit_web_audio_src_class_init(WebKitWebAudioSrcClass* webKitWebAudioSrcClass)
+static void webkit_web_audio_src_class_init(CyberKitWebAudioSrcClass* webKitWebAudioSrcClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(webKitWebAudioSrcClass);
     GstElementClass* elementClass = GST_ELEMENT_CLASS(webKitWebAudioSrcClass);
 
     gst_element_class_add_pad_template(elementClass, gst_static_pad_template_get(&srcTemplate));
-    gst_element_class_set_metadata(elementClass, "WebKit WebAudio source element", "Source", "Handles WebAudio data from CyberCore", "Philippe Normand <pnormand@igalia.com>");
+    gst_element_class_set_metadata(elementClass, "CyberKit WebAudio source element", "Source", "Handles WebAudio data from CyberCore", "Philippe Normand <pnormand@igalia.com>");
 
     objectClass->constructed = webKitWebAudioSrcConstructed;
     elementClass->change_state = webKitWebAudioSrcChangeState;
@@ -211,8 +211,8 @@ static void webKitWebAudioSrcConstructed(GObject* object)
 {
     GST_CALL_PARENT(G_OBJECT_CLASS, constructed, (object));
 
-    WebKitWebAudioSrc* src = WEBKIT_WEB_AUDIO_SRC(object);
-    WebKitWebAudioSrcPrivate* priv = src->priv;
+    CyberKitWebAudioSrc* src = WEBKIT_WEB_AUDIO_SRC(object);
+    CyberKitWebAudioSrcPrivate* priv = src->priv;
 
     ASSERT(priv->bus);
     ASSERT(priv->destination);
@@ -242,8 +242,8 @@ static void webKitWebAudioSrcConstructed(GObject* object)
 
 static void webKitWebAudioSrcSetProperty(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitWebAudioSrc* src = WEBKIT_WEB_AUDIO_SRC(object);
-    WebKitWebAudioSrcPrivate* priv = src->priv;
+    CyberKitWebAudioSrc* src = WEBKIT_WEB_AUDIO_SRC(object);
+    CyberKitWebAudioSrcPrivate* priv = src->priv;
 
     switch (propertyId) {
     case PROP_RATE:
@@ -267,8 +267,8 @@ static void webKitWebAudioSrcSetProperty(GObject* object, guint propertyId, cons
 
 static void webKitWebAudioSrcGetProperty(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitWebAudioSrc* src = WEBKIT_WEB_AUDIO_SRC(object);
-    WebKitWebAudioSrcPrivate* priv = src->priv;
+    CyberKitWebAudioSrc* src = WEBKIT_WEB_AUDIO_SRC(object);
+    CyberKitWebAudioSrcPrivate* priv = src->priv;
 
     switch (propertyId) {
     case PROP_RATE:
@@ -289,9 +289,9 @@ static void webKitWebAudioSrcGetProperty(GObject* object, guint propertyId, GVal
     }
 }
 
-static GRefPtr<GstBuffer> webKitWebAudioSrcAllocateBuffers(WebKitWebAudioSrc* src)
+static GRefPtr<GstBuffer> webKitWebAudioSrcAllocateBuffers(CyberKitWebAudioSrc* src)
 {
-    WebKitWebAudioSrcPrivate* priv = src->priv;
+    CyberKitWebAudioSrcPrivate* priv = src->priv;
 
     ASSERT(priv->bus);
     ASSERT(priv->destination);
@@ -378,7 +378,7 @@ static void webKitWebAudioSrcRenderAndPushFrames(const GRefPtr<GstElement>& elem
     }
 }
 
-static void webKitWebAudioSrcRenderIteration(WebKitWebAudioSrc* src)
+static void webKitWebAudioSrcRenderIteration(CyberKitWebAudioSrc* src)
 {
     auto* priv = src->priv;
     auto buffer = webKitWebAudioSrcAllocateBuffers(src);
@@ -469,7 +469,7 @@ static GstStateChangeReturn webKitWebAudioSrcChangeState(GstElement* element, Gs
     return returnValue;
 }
 
-void webkitWebAudioSourceSetDispatchToRenderThreadFunction(WebKitWebAudioSrc* src, Function<void(Function<void()>&&)>&& function)
+void webkitWebAudioSourceSetDispatchToRenderThreadFunction(CyberKitWebAudioSrc* src, Function<void(Function<void()>&&)>&& function)
 {
     Locker locker { src->priv->dispatchToRenderThreadLock };
     src->priv->dispatchToRenderThreadFunction = WTFMove(function);

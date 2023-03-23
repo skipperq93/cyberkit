@@ -34,7 +34,7 @@
 namespace IPC {
 
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 void SharedBufferReference::encode(Encoder& encoder) const
 {
@@ -124,7 +124,7 @@ const uint8_t* SharedBufferReference::data() const
     return downcast<SharedBuffer>(m_buffer.get())->data();
 }
 
-RefPtr<WebKit::SharedMemory> SharedBufferReference::sharedCopy() const
+RefPtr<CyberKit::SharedMemory> SharedBufferReference::sharedCopy() const
 {
     if (!m_size)
         return nullptr;

@@ -31,12 +31,12 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
-TEST(WebKit, TextWidth)
+TEST(CyberKit, TextWidth)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"TextWidth" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"TextWidth" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     [webView _test_waitForDidFinishNavigation];
     
     __block bool didEvaluateJavaScript = false;
@@ -45,7 +45,7 @@ TEST(WebKit, TextWidth)
         webKitWidth = [(NSNumber *)value floatValue];
         didEvaluateJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&didEvaluateJavaScript);
+    TestCyberKitAPI::Util::run(&didEvaluateJavaScript);
 
     auto font = adoptCF(CTFontCreateUIFontForLanguage(kCTFontUIFontSystem, 24, static_cast<CFStringRef>(@"en-US")));
     // Use CFAttributedString so we don't have to deal with NSFont / UIFont and have this code be platform-dependent.

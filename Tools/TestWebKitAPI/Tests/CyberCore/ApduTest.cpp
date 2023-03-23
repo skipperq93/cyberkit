@@ -34,7 +34,7 @@
 #include <CyberCore/ApduCommand.h>
 #include <CyberCore/ApduResponse.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace apdu;
 
@@ -189,6 +189,6 @@ TEST(ApduTest, TestSerializeEdgeCases)
     EXPECT_EQ(cmd.getEncodedCommand(), deserializedCmd->getEncodedCommand());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

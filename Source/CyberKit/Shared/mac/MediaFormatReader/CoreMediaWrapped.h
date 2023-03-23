@@ -33,12 +33,12 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/cf/TypeCastsCF.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<typename> struct CoreMediaTraits;
 
 #define DECLARE_CORE_MEDIA_TRAITS(ClassName) \
-namespace WebKit { \
+namespace CyberKit { \
 class Media##ClassName; \
 template<> struct CoreMediaTraits<Media##ClassName> { \
     using Class = MTPlugin##ClassName##Class; \
@@ -176,6 +176,6 @@ IGNORE_WARNINGS_END
     return vTable;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

@@ -33,7 +33,7 @@
 #include <gtk/gtk.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebContextMenuItemGlib::WebContextMenuItemGlib(ContextMenuItemType type, ContextMenuAction action, const String& title, bool enabled, bool checked)
@@ -138,4 +138,4 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

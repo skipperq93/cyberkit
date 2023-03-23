@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKNSNumber.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 @implementation WKNSNumber {
     union {

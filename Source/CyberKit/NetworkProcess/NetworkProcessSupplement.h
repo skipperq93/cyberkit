@@ -27,7 +27,7 @@
 
 #include "AuxiliaryProcessSupplement.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct NetworkProcessCreationParameters;
 
@@ -38,4 +38,4 @@ public:
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

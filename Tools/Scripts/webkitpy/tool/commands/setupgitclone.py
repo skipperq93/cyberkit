@@ -33,7 +33,7 @@ from webkitpy.tool.multicommandtool import Command
 
 class SetupGitClone(Command):
     name = "setup-git-clone"
-    help_text = "Configures a new Git clone for the WebKit development"
+    help_text = "Configures a new Git clone for the CyberKit development"
 
     def execute(self, options, args, tool):
         if not isinstance(tool.scm(), Git):

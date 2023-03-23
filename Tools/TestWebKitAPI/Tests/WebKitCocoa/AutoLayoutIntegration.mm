@@ -96,7 +96,7 @@ static bool didEvaluateJavaScript;
 
 - (void)waitForContentSizeChangeResettingWidth:(BOOL)resetAfter
 {
-    TestWebKitAPI::Util::run(&didInvalidateIntrinsicContentSize);
+    TestCyberKitAPI::Util::run(&didInvalidateIntrinsicContentSize);
 
     NSSize intrinsicContentSize = self.intrinsicContentSize;
     EXPECT_EQ(_expectedIntrinsicContentSize.width, intrinsicContentSize.width);
@@ -136,7 +136,7 @@ static bool didEvaluateJavaScript;
 
 @end
 
-TEST(WebKit, AutoLayoutIntegration)
+TEST(CyberKit, AutoLayoutIntegration)
 {
     RetainPtr<AutoLayoutWKWebView> webView = adoptNS([[AutoLayoutWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 1000, 1000)]);
 
@@ -176,7 +176,7 @@ TEST(WebKit, AutoLayoutIntegration)
         EXPECT_EQ(10, [value integerValue]);
         didEvaluateJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&didEvaluateJavaScript);
+    TestCyberKitAPI::Util::run(&didEvaluateJavaScript);
     didEvaluateJavaScript = false;
 
     // Enabling _shouldExpandContentToViewHeightForAutoLayout should make the page lay out to the view height, regardless
@@ -191,12 +191,12 @@ TEST(WebKit, AutoLayoutIntegration)
         EXPECT_EQ(1000, [value integerValue]);
         didEvaluateJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&didEvaluateJavaScript);
+    TestCyberKitAPI::Util::run(&didEvaluateJavaScript);
     didEvaluateJavaScript = false;
     [webView _setShouldExpandContentToViewHeightForAutoLayout:NO];
 }
 
-TEST(WebKit, AutoLayoutRenderingProgressRelativeOrdering)
+TEST(CyberKit, AutoLayoutRenderingProgressRelativeOrdering)
 {
     RetainPtr<AutoLayoutWKWebView> webView = adoptNS([[AutoLayoutWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 1000, 1000)]);
 
@@ -220,13 +220,13 @@ TEST(WebKit, AutoLayoutRenderingProgressRelativeOrdering)
     [webView setExpectingIntrinsicContentSizeChange:YES];
     [webView setExpectedIntrinsicContentSize:NSMakeSize(100, 400)];
     [webView loadHTMLString:@"<body style='margin: 0; height: 400px;'></body>" baseURL:nil];
-    TestWebKitAPI::Util::run(&didInvalidateIntrinsicContentSize);
-    TestWebKitAPI::Util::run(&didFirstLayout);
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didInvalidateIntrinsicContentSize);
+    TestCyberKitAPI::Util::run(&didFirstLayout);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
     [webView setNavigationDelegate:nil];
 }
 
-TEST(WebKit, AutoLayoutBatchesUpdatesWhenInvalidatingIntrinsicContentSize)
+TEST(CyberKit, AutoLayoutBatchesUpdatesWhenInvalidatingIntrinsicContentSize)
 {
     auto webView = adoptNS([[AutoLayoutWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 1000, 1000)]);
     [webView _setMinimumLayoutWidth:100];
@@ -242,8 +242,8 @@ TEST(WebKit, AutoLayoutBatchesUpdatesWhenInvalidatingIntrinsicContentSize)
 
     [webView setExpectingIntrinsicContentSizeChange:YES];
     [webView loadHTMLString:@"<body style='margin: 0; height: 400px;'></body>" baseURL:nil];
-    TestWebKitAPI::Util::run(&didInvalidateIntrinsicContentSize);
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didInvalidateIntrinsicContentSize);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
 
     NSString *script = @"document.body.style.height = '800px';"
         "document.scrollingElement.scrollTop;"
@@ -259,13 +259,13 @@ TEST(WebKit, AutoLayoutBatchesUpdatesWhenInvalidatingIntrinsicContentSize)
     [webView evaluateJavaScript:script completionHandler:^(id, NSError *) {
         doneEvaluatingScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingScript);
 
     __block bool doneWaitingForNextPresentationUpdate = false;
     [webView _doAfterNextPresentationUpdate:^{
         doneWaitingForNextPresentationUpdate = true;
     }];
-    TestWebKitAPI::Util::run(&doneWaitingForNextPresentationUpdate);
+    TestCyberKitAPI::Util::run(&doneWaitingForNextPresentationUpdate);
 
     EXPECT_EQ(0, intrinsicSizeInvalidationCount);
 }

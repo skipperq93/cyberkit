@@ -33,7 +33,7 @@
 #include "WebGPUObjectHeap.h"
 #include <pal/graphics/WebGPU/WebGPURenderPassEncoder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteRenderPassEncoder::RemoteRenderPassEncoder(PAL::WebGPU::RenderPassEncoder& renderPassEncoder, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(renderPassEncoder)
@@ -204,6 +204,6 @@ void RemoteRenderPassEncoder::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

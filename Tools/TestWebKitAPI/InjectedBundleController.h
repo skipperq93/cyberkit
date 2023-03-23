@@ -30,7 +30,7 @@
 #include <map>
 #include <string>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleTest;
 
@@ -64,4 +64,4 @@ private:
     std::unique_ptr<InjectedBundleTest> m_currentTest;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

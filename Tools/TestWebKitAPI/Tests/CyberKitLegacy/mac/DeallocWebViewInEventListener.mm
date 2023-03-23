@@ -65,7 +65,7 @@ static RetainPtr<WebView> webView;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DeallocWebViewInEventListener)
 {
@@ -86,6 +86,6 @@ TEST(CyberKitLegacy, DeallocWebViewInEventListener)
     Util::run(&didClose);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(JSC_OBJC_API)

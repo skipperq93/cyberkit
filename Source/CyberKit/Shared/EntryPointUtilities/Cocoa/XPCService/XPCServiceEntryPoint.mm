@@ -34,7 +34,7 @@
 #import <wtf/spi/darwin/SandboxSPI.h>
 #import <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 XPCServiceInitializerDelegate::~XPCServiceInitializerDelegate()
 {
@@ -44,7 +44,7 @@ bool XPCServiceInitializerDelegate::checkEntitlements()
 {
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
     if (isClientSandboxed()) {
-        // FIXME(<rdar://problem/54178641>): Remove this check once WebKit can work without network access.
+        // FIXME(<rdar://problem/54178641>): Remove this check once CyberKit can work without network access.
         if (hasEntitlement("com.apple.security.network.client"_s))
             return true;
 
@@ -194,4 +194,4 @@ void XPCServiceExit()
     xpc_transaction_exit_clean();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

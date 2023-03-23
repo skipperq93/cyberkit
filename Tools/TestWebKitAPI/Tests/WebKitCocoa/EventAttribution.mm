@@ -92,7 +92,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<SecTrustRef> secTrustFromCertificateChain(NSArray *chain)
 {
@@ -505,7 +505,7 @@ static void attemptConnectionInProcessWithoutEntitlement()
     xpc_connection_activate(connection.get());
     auto dictionary = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
     xpc_connection_send_message(connection.get(), dictionary.get());
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 #endif
 }
 
@@ -671,4 +671,4 @@ TEST(PrivateClickMeasurement, BasicWithEphemeralIOSSPI)
 
 #endif // HAVE(UI_EVENT_ATTRIBUTION)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

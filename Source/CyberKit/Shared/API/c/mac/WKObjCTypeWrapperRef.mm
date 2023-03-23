@@ -31,16 +31,16 @@
 
 WKTypeID WKObjCTypeWrapperGetTypeID()
 {
-    return WebKit::toAPI(WebKit::ObjCObjectGraph::APIType);
+    return CyberKit::toAPI(CyberKit::ObjCObjectGraph::APIType);
 }
 
 WKObjCTypeWrapperRef WKObjCTypeWrapperCreate(id object)
 {
-    auto objectWrapper = WebKit::ObjCObjectGraph::create(object);
-    return WebKit::toAPI(&objectWrapper.leakRef());
+    auto objectWrapper = CyberKit::ObjCObjectGraph::create(object);
+    return CyberKit::toAPI(&objectWrapper.leakRef());
 }
 
 id WKObjCTypeWrapperGetObject(WKObjCTypeWrapperRef wrapperRef)
 {
-    return WebKit::toImpl(wrapperRef)->rootObject();
+    return CyberKit::toImpl(wrapperRef)->rootObject();
 }

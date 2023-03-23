@@ -36,7 +36,7 @@
 #include <CyberCore/SourceImage.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class QualifiedResourceHeap {
 public:
@@ -224,6 +224,6 @@ private:
     unsigned m_decomposedGlyphsCount { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

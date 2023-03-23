@@ -7,7 +7,7 @@
 var sandbox = document.getElementById('sandbox');
 var observing = false;
 
-var observer = new WebKitMutationObserver(listener);
+var observer = new CyberKitMutationObserver(listener);
 var tickledSpan = document.createElement('span');
 observer.observe(tickledSpan, {attributes: true});
 

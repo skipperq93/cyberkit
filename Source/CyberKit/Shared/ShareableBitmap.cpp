@@ -31,7 +31,7 @@
 #include <CyberCore/GraphicsContext.h>
 #include <wtf/DebugHeap.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ShareableBitmap);
@@ -127,4 +127,4 @@ CheckedUint32 ShareableBitmap::numBytesForSize(CyberCore::IntSize size, const Sh
     return calculateBytesPerRow(size, configuration) * size.height();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

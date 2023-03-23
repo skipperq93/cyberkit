@@ -85,7 +85,7 @@
 #include <CyberCore/ScreenCaptureKitSharingSessionManager.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 // We wouldn't want the GPUProcess to repeatedly exit then relaunch when under memory pressure. In particular, we need to make sure the
 // WebProcess has a change to schedule work after the GPUProcess get launched. For this reason, we make sure that the GPUProcess never
@@ -533,13 +533,13 @@ void GPUProcess::enableVP9Decoders(bool shouldEnableVP8Decoder, bool shouldEnabl
     if (shouldEnableVP8Decoder && !m_enableVP8Decoder) {
         m_enableVP8Decoder = true;
 #if PLATFORM(COCOA)
-        CyberCore::registerWebKitVP8Decoder();
+        CyberCore::registerCyberKitVP8Decoder();
 #endif
     }
     if (shouldEnableVP9SWDecoder && !m_enableVP9SWDecoder) {
         m_enableVP9SWDecoder = true;
 #if PLATFORM(COCOA)
-        CyberCore::registerWebKitVP9Decoder();
+        CyberCore::registerCyberKitVP9Decoder();
 #endif
     }
 }
@@ -571,6 +571,6 @@ void GPUProcess::requestBitmapImageForCurrentTime(CyberCore::ProcessIdentifier p
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

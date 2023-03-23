@@ -38,7 +38,7 @@
 #include <wtf/HashMap.h>
 #include <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void didFinishLoadForFrameCallback(WKBundlePageRef, WKBundleFrameRef, WKTypeRef*, const void* clientInfo);
 static void globalObjectIsAvailableForFrameCallback(WKBundlePageRef, WKBundleFrameRef, WKBundleScriptWorldRef, const void* clientInfo);
@@ -271,6 +271,6 @@ static void willDestroyGlobalObjectForDOMWindowExtensionCallback(WKBundlePageRef
     ((DOMWindowExtensionNoCache*)clientInfo)->willDestroyGlobalObjectForDOMWindowExtension(extension);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

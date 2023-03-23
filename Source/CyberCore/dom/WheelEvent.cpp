@@ -84,7 +84,7 @@ Ref<WheelEvent> WheelEvent::create(const AtomString& type, const Init& initializ
     return adoptRef(*new WheelEvent(type, initializer));
 }
 
-void WheelEvent::initWebKitWheelEvent(int rawDeltaX, int rawDeltaY, RefPtr<WindowProxy>&& view, int screenX, int screenY, int pageX, int pageY, bool ctrlKey, bool altKey, bool shiftKey, bool metaKey)
+void WheelEvent::initCyberKitWheelEvent(int rawDeltaX, int rawDeltaY, RefPtr<WindowProxy>&& view, int screenX, int screenY, int pageX, int pageY, bool ctrlKey, bool altKey, bool shiftKey, bool metaKey)
 {
     if (isBeingDispatched())
         return;

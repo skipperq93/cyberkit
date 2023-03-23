@@ -31,7 +31,7 @@
 #include <cstdlib>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool checkDecodedBytes(const uint8_t* original, size_t originalSize, const uint8_t* decoded, size_t decodedSize)
 {
@@ -150,7 +150,7 @@ TEST(KeyedCoding, SetAndGetDouble)
 
 TEST(KeyedCoding, SetAndGetString)
 {
-    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeString, &CyberCore::KeyedDecoder::decodeString, String("WebKit"_s)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeString, &CyberCore::KeyedDecoder::decodeString, String("CyberKit"_s)));
 }
 
 TEST(KeyedCoding, GetNonExistingRecord)

@@ -51,7 +51,7 @@
         if (result.boolValue == expected)
             return YES;
 
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     }
 
     return NO;
@@ -95,7 +95,7 @@ static constexpr unsigned stateChangeQueryMaxCount = 30;
     do {
         if (expectedState == _displayCaptureState)
             return YES;
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     } while (++tries <= stateChangeQueryMaxCount);
 
     return expectedState == _displayCaptureState;
@@ -107,19 +107,19 @@ static constexpr unsigned stateChangeQueryMaxCount = 30;
     do {
         if (expectedState == _displayCaptureSurfaces)
             return YES;
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     } while (++tries <= stateChangeQueryMaxCount);
 
     return expectedState == _displayCaptureSurfaces;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit2, GetDisplayMediaWindowAndScreenPrompt)
+TEST(CyberKit2, GetDisplayMediaWindowAndScreenPrompt)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
 
     configuration.get().processPool = (WKProcessPool *)context.get();
     configuration.get()._mediaCaptureEnabled = YES;
@@ -182,7 +182,7 @@ TEST(WebKit2, GetDisplayMediaWindowAndScreenPrompt)
     [webView _setDisplayCaptureState:WKDisplayCaptureStateMuted completionHandler:^() {
         completionCalled = true;
     }];
-    TestWebKitAPI::Util::run(&completionCalled);
+    TestCyberKitAPI::Util::run(&completionCalled);
     EXPECT_TRUE([webView _displayCaptureState] == WKDisplayCaptureStateMuted);
     EXPECT_TRUE([observer displayCaptureState] == WKDisplayCaptureStateMuted);
     EXPECT_TRUE([webView _displayCaptureSurfaces] == WKDisplayCaptureSurfaceScreen);
@@ -192,7 +192,7 @@ TEST(WebKit2, GetDisplayMediaWindowAndScreenPrompt)
     [webView _setDisplayCaptureState:WKDisplayCaptureStateActive completionHandler:^() {
         completionCalled = true;
     }];
-    TestWebKitAPI::Util::run(&completionCalled);
+    TestCyberKitAPI::Util::run(&completionCalled);
     EXPECT_TRUE([webView _displayCaptureState] == WKDisplayCaptureStateActive);
     EXPECT_TRUE([observer displayCaptureState] == WKDisplayCaptureStateActive);
     EXPECT_TRUE([webView _displayCaptureSurfaces] == WKDisplayCaptureSurfaceScreen);
@@ -230,7 +230,7 @@ TEST(WebKit2, GetDisplayMediaWindowAndScreenPrompt)
     [webView _setDisplayCaptureState:WKDisplayCaptureStateMuted completionHandler:^() {
         completionCalled = true;
     }];
-    TestWebKitAPI::Util::run(&completionCalled);
+    TestCyberKitAPI::Util::run(&completionCalled);
     EXPECT_TRUE([webView _displayCaptureState] == WKDisplayCaptureStateMuted);
     EXPECT_TRUE([observer displayCaptureState] == WKDisplayCaptureStateMuted);
     EXPECT_TRUE([webView _displayCaptureSurfaces] == WKDisplayCaptureSurfaceWindow);
@@ -240,7 +240,7 @@ TEST(WebKit2, GetDisplayMediaWindowAndScreenPrompt)
     [webView _setDisplayCaptureState:WKDisplayCaptureStateActive completionHandler:^() {
         completionCalled = true;
     }];
-    TestWebKitAPI::Util::run(&completionCalled);
+    TestCyberKitAPI::Util::run(&completionCalled);
     EXPECT_TRUE([webView _displayCaptureState] == WKDisplayCaptureStateActive);
     EXPECT_TRUE([observer displayCaptureState] == WKDisplayCaptureStateActive);
     EXPECT_TRUE([webView _displayCaptureSurfaces] == WKDisplayCaptureSurfaceWindow);
@@ -253,6 +253,6 @@ TEST(WebKit2, GetDisplayMediaWindowAndScreenPrompt)
     [webView removeObserver:observer.get() forKeyPath:@"_displayCaptureState"];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // HAVE(SCREEN_CAPTURE_KIT)

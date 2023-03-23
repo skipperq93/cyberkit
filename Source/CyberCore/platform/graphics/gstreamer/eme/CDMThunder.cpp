@@ -41,7 +41,7 @@
 #include "MediaKeyMessageType.h"
 #include "NotImplemented.h"
 #include "SharedBuffer.h"
-#include "WebKitThunderDecryptorGStreamer.h"
+#include "CyberKitThunderDecryptorGStreamer.h"
 #include <algorithm>
 #include <iterator>
 #include <wtf/MainThread.h>

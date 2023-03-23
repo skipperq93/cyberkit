@@ -43,7 +43,7 @@ if (ENABLE_WEBKIT_LEGACY)
 endif ()
 
 if (ENABLE_WEBKIT)
-    add_subdirectory(WebKit)
+    add_subdirectory(CyberKit)
 endif ()
 
 if (ENABLE_WEBDRIVER)

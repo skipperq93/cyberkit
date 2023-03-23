@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUBufferBinding.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<BufferBinding> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::BufferBinding& bufferBinding)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::BufferBinding> ConvertFromBackingContext::convertFrom
     return { { *buffer, bufferBinding.offset, bufferBinding.size } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

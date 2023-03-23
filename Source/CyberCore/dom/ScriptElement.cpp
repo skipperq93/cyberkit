@@ -158,7 +158,7 @@ std::optional<ScriptType> ScriptElement::determineScriptType(LegacyTypeSupport s
     if (supportLegacyTypes == AllowLegacyTypeInTypeAttribute && isLegacySupportedJavaScriptLanguage(type))
         return ScriptType::Classic;
 
-    // FIXME: XHTML spec defines "defer" attribute. But WebKit does not implement it for a long time.
+    // FIXME: XHTML spec defines "defer" attribute. But CyberKit does not implement it for a long time.
     // And module tag also uses defer attribute semantics. We disable script type="module" for non HTML document.
     // Once "defer" is implemented, we can reconsider enabling modules in XHTML.
     // https://bugs.webkit.org/show_bug.cgi?id=123387
@@ -236,7 +236,7 @@ bool ScriptElement::prepareScript(const TextPosition& scriptStartPosition, Legac
         return false;
 
     // According to the spec, the module tag ignores the "charset" attribute as the same to the worker's
-    // importScript. But WebKit supports the "charset" for importScript intentionally. So to be consistent,
+    // importScript. But CyberKit supports the "charset" for importScript intentionally. So to be consistent,
     // even for the module tags, we handle the "charset" attribute.
     if (!charsetAttributeValue().isEmpty())
         m_characterEncoding = charsetAttributeValue();

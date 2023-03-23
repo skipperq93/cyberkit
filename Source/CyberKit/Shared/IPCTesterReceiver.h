@@ -33,7 +33,7 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // Proxy interface to test IPC activities related to receiving messages.
 class IPCTesterReceiver final : public IPC::MessageReceiver {

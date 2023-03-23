@@ -40,7 +40,7 @@ class LegacyCDMSession;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLegacyCDMProxy;
 class RemoteMediaPlayerProxy;

@@ -41,7 +41,7 @@ class CurlRequest;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkDataTaskCurl final : public NetworkDataTask, public CyberCore::CurlRequestClient {
 public:
@@ -120,4 +120,4 @@ private:
     bool m_hasCrossOriginRedirect { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

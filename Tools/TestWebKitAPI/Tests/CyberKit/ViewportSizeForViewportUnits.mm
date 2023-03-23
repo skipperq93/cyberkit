@@ -35,7 +35,7 @@
 
 static bool viewportSizeTestDone;
 
-TEST(WebKit, ViewportSizeForViewportUnits)
+TEST(CyberKit, ViewportSizeForViewportUnits)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
 
@@ -47,7 +47,7 @@ TEST(WebKit, ViewportSizeForViewportUnits)
         viewportSizeTestDone = true;
     }];
     viewportSizeTestDone = false;
-    TestWebKitAPI::Util::run(&viewportSizeTestDone);
+    TestCyberKitAPI::Util::run(&viewportSizeTestDone);
 
     // viewport width is 50px.
     [webView _setViewportSizeForCSSViewportUnits:NSMakeSize(50, 50)];
@@ -59,7 +59,7 @@ TEST(WebKit, ViewportSizeForViewportUnits)
         viewportSizeTestDone = true;
     }];
     viewportSizeTestDone = false;
-    TestWebKitAPI::Util::run(&viewportSizeTestDone);
+    TestCyberKitAPI::Util::run(&viewportSizeTestDone);
 
     // viewport height 10px.
     [webView _setViewportSizeForCSSViewportUnits:NSMakeSize(10, 10)];
@@ -71,7 +71,7 @@ TEST(WebKit, ViewportSizeForViewportUnits)
         viewportSizeTestDone = true;
     }];
     viewportSizeTestDone = false;
-    TestWebKitAPI::Util::run(&viewportSizeTestDone);
+    TestCyberKitAPI::Util::run(&viewportSizeTestDone);
 
     bool exceptionRaised = false;
     @try {

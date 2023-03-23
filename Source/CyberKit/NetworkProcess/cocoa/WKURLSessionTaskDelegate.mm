@@ -41,11 +41,11 @@
 #import <wtf/BlockPtr.h>
 
 @implementation WKURLSessionTaskDelegate {
-    WebKit::DataTaskIdentifier _identifier;
-    WeakPtr<WebKit::NetworkSessionCocoa> _session;
+    CyberKit::DataTaskIdentifier _identifier;
+    WeakPtr<CyberKit::NetworkSessionCocoa> _session;
 }
 
-- (instancetype)initWithIdentifier:(WebKit::DataTaskIdentifier)identifier session:(WebKit::NetworkSessionCocoa&)session
+- (instancetype)initWithIdentifier:(CyberKit::DataTaskIdentifier)identifier session:(CyberKit::NetworkSessionCocoa&)session
 {
     if (!(self = [super init]))
         return nil;
@@ -66,7 +66,7 @@
     auto* connection = [self connection];
     if (!connection)
         return completionHandler(NSURLSessionAuthChallengeRejectProtectionSpace, nil);
-    connection->sendWithAsyncReply(Messages::NetworkProcessProxy::DataTaskReceivedChallenge(_identifier, challenge), [completionHandler = makeBlockPtr(completionHandler)](WebKit::AuthenticationChallengeDisposition disposition, CyberCore::Credential&& credential) {
+    connection->sendWithAsyncReply(Messages::NetworkProcessProxy::DataTaskReceivedChallenge(_identifier, challenge), [completionHandler = makeBlockPtr(completionHandler)](CyberKit::AuthenticationChallengeDisposition disposition, CyberCore::Credential&& credential) {
         completionHandler(fromAuthenticationChallengeDisposition(disposition), credential.nsCredential());
     });
 }

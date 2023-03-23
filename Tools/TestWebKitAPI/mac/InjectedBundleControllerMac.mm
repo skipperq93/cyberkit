@@ -29,7 +29,7 @@
 #import <Foundation/Foundation.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 void InjectedBundleController::platformInitialize()
 {
@@ -40,7 +40,7 @@ void InjectedBundleController::platformInitialize()
 
     // FIXME: We should set these in the UI process and propagate them to the
     // Web Content process at process launch time, because most tests do not
-    // have an injected bundle, so these do not make TestWebKitAPI behavior consistent.
+    // have an injected bundle, so these do not make TestCyberKitAPI behavior consistent.
     NSDictionary *dict = @{
         @"AppleAntiAliasingThreshold": @(4),
         @"AppleFontSmoothing": @(0),
@@ -51,4 +51,4 @@ void InjectedBundleController::platformInitialize()
     [[NSUserDefaults standardUserDefaults] setVolatileDomain:argumentDomain.get() forName:NSArgumentDomain];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

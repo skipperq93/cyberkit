@@ -47,7 +47,7 @@ class ResourceRequest;
 class ResourceResponse;
 } // namespace CyberCore
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class CacheStoragePolicy : uint8_t;
 class NetworkProcess;
@@ -110,4 +110,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

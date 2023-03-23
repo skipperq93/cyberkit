@@ -31,14 +31,14 @@
 
 #include <wtf/LogInitialization.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 String logLevelString()
 {
     return WTF::logLevelString();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 

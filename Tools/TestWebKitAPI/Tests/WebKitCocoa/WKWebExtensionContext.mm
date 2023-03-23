@@ -34,7 +34,7 @@
 #import <CyberKit/_WKWebExtensionMatchPatternPrivate.h>
 #import <CyberKit/_WKWebExtensionPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebExtensionContext, DefaultPermissionChecks)
 {
@@ -388,6 +388,6 @@ TEST(WKWebExtensionContext, PermissionGranting)
     EXPECT_EQ(testContext.grantedPermissions.count, 0ul);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

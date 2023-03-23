@@ -29,7 +29,7 @@
 #import <Foundation/NSURLCache.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class CacheStoragePolicy : uint8_t {
     Allowed = 0,
@@ -69,4 +69,4 @@ inline CacheStoragePolicy toCacheStoragePolicy(NSURLCacheStoragePolicy policy)
 
 #endif // defined(__OBJC__)
 
-} // namespace WebKit
+} // namespace CyberKit

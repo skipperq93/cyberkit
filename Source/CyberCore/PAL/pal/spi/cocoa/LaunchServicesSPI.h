@@ -113,15 +113,15 @@ WTF_EXTERN_C_END
 #endif // !USE(APPLE_INTERNAL_SDK)
 
 #if HAVE(LSDATABASECONTEXT)
-#if __has_include(<CoreServices/LSDatabaseContext+WebKit.h>)
-#import <CoreServices/LSDatabaseContext+WebKit.h>
+#if __has_include(<CoreServices/LSDatabaseContext+CyberKit.h>)
+#import <CoreServices/LSDatabaseContext+CyberKit.h>
 #elif !USE(APPLE_INTERNAL_SDK)
-@interface LSDatabaseContext (WebKitChangeTracking)
-- (id <NSObject>)addDatabaseChangeObserver4WebKit:(void (^)(xpc_object_t change))observer;
-- (void)removeDatabaseChangeObserver4WebKit:(id <NSObject>)token;
-- (void)observeDatabaseChange4WebKit:(xpc_object_t)change;
+@interface LSDatabaseContext (CyberKitChangeTracking)
+- (id <NSObject>)addDatabaseChangeObserver4CyberKit:(void (^)(xpc_object_t change))observer;
+- (void)removeDatabaseChangeObserver4CyberKit:(id <NSObject>)token;
+- (void)observeDatabaseChange4CyberKit:(xpc_object_t)change;
 
-- (void)getSystemContentDatabaseObject4WebKit:(void (^)(xpc_object_t object, NSError *error))completion;
+- (void)getSystemContentDatabaseObject4CyberKit:(void (^)(xpc_object_t object, NSError *error))completion;
 @end
 #endif
 #endif

@@ -39,7 +39,7 @@
 #include "TagName.h"
 #include "TelephoneNumberDetector.h"
 #include "UserAgentStyle.h"
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 #include "XLinkNames.h"
 #include "XMLNSNames.h"
 #include "XMLNames.h"
@@ -60,7 +60,7 @@ void ProcessWarming::initializeNames()
     MathMLNames::init();
     XMLNSNames::init();
     XMLNames::init();
-    WebKitFontFamilyNames::init();
+    CyberKitFontFamilyNames::init();
     initializeTagNameStrings();
 }
 

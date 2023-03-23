@@ -25,8 +25,8 @@
 #include <gst/pbutils/encoding-profile.h>
 #include <wtf/glib/GRefPtr.h>
 
-typedef struct _WebKitVideoSink WebKitVideoSink;
-struct WebKitWebSrc;
+typedef struct _CyberKitVideoSink CyberKitVideoSink;
+struct CyberKitWebSrc;
 
 #if USE(GSTREAMER_GL)
 typedef struct _GstGLDisplay GstGLDisplay;
@@ -124,14 +124,14 @@ template<> GRefPtr<GstQuery> adoptGRef(GstQuery* ptr);
 template<> GstQuery* refGPtr<GstQuery>(GstQuery* ptr);
 template<> void derefGPtr<GstQuery>(GstQuery* ptr);
 
-template<> GRefPtr<WebKitVideoSink> adoptGRef(WebKitVideoSink* ptr);
-template<> WebKitVideoSink* refGPtr<WebKitVideoSink>(WebKitVideoSink* ptr);
-template<> void derefGPtr<WebKitVideoSink>(WebKitVideoSink* ptr);
+template<> GRefPtr<CyberKitVideoSink> adoptGRef(CyberKitVideoSink* ptr);
+template<> CyberKitVideoSink* refGPtr<CyberKitVideoSink>(CyberKitVideoSink* ptr);
+template<> void derefGPtr<CyberKitVideoSink>(CyberKitVideoSink* ptr);
 
-template<> GRefPtr<WebKitWebSrc> adoptGRef(WebKitWebSrc* ptr);
-GRefPtr<WebKitWebSrc> ensureGRef(WebKitWebSrc* ptr);
-template<> WebKitWebSrc* refGPtr<WebKitWebSrc>(WebKitWebSrc* ptr);
-template<> void derefGPtr<WebKitWebSrc>(WebKitWebSrc* ptr);
+template<> GRefPtr<CyberKitWebSrc> adoptGRef(CyberKitWebSrc* ptr);
+GRefPtr<CyberKitWebSrc> ensureGRef(CyberKitWebSrc* ptr);
+template<> CyberKitWebSrc* refGPtr<CyberKitWebSrc>(CyberKitWebSrc* ptr);
+template<> void derefGPtr<CyberKitWebSrc>(CyberKitWebSrc* ptr);
 
 template<> GRefPtr<GstStream> adoptGRef(GstStream*);
 template<> GstStream* refGPtr<GstStream>(GstStream*);

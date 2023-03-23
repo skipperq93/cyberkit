@@ -89,7 +89,7 @@ static int sendTestMessage(const uint8_t* data, size_t size, void* context)
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 static WKMessageTestDriverFunc messageTestDriver(String&& driverName)
 {

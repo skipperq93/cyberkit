@@ -109,7 +109,7 @@ TEST(WKProcessPool, AutomaticProcessWarming)
     [webView1 _test_waitForDidFinishNavigation];
 
     while (![pool _hasPrewarmedWebProcess])
-        TestWebKitAPI::Util::runFor(0.01_s);
+        TestCyberKitAPI::Util::runFor(0.01_s);
 
     EXPECT_TRUE([pool _hasPrewarmedWebProcess]);
     EXPECT_EQ(2U, [pool _webPageContentProcessCount]);
@@ -134,15 +134,15 @@ TEST(WKProcessPool, PrewarmedProcessCrash)
 
     // Wait for prewarmed process to finish launching.
     while (![pool _prewarmedProcessIdentifier])
-        TestWebKitAPI::Util::runFor(0.01_s);
+        TestCyberKitAPI::Util::runFor(0.01_s);
 
     kill([pool _prewarmedProcessIdentifier], 9);
 
     while ([pool _hasPrewarmedWebProcess])
-        TestWebKitAPI::Util::runFor(0.01_s);
+        TestCyberKitAPI::Util::runFor(0.01_s);
 }
 
-TEST(WebKit, TryUsingPrewarmedProcessThatJustCrashed)
+TEST(CyberKit, TryUsingPrewarmedProcessThatJustCrashed)
 {
     auto pool = adoptNS([[WKProcessPool alloc] init]);
 
@@ -153,7 +153,7 @@ TEST(WebKit, TryUsingPrewarmedProcessThatJustCrashed)
 
     // Wait for prewarmed process to finish launching.
     while (![pool _prewarmedProcessIdentifier])
-        TestWebKitAPI::Util::runFor(0.01_s);
+        TestCyberKitAPI::Util::runFor(0.01_s);
 
     // Kill the prewarmed process.
     kill([pool _prewarmedProcessIdentifier], 9);

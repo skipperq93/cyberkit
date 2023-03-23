@@ -40,7 +40,7 @@
 #import <CyberKit/WKUserScript.h>
 #import <CyberKit/WKUserScriptPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKFrameTreeNode.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserContentWorld.h>
@@ -89,14 +89,14 @@ TEST(WKUserContentController, ScriptMessageHandlerBasicPost)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
     [webView evaluateJavaScript:@"window.webkit.messageHandlers.testHandler.postMessage('Hello')" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
 
     EXPECT_WK_STREQ(@"Hello", (NSString *)[scriptMessagesVector[0] body]);
@@ -121,18 +121,18 @@ TEST(WKUserContentController, ScriptMessageHandlerBasicPostIsolatedWorld)
     RetainPtr<SimpleNavigationDelegate> delegate = adoptNS([[SimpleNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     isDoneWithNavigation = false;
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
 
     EXPECT_WK_STREQ(@"Hello", (NSString *)[scriptMessagesVector[0] body]);
 
     if (!isDoneWithNavigation)
-        TestWebKitAPI::Util::run(&isDoneWithNavigation);
+        TestCyberKitAPI::Util::run(&isDoneWithNavigation);
 
     __block bool isDoneEvaluatingScript = false;
     __block RetainPtr<NSString> resultValue = @"";
@@ -149,7 +149,7 @@ TEST(WKUserContentController, ScriptMessageHandlerBasicPostIsolatedWorld)
             isDoneEvaluatingScript = true;
         }];
 
-    TestWebKitAPI::Util::run(&isDoneEvaluatingScript);
+    TestCyberKitAPI::Util::run(&isDoneEvaluatingScript);
 
     EXPECT_WK_STREQ(@"PASS", resultValue.get());
 }
@@ -167,7 +167,7 @@ TEST(WKUserContentController, ScriptMessageHandlerBasicRemove)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
@@ -180,7 +180,7 @@ TEST(WKUserContentController, ScriptMessageHandlerBasicRemove)
          "    window.webkit.messageHandlers.handlerToPost.postMessage('FAIL');"
          "}" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
 
     EXPECT_WK_STREQ(@"PASS", (NSString *)[scriptMessagesVector[0] body]);
@@ -195,7 +195,7 @@ TEST(WKUserContentController, ScriptMessageHandlerBasicRemove)
          "    window.webkit.messageHandlers.handlerToPost.postMessage('PASS');"
          "}" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
 
     EXPECT_WK_STREQ(@"PASS", (NSString *)[scriptMessagesVector[0] body]);
@@ -213,7 +213,7 @@ TEST(WKUserContentController, ScriptMessageHandlerCallRemovedHandler)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
@@ -231,7 +231,7 @@ TEST(WKUserContentController, ScriptMessageHandlerCallRemovedHandler)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     receivedScriptMessage = false;
 }
 
@@ -245,7 +245,7 @@ static RetainPtr<WKWebView> webViewForScriptMessageHandlerMultipleHandlerRemoval
     [[configurationCopy userContentController] addScriptMessageHandler:handler.get() name:@"handlerToRemove"];
     [[configurationCopy userContentController] addScriptMessageHandler:handler.get() name:@"handlerToPost"];
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configurationCopy.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -274,7 +274,7 @@ TEST(WKUserContentController, ScriptMessageHandlerMultipleHandlerRemoval)
      "    window.webkit.messageHandlers.handlerToPost.postMessage('PASS');"
      "}" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
 
     EXPECT_WK_STREQ(@"PASS", (NSString *)[scriptMessagesVector[0] body]);
@@ -292,13 +292,13 @@ TEST(WKUserContentController, ScriptMessageHandlerWithNavigation)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
     [webView evaluateJavaScript:@"window.webkit.messageHandlers.testHandler.postMessage('First Message')" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     EXPECT_WK_STREQ(@"First Message", (NSString *)[scriptMessagesVector[0] body]);
     
@@ -309,7 +309,7 @@ TEST(WKUserContentController, ScriptMessageHandlerWithNavigation)
 
     [webView evaluateJavaScript:@"window.webkit.messageHandlers.testHandler.postMessage('Second Message')" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     EXPECT_WK_STREQ(@"Second Message", (NSString *)[scriptMessagesVector[1] body]);
 }
@@ -327,7 +327,7 @@ TEST(WKUserContentController, ScriptMessageHandlerReplaceWithSameName)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
@@ -335,7 +335,7 @@ TEST(WKUserContentController, ScriptMessageHandlerReplaceWithSameName)
     // Test that handlerToReplace was succesfully added.
     [webView evaluateJavaScript:@"window.webkit.messageHandlers.handlerToReplace.postMessage('PASS1');" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
 
     EXPECT_WK_STREQ(@"PASS1", (NSString *)[scriptMessagesVector[0] body]);
@@ -346,7 +346,7 @@ TEST(WKUserContentController, ScriptMessageHandlerReplaceWithSameName)
     // Test that handlerToReplace still works.
     [webView evaluateJavaScript:@"window.webkit.messageHandlers.handlerToReplace.postMessage('PASS2');" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
 
     EXPECT_WK_STREQ(@"PASS2", (NSString *)[scriptMessagesVector[1] body]);
@@ -371,7 +371,7 @@ static void expectScriptEvaluatesToColor(WKWebView *webView, NSString *script, c
         didCheckBackgroundColor = true;
     }];
 
-    TestWebKitAPI::Util::run(&didCheckBackgroundColor);
+    TestCyberKitAPI::Util::run(&didCheckBackgroundColor);
     didCheckBackgroundColor = false;
 }
 
@@ -847,7 +847,7 @@ TEST(WKUserContentController, UserScriptRemoveAllByNormalWorld)
 static void waitForMessages(size_t expectedCount)
 {
     while (scriptMessagesVector.size() < expectedCount) {
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         receivedScriptMessage = false;
     }
 }
@@ -876,11 +876,11 @@ TEST(WKUserContentController, InjectUserScriptImmediately)
     auto delegate = adoptNS([[SimpleNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple-iframe" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple-iframe" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     isDoneWithNavigation = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDoneWithNavigation);
+    TestCyberKitAPI::Util::run(&isDoneWithNavigation);
 
     receivedScriptMessage = false;
     [[configuration userContentController] _addUserScriptImmediately:startAllFrames.get()];
@@ -972,11 +972,11 @@ TEST(WKUserContentController, AddUserScriptInWorldWithGlobalObjectAvailableInIfr
     auto delegate = adoptNS([[SimpleNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple-iframe" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple-iframe" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     isDoneWithNavigation = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDoneWithNavigation);
+    TestCyberKitAPI::Util::run(&isDoneWithNavigation);
 
     auto contentScript = adoptNS([[WKUserScript alloc] _initWithSource:@"window.worldName" injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES includeMatchPatternStrings:@[] excludeMatchPatternStrings:@[] associatedURL:nil contentWorld:testWorld.get() deferRunningUntilNotification:NO]);
     [[webView configuration].userContentController _addUserScriptImmediately:contentScript.get()];
@@ -988,7 +988,7 @@ TEST(WKUserContentController, AddUserScriptInWorldWithGlobalObjectAvailableInIfr
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface AsyncScriptMessageHandler : NSObject <WKScriptMessageHandlerWithReply>
@@ -1068,7 +1068,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_TRUE([result isEqualToNumber:@1]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Trying to find testHandler1 in the defaultClientWorld should fail
@@ -1077,7 +1077,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_NOT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // defaultClientWorld is where testhandler2 lives
@@ -1086,7 +1086,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_TRUE([result isEqualToNumber:@1]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // But if we remvoe it, it should no longer live there, and using it should cause an error.
@@ -1096,7 +1096,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_NOT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Verify handlers 3, 4, and 5 are all in the custom world.
@@ -1113,7 +1113,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_TRUE([result isEqualToNumber:@1]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Remove 3 from the wrong world, verify it is still there in the custom world.
@@ -1123,7 +1123,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_TRUE([result isEqualToNumber:@1]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Remove 3 from the correct world, verify it is gone, but 4 and 5 are still there.
@@ -1141,7 +1141,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_TRUE([result isEqualToNumber:@1]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Remove "all" in the custom world, verify 4 and 5 are now gone.
@@ -1155,7 +1155,7 @@ TEST(WKUserContentController, MessageHandlerAPI)
         EXPECT_NOT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -1176,7 +1176,7 @@ TEST(WKUserContentController, AsyncScriptMessageHandlerBasicPost)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     functionBody = @"var p = window.webkit.messageHandlers.testHandler.postMessage('Reject'); await p; return p;";
@@ -1188,7 +1188,7 @@ TEST(WKUserContentController, AsyncScriptMessageHandlerBasicPost)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     functionBody = @"var p = window.webkit.messageHandlers.testHandler.postMessage('Undefined'); var result = await p; return result == undefined ? 'Yes' : 'No'";
@@ -1200,7 +1200,7 @@ TEST(WKUserContentController, AsyncScriptMessageHandlerBasicPost)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     functionBody = @"var p = window.webkit.messageHandlers.testHandler.postMessage('Do nothing'); await p; return p;";
@@ -1212,7 +1212,7 @@ TEST(WKUserContentController, AsyncScriptMessageHandlerBasicPost)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     functionBody = @"var p = window.webkit.messageHandlers.testHandler.postMessage('Invalid reply'); await p; return p;";
@@ -1224,7 +1224,7 @@ TEST(WKUserContentController, AsyncScriptMessageHandlerBasicPost)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKUserContentController, WorldLifetime)
@@ -1242,7 +1242,7 @@ TEST(WKUserContentController, WorldLifetime)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Have the message handler bounce back that value.
@@ -1253,7 +1253,7 @@ TEST(WKUserContentController, WorldLifetime)
         EXPECT_TRUE([result isEqualToString:@"bar"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Remove the message handler, which used to cause the world to be destroyed in the web process.
@@ -1265,7 +1265,7 @@ TEST(WKUserContentController, WorldLifetime)
         EXPECT_TRUE([result isEqualToString:@"bar"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 

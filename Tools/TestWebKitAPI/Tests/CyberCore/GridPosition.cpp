@@ -27,7 +27,7 @@
 
 #include <CyberCore/GridPosition.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(GridPositionTest, GridPositionLimits)
 {
@@ -70,4 +70,4 @@ TEST(GridPositionTest, GridPositionLimits)
 
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

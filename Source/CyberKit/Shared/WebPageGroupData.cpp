@@ -28,7 +28,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPageGroupData::encode(IPC::Encoder& encoder) const
 {
@@ -51,4 +51,4 @@ std::optional<WebPageGroupData> WebPageGroupData::decode(IPC::Decoder& decoder)
     return {{ WTFMove(*identifier), *pageGroupID }};
 }
 
-} // namespace WebKit
+} // namespace CyberKit

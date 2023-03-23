@@ -33,13 +33,13 @@
 #include <pal/graphics/WebGPU/WebGPUQueryType.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct QuerySetDescriptor : public ObjectDescriptorBase {
     PAL::WebGPU::QueryType type { PAL::WebGPU::QueryType::Occlusion };
     PAL::WebGPU::Size32 count { 0 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

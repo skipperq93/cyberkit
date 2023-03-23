@@ -38,7 +38,7 @@
 #include "WebSWServerToContextConnection.h"
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -272,6 +272,6 @@ void ServiceWorkerDownloadTask::didFailDownload(std::optional<ResourceError>&& e
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

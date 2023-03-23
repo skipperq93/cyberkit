@@ -44,7 +44,7 @@
 @end
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -106,14 +106,14 @@ TEST(RestoreScrollPositionTests, RestoreScrollPositionDuringResize)
     }];
     [webView synchronouslyGoBack];
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     [webView _endAnimatedResize];
 
     // Should restore the scroll position.
     int timeout = 0;
     do {
         if (timeout)
-            TestWebKitAPI::Util::runFor(0.1_s);
+            TestCyberKitAPI::Util::runFor(0.1_s);
     } while ([webView scrollView].contentOffset.y != 1000 && ++timeout <= 30);
 
     CGPoint contentOffsetAfterBack = [webView scrollView].contentOffset;

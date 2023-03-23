@@ -22,11 +22,11 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-struct WebKit::WebExtensionControllerParameters {
-    WebKit::WebExtensionControllerIdentifier identifier;
+struct CyberKit::WebExtensionControllerParameters {
+    CyberKit::WebExtensionControllerIdentifier identifier;
 
 #if PLATFORM(COCOA)
-    Vector<WebKit::WebExtensionContextParameters> contextParameters;
+    Vector<CyberKit::WebExtensionContextParameters> contextParameters;
 #endif
 }
 

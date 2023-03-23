@@ -29,18 +29,18 @@
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
 #include "Event.h"
-#include "WebKitMediaKeyError.h"
+#include "CyberKitMediaKeyError.h"
 
 namespace WebCore {
 
-class WebKitMediaKeyMessageEvent final : public Event {
-    WTF_MAKE_ISO_ALLOCATED(WebKitMediaKeyMessageEvent);
+class CyberKitMediaKeyMessageEvent final : public Event {
+    WTF_MAKE_ISO_ALLOCATED(CyberKitMediaKeyMessageEvent);
 public:
-    virtual ~WebKitMediaKeyMessageEvent();
+    virtual ~CyberKitMediaKeyMessageEvent();
 
-    static Ref<WebKitMediaKeyMessageEvent> create(const AtomString& type, Uint8Array* message, const String& destinationURL)
+    static Ref<CyberKitMediaKeyMessageEvent> create(const AtomString& type, Uint8Array* message, const String& destinationURL)
     {
-        return adoptRef(*new WebKitMediaKeyMessageEvent(type, message, destinationURL));
+        return adoptRef(*new CyberKitMediaKeyMessageEvent(type, message, destinationURL));
     }
 
     struct Init : EventInit {
@@ -48,9 +48,9 @@ public:
         String destinationURL;
     };
 
-    static Ref<WebKitMediaKeyMessageEvent> create(const AtomString& type, const Init& initializer, IsTrusted isTrusted = IsTrusted::No)
+    static Ref<CyberKitMediaKeyMessageEvent> create(const AtomString& type, const Init& initializer, IsTrusted isTrusted = IsTrusted::No)
     {
-        return adoptRef(*new WebKitMediaKeyMessageEvent(type, initializer, isTrusted));
+        return adoptRef(*new CyberKitMediaKeyMessageEvent(type, initializer, isTrusted));
     }
 
     EventInterface eventInterface() const override;
@@ -59,8 +59,8 @@ public:
     String destinationURL() const { return m_destinationURL; }
 
 private:
-    WebKitMediaKeyMessageEvent(const AtomString& type, Uint8Array* message, const String& destinationURL);
-    WebKitMediaKeyMessageEvent(const AtomString& type, const Init&, IsTrusted);
+    CyberKitMediaKeyMessageEvent(const AtomString& type, Uint8Array* message, const String& destinationURL);
+    CyberKitMediaKeyMessageEvent(const AtomString& type, const Init&, IsTrusted);
 
     RefPtr<Uint8Array> m_message;
     String m_destinationURL;

@@ -24,13 +24,13 @@
  */
 
 #import "config.h"
-#import "WebKitNSImageExtras.h"
+#import "CyberKitNSImageExtras.h"
 
 #if !PLATFORM(IOS_FAMILY)
 
 #import <pal/spi/mac/NSImageSPI.h>
 
-@implementation NSImage (WebKitExtras)
+@implementation NSImage (CyberKitExtras)
 
 - (void)_web_lockFocusWithDeviceScaleFactor:(CGFloat)deviceScaleFactor
 {

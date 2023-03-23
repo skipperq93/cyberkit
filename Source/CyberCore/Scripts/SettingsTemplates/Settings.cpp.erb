@@ -149,7 +149,7 @@ Settings::~Settings()
 {
 }
 
-void Settings::disableUnstableFeaturesForModernWebKit()
+void Settings::disableUnstableFeaturesForModernCyberKit()
 {
 <%- for @setting in @unstableFeatures do -%>
 <%-   if @setting.condition -%>
@@ -162,7 +162,7 @@ void Settings::disableUnstableFeaturesForModernWebKit()
 <%- end -%>
 }
 
-void Settings::disableGlobalUnstableFeaturesForModernWebKit()
+void Settings::disableGlobalUnstableFeaturesForModernCyberKit()
 {
 <%- for @setting in @unstableGlobalFeatures do -%>
 <%-   if @setting.condition -%>

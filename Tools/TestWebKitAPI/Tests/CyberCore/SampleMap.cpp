@@ -44,7 +44,7 @@ inline std::ostream& operator<<(std::ostream& os, const MediaTime& time)
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class TestSample : public MediaSample {
 public:

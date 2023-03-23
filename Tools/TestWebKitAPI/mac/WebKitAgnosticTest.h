@@ -23,22 +23,22 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKitAgnosticTest_h
-#define WebKitAgnosticTest_h
+#ifndef CyberKitAgnosticTest_h
+#define CyberKitAgnosticTest_h
 
 #include "PlatformUtilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-// This test fixture can be used to write test that work with both WebKit1 and WebKit2. Calling
-// runWebKit1Test or runWebKit2Test will create a WebView or WKWebView (respectively), load the URL
+// This test fixture can be used to write test that work with both CyberKit1 and CyberKit2. Calling
+// runCyberKit1Test or runCyberKit2Test will create a WebView or WKWebView (respectively), load the URL
 // specified by url(), and then call didLoadURL. Your test's logic should go in didLoadURL.
-class WebKitAgnosticTest : public ::testing::Test {
+class CyberKitAgnosticTest : public ::testing::Test {
 public:
-    WebKitAgnosticTest();
+    CyberKitAgnosticTest();
 
-    void runWebKit1Test();
-    void runWebKit2Test();
+    void runCyberKit1Test();
+    void runCyberKit2Test();
 
     void loadURL(WebView *, NSURL *);
     void loadURL(WKWebView *, NSURL *);
@@ -67,6 +67,6 @@ private:
     bool didFinishLoad;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
-#endif // WebKitAgnosticTest_h
+#endif // CyberKitAgnosticTest_h

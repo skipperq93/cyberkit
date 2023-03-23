@@ -32,7 +32,7 @@
 #include "PlatformWheelEvent.h"
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/PlatformTouchEventIOS.h>
+#include <CyberKitAdditions/PlatformTouchEventIOS.h>
 #endif
 
 OBJC_CLASS WebEvent;

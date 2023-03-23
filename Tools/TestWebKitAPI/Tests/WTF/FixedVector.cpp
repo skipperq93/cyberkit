@@ -34,7 +34,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_FixedVector, Empty)
 {
@@ -410,4 +410,4 @@ TEST(WTF_FixedVector, Equal)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

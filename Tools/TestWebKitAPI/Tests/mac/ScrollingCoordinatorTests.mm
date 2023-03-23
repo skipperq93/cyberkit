@@ -34,7 +34,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static float waitForScrollEventAndReturnScrollY(WKWebView* webView, const std::function<void(WKWebView*)>& scrollTrigger)
 {
@@ -55,7 +55,7 @@ static float waitForScrollEventAndReturnScrollY(WKWebView* webView, const std::f
 
     scrollTrigger(webView);
 
-    TestWebKitAPI::Util::run(&receivedScrollEvent);
+    TestCyberKitAPI::Util::run(&receivedScrollEvent);
 
     return [evalResult floatValue];
 }
@@ -117,6 +117,6 @@ TEST(ScrollingCoordinatorTests, ScrollingTreeAfterDetachReattach)
     EXPECT_EQ(scrollY, 301);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

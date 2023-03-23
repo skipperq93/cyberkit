@@ -89,15 +89,15 @@ SOFT_LINK_CONSTANT_MAY_FAIL(SymptomPresentationLite, kSymptomAnalyticsServiceEnd
 #endif
 
 #else
-void WebKit::NetworkSessionCocoa::removeNetworkWebsiteData(std::optional<WallTime>, std::optional<HashSet<CyberCore::RegistrableDomain>>&&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
+void CyberKit::NetworkSessionCocoa::removeNetworkWebsiteData(std::optional<WallTime>, std::optional<HashSet<CyberCore::RegistrableDomain>>&&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
 #endif
 
 #import "DeviceManagementSoftLink.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
-CFStringRef const WebKit2HTTPProxyDefaultsKey = static_cast<CFStringRef>(@"WebKit2HTTPProxy");
-CFStringRef const WebKit2HTTPSProxyDefaultsKey = static_cast<CFStringRef>(@"WebKit2HTTPSProxy");
+CFStringRef const CyberKit2HTTPProxyDefaultsKey = static_cast<CFStringRef>(@"CyberKit2HTTPProxy");
+CFStringRef const CyberKit2HTTPSProxyDefaultsKey = static_cast<CFStringRef>(@"CyberKit2HTTPSProxy");
 
 constexpr unsigned maxNumberOfIsolatedSessions { 10 };
 
@@ -118,16 +118,16 @@ static NSURLSessionResponseDisposition toNSURLSessionResponseDisposition(CyberCo
     }
 }
 
-static NSURLSessionAuthChallengeDisposition toNSURLSessionAuthChallengeDisposition(WebKit::AuthenticationChallengeDisposition disposition)
+static NSURLSessionAuthChallengeDisposition toNSURLSessionAuthChallengeDisposition(CyberKit::AuthenticationChallengeDisposition disposition)
 {
     switch (disposition) {
-    case WebKit::AuthenticationChallengeDisposition::UseCredential:
+    case CyberKit::AuthenticationChallengeDisposition::UseCredential:
         return NSURLSessionAuthChallengeUseCredential;
-    case WebKit::AuthenticationChallengeDisposition::PerformDefaultHandling:
+    case CyberKit::AuthenticationChallengeDisposition::PerformDefaultHandling:
         return NSURLSessionAuthChallengePerformDefaultHandling;
-    case WebKit::AuthenticationChallengeDisposition::Cancel:
+    case CyberKit::AuthenticationChallengeDisposition::Cancel:
         return NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-    case WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue:
+    case CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue:
         return NSURLSessionAuthChallengeRejectProtectionSpace;
     }
 }
@@ -470,19 +470,19 @@ static String stringForSSLCipher(SSLCipherSuite cipher)
     , NSURLSessionWebSocketDelegate
 #endif
 > {
-    WeakPtr<WebKit::NetworkSessionCocoa> _session;
-    WeakPtr<WebKit::SessionWrapper> _sessionWrapper;
+    WeakPtr<CyberKit::NetworkSessionCocoa> _session;
+    WeakPtr<CyberKit::SessionWrapper> _sessionWrapper;
     bool _withCredentials;
 }
 
-- (id)initWithNetworkSession:(NakedRef<WebKit::NetworkSessionCocoa>)session wrapper:(WebKit::SessionWrapper&)sessionWrapper withCredentials:(bool)withCredentials;
+- (id)initWithNetworkSession:(NakedRef<CyberKit::NetworkSessionCocoa>)session wrapper:(CyberKit::SessionWrapper&)sessionWrapper withCredentials:(bool)withCredentials;
 - (void)sessionInvalidated;
 
 @end
 
 @implementation WKNetworkSessionDelegate
 
-- (id)initWithNetworkSession:(NakedRef<WebKit::NetworkSessionCocoa>)session wrapper:(WebKit::SessionWrapper&)sessionWrapper withCredentials:(bool)withCredentials
+- (id)initWithNetworkSession:(NakedRef<CyberKit::NetworkSessionCocoa>)session wrapper:(CyberKit::SessionWrapper&)sessionWrapper withCredentials:(bool)withCredentials
 {
     self = [super init];
     if (!self)
@@ -679,9 +679,9 @@ static void updateIgnoreStrictTransportSecuritySetting(RetainPtr<NSURLRequest>& 
 
 static inline void processServerTrustEvaluation(NetworkSessionCocoa& session, SessionWrapper& sessionWrapper, NSURLAuthenticationChallenge *challenge, NegotiatedLegacyTLS negotiatedLegacyTLS, NetworkDataTaskCocoa::TaskIdentifier taskIdentifier, NetworkDataTaskCocoa* networkDataTask, CompletionHandler<void(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential)>&& completionHandler)
 {
-    session.continueDidReceiveChallenge(sessionWrapper, challenge, negotiatedLegacyTLS, taskIdentifier, networkDataTask, [completionHandler = WTFMove(completionHandler), secTrust = retainPtr(challenge.protectionSpace.serverTrust)] (WebKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential) mutable {
+    session.continueDidReceiveChallenge(sessionWrapper, challenge, negotiatedLegacyTLS, taskIdentifier, networkDataTask, [completionHandler = WTFMove(completionHandler), secTrust = retainPtr(challenge.protectionSpace.serverTrust)] (CyberKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential) mutable {
         // FIXME: UIProcess should send us back non nil credentials but the credential IPC encoder currently only serializes ns credentials for username/password.
-        if (disposition == WebKit::AuthenticationChallengeDisposition::UseCredential && !credential.nsCredential()) {
+        if (disposition == CyberKit::AuthenticationChallengeDisposition::UseCredential && !credential.nsCredential()) {
             completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialForTrust: secTrust.get()]);
             return;
         }
@@ -787,7 +787,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         }
     }
 
-    sessionCocoa->continueDidReceiveChallenge(*_sessionWrapper, challenge, negotiatedLegacyTLS, taskIdentifier, [self existingTask:task], [completionHandler = makeBlockPtr(completionHandler)] (WebKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential) mutable {
+    sessionCocoa->continueDidReceiveChallenge(*_sessionWrapper, challenge, negotiatedLegacyTLS, taskIdentifier, [self existingTask:task], [completionHandler = makeBlockPtr(completionHandler)] (CyberKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential) mutable {
         completionHandler(toNSURLSessionAuthChallengeDisposition(disposition), credential.nsCredential());
     });
 }
@@ -1056,7 +1056,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         }
 
         CyberCore::ResourceResponse resourceResponse(response);
-        // Lazy initialization is not helpful in the WebKit2 case because we always end up initializing
+        // Lazy initialization is not helpful in the CyberKit2 case because we always end up initializing
         // all the fields when sending the response to the WebContent process over IPC.
         resourceResponse.disableLazyInitialization();
 
@@ -1128,7 +1128,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     Ref<NetworkDataTaskCocoa> protectedNetworkDataTask(*networkDataTask);
     auto downloadID = networkDataTask->pendingDownloadID();
     auto& downloadManager = sessionCocoa->networkProcess().downloadManager();
-    auto download = makeUnique<WebKit::Download>(downloadManager, downloadID, downloadTask, *sessionCocoa, networkDataTask->suggestedFilename());
+    auto download = makeUnique<CyberKit::Download>(downloadManager, downloadID, downloadTask, *sessionCocoa, networkDataTask->suggestedFilename());
     networkDataTask->transferSandboxExtensionToDownload(*download);
     ASSERT(FileSystem::fileExists(networkDataTask->pendingDownloadLocation()));
     download->didCreateDestination(networkDataTask->pendingDownloadLocation());
@@ -1171,7 +1171,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ASSERT_ENABLED
 static bool sessionsCreated = false;
@@ -1299,7 +1299,7 @@ void SessionWrapper::initialize(NSURLSessionConfiguration *configuration, Networ
     isFullBrowser = CyberCore::MacApplication::isSafari();
 #endif
     if (!configuration._sourceApplicationSecondaryIdentifier && isFullBrowser)
-        configuration._sourceApplicationSecondaryIdentifier = @"com.apple.WebKit.InAppBrowser";
+        configuration._sourceApplicationSecondaryIdentifier = @"com.apple.CyberKit.InAppBrowser";
 
     delegate = adoptNS([[WKNetworkSessionDelegate alloc] initWithNetworkSession:networkSession wrapper:*this withCredentials:storedCredentialsPolicy == CyberCore::StoredCredentialsPolicy::Use]);
     session = [NSURLSession sessionWithConfiguration:configuration delegate:delegate.get() delegateQueue:[NSOperationQueue mainQueue]];
@@ -1317,7 +1317,7 @@ static void activateSessionCleanup(NetworkSessionCocoa& session, const NetworkSe
     bool trackingPreventionEnabled = doesParentProcessHaveTrackingPreventionEnabled(session.networkProcess(), parameters.appHasRequestedCrossWebsiteTrackingPermission);
     bool passedEnabledState = session.isTrackingPreventionEnabled();
 
-    // We do not need to log a discrepancy between states for WebKitTestRunner or TestWebKitAPI.
+    // We do not need to log a discrepancy between states for CyberKitTestRunner or TestCyberKitAPI.
     if (trackingPreventionEnabled != passedEnabledState && !isRunningTest(CyberCore::applicationBundleIdentifier()))
         WTFLogAlways("Passed ITP enabled state (%d) does not match TCC setting (%d)\n", passedEnabledState, trackingPreventionEnabled);
     session.setTrackingPreventionEnabled(passedEnabledState);
@@ -1374,7 +1374,7 @@ NetworkSessionCocoa::NetworkSessionCocoa(NetworkProcess& networkProcess, const N
     if (parameters.allowsCellularAccess == AllowsCellularAccess::No)
         configuration.allowsCellularAccess = NO;
 
-    // The WebKit network cache was already queried.
+    // The CyberKit network cache was already queried.
     configuration.URLCache = nil;
 
     if (auto data = networkProcess.sourceApplicationAuditData())
@@ -1429,7 +1429,7 @@ NetworkSessionCocoa::NetworkSessionCocoa(NetworkProcess& networkProcess, const N
         cookieStorage = storageSession->nsCookieStorage();
 
 #if HAVE(CFNETWORK_OVERRIDE_SESSION_COOKIE_ACCEPT_POLICY)
-    // We still need to check the selector since CFNetwork updates and WebKit updates are separate
+    // We still need to check the selector since CFNetwork updates and CyberKit updates are separate
     // on older macOS.
     if ([cookieStorage respondsToSelector:@selector(_overrideSessionCookieAcceptPolicy)])
         cookieStorage.get()._overrideSessionCookieAcceptPolicy = YES;
@@ -1756,10 +1756,10 @@ bool NetworkSessionCocoa::allowsSpecificHTTPSCertificateForHost(const CyberCore:
     return CyberCore::certificatesMatch(trust.get(), challenge.nsURLAuthenticationChallenge().protectionSpace.serverTrust);
 }
 
-static CompletionHandler<void(WebKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential)> createChallengeCompletionHandler(Ref<NetworkProcess>&& networkProcess, PAL::SessionID sessionID,  const CyberCore::AuthenticationChallenge& challenge, const String& partition, uint64_t taskIdentifier, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, const CyberCore::Credential&)>&& completionHandler)
+static CompletionHandler<void(CyberKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential)> createChallengeCompletionHandler(Ref<NetworkProcess>&& networkProcess, PAL::SessionID sessionID,  const CyberCore::AuthenticationChallenge& challenge, const String& partition, uint64_t taskIdentifier, CompletionHandler<void(CyberKit::AuthenticationChallengeDisposition, const CyberCore::Credential&)>&& completionHandler)
  {
     CyberCore::AuthenticationChallenge authenticationChallenge { challenge };
-    return [completionHandler = WTFMove(completionHandler), networkProcess = WTFMove(networkProcess), sessionID, authenticationChallenge, taskIdentifier, partition](WebKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential) mutable {
+    return [completionHandler = WTFMove(completionHandler), networkProcess = WTFMove(networkProcess), sessionID, authenticationChallenge, taskIdentifier, partition](CyberKit::AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential) mutable {
 #if !LOG_DISABLED
         LOG(NetworkSession, "%llu didReceiveChallenge completionHandler %d", taskIdentifier, disposition);
 #else
@@ -1782,7 +1782,7 @@ static CompletionHandler<void(WebKit::AuthenticationChallengeDisposition disposi
     };
 }
 
-void NetworkSessionCocoa::continueDidReceiveChallenge(SessionWrapper& sessionWrapper, const CyberCore::AuthenticationChallenge& challenge, NegotiatedLegacyTLS negotiatedLegacyTLS, NetworkDataTaskCocoa::TaskIdentifier taskIdentifier, NetworkDataTaskCocoa* networkDataTask, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, const CyberCore::Credential&)>&& completionHandler)
+void NetworkSessionCocoa::continueDidReceiveChallenge(SessionWrapper& sessionWrapper, const CyberCore::AuthenticationChallenge& challenge, NegotiatedLegacyTLS negotiatedLegacyTLS, NetworkDataTaskCocoa::TaskIdentifier taskIdentifier, NetworkDataTaskCocoa* networkDataTask, CompletionHandler<void(CyberKit::AuthenticationChallengeDisposition, const CyberCore::Credential&)>&& completionHandler)
 {
     if (!networkDataTask) {
 #if HAVE(NSURLSESSION_WEBSOCKET)
@@ -2113,4 +2113,4 @@ void NetworkSessionCocoa::removeNetworkWebsiteData(std::optional<WallTime> modif
 
 #endif // USE(APPLE_INTERNAL_SDK)
 
-} // namespace WebKit
+} // namespace CyberKit

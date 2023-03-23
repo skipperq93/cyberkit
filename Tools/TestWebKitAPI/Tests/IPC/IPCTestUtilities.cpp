@@ -29,7 +29,7 @@
 #include "Test.h"
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 void PrintTo(ConnectionTestDirection value, ::std::ostream* o)
 {

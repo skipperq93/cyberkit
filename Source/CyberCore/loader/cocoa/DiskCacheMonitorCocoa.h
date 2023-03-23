@@ -51,4 +51,4 @@ private:
     PAL::SessionID m_sessionID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

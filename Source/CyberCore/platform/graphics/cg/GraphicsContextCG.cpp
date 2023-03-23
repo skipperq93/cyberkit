@@ -1356,7 +1356,7 @@ void GraphicsContextCG::setCTM(const AffineTransform& transform)
 
 AffineTransform GraphicsContextCG::getCTM(IncludeDeviceScale includeScale) const
 {
-    // The CTM usually includes the deviceScaleFactor except in WebKit 1 when the
+    // The CTM usually includes the deviceScaleFactor except in CyberKit 1 when the
     // content is non-composited, since the scale factor is integrated at a lower
     // level. To guarantee the deviceScale is included, we can use this CG API.
     if (includeScale == DefinitelyIncludeDeviceScale)

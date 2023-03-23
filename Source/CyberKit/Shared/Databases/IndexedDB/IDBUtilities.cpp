@@ -30,7 +30,7 @@
 #include <CyberCore/SecurityOrigin.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 String uniqueDatabaseIdentifier(const String& databaseName, const CyberCore::SecurityOrigin& openingOrigin, const CyberCore::SecurityOrigin& mainFrameOrigin)
 {
@@ -53,4 +53,4 @@ String uniqueDatabaseIdentifier(const String& databaseName, const CyberCore::Sec
     return stringBuilder.toString();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

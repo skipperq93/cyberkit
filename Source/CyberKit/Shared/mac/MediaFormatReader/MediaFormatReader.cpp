@@ -50,7 +50,7 @@
 
 WTF_DECLARE_CF_TYPE_TRAIT(MTPluginFormatReader);
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -114,7 +114,7 @@ void MediaFormatReader::startOnMainThread(MTPluginByteSourceRef byteSource)
 
 static ConcurrentWorkQueue& readerQueue()
 {
-    static NeverDestroyed<Ref<ConcurrentWorkQueue>> queue = ConcurrentWorkQueue::create("WebKit::MediaFormatReader Queue");
+    static NeverDestroyed<Ref<ConcurrentWorkQueue>> queue = ConcurrentWorkQueue::create("CyberKit::MediaFormatReader Queue");
     return queue.get();
 }
 
@@ -309,6 +309,6 @@ WTFLogChannel& MediaFormatReader::logChannel()
     return JOIN_LOG_CHANNEL_WITH_PREFIX(LOG_CHANNEL_PREFIX, Media);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

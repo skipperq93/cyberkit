@@ -26,7 +26,7 @@ namespace CyberCore {
 
 static String gApplicationName;
 static String gApplicationID;
-static NeverDestroyed<WTF::String> gDefaultApplicationName(MAKE_STATIC_STRING_IMPL("WebKit"));
+static NeverDestroyed<WTF::String> gDefaultApplicationName(MAKE_STATIC_STRING_IMPL("CyberKit"));
 
 void setApplicationName(const String& applicationName)
 {

@@ -41,7 +41,7 @@
 #define GL_GLEXT_PROTOTYPES 0
 #endif
 
-// Avoid including and platfrom-specific headers that might bring in identifiers colliding with WebKit code.
+// Avoid including and platfrom-specific headers that might bring in identifiers colliding with CyberKit code.
 #define EGL_NO_PLATFORM_SPECIFIC_TYPES
 
 #include <ANGLE/entry_points_egl_autogen.h>

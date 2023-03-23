@@ -179,7 +179,7 @@ Vector<RetainPtr<CTFontDescriptorRef>> SystemFontDatabaseCoreText::computeCascad
     auto localeArray = adoptCF(CFArrayCreate(kCFAllocatorDefault, arrayValues, std::size(arrayValues), &kCFTypeArrayCallBacks));
     auto cascadeList = adoptCF(CTFontCopyDefaultCascadeListForLanguages(font, localeArray.get()));
     Vector<RetainPtr<CTFontDescriptorRef>> result;
-    // WebKit handles the cascade list, and WebKit 2's IPC code doesn't know how to serialize Core Text's cascade list.
+    // CyberKit handles the cascade list, and CyberKit 2's IPC code doesn't know how to serialize Core Text's cascade list.
     result.append(removeCascadeList(adoptCF(CTFontCopyFontDescriptor(font)).get()));
     if (cascadeList) {
         CFIndex arrayLength = CFArrayGetCount(cascadeList.get());

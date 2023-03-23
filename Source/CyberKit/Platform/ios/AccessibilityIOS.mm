@@ -28,7 +28,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-namespace WebKit {
+namespace CyberKit {
 
 NSData *newAccessibilityRemoteToken(NSUUID *uuid)
 {
@@ -37,6 +37,6 @@ NSData *newAccessibilityRemoteToken(NSUUID *uuid)
     return [NSKeyedArchiver archivedDataWithRootObject:@{ @"ax-pid" : @(getpid()), @"ax-uuid" : uuid.UUIDString, @"ax-register" : @YES } requiringSecureCoding:YES error:nullptr];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -34,7 +34,7 @@
 #import <CyberKit/_WKFullscreenDelegate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Fullscreen, PointerLeave)
 {

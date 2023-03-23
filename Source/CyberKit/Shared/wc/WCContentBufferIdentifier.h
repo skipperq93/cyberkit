@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum WCContentBufferIdentifierType { };
 using WCContentBufferIdentifier = ObjectIdentifier<WCContentBufferIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

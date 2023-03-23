@@ -113,7 +113,7 @@ private:
 
     void hookTrackEvents(Track&);
     static std::tuple<GRefPtr<GstCaps>, AppendPipeline::StreamType, FloatSize> parseDemuxerSrcPadCaps(GstCaps*);
-    Ref<CyberCore::TrackPrivateBase> makeWebKitTrack(int trackIndex);
+    Ref<CyberCore::TrackPrivateBase> makeCyberKitTrack(int trackIndex);
     void appsinkCapsChanged(Track&);
     void appsinkNewSample(const Track&, GRefPtr<GstSample>&&);
     void handleEndOfAppend();

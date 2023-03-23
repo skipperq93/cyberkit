@@ -81,7 +81,7 @@ public:
     void startTestServer()
     {
         // Prepare argv[] for spawning the server process.
-        GUniquePtr<char> testServerPath(g_build_filename(WEBKIT_EXEC_PATH, "TestWebKitAPI", "WebKitGTK", "InspectorTestServer", nullptr));
+        GUniquePtr<char> testServerPath(g_build_filename(WEBKIT_EXEC_PATH, "TestCyberKitAPI", "CyberKitGTK", "InspectorTestServer", nullptr));
 
         int eventFD = eventfd(0, 0);
         g_assert_cmpint(eventFD, !=, -1);
@@ -175,7 +175,7 @@ static void testInspectorServerPageList(InspectorServerTest* test, gconstpointer
     g_assert_true(test->loadTargetListPageAndWaitUntilFinished());
 
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByClassName('targetname').length;", &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByClassName('targetname').length;", &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
     g_assert_cmpint(WebViewTest::javascriptResultToNumber(javascriptResult), ==, 1);
@@ -202,7 +202,7 @@ static void testInspectorHTTPServerPageList(InspectorHTTPServerTest* test, gcons
     g_assert_true(test->loadTargetListPageAndWaitUntilFinished());
 
     GUniqueOutPtr<GError> error;
-    WebKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByClassName('targetname').length;", &error.outPtr());
+    CyberKitJavascriptResult* javascriptResult = test->runJavaScriptAndWaitUntilFinished("document.getElementsByClassName('targetname').length;", &error.outPtr());
     g_assert_nonnull(javascriptResult);
     g_assert_no_error(error.get());
     g_assert_cmpint(WebViewTest::javascriptResultToNumber(javascriptResult), ==, 1);
@@ -228,8 +228,8 @@ void beforeAll()
         kill(gActiveServerPid, SIGTERM);
     });
 
-    InspectorServerTest::add("WebKitWebInspectorServer", "test-page-list", testInspectorServerPageList);
-    InspectorHTTPServerTest::add("WebKitWebInspectorServer", "http-test-page-list", testInspectorHTTPServerPageList);
+    InspectorServerTest::add("CyberKitWebInspectorServer", "test-page-list", testInspectorServerPageList);
+    InspectorHTTPServerTest::add("CyberKitWebInspectorServer", "http-test-page-list", testInspectorHTTPServerPageList);
 }
 
 void afterAll()

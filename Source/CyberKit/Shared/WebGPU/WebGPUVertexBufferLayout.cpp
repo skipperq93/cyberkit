@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUVertexBufferLayout.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<VertexBufferLayout> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::VertexBufferLayout& vertexBufferLayout)
 {
@@ -62,6 +62,6 @@ std::optional<PAL::WebGPU::VertexBufferLayout> ConvertFromBackingContext::conver
     return { { vertexBufferLayout.arrayStride, vertexBufferLayout.stepMode, WTFMove(attributes) } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

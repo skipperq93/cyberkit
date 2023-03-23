@@ -50,7 +50,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 using namespace CyberCore::ContentExtensions;
 
@@ -3129,6 +3129,6 @@ TEST_F(ContentExtensionTest, RegexSubstitution)
     transformURL("https://!@#$%^&*invalidURL\\1/"_s, "^https://www\\.(abc?)\\.xyz\\.com/"_s, "https://www.abc.xyz.com"_s, "https://www.abc.xyz.com/"_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

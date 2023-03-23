@@ -29,7 +29,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebPopupItem {
     enum class Type : bool {
@@ -52,4 +52,4 @@ struct WebPopupItem {
     bool m_isSelected;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -26,5 +26,5 @@
 #import "config.h"
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/WebKitAdditions.mm>
+#import <CyberKitAdditions/CyberKitAdditions.mm>
 #endif

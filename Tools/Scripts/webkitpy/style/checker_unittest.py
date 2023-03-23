@@ -217,9 +217,9 @@ class GlobalVariablesTest(unittest.TestCase):
                       "build/include")
         assertNoCheck(os.path.join('Tools', 'DumpRenderTree', 'TestNetscapePlugIn', 'main.cpp'),
                       "readability/naming")
-        assertCheck(os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WTF', 'RefLogger.cpp'),
+        assertCheck(os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'WTF', 'RefLogger.cpp'),
                       "build/include")
-        assertNoCheck(os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'mac', 'WillSendSubmitEvent.mm'),
+        assertNoCheck(os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'mac', 'WillSendSubmitEvent.mm'),
                       "readability/naming")
         assertCheck("random_path.cpp",
                     "readability/naming")
@@ -267,7 +267,7 @@ class GlobalVariablesTest(unittest.TestCase):
                           'Key "%s" is not a category' % category)
 
 
-class CheckWebKitStyleFunctionTest(unittest.TestCase):
+class CheckCyberKitStyleFunctionTest(unittest.TestCase):
 
     """Tests the functions with names of the form check_webkit_style_*."""
 
@@ -292,10 +292,10 @@ class CheckerDispatcherSkipTest(unittest.TestCase):
         """Test should_skip_with_warning()."""
         # Check skipped files.
         paths_to_skip = [
-           os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WebKitGtk', 'testatk.c'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitWebView.h'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitLoader.h'),
+           os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKitGtk', 'testatk.c'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitWebView.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitLoader.h'),
             ]
 
         for path in paths_to_skip:
@@ -305,12 +305,12 @@ class CheckerDispatcherSkipTest(unittest.TestCase):
         # Verify that some files are not skipped.
         paths_not_to_skip = [
            "foo.txt",
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'HelperClass.cpp'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'HelperClass.h'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitWebView.cpp'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitWebViewPrivate.h'),
-           os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WebKit2Gtk', 'WebViewTest.cpp'),
-           os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WebKit2Gtk', 'WebViewTest.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'HelperClass.cpp'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'HelperClass.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitWebView.cpp'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitWebViewPrivate.h'),
+           os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKit2Gtk', 'WebViewTest.cpp'),
+           os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKit2Gtk', 'WebViewTest.h'),
             ]
 
         for path in paths_not_to_skip:
@@ -614,7 +614,7 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
         """Test paths that should be checked as XML."""
         paths = [
            os.path.join('Source', 'CyberCore', 'CyberCore.vcproj', 'CyberCore.vcproj'),
-           os.path.join('WebKitLibraries', 'win', 'tools', 'vsprops', 'common.vsprops'),
+           os.path.join('CyberKitLibraries', 'win', 'tools', 'vsprops', 'common.vsprops'),
         ]
 
         for path in paths:
@@ -878,7 +878,7 @@ class StyleProcessor_CodeCoverageTest(LoggingTestCase):
 
         self.assertFalse(self._processor.should_process(file_path))
 
-        self.assertLog(['ERROR: foo/invalid_file.txt(-):  File type is unsupported by the WebKit '
+        self.assertLog(['ERROR: foo/invalid_file.txt(-):  File type is unsupported by the CyberKit '
                         'project  [policy/language] [5]\n'.format(os.path.join('foo', 'skip_with_warning.txt'))])
 
     def test_process__checker_dispatched(self):

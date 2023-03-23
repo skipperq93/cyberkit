@@ -30,7 +30,7 @@
 #include "NetworkLoad.h"
 #include <CyberCore/ResourceError.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr size_t maximumActiveCountForLowPriority = 2;
 static constexpr size_t maximumTrackedHTTP1XOrigins = 128;

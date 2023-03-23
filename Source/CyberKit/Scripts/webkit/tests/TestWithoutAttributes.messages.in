@@ -35,21 +35,21 @@ messages -> TestWithoutAttributes {
 #if ENABLE(TOUCH_EVENTS)
     LoadSomething(String url)
 #if NESTED_MESSAGE_CONDITION || SOME_OTHER_MESSAGE_CONDITION
-    TouchEvent(WebKit::WebTouchEvent event)
+    TouchEvent(CyberKit::WebTouchEvent event)
 #endif
 #if NESTED_MESSAGE_CONDITION && SOME_OTHER_MESSAGE_CONDITION
-    AddEvent(WebKit::WebTouchEvent event)
+    AddEvent(CyberKit::WebTouchEvent event)
 #endif
     LoadSomethingElse(String url)
 #endif
     DidReceivePolicyDecision(uint64_t frameID, uint64_t listenerID, uint32_t policyAction)
     Close()
 
-    PreferencesDidChange(WebKit::WebPreferencesStore store)
+    PreferencesDidChange(CyberKit::WebPreferencesStore store)
     SendDoubleAndFloat(double d, float f)
     SendInts(Vector<uint64_t> ints, Vector<Vector<uint64_t>> intVectors)
 
-    CreatePlugin(uint64_t pluginInstanceID, WebKit::Plugin::Parameters parameters) -> (bool result)
+    CreatePlugin(uint64_t pluginInstanceID, CyberKit::Plugin::Parameters parameters) -> (bool result)
     RunJavaScriptAlert(uint64_t frameID, String message) -> ()
     GetPlugins(bool refresh) -> (Vector<CyberCore::PluginInfo> plugins)
     GetPluginProcessConnection(String pluginPath) -> (IPC::Connection::Handle connectionHandle) Synchronous
@@ -63,7 +63,7 @@ messages -> TestWithoutAttributes {
     SetVideoLayerID(CyberCore::GraphicsLayer::PlatformLayerID videoLayerID)
 
 #if PLATFORM(MAC)
-    DidCreateWebProcessConnection(MachSendRight connectionIdentifier, OptionSet<WebKit::SelectionFlags> flags)
+    DidCreateWebProcessConnection(MachSendRight connectionIdentifier, OptionSet<CyberKit::SelectionFlags> flags)
 #endif
 
 #if PLATFORM(MAC)

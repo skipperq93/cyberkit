@@ -104,7 +104,7 @@ class TimeRanges;
 class VideoPlaybackQuality;
 class VideoTrackList;
 class VideoTrackPrivate;
-class WebKitMediaKeys;
+class CyberKitMediaKeys;
 
 enum class DynamicRangeMode : uint8_t;
 
@@ -314,8 +314,8 @@ public:
 #endif
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
-    WebKitMediaKeys* webkitKeys() const { return m_webKitMediaKeys.get(); }
-    void webkitSetMediaKeys(WebKitMediaKeys*);
+    CyberKitMediaKeys* webkitKeys() const { return m_webKitMediaKeys.get(); }
+    void webkitSetMediaKeys(CyberKitMediaKeys*);
 
     void keyAdded();
 #endif
@@ -1237,7 +1237,7 @@ private:
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
     bool m_hasNeedkeyListener { false };
-    RefPtr<WebKitMediaKeys> m_webKitMediaKeys;
+    RefPtr<CyberKitMediaKeys> m_webKitMediaKeys;
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA)

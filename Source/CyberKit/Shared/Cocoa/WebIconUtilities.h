@@ -30,7 +30,7 @@
 #import "CocoaImage.h"
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<CocoaImage> fallbackIconForFile(NSURL *file);
 RetainPtr<CocoaImage> iconForImageFile(NSURL *file);

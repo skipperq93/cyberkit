@@ -39,18 +39,18 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ContextMenuContextData {
 public:
     using Type = CyberCore::ContextMenuContext::Type;
 
     ContextMenuContextData();
-    ContextMenuContextData(const CyberCore::IntPoint& menuLocation, const Vector<WebKit::WebContextMenuItemData>& menuItems, const CyberCore::ContextMenuContext&);
+    ContextMenuContextData(const CyberCore::IntPoint& menuLocation, const Vector<CyberKit::WebContextMenuItemData>& menuItems, const CyberCore::ContextMenuContext&);
 
     Type type() const { return m_type; }
     const CyberCore::IntPoint& menuLocation() const { return m_menuLocation; }
-    const Vector<WebKit::WebContextMenuItemData>& menuItems() const { return m_menuItems; }
+    const Vector<CyberKit::WebContextMenuItemData>& menuItems() const { return m_menuItems; }
 
     const std::optional<WebHitTestResultData>& webHitTestResultData() const { return m_webHitTestResultData; }
     const String& selectedText() const { return m_selectedText; }
@@ -96,7 +96,7 @@ private:
     Type m_type;
 
     CyberCore::IntPoint m_menuLocation;
-    Vector<WebKit::WebContextMenuItemData> m_menuItems;
+    Vector<CyberKit::WebContextMenuItemData> m_menuItems;
 
     std::optional<WebHitTestResultData> m_webHitTestResultData;
     String m_selectedText;
@@ -115,6 +115,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

@@ -36,7 +36,7 @@
 #include "PrivateRelayed.h"
 #include <CyberCore/NavigationPreloadState.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -58,7 +58,7 @@ void ServiceWorkerNavigationPreloader::start()
     m_isStarted = true;
 
     if (!m_session) {
-        didFailLoading(ResourceError { errorDomainWebKitInternal, 0, { }, "No session for preload"_s });
+        didFailLoading(ResourceError { errorDomainCyberKitInternal, 0, { }, "No session for preload"_s });
         return;
     }
 
@@ -254,6 +254,6 @@ bool ServiceWorkerNavigationPreloader::convertToDownload(DownloadManager& manage
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

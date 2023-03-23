@@ -32,7 +32,7 @@
 
 namespace WebCore {
 
-class WebKitMediaKeyError : public RefCounted<WebKitMediaKeyError> {
+class CyberKitMediaKeyError : public RefCounted<CyberKitMediaKeyError> {
 public:
     enum {
         MEDIA_KEYERR_UNKNOWN = 1,
@@ -44,13 +44,13 @@ public:
     };
     typedef unsigned short Code;
 
-    static Ref<WebKitMediaKeyError> create(Code code, uint32_t systemCode = 0) { return adoptRef(*new WebKitMediaKeyError(code, systemCode)); }
+    static Ref<CyberKitMediaKeyError> create(Code code, uint32_t systemCode = 0) { return adoptRef(*new CyberKitMediaKeyError(code, systemCode)); }
 
     Code code() const { return m_code; }
     uint32_t systemCode() { return m_systemCode; }
 
 private:
-    explicit WebKitMediaKeyError(Code code, unsigned long systemCode) : m_code(code), m_systemCode(systemCode) { }
+    explicit CyberKitMediaKeyError(Code code, unsigned long systemCode) : m_code(code), m_systemCode(systemCode) { }
 
     Code m_code;
     unsigned long m_systemCode;

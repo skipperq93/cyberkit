@@ -23,17 +23,17 @@
 #if USE(LIBWEBRTC)
 
 messages -> NetworkRTCProvider {
-    CreateUDPSocket(CyberCore::LibWebRTCSocketIdentifier identifier, WebKit::RTCNetwork::SocketAddress localAddress, uint16_t minPort, uint16_t maxPort, WebKit::WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain domain)
-    CreateClientTCPSocket(CyberCore::LibWebRTCSocketIdentifier identifier, WebKit::RTCNetwork::SocketAddress localAddress, WebKit::RTCNetwork::SocketAddress remoteAddress, String userAgent, int options, WebKit::WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain domain)
+    CreateUDPSocket(CyberCore::LibWebRTCSocketIdentifier identifier, CyberKit::RTCNetwork::SocketAddress localAddress, uint16_t minPort, uint16_t maxPort, CyberKit::WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain domain)
+    CreateClientTCPSocket(CyberCore::LibWebRTCSocketIdentifier identifier, CyberKit::RTCNetwork::SocketAddress localAddress, CyberKit::RTCNetwork::SocketAddress remoteAddress, String userAgent, int options, CyberKit::WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain domain)
     WrapNewTCPConnection(CyberCore::LibWebRTCSocketIdentifier identifier, CyberCore::LibWebRTCSocketIdentifier newConnectionSocketIdentifier)
 
     void SetPlatformTCPSocketsEnabled(bool enabled)
     void SetPlatformUDPSocketsEnabled(bool enabled)
 
-    CreateResolver(WebKit::LibWebRTCResolverIdentifier identifier, String address)
-    StopResolver(WebKit::LibWebRTCResolverIdentifier identifier)
+    CreateResolver(CyberKit::LibWebRTCResolverIdentifier identifier, String address)
+    StopResolver(CyberKit::LibWebRTCResolverIdentifier identifier)
 
-    void SendToSocket(CyberCore::LibWebRTCSocketIdentifier identifier, IPC::DataReference data, WebKit::RTCNetwork::SocketAddress address, struct WebKit::RTCPacketOptions options)
+    void SendToSocket(CyberCore::LibWebRTCSocketIdentifier identifier, IPC::DataReference data, CyberKit::RTCNetwork::SocketAddress address, struct CyberKit::RTCPacketOptions options)
     void CloseSocket(CyberCore::LibWebRTCSocketIdentifier identifier)
     void SetSocketOption(CyberCore::LibWebRTCSocketIdentifier identifier, int option, int value)
 }

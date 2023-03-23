@@ -39,7 +39,7 @@ template<> struct EnumTraits<TestEnum> {
 };
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_EnumTraits, IsValidEnum)
 {

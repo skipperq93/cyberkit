@@ -1,9 +1,9 @@
-set(WebKitTestRunner_DIR "${TOOLS_DIR}/WebKitTestRunner")
+set(CyberKitTestRunner_DIR "${TOOLS_DIR}/CyberKitTestRunner")
 
-file(MAKE_DIRECTORY ${WebKitTestRunner_DERIVED_SOURCES_DIR}/InjectedBundle)
-file(MAKE_DIRECTORY ${WebKitTestRunner_DERIVED_SOURCES_DIR}/UIScriptContext)
+file(MAKE_DIRECTORY ${CyberKitTestRunner_DERIVED_SOURCES_DIR}/InjectedBundle)
+file(MAKE_DIRECTORY ${CyberKitTestRunner_DERIVED_SOURCES_DIR}/UIScriptContext)
 
-set(WebKitTestRunner_SOURCES
+set(CyberKitTestRunner_SOURCES
     CyclicRedundancyCheck.cpp
     GeolocationProviderMock.cpp
     Options.cpp
@@ -16,56 +16,56 @@ set(WebKitTestRunner_SOURCES
     WorkQueueManager.cpp
 )
 
-set(WebKitTestRunner_LIBRARIES
-    WebKit::TestRunnerShared
-    WebKit::CyberCoreTestSupport
+set(CyberKitTestRunner_LIBRARIES
+    CyberKit::TestRunnerShared
+    CyberKit::CyberCoreTestSupport
 )
-set(WebKitTestRunner_FRAMEWORKS
+set(CyberKitTestRunner_FRAMEWORKS
     JavaScriptCore
     PAL
     WTF
     CyberCore
-    WebKit
+    CyberKit
 )
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND WebKitTestRunner_FRAMEWORKS bmalloc)
+    list(APPEND CyberKitTestRunner_FRAMEWORKS bmalloc)
 endif ()
 
 if (COMPILER_IS_GCC_OR_CLANG)
     if (HAVE_STD_EXPERIMENTAL_FILESYSTEM)
-        list(APPEND WebKitTestRunner_LIBRARIES stdc++fs)
+        list(APPEND CyberKitTestRunner_LIBRARIES stdc++fs)
     endif ()
 endif ()
 
-set(WebKitTestRunner_PRIVATE_INCLUDE_DIRECTORIES
+set(CyberKitTestRunner_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
-    ${WebKitTestRunner_DERIVED_SOURCES_DIR}
-    ${WebKitTestRunner_DERIVED_SOURCES_DIR}/UIScriptContext
-    ${WebKitTestRunner_DIR}
+    ${CyberKitTestRunner_DERIVED_SOURCES_DIR}
+    ${CyberKitTestRunner_DERIVED_SOURCES_DIR}/UIScriptContext
+    ${CyberKitTestRunner_DIR}
 )
 
-set(WebKitTestRunner_WEB_PREFERENCES_TEMPLATES
-    ${WebKitTestRunner_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb
+set(CyberKitTestRunner_WEB_PREFERENCES_TEMPLATES
+    ${CyberKitTestRunner_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb
 )
 
-set(WebKitTestRunner_WEB_PREFERENCES
+set(CyberKitTestRunner_WEB_PREFERENCES
     ${WTF_SCRIPTS_DIR}/Preferences/UnifiedWebPreferences.yaml
 )
 
-set_source_files_properties(${WebKitTestRunner_WEB_PREFERENCES} PROPERTIES GENERATED TRUE)
+set_source_files_properties(${CyberKitTestRunner_WEB_PREFERENCES} PROPERTIES GENERATED TRUE)
 
 add_custom_command(
-    OUTPUT ${WebKitTestRunner_DERIVED_SOURCES_DIR}/TestOptionsGeneratedKeys.h
-    DEPENDS ${WebKitTestRunner_WEB_PREFERENCES_TEMPLATES} ${WebKitTestRunner_WEB_PREFERENCES} WTF_CopyPreferences
-    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend WebKit --outputDir "${WebKitTestRunner_DERIVED_SOURCES_DIR}" --template ${WebKitTestRunner_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb ${WebKitTestRunner_WEB_PREFERENCES}
+    OUTPUT ${CyberKitTestRunner_DERIVED_SOURCES_DIR}/TestOptionsGeneratedKeys.h
+    DEPENDS ${CyberKitTestRunner_WEB_PREFERENCES_TEMPLATES} ${CyberKitTestRunner_WEB_PREFERENCES} WTF_CopyPreferences
+    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend CyberKit --outputDir "${CyberKitTestRunner_DERIVED_SOURCES_DIR}" --template ${CyberKitTestRunner_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb ${CyberKitTestRunner_WEB_PREFERENCES}
     COMMAND_EXPAND_LISTS
     VERBATIM)
 
-list(APPEND WebKitTestRunner_SOURCES
-    ${WebKitTestRunner_DERIVED_SOURCES_DIR}/TestOptionsGeneratedKeys.h
+list(APPEND CyberKitTestRunner_SOURCES
+    ${CyberKitTestRunner_DERIVED_SOURCES_DIR}/TestOptionsGeneratedKeys.h
 )
 
-set(WebKitTestRunner_DEPENDENCIES TestRunnerInjectedBundle)
+set(CyberKitTestRunner_DEPENDENCIES TestRunnerInjectedBundle)
 
 set(TestRunnerInjectedBundle_SOURCES
     InjectedBundle/AccessibilityController.cpp
@@ -83,36 +83,36 @@ set(TestRunnerInjectedBundle_SOURCES
 
 set(TestRunnerInjectedBundle_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
-    ${WebKitTestRunner_DERIVED_SOURCES_DIR}/InjectedBundle
-    ${WebKitTestRunner_DIR}
-    ${WebKitTestRunner_DIR}/InjectedBundle
+    ${CyberKitTestRunner_DERIVED_SOURCES_DIR}/InjectedBundle
+    ${CyberKitTestRunner_DIR}
+    ${CyberKitTestRunner_DIR}/InjectedBundle
 )
 
 set(TestRunnerInjectedBundle_LIBRARY_TYPE SHARED)
 set(TestRunnerInjectedBundle_PRIVATE_LIBRARIES
-    WebKit::TestRunnerShared
-    WebKit::CyberCoreTestSupport
+    CyberKit::TestRunnerShared
+    CyberKit::CyberCoreTestSupport
 )
-set(TestRunnerInjectedBundle_FRAMEWORKS ${WebKitTestRunner_FRAMEWORKS})
+set(TestRunnerInjectedBundle_FRAMEWORKS ${CyberKitTestRunner_FRAMEWORKS})
 
 set(TestRunnerInjectedBundle_IDL_FILES
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityController.idl"
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityTextMarker.idl"
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityTextMarkerRange.idl"
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityUIElement.idl"
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/EventSendingController.idl"
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/GCController.idl"
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/TestRunner.idl"
-    "${WebKitTestRunner_DIR}/InjectedBundle/Bindings/TextInputController.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityController.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityTextMarker.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityTextMarkerRange.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/AccessibilityUIElement.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/EventSendingController.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/GCController.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/TestRunner.idl"
+    "${CyberKitTestRunner_DIR}/InjectedBundle/Bindings/TextInputController.idl"
 )
 
 GENERATE_BINDINGS(TestRunnerInjectedBundleBindings
     OUTPUT_SOURCE TestRunnerInjectedBundle_SOURCES
     INPUT_FILES ${TestRunnerInjectedBundle_IDL_FILES}
-    BASE_DIR ${WebKitTestRunner_DIR}/InjectedBundle/Bindings
-    IDL_INCLUDES ${WebKitTestRunner_DIR}/InjectedBundle/Bindings
+    BASE_DIR ${CyberKitTestRunner_DIR}/InjectedBundle/Bindings
+    IDL_INCLUDES ${CyberKitTestRunner_DIR}/InjectedBundle/Bindings
     FEATURES ${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}
-    DESTINATION ${WebKitTestRunner_DERIVED_SOURCES_DIR}/InjectedBundle
+    DESTINATION ${CyberKitTestRunner_DERIVED_SOURCES_DIR}/InjectedBundle
     GENERATOR TestRunner
 )
 
@@ -120,14 +120,14 @@ set(TestRunnerInjectedBundle_DEPENDENCIES
     TestRunnerInjectedBundleBindings
 )
 
-WEBKIT_EXECUTABLE_DECLARE(WebKitTestRunner)
+WEBKIT_EXECUTABLE_DECLARE(CyberKitTestRunner)
 WEBKIT_LIBRARY_DECLARE(TestRunnerInjectedBundle)
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 
 WEBKIT_LIBRARY(TestRunnerInjectedBundle)
-WEBKIT_EXECUTABLE(WebKitTestRunner)
+WEBKIT_EXECUTABLE(CyberKitTestRunner)
 
 if (COMPILER_IS_GCC_OR_CLANG)
     WEBKIT_ADD_TARGET_CXX_FLAGS(TestRunnerInjectedBundle -Wno-unused-parameter)
-    WEBKIT_ADD_TARGET_CXX_FLAGS(WebKitTestRunner -Wno-unused-parameter)
+    WEBKIT_ADD_TARGET_CXX_FLAGS(CyberKitTestRunner -Wno-unused-parameter)
 endif ()

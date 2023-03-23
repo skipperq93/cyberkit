@@ -31,7 +31,7 @@
 #include <CyberCore/SFrameUtils.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 Vector<uint8_t> getRawKey()
 {

@@ -40,7 +40,7 @@ class BlobRegistryImpl;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class Download;
 class NetworkLoad;

@@ -32,7 +32,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(QuickLook, SupportsMIMEType)
 {
@@ -44,6 +44,6 @@ TEST(QuickLook, SupportsMIMEType)
     EXPECT_TRUE(PreviewConverter::supportsMIMEType("application/vnd.ms-excel.sheet.macroEnabled.12"_s));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY) && USE(QUICK_LOOK)

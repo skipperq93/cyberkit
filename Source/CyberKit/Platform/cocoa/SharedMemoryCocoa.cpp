@@ -42,7 +42,7 @@
 #include <mach/memory_entry.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if HAVE(MACH_MEMORY_ENTRY)
 static int toVMMemoryLedger(MemoryLedger memoryLedger)
@@ -273,4 +273,4 @@ WTF::MachSendRight SharedMemory::createSendRight(Protection protection) const
     return makeMemoryEntry(m_size, toVMAddress(m_data), protection, MACH_PORT_NULL);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

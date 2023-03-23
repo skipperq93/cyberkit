@@ -32,7 +32,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct GtkSettingsState {
     GtkSettingsState() = default;
@@ -53,4 +53,4 @@ struct GtkSettingsState {
     std::optional<bool> overlayScrolling;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

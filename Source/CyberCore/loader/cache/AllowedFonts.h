@@ -33,7 +33,7 @@ namespace CyberCore {
 
 // This setting is used to define which types of fonts are allowed to be downloaded and loaded into the system.
 // Any: any font binary will be downloaded, no checks will be done during load.
-// Restricted: any font binary will be donwloaded but just binaries listed by WebKit will be allowed loaded. A not allowed binary will be deleted after the check is done (see CachedFont::shouldAllowCustomFont()).
+// Restricted: any font binary will be donwloaded but just binaries listed by CyberKit will be allowed loaded. A not allowed binary will be deleted after the check is done (see CachedFont::shouldAllowCustomFont()).
 // None: No font binary will be downloaded or loaded.
 enum class DownloadableBinaryFontAllowedTypes: uint8_t {
     Any,

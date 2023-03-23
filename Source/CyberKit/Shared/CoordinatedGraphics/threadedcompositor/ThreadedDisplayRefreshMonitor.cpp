@@ -35,7 +35,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 constexpr unsigned defaultRefreshRate = 60000;
 
@@ -48,7 +48,7 @@ ThreadedDisplayRefreshMonitor::ThreadedDisplayRefreshMonitor(CyberCore::Platform
 {
 #if USE(GLIB_EVENT_LOOP)
     m_displayRefreshTimer.setPriority(RunLoopSourcePriority::DisplayRefreshMonitorTimer);
-    m_displayRefreshTimer.setName("[WebKit] ThreadedDisplayRefreshMonitor");
+    m_displayRefreshTimer.setName("[CyberKit] ThreadedDisplayRefreshMonitor");
 #endif
 }
 
@@ -143,6 +143,6 @@ void ThreadedDisplayRefreshMonitor::setTargetRefreshRate(unsigned rate)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

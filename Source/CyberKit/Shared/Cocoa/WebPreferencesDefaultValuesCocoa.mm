@@ -35,7 +35,7 @@
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(MAC)
 bool defaultScrollAnimatorEnabled()
@@ -84,6 +84,6 @@ bool defaultRemoveBackgroundEnabled()
 
 #endif // ENABLE(IMAGE_ANALYSIS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

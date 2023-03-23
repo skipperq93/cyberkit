@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import <CyberKit/WKProcessPoolPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <fcntl.h>
 #import <wtf/RetainPtr.h>

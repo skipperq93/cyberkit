@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "WebKitHitTestResult.h"
+#include "CyberKitHitTestResult.h"
 
-WebKitHitTestResult* webkitHitTestResultCreate(const WebKit::WebHitTestResultData&);
-bool webkitHitTestResultCompare(WebKitHitTestResult*, const WebKit::WebHitTestResultData&);
+CyberKitHitTestResult* webkitHitTestResultCreate(const CyberKit::WebHitTestResultData&);
+bool webkitHitTestResultCompare(CyberKitHitTestResult*, const CyberKit::WebHitTestResultData&);

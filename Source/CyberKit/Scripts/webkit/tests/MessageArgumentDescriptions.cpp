@@ -439,67 +439,67 @@ Vector<ASCIILiteral> serializedIdentifiers()
     static_assert(sizeof(uint64_t) == sizeof(CyberCore::TextManipulationTokenIdentifier));
     static_assert(sizeof(uint64_t) == sizeof(CyberCore::UserMediaRequestIdentifier));
     static_assert(sizeof(uint64_t) == sizeof(CyberCore::WebSocketIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::AudioMediaStreamTrackRendererInternalUnitIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::AuthenticationChallengeIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::ContentWorldIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::DataTaskIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::DownloadID));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::FormSubmitListenerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::GeolocationIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::GraphicsContextGLIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::IPCConnectionTesterIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::IPCStreamTesterIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::LegacyCustomProtocolID));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::LibWebRTCResolverIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::MDNSRegisterIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::MarkSurfacesAsVolatileRequestIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::MediaRecorderIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::NetworkResourceLoadIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::PDFPluginIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::PageGroupIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::PlaybackSessionContextIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::QuotaIncreaseRequestIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteAudioDestinationIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteAudioHardwareListenerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteAudioSessionIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::AudioMediaStreamTrackRendererInternalUnitIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::AuthenticationChallengeIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::ContentWorldIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::DataTaskIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::DownloadID));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::FormSubmitListenerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::GeolocationIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::GraphicsContextGLIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::IPCConnectionTesterIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::IPCStreamTesterIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::LegacyCustomProtocolID));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::LibWebRTCResolverIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::MDNSRegisterIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::MarkSurfacesAsVolatileRequestIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::MediaRecorderIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::NetworkResourceLoadIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::PDFPluginIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::PageGroupIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::PlaybackSessionContextIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::QuotaIncreaseRequestIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteAudioDestinationIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteAudioHardwareListenerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteAudioSessionIdentifier));
 #if ENABLE(GPU_PROCESS) && ENABLE(ENCRYPTED_MEDIA)
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteCDMIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteCDMIdentifier));
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(ENCRYPTED_MEDIA)
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteCDMInstanceIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteCDMInstanceIdentifier));
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(ENCRYPTED_MEDIA)
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteCDMInstanceSessionIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteCDMInstanceSessionIdentifier));
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(LEGACY_ENCRYPTED_MEDIA)
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteLegacyCDMIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteLegacyCDMIdentifier));
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(LEGACY_ENCRYPTED_MEDIA)
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteLegacyCDMSessionIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteLegacyCDMSessionIdentifier));
 #endif
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteMediaResourceIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteSerializedImageBufferIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteVideoFrameIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RemoteRemoteCommandListenerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RenderingBackendIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RenderingUpdateID));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::RetrieveRecordResponseBodyCallbackIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::SampleBufferDisplayLayerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::StorageAreaIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::StorageAreaImplIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::StorageAreaMapIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::StorageNamespaceIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::TapIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::TrackPrivateRemoteIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::TransactionID));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::UserContentControllerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::VideoDecoderIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::VideoEncoderIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::WebExtensionContextIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::WebExtensionControllerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::WebGPUIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::WebPageProxyIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebKit::WebURLSchemeHandlerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteMediaResourceIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteSerializedImageBufferIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteVideoFrameIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RemoteRemoteCommandListenerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RenderingBackendIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RenderingUpdateID));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::RetrieveRecordResponseBodyCallbackIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::SampleBufferDisplayLayerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::StorageAreaIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::StorageAreaImplIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::StorageAreaMapIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::StorageNamespaceIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::TapIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::TrackPrivateRemoteIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::TransactionID));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::UserContentControllerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::VideoDecoderIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::VideoEncoderIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::WebExtensionContextIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::WebExtensionControllerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::WebGPUIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::WebPageProxyIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberKit::WebURLSchemeHandlerIdentifier));
     return {
         "CyberCore::BackgroundFetchRecordIdentifier"_s,
         "CyberCore::BroadcastChannelIdentifier"_s,
@@ -537,67 +537,67 @@ Vector<ASCIILiteral> serializedIdentifiers()
         "CyberCore::TextManipulationTokenIdentifier"_s,
         "CyberCore::UserMediaRequestIdentifier"_s,
         "CyberCore::WebSocketIdentifier"_s,
-        "WebKit::AudioMediaStreamTrackRendererInternalUnitIdentifier"_s,
-        "WebKit::AuthenticationChallengeIdentifier"_s,
-        "WebKit::ContentWorldIdentifier"_s,
-        "WebKit::DataTaskIdentifier"_s,
-        "WebKit::DownloadID"_s,
-        "WebKit::FormSubmitListenerIdentifier"_s,
-        "WebKit::GeolocationIdentifier"_s,
-        "WebKit::GraphicsContextGLIdentifier"_s,
-        "WebKit::IPCConnectionTesterIdentifier"_s,
-        "WebKit::IPCStreamTesterIdentifier"_s,
-        "WebKit::LegacyCustomProtocolID"_s,
-        "WebKit::LibWebRTCResolverIdentifier"_s,
-        "WebKit::MDNSRegisterIdentifier"_s,
-        "WebKit::MarkSurfacesAsVolatileRequestIdentifier"_s,
-        "WebKit::MediaRecorderIdentifier"_s,
-        "WebKit::NetworkResourceLoadIdentifier"_s,
-        "WebKit::PDFPluginIdentifier"_s,
-        "WebKit::PageGroupIdentifier"_s,
-        "WebKit::PlaybackSessionContextIdentifier"_s,
-        "WebKit::QuotaIncreaseRequestIdentifier"_s,
-        "WebKit::RemoteAudioDestinationIdentifier"_s,
-        "WebKit::RemoteAudioHardwareListenerIdentifier"_s,
-        "WebKit::RemoteAudioSessionIdentifier"_s,
+        "CyberKit::AudioMediaStreamTrackRendererInternalUnitIdentifier"_s,
+        "CyberKit::AuthenticationChallengeIdentifier"_s,
+        "CyberKit::ContentWorldIdentifier"_s,
+        "CyberKit::DataTaskIdentifier"_s,
+        "CyberKit::DownloadID"_s,
+        "CyberKit::FormSubmitListenerIdentifier"_s,
+        "CyberKit::GeolocationIdentifier"_s,
+        "CyberKit::GraphicsContextGLIdentifier"_s,
+        "CyberKit::IPCConnectionTesterIdentifier"_s,
+        "CyberKit::IPCStreamTesterIdentifier"_s,
+        "CyberKit::LegacyCustomProtocolID"_s,
+        "CyberKit::LibWebRTCResolverIdentifier"_s,
+        "CyberKit::MDNSRegisterIdentifier"_s,
+        "CyberKit::MarkSurfacesAsVolatileRequestIdentifier"_s,
+        "CyberKit::MediaRecorderIdentifier"_s,
+        "CyberKit::NetworkResourceLoadIdentifier"_s,
+        "CyberKit::PDFPluginIdentifier"_s,
+        "CyberKit::PageGroupIdentifier"_s,
+        "CyberKit::PlaybackSessionContextIdentifier"_s,
+        "CyberKit::QuotaIncreaseRequestIdentifier"_s,
+        "CyberKit::RemoteAudioDestinationIdentifier"_s,
+        "CyberKit::RemoteAudioHardwareListenerIdentifier"_s,
+        "CyberKit::RemoteAudioSessionIdentifier"_s,
 #if ENABLE(GPU_PROCESS) && ENABLE(ENCRYPTED_MEDIA)
-        "WebKit::RemoteCDMIdentifier"_s,
+        "CyberKit::RemoteCDMIdentifier"_s,
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(ENCRYPTED_MEDIA)
-        "WebKit::RemoteCDMInstanceIdentifier"_s,
+        "CyberKit::RemoteCDMInstanceIdentifier"_s,
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(ENCRYPTED_MEDIA)
-        "WebKit::RemoteCDMInstanceSessionIdentifier"_s,
+        "CyberKit::RemoteCDMInstanceSessionIdentifier"_s,
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(LEGACY_ENCRYPTED_MEDIA)
-        "WebKit::RemoteLegacyCDMIdentifier"_s,
+        "CyberKit::RemoteLegacyCDMIdentifier"_s,
 #endif
 #if ENABLE(GPU_PROCESS) && ENABLE(LEGACY_ENCRYPTED_MEDIA)
-        "WebKit::RemoteLegacyCDMSessionIdentifier"_s,
+        "CyberKit::RemoteLegacyCDMSessionIdentifier"_s,
 #endif
-        "WebKit::RemoteMediaResourceIdentifier"_s,
-        "WebKit::RemoteSerializedImageBufferIdentifier"_s,
-        "WebKit::RemoteVideoFrameIdentifier"_s,
-        "WebKit::RemoteRemoteCommandListenerIdentifier"_s,
-        "WebKit::RenderingBackendIdentifier"_s,
-        "WebKit::RenderingUpdateID"_s,
-        "WebKit::RetrieveRecordResponseBodyCallbackIdentifier"_s,
-        "WebKit::SampleBufferDisplayLayerIdentifier"_s,
-        "WebKit::StorageAreaIdentifier"_s,
-        "WebKit::StorageAreaImplIdentifier"_s,
-        "WebKit::StorageAreaMapIdentifier"_s,
-        "WebKit::StorageNamespaceIdentifier"_s,
-        "WebKit::TapIdentifier"_s,
-        "WebKit::TrackPrivateRemoteIdentifier"_s,
-        "WebKit::TransactionID"_s,
-        "WebKit::UserContentControllerIdentifier"_s,
-        "WebKit::VideoDecoderIdentifier"_s,
-        "WebKit::VideoEncoderIdentifier"_s,
-        "WebKit::WebExtensionContextIdentifier"_s,
-        "WebKit::WebExtensionControllerIdentifier"_s,
-        "WebKit::WebGPUIdentifier"_s,
-        "WebKit::WebPageProxyIdentifier"_s,
-        "WebKit::WebURLSchemeHandlerIdentifier"_s,
+        "CyberKit::RemoteMediaResourceIdentifier"_s,
+        "CyberKit::RemoteSerializedImageBufferIdentifier"_s,
+        "CyberKit::RemoteVideoFrameIdentifier"_s,
+        "CyberKit::RemoteRemoteCommandListenerIdentifier"_s,
+        "CyberKit::RenderingBackendIdentifier"_s,
+        "CyberKit::RenderingUpdateID"_s,
+        "CyberKit::RetrieveRecordResponseBodyCallbackIdentifier"_s,
+        "CyberKit::SampleBufferDisplayLayerIdentifier"_s,
+        "CyberKit::StorageAreaIdentifier"_s,
+        "CyberKit::StorageAreaImplIdentifier"_s,
+        "CyberKit::StorageAreaMapIdentifier"_s,
+        "CyberKit::StorageNamespaceIdentifier"_s,
+        "CyberKit::TapIdentifier"_s,
+        "CyberKit::TrackPrivateRemoteIdentifier"_s,
+        "CyberKit::TransactionID"_s,
+        "CyberKit::UserContentControllerIdentifier"_s,
+        "CyberKit::VideoDecoderIdentifier"_s,
+        "CyberKit::VideoEncoderIdentifier"_s,
+        "CyberKit::WebExtensionContextIdentifier"_s,
+        "CyberKit::WebExtensionControllerIdentifier"_s,
+        "CyberKit::WebGPUIdentifier"_s,
+        "CyberKit::WebPageProxyIdentifier"_s,
+        "CyberKit::WebURLSchemeHandlerIdentifier"_s,
     };
 }
 
@@ -613,7 +613,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
 #if ENABLE(TEST_FEATURE)
     case MessageName::TestWithSuperclass_TestAsyncMessage:
         return Vector<ArgumentDescription> {
-            { "twoStateEnum", "bool", "WebKit::TestTwoStateEnum", false },
+            { "twoStateEnum", "bool", "CyberKit::TestTwoStateEnum", false },
         };
     case MessageName::TestWithSuperclass_TestAsyncMessageWithNoArguments:
         return Vector<ArgumentDescription> { };
@@ -646,13 +646,13 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
 #if (ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION || SOME_OTHER_MESSAGE_CONDITION))
     case MessageName::TestWithLegacyReceiver_TouchEvent:
         return Vector<ArgumentDescription> {
-            { "event", "WebKit::WebTouchEvent", nullptr, false },
+            { "event", "CyberKit::WebTouchEvent", nullptr, false },
         };
 #endif
 #if (ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION && SOME_OTHER_MESSAGE_CONDITION))
     case MessageName::TestWithLegacyReceiver_AddEvent:
         return Vector<ArgumentDescription> {
-            { "event", "WebKit::WebTouchEvent", nullptr, false },
+            { "event", "CyberKit::WebTouchEvent", nullptr, false },
         };
 #endif
 #if ENABLE(TOUCH_EVENTS)
@@ -671,7 +671,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
         return Vector<ArgumentDescription> { };
     case MessageName::TestWithLegacyReceiver_PreferencesDidChange:
         return Vector<ArgumentDescription> {
-            { "store", "WebKit::WebPreferencesStore", nullptr, false },
+            { "store", "CyberKit::WebPreferencesStore", nullptr, false },
         };
     case MessageName::TestWithLegacyReceiver_SendDoubleAndFloat:
         return Vector<ArgumentDescription> {
@@ -686,7 +686,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
     case MessageName::TestWithLegacyReceiver_CreatePlugin:
         return Vector<ArgumentDescription> {
             { "pluginInstanceID", "uint64_t", nullptr, false },
-            { "parameters", "WebKit::Plugin::Parameters", nullptr, false },
+            { "parameters", "CyberKit::Plugin::Parameters", nullptr, false },
         };
     case MessageName::TestWithLegacyReceiver_RunJavaScriptAlert:
         return Vector<ArgumentDescription> {
@@ -721,7 +721,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
     case MessageName::TestWithLegacyReceiver_DidCreateWebProcessConnection:
         return Vector<ArgumentDescription> {
             { "connectionIdentifier", "MachSendRight", nullptr, false },
-            { "flags", "OptionSet<WebKit::SelectionFlags>", nullptr, false },
+            { "flags", "OptionSet<CyberKit::SelectionFlags>", nullptr, false },
         };
     case MessageName::TestWithLegacyReceiver_InterpretKeyEvent:
         return Vector<ArgumentDescription> {
@@ -755,13 +755,13 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
 #if (ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION || SOME_OTHER_MESSAGE_CONDITION))
     case MessageName::TestWithoutAttributes_TouchEvent:
         return Vector<ArgumentDescription> {
-            { "event", "WebKit::WebTouchEvent", nullptr, false },
+            { "event", "CyberKit::WebTouchEvent", nullptr, false },
         };
 #endif
 #if (ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION && SOME_OTHER_MESSAGE_CONDITION))
     case MessageName::TestWithoutAttributes_AddEvent:
         return Vector<ArgumentDescription> {
-            { "event", "WebKit::WebTouchEvent", nullptr, false },
+            { "event", "CyberKit::WebTouchEvent", nullptr, false },
         };
 #endif
 #if ENABLE(TOUCH_EVENTS)
@@ -780,7 +780,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
         return Vector<ArgumentDescription> { };
     case MessageName::TestWithoutAttributes_PreferencesDidChange:
         return Vector<ArgumentDescription> {
-            { "store", "WebKit::WebPreferencesStore", nullptr, false },
+            { "store", "CyberKit::WebPreferencesStore", nullptr, false },
         };
     case MessageName::TestWithoutAttributes_SendDoubleAndFloat:
         return Vector<ArgumentDescription> {
@@ -795,7 +795,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
     case MessageName::TestWithoutAttributes_CreatePlugin:
         return Vector<ArgumentDescription> {
             { "pluginInstanceID", "uint64_t", nullptr, false },
-            { "parameters", "WebKit::Plugin::Parameters", nullptr, false },
+            { "parameters", "CyberKit::Plugin::Parameters", nullptr, false },
         };
     case MessageName::TestWithoutAttributes_RunJavaScriptAlert:
         return Vector<ArgumentDescription> {
@@ -830,7 +830,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
     case MessageName::TestWithoutAttributes_DidCreateWebProcessConnection:
         return Vector<ArgumentDescription> {
             { "connectionIdentifier", "MachSendRight", nullptr, false },
-            { "flags", "OptionSet<WebKit::SelectionFlags>", nullptr, false },
+            { "flags", "OptionSet<CyberKit::SelectionFlags>", nullptr, false },
         };
     case MessageName::TestWithoutAttributes_InterpretKeyEvent:
         return Vector<ArgumentDescription> {
@@ -949,7 +949,7 @@ std::optional<Vector<ArgumentDescription>> messageReplyArgumentDescriptions(Mess
         };
     case MessageName::TestWithSuperclass_TestSynchronousMessage:
         return Vector<ArgumentDescription> {
-            { "optionalReply", "WebKit::TestClassName", nullptr, true },
+            { "optionalReply", "CyberKit::TestClassName", nullptr, true },
         };
 #if (ENABLE(WEBKIT2) && (NESTED_MASTER_CONDITION || MASTER_OR && MASTER_AND))
     case MessageName::TestWithLegacyReceiver_CreatePlugin:
@@ -1039,6 +1039,6 @@ std::optional<Vector<ArgumentDescription>> messageReplyArgumentDescriptions(Mess
     return std::nullopt;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(IPC_TESTING_API) || !LOG_DISABLED

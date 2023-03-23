@@ -31,20 +31,20 @@
 
 WKTypeID WKDataGetTypeID()
 {
-    return WebKit::toAPI(API::Data::APIType);
+    return CyberKit::toAPI(API::Data::APIType);
 }
 
 WKDataRef WKDataCreate(const unsigned char* bytes, size_t size)
 {
-    return WebKit::toAPI(&API::Data::create(bytes, size).leakRef());
+    return CyberKit::toAPI(&API::Data::create(bytes, size).leakRef());
 }
 
 const unsigned char* WKDataGetBytes(WKDataRef dataRef)
 {
-    return WebKit::toImpl(dataRef)->bytes();
+    return CyberKit::toImpl(dataRef)->bytes();
 }
 
 size_t WKDataGetSize(WKDataRef dataRef)
 {
-    return WebKit::toImpl(dataRef)->size();
+    return CyberKit::toImpl(dataRef)->size();
 }

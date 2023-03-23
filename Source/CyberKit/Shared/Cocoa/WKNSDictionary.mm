@@ -29,7 +29,7 @@
 #import "WKNSArray.h"
 #import <CyberCore/CyberCoreObjCExtras.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 @implementation WKNSDictionary {
     API::ObjectStorage<API::Dictionary> _dictionary;

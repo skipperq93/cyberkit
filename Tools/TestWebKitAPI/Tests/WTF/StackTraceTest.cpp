@@ -37,7 +37,7 @@
 #define MAYBE(name) name
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(StackTraceTest, MAYBE(StackTraceWorks))
 {

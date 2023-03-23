@@ -616,7 +616,7 @@ void ThemeMac::inflateControlPaintRect(StyleAppearance appearance, const Control
     switch (appearance) {
     case StyleAppearance::Checkbox: {
         // We inflate the rect as needed to account for padding included in the cell to accommodate the checkbox
-        // shadow" and the check. We don't consider this part of the bounds of the control in WebKit.
+        // shadow" and the check. We don't consider this part of the bounds of the control in CyberKit.
         NSCell *cell = sharedCheckboxCell(states, zoomRectSize, zoomFactor);
         NSControlSize controlSize = [cell controlSize];
         IntSize zoomedSize = checkboxSizes()[controlSize];
@@ -627,7 +627,7 @@ void ThemeMac::inflateControlPaintRect(StyleAppearance appearance, const Control
     }
     case StyleAppearance::Radio: {
         // We inflate the rect as needed to account for padding included in the cell to accommodate the radio button
-        // shadow". We don't consider this part of the bounds of the control in WebKit.
+        // shadow". We don't consider this part of the bounds of the control in CyberKit.
         NSCell *cell = sharedRadioCell(states, zoomRectSize, zoomFactor);
         NSControlSize controlSize = [cell controlSize];
         IntSize zoomedSize = radioSizes()[controlSize];

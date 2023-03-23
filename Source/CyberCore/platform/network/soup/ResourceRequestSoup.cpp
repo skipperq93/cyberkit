@@ -31,7 +31,7 @@
 #include "SharedBuffer.h"
 #include "SoupVersioning.h"
 #include "URLSoup.h"
-#include "WebKitFormDataInputStream.h"
+#include "CyberKitFormDataInputStream.h"
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
@@ -172,7 +172,7 @@ unsigned initializeMaximumHTTPConnectionCountPerHost()
 #if USE(SOUP2)
 GUniquePtr<SoupURI> ResourceRequest::createSoupURI() const
 {
-    // WebKit does not support fragment identifiers in data URLs, but soup does.
+    // CyberKit does not support fragment identifiers in data URLs, but soup does.
     // Before passing the URL to soup, we should make sure to urlencode any '#'
     // characters, so that soup does not interpret them as fragment identifiers.
     // See http://wkbug.com/68089

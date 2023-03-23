@@ -31,7 +31,7 @@
 #include <wtf/URLParser.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class WTF_URLParser : public testing::Test {
 public:
@@ -767,7 +767,7 @@ TEST_F(WTF_URLParser, ParserDifferences)
         { "http"_s, ""_s, ""_s, "example.org"_s, 0, "/example.com/"_s, ""_s, ""_s, "http://example.org/example.com/"_s },
         { "http"_s, ""_s, ""_s, "example.com"_s, 0, "/"_s, ""_s, ""_s, "http://example.com/"_s });
 
-    // This behavior matches Chrome and Firefox, but not WebKit using URL::parse.
+    // This behavior matches Chrome and Firefox, but not CyberKit using URL::parse.
     // The behavior of URL::parse is clearly wrong because reparsing file://path would make path the host.
     // The spec is unclear.
     checkURLDifferences("file:path"_s,
@@ -1305,4 +1305,4 @@ TEST_F(WTF_URLParser, AdditionalTests)
         { "http"_s, ""_s, ""_s, "w"_s, 0, "/"_s, "%ED%A0%80"_s, ""_s, "http://w/?%ED%A0%80"_s });
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

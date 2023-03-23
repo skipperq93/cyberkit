@@ -153,7 +153,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     m_changeCount = platformStrategies()->pasteboardStrategy()->setTypes(types, m_pasteboardName, context());
 
     // FIXME: The following code should be refactored, such that it only requires a single call out to the client layer.
-    // In WebKit2, this currently results in many unnecessary synchronous round-trip IPC messages.
+    // In CyberKit2, this currently results in many unnecessary synchronous round-trip IPC messages.
 
     ASSERT(content.clientTypes.size() == content.clientData.size());
     for (size_t i = 0, size = content.clientTypes.size(); i < size; ++i)

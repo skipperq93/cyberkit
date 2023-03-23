@@ -28,7 +28,7 @@
 #include "DaemonCoders.h"
 #include <wtf/Vector.h>
 
-namespace WebKit::Daemon {
+namespace CyberKit::Daemon {
 
 class Encoder {
 public:
@@ -55,4 +55,4 @@ private:
     Vector<uint8_t> m_buffer;
 };
 
-} // namespace WebKit::Daemon
+} // namespace CyberKit::Daemon

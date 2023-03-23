@@ -47,7 +47,7 @@ namespace CyberCore {
 typedef int SandboxFlags;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct LoadParameters {
     void encode(IPC::Encoder&) const;
@@ -100,4 +100,4 @@ struct LoadParameters {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

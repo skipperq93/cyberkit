@@ -24,30 +24,30 @@
  */
 
 #include "config.h"
-#include "WebKitCachedResolver.h"
+#include "CyberKitCachedResolver.h"
 
 #include "DNSCache.h"
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 typedef struct {
     GRefPtr<GResolver> wrappedResolver;
     DNSCache cache;
-} WebKitCachedResolverPrivate;
+} CyberKitCachedResolverPrivate;
 
-struct _WebKitCachedResolver {
+struct _CyberKitCachedResolver {
     GResolver parentInstance;
 
-    WebKitCachedResolverPrivate* priv;
+    CyberKitCachedResolverPrivate* priv;
 };
 
-struct _WebKitCachedResolverClass {
+struct _CyberKitCachedResolverClass {
     GResolverClass parentClass;
 };
 
-WEBKIT_DEFINE_TYPE(WebKitCachedResolver, webkit_cached_resolver, G_TYPE_RESOLVER)
+WEBKIT_DEFINE_TYPE(CyberKitCachedResolver, webkit_cached_resolver, G_TYPE_RESOLVER)
 
 static GList* addressListVectorToGList(const Vector<GRefPtr<GInetAddress>>& addressList)
 {
@@ -217,7 +217,7 @@ static void webkitCachedResolverReload(GResolver* resolver)
     WEBKIT_CACHED_RESOLVER(resolver)->priv->cache.clear();
 }
 
-static void webkit_cached_resolver_class_init(WebKitCachedResolverClass* klass)
+static void webkit_cached_resolver_class_init(CyberKitCachedResolverClass* klass)
 {
     GResolverClass* resolverClass = G_RESOLVER_CLASS(klass);
     resolverClass->lookup_by_name = webkitCachedResolverLookupByName;

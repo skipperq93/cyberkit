@@ -35,7 +35,7 @@
 #include <limits>
 
 // Leveraging RFC 7049 examples from https://github.com/cbor/test-vectors/blob/master/appendix_a.json.
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace cbor;
 
@@ -460,6 +460,6 @@ TEST(CBORWriterTest, OverlyNestedCBOR)
     EXPECT_FALSE(CBORWriter::write(CBORValue(map), 4).has_value());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

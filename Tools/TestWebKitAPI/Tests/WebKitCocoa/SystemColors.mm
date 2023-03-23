@@ -39,9 +39,9 @@
 #import <UIKit/UIKit.h>
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, LinkColor)
+TEST(CyberKit, LinkColor)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -52,7 +52,7 @@ TEST(WebKit, LinkColor)
 }
 
 #if PLATFORM(MAC)
-TEST(WebKit, LinkColorWithSystemAppearance)
+TEST(CyberKit, LinkColorWithSystemAppearance)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     [webView _setUseSystemAppearance:YES];
@@ -73,7 +73,7 @@ TEST(WebKit, LinkColorWithSystemAppearance)
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-TEST(WebKit, TintColorAffectsInteractionColor)
+TEST(CyberKit, TintColorAffectsInteractionColor)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     [webView setTintColor:[UIColor greenColor]];
@@ -85,4 +85,4 @@ TEST(WebKit, TintColorAffectsInteractionColor)
 }
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

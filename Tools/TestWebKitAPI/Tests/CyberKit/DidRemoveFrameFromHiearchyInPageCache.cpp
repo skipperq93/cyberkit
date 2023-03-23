@@ -32,7 +32,7 @@
 #include "Test.h"
 #include <CyberKit/WKString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool finished = false;
 static int didRemoveFrameFromHierarchyCount;
@@ -69,7 +69,7 @@ static void setInjectedBundleClient(WKPageRef page)
     WKPageSetPageInjectedBundleClient(page, &injectedBundleClient.base);
 }
 
-TEST(WebKit, DidRemoveFrameFromHiearchyInBackForwardCache)
+TEST(CyberKit, DidRemoveFrameFromHiearchyInBackForwardCache)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("DidRemoveFrameFromHiearchyInBackForwardCache"));
     // Enable the page cache so we can test the WKBundlePageDidRemoveFrameFromHierarchyCallback API
@@ -99,6 +99,6 @@ TEST(WebKit, DidRemoveFrameFromHiearchyInBackForwardCache)
     EXPECT_EQ(didRemoveFrameFromHierarchyCount, 10);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

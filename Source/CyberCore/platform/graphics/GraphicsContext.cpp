@@ -463,7 +463,7 @@ void GraphicsContext::fillRectWithRoundedHole(const FloatRect& rect, const Float
 void GraphicsContext::adjustLineToPixelBoundaries(FloatPoint& p1, FloatPoint& p2, float strokeWidth, StrokeStyle penStyle)
 {
     // For odd widths, we add in 0.5 to the appropriate x/y so that the float arithmetic
-    // works out.  For example, with a border width of 3, WebKit will pass us (y1+y2)/2, e.g.,
+    // works out.  For example, with a border width of 3, CyberKit will pass us (y1+y2)/2, e.g.,
     // (50+53)/2 = 103/2 = 51 when we want 51.5.  It is always true that an even width gave
     // us a perfect position, but an odd width gave us a position that is off by exactly 0.5.
     if (penStyle == StrokeStyle::DottedStroke || penStyle == StrokeStyle::DashedStroke) {

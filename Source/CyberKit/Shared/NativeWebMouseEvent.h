@@ -57,7 +57,7 @@ struct wpe_input_pointer_event;
 #endif
 
 
-namespace WebKit {
+namespace CyberKit {
 
 class NativeWebMouseEvent : public WebMouseEvent {
 public:
@@ -105,4 +105,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

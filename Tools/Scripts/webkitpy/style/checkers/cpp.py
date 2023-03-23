@@ -154,7 +154,7 @@ _EXPORT_MACRO_SPEC = {
     'WEBCORE_TESTSUPPORT_EXPORT': 'Source/CyberCore/testing',
     # Excludes PAL and testing directories
     'WEBCORE_EXPORT': 'Source/CyberCore/(?!(PAL|testing))',
-    'WK_EXPORT': 'Source/WebKit',
+    'WK_EXPORT': 'Source/CyberKit',
     'WTF_EXPORT_PRIVATE': 'Source/WTF',
 }
 
@@ -295,7 +295,7 @@ class _IncludeState(dict):
         _OTHER_HEADER: 'other header',
         _SOFT_LINK_HEADER: '*SoftLink.h header',
         _MOC_HEADER: 'moc file',
-        _WEBKIT_ADDITIONS_HEADER: 'WebKitAdditions header',
+        _WEBKIT_ADDITIONS_HEADER: 'CyberKitAdditions header',
         }
     _SECTION_NAMES = {
         _INITIAL_SECTION: "... nothing.",
@@ -2786,10 +2786,10 @@ def check_callonmainthread(filename, clean_lines, line_number, file_state, error
     line = clean_lines.elided[line_number]  # Get rid of comments and strings.
     using_callonmainthread = search(r'\bcallOnMainThread\s*\(', line)
     if using_callonmainthread:
-        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoop()' instead of 'callOnMainThread()' in Source/WebKit.")
+        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoop()' instead of 'callOnMainThread()' in Source/CyberKit.")
     using_callonmainthreadandwait = search(r'\bcallOnMainThreadAndWait\s*\(', line)
     if using_callonmainthreadandwait:
-        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoopAndWait()' instead of 'callOnMainThreadAndWait()' in Source/WebKit.")
+        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoopAndWait()' instead of 'callOnMainThreadAndWait()' in Source/CyberKit.")
 
 
 def check_ismainthread(filename, clean_lines, line_number, file_state, error):
@@ -2812,7 +2812,7 @@ def check_ismainthread(filename, clean_lines, line_number, file_state, error):
     if not using_ismainthread:
         return
 
-    error(line_number, 'runtime/ismainthread', 4, "Use 'isMainRunLoop()' instead of 'isMainThread()' in Source/WebKit.")
+    error(line_number, 'runtime/ismainthread', 4, "Use 'isMainRunLoop()' instead of 'isMainThread()' in Source/CyberKit.")
 
 
 def check_wtf_make_unique(clean_lines, line_number, file_state, error):
@@ -3572,7 +3572,7 @@ def _classify_include(filename, include, is_system, include_state):
       _OTHER_HEADER
     """
 
-    if 'WebKitAdditions/' in include:
+    if 'CyberKitAdditions/' in include:
         return _WEBKIT_ADDITIONS_HEADER
 
     # If it is a system header we know it is classified as _OTHER_HEADER.
@@ -3639,7 +3639,7 @@ def _is_javascriptcore_file(filename):
 
 
 def _is_webkit2_file(filename):
-    return filename.startswith('Source/WebKit/')
+    return filename.startswith('Source/CyberKit/')
 
 
 def check_include_line(filename, file_extension, clean_lines, line_number, include_state, error):

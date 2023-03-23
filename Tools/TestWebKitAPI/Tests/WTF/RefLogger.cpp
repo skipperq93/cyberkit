@@ -26,7 +26,7 @@
 #include "config.h"
 #include "RefLogger.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 RefLogger::RefLogger(const char* name)
     : name { *name }

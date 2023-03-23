@@ -29,7 +29,7 @@
 #import <CyberCore/IntRect.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(TELEPHONE_NUMBER_DETECTION) && PLATFORM(MAC)
 NSMenuItem *menuItemForTelephoneNumber(const String& telephoneNumber);
@@ -37,6 +37,6 @@ RetainPtr<NSMenu> menuForTelephoneNumber(const String& telephoneNumber, NSView *
 NSString *menuItemTitleForTelephoneNumberGroup();
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // MenuUtilities_h

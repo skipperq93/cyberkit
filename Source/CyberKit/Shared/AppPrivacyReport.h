@@ -31,7 +31,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <wtf/ArgumentCoder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class LastNavigationWasAppInitiated : bool { No, Yes };
 

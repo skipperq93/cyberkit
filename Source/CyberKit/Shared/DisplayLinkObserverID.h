@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum DisplayLinkObserverIDType { };
 using DisplayLinkObserverID = ObjectIdentifier<DisplayLinkObserverIDType>;
 
-} // namespace WebKit
+} // namespace CyberKit

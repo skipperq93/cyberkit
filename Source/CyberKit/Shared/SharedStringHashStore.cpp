@@ -29,7 +29,7 @@
 #include <algorithm>
 #include <wtf/PageBlock.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -208,4 +208,4 @@ void SharedStringHashStore::processPendingOperations()
         m_client.didUpdateSharedStringHashes(addedSharedStringHashes, removedSharedStringHashes);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

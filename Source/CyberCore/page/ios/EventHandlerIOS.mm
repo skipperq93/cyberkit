@@ -58,7 +58,7 @@
 #endif
 
 #if ENABLE(IOS_TOUCH_EVENTS)
-#import <WebKitAdditions/EventHandlerIOSTouch.cpp>
+#import <CyberKitAdditions/EventHandlerIOSTouch.cpp>
 #endif
 
 namespace CyberCore {
@@ -251,7 +251,7 @@ bool EventHandler::passMouseDownEventToWidget(Widget* pWidget)
         return true;
     }
 
-    // In WebKit2 we will never have a native widget. Just return early and let the regular event handler machinery take care of
+    // In CyberKit2 we will never have a native widget. Just return early and let the regular event handler machinery take care of
     // dispatching the event.
     if (!widget->platformWidget())
         return false;
@@ -503,7 +503,7 @@ void EventHandler::mouseUp(WebEvent *event)
 void EventHandler::mouseMoved(WebEvent *event)
 {
     // Reject a mouse moved if the button is down - screws up tracking during autoscroll
-    // These happen because WebKit sometimes has to fake up moved events.
+    // These happen because CyberKit sometimes has to fake up moved events.
     if (!m_frame.document() || !m_frame.view() || m_mousePressed || m_sendingEventToSubview)
         return;
 
@@ -553,18 +553,18 @@ void EventHandler::dispatchSyntheticMouseMove(const PlatformMouseEvent& platform
 
 bool EventHandler::passMousePressEventToSubframe(MouseEventWithHitTestResults& mouseEventAndResult, Frame& subframe)
 {
-    // WebKit1 code path.
+    // CyberKit1 code path.
     if (frameHasPlatformWidget(m_frame))
         return passSubframeEventToSubframe(mouseEventAndResult, subframe);
 
-    // WebKit2 code path.
+    // CyberKit2 code path.
     subframe.eventHandler().handleMousePressEvent(mouseEventAndResult.event());
     return true;
 }
 
 bool EventHandler::passMouseMoveEventToSubframe(MouseEventWithHitTestResults& mouseEventAndResult, Frame& subframe, HitTestResult* hitTestResult)
 {
-    // WebKit1 code path.
+    // CyberKit1 code path.
     if (frameHasPlatformWidget(m_frame))
         return passSubframeEventToSubframe(mouseEventAndResult, subframe, hitTestResult);
 
@@ -574,11 +574,11 @@ bool EventHandler::passMouseMoveEventToSubframe(MouseEventWithHitTestResults& mo
 
 bool EventHandler::passMouseReleaseEventToSubframe(MouseEventWithHitTestResults& mouseEventAndResult, Frame& subframe)
 {
-    // WebKit1 code path.
+    // CyberKit1 code path.
     if (frameHasPlatformWidget(m_frame))
         return passSubframeEventToSubframe(mouseEventAndResult, subframe);
 
-    // WebKit2 code path.
+    // CyberKit2 code path.
     subframe.eventHandler().handleMouseReleaseEvent(mouseEventAndResult.event());
     return true;
 }

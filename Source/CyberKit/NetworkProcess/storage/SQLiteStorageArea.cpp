@@ -32,7 +32,7 @@
 #include <CyberCore/SQLiteTransaction.h>
 #include <CyberCore/StorageMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 constexpr Seconds transactionDuration { 500_ms };
 constexpr unsigned maximumSizeForValuesKeptInMemory { 1 * KB };
@@ -538,4 +538,4 @@ bool SQLiteStorageArea::requestSpace(const String& key, const String& value)
     return newCacheSize <= quota();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -39,7 +39,7 @@ namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace NetworkCache {
 
@@ -95,7 +95,7 @@ private:
 
 } // namespace NetworkCache
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
 

@@ -40,22 +40,22 @@ G_BEGIN_DECLS
 #define WEBKIT_TYPE_TEXT_SINK webkit_text_sink_get_type()
 GType webkit_text_sink_get_type(void);
 
-#define WEBKIT_TEXT_SINK(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_TEXT_SINK, WebKitTextSink))
-#define WEBKIT_TEXT_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_TEXT_SINK, WebKitTextSinkClass))
+#define WEBKIT_TEXT_SINK(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_TEXT_SINK, CyberKitTextSink))
+#define WEBKIT_TEXT_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_TEXT_SINK, CyberKitTextSinkClass))
 #define WEBKIT_IS_TEXT_SINK(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_TEXT_SINK))
 #define WEBKIT_IS_TEXT_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_TEXT_SINK))
-#define WEBKIT_TEXT_SINK_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_TEXT_SINK, WebKitTextSinkClass))
+#define WEBKIT_TEXT_SINK_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_TEXT_SINK, CyberKitTextSinkClass))
 
-typedef struct _WebKitTextSink WebKitTextSink;
-typedef struct _WebKitTextSinkClass WebKitTextSinkClass;
-typedef struct _WebKitTextSinkPrivate WebKitTextSinkPrivate;
+typedef struct _CyberKitTextSink CyberKitTextSink;
+typedef struct _CyberKitTextSinkClass CyberKitTextSinkClass;
+typedef struct _CyberKitTextSinkPrivate CyberKitTextSinkPrivate;
 
-struct _WebKitTextSink {
+struct _CyberKitTextSink {
     GstBin parent;
-    WebKitTextSinkPrivate* priv;
+    CyberKitTextSinkPrivate* priv;
 };
 
-struct _WebKitTextSinkClass {
+struct _CyberKitTextSinkClass {
     GstBinClass parentClass;
 };
 

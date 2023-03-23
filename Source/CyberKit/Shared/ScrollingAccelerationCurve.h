@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NativeWebWheelEvent;
 
@@ -102,6 +102,6 @@ private:
 
 TextStream& operator<<(TextStream&, const ScrollingAccelerationCurve&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MOMENTUM_EVENT_DISPATCHER)

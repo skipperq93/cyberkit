@@ -38,7 +38,7 @@ class ResourceRequest;
 class ResourceResponse;
 class FragmentedSharedBuffer;
 
-class WEBCORE_EXPORT InspectorInstrumentationWebKit {
+class WEBCORE_EXPORT InspectorInstrumentationCyberKit {
 public:
     static bool shouldInterceptRequest(const ResourceLoader&);
     static bool shouldInterceptResponse(const Frame*, const ResourceResponse&);
@@ -52,13 +52,13 @@ private:
     static void interceptResponseInternal(const Frame&, const ResourceResponse&, ResourceLoaderIdentifier, CompletionHandler<void(const ResourceResponse&, RefPtr<FragmentedSharedBuffer>)>&&);
 };
 
-inline bool InspectorInstrumentationWebKit::shouldInterceptRequest(const ResourceLoader& loader)
+inline bool InspectorInstrumentationCyberKit::shouldInterceptRequest(const ResourceLoader& loader)
 {
     FAST_RETURN_IF_NO_FRONTENDS(false);
     return shouldInterceptRequestInternal(loader);
 }
 
-inline bool InspectorInstrumentationWebKit::shouldInterceptResponse(const Frame* frame, const ResourceResponse& response)
+inline bool InspectorInstrumentationCyberKit::shouldInterceptResponse(const Frame* frame, const ResourceResponse& response)
 {
     FAST_RETURN_IF_NO_FRONTENDS(false);
     if (!frame)
@@ -67,15 +67,15 @@ inline bool InspectorInstrumentationWebKit::shouldInterceptResponse(const Frame*
     return shouldInterceptResponseInternal(*frame, response);
 }
 
-inline void InspectorInstrumentationWebKit::interceptRequest(ResourceLoader& loader, Function<void(const ResourceRequest&)>&& handler)
+inline void InspectorInstrumentationCyberKit::interceptRequest(ResourceLoader& loader, Function<void(const ResourceRequest&)>&& handler)
 {
-    ASSERT(InspectorInstrumentationWebKit::shouldInterceptRequest(loader));
+    ASSERT(InspectorInstrumentationCyberKit::shouldInterceptRequest(loader));
     interceptRequestInternal(loader, WTFMove(handler));
 }
 
-inline void InspectorInstrumentationWebKit::interceptResponse(const Frame* frame, const ResourceResponse& response, ResourceLoaderIdentifier identifier, CompletionHandler<void(const ResourceResponse&, RefPtr<FragmentedSharedBuffer>)>&& handler)
+inline void InspectorInstrumentationCyberKit::interceptResponse(const Frame* frame, const ResourceResponse& response, ResourceLoaderIdentifier identifier, CompletionHandler<void(const ResourceResponse&, RefPtr<FragmentedSharedBuffer>)>&& handler)
 {
-    ASSERT(InspectorInstrumentationWebKit::shouldInterceptResponse(frame, response));
+    ASSERT(InspectorInstrumentationCyberKit::shouldInterceptResponse(frame, response));
     interceptResponseInternal(*frame, response, identifier, WTFMove(handler));
 }
 

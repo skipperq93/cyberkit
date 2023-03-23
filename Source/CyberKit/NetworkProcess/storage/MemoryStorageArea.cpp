@@ -26,7 +26,7 @@
 #include "config.h"
 #include "MemoryStorageArea.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 MemoryStorageArea::MemoryStorageArea(const CyberCore::ClientOrigin& origin, StorageAreaBase::StorageType type)
     : StorageAreaBase(CyberCore::StorageMap::noQuota, origin)
@@ -92,4 +92,4 @@ std::unique_ptr<MemoryStorageArea> MemoryStorageArea::clone() const
     return storageArea;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

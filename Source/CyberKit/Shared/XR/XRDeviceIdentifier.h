@@ -29,7 +29,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum XRDeviceIdentifierType { };
 using XRDeviceIdentifier = ObjectIdentifier<XRDeviceIdentifierType>;

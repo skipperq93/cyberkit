@@ -790,7 +790,7 @@ void FrameLoader::HistoryController::recursiveGoToItem(HistoryItem& item, Histor
     }
 }
 
-// The following logic must be kept in sync with WebKit::WebBackForwardListItem::itemIsClone().
+// The following logic must be kept in sync with CyberKit::WebBackForwardListItem::itemIsClone().
 bool FrameLoader::HistoryController::itemsAreClones(HistoryItem& item1, HistoryItem* item2) const
 {
     // If the item we're going to is a clone of the item we're at, then we do

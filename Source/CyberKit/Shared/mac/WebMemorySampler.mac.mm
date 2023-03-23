@@ -39,7 +39,7 @@
 #import <notify.h>
 #import <wtf/WallTime.h>
 
-namespace WebKit {
+namespace CyberKit {
     
 struct SystemMallocStats {
     malloc_statistics_t defaultMallocZoneStats;
@@ -101,7 +101,7 @@ String WebMemorySampler::processName() const
     return String(appName);
 }
   
-WebMemoryStatistics WebMemorySampler::sampleWebKit() const
+WebMemoryStatistics WebMemorySampler::sampleCyberKit() const
 {
     size_t totalBytesInUse = 0, totalBytesCommitted = 0; 
     
@@ -178,7 +178,7 @@ void WebMemorySampler::sendMemoryPressureEvent()
 {
     // Free memory that could be released if we needed more.
     // We want to track memory that cannot.
-    notify_post("org.WebKit.lowMemory");
+    notify_post("org.CyberKit.lowMemory");
 }
 
 }

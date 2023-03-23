@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUExtent3D.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<Extent3DDict> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::Extent3DDict& extent3DDict)
 {
@@ -68,6 +68,6 @@ std::optional<PAL::WebGPU::Extent3D> ConvertFromBackingContext::convertFromBacki
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

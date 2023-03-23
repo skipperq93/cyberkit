@@ -20,9 +20,9 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-struct WebKit::PlatformPopupMenuData {
+struct CyberKit::PlatformPopupMenuData {
 #if PLATFORM(COCOA)
-    WebKit::FontInfo fontInfo;
+    CyberKit::FontInfo fontInfo;
     bool shouldPopOver;
     bool hideArrows;
     CyberCore::PopupMenuStyle::PopupMenuSize menuSize;
@@ -34,7 +34,7 @@ struct WebKit::PlatformPopupMenuData {
     int m_clientInsetRight;
     int m_popupWidth;
     int m_itemHeight;
-    RefPtr<WebKit::ShareableBitmap> m_notSelectedBackingStore;
-    RefPtr<WebKit::ShareableBitmap> m_selectedBackingStore;
+    RefPtr<CyberKit::ShareableBitmap> m_notSelectedBackingStore;
+    RefPtr<CyberKit::ShareableBitmap> m_selectedBackingStore;
 #endif
 };

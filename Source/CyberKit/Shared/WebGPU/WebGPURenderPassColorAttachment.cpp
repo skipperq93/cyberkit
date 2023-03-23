@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPURenderPassColorAttachment.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<RenderPassColorAttachment> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::RenderPassColorAttachment& renderPassColorAttachment)
 {
@@ -80,6 +80,6 @@ std::optional<PAL::WebGPU::RenderPassColorAttachment> ConvertFromBackingContext:
     return { { *view, resolveTarget, WTFMove(clearValue), renderPassColorAttachment.loadOp, renderPassColorAttachment.storeOp } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

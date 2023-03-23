@@ -23,32 +23,32 @@
 #include <gio/gio.h>
 #include <wtf/glib/GUniquePtr.h>
 
-class WebKitFrameTest : public WebProcessTest {
+class CyberKitFrameTest : public WebProcessTest {
 public:
-    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new WebKitFrameTest()); }
+    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new CyberKitFrameTest()); }
 
 private:
-    bool testMainFrame(WebKitWebPage* page)
+    bool testMainFrame(CyberKitWebPage* page)
     {
-        WebKitFrame* frame = webkit_web_page_get_main_frame(page);
+        CyberKitFrame* frame = webkit_web_page_get_main_frame(page);
         g_assert_true(WEBKIT_IS_FRAME(frame));
         g_assert_true(webkit_frame_is_main_frame(frame));
 
         return true;
     }
 
-    bool testURI(WebKitWebPage* page)
+    bool testURI(CyberKitWebPage* page)
     {
-        WebKitFrame* frame = webkit_web_page_get_main_frame(page);
+        CyberKitFrame* frame = webkit_web_page_get_main_frame(page);
         g_assert_true(WEBKIT_IS_FRAME(frame));
         g_assert_cmpstr(webkit_web_page_get_uri(page), ==, webkit_frame_get_uri(frame));
 
         return true;
     }
 
-    bool testJavaScriptContext(WebKitWebPage* page)
+    bool testJavaScriptContext(CyberKitWebPage* page)
     {
-        WebKitFrame* frame = webkit_web_page_get_main_frame(page);
+        CyberKitFrame* frame = webkit_web_page_get_main_frame(page);
         g_assert_true(WEBKIT_IS_FRAME(frame));
 #if PLATFORM(GTK) && !USE(GTK4)
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -63,9 +63,9 @@ private:
         return true;
     }
 
-    bool testJavaScriptValues(WebKitWebPage* page)
+    bool testJavaScriptValues(CyberKitWebPage* page)
     {
-        WebKitFrame* frame = webkit_web_page_get_main_frame(page);
+        CyberKitFrame* frame = webkit_web_page_get_main_frame(page);
         g_assert_true(WEBKIT_IS_FRAME(frame));
 
         GRefPtr<JSCContext> jsContext = adoptGRef(webkit_frame_get_js_context(frame));
@@ -74,7 +74,7 @@ private:
 
 #if !ENABLE(2022_GLIB_API)
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
@@ -119,7 +119,7 @@ private:
 
 #if !ENABLE(2022_GLIB_API)
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-        WebKitDOMNode* image = webkit_dom_node_for_js_value(jsImage.get());
+        CyberKitDOMNode* image = webkit_dom_node_for_js_value(jsImage.get());
         g_assert_true(WEBKIT_DOM_IS_ELEMENT(image));
         G_GNUC_END_IGNORE_DEPRECATIONS;
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(image));
@@ -133,18 +133,18 @@ private:
         return true;
     }
 
-    static void willSubmitFormCallback(WebKitWebFormManager*, JSCValue*, WebKitFrame* sourceFrame, WebKitFrame*, gpointer userData)
+    static void willSubmitFormCallback(CyberKitWebFormManager*, JSCValue*, CyberKitFrame* sourceFrame, CyberKitFrame*, gpointer userData)
     {
         // The form is submitted from a subframe.
         g_assert_false(webkit_frame_is_main_frame(sourceFrame));
 
-        auto* test = static_cast<WebKitFrameTest*>(userData);
+        auto* test = static_cast<CyberKitFrameTest*>(userData);
         g_main_loop_quit(test->m_mainLoop.get());
     }
 
-    bool testSubframe(WebKitWebPage* page)
+    bool testSubframe(CyberKitWebPage* page)
     {
-        WebKitFrame* mainFrame = webkit_web_page_get_main_frame(page);
+        CyberKitFrame* mainFrame = webkit_web_page_get_main_frame(page);
         g_assert_true(WEBKIT_IS_FRAME(mainFrame));
 
         GRefPtr<JSCContext> jsContext = adoptGRef(webkit_frame_get_js_context(mainFrame));
@@ -176,7 +176,7 @@ private:
         return true;
     }
 
-    bool runTest(const char* testName, WebKitWebPage* page) override
+    bool runTest(const char* testName, CyberKitWebPage* page) override
     {
         if (!strcmp(testName, "main-frame"))
             return testMainFrame(page);
@@ -198,9 +198,9 @@ private:
 
 static void __attribute__((constructor)) registerTests()
 {
-    REGISTER_TEST(WebKitFrameTest, "WebKitFrame/main-frame");
-    REGISTER_TEST(WebKitFrameTest, "WebKitFrame/uri");
-    REGISTER_TEST(WebKitFrameTest, "WebKitFrame/javascript-context");
-    REGISTER_TEST(WebKitFrameTest, "WebKitFrame/javascript-values");
-    REGISTER_TEST(WebKitFrameTest, "WebKitFrame/subframe");
+    REGISTER_TEST(CyberKitFrameTest, "CyberKitFrame/main-frame");
+    REGISTER_TEST(CyberKitFrameTest, "CyberKitFrame/uri");
+    REGISTER_TEST(CyberKitFrameTest, "CyberKitFrame/javascript-context");
+    REGISTER_TEST(CyberKitFrameTest, "CyberKitFrame/javascript-values");
+    REGISTER_TEST(CyberKitFrameTest, "CyberKitFrame/subframe");
 }

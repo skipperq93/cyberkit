@@ -31,7 +31,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad { false };
 static bool mouseMoveCallbackFinished { false };
@@ -62,7 +62,7 @@ static void setClients(WKPageRef page)
     WKPageSetPageUIClient(page, &uiClient.base);
 }
 
-TEST(WebKit, EventModifiers)
+TEST(CyberKit, EventModifiers)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     
@@ -77,6 +77,6 @@ TEST(WebKit, EventModifiers)
     Util::run(&mouseMoveCallbackFinished);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

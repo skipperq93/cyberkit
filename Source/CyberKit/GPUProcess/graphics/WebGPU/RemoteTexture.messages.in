@@ -24,7 +24,7 @@
 #if ENABLE(GPU_PROCESS)
 
 messages -> RemoteTexture NotRefCounted Stream {
-    void CreateView(std::optional<WebKit::WebGPU::TextureViewDescriptor> descriptor, WebKit::WebGPUIdentifier identifier)
+    void CreateView(std::optional<CyberKit::WebGPU::TextureViewDescriptor> descriptor, CyberKit::WebGPUIdentifier identifier)
     void Destroy()
     void SetLabel(String label)
 }

@@ -33,7 +33,7 @@
 #include "WebGPUObjectHeap.h"
 #include <pal/graphics/WebGPU/WebGPUPipelineLayout.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemotePipelineLayout::RemotePipelineLayout(PAL::WebGPU::PipelineLayout& pipelineLayout, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(pipelineLayout)
@@ -56,6 +56,6 @@ void RemotePipelineLayout::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

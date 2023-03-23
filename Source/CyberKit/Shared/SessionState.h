@@ -43,7 +43,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct HTTPBody {
     struct Element {
@@ -140,4 +140,4 @@ struct SessionState {
     bool isAppInitiated { true };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

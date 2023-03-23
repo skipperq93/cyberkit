@@ -27,12 +27,12 @@
 
 #if !PLATFORM(COCOA)
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WK_EXPORT int NetworkProcessMain(int argc, char** argv);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // !PLATFORM(COCOA)

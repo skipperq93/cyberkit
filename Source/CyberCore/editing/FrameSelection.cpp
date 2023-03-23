@@ -160,7 +160,7 @@ static inline bool isPageActive(Document* document)
 }
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/FrameSelectionAdditions.cpp>
+#import <CyberKitAdditions/FrameSelectionAdditions.cpp>
 #else
 #if ENABLE(TEXT_CARET)
 static void fillCaretRect(const Node&, GraphicsContext& context, const FloatRect& caret, const Color&color, const LayoutPoint&, CaretAnimator*)

@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitAudioSinkGStreamer.h"
+#include "CyberKitAudioSinkGStreamer.h"
 
 #if USE(GSTREAMER)
 
@@ -37,7 +37,7 @@
 
 using namespace CyberCore;
 
-struct _WebKitAudioSinkPrivate {
+struct _CyberKitAudioSinkPrivate {
     GRefPtr<GstElement> interAudioSink;
     GRefPtr<GstPad> mixerPad;
     GRefPtr<GstElement> volumeElement;
@@ -68,7 +68,7 @@ GST_DEBUG_CATEGORY_STATIC(webkit_audio_sink_debug);
 #define GST_CAT_DEFAULT webkit_audio_sink_debug
 
 #define webkit_audio_sink_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitAudioSink, webkit_audio_sink, GST_TYPE_BIN,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitAudioSink, webkit_audio_sink, GST_TYPE_BIN,
     G_IMPLEMENT_INTERFACE(GST_TYPE_STREAM_VOLUME, nullptr);
     GST_DEBUG_CATEGORY_INIT(webkit_audio_sink_debug, "webkitaudiosink", 0, "webkit audio sink element")
 )
@@ -112,7 +112,7 @@ struct AudioPacketHolder {
     RefPtr<GstMappedOwnedBuffer> buffer;
 };
 
-static void webKitAudioSinkHandleSample(WebKitAudioSink* sink, GRefPtr<GstSample>&& sample)
+static void webKitAudioSinkHandleSample(CyberKitAudioSink* sink, GRefPtr<GstSample>&& sample)
 {
     auto* wpeAudioSource = sink->priv->wpeAudioSource.get();
     static Atomic<int32_t> uniqueId;
@@ -142,7 +142,7 @@ static void webKitAudioSinkHandleSample(WebKitAudioSink* sink, GRefPtr<GstSample
 }
 #endif
 
-static bool webKitAudioSinkConfigure(WebKitAudioSink* sink)
+static bool webKitAudioSinkConfigure(CyberKitAudioSink* sink)
 {
 #if PLATFORM(WPE) && USE(WPEBACKEND_FDO_AUDIO_EXTENSION)
     sink->priv->sourceState = GST_STATE_NULL;
@@ -154,18 +154,18 @@ static bool webKitAudioSinkConfigure(WebKitAudioSink* sink)
             sink->priv->appsink = makeGStreamerElement("appsink", nullptr);
             gst_app_sink_set_emit_signals(GST_APP_SINK(sink->priv->appsink.get()), TRUE);
 
-            g_signal_connect(sink->priv->appsink.get(), "new-sample", G_CALLBACK(+[](GstElement* appsink, WebKitAudioSink* sink) -> GstFlowReturn {
+            g_signal_connect(sink->priv->appsink.get(), "new-sample", G_CALLBACK(+[](GstElement* appsink, CyberKitAudioSink* sink) -> GstFlowReturn {
                 auto sample = adoptGRef(gst_app_sink_pull_sample(GST_APP_SINK(appsink)));
                 webKitAudioSinkHandleSample(sink, WTFMove(sample));
                 return GST_FLOW_OK;
             }), sink);
-            g_signal_connect(sink->priv->appsink.get(), "new-preroll", G_CALLBACK(+[](GstElement* appsink, WebKitAudioSink* sink) -> GstFlowReturn {
+            g_signal_connect(sink->priv->appsink.get(), "new-preroll", G_CALLBACK(+[](GstElement* appsink, CyberKitAudioSink* sink) -> GstFlowReturn {
                 auto sample = adoptGRef(gst_app_sink_pull_preroll(GST_APP_SINK(appsink)));
                 webKitAudioSinkHandleSample(sink, WTFMove(sample));
                 return GST_FLOW_OK;
             }), sink);
 
-            g_signal_connect(sink->priv->appsink.get(), "eos", G_CALLBACK(+[](GstElement*, WebKitAudioSink* sink) {
+            g_signal_connect(sink->priv->appsink.get(), "eos", G_CALLBACK(+[](GstElement*, CyberKitAudioSink* sink) {
                 wpe_audio_source_stop(sink->priv->wpeAudioSource.get(), sink->priv->m_streamId);
                 sink->priv->sourceState = GST_STATE_NULL;
             }), sink);
@@ -200,7 +200,7 @@ static bool webKitAudioSinkConfigure(WebKitAudioSink* sink)
     return false;
 }
 
-static GstObject* getInternalVolumeObject(WebKitAudioSink* sink)
+static GstObject* getInternalVolumeObject(CyberKitAudioSink* sink)
 {
     if (sink->priv->volumeElement)
         return GST_OBJECT_CAST(sink->priv->volumeElement.get());
@@ -211,7 +211,7 @@ static GstObject* getInternalVolumeObject(WebKitAudioSink* sink)
 
 static void webKitAudioSinkSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* pspec)
 {
-    WebKitAudioSink* sink = WEBKIT_AUDIO_SINK(object);
+    CyberKitAudioSink* sink = WEBKIT_AUDIO_SINK(object);
 
     switch (propID) {
     case PROP_VOLUME: {
@@ -232,7 +232,7 @@ static void webKitAudioSinkSetProperty(GObject* object, guint propID, const GVal
 
 static void webKitAudioSinkGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* pspec)
 {
-    WebKitAudioSink* sink = WEBKIT_AUDIO_SINK(object);
+    CyberKitAudioSink* sink = WEBKIT_AUDIO_SINK(object);
 
     switch (propID) {
     case PROP_VOLUME: {
@@ -301,7 +301,7 @@ static void webKitAudioSinkConstructed(GObject* object)
     gst_bin_set_suppressed_flags(GST_BIN_CAST(object), static_cast<GstElementFlags>(GST_ELEMENT_FLAG_SOURCE | GST_ELEMENT_FLAG_SINK));
 }
 
-static void webkit_audio_sink_class_init(WebKitAudioSinkClass* klass)
+static void webkit_audio_sink_class_init(CyberKitAudioSinkClass* klass)
 {
     GObjectClass* oklass = G_OBJECT_CLASS(klass);
     oklass->set_property = webKitAudioSinkSetProperty;
@@ -317,8 +317,8 @@ static void webkit_audio_sink_class_init(WebKitAudioSinkClass* klass)
 
     GstElementClass* eklass = GST_ELEMENT_CLASS(klass);
     gst_element_class_add_static_pad_template(eklass, &sinkTemplate);
-    gst_element_class_set_metadata(eklass, "WebKit Audio sink element", "Sink/Audio",
-        "Proxies audio data to WebKit's audio mixer or to a WPE external audio handler",
+    gst_element_class_set_metadata(eklass, "CyberKit Audio sink element", "Sink/Audio",
+        "Proxies audio data to CyberKit's audio mixer or to a WPE external audio handler",
         "Philippe Normand <philn@igalia.com>");
 
     eklass->change_state = GST_DEBUG_FUNCPTR(webKitAudioSinkChangeState);

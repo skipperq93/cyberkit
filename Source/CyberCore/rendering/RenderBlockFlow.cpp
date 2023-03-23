@@ -1083,7 +1083,7 @@ void RenderBlockFlow::determineLogicalLeftPositionForChild(RenderBox& child, App
     // If the child is being centred then the margin calculated to do that has factored in any offset required to
     // avoid floats, so use it if necessary.
 
-    if (style().textAlign() == TextAlignMode::WebKitCenter || child.style().marginStartUsing(&style()).isAuto())
+    if (style().textAlign() == TextAlignMode::CyberKitCenter || child.style().marginStartUsing(&style()).isAuto())
         newPosition = std::max(newPosition, positionToAvoidFloats + childMarginStart);
     else if (positionToAvoidFloats > initialStartPosition)
         newPosition = std::max(newPosition, positionToAvoidFloats);
@@ -1135,11 +1135,11 @@ LayoutUnit RenderBlockFlow::startAlignedOffsetForLine(LayoutUnit position, Inden
     bool shouldApplyIndentText = false;
     switch (textAlign) {
     case TextAlignMode::Left:
-    case TextAlignMode::WebKitLeft:
+    case TextAlignMode::CyberKitLeft:
         shouldApplyIndentText = style().isLeftToRightDirection();
         break;
     case TextAlignMode::Right:
-    case TextAlignMode::WebKitRight:
+    case TextAlignMode::CyberKitRight:
         shouldApplyIndentText = !style().isLeftToRightDirection();
         break;
     case TextAlignMode::Start:

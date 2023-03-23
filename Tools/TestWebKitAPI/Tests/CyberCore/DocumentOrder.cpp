@@ -37,9 +37,9 @@
 #include <CyberCore/ShadowRoot.h>
 #include <CyberCore/SimpleRange.h>
 #include <CyberCore/TextControlInnerElements.h>
-#include <CyberCore/WebKitFontFamilyNames.h>
+#include <CyberCore/CyberKitFontFamilyNames.h>
 
-// FIXME(https://webkit.org/b/228175): Expose the functions tested here in WebKit internals object, then replace this test with one written in JavaScript.
+// FIXME(https://webkit.org/b/228175): Expose the functions tested here in CyberKit internals object, then replace this test with one written in JavaScript.
 // FIXME: When doing the above, don't forget to remove the many WEBCORE_EXPORT that were added so we could compile and link this test.
 
 #define EXPECT_BOTH(a, b, forward, reversed) do { EXPECT_STREQ(string(documentOrder(a, b)), forward); EXPECT_STREQ(string(documentOrder(b, a)), reversed); } while (0)
@@ -47,7 +47,7 @@
 #define EXPECT_LESS(a, b) EXPECT_BOTH(a, b, "less", "greater")
 #define EXPECT_UNORDERED(a, b) EXPECT_BOTH(a, b, "unordered", "unordered")
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace CyberCore;
 
@@ -295,4 +295,4 @@ TEST(DocumentOrder, Positions)
     // FIXME: Add tests that cover shadow trees.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -78,7 +78,7 @@
 #import <wtf/text/TextStream.h>
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-#import <WebKitAdditions/EventHandlerMacGesture.cpp>
+#import <CyberKitAdditions/EventHandlerMacGesture.cpp>
 #endif
 
 namespace CyberCore {
@@ -243,7 +243,7 @@ bool EventHandler::passMouseDownEventToWidget(Widget* pWidget)
         return true;
     }
 
-    // In WebKit2 we will never have a native widget. Just return early and let the regular event handler machinery take care of
+    // In CyberKit2 we will never have a native widget. Just return early and let the regular event handler machinery take care of
     // dispatching the event.
     if (!widget->platformWidget())
         return false;
@@ -482,7 +482,7 @@ bool EventHandler::passWheelEventToWidget(const PlatformWheelEvent& wheelEvent, 
 
     NSView* nodeView = widget.platformWidget();
     if (!nodeView) {
-        // WebKit2 code path.
+        // CyberKit2 code path.
         auto* frameView = dynamicDowncast<FrameView>(widget);
         if (!frameView)
             return false;
@@ -651,7 +651,7 @@ void EventHandler::sendFakeEventsAfterWidgetTracking(NSEvent *initiatingEvent)
 void EventHandler::mouseMoved(NSEvent *event, NSEvent* correspondingPressureEvent)
 {
     // Reject a mouse moved if the button is down - screws up tracking during autoscroll
-    // These happen because WebKit sometimes has to fake up moved events.
+    // These happen because CyberKit sometimes has to fake up moved events.
     if (!m_frame.view() || m_mousePressed || m_sendingEventToSubview)
         return;
 
@@ -675,7 +675,7 @@ void EventHandler::pressureChange(NSEvent *event, NSEvent* correspondingPressure
 void EventHandler::passMouseMovedEventToScrollbars(NSEvent *event, NSEvent* correspondingPressureEvent)
 {
     // Reject a mouse moved if the button is down - screws up tracking during autoscroll
-    // These happen because WebKit sometimes has to fake up moved events.
+    // These happen because CyberKit sometimes has to fake up moved events.
     if (!m_frame.view() || m_mousePressed || m_sendingEventToSubview)
         return;
 
@@ -697,23 +697,23 @@ static bool frameHasPlatformWidget(const Frame& frame)
 
 bool EventHandler::passMousePressEventToSubframe(MouseEventWithHitTestResults& mouseEventAndResult, Frame& subframe)
 {
-    // WebKit1 code path.
+    // CyberKit1 code path.
     if (frameHasPlatformWidget(m_frame))
         return passSubframeEventToSubframe(mouseEventAndResult, subframe);
 
-    // WebKit2 code path.
+    // CyberKit2 code path.
     subframe.eventHandler().handleMousePressEvent(mouseEventAndResult.event());
     return true;
 }
 
 bool EventHandler::passMouseMoveEventToSubframe(MouseEventWithHitTestResults& mouseEventAndResult, Frame& subframe, HitTestResult* hitTestResult)
 {
-    // WebKit1 code path.
+    // CyberKit1 code path.
     if (frameHasPlatformWidget(m_frame))
         return passSubframeEventToSubframe(mouseEventAndResult, subframe, hitTestResult);
 
 #if ENABLE(DRAG_SUPPORT)
-    // WebKit2 code path.
+    // CyberKit2 code path.
     if (m_mouseDownMayStartDrag && !m_mouseDownWasInSubframe)
         return false;
 #endif
@@ -724,11 +724,11 @@ bool EventHandler::passMouseMoveEventToSubframe(MouseEventWithHitTestResults& mo
 
 bool EventHandler::passMouseReleaseEventToSubframe(MouseEventWithHitTestResults& mouseEventAndResult, Frame& subframe)
 {
-    // WebKit1 code path.
+    // CyberKit1 code path.
     if (frameHasPlatformWidget(m_frame))
         return passSubframeEventToSubframe(mouseEventAndResult, subframe);
 
-    // WebKit2 code path.
+    // CyberKit2 code path.
     subframe.eventHandler().handleMouseReleaseEvent(mouseEventAndResult.event());
     return true;
 }
@@ -968,7 +968,7 @@ void EventHandler::wheelEventWasProcessedByMainThread(const PlatformWheelEvent& 
 
 bool EventHandler::platformCompletePlatformWidgetWheelEvent(const PlatformWheelEvent& wheelEvent, const Widget& widget, const WeakPtr<ScrollableArea>& scrollableArea)
 {
-    // WebKit1: Prevent multiple copies of the scrollWheel event from being sent to the NSScrollView widget.
+    // CyberKit1: Prevent multiple copies of the scrollWheel event from being sent to the NSScrollView widget.
     if (frameHasPlatformWidget(m_frame) && widget.isFrameView())
         return true;
 

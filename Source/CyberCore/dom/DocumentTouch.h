@@ -26,7 +26,7 @@
 #pragma once
 
 #if ENABLE(IOS_TOUCH_EVENTS)
-#include <WebKitAdditions/DocumentTouchIOS.h>
+#include <CyberKitAdditions/DocumentTouchIOS.h>
 #elif ENABLE(TOUCH_EVENTS)
 
 #include <functional>

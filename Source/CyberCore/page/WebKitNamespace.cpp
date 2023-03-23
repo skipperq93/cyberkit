@@ -24,13 +24,13 @@
  */
 
 #include "config.h"
-#include "WebKitNamespace.h"
+#include "CyberKitNamespace.h"
 
 #include "FrameLoader.h"
 #include "FrameLoaderClient.h"
 #include "Logging.h"
 
-#define WEBKIT_NAMESPACE_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - WebKitNamespace::" fmt, this, ##__VA_ARGS__)
+#define WEBKIT_NAMESPACE_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - CyberKitNamespace::" fmt, this, ##__VA_ARGS__)
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
 
@@ -39,16 +39,16 @@
 
 namespace CyberCore {
 
-WebKitNamespace::WebKitNamespace(DOMWindow& window, UserContentProvider& userContentProvider)
+CyberKitNamespace::CyberKitNamespace(DOMWindow& window, UserContentProvider& userContentProvider)
     : DOMWindowProperty(&window)
     , m_messageHandlerNamespace(UserMessageHandlersNamespace::create(*window.frame(), userContentProvider))
 {
     ASSERT(window.frame());
 }
 
-WebKitNamespace::~WebKitNamespace() = default;
+CyberKitNamespace::~CyberKitNamespace() = default;
 
-UserMessageHandlersNamespace* WebKitNamespace::messageHandlers()
+UserMessageHandlersNamespace* CyberKitNamespace::messageHandlers()
 {
 #if ENABLE(APP_BOUND_DOMAINS)
     if (frame()) {

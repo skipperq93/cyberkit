@@ -28,9 +28,9 @@
 #import "AuthenticationChallengeDisposition.h"
 #import <Foundation/NSURLSession.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 AuthenticationChallengeDisposition toAuthenticationChallengeDisposition(NSURLSessionAuthChallengeDisposition);
 NSURLSessionAuthChallengeDisposition fromAuthenticationChallengeDisposition(AuthenticationChallengeDisposition);
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -33,7 +33,7 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 enum class BindingResourceType : uint8_t {
     Sampler,
@@ -49,17 +49,17 @@ struct BindGroupEntry {
     BindingResourceType type { BindingResourceType::Sampler };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::WebGPU::BindingResourceType> {
+template<> struct EnumTraits<CyberKit::WebGPU::BindingResourceType> {
     using values = EnumValues<
-        WebKit::WebGPU::BindingResourceType,
-        WebKit::WebGPU::BindingResourceType::Sampler,
-        WebKit::WebGPU::BindingResourceType::TextureView,
-        WebKit::WebGPU::BindingResourceType::BufferBinding,
-        WebKit::WebGPU::BindingResourceType::ExternalTexture
+        CyberKit::WebGPU::BindingResourceType,
+        CyberKit::WebGPU::BindingResourceType::Sampler,
+        CyberKit::WebGPU::BindingResourceType::TextureView,
+        CyberKit::WebGPU::BindingResourceType::BufferBinding,
+        CyberKit::WebGPU::BindingResourceType::ExternalTexture
     >;
 };
 

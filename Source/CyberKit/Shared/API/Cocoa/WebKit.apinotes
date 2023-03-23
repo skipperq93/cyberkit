@@ -1,5 +1,5 @@
 ---
-Name: WebKit
+Name: CyberKit
 Classes:
 - Name: WebFrame
   Properties:

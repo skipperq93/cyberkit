@@ -32,9 +32,9 @@
 #import <CyberKit/WKNumber.h>
 #import <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKNSNumber)
+TEST(CyberKit, WKNSNumber)
 {
     auto booleanRef = adoptWK(WKBooleanCreate(true));
     auto uint64Ref = adoptWK(WKUInt64Create(39));
@@ -51,6 +51,6 @@ TEST(WebKit, WKNSNumber)
     EXPECT_EQ(-16.2, doubleNumber.doubleValue);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

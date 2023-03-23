@@ -38,7 +38,7 @@
 #include <CyberCore/WorkerFetchResult.h>
 #include <CyberCore/WorkerScriptLoader.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -208,6 +208,6 @@ void ServiceWorkerSoftUpdateLoader::didComplete()
         m_session->removeSoftUpdateLoader(this);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -32,7 +32,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
@@ -59,18 +59,18 @@ TEST(IndexedDB, IndexedDBUserDelete)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBUserDelete" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBUserDelete" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string = (NSString *)[lastScriptMessage body];
 
     [configuration.get().websiteDataStore removeDataOfTypes:[NSSet setWithObjects:WKWebsiteDataTypeIndexedDBDatabases, nil] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
     readyToContinue = false;
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     EXPECT_WK_STREQ(@"Continue", string.get());
 }
@@ -79,7 +79,7 @@ TEST(IndexedDB, IndexedDBUserDeleteBeforeLoading)
 {
     NSURL *idbURL = [[[WKWebsiteDataStore defaultDataStore] _configuration] _indexedDBDatabaseDirectory];
     NSURL *fileIDBURL = [[idbURL URLByAppendingPathComponent:@"file__0"] URLByAppendingPathComponent:@"IndexedDBUserDeleteBeforeLoading"];
-    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"IndexedDB" withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"IndexedDB" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
     [[NSFileManager defaultManager] createDirectoryAtURL:fileIDBURL withIntermediateDirectories:YES attributes:nil error:nil];
     [[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:[fileIDBURL URLByAppendingPathComponent:@"IndexedDB.sqlite3"] error:nil];
     EXPECT_TRUE([[NSFileManager defaultManager] fileExistsAtPath:fileIDBURL.path]);
@@ -89,5 +89,5 @@ TEST(IndexedDB, IndexedDBUserDeleteBeforeLoading)
         readyToContinue = true;
     }];
     readyToContinue = false;
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }

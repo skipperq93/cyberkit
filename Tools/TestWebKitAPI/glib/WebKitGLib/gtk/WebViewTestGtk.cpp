@@ -24,7 +24,7 @@
 #include <CyberCore/GUniquePtrGtk.h>
 #include <CyberCore/GtkVersioning.h>
 #include <gtk/gtk.h>
-#include <webkit/WebKitWebViewBaseInternal.h>
+#include <webkit/CyberKitWebViewBaseInternal.h>
 
 void WebViewTest::platformDestroy()
 {

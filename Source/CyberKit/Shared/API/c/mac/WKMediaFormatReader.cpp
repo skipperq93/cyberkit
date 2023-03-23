@@ -33,7 +33,7 @@
 OSStatus WKMediaFormatReaderCreate(CFAllocatorRef allocator, MTPluginFormatReaderRef* formatReaderRef)
 {
 #if ENABLE(WEBM_FORMAT_READER)
-    auto formatReader = WebKit::MediaFormatReader::create(allocator);
+    auto formatReader = CyberKit::MediaFormatReader::create(allocator);
     if (!formatReader)
         return kMTPluginFormatReaderError_AllocationFailure;
     *formatReaderRef = formatReader.leakRef()->wrapper();
@@ -48,7 +48,7 @@ OSStatus WKMediaFormatReaderCreate(CFAllocatorRef allocator, MTPluginFormatReade
 OSStatus WKMediaFormatReaderStartOnMainThread(MTPluginFormatReaderRef formatReaderRef, MTPluginByteSourceRef byteSource)
 {
 #if ENABLE(WEBM_FORMAT_READER)
-    auto formatReader = WebKit::MediaFormatReader::unwrap(formatReaderRef);
+    auto formatReader = CyberKit::MediaFormatReader::unwrap(formatReaderRef);
     if (!formatReader)
         return paramErr;
     formatReader->startOnMainThread(byteSource);

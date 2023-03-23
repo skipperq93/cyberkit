@@ -42,9 +42,9 @@
 namespace CyberCore {
 
 #if USE(CF)
-static RetainPtr<CFBundleRef> createWebKitBundle()
+static RetainPtr<CFBundleRef> createCyberKitBundle()
 {
-    if (CFBundleRef existingBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.WebKit")))
+    if (CFBundleRef existingBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.CyberKit")))
         return existingBundle;
 
     wchar_t dllPathBuffer[MAX_PATH];
@@ -55,14 +55,14 @@ static RetainPtr<CFBundleRef> createWebKitBundle()
     RetainPtr<CFStringRef> dllPath = adoptCF(CFStringCreateWithCharactersNoCopy(0, reinterpret_cast<const UniChar*>(dllPathBuffer), length, kCFAllocatorNull));
     RetainPtr<CFURLRef> dllURL = adoptCF(CFURLCreateWithFileSystemPath(0, dllPath.get(), kCFURLWindowsPathStyle, false));
     RetainPtr<CFURLRef> dllDirectoryURL = adoptCF(CFURLCreateCopyDeletingLastPathComponent(0, dllURL.get()));
-    RetainPtr<CFURLRef> resourcesDirectoryURL = adoptCF(CFURLCreateCopyAppendingPathComponent(0, dllDirectoryURL.get(), CFSTR("WebKit.resources"), true));
+    RetainPtr<CFURLRef> resourcesDirectoryURL = adoptCF(CFURLCreateCopyAppendingPathComponent(0, dllDirectoryURL.get(), CFSTR("CyberKit.resources"), true));
 
     return adoptCF(CFBundleCreate(0, resourcesDirectoryURL.get()));
 }
 
 CFBundleRef webKitBundle()
 {
-    static NeverDestroyed<RetainPtr<CFBundleRef>> bundle = createWebKitBundle();
+    static NeverDestroyed<RetainPtr<CFBundleRef>> bundle = createCyberKitBundle();
     ASSERT(bundle.get());
     return bundle.get().get();
 }
@@ -107,7 +107,7 @@ static String dllDirectory()
 
 String webKitBundlePath()
 {
-    static NeverDestroyed<String> bundle = FileSystem::pathByAppendingComponent(dllDirectory(), "WebKit.resources"_s);
+    static NeverDestroyed<String> bundle = FileSystem::pathByAppendingComponent(dllDirectory(), "CyberKit.resources"_s);
     return bundle;
 }
 

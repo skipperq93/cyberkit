@@ -220,11 +220,11 @@ struct PossiblyQuotedIdentifier {
             PseudoElementScrollbarTrackPiece,
             PseudoElementSelection,
             PseudoElementSlotted,
-            PseudoElementWebKitCustom,
+            PseudoElementCyberKitCustom,
 
-            // WebKitCustom that appeared in an old prefixed form
+            // CyberKitCustom that appeared in an old prefixed form
             // and need special handling.
-            PseudoElementWebKitCustomLegacyPrefixed,
+            PseudoElementCyberKitCustomLegacyPrefixed,
         };
 
         enum PagePseudoClassType {
@@ -302,7 +302,7 @@ struct PossiblyQuotedIdentifier {
         bool matchesPseudoElement() const;
         bool isUnknownPseudoElement() const;
         bool isCustomPseudoElement() const;
-        bool isWebKitCustomPseudoElement() const;
+        bool isCyberKitCustomPseudoElement() const;
         bool isSiblingSelector() const;
         bool isAttributeSelector() const;
 
@@ -429,13 +429,13 @@ inline bool CSSSelector::isUnknownPseudoElement() const
 inline bool CSSSelector::isCustomPseudoElement() const
 {
     return match() == PseudoElement
-        && (pseudoElementType() == PseudoElementWebKitCustom
-            || pseudoElementType() == PseudoElementWebKitCustomLegacyPrefixed);
+        && (pseudoElementType() == PseudoElementCyberKitCustom
+            || pseudoElementType() == PseudoElementCyberKitCustomLegacyPrefixed);
 }
 
-inline bool CSSSelector::isWebKitCustomPseudoElement() const
+inline bool CSSSelector::isCyberKitCustomPseudoElement() const
 {
-    return pseudoElementType() == PseudoElementWebKitCustom || pseudoElementType() == PseudoElementWebKitCustomLegacyPrefixed;
+    return pseudoElementType() == PseudoElementCyberKitCustom || pseudoElementType() == PseudoElementCyberKitCustomLegacyPrefixed;
 }
 
 static inline bool pseudoClassIsRelativeToSiblings(CSSSelector::PseudoClassType type)

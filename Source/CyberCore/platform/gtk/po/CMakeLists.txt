@@ -11,7 +11,7 @@ set(linguas
 # Source directory. Perhaps we want this, but for now disable it to maintain compatibility.
 set(GETTEXT_MSGMERGE_EXECUTABLE :)
 
-set(domain WebKitGTK-${WEBKITGTK_API_VERSION})
+set(domain CyberKitGTK-${WEBKITGTK_API_VERSION})
 set(build_directory ${CMAKE_BINARY_DIR}/Source/CyberCore/platform/gtk/po)
 set(pot_file ${build_directory}/${domain}.pot)
 set(potfiles_file ${build_directory}/POTFILES)

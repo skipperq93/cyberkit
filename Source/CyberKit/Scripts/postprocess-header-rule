@@ -38,7 +38,7 @@ function process_definitions () {
     source "${DEFINITIONS_FILE}"
 }
 
-DEFINITIONS_PATH=usr/local/include/WebKitAdditions/Scripts/postprocess-framework-headers-definitions
+DEFINITIONS_PATH=usr/local/include/CyberKitAdditions/Scripts/postprocess-framework-headers-definitions
 
 process_definitions "${BUILT_PRODUCTS_DIR}/${DEFINITIONS_PATH}" || process_definitions "${SDKROOT}/${DEFINITIONS_PATH}"
 
@@ -119,7 +119,7 @@ case "${INPUT_FILE_PATH}" in
 esac
 
 # As a performance optimization, only run replace-webkit-additions-includes.py if we know we need it.
-if grep -q '#import <WebKitAdditions/.*\.h>' "${INPUT_FILE_PATH}"; then
+if grep -q '#import <CyberKitAdditions/.*\.h>' "${INPUT_FILE_PATH}"; then
     REPLACE_WEBKIT_ADDITIONS_INCLUDES=(python3 "${SRCROOT}/mac/replace-webkit-additions-includes.py" "${BUILT_PRODUCTS_DIR}" "${SDKROOT}")
 else
     REPLACE_WEBKIT_ADDITIONS_INCLUDES=cat

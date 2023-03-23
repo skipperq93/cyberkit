@@ -28,7 +28,7 @@
 
 #include "StorageAreaBase.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 StorageAreaRegistry::StorageAreaRegistry() = default;
 
@@ -51,4 +51,4 @@ StorageAreaBase* StorageAreaRegistry::getStorageArea(StorageAreaIdentifier ident
     return m_storageAreas.get(identifier).get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

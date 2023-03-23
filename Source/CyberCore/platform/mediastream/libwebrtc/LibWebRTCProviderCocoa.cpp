@@ -34,12 +34,12 @@
 
 ALLOW_UNUSED_PARAMETERS_BEGIN
 ALLOW_COMMA_BEGIN
-#include <webrtc/sdk/WebKit/WebKitDecoder.h>
-#include <webrtc/sdk/WebKit/WebKitEncoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitDecoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitEncoder.h>
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
-#include <webrtc/sdk/WebKit/WebKitVP8Decoder.h>
-#include <webrtc/sdk/WebKit/WebKitVP9Decoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitVP8Decoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitVP9Decoder.h>
 #include <wtf/MainThread.h>
 #include <wtf/darwin/WeakLinking.h>
 
@@ -69,8 +69,8 @@ std::unique_ptr<webrtc::VideoDecoderFactory> LibWebRTCProviderCocoa::createDecod
     if (!webRTCAvailable())
         return nullptr;
 
-    auto vp9Support = isSupportingVP9Profile2() ? webrtc::WebKitVP9::Profile0And2 : isSupportingVP9Profile0() ? webrtc::WebKitVP9::Profile0 : webrtc::WebKitVP9::Off;
-    return webrtc::createWebKitDecoderFactory(isSupportingH265() ? webrtc::WebKitH265::On : webrtc::WebKitH265::Off, vp9Support, isSupportingVP9VTB() ? webrtc::WebKitVP9VTB::On : webrtc::WebKitVP9VTB::Off, isSupportingAV1() ? webrtc::WebKitAv1::On : webrtc::WebKitAv1::Off);
+    auto vp9Support = isSupportingVP9Profile2() ? webrtc::CyberKitVP9::Profile0And2 : isSupportingVP9Profile0() ? webrtc::CyberKitVP9::Profile0 : webrtc::CyberKitVP9::Off;
+    return webrtc::createCyberKitDecoderFactory(isSupportingH265() ? webrtc::CyberKitH265::On : webrtc::CyberKitH265::Off, vp9Support, isSupportingVP9VTB() ? webrtc::CyberKitVP9VTB::On : webrtc::CyberKitVP9VTB::Off, isSupportingAV1() ? webrtc::CyberKitAv1::On : webrtc::CyberKitAv1::Off);
 }
 
 std::unique_ptr<webrtc::VideoEncoderFactory> LibWebRTCProviderCocoa::createEncoderFactory()
@@ -80,8 +80,8 @@ std::unique_ptr<webrtc::VideoEncoderFactory> LibWebRTCProviderCocoa::createEncod
     if (!webRTCAvailable())
         return nullptr;
 
-    auto vp9Support = isSupportingVP9Profile2() ? webrtc::WebKitVP9::Profile0And2 : isSupportingVP9Profile0() ? webrtc::WebKitVP9::Profile0 : webrtc::WebKitVP9::Off;
-    return webrtc::createWebKitEncoderFactory(isSupportingH265() ? webrtc::WebKitH265::On : webrtc::WebKitH265::Off, vp9Support, DeprecatedGlobalSettings::webRTCH264LowLatencyEncoderEnabled() ? webrtc::WebKitH264LowLatency::On : webrtc::WebKitH264LowLatency::Off, isSupportingAV1() ? webrtc::WebKitAv1::On : webrtc::WebKitAv1::Off);
+    auto vp9Support = isSupportingVP9Profile2() ? webrtc::CyberKitVP9::Profile0And2 : isSupportingVP9Profile0() ? webrtc::CyberKitVP9::Profile0 : webrtc::CyberKitVP9::Off;
+    return webrtc::createCyberKitEncoderFactory(isSupportingH265() ? webrtc::CyberKitH265::On : webrtc::CyberKitH265::Off, vp9Support, DeprecatedGlobalSettings::webRTCH264LowLatencyEncoderEnabled() ? webrtc::CyberKitH264LowLatency::On : webrtc::CyberKitH264LowLatency::Off, isSupportingAV1() ? webrtc::CyberKitAv1::On : webrtc::CyberKitAv1::Off);
 }
 
 std::optional<MediaCapabilitiesInfo> LibWebRTCProviderCocoa::computeVPParameters(const VideoConfiguration& configuration)
@@ -109,16 +109,16 @@ bool WebRTCProvider::webRTCAvailable()
 #endif
 }
 
-void LibWebRTCProvider::registerWebKitVP9Decoder()
+void LibWebRTCProvider::registerCyberKitVP9Decoder()
 {
     if (webRTCAvailable())
-        webrtc::registerWebKitVP9Decoder();
+        webrtc::registerCyberKitVP9Decoder();
 }
 
-void LibWebRTCProvider::registerWebKitVP8Decoder()
+void LibWebRTCProvider::registerCyberKitVP8Decoder()
 {
     if (webRTCAvailable())
-        webrtc::registerWebKitVP8Decoder();
+        webrtc::registerCyberKitVP8Decoder();
 }
 
 } // namespace CyberCore

@@ -51,7 +51,7 @@ struct wpe_input_axis_event;
 #include <windows.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class NativeWebWheelEvent : public WebWheelEvent {
 public:
@@ -91,4 +91,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

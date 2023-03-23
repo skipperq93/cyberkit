@@ -36,7 +36,7 @@
 #include <utility>
 
 // Leveraging RFC 7049 examples from https://github.com/cbor/test-vectors/blob/master/appendix_a.json.
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace cbor;
 
@@ -764,6 +764,6 @@ TEST(CBORReaderTest, TestUnsupportedSimplevalue)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

@@ -30,7 +30,7 @@
 
 #include <wtf/Expected.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: Use the function after removing the NetworkRTCResolverCocoa.
 #if !PLATFORM(COCOA)
@@ -62,6 +62,6 @@ void NetworkRTCResolver::stop()
     CyberCore::stopResolveDNS(m_identifier.toUInt64());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

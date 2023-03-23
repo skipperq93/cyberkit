@@ -35,7 +35,7 @@
 #include "WebErrors.h"
 #include <CyberCore/ResourceError.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -115,6 +115,6 @@ void PreconnectTask::didFinish(const ResourceError& error, const NetworkLoadMetr
     delete this;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVER_PRECONNECT)

@@ -37,7 +37,7 @@
 #import <pal/text/TextEncoding.h>
 #import <wtf/URL.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 static RefPtr<NetworkProcess>& firstNetworkProcess()
 {
@@ -122,7 +122,7 @@ void LegacyCustomProtocolManager::networkProcessCreated(NetworkProcess& networkP
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 void LegacyCustomProtocolManager::registerProtocolClass()
 {
@@ -243,4 +243,4 @@ RetainPtr<WKCustomProtocol> LegacyCustomProtocolManager::protocolForID(LegacyCus
     return it->value;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

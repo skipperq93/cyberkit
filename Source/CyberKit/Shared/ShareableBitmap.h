@@ -39,7 +39,7 @@ class Image;
 class GraphicsContext;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct ShareableBitmapConfiguration {
     std::optional<CyberCore::DestinationColorSpace> colorSpace;
@@ -155,5 +155,5 @@ private:
     Ref<SharedMemory> m_sharedMemory;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

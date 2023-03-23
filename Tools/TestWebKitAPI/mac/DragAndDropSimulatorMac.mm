@@ -80,7 +80,7 @@ const double dragUpdateProgressIncrement = 0.05;
 
 static RetainPtr<NSImage> defaultExternalDragImage()
 {
-    return adoptNS([[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]]);
+    return adoptNS([[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]]);
 }
 
 @implementation DragAndDropSimulator {
@@ -169,7 +169,7 @@ static RetainPtr<NSImage> defaultExternalDragImage()
         NSPoint startLocationInView = [_webView convertPoint:_startLocationInWindow fromView:nil];
         auto dragImage = !self.externalDragImage ? defaultExternalDragImage(): nil;
         [self performDragInWebView:_webView.get() atLocation:startLocationInView withImage:dragImage.get() pasteboard:pasteboard source:nil];
-        TestWebKitAPI::Util::run(&_doneWaitingForDrop);
+        TestCyberKitAPI::Util::run(&_doneWaitingForDrop);
         return;
     }
 
@@ -191,12 +191,12 @@ static RetainPtr<NSImage> defaultExternalDragImage()
     [_webView mouseDragToPoint:[self locationInViewForCurrentProgress]];
     [_webView waitForPendingMouseEvents];
 
-    TestWebKitAPI::Util::run(&_doneWaitingForDraggingSession);
+    TestCyberKitAPI::Util::run(&_doneWaitingForDraggingSession);
 
     [_webView mouseUpAtPoint:_endLocationInWindow];
     [_webView waitForPendingMouseEvents];
 
-    TestWebKitAPI::Util::run(&_doneWaitingForDrop);
+    TestCyberKitAPI::Util::run(&_doneWaitingForDrop);
     [_webView setEventTimestampOffset:0];
 }
 
@@ -466,7 +466,7 @@ static BOOL getFilePathsAndTypeIdentifiers(NSArray<NSURL *> *fileURLs, NSArray<N
         [provider.delegate filePromiseProvider:provider writePromiseToURL:destinationURL completionHandler:^(NSError *) {
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         [destinationURLs addObject:destinationURL];
         [_filePromiseDestinationURLs addObject:destinationURL];
     }

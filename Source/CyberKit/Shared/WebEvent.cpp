@@ -30,7 +30,7 @@
 #include "Encoder.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebEvent::WebEvent()
     : m_type(WebEventType::NoType)
@@ -77,4 +77,4 @@ TextStream& operator<<(TextStream& ts, WebEventType eventType)
     return ts;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

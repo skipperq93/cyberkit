@@ -30,7 +30,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if ENABLE(DARK_MODE_CSS)
 #define DEFAULT_BACKGROUND_COLOR [NSColor controlBackgroundColor]
@@ -38,7 +38,7 @@ namespace TestWebKitAPI {
 #define DEFAULT_BACKGROUND_COLOR [NSColor whiteColor]
 #endif
 
-TEST(WebKit, BackgroundColorDefault)
+TEST(CyberKit, BackgroundColorDefault)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -52,7 +52,7 @@ TEST(WebKit, BackgroundColorDefault)
     EXPECT_TRUE(CGColorEqualToColor(defaultColor.CGColor, [webView layer].backgroundColor));
 }
 
-TEST(WebKit, BackgroundColorSystemColor)
+TEST(CyberKit, BackgroundColorSystemColor)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -68,7 +68,7 @@ TEST(WebKit, BackgroundColorSystemColor)
     EXPECT_TRUE(CGColorEqualToColor(systemColor.CGColor, [webView layer].backgroundColor));
 }
 
-TEST(WebKit, BackgroundColorNil)
+TEST(CyberKit, BackgroundColorNil)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -84,7 +84,7 @@ TEST(WebKit, BackgroundColorNil)
     EXPECT_TRUE(CGColorEqualToColor(defaultColor.CGColor, [webView layer].backgroundColor));
 }
 
-TEST(WebKit, BackgroundColorNoDrawsBackground)
+TEST(CyberKit, BackgroundColorNoDrawsBackground)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -100,7 +100,7 @@ TEST(WebKit, BackgroundColorNoDrawsBackground)
     EXPECT_EQ(CGColorGetConstantColor(kCGColorClear), [webView layer].backgroundColor);
 }
 
-TEST(WebKit, BackgroundColorCustomColorNoDrawsBackground)
+TEST(CyberKit, BackgroundColorCustomColorNoDrawsBackground)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -116,4 +116,4 @@ TEST(WebKit, BackgroundColorCustomColorNoDrawsBackground)
     EXPECT_EQ(CGColorGetConstantColor(kCGColorClear), [webView layer].backgroundColor);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

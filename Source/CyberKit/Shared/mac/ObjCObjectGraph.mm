@@ -36,7 +36,7 @@
 #import <wtf/EnumTraits.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static bool shouldTransformGraph(id object, const ObjCObjectGraph::Transformer& transformer)
 {
@@ -346,22 +346,22 @@ bool ObjCObjectGraph::decode(IPC::Decoder& decoder, RefPtr<API::Object>& result)
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::ObjCType> {
+template<> struct EnumTraits<CyberKit::ObjCType> {
     using values = EnumValues<
-        WebKit::ObjCType,
-        WebKit::ObjCType::Null,
-        WebKit::ObjCType::NSArray,
-        WebKit::ObjCType::NSData,
-        WebKit::ObjCType::NSDate,
-        WebKit::ObjCType::NSDictionary,
-        WebKit::ObjCType::NSNumber,
-        WebKit::ObjCType::NSString,
-        WebKit::ObjCType::WKBrowsingContextHandle,
-        WebKit::ObjCType::WKTypeRefWrapper
+        CyberKit::ObjCType,
+        CyberKit::ObjCType::Null,
+        CyberKit::ObjCType::NSArray,
+        CyberKit::ObjCType::NSData,
+        CyberKit::ObjCType::NSDate,
+        CyberKit::ObjCType::NSDictionary,
+        CyberKit::ObjCType::NSNumber,
+        CyberKit::ObjCType::NSString,
+        CyberKit::ObjCType::WKBrowsingContextHandle,
+        CyberKit::ObjCType::WKTypeRefWrapper
     >;
 };
 

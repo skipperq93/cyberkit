@@ -23,7 +23,7 @@
 
 #if ENABLE(PDFKIT_PLUGIN)
    
-[CustomHeader] struct WebKit::PDFContextMenuItem {
+[CustomHeader] struct CyberKit::PDFContextMenuItem {
     String title;
     bool enabled;
     bool separator;
@@ -32,9 +32,9 @@
     int tag;
 };
 
-struct WebKit::PDFContextMenu {
+struct CyberKit::PDFContextMenu {
     CyberCore::IntPoint point;
-    Vector<WebKit::PDFContextMenuItem> items;
+    Vector<CyberKit::PDFContextMenuItem> items;
     std::optional<int> openInPreviewIndex;
 };
 

@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUBlendComponent.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<BlendComponent> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::BlendComponent& blendComponent)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::BlendComponent> ConvertFromBackingContext::convertFro
     return { { blendComponent.operation, blendComponent.srcFactor, blendComponent.dstFactor } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

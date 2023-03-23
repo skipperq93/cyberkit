@@ -30,7 +30,7 @@
 #include <CyberCore/GtkVersioning.h>
 #include <gdk/gdk.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if USE(GTK4)
 #define constructNativeEvent(event) event
@@ -66,6 +66,6 @@ NativeWebMouseEvent::NativeWebMouseEvent(const NativeWebMouseEvent& event)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef constructNativeEvent

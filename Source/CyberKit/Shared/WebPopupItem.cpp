@@ -29,7 +29,7 @@
 
 #include "ArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPopupItem::WebPopupItem()
     : m_type(Type::Item)
@@ -63,4 +63,4 @@ WebPopupItem::WebPopupItem(Type type, const String& text, CyberCore::TextDirecti
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -50,7 +50,7 @@ TEST(WKWebView, DefaultNavigationDelegate)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"notreal:/hello"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 #endif

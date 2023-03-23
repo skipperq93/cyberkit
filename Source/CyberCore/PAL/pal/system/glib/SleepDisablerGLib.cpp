@@ -43,7 +43,7 @@ SleepDisablerGLib::SleepDisablerGLib(const String& reason, Type type)
     , m_reason(reason)
 {
     // We ignore Type because we always want to inhibit both screen lock and
-    // suspend, but only when idle. There is no reason for WebKit to ever block
+    // suspend, but only when idle. There is no reason for CyberKit to ever block
     // a user from manually suspending the computer, so inhibiting idle
     // suffices. There's also probably no good reason for code taking a sleep
     // disabler to differentiate between lock and suspend on our platform. If we

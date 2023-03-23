@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUMultisampleState.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<MultisampleState> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::MultisampleState& multisampleState)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::MultisampleState> ConvertFromBackingContext::convertF
     return { { multisampleState.count, multisampleState.mask, multisampleState.alphaToCoverageEnabled } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

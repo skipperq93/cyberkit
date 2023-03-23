@@ -130,7 +130,7 @@ class DownloadCommandsTest(CommandsTest):
         self.assert_execute_outputs(ApplyFromBug(), [50000], options=options, expected_logs=expected_logs)
 
     def test_land(self):
-        expected_logs = """Building WebKit
+        expected_logs = """Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Adding comment and closing bug 50000
 """
@@ -149,7 +149,7 @@ MOCK run_and_throw_if_fail: ['mock-check-webkit-style', '--git-commit', 'MOCK gi
 MOCK run_command: ['ruby', '-I', '/mock-checkout/Websites/bugs.webkit.org/PrettyPatch', '/mock-checkout/Websites/bugs.webkit.org/PrettyPatch/prettify.rb'], cwd=None, input=Patch1
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 MOCK run_and_throw_if_fail: ['mock-build-webkit', 'ARCHS=MOCK ARCH'], cwd=/mock-checkout, env={'MOCK_ENVIRON_COPY': '1', 'TERM': 'dumb'}
 Committed r49824: <https://commits.webkit.org/r49824>
 Committed r49824 (5@main): <https://commits.webkit.org/5@main>
@@ -160,7 +160,7 @@ No bug id provided.
             self.assert_execute_outputs(LandCowhand(), [50000], options=self._default_options(), expected_logs=expected_logs, tool=mock_tool)
 
     def test_land_red_builders(self):
-        expected_logs = """Building WebKit
+        expected_logs = """Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Adding comment and closing bug 50000
 """
@@ -183,7 +183,7 @@ MOCK run_and_throw_if_fail: ['mock-check-webkit-style', '--git-commit', 'MOCK gi
         expected_logs = """Processing 1 patch from 1 bug.
 Updating working directory
 Processing patch 10000 from bug 50000.
-Building WebKit
+Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
 """
@@ -196,12 +196,12 @@ Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more
 Processing 2 patches from 1 bug.
 Updating working directory
 Processing patch 10000 from bug 50000.
-Building WebKit
+Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
 Updating working directory
 Processing patch 10001 from bug 50000.
-Building WebKit
+Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
 """
@@ -209,7 +209,7 @@ Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more
             self.assert_execute_outputs(LandFromBug(), [50000], options=self._default_options(), expected_logs=expected_logs)
 
     def test_land_no_comment(self):
-        expected_logs = """Building WebKit
+        expected_logs = """Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Not updating bug 50000
 """
@@ -219,7 +219,7 @@ Not updating bug 50000
             self.assert_execute_outputs(LandUnsafe(), [50000], options=options, expected_logs=expected_logs)
 
     def test_land_no_close(self):
-        expected_logs = """Building WebKit
+        expected_logs = """Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Commenting without closing bug 50000
 MOCK bug comment: bug_id=50000, cc=None, see_also=None
@@ -234,7 +234,7 @@ Committed r49824 (5@main): <https://commits.webkit.org/5@main>
             self.assert_execute_outputs(LandUnsafe(), [50000], options=options, expected_logs=expected_logs)
 
     def test_land_no_comment_no_close(self):
-        expected_logs = """Building WebKit
+        expected_logs = """Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 Not updating bug 50000
 """
@@ -375,7 +375,7 @@ where ATTACHMENT_ID is the ID of this attachment.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852 for reason:
 
@@ -392,7 +392,7 @@ Preparing revert for bug 50005.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852 and r963 for reason:
 
@@ -415,7 +415,7 @@ Preparing revert for bug 50004.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852, r963 and r3001 for reason:
 
@@ -443,7 +443,7 @@ Unable to parse bug number from diff.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://commits.webkit.org/r49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852, r963 and r999 for reason:
 

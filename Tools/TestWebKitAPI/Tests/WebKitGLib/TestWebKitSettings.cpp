@@ -31,16 +31,16 @@
 #include "config.h"
 
 #include "TestMain.h"
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
 #include <CyberCore/SoupVersioning.h>
 #include <wtf/glib/GRefPtr.h>
 
-static WebKitTestServer* gServer;
+static CyberKitTestServer* gServer;
 
-static void testWebKitSettings(Test*, gconstpointer)
+static void testCyberKitSettings(Test*, gconstpointer)
 {
-    WebKitSettings* settings = webkit_settings_new();
+    CyberKitSettings* settings = webkit_settings_new();
 
     // JavaScript is enabled by default.
     g_assert_true(webkit_settings_get_enable_javascript(settings));
@@ -386,9 +386,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     g_object_unref(G_OBJECT(settings));
 }
 
-void testWebKitSettingsNewWithSettings(Test* test, gconstpointer)
+void testCyberKitSettingsNewWithSettings(Test* test, gconstpointer)
 {
-    GRefPtr<WebKitSettings> settings = adoptGRef(webkit_settings_new_with_settings(
+    GRefPtr<CyberKitSettings> settings = adoptGRef(webkit_settings_new_with_settings(
         "enable-javascript", FALSE,
         "auto-load-images", FALSE,
         "load-icons-ignoring-image-load-setting", TRUE,
@@ -414,13 +414,13 @@ static void assertThatUserAgentIsSentInHeaders(WebViewTest* test, const CString&
     ASSERT_CMP_CSTRING(convertWebViewMainResourceDataToCString(test), ==, userAgent);
 }
 
-static void testWebKitSettingsUserAgent(WebViewTest* test, gconstpointer)
+static void testCyberKitSettingsUserAgent(WebViewTest* test, gconstpointer)
 {
-    GRefPtr<WebKitSettings> settings = adoptGRef(webkit_settings_new());
+    GRefPtr<CyberKitSettings> settings = adoptGRef(webkit_settings_new());
     CString defaultUserAgent = webkit_settings_get_user_agent(settings.get());
     webkit_web_view_set_settings(test->m_webView, settings.get());
 
-    g_assert_nonnull(g_strstr_len(defaultUserAgent.data(), -1, "AppleWebKit"));
+    g_assert_nonnull(g_strstr_len(defaultUserAgent.data(), -1, "AppleCyberKit"));
     g_assert_nonnull(g_strstr_len(defaultUserAgent.data(), -1, "Safari"));
 
     webkit_settings_set_user_agent(settings.get(), 0);
@@ -435,12 +435,12 @@ static void testWebKitSettingsUserAgent(WebViewTest* test, gconstpointer)
     g_assert_cmpstr(funkyUserAgent, ==, webkit_settings_get_user_agent(settings.get()));
     assertThatUserAgentIsSentInHeaders(test, funkyUserAgent);
 
-    webkit_settings_set_user_agent_with_application_details(settings.get(), "WebKitGTK", 0);
+    webkit_settings_set_user_agent_with_application_details(settings.get(), "CyberKitGTK", 0);
     const char* userAgentWithNullVersion = webkit_settings_get_user_agent(settings.get());
     g_assert_cmpstr(g_strstr_len(userAgentWithNullVersion, -1, defaultUserAgent.data()), ==, userAgentWithNullVersion);
-    g_assert_nonnull(g_strstr_len(userAgentWithNullVersion, -1, "WebKitGTK"));
+    g_assert_nonnull(g_strstr_len(userAgentWithNullVersion, -1, "CyberKitGTK"));
 
-    webkit_settings_set_user_agent_with_application_details(settings.get(), "WebKitGTK", "");
+    webkit_settings_set_user_agent_with_application_details(settings.get(), "CyberKitGTK", "");
     g_assert_cmpstr(webkit_settings_get_user_agent(settings.get()), ==, userAgentWithNullVersion);
 
     webkit_settings_set_user_agent_with_application_details(settings.get(), "WebCatGTK+", "3.4.5");
@@ -453,7 +453,7 @@ static void testWebKitSettingsUserAgent(WebViewTest* test, gconstpointer)
 }
 #endif // PLATFORM(GTK)
 
-static void testWebKitSettingsJavaScriptMarkup(WebViewTest* test, gconstpointer)
+static void testCyberKitSettingsJavaScriptMarkup(WebViewTest* test, gconstpointer)
 {
     webkit_settings_set_enable_javascript_markup(webkit_web_view_get_settings(test->m_webView), FALSE);
     static const char* html =
@@ -501,15 +501,15 @@ static void serverCallback(SoupServer* server, SoupServerMessage* message, const
 
 void beforeAll()
 {
-    gServer = new WebKitTestServer();
+    gServer = new CyberKitTestServer();
     gServer->run(serverCallback);
 
-    Test::add("WebKitSettings", "webkit-settings", testWebKitSettings);
-    Test::add("WebKitSettings", "new-with-settings", testWebKitSettingsNewWithSettings);
+    Test::add("CyberKitSettings", "webkit-settings", testCyberKitSettings);
+    Test::add("CyberKitSettings", "new-with-settings", testCyberKitSettingsNewWithSettings);
 #if PLATFORM(GTK)
-    WebViewTest::add("WebKitSettings", "user-agent", testWebKitSettingsUserAgent);
+    WebViewTest::add("CyberKitSettings", "user-agent", testCyberKitSettingsUserAgent);
 #endif
-    WebViewTest::add("WebKitSettings", "javascript-markup", testWebKitSettingsJavaScriptMarkup);
+    WebViewTest::add("CyberKitSettings", "javascript-markup", testCyberKitSettingsJavaScriptMarkup);
 }
 
 void afterAll()

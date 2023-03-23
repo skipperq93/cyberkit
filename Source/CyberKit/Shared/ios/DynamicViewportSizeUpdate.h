@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 typedef uint64_t DynamicViewportSizeUpdateID;
 
@@ -35,4 +35,4 @@ enum class DynamicViewportUpdateMode {
     ResizingWithDocumentHidden,
 };
 
-} // namespace WebKit
+} // namespace CyberKit

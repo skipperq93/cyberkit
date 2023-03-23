@@ -46,13 +46,13 @@
     RetainPtr<NSArray<PKShippingMethod *>> _shippingMethods;
 #endif
     RetainPtr<NSError> _sessionError;
-    WebKit::DidAuthorizePaymentCompletion _didAuthorizePaymentCompletion;
-    WebKit::DidRequestMerchantSessionCompletion _didRequestMerchantSessionCompletion;
-    WebKit::DidSelectPaymentMethodCompletion _didSelectPaymentMethodCompletion;
-    WebKit::DidSelectShippingContactCompletion _didSelectShippingContactCompletion;
-    WebKit::DidSelectShippingMethodCompletion _didSelectShippingMethodCompletion;
+    CyberKit::DidAuthorizePaymentCompletion _didAuthorizePaymentCompletion;
+    CyberKit::DidRequestMerchantSessionCompletion _didRequestMerchantSessionCompletion;
+    CyberKit::DidSelectPaymentMethodCompletion _didSelectPaymentMethodCompletion;
+    CyberKit::DidSelectShippingContactCompletion _didSelectShippingContactCompletion;
+    CyberKit::DidSelectShippingMethodCompletion _didSelectShippingMethodCompletion;
 #if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
-    WebKit::DidChangeCouponCodeCompletion _didChangeCouponCodeCompletion;
+    CyberKit::DidChangeCouponCodeCompletion _didChangeCouponCodeCompletion;
 #endif
 }
 
@@ -180,7 +180,7 @@
 
 @implementation WKPaymentAuthorizationDelegate (Protected)
 
-- (instancetype)_initWithRequest:(PKPaymentRequest *)request presenter:(WebKit::PaymentAuthorizationPresenter&)presenter
+- (instancetype)_initWithRequest:(PKPaymentRequest *)request presenter:(CyberKit::PaymentAuthorizationPresenter&)presenter
 {
     if (!(self = [super init]))
         return nil;
@@ -196,7 +196,7 @@
     return self;
 }
 
-- (void)_didAuthorizePayment:(PKPayment *)payment completion:(WebKit::DidAuthorizePaymentCompletion::BlockType)completion
+- (void)_didAuthorizePayment:(PKPayment *)payment completion:(CyberKit::DidAuthorizePaymentCompletion::BlockType)completion
 {
     ASSERT(!_didAuthorizePaymentCompletion);
     _didAuthorizePaymentCompletion = completion;
@@ -214,7 +214,7 @@
         presenter->client().presenterDidFinish(*presenter, { std::exchange(_sessionError, nil) });
 }
 
-- (void)_didRequestMerchantSession:(WebKit::DidRequestMerchantSessionCompletion::BlockType)completion
+- (void)_didRequestMerchantSession:(CyberKit::DidRequestMerchantSessionCompletion::BlockType)completion
 {
     ASSERT(!_didRequestMerchantSessionCompletion);
     _didRequestMerchantSessionCompletion = completion;
@@ -237,7 +237,7 @@
     }];
 }
 
-- (void)_didSelectPaymentMethod:(PKPaymentMethod *)paymentMethod completion:(WebKit::DidSelectPaymentMethodCompletion::BlockType)completion
+- (void)_didSelectPaymentMethod:(PKPaymentMethod *)paymentMethod completion:(CyberKit::DidSelectPaymentMethodCompletion::BlockType)completion
 {
     ASSERT(!_didSelectPaymentMethodCompletion);
     _didSelectPaymentMethodCompletion = completion;
@@ -249,7 +249,7 @@
     presenter->client().presenterDidSelectPaymentMethod(*presenter, CyberCore::PaymentMethod(paymentMethod));
 }
 
-- (void)_didSelectShippingContact:(PKContact *)contact completion:(WebKit::DidSelectShippingContactCompletion::BlockType)completion
+- (void)_didSelectShippingContact:(PKContact *)contact completion:(CyberKit::DidSelectShippingContactCompletion::BlockType)completion
 {
     ASSERT(!_didSelectShippingContactCompletion);
     _didSelectShippingContactCompletion = completion;
@@ -308,7 +308,7 @@ static CyberCore::ApplePayShippingMethod toShippingMethod(PKShippingMethod *ship
     return result;
 }
 
-- (void)_didSelectShippingMethod:(PKShippingMethod *)shippingMethod completion:(WebKit::DidSelectShippingMethodCompletion::BlockType)completion
+- (void)_didSelectShippingMethod:(PKShippingMethod *)shippingMethod completion:(CyberKit::DidSelectShippingMethodCompletion::BlockType)completion
 {
     ASSERT(!_didSelectShippingMethodCompletion);
     _didSelectShippingMethodCompletion = completion;

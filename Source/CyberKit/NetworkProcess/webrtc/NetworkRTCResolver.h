@@ -33,7 +33,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkRTCResolver {
 public:
@@ -50,6 +50,6 @@ protected:
     CyberCore::DNSCompletionHandler m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

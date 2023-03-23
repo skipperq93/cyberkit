@@ -21,8 +21,8 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-struct WebKit::EditorState {
-    WebKit::EditorStateIdentifier identifier;
+struct CyberKit::EditorState {
+    CyberKit::EditorStateIdentifier identifier;
     bool shouldIgnoreSelectionChanges;
     bool selectionIsNone;
     bool selectionIsRange;
@@ -37,11 +37,11 @@ struct WebKit::EditorState {
 #if PLATFORM(MAC)
     bool canEnableAutomaticSpellingCorrection;
 #endif
-    std::optional<WebKit::EditorState::PostLayoutData> postLayoutData;
-    std::optional<WebKit::EditorState::VisualData> visualData;
+    std::optional<CyberKit::EditorState::PostLayoutData> postLayoutData;
+    std::optional<CyberKit::EditorState::VisualData> visualData;
 };
 
-[Nested] struct WebKit::EditorState::PostLayoutData {
+[Nested] struct CyberKit::EditorState::PostLayoutData {
     uint32_t typingAttributes;
 #if PLATFORM(COCOA)
     uint64_t selectedTextLength;
@@ -91,7 +91,7 @@ struct WebKit::EditorState {
     bool canPaste;
 };
 
-[Nested] struct WebKit::EditorState::VisualData {
+[Nested] struct CyberKit::EditorState::VisualData {
 #if PLATFORM(IOS_FAMILY) || PLATFORM(GTK) || PLATFORM(WPE)
     CyberCore::IntRect caretRectAtStart;
 #endif

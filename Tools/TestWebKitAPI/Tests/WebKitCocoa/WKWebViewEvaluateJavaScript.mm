@@ -51,7 +51,7 @@ TEST(WKWebView, EvaluateJavaScriptBlockCrash)
     @autoreleasepool {
         RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
         [webView loadRequest:request];
 
         [webView evaluateJavaScript:@"" completionHandler:^(id result, NSError *error) {
@@ -70,14 +70,14 @@ TEST(WKWebView, EvaluateJavaScriptBlockCrash)
     }
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, EvaluateJavaScriptErrorCases)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -90,7 +90,7 @@ TEST(WKWebView, EvaluateJavaScriptErrorCases)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     [webView evaluateJavaScript:@"document.body.insertBefore(document, document)" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(result);
@@ -105,7 +105,7 @@ TEST(WKWebView, EvaluateJavaScriptErrorCases)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     [webView evaluateJavaScript:@"\n\nthrow 'something bad'" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(result);
@@ -120,7 +120,7 @@ TEST(WKWebView, EvaluateJavaScriptErrorCases)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, WKContentWorld)
@@ -154,7 +154,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
     [webView evaluateJavaScript:@"var foo = 'bar'" completionHandler:^(id result, NSError *error) {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Verify that value is visible when evaluating in the pageWorld
@@ -164,7 +164,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Verify that value is not visible when evaluating in the defaultClientWorld
@@ -173,7 +173,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Verify that value is visible when calling a function in the pageWorld
@@ -183,7 +183,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Verify that value is not visible when calling a function in the defaultClientWorld
@@ -192,7 +192,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Add a scriptMessageHandler in a named world.
@@ -206,7 +206,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Set a global variable value in that named world via a function call.
@@ -216,7 +216,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Remove the dummy message handler
@@ -229,7 +229,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView evaluateJavaScript:@"window.baz" inFrame:nil inContentWorld:namedWorld.get() completionHandler:^(id result, NSError *error) {
@@ -238,7 +238,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Verify they aren't there in the defaultClientWorld.
@@ -247,7 +247,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView evaluateJavaScript:@"window.baz" inFrame:nil inContentWorld:WKContentWorld.defaultClientWorld completionHandler:^(id result, NSError *error) {
@@ -255,7 +255,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     // Verify they aren't there in the pageWorld.
@@ -264,7 +264,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView evaluateJavaScript:@"window.baz" inFrame:nil inContentWorld:WKContentWorld.pageWorld completionHandler:^(id result, NSError *error) {
@@ -272,7 +272,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorlds)
         isDone = true;
         testsPassed++;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
     
     EXPECT_EQ(testsPassed, 12u);
@@ -289,7 +289,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorldsWithGlobalObjectAvailable)
         EXPECT_WK_STREQ(result, "testName");
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebView, EvaluateJavaScriptInWorldsWithGlobalObjectAvailableInCrossOriginIframe)
@@ -318,7 +318,7 @@ TEST(WKWebView, EvaluateJavaScriptInWorldsWithGlobalObjectAvailableInCrossOrigin
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration]);
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"frame://host1/"]]];
 
-    TestWebKitAPI::Util::run(&childFrameLoaded);
+    TestCyberKitAPI::Util::run(&childFrameLoaded);
     
     __block bool done = false;
     [webView _frames:^(_WKFrameTreeNode *mainFrame) {
@@ -327,15 +327,15 @@ TEST(WKWebView, EvaluateJavaScriptInWorldsWithGlobalObjectAvailableInCrossOrigin
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, EvaluateJavaScriptInAttachments)
+TEST(CyberKit, EvaluateJavaScriptInAttachments)
 {
     // Attachments displayed inline are in sandboxed documents.
     // Evaluating JavaScript in such a document should fail and result in an error.
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server(HTTPServer::UseCoroutines::Yes, [](Connection connection) -> Task {
         co_await connection.awaitableReceiveHTTPRequest();
         co_await connection.awaitableSend("HTTP/1.1 200 OK\r\n"
@@ -353,12 +353,12 @@ TEST(WebKit, EvaluateJavaScriptInAttachments)
         EXPECT_TRUE([[error description] containsString:@"Cannot execute JavaScript in this document"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 // FIXME: Re-enable this test for iOS once webkit.org/b/207874 is resolved
 #if !PLATFORM(IOS)
-TEST(WebKit, AllowsContentJavaScript)
+TEST(CyberKit, AllowsContentJavaScript)
 {
     RetainPtr<TestWKWebView> webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     [webView synchronouslyLoadHTMLString:@"<script>var foo = 'bar'</script>"];
@@ -370,7 +370,7 @@ TEST(WebKit, AllowsContentJavaScript)
         EXPECT_TRUE([result isEqualToString:@"bar"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     RetainPtr<WKWebpagePreferences> preferences = adoptNS([[WKWebpagePreferences alloc] init]);
     EXPECT_TRUE(preferences.get().allowsContentJavaScript);
@@ -383,9 +383,9 @@ TEST(WebKit, AllowsContentJavaScript)
         EXPECT_TRUE([[error description] containsString:@"Can't find variable: foo"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/script"_s, { "var foo = 'bar'"_s } }
     });
     preferences.get().allowsContentJavaScript = YES;
@@ -398,7 +398,7 @@ TEST(WebKit, AllowsContentJavaScript)
         EXPECT_TRUE([result isEqualToString:@"bar"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     preferences.get().allowsContentJavaScript = NO;
     [webView synchronouslyLoadHTMLString:[NSString stringWithFormat:@"<script src='http://127.0.0.1:%d/script'></script>", server.port()] preferences:preferences.get()];
@@ -409,7 +409,7 @@ TEST(WebKit, AllowsContentJavaScript)
         EXPECT_TRUE([[error description] containsString:@"Can't find variable: foo"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     preferences.get().allowsContentJavaScript = YES;
     [webView synchronouslyLoadHTMLString:@"<iframe src='javascript:window.foo = 1'></iframe>" preferences:preferences.get()];
@@ -421,7 +421,7 @@ TEST(WebKit, AllowsContentJavaScript)
         EXPECT_TRUE([result isEqualToNumber:@1]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     preferences.get().allowsContentJavaScript = NO;
     [webView synchronouslyLoadHTMLString:@"<iframe src='javascript:window.foo = 1'></iframe>" preferences:preferences.get()];
@@ -432,11 +432,11 @@ TEST(WebKit, AllowsContentJavaScript)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 #endif
 
-TEST(WebKit, AllowsContentJavaScriptFromDefaultPreferences)
+TEST(CyberKit, AllowsContentJavaScriptFromDefaultPreferences)
 {
     RetainPtr<WKWebpagePreferences> preferences = adoptNS([[WKWebpagePreferences alloc] init]);
     [preferences setAllowsContentJavaScript:NO];
@@ -454,10 +454,10 @@ TEST(WebKit, AllowsContentJavaScriptFromDefaultPreferences)
         EXPECT_TRUE([[error description] containsString:@"Can't find variable: foo"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, SPIJavascriptMarkupVsAPIContentJavaScript)
+TEST(CyberKit, SPIJavascriptMarkupVsAPIContentJavaScript)
 {
     // There's not a dynamically configuration setting for javascript markup,
     // but it can be configured at WKWebView creation time.
@@ -474,7 +474,7 @@ TEST(WebKit, SPIJavascriptMarkupVsAPIContentJavaScript)
         EXPECT_TRUE([[error description] containsString:@"Can't find variable: foo"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Try to explicitly enable script markup using WKWebpagePreferences, but verify it should still fail because
     // of the above configuration setting.
@@ -488,7 +488,7 @@ TEST(WebKit, SPIJavascriptMarkupVsAPIContentJavaScript)
         EXPECT_TRUE([[error description] containsString:@"Can't find variable: foo"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
 }
 
@@ -582,7 +582,7 @@ TEST(EvaluateJavaScript, JavaScriptInFramesFromPostMessage)
         }];
     }
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 // This test loads a document under one protocol.
@@ -633,7 +633,7 @@ TEST(EvaluateJavaScript, JavaScriptInFramesFromNavigationDelegate)
     [webView setNavigationDelegate:navigationDelegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"framestest://test/index.html"]]];
 
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
 
     EXPECT_EQ([allFrames count], 2u);
 
@@ -670,7 +670,7 @@ TEST(EvaluateJavaScript, JavaScriptInFramesFromNavigationDelegate)
         }];
     }
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 // This test verifies that evaluating JavaScript in a frame that has since gone missing
@@ -718,7 +718,7 @@ TEST(EvaluateJavaScript, JavaScriptInMissingFrameError)
     [webView setNavigationDelegate:navigationDelegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"framestest://test/index.html"]]];
 
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
 
     EXPECT_EQ([allFrames count], 2u);
 
@@ -727,7 +727,7 @@ TEST(EvaluateJavaScript, JavaScriptInMissingFrameError)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     for (WKFrameInfo *frame in allFrames.get()) {
@@ -742,7 +742,7 @@ TEST(EvaluateJavaScript, JavaScriptInMissingFrameError)
         }];
     }
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 // This test verifies that evaluating JavaScript in a frame from the previous main navigation results in an error
@@ -799,7 +799,7 @@ TEST(EvaluateJavaScript, JavaScriptInMissingFrameAfterNavigationError)
     [webView setNavigationDelegate:navigationDelegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"framestest://test/index.html"]]];
 
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
     didFinishNavigation = false;
 
     EXPECT_EQ([allFrames count], 2u);
@@ -816,7 +816,7 @@ TEST(EvaluateJavaScript, JavaScriptInMissingFrameAfterNavigationError)
 
     // Get rid of the frame by navigating
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"framestest://index2.html"]]];
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
     didFinishNavigation = false;
 
     static bool isDone = false;
@@ -828,7 +828,7 @@ TEST(EvaluateJavaScript, JavaScriptInMissingFrameAfterNavigationError)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 }
 
@@ -846,7 +846,7 @@ TEST(EvaluateJavaScript, WindowPersistency)
     [webView loadTestPageNamed:@"simple"];
     [webView stringByEvaluatingJavaScript:@""];
 
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
 
     __block bool done = false;
     [webView evaluateJavaScript:@"window.caches ? 'PASS': 'FAIL'" completionHandler:^(id result, NSError *error) {
@@ -854,6 +854,6 @@ TEST(EvaluateJavaScript, WindowPersistency)
         EXPECT_WK_STREQ(@"PASS", (NSString *)result);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }

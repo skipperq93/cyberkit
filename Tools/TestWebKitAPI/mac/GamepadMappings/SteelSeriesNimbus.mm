@@ -30,7 +30,7 @@
 
 #import <HID/HIDUserDevice.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // HID descriptors are an interesting language.
 // This is the descriptor dumped from an MFi Nimbus controller, which is fairly representative of a modern controller.
@@ -142,6 +142,6 @@ GamepadMapping VirtualGamepad::steelSeriesNimbusMapping()
     };
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(APPLE_INTERNAL_SDK)

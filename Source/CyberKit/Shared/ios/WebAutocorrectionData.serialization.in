@@ -24,7 +24,7 @@
 
 headers: <UIKit/UIKit.h>
 
-struct WebKit::WebAutocorrectionData {
+struct CyberKit::WebAutocorrectionData {
     Vector<CyberCore::FloatRect> textRects;
     [SecureCodingAllowed=[UIFont.class]] RetainPtr<UIFont> font;
 };

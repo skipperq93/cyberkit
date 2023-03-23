@@ -30,9 +30,9 @@
 #include "PlatformUtilities.h"
 #include <wtf/HashMap.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKRetainPtr)
+TEST(CyberKit, WKRetainPtr)
 {
     WKRetainPtr<WKStringRef> string1 = adoptWK(WKStringCreateWithUTF8CString("a"));
     WKRetainPtr<WKStringRef> string2 = adoptWK(WKStringCreateWithUTF8CString("a"));
@@ -53,6 +53,6 @@ TEST(WebKit, WKRetainPtr)
     EXPECT_EQ(2, map.get(string2));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

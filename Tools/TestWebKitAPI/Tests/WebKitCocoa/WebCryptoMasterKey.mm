@@ -54,11 +54,11 @@ static bool masterKeyCalled = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WebCryptoNilMasterKey)
+TEST(CyberKit, WebCryptoNilMasterKey)
 {
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"navigation-client-default-crypto" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"navigation-client-default-crypto" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     auto delegate = adoptNS([[WebCryptoMasterKeyNavigationDelegate alloc] init]);
@@ -71,4 +71,4 @@ TEST(WebKit, WebCryptoNilMasterKey)
     EXPECT_TRUE(masterKeyCalled);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

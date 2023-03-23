@@ -33,7 +33,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
     
 class SecItemRequestData {
 public:
@@ -56,11 +56,11 @@ public:
     CFDictionaryRef attributesToMatch() const { return m_attributesToMatch.get(); }
 
 private:
-    friend struct IPC::ArgumentCoder<WebKit::SecItemRequestData, void>;
+    friend struct IPC::ArgumentCoder<CyberKit::SecItemRequestData, void>;
 
     Type m_type { Type::Invalid };
     RetainPtr<CFDictionaryRef> m_queryDictionary;
     RetainPtr<CFDictionaryRef> m_attributesToMatch;
 };
     
-} // namespace WebKit
+} // namespace CyberKit

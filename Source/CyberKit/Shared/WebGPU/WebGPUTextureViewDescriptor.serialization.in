@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::TextureViewDescriptor : WebKit::WebGPU::ObjectDescriptorBase {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::TextureViewDescriptor : CyberKit::WebGPU::ObjectDescriptorBase {
     std::optional<PAL::WebGPU::TextureFormat> format;
     std::optional<PAL::WebGPU::TextureViewDimension> dimension;
     PAL::WebGPU::TextureAspect aspect;

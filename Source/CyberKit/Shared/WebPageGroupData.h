@@ -33,7 +33,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebPageGroupData {
     void encode(IPC::Encoder&) const;
@@ -43,4 +43,4 @@ struct WebPageGroupData {
     PageGroupIdentifier pageGroupID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

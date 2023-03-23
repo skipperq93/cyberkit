@@ -35,7 +35,7 @@ public:
     enum class Type {
         Normal,   // Main (e.g. Page)
         User,     // User Scripts (e.g. Extensions)
-        Internal, // WebKit Internal (e.g. Media Controls)
+        Internal, // CyberKit Internal (e.g. Media Controls)
     };
 
     static Ref<DOMWrapperWorld> create(JSC::VM& vm, Type type = Type::Internal, const String& name = { })

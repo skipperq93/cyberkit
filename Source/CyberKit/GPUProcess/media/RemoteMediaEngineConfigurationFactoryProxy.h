@@ -33,7 +33,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteMediaEngineConfigurationFactoryProxy final : private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;

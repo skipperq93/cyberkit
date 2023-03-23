@@ -27,7 +27,7 @@
 #import "PlatformUtilities.h"
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, StringByEvaluatingJavaScriptFromString)
 {
@@ -68,4 +68,4 @@ TEST(CyberKitLegacy, StringByEvaluatingJavaScriptFromString)
     [webView.get() close];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

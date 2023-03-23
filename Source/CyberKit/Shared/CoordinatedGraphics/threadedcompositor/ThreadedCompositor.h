@@ -38,7 +38,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ThreadedCompositor : public CoordinatedGraphicsSceneClient, public ThreadSafeRefCounted<ThreadedCompositor> {
     WTF_MAKE_NONCOPYABLE(ThreadedCompositor);
@@ -113,7 +113,7 @@ private:
     Ref<ThreadedDisplayRefreshMonitor> m_displayRefreshMonitor;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)
 

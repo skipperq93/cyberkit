@@ -86,8 +86,8 @@ class Storage;
 class StyleMedia;
 class VisualViewport;
 class CyberCoreOpaqueRoot;
-class WebKitNamespace;
-class WebKitPoint;
+class CyberKitNamespace;
+class CyberKitPoint;
 
 #if ENABLE(DEVICE_ORIENTATION)
 class DeviceMotionController;
@@ -260,13 +260,13 @@ public:
 
     WEBCORE_EXPORT Ref<CSSStyleDeclaration> getComputedStyle(Element&, const String& pseudoElt) const;
 
-    // WebKit extensions
+    // CyberKit extensions
 
     WEBCORE_EXPORT RefPtr<CSSRuleList> getMatchedCSSRules(Element*, const String& pseudoElt, bool authorOnly = true) const;
     double devicePixelRatio() const;
 
-    RefPtr<WebKitPoint> webkitConvertPointFromPageToNode(Node*, const WebKitPoint*) const;
-    RefPtr<WebKitPoint> webkitConvertPointFromNodeToPage(Node*, const WebKitPoint*) const;
+    RefPtr<CyberKitPoint> webkitConvertPointFromPageToNode(Node*, const CyberKitPoint*) const;
+    RefPtr<CyberKitPoint> webkitConvertPointFromNodeToPage(Node*, const CyberKitPoint*) const;
 
     PageConsoleClient* console() const;
 
@@ -385,8 +385,8 @@ public:
 #endif
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
-    bool shouldHaveWebKitNamespaceForWorld(DOMWrapperWorld&);
-    WebKitNamespace* webkitNamespace();
+    bool shouldHaveCyberKitNamespaceForWorld(DOMWrapperWorld&);
+    CyberKitNamespace* webkitNamespace();
 #endif
 
     // FIXME: When this DOMWindow is no longer the active DOMWindow (i.e.,
@@ -499,7 +499,7 @@ private:
     bool m_wasWrappedWithoutInitializedSecurityOrigin { false };
     bool m_mayReuseForNavigation { true };
 #if ENABLE(USER_MESSAGE_HANDLERS)
-    mutable RefPtr<WebKitNamespace> m_webkitNamespace;
+    mutable RefPtr<CyberKitNamespace> m_webkitNamespace;
 #endif
 };
 

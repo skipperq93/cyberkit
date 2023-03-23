@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 enum class DownloadCallback : uint8_t {
     WillRedirect,

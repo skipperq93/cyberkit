@@ -29,7 +29,7 @@
 #include "AuxiliaryProcessMain.h"
 #include "NetworkProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcessMainCurl final: public AuxiliaryProcessMainBaseNoSingleton<NetworkProcess> {
 public:
@@ -44,4 +44,4 @@ int NetworkProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<NetworkProcessMainCurl>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

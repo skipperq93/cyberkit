@@ -37,7 +37,7 @@
 #import <cmath>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 static bool done;
 static bool loadDone;
@@ -74,7 +74,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
         done = true;
 }
 
-TEST(WebKit, CustomBundleParameter)
+TEST(CyberKit, CustomBundleParameter)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("CustomBundleParameterTest"));
     
@@ -102,6 +102,6 @@ TEST(WebKit, CustomBundleParameter)
     Util::run(&done);
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

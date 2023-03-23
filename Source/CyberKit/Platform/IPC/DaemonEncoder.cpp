@@ -26,11 +26,11 @@
 #include "config.h"
 #include "DaemonEncoder.h"
 
-namespace WebKit::Daemon {
+namespace CyberKit::Daemon {
 
 void Encoder::encodeFixedLengthData(Span<const uint8_t> span)
 {
     m_buffer.append(span);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -33,7 +33,7 @@
 #include "NetworkProcess.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 PendingDownload::PendingDownload(IPC::Connection* parentProcessConnection, NetworkLoadParameters&& parameters, DownloadID downloadID, NetworkSession& networkSession, CyberCore::BlobRegistryImpl* blobRegistry, const String& suggestedName)

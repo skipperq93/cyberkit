@@ -134,7 +134,7 @@ struct VertexState;
 
 } // namespace PAL::WebGPU
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BindGroupDescriptor;
 struct BindGroupEntry;
@@ -299,6 +299,6 @@ public:
     virtual PAL::WebGPU::TextureView* convertTextureViewFromBacking(WebGPUIdentifier) = 0;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

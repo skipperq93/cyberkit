@@ -46,7 +46,7 @@
 ALLOW_UNUSED_PARAMETERS_BEGIN
 ALLOW_COMMA_BEGIN
 
-#include <webrtc/sdk/WebKit/WebKitUtilities.h>
+#include <webrtc/sdk/CyberKit/CyberKitUtilities.h>
 
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END

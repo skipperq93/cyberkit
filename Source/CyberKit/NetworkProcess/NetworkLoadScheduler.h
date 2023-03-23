@@ -38,7 +38,7 @@ namespace CyberCore {
 class ResourceError;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoad;
 

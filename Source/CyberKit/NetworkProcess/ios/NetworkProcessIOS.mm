@@ -40,7 +40,7 @@
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/cocoa/Entitlements.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !PLATFORM(MACCATALYST)
 
@@ -79,7 +79,7 @@ bool NetworkProcess::parentProcessHasServiceWorkerEntitlement() const
     if (disableServiceWorkerEntitlementTestingOverride)
         return false;
 
-    static bool hasEntitlement = WTF::hasEntitlement(parentProcessConnection()->xpcConnection(), "com.apple.developer.WebKit.ServiceWorkers"_s) || WTF::hasEntitlement(parentProcessConnection()->xpcConnection(), "com.apple.developer.web-browser"_s);
+    static bool hasEntitlement = WTF::hasEntitlement(parentProcessConnection()->xpcConnection(), "com.apple.developer.CyberKit.ServiceWorkers"_s) || WTF::hasEntitlement(parentProcessConnection()->xpcConnection(), "com.apple.developer.web-browser"_s);
     return hasEntitlement;
 }
 
@@ -111,6 +111,6 @@ void NetworkProcess::setIsHoldingLockedFiles(bool isHoldingLockedFiles)
     m_holdingLockedFileAssertion = ProcessAssertion::create(getCurrentProcessID(), "Network Process is holding locked files"_s, ProcessAssertionType::FinishTaskInterruptable, ProcessAssertion::Mode::Sync);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

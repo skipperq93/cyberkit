@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKitOverridingResolver.h"
+#include "CyberKitOverridingResolver.h"
 
 #include <wtf/HashSet.h>
 #include <wtf/glib/GUniquePtr.h>
@@ -38,21 +38,21 @@ typedef struct {
 
     GRefPtr<GInetAddress> ipv4LoopbackAddress;
     GRefPtr<GInetAddress> ipv6LoopbackAddress;
-} WebKitOverridingResolverPrivate;
+} CyberKitOverridingResolverPrivate;
 
-struct _WebKitOverridingResolver {
+struct _CyberKitOverridingResolver {
     GResolver parentInstance;
 
-    WebKitOverridingResolverPrivate* priv;
+    CyberKitOverridingResolverPrivate* priv;
 };
 
-struct _WebKitOverridingResolverClass {
+struct _CyberKitOverridingResolverClass {
     GResolverClass parentClass;
 };
 
-WEBKIT_DEFINE_TYPE(WebKitOverridingResolver, webkit_overriding_resolver, G_TYPE_RESOLVER)
+WEBKIT_DEFINE_TYPE(CyberKitOverridingResolver, webkit_overriding_resolver, G_TYPE_RESOLVER)
 
-static GList* createLoobackAddressList(WebKitOverridingResolver* resolver)
+static GList* createLoobackAddressList(CyberKitOverridingResolver* resolver)
 {
     GList* list = nullptr;
     list = g_list_append(list, g_object_ref(resolver->priv->ipv4LoopbackAddress.get()));
@@ -91,7 +91,7 @@ static GList* webkitOverridingResolverLookupByNameFinish(GResolver* resolver, GA
 }
 
 #if GLIB_CHECK_VERSION(2, 59, 0)
-static GList* createLoobackAddressList(WebKitOverridingResolver* resolver, GResolverNameLookupFlags flags)
+static GList* createLoobackAddressList(CyberKitOverridingResolver* resolver, GResolverNameLookupFlags flags)
 {
     GList* list = nullptr;
     if (!(flags & G_RESOLVER_NAME_LOOKUP_FLAGS_IPV6_ONLY))
@@ -162,7 +162,7 @@ static GList* webkitOverridingResolverLookupRecordsFinish(GResolver* resolver, G
     return g_resolver_lookup_records_finish(WEBKIT_OVERRIDING_RESOLVER(resolver)->priv->wrappedResolver.get(), result, error);
 }
 
-static void webkit_overriding_resolver_class_init(WebKitOverridingResolverClass* klass)
+static void webkit_overriding_resolver_class_init(CyberKitOverridingResolverClass* klass)
 {
     GResolverClass* resolverClass = G_RESOLVER_CLASS(klass);
     resolverClass->lookup_by_name = webkitOverridingResolverLookupByName;

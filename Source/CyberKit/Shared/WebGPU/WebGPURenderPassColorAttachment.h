@@ -36,7 +36,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderPassColorAttachment {
     WebGPUIdentifier view;
@@ -47,6 +47,6 @@ struct RenderPassColorAttachment {
     PAL::WebGPU::StoreOp storeOp { PAL::WebGPU::StoreOp::Store };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

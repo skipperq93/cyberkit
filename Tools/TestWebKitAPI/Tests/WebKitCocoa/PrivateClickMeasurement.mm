@@ -237,7 +237,7 @@ static RetainPtr<NSString> dumpedPCM(WKWebView *webView)
         pcm = privateClickMeasurement;
     }];
     while (!pcm)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     
     return pcm;
 }
@@ -325,7 +325,7 @@ static void cleanUp(RetainPtr<WKWebView> webView)
             usleep(10000);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 static void createAndPopulateObservedDomainTable(CyberCore::SQLiteDatabase& database)

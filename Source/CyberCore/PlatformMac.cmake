@@ -857,6 +857,6 @@ list(APPEND WebCoreTestSupport_IDL_FILES
     testing/MockWebAuthenticationConfiguration.idl
 )
 
-if (NOT EXISTS ${CMAKE_BINARY_DIR}/WebCore/WebKitAvailability.h)
-    file(COPY platform/cocoa/WebKitAvailability.h DESTINATION ${CMAKE_BINARY_DIR}/WebCore)
+if (NOT EXISTS ${CMAKE_BINARY_DIR}/WebCore/CyberKitAvailability.h)
+    file(COPY platform/cocoa/CyberKitAvailability.h DESTINATION ${CMAKE_BINARY_DIR}/WebCore)
 endif ()

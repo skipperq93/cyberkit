@@ -29,7 +29,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class TapHandlingResult : uint8_t  {
     DidNotHandleTapAsClick,
@@ -37,16 +37,16 @@ enum class TapHandlingResult : uint8_t  {
     MeaningfulClick,
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::TapHandlingResult> {
+template<> struct EnumTraits<CyberKit::TapHandlingResult> {
     using values = EnumValues <
-    WebKit::TapHandlingResult,
-    WebKit::TapHandlingResult::DidNotHandleTapAsClick,
-    WebKit::TapHandlingResult::NonMeaningfulClick,
-    WebKit::TapHandlingResult::MeaningfulClick
+    CyberKit::TapHandlingResult,
+    CyberKit::TapHandlingResult::DidNotHandleTapAsClick,
+    CyberKit::TapHandlingResult::NonMeaningfulClick,
+    CyberKit::TapHandlingResult::MeaningfulClick
     >;
 };
 

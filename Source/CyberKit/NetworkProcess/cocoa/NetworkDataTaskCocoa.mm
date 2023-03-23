@@ -59,14 +59,14 @@
 #endif
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/NetworkDataTaskCocoaAdditions.h>
+#import <CyberKitAdditions/NetworkDataTaskCocoaAdditions.h>
 #else
-namespace WebKit {
+namespace CyberKit {
 void enableNetworkConnectionIntegrity(NSMutableURLRequest *, OptionSet<CyberCore::NetworkConnectionIntegrity>) { }
 }
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSString *lastRemoteIPAddress(NSURLSessionDataTask *task)
 {
@@ -544,7 +544,7 @@ void NetworkDataTaskCocoa::didReceiveData(const CyberCore::SharedBuffer& data)
         m_client->didReceiveData(data);
 }
 
-void NetworkDataTaskCocoa::didReceiveResponse(CyberCore::ResourceResponse&& response, NegotiatedLegacyTLS negotiatedLegacyTLS, PrivateRelayed privateRelayed, WebKit::ResponseCompletionHandler&& completionHandler)
+void NetworkDataTaskCocoa::didReceiveResponse(CyberCore::ResourceResponse&& response, NegotiatedLegacyTLS negotiatedLegacyTLS, PrivateRelayed privateRelayed, CyberKit::ResponseCompletionHandler&& completionHandler)
 {
     WTFEmitSignpost(m_task.get(), "DataTask", "received response headers");
     if (isTopLevelNavigation())

@@ -33,7 +33,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderPassLayout : public ObjectDescriptorBase {
     Vector<std::optional<PAL::WebGPU::TextureFormat>> colorFormats;
@@ -41,6 +41,6 @@ struct RenderPassLayout : public ObjectDescriptorBase {
     PAL::WebGPU::Size32 sampleCount { 1 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

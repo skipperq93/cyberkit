@@ -72,7 +72,7 @@ static size_t loadsStarted;
 
 @end
 
-TEST(WebKit, AlwaysRevalidatedURLSchemes)
+TEST(CyberKit, AlwaysRevalidatedURLSchemes)
 {
     @autoreleasepool {
         [NSURLProtocol registerClass:[AlwaysRevalidatedURLSchemeProtocol class]];

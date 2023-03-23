@@ -37,7 +37,7 @@ namespace Inspector {
 enum class DebuggableType : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct DebuggableInfoData {
     Inspector::DebuggableType debuggableType;
@@ -52,4 +52,4 @@ struct DebuggableInfoData {
     static std::optional<DebuggableInfoData> decode(IPC::Decoder&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

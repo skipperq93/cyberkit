@@ -74,7 +74,7 @@ class WebArchive;
 class WebArchiveResource;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ObjCObjectGraph;
 class WebConnection;
@@ -1068,4 +1068,4 @@ inline CyberCore::UserContentInjectedFrames toUserContentInjectedFrames(WKUserCo
     return CyberCore::UserContentInjectedFrames::InjectInAllFrames;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

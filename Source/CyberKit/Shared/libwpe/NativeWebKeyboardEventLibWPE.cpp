@@ -28,11 +28,11 @@
 
 #include "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebKeyboardEvent::NativeWebKeyboardEvent(struct wpe_input_keyboard_event* event, const String& text, HandledByInputMethod handledByInputMethod, std::optional<Vector<CyberCore::CompositionUnderline>>&& preeditUnderlines, std::optional<EditingRange>&& preeditSelectionRange)
     : WebKeyboardEvent(WebEventFactory::createWebKeyboardEvent(event, text, handledByInputMethod == HandledByInputMethod::Yes, WTFMove(preeditUnderlines), WTFMove(preeditSelectionRange)))
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

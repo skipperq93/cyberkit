@@ -34,7 +34,7 @@
 #import <UIKit/UIKit.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 CyberCore::CocoaFont *fontWithAttributes(NSDictionary *attributes, CGFloat size);
 

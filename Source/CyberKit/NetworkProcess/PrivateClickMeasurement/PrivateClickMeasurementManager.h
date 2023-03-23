@@ -36,7 +36,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class PrivateClickMeasurementManager : public PCM::ManagerInterface, public CanMakeWeakPtr<PrivateClickMeasurementManager> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -118,4 +118,4 @@ private:
     std::optional<TestingFraudPreventionValues> m_fraudPreventionValuesForTesting;
 };
     
-} // namespace WebKit
+} // namespace CyberKit

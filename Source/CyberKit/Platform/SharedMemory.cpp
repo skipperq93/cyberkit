@@ -28,7 +28,7 @@
 
 #include <CyberCore/SharedBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -73,4 +73,4 @@ void SharedMemory::Handle::setOwnershipOfMemory(const ProcessIdentity&, MemoryLe
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

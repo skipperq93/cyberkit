@@ -32,15 +32,15 @@
 
 int WKXPCServiceMain(int argc, const char** argv)
 {
-    return WebKit::XPCServiceMain(argc, argv);
+    return CyberKit::XPCServiceMain(argc, argv);
 }
 
 int WKAdAttributionDaemonMain(int argc, const char** argv)
 {
-    return WebKit::PCMDaemonMain(argc, argv);
+    return CyberKit::PCMDaemonMain(argc, argv);
 }
 
 int WKWebPushDaemonMain(int argc, char** argv)
 {
-    return WebKit::WebPushDaemonMain(argc, argv);
+    return CyberKit::WebPushDaemonMain(argc, argv);
 }

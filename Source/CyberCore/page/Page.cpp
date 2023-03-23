@@ -1975,7 +1975,7 @@ void Page::willStartRenderingUpdateDisplay()
     LOG_WITH_STREAM(EventLoop, stream << "Page " << this << " willStartRenderingUpdateDisplay()");
 
     // Inspector's use of "composite" is rather innacurate. On Apple platforms, the "composite" step happens
-    // in another process; these hooks wrap the non-WebKit CA commit time which is mostly painting-related.
+    // in another process; these hooks wrap the non-CyberKit CA commit time which is mostly painting-related.
     if (auto* localMainFrame = dynamicDowncast<LocalFrame>(mainFrame()))
         m_inspectorController->willComposite(*localMainFrame);
 
@@ -2581,7 +2581,7 @@ unsigned Page::subframeCount() const
 
 void Page::resumeAnimatingImages()
 {
-    // Drawing models which cache painted content while out-of-window (WebKit2's composited drawing areas, etc.)
+    // Drawing models which cache painted content while out-of-window (CyberKit2's composited drawing areas, etc.)
     // require that we repaint animated images to kickstart the animation loop.
     auto* localMainFrame = dynamicDowncast<LocalFrame>(mainFrame());
     if (FrameView* view = localMainFrame ? localMainFrame->view() : nullptr)

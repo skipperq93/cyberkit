@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUStorageTextureBindingLayout.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<StorageTextureBindingLayout> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::StorageTextureBindingLayout& storageTextureBindingLayout)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::StorageTextureBindingLayout> ConvertFromBackingContex
     return { { storageTextureBindingLayout.access, storageTextureBindingLayout.format, storageTextureBindingLayout.viewDimension } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

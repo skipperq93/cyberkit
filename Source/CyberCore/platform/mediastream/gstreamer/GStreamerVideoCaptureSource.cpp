@@ -42,7 +42,7 @@ static void initializeDebugCategory()
     static std::once_flag debugRegisteredFlag;
     std::call_once(debugRegisteredFlag, [] {
         GST_DEBUG_CATEGORY_INIT(webkit_video_capture_source_debug, "webkitvideocapturesource", 0,
-            "WebKit Video Capture Source.");
+            "CyberKit Video Capture Source.");
     });
 }
 

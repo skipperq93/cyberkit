@@ -37,7 +37,7 @@ static bool clientReceivedMessageFromEndpoint = false;
 static constexpr auto testMessageFromEndpoint = "test-message-from-endpoint";
 static constexpr auto testMessageFromClient = "test-message-from-client";
 
-class XPCEndpoint final : public WebKit::XPCEndpoint {
+class XPCEndpoint final : public CyberKit::XPCEndpoint {
 private:
     const char* xpcEndpointMessageNameKey() const final
     {
@@ -64,7 +64,7 @@ private:
     }
 };
 
-class XPCEndpointClient final : public WebKit::XPCEndpointClient {
+class XPCEndpointClient final : public CyberKit::XPCEndpointClient {
 private:
     void handleEvent(xpc_object_t event) final
     {
@@ -82,14 +82,14 @@ private:
     }
 };
 
-TEST(WebKit, XPCEndpoint)
+TEST(CyberKit, XPCEndpoint)
 {
     XPCEndpoint xpcEndpoint;
     XPCEndpointClient xpcEndpointClient;
 
     xpcEndpointClient.setEndpoint(xpcEndpoint.endpoint().get());
 
-    TestWebKitAPI::Util::run(&clientConnectedToEndpoint);
-    TestWebKitAPI::Util::run(&endpointReceivedMessageFromClient);
-    TestWebKitAPI::Util::run(&clientReceivedMessageFromEndpoint);
+    TestCyberKitAPI::Util::run(&clientConnectedToEndpoint);
+    TestCyberKitAPI::Util::run(&endpointReceivedMessageFromClient);
+    TestCyberKitAPI::Util::run(&clientReceivedMessageFromEndpoint);
 }

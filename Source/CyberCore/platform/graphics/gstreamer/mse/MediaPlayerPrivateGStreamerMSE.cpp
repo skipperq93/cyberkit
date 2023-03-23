@@ -40,7 +40,7 @@
 #include "SourceBufferPrivateGStreamer.h"
 #include "TimeRanges.h"
 #include "VideoTrackPrivateGStreamer.h"
-#include "WebKitMediaSourceGStreamer.h"
+#include "CyberKitMediaSourceGStreamer.h"
 
 #include <gst/app/gstappsink.h>
 #include <gst/app/gstappsrc.h>
@@ -167,7 +167,7 @@ private:
 
 void MediaPlayerPrivateGStreamerMSE::registerMediaEngine(MediaEngineRegistrar registrar)
 {
-    GST_DEBUG_CATEGORY_INIT(webkit_mse_debug, "webkitmse", 0, "WebKit MSE media player");
+    GST_DEBUG_CATEGORY_INIT(webkit_mse_debug, "webkitmse", 0, "CyberKit MSE media player");
     registrar(makeUnique<MediaPlayerFactoryGStreamerMSE>());
 }
 
@@ -234,12 +234,12 @@ bool MediaPlayerPrivateGStreamerMSE::doSeek(const MediaTime& position, float rat
 {
     // This method should only be called outside of MediaPlayerPrivateGStreamerMSE by MediaPlayerPrivateGStreamer::setRate().
 
-    // Note: An important difference between seek with WebKitMediaSrc and regular playback is that seeking before
-    // pre-roll (e.g. to start playback at a non-zero position) is supported in WebKitMediaSrc but not in regular
+    // Note: An important difference between seek with CyberKitMediaSrc and regular playback is that seeking before
+    // pre-roll (e.g. to start playback at a non-zero position) is supported in CyberKitMediaSrc but not in regular
     // playback. This is relevant in MSE because pre-roll may never occur if the JS code never appends a range starting
     // at zero, creating a chicken and egg problem.
 
-    // GStreamer doesn't support zero as a valid playback rate. Instead, that is implemented in WebKit by pausing
+    // GStreamer doesn't support zero as a valid playback rate. Instead, that is implemented in CyberKit by pausing
     // the pipeline.
     if (rate <= 0)
         rate = 1.0;

@@ -42,35 +42,35 @@ class MediaPlayerPrivateGStreamerMSE;
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_MEDIA_SRC            (webkit_media_src_get_type ())
-#define WEBKIT_MEDIA_SRC(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_MEDIA_SRC, WebKitMediaSrc))
-#define WEBKIT_MEDIA_SRC_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_MEDIA_SRC, WebKitMediaSrcClass))
+#define WEBKIT_MEDIA_SRC(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_MEDIA_SRC, CyberKitMediaSrc))
+#define WEBKIT_MEDIA_SRC_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_MEDIA_SRC, CyberKitMediaSrcClass))
 #define WEBKIT_IS_MEDIA_SRC(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_TYPE_MEDIA_SRC))
 #define WEBKIT_IS_MEDIA_SRC_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), WEBKIT_TYPE_MEDIA_SRC))
 
-struct WebKitMediaSrcPrivate;
+struct CyberKitMediaSrcPrivate;
 
-struct WebKitMediaSrc {
+struct CyberKitMediaSrc {
     GstElement parent;
 
-    WebKitMediaSrcPrivate *priv;
+    CyberKitMediaSrcPrivate *priv;
 };
 
-struct WebKitMediaSrcClass {
+struct CyberKitMediaSrcClass {
     GstElementClass parentClass;
 };
 
 GType webkit_media_src_get_type(void);
 
-void webKitMediaSrcEmitStreams(WebKitMediaSrc* source, const Vector<RefPtr<CyberCore::MediaSourceTrackGStreamer>>& tracks);
+void webKitMediaSrcEmitStreams(CyberKitMediaSrc* source, const Vector<RefPtr<CyberCore::MediaSourceTrackGStreamer>>& tracks);
 
-void webKitMediaSrcFlush(WebKitMediaSrc*, const AtomString& streamName);
+void webKitMediaSrcFlush(CyberKitMediaSrc*, const AtomString& streamName);
 
 G_END_DECLS
 
 namespace WTF {
-template<> GRefPtr<WebKitMediaSrc> adoptGRef(WebKitMediaSrc* ptr);
-template<> WebKitMediaSrc* refGPtr<WebKitMediaSrc>(WebKitMediaSrc* ptr);
-template<> void derefGPtr<WebKitMediaSrc>(WebKitMediaSrc* ptr);
+template<> GRefPtr<CyberKitMediaSrc> adoptGRef(CyberKitMediaSrc* ptr);
+template<> CyberKitMediaSrc* refGPtr<CyberKitMediaSrc>(CyberKitMediaSrc* ptr);
+template<> void derefGPtr<CyberKitMediaSrc>(CyberKitMediaSrc* ptr);
 } // namespace WTF
 
 #endif // USE(GSTREAMER)

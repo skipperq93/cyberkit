@@ -45,7 +45,7 @@ namespace IPC {
 class StreamServerConnection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace WebGPU {
 class ObjectHeap;
@@ -94,6 +94,6 @@ private:
     PAL::WebGPU::MapModeFlags m_mapModeFlags;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -37,7 +37,7 @@ namespace CyberCore {
 using ScrollingNodeID = uint64_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class RemoteScrollingUIStateChanges : uint8_t {
     ScrollSnapNodes     = 1 << 0,
@@ -71,4 +71,4 @@ private:
     HashSet<CyberCore::ScrollingNodeID> m_nodesWithActiveUserScrolls;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

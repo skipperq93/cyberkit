@@ -30,7 +30,7 @@
 #include <CyberCore/CacheValidation.h>
 #include <CyberCore/ResourceRequest.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 static inline CyberCore::ResourceRequest constructRevalidationRequest(const Key& key, const CyberCore::ResourceRequest& request, const Entry& entry)
@@ -86,6 +86,6 @@ AsyncRevalidation::AsyncRevalidation(Cache& cache, const GlobalFrameID& frameID,
 }
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NETWORK_CACHE_STALE_WHILE_REVALIDATE)

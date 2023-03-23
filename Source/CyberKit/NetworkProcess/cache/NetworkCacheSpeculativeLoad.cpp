@@ -37,7 +37,7 @@
 #include <pal/SessionID.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 using namespace CyberCore;
@@ -214,6 +214,6 @@ bool requestsHeadersMatch(const ResourceRequest& speculativeValidationRequest, c
 }
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION) || ENABLE(NETWORK_CACHE_STALE_WHILE_REVALIDATE)

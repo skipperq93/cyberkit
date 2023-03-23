@@ -32,7 +32,7 @@
 #include <CoreGraphics/CoreGraphics.h>
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void testGetAndSet(CyberCore::IntSize rect)
 {

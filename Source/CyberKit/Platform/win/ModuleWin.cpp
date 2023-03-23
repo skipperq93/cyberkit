@@ -30,7 +30,7 @@
 #include <shlwapi.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool Module::load()
 {

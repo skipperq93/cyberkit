@@ -32,7 +32,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static HashMap<CyberCore::SharedWorkerIdentifier, WebSharedWorker*>& allWorkers()
 {
@@ -175,4 +175,4 @@ WebSharedWorkerServerToContextConnection* WebSharedWorker::contextConnection() c
     return m_server.contextConnectionForRegistrableDomain(registrableDomain());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

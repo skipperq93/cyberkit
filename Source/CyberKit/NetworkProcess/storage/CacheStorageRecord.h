@@ -28,7 +28,7 @@
 #include <CyberCore/DOMCacheEngine.h>
 #include <CyberCore/HTTPParsers.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct CacheStorageRecordInformation {
     void updateVaryHeaders(const CyberCore::ResourceRequest& request, const String& varyValue)

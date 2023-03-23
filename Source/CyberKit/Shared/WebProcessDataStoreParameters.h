@@ -30,7 +30,7 @@
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebProcessDataStoreParameters {
     using TopFrameDomain = CyberCore::RegistrableDomain;
@@ -63,4 +63,4 @@ struct WebProcessDataStoreParameters {
     bool trackingPreventionEnabled { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

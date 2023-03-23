@@ -3749,14 +3749,14 @@ class OrderOfIncludesTest(CppStyleTestBase):
                                          '#include <Framework/Bar.h>\n',
                                          '*SoftLink.h header should be included after all other headers.  [build/include_order] [4]')
 
-        # Allow WebKitAdditions headers to appear after *SoftLink.h headers.
+        # Allow CyberKitAdditions headers to appear after *SoftLink.h headers.
         self.assert_language_rules_check('Foo.cpp',
                                          '#include "config.h"\n'
                                          '#include "Foo.h"\n'
                                          '\n'
                                          '#include "ALocalHeader.h"\n'
                                          '#include "FrameworkSoftLink.h"\n'
-                                         '#include <WebKitAdditions/FooAdditions.h>\n',
+                                         '#include <CyberKitAdditions/FooAdditions.h>\n',
                                          '')
 
         self.assert_language_rules_check('Foo.cpp',
@@ -4469,7 +4469,7 @@ class NoNonVirtualDestructorsTest(CppStyleTestBase):
 
         self.assert_multi_line_lint(
             '''\
-                // WebKitIDL enum
+                // CyberKitIDL enum
                 enum Foo { FOO_ONE, FOO_TWO };''',
             '')
 
@@ -4620,7 +4620,7 @@ class LeakyPatternTest(CppStyleTestBase):
             '')
 
 
-class WebKitStyleTest(CppStyleTestBase):
+class CyberKitStyleTest(CppStyleTestBase):
 
     # for http://webkit.org/coding/coding-style.html
     def test_indentation(self):
@@ -6051,7 +6051,7 @@ class WebKitStyleTest(CppStyleTestBase):
         name_underscore_error_message = " is incorrectly named. Don't use underscores in your identifier names.  [readability/naming/underscores] [4]"
         name_tooshort_error_message = " is incorrectly named. Don't use the single letter 'l' as an identifier name.  [readability/naming] [4]"
 
-        # Basic cases from WebKit style guide.
+        # Basic cases from CyberKit style guide.
         self.assert_lint('struct Data;', '')
         self.assert_lint('size_t bufferSize;', '')
         self.assert_lint('class HTMLDocument;', '')

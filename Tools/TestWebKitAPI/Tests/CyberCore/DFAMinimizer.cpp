@@ -30,7 +30,7 @@
 #include "DFAHelpers.h"
 #include <wtf/MainThread.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class DFAMinimizerTest : public testing::Test {
 public:
@@ -120,6 +120,6 @@ TEST_F(DFAMinimizerTest, SimpleFallBackTransitionDifferentiator2)
     EXPECT_EQ(static_cast<size_t>(7), countLiveNodes(dfa));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

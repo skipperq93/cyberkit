@@ -31,7 +31,7 @@
 #include "ArgumentCoders.h"
 #include "DataReference.h"
 
-namespace WebKit {
+namespace CyberKit {
 static size_t ruleListDataSize(size_t topURLFiltersBytecodeOffset, size_t topURLFiltersBytecodeSize)
 {
     return topURLFiltersBytecodeOffset + topURLFiltersBytecodeSize;
@@ -125,6 +125,6 @@ std::optional<WebCompiledContentRuleListData> WebCompiledContentRuleListData::de
     }};
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

@@ -36,7 +36,7 @@ namespace CyberCore {
 struct ApplePayShippingMethod;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: Rather than having these free functions scattered about, Apple Pay data types should know
 // how to convert themselves to and from their platform representations.
@@ -46,6 +46,6 @@ PKShippingMethod *toPKShippingMethod(const CyberCore::ApplePayShippingMethod&);
 PKShippingMethods *toPKShippingMethods(const Vector<CyberCore::ApplePayShippingMethod>&);
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(APPLE_PAY)

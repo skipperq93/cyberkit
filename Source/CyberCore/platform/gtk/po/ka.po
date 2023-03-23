@@ -1,13 +1,13 @@
-# WebKitGTK Georgian translation.
+# CyberKitGTK Georgian translation.
 # Copyright (C) 2022 webkitgtk authors
 # This file is distributed under the same license as the webkitgtk package.
 # Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: WebKitGTK\n"
+"Project-Id-Version: CyberKitGTK\n"
 "Report-Msgid-Bugs-To: https://bugs.webkit.org/enter_bug.cgi?"
-"product=WebKit&component=WebKitGTK\n"
+"product=CyberKit&component=CyberKitGTK\n"
 "POT-Creation-Date: 2022-09-19 15:31+0000\n"
 "PO-Revision-Date: 2022-09-20 06:52+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
@@ -1101,8 +1101,8 @@ msgid "Continue with Touch ID."
 msgstr "Touch ID-ით გაგრძელება."
 
 #: ../../network/soup/NetworkStorageSessionSoup.cpp:239
-msgid "WebKitGTK password"
-msgstr "WebKitGTK -ის პაროლი"
+msgid "CyberKitGTK password"
+msgstr "CyberKitGTK -ის პაროლი"
 
 #: ../../../editing/EditAction.cpp:43
 msgctxt "Undo action name"
@@ -1332,1511 +1332,1511 @@ msgstr "JSC -ის მორგება"
 msgid "Show JSC Options"
 msgstr "JSC -ის პარამეტრების ჩვენება"
 
-#: ../../../../WebKit/NetworkProcess/soup/WebKitDirectoryInputStream.cpp:61
-#: ../../../../WebKit/Shared/API/glib/WebKitUserMessage.cpp:139
+#: ../../../../CyberKit/NetworkProcess/soup/CyberKitDirectoryInputStream.cpp:61
+#: ../../../../CyberKit/Shared/API/glib/CyberKitUserMessage.cpp:139
 msgid "Name"
 msgstr "სახელი"
 
-#: ../../../../WebKit/NetworkProcess/soup/WebKitDirectoryInputStream.cpp:62
+#: ../../../../CyberKit/NetworkProcess/soup/CyberKitDirectoryInputStream.cpp:62
 msgid "Size"
 msgstr "ზომა"
 
-#: ../../../../WebKit/NetworkProcess/soup/WebKitDirectoryInputStream.cpp:63
+#: ../../../../CyberKit/NetworkProcess/soup/CyberKitDirectoryInputStream.cpp:63
 msgid "Date Modified"
 msgstr "შეცვლის თარიღი"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:152
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:152
 msgid "Context"
 msgstr "კონტექსტი"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:153
-msgid "Flags with the context of the WebKitHitTestResult"
-msgstr "WebKitHitTestResult-ის კონტექსტის ალმები"
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:153
+msgid "Flags with the context of the CyberKitHitTestResult"
+msgstr "CyberKitHitTestResult-ის კონტექსტის ალმები"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:166
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:166
 msgid "Link URI"
 msgstr "ბმულის URI"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:167
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:167
 msgid "The link URI"
 msgstr "ბმულის URI"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:179
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:179
 msgid "Link Title"
 msgstr "ბმულის სათაური"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:180
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:180
 msgid "The link title"
 msgstr "ბმულის სათაური"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:192
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:192
 msgid "Link Label"
 msgstr "ბმულის ჭდე"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:193
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:193
 msgid "The link label"
 msgstr "ბმულის ჭდე"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:205
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:205
 msgid "Image URI"
 msgstr "გამოსახულების URI"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:206
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:206
 msgid "The image URI"
 msgstr "გამოსახულების URI"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:218
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:218
 msgid "Media URI"
 msgstr "მედიის URI"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitHitTestResult.cpp:219
+#: ../../../../CyberKit/Shared/API/glib/CyberKitHitTestResult.cpp:219
 msgid "The media URI"
 msgstr "მედიის URI"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIRequest.cpp:98
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:103
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebResource.cpp:111
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1209
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebPage.cpp:456
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIRequest.cpp:98
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:103
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebResource.cpp:111
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1209
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebPage.cpp:456
 msgid "URI"
 msgstr "URI"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIRequest.cpp:99
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIRequest.cpp:99
 msgid "The URI to which the request will be made."
 msgstr ""
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:104
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:104
 msgid "The URI for which the response was made."
 msgstr ""
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:115
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:115
 msgid "Status Code"
 msgstr "სტატუსის კოდი"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:116
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:116
 msgid "The status code of the response as returned by the server."
 msgstr ""
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:128
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:128
 msgid "Content Length"
 msgstr "შემცველობის სიგრძე"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:129
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:129
 msgid "The expected content length of the response."
 msgstr ""
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:141
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:141
 msgid "MIME Type"
 msgstr "MIME ტიპი"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:142
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:142
 msgid "The MIME type of the response"
 msgstr ""
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:154
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:154
 msgid "Suggested Filename"
 msgstr "შემოთავაზებული ფაილის სახელი"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:155
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:155
 msgid "The suggested filename for the URI response"
 msgstr ""
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:171
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:171
 msgid "HTTP Headers"
 msgstr "HTTP თავსართები"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitURIResponse.cpp:172
+#: ../../../../CyberKit/Shared/API/glib/CyberKitURIResponse.cpp:172
 msgid "The HTTP headers of the response"
 msgstr ""
 
-#: ../../../../WebKit/Shared/API/glib/WebKitUserMessage.cpp:140
+#: ../../../../CyberKit/Shared/API/glib/CyberKitUserMessage.cpp:140
 msgid "The user message name"
 msgstr "მომხმარებლის შეტყობინების სახელი"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitUserMessage.cpp:158
+#: ../../../../CyberKit/Shared/API/glib/CyberKitUserMessage.cpp:158
 msgid "Parameters"
 msgstr "პარამეტრები"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitUserMessage.cpp:159
+#: ../../../../CyberKit/Shared/API/glib/CyberKitUserMessage.cpp:159
 msgid "The user message parameters"
 msgstr "მომხმარებლის შეტყობინების მორგება"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitUserMessage.cpp:176
+#: ../../../../CyberKit/Shared/API/glib/CyberKitUserMessage.cpp:176
 msgid "File Descriptor List"
 msgstr "ფაილების დესკრიპტორების სია"
 
-#: ../../../../WebKit/Shared/API/glib/WebKitUserMessage.cpp:177
+#: ../../../../CyberKit/Shared/API/glib/CyberKitUserMessage.cpp:177
 msgid "The user message list of file descriptors"
 msgstr ""
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:42
+#: ../../../../CyberKit/Shared/WebErrors.cpp:42
 msgid "Not allowed to use restricted network port"
 msgstr ""
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:47
+#: ../../../../CyberKit/Shared/WebErrors.cpp:47
 msgid "The URL was blocked by a content blocker"
 msgstr ""
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:52
+#: ../../../../CyberKit/Shared/WebErrors.cpp:52
 msgid "The URL can’t be shown"
 msgstr "URL-ის ჩვენება შეუძლებელია"
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:57
+#: ../../../../CyberKit/Shared/WebErrors.cpp:57
 msgid "The URL was blocked by device restrictions"
 msgstr "URL დაბლოკილია მოწყობილობის შეზღუდვების მიერ"
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:62
+#: ../../../../CyberKit/Shared/WebErrors.cpp:62
 msgid "Frame load interrupted"
 msgstr "ჩარჩოს ჩატვირთვა შეწყვეტილია"
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:72
+#: ../../../../CyberKit/Shared/WebErrors.cpp:72
 msgid "Error handling synchronous load with custom protocol"
 msgstr ""
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:78
+#: ../../../../CyberKit/Shared/WebErrors.cpp:78
 msgid "The URL was blocked by a content filter"
 msgstr ""
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:84
+#: ../../../../CyberKit/Shared/WebErrors.cpp:84
 msgid "Content with specified MIME type can’t be shown"
 msgstr ""
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:89
+#: ../../../../CyberKit/Shared/WebErrors.cpp:89
 msgid "Plug-in handled load"
 msgstr ""
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:95
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:2452
+#: ../../../../CyberKit/Shared/WebErrors.cpp:95
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:2452
 msgid "Load request cancelled"
 msgstr "ჩატვირთვის მოთხოვნა გაუქმდა"
 
-#: ../../../../WebKit/Shared/WebErrors.cpp:100
+#: ../../../../CyberKit/Shared/WebErrors.cpp:100
 msgid "File does not exist"
 msgstr "ფაილი არ არსებობს"
 
-#: ../../../../WebKit/Shared/gtk/WebErrorsGtk.cpp:38
+#: ../../../../CyberKit/Shared/gtk/WebErrorsGtk.cpp:38
 msgid "Invalid page range"
 msgstr "გვერდის არასწორი დიაპაზონი"
 
-#: ../../../../WebKit/Shared/soup/WebErrorsSoup.cpp:44
+#: ../../../../CyberKit/Shared/soup/WebErrorsSoup.cpp:44
 msgid "User cancelled the download"
 msgstr "გადმოწერა შეწყვეტილია მომხმარებლის მიერ"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitAutomationSession.cpp:283
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitAutomationSession.cpp:283
 msgid "Identifier"
 msgstr "იდენტიფიკატორი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitAutomationSession.cpp:284
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitAutomationSession.cpp:284
 msgid "The automation session identifier"
 msgstr "ავტომატიზაციის სესიის იდენტიფიკატორი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:167
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:167
 msgid "Destination"
 msgstr "დანიშნულება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:168
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:168
 msgid "The local URI to where the download will be saved"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:180
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebResource.cpp:124
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:180
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebResource.cpp:124
 msgid "Response"
 msgstr "პასუხი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:181
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:181
 msgid "The response of the download"
 msgstr "გადმოწერის პასუხი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:198
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:198
 msgid "Estimated Progress"
 msgstr "დაახლოებითი მიმდინარეობა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:199
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:199
 msgid "Determines the current progress of the download"
 msgstr "გადმოწერის მიმდინარე სტატუსის განსაზღვრა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:215
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:215
 msgid "Allow Overwrite"
 msgstr "გადაწერის უფლების მიცემა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitDownload.cpp:216
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitDownload.cpp:216
 msgid "Whether the destination may be overwritten"
 msgstr "შეიძლება თუ არა სამიზნის გადაწერა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitEditorState.cpp:93
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitEditorState.cpp:93
 msgid "Typing Attributes"
 msgstr "აკრეფის ატრიბუტები"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitEditorState.cpp:94
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitEditorState.cpp:94
 msgid "Flags with the typing attributes"
 msgstr "ალმები აკრეფის ატრიბუტებით"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFaviconDatabase.cpp:175
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFaviconDatabase.cpp:175
 msgid "Favicons database not initialized yet"
 msgstr "ხატულების (favicon) ბაზის ინიციალიზაცია ჯერ არ მომხდარა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFaviconDatabase.cpp:181
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFaviconDatabase.cpp:181
 #, c-format
 msgid "Page %s does not have a favicon"
 msgstr "გვერდს %s ხატულა არ გააჩნია (favicon)"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFaviconDatabase.cpp:191
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFaviconDatabase.cpp:191
 #, c-format
 msgid "Unknown favicon for page %s"
 msgstr "უცნობი ხატულა გვერდისთვის %s"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:139
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:139
 msgid "MIME types filter"
 msgstr "MIME ტიპების ფილტრი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:140
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:140
 msgid "The filter currently associated with the request"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:155
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:155
 msgid "MIME types"
 msgstr "MIME ტიპები"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:156
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:156
 msgid "The list of MIME types associated with the request"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:170
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:170
 msgid "Select multiple files"
 msgstr "აირჩიეთ ბევრი ფაილი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:171
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:171
 msgid "Whether the file chooser should allow selecting multiple files"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:184
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:184
 msgid "Selected files"
 msgstr "მონიშნული ფაილები"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFileChooserRequest.cpp:185
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFileChooserRequest.cpp:185
 msgid "The list of selected files associated with the request"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:199
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:199
 msgid "Search text"
 msgstr "მოძებნე ტექსტი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:200
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:200
 msgid "Text to search for in the view"
 msgstr "ხედში მოსაძებნი ტექსტი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:212
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:212
 msgid "Search Options"
 msgstr "ძებნის მორგება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:213
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:213
 msgid "Search options to be used in the search operation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:226
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:226
 msgid "Maximum matches count"
 msgstr "დამთხვევების მაქსიმალური რაოდენობა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:227
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:227
 msgid "The maximum number of matches in a given text to report"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:239
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:239
 msgid "WebView"
 msgstr "WebView"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitFindController.cpp:240
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitFindController.cpp:240
 msgid "The WebView associated with this find controller"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitGeolocationManager.cpp:365
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitGeolocationManager.cpp:365
 msgid "Enable high accuracy"
 msgstr "მაღალი სიზუსტის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitGeolocationManager.cpp:366
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitGeolocationManager.cpp:366
 msgid "Whether high accuracy is enabled"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:118
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:118
 msgid "Navigation action"
 msgstr "ნავიგაციის ქმედება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:119
-msgid "The WebKitNavigationAction triggering this decision"
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:119
+msgid "The CyberKitNavigationAction triggering this decision"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:136
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:136
 msgid "Navigation type"
 msgstr "ნავიგაციის ტიპი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:137
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:137
 msgid "The type of navigation triggering this decision"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:156
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:156
 msgid "Mouse button"
 msgstr "თაგუნას ღილაკი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:157
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:157
 msgid "The mouse button used if this decision was triggered by a mouse event"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:175
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:175
 msgid "Mouse event modifiers"
 msgstr "თაგუნას მოვლენის მოდიფიკაორები"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:176
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:176
 msgid "The modifiers active if this decision was triggered by a mouse event"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:191
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:191
 msgid "Navigation URI request"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:192
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:192
 msgid "The URI request that is associated with this navigation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:208
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:208
 msgid "Frame name"
 msgstr "ჩარჩოს სახელი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNavigationPolicyDecision.cpp:209
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp:209
 msgid "The name of the new frame this navigation action targets"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:102
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:102
 msgid "ID"
 msgstr "აიდი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:103
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:103
 msgid "The unique id for the notification"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:117
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1161
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintCustomWidget.cpp:135
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:117
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1161
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintCustomWidget.cpp:135
 msgid "Title"
 msgstr "სათაური"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:118
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:118
 msgid "The title for the notification"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:132
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:132
 msgid "Body"
 msgstr "სხეული"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:133
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:133
 msgid "The body for the notification"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:147
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:147
 msgid "Tag"
 msgstr "ჭდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitNotification.cpp:148
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitNotification.cpp:148
 msgid "The tag identifier for the notification"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitResponsePolicyDecision.cpp:92
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitResponsePolicyDecision.cpp:92
 msgid "Response URI request"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitResponsePolicyDecision.cpp:93
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitResponsePolicyDecision.cpp:93
 msgid "The URI request that is associated with this policy decision"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitResponsePolicyDecision.cpp:106
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitResponsePolicyDecision.cpp:106
 msgid "URI response"
 msgstr "URI პასუხი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitResponsePolicyDecision.cpp:107
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitResponsePolicyDecision.cpp:107
 msgid "The URI response that is associated with this policy decision"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:627
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:627
 msgid "Enable JavaScript"
 msgstr "JavaScript-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:628
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:628
 msgid "Enable JavaScript."
 msgstr "JavaScript-ის ჩართვა."
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:642
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:642
 msgid "Auto load images"
 msgstr "გამოსახულებების ავტომატური ჩატვირთვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:643
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:643
 msgid "Load images automatically."
 msgstr "გამოსახულებების ავტომატური ჩატვირთვა."
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:656
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:656
 msgid "Load icons ignoring image load setting"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:657
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:657
 msgid "Whether to load site icons ignoring image load setting."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:674
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:674
 msgid "Enable offline web application cache"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:675
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:675
 msgid "Whether to enable offline web application cache."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:691
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:691
 msgid "Enable HTML5 local storage"
 msgstr "HTML5 ლოკალური საცავის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:692
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:692
 msgid "Whether to enable HTML5 Local Storage support."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:704
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:704
 msgid "Enable HTML5 database"
 msgstr "HTML5 ბაზის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:705
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:705
 msgid "Whether to enable HTML5 database support."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:720
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:720
 msgid "Enable XSS auditor"
 msgstr "XSS აუდიტორის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:721
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:721
 msgid "Whether to enable the XSS auditor."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:735
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:735
 msgid "Enable frame flattening"
 msgstr "კონფიდენციალური რეჟიმის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:736
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:736
 msgid "Whether to enable frame flattening."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:750
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:750
 msgid "Enable plugins"
 msgstr "დამატებების ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:751
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:751
 msgid "Enable embedded plugin objects."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:765
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:765
 msgid "Enable Java"
 msgstr "Java-ს ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:766
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:766
 msgid "Whether Java support should be enabled."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:779
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:779
 msgid "JavaScript can open windows automatically"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:780
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:780
 msgid "Whether JavaScript can open windows automatically."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:795
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:795
 msgid "Enable hyperlink auditing"
 msgstr "ჰიპერბმულის აუდიტის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:796
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:796
 msgid "Whether <a ping> should be able to send pings."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:808
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:808
 msgid "Default font family"
 msgstr "ფონტის ნაგულისხმები ოჯახი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:809
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:809
 msgid ""
 "The font family to use as the default for content that does not specify a "
 "font."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:822
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:822
 msgid "Monospace font family"
 msgstr "ერთსიგანიანი ფონტების ოჯახი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:823
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:823
 msgid "The font family used as the default for content using monospace font."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:835
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:835
 msgid "Serif font family"
 msgstr "Serif ფონტის ოჯახი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:836
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:836
 msgid "The font family used as the default for content using serif font."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:848
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:848
 msgid "Sans-serif font family"
 msgstr "Sans-serif ფონტის ოჯახი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:849
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:849
 msgid "The font family used as the default for content using sans-serif font."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:861
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:861
 msgid "Cursive font family"
 msgstr "კურსივი ფონტის ოჯახი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:862
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:862
 msgid "The font family used as the default for content using cursive font."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:874
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:874
 msgid "Fantasy font family"
 msgstr "Fantasy ფონტის ოჯახი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:875
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:875
 msgid "The font family used as the default for content using fantasy font."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:887
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:887
 msgid "Pictograph font family"
 msgstr "Pictograph ფონტის ოჯახი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:888
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:888
 msgid "The font family used as the default for content using pictograph font."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:901
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:901
 msgid "Default font size"
 msgstr "ფონტის ნაგულისხმები ზომა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:902
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:902
 msgid "The default font size used to display text."
 msgstr "ტექსტის საჩვენებლად გამოყენებული ფონტის ნაგულისხმები ზომა."
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:915
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:915
 msgid "Default monospace font size"
 msgstr "ერთსიგანიანი ფონტის ნაგულისხმები ზომა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:916
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:916
 msgid "The default font size used to display monospace text."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:930
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:930
 msgid "Minimum font size"
 msgstr "ფონტის მინიმალური ზომა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:931
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:931
 msgid "The minimum font size used to display text."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:943
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:943
 msgid "Default charset"
 msgstr "ნაგულისხმები კოდირება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:944
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:944
 msgid ""
 "The default text charset used when interpreting content with unspecified "
 "charset."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:960
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:960
 msgid "Enable private browsing"
 msgstr "ანონიმური ბრაუზერის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:961
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:961
 msgid "Whether to enable private browsing"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:974
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:974
 msgid "Enable developer extras"
 msgstr "დეველოპერის დამატებების ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:975
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:975
 msgid "Whether to enable developer extras"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:987
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:987
 msgid "Enable resizable text areas"
 msgstr "ტექსტის ასაკრეფი ადგილების ზომის შეცვლის დაშვება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:988
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:988
 msgid "Whether to enable resizable text areas"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1003
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1003
 msgid "Enable tabs to links"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1004
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1004
 msgid "Whether to enable tabs to links"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1017
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1017
 msgid "Enable DNS prefetching"
 msgstr "DNS-ის წინასწარი გამოთხოვის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1018
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1018
 msgid "Whether to enable DNS prefetching"
 msgstr "ჩართულია თუ არა DNS-ის წინასწარი გამოთხოვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1030
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1030
 msgid "Enable Caret Browsing"
 msgstr "კარეტის ნავიგაციის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1031
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1031
 msgid "Whether to enable accessibility enhanced keyboard navigation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1046
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1046
 msgid "Enable Fullscreen"
 msgstr "სრული ეკრანის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1047
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1047
 msgid "Whether to enable the Javascript Fullscreen API"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1059
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1059
 msgid "Print Backgrounds"
 msgstr "ფონური გამოსახულებების დაბეჭდვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1060
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1060
 msgid "Whether background images should be drawn during printing"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1076
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1076
 msgid "Enable WebAudio"
 msgstr "WebAudio-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1077
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1077
 msgid "Whether WebAudio content should be handled"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1090
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1090
 msgid "Enable WebGL"
 msgstr "WebGL-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1091
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1091
 msgid "Whether WebGL content should be rendered"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1108
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1108
 msgid "Allow modal dialogs"
 msgstr "მოდალური ფანჯრების დაშვება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1109
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1109
 msgid "Whether it is possible to create modal dialogs"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1124
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1124
 msgid "Zoom Text Only"
 msgstr "მხოლოდ ტექსტის გადიდება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1125
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1125
 msgid "Whether zoom level of web view changes only the text size"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1139
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1139
 msgid "JavaScript can access clipboard"
 msgstr "JavaScript -ს აქვს ბუფერზე წვდომა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1140
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1140
 msgid "Whether JavaScript can access Clipboard"
 msgstr "JavaScript -ს აქვს ბუფერზე წვდომა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1156
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1156
 msgid "Media playback requires user gesture"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1157
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1157
 msgid "Whether media playback requires user gesture"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1171
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1171
 msgid "Media playback allows inline"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1172
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1172
 msgid "Whether media playback allows inline"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1186
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1186
 msgid "Draw compositing indicators"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1187
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1187
 msgid "Whether to draw compositing borders and repaint counters"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1204
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1204
 msgid "Enable Site Specific Quirks"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1205
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1205
 msgid "Enables the site-specific compatibility workarounds"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1225
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1225
 msgid "Enable page cache"
 msgstr "გვერდის ქეშის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1226
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1226
 msgid "Whether the page cache should be used"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1245
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1245
 msgid "User agent string"
 msgstr "მომხმარებლის აგენტის სტრიქონი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1246
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1246
 msgid "The user agent string"
 msgstr "მომხმარებლის აგენტის სტრიქონი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1258
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1258
 msgid "Enable smooth scrolling"
 msgstr "დარბილებული ჩაწევა/ამოწევის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1259
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1259
 msgid "Whether to enable smooth scrolling"
 msgstr "ჩართულია თუ არა რბილი ჩაწევა/ამოწევა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1278
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1278
 msgid "Enable accelerated 2D canvas"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1279
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1279
 msgid "Whether to enable accelerated 2D canvas"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1294
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1294
 msgid "Write console messages on stdout"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1295
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1295
 msgid "Whether to write console messages on stdout"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1313
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1313
 msgid "Enable MediaStream"
 msgstr "MediaStream-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1314
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1314
 msgid "Whether MediaStream content should be handled"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1329
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1329
 msgid "Enable mock capture devices"
 msgstr "იმიტირებული ჩამწერი მოწყობილოების ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1330
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1330
 msgid "Whether we expose mock capture devices or not"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1349
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1349
 msgid "Enable Spatial Navigation"
 msgstr "სივრცითი ნავიგაციის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1350
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1350
 msgid "Whether to enable Spatial Navigation support."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1368
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1368
 msgid "Enable MediaSource"
 msgstr "MediaSource-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1369
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1369
 msgid "Whether MediaSource should be enabled."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1388
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1388
 msgid "Enable EncryptedMedia"
 msgstr "EncryptedMedia-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1389
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1389
 msgid "Whether EncryptedMedia should be enabled."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1410
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1410
 msgid "Enable MediaCapabilities"
 msgstr "MediaCapabilities-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1411
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1411
 msgid "Whether MediaCapabilities should be enabled."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1429
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1429
 msgid "Allow file access from file URLs"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1430
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1430
 msgid "Whether file access is allowed from file URLs."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1449
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1449
 msgid "Allow universal access from the context of file scheme URLs"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1450
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1450
 msgid ""
 "Whether or not universal access is allowed from the context of file scheme "
 "URLs"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1467
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1467
 msgid "Allow top frame navigation to data URLs"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1468
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1468
 msgid "Whether or not top frame navigation is allowed to data URLs"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1493
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1493
 msgid "Hardware Acceleration Policy"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1494
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1494
 msgid "The policy to decide how to enable and disable hardware acceleration"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1509
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1509
 msgid "Enable back-forward navigation gestures"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1510
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1510
 msgid "Whether horizontal swipe gesture will trigger back-forward navigation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1527
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1527
 msgid "Enable JavaScript Markup"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1528
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1528
 msgid "Enable JavaScript in document markup."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1544
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1544
 msgid "Enable media"
 msgstr "მედიის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1545
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1545
 msgid "Whether media content should be handled"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1560
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1560
 msgid "Media content types requiring hardware support"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1561
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1561
 msgid "List of media content types requiring hardware support."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1579
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1579
 msgid "Enable WebRTC"
 msgstr "WebRTC-ის ჩართვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitSettings.cpp:1580
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitSettings.cpp:1580
 msgid "Whether WebRTC content should be handled"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitUserContentFilterStore.cpp:149
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitUserContentFilterStore.cpp:149
 msgid "Storage directory path"
 msgstr "საცავის საქაღალდის ბილიკი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitUserContentFilterStore.cpp:150
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitUserContentFilterStore.cpp:150
 msgid "The directory where user content filters are stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitUserMediaPermissionRequest.cpp:189
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitUserMediaPermissionRequest.cpp:189
 msgid "Is for audio device"
 msgstr "აუდიომოწყობილობისთვისაა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitUserMediaPermissionRequest.cpp:190
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitUserMediaPermissionRequest.cpp:190
 msgid ""
 "Whether the media device to which the permission was requested has a "
 "microphone or not."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitUserMediaPermissionRequest.cpp:202
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitUserMediaPermissionRequest.cpp:202
 msgid "Is for video device"
 msgstr "ვიდეომოწყობილობისთვისაა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitUserMediaPermissionRequest.cpp:203
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitUserMediaPermissionRequest.cpp:203
 msgid ""
 "Whether the media device to which the permission was requested has a video "
 "capture capability or not."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:514
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:300
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:514
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:300
 msgid "Local Storage Directory"
 msgstr "ლოკალური საცავის საქაღლდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:515
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:515
 msgid "The directory where local storage data will be saved"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:530
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:530
 msgid "Website Data Manager"
 msgstr "ვებხედის მონაცემების მმართველი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:531
-msgid "The WebKitWebsiteDataManager associated with this context"
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:531
+msgid "The CyberKitWebsiteDataManager associated with this context"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:552
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:552
 msgid "Swap Processes on Cross-Site Navigation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:553
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:553
 msgid "Whether swap Web processes on cross-site navigations is enabled"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:572
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:572
 msgid "Use system appearance for scrollbars"
 msgstr "ჩოჩიებისთვის სისტემის გარეგნობის გამოყენება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:573
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:573
 msgid "Whether to use system appearance for rendering scrollbars"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:589
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:589
 msgid "Memory Pressure Settings"
 msgstr "მეხსიერებაზე დაწოლის მორგება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:590
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:590
 msgid ""
-"The WebKitMemoryPressureSettings applied to the web processes created by "
+"The CyberKitMemoryPressureSettings applied to the web processes created by "
 "this context"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:611
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:611
 msgid "Time Zone Override"
 msgstr "დროის სარტყლის გადაფარვა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebContext.cpp:612
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebContext.cpp:612
 msgid "The time zone to use instead of the system one"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebResource.cpp:112
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebResource.cpp:112
 msgid "The current active URI of the resource"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebResource.cpp:125
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebResource.cpp:125
 msgid "The response of the resource"
 msgstr "რესურსის პასუხი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebResource.cpp:353
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:4921
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebExtension.cpp:287
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebPage.cpp:907
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebResource.cpp:353
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:4921
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebExtension.cpp:287
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebPage.cpp:907
 msgid "Operation was cancelled"
 msgstr "ოპერაცია გაუქმდა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteData.cpp:199
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteData.cpp:199
 msgid "Local files"
 msgstr "ლოკალური ფაილები"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:264
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:264
 msgid "Base Data Directory"
 msgstr "საბაზისო მონაცემების საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:265
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:265
 msgid "The base directory for website data"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:281
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:281
 msgid "Base Cache Directory"
 msgstr "საბაზისო საქაღალდე ქეშისთვის"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:282
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:282
 msgid "The base directory for caches"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:301
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:301
 msgid "The directory where local storage data will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:319
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:319
 msgid "Disk Cache Directory"
 msgstr "დისკის ქეშის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:320
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:320
 msgid "The directory where HTTP disk cache will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:338
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:338
 msgid "Offline Web Application Cache Directory"
 msgstr "ოფლაინ ვებ აპლიკაციის ქეშის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:339
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:339
 msgid "The directory where offline web application cache will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:357
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:357
 msgid "IndexedDB Directory"
 msgstr "IndexedDB -ის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:358
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:358
 msgid "The directory where IndexedDB databases will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:376
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:376
 msgid "WebSQL Directory"
 msgstr "WebSQL -ის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:377
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:377
 msgid "The directory where WebSQL databases will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:395
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:395
 msgid "HSTS Cache Directory"
 msgstr "HSTS -ის ქეშის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:396
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:396
 msgid ""
 "The directory where the HTTP Strict-Transport-Security cache will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:414
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:414
 msgid "ITP Directory"
 msgstr "ITP -ის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:415
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:415
 msgid "The directory where Intelligent Tracking Prevention data will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:433
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:433
 msgid "Service Worker Registrations Directory"
 msgstr "სერვისული დამხმარე პროცესის რეგისტრაციის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:434
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:434
 msgid "The directory where service workers registrations will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:452
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:452
 msgid "DOM Cache directory"
 msgstr "DOM -ის ქეშის საქაღალდე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:453
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:453
 msgid "The directory where DOM cache will be stored"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebsiteDataManager.cpp:473
-msgid "Whether the WebKitWebsiteDataManager is ephemeral"
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebsiteDataManager.cpp:473
+msgid "Whether the CyberKitWebsiteDataManager is ephemeral"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1087
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1087
 msgid "Backend"
 msgstr "უკანბოლო"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1088
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1088
 msgid "The backend for the web view"
 msgstr "უკანაბოლო ვებხედისთვის"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1101
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1101
 msgid "Web Context"
 msgstr "ვების კონტექსტი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1102
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1102
 msgid "The web context for the view"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1117
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1117
 msgid "Related WebView"
 msgstr "შესაბამისი ვებხედი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1118
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1118
 msgid ""
-"The related WebKitWebView used when creating the view to share the same web "
+"The related CyberKitWebView used when creating the view to share the same web "
 "process"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1132
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1132
 msgid "WebView settings"
 msgstr "WebView -ის მორგება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1133
-msgid "The WebKitSettings of the view"
-msgstr "ხედის WebKitSetting-ები"
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1133
+msgid "The CyberKitSettings of the view"
+msgstr "ხედის CyberKitSetting-ები"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1147
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1147
 msgid "WebView user content manager"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1148
-msgid "The WebKitUserContentManager of the view"
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1148
+msgid "The CyberKitUserContentManager of the view"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1162
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1162
 msgid "Main frame document title"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1180
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1180
 msgid "Estimated Load Progress"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1181
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1181
 msgid "An estimate of the percent completion for a document load"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1195
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1195
 msgid "Favicon"
 msgstr "საიტის ხატულა"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1196
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1196
 msgid "The favicon associated to the view, if any"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1210
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1210
 msgid "The current active URI of the view"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1223
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1223
 msgid "Zoom level"
 msgstr "გადიდების დონე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1224
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1224
 msgid "The zoom level of the view content"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1241
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1241
 msgid "Is Loading"
 msgstr "იტვირთება"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1242
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1242
 msgid "Whether the view is loading a page"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1260
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1260
 msgid "Whether the view is playing audio"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1286
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1286
 msgid "Whether the web view is ephemeral"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1303
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1303
 msgid "Whether the web view is controlled by automation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1321
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1321
 msgid "The browsing context presentation type for automation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1337
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1337
 msgid "Editable"
 msgstr "ჩასწორებადი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1338
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1338
 msgid "Whether the content can be modified by the user."
 msgstr "მომხმარებელს შემცველობის შეცვლა შეუძლია, თუ არა."
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1352
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1352
 msgid "Page Identifier"
 msgstr "გვერდის იდენტიფიკატორი"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1353
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1353
 msgid "The page identifier."
 msgstr "გვერდის იდენტიფიკატორი."
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1369
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1369
 msgid "Whether the view audio is muted"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1383
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1383
 msgid "Default Website Policies"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1384
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1384
 msgid "The default policy object for sites loaded in this view"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1399
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1399
 msgid ""
 "Whether the web process currently associated to the web view is responsive"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1423
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1423
 msgid "The capture state of the camera device"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1448
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1448
 msgid "The capture state of the microphone device"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1473
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1473
 msgid "The capture state of the display device"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1494
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1494
 msgid "Enables WebExtension mode"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:1518
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:1518
 msgid "The default Content-Security-Policy"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:4628
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:4628
 msgid "There was an error creating the snapshot"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWebView.cpp:4927
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebExtension.cpp:293
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebPage.cpp:913
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWebView.cpp:4927
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebExtension.cpp:293
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebPage.cpp:913
 #, c-format
 msgid "Message %s was not handled"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:218
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:218
 msgid "Geometry"
 msgstr "გეომეტრია"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:219
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:219
 msgid "The size and position of the window on the screen."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:232
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:232
 msgid "Toolbar Visible"
 msgstr "ხელსაწყოთა პანელი ხილულია"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:233
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:233
 msgid "Whether the toolbar should be visible for the window."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:245
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:245
 msgid "Statusbar Visible"
 msgstr "სტატუსის ზოლი ხილულია"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:246
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:246
 msgid "Whether the statusbar should be visible for the window."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:258
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:258
 msgid "Scrollbars Visible"
 msgstr "ჩოჩიები ხილულია"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:259
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:259
 msgid "Whether the scrollbars should be visible for the window."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:271
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:271
 msgid "Menubar Visible"
 msgstr "მენიუს ზოლი ხილულია"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:272
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:272
 msgid "Whether the menubar should be visible for the window."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:284
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:284
 msgid "Locationbar Visible"
 msgstr "მდებარეობის ზოლი ხილულია"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:285
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:285
 msgid "Whether the locationbar should be visible for the window."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:296
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:296
 msgid "Resizable"
 msgstr "შეცვლადი ზომით"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:297
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:297
 msgid "Whether the window can be resized."
 msgstr "შესაძლებელია თუ არა ფანჯრის ზომის შეცვლა."
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:309
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:309
 msgid "Fullscreen"
 msgstr "მთელ ეკრანზე"
 
-#: ../../../../WebKit/UIProcess/API/glib/WebKitWindowProperties.cpp:310
+#: ../../../../CyberKit/UIProcess/API/glib/CyberKitWindowProperties.cpp:310
 msgid "Whether window will be displayed fullscreen."
 msgstr "იქნება თუ არა ფანჯარა მთელ ეკრანზე."
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:103
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:103
 msgid "Authentication Required"
 msgstr "საჭროა ავთენტიკაცია"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:129
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitScriptDialogImpl.cpp:322
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:129
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp:322
 msgid "_Cancel"
 msgstr "_გაუქმება"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:139
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:139
 msgid "_Authenticate"
 msgstr "_ავთენტიკაცია"
 
 #. Prompt on the HTTP authentication dialog.
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:156
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:156
 #, c-format
 msgid "Authentication required by %s:%i"
 msgstr "%s-ის მიერ ავტორიზაცია მოთხოვნილია: %i"
 
 #. Label on the HTTP authentication dialog. %s is a (probably English) message from the website.
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:169
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:169
 #, c-format
 msgid "The site says: “%s”"
 msgstr "საიტი ამბობს: \"%s\""
 
 #. Check button on the HTTP authentication dialog.
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:180
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:180
 msgid "_Remember password"
 msgstr "პაროლის დამახსოვრება"
 
 #. Entry on the HTTP authentication dialog.
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:193
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:193
 msgid "_Username"
 msgstr "_მომხმარებელი"
 
 #. Entry on the HTTP authentication dialog.
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitAuthenticationDialog.cpp:205
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp:205
 msgid "_Password"
 msgstr "პაროლი"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitColorChooserRequest.cpp:133
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitColorChooserRequest.cpp:133
 msgid "Current RGBA color"
 msgstr "მიმდინარე RGBA ფერი"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitColorChooserRequest.cpp:134
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitColorChooserRequest.cpp:134
 msgid "The current RGBA color for the request"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintCustomWidget.cpp:118
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintCustomWidget.cpp:118
 msgid "Widget"
 msgstr "ვიჯეტი"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintCustomWidget.cpp:119
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintCustomWidget.cpp:119
 msgid "Widget that will be added to the print dialog."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintCustomWidget.cpp:136
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintCustomWidget.cpp:136
 msgid "Title of the widget that will be added to the print dialog."
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintOperation.cpp:167
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintOperation.cpp:167
 msgid "Web View"
 msgstr "WebView"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintOperation.cpp:168
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintOperation.cpp:168
 msgid "The web view that will be printed"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintOperation.cpp:180
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintOperation.cpp:180
 msgid "Print Settings"
 msgstr "ბეჭდვის მორგება"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintOperation.cpp:181
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintOperation.cpp:181
 msgid "The initial print settings for the print operation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintOperation.cpp:192
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintOperation.cpp:192
 msgid "Page Setup"
 msgstr "გვერდის მორგება"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintOperation.cpp:193
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintOperation.cpp:193
 msgid "The initial page setup for the print operation"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitPrintOperation.cpp:343
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitPrintOperation.cpp:343
 msgid "Printer not found"
 msgstr "პრინტერი ვერ მოიძებნა"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitScriptDialogImpl.cpp:300
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp:300
 msgid "_Close"
 msgstr "_დახურვა"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitScriptDialogImpl.cpp:324
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp:324
 msgid "_OK"
 msgstr "_დიახ"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitScriptDialogImpl.cpp:331
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp:331
 msgid "Are you sure you want to leave this page?"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitScriptDialogImpl.cpp:333
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp:333
 msgid "Stay on Page"
 msgstr "გვერდზე დარჩენა"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitScriptDialogImpl.cpp:335
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp:335
 msgid "Leave Page"
 msgstr "გვერდიდან გასვლა"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebInspector.cpp:129
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebInspector.cpp:129
 msgid "Inspected URI"
 msgstr "შემოწმებული URI"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebInspector.cpp:130
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebInspector.cpp:130
 msgid "The URI that is currently being inspected"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebInspector.cpp:141
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebInspector.cpp:141
 msgid "Attached Height"
 msgstr "მიმაგრებული სიმაღლე"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebInspector.cpp:142
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebInspector.cpp:142
 msgid "The height that the inspector view should have when it is attached"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebInspector.cpp:157
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebInspector.cpp:157
 msgid "Can Attach"
 msgstr "შეიძლება მიმაგრება"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebInspector.cpp:158
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebInspector.cpp:158
 msgid ""
 "Whether the inspector can be attached to the same window that contains the "
 "inspected view"
 msgstr ""
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebViewBase.cpp:2381
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebViewBase.cpp:2381
 msgid "Website running in fullscreen mode"
 msgstr "ვებგვერდი სრულეკრანიან რეჟიმშია გაშვებული"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebViewGtk.cpp:107
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebViewGtk.cpp:107
 msgid "Select Files"
 msgstr "მონიშნეთ ფაილები"
 
-#: ../../../../WebKit/UIProcess/API/gtk/WebKitWebViewGtk.cpp:107
+#: ../../../../CyberKit/UIProcess/API/gtk/CyberKitWebViewGtk.cpp:107
 msgid "Select File"
 msgstr "აირჩიეთ ფაილი"
 
-#: ../../../../WebKit/UIProcess/Inspector/gtk/WebKitInspectorWindow.cpp:63
-#: ../../../../WebKit/UIProcess/Inspector/gtk/WebKitInspectorWindow.cpp:81
+#: ../../../../CyberKit/UIProcess/Inspector/gtk/CyberKitInspectorWindow.cpp:63
+#: ../../../../CyberKit/UIProcess/Inspector/gtk/CyberKitInspectorWindow.cpp:81
 msgid "Web Inspector"
 msgstr "ვების ინსპექტორი"
 
 #. TRANSLATORS: the default action for a desktop notification created by a website.
-#: ../../../../WebKit/UIProcess/Notifications/glib/NotificationService.cpp:386
+#: ../../../../CyberKit/UIProcess/Notifications/glib/NotificationService.cpp:386
 msgid "Acknowledge"
 msgstr "დადასტურება"
 
-#: ../../../../WebKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:73
-#: ../../../../WebKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:140
-#: ../../../../WebKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:166
+#: ../../../../CyberKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:73
+#: ../../../../CyberKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:140
+#: ../../../../CyberKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:166
 msgid "Failed to connect to geolocation service"
 msgstr "გეოლოკაციის სერვისთან მიერთების შეცდომა"
 
-#: ../../../../WebKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:215
-#: ../../../../WebKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:273
+#: ../../../../CyberKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:215
+#: ../../../../CyberKit/UIProcess/geoclue/GeoclueGeolocationProvider.cpp:273
 msgid "Failed to determine position from geolocation service"
 msgstr "გეოლოკაცის სერვისიდან მდებარეობის მიღების შეცდომა"
 
-#: ../../../../WebKit/UIProcess/gtk/WebColorPickerGtk.cpp:102
+#: ../../../../CyberKit/UIProcess/gtk/WebColorPickerGtk.cpp:102
 msgid "Select Color"
 msgstr "ფერი"
 
-#: ../../../../WebKit/UIProcess/WebsiteData/WebsiteDataRecord.cpp:40
+#: ../../../../CyberKit/UIProcess/WebsiteData/WebsiteDataRecord.cpp:40
 msgid "Local documents on your computer"
 msgstr "ლოკალური დოკუმენტები თქვენს კომპიუტერში"
 
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebHitTestResult.cpp:103
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebHitTestResult.cpp:103
 msgid "Node"
 msgstr "კვანძი"
 
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebHitTestResult.cpp:104
-msgid "The WebKitDOMNode"
-msgstr "WebKitDOMNode"
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebHitTestResult.cpp:104
+msgid "The CyberKitDOMNode"
+msgstr "CyberKitDOMNode"
 
-#: ../../../../WebKit/WebProcess/InjectedBundle/API/glib/WebKitWebPage.cpp:457
+#: ../../../../CyberKit/WebProcess/InjectedBundle/API/glib/CyberKitWebPage.cpp:457
 msgid "The current active URI of the web page"
 msgstr "ვებგვერდის მიმდინარე აქტიური URI"

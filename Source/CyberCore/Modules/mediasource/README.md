@@ -38,13 +38,13 @@ _([.h](../platform/graphics/MediaSourcePrivate.h), [.cpp](../platform/graphics/M
 
 MediaSourcePrivate is an abstract base class which allows [MediaSource](#mediasource) to communicate through the platform boundary to a platform-specific implementation of MediaSource.
 
-When the GPU Process is enabled, the MediaSourcePrivate in the WebContent process is typically a [MediaSourcePrivateRemote](../../WebKit/WebProcess/GPU/media/MediaSourcePrivateRemote.h), which will pass commands and properties across the WebContent/GPU process boundary.
+When the GPU Process is enabled, the MediaSourcePrivate in the WebContent process is typically a [MediaSourcePrivateRemote](../../CyberKit/WebProcess/GPU/media/MediaSourcePrivateRemote.h), which will pass commands and properties across the WebContent/GPU process boundary.
 
 For Apple ports, the MediaSourcePrivate is typically a [MediaSourcePrivateAVFObjC](../platform/graphics/avfoundation/objc/MediaSourcePrivateAVFObjC.h).
 
 For GStreamer-based ports, the MediaSourcePrivate is typically a [MediaSourcePrivateGStreamer](../platform/graphics/gstreamer/mse/MediaSourcePrivateGStreamer.h).
 
-When running in DumpRenderTree/WebKitTestRunner, a "mock" MediaSourcePrivate can be enabled, and a [MockMediaSourcePrivate](../platform/mock/mediasource/MockMediaSourcePrivate.h) can be created. This is useful for writing platform-independent tests which exercise the platform-independent [MediaSource](#mediasource) and [SourceBuffer](#sourcebuffer) objects directly.
+When running in DumpRenderTree/CyberKitTestRunner, a "mock" MediaSourcePrivate can be enabled, and a [MockMediaSourcePrivate](../platform/mock/mediasource/MockMediaSourcePrivate.h) can be created. This is useful for writing platform-independent tests which exercise the platform-independent [MediaSource](#mediasource) and [SourceBuffer](#sourcebuffer) objects directly.
 
 ### SourceBufferPrivate ###
 

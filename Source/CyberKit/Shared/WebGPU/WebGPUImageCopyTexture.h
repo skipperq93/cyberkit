@@ -34,7 +34,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureAspect.h>
 #include <wtf/Ref.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ImageCopyTexture {
     WebGPUIdentifier texture;
@@ -43,6 +43,6 @@ struct ImageCopyTexture {
     PAL::WebGPU::TextureAspect aspect { PAL::WebGPU::TextureAspect::All };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

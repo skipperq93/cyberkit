@@ -35,7 +35,7 @@
 
 WTF_WEAK_LINK_FORCE_IMPORT(svm_load_model);
 
-namespace WebKit {
+namespace CyberKit {
 
 bool ResourceLoadStatisticsClassifierCocoa::classify(unsigned subresourceUnderTopFrameDomainsCount, unsigned subresourceUniqueRedirectsToCount, unsigned subframeUnderTopFrameOriginsCount)
 {
@@ -62,7 +62,7 @@ bool ResourceLoadStatisticsClassifierCocoa::classify(unsigned subresourceUnderTo
 
 String ResourceLoadStatisticsClassifierCocoa::storagePath()
 {
-    CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.WebKit"));
+    CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.CyberKit"));
     RetainPtr<CFURLRef> resourceUrl = adoptCF(CFBundleCopyResourcesDirectoryURL(webKitBundle));
     resourceUrl = adoptCF(CFURLCreateCopyAppendingPathComponent(nullptr, resourceUrl.get(), CFSTR("corePrediction_model"), false));
     CFErrorRef error = nullptr;

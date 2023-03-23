@@ -34,7 +34,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 DatabaseUtilities::DatabaseUtilities(String&& storageFilePath)
     : m_storageFilePath(WTFMove(storageFilePath))
@@ -344,4 +344,4 @@ bool DatabaseUtilities::addMissingColumnToTable(ASCIILiteral tableName, ASCIILit
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

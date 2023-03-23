@@ -41,7 +41,7 @@ namespace CyberCore {
 class CAAudioStreamDescription;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 class RemoteAudioDestination;
@@ -72,6 +72,6 @@ private:
     GPUConnectionToWebProcess& m_gpuConnectionToWebProcess;
 };
 
-} // namespace WebKit;
+} // namespace CyberKit;
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)

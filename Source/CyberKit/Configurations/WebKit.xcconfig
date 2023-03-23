@@ -196,12 +196,12 @@ OTHER_TAPI_FLAGS_cocoatouch = $(inherited) -extra-private-header $(SRCROOT)/Plat
 OTHER_TAPI_FLAGS_SRCROOT_YES = -Xparser -include -Xparser config.h;
 
 SECTORDER_FLAGS = $(SECTORDER_FLAGS_$(CONFIGURATION));
-SECTORDER_FLAGS_Production[sdk=iphoneos*] = -Wl,-order_file,$(SDKROOT)/AppleInternal/OrderFiles/WebKit.order;
-SECTORDER_FLAGS_Production[sdk=macosx*] = -Wl,-order_file,mac/WebKit2.order;
+SECTORDER_FLAGS_Production[sdk=iphoneos*] = -Wl,-order_file,$(SDKROOT)/AppleInternal/OrderFiles/CyberKit.order;
+SECTORDER_FLAGS_Production[sdk=macosx*] = -Wl,-order_file,mac/CyberKit2.order;
 
 EXCLUDED_SOURCE_FILE_NAMES = $(EXCLUDED_PRODUCT_DEPENDENCY_NAMES) $(EXCLUDED_IOS_RESOURCE_FILE_NAMES) $(EXCLUDED_MACOS_PLUGIN_FILE_NAMES) $(EXCLUDED_SOURCE_FILE_NAMES_$(WK_WHICH_BUILD_SYSTEM)) $(EXCLUDED_MIGRATED_HEADERS_COCOA_TOUCH_$(WK_IS_COCOA_TOUCH));
 // These are only available in internal builds, so they must be explicitly ignored for the open-source build to succeed.
-EXCLUDED_PRODUCT_DEPENDENCY_NAMES = libWebKitAdditions.a AuthenticationServicesCore.framework;
+EXCLUDED_PRODUCT_DEPENDENCY_NAMES = libCyberKitAdditions.a AuthenticationServicesCore.framework;
 EXCLUDED_IOS_RESOURCE_FILE_NAMES = Resources/ios/*;
 EXCLUDED_IOS_RESOURCE_FILE_NAMES[sdk=iphone*] = ;
 // The legacy build system does not install headers.
@@ -222,7 +222,7 @@ WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR = $(WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_
 WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_ = $(PUBLIC_HEADERS_FOLDER_PATH);
 WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_cocoatouch = $(PRIVATE_HEADERS_FOLDER_PATH);
 
-EXCLUDED_MACOS_PLUGIN_FILE_NAMES[sdk=iphone*] = SecItemShim.dylib WebProcessShim.dylib *.pdf Resources/mac/* com.apple.WebKit.NetworkProcess.sb com.apple.WebKit.GPUProcess.sb com.apple.WebKit.webpushd.mac.sb com.apple.WebProcess.sb;
+EXCLUDED_MACOS_PLUGIN_FILE_NAMES[sdk=iphone*] = SecItemShim.dylib WebProcessShim.dylib *.pdf Resources/mac/* com.apple.CyberKit.NetworkProcess.sb com.apple.CyberKit.GPUProcess.sb com.apple.CyberKit.webpushd.mac.sb com.apple.WebProcess.sb;
 
 INSTALLHDRS_SCRIPT_PHASE = YES;
 APPLY_RULES_IN_COPY_HEADERS = $(WK_USE_NEW_BUILD_SYSTEM);
@@ -245,11 +245,11 @@ WK_HAVE_URL_FORMATTING_macosx = $(WK_HAVE_URL_FORMATTING$(WK_MACOS_1014));
 WK_HAVE_URL_FORMATTING_MACOS_SINCE_1014 = YES;
 
 WK_LOGGING_PREFERENCES_OUTPUT_PATH = $(WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_$(WK_USE_OVERRIDE_FRAMEWORKS_DIR)_$(WK_PLATFORM_NAME));
-WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_macosx = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.apple.WebKit.plist;
-WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_iphoneos = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.apple.WebKit.plist;
+WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_macosx = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.apple.CyberKit.plist;
+WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_iphoneos = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.apple.CyberKit.plist;
 
 WK_TRACE_POINTS_OUTPUT_PATH = $(WK_TRACE_POINTS_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_$(WK_USE_OVERRIDE_FRAMEWORKS_DIR)_$(WK_PLATFORM_NAME));
-WK_TRACE_POINTS_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_macosx = $(DSTROOT)/AppleInternal/Library/Ariadne/Plists/WebKit.plist;
-WK_TRACE_POINTS_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_iphoneos = $(DSTROOT)/AppleInternal/Library/Ariadne/Plists/WebKit.plist;
+WK_TRACE_POINTS_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_macosx = $(DSTROOT)/AppleInternal/Library/Ariadne/Plists/CyberKit.plist;
+WK_TRACE_POINTS_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_iphoneos = $(DSTROOT)/AppleInternal/Library/Ariadne/Plists/CyberKit.plist;
 
 SWIFT_INSTALL_OBJC_HEADER = NO

@@ -32,7 +32,7 @@
 #import "TestWKWebViewController.h"
 #import "Utilities.h"
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 static bool contextMenuRequested;
 static bool contextMenuSPIRequested;
@@ -109,7 +109,7 @@ TEST(ContextMenu, Click)
         [driver clickDown];
         [driver clickUp];
     }];
-    TestWebKitAPI::Util::run(&willPresentCalled);
+    TestCyberKitAPI::Util::run(&willPresentCalled);
     EXPECT_TRUE(contextMenuRequested);
     EXPECT_TRUE(willPresentCalled);
     EXPECT_FALSE(willCommitCalled);
@@ -123,7 +123,7 @@ TEST(ContextMenu, End)
         EXPECT_FALSE(result);
         [driver end];
     }];
-    TestWebKitAPI::Util::run(&didEndCalled);
+    TestCyberKitAPI::Util::run(&didEndCalled);
     EXPECT_TRUE(contextMenuRequested);
     EXPECT_FALSE(willPresentCalled);
     EXPECT_FALSE(willCommitCalled);
@@ -170,7 +170,7 @@ TEST(ContextMenu, APIBeforeSPI)
         [driver clickDown];
         [driver clickUp];
     }];
-    TestWebKitAPI::Util::run(&willPresentCalled);
+    TestCyberKitAPI::Util::run(&willPresentCalled);
     EXPECT_TRUE(contextMenuRequested);
     EXPECT_FALSE(contextMenuSPIRequested);
 }
@@ -219,7 +219,7 @@ TEST(ContextMenu, Image)
         [driver clickDown];
         [driver clickUp];
     }];
-    TestWebKitAPI::Util::run(&willPresentCalled);
+    TestCyberKitAPI::Util::run(&willPresentCalled);
     EXPECT_TRUE(contextMenuRequested);
     EXPECT_TRUE(alternateURLRequested);
     EXPECT_TRUE(willPresentCalled);
@@ -286,7 +286,7 @@ TEST(ContextMenu, Legacy)
         [driver clickDown];
         [driver clickUp];
     }];
-    TestWebKitAPI::Util::run(&previewActionItemsCalled);
+    TestCyberKitAPI::Util::run(&previewActionItemsCalled);
     EXPECT_TRUE(contextMenuRequested);
     EXPECT_TRUE(previewingViewControllerCalled);
     EXPECT_TRUE(willPresentCalled);
@@ -342,7 +342,7 @@ TEST(ContextMenu, SuggestedActions)
         [driver clickDown];
         [driver clickUp];
     }];
-    TestWebKitAPI::Util::run(&willPresentCalled);
+    TestCyberKitAPI::Util::run(&willPresentCalled);
     EXPECT_TRUE(contextMenuRequested);
     EXPECT_TRUE(willPresentCalled);
 }
@@ -373,7 +373,7 @@ TEST(ContextMenu, HintPreviewContainer)
         [driver clickDown];
         [driver clickUp];
     }];
-    TestWebKitAPI::Util::run(&willPresentCalled);
+    TestCyberKitAPI::Util::run(&willPresentCalled);
     EXPECT_TRUE(didAskForHintPreviewContainer);
 }
 

@@ -29,7 +29,7 @@
 #include "Test.h"
 #include <memory>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(StreamConnectionEncoderTest, MinimumMessageSizeCanEncodeExpectedMessageAtAnyOffset)
 {

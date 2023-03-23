@@ -47,7 +47,7 @@ std::ostream& operator<<(std::ostream& os, const TextDirection& direction)
 
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(StringWithDirection, TruncateAtEndWithLeftToRightString)
 {
@@ -93,4 +93,4 @@ TEST(StringWithDirection, TruncateAtEndWithRightToLeftString)
     EXPECT_EQ(String::fromUTF8("קָפּוּצִ'ינוֹ"), result.string);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

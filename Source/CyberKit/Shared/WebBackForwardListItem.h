@@ -41,7 +41,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SuspendedPageProxy;
 class WebBackForwardCache;
@@ -108,4 +108,4 @@ private:
 
 typedef Vector<Ref<WebBackForwardListItem>> BackForwardListItemVector;
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -26,6 +26,6 @@
 #import "config.h"
 #import "NetworkConnectionIntegrityHelpers.h"
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/NetworkConnectionIntegrityHelpersAdditions.mm>)
-#import <WebKitAdditions/NetworkConnectionIntegrityHelpersAdditions.mm>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/NetworkConnectionIntegrityHelpersAdditions.mm>)
+#import <CyberKitAdditions/NetworkConnectionIntegrityHelpersAdditions.mm>
 #endif

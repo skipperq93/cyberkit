@@ -33,7 +33,7 @@
 #include "WebSocketChannelMessages.h"
 #include "WebSocketTask.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 std::unique_ptr<NetworkSocketChannel> NetworkSocketChannel::create(NetworkConnectionToWebProcess& connection, PAL::SessionID sessionID, const ResourceRequest& request, const String& protocol, WebSocketIdentifier identifier, WebPageProxyIdentifier webPageProxyID, const CyberCore::ClientOrigin& clientOrigin, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<NetworkConnectionIntegrity> networkConnectionIntegrityPolicy)
@@ -160,4 +160,4 @@ NetworkSession* NetworkSocketChannel::session()
     return m_session.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

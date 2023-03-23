@@ -260,10 +260,10 @@ AVContentKeySession* CDMInstanceFairPlayStreamingAVFObjC::contentKeySession()
         if (!persistentStateAllowed() || !storageURL)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
-            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyWebKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:nil];
+            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyCyberKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:nil];
 #pragma clang diagnostic pop
         else
-            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyWebKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:storageURL];
+            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyCyberKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:storageURL];
     } else
 #endif
     if (!persistentStateAllowed() || !storageURL)
@@ -1620,10 +1620,10 @@ bool CDMInstanceSessionFairPlayStreamingAVFObjC::ensureSessionOrGroup()
         if (!m_instance->persistentStateAllowed() || !storageURL)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
-            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyWebKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:nil];
+            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyCyberKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:nil];
 #pragma clang diagnostic pop
         else
-            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyWebKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:storageURL];
+            m_session = [PAL::getAVContentKeySessionClass() contentKeySessionWithLegacyCyberKitCompatibilityModeAndKeySystem:AVContentKeySystemFairPlayStreaming storageDirectoryAtURL:storageURL];
     } else
 #endif
     if (!m_instance->persistentStateAllowed() || !storageURL)

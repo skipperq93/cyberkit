@@ -37,7 +37,7 @@
 
 CGImageRef WKImageCreateCGImage(WKImageRef imageRef)
 {
-    WebKit::WebImage* webImage = WebKit::toImpl(imageRef);
+    CyberKit::WebImage* webImage = CyberKit::toImpl(imageRef);
     if (!webImage)
         return nullptr;
 
@@ -56,7 +56,7 @@ WKImageRef WKImageCreateFromCGImage(CGImageRef imageRef, WKImageOptions options)
     
     auto nativeImage = CyberCore::NativeImage::create(imageRef);
     CyberCore::IntSize imageSize = nativeImage->size();
-    auto webImage = WebKit::WebImage::create(imageSize, WebKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
+    auto webImage = CyberKit::WebImage::create(imageSize, CyberKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
 
     auto& graphicsContext = webImage->context();
 

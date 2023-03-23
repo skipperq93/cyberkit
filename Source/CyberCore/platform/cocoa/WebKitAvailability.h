@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKit_WebKitAvailability_h
-#define WebKit_WebKitAvailability_h
+#ifndef CyberKit_CyberKitAvailability_h
+#define CyberKit_CyberKitAvailability_h
 
 #import <TargetConditionals.h>
 
@@ -60,4 +60,4 @@
 
 #endif /* !TARGET_OS_IPHONE */
 
-#endif /* WebKit_WebKitAvailability_h */
+#endif /* CyberKit_CyberKitAvailability_h */

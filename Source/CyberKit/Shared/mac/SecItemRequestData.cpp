@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SecItemRequestData.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 SecItemRequestData::SecItemRequestData(Type type, CFDictionaryRef query)
     : m_type(type)
@@ -48,4 +48,4 @@ SecItemRequestData::SecItemRequestData(Type type, RetainPtr<CFDictionaryRef>&& q
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

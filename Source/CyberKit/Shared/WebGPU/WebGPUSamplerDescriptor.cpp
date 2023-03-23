@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUSamplerDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<SamplerDescriptor> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::SamplerDescriptor& samplerDescriptor)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::SamplerDescriptor> ConvertFromBackingContext::convert
     return { { WTFMove(*base), samplerDescriptor.addressModeU, samplerDescriptor.addressModeV, samplerDescriptor.addressModeW, samplerDescriptor.magFilter, samplerDescriptor.minFilter, samplerDescriptor.mipmapFilter, samplerDescriptor.lodMinClamp, samplerDescriptor.lodMaxClamp, samplerDescriptor.compare, samplerDescriptor.maxAnisotropy } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

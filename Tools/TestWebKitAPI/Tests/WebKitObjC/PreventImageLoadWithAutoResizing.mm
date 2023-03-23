@@ -36,9 +36,9 @@
 
 static bool testFinished = false;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, PreventImageLoadWithAutoResizingTest)
+TEST(CyberKit, PreventImageLoadWithAutoResizingTest)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("DenyWillSendRequestTest"));
     PlatformWebView webView(context.get());
@@ -53,6 +53,6 @@ TEST(WebKit, PreventImageLoadWithAutoResizingTest)
     Util::run(&testFinished);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

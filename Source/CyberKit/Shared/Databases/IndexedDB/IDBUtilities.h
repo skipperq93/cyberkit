@@ -34,8 +34,8 @@ class SecurityOrigin;
 
 } // namespace CyberCore
 
-namespace WebKit {
+namespace CyberKit {
 
 String uniqueDatabaseIdentifier(const String& databaseName, const CyberCore::SecurityOrigin& openingOrigin, const CyberCore::SecurityOrigin& mainFrameOrigin);
     
-} // namespace WebKit
+} // namespace CyberKit

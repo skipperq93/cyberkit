@@ -28,7 +28,7 @@
 #import <Foundation/NSProgress.h>
 #import <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class Download;
 class SandboxExtension;
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WKDownloadProgress : NSProgress
 
-- (instancetype)initWithDownloadTask:(NSURLSessionDownloadTask *)task download:(WebKit::Download&)download URL:(NSURL *)fileURL sandboxExtension:(RefPtr<WebKit::SandboxExtension>)sandboxExtension;
+- (instancetype)initWithDownloadTask:(NSURLSessionDownloadTask *)task download:(CyberKit::Download&)download URL:(NSURL *)fileURL sandboxExtension:(RefPtr<CyberKit::SandboxExtension>)sandboxExtension;
 
 @end
 

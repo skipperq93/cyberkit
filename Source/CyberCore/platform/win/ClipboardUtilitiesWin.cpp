@@ -354,7 +354,7 @@ FORMATETC* htmlFormat()
 
 FORMATETC* smartPasteFormat()
 {
-    static CLIPFORMAT cf = registerClipboardFormat(L"WebKit Smart Paste Format");
+    static CLIPFORMAT cf = registerClipboardFormat(L"CyberKit Smart Paste Format");
     static FORMATETC htmlFormat = {cf, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
     return &htmlFormat;
 }

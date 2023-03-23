@@ -38,7 +38,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/UniqueArray.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct JavaScriptCallbackContext {
     JavaScriptCallbackContext() : didFinish(false) { }
@@ -93,6 +93,6 @@ static void javaScriptCallback(WKSerializedScriptValueRef resultSerializedScript
         << "     Expected: " << expectedResult;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -53,7 +53,7 @@ class ProcessIdentity;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class MemoryLedger { None, Default, Network, Media, Graphics, Neural };
 

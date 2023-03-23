@@ -133,7 +133,7 @@ set(WebCore_MODULES
     JPEG
     OpenSSL
     PNG
-    WebKitRequirements
+    CyberKitRequirements
     WebP
 )
 

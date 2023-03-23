@@ -162,4 +162,4 @@ typedef Boolean (*AXAuditTokenIsAuthenticatedCallback)(audit_token_t);
 
 WTF_EXTERN_C_END
 
-#define kAXClientTypeWebKitTesting 999999
+#define kAXClientTypeCyberKitTesting 999999

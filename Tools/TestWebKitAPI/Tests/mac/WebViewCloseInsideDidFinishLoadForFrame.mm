@@ -46,7 +46,7 @@ static bool didFinishLoad = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, WebViewCloseInsideDidFinishLoadForFrame)
 {
@@ -61,4 +61,4 @@ TEST(CyberKitLegacy, WebViewCloseInsideDidFinishLoadForFrame)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -170,7 +170,7 @@ assert.asyncTestEq = (promise, expected) => {
 const WASM_JSON = `
 {
     "comments": ["This file describes the WebAssembly ISA.",
-                 "Scripts in this folder auto-generate C++ code for CyberScriptCore as well as the testing DSL which WebKit's WebAssembly tests use."
+                 "Scripts in this folder auto-generate C++ code for CyberScriptCore as well as the testing DSL which CyberKit's WebAssembly tests use."
                 ],
     "preamble": [
         { "name": "magic number", "type": "uint32", "value": 1836278016, "description": "NULL character followed by 'asm'" },

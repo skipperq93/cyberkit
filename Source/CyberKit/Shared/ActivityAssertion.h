@@ -29,7 +29,7 @@
 #include <CyberCore/CountedUserActivity.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ActivityAssertion {
     WTF_MAKE_NONCOPYABLE(ActivityAssertion);

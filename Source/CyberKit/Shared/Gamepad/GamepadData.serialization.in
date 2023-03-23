@@ -22,7 +22,7 @@
 
 #if ENABLE(GAMEPAD)
 
-class WebKit::GamepadData {
+class CyberKit::GamepadData {
     unsigned index();
     String id();
     String mapping();

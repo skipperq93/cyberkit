@@ -2199,7 +2199,7 @@ inline bool SearchBuffer::isWordStartMatch(size_t start, size_t length) const
             if (!isSeparator(previousCharacter))
                 return true;
         } else if (isASCIIUpper(firstCharacter)) {
-            // The start of an uppercase run is a word start ("Kit" in "WebKit").
+            // The start of an uppercase run is a word start ("Kit" in "CyberKit").
             if (!isASCIIUpper(previousCharacter))
                 return true;
             // The last character of an uppercase run followed by a non-separator, non-digit
@@ -2212,7 +2212,7 @@ inline bool SearchBuffer::isWordStartMatch(size_t start, size_t length) const
             if (!isASCIIUpper(nextCharacter) && !isASCIIDigit(nextCharacter) && !isSeparator(nextCharacter))
                 return true;
         } else if (isASCIIDigit(firstCharacter)) {
-            // The start of a digit run is a word start ("2" in "WebKit2").
+            // The start of a digit run is a word start ("2" in "CyberKit2").
             if (!isASCIIDigit(previousCharacter))
                 return true;
         } else if (isSeparator(previousCharacter) || isASCIIDigit(previousCharacter)) {

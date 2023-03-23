@@ -23,7 +23,7 @@
 header: "WebGPUStorageTextureBindingLayout.h"
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::StorageTextureBindingLayout {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::StorageTextureBindingLayout {
     PAL::WebGPU::StorageTextureAccess access
     PAL::WebGPU::TextureFormat format
     PAL::WebGPU::TextureViewDimension viewDimension

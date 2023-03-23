@@ -1064,7 +1064,7 @@ set(WebCore_PRIVATE_FRAMEWORK_HEADERS
     inspector/InspectorFrontendClientLocal.h
     inspector/InspectorFrontendHost.h
     inspector/InspectorInstrumentationPublic.h
-    inspector/InspectorInstrumentationWebKit.h
+    inspector/InspectorInstrumentationCyberKit.h
     inspector/InspectorOverlay.h
     inspector/InspectorOverlayLabel.h
     inspector/InspectorWebAgentBase.h
@@ -1341,7 +1341,7 @@ set(WebCore_PRIVATE_FRAMEWORK_HEADERS
     page/ViewportConfiguration.h
     page/VisitedLinkStore.h
     page/WebCoreKeyboardUIMode.h
-    page/WebKitNamespace.h
+    page/CyberKitNamespace.h
     page/WheelEventDeltaFilter.h
     page/WheelEventTestMonitor.h
     page/WindowFeatures.h
@@ -2340,7 +2340,7 @@ set(WebCore_PRIVATE_FRAMEWORK_HEADERS
     ${WebCore_DERIVED_SOURCES_DIR}/TagName.h
     ${WebCore_DERIVED_SOURCES_DIR}/TransformStreamInternalsBuiltins.h
     ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltinInternals.h
-    ${WebCore_DERIVED_SOURCES_DIR}/WebKitFontFamilyNames.h
+    ${WebCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.h
     ${WebCore_DERIVED_SOURCES_DIR}/WritableStreamInternalsBuiltins.h
 )
 

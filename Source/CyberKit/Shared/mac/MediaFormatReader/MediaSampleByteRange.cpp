@@ -29,7 +29,7 @@
 
 #if ENABLE(WEBM_FORMAT_READER)
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -102,6 +102,6 @@ void MediaSampleByteRange::setTimestamps(const MediaTime&, const MediaTime&)
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

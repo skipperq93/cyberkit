@@ -38,7 +38,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringHash.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template<typename T>
 struct RobinHoodHash : public DefaultHash<T> {
@@ -1272,4 +1272,4 @@ TEST(WTF_RobinHoodHashMap, LargeRemoval)
     EXPECT_EQ(map.capacity(), 8u);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

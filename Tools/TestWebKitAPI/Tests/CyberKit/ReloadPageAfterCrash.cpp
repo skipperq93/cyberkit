@@ -40,7 +40,7 @@
 #include <process-launcher.h>
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loadBeforeCrash = false;
 static bool loadAfterCrash = false;
@@ -72,7 +72,7 @@ static void didCrash(WKPageRef page, const void*)
     WKPageReload(page);
 }
 
-TEST(WebKit, ReloadPageAfterCrash)
+TEST(CyberKit, ReloadPageAfterCrash)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -117,7 +117,7 @@ static void didCrashCheckFrames(WKPageRef page, const void*)
     calledCrashHandler = true;
 }
 
-TEST(WebKit, FocusedFrameAfterCrash)
+TEST(CyberKit, FocusedFrameAfterCrash)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -156,6 +156,6 @@ TEST(WebKit, FocusedFrameAfterCrash)
 
 #endif // !PLATFORM(WIN)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

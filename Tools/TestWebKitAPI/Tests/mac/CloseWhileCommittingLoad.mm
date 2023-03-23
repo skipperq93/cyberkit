@@ -45,7 +45,7 @@ static bool didCloseWhileCommittingLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, CloseWhileCommittingLoad)
 {
@@ -54,9 +54,9 @@ TEST(CyberKitLegacy, CloseWhileCommittingLoad)
     [webView setFrameLoadDelegate:delegate.get()];
 
     didCloseWhileCommittingLoad = false;
-    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didCloseWhileCommittingLoad);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

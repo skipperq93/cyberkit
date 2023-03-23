@@ -48,15 +48,15 @@
 
 ALLOW_COMMA_BEGIN
 
-#include <webrtc/sdk/WebKit/WebKitDecoder.h>
-#include <webrtc/sdk/WebKit/WebKitEncoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitDecoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitEncoder.h>
 
 ALLOW_COMMA_END
 
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <CyberCore/CoreVideoSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<LibWebRTCCodecsProxy> LibWebRTCCodecsProxy::create(GPUConnectionToWebProcess& webProcessConnection)
@@ -136,7 +136,7 @@ std::unique_ptr<CyberCore::WebRTCVideoDecoder> LibWebRTCCodecsProxy::createLocal
     auto block = makeBlockPtr(createDecoderCallback(identifier, useRemoteFrames, enableAdditionalLogging));
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/LibWebRTCCodecsProxyAdditions.mm>
+#include <CyberKitAdditions/LibWebRTCCodecsProxyAdditions.mm>
 #endif
 
     switch (codecType) {
@@ -243,7 +243,7 @@ void LibWebRTCCodecsProxy::createEncoder(VideoEncoderIdentifier identifier, Vide
     if (codecType != VideoCodecType::H264 && codecType != VideoCodecType::H265)
         return;
 
-    auto newFrameBlock = makeBlockPtr([connection = m_connection, identifier](const uint8_t* buffer, size_t size, const webrtc::WebKitEncodedFrameInfo& info) {
+    auto newFrameBlock = makeBlockPtr([connection = m_connection, identifier](const uint8_t* buffer, size_t size, const webrtc::CyberKitEncodedFrameInfo& info) {
         connection->send(Messages::LibWebRTCCodecs::CompletedEncoding { identifier, IPC::DataReference { buffer, size }, info }, 0);
     });
     auto newConfigurationBlock = makeBlockPtr([connection = m_connection, identifier](const uint8_t* buffer, size_t size) {

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ProcessTerminationReason.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 const char* processTerminationReasonToString(ProcessTerminationReason reason)
 {

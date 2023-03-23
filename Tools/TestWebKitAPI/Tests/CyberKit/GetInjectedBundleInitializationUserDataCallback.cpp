@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool done;
 
@@ -46,7 +46,7 @@ static WKTypeRef getInjectedBundleInitializationUserData(WKContextRef context, c
     return Util::createInitializationDictionaryForInjectedBundleTest("GetInjectedBundleInitializationUserDataCallbackTest",  Util::toWK("Extra initialization data").get());
 }
 
-TEST(WebKit, GetInjectedBundleInitializationUserDataCallback)
+TEST(CyberKit, GetInjectedBundleInitializationUserDataCallback)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextWithInjectedBundle());
 
@@ -67,6 +67,6 @@ TEST(WebKit, GetInjectedBundleInitializationUserDataCallback)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

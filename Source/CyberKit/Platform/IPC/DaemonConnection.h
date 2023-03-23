@@ -35,7 +35,7 @@
 #include <wtf/spi/darwin/XPCSPI.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace Daemon {
 
@@ -81,4 +81,4 @@ private:
 
 } // namespace Daemon
 
-} // namespace WebKit
+} // namespace CyberKit

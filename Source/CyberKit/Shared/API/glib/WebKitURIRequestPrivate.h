@@ -23,13 +23,13 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKitURIRequestPrivate_h
-#define WebKitURIRequestPrivate_h
+#ifndef CyberKitURIRequestPrivate_h
+#define CyberKitURIRequestPrivate_h
 
-#include "WebKitURIRequest.h"
+#include "CyberKitURIRequest.h"
 #include <CyberCore/ResourceRequest.h>
 
-WebKitURIRequest* webkitURIRequestCreateForResourceRequest(const CyberCore::ResourceRequest&);
-void webkitURIRequestGetResourceRequest(WebKitURIRequest*, CyberCore::ResourceRequest&);
+CyberKitURIRequest* webkitURIRequestCreateForResourceRequest(const CyberCore::ResourceRequest&);
+void webkitURIRequestGetResourceRequest(CyberKitURIRequest*, CyberCore::ResourceRequest&);
 
-#endif // WebKitURIRequestPrivate_h
+#endif // CyberKitURIRequestPrivate_h

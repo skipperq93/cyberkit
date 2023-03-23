@@ -36,13 +36,13 @@
 cairo_surface_t* WKImageCreateCairoSurface(WKImageRef imageRef)
 {
     // We cannot pass a RefPtr through the API here, so we just leak the reference.
-    return WebKit::toImpl(imageRef)->createCairoSurface().leakRef();
+    return CyberKit::toImpl(imageRef)->createCairoSurface().leakRef();
 }
 
 WKImageRef WKImageCreateFromCairoSurface(cairo_surface_t* surface, WKImageOptions options)
 {
     CyberCore::IntSize imageSize(cairo_image_surface_get_width(surface), cairo_image_surface_get_height(surface));
-    auto webImage = WebKit::WebImage::create(imageSize, WebKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
+    auto webImage = CyberKit::WebImage::create(imageSize, CyberKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
     auto& graphicsContext = webImage->context();
 
     cairo_t* cr = graphicsContext.platformContext()->cr();

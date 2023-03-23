@@ -774,7 +774,7 @@ bool CachedResourceLoader::shouldContinueAfterNotifyingLoadedFromMemoryCache(con
 
 bool CachedResourceLoader::shouldUpdateCachedResourceWithCurrentRequest(const CachedResource& resource, const CachedResourceRequest& request)
 {
-    // WebKit is not supporting CORS for fonts (https://bugs.webkit.org/show_bug.cgi?id=86817), no need to update the resource before reusing it.
+    // CyberKit is not supporting CORS for fonts (https://bugs.webkit.org/show_bug.cgi?id=86817), no need to update the resource before reusing it.
     if (resource.type() == CachedResource::Type::FontResource)
         return false;
 
@@ -960,13 +960,13 @@ ResourceErrorOr<CachedResourceHandle<CachedResource>> CachedResourceLoader::requ
     URL url = request.resourceRequest().url();
     if (!frame() || !frame()->page()) {
         CACHEDRESOURCELOADER_RELEASE_LOG("requestResource: failed because no frame or page");
-        return makeUnexpected(ResourceError { errorDomainWebKitInternal, 0, url, "Invalid loader state"_s });
+        return makeUnexpected(ResourceError { errorDomainCyberKitInternal, 0, url, "Invalid loader state"_s });
     }
 
     auto& frame = *this->frame();
     if (!url.isValid()) {
         CACHEDRESOURCELOADER_RELEASE_LOG_WITH_FRAME("requestResource: URL is invalid", frame);
-        return makeUnexpected(ResourceError { errorDomainWebKitInternal, 0, url, "URL is invalid"_s });
+        return makeUnexpected(ResourceError { errorDomainCyberKitInternal, 0, url, "URL is invalid"_s });
     }
 
     LOG(ResourceLoading, "CachedResourceLoader::requestResource '%.255s', charset '%s', priority=%d, forPreload=%u", url.stringCenterEllipsizedToLength().latin1().data(), request.charset().latin1().data(), request.priority() ? static_cast<int>(request.priority().value()) : -1, forPreload == ForPreload::Yes);
@@ -997,7 +997,7 @@ ResourceErrorOr<CachedResourceHandle<CachedResource>> CachedResourceLoader::requ
     // We are passing url as well as request, as request url may contain a fragment identifier.
     if (!canRequest(type, url, request.options(), forPreload)) {
         CACHEDRESOURCELOADER_RELEASE_LOG_WITH_FRAME("requestResource: Not allowed to request resource", frame);
-        return makeUnexpected(ResourceError { errorDomainWebKitInternal, 0, url, "Not allowed to request resource"_s, ResourceError::Type::AccessControl });
+        return makeUnexpected(ResourceError { errorDomainCyberKitInternal, 0, url, "Not allowed to request resource"_s, ResourceError::Type::AccessControl });
     }
 
     if (!portAllowed(url)) {
@@ -1027,14 +1027,14 @@ ResourceErrorOr<CachedResourceHandle<CachedResource>> CachedResourceLoader::requ
                 auto resource = createResource(type, WTFMove(request), page.sessionID(), &page.cookieJar(), page.settings());
                 ASSERT(resource);
                 resource->error(CachedResource::Status::LoadError);
-                resource->setResourceError(ResourceError(ContentExtensions::WebKitContentBlockerDomain, 0, resourceRequest.url(), WEB_UI_STRING("The URL was blocked by a content blocker", "WebKitErrorBlockedByContentBlocker description")));
+                resource->setResourceError(ResourceError(ContentExtensions::CyberKitContentBlockerDomain, 0, resourceRequest.url(), WEB_UI_STRING("The URL was blocked by a content blocker", "CyberKitErrorBlockedByContentBlocker description")));
                 return resource;
             }
             if (RefPtr document = this->document()) {
                 if (auto message = ContentExtensions::customLoadBlockingMessageForConsole(results, resourceRequest.url()))
                     document->addConsoleMessage(MessageSource::ContentBlocker, MessageLevel::Info, WTFMove(*message));
             }
-            return makeUnexpected(ResourceError { errorDomainWebKitInternal, 0, url, "Resource blocked by content blocker"_s, ResourceError::Type::AccessControl });
+            return makeUnexpected(ResourceError { errorDomainCyberKitInternal, 0, url, "Resource blocked by content blocker"_s, ResourceError::Type::AccessControl });
         }
         if (madeHTTPS
             && type == CachedResource::Type::MainResource
@@ -1650,7 +1650,7 @@ Vector<Ref<SVGImage>> CachedResourceLoader::allCachedSVGImages() const
 ResourceErrorOr<CachedResourceHandle<CachedResource>> CachedResourceLoader::preload(CachedResource::Type type, CachedResourceRequest&& request)
 {
     if (InspectorInstrumentation::willIntercept(frame(), request.resourceRequest()))
-        return makeUnexpected(ResourceError { errorDomainWebKitInternal, 0, request.resourceRequest().url(), "Inspector intercept"_s });
+        return makeUnexpected(ResourceError { errorDomainCyberKitInternal, 0, request.resourceRequest().url(), "Inspector intercept"_s });
 
     if (request.charset().isEmpty() && (type == CachedResource::Type::Script || type == CachedResource::Type::CSSStyleSheet))
         request.setCharset(m_document->charset());

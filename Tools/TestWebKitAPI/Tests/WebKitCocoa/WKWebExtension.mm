@@ -32,7 +32,7 @@
 #import <CyberKit/_WKWebExtensionMatchPatternPrivate.h>
 #import <CyberKit/_WKWebExtensionPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSError *matchingError(NSArray<NSError *> *errors, _WKWebExtensionError code)
 {
@@ -609,6 +609,6 @@ TEST(WKWebExtension, BackgroundParsing)
     EXPECT_EQ(testExtension.errors.count, 0ul);;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

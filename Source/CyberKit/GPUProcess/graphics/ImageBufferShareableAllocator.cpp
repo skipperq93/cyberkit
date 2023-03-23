@@ -33,7 +33,7 @@
 
 #if ENABLE(GPU_PROCESS)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ImageBufferShareableAllocator::ImageBufferShareableAllocator(const ProcessIdentity& resourceOwner)
@@ -85,6 +85,6 @@ void ImageBufferShareableAllocator::transferMemoryOwnership(SharedMemory::Handle
     handle.setOwnershipOfMemory(m_resourceOwner, MemoryLedger::Graphics);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

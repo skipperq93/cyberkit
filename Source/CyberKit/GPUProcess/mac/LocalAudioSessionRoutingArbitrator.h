@@ -29,7 +29,7 @@
 
 #include "AudioSessionRoutingArbitratorProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 

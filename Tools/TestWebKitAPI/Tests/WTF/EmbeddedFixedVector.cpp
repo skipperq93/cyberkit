@@ -28,7 +28,7 @@
 #include "MoveOnly.h"
 #include <wtf/EmbeddedFixedVector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_EmbeddedFixedVector, Empty)
 {

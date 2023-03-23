@@ -34,7 +34,7 @@
 
 using namespace PlatformXR;
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<XRDeviceProxy> XRDeviceProxy::create(XRDeviceInfo&& deviceInfo, PlatformXRSystemProxy& xrSystem)
 {
@@ -120,6 +120,6 @@ void XRDeviceProxy::submitFrame(Vector<PlatformXR::Device::Layer>&&)
         m_xrSystem->submitFrame();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBXR)

@@ -33,7 +33,7 @@ namespace CyberCore {
 struct ClientOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class CacheStorageCache;
 class CacheStorageRegistry;
 class CacheStorageStore;
@@ -92,4 +92,4 @@ private:
     Deque<std::pair<uint64_t, CompletionHandler<void(bool)>>> m_pendingSpaceRequests;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

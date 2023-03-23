@@ -31,10 +31,10 @@
 #import "TestWKWebView.h"
 #import <CyberCore/PictureInPictureSupport.h>
 
-TEST(WebKit, PictureInPictureSupport)
+TEST(CyberKit, PictureInPictureSupport)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 

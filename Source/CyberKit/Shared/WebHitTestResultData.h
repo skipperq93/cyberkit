@@ -42,7 +42,7 @@ namespace CyberCore {
 class HitTestResult;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(MAC)
 struct WebHitTestResultPlatformData {
@@ -88,7 +88,7 @@ struct WebHitTestResultData {
     WebHitTestResultData();
     WebHitTestResultData(const CyberCore::HitTestResult&, const String& toolTipText);
     WebHitTestResultData(const CyberCore::HitTestResult&, bool includeImage);
-    WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const CyberCore::IntRect& elementBoundingBox, const WebKit::WebHitTestResultData::IsScrollbar&, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<WebKit::SharedMemory::Handle>& imageHandle, const RefPtr<WebKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
+    WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const CyberCore::IntRect& elementBoundingBox, const CyberKit::WebHitTestResultData::IsScrollbar&, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<CyberKit::SharedMemory::Handle>& imageHandle, const RefPtr<CyberKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
 #if PLATFORM(MAC)
         const WebHitTestResultPlatformData&,
 #endif
@@ -97,7 +97,7 @@ struct WebHitTestResultData {
 
     CyberCore::IntRect elementBoundingBoxInWindowCoordinates(const CyberCore::HitTestResult&);
 
-    std::optional<WebKit::SharedMemory::Handle> getImageSharedMemoryHandle() const;
+    std::optional<CyberKit::SharedMemory::Handle> getImageSharedMemoryHandle() const;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

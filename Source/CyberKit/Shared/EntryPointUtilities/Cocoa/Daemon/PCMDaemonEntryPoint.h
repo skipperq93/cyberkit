@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 int PCMDaemonMain(int, const char**);
 
-} // namespace WebKit
+} // namespace CyberKit

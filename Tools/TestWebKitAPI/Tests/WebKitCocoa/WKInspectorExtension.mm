@@ -98,10 +98,10 @@ TEST(WKInspectorExtension, CanEvaluateScriptInExtensionTab)
     [webView loadHTMLString:@"<head><title>Test page to be inspected</title></head><body><p>Filler content</p></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     auto extensionID = [NSUUID UUID].UUIDString;
-    auto extensionBundleIdentifier = @"org.webkit.TestWebKitAPI.FirstExtension";
+    auto extensionBundleIdentifier = @"org.webkit.TestCyberKitAPI.FirstExtension";
     auto extensionDisplayName = @"FirstExtension";
 
     // Register the test extension.
@@ -113,7 +113,7 @@ TEST(WKInspectorExtension, CanEvaluateScriptInExtensionTab)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     auto extensionDelegate = adoptNS([InspectorExtensionDelegateForTestingInspectorExtension new]);
     [sharedInspectorExtension setDelegate:extensionDelegate.get()];
@@ -130,7 +130,7 @@ TEST(WKInspectorExtension, CanEvaluateScriptInExtensionTab)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     didShowExtensionTabWasCalled = false;
@@ -139,8 +139,8 @@ TEST(WKInspectorExtension, CanEvaluateScriptInExtensionTab)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
-    TestWebKitAPI::Util::run(&didShowExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&didShowExtensionTabWasCalled);
 
     // Read back a value that is set in the <iframe>'s script context.
     pendingCallbackWasCalled = false;
@@ -152,7 +152,7 @@ TEST(WKInspectorExtension, CanEvaluateScriptInExtensionTab)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Check to see that script is actually being evaluated in the <iframe>'s script context.
     pendingCallbackWasCalled = false;
@@ -164,7 +164,7 @@ TEST(WKInspectorExtension, CanEvaluateScriptInExtensionTab)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Unregister the test extension.
     pendingCallbackWasCalled = false;
@@ -173,7 +173,7 @@ TEST(WKInspectorExtension, CanEvaluateScriptInExtensionTab)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 TEST(WKInspectorExtension, ExtensionTabIsPersistent)
@@ -189,10 +189,10 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
     [webView loadHTMLString:@"<head><title>Test page to be inspected</title></head><body><p>Filler content</p></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     auto extensionID = [NSUUID UUID].UUIDString;
-    auto extensionBundleIdentifier = @"org.webkit.TestWebKitAPI.SecondExtension";
+    auto extensionBundleIdentifier = @"org.webkit.TestCyberKitAPI.SecondExtension";
     auto extensionDisplayName = @"SecondExtension";
 
     // Register the test extension.
@@ -204,7 +204,7 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     auto extensionDelegate = adoptNS([InspectorExtensionDelegateForTestingInspectorExtension new]);
     [sharedInspectorExtension setDelegate:extensionDelegate.get()];
@@ -221,7 +221,7 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     didShowExtensionTabWasCalled = false;
@@ -230,8 +230,8 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
-    TestWebKitAPI::Util::run(&didShowExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&didShowExtensionTabWasCalled);
 
     auto scriptSource = @"!!window.getUniqueValue && window.getUniqueValue()";
 
@@ -244,11 +244,11 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Cause the extension tab to be hidden. Its <iframe> should not detach from the DOM.
     [[webView _inspector] showConsole];
-    TestWebKitAPI::Util::run(&didHideExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&didHideExtensionTabWasCalled);
 
     // Check the unique value again, while the <iframe> is being hidden. If the <iframe> is
     // detached from the DOM, then this evaluation will fail or hang.
@@ -260,7 +260,7 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Reselect the extension tab.
     pendingCallbackWasCalled = false;
@@ -270,8 +270,8 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
-    TestWebKitAPI::Util::run(&didShowExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&didShowExtensionTabWasCalled);
 
     // Check the unique value again after reselecting the extension tab.
     pendingCallbackWasCalled = false;
@@ -282,7 +282,7 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Unregister the test extension.
     pendingCallbackWasCalled = false;
@@ -291,7 +291,7 @@ TEST(WKInspectorExtension, ExtensionTabIsPersistent)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
@@ -307,10 +307,10 @@ TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
     [webView loadHTMLString:@"<head><title>Test page to be inspected</title></head><body><p>Filler content</p></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     auto extensionID = [NSUUID UUID].UUIDString;
-    auto extensionBundleIdentifier = @"org.webkit.TestWebKitAPI.ThirdExtension";
+    auto extensionBundleIdentifier = @"org.webkit.TestCyberKitAPI.ThirdExtension";
     auto extensionDisplayName = @"ThirdExtension";
 
     // Register the test extension.
@@ -322,7 +322,7 @@ TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     auto extensionDelegate = adoptNS([InspectorExtensionDelegateForTestingInspectorExtension new]);
     [sharedInspectorExtension setDelegate:extensionDelegate.get()];
@@ -339,7 +339,7 @@ TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     didShowExtensionTabWasCalled = false;
@@ -348,8 +348,8 @@ TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
-    TestWebKitAPI::Util::run(&didShowExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&didShowExtensionTabWasCalled);
 
     auto secretString = @"Open Sesame";
     auto scriptSource = [NSString stringWithFormat:@"Promise.resolve(\"%@\")", secretString];
@@ -362,7 +362,7 @@ TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     [sharedInspectorExtension evaluateScript:@"(((" inTabWithIdentifier:sharedExtensionTabIdentifier.get() completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable result) {
@@ -371,7 +371,7 @@ TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Unregister the test extension.
     pendingCallbackWasCalled = false;
@@ -380,7 +380,7 @@ TEST(WKInspectorExtension, EvaluateScriptInExtensionTabCanReturnPromises)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 TEST(WKInspectorExtension, EvaluateScriptOnPage)
@@ -393,7 +393,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
     auto uiDelegate = adoptNS([UIDelegateForTestingInspectorExtension new]);
     auto navigationDelegate = adoptNS([[TestNavigationDelegate alloc] init]);
 
-    auto *testPageFileURL = [NSBundle.mainBundle URLForResource:@"WKInspectorExtensionEvaluateScriptOnPage" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    auto *testPageFileURL = [NSBundle.mainBundle URLForResource:@"WKInspectorExtensionEvaluateScriptOnPage" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView setUIDelegate:uiDelegate.get()];
     [webView setNavigationDelegate:navigationDelegate.get()];
@@ -401,10 +401,10 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
     [navigationDelegate waitForDidFinishNavigation];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     auto extensionID = [NSUUID UUID].UUIDString;
-    auto extensionBundleIdentifier = @"org.webkit.TestWebKitAPI.FourthExtension";
+    auto extensionBundleIdentifier = @"org.webkit.TestCyberKitAPI.FourthExtension";
     auto extensionDisplayName = @"FourthExtension";
 
     // Register the test extension.
@@ -416,7 +416,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     auto extensionDelegate = adoptNS([InspectorExtensionDelegateForTestingInspectorExtension new]);
     [sharedInspectorExtension setDelegate:extensionDelegate.get()];
@@ -433,7 +433,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     didShowExtensionTabWasCalled = false;
@@ -442,8 +442,8 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
-    TestWebKitAPI::Util::run(&didShowExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&didShowExtensionTabWasCalled);
 
     auto mainFrameSecretString = @"42-mainFrame";
     auto innerFrameSecretString = @"42-innerFrame";
@@ -458,7 +458,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Test main frame evaluation failure.
     pendingCallbackWasCalled = false;
@@ -468,7 +468,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Test loose frameURL evaluation.
     auto *testPageInnerFrameFileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@WKInspectorExtensionEvaluateScriptOnPageInnerFrame.html", [[testPageFileURL URLByDeletingLastPathComponent] absoluteString]]];
@@ -481,7 +481,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Test strict frameURL evaluation.
     auto *testPageInnerFrameStrictFileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?query=param#fragment", [testPageInnerFrameFileURL absoluteString]]];
@@ -494,7 +494,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Unregister the test extension.
     pendingCallbackWasCalled = false;
@@ -503,7 +503,7 @@ TEST(WKInspectorExtension, EvaluateScriptOnPage)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

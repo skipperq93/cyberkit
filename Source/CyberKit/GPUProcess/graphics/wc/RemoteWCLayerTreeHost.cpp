@@ -36,7 +36,7 @@
 #include "WCScene.h"
 #include "WCUpateInfo.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 static IPC::StreamConnectionWorkQueue& remoteGraphicsStreamWorkQueue()
 {
@@ -52,12 +52,12 @@ static IPC::StreamConnectionWorkQueue& remoteGraphicsStreamWorkQueue()
 #endif
 }
 
-std::unique_ptr<RemoteWCLayerTreeHost> RemoteWCLayerTreeHost::create(GPUConnectionToWebProcess& connectionToWebProcess, WebKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering)
+std::unique_ptr<RemoteWCLayerTreeHost> RemoteWCLayerTreeHost::create(GPUConnectionToWebProcess& connectionToWebProcess, CyberKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering)
 {
     return makeUnique<RemoteWCLayerTreeHost>(connectionToWebProcess, identifier, nativeWindow, usesOffscreenRendering);
 }
 
-RemoteWCLayerTreeHost::RemoteWCLayerTreeHost(GPUConnectionToWebProcess& connectionToWebProcess, WebKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering)
+RemoteWCLayerTreeHost::RemoteWCLayerTreeHost(GPUConnectionToWebProcess& connectionToWebProcess, CyberKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering)
     : m_connectionToWebProcess(connectionToWebProcess)
     , m_webProcessIdentifier(connectionToWebProcess.webProcessIdentifier())
     , m_identifier(identifier)
@@ -96,7 +96,7 @@ uint64_t RemoteWCLayerTreeHost::messageSenderDestinationID() const
     return m_identifier.toUInt64();
 }
 
-void RemoteWCLayerTreeHost::update(WCUpateInfo&& update, CompletionHandler<void(std::optional<WebKit::UpdateInfo>)>&& completionHandler)
+void RemoteWCLayerTreeHost::update(WCUpateInfo&& update, CompletionHandler<void(std::optional<CyberKit::UpdateInfo>)>&& completionHandler)
 {
     remoteGraphicsStreamWorkQueue().dispatch([this, weakThis = WeakPtr(*this), scene = m_scene.get(), update = WTFMove(update), completionHandler = WTFMove(completionHandler)]() mutable {
         auto updateInfo = scene->update(WTFMove(update));
@@ -108,6 +108,6 @@ void RemoteWCLayerTreeHost::update(WCUpateInfo&& update, CompletionHandler<void(
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

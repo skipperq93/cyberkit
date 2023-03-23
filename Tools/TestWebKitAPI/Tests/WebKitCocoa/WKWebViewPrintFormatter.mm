@@ -33,8 +33,8 @@
 #import "TestPDFDocument.h"
 #import "TestWKWebView.h"
 #import "CyberCore/Color.h"
-#import <CyberKit/WebKit.h>
-#import <CyberKit/WebKitPrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/CyberKitPrivate.h>
 #import <CyberKit/_WKWebViewPrintFormatter.h>
 #import <wtf/RetainPtr.h>
 
@@ -162,7 +162,7 @@ TEST(WKWebView, PrintToPDFShouldPrintBackgrounds)
 
         UIGraphicsEndPDFContext();
 
-        auto pdf = TestWebKitAPI::TestPDFDocument::createFromData(pdfData);
+        auto pdf = TestCyberKitAPI::TestPDFDocument::createFromData(pdfData);
         auto page = pdf->page(0);
         
         CyberCore::Color expected = CyberCore::Color({ 0xFF, 0x00, 0x00 });
@@ -208,7 +208,7 @@ TEST(WKWebView, PrintToPDFUsingPrintInteractionController)
         });
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_NE(pdfDataLength, 0UL);
 }
 
@@ -262,7 +262,7 @@ TEST(WKWebView, PrintToPDFUsingMultiplePrintInteractionControllers)
         });
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_NE(pdfDataLength, 0UL);
     EXPECT_NE(pdfDataLength2, 0UL);
 }
@@ -312,7 +312,7 @@ TEST(WKWebView, PrintToPDFUsingPrintInteractionControllerAndPrintPageRenderer)
 
     UIGraphicsEndPDFContext();
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_NE(printInteractionControllerPDFDataLength, 0UL);
     EXPECT_NE([printPageRendererPDFData length], 0UL);
 }

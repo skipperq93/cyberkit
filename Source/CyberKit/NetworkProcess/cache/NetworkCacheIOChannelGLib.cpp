@@ -32,7 +32,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/RunLoopSourcePriority.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 IOChannel::IOChannel(String&& filePath, Type type, std::optional<WorkQueue::QOS> qos)
@@ -132,4 +132,4 @@ void IOChannel::write(size_t offset, const Data& data, WTF::WorkQueueBase& queue
 }
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit

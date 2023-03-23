@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include "WebKitFliteSourceGStreamer.h"
+#include "CyberKitFliteSourceGStreamer.h"
 
 #if ENABLE(SPEECH_SYNTHESIS) && USE(GSTREAMER)
 
@@ -39,23 +39,23 @@ extern cst_voice* register_cmu_us_slt(const char*);
 
 using namespace CyberCore;
 
-typedef struct _WebKitFliteSrcClass WebKitFliteSrcClass;
-typedef struct _WebKitFliteSrcPrivate WebKitFliteSrcPrivate;
+typedef struct _CyberKitFliteSrcClass CyberKitFliteSrcClass;
+typedef struct _CyberKitFliteSrcPrivate CyberKitFliteSrcPrivate;
 
-#define WEBKIT_FLITE_SRC_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_FLITE_SRC, WebKitFliteSrcClass))
+#define WEBKIT_FLITE_SRC_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_FLITE_SRC, CyberKitFliteSrcClass))
 #define WEBKIT_IS_FLITE_SRC(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_FLITE_SRC))
 #define WEBKIT_IS_FLITE_SRC_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_FLITE_SRC))
 
-struct _WebKitFliteSrcClass {
+struct _CyberKitFliteSrcClass {
     GstBaseSrcClass parentClass;
 };
 
-struct _WebKitFliteSrc {
+struct _CyberKitFliteSrc {
     GstBaseSrc parent;
-    WebKitFliteSrcPrivate* priv;
+    CyberKitFliteSrcPrivate* priv;
 };
 
-struct _WebKitFliteSrcPrivate {
+struct _CyberKitFliteSrcPrivate {
     struct StreamingMembers {
         bool didLoadUtterance;
         GRefPtr<GstAdapter> adapter;
@@ -84,7 +84,7 @@ static GstStaticPadTemplate srcTemplate = GST_STATIC_PAD_TEMPLATE("src",
 );
 
 #define webkit_flite_src_parent_class parent_class
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitFliteSrc, webkit_flite_src, GST_TYPE_BASE_SRC,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitFliteSrc, webkit_flite_src, GST_TYPE_BASE_SRC,
     GST_DEBUG_CATEGORY_INIT(webkit_flite_src_debug, "webkitflitesrc", 0, "flitesrc element"));
 
 // To add more voices, add voice register functions here.
@@ -96,9 +96,9 @@ static VoiceRegisterFunction voiceRegisterFunctions[] = {
     register_cmu_us_awb,
 };
 
-static void webkitFliteSrcReset(WebKitFliteSrc* src)
+static void webkitFliteSrcReset(CyberKitFliteSrc* src)
 {
-    WebKitFliteSrcPrivate* priv = src->priv;
+    CyberKitFliteSrcPrivate* priv = src->priv;
 
     DataMutexLocker members { priv->dataMutex };
     gst_adapter_clear(members->adapter.get());
@@ -109,8 +109,8 @@ static void webkitFliteSrcConstructed(GObject* object)
 {
     GST_CALL_PARENT(G_OBJECT_CLASS, constructed, (object));
 
-    WebKitFliteSrc* src = WEBKIT_FLITE_SRC(object);
-    WebKitFliteSrcPrivate* priv = src->priv;
+    CyberKitFliteSrc* src = WEBKIT_FLITE_SRC(object);
+    CyberKitFliteSrcPrivate* priv = src->priv;
 
     /* We operate in time */
     gst_base_src_set_format(GST_BASE_SRC(src), GST_FORMAT_TIME);
@@ -126,8 +126,8 @@ static void webkitFliteSrcConstructed(GObject* object)
 
 static gboolean webkitFliteSrcStart(GstBaseSrc* baseSource)
 {
-    WebKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
-    WebKitFliteSrcPrivate* priv = src->priv;
+    CyberKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
+    CyberKitFliteSrcPrivate* priv = src->priv;
 
     if (priv->text.isEmpty() || !priv->currentVoice) {
         GST_ERROR_OBJECT(src, "No utterance provided.");
@@ -138,7 +138,7 @@ static gboolean webkitFliteSrcStart(GstBaseSrc* baseSource)
 
 static gboolean webkitFliteSrcStop(GstBaseSrc* baseSource)
 {
-    WebKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
+    CyberKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
     webkitFliteSrcReset(src);
     return TRUE;
 }
@@ -148,8 +148,8 @@ static GstFlowReturn webkitFliteSrcCreate(GstBaseSrc* baseSource, guint64 offset
     UNUSED_PARAM(offset);
     UNUSED_PARAM(length);
 
-    WebKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
-    WebKitFliteSrcPrivate* priv = src->priv;
+    CyberKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
+    CyberKitFliteSrcPrivate* priv = src->priv;
 
     gsize bytes = DEFAULT_SAMPLES_PER_BUFFER * sizeof(gint16) * priv->info.channels;
     DataMutexLocker members { priv->dataMutex };
@@ -180,8 +180,8 @@ static GstFlowReturn webkitFliteSrcCreate(GstBaseSrc* baseSource, guint64 offset
 
 static gboolean webkitFliteSrcSetCaps(GstBaseSrc* baseSource, GstCaps* caps)
 {
-    WebKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
-    WebKitFliteSrcPrivate* priv = src->priv;
+    CyberKitFliteSrc* src = WEBKIT_FLITE_SRC(baseSource);
+    CyberKitFliteSrcPrivate* priv = src->priv;
 
     gst_audio_info_init(&priv->info);
     if (!gst_audio_info_from_caps(&priv->info, caps)) {
@@ -192,7 +192,7 @@ static gboolean webkitFliteSrcSetCaps(GstBaseSrc* baseSource, GstCaps* caps)
     return TRUE;
 }
 
-static void webkit_flite_src_class_init(WebKitFliteSrcClass* klass)
+static void webkit_flite_src_class_init(CyberKitFliteSrcClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->constructed = webkitFliteSrcConstructed;
@@ -200,7 +200,7 @@ static void webkit_flite_src_class_init(WebKitFliteSrcClass* klass)
     GstElementClass* elementClass = GST_ELEMENT_CLASS(klass);
     gst_element_class_add_static_pad_template(elementClass, &srcTemplate);
     gst_element_class_set_static_metadata(elementClass,
-        "WebKit WebSpeech GstFlite source element", "Source",
+        "CyberKit WebSpeech GstFlite source element", "Source",
         "Handles WebSpeech data from CyberCore",
         "ChangSeok Oh <changseok@webkit.org>");
 
@@ -255,9 +255,9 @@ Vector<Ref<PlatformSpeechSynthesisVoice>>& ensureFliteVoicesInitialized()
     return voiceList;
 }
 
-void webKitFliteSrcSetUtterance(WebKitFliteSrc* src, const PlatformSpeechSynthesisVoice* platformSpeechSynthesisVoice, const String& text)
+void webKitFliteSrcSetUtterance(CyberKitFliteSrc* src, const PlatformSpeechSynthesisVoice* platformSpeechSynthesisVoice, const String& text)
 {
-    WebKitFliteSrcPrivate* priv = src->priv;
+    CyberKitFliteSrcPrivate* priv = src->priv;
 
     ASSERT(!fliteVoices().isEmpty());
 

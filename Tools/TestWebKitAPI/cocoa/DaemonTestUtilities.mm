@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<NSURL> currentExecutableLocation()
 {
@@ -112,7 +112,7 @@ void registerPlistWithLaunchD(NSDictionary<NSString *, id> *plist, NSURL *tempDi
     NSError *error = nil;
 #if PLATFORM(IOS)
     auto xpcPlist = convertDictionaryToXPC(plist);
-    xpc_dictionary_set_string(xpcPlist.get(), "_ManagedBy", "TestWebKitAPI");
+    xpc_dictionary_set_string(xpcPlist.get(), "_ManagedBy", "TestCyberKitAPI");
     xpc_dictionary_set_bool(xpcPlist.get(), "RootedSimulatorPath", true);
     auto launchDJob = adoptNS([[OSLaunchdJob alloc] initWithPlist:xpcPlist.get()]);
     [launchDJob submit:&error];
@@ -203,7 +203,7 @@ BOOL restartService(NSString *serviceName, NSString *)
 
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 NS_ASSUME_NONNULL_END
 

@@ -29,10 +29,10 @@
 #if !PLATFORM(COCOA)
 
 #include "AuxiliaryProcess.h"
-#include "WebKit2Initialize.h"
+#include "CyberKit2Initialize.h"
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuxiliaryProcessMainCommon {
 public:
@@ -65,7 +65,7 @@ public:
         if (!parseCommandLine(argc, argv))
             return EXIT_FAILURE;
 
-        InitializeWebKit2();
+        InitializeCyberKit2();
 
         initializeAuxiliaryProcess(WTFMove(m_parameters));
         RunLoop::run();
@@ -97,6 +97,6 @@ int AuxiliaryProcessMain(int argc, char** argv)
     return auxiliaryMain->run(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // !PLATFORM(COCOA)

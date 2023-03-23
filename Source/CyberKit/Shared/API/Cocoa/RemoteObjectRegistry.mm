@@ -32,7 +32,7 @@
 #import "UserData.h"
 #import "_WKRemoteObjectRegistryInternal.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteObjectRegistry::RemoteObjectRegistry(_WKRemoteObjectRegistry *remoteObjectRegistry)
     : m_remoteObjectRegistry(remoteObjectRegistry)
@@ -85,4 +85,4 @@ void RemoteObjectRegistry::releaseUnusedReplyBlock(uint64_t replyID)
     [m_remoteObjectRegistry _releaseReplyWithID:replyID];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

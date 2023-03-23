@@ -33,7 +33,7 @@ namespace CyberCore {
 class CertificateInfo;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace Daemon {
 class Connection;
@@ -116,31 +116,31 @@ void initializePCMStorageInDirectory(const String&);
 
 } // namespace PCM
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::PCM::MessageType> {
+template<> struct EnumTraits<CyberKit::PCM::MessageType> {
     using values = EnumValues<
-        WebKit::PCM::MessageType,
-        WebKit::PCM::MessageType::StoreUnattributed,
-        WebKit::PCM::MessageType::HandleAttribution,
-        WebKit::PCM::MessageType::Clear,
-        WebKit::PCM::MessageType::ClearForRegistrableDomain,
-        WebKit::PCM::MessageType::MigratePrivateClickMeasurementFromLegacyStorage,
-        WebKit::PCM::MessageType::SetDebugModeIsEnabled,
-        WebKit::PCM::MessageType::ToStringForTesting,
-        WebKit::PCM::MessageType::SetOverrideTimerForTesting,
-        WebKit::PCM::MessageType::SetTokenPublicKeyURLForTesting,
-        WebKit::PCM::MessageType::SetTokenSignatureURLForTesting,
-        WebKit::PCM::MessageType::SetAttributionReportURLsForTesting,
-        WebKit::PCM::MessageType::MarkAllUnattributedAsExpiredForTesting,
-        WebKit::PCM::MessageType::MarkAttributedPrivateClickMeasurementsAsExpiredForTesting,
-        WebKit::PCM::MessageType::SetPCMFraudPreventionValuesForTesting,
-        WebKit::PCM::MessageType::StartTimerImmediatelyForTesting,
-        WebKit::PCM::MessageType::SetPrivateClickMeasurementAppBundleIDForTesting,
-        WebKit::PCM::MessageType::DestroyStoreForTesting,
-        WebKit::PCM::MessageType::AllowTLSCertificateChainForLocalPCMTesting
+        CyberKit::PCM::MessageType,
+        CyberKit::PCM::MessageType::StoreUnattributed,
+        CyberKit::PCM::MessageType::HandleAttribution,
+        CyberKit::PCM::MessageType::Clear,
+        CyberKit::PCM::MessageType::ClearForRegistrableDomain,
+        CyberKit::PCM::MessageType::MigratePrivateClickMeasurementFromLegacyStorage,
+        CyberKit::PCM::MessageType::SetDebugModeIsEnabled,
+        CyberKit::PCM::MessageType::ToStringForTesting,
+        CyberKit::PCM::MessageType::SetOverrideTimerForTesting,
+        CyberKit::PCM::MessageType::SetTokenPublicKeyURLForTesting,
+        CyberKit::PCM::MessageType::SetTokenSignatureURLForTesting,
+        CyberKit::PCM::MessageType::SetAttributionReportURLsForTesting,
+        CyberKit::PCM::MessageType::MarkAllUnattributedAsExpiredForTesting,
+        CyberKit::PCM::MessageType::MarkAttributedPrivateClickMeasurementsAsExpiredForTesting,
+        CyberKit::PCM::MessageType::SetPCMFraudPreventionValuesForTesting,
+        CyberKit::PCM::MessageType::StartTimerImmediatelyForTesting,
+        CyberKit::PCM::MessageType::SetPrivateClickMeasurementAppBundleIDForTesting,
+        CyberKit::PCM::MessageType::DestroyStoreForTesting,
+        CyberKit::PCM::MessageType::AllowTLSCertificateChainForLocalPCMTesting
     >;
 };
 

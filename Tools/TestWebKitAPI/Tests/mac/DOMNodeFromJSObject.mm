@@ -32,7 +32,7 @@
 #import <objc/runtime.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DOMNodeFromJSObject)
 {
@@ -57,4 +57,4 @@ TEST(CyberKitLegacy, DOMNodeFromJSObject)
     EXPECT_TRUE([[objcBody valueForKey:@"mainWorldProperty"] boolValue]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

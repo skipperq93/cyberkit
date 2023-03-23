@@ -33,7 +33,7 @@
 #import <pal/spi/cocoa/NSProgressSPI.h>
 #import <wtf/BlockPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void Download::resume(const IPC::DataReference& resumeData, const String& path, SandboxExtension::Handle&& sandboxExtensionHandle)
 {

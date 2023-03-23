@@ -68,7 +68,7 @@ struct RetrieveRecordsOptions;
 enum class StorageType : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class UnifiedOriginStorageLevel : uint8_t;
 class FileSystemStorageHandleRegistry;
@@ -225,4 +225,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

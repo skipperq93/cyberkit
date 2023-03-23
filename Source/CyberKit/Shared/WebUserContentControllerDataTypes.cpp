@@ -28,7 +28,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebUserScriptData::encode(IPC::Encoder& encoder) const
 {
@@ -111,4 +111,4 @@ std::optional<WebScriptMessageHandlerData> WebScriptMessageHandlerData::decode(I
     return {{ WTFMove(*identifier), WTFMove(*worldIdentifier), WTFMove(*name) }};
 }
 
-} // namespace WebKit
+} // namespace CyberKit

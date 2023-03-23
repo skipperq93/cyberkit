@@ -32,7 +32,7 @@ namespace CyberCore {
 
 ASCIILiteral PasteboardCustomData::cocoaType()
 {
-    return "com.apple.WebKit.custom-pasteboard-data"_s;
+    return "com.apple.CyberKit.custom-pasteboard-data"_s;
 }
 
 } // namespace CyberCore

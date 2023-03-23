@@ -28,7 +28,7 @@
 
 #if USE(GSTREAMER)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class GStreamerTest : public testing::Test {
 public:
@@ -36,6 +36,6 @@ public:
     void TearDown() override;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(GSTREAMER)

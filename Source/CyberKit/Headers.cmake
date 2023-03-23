@@ -1,4 +1,4 @@
-set(WebKit_PUBLIC_FRAMEWORK_HEADERS
+set(CyberKit_PUBLIC_FRAMEWORK_HEADERS
     Shared/API/c/WKArray.h
     Shared/API/c/WKBase.h
     Shared/API/c/WKCertificateInfo.h
@@ -116,7 +116,7 @@ set(WebKit_PUBLIC_FRAMEWORK_HEADERS
     UIProcess/API/C/WKWebsiteDataStoreRef.h
     UIProcess/API/C/WKWebsitePolicies.h
     UIProcess/API/C/WKWindowFeaturesRef.h
-    UIProcess/API/C/WebKit2_C.h
+    UIProcess/API/C/CyberKit2_C.h
 
     UIProcess/API/cpp/WKRetainPtr.h
 

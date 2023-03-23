@@ -133,7 +133,7 @@ static bool didReportException = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DidCreateJavaScriptContextSanity1)
 {
@@ -277,13 +277,13 @@ TEST(CyberKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
 
         NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"JSContextBackForwardCache1" 
                                               withExtension:@"html" 
-                                               subdirectory:@"TestWebKitAPI.resources"];
+                                               subdirectory:@"TestCyberKitAPI.resources"];
         [mainFrame loadRequest:[NSURLRequest requestWithURL:url1]];
         Util::run(&didInsertMyCustomProperty);
 
         NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"JSContextBackForwardCache2" 
                                               withExtension:@"html" 
-                                               subdirectory:@"TestWebKitAPI.resources"];
+                                               subdirectory:@"TestCyberKitAPI.resources"];
         [mainFrame loadRequest:[NSURLRequest requestWithURL:url2]];
         Util::run(&didCompleteTestSuccessfully);
 
@@ -328,6 +328,6 @@ TEST(CyberKitLegacy, ReportExceptionTest)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(JSC_OBJC_API)

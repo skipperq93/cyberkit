@@ -32,7 +32,7 @@
 #include <CyberCore/FrameDestructionObserverInlines.h>
 #include <CyberCore/Page.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebsitePoliciesData::applyToDocumentLoader(WebsitePoliciesData&& websitePolicies, CyberCore::DocumentLoader& documentLoader)
 {

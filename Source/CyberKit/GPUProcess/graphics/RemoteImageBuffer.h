@@ -33,7 +33,7 @@
 #include "ScopedRenderingResourcesRequest.h"
 #include <CyberCore/ImageBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteDisplayListRecorder;
 class RemoteRenderingBackend;
@@ -83,6 +83,6 @@ struct RemoteSerializedImageBuffer : public ThreadSafeRefCounted<RemoteSerialize
     CyberCore::ImageBufferBackend::Info m_info;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

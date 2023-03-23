@@ -34,7 +34,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const char separator = '\t';
@@ -165,7 +165,7 @@ void WebMemorySampler::appendCurrentMemoryUsageToFile(FileSystem::PlatformFileHa
 {
     // Collect statistics from allocators and get RSIZE metric
     StringBuilder statString;
-    WebMemoryStatistics memoryStats = sampleWebKit();
+    WebMemoryStatistics memoryStats = sampleCyberKit();
 
     if (!memoryStats.values.isEmpty()) {
         statString.append(separator);

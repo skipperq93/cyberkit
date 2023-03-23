@@ -55,7 +55,7 @@ class ResourceRequest;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DownloadMonitor;
 class NetworkDataTask;
@@ -123,4 +123,4 @@ private:
     CompletionHandler<void(const IPC::DataReference&)> m_cancelCompletionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

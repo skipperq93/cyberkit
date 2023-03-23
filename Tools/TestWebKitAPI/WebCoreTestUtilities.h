@@ -32,7 +32,7 @@
 #include <CyberCore/RuntimeApplicationChecks.h>
 #include <wtf/text/TextStream.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Caller should initialize lastFootprint with memoryFootprint() for the initial call.
 ::testing::AssertionResult memoryFootprintChangedBy(size_t& lastFootprint, double expectedChange, double error);

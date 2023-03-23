@@ -43,6 +43,6 @@ class Dictionary;
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 bool methodSignaturesAreCompatible(NSString *, NSString *);
 }

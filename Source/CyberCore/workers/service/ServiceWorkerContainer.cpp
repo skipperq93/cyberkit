@@ -498,7 +498,7 @@ void ServiceWorkerContainer::startScriptFetchForJob(ServiceWorkerJob& job, Fetch
     auto* context = scriptExecutionContext();
     if (!context) {
         LOG_ERROR("ServiceWorkerContainer::jobResolvedWithRegistration called but the container's ScriptExecutionContext is gone");
-        notifyFailedFetchingScript(job, { errorDomainWebKitInternal, 0, job.data().scriptURL, "Attempt to fetch service worker script with no ScriptExecutionContext"_s });
+        notifyFailedFetchingScript(job, { errorDomainCyberKitInternal, 0, job.data().scriptURL, "Attempt to fetch service worker script with no ScriptExecutionContext"_s });
         destroyJob(job);
         return;
     }
@@ -664,7 +664,7 @@ void ServiceWorkerContainer::stop()
     auto jobMap = WTFMove(m_jobMap);
     for (auto& ongoingJob : jobMap.values()) {
         if (ongoingJob.job->cancelPendingLoad())
-            notifyFailedFetchingScript(*ongoingJob.job.get(), ResourceError { errorDomainWebKitInternal, 0, ongoingJob.job->data().scriptURL, "Job cancelled"_s, ResourceError::Type::Cancellation });
+            notifyFailedFetchingScript(*ongoingJob.job.get(), ResourceError { errorDomainCyberKitInternal, 0, ongoingJob.job->data().scriptURL, "Job cancelled"_s, ResourceError::Type::Cancellation });
     }
 
     auto registrationMap = WTFMove(m_ongoingSettledRegistrations);

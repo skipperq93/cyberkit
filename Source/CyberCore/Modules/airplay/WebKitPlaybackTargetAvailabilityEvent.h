@@ -31,31 +31,31 @@
 
 namespace WebCore {
 
-class WebKitPlaybackTargetAvailabilityEvent final : public Event {
-    WTF_MAKE_ISO_ALLOCATED(WebKitPlaybackTargetAvailabilityEvent);
+class CyberKitPlaybackTargetAvailabilityEvent final : public Event {
+    WTF_MAKE_ISO_ALLOCATED(CyberKitPlaybackTargetAvailabilityEvent);
 public:
 
-    static Ref<WebKitPlaybackTargetAvailabilityEvent> create(const AtomString& eventType, bool available)
+    static Ref<CyberKitPlaybackTargetAvailabilityEvent> create(const AtomString& eventType, bool available)
     {
-        return adoptRef(*new WebKitPlaybackTargetAvailabilityEvent(eventType, available));
+        return adoptRef(*new CyberKitPlaybackTargetAvailabilityEvent(eventType, available));
     }
 
     struct Init : EventInit {
         String availability;
     };
 
-    static Ref<WebKitPlaybackTargetAvailabilityEvent> create(const AtomString& eventType, const Init& initializer, IsTrusted isTrusted = IsTrusted::No)
+    static Ref<CyberKitPlaybackTargetAvailabilityEvent> create(const AtomString& eventType, const Init& initializer, IsTrusted isTrusted = IsTrusted::No)
     {
-        return adoptRef(*new WebKitPlaybackTargetAvailabilityEvent(eventType, initializer, isTrusted));
+        return adoptRef(*new CyberKitPlaybackTargetAvailabilityEvent(eventType, initializer, isTrusted));
     }
 
     String availability() const { return m_availability; }
 
-    EventInterface eventInterface() const override { return WebKitPlaybackTargetAvailabilityEventInterfaceType; }
+    EventInterface eventInterface() const override { return CyberKitPlaybackTargetAvailabilityEventInterfaceType; }
 
 private:
-    explicit WebKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, bool available);
-    WebKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, const Init&, IsTrusted);
+    explicit CyberKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, bool available);
+    CyberKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, const Init&, IsTrusted);
 
     String m_availability;
 };

@@ -32,7 +32,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/GraphicsContext.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ContextMenuContextData::ContextMenuContextData()
@@ -43,7 +43,7 @@ ContextMenuContextData::ContextMenuContextData()
 {
 }
 
-ContextMenuContextData::ContextMenuContextData(const IntPoint& menuLocation, const Vector<WebKit::WebContextMenuItemData>& menuItems, const ContextMenuContext& context)
+ContextMenuContextData::ContextMenuContextData(const IntPoint& menuLocation, const Vector<CyberKit::WebContextMenuItemData>& menuItems, const ContextMenuContext& context)
 #if ENABLE(SERVICE_CONTROLS)
     : m_type(context.controlledImage() ? Type::ServicesMenu : context.type())
 #else
@@ -169,6 +169,6 @@ bool ContextMenuContextData::controlledDataIsEditable() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

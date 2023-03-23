@@ -41,7 +41,7 @@ class PixelBufferConformerCV;
 class VideoFrame;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // Holds references to all VideoFrame instances that are mapped from GPU process to Web process.
 class RemoteVideoFrameObjectHeap final : public IPC::WorkQueueMessageReceiver {

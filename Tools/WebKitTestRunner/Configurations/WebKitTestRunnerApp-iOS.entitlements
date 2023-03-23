@@ -4,9 +4,9 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>com.apple.WebKitTestRunnerApp</string>
+		<string>com.apple.CyberKitTestRunnerApp</string>
 	</array>
-	<key>com.apple.developer.WebKit.ServiceWorkers</key>
+	<key>com.apple.developer.CyberKit.ServiceWorkers</key>
 	<true/>
 	<key>com.apple.Pasteboard.paste-unchecked</key>
 	<true/>

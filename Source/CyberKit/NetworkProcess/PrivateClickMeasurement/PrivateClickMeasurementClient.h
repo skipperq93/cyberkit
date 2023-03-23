@@ -37,7 +37,7 @@ class ResourceError;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoadParameters;
 
@@ -54,4 +54,4 @@ public:
 
 } // namespace PCM
 
-} // namespace WebKit
+} // namespace CyberKit

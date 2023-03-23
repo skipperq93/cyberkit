@@ -31,7 +31,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -65,4 +65,4 @@ void writeToDisk(std::unique_ptr<KeyedEncoder>&& encoder, String&& path)
         RELEASE_LOG_ERROR(DiskPersistency, "Disk persistency: We only wrote %d out of %zu bytes to disk", static_cast<unsigned>(writtenBytes), rawData->size());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

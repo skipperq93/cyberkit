@@ -35,7 +35,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 #include <pal/graphics/WebGPU/WebGPUTextureUsage.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct TextureDescriptor : public ObjectDescriptorBase {
     Extent3D size;
@@ -47,6 +47,6 @@ struct TextureDescriptor : public ObjectDescriptorBase {
     Vector<PAL::WebGPU::TextureFormat> viewFormats;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

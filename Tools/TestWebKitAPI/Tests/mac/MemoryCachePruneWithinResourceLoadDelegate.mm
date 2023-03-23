@@ -73,7 +73,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DISABLED_MemoryCachePruneWithinResourceLoadDelegate)
 {
@@ -88,11 +88,11 @@ TEST(CyberKitLegacy, DISABLED_MemoryCachePruneWithinResourceLoadDelegate)
         resourceLoadDelegate.get()->_window = window.get();
         webView1.get().resourceLoadDelegate = resourceLoadDelegate.get();
 
-        [[webView1.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MemoryCachePruneWithinResourceLoadDelegate" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView1.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MemoryCachePruneWithinResourceLoadDelegate" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&didFinishLoad);
     }
     // If we finished without crashing, the test passed.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

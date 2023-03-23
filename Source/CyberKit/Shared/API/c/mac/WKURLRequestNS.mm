@@ -34,10 +34,10 @@ WKURLRequestRef WKURLRequestCreateWithNSURLRequest(NSURLRequest *urlRequest)
     if ([urlRequest HTTPBodyStream])
         return nullptr;
     RetainPtr<NSURLRequest> copiedURLRequest = adoptNS([urlRequest copy]);
-    return WebKit::toAPI(&API::URLRequest::create(copiedURLRequest.get()).leakRef());
+    return CyberKit::toAPI(&API::URLRequest::create(copiedURLRequest.get()).leakRef());
 }
 
 NSURLRequest *WKURLRequestCopyNSURLRequest(WKURLRequestRef urlRequest)
 {
-    return [WebKit::toImpl(urlRequest)->resourceRequest().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody) copy];
+    return [CyberKit::toImpl(urlRequest)->resourceRequest().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody) copy];
 }

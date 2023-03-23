@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUProgrammableStage.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ProgrammableStage> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ProgrammableStage& programmableStage)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::ProgrammableStage> ConvertFromBackingContext::convert
     return { { *module, programmableStage.entryPoint, programmableStage.constants } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

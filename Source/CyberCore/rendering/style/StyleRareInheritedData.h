@@ -54,7 +54,7 @@ class ShadowData;
 class StyleFilterData;
 class StyleImage;
 
-// This struct is for rarely used inherited CSS3, CSS2, and WebKit-specific properties.
+// This struct is for rarely used inherited CSS3, CSS2, and CyberKit-specific properties.
 // By grouping them together, we save space, and only allocate this object when someone
 // actually uses one of these properties.
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleRareInheritedData);

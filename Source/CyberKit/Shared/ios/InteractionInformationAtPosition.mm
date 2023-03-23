@@ -30,7 +30,7 @@
 #import "CyberCoreArgumentCoders.h"
 #import <pal/cocoa/DataDetectorsCoreSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 

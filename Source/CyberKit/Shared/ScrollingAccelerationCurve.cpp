@@ -32,7 +32,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ScrollingAccelerationCurve::ScrollingAccelerationCurve(float gainLinear, float gainParabolic, float gainCubic, float gainQuartic, float tangentSpeedLinear, float tangentSpeedParabolicRoot, float resolution, float frameRate)
     : m_parameters { gainLinear, gainParabolic, gainCubic, gainQuartic, tangentSpeedLinear, tangentSpeedParabolicRoot, resolution, frameRate }
@@ -189,6 +189,6 @@ std::optional<ScrollingAccelerationCurve> ScrollingAccelerationCurve::fromNative
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MOMENTUM_EVENT_DISPATCHER)

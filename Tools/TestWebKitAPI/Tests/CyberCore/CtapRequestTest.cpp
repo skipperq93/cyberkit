@@ -41,7 +41,7 @@
 #include <CyberCore/PublicKeyCredentialRequestOptions.h>
 #include <wtf/text/Base64.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 using namespace fido;
 
@@ -387,6 +387,6 @@ TEST(CTAPRequestTest, TestConstructCtapAuthenticatorRequestParam)
     EXPECT_EQ(memcmp(serializedData3.data(), &kSerializedResetCmd, 1), 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

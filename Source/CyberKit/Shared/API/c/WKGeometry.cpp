@@ -31,46 +31,46 @@
 
 WKTypeID WKSizeGetTypeID(void)
 {
-    return WebKit::toAPI(API::Size::APIType);
+    return CyberKit::toAPI(API::Size::APIType);
 }
 
 WKTypeID WKPointGetTypeID(void)
 {
-    return WebKit::toAPI(API::Point::APIType);
+    return CyberKit::toAPI(API::Point::APIType);
 }
 
 WKTypeID WKRectGetTypeID(void)
 {
-    return WebKit::toAPI(API::Rect::APIType);
+    return CyberKit::toAPI(API::Rect::APIType);
 }
 
 WKPointRef WKPointCreate(WKPoint point)
 {
-    return WebKit::toAPI(&API::Point::create(point).leakRef());
+    return CyberKit::toAPI(&API::Point::create(point).leakRef());
 }
 
 WKSizeRef WKSizeCreate(WKSize size)
 {
-    return WebKit::toAPI(&API::Size::create(size).leakRef());
+    return CyberKit::toAPI(&API::Size::create(size).leakRef());
 }
 
 WKRectRef WKRectCreate(WKRect rect)
 {
-    return WebKit::toAPI(&API::Rect::create(rect).leakRef());
+    return CyberKit::toAPI(&API::Rect::create(rect).leakRef());
 }
 
 WKSize WKSizeGetValue(WKSizeRef size)
 {
-    return WebKit::toImpl(size)->size();
+    return CyberKit::toImpl(size)->size();
 }
 
 WKPoint WKPointGetValue(WKPointRef point)
 {
-    return WebKit::toImpl(point)->point();
+    return CyberKit::toImpl(point)->point();
 }
 
 WKRect WKRectGetValue(WKRectRef rect)
 {
-    return WebKit::toImpl(rect)->rect();
+    return CyberKit::toImpl(rect)->rect();
 }
 

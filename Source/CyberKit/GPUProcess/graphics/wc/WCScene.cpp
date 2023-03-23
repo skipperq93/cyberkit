@@ -38,7 +38,7 @@
 #include <CyberCore/TextureMapperPlatformLayer.h>
 #include <CyberCore/TextureMapperSparseBackingStore.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WCScene::Layer final : public WCContentBuffer::Client {
     WTF_MAKE_FAST_ALLOCATED;
@@ -245,6 +245,6 @@ std::optional<UpdateInfo> WCScene::update(WCUpateInfo&& update)
     return result;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

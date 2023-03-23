@@ -39,7 +39,7 @@ namespace CyberCore {
 class ContextMenuItem;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItem : public API::ObjectImpl<API::Object::Type::ContextMenuItem> {
 public:
@@ -64,7 +64,7 @@ private:
     WebContextMenuItemData m_webContextMenuItemData;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)
 #endif // WebContextMenuItem_h

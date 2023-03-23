@@ -36,7 +36,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/spi/cocoa/IOSurfaceSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void ShareableBitmap::validateConfiguration(ShareableBitmapConfiguration& configuration)
@@ -225,4 +225,4 @@ RefPtr<Image> ShareableBitmap::createImage()
     return nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

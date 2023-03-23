@@ -30,7 +30,7 @@
 #include <CyberCore/MediaDescription.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct MediaDescriptionInfo {
     MediaDescriptionInfo(const AtomString& codec, bool isVideo, bool isAudio, bool isText)
@@ -55,6 +55,6 @@ struct MediaDescriptionInfo {
     bool m_isText { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

@@ -32,7 +32,7 @@
 
 WKTypeID WKDictionaryGetTypeID()
 {
-    return WebKit::toAPI(API::Dictionary::APIType);
+    return CyberKit::toAPI(API::Dictionary::APIType);
 }
 
 WK_EXPORT WKDictionaryRef WKDictionaryCreate(const WKStringRef* keys, const WKTypeRef* values, size_t numberOfValues)
@@ -40,22 +40,22 @@ WK_EXPORT WKDictionaryRef WKDictionaryCreate(const WKStringRef* keys, const WKTy
     API::Dictionary::MapType map;
     map.reserveInitialCapacity(numberOfValues);
     for (size_t i = 0; i < numberOfValues; ++i)
-        map.add(WebKit::toImpl(keys[i])->string(), WebKit::toImpl(values[i]));
+        map.add(CyberKit::toImpl(keys[i])->string(), CyberKit::toImpl(values[i]));
 
-    return WebKit::toAPI(&API::Dictionary::create(WTFMove(map)).leakRef());
+    return CyberKit::toAPI(&API::Dictionary::create(WTFMove(map)).leakRef());
 }
 
 WKTypeRef WKDictionaryGetItemForKey(WKDictionaryRef dictionaryRef, WKStringRef key)
 {
-    return WebKit::toAPI(WebKit::toImpl(dictionaryRef)->get(WebKit::toImpl(key)->string()));
+    return CyberKit::toAPI(CyberKit::toImpl(dictionaryRef)->get(CyberKit::toImpl(key)->string()));
 }
 
 size_t WKDictionaryGetSize(WKDictionaryRef dictionaryRef)
 {
-    return WebKit::toImpl(dictionaryRef)->size();
+    return CyberKit::toImpl(dictionaryRef)->size();
 }
 
 WKArrayRef WKDictionaryCopyKeys(WKDictionaryRef dictionaryRef)
 {
-    return WebKit::toAPI(&WebKit::toImpl(dictionaryRef)->keys().leakRef());
+    return CyberKit::toAPI(&CyberKit::toImpl(dictionaryRef)->keys().leakRef());
 }

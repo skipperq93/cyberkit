@@ -30,7 +30,7 @@
 #include "Utilities.h"
 #include <optional>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template <typename T>
 std::optional<T> copyViaEncoder(const T& o)

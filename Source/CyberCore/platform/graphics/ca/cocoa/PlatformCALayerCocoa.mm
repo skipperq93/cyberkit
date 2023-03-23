@@ -317,8 +317,8 @@ void PlatformCALayerCocoa::commonInit()
     }
 
 #if HAVE(CALAYER_USES_WEBKIT_BEHAVIOR)
-    if (m_owner && m_owner->platformCALayerUseCSS3DTransformInteroperability() && [m_layer respondsToSelector:@selector(setUsesWebKitBehavior:)]) {
-        [m_layer setUsesWebKitBehavior:YES];
+    if (m_owner && m_owner->platformCALayerUseCSS3DTransformInteroperability() && [m_layer respondsToSelector:@selector(setUsesCyberKitBehavior:)]) {
+        [m_layer setUsesCyberKitBehavior:YES];
         if (m_layerType == LayerTypeTransformLayer) {
             [m_layer setSortsSublayers:YES];
         } else

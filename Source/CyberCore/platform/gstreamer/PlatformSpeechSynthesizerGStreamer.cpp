@@ -32,8 +32,8 @@
 #include "GStreamerCommon.h"
 #include "PlatformSpeechSynthesisUtterance.h"
 #include "PlatformSpeechSynthesisVoice.h"
-#include "WebKitAudioSinkGStreamer.h"
-#include "WebKitFliteSourceGStreamer.h"
+#include "CyberKitAudioSinkGStreamer.h"
+#include "CyberKitFliteSourceGStreamer.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
 namespace CyberCore {
@@ -66,7 +66,7 @@ GstSpeechSynthesisWrapper::GstSpeechSynthesisWrapper(Ref<PlatformSpeechSynthesiz
     : m_platformSynthesizer(synthesizer)
 {
     ensureGStreamerInitialized();
-    registerWebKitGStreamerElements();
+    registerCyberKitGStreamerElements();
 
     static Atomic<uint32_t> pipelineId;
     m_pipeline = gst_pipeline_new(makeString("speech-synthesizer-", pipelineId.exchangeAdd(1)).ascii().data());

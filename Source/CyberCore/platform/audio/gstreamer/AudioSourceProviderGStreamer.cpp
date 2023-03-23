@@ -46,7 +46,7 @@ static void initializeDebugCategory()
 {
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_audio_provider_debug, "webkitaudioprovider", 0, "WebKit WebAudio Provider");
+        GST_DEBUG_CATEGORY_INIT(webkit_audio_provider_debug, "webkitaudioprovider", 0, "CyberKit WebAudio Provider");
     });
 }
 
@@ -95,7 +95,7 @@ AudioSourceProviderGStreamer::AudioSourceProviderGStreamer(MediaStreamTrackPriva
     , m_notifier(MainThreadNotifier<MainThreadNotification>::create())
 {
     initializeDebugCategory();
-    registerWebKitGStreamerElements();
+    registerCyberKitGStreamerElements();
     const char* pipelineNamePrefix = "";
 #if USE(GSTREAMER_WEBRTC)
     if (m_captureSource->source().isIncomingAudioSource())

@@ -31,11 +31,11 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class WebKit2WillLoadTest : public ::testing::Test {
+class CyberKit2WillLoadTest : public ::testing::Test {
 public:
-    WebKit2WillLoadTest()
+    CyberKit2WillLoadTest()
         : didReceiveMessage(false)
     {
     }
@@ -49,9 +49,9 @@ public:
 
     static void didReceiveMessageFromInjectedBundle(WKContextRef, WKStringRef messageName, WKTypeRef messageBody, const void* clientInfo)
     {
-        ((WebKit2WillLoadTest*)clientInfo)->messageName = messageName;
-        ((WebKit2WillLoadTest*)clientInfo)->messageBody = messageBody;
-        ((WebKit2WillLoadTest*)clientInfo)->didReceiveMessage = true;
+        ((CyberKit2WillLoadTest*)clientInfo)->messageName = messageName;
+        ((CyberKit2WillLoadTest*)clientInfo)->messageBody = messageBody;
+        ((CyberKit2WillLoadTest*)clientInfo)->didReceiveMessage = true;
     }
 
     static void setInjectedBundleClient(WKContextRef context, const void* clientInfo)
@@ -133,7 +133,7 @@ public:
 
 // URL Request tests
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadURLWithUserData)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadURLWithUserData)
 {
     WKRetainPtr<WKURLRef> url = adoptWK(WKURLCreateWithUTF8CString("about:blank"));
     WKRetainPtr<WKStringRef> userData = Util::toWK("WKPageLoadURLWithUserData UserData");
@@ -142,7 +142,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadURLWithUserData)
     testWillLoadURLRequestReturnValues(url.get(), userData.get());
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadURL)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadURL)
 {
     WKRetainPtr<WKURLRef> url = adoptWK(WKURLCreateWithUTF8CString("about:blank"));
     WKPageLoadURL(webView->page(), url.get());
@@ -150,7 +150,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadURL)
     testWillLoadURLRequestReturnValues(url.get(), 0);
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadURLRequestWithUserData)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadURLRequestWithUserData)
 {
     WKRetainPtr<WKURLRef> url = adoptWK(WKURLCreateWithUTF8CString("about:blank"));
     WKRetainPtr<WKURLRequestRef> urlRequest = adoptWK(WKURLRequestCreateWithWKURL(url.get()));
@@ -160,7 +160,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadURLRequestWithUserData)
     testWillLoadURLRequestReturnValues(url.get(), userData.get());
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadURLRequest)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadURLRequest)
 {
     WKRetainPtr<WKURLRef> url = adoptWK(WKURLCreateWithUTF8CString("about:blank"));
     WKRetainPtr<WKURLRequestRef> urlRequest = adoptWK(WKURLRequestCreateWithWKURL(url.get()));
@@ -171,7 +171,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadURLRequest)
 
 // Data Request tests
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadHTMLStringWithUserData)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadHTMLStringWithUserData)
 {
     WKRetainPtr<WKURLRef> baseURL = adoptWK(WKURLCreateWithUTF8CString("about:blank"));
     WKRetainPtr<WKStringRef> userData = Util::toWK("WKPageLoadHTMLStringWithUserData UserData");
@@ -182,7 +182,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadHTMLStringWithUserData)
     testWillLoadDataRequestReturnValues(baseURL.get(), Util::toWK("text/html").get(), Util::toWK("latin1").get(), 0, userData.get());
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadHTMLString)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadHTMLString)
 {
     WKRetainPtr<WKURLRef> baseURL = adoptWK(WKURLCreateWithUTF8CString("about:blank"));
     WKRetainPtr<WKStringRef> htmlString = Util::toWK("<body>Hello, World</body>");
@@ -192,7 +192,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadHTMLString)
     testWillLoadDataRequestReturnValues(baseURL.get(), Util::toWK("text/html").get(), Util::toWK("latin1").get(), 0, 0);
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadAlternateHTMLStringWithUserData)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadAlternateHTMLStringWithUserData)
 {
     WKRetainPtr<WKStringRef> htmlString = Util::toWK("<body>Hello, World</body>");
 
@@ -205,7 +205,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadAlternateHTMLStringWithUserData)
     testWillLoadDataRequestReturnValues(baseURL.get(), Util::toWK("text/html").get(), Util::toWK("latin1").get(), unreachableURL.get(), userData.get());
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadAlternateHTMLString)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadAlternateHTMLString)
 {
     WKRetainPtr<WKStringRef> htmlString = Util::toWK("<body>Hello, World</body>");
 
@@ -217,7 +217,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadAlternateHTMLString)
     testWillLoadDataRequestReturnValues(baseURL.get(), Util::toWK("text/html").get(), Util::toWK("latin1").get(), unreachableURL.get(), 0);
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadAlternateHTMLStringUTF16)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadAlternateHTMLStringUTF16)
 {
     auto htmlString = Util::toWK("<body>Hello, World 😊</body>");
 
@@ -229,7 +229,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadAlternateHTMLStringUTF16)
     testWillLoadDataRequestReturnValues(baseURL.get(), Util::toWK("text/html").get(), Util::toWK("utf-16").get(), unreachableURL.get(), 0);
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadPlainTextStringWithUserData)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadPlainTextStringWithUserData)
 {
     WKRetainPtr<WKStringRef> plaintTextString = Util::toWK("Hello, World");
     WKRetainPtr<WKStringRef> userData = Util::toWK("WKPageLoadPlainTextStringWithUserData UserData");
@@ -240,7 +240,7 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadPlainTextStringWithUserData)
     testWillLoadDataRequestReturnValues(blankURL.get(), Util::toWK("text/plain").get(), Util::toWK("latin1").get(), 0, userData.get());
 }
 
-TEST_F(WebKit2WillLoadTest, WKPageLoadPlainTextString)
+TEST_F(CyberKit2WillLoadTest, WKPageLoadPlainTextString)
 {
     WKRetainPtr<WKStringRef> plaintTextString = Util::toWK("Hello, World");
 
@@ -250,6 +250,6 @@ TEST_F(WebKit2WillLoadTest, WKPageLoadPlainTextString)
     testWillLoadDataRequestReturnValues(blankURL.get(), Util::toWK("text/plain").get(), Util::toWK("latin1").get(), 0, 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -40,7 +40,7 @@ ALLOW_COMMA_BEGIN
 #include <webrtc/modules/video_coding/codecs/av1/libaom_av1_encoder.h>
 #include <webrtc/modules/video_coding/codecs/vp8/include/vp8.h>
 #include <webrtc/modules/video_coding/codecs/vp9/include/vp9.h>
-#include <webrtc/sdk/WebKit/WebKitEncoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitEncoder.h>
 #include <webrtc/system_wrappers/include/cpu_info.h>
 
 ALLOW_COMMA_END

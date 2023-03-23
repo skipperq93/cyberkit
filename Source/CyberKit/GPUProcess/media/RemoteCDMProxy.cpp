@@ -35,7 +35,7 @@
 #include <CyberCore/CDMPrivate.h>
 #include <CyberCore/SharedBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

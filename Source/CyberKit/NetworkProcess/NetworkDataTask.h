@@ -46,7 +46,7 @@ class ResourceResponse;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoadParameters;
 class NetworkSession;
@@ -180,4 +180,4 @@ protected:
     bool m_failureScheduled { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

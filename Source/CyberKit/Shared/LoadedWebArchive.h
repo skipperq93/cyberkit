@@ -25,6 +25,6 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 enum class LoadedWebArchive : bool { No, Yes };
 }

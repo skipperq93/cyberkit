@@ -56,7 +56,7 @@
 }
 
 -(void)waitUntilPrompted {
-    TestWebKitAPI::Util::run(&_wasPrompted);
+    TestCyberKitAPI::Util::run(&_wasPrompted);
     _wasPrompted = false;
 }
 

@@ -1441,7 +1441,7 @@ VisibleInViewportState RenderElement::imageFrameAvailable(CachedImage& image, Im
         imageChanged(&image, changeRect);
 
     if (element() && image.image()->isBitmapImage())
-        element()->dispatchWebKitImageReadyEventForTesting();
+        element()->dispatchCyberKitImageReadyEventForTesting();
 
     return isVisible ? VisibleInViewportState::Yes : VisibleInViewportState::No;
 }

@@ -31,7 +31,7 @@
 #include "AccessibilitySupportSPI.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 struct AccessibilityPreferences {
 #if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
@@ -45,12 +45,12 @@ struct AccessibilityPreferences {
     bool enhanceTextLegibilityOverall { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace IPC {
-template<> struct ArgumentCoder<WebKit::AccessibilityPreferences> {
-    static void encode(Encoder&, const WebKit::AccessibilityPreferences&);
-    static std::optional<WebKit::AccessibilityPreferences> decode(Decoder&);
+template<> struct ArgumentCoder<CyberKit::AccessibilityPreferences> {
+    static void encode(Encoder&, const CyberKit::AccessibilityPreferences&);
+    static std::optional<CyberKit::AccessibilityPreferences> decode(Decoder&);
 };
 }
 

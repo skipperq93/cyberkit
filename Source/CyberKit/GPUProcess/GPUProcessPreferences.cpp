@@ -35,7 +35,7 @@
 #include "ArgumentCodersCF.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 GPUProcessPreferences::GPUProcessPreferences() = default;
 
@@ -153,6 +153,6 @@ bool GPUProcessPreferences::decode(IPC::Decoder& decoder, GPUProcessPreferences&
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

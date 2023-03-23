@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.network.client</key>
 	<true/>
-	<key>com.apple.developer.WebKit.ServiceWorkers</key>
+	<key>com.apple.developer.CyberKit.ServiceWorkers</key>
 	<true/>
 </dict>
 </plist>

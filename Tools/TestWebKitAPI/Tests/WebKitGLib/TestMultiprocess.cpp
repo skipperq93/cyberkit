@@ -43,7 +43,7 @@ public:
         m_initializeWebExtensionsSignalCount++;
     }
 
-    static void loadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, MultiprocessTest* test)
+    static void loadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, MultiprocessTest* test)
     {
         if (loadEvent != WEBKIT_LOAD_FINISHED)
             return;
@@ -110,7 +110,7 @@ public:
     GMainLoop* m_mainLoop;
     unsigned m_initializeWebExtensionsSignalCount;
     Vector<GUniquePtr<char>, numViews> m_webViewBusNames;
-    Vector<GRefPtr<WebKitWebView>, numViews> m_webViews;
+    Vector<GRefPtr<CyberKitWebView>, numViews> m_webViews;
 };
 
 static void testProcessPerWebView(MultiprocessTest* test, gconstpointer)
@@ -135,7 +135,7 @@ static void testProcessPerWebView(MultiprocessTest* test, gconstpointer)
     // Check that web processes finish when the web view is destroyed even when it's not finalized.
     // See https://bugs.webkit.org/show_bug.cgi?id=129783.
     for (unsigned i = 0; i < numViews; i++) {
-        GRefPtr<WebKitWebView> webView = test->m_webViews[i];
+        GRefPtr<CyberKitWebView> webView = test->m_webViews[i];
         test->destroyWebViewAndWaitUntilWebProcessFinishes(i);
     }
 #endif
@@ -151,17 +151,17 @@ public:
         Close
     };
 
-    static WebKitWebView* viewCreateCallback(WebKitWebView* webView, WebKitNavigationAction*, UIClientMultiprocessTest* test)
+    static CyberKitWebView* viewCreateCallback(CyberKitWebView* webView, CyberKitNavigationAction*, UIClientMultiprocessTest* test)
     {
         return test->viewCreate(webView);
     }
 
-    static void viewReadyToShowCallback(WebKitWebView* webView, UIClientMultiprocessTest* test)
+    static void viewReadyToShowCallback(CyberKitWebView* webView, UIClientMultiprocessTest* test)
     {
         test->viewReadyToShow(webView);
     }
 
-    static void viewCloseCallback(WebKitWebView* webView, UIClientMultiprocessTest* test)
+    static void viewCloseCallback(CyberKitWebView* webView, UIClientMultiprocessTest* test)
     {
         test->viewClose(webView);
     }
@@ -191,7 +191,7 @@ public:
         m_initializeWebExtensionsSignalCount++;
     }
 
-    WebKitWebView* viewCreate(WebKitWebView* webView)
+    CyberKitWebView* viewCreate(CyberKitWebView* webView)
     {
         g_assert_true(webView == m_webView);
 
@@ -208,13 +208,13 @@ public:
         return WEBKIT_WEB_VIEW(newWebView);
     }
 
-    void viewReadyToShow(WebKitWebView* webView)
+    void viewReadyToShow(CyberKitWebView* webView)
     {
         g_assert_true(m_webView != webView);
         m_webViewEvents.append(ReadyToShow);
     }
 
-    void viewClose(WebKitWebView* webView)
+    void viewClose(CyberKitWebView* webView)
     {
         g_assert_true(m_webView != webView);
 
@@ -228,7 +228,7 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    WebKitWebView* m_webView;
+    CyberKitWebView* m_webView;
     GMainLoop* m_mainLoop;
     unsigned m_initializeWebExtensionsSignalCount;
     Vector<WebViewEvents> m_webViewEvents;
@@ -250,8 +250,8 @@ static void testMultiprocessWebViewCreateReadyClose(UIClientMultiprocessTest* te
 
 void beforeAll()
 {
-    MultiprocessTest::add("WebKitWebContext", "process-per-web-view", testProcessPerWebView);
-    UIClientMultiprocessTest::add("WebKitWebView", "multiprocess-create-ready-close", testMultiprocessWebViewCreateReadyClose);
+    MultiprocessTest::add("CyberKitWebContext", "process-per-web-view", testProcessPerWebView);
+    UIClientMultiprocessTest::add("CyberKitWebView", "multiprocess-create-ready-close", testMultiprocessWebViewCreateReadyClose);
 }
 
 void afterAll()

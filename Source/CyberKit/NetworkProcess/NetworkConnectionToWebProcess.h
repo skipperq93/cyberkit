@@ -82,7 +82,7 @@ enum class HTTPCookieAcceptPolicy : uint8_t;
 enum class IncludeSecureCookies : bool;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkSchemeRegistry;
 class NetworkProcess;
@@ -442,4 +442,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

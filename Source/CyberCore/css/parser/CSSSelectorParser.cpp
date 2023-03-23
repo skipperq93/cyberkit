@@ -179,7 +179,7 @@ bool CSSSelectorParser::supportsComplexSelector(CSSParserTokenRange range, const
     auto complexSelector = parserSelector->releaseSelector();
     ASSERT(complexSelector);
 
-    return !containsUnknownWebKitPseudoElements(*complexSelector);
+    return !containsUnknownCyberKitPseudoElements(*complexSelector);
 }
 
 CSSSelectorList CSSSelectorParser::consumeCompoundSelectorList(CSSParserTokenRange& range)
@@ -241,7 +241,7 @@ static OptionSet<CompoundSelectorFlag> extractCompoundFlags(const CSSParserSelec
     // FIXME: https://bugs.webkit.org/show_bug.cgi?id=161747
     // The UASheetMode check is a work-around to allow this selector in mediaControls(New).css:
     // input[type="range" i]::-webkit-media-slider-container > div {
-    if (parserMode == UASheetMode && simpleSelector.pseudoElementType() == CSSSelector::PseudoElementWebKitCustom)
+    if (parserMode == UASheetMode && simpleSelector.pseudoElementType() == CSSSelector::PseudoElementCyberKitCustom)
         return { };
 
     return CompoundSelectorFlag::HasPseudoElementForRightmostCompound;
@@ -404,8 +404,8 @@ static bool isPseudoClassValidAfterPseudoElement(CSSSelector::PseudoClassType ps
         return isScrollbarPseudoClass(pseudoClass);
     case CSSSelector::PseudoElementSelection:
         return pseudoClass == CSSSelector::PseudoClassWindowInactive;
-    case CSSSelector::PseudoElementWebKitCustom:
-    case CSSSelector::PseudoElementWebKitCustomLegacyPrefixed:
+    case CSSSelector::PseudoElementCyberKitCustom:
+    case CSSSelector::PseudoElementCyberKitCustomLegacyPrefixed:
         return isUserActionPseudoClass(pseudoClass);
     default:
         return false;
@@ -732,7 +732,7 @@ std::unique_ptr<CSSParserSelector> CSSSelectorParser::consumePseudo(CSSParserTok
 #if ENABLE(VIDEO)
         // Treat the ident version of cue as PseudoElementWebkitCustom.
         if (token.type() == IdentToken && selector && selector->match() == CSSSelector::PseudoElement && selector->pseudoElementType() == CSSSelector::PseudoElementCue)
-            selector->setPseudoElementType(CSSSelector::PseudoElementWebKitCustom);
+            selector->setPseudoElementType(CSSSelector::PseudoElementCyberKitCustom);
 #endif
     }
 
@@ -1154,10 +1154,10 @@ std::unique_ptr<CSSParserSelector> CSSSelectorParser::splitCompoundAtImplicitSha
     return secondCompound;
 }
 
-bool CSSSelectorParser::containsUnknownWebKitPseudoElements(const CSSSelector& complexSelector)
+bool CSSSelectorParser::containsUnknownCyberKitPseudoElements(const CSSSelector& complexSelector)
 {
     for (auto current = &complexSelector; current; current = current->tagHistory()) {
-        if (current->match() == CSSSelector::PseudoElement && current->pseudoElementType() == CSSSelector::PseudoElementWebKitCustom)
+        if (current->match() == CSSSelector::PseudoElement && current->pseudoElementType() == CSSSelector::PseudoElementCyberKitCustom)
             return true;
     }
 

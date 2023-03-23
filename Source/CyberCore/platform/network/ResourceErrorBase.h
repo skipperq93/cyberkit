@@ -34,8 +34,8 @@ namespace CyberCore {
 
 class ResourceError;
 
-WEBCORE_EXPORT extern const ASCIILiteral errorDomainWebKitInternal; // Used for errors that won't be exposed to clients.
-WEBCORE_EXPORT extern const ASCIILiteral errorDomainWebKitServiceWorker; // Used for errors that happen when loading a resource from a service worker.
+WEBCORE_EXPORT extern const ASCIILiteral errorDomainCyberKitInternal; // Used for errors that won't be exposed to clients.
+WEBCORE_EXPORT extern const ASCIILiteral errorDomainCyberKitServiceWorker; // Used for errors that happen when loading a resource from a service worker.
 
 class ResourceErrorBase {
     WTF_MAKE_FAST_ALLOCATED;

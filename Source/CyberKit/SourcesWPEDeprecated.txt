@@ -22,15 +22,15 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 
 UIProcess/API/glib/IconDatabase.cpp @no-unify
-UIProcess/API/glib/WebKitFaviconDatabase.cpp @no-unify
-UIProcess/API/glib/WebKitMimeInfo.cpp @no-unify
-UIProcess/API/glib/WebKitPlugin.cpp @no-unify
+UIProcess/API/glib/CyberKitFaviconDatabase.cpp @no-unify
+UIProcess/API/glib/CyberKitMimeInfo.cpp @no-unify
+UIProcess/API/glib/CyberKitPlugin.cpp @no-unify
 
-WebProcess/InjectedBundle/API/glib/WebKitConsoleMessage.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitConsoleMessage.cpp @no-unify
 
 WebProcess/InjectedBundle/API/glib/DOM/DOMObjectCache.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/DOM/WebKitDOMDocument.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/DOM/WebKitDOMElement.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/DOM/WebKitDOMNode.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/DOM/WebKitDOMObject.cpp @no-unify
-WebProcess/InjectedBundle/API/glib/DOM/WebKitDOMPrivate.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMDocument.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMElement.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMNode.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMObject.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMPrivate.cpp @no-unify

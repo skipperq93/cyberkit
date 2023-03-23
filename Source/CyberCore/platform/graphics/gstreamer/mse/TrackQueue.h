@@ -63,9 +63,9 @@ public:
     void resetNotEmptyHandler();
 
 private:
-    // The point of having a queue for WebKitMediaSource is to limit the number of context switches per second.
+    // The point of having a queue for CyberKitMediaSource is to limit the number of context switches per second.
     // If we had no queue, the main thread would have to be awaken for every frame. On the other hand, if the
-    // queue had unlimited size WebKit would end up requesting flushes more often than necessary when frames
+    // queue had unlimited size CyberKit would end up requesting flushes more often than necessary when frames
     // in the future are re-appended. As a sweet spot between these extremes we choose to allow enqueueing a
     // few seconds worth of samples.
 

@@ -32,7 +32,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Positive test cases.
 
@@ -194,4 +194,4 @@ TEST(LoggedInStatus, ClampedExpiryShort)
     ASSERT_FALSE(loggedIn.hasExpired());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

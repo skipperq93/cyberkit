@@ -38,7 +38,7 @@ enum class NetworkConnectionIntegrity : uint16_t;
 class ResourceRequest;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class SpeculativeLoad;
 
@@ -66,6 +66,6 @@ private:
 };
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NETWORK_CACHE_STALE_WHILE_REVALIDATE)

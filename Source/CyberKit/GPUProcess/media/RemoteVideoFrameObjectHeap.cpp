@@ -42,7 +42,7 @@
 #include <pal/cf/CoreMediaSoftLink.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

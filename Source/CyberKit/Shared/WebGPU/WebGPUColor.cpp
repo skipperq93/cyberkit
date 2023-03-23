@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUColor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ColorDict> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ColorDict& colorDict)
 {
@@ -68,6 +68,6 @@ std::optional<PAL::WebGPU::Color> ConvertFromBackingContext::convertFromBacking(
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -33,7 +33,7 @@ class ResourceRequest;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 CyberCore::ResourceError cancelledError(const CyberCore::ResourceRequest&);
 CyberCore::ResourceError blockedError(const CyberCore::ResourceRequest&);
@@ -60,4 +60,4 @@ CyberCore::ResourceError downloadDestinationError(const CyberCore::ResourceRespo
 CyberCore::ResourceError invalidPageRangeToPrint(const URL&);
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

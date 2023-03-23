@@ -39,7 +39,7 @@
 #include <CyberCore/WebAuthenticationConstants.h>
 #include <CyberCore/WebAuthenticationUtils.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 using namespace fido;
 
@@ -264,6 +264,6 @@ TEST(U2fCommandConstructorTest, TestConstructBogusU2fRegistrationCommand)
     EXPECT_EQ(constructBogusU2fRegistrationCommand(), convertBytesToVector(TestData::kU2fFakeRegisterCommand, sizeof(TestData::kU2fFakeRegisterCommand)));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

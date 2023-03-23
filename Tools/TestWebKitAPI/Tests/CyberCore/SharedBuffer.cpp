@@ -39,7 +39,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST_F(FragmentedSharedBufferTest, createWithContentsOfMissingFile)
 {

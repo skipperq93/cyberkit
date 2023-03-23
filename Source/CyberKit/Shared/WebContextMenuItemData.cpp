@@ -34,7 +34,7 @@
 #include <wtf/text/CString.h>
 #include <CyberCore/ContextMenu.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebContextMenuItemData::WebContextMenuItemData()
@@ -172,5 +172,5 @@ Vector<ContextMenuItem> coreItems(const Vector<WebContextMenuItemData>& kitItemV
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 #endif // ENABLE(CONTEXT_MENUS)

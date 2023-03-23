@@ -96,6 +96,6 @@ ArchiveResource* WebArchiveResource::coreArchiveResource()
     return m_archiveResource.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

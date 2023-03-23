@@ -32,7 +32,7 @@ namespace CyberCore {
 class RegistrableDomain;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuxiliaryProcess;
 
@@ -46,4 +46,4 @@ bool doesParentProcessHaveTrackingPreventionEnabled(AuxiliaryProcess&, bool hasR
 bool isFullWebBrowser();
 bool isParentProcessAFullWebBrowser(AuxiliaryProcess&);
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -41,7 +41,7 @@
 #import <UIKit/UIResponder_Private.h>
 #import <UIKit/UIScreen_Private.h>
 #import <UIKit/UIScrollEvent_Private.h>
-#import <UIKit/UIScrollView_ForWebKitOnly.h>
+#import <UIKit/UIScrollView_ForCyberKitOnly.h>
 #import <UIKit/UIScrollView_Private.h>
 #import <UIKit/UITextAutofillSuggestion.h>
 #import <UIKit/UITextInputMultiDocument.h>
@@ -106,7 +106,7 @@ WTF_EXTERN_C_END
 @interface UITextInputTraits : NSObject <UITextInputTraits, UITextInputTraits_Private, NSCopying>
 @end
 
-@protocol UIDragInteractionDelegate_ForWebKitOnly <UIDragInteractionDelegate>
+@protocol UIDragInteractionDelegate_ForCyberKitOnly <UIDragInteractionDelegate>
 @optional
 - (void)_dragInteraction:(UIDragInteraction *)interaction prepareForSession:(id<UIDragSession>)session completion:(void(^)(void))completion;
 - (void)_dragInteraction:(UIDragInteraction *)interaction itemsForAddingToSession:(id <UIDragSession>)session withTouchAtPoint:(CGPoint)point completion:(void(^)(NSArray<UIDragItem *> *))completion;
@@ -287,7 +287,7 @@ typedef NS_ENUM(NSInteger, _UIDataOwner) {
 @interface UIScrollEvent : UIEvent
 @end
 
-@interface NSObject (UIScrollViewDelegate_ForWebKitOnly)
+@interface NSObject (UIScrollViewDelegate_ForCyberKitOnly)
 - (void)_scrollView:(UIScrollView *)scrollView asynchronouslyHandleScrollEvent:(UIScrollEvent *)scrollEvent completion:(void (^)(BOOL handled))completion;
 @end
 

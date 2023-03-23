@@ -33,9 +33,9 @@
 #include "JSWrapper.h"
 #include <JavaScriptCore/OpaqueJSString.h>
 #include <CyberCore/AccessibilityObjectAtspi.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePagePrivate.h>
 
 namespace WTR {
 

@@ -29,7 +29,7 @@
 #import "ArgumentCodersCF.h"
 #import "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 

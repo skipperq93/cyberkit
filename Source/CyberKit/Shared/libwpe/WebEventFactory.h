@@ -40,7 +40,7 @@ struct wpe_input_pointer_event;
 struct wpe_input_touch_event;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebEventFactory {
 public:
@@ -52,4 +52,4 @@ public:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

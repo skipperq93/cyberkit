@@ -19,13 +19,13 @@
 
 #include "config.h"
 
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
 #include <CyberCore/GUniquePtrSoup.h>
 #include <CyberCore/SoupVersioning.h>
 #include <glib/gstdio.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 #if USE(SOUP2)
 static void serverCallback(SoupServer* server, SoupMessage* message, const char* path, GHashTable*, SoupClientContext*, gpointer)
@@ -124,7 +124,7 @@ public:
         g_list_free_full(m_dataList, reinterpret_cast<GDestroyNotify>(webkit_website_data_unref));
     }
 
-    GList* fetch(WebKitWebsiteDataTypes types)
+    GList* fetch(CyberKitWebsiteDataTypes types)
     {
         if (m_dataList) {
             g_list_free_full(m_dataList, reinterpret_cast<GDestroyNotify>(webkit_website_data_unref));
@@ -139,7 +139,7 @@ public:
         return m_dataList;
     }
 
-    void remove(WebKitWebsiteDataTypes types, GList* dataList)
+    void remove(CyberKitWebsiteDataTypes types, GList* dataList)
     {
         webkit_website_data_manager_remove(m_manager, types, dataList, nullptr, [](GObject*, GAsyncResult* result, gpointer userData) {
             WebsiteDataTest* test = static_cast<WebsiteDataTest*>(userData);
@@ -149,7 +149,7 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    void clear(WebKitWebsiteDataTypes types, GTimeSpan timeSpan)
+    void clear(CyberKitWebsiteDataTypes types, GTimeSpan timeSpan)
     {
         webkit_website_data_manager_clear(m_manager, types, timeSpan, nullptr, [](GObject*, GAsyncResult* result, gpointer userData) {
             WebsiteDataTest* test = static_cast<WebsiteDataTest*>(userData);
@@ -159,7 +159,7 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    WebKitWebsiteDataManager* m_manager;
+    CyberKitWebsiteDataManager* m_manager;
     GList* m_dataList { nullptr };
 };
 
@@ -240,7 +240,7 @@ static void testWebsiteDataConfiguration(WebsiteDataTest* test, gconstpointer)
 
     // Clear all persistent caches, since the data dir is common to all test cases. Note: not cleaning the HSTS cache here as its data
     // is needed for the HSTS tests, where data cleaning will be tested.
-    static const WebKitWebsiteDataTypes persistentCaches = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_DISK_CACHE | WEBKIT_WEBSITE_DATA_LOCAL_STORAGE
+    static const CyberKitWebsiteDataTypes persistentCaches = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_DISK_CACHE | WEBKIT_WEBSITE_DATA_LOCAL_STORAGE
         | WEBKIT_WEBSITE_DATA_INDEXEDDB_DATABASES | WEBKIT_WEBSITE_DATA_OFFLINE_APPLICATION_CACHE | WEBKIT_WEBSITE_DATA_DEVICE_ID_HASH_SALT | WEBKIT_WEBSITE_DATA_ITP
         | WEBKIT_WEBSITE_DATA_SERVICE_WORKER_REGISTRATIONS | WEBKIT_WEBSITE_DATA_DOM_CACHE);
     test->clear(persistentCaches, 0);
@@ -276,7 +276,7 @@ static void testWebsiteDataConfiguration(WebsiteDataTest* test, gconstpointer)
     // Any specific configuration provided takes precedence over base dirs.
     indexedDBDirectory.reset(g_build_filename(Test::dataDirectory(), "mycustomindexeddb", nullptr));
     applicationCacheDirectory.reset(g_build_filename(Test::dataDirectory(), "mycustomappcache", nullptr));
-    GRefPtr<WebKitWebsiteDataManager> baseDataManager = adoptGRef(webkit_website_data_manager_new(
+    GRefPtr<CyberKitWebsiteDataManager> baseDataManager = adoptGRef(webkit_website_data_manager_new(
         "base-data-directory", Test::dataDirectory(), "base-cache-directory", Test::dataDirectory(),
         "indexeddb-directory", indexedDBDirectory.get(), "offline-application-cache-directory", applicationCacheDirectory.get(),
         nullptr));
@@ -295,7 +295,7 @@ static void testWebsiteDataConfiguration(WebsiteDataTest* test, gconstpointer)
 #endif
 }
 
-static void ephemeralViewloadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, WebViewTest* test)
+static void ephemeralViewloadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, WebViewTest* test)
 {
     if (loadEvent != WEBKIT_LOAD_FINISHED)
         return;
@@ -306,10 +306,10 @@ static void ephemeralViewloadChanged(WebKitWebView* webView, WebKitLoadEvent loa
 static void testWebsiteDataEphemeral(WebViewTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> session = adoptGRef(webkit_network_session_new_ephemeral());
-    GRefPtr<WebKitWebsiteDataManager> manager = webkit_network_session_get_website_data_manager(session.get());
+    GRefPtr<CyberKitNetworkSession> session = adoptGRef(webkit_network_session_new_ephemeral());
+    GRefPtr<CyberKitWebsiteDataManager> manager = webkit_network_session_get_website_data_manager(session.get());
 #else
-    GRefPtr<WebKitWebsiteDataManager> manager = adoptGRef(webkit_website_data_manager_new_ephemeral());
+    GRefPtr<CyberKitWebsiteDataManager> manager = adoptGRef(webkit_website_data_manager_new_ephemeral());
     g_assert_true(webkit_website_data_manager_is_ephemeral(manager.get()));
 #endif
     g_assert_null(webkit_website_data_manager_get_base_data_directory(manager.get()));
@@ -348,7 +348,7 @@ static void testWebsiteDataEphemeral(WebViewTest* test, gconstpointer)
         nullptr));
     g_assert_true(webkit_web_view_get_network_session(webView.get()) == session.get());
 #else
-    GRefPtr<WebKitWebContext> webContext = adoptGRef(webkit_web_context_new_with_website_data_manager(manager.get()));
+    GRefPtr<CyberKitWebContext> webContext = adoptGRef(webkit_web_context_new_with_website_data_manager(manager.get()));
     g_assert_true(webkit_web_context_is_ephemeral(webContext.get()));
     auto webView = Test::adoptView(Test::createWebView(webContext.get()));
     g_assert_true(webkit_web_view_is_ephemeral(webView.get()));
@@ -367,9 +367,9 @@ static void testWebsiteDataEphemeral(WebViewTest* test, gconstpointer)
         GList* dataList = webkit_website_data_manager_fetch_finish(WEBKIT_WEBSITE_DATA_MANAGER(manager), result, nullptr);
         g_assert_nonnull(dataList);
         g_assert_cmpuint(g_list_length(dataList), ==, 1);
-        WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+        CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
         g_assert_nonnull(data);
-        WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+        CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
         g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
         webkit_security_origin_unref(origin);
         g_list_free_full(dataList, reinterpret_cast<GDestroyNotify>(webkit_website_data_unref));
@@ -386,7 +386,7 @@ static void testWebsiteDataEphemeral(WebViewTest* test, gconstpointer)
 
 static void testWebsiteDataCache(WebsiteDataTest* test, gconstpointer)
 {
-    static const WebKitWebsiteDataTypes cacheTypes = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes cacheTypes = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     GList* dataList = test->fetch(cacheTypes);
     g_assert_null(dataList);
 
@@ -401,9 +401,9 @@ static void testWebsiteDataCache(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(cacheTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, cacheTypes);
@@ -415,16 +415,16 @@ static void testWebsiteDataCache(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(WEBKIT_WEBSITE_DATA_DISK_CACHE);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
     g_assert_true(webkit_website_data_get_types(data) & WEBKIT_WEBSITE_DATA_DISK_CACHE);
     g_assert_false(webkit_website_data_get_types(data) & WEBKIT_WEBSITE_DATA_MEMORY_CACHE);
 
-    GUniquePtr<char> fileURL(g_strdup_printf("file://%s/simple.html", Test::getResourcesDir(Test::WebKit2Resources).data()));
+    GUniquePtr<char> fileURL(g_strdup_printf("file://%s/simple.html", Test::getResourcesDir(Test::CyberKit2Resources).data()));
     test->loadURI(fileURL.get());
     test->waitUntilLoadFinished();
 
-    fileURL.reset(g_strdup_printf("file://%s/simple2.html", Test::getResourcesDir(Test::WebKit2Resources).data()));
+    fileURL.reset(g_strdup_printf("file://%s/simple2.html", Test::getResourcesDir(Test::CyberKit2Resources).data()));
     test->loadURI(fileURL.get());
     test->waitUntilLoadFinished();
 
@@ -433,11 +433,11 @@ static void testWebsiteDataCache(WebsiteDataTest* test, gconstpointer)
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 2);
     GList* itemList = g_list_find_custom(dataList, nullptr, [](gconstpointer item, gconstpointer) -> int {
-        WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(const_cast<gpointer>(item));
+        CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(const_cast<gpointer>(item));
         return g_strcmp0(webkit_website_data_get_name(data), "Local files");
     });
     g_assert_nonnull(itemList);
-    data = static_cast<WebKitWebsiteData*>(itemList->data);
+    data = static_cast<CyberKitWebsiteData*>(itemList->data);
     g_assert_nonnull(data);
     g_assert_true(webkit_website_data_get_types(data) & WEBKIT_WEBSITE_DATA_MEMORY_CACHE);
     // Local files are never stored in disk cache.
@@ -452,7 +452,7 @@ static void testWebsiteDataCache(WebsiteDataTest* test, gconstpointer)
 
     // Remove memory cache only for local files.
     itemList = g_list_find_custom(dataList, nullptr, [](gconstpointer item, gconstpointer) -> int {
-        WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(const_cast<gpointer>(item));
+        CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(const_cast<gpointer>(item));
         return g_strcmp0(webkit_website_data_get_name(data), "Local files");
     });
     g_assert_nonnull(itemList);
@@ -461,7 +461,7 @@ static void testWebsiteDataCache(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(cacheTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_true(webkit_website_data_get_types(data) & WEBKIT_WEBSITE_DATA_DISK_CACHE);
 
     // Clear all.
@@ -472,7 +472,7 @@ static void testWebsiteDataCache(WebsiteDataTest* test, gconstpointer)
 
 static void testWebsiteDataStorage(WebsiteDataTest* test, gconstpointer)
 {
-    static const WebKitWebsiteDataTypes storageTypes = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_SESSION_STORAGE | WEBKIT_WEBSITE_DATA_LOCAL_STORAGE);
+    static const CyberKitWebsiteDataTypes storageTypes = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_SESSION_STORAGE | WEBKIT_WEBSITE_DATA_LOCAL_STORAGE);
     GList* dataList = test->fetch(storageTypes);
     g_assert_null(dataList);
 
@@ -488,9 +488,9 @@ static void testWebsiteDataStorage(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(storageTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, storageTypes);
@@ -499,20 +499,20 @@ static void testWebsiteDataStorage(WebsiteDataTest* test, gconstpointer)
     g_assert_cmpuint(webkit_website_data_get_size(data, WEBKIT_WEBSITE_DATA_LOCAL_STORAGE), ==, 0);
 
     // Get also cached data, and clear it.
-    static const WebKitWebsiteDataTypes cacheAndStorageTypes = static_cast<WebKitWebsiteDataTypes>(storageTypes | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes cacheAndStorageTypes = static_cast<CyberKitWebsiteDataTypes>(storageTypes | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     dataList = test->fetch(cacheAndStorageTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, cacheAndStorageTypes);
-    test->clear(static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE), 0);
+    test->clear(static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE), 0);
 
     // Get all types again, but only storage is retrieved now.
     dataList = test->fetch(cacheAndStorageTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, storageTypes);
 
@@ -522,7 +522,7 @@ static void testWebsiteDataStorage(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(storageTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_false(webkit_website_data_get_types(data) & WEBKIT_WEBSITE_DATA_SESSION_STORAGE);
     g_assert_true(webkit_website_data_get_types(data) & WEBKIT_WEBSITE_DATA_LOCAL_STORAGE);
 
@@ -534,7 +534,7 @@ static void testWebsiteDataStorage(WebsiteDataTest* test, gconstpointer)
 
 static void testWebsiteDataDatabases(WebsiteDataTest* test, gconstpointer)
 {
-    static const WebKitWebsiteDataTypes databaseTypes = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_INDEXEDDB_DATABASES);
+    static const CyberKitWebsiteDataTypes databaseTypes = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_INDEXEDDB_DATABASES);
     GList* dataList = test->fetch(databaseTypes);
     g_assert_null(dataList);
 
@@ -547,9 +547,9 @@ static void testWebsiteDataDatabases(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(databaseTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, WEBKIT_WEBSITE_DATA_INDEXEDDB_DATABASES);
@@ -560,7 +560,7 @@ static void testWebsiteDataDatabases(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(databaseTypes);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, databaseTypes);
     // Database sizes are unknown.
@@ -573,7 +573,7 @@ static void testWebsiteDataDatabases(WebsiteDataTest* test, gconstpointer)
     g_assert_null(dataList);
 
     // Clear all.
-    static const WebKitWebsiteDataTypes cacheAndDatabaseTypes = static_cast<WebKitWebsiteDataTypes>(databaseTypes | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes cacheAndDatabaseTypes = static_cast<CyberKitWebsiteDataTypes>(databaseTypes | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     test->clear(cacheAndDatabaseTypes, 0);
     dataList = test->fetch(cacheAndDatabaseTypes);
     g_assert_null(dataList);
@@ -591,9 +591,9 @@ static void testWebsiteDataAppcache(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(WEBKIT_WEBSITE_DATA_OFFLINE_APPLICATION_CACHE);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, WEBKIT_WEBSITE_DATA_OFFLINE_APPLICATION_CACHE);
@@ -606,7 +606,7 @@ static void testWebsiteDataAppcache(WebsiteDataTest* test, gconstpointer)
     g_assert_null(dataList);
 
     // Clear all.
-    static const WebKitWebsiteDataTypes cacheAndAppcacheTypes = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_OFFLINE_APPLICATION_CACHE | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes cacheAndAppcacheTypes = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_OFFLINE_APPLICATION_CACHE | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     test->clear(cacheAndAppcacheTypes, 0);
     dataList = test->fetch(cacheAndAppcacheTypes);
     g_assert_null(dataList);
@@ -632,7 +632,7 @@ static void testWebsiteDataHsts(WebsiteDataTest* test, gconstpointer)
 {
     GList* dataList = test->fetch(WEBKIT_WEBSITE_DATA_HSTS_CACHE);
     g_assert_cmpuint(g_list_length(dataList), ==, 2);
-    WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, WEBKIT_WEBSITE_DATA_HSTS_CACHE);
     // HSTS data size is unknown.
     g_assert_cmpuint(webkit_website_data_get_size(data, WEBKIT_WEBSITE_DATA_HSTS_CACHE), ==, 0);
@@ -641,7 +641,7 @@ static void testWebsiteDataHsts(WebsiteDataTest* test, gconstpointer)
     test->remove(WEBKIT_WEBSITE_DATA_HSTS_CACHE, &removeList);
     dataList = test->fetch(WEBKIT_WEBSITE_DATA_HSTS_CACHE);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, WEBKIT_WEBSITE_DATA_HSTS_CACHE);
 
     // Remove all HSTS data.
@@ -661,7 +661,7 @@ static void testWebsiteDataCookies(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(WEBKIT_WEBSITE_DATA_COOKIES);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, "127.0.0.1");
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, WEBKIT_WEBSITE_DATA_COOKIES);
@@ -674,7 +674,7 @@ static void testWebsiteDataCookies(WebsiteDataTest* test, gconstpointer)
     g_assert_null(dataList);
 
     // Clear all.
-    static const WebKitWebsiteDataTypes cacheAndCookieTypes = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_COOKIES | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes cacheAndCookieTypes = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_COOKIES | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     test->clear(cacheAndCookieTypes, 0);
     dataList = test->fetch(cacheAndCookieTypes);
     g_assert_null(dataList);
@@ -682,7 +682,7 @@ static void testWebsiteDataCookies(WebsiteDataTest* test, gconstpointer)
 
 static void testWebsiteDataDeviceIdHashSalt(WebsiteDataTest* test, gconstpointer)
 {
-    WebKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
+    CyberKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
     gboolean enabled = webkit_settings_get_enable_media_stream(settings);
     webkit_settings_set_enable_media_stream(settings, TRUE);
     webkit_settings_set_enable_mock_capture_devices(settings, TRUE);
@@ -699,9 +699,9 @@ static void testWebsiteDataDeviceIdHashSalt(WebsiteDataTest* test, gconstpointer
     g_assert_nonnull(dataList);
 
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
     g_assert_cmpuint(webkit_website_data_get_types(data), ==, WEBKIT_WEBSITE_DATA_DEVICE_ID_HASH_SALT);
@@ -720,7 +720,7 @@ static void testWebsiteDataDeviceIdHashSalt(WebsiteDataTest* test, gconstpointer
 
     dataList = test->fetch(WEBKIT_WEBSITE_DATA_DEVICE_ID_HASH_SALT);
     g_assert_nonnull(dataList);
-    data = static_cast<WebKitWebsiteData*>(dataList->data);
+    data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
 
     GList removeCookieList = { data, nullptr, nullptr };
@@ -729,7 +729,7 @@ static void testWebsiteDataDeviceIdHashSalt(WebsiteDataTest* test, gconstpointer
     g_assert_null(dataList);
 
     // Clear all.
-    static const WebKitWebsiteDataTypes cacheAndAppcacheTypes = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_DEVICE_ID_HASH_SALT);
+    static const CyberKitWebsiteDataTypes cacheAndAppcacheTypes = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_DEVICE_ID_HASH_SALT);
     test->clear(cacheAndAppcacheTypes, 0);
     dataList = test->fetch(cacheAndAppcacheTypes);
     g_assert_null(dataList);
@@ -777,9 +777,9 @@ static void testWebsiteDataITP(WebsiteDataTest* test, gconstpointer)
     GList* dataList = test->fetch(WEBKIT_WEBSITE_DATA_ITP);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    auto* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    auto* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
 
@@ -790,7 +790,7 @@ static void testWebsiteDataITP(WebsiteDataTest* test, gconstpointer)
     g_assert_null(dataList);
 
     // Clear all.
-    static const WebKitWebsiteDataTypes cacheAndITP = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_ITP | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes cacheAndITP = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_ITP | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     test->clear(cacheAndITP, 0);
 
 #if ENABLE(2022_GLIB_API)
@@ -815,9 +815,9 @@ static void testWebsiteDataServiceWorkerRegistrations(WebsiteDataTest* test, gco
     dataList = test->fetch(WEBKIT_WEBSITE_DATA_SERVICE_WORKER_REGISTRATIONS);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
     g_assert_nonnull(dataList);
-    auto* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    auto* data = static_cast<CyberKitWebsiteData*>(dataList->data);
     g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/service/register.html").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/service/register.html").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
 
@@ -828,7 +828,7 @@ static void testWebsiteDataServiceWorkerRegistrations(WebsiteDataTest* test, gco
     g_assert_null(dataList);
 
     // Clear all.
-    static const WebKitWebsiteDataTypes cacheAndRegistrations = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_SERVICE_WORKER_REGISTRATIONS | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes cacheAndRegistrations = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_SERVICE_WORKER_REGISTRATIONS | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     test->clear(cacheAndRegistrations, 0);
     dataList = test->fetch(cacheAndRegistrations);
     g_assert_null(dataList);
@@ -849,9 +849,9 @@ static void testWebsiteDataDOMCache(WebsiteDataTest* test, gconstpointer)
     dataList = test->fetch(WEBKIT_WEBSITE_DATA_DOM_CACHE);
     g_assert_nonnull(dataList);
     g_assert_cmpuint(g_list_length(dataList), ==, 1);
-    auto* data = static_cast<WebKitWebsiteData*>(dataList->data);
+    auto* data = static_cast<CyberKitWebsiteData*>(dataList->data);
 g_assert_nonnull(data);
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri(kServer->getURIForPath("/").data());
     g_assert_cmpstr(webkit_website_data_get_name(data), ==, webkit_security_origin_get_host(origin));
     webkit_security_origin_unref(origin);
 
@@ -862,7 +862,7 @@ g_assert_nonnull(data);
     g_assert_null(dataList);
 
     // Clear all.
-    static const WebKitWebsiteDataTypes caches = static_cast<WebKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_DOM_CACHE | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
+    static const CyberKitWebsiteDataTypes caches = static_cast<CyberKitWebsiteDataTypes>(WEBKIT_WEBSITE_DATA_DOM_CACHE | WEBKIT_WEBSITE_DATA_MEMORY_CACHE | WEBKIT_WEBSITE_DATA_DISK_CACHE);
     test->clear(caches, 0);
     dataList = test->fetch(caches);
     g_assert_null(dataList);
@@ -871,10 +871,10 @@ g_assert_nonnull(data);
 static void testWebViewHandleCorruptedLocalStorage(WebsiteDataTest* test, gconstpointer)
 {
     const char html[] = "<html><script>let foo = (window.localStorage.length ? window.localStorage.getItem('item'):''); window.localStorage.setItem('item','value');</script></html>";
-    auto waitForFooChanged = [&test](WebKitWebView* webView) {
+    auto waitForFooChanged = [&test](CyberKitWebView* webView) {
         GUniqueOutPtr<GError> error;
         JSCValue* jscvalue;
-        WebKitJavascriptResult* result = test->runJavaScriptAndWaitUntilFinished("foo;", &error.outPtr(), webView);
+        CyberKitJavascriptResult* result = test->runJavaScriptAndWaitUntilFinished("foo;", &error.outPtr(), webView);
         g_assert_no_error(error.get());
         jscvalue = webkit_javascript_result_get_js_value(result);
         GUniquePtr<char> fooValue(jsc_value_to_string(jscvalue));
@@ -910,7 +910,7 @@ public:
 
     static void setup()
     {
-        WebKitMemoryPressureSettings* settings = webkit_memory_pressure_settings_new();
+        CyberKitMemoryPressureSettings* settings = webkit_memory_pressure_settings_new();
         webkit_memory_pressure_settings_set_memory_limit(settings, 1);
         webkit_memory_pressure_settings_set_poll_interval(settings, 0.001);
         webkit_memory_pressure_settings_set_kill_threshold(settings, 1);
@@ -933,7 +933,7 @@ public:
 #endif
     }
 
-    static gboolean loadFailedCallback(WebKitWebView* webView, WebKitLoadEvent loadEvent, const char* failingURI, GError* error, MemoryPressureTest* test)
+    static gboolean loadFailedCallback(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, const char* failingURI, GError* error, MemoryPressureTest* test)
     {
         g_signal_handlers_disconnect_by_func(webView, reinterpret_cast<void*>(loadFailedCallback), test);
         g_main_loop_quit(test->m_mainLoop);
@@ -955,36 +955,36 @@ static void testMemoryPressureSettings(MemoryPressureTest* test, gconstpointer)
     // kill the process as soon as it detects that it's using more than 1MB, so the network process
     // won't be able to complete the resource load. This causes an internal error and the load-failed
     // signal is emitted.
-    GUniquePtr<char> fileURL(g_strdup_printf("file://%s/simple.html", Test::getResourcesDir(Test::WebKit2Resources).data()));
+    GUniquePtr<char> fileURL(g_strdup_printf("file://%s/simple.html", Test::getResourcesDir(Test::CyberKit2Resources).data()));
     test->loadURI(fileURL.get());
     test->waitUntilLoadFailed();
 }
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
 #if SOUP_CHECK_VERSION(2, 67, 91)
     prepopulateHstsData();
 #endif
 
-    WebsiteDataTest::add("WebKitWebsiteData", "configuration", testWebsiteDataConfiguration);
-    WebViewTest::add("WebKitWebsiteData", "ephemeral", testWebsiteDataEphemeral);
-    WebsiteDataTest::add("WebKitWebsiteData", "cache", testWebsiteDataCache);
-    WebsiteDataTest::add("WebKitWebsiteData", "storage", testWebsiteDataStorage);
-    WebsiteDataTest::add("WebKitWebsiteData", "databases", testWebsiteDataDatabases);
-    WebsiteDataTest::add("WebKitWebsiteData", "appcache", testWebsiteDataAppcache);
-    WebsiteDataTest::add("WebKitWebsiteData", "cookies", testWebsiteDataCookies);
+    WebsiteDataTest::add("CyberKitWebsiteData", "configuration", testWebsiteDataConfiguration);
+    WebViewTest::add("CyberKitWebsiteData", "ephemeral", testWebsiteDataEphemeral);
+    WebsiteDataTest::add("CyberKitWebsiteData", "cache", testWebsiteDataCache);
+    WebsiteDataTest::add("CyberKitWebsiteData", "storage", testWebsiteDataStorage);
+    WebsiteDataTest::add("CyberKitWebsiteData", "databases", testWebsiteDataDatabases);
+    WebsiteDataTest::add("CyberKitWebsiteData", "appcache", testWebsiteDataAppcache);
+    WebsiteDataTest::add("CyberKitWebsiteData", "cookies", testWebsiteDataCookies);
 #if SOUP_CHECK_VERSION(2, 67, 91)
-    WebsiteDataTest::add("WebKitWebsiteData", "hsts", testWebsiteDataHsts);
+    WebsiteDataTest::add("CyberKitWebsiteData", "hsts", testWebsiteDataHsts);
 #endif
-    WebsiteDataTest::add("WebKitWebsiteData", "deviceidhashsalt", testWebsiteDataDeviceIdHashSalt);
-    WebsiteDataTest::add("WebKitWebsiteData", "itp", testWebsiteDataITP);
-    WebsiteDataTest::add("WebKitWebsiteData", "service-worker-registrations", testWebsiteDataServiceWorkerRegistrations);
-    WebsiteDataTest::add("WebKitWebsiteData", "dom-cache", testWebsiteDataDOMCache);
-    WebsiteDataTest::add("WebKitWebsiteData", "handle-corrupted-local-storage", testWebViewHandleCorruptedLocalStorage);
-    MemoryPressureTest::add("WebKitWebsiteData", "memory-pressure", testMemoryPressureSettings);
+    WebsiteDataTest::add("CyberKitWebsiteData", "deviceidhashsalt", testWebsiteDataDeviceIdHashSalt);
+    WebsiteDataTest::add("CyberKitWebsiteData", "itp", testWebsiteDataITP);
+    WebsiteDataTest::add("CyberKitWebsiteData", "service-worker-registrations", testWebsiteDataServiceWorkerRegistrations);
+    WebsiteDataTest::add("CyberKitWebsiteData", "dom-cache", testWebsiteDataDOMCache);
+    WebsiteDataTest::add("CyberKitWebsiteData", "handle-corrupted-local-storage", testWebViewHandleCorruptedLocalStorage);
+    MemoryPressureTest::add("CyberKitWebsiteData", "memory-pressure", testMemoryPressureSettings);
 }
 
 void afterAll()

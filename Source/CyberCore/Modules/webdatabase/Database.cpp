@@ -91,8 +91,8 @@ namespace WebCore {
 // The ref counting mechanims will automatically destruct the un-added
 // (and un-returned) databases instances.
 
-static const char versionKey[] = "WebKitDatabaseVersionKey";
-static constexpr auto unqualifiedInfoTableName = "__WebKitDatabaseInfoTable__"_s;
+static const char versionKey[] = "CyberKitDatabaseVersionKey";
+static constexpr auto unqualifiedInfoTableName = "__CyberKitDatabaseInfoTable__"_s;
 const unsigned long long quotaIncreaseSize = 5 * 1024 * 1024;
 
 static const String& fullyQualifiedInfoTableName()
@@ -100,7 +100,7 @@ static const String& fullyQualifiedInfoTableName()
     static LazyNeverDestroyed<String> qualifiedName;
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        qualifiedName.construct(MAKE_STATIC_STRING_IMPL("main.__WebKitDatabaseInfoTable__"));
+        qualifiedName.construct(MAKE_STATIC_STRING_IMPL("main.__CyberKitDatabaseInfoTable__"));
     });
     return qualifiedName;
 }

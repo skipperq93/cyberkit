@@ -35,7 +35,7 @@
 #include "NetworkSessionSoup.h"
 #include "PrivateRelayed.h"
 #include "WebErrors.h"
-#include "WebKitDirectoryInputStream.h"
+#include "CyberKitDirectoryInputStream.h"
 #include <CyberCore/AuthenticationChallenge.h>
 #include <CyberCore/HTTPParsers.h>
 #include <CyberCore/MIMETypeRegistry.h>
@@ -50,7 +50,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/glib/RunLoopSourcePriority.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const size_t gDefaultReadBufferSize = 8192;
@@ -1804,5 +1804,5 @@ void NetworkDataTaskSoup::didReadDataURL(std::optional<DataURLDecoder::Result>&&
     dispatchDidReceiveResponse();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

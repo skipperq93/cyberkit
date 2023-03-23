@@ -43,7 +43,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 static constexpr auto saltFileName = "salt"_s;
@@ -172,7 +172,7 @@ static String makeCachePath(const String& baseCachePath)
 {
 #if PLATFORM(MAC)
     // Put development cache to a different directory to avoid affecting the system cache.
-    if (!AuxiliaryProcess::isSystemWebKit())
+    if (!AuxiliaryProcess::isSystemCyberKit())
         return FileSystem::pathByAppendingComponent(baseCachePath, "Development"_s);
 #endif
     return baseCachePath;
@@ -270,9 +270,9 @@ Storage::Storage(const String& baseDirectoryPath, Mode mode, Salt salt, size_t c
     , m_capacity(capacity)
     , m_readOperationTimeoutTimer(*this, &Storage::cancelAllReadOperations)
     , m_writeOperationDispatchTimer(*this, &Storage::dispatchPendingWriteOperations)
-    , m_ioQueue(ConcurrentWorkQueue::create("com.apple.WebKit.Cache.Storage"))
-    , m_backgroundIOQueue(ConcurrentWorkQueue::create("com.apple.WebKit.Cache.Storage.background", WorkQueue::QOS::Background))
-    , m_serialBackgroundIOQueue(WorkQueue::create("com.apple.WebKit.Cache.Storage.serialBackground", WorkQueue::QOS::Background))
+    , m_ioQueue(ConcurrentWorkQueue::create("com.apple.CyberKit.Cache.Storage"))
+    , m_backgroundIOQueue(ConcurrentWorkQueue::create("com.apple.CyberKit.Cache.Storage.background", WorkQueue::QOS::Background))
+    , m_serialBackgroundIOQueue(WorkQueue::create("com.apple.CyberKit.Cache.Storage.serialBackground", WorkQueue::QOS::Background))
     , m_blobStorage(makeBlobDirectoryPath(baseDirectoryPath), m_salt)
 {
     ASSERT(RunLoop::isMain());

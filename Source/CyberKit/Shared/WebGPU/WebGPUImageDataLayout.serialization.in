@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::ImageDataLayout {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::ImageDataLayout {
     PAL::WebGPU::Size64 offset;
     std::optional<PAL::WebGPU::Size32> bytesPerRow;
     std::optional<PAL::WebGPU::Size32> rowsPerImage;

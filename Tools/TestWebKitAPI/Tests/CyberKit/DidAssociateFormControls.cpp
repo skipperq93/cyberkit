@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didReceiveAllMessages = false;
 static bool receivedMessageForAddingForm = false;
@@ -75,7 +75,7 @@ static void setInjectedBundleClient(WKContextRef context)
     WKContextSetInjectedBundleClient(context, &injectedBundleClient.base);
 }
 
-TEST(WebKit, DidAssociateFormControls)
+TEST(CyberKit, DidAssociateFormControls)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("DidAssociateFormControlsTest"));
     setInjectedBundleClient(context.get());
@@ -85,6 +85,6 @@ TEST(WebKit, DidAssociateFormControls)
     Util::run(&didReceiveAllMessages);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

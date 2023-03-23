@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool done;
 
@@ -55,7 +55,7 @@ static void setInjectedBundleClient(WKContextRef context)
     WKContextSetInjectedBundleClient(context, &injectedBundleClient.base);
 }
 
-TEST(WebKit, InjectedBundleFrameHitTest)
+TEST(CyberKit, InjectedBundleFrameHitTest)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("InjectedBundleFrameHitTestTest"));
     
@@ -68,6 +68,6 @@ TEST(WebKit, InjectedBundleFrameHitTest)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

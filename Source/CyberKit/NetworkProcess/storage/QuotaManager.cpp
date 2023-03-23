@@ -28,7 +28,7 @@
 
 #include <wtf/SetForScope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<QuotaManager> QuotaManager::create(uint64_t quota, GetUsageFunction&& getUsageFunction, IncreaseQuotaFunction&& increaseQuotaFunction)
 {
@@ -134,4 +134,4 @@ void QuotaManager::resetQuotaForTesting()
     m_quotaCountdown = 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

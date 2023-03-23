@@ -28,7 +28,7 @@
 #include <CyberScriptCore/InitializeThreading.h>
 #include <CyberScriptCore/VM.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using JSC::DisallowVMEntry;
 using JSC::JSLockHolder;
@@ -111,4 +111,4 @@ TEST(JavaScriptCore_DisallowVMEntry, CopyAssignment)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

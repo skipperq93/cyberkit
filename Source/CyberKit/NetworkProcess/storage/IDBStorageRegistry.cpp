@@ -30,7 +30,7 @@
 #include <CyberCore/UniqueIDBDatabaseConnection.h>
 #include <CyberCore/UniqueIDBDatabaseTransaction.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 IDBStorageRegistry::IDBStorageRegistry() = default;
 
@@ -98,4 +98,4 @@ CyberCore::IDBServer::UniqueIDBDatabaseTransaction* IDBStorageRegistry::transact
     return m_transactions.get(identifier).get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

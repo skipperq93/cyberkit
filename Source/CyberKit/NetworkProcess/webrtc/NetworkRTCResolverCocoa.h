@@ -31,7 +31,7 @@
 
 #include <CFNetwork/CFHost.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: Remove this class when we complete the implementation of the DNSResolveQueueCFNet.
 class NetworkRTCResolverCocoa final : public NetworkRTCResolver {
@@ -48,6 +48,6 @@ private:
     RetainPtr<CFHostRef> m_host;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

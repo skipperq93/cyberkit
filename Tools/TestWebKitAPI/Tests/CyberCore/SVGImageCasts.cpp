@@ -30,7 +30,7 @@
 #include <CyberCore/SVGImageForContainer.h>
 #include <wtf/URL.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace CyberCore;
 

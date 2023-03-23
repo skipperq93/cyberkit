@@ -28,7 +28,7 @@
 #include "SharedFileHandle.h"
 #include <CyberCore/FileSystemSyncAccessHandleIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct FileSystemSyncAccessHandleInfo {
     CyberCore::FileSystemSyncAccessHandleIdentifier identifier;
@@ -36,4 +36,4 @@ struct FileSystemSyncAccessHandleInfo {
     uint64_t capacity { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

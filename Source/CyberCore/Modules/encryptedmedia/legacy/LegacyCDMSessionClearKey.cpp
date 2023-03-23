@@ -29,7 +29,7 @@
 #include "JSExecState.h"
 #include "Logging.h"
 #include <pal/text/TextEncoding.h>
-#include "WebKitMediaKeyError.h"
+#include "CyberKitMediaKeyError.h"
 #include <CyberScriptCore/BuiltinNames.h>
 #include <CyberScriptCore/JSGlobalObjectInlines.h>
 #include <CyberScriptCore/JSLock.h>
@@ -65,7 +65,7 @@ RefPtr<Uint8Array> CDMSessionClearKey::generateKeyRequest(const String& mimeType
     UNUSED_PARAM(systemCode);
 
     if (!initData) {
-        errorCode = WebKitMediaKeyError::MEDIA_KEYERR_CLIENT;
+        errorCode = CyberKitMediaKeyError::MEDIA_KEYERR_CLIENT;
         return nullptr;
     }
     m_initData = initData;
@@ -73,7 +73,7 @@ RefPtr<Uint8Array> CDMSessionClearKey::generateKeyRequest(const String& mimeType
     bool sawError = false;
     String keyID = PAL::UTF8Encoding().decode(static_cast<char*>(m_initData->baseAddress()), m_initData->byteLength(), true, sawError);
     if (sawError) {
-        errorCode = WebKitMediaKeyError::MEDIA_KEYERR_CLIENT;
+        errorCode = CyberKitMediaKeyError::MEDIA_KEYERR_CLIENT;
         return nullptr;
     }
 
@@ -185,7 +185,7 @@ bool CDMSessionClearKey::update(Uint8Array* rawKeysData, RefPtr<Uint8Array>& nex
 
     } while (false);
 
-    errorCode = WebKitMediaKeyError::MEDIA_KEYERR_CLIENT;
+    errorCode = CyberKitMediaKeyError::MEDIA_KEYERR_CLIENT;
     return false;
 }
 

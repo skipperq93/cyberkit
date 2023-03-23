@@ -287,7 +287,7 @@ std::optional<CyberCore::ResourceRequest> Coder<CyberCore::ResourceRequest>::dec
 
 namespace WTF {
 
-// FIXME: Remove this when WebKit::NetworkCache::Storage::version is incremented.
+// FIXME: Remove this when CyberKit::NetworkCache::Storage::version is incremented.
 enum class LegacyCertificateInfoType {
     None,
     CertificateChain,

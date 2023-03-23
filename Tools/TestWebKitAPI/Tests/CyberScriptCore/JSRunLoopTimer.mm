@@ -59,7 +59,7 @@ static WTF::RunLoop* s_expectedRunLoop;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void triggerGC(JSContext *context)
 {
@@ -105,4 +105,4 @@ TEST(JavaScriptCore, IncrementalSweeperSecondaryThread)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

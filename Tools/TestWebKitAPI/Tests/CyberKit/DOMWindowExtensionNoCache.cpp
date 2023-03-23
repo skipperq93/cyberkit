@@ -32,7 +32,7 @@
 #include "Test.h"
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool finished;
 
@@ -81,7 +81,7 @@ static void didReceiveMessageFromInjectedBundle(WKContextRef, WKStringRef messag
       finished = true;
 }
 
-TEST(WebKit, DISABLED_DOMWindowExtensionNoCache)
+TEST(CyberKit, DISABLED_DOMWindowExtensionNoCache)
 {
     WKRetainPtr<WKPageGroupRef> pageGroup = adoptWK(WKPageGroupCreateWithIdentifier(WKStringCreateWithUTF8CString("DOMWindowExtensionNoCachePageGroup")));
 
@@ -134,6 +134,6 @@ TEST(WebKit, DISABLED_DOMWindowExtensionNoCache)
       EXPECT_WK_STREQ(expectedMessages[i], messages[i].get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

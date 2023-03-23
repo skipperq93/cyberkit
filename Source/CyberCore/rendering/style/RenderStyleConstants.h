@@ -714,9 +714,9 @@ enum class TextAlignMode : uint8_t {
     Right,
     Center,
     Justify,
-    WebKitLeft,
-    WebKitRight,
-    WebKitCenter,
+    CyberKitLeft,
+    CyberKitRight,
+    CyberKitCenter,
     Start,
     End,
 };

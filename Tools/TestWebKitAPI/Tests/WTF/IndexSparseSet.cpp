@@ -29,7 +29,7 @@
 #include <wtf/IndexSparseSet.h>
 #include <wtf/KeyValuePair.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_IndexSparseSet, AddRemove)
 {
@@ -186,4 +186,4 @@ TEST(WTF_IndexSparseSet, SortClear)
 
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

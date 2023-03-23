@@ -36,7 +36,7 @@
 #include <CyberKit/WKPagePrivate.h>
 #include <CyberKit/WKSerializedScriptValue.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testDone;
 
@@ -58,7 +58,7 @@ static void didLayout(WKPageRef page, WKPageRenderingProgressEvents milestones, 
     }
 }
 
-TEST(WebKit, ResizeReversePaginatedWebView)
+TEST(CyberKit, ResizeReversePaginatedWebView)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -89,6 +89,6 @@ TEST(WebKit, ResizeReversePaginatedWebView)
     EXPECT_TRUE(testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

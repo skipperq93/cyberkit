@@ -42,7 +42,7 @@ WEBKIT_DEFINE_ASYNC_DATA_STRUCT(RealtimeOutgoingVideoSourceHolder)
 RealtimeOutgoingVideoSourceGStreamer::RealtimeOutgoingVideoSourceGStreamer(const String& mediaStreamId, MediaStreamTrack& track)
     : RealtimeOutgoingMediaSourceGStreamer(mediaStreamId, track)
 {
-    registerWebKitGStreamerElements();
+    registerCyberKitGStreamerElements();
 
     static Atomic<uint64_t> sourceCounter = 0;
     gst_element_set_name(m_bin.get(), makeString("outgoing-video-source-", sourceCounter.exchangeAdd(1)).ascii().data());

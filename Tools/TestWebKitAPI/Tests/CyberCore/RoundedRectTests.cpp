@@ -29,7 +29,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static LayoutRect layoutRect(float x, float y, float width, float height)
 {

@@ -38,7 +38,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/ProcessID.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class PreconnectOnly : bool { No, Yes };
 
@@ -98,4 +98,4 @@ public:
     OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

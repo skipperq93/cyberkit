@@ -31,7 +31,7 @@
 #include <pal/SessionID.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkStorageSessionProvider final : public CyberCore::StorageSessionProvider {
 public:

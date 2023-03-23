@@ -33,7 +33,7 @@
 
 OBJC_CLASS RVItem;
 
-namespace WebKit {
+namespace CyberKit {
 
 class RevealItem {
     

@@ -36,7 +36,7 @@
 #include <wtf/persistence/PersistentDecoder.h>
 #include <wtf/persistence/PersistentEncoder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr auto saltFileName = "salt"_s;
 static constexpr auto versionDirectoryPrefix = "Version "_s;
@@ -106,7 +106,7 @@ CacheStorageDiskStore::CacheStorageDiskStore(const String& cacheName, const Stri
     , m_path(path)
     , m_salt(valueOrDefault(FileSystem::readOrMakeSalt(saltFilePath())))
     , m_callbackQueue(WTFMove(queue))
-    , m_ioQueue(WorkQueue::create("com.apple.WebKit.CacheStorageCache"))
+    , m_ioQueue(WorkQueue::create("com.apple.CyberKit.CacheStorageCache"))
 {
     ASSERT(!m_cacheName.isEmpty());
     ASSERT(!m_path.isEmpty());
@@ -539,5 +539,5 @@ void CacheStorageDiskStore::writeRecords(Vector<CacheStorageRecord>&& records, W
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

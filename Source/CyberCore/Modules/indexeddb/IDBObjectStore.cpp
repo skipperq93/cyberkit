@@ -404,7 +404,7 @@ ExceptionOr<Ref<IDBRequest>> IDBObjectStore::doDelete(Function<ExceptionOr<RefPt
     // The IDB spec for several IDBObjectStore methods states that transaction related exceptions should fire before
     // the exception for an object store being deleted.
     // However, a handful of W3C IDB tests expect the deleted exception even though the transaction inactive exception also applies.
-    // Additionally, Chrome and Edge agree with the test, as does Legacy IDB in WebKit.
+    // Additionally, Chrome and Edge agree with the test, as does Legacy IDB in CyberKit.
     // Until this is sorted out, we'll agree with the test and the majority share browsers.
     if (m_deleted)
         return Exception { InvalidStateError, "Failed to execute 'delete' on 'IDBObjectStore': The object store has been deleted."_s };
@@ -444,7 +444,7 @@ ExceptionOr<Ref<IDBRequest>> IDBObjectStore::clear()
     // The IDB spec for several IDBObjectStore methods states that transaction related exceptions should fire before
     // the exception for an object store being deleted.
     // However, a handful of W3C IDB tests expect the deleted exception even though the transaction inactive exception also applies.
-    // Additionally, Chrome and Edge agree with the test, as does Legacy IDB in WebKit.
+    // Additionally, Chrome and Edge agree with the test, as does Legacy IDB in CyberKit.
     // Until this is sorted out, we'll agree with the test and the majority share browsers.
     if (m_deleted)
         return Exception { InvalidStateError, "Failed to execute 'clear' on 'IDBObjectStore': The object store has been deleted."_s };
@@ -591,7 +591,7 @@ ExceptionOr<Ref<IDBRequest>> IDBObjectStore::doCount(const IDBKeyRangeData& rang
     // The IDB spec for several IDBObjectStore methods states that transaction related exceptions should fire before
     // the exception for an object store being deleted.
     // However, a handful of W3C IDB tests expect the deleted exception even though the transaction inactive exception also applies.
-    // Additionally, Chrome and Edge agree with the test, as does Legacy IDB in WebKit.
+    // Additionally, Chrome and Edge agree with the test, as does Legacy IDB in CyberKit.
     // Until this is sorted out, we'll agree with the test and the majority share browsers.
     if (m_deleted)
         return Exception { InvalidStateError, "Failed to execute 'count' on 'IDBObjectStore': The object store has been deleted."_s };

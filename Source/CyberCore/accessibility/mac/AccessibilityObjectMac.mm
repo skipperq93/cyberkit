@@ -79,7 +79,7 @@ void AccessibilityObject::overrideAttachmentParent(AXCoreObject* parent)
 
 FloatRect AccessibilityObject::convertRectToPlatformSpace(const FloatRect& rect, AccessibilityConversionSpace space) const
 {
-    // WebKit1 code path... platformWidget() exists.
+    // CyberKit1 code path... platformWidget() exists.
     auto* frameView = documentFrameView();
     if (frameView && frameView->platformWidget()) {
         CGPoint point = CGPointMake(rect.x(), rect.y());

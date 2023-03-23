@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using LayerHostingContextID = uint32_t;
 
@@ -37,4 +37,4 @@ class LayerHostingContext {
 public:
 };
 
-} // namespace WebKit
+} // namespace CyberKit

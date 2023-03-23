@@ -33,21 +33,21 @@ static bool testFinished;
 
 static NSURL *testURL()
 {
-    static RetainPtr<NSURL> url = [[NSBundle mainBundle] URLForResource:@"WillPerformClientRedirectToURLCrash" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    static RetainPtr<NSURL> url = [[NSBundle mainBundle] URLForResource:@"WillPerformClientRedirectToURLCrash" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     return url.get();
 }
 
-@interface WebKit1TestDelegate : NSObject <WebFrameLoadDelegate, WebUIDelegate>
+@interface CyberKit1TestDelegate : NSObject <WebFrameLoadDelegate, WebUIDelegate>
 
-+ (WebKit1TestDelegate *)shared;
++ (CyberKit1TestDelegate *)shared;
 
 @end
 
-@implementation WebKit1TestDelegate
+@implementation CyberKit1TestDelegate
 
-+ (WebKit1TestDelegate *)shared
++ (CyberKit1TestDelegate *)shared
 {
-    static WebKit1TestDelegate *sharedTestDelegate = [[WebKit1TestDelegate alloc] init];
+    static CyberKit1TestDelegate *sharedTestDelegate = [[CyberKit1TestDelegate alloc] init];
     return sharedTestDelegate;
 }
 
@@ -70,17 +70,17 @@ static NSURL *testURL()
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, WillPerformClientRedirectToURLCrash)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
-        [webView setFrameLoadDelegate: [WebKit1TestDelegate shared]];
-        [webView setUIDelegate:[WebKit1TestDelegate shared]];
+        [webView setFrameLoadDelegate: [CyberKit1TestDelegate shared]];
+        [webView setUIDelegate:[CyberKit1TestDelegate shared]];
         [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:testURL()]];
         Util::run(&testFinished);
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

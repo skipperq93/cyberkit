@@ -32,8 +32,8 @@
 
 namespace CyberCore {
 
-const ASCIILiteral errorDomainWebKitInternal = "WebKitInternal"_s;
-const ASCIILiteral errorDomainWebKitServiceWorker = "WebKitServiceWorker"_s;
+const ASCIILiteral errorDomainCyberKitInternal = "CyberKitInternal"_s;
+const ASCIILiteral errorDomainCyberKitServiceWorker = "CyberKitServiceWorker"_s;
 
 inline const ResourceError& ResourceErrorBase::asResourceError() const
 {
@@ -96,7 +96,7 @@ ResourceError internalError(const URL& url)
     RELEASE_LOG_ERROR(Loading, "Internal error called");
     RELEASE_LOG_STACKTRACE(Loading);
 
-    return ResourceError("WebKitErrorDomain"_s, 300, url, WEB_UI_STRING("WebKit encountered an internal error", "WebKitErrorInternal description"));
+    return ResourceError("CyberKitErrorDomain"_s, 300, url, WEB_UI_STRING("CyberKit encountered an internal error", "CyberKitErrorInternal description"));
 }
 
 } // namespace CyberCore

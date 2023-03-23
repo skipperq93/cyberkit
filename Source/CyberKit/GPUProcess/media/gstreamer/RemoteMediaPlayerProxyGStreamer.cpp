@@ -31,14 +31,14 @@
 #include "LayerHostingContext.h"
 #include <CyberCore/NotImplemented.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void RemoteMediaPlayerProxy::mediaPlayerFirstVideoFrameAvailable()
 {
     notImplemented();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 
 #endif // ENABLE(GPU_PROCESS)

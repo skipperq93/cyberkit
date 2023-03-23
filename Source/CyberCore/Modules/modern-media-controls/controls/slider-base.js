@@ -231,7 +231,7 @@ class SliderBase extends LayoutNode
 
     _playbackProgress(pageX)
     {
-        let x = window.webkitConvertPointFromPageToNode(this.element, new WebKitPoint(pageX, 0)).x;
+        let x = window.webkitConvertPointFromPageToNode(this.element, new CyberKitPoint(pageX, 0)).x;
         if (this._layoutDelegate?.scaleFactor)
             x *= this._layoutDelegate.scaleFactor;
 

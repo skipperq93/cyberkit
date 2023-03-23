@@ -36,13 +36,13 @@
 #import <wtf/Vector.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if PLATFORM(MAC)
 
 static NSString *imagePath()
 {
-    return [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"];
+    return [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"];
 }
 
 void writeTypesAndDataToPasteboard(id type, ...)
@@ -383,4 +383,4 @@ TEST(PasteMixedContent, CopyAndPasteWithCustomPasteboardDataOnly)
     EXPECT_WK_STREQ("", [destination stringByEvaluatingJavaScript:@"document.querySelector('input').value"]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

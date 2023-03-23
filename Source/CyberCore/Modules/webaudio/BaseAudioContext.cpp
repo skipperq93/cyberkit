@@ -94,8 +94,8 @@
 #include "GStreamerCommon.h"
 #endif
 
-#if __has_include(<WebKitAdditions/BaseAudioContextAdditions.cpp>)
-#include <WebKitAdditions/BaseAudioContextAdditions.cpp>
+#if __has_include(<CyberKitAdditions/BaseAudioContextAdditions.cpp>)
+#include <CyberKitAdditions/BaseAudioContextAdditions.cpp>
 #else
 namespace WebCore {
 

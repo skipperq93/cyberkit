@@ -24,11 +24,11 @@
 #if ENABLE(GPU_PROCESS)
 
 messages -> RemoteComputePassEncoder NotRefCounted Stream {
-    void SetPipeline(WebKit::WebGPUIdentifier identifier)
+    void SetPipeline(CyberKit::WebGPUIdentifier identifier)
     void Dispatch(PAL::WebGPU::Size32 workgroupCountX, PAL::WebGPU::Size32 workgroupCountY, PAL::WebGPU::Size32 workgroupCountZ)
-    void DispatchIndirect(WebKit::WebGPUIdentifier indirectBuffer, PAL::WebGPU::Size64 indirectOffset)
+    void DispatchIndirect(CyberKit::WebGPUIdentifier indirectBuffer, PAL::WebGPU::Size64 indirectOffset)
     void End()
-    void SetBindGroup(PAL::WebGPU::Index32 index, WebKit::WebGPUIdentifier identifier, std::optional<Vector<PAL::WebGPU::BufferDynamicOffset>> dynamicOffsets)
+    void SetBindGroup(PAL::WebGPU::Index32 index, CyberKit::WebGPUIdentifier identifier, std::optional<Vector<PAL::WebGPU::BufferDynamicOffset>> dynamicOffsets)
     void PushDebugGroup(String groupLabel)
     void PopDebugGroup()
     void InsertDebugMarker(String markerLabel)

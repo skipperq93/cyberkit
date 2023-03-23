@@ -33,7 +33,7 @@
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
@@ -81,15 +81,15 @@ TEST(IndexedDB, CheckpointsWALAutomatically)
     [configuration.get().websiteDataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [configuration.get().websiteDataStore _terminateNetworkProcess];
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBCheckpointWAL" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBCheckpointWAL" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run([handler receivedScriptMessagePointer]);
+    TestCyberKitAPI::Util::run([handler receivedScriptMessagePointer]);
     EXPECT_STREQ([[[handler lastScriptMessage] body] UTF8String], "Success");
 
     NSURL *originURL = [NSURL URLWithString:@"file://"];
@@ -98,7 +98,7 @@ TEST(IndexedDB, CheckpointsWALAutomatically)
         indexedDBDirectoryString = result;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     NSURL *indexedDBDirectory = [NSURL fileURLWithPath:indexedDBDirectoryString isDirectory:YES];
     NSString *databaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName("test-wal-checkpoint"_s);
     NSURL *indexedDBDatabaseDirectory = [indexedDBDirectory URLByAppendingPathComponent:databaseHash];

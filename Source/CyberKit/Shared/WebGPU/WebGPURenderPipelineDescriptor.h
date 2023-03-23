@@ -35,7 +35,7 @@
 #include "WebGPUVertexState.h"
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderPipelineDescriptor : public PipelineDescriptorBase {
     VertexState vertex;
@@ -45,6 +45,6 @@ struct RenderPipelineDescriptor : public PipelineDescriptorBase {
     std::optional<FragmentState> fragment;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

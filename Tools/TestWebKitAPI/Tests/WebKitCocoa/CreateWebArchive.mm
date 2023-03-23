@@ -39,7 +39,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static const char* mainBytes = R"TESTRESOURCE(
 <head>
@@ -161,6 +161,6 @@ TEST(WebArchive, ApplicationXWebarchiveMIMETypeDoesNotLoadHTML)
     [webView _test_waitForDidFailProvisionalNavigation];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC) || PLATFORM(IOS_FAMILY)

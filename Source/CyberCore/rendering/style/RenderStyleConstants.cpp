@@ -995,9 +995,9 @@ TextStream& operator<<(TextStream& ts, TextAlignMode alignMode)
     case TextAlignMode::Right: ts << "right"; break;
     case TextAlignMode::Center: ts << "center"; break;
     case TextAlignMode::Justify: ts << "justify"; break;
-    case TextAlignMode::WebKitLeft: ts << "webkit-left"; break;
-    case TextAlignMode::WebKitRight: ts << "webkit-right"; break;
-    case TextAlignMode::WebKitCenter: ts << "webkit-center"; break;
+    case TextAlignMode::CyberKitLeft: ts << "webkit-left"; break;
+    case TextAlignMode::CyberKitRight: ts << "webkit-right"; break;
+    case TextAlignMode::CyberKitCenter: ts << "webkit-center"; break;
     case TextAlignMode::Start: ts << "start"; break;
     case TextAlignMode::End: ts << "end"; break;
     }

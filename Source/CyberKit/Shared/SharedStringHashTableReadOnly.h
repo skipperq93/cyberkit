@@ -28,7 +28,7 @@
 #include <CyberCore/SharedStringHash.h>
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedMemory;
 
@@ -51,4 +51,4 @@ protected:
     CyberCore::SharedStringHash* m_table { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

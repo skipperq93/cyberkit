@@ -27,7 +27,7 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, TypingStyleCrash)
 {
@@ -36,4 +36,4 @@ TEST(CyberKitLegacy, TypingStyleCrash)
     webView = nil;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

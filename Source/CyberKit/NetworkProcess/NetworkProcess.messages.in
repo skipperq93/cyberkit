@@ -21,11 +21,11 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> NetworkProcess LegacyReceiver {
-    InitializeNetworkProcess(struct WebKit::NetworkProcessCreationParameters processCreationParameters) -> ()
+    InitializeNetworkProcess(struct CyberKit::NetworkProcessCreationParameters processCreationParameters) -> ()
 
     CreateNetworkConnectionToWebProcess(CyberCore::ProcessIdentifier processIdentifier, PAL::SessionID sessionID) -> (std::optional<IPC::Connection::Handle> connectionHandle, enum:uint8_t CyberCore::HTTPCookieAcceptPolicy cookieAcceptPolicy) AllowedWhenWaitingForSyncReply
 
-    AddAllowedFirstPartyForCookies(CyberCore::ProcessIdentifier processIdentifier, CyberCore::RegistrableDomain firstPartyForCookies, enum:bool WebKit::LoadedWebArchive loadedWebArchive) -> ()
+    AddAllowedFirstPartyForCookies(CyberCore::ProcessIdentifier processIdentifier, CyberCore::RegistrableDomain firstPartyForCookies, enum:bool CyberKit::LoadedWebArchive loadedWebArchive) -> ()
 
 #if USE(SOUP)
     SetIgnoreTLSErrors(PAL::SessionID sessionID, bool ignoreTLSErrors)
@@ -39,27 +39,27 @@ messages -> NetworkProcess LegacyReceiver {
     SetNetworkProxySettings(PAL::SessionID sessionID, CyberCore::CurlProxySettings settings)
 #endif
 
-    AddWebsiteDataStore(struct WebKit::WebsiteDataStoreParameters websiteDataStoreParameters) AllowedWhenWaitingForSyncReply
+    AddWebsiteDataStore(struct CyberKit::WebsiteDataStoreParameters websiteDataStoreParameters) AllowedWhenWaitingForSyncReply
     DestroySession(PAL::SessionID sessionID)
 
-    FetchWebsiteData(PAL::SessionID sessionID, OptionSet<WebKit::WebsiteDataType> websiteDataTypes, OptionSet<WebKit::WebsiteDataFetchOption> fetchOptions) -> (struct WebKit::WebsiteData websiteData)
-    DeleteWebsiteData(PAL::SessionID sessionID, OptionSet<WebKit::WebsiteDataType> websiteDataTypes, WallTime modifiedSince) -> ()
-    DeleteWebsiteDataForOrigins(PAL::SessionID sessionID, OptionSet<WebKit::WebsiteDataType> websiteDataTypes, Vector<CyberCore::SecurityOriginData> origins, Vector<String> cookieHostNames, Vector<String> HSTSCacheHostNames, Vector<CyberCore::RegistrableDomain> registrableDomains) -> ()
-    RenameOriginInWebsiteData(PAL::SessionID sessionID, CyberCore::SecurityOriginData oldOrigin, CyberCore::SecurityOriginData newOrigin, OptionSet<WebKit::WebsiteDataType> websiteDataTypes) -> ()
-    WebsiteDataOriginDirectoryForTesting(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, OptionSet<WebKit::WebsiteDataType> websiteDataType) -> (String directory)
+    FetchWebsiteData(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, OptionSet<CyberKit::WebsiteDataFetchOption> fetchOptions) -> (struct CyberKit::WebsiteData websiteData)
+    DeleteWebsiteData(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, WallTime modifiedSince) -> ()
+    DeleteWebsiteDataForOrigins(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, Vector<CyberCore::SecurityOriginData> origins, Vector<String> cookieHostNames, Vector<String> HSTSCacheHostNames, Vector<CyberCore::RegistrableDomain> registrableDomains) -> ()
+    RenameOriginInWebsiteData(PAL::SessionID sessionID, CyberCore::SecurityOriginData oldOrigin, CyberCore::SecurityOriginData newOrigin, OptionSet<CyberKit::WebsiteDataType> websiteDataTypes) -> ()
+    WebsiteDataOriginDirectoryForTesting(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, OptionSet<CyberKit::WebsiteDataType> websiteDataType) -> (String directory)
 
-    DownloadRequest(PAL::SessionID sessionID, WebKit::DownloadID downloadID, CyberCore::ResourceRequest request, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, String suggestedFilename)
-    ResumeDownload(PAL::SessionID sessionID, WebKit::DownloadID downloadID, IPC::DataReference resumeData, String path, WebKit::SandboxExtension::Handle sandboxExtensionHandle, enum:bool WebKit::CallDownloadDidStart callDownloadDidStart)
-    CancelDownload(WebKit::DownloadID downloadID) -> (IPC::DataReference resumeData)
+    DownloadRequest(PAL::SessionID sessionID, CyberKit::DownloadID downloadID, CyberCore::ResourceRequest request, std::optional<CyberKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, String suggestedFilename)
+    ResumeDownload(PAL::SessionID sessionID, CyberKit::DownloadID downloadID, IPC::DataReference resumeData, String path, CyberKit::SandboxExtension::Handle sandboxExtensionHandle, enum:bool CyberKit::CallDownloadDidStart callDownloadDidStart)
+    CancelDownload(CyberKit::DownloadID downloadID) -> (IPC::DataReference resumeData)
 #if PLATFORM(COCOA)
-    PublishDownloadProgress(WebKit::DownloadID downloadID, URL url, WebKit::SandboxExtension::Handle sandboxExtensionHandle)
+    PublishDownloadProgress(CyberKit::DownloadID downloadID, URL url, CyberKit::SandboxExtension::Handle sandboxExtensionHandle)
 #endif
-    DataTaskWithRequest(WebKit::WebPageProxyIdentifier pageID, PAL::SessionID sessionID, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody) -> (WebKit::DataTaskIdentifier taskIdentifier)
-    CancelDataTask(WebKit::DataTaskIdentifier taskIdentifier, PAL::SessionID sessionID)
+    DataTaskWithRequest(CyberKit::WebPageProxyIdentifier pageID, PAL::SessionID sessionID, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody) -> (CyberKit::DataTaskIdentifier taskIdentifier)
+    CancelDataTask(CyberKit::DataTaskIdentifier taskIdentifier, PAL::SessionID sessionID)
     ApplicationDidEnterBackground()
     ApplicationWillEnterForeground()
 
-    ContinueWillSendRequest(WebKit::DownloadID downloadID, CyberCore::ResourceRequest request)
+    ContinueWillSendRequest(CyberKit::DownloadID downloadID, CyberCore::ResourceRequest request)
 
     SetAllowsAnySSLCertificateForWebSocket(bool enabled) -> () Synchronous
 
@@ -68,8 +68,8 @@ messages -> NetworkProcess LegacyReceiver {
     AllowSpecificHTTPSCertificateForHost(PAL::SessionID sessionID, CyberCore::CertificateInfo certificate, String host)
     AllowTLSCertificateChainForLocalPCMTesting(PAL::SessionID sessionID, CyberCore::CertificateInfo certificate)
 
-    SetCacheModel(enum:uint8_t WebKit::CacheModel cacheModel)
-    SetCacheModelSynchronouslyForTesting(enum:uint8_t WebKit::CacheModel cacheModel) -> () Synchronous
+    SetCacheModel(enum:uint8_t CyberKit::CacheModel cacheModel)
+    SetCacheModelSynchronouslyForTesting(enum:uint8_t CyberKit::CacheModel cacheModel) -> () Synchronous
 
     ProcessWillSuspendImminentlyForTestingSync() -> () Synchronous
     PrepareToSuspend(bool isSuspensionImminent, MonotonicTime estimatedSuspendTime) -> ()
@@ -77,7 +77,7 @@ messages -> NetworkProcess LegacyReceiver {
 
     NotifyMediaStreamingActivity(bool activity)
 
-    PreconnectTo(PAL::SessionID sessionID, WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID, URL url, String userAgent, enum:uint8_t CyberCore::StoredCredentialsPolicy storedCredentialsPolicy, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, enum:bool WebKit::LastNavigationWasAppInitiated lastNavigationWasAppInitiated);
+    PreconnectTo(PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID, URL url, String userAgent, enum:uint8_t CyberCore::StoredCredentialsPolicy storedCredentialsPolicy, std::optional<CyberKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, enum:bool CyberKit::LastNavigationWasAppInitiated lastNavigationWasAppInitiated);
 
 #if ENABLE(TRACKING_PREVENTION)
     ClearPrevalentResource(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> ()
@@ -106,13 +106,13 @@ messages -> NetworkProcess LegacyReceiver {
     LogFrameNavigation(PAL::SessionID sessionID, CyberCore::RegistrableDomain targetDomain, CyberCore::RegistrableDomain topFrameDomain, CyberCore::RegistrableDomain sourceDomain, bool isRedirect, bool isMainFrame, Seconds delayAfterMainFrameDocumentLoad, bool wasPotentiallyInitiatedByUser)
     LogUserInteraction(PAL::SessionID sessionID, CyberCore::RegistrableDomain topFrameDomain) -> ()
     ResetParametersToDefaultValues(PAL::SessionID sessionID) -> ()
-    ScheduleClearInMemoryAndPersistent(PAL::SessionID sessionID, std::optional<WallTime> modifiedSince, enum:bool WebKit::ShouldGrandfatherStatistics shouldGrandfather) -> ()
+    ScheduleClearInMemoryAndPersistent(PAL::SessionID sessionID, std::optional<WallTime> modifiedSince, enum:bool CyberKit::ShouldGrandfatherStatistics shouldGrandfather) -> ()
     ScheduleCookieBlockingUpdate(PAL::SessionID sessionID) -> ()
     ScheduleStatisticsAndDataRecordsProcessing(PAL::SessionID sessionID) -> ()
     StatisticsDatabaseHasAllTables(PAL::SessionID sessionID) -> (bool hasAllTables)
     SetCacheMaxAgeCapForPrevalentResources(PAL::SessionID sessionID, Seconds seconds) -> ()
     SetGrandfathered(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain, bool isGrandfathered) -> ()
-    GetResourceLoadStatisticsDataSummary(PAL::SessionID sessionID) -> (Vector<WebKit::WebResourceLoadStatisticsStore::ThirdPartyData> thirdPartyData)
+    GetResourceLoadStatisticsDataSummary(PAL::SessionID sessionID) -> (Vector<CyberKit::WebResourceLoadStatisticsStore::ThirdPartyData> thirdPartyData)
     SetGrandfatheringTime(PAL::SessionID sessionID, Seconds seconds) -> ()
     SetMaxStatisticsEntries(PAL::SessionID sessionID, uint64_t maximumEntryCount) -> ()
     SetMinimumTimeBetweenDataRecordsRemoval(PAL::SessionID sessionID, Seconds seconds) -> ()
@@ -131,7 +131,7 @@ messages -> NetworkProcess LegacyReceiver {
     SetTopFrameUniqueRedirectTo(PAL::SessionID sessionID, CyberCore::RegistrableDomain topFrameDomain, CyberCore::RegistrableDomain redirectedToDomain) -> ()
     SetTopFrameUniqueRedirectFrom(PAL::SessionID sessionID, CyberCore::RegistrableDomain topFrameDomain, CyberCore::RegistrableDomain redirectedFromDomain) -> ()
     ResetCacheMaxAgeCapForPrevalentResources(PAL::SessionID sessionID) -> ()
-    DidCommitCrossSiteLoadWithDataTransfer(PAL::SessionID sessionID, CyberCore::RegistrableDomain fromDomain, CyberCore::RegistrableDomain toDomain, OptionSet<CyberCore::CrossSiteNavigationDataTransfer::Flag> navigationDataTransfer, WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID)
+    DidCommitCrossSiteLoadWithDataTransfer(PAL::SessionID sessionID, CyberCore::RegistrableDomain fromDomain, CyberCore::RegistrableDomain toDomain, OptionSet<CyberCore::CrossSiteNavigationDataTransfer::Flag> navigationDataTransfer, CyberKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID)
     SetCrossSiteLoadWithLinkDecorationForTesting(PAL::SessionID sessionID, CyberCore::RegistrableDomain fromDomain, CyberCore::RegistrableDomain toDomain) -> ()
     ResetCrossSiteLoadsWithLinkDecorationForTesting(PAL::SessionID sessionID) -> ()
     DeleteCookiesForTesting(PAL::SessionID sessionID, CyberCore::RegistrableDomain domain, bool includeHttpOnlyCookies) -> ()
@@ -186,8 +186,8 @@ messages -> NetworkProcess LegacyReceiver {
     SetBackupExclusionPeriodForTesting(PAL::SessionID sessionID, Seconds period) -> ()
 #endif
     ResetStoragePersistedState(PAL::SessionID sessionID) -> ()
-    CloneSessionStorageForWebPage(PAL::SessionID sessionID, WebKit::WebPageProxyIdentifier sourcePage, WebKit::WebPageProxyIdentifier destinationPage)
-    DidIncreaseQuota(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, WebKit::QuotaIncreaseRequestIdentifier identifier, std::optional<uint64_t> newQuota)
+    CloneSessionStorageForWebPage(PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier sourcePage, CyberKit::WebPageProxyIdentifier destinationPage)
+    DidIncreaseQuota(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, CyberKit::QuotaIncreaseRequestIdentifier identifier, std::optional<uint64_t> newQuota)
     
 #if ENABLE(APP_BOUND_DOMAINS)
     HasAppBoundSession(PAL::SessionID sessionID) -> (bool hasAppBoundSession)
@@ -202,23 +202,23 @@ messages -> NetworkProcess LegacyReceiver {
     ClearBundleIdentifier() -> ()
 
 #if PLATFORM(COCOA)
-    AppPrivacyReportTestingData(PAL::SessionID sessionID) -> (struct WebKit::AppPrivacyReportTestingData data)
+    AppPrivacyReportTestingData(PAL::SessionID sessionID) -> (struct CyberKit::AppPrivacyReportTestingData data)
     ClearAppPrivacyReportTestingData(PAL::SessionID sessionID) -> ()
 #endif
 
-    AddWebPageNetworkParameters(PAL::SessionID sessionID, WebKit::WebPageProxyIdentifier pageID, WebKit::WebPageNetworkParameters parameters)
-    RemoveWebPageNetworkParameters(PAL::SessionID sessionID, WebKit::WebPageProxyIdentifier pageID)
+    AddWebPageNetworkParameters(PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier pageID, CyberKit::WebPageNetworkParameters parameters)
+    RemoveWebPageNetworkParameters(PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier pageID)
     CountNonDefaultSessionSets(PAL::SessionID sessionID) -> (size_t count)
 
 #if ENABLE(CFPREFS_DIRECT_MODE)
     NotifyPreferencesChanged(String domain, String key, std::optional<String> encodedValue)
 #endif
 
-    TerminateRemoteWorkerContextConnectionWhenPossible(enum:bool WebKit::RemoteWorkerType workerType, PAL::SessionID sessionID,  CyberCore::RegistrableDomain registrableDomain, CyberCore::ProcessIdentifier processIdentifier);
+    TerminateRemoteWorkerContextConnectionWhenPossible(enum:bool CyberKit::RemoteWorkerType workerType, PAL::SessionID sessionID,  CyberCore::RegistrableDomain registrableDomain, CyberCore::ProcessIdentifier processIdentifier);
 
 #if ENABLE(SERVICE_WORKER)
-    GetPendingPushMessages(PAL::SessionID sessionID) -> (Vector<WebKit::WebPushMessage> messages)
-    ProcessPushMessage(PAL::SessionID sessionID, struct WebKit::WebPushMessage pushMessage, enum:uint8_t CyberCore::PushPermissionState pushPermissionState) -> (bool didSucceed)
+    GetPendingPushMessages(PAL::SessionID sessionID) -> (Vector<CyberKit::WebPushMessage> messages)
+    ProcessPushMessage(PAL::SessionID sessionID, struct CyberKit::WebPushMessage pushMessage, enum:uint8_t CyberCore::PushPermissionState pushPermissionState) -> (bool didSucceed)
     ProcessNotificationEvent(struct CyberCore::NotificationData data, enum:bool CyberCore::NotificationEventType eventType) -> (bool didSucceed)
 #endif
     SetPushAndNotificationsEnabledForOrigin(PAL::SessionID sessionID, CyberCore::SecurityOriginData origin, bool enabled) -> ()

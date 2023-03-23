@@ -30,7 +30,7 @@
 #include <wtf/Deque.h>
 #include <wtf/FastMalloc.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct NativeWebWheelEventAndSteps {
     NativeWebWheelEvent event;
@@ -77,4 +77,4 @@ private:
     Deque<std::unique_ptr<CoalescedEventSequence>> m_eventsBeingProcessed;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

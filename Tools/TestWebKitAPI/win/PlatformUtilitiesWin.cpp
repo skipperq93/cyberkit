@@ -30,7 +30,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/URL.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 static String moduleDirectory()
@@ -44,13 +44,13 @@ static String moduleDirectory()
 
 WKStringRef createInjectedBundlePath()
 {
-    auto path = FileSystem::pathByAppendingComponent(moduleDirectory(), "TestWebKitAPIInjectedBundle.dll"_s);
+    auto path = FileSystem::pathByAppendingComponent(moduleDirectory(), "TestCyberKitAPIInjectedBundle.dll"_s);
     return WKStringCreateWithUTF8CString(path.utf8().data());
 }
 
 WKURLRef createURLForResource(const char* resource, const char* extension)
 {
-    String filename = makeString("..\\..\\..\\Tools\\TestWebKitAPI\\Tests\\WebKit\\", resource, '.', extension);
+    String filename = makeString("..\\..\\..\\Tools\\TestCyberKitAPI\\Tests\\CyberKit\\", resource, '.', extension);
     auto url = URL::fileURLWithFileSystemPath(FileSystem::pathByAppendingComponent(moduleDirectory(), filename));
     return WKURLCreateWithUTF8CString(url.string().utf8().data());
 }
@@ -66,4 +66,4 @@ bool isKeyDown(WKNativeEventPtr event)
 }
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

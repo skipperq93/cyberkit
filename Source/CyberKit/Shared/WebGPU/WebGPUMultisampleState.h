@@ -30,7 +30,7 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct MultisampleState {
     PAL::WebGPU::Size32 count { 1 };
@@ -38,6 +38,6 @@ struct MultisampleState {
     bool alphaToCoverageEnabled { false };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

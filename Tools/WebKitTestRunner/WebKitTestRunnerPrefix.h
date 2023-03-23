@@ -31,7 +31,7 @@
 #import <Foundation/Foundation.h>
 #endif
 
-#include <CyberKit/WebKit2_C.h>
+#include <CyberKit/CyberKit2_C.h>
 #include <wtf/Platform.h>
 
 /* When C++ exceptions are disabled, the C++ library defines |try| and |catch|

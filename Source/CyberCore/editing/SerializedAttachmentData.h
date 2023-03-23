@@ -41,6 +41,6 @@ struct SerializedAttachmentData {
     Ref<SharedBuffer> data;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)

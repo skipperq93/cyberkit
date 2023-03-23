@@ -32,7 +32,7 @@
 #include "ArgumentCodersGtk.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void PrintInfo::encode(IPC::Encoder& encoder) const
 {

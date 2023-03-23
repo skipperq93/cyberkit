@@ -51,9 +51,9 @@ static bool hasReceivedCorrectCaptureState = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, MediaStreamTrackDetached)
+TEST(CyberKit, MediaStreamTrackDetached)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -69,9 +69,9 @@ TEST(WebKit, MediaStreamTrackDetached)
     hasReceivedCorrectCaptureState = false;
     [webView loadTestPageNamed:@"mediastreamtrack-detached"];
 
-    TestWebKitAPI::Util::run(&hasReceivedCorrectCaptureState);
+    TestCyberKitAPI::Util::run(&hasReceivedCorrectCaptureState);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -37,7 +37,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebCompiledContentRuleListData {
 public:

@@ -46,7 +46,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(MessagePort, Providers)
 {
@@ -65,6 +65,6 @@ TEST(MessagePort, Providers)
     [webView synchronouslyLoadHTMLString:@"<script>new MessageChannel;</script>"];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

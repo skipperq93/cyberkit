@@ -31,7 +31,7 @@
 #import <sys/mman.h>
 #import <sys/stat.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 Data::Data(const uint8_t* data, size_t size)

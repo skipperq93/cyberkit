@@ -86,7 +86,7 @@ mkpath($outputDir);
 
 if (length($fontNamesIn)) {
     my $names = new IO::File;
-    my $familyNamesFileBase = "WebKitFontFamily";
+    my $familyNamesFileBase = "CyberKitFontFamily";
 
     open($names, $fontNamesIn) or die "Failed to open file: $fontNamesIn";
 

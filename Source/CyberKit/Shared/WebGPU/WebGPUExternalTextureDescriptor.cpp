@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUExternalTextureDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ExternalTextureDescriptor> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ExternalTextureDescriptor& externalTextureDescriptor)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::ExternalTextureDescriptor> ConvertFromBackingContext:
     return { { WTFMove(*base), externalTextureDescriptor.colorSpace } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

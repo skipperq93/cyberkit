@@ -32,10 +32,10 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <CyberKit/WKWebViewPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<NSMutableArray> consoleMessages;
 
@@ -55,7 +55,7 @@ static void setInjectedBundleClient(WKWebView *webView)
     WKPageSetPageInjectedBundleClient(webView._pageRefForTransitionToWKWebView, &injectedBundleClient.base);
 }
 
-TEST(WebKit, ConsoleMessageWithDetails)
+TEST(CyberKit, ConsoleMessageWithDetails)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"BundlePageConsoleMessageWithDetails"];
 
@@ -70,6 +70,6 @@ TEST(WebKit, ConsoleMessageWithDetails)
     EXPECT_TRUE([consoleMessages.get()[1] isEqualToString:@"Hello world!, arguments: argument1, argument2"]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

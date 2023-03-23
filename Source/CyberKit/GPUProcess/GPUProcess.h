@@ -57,7 +57,7 @@ struct ScreenProperties;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 struct GPUProcessConnectionParameters;
@@ -236,6 +236,6 @@ private:
 
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

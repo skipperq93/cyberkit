@@ -188,7 +188,7 @@
         result = success;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE(result);
     if (!result)

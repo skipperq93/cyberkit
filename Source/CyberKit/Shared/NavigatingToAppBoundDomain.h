@@ -32,7 +32,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <wtf/ArgumentCoder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class NavigatingToAppBoundDomain : bool { No, Yes };
 

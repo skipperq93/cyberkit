@@ -45,18 +45,18 @@ WKStringRef WKStringCreateWithCFString(CFStringRef cfString)
 {
     // Since WKNSString is an internal class with no subclasses, we can do a simple equality check.
     if (object_getClass((__bridge NSString *)cfString) == wkNSStringClass())
-        return WebKit::toAPI(static_cast<API::String*>(&[(WKNSString *)(__bridge NSString *)CFRetain(cfString) _apiObject]));
+        return CyberKit::toAPI(static_cast<API::String*>(&[(WKNSString *)(__bridge NSString *)CFRetain(cfString) _apiObject]));
     String string(cfString);
-    return WebKit::toCopiedAPI(string);
+    return CyberKit::toCopiedAPI(string);
 }
 
 CFStringRef WKStringCopyCFString(CFAllocatorRef allocatorRef, WKStringRef stringRef)
 {
-    ASSERT(!WebKit::toImpl(stringRef)->string().isNull());
+    ASSERT(!CyberKit::toImpl(stringRef)->string().isNull());
 
     // NOTE: This does not use StringImpl::createCFString() since that function
     // expects to be called on the thread running CyberCore.
-    if (WebKit::toImpl(stringRef)->string().is8Bit())
-        return CFStringCreateWithBytes(allocatorRef, WebKit::toImpl(stringRef)->string().characters8(), WebKit::toImpl(stringRef)->string().length(), kCFStringEncodingISOLatin1, true);
-    return CFStringCreateWithCharacters(allocatorRef, reinterpret_cast<const UniChar*>(WebKit::toImpl(stringRef)->string().characters16()), WebKit::toImpl(stringRef)->string().length());
+    if (CyberKit::toImpl(stringRef)->string().is8Bit())
+        return CFStringCreateWithBytes(allocatorRef, CyberKit::toImpl(stringRef)->string().characters8(), CyberKit::toImpl(stringRef)->string().length(), kCFStringEncodingISOLatin1, true);
+    return CFStringCreateWithCharacters(allocatorRef, reinterpret_cast<const UniChar*>(CyberKit::toImpl(stringRef)->string().characters16()), CyberKit::toImpl(stringRef)->string().length());
 }

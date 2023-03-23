@@ -30,7 +30,7 @@
 
 [
     CustomIsReachable,
-    LegacyWindowAlias=WebKitMutationObserver,
+    LegacyWindowAlias=CyberKitMutationObserver,
     JSCustomMarkFunction,
     Exposed=Window
 ] interface MutationObserver {

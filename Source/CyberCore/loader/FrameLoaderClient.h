@@ -115,7 +115,7 @@ public:
     // An inline function cannot be the first non-abstract virtual function declared
     // in the class as it results in the vtable being generated as a weak symbol.
     // This hurts performance (in Mac OS X at least, when loading frameworks), so we
-    // don't want to do it in WebKit.
+    // don't want to do it in CyberKit.
     virtual bool hasHTMLView() const;
 
     virtual ~FrameLoaderClient() = default;

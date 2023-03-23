@@ -34,7 +34,7 @@
 #import <CyberKit/_WKFeature.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, DefaultWKPreferences)
+TEST(CyberKit, DefaultWKPreferences)
 {
     RetainPtr<WKPreferences> preferences = adoptNS([[WKPreferences alloc] init]);
 
@@ -43,7 +43,7 @@ TEST(WebKit, DefaultWKPreferences)
     EXPECT_TRUE([preferences _isStandalone]);
 }
 
-TEST(WebKit, LoadsImagesAutomatically)
+TEST(CyberKit, LoadsImagesAutomatically)
 {
     RetainPtr<WKPreferences> preferences = adoptNS([[WKPreferences alloc] init]);
 
@@ -54,7 +54,7 @@ TEST(WebKit, LoadsImagesAutomatically)
     EXPECT_TRUE([preferences _loadsImagesAutomatically]);
 }
 
-TEST(WebKit, ExperimentalFeatures)
+TEST(CyberKit, ExperimentalFeatures)
 {
     NSArray *features = [WKPreferences _experimentalFeatures];
     EXPECT_NOT_NULL(features);
@@ -67,7 +67,7 @@ TEST(WebKit, ExperimentalFeatures)
     }
 }
 
-TEST(WebKit, WebAudioPreference)
+TEST(CyberKit, WebAudioPreference)
 {
     auto check = [](bool value) {
         auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -79,7 +79,7 @@ TEST(WebKit, WebAudioPreference)
             result = resultFromJS;
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         return result.autorelease();
     };
     EXPECT_WK_STREQ(check(true), "true");
@@ -111,7 +111,7 @@ static bool receivedAlert;
 
 @end
 
-TEST(WebKit, WebGLEnabled)
+TEST(CyberKit, WebGLEnabled)
 {
     NSString *html = @"<script>if(document.createElement('canvas').getContext('webgl')){alert('enabled')}else{alert('disabled')}</script>";
     auto delegate = adoptNS([[AlertSaver alloc] init]);
@@ -119,7 +119,7 @@ TEST(WebKit, WebGLEnabled)
     auto webView = adoptNS([[WKWebView alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:html baseURL:nil];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
     EXPECT_STREQ([delegate alert].UTF8String, "enabled");
 
     receivedAlert = false;
@@ -128,7 +128,7 @@ TEST(WebKit, WebGLEnabled)
     webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:html baseURL:nil];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
     EXPECT_STREQ([delegate alert].UTF8String, "disabled");
 }
 

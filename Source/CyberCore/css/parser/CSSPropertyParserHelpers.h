@@ -47,7 +47,7 @@ namespace WebCore {
 
 class CSSGridLineNamesValue;
 
-namespace WebKitFontFamilyNames {
+namespace CyberKitFontFamilyNames {
 enum class FamilyNamesIndex;
 }
 
@@ -200,7 +200,7 @@ AtomString consumeFamilyNameRaw(CSSParserTokenRange&);
 Vector<AtomString> consumeFamilyNameList(CSSParserTokenRange&);
 std::optional<FontRaw> consumeFontRaw(CSSParserTokenRange&, CSSParserMode);
 const AtomString& genericFontFamily(CSSValueID);
-WebKitFontFamilyNames::FamilyNamesIndex genericFontFamilyIndex(CSSValueID);
+CyberKitFontFamilyNames::FamilyNamesIndex genericFontFamilyIndex(CSSValueID);
 
 bool isFontStyleAngleInRange(double angleInDegrees);
 

@@ -27,7 +27,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-namespace WebKit {
+namespace CyberKit {
 
 bool currentUserInterfaceIdiomIsSmallScreen();
 void setCurrentUserInterfaceIdiomIsSmallScreen(bool);

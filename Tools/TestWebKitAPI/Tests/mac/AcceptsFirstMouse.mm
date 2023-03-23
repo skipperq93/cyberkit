@@ -26,22 +26,22 @@
 #import "config.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import "WebKitAgnosticTest.h"
+#import "CyberKitAgnosticTest.h"
 #import <Carbon/Carbon.h>
 #import <wtf/RetainPtr.h>
 
-@interface NSApplication (TestWebKitAPINSApplicationDetails)
+@interface NSApplication (TestCyberKitAPINSApplicationDetails)
 - (void)_setCurrentEvent:(NSEvent *)event;
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class AcceptsFirstMouse : public WebKitAgnosticTest {
+class AcceptsFirstMouse : public CyberKitAgnosticTest {
 public:
     template <typename View> void runTest(View);
 
-    // WebKitAgnosticTest
-    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"acceptsFirstMouse" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]; }
+    // CyberKitAgnosticTest
+    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"acceptsFirstMouse" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]; }
     virtual void didLoadURL(WebView *webView) { runTest(webView); }
     virtual void didLoadURL(WKWebView *wkView) { runTest(wkView); }
 };
@@ -64,20 +64,20 @@ void AcceptsFirstMouse::runTest(View view)
     EXPECT_FALSE([[view hitTest:pointInsideSelection] acceptsFirstMouse:mouseEventOutsideSelection]);
 }
 
-TEST_F(AcceptsFirstMouse, WebKit)
+TEST_F(AcceptsFirstMouse, CyberKit)
 {
     // Ensure that [NSApp currentEvent] is not a previously-simulated spacebar key press, since this
     // causes the scrollBy() in the test to perform a smooth scroll.
     [NSApp _setCurrentEvent:nil];
-    runWebKit1Test();
+    runCyberKit1Test();
 }
 
-TEST_F(AcceptsFirstMouse, WebKit2)
+TEST_F(AcceptsFirstMouse, CyberKit2)
 {
-    runWebKit2Test();
+    runCyberKit2Test();
 }
 
-TEST(WebKit2, AcceptsFirstMouseDuringWebProcessLaunch)
+TEST(CyberKit2, AcceptsFirstMouseDuringWebProcessLaunch)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
     [webView loadHTMLString:@"<body>" baseURL:nil];
@@ -88,4 +88,4 @@ TEST(WebKit2, AcceptsFirstMouseDuringWebProcessLaunch)
     [webView _test_waitForDidFinishNavigation];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

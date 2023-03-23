@@ -28,7 +28,7 @@
 
 #include <CyberCore/DOMCacheEngine.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<CacheStorageMemoryStore> CacheStorageMemoryStore::create()
 {

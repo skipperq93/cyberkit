@@ -82,14 +82,14 @@ PlatformWheelEvent::PlatformWheelEvent(HWND hWnd, WPARAM wParam, LPARAM lParam, 
 
     float delta = GET_WHEEL_DELTA_WPARAM(wParam) / (scaleFactor * static_cast<float>(WHEEL_DELTA));
     if (isMouseHWheel) {
-        // Windows is <-- -/+ -->, WebKit wants <-- +/- -->, so we negate
+        // Windows is <-- -/+ -->, CyberKit wants <-- +/- -->, so we negate
         // |delta| after saving the original value on the wheel tick member.
         m_wheelTicksX = delta;
         m_wheelTicksY = 0;
         delta = -delta;
     } else {
         // Even though we use shift + vertical wheel to scroll horizontally in
-        // WebKit, we still note it as a vertical scroll on the wheel tick
+        // CyberKit, we still note it as a vertical scroll on the wheel tick
         // member, so that the DOM event we later construct will match the real
         // hardware event better.
         m_wheelTicksX = 0;

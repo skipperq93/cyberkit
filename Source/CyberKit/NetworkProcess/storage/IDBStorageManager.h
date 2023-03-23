@@ -40,7 +40,7 @@ class UniqueIDBTransaction;
 struct IDBDatabaseNameAndVersion;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class IDBStorageRegistry;
 
@@ -82,4 +82,4 @@ private:
     HashMap<CyberCore::IDBDatabaseIdentifier, std::unique_ptr<CyberCore::IDBServer::UniqueIDBDatabase>> m_databases;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

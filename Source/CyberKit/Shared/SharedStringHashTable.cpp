@@ -28,7 +28,7 @@
 
 #include "SharedMemory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -72,4 +72,4 @@ void SharedStringHashTable::clear()
     setSharedMemory(nullptr);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 
 #include "WebEventFactory.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebMouseEvent::NativeWebMouseEvent(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam, bool didActivateWebView)
     : WebMouseEvent(WebEventFactory::createWebMouseEvent(hwnd, message, wParam, lParam, didActivateWebView))
@@ -37,4 +37,4 @@ NativeWebMouseEvent::NativeWebMouseEvent(HWND hwnd, UINT message, WPARAM wParam,
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

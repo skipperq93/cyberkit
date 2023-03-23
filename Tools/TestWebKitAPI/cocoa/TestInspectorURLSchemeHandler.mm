@@ -64,7 +64,7 @@
         });
 
         NSURL *requestURL = urlSchemeTask.request.URL;
-        NSURL *fileURLForRequest = [_cachedBundle URLForResource:requestURL.relativePath withExtension:@"" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *fileURLForRequest = [_cachedBundle URLForResource:requestURL.relativePath withExtension:@"" subdirectory:@"TestCyberKitAPI.resources"];
         if (!fileURLForRequest) {
             [urlSchemeTask didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSURLErrorFileDoesNotExist userInfo:nil]];
             return;

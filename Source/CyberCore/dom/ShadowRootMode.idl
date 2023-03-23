@@ -23,7 +23,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// "user-agent" is a WebKit extension that is not exposed to the Web.
+// "user-agent" is a CyberKit extension that is not exposed to the Web.
 enum ShadowRootMode {
     "user-agent",
     "closed",

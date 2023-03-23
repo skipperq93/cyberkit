@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class StorageAccessStatus : uint8_t {
     CannotRequestAccess,
@@ -35,16 +35,16 @@ enum class StorageAccessStatus : uint8_t {
     HasAccess
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
     
-template<> struct EnumTraits<WebKit::StorageAccessStatus> {
+template<> struct EnumTraits<CyberKit::StorageAccessStatus> {
     using values = EnumValues<
-    WebKit::StorageAccessStatus,
-    WebKit::StorageAccessStatus::CannotRequestAccess,
-    WebKit::StorageAccessStatus::RequiresUserPrompt,
-    WebKit::StorageAccessStatus::HasAccess
+    CyberKit::StorageAccessStatus,
+    CyberKit::StorageAccessStatus::CannotRequestAccess,
+    CyberKit::StorageAccessStatus::RequiresUserPrompt,
+    CyberKit::StorageAccessStatus::HasAccess
     >;
 };
     

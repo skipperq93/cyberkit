@@ -47,7 +47,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebSocketTask;
 class NetworkConnectionToWebProcess;
@@ -100,4 +100,4 @@ private:
     WebPageProxyIdentifier m_webPageProxyID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

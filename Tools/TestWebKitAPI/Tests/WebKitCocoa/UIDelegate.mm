@@ -74,14 +74,14 @@ static bool didReceiveMessage;
 
 @end
 
-TEST(WebKit, WKWebViewIsPlayingAudio)
+TEST(CyberKit, WKWebViewIsPlayingAudio)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:adoptNS([[WKWebViewConfiguration alloc] init]).get()]);
     auto observer = adoptNS([[AudioObserver alloc] init]);
     [webView addObserver:observer.get() forKeyPath:@"_isPlayingAudio" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [webView synchronouslyLoadTestPageNamed:@"file-with-video"];
     [webView evaluateJavaScript:@"playVideo()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface NoUIDelegate : NSObject <WKNavigationDelegate>
@@ -91,21 +91,21 @@ TEST(WebKit, WKWebViewIsPlayingAudio)
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
-    if ([navigationAction.request.URL.absoluteString isEqualToString:[[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"] absoluteString]])
+    if ([navigationAction.request.URL.absoluteString isEqualToString:[[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"] absoluteString]])
         done = true;
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 @end
 
-TEST(WebKit, WindowOpenWithoutUIDelegate)
+TEST(CyberKit, WindowOpenWithoutUIDelegate)
 {
     done = false;
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[NoUIDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
-    [webView loadHTMLString:@"<script>window.open('simple2.html');window.location='simple.html'</script>" baseURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
-    TestWebKitAPI::Util::run(&done);
+    [webView loadHTMLString:@"<script>window.open('simple2.html');window.location='simple.html'</script>" baseURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface GeolocationDelegate : NSObject <WKUIDelegatePrivate> {
@@ -150,7 +150,7 @@ TEST(WebKit, WindowOpenWithoutUIDelegate)
 
 @end
 
-TEST(WebKit, GeolocationPermission)
+TEST(CyberKit, GeolocationPermission)
 {
     NSString *html = @"<script>navigator.geolocation.watchPosition("
         "function(p) { alert('position ' + p.coords.latitude + ' ' + p.coords.longitude) },"
@@ -194,7 +194,7 @@ TEST(WebKit, GeolocationPermission)
         EXPECT_STREQ(frame.securityOrigin.host.UTF8String, "example.com");
     }];
     [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"https://example.com/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     auto delegate2 = adoptNS([[GeolocationDelegate alloc] initWithAllowGeolocation:true]);
@@ -207,7 +207,7 @@ TEST(WebKit, GeolocationPermission)
     }];
     [webView setUIDelegate:delegate2.get()];
     [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"https://example.org/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [delegate2 setValidationHandler:[](WKFrameInfo *frame) {
@@ -218,7 +218,7 @@ TEST(WebKit, GeolocationPermission)
         EXPECT_STREQ(frame.securityOrigin.host.UTF8String, "localhost");
     }];
     [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"custom://localhost/mainframe.html"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface GeolocationDelegateNew : NSObject <WKUIDelegatePrivate>
@@ -262,15 +262,15 @@ navigator.geolocation.getCurrentPosition(() => { webkit.messageHandlers.testHand
 </script></body></html>
 )DOCDOCDOC"_s;
 
-TEST(WebKit, GeolocationPermissionInIFrame)
+TEST(CyberKit, GeolocationPermissionInIFrame)
 {
-    TestWebKitAPI::HTTPServer server1({
+    TestCyberKitAPI::HTTPServer server1({
         { "/"_s, { mainFrameText } }
-    }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9090);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9090);
 
-    TestWebKitAPI::HTTPServer server2({
+    TestCyberKitAPI::HTTPServer server2({
         { "/frame"_s, { frameText } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
 
     auto pool = adoptNS([[WKProcessPool alloc] init]);
 
@@ -315,7 +315,7 @@ TEST(WebKit, GeolocationPermissionInIFrame)
     done = false;
     didReceiveMessage = false;
     [webView loadRequest:server1.request()];
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     EXPECT_TRUE(done);
 }
 
@@ -325,15 +325,15 @@ static constexpr auto notAllowingMainFrameText = R"DOCDOCDOC(
 </body></html>
 )DOCDOCDOC"_s;
 
-TEST(WebKit, GeolocationPermissionInDisallowedIFrame)
+TEST(CyberKit, GeolocationPermissionInDisallowedIFrame)
 {
-    TestWebKitAPI::HTTPServer server1({
+    TestCyberKitAPI::HTTPServer server1({
         { "/"_s, { notAllowingMainFrameText } }
-    }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9090);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9090);
 
-    TestWebKitAPI::HTTPServer server2({
+    TestCyberKitAPI::HTTPServer server2({
         { "/frame"_s, { frameText } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
 
     auto pool = adoptNS([[WKProcessPool alloc] init]);
 
@@ -366,7 +366,7 @@ TEST(WebKit, GeolocationPermissionInDisallowedIFrame)
     done = false;
     didReceiveMessage = false;
     [webView loadRequest:server1.request()];
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     EXPECT_FALSE(done);
 }
 
@@ -384,7 +384,7 @@ TEST(WebKit, GeolocationPermissionInDisallowedIFrame)
 
 @end
 
-TEST(WebKit, InjectedBundleNodeHandleIsSelectElement)
+TEST(CyberKit, InjectedBundleNodeHandleIsSelectElement)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"InjectedBundleNodeHandleIsSelectElement"];
 
@@ -392,7 +392,7 @@ TEST(WebKit, InjectedBundleNodeHandleIsSelectElement)
     auto delegate = adoptNS([[InjectedBundleNodeHandleIsSelectElementDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
@@ -406,9 +406,9 @@ static UIViewController *overrideViewControllerForFullscreenPresentation()
 }
 
 // Note: Use the legacy 'CaptivePortal' string to avoid losing users choice from earlier releases.
-constexpr auto WebKitLockdownModeAlertShownKey = @"WebKitCaptivePortalModeAlertShown";
+constexpr auto CyberKitLockdownModeAlertShownKey = @"CyberKitCaptivePortalModeAlertShown";
 
-TEST(WebKit, LockdownModeDefaultFirstUseMessage)
+TEST(CyberKit, LockdownModeDefaultFirstUseMessage)
 {
     ClassMethodSwizzler swizzler(UIViewController.class, @selector(_viewControllerForFullScreenPresentationFromView:), reinterpret_cast<IMP>(overrideViewControllerForFullscreenPresentation));
 
@@ -418,7 +418,7 @@ TEST(WebKit, LockdownModeDefaultFirstUseMessage)
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:webViewConfiguration.get() addToWindow:NO]);
 
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WebKitLockdownModeAlertShownKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:CyberKitLockdownModeAlertShownKey];
     [WKProcessPool _setCaptivePortalModeEnabledGloballyForTesting:YES];
     [WKWebView _resetPresentLockdownModeMessage];
 
@@ -430,10 +430,10 @@ TEST(WebKit, LockdownModeDefaultFirstUseMessage)
     [webView waitForNextPresentationUpdate];
     EXPECT_EQ(presentViewControllerCallCount, 1);
 
-    EXPECT_TRUE([[NSUserDefaults standardUserDefaults] boolForKey:WebKitLockdownModeAlertShownKey]);
+    EXPECT_TRUE([[NSUserDefaults standardUserDefaults] boolForKey:CyberKitLockdownModeAlertShownKey]);
     
     [WKProcessPool _clearCaptivePortalModeEnabledGloballyForTesting];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WebKitLockdownModeAlertShownKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:CyberKitLockdownModeAlertShownKey];
 }
 
 static bool showedNoFirstUseMessage;
@@ -449,7 +449,7 @@ static bool showedNoFirstUseMessage;
 }
 @end
 
-TEST(WebKit, LockdownModeNoFirstUseMessage)
+TEST(CyberKit, LockdownModeNoFirstUseMessage)
 {
     ClassMethodSwizzler swizzler(UIViewController.class, @selector(_viewControllerForFullScreenPresentationFromView:), reinterpret_cast<IMP>(overrideViewControllerForFullscreenPresentation));
 
@@ -459,7 +459,7 @@ TEST(WebKit, LockdownModeNoFirstUseMessage)
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:webViewConfiguration.get() addToWindow:NO]);
 
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WebKitLockdownModeAlertShownKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:CyberKitLockdownModeAlertShownKey];
     [WKProcessPool _setCaptivePortalModeEnabledGloballyForTesting:YES];
     [WKWebView _resetPresentLockdownModeMessage];
 
@@ -475,10 +475,10 @@ TEST(WebKit, LockdownModeNoFirstUseMessage)
     [webView waitForNextPresentationUpdate];
     EXPECT_EQ(presentViewControllerCallCount, 0);
 
-    EXPECT_TRUE([[NSUserDefaults standardUserDefaults] boolForKey:WebKitLockdownModeAlertShownKey]);
+    EXPECT_TRUE([[NSUserDefaults standardUserDefaults] boolForKey:CyberKitLockdownModeAlertShownKey]);
     
     [WKProcessPool _clearCaptivePortalModeEnabledGloballyForTesting];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WebKitLockdownModeAlertShownKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:CyberKitLockdownModeAlertShownKey];
 }
 
 static bool showedCustomFirstUseMessage;
@@ -503,7 +503,7 @@ static bool requestFutureFirstUseMessage;
 }
 @end
 
-TEST(WebKit, LockdownModeAskAgainFirstUseMessage)
+TEST(CyberKit, LockdownModeAskAgainFirstUseMessage)
 {
     ClassMethodSwizzler swizzler(UIViewController.class, @selector(_viewControllerForFullScreenPresentationFromView:), reinterpret_cast<IMP>(overrideViewControllerForFullscreenPresentation));
 
@@ -513,7 +513,7 @@ TEST(WebKit, LockdownModeAskAgainFirstUseMessage)
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:webViewConfiguration.get() addToWindow:NO]);
 
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WebKitLockdownModeAlertShownKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:CyberKitLockdownModeAlertShownKey];
     [WKProcessPool _setCaptivePortalModeEnabledGloballyForTesting:YES];
     [WKWebView _resetPresentLockdownModeMessage];
 
@@ -529,7 +529,7 @@ TEST(WebKit, LockdownModeAskAgainFirstUseMessage)
     EXPECT_TRUE(showedCustomFirstUseMessage);
     EXPECT_TRUE(requestFutureFirstUseMessage);
 
-    EXPECT_FALSE([[NSUserDefaults standardUserDefaults] boolForKey:WebKitLockdownModeAlertShownKey]);
+    EXPECT_FALSE([[NSUserDefaults standardUserDefaults] boolForKey:CyberKitLockdownModeAlertShownKey]);
 
     // Load a new view and ask again:
     auto secondWebView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:webViewConfiguration.get() addToWindow:NO]);
@@ -544,10 +544,10 @@ TEST(WebKit, LockdownModeAskAgainFirstUseMessage)
     EXPECT_FALSE(showedCustomFirstUseMessage);
     EXPECT_FALSE(requestFutureFirstUseMessage);
 
-    EXPECT_TRUE([[NSUserDefaults standardUserDefaults] boolForKey:WebKitLockdownModeAlertShownKey]);
+    EXPECT_TRUE([[NSUserDefaults standardUserDefaults] boolForKey:CyberKitLockdownModeAlertShownKey]);
 
     [WKProcessPool _clearCaptivePortalModeEnabledGloballyForTesting];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WebKitLockdownModeAlertShownKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:CyberKitLockdownModeAlertShownKey];
 }
 
 #endif // PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
@@ -592,7 +592,7 @@ static RetainPtr<UITestDelegate> delegate;
 
 @end
 
-TEST(WebKit, ShowWebView)
+TEST(CyberKit, ShowWebView)
 {
     delegate = adoptNS([[UITestDelegate alloc] init]);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -600,7 +600,7 @@ TEST(WebKit, ShowWebView)
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [webView setUIDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test:///first"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
     ASSERT_EQ(webViewFromDelegateCallback, createdWebView);
 }
@@ -618,7 +618,7 @@ TEST(WebKit, ShowWebView)
 
 @end
 
-TEST(WebKit, PointerLock)
+TEST(CyberKit, PointerLock)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto delegate = adoptNS([[PointerLockDelegate alloc] init]);
@@ -630,7 +630,7 @@ TEST(WebKit, PointerLock)
         @"</script>"
     ];
     [webView sendClicksAtPoint:NSMakePoint(200, 200) numberOfClicks:1];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static bool receivedWindowFrame;
@@ -663,14 +663,14 @@ static bool receivedWindowFrame;
 
 @end
 
-TEST(WebKit, WindowFrame)
+TEST(CyberKit, WindowFrame)
 {
     auto delegate = adoptNS([[WindowFrameDelegate alloc] init]);
     auto webView = adoptNS([[WKWebView alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:@"<script>moveBy(10,20);alert(outerWidth);</script>" baseURL:nil];
-    TestWebKitAPI::Util::run(&receivedWindowFrame);
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&receivedWindowFrame);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static bool headerHeightCalled;
@@ -723,32 +723,32 @@ static bool drawFooterCalled;
 
 @end
 
-TEST(WebKit, PrintFrame)
+TEST(CyberKit, PrintFrame)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     auto delegate = adoptNS([[PrintDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:@"<head><title>test_title</title></head><body onload='setTimeout(function() { print() });'>hello world!</body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSPrintOperation *operation = [webView _printOperationWithPrintInfo:[NSPrintInfo sharedPrintInfo]];
     EXPECT_TRUE(operation.canSpawnSeparateThread);
     EXPECT_STREQ(operation.jobTitle.UTF8String, "test_title");
 
     [operation runOperationModalForWindow:[webView hostWindow] delegate:nil didRunSelector:nil contextInfo:nil];
-    TestWebKitAPI::Util::run(&headerHeightCalled);
-    TestWebKitAPI::Util::run(&footerHeightCalled);
-    TestWebKitAPI::Util::run(&drawHeaderCalled);
-    TestWebKitAPI::Util::run(&drawFooterCalled);
+    TestCyberKitAPI::Util::run(&headerHeightCalled);
+    TestCyberKitAPI::Util::run(&footerHeightCalled);
+    TestCyberKitAPI::Util::run(&drawHeaderCalled);
+    TestCyberKitAPI::Util::run(&drawFooterCalled);
 }
 
-TEST(WebKit, PrintPreview)
+TEST(CyberKit, PrintPreview)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     auto delegate = adoptNS([[PrintDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:@"<head><title>test_title</title></head><body onload='print()'>hello world!</body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSPrintOperation *operation = [webView _printOperationWithPrintInfo:[NSPrintInfo sharedPrintInfo]];
     NSPrintOperation.currentOperation = operation;
@@ -774,12 +774,12 @@ TEST(WebKit, PrintPreview)
 - (void)waitForPrintFrameCall
 {
     while (!_done)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 @end
 
-TEST(WebKit, PrintWithCompletionHandler)
+TEST(CyberKit, PrintWithCompletionHandler)
 {
     auto webView = adoptNS([WKWebView new]);
     auto delegate = adoptNS([PrintDelegateWithCompletionHandler new]);
@@ -825,7 +825,7 @@ TEST(WebKit, PrintWithCompletionHandler)
 
 @end
 
-TEST(WebKit, NotificationPermission)
+TEST(CyberKit, NotificationPermission)
 {
     NSString *html = @"<script>function requestPermission() { Notification.requestPermission(function(p){alert('permission '+p)}); }</script>";
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:adoptNS([[WKWebViewConfiguration alloc] init]).get()]);
@@ -833,13 +833,13 @@ TEST(WebKit, NotificationPermission)
     [webView setUIDelegate:uiDelegate.get()];
     [webView synchronouslyLoadHTMLString:html baseURL:[NSURL URLWithString:@"https://example.org"]];
     [webView evaluateJavaScript:@"requestPermission()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
     uiDelegate = adoptNS([[NotificationDelegate alloc] initWithAllowNotifications:NO]);
     [webView setUIDelegate:uiDelegate.get()];
     [webView synchronouslyLoadHTMLString:html baseURL:[NSURL URLWithString:@"https://example.com"]];
     [webView evaluateJavaScript:@"requestPermission()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 bool firstToolbarDone;
@@ -868,13 +868,13 @@ bool firstToolbarDone;
 
 @end
 
-TEST(WebKit, ToolbarVisible)
+TEST(CyberKit, ToolbarVisible)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:adoptNS([[WKWebViewConfiguration alloc] init]).get()]);
     auto delegate = adoptNS([[ToolbarDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView synchronouslyLoadHTMLString:@"<script>alert('visible:' + window.toolbar.visible);alert('visible:' + window.toolbar.visible)</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface MouseMoveOverElementDelegate : NSObject <WKUIDelegatePrivate>
@@ -894,7 +894,7 @@ TEST(WebKit, ToolbarVisible)
 
 @end
 
-TEST(WebKit, MouseMoveOverElement)
+TEST(CyberKit, MouseMoveOverElement)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"FrameHandleSerialization"];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration]);
@@ -902,7 +902,7 @@ TEST(WebKit, MouseMoveOverElement)
     [webView setUIDelegate:uiDelegate.get()];
     [webView synchronouslyLoadHTMLString:@"<a href='http://example.com/path' title='link title'>link label</a>"];
     [webView mouseMoveToPoint:NSMakePoint(20, 600 - 20) withFlags:NSEventModifierFlagShift];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static bool readyForClick;
@@ -928,7 +928,7 @@ static bool readyForClick;
 
 @end
 
-TEST(WebKit, ClickAutoFillButton)
+TEST(CyberKit, ClickAutoFillButton)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"ClickAutoFillButton"];
 
@@ -936,11 +936,11 @@ TEST(WebKit, ClickAutoFillButton)
     auto delegate = adoptNS([[AutoFillDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView evaluateJavaScript:@"" completionHandler: nil]; // Ensure the WebProcess and injected bundle are running.
-    TestWebKitAPI::Util::run(&readyForClick);
+    TestCyberKitAPI::Util::run(&readyForClick);
     NSPoint buttonLocation = NSMakePoint(130, 577);
     [webView mouseDownAtPoint:buttonLocation simulatePressure:NO];
     [webView mouseUpAtPoint:buttonLocation];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static bool readytoResign;
@@ -976,22 +976,22 @@ static void testDidResignInputElementStrongPasswordAppearanceAfterEvaluatingJava
     auto delegate = adoptNS([[DidResignInputElementStrongPasswordAppearanceDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView evaluateJavaScript:@"" completionHandler:nil]; // Make sure WebProcess and injected bundle are running.
-    TestWebKitAPI::Util::run(&readytoResign);
+    TestCyberKitAPI::Util::run(&readytoResign);
     [webView evaluateJavaScript:script completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, DidResignInputElementStrongPasswordAppearanceWhenTypeDidChange)
+TEST(CyberKit, DidResignInputElementStrongPasswordAppearanceWhenTypeDidChange)
 {
     testDidResignInputElementStrongPasswordAppearanceAfterEvaluatingJavaScript(@"document.querySelector('input').type = 'text'");
 }
 
-TEST(WebKit, DidResignInputElementStrongPasswordAppearanceWhenValueDidChange)
+TEST(CyberKit, DidResignInputElementStrongPasswordAppearanceWhenValueDidChange)
 {
     testDidResignInputElementStrongPasswordAppearanceAfterEvaluatingJavaScript(@"document.querySelector('input').value = ''");
 }
 
-TEST(WebKit, DidResignInputElementStrongPasswordAppearanceWhenFormIsReset)
+TEST(CyberKit, DidResignInputElementStrongPasswordAppearanceWhenFormIsReset)
 {
     testDidResignInputElementStrongPasswordAppearanceAfterEvaluatingJavaScript(@"document.forms[0].reset()");
 }
@@ -1010,7 +1010,7 @@ TEST(WebKit, DidResignInputElementStrongPasswordAppearanceWhenFormIsReset)
 
 @end
 
-TEST(WebKit, AutoFillAvailable)
+TEST(CyberKit, AutoFillAvailable)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"AutoFillAvailable"];
 
@@ -1018,7 +1018,7 @@ TEST(WebKit, AutoFillAvailable)
     auto delegate = adoptNS([[AutoFillAvailableDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView evaluateJavaScript:@"" completionHandler: nil]; // Ensure the WebProcess and injected bundle are running.
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface InjectedBundleNodeHandleIsTextFieldDelegate : NSObject <WKUIDelegatePrivate>
@@ -1035,7 +1035,7 @@ TEST(WebKit, AutoFillAvailable)
 
 @end
 
-TEST(WebKit, InjectedBundleNodeHandleIsTextField)
+TEST(CyberKit, InjectedBundleNodeHandleIsTextField)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"InjectedBundleNodeHandleIsTextField"];
 
@@ -1043,7 +1043,7 @@ TEST(WebKit, InjectedBundleNodeHandleIsTextField)
     auto delegate = adoptNS([[InjectedBundleNodeHandleIsTextFieldDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface PinnedStateObserver : NSObject
@@ -1063,13 +1063,13 @@ TEST(WebKit, InjectedBundleNodeHandleIsTextField)
 
 @end
 
-TEST(WebKit, PinnedState)
+TEST(CyberKit, PinnedState)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto observer = adoptNS([[PinnedStateObserver alloc] init]);
     [webView addObserver:observer.get() forKeyPath:@"_pinnedState" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [webView loadHTMLString:@"<body onload='scroll(100, 100)' style='height:10000vh;'/>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface DidScrollDelegate : NSObject <WKUIDelegatePrivate>
@@ -1084,13 +1084,13 @@ TEST(WebKit, PinnedState)
 
 @end
 
-TEST(WebKit, DidScroll)
+TEST(CyberKit, DidScroll)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto delegate = adoptNS([[DidScrollDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:@"<body onload='scroll(100, 100)' style='height:10000vh;'/>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static NSEvent *tabEvent(NSWindow *window, NSEventType type, NSEventModifierFlags flags)
@@ -1130,7 +1130,7 @@ static void synthesizeTab(NSWindow *window, NSView *view, bool withShiftDown)
 
 @end
 
-TEST(WebKit, Focus)
+TEST(CyberKit, Focus)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto delegate = adoptNS([[FocusDelegate alloc] init]);
@@ -1139,11 +1139,11 @@ TEST(WebKit, Focus)
     NSString *html = @"<script>function loaded() { document.getElementById('in').focus(); alert('ready'); }</script>"
     "<body onload='loaded()'><input type='text' id='in'></body>";
     [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&delegate->_done);
+    TestCyberKitAPI::Util::run(&delegate->_done);
     ASSERT_EQ([delegate takenDirection], _WKFocusDirectionBackward);
 }
 
-TEST(WebKit, ShiftTabTakesFocusFromEditableWebView)
+TEST(CyberKit, ShiftTabTakesFocusFromEditableWebView)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     [webView _setEditable:YES];
@@ -1154,11 +1154,11 @@ TEST(WebKit, ShiftTabTakesFocusFromEditableWebView)
     NSString *html = @"<script>function loaded() { document.body.focus(); alert('ready'); }</script>"
     "<body onload='loaded()'></body>";
     [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&delegate->_done);
+    TestCyberKitAPI::Util::run(&delegate->_done);
     ASSERT_EQ([delegate takenDirection], _WKFocusDirectionBackward);
 }
 
-TEST(WebKit, ShiftTabDoesNotTakeFocusFromEditableWebViewWhenPreventingKeyPress)
+TEST(CyberKit, ShiftTabDoesNotTakeFocusFromEditableWebViewWhenPreventingKeyPress)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     [webView _setEditable:YES];
@@ -1182,11 +1182,11 @@ TEST(WebKit, ShiftTabDoesNotTakeFocusFromEditableWebViewWhenPreventingKeyPress)
     }];
     [webView synchronouslyLoadHTMLString:markup];
 
-    TestWebKitAPI::Util::run(&handledKeyUp);
+    TestCyberKitAPI::Util::run(&handledKeyUp);
     EXPECT_FALSE(delegate->_done);
 }
 
-TEST(WebKit, TabDoesNotTakeFocusFromEditableWebView)
+TEST(CyberKit, TabDoesNotTakeFocusFromEditableWebView)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     [webView _setEditable:YES];
@@ -1196,7 +1196,7 @@ TEST(WebKit, TabDoesNotTakeFocusFromEditableWebView)
     NSString *html = @"<script>function loaded() { document.body.focus(); alert('ready'); }</script>"
     "<body onload='loaded()'></body>";
     [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&delegate->_didSendKeyEvent);
+    TestCyberKitAPI::Util::run(&delegate->_didSendKeyEvent);
     EXPECT_WK_STREQ("\t", [webView stringByEvaluatingJavaScript:@"document.body.textContent"]);
     ASSERT_FALSE(delegate->_done);
 }
@@ -1213,7 +1213,7 @@ TEST(WebKit, TabDoesNotTakeFocusFromEditableWebView)
 
 - (void)_webView:(WKWebView *)webView saveDataToFile:(NSData *)data suggestedFilename:(NSString *)suggestedFilename mimeType:(NSString *)mimeType originatingURL:(NSURL *)url
 {
-    NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"];
     EXPECT_TRUE([data isEqualToData:[NSData dataWithContentsOfURL:pdfURL]]);
     EXPECT_STREQ([suggestedFilename UTF8String], "test.pdf");
     EXPECT_STREQ([mimeType UTF8String], "application/pdf");
@@ -1230,15 +1230,15 @@ TEST(WebKit, TabDoesNotTakeFocusFromEditableWebView)
 
 @end
 
-TEST(WebKit, SaveDataToFile)
+TEST(CyberKit, SaveDataToFile)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto delegate = adoptNS([[SaveDataToFileDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView setNavigationDelegate:delegate.get()];
-    NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:pdfURL]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif // MOUSE_EVENT_CAUSES_DOWNLOAD
@@ -1278,13 +1278,13 @@ static void synthesizeWheelEvents(NSView *view, int x, int y)
 
 @end
 
-TEST(WebKit, DidNotHandleWheelEvent)
+TEST(CyberKit, DidNotHandleWheelEvent)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto delegate = adoptNS([[WheelDelegate alloc] init]);
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:@"<body onload='alert(\"ready\")' onwheel='()=>{}' style='overflow:hidden; height:10000vh;'></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif // RELIABLE_DID_NOT_HANDLE_WHEEL_EVENT

@@ -37,15 +37,15 @@ OBJC_CLASS UIScrollEvent;
 
 class WebIOSEventFactory {
 public:
-    static WebKit::WebKeyboardEvent createWebKeyboardEvent(::WebEvent *, bool handledByInputMethod);
-    static WebKit::WebMouseEvent createWebMouseEvent(::WebEvent *);
+    static CyberKit::WebKeyboardEvent createWebKeyboardEvent(::WebEvent *, bool handledByInputMethod);
+    static CyberKit::WebMouseEvent createWebMouseEvent(::WebEvent *);
 
 #if HAVE(UISCROLLVIEW_ASYNCHRONOUS_SCROLL_EVENT_HANDLING)
-    static WebKit::WebWheelEvent createWebWheelEvent(UIScrollEvent *, UIView *contentView, std::optional<WebKit::WebWheelEvent::Phase> overridePhase = std::nullopt);
+    static CyberKit::WebWheelEvent createWebWheelEvent(UIScrollEvent *, UIView *contentView, std::optional<CyberKit::WebWheelEvent::Phase> overridePhase = std::nullopt);
 #endif
 
-    static OptionSet<WebKit::WebEventModifier> webEventModifiersForUIKeyModifierFlags(UIKeyModifierFlags);
-    static UIKeyModifierFlags toUIKeyModifierFlags(OptionSet<WebKit::WebEventModifier>);
+    static OptionSet<CyberKit::WebEventModifier> webEventModifiersForUIKeyModifierFlags(UIKeyModifierFlags);
+    static UIKeyModifierFlags toUIKeyModifierFlags(OptionSet<CyberKit::WebEventModifier>);
 };
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -29,7 +29,7 @@
 
 static void testPrintOperationPrintSettings(WebViewTest* test, gconstpointer)
 {
-    GRefPtr<WebKitPrintOperation> printOperation = adoptGRef(webkit_print_operation_new(test->m_webView));
+    GRefPtr<CyberKitPrintOperation> printOperation = adoptGRef(webkit_print_operation_new(test->m_webView));
     test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(printOperation.get()));
 
     g_assert_null(webkit_print_operation_get_print_settings(printOperation.get()));
@@ -48,7 +48,7 @@ static void testPrintOperationPrintSettings(WebViewTest* test, gconstpointer)
     g_assert_true(webkit_print_operation_get_page_setup(printOperation.get()) == pageSetup.get());
 }
 
-static gboolean webViewPrintCallback(WebKitWebView* webView, WebKitPrintOperation* printOperation, WebViewTest* test)
+static gboolean webViewPrintCallback(CyberKitWebView* webView, CyberKitPrintOperation* printOperation, WebViewTest* test)
 {
     g_assert_true(webView == test->m_webView);
 
@@ -66,7 +66,7 @@ static gboolean webViewPrintCallback(WebKitWebView* webView, WebKitPrintOperatio
 static void testWebViewPrint(WebViewTest* test, gconstpointer)
 {
     g_signal_connect(test->m_webView, "print", G_CALLBACK(webViewPrintCallback), test);
-    test->loadHtml("<html><body onLoad=\"print();\">WebKitGTK printing test</body></html>", 0);
+    test->loadHtml("<html><body onLoad=\"print();\">CyberKitGTK printing test</body></html>", 0);
     g_main_loop_run(test->m_mainLoop);
 }
 
@@ -90,13 +90,13 @@ class PrintTest: public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(PrintTest);
 
-    static void printFinishedCallback(WebKitPrintOperation*, PrintTest* test)
+    static void printFinishedCallback(CyberKitPrintOperation*, PrintTest* test)
     {
         g_assert_cmpuint(test->m_expectedError, ==, 0);
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    static void printFailedCallback(WebKitPrintOperation*, GError* error, PrintTest* test)
+    static void printFailedCallback(CyberKitPrintOperation*, GError* error, PrintTest* test)
     {
         g_assert_cmpuint(test->m_expectedError, !=, 0);
         g_assert_nonnull(error);
@@ -117,7 +117,7 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    GRefPtr<WebKitPrintOperation> m_printOperation;
+    GRefPtr<CyberKitPrintOperation> m_printOperation;
     int m_expectedError { 0 };
 };
 
@@ -129,7 +129,7 @@ static void testPrintOperationPrint(PrintTest* test, gconstpointer)
         return;
     }
 
-    test->loadHtml("<html><body>WebKitGTK printing test</body></html>", 0);
+    test->loadHtml("<html><body>CyberKitGTK printing test</body></html>", 0);
     test->waitUntilLoadFinished();
 
     GUniquePtr<char> outputFilename(g_build_filename(Test::dataDirectory(), "webkit-print.pdf", nullptr));
@@ -162,7 +162,7 @@ static void testPrintOperationErrors(PrintTest* test, gconstpointer)
         return;
     }
 
-    test->loadHtml("<html><body>WebKitGTK printing errors test</body></html>", 0);
+    test->loadHtml("<html><body>CyberKitGTK printing errors test</body></html>", 0);
     test->waitUntilLoadFinished();
 
     // General Error: invalid filename.
@@ -177,7 +177,7 @@ static void testPrintOperationErrors(PrintTest* test, gconstpointer)
 
     // Printer not found error.
     test->m_expectedError = WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND;
-    gtk_print_settings_set_printer(printSettings.get(), "The fake WebKit printer");
+    gtk_print_settings_set_printer(printSettings.get(), "The fake CyberKit printer");
     webkit_print_operation_print(test->m_printOperation.get());
     if (test->m_expectedError == WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND)
         test->waitUntilPrintFinished();
@@ -195,23 +195,23 @@ class CloseAfterPrintTest: public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(CloseAfterPrintTest);
 
-    static GtkWidget* webViewCreate(WebKitWebView* webView, WebKitNavigationAction*, CloseAfterPrintTest* test)
+    static GtkWidget* webViewCreate(CyberKitWebView* webView, CyberKitNavigationAction*, CloseAfterPrintTest* test)
     {
         return test->createWebView();
     }
 
-    static gboolean webViewPrint(WebKitWebView* webView, WebKitPrintOperation* printOperation, CloseAfterPrintTest* test)
+    static gboolean webViewPrint(CyberKitWebView* webView, CyberKitPrintOperation* printOperation, CloseAfterPrintTest* test)
     {
         test->print(printOperation);
         return TRUE;
     }
 
-    static void printOperationFinished(WebKitPrintOperation* printOperation, CloseAfterPrintTest* test)
+    static void printOperationFinished(CyberKitPrintOperation* printOperation, CloseAfterPrintTest* test)
     {
         test->printFinished();
     }
 
-    static void webViewClosed(WebKitWebView* webView, CloseAfterPrintTest* test)
+    static void webViewClosed(CyberKitWebView* webView, CloseAfterPrintTest* test)
     {
         g_object_unref(webView);
         test->m_webViewClosed = true;
@@ -238,7 +238,7 @@ public:
         return newWebView;
     }
 
-    void print(WebKitPrintOperation* printOperation)
+    void print(CyberKitPrintOperation* printOperation)
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(printOperation));
 
@@ -273,7 +273,7 @@ public:
     }
 
     GRefPtr<GtkPrinter> m_printer;
-    GRefPtr<WebKitPrintOperation> m_printOperation;
+    GRefPtr<CyberKitPrintOperation> m_printOperation;
     GRefPtr<GFile> m_outputFile;
     bool m_webViewClosed { false };
     bool m_printFinished { false };
@@ -296,7 +296,7 @@ class PrintCustomWidgetTest: public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(PrintCustomWidgetTest);
 
-    static void applyCallback(WebKitPrintCustomWidget*, PrintCustomWidgetTest* test)
+    static void applyCallback(CyberKitPrintCustomWidget*, PrintCustomWidgetTest* test)
     {
         test->m_applyEmitted = true;
     }
@@ -308,7 +308,7 @@ public:
         return FALSE;
     }
 
-    static void updateCallback(WebKitPrintCustomWidget* customWidget, GtkPageSetup*, GtkPrintSettings*, PrintCustomWidgetTest* test)
+    static void updateCallback(CyberKitPrintCustomWidget* customWidget, GtkPageSetup*, GtkPrintSettings*, PrintCustomWidgetTest* test)
     {
         ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         g_assert_true(test->m_widget == webkit_print_custom_widget_get_widget(customWidget));
@@ -329,10 +329,10 @@ public:
         test->startPrinting();
     }
 
-    static WebKitPrintCustomWidget* createCustomWidgetCallback(WebKitPrintOperation* printOperation, PrintCustomWidgetTest* test)
+    static CyberKitPrintCustomWidget* createCustomWidgetCallback(CyberKitPrintOperation* printOperation, PrintCustomWidgetTest* test)
     {
         test->m_createEmitted = true;
-        WebKitPrintCustomWidget* printCustomWidget = test->createPrintCustomWidget();
+        CyberKitPrintCustomWidget* printCustomWidget = test->createPrintCustomWidget();
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(printCustomWidget));
         g_signal_connect(printCustomWidget, "apply", G_CALLBACK(applyCallback), test);
         g_signal_connect(printCustomWidget, "update", G_CALLBACK(updateCallback), test);
@@ -361,7 +361,7 @@ public:
         return FALSE;
     }
 
-    static void printOperationFinished(WebKitPrintOperation* printOperation, PrintCustomWidgetTest* test)
+    static void printOperationFinished(CyberKitPrintOperation* printOperation, PrintCustomWidgetTest* test)
     {
         test->printFinished();
     }
@@ -374,7 +374,7 @@ public:
         g_main_loop_quit(m_mainLoop);
     }
 
-    void createWebKitPrintOperation()
+    void createCyberKitPrintOperation()
     {
         m_printOperation = adoptGRef(webkit_print_operation_new(m_webView));
         g_assert_nonnull(m_printOperation);
@@ -384,7 +384,7 @@ public:
         g_signal_connect(m_printOperation.get(), "finished", G_CALLBACK(printOperationFinished), this);
     }
 
-    WebKitPrintCustomWidget* createPrintCustomWidget()
+    CyberKitPrintCustomWidget* createPrintCustomWidget()
     {
         m_widget = gtk_label_new("Label");
         ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -420,14 +420,14 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    GRefPtr<WebKitPrintOperation> m_printOperation;
+    GRefPtr<CyberKitPrintOperation> m_printOperation;
     GRefPtr<GFile> m_outputFile;
     GtkWidget* m_widget;
     bool m_widgetRealized {false};
     bool m_applyEmitted {false};
     bool m_updateEmitted {false};
     bool m_createEmitted {false};
-    WebKitPrintOperationResponse m_response {WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL};
+    CyberKitPrintOperationResponse m_response {WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL};
 };
 
 static void testPrintCustomWidget(PrintCustomWidgetTest* test, gconstpointer)
@@ -442,7 +442,7 @@ static void testPrintCustomWidget(PrintCustomWidgetTest* test, gconstpointer)
     test->loadHtml("<html><body>Text</body></html>", 0);
     test->waitUntilLoadFinished();
 
-    test->createWebKitPrintOperation();
+    test->createCyberKitPrintOperation();
 
     GUniquePtr<char> outputFilename(g_build_filename(Test::dataDirectory(), "webkit-close-after-print.pdf", nullptr));
     test->m_outputFile = adoptGRef(g_file_new_for_path(outputFilename.get()));
@@ -465,14 +465,14 @@ static void testPrintCustomWidget(PrintCustomWidgetTest* test, gconstpointer)
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitPrintOperation", "printing-settings", testPrintOperationPrintSettings);
-    WebViewTest::add("WebKitWebView", "print", testWebViewPrint);
+    WebViewTest::add("CyberKitPrintOperation", "printing-settings", testPrintOperationPrintSettings);
+    WebViewTest::add("CyberKitWebView", "print", testWebViewPrint);
 #ifdef HAVE_GTK_UNIX_PRINTING
-    PrintTest::add("WebKitPrintOperation", "print", testPrintOperationPrint);
-    PrintTest::add("WebKitPrintOperation", "print-errors", testPrintOperationErrors);
-    CloseAfterPrintTest::add("WebKitPrintOperation", "close-after-print", testPrintOperationCloseAfterPrint);
+    PrintTest::add("CyberKitPrintOperation", "print", testPrintOperationPrint);
+    PrintTest::add("CyberKitPrintOperation", "print-errors", testPrintOperationErrors);
+    CloseAfterPrintTest::add("CyberKitPrintOperation", "close-after-print", testPrintOperationCloseAfterPrint);
 #if !ENABLE(2022_GLIB_API)
-    PrintCustomWidgetTest::add("WebKitPrintOperation", "custom-widget", testPrintCustomWidget);
+    PrintCustomWidgetTest::add("CyberKitPrintOperation", "custom-widget", testPrintCustomWidget);
 #endif
 #endif
 }

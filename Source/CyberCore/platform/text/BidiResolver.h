@@ -188,7 +188,7 @@ enum VisualDirectionOverride {
     VisualRightToLeftOverride
 };
 
-// BidiResolver is WebKit's implementation of the Unicode Bidi Algorithm
+// BidiResolver is CyberKit's implementation of the Unicode Bidi Algorithm
 // http://unicode.org/reports/tr9
 template<typename Iterator, typename Run, typename DerivedClass> class BidiResolverBase {
     WTF_MAKE_NONCOPYABLE(BidiResolverBase);

@@ -31,7 +31,7 @@
 
 #import <CyberKit/_WKWebExtensionWebNavigationURLFilter.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebExtensionAPIWebNavigation, EventListenerTest)
 {
@@ -201,6 +201,6 @@ TEST(WKWebExtensionAPIWebNavigation, URLKeyTypeChecking)
     test(@{ @"url": @[ @{ } ] }, nil);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

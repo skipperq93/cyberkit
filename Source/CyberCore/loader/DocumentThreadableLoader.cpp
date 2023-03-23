@@ -137,7 +137,7 @@ DocumentThreadableLoader::DocumentThreadableLoader(Document& document, Threadabl
 
     if (document.settings().disallowSyncXHRDuringPageDismissalEnabled() && !m_async && (!document.page() || !document.page()->areSynchronousLoadsAllowed())) {
         document.didRejectSyncXHRDuringPageDismissal();
-        logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, request.url(), "Synchronous loads are not allowed at this time"_s));
+        logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, request.url(), "Synchronous loads are not allowed at this time"_s));
         return;
     }
 
@@ -180,7 +180,7 @@ DocumentThreadableLoader::DocumentThreadableLoader(Document& document, Threadabl
     }
 
     if (m_options.mode == FetchOptions::Mode::SameOrigin) {
-        logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, request.url(), "Cross origin requests are not allowed when using same-origin fetch mode."_s));
+        logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, request.url(), "Cross origin requests are not allowed when using same-origin fetch mode."_s));
         return;
     }
 
@@ -191,7 +191,7 @@ bool DocumentThreadableLoader::checkURLSchemeAsCORSEnabled(const URL& url)
 {
     // Cross-origin requests are only allowed for HTTP and registered schemes. We would catch this when checking response headers later, but there is no reason to send a request that's guaranteed to be denied.
     if (!LegacySchemeRegistry::shouldTreatURLSchemeAsCORSEnabled(url.protocol())) {
-        logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, url, "Cross origin requests are only supported for HTTP."_s, ResourceError::Type::AccessControl));
+        logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, url, "Cross origin requests are only supported for HTTP."_s, ResourceError::Type::AccessControl));
         return false;
     }
     return true;
@@ -265,7 +265,7 @@ void DocumentThreadableLoader::cancel()
     // Cancel can re-enter and m_resource might be null here as a result.
     if (m_client && m_resource) {
         // FIXME: This error is sent to the client in didFail(), so it should not be an internal one. Use FrameLoaderClient::cancelledError() instead.
-        ResourceError error(errorDomainWebKitInternal, 0, m_resource->url(), "Load cancelled"_s, ResourceError::Type::Cancellation);
+        ResourceError error(errorDomainCyberKitInternal, 0, m_resource->url(), "Load cancelled"_s, ResourceError::Type::Cancellation);
         m_client->didFail(error);
     }
     clearResource();
@@ -639,7 +639,7 @@ void DocumentThreadableLoader::loadRequest(ResourceRequest&& request, SecurityCh
     }
 
     if (response.containsInvalidHTTPHeaders()) {
-        didFail(identifier, ResourceError(errorDomainWebKitInternal, 0, request.url(), "Response contained invalid HTTP headers"_s, ResourceError::Type::General));
+        didFail(identifier, ResourceError(errorDomainCyberKitInternal, 0, request.url(), "Response contained invalid HTTP headers"_s, ResourceError::Type::General));
         return;
     }
 
@@ -667,7 +667,7 @@ void DocumentThreadableLoader::loadRequest(ResourceRequest&& request, SecurityCh
                 response.setTainting(ResourceResponse::Tainting::Cors);
                 auto accessControlCheckResult = passesAccessControlCheck(response, m_options.storedCredentialsPolicy, securityOrigin(), &CrossOriginAccessControlCheckDisabler::singleton());
                 if (!accessControlCheckResult) {
-                    logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, response.url(), accessControlCheckResult.error(), ResourceError::Type::AccessControl));
+                    logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, response.url(), accessControlCheckResult.error(), ResourceError::Type::AccessControl));
                     return;
                 }
             }
@@ -741,22 +741,22 @@ const CrossOriginEmbedderPolicy& DocumentThreadableLoader::crossOriginEmbedderPo
 
 void DocumentThreadableLoader::reportRedirectionWithBadScheme(const URL& url)
 {
-    logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, url, "Redirection to URL with a scheme that is not HTTP(S)."_s, ResourceError::Type::AccessControl));
+    logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, url, "Redirection to URL with a scheme that is not HTTP(S)."_s, ResourceError::Type::AccessControl));
 }
 
 void DocumentThreadableLoader::reportContentSecurityPolicyError(const URL& url)
 {
-    logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, url, "Blocked by Content Security Policy."_s, ResourceError::Type::AccessControl));
+    logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, url, "Blocked by Content Security Policy."_s, ResourceError::Type::AccessControl));
 }
 
 void DocumentThreadableLoader::reportCrossOriginResourceSharingError(const URL& url)
 {
-    logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, url, "Cross-origin redirection denied by Cross-Origin Resource Sharing policy."_s, ResourceError::Type::AccessControl));
+    logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, url, "Cross-origin redirection denied by Cross-Origin Resource Sharing policy."_s, ResourceError::Type::AccessControl));
 }
 
 void DocumentThreadableLoader::reportIntegrityMetadataError(const CachedResource& resource, const String& expectedMetadata)
 {
-    logErrorAndFail(ResourceError(errorDomainWebKitInternal, 0, resource.url(), makeString("Failed integrity metadata check. "_s, integrityMismatchDescription(resource, expectedMetadata)), ResourceError::Type::AccessControl));
+    logErrorAndFail(ResourceError(errorDomainCyberKitInternal, 0, resource.url(), makeString("Failed integrity metadata check. "_s, integrityMismatchDescription(resource, expectedMetadata)), ResourceError::Type::AccessControl));
 }
 
 void DocumentThreadableLoader::logErrorAndFail(const ResourceError& error)

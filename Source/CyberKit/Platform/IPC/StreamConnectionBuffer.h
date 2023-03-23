@@ -74,7 +74,7 @@ public:
     ~StreamConnectionBuffer();
 
     struct Handle {
-        WebKit::SharedMemory::Handle memory;
+        CyberKit::SharedMemory::Handle memory;
         void encode(Encoder&) const;
         static std::optional<Handle> decode(Decoder&);
     };
@@ -122,7 +122,7 @@ public:
     Span<uint8_t> dataForTesting();
 
 protected:
-    StreamConnectionBuffer(Ref<WebKit::SharedMemory>&&);
+    StreamConnectionBuffer(Ref<CyberKit::SharedMemory>&&);
     StreamConnectionBuffer(StreamConnectionBuffer&&) = default;
     StreamConnectionBuffer& operator=(StreamConnectionBuffer&&) = default;
 
@@ -142,7 +142,7 @@ protected:
     static constexpr bool sharedMemorySizeIsValid(size_t size) { return headerSize() < size && size <= headerSize() + maximumSize(); }
 
     size_t m_dataSize { 0 };
-    Ref<WebKit::SharedMemory> m_sharedMemory;
+    Ref<CyberKit::SharedMemory> m_sharedMemory;
 };
 
 }

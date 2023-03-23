@@ -35,7 +35,7 @@ OBJC_CLASS PKPaymentRequest;
 OBJC_CLASS WKPaymentAuthorizationControllerDelegate;
 OBJC_CLASS WKPaymentAuthorizationDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class PaymentAuthorizationController final : public PaymentAuthorizationPresenter {
 public:
@@ -54,6 +54,6 @@ private:
     RetainPtr<WKPaymentAuthorizationControllerDelegate> m_delegate;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(PASSKIT) && PLATFORM(IOS_FAMILY)

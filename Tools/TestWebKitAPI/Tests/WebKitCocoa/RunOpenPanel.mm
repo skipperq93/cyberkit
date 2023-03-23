@@ -34,7 +34,7 @@
 #import <AppKit/AppKit.h>
 #import <CyberKit/WKOpenPanelParametersPrivate.h>
 #import <CyberKit/WKUIDelegatePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 static bool fileSelected;
@@ -69,9 +69,9 @@ static NSString * const expectedFileName = @"这是中文";
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, RunOpenPanelNonLatin1)
+TEST(CyberKit, RunOpenPanelNonLatin1)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
     auto uiDelegate = adoptNS([[RunOpenPanelUIDelegate alloc] init]);
@@ -94,7 +94,7 @@ TEST(WebKit, RunOpenPanelNonLatin1)
     Util::run(&testFinished);
 }
 
-TEST(WebKit, FileInputTypeCancelEvent)
+TEST(CyberKit, FileInputTypeCancelEvent)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
     auto uiDelegate = adoptNS([[FileInputTypeCancelEventUIDelegate alloc] init]);
@@ -129,6 +129,6 @@ TEST(WebKit, FileInputTypeCancelEvent)
     Util::run(&done);
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

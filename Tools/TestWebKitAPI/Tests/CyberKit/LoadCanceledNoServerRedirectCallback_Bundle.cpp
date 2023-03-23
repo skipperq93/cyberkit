@@ -36,7 +36,7 @@
 
 #include <wtf/Assertions.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 class LoadCanceledNoServerRedirectCallbackTest : public InjectedBundleTest {
 public:
@@ -71,6 +71,6 @@ public:
 
 static InjectedBundleTest::Register<LoadCanceledNoServerRedirectCallbackTest> registrar("LoadCanceledNoServerRedirectCallbackTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

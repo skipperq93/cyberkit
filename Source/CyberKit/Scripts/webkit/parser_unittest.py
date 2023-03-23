@@ -21,9 +21,9 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Examples of how to run:
-# python3 Source/WebKit/Scripts/webkit/parser_unittest.py
-# cd Source/WebKit/Scripts && python3 -m webkit.parser_unittest
-# cd Source/WebKit/Scripts && python3 -m unittest discover -p '*_unittest.py'
+# python3 Source/CyberKit/Scripts/webkit/parser_unittest.py
+# cd Source/CyberKit/Scripts && python3 -m webkit.parser_unittest
+# cd Source/CyberKit/Scripts && python3 -m unittest discover -p '*_unittest.py'
 
 import os
 import re
@@ -62,14 +62,14 @@ _expected_model_base = {
         {
             'name': 'TouchEvent',
             'parameters': (
-                ('WebKit::WebTouchEvent', 'event'),
+                ('CyberKit::WebTouchEvent', 'event'),
             ),
             'conditions': ('(ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION || SOME_OTHER_MESSAGE_CONDITION))'),
         },
         {
             'name': 'AddEvent',
             'parameters': (
-                ('WebKit::WebTouchEvent', 'event'),
+                ('CyberKit::WebTouchEvent', 'event'),
             ),
             'conditions': ('(ENABLE(TOUCH_EVENTS) && (NESTED_MESSAGE_CONDITION && SOME_OTHER_MESSAGE_CONDITION))'),
         },
@@ -97,7 +97,7 @@ _expected_model_base = {
         {
             'name': 'PreferencesDidChange',
             'parameters': (
-                ('WebKit::WebPreferencesStore', 'store'),
+                ('CyberKit::WebPreferencesStore', 'store'),
             ),
             'conditions': (None),
         },
@@ -121,7 +121,7 @@ _expected_model_base = {
             'name': 'CreatePlugin',
             'parameters': (
                 ('uint64_t', 'pluginInstanceID'),
-                ('WebKit::Plugin::Parameters', 'parameters')
+                ('CyberKit::Plugin::Parameters', 'parameters')
             ),
             'reply_parameters': (
                 ('bool', 'result'),
@@ -192,7 +192,7 @@ _expected_model_base = {
             'name': 'DidCreateWebProcessConnection',
             'parameters': (
                 ('MachSendRight', 'connectionIdentifier'),
-                ('OptionSet<WebKit::SelectionFlags>', 'flags'),
+                ('OptionSet<CyberKit::SelectionFlags>', 'flags'),
             ),
             'conditions': ('PLATFORM(MAC)'),
         },
@@ -242,7 +242,7 @@ _expected_model_test_with_superclass = {
         {
             'name': 'TestAsyncMessage',
             'parameters': (
-                ('WebKit::TestTwoStateEnum', 'twoStateEnum'),
+                ('CyberKit::TestTwoStateEnum', 'twoStateEnum'),
             ),
             'reply_parameters': (
                 ('uint64_t', 'result'),
@@ -290,7 +290,7 @@ _expected_model_test_with_superclass = {
                 ('bool', 'value'),
             ),
             'reply_parameters': (
-                ('std::optional<WebKit::TestClassName>', 'optionalReply'),
+                ('std::optional<CyberKit::TestClassName>', 'optionalReply'),
             ),
             'conditions': (None),
         },

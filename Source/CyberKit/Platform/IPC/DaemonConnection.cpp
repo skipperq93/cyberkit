@@ -29,7 +29,7 @@
 #include "PrivateClickMeasurementConnection.h"
 #include "WebPushDaemonConnection.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace Daemon {
 
@@ -61,4 +61,4 @@ template class ConnectionToMachService<WebPushD::ConnectionTraits>;
 
 } // namespace Daemon
 
-} // namespace WebKit
+} // namespace CyberKit

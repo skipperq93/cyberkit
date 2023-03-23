@@ -209,7 +209,7 @@ bool Internals::isRemoteUIAppForAccessibility()
 
 bool Internals::hasSandboxIOKitOpenAccessToClass(const String& process, const String& ioKitClass)
 {
-    UNUSED_PARAM(process); // TODO: add support for getting PID of other WebKit processes.
+    UNUSED_PARAM(process); // TODO: add support for getting PID of other CyberKit processes.
     pid_t pid = getpid();
 
     return !sandbox_check(pid, "iokit-open", static_cast<enum sandbox_filter_type>(SANDBOX_FILTER_IOKIT_CONNECTION | SANDBOX_CHECK_NO_REPORT), ioKitClass.utf8().data());

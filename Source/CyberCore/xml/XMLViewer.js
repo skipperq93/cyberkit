@@ -32,7 +32,7 @@ var sourceXML;
 
 // Script entry point.
 
-function prepareWebKitXMLViewer(noStyleMessage)
+function prepareCyberKitXMLViewer(noStyleMessage)
 {
     var html = createHTMLElement('html');
     var head = createHTMLElement('head');

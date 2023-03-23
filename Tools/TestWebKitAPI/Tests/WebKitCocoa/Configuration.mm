@@ -32,7 +32,7 @@
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, ConfigurationCPULimit)
+TEST(CyberKit, ConfigurationCPULimit)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     EXPECT_EQ([configuration _cpuLimit], 0);
@@ -42,7 +42,7 @@ TEST(WebKit, ConfigurationCPULimit)
     EXPECT_EQ([other _cpuLimit], 0.75);
 }
 
-TEST(WebKit, ConfigurationDrawsBackground)
+TEST(CyberKit, ConfigurationDrawsBackground)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     EXPECT_EQ([configuration _drawsBackground], YES);

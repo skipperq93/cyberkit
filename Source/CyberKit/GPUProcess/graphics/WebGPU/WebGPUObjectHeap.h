@@ -62,7 +62,7 @@ class Texture;
 class TextureView;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class RemoteAdapter;
 class RemoteBindGroup;
 class RemoteBindGroupLayout;
@@ -88,7 +88,7 @@ class RemoteTexture;
 class RemoteTextureView;
 }
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ObjectHeap final : public RefCounted<ObjectHeap>, public WebGPU::ConvertFromBackingContext {
     WTF_MAKE_FAST_ALLOCATED;
@@ -184,6 +184,6 @@ private:
     HashMap<WebGPUIdentifier, Object> m_objects;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

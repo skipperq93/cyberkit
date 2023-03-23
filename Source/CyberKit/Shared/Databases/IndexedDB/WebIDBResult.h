@@ -29,7 +29,7 @@
 #include <CyberCore/IDBResultData.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebIDBResult {
     WTF_MAKE_NONCOPYABLE(WebIDBResult);
@@ -61,4 +61,4 @@ private:
     Vector<SandboxExtension::Handle> m_handles;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

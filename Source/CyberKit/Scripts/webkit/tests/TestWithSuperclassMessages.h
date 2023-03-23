@@ -33,7 +33,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 enum class TestTwoStateEnum : bool;
 }
 
@@ -69,7 +69,7 @@ private:
 #if ENABLE(TEST_FEATURE)
 class TestAsyncMessage {
 public:
-    using Arguments = std::tuple<WebKit::TestTwoStateEnum>;
+    using Arguments = std::tuple<CyberKit::TestTwoStateEnum>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithSuperclass_TestAsyncMessage; }
     static constexpr bool isSync = false;
@@ -77,7 +77,7 @@ public:
     static IPC::MessageName asyncMessageReplyName() { return IPC::MessageName::TestWithSuperclass_TestAsyncMessageReply; }
     static constexpr auto callbackThread = WTF::CompletionHandlerCallThread::MainThread;
     using ReplyArguments = std::tuple<uint64_t>;
-    explicit TestAsyncMessage(WebKit::TestTwoStateEnum twoStateEnum)
+    explicit TestAsyncMessage(CyberKit::TestTwoStateEnum twoStateEnum)
         : m_arguments(twoStateEnum)
     {
     }
@@ -88,7 +88,7 @@ public:
     }
 
 private:
-    std::tuple<WebKit::TestTwoStateEnum> m_arguments;
+    std::tuple<CyberKit::TestTwoStateEnum> m_arguments;
 };
 #endif
 
@@ -191,7 +191,7 @@ public:
     static constexpr bool isSync = true;
 
     static constexpr auto callbackThread = WTF::CompletionHandlerCallThread::ConstructionThread;
-    using ReplyArguments = std::tuple<std::optional<WebKit::TestClassName>>;
+    using ReplyArguments = std::tuple<std::optional<CyberKit::TestClassName>>;
     explicit TestSynchronousMessage(bool value)
         : m_arguments(value)
     {

@@ -33,7 +33,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class ComplexTextControllerTest : public testing::Test {
 public:

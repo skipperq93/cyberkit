@@ -41,7 +41,7 @@
 #import "Page.h"
 #import "StringTruncator.h"
 #import "TextIndicator.h"
-#import "WebKitNSImageExtras.h"
+#import "CyberKitNSImageExtras.h"
 #import <pal/spi/cf/CoreTextSPI.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/cocoa/URLFormattingSPI.h>

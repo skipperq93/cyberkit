@@ -27,9 +27,9 @@
 
 #include "MonotonicObjectIdentifier.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RenderingUpdateIDType { };
 using RenderingUpdateID = MonotonicObjectIdentifier<RenderingUpdateIDType>;
 
-} // namespace WebKit
+} // namespace CyberKit

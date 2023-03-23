@@ -205,7 +205,7 @@ private:
 
 } // namespace ASN1
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 Vector<uint8_t> wrapPublicKeyWithRSAPSSOID(Vector<uint8_t>&& publicKey)
 {

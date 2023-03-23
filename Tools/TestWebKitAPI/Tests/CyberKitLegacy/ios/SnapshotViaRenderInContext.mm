@@ -57,7 +57,7 @@ IGNORE_WARNINGS_END
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSInteger getPixelIndex(NSInteger x, NSInteger y, NSInteger width)
 {
@@ -76,7 +76,7 @@ TEST(CyberKitLegacy, RenderInContextSnapshot)
     RetainPtr<RenderInContextWebViewDelegate> uiDelegate = adoptNS([[RenderInContextWebViewDelegate alloc] init]);
     uiWebView.get().delegate = uiDelegate.get();
     
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square-image" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square-image" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     NSLog(@"Loading %@", url);
     [uiWebView loadRequest:[NSURLRequest requestWithURL:url]];
     

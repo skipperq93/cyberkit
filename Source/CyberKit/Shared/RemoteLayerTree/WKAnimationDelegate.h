@@ -25,14 +25,14 @@
 
 #import <CyberCore/GraphicsLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 class RemoteLayerTreeHost;
 }
 
 @interface WKAnimationDelegate : NSObject {
     CyberCore::GraphicsLayer::PlatformLayerID _layerID;
-    WebKit::RemoteLayerTreeHost* _layerTreeHost;
+    CyberKit::RemoteLayerTreeHost* _layerTreeHost;
 }
-- (instancetype)initWithLayerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID layerTreeHost:(WebKit::RemoteLayerTreeHost*)layerTreeHost;
+- (instancetype)initWithLayerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID layerTreeHost:(CyberKit::RemoteLayerTreeHost*)layerTreeHost;
 - (void)invalidate;
 @end

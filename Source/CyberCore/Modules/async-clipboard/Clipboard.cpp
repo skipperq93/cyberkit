@@ -359,7 +359,7 @@ void Clipboard::ItemWriter::didSetAllData()
     auto newChangeCount = m_pasteboard->changeCount();
     if (m_changeCountAtStart != newChangeCount) {
         // FIXME: Instead of checking the changeCount here, send it over to the client (e.g. the UI process
-        // in WebKit2) and perform it there.
+        // in CyberKit2) and perform it there.
         reject();
         return;
     }

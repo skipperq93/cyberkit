@@ -28,13 +28,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CyberScriptCore/JSBase.h>
-#import <CyberCore/WebKitAvailability.h>
+#import <CyberCore/CyberKitAvailability.h>
 
 // NSObject (WebScripting) -----------------------------------------------------
 
 /*
     Classes may implement one or more methods in WebScripting to export interfaces 
-    to WebKit's JavaScript environment.
+    to CyberKit's JavaScript environment.
 
     By default, no properties or functions are exported. A class must implement 
     +isKeyExcludedFromWebScript: and/or +isSelectorExcludedFromWebScript: to 
@@ -198,7 +198,7 @@
     @class WebScriptObject
     @discussion WebScriptObjects are used to wrap script objects passed from
     script environments to Objective-C. WebScriptObjects cannot be created
-    directly. In normal uses of WebKit, you gain access to the script
+    directly. In normal uses of CyberKit, you gain access to the script
     environment using the "windowScriptObject" method on WebView.
 
     The following KVC methods are commonly used to access properties of the

@@ -36,7 +36,7 @@
 #include <CyberCore/Gradient.h>
 #include <CyberCore/GraphicsContextCG.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 using DisplayList::DisplayList;
 using namespace DisplayList;
@@ -167,6 +167,6 @@ TEST(DisplayListTests, InlineItemValidationFailure)
     runTestWithInvalidIdentifier(RenderingResourceIdentifier { WTF::HashTableDeletedValue });
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(CG)

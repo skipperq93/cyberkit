@@ -34,7 +34,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/Seconds.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 std::atomic<unsigned> ScopedWebGLRenderingResourcesRequest::s_requests;
 static constexpr Seconds freeWebGLRenderingResourcesTimeout = 1_s;

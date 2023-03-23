@@ -30,7 +30,7 @@
 #include <wtf/OSObjectPtr.h>
 #include <wtf/spi/darwin/XPCSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class XPCEndpointClient {
 public:

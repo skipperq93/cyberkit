@@ -32,7 +32,7 @@
 #include "PlatformUtilities.h"
 #include <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class CanHandleRequestTest : public InjectedBundleTest {
 public:
@@ -67,6 +67,6 @@ void CanHandleRequestTest::didReceiveMessage(WKBundleRef bundle, WKStringRef mes
     WKBundlePostMessage(bundle, Util::toWK("DidCheckCanHandleRequest").get(), adoptWK(WKBooleanCreate(runTest())).get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUValidationError.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ValidationError> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ValidationError& validationError)
 {
@@ -44,6 +44,6 @@ RefPtr<PAL::WebGPU::ValidationError> ConvertFromBackingContext::convertFromBacki
     return { PAL::WebGPU::ValidationError::create(validationError.message) };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -31,7 +31,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/cf/TypeCastsCF.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(RetainPtr, AdoptCF)
 {
@@ -181,4 +181,4 @@ TEST(RetainPtr, RetainPtrCF)
     EXPECT_EQ(1, CFGetRetainCount(object2.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

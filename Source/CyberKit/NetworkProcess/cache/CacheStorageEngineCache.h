@@ -34,7 +34,7 @@ namespace CyberCore {
 struct RetrieveRecordsOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace CacheStorage {
 
@@ -132,4 +132,4 @@ private:
 
 } // namespace CacheStorage
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -35,7 +35,7 @@
 #import <pal/spi/cocoa/SecKeyProxySPI.h>
 #import <wtf/MainThread.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void AuthenticationManager::initializeConnection(IPC::Connection* connection)
 {
@@ -103,6 +103,6 @@ void AuthenticationManager::initializeConnection(IPC::Connection* connection)
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

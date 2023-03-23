@@ -32,7 +32,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // Parameters that are sent to the process object as the first message after process has started.
 struct AuxiliaryProcessCreationParameters {
@@ -46,4 +46,4 @@ struct AuxiliaryProcessCreationParameters {
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, AuxiliaryProcessCreationParameters&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #include <wtf/SHA1.h>
 #include <wtf/text/CString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void expectSHA1(CString input, int repeat, CString expected)
 {
@@ -54,4 +54,4 @@ TEST(WTF_SHA1, Computation)
     expectSHA1("0123456701234567012345670123456701234567012345670123456701234567", 10, "DEA356A2CDDD90C7A7ECEDC5EBB563934F460452");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

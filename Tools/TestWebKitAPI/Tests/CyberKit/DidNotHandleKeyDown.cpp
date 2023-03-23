@@ -33,7 +33,7 @@
 #include "PlatformWebView.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishTest;
 static bool didNotHandleKeyDownEvent;
@@ -45,7 +45,7 @@ static void didNotHandleKeyEventCallback(WKPageRef, WKNativeEventPtr event, cons
     didFinishTest = true;
 }
 
-TEST(WebKit, DidNotHandleKeyDown)
+TEST(CyberKit, DidNotHandleKeyDown)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextWithInjectedBundle());
     PlatformWebView webView(context.get());
@@ -67,7 +67,7 @@ TEST(WebKit, DidNotHandleKeyDown)
     EXPECT_TRUE(didNotHandleKeyDownEvent);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(COCOA) || PLATFORM(WIN)
 #endif

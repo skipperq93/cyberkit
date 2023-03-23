@@ -28,27 +28,27 @@
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
 #include "Event.h"
-#include "WebKitMediaKeyError.h"
+#include "CyberKitMediaKeyError.h"
 
 namespace WebCore {
 
-class WebKitMediaKeyNeededEvent final : public Event {
-    WTF_MAKE_ISO_ALLOCATED(WebKitMediaKeyNeededEvent);
+class CyberKitMediaKeyNeededEvent final : public Event {
+    WTF_MAKE_ISO_ALLOCATED(CyberKitMediaKeyNeededEvent);
 public:
-    virtual ~WebKitMediaKeyNeededEvent();
+    virtual ~CyberKitMediaKeyNeededEvent();
 
-    static Ref<WebKitMediaKeyNeededEvent> create(const AtomString& type, Uint8Array* initData)
+    static Ref<CyberKitMediaKeyNeededEvent> create(const AtomString& type, Uint8Array* initData)
     {
-        return adoptRef(*new WebKitMediaKeyNeededEvent(type, initData));
+        return adoptRef(*new CyberKitMediaKeyNeededEvent(type, initData));
     }
 
     struct Init : EventInit {
         RefPtr<Uint8Array> initData;
     };
 
-    static Ref<WebKitMediaKeyNeededEvent> create(const AtomString& type, const Init& initializer, IsTrusted isTrusted = IsTrusted::No)
+    static Ref<CyberKitMediaKeyNeededEvent> create(const AtomString& type, const Init& initializer, IsTrusted isTrusted = IsTrusted::No)
     {
-        return adoptRef(*new WebKitMediaKeyNeededEvent(type, initializer, isTrusted));
+        return adoptRef(*new CyberKitMediaKeyNeededEvent(type, initializer, isTrusted));
     }
 
     EventInterface eventInterface() const override;
@@ -56,8 +56,8 @@ public:
     Uint8Array* initData() const { return m_initData.get(); }
 
 private:
-    WebKitMediaKeyNeededEvent(const AtomString& type, Uint8Array* initData);
-    WebKitMediaKeyNeededEvent(const AtomString& type, const Init&, IsTrusted);
+    CyberKitMediaKeyNeededEvent(const AtomString& type, Uint8Array* initData);
+    CyberKitMediaKeyNeededEvent(const AtomString& type, const Init&, IsTrusted);
 
     RefPtr<Uint8Array> m_initData;
 };

@@ -585,7 +585,7 @@ bool Font::supportsCodePoint(UChar32 character) const
     // that we can accurately determine which characters are supported by this font
     // so we know which boundaries to break strings when we send them to the complex
     // text codepath. The complex text codepath is totally separate from this ZWS
-    // replacement logic (because CoreText handles those characters instead of WebKit).
+    // replacement logic (because CoreText handles those characters instead of CyberKit).
     if (auto index = codePointSupportIndex(character)) {
         m_codePointSupport.ensureSize(2 * (*index + 1));
         bool hasBeenSet = m_codePointSupport.quickSet(2 * *index);

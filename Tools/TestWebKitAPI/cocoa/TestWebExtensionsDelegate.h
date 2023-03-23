@@ -25,7 +25,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 #import <CyberKit/_WKWebExtensionControllerDelegate.h>
 #import <CyberKit/_WKWebExtensionMatchPattern.h>

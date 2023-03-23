@@ -20,8 +20,8 @@
 #pragma once
 
 #include "WebContextMenuItemGlib.h"
-#include "WebKitContextMenuItem.h"
+#include "CyberKitContextMenuItem.h"
 
-WebKitContextMenuItem* webkitContextMenuItemCreate(const WebKit::WebContextMenuItemData&);
-WebKit::WebContextMenuItemGlib webkitContextMenuItemToWebContextMenuItemGlib(WebKitContextMenuItem*);
-WebKit::WebContextMenuItemData webkitContextMenuItemToWebContextMenuItemData(WebKitContextMenuItem*);
+CyberKitContextMenuItem* webkitContextMenuItemCreate(const CyberKit::WebContextMenuItemData&);
+CyberKit::WebContextMenuItemGlib webkitContextMenuItemToWebContextMenuItemGlib(CyberKitContextMenuItem*);
+CyberKit::WebContextMenuItemData webkitContextMenuItemToWebContextMenuItemData(CyberKitContextMenuItem*);

@@ -31,7 +31,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 class NetworkSocketChannel;
 struct SessionSet;
 
@@ -73,4 +73,4 @@ private:
     RunLoop::Timer m_delayFailTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -45,8 +45,8 @@ namespace WebCore {
 
 using namespace Inspector;
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/WebConsoleAgentAdditions.cpp>)
-#include <WebKitAdditions/WebConsoleAgentAdditions.cpp>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/WebConsoleAgentAdditions.cpp>)
+#include <CyberKitAdditions/WebConsoleAgentAdditions.cpp>
 #else
 static String networkConnectionIntegrityErrorMessage(const ResourceError&)
 {

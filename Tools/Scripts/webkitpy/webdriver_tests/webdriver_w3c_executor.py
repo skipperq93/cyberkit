@@ -27,11 +27,11 @@ import sys
 
 from multiprocessing import Process, Queue
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 
 from mozlog import structuredlog
 
-w3c_tools_dir = WebKitFinder(FileSystem()).path_from_webkit_base('WebDriverTests', 'imported', 'w3c', 'tools')
+w3c_tools_dir = CyberKitFinder(FileSystem()).path_from_webkit_base('WebDriverTests', 'imported', 'w3c', 'tools')
 
 
 def _ensure_directory_in_path(directory):
@@ -57,7 +57,7 @@ _log = logging.getLogger(__name__)
 class MessageLogger(object):
 
     def __init__(self, message_func):
-        self.name = 'WebKit WebDriver WPT logger'
+        self.name = 'CyberKit WebDriver WPT logger'
         self.send_message = message_func
 
     def _log_data(self, action, **kwargs):
@@ -111,7 +111,7 @@ for level_name in structuredlog.log_levels:
     setattr(MessageLogger, level_name.lower(), _log_func(level_name))
 
 
-class WebKitDriverBrowser(WebDriverBrowser):
+class CyberKitDriverBrowser(WebDriverBrowser):
     test_env = None
 
     def __init__(self, logger, binary=None, webdriver_binary=None, webdriver_args=None, host="127.0.0.1", port=None, base_path="/", env=None, supports_pac=True, **kwargs):
@@ -123,8 +123,8 @@ class WebKitDriverBrowser(WebDriverBrowser):
 
 class WebDriverW3CExecutor(WdspecExecutor):
     def __init__(self, driver, server, env, timeout, expectations):
-        WebKitDriverBrowser.test_env = env
-        WebKitDriverBrowser.test_env.update(driver.browser_env())
+        CyberKitDriverBrowser.test_env = env
+        CyberKitDriverBrowser.test_env.update(driver.browser_env())
         server_config = {'browser_host': server.host(),
                          'domains': {'': {'': server.host()},
                                      'alt':{ '': '127.0.0.1'}},
@@ -132,7 +132,7 @@ class WebDriverW3CExecutor(WdspecExecutor):
                                    'https': [server.https_port()]},
                          'doc_root': server.document_root()}
         self.runner = TestRunner()
-        browser = WebKitDriverBrowser(self.runner.logger, webdriver_binary=driver.binary_path())
+        browser = CyberKitDriverBrowser(self.runner.logger, webdriver_binary=driver.binary_path())
         WdspecExecutor.__init__(self, self.runner.logger, browser, server_config, driver.binary_path(), None, capabilities=driver.capabilities())
 
         self._timeout = timeout
@@ -184,7 +184,7 @@ class WebDriverW3CExecutor(WdspecExecutor):
                 with open(config_path, 'w') as f:
                     json.dump(config, f)
 
-                env.update(WebKitDriverBrowser.test_env)
+                env.update(CyberKitDriverBrowser.test_env)
                 args = ['--strict-markers', '-p', 'no:mozlog']
                 result_queue.put(pytest_runner.run(test, args, timeout, env, expectations))
 

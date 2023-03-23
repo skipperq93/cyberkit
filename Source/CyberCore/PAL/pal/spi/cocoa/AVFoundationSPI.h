@@ -57,7 +57,7 @@
 #if PLATFORM(IOS_FAMILY)
 #import <AVFoundation/AVAudioSession_Private.h>
 NS_ASSUME_NONNULL_BEGIN
-@interface AVAudioSession (AVAudioSessionWebKitPrivate)
+@interface AVAudioSession (AVAudioSessionCyberKitPrivate)
 - (BOOL)setAuditTokensForProcessAssertion:(NSArray<NSData *>*)inAuditTokens error:(NSError **)outError;
 @end
 NS_ASSUME_NONNULL_END
@@ -258,8 +258,8 @@ typedef NS_ENUM(NSInteger, AVExternalContentProtectionStatus) {
 
 #if HAVE(AVCONTENTKEYREQUEST_COMPATABILITIY_MODE)
 NS_ASSUME_NONNULL_BEGIN
-@interface AVContentKeyRequest (AVContentKeyRequest_WebKitCompatibilityMode)
-+ (instancetype)contentKeySessionWithLegacyWebKitCompatibilityModeAndKeySystem:(AVContentKeySystem)keySystem storageDirectoryAtURL:(NSURL *)storageURL;
+@interface AVContentKeyRequest (AVContentKeyRequest_CyberKitCompatibilityMode)
++ (instancetype)contentKeySessionWithLegacyCyberKitCompatibilityModeAndKeySystem:(AVContentKeySystem)keySystem storageDirectoryAtURL:(NSURL *)storageURL;
 @end
 NS_ASSUME_NONNULL_END
 #endif
@@ -383,7 +383,7 @@ NS_ASSUME_NONNULL_END
 #if __has_include(<AVFoundation/AVSampleBufferAudioRenderer.h>)
 #import <AVFoundation/AVSampleBufferAudioRenderer.h>
 NS_ASSUME_NONNULL_BEGIN
-@interface AVSampleBufferAudioRenderer (AVSampleBufferAudioRendererWebKitOnly)
+@interface AVSampleBufferAudioRenderer (AVSampleBufferAudioRendererCyberKitOnly)
 - (void)setIsUnaccompaniedByVisuals:(BOOL)audioOnly SPI_AVAILABLE(macos(12.0)) API_UNAVAILABLE(ios, tvos, watchos);
 @end
 NS_ASSUME_NONNULL_END

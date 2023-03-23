@@ -44,8 +44,8 @@
 #include "SecurityOrigin.h"
 #include "TimeRanges.h"
 #include "VideoSinkGStreamer.h"
-#include "WebKitAudioSinkGStreamer.h"
-#include "WebKitWebSourceGStreamer.h"
+#include "CyberKitAudioSinkGStreamer.h"
+#include "CyberKitWebSourceGStreamer.h"
 #include "AudioTrackPrivateGStreamer.h"
 #include "InbandMetadataTextTrackPrivateGStreamer.h"
 #include "InbandTextTrackPrivateGStreamer.h"
@@ -61,14 +61,14 @@
 
 #if ENABLE(MEDIA_SOURCE)
 #include "MediaSource.h"
-#include "WebKitMediaSourceGStreamer.h"
+#include "CyberKitMediaSourceGStreamer.h"
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA)
 #include "CDMInstance.h"
 #include "GStreamerEMEUtilities.h"
 #include "SharedBuffer.h"
-#include "WebKitCommonEncryptionDecryptorGStreamer.h"
+#include "CyberKitCommonEncryptionDecryptorGStreamer.h"
 #endif
 
 #if ENABLE(WEB_AUDIO)
@@ -152,7 +152,7 @@ static void initializeDebugCategory()
 {
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_media_player_debug, "webkitmediaplayer", 0, "WebKit media player");
+        GST_DEBUG_CATEGORY_INIT(webkit_media_player_debug, "webkitmediaplayer", 0, "CyberKit media player");
     });
 }
 
@@ -320,7 +320,7 @@ void MediaPlayerPrivateGStreamer::load(const String& urlString)
         return;
     }
 
-    registerWebKitGStreamerElements();
+    registerCyberKitGStreamerElements();
 
     if (!m_pipeline)
         createGSTPlayBin(url);
@@ -456,7 +456,7 @@ bool MediaPlayerPrivateGStreamer::doSeek(const MediaTime& position, float rate, 
     if (!rate)
         rate = 1.0;
 
-    if (m_hasWebKitWebSrcSentEOS && m_downloadBuffer) {
+    if (m_hasCyberKitWebSrcSentEOS && m_downloadBuffer) {
         GST_DEBUG_OBJECT(pipeline(), "Setting high-percent=0 on GstDownloadBuffer to force 100%% buffered reporting");
         g_object_set(m_downloadBuffer.get(), "high-percent", 0, nullptr);
     }
@@ -1483,7 +1483,7 @@ void MediaPlayerPrivateGStreamer::handleStreamCollectionMessage(GstMessage* mess
         return;
 
     // GStreamer workaround: Unfortunately, when we have a stream-collection aware source (like
-    // WebKitMediaSrc) parsebin and decodebin3 emit their own stream-collection messages, but late,
+    // CyberKitMediaSrc) parsebin and decodebin3 emit their own stream-collection messages, but late,
     // and sometimes with duplicated streams. Let's only listen for stream-collection messages from
     // the source to avoid these issues.
     if (isMediaSource() && GST_MESSAGE_SRC(message) != GST_OBJECT(m_source.get())) {
@@ -1926,8 +1926,8 @@ void MediaPlayerPrivateGStreamer::handleMessage(GstMessage* message)
             m_bufferingPercentage = 100;
             updateStates();
         } else if (gst_structure_has_name(structure, "webkit-web-src-has-eos")) {
-            GST_DEBUG_OBJECT(pipeline(), "WebKitWebSrc has EOS");
-            m_hasWebKitWebSrcSentEOS = true;
+            GST_DEBUG_OBJECT(pipeline(), "CyberKitWebSrc has EOS");
+            m_hasCyberKitWebSrcSentEOS = true;
         } else
             GST_DEBUG_OBJECT(pipeline(), "Unhandled element message: %" GST_PTR_FORMAT, structure);
         break;
@@ -2256,7 +2256,7 @@ void MediaPlayerPrivateGStreamer::configureDownloadBuffer(GstElement* element)
     GUniquePtr<char> mediaDiskCachePath(g_build_filename(G_DIR_SEPARATOR_S, "var", "tmp", nullptr));
 #endif
 
-    GUniquePtr<char> newDownloadTemplate(g_build_filename(G_DIR_SEPARATOR_S, mediaDiskCachePath.get(), "WebKit-Media-XXXXXX", nullptr));
+    GUniquePtr<char> newDownloadTemplate(g_build_filename(G_DIR_SEPARATOR_S, mediaDiskCachePath.get(), "CyberKit-Media-XXXXXX", nullptr));
     g_object_set(element, "temp-template", newDownloadTemplate.get(), nullptr);
     GST_DEBUG_OBJECT(pipeline(), "Reconfigured file download template from '%s' to '%s'", oldDownloadTemplate.get(), newDownloadTemplate.get());
 
@@ -3817,7 +3817,7 @@ GstElement* MediaPlayerPrivateGStreamer::createVideoSinkDMABuf()
     if (!webKitDMABufVideoSinkIsEnabled())
         return nullptr;
     if (!webKitDMABufVideoSinkProbePlatform()) {
-        g_warning("WebKit wasn't able to find the DMABuf video sink dependencies. Hardware-accelerated zero-copy video rendering won't be achievable with this plugin.");
+        g_warning("CyberKit wasn't able to find the DMABuf video sink dependencies. Hardware-accelerated zero-copy video rendering won't be achievable with this plugin.");
         return nullptr;
     }
 
@@ -3842,7 +3842,7 @@ GstElement* MediaPlayerPrivateGStreamer::createVideoSinkGL()
         return makeGStreamerElement(desiredVideoSink, nullptr);
 
     if (!webKitGLVideoSinkProbePlatform()) {
-        g_warning("WebKit wasn't able to find the GL video sink dependencies. Hardware-accelerated zero-copy video rendering can't be enabled without this plugin.");
+        g_warning("CyberKit wasn't able to find the GL video sink dependencies. Hardware-accelerated zero-copy video rendering can't be enabled without this plugin.");
         return nullptr;
     }
 

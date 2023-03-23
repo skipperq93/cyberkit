@@ -31,7 +31,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/Deque.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace CacheStorage {
 
@@ -114,4 +114,4 @@ private:
 
 } // namespace CacheStorage
 
-} // namespace WebKit
+} // namespace CyberKit

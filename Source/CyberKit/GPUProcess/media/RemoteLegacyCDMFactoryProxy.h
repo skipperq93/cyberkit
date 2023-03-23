@@ -36,7 +36,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLegacyCDMSessionProxy;
 class RemoteLegacyCDMProxy;

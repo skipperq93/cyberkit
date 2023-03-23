@@ -153,7 +153,7 @@ std::unique_ptr<RenderStyle> RenderScrollbar::getScrollbarPseudoStyle(ScrollbarP
     std::unique_ptr<RenderStyle> result = owningRenderer()->getUncachedPseudoStyle({ pseudoId, scrollbarState }, &owningRenderer()->style());
     // Scrollbars for root frames should always have background color 
     // unless explicitly specified as transparent. So we force it.
-    // This is because WebKit assumes scrollbar to be always painted and missing background
+    // This is because CyberKit assumes scrollbar to be always painted and missing background
     // causes visual artifact like non-repainted dirty region.
     if (result && m_owningFrame && m_owningFrame->view() && !m_owningFrame->view()->isTransparent() && !result->hasBackground())
         result->setBackgroundColor(Color::white);

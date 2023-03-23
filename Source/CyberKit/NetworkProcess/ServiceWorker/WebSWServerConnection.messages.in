@@ -64,6 +64,6 @@ messages -> WebSWServerConnection NotRefCounted {
     AbortBackgroundFetch(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, String backgroundFetchIdentifier) -> (bool result)
     MatchBackgroundFetch(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, String backgroundFetchIdentifier, struct CyberCore::RetrieveRecordsOptions options) -> (Vector<CyberCore::BackgroundFetchRecordInformation> results)
     RetrieveRecordResponse(CyberCore::BackgroundFetchRecordIdentifier recordIdentifier) -> (Expected<CyberCore::ResourceResponse, CyberCore::ExceptionData> result)
-    RetrieveRecordResponseBody(CyberCore::BackgroundFetchRecordIdentifier recordIdentifier, WebKit::RetrieveRecordResponseBodyCallbackIdentifier callbackIdentifier)
+    RetrieveRecordResponseBody(CyberCore::BackgroundFetchRecordIdentifier recordIdentifier, CyberKit::RetrieveRecordResponseBodyCallbackIdentifier callbackIdentifier)
 }
 #endif // ENABLE(SERVICE_WORKER)

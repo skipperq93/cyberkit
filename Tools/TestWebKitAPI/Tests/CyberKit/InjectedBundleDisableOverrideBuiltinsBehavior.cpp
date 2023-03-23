@@ -32,7 +32,7 @@
 #include "Test.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static unsigned testNumber = 0;
 static bool done = false;
@@ -48,7 +48,7 @@ static void runJavaScriptAlertEnabled(WKPageRef page, WKStringRef alertText, WKF
         done = true;
 }
 
-TEST(WebKit, InjectedBundleNoDisableOverrideBuiltinsBehaviorTest)
+TEST(CyberKit, InjectedBundleNoDisableOverrideBuiltinsBehaviorTest)
 {
     WKRetainPtr<WKPageGroupRef> pageGroup = adoptWK(WKPageGroupCreateWithIdentifier(WKStringCreateWithUTF8CString("InjectedBundleNoDisableOverrideBuiltinsBehaviorTestPageGroup")));
 
@@ -82,7 +82,7 @@ static void runJavaScriptAlertDisabled(WKPageRef page, WKStringRef alertText, WK
         done = true;
 }
 
-TEST(WebKit, InjectedBundleDisableOverrideBuiltinsBehaviorTest)
+TEST(CyberKit, InjectedBundleDisableOverrideBuiltinsBehaviorTest)
 {
     WKRetainPtr<WKPageGroupRef> pageGroup = adoptWK(WKPageGroupCreateWithIdentifier(WKStringCreateWithUTF8CString("InjectedBundleDisableOverrideBuiltinsBehaviorTestPageGroup")));
 
@@ -105,6 +105,6 @@ TEST(WebKit, InjectedBundleDisableOverrideBuiltinsBehaviorTest)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

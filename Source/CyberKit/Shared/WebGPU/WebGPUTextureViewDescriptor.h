@@ -34,7 +34,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 #include <pal/graphics/WebGPU/WebGPUTextureViewDimension.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct TextureViewDescriptor : public ObjectDescriptorBase {
     std::optional<PAL::WebGPU::TextureFormat> format;
@@ -46,6 +46,6 @@ struct TextureViewDescriptor : public ObjectDescriptorBase {
     std::optional<PAL::WebGPU::IntegerCoordinate> arrayLayerCount;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

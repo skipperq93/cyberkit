@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct XRDeviceInfo {
     XRDeviceIdentifier identifier;
@@ -48,6 +48,6 @@ struct XRDeviceInfo {
     static std::optional<XRDeviceInfo> decode(IPC::Decoder&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBXR)

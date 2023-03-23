@@ -34,7 +34,7 @@
 #include <CyberCore/GraphicsContextCairo.h>
 #include <CyberCore/NotImplemented.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const cairo_format_t cairoFormat = CAIRO_FORMAT_ARGB32;
@@ -110,4 +110,4 @@ RefPtr<Image> ShareableBitmap::createImage()
     return BitmapImage::create(WTFMove(surface));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

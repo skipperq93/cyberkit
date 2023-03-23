@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUStencilFaceState.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<StencilFaceState> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::StencilFaceState& stencilFaceState)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::StencilFaceState> ConvertFromBackingContext::convertF
     return { { stencilFaceState.compare, stencilFaceState.failOp, stencilFaceState.depthFailOp, stencilFaceState.passOp } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

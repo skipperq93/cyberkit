@@ -30,7 +30,7 @@
 #include <wtf/Threading.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace {
 class CompletionHandlerTest : public testing::Test {
     void SetUp() override

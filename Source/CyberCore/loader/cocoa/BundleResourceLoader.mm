@@ -42,7 +42,7 @@ namespace BundleResourceLoader {
 
 static WorkQueue& loadQueue()
 {
-    static auto& queue = WorkQueue::create("org.WebKit.BundleResourceLoader", WorkQueue::QOS::Utility).leakRef();
+    static auto& queue = WorkQueue::create("org.CyberKit.BundleResourceLoader", WorkQueue::QOS::Utility).leakRef();
     return queue;
 }
 
@@ -58,7 +58,7 @@ void loadResourceFromBundle(ResourceLoader& loader, const String& subdirectory)
 
         if (!data) {
             RunLoop::main().dispatch([protectedLoader = WTFMove(protectedLoader), url = WTFMove(url).isolatedCopy()] {
-                protectedLoader->didFail(ResourceError { errorDomainWebKitInternal, 0, url, "URL is invalid"_s });
+                protectedLoader->didFail(ResourceError { errorDomainCyberKitInternal, 0, url, "URL is invalid"_s });
             });
             return;
         }

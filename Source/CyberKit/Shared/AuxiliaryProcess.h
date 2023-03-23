@@ -48,7 +48,7 @@ namespace IPC {
 class SharedBufferReference;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SandboxInitializationParameters;
 struct AuxiliaryProcessInitializationParameters;
@@ -99,7 +99,7 @@ public:
     IPC::MessageReceiverMap& messageReceiverMap() { return m_messageReceiverMap; }
 
 #if PLATFORM(MAC)
-    static bool isSystemWebKit();
+    static bool isSystemCyberKit();
 #endif
     
 #if PLATFORM(COCOA)
@@ -202,5 +202,5 @@ struct AuxiliaryProcessInitializationParameters {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

@@ -36,7 +36,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct GPUProcessCreationParameters {
     GPUProcessCreationParameters();
@@ -69,6 +69,6 @@ struct GPUProcessCreationParameters {
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, GPUProcessCreationParameters&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

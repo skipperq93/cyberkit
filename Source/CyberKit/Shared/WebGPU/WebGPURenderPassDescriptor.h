@@ -35,7 +35,7 @@
 #include <optional>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct RenderPassDescriptor : public ObjectDescriptorBase {
     Vector<std::optional<RenderPassColorAttachment>> colorAttachments;
@@ -44,6 +44,6 @@ struct RenderPassDescriptor : public ObjectDescriptorBase {
     RenderPassTimestampWrites timestampWrites;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

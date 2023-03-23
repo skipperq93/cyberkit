@@ -25,11 +25,11 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class ShouldGrandfatherStatistics : bool {
     No,
     Yes,
 };
 
-} // namespace WebKit
+} // namespace CyberKit

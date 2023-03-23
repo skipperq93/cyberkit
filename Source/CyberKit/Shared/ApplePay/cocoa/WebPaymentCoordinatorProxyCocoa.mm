@@ -29,9 +29,9 @@
 #if ENABLE(APPLE_PAY)
 
 #import "APIUIClient.h"
-#import "ApplePayPaymentSetupFeaturesWebKit.h"
+#import "ApplePayPaymentSetupFeaturesCyberKit.h"
 #import "AutomaticReloadPaymentRequest.h"
-#import "PaymentSetupConfigurationWebKit.h"
+#import "PaymentSetupConfigurationCyberKit.h"
 #import "PaymentTokenContext.h"
 #import "RecurringPaymentRequest.h"
 #import "WKPaymentAuthorizationDelegate.h"
@@ -57,11 +57,11 @@
 @property (nonatomic, strong) NSURL *thumbnailURL;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPaymentCoordinatorProxy::WebPaymentCoordinatorProxy(WebPaymentCoordinatorProxy::Client& client)
     : m_client(client)
-    , m_canMakePaymentsQueue(WorkQueue::create("com.apple.WebKit.CanMakePayments"))
+    , m_canMakePaymentsQueue(WorkQueue::create("com.apple.CyberKit.CanMakePayments"))
 {
     m_client.paymentCoordinatorAddMessageReceiver(*this, Messages::WebPaymentCoordinatorProxy::messageReceiverName(), *this);
 }
@@ -488,6 +488,6 @@ void WebPaymentCoordinatorProxy::platformEndApplePaySetup()
 
 #endif // PLATFORM(MAC)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(APPLE_PAY)

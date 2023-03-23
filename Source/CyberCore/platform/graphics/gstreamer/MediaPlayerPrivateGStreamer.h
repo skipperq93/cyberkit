@@ -109,7 +109,7 @@ class VideoTrackPrivateGStreamer;
 class GBMBufferSwapchain;
 #endif
 
-void registerWebKitGStreamerElements();
+void registerCyberKitGStreamerElements();
 
 // Use eager initialization for the WeakPtrFactory since we construct WeakPtrs on another thread.
 class MediaPlayerPrivateGStreamer : public MediaPlayerPrivateInterface
@@ -541,7 +541,7 @@ private:
 #endif
     bool m_isBuffering { false };
     int m_bufferingPercentage { 0 };
-    bool m_hasWebKitWebSrcSentEOS { false };
+    bool m_hasCyberKitWebSrcSentEOS { false };
     mutable unsigned long long m_totalBytes { 0 };
     URL m_url;
     bool m_shouldPreservePitch { false };

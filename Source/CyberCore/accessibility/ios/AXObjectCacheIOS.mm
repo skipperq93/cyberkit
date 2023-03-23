@@ -97,7 +97,7 @@ void AXObjectCache::postPlatformNotification(AXCoreObject* object, AXNotificatio
 
     // iOS notifications must ultimately call UIKit UIAccessibilityPostNotification.
     // But WebCore is not linked with UIKit. So a workaround is to override the wrapper's
-    // postNotification method in the system WebKitAccessibility bundle that does link UIKit.
+    // postNotification method in the system CyberKitAccessibility bundle that does link UIKit.
     auto notificationName = notificationPlatformName(notification);
     if (notificationName.isNull())
         return;

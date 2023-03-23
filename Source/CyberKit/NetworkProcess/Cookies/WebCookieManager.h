@@ -44,7 +44,7 @@ struct Cookie;
 enum class HTTPCookieAcceptPolicy : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 
@@ -94,4 +94,4 @@ private:
 void saveCookies(NSHTTPCookieStorage *, CompletionHandler<void()>&&);
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -185,7 +185,7 @@ void MediaResource::responseReceived(CachedResource& resource, const ResourceRes
         m_loader->document()->addConsoleMessage(MessageSource::Security, MessageLevel::Error, consoleMessage.get());
         m_didPassAccessControlCheck = false;
         if (m_client)
-            m_client->accessControlCheckFailed(*this, ResourceError(errorDomainWebKitInternal, 0, response.url(), consoleMessage.get()));
+            m_client->accessControlCheckFailed(*this, ResourceError(errorDomainCyberKitInternal, 0, response.url(), consoleMessage.get()));
         stop();
         return;
     }

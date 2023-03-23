@@ -309,4 +309,4 @@ GraphicsLayer& PageOverlay::layer()
     return controller()->layerForOverlay(*this);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

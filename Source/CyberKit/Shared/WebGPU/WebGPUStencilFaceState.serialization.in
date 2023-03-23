@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::StencilFaceState {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::StencilFaceState {
     PAL::WebGPU::CompareFunction compare
     PAL::WebGPU::StencilOperation failOp
     PAL::WebGPU::StencilOperation depthFailOp

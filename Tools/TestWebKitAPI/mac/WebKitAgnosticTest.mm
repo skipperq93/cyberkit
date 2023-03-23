@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebKitAgnosticTest.h"
+#import "CyberKitAgnosticTest.h"
 
 #import <CyberKit/WKURLCF.h>
 #import <CyberKit/WKWebViewPrivate.h>
@@ -58,7 +58,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void didFinishNavigation(WKPageRef, WKNavigationRef, WKTypeRef, const void* context)
 {
@@ -77,18 +77,18 @@ static void setPageLoaderClient(WKPageRef page, bool* didFinishLoad)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-WebKitAgnosticTest::WebKitAgnosticTest()
+CyberKitAgnosticTest::CyberKitAgnosticTest()
     : viewFrame(NSMakeRect(0, 0, 800, 600))
     , didFinishLoad(false)
 {
 }
 
-void WebKitAgnosticTest::runWebKit1Test()
+void CyberKitAgnosticTest::runCyberKit1Test()
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:viewFrame]);
 #if !TARGET_OS_IPHONE
     // The tests can be run concurrently. In that case, window can occlude each other and change visibility results.
-    // Occlusion problems also happen from other windows unrelated to WebKit testing.
+    // Occlusion problems also happen from other windows unrelated to CyberKit testing.
     [webView setWindowOcclusionDetectionEnabled:NO];
 #endif
 
@@ -102,7 +102,7 @@ void WebKitAgnosticTest::runWebKit1Test()
     teardownView(webView.get());
 }
 
-void WebKitAgnosticTest::runWebKit2Test()
+void CyberKitAgnosticTest::runCyberKit2Test()
 {
     RetainPtr<WKWebView> view = adoptNS([[WKWebView alloc] initWithFrame:viewFrame]);
     setPageLoaderClient([view.get() _pageRefForTransitionToWKWebView], &didFinishLoad);
@@ -114,37 +114,37 @@ void WebKitAgnosticTest::runWebKit2Test()
     teardownView(view.get());
 }
 
-void WebKitAgnosticTest::loadURL(WebView *webView, NSURL *url)
+void CyberKitAgnosticTest::loadURL(WebView *webView, NSURL *url)
 {
     EXPECT_FALSE(didFinishLoad);
     [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
-void WebKitAgnosticTest::loadURL(WKWebView *view, NSURL *url)
+void CyberKitAgnosticTest::loadURL(WKWebView *view, NSURL *url)
 {
     EXPECT_FALSE(didFinishLoad);
     WKPageLoadURL([view _pageRefForTransitionToWKWebView], adoptWK(WKURLCreateWithCFURL((__bridge CFURLRef)url)).get());
 }
 
-void WebKitAgnosticTest::goBack(WebView *webView)
+void CyberKitAgnosticTest::goBack(WebView *webView)
 {
     EXPECT_FALSE(didFinishLoad);
     [webView goBack];
 }
 
-void WebKitAgnosticTest::goBack(WKWebView *view)
+void CyberKitAgnosticTest::goBack(WKWebView *view)
 {
     EXPECT_FALSE(didFinishLoad);
     WKPageGoBack([view _pageRefForTransitionToWKWebView]);
 }
 
-void WebKitAgnosticTest::waitForLoadToFinish()
+void CyberKitAgnosticTest::waitForLoadToFinish()
 {
     Util::run(&didFinishLoad);
     didFinishLoad = false;
 }
 
-void WebKitAgnosticTest::waitForNextPresentationUpdate(WebView *)
+void CyberKitAgnosticTest::waitForNextPresentationUpdate(WebView *)
 {
     // FIXME: This isn't currently required anywhere. Just dispatch to the next runloop for now.
     __block bool done = false;
@@ -154,7 +154,7 @@ void WebKitAgnosticTest::waitForNextPresentationUpdate(WebView *)
     Util::run(&done);
 }
 
-void WebKitAgnosticTest::waitForNextPresentationUpdate(WKWebView *view)
+void CyberKitAgnosticTest::waitForNextPresentationUpdate(WKWebView *view)
 {
     __block bool done = false;
     [view _doAfterNextPresentationUpdate:^() {
@@ -163,4 +163,4 @@ void WebKitAgnosticTest::waitForNextPresentationUpdate(WKWebView *view)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

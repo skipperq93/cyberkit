@@ -18,14 +18,14 @@
  */
 
 #include "config.h"
-#include "WebKitContextMenuItem.h"
+#include "CyberKitContextMenuItem.h"
 
 #include "APIArray.h"
 #include "WebContextMenuItem.h"
 #include "WebContextMenuItemGlib.h"
-#include "WebKitContextMenuActionsPrivate.h"
-#include "WebKitContextMenuItemPrivate.h"
-#include "WebKitContextMenuPrivate.h"
+#include "CyberKitContextMenuActionsPrivate.h"
+#include "CyberKitContextMenuItemPrivate.h"
+#include "CyberKitContextMenuPrivate.h"
 #include <CyberCore/ContextMenu.h>
 #include <CyberCore/ContextMenuItem.h>
 #include <memory>
@@ -33,52 +33,52 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitContextMenuItem:
+ * CyberKitContextMenuItem:
  *
- * One item of a #WebKitContextMenu.
+ * One item of a #CyberKitContextMenu.
  *
- * The #WebKitContextMenu is composed of #WebKitContextMenuItem<!--
+ * The #CyberKitContextMenu is composed of #CyberKitContextMenuItem<!--
  * -->s. These items can be created from a #GtkAction, from a
- * #WebKitContextMenuAction or from a #WebKitContextMenuAction and a
- * label. These #WebKitContextMenuAction<!-- -->s denote stock actions
+ * #CyberKitContextMenuAction or from a #CyberKitContextMenuAction and a
+ * label. These #CyberKitContextMenuAction<!-- -->s denote stock actions
  * for the items. You can also create separators and submenus.
  *
  */
 
-struct _WebKitContextMenuItemPrivate {
-    ~_WebKitContextMenuItemPrivate()
+struct _CyberKitContextMenuItemPrivate {
+    ~_CyberKitContextMenuItemPrivate()
     {
         if (subMenu)
             webkitContextMenuSetParentItem(subMenu.get(), 0);
     }
 
     std::unique_ptr<WebContextMenuItemGlib> menuItem;
-    GRefPtr<WebKitContextMenu> subMenu;
+    GRefPtr<CyberKitContextMenu> subMenu;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitContextMenuItem, webkit_context_menu_item, G_TYPE_INITIALLY_UNOWNED, GInitiallyUnowned)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitContextMenuItem, webkit_context_menu_item, G_TYPE_INITIALLY_UNOWNED, GInitiallyUnowned)
 
-static void webkit_context_menu_item_class_init(WebKitContextMenuItemClass*)
+static void webkit_context_menu_item_class_init(CyberKitContextMenuItemClass*)
 {
 }
 
-static bool checkAndWarnIfMenuHasParentItem(WebKitContextMenu* menu)
+static bool checkAndWarnIfMenuHasParentItem(CyberKitContextMenu* menu)
 {
     if (menu && webkitContextMenuGetParentItem(menu)) {
-        g_warning("Attempting to set a WebKitContextMenu as submenu of "
-                  "a WebKitContextMenuItem, but the menu is already "
-                  "a submenu of a WebKitContextMenuItem");
+        g_warning("Attempting to set a CyberKitContextMenu as submenu of "
+                  "a CyberKitContextMenuItem, but the menu is already "
+                  "a submenu of a CyberKitContextMenuItem");
         return true;
     }
 
     return false;
 }
 
-static void webkitContextMenuItemSetSubMenu(WebKitContextMenuItem* item, GRefPtr<WebKitContextMenu> subMenu)
+static void webkitContextMenuItemSetSubMenu(CyberKitContextMenuItem* item, GRefPtr<CyberKitContextMenu> subMenu)
 {
     if (checkAndWarnIfMenuHasParentItem(subMenu.get()))
         return;
@@ -90,9 +90,9 @@ static void webkitContextMenuItemSetSubMenu(WebKitContextMenuItem* item, GRefPtr
         webkitContextMenuSetParentItem(subMenu.get(), item);
 }
 
-WebKitContextMenuItem* webkitContextMenuItemCreate(const WebContextMenuItemData& itemData)
+CyberKitContextMenuItem* webkitContextMenuItemCreate(const WebContextMenuItemData& itemData)
 {
-    WebKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, NULL));
+    CyberKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, NULL));
 
     item->priv->menuItem = makeUnique<WebContextMenuItemGlib>(itemData);
     const Vector<WebContextMenuItemData>& subMenu = itemData.submenu();
@@ -102,7 +102,7 @@ WebKitContextMenuItem* webkitContextMenuItemCreate(const WebContextMenuItemData&
     return item;
 }
 
-WebContextMenuItemGlib webkitContextMenuItemToWebContextMenuItemGlib(WebKitContextMenuItem* item)
+WebContextMenuItemGlib webkitContextMenuItemToWebContextMenuItemGlib(CyberKitContextMenuItem* item)
 {
     if (item->priv->subMenu) {
         Vector<WebContextMenuItemGlib> subMenuItems;
@@ -113,7 +113,7 @@ WebContextMenuItemGlib webkitContextMenuItemToWebContextMenuItemGlib(WebKitConte
     return *item->priv->menuItem;
 }
 
-WebContextMenuItemData webkitContextMenuItemToWebContextMenuItemData(WebKitContextMenuItem* item)
+WebContextMenuItemData webkitContextMenuItemToWebContextMenuItemData(CyberKitContextMenuItem* item)
 {
     if (item->priv->subMenu) {
         Vector<WebContextMenuItemData> subMenuItems;
@@ -129,17 +129,17 @@ WebContextMenuItemData webkitContextMenuItemToWebContextMenuItemData(WebKitConte
  * webkit_context_menu_item_new:
  * @action: a #GtkAction
  *
- * Creates a new #WebKitContextMenuItem for the given @action.
+ * Creates a new #CyberKitContextMenuItem for the given @action.
  *
- * Returns: the newly created #WebKitContextMenuItem object.
+ * Returns: the newly created #CyberKitContextMenuItem object.
  *
  * Deprecated: 2.18: Use webkit_context_menu_item_new_from_gaction() instead.
  */
-WebKitContextMenuItem* webkit_context_menu_item_new(GtkAction* action)
+CyberKitContextMenuItem* webkit_context_menu_item_new(GtkAction* action)
 {
     g_return_val_if_fail(GTK_IS_ACTION(action), nullptr);
 
-    WebKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
+    CyberKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
     item->priv->menuItem = makeUnique<WebContextMenuItemGlib>(action);
 
     return item;
@@ -152,23 +152,23 @@ WebKitContextMenuItem* webkit_context_menu_item_new(GtkAction* action)
  * @label: the menu item label text
  * @target: (allow-none): a #GVariant to use as the action target
  *
- * Creates a new #WebKitContextMenuItem for the given @action and @label.
+ * Creates a new #CyberKitContextMenuItem for the given @action and @label.
  *
  * On activation
  * @target will be passed as parameter to the callback.
  *
- * Returns: the newly created #WebKitContextMenuItem object.
+ * Returns: the newly created #CyberKitContextMenuItem object.
  *
  * Since: 2.18
  */
-WebKitContextMenuItem* webkit_context_menu_item_new_from_gaction(GAction* action, const gchar* label, GVariant* target)
+CyberKitContextMenuItem* webkit_context_menu_item_new_from_gaction(GAction* action, const gchar* label, GVariant* target)
 {
     g_return_val_if_fail(G_IS_ACTION(action), nullptr);
     g_return_val_if_fail(!g_action_get_state_type(action) || g_variant_type_equal(g_action_get_state_type(action), G_VARIANT_TYPE_BOOLEAN), nullptr);
     g_return_val_if_fail(label, nullptr);
     g_return_val_if_fail(!target || g_variant_is_of_type(target, g_action_get_parameter_type(action)), nullptr);
 
-    WebKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
+    CyberKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
     item->priv->menuItem = makeUnique<WebContextMenuItemGlib>(action, String::fromUTF8(label), target);
 
     return item;
@@ -176,26 +176,26 @@ WebKitContextMenuItem* webkit_context_menu_item_new_from_gaction(GAction* action
 
 /**
  * webkit_context_menu_item_new_from_stock_action:
- * @action: a #WebKitContextMenuAction stock action
+ * @action: a #CyberKitContextMenuAction stock action
  *
- * Creates a new #WebKitContextMenuItem for the given stock action.
+ * Creates a new #CyberKitContextMenuItem for the given stock action.
  *
- * Stock actions are handled automatically by WebKit so that, for example,
+ * Stock actions are handled automatically by CyberKit so that, for example,
  * when a menu item created with a %WEBKIT_CONTEXT_MENU_ACTION_STOP is
- * activated the action associated will be handled by WebKit and the current
+ * activated the action associated will be handled by CyberKit and the current
  * load operation will be stopped. You can get the #GAction of a
- * #WebKitContextMenuItem created with a #WebKitContextMenuAction with
+ * #CyberKitContextMenuItem created with a #CyberKitContextMenuAction with
  * webkit_context_menu_item_get_gaction() and connect to the #GSimpleAction::activate signal
  * to be notified when the item is activated, but you can't prevent the associated
  * action from being performed.
  *
- * Returns: the newly created #WebKitContextMenuItem object.
+ * Returns: the newly created #CyberKitContextMenuItem object.
  */
-WebKitContextMenuItem* webkit_context_menu_item_new_from_stock_action(WebKitContextMenuAction action)
+CyberKitContextMenuItem* webkit_context_menu_item_new_from_stock_action(CyberKitContextMenuAction action)
 {
     g_return_val_if_fail(action > WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION && action < WEBKIT_CONTEXT_MENU_ACTION_CUSTOM, nullptr);
 
-    WebKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
+    CyberKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
     ContextMenuItemType type = webkitContextMenuActionIsCheckable(action) ? CheckableActionType : ActionType;
     item->priv->menuItem = makeUnique<WebContextMenuItemGlib>(type, webkitContextMenuActionGetActionTag(action), webkitContextMenuActionGetLabel(action));
 
@@ -204,21 +204,21 @@ WebKitContextMenuItem* webkit_context_menu_item_new_from_stock_action(WebKitCont
 
 /**
  * webkit_context_menu_item_new_from_stock_action_with_label:
- * @action: a #WebKitContextMenuAction stock action
+ * @action: a #CyberKitContextMenuAction stock action
  * @label: a custom label text to use instead of the predefined one
  *
- * Creates a new #WebKitContextMenuItem for the given stock action using the given @label.
+ * Creates a new #CyberKitContextMenuItem for the given stock action using the given @label.
  *
  * Stock actions have a predefined label, this method can be used to create a
- * #WebKitContextMenuItem for a #WebKitContextMenuAction but using a custom label.
+ * #CyberKitContextMenuItem for a #CyberKitContextMenuAction but using a custom label.
  *
- * Returns: the newly created #WebKitContextMenuItem object.
+ * Returns: the newly created #CyberKitContextMenuItem object.
  */
-WebKitContextMenuItem* webkit_context_menu_item_new_from_stock_action_with_label(WebKitContextMenuAction action, const gchar* label)
+CyberKitContextMenuItem* webkit_context_menu_item_new_from_stock_action_with_label(CyberKitContextMenuAction action, const gchar* label)
 {
     g_return_val_if_fail(action > WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION && action < WEBKIT_CONTEXT_MENU_ACTION_CUSTOM, nullptr);
 
-    WebKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
+    CyberKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
     ContextMenuItemType type = webkitContextMenuActionIsCheckable(action) ? CheckableActionType : ActionType;
     item->priv->menuItem = makeUnique<WebContextMenuItemGlib>(type, webkitContextMenuActionGetActionTag(action), String::fromUTF8(label));
 
@@ -228,13 +228,13 @@ WebKitContextMenuItem* webkit_context_menu_item_new_from_stock_action_with_label
 /**
  * webkit_context_menu_item_new_with_submenu:
  * @label: the menu item label text
- * @submenu: a #WebKitContextMenu to set
+ * @submenu: a #CyberKitContextMenu to set
  *
- * Creates a new #WebKitContextMenuItem using the given @label with a submenu.
+ * Creates a new #CyberKitContextMenuItem using the given @label with a submenu.
  *
- * Returns: the newly created #WebKitContextMenuItem object.
+ * Returns: the newly created #CyberKitContextMenuItem object.
  */
-WebKitContextMenuItem* webkit_context_menu_item_new_with_submenu(const gchar* label, WebKitContextMenu* submenu)
+CyberKitContextMenuItem* webkit_context_menu_item_new_with_submenu(const gchar* label, CyberKitContextMenu* submenu)
 {
     g_return_val_if_fail(label, nullptr);
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU(submenu), nullptr);
@@ -242,7 +242,7 @@ WebKitContextMenuItem* webkit_context_menu_item_new_with_submenu(const gchar* la
     if (checkAndWarnIfMenuHasParentItem(submenu))
         return nullptr;
 
-    WebKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
+    CyberKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
     item->priv->menuItem = makeUnique<WebContextMenuItemGlib>(ActionType, ContextMenuItemBaseApplicationTag, String::fromUTF8(label));
     item->priv->subMenu = submenu;
     webkitContextMenuSetParentItem(submenu, item);
@@ -253,13 +253,13 @@ WebKitContextMenuItem* webkit_context_menu_item_new_with_submenu(const gchar* la
 /**
  * webkit_context_menu_item_new_separator:
  *
- * Creates a new #WebKitContextMenuItem representing a separator.
+ * Creates a new #CyberKitContextMenuItem representing a separator.
  *
- * Returns: the newly created #WebKitContextMenuItem object.
+ * Returns: the newly created #CyberKitContextMenuItem object.
  */
-WebKitContextMenuItem* webkit_context_menu_item_new_separator(void)
+CyberKitContextMenuItem* webkit_context_menu_item_new_separator(void)
 {
-    WebKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
+    CyberKitContextMenuItem* item = WEBKIT_CONTEXT_MENU_ITEM(g_object_new(WEBKIT_TYPE_CONTEXT_MENU_ITEM, nullptr));
     item->priv->menuItem = makeUnique<WebContextMenuItemGlib>(SeparatorType, ContextMenuItemTagNoAction, String());
 
     return item;
@@ -268,16 +268,16 @@ WebKitContextMenuItem* webkit_context_menu_item_new_separator(void)
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_context_menu_item_get_action:
- * @item: a #WebKitContextMenuItem
+ * @item: a #CyberKitContextMenuItem
  *
  * Gets the action associated to @item as a #GtkAction.
  *
- * Returns: (transfer none): the #GtkAction associated to the #WebKitContextMenuItem,
+ * Returns: (transfer none): the #GtkAction associated to the #CyberKitContextMenuItem,
  *    or %NULL if @item is a separator.
  *
  * Deprecated: 2.18: Use webkit_context_menu_item_get_gaction() instead.
  */
-GtkAction* webkit_context_menu_item_get_action(WebKitContextMenuItem* item)
+GtkAction* webkit_context_menu_item_get_action(CyberKitContextMenuItem* item)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item), nullptr);
 
@@ -287,16 +287,16 @@ GtkAction* webkit_context_menu_item_get_action(WebKitContextMenuItem* item)
 
 /**
  * webkit_context_menu_item_get_gaction:
- * @item: a #WebKitContextMenuItem
+ * @item: a #CyberKitContextMenuItem
  *
  * Gets the action associated to @item as a #GAction.
  *
- * Returns: (transfer none): the #GAction associated to the #WebKitContextMenuItem,
+ * Returns: (transfer none): the #GAction associated to the #CyberKitContextMenuItem,
  *    or %NULL if @item is a separator.
  *
  * Since: 2.18
  */
-GAction* webkit_context_menu_item_get_gaction(WebKitContextMenuItem* item)
+GAction* webkit_context_menu_item_get_gaction(CyberKitContextMenuItem* item)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item), nullptr);
 
@@ -305,18 +305,18 @@ GAction* webkit_context_menu_item_get_gaction(WebKitContextMenuItem* item)
 
 /**
  * webkit_context_menu_item_get_stock_action:
- * @item: a #WebKitContextMenuItem
+ * @item: a #CyberKitContextMenuItem
  *
- * Gets the #WebKitContextMenuAction of @item.
+ * Gets the #CyberKitContextMenuAction of @item.
  *
- * If the #WebKitContextMenuItem was not
+ * If the #CyberKitContextMenuItem was not
  * created for a stock action %WEBKIT_CONTEXT_MENU_ACTION_CUSTOM will be
- * returned. If the #WebKitContextMenuItem is a separator %WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION
+ * returned. If the #CyberKitContextMenuItem is a separator %WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION
  * will be returned.
  *
- * Returns: the #WebKitContextMenuAction of @item
+ * Returns: the #CyberKitContextMenuAction of @item
  */
-WebKitContextMenuAction webkit_context_menu_item_get_stock_action(WebKitContextMenuItem* item)
+CyberKitContextMenuAction webkit_context_menu_item_get_stock_action(CyberKitContextMenuItem* item)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item), WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION);
 
@@ -325,13 +325,13 @@ WebKitContextMenuAction webkit_context_menu_item_get_stock_action(WebKitContextM
 
 /**
  * webkit_context_menu_item_is_separator:
- * @item: a #WebKitContextMenuItem
+ * @item: a #CyberKitContextMenuItem
  *
  * Checks whether @item is a separator.
  *
  * Returns: %TRUE is @item is a separator or %FALSE otherwise
  */
-gboolean webkit_context_menu_item_is_separator(WebKitContextMenuItem* item)
+gboolean webkit_context_menu_item_is_separator(CyberKitContextMenuItem* item)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item), FALSE);
 
@@ -340,15 +340,15 @@ gboolean webkit_context_menu_item_is_separator(WebKitContextMenuItem* item)
 
 /**
  * webkit_context_menu_item_set_submenu:
- * @item: a #WebKitContextMenuItem
- * @submenu: (allow-none): a #WebKitContextMenu
+ * @item: a #CyberKitContextMenuItem
+ * @submenu: (allow-none): a #CyberKitContextMenu
  *
  * Sets or replaces the @item submenu.
  *
  * If @submenu is %NULL the current
  * submenu of @item is removed.
  */
-void webkit_context_menu_item_set_submenu(WebKitContextMenuItem* item, WebKitContextMenu* submenu)
+void webkit_context_menu_item_set_submenu(CyberKitContextMenuItem* item, CyberKitContextMenu* submenu)
 {
     g_return_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item));
 
@@ -360,14 +360,14 @@ void webkit_context_menu_item_set_submenu(WebKitContextMenuItem* item, WebKitCon
 
 /**
  * webkit_context_menu_item_get_submenu:
- * @item: a #WebKitContextMenuItem
+ * @item: a #CyberKitContextMenuItem
  *
  * Gets the submenu of @item.
  *
- * Returns: (transfer none): the #WebKitContextMenu representing the submenu of
+ * Returns: (transfer none): the #CyberKitContextMenu representing the submenu of
  *    @item or %NULL if @item doesn't have a submenu.
  */
-WebKitContextMenu* webkit_context_menu_item_get_submenu(WebKitContextMenuItem* item)
+CyberKitContextMenu* webkit_context_menu_item_get_submenu(CyberKitContextMenuItem* item)
 {
     g_return_val_if_fail(WEBKIT_IS_CONTEXT_MENU_ITEM(item), 0);
 

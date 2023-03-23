@@ -27,22 +27,22 @@
 
 #define WEBKIT_TYPE_VIDEO_SINK webkit_video_sink_get_type()
 
-#define WEBKIT_VIDEO_SINK(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_VIDEO_SINK, WebKitVideoSink))
-#define WEBKIT_VIDEO_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_VIDEO_SINK, WebKitVideoSinkClass))
+#define WEBKIT_VIDEO_SINK(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_VIDEO_SINK, CyberKitVideoSink))
+#define WEBKIT_VIDEO_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_VIDEO_SINK, CyberKitVideoSinkClass))
 #define WEBKIT_IS_VIDEO_SINK(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_VIDEO_SINK))
 #define WEBKIT_IS_VIDEO_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_VIDEO_SINK))
-#define WEBKIT_VIDEO_SINK_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_VIDEO_SINK, WebKitVideoSinkClass))
+#define WEBKIT_VIDEO_SINK_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_VIDEO_SINK, CyberKitVideoSinkClass))
 
-typedef struct _WebKitVideoSink WebKitVideoSink;
-typedef struct _WebKitVideoSinkClass WebKitVideoSinkClass;
-typedef struct _WebKitVideoSinkPrivate WebKitVideoSinkPrivate;
+typedef struct _CyberKitVideoSink CyberKitVideoSink;
+typedef struct _CyberKitVideoSinkClass CyberKitVideoSinkClass;
+typedef struct _CyberKitVideoSinkPrivate CyberKitVideoSinkPrivate;
 
-struct _WebKitVideoSink {
+struct _CyberKitVideoSink {
     GstVideoSink parent;
-    WebKitVideoSinkPrivate* priv;
+    CyberKitVideoSinkPrivate* priv;
 };
 
-struct _WebKitVideoSinkClass {
+struct _CyberKitVideoSinkClass {
     GstVideoSinkClass parent_class;
 
     // Future padding

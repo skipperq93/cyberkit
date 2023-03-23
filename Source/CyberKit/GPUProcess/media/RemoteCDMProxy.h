@@ -43,7 +43,7 @@ struct CDMKeySystemConfiguration;
 struct CDMRestrictions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteCDMInstanceProxy;
 struct RemoteCDMInstanceConfiguration;

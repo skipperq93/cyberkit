@@ -33,9 +33,9 @@
 #import <objc/runtime.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKObject)
+TEST(CyberKit, WKObject)
 {
     WKStringRef stringRef = WKStringCreateWithUTF8CString("just testing");
     ASSERT_TRUE([@"just testing" isEqualToString:(NSString *)stringRef]);
@@ -50,7 +50,7 @@ TEST(WebKit, WKObject)
     ASSERT_EQ((id)0, weakString);
 }
 
-TEST(WebKit, WKObject_classMethods)
+TEST(CyberKit, WKObject_classMethods)
 {
     Class wkObjectClass = NSClassFromString(@"WKObject");
     ASSERT_NE((Class)0, wkObjectClass);
@@ -58,7 +58,7 @@ TEST(WebKit, WKObject_classMethods)
     ASSERT_TRUE([wkObjectClass conformsToProtocol:@protocol(NSObject)]);
 }
 
-TEST(WebKit, WKObject_classInDictionary)
+TEST(CyberKit, WKObject_classInDictionary)
 {
     Class wkObjectClass = NSClassFromString(@"WKObject");
     ASSERT_NE((Class)0, wkObjectClass);
@@ -68,6 +68,6 @@ TEST(WebKit, WKObject_classInDictionary)
     ASSERT_TRUE([@"test" isEqualToString:(NSString *)[map objectForKey: wkObjectClass]]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

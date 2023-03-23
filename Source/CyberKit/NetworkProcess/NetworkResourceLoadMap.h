@@ -33,7 +33,7 @@
 #include "ProcessAssertion.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkResourceLoader;
 class NetworkConnectionToWebProcess;
@@ -65,4 +65,4 @@ private:
     Function<void(bool hasUpload)> m_hasUploadChangeListener;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

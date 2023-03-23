@@ -50,7 +50,7 @@ GStreamerSctpTransportBackend::GStreamerSctpTransportBackend(GRefPtr<GstWebRTCSC
 {
     static std::once_flag debugRegisteredFlag;
     std::call_once(debugRegisteredFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_webrtc_sctp_transport_debug, "webkitwebrtcsctp", 0, "WebKit WebRTC SCTP transport");
+        GST_DEBUG_CATEGORY_INIT(webkit_webrtc_sctp_transport_debug, "webkitwebrtcsctp", 0, "CyberKit WebRTC SCTP transport");
     });
     ASSERT(m_backend);
 }

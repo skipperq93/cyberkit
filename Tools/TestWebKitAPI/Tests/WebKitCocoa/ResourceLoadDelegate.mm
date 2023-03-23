@@ -31,7 +31,7 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import <CyberKit/WKWebViewPrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKFrameHandle.h>
 #import <CyberKit/_WKResourceLoadDelegate.h>
 #import <CyberKit/_WKResourceLoadInfo.h>
@@ -99,16 +99,16 @@ TEST(ResourceLoadDelegate, Basic)
         requestFromDelegate = request;
     }];
 
-    RetainPtr<NSURLRequest> requestLoaded = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    RetainPtr<NSURLRequest> requestLoaded = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:requestLoaded.get()];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
     EXPECT_WK_STREQ(requestLoaded.get().URL.absoluteString, requestFromDelegate.get().URL.absoluteString);
 }
 
 TEST(ResourceLoadDelegate, BeaconAndSyncXHR)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { "hello"_s } },
         { "/xhrTarget"_s, { {{ "Content-Type"_s, "text/html"_s }},  "hi"_s } },
         { "/beaconTarget"_s, { "hi"_s } },
@@ -137,7 +137,7 @@ TEST(ResourceLoadDelegate, BeaconAndSyncXHR)
     }];
 
     [webView evaluateJavaScript:@"navigator.sendBeacon('/beaconTarget')" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedCallback);
+    TestCyberKitAPI::Util::run(&receivedCallback);
     EXPECT_WK_STREQ("/beaconTarget", requestFromDelegate.get().URL.path);
 
     receivedCallback = false;
@@ -147,14 +147,14 @@ TEST(ResourceLoadDelegate, BeaconAndSyncXHR)
         "request.open('GET', 'xhrTarget', asynchronous);"
         "request.send();"
         "alert('done');" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedCallback);
+    TestCyberKitAPI::Util::run(&receivedCallback);
     EXPECT_WK_STREQ("/xhrTarget", requestFromDelegate.get().URL.path);
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
 }
 
 TEST(ResourceLoadDelegate, Redirect)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { 301, {{ "Location"_s, "/redirectTarget"_s }} } },
         { "/redirectTarget"_s, { "hi"_s } },
     });
@@ -176,7 +176,7 @@ TEST(ResourceLoadDelegate, Redirect)
     auto webView = adoptNS([WKWebView new]);
     [webView _setResourceLoadDelegate:resourceLoadDelegate.get()];
     [webView loadRequest:server.request()];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(ResourceLoadDelegate, ResourceType)
@@ -205,7 +205,7 @@ TEST(ResourceLoadDelegate, ResourceType)
         xhr.send();
     })
     )TESTJS"_s;
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { "<script src='scriptSrc'></script><div>text needing a font</div>"_s } },
         { "/scriptSrc"_s, { {{ "Content-Type"_s, "application/javascript"_s }}, testJS } },
         { "/fetchTarget"_s, { "hi"_s } },
@@ -241,7 +241,7 @@ TEST(ResourceLoadDelegate, ResourceType)
     };
 
     while (requestCount < expectedTypes.size())
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     for (size_t i = 0; i < expectedTypes.size(); ++i)
         EXPECT_EQ(loadInfos[i].get().resourceType, expectedTypes[i]);
 }
@@ -252,9 +252,9 @@ TEST(ResourceLoadDelegate, LoadInfo)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         clearedStore = true;
     }];
-    TestWebKitAPI::Util::run(&clearedStore);
+    TestCyberKitAPI::Util::run(&clearedStore);
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { "<iframe src='iframeSrc'></iframe>"_s } },
         { "/iframeSrc"_s, { "<script>fetch('fetchTarget', { body: 'a=b&c=d', method: 'post'})</script>"_s } },
         { "/fetchTarget"_s, { "hi"_s } },
@@ -298,7 +298,7 @@ TEST(ResourceLoadDelegate, LoadInfo)
     [webView _setResourceLoadDelegate:delegate.get()];
     [webView loadRequest:server.request()];
     while (resourceCompletionCount < 3)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     Vector<Callback> expectedCallbacks {
         Callback::DidSendRequest,
@@ -394,7 +394,7 @@ TEST(ResourceLoadDelegate, LoadInfo)
 
 TEST(ResourceLoadDelegate, Challenge)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server(HTTPServer::respondWithChallengeThenOK);
 
     auto navigationDelegate = adoptNS([TestNavigationDelegate new]);
@@ -419,6 +419,6 @@ TEST(ResourceLoadDelegate, Challenge)
     [webView setNavigationDelegate:navigationDelegate.get()];
     [webView _setResourceLoadDelegate:resourceLoadDelegate.get()];
     [webView loadRequest:server.request()];
-    TestWebKitAPI::Util::run(&receivedErrorNotification);
+    TestCyberKitAPI::Util::run(&receivedErrorNotification);
     EXPECT_TRUE(receivedChallengeNotificiation);
 }

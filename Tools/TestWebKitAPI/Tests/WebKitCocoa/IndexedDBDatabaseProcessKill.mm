@@ -34,7 +34,7 @@
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
@@ -85,7 +85,7 @@ TEST(IndexedDB, DatabaseProcessKill)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBDatabaseProcessKill-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBDatabaseProcessKill-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     bool killedDBProcess = false;
@@ -93,7 +93,7 @@ TEST(IndexedDB, DatabaseProcessKill)
         if (databaseErrorReceived)
             break;
 
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         receivedScriptMessage = false;
         if (!killedDBProcess && openRequestUpgradeNeeded) {
             killedDBProcess = true;
@@ -135,7 +135,7 @@ TEST(IndexedDB, OneVMPerThread)
 
     receivedScriptMessage = false;
     [webView evaluateJavaScript:@"openDatabase()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Opened", [lastScriptMessage body]);
 
     kill([webView _webProcessIdentifier], SIGKILL);
@@ -143,6 +143,6 @@ TEST(IndexedDB, OneVMPerThread)
     receivedScriptMessage = false;
     [secondWebView evaluateJavaScript:@"openDatabase()" completionHandler:nil];
     lastScriptMessage = nil;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Opened", [lastScriptMessage body]);
 }

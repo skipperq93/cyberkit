@@ -34,7 +34,7 @@
 #include <CyberKit/WKContextPrivate.h>
 #include <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 static bool didReceiveMessage;
@@ -105,7 +105,7 @@ static void didFinishNavigation(WKPageRef, WKNavigationRef, WKTypeRef, const voi
     didFinishLoad = true;
 }
 
-TEST(WebKit, WebArchive)
+TEST(CyberKit, WebArchive)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("WebArchiveTest"));
     setInjectedBundleClient(context.get());
@@ -130,6 +130,6 @@ TEST(WebKit, WebArchive)
     Util::run(&didReceiveMessage);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

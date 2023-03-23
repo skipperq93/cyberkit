@@ -113,7 +113,7 @@ public:
     void adjustTextFieldStyle(RenderStyle& style, const Element*) const override { }
     void adjustTextAreaStyle(RenderStyle& style, const Element*) const override { }
 
-    static void setWebKitIsBeingUnloaded();
+    static void setCyberKitIsBeingUnloaded();
 
     static String stringWithContentsOfFile(const String& name, const String& type);
 

@@ -38,7 +38,7 @@
 #include <wtf/DataLog.h>
 #include <wtf/Stopwatch.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template<int initialCapacity>
 struct InitialCapacityTestHashTraits : public WTF::UnsignedWithZeroKeyHashTraits<int> {
@@ -596,4 +596,4 @@ TEST(WTF_RobinHoodHashSet, LargeRemoval)
     EXPECT_EQ(set.capacity(), 8u);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

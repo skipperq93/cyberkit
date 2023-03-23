@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUCompilationMessage.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<CompilationMessage> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::CompilationMessage& compilationMessage)
 {
@@ -44,6 +44,6 @@ RefPtr<PAL::WebGPU::CompilationMessage> ConvertFromBackingContext::convertFromBa
     return PAL::WebGPU::CompilationMessage::create(compilationMessage.message, compilationMessage.type, compilationMessage.lineNum, compilationMessage.linePos, compilationMessage.offset, compilationMessage.length);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

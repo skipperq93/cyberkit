@@ -36,7 +36,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -136,6 +136,6 @@ void RemoteMediaResourceManager::loadFinished(RemoteMediaResourceIdentifier iden
     resource->loadFinished(metrics);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

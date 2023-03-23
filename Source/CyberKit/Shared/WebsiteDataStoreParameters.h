@@ -32,7 +32,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebsiteDataStoreParameters {
     Vector<uint8_t> uiProcessCookieStorageIdentifier;
@@ -47,4 +47,4 @@ struct WebsiteDataStoreParameters {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum WebGPUIdentifierType { };
 using WebGPUIdentifier = ObjectIdentifier<WebGPUIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

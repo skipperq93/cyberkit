@@ -752,7 +752,7 @@ bool DatabaseTracker::addDatabase(const SecurityOriginData& origin, const String
 
 void DatabaseTracker::deleteAllDatabasesImmediately()
 {
-    // This method is only intended for use by DumpRenderTree / WebKitTestRunner.
+    // This method is only intended for use by DumpRenderTree / CyberKitTestRunner.
     // Actually deleting the databases is necessary to reset to a known state before running
     // each test case, but may be unsafe in deployment use cases (where multiple applications
     // may be accessing the same databases concurrently).

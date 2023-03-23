@@ -30,7 +30,7 @@
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(VideoQualityDisplayCompositing, Enabled)
 {

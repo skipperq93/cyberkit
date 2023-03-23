@@ -61,7 +61,7 @@
 #include <wtf/Algorithms.h>
 #include <wtf/MainThread.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace PAL;
 using namespace CyberCore;
 
@@ -726,7 +726,7 @@ void WebSWServerConnection::retrieveRecordResponseBody(CyberCore::BackgroundFetc
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef CONNECTION_MESSAGE_CHECK_COMPLETION
 #undef CONNECTION_MESSAGE_CHECK

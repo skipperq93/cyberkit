@@ -33,7 +33,7 @@ namespace JSC {
 enum class MessageLevel : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 namespace Daemon {
 class Connection;
 }
@@ -57,4 +57,4 @@ private:
 };
 
 } // namespace PCM
-} // namespace WebKit
+} // namespace CyberKit

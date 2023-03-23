@@ -4434,7 +4434,7 @@ void GraphicsLayerCA::changeLayerTypeTo(PlatformCALayer::LayerType newLayerType)
     } else if (oldLayer->superlayer()) {
         // Skip this step if we don't have a superlayer. This is probably a benign
         // case that happens while restructuring the layer tree, and also occurs with
-        // WebKit2 page overlays, which can become tiled but are out-of-tree.
+        // CyberKit2 page overlays, which can become tiled but are out-of-tree.
         oldLayer->superlayer()->replaceSublayer(*oldLayer, *m_layer);
     }
 

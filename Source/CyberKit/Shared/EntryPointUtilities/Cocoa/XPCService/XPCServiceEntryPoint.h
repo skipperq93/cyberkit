@@ -26,7 +26,7 @@
 #pragma once
 
 #import "AuxiliaryProcess.h"
-#import "WebKit2Initialize.h"
+#import "CyberKit2Initialize.h"
 #import <CyberScriptCore/ExecutableAllocator.h>
 #import <wtf/OSObjectPtr.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
@@ -46,7 +46,7 @@ extern "C" OS_NOTHROW void voucher_replace_default_voucher(void);
 #define NETWORK_SERVICE_INITIALIZER NetworkServiceInitializer
 #define GPU_SERVICE_INITIALIZER GPUServiceInitializer
 
-namespace WebKit {
+namespace CyberKit {
 
 class XPCServiceInitializerDelegate {
 public:
@@ -125,10 +125,10 @@ void XPCServiceInitializer(OSObjectPtr<xpc_connection_t> connection, xpc_object_
     // so ensure that we have an outstanding transaction here. This is not needed when using
     // RunningBoard because the UIProcess takes process assertions on behalf of its child processes.
 #if !USE(RUNNINGBOARD)
-    setOSTransaction(adoptOSObject(os_transaction_create("WebKit XPC Service")));
+    setOSTransaction(adoptOSObject(os_transaction_create("CyberKit XPC Service")));
 #endif
 
-    InitializeWebKit2();
+    InitializeCyberKit2();
 
     if (!delegate.checkEntitlements())
         exit(EXIT_FAILURE);
@@ -174,4 +174,4 @@ int XPCServiceMain(int, const char**);
 
 void XPCServiceExit();
 
-} // namespace WebKit
+} // namespace CyberKit

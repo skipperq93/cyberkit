@@ -105,7 +105,7 @@ WTF_EXTERN_C_END
 #import <PassKitCore/PKPayment.h>
 #import <PassKitCore/PKPaymentMethod.h>
 #import <PassKitCore/PKPaymentPass.h>
-#import <PassKitCore/PKPaymentSetupConfiguration_WebKit.h>
+#import <PassKitCore/PKPaymentSetupConfiguration_CyberKit.h>
 #import <PassKitCore/PKPaymentSetupRequest.h>
 #else
 #import <PassKit/PKContact.h>
@@ -114,11 +114,11 @@ WTF_EXTERN_C_END
 #import <PassKit/PKPayment.h>
 #import <PassKit/PKPaymentMethod.h>
 #import <PassKit/PKPaymentPass.h>
-#import <PassKit/PKPaymentSetupConfiguration_WebKit.h>
+#import <PassKit/PKPaymentSetupConfiguration_CyberKit.h>
 #import <PassKit/PKPaymentSetupRequest.h>
 #endif
 
-#import <PassKitCore/PKPaymentRequest_WebKit.h>
+#import <PassKitCore/PKPaymentRequest_CyberKit.h>
 
 #if !HAVE(PASSKIT_INSTALLMENTS)
 #if HAVE(PASSKIT_MODULARIZATION)

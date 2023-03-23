@@ -49,7 +49,7 @@
 #define SWFETCH_RELEASE_LOG(fmt, ...) RELEASE_LOG(ServiceWorker, "%p - [fetchIdentifier=%" PRIu64 "] ServiceWorkerFetchTask::" fmt, this, m_fetchIdentifier.toUInt64(), ##__VA_ARGS__)
 #define SWFETCH_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ServiceWorker, "%p - [fetchIdentifier=%" PRIu64 "] ServiceWorkerFetchTask::" fmt, this, m_fetchIdentifier.toUInt64(), ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -151,7 +151,7 @@ void ServiceWorkerFetchTask::contextClosed()
         return;
 
     if (m_wasHandled) {
-        didFail(ResourceError { errorDomainWebKitInternal, 0, { }, "Service Worker context closed"_s });
+        didFail(ResourceError { errorDomainCyberKitInternal, 0, { }, "Service Worker context closed"_s });
         return;
     }
     cannotHandle();
@@ -444,7 +444,7 @@ void ServiceWorkerFetchTask::loadBodyFromPreloader()
     ASSERT(m_isLoadingFromPreloader);
     if (!m_preloader) {
         SWFETCH_RELEASE_LOG_ERROR("loadBodyFromPreloader preloader is null");
-        didFail(ResourceError(errorDomainWebKitInternal, 0, m_currentRequest.url(), "Request canceled from preloader"_s, ResourceError::Type::Cancellation));
+        didFail(ResourceError(errorDomainCyberKitInternal, 0, m_currentRequest.url(), "Request canceled from preloader"_s, ResourceError::Type::Cancellation));
         return;
     }
 
@@ -516,7 +516,7 @@ MonotonicTime ServiceWorkerFetchTask::startTime() const
     return m_preloader ? m_preloader->startTime() : MonotonicTime { };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef SWFETCH_RELEASE_LOG
 #undef SWFETCH_RELEASE_LOG_ERROR

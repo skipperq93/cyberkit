@@ -2343,7 +2343,7 @@ sub parseExtendedAttribute
         my $name = $self->parseName();
         return $self->parseExtendedAttributeRest($name);
     }
-    # backward compatibility. Spec doesn' allow "[]". But WebKit requires.
+    # backward compatibility. Spec doesn' allow "[]". But CyberKit requires.
     if ($next->value() eq ']') {
         return {};
     }

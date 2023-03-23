@@ -21,11 +21,11 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> LegacyCustomProtocolManager NotRefCounted {
-    DidFailWithError(WebKit::LegacyCustomProtocolID customProtocolID, CyberCore::ResourceError error)
-    DidLoadData(WebKit::LegacyCustomProtocolID customProtocolID, IPC::DataReference data)
-    DidReceiveResponse(WebKit::LegacyCustomProtocolID customProtocolID, CyberCore::ResourceResponse response, enum:uint8_t WebKit::CacheStoragePolicy cacheStoragePolicy)
-    DidFinishLoading(WebKit::LegacyCustomProtocolID customProtocolID)
-    WasRedirectedToRequest(WebKit::LegacyCustomProtocolID customProtocolID, CyberCore::ResourceRequest request, CyberCore::ResourceResponse redirectResponse);
+    DidFailWithError(CyberKit::LegacyCustomProtocolID customProtocolID, CyberCore::ResourceError error)
+    DidLoadData(CyberKit::LegacyCustomProtocolID customProtocolID, IPC::DataReference data)
+    DidReceiveResponse(CyberKit::LegacyCustomProtocolID customProtocolID, CyberCore::ResourceResponse response, enum:uint8_t CyberKit::CacheStoragePolicy cacheStoragePolicy)
+    DidFinishLoading(CyberKit::LegacyCustomProtocolID customProtocolID)
+    WasRedirectedToRequest(CyberKit::LegacyCustomProtocolID customProtocolID, CyberCore::ResourceRequest request, CyberCore::ResourceResponse redirectResponse);
 
     RegisterScheme(String name)
     UnregisterScheme(String name)

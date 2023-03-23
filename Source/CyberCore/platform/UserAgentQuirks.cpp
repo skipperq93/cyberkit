@@ -33,36 +33,36 @@
 namespace CyberCore {
 
 // When editing the quirks in this file, be sure to update
-// Tools/TestWebKitAPI/Tests/CyberCore/UserAgentQuirks.cpp.
+// Tools/TestCyberKitAPI/Tests/CyberCore/UserAgentQuirks.cpp.
 //
 // When testing changes, be sure to test with application branding enabled.
 // Otherwise, we will not notice when urlRequiresUnbrandedUserAgent is needed.
 
 // Be careful with this quirk: it's an invitation for sites to use JavaScript
-// that works in Chrome that WebKit cannot handle. Prefer other quirks instead.
+// that works in Chrome that CyberKit cannot handle. Prefer other quirks instead.
 static bool urlRequiresChromeBrowser(const String& domain, const String& baseDomain)
 {
-    // Needed for fonts on many sites to work with WebKit.
+    // Needed for fonts on many sites to work with CyberKit.
     // https://bugs.webkit.org/show_bug.cgi?id=147296
     if (baseDomain == "typekit.net"_s || baseDomain == "typekit.com"_s)
         return true;
 
-    // This site completely blocks the login page with WebKitGTK's standard user
+    // This site completely blocks the login page with CyberKitGTK's standard user
     // agent and ask users to use Google Chrome or Microsoft Internet Explorer.
     if (domain == "auth.mayohr.com"_s)
         return true;
 
-    // Bank of America shows an unsupported browser warning with WebKitGTK's
+    // Bank of America shows an unsupported browser warning with CyberKitGTK's
     // standard user agent.
     if (baseDomain == "bankofamerica.com"_s)
         return true;
 
-    // Google Docs shows an unsupported browser warning with WebKitGTK's
+    // Google Docs shows an unsupported browser warning with CyberKitGTK's
     // standard user agent.
     if (domain == "docs.google.com"_s)
         return true;
 
-    // soundcloud.com serves broken MSE audio fragments with WebKitGTK's standard user agent.
+    // soundcloud.com serves broken MSE audio fragments with CyberKitGTK's standard user agent.
     if (baseDomain == "soundcloud.com"_s)
         return true;
 
@@ -75,7 +75,7 @@ static bool urlRequiresChromeBrowser(const String& domain, const String& baseDom
 // things is relatively low.
 static bool urlRequiresFirefoxBrowser(const String& domain)
 {
-    // Red Hat Bugzilla displays a warning page when performing searches with WebKitGTK's standard
+    // Red Hat Bugzilla displays a warning page when performing searches with CyberKitGTK's standard
     // user agent.
     if (domain == "bugzilla.redhat.com"_s)
         return true;
@@ -90,28 +90,28 @@ static bool urlRequiresFirefoxBrowser(const String& domain)
 
 static bool urlRequiresMacintoshPlatform(const String& domain, const String& baseDomain)
 {
-    // At least finance.yahoo.com displays a mobile version with WebKitGTK's standard user agent.
+    // At least finance.yahoo.com displays a mobile version with CyberKitGTK's standard user agent.
     if (chassisType() != WTF::ChassisType::Mobile && baseDomain == "yahoo.com"_s)
         return true;
 
-    // taobao.com displays a mobile version with WebKitGTK's standard user agent.
+    // taobao.com displays a mobile version with CyberKitGTK's standard user agent.
     if (chassisType() != WTF::ChassisType::Mobile && baseDomain == "taobao.com"_s)
         return true;
 
-    // web.whatsapp.com completely blocks users with WebKitGTK's standard user agent.
+    // web.whatsapp.com completely blocks users with CyberKitGTK's standard user agent.
     if (baseDomain == "whatsapp.com"_s)
         return true;
 
-    // paypal.com completely blocks users with WebKitGTK's standard user agent.
+    // paypal.com completely blocks users with CyberKitGTK's standard user agent.
     if (baseDomain == "paypal.com"_s)
         return true;
 
     // chase.com displays a huge "please update your browser" warning with
-    // WebKitGTK's standard user agent.
+    // CyberKitGTK's standard user agent.
     if (baseDomain == "chase.com"_s)
         return true;
 
-    // Microsoft Outlook Web App forces users with WebKitGTK's standard user
+    // Microsoft Outlook Web App forces users with CyberKitGTK's standard user
     // agent to use the light version. Earlier versions even block users from
     // accessing the calendar.
     if (domain == "outlook.office.com"_s
@@ -120,7 +120,7 @@ static bool urlRequiresMacintoshPlatform(const String& domain, const String& bas
         return true;
 
     // https://www.sspa.juntadeandalucia.es/servicioandaluzdesalud/clicsalud/pages/portada.jsf
-    // Andalusian Health Service discriminates against WebKitGTK's standard user
+    // Andalusian Health Service discriminates against CyberKitGTK's standard user
     // agent with an unsupported browser warning.
     if (domain == "www.sspa.juntadeandalucia.es"_s)
         return true;
@@ -131,17 +131,17 @@ static bool urlRequiresMacintoshPlatform(const String& domain, const String& bas
 static bool urlRequiresUnbrandedUserAgent(const String& domain)
 {
     // Google uses an ugly fallback login page if application branding is
-    // appended to WebKitGTK's standard user agent.
+    // appended to CyberKitGTK's standard user agent.
     if (domain == "accounts.google.com"_s)
         return true;
 
     // Google Docs displays an unsupported browser warning if application
-    // branding is appended to WebKitGTK's standard user agent.
+    // branding is appended to CyberKitGTK's standard user agent.
     if (domain == "docs.google.com"_s)
         return true;
 
     // Google Drive displays an unsupported browser warning if application
-    // branding is appended to WebKitGTK's standard user agent.
+    // branding is appended to CyberKitGTK's standard user agent.
     if (domain == "drive.google.com"_s)
         return true;
 

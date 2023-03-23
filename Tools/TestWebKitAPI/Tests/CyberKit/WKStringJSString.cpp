@@ -30,9 +30,9 @@
 #include <CyberKit/WKStringPrivate.h>
 #include <CyberScriptCore/JSStringRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKStringJSString)
+TEST(CyberKit, WKStringJSString)
 {
     WKStringRef wkString = WKStringCreateWithUTF8CString("hello");
     JSStringRef jsString = JSStringCreateWithUTF8CString("hello");
@@ -50,6 +50,6 @@ TEST(WebKit, WKStringJSString)
     JSStringRelease(convertedWKString);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

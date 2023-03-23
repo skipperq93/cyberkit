@@ -30,7 +30,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void UpdateInfo::encode(IPC::Encoder& encoder) const
 {
@@ -69,6 +69,6 @@ bool UpdateInfo::decode(IPC::Decoder& decoder, UpdateInfo& result)
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

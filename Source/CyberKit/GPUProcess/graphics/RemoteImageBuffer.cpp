@@ -31,7 +31,7 @@
 #include "PlatformImageBufferShareableBackend.h"
 #include "RemoteDisplayListRecorder.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteImageBuffer::RemoteImageBuffer(const ImageBufferBackend::Parameters& parameters, const ImageBufferBackend::Info& info, std::unique_ptr<ImageBufferBackend>&& backend, RemoteRenderingBackend& remoteRenderingBackend, QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
@@ -80,6 +80,6 @@ RefPtr<RemoteImageBuffer> RemoteImageBuffer::createTransfer(std::unique_ptr<Imag
     return imageBuffer;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

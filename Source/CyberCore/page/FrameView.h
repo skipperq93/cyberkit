@@ -477,7 +477,7 @@ public:
     // 
     // This is already a problem if the view needs to be a different size because of printer fonts or because of print stylesheets.
     // Mail/Dictionary work around this problem by using the _layoutForPrinting SPI
-    // to at least get print stylesheets and printer fonts into play, but since WebKit doesn't know about the page offset or
+    // to at least get print stylesheets and printer fonts into play, but since CyberKit doesn't know about the page offset or
     // page size, it can't actually paginate correctly during _layoutForPrinting.
     //
     // We can eventually move Mail to a newer SPI that would let them opt in to the layout-time pagination model,
@@ -612,7 +612,7 @@ public:
     WEBCORE_EXPORT void removeChild(Widget&) final;
 
     // This function exists for ports that need to handle wheel events manually.
-    // On Mac WebKit1 the underlying NSScrollView just does the scrolling, but on most other platforms
+    // On Mac CyberKit1 the underlying NSScrollView just does the scrolling, but on most other platforms
     // we need this function in order to do the scroll ourselves.
     bool handleWheelEventForScrolling(const PlatformWheelEvent&, std::optional<WheelScrollGestureState>) final;
 
@@ -684,7 +684,7 @@ public:
 
     void addTrackedRepaintRect(const FloatRect&);
 
-    // exposedRect represents WebKit's understanding of what part
+    // exposedRect represents CyberKit's understanding of what part
     // of the view is actually exposed on screen (taking into account
     // clipping by other UI elements), whereas visibleContentRect is
     // internal to CyberCore and doesn't respect those things.

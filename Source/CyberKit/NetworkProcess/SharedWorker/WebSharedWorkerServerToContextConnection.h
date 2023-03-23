@@ -42,7 +42,7 @@ struct WorkerFetchResult;
 struct WorkerOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkConnectionToWebProcess;
 class WebSharedWorker;
@@ -94,4 +94,4 @@ private:
     bool m_shouldTerminateWhenPossible { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

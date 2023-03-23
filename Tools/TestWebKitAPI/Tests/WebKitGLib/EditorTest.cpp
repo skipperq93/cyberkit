@@ -21,9 +21,9 @@
 
 #include "WebProcessTest.h"
 
-class WebKitWebEditorTest : public WebProcessTest {
+class CyberKitWebEditorTest : public WebProcessTest {
 public:
-    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new WebKitWebEditorTest()); }
+    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new CyberKitWebEditorTest()); }
 
 private:
     static void selectionChangedCallback(bool* selectionChanged)
@@ -31,11 +31,11 @@ private:
         *selectionChanged = true;
     }
 
-    bool testSelectionChanged(WebKitWebPage* page)
+    bool testSelectionChanged(CyberKitWebPage* page)
     {
         bool selectionChanged = false;
 
-        WebKitWebEditor* editor = webkit_web_page_get_editor(page);
+        CyberKitWebEditor* editor = webkit_web_page_get_editor(page);
         g_assert_true(WEBKIT_IS_WEB_EDITOR(editor));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(editor));
         g_signal_connect_swapped(editor, "selection-changed", G_CALLBACK(selectionChangedCallback), &selectionChanged);
@@ -66,7 +66,7 @@ private:
         return true;
     }
 
-    bool runTest(const char* testName, WebKitWebPage* page) override
+    bool runTest(const char* testName, CyberKitWebPage* page) override
     {
         if (!strcmp(testName, "selection-changed"))
             return testSelectionChanged(page);
@@ -78,5 +78,5 @@ private:
 
 static void __attribute__((constructor)) registerTests()
 {
-    REGISTER_TEST(WebKitWebEditorTest, "WebKitWebEditor/selection-changed");
+    REGISTER_TEST(CyberKitWebEditorTest, "CyberKitWebEditor/selection-changed");
 }

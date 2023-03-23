@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 Vector<uint8_t> wrapPublicKeyWithRSAPSSOID(Vector<uint8_t>&& publicKey);
 

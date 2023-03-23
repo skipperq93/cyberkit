@@ -28,7 +28,7 @@
 #include "Decoder.h"
 #include "Encoder.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebBackForwardListCounts {
     uint32_t backCount { 0 };
@@ -56,4 +56,4 @@ struct WebBackForwardListCounts {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

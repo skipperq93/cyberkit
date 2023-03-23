@@ -33,39 +33,39 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_MEDIA_CENC_DECRYPT          (webkit_media_common_encryption_decrypt_get_type())
-#define WEBKIT_MEDIA_CENC_DECRYPT(obj)          (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, WebKitMediaCommonEncryptionDecrypt))
-#define WEBKIT_MEDIA_CENC_DECRYPT_CLASS(klass)  (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, WebKitMediaCommonEncryptionDecryptClass))
-#define WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, WebKitMediaCommonEncryptionDecryptClass))
+#define WEBKIT_MEDIA_CENC_DECRYPT(obj)          (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, CyberKitMediaCommonEncryptionDecrypt))
+#define WEBKIT_MEDIA_CENC_DECRYPT_CLASS(klass)  (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, CyberKitMediaCommonEncryptionDecryptClass))
+#define WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, CyberKitMediaCommonEncryptionDecryptClass))
 
 #define WEBKIT_IS_MEDIA_CENC_DECRYPT(obj)       (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_MEDIA_CENC_DECRYPT))
 #define WEBKIT_IS_MEDIA_CENC_DECRYPT_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_MEDIA_CENC_DECRYPT))
 
-typedef struct _WebKitMediaCommonEncryptionDecrypt        WebKitMediaCommonEncryptionDecrypt;
-typedef struct _WebKitMediaCommonEncryptionDecryptClass   WebKitMediaCommonEncryptionDecryptClass;
-typedef struct _WebKitMediaCommonEncryptionDecryptPrivate WebKitMediaCommonEncryptionDecryptPrivate;
+typedef struct _CyberKitMediaCommonEncryptionDecrypt        CyberKitMediaCommonEncryptionDecrypt;
+typedef struct _CyberKitMediaCommonEncryptionDecryptClass   CyberKitMediaCommonEncryptionDecryptClass;
+typedef struct _CyberKitMediaCommonEncryptionDecryptPrivate CyberKitMediaCommonEncryptionDecryptPrivate;
 
 GType webkit_media_common_encryption_decrypt_get_type(void);
 
-bool webKitMediaCommonEncryptionDecryptIsFlushing(WebKitMediaCommonEncryptionDecrypt*);
+bool webKitMediaCommonEncryptionDecryptIsFlushing(CyberKitMediaCommonEncryptionDecrypt*);
 
-struct _WebKitMediaCommonEncryptionDecrypt {
+struct _CyberKitMediaCommonEncryptionDecrypt {
     GstBaseTransform parent;
 
-    WebKitMediaCommonEncryptionDecryptPrivate* priv;
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv;
 };
 
-struct _WebKitMediaCommonEncryptionDecryptClass {
+struct _CyberKitMediaCommonEncryptionDecryptClass {
     GstBaseTransformClass parentClass;
 
-    const char* (*protectionSystemId)(WebKitMediaCommonEncryptionDecrypt*);
-    bool (*cdmProxyAttached)(WebKitMediaCommonEncryptionDecrypt*, const RefPtr<CyberCore::CDMProxy>&);
-    bool (*decrypt)(WebKitMediaCommonEncryptionDecrypt*, GstBuffer* ivBuffer, GstBuffer* keyIDBuffer, GstBuffer* buffer, unsigned subsamplesCount, GstBuffer* subsamplesBuffer);
+    const char* (*protectionSystemId)(CyberKitMediaCommonEncryptionDecrypt*);
+    bool (*cdmProxyAttached)(CyberKitMediaCommonEncryptionDecrypt*, const RefPtr<CyberCore::CDMProxy>&);
+    bool (*decrypt)(CyberKitMediaCommonEncryptionDecrypt*, GstBuffer* ivBuffer, GstBuffer* keyIDBuffer, GstBuffer* buffer, unsigned subsamplesCount, GstBuffer* subsamplesBuffer);
 };
 
 G_END_DECLS
 
 // This function returns a C++ type. It's internal to the decryptors so it is safe to move it here to avoid the C++ return warning because of the C only linkage
 // area.
-WeakPtr<CyberCore::CDMProxyDecryptionClient> webKitMediaCommonEncryptionDecryptGetCDMProxyDecryptionClient(WebKitMediaCommonEncryptionDecrypt*);
+WeakPtr<CyberCore::CDMProxyDecryptionClient> webKitMediaCommonEncryptionDecryptGetCDMProxyDecryptionClient(CyberKitMediaCommonEncryptionDecrypt*);
 
 #endif // ENABLE(ENCRYPTED_MEDIA) && USE(GSTREAMER)

@@ -34,7 +34,7 @@
 #include <CyberCore/KeypressCommand.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebKeyboardEvent : public WebEvent {
 public:
@@ -105,4 +105,4 @@ private:
     bool m_isSystemKey { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

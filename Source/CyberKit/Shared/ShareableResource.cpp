@@ -32,7 +32,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/CheckedArithmetic.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ShareableResource::Handle::Handle() = default;
@@ -136,6 +136,6 @@ unsigned ShareableResource::size() const
     return m_size;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SHAREABLE_RESOURCE)

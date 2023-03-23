@@ -35,7 +35,7 @@ OBJC_CLASS PKPaymentRequest;
 OBJC_CLASS WKPaymentAuthorizationDelegate;
 OBJC_CLASS WKPaymentAuthorizationViewControllerDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPaymentCoordinatorProxy;
 
@@ -58,6 +58,6 @@ private:
     RetainPtr<WKPaymentAuthorizationViewControllerDelegate> m_delegate;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(PASSKIT) && ENABLE(APPLE_PAY)

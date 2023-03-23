@@ -42,7 +42,7 @@ WebGLMultiDraw::WebGLMultiDraw(WebGLRenderingContextBase& context)
     context.graphicsContextGL()->ensureExtensionEnabled("GL_ANGLE_multi_draw"_s);
 
     // Spec requires ANGLE_instanced_arrays to be turned on implicitly here.
-    // Enable it both in the backend and in WebKit.
+    // Enable it both in the backend and in CyberKit.
     if (context.isWebGL1())
         context.getExtension("ANGLE_instanced_arrays"_s);
 }

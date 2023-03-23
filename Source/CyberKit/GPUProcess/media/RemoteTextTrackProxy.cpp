@@ -39,7 +39,7 @@
 #include <CyberCore/ISOVTTCue.h>
 #include <CyberCore/NotImplemented.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -191,6 +191,6 @@ void RemoteTextTrackProxy::parseWebVTTCueData(ISOWebVTTCue&& cueData)
     m_connectionToWebProcess->connection().send(Messages::MediaPlayerPrivateRemote::ParseWebVTTCueDataStruct(m_identifier, cueData), m_mediaPlayerIdentifier);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

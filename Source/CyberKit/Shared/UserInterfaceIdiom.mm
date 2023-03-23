@@ -32,7 +32,7 @@
 #import <CyberCore/Device.h>
 #import <wtf/TriState.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static TriState idiomIsSmallScreen = TriState::Indeterminate;
 

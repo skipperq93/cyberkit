@@ -42,8 +42,8 @@ static void testURIForDisplayAffected(Test*, gconstpointer)
 
 void beforeAll()
 {
-    Test::add("WebKitURIUtilities", "uri-for-display-unaffected", testURIForDisplayUnaffected);
-    Test::add("WebKitURIUtilities", "uri-for-display-affected", testURIForDisplayAffected);
+    Test::add("CyberKitURIUtilities", "uri-for-display-unaffected", testURIForDisplayUnaffected);
+    Test::add("CyberKitURIUtilities", "uri-for-display-affected", testURIForDisplayAffected);
 }
 
 void afterAll()

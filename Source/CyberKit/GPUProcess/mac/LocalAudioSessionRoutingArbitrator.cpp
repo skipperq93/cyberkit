@@ -32,7 +32,7 @@
 
 #if ENABLE(ROUTING_ARBITRATION) && HAVE(AVAUDIO_ROUTING_ARBITER)
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

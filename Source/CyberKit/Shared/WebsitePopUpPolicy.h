@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsitePopUpPolicy {
     Default,
@@ -39,12 +39,12 @@ enum class WebsitePopUpPolicy {
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::WebsitePopUpPolicy> {
+template<> struct EnumTraits<CyberKit::WebsitePopUpPolicy> {
     using values = EnumValues<
-        WebKit::WebsitePopUpPolicy,
-        WebKit::WebsitePopUpPolicy::Default,
-        WebKit::WebsitePopUpPolicy::Allow,
-        WebKit::WebsitePopUpPolicy::Block
+        CyberKit::WebsitePopUpPolicy,
+        CyberKit::WebsitePopUpPolicy::Default,
+        CyberKit::WebsitePopUpPolicy::Allow,
+        CyberKit::WebsitePopUpPolicy::Block
     >;
 };
 

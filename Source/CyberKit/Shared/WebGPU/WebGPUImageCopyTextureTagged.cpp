@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUImageCopyTextureTagged.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ImageCopyTextureTagged> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ImageCopyTextureTagged& imageCopyTextureTagged)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::ImageCopyTextureTagged> ConvertFromBackingContext::co
     return { { WTFMove(*base), imageCopyTextureTagged.colorSpace, imageCopyTextureTagged.premultipliedAlpha } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

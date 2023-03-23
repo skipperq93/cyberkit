@@ -29,7 +29,7 @@
 #import "TestWKWebView.h"
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(NSResponderTests, ValidRequestorForReturnTypes)
 {
@@ -43,4 +43,4 @@ TEST(NSResponderTests, ValidRequestorForReturnTypes)
     EXPECT_NULL([webView validRequestorForSendType:nil returnType:(__bridge NSString *)kUTTypeAppleScript]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -24,7 +24,7 @@
 //
 
 INFOPLIST_FILE = cocoa/WebProcessPlugIn/Info.plist;
-PRODUCT_NAME = TestWebKitAPI;
+PRODUCT_NAME = TestCyberKitAPI;
 PRODUCT_BUNDLE_IDENTIFIER = com.apple.$(PRODUCT_NAME:rfc1034identifier);
 EXECUTABLE_SUFFIX = .bundle;
 WRAPPER_EXTENSION = wkbundle;

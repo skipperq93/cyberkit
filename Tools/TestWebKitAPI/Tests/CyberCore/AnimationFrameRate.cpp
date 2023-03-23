@@ -29,7 +29,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 constexpr bool preferredFramesPerSecondTarget60FPSSetting = true;
 constexpr bool preferredFramesPerSecondMatchNominalFrameRateSetting = false;
@@ -248,4 +248,4 @@ TEST(AnimationFrameRate, displayUpdateRelevancy)
     ASSERT_TRUE(frame4.relevantForUpdateFrequency(quarterSpeedFrameRate));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

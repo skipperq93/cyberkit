@@ -89,7 +89,7 @@ ResourceError ResourceError::timeoutError(const URL& failingURL)
 
     // Use the same value as in NSURLError.h
     static constexpr int timeoutError = -1001;
-    static constexpr auto errorDomain = "WebKitNetworkError"_s;
+    static constexpr auto errorDomain = "CyberKitNetworkError"_s;
     return ResourceError(errorDomain, timeoutError, failingURL, "Request timed out"_s, ResourceError::Type::Timeout);
 }
 

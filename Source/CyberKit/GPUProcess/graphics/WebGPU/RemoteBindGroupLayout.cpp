@@ -33,7 +33,7 @@
 #include "WebGPUObjectHeap.h"
 #include <pal/graphics/WebGPU/WebGPUBindGroupLayout.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteBindGroupLayout::RemoteBindGroupLayout(PAL::WebGPU::BindGroupLayout& bindGroupLayout, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(bindGroupLayout)
@@ -56,6 +56,6 @@ void RemoteBindGroupLayout::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

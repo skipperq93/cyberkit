@@ -35,7 +35,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/CDMInstance.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

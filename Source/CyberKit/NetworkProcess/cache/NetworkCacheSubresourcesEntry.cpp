@@ -33,7 +33,7 @@
 #include <CyberCore/RegistrableDomain.h>
 #include <wtf/persistence/PersistentEncoder.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 bool SubresourceInfo::isFirstParty() const
@@ -137,7 +137,7 @@ void SubresourcesEntry::updateSubresourceLoads(const Vector<std::unique_ptr<Subr
     m_subresources = makeSubresourceInfoVector(subresourceLoads, &m_subresources);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 } // namespace NetworkCache
 
 #endif // ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)

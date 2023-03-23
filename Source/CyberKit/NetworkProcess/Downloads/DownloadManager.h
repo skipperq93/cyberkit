@@ -52,7 +52,7 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuthenticationManager;
 class Download;
@@ -118,4 +118,4 @@ private:
     DownloadMap m_downloads;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

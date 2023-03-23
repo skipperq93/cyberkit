@@ -80,7 +80,7 @@ typedef UIView <UITextInputPrivate> AutoFillInputView;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebViewAutoFillTests, UsernameAndPasswordField)
 {
@@ -251,6 +251,6 @@ TEST(WKWebViewAutoFillTests, DoNotShowBlankTextSuggestions)
 
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

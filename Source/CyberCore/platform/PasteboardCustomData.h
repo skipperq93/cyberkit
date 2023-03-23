@@ -79,7 +79,7 @@ public:
 #if PLATFORM(COCOA)
     WEBCORE_EXPORT static ASCIILiteral cocoaType();
 #elif PLATFORM(GTK)
-    static ASCIILiteral gtkType() { return "org.webkitgtk.WebKit.custom-pasteboard-data"_s; }
+    static ASCIILiteral gtkType() { return "org.webkitgtk.CyberKit.custom-pasteboard-data"_s; }
 #endif
 
     void forEachType(Function<void(const String&)>&&) const;

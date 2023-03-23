@@ -31,7 +31,7 @@
 #include "RemoteMediaPlayerProxy.h"
 #include <CyberCore/ResourceError.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -60,6 +60,6 @@ void RemoteMediaResourceLoader::sendH2Ping(const URL& url, CompletionHandler<voi
     m_remoteMediaPlayerProxy->sendH2Ping(url, WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

@@ -156,7 +156,7 @@ void InspectorFrontendAPIDispatcher::evaluateOrQueueExpression(const String& exp
 
     // Sometimes we get here by sending messages for events triggered by DOM mutations earlier in the call stack.
     // If this is the case, then it's not safe to evaluate script synchronously, so do it later. This only affects
-    // WebKit1 and some layout tests that use a single web process for both the inspector and inspected page.
+    // CyberKit1 and some layout tests that use a single web process for both the inspector and inspected page.
     if (!ScriptDisallowedScope::InMainThread::isScriptAllowed())
         suspend(UnsuspendSoon::Yes);
 
@@ -273,4 +273,4 @@ void InspectorFrontendAPIDispatcher::evaluateExpressionForTesting(const String& 
     evaluateOrQueueExpression(expression);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

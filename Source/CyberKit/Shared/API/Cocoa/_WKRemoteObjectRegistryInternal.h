@@ -30,7 +30,7 @@ namespace IPC {
 class MessageSender;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class RemoteObjectInvocation;
 class RemoteObjectRegistry;
 class UserData;
@@ -40,16 +40,16 @@ class WebPageProxy;
 
 @interface _WKRemoteObjectRegistry ()
 
-@property (nonatomic, readonly) WebKit::RemoteObjectRegistry& remoteObjectRegistry;
+@property (nonatomic, readonly) CyberKit::RemoteObjectRegistry& remoteObjectRegistry;
 
-- (id)_initWithWebPage:(NakedRef<WebKit::WebPage>)messageSender;
-- (id)_initWithWebPageProxy:(NakedRef<WebKit::WebPageProxy>)messageSender;
+- (id)_initWithWebPage:(NakedRef<CyberKit::WebPage>)messageSender;
+- (id)_initWithWebPageProxy:(NakedRef<CyberKit::WebPageProxy>)messageSender;
 - (void)_invalidate;
 
 - (void)_sendInvocation:(NSInvocation *)invocation interface:(_WKRemoteObjectInterface *)interface;
-- (void)_invokeMethod:(const WebKit::RemoteObjectInvocation&)invocation;
+- (void)_invokeMethod:(const CyberKit::RemoteObjectInvocation&)invocation;
 
-- (void)_callReplyWithID:(uint64_t)replyID blockInvocation:(const WebKit::UserData&)blockInvocation;
+- (void)_callReplyWithID:(uint64_t)replyID blockInvocation:(const CyberKit::UserData&)blockInvocation;
 - (void)_releaseReplyWithID:(uint64_t)replyID;
 
 @end

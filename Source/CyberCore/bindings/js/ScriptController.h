@@ -194,7 +194,7 @@ private:
 
     // The root object used for objects bound outside the context of a plugin, such
     // as NPAPI plugins. The plugins using these objects prevent a page from being cached so they
-    // are safe to invalidate() when WebKit navigates away from the page that contains them.
+    // are safe to invalidate() when CyberKit navigates away from the page that contains them.
     RefPtr<JSC::Bindings::RootObject> m_bindingRootObject;
     // Unlike m_bindingRootObject these objects are used in pages that are cached, so they are not invalidate()'d.
     // This ensures they are still available when the page is restored.

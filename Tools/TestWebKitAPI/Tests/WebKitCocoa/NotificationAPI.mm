@@ -74,7 +74,7 @@ Function<bool()> _decisionHandler;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class ShouldGrantPermission : bool { No, Yes };
 static void runRequestPermissionTest(ShouldGrantPermission shouldGrantPermission)
@@ -94,7 +94,7 @@ static void runRequestPermissionTest(ShouldGrantPermission shouldGrantPermission
     [receivedMessages removeAllObjects];
 
     [webView evaluateJavaScript:@"Notification.requestPermission((permission) => { webkit.messageHandlers.testHandler.postMessage(permission) });" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
 
     EXPECT_EQ(clientPermissionRequestCount, 1U);
     if (shouldGrantPermission == ShouldGrantPermission::Yes)
@@ -105,7 +105,7 @@ static void runRequestPermissionTest(ShouldGrantPermission shouldGrantPermission
 
     didReceiveMessage = false;
     [webView evaluateJavaScript:@"Notification.requestPermission((permission) => { webkit.messageHandlers.testHandler.postMessage(permission) });" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
 
     // All calls to Notification.requestPermission result in a call to the client to request permission.
     EXPECT_EQ(clientPermissionRequestCount, 2U);
@@ -145,7 +145,7 @@ static void runParallelPermissionRequestsTest(ShouldGrantPermission shouldGrantP
         [webView evaluateJavaScript:@"Notification.requestPermission((permission) => { webkit.messageHandlers.testHandler.postMessage(permission) });" completionHandler:nil];
 
     while ([receivedMessages count] != permissionRequestsCount)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
 
     // We should have called out to the client only once.
     EXPECT_EQ(clientPermissionRequestCount, 1U);
@@ -169,6 +169,6 @@ TEST(Notification, ParallelPermissionRequestsGranted)
     runParallelPermissionRequestsTest(ShouldGrantPermission::Yes);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(NOTIFICATIONS) && !PLATFORM(IOS)

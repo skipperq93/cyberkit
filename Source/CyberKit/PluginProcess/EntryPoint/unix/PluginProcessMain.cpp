@@ -25,7 +25,7 @@
 
 #include "PluginProcessMain.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 int main(int argc, char** argv)
 {

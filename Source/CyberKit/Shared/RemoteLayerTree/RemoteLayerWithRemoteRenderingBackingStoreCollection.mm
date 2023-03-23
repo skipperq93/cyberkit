@@ -35,7 +35,7 @@
 #import "SwapBuffersDisplayRequirement.h"
 #import <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteLayerWithRemoteRenderingBackingStoreCollection::RemoteLayerWithRemoteRenderingBackingStoreCollection(RemoteLayerTreeContext& layerTreeContext)
     : RemoteLayerBackingStoreCollection(layerTreeContext)
@@ -234,4 +234,4 @@ void RemoteLayerWithRemoteRenderingBackingStoreCollection::sendMarkBuffersVolati
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

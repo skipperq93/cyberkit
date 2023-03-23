@@ -32,7 +32,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/MachSendRight.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 std::unique_ptr<LayerHostingContext> LayerHostingContext::createForPort(const MachSendRight& serverPort)
 {
@@ -158,4 +158,4 @@ MachSendRight LayerHostingContext::createFencePort()
     return MachSendRight::adopt([m_context createFencePort]);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

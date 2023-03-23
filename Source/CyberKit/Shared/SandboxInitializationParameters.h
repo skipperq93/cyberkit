@@ -33,7 +33,7 @@
 OBJC_CLASS NSString;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class SandboxInitializationParameters {
     WTF_MAKE_NONCOPYABLE(SandboxInitializationParameters);
@@ -112,6 +112,6 @@ SandboxInitializationParameters::~SandboxInitializationParameters()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // SandboxInitializationParameters_h

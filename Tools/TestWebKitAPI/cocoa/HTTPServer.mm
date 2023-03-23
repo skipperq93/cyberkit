@@ -39,7 +39,7 @@
 #import <wtf/text/StringBuilder.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct HTTPServer::RequestData : public ThreadSafeRefCounted<RequestData, WTF::DestructionThread::MainRunLoop> {
     RequestData(std::initializer_list<std::pair<String, HTTPResponse>> responses)
@@ -776,4 +776,4 @@ Vector<uint8_t> HTTPServer::testPrivateKey()
     return WTFMove(*decodedPrivateKey);
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

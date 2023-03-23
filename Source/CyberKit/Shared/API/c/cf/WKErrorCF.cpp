@@ -31,12 +31,12 @@
 
 WKErrorRef WKErrorCreateWithCFError(CFErrorRef cfError)
 {
-    return WebKit::toAPI(&API::Error::create(CyberCore::ResourceError(cfError)).leakRef());
+    return CyberKit::toAPI(&API::Error::create(CyberCore::ResourceError(cfError)).leakRef());
 }
 
 CFErrorRef WKErrorCopyCFError(CFAllocatorRef alloc, WKErrorRef error)
 {
-    WTF::RetainPtr<CFErrorRef> cfError = WebKit::toImpl(error)->platformError().cfError();
+    WTF::RetainPtr<CFErrorRef> cfError = CyberKit::toImpl(error)->platformError().cfError();
     return cfError.leakRef();
 }
 

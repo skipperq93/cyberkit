@@ -32,7 +32,7 @@
 #include "Test.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static unsigned testNumber = 0;
 static bool done;
@@ -83,7 +83,7 @@ static void runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef
     }
 }
 
-TEST(WebKit, InjectedBundleMakeAllShadowRootOpenTest)
+TEST(CyberKit, InjectedBundleMakeAllShadowRootOpenTest)
 {
     WKRetainPtr<WKPageGroupRef> pageGroup = adoptWK(WKPageGroupCreateWithIdentifier(WKStringCreateWithUTF8CString("InjectedBundleMakeAllShadowRootOpenTestPageGroup")));
 
@@ -104,6 +104,6 @@ TEST(WebKit, InjectedBundleMakeAllShadowRootOpenTest)
     Util::run(&done);
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

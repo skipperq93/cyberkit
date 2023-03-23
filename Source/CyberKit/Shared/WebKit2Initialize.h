@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
-void InitializeWebKit2();
+void InitializeCyberKit2();
 
 };

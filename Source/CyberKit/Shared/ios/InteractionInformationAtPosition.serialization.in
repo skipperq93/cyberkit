@@ -24,7 +24,7 @@ headers: "CyberCoreArgumentCoders.h"
 
 #if PLATFORM(IOS_FAMILY)
 
-[Nested] enum class WebKit::InteractionInformationAtPosition::Selectability : uint8_t {
+[Nested] enum class CyberKit::InteractionInformationAtPosition::Selectability : uint8_t {
     Selectable,
     UnselectableDueToFocusableElement,
     UnselectableDueToLargeElementBounds,
@@ -32,13 +32,13 @@ headers: "CyberCoreArgumentCoders.h"
     UnselectableDueToMediaControls,
 };
 
-struct WebKit::InteractionInformationAtPosition {
-    WebKit::InteractionInformationRequest request;
+struct CyberKit::InteractionInformationAtPosition {
+    CyberKit::InteractionInformationRequest request;
 
     bool canBeValid;
     std::optional<bool> nodeAtPositionHasDoubleClickHandler;
 
-    WebKit::InteractionInformationAtPosition::Selectability selectability;
+    CyberKit::InteractionInformationAtPosition::Selectability selectability;
 
     bool isSelected;
     bool prefersDraggingOverTextSelection;
@@ -74,7 +74,7 @@ struct WebKit::InteractionInformationAtPosition {
 #if PLATFORM(MACCATALYST)
     CyberCore::IntRect caretRect;
 #endif
-    RefPtr<WebKit::ShareableBitmap> image;
+    RefPtr<CyberKit::ShareableBitmap> image;
     String textBefore;
     String textAfter;
 

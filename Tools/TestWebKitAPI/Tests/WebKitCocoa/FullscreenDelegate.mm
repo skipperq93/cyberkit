@@ -73,7 +73,7 @@ static bool receivedDidExitFullscreenMessage;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Fullscreen, Delegate)
 {
@@ -88,25 +88,25 @@ TEST(Fullscreen, Delegate)
     [[window contentView] addSubview:webView.get()];
     [window makeKeyAndOrderFront:nil];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FullscreenDelegate" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FullscreenDelegate" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedLoadedMessage);
+    TestCyberKitAPI::Util::run(&receivedLoadedMessage);
 
     NSEvent *event = [NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:NSMakePoint(5, 5) modifierFlags:0 timestamp:0 windowNumber:window.get().windowNumber context:0 eventNumber:0 clickCount:0 pressure:0];
     [webView mouseDown:event];
 
     ASSERT_FALSE([webView _isInFullscreen]);
-    TestWebKitAPI::Util::run(&receivedWillEnterFullscreenMessage);
-    TestWebKitAPI::Util::run(&receivedDidEnterFullscreenMessage);
+    TestCyberKitAPI::Util::run(&receivedWillEnterFullscreenMessage);
+    TestCyberKitAPI::Util::run(&receivedDidEnterFullscreenMessage);
 
     ASSERT_TRUE([webView _isInFullscreen]);
     [webView mouseDown:event];
-    TestWebKitAPI::Util::run(&receivedWillExitFullscreenMessage);
-    TestWebKitAPI::Util::run(&receivedDidExitFullscreenMessage);
+    TestCyberKitAPI::Util::run(&receivedWillExitFullscreenMessage);
+    TestCyberKitAPI::Util::run(&receivedDidExitFullscreenMessage);
 
     ASSERT_FALSE([webView _isInFullscreen]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

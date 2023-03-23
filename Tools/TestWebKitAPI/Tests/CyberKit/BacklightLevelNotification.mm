@@ -32,7 +32,7 @@
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 
-TEST(WebKit, BacklightLevelNotificationCrash)
+TEST(CyberKit, BacklightLevelNotificationCrash)
 {
     {
         auto poolConfiguration = adoptNS([[_WKProcessPoolConfiguration alloc] init]);

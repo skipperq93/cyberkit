@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// SSReadingList is API, not SPI, but we need to redeclare it. SafariServices depends on WebKit
-// headers, so a WebKit dependency on SafariServices headers forms a dependency cycle.
+// SSReadingList is API, not SPI, but we need to redeclare it. SafariServices depends on CyberKit
+// headers, so a CyberKit dependency on SafariServices headers forms a dependency cycle.
 @interface SSReadingList : NSObject
 + (SSReadingList *)defaultReadingList;
 + (BOOL)supportsURL:(NSURL *)URL;

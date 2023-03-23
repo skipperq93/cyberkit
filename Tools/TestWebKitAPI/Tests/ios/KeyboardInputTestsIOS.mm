@@ -67,7 +67,7 @@
 
 + (UIImage *)barButtonIcon
 {
-    return [UIImage imageNamed:@"TestWebKitAPI.resources/icon.png"];
+    return [UIImage imageNamed:@"TestCyberKitAPI.resources/icon.png"];
 }
 
 + (UIBarButtonItemGroup *)leadingItemsForWebView:(WKWebView *)webView
@@ -239,7 +239,7 @@ static RetainPtr<TestWKWebView> webViewWithAutofocusedInput(const RetainPtr<Test
     [webView _setInputDelegate:inputDelegate.get()];
     [webView synchronouslyLoadHTMLString:@"<meta name='viewport' content='width=device-width, initial-scale=1'><input autofocus>"];
 
-    TestWebKitAPI::Util::run(&doneWaiting);
+    TestCyberKitAPI::Util::run(&doneWaiting);
     doneWaiting = false;
     return webView;
 }
@@ -250,7 +250,7 @@ static std::pair<RetainPtr<TestWKWebView>, RetainPtr<TestInputDelegate>> webView
     return { webViewWithAutofocusedInput(inputDelegate), inputDelegate };
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(KeyboardInputTests, FormNavigationAssistantBarButtonItems)
 {
@@ -368,7 +368,7 @@ TEST(KeyboardInputTests, CanHandleKeyEventInCompletionHandler)
         }];
     }];
 
-    TestWebKitAPI::Util::run(&doneWaiting);
+    TestCyberKitAPI::Util::run(&doneWaiting);
     EXPECT_WK_STREQ("a", [webView stringByEvaluatingJavaScript:@"document.querySelector('input').value"]);
 }
 
@@ -389,7 +389,7 @@ TEST(KeyboardInputTests, ResigningFirstResponderCancelsKeyEvents)
     }];
 
     EXPECT_TRUE([webView resignFirstResponder]);
-    TestWebKitAPI::Util::run(&doneWaiting);
+    TestCyberKitAPI::Util::run(&doneWaiting);
 }
 
 TEST(KeyboardInputTests, WaitForKeyEventHandlerInFirstResponder)
@@ -409,7 +409,7 @@ TEST(KeyboardInputTests, WaitForKeyEventHandlerInFirstResponder)
         doneWaiting = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneWaiting);
+    TestCyberKitAPI::Util::run(&doneWaiting);
 }
 
 TEST(KeyboardInputTests, HandleKeyEventsInCrashedOrUninitializedWebProcess)
@@ -427,7 +427,7 @@ TEST(KeyboardInputTests, HandleKeyEventsInCrashedOrUninitializedWebProcess)
             doneWaiting = true;
         }];
         [webView _killWebContentProcessAndResetState];
-        TestWebKitAPI::Util::run(&doneWaiting);
+        TestCyberKitAPI::Util::run(&doneWaiting);
     }
     {
         auto keyUpEvent = adoptNS([[WebEvent alloc] initWithKeyEventType:WebEventKeyUp timeStamp:CFAbsoluteTimeGetCurrent() characters:@"a" charactersIgnoringModifiers:@"a" modifiers:0 isRepeating:NO withFlags:0 withInputManagerHint:nil keyCode:65 isTabKey:NO]);
@@ -438,7 +438,7 @@ TEST(KeyboardInputTests, HandleKeyEventsInCrashedOrUninitializedWebProcess)
             EXPECT_FALSE(handled);
             doneWaiting = true;
         }];
-        TestWebKitAPI::Util::run(&doneWaiting);
+        TestCyberKitAPI::Util::run(&doneWaiting);
     }
 }
 
@@ -472,7 +472,7 @@ TEST(KeyboardInputTests, HandleKeyEventsWhileSwappingWebProcess)
     });
 
     [navigationDelegate waitForDidFinishNavigation];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(KeyboardInputTests, CaretSelectionRectAfterRestoringFirstResponderWithRetainActiveFocusedState)
@@ -860,7 +860,7 @@ TEST(KeyboardInputTests, InsertTextSimulatingKeyboardInput)
     [inputDelegate setFocusStartsInputSessionPolicyHandler:[&](WKWebView *, id <_WKFocusedElementInfo>) { return _WKFocusStartsInputSessionPolicyAllow; }];
     [webView _setInputDelegate:inputDelegate.get()];
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"insert-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"insert-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView synchronouslyLoadRequest:[NSURLRequest requestWithURL:testURL.get()]];
     [webView evaluateJavaScriptAndWaitForInputSessionToChange:@"document.body.focus()"];
     [[webView textInputContentView] insertText:@"hello"];
@@ -876,7 +876,7 @@ TEST(KeyboardInputTests, InsertDictationAlternativesSimulatingKeyboardInput)
     [inputDelegate setFocusStartsInputSessionPolicyHandler:[&](WKWebView *, id <_WKFocusedElementInfo>) { return _WKFocusStartsInputSessionPolicyAllow; }];
     [webView _setInputDelegate:inputDelegate.get()];
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"insert-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"insert-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView synchronouslyLoadRequest:[NSURLRequest requestWithURL:testURL.get()]];
     [webView evaluateJavaScriptAndWaitForInputSessionToChange:@"document.body.focus()"];
     [[webView textInputContentView] insertText:@"hello" alternatives:@[ @"helo" ] style:UITextAlternativeStyleNone];
@@ -912,7 +912,7 @@ TEST(KeyboardInputTests, DoNotRegisterActionsInOverriddenUndoManager)
         doneWaiting = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneWaiting);
+    TestCyberKitAPI::Util::run(&doneWaiting);
     EXPECT_TRUE([contentView.undoManagerForWebView canUndo]);
     EXPECT_FALSE([overrideUndoManager canUndo]);
 }
@@ -984,7 +984,7 @@ TEST(KeyboardInputTests, InputSessionWhenEvaluatingJavaScript)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [webView waitForNextPresentationUpdate];
     EXPECT_FALSE(willStartInputSession);
     EXPECT_FALSE(didStartInputSession);
@@ -994,7 +994,7 @@ TEST(KeyboardInputTests, InputSessionWhenEvaluatingJavaScript)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [webView waitForNextPresentationUpdate];
     EXPECT_TRUE(willStartInputSession);
     EXPECT_TRUE(didStartInputSession);
@@ -1009,12 +1009,12 @@ TEST(KeyboardInputTests, InputSessionWhenEvaluatingJavaScript)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [webView waitForNextPresentationUpdate];
     EXPECT_TRUE(willStartInputSession);
     EXPECT_TRUE(didStartInputSession);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

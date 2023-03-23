@@ -300,7 +300,7 @@ void DrawGlyphsRecorder::recordDrawGlyphs(CGRenderingStateRef, CGGStateRef gstat
     updateCTM(*CGGStateGetCTM(gstate));
 
     // We want the replayer's CTM and text matrix to match the current CTM and text matrix.
-    // The current text matrix is a concatenation of whatever WebKit sets it to and whatever
+    // The current text matrix is a concatenation of whatever CyberKit sets it to and whatever
     // Core Text appends to it. So, we have
     // CTM * m_originalTextMatrix * Core Text's text matrix.
     // However, CGContextGetTextMatrix() just tells us what the whole text matrix is, so
@@ -354,10 +354,10 @@ void DrawGlyphsRecorder::recordDrawImage(CGRenderingStateRef, CGGStateRef gstate
     updateCTM(*CGGStateGetCTM(gstate));
     updateShadow(CGGStateGetStyle(gstate));
 
-    // Core Graphics assumes a "y up" coordinate system, but in WebKit, we use a "y-down" coordinate system.
-    // This means that WebKit's drawing routines (GraphicsContext::drawImage()) intentionally draw images upside-down from Core Graphics's point of view.
+    // Core Graphics assumes a "y up" coordinate system, but in CyberKit, we use a "y-down" coordinate system.
+    // This means that CyberKit's drawing routines (GraphicsContext::drawImage()) intentionally draw images upside-down from Core Graphics's point of view.
     // (There's a y-flip inside the implementation of GraphicsContext::drawImage().)
-    // The rect has the right bounds, but we need to transform from CG's coordinate system to WebKit's by performing our own y-flip so images are drawn the right-side-up.
+    // The rect has the right bounds, but we need to transform from CG's coordinate system to CyberKit's by performing our own y-flip so images are drawn the right-side-up.
     // We do this at the boundary between the two APIs, which is right here.
     m_owner.translate(0, rect.size.height + 2 * rect.origin.y);
     m_owner.scale(FloatSize(1, -1));

@@ -105,10 +105,10 @@ static constexpr OptionSet<ScrollCoordinationRole> allScrollCoordinationRoles()
 }
 
 #if PLATFORM(IOS_FAMILY)
-class LegacyWebKitScrollingLayerCoordinator {
+class LegacyCyberKitScrollingLayerCoordinator {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    LegacyWebKitScrollingLayerCoordinator(ChromeClient& chromeClient, bool coordinateViewportConstrainedLayers)
+    LegacyCyberKitScrollingLayerCoordinator(ChromeClient& chromeClient, bool coordinateViewportConstrainedLayers)
         : m_chromeClient(chromeClient)
         , m_coordinateViewportConstrainedLayers(coordinateViewportConstrainedLayers)
     {
@@ -149,7 +149,7 @@ private:
 
 class RenderLayerCompositor final : public GraphicsLayerClient, public GraphicsLayerUpdaterClient {
     WTF_MAKE_FAST_ALLOCATED;
-    friend class LegacyWebKitScrollingLayerCoordinator;
+    friend class LegacyCyberKitScrollingLayerCoordinator;
 public:
     explicit RenderLayerCompositor(RenderView&);
     virtual ~RenderLayerCompositor();
@@ -184,7 +184,7 @@ public:
     // Called when the GraphicsLayer for the given RenderLayer has flushed changes inside of flushPendingLayerChanges().
     void didChangePlatformLayerForLayer(RenderLayer&, const GraphicsLayer*);
 
-    // Called when something outside WebKit affects the visible rect (e.g. delegated scrolling). Might schedule a layer flush.
+    // Called when something outside CyberKit affects the visible rect (e.g. delegated scrolling). Might schedule a layer flush.
     void didChangeVisibleRect();
     
     // Rebuild the tree of compositing layers
@@ -638,7 +638,7 @@ private:
 
     HashMap<ScrollingNodeID, WeakPtr<RenderLayer>> m_scrollingNodeToLayerMap;
 #if PLATFORM(IOS_FAMILY)
-    std::unique_ptr<LegacyWebKitScrollingLayerCoordinator> m_legacyScrollingLayerCoordinator;
+    std::unique_ptr<LegacyCyberKitScrollingLayerCoordinator> m_legacyScrollingLayerCoordinator;
 #endif
 };
 

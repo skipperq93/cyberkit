@@ -44,7 +44,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DOMNodeCompareDocumentPosition)
 {
@@ -62,4 +62,4 @@ TEST(CyberKitLegacy, DOMNodeCompareDocumentPosition)
     
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

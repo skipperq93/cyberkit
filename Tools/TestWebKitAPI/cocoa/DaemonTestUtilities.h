@@ -33,7 +33,7 @@
 @class NSDictionary;
 @class NSURL;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 RetainPtr<NSURL> currentExecutableDirectory();
 
@@ -43,7 +43,7 @@ BOOL restartService(NSString *serviceName, NSString *daemonExecutableName);
 
 void registerPlistWithLaunchD(NSDictionary<NSString *, id> *plist, NSURL *tempDir);
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC) || PLATFORM(IOS)
 

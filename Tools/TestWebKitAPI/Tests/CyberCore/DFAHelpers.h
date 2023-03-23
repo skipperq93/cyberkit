@@ -34,7 +34,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static unsigned countLiveNodes(const ContentExtensions::DFA& dfa)
 {
@@ -68,6 +68,6 @@ static ContentExtensions::DFA buildDFAFromPatterns(const Vector<ASCIILiteral>& p
     return *ContentExtensions::NFAToDFA::convert(WTFMove(nfas.first()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

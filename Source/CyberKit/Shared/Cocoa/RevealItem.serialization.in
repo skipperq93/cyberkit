@@ -24,7 +24,7 @@ headers: <pal/cocoa/RevealSoftLink.h>
 
 #if ENABLE(REVEAL)
 
-class WebKit::RevealItem {
+class CyberKit::RevealItem {
     [SecureCodingAllowed=[PAL::getRVItemClass()]] RetainPtr<RVItem> m_item;
 };
 

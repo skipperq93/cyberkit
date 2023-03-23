@@ -31,7 +31,7 @@
 #import <CyberCore/ColorMac.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if PLATFORM(MAC)
 CGRect toCGRect(NSRect rect) { return NSRectToCGRect(rect); }
@@ -175,6 +175,6 @@ TestPDFPage* TestPDFDocument::page(size_t index)
     return m_pages[index].get();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // HAVE(PDFKIT)

@@ -32,7 +32,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // Use eager initialization for the WeakPtrFactory since we construct WeakPtrs from a non-main thread.
 class WebSQLiteDatabaseTracker final : public CyberCore::SQLiteDatabaseTrackerClient, public CanMakeWeakPtr<WebSQLiteDatabaseTracker, WeakPtrFactoryInitialization::Eager> {
@@ -59,4 +59,4 @@ private:
     bool m_isSuspended WTF_GUARDED_BY_LOCK(m_lock) { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

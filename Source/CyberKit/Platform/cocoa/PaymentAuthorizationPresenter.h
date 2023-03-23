@@ -50,7 +50,7 @@ struct ApplePayShippingMethod;
 struct ApplePayShippingMethodUpdate;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PaymentAuthorizationPresenter : public CanMakeWeakPtr<PaymentAuthorizationPresenter> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -108,6 +108,6 @@ private:
     Client& m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(PASSKIT) && ENABLE(APPLE_PAY)

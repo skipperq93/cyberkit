@@ -32,7 +32,7 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ShaderModuleDescriptor : public ObjectDescriptorBase {
     String code;
@@ -40,6 +40,6 @@ struct ShaderModuleDescriptor : public ObjectDescriptorBase {
     Vector<KeyValuePair<String, ShaderModuleCompilationHint>> hints;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

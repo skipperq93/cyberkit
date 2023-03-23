@@ -44,7 +44,7 @@
 
 #import "TCCSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(MEDIA_STREAM)
 bool GPUConnectionToWebProcess::setCaptureAttributionString()
@@ -102,6 +102,6 @@ void GPUConnectionToWebProcess::setTCCIdentity()
 #endif // !PLATFORM(MACCATALYST)
 }
 #endif // ENABLE(APP_PRIVACY_REPORT)
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

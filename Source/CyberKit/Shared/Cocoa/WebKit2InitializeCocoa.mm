@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebKit2Initialize.h"
+#import "CyberKit2Initialize.h"
 
 #import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/CommonAtomStrings.h>
@@ -40,15 +40,15 @@
 #import <CyberCore/CyberCoreThreadSystemInterface.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static std::once_flag flag;
 
-enum class WebKitProfileTag { };
+enum class CyberKitProfileTag { };
 
 static void runInitializationCode(void* = nullptr)
 {
-    RELEASE_ASSERT_WITH_MESSAGE([NSThread isMainThread], "InitializeWebKit2 should be called on the main thread");
+    RELEASE_ASSERT_WITH_MESSAGE([NSThread isMainThread], "InitializeCyberKit2 should be called on the main thread");
 
     CyberCore::initializeCommonAtomStrings();
 #if PLATFORM(IOS_FAMILY)
@@ -62,15 +62,15 @@ static void runInitializationCode(void* = nullptr)
 
     CyberCore::populateJITOperations();
 
-    WTF::registerProfileGenerationCallback<WebKitProfileTag>("WebKit");
+    WTF::registerProfileGenerationCallback<CyberKitProfileTag>("CyberKit");
 }
 
-void InitializeWebKit2()
+void InitializeCyberKit2()
 {
     // Make sure the initialization code is run only once and on the main thread since things like initializeMainThread()
     // are only safe to call on the main thread.
     std::call_once(flag, [] {
-        if ([NSThread isMainThread] || linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::InitializeWebKit2MainThreadAssertion))
+        if ([NSThread isMainThread] || linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::InitializeCyberKit2MainThreadAssertion))
             runInitializationCode();
         else
             WorkQueue::main().dispatchSync([] { runInitializationCode(); });

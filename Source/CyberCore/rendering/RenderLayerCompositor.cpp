@@ -398,7 +398,7 @@ RenderLayerCompositor::RenderLayerCompositor(RenderView& renderView)
 {
 #if PLATFORM(IOS_FAMILY)
     if (m_renderView.frameView().platformWidget())
-        m_legacyScrollingLayerCoordinator = makeUnique<LegacyWebKitScrollingLayerCoordinator>(page().chrome().client(), isMainFrameCompositor());
+        m_legacyScrollingLayerCoordinator = makeUnique<LegacyCyberKitScrollingLayerCoordinator>(page().chrome().client(), isMainFrameCompositor());
 #endif
 }
 
@@ -3731,7 +3731,7 @@ bool RenderLayerCompositor::requiresScrollLayer(RootLayerAttachment attachment) 
         return false;
 
     // We need to handle our own scrolling if we're:
-    return !m_renderView.frameView().platformWidget() // viewless (i.e. non-Mac, or Mac in WebKit2)
+    return !m_renderView.frameView().platformWidget() // viewless (i.e. non-Mac, or Mac in CyberKit2)
         || attachment == RootLayerAttachedViaEnclosingFrame; // a composited frame on Mac
 }
 
@@ -5243,7 +5243,7 @@ TextStream& operator<<(TextStream& ts, CompositingReason compositingReason)
 typedef HashMap<PlatformLayer*, std::unique_ptr<ViewportConstraints>> LayerMap;
 typedef HashMap<PlatformLayer*, PlatformLayer*> StickyContainerMap;
 
-void LegacyWebKitScrollingLayerCoordinator::registerAllViewportConstrainedLayers(RenderLayerCompositor& compositor)
+void LegacyCyberKitScrollingLayerCoordinator::registerAllViewportConstrainedLayers(RenderLayerCompositor& compositor)
 {
     if (!m_coordinateViewportConstrainedLayers)
         return;
@@ -5274,7 +5274,7 @@ void LegacyWebKitScrollingLayerCoordinator::registerAllViewportConstrainedLayers
     m_chromeClient.updateViewportConstrainedLayers(layerMap, stickyContainerMap);
 }
 
-void LegacyWebKitScrollingLayerCoordinator::unregisterAllViewportConstrainedLayers()
+void LegacyCyberKitScrollingLayerCoordinator::unregisterAllViewportConstrainedLayers()
 {
     if (!m_coordinateViewportConstrainedLayers)
         return;
@@ -5283,7 +5283,7 @@ void LegacyWebKitScrollingLayerCoordinator::unregisterAllViewportConstrainedLaye
     m_chromeClient.updateViewportConstrainedLayers(layerMap, { });
 }
 
-void LegacyWebKitScrollingLayerCoordinator::updateScrollingLayer(RenderLayer& layer)
+void LegacyCyberKitScrollingLayerCoordinator::updateScrollingLayer(RenderLayer& layer)
 {
     auto* backing = layer.backing();
     ASSERT(backing);
@@ -5298,13 +5298,13 @@ void LegacyWebKitScrollingLayerCoordinator::updateScrollingLayer(RenderLayer& la
         scrollableArea->reachableTotalContentsSize(), allowHorizontalScrollbar, allowVerticalScrollbar);
 }
 
-void LegacyWebKitScrollingLayerCoordinator::registerAllScrollingLayers()
+void LegacyCyberKitScrollingLayerCoordinator::registerAllScrollingLayers()
 {
     for (auto* layer : m_scrollingLayers)
         updateScrollingLayer(*layer);
 }
 
-void LegacyWebKitScrollingLayerCoordinator::unregisterAllScrollingLayers()
+void LegacyCyberKitScrollingLayerCoordinator::unregisterAllScrollingLayers()
 {
     for (auto* layer : m_scrollingLayers) {
         auto* backing = layer->backing();
@@ -5313,12 +5313,12 @@ void LegacyWebKitScrollingLayerCoordinator::unregisterAllScrollingLayers()
     }
 }
 
-void LegacyWebKitScrollingLayerCoordinator::addScrollingLayer(RenderLayer& layer)
+void LegacyCyberKitScrollingLayerCoordinator::addScrollingLayer(RenderLayer& layer)
 {
     m_scrollingLayers.add(&layer);
 }
 
-void LegacyWebKitScrollingLayerCoordinator::removeScrollingLayer(RenderLayer& layer, RenderLayerBacking& backing)
+void LegacyCyberKitScrollingLayerCoordinator::removeScrollingLayer(RenderLayer& layer, RenderLayerBacking& backing)
 {
     if (m_scrollingLayers.remove(&layer)) {
         auto* scrollContainerLayer = backing.scrollContainerLayer()->platformLayer();
@@ -5327,7 +5327,7 @@ void LegacyWebKitScrollingLayerCoordinator::removeScrollingLayer(RenderLayer& la
     }
 }
 
-void LegacyWebKitScrollingLayerCoordinator::removeLayer(RenderLayer& layer)
+void LegacyCyberKitScrollingLayerCoordinator::removeLayer(RenderLayer& layer)
 {
     removeScrollingLayer(layer, *layer.backing());
 
@@ -5335,12 +5335,12 @@ void LegacyWebKitScrollingLayerCoordinator::removeLayer(RenderLayer& layer)
     m_viewportConstrainedLayers.remove(&layer);
 }
 
-void LegacyWebKitScrollingLayerCoordinator::addViewportConstrainedLayer(RenderLayer& layer)
+void LegacyCyberKitScrollingLayerCoordinator::addViewportConstrainedLayer(RenderLayer& layer)
 {
     m_viewportConstrainedLayers.add(&layer);
 }
 
-void LegacyWebKitScrollingLayerCoordinator::removeViewportConstrainedLayer(RenderLayer& layer)
+void LegacyCyberKitScrollingLayerCoordinator::removeViewportConstrainedLayer(RenderLayer& layer)
 {
     m_viewportConstrainedLayers.remove(&layer);
 }

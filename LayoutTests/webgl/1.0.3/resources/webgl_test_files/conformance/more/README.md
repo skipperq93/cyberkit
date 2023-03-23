@@ -43,7 +43,7 @@ For more information on WebGL:
 Developer links:
 
   * <a href="https://bugzilla.mozilla.org/buglist.cgi?quicksearch=webgl">WebGL on Mozilla Bugzilla</a>
-  * <a href="https://bugzilla.webkit.org/buglist.cgi?quicksearch=webgl">WebGL on WebKit Bugzilla</a>
+  * <a href="https://bugzilla.webkit.org/buglist.cgi?quicksearch=webgl">WebGL on CyberKit Bugzilla</a>
   * <a href="http://code.google.com/p/chromium/issues/list?q=label:3D-WebGL">WebGL on Chromium Bugzilla</a>
 
 What's the stuff in apigen?

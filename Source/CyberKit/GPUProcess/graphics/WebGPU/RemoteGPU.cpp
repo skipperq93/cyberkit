@@ -46,7 +46,7 @@
 #import <pal/graphics/WebGPU/Impl/WebGPUCreateImpl.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteGPU::RemoteGPU(WebGPUIdentifier identifier, GPUConnectionToWebProcess& gpuConnectionToWebProcess, RemoteRenderingBackend& renderingBackend, IPC::StreamServerConnection::Handle&& connectionHandle)
     : m_gpuConnectionToWebProcess(gpuConnectionToWebProcess)
@@ -196,6 +196,6 @@ void RemoteGPU::createCompositorIntegration(WebGPUIdentifier identifier)
     m_objectHeap->addObject(identifier, remoteCompositorIntegration);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

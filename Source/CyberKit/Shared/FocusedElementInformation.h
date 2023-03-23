@@ -40,7 +40,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class InputType {
     None,
@@ -146,33 +146,33 @@ struct FocusedElementInformation {
 };
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::InputType> {
+template<> struct EnumTraits<CyberKit::InputType> {
     using values = EnumValues<
-        WebKit::InputType,
-        WebKit::InputType::None,
-        WebKit::InputType::ContentEditable,
-        WebKit::InputType::Text,
-        WebKit::InputType::Password,
-        WebKit::InputType::TextArea,
-        WebKit::InputType::Search,
-        WebKit::InputType::Email,
-        WebKit::InputType::URL,
-        WebKit::InputType::Phone,
-        WebKit::InputType::Number,
-        WebKit::InputType::NumberPad,
-        WebKit::InputType::Date,
-        WebKit::InputType::DateTimeLocal,
-        WebKit::InputType::Month,
-        WebKit::InputType::Week,
-        WebKit::InputType::Time,
-        WebKit::InputType::Select,
-        WebKit::InputType::Drawing
+        CyberKit::InputType,
+        CyberKit::InputType::None,
+        CyberKit::InputType::ContentEditable,
+        CyberKit::InputType::Text,
+        CyberKit::InputType::Password,
+        CyberKit::InputType::TextArea,
+        CyberKit::InputType::Search,
+        CyberKit::InputType::Email,
+        CyberKit::InputType::URL,
+        CyberKit::InputType::Phone,
+        CyberKit::InputType::Number,
+        CyberKit::InputType::NumberPad,
+        CyberKit::InputType::Date,
+        CyberKit::InputType::DateTimeLocal,
+        CyberKit::InputType::Month,
+        CyberKit::InputType::Week,
+        CyberKit::InputType::Time,
+        CyberKit::InputType::Select,
+        CyberKit::InputType::Drawing
 #if ENABLE(INPUT_TYPE_COLOR)
-        , WebKit::InputType::Color
+        , CyberKit::InputType::Color
 #endif
     >;
 };

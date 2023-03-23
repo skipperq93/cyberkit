@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RemoteSourceBufferIdentifierType { };
 using RemoteSourceBufferIdentifier = ObjectIdentifier<RemoteSourceBufferIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

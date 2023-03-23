@@ -115,7 +115,7 @@ private
         PerformanceTests
         Source
         Tools
-        WebKitLibraries
+        CyberKitLibraries
         Websites
     ]
 

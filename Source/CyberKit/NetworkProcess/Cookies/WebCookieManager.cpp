@@ -39,7 +39,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 const char* WebCookieManager::supplementName()
@@ -164,4 +164,4 @@ void WebCookieManager::getHTTPCookieAcceptPolicy(PAL::SessionID sessionID, Compl
         completionHandler(HTTPCookieAcceptPolicy::Never);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

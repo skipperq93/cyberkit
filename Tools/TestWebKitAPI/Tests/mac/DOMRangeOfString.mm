@@ -44,7 +44,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DOMRangeOfString)
 {
@@ -52,7 +52,7 @@ TEST(CyberKitLegacy, DOMRangeOfString)
     RetainPtr<DOMRangeOfStringFrameLoadDelegate> frameLoadDelegate = adoptNS([DOMRangeOfStringFrameLoadDelegate new]);
 
     webView.get().frameLoadDelegate = frameLoadDelegate.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"DOMRangeOfString" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"DOMRangeOfString" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
 
@@ -89,4 +89,4 @@ TEST(CyberKitLegacy, DOMRangeOfString)
     EXPECT_EQ(6, resultRange.startOffset);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

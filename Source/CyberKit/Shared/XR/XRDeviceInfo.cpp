@@ -30,7 +30,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void XRDeviceInfo::encode(IPC::Encoder& encoder) const
 {

@@ -47,7 +47,7 @@ JSRetainPtr<JSStringRef> TestRunner::inspectorTestStubURL()
         wchar_t stubPath[MAX_PATH];
         wcsncpy(stubPath, drive, MAX_PATH);
         wcsncat(stubPath, dir, MAX_PATH - wcslen(stubPath));
-        wcsncat(stubPath, L"\\WebKit.resources\\WebInspectorUI\\TestStub.html", MAX_PATH - wcslen(stubPath));
+        wcsncat(stubPath, L"\\CyberKit.resources\\WebInspectorUI\\TestStub.html", MAX_PATH - wcslen(stubPath));
 
         wchar_t fileURI[INTERNET_MAX_PATH_LENGTH];
         DWORD fileURILength = INTERNET_MAX_PATH_LENGTH;

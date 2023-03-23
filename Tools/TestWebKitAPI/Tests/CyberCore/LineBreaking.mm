@@ -75,7 +75,7 @@ static void testAFewStrings(Vector<Vector<UInt16>> testStrings)
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"LineBreaking" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"LineBreaking" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     [webView _test_waitForDidFinishNavigation];
 
     for (auto& testCodePoints : testStrings) {
@@ -89,7 +89,7 @@ static void testAFewStrings(Vector<Vector<UInt16>> testStrings)
                         webkitLocations.append(floor([v floatValue] + 0.5));
                     didEvaluateJavaScript = true;
                 }];
-                TestWebKitAPI::Util::run(&didEvaluateJavaScript);
+                TestCyberKitAPI::Util::run(&didEvaluateJavaScript);
 
                 const auto& icuLocations = breakingLocationsFromICU(testCodePoints, locale, lineBreakValue);
                 EXPECT_EQ(icuLocations.size(), webkitLocations.size());
@@ -103,7 +103,7 @@ static void testAFewStrings(Vector<Vector<UInt16>> testStrings)
 }
 
 // Split up the tests because they take too long otherwise and people start thinking their computer is hung.
-TEST(WebKit, LineBreaking1)
+TEST(CyberKit, LineBreaking1)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x0024, 0x31, 0x32, 0x33},
@@ -115,7 +115,7 @@ TEST(WebKit, LineBreaking1)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking2)
+TEST(CyberKit, LineBreaking2)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x2025, 0x2025},
@@ -127,7 +127,7 @@ TEST(WebKit, LineBreaking2)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking3)
+TEST(CyberKit, LineBreaking3)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x0025},
@@ -139,7 +139,7 @@ TEST(WebKit, LineBreaking3)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking4)
+TEST(CyberKit, LineBreaking4)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x00b0},
@@ -151,7 +151,7 @@ TEST(WebKit, LineBreaking4)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking5)
+TEST(CyberKit, LineBreaking5)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x2033},
@@ -163,7 +163,7 @@ TEST(WebKit, LineBreaking5)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking6)
+TEST(CyberKit, LineBreaking6)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x2103},
@@ -175,7 +175,7 @@ TEST(WebKit, LineBreaking6)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking7)
+TEST(CyberKit, LineBreaking7)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x3043},
@@ -187,7 +187,7 @@ TEST(WebKit, LineBreaking7)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking8)
+TEST(CyberKit, LineBreaking8)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x3083},
@@ -199,7 +199,7 @@ TEST(WebKit, LineBreaking8)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking9)
+TEST(CyberKit, LineBreaking9)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x3096},
@@ -211,7 +211,7 @@ TEST(WebKit, LineBreaking9)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking10)
+TEST(CyberKit, LineBreaking10)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x30a3},
@@ -223,7 +223,7 @@ TEST(WebKit, LineBreaking10)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking11)
+TEST(CyberKit, LineBreaking11)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x30e3},
@@ -235,7 +235,7 @@ TEST(WebKit, LineBreaking11)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking12)
+TEST(CyberKit, LineBreaking12)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x30f6},
@@ -247,7 +247,7 @@ TEST(WebKit, LineBreaking12)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking13)
+TEST(CyberKit, LineBreaking13)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x31f0},
@@ -259,7 +259,7 @@ TEST(WebKit, LineBreaking13)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking14)
+TEST(CyberKit, LineBreaking14)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x31f5},
@@ -271,7 +271,7 @@ TEST(WebKit, LineBreaking14)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking15)
+TEST(CyberKit, LineBreaking15)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x31fa},
@@ -283,7 +283,7 @@ TEST(WebKit, LineBreaking15)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking16)
+TEST(CyberKit, LineBreaking16)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x31ff},
@@ -295,7 +295,7 @@ TEST(WebKit, LineBreaking16)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking17)
+TEST(CyberKit, LineBreaking17)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0xff1f},
@@ -307,7 +307,7 @@ TEST(WebKit, LineBreaking17)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking18)
+TEST(CyberKit, LineBreaking18)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0xff6a},
@@ -319,7 +319,7 @@ TEST(WebKit, LineBreaking18)
     testAFewStrings(testStrings);
 }
 
-TEST(WebKit, LineBreaking19)
+TEST(CyberKit, LineBreaking19)
 {
     Vector<Vector<UInt16>> testStrings = {
         {0x4e00, 0x4e8c, 0x4e09, 0x56db, 0xff6f},

@@ -82,8 +82,8 @@
 
 namespace CyberCore {
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/RenderBlockAdditions.h>)
-#include <WebKitAdditions/RenderBlockAdditions.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/RenderBlockAdditions.h>)
+#include <CyberKitAdditions/RenderBlockAdditions.h>
 #else
 static bool renderCaretInsideContentsClip()
 {

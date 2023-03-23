@@ -37,7 +37,7 @@
 #include <CyberCore/HTMLMenuElement.h>
 #include <CyberCore/HTMLNames.h>
 
-namespace WebKit {
+namespace CyberKit {
     
 TouchBarMenuData::TouchBarMenuData(const CyberCore::HTMLMenuElement& element)
 {

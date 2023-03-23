@@ -35,7 +35,7 @@
 #include <wtf/persistence/PersistentEncoder.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr auto cachesListFileName = "cacheslist"_s;
 static constexpr auto sizeFileName = "estimatedsize"_s;
@@ -497,4 +497,4 @@ String CacheStorageManager::representationString()
     return builder.toString();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

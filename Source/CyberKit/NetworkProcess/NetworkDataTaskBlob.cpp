@@ -50,7 +50,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const unsigned bufferSize = 512 * 1024;
@@ -66,7 +66,7 @@ static constexpr auto httpNotAllowedText = "Not Allowed"_s;
 static constexpr auto httpRequestedRangeNotSatisfiableText = "Requested Range Not Satisfiable"_s;
 static constexpr auto httpInternalErrorText = "Internal Server Error"_s;
 
-static constexpr auto webKitBlobResourceDomain = "WebKitBlobResource"_s;
+static constexpr auto webKitBlobResourceDomain = "CyberKitBlobResource"_s;
 
 NetworkDataTaskBlob::NetworkDataTaskBlob(NetworkSession& session, BlobRegistryImpl& blobRegistry, NetworkDataTaskClient& client, const ResourceRequest& request, ContentSniffingPolicy shouldContentSniff, const Vector<RefPtr<CyberCore::BlobDataFileReference>>& fileReferences)
     : NetworkDataTask(session, client, request, StoredCredentialsPolicy::DoNotUse, false, false)
@@ -580,4 +580,4 @@ void NetworkDataTaskBlob::didFinish()
     m_client->didCompleteWithError({ });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

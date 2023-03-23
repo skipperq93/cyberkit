@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
     
 struct FontInfo {
     void encode(IPC::Encoder&) const;
@@ -46,6 +46,6 @@ struct FontInfo {
 #endif
 };
     
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // FontInfo_h

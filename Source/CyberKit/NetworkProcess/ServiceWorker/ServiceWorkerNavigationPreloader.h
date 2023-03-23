@@ -39,7 +39,7 @@ class NetworkLoadMetrics;
 class FragmentedSharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DownloadManager;
 class NetworkLoad;
@@ -105,7 +105,7 @@ private:
     MonotonicTime m_startTime;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)
 

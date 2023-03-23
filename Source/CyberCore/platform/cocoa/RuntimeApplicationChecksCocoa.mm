@@ -59,8 +59,8 @@ static String& bundleIdentifier()
 
 String applicationBundleIdentifier()
 {
-    // The override only gets set in WebKitTestRunner. If unset, we use the bundle identifier set
-    // in WebKit2's WebProcess and NetworkProcess. If that is also unset, we use the main bundle identifier.
+    // The override only gets set in CyberKitTestRunner. If unset, we use the bundle identifier set
+    // in CyberKit2's WebProcess and NetworkProcess. If that is also unset, we use the main bundle identifier.
     auto identifier = bundleIdentifierOverride();
     ASSERT(identifier.isNull() || RunLoop::isMain());
     if (identifier.isNull())
@@ -120,7 +120,7 @@ bool CocoaApplication::isIBooks()
 
 bool CocoaApplication::isWebkitTestRunner()
 {
-    static bool isWebkitTestRunner = applicationBundleIsEqualTo("com.apple.WebKit.WebKitTestRunner"_s);
+    static bool isWebkitTestRunner = applicationBundleIsEqualTo("com.apple.CyberKit.CyberKitTestRunner"_s);
     return isWebkitTestRunner;
 }
 

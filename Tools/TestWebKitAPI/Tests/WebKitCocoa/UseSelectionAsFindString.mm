@@ -29,9 +29,9 @@
 #import "TestWKWebView.h"
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, UseSelectionAsFindString)
+TEST(CyberKit, UseSelectionAsFindString)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     [webView synchronouslyLoadHTMLString:@"<body>Hello <span id='text'>world</span></body>"];
@@ -48,4 +48,4 @@ TEST(WebKit, UseSelectionAsFindString)
 #endif
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -85,7 +85,7 @@ const Vector<CaptureDevice>& GStreamerCaptureDeviceManager::captureDevices()
     ensureGStreamerInitialized();
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkitGStreamerCaptureDeviceManagerDebugCategory, "webkitcapturedevicemanager", 0, "WebKit Capture Device Manager");
+        GST_DEBUG_CATEGORY_INIT(webkitGStreamerCaptureDeviceManagerDebugCategory, "webkitcapturedevicemanager", 0, "CyberKit Capture Device Manager");
     });
     if (m_devices.isEmpty())
         refreshCaptureDevices();

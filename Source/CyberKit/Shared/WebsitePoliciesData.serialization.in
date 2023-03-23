@@ -20,47 +20,47 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    
-enum class WebKit::WebsiteMetaViewportPolicy : uint8_t {
+enum class CyberKit::WebsiteMetaViewportPolicy : uint8_t {
     Default,
     Respect,
     Ignore,
 };
 
-enum class WebKit::WebsiteMediaSourcePolicy : uint8_t {
+enum class CyberKit::WebsiteMediaSourcePolicy : uint8_t {
     Default,
     Disable,
     Enable
 };
 
-enum class WebKit::WebsiteSimulatedMouseEventsDispatchPolicy : uint8_t {
+enum class CyberKit::WebsiteSimulatedMouseEventsDispatchPolicy : uint8_t {
     Default,
     Allow,
     Deny,
 };
 
-enum class WebKit::WebsiteLegacyOverflowScrollingTouchPolicy : uint8_t {
+enum class CyberKit::WebsiteLegacyOverflowScrollingTouchPolicy : uint8_t {
     Default,
     Disable,
     Enable
 };
 
-struct WebKit::WebsitePoliciesData {
+struct CyberKit::WebsitePoliciesData {
     CyberCore::ContentExtensionEnablement contentExtensionEnablement;
     HashMap<WTF::String, Vector<WTF::String>> activeContentRuleListActionPatterns;
-    OptionSet<WebKit::WebsiteAutoplayQuirk> allowedAutoplayQuirks;
-    WebKit::WebsiteAutoplayPolicy autoplayPolicy;
+    OptionSet<CyberKit::WebsiteAutoplayQuirk> allowedAutoplayQuirks;
+    CyberKit::WebsiteAutoplayPolicy autoplayPolicy;
 #if ENABLE(DEVICE_ORIENTATION)
     CyberCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState;
 #endif
     Vector<CyberCore::CustomHeaderFields> customHeaderFields;
-    WebKit::WebsitePopUpPolicy popUpPolicy;
+    CyberKit::WebsitePopUpPolicy popUpPolicy;
     String customUserAgent;
     String customUserAgentAsSiteSpecificQuirks;
     String customNavigatorPlatform;
-    WebKit::WebsiteMetaViewportPolicy metaViewportPolicy;
-    WebKit::WebsiteMediaSourcePolicy mediaSourcePolicy;
-    WebKit::WebsiteSimulatedMouseEventsDispatchPolicy simulatedMouseEventsDispatchPolicy;
-    WebKit::WebsiteLegacyOverflowScrollingTouchPolicy legacyOverflowScrollingTouchPolicy;
+    CyberKit::WebsiteMetaViewportPolicy metaViewportPolicy;
+    CyberKit::WebsiteMediaSourcePolicy mediaSourcePolicy;
+    CyberKit::WebsiteSimulatedMouseEventsDispatchPolicy simulatedMouseEventsDispatchPolicy;
+    CyberKit::WebsiteLegacyOverflowScrollingTouchPolicy legacyOverflowScrollingTouchPolicy;
     bool allowContentChangeObserverQuirk;
     CyberCore::AllowsContentJavaScript allowsContentJavaScript;
     CyberCore::MouseEventPolicy mouseEventPolicy;

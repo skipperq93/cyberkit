@@ -37,7 +37,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkDataTaskSoup final : public NetworkDataTask {
 public:
@@ -212,4 +212,4 @@ private:
     RunLoop::Timer m_timeoutSource;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

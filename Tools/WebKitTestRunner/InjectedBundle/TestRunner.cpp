@@ -51,7 +51,7 @@
 #include <CyberKit/WKPagePrivate.h>
 #include <CyberKit/WKRetainPtr.h>
 #include <CyberKit/WKSerializedScriptValue.h>
-#include <CyberKit/WebKit2_C.h>
+#include <CyberKit/CyberKit2_C.h>
 #include <wtf/HashMap.h>
 #include <wtf/StdLibExtras.h>
 #include <wtf/UniqueArray.h>
@@ -260,8 +260,8 @@ void TestRunner::notifyDone()
         injectedBundle.page()->dump();
 
     // We don't call invalidateWaitToDumpWatchdogTimer() here, even if we continue to wait for a load to finish.
-    // The test is still subject to timeout checking - it is better to detect an async timeout inside WebKitTestRunner
-    // than to let webkitpy do that, because WebKitTestRunner will dump partial results.
+    // The test is still subject to timeout checking - it is better to detect an async timeout inside CyberKitTestRunner
+    // than to let webkitpy do that, because CyberKitTestRunner will dump partial results.
 
     setWaitUntilDone(false);
 }

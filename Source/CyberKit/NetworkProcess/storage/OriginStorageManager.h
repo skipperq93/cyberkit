@@ -35,7 +35,7 @@ struct ClientOrigin;
 struct StorageEstimate;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class CacheStorageManager;
 class CacheStorageRegistry;
@@ -112,5 +112,5 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

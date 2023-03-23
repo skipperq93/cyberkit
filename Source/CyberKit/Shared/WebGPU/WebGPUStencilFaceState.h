@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUCompareFunction.h>
 #include <pal/graphics/WebGPU/WebGPUStencilOperation.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct StencilFaceState {
     PAL::WebGPU::CompareFunction compare { PAL::WebGPU::CompareFunction::Always };
@@ -40,6 +40,6 @@ struct StencilFaceState {
     PAL::WebGPU::StencilOperation passOp { PAL::WebGPU::StencilOperation::Keep };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

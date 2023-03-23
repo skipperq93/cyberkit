@@ -41,13 +41,13 @@
 
 #import "TCCSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 static bool isFullWebBrowser(const String&);
 
 bool isRunningTest(const String& bundleID)
 {
-    return bundleID == "com.apple.WebKit.TestWebKitAPI"_s || bundleID == "com.apple.WebKit.WebKitTestRunner"_s || bundleID == "org.webkit.WebKitTestRunnerApp"_s;
+    return bundleID == "com.apple.CyberKit.TestCyberKitAPI"_s || bundleID == "com.apple.CyberKit.CyberKitTestRunner"_s || bundleID == "org.webkit.CyberKitTestRunnerApp"_s;
 }
 
 Span<const CyberCore::RegistrableDomain> appBoundDomainsForTesting(const String& bundleID)
@@ -62,16 +62,16 @@ Span<const CyberCore::RegistrableDomain> appBoundDomainsForTesting(const String&
 }
 
 #if ASSERT_ENABLED
-static bool isInWebKitChildProcess()
+static bool isInCyberKitChildProcess()
 {
     static bool isInSubProcess;
 
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-        isInSubProcess = [bundleIdentifier hasPrefix:@"com.apple.WebKit.WebContent"]
-            || [bundleIdentifier hasPrefix:@"com.apple.WebKit.Networking"]
-            || [bundleIdentifier hasPrefix:@"com.apple.WebKit.GPU"];
+        isInSubProcess = [bundleIdentifier hasPrefix:@"com.apple.CyberKit.WebContent"]
+            || [bundleIdentifier hasPrefix:@"com.apple.CyberKit.Networking"]
+            || [bundleIdentifier hasPrefix:@"com.apple.CyberKit.GPU"];
     });
 
     return isInSubProcess;
@@ -88,7 +88,7 @@ static std::atomic<TrackingPreventionState> currentTrackingPreventionState = Tra
 
 bool hasRequestedCrossWebsiteTrackingPermission()
 {
-    ASSERT(!isInWebKitChildProcess());
+    ASSERT(!isInCyberKitChildProcess());
 
     static std::atomic<bool> hasRequestedCrossWebsiteTrackingPermission = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSCrossWebsiteTrackingUsageDescription"];
     return hasRequestedCrossWebsiteTrackingPermission;
@@ -97,7 +97,7 @@ bool hasRequestedCrossWebsiteTrackingPermission()
 static bool determineTrackingPreventionStateInternal(bool appWasLinkedOnOrAfter, const String& bundleIdentifier)
 {
     ASSERT(!RunLoop::isMain());
-    ASSERT(!isInWebKitChildProcess());
+    ASSERT(!isInCyberKitChildProcess());
 
     if (!appWasLinkedOnOrAfter && !isFullWebBrowser(bundleIdentifier))
         return false;
@@ -107,7 +107,7 @@ static bool determineTrackingPreventionStateInternal(bool appWasLinkedOnOrAfter,
 
     TCCAccessPreflightResult result = kTCCAccessPreflightDenied;
 #if (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000) || (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000)
-    result = TCCAccessPreflight(get_TCC_kTCCServiceWebKitIntelligentTrackingPrevention(), nullptr);
+    result = TCCAccessPreflight(get_TCC_kTCCServiceCyberKitIntelligentTrackingPrevention(), nullptr);
 #endif
     return result != kTCCAccessPreflightDenied;
 }
@@ -126,7 +126,7 @@ void determineTrackingPreventionState()
 
     bool appWasLinkedOnOrAfter = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SessionCleanupByDefault);
 
-    itpQueue() = WorkQueue::create("com.apple.WebKit.itpCheckQueue");
+    itpQueue() = WorkQueue::create("com.apple.CyberKit.itpCheckQueue");
     itpQueue()->dispatch([appWasLinkedOnOrAfter, bundleIdentifier = CyberCore::applicationBundleIdentifier().isolatedCopy()] {
         currentTrackingPreventionState = determineTrackingPreventionStateInternal(appWasLinkedOnOrAfter, bundleIdentifier) ? TrackingPreventionState::Enabled : TrackingPreventionState::Disabled;
         RunLoop::main().dispatch([] {
@@ -137,7 +137,7 @@ void determineTrackingPreventionState()
 
 bool doesAppHaveTrackingPreventionEnabled()
 {
-    ASSERT(!isInWebKitChildProcess());
+    ASSERT(!isInCyberKitChildProcess());
     ASSERT(RunLoop::isMain());
     // If we're still computing the ITP state on the background thread, then synchronize with it.
     if (itpQueue())
@@ -148,7 +148,7 @@ bool doesAppHaveTrackingPreventionEnabled()
 
 bool doesParentProcessHaveTrackingPreventionEnabled(AuxiliaryProcess& auxiliaryProcess, bool hasRequestedCrossWebsiteTrackingPermission)
 {
-    ASSERT(isInWebKitChildProcess());
+    ASSERT(isInCyberKitChildProcess());
     ASSERT(RunLoop::isMain());
 
     if (!isParentProcessAFullWebBrowser(auxiliaryProcess) && !hasRequestedCrossWebsiteTrackingPermission)
@@ -173,7 +173,7 @@ bool doesParentProcessHaveTrackingPreventionEnabled(AuxiliaryProcess& auxiliaryP
             RELEASE_LOG_ERROR(IPC, "Unable to get parent process audit token");
             return;
         }
-        result = TCCAccessPreflightWithAuditToken(get_TCC_kTCCServiceWebKitIntelligentTrackingPrevention(), auditToken.value(), nullptr);
+        result = TCCAccessPreflightWithAuditToken(get_TCC_kTCCServiceCyberKitIntelligentTrackingPrevention(), auditToken.value(), nullptr);
 #endif
         trackingPreventionEnabled = result != kTCCAccessPreflightDenied;
     });
@@ -183,7 +183,7 @@ bool doesParentProcessHaveTrackingPreventionEnabled(AuxiliaryProcess& auxiliaryP
 static std::atomic<bool> hasCheckedUsageStrings = false;
 bool hasProhibitedUsageStrings()
 {
-    ASSERT(!isInWebKitChildProcess());
+    ASSERT(!isInCyberKitChildProcess());
 
     static bool hasProhibitedUsageStrings = false;
 
@@ -218,7 +218,7 @@ bool hasProhibitedUsageStrings()
 
 bool isParentProcessAFullWebBrowser(AuxiliaryProcess& auxiliaryProcess)
 {
-    ASSERT(isInWebKitChildProcess());
+    ASSERT(isInCyberKitChildProcess());
 
     static bool fullWebBrowser { false };
     static dispatch_once_t once;
@@ -245,7 +245,7 @@ bool isParentProcessAFullWebBrowser(AuxiliaryProcess& auxiliaryProcess)
 
 static bool isFullWebBrowser(const String& bundleIdentifier)
 {
-    ASSERT(!isInWebKitChildProcess());
+    ASSERT(!isInCyberKitChildProcess());
 
     static bool fullWebBrowser = WTF::processHasEntitlement("com.apple.developer.web-browser"_s);
 
@@ -254,10 +254,10 @@ static bool isFullWebBrowser(const String& bundleIdentifier)
 
 bool isFullWebBrowser()
 {
-    ASSERT(!isInWebKitChildProcess());
+    ASSERT(!isInCyberKitChildProcess());
     ASSERT(RunLoop::isMain());
 
     return isFullWebBrowser(CyberCore::applicationBundleIdentifier());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #import <wtf/SoftLinking.h>
 #import <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 NSString *nsStringFromCyberCoreString(const String& string)
 {

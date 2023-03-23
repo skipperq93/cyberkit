@@ -73,9 +73,9 @@ static constexpr int expectedWKButtonNumber = 0; // unlike DOM spec, 0 is the va
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, IsNavigationActionTrusted)
+TEST(CyberKit, IsNavigationActionTrusted)
 {
     @autoreleasepool {
         RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
@@ -83,7 +83,7 @@ TEST(WebKit, IsNavigationActionTrusted)
         RetainPtr<NavigationActionDelegate> delegate = adoptNS([[NavigationActionDelegate alloc] init]);
         [webView setNavigationDelegate:delegate.get()];
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IsNavigationActionTrusted" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IsNavigationActionTrusted" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
         [webView loadRequest:request];
 
         didFinishTest = false;
@@ -98,11 +98,11 @@ TEST(CyberKitLegacy, IsNavigationActionTrusted)
 
         RetainPtr<WebPolicyActionDelegate> delegate = adoptNS([[WebPolicyActionDelegate alloc] init]);
         [webView setPolicyDelegate:delegate.get()];
-        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IsNavigationActionTrusted" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IsNavigationActionTrusted" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         didFinishTest = false;
         Util::run(&didFinishTest);
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -22,20 +22,20 @@
 
 messages -> NetworkConnectionToWebProcess LegacyReceiver {
 
-    ScheduleResourceLoad(WebKit::NetworkResourceLoadParameters resourceLoadParameters, std::optional<WebKit::NetworkResourceLoadIdentifier> existingLoaderToResume)
-    PerformSynchronousLoad(WebKit::NetworkResourceLoadParameters resourceLoadParameters) -> (CyberCore::ResourceError error, CyberCore::ResourceResponse response, Vector<uint8_t> data) Synchronous
-    TestProcessIncomingSyncMessagesWhenWaitingForSyncReply(WebKit::WebPageProxyIdentifier pageID) -> (bool handled) Synchronous
-    LoadPing(WebKit::NetworkResourceLoadParameters resourceLoadParameters)
+    ScheduleResourceLoad(CyberKit::NetworkResourceLoadParameters resourceLoadParameters, std::optional<CyberKit::NetworkResourceLoadIdentifier> existingLoaderToResume)
+    PerformSynchronousLoad(CyberKit::NetworkResourceLoadParameters resourceLoadParameters) -> (CyberCore::ResourceError error, CyberCore::ResourceResponse response, Vector<uint8_t> data) Synchronous
+    TestProcessIncomingSyncMessagesWhenWaitingForSyncReply(CyberKit::WebPageProxyIdentifier pageID) -> (bool handled) Synchronous
+    LoadPing(CyberKit::NetworkResourceLoadParameters resourceLoadParameters)
     RemoveLoadIdentifier(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier)
     PageLoadCompleted(CyberCore::PageIdentifier webPageID)
-    BrowsingContextRemoved(WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID, CyberCore::FrameIdentifier webFrameID)
+    BrowsingContextRemoved(CyberKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID, CyberCore::FrameIdentifier webFrameID)
     PrefetchDNS(String hostname)
-    SendH2Ping(WebKit::NetworkResourceLoadParameters parameters) -> (Expected<Seconds, CyberCore::ResourceError> result)
-    PreconnectTo(std::optional<CyberCore::ResourceLoaderIdentifier> preconnectionIdentifier, WebKit::NetworkResourceLoadParameters loadParameters);
+    SendH2Ping(CyberKit::NetworkResourceLoadParameters parameters) -> (Expected<Seconds, CyberCore::ResourceError> result)
+    PreconnectTo(std::optional<CyberCore::ResourceLoaderIdentifier> preconnectionIdentifier, CyberKit::NetworkResourceLoadParameters loadParameters);
     IsResourceLoadFinished(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (bool isFinished)
 
-    StartDownload(WebKit::DownloadID downloadID, CyberCore::ResourceRequest request, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, String suggestedName)
-    ConvertMainResourceLoadToDownload(std::optional<CyberCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier, WebKit::DownloadID downloadID, CyberCore::ResourceRequest request, CyberCore::ResourceResponse response, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain)
+    StartDownload(CyberKit::DownloadID downloadID, CyberCore::ResourceRequest request, std::optional<CyberKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, String suggestedName)
+    ConvertMainResourceLoadToDownload(std::optional<CyberCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier, CyberKit::DownloadID downloadID, CyberCore::ResourceRequest request, CyberCore::ResourceResponse response, std::optional<CyberKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain)
 
     CookiesForDOM(URL firstParty, struct CyberCore::SameSiteInfo sameSiteInfo, URL url, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier pageID, enum:bool CyberCore::IncludeSecureCookies includeSecureCookies, enum:bool CyberCore::ApplyTrackingPrevention applyTrackingPrevention, enum:bool CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking) -> (String cookieString, bool didAccessSecureCookies) Synchronous
     SetCookiesFromDOM(URL firstParty, struct CyberCore::SameSiteInfo sameSiteInfo, URL url, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier pageID, enum:bool CyberCore::ApplyTrackingPrevention applyTrackingPrevention, String cookieString, enum:bool CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking)
@@ -48,7 +48,7 @@ messages -> NetworkConnectionToWebProcess LegacyReceiver {
     UnsubscribeFromCookieChangeNotifications(HashSet<String> hosts)
 #endif
 
-    RegisterFileBlobURL(URL url, String path, String replacementPath, WebKit::SandboxExtension::Handle extensionHandle, String contentType)
+    RegisterFileBlobURL(URL url, String path, String replacementPath, CyberKit::SandboxExtension::Handle extensionHandle, String contentType)
     RegisterBlobURL(URL url, Vector<CyberCore::BlobPart> blobParts, String contentType)
     RegisterBlobURLFromURL(URL url, URL srcURL, struct CyberCore::PolicyContainer policyContainer)
     RegisterBlobURLOptionallyFileBacked(URL url, URL srcURL, String fileBackedPath, String contentType)
@@ -62,7 +62,7 @@ messages -> NetworkConnectionToWebProcess LegacyReceiver {
     SetCaptureExtraNetworkLoadMetricsEnabled(bool enabled)
 
     CreateSocketStream(URL url, String cachePartition, CyberCore::WebSocketIdentifier identifier)
-    CreateSocketChannel(CyberCore::ResourceRequest request, String protocol, CyberCore::WebSocketIdentifier identifier, WebKit::WebPageProxyIdentifier webPageProxyID, struct CyberCore::ClientOrigin clientOrigin, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy)
+    CreateSocketChannel(CyberCore::ResourceRequest request, String protocol, CyberCore::WebSocketIdentifier identifier, CyberKit::WebPageProxyIdentifier webPageProxyID, struct CyberCore::ClientOrigin clientOrigin, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy)
 
     ClearPageSpecificData(CyberCore::PageIdentifier pageID);
 
@@ -71,7 +71,7 @@ messages -> NetworkConnectionToWebProcess LegacyReceiver {
     LogUserInteraction(CyberCore::RegistrableDomain domain)
     ResourceLoadStatisticsUpdated(Vector<CyberCore::ResourceLoadStatistics> statistics) -> ()
     HasStorageAccess(CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier pageID) -> (bool hasStorageAccess)
-    RequestStorageAccess(CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier webPageID, WebKit::WebPageProxyIdentifier webPageProxyID, enum:bool CyberCore::StorageAccessScope scope) -> (struct CyberCore::RequestStorageAccessResult result)
+    RequestStorageAccess(CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier webPageID, CyberKit::WebPageProxyIdentifier webPageProxyID, enum:bool CyberCore::StorageAccessScope scope) -> (struct CyberCore::RequestStorageAccessResult result)
     RequestStorageAccessUnderOpener(CyberCore::RegistrableDomain domainInNeedOfStorageAccess, CyberCore::PageIdentifier openerPageID, CyberCore::RegistrableDomain openerDomain)
 #endif
 
@@ -84,11 +84,11 @@ messages -> NetworkConnectionToWebProcess LegacyReceiver {
     TakeNetworkLoadInformationMetrics(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (CyberCore::NetworkLoadMetrics networkMetrics) Synchronous
 
 #if ENABLE(SERVICE_WORKER)
-    EstablishSWContextConnection(WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::RegistrableDomain domain, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier) -> ()
+    EstablishSWContextConnection(CyberKit::WebPageProxyIdentifier webPageProxyID, CyberCore::RegistrableDomain domain, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier) -> ()
     CloseSWContextConnection()
 #endif
 
-    EstablishSharedWorkerContextConnection(WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::RegistrableDomain domain) -> ()
+    EstablishSharedWorkerContextConnection(CyberKit::WebPageProxyIdentifier webPageProxyID, CyberCore::RegistrableDomain domain) -> ()
     CloseSharedWorkerContextConnection()
 
     CreateRTCProvider() -> ()

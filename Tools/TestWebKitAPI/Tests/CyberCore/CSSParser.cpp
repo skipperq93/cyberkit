@@ -30,7 +30,7 @@
 #include <CyberCore/CSSValueList.h>
 #include <CyberCore/MutableStyleProperties.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace CyberCore;
 
@@ -87,4 +87,4 @@ TEST(CSSPropertyParserTest, GridTrackLimits)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

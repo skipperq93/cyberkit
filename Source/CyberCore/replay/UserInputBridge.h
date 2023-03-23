@@ -44,7 +44,7 @@ class PlatformWheelEvent;
 
 enum class WheelEventProcessingSteps : uint8_t;
 
-// Real user inputs come from WebKit or WebKit2.
+// Real user inputs come from CyberKit or CyberKit2.
 // Synthetic inputs come from within CyberCore (i.e., from web replay or fake mouse moves).
 enum class InputSource {
     User,

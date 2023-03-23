@@ -27,9 +27,9 @@
 
 #include <CyberCore/KeyedCoding.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 std::unique_ptr<CyberCore::KeyedDecoder> createForFile(const String& path);
 void writeToDisk(std::unique_ptr<CyberCore::KeyedEncoder>&&, String&& path);
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 #include <wtf/IteratorRange.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_IteratorRange, MakeReversedRange)
 {
@@ -108,4 +108,4 @@ TEST(WTF_IteratorRange, OneWayIterator)
         EXPECT_EQ(value, expectedResults[index++]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

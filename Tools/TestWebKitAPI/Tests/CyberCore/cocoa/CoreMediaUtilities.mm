@@ -29,12 +29,12 @@
 
 #include <pal/avfoundation/MediaTimeAVFoundation.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(PAL, MediaTime)
 {
     EXPECT_EQ(PAL::toMediaTime(PAL::toCMTime(MediaTime::invalidTime())), MediaTime::invalidTime());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 #endif

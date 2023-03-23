@@ -29,7 +29,7 @@
 #include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 struct DebugInfo;
 
@@ -99,4 +99,4 @@ private:
     mutable Statement m_insertObservedDomainStatement;
 };
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

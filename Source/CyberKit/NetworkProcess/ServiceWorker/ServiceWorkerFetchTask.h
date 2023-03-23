@@ -55,7 +55,7 @@ namespace CyberCore {
 class NetworkLoadMetrics;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class DownloadManager;
 class NetworkResourceLoader;
 class NetworkSession;

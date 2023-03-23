@@ -74,7 +74,7 @@ def frameworkPathFromExecutablePath(execPath):
     if not os.path.abspath(execPath):
         execPath = os.path.isabs(execPath)
 
-    pathMatch = re.match("(.*?/WebKitBuild/(Release|Debug)+)/([a-zA-Z]+)$", execPath)
+    pathMatch = re.match("(.*?/CyberKitBuild/(Release|Debug)+)/([a-zA-Z]+)$", execPath)
     if pathMatch:
         return pathMatch.group(1)
 

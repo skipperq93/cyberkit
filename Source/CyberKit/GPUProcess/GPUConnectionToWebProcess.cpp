@@ -161,7 +161,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, (&connection()))
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)
@@ -299,7 +299,7 @@ GPUConnectionToWebProcess::GPUConnectionToWebProcess(GPUProcess& gpuProcess, Cyb
     }
 #endif
 
-    WebKit::GPUProcessConnectionInfo info {
+    CyberKit::GPUProcessConnectionInfo info {
 #if HAVE(AUDIT_TOKEN)
         gpuProcess.parentProcessConnection()->getAuditToken(),
 #endif
@@ -403,13 +403,13 @@ void GPUConnectionToWebProcess::configureLoggingChannel(const String& channelNam
 }
 
 #if USE(GRAPHICS_LAYER_WC)
-void GPUConnectionToWebProcess::createWCLayerTreeHost(WebKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering)
+void GPUConnectionToWebProcess::createWCLayerTreeHost(CyberKit::WCLayerTreeHostIdentifier identifier, uint64_t nativeWindow, bool usesOffscreenRendering)
 {
     auto addResult = m_remoteWCLayerTreeHostMap.add(identifier, RemoteWCLayerTreeHost::create(*this, WTFMove(identifier), nativeWindow, usesOffscreenRendering));
     ASSERT_UNUSED(addResult, addResult.isNewEntry);
 }
 
-void GPUConnectionToWebProcess::releaseWCLayerTreeHost(WebKit::WCLayerTreeHostIdentifier identifier)
+void GPUConnectionToWebProcess::releaseWCLayerTreeHost(CyberKit::WCLayerTreeHostIdentifier identifier)
 {
     m_remoteWCLayerTreeHostMap.remove(identifier);
 }
@@ -1037,7 +1037,7 @@ void GPUConnectionToWebProcess::enableVP9Decoders(bool shouldEnableVP8Decoder, b
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK
 

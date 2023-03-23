@@ -29,7 +29,7 @@
 #include <optional>
 #include <wtf/Function.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static Function<int()> function_for_reentrancy_test;
 static unsigned testObjectDestructorCalls = 0;
@@ -260,4 +260,4 @@ TEST(WTF_Function, AssignFunctionPointer)
     EXPECT_FALSE(static_cast<bool>(f2));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

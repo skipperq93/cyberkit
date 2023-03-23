@@ -134,7 +134,7 @@
 #define DOCUMENTLOADER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", isMainFrame=%d] DocumentLoader::" fmt, this, PAGE_ID, FRAME_ID, IS_MAIN_FRAME, ##__VA_ARGS__)
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/DocumentLoaderAdditions.cpp>
+#include <CyberKitAdditions/DocumentLoaderAdditions.cpp>
 #else
 namespace WebCore {
 
@@ -2243,7 +2243,7 @@ void DocumentLoader::loadMainResource(ResourceRequest&& request)
     ASSERT(m_frame);
 
 #if ENABLE(CONTENT_EXTENSIONS)
-    if (m_mainResource->errorOccurred() && m_frame->page() && m_mainResource->resourceError().domain() == ContentExtensions::WebKitContentBlockerDomain) {
+    if (m_mainResource->errorOccurred() && m_frame->page() && m_mainResource->resourceError().domain() == ContentExtensions::CyberKitContentBlockerDomain) {
         DOCUMENTLOADER_RELEASE_LOG("loadMainResource: Blocked by content blocker error");
         cancelMainResourceLoad(frameLoader()->blockedByContentBlockerError(m_request));
         return;

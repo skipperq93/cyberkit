@@ -30,7 +30,7 @@
 #include <cstring>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 AuxiliaryProcessMainCommon::AuxiliaryProcessMainCommon() { }
 
@@ -49,4 +49,4 @@ bool AuxiliaryProcessMainCommon::parseCommandLine(int argc, char** argv)
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

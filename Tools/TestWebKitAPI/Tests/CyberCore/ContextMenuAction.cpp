@@ -29,7 +29,7 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberCore, ContextMenuAction_IsValidEnum)
 {
@@ -54,6 +54,6 @@ TEST(CyberCore, ContextMenuAction_IsValidEnum)
     EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(std::numeric_limits<int>::max()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(CONTEXT_MENUS)

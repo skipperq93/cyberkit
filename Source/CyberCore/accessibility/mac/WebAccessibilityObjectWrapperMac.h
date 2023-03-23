@@ -57,7 +57,7 @@ extern "C" AXUIElementRef NSAccessibilityCreateAXUIElementRef(id element);
 
 - (RetainPtr<AXTextMarkerRef>)textMarkerForFirstPositionInTextControl:(WebCore::HTMLTextFormControlElement&)textControl;
 
-// When a plugin uses a WebKit control to act as a surrogate view (e.g. PDF use WebKit to create text fields).
+// When a plugin uses a CyberKit control to act as a surrogate view (e.g. PDF use CyberKit to create text fields).
 - (id)associatedPluginParent;
 
 @end

@@ -27,7 +27,7 @@
 
 #import <AppKit/AppKit.h>
 
-@interface NSFontPanel (TestWebKitAPI)
+@interface NSFontPanel (TestCyberKitAPI)
 
 @property (nonatomic) double shadowOpacity;
 @property (nonatomic) double shadowBlur;

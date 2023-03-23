@@ -42,7 +42,7 @@
 
 static bool didForceRepaint;
 
-using namespace TestWebKitAPI;
+using namespace TestCyberKitAPI;
 
 @interface WKWebView ()
 - (WKPageRef)_pageForTesting;
@@ -77,7 +77,7 @@ static void forceRepaintCallback(WKErrorRef error, void*)
 {
     didForceRepaint = false;
     WKPageForceRepaint([self _pageForTesting], 0, forceRepaintCallback);
-    TestWebKitAPI::Util::run(&didForceRepaint);
+    TestCyberKitAPI::Util::run(&didForceRepaint);
 }
 
 - (void)synchronouslyLoadTestPageAndForceRepaint:(NSString *)testPageName

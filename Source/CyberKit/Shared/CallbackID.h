@@ -35,7 +35,7 @@ struct CallbackIDHash;
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class CallbackID {
 public:
@@ -87,7 +87,7 @@ private:
     friend class CallbackMap;
     template <typename CallbackType> friend class SpecificCallbackMap;
     friend struct WTF::CallbackIDHash;
-    friend HashTraits<WebKit::CallbackID>;
+    friend HashTraits<CyberKit::CallbackID>;
 
     uint64_t m_id { HashTraits<uint64_t>::emptyValue() };
 };
@@ -97,15 +97,15 @@ private:
 namespace WTF {
 
 struct CallbackIDHash {
-    static unsigned hash(const WebKit::CallbackID& callbackID) { return intHash(callbackID.m_id); }
-    static bool equal(const WebKit::CallbackID& a, const WebKit::CallbackID& b) { return a.m_id == b.m_id; }
+    static unsigned hash(const CyberKit::CallbackID& callbackID) { return intHash(callbackID.m_id); }
+    static bool equal(const CyberKit::CallbackID& a, const CyberKit::CallbackID& b) { return a.m_id == b.m_id; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
-template<> struct HashTraits<WebKit::CallbackID> : GenericHashTraits<WebKit::CallbackID> {
-    static WebKit::CallbackID emptyValue() { return WebKit::CallbackID(); }
-    static void constructDeletedValue(WebKit::CallbackID& slot) { HashTraits<uint64_t>::constructDeletedValue(slot.m_id); }
-    static bool isDeletedValue(const WebKit::CallbackID& slot) { return HashTraits<uint64_t>::isDeletedValue(slot.m_id); }
+template<> struct HashTraits<CyberKit::CallbackID> : GenericHashTraits<CyberKit::CallbackID> {
+    static CyberKit::CallbackID emptyValue() { return CyberKit::CallbackID(); }
+    static void constructDeletedValue(CyberKit::CallbackID& slot) { HashTraits<uint64_t>::constructDeletedValue(slot.m_id); }
+    static bool isDeletedValue(const CyberKit::CallbackID& slot) { return HashTraits<uint64_t>::isDeletedValue(slot.m_id); }
 };
-template<> struct DefaultHash<WebKit::CallbackID> : CallbackIDHash { };
+template<> struct DefaultHash<CyberKit::CallbackID> : CallbackIDHash { };
 
 }

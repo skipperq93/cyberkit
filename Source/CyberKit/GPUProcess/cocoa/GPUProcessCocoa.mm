@@ -37,7 +37,7 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if USE(OS_STATE)
@@ -88,6 +88,6 @@ void GPUProcess::ensureAVCaptureServerConnection()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && PLATFORM(COCOA)

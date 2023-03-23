@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 #import "DeprecatedGlobalValues.h"
 #import "HTTPServer.h"
@@ -48,7 +48,7 @@
 #import <wtf/text/StringHash.h>
 #import <wtf/text/WTFString.h>
 
-using namespace TestWebKitAPI;
+using namespace TestCyberKitAPI;
 
 @interface QuotaDelegate : NSObject <WKUIDelegate>
 -(bool)quotaDelegateCalled;
@@ -244,7 +244,7 @@ static inline void setVisible(TestWKWebView *webView)
 }
 
 #if PLATFORM(MAC)
-TEST(WebKit, QuotaDelegateHidden)
+TEST(CyberKit, QuotaDelegateHidden)
 {
     done = false;
     auto storeConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] init]);
@@ -253,7 +253,7 @@ TEST(WebKit, QuotaDelegateHidden)
     [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:dataStore.get()];
@@ -261,7 +261,7 @@ TEST(WebKit, QuotaDelegateHidden)
     auto messageHandler = adoptNS([[QuotaMessageHandler alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:messageHandler.get() name:@"qt"];
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { TestHiddenBytes } },
     });
 
@@ -302,7 +302,7 @@ TEST(WebKit, QuotaDelegateHidden)
 }
 #endif
 
-TEST(WebKit, QuotaDelegate)
+TEST(CyberKit, QuotaDelegate)
 {
     done = false;
     auto storeConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] init]);
@@ -311,7 +311,7 @@ TEST(WebKit, QuotaDelegate)
     [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:dataStore.get()];
@@ -319,7 +319,7 @@ TEST(WebKit, QuotaDelegate)
     auto messageHandler = adoptNS([[QuotaMessageHandler alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:messageHandler.get() name:@"qt"];
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { TestBytes } },
     });
 
@@ -350,7 +350,7 @@ TEST(WebKit, QuotaDelegate)
     Util::run(&receivedMessage);
 
     while (!delegate2.get().quotaDelegateCalled)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     [delegate2 denyQuota];
 
@@ -363,9 +363,9 @@ TEST(WebKit, QuotaDelegate)
 
 // FIXME: Re-enable this test for iOS once webkit.org/b/250228 is resolved
 #if PLATFORM(IOS)
-TEST(WebKit, DISABLED_QuotaDelegateReload)
+TEST(CyberKit, DISABLED_QuotaDelegateReload)
 #else
-TEST(WebKit, QuotaDelegateReload)
+TEST(CyberKit, QuotaDelegateReload)
 #endif
 {
     done = false;
@@ -375,7 +375,7 @@ TEST(WebKit, QuotaDelegateReload)
     [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:dataStore.get()];
@@ -383,7 +383,7 @@ TEST(WebKit, QuotaDelegateReload)
     auto messageHandler = adoptNS([[QuotaMessageHandler alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:messageHandler.get() name:@"qt"];
     
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { TestBytes } },
     });
     
@@ -415,9 +415,9 @@ TEST(WebKit, QuotaDelegateReload)
 
 // FIXME: Re-enable this test for iOS once webkit.org/b/250228 is resolved
 #if PLATFORM(IOS)
-TEST(WebKit, DISABLED_QuotaDelegateNavigateFragment)
+TEST(CyberKit, DISABLED_QuotaDelegateNavigateFragment)
 #else
-TEST(WebKit, QuotaDelegateNavigateFragment)
+TEST(CyberKit, QuotaDelegateNavigateFragment)
 #endif
 {
     done = false;
@@ -427,7 +427,7 @@ TEST(WebKit, QuotaDelegateNavigateFragment)
     [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:dataStore.get()];
@@ -435,7 +435,7 @@ TEST(WebKit, QuotaDelegateNavigateFragment)
     auto messageHandler = adoptNS([[QuotaMessageHandler alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:messageHandler.get() name:@"qt"];
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/main.html"_s, { TestBytes } },
     });
 
@@ -469,7 +469,7 @@ TEST(WebKit, QuotaDelegateNavigateFragment)
     EXPECT_FALSE(receivedQuotaDelegateCalled);
 }
 
-TEST(WebKit, DefaultQuota)
+TEST(CyberKit, DefaultQuota)
 {
     done = false;
     auto storeConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] init]);
@@ -478,7 +478,7 @@ TEST(WebKit, DefaultQuota)
     [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:dataStore.get()];
@@ -486,7 +486,7 @@ TEST(WebKit, DefaultQuota)
     auto messageHandler = adoptNS([[QuotaMessageHandler alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:messageHandler.get() name:@"qt"];
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { TestUrlBytes } },
     });
 

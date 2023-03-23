@@ -46,7 +46,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static const CGFloat iconSideLength = 100;
 

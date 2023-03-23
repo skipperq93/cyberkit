@@ -247,7 +247,7 @@ void CachedResource::load(CachedResourceLoader& cachedResourceLoader)
     }
 
     if (m_options.keepAlive && type() != Type::Ping && !cachedResourceLoader.keepaliveRequestTracker().tryRegisterRequest(*this)) {
-        setResourceError({ errorDomainWebKitInternal, 0, request.url(), "Reached maximum amount of queued data of 64Kb for keepalive requests"_s, ResourceError::Type::AccessControl });
+        setResourceError({ errorDomainCyberKitInternal, 0, request.url(), "Reached maximum amount of queued data of 64Kb for keepalive requests"_s, ResourceError::Type::AccessControl });
         failBeforeStarting();
         return;
     }

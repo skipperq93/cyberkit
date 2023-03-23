@@ -27,7 +27,7 @@
 #import "TestRunnerWKWebView.h"
 
 #import "TestController.h"
-#import "WebKitTestRunnerDraggingInfo.h"
+#import "CyberKitTestRunnerDraggingInfo.h"
 #import <CyberKit/WKUIDelegatePrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/Assertions.h>
@@ -95,7 +95,7 @@ IGNORE_WARNINGS_BEGIN("deprecated-implementations")
 - (void)dragImage:(NSImage *)anImage at:(NSPoint)viewLocation offset:(NSSize)initialOffset event:(NSEvent *)event pasteboard:(NSPasteboard *)pboard source:(id)sourceObj slideBack:(BOOL)slideFlag
 IGNORE_WARNINGS_END
 {
-    auto draggingInfo = adoptNS([[WebKitTestRunnerDraggingInfo alloc] initWithImage:anImage offset:initialOffset pasteboard:pboard source:sourceObj]);
+    auto draggingInfo = adoptNS([[CyberKitTestRunnerDraggingInfo alloc] initWithImage:anImage offset:initialOffset pasteboard:pboard source:sourceObj]);
     [self draggingUpdated:draggingInfo.get()];
 }
 #endif

@@ -69,7 +69,7 @@
 #include <wtf/UUID.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/MediaControlsHostAdditions.h>
+#include <CyberKitAdditions/MediaControlsHostAdditions.h>
 #endif
 
 namespace WebCore {

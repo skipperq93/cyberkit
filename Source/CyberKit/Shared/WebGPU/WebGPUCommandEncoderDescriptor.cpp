@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUCommandEncoderDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<CommandEncoderDescriptor> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::CommandEncoderDescriptor& commandEncoderDescriptor)
 {
@@ -52,6 +52,6 @@ std::optional<PAL::WebGPU::CommandEncoderDescriptor> ConvertFromBackingContext::
     return { { WTFMove(*base) } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

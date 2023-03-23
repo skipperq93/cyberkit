@@ -74,7 +74,7 @@ static id userObject;
 
 @end
 
-TEST(WebKit, WKWebProcessPlugInWithoutRegisteredCustomClass)
+TEST(CyberKit, WKWebProcessPlugInWithoutRegisteredCustomClass)
 {
     auto delegate = adoptNS([[FormInputDelegate alloc] init]);
 
@@ -95,15 +95,15 @@ TEST(WebKit, WKWebProcessPlugInWithoutRegisteredCustomClass)
     userObject = nil;
     didGetUserObject = false;
 
-    TestWebKitAPI::Util::run(&didGetFocus);
-    TestWebKitAPI::Util::run(&didGetUserObject);
+    TestCyberKitAPI::Util::run(&didGetFocus);
+    TestCyberKitAPI::Util::run(&didGetUserObject);
 
     // We should not have serialized the NSUnitConverterLinear, since we did not specify it as a valid
     // class for our plugin.
     EXPECT_NULL(delegate->_userObject);
 }
 
-TEST(WebKit, WKWebProcessPlugInWithRegisteredCustomClass)
+TEST(CyberKit, WKWebProcessPlugInWithRegisteredCustomClass)
 {
     auto delegate = adoptNS([[FormInputDelegate alloc] init]);
 
@@ -125,13 +125,13 @@ TEST(WebKit, WKWebProcessPlugInWithRegisteredCustomClass)
     userObject = nil;
     didGetUserObject = false;
 
-    TestWebKitAPI::Util::run(&didGetFocus);
-    TestWebKitAPI::Util::run(&didGetUserObject);
+    TestCyberKitAPI::Util::run(&didGetFocus);
+    TestCyberKitAPI::Util::run(&didGetUserObject);
     
     EXPECT_TRUE([delegate->_userObject isKindOfClass:[NSUnitConverterLinear class]]);
 }
 
-TEST(WebKit, WKWebProcessPlugInWithUnregisteredCustomClass)
+TEST(CyberKit, WKWebProcessPlugInWithUnregisteredCustomClass)
 {
     auto delegate = adoptNS([[FormInputDelegate alloc] init]);
 
@@ -153,8 +153,8 @@ TEST(WebKit, WKWebProcessPlugInWithUnregisteredCustomClass)
     userObject = nil;
     didGetUserObject = false;
 
-    TestWebKitAPI::Util::run(&didGetFocus);
-    TestWebKitAPI::Util::run(&didGetUserObject);
+    TestCyberKitAPI::Util::run(&didGetFocus);
+    TestCyberKitAPI::Util::run(&didGetUserObject);
 
     // We should not have deserialized the NSUnitConverterLinear, since we did not specify it as valid.
     EXPECT_NULL(delegate->_userObject);

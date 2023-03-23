@@ -35,7 +35,7 @@ struct ClientOrigin;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MemoryStorageArea;
 class StorageAreaBase;
@@ -74,6 +74,6 @@ private:
     std::unique_ptr<StorageAreaBase> m_localStorageArea;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 

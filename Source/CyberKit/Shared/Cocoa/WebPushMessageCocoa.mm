@@ -28,26 +28,26 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-#define WebKitPushDataKey @"WebKitPushData"
-#define WebKitPushRegistrationURLKey @"WebKitPushRegistrationURL"
-#define WebKitPushPartitionKey @"WebKitPushPartition"
+#define CyberKitPushDataKey @"CyberKitPushData"
+#define CyberKitPushRegistrationURLKey @"CyberKitPushRegistrationURL"
+#define CyberKitPushPartitionKey @"CyberKitPushPartition"
 
 std::optional<WebPushMessage> WebPushMessage::fromDictionary(NSDictionary *dictionary)
 {
-    NSURL *url = [dictionary objectForKey:WebKitPushRegistrationURLKey];
+    NSURL *url = [dictionary objectForKey:CyberKitPushRegistrationURLKey];
     if (!url || ![url isKindOfClass:[NSURL class]])
         return std::nullopt;
 
-    id pushData = [dictionary objectForKey:WebKitPushDataKey];
+    id pushData = [dictionary objectForKey:CyberKitPushDataKey];
     BOOL isNull = [pushData isEqual:[NSNull null]];
     BOOL isData = [pushData isKindOfClass:[NSData class]];
 
     if (!isNull && !isData)
         return std::nullopt;
 
-    NSString *pushPartition = [dictionary objectForKey:WebKitPushPartitionKey];
+    NSString *pushPartition = [dictionary objectForKey:CyberKitPushPartitionKey];
     if (!pushPartition || ![pushPartition isKindOfClass:[NSString class]])
         return std::nullopt;
 
@@ -68,10 +68,10 @@ NSDictionary *WebPushMessage::toDictionary() const
         nsData = nsData = adoptNS([[NSData alloc] initWithBytes:pushData->data() length:pushData->size()]);
 
     return @{
-        WebKitPushDataKey : nsData ? nsData.get() : [NSNull null],
-        WebKitPushRegistrationURLKey : (NSURL *)registrationURL,
-        WebKitPushPartitionKey : (NSString *)pushPartitionString
+        CyberKitPushDataKey : nsData ? nsData.get() : [NSNull null],
+        CyberKitPushRegistrationURLKey : (NSURL *)registrationURL,
+        CyberKitPushPartitionKey : (NSString *)pushPartitionString
     };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

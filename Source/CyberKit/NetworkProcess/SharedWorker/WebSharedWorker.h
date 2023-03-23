@@ -39,7 +39,7 @@ namespace CyberCore {
 class RegistrableDomain;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebSharedWorkerServer;
 class WebSharedWorkerServerToContextConnection;
@@ -112,17 +112,17 @@ private:
     bool m_isSuspended { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
 struct WebSharedWorkerObjectHash {
-    static unsigned hash(const WebKit::WebSharedWorker::Object& object) { return DefaultHash<CyberCore::SharedWorkerObjectIdentifier>::hash(object.identifier); }
-    static bool equal(const WebKit::WebSharedWorker::Object& a, const WebKit::WebSharedWorker::Object& b) { return a.identifier == b.identifier; }
+    static unsigned hash(const CyberKit::WebSharedWorker::Object& object) { return DefaultHash<CyberCore::SharedWorkerObjectIdentifier>::hash(object.identifier); }
+    static bool equal(const CyberKit::WebSharedWorker::Object& a, const CyberKit::WebSharedWorker::Object& b) { return a.identifier == b.identifier; }
     static constexpr bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct HashTraits<WebKit::WebSharedWorker::Object> : SimpleClassHashTraits<WebSharedWorkerObjectHash> { };
-template<> struct DefaultHash<WebKit::WebSharedWorker::Object> : WebSharedWorkerObjectHash { };
+template<> struct HashTraits<CyberKit::WebSharedWorker::Object> : SimpleClassHashTraits<WebSharedWorkerObjectHash> { };
+template<> struct DefaultHash<CyberKit::WebSharedWorker::Object> : WebSharedWorkerObjectHash { };
 
 } // namespace WTF

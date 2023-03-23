@@ -42,7 +42,7 @@
 #include <CyberKit/WKBasePlayStation.h>
 #endif
 
-/* WebKit2 shared types */
+/* CyberKit2 shared types */
 
 typedef uint32_t WKTypeID;
 typedef const void* WKTypeRef;
@@ -76,7 +76,7 @@ typedef const struct OpaqueWKUserContentURLPattern* WKUserContentURLPatternRef;
 typedef const struct OpaqueWKWebArchive* WKWebArchiveRef;
 typedef const struct OpaqueWKWebArchiveResource* WKWebArchiveResourceRef;
 
-/* WebKit2 main API types */
+/* CyberKit2 main API types */
 
 typedef const struct OpaqueWKApplicationCacheManager* WKApplicationCacheManagerRef;
 typedef const struct OpaqueWKAuthenticationChallenge* WKAuthenticationChallengeRef;
@@ -148,7 +148,7 @@ typedef const struct OpaqueWKMediaKeySystemPermissionRequest* WKMediaKeySystemPe
 typedef const struct OpaqueWKMediaKeySystemPermissionCallback* WKMediaKeySystemPermissionCallbackRef;
 typedef const struct OpaqueWKQueryPermissionResultCallback* WKQueryPermissionResultCallbackRef;
 
-/* WebKit2 Bundle types */
+/* CyberKit2 Bundle types */
 
 typedef const struct OpaqueWKBundle* WKBundleRef;
 typedef const struct OpaqueWKBundleBackForwardList* WKBundleBackForwardListRef;

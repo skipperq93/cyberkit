@@ -62,7 +62,7 @@ TEST(WKInspectorExtensionHost, RegisterExtension)
     [webView loadHTMLString:@"<head><title>Test page to be inspected</title></head><body><p>Filler content</p></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     auto firstID = [NSUUID UUID].UUIDString;
     auto secondID = [NSUUID UUID].UUIDString;
@@ -75,7 +75,7 @@ TEST(WKInspectorExtensionHost, RegisterExtension)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Double registration.
     pendingCallbackWasCalled = false;
@@ -86,7 +86,7 @@ TEST(WKInspectorExtensionHost, RegisterExtension)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     // Two registrations.
     pendingCallbackWasCalled = false;
@@ -96,7 +96,7 @@ TEST(WKInspectorExtensionHost, RegisterExtension)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 TEST(WKInspectorExtensionHost, UnregisterExtension)
@@ -112,7 +112,7 @@ TEST(WKInspectorExtensionHost, UnregisterExtension)
     [webView loadHTMLString:@"<head><title>Test page to be inspected</title></head><body><p>Filler content</p></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     auto firstID = [NSUUID UUID].UUIDString;
     __block RetainPtr<_WKInspectorExtension> foundExtension;
@@ -130,7 +130,7 @@ TEST(WKInspectorExtensionHost, UnregisterExtension)
             pendingCallbackWasCalled = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
     EXPECT_NOT_NULL(foundExtension.get());
 
     // Re-register an extension.
@@ -146,7 +146,7 @@ TEST(WKInspectorExtensionHost, UnregisterExtension)
             pendingCallbackWasCalled = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
     EXPECT_NOT_NULL(foundExtension.get());
 
     // Unregister an extension twice.
@@ -157,7 +157,7 @@ TEST(WKInspectorExtensionHost, UnregisterExtension)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

@@ -35,13 +35,13 @@
 
 @interface WKPaymentAuthorizationControllerDelegate : WKPaymentAuthorizationDelegate <PKPaymentAuthorizationControllerDelegate, PKPaymentAuthorizationControllerPrivateDelegate>
 
-- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(WebKit::PaymentAuthorizationPresenter&)presenter;
+- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(CyberKit::PaymentAuthorizationPresenter&)presenter;
 
 @end
 
 @implementation WKPaymentAuthorizationControllerDelegate
 
-- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(WebKit::PaymentAuthorizationPresenter&)presenter
+- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(CyberKit::PaymentAuthorizationPresenter&)presenter
 {
     if (!(self = [super _initWithRequest:request presenter:presenter]))
         return nil;
@@ -122,7 +122,7 @@
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 PaymentAuthorizationController::PaymentAuthorizationController(PaymentAuthorizationPresenter::Client& client, PKPaymentRequest *request)
     : PaymentAuthorizationPresenter(client)
@@ -169,6 +169,6 @@ void PaymentAuthorizationController::presentInScene(const String& sceneIdentifie
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(PASSKIT) && PLATFORM(IOS_FAMILY)

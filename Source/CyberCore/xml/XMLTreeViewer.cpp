@@ -56,7 +56,7 @@ void XMLTreeViewer::transformDocumentToTreeView()
 {
     String scriptString = StringImpl::createWithoutCopying(XMLViewer_js, sizeof(XMLViewer_js));
     m_document.frame()->script().evaluateIgnoringException(ScriptSourceCode(scriptString));
-    m_document.frame()->script().evaluateIgnoringException(ScriptSourceCode(AtomString("prepareWebKitXMLViewer('This XML file does not appear to have any style information associated with it. The document tree is shown below.');"_s)));
+    m_document.frame()->script().evaluateIgnoringException(ScriptSourceCode(AtomString("prepareCyberKitXMLViewer('This XML file does not appear to have any style information associated with it. The document tree is shown below.');"_s)));
 
     String cssString = StringImpl::createWithoutCopying(XMLViewer_css, sizeof(XMLViewer_css));
     auto text = m_document.createTextNode(WTFMove(cssString));

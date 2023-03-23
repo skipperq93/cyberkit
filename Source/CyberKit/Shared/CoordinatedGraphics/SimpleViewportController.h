@@ -31,7 +31,7 @@
 #include <CyberCore/ViewportArguments.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SimpleViewportController {
     WTF_MAKE_NONCOPYABLE(SimpleViewportController);
@@ -73,6 +73,6 @@ private:
     CyberCore::ViewportAttributes m_rawAttributes;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebGeolocationPosition : public API::ObjectImpl<API::Object::Type::GeolocationPosition> {
 public:
@@ -63,6 +63,6 @@ private:
     CyberCore::GeolocationPositionData m_corePosition;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebGeolocationPosition_h

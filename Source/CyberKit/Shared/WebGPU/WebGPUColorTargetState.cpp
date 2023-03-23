@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUColorTargetState.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ColorTargetState> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ColorTargetState& colorTargetState)
 {
@@ -58,6 +58,6 @@ std::optional<PAL::WebGPU::ColorTargetState> ConvertFromBackingContext::convertF
     return { { colorTargetState.format, WTFMove(blend), colorTargetState.writeMask } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -35,7 +35,7 @@
 #include <CyberKit/WKBundleBackForwardListItem.h>
 #include <CyberKit/WKWebArchive.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class PasteboardNotificationsTest : public InjectedBundleTest {
 public:
@@ -84,6 +84,6 @@ void PasteboardNotificationsTest::didCreatePage(WKBundleRef bundle, WKBundlePage
     WKBundlePageSetEditorClient(page, &pageEditorClient.base);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

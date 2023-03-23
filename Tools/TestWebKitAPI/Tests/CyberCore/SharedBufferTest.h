@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class FragmentedSharedBufferTest : public testing::Test {
 public:
@@ -48,4 +48,4 @@ class SharedBufferChunkReaderTest : public testing::Test {
 };
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

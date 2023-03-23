@@ -2191,7 +2191,7 @@ void FrameLoader::commitProvisionalLoad()
         // Main resource delegates were already sent, so we skip the first response here.
         for (unsigned i = 1; i < m_documentLoader->responses().size(); ++i) {
             const auto& response = m_documentLoader->responses()[i];
-            // FIXME: If the WebKit client changes or cancels the request, this is not respected.
+            // FIXME: If the CyberKit client changes or cancels the request, this is not respected.
             ResourceError error;
             ResourceLoaderIdentifier identifier;
             ResourceRequest request(response.url());
@@ -3266,7 +3266,7 @@ ResourceLoaderIdentifier FrameLoader::loadResourceSynchronously(const ResourceRe
                 ContentExtensions::applyResultsToRequest(WTFMove(results), page, newRequest);
                 if (blockedLoad) {
                     newRequest = { };
-                    error = ResourceError(errorDomainWebKitInternal, 0, initialRequest.url(), emptyString());
+                    error = ResourceError(errorDomainCyberKitInternal, 0, initialRequest.url(), emptyString());
                     response = { };
                     data = nullptr;
                 }

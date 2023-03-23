@@ -64,7 +64,7 @@ IGNORE_WARNINGS_BEGIN("objc-property-no-attribute")
 #import <AVKit/AVPlayerLayerView.h>
 IGNORE_WARNINGS_END
 #import <AVKit/AVPlayerViewController_Private.h>
-#import <AVKit/AVPlayerViewController_WebKitOnly.h>
+#import <AVKit/AVPlayerViewController_CyberKitOnly.h>
 #endif
 
 #if PLATFORM(IOS) || PLATFORM(MACCATALYST)
@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @class AVPlayerLayerView;
-@interface AVPlayerViewController (AVPlayerViewController_WebKitOnly_Internal)
+@interface AVPlayerViewController (AVPlayerViewController_CyberKitOnly_Internal)
 - (void)enterFullScreenAnimated:(BOOL)animated completionHandler:(void (^)(BOOL success, NSError * __nullable error))completionHandler;
 - (void)exitFullScreenAnimated:(BOOL)animated completionHandler:(void (^)(BOOL success, NSError * __nullable error))completionHandler;
 - (void)startPictureInPicture;
@@ -98,10 +98,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
 @property (nonatomic, readonly, getter=isPictureInPictureSuspended) BOOL pictureInPictureSuspended;
 @property (nonatomic, readonly) BOOL pictureInPictureWasStartedWhenEnteringBackground;
-- (void)setWebKitOverrideRouteSharingPolicy:(NSUInteger)routeSharingPolicy routingContextUID:(NSString *)routingContextUID;
+- (void)setCyberKitOverrideRouteSharingPolicy:(NSUInteger)routeSharingPolicy routingContextUID:(NSString *)routingContextUID;
 @end
 
-@protocol AVPlayerViewControllerDelegate_WebKitOnly <AVPlayerViewControllerDelegate>
+@protocol AVPlayerViewControllerDelegate_CyberKitOnly <AVPlayerViewControllerDelegate>
 @optional
 typedef NS_ENUM(NSInteger, AVPlayerViewControllerExitFullScreenReason) {
     AVPlayerViewControllerExitFullScreenReasonDoneButtonTapped,
@@ -118,8 +118,8 @@ NS_ASSUME_NONNULL_END
 
 #if PLATFORM(APPLETV)
 NS_ASSUME_NONNULL_BEGIN
-@interface AVPlayerViewController (AVPlayerViewController_WebKitOnly_OverrideRouteSharingPolicy)
-- (void)setWebKitOverrideRouteSharingPolicy:(NSUInteger)routeSharingPolicy routingContextUID:(NSString *)routingContextUID;
+@interface AVPlayerViewController (AVPlayerViewController_CyberKitOnly_OverrideRouteSharingPolicy)
+- (void)setCyberKitOverrideRouteSharingPolicy:(NSUInteger)routeSharingPolicy routingContextUID:(NSString *)routingContextUID;
 @end
 NS_ASSUME_NONNULL_END
 #endif
@@ -184,7 +184,7 @@ typedef NS_ENUM(NSInteger, AVBackgroundViewTintEffectStyle) {
 - (void)stopRoutingVideoToPictureInPicturePlayerLayerView;
 @end
 
-@protocol AVPlayerViewControllerDelegate_WebKitOnly <AVPlayerViewControllerDelegate>
+@protocol AVPlayerViewControllerDelegate_CyberKitOnly <AVPlayerViewControllerDelegate>
 @optional
 typedef NS_ENUM(NSInteger, AVPlayerViewControllerExitFullScreenReason) {
     AVPlayerViewControllerExitFullScreenReasonDoneButtonTapped,
@@ -210,7 +210,7 @@ typedef NS_ENUM(NSInteger, AVPlayerViewControllerExitFullScreenReason) {
 @property (nonatomic, strong, nullable) AVPlayerController *playerController;
 @property (nonatomic, readonly, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
 @property (nonatomic, readonly) BOOL pictureInPictureWasStartedWhenEnteringBackground;
-- (void)setWebKitOverrideRouteSharingPolicy:(NSUInteger)routeSharingPolicy routingContextUID:(NSString *)routingContextUID;
+- (void)setCyberKitOverrideRouteSharingPolicy:(NSUInteger)routeSharingPolicy routingContextUID:(NSString *)routingContextUID;
 @end
 
 NS_ASSUME_NONNULL_END
@@ -220,7 +220,7 @@ NS_ASSUME_NONNULL_END
 #import <AVKit/AVPlayerView.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AVPlayerView (WebKitFullscreenSPI)
+@interface AVPlayerView (CyberKitFullscreenSPI)
 @property AVPlayerController *playerController;
 @property (readonly) BOOL isFullScreen;
 - (void)enterFullScreen:(id)sender;
@@ -341,7 +341,7 @@ NS_ASSUME_NONNULL_END
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && HAVE(AVROUTEPICKERVIEW)
 #if USE(APPLE_INTERNAL_SDK)
 #import <AVKit/AVRoutePickerView_Private.h>
-#import <AVKit/AVRoutePickerView_WebKitOnly.h>
+#import <AVKit/AVRoutePickerView_CyberKitOnly.h>
 #else
 NS_ASSUME_NONNULL_BEGIN
 

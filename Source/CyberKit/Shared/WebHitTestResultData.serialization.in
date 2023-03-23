@@ -22,13 +22,13 @@
 
 headers: "ArgumentCoders.h"
 
-[Nested] enum class WebKit::WebHitTestResultData::IsScrollbar : uint8_t {
+[Nested] enum class CyberKit::WebHitTestResultData::IsScrollbar : uint8_t {
     No,
     Vertical,
     Horizontal
 };
 
-struct WebKit::WebHitTestResultData {
+struct CyberKit::WebHitTestResultData {
     String absoluteImageURL;
     String absolutePDFURL;
     String absoluteLinkURL;
@@ -38,7 +38,7 @@ struct WebKit::WebHitTestResultData {
     String linkSuggestedFilename;
     bool isContentEditable;
     CyberCore::IntRect elementBoundingBox;
-    WebKit::WebHitTestResultData::IsScrollbar isScrollbar;
+    CyberKit::WebHitTestResultData::IsScrollbar isScrollbar;
     bool isSelected;
     bool isTextNode;
     bool isOverTextInsideFormControlElement;
@@ -47,12 +47,12 @@ struct WebKit::WebHitTestResultData {
     String lookupText;
     String toolTipText;
     String imageText;
-    std::optional<WebKit::SharedMemory::Handle> getImageSharedMemoryHandle();
-    RefPtr<WebKit::ShareableBitmap> imageBitmap;
+    std::optional<CyberKit::SharedMemory::Handle> getImageSharedMemoryHandle();
+    RefPtr<CyberKit::ShareableBitmap> imageBitmap;
     String sourceImageMIMEType;
     
 #if PLATFORM(MAC)
-    WebKit::WebHitTestResultPlatformData platformData;
+    CyberKit::WebHitTestResultPlatformData platformData;
 #endif
 
     CyberCore::DictionaryPopupInfo dictionaryPopupInfo;

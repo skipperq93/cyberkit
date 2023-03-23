@@ -20,16 +20,16 @@
 #include "config.h"
 
 #include "LoadTrackingTest.h"
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include <CyberCore/SoupVersioning.h>
 
-static WebKitTestServer* kHttpsServer;
-static WebKitTestServer* kHttpServer;
+static CyberKitTestServer* kHttpsServer;
+static CyberKitTestServer* kHttpServer;
 
-static const char* indexHTML = "<html><body>Testing WebKit2GTK+ SSL</body></htmll>";
+static const char* indexHTML = "<html><body>Testing CyberKit2GTK+ SSL</body></htmll>";
 static const char* insecureContentHTML = "<html><script src=\"%s\"></script><body><p>Text + image <img src=\"%s\" align=\"right\"/></p></body></html>";
-static const char TLSExpectedSuccessTitle[] = "WebKit2Gtk+ TLS permission test";
-static const char TLSSuccessHTMLString[] = "<html><head><title>WebKit2Gtk+ TLS permission test</title></head><body></body></html>";
+static const char TLSExpectedSuccessTitle[] = "CyberKit2Gtk+ TLS permission test";
+static const char TLSSuccessHTMLString[] = "<html><head><title>CyberKit2Gtk+ TLS permission test</title></head><body></body></html>";
 
 class SSLTest: public LoadTrackingTest {
 public:
@@ -68,11 +68,11 @@ public:
 static void testSSL(SSLTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #endif
 
@@ -109,7 +109,7 @@ public:
         g_signal_connect(m_webView, "insecure-content-detected", G_CALLBACK(insecureContentDetectedCallback), this);
     }
 
-    static void insecureContentDetectedCallback(WebKitWebView* webView, WebKitInsecureContentEvent event, InsecureContentTest* test)
+    static void insecureContentDetectedCallback(CyberKitWebView* webView, CyberKitInsecureContentEvent event, InsecureContentTest* test)
     {
         g_assert_true(webView == test->m_webView);
 
@@ -127,11 +127,11 @@ public:
 static void testInsecureContent(InsecureContentTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #endif
 
@@ -185,7 +185,7 @@ static void testTLSErrorsPolicy(SSLTest* test, gconstpointer)
 
     // An ephemeral web view should keep the same network settings.
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
+    GRefPtr<CyberKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
     webkit_network_session_set_tls_errors_policy(ephemeralSession.get(), webkit_network_session_get_tls_errors_policy(test->m_networkSession.get()));
 #endif
     auto webView = Test::adoptView(g_object_new(WEBKIT_TYPE_WEB_VIEW,
@@ -221,11 +221,11 @@ static void testTLSErrorsPolicy(SSLTest* test, gconstpointer)
 static void testTLSErrorsRedirect(SSLTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #endif
 
@@ -244,7 +244,7 @@ static void testTLSErrorsRedirect(SSLTest* test, gconstpointer)
 #endif
 }
 
-static gboolean webViewAuthenticationCallback(WebKitWebView*, WebKitAuthenticationRequest* request)
+static gboolean webViewAuthenticationCallback(CyberKitWebView*, CyberKitAuthenticationRequest* request)
 {
     g_assert_not_reached();
     return TRUE;
@@ -254,11 +254,11 @@ static gboolean webViewAuthenticationCallback(WebKitWebView*, WebKitAuthenticati
 static void testTLSErrorsHTTPAuth(SSLTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #endif
 
@@ -311,11 +311,11 @@ private:
 static void testLoadFailedWithTLSErrors(TLSErrorsTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #endif
 
@@ -357,7 +357,7 @@ class TLSSubresourceTest : public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(TLSSubresourceTest);
 
-    static void resourceLoadStartedCallback(WebKitWebView* webView, WebKitWebResource* resource, WebKitURIRequest* request, TLSSubresourceTest* test)
+    static void resourceLoadStartedCallback(CyberKitWebView* webView, CyberKitWebResource* resource, CyberKitURIRequest* request, TLSSubresourceTest* test)
     {
         if (webkit_web_view_get_main_resource(test->m_webView) == resource)
             return;
@@ -375,23 +375,23 @@ public:
         g_signal_connect(m_webView, "resource-load-started", G_CALLBACK(resourceLoadStartedCallback), this);
     }
 
-    static void subresourceFailedCallback(WebKitWebResource*, GError*)
+    static void subresourceFailedCallback(CyberKitWebResource*, GError*)
     {
         g_assert_not_reached();
     }
 
-    static void subresourceFailedWithTLSErrorsCallback(WebKitWebResource* resource, GTlsCertificate* certificate, GTlsCertificateFlags tlsErrors, TLSSubresourceTest* test)
+    static void subresourceFailedWithTLSErrorsCallback(CyberKitWebResource* resource, GTlsCertificate* certificate, GTlsCertificateFlags tlsErrors, TLSSubresourceTest* test)
     {
         test->subresourceFailedWithTLSErrors(resource, certificate, tlsErrors);
     }
 
-    void subresourceLoadStarted(WebKitWebResource* resource)
+    void subresourceLoadStarted(CyberKitWebResource* resource)
     {
         g_signal_connect(resource, "failed", G_CALLBACK(subresourceFailedCallback), nullptr);
         g_signal_connect(resource, "failed-with-tls-errors", G_CALLBACK(subresourceFailedWithTLSErrorsCallback), this);
     }
 
-    void subresourceFailedWithTLSErrors(WebKitWebResource* resource, GTlsCertificate* certificate, GTlsCertificateFlags tlsErrors)
+    void subresourceFailedWithTLSErrors(CyberKitWebResource* resource, GTlsCertificate* certificate, GTlsCertificateFlags tlsErrors)
     {
         m_certificate = certificate;
         m_tlsErrors = tlsErrors;
@@ -410,11 +410,11 @@ public:
 static void testSubresourceLoadFailedWithTLSErrors(TLSSubresourceTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #endif
 
@@ -486,7 +486,7 @@ public:
         static_cast<WebSocketTest*>(userData)->m_events |= WebSocketTest::EventFlags::DidServerCompleteHandshake;
     }
 
-    static void webSocketTestResultCallback(WebKitUserContentManager*, WebKitJavascriptResult* javascriptResult, WebSocketTest* test)
+    static void webSocketTestResultCallback(CyberKitUserContentManager*, CyberKitJavascriptResult* javascriptResult, WebSocketTest* test)
     {
         GUniquePtr<char> event(WebViewTest::javascriptResultToCString(javascriptResult));
         if (!g_strcmp0(event.get(), "open"))
@@ -498,7 +498,7 @@ public:
         test->quitMainLoop();
     }
 
-    unsigned connectToServerAndWaitForEvents(WebKitTestServer* server)
+    unsigned connectToServerAndWaitForEvents(CyberKitTestServer* server)
     {
         m_events = 0;
 
@@ -516,11 +516,11 @@ public:
 static void testWebSocketTLSErrors(WebSocketTest* test, gconstpointer)
 {
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_FAIL);
 #endif
 
@@ -606,13 +606,13 @@ public:
         g_signal_connect(message, "accept-certificate", G_CALLBACK(acceptCertificateCallback), test);
     }
 
-    static gboolean authenticateCallback(WebKitWebView*, WebKitAuthenticationRequest* request, ClientSideCertificateTestBase* test)
+    static gboolean authenticateCallback(CyberKitWebView*, CyberKitAuthenticationRequest* request, ClientSideCertificateTestBase* test)
     {
         test->authenticate(request);
         return TRUE;
     }
 
-    ClientSideCertificateTestBase(WebKitWebView* webView)
+    ClientSideCertificateTestBase(CyberKitWebView* webView)
     {
         CString resourcesDir = Test::getResourcesDir();
         GUniquePtr<char> sslCertificateFile(g_build_filename(resourcesDir.data(), "test-cert.pem", nullptr));
@@ -632,7 +632,7 @@ public:
         g_signal_handlers_disconnect_by_data(kHttpsServer->soupServer(), this);
     }
 
-    virtual void authenticate(WebKitAuthenticationRequest*) = 0;
+    virtual void authenticate(CyberKitAuthenticationRequest*) = 0;
 
     bool acceptCertificate(GTlsCertificateFlags errors)
     {
@@ -658,32 +658,32 @@ public:
     {
     }
 
-    void authenticate(WebKitAuthenticationRequest* request) override
+    void authenticate(CyberKitAuthenticationRequest* request) override
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
         m_authenticationRequest = request;
         g_main_loop_quit(m_mainLoop);
     }
 
-    WebKitAuthenticationRequest* waitForAuthenticationRequest()
+    CyberKitAuthenticationRequest* waitForAuthenticationRequest()
     {
         m_authenticationRequest = nullptr;
         g_main_loop_run(m_mainLoop);
         return m_authenticationRequest.get();
     }
 
-    GRefPtr<WebKitAuthenticationRequest> m_authenticationRequest;
+    GRefPtr<CyberKitAuthenticationRequest> m_authenticationRequest;
 };
 
 static void testClientSideCertificate(ClientSideCertificateTest* test, gconstpointer)
 {
     // Ignore server certificate errors.
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #endif
 
@@ -727,7 +727,7 @@ static void testClientSideCertificate(ClientSideCertificateTest* test, gconstpoi
     // Complete the request with a credential with no certificate.
     test->loadURI(kHttpsServer->getURIForPath("/").data());
     request = test->waitForAuthenticationRequest();
-    WebKitCredential* credential = webkit_credential_new_for_certificate(nullptr, WEBKIT_CREDENTIAL_PERSISTENCE_NONE);
+    CyberKitCredential* credential = webkit_credential_new_for_certificate(nullptr, WEBKIT_CREDENTIAL_PERSISTENCE_NONE);
     webkit_authentication_request_authenticate(request, credential);
     webkit_credential_free(credential);
     test->waitUntilLoadFinished();
@@ -786,11 +786,11 @@ public:
     {
     }
 
-    void authenticate(WebKitAuthenticationRequest* request) override
+    void authenticate(CyberKitAuthenticationRequest* request) override
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
 
-        WebKitCredential* credential = webkit_credential_new_for_certificate(m_clientCertificate.get(), WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
+        CyberKitCredential* credential = webkit_credential_new_for_certificate(m_clientCertificate.get(), WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
         webkit_authentication_request_authenticate(request, credential);
         webkit_credential_free(credential);
     }
@@ -800,11 +800,11 @@ static void testWebSocketClientSideCertificate(WebSocketClientSideCertificateTes
 {
     // Ignore server certificate errors.
 #if ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_network_session_get_tls_errors_policy(test->m_networkSession.get());
     webkit_network_session_set_tls_errors_policy(test->m_networkSession.get(), WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #else
     auto* websiteDataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
-    WebKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
+    CyberKitTLSErrorsPolicy originalPolicy = webkit_website_data_manager_get_tls_errors_policy(websiteDataManager);
     webkit_website_data_manager_set_tls_errors_policy(websiteDataManager, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #endif
 
@@ -919,24 +919,24 @@ static void httpServerCallback(SoupServer* server, SoupServerMessage* message, c
 
 void beforeAll()
 {
-    kHttpsServer = new WebKitTestServer(WebKitTestServer::ServerHTTPS);
+    kHttpsServer = new CyberKitTestServer(CyberKitTestServer::ServerHTTPS);
     kHttpsServer->run(httpsServerCallback);
 
-    kHttpServer = new WebKitTestServer();
+    kHttpServer = new CyberKitTestServer();
     kHttpServer->run(httpServerCallback);
 
-    SSLTest::add("WebKitWebView", "ssl", testSSL);
-    InsecureContentTest::add("WebKitWebView", "insecure-content", testInsecureContent);
-    SSLTest::add("WebKitWebView", "tls-errors-policy", testTLSErrorsPolicy);
-    SSLTest::add("WebKitWebView", "tls-errors-redirect-to-http", testTLSErrorsRedirect);
-    SSLTest::add("WebKitWebView", "tls-http-auth", testTLSErrorsHTTPAuth);
-    TLSSubresourceTest::add("WebKitWebView", "tls-subresource", testSubresourceLoadFailedWithTLSErrors);
-    TLSErrorsTest::add("WebKitWebView", "load-failed-with-tls-errors", testLoadFailedWithTLSErrors);
-    WebSocketTest::add("WebKitWebView", "web-socket-tls-errors", testWebSocketTLSErrors);
-    EphemeralSSLTest::add("WebKitWebView", "ephemeral-tls-errors", testTLSErrorsEphemeral);
+    SSLTest::add("CyberKitWebView", "ssl", testSSL);
+    InsecureContentTest::add("CyberKitWebView", "insecure-content", testInsecureContent);
+    SSLTest::add("CyberKitWebView", "tls-errors-policy", testTLSErrorsPolicy);
+    SSLTest::add("CyberKitWebView", "tls-errors-redirect-to-http", testTLSErrorsRedirect);
+    SSLTest::add("CyberKitWebView", "tls-http-auth", testTLSErrorsHTTPAuth);
+    TLSSubresourceTest::add("CyberKitWebView", "tls-subresource", testSubresourceLoadFailedWithTLSErrors);
+    TLSErrorsTest::add("CyberKitWebView", "load-failed-with-tls-errors", testLoadFailedWithTLSErrors);
+    WebSocketTest::add("CyberKitWebView", "web-socket-tls-errors", testWebSocketTLSErrors);
+    EphemeralSSLTest::add("CyberKitWebView", "ephemeral-tls-errors", testTLSErrorsEphemeral);
 #if !USE(SOUP2)
-    ClientSideCertificateTest::add("WebKitWebView", "client-side-certificate", testClientSideCertificate);
-    WebSocketClientSideCertificateTest::add("WebKitWebView", "web-socket-client-side-certificate", testWebSocketClientSideCertificate);
+    ClientSideCertificateTest::add("CyberKitWebView", "client-side-certificate", testClientSideCertificate);
+    WebSocketClientSideCertificateTest::add("CyberKitWebView", "web-socket-client-side-certificate", testWebSocketClientSideCertificate);
 #endif
 }
 

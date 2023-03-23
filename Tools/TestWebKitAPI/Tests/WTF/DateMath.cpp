@@ -28,7 +28,7 @@
 #include "Test.h"
 #include <wtf/DateMath.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Note: The results of these function look weird if you do not understand the following mappings:
 // dayOfWeek: [0, 6] 0 being Monday, day: [1, 31], month: [0, 11], year: ex: 2011,
@@ -205,4 +205,4 @@ TEST(WTF_DateMath, calculateLocalTimeOffset)
     EXPECT_EQ(-28800000, dstEnd2018.offset);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

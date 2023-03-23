@@ -36,7 +36,7 @@ class UniqueIDBDatabaseTransaction;
 }
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class IDBStorageConnectionToClient;
 
@@ -59,4 +59,4 @@ private:
     HashMap<CyberCore::IDBResourceIdentifier, WeakPtr<CyberCore::IDBServer::UniqueIDBDatabaseTransaction>> m_transactions;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

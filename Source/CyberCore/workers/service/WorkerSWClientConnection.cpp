@@ -114,7 +114,7 @@ WorkerSWClientConnection::~WorkerSWClientConnection()
 
     auto retrieveRecordResponseBodyCallbacks = std::exchange(m_retrieveRecordResponseBodyCallbacks, { });
     for (auto& callback : retrieveRecordResponseBodyCallbacks.values())
-        callback(makeUnexpected(ResourceError { errorDomainWebKitInternal, 0, { }, "context stopped"_s }));
+        callback(makeUnexpected(ResourceError { errorDomainCyberKitInternal, 0, { }, "context stopped"_s }));
 }
 
 void WorkerSWClientConnection::matchRegistration(SecurityOriginData&& topOrigin, const URL& clientURL, RegistrationCallback&& callback)

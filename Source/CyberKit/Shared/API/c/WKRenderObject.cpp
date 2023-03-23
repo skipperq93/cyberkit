@@ -29,7 +29,7 @@
 #include "APIArray.h"
 #include "WKAPICast.h"
 
-// These functions should be kept around for compatibility with SafariForWebKitDevelopment.
+// These functions should be kept around for compatibility with SafariForCyberKitDevelopment.
 void WKRenderObjectGetTypeID()
 {
 }

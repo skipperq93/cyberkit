@@ -28,7 +28,7 @@
 
 #if PLATFORM(MAC)
 
-namespace WebKit {
+namespace CyberKit {
 
 class PasteboardTypes {
 public:
@@ -45,7 +45,7 @@ public:
     static NSArray *forSelection();
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)
 

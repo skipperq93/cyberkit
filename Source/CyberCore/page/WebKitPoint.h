@@ -29,15 +29,15 @@
 
 namespace CyberCore {
 
-class WebKitPoint : public RefCounted<WebKitPoint> {
+class CyberKitPoint : public RefCounted<CyberKitPoint> {
 public:
-    static Ref<WebKitPoint> create()
+    static Ref<CyberKitPoint> create()
     {
-        return adoptRef(*new WebKitPoint);
+        return adoptRef(*new CyberKitPoint);
     }
-    static Ref<WebKitPoint> create(float x, float y)
+    static Ref<CyberKitPoint> create(float x, float y)
     {
-        return adoptRef(*new WebKitPoint(x, y));
+        return adoptRef(*new CyberKitPoint(x, y));
     }
 
     float x() const { return m_x; }
@@ -47,13 +47,13 @@ public:
     void setY(float y) { m_y = y; }
 
 private:
-    WebKitPoint(float x, float y)
+    CyberKitPoint(float x, float y)
         : m_x(std::isnan(x) ? 0 : x)
         , m_y(std::isnan(y) ? 0 : y)
     {
     }
 
-    WebKitPoint()
+    CyberKitPoint()
     {
     }
 

@@ -37,7 +37,7 @@ namespace CyberCore {
 class BlobRegistryImpl;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoadScheduler;
 class NetworkProcess;
@@ -102,4 +102,4 @@ private:
     CyberCore::ResourceRequest m_currentRequest; // Updated on redirects.
 };
 
-} // namespace WebKit
+} // namespace CyberKit

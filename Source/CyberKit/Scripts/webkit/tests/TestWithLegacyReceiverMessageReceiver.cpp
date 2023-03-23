@@ -66,7 +66,7 @@
 #include "JSIPCBinding.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void TestWithLegacyReceiver::didReceiveTestWithLegacyReceiverMessage(IPC::Connection& connection, IPC::Decoder& decoder)
 {
@@ -152,7 +152,7 @@ bool TestWithLegacyReceiver::didReceiveSyncTestWithLegacyReceiverMessage(IPC::Co
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if ENABLE(IPC_TESTING_API)
 

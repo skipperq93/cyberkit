@@ -20,13 +20,13 @@
 
 #include "config.h"
 
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
 #include <CyberCore/GUniquePtrSoup.h>
 #include <CyberCore/SoupVersioning.h>
 #include <glib/gstdio.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 static const char* kFirstPartyDomain = "127.0.0.1";
 static const char* kThirdPartyDomain = "localhost";
@@ -40,7 +40,7 @@ static const char* kCookieValueNew = "new-value";
 
 static const char* kIndexHtmlFormat =
     "<html><body>"
-    " <p>WebKitGTK Cookie Manager test</p>"
+    " <p>CyberKitGTK Cookie Manager test</p>"
     " <img src='http://localhost:%u/image.png' width=5 height=5></img>"
     "</body></html>";
 
@@ -48,7 +48,7 @@ class CookieManagerTest: public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(CookieManagerTest);
 
-    static void cookiesChangedCallback(WebKitCookieManager*, CookieManagerTest* test)
+    static void cookiesChangedCallback(CyberKitCookieManager*, CookieManagerTest* test)
     {
         test->m_cookiesChanged = true;
         if (test->m_finishLoopWhenCookiesChange && !(--test->m_cookiesExpectedToChangeCount))
@@ -83,7 +83,7 @@ public:
             g_unlink(m_cookiesSQLiteFile.get());
     }
 
-    void setPersistentStorage(WebKitCookiePersistentStorage storage)
+    void setPersistentStorage(CyberKitCookiePersistentStorage storage)
     {
         const char* filename = 0;
         switch (storage) {
@@ -106,7 +106,7 @@ public:
     static void getAcceptPolicyReadyCallback(GObject* object, GAsyncResult* result, gpointer userData)
     {
         GUniqueOutPtr<GError> error;
-        WebKitCookieAcceptPolicy policy = webkit_cookie_manager_get_accept_policy_finish(WEBKIT_COOKIE_MANAGER(object), result, &error.outPtr());
+        CyberKitCookieAcceptPolicy policy = webkit_cookie_manager_get_accept_policy_finish(WEBKIT_COOKIE_MANAGER(object), result, &error.outPtr());
         g_assert_no_error(error.get());
 
         CookieManagerTest* test = static_cast<CookieManagerTest*>(userData);
@@ -114,7 +114,7 @@ public:
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    WebKitCookieAcceptPolicy getAcceptPolicy()
+    CyberKitCookieAcceptPolicy getAcceptPolicy()
     {
         m_acceptPolicy = WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY;
         webkit_cookie_manager_get_accept_policy(m_cookieManager, 0, getAcceptPolicyReadyCallback, this);
@@ -178,7 +178,7 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    void setAcceptPolicy(WebKitCookieAcceptPolicy policy)
+    void setAcceptPolicy(CyberKitCookieAcceptPolicy policy)
     {
         webkit_cookie_manager_set_accept_policy(m_cookieManager, policy);
     }
@@ -207,7 +207,7 @@ public:
         GUniquePtr<GList> dataList = fetch();
         GPtrArray* domains = g_ptr_array_sized_new(g_list_length(dataList.get()));
         for (GList* item = dataList.get(); item; item = g_list_next(item)) {
-            auto* data = static_cast<WebKitWebsiteData*>(item->data);
+            auto* data = static_cast<CyberKitWebsiteData*>(item->data);
             g_ptr_array_add(domains, g_strdup(webkit_website_data_get_name(data)));
             webkit_website_data_unref(data);
         }
@@ -234,14 +234,14 @@ public:
         GUniquePtr<GList> dataList = fetch();
         GUniquePtr<GList> cookies;
         for (GList* item = dataList.get(); item; item = g_list_next(item)) {
-            auto* data = static_cast<WebKitWebsiteData*>(item->data);
+            auto* data = static_cast<CyberKitWebsiteData*>(item->data);
             if (!g_strcmp0(webkit_website_data_get_name(data), domain))
                 cookies.reset(g_list_prepend(cookies.get(), webkit_website_data_ref(data)));
             webkit_website_data_unref(data);
         }
         webkit_website_data_manager_remove(m_websiteDataManager, WEBKIT_WEBSITE_DATA_COOKIES, cookies.get(), nullptr, nullptr, nullptr);
         g_list_foreach(cookies.get(), [](gpointer data, gpointer) {
-            webkit_website_data_unref(static_cast<WebKitWebsiteData*>(data));
+            webkit_website_data_unref(static_cast<CyberKitWebsiteData*>(data));
         }, nullptr);
     }
 
@@ -268,9 +268,9 @@ public:
 #endif
     }
 
-    WebKitCookieManager* m_cookieManager { nullptr };
-    WebKitWebsiteDataManager* m_websiteDataManager { nullptr };
-    WebKitCookieAcceptPolicy m_acceptPolicy { WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY };
+    CyberKitCookieManager* m_cookieManager { nullptr };
+    CyberKitWebsiteDataManager* m_websiteDataManager { nullptr };
+    CyberKitCookieAcceptPolicy m_acceptPolicy { WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY };
     char** m_domains { nullptr };
     GList* m_cookies { nullptr };
     bool m_cookiesChanged { false };
@@ -684,7 +684,7 @@ static void testCookieManagerPersistentStorageDeleteAll(CookieManagerTest* test,
     g_assert_cmpint(g_strv_length(domains), ==, 0);
 }
 
-static void ephemeralViewloadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, WebViewTest* test)
+static void ephemeralViewloadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, WebViewTest* test)
 {
     if (loadEvent != WEBKIT_LOAD_FINISHED)
         return;
@@ -701,7 +701,7 @@ static void testCookieManagerEphemeral(CookieManagerTest* test, gconstpointer)
     g_assert_cmpint(g_strv_length(domains), ==, 0);
 
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
+    GRefPtr<CyberKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
 #endif
     auto webView = Test::adoptView(g_object_new(WEBKIT_TYPE_WEB_VIEW,
 #if PLATFORM(WPE)
@@ -750,7 +750,7 @@ static void testCookieManagerEphemeral(CookieManagerTest* test, gconstpointer)
         GUniquePtr<GList> domains(webkit_website_data_manager_fetch_finish(WEBKIT_WEBSITE_DATA_MANAGER(object), result, nullptr));
         g_assert_nonnull(domains);
         g_assert_cmpint(g_list_length(domains.get()), ==, 1);
-        auto* data = static_cast<WebKitWebsiteData*>(domains.get()->data);
+        auto* data = static_cast<CyberKitWebsiteData*>(domains.get()->data);
         g_assert_cmpstr(webkit_website_data_get_name(data), ==, kFirstPartyDomain);
         webkit_website_data_unref(data);
         test->quitMainLoop();
@@ -815,19 +815,19 @@ static void serverCallback(SoupServer* server, SoupServerMessage* message, const
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
-    CookieManagerTest::add("WebKitCookieManager", "accept-policy", testCookieManagerAcceptPolicy);
-    CookieManagerTest::add("WebKitCookieManager", "add-cookie", testCookieManagerAddCookie);
-    CookieManagerTest::add("WebKitCookieManager", "get-cookies", testCookieManagerGetCookies);
-    CookieManagerTest::add("WebKitCookieManager", "delete-cookie", testCookieManagerDeleteCookie);
-    CookieManagerTest::add("WebKitCookieManager", "delete-cookies", testCookieManagerDeleteCookies);
-    CookieManagerTest::add("WebKitCookieManager", "cookies-changed", testCookieManagerCookiesChanged);
-    CookiePersistentStorageTest::add("WebKitCookieManager", "persistent-storage", testCookieManagerPersistentStorage);
-    CookieManagerTest::add("WebKitCookieManager", "persistent-storage-delete-all", testCookieManagerPersistentStorageDeleteAll);
-    CookieManagerTest::add("WebKitCookieManager", "ephemeral", testCookieManagerEphemeral);
-    CookieManagerTest::add("WebKitCookieManager", "long-expires", testCookieManagerLongExpires);
+    CookieManagerTest::add("CyberKitCookieManager", "accept-policy", testCookieManagerAcceptPolicy);
+    CookieManagerTest::add("CyberKitCookieManager", "add-cookie", testCookieManagerAddCookie);
+    CookieManagerTest::add("CyberKitCookieManager", "get-cookies", testCookieManagerGetCookies);
+    CookieManagerTest::add("CyberKitCookieManager", "delete-cookie", testCookieManagerDeleteCookie);
+    CookieManagerTest::add("CyberKitCookieManager", "delete-cookies", testCookieManagerDeleteCookies);
+    CookieManagerTest::add("CyberKitCookieManager", "cookies-changed", testCookieManagerCookiesChanged);
+    CookiePersistentStorageTest::add("CyberKitCookieManager", "persistent-storage", testCookieManagerPersistentStorage);
+    CookieManagerTest::add("CyberKitCookieManager", "persistent-storage-delete-all", testCookieManagerPersistentStorageDeleteAll);
+    CookieManagerTest::add("CyberKitCookieManager", "ephemeral", testCookieManagerEphemeral);
+    CookieManagerTest::add("CyberKitCookieManager", "long-expires", testCookieManagerLongExpires);
 }
 
 void afterAll()

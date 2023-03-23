@@ -67,7 +67,7 @@
 #import <UIKit/UIResponder_Private.h>
 #import <UIKit/UIScene_Private.h>
 #import <UIKit/UIScrollEvent_Private.h>
-#import <UIKit/UIScrollView_ForWebKitOnly.h>
+#import <UIKit/UIScrollView_ForCyberKitOnly.h>
 #import <UIKit/UIScrollView_Private.h>
 #import <UIKit/UIStringDrawing_Private.h>
 #import <UIKit/UITableViewCell_Private.h>
@@ -109,7 +109,7 @@
 
 #if USE(UICONTEXTMENU)
 #import <UIKit/UIContextMenuInteraction_ForSpringBoardOnly.h>
-#import <UIKit/UIContextMenuInteraction_ForWebKitOnly.h>
+#import <UIKit/UIContextMenuInteraction_ForCyberKitOnly.h>
 #import <UIKit/UIContextMenuInteraction_Private.h>
 #import <UIKit/UIMenu_Private.h>
 #endif
@@ -146,7 +146,7 @@
 #endif
 
 #if HAVE(UI_POINTER_INTERACTION)
-#import <UIKit/UIPointerInteraction_ForWebKitOnly.h>
+#import <UIKit/UIPointerInteraction_ForCyberKitOnly.h>
 #import <UIKit/UIPointerStyle_Private.h>
 #endif
 
@@ -1401,7 +1401,7 @@ typedef NS_ENUM(NSUInteger, UIMenuOptionsPrivate) {
 @property (nonatomic, assign, getter=_pausesPointerUpdatesWhilePanning, setter=_setPausesPointerUpdatesWhilePanning:) BOOL pausesPointerUpdatesWhilePanning;
 @end
 
-@protocol UIPointerInteractionDelegate_ForWebKitOnly <UIPointerInteractionDelegate>
+@protocol UIPointerInteractionDelegate_ForCyberKitOnly <UIPointerInteractionDelegate>
 @optional
 - (void)_pointerInteraction:(UIPointerInteraction *)interaction regionForRequest:(UIPointerRegionRequest *)request defaultRegion:(UIPointerRegion *)defaultRegion completion:(void(^)(UIPointerRegion *region))completion;
 @end
@@ -1668,12 +1668,12 @@ extern NSString * const UIKeyboardIsLocalUserInfoKey;
 
 extern UIApplication *UIApp;
 BOOL _UIApplicationIsExtension(void);
-void _UIApplicationLoadWebKit(void);
+void _UIApplicationLoadCyberKit(void);
 
 void UIImageDataWriteToSavedPhotosAlbum(NSData *imageData, id completionTarget, SEL completionSelector, void *contextInfo);
 
-UIImage* _UIImageGetWebKitPhotoLibraryIcon(void);
-UIImage* _UIImageGetWebKitTakePhotoOrVideoIcon(void);
+UIImage* _UIImageGetCyberKitPhotoLibraryIcon(void);
+UIImage* _UIImageGetCyberKitTakePhotoOrVideoIcon(void);
 
 extern const float UIWebViewGrowsAndShrinksToFitHeight;
 extern const float UIWebViewScalesToFitScale;

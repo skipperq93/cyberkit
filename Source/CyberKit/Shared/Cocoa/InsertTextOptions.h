@@ -28,7 +28,7 @@
 #include "ArgumentCoders.h"
 #include "EditingRange.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct InsertTextOptions {
     bool registerUndoGroup { false };
@@ -38,11 +38,11 @@ struct InsertTextOptions {
     EditingRangeIsRelativeTo editingRangeIsRelativeTo { EditingRangeIsRelativeTo::EditableRoot };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace IPC {
-template<> struct ArgumentCoder<WebKit::InsertTextOptions> {
-    static void encode(Encoder&, const WebKit::InsertTextOptions&);
-    static std::optional<WebKit::InsertTextOptions> decode(Decoder&);
+template<> struct ArgumentCoder<CyberKit::InsertTextOptions> {
+    static void encode(Encoder&, const CyberKit::InsertTextOptions&);
+    static std::optional<CyberKit::InsertTextOptions> decode(Decoder&);
 };
 }

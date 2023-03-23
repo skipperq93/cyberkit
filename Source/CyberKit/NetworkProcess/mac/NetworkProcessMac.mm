@@ -47,7 +47,7 @@
 #import <wtf/MemoryPressureHandler.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void NetworkProcess::initializeProcess(const AuxiliaryProcessInitializationParameters&)
 {
@@ -76,9 +76,9 @@ void NetworkProcess::platformInitializeNetworkProcess(const NetworkProcessCreati
 void NetworkProcess::initializeSandbox(const AuxiliaryProcessInitializationParameters& parameters, SandboxInitializationParameters& sandboxParameters)
 {
     // Need to overide the default, because service has a different bundle ID.
-    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.apple.WebKit"];
+    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
 
-    sandboxParameters.setOverrideSandboxProfilePath(makeString(String([webKitBundle resourcePath]), "/com.apple.WebKit.NetworkProcess.sb"));
+    sandboxParameters.setOverrideSandboxProfilePath(makeString(String([webKitBundle resourcePath]), "/com.apple.CyberKit.NetworkProcess.sb"));
 
     AuxiliaryProcess::initializeSandbox(parameters, sandboxParameters);
 }
@@ -98,6 +98,6 @@ bool NetworkProcess::parentProcessHasServiceWorkerEntitlement() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

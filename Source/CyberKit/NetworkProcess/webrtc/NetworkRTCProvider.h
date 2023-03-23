@@ -64,7 +64,7 @@ class RegistrableDomain;
 class FragmentedSharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class NetworkConnectionToWebProcess;
 class NetworkRTCResolver;
 class NetworkSession;
@@ -183,6 +183,6 @@ private:
 
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

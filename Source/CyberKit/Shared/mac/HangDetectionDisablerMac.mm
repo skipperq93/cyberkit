@@ -32,7 +32,7 @@
 #import <wtf/ProcessPrivilege.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static const auto clientsMayIgnoreEventsKey = CFSTR("ClientMayIgnoreEvents");
 

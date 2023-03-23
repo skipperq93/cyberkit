@@ -25,6 +25,6 @@
 
 #include "BaseTarget.xcconfig"
 
-PRODUCT_NAME = WebKitTestRunner;
+PRODUCT_NAME = CyberKitTestRunner;
 GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 SKIP_INSTALL = YES;

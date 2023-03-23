@@ -28,7 +28,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -84,4 +84,4 @@ bool WebWheelEvent::isWheelEventType(WebEventType type)
     return type == WebEventType::Wheel;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

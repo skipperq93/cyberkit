@@ -66,7 +66,7 @@ static void updateFromControlElementsAncestorDisabledStateUnder(HTMLElement& sta
     auto range = inclusiveDescendantsOfType<Element>(startNode);
     auto it = range.begin();
 
-    // This preserves status-quo established before https://github.com/WebKit/WebKit/pull/4988:
+    // This preserves status-quo established before https://github.com/CyberKit/CyberKit/pull/4988:
     // setDisabledByAncestorFieldset() may modify shadow DOM of <input> / <textarea> elements, but we don't care.
     it.dropAssertions();
 

@@ -28,14 +28,14 @@
 #if PLATFORM(COCOA)
 
 #include "Utilities.h"
-#include <WebKit/WKWebViewPrivate.h>
+#include <CyberKit/WKWebViewPrivate.h>
 #include <wtf/DebugUtilities.h>
 
 #define WAIT_FOR_INSPECTOR_TO_ATTACH(webView) \
 do { \
     WTFReportError(__FILE__, __LINE__, WTF_PRETTY_FUNCTION, "Spinning a nested run loop until an inspector attaches to the WebView. Remote inspect the process (PID: %d) to continue.", getCurrentProcessID()); \
     do { \
-        TestWebKitAPI::Util::runFor(1_s); \
+        TestCyberKitAPI::Util::runFor(1_s); \
         if ([webView _isBeingInspected]) \
             break; \
     } while (1); \
@@ -46,7 +46,7 @@ do { \
 do { \
     WTFReportError(__FILE__, __LINE__, WTF_PRETTY_FUNCTION, "Spinning a nested run loop until no inspectors are attached to the WebView. Close all local and remote inspectors for the process (PID: %d) to continue.", getCurrentProcessID()); \
     do { \
-        TestWebKitAPI::Util::runFor(1_s); \
+        TestCyberKitAPI::Util::runFor(1_s); \
         if (![webView _isBeingInspected]) \
             break; \
     } while (1); \

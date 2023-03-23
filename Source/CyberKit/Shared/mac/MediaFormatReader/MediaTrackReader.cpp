@@ -47,7 +47,7 @@
 
 WTF_DECLARE_CF_TYPE_TRAIT(MTPluginTrackReader);
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -68,7 +68,7 @@ RefPtr<MediaTrackReader> MediaTrackReader::create(Allocator&& allocator, const M
 
 WorkQueue& MediaTrackReader::storageQueue()
 {
-    static NeverDestroyed<Ref<WorkQueue>> queue = WorkQueue::create("WebKit::MediaFormatReader Queue");
+    static NeverDestroyed<Ref<WorkQueue>> queue = WorkQueue::create("CyberKit::MediaFormatReader Queue");
     return queue.get();
 }
 
@@ -255,6 +255,6 @@ const void* MediaTrackReader::nextSampleCursorLogIdentifier(uint64_t cursorID) c
     return LoggerHelper::childLogIdentifier(m_logIdentifier, trackAndCursorID);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBM_FORMAT_READER)

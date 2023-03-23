@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSDictionary;
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebPushMessage {
     std::optional<Vector<uint8_t>> pushData;
@@ -44,4 +44,4 @@ struct WebPushMessage {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

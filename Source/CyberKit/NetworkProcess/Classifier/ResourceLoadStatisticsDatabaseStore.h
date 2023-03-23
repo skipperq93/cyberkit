@@ -42,7 +42,7 @@ enum class StorageAccessWasGranted : bool;
 struct ResourceLoadStatistics;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr size_t numberOfBucketsPerStatistic = 5;
 static constexpr size_t numberOfStatistics = 7;
@@ -265,11 +265,11 @@ private:
     OperatingDate m_mostRecentOperatingDate;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 // FIXME: Remove this. All ResourceLoadStatisticsStores are ResourceLoadStatisticsDatabaseStores. See FIXME above.
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::ResourceLoadStatisticsDatabaseStore)
-    static bool isType(const WebKit::ResourceLoadStatisticsStore& store) { return store.isDatabaseStore(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::ResourceLoadStatisticsDatabaseStore)
+    static bool isType(const CyberKit::ResourceLoadStatisticsStore& store) { return store.isDatabaseStore(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

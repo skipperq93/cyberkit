@@ -31,7 +31,7 @@
 #include <CyberCore/ResourceError.h>
 #include <CyberCore/ResourceResponse.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ResourceError downloadNetworkError(const URL& failingURL, const String& localizedDescription)
@@ -49,4 +49,4 @@ ResourceError downloadDestinationError(const ResourceResponse& response, const S
     return ResourceError(API::Error::webKitDownloadErrorDomain(), API::Error::Download::Destination, response.url(), localizedDescription);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

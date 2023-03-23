@@ -20,7 +20,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-[OptionSet] enum class WebKit::WebsiteDataFetchOption : uint8_t {
+[OptionSet] enum class CyberKit::WebsiteDataFetchOption : uint8_t {
     ComputeSizes,
     DoNotCreateProcesses,
 };

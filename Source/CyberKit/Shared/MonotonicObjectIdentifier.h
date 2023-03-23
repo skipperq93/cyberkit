@@ -30,7 +30,7 @@
 #include <wtf/text/TextStream.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // MonotonicObjectIdentifier is similar to ObjectIdentifier but it can be monotonically
 // increased in place.
@@ -139,4 +139,4 @@ TextStream& operator<<(TextStream& ts, const MonotonicObjectIdentifier<T>& ident
     return ts;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

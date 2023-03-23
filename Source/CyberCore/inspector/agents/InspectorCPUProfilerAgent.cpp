@@ -99,8 +99,8 @@ static Ref<Protocol::CPUProfiler::ThreadInfo> buildThreadInfo(const ThreadCPUInf
 
     if (thread.type == ThreadCPUInfo::Type::Main)
         threadInfo->setType(Protocol::CPUProfiler::ThreadInfo::Type::Main);
-    else if (thread.type == ThreadCPUInfo::Type::WebKit)
-        threadInfo->setType(Protocol::CPUProfiler::ThreadInfo::Type::WebKit);
+    else if (thread.type == ThreadCPUInfo::Type::CyberKit)
+        threadInfo->setType(Protocol::CPUProfiler::ThreadInfo::Type::CyberKit);
 
     if (!thread.identifier.isEmpty())
         threadInfo->setTargetId(thread.identifier);

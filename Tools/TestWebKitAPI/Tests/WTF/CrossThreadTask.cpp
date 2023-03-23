@@ -30,7 +30,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringHash.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static size_t totalDestructorCalls;
 static size_t totalIsolatedCopyCalls;
@@ -147,4 +147,4 @@ TEST(WTF_CrossThreadTask, Basic)
 
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

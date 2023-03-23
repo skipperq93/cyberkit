@@ -48,7 +48,7 @@
 @end
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Preconnect, HTTP)
 {

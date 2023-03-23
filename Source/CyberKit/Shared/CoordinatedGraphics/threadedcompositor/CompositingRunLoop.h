@@ -36,7 +36,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class CompositingRunLoop {
     WTF_MAKE_NONCOPYABLE(CompositingRunLoop);
@@ -84,6 +84,6 @@ private:
     } m_state;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

@@ -38,7 +38,7 @@ typedef struct _GInputStream GInputStream;
 typedef struct _GOutputStream GOutputStream;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 class IOChannel : public ThreadSafeRefCounted<IOChannel> {
@@ -84,4 +84,4 @@ private:
 };
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit

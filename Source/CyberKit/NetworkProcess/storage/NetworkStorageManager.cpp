@@ -54,7 +54,7 @@
 #include <wtf/SuspendableWorkQueue.h>
 #include <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 static const Seconds defaultBackupExclusionPeriod { 24_h };
@@ -127,7 +127,7 @@ Ref<NetworkStorageManager> NetworkStorageManager::create(PAL::SessionID sessionI
 
 NetworkStorageManager::NetworkStorageManager(PAL::SessionID sessionID, IPC::Connection::UniqueID connection, const String& path, const String& customLocalStoragePath, const String& customIDBStoragePath, const String& customCacheStoragePath, uint64_t defaultOriginQuota, uint64_t defaultThirdPartyOriginQuota, UnifiedOriginStorageLevel level)
     : m_sessionID(sessionID)
-    , m_queue(SuspendableWorkQueue::create("com.apple.WebKit.Storage", SuspendableWorkQueue::QOS::Default, SuspendableWorkQueue::ShouldLog::Yes))
+    , m_queue(SuspendableWorkQueue::create("com.apple.CyberKit.Storage", SuspendableWorkQueue::QOS::Default, SuspendableWorkQueue::ShouldLog::Yes))
     , m_defaultOriginQuota(defaultOriginQuota)
     , m_defaultThirdPartyOriginQuota(defaultThirdPartyOriginQuota)
     , m_parentConnection(connection)
@@ -1321,5 +1321,5 @@ void NetworkStorageManager::cacheStorageRepresentation(CompletionHandler<void(St
     callback(builder.toString());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

@@ -23,7 +23,7 @@
 #if ENABLE(WK_WEB_EXTENSIONS)
 headers: <CyberKit/WebExtensionEventListenerType.h>
 
-enum class WebKit::WebExtensionEventListenerType : uint8_t {
+enum class CyberKit::WebExtensionEventListenerType : uint8_t {
     Unknown,
     ActionOnClicked,
     AlarmsOnAlarm,

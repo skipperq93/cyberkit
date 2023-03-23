@@ -40,7 +40,7 @@
 namespace CyberCore {
 
 #if USE(APPLE_INTERNAL_SDK) && PLATFORM(MAC)
-#import <WebKitAdditions/CaretRectComputationAdditions.cpp>
+#import <CyberKitAdditions/CaretRectComputationAdditions.cpp>
 #else
 int caretWidth()
 {
@@ -68,14 +68,14 @@ static LayoutRect computeCaretRectForEmptyElement(const RenderBoxModelObject& re
 
     switch (currentStyle.textAlign()) {
     case TextAlignMode::Left:
-    case TextAlignMode::WebKitLeft:
+    case TextAlignMode::CyberKitLeft:
         break;
     case TextAlignMode::Center:
-    case TextAlignMode::WebKitCenter:
+    case TextAlignMode::CyberKitCenter:
         alignment = AlignCenter;
         break;
     case TextAlignMode::Right:
-    case TextAlignMode::WebKitRight:
+    case TextAlignMode::CyberKitRight:
         alignment = AlignRight;
         break;
     case TextAlignMode::Justify:
@@ -145,13 +145,13 @@ static LayoutRect computeCaretRectForLinePosition(const InlineIterator::LineBoxI
     bool rightAligned = false;
     switch (root.style().textAlign()) {
     case TextAlignMode::Right:
-    case TextAlignMode::WebKitRight:
+    case TextAlignMode::CyberKitRight:
         rightAligned = true;
         break;
     case TextAlignMode::Left:
-    case TextAlignMode::WebKitLeft:
+    case TextAlignMode::CyberKitLeft:
     case TextAlignMode::Center:
-    case TextAlignMode::WebKitCenter:
+    case TextAlignMode::CyberKitCenter:
         break;
     case TextAlignMode::Justify:
     case TextAlignMode::Start:

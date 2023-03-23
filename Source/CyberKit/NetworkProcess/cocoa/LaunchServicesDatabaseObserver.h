@@ -32,9 +32,9 @@
 #include <wtf/OSObjectPtr.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class LaunchServicesDatabaseObserver : public WebKit::XPCEndpoint, public NetworkProcessSupplement {
+class LaunchServicesDatabaseObserver : public CyberKit::XPCEndpoint, public NetworkProcessSupplement {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     LaunchServicesDatabaseObserver(NetworkProcess&);

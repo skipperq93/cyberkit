@@ -31,7 +31,7 @@
 #include <wtf/RedBlackTree.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace WTF;
 
@@ -401,4 +401,4 @@ TEST_F(RedBlackTreeTest, Iterate)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

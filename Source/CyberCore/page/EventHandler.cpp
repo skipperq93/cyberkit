@@ -3680,7 +3680,7 @@ bool EventHandler::internalKeyEvent(const PlatformKeyboardEvent& initialKeyEvent
     // In IE, access keys are special, they are handled after default keydown processing, but cannot be canceled - this is hard to match.
     // On Mac OS X, we process them before dispatching keydown, as the default keydown handler implements Emacs key bindings, which may conflict
     // with access keys. Then we dispatch keydown, but suppress its default handling.
-    // On Windows, WebKit explicitly calls handleAccessKey() instead of dispatching a keypress event for WM_SYSCHAR messages.
+    // On Windows, CyberKit explicitly calls handleAccessKey() instead of dispatching a keypress event for WM_SYSCHAR messages.
     // Other platforms currently match either Mac or Windows behavior, depending on whether they send combined KeyDown events.
     bool matchedAnAccessKey = false;
     if (initialKeyEvent.type() == PlatformEvent::Type::KeyDown)
@@ -4242,7 +4242,7 @@ bool EventHandler::handleDrag(const MouseEventWithHitTestResults& event, CheckDr
     if (m_mouseDownMayStartDrag) {
         Page* page = m_frame.page();
         m_didStartDrag = page && page->dragController().startDrag(m_frame, dragState(), sourceOperationMask, event.event(), m_mouseDownContentsPosition, hasNonDefaultPasteboardData);
-        // In WebKit2 we could re-enter this code and start another drag.
+        // In CyberKit2 we could re-enter this code and start another drag.
         // On OS X this causes problems with the ownership of the pasteboard and the promised types.
         if (m_didStartDrag) {
             m_mouseDownMayStartDrag = false;

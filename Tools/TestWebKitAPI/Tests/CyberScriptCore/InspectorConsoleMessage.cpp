@@ -30,7 +30,7 @@
 
 #include <JavaScriptCore/ConsoleMessage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Inspector, ConsoleMessageBasicMessage)
 {
@@ -59,6 +59,6 @@ TEST(Inspector, ConsoleMessageSeveralJSONValues)
     EXPECT_STREQ("foo{\"key\": \"value\"}bar", msg.toString().utf8().data());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // WK_HAVE_C_SPI

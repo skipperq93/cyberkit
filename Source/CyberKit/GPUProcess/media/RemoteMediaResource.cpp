@@ -33,7 +33,7 @@
 #include <CyberCore/ResourceResponse.h>
 #include <CyberCore/SharedBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -122,6 +122,6 @@ void RemoteMediaResource::loadFinished(const NetworkLoadMetrics& metrics)
         m_client->loadFinished(*this, metrics);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

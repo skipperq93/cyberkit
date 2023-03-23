@@ -1,9 +1,9 @@
-add_custom_target(WebKitTestRunner-forwarding-headers
-    COMMAND ${PERL_EXECUTABLE} ${WEBKIT_DIR}/Scripts/generate-forwarding-headers.pl --include-path ${WebKitTestRunner_DIR} --include-path ${TOOLS_DIR}/TestRunnerShared --output ${FORWARDING_HEADERS_DIR} --platform gtk --platform soup
+add_custom_target(CyberKitTestRunner-forwarding-headers
+    COMMAND ${PERL_EXECUTABLE} ${WEBKIT_DIR}/Scripts/generate-forwarding-headers.pl --include-path ${CyberKitTestRunner_DIR} --include-path ${TOOLS_DIR}/TestRunnerShared --output ${FORWARDING_HEADERS_DIR} --platform gtk --platform soup
 )
-list(APPEND WebKitTestRunner_DEPENDENCIES WebKitTestRunner-forwarding-headers)
+list(APPEND CyberKitTestRunner_DEPENDENCIES CyberKitTestRunner-forwarding-headers)
 
-list(APPEND WebKitTestRunner_SOURCES
+list(APPEND CyberKitTestRunner_SOURCES
     cairo/TestInvocationCairo.cpp
 
     gtk/EventSenderProxyGtk.cpp
@@ -13,15 +13,15 @@ list(APPEND WebKitTestRunner_SOURCES
     gtk/main.cpp
 )
 
-list(APPEND WebKitTestRunner_INCLUDE_DIRECTORIES
+list(APPEND CyberKitTestRunner_INCLUDE_DIRECTORIES
     ${FORWARDING_HEADERS_DIR}
 )
 
-list(APPEND WebKitTestRunner_SYSTEM_INCLUDE_DIRECTORIES
+list(APPEND CyberKitTestRunner_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
 )
 
-list(APPEND WebKitTestRunner_LIBRARIES
+list(APPEND CyberKitTestRunner_LIBRARIES
     ${GLIB_LIBRARIES}
     Cairo::Cairo
     GTK::GTK
@@ -46,11 +46,11 @@ list(APPEND TestRunnerInjectedBundle_SOURCES
 
 list(APPEND TestRunnerInjectedBundle_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
-    ${WebKitTestRunner_DIR}/InjectedBundle/atspi
-    ${WebKitTestRunner_DIR}/InjectedBundle/gtk
+    ${CyberKitTestRunner_DIR}/InjectedBundle/atspi
+    ${CyberKitTestRunner_DIR}/InjectedBundle/gtk
 )
 
 add_definitions(
-    -DFONTS_CONF_DIR="${TOOLS_DIR}/WebKitTestRunner/gtk/fonts"
+    -DFONTS_CONF_DIR="${TOOLS_DIR}/CyberKitTestRunner/gtk/fonts"
     -DTOP_LEVEL_DIR="${CMAKE_SOURCE_DIR}"
 )

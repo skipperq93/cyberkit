@@ -7152,7 +7152,7 @@ void Document::loadEventDelayTimerFired()
     // FIXME: Should the call to FrameLoader::checkLoadComplete be moved inside Document::checkCompleted?
     // FIXME: Should this also call DocumentLoader::checkLoadComplete?
     // FIXME: Not obvious why checkCompleted needs to go first. The order these are called is
-    // visible to WebKit clients, but it's more like a race than a well-defined relationship.
+    // visible to CyberKit clients, but it's more like a race than a well-defined relationship.
     Ref<Document> protectedThis(*this);
     checkCompleted();
     if (RefPtr frame = this->frame())

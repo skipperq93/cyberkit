@@ -29,29 +29,29 @@ class MediaPlayerPrivateGStreamer;
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_GL_VIDEO_SINK            (webkit_gl_video_sink_get_type ())
-#define WEBKIT_GL_VIDEO_SINK(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_GL_VIDEO_SINK, WebKitGLVideoSink))
-#define WEBKIT_GL_VIDEO_SINK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_GL_VIDEO_SINK, WebKitGLVideoSinkClass))
+#define WEBKIT_GL_VIDEO_SINK(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_GL_VIDEO_SINK, CyberKitGLVideoSink))
+#define WEBKIT_GL_VIDEO_SINK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_GL_VIDEO_SINK, CyberKitGLVideoSinkClass))
 #define WEBKIT_IS_GL_VIDEO_SINK(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_TYPE_GL_VIDEO_SINK))
 #define WEBKIT_IS_GL_VIDEO_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), WEBKIT_TYPE_GL_VIDEO_SINK))
 
-typedef struct _WebKitGLVideoSink        WebKitGLVideoSink;
-typedef struct _WebKitGLVideoSinkClass   WebKitGLVideoSinkClass;
-typedef struct _WebKitGLVideoSinkPrivate WebKitGLVideoSinkPrivate;
+typedef struct _CyberKitGLVideoSink        CyberKitGLVideoSink;
+typedef struct _CyberKitGLVideoSinkClass   CyberKitGLVideoSinkClass;
+typedef struct _CyberKitGLVideoSinkPrivate CyberKitGLVideoSinkPrivate;
 
-struct _WebKitGLVideoSink {
+struct _CyberKitGLVideoSink {
     GstBin parent;
 
-    WebKitGLVideoSinkPrivate *priv;
+    CyberKitGLVideoSinkPrivate *priv;
 };
 
-struct _WebKitGLVideoSinkClass {
+struct _CyberKitGLVideoSinkClass {
     GstBinClass parentClass;
 };
 
 GType webkit_gl_video_sink_get_type(void);
 
 bool webKitGLVideoSinkProbePlatform();
-void webKitGLVideoSinkSetMediaPlayerPrivate(WebKitGLVideoSink*, CyberCore::MediaPlayerPrivateGStreamer*);
+void webKitGLVideoSinkSetMediaPlayerPrivate(CyberKitGLVideoSink*, CyberCore::MediaPlayerPrivateGStreamer*);
 
 G_END_DECLS
 

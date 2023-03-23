@@ -31,7 +31,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class YouTubePluginReplacementTest : public testing::Test {
 public:
@@ -87,4 +87,4 @@ TEST_F(YouTubePluginReplacementTest, YouTubeURLFromAbsoluteURL)
     test("javascript:foo()"_s, ""_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

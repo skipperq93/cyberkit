@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class GestureType : uint8_t {
     Loupe,
@@ -76,54 +76,54 @@ enum class RespectSelectionAnchor : bool {
     Yes
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::GestureRecognizerState> {
+template<> struct EnumTraits<CyberKit::GestureRecognizerState> {
     using values = EnumValues<
-        WebKit::GestureRecognizerState,
-        WebKit::GestureRecognizerState::Possible,
-        WebKit::GestureRecognizerState::Began,
-        WebKit::GestureRecognizerState::Changed,
-        WebKit::GestureRecognizerState::Ended,
-        WebKit::GestureRecognizerState::Cancelled,
-        WebKit::GestureRecognizerState::Failed
+        CyberKit::GestureRecognizerState,
+        CyberKit::GestureRecognizerState::Possible,
+        CyberKit::GestureRecognizerState::Began,
+        CyberKit::GestureRecognizerState::Changed,
+        CyberKit::GestureRecognizerState::Ended,
+        CyberKit::GestureRecognizerState::Cancelled,
+        CyberKit::GestureRecognizerState::Failed
     >;
 };
 
-template<> struct EnumTraits<WebKit::GestureType> {
+template<> struct EnumTraits<CyberKit::GestureType> {
     using values = EnumValues<
-        WebKit::GestureType,
-        WebKit::GestureType::Loupe,
-        WebKit::GestureType::OneFingerTap,
-        WebKit::GestureType::TapAndAHalf,
-        WebKit::GestureType::DoubleTap,
-        WebKit::GestureType::OneFingerDoubleTap,
-        WebKit::GestureType::OneFingerTripleTap,
-        WebKit::GestureType::TwoFingerSingleTap,
-        WebKit::GestureType::PhraseBoundary
+        CyberKit::GestureType,
+        CyberKit::GestureType::Loupe,
+        CyberKit::GestureType::OneFingerTap,
+        CyberKit::GestureType::TapAndAHalf,
+        CyberKit::GestureType::DoubleTap,
+        CyberKit::GestureType::OneFingerDoubleTap,
+        CyberKit::GestureType::OneFingerTripleTap,
+        CyberKit::GestureType::TwoFingerSingleTap,
+        CyberKit::GestureType::PhraseBoundary
     >;
 };
 
-template<> struct EnumTraits<WebKit::SelectionFlags> {
+template<> struct EnumTraits<CyberKit::SelectionFlags> {
     using values = EnumValues<
-        WebKit::SelectionFlags,
-        WebKit::SelectionFlags::WordIsNearTap,
-        WebKit::SelectionFlags::SelectionFlipped,
-        WebKit::SelectionFlags::PhraseBoundaryChanged
+        CyberKit::SelectionFlags,
+        CyberKit::SelectionFlags::WordIsNearTap,
+        CyberKit::SelectionFlags::SelectionFlipped,
+        CyberKit::SelectionFlags::PhraseBoundaryChanged
     >;
 };
 
-template<> struct EnumTraits<WebKit::SelectionTouch> {
+template<> struct EnumTraits<CyberKit::SelectionTouch> {
     using values = EnumValues<
-        WebKit::SelectionTouch,
-        WebKit::SelectionTouch::Started,
-        WebKit::SelectionTouch::Moved,
-        WebKit::SelectionTouch::Ended,
-        WebKit::SelectionTouch::EndedMovingForward,
-        WebKit::SelectionTouch::EndedMovingBackward,
-        WebKit::SelectionTouch::EndedNotMoving
+        CyberKit::SelectionTouch,
+        CyberKit::SelectionTouch::Started,
+        CyberKit::SelectionTouch::Moved,
+        CyberKit::SelectionTouch::Ended,
+        CyberKit::SelectionTouch::EndedMovingForward,
+        CyberKit::SelectionTouch::EndedMovingBackward,
+        CyberKit::SelectionTouch::EndedNotMoving
     >;
 };
 

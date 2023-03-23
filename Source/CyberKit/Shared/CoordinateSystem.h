@@ -27,22 +27,22 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class CoordinateSystem : uint8_t {
     Page = 0,
     LayoutViewport
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::CoordinateSystem> {
+template<> struct EnumTraits<CyberKit::CoordinateSystem> {
     using values = EnumValues<
-    WebKit::CoordinateSystem,
-    WebKit::CoordinateSystem::Page,
-    WebKit::CoordinateSystem::LayoutViewport
+    CyberKit::CoordinateSystem,
+    CyberKit::CoordinateSystem::Page,
+    CyberKit::CoordinateSystem::LayoutViewport
     >;
 };
 

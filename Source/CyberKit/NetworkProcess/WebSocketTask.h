@@ -35,7 +35,7 @@
 
 #include "DataReference.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct SessionSet;
 
@@ -54,6 +54,6 @@ public:
     SessionSet* sessionSet() { return nullptr; }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

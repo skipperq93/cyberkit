@@ -28,7 +28,7 @@
 #include <CyberCore/Timer.h>
 #include <wtf/Deque.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class Download;
 
@@ -58,4 +58,4 @@ private:
     size_t m_interval { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

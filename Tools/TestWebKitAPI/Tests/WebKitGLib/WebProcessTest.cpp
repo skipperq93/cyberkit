@@ -20,7 +20,7 @@
 #include "config.h"
 #include "WebProcessTest.h"
 
-#include <WebKitWebExtensionPrivate.h>
+#include <CyberKitWebExtensionPrivate.h>
 #include <gio/gio.h>
 #include <jsc/jsc.h>
 #include <wtf/HashSet.h>
@@ -68,7 +68,7 @@ std::unique_ptr<WebProcessTest> WebProcessTest::create(const String& testName)
     return testsMap().get(testName)();
 }
 
-static gboolean runTest(WebKitWebPage* webPage, const char* testPath)
+static gboolean runTest(CyberKitWebPage* webPage, const char* testPath)
 {
     g_assert_true(WEBKIT_IS_WEB_PAGE(webPage));
     WebProcessTest::assertObjectIsDeletedWhenTestFinishes(G_OBJECT(webPage));
@@ -78,13 +78,13 @@ static gboolean runTest(WebKitWebPage* webPage, const char* testPath)
     return test->runTest(g_strrstr(testPath, "/") + 1, webPage);
 }
 
-static void webProcessTestRunnerFinalize(WebKitWebPage* webPage)
+static void webProcessTestRunnerFinalize(CyberKitWebPage* webPage)
 {
     g_object_unref(webPage);
     checkLeaks();
 }
 
-static void windowObjectClearedCallback(WebKitScriptWorld* world, WebKitWebPage* webPage, WebKitFrame* frame, WebKitWebExtension* extension)
+static void windowObjectClearedCallback(CyberKitScriptWorld* world, CyberKitWebPage* webPage, CyberKitFrame* frame, CyberKitWebExtension* extension)
 {
     if (g_strcmp0(webkit_web_page_get_uri(webPage), "webprocess://test") || !webkit_frame_is_main_frame(frame))
         return;
@@ -99,7 +99,7 @@ static void windowObjectClearedCallback(WebKitScriptWorld* world, WebKitWebPage*
     jsc_context_set_value(context.get(), "WebProcessTestRunner", testRunner.get());
 }
 
-extern "C" WTF_EXPORT_DECLARATION void webkit_web_extension_initialize(WebKitWebExtension* extension)
+extern "C" WTF_EXPORT_DECLARATION void webkit_web_extension_initialize(CyberKitWebExtension* extension)
 {
     webkitWebExtensionSetGarbageCollectOnPageDestroy(extension);
     g_signal_connect(webkit_script_world_get_default(), "window-object-cleared", G_CALLBACK(windowObjectClearedCallback), extension);

@@ -31,7 +31,7 @@
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, AttrStyle)
+TEST(CyberKit, AttrStyle)
 {
     auto poolConfiguration = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
     [poolConfiguration setAttrStyleEnabled:YES];
@@ -42,7 +42,7 @@ TEST(WebKit, AttrStyle)
     auto navigationDelegate = adoptNS([[TestNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:navigationDelegate.get()];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"AttrStyle" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"AttrStyle" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     [navigationDelegate waitForDidFinishNavigation];
 
     __block bool isDone = false;
@@ -50,33 +50,33 @@ TEST(WebKit, AttrStyle)
         EXPECT_TRUE(result.boolValue);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView evaluateJavaScript:@"document.body.getAttributeNode('background').style.cssText" completionHandler:^(NSString *result, NSError *error) {
         EXPECT_STREQ("background-image: url(\"about://example.com/body.png\");", result.UTF8String);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView evaluateJavaScript:@"document.body.getAttributeNode('dir').style.cssText" completionHandler:^(NSString *result, NSError *error) {
         EXPECT_STREQ("direction: rtl; unicode-bidi: isolate;", result.UTF8String);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView evaluateJavaScript:@"document.body.getAttributeNode('marginheight').style.cssText" completionHandler:^(NSString *result, NSError *error) {
         EXPECT_STREQ("margin-bottom: 20px; margin-top: 20px;", result.UTF8String);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView evaluateJavaScript:@"document.getElementById('target').getAttributeNode('align').style.cssText" completionHandler:^(NSString *result, NSError *error) {
         EXPECT_STREQ("text-align: -webkit-center;", result.UTF8String);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }

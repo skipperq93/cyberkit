@@ -39,7 +39,7 @@
 #import <wtf/spi/darwin/SandboxSPI.h>
 #import <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SandboxExtensionImpl {
     WTF_MAKE_FAST_ALLOCATED;
@@ -471,6 +471,6 @@ bool SandboxExtension::consumePermanently(const Vector<Handle>& handleArray)
     return allSucceeded;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SANDBOX_EXTENSIONS)

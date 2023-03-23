@@ -38,7 +38,7 @@
 #include <unistd.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 BlobStorage::BlobStorage(const String& blobDirectoryPath, Salt salt)

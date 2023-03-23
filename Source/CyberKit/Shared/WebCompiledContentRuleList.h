@@ -31,7 +31,7 @@
 #include <CyberCore/CompiledContentExtension.h>
 #include <CyberCore/ContentExtensionCompiler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebCompiledContentRuleList final : public CyberCore::ContentExtensions::CompiledContentExtension {
 public:
@@ -53,6 +53,6 @@ private:
     WebCompiledContentRuleListData m_data;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

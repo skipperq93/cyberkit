@@ -59,7 +59,7 @@ static bool receivedMessage;
 }
 @end
 
-TEST(WebKit, FirstVisuallyNonEmptyMilestoneWithDeferredScript)
+TEST(CyberKit, FirstVisuallyNonEmptyMilestoneWithDeferredScript)
 {
     auto webViewConfiguration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto messageHandler = adoptNS([[FirstPaintMessageHandler alloc] init]);
@@ -73,9 +73,9 @@ TEST(WebKit, FirstVisuallyNonEmptyMilestoneWithDeferredScript)
     receivedMessage = false;
     didFirstVisuallyNonEmptyLayout = false;
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"deferred-script-load" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"deferred-script-load" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
     EXPECT_TRUE(didFirstVisuallyNonEmptyLayout);
 }
 
@@ -102,7 +102,7 @@ static NSString *contentTypeForFileExtension(NSString *fileExtension)
     NSURL *requestURL = task.request.URL;
     NSString *fileName = requestURL.lastPathComponent;
     NSString *fileExtension = fileName.pathExtension;
-    NSURL *bundleURL = [NSBundle.mainBundle URLForResource:fileName.stringByDeletingPathExtension withExtension:fileExtension subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *bundleURL = [NSBundle.mainBundle URLForResource:fileName.stringByDeletingPathExtension withExtension:fileExtension subdirectory:@"TestCyberKitAPI.resources"];
 
     NSData *responseData = [NSData dataWithContentsOfURL:bundleURL];
     NSUInteger responseLength = responseData.length;
@@ -119,7 +119,7 @@ static NSString *contentTypeForFileExtension(NSString *fileExtension)
 
 @end
 
-TEST(WebKit, FirstVisuallyNonEmptyMilestoneWithMediaDocument)
+TEST(CyberKit, FirstVisuallyNonEmptyMilestoneWithMediaDocument)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 #if PLATFORM(IOS_FAMILY)
@@ -138,5 +138,5 @@ TEST(WebKit, FirstVisuallyNonEmptyMilestoneWithMediaDocument)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"never-finish-loading:///large-video-with-audio.mp4"]]];
 
     didFirstVisuallyNonEmptyLayout = false;
-    TestWebKitAPI::Util::run(&didFirstVisuallyNonEmptyLayout);
+    TestCyberKitAPI::Util::run(&didFirstVisuallyNonEmptyLayout);
 }

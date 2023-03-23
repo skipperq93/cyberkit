@@ -48,7 +48,7 @@ struct EphemeralNonce;
 }
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebPushMessage;
 
@@ -123,7 +123,7 @@ DECLARE_CODER(CyberCore::PushSubscriptionData);
 DECLARE_CODER(CyberCore::PushSubscriptionIdentifier);
 DECLARE_CODER(CyberCore::RegistrableDomain);
 DECLARE_CODER(CyberCore::SecurityOriginData);
-DECLARE_CODER(WebKit::WebPushMessage);
+DECLARE_CODER(CyberKit::WebPushMessage);
 DECLARE_CODER(WebPushD::WebPushDaemonConnectionConfiguration);
 DECLARE_CODER(WTF::WallTime);
 
@@ -227,4 +227,4 @@ template<> struct Coder<WTF::String> {
 };
 
 } // namespace Daemon
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #include <cstring>
 #include <wtf/text/CString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_SafeStrerror, StringsAreEqual)
 {
@@ -42,4 +42,4 @@ TEST(WTF_SafeStrerror, StringsAreEqual)
         EXPECT_STREQ(strerror(i), safeStrerror(i).data());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -40,7 +40,7 @@ namespace IPC {
 class SharedBufferReference;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class GPUConnectionToWebProcess;
 
 class RemoteImageDecoderAVFProxy : private IPC::MessageReceiver {
@@ -60,7 +60,7 @@ private:
     void deleteDecoder(CyberCore::ImageDecoderIdentifier);
     void setExpectedContentSize(CyberCore::ImageDecoderIdentifier, long long expectedContentSize);
     void setData(CyberCore::ImageDecoderIdentifier, const IPC::SharedBufferReference&, bool allDataReceived, CompletionHandler<void(size_t frameCount, const CyberCore::IntSize& size, bool hasTrack, std::optional<Vector<CyberCore::ImageDecoder::FrameInfo>>&&)>&&);
-    void createFrameImageAtIndex(CyberCore::ImageDecoderIdentifier, size_t index, CompletionHandler<void(std::optional<WebKit::ShareableBitmapHandle>&&)>&&);
+    void createFrameImageAtIndex(CyberCore::ImageDecoderIdentifier, size_t index, CompletionHandler<void(std::optional<CyberKit::ShareableBitmapHandle>&&)>&&);
     void clearFrameBufferCache(CyberCore::ImageDecoderIdentifier, size_t index);
 
     void encodedDataStatusChanged(CyberCore::ImageDecoderIdentifier);

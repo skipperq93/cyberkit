@@ -30,7 +30,7 @@
 #include <CyberCore/ResourceError.h>
 #include <CyberCore/ResourceResponse.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 #if !PLATFORM(COCOA)
 void NetworkLoader::start(URL&&, RefPtr<JSON::Object>&&, CyberCore::PrivateClickMeasurement::PcmDataCarried, Callback&& completionHandler)
@@ -46,4 +46,4 @@ void NetworkLoader::allowTLSCertificateChainForLocalPCMTesting(const CyberCore::
 
 #endif
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM

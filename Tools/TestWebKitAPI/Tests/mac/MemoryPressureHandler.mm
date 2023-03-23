@@ -27,7 +27,7 @@
 #import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, MemoryPressureHandler)
 {
@@ -36,4 +36,4 @@ TEST(CyberKitLegacy, MemoryPressureHandler)
     // This test passes if it does not assert.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

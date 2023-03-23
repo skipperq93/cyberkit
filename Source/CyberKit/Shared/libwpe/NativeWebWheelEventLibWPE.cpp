@@ -30,11 +30,11 @@
 
 #include <cstdio>
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebWheelEvent::NativeWebWheelEvent(struct wpe_input_axis_event* event, float deviceScaleFactor, WebWheelEvent::Phase phase, WebWheelEvent::Phase momentumPhase)
     : WebWheelEvent(WebEventFactory::createWebWheelEvent(event, deviceScaleFactor, phase, momentumPhase))
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

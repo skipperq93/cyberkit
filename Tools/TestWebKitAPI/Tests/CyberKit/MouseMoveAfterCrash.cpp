@@ -31,7 +31,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 
@@ -51,7 +51,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, MouseMoveAfterCrash)
+TEST(CyberKit, MouseMoveAfterCrash)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("MouseMoveAfterCrashTest"));
 
@@ -88,6 +88,6 @@ TEST(WebKit, MouseMoveAfterCrash)
     EXPECT_JS_TRUE(webView.page(), "didMoveMouse()");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

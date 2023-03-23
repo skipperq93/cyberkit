@@ -45,7 +45,7 @@
 #include <wtf/MemoryPressureHandler.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 AuxiliaryProcess::AuxiliaryProcess()
@@ -90,12 +90,12 @@ void AuxiliaryProcess::initialize(const AuxiliaryProcessInitializationParameters
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
     WTF::logChannels().initializeLogChannelsIfNecessary();
     CyberCore::logChannels().initializeLogChannelsIfNecessary();
-    WebKit::logChannels().initializeLogChannelsIfNecessary();
+    CyberKit::logChannels().initializeLogChannelsIfNecessary();
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
     initializeProcessName(parameters);
 
-    // In WebKit2, only the UI process should ever be generating certain identifiers.
+    // In CyberKit2, only the UI process should ever be generating certain identifiers.
     PAL::SessionID::enableGenerationProtection();
     ContentWorldIdentifier::enableGenerationProtection();
     WebPageProxyIdentifier::enableGenerationProtection();
@@ -212,7 +212,7 @@ void AuxiliaryProcess::applyProcessCreationParameters(const AuxiliaryProcessCrea
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
     WTF::logChannels().initializeLogChannelsIfNecessary(parameters.wtfLoggingChannels);
     CyberCore::logChannels().initializeLogChannelsIfNecessary(parameters.webCoreLoggingChannels);
-    WebKit::logChannels().initializeLogChannelsIfNecessary(parameters.webKitLoggingChannels);
+    CyberKit::logChannels().initializeLogChannelsIfNecessary(parameters.webKitLoggingChannels);
 #endif
 }
 
@@ -249,4 +249,4 @@ void AuxiliaryProcess::didReceiveMemoryPressureEvent(bool isCritical)
 
 #endif // !PLATFORM(COCOA)
 
-} // namespace WebKit
+} // namespace CyberKit

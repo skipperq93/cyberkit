@@ -207,7 +207,7 @@ typedef enum {
 
 @interface CALayer ()
 #if HAVE(CALAYER_USES_WEBKIT_BEHAVIOR)
-@property BOOL usesWebKitBehavior;
+@property BOOL usesCyberKitBehavior;
 #endif
 @end
 

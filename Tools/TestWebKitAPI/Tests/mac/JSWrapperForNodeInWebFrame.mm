@@ -50,7 +50,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, JSWrapperForNode)
 {
@@ -121,4 +121,4 @@ TEST(CyberKitLegacy, JSDOMWindowWrapperBeforeOriginInitialization)
     EXPECT_WK_STREQ(result, @"1");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

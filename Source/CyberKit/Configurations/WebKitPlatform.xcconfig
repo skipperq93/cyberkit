@@ -23,7 +23,7 @@
 
 #include "BaseTarget.xcconfig"
 
-PRODUCT_NAME = WebKitPlatform;
+PRODUCT_NAME = CyberKitPlatform;
 SKIP_INSTALL = YES;
 GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 

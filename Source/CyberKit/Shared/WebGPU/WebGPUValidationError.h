@@ -30,12 +30,12 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct ValidationError {
     String message;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

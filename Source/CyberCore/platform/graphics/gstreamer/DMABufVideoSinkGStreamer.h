@@ -29,22 +29,22 @@ class MediaPlayerPrivateGStreamer;
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_DMABUF_VIDEO_SINK            (webkit_dmabuf_video_sink_get_type ())
-#define WEBKIT_DMABUF_VIDEO_SINK(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_DMABUF_VIDEO_SINK, WebKitDMABufVideoSink))
-#define WEBKIT_DMABUF_VIDEO_SINK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_DMABUF_VIDEO_SINK, WebKitDMABufVideoSinkClass))
+#define WEBKIT_DMABUF_VIDEO_SINK(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_DMABUF_VIDEO_SINK, CyberKitDMABufVideoSink))
+#define WEBKIT_DMABUF_VIDEO_SINK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), WEBKIT_TYPE_DMABUF_VIDEO_SINK, CyberKitDMABufVideoSinkClass))
 #define WEBKIT_IS_DMABUF_VIDEO_SINK(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_TYPE_DMABUF_VIDEO_SINK))
 #define WEBKIT_IS_DMABUF_VIDEO_SINK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), WEBKIT_TYPE_DMABUF_VIDEO_SINK))
 
-typedef struct _WebKitDMABufVideoSink        WebKitDMABufVideoSink;
-typedef struct _WebKitDMABufVideoSinkClass   WebKitDMABufVideoSinkClass;
-typedef struct _WebKitDMABufVideoSinkPrivate WebKitDMABufVideoSinkPrivate;
+typedef struct _CyberKitDMABufVideoSink        CyberKitDMABufVideoSink;
+typedef struct _CyberKitDMABufVideoSinkClass   CyberKitDMABufVideoSinkClass;
+typedef struct _CyberKitDMABufVideoSinkPrivate CyberKitDMABufVideoSinkPrivate;
 
-struct _WebKitDMABufVideoSink {
+struct _CyberKitDMABufVideoSink {
     GstBin parent;
 
-    WebKitDMABufVideoSinkPrivate *priv;
+    CyberKitDMABufVideoSinkPrivate *priv;
 };
 
-struct _WebKitDMABufVideoSinkClass {
+struct _CyberKitDMABufVideoSinkClass {
     GstBinClass parentClass;
 };
 
@@ -52,7 +52,7 @@ GType webkit_dmabuf_video_sink_get_type(void);
 
 bool webKitDMABufVideoSinkIsEnabled();
 bool webKitDMABufVideoSinkProbePlatform();
-void webKitDMABufVideoSinkSetMediaPlayerPrivate(WebKitDMABufVideoSink*, CyberCore::MediaPlayerPrivateGStreamer*);
+void webKitDMABufVideoSinkSetMediaPlayerPrivate(CyberKitDMABufVideoSink*, CyberCore::MediaPlayerPrivateGStreamer*);
 
 G_END_DECLS
 

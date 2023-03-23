@@ -63,7 +63,7 @@ static void *snapshotSizeChangeKVOContext = &snapshotSizeChangeKVOContext;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if WK_HAVE_C_SPI
     
@@ -83,7 +83,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, WKThumbnailViewKeepSnapshotWhenRemovedFromSuperview)
+TEST(CyberKit, WKThumbnailViewKeepSnapshotWhenRemovedFromSuperview)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -129,7 +129,7 @@ TEST(WebKit, WKThumbnailViewKeepSnapshotWhenRemovedFromSuperview)
     [thumbnailView removeObserver:observer.get() forKeyPath:@"snapshotSize" context:snapshotSizeChangeKVOContext];
 }
 
-TEST(WebKit, WKThumbnailViewMaximumSnapshotSize)
+TEST(CyberKit, WKThumbnailViewMaximumSnapshotSize)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -184,7 +184,7 @@ TEST(WebKit, WKThumbnailViewMaximumSnapshotSize)
 
 #endif // WK_HAVE_C_SPI
 
-TEST(WebKit, WKThumbnailViewKeepSnapshotWhenRemovedFromSuperviewWKWebView)
+TEST(CyberKit, WKThumbnailViewKeepSnapshotWhenRemovedFromSuperviewWKWebView)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     WKPageSetCustomBackingScaleFactor([webView _pageForTesting], 1);
@@ -223,7 +223,7 @@ TEST(WebKit, WKThumbnailViewKeepSnapshotWhenRemovedFromSuperviewWKWebView)
     [thumbnailView removeObserver:observer.get() forKeyPath:@"snapshotSize" context:snapshotSizeChangeKVOContext];
 }
 
-TEST(WebKit, WKThumbnailViewMaximumSnapshotSizeWKWebView)
+TEST(CyberKit, WKThumbnailViewMaximumSnapshotSizeWKWebView)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     WKPageSetCustomBackingScaleFactor([webView _pageForTesting], 1);
@@ -268,7 +268,7 @@ TEST(WebKit, WKThumbnailViewMaximumSnapshotSizeWKWebView)
     [thumbnailView removeObserver:observer.get() forKeyPath:@"snapshotSize" context:snapshotSizeChangeKVOContext];
 }
 
-TEST(WebKit, WKThumbnailViewResetsViewStateWhenUnparented)
+TEST(CyberKit, WKThumbnailViewResetsViewStateWhenUnparented)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration]);
@@ -303,6 +303,6 @@ TEST(WebKit, WKThumbnailViewResetsViewStateWhenUnparented)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

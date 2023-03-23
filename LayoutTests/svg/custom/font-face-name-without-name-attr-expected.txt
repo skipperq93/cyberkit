@@ -1,1 +1,1 @@
-This test passes if WebKit doesn't crash.
+This test passes if CyberKit doesn't crash.

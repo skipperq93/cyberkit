@@ -46,7 +46,7 @@ static void initializeDebugCategory()
     ensureGStreamerInitialized();
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_audio_file_reader_debug, "webkitaudiofilereader", 0, "WebKit WebAudio FileReader");
+        GST_DEBUG_CATEGORY_INIT(webkit_audio_file_reader_debug, "webkitaudiofilereader", 0, "CyberKit WebAudio FileReader");
     });
 }
 

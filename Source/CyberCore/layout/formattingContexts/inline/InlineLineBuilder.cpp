@@ -1487,21 +1487,21 @@ InlineLayoutUnit LineBuilder::horizontalAlignmentOffset(bool isLastLine) const
 
     switch (computedHorizontalAlignment()) {
     case TextAlignMode::Left:
-    case TextAlignMode::WebKitLeft:
+    case TextAlignMode::CyberKitLeft:
         if (!isLeftToRightDirection)
             return extraHorizontalSpace;
         FALLTHROUGH;
     case TextAlignMode::Start:
         return { };
     case TextAlignMode::Right:
-    case TextAlignMode::WebKitRight:
+    case TextAlignMode::CyberKitRight:
         if (!isLeftToRightDirection)
             return { };
         FALLTHROUGH;
     case TextAlignMode::End:
         return extraHorizontalSpace;
     case TextAlignMode::Center:
-    case TextAlignMode::WebKitCenter:
+    case TextAlignMode::CyberKitCenter:
         return extraHorizontalSpace / 2;
     case TextAlignMode::Justify:
         // TextAlignMode::Justify is a run alignment (and we only do inline box alignment here)

@@ -34,7 +34,7 @@
 #import <CyberKit/_WKFrameTreeNode.h>
 #import <wtf/BlockPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void enableSiteIsolation(WKWebViewConfiguration *configuration)
 {

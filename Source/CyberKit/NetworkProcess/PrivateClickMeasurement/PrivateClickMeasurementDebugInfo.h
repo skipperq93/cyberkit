@@ -28,7 +28,7 @@
 #include <CyberScriptCore/ConsoleTypes.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 struct DebugInfo {
 
@@ -46,4 +46,4 @@ struct DebugInfo {
     DebugInfo isolatedCopy() &&;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

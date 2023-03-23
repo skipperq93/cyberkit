@@ -193,7 +193,7 @@ String AXMeterGaugeRegionLessGoodText()
 String builtInPDFPluginName()
 {
     // Also exposed to DOM.
-    return WEB_UI_STRING("WebKit built-in PDF", "Pseudo plug-in name, visible in the Installed Plug-ins page in Safari.");
+    return WEB_UI_STRING("CyberKit built-in PDF", "Pseudo plug-in name, visible in the Installed Plug-ins page in Safari.");
 }
 
 String pdfDocumentTypeDescription()

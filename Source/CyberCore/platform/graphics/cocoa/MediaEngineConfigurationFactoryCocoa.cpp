@@ -38,7 +38,7 @@
 #include <wtf/Algorithms.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/MediaCapabilitiesAdditions.h>
+#include <CyberKitAdditions/MediaCapabilitiesAdditions.h>
 #endif
 
 #include "VideoToolboxSoftLink.h"
@@ -126,7 +126,7 @@ static std::optional<MediaCapabilitiesInfo> computeMediaCapabilitiesInfo(const M
             info = *parsedInfo;
 #endif
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/MediaCapabilitiesAdditions.cpp>
+#include <CyberKitAdditions/MediaCapabilitiesAdditions.cpp>
 #endif
         } else if (videoCodecType) {
             if (alphaChannel || hdrSupported)

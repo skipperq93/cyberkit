@@ -32,7 +32,7 @@
 #include "WebCompiledContentRuleListData.h"
 #include <wtf/URL.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void RemoteWorkerInitializationData::encode(IPC::Encoder& encoder) const
 {

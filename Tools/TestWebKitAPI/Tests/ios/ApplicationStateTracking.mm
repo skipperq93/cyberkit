@@ -35,7 +35,7 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(ApplicationStateTracking, WindowDeallocDoesNotPermanentlyFreezeLayerTree)
 {
@@ -81,7 +81,7 @@ TEST(ApplicationStateTracking, NavigatingFromPDFDoesNotLeaveWebViewInactive)
     [webView waitForNextPresentationUpdate];
 
     RetainPtr fakeURL = [NSURL URLWithString:@"https://bar.com"];
-    RetainPtr pdfData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    RetainPtr pdfData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
     auto response = adoptNS([[NSURLResponse alloc] initWithURL:fakeURL.get() MIMEType:@"application/pdf" expectedContentLength:[pdfData length] textEncodingName:nil]);
     [webView loadSimulatedRequest:[NSURLRequest requestWithURL:fakeURL.get()] response:response.get() responseData:pdfData.get()];
     [delegate waitForDidFinishNavigation];
@@ -95,6 +95,6 @@ TEST(ApplicationStateTracking, NavigatingFromPDFDoesNotLeaveWebViewInactive)
 
 #endif // HAVE(PDFKIT)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

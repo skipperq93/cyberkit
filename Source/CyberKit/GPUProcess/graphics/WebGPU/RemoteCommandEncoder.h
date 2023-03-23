@@ -42,7 +42,7 @@ namespace IPC {
 class StreamServerConnection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace WebGPU {
 struct CommandBufferDescriptor;
@@ -132,6 +132,6 @@ private:
     WebGPUIdentifier m_identifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

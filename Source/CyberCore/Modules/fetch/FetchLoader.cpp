@@ -61,7 +61,7 @@ void FetchLoader::startLoadingBlobURL(ScriptExecutionContext& context, const URL
 {
     m_urlForReading = BlobURL::createPublicURL(context.securityOrigin());
     if (m_urlForReading.isEmpty()) {
-        m_client.didFail({ errorDomainWebKitInternal, 0, URL(), "Could not create URL for Blob"_s });
+        m_client.didFail({ errorDomainCyberKitInternal, 0, URL(), "Could not create URL for Blob"_s });
         return;
     }
 
@@ -105,7 +105,7 @@ void FetchLoader::start(ScriptExecutionContext& context, const FetchRequest& req
     contentSecurityPolicy.upgradeInsecureRequestIfNeeded(fetchRequest, ContentSecurityPolicy::InsecureRequestType::Load);
 
     if (!context.shouldBypassMainWorldContentSecurityPolicy() && !contentSecurityPolicy.allowConnectToSource(fetchRequest.url())) {
-        m_client.didFail({ errorDomainWebKitInternal, 0, fetchRequest.url(), "Not allowed by ContentSecurityPolicy"_s, ResourceError::Type::AccessControl });
+        m_client.didFail({ errorDomainCyberKitInternal, 0, fetchRequest.url(), "Not allowed by ContentSecurityPolicy"_s, ResourceError::Type::AccessControl });
         return;
     }
 

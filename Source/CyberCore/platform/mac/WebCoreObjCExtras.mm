@@ -38,7 +38,7 @@
 #if ASSERT_ENABLED
 
 // This is like the isKindOfClass: method, bypassing it to get the correct answer for our purposes even for classes that override it.
-// At the time of this writing, that included WebKit's WKObject class.
+// At the time of this writing, that included CyberKit's WKObject class.
 static bool safeIsKindOfClass(id object, Class testClass)
 {
     if (!object)

@@ -47,7 +47,7 @@ TEST(NetworkProcess, Entitlements)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:adoptNS([[WKWebViewConfiguration alloc] init]).get()]);
     [webView synchronouslyLoadTestPageNamed:@"simple"];
     WKWebsiteDataStore *store = [webView configuration].websiteDataStore;
-    bool hasEntitlement = [store _networkProcessHasEntitlementForTesting:@"com.apple.rootless.storage.WebKitNetworkingSandbox"];
+    bool hasEntitlement = [store _networkProcessHasEntitlementForTesting:@"com.apple.rootless.storage.CyberKitNetworkingSandbox"];
 #if PLATFORM(MAC) && USE(APPLE_INTERNAL_SDK)
     EXPECT_TRUE(hasEntitlement);
 #else
@@ -56,10 +56,10 @@ TEST(NetworkProcess, Entitlements)
     EXPECT_FALSE([store _networkProcessHasEntitlementForTesting:@"test failure case"]);
 }
 
-TEST(WebKit, HTTPReferer)
+TEST(CyberKit, HTTPReferer)
 {
     auto checkReferer = [] (NSURL *baseURL, const char* expectedReferer) {
-        using namespace TestWebKitAPI;
+        using namespace TestCyberKitAPI;
         bool done = false;
         HTTPServer server([&] (Connection connection) {
             connection.receiveHTTPRequest([connection, expectedReferer, &done] (Vector<char>&& request) {
@@ -102,7 +102,7 @@ TEST(NetworkProcess, LaunchOnlyWhenNecessary)
         [[webView configuration].processPool _registerURLSchemeAsBypassingContentSecurityPolicy:@"test"];
     }
 
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_FALSE([websiteDataStore _networkProcessExists]);
 }
 
@@ -117,15 +117,15 @@ TEST(NetworkProcess, CrashWhenNotAssociatedWithDataStore)
         auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:viewConfiguration.get()]);
         [webView loadHTMLString:@"foo" baseURL:[NSURL URLWithString:@"about:blank"]];
         while (![dataStore _networkProcessIdentifier])
-            TestWebKitAPI::Util::spinRunLoop(10);
+            TestCyberKitAPI::Util::spinRunLoop(10);
         networkProcessPID = [dataStore _networkProcessIdentifier];
         EXPECT_TRUE(!!networkProcessPID);
     }
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     // Kill the network process once it is no longer associated with any WebsiteDataStore.
     kill(networkProcessPID, 9);
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     auto viewConfiguration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto dataStoreConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] initNonPersistentConfiguration]);
@@ -152,7 +152,7 @@ TEST(NetworkProcess, TerminateWhenNoWebsiteDataStore)
     }
 
     while (!kill(networkProcessIdentifier, 0))
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_TRUE(errno == ESRCH);
     EXPECT_FALSE([WKWebsiteDataStore _defaultNetworkProcessExists]);
 }
@@ -172,7 +172,7 @@ TEST(NetworkProcess, TerminateWhenNoDefaultWebsiteDataStore)
     [WKWebsiteDataStore _deleteDefaultDataStoreForTesting];
 
     while (!kill(networkProcessIdentifier, 0))
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_TRUE(errno == ESRCH);
     EXPECT_FALSE([WKWebsiteDataStore _defaultNetworkProcessExists]);
 }
@@ -188,13 +188,13 @@ TEST(NetworkProcess, DoNotLaunchOnDataStoreDestruction)
         auto websiteDataStore2 = adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration: storeConfiguration2.get()]);
     }
 
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
     EXPECT_FALSE([WKWebsiteDataStore _defaultNetworkProcessExists]);
 }
 
 TEST(NetworkProcess, CORSPreflightCachePartitioned)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     size_t preflightRequestsReceived { 0 };
     HTTPServer server([&] (Connection connection) {
         connection.receiveHTTPRequest([&, connection] (Vector<char>&& request) {
@@ -229,14 +229,14 @@ TEST(NetworkProcess, CORSPreflightCachePartitioned)
     auto firstWebView = adoptNS([WKWebView new]);
     [firstWebView loadHTMLString:html baseURL:baseURL];
     while (preflightRequestsReceived != 1)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     configuration.get().websiteDataStore = [WKWebsiteDataStore nonPersistentDataStore];
     auto secondWebView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [secondWebView loadHTMLString:html baseURL:baseURL];
     while (preflightRequestsReceived != 2)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 
@@ -246,7 +246,7 @@ static RetainPtr<WKScriptMessage> waitAndGetNextMessage()
 {
     if (receivedMessagesVector.isEmpty()) {
         receivedMessage = false;
-        TestWebKitAPI::Util::run(&receivedMessage);
+        TestCyberKitAPI::Util::run(&receivedMessage);
     }
 
     EXPECT_EQ(receivedMessagesVector.size(), 1U);
@@ -279,7 +279,7 @@ static void waitUntilNetworkProcessIsResponsive(WKWebView *webView1, WKWebView *
 
     bool canSecondWebViewSeeNewCookie = false;
     do {
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
         String cookieString = (NSString *)[webView2 objectByEvaluatingJavaScript:@"document.cookie"];
         canSecondWebViewSeeNewCookie = cookieString.contains(expectedCookieString);
     } while (!canSecondWebViewSeeNewCookie);
@@ -323,10 +323,10 @@ TEST(NetworkProcess, BroadcastChannelCrashRecovery)
         EXPECT_TRUE(!error);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
-    TestWebKitAPI::Util::run(&receivedMessage);
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     EXPECT_EQ(receivedMessagesVector.size(), 1U);
     EXPECT_EQ([receivedMessagesVector[0] webView], webView2);
@@ -340,10 +340,10 @@ TEST(NetworkProcess, BroadcastChannelCrashRecovery)
         EXPECT_TRUE(!error);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
-    TestWebKitAPI::Util::run(&receivedMessage);
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     EXPECT_EQ(receivedMessagesVector.size(), 1U);
     EXPECT_EQ([receivedMessagesVector[0] webView], webView1);
@@ -352,7 +352,7 @@ TEST(NetworkProcess, BroadcastChannelCrashRecovery)
     // Kill the network process.
     kill(networkPID, 9);
     while ([[WKWebsiteDataStore defaultDataStore] _networkProcessIdentifier] == networkPID)
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
 
     waitUntilNetworkProcessIsResponsive(webView1.get(), webView2.get());
 
@@ -364,10 +364,10 @@ TEST(NetworkProcess, BroadcastChannelCrashRecovery)
         EXPECT_TRUE(!error);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
-    TestWebKitAPI::Util::run(&receivedMessage);
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     EXPECT_EQ(receivedMessagesVector.size(), 1U);
     EXPECT_EQ([receivedMessagesVector[0] webView], webView2);
@@ -381,10 +381,10 @@ TEST(NetworkProcess, BroadcastChannelCrashRecovery)
         EXPECT_TRUE(!error);
         finishedRunningScript = true;
     }];
-    TestWebKitAPI::Util::run(&finishedRunningScript);
+    TestCyberKitAPI::Util::run(&finishedRunningScript);
 
-    TestWebKitAPI::Util::run(&receivedMessage);
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     EXPECT_EQ(receivedMessagesVector.size(), 1U);
     EXPECT_EQ([receivedMessagesVector[0] webView], webView1);
@@ -452,7 +452,7 @@ TEST(NetworkProcess, BroadcastChannelCrashRecovery)
 
 TEST(_WKDataTask, Basic)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     constexpr auto html = "<script>document.cookie='testkey=value'</script>"_s;
     constexpr auto secondResponse = "second response"_s;
     Vector<char> secondRequest;
@@ -537,7 +537,7 @@ TEST(_WKDataTask, Basic)
 
 TEST(_WKDataTask, Challenge)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server(HTTPServer::respondWithChallengeThenOK, HTTPServer::Protocol::Https);
     auto webView = adoptNS([TestWKWebView new]);
 
@@ -579,7 +579,7 @@ TEST(_WKDataTask, Challenge)
     Util::run(&done);
 }
 
-void sendLoop(TestWebKitAPI::Connection connection, bool& sentWithError)
+void sendLoop(TestCyberKitAPI::Connection connection, bool& sentWithError)
 {
     Vector<uint8_t> bytes(1000, 0);
     connection.sendAndReportError(WTFMove(bytes), [&, connection] (bool sawError) {
@@ -592,7 +592,7 @@ void sendLoop(TestWebKitAPI::Connection connection, bool& sentWithError)
 
 TEST(_WKDataTask, Cancel)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     bool sentWithError { false };
     HTTPServer server([&] (Connection connection) {
         connection.receiveHTTPRequest([&, connection] (Vector<char>&&) {
@@ -636,7 +636,7 @@ TEST(_WKDataTask, Cancel)
 
 TEST(_WKDataTask, Redirect)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server { {
         { "/"_s, { 301, { { "Location"_s, "/redirectTarget"_s }, { "Custom-Name"_s, "Custom-Value"_s } } } },
         { "/redirectTarget"_s, { "hi"_s } },
@@ -686,7 +686,7 @@ TEST(_WKDataTask, Redirect)
 
 TEST(_WKDataTask, Crash)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server(HTTPServer::respondWithOK);
     auto webView = adoptNS([WKWebView new]);
 
@@ -699,7 +699,7 @@ TEST(_WKDataTask, Crash)
             decisionHandler(_WKDataTaskResponsePolicyAllow);
         };
         delegate.get().didCompleteWithError = ^(_WKDataTask *, NSError *error) {
-            EXPECT_WK_STREQ(error.domain, WebKitErrorDomain);
+            EXPECT_WK_STREQ(error.domain, CyberKitErrorDomain);
             EXPECT_EQ(error.code, 300);
             done = true;
         };
@@ -711,7 +711,7 @@ TEST(_WKDataTask, Crash)
 
 TEST(WKWebView, CrossOriginDoubleRedirectAuthentication)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     bool done { false };
 
     auto hasAuthorizationHeaderField = [] (const Vector<char>& request) {
@@ -782,7 +782,7 @@ caches.open("test").then(() => {
 
 TEST(NetworkProcess, DoNotLaunchForDOMCacheDestruction)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { mainBytes } },
         { "/worker.js"_s, { { { "Content-Type"_s, "text/javascript"_s } }, workerBytes } }
     });
@@ -797,16 +797,16 @@ TEST(NetworkProcess, DoNotLaunchForDOMCacheDestruction)
 
     kill(configuration.get().websiteDataStore._networkProcessIdentifier, SIGKILL);
     while ([configuration.get().websiteDataStore _networkProcessExists])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     // Unregister service worker client.
     bool done = false;
     [webView evaluateJavaScript:@"terminateWorker()" completionHandler:[&] (id result, NSError *error) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [configuration.get().processPool _garbageCollectJavaScriptObjectsForTesting];
 
-    TestWebKitAPI::Util::spinRunLoop(50);
+    TestCyberKitAPI::Util::spinRunLoop(50);
     EXPECT_FALSE([configuration.get().websiteDataStore _networkProcessExists]);
 }

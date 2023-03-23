@@ -29,7 +29,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import <CyberCore/SQLiteFileSystem.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
@@ -57,10 +57,10 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Success", (NSString *)[lastScriptMessage body]);
 
     NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
@@ -71,7 +71,7 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
         originDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *originDirectory = [NSURL fileURLWithPath:originDirectoryString isDirectory:YES];
     NSURL *databaseDirectory = [originDirectory URLByAppendingPathComponent:hash];
     NSURL *blobFileURL = [databaseDirectory URLByAppendingPathComponent:@"1.blob"];
@@ -128,7 +128,7 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
 
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 TEST(IndexedDB, StoreBlobThenDeleteDatabase)
@@ -137,9 +137,9 @@ TEST(IndexedDB, StoreBlobThenDeleteDatabase)
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Success", (NSString *)[lastScriptMessage body]);
 
     NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
@@ -150,7 +150,7 @@ TEST(IndexedDB, StoreBlobThenDeleteDatabase)
         originDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *originDirectory = [NSURL fileURLWithPath:originDirectoryString isDirectory:YES];
     NSURL *databaseDirectory = [originDirectory URLByAppendingPathComponent:hash];
     NSURL *blobFileURL = [databaseDirectory URLByAppendingPathComponent:@"1.blob"];
@@ -165,7 +165,7 @@ TEST(IndexedDB, StoreBlobThenDeleteDatabase)
 
     readyToContinue = false;
     [webView evaluateJavaScript:@"deleteDatabase(() => { sendMessage('Delete success'); })" completionHandler:nil];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Delete success", (NSString *)[lastScriptMessage body]);
 
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:blobFileURL.path]);

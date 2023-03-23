@@ -45,7 +45,7 @@ TEST(WKWebView, AlwaysShowsScroller)
     ASSERT_EQ(280, [webView stringByEvaluatingJavaScript:@"document.body.scrollHeight"].integerValue);
 
     [webView _setAlwaysShowsVerticalScroller:YES];
-    // When using custom scrollers, WebKit fails to dirty layout when we change this, so force it.
+    // When using custom scrollers, CyberKit fails to dirty layout when we change this, so force it.
     [webView evaluateJavaScript:@"document.body.appendChild(document.createElement(\"div\"))" completionHandler:nil];
     ASSERT_EQ(280, [webView stringByEvaluatingJavaScript:@"document.body.scrollWidth"].integerValue);
     ASSERT_EQ(280, [webView stringByEvaluatingJavaScript:@"document.body.scrollHeight"].integerValue);

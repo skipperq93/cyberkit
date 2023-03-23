@@ -17,7 +17,7 @@ set(test_main_SOURCES
 find_library(CARBON_LIBRARY Carbon)
 find_library(COCOA_LIBRARY Cocoa)
 find_library(COREFOUNDATION_LIBRARY CoreFoundation)
-link_directories(${CMAKE_SOURCE_DIR}/WebKitLibraries)
+link_directories(${CMAKE_SOURCE_DIR}/CyberKitLibraries)
 list(APPEND test_wtf_LIBRARIES
     ${CARBON_LIBRARY}
     ${COCOA_LIBRARY}
@@ -27,20 +27,20 @@ list(APPEND TestWTF_SOURCES
     cocoa/UtilitiesCocoa.mm
 )
 
-list(APPEND TestWebKitAPI_LIBRARIES
+list(APPEND TestCyberKitAPI_LIBRARIES
     ${CARBON_LIBRARY}
 )
 
 list(APPEND TestCyberKitLegacy_LIBRARIES
     WTF
-    WebKit
+    CyberKit
     ${CARBON_LIBRARY}
 )
 
 list(APPEND TestCyberCore_LIBRARIES
     JavaScriptCore
     WTF
-    WebKit
+    CyberKit
 )
 
 set(bundle_harness_SOURCES
@@ -59,7 +59,7 @@ list(APPEND TestCyberKitLegacy_SOURCES
 set(CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS} "-framework Cocoa")
 set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} "-framework Cocoa")
 
-list(APPEND TestWebKit_LIBRARIES
+list(APPEND TestCyberKit_LIBRARIES
     JavaScriptCore
     WTF
     ${CARBON_LIBRARY}
@@ -73,7 +73,7 @@ list(APPEND TestCyberCore_SOURCES
     cocoa/UtilitiesCocoa.mm
 )
 
-list(APPEND TestWebKit_SOURCES
+list(APPEND TestCyberKit_SOURCES
     cocoa/UtilitiesCocoa.mm
 
     mac/OffscreenWindow.mm

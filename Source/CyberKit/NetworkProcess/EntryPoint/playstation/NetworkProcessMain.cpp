@@ -50,11 +50,11 @@ int main(int argc, char** argv)
     loadLibraryOrExit(OpenSSL_LOAD_AT);
     loadLibraryOrExit(CURL_LOAD_AT);
     loadLibraryOrExit(ICU_LOAD_AT);
-    loadLibraryOrExit(WebKitRequirements_LOAD_AT);
+    loadLibraryOrExit(CyberKitRequirements_LOAD_AT);
 #if !ENABLE(STATIC_JSC)
     loadLibraryOrExit("libJavaScriptCore");
 #endif
-    loadLibraryOrExit("libWebKit");
+    loadLibraryOrExit("libCyberKit");
 
     char* coreProcessIdentifier = argv[1];
 
@@ -68,5 +68,5 @@ int main(int argc, char** argv)
         connectionIdentifier,
         0
     };
-    return WebKit::NetworkProcessMain(sizeof(internalArgv) / sizeof(char*), internalArgv);
+    return CyberKit::NetworkProcessMain(sizeof(internalArgv) / sizeof(char*), internalArgv);
 }

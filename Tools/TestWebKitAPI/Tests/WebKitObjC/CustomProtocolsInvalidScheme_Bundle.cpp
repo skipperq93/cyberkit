@@ -30,7 +30,7 @@
 #include "InjectedBundleTest.h"
 #include <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class CustomProtocolInvalidSchemeTest : public InjectedBundleTest {
 public:
@@ -42,6 +42,6 @@ public:
 
 static InjectedBundleTest::Register<CustomProtocolInvalidSchemeTest> registrar("CustomProtocolInvalidSchemeTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

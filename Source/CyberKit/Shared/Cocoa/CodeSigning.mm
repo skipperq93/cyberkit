@@ -33,7 +33,7 @@
 #import <wtf/spi/darwin/CodeSignSPI.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static String codeSigningIdentifier(SecTaskRef task)
 {
@@ -79,6 +79,6 @@ String codeSigningIdentifier(audit_token_t token)
     return pair.first;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

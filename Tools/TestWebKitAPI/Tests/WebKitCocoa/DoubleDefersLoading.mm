@@ -91,13 +91,13 @@ Hello<br>
 )DEFERSRESOURCE";
 
 
-TEST(WebKit, DoubleDefersLoading)
+TEST(CyberKit, DoubleDefersLoading)
 {
     RetainPtr<WKWebViewConfiguration> configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"DoubleDefersLoadingPlugIn"]);
 
     _WKProcessPoolConfiguration *processPoolConfiguration = [configuration processPool]._configuration;
     auto processPool = adoptNS([[WKProcessPool alloc] _initWithConfiguration:processPoolConfiguration]);
-    [processPool _setObject:@"DoubleDefersLoadingPlugIn" forBundleParameter:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+    [processPool _setObject:@"DoubleDefersLoadingPlugIn" forBundleParameter:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
     [configuration setProcessPool:processPool.get()];
 
     RetainPtr<DefersScheme> handler = adoptNS([[DefersScheme alloc] initWithBytes:testBytes]);
@@ -110,20 +110,20 @@ TEST(WebKit, DoubleDefersLoading)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"defers://host/main1.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"defers://host/main1.html#fragment"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView _setDefersLoadingForTesting:YES];
     [webView goBack];
     [webView _setDefersLoadingForTesting:NO];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 

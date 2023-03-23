@@ -36,7 +36,7 @@
 SOFT_LINK_LIBRARY(user32);
 SOFT_LINK_OPTIONAL(user32, SetProcessDpiAwarenessContext, BOOL, STDAPICALLTYPE, (DPI_AWARENESS_CONTEXT));
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessMainWin final: public AuxiliaryProcessMainBaseNoSingleton<GPUProcess> {
 public:
@@ -58,6 +58,6 @@ int GPUProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<GPUProcessMainWin>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

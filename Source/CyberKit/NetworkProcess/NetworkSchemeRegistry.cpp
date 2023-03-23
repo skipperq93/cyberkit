@@ -26,7 +26,7 @@
 #include "config.h"
 #include "NetworkSchemeRegistry.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void NetworkSchemeRegistry::registerURLSchemeAsCORSEnabled(String&& scheme)
 {
@@ -40,4 +40,4 @@ bool NetworkSchemeRegistry::shouldTreatURLSchemeAsCORSEnabled(StringView scheme)
     return m_corsEnabledSchemes.contains<StringViewHashTranslator>(scheme);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -41,7 +41,7 @@ namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkLoad;
 
@@ -89,6 +89,6 @@ private:
 bool requestsHeadersMatch(const CyberCore::ResourceRequest& speculativeValidationRequest, const CyberCore::ResourceRequest& actualRequest);
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION) || ENABLE(NETWORK_CACHE_STALE_WHILE_REVALIDATE)

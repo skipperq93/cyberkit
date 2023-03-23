@@ -21,8 +21,8 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::CanvasConfiguration {
-    WebKit::WebGPUIdentifier device
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::CanvasConfiguration {
+    CyberKit::WebGPUIdentifier device
     PAL::WebGPU::TextureFormat format
     PAL::WebGPU::TextureUsageFlags usage
     Vector<PAL::WebGPU::TextureFormat> viewFormats

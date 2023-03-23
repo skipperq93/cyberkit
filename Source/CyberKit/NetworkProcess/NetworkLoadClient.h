@@ -36,7 +36,7 @@ class FragmentedSharedBuffer;
 enum class PolicyAction : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class PrivateRelayed : bool;
 using ResponseCompletionHandler = CompletionHandler<void(CyberCore::PolicyAction)>;
@@ -60,4 +60,4 @@ public:
     virtual bool shouldCaptureExtraNetworkLoadMetrics() const { return false; }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

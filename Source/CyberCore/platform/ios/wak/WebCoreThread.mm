@@ -68,7 +68,7 @@
 
 namespace {
 // Release global state that is accessed from both web thread as well
-// as any client thread that calls into WebKit.
+// as any client thread that calls into CyberKit.
 void ReleaseWebThreadGlobalState()
 {
     // ANGLE maintains thread global state for its current context.

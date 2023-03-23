@@ -28,7 +28,7 @@
 #if USE(APPLE_INTERNAL_SDK)
 
 #import <AppKit/NSTextChecker.h>
-#import <WebKitAdditions/NSSpellCheckerSPIAdditions.h>
+#import <CyberKitAdditions/NSSpellCheckerSPIAdditions.h>
 
 #else
 

@@ -30,7 +30,7 @@
 
 #if ENABLE(IPC_TESTING_API)
 
-namespace WebKit {
+namespace CyberKit {
 
 struct SerializedMember {
     ASCIILiteral type;

@@ -29,7 +29,7 @@
 #include <wtf/UUID.h>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebPushD {
+namespace CyberKit::WebPushD {
 
 struct WebPushDaemonConnectionConfiguration {
     template<class Encoder> void encode(Encoder&) const;
@@ -78,4 +78,4 @@ std::optional<WebPushDaemonConnectionConfiguration> WebPushDaemonConnectionConfi
     } };
 }
 
-} // namespace WebKit::WebPushD
+} // namespace CyberKit::WebPushD

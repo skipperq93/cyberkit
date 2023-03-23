@@ -41,7 +41,7 @@ class TextureMapperPlatformLayer;
 class TextureMapperTiledBackingStore;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCSceneContext;
 struct WCUpateInfo;
@@ -66,6 +66,6 @@ private:
     bool m_usesOffscreenRendering;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

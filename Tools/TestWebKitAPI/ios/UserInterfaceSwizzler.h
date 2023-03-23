@@ -31,7 +31,7 @@
 #import "UIKitSPI.h"
 #import <UIKit/UIKit.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template<UIUserInterfaceIdiom idiom>
 class UserInterfaceSwizzler : private InstanceMethodSwizzler {
@@ -55,6 +55,6 @@ private:
 using IPadUserInterfaceSwizzler = UserInterfaceSwizzler<UIUserInterfaceIdiomPad>;
 using IPhoneUserInterfaceSwizzler = UserInterfaceSwizzler<UIUserInterfaceIdiomPhone>;
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

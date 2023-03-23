@@ -24,7 +24,7 @@
 #include "Shared/Sandbox/common.sb"
 
 #if ENABLE(SYSTEM_CONTENT_PATH_SANDBOX_RULES)
-#include <WebKitAdditions/SystemContentSandbox-macos.defs>
+#include <CyberKitAdditions/SystemContentSandbox-macos.defs>
 #endif
 
 #if USE(SANDBOX_VERSION_3)

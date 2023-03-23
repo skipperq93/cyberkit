@@ -39,7 +39,7 @@ class PlatformMouseEvent;
 }
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: This is not needed in the WebProcess and should be moved to be a peer
 // of WKView.
@@ -53,11 +53,11 @@ public:
     static bool shouldBeHandledAsContextClick(const CyberCore::PlatformMouseEvent&);
 
 #if defined(__OBJC__)
-    static OptionSet<WebKit::WebEventModifier> webEventModifiersForNSEventModifierFlags(NSEventModifierFlags);
-    static NSEventModifierFlags toNSEventModifierFlags(OptionSet<WebKit::WebEventModifier>);
-    static NSInteger toNSButtonNumber(WebKit::WebMouseEventButton);
+    static OptionSet<CyberKit::WebEventModifier> webEventModifiersForNSEventModifierFlags(NSEventModifierFlags);
+    static NSEventModifierFlags toNSEventModifierFlags(OptionSet<CyberKit::WebEventModifier>);
+    static NSInteger toNSButtonNumber(CyberKit::WebMouseEventButton);
 #endif
 #endif // USE(APPKIT)
 };
 
-} // namespace WebKit
+} // namespace CyberKit

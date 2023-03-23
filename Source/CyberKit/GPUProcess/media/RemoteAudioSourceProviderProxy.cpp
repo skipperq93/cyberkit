@@ -31,7 +31,7 @@
 #include "RemoteAudioSourceProviderManagerMessages.h"
 #include <CyberCore/AudioSourceProviderAVFObjC.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<RemoteAudioSourceProviderProxy> RemoteAudioSourceProviderProxy::create(CyberCore::MediaPlayerIdentifier identifier, Ref<IPC::Connection>&& connection, CyberCore::AudioSourceProviderAVFObjC& localProvider)
 {
@@ -69,6 +69,6 @@ void RemoteAudioSourceProviderProxy::newAudioSamples(uint64_t startFrame, uint64
     m_connection->send(Messages::RemoteAudioSourceProviderManager::AudioSamplesAvailable { m_identifier, startFrame, numberOfFrames }, 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO) && PLATFORM(COCOA)

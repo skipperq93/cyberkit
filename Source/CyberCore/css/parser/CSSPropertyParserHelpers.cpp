@@ -91,7 +91,7 @@
 #include "SVGPathUtilities.h"
 #include "StyleColor.h"
 #include "TimingFunction.h"
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 #include <wtf/SortedArrayMap.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/TextStream.h>
@@ -4984,44 +4984,44 @@ const AtomString& genericFontFamily(CSSValueID ident)
 {
     switch (ident) {
     case CSSValueSerif:
-        return WebKitFontFamilyNames::serifFamily.get();
+        return CyberKitFontFamilyNames::serifFamily.get();
     case CSSValueSansSerif:
-        return WebKitFontFamilyNames::sansSerifFamily.get();
+        return CyberKitFontFamilyNames::sansSerifFamily.get();
     case CSSValueCursive:
-        return WebKitFontFamilyNames::cursiveFamily.get();
+        return CyberKitFontFamilyNames::cursiveFamily.get();
     case CSSValueFantasy:
-        return WebKitFontFamilyNames::fantasyFamily.get();
+        return CyberKitFontFamilyNames::fantasyFamily.get();
     case CSSValueMonospace:
-        return WebKitFontFamilyNames::monospaceFamily.get();
+        return CyberKitFontFamilyNames::monospaceFamily.get();
     case CSSValueWebkitPictograph:
-        return WebKitFontFamilyNames::pictographFamily.get();
+        return CyberKitFontFamilyNames::pictographFamily.get();
     case CSSValueSystemUi:
-        return WebKitFontFamilyNames::systemUiFamily.get();
+        return CyberKitFontFamilyNames::systemUiFamily.get();
     default:
         return emptyAtom();
     }
 }
 
-WebKitFontFamilyNames::FamilyNamesIndex genericFontFamilyIndex(CSSValueID ident)
+CyberKitFontFamilyNames::FamilyNamesIndex genericFontFamilyIndex(CSSValueID ident)
 {
     switch (ident) {
     case CSSValueSerif:
-        return WebKitFontFamilyNames::FamilyNamesIndex::SerifFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::SerifFamily;
     case CSSValueSansSerif:
-        return WebKitFontFamilyNames::FamilyNamesIndex::SansSerifFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::SansSerifFamily;
     case CSSValueCursive:
-        return WebKitFontFamilyNames::FamilyNamesIndex::CursiveFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::CursiveFamily;
     case CSSValueFantasy:
-        return WebKitFontFamilyNames::FamilyNamesIndex::FantasyFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::FantasyFamily;
     case CSSValueMonospace:
-        return WebKitFontFamilyNames::FamilyNamesIndex::MonospaceFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::MonospaceFamily;
     case CSSValueWebkitPictograph:
-        return WebKitFontFamilyNames::FamilyNamesIndex::PictographFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::PictographFamily;
     case CSSValueSystemUi:
-        return WebKitFontFamilyNames::FamilyNamesIndex::SystemUiFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::SystemUiFamily;
     default:
         ASSERT_NOT_REACHED();
-        return WebKitFontFamilyNames::FamilyNamesIndex::StandardFamily;
+        return CyberKitFontFamilyNames::FamilyNamesIndex::StandardFamily;
     }
 }
 

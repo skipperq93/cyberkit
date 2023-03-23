@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 #include <unicode/uscript.h>
 #include <wtf/HashMap.h>
 #include <wtf/text/AtomString.h>
@@ -60,7 +60,7 @@ public:
     const String& fantasyFontFamily(UScriptCode = USCRIPT_COMMON) const;
     const String& pictographFontFamily(UScriptCode = USCRIPT_COMMON) const;
 
-    const String* fontFamily(WebKitFontFamilyNames::FamilyNamesIndex, UScriptCode = USCRIPT_COMMON) const;
+    const String* fontFamily(CyberKitFontFamilyNames::FamilyNamesIndex, UScriptCode = USCRIPT_COMMON) const;
 
     bool setStandardFontFamily(const String&, UScriptCode);
     bool setFixedFontFamily(const String&, UScriptCode);

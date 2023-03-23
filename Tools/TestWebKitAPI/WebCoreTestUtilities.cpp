@@ -28,7 +28,7 @@
 
 #import <wtf/MemoryFootprint.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 ::testing::AssertionResult memoryFootprintChangedBy(size_t& lastFootprint, double expectedChange, double error)
 {

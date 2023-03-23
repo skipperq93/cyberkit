@@ -45,7 +45,7 @@ using std::experimental::suspend_always;
 
 OBJC_CLASS NSURLRequest;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class Connection;
 struct HTTPResponse;
@@ -241,14 +241,14 @@ private:
 
 class Connection : public RefCounted<Connection> {
 public:
-    static Ref<Connection> create(TestWebKitAPI::Connection tlsConnection) { return adoptRef(*new Connection(tlsConnection)); }
+    static Ref<Connection> create(TestCyberKitAPI::Connection tlsConnection) { return adoptRef(*new Connection(tlsConnection)); }
     void send(Frame&&, CompletionHandler<void()>&& = nullptr) const;
     void receive(CompletionHandler<void(Frame&&)>&&) const;
 private:
-    Connection(TestWebKitAPI::Connection tlsConnection)
+    Connection(TestCyberKitAPI::Connection tlsConnection)
         : m_tlsConnection(tlsConnection) { }
 
-    TestWebKitAPI::Connection m_tlsConnection;
+    TestCyberKitAPI::Connection m_tlsConnection;
     mutable bool m_expectClientConnectionPreface { true };
     mutable bool m_sendServerConnectionPreface { true };
     mutable Vector<uint8_t> m_receiveBuffer;
@@ -256,7 +256,7 @@ private:
 
 } // namespace H2
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 RetainPtr<SecCertificateRef> testCertificate();
 RetainPtr<SecIdentityRef> testIdentity();

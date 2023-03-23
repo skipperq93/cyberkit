@@ -34,7 +34,7 @@
 #include <CyberCore/CurlContext.h>
 #include <CyberCore/NetworkStorageSession.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -64,4 +64,4 @@ std::unique_ptr<WebSocketTask> NetworkSessionCurl::createWebSocketTask(WebPagePr
     return makeUnique<WebSocketTask>(channel, request, protocol);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -30,7 +30,7 @@
 #import <wtf/StdLibExtras.h>
 #import <wtf/UniqueArray.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 #if PLATFORM(MAC)
@@ -95,4 +95,4 @@ void waitForConditionWithLogging(std::function<bool()>&& condition, NSTimeInterv
 NSString * const TestPlugInClassNameParameter = @"TestPlugInPrincipalClassName";
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

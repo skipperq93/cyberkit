@@ -29,12 +29,12 @@
 
 #include "WebGPUIdentifier.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct PresentationContextDescriptor {
     WebGPUIdentifier compositorIntegration;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

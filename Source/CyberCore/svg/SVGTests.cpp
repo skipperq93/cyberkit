@@ -171,7 +171,7 @@ bool SVGTests::hasFeatureForLegacyBindings(const String& feature, const String& 
     // FIXME: This function is here only to be exposed in the Objective-C and GObject bindings for both Node and DOMImplementation.
     // It's likely that we can just remove this and instead have the bindings return true unconditionally.
     // This is what the DOMImplementation function now does in JavaScript as is now suggested in the DOM specification.
-    // The behavior implemented below is quirky, but preserves what WebKit has done for at least the last few years.
+    // The behavior implemented below is quirky, but preserves what CyberKit has done for at least the last few years.
 
     bool hasSVG10FeaturePrefix = startsWithLettersIgnoringASCIICase(feature, "org.w3c.dom.svg"_s) || startsWithLettersIgnoringASCIICase(feature, "org.w3c.svg"_s);
     bool hasSVG11FeaturePrefix = startsWithLettersIgnoringASCIICase(feature, "http://www.w3.org/tr/svg"_s);

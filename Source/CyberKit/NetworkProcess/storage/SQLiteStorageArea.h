@@ -29,7 +29,7 @@
 #include <CyberCore/SQLiteDatabase.h>
 #include <CyberCore/SQLiteStatementAutoResetScope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SQLiteStorageArea final : public StorageAreaBase {
 public:
@@ -83,8 +83,8 @@ private:
     std::optional<unsigned> m_cacheSize;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::SQLiteStorageArea)
-    static bool isType(const WebKit::StorageAreaBase& area) { return area.type() == WebKit::StorageAreaBase::Type::SQLite; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::SQLiteStorageArea)
+    static bool isType(const CyberKit::StorageAreaBase& area) { return area.type() == CyberKit::StorageAreaBase::Type::SQLite; }
 SPECIALIZE_TYPE_TRAITS_END()

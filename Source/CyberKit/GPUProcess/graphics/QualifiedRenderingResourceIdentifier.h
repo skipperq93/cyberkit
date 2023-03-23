@@ -30,7 +30,7 @@
 #include <CyberCore/ProcessQualified.h>
 #include <CyberCore/RenderingResourceIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using QualifiedRenderingResourceIdentifier = CyberCore::ProcessQualified<CyberCore::RenderingResourceIdentifier>;
 

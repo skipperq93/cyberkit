@@ -31,16 +31,16 @@
 
 WKMutableArrayRef WKMutableArrayCreate()
 {
-    return const_cast<WKMutableArrayRef>(WebKit::toAPI(&API::Array::create().leakRef()));
+    return const_cast<WKMutableArrayRef>(CyberKit::toAPI(&API::Array::create().leakRef()));
 }
 
 void WKArrayAppendItem(WKMutableArrayRef arrayRef, WKTypeRef itemRef)
 {
-    WebKit::toImpl(arrayRef)->elements().append(WebKit::toImpl(itemRef));
+    CyberKit::toImpl(arrayRef)->elements().append(CyberKit::toImpl(itemRef));
 }
 
 void WKArrayRemoveItemAtIndex(WKMutableArrayRef arrayRef, size_t index)
 {
-    WebKit::toImpl(arrayRef)->elements().remove(index);
+    CyberKit::toImpl(arrayRef)->elements().remove(index);
 }
 

@@ -22,10 +22,10 @@
 
 headers: "NetworkProcessCreationParameters.h" "AuxiliaryProcessCreationParameters.h" "CacheModel.h" "WebsiteDataStoreParameters.h"
 
-struct WebKit::NetworkProcessCreationParameters {
-    WebKit::AuxiliaryProcessCreationParameters auxiliaryProcessParameters
+struct CyberKit::NetworkProcessCreationParameters {
+    CyberKit::AuxiliaryProcessCreationParameters auxiliaryProcessParameters
 
-    WebKit::CacheModel cacheModel
+    CyberKit::CacheModel cacheModel
 
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
     Vector<uint8_t> uiProcessCookieStorageIdentifier
@@ -53,7 +53,7 @@ struct WebKit::NetworkProcessCreationParameters {
     bool enablePrivateClickMeasurement
     bool ftpEnabled
 
-    Vector<WebKit::WebsiteDataStoreParameters> websiteDataStoreParameters
+    Vector<CyberKit::WebsiteDataStoreParameters> websiteDataStoreParameters
     Vector<std::pair<CyberCore::ProcessIdentifier, CyberCore::RegistrableDomain>> allowedFirstPartiesForCookies;
     HashSet<String> localhostAliasesForTesting;
 }

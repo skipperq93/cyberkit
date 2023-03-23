@@ -31,7 +31,7 @@
 #include "GPUConnectionToWebProcess.h"
 #include "WCContentBufferManager.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteGraphicsContextGLWC final : public RemoteGraphicsContextGL {
 public:

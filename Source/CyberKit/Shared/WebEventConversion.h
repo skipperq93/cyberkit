@@ -32,17 +32,17 @@
 #include <CyberCore/PlatformWheelEvent.h>
 
 #if ENABLE(IOS_TOUCH_EVENTS)
-#include <WebKitAdditions/PlatformTouchEventIOS.h>
+#include <CyberKitAdditions/PlatformTouchEventIOS.h>
 #elif ENABLE(TOUCH_EVENTS)
 #include <CyberCore/PlatformTouchEvent.h>
 #include <CyberCore/PlatformTouchPoint.h>
 #endif
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-#include <WebKitAdditions/PlatformGestureEventMac.h>
+#include <CyberKitAdditions/PlatformGestureEventMac.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebMouseEvent;
 class WebWheelEvent;
@@ -74,6 +74,6 @@ CyberCore::PlatformTouchPoint platform(const WebTouchPoint&);
 CyberCore::PlatformGestureEvent platform(const WebGestureEvent&);
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebEventConversion_h

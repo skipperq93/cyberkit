@@ -19,20 +19,20 @@
 
 #include "config.h"
 
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
 #include <CyberCore/SoupVersioning.h>
 #include <wtf/Vector.h>
 #include <wtf/glib/GMutexLocker.h>
 #include <wtf/glib/GRefPtr.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 static const char* kIndexHtml =
     "<html><head>"
     " <link rel='stylesheet' href='/style.css' type='text/css'>"
     " <script language='javascript' src='/javascript.js'></script>"
-    "</head><body>WebKitGTK resources test</body></html>";
+    "</head><body>CyberKitGTK resources test</body></html>";
 
 static const char* kStyleCSS =
     "body {"
@@ -49,7 +49,7 @@ class ResourcesTest: public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(ResourcesTest);
 
-    static void resourceSentRequestCallback(WebKitWebResource* resource, WebKitURIRequest* request, WebKitURIResponse* redirectResponse, ResourcesTest* test)
+    static void resourceSentRequestCallback(CyberKitWebResource* resource, CyberKitURIRequest* request, CyberKitURIResponse* redirectResponse, ResourcesTest* test)
     {
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
         if (redirectResponse)
@@ -57,24 +57,24 @@ public:
         test->resourceSentRequest(resource, request, redirectResponse);
     }
 
-    static void resourceReceivedResponseCallback(WebKitWebResource* resource, GParamSpec*, ResourcesTest* test)
+    static void resourceReceivedResponseCallback(CyberKitWebResource* resource, GParamSpec*, ResourcesTest* test)
     {
         g_assert_nonnull(webkit_web_resource_get_response(resource));
         test->resourceReceivedResponse(resource);
     }
 
-    static void resourceFinishedCallback(WebKitWebResource* resource, ResourcesTest* test)
+    static void resourceFinishedCallback(CyberKitWebResource* resource, ResourcesTest* test)
     {
         test->resourceFinished(resource);
     }
 
-    static void resourceFailedCallback(WebKitWebResource* resource, GError* error, ResourcesTest* test)
+    static void resourceFailedCallback(CyberKitWebResource* resource, GError* error, ResourcesTest* test)
     {
         g_assert_nonnull(error);
         test->resourceFailed(resource, error);
     }
 
-    static void resourceLoadStartedCallback(WebKitWebView* webView, WebKitWebResource* resource, WebKitURIRequest* request, ResourcesTest* test)
+    static void resourceLoadStartedCallback(CyberKitWebView* webView, CyberKitWebResource* resource, CyberKitURIRequest* request, ResourcesTest* test)
     {
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(resource));
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
@@ -111,19 +111,19 @@ public:
         clearSubresources();
     }
 
-    virtual void resourceLoadStarted(WebKitWebResource* resource, WebKitURIRequest* request)
+    virtual void resourceLoadStarted(CyberKitWebResource* resource, CyberKitURIRequest* request)
     {
     }
 
-    virtual void resourceSentRequest(WebKitWebResource* resource, WebKitURIRequest* request, WebKitURIResponse* redirectResponse)
+    virtual void resourceSentRequest(CyberKitWebResource* resource, CyberKitURIRequest* request, CyberKitURIResponse* redirectResponse)
     {
     }
 
-    virtual void resourceReceivedResponse(WebKitWebResource* resource)
+    virtual void resourceReceivedResponse(CyberKitWebResource* resource)
     {
     }
 
-    virtual void resourceFinished(WebKitWebResource* resource)
+    virtual void resourceFinished(CyberKitWebResource* resource)
     {
         g_signal_handlers_disconnect_matched(resource, G_SIGNAL_MATCH_DATA, 0, 0, 0, 0, this);
         if (webkit_web_view_get_main_resource(m_webView) != resource)
@@ -132,7 +132,7 @@ public:
             g_main_loop_quit(m_mainLoop);
     }
 
-    virtual void resourceFailed(WebKitWebResource* resource, GError* error)
+    virtual void resourceFailed(CyberKitWebResource* resource, GError* error)
     {
         g_assert_not_reached();
     }
@@ -165,7 +165,7 @@ public:
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    void checkResourceData(WebKitWebResource* resource)
+    void checkResourceData(CyberKitWebResource* resource)
     {
         m_resourceDataSize = 0;
         webkit_web_resource_get_data(resource, 0, resourceGetDataCallback, this);
@@ -207,9 +207,9 @@ static void testWebViewResources(ResourcesTest* test, gconstpointer)
     g_assert_null(test->subresources());
 
     // Load simple page without subresources.
-    test->loadHtml("<html><body>Testing WebKitGTK</body></html>", 0);
+    test->loadHtml("<html><body>Testing CyberKitGTK</body></html>", 0);
     test->waitUntilLoadFinished();
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
     g_assert_nonnull(resource);
     g_assert_cmpstr(webkit_web_view_get_uri(test->m_webView), ==, webkit_web_resource_get_uri(resource));
     g_assert_null(test->subresources());
@@ -256,7 +256,7 @@ public:
         m_resourcesToLoad = 2;
     }
 
-    void resourceLoadStarted(WebKitWebResource* resource, WebKitURIRequest* request)
+    void resourceLoadStarted(CyberKitWebResource* resource, CyberKitURIRequest* request)
     {
         if (resource == webkit_web_view_get_main_resource(m_webView))
             return;
@@ -265,7 +265,7 @@ public:
         m_loadEvents.append(Started);
     }
 
-    void resourceSentRequest(WebKitWebResource* resource, WebKitURIRequest* request, WebKitURIResponse* redirectResponse)
+    void resourceSentRequest(CyberKitWebResource* resource, CyberKitURIRequest* request, CyberKitURIResponse* redirectResponse)
     {
         if (resource != m_resource)
             return;
@@ -276,7 +276,7 @@ public:
             m_loadEvents.append(SentRequest);
     }
 
-    void resourceReceivedResponse(WebKitWebResource* resource)
+    void resourceReceivedResponse(CyberKitWebResource* resource)
     {
         if (resource != m_resource)
             return;
@@ -284,7 +284,7 @@ public:
         m_loadEvents.append(ReceivedResponse);
     }
 
-    void resourceFinished(WebKitWebResource* resource)
+    void resourceFinished(CyberKitWebResource* resource)
     {
         if (resource != m_resource) {
             ResourcesTest::resourceFinished(resource);
@@ -295,7 +295,7 @@ public:
         ResourcesTest::resourceFinished(resource);
     }
 
-    void resourceFailed(WebKitWebResource* resource, GError* error)
+    void resourceFailed(CyberKitWebResource* resource, GError* error)
     {
         if (resource == m_resource)
             m_loadEvents.append(Failed);
@@ -308,14 +308,14 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    WebKitURIResponse* waitUntilResourceLoadFinishedAndReturnURIResponse()
+    CyberKitURIResponse* waitUntilResourceLoadFinishedAndReturnURIResponse()
     {
         waitUntilResourceLoadFinished();
         g_assert_nonnull(m_resource);
         return webkit_web_resource_get_response(m_resource.get());
     }
 
-    GRefPtr<WebKitWebResource> m_resource;
+    GRefPtr<CyberKitWebResource> m_resource;
     Vector<LoadEvents> m_loadEvents;
 };
 
@@ -358,7 +358,7 @@ static void testWebResourceResponse(SingleResourceLoadTest* test, gconstpointer)
 {
     // No cached resource: First load.
     test->loadURI(kServer->getURIForPath("/javascript.html").data());
-    WebKitURIResponse* response = test->waitUntilResourceLoadFinishedAndReturnURIResponse();
+    CyberKitURIResponse* response = test->waitUntilResourceLoadFinishedAndReturnURIResponse();
     g_assert_cmpint(webkit_uri_response_get_status_code(response), ==, SOUP_STATUS_OK);
 
     // No cached resource: Second load.
@@ -390,7 +390,7 @@ static void testWebResourceResponse(SingleResourceLoadTest* test, gconstpointer)
 static void testWebResourceMimeType(SingleResourceLoadTest* test, gconstpointer)
 {
     test->loadURI(kServer->getURIForPath("/javascript.html").data());
-    WebKitURIResponse* response = test->waitUntilResourceLoadFinishedAndReturnURIResponse();
+    CyberKitURIResponse* response = test->waitUntilResourceLoadFinishedAndReturnURIResponse();
     g_assert_cmpstr(webkit_uri_response_get_mime_type(response), ==, "text/javascript");
 
     test->loadURI(kServer->getURIForPath("/image.html").data());
@@ -409,7 +409,7 @@ static void testWebResourceMimeType(SingleResourceLoadTest* test, gconstpointer)
 static void testWebResourceSuggestedFilename(SingleResourceLoadTest* test, gconstpointer)
 {
     test->loadURI(kServer->getURIForPath("/javascript.html").data());
-    WebKitURIResponse* response = test->waitUntilResourceLoadFinishedAndReturnURIResponse();
+    CyberKitURIResponse* response = test->waitUntilResourceLoadFinishedAndReturnURIResponse();
     g_assert_cmpstr(webkit_uri_response_get_suggested_filename(response), ==, "JavaScript.js");
 
     test->loadURI(kServer->getURIForPath("/image.html").data());
@@ -426,14 +426,14 @@ public:
     {
     }
 
-    static void uriChanged(WebKitWebResource* resource, GParamSpec*, ResourceURITrackingTest* test)
+    static void uriChanged(CyberKitWebResource* resource, GParamSpec*, ResourceURITrackingTest* test)
     {
         g_assert_true(resource == test->m_resource.get());
         g_assert_cmpstr(test->m_activeURI.data(), !=, webkit_web_resource_get_uri(test->m_resource.get()));
         test->m_activeURI = webkit_web_resource_get_uri(test->m_resource.get());
     }
 
-    void resourceLoadStarted(WebKitWebResource* resource, WebKitURIRequest* request)
+    void resourceLoadStarted(CyberKitWebResource* resource, CyberKitURIRequest* request)
     {
         if (resource == webkit_web_view_get_main_resource(m_webView))
             return;
@@ -445,7 +445,7 @@ public:
         g_signal_connect(resource, "notify::uri", G_CALLBACK(uriChanged), this);
     }
 
-    void resourceSentRequest(WebKitWebResource* resource, WebKitURIRequest* request, WebKitURIResponse* redirectResponse)
+    void resourceSentRequest(CyberKitWebResource* resource, CyberKitURIRequest* request, CyberKitURIResponse* redirectResponse)
     {
         if (resource != m_resource)
             return;
@@ -457,7 +457,7 @@ public:
         g_assert_cmpstr(m_activeURI.data(), ==, webkit_uri_request_get_uri(request));
     }
 
-    void resourceReceivedResponse(WebKitWebResource* resource)
+    void resourceReceivedResponse(CyberKitWebResource* resource)
     {
         if (resource != m_resource)
             return;
@@ -465,14 +465,14 @@ public:
         checkActiveURI("/simple-style.css");
     }
 
-    void resourceFinished(WebKitWebResource* resource)
+    void resourceFinished(CyberKitWebResource* resource)
     {
         if (resource == m_resource)
             checkActiveURI("/simple-style.css");
         ResourcesTest::resourceFinished(resource);
     }
 
-    void resourceFailed(WebKitWebResource*, GError*)
+    void resourceFailed(CyberKitWebResource*, GError*)
     {
         g_assert_not_reached();
     }
@@ -497,7 +497,7 @@ static void testWebResourceGetData(ResourcesTest* test, gconstpointer)
     test->loadURI(kServer->getURIForPath("/").data());
     test->waitUntilResourcesLoaded(4);
 
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
     g_assert_nonnull(resource);
     test->checkResourceData(resource);
 
@@ -506,7 +506,7 @@ static void testWebResourceGetData(ResourcesTest* test, gconstpointer)
         test->checkResourceData(WEBKIT_WEB_RESOURCE(item->data));
 }
 
-static void webViewLoadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, GMainLoop* mainLoop)
+static void webViewLoadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, GMainLoop* mainLoop)
 {
     if (loadEvent != WEBKIT_LOAD_FINISHED)
         return;
@@ -517,7 +517,7 @@ static void webViewLoadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent
 static void testWebResourceGetDataError(Test* test, gconstpointer)
 {
     GRefPtr<GMainLoop> mainLoop = adoptGRef(g_main_loop_new(nullptr, FALSE));
-    GRefPtr<WebKitWebView> webView = WEBKIT_WEB_VIEW(Test::createWebView(test->m_webContext.get()));
+    GRefPtr<CyberKitWebView> webView = WEBKIT_WEB_VIEW(Test::createWebView(test->m_webContext.get()));
     webkit_web_view_load_html(webView.get(), "<html></html>", nullptr);
     g_signal_connect(webView.get(), "load-changed", G_CALLBACK(webViewLoadChanged), mainLoop.get());
     g_main_loop_run(mainLoop.get());
@@ -539,7 +539,7 @@ static void testWebResourceGetDataError(Test* test, gconstpointer)
 static void testWebResourceGetDataEmpty(Test* test, gconstpointer)
 {
     GRefPtr<GMainLoop> mainLoop = adoptGRef(g_main_loop_new(nullptr, FALSE));
-    GRefPtr<WebKitWebView> webView = WEBKIT_WEB_VIEW(Test::createWebView(test->m_webContext.get()));
+    GRefPtr<CyberKitWebView> webView = WEBKIT_WEB_VIEW(Test::createWebView(test->m_webContext.get()));
     webkit_web_view_load_html(webView.get(), "", nullptr);
     g_signal_connect(webView.get(), "load-changed", G_CALLBACK(webViewLoadChanged), mainLoop.get());
     g_main_loop_run(mainLoop.get());
@@ -564,7 +564,7 @@ static void testWebViewResourcesHistoryCache(SingleResourceLoadTest* test, gcons
     CString javascriptURI = kServer->getURIForPath("/javascript.html");
     test->loadURI(javascriptURI.data());
     test->waitUntilResourceLoadFinished();
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
     g_assert_nonnull(resource);
     g_assert_cmpstr(webkit_web_resource_get_uri(resource), ==, javascriptURI.data());
 
@@ -592,7 +592,7 @@ class SendRequestTest: public SingleResourceLoadTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(SendRequestTest);
 
-    void resourceSentRequest(WebKitWebResource* resource, WebKitURIRequest* request, WebKitURIResponse* redirectResponse)
+    void resourceSentRequest(CyberKitWebResource* resource, CyberKitURIRequest* request, CyberKitURIResponse* redirectResponse)
     {
         if (resource != m_resource)
             return;
@@ -606,7 +606,7 @@ public:
         SingleResourceLoadTest::resourceSentRequest(resource, request, redirectResponse);
     }
 
-    void resourceFailed(WebKitWebResource* resource, GError* error)
+    void resourceFailed(CyberKitWebResource* resource, GError* error)
     {
         if (resource != m_resource)
             return;
@@ -701,7 +701,7 @@ class SyncRequestOnMaxConnsTest: public ResourcesTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(SyncRequestOnMaxConnsTest);
 
-    void resourceLoadStarted(WebKitWebResource*, WebKitURIRequest*) override
+    void resourceLoadStarted(CyberKitWebResource*, CyberKitURIRequest*) override
     {
         if (!m_resourcesToStartPending)
             return;
@@ -900,21 +900,21 @@ static void serverCallback(SoupServer* server, SoupServerMessage* message, const
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer(WebKitTestServer::ServerOptions::ServerRunInThread);
+    kServer = new CyberKitTestServer(CyberKitTestServer::ServerOptions::ServerRunInThread);
     kServer->run(serverCallback);
 
-    ResourcesTest::add("WebKitWebView", "resources", testWebViewResources);
-    SingleResourceLoadTest::add("WebKitWebResource", "loading", testWebResourceLoading);
-    SingleResourceLoadTest::add("WebKitWebResource", "response", testWebResourceResponse);
-    SingleResourceLoadTest::add("WebKitWebResource", "mime-type", testWebResourceMimeType);
-    SingleResourceLoadTest::add("WebKitWebResource", "suggested-filename", testWebResourceSuggestedFilename);
-    ResourceURITrackingTest::add("WebKitWebResource", "active-uri", testWebResourceActiveURI);
-    ResourcesTest::add("WebKitWebResource", "get-data", testWebResourceGetData);
-    Test::add("WebKitWebResource", "get-data-error", testWebResourceGetDataError);
-    Test::add("WebKitWebResource", "get-data-empty", testWebResourceGetDataEmpty);
-    SingleResourceLoadTest::add("WebKitWebView", "history-cache", testWebViewResourcesHistoryCache);
-    SendRequestTest::add("WebKitWebPage", "send-request", testWebResourceSendRequest);
-    SyncRequestOnMaxConnsTest::add("WebKitWebView", "sync-request-on-max-conns", testWebViewSyncRequestOnMaxConns);
+    ResourcesTest::add("CyberKitWebView", "resources", testWebViewResources);
+    SingleResourceLoadTest::add("CyberKitWebResource", "loading", testWebResourceLoading);
+    SingleResourceLoadTest::add("CyberKitWebResource", "response", testWebResourceResponse);
+    SingleResourceLoadTest::add("CyberKitWebResource", "mime-type", testWebResourceMimeType);
+    SingleResourceLoadTest::add("CyberKitWebResource", "suggested-filename", testWebResourceSuggestedFilename);
+    ResourceURITrackingTest::add("CyberKitWebResource", "active-uri", testWebResourceActiveURI);
+    ResourcesTest::add("CyberKitWebResource", "get-data", testWebResourceGetData);
+    Test::add("CyberKitWebResource", "get-data-error", testWebResourceGetDataError);
+    Test::add("CyberKitWebResource", "get-data-empty", testWebResourceGetDataEmpty);
+    SingleResourceLoadTest::add("CyberKitWebView", "history-cache", testWebViewResourcesHistoryCache);
+    SendRequestTest::add("CyberKitWebPage", "send-request", testWebResourceSendRequest);
+    SyncRequestOnMaxConnsTest::add("CyberKitWebView", "sync-request-on-max-conns", testWebViewSyncRequestOnMaxConns);
 }
 
 void afterAll()

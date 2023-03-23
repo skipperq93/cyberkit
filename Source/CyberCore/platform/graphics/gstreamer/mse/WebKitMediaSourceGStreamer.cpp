@@ -22,7 +22,7 @@
  */
 
 #include "config.h"
-#include "WebKitMediaSourceGStreamer.h"
+#include "CyberKitMediaSourceGStreamer.h"
 
 #if ENABLE(VIDEO) && ENABLE(MEDIA_SOURCE) && USE(GSTREAMER)
 
@@ -64,7 +64,7 @@ enum {
 
 struct Stream;
 
-struct WebKitMediaSrcPrivate {
+struct CyberKitMediaSrcPrivate {
     HashMap<AtomString, RefPtr<Stream>> streams;
     Stream* streamByName(const AtomString& name)
     {
@@ -94,35 +94,35 @@ static void webKitMediaSrcConstructed(GObject*);
 static GstStateChangeReturn webKitMediaSrcChangeState(GstElement*, GstStateChange);
 static gboolean webKitMediaSrcActivateMode(GstPad*, GstObject*, GstPadMode, gboolean activate);
 static void webKitMediaSrcLoop(void*);
-static void webKitMediaSrcTearDownStream(WebKitMediaSrc* source, const AtomString& name);
+static void webKitMediaSrcTearDownStream(CyberKitMediaSrc* source, const AtomString& name);
 static void webKitMediaSrcGetProperty(GObject*, unsigned propId, GValue*, GParamSpec*);
 static void webKitMediaSrcStreamFlush(Stream*, bool isSeekingFlush);
 static gboolean webKitMediaSrcSendEvent(GstElement*, GstEvent*);
 
 #define webkit_media_src_parent_class parent_class
 
-struct WebKitMediaSrcPadPrivate {
+struct CyberKitMediaSrcPadPrivate {
     RefPtr<Stream> stream;
 };
 
-struct WebKitMediaSrcPad {
+struct CyberKitMediaSrcPad {
     GstPad parent;
-    WebKitMediaSrcPadPrivate* priv;
+    CyberKitMediaSrcPadPrivate* priv;
 };
 
-struct WebKitMediaSrcPadClass {
+struct CyberKitMediaSrcPadClass {
     GstPadClass parent;
 };
 
 namespace WTF {
 
-template<> GRefPtr<WebKitMediaSrcPad> adoptGRef(WebKitMediaSrcPad* ptr)
+template<> GRefPtr<CyberKitMediaSrcPad> adoptGRef(CyberKitMediaSrcPad* ptr)
 {
     ASSERT(!ptr || !g_object_is_floating(ptr));
-    return GRefPtr<WebKitMediaSrcPad>(ptr, GRefPtrAdopt);
+    return GRefPtr<CyberKitMediaSrcPad>(ptr, GRefPtrAdopt);
 }
 
-template<> WebKitMediaSrcPad* refGPtr<WebKitMediaSrcPad>(WebKitMediaSrcPad* ptr)
+template<> CyberKitMediaSrcPad* refGPtr<CyberKitMediaSrcPad>(CyberKitMediaSrcPad* ptr)
 {
     if (ptr)
         gst_object_ref_sink(GST_OBJECT(ptr));
@@ -130,7 +130,7 @@ template<> WebKitMediaSrcPad* refGPtr<WebKitMediaSrcPad>(WebKitMediaSrcPad* ptr)
     return ptr;
 }
 
-template<> void derefGPtr<WebKitMediaSrcPad>(WebKitMediaSrcPad* ptr)
+template<> void derefGPtr<CyberKitMediaSrcPad>(CyberKitMediaSrcPad* ptr)
 {
     if (ptr)
         gst_object_unref(ptr);
@@ -139,20 +139,20 @@ template<> void derefGPtr<WebKitMediaSrcPad>(WebKitMediaSrcPad* ptr)
 } // namespace WTF
 
 static GType webkit_media_src_pad_get_type();
-WEBKIT_DEFINE_TYPE(WebKitMediaSrcPad, webkit_media_src_pad, GST_TYPE_PAD);
+WEBKIT_DEFINE_TYPE(CyberKitMediaSrcPad, webkit_media_src_pad, GST_TYPE_PAD);
 #define WEBKIT_TYPE_MEDIA_SRC_PAD (webkit_media_src_pad_get_type())
-#define WEBKIT_MEDIA_SRC_PAD(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_MEDIA_SRC_PAD, WebKitMediaSrcPad))
+#define WEBKIT_MEDIA_SRC_PAD(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_MEDIA_SRC_PAD, CyberKitMediaSrcPad))
 
-static void webkit_media_src_pad_class_init(WebKitMediaSrcPadClass*)
+static void webkit_media_src_pad_class_init(CyberKitMediaSrcPadClass*)
 {
 }
 
-WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitMediaSrc, webkit_media_src, GST_TYPE_ELEMENT,
+WEBKIT_DEFINE_TYPE_WITH_CODE(CyberKitMediaSrc, webkit_media_src, GST_TYPE_ELEMENT,
     G_IMPLEMENT_INTERFACE(GST_TYPE_URI_HANDLER, webKitMediaSrcUriHandlerInit);
-    GST_DEBUG_CATEGORY_INIT(webkit_media_src_debug, "webkitmediasrc", 0, "WebKit MSE source element"));
+    GST_DEBUG_CATEGORY_INIT(webkit_media_src_debug, "webkitmediasrc", 0, "CyberKit MSE source element"));
 
 struct Stream : public ThreadSafeRefCounted<Stream> {
-    Stream(WebKitMediaSrc* source, GRefPtr<GstPad>&& pad, Ref<MediaSourceTrackGStreamer>&& track, GRefPtr<GstStream>&& streamInfo)
+    Stream(CyberKitMediaSrc* source, GRefPtr<GstPad>&& pad, Ref<MediaSourceTrackGStreamer>&& track, GRefPtr<GstStream>&& streamInfo)
         : source(source)
         , pad(WTFMove(pad))
         , track(WTFMove(track))
@@ -162,7 +162,7 @@ struct Stream : public ThreadSafeRefCounted<Stream> {
         ASSERT(this->track->initialCaps());
     }
 
-    WebKitMediaSrc* const source;
+    CyberKitMediaSrc* const source;
     GRefPtr<GstPad> const pad;
     Ref<MediaSourceTrackGStreamer> track;
     GRefPtr<GstStream> streamInfo;
@@ -252,7 +252,7 @@ static gboolean webKitMediaSrcQuery(GstElement* element, GstQuery* query)
     return TRUE;
 }
 
-static void webkit_media_src_class_init(WebKitMediaSrcClass* klass)
+static void webkit_media_src_class_init(CyberKitMediaSrcClass* klass)
 {
     GObjectClass* oklass = G_OBJECT_CLASS(klass);
     GstElementClass* eklass = GST_ELEMENT_CLASS(klass);
@@ -262,7 +262,7 @@ static void webkit_media_src_class_init(WebKitMediaSrcClass* klass)
 
     gst_element_class_add_static_pad_template_with_gtype(eklass, &srcTemplate, webkit_media_src_pad_get_type());
 
-    gst_element_class_set_static_metadata(eklass, "WebKit MediaSource source element", "Source/Network", "Feeds samples coming from WebKit MediaSource object", "Igalia <aboya@igalia.com>");
+    gst_element_class_set_static_metadata(eklass, "CyberKit MediaSource source element", "Source/Network", "Feeds samples coming from CyberKit MediaSource object", "Igalia <aboya@igalia.com>");
 
     eklass->change_state = GST_DEBUG_FUNCPTR(webKitMediaSrcChangeState);
     eklass->send_event = GST_DEBUG_FUNCPTR(webKitMediaSrcSendEvent);
@@ -290,17 +290,17 @@ static void webKitMediaSrcConstructed(GObject* object)
     GST_OBJECT_FLAG_SET(object, GST_ELEMENT_FLAG_SOURCE);
 }
 
-void webKitMediaSrcEmitStreams(WebKitMediaSrc* source, const Vector<RefPtr<MediaSourceTrackGStreamer>>& tracks)
+void webKitMediaSrcEmitStreams(CyberKitMediaSrc* source, const Vector<RefPtr<MediaSourceTrackGStreamer>>& tracks)
 {
     ASSERT(isMainThread());
     ASSERT(!source->priv->isStarted());
     GST_DEBUG_OBJECT(source, "Emitting STREAM_COLLECTION");
 
-    source->priv->collection = adoptGRef(gst_stream_collection_new("WebKitMediaSrc"));
+    source->priv->collection = adoptGRef(gst_stream_collection_new("CyberKitMediaSrc"));
     for (const auto& track : tracks) {
         GST_DEBUG_OBJECT(source, "Adding stream with trackId '%s' of type %s with caps %" GST_PTR_FORMAT, track->trackId().string().utf8().data(), streamTypeToString(track->type()), track->initialCaps().get());
 
-        GRefPtr<WebKitMediaSrcPad> pad = WEBKIT_MEDIA_SRC_PAD(g_object_new(webkit_media_src_pad_get_type(), "name", makeString("src_", track->trackId()).utf8().data(), "direction", GST_PAD_SRC, NULL));
+        GRefPtr<CyberKitMediaSrcPad> pad = WEBKIT_MEDIA_SRC_PAD(g_object_new(webkit_media_src_pad_get_type(), "name", makeString("src_", track->trackId()).utf8().data(), "direction", GST_PAD_SRC, NULL));
         gst_pad_set_activatemode_function(GST_PAD(pad.get()), webKitMediaSrcActivateMode);
 
         ASSERT(track->initialCaps());
@@ -332,7 +332,7 @@ void webKitMediaSrcEmitStreams(WebKitMediaSrc* source, const Vector<RefPtr<Media
     GST_DEBUG_OBJECT(source, "All pads added");
 }
 
-static void webKitMediaSrcTearDownStream(WebKitMediaSrc* source, const AtomString& name)
+static void webKitMediaSrcTearDownStream(CyberKitMediaSrc* source, const AtomString& name)
 {
     ASSERT(isMainThread());
     Stream* stream = source->priv->streamByName(name);
@@ -351,7 +351,7 @@ static void webKitMediaSrcTearDownStream(WebKitMediaSrc* source, const AtomStrin
 static gboolean webKitMediaSrcActivateMode(GstPad* pad, GstObject* source, GstPadMode mode, gboolean active)
 {
     if (mode != GST_PAD_MODE_PUSH) {
-        GST_ERROR_OBJECT(source, "Unexpected pad mode in WebKitMediaSrc");
+        GST_ERROR_OBJECT(source, "Unexpected pad mode in CyberKitMediaSrc");
         return false;
     }
 
@@ -571,7 +571,7 @@ static void webKitMediaSrcStreamFlush(Stream* stream, bool isSeekingFlush)
         if (!streamingMembers->hasPoppedFirstObject) {
             GST_DEBUG_OBJECT(stream->source, "Flush request for stream '%s' occurred before hasPoppedFirstObject, just clearing the queue and readjusting the segment.", stream->track->trackId().string().utf8().data());
             DataMutexLocker queue { stream->track->queueDataMutex() };
-            // We use clear() instead of flush() because the WebKitMediaSrc streaming thread could be waiting
+            // We use clear() instead of flush() because the CyberKitMediaSrc streaming thread could be waiting
             // for the queue. flush() would cancel the notEmptyCallback therefore leaving the streaming thread
             // stuck waiting forever.
             queue->clear();
@@ -606,7 +606,7 @@ static void webKitMediaSrcStreamFlush(Stream* stream, bool isSeekingFlush)
     if (isSeekingFlush) {
         // In the case of seeking flush we are resetting the timeline (see the flush stop later).
         // The resulting segment is brand new, but with a different start time.
-        WebKitMediaSrcPrivate* priv = stream->source->priv;
+        CyberKitMediaSrcPrivate* priv = stream->source->priv;
         DataMutexLocker streamingMembers { stream->streamingMembersDataMutex };
         streamingMembers->segment.base = 0;
         streamingMembers->segment.rate = priv->rate;
@@ -659,7 +659,7 @@ static void webKitMediaSrcStreamFlush(Stream* stream, bool isSeekingFlush)
         stream->track->trackId().string().utf8().data(), boolForPrinting(isSeekingFlush));
 }
 
-void webKitMediaSrcFlush(WebKitMediaSrc* source, const AtomString& streamName)
+void webKitMediaSrcFlush(CyberKitMediaSrc* source, const AtomString& streamName)
 {
     ASSERT(isMainThread());
     GST_DEBUG_OBJECT(source, "Received non-seek flush request for stream '%s'.", streamName.string().utf8().data());
@@ -668,7 +668,7 @@ void webKitMediaSrcFlush(WebKitMediaSrc* source, const AtomString& streamName)
     webKitMediaSrcStreamFlush(stream, false);
 }
 
-static void webKitMediaSrcSeek(WebKitMediaSrc* source, uint64_t startTime, double rate)
+static void webKitMediaSrcSeek(CyberKitMediaSrc* source, uint64_t startTime, double rate)
 {
     ASSERT(isMainThread());
     source->priv->startTime = startTime;
@@ -679,9 +679,9 @@ static void webKitMediaSrcSeek(WebKitMediaSrc* source, uint64_t startTime, doubl
         webKitMediaSrcStreamFlush(stream.get(), true);
 }
 
-static int countStreamsOfType(WebKitMediaSrc* source, CyberCore::TrackPrivateBaseGStreamer::TrackType type)
+static int countStreamsOfType(CyberKitMediaSrc* source, CyberCore::TrackPrivateBaseGStreamer::TrackType type)
 {
-    // Barring pipeline dumps someone may add during debugging, WebKit will only read these properties (n-video etc.) from the main thread.
+    // Barring pipeline dumps someone may add during debugging, CyberKit will only read these properties (n-video etc.) from the main thread.
     return std::count_if(source->priv->streams.begin(), source->priv->streams.end(), [type](auto item) {
         return item.value->track->type() == type;
     });
@@ -689,7 +689,7 @@ static int countStreamsOfType(WebKitMediaSrc* source, CyberCore::TrackPrivateBas
 
 static void webKitMediaSrcGetProperty(GObject* object, unsigned propId, GValue* value, GParamSpec* pspec)
 {
-    WebKitMediaSrc* source = WEBKIT_MEDIA_SRC(object);
+    CyberKitMediaSrc* source = WEBKIT_MEDIA_SRC(object);
 
     switch (propId) {
     case PROP_N_AUDIO:
@@ -708,7 +708,7 @@ static void webKitMediaSrcGetProperty(GObject* object, unsigned propId, GValue* 
 
 static GstStateChangeReturn webKitMediaSrcChangeState(GstElement* element, GstStateChange transition)
 {
-    WebKitMediaSrc* source = WEBKIT_MEDIA_SRC(element);
+    CyberKitMediaSrc* source = WEBKIT_MEDIA_SRC(element);
     switch (transition) {
     case GST_STATE_CHANGE_PAUSED_TO_READY:
         GST_DEBUG_OBJECT(source, "Downgrading to READY state, tearing down all streams...");
@@ -763,7 +763,7 @@ static const gchar* const* webKitMediaSrcGetProtocols(GType)
 
 static gchar* webKitMediaSrcGetUri(GstURIHandler* handler)
 {
-    WebKitMediaSrc* source = WEBKIT_MEDIA_SRC(handler);
+    CyberKitMediaSrc* source = WEBKIT_MEDIA_SRC(handler);
 
     auto locker = GstObjectLocker(source);
     return g_strdup(source->priv->uri.get());
@@ -771,7 +771,7 @@ static gchar* webKitMediaSrcGetUri(GstURIHandler* handler)
 
 static gboolean webKitMediaSrcSetUri(GstURIHandler* handler, const gchar* uri, GError**)
 {
-    WebKitMediaSrc* source = WEBKIT_MEDIA_SRC(handler);
+    CyberKitMediaSrc* source = WEBKIT_MEDIA_SRC(handler);
 
     if (GST_STATE(source) >= GST_STATE_PAUSED) {
         GST_ERROR_OBJECT(source, "URI can only be set in states < PAUSED");
@@ -794,13 +794,13 @@ static void webKitMediaSrcUriHandlerInit(void* gIface, void*)
 }
 
 namespace WTF {
-template <> GRefPtr<WebKitMediaSrc> adoptGRef(WebKitMediaSrc* ptr)
+template <> GRefPtr<CyberKitMediaSrc> adoptGRef(CyberKitMediaSrc* ptr)
 {
     ASSERT(!ptr || !g_object_is_floating(G_OBJECT(ptr)));
-    return GRefPtr<WebKitMediaSrc>(ptr, GRefPtrAdopt);
+    return GRefPtr<CyberKitMediaSrc>(ptr, GRefPtrAdopt);
 }
 
-template <> WebKitMediaSrc* refGPtr<WebKitMediaSrc>(WebKitMediaSrc* ptr)
+template <> CyberKitMediaSrc* refGPtr<CyberKitMediaSrc>(CyberKitMediaSrc* ptr)
 {
     if (ptr)
         gst_object_ref_sink(GST_OBJECT(ptr));
@@ -808,7 +808,7 @@ template <> WebKitMediaSrc* refGPtr<WebKitMediaSrc>(WebKitMediaSrc* ptr)
     return ptr;
 }
 
-template <> void derefGPtr<WebKitMediaSrc>(WebKitMediaSrc* ptr)
+template <> void derefGPtr<CyberKitMediaSrc>(CyberKitMediaSrc* ptr)
 {
     if (ptr)
         gst_object_unref(ptr);

@@ -41,7 +41,7 @@ static NSString *const UIScrollViewIndicatorClass = @"_UIScrollViewScrollIndicat
 static NSString *const UIScrollViewIndicatorClass = @"UIImageView";
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(OverflowScrollViewTests, ContentChangeMaintainsScrollbars)
 {
@@ -49,7 +49,7 @@ TEST(OverflowScrollViewTests, ContentChangeMaintainsScrollbars)
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:webViewConfiguration.get()]);
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"overflow-scroll" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"overflow-scroll" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
     [webView _test_waitForDidFinishNavigation];
     [webView waitForNextPresentationUpdate];
@@ -64,7 +64,7 @@ TEST(OverflowScrollViewTests, ContentChangeMaintainsScrollbars)
     [webView evaluateJavaScript:@"changeScrollerSubviews()" completionHandler: [&] (id result, NSError *error) {
         contentChanged = true;
     }];
-    TestWebKitAPI::Util::run(&contentChanged);
+    TestCyberKitAPI::Util::run(&contentChanged);
     [webView waitForNextPresentationUpdate];
 
     childScrollView = [webView wkFirstSubviewWithClass:NSClassFromString(@"WKChildScrollView")];
@@ -80,7 +80,7 @@ TEST(OverflowScrollViewTests, CompositingChangeMaintainsCustomView)
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:webViewConfiguration.get()]);
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"composited" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"composited" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
     [webView _test_waitForDidFinishNavigation];
     [webView waitForNextPresentationUpdate];
@@ -95,12 +95,12 @@ TEST(OverflowScrollViewTests, CompositingChangeMaintainsCustomView)
     [webView evaluateJavaScript:@"applyChange()" completionHandler: [&] (id result, NSError *error) {
         contentChanged = true;
     }];
-    TestWebKitAPI::Util::run(&contentChanged);
+    TestCyberKitAPI::Util::run(&contentChanged);
     [webView waitForNextPresentationUpdate];
 
     EXPECT_NOT_NULL([customView superview]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

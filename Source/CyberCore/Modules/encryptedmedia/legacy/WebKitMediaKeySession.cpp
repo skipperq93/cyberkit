@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKitMediaKeySession.h"
+#include "CyberKitMediaKeySession.h"
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
@@ -35,9 +35,9 @@
 #include "Page.h"
 #include "SecurityOriginData.h"
 #include "Settings.h"
-#include "WebKitMediaKeyError.h"
-#include "WebKitMediaKeyMessageEvent.h"
-#include "WebKitMediaKeys.h"
+#include "CyberKitMediaKeyError.h"
+#include "CyberKitMediaKeyMessageEvent.h"
+#include "CyberKitMediaKeys.h"
 #include <CyberScriptCore/Uint8Array.h>
 #include <wtf/FileSystem.h>
 #include <wtf/IsoMallocInlines.h>
@@ -45,16 +45,16 @@
 
 namespace WebCore {
 
-WTF_MAKE_ISO_ALLOCATED_IMPL(WebKitMediaKeySession);
+WTF_MAKE_ISO_ALLOCATED_IMPL(CyberKitMediaKeySession);
 
-Ref<WebKitMediaKeySession> WebKitMediaKeySession::create(Document& document, WebKitMediaKeys& keys, const String& keySystem)
+Ref<CyberKitMediaKeySession> CyberKitMediaKeySession::create(Document& document, CyberKitMediaKeys& keys, const String& keySystem)
 {
-    auto session = adoptRef(*new WebKitMediaKeySession(document, keys, keySystem));
+    auto session = adoptRef(*new CyberKitMediaKeySession(document, keys, keySystem));
     session->suspendIfNeeded();
     return session;
 }
 
-WebKitMediaKeySession::WebKitMediaKeySession(Document& document, WebKitMediaKeys& keys, const String& keySystem)
+CyberKitMediaKeySession::CyberKitMediaKeySession(Document& document, CyberKitMediaKeys& keys, const String& keySystem)
     : ActiveDOMObject(&document)
 #if !RELEASE_LOG_DISABLED
     , m_logger(document.logger())
@@ -63,19 +63,19 @@ WebKitMediaKeySession::WebKitMediaKeySession(Document& document, WebKitMediaKeys
     , m_keys(&keys)
     , m_keySystem(keySystem)
     , m_session(keys.cdm().createSession(*this))
-    , m_keyRequestTimer(*this, &WebKitMediaKeySession::keyRequestTimerFired)
-    , m_addKeyTimer(*this, &WebKitMediaKeySession::addKeyTimerFired)
+    , m_keyRequestTimer(*this, &CyberKitMediaKeySession::keyRequestTimerFired)
+    , m_addKeyTimer(*this, &CyberKitMediaKeySession::addKeyTimerFired)
 {
     ALWAYS_LOG(LOGIDENTIFIER);
     if (m_session)
         m_sessionId = m_session->sessionId();
 }
 
-WebKitMediaKeySession::~WebKitMediaKeySession()
+CyberKitMediaKeySession::~CyberKitMediaKeySession()
 {
     ALWAYS_LOG(LOGIDENTIFIER);
 }
-void WebKitMediaKeySession::close()
+void CyberKitMediaKeySession::close()
 {
     ALWAYS_LOG(LOGIDENTIFIER);
     if (m_session) {
@@ -84,19 +84,19 @@ void WebKitMediaKeySession::close()
     }
 }
 
-RefPtr<ArrayBuffer> WebKitMediaKeySession::cachedKeyForKeyId(const String& keyId) const
+RefPtr<ArrayBuffer> CyberKitMediaKeySession::cachedKeyForKeyId(const String& keyId) const
 {
     return m_session ? m_session->cachedKeyForKeyID(keyId) : nullptr;
 }
 
-void WebKitMediaKeySession::generateKeyRequest(const String& mimeType, Ref<Uint8Array>&& initData)
+void CyberKitMediaKeySession::generateKeyRequest(const String& mimeType, Ref<Uint8Array>&& initData)
 {
     ALWAYS_LOG(LOGIDENTIFIER, "mimeType: ", mimeType);
     m_pendingKeyRequests.append({ mimeType, WTFMove(initData) });
     m_keyRequestTimer.startOneShot(0_s);
 }
 
-void WebKitMediaKeySession::keyRequestTimerFired()
+void CyberKitMediaKeySession::keyRequestTimerFired()
 {
     ASSERT(m_pendingKeyRequests.size());
     if (!m_session)
@@ -111,7 +111,7 @@ void WebKitMediaKeySession::keyRequestTimerFired()
         // 1. Let cdm be the cdm loaded in the MediaKeys constructor.
         // 2. Let destinationURL be null.
         String destinationURL;
-        WebKitMediaKeyError::Code errorCode = 0;
+        CyberKitMediaKeyError::Code errorCode = 0;
         uint32_t systemCode = 0;
 
         // 3. Use cdm to generate a key request and follow the steps for the first matching condition from the following list:
@@ -139,7 +139,7 @@ void WebKitMediaKeySession::keyRequestTimerFired()
     }
 }
 
-ExceptionOr<void> WebKitMediaKeySession::update(Ref<Uint8Array>&& key)
+ExceptionOr<void> CyberKitMediaKeySession::update(Ref<Uint8Array>&& key)
 {
     // From <http://dvcs.w3.org/hg/html-media/raw-file/tip/encrypted-media/encrypted-media.html#dom-addkey>:
     // The addKey(key) method must run the following steps:
@@ -158,7 +158,7 @@ ExceptionOr<void> WebKitMediaKeySession::update(Ref<Uint8Array>&& key)
     return { };
 }
 
-void WebKitMediaKeySession::addKeyTimerFired()
+void CyberKitMediaKeySession::addKeyTimerFired()
 {
     ASSERT(m_pendingKeys.size());
     if (!m_session)
@@ -212,25 +212,25 @@ void WebKitMediaKeySession::addKeyTimerFired()
     }
 }
 
-void WebKitMediaKeySession::sendMessage(Uint8Array* message, String destinationURL)
+void CyberKitMediaKeySession::sendMessage(Uint8Array* message, String destinationURL)
 {
     ALWAYS_LOG(LOGIDENTIFIER);
-    auto event = WebKitMediaKeyMessageEvent::create(eventNames().webkitkeymessageEvent, message, destinationURL);
+    auto event = CyberKitMediaKeyMessageEvent::create(eventNames().webkitkeymessageEvent, message, destinationURL);
     event->setTarget(this);
     queueTaskToDispatchEvent(*this, TaskSource::Networking, WTFMove(event));
 }
 
-void WebKitMediaKeySession::sendError(MediaKeyErrorCode errorCode, uint32_t systemCode)
+void CyberKitMediaKeySession::sendError(MediaKeyErrorCode errorCode, uint32_t systemCode)
 {
     ALWAYS_LOG(LOGIDENTIFIER, "errorCode: ", (unsigned)errorCode, ", systemCode: ", systemCode);
-    m_error = WebKitMediaKeyError::create(errorCode, systemCode);
+    m_error = CyberKitMediaKeyError::create(errorCode, systemCode);
 
     auto keyerrorEvent = Event::create(eventNames().webkitkeyerrorEvent, Event::CanBubble::No, Event::IsCancelable::No);
     keyerrorEvent->setTarget(this);
     queueTaskToDispatchEvent(*this, TaskSource::Networking, WTFMove(keyerrorEvent));
 }
 
-String WebKitMediaKeySession::mediaKeysStorageDirectory() const
+String CyberKitMediaKeySession::mediaKeysStorageDirectory() const
 {
     auto* document = downcast<Document>(scriptExecutionContext());
     if (!document)
@@ -247,23 +247,23 @@ String WebKitMediaKeySession::mediaKeysStorageDirectory() const
     return FileSystem::pathByAppendingComponent(storageDirectory, document->securityOrigin().data().databaseIdentifier());
 }
 
-bool WebKitMediaKeySession::virtualHasPendingActivity() const
+bool CyberKitMediaKeySession::virtualHasPendingActivity() const
 {
     return m_keys && m_session;
 }
 
-void WebKitMediaKeySession::stop()
+void CyberKitMediaKeySession::stop()
 {
     close();
 }
 
-const char* WebKitMediaKeySession::activeDOMObjectName() const
+const char* CyberKitMediaKeySession::activeDOMObjectName() const
 {
-    return "WebKitMediaKeySession";
+    return "CyberKitMediaKeySession";
 }
 
 #if !RELEASE_LOG_DISABLED
-WTFLogChannel& WebKitMediaKeySession::logChannel() const
+WTFLogChannel& CyberKitMediaKeySession::logChannel() const
 {
     return LogEME;
 }

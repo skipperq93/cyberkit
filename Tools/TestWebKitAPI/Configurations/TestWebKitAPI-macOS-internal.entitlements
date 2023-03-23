@@ -14,8 +14,8 @@
 	<true/>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>com.apple.TestWebKitAPIAlternate</string>
-		<string>com.apple.TestWebKitAPI</string>
+		<string>com.apple.TestCyberKitAPIAlternate</string>
+		<string>com.apple.TestCyberKitAPI</string>
 	</array>
 	<key>com.apple.security.temporary-exception.sbpl</key>
 	<array>

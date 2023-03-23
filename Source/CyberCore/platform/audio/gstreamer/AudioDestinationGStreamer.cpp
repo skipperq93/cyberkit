@@ -28,8 +28,8 @@
 #include "AudioUtilities.h"
 #include "GStreamerCommon.h"
 #include "Logging.h"
-#include "WebKitAudioSinkGStreamer.h"
-#include "WebKitWebAudioSourceGStreamer.h"
+#include "CyberKitAudioSinkGStreamer.h"
+#include "CyberKitWebAudioSourceGStreamer.h"
 #include <gst/audio/gstaudiobasesink.h>
 #include <gst/gst.h>
 #include <wtf/PrintStream.h>
@@ -45,11 +45,11 @@ GST_DEBUG_CATEGORY(webkit_audio_destination_debug);
 static void initializeDebugCategory()
 {
     ensureGStreamerInitialized();
-    registerWebKitGStreamerElements();
+    registerCyberKitGStreamerElements();
 
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        GST_DEBUG_CATEGORY_INIT(webkit_audio_destination_debug, "webkitaudiodestination", 0, "WebKit WebAudio Destination");
+        GST_DEBUG_CATEGORY_INIT(webkit_audio_destination_debug, "webkitaudiodestination", 0, "CyberKit WebAudio Destination");
     });
 }
 
@@ -129,7 +129,7 @@ AudioDestinationGStreamer::AudioDestinationGStreamer(AudioIOCallback& callback, 
         return;
     }
 
-    // Probe platform early on for a working audio output device. This is not needed for the WebKit
+    // Probe platform early on for a working audio output device. This is not needed for the CyberKit
     // custom audio sink because it doesn't rely on autoaudiosink.
     if (!WEBKIT_IS_AUDIO_SINK(audioSink.get())) {
         g_signal_connect(audioSink.get(), "child-added", G_CALLBACK(+[](GstChildProxy*, GObject* object, gchar*, gpointer) {

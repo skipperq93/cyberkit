@@ -33,7 +33,7 @@
 
 #include <wtf/text/ASCIILiteral.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace TestData {
 
@@ -1483,6 +1483,6 @@ constexpr uint8_t kTestGetInfoResponseDeviceYubikey5c[] = {
 
 } // namespace TestData
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_AUTHN)

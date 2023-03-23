@@ -22,7 +22,7 @@
 
 
 header: <CyberKit/SecItemRequestData.h>
-[Nested, CustomHeader] enum class WebKit::SecItemRequestData::Type : uint8_t {
+[Nested, CustomHeader] enum class CyberKit::SecItemRequestData::Type : uint8_t {
     Invalid,
     CopyMatching,
     Add,
@@ -30,8 +30,8 @@ header: <CyberKit/SecItemRequestData.h>
     Delete,
 };
 
-class WebKit::SecItemRequestData {
-    WebKit::SecItemRequestData::Type type();
+class CyberKit::SecItemRequestData {
+    CyberKit::SecItemRequestData::Type type();
     RetainPtr<CFDictionaryRef> m_queryDictionary;
     RetainPtr<CFDictionaryRef> m_attributesToMatch;
 };

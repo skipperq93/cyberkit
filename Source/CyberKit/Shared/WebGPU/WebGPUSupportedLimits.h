@@ -30,7 +30,7 @@
 #include <cstdint>
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct SupportedLimits {
     uint32_t maxTextureDimension1D { 0 };
@@ -66,6 +66,6 @@ struct SupportedLimits {
     uint32_t maxComputeWorkgroupsPerDimension { 0 };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

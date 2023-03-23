@@ -32,35 +32,35 @@
 
 WKTypeID WKUserContentURLPatternGetTypeID()
 {
-    return WebKit::toAPI(API::UserContentURLPattern::APIType);
+    return CyberKit::toAPI(API::UserContentURLPattern::APIType);
 }
 
 WKUserContentURLPatternRef WKUserContentURLPatternCreate(WKStringRef patternRef)
 {
-    return WebKit::toAPI(&API::UserContentURLPattern::create(WebKit::toImpl(patternRef)->string()).leakRef());
+    return CyberKit::toAPI(&API::UserContentURLPattern::create(CyberKit::toImpl(patternRef)->string()).leakRef());
 }
 
 WKStringRef WKUserContentURLPatternCopyHost(WKUserContentURLPatternRef urlPatternRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(urlPatternRef)->host());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(urlPatternRef)->host());
 }
 
 WKStringRef WKUserContentURLPatternCopyScheme(WKUserContentURLPatternRef urlPatternRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(urlPatternRef)->scheme());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(urlPatternRef)->scheme());
 }
 
 bool WKUserContentURLPatternIsValid(WKUserContentURLPatternRef urlPatternRef)
 {
-    return WebKit::toImpl(urlPatternRef)->isValid();
+    return CyberKit::toImpl(urlPatternRef)->isValid();
 }
 
 bool WKUserContentURLPatternMatchesURL(WKUserContentURLPatternRef urlPatternRef, WKURLRef urlRef)
 {
-    return WebKit::toImpl(urlPatternRef)->matchesURL(WebKit::toWTFString(urlRef));
+    return CyberKit::toImpl(urlPatternRef)->matchesURL(CyberKit::toWTFString(urlRef));
 }
 
 bool WKUserContentURLPatternMatchesSubdomains(WKUserContentURLPatternRef urlPatternRef)
 {
-    return WebKit::toImpl(urlPatternRef)->matchesSubdomains();
+    return CyberKit::toImpl(urlPatternRef)->matchesSubdomains();
 }

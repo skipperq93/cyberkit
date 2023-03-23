@@ -33,7 +33,7 @@
 #include <CyberKit/WKBundleFrame.h>
 #include <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class DidRemoveFrameFromHiearchyInBackForwardCacheTest : public InjectedBundleTest {
 public:
@@ -73,6 +73,6 @@ void DidRemoveFrameFromHiearchyInBackForwardCacheTest::didCreatePage(WKBundleRef
     WKBundlePageSetPageLoaderClient(page, &pageLoaderClient.base);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

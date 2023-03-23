@@ -257,7 +257,7 @@ enum class InsetOrOutset {
 static LayoutRect computeScrollSnapPortOrAreaRect(const LayoutRect& rect, const LengthBox& insetOrOutsetBox, InsetOrOutset insetOrOutset)
 {
     // We are using minimumValueForLength here for insetOrOutset box, because if this value is defined by scroll-padding then the
-    // Length of any side may be "auto." In that case, we want to use 0, because that is how WebKit currently interprets an "auto"
+    // Length of any side may be "auto." In that case, we want to use 0, because that is how CyberKit currently interprets an "auto"
     // value for scroll-padding. See: https://drafts.csswg.org/css-scroll-snap-1/#propdef-scroll-padding
     LayoutBoxExtent extents(
         minimumValueForLength(insetOrOutsetBox.top(), rect.height()), minimumValueForLength(insetOrOutsetBox.right(), rect.width()),

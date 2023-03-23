@@ -31,7 +31,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void calculateMemoryCacheSizes(CacheModel cacheModel, unsigned& cacheTotalCapacity, unsigned& cacheMinDeadCapacity, unsigned& cacheMaxDeadCapacity, Seconds& deadDecodedDataDeletionInterval, unsigned& backForwardCacheCapacity)
 {
@@ -173,4 +173,4 @@ uint64_t calculateURLCacheDiskCapacity(CacheModel cacheModel, uint64_t diskFreeS
     return urlCacheDiskCapacity;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

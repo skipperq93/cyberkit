@@ -147,7 +147,7 @@ void ThreadableLoader::logError(ScriptExecutionContext& context, const ResourceE
 
     // We further reduce logging to some errors.
     // FIXME: Log more errors when making so do not make some layout tests flaky.
-    if (error.domain() != errorDomainWebKitInternal && error.domain() != errorDomainWebKitServiceWorker && !error.isAccessControl())
+    if (error.domain() != errorDomainCyberKitInternal && error.domain() != errorDomainCyberKitServiceWorker && !error.isAccessControl())
         return;
 
     const char* messageStart;

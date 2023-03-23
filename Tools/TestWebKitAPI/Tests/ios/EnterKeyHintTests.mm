@@ -50,7 +50,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using EnterKeyHintTestCase = std::pair<RetainPtr<NSString>, UIReturnKeyType>;
 
@@ -122,6 +122,6 @@ TEST(EnterKeyHintTests, EnterKeyHintInTextArea)
         [webView test:@"textarea" enterKeyHint:test.first.get() returnKeyType:test.second];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

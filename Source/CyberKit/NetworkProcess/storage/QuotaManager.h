@@ -30,7 +30,7 @@
 #include <wtf/Deque.h>
 #include <wtf/ThreadSafeWeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class QuotaManager : public ThreadSafeRefCountedAndCanMakeThreadSafeWeakPtr<QuotaManager> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -70,4 +70,4 @@ private:
     IncreaseQuotaFunction m_increaseQuotaFunction;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

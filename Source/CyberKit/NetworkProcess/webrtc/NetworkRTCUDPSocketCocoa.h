@@ -53,7 +53,7 @@ template<> struct HashTraits<rtc::SocketAddress> : GenericHashTraits<rtc::Socket
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkRTCUDPSocketCocoaConnections;
 
@@ -80,6 +80,6 @@ private:
     Ref<NetworkRTCUDPSocketCocoaConnections> m_connections;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC) && PLATFORM(COCOA)

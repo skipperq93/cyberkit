@@ -35,9 +35,9 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, NoPauseWhenSwitchingTabs)
+TEST(CyberKit, NoPauseWhenSwitchingTabs)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 #if PLATFORM(IOS)
@@ -56,10 +56,10 @@ TEST(WebKit, NoPauseWhenSwitchingTabs)
     __block bool didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 
     [webView removeFromSuperview];
     ASSERT_STREQ([[webView stringByEvaluatingJavaScript:@"document.querySelector('video').paused"] UTF8String], "0");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

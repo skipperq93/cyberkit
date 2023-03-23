@@ -30,7 +30,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void assertUserAgentForURLHasChromeBrowserQuirk(const char* url)
 {
@@ -111,4 +111,4 @@ TEST(UserAgentTest, Quirks)
     assertUserAgentForURLHasEmptyQuirk("http://drive.google.com/");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

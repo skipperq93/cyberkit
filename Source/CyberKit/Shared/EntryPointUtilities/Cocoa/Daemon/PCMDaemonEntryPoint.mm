@@ -46,7 +46,7 @@
 
 // FIXME: Add daemon plist to repository.
 
-namespace WebKit {
+namespace CyberKit {
 
 static CompletionHandler<void(PCM::EncodedMessage&&)> replySender(PCM::MessageType messageType, OSObjectPtr<xpc_object_t>&& request)
 {
@@ -150,4 +150,4 @@ int PCMDaemonMain(int argc, const char** argv)
     return 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

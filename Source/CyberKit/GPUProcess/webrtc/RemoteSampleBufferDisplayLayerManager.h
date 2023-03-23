@@ -42,7 +42,7 @@ namespace CyberCore {
 class IntSize;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUConnectionToWebProcess;
 class RemoteSampleBufferDisplayLayer;

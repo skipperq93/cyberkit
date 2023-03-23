@@ -281,8 +281,8 @@ PseudoId CSSSelector::pseudoId(PseudoElementType type)
     case PseudoElementSlotted:
     case PseudoElementPart:
     case PseudoElementUnknown:
-    case PseudoElementWebKitCustom:
-    case PseudoElementWebKitCustomLegacyPrefixed:
+    case PseudoElementCyberKitCustom:
+    case PseudoElementCyberKitCustomLegacyPrefixed:
         return PseudoId::None;
     }
 
@@ -298,7 +298,7 @@ CSSSelector::PseudoElementType CSSSelector::parsePseudoElementType(StringView na
     auto type = parsePseudoElementString(name);
     if (type == PseudoElementUnknown) {
         if (name.startsWith("-webkit-"_s) || name.startsWith("-apple-"_s))
-            type = PseudoElementWebKitCustom;
+            type = PseudoElementCyberKitCustom;
     }
 
     if (type == PseudoElementHighlight && !DeprecatedGlobalSettings::highlightAPIEnabled())
@@ -770,7 +770,7 @@ String CSSSelector::selectorText(StringView separator, StringView rightSide) con
                 builder.append(')');
                 break;
             }
-            case CSSSelector::PseudoElementWebKitCustomLegacyPrefixed:
+            case CSSSelector::PseudoElementCyberKitCustomLegacyPrefixed:
                 if (cs->value() == "placeholder"_s)
                     builder.append("::-webkit-input-placeholder"_s);
                 if (cs->value() == "file-selector-button"_s)

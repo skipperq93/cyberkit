@@ -28,7 +28,7 @@
 
 #include <wtf/Bag.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class TestNode : public BasicRawSentinelNode<TestNode> {
 public:
@@ -186,4 +186,4 @@ TEST(WTF_SentinelLinkedList, Const)
     EXPECT_EQ(10, i);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

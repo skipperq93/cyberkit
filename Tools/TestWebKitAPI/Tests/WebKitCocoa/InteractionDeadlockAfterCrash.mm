@@ -39,7 +39,7 @@
 - (BOOL)hasSelectablePositionAtPoint:(CGPoint)point;
 @end
 
-TEST(WebKit, InteractionDeadlockAfterCrash)
+TEST(CyberKit, InteractionDeadlockAfterCrash)
 {
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 

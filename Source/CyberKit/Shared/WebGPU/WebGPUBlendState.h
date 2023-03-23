@@ -30,13 +30,13 @@
 #include "WebGPUBlendComponent.h"
 #include <optional>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BlendState {
     BlendComponent color;
     BlendComponent alpha;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

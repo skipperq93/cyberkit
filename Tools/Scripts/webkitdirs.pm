@@ -2120,7 +2120,7 @@ sub windowsSourceSourceDir()
 
 sub windowsLibrariesDir()
 {
-    return File::Spec->catdir(windowsSourceDir(), "WebKitLibraries", "win");
+    return File::Spec->catdir(windowsSourceDir(), "CyberKitLibraries", "win");
 }
 
 sub windowsOutputDir()
@@ -2811,7 +2811,7 @@ sub setPathForRunningWebKitApp
 
     if (isAnyWindows()) {
         my $productBinaryDir = executableProductDir();
-        my $winCairoBin = sourceDir() . "/WebKitLibraries/win/" . (isWin64() ? "bin64/" : "bin32/");
+        my $winCairoBin = sourceDir() . "/CyberKitLibraries/win/" . (isWin64() ? "bin64/" : "bin32/");
         $env->{PATH} = join(':', $productBinaryDir, $winCairoBin, $env->{PATH} || "");
     }
 }

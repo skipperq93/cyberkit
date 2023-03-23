@@ -53,7 +53,7 @@
 #include <wtf/SuspendableWorkQueue.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #define ITP_RELEASE_LOG(sessionID, fmt, ...) RELEASE_LOG(Network, "%p - ResourceLoadStatisticsDatabaseStore::" fmt, this, ##__VA_ARGS__)
@@ -2848,7 +2848,7 @@ void ResourceLoadStatisticsDatabaseStore::insertExpiredStatisticForTesting(const
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef ITP_RELEASE_LOG
 #undef ITP_RELEASE_LOG_ERROR

@@ -292,7 +292,7 @@ void Editor::takeFindStringFromSelection()
     platformStrategies()->pasteboardStrategy()->setStringForType(WTFMove(stringFromSelection), legacyStringPasteboardType(), NSPasteboardNameFind, context.get());
 #else
     if (auto* client = this->client()) {
-        // Since the find pasteboard doesn't exist on iOS, WebKit maintains its own notion of the latest find string,
+        // Since the find pasteboard doesn't exist on iOS, CyberKit maintains its own notion of the latest find string,
         // which SPI clients may respect when presenting find-in-page UI.
         client->updateStringForFind(stringFromSelection);
     }

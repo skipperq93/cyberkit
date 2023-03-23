@@ -30,7 +30,7 @@
 #include <pal/text/TextEncodingRegistry.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Expects hex bytes with optional spaces between them.
 // Returns an empty vector if it encounters non-hex-digit characters.

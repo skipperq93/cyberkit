@@ -36,5 +36,5 @@ int main(int argc, char** argv)
     gtk_init(&argc, &argv);
 #endif
 
-    return TestWebKitAPI::TestsController::singleton().run(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
+    return TestCyberKitAPI::TestsController::singleton().run(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
 }

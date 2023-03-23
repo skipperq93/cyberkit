@@ -35,7 +35,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureUsage.h>
 #include <wtf/Ref.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class Device;
 
@@ -48,6 +48,6 @@ struct CanvasConfiguration {
     PAL::WebGPU::CanvasCompositingAlphaMode compositingAlphaMode { PAL::WebGPU::CanvasCompositingAlphaMode::Opaque };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

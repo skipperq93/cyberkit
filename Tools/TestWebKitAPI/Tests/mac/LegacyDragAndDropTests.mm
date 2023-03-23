@@ -208,11 +208,11 @@ IGNORE_WARNINGS_END
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSImage *getTestImage()
 {
-    return adoptNS([[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]]).autorelease();
+    return adoptNS([[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]]).autorelease();
 }
 
 static WebView *webViewAfterPerformingDragOperation(NSPasteboard *pasteboard)
@@ -233,19 +233,19 @@ static WebView *webViewAfterPerformingDragOperation(NSPasteboard *pasteboard)
         EXPECT_TRUE([destination performDragOperation:info.get()]);
         isDone = true;
     }]];
-    [[destination mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"full-page-contenteditable" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[destination mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"full-page-contenteditable" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     return destination.get();
 }
 
 TEST(LegacyDragAndDropTests, DropUTF8PlainText)
 {
     NSPasteboard *pasteboard = [NSPasteboard pasteboardWithUniqueName];
-    [pasteboard setData:[@"I am a WebKit." dataUsingEncoding:NSUTF8StringEncoding] forType:(__bridge NSString *)kUTTypeUTF8PlainText];
+    [pasteboard setData:[@"I am a CyberKit." dataUsingEncoding:NSUTF8StringEncoding] forType:(__bridge NSString *)kUTTypeUTF8PlainText];
 
     RetainPtr<WebView> resultingWebView = webViewAfterPerformingDragOperation(pasteboard);
-    EXPECT_TRUE([[resultingWebView stringByEvaluatingJavaScriptFromString:@"document.body.textContent"] containsString:@"I am a WebKit."]);
+    EXPECT_TRUE([[resultingWebView stringByEvaluatingJavaScriptFromString:@"document.body.textContent"] containsString:@"I am a CyberKit."]);
 }
 
 TEST(LegacyDragAndDropTests, DropJPEG)
@@ -259,6 +259,6 @@ TEST(LegacyDragAndDropTests, DropJPEG)
     EXPECT_TRUE([[resultingWebView stringByEvaluatingJavaScriptFromString:@"document.querySelector('img').tagName === 'IMG'"] isEqualToString:@"true"]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

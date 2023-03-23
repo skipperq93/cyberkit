@@ -31,7 +31,7 @@
 #import <CyberCore/GraphicsLayer.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(ARKIT_INLINE_PREVIEW)
 
@@ -45,5 +45,5 @@ struct ModelIdentifier {
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 

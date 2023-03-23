@@ -80,7 +80,7 @@ IGNORE_WARNINGS_END
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME Re-enable when https://bugs.webkit.org/show_bug.cgi?id=237125 is resovled 
 #if PLATFORM(IOS)
@@ -101,7 +101,7 @@ TEST(CyberKitLegacy, PreemptVideoFullscreen)
     RetainPtr<PreemptVideoFullscreenUIWebViewDelegate> uiDelegate = adoptNS([[PreemptVideoFullscreenUIWebViewDelegate alloc] init]);
     uiWebView.get().delegate = uiDelegate.get();
 
-    [uiWebView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"two-videos" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [uiWebView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"two-videos" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     Util::run(&gotMainFrame);

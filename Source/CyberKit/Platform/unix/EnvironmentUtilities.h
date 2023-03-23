@@ -29,7 +29,7 @@
 #include "WKDeclarationSpecifiers.h"
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace EnvironmentUtilities {
 
@@ -38,4 +38,4 @@ WK_EXPORT void removeValuesEndingWith(const char* environmentVariable, const cha
 
 } // namespace EnvironmentUtilities
 
-} // namespace WebKit
+} // namespace CyberKit

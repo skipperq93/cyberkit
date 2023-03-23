@@ -25,23 +25,23 @@
 
 messages -> RemoteDevice NotRefCounted Stream {
     void Destroy()
-    void CreateBuffer(WebKit::WebGPU::BufferDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateTexture(WebKit::WebGPU::TextureDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateSampler(WebKit::WebGPU::SamplerDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void ImportExternalTexture(WebKit::WebGPU::ExternalTextureDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateBindGroupLayout(WebKit::WebGPU::BindGroupLayoutDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreatePipelineLayout(WebKit::WebGPU::PipelineLayoutDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateBindGroup(WebKit::WebGPU::BindGroupDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateShaderModule(WebKit::WebGPU::ShaderModuleDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateComputePipeline(WebKit::WebGPU::ComputePipelineDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateRenderPipeline(WebKit::WebGPU::RenderPipelineDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateComputePipelineAsync(WebKit::WebGPU::ComputePipelineDescriptor descriptor, WebKit::WebGPUIdentifier identifier) -> () Synchronous
-    void CreateRenderPipelineAsync(WebKit::WebGPU::RenderPipelineDescriptor descriptor, WebKit::WebGPUIdentifier identifier) -> () Synchronous
-    void CreateCommandEncoder(std::optional<WebKit::WebGPU::CommandEncoderDescriptor> descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateRenderBundleEncoder(WebKit::WebGPU::RenderBundleEncoderDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
-    void CreateQuerySet(WebKit::WebGPU::QuerySetDescriptor descriptor, WebKit::WebGPUIdentifier identifier)
+    void CreateBuffer(CyberKit::WebGPU::BufferDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateTexture(CyberKit::WebGPU::TextureDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateSampler(CyberKit::WebGPU::SamplerDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void ImportExternalTexture(CyberKit::WebGPU::ExternalTextureDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateBindGroupLayout(CyberKit::WebGPU::BindGroupLayoutDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreatePipelineLayout(CyberKit::WebGPU::PipelineLayoutDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateBindGroup(CyberKit::WebGPU::BindGroupDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateShaderModule(CyberKit::WebGPU::ShaderModuleDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateComputePipeline(CyberKit::WebGPU::ComputePipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateRenderPipeline(CyberKit::WebGPU::RenderPipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateComputePipelineAsync(CyberKit::WebGPU::ComputePipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier) -> () Synchronous
+    void CreateRenderPipelineAsync(CyberKit::WebGPU::RenderPipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier) -> () Synchronous
+    void CreateCommandEncoder(std::optional<CyberKit::WebGPU::CommandEncoderDescriptor> descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateRenderBundleEncoder(CyberKit::WebGPU::RenderBundleEncoderDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateQuerySet(CyberKit::WebGPU::QuerySetDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
     void PushErrorScope(PAL::WebGPU::ErrorFilter errorFilter)
-    void PopErrorScope() -> (std::optional<WebKit::WebGPU::Error> error)
+    void PopErrorScope() -> (std::optional<CyberKit::WebGPU::Error> error)
     void SetLabel(String label)
 }
 

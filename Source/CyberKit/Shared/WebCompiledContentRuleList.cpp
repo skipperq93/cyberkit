@@ -28,7 +28,7 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebCompiledContentRuleList> WebCompiledContentRuleList::create(WebCompiledContentRuleListData&& data)
 {
@@ -70,6 +70,6 @@ Span<const uint8_t> WebCompiledContentRuleList::spanWithOffsetAndLength(size_t o
     return { static_cast<const uint8_t*>(m_data.data->data()) + offset, length };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

@@ -23,7 +23,7 @@
 #include "SystemFontDatabase.h"
 
 #include "PlatformScreen.h"
-#include "WebKitFontFamilyNames.h"
+#include "CyberKitFontFamilyNames.h"
 #include <gtk/gtk.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/glib/GUniquePtr.h>
@@ -40,17 +40,17 @@ auto SystemFontDatabase::platformSystemFontShorthandInfo(FontShorthand) -> Syste
 {
     GtkSettings* settings = gtk_settings_get_default();
     if (!settings)
-        return { WebKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
+        return { CyberKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
 
     // This will be a font selection string like "Sans 10" so we cannot use it as the family name.
     GUniqueOutPtr<gchar> fontName;
     g_object_get(settings, "gtk-font-name", &fontName.outPtr(), nullptr);
     if (!fontName || !fontName.get()[0])
-        return { WebKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
+        return { CyberKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
 
     PangoFontDescription* pangoDescription = pango_font_description_from_string(fontName.get());
     if (!pangoDescription)
-        return { WebKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
+        return { CyberKitFontFamilyNames::standardFamily, 16, normalWeightValue() };
 
     int size = pango_font_description_get_size(pangoDescription) / PANGO_SCALE;
     // If the size of the font is in points, we need to convert it to pixels.

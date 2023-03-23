@@ -112,7 +112,7 @@ TEST(WKProcessPool, JavaScriptConfiguration)
 
     NSString *path = [tempDir URLByAppendingPathComponent:@"Log.txt"].path;
     while (![fileManager fileExistsAtPath:path])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     [fileManager removeItemAtPath:tempDir.path error:&error];
     EXPECT_FALSE(error);
 }

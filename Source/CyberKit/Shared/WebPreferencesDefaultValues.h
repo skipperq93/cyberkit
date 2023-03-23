@@ -33,7 +33,7 @@
 #define EXPERIMENTAL_FULLSCREEN_API_HIDDEN true
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 bool defaultPassiveTouchListenersAsDefaultOnDocument();
@@ -99,4 +99,4 @@ bool defaultShowModalDialogEnabled();
 
 bool defaultShouldEnableScreenOrientationAPI();
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -28,7 +28,7 @@
 #import "APIData.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::Data> {
     using WrapperClass = NSData;

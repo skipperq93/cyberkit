@@ -24,9 +24,9 @@
  */
 
 import XCTest
-import WebKit
+import CyberKit
 
-class WebKitTests: XCTestCase {
+class CyberKitTests: XCTestCase {
     /// This is a compile-time test that ensures the function names are what we expect.
     func testAPI() {
         _ = WKContentWorld.world(name:)

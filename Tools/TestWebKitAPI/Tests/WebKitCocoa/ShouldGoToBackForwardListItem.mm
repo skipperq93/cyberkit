@@ -50,19 +50,19 @@ static bool finished = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ShouldGoToBackForwardListItem)
+TEST(CyberKit, ShouldGoToBackForwardListItem)
 {
     auto delegate = adoptNS([BackForwardClient new]);
     auto webView = adoptNS([WKWebView new]);
     [webView setNavigationDelegate:delegate.get()];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&finished);
     
     finished = false;
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple-iframe" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple-iframe" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&finished);
 
     finished = false;
@@ -70,4 +70,4 @@ TEST(WebKit, ShouldGoToBackForwardListItem)
     Util::run(&finished);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

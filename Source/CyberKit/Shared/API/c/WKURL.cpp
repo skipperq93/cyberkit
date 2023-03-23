@@ -30,45 +30,45 @@
 
 WKTypeID WKURLGetTypeID()
 {
-    return WebKit::toAPI(API::URL::APIType);
+    return CyberKit::toAPI(API::URL::APIType);
 }
 
 WKURLRef WKURLCreateWithUTF8CString(const char* string)
 {
-    return WebKit::toAPI(&API::URL::create(String::fromUTF8(string)).leakRef());
+    return CyberKit::toAPI(&API::URL::create(String::fromUTF8(string)).leakRef());
 }
 
 WKURLRef WKURLCreateWithBaseURL(WKURLRef baseURL, const char* relative)
 {
-    return WebKit::toAPI(&API::URL::create(WebKit::toImpl(baseURL), String::fromUTF8(relative)).leakRef());
+    return CyberKit::toAPI(&API::URL::create(CyberKit::toImpl(baseURL), String::fromUTF8(relative)).leakRef());
 }
 
 WKStringRef WKURLCopyString(WKURLRef url)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(url)->string());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(url)->string());
 }
 
 bool WKURLIsEqual(WKURLRef a, WKURLRef b)
 {
-    return API::URL::equals(*WebKit::toImpl(a), *WebKit::toImpl(b));
+    return API::URL::equals(*CyberKit::toImpl(a), *CyberKit::toImpl(b));
 }
 
 WKStringRef WKURLCopyHostName(WKURLRef url)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(url)->host());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(url)->host());
 }
 
 WKStringRef WKURLCopyScheme(WKURLRef url)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(url)->protocol());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(url)->protocol());
 }
 
 WK_EXPORT WKStringRef WKURLCopyPath(WKURLRef url)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(url)->path());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(url)->path());
 }
 
 WKStringRef WKURLCopyLastPathComponent(WKURLRef url)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(url)->lastPathComponent());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(url)->lastPathComponent());
 }

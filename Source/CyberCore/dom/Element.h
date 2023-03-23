@@ -620,7 +620,7 @@ public:
     void dispatchFocusOutEventIfNeeded(RefPtr<Element>&& newFocusedElement);
     virtual void dispatchFocusEvent(RefPtr<Element>&& oldFocusedElement, const FocusOptions&);
     virtual void dispatchBlurEvent(RefPtr<Element>&& newFocusedElement);
-    void dispatchWebKitImageReadyEventForTesting();
+    void dispatchCyberKitImageReadyEventForTesting();
 
     WEBCORE_EXPORT bool dispatchMouseForceWillBegin();
 

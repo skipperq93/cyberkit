@@ -49,7 +49,7 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(TopContentInset, Fullscreen)
 {
@@ -65,20 +65,20 @@ TEST(TopContentInset, Fullscreen)
     [[window contentView] addSubview:webView.get()];
     [window makeKeyAndOrderFront:nil];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FullscreenTopContentInset" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FullscreenTopContentInset" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedLoadedMessage);
+    TestCyberKitAPI::Util::run(&receivedLoadedMessage);
 
     NSEvent *event = [NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:NSMakePoint(5, 5) modifierFlags:0 timestamp:0 windowNumber:window.get().windowNumber context:0 eventNumber:0 clickCount:0 pressure:0];
     [webView mouseDown:event];
 
-    TestWebKitAPI::Util::run(&receivedFullscreenChangeMessage);
+    TestCyberKitAPI::Util::run(&receivedFullscreenChangeMessage);
     ASSERT_EQ(window.get().screen.frame.size.width, webView.get().frame.size.width);
     ASSERT_EQ(window.get().screen.frame.size.height + webView.get()._topContentInset, webView.get().frame.size.height);
 
     receivedFullscreenChangeMessage = false;
     [webView mouseDown:event];
-    TestWebKitAPI::Util::run(&receivedFullscreenChangeMessage);
+    TestCyberKitAPI::Util::run(&receivedFullscreenChangeMessage);
     ASSERT_EQ(10, webView.get()._topContentInset);
 }
 
@@ -128,6 +128,6 @@ TEST(TopContentInset, AutomaticAdjustmentDoesNotAffectInsetViews)
     ASSERT_EQ(webView.get()._topContentInset, 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

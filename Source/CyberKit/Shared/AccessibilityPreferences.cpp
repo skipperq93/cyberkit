@@ -28,7 +28,7 @@
 
 namespace IPC {
 
-void ArgumentCoder<WebKit::AccessibilityPreferences>::encode(Encoder& encoder, const WebKit::AccessibilityPreferences& preferences)
+void ArgumentCoder<CyberKit::AccessibilityPreferences>::encode(Encoder& encoder, const CyberKit::AccessibilityPreferences& preferences)
 {
 #if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
     encoder << preferences.reduceMotionEnabled;
@@ -41,9 +41,9 @@ void ArgumentCoder<WebKit::AccessibilityPreferences>::encode(Encoder& encoder, c
     encoder << preferences.enhanceTextLegibilityOverall;
 }
 
-std::optional<WebKit::AccessibilityPreferences> ArgumentCoder<WebKit::AccessibilityPreferences>::decode(Decoder& decoder)
+std::optional<CyberKit::AccessibilityPreferences> ArgumentCoder<CyberKit::AccessibilityPreferences>::decode(Decoder& decoder)
 {
-    WebKit::AccessibilityPreferences preferences;
+    CyberKit::AccessibilityPreferences preferences;
 #if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
     if (!decoder.decode(preferences.reduceMotionEnabled))
         return std::nullopt;

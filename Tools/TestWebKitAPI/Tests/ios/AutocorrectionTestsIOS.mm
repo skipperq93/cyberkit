@@ -50,7 +50,7 @@
         result = rects;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return result.autorelease();
 }
 
@@ -62,7 +62,7 @@
         result = context;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return result.autorelease();
 }
 

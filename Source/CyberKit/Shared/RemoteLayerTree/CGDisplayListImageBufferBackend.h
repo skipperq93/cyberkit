@@ -32,7 +32,7 @@
 #include <CyberCore/ImageBufferCGBackend.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using UseCGDisplayListImageCache = CyberCore::ImageBufferCreationContext::UseCGDisplayListImageCache;
 

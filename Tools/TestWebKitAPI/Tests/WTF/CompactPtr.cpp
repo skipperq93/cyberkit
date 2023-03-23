@@ -36,7 +36,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/Threading.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_CompactPtr, Basic)
 {
@@ -273,4 +273,4 @@ TEST(WTF_CompactPtr, StringHashSet)
         EXPECT_TRUE(set.contains(target.impl()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

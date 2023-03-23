@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUImageCopyExternalImage.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<ImageCopyExternalImage> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::ImageCopyExternalImage& imageCopyExternalImage)
 {
@@ -58,6 +58,6 @@ std::optional<PAL::WebGPU::ImageCopyExternalImage> ConvertFromBackingContext::co
     return { { WTFMove(origin), imageCopyExternalImage.flipY } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

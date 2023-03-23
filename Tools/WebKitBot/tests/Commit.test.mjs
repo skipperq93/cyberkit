@@ -28,9 +28,9 @@ import path from "path";
 import util from "util";
 import Commit from "../src/Commit.mjs";
 import Contributors from "../src/Contributors.mjs";
-import {rootDirectoryOfWebKit} from "../src/Utility.mjs";
+import {rootDirectoryOfCyberKit} from "../src/Utility.mjs";
 
-const localContributorsPath = path.resolve(rootDirectoryOfWebKit(), "metadata", "contributors.json");
+const localContributorsPath = path.resolve(rootDirectoryOfCyberKit(), "metadata", "contributors.json");
 const contributors = new Contributors(JSON.parse(readFileSync(localContributorsPath)));
 const readFileAsync = util.promisify(readFile);
 

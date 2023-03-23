@@ -133,7 +133,7 @@ struct VertexState;
 
 } // namespace PAL::WebGPU
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BindGroupDescriptor;
 struct BindGroupEntry;
@@ -301,6 +301,6 @@ public:
     virtual WebGPUIdentifier convertToBacking(const PAL::WebGPU::TextureView&) = 0;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

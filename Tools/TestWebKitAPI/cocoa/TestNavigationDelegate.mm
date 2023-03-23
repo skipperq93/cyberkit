@@ -123,7 +123,7 @@
         finished = true;
     };
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     self.didStartProvisionalNavigation = nil;
 }
@@ -137,7 +137,7 @@
         finished = true;
     };
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     self.didFinishNavigation = nil;
 }
@@ -151,7 +151,7 @@
         crashed = true;
     };
 
-    TestWebKitAPI::Util::run(&crashed);
+    TestCyberKitAPI::Util::run(&crashed);
 
     self.webContentProcessDidTerminate = nil;
 }
@@ -179,7 +179,7 @@
         finished = true;
     };
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     self.didFailProvisionalNavigation = nil;
     return _navigationError.autorelease();
@@ -193,7 +193,7 @@
 
 @end
 
-@implementation WKWebView (TestWebKitAPIExtras)
+@implementation WKWebView (TestCyberKitAPIExtras)
 
 - (void)_test_waitForDidStartProvisionalNavigation
 {
@@ -254,7 +254,7 @@
     [self _doAfterNextPresentationUpdateWithoutWaitingForAnimatedResizeForTesting:^{
         presentationUpdateHappened = true;
     }];
-    TestWebKitAPI::Util::run(&presentationUpdateHappened);
+    TestCyberKitAPI::Util::run(&presentationUpdateHappened);
 #endif
 }
 
@@ -276,7 +276,7 @@
     [self _doAfterNextPresentationUpdateWithoutWaitingForAnimatedResizeForTesting:^{
         presentationUpdateHappened = true;
     }];
-    TestWebKitAPI::Util::run(&presentationUpdateHappened);
+    TestCyberKitAPI::Util::run(&presentationUpdateHappened);
 #endif
 }
 

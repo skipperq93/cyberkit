@@ -32,7 +32,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, StringCreationFromLiteral)
 {
@@ -462,4 +462,4 @@ TEST(WTF, StringMakeStringByJoining)
     ASSERT_EQ(test3_result, "foo, bar"_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

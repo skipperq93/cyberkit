@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class ContentAsStringIncludesChildFrames : bool { No, Yes };
 
-} // namespace WebKit
+} // namespace CyberKit

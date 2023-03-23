@@ -20,6 +20,6 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-class WebKit::CallbackID {
-    [Validator='WebKit::CallbackID::isValidCallbackID(*m_id)'] uint64_t m_id;
+class CyberKit::CallbackID {
+    [Validator='CyberKit::CallbackID::isValidCallbackID(*m_id)'] uint64_t m_id;
 };

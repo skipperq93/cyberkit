@@ -59,7 +59,7 @@ static inline bool fontNameIsSystemFont(CFStringRef fontName)
 
 static RetainPtr<CFArrayRef> variationAxes(CTFontRef font, ShouldLocalizeAxisNames shouldLocalizeAxisNames)
 {
-#if defined(HAVE_CTFontCopyVariationAxesInternal) // This macro is defined inside CoreText, not WebKit.
+#if defined(HAVE_CTFontCopyVariationAxesInternal) // This macro is defined inside CoreText, not CyberKit.
     if (shouldLocalizeAxisNames == ShouldLocalizeAxisNames::Yes)
         return adoptCF(CTFontCopyVariationAxes(font));
     return adoptCF(CTFontCopyVariationAxesInternal(font));
@@ -508,7 +508,7 @@ static FontLookup platformFontLookupWithFamily(FontDatabase& fontDatabase, const
 
     const auto& familyFonts = fontDatabase.collectionForFamily(family.string());
     if (familyFonts.isEmpty()) {
-        // The CSS spec states that font-family only accepts a name of an actual font family. However, in WebKit, we claim to also
+        // The CSS spec states that font-family only accepts a name of an actual font family. However, in CyberKit, we claim to also
         // support supplying a PostScript name instead. However, this creates problems when the other properties (font-weight,
         // font-style) disagree with the traits of the PostScript-named font. The solution we have come up with is, when the default
         // values for font-weight and font-style are supplied, honor the PostScript name, but if font-weight specifies bold or
@@ -942,7 +942,7 @@ void FontCache::prewarm(PrewarmInformation&& prewarmInformation)
         return;
 
     if (!m_prewarmQueue)
-        m_prewarmQueue = WorkQueue::create("WebKit font prewarm queue");
+        m_prewarmQueue = WorkQueue::create("CyberKit font prewarm queue");
 
     m_prewarmQueue->dispatch([&database = m_databaseDisallowingUserInstalledFonts, prewarmInformation = WTFMove(prewarmInformation).isolatedCopy()] {
         for (auto& family : prewarmInformation.seenFamilies)

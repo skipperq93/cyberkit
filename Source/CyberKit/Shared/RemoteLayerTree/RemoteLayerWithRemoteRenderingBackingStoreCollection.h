@@ -28,7 +28,7 @@
 #import "RemoteLayerBackingStoreCollection.h"
 #import <CyberCore/RenderingResourceIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteRenderingBackendProxy;
 
@@ -58,4 +58,4 @@ private:
     void sendMarkBuffersVolatile(Vector<CyberCore::RenderingResourceIdentifier>&&, CompletionHandler<void(bool)>&&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -27,15 +27,15 @@
 #include "HostWindow.h"
 #include "Test.h"
 #include <CyberCore/COMPtr.h>
-#include <CyberKitLegacy/WebKit.h>
-#include <CyberKitLegacy/WebKitCOMAPI.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template <typename T>
-static HRESULT WebKitCreateInstance(REFCLSID clsid, T** object)
+static HRESULT CyberKitCreateInstance(REFCLSID clsid, T** object)
 {
-    return WebKitCreateInstance(clsid, 0, __uuidof(T), reinterpret_cast<void**>(object));
+    return CyberKitCreateInstance(clsid, 0, __uuidof(T), reinterpret_cast<void**>(object));
 }
 
 class WebViewDestruction : public ::testing::Test {
@@ -60,13 +60,13 @@ protected:
 
 void WebViewDestruction::SetUp()
 {
-    EXPECT_HRESULT_SUCCEEDED(WebKitCreateInstance(__uuidof(WebView), &m_webView));
+    EXPECT_HRESULT_SUCCEEDED(CyberKitCreateInstance(__uuidof(WebView), &m_webView));
 }
 
 int WebViewDestruction::webViewCount()
 {
-    COMPtr<IWebKitStatistics> statistics;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebKitStatistics), &statistics)))
+    COMPtr<ICyberKitStatistics> statistics;
+    if (FAILED(CyberKitCreateInstance(__uuidof(CyberKitStatistics), &statistics)))
         return -1;
     int count;
     if (FAILED(statistics->webViewCount(&count)))
@@ -127,7 +127,7 @@ void WebViewDestruction::TearDown()
     EXPECT_GT(currentWebViewCount, 0);
 
     m_webView = 0;
-    shutDownWebKit();
+    shutDownCyberKit();
 
     EXPECT_EQ(webViewCount(), currentWebViewCount - 1);
 }
@@ -198,4 +198,4 @@ TEST_F(WebViewDestructionWithHostWindow, CloseThenDestroyHostWindow)
     ::DestroyWindow(m_window.window());
 }
 
-} // namespace WebKitAPITest
+} // namespace CyberKitAPITest

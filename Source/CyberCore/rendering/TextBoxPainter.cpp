@@ -653,7 +653,7 @@ void TextBoxPainter<TextBoxPath>::paintForegroundDecorations(TextDecorationPaint
 }
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/TextBoxPainterAdditions.cpp>
+#include <CyberKitAdditions/TextBoxPainterAdditions.cpp>
 #else
 static FloatRoundedRect::Radii radiiForUnderline(const CompositionUnderline&, unsigned, unsigned)
 {
@@ -848,7 +848,7 @@ FloatRect TextBoxPainter<TextBoxPath>::computePaintRect(const LayoutPoint& paint
             // |Hello|CBA| -> |...He|CBA|
             // In order to draw the fragment "He" aligned to the right edge of it's box, we need to start drawing
             // farther to the right.
-            // NOTE: WebKit's behavior differs from that of IE which appears to just overlay the ellipsis on top of the
+            // NOTE: CyberKit's behavior differs from that of IE which appears to just overlay the ellipsis on top of the
             // truncated string i.e.  |Hello|CBA| -> |...lo|CBA|
             LayoutUnit widthOfVisibleText { m_renderer.width(textBox().start(), *m_selectableRange.truncation, textPosition(), m_isFirstLine) };
             LayoutUnit widthOfHiddenText { m_logicalRect.width() - widthOfVisibleText };

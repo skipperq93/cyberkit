@@ -100,4 +100,4 @@ NSDictionary *NotificationData::dictionaryRepresentation() const
     };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #include "APIArray.h"
 #include <CyberCore/ContextMenuItem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebContextMenuItem::WebContextMenuItem(const WebContextMenuItemData& data)
     : m_webContextMenuItemData(data)
@@ -81,6 +81,6 @@ void WebContextMenuItem::setUserData(API::Object* userData)
     m_webContextMenuItemData.setUserData(userData);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

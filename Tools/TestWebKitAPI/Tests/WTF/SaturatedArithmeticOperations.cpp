@@ -34,7 +34,7 @@
 #include <limits.h>
 #include <wtf/SaturatedArithmetic.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, SaturatedArithmeticAddition)
 {
@@ -124,4 +124,4 @@ TEST(WTF, SaturatedArithmeticSubtraction)
     EXPECT_EQ(INT_MAX, saturatedDifference<int32_t>(INT_MAX, INT_MIN));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

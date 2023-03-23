@@ -35,7 +35,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/Threading.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace IPCTestingAPI {
 class JSIPCStreamClientConnection;
 }
@@ -122,7 +122,7 @@ private:
     unsigned m_maxBatchSize { 20 }; // Number of messages marked as StreamBatched to accumulate before notifying the server.
     unsigned m_batchSize { 0 };
 
-    friend class WebKit::IPCTestingAPI::JSIPCStreamClientConnection;
+    friend class CyberKit::IPCTestingAPI::JSIPCStreamClientConnection;
 };
 
 template<typename T, typename U>

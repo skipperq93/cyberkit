@@ -336,7 +336,7 @@ void FileReaderLoader::convertToText()
 
     // Decode the data.
     // The File API spec says that we should use the supplied encoding if it is valid. However, we choose to ignore this
-    // requirement in order to be consistent with how WebKit decodes the web content: always has the BOM override the
+    // requirement in order to be consistent with how CyberKit decodes the web content: always has the BOM override the
     // provided encoding.     
     // FIXME: consider supporting incremental decoding to improve the perf.
     if (!m_decoder)

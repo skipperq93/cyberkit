@@ -29,7 +29,7 @@
 #import "APIString.h"
 #import <wtf/RetainPtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 @implementation WKNSString
 

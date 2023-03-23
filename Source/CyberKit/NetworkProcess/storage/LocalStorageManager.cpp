@@ -31,7 +31,7 @@
 #include "StorageAreaRegistry.h"
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // Suggested by https://www.w3.org/TR/webstorage/#disk-space
 constexpr unsigned localStorageQuotaInBytes = 5 * MB;
@@ -223,4 +223,4 @@ void LocalStorageManager::disconnectFromStorageArea(IPC::Connection::UniqueID co
         connectionClosedForTransientStorageArea(connection);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

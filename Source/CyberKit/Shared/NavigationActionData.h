@@ -42,7 +42,7 @@ namespace CyberCore {
 typedef int SandboxFlags;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct NavigationActionData {
     CyberCore::NavigationType navigationType { CyberCore::NavigationType::Other };
@@ -68,7 +68,7 @@ struct NavigationActionData {
     CyberCore::SandboxFlags effectiveSandboxFlags { 0 };
     std::optional<CyberCore::PrivateClickMeasurement> privateClickMeasurement;
 #if PLATFORM(MAC) || HAVE(UIKIT_WITH_MOUSE_SUPPORT)
-    std::optional<WebKit::WebHitTestResultData> webHitTestResultData;
+    std::optional<CyberKit::WebHitTestResultData> webHitTestResultData;
 #endif
 };
 

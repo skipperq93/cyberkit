@@ -39,7 +39,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, (&m_gpuConnectionToWebProcess.connection()))
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 static constexpr Seconds mediaRecorderDefaultTimeout { 1_s };
 

@@ -43,7 +43,7 @@ GStreamerAudioMixer& GStreamerAudioMixer::singleton()
 
 GStreamerAudioMixer::GStreamerAudioMixer()
 {
-    GST_DEBUG_CATEGORY_INIT(webkit_media_gst_audio_mixer_debug, "webkitaudiomixer", 0, "WebKit GStreamer audio mixer");
+    GST_DEBUG_CATEGORY_INIT(webkit_media_gst_audio_mixer_debug, "webkitaudiomixer", 0, "CyberKit GStreamer audio mixer");
     m_pipeline = gst_element_factory_make("pipeline", "webkitaudiomixer");
     connectSimpleBusMessageCallback(m_pipeline.get());
 

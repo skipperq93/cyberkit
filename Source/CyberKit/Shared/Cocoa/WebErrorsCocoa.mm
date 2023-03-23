@@ -32,7 +32,7 @@
 #import <CyberCore/ResourceRequest.h>
 #import <CyberCore/ResourceResponse.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static RetainPtr<NSError> createNSError(NSString* domain, int code, NSURL *URL)
@@ -55,4 +55,4 @@ ResourceError fileDoesNotExistError(const ResourceResponse& response)
     return ResourceError(createNSError(NSURLErrorDomain, NSURLErrorFileDoesNotExist, response.url()).get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

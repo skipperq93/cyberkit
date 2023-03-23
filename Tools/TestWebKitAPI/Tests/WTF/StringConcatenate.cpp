@@ -33,7 +33,7 @@
 #include <wtf/text/StringConcatenate.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class BoolEnum : bool {
     A,

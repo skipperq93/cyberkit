@@ -42,7 +42,7 @@ class SharedBuffer;
 enum class NetworkConnectionIntegrity : uint16_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class Download;
 class NetworkSessionCocoa;
@@ -134,4 +134,4 @@ void setPCMDataCarriedOnRequest(CyberCore::PrivateClickMeasurement::PcmDataCarri
 
 void enableNetworkConnectionIntegrity(NSMutableURLRequest *, OptionSet<CyberCore::NetworkConnectionIntegrity>);
 
-} // namespace WebKit
+} // namespace CyberKit

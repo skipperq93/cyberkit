@@ -22,7 +22,7 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
-struct WebKit::TextTrackPrivateRemoteConfiguration {
+struct CyberKit::TextTrackPrivateRemoteConfiguration {
     AtomString trackId;
     AtomString label;
     AtomString language;

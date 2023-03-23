@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 #include <wtf/Ref.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BufferBinding {
     WebGPUIdentifier buffer;
@@ -40,6 +40,6 @@ struct BufferBinding {
     std::optional<PAL::WebGPU::Size64> size { std::nullopt };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

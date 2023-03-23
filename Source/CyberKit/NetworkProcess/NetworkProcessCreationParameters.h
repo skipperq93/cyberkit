@@ -40,7 +40,7 @@
 #include <wtf/MemoryPressureHandler.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebsiteDataStoreParameters;
 
@@ -80,4 +80,4 @@ struct NetworkProcessCreationParameters {
     HashSet<String> localhostAliasesForTesting;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

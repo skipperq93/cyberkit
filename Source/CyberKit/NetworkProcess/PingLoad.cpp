@@ -36,7 +36,7 @@
 
 #define PING_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - PingLoad::" fmt, this, ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -228,6 +228,6 @@ const URL& PingLoad::currentURL() const
     return m_networkLoadChecker->url();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef PING_RELEASE_LOG

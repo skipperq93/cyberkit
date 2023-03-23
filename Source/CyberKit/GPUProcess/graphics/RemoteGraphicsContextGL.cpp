@@ -43,7 +43,7 @@
 #include "RemoteVideoFrameObjectHeap.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -242,10 +242,10 @@ void RemoteGraphicsContextGL::paintCompositedResultsToCanvasWithQualifiedIdentif
 }
 
 #if ENABLE(MEDIA_STREAM)
-void RemoteGraphicsContextGL::paintCompositedResultsToVideoFrame(CompletionHandler<void(std::optional<WebKit::RemoteVideoFrameProxy::Properties>&&)>&& completionHandler)
+void RemoteGraphicsContextGL::paintCompositedResultsToVideoFrame(CompletionHandler<void(std::optional<CyberKit::RemoteVideoFrameProxy::Properties>&&)>&& completionHandler)
 {
     assertIsCurrent(workQueue());
-    std::optional<WebKit::RemoteVideoFrameProxy::Properties> result;
+    std::optional<CyberKit::RemoteVideoFrameProxy::Properties> result;
     if (auto videoFrame = m_context->paintCompositedResultsToVideoFrame())
         result = m_videoFrameObjectHeap->add(videoFrame.releaseNonNull());
     completionHandler(WTFMove(result));
@@ -331,7 +331,7 @@ void RemoteGraphicsContextGL::readnPixels2(int32_t x, int32_t y, int32_t width, 
     assertIsCurrent(workQueue());
     bool success = false;
     if (!handle.isNull()) {
-        handle.setOwnershipOfMemory(m_resourceOwner, WebKit::MemoryLedger::Default);
+        handle.setOwnershipOfMemory(m_resourceOwner, CyberKit::MemoryLedger::Default);
         if (auto buffer = SharedMemory::map(WTFMove(handle), SharedMemory::Protection::ReadWrite))
             success = m_context->readnPixelsWithStatus(x, y, width, height, format, type, GCGLSpan<void> { buffer->data(), buffer->size() });
         else
@@ -405,6 +405,6 @@ void RemoteGraphicsContextGL::multiDrawElementsInstancedBaseVertexBaseInstanceAN
     m_context->multiDrawElementsInstancedBaseVertexBaseInstanceANGLE(mode, GCGLSpanTuple { counts.data(), offsets, instanceCounts.data(), baseVertices.data(), baseInstances.data(), counts.size() }, type);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

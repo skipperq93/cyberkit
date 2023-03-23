@@ -28,7 +28,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit::WebPushD {
+namespace CyberKit::WebPushD {
 
 struct PushMessageForTesting {
     template<class Encoder> void encode(Encoder&) const;
@@ -77,4 +77,4 @@ std::optional<PushMessageForTesting> PushMessageForTesting::decode(Decoder& deco
     } };
 }
 
-} // namespace WebKit::WebPushD
+} // namespace CyberKit::WebPushD

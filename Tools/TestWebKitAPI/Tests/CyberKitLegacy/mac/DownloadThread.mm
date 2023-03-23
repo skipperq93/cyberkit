@@ -74,7 +74,7 @@ static RetainPtr<NSString> destination;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, DownloadThread)
 {
@@ -83,7 +83,7 @@ TEST(CyberKitLegacy, DownloadThread)
     [webView setPolicyDelegate:delegate.get()];
     [webView setDownloadDelegate:delegate.get()];
 
-    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&done);
 
     EXPECT_TRUE([[NSFileManager defaultManager] fileExistsAtPath:destination.get()]);
@@ -91,6 +91,6 @@ TEST(CyberKitLegacy, DownloadThread)
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:destination.get()]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

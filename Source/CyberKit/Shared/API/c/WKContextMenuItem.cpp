@@ -35,16 +35,16 @@
 WKTypeID WKContextMenuItemGetTypeID()
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(WebKit::WebContextMenuItem::APIType);
+    return CyberKit::toAPI(CyberKit::WebContextMenuItem::APIType);
 #else
-    return WebKit::toAPI(API::Object::Type::Null);
+    return CyberKit::toAPI(API::Object::Type::Null);
 #endif
 }
 
 WKContextMenuItemRef WKContextMenuItemCreateAsAction(WKContextMenuItemTag tag, WKStringRef title, bool enabled)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(&WebKit::WebContextMenuItem::create(WebKit::WebContextMenuItemData(CyberCore::ActionType, WebKit::toImpl(tag), WebKit::toImpl(title)->string(), enabled, false)).leakRef());
+    return CyberKit::toAPI(&CyberKit::WebContextMenuItem::create(CyberKit::WebContextMenuItemData(CyberCore::ActionType, CyberKit::toImpl(tag), CyberKit::toImpl(title)->string(), enabled, false)).leakRef());
 #else
     UNUSED_PARAM(tag);
     UNUSED_PARAM(title);
@@ -56,7 +56,7 @@ WKContextMenuItemRef WKContextMenuItemCreateAsAction(WKContextMenuItemTag tag, W
 WKContextMenuItemRef WKContextMenuItemCreateAsCheckableAction(WKContextMenuItemTag tag, WKStringRef title, bool enabled, bool checked)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(&WebKit::WebContextMenuItem::create(WebKit::WebContextMenuItemData(CyberCore::CheckableActionType, WebKit::toImpl(tag), WebKit::toImpl(title)->string(), enabled, checked)).leakRef());
+    return CyberKit::toAPI(&CyberKit::WebContextMenuItem::create(CyberKit::WebContextMenuItemData(CyberCore::CheckableActionType, CyberKit::toImpl(tag), CyberKit::toImpl(title)->string(), enabled, checked)).leakRef());
 #else
     UNUSED_PARAM(tag);
     UNUSED_PARAM(title);
@@ -69,7 +69,7 @@ WKContextMenuItemRef WKContextMenuItemCreateAsCheckableAction(WKContextMenuItemT
 WKContextMenuItemRef WKContextMenuItemCreateAsSubmenu(WKStringRef title, bool enabled, WKArrayRef submenuItems)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(&WebKit::WebContextMenuItem::create(WebKit::toImpl(title)->string(), enabled, WebKit::toImpl(submenuItems)).leakRef());
+    return CyberKit::toAPI(&CyberKit::WebContextMenuItem::create(CyberKit::toImpl(title)->string(), enabled, CyberKit::toImpl(submenuItems)).leakRef());
 #else
     UNUSED_PARAM(title);
     UNUSED_PARAM(enabled);
@@ -81,7 +81,7 @@ WKContextMenuItemRef WKContextMenuItemCreateAsSubmenu(WKStringRef title, bool en
 WKContextMenuItemRef WKContextMenuItemSeparatorItem()
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(WebKit::WebContextMenuItem::separatorItem());
+    return CyberKit::toAPI(CyberKit::WebContextMenuItem::separatorItem());
 #else
     return nullptr;
 #endif
@@ -90,27 +90,27 @@ WKContextMenuItemRef WKContextMenuItemSeparatorItem()
 WKContextMenuItemTag WKContextMenuItemGetTag(WKContextMenuItemRef itemRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(WebKit::toImpl(itemRef)->data().action());
+    return CyberKit::toAPI(CyberKit::toImpl(itemRef)->data().action());
 #else
     UNUSED_PARAM(itemRef);
-    return WebKit::toAPI(CyberCore::ContextMenuItemTagNoAction);
+    return CyberKit::toAPI(CyberCore::ContextMenuItemTagNoAction);
 #endif
 }
 
 WKContextMenuItemType WKContextMenuItemGetType(WKContextMenuItemRef itemRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(WebKit::toImpl(itemRef)->data().type());
+    return CyberKit::toAPI(CyberKit::toImpl(itemRef)->data().type());
 #else
     UNUSED_PARAM(itemRef);
-    return WebKit::toAPI(CyberCore::ActionType);
+    return CyberKit::toAPI(CyberCore::ActionType);
 #endif
 }
 
 WKStringRef WKContextMenuItemCopyTitle(WKContextMenuItemRef itemRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toCopiedAPI(WebKit::toImpl(itemRef)->data().title().impl());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(itemRef)->data().title().impl());
 #else
     UNUSED_PARAM(itemRef);
     return 0;
@@ -120,7 +120,7 @@ WKStringRef WKContextMenuItemCopyTitle(WKContextMenuItemRef itemRef)
 bool WKContextMenuItemGetEnabled(WKContextMenuItemRef itemRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toImpl(itemRef)->data().enabled();
+    return CyberKit::toImpl(itemRef)->data().enabled();
 #else
     UNUSED_PARAM(itemRef);
     return false;
@@ -130,7 +130,7 @@ bool WKContextMenuItemGetEnabled(WKContextMenuItemRef itemRef)
 bool WKContextMenuItemGetChecked(WKContextMenuItemRef itemRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toImpl(itemRef)->data().checked();
+    return CyberKit::toImpl(itemRef)->data().checked();
 #else
     UNUSED_PARAM(itemRef);
     return false;
@@ -140,7 +140,7 @@ bool WKContextMenuItemGetChecked(WKContextMenuItemRef itemRef)
 WKArrayRef WKContextMenuCopySubmenuItems(WKContextMenuItemRef itemRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(&WebKit::toImpl(itemRef)->submenuItemsAsAPIArray().leakRef());
+    return CyberKit::toAPI(&CyberKit::toImpl(itemRef)->submenuItemsAsAPIArray().leakRef());
 #else
     UNUSED_PARAM(itemRef);
     return 0;
@@ -150,7 +150,7 @@ WKArrayRef WKContextMenuCopySubmenuItems(WKContextMenuItemRef itemRef)
 WKTypeRef WKContextMenuItemGetUserData(WKContextMenuItemRef itemRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(WebKit::toImpl(itemRef)->userData());
+    return CyberKit::toAPI(CyberKit::toImpl(itemRef)->userData());
 #else
     UNUSED_PARAM(itemRef);
     return 0;
@@ -160,7 +160,7 @@ WKTypeRef WKContextMenuItemGetUserData(WKContextMenuItemRef itemRef)
 void WKContextMenuItemSetUserData(WKContextMenuItemRef itemRef, WKTypeRef userDataRef)
 {
 #if ENABLE(CONTEXT_MENUS)
-    WebKit::toImpl(itemRef)->setUserData(WebKit::toImpl(userDataRef));
+    CyberKit::toImpl(itemRef)->setUserData(CyberKit::toImpl(userDataRef));
 #else
     UNUSED_PARAM(itemRef);
     UNUSED_PARAM(userDataRef);

@@ -37,4 +37,4 @@ private:
     void paintToTextureMapper(TextureMapper&, const FloatRect&, const TransformationMatrix&, float) final { }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

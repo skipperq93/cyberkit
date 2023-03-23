@@ -43,13 +43,13 @@ static void loadLibraryOrExit(const char* name)
 
 int main(int argc, char** argv)
 {
-    loadLibraryOrExit(WebKitRequirements_LOAD_AT);
+    loadLibraryOrExit(CyberKitRequirements_LOAD_AT);
     loadLibraryOrExit(Cairo_LOAD_AT);
-    loadLibraryOrExit("libWebKit");
+    loadLibraryOrExit("libCyberKit");
     // load backend libraries as needed here
 
     char* coreProcessIdentifier = argv[1];
-    WebKit::parseAndSetEnvVars(argv[2]);
+    CyberKit::parseAndSetEnvVars(argv[2]);
 
     char connectionIdentifier[16];
     snprintf(connectionIdentifier, sizeof(connectionIdentifier), "%d", PlayStation::getConnectionIdentifier());
@@ -61,5 +61,5 @@ int main(int argc, char** argv)
         connectionIdentifier,
         0
     };
-    return WebKit::GPUProcessMain(sizeof(internalArgv) / sizeof(char*), internalArgv);
+    return CyberKit::GPUProcessMain(sizeof(internalArgv) / sizeof(char*), internalArgv);
 }

@@ -33,7 +33,7 @@
 #import <wtf/spi/darwin/XPCSPI.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool currentProcessIsSandboxed()
 {

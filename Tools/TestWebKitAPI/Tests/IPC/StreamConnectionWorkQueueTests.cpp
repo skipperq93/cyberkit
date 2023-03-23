@@ -29,7 +29,7 @@
 #include "StreamConnectionWorkQueue.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class StreamConnectionWorkQueueTest : public ::testing::Test {
 public:

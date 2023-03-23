@@ -32,20 +32,20 @@ namespace CyberCore {
 class Page;
 
 enum class PluginLoadClientPolicy : uint8_t {
-    // No client-specific plug-in load policy has been defined. The plug-in should be visible in navigator.plugins and WebKit should synchronously
+    // No client-specific plug-in load policy has been defined. The plug-in should be visible in navigator.plugins and CyberKit should synchronously
     // ask the client whether the plug-in should be loaded.
     Undefined = 0,
 
     // The plug-in module should be blocked from being instantiated. The plug-in should be hidden in navigator.plugins.
     Block,
 
-    // WebKit should synchronously ask the client whether the plug-in should be loaded. The plug-in should be visible in navigator.plugins.
+    // CyberKit should synchronously ask the client whether the plug-in should be loaded. The plug-in should be visible in navigator.plugins.
     Ask,
 
-    // The plug-in module may be loaded if WebKit is not blocking it.
+    // The plug-in module may be loaded if CyberKit is not blocking it.
     Allow,
 
-    // The plug-in module should be loaded irrespective of whether WebKit has asked it to be blocked.
+    // The plug-in module should be loaded irrespective of whether CyberKit has asked it to be blocked.
     AllowAlways,
 };
 

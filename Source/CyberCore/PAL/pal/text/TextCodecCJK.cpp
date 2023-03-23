@@ -95,7 +95,7 @@ void TextCodecCJK::registerEncodingNames(EncodingNameRegistrar registrar)
         "ksc_5601",
         "windows-949",
         
-        // These aliases are not in the specification, but WebKit has historically supported them.
+        // These aliases are not in the specification, but CyberKit has historically supported them.
         "x-windows-949",
         "x-uhc",
     });
@@ -116,7 +116,7 @@ void TextCodecCJK::registerEncodingNames(EncodingNameRegistrar registrar)
         "iso-ir-58",
         "x-gbk",
 
-        // These aliases are not in the specification, but WebKit has historically supported them.
+        // These aliases are not in the specification, but CyberKit has historically supported them.
         "cn-gb",
         "csgb231280",
         "x-euc-cn",
@@ -131,7 +131,7 @@ void TextCodecCJK::registerEncodingNames(EncodingNameRegistrar registrar)
     registerAliases({
         "gb18030",
 
-        // These aliases are not in the specification, but WebKit has historically supported them.
+        // These aliases are not in the specification, but CyberKit has historically supported them.
         "ibm-1392",
         "windows-54936"
     });

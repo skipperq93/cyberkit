@@ -34,7 +34,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 Entry::Entry(const Key& key, const CyberCore::ResourceResponse& response, PrivateRelayed privateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&& buffer, const Vector<std::pair<String, String>>& varyingRequestHeaders)

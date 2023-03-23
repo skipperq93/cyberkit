@@ -25,12 +25,12 @@
 
 #include "BaseTarget.xcconfig"
 
-PRODUCT_NAME = WebKitTestRunner;
+PRODUCT_NAME = CyberKitTestRunner;
 PRODUCT_BUNDLE_IDENTIFIER = org.webkit.$(PRODUCT_NAME:rfc1034identifier);
 
 GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 
-OTHER_LDFLAGS = $(inherited) -lWebKitTestRunner -lCyberCoreTestSupport -framework CyberScriptCore -framework CoreGraphics -framework QuartzCore -framework ImageIO -framework IOKit -framework UIKit -framework CyberKit -framework Foundation -framework GraphicsServices;
+OTHER_LDFLAGS = $(inherited) -lCyberKitTestRunner -lCyberCoreTestSupport -framework CyberScriptCore -framework CoreGraphics -framework QuartzCore -framework ImageIO -framework IOKit -framework UIKit -framework CyberKit -framework Foundation -framework GraphicsServices;
 OTHER_LDFLAGS[sdk=watch*] = $(OTHER_LDFLAGS) -framework PepperUICore
 
 STRIP_STYLE = debugging;
@@ -43,6 +43,6 @@ EXCLUDED_SOURCE_FILE_NAMES[sdk=watch*] = ios/Launch.storyboard;
 
 TARGETED_DEVICE_FAMILY = 1,2,4;
 
-CODE_SIGN_ENTITLEMENTS[sdk=iphone*] = Configurations/WebKitTestRunnerApp-iOS.entitlements;
-CODE_SIGN_ENTITLEMENTS[sdk=appletv*] = Configurations/WebKitTestRunnerApp-watchOS.entitlements;
-CODE_SIGN_ENTITLEMENTS[sdk=watch*] = Configurations/WebKitTestRunnerApp-watchOS.entitlements;
+CODE_SIGN_ENTITLEMENTS[sdk=iphone*] = Configurations/CyberKitTestRunnerApp-iOS.entitlements;
+CODE_SIGN_ENTITLEMENTS[sdk=appletv*] = Configurations/CyberKitTestRunnerApp-watchOS.entitlements;
+CODE_SIGN_ENTITLEMENTS[sdk=watch*] = Configurations/CyberKitTestRunnerApp-watchOS.entitlements;

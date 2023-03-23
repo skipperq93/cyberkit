@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKit2Initialize.h"
+#include "CyberKit2Initialize.h"
 
 #include <CyberScriptCore/InitializeThreading.h>
 #include <CyberCore/CommonAtomStrings.h>
@@ -34,11 +34,11 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !PLATFORM(COCOA)
 
-void InitializeWebKit2()
+void InitializeCyberKit2()
 {
     JSC::initialize();
     WTF::initializeMainThread();
@@ -51,4 +51,4 @@ void InitializeWebKit2()
 
 #endif // !PLATFORM(COCOA)
 
-} // namespace WebKit
+} // namespace CyberKit

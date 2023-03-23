@@ -32,7 +32,7 @@
 #include "DaemonEncoder.h"
 #include "NetworkSession.h"
 
-namespace WebKit::WebPushD {
+namespace CyberKit::WebPushD {
 
 Connection::Connection(CString&& machServiceName, NetworkNotificationManager& manager, WebPushDaemonConnectionConfiguration&& configuration)
     : Daemon::ConnectionToMachService<ConnectionTraits>(WTFMove(machServiceName))
@@ -52,6 +52,6 @@ void Connection::debugMessage(const String& message)
     networkSession().networkProcess().broadcastConsoleMessage(networkSession().sessionID(), MessageSource::Other, JSC::MessageLevel::Info, message);
 }
 
-} // namespace WebKit::WebPushD
+} // namespace CyberKit::WebPushD
 
 #endif // ENABLE(BUILT_IN_NOTIFICATIONS)

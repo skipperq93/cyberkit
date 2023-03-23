@@ -35,7 +35,7 @@
 #include <pal/graphics/WebGPU/WebGPUCompilationMessage.h>
 #include <pal/graphics/WebGPU/WebGPUShaderModule.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteShaderModule::RemoteShaderModule(PAL::WebGPU::ShaderModule& shaderModule, WebGPU::ObjectHeap& objectHeap, Ref<IPC::StreamServerConnection>&& streamConnection, WebGPUIdentifier identifier)
     : m_backing(shaderModule)
@@ -75,6 +75,6 @@ void RemoteShaderModule::setLabel(String&& label)
     m_backing->setLabel(WTFMove(label));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

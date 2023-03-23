@@ -35,7 +35,7 @@
 #import <CyberKit/WKUserContentControllerRef.h>
 #import <CyberKit/WKPageConfigurationRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(PageGroup, DefaultUserContentController)
 {
@@ -76,6 +76,6 @@ TEST(PageGroup, CustomUserContentController)
     EXPECT_EQ(userContentController.get(), WKPageConfigurationGetUserContentController(copiedPageConfiguration.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -61,7 +61,7 @@ AffineTransform computeBaseOverallTextMatrix(const std::optional<AffineTransform
     AffineTransform result;
 
     // This is a Y-flip, because text's coordinate system is increasing-Y-goes-up,
-    // but WebKit's coordinate system is increasing-Y-goes-down.
+    // but CyberKit's coordinate system is increasing-Y-goes-down.
     result.setB(-result.b());
     result.setD(-result.d());
 
@@ -133,7 +133,7 @@ static void fillVectorWithVerticalGlyphPositions(Vector<CGPoint, 256>& positions
 
     // It's important to realize we're dealing with 4 coordinate systems here:
     // 1. Physical coordinate system. This is what the user sees.
-    // 2. User coordinate system. This is the coordinate system of just the CTM. For vertical text, this is just like the normal WebKit increasing-Y-down
+    // 2. User coordinate system. This is the coordinate system of just the CTM. For vertical text, this is just like the normal CyberKit increasing-Y-down
     //        coordinate system, except we're rotated right, so logical right is physical down. (We do this so logical inline progression proceeds in the
     //        logically increasing-X dimension, just as it would if we weren't doing vertical stuff.)
     // 3. Text coordinate system. This is the coordinate of the text matrix concatenated with the CTM. For vertical text, this is rotated such that
@@ -230,7 +230,7 @@ static void fillVectorWithVerticalGlyphPositions(Vector<CGPoint, 256>& positions
     CGAffineTransform transform = CGAffineTransformInvert(textMatrix);
 
     // Because the "vertical translation for a glyph" vector starts at the ideographic baseline (the point B in the above diagram), we have to
-    // adjust the pen position to start there. WebKit's text routines start out using the alphabetic baseline (point A in the diagram above) so we
+    // adjust the pen position to start there. CyberKit's text routines start out using the alphabetic baseline (point A in the diagram above) so we
     // adjust the start position here, which has the effect of shifting the whole run altogether.
     //
     // ascentDelta is (usually) a negative number, and represents the distance between the ideographic baseline to the alphabetic baseline.

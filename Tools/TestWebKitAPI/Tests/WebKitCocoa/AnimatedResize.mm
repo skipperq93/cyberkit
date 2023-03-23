@@ -98,7 +98,7 @@ static RetainPtr<TestNavigationDelegate> createFirstVisuallyNonEmptyWatchingNavi
 TEST(AnimatedResize, DISABLED_ResizeWithHiddenContentDoesNotHang)
 {
     auto webView = createAnimatedResizeWebView();
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"blinking-div" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"blinking-div" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     auto navigationDelegate = createFirstVisuallyNonEmptyWatchingNavigationDelegate();
     [webView setNavigationDelegate:navigationDelegate.get()];
@@ -106,7 +106,7 @@ TEST(AnimatedResize, DISABLED_ResizeWithHiddenContentDoesNotHang)
     [window addSubview:webView.get()];
     [window setHidden:NO];
 
-    TestWebKitAPI::Util::run(&didLayout);
+    TestCyberKitAPI::Util::run(&didLayout);
     didLayout = false;
 
     for (unsigned i = 0; i < 50; i++) {
@@ -114,7 +114,7 @@ TEST(AnimatedResize, DISABLED_ResizeWithHiddenContentDoesNotHang)
             [webView setFrame:CGRectMake(0, 0, [webView frame].size.width + 100, 400)];
         }];
 
-        TestWebKitAPI::Util::run(&didEndAnimatedResize);
+        TestCyberKitAPI::Util::run(&didEndAnimatedResize);
         didEndAnimatedResize = false;
     }
 }
@@ -122,7 +122,7 @@ TEST(AnimatedResize, DISABLED_ResizeWithHiddenContentDoesNotHang)
 TEST(AnimatedResize, AnimatedResizeDoesNotHang)
 {
     auto webView = createAnimatedResizeWebView();
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"blinking-div" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"blinking-div" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     auto navigationDelegate = createFirstVisuallyNonEmptyWatchingNavigationDelegate();
     [webView setNavigationDelegate:navigationDelegate.get()];
@@ -130,7 +130,7 @@ TEST(AnimatedResize, AnimatedResizeDoesNotHang)
     [window addSubview:webView.get()];
     [window setHidden:NO];
 
-    TestWebKitAPI::Util::run(&didLayout);
+    TestCyberKitAPI::Util::run(&didLayout);
     didLayout = false;
 
     for (unsigned i = 0; i < 50; i++) {
@@ -142,7 +142,7 @@ TEST(AnimatedResize, AnimatedResizeDoesNotHang)
             [webView _endAnimatedResize];
         });
 
-        TestWebKitAPI::Util::run(&didEndAnimatedResize);
+        TestCyberKitAPI::Util::run(&didEndAnimatedResize);
         didEndAnimatedResize = false;
     }
 }
@@ -180,7 +180,7 @@ TEST(AnimatedResize, AnimatedResizeBlocksViewportFitChanges)
         [webView _endAnimatedResize];
     }];
 
-    TestWebKitAPI::Util::run(&didEndAnimatedResize);
+    TestCyberKitAPI::Util::run(&didEndAnimatedResize);
     didEndAnimatedResize = false;
 
     // Wait for one more commit so that we see the viewport-fit state
@@ -189,7 +189,7 @@ TEST(AnimatedResize, AnimatedResizeBlocksViewportFitChanges)
     [webView _doAfterNextPresentationUpdate:^{
         didGetCommitAfterEndAnimatedResize = true;
     }];
-    TestWebKitAPI::Util::run(&didGetCommitAfterEndAnimatedResize);
+    TestCyberKitAPI::Util::run(&didGetCommitAfterEndAnimatedResize);
 
     EXPECT_TRUE(didChangeSafeAreaShouldAffectObscuredInsets);
 }
@@ -231,7 +231,7 @@ TEST(AnimatedResize, OverrideLayoutSizeChangesDuringAnimatedResizeSucceed)
         }];
     }];
     
-    TestWebKitAPI::Util::run(&didReadLayoutSize);
+    TestCyberKitAPI::Util::run(&didReadLayoutSize);
 }
 
 TEST(AnimatedResize, OverrideLayoutSizeIsRestoredAfterProcessRelaunch)
@@ -262,7 +262,7 @@ TEST(AnimatedResize, OverrideLayoutSizeIsRestoredAfterProcessRelaunch)
 
         didReadLayoutSize = true;
     }];
-    TestWebKitAPI::Util::run(&didReadLayoutSize);
+    TestCyberKitAPI::Util::run(&didReadLayoutSize);
 }
 
 TEST(AnimatedResize, OverrideLayoutSizeIsRestoredAfterChangingDuringProcessRelaunch)
@@ -295,7 +295,7 @@ TEST(AnimatedResize, OverrideLayoutSizeIsRestoredAfterChangingDuringProcessRelau
 
         didReadLayoutSize = true;
     }];
-    TestWebKitAPI::Util::run(&didReadLayoutSize);
+    TestCyberKitAPI::Util::run(&didReadLayoutSize);
 }
 
 TEST(AnimatedResize, ChangeFrameAndMinimumEffectiveDeviceWidthDuringAnimatedResize)
@@ -333,7 +333,7 @@ TEST(AnimatedResize, ChangeFrameAndMinimumEffectiveDeviceWidthDuringAnimatedResi
         }];
     }];
 
-    TestWebKitAPI::Util::run(&didReadLayoutSize);
+    TestCyberKitAPI::Util::run(&didReadLayoutSize);
 }
 
 static UIView *immediateSubviewOfClass(UIView *view, Class cls)
@@ -383,7 +383,7 @@ TEST(AnimatedResize, ResizeWithContentHiddenCompletes)
             didReadLayoutSize = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&didReadLayoutSize);
+    TestCyberKitAPI::Util::run(&didReadLayoutSize);
     
     UIView *scrollView = immediateSubviewOfClass(webView.get(), NSClassFromString(@"WKScrollView"));
     UIView *contentView = immediateSubviewOfClass(scrollView, NSClassFromString(@"WKContentView"));
@@ -430,7 +430,7 @@ TEST(AnimatedResize, ResizeWithContentHiddenWithSubsequentNoOpResizeCompletes)
             didReadLayoutSize = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&didReadLayoutSize);
+    TestCyberKitAPI::Util::run(&didReadLayoutSize);
 
     UIView *scrollView = immediateSubviewOfClass(webView.get(), NSClassFromString(@"WKScrollView"));
     UIView *contentView = immediateSubviewOfClass(scrollView, NSClassFromString(@"WKContentView"));
@@ -473,8 +473,8 @@ TEST(AnimatedResize, AnimatedResizeBlocksDoAfterNextPresentationUpdate)
         [webView _endAnimatedResize];
     }];
 
-    TestWebKitAPI::Util::run(&didEndAnimatedResize);
-    TestWebKitAPI::Util::run(&didGetCommitAfterEndAnimatedResize);
+    TestCyberKitAPI::Util::run(&didEndAnimatedResize);
+    TestCyberKitAPI::Util::run(&didGetCommitAfterEndAnimatedResize);
 }
 
 TEST(AnimatedResize, CreateWebPageAfterAnimatedResize)
@@ -495,7 +495,7 @@ TEST(AnimatedResize, CreateWebPageAfterAnimatedResize)
         [webView _endAnimatedResize];
     }];
 
-    TestWebKitAPI::Util::run(&doneWaitingForPresentationUpdate);
+    TestCyberKitAPI::Util::run(&doneWaitingForPresentationUpdate);
 
     [webView _killWebContentProcessAndResetState];
     [webView synchronouslyLoadTestPageNamed:@"large-red-square-image"];

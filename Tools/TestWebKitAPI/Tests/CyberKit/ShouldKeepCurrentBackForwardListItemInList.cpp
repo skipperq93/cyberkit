@@ -35,7 +35,7 @@
 // When navigating from simple2 to simple3, it disallows the simple2 back/forward list item from staying in the list
 // It then navigates back from simple3, expecting to land at simple.
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool finished = false;
 static bool successfulSoFar = true;
@@ -121,7 +121,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageLoaderClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, ShouldKeepCurrentBackForwardListItemInList)
+TEST(CyberKit, ShouldKeepCurrentBackForwardListItemInList)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -150,7 +150,7 @@ TEST(WebKit, ShouldKeepCurrentBackForwardListItemInList)
     EXPECT_EQ(navigationNumber, 4);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 
 #endif

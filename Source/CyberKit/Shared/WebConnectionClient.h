@@ -38,7 +38,7 @@ template<> struct ClientTraits<WKConnectionClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebConnection;
 
@@ -48,6 +48,6 @@ public:
     void didClose(WebConnection*);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebConnectionClient_h

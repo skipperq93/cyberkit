@@ -31,7 +31,7 @@
 #include "MediaSample.h"
 #include "MediaSourcePrivateGStreamer.h"
 
-struct WebKitMediaSrc;
+struct CyberKitMediaSrc;
 
 namespace CyberCore {
 
@@ -86,7 +86,7 @@ public:
 
     bool hasAllTracks() const { return m_hasAllTracks; }
     void startSource(const Vector<RefPtr<MediaSourceTrackGStreamer>>& tracks);
-    WebKitMediaSrc* webKitMediaSrc() { return reinterpret_cast<WebKitMediaSrc*>(m_source.get()); }
+    CyberKitMediaSrc* webKitMediaSrc() { return reinterpret_cast<CyberKitMediaSrc*>(m_source.get()); }
 
 #if !RELEASE_LOG_DISABLED
     WTFLogChannel& logChannel() const final { return CyberCore::LogMediaSource; }

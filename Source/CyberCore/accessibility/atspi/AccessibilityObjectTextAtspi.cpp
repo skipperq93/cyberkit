@@ -798,15 +798,15 @@ AccessibilityObjectAtspi::TextAttributes AccessibilityObjectAtspi::textAttribute
         case TextAlignMode::End:
             break;
         case TextAlignMode::Left:
-        case TextAlignMode::WebKitLeft:
+        case TextAlignMode::CyberKitLeft:
             addAttributeIfNeeded("justification"_s, "left"_s);
             break;
         case TextAlignMode::Right:
-        case TextAlignMode::WebKitRight:
+        case TextAlignMode::CyberKitRight:
             addAttributeIfNeeded("justification"_s, "right"_s);
             break;
         case TextAlignMode::Center:
-        case TextAlignMode::WebKitCenter:
+        case TextAlignMode::CyberKitCenter:
             addAttributeIfNeeded("justification"_s, "center"_s);
             break;
         case TextAlignMode::Justify:

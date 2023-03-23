@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
     
 enum class WebsiteSimulatedMouseEventsDispatchPolicy : uint8_t {
     Default,

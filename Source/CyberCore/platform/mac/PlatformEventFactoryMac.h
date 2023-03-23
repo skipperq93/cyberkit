@@ -45,7 +45,7 @@ public:
 // FIXME: This function doesn't really belong in this header.
 WEBCORE_EXPORT NSPoint globalPoint(const NSPoint& windowPoint, NSWindow *);
 
-// FIXME: WebKit2 has a lot of code copied and pasted from PlatformEventFactoryMac in WebEventFactory. More of it should be shared with CyberCore.
+// FIXME: CyberKit2 has a lot of code copied and pasted from PlatformEventFactoryMac in WebEventFactory. More of it should be shared with CyberCore.
 WEBCORE_EXPORT int windowsKeyCodeForKeyEvent(NSEvent *);
 WEBCORE_EXPORT String keyIdentifierForKeyEvent(NSEvent *);
 WEBCORE_EXPORT String keyForKeyEvent(NSEvent *);

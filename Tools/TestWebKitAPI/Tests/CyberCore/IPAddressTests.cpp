@@ -28,7 +28,7 @@
 #include <CyberCore/DNS.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if OS(UNIX)
 
@@ -79,5 +79,5 @@ TEST(IPAddressTests, CompareIPAddresses)
 
 #endif // OS(UNIX)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

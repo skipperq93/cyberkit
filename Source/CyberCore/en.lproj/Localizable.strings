@@ -340,7 +340,7 @@
 /* WKErrorContentRuleListStoreCompileFailed description */
 "Compiling a WKContentRuleList failed" = "Compiling a WKContentRuleList failed";
 
-/* WebKitErrorCannotShowMIMEType description */
+/* CyberKitErrorCannotShowMIMEType description */
 "Content with specified MIME type can’t be shown" = "Content with specified MIME type can’t be shown";
 
 /* Continue */
@@ -580,7 +580,7 @@
 /* Forward context menu item */
 "Forward" = "Forward";
 
-/* WebKitErrorFrameLoadInterruptedByPolicyChange description */
+/* CyberKitErrorFrameLoadInterruptedByPolicyChange description */
 "Frame load interrupted" = "Frame load interrupted";
 
 /* Title of the Go button for zoomed form controls. */
@@ -667,7 +667,7 @@
 /* Undo action name */
 "Italics (Undo action name)" = "Italics";
 
-/* WebKitErrorJavaUnavailable description */
+/* CyberKitErrorJavaUnavailable description */
 "Java is unavailable" = "Java is unavailable";
 
 /* Title for action sheet for JavaScript link */
@@ -823,7 +823,7 @@
 /* Option in segmented control for choosing list type in text editing */
 "None" = "None";
 
-/* WebKitErrorCannotUseRestrictedPort description */
+/* CyberKitErrorCannotUseRestrictedPort description */
 "Not allowed to use restricted network port" = "Not allowed to use restricted network port";
 
 /* Option in segmented control for inserting a numbered list in text editing */
@@ -934,10 +934,10 @@
 /* Label text to be used if plugin host process has crashed */
 "Plug-in Failure" = "Plug-in Failure";
 
-/* WebKitErrorPlugInCancelledConnection description */
+/* CyberKitErrorPlugInCancelledConnection description */
 "Plug-in cancelled" = "Plug-in cancelled";
 
-/* WebKitErrorPlugInWillHandleLoad description */
+/* CyberKitErrorPlugInWillHandleLoad description */
 "Plug-in handled load" = "Plug-in handled load";
 
 /* Description of the primary type supported by the PDF pseudo plug-in. */
@@ -1183,16 +1183,16 @@
 /* Text Replacement context menu item */
 "Text Replacement" = "Text Replacement";
 
-/* WebKitErrorCannotShowURL description */
+/* CyberKitErrorCannotShowURL description */
 "The URL can’t be shown" = "The URL can’t be shown";
 
-/* WebKitErrorBlockedByContentBlocker description */
+/* CyberKitErrorBlockedByContentBlocker description */
 "The URL was blocked by a content blocker" = "The URL was blocked by a content blocker";
 
-/* WebKitErrorFrameLoadBlockedByContentFilter description */
+/* CyberKitErrorFrameLoadBlockedByContentFilter description */
 "The URL was blocked by a content filter" = "The URL was blocked by a content filter";
 
-/* WebKitErrorFrameLoadBlockedByRestrictions description */
+/* CyberKitErrorFrameLoadBlockedByRestrictions description */
 "The URL was blocked by device restrictions" = "The URL was blocked by device restrictions";
 
 /* WKErrorWebViewInvalidated description */
@@ -1204,16 +1204,16 @@
 /* WKWebExtensionErrorBackgroundContentFailedToLoad description */
 "The background content failed to load due to an error." = "The background content failed to load due to an error.";
 
-/* WebKitErrorGeolocationLocationUnknown description */
+/* CyberKitErrorGeolocationLocationUnknown description */
 "The current location cannot be found." = "The current location cannot be found.";
 
 /* document password failure alert message */
 "The document could not be opened with that password." = "The document could not be opened with that password.";
 
-/* WebKitErrorCannotFindPlugin description */
+/* CyberKitErrorCannotFindPlugin description */
 "The plug-in can’t be found" = "The plug-in can’t be found";
 
-/* WebKitErrorCannotLoadPlugin description */
+/* CyberKitErrorCannotLoadPlugin description */
 "The plug-in can’t be loaded" = "The plug-in can’t be loaded";
 
 /* prompt string in authentication panel */
@@ -1400,10 +1400,10 @@
 "Web Inspector — %@" = "Web Inspector — %@";
 
 /* Pseudo plug-in name, visible in the Installed Plug-ins page in Safari. */
-"WebKit built-in PDF" = "WebKit built-in PDF";
+"CyberKit built-in PDF" = "CyberKit built-in PDF";
 
-/* WebKitErrorInternal description */
-"WebKit encountered an internal error" = "WebKit encountered an internal error";
+/* CyberKitErrorInternal description */
+"CyberKit encountered an internal error" = "CyberKit encountered an internal error";
 
 /* Unwanted software warning title */
 "Website With Harmful Software Warning" = "Website With Harmful Software Warning";

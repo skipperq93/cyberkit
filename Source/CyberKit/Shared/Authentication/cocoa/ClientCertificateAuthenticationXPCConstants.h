@@ -27,7 +27,7 @@
 
 #if HAVE(SEC_KEY_PROXY)
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace ClientCertificateAuthentication {
 
@@ -40,6 +40,6 @@ extern const char* const XPCSecKeyProxyEndpointKey;
 
 } // namespace ClientCertificateAuthentication
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

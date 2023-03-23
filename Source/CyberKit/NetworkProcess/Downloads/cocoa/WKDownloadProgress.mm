@@ -40,18 +40,18 @@ static NSString * const countOfBytesReceivedKeyPath = @"countOfBytesReceived";
 
 @implementation WKDownloadProgress {
     RetainPtr<NSURLSessionDownloadTask> m_task;
-    WeakPtr<WebKit::Download> m_download;
-    RefPtr<WebKit::SandboxExtension> m_sandboxExtension;
+    WeakPtr<CyberKit::Download> m_download;
+    RefPtr<CyberKit::SandboxExtension> m_sandboxExtension;
 }
 
 - (void)performCancel
 {
     if (m_download)
-        m_download->cancel([](auto&) { }, WebKit::Download::IgnoreDidFailCallback::No);
+        m_download->cancel([](auto&) { }, CyberKit::Download::IgnoreDidFailCallback::No);
     m_download = nullptr;
 }
 
-- (instancetype)initWithDownloadTask:(NSURLSessionDownloadTask *)task download:(WebKit::Download&)download URL:(NSURL *)fileURL sandboxExtension:(RefPtr<WebKit::SandboxExtension>)sandboxExtension
+- (instancetype)initWithDownloadTask:(NSURLSessionDownloadTask *)task download:(CyberKit::Download&)download URL:(NSURL *)fileURL sandboxExtension:(RefPtr<CyberKit::SandboxExtension>)sandboxExtension
 {
     if (!(self = [self initWithParent:nil userInfo:nil]))
         return nil;

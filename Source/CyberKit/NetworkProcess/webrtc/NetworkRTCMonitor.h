@@ -44,7 +44,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkRTCProvider;
 
@@ -69,6 +69,6 @@ private:
     bool m_enableEnumeratingAllNetworkInterfaces { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

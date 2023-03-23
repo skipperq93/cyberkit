@@ -46,7 +46,7 @@ void* wrap(API::Object*);
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 template<typename WrappedObjectClass> struct WrapperTraits;
 
@@ -90,7 +90,7 @@ template<typename ObjectClass> inline typename WrapperTraits<ObjectClass>::Wrapp
 
 namespace API {
 
-using WebKit::wrapper;
+using CyberKit::wrapper;
 
 }
 

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8DC2EF4F0486A6940098B216"
-               BuildableName = "WebKit.framework"
-               BlueprintName = "WebKit"
-               ReferencedContainer = "container:WebKit.xcodeproj">
+               BuildableName = "CyberKit.framework"
+               BlueprintName = "CyberKit"
+               ReferencedContainer = "container:CyberKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DC2EF4F0486A6940098B216"
-            BuildableName = "WebKit.framework"
-            BlueprintName = "WebKit"
-            ReferencedContainer = "container:WebKit.xcodeproj">
+            BuildableName = "CyberKit.framework"
+            BlueprintName = "CyberKit"
+            ReferencedContainer = "container:CyberKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -31,7 +31,7 @@
 
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPlatformTouchPoint::WebPlatformTouchPoint(unsigned id, TouchPointState state, const CyberCore::IntPoint& screenPosition, const CyberCore::IntPoint& position)
     : m_id(id)
@@ -86,6 +86,6 @@ std::optional<WebPlatformTouchPoint> WebPlatformTouchPoint::decode(IPC::Decoder&
     return result;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(TOUCH_EVENTS) && !PLATFORM(IOS_FAMILY)

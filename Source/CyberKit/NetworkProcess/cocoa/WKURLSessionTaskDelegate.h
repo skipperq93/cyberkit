@@ -27,7 +27,7 @@
 
 #import "DataTaskIdentifier.h"
 
-namespace WebKit {
+namespace CyberKit {
 class NetworkSessionCocoa;
 }
 
@@ -36,7 +36,7 @@ class NetworkSessionCocoa;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WKURLSessionTaskDelegate : NSObject<NSURLSessionTaskDelegate>
-- (instancetype)initWithIdentifier:(WebKit::DataTaskIdentifier)identifier session:(WebKit::NetworkSessionCocoa&)session;
+- (instancetype)initWithIdentifier:(CyberKit::DataTaskIdentifier)identifier session:(CyberKit::NetworkSessionCocoa&)session;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -76,7 +76,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, EarlyKVOCrash)
 {
@@ -96,4 +96,4 @@ TEST(CyberKitLegacy, EarlyKVOCrash)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

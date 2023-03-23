@@ -110,14 +110,14 @@ static ResolutionCategory resolutionCategory(const FloatSize& size)
     return ResolutionCategory::R_480p;
 }
 
-void registerWebKitVP9Decoder()
+void registerCyberKitVP9Decoder()
 {
-    LibWebRTCProvider::registerWebKitVP9Decoder();
+    LibWebRTCProvider::registerCyberKitVP9Decoder();
 }
 
-void registerWebKitVP8Decoder()
+void registerCyberKitVP8Decoder()
 {
-    LibWebRTCProvider::registerWebKitVP8Decoder();
+    LibWebRTCProvider::registerCyberKitVP8Decoder();
 }
 
 void registerSupplementalVP9Decoder()
@@ -736,7 +736,7 @@ Ref<VideoInfo> createVideoInfoFromVP8Header(const VP8FrameHeader& header, const 
 bool hasVP9ExtensionSupport()
 {
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/VP9UtilitiesCocoaAdditions.mm>
+#include <CyberKitAdditions/VP9UtilitiesCocoaAdditions.mm>
 #endif
 
     return false;

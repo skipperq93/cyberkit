@@ -32,7 +32,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include <CyberCore/CacheQueryOptions.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore::DOMCacheEngine;
 using namespace CacheStorage;
 

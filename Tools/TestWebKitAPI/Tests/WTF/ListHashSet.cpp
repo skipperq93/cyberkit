@@ -31,7 +31,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RefCounted.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_ListHashSet, RemoveFirst)
 {
@@ -537,4 +537,4 @@ TEST(WTF_ListHashSet, ClearsItemUponAssignment)
     EXPECT_EQ(0u, ListHashSetReferencedItem::instances().size());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

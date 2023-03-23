@@ -134,7 +134,7 @@ JSRetainPtr<JSStringRef> AccessibilityController::platformName()
 void AccessibilityController::updateIsolatedTreeMode()
 {
     // Override to set identifier to VoiceOver so that requests are handled in isolated mode.
-    _AXSetClientIdentificationOverride(m_accessibilityIsolatedTreeMode ? (AXClientType)kAXClientTypeWebKitTesting : kAXClientTypeNoActiveRequestFound);
+    _AXSetClientIdentificationOverride(m_accessibilityIsolatedTreeMode ? (AXClientType)kAXClientTypeCyberKitTesting : kAXClientTypeNoActiveRequestFound);
     _AXSSetIsolatedTreeMode(m_accessibilityIsolatedTreeMode ? AXSIsolatedTreeModeSecondaryThread : AXSIsolatedTreeModeOff);
     m_useMockAXThread = WKAccessibilityCanUseSecondaryAXThread(InjectedBundle::singleton().page()->page());
 }

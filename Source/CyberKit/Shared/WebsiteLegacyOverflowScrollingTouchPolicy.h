@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebsiteLegacyOverflowScrollingTouchPolicy : uint8_t {
     Default,

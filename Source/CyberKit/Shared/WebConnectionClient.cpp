@@ -30,7 +30,7 @@
 #include "WKSharedAPICast.h"
 #include "WebConnection.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebConnectionClient::didReceiveMessage(WebConnection* connection, const String& messageName, API::Object* messageBody)
 {
@@ -48,4 +48,4 @@ void WebConnectionClient::didClose(WebConnection* connection)
     m_client.didClose(toAPI(connection), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -49,7 +49,7 @@ class ResourceRequest;
 class FragmentedSharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 struct GlobalFrameID {
@@ -76,24 +76,24 @@ inline bool operator==(const GlobalFrameID& a, const GlobalFrameID& b)
 namespace WTF {
 
 struct GlobalFrameIDHash {
-    static unsigned hash(const WebKit::NetworkCache::GlobalFrameID& key) { return computeHash(key); }
-    static bool equal(const WebKit::NetworkCache::GlobalFrameID& a, const WebKit::NetworkCache::GlobalFrameID& b) { return a == b; }
+    static unsigned hash(const CyberKit::NetworkCache::GlobalFrameID& key) { return computeHash(key); }
+    static bool equal(const CyberKit::NetworkCache::GlobalFrameID& a, const CyberKit::NetworkCache::GlobalFrameID& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct HashTraits<WebKit::NetworkCache::GlobalFrameID> : GenericHashTraits<WebKit::NetworkCache::GlobalFrameID> {
-    static WebKit::NetworkCache::GlobalFrameID emptyValue() { return { }; }
+template<> struct HashTraits<CyberKit::NetworkCache::GlobalFrameID> : GenericHashTraits<CyberKit::NetworkCache::GlobalFrameID> {
+    static CyberKit::NetworkCache::GlobalFrameID emptyValue() { return { }; }
 
-    static void constructDeletedValue(WebKit::NetworkCache::GlobalFrameID& slot) { new (NotNull, &slot.webPageID) CyberCore::PageIdentifier(WTF::HashTableDeletedValue); }
+    static void constructDeletedValue(CyberKit::NetworkCache::GlobalFrameID& slot) { new (NotNull, &slot.webPageID) CyberCore::PageIdentifier(WTF::HashTableDeletedValue); }
 
-    static bool isDeletedValue(const WebKit::NetworkCache::GlobalFrameID& slot) { return slot.webPageID.isHashTableDeletedValue(); }
+    static bool isDeletedValue(const CyberKit::NetworkCache::GlobalFrameID& slot) { return slot.webPageID.isHashTableDeletedValue(); }
 };
 
-template<> struct DefaultHash<WebKit::NetworkCache::GlobalFrameID> : GlobalFrameIDHash { };
+template<> struct DefaultHash<CyberKit::NetworkCache::GlobalFrameID> : GlobalFrameIDHash { };
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 
@@ -243,4 +243,4 @@ private:
 };
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit

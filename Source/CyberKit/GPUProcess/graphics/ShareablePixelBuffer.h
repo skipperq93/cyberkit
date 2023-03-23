@@ -27,7 +27,7 @@
 
 #include <CyberCore/PixelBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedMemory;
 
@@ -45,4 +45,4 @@ private:
     Ref<SharedMemory> m_data;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

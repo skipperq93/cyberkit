@@ -40,7 +40,7 @@
 SOFT_LINK_LIBRARY(libAccessibility)
 SOFT_LINK_CONSTANT(libAccessibility, kAXSApplicationAccessibilityEnabledNotification, CFStringRef);
 
-TEST(WebKit, EnableAccessibilityCrash)
+TEST(CyberKit, EnableAccessibilityCrash)
 {
     {
         auto poolConfiguration = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -54,10 +54,10 @@ TEST(WebKit, EnableAccessibilityCrash)
 
 #if WK_HAVE_C_SPI
 
-TEST(WebKit, AccessibilityHasPreferencesServiceAccess)
+TEST(CyberKit, AccessibilityHasPreferencesServiceAccess)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
@@ -66,7 +66,7 @@ TEST(WebKit, AccessibilityHasPreferencesServiceAccess)
     [NSApp accessibilitySetEnhancedUserInterfaceAttribute:@(YES)];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.CyberKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
     };
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -81,10 +81,10 @@ TEST(WebKit, AccessibilityHasPreferencesServiceAccess)
 }
 
 #if ENABLE(CFPREFS_DIRECT_MODE)
-TEST(WebKit, AccessibilityHasNoPreferencesServiceAccessWhenPostingNotification)
+TEST(CyberKit, AccessibilityHasNoPreferencesServiceAccessWhenPostingNotification)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
@@ -93,7 +93,7 @@ TEST(WebKit, AccessibilityHasNoPreferencesServiceAccessWhenPostingNotification)
     [[NSNotificationCenter defaultCenter] postNotificationName:NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil userInfo:nil];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.CyberKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
     };
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -103,10 +103,10 @@ TEST(WebKit, AccessibilityHasNoPreferencesServiceAccessWhenPostingNotification)
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-TEST(WebKit, AccessibilityHasFrontboardServiceAccess)
+TEST(CyberKit, AccessibilityHasFrontboardServiceAccess)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
@@ -115,7 +115,7 @@ TEST(WebKit, AccessibilityHasFrontboardServiceAccess)
     [[NSNotificationCenter defaultCenter] postNotificationName:NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil userInfo:nil];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.CyberKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
     };
 
     ASSERT_TRUE(sandboxAccess());

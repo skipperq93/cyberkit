@@ -34,7 +34,7 @@
 #include <JavaScriptCore/OpaqueJSString.h>
 #include <CyberCore/AccessibilityAtspiEnums.h>
 #include <CyberCore/AccessibilityObjectAtspi.h>
-#include <WebKit/WKBundleFrame.h>
+#include <CyberKit/WKBundleFrame.h>
 #include <wtf/HashSet.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/URL.h>

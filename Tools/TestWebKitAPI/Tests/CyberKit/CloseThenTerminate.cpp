@@ -30,7 +30,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 static bool loaded;
 
@@ -42,7 +42,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
 // Test for https://webkit.org/b/115607
 // This tests that we don't crash when calling WKPageClose and WKPageTerminate.
 
-TEST(WebKit, CloseThenTerminate)
+TEST(CyberKit, CloseThenTerminate)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -64,6 +64,6 @@ TEST(WebKit, CloseThenTerminate)
     WKPageTerminate(webView.page());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

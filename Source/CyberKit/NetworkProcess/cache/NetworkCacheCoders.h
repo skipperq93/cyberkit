@@ -28,7 +28,7 @@
 
 #include <CyberCore/CyberCorePersistentCoders.h>
 
-namespace WebKit::NetworkCache {
+namespace CyberKit::NetworkCache {
 class Key;
 #if ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
 class SubresourceInfo;
@@ -43,9 +43,9 @@ template<> struct Coder<class> { \
     static std::optional<class> decode(Decoder&); \
 }
 
-DECLARE_CODER(WebKit::NetworkCache::Key);
+DECLARE_CODER(CyberKit::NetworkCache::Key);
 #if ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
-DECLARE_CODER(WebKit::NetworkCache::SubresourceInfo);
+DECLARE_CODER(CyberKit::NetworkCache::SubresourceInfo);
 #endif
 
 #undef DECLARE_CODER

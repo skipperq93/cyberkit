@@ -107,15 +107,15 @@ void CyberCoreReportThreadViolation(const char* function, CyberCore::ThreadViola
             break;
         case LogOnFirstThreadViolation:
             if (loggedFunctions.get().add(String::fromLatin1(function)).isNewEntry) {
-                NSLog(@"WebKit Threading Violation - %s called from secondary thread", function);
+                NSLog(@"CyberKit Threading Violation - %s called from secondary thread", function);
                 NSLog(@"Additional threading violations for this function will not be logged.");
             }
             break;
         case LogOnThreadViolation:
-            NSLog(@"WebKit Threading Violation - %s called from secondary thread", function);
+            NSLog(@"CyberKit Threading Violation - %s called from secondary thread", function);
             break;
         case RaiseExceptionOnThreadViolation:
-            [NSException raise:@"WebKitThreadingException" format:@"%s was called from a secondary thread", function];
+            [NSException raise:@"CyberKitThreadingException" format:@"%s was called from a secondary thread", function];
             break;
     }
 }

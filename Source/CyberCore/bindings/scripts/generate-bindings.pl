@@ -3,7 +3,7 @@
 # Copyright (C) 2005 Apple Inc.
 # Copyright (C) 2006 Anders Carlsson <andersca@mac.com>
 # 
-# This file is part of WebKit
+# This file is part of CyberKit
 # 
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Library General Public

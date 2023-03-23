@@ -41,7 +41,7 @@ struct SentPacket;
 typedef int64_t PacketTime;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LibWebRTCSocketClient final : public NetworkRTCProvider::Socket, public sigslot::has_slots<> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -72,6 +72,6 @@ private:
     int m_sendError { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

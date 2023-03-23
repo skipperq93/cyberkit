@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class VideoCodecType : uint8_t {
     H264,
@@ -36,18 +36,18 @@ enum class VideoCodecType : uint8_t {
     AV1
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::VideoCodecType> {
+template<> struct EnumTraits<CyberKit::VideoCodecType> {
     using values = EnumValues<
-        WebKit::VideoCodecType,
-        WebKit::VideoCodecType::H264,
-        WebKit::VideoCodecType::H265,
-        WebKit::VideoCodecType::VP9,
-        WebKit::VideoCodecType::AV1
+        CyberKit::VideoCodecType,
+        CyberKit::VideoCodecType::H264,
+        CyberKit::VideoCodecType::H265,
+        CyberKit::VideoCodecType::VP9,
+        CyberKit::VideoCodecType::AV1
     >;
 };
 

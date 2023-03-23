@@ -31,17 +31,17 @@
 
 WKTypeID WKGetTypeID(WKTypeRef typeRef)
 {
-    return WebKit::toAPI(WebKit::toImpl(typeRef)->type());
+    return CyberKit::toAPI(CyberKit::toImpl(typeRef)->type());
 }
 
 WKTypeRef WKRetain(WKTypeRef typeRef)
 {
-    WebKit::toImpl(typeRef)->ref();
+    CyberKit::toImpl(typeRef)->ref();
 
     return typeRef;
 }
 
 void WKRelease(WKTypeRef typeRef)
 {
-    WebKit::toImpl(typeRef)->deref();
+    CyberKit::toImpl(typeRef)->deref();
 }

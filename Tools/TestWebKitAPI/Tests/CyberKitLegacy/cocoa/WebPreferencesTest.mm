@@ -32,7 +32,7 @@ WTF_EXTERN_C_BEGIN
 WebCacheModel TestWebPreferencesCacheModelForMainBundle(NSString *bundleIdentifier);
 WTF_EXTERN_C_END
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, CacheModelForMainBundle)
 {

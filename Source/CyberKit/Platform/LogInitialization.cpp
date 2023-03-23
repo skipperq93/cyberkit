@@ -30,7 +30,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -46,7 +46,7 @@ public:
 private:
     String logLevelString() final
     {
-        return WebKit::logLevelString();
+        return CyberKit::logLevelString();
     }
 };
 
@@ -70,4 +70,4 @@ WTFLogChannel* getLogChannel(const String& name)
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-} // namespace WebKit
+} // namespace CyberKit

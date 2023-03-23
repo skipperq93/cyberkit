@@ -31,7 +31,7 @@
 #include "WebEventFactory.h"
 #include <CyberCore/GtkVersioning.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if USE(GTK4)
 #define constructNativeEvent(event) event
@@ -61,6 +61,6 @@ NativeWebKeyboardEvent::NativeWebKeyboardEvent(const NativeWebKeyboardEvent& eve
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef constructNativeEvent

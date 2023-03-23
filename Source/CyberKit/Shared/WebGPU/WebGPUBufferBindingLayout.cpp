@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUBufferBindingLayout.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<BufferBindingLayout> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::BufferBindingLayout& bufferBindingLayout)
 {
@@ -44,6 +44,6 @@ std::optional<PAL::WebGPU::BufferBindingLayout> ConvertFromBackingContext::conve
     return { { bufferBindingLayout.type, bufferBindingLayout.hasDynamicOffset, bufferBindingLayout.minBindingSize } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

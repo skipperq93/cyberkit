@@ -29,7 +29,7 @@
 #include <CyberCore/IDBConnectionToClient.h>
 #include <CyberCore/IDBConnectionToClientDelegate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class IDBStorageConnectionToClient final : public CyberCore::IDBServer::IDBConnectionToClientDelegate {
     WTF_MAKE_FAST_ALLOCATED;
@@ -74,4 +74,4 @@ private:
     Ref<CyberCore::IDBServer::IDBConnectionToClient> m_connectionToClient;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

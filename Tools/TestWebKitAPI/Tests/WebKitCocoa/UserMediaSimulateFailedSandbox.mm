@@ -34,7 +34,7 @@
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
@@ -94,7 +94,7 @@ public:
         wasPrompted = false;
         receivedScriptMessage = false;
         [m_webView loadTestPageNamed:@"disableGetUserMedia"];
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         EXPECT_STREQ([(NSString *)[lastScriptMessage body] UTF8String], message);
     }
 

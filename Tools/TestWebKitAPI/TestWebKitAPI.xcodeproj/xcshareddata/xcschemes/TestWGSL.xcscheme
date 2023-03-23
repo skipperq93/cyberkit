@@ -17,7 +17,7 @@
                BlueprintIdentifier = "3A15783C28D1505B00142DB1"
                BuildableName = "TestWGSL"
                BlueprintName = "TestWGSL"
-               ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+               ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "3A15783C28D1505B00142DB1"
             BuildableName = "TestWGSL"
             BlueprintName = "TestWGSL"
-            ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+            ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "3A15783C28D1505B00142DB1"
             BuildableName = "TestWGSL"
             BlueprintName = "TestWGSL"
-            ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+            ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

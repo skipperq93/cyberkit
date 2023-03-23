@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKitPlaybackTargetAvailabilityEvent.h"
+#include "CyberKitPlaybackTargetAvailabilityEvent.h"
 
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
@@ -33,7 +33,7 @@
 
 namespace WebCore {
 
-WTF_MAKE_ISO_ALLOCATED_IMPL(WebKitPlaybackTargetAvailabilityEvent);
+WTF_MAKE_ISO_ALLOCATED_IMPL(CyberKitPlaybackTargetAvailabilityEvent);
 
 static const AtomString& stringForPlaybackTargetAvailability(bool available)
 {
@@ -43,13 +43,13 @@ static const AtomString& stringForPlaybackTargetAvailability(bool available)
     return available ? availableString : notAvailableString;
 }
 
-WebKitPlaybackTargetAvailabilityEvent::WebKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, bool available)
+CyberKitPlaybackTargetAvailabilityEvent::CyberKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, bool available)
     : Event(eventType, CanBubble::No, IsCancelable::No)
     , m_availability(stringForPlaybackTargetAvailability(available))
 {
 }
 
-WebKitPlaybackTargetAvailabilityEvent::WebKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, const Init& initializer, IsTrusted isTrusted)
+CyberKitPlaybackTargetAvailabilityEvent::CyberKitPlaybackTargetAvailabilityEvent(const AtomString& eventType, const Init& initializer, IsTrusted isTrusted)
     : Event(eventType, initializer, isTrusted)
     , m_availability(initializer.availability)
 {

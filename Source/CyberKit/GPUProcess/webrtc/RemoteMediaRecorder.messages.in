@@ -24,15 +24,15 @@
 #if PLATFORM(COCOA) && ENABLE(GPU_PROCESS) && ENABLE(MEDIA_STREAM)
 
 messages -> RemoteMediaRecorder NotRefCounted {
-    AudioSamplesStorageChanged(WebKit::ConsumerSharedCARingBuffer::Handle storageHandle, CyberCore::CAAudioStreamDescription description)
+    AudioSamplesStorageChanged(CyberKit::ConsumerSharedCARingBuffer::Handle storageHandle, CyberCore::CAAudioStreamDescription description)
     AudioSamplesAvailable(MediaTime time, uint64_t numberOfFrames)
-    VideoFrameAvailable(struct WebKit::SharedVideoFrame frame)
+    VideoFrameAvailable(struct CyberKit::SharedVideoFrame frame)
     FetchData() -> (IPC::DataReference buffer, double timeCode)
     StopRecording() -> ()
     Pause() -> ()
     Resume() -> ()
     SetSharedVideoFrameSemaphore(IPC::Semaphore semaphore)
-    SetSharedVideoFrameMemory(WebKit::SharedMemory::Handle storageHandle)
+    SetSharedVideoFrameMemory(CyberKit::SharedMemory::Handle storageHandle)
 }
 
 #endif

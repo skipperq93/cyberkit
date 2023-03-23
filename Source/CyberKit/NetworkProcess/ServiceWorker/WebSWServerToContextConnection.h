@@ -51,7 +51,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkConnectionToWebProcess;
 class WebSWServerConnection;
@@ -118,7 +118,7 @@ private:
     size_t m_processingFunctionalEventCount { 0 };
 }; // class WebSWServerToContextConnection
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)
 

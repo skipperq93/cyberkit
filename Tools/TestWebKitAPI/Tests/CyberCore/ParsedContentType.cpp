@@ -31,7 +31,7 @@
 
 using namespace CyberCore;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(ParsedContentType, MimeSniff)
 {
@@ -303,4 +303,4 @@ TEST(ParsedContentType, Serialize)
     EXPECT_STREQ(serializeIfValid("text/plain;test={value}"_s), "text/plain;test=\"{value}\"");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

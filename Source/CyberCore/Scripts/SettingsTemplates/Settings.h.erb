@@ -40,8 +40,8 @@ public:
     WEBCORE_EXPORT static Ref<Settings> create(Page*);
     WEBCORE_EXPORT virtual ~Settings();
 
-    WEBCORE_EXPORT void disableUnstableFeaturesForModernWebKit();
-    WEBCORE_EXPORT static void disableGlobalUnstableFeaturesForModernWebKit();
+    WEBCORE_EXPORT void disableUnstableFeaturesForModernCyberKit();
+    WEBCORE_EXPORT static void disableGlobalUnstableFeaturesForModernCyberKit();
 
 <%- for @condition in @allSettingsSet.conditions do -%>
 <%- if @condition.condition -%>

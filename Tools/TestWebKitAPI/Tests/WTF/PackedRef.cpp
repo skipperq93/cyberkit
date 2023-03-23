@@ -29,7 +29,7 @@
 #include <wtf/PackedRef.h>
 #include <wtf/PackedRefPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_PackedRef, Basic)
 {
@@ -273,4 +273,4 @@ TEST(WTF_PackedRef, AssignBeforeDeref)
     EXPECT_STREQ("ref(a) | slot=c deref(a) | deref(c) ", takeLogStr().c_str());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

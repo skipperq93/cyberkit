@@ -29,7 +29,7 @@ namespace CyberCore {
 struct ResourceLoadStatistics;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum ResourceLoadPrevalence {
     Low = 1 << 0,

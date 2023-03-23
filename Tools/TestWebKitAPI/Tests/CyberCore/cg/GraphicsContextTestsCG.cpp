@@ -30,7 +30,7 @@
 #include <CyberCore/DestinationColorSpace.h>
 #include <CyberCore/GraphicsContextCG.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 
 constexpr CGFloat contextWidth = 1;
@@ -74,6 +74,6 @@ TEST(GraphicsContextTests, DrawNativeImageDoesNotLeakCompositeOperator)
     EXPECT_EQ(ctx.blendMode(), BlendMode::Normal);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(CG)

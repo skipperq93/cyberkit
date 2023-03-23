@@ -43,7 +43,7 @@ class LocalSampleBufferDisplayLayer;
 enum class VideoFrameRotation : uint16_t;
 };
 
-namespace WebKit {
+namespace CyberKit {
 class GPUConnectionToWebProcess;
 
 class RemoteSampleBufferDisplayLayer : public CyberCore::SampleBufferDisplayLayer::Client, public IPC::MessageReceiver, private IPC::MessageSender {

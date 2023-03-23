@@ -27,7 +27,7 @@
 
 #include "SharedStringHashTableReadOnly.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedStringHashTable : public SharedStringHashTableReadOnly {
 public:

@@ -31,7 +31,7 @@
 #include <CyberCore/ImageBufferAllocator.h>
 #include <CyberCore/ProcessIdentity.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ImageBufferShareableAllocator final : public CyberCore::ImageBufferAllocator {
 public:
@@ -46,6 +46,6 @@ private:
     const CyberCore::ProcessIdentity m_resourceOwner;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

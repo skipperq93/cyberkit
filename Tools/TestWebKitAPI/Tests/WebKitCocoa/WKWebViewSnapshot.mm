@@ -98,7 +98,7 @@ TEST(WKWebView, SnapshotImageError)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotImageEmptyRect)
@@ -125,7 +125,7 @@ TEST(WKWebView, SnapshotImageEmptyRect)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_EQ(pid, [webView _webProcessIdentifier]); // Make sure the WebProcess did not crash.
 }
 
@@ -151,7 +151,7 @@ TEST(WKWebView, SnapshotImageZeroWidth)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_EQ(pid, [webView _webProcessIdentifier]); // Make sure the WebProcess did not crash.
 }
 
@@ -179,7 +179,7 @@ TEST(WKWebView, SnapshotImageZeroSizeView)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_EQ(pid, [webView _webProcessIdentifier]); // Make sure the WebProcess did not crash.
 }
 
@@ -203,7 +203,7 @@ TEST(WKWebView, SnapshotImageZeroSizeViewNoConfiguration)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_EQ(pid, [webView _webProcessIdentifier]); // Make sure the WebProcess did not crash.
 }
 
@@ -229,7 +229,7 @@ TEST(WKWebView, SnapshotImageEmptyWithOutOfScopeCompletionHandler)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     EXPECT_NULL([snapshotWrapper error]);
 
@@ -303,7 +303,7 @@ TEST(WKWebView, SnapshotImageBaseCase)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotImageScale)
@@ -330,7 +330,7 @@ TEST(WKWebView, SnapshotImageScale)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotImageNilConfiguration)
@@ -351,7 +351,7 @@ TEST(WKWebView, SnapshotImageNilConfiguration)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotImageUninitializedConfiguration)
@@ -374,7 +374,7 @@ TEST(WKWebView, SnapshotImageUninitializedConfiguration)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotImageUninitializedSnapshotWidth)
@@ -398,7 +398,7 @@ TEST(WKWebView, SnapshotImageUninitializedSnapshotWidth)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotImageLargeAsyncDecoding)
@@ -407,7 +407,7 @@ TEST(WKWebView, SnapshotImageLargeAsyncDecoding)
     NSInteger viewHeight = 600;
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, viewWidth, viewHeight)]);
 
-    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"large-red-square-image" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"large-red-square-image" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
     [webView _test_waitForDidFinishNavigation];
 
@@ -451,7 +451,7 @@ TEST(WKWebView, SnapshotImageLargeAsyncDecoding)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotAfterScreenUpdates)
@@ -513,7 +513,7 @@ TEST(WKWebView, SnapshotAfterScreenUpdates)
         isDone = true;
     }];
     
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, SnapshotWithoutAfterScreenUpdates)
@@ -576,7 +576,7 @@ TEST(WKWebView, SnapshotWithoutAfterScreenUpdates)
         isDone = true;
     }];
     
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 // FIXME: Confirm that this works on iOS too.
@@ -635,7 +635,7 @@ TEST(WKWebView, SnapshotWebGL)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 #endif
 
@@ -684,6 +684,6 @@ TEST(WKWebView, SnapshotWithoutSelectionHighlighting)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 #endif

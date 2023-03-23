@@ -117,7 +117,7 @@ IGNORE_WARNINGS_END
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Test that tests behavior of UIWebView API with regards to WebGL:
 // 1) WebGL can be run on web thread.

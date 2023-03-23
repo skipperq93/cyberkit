@@ -58,7 +58,7 @@ public:
     virtual void beginDrag(DragItem, Frame&, const IntPoint&, const IntPoint&, DataTransfer&, DragSourceAction) { }
 
 #if PLATFORM(COCOA)
-    // Mac-specific helper function to allow access to web archives and NSPasteboard extras in WebKit.
+    // Mac-specific helper function to allow access to web archives and NSPasteboard extras in CyberKit.
     // This is not abstract as that would require another #if PLATFORM(COCOA) for the SVGImage client empty implentation.
     virtual void declareAndWriteDragImage(const String&, Element&, const URL&, const String&, Frame*) { }
 #endif

@@ -31,7 +31,7 @@
 #include "WebEventConversion.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // Represents the number of wheel events we can hold in the queue before we start pushing them preemptively.
 constexpr unsigned wheelEventQueueSizeThreshold = 10;
@@ -181,4 +181,4 @@ void WebWheelEventCoalescer::clear()
     m_eventsBeingProcessed.clear();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

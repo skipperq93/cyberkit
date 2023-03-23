@@ -38,7 +38,7 @@
 #include <CyberCore/GraphicsContextCG.h>
 #include <CyberCore/InMemoryDisplayList.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore;
 using DisplayList::DisplayList;
 using namespace DisplayList;
@@ -304,6 +304,6 @@ TEST(BifurcatedGraphicsContextTests, ApplyDeviceScaleFactor)
     EXPECT_EQ(primaryCTM.yScale(), 2);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(CG)

@@ -151,7 +151,7 @@
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
 #include "RemotePlayback.h"
-#include "WebKitPlaybackTargetAvailabilityEvent.h"
+#include "CyberKitPlaybackTargetAvailabilityEvent.h"
 #endif
 
 #if ENABLE(MEDIA_SOURCE)
@@ -165,8 +165,8 @@
 #endif
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
-#include "WebKitMediaKeyNeededEvent.h"
-#include "WebKitMediaKeys.h"
+#include "CyberKitMediaKeyNeededEvent.h"
+#include "CyberKitMediaKeys.h"
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA)
@@ -2955,14 +2955,14 @@ void HTMLMediaElement::mediaPlayerKeyNeeded(const SharedBuffer& initData)
         return;
     }
 
-    WebKitMediaKeyNeededEvent::Init init;
+    CyberKitMediaKeyNeededEvent::Init init;
 
     if (auto initDataBuffer = initData.tryCreateArrayBuffer()) {
         auto byteLength = initDataBuffer->byteLength();
         init.initData = Uint8Array::tryCreate(initDataBuffer.releaseNonNull(), 0, byteLength);
     }
 
-    auto event = WebKitMediaKeyNeededEvent::create(eventNames().webkitneedkeyEvent, init);
+    auto event = CyberKitMediaKeyNeededEvent::create(eventNames().webkitneedkeyEvent, init);
     scheduleEvent(WTFMove(event));
 }
 
@@ -2979,7 +2979,7 @@ String HTMLMediaElement::mediaPlayerMediaKeysStorageDirectory() const
     return FileSystem::pathByAppendingComponent(storageDirectory, document().securityOrigin().data().databaseIdentifier());
 }
 
-void HTMLMediaElement::webkitSetMediaKeys(WebKitMediaKeys* mediaKeys)
+void HTMLMediaElement::webkitSetMediaKeys(CyberKitMediaKeys* mediaKeys)
 {
     if (!document().settings().legacyEncryptedMediaAPIEnabled())
         return;
@@ -6459,7 +6459,7 @@ void HTMLMediaElement::enqueuePlaybackTargetAvailabilityChangedEvent(EnqueueBeha
     ALWAYS_LOG(LOGIDENTIFIER, "hasTargets = ", hasTargets);
     m_lastTargetAvailabilityEventState = hasTargets;
 #if ENABLE(WIRELESS_PLAYBACK_TARGET_AVAILABILITY_API)
-    auto event = WebKitPlaybackTargetAvailabilityEvent::create(eventNames().webkitplaybacktargetavailabilitychangedEvent, hasTargets);
+    auto event = CyberKitPlaybackTargetAvailabilityEvent::create(eventNames().webkitplaybacktargetavailabilitychangedEvent, hasTargets);
     scheduleEvent(WTFMove(event));
 #endif
     scheduleUpdateMediaState();

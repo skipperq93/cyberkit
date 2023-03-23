@@ -21,6 +21,6 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::CommandBufferDescriptor : WebKit::WebGPU::ObjectDescriptorBase {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::CommandBufferDescriptor : CyberKit::WebGPU::ObjectDescriptorBase {
 };
 #endif

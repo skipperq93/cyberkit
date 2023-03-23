@@ -42,12 +42,12 @@ export function isASCII(string)
     return /^[\u0000-\u007F]*$/.test(string);
 }
 
-export function rootDirectoryOfWebKitBot()
+export function rootDirectoryOfCyberKitBot()
 {
     return path.dirname(new URL(import.meta.url).pathname);
 }
 
-export function rootDirectoryOfWebKit()
+export function rootDirectoryOfCyberKit()
 {
-    return path.resolve(rootDirectoryOfWebKitBot(), "..", "..", "..");
+    return path.resolve(rootDirectoryOfCyberKitBot(), "..", "..", "..");
 }

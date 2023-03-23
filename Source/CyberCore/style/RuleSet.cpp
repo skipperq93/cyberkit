@@ -176,8 +176,8 @@ void RuleSet::addRule(RuleData&& ruleData, CascadeLayerIdentifier cascadeLayerId
             break;
         case CSSSelector::PseudoElement:
             switch (selector->pseudoElementType()) {
-            case CSSSelector::PseudoElementWebKitCustom:
-            case CSSSelector::PseudoElementWebKitCustomLegacyPrefixed:
+            case CSSSelector::PseudoElementCyberKitCustom:
+            case CSSSelector::PseudoElementCyberKitCustomLegacyPrefixed:
                 customPseudoElementSelector = selector;
                 break;
             case CSSSelector::PseudoElementSlotted:

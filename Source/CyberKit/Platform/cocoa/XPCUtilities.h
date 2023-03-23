@@ -27,7 +27,7 @@
 
 #include <wtf/spi/darwin/XPCSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class ReasonCode : uint64_t {
     WatchdogTimerFired,

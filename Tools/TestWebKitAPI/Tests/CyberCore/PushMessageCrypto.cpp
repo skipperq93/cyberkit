@@ -31,7 +31,7 @@
 #include <CyberCore/PushMessageCrypto.h>
 #include <wtf/text/Base64.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 using namespace CyberCore::PushCrypto;
 
 static Vector<uint8_t> mustBase64URLDecode(const String& encoded)

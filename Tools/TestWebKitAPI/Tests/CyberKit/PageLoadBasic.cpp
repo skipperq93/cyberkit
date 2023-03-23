@@ -32,7 +32,7 @@
 #include "Test.h"
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool test1Done;
 
@@ -104,7 +104,7 @@ static void decidePolicyForResponse(WKPageRef page, WKNavigationResponseRef navi
     WKFramePolicyListenerUse(listener);
 }
 
-TEST(WebKit, PageLoadBasic)
+TEST(CyberKit, PageLoadBasic)
 {
     State state;
 
@@ -138,7 +138,7 @@ TEST(WebKit, PageLoadBasic)
     Util::run(&test1Done);
 }
 
-TEST(WebKit, PageReload)
+TEST(CyberKit, PageReload)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -158,7 +158,7 @@ TEST(WebKit, PageReload)
     EXPECT_TRUE(WKURLIsEqual(activeUrl.get(), url.get()));
 }
 
-TEST(WebKit, PageLoadTwiceAndReload)
+TEST(CyberKit, PageLoadTwiceAndReload)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -191,6 +191,6 @@ TEST(WebKit, PageLoadTwiceAndReload)
     Util::run(&test1Done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

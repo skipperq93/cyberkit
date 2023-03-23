@@ -13,7 +13,7 @@ function openIDBAsync() {
 }
 
 // This creates a hanging cursor that doesn't let go of its associated
-// read transaction until the next count() call in older WebKits (202137).
+// read transaction until the next count() call in older CyberKits (202137).
 function countAsync(db) {
     let txn;
     let txnPromise = new Promise((resolve, reject) => {

@@ -29,7 +29,7 @@ import util from "util";
 import {execFile, spawn} from "child_process";
 import SlackRTMAPI from "@slack/rtm-api";
 import AsyncTaskQueue from "./AsyncTaskQueue.mjs";
-import {dataLogLn, escapeForSlackText, isASCII, rootDirectoryOfWebKit} from "./Utility.mjs";
+import {dataLogLn, escapeForSlackText, isASCII, rootDirectoryOfCyberKit} from "./Utility.mjs";
 
 const defaultTaskLimit = 10;
 const defaultPullPeriod = 60 * 1000 * 60;
@@ -128,7 +128,7 @@ export function extractTextIfMentioned(text, id)
     return text;
 }
 
-export default class WebKitBot {
+export default class CyberKitBot {
     constructor(webClient, auth)
     {
         this._taskQueue = new AsyncTaskQueue(defaultTaskLimit);
@@ -154,12 +154,12 @@ e.g. \`dry-revert 260220 Ensure it is working after refactoring\`
             operation: this.dryRevertCommand.bind(this),
         });
         this._commands.set("ping", {
-            description: "Responds with pong to check if WebKitBot is alive/working",
+            description: "Responds with pong to check if CyberKitBot is alive/working",
             usage: "`ping`",
             operation: this.pingCommand.bind(this),
         });
         this._commands.set("pull", {
-            description: "Pulls the latest checkout of WebKit checkout for reverting queue.",
+            description: "Pulls the latest checkout of CyberKit checkout for reverting queue.",
             usage: "`pull`",
             operation: this.pullCommand.bind(this),
         });
@@ -336,7 +336,7 @@ ${escapeForSlackText(stderr)}\`\`\`` : ""),
     {
         await this._web.chat.postMessage({
             channel: event.channel,
-            text: `<@${event.user}> Preparing pulling the latest WebKit checkout.`,
+            text: `<@${event.user}> Preparing pulling the latest CyberKit checkout.`,
         });
         await this._taskQueue.postOrFailWhenExceedingLimit({
             command: "pull",
@@ -417,7 +417,7 @@ Type \`help COMMAND\` for help on my individual commands.`,
         });
     }
 
-    execInWebKitDirectorySimple(command, args)
+    execInCyberKitDirectorySimple(command, args)
     {
         return new Promise((resolve, reject) => {
             let task = spawn(command, args, {
@@ -437,22 +437,22 @@ Type \`help COMMAND\` for help on my individual commands.`,
     async cleanUpWorkingCopy()
     {
         dataLogLn("1. Resetting");
-        await this.execInWebKitDirectorySimple("git", ["reset", "--hard"]);
+        await this.execInCyberKitDirectorySimple("git", ["reset", "--hard"]);
 
         dataLogLn("2. Cleaning");
-        await this.execInWebKitDirectorySimple("git", ["clean", "-df"]);
+        await this.execInCyberKitDirectorySimple("git", ["clean", "-df"]);
 
         dataLogLn("3. Fetching");
-        await this.execInWebKitDirectorySimple("git", ["fetch", "origin"]);
+        await this.execInCyberKitDirectorySimple("git", ["fetch", "origin"]);
 
         dataLogLn("4. Checkout out origin/main");
-        await this.execInWebKitDirectorySimple("git", ["checkout", "origin/main", "-f"]);
+        await this.execInCyberKitDirectorySimple("git", ["checkout", "origin/main", "-f"]);
 
         dataLogLn("5. Deleting local 'main' ref");
-        await this.execInWebKitDirectorySimple("git", ["branch", "-D", "main"]);
+        await this.execInCyberKitDirectorySimple("git", ["branch", "-D", "main"]);
 
         dataLogLn("6. Creating local 'main' ref");
-        await this.execInWebKitDirectorySimple("git", ["checkout", "origin/main", "-b", "main"]);
+        await this.execInCyberKitDirectorySimple("git", ["checkout", "origin/main", "-b", "main"]);
     }
 
     async generateRevertingPatch(revisions, reason)
@@ -468,7 +468,7 @@ Type \`help COMMAND\` for help on my individual commands.`,
         dataLogLn("7. Creating revert patch ", revisions, reason);
         let results;
         try {
-            const webkitPatchPath = path.resolve("BotWebKit", "Tools", "Scripts", "webkit-patch");
+            const webkitPatchPath = path.resolve("BotCyberKit", "Tools", "Scripts", "webkit-patch");
             results = await execFileAsync(webkitPatchPath, [
                 "create-revert",
                 "--force-clean",
@@ -528,14 +528,14 @@ Type \`help COMMAND\` for help on my individual commands.`,
 
     static async create(webClient, auth)
     {
-        let bot = new WebKitBot(webClient, auth);
+        let bot = new CyberKitBot(webClient, auth);
         await bot._rtm.start();
         return bot;
     }
 
     static async main(webClient, auth)
     {
-        let bot = await WebKitBot.create(webClient, auth);
+        let bot = await CyberKitBot.create(webClient, auth);
         while (true) {
             let {task, resolve, reject} = await bot._taskQueue.take();
             try {

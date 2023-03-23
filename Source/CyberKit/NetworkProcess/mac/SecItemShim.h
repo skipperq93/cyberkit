@@ -27,12 +27,12 @@
 
 #if ENABLE(SEC_ITEM_SHIM)
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 
 void initializeSecItemShim(NetworkProcess&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SEC_ITEM_SHIM)

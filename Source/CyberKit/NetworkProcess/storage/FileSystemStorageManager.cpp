@@ -30,7 +30,7 @@
 #include "FileSystemStorageHandleRegistry.h"
 #include "WebFileSystemStorageConnectionMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 FileSystemStorageManager::FileSystemStorageManager(String&& path, FileSystemStorageHandleRegistry& registry, QuotaCheckFunction&& quotaCheckFunction)
     : m_path(WTFMove(path))
@@ -198,4 +198,4 @@ void FileSystemStorageManager::requestSpace(uint64_t size, CompletionHandler<voi
     m_quotaCheckFunction(size, WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

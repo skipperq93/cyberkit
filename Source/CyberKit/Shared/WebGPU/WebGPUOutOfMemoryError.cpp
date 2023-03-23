@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPUOutOfMemoryError.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<OutOfMemoryError> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::OutOfMemoryError& outOfMemoryError)
 {
@@ -44,6 +44,6 @@ RefPtr<PAL::WebGPU::OutOfMemoryError> ConvertFromBackingContext::convertFromBack
     return { PAL::WebGPU::OutOfMemoryError::create() };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

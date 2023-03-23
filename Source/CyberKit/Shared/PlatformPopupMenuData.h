@@ -30,11 +30,11 @@
 #include <CyberCore/PopupMenuStyle.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct PlatformPopupMenuData {
 #if PLATFORM(COCOA)
-    WebKit::FontInfo fontInfo;
+    CyberKit::FontInfo fontInfo;
     bool shouldPopOver { false };
     bool hideArrows { false };
     CyberCore::PopupMenuStyle::PopupMenuSize menuSize { CyberCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeNormal };
@@ -50,4 +50,4 @@ struct PlatformPopupMenuData {
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -31,7 +31,7 @@
 #include <CyberCore/SWOriginStore.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebSWServerConnection;
 
@@ -58,6 +58,6 @@ private:
     WeakHashSet<WebSWServerConnection> m_webSWServerConnections;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

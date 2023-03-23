@@ -42,7 +42,7 @@
 #import <wtf/ProcessPrivilege.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void GPUProcess::initializeProcess(const AuxiliaryProcessInitializationParameters&)
@@ -78,7 +78,7 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
     CyberCore::registerVorbisDecoderIfNeeded();
 #endif
 
-    sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.apple.WebKit.GPUProcess" ofType:@"sb"]);
+    sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.apple.CyberKit.GPUProcess" ofType:@"sb"]);
 
     AuxiliaryProcess::initializeSandbox(parameters, sandboxParameters);
 }
@@ -118,6 +118,6 @@ void GPUProcess::enablePowerLogging(SandboxExtension::Handle&& handle)
 }
 #endif // HAVE(POWERLOG_TASK_MODE_QUERY)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && (PLATFORM(MAC) || PLATFORM(MACCATALYST))

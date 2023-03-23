@@ -33,7 +33,7 @@
 extern "C" WTF_EXPORT_DECLARATION
 void WKBundleInitialize(WKBundleRef bundle, WKTypeRef initializationUserData)
 {
-    TestWebKitAPI::InjectedBundleController::singleton().initialize(bundle, initializationUserData);
+    TestCyberKitAPI::InjectedBundleController::singleton().initialize(bundle, initializationUserData);
 }
 
 #endif

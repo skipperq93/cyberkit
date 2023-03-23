@@ -37,7 +37,7 @@
 #include <CyberCore/TextureMapperLayer.h>
 #include <wtf/Atomics.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 CoordinatedGraphicsScene::CoordinatedGraphicsScene(CoordinatedGraphicsSceneClient* client)
@@ -489,6 +489,6 @@ void CoordinatedGraphicsScene::detach()
     m_client = nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

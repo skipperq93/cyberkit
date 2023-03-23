@@ -32,7 +32,7 @@
 #include "WebGPUConvertToBackingContext.h"
 #include <pal/graphics/WebGPU/WebGPURenderPipelineDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 std::optional<RenderPipelineDescriptor> ConvertToBackingContext::convertToBacking(const PAL::WebGPU::RenderPipelineDescriptor& renderPipelineDescriptor)
 {
@@ -119,6 +119,6 @@ std::optional<PAL::WebGPU::RenderPipelineDescriptor> ConvertFromBackingContext::
     return { { WTFMove(*base), WTFMove(*vertex), WTFMove(primitive), WTFMove(depthStencil), WTFMove(multisample), WTFMove(fragment) } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

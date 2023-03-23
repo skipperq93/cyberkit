@@ -90,7 +90,7 @@
 "sunspider-3d-morph": {
 	file: "sunspider-3d-morph.html",
 	name: "3D Mesh Transformation",
-	origin: ["WebKit", "http://webkit.org/misc/morph.html"],
+	origin: ["CyberKit", "http://webkit.org/misc/morph.html"],
 	desc: "Transforming the points of a matrix. No visual output.",
 	category: "SunSpider JavaScript Tests",
 	tags: ["array", "looping", "math"]

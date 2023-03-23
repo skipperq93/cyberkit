@@ -44,7 +44,7 @@
 #include <wtf/Box.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedMemory;
 

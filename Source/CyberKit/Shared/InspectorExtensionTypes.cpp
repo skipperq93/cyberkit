@@ -51,6 +51,6 @@ WTF::String extensionErrorToString(ExtensionError error)
     return "InternalError"_s;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

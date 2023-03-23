@@ -43,7 +43,7 @@ void AccessibilityObjectWrapper::accessibilityAttributeValue(const AtomString& a
 
     m_object->updateBackingStore();
 
-    // Not a real concept on Windows, but used heavily in WebKit accessibility testing.
+    // Not a real concept on Windows, but used heavily in CyberKit accessibility testing.
     if (attributeName == "AXTitleUIElementAttribute"_s) {
         if (auto* object = m_object->titleUIElement()) {
             ASSERT(V_VT(result) == VT_EMPTY);

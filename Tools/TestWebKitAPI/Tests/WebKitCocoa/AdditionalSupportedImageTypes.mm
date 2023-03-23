@@ -41,7 +41,7 @@ static void runTest(NSArray<NSString *> *additionalSupportedImageTypes, NSString
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:imageURL withExtension:imageExtension subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:imageURL withExtension:imageExtension subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
     [webView _test_waitForDidFinishNavigation];
 
@@ -53,35 +53,35 @@ static void runTest(NSArray<NSString *> *additionalSupportedImageTypes, NSString
             isDone = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
-TEST(WebKit, AddSupportedImageType)
+TEST(CyberKit, AddSupportedImageType)
 {
     runTest(@[@"public.png"], @"400x400-green", @"png", 400);
 }
 
-TEST(WebKit, AddSupportedAndBogusImageTypes)
+TEST(CyberKit, AddSupportedAndBogusImageTypes)
 {
     runTest(@[@"public.png", @"public.bogus"], @"400x400-green", @"png", 400);
 }
 
-TEST(WebKit, AddSupportedAndBogusImageTypesTwice)
+TEST(CyberKit, AddSupportedAndBogusImageTypesTwice)
 {
     runTest(@[@"public.png", @"public.bogus", @"public.png", @"public.bogus"], @"400x400-green", @"png", 400);
 }
 
-TEST(WebKit, AddUnsupportedImageType)
+TEST(CyberKit, AddUnsupportedImageType)
 {
     runTest(@[@"com.truevision.tga-image"], @"100x100-red", @"tga", 100);
 }
 
-TEST(WebKit, AddUnsupportedAndBogusImageTypes)
+TEST(CyberKit, AddUnsupportedAndBogusImageTypes)
 {
     runTest(@[@"com.truevision.tga-image", @"public.bogus"], @"100x100-red", @"tga", 100);
 }
 
-TEST(WebKit, AddUnsupportedAndBogusImageTypesTwice)
+TEST(CyberKit, AddUnsupportedAndBogusImageTypesTwice)
 {
     runTest(@[@"com.truevision.tga-image", @"public.bogus", @"com.truevision.tga-image", @"public.bogus"], @"100x100-red", @"tga", 100);
 }

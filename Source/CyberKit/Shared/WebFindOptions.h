@@ -28,7 +28,7 @@
 #include <CyberCore/FindOptions.h>
 #include <wtf/EnumTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class FindOptions : uint16_t {
     CaseInsensitive = 1 << 0,
@@ -52,33 +52,33 @@ enum class FindDecorationStyle : uint8_t {
 
 CyberCore::FindOptions core(OptionSet<FindOptions>);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::FindOptions> {
+template<> struct EnumTraits<CyberKit::FindOptions> {
     using values = EnumValues<
-        WebKit::FindOptions,
-        WebKit::FindOptions::CaseInsensitive,
-        WebKit::FindOptions::AtWordStarts,
-        WebKit::FindOptions::TreatMedialCapitalAsWordStart,
-        WebKit::FindOptions::Backwards,
-        WebKit::FindOptions::WrapAround,
-        WebKit::FindOptions::ShowOverlay,
-        WebKit::FindOptions::ShowFindIndicator,
-        WebKit::FindOptions::ShowHighlight,
-        WebKit::FindOptions::DetermineMatchIndex,
-        WebKit::FindOptions::NoIndexChange,
-        WebKit::FindOptions::AtWordEnds
+        CyberKit::FindOptions,
+        CyberKit::FindOptions::CaseInsensitive,
+        CyberKit::FindOptions::AtWordStarts,
+        CyberKit::FindOptions::TreatMedialCapitalAsWordStart,
+        CyberKit::FindOptions::Backwards,
+        CyberKit::FindOptions::WrapAround,
+        CyberKit::FindOptions::ShowOverlay,
+        CyberKit::FindOptions::ShowFindIndicator,
+        CyberKit::FindOptions::ShowHighlight,
+        CyberKit::FindOptions::DetermineMatchIndex,
+        CyberKit::FindOptions::NoIndexChange,
+        CyberKit::FindOptions::AtWordEnds
     >;
 };
 
-template<> struct EnumTraits<WebKit::FindDecorationStyle> {
+template<> struct EnumTraits<CyberKit::FindDecorationStyle> {
     using values = EnumValues<
-        WebKit::FindDecorationStyle,
-        WebKit::FindDecorationStyle::Normal,
-        WebKit::FindDecorationStyle::Found,
-        WebKit::FindDecorationStyle::Highlighted
+        CyberKit::FindDecorationStyle,
+        CyberKit::FindDecorationStyle::Normal,
+        CyberKit::FindDecorationStyle::Found,
+        CyberKit::FindDecorationStyle::Highlighted
     >;
 };
 

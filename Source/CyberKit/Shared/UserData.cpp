@@ -51,7 +51,7 @@
 #include "ObjCObjectGraph.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 UserData::UserData()
 {
@@ -513,4 +513,4 @@ bool UserData::decode(IPC::Decoder& decoder, RefPtr<API::Object>& result)
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

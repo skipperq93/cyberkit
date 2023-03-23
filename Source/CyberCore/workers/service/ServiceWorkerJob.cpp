@@ -131,7 +131,7 @@ ResourceError ServiceWorkerJob::validateServiceWorkerResponse(const ServiceWorke
 {
     // Extract a MIME type from the response's header list. If this MIME type (ignoring parameters) is not a JavaScript MIME type, then:
     if (!MIMETypeRegistry::isSupportedJavaScriptMIMEType(response.mimeType()))
-        return { errorDomainWebKitInternal, 0, response.url(), "MIME Type is not a JavaScript MIME type"_s };
+        return { errorDomainCyberKitInternal, 0, response.url(), "MIME Type is not a JavaScript MIME type"_s };
 
     auto serviceWorkerAllowed = response.httpHeaderField(HTTPHeaderName::ServiceWorkerAllowed);
     String maxScopeString;
@@ -147,7 +147,7 @@ ResourceError ServiceWorkerJob::validateServiceWorkerResponse(const ServiceWorke
 
     auto scopeString = jobData.scopeURL.path();
     if (maxScopeString.isNull() || !scopeString.startsWith(maxScopeString))
-        return { errorDomainWebKitInternal, 0, response.url(), "Scope URL should start with the given script URL"_s };
+        return { errorDomainCyberKitInternal, 0, response.url(), "Scope URL should start with the given script URL"_s };
 
     return { };
 }

@@ -40,7 +40,7 @@ struct WorkerFetchResult;
 struct WorkerOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 class NetworkSession;
@@ -85,4 +85,4 @@ private:
     CyberCore::ProcessIdentifier m_webProcessIdentifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

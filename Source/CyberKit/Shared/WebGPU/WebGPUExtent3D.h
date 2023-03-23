@@ -32,7 +32,7 @@
 #include <variant>
 #include <wtf/Vector.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct Extent3DDict {
     PAL::WebGPU::IntegerCoordinate width { 0 };
@@ -42,6 +42,6 @@ struct Extent3DDict {
 
 using Extent3D = std::variant<Vector<PAL::WebGPU::IntegerCoordinate>, Extent3DDict>;
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

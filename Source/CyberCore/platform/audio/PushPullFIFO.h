@@ -33,7 +33,7 @@ namespace CyberCore {
 class AudioBus;
 
 // PushPullFIFO class is an intermediate audio sample storage between
-// WebKit-WebAudio and the renderer. The renderer's hardware callback buffer size
+// CyberKit-WebAudio and the renderer. The renderer's hardware callback buffer size
 // varies on the platform, but the WebAudio always renders 128 frames (render
 // quantum, RQ) thus FIFO is needed to handle the general case.
 class PushPullFIFO {

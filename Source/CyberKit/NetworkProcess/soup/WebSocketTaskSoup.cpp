@@ -40,7 +40,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline bool isConnectionError(GError* error, SoupMessage* message)
 {
@@ -152,7 +152,7 @@ void WebSocketTask::didConnect(GRefPtr<SoupWebsocketConnection>&& connection)
     m_connection = WTFMove(connection);
 
 #if SOUP_CHECK_VERSION(2, 56, 0)
-    // Use the same maximum payload length as WebKit internal implementation for backwards compatibility.
+    // Use the same maximum payload length as CyberKit internal implementation for backwards compatibility.
     static const uint64_t maxPayloadLength = UINT64_C(0x7FFFFFFFFFFFFFFF);
     soup_websocket_connection_set_max_incoming_payload_size(m_connection.get(), maxPayloadLength);
 #endif
@@ -294,4 +294,4 @@ void WebSocketTask::delayFailTimerFired()
     didFail(WTFMove(m_delayErrorMessage));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

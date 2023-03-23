@@ -69,7 +69,7 @@ struct PendingReply {
 };
 
 @implementation _WKRemoteObjectRegistry {
-    std::unique_ptr<WebKit::RemoteObjectRegistry> _remoteObjectRegistry;
+    std::unique_ptr<CyberKit::RemoteObjectRegistry> _remoteObjectRegistry;
 
     RetainPtr<NSMapTable> _remoteObjectProxies;
     HashMap<String, std::pair<RetainPtr<id>, RetainPtr<_WKRemoteObjectInterface>>> _exportedObjects;
@@ -106,22 +106,22 @@ struct PendingReply {
     return remoteObject.autorelease();
 }
 
-- (id)_initWithWebPage:(NakedRef<WebKit::WebPage>)page
+- (id)_initWithWebPage:(NakedRef<CyberKit::WebPage>)page
 {
     if (!(self = [super init]))
         return nil;
 
-    _remoteObjectRegistry = makeUnique<WebKit::WebRemoteObjectRegistry>(self, page.get());
+    _remoteObjectRegistry = makeUnique<CyberKit::WebRemoteObjectRegistry>(self, page.get());
 
     return self;
 }
 
-- (id)_initWithWebPageProxy:(NakedRef<WebKit::WebPageProxy>)page
+- (id)_initWithWebPageProxy:(NakedRef<CyberKit::WebPageProxy>)page
 {
     if (!(self = [super init]))
         return nil;
 
-    _remoteObjectRegistry = makeUnique<WebKit::UIRemoteObjectRegistry>(self, page.get());
+    _remoteObjectRegistry = makeUnique<CyberKit::UIRemoteObjectRegistry>(self, page.get());
 
     return self;
 }
@@ -140,7 +140,7 @@ static uint64_t generateReplyIdentifier()
 
 - (void)_sendInvocation:(NSInvocation *)invocation interface:(_WKRemoteObjectInterface *)interface
 {
-    std::unique_ptr<WebKit::RemoteObjectInvocation::ReplyInfo> replyInfo;
+    std::unique_ptr<CyberKit::RemoteObjectInvocation::ReplyInfo> replyInfo;
 
     NSMethodSignature *methodSignature = invocation.methodSignature;
     for (NSUInteger i = 0, count = methodSignature.numberOfArguments; i < count; ++i) {
@@ -162,7 +162,7 @@ static uint64_t generateReplyIdentifier()
         if (strcmp([NSMethodSignature signatureWithObjCTypes:replyBlockSignature].methodReturnType, "v"))
             [NSException raise:NSInvalidArgumentException format:@"Return value of block argument must be 'void'. (%s)", sel_getName(invocation.selector)];
 
-        replyInfo = makeUnique<WebKit::RemoteObjectInvocation::ReplyInfo>(generateReplyIdentifier(), String::fromLatin1(replyBlockSignature));
+        replyInfo = makeUnique<CyberKit::RemoteObjectInvocation::ReplyInfo>(generateReplyIdentifier(), String::fromLatin1(replyBlockSignature));
 
         // Replace the block object so we won't try to encode it.
         id null = nullptr;
@@ -179,10 +179,10 @@ static uint64_t generateReplyIdentifier()
     if (!_remoteObjectRegistry)
         return;
 
-    _remoteObjectRegistry->sendInvocation(WebKit::RemoteObjectInvocation(interface.identifier, [encoder rootObjectDictionary], WTFMove(replyInfo)));
+    _remoteObjectRegistry->sendInvocation(CyberKit::RemoteObjectInvocation(interface.identifier, [encoder rootObjectDictionary], WTFMove(replyInfo)));
 }
 
-- (WebKit::RemoteObjectRegistry&)remoteObjectRegistry
+- (CyberKit::RemoteObjectRegistry&)remoteObjectRegistry
 {
     return *_remoteObjectRegistry;
 }
@@ -207,7 +207,7 @@ static NSString *replyBlockSignature(Protocol *protocol, SEL selector, NSUIntege
     return [targetMethodSignature _signatureForBlockAtArgumentIndex:blockIndex]._typeString;
 }
 
-- (void)_invokeMethod:(const WebKit::RemoteObjectInvocation&)remoteObjectInvocation
+- (void)_invokeMethod:(const CyberKit::RemoteObjectInvocation&)remoteObjectInvocation
 {
     auto& interfaceIdentifier = remoteObjectInvocation.interfaceIdentifier();
     auto* encodedInvocation = remoteObjectInvocation.encodedInvocation();
@@ -256,7 +256,7 @@ static NSString *replyBlockSignature(Protocol *protocol, SEL selector, NSUIntege
             return;
         }
 
-        if (!WebKit::methodSignaturesAreCompatible(wireBlockSignature, expectedBlockSignature)) {
+        if (!CyberKit::methodSignaturesAreCompatible(wireBlockSignature, expectedBlockSignature)) {
             NSLog(@"_invokeMethod: Failed to validate reply block signature: %@ != %@", wireBlockSignature, expectedBlockSignature);
             ASSERT_NOT_REACHED();
             return;
@@ -303,7 +303,7 @@ static NSString *replyBlockSignature(Protocol *protocol, SEL selector, NSUIntege
             [encoder encodeObject:invocation forKey:invocationKey];
 
             if (remoteObjectRegistry->_remoteObjectRegistry)
-                remoteObjectRegistry->_remoteObjectRegistry->sendReplyBlock(replyID, WebKit::UserData([encoder rootObjectDictionary]));
+                remoteObjectRegistry->_remoteObjectRegistry->sendReplyBlock(replyID, CyberKit::UserData([encoder rootObjectDictionary]));
             checker->didCallReplyBlock();
         });
 
@@ -325,7 +325,7 @@ static NSString *replyBlockSignature(Protocol *protocol, SEL selector, NSUIntege
     }
 }
 
-- (void)_callReplyWithID:(uint64_t)replyID blockInvocation:(const WebKit::UserData&)blockInvocation
+- (void)_callReplyWithID:(uint64_t)replyID blockInvocation:(const CyberKit::UserData&)blockInvocation
 {
     auto encodedInvocation = blockInvocation.object();
     if (!encodedInvocation || encodedInvocation->type() != API::Object::Type::Dictionary)

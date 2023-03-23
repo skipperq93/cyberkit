@@ -35,7 +35,7 @@
 #include <wtf/URLHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class PrefetchCache {
     WTF_MAKE_NONCOPYABLE(PrefetchCache);
@@ -76,4 +76,4 @@ private:
     CyberCore::Timer m_expirationTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

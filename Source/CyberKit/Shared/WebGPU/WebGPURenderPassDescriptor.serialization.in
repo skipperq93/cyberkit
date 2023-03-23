@@ -21,10 +21,10 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::RenderPassDescriptor : WebKit::WebGPU::ObjectDescriptorBase {
-    Vector<std::optional<WebKit::WebGPU::RenderPassColorAttachment>> colorAttachments;
-    std::optional<WebKit::WebGPU::RenderPassDepthStencilAttachment> depthStencilAttachment;
-    std::optional<WebKit::WebGPUIdentifier> occlusionQuerySet;
-    WebKit::WebGPU::RenderPassTimestampWrites timestampWrites;
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::RenderPassDescriptor : CyberKit::WebGPU::ObjectDescriptorBase {
+    Vector<std::optional<CyberKit::WebGPU::RenderPassColorAttachment>> colorAttachments;
+    std::optional<CyberKit::WebGPU::RenderPassDepthStencilAttachment> depthStencilAttachment;
+    std::optional<CyberKit::WebGPUIdentifier> occlusionQuerySet;
+    CyberKit::WebGPU::RenderPassTimestampWrites timestampWrites;
 };
 #endif

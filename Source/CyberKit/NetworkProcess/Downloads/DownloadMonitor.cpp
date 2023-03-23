@@ -31,7 +31,7 @@
 
 #define DOWNLOAD_MONITOR_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - DownloadMonitor::" fmt, this, ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 constexpr uint64_t operator"" _kbps(unsigned long long kilobytesPerSecond)
 {
@@ -125,4 +125,4 @@ void DownloadMonitor::timerFired()
         DOWNLOAD_MONITOR_RELEASE_LOG("timerFired: Download reached threshold to not be terminated (id = %" PRIu64 ")", m_download.downloadID().toUInt64());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

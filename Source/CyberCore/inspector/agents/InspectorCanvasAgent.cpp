@@ -744,7 +744,7 @@ void InspectorCanvasAgent::unbindCanvas(InspectorCanvas& inspectorCanvas)
     String identifier = inspectorCanvas.identifier();
     m_identifierToInspectorCanvas.remove(identifier);
 
-    // This can be called in response to GC. Due to the single-process model used in WebKit1, the
+    // This can be called in response to GC. Due to the single-process model used in CyberKit1, the
     // event must be dispatched from a timer to prevent the frontend from making JS allocations
     // while the GC is still active.
     m_removedCanvasIdentifiers.append(identifier);
@@ -779,7 +779,7 @@ void InspectorCanvasAgent::unbindProgram(InspectorShaderProgram& inspectorProgra
     String identifier = inspectorProgram.identifier();
     m_identifierToInspectorProgram.remove(identifier);
 
-    // This can be called in response to GC. Due to the single-process model used in WebKit1, the
+    // This can be called in response to GC. Due to the single-process model used in CyberKit1, the
     // event must be dispatched from a timer to prevent the frontend from making JS allocations
     // while the GC is still active.
     m_removedProgramIdentifiers.append(identifier);

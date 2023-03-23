@@ -17,7 +17,7 @@
                BlueprintIdentifier = "7C83DF951D0A5AE400FEBCF3"
                BuildableName = "TestWTF"
                BlueprintName = "TestWTF"
-               ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+               ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -61,7 +61,7 @@
             BlueprintIdentifier = "7C83DF951D0A5AE400FEBCF3"
             BuildableName = "TestWTF"
             BlueprintName = "TestWTF"
-            ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+            ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "7C83DF951D0A5AE400FEBCF3"
             BuildableName = "TestWTF"
             BlueprintName = "TestWTF"
-            ReferencedContainer = "container:TestWebKitAPI.xcodeproj">
+            ReferencedContainer = "container:TestCyberKitAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

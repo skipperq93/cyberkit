@@ -30,7 +30,7 @@
 #import "GeneratedSerializers.h"
 #import <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void RemoteScrollingUIState::encode(IPC::Encoder& encoder) const
 {
@@ -96,4 +96,4 @@ void RemoteScrollingUIState::removeNodeWithActiveUserScroll(CyberCore::Scrolling
         m_changes.add(Changes::UserScrollNodes);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

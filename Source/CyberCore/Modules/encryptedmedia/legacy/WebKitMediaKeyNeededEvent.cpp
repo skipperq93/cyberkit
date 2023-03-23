@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKitMediaKeyNeededEvent.h"
+#include "CyberKitMediaKeyNeededEvent.h"
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
@@ -33,25 +33,25 @@
 
 namespace WebCore {
 
-WTF_MAKE_ISO_ALLOCATED_IMPL(WebKitMediaKeyNeededEvent);
+WTF_MAKE_ISO_ALLOCATED_IMPL(CyberKitMediaKeyNeededEvent);
 
-WebKitMediaKeyNeededEvent::WebKitMediaKeyNeededEvent(const AtomString& type, Uint8Array* initData)
+CyberKitMediaKeyNeededEvent::CyberKitMediaKeyNeededEvent(const AtomString& type, Uint8Array* initData)
     : Event(type, CanBubble::No, IsCancelable::No)
     , m_initData(initData)
 {
 }
 
-WebKitMediaKeyNeededEvent::WebKitMediaKeyNeededEvent(const AtomString& type, const Init& initializer, IsTrusted isTrusted)
+CyberKitMediaKeyNeededEvent::CyberKitMediaKeyNeededEvent(const AtomString& type, const Init& initializer, IsTrusted isTrusted)
     : Event(type, initializer, isTrusted)
     , m_initData(initializer.initData)
 {
 }
 
-WebKitMediaKeyNeededEvent::~WebKitMediaKeyNeededEvent() = default;
+CyberKitMediaKeyNeededEvent::~CyberKitMediaKeyNeededEvent() = default;
 
-EventInterface WebKitMediaKeyNeededEvent::eventInterface() const
+EventInterface CyberKitMediaKeyNeededEvent::eventInterface() const
 {
-    return WebKitMediaKeyNeededEventInterfaceType;
+    return CyberKitMediaKeyNeededEventInterfaceType;
 }
 
 } // namespace WebCore

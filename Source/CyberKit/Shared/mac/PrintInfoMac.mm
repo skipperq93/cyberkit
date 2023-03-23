@@ -28,7 +28,7 @@
 
 #if PLATFORM(MAC)
 
-namespace WebKit {
+namespace CyberKit {
 
 PrintInfo::PrintInfo(NSPrintInfo *printInfo)
     : pageSetupScaleFactor([[[printInfo dictionary] objectForKey:NSPrintScalingFactor] floatValue])

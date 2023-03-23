@@ -28,7 +28,7 @@
 
 #include <wtf/Markable.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_Markable, Disengaged)
 {
@@ -315,4 +315,4 @@ TEST(WTF_Markable, Inequality)
     EXPECT_TRUE(1 != unengaged1);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

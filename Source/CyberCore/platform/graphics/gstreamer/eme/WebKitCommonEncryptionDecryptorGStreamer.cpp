@@ -21,7 +21,7 @@
  */
 
 #include "config.h"
-#include "WebKitCommonEncryptionDecryptorGStreamer.h"
+#include "CyberKitCommonEncryptionDecryptorGStreamer.h"
 
 #if ENABLE(ENCRYPTED_MEDIA) && USE(GSTREAMER)
 
@@ -40,7 +40,7 @@ using CyberCore::CDMProxy;
 class CDMProxyDecryptionClientImplementation : public CyberCore::CDMProxyDecryptionClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    CDMProxyDecryptionClientImplementation(WebKitMediaCommonEncryptionDecrypt* decryptor)
+    CDMProxyDecryptionClientImplementation(CyberKitMediaCommonEncryptionDecrypt* decryptor)
         : m_decryptor(decryptor) { }
     virtual bool isAborting()
     {
@@ -48,7 +48,7 @@ public:
     }
     virtual ~CDMProxyDecryptionClientImplementation() = default;
 private:
-    WebKitMediaCommonEncryptionDecrypt* m_decryptor;
+    CyberKitMediaCommonEncryptionDecrypt* m_decryptor;
 };
 
 enum DecryptionState {
@@ -57,8 +57,8 @@ enum DecryptionState {
     FlushPending
 };
 
-#define WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE((obj), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, WebKitMediaCommonEncryptionDecryptPrivate))
-struct _WebKitMediaCommonEncryptionDecryptPrivate {
+#define WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE((obj), WEBKIT_TYPE_MEDIA_CENC_DECRYPT, CyberKitMediaCommonEncryptionDecryptPrivate))
+struct _CyberKitMediaCommonEncryptionDecryptPrivate {
     RefPtr<CDMProxy> cdmProxy;
 
     // Protect the access to the structure members.
@@ -84,9 +84,9 @@ GST_DEBUG_CATEGORY(webkit_media_common_encryption_decrypt_debug_category);
 #define GST_CAT_DEFAULT webkit_media_common_encryption_decrypt_debug_category
 
 #define webkit_media_common_encryption_decrypt_parent_class parent_class
-WEBKIT_DEFINE_TYPE(WebKitMediaCommonEncryptionDecrypt, webkit_media_common_encryption_decrypt, GST_TYPE_BASE_TRANSFORM)
+WEBKIT_DEFINE_TYPE(CyberKitMediaCommonEncryptionDecrypt, webkit_media_common_encryption_decrypt, GST_TYPE_BASE_TRANSFORM)
 
-static void webkit_media_common_encryption_decrypt_class_init(WebKitMediaCommonEncryptionDecryptClass* klass)
+static void webkit_media_common_encryption_decrypt_class_init(CyberKitMediaCommonEncryptionDecryptClass* klass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(klass);
     gobjectClass->constructed = constructed;
@@ -116,8 +116,8 @@ static void constructed(GObject* object)
     gst_base_transform_set_passthrough(base, FALSE);
     gst_base_transform_set_gap_aware(base, FALSE);
 
-    WebKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(base);
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(base);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
     priv->cdmProxyDecryptionClientImplementation = makeUnique<CDMProxyDecryptionClientImplementation>(self);
 }
 
@@ -129,8 +129,8 @@ static GstCaps* transformCaps(GstBaseTransform* base, GstPadDirection direction,
     GST_DEBUG_OBJECT(base, "direction: %s, caps: %" GST_PTR_FORMAT " filter: %" GST_PTR_FORMAT, (direction == GST_PAD_SRC) ? "src" : "sink", caps, filter);
 
     GstCaps* transformedCaps = gst_caps_new_empty();
-    WebKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(base);
-    WebKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
+    CyberKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(base);
+    CyberKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
 
     unsigned size = gst_caps_get_size(caps);
     for (unsigned i = 0; i < size; ++i) {
@@ -218,8 +218,8 @@ static gboolean acceptCaps(GstBaseTransform* trans, GstPadDirection direction, G
 
 static GstFlowReturn transformInPlace(GstBaseTransform* base, GstBuffer* buffer)
 {
-    WebKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(base);
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(base);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
 
     GstProtectionMeta* protectionMeta = reinterpret_cast<GstProtectionMeta*>(gst_buffer_get_protection_meta(buffer));
     if (!protectionMeta) {
@@ -321,7 +321,7 @@ static GstFlowReturn transformInPlace(GstBaseTransform* base, GstBuffer* buffer)
     }
 
     GstBuffer* ivBuffer = gst_value_get_buffer(value);
-    WebKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
+    CyberKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
 
     ASSERT(priv->decryptionState == DecryptionState::Idle);
     // Value is set back to Idle in the scopeExit.
@@ -352,14 +352,14 @@ static GstFlowReturn transformInPlace(GstBaseTransform* base, GstBuffer* buffer)
     return GST_FLOW_OK;
 }
 
-static bool isCDMProxyAvailable(WebKitMediaCommonEncryptionDecrypt* self)
+static bool isCDMProxyAvailable(CyberKitMediaCommonEncryptionDecrypt* self)
 {
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
     Locker locker { priv->lock };
     return priv->cdmProxy;
 }
 
-static CDMProxy* getCDMProxyFromGstContext(WebKitMediaCommonEncryptionDecrypt* self)
+static CDMProxy* getCDMProxyFromGstContext(CyberKitMediaCommonEncryptionDecrypt* self)
 {
     GRefPtr<GstContext> context = adoptGRef(gst_element_get_context(GST_ELEMENT(self), "drm-cdm-proxy"));
     CDMProxy* proxy = nullptr;
@@ -383,10 +383,10 @@ static CDMProxy* getCDMProxyFromGstContext(WebKitMediaCommonEncryptionDecrypt* s
     return nullptr;
 }
 
-static void attachCDMProxy(WebKitMediaCommonEncryptionDecrypt* self, CDMProxy* proxy)
+static void attachCDMProxy(CyberKitMediaCommonEncryptionDecrypt* self, CDMProxy* proxy)
 {
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
-    WebKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
 
     Locker locker { priv->lock };
     GST_DEBUG_OBJECT(self, "Attaching CDMProxy %p", proxy);
@@ -395,7 +395,7 @@ static void attachCDMProxy(WebKitMediaCommonEncryptionDecrypt* self, CDMProxy* p
     priv->condition.notifyOne();
 }
 
-static gboolean installCDMProxyIfNotAvailable(WebKitMediaCommonEncryptionDecrypt* self)
+static gboolean installCDMProxyIfNotAvailable(CyberKitMediaCommonEncryptionDecrypt* self)
 {
     if (!isCDMProxyAvailable(self)) {
         gboolean result = FALSE;
@@ -416,8 +416,8 @@ static gboolean installCDMProxyIfNotAvailable(WebKitMediaCommonEncryptionDecrypt
 
 static gboolean sinkEventHandler(GstBaseTransform* trans, GstEvent* event)
 {
-    WebKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(trans);
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(trans);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
 
     // FIXME: https://bugs.webkit.org/show_bug.cgi?id=191355
     // We should be handling protection events in this class in
@@ -463,23 +463,23 @@ static gboolean sinkEventHandler(GstBaseTransform* trans, GstEvent* event)
     return GST_BASE_TRANSFORM_CLASS(parent_class)->sink_event(trans, event);
 }
 
-bool webKitMediaCommonEncryptionDecryptIsFlushing(WebKitMediaCommonEncryptionDecrypt* self)
+bool webKitMediaCommonEncryptionDecryptIsFlushing(CyberKitMediaCommonEncryptionDecrypt* self)
 {
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
     Locker locker { priv->lock };
     return priv->isFlushing;
 }
 
-WeakPtr<CyberCore::CDMProxyDecryptionClient> webKitMediaCommonEncryptionDecryptGetCDMProxyDecryptionClient(WebKitMediaCommonEncryptionDecrypt* self)
+WeakPtr<CyberCore::CDMProxyDecryptionClient> webKitMediaCommonEncryptionDecryptGetCDMProxyDecryptionClient(CyberKitMediaCommonEncryptionDecrypt* self)
 {
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
     return *priv->cdmProxyDecryptionClientImplementation;
 }
 
 static GstStateChangeReturn changeState(GstElement* element, GstStateChange transition)
 {
-    WebKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(element);
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(element);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
 
     switch (transition) {
     case GST_STATE_CHANGE_PAUSED_TO_READY:
@@ -499,9 +499,9 @@ static GstStateChangeReturn changeState(GstElement* element, GstStateChange tran
 
 static void setContext(GstElement* element, GstContext* context)
 {
-    WebKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(element);
-    WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
-    WebKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
+    CyberKitMediaCommonEncryptionDecrypt* self = WEBKIT_MEDIA_CENC_DECRYPT(element);
+    CyberKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
+    CyberKitMediaCommonEncryptionDecryptClass* klass = WEBKIT_MEDIA_CENC_DECRYPT_GET_CLASS(self);
 
     if (gst_context_has_context_type(context, "drm-cdm-proxy")) {
         const GValue* value = gst_structure_get_value(gst_context_get_structure(context), "cdm-proxy");

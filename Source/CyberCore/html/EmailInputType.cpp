@@ -1,5 +1,5 @@
 /*
- * This file is part of the WebKit project.
+ * This file is part of the CyberKit project.
  *
  * Copyright (C) 2009 Michelangelo De Simone <micdesim@gmail.com>
  * Copyright (C) 2010 Google Inc. All rights reserved.

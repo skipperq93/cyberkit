@@ -29,21 +29,21 @@
 
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_FOR_HEADER(WebKit, TCC)
+SOFT_LINK_FRAMEWORK_FOR_HEADER(CyberKit, TCC)
 
-SOFT_LINK_CONSTANT_FOR_HEADER(WebKit, TCC, kTCCServiceAccessibility, CFStringRef)
-SOFT_LINK_CONSTANT_FOR_HEADER(WebKit, TCC, kTCCServiceCamera, CFStringRef)
-SOFT_LINK_CONSTANT_FOR_HEADER(WebKit, TCC, kTCCServiceMicrophone, CFStringRef)
-SOFT_LINK_CONSTANT_FOR_HEADER(WebKit, TCC, kTCCServicePhotos, CFStringRef)
-SOFT_LINK_CONSTANT_FOR_HEADER(WebKit, TCC, kTCCServiceWebKitIntelligentTrackingPrevention, CFStringRef)
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceAccessibility, CFStringRef)
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceCamera, CFStringRef)
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceMicrophone, CFStringRef)
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServicePhotos, CFStringRef)
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceCyberKitIntelligentTrackingPrevention, CFStringRef)
 
-SOFT_LINK_FUNCTION_FOR_HEADER(WebKit, TCC, TCCAccessCheckAuditToken, Boolean, (CFStringRef service, audit_token_t auditToken, CFDictionaryRef options), (service, auditToken, options))
-#define TCCAccessCheckAuditToken WebKit::softLink_TCC_TCCAccessCheckAuditToken
-SOFT_LINK_FUNCTION_FOR_HEADER(WebKit, TCC, TCCAccessPreflight, TCCAccessPreflightResult, (CFStringRef service, CFDictionaryRef options), (service, options))
-#define TCCAccessPreflight WebKit::softLink_TCC_TCCAccessPreflight
-SOFT_LINK_FUNCTION_FOR_HEADER(WebKit, TCC, TCCAccessPreflightWithAuditToken, TCCAccessPreflightResult, (CFStringRef service, audit_token_t token, CFDictionaryRef options), (service, token, options))
-#define TCCAccessPreflightWithAuditToken WebKit::softLink_TCC_TCCAccessPreflightWithAuditToken
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberKit, TCC, TCCAccessCheckAuditToken, Boolean, (CFStringRef service, audit_token_t auditToken, CFDictionaryRef options), (service, auditToken, options))
+#define TCCAccessCheckAuditToken CyberKit::softLink_TCC_TCCAccessCheckAuditToken
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberKit, TCC, TCCAccessPreflight, TCCAccessPreflightResult, (CFStringRef service, CFDictionaryRef options), (service, options))
+#define TCCAccessPreflight CyberKit::softLink_TCC_TCCAccessPreflight
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberKit, TCC, TCCAccessPreflightWithAuditToken, TCCAccessPreflightResult, (CFStringRef service, audit_token_t token, CFDictionaryRef options), (service, token, options))
+#define TCCAccessPreflightWithAuditToken CyberKit::softLink_TCC_TCCAccessPreflightWithAuditToken
 #if HAVE(TCC_IOS_14_BIG_SUR_SPI)
-SOFT_LINK_FUNCTION_FOR_HEADER(WebKit, TCC, tcc_identity_create, tcc_identity_t, (tcc_identity_type_t type, const char * identifier), (type, identifier));
-#define tcc_identity_create WebKit::softLink_TCC_tcc_identity_create
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberKit, TCC, tcc_identity_create, tcc_identity_t, (tcc_identity_type_t type, const char * identifier), (type, identifier));
+#define tcc_identity_create CyberKit::softLink_TCC_tcc_identity_create
 #endif // HAVE(TCC_IOS_14_BIG_SUR_SPI)

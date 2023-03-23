@@ -59,7 +59,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct SystemMallocStats;
 
@@ -92,7 +92,7 @@ private:
     
     SystemMallocStats sampleSystemMalloc() const;
     size_t sampleProcessCommittedBytes() const;
-    WebMemoryStatistics sampleWebKit() const;
+    WebMemoryStatistics sampleCyberKit() const;
     String processName() const;
     
     FileSystem::PlatformFileHandle m_sampleLogFile { FileSystem::invalidPlatformFileHandle };

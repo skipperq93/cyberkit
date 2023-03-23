@@ -43,7 +43,7 @@ class BlobDataItem;
 class BlobRegistryImpl;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 
@@ -121,4 +121,4 @@ private:
     Ref<NetworkProcess> m_networkProcess;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

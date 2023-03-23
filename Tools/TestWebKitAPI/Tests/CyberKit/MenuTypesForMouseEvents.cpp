@@ -31,7 +31,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 
@@ -69,81 +69,81 @@ static void buildAndPerformTest(WKEventMouseButton button, WKEventModifiers modi
     EXPECT_JS_EQ(webView.page(), "displayedMenu()", expectedMenuType);
 }
 
-TEST(WebKit, MenuAndButtonForNormalLeftClick)
+TEST(CyberKit, MenuAndButtonForNormalLeftClick)
 {
     buildAndPerformTest(kWKEventMouseButtonLeftButton, 0, "0", "none");
 }
 
-TEST(WebKit, MenuAndButtonForNormalRightClick)
+TEST(CyberKit, MenuAndButtonForNormalRightClick)
 {
     buildAndPerformTest(kWKEventMouseButtonRightButton, 0, "2", "context");
 }
 
-TEST(WebKit, MenuAndButtonForNormalMiddleClick)
+TEST(CyberKit, MenuAndButtonForNormalMiddleClick)
 {
     buildAndPerformTest(kWKEventMouseButtonMiddleButton, 0, "1", "none");
 }
 
-TEST(WebKit, MenuAndButtonForControlLeftClick)
+TEST(CyberKit, MenuAndButtonForControlLeftClick)
 {
     buildAndPerformTest(kWKEventMouseButtonLeftButton, kWKEventModifiersControlKey, "0", "context");
 }
 
-TEST(WebKit, MenuAndButtonForControlRightClick)
+TEST(CyberKit, MenuAndButtonForControlRightClick)
 {
     buildAndPerformTest(kWKEventMouseButtonRightButton, kWKEventModifiersControlKey, "2", "context");
 }
 
-TEST(WebKit, MenuAndButtonForControlMiddleClick)
+TEST(CyberKit, MenuAndButtonForControlMiddleClick)
 {
     buildAndPerformTest(kWKEventMouseButtonMiddleButton, kWKEventModifiersControlKey, "1", "none");
 }
 
-TEST(WebKit, MenuAndButtonForShiftLeftClick)
+TEST(CyberKit, MenuAndButtonForShiftLeftClick)
 {
     buildAndPerformTest(kWKEventMouseButtonLeftButton, kWKEventModifiersShiftKey, "0", "none");
 }
 
-TEST(WebKit, MenuAndButtonForShiftRightClick)
+TEST(CyberKit, MenuAndButtonForShiftRightClick)
 {
     buildAndPerformTest(kWKEventMouseButtonRightButton, kWKEventModifiersShiftKey, "2", "context");
 }
 
-TEST(WebKit, MenuAndButtonForShiftMiddleClick)
+TEST(CyberKit, MenuAndButtonForShiftMiddleClick)
 {
     buildAndPerformTest(kWKEventMouseButtonMiddleButton, kWKEventModifiersShiftKey, "1", "none");
 }
 
-TEST(WebKit, MenuAndButtonForCommandLeftClick)
+TEST(CyberKit, MenuAndButtonForCommandLeftClick)
 {
     buildAndPerformTest(kWKEventMouseButtonLeftButton, kWKEventModifiersMetaKey, "0", "none");
 }
 
-TEST(WebKit, MenuAndButtonForCommandRightClick)
+TEST(CyberKit, MenuAndButtonForCommandRightClick)
 {
     buildAndPerformTest(kWKEventMouseButtonRightButton, kWKEventModifiersMetaKey, "2", "context");
 }
 
-TEST(WebKit, MenuAndButtonForCommandMiddleClick)
+TEST(CyberKit, MenuAndButtonForCommandMiddleClick)
 {
     buildAndPerformTest(kWKEventMouseButtonMiddleButton, kWKEventModifiersMetaKey, "1", "none");
 }
 
-TEST(WebKit, MenuAndButtonForAltLeftClick)
+TEST(CyberKit, MenuAndButtonForAltLeftClick)
 {
     buildAndPerformTest(kWKEventMouseButtonLeftButton, kWKEventModifiersAltKey, "0", "none");
 }
 
-TEST(WebKit, MenuAndButtonForAltRightClick)
+TEST(CyberKit, MenuAndButtonForAltRightClick)
 {
     buildAndPerformTest(kWKEventMouseButtonRightButton, kWKEventModifiersAltKey, "2", "context");
 }
 
-TEST(WebKit, MenuAndButtonForAltMiddleClick)
+TEST(CyberKit, MenuAndButtonForAltMiddleClick)
 {
     buildAndPerformTest(kWKEventMouseButtonMiddleButton, kWKEventModifiersAltKey, "1", "none");
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

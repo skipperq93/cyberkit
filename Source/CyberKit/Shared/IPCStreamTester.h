@@ -41,7 +41,7 @@ class StreamConnectionBuffer;
 class StreamConnectionWorkQueue;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // Interface to test various IPC stream related activities.
 class IPCStreamTester final : public IPC::StreamMessageReceiver {

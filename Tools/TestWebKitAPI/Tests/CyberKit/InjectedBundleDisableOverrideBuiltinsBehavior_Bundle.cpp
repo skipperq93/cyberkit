@@ -34,7 +34,7 @@
 #include <CyberKit/WKRetainPtr.h>
 #include <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleNoDisableOverrideBuiltinsBehaviorTest : public InjectedBundleTest {
 public:
@@ -85,6 +85,6 @@ public:
 static InjectedBundleTest::Register<InjectedBundleNoDisableOverrideBuiltinsBehaviorTest> registrar1("InjectedBundleNoDisableOverrideBuiltinsBehaviorTest");
 static InjectedBundleTest::Register<InjectedBundleDisableOverrideBuiltinsBehaviorTest> registrar2("InjectedBundleDisableOverrideBuiltinsBehaviorTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

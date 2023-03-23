@@ -30,18 +30,18 @@
 #include <CyberKit/EnvironmentUtilities.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #define PROCESS_DYLIB "Process.dylib"
 constexpr auto stripValue = "/" PROCESS_DYLIB ""_s;
 
 static void testStrip(ASCIILiteral input, ASCIILiteral expected)
 {
-    auto actual = WebKit::EnvironmentUtilities::stripEntriesEndingWith(input, stripValue);
+    auto actual = CyberKit::EnvironmentUtilities::stripEntriesEndingWith(input, stripValue);
     EXPECT_STREQ(actual.utf8().data(), expected.characters());
 }
 
-TEST(WebKit, StripEntriesEndingWith)
+TEST(CyberKit, StripEntriesEndingWith)
 {
     testStrip(""_s, ""_s);
     testStrip(":"_s, ":"_s);

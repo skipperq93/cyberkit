@@ -27,7 +27,7 @@
     Conditional=LEGACY_ENCRYPTED_MEDIA,
     EnabledBySetting=LegacyEncryptedMediaAPIEnabled,
     Exposed=Window
-] interface WebKitMediaKeyError {
+] interface CyberKitMediaKeyError {
     const unsigned short MEDIA_KEYERR_UNKNOWN = 1;
     const unsigned short MEDIA_KEYERR_CLIENT = 2;
     const unsigned short MEDIA_KEYERR_SERVICE = 3;

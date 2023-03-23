@@ -75,11 +75,11 @@ namespace CyberCore {
 
 static void formEventCallback(CFReadStreamRef stream, CFStreamEventType type, void* context);
 
-static CFStringRef formDataPointerPropertyName = CFSTR("WebKitFormDataPointer");
+static CFStringRef formDataPointerPropertyName = CFSTR("CyberKitFormDataPointer");
 
 CFStringRef formDataStreamLengthPropertyName()
 {
-    return CFSTR("WebKitFormDataStreamLength");
+    return CFSTR("CyberKitFormDataStreamLength");
 }
 
 struct FormCreationContext {

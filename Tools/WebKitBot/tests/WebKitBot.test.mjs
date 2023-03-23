@@ -23,13 +23,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import {extractRevisionsAndReason, extractTextIfMentioned, extractCommandAndArgs} from "../src/WebKitBot.mjs";
-const WebKitBotID = 42;
+import {extractRevisionsAndReason, extractTextIfMentioned, extractCommandAndArgs} from "../src/CyberKitBot.mjs";
+const CyberKitBotID = 42;
 
 test("revert command basic", () => {
-    let message = `<@${WebKitBotID}> revert 263483 testing revert`;
+    let message = `<@${CyberKitBotID}> revert 263483 testing revert`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(" revert 263483 testing revert");
 
     let {command, args} = extractCommandAndArgs(text);
@@ -44,14 +44,14 @@ test("revert command basic", () => {
 test("revert command not mentioned", () => {
     let message = "revert 263483 testing revert";
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(null);
 });
 
 test("remove quotes in revert reason", () => {
-    let message = `<@${WebKitBotID}> revert 263483 "testing revert"`;
+    let message = `<@${CyberKitBotID}> revert 263483 "testing revert"`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(" revert 263483 \"testing revert\"");
 
     let {command, args} = extractCommandAndArgs(text);
@@ -64,9 +64,9 @@ test("remove quotes in revert reason", () => {
 });
 
 test("remove single smartquotes in revert reason", () => {
-    let message = `<@${WebKitBotID}> revert 263483 \u2018testing revert\u2019`;
+    let message = `<@${CyberKitBotID}> revert 263483 \u2018testing revert\u2019`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(" revert 263483 'testing revert'");
 
     let {command, args} = extractCommandAndArgs(text);
@@ -79,9 +79,9 @@ test("remove single smartquotes in revert reason", () => {
 });
 
 test("remove double smartquotes in revert reason", () => {
-    let message = `<@${WebKitBotID}> revert 263483 \u201Ctesting revert\u201D`;
+    let message = `<@${CyberKitBotID}> revert 263483 \u201Ctesting revert\u201D`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(" revert 263483 \"testing revert\"");
 
     let {command, args} = extractCommandAndArgs(text);
@@ -94,9 +94,9 @@ test("remove double smartquotes in revert reason", () => {
 });
 
 test("remove line terminators", () => {
-    let message = `<@${WebKitBotID}> revert 263483 testing revert\nis this work?`;
+    let message = `<@${CyberKitBotID}> revert 263483 testing revert\nis this work?`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(" revert 263483 testing revert is this work?");
 
     let {command, args} = extractCommandAndArgs(text);
@@ -109,9 +109,9 @@ test("remove line terminators", () => {
 });
 
 test("multiple revisions", () => {
-    let message = `<@${WebKitBotID}> revert 263483,263484,r263485,r263486: testing revert`;
+    let message = `<@${CyberKitBotID}> revert 263483,263484,r263485,r263486: testing revert`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(" revert 263483,263484,r263485,r263486: testing revert");
 
     let {command, args} = extractCommandAndArgs(text);
@@ -124,9 +124,9 @@ test("multiple revisions", () => {
 });
 
 test("multiple revisions with spaces", () => {
-    let message = `<@${WebKitBotID}> revert 263483, 263484, r263485, r263486: testing revert`;
+    let message = `<@${CyberKitBotID}> revert 263483, 263484, r263485, r263486: testing revert`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe(" revert 263483, 263484, r263485, r263486: testing revert");
 
     let {command, args} = extractCommandAndArgs(text);
@@ -139,9 +139,9 @@ test("multiple revisions with spaces", () => {
 });
 
 test("mention in different place", () => {
-    let message = `revert 263483, 263484, r263485, r263486: testing revert <@${WebKitBotID}>`;
+    let message = `revert 263483, 263484, r263485, r263486: testing revert <@${CyberKitBotID}>`;
 
-    let text = extractTextIfMentioned(message, WebKitBotID);
+    let text = extractTextIfMentioned(message, CyberKitBotID);
     expect(text).toBe("revert 263483, 263484, r263485, r263486: testing revert ");
 
     let {command, args} = extractCommandAndArgs(text);

@@ -28,7 +28,7 @@
 #import "APINumber.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<typename NumberType, API::Object::Type APIObjectType> struct WrapperTraits<API::Number<NumberType, APIObjectType>> {
     using WrapperClass = NSNumber;

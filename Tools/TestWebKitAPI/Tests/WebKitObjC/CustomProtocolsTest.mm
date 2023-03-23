@@ -47,12 +47,12 @@ static bool testFinished;
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
 {
-    EXPECT_WK_STREQ(TestWebKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(WKPageCopyProvisionalURL(webView._pageRefForTransitionToWKWebView)).get()))).c_str(), "http://redirect/?test");
+    EXPECT_WK_STREQ(TestCyberKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(WKPageCopyProvisionalURL(webView._pageRefForTransitionToWKWebView)).get()))).c_str(), "http://redirect/?test");
 }
 
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation
 {
-    EXPECT_WK_STREQ(TestWebKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(WKPageCopyProvisionalURL(webView._pageRefForTransitionToWKWebView)).get()))).c_str(), "http://test/");
+    EXPECT_WK_STREQ(TestCyberKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(WKPageCopyProvisionalURL(webView._pageRefForTransitionToWKWebView)).get()))).c_str(), "http://test/");
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation
@@ -140,7 +140,7 @@ static RetainPtr<ProcessPoolDestroyedDuringLoadingProtocol> processPoolProtocolI
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void runTest()
 {
@@ -152,21 +152,21 @@ static void runTest()
     Util::run(&testFinished);
 }
 
-TEST(WebKit2CustomProtocolsTest, MainResource)
+TEST(CyberKit2CustomProtocolsTest, MainResource)
 {
     [TestProtocol registerWithScheme:@"http"];
     runTest();
     [TestProtocol unregister];
 }
 
-TEST(WebKit2CustomProtocolsTest, CloseDuringCustomProtocolLoad)
+TEST(CyberKit2CustomProtocolsTest, CloseDuringCustomProtocolLoad)
 {
     [CloseWhileStartingProtocol registerWithScheme:@"http"];
     runTest();
     [CloseWhileStartingProtocol unregister];
 }
 
-TEST(WebKit2CustomProtocolsTest, ProcessPoolDestroyedDuringLoading)
+TEST(CyberKit2CustomProtocolsTest, ProcessPoolDestroyedDuringLoading)
 {
     [ProcessPoolDestroyedDuringLoadingProtocol registerWithScheme:@"custom"];
 
@@ -195,6 +195,6 @@ TEST(WebKit2CustomProtocolsTest, ProcessPoolDestroyedDuringLoading)
     [ProcessPoolDestroyedDuringLoadingProtocol unregister];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -35,7 +35,7 @@
 #include "RemoteMediaPlayerProxy.h"
 #include "VideoTrackPrivateRemoteConfiguration.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -106,6 +106,6 @@ void RemoteVideoTrackProxy::languageChanged(const AtomString&)
     updateConfiguration();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

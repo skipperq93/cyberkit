@@ -31,7 +31,7 @@
 #include "GPUConnectionToWebProcess.h"
 #include "RemoteAudioHardwareListenerMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteAudioHardwareListenerProxy::RemoteAudioHardwareListenerProxy(GPUConnectionToWebProcess& gpuConnection, RemoteAudioHardwareListenerIdentifier&& identifier)
     : m_gpuConnection(gpuConnection)

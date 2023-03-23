@@ -29,7 +29,7 @@ messages -> RemoteSourceBufferProxy NotRefCounted {
     SetActive(bool active)
     CanSwitchToType(CyberCore::ContentType contentType) -> (bool canSwitch) Synchronous
     SetMode(CyberCore::SourceBufferAppendMode appendMode)
-    Append(IPC::SharedBufferReference data) -> (std::optional<WebKit::SharedMemory::Handle> remoteData)
+    Append(IPC::SharedBufferReference data) -> (std::optional<CyberKit::SharedMemory::Handle> remoteData)
     Abort()
     ResetParserState()
     RemovedFromMediaSource()
@@ -37,7 +37,7 @@ messages -> RemoteSourceBufferProxy NotRefCounted {
     SetReadyState(CyberCore::MediaPlayer::ReadyState state)
     StartChangingType()
     UpdateBufferedFromTrackBuffers(bool sourceIsEnded) -> (CyberCore::PlatformTimeRanges buffered) Synchronous
-    AddTrackBuffer(WebKit::TrackPrivateRemoteIdentifier remoteIdentifier)
+    AddTrackBuffer(CyberKit::TrackPrivateRemoteIdentifier remoteIdentifier)
     ResetTrackBuffers()
     ClearTrackBuffers()
     SetAllTrackBuffersNeedRandomAccess()
@@ -52,9 +52,9 @@ messages -> RemoteSourceBufferProxy NotRefCounted {
     SetAppendWindowStart(MediaTime appendWindowStart)
     SetAppendWindowEnd(MediaTime appendWindowEnd)
     SeekToTime(MediaTime mediaTime)
-    UpdateTrackIds(Vector<std::pair<WebKit::TrackPrivateRemoteIdentifier, WebKit::TrackPrivateRemoteIdentifier>> identifierPairs)
-    BufferedSamplesForTrackId(WebKit::TrackPrivateRemoteIdentifier remoteIdentifier) -> (Vector<String> samples)
-    EnqueuedSamplesForTrackID(WebKit::TrackPrivateRemoteIdentifier remoteIdentifier) -> (Vector<String> samples)
+    UpdateTrackIds(Vector<std::pair<CyberKit::TrackPrivateRemoteIdentifier, CyberKit::TrackPrivateRemoteIdentifier>> identifierPairs)
+    BufferedSamplesForTrackId(CyberKit::TrackPrivateRemoteIdentifier remoteIdentifier) -> (Vector<String> samples)
+    EnqueuedSamplesForTrackID(CyberKit::TrackPrivateRemoteIdentifier remoteIdentifier) -> (Vector<String> samples)
     MemoryPressure(uint64_t maximumBufferSize, MediaTime currentTime, bool isEnded) -> (CyberCore::PlatformTimeRanges buffered, uint64_t totalTrackBufferSizeInBytes)
 }
 

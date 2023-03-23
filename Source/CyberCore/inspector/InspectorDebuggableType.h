@@ -32,7 +32,7 @@ enum class DebuggableType : uint8_t {
     JavaScript,    // JSC::JSGlobalObject
     Page,          // WebCore::Page
     ServiceWorker, // WebCore::ServiceWorkerThreadProxy
-    WebPage,       // WebKit::WebPageProxy
+    WebPage,       // CyberKit::WebPageProxy
 };
 
 } // namespace Inspector

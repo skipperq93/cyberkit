@@ -40,7 +40,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcess;
 
@@ -77,4 +77,4 @@ private:
     CyberCore::SocketStreamError m_closedPortError;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

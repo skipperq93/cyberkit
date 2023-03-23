@@ -1,4 +1,4 @@
-# This is a list of every header WebKit "re-exports" from CyberCore or
+# This is a list of every header CyberKit "re-exports" from CyberCore or
 # CyberKitLegacy, to correspond with reexported symbols. Because some headers are
 # differently public or private based on the target platform, these headers are
 # copied via the "Migrate CyberCore and CyberKitLegacy Headers" script phase
@@ -22,7 +22,7 @@ $(WEBCORE_PRIVATE_HEADERS_DIR)/CyberCoreThreadRun.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WebEvent.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WebEventRegion.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WebItemProviderPasteboard.h
-$(WEBCORE_PRIVATE_HEADERS_DIR)/WebKitAvailability.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberKitAvailability.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WebScriptObject.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/DOM.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/DOMAbstractView.h
@@ -224,10 +224,10 @@ $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebIconDatabase.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebInspector.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebInspectorPrivate.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebJavaScriptTextInputPanel.h
-$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebKitErrors.h
-$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebKitErrorsPrivate.h
-$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebKitNSStringExtras.h
-$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebKitStatistics.h
+$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/CyberKitErrors.h
+$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/CyberKitErrorsPrivate.h
+$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/CyberKitNSStringExtras.h
+$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/CyberKitStatistics.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebLocalizableStrings.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebMIMETypeRegistry.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebNSDataExtrasPrivate.h

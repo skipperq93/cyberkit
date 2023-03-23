@@ -32,7 +32,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace Daemon {
 
@@ -119,4 +119,4 @@ template class ConnectionToMachService<WebPushD::ConnectionTraits>;
 
 } // namespace Daemon
 
-} // namespace WebKit
+} // namespace CyberKit

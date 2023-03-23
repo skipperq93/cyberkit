@@ -440,7 +440,7 @@ bool ArgumentCoder<ScrollingStatePositionedNode>::decode(Decoder& decoder, Scrol
     return true;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 static void encodeNodeAndDescendants(IPC::Encoder& encoder, const ScrollingStateNode& stateNode, int& encodedNodeCount)
 {
@@ -815,7 +815,7 @@ String RemoteScrollingCoordinatorTransaction::description() const
         if (!m_scrollingStateTree->hasChangedProperties())
             ts << " - no changes";
         else
-            WebKit::dump(ts, *m_scrollingStateTree.get(), true);
+            CyberKit::dump(ts, *m_scrollingStateTree.get(), true);
     } else
         ts << " - none";
 
@@ -830,6 +830,6 @@ void RemoteScrollingCoordinatorTransaction::dump() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

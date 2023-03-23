@@ -28,7 +28,7 @@
 #include "Test.h"
 #include <wtf/glib/GWeakPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_GWeakPtr, Basic)
 {
@@ -132,4 +132,4 @@ TEST(WTF_GWeakPtr, Move)
     EXPECT_NULL(obj);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

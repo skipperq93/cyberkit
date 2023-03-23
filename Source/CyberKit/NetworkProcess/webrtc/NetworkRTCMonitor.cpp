@@ -41,7 +41,7 @@ ALLOW_COMMA_BEGIN
 
 ALLOW_COMMA_END
 
-namespace WebKit {
+namespace CyberKit {
 
 #define RTC_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - NetworkRTCMonitor::" fmt, this, ##__VA_ARGS__)
 
@@ -163,7 +163,7 @@ void NetworkRTCMonitor::onNetworksChanged(const Vector<RTCNetwork>& networkList,
     m_rtcProvider.connection().send(Messages::WebRTCMonitor::NetworksChanged(m_enableEnumeratingAllNetworkInterfaces ? networkList : filteredNetworkList, ipv4, ipv6), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef RTC_RELEASE_LOG
 

@@ -71,7 +71,7 @@ static bool didStartProvisionalLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, NoDecidePolicyForMIMETypeDecision)
 {
@@ -80,7 +80,7 @@ TEST(CyberKitLegacy, NoDecidePolicyForMIMETypeDecision)
 
     webView.get().frameLoadDelegate = delegate.get();
     webView.get().policyDelegate = delegate.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
 
@@ -94,11 +94,11 @@ TEST(CyberKitLegacy, NoDecidePolicyForNavigationActionDecision)
 
     webView.get().frameLoadDelegate = delegate.get();
     webView.get().policyDelegate = delegate.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didNavigationActionCheck);
 
     EXPECT_FALSE(didStartProvisionalLoad);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

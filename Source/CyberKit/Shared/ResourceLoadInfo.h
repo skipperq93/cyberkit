@@ -31,7 +31,7 @@
 #include <wtf/URL.h>
 #include <wtf/WallTime.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct ResourceLoadInfo {
 
@@ -129,28 +129,28 @@ struct ResourceLoadInfo {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::ResourceLoadInfo::Type> {
+template<> struct EnumTraits<CyberKit::ResourceLoadInfo::Type> {
     using values = EnumValues<
-        WebKit::ResourceLoadInfo::Type,
-        WebKit::ResourceLoadInfo::Type::ApplicationManifest,
-        WebKit::ResourceLoadInfo::Type::Beacon,
-        WebKit::ResourceLoadInfo::Type::CSPReport,
-        WebKit::ResourceLoadInfo::Type::Document,
-        WebKit::ResourceLoadInfo::Type::Fetch,
-        WebKit::ResourceLoadInfo::Type::Font,
-        WebKit::ResourceLoadInfo::Type::Image,
-        WebKit::ResourceLoadInfo::Type::Media,
-        WebKit::ResourceLoadInfo::Type::Object,
-        WebKit::ResourceLoadInfo::Type::Other,
-        WebKit::ResourceLoadInfo::Type::Ping,
-        WebKit::ResourceLoadInfo::Type::Script,
-        WebKit::ResourceLoadInfo::Type::Stylesheet,
-        WebKit::ResourceLoadInfo::Type::XMLHTTPRequest,
-        WebKit::ResourceLoadInfo::Type::XSLT
+        CyberKit::ResourceLoadInfo::Type,
+        CyberKit::ResourceLoadInfo::Type::ApplicationManifest,
+        CyberKit::ResourceLoadInfo::Type::Beacon,
+        CyberKit::ResourceLoadInfo::Type::CSPReport,
+        CyberKit::ResourceLoadInfo::Type::Document,
+        CyberKit::ResourceLoadInfo::Type::Fetch,
+        CyberKit::ResourceLoadInfo::Type::Font,
+        CyberKit::ResourceLoadInfo::Type::Image,
+        CyberKit::ResourceLoadInfo::Type::Media,
+        CyberKit::ResourceLoadInfo::Type::Object,
+        CyberKit::ResourceLoadInfo::Type::Other,
+        CyberKit::ResourceLoadInfo::Type::Ping,
+        CyberKit::ResourceLoadInfo::Type::Script,
+        CyberKit::ResourceLoadInfo::Type::Stylesheet,
+        CyberKit::ResourceLoadInfo::Type::XMLHTTPRequest,
+        CyberKit::ResourceLoadInfo::Type::XSLT
     >;
 };
 

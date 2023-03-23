@@ -23,26 +23,26 @@
 #include "GStreamerCommon.h"
 
 #define WEBKIT_TYPE_VIDEO_ENCODER (webkit_video_encoder_get_type())
-#define WEBKIT_VIDEO_ENCODER(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_VIDEO_ENCODER, WebKitVideoEncoder))
-#define WEBKIT_VIDEO_ENCODER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_VIDEO_ENCODER, WebKitVideoEncoderClass))
+#define WEBKIT_VIDEO_ENCODER(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_VIDEO_ENCODER, CyberKitVideoEncoder))
+#define WEBKIT_VIDEO_ENCODER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_VIDEO_ENCODER, CyberKitVideoEncoderClass))
 #define WEBKIT_IS_VIDEO_ENCODER(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_VIDEO_ENCODER))
 #define WEBKIT_IS_VIDEO_ENCODER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_VIDEO_ENCODER))
 
-typedef struct _WebKitVideoEncoder WebKitVideoEncoder;
-typedef struct _WebKitVideoEncoderClass WebKitVideoEncoderClass;
-typedef struct _WebKitVideoEncoderPrivate WebKitVideoEncoderPrivate;
+typedef struct _CyberKitVideoEncoder CyberKitVideoEncoder;
+typedef struct _CyberKitVideoEncoderClass CyberKitVideoEncoderClass;
+typedef struct _CyberKitVideoEncoderPrivate CyberKitVideoEncoderPrivate;
 
-struct _WebKitVideoEncoder {
+struct _CyberKitVideoEncoder {
     GstBin parent;
 
-    WebKitVideoEncoderPrivate* priv;
+    CyberKitVideoEncoderPrivate* priv;
 };
 
-struct _WebKitVideoEncoderClass {
+struct _CyberKitVideoEncoderClass {
     GstBinClass parentClass;
 };
 
 GType webkit_video_encoder_get_type(void);
 
-bool videoEncoderSupportsFormat(WebKitVideoEncoder*, const GRefPtr<GstCaps>&);
-bool videoEncoderSetFormat(WebKitVideoEncoder*, GRefPtr<GstCaps>&&);
+bool videoEncoderSupportsFormat(CyberKitVideoEncoder*, const GRefPtr<GstCaps>&);
+bool videoEncoderSetFormat(CyberKitVideoEncoder*, GRefPtr<GstCaps>&&);

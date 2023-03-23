@@ -1005,7 +1005,7 @@ Controller.prototype = {
 
         if (!this.isDragging)
             return;
-        var delta = new WebKitPoint(event.clientX - this.initialDragLocation.x, event.clientY - this.initialDragLocation.y);
+        var delta = new CyberKitPoint(event.clientX - this.initialDragLocation.x, event.clientY - this.initialDragLocation.y);
         this.controls.panel.style.left = this.initialOffset.x + delta.x + 'px';
         this.controls.panel.style.top = this.initialOffset.y + delta.y + 'px';
         event.stopPropagation()
@@ -1033,8 +1033,8 @@ Controller.prototype = {
 
         this.listenFor(this.base, 'mouseup', this.handleWrapperMouseUp, true);
         this.isDragging = true;
-        this.initialDragLocation = new WebKitPoint(event.clientX, event.clientY);
-        this.initialOffset = new WebKitPoint(
+        this.initialDragLocation = new CyberKitPoint(event.clientX, event.clientY);
+        this.initialOffset = new CyberKitPoint(
             parseInt(this.controls.panel.style.left) | 0,
             parseInt(this.controls.panel.style.top) | 0
         );
@@ -1133,7 +1133,7 @@ Controller.prototype = {
 
         this.updateTimelineMetricsIfNeeded();
         this.controls.thumbnail.classList.add(this.ClassNames.show);
-        var localPoint = webkitConvertPointFromPageToNode(this.controls.timeline, new WebKitPoint(event.clientX, event.clientY));
+        var localPoint = webkitConvertPointFromPageToNode(this.controls.timeline, new CyberKitPoint(event.clientX, event.clientY));
         var percent = (localPoint.x - this.timelineLeft) / this.timelineWidth;
         percent = Math.max(Math.min(1, percent), 0);
         this.controls.thumbnail.style.left = percent * 100 + '%';
@@ -2317,7 +2317,7 @@ Controller.prototype = {
     },
 
     setShouldListenForPlaybackTargetAvailabilityEvent: function(shouldListen) {
-        if (!window.WebKitPlaybackTargetAvailabilityEvent || this.isListeningForPlaybackTargetAvailabilityEvent == shouldListen)
+        if (!window.CyberKitPlaybackTargetAvailabilityEvent || this.isListeningForPlaybackTargetAvailabilityEvent == shouldListen)
             return;
 
         if (shouldListen && this.video.error)

@@ -37,7 +37,7 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // Interface to test various IPC::Connection related activities.
 class IPCConnectionTester final : public RefCounted<IPCConnectionTester>, private IPC::Connection::Client {

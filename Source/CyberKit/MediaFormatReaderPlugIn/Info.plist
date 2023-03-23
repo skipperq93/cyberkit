@@ -26,7 +26,7 @@
 			<key>CMClassImplementationID</key>
 			<string>com.apple.mediatoolbox.pluginformatreader.webkit</string>
 			<key>CMClassImplementationName</key>
-			<string>WebKit Media Format Reader</string>
+			<string>CyberKit Media Format Reader</string>
 			<key>CMClassImplementationVersion</key>
 			<integer>1</integer>
 			<key>CMCopyright</key>

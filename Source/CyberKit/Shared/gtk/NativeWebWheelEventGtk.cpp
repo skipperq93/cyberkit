@@ -35,7 +35,7 @@
 #define constructNativeEvent(event) gdk_event_copy(event)
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 NativeWebWheelEvent::NativeWebWheelEvent(GdkEvent* event)
     : WebWheelEvent(WebEventFactory::createWebWheelEvent(event))
@@ -67,6 +67,6 @@ NativeWebWheelEvent::NativeWebWheelEvent(const NativeWebWheelEvent& event)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef constructNativeEvent

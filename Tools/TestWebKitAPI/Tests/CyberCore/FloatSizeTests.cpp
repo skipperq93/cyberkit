@@ -33,7 +33,7 @@
 #include <CoreGraphics/CoreGraphics.h>
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void testGetAndSet(CyberCore::FloatSize size)
 {

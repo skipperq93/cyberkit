@@ -41,7 +41,7 @@
 #include <CyberCore/VideoTrackPrivate.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -372,6 +372,6 @@ void RemoteSourceBufferProxy::memoryPressure(uint64_t maximumBufferSize, const M
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

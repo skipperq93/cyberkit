@@ -40,11 +40,11 @@ public:
         IncludeStrokeShape                  = 1 << 1, /* corresponds to 'bool stroke'   */
         IncludeMarkers                      = 1 << 2, /* corresponds to 'bool markers'  */
         IncludeClippers                     = 1 << 3, /* corresponds to 'bool clippers' */
-        IncludeMaskers                      = 1 << 4, /* WebKit extension - internal    */
-        IncludeOutline                      = 1 << 5, /* WebKit extension - internal    */
-        IgnoreTransformations               = 1 << 6, /* WebKit extension - internal    */
-        OverrideBoxWithFilterBox            = 1 << 7, /* WebKit extension - internal    */
-        OverrideBoxWithFilterBoxForChildren = 1 << 8  /* WebKit extension - internal    */
+        IncludeMaskers                      = 1 << 4, /* CyberKit extension - internal    */
+        IncludeOutline                      = 1 << 5, /* CyberKit extension - internal    */
+        IgnoreTransformations               = 1 << 6, /* CyberKit extension - internal    */
+        OverrideBoxWithFilterBox            = 1 << 7, /* CyberKit extension - internal    */
+        OverrideBoxWithFilterBoxForChildren = 1 << 8  /* CyberKit extension - internal    */
     };
 
     using DecorationOptions = OptionSet<DecorationOption>;

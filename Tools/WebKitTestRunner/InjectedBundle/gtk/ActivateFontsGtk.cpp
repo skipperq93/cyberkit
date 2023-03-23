@@ -45,7 +45,7 @@ CString getOutputDir()
         return webkitOutputDir;
 
     CString topLevelPath = WTR::topLevelPath();
-    GUniquePtr<char> outputDir(g_build_filename(topLevelPath.data(), "WebKitBuild", nullptr));
+    GUniquePtr<char> outputDir(g_build_filename(topLevelPath.data(), "CyberKitBuild", nullptr));
     return outputDir.get();
 }
 
@@ -115,15 +115,15 @@ void initializeFontConfigSetting()
         g_error("Could not load font at %s!", ahemFontFilename.get()); 
 
     static const char* fontFilenames[] = {
-        "WebKitWeightWatcher100.ttf",
-        "WebKitWeightWatcher200.ttf",
-        "WebKitWeightWatcher300.ttf",
-        "WebKitWeightWatcher400.ttf",
-        "WebKitWeightWatcher500.ttf",
-        "WebKitWeightWatcher600.ttf",
-        "WebKitWeightWatcher700.ttf",
-        "WebKitWeightWatcher800.ttf",
-        "WebKitWeightWatcher900.ttf",
+        "CyberKitWeightWatcher100.ttf",
+        "CyberKitWeightWatcher200.ttf",
+        "CyberKitWeightWatcher300.ttf",
+        "CyberKitWeightWatcher400.ttf",
+        "CyberKitWeightWatcher500.ttf",
+        "CyberKitWeightWatcher600.ttf",
+        "CyberKitWeightWatcher700.ttf",
+        "CyberKitWeightWatcher800.ttf",
+        "CyberKitWeightWatcher900.ttf",
         0
     };
 

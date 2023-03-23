@@ -54,7 +54,7 @@ public:
 
     static Ref<WheelEvent> create(const AtomString& type, const Init&);
 
-    WEBCORE_EXPORT void initWebKitWheelEvent(int rawDeltaX, int rawDeltaY, RefPtr<WindowProxy>&&, int screenX, int screenY, int pageX, int pageY, bool ctrlKey, bool altKey, bool shiftKey, bool metaKey);
+    WEBCORE_EXPORT void initCyberKitWheelEvent(int rawDeltaX, int rawDeltaY, RefPtr<WindowProxy>&&, int screenX, int screenY, int pageX, int pageY, bool ctrlKey, bool altKey, bool shiftKey, bool metaKey);
 
     const std::optional<PlatformWheelEvent>& underlyingPlatformEvent() const { return m_underlyingPlatformEvent; }
 

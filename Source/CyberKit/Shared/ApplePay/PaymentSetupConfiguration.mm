@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "PaymentSetupConfigurationWebKit.h"
+#import "PaymentSetupConfigurationCyberKit.h"
 
 #if ENABLE(APPLE_PAY)
 
@@ -36,11 +36,11 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-@interface PKPaymentSetupConfiguration (WebKit)
+@interface PKPaymentSetupConfiguration (CyberKit)
 @property (nonatomic, copy) NSArray<NSString *> *signedFields;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 static RetainPtr<PKPaymentSetupConfiguration> toPlatformConfiguration(const CyberCore::ApplePaySetupConfiguration& coreConfiguration, const URL& url)
 {
@@ -77,6 +77,6 @@ PaymentSetupConfiguration::PaymentSetupConfiguration(RetainPtr<PKPaymentSetupCon
 {
 }
 
-} // namespace WebKitAdditions
+} // namespace CyberKitAdditions
 
 #endif // ENABLE(APPLE_PAY)

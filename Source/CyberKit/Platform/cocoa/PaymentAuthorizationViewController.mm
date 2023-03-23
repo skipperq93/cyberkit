@@ -35,13 +35,13 @@
 
 @interface WKPaymentAuthorizationViewControllerDelegate : WKPaymentAuthorizationDelegate <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationViewControllerPrivateDelegate>
 
-- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(WebKit::PaymentAuthorizationPresenter&)presenter;
+- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(CyberKit::PaymentAuthorizationPresenter&)presenter;
 
 @end
 
 @implementation WKPaymentAuthorizationViewControllerDelegate
 
-- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(WebKit::PaymentAuthorizationPresenter&)presenter
+- (instancetype)initWithRequest:(PKPaymentRequest *)request presenter:(CyberKit::PaymentAuthorizationPresenter&)presenter
 {
     if (!(self = [super _initWithRequest:request presenter:presenter]))
         return nil;
@@ -106,7 +106,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 static RetainPtr<PKPaymentAuthorizationViewController> platformViewController(PKPaymentRequest *request, PKPaymentAuthorizationViewController *viewController)
 {
@@ -165,6 +165,6 @@ void PaymentAuthorizationViewController::presentInScene(const String&, Completio
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(PASSKIT) && ENABLE(APPLE_PAY)

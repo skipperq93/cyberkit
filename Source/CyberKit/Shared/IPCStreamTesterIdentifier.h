@@ -29,7 +29,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum IPCStreamTesterIdentifierType { };
 using IPCStreamTesterIdentifier = ObjectIdentifier<IPCStreamTesterIdentifierType>;

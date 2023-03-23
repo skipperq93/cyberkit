@@ -37,7 +37,7 @@
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <CyberKit/_WKUserStyleSheet.h>
 #import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
@@ -64,14 +64,14 @@ TEST(IndexedDB, IndexedDBPersistence)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     RetainPtr<NSString> string1 = (NSString *)[getNextMessage() body];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     RetainPtr<NSString> string2 = (NSString *)[getNextMessage() body];
 
@@ -84,10 +84,10 @@ TEST(IndexedDB, IndexedDBPersistence)
     // Make a new web view to finish the test
     webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     RetainPtr<NSString> string3 = (NSString *)[getNextMessage() body];
 
@@ -107,14 +107,14 @@ TEST(IndexedDB, IndexedDBPersistencePrivate)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     RetainPtr<NSString> string1 = (NSString *)[getNextMessage() body];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     RetainPtr<NSString> string2 = (NSString *)[getNextMessage() body];
 
@@ -125,10 +125,10 @@ TEST(IndexedDB, IndexedDBPersistencePrivate)
     // Make a new web view to finish the test
     webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     RetainPtr<NSString> string3 = (NSString *)[getNextMessage() body];
 
@@ -148,23 +148,23 @@ TEST(IndexedDB, IndexedDBDataRemoval)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes.get() modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] fetchDataRecordsOfTypes:websiteDataTypes.get() completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
         readyToContinue = true;
         ASSERT_EQ(0u, dataRecords.count);
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     receivedScriptMessage = false;
     auto handler = adoptNS([[IndexedDBMessageHandler alloc] init]);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBPersistence-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] fetchDataRecordsOfTypes:websiteDataTypes.get() completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
@@ -173,14 +173,14 @@ TEST(IndexedDB, IndexedDBDataRemoval)
             readyToContinue = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] fetchDataRecordsOfTypes:websiteDataTypes.get() completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
         readyToContinue = true;
         ASSERT_EQ(0u, dataRecords.count);
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 static NSString *mainFrameStringPersistence = @"<script> \
@@ -242,7 +242,7 @@ try {
 static void loadThirdPartyPageInWebView(WKWebView *webView, NSString *expectedResult)
 {
     [webView loadHTMLString:mainFrameStringPersistence baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(expectedResult, (NSString *)[getNextMessage() body]);
 }
@@ -283,7 +283,7 @@ TEST(IndexedDB, IndexedDBThirdPartyDataRemoval)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes.get() modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     [WKWebsiteDataStore _allowWebsiteDataRecordsForAllOrigins];
 
@@ -304,7 +304,7 @@ TEST(IndexedDB, IndexedDBThirdPartyDataRemoval)
 
     auto secondWebView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [secondWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"iframe://"]]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ( @"database is created - put item success", (NSString *)[getNextMessage() body]);
 
@@ -320,7 +320,7 @@ TEST(IndexedDB, IndexedDBThirdPartyDataRemoval)
             readyToContinue = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     auto thirdWebView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     loadThirdPartyPageInWebView(thirdWebView.get(), @"database is created - put item success");
@@ -338,7 +338,7 @@ TEST(IndexedDB, IndexedDBThirdPartyStorageLayout)
         directoryString = result;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     NSURL *webkitIframeRootDirectory = [NSURL fileURLWithPath:directoryString isDirectory:YES];
     NSURL *webkitIframeDatabaseDirectory = [webkitIframeRootDirectory URLByAppendingPathComponent:databaseHash];
     NSURL *webkitIframeDatabaseFile = [webkitIframeDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3"];
@@ -348,12 +348,12 @@ TEST(IndexedDB, IndexedDBThirdPartyStorageLayout)
         directoryString = result;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    NSURL *iframeWebKitRootDirectory = [NSURL fileURLWithPath:directoryString isDirectory:YES];
+    TestCyberKitAPI::Util::run(&done);
+    NSURL *iframeCyberKitRootDirectory = [NSURL fileURLWithPath:directoryString isDirectory:YES];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtURL:webkitIframeRootDirectory error:nil];
-    [fileManager removeItemAtURL:iframeWebKitRootDirectory error:nil];
+    [fileManager removeItemAtURL:iframeCyberKitRootDirectory error:nil];
 
     auto handler = adoptNS([[IndexedDBMessageHandler alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
@@ -372,14 +372,14 @@ TEST(IndexedDB, IndexedDBThirdPartyStorageLayout)
     loadThirdPartyPageInWebView(webView.get(), @"database is created - put item success");
     EXPECT_TRUE([fileManager fileExistsAtPath:webkitIframeRootDirectory.path]);
     EXPECT_TRUE([fileManager fileExistsAtPath:webkitIframeDatabaseFile.path]);
-    EXPECT_FALSE([fileManager fileExistsAtPath:iframeWebKitRootDirectory.path]);
+    EXPECT_FALSE([fileManager fileExistsAtPath:iframeCyberKitRootDirectory.path]);
 }
 
 TEST(IndexedDB, MigrateThirdPartyDataToGeneralStorageDirectory)
 {
-    NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *resourceDatabase = [[NSBundle mainBundle] URLForResource:@"indexeddb-persistence-third-party" withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *resourceDatabase = [[NSBundle mainBundle] URLForResource:@"indexeddb-persistence-third-party" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *webkitOriginDirectory = [generalStorageDirectory URLByAppendingPathComponent:@"EAO66s8JvCWNn4D3YQut5pXfiGF_UXNZGvMGN6aKILg/EAO66s8JvCWNn4D3YQut5pXfiGF_UXNZGvMGN6aKILg"];
     NSURL *webkitOriginFile = [webkitOriginDirectory URLByAppendingPathComponent:@"origin"];
     NSURL *wrongWebkitIframeDatabaseDirectory = [webkitOriginDirectory URLByAppendingPathComponent:@"IndexedDB/iframe__0"];
@@ -387,7 +387,7 @@ TEST(IndexedDB, MigrateThirdPartyDataToGeneralStorageDirectory)
     NSURL *webkitIframeOriginFile = [webkitIframeOriginDirectory URLByAppendingPathComponent:@"origin"];
     NSString *hashedDatabaseName = CyberCore::SQLiteFileSystem::computeHashForFileName("IndexedDBThirdPartyFrameHasAccess"_s);
     NSURL *webkitIframeDatabaseFile= [NSURL fileURLWithPath:[NSString pathWithComponents:@[webkitIframeOriginDirectory.path, @"IndexedDB", hashedDatabaseName, @"IndexedDB.sqlite3"]]];
-    NSURL *idbDirectory = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/CustomWebsiteData/IndexedDB" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *idbDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *oldWebkitIframeDatabaseDirectory = [NSURL fileURLWithPath:[NSString pathWithComponents:@[idbDirectory.path, @"v1/http_webkit.org_0/iframe__0", hashedDatabaseName]]];
     NSURL *oldWebkitIframeDatabaseFile = [oldWebkitIframeDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3"];
 
@@ -431,7 +431,7 @@ TEST(IndexedDB, MigrateThirdPartyDataToGeneralStorageDirectory)
         }; \
         </script>";
     [webView loadHTMLString:firstPartyHTMLString baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"database is created", (NSString *)[getNextMessage() body]);
     EXPECT_TRUE([fileManager fileExistsAtPath:webkitOriginFile.path]);
@@ -561,7 +561,7 @@ TEST(IndexedDB, IndexedDBGetDatabases)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[NSSet setWithObjects:WKWebsiteDataTypeIndexedDBDatabases, nil] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     auto handler = adoptNS([[IndexedDBMessageHandler alloc] init]);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -577,18 +577,18 @@ TEST(IndexedDB, IndexedDBGetDatabases)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [webView loadHTMLString:getDatabasesString baseURL:[NSURL URLWithString:@"http://apple.com"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"databases: [{\"name\":\"IndexedDBGetDatabases\",\"version\":1}]", [getNextMessage() body]);
 
     [webView evaluateJavaScript:@"loadFrame()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"child frame databases: []", [getNextMessage() body]);
 
     auto secondWebView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [secondWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"webkit://"]]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"main frame databases: []", [getNextMessage() body]);
 
@@ -601,7 +601,7 @@ TEST(IndexedDB, IndexedDBGetDatabases)
         appleDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *appleDirectoryURL = [NSURL fileURLWithPath:appleDirectoryString isDirectory:YES];
 
     readyToContinue = false;
@@ -610,7 +610,7 @@ TEST(IndexedDB, IndexedDBGetDatabases)
         webkitDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *webkitDirectoryURL = [NSURL fileURLWithPath:webkitDirectoryString isDirectory:YES];
 
     __block NSString *appleWebkitDirectoryString = nil;
@@ -619,7 +619,7 @@ TEST(IndexedDB, IndexedDBGetDatabases)
         appleWebkitDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *appleWebkitDirectoryURL = [NSURL fileURLWithPath:appleWebkitDirectoryString isDirectory:YES];
 
     auto defaultFileManager = [NSFileManager defaultManager];

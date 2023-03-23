@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUBlendFactor.h>
 #include <pal/graphics/WebGPU/WebGPUBlendOperation.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 struct BlendComponent {
     PAL::WebGPU::BlendOperation operation { PAL::WebGPU::BlendOperation::Add };
@@ -39,6 +39,6 @@ struct BlendComponent {
     PAL::WebGPU::BlendFactor dstFactor { PAL::WebGPU::BlendFactor::Zero };
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "XPCUtilities.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void terminateWithReason(xpc_connection_t connection, ReasonCode, const char*)
 {

@@ -30,8 +30,8 @@
 #import <pal/ios/UIKitSoftLink.h>
 
 #if HAVE(OS_DARK_MODE_SUPPORT)
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/LocalCurrentTraitCollectionAdditions.mm>)
-#import <WebKitAdditions/LocalCurrentTraitCollectionAdditions.mm>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/LocalCurrentTraitCollectionAdditions.mm>)
+#import <CyberKitAdditions/LocalCurrentTraitCollectionAdditions.mm>
 #else
 namespace CyberCore {
 

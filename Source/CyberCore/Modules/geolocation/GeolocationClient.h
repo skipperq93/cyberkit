@@ -44,7 +44,7 @@ public:
 
     // FIXME: The V2 Geolocation specification proposes that this property is
     // renamed. See http://www.w3.org/2008/geolocation/track/issues/6
-    // We should update WebKit to reflect this if and when the V2 specification
+    // We should update CyberKit to reflect this if and when the V2 specification
     // is published.
     virtual void setEnableHighAccuracy(bool) = 0;
     virtual std::optional<GeolocationPositionData> lastPosition() = 0;

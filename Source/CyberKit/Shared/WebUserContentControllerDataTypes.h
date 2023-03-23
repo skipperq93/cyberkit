@@ -34,7 +34,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebUserScriptData {
     void encode(IPC::Encoder&) const;
@@ -63,4 +63,4 @@ struct WebScriptMessageHandlerData {
     String name;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

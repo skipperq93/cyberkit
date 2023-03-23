@@ -29,7 +29,7 @@
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
 
-TEST(WebKit, DisableSpellcheck)
+TEST(CyberKit, DisableSpellcheck)
 {
     auto configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"DisableSpellcheckPlugIn" configureJSCForTesting:YES];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration]);

@@ -28,7 +28,7 @@
 #include "MoveOnly.h"
 #include <wtf/RefCountedFixedVector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_RefCountedFixedVector, Empty)
 {

@@ -26,7 +26,7 @@
 #import "config.h"
 #import "AuthenticationChallengeDispositionCocoa.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 AuthenticationChallengeDisposition toAuthenticationChallengeDisposition(NSURLSessionAuthChallengeDisposition disposition)
 {
@@ -58,4 +58,4 @@ NSURLSessionAuthChallengeDisposition fromAuthenticationChallengeDisposition(Auth
     [NSException raise:NSInvalidArgumentException format:@"Invalid AuthenticationChallengeDisposition (%ld)", (long)disposition];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

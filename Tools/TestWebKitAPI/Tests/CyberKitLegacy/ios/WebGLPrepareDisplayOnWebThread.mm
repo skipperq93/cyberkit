@@ -68,7 +68,7 @@ IGNORE_WARNINGS_END
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, WebGLPrepareDisplayOnWebThread)
 {
@@ -79,7 +79,7 @@ TEST(CyberKitLegacy, WebGLPrepareDisplayOnWebThread)
     RetainPtr<WebGLPrepareDisplayOnWebThreadDelegate> uiDelegate = adoptNS([[WebGLPrepareDisplayOnWebThreadDelegate alloc] init]);
     uiWebView.get().delegate = uiDelegate.get();
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"webgl" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"webgl" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     NSLog(@"Loading %@", url);
     [uiWebView loadRequest:[NSURLRequest requestWithURL:url]];
 

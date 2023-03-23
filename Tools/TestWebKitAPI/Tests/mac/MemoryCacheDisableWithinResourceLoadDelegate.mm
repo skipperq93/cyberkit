@@ -68,7 +68,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, MemoryCacheDisableWithinResourceLoadDelegate)
 {
@@ -78,11 +78,11 @@ TEST(CyberKitLegacy, MemoryCacheDisableWithinResourceLoadDelegate)
         RetainPtr<MemoryCacheDisableTestResourceLoadDelegate> resourceLoadDelegate = adoptNS([[MemoryCacheDisableTestResourceLoadDelegate alloc] init]);
         webView.get().resourceLoadDelegate = resourceLoadDelegate.get();
 
-        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MemoryCacheDisableWithinResourceLoadDelegate" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MemoryCacheDisableWithinResourceLoadDelegate" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&didFinishLoad);
     }
     // If we finished without crashing, the test passed.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

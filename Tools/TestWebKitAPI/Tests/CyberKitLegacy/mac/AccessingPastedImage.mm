@@ -77,7 +77,7 @@ static bool didAlert = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CyberKitLegacy, AccessingImageInPastedRTFD)
 {
@@ -87,11 +87,11 @@ TEST(CyberKitLegacy, AccessingImageInPastedRTFD)
     [webView.get() setUIDelegate:delegate.get()];
 
     auto *mainFrame = webView.get().mainFrame;
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"paste-rtfd" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"paste-rtfd" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
     [webView.get() setEditable:YES];
 
-    auto *pngData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sunset-in-cupertino-200px" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"]];
+    auto *pngData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sunset-in-cupertino-200px" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"]];
     auto attachment = adoptNS([[NSTextAttachment alloc] initWithData:pngData ofType:(__bridge NSString *)kUTTypePNG]);
     NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attachment.get()];
     NSData *RTFDData = [string RTFDFromRange:NSMakeRange(0, [string length]) documentAttributes:@{ }];
@@ -124,12 +124,12 @@ TEST(CyberKitLegacy, AccessingImageInPastedWebArchive)
     [destinationWebView.get() setFrameLoadDelegate:delegate.get()];
     [destinationWebView.get() setUIDelegate:delegate.get()];
 
-    [[sourceWebView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"image-and-contenteditable" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[sourceWebView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"image-and-contenteditable" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
     [sourceWebView.get() setEditable:YES];
 
     didFinishLoad = false;
-    [[destinationWebView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"paste-rtfd" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[destinationWebView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"paste-rtfd" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
     [destinationWebView.get() setEditable:YES];
 
@@ -154,4 +154,4 @@ TEST(CyberKitLegacy, AccessingImageInPastedWebArchive)
     EXPECT_WK_STREQ("image/png", webResource.MIMEType);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

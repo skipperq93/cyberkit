@@ -263,7 +263,7 @@ static bool bigIntegerToUInt32(const Vector<uint8_t>& bigInteger, uint32_t& resu
     return true;
 }
 
-// FIXME: We should use WorkQueue here instead of dispatch_async once WebKitSubtleCrypto is deprecated.
+// FIXME: We should use WorkQueue here instead of dispatch_async once CyberKitSubtleCrypto is deprecated.
 // https://bugs.webkit.org/show_bug.cgi?id=164943
 void CryptoKeyRSA::generatePair(CryptoAlgorithmIdentifier algorithm, CryptoAlgorithmIdentifier hash, bool hasHash, unsigned modulusLength, const Vector<uint8_t>& publicExponent, bool extractable, CryptoKeyUsageBitmap usage, KeyPairCallback&& callback, VoidCallback&& failureCallback, ScriptExecutionContext* context)
 {

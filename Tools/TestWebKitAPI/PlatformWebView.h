@@ -66,7 +66,7 @@ typedef void* PlatformWindow;
 #endif
 typedef uint32_t WKEventModifiers;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class PlatformWebView {
     WTF_MAKE_FAST_ALLOCATED;
@@ -108,6 +108,6 @@ private:
     PlatformWindow m_window;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PlatformWebView_h

@@ -34,7 +34,7 @@
 #include <CyberKit/WKFrame.h>
 #include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool committedLoad;
 
@@ -54,7 +54,7 @@ static void didCommitNavigationCallback(WKPageRef page, WKNavigationRef, WKTypeR
     assert(WKGetTypeID(userData) == WKURLGetTypeID());
     EXPECT_TRUE(WKURLIsEqual(committedURL.get(), static_cast<WKURLRef>(userData)));
 
-    auto previousURL = TestWebKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(Util::createURLForResource("simple", "html")).get())));
+    auto previousURL = TestCyberKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(Util::createURLForResource("simple", "html")).get())));
     previousURL += "?query";
     auto url = adoptWK(WKURLCreateWithUTF8CString(previousURL.c_str()));
     EXPECT_TRUE(WKURLIsEqual(committedURL.get(), url.get()));
@@ -62,7 +62,7 @@ static void didCommitNavigationCallback(WKPageRef page, WKNavigationRef, WKTypeR
     committedLoad = true;
 }
 
-TEST(WebKit2, ProvisionalURLAfterWillSendRequestCallback)
+TEST(CyberKit2, ProvisionalURLAfterWillSendRequestCallback)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("ProvisionalURLAfterWillSendRequestCallbackTest"));
 
@@ -85,6 +85,6 @@ TEST(WebKit2, ProvisionalURLAfterWillSendRequestCallback)
     Util::run(&committedLoad);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

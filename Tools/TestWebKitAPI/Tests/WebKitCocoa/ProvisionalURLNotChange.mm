@@ -46,12 +46,12 @@ TEST(WKWebView, ProvisionalURLNotChange)
     [webView setNavigationDelegate:navigationDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"data:text/html,start"]]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     NSURL *invalidURL = [NSURL URLWithString:@"https://a@/b"];
     [webView loadRequest:[NSURLRequest requestWithURL:invalidURL]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     EXPECT_STREQ([webView URL].absoluteString.UTF8String, "data:text/html,start");

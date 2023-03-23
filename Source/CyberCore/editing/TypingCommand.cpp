@@ -724,7 +724,7 @@ void TypingCommand::deleteKeyPressed(TextGranularity granularity, bool shouldAdd
     if (selectionToDelete.isNone()) {
 #if PLATFORM(IOS_FAMILY)
         // Workaround for this bug:
-        // <rdar://problem/4653755> UIKit text widgets should use WebKit editing API to manipulate text
+        // <rdar://problem/4653755> UIKit text widgets should use CyberKit editing API to manipulate text
         setEndingSelection(document().selection().selection());
         closeTyping(document());
 #endif
@@ -828,7 +828,7 @@ void TypingCommand::forwardDeleteKeyPressed(TextGranularity granularity, bool sh
     if (selectionToDelete.isNone()) {
 #if PLATFORM(IOS_FAMILY)
         // Workaround for this bug:
-        // <rdar://problem/4653755> UIKit text widgets should use WebKit editing API to manipulate text
+        // <rdar://problem/4653755> UIKit text widgets should use CyberKit editing API to manipulate text
         setEndingSelection(document().selection().selection());
         closeTyping(document());
 #endif

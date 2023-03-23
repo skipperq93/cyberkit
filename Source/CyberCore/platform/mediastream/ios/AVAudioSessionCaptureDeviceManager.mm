@@ -104,7 +104,7 @@ AVAudioSessionCaptureDeviceManager& AVAudioSessionCaptureDeviceManager::singleto
 }
 
 AVAudioSessionCaptureDeviceManager::AVAudioSessionCaptureDeviceManager()
-    : m_dispatchQueue(WorkQueue::create("com.apple.WebKit.AVAudioSessionCaptureDeviceManager"))
+    : m_dispatchQueue(WorkQueue::create("com.apple.CyberKit.AVAudioSessionCaptureDeviceManager"))
 {
     m_dispatchQueue->dispatch([this] {
         createAudioSession();

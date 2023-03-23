@@ -22,7 +22,7 @@
 
 #if PLATFORM(COCOA)
 header: "RemoteLayerTreeTransaction.h"
-[OptionSet] enum class WebKit::LayerChange : uint64_t {
+[OptionSet] enum class CyberKit::LayerChange : uint64_t {
     NameChanged
     ChildrenChanged
     PositionChanged
@@ -73,14 +73,14 @@ header: "RemoteLayerTreeTransaction.h"
 #endif
 
 header: "SwapBuffersDisplayRequirement.h"
-enum class WebKit::SwapBuffersDisplayRequirement : uint8_t {
+enum class CyberKit::SwapBuffersDisplayRequirement : uint8_t {
     NeedsFullDisplay,
     NeedsNormalDisplay,
     NeedsNoDisplay
 };
 
 header: "RemoteScrollingUIState.h"
-[OptionSet] enum class WebKit::RemoteScrollingUIStateChanges : uint8_t {
+[OptionSet] enum class CyberKit::RemoteScrollingUIStateChanges : uint8_t {
     ScrollSnapNodes
     UserScrollNodes
 };

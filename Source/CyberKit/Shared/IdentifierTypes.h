@@ -28,7 +28,7 @@
 #include "MonotonicObjectIdentifier.h"
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum AuthenticationChallengeIdentifierType { };
 using AuthenticationChallengeIdentifier = ObjectIdentifier<AuthenticationChallengeIdentifierType>;
@@ -51,4 +51,4 @@ using EditorStateIdentifier = MonotonicObjectIdentifier<EditorStateIdentifierTyp
 enum FocusedElementInformationIdentifierType { };
 using FocusedElementInformationIdentifier = MonotonicObjectIdentifier<FocusedElementInformationIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit

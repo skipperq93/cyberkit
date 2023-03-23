@@ -27,7 +27,7 @@
 
 #include <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SecItemResponseData {
 public:
@@ -39,10 +39,10 @@ public:
     OSStatus resultCode() const { return m_resultCode; }
 
 private:
-    friend struct IPC::ArgumentCoder<WebKit::SecItemResponseData, void>;
+    friend struct IPC::ArgumentCoder<CyberKit::SecItemResponseData, void>;
 
     OSStatus m_resultCode;
     RetainPtr<CFTypeRef> m_resultObject;
 };
     
-} // namespace WebKit
+} // namespace CyberKit

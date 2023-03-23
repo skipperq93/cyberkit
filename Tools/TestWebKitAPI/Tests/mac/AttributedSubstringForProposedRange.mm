@@ -80,7 +80,7 @@ TEST(AttributedSubstringForProposedRange, TextAlignmentParagraphStyles)
 
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 #endif // PLATFORM(MAC)

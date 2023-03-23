@@ -48,7 +48,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(UIFocusTests, ContentViewCanBecomeFocused)
 {
@@ -67,6 +67,6 @@ TEST(UIFocusTests, ContentViewCanBecomeFocused)
     EXPECT_FALSE(contentView.canBecomeFocused);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

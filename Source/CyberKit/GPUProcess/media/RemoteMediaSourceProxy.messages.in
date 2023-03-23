@@ -26,7 +26,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)
 
 messages -> RemoteMediaSourceProxy NotRefCounted {
-    AddSourceBuffer(CyberCore::ContentType contentType) -> (enum:uint8_t CyberCore::MediaSourcePrivate::AddStatus status, std::optional<WebKit::RemoteSourceBufferIdentifier> remoteSourceBufferIdentifier) Synchronous
+    AddSourceBuffer(CyberCore::ContentType contentType) -> (enum:uint8_t CyberCore::MediaSourcePrivate::AddStatus status, std::optional<CyberKit::RemoteSourceBufferIdentifier> remoteSourceBufferIdentifier) Synchronous
     DurationChanged(MediaTime duration)
     BufferedChanged(CyberCore::PlatformTimeRanges buffered)
     SetReadyState(CyberCore::MediaPlayerEnums::ReadyState readyState)

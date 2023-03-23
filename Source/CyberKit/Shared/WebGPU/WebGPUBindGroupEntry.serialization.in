@@ -21,9 +21,9 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS)
-[AdditionalEncoder=StreamConnectionEncoder] struct WebKit::WebGPU::BindGroupEntry {
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberKit::WebGPU::BindGroupEntry {
     PAL::WebGPU::Index32 binding
-    WebKit::WebGPU::BufferBinding bufferBinding
-    WebKit::WebGPUIdentifier identifier
-    WebKit::WebGPU::BindingResourceType type
+    CyberKit::WebGPU::BufferBinding bufferBinding
+    CyberKit::WebGPUIdentifier identifier
+    CyberKit::WebGPU::BindingResourceType type
 }

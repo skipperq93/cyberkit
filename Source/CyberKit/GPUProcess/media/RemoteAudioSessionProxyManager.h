@@ -31,7 +31,7 @@
 #include <CyberCore/ProcessIdentifier.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcess;
 class RemoteAudioSessionProxy;

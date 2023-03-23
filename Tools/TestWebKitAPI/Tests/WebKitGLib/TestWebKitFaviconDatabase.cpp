@@ -21,14 +21,14 @@
 
 #if PLATFORM(GTK)
 
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
 #include <CyberCore/SoupVersioning.h>
 #include <glib/gstdio.h>
 #include <libsoup/soup.h>
 #include <wtf/glib/GUniquePtr.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 class FaviconDatabaseTest: public WebViewTest {
 public:
@@ -100,7 +100,7 @@ public:
     }
 #endif
 
-    static void faviconChangedCallback(WebKitFaviconDatabase* database, const char* pageURI, const char* faviconURI, FaviconDatabaseTest* test)
+    static void faviconChangedCallback(CyberKitFaviconDatabase* database, const char* pageURI, const char* faviconURI, FaviconDatabaseTest* test)
     {
         if (!g_strcmp0(webkit_web_view_get_uri(test->m_webView), pageURI)) {
             test->m_faviconURI = faviconURI;
@@ -109,7 +109,7 @@ public:
         }
     }
 
-    static void viewFaviconChangedCallback(WebKitWebView* webView, GParamSpec* pspec, FaviconDatabaseTest* test)
+    static void viewFaviconChangedCallback(CyberKitWebView* webView, GParamSpec* pspec, FaviconDatabaseTest* test)
     {
         g_assert_true(test->m_webView == webView);
         test->m_faviconNotificationReceived = true;
@@ -122,7 +122,7 @@ public:
             test->quitMainLoop();
     }
 
-    static void viewLoadChangedCallback(WebKitWebView* webView, WebKitLoadEvent loadEvent, FaviconDatabaseTest* test)
+    static void viewLoadChangedCallback(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, FaviconDatabaseTest* test)
     {
         g_assert_true(test->m_webView == webView);
         if (loadEvent != WEBKIT_LOAD_FINISHED)
@@ -189,7 +189,7 @@ public:
         m_waitingForFaviconURI = false;
     }
 
-    GRefPtr<WebKitFaviconDatabase> m_database;
+    GRefPtr<CyberKitFaviconDatabase> m_database;
 #if USE(GTK4)
     GRefPtr<GdkTexture> m_favicon;
 #else
@@ -311,7 +311,7 @@ static void testFaviconDatabaseGetFavicon(FaviconDatabaseTest* test, gconstpoint
     g_assert_error(test->m_error.get(), WEBKIT_FAVICON_DATABASE_ERROR, WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN);
 
     // Loading an icon that is already in the database should emit
-    // WebKitWebView::notify::favicon, but not WebKitFaviconDatabase::icon-changed.
+    // CyberKitWebView::notify::favicon, but not CyberKitFaviconDatabase::icon-changed.
     g_assert_null(webkit_web_view_get_favicon(test->m_webView));
     test->m_faviconURI = { };
     test->loadURI(kServer->getURIForPath("/foo").data());
@@ -320,7 +320,7 @@ static void testFaviconDatabaseGetFavicon(FaviconDatabaseTest* test, gconstpoint
     g_assert_nonnull(webkit_web_view_get_favicon(test->m_webView));
 }
 
-static void ephemeralViewFaviconChanged(WebKitWebView* webView, GParamSpec*, WebViewTest* test)
+static void ephemeralViewFaviconChanged(CyberKitWebView* webView, GParamSpec*, WebViewTest* test)
 {
     g_signal_handlers_disconnect_by_func(webView, reinterpret_cast<void*>(ephemeralViewFaviconChanged), test);
     test->quitMainLoop();
@@ -330,14 +330,14 @@ static void testFaviconDatabaseEphemeral(FaviconDatabaseTest* test, gconstpointe
 {
     // If the session is ephemeral, the database is not created.
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
+    GRefPtr<CyberKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
     auto* manager = webkit_network_session_get_website_data_manager(ephemeralSession.get());
     webkit_website_data_manager_set_favicons_enabled(manager, TRUE);
     GUniquePtr<char> databaseFile(g_build_filename(Test::dataDirectory(), "icondatabase", "WebpageIcons.db", nullptr));
     g_assert_false(g_file_test(databaseFile.get(), G_FILE_TEST_EXISTS));
 #else
     // If the context is ephemeral, the database is not created.
-    GRefPtr<WebKitWebContext> ephemeralContext = adoptGRef(webkit_web_context_new_ephemeral());
+    GRefPtr<CyberKitWebContext> ephemeralContext = adoptGRef(webkit_web_context_new_ephemeral());
     GUniquePtr<char> databaseDirectory(g_build_filename(Test::dataDirectory(), "testFaviconDatabaseEphemeral", nullptr));
     webkit_web_context_set_favicon_database_directory(ephemeralContext.get(), databaseDirectory.get());
     g_assert_cmpstr(databaseDirectory.get(), ==, webkit_web_context_get_favicon_database_directory(ephemeralContext.get()));
@@ -409,13 +409,13 @@ void testFaviconDatabaseClear(FaviconDatabaseTest* test, gconstpointer)
 void beforeAll()
 {
     // Start a soup server for testing.
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
-    FaviconDatabaseTest::add("WebKitFaviconDatabase", "initialization", testFaviconDatabaseInitialization);
-    FaviconDatabaseTest::add("WebKitFaviconDatabase", "get-favicon", testFaviconDatabaseGetFavicon);
-    FaviconDatabaseTest::add("WebKitFaviconDatabase", "ephemeral", testFaviconDatabaseEphemeral);
-    FaviconDatabaseTest::add("WebKitFaviconDatabase", "clear", testFaviconDatabaseClear);
+    FaviconDatabaseTest::add("CyberKitFaviconDatabase", "initialization", testFaviconDatabaseInitialization);
+    FaviconDatabaseTest::add("CyberKitFaviconDatabase", "get-favicon", testFaviconDatabaseGetFavicon);
+    FaviconDatabaseTest::add("CyberKitFaviconDatabase", "ephemeral", testFaviconDatabaseEphemeral);
+    FaviconDatabaseTest::add("CyberKitFaviconDatabase", "clear", testFaviconDatabaseClear);
 }
 
 void afterAll()

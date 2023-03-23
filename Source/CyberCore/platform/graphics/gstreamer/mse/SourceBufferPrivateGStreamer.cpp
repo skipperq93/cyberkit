@@ -49,7 +49,7 @@
 #include "MediaSourceTrackGStreamer.h"
 #include "NotImplemented.h"
 #include "VideoTrackPrivateGStreamer.h"
-#include "WebKitMediaSourceGStreamer.h"
+#include "CyberKitMediaSourceGStreamer.h"
 
 #if PLATFORM(WPE)
 #include <wtf/text/StringToIntegerConversion.h>

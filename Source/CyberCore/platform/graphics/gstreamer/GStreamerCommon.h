@@ -81,8 +81,8 @@ bool areEncryptedCaps(const GstCaps*);
 Vector<String> extractGStreamerOptionsFromCommandLine();
 void setGStreamerOptionsFromUIProcess(Vector<String>&&);
 bool ensureGStreamerInitialized();
-void registerWebKitGStreamerElements();
-void registerWebKitGStreamerVideoEncoder();
+void registerCyberKitGStreamerElements();
+void registerCyberKitGStreamerVideoEncoder();
 unsigned getGstPlayFlag(const char* nick);
 uint64_t toGstUnsigned64Time(const MediaTime&);
 
@@ -324,7 +324,7 @@ bool webkitGstSetElementStateSynchronously(GstElement*, GstState, Function<bool(
 
 GstBuffer* gstBufferNewWrappedFast(void* data, size_t length);
 
-// These functions should be used for elements not provided by WebKit itself and not provided by GStreamer -core.
+// These functions should be used for elements not provided by CyberKit itself and not provided by GStreamer -core.
 GstElement* makeGStreamerElement(const char* factoryName, const char* name);
 GstElement* makeGStreamerBin(const char* description, bool ghostUnlinkedPads);
 

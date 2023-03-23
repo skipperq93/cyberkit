@@ -47,7 +47,7 @@
 
 #if ENABLE(IPC_TESTING_API)
 
-namespace WebKit {
+namespace CyberKit {
 
 Vector<SerializedTypeInfo> allSerializedTypes()
 {
@@ -212,6 +212,6 @@ Vector<SerializedEnumInfo> allSerializedEnums()
     };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(IPC_TESTING_API)

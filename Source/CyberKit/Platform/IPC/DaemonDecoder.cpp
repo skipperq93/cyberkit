@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DaemonDecoder.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace Daemon {
 
@@ -60,4 +60,4 @@ Span<const uint8_t> Decoder::decodeFixedLengthReference(size_t size)
 
 } // namespace Daemon
 
-} // namespace WebKit
+} // namespace CyberKit

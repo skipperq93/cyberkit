@@ -51,7 +51,7 @@ static bool didReceiveMessage = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static const char* mainBytes = R"GAMEPADRESOURCE(
 <script>
@@ -692,6 +692,6 @@ TEST(Gamepad, FullInfoAfterConnection)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(APPLE_INTERNAL_SDK)

@@ -81,7 +81,7 @@ class SecurityOrigin;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcess;
 class LayerHostingContext;
@@ -282,8 +282,8 @@ private:
     void configureLoggingChannel(const String&, WTFLogChannelState, WTFLogLevel);
 
 #if USE(GRAPHICS_LAYER_WC)
-    void createWCLayerTreeHost(WebKit::WCLayerTreeHostIdentifier, uint64_t nativeWindow, bool usesOffscreenRendering);
-    void releaseWCLayerTreeHost(WebKit::WCLayerTreeHostIdentifier);
+    void createWCLayerTreeHost(CyberKit::WCLayerTreeHostIdentifier, uint64_t nativeWindow, bool usesOffscreenRendering);
+    void releaseWCLayerTreeHost(CyberKit::WCLayerTreeHostIdentifier);
 #endif
 
     // IPC::Connection::Client
@@ -394,6 +394,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

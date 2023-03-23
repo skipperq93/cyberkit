@@ -43,7 +43,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkResourceLoadParameters : public NetworkLoadParameters {
 public:
@@ -137,4 +137,4 @@ public:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

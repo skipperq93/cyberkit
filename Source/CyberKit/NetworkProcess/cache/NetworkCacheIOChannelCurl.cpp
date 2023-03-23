@@ -28,7 +28,7 @@
 
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace NetworkCache {
 
 IOChannel::IOChannel(String&& filePath, Type type, std::optional<WorkQueue::QOS>)
@@ -86,4 +86,4 @@ void IOChannel::write(size_t offset, const Data& data, WTF::WorkQueueBase& queue
 }
 
 } // namespace NetworkCache
-} // namespace WebKit
+} // namespace CyberKit

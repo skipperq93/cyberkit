@@ -29,7 +29,7 @@
 #import <pal/spi/cf/CoreTextSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 CyberCore::CocoaFont *fontWithAttributes(NSDictionary *attributes, CGFloat size)
 {
