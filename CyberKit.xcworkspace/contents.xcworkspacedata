@@ -23,13 +23,13 @@
       location = "group:Source/WebGPU/WebGPU.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/matthewbenedict/Documents/git/CyberKit/Source/CyberCore/CyberCore.xcodeproj">
+      location = "group:Source/CyberCore/CyberCore.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Source/WebInspectorUI/WebInspectorUI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/matthewbenedict/Documents/git/CyberKit/Source/CyberKitLegacy/CyberKitLegacy.xcodeproj">
+      location = "group:Source/CyberKitLegacy/CyberKitLegacy.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Source/CyberKit/CyberKit.xcodeproj">
@@ -41,7 +41,7 @@
       location = "group:Source/ThirdParty/gtest/xcode/gtest.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Tools/lldb/lldbCyberKitTester/lldbCyberKitTester.xcodeproj">
+      location = "group:/Users/matthewbenedict/Documents/git/WebKit/Tools/lldb/lldbCyberKitTester/lldbCyberKitTester.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Tools/MiniBrowser/MiniBrowser.xcodeproj">
