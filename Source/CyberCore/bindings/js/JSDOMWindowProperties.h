@@ -28,7 +28,7 @@
 #include "JSDOMWindow.h"
 #include "JSDOMWrapper.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMWindowProperties final : public JSDOMObject {
 public:
@@ -75,4 +75,4 @@ private:
     static JSC::GCClient::IsoSubspace* subspaceForImpl(JSC::VM&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

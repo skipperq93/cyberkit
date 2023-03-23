@@ -39,7 +39,7 @@
 #include "WebGLContextAttributes.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobCallback;
 class CanvasRenderingContext;
@@ -55,7 +55,7 @@ class MediaStream;
 class OffscreenCanvas;
 class VideoFrame;
 class WebGLRenderingContextBase;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 struct CanvasRenderingContext2DSettings;
 struct ImageBitmapRenderingContextSettings;
 struct UncachedString;
@@ -202,18 +202,18 @@ private:
 #endif
 };
 
-WebCoreOpaqueRoot root(HTMLCanvasElement*);
+CyberCoreOpaqueRoot root(HTMLCanvasElement*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<typename ArgType> class TypeCastTraits<const WebCore::HTMLCanvasElement, ArgType, false /* isBaseType */> {
+template<typename ArgType> class TypeCastTraits<const CyberCore::HTMLCanvasElement, ArgType, false /* isBaseType */> {
 public:
     static bool isOfType(ArgType& node) { return checkTagName(node); }
 private:
-    static bool checkTagName(const WebCore::CanvasBase& base) { return base.isHTMLCanvasElement(); }
-    static bool checkTagName(const WebCore::HTMLElement& element) { return element.hasTagName(WebCore::HTMLNames::canvasTag); }
-    static bool checkTagName(const WebCore::Node& node) { return node.hasTagName(WebCore::HTMLNames::canvasTag); }
-    static bool checkTagName(const WebCore::EventTarget& target) { return is<WebCore::Node>(target) && checkTagName(downcast<WebCore::Node>(target)); }
+    static bool checkTagName(const CyberCore::CanvasBase& base) { return base.isHTMLCanvasElement(); }
+    static bool checkTagName(const CyberCore::HTMLElement& element) { return element.hasTagName(CyberCore::HTMLNames::canvasTag); }
+    static bool checkTagName(const CyberCore::Node& node) { return node.hasTagName(CyberCore::HTMLNames::canvasTag); }
+    static bool checkTagName(const CyberCore::EventTarget& target) { return is<CyberCore::Node>(target) && checkTagName(downcast<CyberCore::Node>(target)); }
 };
 }

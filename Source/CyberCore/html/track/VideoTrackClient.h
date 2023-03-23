@@ -29,7 +29,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoTrack;
 
@@ -44,7 +44,7 @@ public:
     virtual void willRemoveVideoTrack(VideoTrack&) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif
 

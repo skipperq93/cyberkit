@@ -43,7 +43,7 @@ messages -> WebPasteboardProxy NotRefCounted {
     # Pasteboard messages.
     GetNumberOfFiles(String pasteboardName, std::optional<CyberCore::PageIdentifier> pageID) -> (uint64_t numberOfFiles) Synchronous
     GetPasteboardTypes(String pasteboardName, std::optional<CyberCore::PageIdentifier> pageID) -> (Vector<String> types) Synchronous
-    GetPasteboardPathnamesForType(String pasteboardName, String pasteboardType, std::optional<CyberCore::PageIdentifier> pageID) -> (Vector<String> pathnames, Vector<WebKit::SandboxExtension::Handle> sandboxExtensions) Synchronous
+    GetPasteboardPathnamesForType(String pasteboardName, String pasteboardType, std::optional<CyberCore::PageIdentifier> pageID) -> (Vector<String> pathnames, Vector<CyberKit::SandboxExtension::Handle> sandboxExtensions) Synchronous
     GetPasteboardStringForType(String pasteboardName, String pasteboardType, std::optional<CyberCore::PageIdentifier> pageID) -> (String string) Synchronous
     GetPasteboardStringsForType(String pasteboardName, String pasteboardType, std::optional<CyberCore::PageIdentifier> pageID) -> (Vector<String> strings) Synchronous
     GetPasteboardBufferForType(String pasteboardName, String pasteboardType, std::optional<CyberCore::PageIdentifier> pageID) -> (RefPtr<CyberCore::SharedBuffer> buffer) Synchronous
@@ -60,7 +60,7 @@ messages -> WebPasteboardProxy NotRefCounted {
     URLStringSuitableForLoading(String pasteboardName, std::optional<CyberCore::PageIdentifier> pageID) -> (String url, String title) Synchronous
 
 #if ENABLE(IPC_TESTING_API)
-    TestIPCSharedMemory(String pasteboardName, String pasteboardType, WebKit::SharedMemory::Handle handle, std::optional<CyberCore::PageIdentifier> pageID) -> (int64_t changeCount, String buffer) Synchronous
+    TestIPCSharedMemory(String pasteboardName, String pasteboardType, CyberKit::SharedMemory::Handle handle, std::optional<CyberCore::PageIdentifier> pageID) -> (int64_t changeCount, String buffer) Synchronous
 #endif
 
 #endif

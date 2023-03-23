@@ -42,28 +42,28 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_STANDARD:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_STANDARD 0x00
 
 /**
  * WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_LEFT:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_LEFT 0x01
 
 /**
  * WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_RIGHT:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_RIGHT 0x02
 
 /**
  * WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_NUMPAD:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_KEYBOARD_EVENT_KEY_LOCATION_NUMPAD 0x03
 
@@ -87,7 +87,7 @@ webkit_dom_keyboard_event_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_keyboard_event_get_modifier_state(CyberKitDOMKeyboardEvent* self, const gchar* keyIdentifierArg);
@@ -108,7 +108,7 @@ webkit_dom_keyboard_event_get_modifier_state(CyberKitDOMKeyboardEvent* self, con
  * @altGraphKey: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_keyboard_event_init_keyboard_event(CyberKitDOMKeyboardEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, const gchar* keyIdentifier, gulong location, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gboolean altGraphKey);
@@ -119,7 +119,7 @@ webkit_dom_keyboard_event_init_keyboard_event(CyberKitDOMKeyboardEvent* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_keyboard_event_get_key_identifier(CyberKitDOMKeyboardEvent* self);
@@ -130,7 +130,7 @@ webkit_dom_keyboard_event_get_key_identifier(CyberKitDOMKeyboardEvent* self);
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_keyboard_event_get_key_location(CyberKitDOMKeyboardEvent* self);
@@ -141,7 +141,7 @@ webkit_dom_keyboard_event_get_key_location(CyberKitDOMKeyboardEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_keyboard_event_get_ctrl_key(CyberKitDOMKeyboardEvent* self);
@@ -152,7 +152,7 @@ webkit_dom_keyboard_event_get_ctrl_key(CyberKitDOMKeyboardEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_keyboard_event_get_shift_key(CyberKitDOMKeyboardEvent* self);
@@ -163,7 +163,7 @@ webkit_dom_keyboard_event_get_shift_key(CyberKitDOMKeyboardEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_keyboard_event_get_alt_key(CyberKitDOMKeyboardEvent* self);
@@ -174,7 +174,7 @@ webkit_dom_keyboard_event_get_alt_key(CyberKitDOMKeyboardEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_keyboard_event_get_meta_key(CyberKitDOMKeyboardEvent* self);
@@ -185,7 +185,7 @@ webkit_dom_keyboard_event_get_meta_key(CyberKitDOMKeyboardEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_keyboard_event_get_alt_graph_key(CyberKitDOMKeyboardEvent* self);

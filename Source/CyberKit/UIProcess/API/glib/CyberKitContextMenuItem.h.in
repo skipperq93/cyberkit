@@ -19,13 +19,13 @@
 
 @SHARED_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitContextMenuItem_h
-#define WebKitContextMenuItem_h
+#ifndef CyberKitContextMenuItem_h
+#define CyberKitContextMenuItem_h
 
 #include <gio/gio.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenu.h>
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenuActions.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenuActions.h>
 
 #if PLATFORM(GTK)
 #include <gtk/gtk.h>
@@ -35,13 +35,13 @@ G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_CONTEXT_MENU_ITEM            (webkit_context_menu_item_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_CONTEXT_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_CONTEXT_MENU_ITEM, WebKitContextMenuItem))
+#define WEBKIT_CONTEXT_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_CONTEXT_MENU_ITEM, CyberKitContextMenuItem))
 #define WEBKIT_IS_CONTEXT_MENU_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_CONTEXT_MENU_ITEM))
-#define WEBKIT_CONTEXT_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_CONTEXT_MENU_ITEM, WebKitContextMenuItemClass))
+#define WEBKIT_CONTEXT_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_CONTEXT_MENU_ITEM, CyberKitContextMenuItemClass))
 #define WEBKIT_IS_CONTEXT_MENU_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_CONTEXT_MENU_ITEM))
-#define WEBKIT_CONTEXT_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_CONTEXT_MENU_ITEM, WebKitContextMenuItemClass))
+#define WEBKIT_CONTEXT_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_CONTEXT_MENU_ITEM, CyberKitContextMenuItemClass))
 
-struct _WebKitContextMenuItemClass {
+struct _CyberKitContextMenuItemClass {
     GInitiallyUnownedClass parent_class;
 
     /*< private >*/
@@ -52,52 +52,52 @@ struct _WebKitContextMenuItemClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitContextMenuItem, webkit_context_menu_item, WEBKIT, CONTEXT_MENU_ITEM, GInitiallyUnowned)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitContextMenuItem, webkit_context_menu_item, WEBKIT, CONTEXT_MENU_ITEM, GInitiallyUnowned)
 
 #if PLATFORM(GTK) && !USE(GTK4)
-WEBKIT_DEPRECATED_FOR(webkit_context_menu_item_new_from_gaction) WebKitContextMenuItem *
+WEBKIT_DEPRECATED_FOR(webkit_context_menu_item_new_from_gaction) CyberKitContextMenuItem *
 webkit_context_menu_item_new                              (GtkAction              *action);
 #endif
 
-WEBKIT_API WebKitContextMenuItem *
+WEBKIT_API CyberKitContextMenuItem *
 webkit_context_menu_item_new_from_gaction                 (GAction                *action,
                                                            const gchar            *label,
                                                            GVariant               *target);
 
-WEBKIT_API WebKitContextMenuItem *
-webkit_context_menu_item_new_from_stock_action            (WebKitContextMenuAction action);
+WEBKIT_API CyberKitContextMenuItem *
+webkit_context_menu_item_new_from_stock_action            (CyberKitContextMenuAction action);
 
-WEBKIT_API WebKitContextMenuItem *
-webkit_context_menu_item_new_from_stock_action_with_label (WebKitContextMenuAction action,
+WEBKIT_API CyberKitContextMenuItem *
+webkit_context_menu_item_new_from_stock_action_with_label (CyberKitContextMenuAction action,
                                                            const gchar            *label);
 
-WEBKIT_API WebKitContextMenuItem *
+WEBKIT_API CyberKitContextMenuItem *
 webkit_context_menu_item_new_with_submenu                 (const gchar            *label,
-                                                           WebKitContextMenu      *submenu);
+                                                           CyberKitContextMenu      *submenu);
 
-WEBKIT_API WebKitContextMenuItem *
+WEBKIT_API CyberKitContextMenuItem *
 webkit_context_menu_item_new_separator                    (void);
 
 #if PLATFORM(GTK) && !USE(GTK4)
 WEBKIT_DEPRECATED_FOR(webkit_context_menu_item_get_gaction) GtkAction *
-webkit_context_menu_item_get_action                       (WebKitContextMenuItem  *item);
+webkit_context_menu_item_get_action                       (CyberKitContextMenuItem  *item);
 #endif
 
 WEBKIT_API GAction *
-webkit_context_menu_item_get_gaction                      (WebKitContextMenuItem  *item);
+webkit_context_menu_item_get_gaction                      (CyberKitContextMenuItem  *item);
 
-WEBKIT_API WebKitContextMenuAction
-webkit_context_menu_item_get_stock_action                 (WebKitContextMenuItem  *item);
+WEBKIT_API CyberKitContextMenuAction
+webkit_context_menu_item_get_stock_action                 (CyberKitContextMenuItem  *item);
 
 WEBKIT_API gboolean
-webkit_context_menu_item_is_separator                     (WebKitContextMenuItem  *item);
+webkit_context_menu_item_is_separator                     (CyberKitContextMenuItem  *item);
 
 WEBKIT_API void
-webkit_context_menu_item_set_submenu                      (WebKitContextMenuItem  *item,
-                                                           WebKitContextMenu      *submenu);
+webkit_context_menu_item_set_submenu                      (CyberKitContextMenuItem  *item,
+                                                           CyberKitContextMenu      *submenu);
 
-WEBKIT_API WebKitContextMenu *
-webkit_context_menu_item_get_submenu                      (WebKitContextMenuItem  *item);
+WEBKIT_API CyberKitContextMenu *
+webkit_context_menu_item_get_submenu                      (CyberKitContextMenuItem  *item);
 
 G_END_DECLS
 

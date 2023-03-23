@@ -24,7 +24,7 @@
 #include "TestCallTracer.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestCallTracer : public JSDOMWrapper<TestCallTracer> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestCallTracer> {
     using ToWrappedReturnType = TestCallTracer*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

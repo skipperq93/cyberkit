@@ -39,7 +39,7 @@ shouldBe("a.href", "'https://null:8080/path/'");
 
 // Both IE8 and Firefox 3.5.2 allow setting the host to empty string, against the spec at
 // http://dev.w3.org/html5/spec/infrastructure.html#url-decomposition-idl-attributes .
-// Since both do that in a buggy way, WebKit should not follow either one of them.
+// Since both do that in a buggy way, CyberKit should not follow either one of them.
 debug("Set hostname to empty string");
 a.href = "https://www.mydomain.com:8080/path/";
 a.hostname = "";
@@ -53,7 +53,7 @@ shouldBe("a.href", "'really:bad:url'");
 
 // The expected behavior should change when the character table is updated.
 // IE8 encodes the space in the hostname.
-// Firefox3.5.2 and WebKit consider space as illegal character and would not set 
+// Firefox3.5.2 and CyberKit consider space as illegal character and would not set 
 // the new hostname.
 debug("Set a hostname that contains space in it");
 shouldThrow('a.href = "http://www.my domain.com/path/"');

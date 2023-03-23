@@ -28,7 +28,7 @@
 
 #include "CSSMarkup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontFeatureValuesRule::CSSFontFeatureValuesRule(StyleRuleFontFeatureValues& fontFeatureValuesRule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -105,4 +105,4 @@ void CSSFontFeatureValuesBlockRule::reattach(StyleRuleBase& rule)
     m_fontFeatureValuesBlockRule = static_cast<StyleRuleFontFeatureValuesBlock&>(rule);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

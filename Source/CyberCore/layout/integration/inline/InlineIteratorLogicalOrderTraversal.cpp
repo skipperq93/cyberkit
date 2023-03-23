@@ -28,7 +28,7 @@
 
 #include "InlineIteratorLineBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 static TextLogicalOrderCache makeTextLogicalOrderCacheIfNeeded(const RenderText& text)

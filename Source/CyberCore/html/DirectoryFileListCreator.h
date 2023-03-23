@@ -31,7 +31,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class FileList;

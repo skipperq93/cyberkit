@@ -32,7 +32,7 @@
 #include "RenderObject.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MouseRelatedEvent);
 
@@ -258,4 +258,4 @@ int MouseRelatedEvent::y() const
     return m_clientLocation.y();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

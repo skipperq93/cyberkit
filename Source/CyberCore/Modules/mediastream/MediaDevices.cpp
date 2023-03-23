@@ -52,7 +52,7 @@
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaDevices);
 
@@ -431,6 +431,6 @@ bool MediaDevices::addEventListener(const AtomString& eventType, Ref<EventListen
     return EventTarget::addEventListener(eventType, WTFMove(listener), options);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

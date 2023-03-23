@@ -17,45 +17,45 @@
  */
 
 #include "config.h"
-#include "WebKitWebsiteDataAccessPermissionRequest.h"
+#include "CyberKitWebsiteDataAccessPermissionRequest.h"
 
-#include "WebKitPermissionRequest.h"
-#include "WebKitWebsiteDataAccessPermissionRequestPrivate.h"
+#include "CyberKitPermissionRequest.h"
+#include "CyberKitWebsiteDataAccessPermissionRequestPrivate.h"
 #include <wtf/CompletionHandler.h>
 #include <wtf/glib/WTFGType.h>
 
 #if !ENABLE(2022_GLIB_API)
-typedef WebKitPermissionRequestIface WebKitPermissionRequestInterface;
+typedef CyberKitPermissionRequestIface CyberKitPermissionRequestInterface;
 #endif
 
 /**
- * WebKitWebsiteDataAccessPermissionRequest:
- * @See_also: #WebKitPermissionRequest, #WebKitWebView
+ * CyberKitWebsiteDataAccessPermissionRequest:
+ * @See_also: #CyberKitPermissionRequest, #CyberKitWebView
  *
  * A permission request for accessing website data from third-party domains.
  *
- * WebKitWebsiteDataAccessPermissionRequest represents a request for
+ * CyberKitWebsiteDataAccessPermissionRequest represents a request for
  * permission to allow a third-party domain access its cookies.
  *
- * When a WebKitWebsiteDataAccessPermissionRequest is not handled by the user,
+ * When a CyberKitWebsiteDataAccessPermissionRequest is not handled by the user,
  * it is denied by default.
  *
  * Since: 2.30
  */
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface*);
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface*);
 
-struct _WebKitWebsiteDataAccessPermissionRequestPrivate {
+struct _CyberKitWebsiteDataAccessPermissionRequestPrivate {
     CString requestingDomain;
     CString currentDomain;
     CompletionHandler<void(bool)> completionHandler;
 };
 
 WEBKIT_DEFINE_FINAL_TYPE_WITH_CODE(
-    WebKitWebsiteDataAccessPermissionRequest, webkit_website_data_access_permission_request, G_TYPE_OBJECT, GObject,
+    CyberKitWebsiteDataAccessPermissionRequest, webkit_website_data_access_permission_request, G_TYPE_OBJECT, GObject,
     G_IMPLEMENT_INTERFACE(WEBKIT_TYPE_PERMISSION_REQUEST, webkit_permission_request_interface_init))
 
-static void webkitWebsiteDataAccessPermissionRequestAllow(WebKitPermissionRequest* request)
+static void webkitWebsiteDataAccessPermissionRequestAllow(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(request));
 
@@ -64,7 +64,7 @@ static void webkitWebsiteDataAccessPermissionRequestAllow(WebKitPermissionReques
         priv->completionHandler(true);
 }
 
-static void webkitWebsiteDataAccessPermissionRequestDeny(WebKitPermissionRequest* request)
+static void webkitWebsiteDataAccessPermissionRequestDeny(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(request));
 
@@ -73,7 +73,7 @@ static void webkitWebsiteDataAccessPermissionRequestDeny(WebKitPermissionRequest
         priv->completionHandler(false);
 }
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface* iface)
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface* iface)
 {
     iface->allow = webkitWebsiteDataAccessPermissionRequestAllow;
     iface->deny = webkitWebsiteDataAccessPermissionRequestDeny;
@@ -86,13 +86,13 @@ static void webkitWebsiteDataAccessPermissionRequestDispose(GObject* object)
     G_OBJECT_CLASS(webkit_website_data_access_permission_request_parent_class)->dispose(object);
 }
 
-static void webkit_website_data_access_permission_request_class_init(WebKitWebsiteDataAccessPermissionRequestClass* klass)
+static void webkit_website_data_access_permission_request_class_init(CyberKitWebsiteDataAccessPermissionRequestClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->dispose = webkitWebsiteDataAccessPermissionRequestDispose;
 }
 
-WebKitWebsiteDataAccessPermissionRequest* webkitWebsiteDataAccessPermissionRequestCreate(const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler)
+CyberKitWebsiteDataAccessPermissionRequest* webkitWebsiteDataAccessPermissionRequestCreate(const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto* websiteDataPermissionRequest = WEBKIT_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST, nullptr));
     websiteDataPermissionRequest->priv->requestingDomain = requestingDomain.string().utf8();
@@ -103,7 +103,7 @@ WebKitWebsiteDataAccessPermissionRequest* webkitWebsiteDataAccessPermissionReque
 
 /**
  * webkit_website_data_access_permission_request_get_requesting_domain:
- * @request: a #WebKitWebsiteDataAccessPermissionRequest
+ * @request: a #CyberKitWebsiteDataAccessPermissionRequest
  *
  * Get the domain requesting permission to access its cookies while browsing the current domain.
  *
@@ -111,7 +111,7 @@ WebKitWebsiteDataAccessPermissionRequest* webkitWebsiteDataAccessPermissionReque
  *
  * Since: 2.30
  */
-const char* webkit_website_data_access_permission_request_get_requesting_domain(WebKitWebsiteDataAccessPermissionRequest* request)
+const char* webkit_website_data_access_permission_request_get_requesting_domain(CyberKitWebsiteDataAccessPermissionRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(request), nullptr);
 
@@ -120,7 +120,7 @@ const char* webkit_website_data_access_permission_request_get_requesting_domain(
 
 /**
  * webkit_website_data_access_permission_request_get_current_domain:
- * @request: a #WebKitWebsiteDataAccessPermissionRequest
+ * @request: a #CyberKitWebsiteDataAccessPermissionRequest
  *
  * Get the current domain being browsed.
  *
@@ -128,7 +128,7 @@ const char* webkit_website_data_access_permission_request_get_requesting_domain(
  *
  * Since: 2.30
  */
-const char* webkit_website_data_access_permission_request_get_current_domain(WebKitWebsiteDataAccessPermissionRequest* request)
+const char* webkit_website_data_access_permission_request_get_current_domain(CyberKitWebsiteDataAccessPermissionRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(request), nullptr);
 

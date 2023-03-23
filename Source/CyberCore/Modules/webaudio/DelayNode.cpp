@@ -32,7 +32,7 @@
 #include "DelayProcessor.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DelayNode);
 
@@ -71,6 +71,6 @@ AudioParam& DelayNode::delayTime()
     return static_cast<DelayProcessor&>(*m_processor).delayTime();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

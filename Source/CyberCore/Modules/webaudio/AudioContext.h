@@ -32,7 +32,7 @@
 #include "PlatformMediaSession.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class HTMLMediaElement;
@@ -154,8 +154,8 @@ private:
     bool m_canOverrideBackgroundPlaybackRestriction { true };
 };
 
-} // WebCore
+} // CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioContext)
-    static bool isType(const WebCore::BaseAudioContext& context) { return !context.isOfflineContext(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioContext)
+    static bool isType(const CyberCore::BaseAudioContext& context) { return !context.isOfflineContext(); }
 SPECIALIZE_TYPE_TRAITS_END()

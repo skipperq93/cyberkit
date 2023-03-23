@@ -71,24 +71,24 @@ NSErrorDomain const _WKWebExtensionMatchPatternErrorDomain = @"_WKWebExtensionMa
 {
     NSAssert1(WTF::URLParser::maybeCanonicalizeScheme(String(urlScheme)), @"Invalid parameter: '%@' is not a valid URL scheme", urlScheme);
 
-    WebKit::WebExtensionMatchPattern::registerCustomURLScheme(urlScheme);
+    CyberKit::WebExtensionMatchPattern::registerCustomURLScheme(urlScheme);
 }
 
 + (instancetype)allURLsMatchPattern
 {
-    return WebKit::wrapper(WebKit::WebExtensionMatchPattern::allURLsMatchPattern());
+    return CyberKit::wrapper(CyberKit::WebExtensionMatchPattern::allURLsMatchPattern());
 }
 
 + (instancetype)allHostsAndSchemesMatchPattern
 {
-    return WebKit::wrapper(WebKit::WebExtensionMatchPattern::allHostsAndSchemesMatchPattern());
+    return CyberKit::wrapper(CyberKit::WebExtensionMatchPattern::allHostsAndSchemesMatchPattern());
 }
 
 + (instancetype)matchPatternWithString:(NSString *)patternString
 {
     NSParameterAssert(patternString);
 
-    return WebKit::wrapper(WebKit::WebExtensionMatchPattern::getOrCreate(patternString));
+    return CyberKit::wrapper(CyberKit::WebExtensionMatchPattern::getOrCreate(patternString));
 }
 
 + (instancetype)matchPatternWithScheme:(NSString *)scheme host:(NSString *)host path:(NSString *)path
@@ -97,7 +97,7 @@ NSErrorDomain const _WKWebExtensionMatchPatternErrorDomain = @"_WKWebExtensionMa
     NSParameterAssert(host);
     NSParameterAssert(path);
 
-    return WebKit::wrapper(WebKit::WebExtensionMatchPattern::getOrCreate(scheme, host, path));
+    return CyberKit::wrapper(CyberKit::WebExtensionMatchPattern::getOrCreate(scheme, host, path));
 }
 
 - (instancetype)initWithString:(NSString *)string error:(NSError **)error
@@ -106,13 +106,13 @@ NSErrorDomain const _WKWebExtensionMatchPatternErrorDomain = @"_WKWebExtensionMa
 
     if (!error) {
         // Balance the destructor in dealloc with the empty constructor.
-        API::Object::constructInWrapper<WebKit::WebExtensionMatchPattern>(self);
+        API::Object::constructInWrapper<CyberKit::WebExtensionMatchPattern>(self);
 
         // Use the pattern cache instead for better performance, since an error isn't needed.
-        return WebKit::wrapper(WebKit::WebExtensionMatchPattern::getOrCreate(string));
+        return CyberKit::wrapper(CyberKit::WebExtensionMatchPattern::getOrCreate(string));
     }
 
-    API::Object::constructInWrapper<WebKit::WebExtensionMatchPattern>(self, string, error);
+    API::Object::constructInWrapper<CyberKit::WebExtensionMatchPattern>(self, string, error);
 
     return _webExtensionMatchPattern->isValid() ? self : nil;
 }
@@ -125,13 +125,13 @@ NSErrorDomain const _WKWebExtensionMatchPatternErrorDomain = @"_WKWebExtensionMa
 
     if (!error) {
         // Balance the destructor in dealloc with the empty constructor.
-        API::Object::constructInWrapper<WebKit::WebExtensionMatchPattern>(self);
+        API::Object::constructInWrapper<CyberKit::WebExtensionMatchPattern>(self);
 
         // Use the pattern cache instead for better performance, since an error isn't needed.
-        return WebKit::wrapper(WebKit::WebExtensionMatchPattern::getOrCreate(scheme, host, path));
+        return CyberKit::wrapper(CyberKit::WebExtensionMatchPattern::getOrCreate(scheme, host, path));
     }
 
-    API::Object::constructInWrapper<WebKit::WebExtensionMatchPattern>(self, scheme, host, path, error);
+    API::Object::constructInWrapper<CyberKit::WebExtensionMatchPattern>(self, scheme, host, path, error);
 
     return _webExtensionMatchPattern->isValid() ? self : nil;
 }
@@ -214,18 +214,18 @@ NSErrorDomain const _WKWebExtensionMatchPatternErrorDomain = @"_WKWebExtensionMa
     return [self matchesURL:urlToMatch options:0];
 }
 
-static OptionSet<WebKit::WebExtensionMatchPattern::Options> toImpl(_WKWebExtensionMatchPatternOptions options)
+static OptionSet<CyberKit::WebExtensionMatchPattern::Options> toImpl(_WKWebExtensionMatchPatternOptions options)
 {
-    OptionSet<WebKit::WebExtensionMatchPattern::Options> result;
+    OptionSet<CyberKit::WebExtensionMatchPattern::Options> result;
 
     if (options & _WKWebExtensionMatchPatternOptionsIgnoreSchemes)
-        result.add(WebKit::WebExtensionMatchPattern::Options::IgnoreSchemes);
+        result.add(CyberKit::WebExtensionMatchPattern::Options::IgnoreSchemes);
 
     if (options & _WKWebExtensionMatchPatternOptionsIgnorePaths)
-        result.add(WebKit::WebExtensionMatchPattern::Options::IgnorePaths);
+        result.add(CyberKit::WebExtensionMatchPattern::Options::IgnorePaths);
 
     if (options & _WKWebExtensionMatchPatternOptionsMatchBidirectionally)
-        result.add(WebKit::WebExtensionMatchPattern::Options::MatchBidirectionally);
+        result.add(CyberKit::WebExtensionMatchPattern::Options::MatchBidirectionally);
 
     return result;
 }
@@ -256,7 +256,7 @@ static OptionSet<WebKit::WebExtensionMatchPattern::Options> toImpl(_WKWebExtensi
     return *_webExtensionMatchPattern;
 }
 
-- (WebKit::WebExtensionMatchPattern&)_webExtensionMatchPattern
+- (CyberKit::WebExtensionMatchPattern&)_webExtensionMatchPattern
 {
     return *_webExtensionMatchPattern;
 }

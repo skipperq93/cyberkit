@@ -18,41 +18,41 @@
  */
 
 #include "config.h"
-#include "WebKitNavigationPolicyDecision.h"
+#include "CyberKitNavigationPolicyDecision.h"
 
-#include "WebKitEnumTypes.h"
-#include "WebKitNavigationActionPrivate.h"
-#include "WebKitNavigationPolicyDecisionPrivate.h"
-#include "WebKitPolicyDecisionPrivate.h"
-#include "WebKitURIRequestPrivate.h"
+#include "CyberKitEnumTypes.h"
+#include "CyberKitNavigationActionPrivate.h"
+#include "CyberKitNavigationPolicyDecisionPrivate.h"
+#include "CyberKitPolicyDecisionPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitNavigationPolicyDecision:
- * @See_also: #WebKitPolicyDecision, #WebKitWebView
+ * CyberKitNavigationPolicyDecision:
+ * @See_also: #CyberKitPolicyDecision, #CyberKitWebView
  *
  * A policy decision for navigation actions.
  *
- * WebKitNavigationPolicyDecision represents a policy decision for events associated with
- * navigations. If the value of #WebKitNavigationPolicyDecision:mouse-button is not 0, then
+ * CyberKitNavigationPolicyDecision represents a policy decision for events associated with
+ * navigations. If the value of #CyberKitNavigationPolicyDecision:mouse-button is not 0, then
  * the navigation was triggered by a mouse event.
  */
 
-struct _WebKitNavigationPolicyDecisionPrivate {
-    ~_WebKitNavigationPolicyDecisionPrivate()
+struct _CyberKitNavigationPolicyDecisionPrivate {
+    ~_CyberKitNavigationPolicyDecisionPrivate()
     {
         webkit_navigation_action_free(navigationAction);
     }
 
-    WebKitNavigationAction* navigationAction;
+    CyberKitNavigationAction* navigationAction;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitNavigationPolicyDecision, webkit_navigation_policy_decision, WEBKIT_TYPE_POLICY_DECISION, WebKitPolicyDecision)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitNavigationPolicyDecision, webkit_navigation_policy_decision, WEBKIT_TYPE_POLICY_DECISION, CyberKitPolicyDecision)
 
 enum {
     PROP_0,
@@ -70,7 +70,7 @@ enum {
 
 static void webkitNavigationPolicyDecisionGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitNavigationPolicyDecision* decision = WEBKIT_NAVIGATION_POLICY_DECISION(object);
+    CyberKitNavigationPolicyDecision* decision = WEBKIT_NAVIGATION_POLICY_DECISION(object);
     switch (propId) {
     case PROP_NAVIGATION_ACTION:
         g_value_set_boxed(value, webkit_navigation_policy_decision_get_navigation_action(decision));
@@ -100,15 +100,15 @@ static void webkitNavigationPolicyDecisionGetProperty(GObject* object, guint pro
     }
 }
 
-static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyDecisionClass* decisionClass)
+static void webkit_navigation_policy_decision_class_init(CyberKitNavigationPolicyDecisionClass* decisionClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(decisionClass);
     objectClass->get_property = webkitNavigationPolicyDecisionGetProperty;
 
     /**
-     * WebKitNavigationPolicyDecision:navigation-action:
+     * CyberKitNavigationPolicyDecision:navigation-action:
      *
-     * The #WebKitNavigationAction that triggered this policy decision.
+     * The #CyberKitNavigationAction that triggered this policy decision.
      *
      * Since: 2.6
      */
@@ -123,13 +123,13 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
 
 #if PLATFORM(GTK) && !USE(GTK4)
     /**
-     * WebKitNavigationPolicyDecision:navigation-type:
+     * CyberKitNavigationPolicyDecision:navigation-type:
      *
      * The type of navigation that triggered this policy decision. This is
      * useful for enacting different policies depending on what type of user
      * action caused the navigation.
      *
-     * Deprecated: 2.6: Use #WebKitNavigationPolicyDecision:navigation-action instead
+     * Deprecated: 2.6: Use #CyberKitNavigationPolicyDecision:navigation-action instead
      */
     g_object_class_install_property(objectClass,
                                     PROP_NAVIGATION_TYPE,
@@ -140,7 +140,7 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
                                                       WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitNavigationPolicyDecision:mouse-button:
+     * CyberKitNavigationPolicyDecision:mouse-button:
      *
      * If the navigation associated with this policy decision was originally
      * triggered by a mouse event, this property contains non-zero button number
@@ -148,7 +148,7 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
      * If the navigation was not triggered by a mouse event, the value of this
      * property will be 0.
      *
-     * Deprecated: 2.6: Use #WebKitNavigationPolicyDecision:navigation-action instead
+     * Deprecated: 2.6: Use #CyberKitNavigationPolicyDecision:navigation-action instead
      */
     g_object_class_install_property(objectClass,
                                     PROP_MOUSE_BUTTON,
@@ -158,7 +158,7 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
                                                       WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitNavigationPolicyDecision:modifiers:
+     * CyberKitNavigationPolicyDecision:modifiers:
      *
      * If the navigation associated with this policy decision was originally
      * triggered by a mouse event, this property contains a bitmask of various
@@ -166,7 +166,7 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
      * If the navigation was not triggered by a mouse event or no modifiers
      * were active, the value of this property will be zero.
      *
-     * Deprecated: 2.6: Use #WebKitNavigationPolicyDecision:navigation-action instead
+     * Deprecated: 2.6: Use #CyberKitNavigationPolicyDecision:navigation-action instead
      */
     g_object_class_install_property(objectClass,
                                     PROP_MODIFIERS,
@@ -176,12 +176,12 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
                                                       WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitNavigationPolicyDecision:request:
+     * CyberKitNavigationPolicyDecision:request:
      *
-     * This property contains the #WebKitURIRequest associated with this
+     * This property contains the #CyberKitURIRequest associated with this
      * navigation.
      *
-     * Deprecated: 2.6: Use #WebKitNavigationPolicyDecision:navigation-action instead
+     * Deprecated: 2.6: Use #CyberKitNavigationPolicyDecision:navigation-action instead
      */
     g_object_class_install_property(objectClass,
                                     PROP_REQUEST,
@@ -193,14 +193,14 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
 
 #if !ENABLE(2022_GLIB_API)
     /**
-     * WebKitNavigationPolicyDecision:frame-name:
+     * CyberKitNavigationPolicyDecision:frame-name:
      *
      * If this navigation request targets a new frame, this property contains
      * the name of that frame. For example if the decision was triggered by clicking a
      * link with a target attribute equal to "_blank", this property will contain the
      * value of that attribute. In all other cases, this value will be %NULL.
      *
-     * Deprecated: 2.40: Use #WebKitNavigationPolicyDecision:navigation-action instead
+     * Deprecated: 2.40: Use #CyberKitNavigationPolicyDecision:navigation-action instead
      */
     g_object_class_install_property(objectClass,
                                     PROP_FRAME_NAME,
@@ -213,15 +213,15 @@ static void webkit_navigation_policy_decision_class_init(WebKitNavigationPolicyD
 
 /**
  * webkit_navigation_policy_decision_get_navigation_action:
- * @decision: a #WebKitNavigationPolicyDecision
+ * @decision: a #CyberKitNavigationPolicyDecision
  *
- * Gets the value of the #WebKitNavigationPolicyDecision:navigation-action property.
+ * Gets the value of the #CyberKitNavigationPolicyDecision:navigation-action property.
  *
- * Returns: (transfer none): The #WebKitNavigationAction triggering this policy decision.
+ * Returns: (transfer none): The #CyberKitNavigationAction triggering this policy decision.
  *
  * Since: 2.6
  */
-WebKitNavigationAction* webkit_navigation_policy_decision_get_navigation_action(WebKitNavigationPolicyDecision* decision)
+CyberKitNavigationAction* webkit_navigation_policy_decision_get_navigation_action(CyberKitNavigationPolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_NAVIGATION_POLICY_DECISION(decision), nullptr);
     return decision->priv->navigationAction;
@@ -230,15 +230,15 @@ WebKitNavigationAction* webkit_navigation_policy_decision_get_navigation_action(
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_navigation_policy_decision_get_navigation_type:
- * @decision: a #WebKitNavigationPolicyDecision
+ * @decision: a #CyberKitNavigationPolicyDecision
  *
- * Gets the value of the #WebKitNavigationPolicyDecision:navigation-type property.
+ * Gets the value of the #CyberKitNavigationPolicyDecision:navigation-type property.
  *
  * Returns: The type of navigation triggering this policy decision.
  *
  * Deprecated: 2.6: Use webkit_navigation_policy_decision_get_navigation_action() instead.
  */
-WebKitNavigationType webkit_navigation_policy_decision_get_navigation_type(WebKitNavigationPolicyDecision* decision)
+CyberKitNavigationType webkit_navigation_policy_decision_get_navigation_type(CyberKitNavigationPolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_NAVIGATION_POLICY_DECISION(decision), WEBKIT_NAVIGATION_TYPE_OTHER);
     return webkit_navigation_action_get_navigation_type(decision->priv->navigationAction);
@@ -246,15 +246,15 @@ WebKitNavigationType webkit_navigation_policy_decision_get_navigation_type(WebKi
 
 /**
  * webkit_navigation_policy_decision_get_mouse_button:
- * @decision: a #WebKitNavigationPolicyDecision
+ * @decision: a #CyberKitNavigationPolicyDecision
  *
- * Gets the value of the #WebKitNavigationPolicyDecision:mouse-button property.
+ * Gets the value of the #CyberKitNavigationPolicyDecision:mouse-button property.
  *
  * Returns: The mouse button used if this decision was triggered by a mouse event or 0 otherwise
  *
  * Deprecated: 2.6: Use webkit_navigation_policy_decision_get_navigation_action() instead.
  */
-guint webkit_navigation_policy_decision_get_mouse_button(WebKitNavigationPolicyDecision* decision)
+guint webkit_navigation_policy_decision_get_mouse_button(CyberKitNavigationPolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_NAVIGATION_POLICY_DECISION(decision), 0);
     return webkit_navigation_action_get_mouse_button(decision->priv->navigationAction);
@@ -262,15 +262,15 @@ guint webkit_navigation_policy_decision_get_mouse_button(WebKitNavigationPolicyD
 
 /**
  * webkit_navigation_policy_decision_get_modifiers:
- * @decision: a #WebKitNavigationPolicyDecision
+ * @decision: a #CyberKitNavigationPolicyDecision
  *
- * Gets the value of the #WebKitNavigationPolicyDecision:modifiers property.
+ * Gets the value of the #CyberKitNavigationPolicyDecision:modifiers property.
  *
  * Returns: The modifiers active if this decision was triggered by a mouse event
  *
  * Deprecated: 2.6: Use webkit_navigation_policy_decision_get_navigation_action() instead.
  */
-unsigned webkit_navigation_policy_decision_get_modifiers(WebKitNavigationPolicyDecision* decision)
+unsigned webkit_navigation_policy_decision_get_modifiers(CyberKitNavigationPolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_NAVIGATION_POLICY_DECISION(decision), 0);
     return webkit_navigation_action_get_modifiers(decision->priv->navigationAction);
@@ -278,15 +278,15 @@ unsigned webkit_navigation_policy_decision_get_modifiers(WebKitNavigationPolicyD
 
 /**
  * webkit_navigation_policy_decision_get_request:
- * @decision: a #WebKitNavigationPolicyDecision
+ * @decision: a #CyberKitNavigationPolicyDecision
  *
- * Gets the value of the #WebKitNavigationPolicyDecision:request property.
+ * Gets the value of the #CyberKitNavigationPolicyDecision:request property.
  *
  * Returns: (transfer none): The URI request that is associated with this navigation
  *
  * Deprecated: 2.6: Use webkit_navigation_policy_decision_get_navigation_action() instead.
  */
-WebKitURIRequest* webkit_navigation_policy_decision_get_request(WebKitNavigationPolicyDecision* decision)
+CyberKitURIRequest* webkit_navigation_policy_decision_get_request(CyberKitNavigationPolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_NAVIGATION_POLICY_DECISION(decision), nullptr);
     return webkit_navigation_action_get_request(decision->priv->navigationAction);
@@ -296,26 +296,26 @@ WebKitURIRequest* webkit_navigation_policy_decision_get_request(WebKitNavigation
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_navigation_policy_decision_get_frame_name:
- * @decision: a #WebKitNavigationPolicyDecision
+ * @decision: a #CyberKitNavigationPolicyDecision
  *
- * Gets the value of the #WebKitNavigationPolicyDecision:frame-name property.
+ * Gets the value of the #CyberKitNavigationPolicyDecision:frame-name property.
  *
  * Returns: The name of the new frame this navigation action targets or %NULL
  *
  * Deprecated: 2.40: Use webkit_navigation_policy_decision_get_navigation_action() instead.
  */
-const char* webkit_navigation_policy_decision_get_frame_name(WebKitNavigationPolicyDecision* decision)
+const char* webkit_navigation_policy_decision_get_frame_name(CyberKitNavigationPolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_NAVIGATION_POLICY_DECISION(decision), nullptr);
     return webkit_navigation_action_get_frame_name(decision->priv->navigationAction);
 }
 #endif
 
-WebKitPolicyDecision* webkitNavigationPolicyDecisionCreate(Ref<API::NavigationAction>&& navigationAction, Ref<WebFramePolicyListenerProxy>&& listener)
+CyberKitPolicyDecision* webkitNavigationPolicyDecisionCreate(Ref<API::NavigationAction>&& navigationAction, Ref<WebFramePolicyListenerProxy>&& listener)
 {
-    WebKitNavigationPolicyDecision* navigationDecision = WEBKIT_NAVIGATION_POLICY_DECISION(g_object_new(WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, nullptr));
+    CyberKitNavigationPolicyDecision* navigationDecision = WEBKIT_NAVIGATION_POLICY_DECISION(g_object_new(WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, nullptr));
     navigationDecision->priv->navigationAction = webkitNavigationActionCreate(WTFMove(navigationAction));
-    WebKitPolicyDecision* decision = WEBKIT_POLICY_DECISION(navigationDecision);
+    CyberKitPolicyDecision* decision = WEBKIT_POLICY_DECISION(navigationDecision);
     webkitPolicyDecisionSetListener(decision, WTFMove(listener));
     return decision;
 }

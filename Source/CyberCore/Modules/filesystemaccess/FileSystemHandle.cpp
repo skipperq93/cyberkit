@@ -30,7 +30,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FileSystemHandle);
 
@@ -96,4 +96,4 @@ void FileSystemHandle::stop()
     close();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

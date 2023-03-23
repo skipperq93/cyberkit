@@ -30,7 +30,7 @@
 
 #import "WKContentViewInteraction.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RevealFocusedElementDeferrer::RevealFocusedElementDeferrer(WKContentView *view, OptionSet<RevealFocusedElementDeferralReason> reasons)
     : m_view(view)
@@ -54,6 +54,6 @@ void RevealFocusedElementDeferrer::fulfill(RevealFocusedElementDeferralReason re
     [std::exchange(m_view, nil) _zoomToRevealFocusedElement];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

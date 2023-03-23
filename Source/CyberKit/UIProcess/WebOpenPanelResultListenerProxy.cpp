@@ -32,7 +32,7 @@
 #include <wtf/URL.h>
 #include <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebOpenPanelResultListenerProxy::WebOpenPanelResultListenerProxy(WebPageProxy* page)
@@ -75,4 +75,4 @@ void WebOpenPanelResultListenerProxy::invalidate()
     m_page = nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

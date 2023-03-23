@@ -36,7 +36,7 @@
 #include <pal/spi/cocoa/AccessibilitySupportSoftLink.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 AXIsolatedObject::AXIsolatedObject(const Ref<AccessibilityObject>& axObject, AXIsolatedTree* tree)
     : AXCoreObject(axObject->objectID())
@@ -1833,6 +1833,6 @@ Vector<String> AXIsolatedObject::classList() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE((ACCESSIBILITY_ISOLATED_TREE)

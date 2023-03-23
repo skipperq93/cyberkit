@@ -30,7 +30,7 @@
 
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebDateTimePicker::WebDateTimePicker(WebPageProxy& page)
     : m_page(page)
@@ -47,6 +47,6 @@ void WebDateTimePicker::endPicker()
         page->didEndDateTimePicker();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

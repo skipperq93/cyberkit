@@ -28,7 +28,7 @@
 
 #import "_WKFullscreenDelegate.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 FullscreenClient::FullscreenClient(WKWebView *webView)
     : m_webView(webView)
@@ -109,4 +109,4 @@ void FullscreenClient::didExitFullscreen(WebPageProxy*)
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

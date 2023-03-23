@@ -38,7 +38,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRHand : public RefCounted<WebXRHand>, public CanMakeWeakPtr<WebXRHand> {
     WTF_MAKE_ISO_ALLOCATED(WebXRHand);

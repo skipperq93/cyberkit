@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebPageGroup.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebPageGroup> {
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN

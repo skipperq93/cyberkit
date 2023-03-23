@@ -37,7 +37,7 @@
 #include <wtf/URLParser.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 static void append(Vector<uint8_t>& vector, size_t length)
 {
@@ -967,6 +967,6 @@ size_t RedirectAction::URLTransformAction::QueryTransform::QueryKeyValue::serial
     return deserializeLength(span, 0);
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

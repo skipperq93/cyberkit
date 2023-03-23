@@ -37,7 +37,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerRtpReceiverBackend;
 class GStreamerRtpTransceiverBackend;
@@ -191,6 +191,6 @@ private:
     HashMap<DataChannelHandlerIdentifier, UniqueRef<GStreamerDataChannelHandler>> m_incomingDataChannels;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

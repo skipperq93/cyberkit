@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderedDocumentMarker : public DocumentMarker {
 public:
@@ -98,4 +98,4 @@ private:
     Markable<WallTime> m_animationStartTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

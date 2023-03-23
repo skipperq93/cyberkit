@@ -28,11 +28,11 @@
 #include "JSDOMGlobalObject.h"
 #include "JSVoidCallback.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ObjectConstructor.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<> TestDerivedDictionary2 convertDictionary<TestDerivedDictionary2>(JSGlobalObject& lexicalGlobalObject, JSValue value)
@@ -332,4 +332,4 @@ JSC::JSObject* convertDictionaryToJS(JSC::JSGlobalObject& lexicalGlobalObject, J
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -63,7 +63,7 @@
 #include "ScriptExecutionContext.h"
 #include "SharedBuffer.h"
 #include "WebCodecsEncodedVideoChunk.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/APICast.h>
 #include <CyberScriptCore/BigIntObject.h>
 #include <CyberScriptCore/BooleanObject.h>
@@ -119,7 +119,7 @@
 #define ASSUME_LITTLE_ENDIAN 1
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -5006,4 +5006,4 @@ IDBValue SerializedScriptValue::writeBlobsToDiskForIndexedDBSynchronously()
     return value;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

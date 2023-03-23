@@ -27,7 +27,7 @@
 
 #include "InlineIteratorBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace InlineIterator {
 
@@ -84,10 +84,10 @@ inline InlineBoxIterator InlineBox::iterator() const
 }
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::InlineIterator::InlineBox)
-static bool isType(const WebCore::InlineIterator::Box& box) { return box.isInlineBox(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::InlineIterator::InlineBox)
+static bool isType(const CyberCore::InlineIterator::Box& box) { return box.isInlineBox(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::InlineIterator::InlineBoxIterator)
-static bool isType(const WebCore::InlineIterator::BoxIterator& box) { return !box || box->isInlineBox(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::InlineIterator::InlineBoxIterator)
+static bool isType(const CyberCore::InlineIterator::BoxIterator& box) { return !box || box->isInlineBox(); }
 SPECIALIZE_TYPE_TRAITS_END()

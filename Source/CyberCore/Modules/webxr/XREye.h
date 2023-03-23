@@ -29,10 +29,10 @@
 
 #include "PlatformXR.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using XREye = PlatformXR::Eye;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

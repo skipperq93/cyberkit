@@ -33,7 +33,7 @@
 #import "WebAccessibilityObjectWrapperBase.h"
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PlainTextRange::PlainTextRange(NSRange range)
     : start(range.location)
@@ -378,6 +378,6 @@ RetainPtr<NSAttributedString> AccessibilityObject::attributedStringForTextMarker
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ACCESSIBILITY) && PLATFORM(COCOA)

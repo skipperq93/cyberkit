@@ -6,7 +6,7 @@
 <script>
 promise_test(async (test) => {
     const uuid = token();
-    const url = get_host_info().HTTP_REMOTE_ORIGIN + '/WebKit/fetch/resources/clear-memory-cache.py?uuid=' + uuid;
+    const url = get_host_info().HTTP_REMOTE_ORIGIN + '/CyberKit/fetch/resources/clear-memory-cache.py?uuid=' + uuid;
 
     await fetch(url, { mode: 'cors', headers: [['header', 'value']] });
 

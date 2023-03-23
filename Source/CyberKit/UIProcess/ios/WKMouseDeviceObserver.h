@@ -27,7 +27,7 @@
 
 #import "BackBoardServicesSPI.h"
 
-namespace WebKit {
+namespace CyberKit {
 class WebProcessProxy;
 }
 

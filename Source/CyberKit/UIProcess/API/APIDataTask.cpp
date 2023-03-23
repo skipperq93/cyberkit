@@ -46,7 +46,7 @@ void DataTask::cancel()
         m_networkProcess->cancelDataTask(m_identifier, *m_sessionID);
 }
 
-DataTask::DataTask(WebKit::DataTaskIdentifier identifier, WeakPtr<WebKit::WebPageProxy>&& page, WTF::URL&& originalURL)
+DataTask::DataTask(CyberKit::DataTaskIdentifier identifier, WeakPtr<CyberKit::WebPageProxy>&& page, WTF::URL&& originalURL)
     : m_identifier(identifier)
     , m_page(WTFMove(page))
     , m_originalURL(WTFMove(originalURL))

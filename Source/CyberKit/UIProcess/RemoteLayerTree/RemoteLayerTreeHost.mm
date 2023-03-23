@@ -47,7 +47,7 @@
 #import <UIKit/UIView.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #define REMOTE_LAYER_TREE_HOST_RELEASE_LOG(...) RELEASE_LOG(ViewState, __VA_ARGS__)
@@ -308,8 +308,8 @@ void RemoteLayerTreeHost::createLayer(const RemoteLayerTreeTransaction::LayerCre
     auto node = makeNode(properties);
 
 #if HAVE(CALAYER_USES_WEBKIT_BEHAVIOR)
-    if (css3DTransformInteroperabilityEnabled() && [node->layer() respondsToSelector:@selector(setUsesWebKitBehavior:)]) {
-        [node->layer() setUsesWebKitBehavior:YES];
+    if (css3DTransformInteroperabilityEnabled() && [node->layer() respondsToSelector:@selector(setUsesCyberKitBehavior:)]) {
+        [node->layer() setUsesCyberKitBehavior:YES];
         if ([node->layer() isKindOfClass:[CATransformLayer class]])
             [node->layer() setSortsSublayers:YES];
         else
@@ -403,6 +403,6 @@ void RemoteLayerTreeHost::mapAllIOSurfaceBackingStore()
     recursivelyMapIOSurfaceBackingStore(rootLayer());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef REMOTE_LAYER_TREE_HOST_RELEASE_LOG

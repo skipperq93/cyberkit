@@ -28,7 +28,7 @@
 #if ENABLE(WEBGL)
 #include "WebGLTransformFeedback.h"
 
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebGL2RenderingContext.h"
 #include "WebGLBuffer.h"
 #include "WebGLContextGroup.h"
@@ -36,7 +36,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLTransformFeedback> WebGLTransformFeedback::create(WebGL2RenderingContext& ctx)
 {
@@ -97,9 +97,9 @@ bool WebGLTransformFeedback::hasEnoughBuffers(GCGLuint numRequired) const
 void WebGLTransformFeedback::addMembersToOpaqueRoots(const AbstractLocker& locker, JSC::AbstractSlotVisitor& visitor)
 {
     for (auto& buffer : m_boundIndexedTransformFeedbackBuffers)
-        addWebCoreOpaqueRoot(visitor, buffer.get());
+        addCyberCoreOpaqueRoot(visitor, buffer.get());
 
-    addWebCoreOpaqueRoot(visitor, m_program.get());
+    addCyberCoreOpaqueRoot(visitor, m_program.get());
     if (m_program)
         m_program->addMembersToOpaqueRoots(locker, visitor);
 }

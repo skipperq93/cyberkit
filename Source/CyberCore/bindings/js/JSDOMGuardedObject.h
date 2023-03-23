@@ -32,7 +32,7 @@
 #include <CyberScriptCore/SlotVisitorInlines.h>
 #include <CyberScriptCore/StrongInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT DOMGuardedObject : public RefCounted<DOMGuardedObject>, public ActiveDOMCallback {
 public:
@@ -66,4 +66,4 @@ protected:
     T* guarded() const { return JSC::jsDynamicCast<T*>(guardedObject()); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

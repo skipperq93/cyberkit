@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class NavigatorBase;
@@ -82,4 +82,4 @@ private:
     HashMap<WebLockIdentifier, LockRequest> m_pendingRequests;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

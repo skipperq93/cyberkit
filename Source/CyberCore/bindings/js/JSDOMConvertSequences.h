@@ -34,7 +34,7 @@
 #include <CyberScriptCore/JSGlobalObjectInlines.h>
 #include <CyberScriptCore/ObjectConstructor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Detail {
 
@@ -433,5 +433,5 @@ template<typename T> struct JSConverter<IDLFrozenArray<T>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

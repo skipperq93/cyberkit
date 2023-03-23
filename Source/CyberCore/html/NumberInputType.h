@@ -33,7 +33,7 @@
 
 #include "TextFieldInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class NumberInputType final : public TextFieldInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -67,6 +67,6 @@ private:
     void attributeChanged(const QualifiedName&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(NumberInputType, Type::Number)

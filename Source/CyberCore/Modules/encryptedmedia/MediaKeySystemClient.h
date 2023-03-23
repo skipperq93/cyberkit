@@ -28,7 +28,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Page;
@@ -47,6 +47,6 @@ protected:
 
 WEBCORE_EXPORT void provideMediaKeySystemTo(Page&, MediaKeySystemClient&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

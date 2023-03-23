@@ -28,7 +28,7 @@
 #import "APIFrameInfo.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::FrameInfo> {
     using WrapperClass = WKFrameInfo;

@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMMapAdapter;
 class DOMString;

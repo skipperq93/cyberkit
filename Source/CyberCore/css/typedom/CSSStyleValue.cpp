@@ -37,7 +37,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSStyleValue);
 
@@ -92,4 +92,4 @@ void CSSStyleValue::serialize(StringBuilder& builder, OptionSet<SerializationArg
         builder.append(m_propertyValue->cssText());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

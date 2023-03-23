@@ -30,7 +30,7 @@
 #include <CyberScriptCore/WeakGCMap.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMConstructors;
 class DOMGuardedObject;
@@ -153,4 +153,4 @@ JSDOMGlobalObject& legacyActiveGlobalObjectForAccessor(JSC::JSGlobalObject&, JSC
 template<class JSClass>
 inline JSClass* toJSDOMGlobalObject(JSC::VM&, JSC::JSValue);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "FullscreenManager.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;
@@ -51,6 +51,6 @@ public:
     static void webkitCancelFullScreen(Document& document) { document.fullscreenManager().cancelFullscreen(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

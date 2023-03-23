@@ -28,7 +28,7 @@
 #include "PermissionState.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class ScriptExecutionContext;
@@ -49,4 +49,4 @@ public:
     virtual const WeakPtr<Page>& page() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

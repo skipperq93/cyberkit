@@ -77,7 +77,7 @@
 #include "WrapContentsInDummySpanCommand.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -85,7 +85,7 @@ int AccessibilityUndoReplacedText::indexForVisiblePosition(const VisiblePosition
 {
     if (position.deepEquivalent().isNull())
         return -1;
-    return WebCore::indexForVisiblePosition(position, scope);
+    return CyberCore::indexForVisiblePosition(position, scope);
 }
 
 void AccessibilityUndoReplacedText::configureRangeDeletedByReapplyWithEndingSelection(const VisibleSelection& selection)
@@ -1788,4 +1788,4 @@ Ref<Element> createBlockPlaceholderElement(Document& document)
     return HTMLBRElement::create(document);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

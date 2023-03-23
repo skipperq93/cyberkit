@@ -48,7 +48,7 @@
 #include <pal/spi/mac/QuarantineSPI.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 DownloadProxy::DownloadProxy(DownloadProxyMap& downloadProxyMap, WebsiteDataStore& dataStore, API::DownloadClient& client, const ResourceRequest& resourceRequest, const FrameInfoData& frameInfoData, WebPageProxy* originatingPage)
@@ -234,5 +234,5 @@ void DownloadProxy::setClient(Ref<API::DownloadClient>&& client)
     m_client = WTFMove(client);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

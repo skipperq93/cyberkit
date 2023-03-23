@@ -47,7 +47,7 @@ static NSString * const suggestionCellReuseIdentifier = @"WKDataListSuggestionCe
 @property (nonatomic, weak) WKContentView *view;
 @property (nonatomic) BOOL isShowingSuggestions;
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType;
+- (void)showSuggestionsDropdown:(CyberKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType;
 
 - (NSArray<WKDataListTextSuggestion *> *)textSuggestions;
 - (NSInteger)suggestionsCount;
@@ -86,7 +86,7 @@ static NSString * const suggestionCellReuseIdentifier = @"WKDataListSuggestionCe
 
 #pragma mark - WebDataListSuggestionsDropdownIOS
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebDataListSuggestionsDropdownIOS> WebDataListSuggestionsDropdownIOS::create(WebPageProxy& page, WKContentView *view)
 {
@@ -144,12 +144,12 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     close();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #pragma mark - WKDataListSuggestionsControl
 
 @implementation WKDataListSuggestionsControl {
-    WeakPtr<WebKit::WebDataListSuggestionsDropdownIOS> _dropdown;
+    WeakPtr<CyberKit::WebDataListSuggestionsDropdownIOS> _dropdown;
     Vector<CyberCore::DataListSuggestion> _suggestions;
 }
 
@@ -171,7 +171,7 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     _suggestions = WTFMove(information.suggestions);
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(CyberKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     _dropdown = dropdown;
 }
@@ -251,7 +251,7 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     [_pickerView selectRow:0 inComponent:0 animated:NO];
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(CyberKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     [super showSuggestionsDropdown:dropdown activationType:activationType];
     if (activationType == CyberCore::DataListSuggestionActivationType::IndicatorClicked) {
@@ -330,7 +330,7 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     self.view.dataListTextSuggestions = self.textSuggestions;
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(CyberKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     [super showSuggestionsDropdown:dropdown activationType:activationType];
 
@@ -425,7 +425,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     [self _displayWithActivationType:activationType];
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(CyberKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     [super showSuggestionsDropdown:dropdown activationType:activationType];
     [self _displayWithActivationType:activationType];

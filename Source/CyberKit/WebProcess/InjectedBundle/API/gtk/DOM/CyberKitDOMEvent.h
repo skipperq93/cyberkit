@@ -42,140 +42,140 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_EVENT_NONE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_NONE 0
 
 /**
  * WEBKIT_DOM_EVENT_CAPTURING_PHASE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_CAPTURING_PHASE 1
 
 /**
  * WEBKIT_DOM_EVENT_AT_TARGET:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_AT_TARGET 2
 
 /**
  * WEBKIT_DOM_EVENT_BUBBLING_PHASE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_BUBBLING_PHASE 3
 
 /**
  * WEBKIT_DOM_EVENT_MOUSEDOWN:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_MOUSEDOWN 1
 
 /**
  * WEBKIT_DOM_EVENT_MOUSEUP:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_MOUSEUP 2
 
 /**
  * WEBKIT_DOM_EVENT_MOUSEOVER:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_MOUSEOVER 4
 
 /**
  * WEBKIT_DOM_EVENT_MOUSEOUT:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_MOUSEOUT 8
 
 /**
  * WEBKIT_DOM_EVENT_MOUSEMOVE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_MOUSEMOVE 16
 
 /**
  * WEBKIT_DOM_EVENT_MOUSEDRAG:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_MOUSEDRAG 32
 
 /**
  * WEBKIT_DOM_EVENT_CLICK:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_CLICK 64
 
 /**
  * WEBKIT_DOM_EVENT_DBLCLICK:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_DBLCLICK 128
 
 /**
  * WEBKIT_DOM_EVENT_KEYDOWN:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_KEYDOWN 256
 
 /**
  * WEBKIT_DOM_EVENT_KEYUP:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_KEYUP 512
 
 /**
  * WEBKIT_DOM_EVENT_KEYPRESS:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_KEYPRESS 1024
 
 /**
  * WEBKIT_DOM_EVENT_DRAGDROP:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_DRAGDROP 2048
 
 /**
  * WEBKIT_DOM_EVENT_FOCUS:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_FOCUS 4096
 
 /**
  * WEBKIT_DOM_EVENT_BLUR:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_BLUR 8192
 
 /**
  * WEBKIT_DOM_EVENT_SELECT:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_SELECT 16384
 
 /**
  * WEBKIT_DOM_EVENT_CHANGE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_EVENT_CHANGE 32768
 
@@ -197,7 +197,7 @@ webkit_dom_event_get_type(void);
  * @self: A #CyberKitDOMEvent
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_event_stop_propagation(CyberKitDOMEvent* self);
@@ -207,7 +207,7 @@ webkit_dom_event_stop_propagation(CyberKitDOMEvent* self);
  * @self: A #CyberKitDOMEvent
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_event_prevent_default(CyberKitDOMEvent* self);
@@ -220,7 +220,7 @@ webkit_dom_event_prevent_default(CyberKitDOMEvent* self);
  * @cancelableArg: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_event_init_event(CyberKitDOMEvent* self, const gchar* eventTypeArg, gboolean canBubbleArg, gboolean cancelableArg);
@@ -231,7 +231,7 @@ webkit_dom_event_init_event(CyberKitDOMEvent* self, const gchar* eventTypeArg, g
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_event_get_event_type(CyberKitDOMEvent* self);
@@ -242,7 +242,7 @@ webkit_dom_event_get_event_type(CyberKitDOMEvent* self);
  *
  * Returns: (transfer full): A #CyberKitDOMEventTarget
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMEventTarget*
 webkit_dom_event_get_target(CyberKitDOMEvent* self);
@@ -253,7 +253,7 @@ webkit_dom_event_get_target(CyberKitDOMEvent* self);
  *
  * Returns: (transfer full): A #CyberKitDOMEventTarget
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMEventTarget*
 webkit_dom_event_get_current_target(CyberKitDOMEvent* self);
@@ -264,7 +264,7 @@ webkit_dom_event_get_current_target(CyberKitDOMEvent* self);
  *
  * Returns: A #gushort
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
 webkit_dom_event_get_event_phase(CyberKitDOMEvent* self);
@@ -275,7 +275,7 @@ webkit_dom_event_get_event_phase(CyberKitDOMEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_event_get_bubbles(CyberKitDOMEvent* self);
@@ -286,7 +286,7 @@ webkit_dom_event_get_bubbles(CyberKitDOMEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_event_get_cancelable(CyberKitDOMEvent* self);
@@ -297,7 +297,7 @@ webkit_dom_event_get_cancelable(CyberKitDOMEvent* self);
  *
  * Returns: A #guint32
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED guint32
 webkit_dom_event_get_time_stamp(CyberKitDOMEvent* self);
@@ -308,7 +308,7 @@ webkit_dom_event_get_time_stamp(CyberKitDOMEvent* self);
  *
  * Returns: (transfer full): A #CyberKitDOMEventTarget
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMEventTarget*
 webkit_dom_event_get_src_element(CyberKitDOMEvent* self);
@@ -319,7 +319,7 @@ webkit_dom_event_get_src_element(CyberKitDOMEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_event_get_return_value(CyberKitDOMEvent* self);
@@ -330,7 +330,7 @@ webkit_dom_event_get_return_value(CyberKitDOMEvent* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_event_set_return_value(CyberKitDOMEvent* self, gboolean value);
@@ -341,7 +341,7 @@ webkit_dom_event_set_return_value(CyberKitDOMEvent* self, gboolean value);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_event_get_cancel_bubble(CyberKitDOMEvent* self);
@@ -352,7 +352,7 @@ webkit_dom_event_get_cancel_bubble(CyberKitDOMEvent* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_event_set_cancel_bubble(CyberKitDOMEvent* self, gboolean value);

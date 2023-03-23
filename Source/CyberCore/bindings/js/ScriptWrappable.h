@@ -38,7 +38,7 @@ namespace JSC {
 class WeakHandleOwner;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMObject;
 
@@ -59,4 +59,4 @@ private:
     JSC::Weak<JSDOMObject> m_wrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

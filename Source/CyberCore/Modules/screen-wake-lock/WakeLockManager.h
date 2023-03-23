@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class SleepDisabler;
@@ -56,4 +56,4 @@ private:
     std::unique_ptr<SleepDisabler> m_screenLockDisabler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

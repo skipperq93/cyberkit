@@ -27,9 +27,9 @@
 
 #include "APIObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebIconDatabase : public API::ObjectImpl<API::Object::Type::IconDatabase> {
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -42,7 +42,7 @@ class ContentWorld;
 class SerializedScriptValue;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 class WebFrameProxy;

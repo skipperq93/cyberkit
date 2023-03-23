@@ -30,7 +30,7 @@
 #include "PendingScriptClient.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PendingScript> PendingScript::create(ScriptElement& element, LoadableScript& loadableScript)
 {

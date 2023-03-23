@@ -1221,13 +1221,13 @@ msgctxt "Undo action name"
 msgid "Insert Drawing"
 msgstr "Insertar lista"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 #, fuzzy
 #| msgid "Search Options"
 msgid "JSC Options"
 msgstr "Opciones de búsqueda"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 #, fuzzy
 #| msgid "Search Options"
 msgid "Show JSC Options"

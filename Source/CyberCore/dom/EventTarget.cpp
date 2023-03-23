@@ -54,7 +54,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EventTarget);
 
@@ -268,7 +268,7 @@ void EventTarget::uncaughtExceptionInEventHandler()
 
 static const AtomString& legacyType(const Event& event)
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (event.type() == eventNames.animationendEvent)
         return eventNames.webkitAnimationEndEvent;
 
@@ -407,7 +407,7 @@ void EventTarget::removeAllEventListeners()
 
     auto* data = eventTargetData();
     if (data && !data->eventListenerMap.isEmpty()) {
-        auto& eventNames = WebCore::eventNames();
+        auto& eventNames = CyberCore::eventNames();
         if (data->eventListenerMap.contains(eventNames.wheelEvent) || data->eventListenerMap.contains(eventNames.mousewheelEvent))
             invalidateEventListenerRegions();
 
@@ -437,4 +437,4 @@ void EventTarget::invalidateEventListenerRegions()
         document->invalidateEventListenerRegions();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

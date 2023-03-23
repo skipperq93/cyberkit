@@ -34,7 +34,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OESVertexArrayObject);
 
@@ -132,6 +132,6 @@ void OESVertexArrayObject::bindVertexArrayOES(WebGLVertexArrayObjectOES* arrayOb
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

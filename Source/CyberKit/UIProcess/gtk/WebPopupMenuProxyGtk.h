@@ -39,7 +39,7 @@ namespace CyberCore {
 class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -94,4 +94,4 @@ private:
     GString* m_currentSearchString { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

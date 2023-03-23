@@ -29,7 +29,7 @@
 
 #include "RemoteScrollingTree.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteScrollingCoordinatorProxy;
 
@@ -46,6 +46,6 @@ private:
     void scrollingTreeNodeDidEndScroll(CyberCore::ScrollingNodeID) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(UI_SIDE_COMPOSITING)

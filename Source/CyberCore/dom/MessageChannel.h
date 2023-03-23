@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessagePort;
 class ScriptExecutionContext;
@@ -48,4 +48,4 @@ private:
     std::pair<Ref<MessagePort>, Ref<MessagePort>> m_ports;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

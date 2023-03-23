@@ -68,7 +68,7 @@ webkit_dom_mouse_event_get_type(void);
  * @relatedTarget: A #CyberKitDOMEventTarget
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_mouse_event_init_mouse_event(CyberKitDOMMouseEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, glong detail, glong screenX, glong screenY, glong clientX, glong clientY, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gushort button, CyberKitDOMEventTarget* relatedTarget);
@@ -79,7 +79,7 @@ webkit_dom_mouse_event_init_mouse_event(CyberKitDOMMouseEvent* self, const gchar
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_screen_x(CyberKitDOMMouseEvent* self);
@@ -90,7 +90,7 @@ webkit_dom_mouse_event_get_screen_x(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_screen_y(CyberKitDOMMouseEvent* self);
@@ -101,7 +101,7 @@ webkit_dom_mouse_event_get_screen_y(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_client_x(CyberKitDOMMouseEvent* self);
@@ -112,7 +112,7 @@ webkit_dom_mouse_event_get_client_x(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_client_y(CyberKitDOMMouseEvent* self);
@@ -123,7 +123,7 @@ webkit_dom_mouse_event_get_client_y(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_mouse_event_get_ctrl_key(CyberKitDOMMouseEvent* self);
@@ -134,7 +134,7 @@ webkit_dom_mouse_event_get_ctrl_key(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_mouse_event_get_shift_key(CyberKitDOMMouseEvent* self);
@@ -145,7 +145,7 @@ webkit_dom_mouse_event_get_shift_key(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_mouse_event_get_alt_key(CyberKitDOMMouseEvent* self);
@@ -156,7 +156,7 @@ webkit_dom_mouse_event_get_alt_key(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_mouse_event_get_meta_key(CyberKitDOMMouseEvent* self);
@@ -167,7 +167,7 @@ webkit_dom_mouse_event_get_meta_key(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #gushort
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
 webkit_dom_mouse_event_get_button(CyberKitDOMMouseEvent* self);
@@ -178,7 +178,7 @@ webkit_dom_mouse_event_get_button(CyberKitDOMMouseEvent* self);
  *
  * Returns: (transfer full): A #CyberKitDOMEventTarget
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMEventTarget*
 webkit_dom_mouse_event_get_related_target(CyberKitDOMMouseEvent* self);
@@ -189,7 +189,7 @@ webkit_dom_mouse_event_get_related_target(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_offset_x(CyberKitDOMMouseEvent* self);
@@ -200,7 +200,7 @@ webkit_dom_mouse_event_get_offset_x(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_offset_y(CyberKitDOMMouseEvent* self);
@@ -211,7 +211,7 @@ webkit_dom_mouse_event_get_offset_y(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_x(CyberKitDOMMouseEvent* self);
@@ -222,7 +222,7 @@ webkit_dom_mouse_event_get_x(CyberKitDOMMouseEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_mouse_event_get_y(CyberKitDOMMouseEvent* self);
@@ -233,7 +233,7 @@ webkit_dom_mouse_event_get_y(CyberKitDOMMouseEvent* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_mouse_event_get_from_element(CyberKitDOMMouseEvent* self);
@@ -244,7 +244,7 @@ webkit_dom_mouse_event_get_from_element(CyberKitDOMMouseEvent* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_mouse_event_get_to_element(CyberKitDOMMouseEvent* self);

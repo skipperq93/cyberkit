@@ -32,7 +32,7 @@
 #include "CSSParserToken.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleSheetContents;
 
@@ -105,4 +105,4 @@ private:
     const CSSParserToken* m_last;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

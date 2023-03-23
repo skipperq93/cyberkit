@@ -1,4 +1,4 @@
-This tests pasting a markup from Cocoa HTML Writer with system font references. WebKit should strip system font names away upon paste.
+This tests pasting a markup from Cocoa HTML Writer with system font references. CyberKit should strip system font names away upon paste.
 To manually test, click on "start" first then trigger paste from menu or callout bar or press cmd+v
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".

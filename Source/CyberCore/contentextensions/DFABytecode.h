@@ -27,13 +27,13 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 using DFABytecode = uint8_t;
 
 // Increment ContentExtensionStore::CurrentContentExtensionFileVersion
 // when making any non-backwards-compatible changes to the bytecode.
-// FIXME: Changes here should not require changes in CyberKit2.  Move all versioning to WebCore.
+// FIXME: Changes here should not require changes in CyberKit2.  Move all versioning to CyberCore.
 enum class DFABytecodeInstruction : uint8_t {
 
     // CheckValue has two arguments:
@@ -109,6 +109,6 @@ static constexpr int32_t Int24Min = -(1 << 23);
 static constexpr size_t Int24Size = 3;
 static constexpr size_t UInt24Size = 3;
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

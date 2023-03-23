@@ -54,7 +54,7 @@ webkit_dom_html_body_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_body_element_get_a_link(CyberKitDOMHTMLBodyElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_body_element_get_a_link(CyberKitDOMHTMLBodyElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_body_element_set_a_link(CyberKitDOMHTMLBodyElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_body_element_set_a_link(CyberKitDOMHTMLBodyElement* self, const 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_body_element_get_background(CyberKitDOMHTMLBodyElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_body_element_get_background(CyberKitDOMHTMLBodyElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_body_element_set_background(CyberKitDOMHTMLBodyElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_body_element_set_background(CyberKitDOMHTMLBodyElement* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_body_element_get_bg_color(CyberKitDOMHTMLBodyElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_body_element_get_bg_color(CyberKitDOMHTMLBodyElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_body_element_set_bg_color(CyberKitDOMHTMLBodyElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_body_element_set_bg_color(CyberKitDOMHTMLBodyElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_body_element_get_link(CyberKitDOMHTMLBodyElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_body_element_get_link(CyberKitDOMHTMLBodyElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_body_element_set_link(CyberKitDOMHTMLBodyElement* self, const gchar* value);
@@ -142,7 +142,7 @@ webkit_dom_html_body_element_set_link(CyberKitDOMHTMLBodyElement* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_body_element_get_text(CyberKitDOMHTMLBodyElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_body_element_get_text(CyberKitDOMHTMLBodyElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_body_element_set_text(CyberKitDOMHTMLBodyElement* self, const gchar* value);
@@ -164,7 +164,7 @@ webkit_dom_html_body_element_set_text(CyberKitDOMHTMLBodyElement* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_body_element_get_v_link(CyberKitDOMHTMLBodyElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_body_element_get_v_link(CyberKitDOMHTMLBodyElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_body_element_set_v_link(CyberKitDOMHTMLBodyElement* self, const gchar* value);

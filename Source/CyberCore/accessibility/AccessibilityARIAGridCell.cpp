@@ -34,7 +34,7 @@
 #include "AccessibilityTableRow.h"
 #include "HTMLNames.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -194,4 +194,4 @@ String AccessibilityARIAGridCell::readOnlyValue() const
     return String();
 }
   
-} // namespace WebCore
+} // namespace CyberCore

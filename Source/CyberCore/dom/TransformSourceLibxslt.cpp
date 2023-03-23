@@ -30,7 +30,7 @@
 
 #include <libxml/tree.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TransformSource::TransformSource(const PlatformTransformSource& source)
     : m_source(source)

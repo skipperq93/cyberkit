@@ -31,7 +31,7 @@
 
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr LChar kEndOfFileMarker = 0;
 
@@ -100,4 +100,4 @@ private:
     RefPtr<StringImpl> m_string;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

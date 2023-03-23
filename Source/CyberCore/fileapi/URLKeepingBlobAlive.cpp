@@ -28,7 +28,7 @@
 
 #include "ThreadableBlobRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 URLKeepingBlobAlive::URLKeepingBlobAlive(const URL& url, const SecurityOriginData& topOrigin)
     : m_url(url)
@@ -100,4 +100,4 @@ URLKeepingBlobAlive URLKeepingBlobAlive::isolatedCopy() &&
 {
     return { WTFMove(m_url).isolatedCopy(), WTFMove(m_topOrigin).isolatedCopy() };
 }
-} // namespace WebCore
+} // namespace CyberCore

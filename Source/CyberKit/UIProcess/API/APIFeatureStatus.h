@@ -27,11 +27,11 @@
 
 namespace API {
 enum class FeatureStatus : uint8_t {
-    // For customizing WebKit behavior in embedding applications.
+    // For customizing CyberKit behavior in embedding applications.
     Embedder,
     // Feature in active development. Unfinished, no promise it is usable or safe.
     Unstable,
-    // Tools for debugging the WebKit engine. Not generally useful to web developers.
+    // Tools for debugging the CyberKit engine. Not generally useful to web developers.
     Internal,
     // Tools for web developers.
     Developer,

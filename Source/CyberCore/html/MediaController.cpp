@@ -38,7 +38,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaController);
 
@@ -687,6 +687,6 @@ void MediaController::scheduleTimeupdateEvent()
     m_previousTimeupdateTime = now;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

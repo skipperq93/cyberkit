@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class WeakPtrImplWithEventTargetData;
@@ -129,4 +129,4 @@ template<typename T, typename WeakPtrImpl> void EventSender<T, WeakPtrImpl>::dis
     m_dispatchingList.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin;
 class SecurityOriginPolicy;
@@ -164,4 +164,4 @@ private:
     bool m_wasPrivateRelayed { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

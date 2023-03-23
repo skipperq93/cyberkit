@@ -41,14 +41,14 @@
 #include "JSTestObj.h"
 #include "ScriptExecutionContext.h"
 #include "SerializedScriptValue.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSString.h>
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSString.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/SortedArrayMap.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 String convertEnumerationToString(TestCallbackInterface::Enum enumerationValue)
@@ -454,6 +454,6 @@ JSC::JSValue toJS(TestCallbackInterface& impl)
     return static_cast<JSTestCallbackInterface&>(impl).callbackData()->callback();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TEST_CONDITIONAL)

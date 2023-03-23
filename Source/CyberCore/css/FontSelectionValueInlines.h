@@ -28,7 +28,7 @@
 #include "CSSValueKeywords.h"
 #include "FontSelectionAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline std::optional<FontSelectionValue> fontWeightValue(CSSValueID value)
 {

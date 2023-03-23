@@ -29,7 +29,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 class AudioBus;
@@ -78,4 +78,4 @@ private:
     bool m_startedRendering { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

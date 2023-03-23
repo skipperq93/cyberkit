@@ -31,7 +31,7 @@
 #include "VisibilityState.h"
 #include "WakeLockSentinel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WakeLockManager::WakeLockManager(Document& document)
     : m_document(document)
@@ -103,4 +103,4 @@ void WakeLockManager::releaseAllLocks(WakeLockType type)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

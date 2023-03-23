@@ -23,7 +23,7 @@
 #include "Event.h"
 #include "EventNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HashChangeEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(HashChangeEvent);
@@ -87,4 +87,4 @@ private:
     String m_newURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

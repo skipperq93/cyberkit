@@ -25,7 +25,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFontElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLFontElement);
@@ -41,4 +41,4 @@ private:
     void collectPresentationalHintsForAttribute(const QualifiedName&, const AtomString&, MutableStyleProperties&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

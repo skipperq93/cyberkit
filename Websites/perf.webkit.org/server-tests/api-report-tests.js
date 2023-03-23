@@ -25,7 +25,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }
@@ -47,7 +47,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:10.9Z"
                 }
@@ -69,7 +69,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:19.9Z"
                 }
@@ -91,7 +91,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "revisionIdentifier": "127231@main",
                     "timestamp": "2013-02-06T08:55:20.9Z"
@@ -114,7 +114,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }
@@ -351,7 +351,7 @@ describe("/api/report", function () {
             const commits = result[1];
             const buildCommitsRelations = result[2];
             assert.strictEqual(repositories.length, 2);
-            assert.deepStrictEqual(repositories.map((row) => row['name']).sort(), ['WebKit', 'macOS']);
+            assert.deepStrictEqual(repositories.map((row) => row['name']).sort(), ['CyberKit', 'macOS']);
 
             assert.strictEqual(commits.length, 2);
             assert.strictEqual(buildCommitsRelations.length, 2);
@@ -368,8 +368,8 @@ describe("/api/report", function () {
                 repositoryNameToRevisionRow[repositoryIdToName[commit['repository']]] = commit;
 
             assert.strictEqual(repositoryNameToRevisionRow['macOS']['revision'], '10.8.2 12C60');
-            assert.strictEqual(repositoryNameToRevisionRow['WebKit']['revision'], '141977');
-            assert.strictEqual(repositoryNameToRevisionRow['WebKit']['time'].toString(),
+            assert.strictEqual(repositoryNameToRevisionRow['CyberKit']['revision'], '141977');
+            assert.strictEqual(repositoryNameToRevisionRow['CyberKit']['time'].toString(),
                 new Date('2013-02-06 08:55:20.9').toString());
         });
     });
@@ -382,7 +382,7 @@ describe("/api/report", function () {
         const commits =  await db.selectAll('commits');
         const buildCommitsRelations = await  db.selectAll('build_commits', 'build_commit');
         assert.strictEqual(repositories.length, 2);
-        assert.deepStrictEqual(repositories.map((row) => row['name']).sort(), ['WebKit', 'macOS']);
+        assert.deepStrictEqual(repositories.map((row) => row['name']).sort(), ['CyberKit', 'macOS']);
 
         assert.strictEqual(commits.length, 2);
         assert.strictEqual(buildCommitsRelations.length, 2);
@@ -399,9 +399,9 @@ describe("/api/report", function () {
             repositoryNameToRevisionRow[repositoryIdToName[commit['repository']]] = commit;
 
         assert.strictEqual(repositoryNameToRevisionRow['macOS']['revision'], '10.8.2 12C60');
-        assert.strictEqual(repositoryNameToRevisionRow['WebKit']['revision'], '141977');
-        assert.strictEqual(repositoryNameToRevisionRow['WebKit']['revision_identifier'], '127231@main');
-        assert.strictEqual(repositoryNameToRevisionRow['WebKit']['time'].toString(),
+        assert.strictEqual(repositoryNameToRevisionRow['CyberKit']['revision'], '141977');
+        assert.strictEqual(repositoryNameToRevisionRow['CyberKit']['revision_identifier'], '127231@main');
+        assert.strictEqual(repositoryNameToRevisionRow['CyberKit']['time'].toString(),
             new Date('2013-02-06 08:55:20.9').toString());
     });
 
@@ -452,7 +452,7 @@ describe("/api/report", function () {
     it("should reject a report with mismatching revision info", () => {
         const firstReport = emptyReport();
         firstReport['revisions'] = {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "141977",
                 "timestamp": "2013-02-06T08:55:20.96Z"
             }
@@ -460,7 +460,7 @@ describe("/api/report", function () {
 
         const secondReport = emptyReport();
         secondReport['revisions'] = {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "150000",
                 "timestamp": "2013-05-13T10:50:29.6Z"
             }
@@ -521,7 +521,7 @@ describe("/api/report", function () {
             "macOS": {
                 "revision": "10.8.2 12C60"
             },
-            "WebKit": {
+            "CyberKit": {
                 "revision": "141977",
                 "timestamp": "2013-02-06T08:55:20.9Z"
             }
@@ -716,7 +716,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }
@@ -895,7 +895,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }

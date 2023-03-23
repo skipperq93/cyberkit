@@ -44,7 +44,7 @@
 #include "UniqueIDBDatabaseManager.h"
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 namespace IDBServer {
 
@@ -1555,4 +1555,4 @@ void UniqueIDBDatabase::handleLowMemoryWarning()
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "IDLTypes.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AuthenticatorAttachment : uint8_t;
 class AuthenticatorResponse;
@@ -60,7 +60,7 @@ private:
     Ref<AuthenticatorResponse> m_response;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_BASIC_CREDENTIAL(PublicKeyCredential, BasicCredential::Type::PublicKey)
 

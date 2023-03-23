@@ -25,7 +25,7 @@
 #include "RenderStyleConstants.h"
 #include <wtf/FixedVector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSelectorList;
 
@@ -623,4 +623,4 @@ inline void CSSSelector::setMatch(Match match)
     ASSERT(m_match == match);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

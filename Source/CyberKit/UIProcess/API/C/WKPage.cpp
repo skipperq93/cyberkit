@@ -106,7 +106,7 @@
 
 namespace API {
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 #if ENABLE(CONTEXT_MENUS)
 static Vector<RefPtr<API::Object>> toAPIObjectVector(const Vector<Ref<WebContextMenuItem>>& menuItemsVector)
@@ -153,7 +153,7 @@ template<> struct ClientTraits<WKPageStateClientBase> {
     
 } // namespace API
 
-using namespace WebKit;
+using namespace CyberKit;
 
 NO_RETURN_DUE_TO_CRASH NEVER_INLINE static void crashBecausePageIsSuspended()
 {
@@ -366,7 +366,7 @@ void WKPagePermissionChanged(WKStringRef permissionName, WKStringRef originStrin
         return;
 
     auto topOrigin = CyberCore::SecurityOrigin::createFromString(toWTFString(originString))->data();
-    WebKit::WebProcessProxy::permissionChanged(*name, topOrigin);
+    CyberKit::WebProcessProxy::permissionChanged(*name, topOrigin);
 }
 
 void WKPageClose(WKPageRef pageRef)
@@ -963,7 +963,7 @@ void WKPageSetPageContextMenuClient(WKPageRef pageRef, const WKPageContextMenuCl
         }
 
     private:
-        void getContextMenuFromProposedMenu(WebPageProxy& page, Vector<Ref<WebKit::WebContextMenuItem>>&& proposedMenuVector, WebKit::WebContextMenuListenerProxy& contextMenuListener, const WebHitTestResultData& hitTestResultData, API::Object* userData) override
+        void getContextMenuFromProposedMenu(WebPageProxy& page, Vector<Ref<CyberKit::WebContextMenuItem>>&& proposedMenuVector, CyberKit::WebContextMenuListenerProxy& contextMenuListener, const WebHitTestResultData& hitTestResultData, API::Object* userData) override
         {
             if (m_client.base.version >= 4 && m_client.getContextMenuFromProposedMenuAsync) {
                 auto proposedMenuItems = toAPIObjectVector(proposedMenuVector);
@@ -1274,7 +1274,7 @@ void WKPageSetPageLoaderClient(WKPageRef pageRef, const WKPageLoaderClientBase* 
             m_client.didChangeBackForwardList(toAPI(&page), toAPI(addedItem), toAPI(removedItemsArray.get()), m_client.base.clientInfo);
         }
         
-        bool shouldKeepCurrentBackForwardListItemInList(WebKit::WebPageProxy& page, WebKit::WebBackForwardListItem& item) override
+        bool shouldKeepCurrentBackForwardListItemInList(CyberKit::WebPageProxy& page, CyberKit::WebBackForwardListItem& item) override
         {
             if (!m_client.shouldKeepCurrentBackForwardListItemInList)
                 return true;
@@ -1376,7 +1376,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 ALLOW_DEPRECATED_DECLARATIONS_END
 }
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
     
 class RunBeforeUnloadConfirmPanelResultListener : public API::ObjectImpl<API::Object::Type::RunBeforeUnloadConfirmPanelResultListener> {
@@ -1767,7 +1767,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             m_client.setStatusText(toAPI(page), toAPI(text.impl()), m_client.base.clientInfo);
         }
 
-        void mouseDidMoveOverElement(WebPageProxy& page, const WebHitTestResultData& data, OptionSet<WebKit::WebEventModifier> modifiers, API::Object* userData) final
+        void mouseDidMoveOverElement(WebPageProxy& page, const WebHitTestResultData& data, OptionSet<CyberKit::WebEventModifier> modifiers, API::Object* userData) final
         {
             if (!m_client.mouseDidMoveOverElement && !m_client.mouseDidMoveOverElement_deprecatedForUseWithV0)
                 return;
@@ -1868,7 +1868,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             return m_client.runBeforeUnloadConfirmPanel_deprecatedForUseWithV6 || m_client.runBeforeUnloadConfirmPanel;
         }
 
-        void runBeforeUnloadConfirmPanel(WebKit::WebPageProxy& page, const WTF::String& message, WebKit::WebFrameProxy* frame, FrameInfoData&&, Function<void(bool)>&& completionHandler) final
+        void runBeforeUnloadConfirmPanel(CyberKit::WebPageProxy& page, const WTF::String& message, CyberKit::WebFrameProxy* frame, FrameInfoData&&, Function<void(bool)>&& completionHandler) final
         {
             if (m_client.runBeforeUnloadConfirmPanel) {
                 RefPtr<RunBeforeUnloadConfirmPanelResultListener> listener = RunBeforeUnloadConfirmPanelResultListener::create(WTFMove(completionHandler));
@@ -2121,30 +2121,30 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
         }
 
 #if ENABLE(WEB_AUTHN)
-        // The current method is specialized for WebKitTestRunner.
-        void runWebAuthenticationPanel(WebPageProxy&, API::WebAuthenticationPanel& panel, WebFrameProxy&, FrameInfoData&&, CompletionHandler<void(WebKit::WebAuthenticationPanelResult)>&& completionHandler) final
+        // The current method is specialized for CyberKitTestRunner.
+        void runWebAuthenticationPanel(WebPageProxy&, API::WebAuthenticationPanel& panel, WebFrameProxy&, FrameInfoData&&, CompletionHandler<void(CyberKit::WebAuthenticationPanelResult)>&& completionHandler) final
         {
             class PanelClient final : public API::WebAuthenticationPanelClient {
             public:
-                void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&& responses, WebKit::WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler) const final
+                void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&& responses, CyberKit::WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler) const final
                 {
                     ASSERT(!responses.isEmpty());
                     completionHandler(responses[0].ptr());
                 }
 
-                void decidePolicyForLocalAuthenticator(CompletionHandler<void(WebKit::LocalAuthenticatorPolicy)>&& completionHandler) const final
+                void decidePolicyForLocalAuthenticator(CompletionHandler<void(CyberKit::LocalAuthenticatorPolicy)>&& completionHandler) const final
                 {
-                    completionHandler(WebKit::LocalAuthenticatorPolicy::Allow);
+                    completionHandler(CyberKit::LocalAuthenticatorPolicy::Allow);
                 }
             };
 
             if (!m_client.runWebAuthenticationPanel) {
-                completionHandler(WebKit::WebAuthenticationPanelResult::Unavailable);
+                completionHandler(CyberKit::WebAuthenticationPanelResult::Unavailable);
                 return;
             }
 
             panel.setClient(WTF::makeUniqueRef<PanelClient>());
-            completionHandler(WebKit::WebAuthenticationPanelResult::Presented);
+            completionHandler(CyberKit::WebAuthenticationPanelResult::Presented);
         }
 
         void requestWebAuthenticationNoGesture(API::SecurityOrigin&, CompletionHandler<void(bool)>&& completionHandler) final
@@ -2223,7 +2223,7 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
         }
 
     private:
-        void decidePolicyForNavigationAction(WebPageProxy& page, Ref<API::NavigationAction>&& navigationAction, Ref<WebKit::WebFramePolicyListenerProxy>&& listener) final
+        void decidePolicyForNavigationAction(WebPageProxy& page, Ref<API::NavigationAction>&& navigationAction, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener) final
         {
             if (!m_client.decidePolicyForNavigationAction) {
                 listener->use();
@@ -2232,7 +2232,7 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
             m_client.decidePolicyForNavigationAction(toAPI(&page), toAPI(navigationAction.ptr()), toAPI(listener.ptr()), nullptr, m_client.base.clientInfo);
         }
 
-        void decidePolicyForNavigationResponse(WebPageProxy& page, Ref<API::NavigationResponse>&& navigationResponse, Ref<WebKit::WebFramePolicyListenerProxy>&& listener) override
+        void decidePolicyForNavigationResponse(WebPageProxy& page, Ref<API::NavigationResponse>&& navigationResponse, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener) override
         {
             if (!m_client.decidePolicyForNavigationResponse) {
                 listener->use();
@@ -2290,7 +2290,7 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
             m_client.didFinishDocumentLoad(toAPI(&page), toAPI(navigation), toAPI(userData), m_client.base.clientInfo);
         }
 
-        void didSameDocumentNavigation(WebPageProxy& page, API::Navigation* navigation, WebKit::SameDocumentNavigationType navigationType, API::Object* userData) override
+        void didSameDocumentNavigation(WebPageProxy& page, API::Navigation* navigation, CyberKit::SameDocumentNavigationType navigationType, API::Object* userData) override
         {
             if (!m_client.didSameDocumentNavigation)
                 return;
@@ -2307,20 +2307,20 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
         void didReceiveAuthenticationChallenge(WebPageProxy& page, AuthenticationChallengeProxy& authenticationChallenge) override
         {
             if (m_client.canAuthenticateAgainstProtectionSpace && !m_client.canAuthenticateAgainstProtectionSpace(toAPI(&page), toAPI(WebProtectionSpace::create(authenticationChallenge.core().protectionSpace()).ptr()), m_client.base.clientInfo))
-                return authenticationChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+                return authenticationChallenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
             if (!m_client.didReceiveAuthenticationChallenge)
-                return authenticationChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
+                return authenticationChallenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
             m_client.didReceiveAuthenticationChallenge(toAPI(&page), toAPI(&authenticationChallenge), m_client.base.clientInfo);
         }
 
-        bool processDidTerminate(WebPageProxy& page, WebKit::ProcessTerminationReason reason) override
+        bool processDidTerminate(WebPageProxy& page, CyberKit::ProcessTerminationReason reason) override
         {
             if (m_client.webProcessDidTerminate) {
                 m_client.webProcessDidTerminate(toAPI(&page), toAPI(reason), m_client.base.clientInfo);
                 return true;
             }
 
-            if (m_client.webProcessDidCrash && reason != WebKit::ProcessTerminationReason::RequestedByClient) {
+            if (m_client.webProcessDidCrash && reason != CyberKit::ProcessTerminationReason::RequestedByClient) {
                 m_client.webProcessDidCrash(toAPI(&page), m_client.base.clientInfo);
                 return true;
             }
@@ -2343,21 +2343,21 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
 #endif
         }
 
-        void navigationActionDidBecomeDownload(WebKit::WebPageProxy& page, API::NavigationAction& action, WebKit::DownloadProxy& download) override
+        void navigationActionDidBecomeDownload(CyberKit::WebPageProxy& page, API::NavigationAction& action, CyberKit::DownloadProxy& download) override
         {
             if (!m_client.navigationActionDidBecomeDownload)
                 return;
             m_client.navigationActionDidBecomeDownload(toAPI(&page), toAPI(&action), toAPI(&download), m_client.base.clientInfo);
         }
 
-        void navigationResponseDidBecomeDownload(WebKit::WebPageProxy& page, API::NavigationResponse& response, WebKit::DownloadProxy& download) override
+        void navigationResponseDidBecomeDownload(CyberKit::WebPageProxy& page, API::NavigationResponse& response, CyberKit::DownloadProxy& download) override
         {
             if (!m_client.navigationResponseDidBecomeDownload)
                 return;
             m_client.navigationResponseDidBecomeDownload(toAPI(&page), toAPI(&response), toAPI(&download), m_client.base.clientInfo);
         }
 
-        void contextMenuDidCreateDownload(WebKit::WebPageProxy& page, WebKit::DownloadProxy& download) override
+        void contextMenuDidCreateDownload(CyberKit::WebPageProxy& page, CyberKit::DownloadProxy& download) override
         {
             if (!m_client.contextMenuDidCreateDownload)
                 return;
@@ -2371,14 +2371,14 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
             m_client.didBeginNavigationGesture(toAPI(&page), m_client.base.clientInfo);
         }
 
-        void didEndNavigationGesture(WebPageProxy& page, bool willNavigate, WebKit::WebBackForwardListItem& item) override
+        void didEndNavigationGesture(WebPageProxy& page, bool willNavigate, CyberKit::WebBackForwardListItem& item) override
         {
             if (!m_client.didEndNavigationGesture)
                 return;
             m_client.didEndNavigationGesture(toAPI(&page), willNavigate ? toAPI(&item) : nullptr, m_client.base.clientInfo);
         }
 
-        void willEndNavigationGesture(WebPageProxy& page, bool willNavigate, WebKit::WebBackForwardListItem& item) override
+        void willEndNavigationGesture(WebPageProxy& page, bool willNavigate, CyberKit::WebBackForwardListItem& item) override
         {
             if (!m_client.willEndNavigationGesture)
                 return;
@@ -3046,7 +3046,7 @@ void WKPageDumpPrivateClickMeasurement(WKPageRef pageRef, WKPageDumpPrivateClick
 {
     CRASH_IF_SUSPENDED;
     toImpl(pageRef)->dumpPrivateClickMeasurement([callbackContext, callback] (const String& privateClickMeasurement) {
-        callback(WebKit::toAPI(privateClickMeasurement.impl()), callbackContext);
+        callback(CyberKit::toAPI(privateClickMeasurement.impl()), callbackContext);
     });
 }
 

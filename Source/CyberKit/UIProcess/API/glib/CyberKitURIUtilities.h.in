@@ -19,11 +19,11 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitURIUtilities_h
-#define WebKitURIUtilities_h
+#ifndef CyberKitURIUtilities_h
+#define CyberKitURIUtilities_h
 
 #include <glib.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 

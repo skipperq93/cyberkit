@@ -30,7 +30,7 @@
 #if USE(ATSPI)
 
 #include "AccessibilityUIElement.h"
-#include <JavaScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
 #include <wtf/FastMalloc.h>
 
 namespace WTR {

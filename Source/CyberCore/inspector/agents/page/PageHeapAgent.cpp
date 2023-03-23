@@ -27,7 +27,7 @@
 #include "PageHeapAgent.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -60,4 +60,4 @@ void PageHeapAgent::mainFrameNavigated()
     clearHeapSnapshots();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <variant>
 #include <wpe/wpe.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class TouchGestureController {
     WTF_MAKE_FAST_ALLOCATED;
@@ -83,6 +83,6 @@ private:
     bool m_yAxisLockBroken { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWPE) && ENABLE(TOUCH_EVENTS)

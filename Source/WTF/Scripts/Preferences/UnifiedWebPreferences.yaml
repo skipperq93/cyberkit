@@ -51,19 +51,19 @@
 #   for end users.
 #   OFF by default.
 # internal::
-#   Tools for debugging the WebKit engine. Not generally useful to web developers.
+#   Tools for debugging the CyberKit engine. Not generally useful to web developers.
 #   OFF by default.
 #
 # == Embedder Controls ==
 # embedder::
-#   Adjusts WebKit behavior for embedding application needs. Not part of a
+#   Adjusts CyberKit behavior for embedding application needs. Not part of a
 #   web platform feature or a "mature" feature intended to be always-on.
 #   ANY default value.
 #
 # == Defaults Overridable ==
 #  When features are declared with "defaultsOverridable: true", platform user
 #  defaults may override a default value at runtime, using the preference
-#  name prefixed with "WebKitDebug".
+#  name prefixed with "CyberKitDebug".
 #
 # FIXME: Currently, default values are unchecked. We should audit and refactor
 # features so that their defaults agree with their status's definition, and use
@@ -80,7 +80,7 @@ AVFoundationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": false
       default: true
 
@@ -91,9 +91,9 @@ AcceleratedCompositingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 AcceleratedCompositingForFixedPositionEnabled:
@@ -102,10 +102,10 @@ AcceleratedCompositingForFixedPositionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       PLATFORM(IOS_FAMILY): true
       default: false
-    WebCore:
+    CyberCore:
       PLATFORM(IOS_FAMILY): true
       default: false
 
@@ -119,9 +119,9 @@ AcceleratedDrawingEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)": true
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 AcceleratedFiltersEnabled:
@@ -134,9 +134,9 @@ AcceleratedFiltersEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AccentColorEnabled:
@@ -149,10 +149,10 @@ AccentColorEnabled:
     CyberKitLegacy:
       "PLATFORM(COCOA)" : true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
 
@@ -165,10 +165,10 @@ AccessHandleEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)" : true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA)" : true
       default: false
 
@@ -178,9 +178,9 @@ AggressiveTileRetentionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowContentSecurityPolicySourceStarToMatchAnyProtocol:
@@ -188,11 +188,11 @@ AllowContentSecurityPolicySourceStarToMatchAnyProtocol:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(IOS_FAMILY): WebKit::defaultAllowContentSecurityPolicySourceStarToMatchAnyProtocol()
+      PLATFORM(IOS_FAMILY): CyberKit::defaultAllowContentSecurityPolicySourceStarToMatchAnyProtocol()
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowCrossOriginSubresourcesToAskForCredentials:
@@ -201,9 +201,9 @@ AllowCrossOriginSubresourcesToAskForCredentials:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowDisplayOfInsecureContent:
@@ -211,10 +211,10 @@ AllowDisplayOfInsecureContent:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      default: WebKit::defaultAllowDisplayOfInsecureContent()
-    WebKit:
+      default: CyberKit::defaultAllowDisplayOfInsecureContent()
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowFileAccessFromFileURLs:
@@ -223,9 +223,9 @@ AllowFileAccessFromFileURLs:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: true
 
 AllowMediaContentTypesRequiringHardwareSupportAsFallback:
@@ -236,22 +236,22 @@ AllowMediaContentTypesRequiringHardwareSupportAsFallback:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowMultiElementImplicitSubmission:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitAllowMultiElementImplicitFormSubmissionPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitAllowMultiElementImplicitFormSubmissionPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowRunningOfInsecureContent:
@@ -259,10 +259,10 @@ AllowRunningOfInsecureContent:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      default: WebKit::defaultAllowRunningOfInsecureContent()
-    WebKit:
+      default: CyberKit::defaultAllowRunningOfInsecureContent()
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowSettingAnyXHRHeaderFromFileURLs:
@@ -271,9 +271,9 @@ AllowSettingAnyXHRHeaderFromFileURLs:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowTopNavigationToDataURLs:
@@ -283,9 +283,9 @@ AllowTopNavigationToDataURLs:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AllowUniversalAccessFromFileURLs:
@@ -296,9 +296,9 @@ AllowUniversalAccessFromFileURLs:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely.
@@ -311,9 +311,9 @@ AllowViewportShrinkToFitContent:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 AllowWebGLInWorkers:
@@ -326,38 +326,38 @@ AllowWebGLInWorkers:
     CyberKitLegacy:
       "ENABLE(WEBGL_IN_WORKERS)": true
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(WEBGL_IN_WORKERS)": true
       default: false
-    WebCore:
+    CyberCore:
       "ENABLE(WEBGL_IN_WORKERS)": true
       default: false
 
 AllowsAirPlayForMediaPlayback:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitMediaPlaybackAllowsAirPlay
+  webKitLegacyPreferenceKey: CyberKitMediaPlaybackAllowsAirPlay
   condition: ENABLE(WIRELESS_PLAYBACK_TARGET)
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 AllowsInlineMediaPlayback:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitMediaPlaybackAllowsInline
+  webKitLegacyPreferenceKey: CyberKitMediaPlaybackAllowsInline
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultAllowsInlineMediaPlayback()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultAllowsInlineMediaPlayback()
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY)": false
       default: true
 
@@ -366,12 +366,12 @@ AllowsInlineMediaPlaybackAfterFullscreen:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultAllowsInlineMediaPlaybackAfterFullscreen()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultAllowsInlineMediaPlaybackAfterFullscreen()
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       default: true
 
 AllowsPictureInPictureMediaPlayback:
@@ -379,12 +379,12 @@ AllowsPictureInPictureMediaPlayback:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultAllowsPictureInPictureMediaPlayback()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultAllowsPictureInPictureMediaPlayback()
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       default: true
 
 AlternateFormControlDesignEnabled:
@@ -394,9 +394,9 @@ AlternateFormControlDesignEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AlternateFullScreenControlDesignEnabled:
@@ -406,10 +406,10 @@ AlternateFullScreenControlDesignEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "HAVE(UIKIT_WEBKIT_INTERNALS)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AlternateWebMPlayerEnabled:
@@ -422,9 +422,9 @@ AlternateWebMPlayerEnabled:
   defaultValue:
     CyberKitLegacy:
      default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AlwaysZoomOnDoubleTap:
@@ -434,9 +434,9 @@ AlwaysZoomOnDoubleTap:
   humanReadableDescription: "Double taps zoom, even if we dispatched a click anywhere"
   webcoreBinding: none
   condition: PLATFORM(IOS_FAMILY)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 AnimatedImageAsyncDecodingEnabled:
@@ -445,9 +445,9 @@ AnimatedImageAsyncDecodingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 AppBadgeEnabled:
@@ -460,9 +460,9 @@ AppBadgeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AppHighlightsEnabled:
@@ -475,9 +475,9 @@ AppHighlightsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AppleMailPaginationQuirkEnabled:
@@ -486,10 +486,10 @@ AppleMailPaginationQuirkEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
-      PLATFORM(MAC): WebKit::defaultAppleMailPaginationQuirkEnabled()
+    CyberKit:
+      PLATFORM(MAC): CyberKit::defaultAppleMailPaginationQuirkEnabled()
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -500,9 +500,9 @@ ApplePayCapabilityDisclosureAllowed:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -514,10 +514,10 @@ ApplePayEnabled:
     CyberKitLegacy:
       "ENABLE(APPLE_PAY_REMOTE_UI)": true
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(APPLE_PAY_REMOTE_UI)": true
       default: false
-    WebCore:
+    CyberCore:
       "ENABLE(APPLE_PAY_REMOTE_UI)": true
       default: false
 
@@ -530,9 +530,9 @@ AriaReflectionForElementReferencesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 AspectRatioEnabled:
@@ -543,9 +543,9 @@ AspectRatioEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 AspectRatioOfImgFromWidthAndHeightEnabled:
@@ -556,12 +556,12 @@ AspectRatioOfImgFromWidthAndHeightEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
-# FIXME: This is on by default in WebKit2 PLATFORM(COCOA). Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2 PLATFORM(COCOA). Perhaps we should consider turning it on for CyberKitLegacy as well.
 AsyncClipboardAPIEnabled:
   type: bool
   status: mature
@@ -570,10 +570,10 @@ AsyncClipboardAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)" : true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AsyncFrameScrollingEnabled:
@@ -582,15 +582,15 @@ AsyncFrameScrollingEnabled:
   webcoreOnChange: setNeedsRelayoutAllFrames
   humanReadableName: "Async Frame Scrolling"
   humanReadableDescription: "Perform frame scrolling off the main thread"
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "USE(NICOSIA)": true
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AsyncOverflowScrollingEnabled:
@@ -599,15 +599,15 @@ AsyncOverflowScrollingEnabled:
   webcoreOnChange: setNeedsRelayoutAllFrames
   humanReadableName: "Async Overflow Scrolling"
   humanReadableDescription: "Perform overflow scrolling off the main thread"
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "USE(NICOSIA)": true
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AsynchronousSpellCheckingEnabled:
@@ -616,9 +616,9 @@ AsynchronousSpellCheckingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AttachmentElementEnabled:
@@ -630,8 +630,8 @@ AttachmentElementEnabled:
   condition: ENABLE(ATTACHMENT_ELEMENT)
   defaultValue:
     CyberKitLegacy:
-      default: WebKit::defaultAttachmentElementEnabled()
-    WebKit:
+      default: CyberKit::defaultAttachmentElementEnabled()
+    CyberKit:
       default: false
 
 AttachmentWideLayoutEnabled:
@@ -643,9 +643,9 @@ AttachmentWideLayoutEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AudioDescriptionsEnabled:
@@ -658,23 +658,23 @@ AudioDescriptionsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 AuthorAndUserStylesEnabled:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitAuthorAndUserStylesEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitAuthorAndUserStylesEnabledPreferenceKey
   webcoreOnChange: setNeedsRecalcStyleInAllFrames
   inspectorOverride: true
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 AutomaticLiveResizeEnabled:
@@ -683,9 +683,9 @@ AutomaticLiveResizeEnabled:
   humanReadableName: "Enable Automatic Live Resize"
   humanReadableDescription: "Automatically synchronize web view resize with painting"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "HAVE(UIKIT_WEBKIT_INTERNALS)": true
       default: false
 
@@ -695,12 +695,12 @@ BackgroundFetchAPIEnabled:
   category: networking
   humanReadableName: "Enable background-fetch API"
   humanReadableDescription: "Enable background-fetch API"
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   condition: ENABLE(SERVICE_WORKER)
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 BackgroundWebContentRunningBoardThrottlingEnabled:
@@ -709,14 +709,14 @@ BackgroundWebContentRunningBoardThrottlingEnabled:
   category: networking
   humanReadableName: "Enable background web content throttling via RunningBoard"
   humanReadableDescription: "Enable background web content throttling via RunningBoard"
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   condition: PLATFORM(MAC) && USE(RUNNINGBOARD)
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 BackspaceKeyNavigationEnabled:
@@ -726,13 +726,13 @@ BackspaceKeyNavigationEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 BeaconAPIEnabled:
   type: bool
   status: mature
@@ -741,9 +741,9 @@ BeaconAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 BlockIOKitInWebContentSandbox:
@@ -753,9 +753,9 @@ BlockIOKitInWebContentSandbox:
   humanReadableName: "IOKit blocking in the WebContent sandbox"
   humanReadableDescription: "Block IOKit access in the WebContent sandbox"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 # We would have to partition BroadcastChannel based on PageGroups if we wanted to enable this for CyberKitLegacy.
@@ -768,9 +768,9 @@ BroadcastChannelEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 BroadcastChannelOriginPartitioningEnabled:
@@ -782,9 +782,9 @@ BroadcastChannelOriginPartitioningEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 BuiltInNotificationsEnabled:
@@ -792,13 +792,13 @@ BuiltInNotificationsEnabled:
   status: unstable
   category: dom
   humanReadableName: "Built-In Web Notifications"
-  humanReadableDescription: "Enable built-in WebKit managed notifications"
+  humanReadableDescription: "Enable built-in CyberKit managed notifications"
   webcoreBinding: DeprecatedGlobalSettings
   condition: ENABLE(BUILT_IN_NOTIFICATIONS)
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 CFNetworkNetworkLoaderEnabled:
@@ -809,9 +809,9 @@ CFNetworkNetworkLoaderEnabled:
   humanReadableDescription: "Enable experimental network loader"
   webcoreBinding: none
   condition: HAVE(NETWORK_LOADER)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 CSS3DTransformInteroperabilityEnabled:
@@ -823,9 +823,9 @@ CSS3DTransformInteroperabilityEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSCascadeLayersEnabled:
@@ -837,9 +837,9 @@ CSSCascadeLayersEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSColor4:
@@ -850,9 +850,9 @@ CSSColor4:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSColorContrastEnabled:
@@ -864,9 +864,9 @@ CSSColorContrastEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSColorMixEnabled:
@@ -878,9 +878,9 @@ CSSColorMixEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSContainIntrinsicSizeEnabled:
@@ -892,9 +892,9 @@ CSSContainIntrinsicSizeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSContainerQueriesEnabled:
@@ -906,9 +906,9 @@ CSSContainerQueriesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSContainmentEnabled:
@@ -920,9 +920,9 @@ CSSContainmentEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSContentVisibilityEnabled:
@@ -934,9 +934,9 @@ CSSContentVisibilityEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSCounterStyleAtRuleImageSymbolsEnabled:
@@ -948,9 +948,9 @@ CSSCounterStyleAtRuleImageSymbolsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSCounterStyleAtRulesEnabled:
@@ -962,9 +962,9 @@ CSSCounterStyleAtRulesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSCustomPropertiesAndValuesEnabled:
@@ -976,9 +976,9 @@ CSSCustomPropertiesAndValuesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSGradientInterpolationColorSpacesEnabled:
@@ -990,9 +990,9 @@ CSSGradientInterpolationColorSpacesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSGradientPremultipliedAlphaInterpolationEnabled:
@@ -1004,9 +1004,9 @@ CSSGradientPremultipliedAlphaInterpolationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSIndividualTransformPropertiesEnabled:
@@ -1017,9 +1017,9 @@ CSSIndividualTransformPropertiesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSInputSecurityEnabled:
@@ -1031,9 +1031,9 @@ CSSInputSecurityEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSLeadingTrimEnabled:
@@ -1045,9 +1045,9 @@ CSSLeadingTrimEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSMarginTrimEnabled:
@@ -1059,9 +1059,9 @@ CSSMarginTrimEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSMotionPathEnabled:
@@ -1073,9 +1073,9 @@ CSSMotionPathEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSNestingEnabled:
@@ -1087,9 +1087,9 @@ CSSNestingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSOMViewScrollingAPIEnabled:
@@ -1101,10 +1101,10 @@ CSSOMViewScrollingAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultCSSOMViewScrollingAPIEnabled()
+    CyberKit:
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultCSSOMViewScrollingAPIEnabled()
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 CSSOMViewSmoothScrollingEnabled:
@@ -1116,9 +1116,9 @@ CSSOMViewSmoothScrollingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 CSSPaintingAPIEnabled:
@@ -1131,10 +1131,10 @@ CSSPaintingAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(EXPERIMENTAL_FEATURES)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSRelativeColorSyntaxEnabled:
@@ -1146,9 +1146,9 @@ CSSRelativeColorSyntaxEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSRhythmicSizingEnabled:
@@ -1160,9 +1160,9 @@ CSSRhythmicSizingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSScrollAnchoringEnabled:
@@ -1174,9 +1174,9 @@ CSSScrollAnchoringEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSTextAlignLastEnabled:
@@ -1188,9 +1188,9 @@ CSSTextAlignLastEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSTextGroupAlignEnabled:
@@ -1202,9 +1202,9 @@ CSSTextGroupAlignEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSTextJustifyEnabled:
@@ -1216,9 +1216,9 @@ CSSTextJustifyEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSTextSpacingEnabled:
@@ -1230,9 +1230,9 @@ CSSTextSpacingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSTextWrapEnabled:
@@ -1244,9 +1244,9 @@ CSSTextWrapEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSTransformStyleOptimized3DEnabled:
@@ -1259,9 +1259,9 @@ CSSTransformStyleOptimized3DEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CSSTypedOMColorEnabled:
@@ -1273,9 +1273,9 @@ CSSTypedOMColorEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CSSTypedOMEnabled:
@@ -1287,9 +1287,9 @@ CSSTypedOMEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -1301,9 +1301,9 @@ CacheAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 CanvasColorSpaceEnabled:
@@ -1316,10 +1316,10 @@ CanvasColorSpaceEnabled:
     CyberKitLegacy:
       "PLATFORM(COCOA)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CanvasFiltersEnabled:
@@ -1332,9 +1332,9 @@ CanvasFiltersEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CanvasUsesAcceleratedDrawing:
@@ -1345,9 +1345,9 @@ CanvasUsesAcceleratedDrawing:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)": true
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 CaptureAudioInGPUProcessEnabled:
@@ -1358,10 +1358,10 @@ CaptureAudioInGPUProcessEnabled:
   humanReadableDescription: "Enable audio capture in GPU Process"
   webcoreBinding: none
   condition: ENABLE(MEDIA_STREAM)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
-      default: WebKit::defaultCaptureAudioInGPUProcessEnabled()
+    CyberKit:
+      default: CyberKit::defaultCaptureAudioInGPUProcessEnabled()
 
 CaptureAudioInUIProcessEnabled:
   type: bool
@@ -1371,10 +1371,10 @@ CaptureAudioInUIProcessEnabled:
   humanReadableDescription: "Enable audio capture in UI Process"
   webcoreBinding: none
   condition: ENABLE(MEDIA_STREAM)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
-      default: WebKit::defaultCaptureAudioInUIProcessEnabled()
+    CyberKit:
+      default: CyberKit::defaultCaptureAudioInUIProcessEnabled()
 
 CaptureVideoInGPUProcessEnabled:
   type: bool
@@ -1384,9 +1384,9 @@ CaptureVideoInGPUProcessEnabled:
   humanReadableDescription: "Enable video capture in GPU Process"
   webcoreBinding: none
   condition: ENABLE(MEDIA_STREAM)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "ENABLE(GPU_PROCESS_BY_DEFAULT)": true
       default: false
 
@@ -1398,9 +1398,9 @@ CaptureVideoInUIProcessEnabled:
   humanReadableDescription: "Enable video capture in UI Process"
   webcoreBinding: none
   condition: ENABLE(MEDIA_STREAM)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 CaretBrowsingEnabled:
@@ -1409,9 +1409,9 @@ CaretBrowsingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ClearSiteDataHTTPHeaderEnabled:
@@ -1423,9 +1423,9 @@ ClearSiteDataHTTPHeaderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 ClientBadgeEnabled:
@@ -1438,9 +1438,9 @@ ClientBadgeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ColorFilterEnabled:
@@ -1450,45 +1450,45 @@ ColorFilterEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
-# FIXME: WebKit has an alternate name for this called 'ShowDebugBorders'. We should standardize on one name.
+# FIXME: CyberKit has an alternate name for this called 'ShowDebugBorders'. We should standardize on one name.
 CompositingBordersVisible:
   type: bool
   status: internal
   defaultsOverridable: true
   humanReadableName: "Compositing borders visible"
-  webKitLegacyPreferenceKey: WebKitShowDebugBorders
+  webKitLegacyPreferenceKey: CyberKitShowDebugBorders
   webcoreName: showDebugBorders
   webcoreOnChange: setNeedsRecalcStyleInAllFrames
   inspectorOverride: true
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
-# FIXME: WebKit has an alternate name for this called 'ShowRepaintCounter'. We should standardize on one name.
+# FIXME: CyberKit has an alternate name for this called 'ShowRepaintCounter'. We should standardize on one name.
 CompositingRepaintCountersVisible:
   type: bool
   status: internal
   defaultsOverridable: true
   humanReadableName: "Compositing repaint counters visible"
-  webKitLegacyPreferenceKey: WebKitShowRepaintCounter
+  webKitLegacyPreferenceKey: CyberKitShowRepaintCounter
   webcoreName: showRepaintCounter
   webcoreOnChange: setNeedsRecalcStyleInAllFrames
   inspectorOverride: true
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CompressionStreamEnabled:
@@ -1500,9 +1500,9 @@ CompressionStreamEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This needs a more clear name to explain that it is a CSS related preference. (Maybe we need namespacing? CSS.ConstantPropertiesEnabled?)
@@ -1512,9 +1512,9 @@ ConstantPropertiesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 ConstructableStylesheetsEnabled:
@@ -1526,9 +1526,9 @@ ConstructableStylesheetsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ContactPickerAPIEnabled:
@@ -1540,9 +1540,9 @@ ContactPickerAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ContentChangeObserverEnabled:
@@ -1552,9 +1552,9 @@ ContentChangeObserverEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)": true
       default: false
 
@@ -1569,10 +1569,10 @@ ContentDispositionAttachmentSandboxEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       PLATFORM(COCOA): true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CookieConsentAPIEnabled:
@@ -1581,13 +1581,13 @@ CookieConsentAPIEnabled:
   category: dom
   humanReadableName: "Cookie Consent API"
   humanReadableDescription: "Enable cookie consent API"
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 # FIXME: This is handled via WebView SPI rather than WebPreferences for CyberKitLegacy. We should change the SPI to lookup the WebPreferences value instead.
@@ -1597,11 +1597,11 @@ CookieEnabled:
   humanReadableName: "Cookies Enabled"
   webKitLegacyBinding: custom
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
     CyberKitLegacy:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 CoreMathMLEnabled:
@@ -1614,10 +1614,10 @@ CoreMathMLEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 CrossOriginEmbedderPolicyEnabled:
@@ -1629,9 +1629,9 @@ CrossOriginEmbedderPolicyEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 CrossOriginOpenerPolicyEnabled:
@@ -1643,25 +1643,25 @@ CrossOriginOpenerPolicyEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 CursiveFontFamily:
   type: String
   status: embedder
-  webKitLegacyPreferenceKey: WebKitCursiveFont
+  webKitLegacyPreferenceKey: CyberKitCursiveFont
   webcoreImplementation: custom
   defaultValue:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": '"Snell Roundhand"'
       default: '"Apple Chancery"'
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) && PLATFORM(IOS_FAMILY)": '"Snell Roundhand"'
       "PLATFORM(COCOA) && !PLATFORM(IOS_FAMILY)": '"Apple Chancery"'
       default: '"Comic Sans MS"'
-    WebCore:
+    CyberCore:
       default: '""'
 
 CustomPasteboardDataEnabled:
@@ -1673,7 +1673,7 @@ CustomPasteboardDataEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WIN)": true
       default: false
 
@@ -1684,9 +1684,9 @@ DNSPrefetchingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DOMAudioSessionEnabled:
@@ -1699,9 +1699,9 @@ DOMAudioSessionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DOMAudioSessionFullEnabled:
@@ -1714,9 +1714,9 @@ DOMAudioSessionFullEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DOMPasteAccessRequestsEnabled:
@@ -1728,22 +1728,22 @@ DOMPasteAccessRequestsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS) || PLATFORM(MAC)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DOMPasteAllowed:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitDOMPasteAllowedPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitDOMPasteAllowedPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DOMTestingAPIsEnabled:
@@ -1753,9 +1753,9 @@ DOMTestingAPIsEnabled:
   humanReadableName: "Additional Testing APIs for DOM Objects"
   humanReadableDescription: "Enable additional testing APIs for DOM objects"
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
-    WebKit:
+    CyberKit:
       default: false
     CyberKitLegacy:
       default: false
@@ -1764,29 +1764,29 @@ DOMTimersThrottlingEnabled:
   type: bool
   status: embedder
   humanReadableName: "DOM timer throttling enabled"
-  webKitLegacyPreferenceKey: WebKitDOMTimersThrottlingEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitDOMTimersThrottlingEnabledPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DataDetectorTypes:
   type: uint32_t
-  refinedType: WebCore::DataDetectorType
+  refinedType: CyberCore::DataDetectorType
   status: embedder
   condition: ENABLE(DATA_DETECTION)
   defaultValue:
     CyberKitLegacy:
       default: DataDetectorType::None
-    WebKit:
+    CyberKit:
       default: DataDetectorType::None
-    WebCore:
+    CyberCore:
       default: DataDetectorType::None
 
-# FIXME: This is on by default in WebKit2 (for everything but WatchOS). Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2 (for everything but WatchOS). Perhaps we should consider turning it on for CyberKitLegacy as well.
 DataListElementEnabled:
   type: bool
   status: embedder
@@ -1796,10 +1796,10 @@ DataListElementEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": false
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(WATCHOS)": false
       default: true
 
@@ -1811,24 +1811,24 @@ DataTransferItemsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DatabasesEnabled:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitDatabasesEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitDatabasesEnabledPreferenceKey
   webcoreBinding: custom
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
-# FIXME: This is on by default in WebKit2 (for macOS at least). Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2 (for macOS at least). Perhaps we should consider turning it on for CyberKitLegacy as well.
 DateTimeInputsEditableComponentsEnabled:
   type: bool
   status: embedder
@@ -1838,10 +1838,10 @@ DateTimeInputsEditableComponentsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(MAC) || PLATFORM(GTK)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DeclarativeShadowDOMEnabled:
@@ -1853,9 +1853,9 @@ DeclarativeShadowDOMEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DeclarativeShadowDOMInDOMParserEnabled:
@@ -1867,9 +1867,9 @@ DeclarativeShadowDOMInDOMParserEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DefaultARIAForCustomElementsEnabled:
@@ -1881,9 +1881,9 @@ DefaultARIAForCustomElementsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DefaultFixedFontSize:
@@ -1893,9 +1893,9 @@ DefaultFixedFontSize:
   defaultValue:
     CyberKitLegacy:
       default: 13
-    WebKit:
+    CyberKit:
       default: 13
-    WebCore:
+    CyberCore:
       default: 13
 
 DefaultFontSize:
@@ -1905,9 +1905,9 @@ DefaultFontSize:
   defaultValue:
     CyberKitLegacy:
       default: 16
-    WebKit:
+    CyberKit:
       default: 16
-    WebCore:
+    CyberCore:
       default: 16
 
 DefaultTextEncodingName:
@@ -1916,9 +1916,9 @@ DefaultTextEncodingName:
   defaultValue:
     CyberKitLegacy:
       default: '"ISO-8859-1"'
-    WebKit:
+    CyberKit:
       default: PAL::defaultTextEncodingNameForSystemLanguage()
-    WebCore:
+    CyberCore:
       default: '{ }'
 
 DeprecateRSAESPKCSWebCryptoEnabled:
@@ -1930,9 +1930,9 @@ DeprecateRSAESPKCSWebCryptoEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DeprecationReportingEnabled:
@@ -1944,23 +1944,23 @@ DeprecationReportingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DeveloperExtrasEnabled:
   type: bool
   status: embedder
   defaultsOverridable: true
-  webKitLegacyPreferenceKey: WebKitDeveloperExtrasEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitDeveloperExtrasEnabledPreferenceKey
   webKitLegacyBinding: custom
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DeviceHeight:
@@ -1969,9 +1969,9 @@ DeviceHeight:
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       default: 0
-    WebCore:
+    CyberCore:
       default: 0
 
 DeviceOrientationEventEnabled:
@@ -1981,9 +1981,9 @@ DeviceOrientationEventEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DeviceOrientationPermissionAPIEnabled:
@@ -1993,9 +1993,9 @@ DeviceOrientationPermissionAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DeviceWidth:
@@ -2004,9 +2004,9 @@ DeviceWidth:
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       default: 0
-    WebCore:
+    CyberCore:
       default: 0
 
 DiagnosticLoggingEnabled:
@@ -2016,9 +2016,9 @@ DiagnosticLoggingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DialogElementEnabled:
@@ -2030,9 +2030,9 @@ DialogElementEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DirPseudoEnabled:
@@ -2044,9 +2044,9 @@ DirPseudoEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DirectoryUploadEnabled:
@@ -2057,10 +2057,10 @@ DirectoryUploadEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Starting the preference name with "Disable" is inconsistent with most other preferences and should be changed.
@@ -2074,9 +2074,9 @@ DisableScreenSizeOverride:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DisabledAdaptationsMetaTagEnabled:
@@ -2085,10 +2085,10 @@ DisabledAdaptationsMetaTagEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 DisallowSyncXHRDuringPageDismissalEnabled:
@@ -2100,10 +2100,10 @@ DisallowSyncXHRDuringPageDismissalEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
-      "PLATFORM(MAC) || PLATFORM(IOS_FAMILY)": WebKit::defaultDisallowSyncXHRDuringPageDismissalEnabled()
+    CyberKit:
+      "PLATFORM(MAC) || PLATFORM(IOS_FAMILY)": CyberKit::defaultDisallowSyncXHRDuringPageDismissalEnabled()
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 DisplayListDrawingEnabled:
@@ -2115,12 +2115,12 @@ DisplayListDrawingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 DownloadAttributeEnabled:
   type: bool
   status: embedder
@@ -2128,21 +2128,21 @@ DownloadAttributeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 EditableLinkBehavior:
   type: uint32_t
-  refinedType: WebCore::EditableLinkBehavior
+  refinedType: CyberCore::EditableLinkBehavior
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      default: WebKitEditableLinkDefaultBehavior
-    WebKit:
-      default: WebCore::EditableLinkBehavior::NeverLive
-    WebCore:
+      default: CyberKitEditableLinkDefaultBehavior
+    CyberKit:
+      default: CyberCore::EditableLinkBehavior::NeverLive
+    CyberCore:
       default: EditableLinkBehavior::Default
 
 EmbedElementEnabled:
@@ -2153,9 +2153,9 @@ EmbedElementEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 EnableInheritURIQueryComponent:
@@ -2164,9 +2164,9 @@ EnableInheritURIQueryComponent:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 EncryptedMediaAPIEnabled:
@@ -2176,9 +2176,9 @@ EncryptedMediaAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 EnterKeyHintEnabled:
@@ -2190,10 +2190,10 @@ EnterKeyHintEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 EnumeratingAllNetworkInterfacesEnabled:
@@ -2201,9 +2201,9 @@ EnumeratingAllNetworkInterfacesEnabled:
   status: embedder
   humanReadableName: "Enable Enumerating All Network Interfaces"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 EventHandlerDrivenSmoothKeyboardScrollingEnabled:
@@ -2215,11 +2215,11 @@ EventHandlerDrivenSmoothKeyboardScrollingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
-      "PLATFORM(MAC)": WebKit::defaultScrollAnimatorEnabled()
+    CyberKit:
+      "PLATFORM(MAC)": CyberKit::defaultScrollAnimatorEnabled()
       "PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ExperimentalSandboxEnabled:
@@ -2229,9 +2229,9 @@ ExperimentalSandboxEnabled:
   humanReadableName: "Enable experimental sandbox features"
   humanReadableDescription: "Enable experimental sandbox features"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 ExperimentalSandboxWithProbabilityEnabled:
@@ -2241,9 +2241,9 @@ ExperimentalSandboxWithProbabilityEnabled:
   humanReadableName: "Enable experimental sandbox features with probability"
   humanReadableDescription: "Enable experimental sandbox features with probability"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -2257,9 +2257,9 @@ ExposeSpeakersEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ExtendedAudioDescriptionsEnabled:
@@ -2272,9 +2272,9 @@ ExtendedAudioDescriptionsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ExtensibleSSOEnabled:
@@ -2283,9 +2283,9 @@ ExtensibleSSOEnabled:
   getter: isExtensibleSSOEnabled
   webcoreBinding: none
   condition: HAVE(APP_SSO)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 FTPDirectoryTemplatePath:
@@ -2294,9 +2294,9 @@ FTPDirectoryTemplatePath:
   defaultValue:
     CyberKitLegacy:
       default: '""'
-    WebKit:
+    CyberKit:
       default: '""'
-    WebCore:
+    CyberCore:
       default: '""'
 
 FTPEnabled:
@@ -2306,9 +2306,9 @@ FTPEnabled:
   humanReadableName: "FTP support enabled"
   humanReadableDescription: "FTP support enabled"
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
-    WebKit:
+    CyberKit:
       default: false
     CyberKitLegacy:
       default: false
@@ -2316,15 +2316,15 @@ FTPEnabled:
 FantasyFontFamily:
   type: String
   status: embedder
-  webKitLegacyPreferenceKey: WebKitFantasyFont
+  webKitLegacyPreferenceKey: CyberKitFantasyFont
   webcoreImplementation: custom
   defaultValue:
     CyberKitLegacy:
       default: '"Papyrus"'
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": '"Papyrus"'
       default: '"Impact"'
-    WebCore:
+    CyberCore:
       default: '""'
 
 FasterClicksEnabled:
@@ -2335,9 +2335,9 @@ FasterClicksEnabled:
   humanReadableDescription: "Support faster clicks on zoomable pages"
   webcoreBinding: none
   condition: PLATFORM(IOS_FAMILY)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 FetchAPIEnabled:
@@ -2348,12 +2348,12 @@ FetchAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
-# FIXME: This seems to be accidentally enabled for WebKit1 right now due to the old code using the
+# FIXME: This seems to be accidentally enabled for CyberKit1 right now due to the old code using the
 # wrong preference key in some places. We should identify whether it really makes sense to keep this
 # enabled.
 FetchAPIKeepAliveEnabled:
@@ -2365,7 +2365,7 @@ FetchAPIKeepAliveEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 FetchMetadataEnabled:
@@ -2375,9 +2375,9 @@ FetchMetadataEnabled:
   humanReadableName: "Fetch Metadata"
   humanReadableDescription: "Enable Fetch Metadata headers"
   defaultValue:
-    WebCore:
+    CyberCore:
       default: true
-    WebKit:
+    CyberKit:
       default: true
     CyberKitLegacy:
       default: true
@@ -2390,9 +2390,9 @@ FileReaderAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 FileSystemAccessEnabled:
@@ -2404,25 +2404,25 @@ FileSystemAccessEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)" : true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA)" : true
       default: false
 
 FixedFontFamily:
   type: String
   status: embedder
-  webKitLegacyPreferenceKey: WebKitFixedFont
+  webKitLegacyPreferenceKey: CyberKitFixedFont
   webcoreImplementation: custom
   defaultValue:
     CyberKitLegacy:
       default: '"Courier"'
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": '"Courier"'
       default: '"Courier New"'
-    WebCore:
+    CyberCore:
       default: '""'
 
 FlexFormattingContextIntegrationEnabled:
@@ -2434,9 +2434,9 @@ FlexFormattingContextIntegrationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 FocusVisibleEnabled:
@@ -2448,9 +2448,9 @@ FocusVisibleEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ForceAlwaysUserScalable:
@@ -2460,18 +2460,18 @@ ForceAlwaysUserScalable:
   humanReadableName: "Force always user-scalable"
   webcoreBinding: none
   condition: PLATFORM(IOS_FAMILY)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 ForceCompositingMode:
   type: bool
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 ForceFTPDirectoryListings:
@@ -2480,9 +2480,9 @@ ForceFTPDirectoryListings:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ForceWebGLUsesLowPower:
@@ -2491,9 +2491,9 @@ ForceWebGLUsesLowPower:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 FormAssociatedCustomElementsEnabled:
@@ -2505,9 +2505,9 @@ FormAssociatedCustomElementsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: This should be reconciled with 'FrameFlattening'.
@@ -2517,9 +2517,9 @@ FrameFlatteningEnabled:
   humanReadableName: "Frame flattening"
   humanReadableDescription: "Enable frame flattening, which adjusts the height of an iframe to fit its contents"
   webcoreBinding: custom
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
 
@@ -2533,9 +2533,9 @@ FullScreenEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 FullscreenRequirementForScreenOrientationLockingEnabled:
@@ -2546,9 +2546,9 @@ FullscreenRequirementForScreenOrientationLockingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 GStreamerEnabled:
@@ -2557,9 +2557,9 @@ GStreamerEnabled:
   getter: isGStreamerEnabled
   webcoreBinding: DeprecatedGlobalSettings
   condition: USE(GSTREAMER)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 GamepadTriggerRumbleEnabled:
@@ -2572,9 +2572,9 @@ GamepadTriggerRumbleEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 GamepadVibrationActuatorEnabled:
@@ -2587,9 +2587,9 @@ GamepadVibrationActuatorEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: defaultGamepadVibrationActuatorEnabled()
-    WebCore:
+    CyberCore:
       default: false
 
 GamepadsEnabled:
@@ -2601,12 +2601,12 @@ GamepadsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 GenericCueAPIEnabled:
   type: bool
   status: mature
@@ -2616,9 +2616,9 @@ GenericCueAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 GetUserMediaRequiresFocus:
@@ -2631,9 +2631,9 @@ GetUserMediaRequiresFocus:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 GoogleAntiFlickerOptimizationQuirkEnabled:
@@ -2644,9 +2644,9 @@ GoogleAntiFlickerOptimizationQuirkEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 GraphicsContextFiltersEnabled:
@@ -2659,9 +2659,9 @@ GraphicsContextFiltersEnabled:
    defaultValue:
      CyberKitLegacy:
        default: false
-     WebKit:
+     CyberKit:
        default: false
-     WebCore:
+     CyberCore:
        default: false
 
 HTTPEquivEnabled:
@@ -2673,9 +2673,9 @@ HTTPEquivEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 HasPseudoClassEnabled:
@@ -2687,9 +2687,9 @@ HasPseudoClassEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 HiddenPageCSSAnimationSuspensionEnabled:
@@ -2699,10 +2699,10 @@ HiddenPageCSSAnimationSuspensionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) || PLATFORM(GTK)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 HiddenPageDOMTimerThrottlingAutoIncreases:
@@ -2713,9 +2713,9 @@ HiddenPageDOMTimerThrottlingAutoIncreases:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 HiddenPageDOMTimerThrottlingEnabled:
@@ -2727,10 +2727,10 @@ HiddenPageDOMTimerThrottlingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) || PLATFORM(GTK)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 HighlightAPIEnabled:
@@ -2743,7 +2743,7 @@ HighlightAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 HyperlinkAuditingEnabled:
@@ -2754,9 +2754,9 @@ HyperlinkAuditingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 ICECandidateFilteringEnabled:
@@ -2770,9 +2770,9 @@ ICECandidateFilteringEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 IOSFormControlRefreshEnabled:
@@ -2785,9 +2785,9 @@ IOSFormControlRefreshEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 IPCTestingAPIEnabled:
@@ -2798,9 +2798,9 @@ IPCTestingAPIEnabled:
   humanReadableDescription: "Enable IPC Testing API for JavaScript"
   webcoreBinding: none
   condition: ENABLE(IPC_TESTING_API)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 ImageAnalysisDuringFindInPageEnabled:
@@ -2811,9 +2811,9 @@ ImageAnalysisDuringFindInPageEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ImageAnimationControlEnabled:
@@ -2826,9 +2826,9 @@ ImageAnimationControlEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ImageControlsEnabled:
@@ -2841,9 +2841,9 @@ ImageControlsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ImperativeSlotAPIEnabled:
@@ -2855,18 +2855,18 @@ ImperativeSlotAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 InactiveMediaCaptureSteamRepromptIntervalInMinutes:
   type: double
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": 1
       default: 10
 
@@ -2876,9 +2876,9 @@ IncompleteImageBorderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 IncrementalPDFLoadingEnabled:
@@ -2889,24 +2889,24 @@ IncrementalPDFLoadingEnabled:
     CyberKitLegacy:
       "PLATFORM(MAC)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(MAC)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(MAC)": true
       default: false
 
 IncrementalRenderingSuppressionTimeout:
   type: double
   status: embedder
-  webKitLegacyPreferenceKey: WebKitIncrementalRenderingSuppressionTimeoutInSeconds
+  webKitLegacyPreferenceKey: CyberKitIncrementalRenderingSuppressionTimeoutInSeconds
   webcoreName: incrementalRenderingSuppressionTimeoutInSeconds
   defaultValue:
     CyberKitLegacy:
       default: 5
-    WebKit:
+    CyberKit:
       default: 5
-    WebCore:
+    CyberCore:
       default: 5
 
 IndexedDBAPIEnabled:
@@ -2917,9 +2917,9 @@ IndexedDBAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 InertAttributeEnabled:
@@ -2931,9 +2931,9 @@ InertAttributeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 InlineFormattingContextIntegrationEnabled:
@@ -2946,7 +2946,7 @@ InlineFormattingContextIntegrationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 InlineMediaPlaybackRequiresPlaysInlineAttribute:
@@ -2954,12 +2954,12 @@ InlineMediaPlaybackRequiresPlaysInlineAttribute:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultInlineMediaPlaybackRequiresPlaysInlineAttribute()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultInlineMediaPlaybackRequiresPlaysInlineAttribute()
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY)": true
       default: false
 
@@ -2972,10 +2972,10 @@ InputTypeColorEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": false
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 InputTypeDateEnabled:
@@ -2988,10 +2988,10 @@ InputTypeDateEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(APPLETV)": false
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 InputTypeDateTimeLocalEnabled:
@@ -3004,10 +3004,10 @@ InputTypeDateTimeLocalEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(APPLETV)": false
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 InputTypeMonthEnabled:
@@ -3020,10 +3020,10 @@ InputTypeMonthEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "!PLATFORM(MAC) && !PLATFORM(APPLETV)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 InputTypeTimeEnabled:
@@ -3036,10 +3036,10 @@ InputTypeTimeEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(APPLETV)": false
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 InputTypeWeekEnabled:
@@ -3051,55 +3051,55 @@ InputTypeWeekEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "!PLATFORM(MAC) && !PLATFORM(APPLETV)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 InspectorAttachedHeight:
   type: uint32_t
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: 500
 
 InspectorAttachedWidth:
   type: uint32_t
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: 750
 
 InspectorAttachmentSide:
   type: uint32_t
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: 0
 
 InspectorStartsAttached:
   type: bool
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 InspectorWindowFrame:
   type: String
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: '""'
 
 InteractionRegionInlinePadding:
@@ -3108,9 +3108,9 @@ InteractionRegionInlinePadding:
   defaultValue:
     CyberKitLegacy:
       default: 3
-    WebKit:
+    CyberKit:
       default: 3
-    WebCore:
+    CyberCore:
       default: 3
 
 InteractionRegionMinimumCornerRadius:
@@ -3119,9 +3119,9 @@ InteractionRegionMinimumCornerRadius:
   defaultValue:
     CyberKitLegacy:
       default: 4
-    WebKit:
+    CyberKit:
       default: 4
-    WebCore:
+    CyberCore:
       default: 4
 
 InteractionRegionsEnabled:
@@ -3132,11 +3132,11 @@ InteractionRegionsEnabled:
   humanReadableDescription: "Generate and visualize interaction regions"
   condition: ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
     CyberKitLegacy:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This is handled via WebView SPI rather than WebPreferences for CyberKitLegacy. We should change the SPI to lookup the WebPreferences value instead.
@@ -3147,11 +3147,11 @@ InteractiveFormValidationEnabled:
   humanReadableDescription: "HTML interactive form validation"
   webKitLegacyBinding: custom
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
     CyberKitLegacy:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -3162,10 +3162,10 @@ InterruptAudioOnPageVisibilityChangeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 InterruptVideoOnPageVisibilityChangeEnabled:
@@ -3176,13 +3176,13 @@ InterruptVideoOnPageVisibilityChangeEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY) && !HAVE(UIKIT_WEBKIT_INTERNALS)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY) && !HAVE(UIKIT_WEBKIT_INTERNALS)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 IntersectionObserverEnabled:
   type: bool
   status: mature
@@ -3191,9 +3191,9 @@ IntersectionObserverEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 InvisibleAutoplayNotPermitted:
@@ -3203,10 +3203,10 @@ InvisibleAutoplayNotPermitted:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 IsAccessibilityIsolatedTreeEnabled:
@@ -3219,10 +3219,10 @@ IsAccessibilityIsolatedTreeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "USE(ATSPI)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: The 'Is' prefix is inconsistent with most other preferences and should be removed.
@@ -3235,9 +3235,9 @@ IsFirstPartyWebsiteDataRemovalDisabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely.
@@ -3250,9 +3250,9 @@ IsFirstPartyWebsiteDataRemovalLiveOnTestingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely.
@@ -3265,9 +3265,9 @@ IsFirstPartyWebsiteDataRemovalReproTestingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: The 'Is' prefix is inconsistent with most other preferences and should be removed.
@@ -3280,9 +3280,9 @@ IsLoggedInAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: The 'Is' prefix is inconsistent with most other preferences and should be removed.
@@ -3297,9 +3297,9 @@ IsNSURLSessionWebSocketEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: The 'Is' prefix is inconsistent with most other preferences and should be removed.
@@ -3312,9 +3312,9 @@ IsSameSiteStrictEnforcementEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: The 'Is' prefix is inconsistent with most other preferences and should be removed.
@@ -3327,9 +3327,9 @@ IsThirdPartyCookieBlockingDisabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -3342,9 +3342,9 @@ ItpDebugModeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 JavaScriptCanAccessClipboard:
@@ -3353,9 +3353,9 @@ JavaScriptCanAccessClipboard:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 JavaScriptCanOpenWindowsAutomatically:
@@ -3363,12 +3363,12 @@ JavaScriptCanOpenWindowsAutomatically:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultJavaScriptCanOpenWindowsAutomatically()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultJavaScriptCanOpenWindowsAutomatically()
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 JavaScriptEnabled:
@@ -3382,9 +3382,9 @@ JavaScriptEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 # NOTE: Clients should use per-navigation "allowsContentJavaScript" policies instead
@@ -3395,22 +3395,22 @@ JavaScriptMarkupEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 JavaScriptRuntimeFlags:
   type: uint32_t
   refinedType: JSC::RuntimeFlags
   status: embedder
-  webKitLegacyPreferenceKey: WebKitJavaScriptRuntimeFlagsPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitJavaScriptRuntimeFlagsPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       default: 0
-    WebCore:
+    CyberCore:
       default: '{ }'
 
 LargeImageAsyncDecodingEnabled:
@@ -3419,9 +3419,9 @@ LargeImageAsyncDecodingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LayerBasedSVGEngineEnabled:
@@ -3432,11 +3432,11 @@ LayerBasedSVGEngineEnabled:
   condition: ENABLE(LAYER_BASED_SVG_ENGINE)
   webcoreOnChange: layerBasedSVGEngineEnabledChanged
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 LayoutFallbackWidth:
@@ -3445,9 +3445,9 @@ LayoutFallbackWidth:
   defaultValue:
     CyberKitLegacy:
       default: 980
-    WebKit:
+    CyberKit:
       default: 980
-    WebCore:
+    CyberCore:
       default: 980
 
 LayoutFormattingContextEnabled:
@@ -3459,9 +3459,9 @@ LayoutFormattingContextEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LayoutViewportHeightExpansionFactor:
@@ -3471,10 +3471,10 @@ LayoutViewportHeightExpansionFactor:
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": 1
       default: 0
-    WebCore:
+    CyberCore:
       default: 0
 
 LazyIframeLoadingEnabled:
@@ -3486,9 +3486,9 @@ LazyIframeLoadingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LazyImageLoadingEnabled:
@@ -3500,9 +3500,9 @@ LazyImageLoadingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 LegacyEncryptedMediaAPIEnabled:
@@ -3514,9 +3514,9 @@ LegacyEncryptedMediaAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LegacyLineLayoutVisualCoverageEnabled:
@@ -3530,9 +3530,9 @@ LegacyLineLayoutVisualCoverageEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LegacyOverflowScrollingTouchEnabled:
@@ -3545,9 +3545,9 @@ LegacyOverflowScrollingTouchEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LineHeightUnitsEnabled:
@@ -3560,9 +3560,9 @@ LineHeightUnitsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LinkModulePreloadEnabled:
@@ -3574,9 +3574,9 @@ LinkModulePreloadEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LinkPreconnect:
@@ -3586,10 +3586,10 @@ LinkPreconnect:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(SERVER_PRECONNECT)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LinkPrefetchEnabled:
@@ -3601,9 +3601,9 @@ LinkPrefetchEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LinkPreloadEnabled:
@@ -3612,9 +3612,9 @@ LinkPreloadEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LinkPreloadResponsiveImagesEnabled:
@@ -3626,9 +3626,9 @@ LinkPreloadResponsiveImagesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LinkSanitizerEnabled:
@@ -3640,9 +3640,9 @@ LinkSanitizerEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LiveRangeSelectionEnabled:
@@ -3654,9 +3654,9 @@ LiveRangeSelectionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 LoadDeferringEnabled:
@@ -3664,11 +3664,11 @@ LoadDeferringEnabled:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(MAC): WebKit::defaultLoadDeferringEnabled()
+      PLATFORM(MAC): CyberKit::defaultLoadDeferringEnabled()
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # This only suppresses the network load of the image URL. A cached image will still be rendered if requested.
@@ -3676,13 +3676,13 @@ LoadsImagesAutomatically:
   type: bool
   status: embedder
   webcoreOnChange: imagesEnabledChanged
-  webKitLegacyPreferenceKey: WebKitDisplayImagesKey
+  webKitLegacyPreferenceKey: CyberKitDisplayImagesKey
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 # This preference only affects site icon image loading if the LoadsImagesAutomatically preference is false and
@@ -3692,14 +3692,14 @@ LoadsSiteIconsIgnoringImageLoadingPreference:
   status: stable
   category: networking
   humanReadableName: "Load site icons ignoring image loading preference"
-  webKitLegacyPreferenceKey: WebKitLoadSiteIconsKey
+  webKitLegacyPreferenceKey: CyberKitLoadSiteIconsKey
   webcoreName: loadsSiteIconsIgnoringImageLoadingSetting
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LocalFileContentSniffingEnabled:
@@ -3708,13 +3708,13 @@ LocalFileContentSniffingEnabled:
   category: networking
   humanReadableName: "Local File Content Sniffing"
   humanReadableDescription: "Enable Local File Content Sniffing"
-  webKitLegacyPreferenceKey: WebKitLocalFileContentSniffingEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitLocalFileContentSniffingEnabledPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LocalStorageEnabled:
@@ -3722,13 +3722,13 @@ LocalStorageEnabled:
   status: mature
   humanReadableName: "Local Storage"
   humanReadableDescription: "Enable Local Storage"
-  webKitLegacyPreferenceKey: WebKitLocalStorageEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitLocalStorageEnabledPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 LogsPageMessagesToSystemConsoleEnabled:
@@ -3741,18 +3741,18 @@ LogsPageMessagesToSystemConsoleEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 LongRunningMediaCaptureStreamRepromptIntervalInHours:
   type: double
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: 24
 
 LowPowerVideoAudioBufferSizeEnabled:
@@ -3762,7 +3762,7 @@ LowPowerVideoAudioBufferSizeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
 
 MainContentUserGestureOverrideEnabled:
@@ -3773,9 +3773,9 @@ MainContentUserGestureOverrideEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ManageCaptureStatusBarInGPUProcessEnabled:
@@ -3786,11 +3786,11 @@ ManageCaptureStatusBarInGPUProcessEnabled:
   humanReadableDescription: "Enable Capture Status Bar management in GPU Process"
   condition: ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)
   defaultValue:
-    WebKit:
-      default: WebKit::defaultManageCaptureStatusBarInGPUProcessEnabled()
+    CyberKit:
+      default: CyberKit::defaultManageCaptureStatusBarInGPUProcessEnabled()
     CyberKitLegacy:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ManagedMediaSourceEnabled:
@@ -3803,9 +3803,9 @@ ManagedMediaSourceEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
-      default: WebKit::defaultManagedMediaSourceEnabled()
-    WebCore:
+    CyberKit:
+      default: CyberKit::defaultManagedMediaSourceEnabled()
+    CyberCore:
       default: true
 
 MarkedTextInputEnabled:
@@ -3814,9 +3814,9 @@ MarkedTextInputEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MaskWebGLStringsEnabled:
@@ -3829,9 +3829,9 @@ MaskWebGLStringsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 MasonryEnabled:
@@ -3843,9 +3843,9 @@ MasonryEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MathMLEnabled:
@@ -3855,30 +3855,30 @@ MathMLEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 MaxParseDuration:
   type: double
   status: embedder
-  webKitLegacyPreferenceKey: WebKitMaxParseDurationPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitMaxParseDurationPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: -1
-    WebKit:
+    CyberKit:
       default: -1
-    WebCore:
+    CyberCore:
       default: -1
 
 MediaAudioCodecIDsAllowedInLockdownMode:
   type: String
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: '"aac ,zaac,qaac,caac,.mp3,mp4a"'
 
 MediaCapabilitiesEnabled:
@@ -3887,12 +3887,12 @@ MediaCapabilitiesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 MediaCapabilitiesExtensionsEnabled:
   type: bool
   status: testable
@@ -3902,18 +3902,18 @@ MediaCapabilitiesExtensionsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 MediaCaptionFormatTypesAllowedInLockdownMode:
   type: String
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: '"c608,wvtt"'
 
 MediaCaptureRequiresSecureConnection:
@@ -3927,27 +3927,27 @@ MediaCaptureRequiresSecureConnection:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 MediaCodecTypesAllowedInLockdownMode:
   type: String
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: '"mp4a.40,avc1"'
 
 MediaContainerTypesAllowedInLockdownMode:
   type: String
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: '"video/mp4,audio/mp4,video/x-m4v,audio/x-m4a,audio/mp3,application/x-mpegURL,application/vnd.apple.mpegURL,video/mp2t,video/iso.segment,audio/aac,audio/mpeg,audio/ac3,audio/eac3,video/mpeg2,text/vtt"'
 
 MediaContentTypesRequiringHardwareSupport:
@@ -3958,9 +3958,9 @@ MediaContentTypesRequiringHardwareSupport:
   defaultValue:
     CyberKitLegacy:
       default: '""'
-    WebKit:
+    CyberKit:
       default: '""'
-    WebCore:
+    CyberCore:
       default: '""'
 
 MediaControlsContextMenusEnabled:
@@ -3970,9 +3970,9 @@ MediaControlsContextMenusEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 MediaControlsScaleWithPageZoom:
@@ -3982,10 +3982,10 @@ MediaControlsScaleWithPageZoom:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 MediaDataLoadsAutomatically:
@@ -3995,10 +3995,10 @@ MediaDataLoadsAutomatically:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY)": false
       default: true
 
@@ -4012,9 +4012,9 @@ MediaDevicesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MediaEnabled:
@@ -4024,9 +4024,9 @@ MediaEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 MediaPreferredFullscreenWidth:
@@ -4035,9 +4035,9 @@ MediaPreferredFullscreenWidth:
   defaultValue:
     CyberKitLegacy:
       default: 960
-    WebKit:
+    CyberKit:
       default: 960
-    WebCore:
+    CyberCore:
       default: 960
 
 MediaPreloadingEnabled:
@@ -4046,9 +4046,9 @@ MediaPreloadingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -4062,11 +4062,11 @@ MediaRecorderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       "USE(GSTREAMER_TRANSCODER)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MediaSessionCoordinatorEnabled:
@@ -4079,9 +4079,9 @@ MediaSessionCoordinatorEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
-      default: WebKit::defaultMediaSessionCoordinatorEnabled()
-    WebCore:
+    CyberKit:
+      default: CyberKit::defaultMediaSessionCoordinatorEnabled()
+    CyberCore:
       default: true
 
 MediaSessionEnabled:
@@ -4093,9 +4093,9 @@ MediaSessionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 MediaSessionPlaylistEnabled:
@@ -4108,9 +4108,9 @@ MediaSessionPlaylistEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
-      default: WebKit::defaultMediaSessionCoordinatorEnabled()
-    WebCore:
+    CyberKit:
+      default: CyberKit::defaultMediaSessionCoordinatorEnabled()
+    CyberCore:
       default: true
 
 MediaSourceEnabled:
@@ -4121,14 +4121,14 @@ MediaSourceEnabled:
   humanReadableDescription: "Media Source API"
   defaultValue:
     CyberKitLegacy:
-      "ENABLE(MEDIA_SOURCE) && PLATFORM(IOS_FAMILY)": WebKit::defaultMediaSourceEnabled()
+      "ENABLE(MEDIA_SOURCE) && PLATFORM(IOS_FAMILY)": CyberKit::defaultMediaSourceEnabled()
       "ENABLE(MEDIA_SOURCE) && !PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
-      "ENABLE(MEDIA_SOURCE) && PLATFORM(IOS_FAMILY)": WebKit::defaultMediaSourceEnabled()
+    CyberKit:
+      "ENABLE(MEDIA_SOURCE) && PLATFORM(IOS_FAMILY)": CyberKit::defaultMediaSourceEnabled()
       "ENABLE(MEDIA_SOURCE) && !PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       "ENABLE(MEDIA_SOURCE)": true
       default: false
 
@@ -4144,7 +4144,7 @@ MediaSourceInlinePaintingEnabled:
     CyberKitLegacy:
       "HAVE(AVSAMPLEBUFFERDISPLAYLAYER_COPYDISPLAYEDPIXELBUFFER)": true
       default: false
-    WebKit:
+    CyberKit:
       "HAVE(AVSAMPLEBUFFERDISPLAYLAYER_COPYDISPLAYEDPIXELBUFFER)": true
       default: false
 
@@ -4157,9 +4157,9 @@ MediaStreamEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 MediaUserGestureInheritsFromDocument:
@@ -4168,18 +4168,18 @@ MediaUserGestureInheritsFromDocument:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MediaVideoCodecIDsAllowedInLockdownMode:
   type: String
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: '"avc1,zavc,qavc,cavc"'
 
 MenuItemElementEnabled:
@@ -4188,9 +4188,9 @@ MenuItemElementEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MinimumFontSize:
@@ -4200,9 +4200,9 @@ MinimumFontSize:
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       default: 0
-    WebCore:
+    CyberCore:
       default: 0
 
 MinimumLogicalFontSize:
@@ -4212,23 +4212,23 @@ MinimumLogicalFontSize:
   defaultValue:
     CyberKitLegacy:
       default: 9
-    WebKit:
+    CyberKit:
       default: 9
-    WebCore:
+    CyberCore:
       default: 0
 
 MinimumZoomFontSize:
   type: double
   status: embedder
-  webKitLegacyPreferenceKey: WebKitMinimumZoomFontSizePreferenceKey
+  webKitLegacyPreferenceKey: CyberKitMinimumZoomFontSizePreferenceKey
   condition: ENABLE(TEXT_AUTOSIZING)
   defaultValue:
     CyberKitLegacy:
       default: 15
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": 30
       default: 15
-    WebCore:
+    CyberCore:
       "PLATFORM(WATCHOS)": 30
       default: 15
 
@@ -4244,19 +4244,19 @@ MockCaptureDevicesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY_SIMULATOR)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MockCaptureDevicesPromptEnabled:
   type: bool
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 MockScrollbarsControllerEnabled:
@@ -4265,9 +4265,9 @@ MockScrollbarsControllerEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MockScrollbarsEnabled:
@@ -4277,7 +4277,7 @@ MockScrollbarsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 ModelDocumentEnabled:
@@ -4291,7 +4291,7 @@ ModelDocumentEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 ModelElementEnabled:
@@ -4304,22 +4304,22 @@ ModelElementEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MomentumScrollingAnimatorEnabled:
   type: bool
   status: internal
   humanReadableName: "Momentum Scrolling Animator"
-  humanReadableDescription: "Generate momentum events in WebKit instead of using those delivered by the system"
+  humanReadableDescription: "Generate momentum events in CyberKit instead of using those delivered by the system"
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 MouseEventsSimulationEnabled:
@@ -4332,9 +4332,9 @@ MouseEventsSimulationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 MuteCameraOnMicrophoneInterruptionEnabled:
@@ -4347,10 +4347,10 @@ MuteCameraOnMicrophoneInterruptionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 NeedsAdobeFrameReloadingQuirk:
@@ -4361,11 +4361,11 @@ NeedsAdobeFrameReloadingQuirk:
   webcoreGetter: needsAcrobatFrameReloadingQuirk
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(MAC): WebKit::defaultNeedsAdobeFrameReloadingQuirk()
+      PLATFORM(MAC): CyberKit::defaultNeedsAdobeFrameReloadingQuirk()
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 NeedsFrameNameFallbackToIdQuirk:
@@ -4373,11 +4373,11 @@ NeedsFrameNameFallbackToIdQuirk:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(MAC): WebKit::defaultNeedsFrameNameFallbackToIdQuirk()
+      PLATFORM(MAC): CyberKit::defaultNeedsFrameNameFallbackToIdQuirk()
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 NeedsInAppBrowserPrivacyQuirks:
@@ -4388,9 +4388,9 @@ NeedsInAppBrowserPrivacyQuirks:
   humanReadableName: "Needs In-App Browser Privacy Quirks"
   humanReadableDescription: "Enable quirks needed to support In-App Browser privacy"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 NeedsKeyboardEventDisambiguationQuirks:
@@ -4402,11 +4402,11 @@ NeedsKeyboardEventDisambiguationQuirks:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(MAC): WebKit::defaultNeedsKeyboardEventDisambiguationQuirks()
+      PLATFORM(MAC): CyberKit::defaultNeedsKeyboardEventDisambiguationQuirks()
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 NeedsSiteSpecificQuirks:
@@ -4414,14 +4414,14 @@ NeedsSiteSpecificQuirks:
   status: embedder
   humanReadableName: "Needs Site-Specific Quirks"
   humanReadableDescription: "Enable site-specific quirks"
-  webKitLegacyPreferenceKey: WebKitUseSiteSpecificSpoofing
+  webKitLegacyPreferenceKey: CyberKitUseSiteSpecificSpoofing
   inspectorOverride: true
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 NeedsStorageAccessFromFileURLsQuirk:
@@ -4431,9 +4431,9 @@ NeedsStorageAccessFromFileURLsQuirk:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 NotificationEventEnabled:
@@ -4444,10 +4444,10 @@ NotificationEventEnabled:
   humanReadableDescription: "NotificationEvent and ServiceWorkerRegistration.showNotification() support"
   condition: ENABLE(NOTIFICATION_EVENT)
   defaultValue:
-    WebCore:
+    CyberCore:
       "ENABLE(NOTIFICATION_EVENT) && !PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(NOTIFICATION_EVENT) && !PLATFORM(IOS_FAMILY)": true
       default: false
 
@@ -4462,10 +4462,10 @@ NotificationsEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY)": false
       default: true
 
@@ -4475,9 +4475,9 @@ OfflineWebApplicationCacheEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
-      default: WebKit::defaultOfflineWebApplicationCacheEnabled()
-    WebCore:
+    CyberKit:
+      default: CyberKit::defaultOfflineWebApplicationCacheEnabled()
+    CyberCore:
       default: false
 
 OffscreenCanvasEnabled:
@@ -4491,10 +4491,10 @@ OffscreenCanvasEnabled:
     CyberKitLegacy:
       "PLATFORM(COCOA)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA)": true
       default: false
 
@@ -4509,10 +4509,10 @@ OffscreenCanvasInWorkersEnabled:
     CyberKitLegacy:
       "PLATFORM(COCOA)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA)": true
       default: false
 
@@ -4526,7 +4526,7 @@ OpusDecoderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 OverflowClipEnabled:
@@ -4538,9 +4538,9 @@ OverflowClipEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 OverscrollBehaviorEnabled:
@@ -4552,10 +4552,10 @@ OverscrollBehaviorEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(WIN) || PLATFORM(GTK) || PLATFORM(WPE)": false
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(WIN) || PLATFORM(GTK) || PLATFORM(WPE)": false
       default: true
 
@@ -4564,9 +4564,9 @@ PDFPluginEnabled:
   status: embedder
   webcoreBinding: none
   condition: PLATFORM(COCOA)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 PageAtRuleSupportEnabled:
@@ -4578,9 +4578,9 @@ PageAtRuleSupportEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PageVisibilityBasedProcessSuppressionEnabled:
@@ -4590,12 +4590,12 @@ PageVisibilityBasedProcessSuppressionEnabled:
   humanReadableName: "Page visibility-based process suppression"
   humanReadableDescription: "Enable page visibility-based process suppression"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 PaintTimingEnabled:
   type: bool
   status: mature
@@ -4605,7 +4605,7 @@ PaintTimingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
 
 PassiveTouchListenersAsDefaultOnDocument:
@@ -4613,12 +4613,12 @@ PassiveTouchListenersAsDefaultOnDocument:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultPassiveTouchListenersAsDefaultOnDocument()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultPassiveTouchListenersAsDefaultOnDocument()
       default: true
-    WebKit:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultPassiveTouchListenersAsDefaultOnDocument()
+    CyberKit:
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultPassiveTouchListenersAsDefaultOnDocument()
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 PassiveWheelListenersAsDefaultOnDocument:
@@ -4628,40 +4628,40 @@ PassiveWheelListenersAsDefaultOnDocument:
   humanReadableDescription: "Force wheel event listeners registered on the window, document or body to be passive"
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(MAC)": WebKit::defaultPassiveWheelListenersAsDefaultOnDocument()
+      "PLATFORM(MAC)": CyberKit::defaultPassiveWheelListenersAsDefaultOnDocument()
       default: true
-    WebKit:
-      "PLATFORM(MAC)": WebKit::defaultPassiveWheelListenersAsDefaultOnDocument()
+    CyberKit:
+      "PLATFORM(MAC)": CyberKit::defaultPassiveWheelListenersAsDefaultOnDocument()
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 PasswordEchoDuration:
   type: double
   status: embedder
-  webKitLegacyPreferenceKey: WebKitPasswordEchoDurationPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitPasswordEchoDurationPreferenceKey
   webcoreName: passwordEchoDurationInSeconds
   defaultValue:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": 2
       default: 1
-    WebKit:
+    CyberKit:
       default: 2
-    WebCore:
+    CyberCore:
       default: 1
 
 PasswordEchoEnabled:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitEnablePasswordEchoPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitEnablePasswordEchoPreferenceKey
   defaultValue:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PdfJSViewerEnabled:
@@ -4674,10 +4674,10 @@ PdfJSViewerEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PeerConnectionEnabled:
@@ -4689,11 +4689,11 @@ PeerConnectionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
-      "USE(LIBWEBRTC)": WebCore::LibWebRTCProvider::webRTCAvailable()
+    CyberKit:
+      "USE(LIBWEBRTC)": CyberCore::LibWebRTCProvider::webRTCAvailable()
       "USE(GSTREAMER_WEBRTC)": true
       default: false
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -4707,9 +4707,9 @@ PerElementSpeakerSelectionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PerformanceNavigationTimingAPIEnabled:
@@ -4720,9 +4720,9 @@ PerformanceNavigationTimingAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 PerformanceResourceTimingSensitivePropertiesEnabled:
@@ -4734,9 +4734,9 @@ PerformanceResourceTimingSensitivePropertiesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 PermissionsAPIEnabled:
@@ -4748,26 +4748,26 @@ PermissionsAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)" : true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PictographFontFamily:
   type: String
   status: embedder
-  webKitLegacyPreferenceKey: WebKitPictographFont
+  webKitLegacyPreferenceKey: CyberKitPictographFont
   webcoreImplementation: custom
   defaultValue:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": '"AppleColorEmoji"'
       default: '"Apple Color Emoji"'
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) && PLATFORM(IOS_FAMILY)": '"AppleColorEmoji"'
       "PLATFORM(COCOA) && !PLATFORM(IOS_FAMILY)": '"Apple Color Emoji"'
       default: '"Times"'
-    WebCore:
+    CyberCore:
       default: '""'
 
 PictureInPictureAPIEnabled:
@@ -4777,23 +4777,23 @@ PictureInPictureAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 PitchCorrectionAlgorithm:
   type: uint32_t
-  refinedType: WebCore::MediaPlayerEnums::PitchCorrectionAlgorithm
+  refinedType: CyberCore::MediaPlayerEnums::PitchCorrectionAlgorithm
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(COCOA)": static_cast<uint32_t>(WebCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestForSpeech)
-      default: static_cast<uint32_t>(WebCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestAllAround)
-    WebKit:
-      "PLATFORM(COCOA)": static_cast<uint32_t>(WebCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestForSpeech)
-      default: static_cast<uint32_t>(WebCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestAllAround)
-    WebCore:
+      "PLATFORM(COCOA)": static_cast<uint32_t>(CyberCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestForSpeech)
+      default: static_cast<uint32_t>(CyberCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestAllAround)
+    CyberKit:
+      "PLATFORM(COCOA)": static_cast<uint32_t>(CyberCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestForSpeech)
+      default: static_cast<uint32_t>(CyberCore::MediaPlayerEnums::PitchCorrectionAlgorithm::BestAllAround)
+    CyberCore:
       default: MediaPlayerEnums::PitchCorrectionAlgorithm::BestAllAround
 
 PluginsEnabled:
@@ -4804,9 +4804,9 @@ PluginsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PopoverAttributeEnabled:
@@ -4818,9 +4818,9 @@ PopoverAttributeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PreferFasterClickOverDoubleTap:
@@ -4831,9 +4831,9 @@ PreferFasterClickOverDoubleTap:
   humanReadableDescription: "Prefer a faster click over a double tap"
   webcoreBinding: none
   condition: PLATFORM(IOS_FAMILY)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY) && !PLATFORM(WATCHOS)": true
       default: false
 
@@ -4846,10 +4846,10 @@ PreferPageRenderingUpdatesNear60FPSEnabled:
     CyberKitLegacy:
       "ENABLE(FULL_SPEED_ANIMATION_LOOP)": false
       default: true
-    WebKit:
+    CyberKit:
       "ENABLE(FULL_SPEED_ANIMATION_LOOP)": false
       default: true
-    WebCore:
+    CyberCore:
       "ENABLE(FULL_SPEED_ANIMATION_LOOP)": false
       default: true
 
@@ -4861,11 +4861,11 @@ PreferSandboxedMediaParsing:
   humanReadableDescription: "Prefer parsing media out-of-process in a sandboxed service"
   condition: ENABLE(VIDEO)
   defaultValue:
-    WebCore:
+    CyberCore:
       default: true
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 PriorityHintsEnabled:
@@ -4877,9 +4877,9 @@ PriorityHintsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PrivateClickMeasurementDebugModeEnabled:
@@ -4891,9 +4891,9 @@ PrivateClickMeasurementDebugModeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PrivateClickMeasurementEnabled:
@@ -4904,9 +4904,9 @@ PrivateClickMeasurementEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 PrivateClickMeasurementFraudPreventionEnabled:
@@ -4916,10 +4916,10 @@ PrivateClickMeasurementFraudPreventionEnabled:
   humanReadableName: "Private Click Measurement Fraud Prevention"
   humanReadableDescription: "Enable Private Click Measurement Fraud Prevention"
   defaultValue:
-    WebKit:
+    CyberKit:
       "HAVE(RSA_BSSA)": true
       default: false
-    WebCore:
+    CyberCore:
       "HAVE(RSA_BSSA)": true
       default: false
 
@@ -4930,9 +4930,9 @@ ProcessSwapOnCrossSiteNavigationEnabled:
   humanReadableName: "Swap Processes on Cross-Site Navigation"
   humanReadableDescription: "Swap WebContent Processes on cross-site navigations"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "PLATFORM(MAC) || PLATFORM(IOS) || PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
 
@@ -4943,9 +4943,9 @@ PunchOutWhiteBackgroundsInDarkMode:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 PushAPIEnabled:
@@ -4956,11 +4956,11 @@ PushAPIEnabled:
   humanReadableName: "Push API"
   humanReadableDescription: "Enable Push API"
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 ReadableByteStreamAPIEnabled:
@@ -4973,10 +4973,10 @@ ReadableByteStreamAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 ReferrerPolicyAttributeEnabled:
   type: bool
   status: mature
@@ -4985,12 +4985,12 @@ ReferrerPolicyAttributeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
-# FIXME: This is on by default in WebKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
+# FIXME: This is on by default in CyberKit2. Perhaps we should consider turning it on for CyberKitLegacy as well.
 RemotePlaybackEnabled:
   type: bool
   status: mature
@@ -5000,10 +5000,10 @@ RemotePlaybackEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
-    WebCore:
+    CyberCore:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
 
@@ -5015,13 +5015,13 @@ RemoveBackgroundEnabled:
   humanReadableName: "Remove Background"
   humanReadableDescription: "Enable Remove Background"
   condition: ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: defaultRemoveBackgroundEnabled()
 
 ReplayCGDisplayListsIntoBackingStore:
@@ -5031,9 +5031,9 @@ ReplayCGDisplayListsIntoBackingStore:
   humanReadableDescription: "Replay CG Display Lists into layer contents for testing"
   webcoreBinding: none
   condition: ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 ReportingEnabled:
@@ -5045,9 +5045,9 @@ ReportingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 RequestIdleCallbackEnabled:
@@ -5059,9 +5059,9 @@ RequestIdleCallbackEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 RequestSubmitEnabled:
@@ -5073,9 +5073,9 @@ RequestSubmitEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 RequestVideoFrameCallbackEnabled:
@@ -5088,11 +5088,11 @@ RequestVideoFrameCallbackEnabled:
     CyberKitLegacy:
       "PLATFORM(COCOA) && HAVE(AVSAMPLEBUFFERVIDEOOUTPUT)" : true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) && HAVE(AVSAMPLEBUFFERVIDEOOUTPUT)" : true
       "USE(GSTREAMER)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA) && HAVE(AVSAMPLEBUFFERVIDEOOUTPUT)" : true
       "USE(GSTREAMER)": true
       default: false
@@ -5103,47 +5103,47 @@ RequiresPageVisibilityToPlayAudio:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 RequiresUserGestureForAudioPlayback:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitAudioPlaybackRequiresUserGesture
+  webKitLegacyPreferenceKey: CyberKitAudioPlaybackRequiresUserGesture
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       PLATFORM(IOS_FAMILY): true
       default: false
 
 RequiresUserGestureForMediaPlayback:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitMediaPlaybackRequiresUserGesture
+  webKitLegacyPreferenceKey: CyberKitMediaPlaybackRequiresUserGesture
   webcoreBinding: none
   defaultValue:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       default: false
 
 RequiresUserGestureForVideoPlayback:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitVideoPlaybackRequiresUserGesture
+  webKitLegacyPreferenceKey: CyberKitVideoPlaybackRequiresUserGesture
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 RequiresUserGestureToLoadVideo:
@@ -5151,11 +5151,11 @@ RequiresUserGestureToLoadVideo:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultRequiresUserGestureToLoadVideo()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultRequiresUserGestureToLoadVideo()
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY)": true
       default: false
 
@@ -5167,9 +5167,9 @@ ResizeObserverEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ResolutionMediaFeatureEnabled:
@@ -5181,9 +5181,9 @@ ResolutionMediaFeatureEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ResourceLoadSchedulingEnabled:
@@ -5195,9 +5195,9 @@ ResourceLoadSchedulingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ResourceUsageOverlayVisible:
@@ -5212,9 +5212,9 @@ ResourceUsageOverlayVisible:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely.
@@ -5228,7 +5228,7 @@ RestrictedHTTPResponseAccess:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 RubberBandingForSubScrollableRegionsEnabled:
@@ -5238,9 +5238,9 @@ RubberBandingForSubScrollableRegionsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 SKAttributionEnabled:
@@ -5249,11 +5249,11 @@ SKAttributionEnabled:
   humanReadableName: "SKAttribution"
   humanReadableDescription: "SKAttribution"
   defaultValue:
-    WebCore:
+    CyberCore:
       default: true
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 SafeBrowsingEnabled:
@@ -5262,9 +5262,9 @@ SafeBrowsingEnabled:
   humanReadableName: "Safe Browsing"
   humanReadableDescription: "Enable Safe Browsing"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 SampleBufferContentKeySessionSupportEnabled:
@@ -5278,9 +5278,9 @@ SampleBufferContentKeySessionSupportEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 SampledPageTopColorMaxDifference:
@@ -5289,9 +5289,9 @@ SampledPageTopColorMaxDifference:
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       default: 0
-    WebCore:
+    CyberCore:
       default: 0
 
 SampledPageTopColorMinHeight:
@@ -5300,9 +5300,9 @@ SampledPageTopColorMinHeight:
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       default: 0
-    WebCore:
+    CyberCore:
       default: 0
 
 SanitizeLookalikeCharactersInLinksEnabled:
@@ -5313,20 +5313,20 @@ SanitizeLookalikeCharactersInLinksEnabled:
   webcoreBinding: none
   condition: ENABLE(NETWORK_CONNECTION_INTEGRITY)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 SansSerifFontFamily:
   type: String
   status: embedder
-  webKitLegacyPreferenceKey: WebKitSansSerifFont
+  webKitLegacyPreferenceKey: CyberKitSansSerifFont
   webcoreImplementation: custom
   defaultValue:
     CyberKitLegacy:
       default: '"Helvetica"'
-    WebKit:
+    CyberKit:
       default: '"Helvetica"'
-    WebCore:
+    CyberCore:
       default: '""'
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -5341,10 +5341,10 @@ ScreenCaptureEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(MAC) || USE(GSTREAMER)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ScreenOrientationAPIEnabled:
@@ -5356,9 +5356,9 @@ ScreenOrientationAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
-      default: WebKit::defaultShouldEnableScreenOrientationAPI()
-    WebCore:
+    CyberKit:
+      default: CyberKit::defaultShouldEnableScreenOrientationAPI()
+    CyberCore:
       default: false
 
 ScreenOrientationLockingAPIEnabled:
@@ -5370,9 +5370,9 @@ ScreenOrientationLockingAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ScreenWakeLockAPIEnabled:
@@ -5384,9 +5384,9 @@ ScreenWakeLockAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 ScrollAnimatorEnabled:
@@ -5396,14 +5396,14 @@ ScrollAnimatorEnabled:
   humanReadableDescription: "Enable scroll animator"
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(MAC)": WebKit::defaultScrollAnimatorEnabled()
+      "PLATFORM(MAC)": CyberKit::defaultScrollAnimatorEnabled()
       "PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebKit:
-      "PLATFORM(MAC)": WebKit::defaultScrollAnimatorEnabled()
+    CyberKit:
+      "PLATFORM(MAC)": CyberKit::defaultScrollAnimatorEnabled()
       "PLATFORM(GTK) || PLATFORM(WPE)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ScrollToTextFragmentEnabled:
@@ -5415,9 +5415,9 @@ ScrollToTextFragmentEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ScrollToTextFragmentIndicatorEnabled:
@@ -5426,11 +5426,11 @@ ScrollToTextFragmentIndicatorEnabled:
   humanReadableName: "Scroll To Text Fragment Indicator"
   humanReadableDescription: "Enable Scroll To Text Fragment Indicator"
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
     CyberKitLegacy:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ScrollingPerformanceTestingEnabled:
@@ -5439,13 +5439,13 @@ ScrollingPerformanceTestingEnabled:
   humanReadableName: "Scroll Performance Testing Enabled"
   humanReadableDescription: "Enable behaviors used by scrolling performance tests"
   webcoreOnChange: scrollingPerformanceTestingEnabledChanged
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 SecureContextChecksEnabled:
@@ -5457,9 +5457,9 @@ SecureContextChecksEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: This is handled via WebView SPI rather than WebPreferences for CyberKitLegacy. We should change the SPI to lookup the WebPreferences value instead.
@@ -5468,11 +5468,11 @@ SelectTrailingWhitespaceEnabled:
   status: embedder
   webKitLegacyBinding: custom
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
     CyberKitLegacy:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 SelectionAPIForShadowDOMEnabled:
@@ -5482,11 +5482,11 @@ SelectionAPIForShadowDOMEnabled:
   humanReadableName: "Selection API for shadow DOM"
   humanReadableDescription: "Enable selection API for shadow DOM"
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
     CyberKitLegacy:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 SelectionFlippingEnabled:
@@ -5496,21 +5496,21 @@ SelectionFlippingEnabled:
   humanReadableDescription: "Enable Selection Flipping"
   webcoreBinding: none
   defaultValue:
-    WebKit:
+    CyberKit:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
 
 SerifFontFamily:
   type: String
   status: embedder
-  webKitLegacyPreferenceKey: WebKitSerifFont
+  webKitLegacyPreferenceKey: CyberKitSerifFont
   webcoreImplementation: custom
   defaultValue:
     CyberKitLegacy:
       default: '"Times"'
-    WebKit:
+    CyberKit:
       default: '"Times"'
-    WebCore:
+    CyberCore:
       default: '""'
 
 ServerTimingEnabled:
@@ -5523,7 +5523,7 @@ ServerTimingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 ServiceControlsEnabled:
@@ -5533,18 +5533,18 @@ ServiceControlsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ServiceWorkerEntitlementDisabledForTesting:
   type: bool
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 ServiceWorkerNavigationPreloadEnabled:
@@ -5555,11 +5555,11 @@ ServiceWorkerNavigationPreloadEnabled:
   humanReadableDescription: "Enable Service Worker Navigation Preload API"
   condition: ENABLE(SERVICE_WORKER)
   defaultValue:
-    WebCore:
+    CyberCore:
       default: true
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
 
 ServiceWorkersEnabled:
@@ -5569,13 +5569,13 @@ ServiceWorkersEnabled:
   humanReadableName: "Service Workers"
   humanReadableDescription: "Enable Service Workers"
   condition: ENABLE(SERVICE_WORKER)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 ServiceWorkersUserGestureEnabled:
@@ -5588,9 +5588,9 @@ ServiceWorkersUserGestureEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 SharedWorkerEnabled:
@@ -5600,11 +5600,11 @@ SharedWorkerEnabled:
   humanReadableName: "SharedWorker"
   humanReadableDescription: "Enabled SharedWorker API"
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
 
 ShouldAllowUserInstalledFonts:
@@ -5614,9 +5614,9 @@ ShouldAllowUserInstalledFonts:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ShouldConvertInvalidURLsToBlank:
@@ -5624,10 +5624,10 @@ ShouldConvertInvalidURLsToBlank:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      default: WebKit::defaultShouldConvertInvalidURLsToBlank()
-    WebKit:
+      default: CyberKit::defaultShouldConvertInvalidURLsToBlank()
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ShouldConvertPositionStyleOnCopy:
@@ -5636,9 +5636,9 @@ ShouldConvertPositionStyleOnCopy:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldDecidePolicyBeforeLoadingQuickLookPreview:
@@ -5647,9 +5647,9 @@ ShouldDecidePolicyBeforeLoadingQuickLookPreview:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldDeferAsynchronousScriptsUntilAfterDocumentLoadOrFirstPaint:
@@ -5661,9 +5661,9 @@ ShouldDeferAsynchronousScriptsUntilAfterDocumentLoadOrFirstPaint:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ShouldDisplayCaptions:
@@ -5673,9 +5673,9 @@ ShouldDisplayCaptions:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldDisplaySubtitles:
@@ -5685,9 +5685,9 @@ ShouldDisplaySubtitles:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldDisplayTextDescriptions:
@@ -5697,9 +5697,9 @@ ShouldDisplayTextDescriptions:
   defaultValue: 
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldEnableTextAutosizingBoost:
@@ -5710,9 +5710,9 @@ ShouldEnableTextAutosizingBoost:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -5722,23 +5722,23 @@ ShouldIgnoreMetaViewport:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldPrintBackgrounds:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitShouldPrintBackgroundsPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitShouldPrintBackgroundsPreferenceKey
   defaultValue:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultShouldPrintBackgrounds()
+    CyberKit:
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultShouldPrintBackgrounds()
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldRespectImageOrientation:
@@ -5748,10 +5748,10 @@ ShouldRespectImageOrientation:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY)": true
       default: false
 
@@ -5760,10 +5760,10 @@ ShouldRestrictBaseURLSchemes:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      default: WebKit::defaultShouldRestrictBaseURLSchemes()
-    WebKit:
+      default: CyberKit::defaultShouldRestrictBaseURLSchemes()
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: true
 
 ShouldSuppressTextInputFromEditingDuringProvisionalNavigation:
@@ -5772,37 +5772,37 @@ ShouldSuppressTextInputFromEditingDuringProvisionalNavigation:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShouldTakeSuspendedAssertions:
   type: bool
   status: internal
   category: dom
-  humanReadableName: "Take WebKit:Suspended assertions on background web content processes"
-  humanReadableDescription: "Take WebKit:Suspended assertions on background web content processes"
-  exposed: [ WebKit ]
+  humanReadableName: "Take CyberKit:Suspended assertions on background web content processes"
+  humanReadableDescription: "Take CyberKit:Suspended assertions on background web content processes"
+  exposed: [ CyberKit ]
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
-      default: WebKit::defaultShouldTakeSuspendedAssertions()
-    WebCore:
+    CyberKit:
+      default: CyberKit::defaultShouldTakeSuspendedAssertions()
+    CyberCore:
       default: true
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
-# FIXME: This is not used in WebCore, so should not have a binding to WebCore::Settings.
+# FIXME: This is not used in CyberCore, so should not have a binding to CyberCore::Settings.
 ShouldUseServiceWorkerShortTimeout:
   type: bool
   status: embedder
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShowMediaStatsContextMenuItemEnabled:
@@ -5814,9 +5814,9 @@ ShowMediaStatsContextMenuItemEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShowModalDialogEnabled:
@@ -5827,11 +5827,11 @@ ShowModalDialogEnabled:
   humanReadableDescription: "Legacy showModalDialog() API"
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultShowModalDialogEnabled()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultShowModalDialogEnabled()
       default: false
-    WebKit:
-      default: WebKit::defaultShowModalDialogEnabled()
-    WebCore:
+    CyberKit:
+      default: CyberKit::defaultShowModalDialogEnabled()
+    CyberCore:
       default: false
 
 ShowsToolTipOverTruncatedText:
@@ -5840,22 +5840,22 @@ ShowsToolTipOverTruncatedText:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShowsURLsInToolTipsEnabled:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitShowsURLsInToolTips
+  webKitLegacyPreferenceKey: CyberKitShowsURLsInToolTips
   webcoreName: showsURLsInToolTips
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ShrinksStandaloneImagesToFit:
@@ -5864,9 +5864,9 @@ ShrinksStandaloneImagesToFit:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 SiteIsolationEnabled:
@@ -5878,9 +5878,9 @@ SiteIsolationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This is handled via WebView SPI rather than WebPreferences for CyberKitLegacy. We should change the SPI to lookup the WebPreferences value instead.
@@ -5889,11 +5889,11 @@ SmartInsertDeleteEnabled:
   status: embedder
   webKitLegacyBinding: custom
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
     CyberKitLegacy:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 SourceBufferChangeTypeEnabled:
@@ -5903,10 +5903,10 @@ SourceBufferChangeTypeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       "USE(GSTREAMER)": false
       default: true
-    WebCore:
+    CyberCore:
       "USE(GSTREAMER)": false
       default: true
 
@@ -5916,9 +5916,9 @@ SpatialNavigationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -5932,9 +5932,9 @@ SpeakerSelectionRequiresUserGesture:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 SpeechRecognitionEnabled:
@@ -5945,10 +5945,10 @@ SpeechRecognitionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "HAVE(SPEECHRECOGNIZER) && ENABLE(MEDIA_STREAM)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 SpeechSynthesisAPIEnabled:
@@ -5959,9 +5959,9 @@ SpeechSynthesisAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 SpringTimingFunctionEnabled:
@@ -5973,36 +5973,36 @@ SpringTimingFunctionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(EXPERIMENTAL_FEATURES)" : true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 Standalone:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitStandalonePreferenceKey
+  webKitLegacyPreferenceKey: CyberKitStandalonePreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 StandardFontFamily:
   type: String
   status: embedder
-  webKitLegacyPreferenceKey: WebKitStandardFont
+  webKitLegacyPreferenceKey: CyberKitStandardFont
   webcoreImplementation: custom
   defaultValue:
     CyberKitLegacy:
       default: '"Times"'
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": '"system-ui"'
       default: '"Times"'
-    WebCore:
+    CyberCore:
       default: '""'
 
 StorageAPIEnabled:
@@ -6014,10 +6014,10 @@ StorageAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)" : true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA)" : true
       default: false
 
@@ -6030,9 +6030,9 @@ StorageAPIEstimateEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 StorageAccessAPIEnabled:
@@ -6043,23 +6043,23 @@ StorageAccessAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 StorageBlockingPolicy:
   type: uint32_t
   humanReadableName: "Storage Blocking Policy"
-  refinedType: WebCore::StorageBlockingPolicy
+  refinedType: CyberCore::StorageBlockingPolicy
   status: embedder
   webcoreOnChange: storageBlockingPolicyChanged
   defaultValue:
     CyberKitLegacy:
       default: WebAllowAllStorage
-    WebKit:
-      default: WebCore::StorageBlockingPolicy::BlockThirdParty
-    WebCore:
+    CyberKit:
+      default: CyberCore::StorageBlockingPolicy::BlockThirdParty
+    CyberCore:
       default: StorageBlockingPolicy::AllowAll
 
 SubgridEnabled:
@@ -6071,9 +6071,9 @@ SubgridEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 SuppressesIncrementalRendering:
@@ -6082,9 +6082,9 @@ SuppressesIncrementalRendering:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 SyntheticEditingCommandsEnabled:
@@ -6095,22 +6095,22 @@ SyntheticEditingCommandsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: There is no custom binding implemented for CyberKitLegacy.
 SystemLayoutDirection:
   type: uint32_t
-  refinedType: WebCore::TextDirection
+  refinedType: CyberCore::TextDirection
   status: embedder
   defaultValue:
     CyberKitLegacy:
       default: TextDirection::LTR
-    WebKit:
+    CyberKit:
       default: TextDirection::LTR
-    WebCore:
+    CyberCore:
       default: TextDirection::LTR
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -6121,33 +6121,33 @@ SystemPreviewEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 TabsToLinks:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitTabToLinksPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitTabToLinksPreferenceKey
   webcoreBinding: none
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(GTK)": true
       default: false
 
 TelephoneNumberParsingEnabled:
   type: bool
   status: embedder
-  webKitLegacyPreferenceKey: WebKitTelephoneParsingEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitTelephoneParsingEnabledPreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 TemporaryTileCohortRetentionEnabled:
@@ -6156,10 +6156,10 @@ TemporaryTileCohortRetentionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 TextAreasAreResizable:
@@ -6169,10 +6169,10 @@ TextAreasAreResizable:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": false
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 TextAutosizingEnabled:
@@ -6184,10 +6184,10 @@ TextAutosizingEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(IOS_FAMILY)": true
       default: false
 
@@ -6202,10 +6202,10 @@ TextAutosizingUsesIdempotentMode:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(IOS_FAMILY)": defaultTextAutosizingUsesIdempotentMode()
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 TextInteractionEnabled:
@@ -6215,10 +6215,10 @@ TextInteractionEnabled:
     CyberKitLegacy:
       "PLATFORM(WATCHOS)": false
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": false
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(WATCHOS)": false
       default: true
 
@@ -6230,13 +6230,13 @@ TextRecognitionInVideosEnabled:
   humanReadableName: "Text Recognition in Videos"
   humanReadableDescription: "Enable Text Recognition in Videos"
   condition: ENABLE(IMAGE_ANALYSIS)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: defaultTextRecognitionInVideosEnabled()
 
 ThirdPartyIframeRedirectBlockingEnabled:
@@ -6247,9 +6247,9 @@ ThirdPartyIframeRedirectBlockingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 ThreadedAnimationResolutionEnabled:
@@ -6262,18 +6262,18 @@ ThreadedAnimationResolutionEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ThreadedScrollingEnabled:
   type: bool
   status: embedder
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 # FIXME: This is not relevent for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely.
@@ -6287,9 +6287,9 @@ TiledScrollingIndicatorVisible:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 TouchEventsEnabled:
@@ -6299,8 +6299,8 @@ TouchEventsEnabled:
   humanReadableDescription: "Enable Touch Events"
   condition: ENABLE(TOUCH_EVENTS)
   defaultValue:
-    WebCore:
-      default: WebCore::screenHasTouchDevice()
+    CyberCore:
+      default: CyberCore::screenHasTouchDevice()
 
 TrackConfigurationEnabled:
   type: bool
@@ -6311,9 +6311,9 @@ TrackConfigurationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 TransformStreamAPIEnabled:
@@ -6322,11 +6322,11 @@ TransformStreamAPIEnabled:
   humanReadableName: "TransformStream API"
   humanReadableDescription: "Enable Transform Stream API"
   defaultValue:
-    WebCore:
+    CyberCore:
       default: true
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 TreatsAnyTextCSSLinkAsStylesheet:
@@ -6334,11 +6334,11 @@ TreatsAnyTextCSSLinkAsStylesheet:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(MAC): WebKit::defaultTreatsAnyTextCSSLinkAsStylesheet()
+      PLATFORM(MAC): CyberKit::defaultTreatsAnyTextCSSLinkAsStylesheet()
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -6351,9 +6351,9 @@ UndoManagerAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 UnprefixedFullscreenAPIEnabled:
@@ -6365,9 +6365,9 @@ UnprefixedFullscreenAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 UpgradeKnownHostsToHTTPSEnabled:
@@ -6377,9 +6377,9 @@ UpgradeKnownHostsToHTTPSEnabled:
   humanReadableName: "Upgrade known hosts to HTTPS"
   humanReadableDescription: "Upgrade known hosts to HTTPS"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 UseARKitForModel:
@@ -6388,10 +6388,10 @@ UseARKitForModel:
   humanReadableName: "Use ARKit for <model>"
   humanReadableDescription: "Use ARKit for <model>"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   condition: ENABLE(ARKIT_INLINE_PREVIEW)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 UseCGDisplayListImageCache:
@@ -6401,9 +6401,9 @@ UseCGDisplayListImageCache:
   humanReadableDescription: "Cache and transmit surfaces out-of-line for CG Display List image buffers."
   webcoreBinding: none
   condition: ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 UseCGDisplayListsForDOMRendering:
@@ -6413,9 +6413,9 @@ UseCGDisplayListsForDOMRendering:
   humanReadableDescription: "Use CG Display Lists for DOM rendering"
   webcoreBinding: none
   condition: ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 UseGPUProcessForCanvasRenderingEnabled:
@@ -6426,9 +6426,9 @@ UseGPUProcessForCanvasRenderingEnabled:
   humanReadableDescription: "Enable canvas rendering in GPU Process"
   webcoreBinding: none
   condition: ENABLE(GPU_PROCESS) && !(PLATFORM(GTK) || PLATFORM(WPE))
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "ENABLE(GPU_PROCESS_BY_DEFAULT)": true
       "PLATFORM(WIN)": true
       default: false
@@ -6441,9 +6441,9 @@ UseGPUProcessForDOMRenderingEnabled:
   humanReadableDescription: "Enable DOM rendering in GPU Process"
   webcoreBinding: none
   condition: ENABLE(GPU_PROCESS)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "ENABLE(GPU_PROCESS_BY_DEFAULT) && ENABLE(GPU_PROCESS_DOM_RENDERING_BY_DEFAULT)": true
       "PLATFORM(WIN)": true
       default: false
@@ -6456,9 +6456,9 @@ UseGPUProcessForDisplayCapture:
   humanReadableDescription: "Display capture in GPU Process"
   webcoreBinding: none
   condition: HAVE(SC_CONTENT_SHARING_SESSION)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 UseGPUProcessForMediaEnabled:
@@ -6468,9 +6468,9 @@ UseGPUProcessForMediaEnabled:
   humanReadableDescription: "Do all media loading and playback in the GPU Process"
   webcoreBinding: none
   condition: ENABLE(GPU_PROCESS) && !USE(GSTREAMER)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       "ENABLE(GPU_PROCESS_BY_DEFAULT)": true
       default: false
 
@@ -6483,11 +6483,11 @@ UseGPUProcessForWebGLEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(GPU_PROCESS_BY_DEFAULT) && ENABLE(GPU_PROCESS_WEBGL_BY_DEFAULT)": true
       "PLATFORM(WIN)": true
       default: false
-    WebCore:
+    CyberCore:
       "ENABLE(GPU_PROCESS_BY_DEFAULT) && ENABLE(GPU_PROCESS_WEBGL_BY_DEFAULT)": true
       "PLATFORM(WIN)": true
       default: false
@@ -6499,9 +6499,9 @@ UseGeneralDirectoryForStorage:
   humanReadableName: "Use General Directory For Storage"
   humanReadableDescription: "Use general storage directory for IndexedDB and LocalStorage"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 UseGiantTiles:
@@ -6511,9 +6511,9 @@ UseGiantTiles:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 UseImageDocumentForSubframePDF:
@@ -6523,10 +6523,10 @@ UseImageDocumentForSubframePDF:
     CyberKitLegacy:
       PLATFORM(IOS_FAMILY): true
       default: false
-    WebKit:
+    CyberKit:
       PLATFORM(IOS_FAMILY): true
       default: false
-    WebCore:
+    CyberCore:
       PLATFORM(IOS_FAMILY): true
       default: false
 
@@ -6535,10 +6535,10 @@ UseLegacyBackgroundSizeShorthandBehavior:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      default: WebKit::defaultUseLegacyBackgroundSizeShorthandBehavior()
-    WebKit:
+      default: CyberKit::defaultUseLegacyBackgroundSizeShorthandBehavior()
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 UseLegacyTextAlignPositionedElementBehavior:
@@ -6547,9 +6547,9 @@ UseLegacyTextAlignPositionedElementBehavior:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 UsePreHTML5ParserQuirks:
@@ -6557,11 +6557,11 @@ UsePreHTML5ParserQuirks:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(MAC): WebKit::defaultUsePreHTML5ParserQuirks()
+      PLATFORM(MAC): CyberKit::defaultUsePreHTML5ParserQuirks()
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 UseSceneKitForModel:
@@ -6570,10 +6570,10 @@ UseSceneKitForModel:
   humanReadableName: "Use SceneKit for <model>"
   humanReadableDescription: "Use SceneKit for <model>"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   condition: HAVE(SCENEKIT)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 UserActivationAPIEnabled:
@@ -6585,9 +6585,9 @@ UserActivationAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 UserGesturePromisePropagationEnabled:
@@ -6599,22 +6599,22 @@ UserGesturePromisePropagationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: There is no custom binding implemented for CyberKitLegacy.
 UserInterfaceDirectionPolicy:
   type: uint32_t
-  refinedType: WebCore::UserInterfaceDirectionPolicy
+  refinedType: CyberCore::UserInterfaceDirectionPolicy
   status: embedder
   defaultValue:
     CyberKitLegacy:
       default: UserInterfaceDirectionPolicy::Content
-    WebKit:
+    CyberKit:
       default: UserInterfaceDirectionPolicy::Content
-    WebCore:
+    CyberCore:
       default: UserInterfaceDirectionPolicy::Content
 
 UsesBackForwardCache:
@@ -6622,13 +6622,13 @@ UsesBackForwardCache:
   status: embedder
   webcoreOnChange: usesBackForwardCacheChanged
   webcoreExcludeFromInternalSettings: true
-  webKitLegacyPreferenceKey: WebKitUsesPageCachePreferenceKey
+  webKitLegacyPreferenceKey: CyberKitUsesPageCachePreferenceKey
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 UsesEncodingDetector:
@@ -6637,9 +6637,9 @@ UsesEncodingDetector:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 VP8DecoderEnabled:
@@ -6650,7 +6650,7 @@ VP8DecoderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
 
 VP9DecoderEnabled:
@@ -6658,11 +6658,11 @@ VP9DecoderEnabled:
   status: embedder
   condition: ENABLE(VP9)
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
 
 VP9SWDecoderEnabledOnBattery:
@@ -6674,7 +6674,7 @@ VP9SWDecoderEnabledOnBattery:
   webcoreBinding: none
   condition: ENABLE(VP9)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 VerticalFormControlsEnabled:
@@ -6686,9 +6686,9 @@ VerticalFormControlsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 VideoFullscreenRequiresElementFullscreen:
@@ -6698,9 +6698,9 @@ VideoFullscreenRequiresElementFullscreen:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
       
 VideoPresentationModeAPIEnabled:
@@ -6710,10 +6710,10 @@ VideoPresentationModeAPIEnabled:
     CyberKitLegacy:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
-    WebKit:
+    CyberKit:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
-    WebCore:
+    CyberCore:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
 
@@ -6724,9 +6724,9 @@ VideoQualityIncludesDisplayCompositingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 ViewGestureDebuggingEnabled:
@@ -6735,9 +6735,9 @@ ViewGestureDebuggingEnabled:
   humanReadableName: "View gesture debugging"
   humanReadableDescription: "Enable view gesture debugging"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false
 
 VisibleDebugOverlayRegions:
@@ -6748,9 +6748,9 @@ VisibleDebugOverlayRegions:
   defaultValue:
     CyberKitLegacy:
       default: 0
-    WebKit:
+    CyberKit:
       default: 0
-    WebCore:
+    CyberCore:
       default: 0
 
 VisualTranslationEnabled:
@@ -6761,13 +6761,13 @@ VisualTranslationEnabled:
   humanReadableName: "Visual Translation"
   humanReadableDescription: "Enable Visual Translation"
   condition: ENABLE(IMAGE_ANALYSIS)
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebCore:
+    CyberCore:
       default: false
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: defaultVisualTranslationEnabled()
 
 VisualViewportAPIEnabled:
@@ -6779,9 +6779,9 @@ VisualViewportAPIEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS_FAMILY)" : false
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 VisualViewportEnabled:
@@ -6792,9 +6792,9 @@ VisualViewportEnabled:
     CyberKitLegacy:
       PLATFORM(IOS_FAMILY): false
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 VorbisDecoderEnabled:
@@ -6807,7 +6807,7 @@ VorbisDecoderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 WantsBalancedSetDefersLoadingBehavior:
@@ -6816,9 +6816,9 @@ WantsBalancedSetDefersLoadingBehavior:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebAPIStatisticsEnabled:
@@ -6830,9 +6830,9 @@ WebAPIStatisticsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebAPIsInShadowRealmEnabled:
@@ -6844,9 +6844,9 @@ WebAPIsInShadowRealmEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebAnimationsCompositeOperationsEnabled:
@@ -6858,9 +6858,9 @@ WebAnimationsCompositeOperationsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WebAnimationsCustomEffectsEnabled:
@@ -6872,9 +6872,9 @@ WebAnimationsCustomEffectsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebAnimationsCustomFrameRateEnabled:
@@ -6886,9 +6886,9 @@ WebAnimationsCustomFrameRateEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebAnimationsIterationCompositeEnabled:
@@ -6900,9 +6900,9 @@ WebAnimationsIterationCompositeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WebAnimationsMutableTimelinesEnabled:
@@ -6914,9 +6914,9 @@ WebAnimationsMutableTimelinesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WebArchiveDebugModeEnabled:
@@ -6924,14 +6924,14 @@ WebArchiveDebugModeEnabled:
   status: embedder
   humanReadableName: "Web Archive debug mode"
   humanReadableDescription: "Enable web archive debug mode"
-  webKitLegacyPreferenceKey: WebKitWebArchiveDebugModeEnabledPreferenceKey
+  webKitLegacyPreferenceKey: CyberKitWebArchiveDebugModeEnabledPreferenceKey
   condition: ENABLE(WEB_ARCHIVE)
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebArchiveTestingModeEnabled:
@@ -6944,9 +6944,9 @@ WebArchiveTestingModeEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebAssemblyESMIntegrationEnabled:
@@ -6959,9 +6959,9 @@ WebAssemblyESMIntegrationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebAudioEnabled:
@@ -6972,9 +6972,9 @@ WebAudioEnabled:
     CyberKitLegacy:
       "PLATFORM(IOS)": true
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -6987,9 +6987,9 @@ WebAuthenticationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WebCodecsAV1Enabled:
@@ -7002,9 +7002,9 @@ WebCodecsAV1Enabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebCodecsEnabled:
@@ -7017,11 +7017,11 @@ WebCodecsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       "USE(GSTREAMER)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA)": true
       "USE(GSTREAMER)": true
       default: false
@@ -7036,10 +7036,10 @@ WebCryptoSafeCurvesEnabled:
     CyberKitLegacy:
       "PLATFORM(COCOA)": true
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       "PLATFORM(COCOA)": true
       default: false
 
@@ -7051,9 +7051,9 @@ WebGLDraftExtensionsEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebGLEnabled:
@@ -7064,9 +7064,9 @@ WebGLEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 WebGLTimerQueriesEnabled:
@@ -7078,9 +7078,9 @@ WebGLTimerQueriesEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebGLUsingMetal:
@@ -7094,10 +7094,10 @@ WebGLUsingMetal:
     CyberKitLegacy:
       "HAVE(WEBGL_COMPATIBLE_METAL)": true
       default: false
-    WebKit:
+    CyberKit:
       "HAVE(WEBGL_COMPATIBLE_METAL)": true
       default: false
-    WebCore:
+    CyberCore:
       "HAVE(WEBGL_COMPATIBLE_METAL)": true
       default: false
 
@@ -7110,10 +7110,10 @@ WebGPU:
     CyberKitLegacy:
       "ENABLE(WEBGPU_BY_DEFAULT)": true
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(WEBGPU_BY_DEFAULT)": true
       default: false
-    WebCore:
+    CyberCore:
       "ENABLE(WEBGPU_BY_DEFAULT)": true
       default: false
 
@@ -7126,9 +7126,9 @@ WebInspectorEngineeringSettingsAllowed:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebLocksAPIEnabled:
@@ -7140,9 +7140,9 @@ WebLocksAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WebMFormatReaderEnabled:
@@ -7151,7 +7151,7 @@ WebMFormatReaderEnabled:
   webcoreBinding: DeprecatedGlobalSettings
   condition: ENABLE(WEBM_FORMAT_READER)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -7163,7 +7163,7 @@ WebMParserEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 WebRTCAV1CodecEnabled:
@@ -7176,9 +7176,9 @@ WebRTCAV1CodecEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebRTCAudioLatencyAdaptationEnabled:
@@ -7191,7 +7191,7 @@ WebRTCAudioLatencyAdaptationEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -7205,9 +7205,9 @@ WebRTCDTMFEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WebRTCEncodedTransformEnabled:
@@ -7220,10 +7220,10 @@ WebRTCEncodedTransformEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "USE(LIBWEBRTC)": true
       default: false
-    WebCore:
+    CyberCore:
       "USE(LIBWEBRTC)": true
       default: false
 
@@ -7239,7 +7239,7 @@ WebRTCH264HardwareEncoderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -7254,7 +7254,7 @@ WebRTCH264LowLatencyEncoderEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely.
@@ -7269,7 +7269,7 @@ WebRTCH264SimulcastEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
 
 WebRTCH265CodecEnabled:
@@ -7282,9 +7282,9 @@ WebRTCH265CodecEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebRTCMediaPipelineAdditionalLoggingEnabled:
@@ -7297,9 +7297,9 @@ WebRTCMediaPipelineAdditionalLoggingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 # FIXME: This is not relevant for CyberKitLegacy, so should be excluded from CyberKitLegacy entirely.
@@ -7312,10 +7312,10 @@ WebRTCPlatformCodecsInGPUProcessEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "ENABLE(GPU_PROCESS_BY_DEFAULT)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebRTCPlatformTCPSocketsEnabled:
@@ -7327,7 +7327,7 @@ WebRTCPlatformTCPSocketsEnabled:
   webcoreBinding: DeprecatedGlobalSettings
   condition: ENABLE(WEB_RTC)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 WebRTCPlatformUDPSocketsEnabled:
@@ -7339,7 +7339,7 @@ WebRTCPlatformUDPSocketsEnabled:
   webcoreBinding: DeprecatedGlobalSettings
   condition: ENABLE(WEB_RTC)
   defaultValue:
-    WebKit:
+    CyberKit:
       default: true
 
 WebRTCRemoteVideoFrameEnabled:
@@ -7352,10 +7352,10 @@ WebRTCRemoteVideoFrameEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebRTCSFrameTransformEnabled:
@@ -7368,9 +7368,9 @@ WebRTCSFrameTransformEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebRTCSocketsProxyingEnabled:
@@ -7383,9 +7383,9 @@ WebRTCSocketsProxyingEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: false
 
 WebRTCVP9Profile0CodecEnabled:
@@ -7398,9 +7398,9 @@ WebRTCVP9Profile0CodecEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WebRTCVP9Profile2CodecEnabled:
@@ -7413,9 +7413,9 @@ WebRTCVP9Profile2CodecEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebSQLEnabled:
@@ -7427,7 +7427,7 @@ WebSQLEnabled:
   exposed: [ CyberKitLegacy ]
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(IOS_FAMILY)": WebKit::defaultWebSQLEnabled()
+      "PLATFORM(IOS_FAMILY)": CyberKit::defaultWebSQLEnabled()
       default: true
 
 WebSecurityEnabled:
@@ -7437,9 +7437,9 @@ WebSecurityEnabled:
   defaultValue:
     CyberKitLegacy:
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 # FIXME: Is this implemented for CyberKitLegacy? If not, this should be excluded from CyberKitLegacy entirely (though we should still set the default value to false when initializing settings).
@@ -7451,10 +7451,10 @@ WebShareEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) && !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebShareFileAPIEnabled:
@@ -7466,10 +7466,10 @@ WebShareFileAPIEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       "PLATFORM(COCOA) && !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)": true
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebSocketEnabled:
@@ -7479,10 +7479,10 @@ WebSocketEnabled:
     CyberKitLegacy:
       "PLATFORM(WATCHOS)": false
       default: true
-    WebKit:
+    CyberKit:
       "PLATFORM(WATCHOS)": false
       default: true
-    WebCore:
+    CyberCore:
       "PLATFORM(WATCHOS)": false
       default: true
 
@@ -7496,9 +7496,9 @@ WebXRAugmentedRealityModuleEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebXREnabled:
@@ -7511,9 +7511,9 @@ WebXREnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebXRGamepadsModuleEnabled:
@@ -7526,9 +7526,9 @@ WebXRGamepadsModuleEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WebXRHandInputModuleEnabled:
@@ -7541,9 +7541,9 @@ WebXRHandInputModuleEnabled:
   defaultValue:
     CyberKitLegacy:
       default: false
-    WebKit:
+    CyberKit:
       default: false
-    WebCore:
+    CyberCore:
       default: false
 
 WheelEventGesturesBecomeNonBlocking:
@@ -7553,12 +7553,12 @@ WheelEventGesturesBecomeNonBlocking:
   humanReadableDescription: "preventDefault() is only allowed on the first wheel event in a gesture"
   defaultValue:
     CyberKitLegacy:
-      "PLATFORM(MAC)": WebKit::defaultWheelEventGesturesBecomeNonBlocking()
+      "PLATFORM(MAC)": CyberKit::defaultWheelEventGesturesBecomeNonBlocking()
       default: true
-    WebKit:
-      "PLATFORM(MAC)": WebKit::defaultWheelEventGesturesBecomeNonBlocking()
+    CyberKit:
+      "PLATFORM(MAC)": CyberKit::defaultWheelEventGesturesBecomeNonBlocking()
       default: true
-    WebCore:
+    CyberCore:
       default: true
 
 WindowFocusRestricted:
@@ -7568,11 +7568,11 @@ WindowFocusRestricted:
   status: embedder
   defaultValue:
     CyberKitLegacy:
-      PLATFORM(MAC): WebKit::defaultWindowFocusRestricted()
+      PLATFORM(MAC): CyberKit::defaultWindowFocusRestricted()
       default: true
-    WebKit:
+    CyberKit:
       default: true
-    WebCore:
+    CyberCore:
       default: true
       
 WirelessPlaybackTargetAPIEnabled:
@@ -7582,10 +7582,10 @@ WirelessPlaybackTargetAPIEnabled:
     CyberKitLegacy:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
-    WebKit:
+    CyberKit:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
-    WebCore:
+    CyberCore:
       "HAVE(UIKIT_WEBKIT_INTERNALS)" : false
       default: true
 
@@ -7596,7 +7596,7 @@ ZoomOnDoubleTapWhenRoot:
   humanReadableName: "DTTZ also when root"
   humanReadableDescription: "Double taps zoom, even if we dispatched a click on the root nodes"
   webcoreBinding: none
-  exposed: [ WebKit ]
+  exposed: [ CyberKit ]
   defaultValue:
-    WebKit:
+    CyberKit:
       default: false

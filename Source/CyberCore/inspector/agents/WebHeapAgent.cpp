@@ -31,7 +31,7 @@
 #include <wtf/Lock.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -143,4 +143,4 @@ void WebHeapAgent::dispatchGarbageCollectionEventsAfterDelay(Vector<GarbageColle
         InspectorHeapAgent::dispatchGarbageCollectedEvent(collection.type, collection.startTime, collection.endTime);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/Ref.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBDatabaseIdentifier::IDBDatabaseIdentifier(const String& databaseName, SecurityOriginData&& openingOrigin, SecurityOriginData&& mainFrameOrigin, bool isTransient)
     : m_databaseName(databaseName)
@@ -84,4 +84,4 @@ String IDBDatabaseIdentifier::loggingString() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

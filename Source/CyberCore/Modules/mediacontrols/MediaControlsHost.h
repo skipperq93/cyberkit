@@ -33,7 +33,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrack;
 class AudioTrackList;
@@ -116,7 +116,7 @@ private:
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)
 

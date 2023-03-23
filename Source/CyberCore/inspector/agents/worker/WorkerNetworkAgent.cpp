@@ -31,7 +31,7 @@
 #include "WorkerOrWorkletGlobalScope.h"
 #include "WorkerThread.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -85,4 +85,4 @@ void WorkerNetworkAgent::addConsoleMessage(std::unique_ptr<Inspector::ConsoleMes
     m_globalScope.addConsoleMessage(WTFMove(message));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

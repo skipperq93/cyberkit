@@ -57,7 +57,7 @@ OBJC_CLASS _WKWebExtensionMatchPattern;
 #include "_WKWebExtensionPermission.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtension : public API::ObjectImpl<API::Object::Type::WebExtension>, public CanMakeWeakPtr<WebExtension> {
     WTF_MAKE_NONCOPYABLE(WebExtension);
@@ -277,6 +277,6 @@ NSSet<_WKWebExtensionMatchPattern *> *toAPI(const WebExtension::MatchPatternSet&
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

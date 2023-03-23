@@ -32,7 +32,7 @@
 #include "WaveShaperProcessor.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WaveShaperNode final : public AudioBasicProcessorNode {
     WTF_MAKE_ISO_ALLOCATED(WaveShaperNode);
@@ -57,14 +57,14 @@ private:
     const WaveShaperProcessor* waveShaperProcessor() const { return static_cast<const WaveShaperProcessor*>(processor()); }
 };
 
-String convertEnumerationToString(WebCore::OverSampleType); // in JSOverSampleType.cpp
+String convertEnumerationToString(CyberCore::OverSampleType); // in JSOverSampleType.cpp
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
     
-template<> struct LogArgument<WebCore::OverSampleType> {
-    static String toString(WebCore::OverSampleType type) { return convertEnumerationToString(type); }
+template<> struct LogArgument<CyberCore::OverSampleType> {
+    static String toString(CyberCore::OverSampleType type) { return convertEnumerationToString(type); }
 };
     
 } // namespace WTF

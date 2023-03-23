@@ -44,7 +44,7 @@
 
 static const Seconds CommandTimeTolerance = 50_ms;
 
-namespace WebCore {
+namespace CyberCore {
 
 static const void* nextCoordinatorLogIdentifier()
 {

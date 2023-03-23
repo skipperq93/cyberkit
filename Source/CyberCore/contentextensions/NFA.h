@@ -31,7 +31,7 @@
 #include "ImmutableNFANodeBuilder.h"
 #include "NFANode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -45,6 +45,6 @@ struct NFA : public ImmutableNFA<char, uint64_t> {
 };
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

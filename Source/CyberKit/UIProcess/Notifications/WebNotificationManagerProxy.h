@@ -46,7 +46,7 @@ class NotificationProvider;
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebNotification;
 class WebPageProxy;
@@ -100,4 +100,4 @@ private:
     HashMap<UUID, Ref<WebNotification>> m_notifications;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

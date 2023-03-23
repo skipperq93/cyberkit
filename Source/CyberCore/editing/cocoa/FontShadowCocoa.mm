@@ -33,7 +33,7 @@
 #import <pal/ios/UIKitSoftLink.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 RetainPtr<NSShadow> FontShadow::createShadow() const
 {

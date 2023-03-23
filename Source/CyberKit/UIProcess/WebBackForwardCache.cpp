@@ -36,7 +36,7 @@
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebBackForwardCache::WebBackForwardCache(WebProcessPool& processPool)
     : m_processPool(processPool)
@@ -184,4 +184,4 @@ void WebBackForwardCache::pruneToSize(unsigned newSize)
         removeOldestEntry();
 }
 
-} // namespace WebKit.
+} // namespace CyberKit.

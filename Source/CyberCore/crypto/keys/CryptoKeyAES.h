@@ -33,7 +33,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmParameters;
 
@@ -74,7 +74,7 @@ private:
     Vector<uint8_t> m_key;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_KEY(CryptoKeyAES, CryptoKeyClass::AES)
 

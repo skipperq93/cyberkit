@@ -20,19 +20,19 @@
 #if ENABLE(2022_GLIB_API)
 
 #include "config.h"
-#include "WebKitNetworkSession.h"
+#include "CyberKitNetworkSession.h"
 
 #include "APIDownloadClient.h"
 #include "FrameInfoData.h"
 #include "NetworkProcessMessages.h"
-#include "WebKitCookieManagerPrivate.h"
-#include "WebKitDownloadPrivate.h"
-#include "WebKitInitialize.h"
-#include "WebKitMemoryPressureSettings.h"
-#include "WebKitMemoryPressureSettingsPrivate.h"
-#include "WebKitNetworkProxySettingsPrivate.h"
-#include "WebKitPrivate.h"
-#include "WebKitWebsiteDataManagerPrivate.h"
+#include "CyberKitCookieManagerPrivate.h"
+#include "CyberKitDownloadPrivate.h"
+#include "CyberKitInitialize.h"
+#include "CyberKitMemoryPressureSettings.h"
+#include "CyberKitMemoryPressureSettingsPrivate.h"
+#include "CyberKitNetworkProxySettingsPrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitWebsiteDataManagerPrivate.h"
 #include "WebProcessPool.h"
 #include <glib/gi18n-lib.h>
 #include <pal/HysteresisActivity.h>
@@ -41,11 +41,11 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitNetworkSession:
- * @see_also: #WebKitWebContext, #WebKitWebsiteData
+ * CyberKitNetworkSession:
+ * @see_also: #CyberKitWebContext, #CyberKitWebsiteData
  *
  * Manages network configuration.
  *
@@ -53,7 +53,7 @@ using namespace WebKit;
  * Since: 2.40
  */
 
-using namespace WebKit;
+using namespace CyberKit;
 
 enum {
     PROP_0,
@@ -75,8 +75,8 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-struct _WebKitNetworkSessionPrivate {
-    _WebKitNetworkSessionPrivate()
+struct _CyberKitNetworkSessionPrivate {
+    _CyberKitNetworkSessionPrivate()
         : dnsPrefetchHystereris([this](PAL::HysteresisState state) {
             if (state == PAL::HysteresisState::Stopped)
                 dnsPrefetchedHosts.clear();
@@ -84,9 +84,9 @@ struct _WebKitNetworkSessionPrivate {
     {
     }
 
-    GRefPtr<WebKitWebsiteDataManager> websiteDataManager;
-    GRefPtr<WebKitCookieManager> cookieManager;
-    WebKitTLSErrorsPolicy tlsErrorsPolicy;
+    GRefPtr<CyberKitWebsiteDataManager> websiteDataManager;
+    GRefPtr<CyberKitCookieManager> cookieManager;
+    CyberKitTLSErrorsPolicy tlsErrorsPolicy;
 
     CString dataDirectory;
     CString cacheDirectory;
@@ -95,11 +95,11 @@ struct _WebKitNetworkSessionPrivate {
     PAL::HysteresisActivity dnsPrefetchHystereris;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitNetworkSession, webkit_network_session, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitNetworkSession, webkit_network_session, G_TYPE_OBJECT, GObject)
 
 static void webkitNetworkSessionGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitNetworkSession* session = WEBKIT_NETWORK_SESSION(object);
+    CyberKitNetworkSession* session = WEBKIT_NETWORK_SESSION(object);
 
     switch (propID) {
     case PROP_IS_EPHEMERAL:
@@ -112,7 +112,7 @@ static void webkitNetworkSessionGetProperty(GObject* object, guint propID, GValu
 
 static void webkitNetworkSessionSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitNetworkSession* session = WEBKIT_NETWORK_SESSION(object);
+    CyberKitNetworkSession* session = WEBKIT_NETWORK_SESSION(object);
 
     switch (propID) {
     case PROP_DATA_DIRECTORY:
@@ -134,7 +134,7 @@ static void webkitNetworkSessionConstructed(GObject* object)
 {
     G_OBJECT_CLASS(webkit_network_session_parent_class)->constructed(object);
 
-    WebKitNetworkSessionPrivate* priv = WEBKIT_NETWORK_SESSION(object)->priv;
+    CyberKitNetworkSessionPrivate* priv = WEBKIT_NETWORK_SESSION(object)->priv;
     if (!priv->websiteDataManager) {
         priv->websiteDataManager = adoptGRef(webkitWebsiteDataManagerCreate(
             !priv->dataDirectory.isNull() ? WTFMove(priv->dataDirectory) : WebsiteDataStore::defaultBaseDataDirectory().utf8(),
@@ -146,7 +146,7 @@ static void webkitNetworkSessionConstructed(GObject* object)
     webkitWebsiteDataManagerGetDataStore(priv->websiteDataManager.get()).setIgnoreTLSErrors(false);
 }
 
-static void webkit_network_session_class_init(WebKitNetworkSessionClass* sessionClass)
+static void webkit_network_session_class_init(CyberKitNetworkSessionClass* sessionClass)
 {
     webkitInitialize();
 
@@ -156,9 +156,9 @@ static void webkit_network_session_class_init(WebKitNetworkSessionClass* session
     gObjectClass->constructed = webkitNetworkSessionConstructed;
 
     /**
-     * WebKitNetworkSession:data-directory:
+     * CyberKitNetworkSession:data-directory:
      *
-     * The base data directory used to create the #WebKitWebsiteDataManager. If %NULL, a default location will be used.
+     * The base data directory used to create the #CyberKitWebsiteDataManager. If %NULL, a default location will be used.
      *
      * Since: 2.40
      */
@@ -170,9 +170,9 @@ static void webkit_network_session_class_init(WebKitNetworkSessionClass* session
             static_cast<GParamFlags>(WEBKIT_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 
     /**
-     * WebKitNetworkSession:cache-directory:
+     * CyberKitNetworkSession:cache-directory:
      *
-     * The base caches directory used to create the #WebKitWebsiteDataManager. If %NULL, a default location will be used.
+     * The base caches directory used to create the #CyberKitWebsiteDataManager. If %NULL, a default location will be used.
      *
      * Since: 2.40
      */
@@ -184,9 +184,9 @@ static void webkit_network_session_class_init(WebKitNetworkSessionClass* session
             static_cast<GParamFlags>(WEBKIT_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 
     /**
-     * WebKitNetworkSession:is-ephemeral:
+     * CyberKitNetworkSession:is-ephemeral:
      *
-     * Whether to create an ephermeral #WebKitWebsiteDataManager for the session.
+     * Whether to create an ephermeral #CyberKitWebsiteDataManager for the session.
      *
      * Since: 2.40
      */
@@ -200,9 +200,9 @@ static void webkit_network_session_class_init(WebKitNetworkSessionClass* session
     g_object_class_install_properties(gObjectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitNetworkSession::download-started:
-     * @session: the #WebKitNetworkSession
-     * @download: the #WebKitDownload associated with this event
+     * CyberKitNetworkSession::download-started:
+     * @session: the #CyberKitNetworkSession
+     * @download: the #CyberKitDownload associated with this event
      *
      * This signal is emitted when a new download request is made.
      *
@@ -218,14 +218,14 @@ static void webkit_network_session_class_init(WebKitNetworkSessionClass* session
             WEBKIT_TYPE_DOWNLOAD);
 }
 
-void webkitNetworkSessionDownloadStarted(WebKitNetworkSession* session, WebKitDownload* download)
+void webkitNetworkSessionDownloadStarted(CyberKitNetworkSession* session, CyberKitDownload* download)
 {
     g_signal_emit(session, signals[DOWNLOAD_STARTED], 0, download);
 }
 
 static gpointer createDefaultNetworkSession(gpointer)
 {
-    static GRefPtr<WebKitNetworkSession> session = adoptGRef(webkit_network_session_new(nullptr, nullptr));
+    static GRefPtr<CyberKitNetworkSession> session = adoptGRef(webkit_network_session_new(nullptr, nullptr));
     return session.get();
 }
 
@@ -236,11 +236,11 @@ static gpointer createDefaultNetworkSession(gpointer)
  * The default network session is created using webkit_network_session_new() and passing
  * %NULL as data and cache directories.
  *
- * Returns: (transfer none): a #WebKitNetworkSession
+ * Returns: (transfer none): a #CyberKitNetworkSession
  *
  * Since: 2.40
  */
-WebKitNetworkSession* webkit_network_session_get_default()
+CyberKitNetworkSession* webkit_network_session_get_default()
 {
     static GOnce onceInit = G_ONCE_INIT;
     return WEBKIT_NETWORK_SESSION(g_once(&onceInit, createDefaultNetworkSession, nullptr));
@@ -251,21 +251,21 @@ WebKitNetworkSession* webkit_network_session_get_default()
  * @data_directory: (nullable): a base directory for data, or %NULL
  * @cache_directory: (nullable): a base directory for caches, or %NULL
  *
- * Creates a new #WebKitNetworkSession with a persistent #WebKitWebsiteDataManager.
+ * Creates a new #CyberKitNetworkSession with a persistent #CyberKitWebsiteDataManager.
  * The parameters @data_directory and @cache_directory will be used as construct
- * properties of the #WebKitWebsiteDataManager of the network session. Note that if
- * %NULL is passed, the default directory will be passed to #WebKitWebsiteDataManager
+ * properties of the #CyberKitWebsiteDataManager of the network session. Note that if
+ * %NULL is passed, the default directory will be passed to #CyberKitWebsiteDataManager
  * so that webkit_website_data_manager_get_base_data_directory() and
  * webkit_website_data_manager_get_base_cache_directory() always return a value for
  * non ephemeral sessions.
  *
- * It must be passed as construct parameter of a #WebKitWebView.
+ * It must be passed as construct parameter of a #CyberKitWebView.
  *
- * Returns: (transfer full): the newly created #WebKitNetworkSession
+ * Returns: (transfer full): the newly created #CyberKitNetworkSession
  *
  * Since: 2.40
  */
-WebKitNetworkSession* webkit_network_session_new(const char* dataDirectory, const char* cacheDirectory)
+CyberKitNetworkSession* webkit_network_session_new(const char* dataDirectory, const char* cacheDirectory)
 {
     return WEBKIT_NETWORK_SESSION(g_object_new(WEBKIT_TYPE_NETWORK_SESSION, "data-directory", dataDirectory, "cache-directory", cacheDirectory, nullptr));
 }
@@ -273,31 +273,31 @@ WebKitNetworkSession* webkit_network_session_new(const char* dataDirectory, cons
 /**
  * webkit_network_session_new_ephemeral:
  *
- * Creates a new #WebKitNetworkSession with an ephemeral #WebKitWebsiteDataManager.
+ * Creates a new #CyberKitNetworkSession with an ephemeral #CyberKitWebsiteDataManager.
  *
  *
- * Returns: (transfer full): a new ephemeral #WebKitNetworkSession.
+ * Returns: (transfer full): a new ephemeral #CyberKitNetworkSession.
  *
  * Since: 2.40
  */
-WebKitNetworkSession* webkit_network_session_new_ephemeral()
+CyberKitNetworkSession* webkit_network_session_new_ephemeral()
 {
     return WEBKIT_NETWORK_SESSION(g_object_new(WEBKIT_TYPE_NETWORK_SESSION, "is-ephemeral", TRUE, nullptr));
 }
 
 /**
  * webkit_network_session_is_ephemeral:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  *
  * Get whether @session is ephemeral.
- * A #WebKitNetworkSession is ephemeral when its #WebKitWebsiteDataManager is ephemeral.
- * See #WebKitWebsiteDataManager:is-ephemeral for more details.
+ * A #CyberKitNetworkSession is ephemeral when its #CyberKitWebsiteDataManager is ephemeral.
+ * See #CyberKitWebsiteDataManager:is-ephemeral for more details.
  *
  * Returns: %TRUE if @session is pehmeral, or %FALSE otherwise
  *
  * Since: 2.40
  */
-gboolean webkit_network_session_is_ephemeral(WebKitNetworkSession* session)
+gboolean webkit_network_session_is_ephemeral(CyberKitNetworkSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), FALSE);
 
@@ -306,15 +306,15 @@ gboolean webkit_network_session_is_ephemeral(WebKitNetworkSession* session)
 
 /**
  * webkit_network_session_get_website_data_manager:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  *
- * Get the #WebKitWebsiteDataManager of @session.
+ * Get the #CyberKitWebsiteDataManager of @session.
  *
- * Returns: (transfer none): a #WebKitWebsiteDataManager
+ * Returns: (transfer none): a #CyberKitWebsiteDataManager
  *
  * Since: 2.40
  */
-WebKitWebsiteDataManager* webkit_network_session_get_website_data_manager(WebKitNetworkSession* session)
+CyberKitWebsiteDataManager* webkit_network_session_get_website_data_manager(CyberKitNetworkSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), nullptr);
 
@@ -323,15 +323,15 @@ WebKitWebsiteDataManager* webkit_network_session_get_website_data_manager(WebKit
 
 /**
  * webkit_network_session_get_cookie_manager:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  *
- * Get the #WebKitCookieManager of @session.
+ * Get the #CyberKitCookieManager of @session.
  *
- * Returns: (transfer none): a #WebKitCookieManager
+ * Returns: (transfer none): a #CyberKitCookieManager
  *
  * Since: 2.40
  */
-WebKitCookieManager* webkit_network_session_get_cookie_manager(WebKitNetworkSession* session)
+CyberKitCookieManager* webkit_network_session_get_cookie_manager(CyberKitNetworkSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), nullptr);
 
@@ -343,7 +343,7 @@ WebKitCookieManager* webkit_network_session_get_cookie_manager(WebKitNetworkSess
 
 /**
  * webkit_network_session_set_itp_enabled:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  * @enabled: value to set
  *
  * Enable or disable Intelligent Tracking Prevention (ITP).
@@ -355,7 +355,7 @@ WebKitCookieManager* webkit_network_session_get_cookie_manager(WebKitNetworkSess
  *
  * Since: 2.40
  */
-void webkit_network_session_set_itp_enabled(WebKitNetworkSession* session, gboolean enabled)
+void webkit_network_session_set_itp_enabled(CyberKitNetworkSession* session, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_NETWORK_SESSION(session));
 
@@ -365,7 +365,7 @@ void webkit_network_session_set_itp_enabled(WebKitNetworkSession* session, gbool
 
 /**
  * webkit_network_session_get_itp_enabled:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  *
  * Get whether Intelligent Tracking Prevention (ITP) is enabled or not.
  *
@@ -373,7 +373,7 @@ void webkit_network_session_set_itp_enabled(WebKitNetworkSession* session, gbool
  *
  * Since: 2.40
  */
-gboolean webkit_network_session_get_itp_enabled(WebKitNetworkSession* session)
+gboolean webkit_network_session_get_itp_enabled(CyberKitNetworkSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), FALSE);
 
@@ -383,7 +383,7 @@ gboolean webkit_network_session_get_itp_enabled(WebKitNetworkSession* session)
 
 /**
  * webkit_network_session_set_persistent_credential_storage_enabled:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  * @enabled: value to set
  *
  * Enable or disable persistent credential storage.
@@ -394,7 +394,7 @@ gboolean webkit_network_session_get_itp_enabled(WebKitNetworkSession* session)
  *
  * Since: 2.40
  */
-void webkit_network_session_set_persistent_credential_storage_enabled(WebKitNetworkSession* session, gboolean enabled)
+void webkit_network_session_set_persistent_credential_storage_enabled(CyberKitNetworkSession* session, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_NETWORK_SESSION(session));
 
@@ -404,7 +404,7 @@ void webkit_network_session_set_persistent_credential_storage_enabled(WebKitNetw
 
 /**
  * webkit_network_session_get_persistent_credential_storage_enabled:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  *
  * Get whether persistent credential storage is enabled or not.
  *
@@ -414,7 +414,7 @@ void webkit_network_session_set_persistent_credential_storage_enabled(WebKitNetw
  *
  * Since: 2.40
  */
-gboolean webkit_network_session_get_persistent_credential_storage_enabled(WebKitNetworkSession* session)
+gboolean webkit_network_session_get_persistent_credential_storage_enabled(CyberKitNetworkSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), FALSE);
 
@@ -424,14 +424,14 @@ gboolean webkit_network_session_get_persistent_credential_storage_enabled(WebKit
 
 /**
  * webkit_network_session_set_tls_errors_policy:
- * @session: a #WebKitNetworkSession
- * @policy: a #WebKitTLSErrorsPolicy
+ * @session: a #CyberKitNetworkSession
+ * @policy: a #CyberKitTLSErrorsPolicy
  *
  * Set the TLS errors policy of @session as @policy.
  *
  * Since: 2.40
  */
-void webkit_network_session_set_tls_errors_policy(WebKitNetworkSession* session, WebKitTLSErrorsPolicy policy)
+void webkit_network_session_set_tls_errors_policy(CyberKitNetworkSession* session, CyberKitTLSErrorsPolicy policy)
 {
     g_return_if_fail(WEBKIT_IS_NETWORK_SESSION(session));
 
@@ -445,15 +445,15 @@ void webkit_network_session_set_tls_errors_policy(WebKitNetworkSession* session,
 
 /**
  * webkit_network_session_get_tls_errors_policy:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  *
  * Get the TLS errors policy of @session.
  *
- * Returns: a #WebKitTLSErrorsPolicy
+ * Returns: a #CyberKitTLSErrorsPolicy
  *
  * Since: 2.40
  */
-WebKitTLSErrorsPolicy webkit_network_session_get_tls_errors_policy(WebKitNetworkSession* session)
+CyberKitTLSErrorsPolicy webkit_network_session_get_tls_errors_policy(CyberKitNetworkSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), WEBKIT_TLS_ERRORS_POLICY_FAIL);
 
@@ -462,7 +462,7 @@ WebKitTLSErrorsPolicy webkit_network_session_get_tls_errors_policy(WebKitNetwork
 
 /**
  * webkit_network_session_allow_tls_certificate_for_host:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  * @certificate: a #GTlsCertificate
  * @host: the host for which a certificate is to be allowed
  *
@@ -470,7 +470,7 @@ WebKitTLSErrorsPolicy webkit_network_session_get_tls_errors_policy(WebKitNetwork
  *
  * Since: 2.40
  */
-void webkit_network_session_allow_tls_certificate_for_host(WebKitNetworkSession* session, GTlsCertificate* certificate, const char* host)
+void webkit_network_session_allow_tls_certificate_for_host(CyberKitNetworkSession* session, GTlsCertificate* certificate, const char* host)
 {
     g_return_if_fail(WEBKIT_IS_NETWORK_SESSION(session));
     g_return_if_fail(G_IS_TLS_CERTIFICATE(certificate));
@@ -483,9 +483,9 @@ void webkit_network_session_allow_tls_certificate_for_host(WebKitNetworkSession*
 
 /**
  * webkit_network_session_set_proxy_settings:
- * @session: a #WebKitNetworkSession
- * @proxy_mode: a #WebKitNetworkProxyMode
- * @proxy_settings: (allow-none): a #WebKitNetworkProxySettings, or %NULL
+ * @session: a #CyberKitNetworkSession
+ * @proxy_mode: a #CyberKitNetworkProxyMode
+ * @proxy_settings: (allow-none): a #CyberKitNetworkProxySettings, or %NULL
  *
  * Set the network proxy settings to be used by connections started in @session session.
  *
@@ -495,11 +495,11 @@ void webkit_network_session_allow_tls_certificate_for_host(WebKitNetworkSession*
  * %WEBKIT_NETWORK_PROXY_MODE_NO_PROXY to make sure no proxies are used at all,
  * or %WEBKIT_NETWORK_PROXY_MODE_CUSTOM to provide your own proxy settings.
  * When @proxy_mode is %WEBKIT_NETWORK_PROXY_MODE_CUSTOM @proxy_settings must be
- * a valid #WebKitNetworkProxySettings; otherwise, @proxy_settings must be %NULL.
+ * a valid #CyberKitNetworkProxySettings; otherwise, @proxy_settings must be %NULL.
  *
  * Since: 2.40
  */
-void webkit_network_session_set_proxy_settings(WebKitNetworkSession* session, WebKitNetworkProxyMode proxyMode, WebKitNetworkProxySettings* proxySettings)
+void webkit_network_session_set_proxy_settings(CyberKitNetworkSession* session, CyberKitNetworkProxyMode proxyMode, CyberKitNetworkProxySettings* proxySettings)
 {
     g_return_if_fail(WEBKIT_IS_NETWORK_SESSION(session));
     g_return_if_fail((proxyMode != WEBKIT_NETWORK_PROXY_MODE_CUSTOM && !proxySettings) || (proxyMode == WEBKIT_NETWORK_PROXY_MODE_CUSTOM && proxySettings));
@@ -515,7 +515,7 @@ void webkit_network_session_set_proxy_settings(WebKitNetworkSession* session, We
     case WEBKIT_NETWORK_PROXY_MODE_CUSTOM:
         auto settings = webkitNetworkProxySettingsGetNetworkProxySettings(proxySettings);
         if (settings.isEmpty()) {
-            g_warning("Invalid attempt to set custom network proxy settings with an empty WebKitNetworkProxySettings. Use "
+            g_warning("Invalid attempt to set custom network proxy settings with an empty CyberKitNetworkProxySettings. Use "
                 "WEBKIT_NETWORK_PROXY_MODE_NO_PROXY to not use any proxy or WEBKIT_NETWORK_PROXY_MODE_DEFAULT to use the default system settings");
         } else
             websiteDataStore.setNetworkProxySettings(WTFMove(settings));
@@ -525,15 +525,15 @@ void webkit_network_session_set_proxy_settings(WebKitNetworkSession* session, We
 
 /**
  * webkit_network_session_set_memory_pressure_settings:
- * @settings: a WebKitMemoryPressureSettings.
+ * @settings: a CyberKitMemoryPressureSettings.
  *
- * Sets @settings as the #WebKitMemoryPressureSettings.
+ * Sets @settings as the #CyberKitMemoryPressureSettings.
  *
- * Sets @settings as the #WebKitMemoryPressureSettings to be used by the network
- * process created by any instance of #WebKitNetworkSession after this function
+ * Sets @settings as the #CyberKitMemoryPressureSettings to be used by the network
+ * process created by any instance of #CyberKitNetworkSession after this function
  * is called.
  *
- * Be sure to call this function before creating any #WebKitNetworkSession.
+ * Be sure to call this function before creating any #CyberKitNetworkSession.
  *
  * The periodic check for used memory is disabled by default on network processes. This will
  * be enabled only if custom settings have been set using this function. After that, in order
@@ -542,7 +542,7 @@ void webkit_network_session_set_proxy_settings(WebKitNetworkSession* session, We
  *
  * Since: 2.40
  */
-void webkit_network_session_set_memory_pressure_settings(WebKitMemoryPressureSettings* settings)
+void webkit_network_session_set_memory_pressure_settings(CyberKitMemoryPressureSettings* settings)
 {
     std::optional<MemoryPressureHandler::Configuration> config = settings ? std::make_optional(webkitMemoryPressureSettingsGetMemoryPressureHandlerConfiguration(settings)) : std::nullopt;
     WebProcessPool::setNetworkProcessMemoryPressureHandlerConfiguration(config);
@@ -550,22 +550,22 @@ void webkit_network_session_set_memory_pressure_settings(WebKitMemoryPressureSet
 
 /**
  * webkit_network_session_get_itp_summary:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
  *
- * Asynchronously get the list of #WebKitITPThirdParty seen for @session.
+ * Asynchronously get the list of #CyberKitITPThirdParty seen for @session.
  *
- * Every #WebKitITPThirdParty
- * contains the list of #WebKitITPFirstParty under which it has been seen.
+ * Every #CyberKitITPThirdParty
+ * contains the list of #CyberKitITPFirstParty under which it has been seen.
  *
  * When the operation is finished, @callback will be called. You can then call
  * webkit_network_session_get_itp_summary_finish() to get the result of the operation.
  *
  * Since: 2.40
  */
-void webkit_network_session_get_itp_summary(WebKitNetworkSession* session, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_network_session_get_itp_summary(CyberKitNetworkSession* session, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_NETWORK_SESSION(session));
 
@@ -583,19 +583,19 @@ void webkit_network_session_get_itp_summary(WebKitNetworkSession* session, GCanc
 
 /**
  * webkit_network_session_get_itp_summary_finish:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finish an asynchronous operation started with webkit_network_session_get_itp_summary().
  *
- * Returns: (transfer full) (element-type WebKitITPThirdParty): a #GList of #WebKitITPThirdParty.
- *    You must free the #GList with g_list_free() and unref the #WebKitITPThirdParty<!-- -->s with
+ * Returns: (transfer full) (element-type CyberKitITPThirdParty): a #GList of #CyberKitITPThirdParty.
+ *    You must free the #GList with g_list_free() and unref the #CyberKitITPThirdParty<!-- -->s with
  *    webkit_itp_third_party_unref() when you're done with them.
  *
  * Since: 2.40
  */
-GList* webkit_network_session_get_itp_summary_finish(WebKitNetworkSession* session, GAsyncResult* result, GError** error)
+GList* webkit_network_session_get_itp_summary_finish(CyberKitNetworkSession* session, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, session), nullptr);
@@ -605,7 +605,7 @@ GList* webkit_network_session_get_itp_summary_finish(WebKitNetworkSession* sessi
 
 /**
  * webkit_network_session_prefetch_dns:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  * @hostname: a hostname to be resolved
  *
  * Resolve the domain name of the given @hostname in advance, so that if a URI
@@ -613,7 +613,7 @@ GList* webkit_network_session_get_itp_summary_finish(WebKitNetworkSession* sessi
  *
  * Since: 2.40
  */
-void webkit_network_session_prefetch_dns(WebKitNetworkSession* session, const char* hostname)
+void webkit_network_session_prefetch_dns(CyberKitNetworkSession* session, const char* hostname)
 {
     g_return_if_fail(WEBKIT_IS_NETWORK_SESSION(session));
     g_return_if_fail(hostname);
@@ -627,21 +627,21 @@ void webkit_network_session_prefetch_dns(WebKitNetworkSession* session, const ch
 
 /**
  * webkit_network_session_download_uri:
- * @session: a #WebKitNetworkSession
+ * @session: a #CyberKitNetworkSession
  * @uri: the URI to download
  *
  * Requests downloading of the specified URI string.
  *
- * The download operation will not be associated to any #WebKitWebView,
- * if you are interested in starting a download from a particular #WebKitWebView use
+ * The download operation will not be associated to any #CyberKitWebView,
+ * if you are interested in starting a download from a particular #CyberKitWebView use
  * webkit_web_view_download_uri() instead.
  *
- * Returns: (transfer full): a new #WebKitDownload representing
+ * Returns: (transfer full): a new #CyberKitDownload representing
  *    the download operation.
  *
  * Since: 2.40
  */
-WebKitDownload* webkit_network_session_download_uri(WebKitNetworkSession* session, const char* uri)
+CyberKitDownload* webkit_network_session_download_uri(CyberKitNetworkSession* session, const char* uri)
 {
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), nullptr);
     g_return_val_if_fail(uri, nullptr);
@@ -650,7 +650,7 @@ WebKitDownload* webkit_network_session_download_uri(WebKitNetworkSession* sessio
     auto& websiteDataStore = webkitWebsiteDataManagerGetDataStore(session->priv->websiteDataManager.get());
     auto& downloadProxy = websiteDataStore.createDownloadProxy(adoptRef(*new API::DownloadClient), request, nullptr, { });
     auto download = webkitDownloadCreate(downloadProxy);
-    downloadProxy.setDidStartCallback([session = GRefPtr<WebKitNetworkSession> { session }, download = download.get()](auto* downloadProxy) {
+    downloadProxy.setDidStartCallback([session = GRefPtr<CyberKitNetworkSession> { session }, download = download.get()](auto* downloadProxy) {
         if (!downloadProxy)
             return;
 

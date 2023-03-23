@@ -29,7 +29,7 @@
 #include <wtf/Deque.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -60,4 +60,4 @@ private:
     CheckResult m_userPermissionCheck { CheckResult::Unknown };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

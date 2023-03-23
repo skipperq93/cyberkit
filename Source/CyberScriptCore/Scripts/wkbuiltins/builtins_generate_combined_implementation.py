@@ -80,7 +80,7 @@ class BuiltinsCombinedImplementationGenerator(BuiltinsGenerator):
         if self.model().framework is Frameworks.CyberScriptCore:
             sections.append(Template(Templates.CombinedJSCImplementationStaticMacros).substitute(args))
         elif self.model().framework is Frameworks.CyberCore:
-            sections.append(Template(Templates.CombinedWebCoreImplementationStaticMacros).substitute(args))
+            sections.append(Template(Templates.CombinedCyberCoreImplementationStaticMacros).substitute(args))
         sections.append(Template(Templates.NamespaceBottom).substitute(args))
 
         return "\n\n".join(sections)

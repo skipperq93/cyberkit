@@ -33,7 +33,7 @@
 #include "RTCRtpSender.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_webrtc_rtp_sender_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_rtp_sender_debug
@@ -174,6 +174,6 @@ std::unique_ptr<RTCDtlsTransportBackend> GStreamerRtpSenderBackend::dtlsTranspor
     return transport ? makeUnique<GStreamerDtlsTransportBackend>(transport) : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

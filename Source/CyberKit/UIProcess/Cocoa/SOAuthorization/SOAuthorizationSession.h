@@ -45,7 +45,7 @@ namespace CyberCore {
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -128,6 +128,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

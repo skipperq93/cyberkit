@@ -27,7 +27,7 @@
 
 #include "WebConnection.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 
@@ -54,4 +54,4 @@ private:
     WebProcessProxy* m_process;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

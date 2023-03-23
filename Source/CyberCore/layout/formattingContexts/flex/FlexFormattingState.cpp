@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FlexFormattingState);

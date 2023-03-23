@@ -345,7 +345,7 @@ OptionParser.new do |opts|
     opts.on("--assembler=[ASM]", "Specify an assembler to use.") do |assembler|
         $options[:assembler] = assembler
     end
-    opts.on("--webkit-additions-path=PATH", "WebKitAdditions path.") do |path|
+    opts.on("--webkit-additions-path=PATH", "CyberKitAdditions path.") do |path|
         $options[:webkit_additions_path] = path
     end
     opts.on("--binary-format=FORMAT", "Specify the binary format used by the target system.") do |format|

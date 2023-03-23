@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 CSSFunctionValue::CSSFunctionValue(CSSValueID name, CSSValueListBuilder arguments)
     : CSSValueContainingVector(FunctionClass, CommaSeparator, WTFMove(arguments))

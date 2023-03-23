@@ -32,7 +32,7 @@
 #include "EventLoop.h"
 #include "JSDOMPromiseDeferred.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://fullscreen.spec.whatwg.org/#exit-fullscreen
 void DocumentFullscreen::exitFullscreen(Document& document, RefPtr<DeferredPromise>&& promise)
@@ -57,6 +57,6 @@ bool DocumentFullscreen::fullscreenEnabled(Document& document)
     return document.fullscreenManager().isFullscreenEnabled();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

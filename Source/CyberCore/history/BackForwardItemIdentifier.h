@@ -31,9 +31,9 @@
 #include <wtf/Hasher.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum BackForwardItemIdentifierType { };
 using BackForwardItemIdentifier = ProcessQualified<ObjectIdentifier<BackForwardItemIdentifierType>>;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PermissionState : uint8_t {
     Granted,
@@ -35,16 +35,16 @@ enum class PermissionState : uint8_t {
     Prompt
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PermissionState> {
+template<> struct EnumTraits<CyberCore::PermissionState> {
     using values = EnumValues<
-        WebCore::PermissionState,
-        WebCore::PermissionState::Granted,
-        WebCore::PermissionState::Denied,
-        WebCore::PermissionState::Prompt
+        CyberCore::PermissionState,
+        CyberCore::PermissionState::Granted,
+        CyberCore::PermissionState::Denied,
+        CyberCore::PermissionState::Prompt
     >;
 };
 

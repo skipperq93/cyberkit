@@ -43,7 +43,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebAuthenticatorCoordinatorProxy::WebAuthenticatorCoordinatorProxy(WebPageProxy& webPageProxy)
@@ -134,6 +134,6 @@ void WebAuthenticatorCoordinatorProxy::isConditionalMediationAvailable(const Sec
 }
 #endif // !HAVE(UNIFIED_ASC_AUTH_UI)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

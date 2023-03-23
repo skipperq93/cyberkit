@@ -34,7 +34,7 @@
 #include "RemoteRenderPassEncoderProxy.h"
 #include "WebGPUConvertToBackingContext.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 RemoteCommandEncoderProxy::RemoteCommandEncoderProxy(RemoteDeviceProxy& parent, ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier)
     : m_backing(identifier)
@@ -64,7 +64,7 @@ Ref<PAL::WebGPU::RenderPassEncoder> RemoteCommandEncoderProxy::beginRenderPass(c
 
 Ref<PAL::WebGPU::ComputePassEncoder> RemoteCommandEncoderProxy::beginComputePass(const std::optional<PAL::WebGPU::ComputePassDescriptor>& descriptor)
 {
-    std::optional<WebKit::WebGPU::ComputePassDescriptor> convertedDescriptor;
+    std::optional<CyberKit::WebGPU::ComputePassDescriptor> convertedDescriptor;
     if (descriptor) {
         convertedDescriptor = m_convertToBackingContext->convertToBacking(*descriptor);
         if (!convertedDescriptor) {
@@ -234,6 +234,6 @@ void RemoteCommandEncoderProxy::setLabelInternal(const String& label)
     UNUSED_VARIABLE(sendResult);
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

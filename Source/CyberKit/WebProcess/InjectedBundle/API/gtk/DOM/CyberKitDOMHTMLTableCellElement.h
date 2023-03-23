@@ -54,7 +54,7 @@ webkit_dom_html_table_cell_element_get_type(void);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_table_cell_element_get_cell_index(CyberKitDOMHTMLTableCellElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_table_cell_element_get_cell_index(CyberKitDOMHTMLTableCellElemen
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_align(CyberKitDOMHTMLTableCellElement* self);
@@ -76,7 +76,7 @@ webkit_dom_html_table_cell_element_get_align(CyberKitDOMHTMLTableCellElement* se
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_align(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -87,7 +87,7 @@ webkit_dom_html_table_cell_element_set_align(CyberKitDOMHTMLTableCellElement* se
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_axis(CyberKitDOMHTMLTableCellElement* self);
@@ -98,7 +98,7 @@ webkit_dom_html_table_cell_element_get_axis(CyberKitDOMHTMLTableCellElement* sel
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_axis(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -109,7 +109,7 @@ webkit_dom_html_table_cell_element_set_axis(CyberKitDOMHTMLTableCellElement* sel
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_bg_color(CyberKitDOMHTMLTableCellElement* self);
@@ -120,7 +120,7 @@ webkit_dom_html_table_cell_element_get_bg_color(CyberKitDOMHTMLTableCellElement*
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_bg_color(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -131,7 +131,7 @@ webkit_dom_html_table_cell_element_set_bg_color(CyberKitDOMHTMLTableCellElement*
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_ch(CyberKitDOMHTMLTableCellElement* self);
@@ -142,7 +142,7 @@ webkit_dom_html_table_cell_element_get_ch(CyberKitDOMHTMLTableCellElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_ch(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -153,7 +153,7 @@ webkit_dom_html_table_cell_element_set_ch(CyberKitDOMHTMLTableCellElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_ch_off(CyberKitDOMHTMLTableCellElement* self);
@@ -164,7 +164,7 @@ webkit_dom_html_table_cell_element_get_ch_off(CyberKitDOMHTMLTableCellElement* s
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_ch_off(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -175,7 +175,7 @@ webkit_dom_html_table_cell_element_set_ch_off(CyberKitDOMHTMLTableCellElement* s
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_table_cell_element_get_col_span(CyberKitDOMHTMLTableCellElement* self);
@@ -186,7 +186,7 @@ webkit_dom_html_table_cell_element_get_col_span(CyberKitDOMHTMLTableCellElement*
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_col_span(CyberKitDOMHTMLTableCellElement* self, glong value);
@@ -197,7 +197,7 @@ webkit_dom_html_table_cell_element_set_col_span(CyberKitDOMHTMLTableCellElement*
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_table_cell_element_get_row_span(CyberKitDOMHTMLTableCellElement* self);
@@ -208,7 +208,7 @@ webkit_dom_html_table_cell_element_get_row_span(CyberKitDOMHTMLTableCellElement*
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_row_span(CyberKitDOMHTMLTableCellElement* self, glong value);
@@ -219,7 +219,7 @@ webkit_dom_html_table_cell_element_set_row_span(CyberKitDOMHTMLTableCellElement*
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_headers(CyberKitDOMHTMLTableCellElement* self);
@@ -230,7 +230,7 @@ webkit_dom_html_table_cell_element_get_headers(CyberKitDOMHTMLTableCellElement* 
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_headers(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -241,7 +241,7 @@ webkit_dom_html_table_cell_element_set_headers(CyberKitDOMHTMLTableCellElement* 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_height(CyberKitDOMHTMLTableCellElement* self);
@@ -252,7 +252,7 @@ webkit_dom_html_table_cell_element_get_height(CyberKitDOMHTMLTableCellElement* s
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_height(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -263,7 +263,7 @@ webkit_dom_html_table_cell_element_set_height(CyberKitDOMHTMLTableCellElement* s
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_table_cell_element_get_no_wrap(CyberKitDOMHTMLTableCellElement* self);
@@ -274,7 +274,7 @@ webkit_dom_html_table_cell_element_get_no_wrap(CyberKitDOMHTMLTableCellElement* 
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_no_wrap(CyberKitDOMHTMLTableCellElement* self, gboolean value);
@@ -285,7 +285,7 @@ webkit_dom_html_table_cell_element_set_no_wrap(CyberKitDOMHTMLTableCellElement* 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_v_align(CyberKitDOMHTMLTableCellElement* self);
@@ -296,7 +296,7 @@ webkit_dom_html_table_cell_element_get_v_align(CyberKitDOMHTMLTableCellElement* 
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_v_align(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -307,7 +307,7 @@ webkit_dom_html_table_cell_element_set_v_align(CyberKitDOMHTMLTableCellElement* 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_width(CyberKitDOMHTMLTableCellElement* self);
@@ -318,7 +318,7 @@ webkit_dom_html_table_cell_element_get_width(CyberKitDOMHTMLTableCellElement* se
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_width(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -329,7 +329,7 @@ webkit_dom_html_table_cell_element_set_width(CyberKitDOMHTMLTableCellElement* se
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_abbr(CyberKitDOMHTMLTableCellElement* self);
@@ -340,7 +340,7 @@ webkit_dom_html_table_cell_element_get_abbr(CyberKitDOMHTMLTableCellElement* sel
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_abbr(CyberKitDOMHTMLTableCellElement* self, const gchar* value);
@@ -351,7 +351,7 @@ webkit_dom_html_table_cell_element_set_abbr(CyberKitDOMHTMLTableCellElement* sel
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_cell_element_get_scope(CyberKitDOMHTMLTableCellElement* self);
@@ -362,7 +362,7 @@ webkit_dom_html_table_cell_element_get_scope(CyberKitDOMHTMLTableCellElement* se
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_cell_element_set_scope(CyberKitDOMHTMLTableCellElement* self, const gchar* value);

@@ -40,7 +40,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
     
 static bool containsOnlyASCIIWithNoUppercase(const String& domain)
 {
@@ -210,15 +210,15 @@ bool isValidCSSSelector(const String& selector)
     // This explicitly does not use the CSSParserContext created in contentExtensionCSSParserContext because
     // we want to use quirks mode in parsing, but automatic mode when actually applying the content blocker styles.
     // FIXME: rdar://105733691 (Parse/apply content blocker style sheets in both standards and quirks mode lazily).
-    WebCore::CSSParserContext context(HTMLQuirksMode);
+    CyberCore::CSSParserContext context(HTMLQuirksMode);
     context.hasPseudoClassEnabled = true;
     CSSParser parser(context);
     return !!parser.parseSelector(selector);
 }
 
-WebCore::CSSParserContext contentExtensionCSSParserContext()
+CyberCore::CSSParserContext contentExtensionCSSParserContext()
 {
-    WebCore::CSSParserContext context(HTMLStandardMode);
+    CyberCore::CSSParserContext context(HTMLStandardMode);
     context.hasPseudoClassEnabled = true;
     return context;
 }
@@ -338,6 +338,6 @@ Expected<Vector<ContentExtensionRule>, std::error_code> parseRuleList(const Stri
     return ruleList;
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

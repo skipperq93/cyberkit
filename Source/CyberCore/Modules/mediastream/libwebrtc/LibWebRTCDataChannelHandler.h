@@ -47,7 +47,7 @@ namespace webrtc {
 struct DataChannelInit;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RTCDataChannelEvent;
@@ -101,6 +101,6 @@ private:
     PendingMessages m_bufferedMessages WTF_GUARDED_BY_LOCK(m_clientLock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

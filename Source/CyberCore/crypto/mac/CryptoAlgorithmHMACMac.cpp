@@ -33,7 +33,7 @@
 #include <CommonCrypto/CommonHMAC.h>
 #include <wtf/CryptographicUtilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<CCHmacAlgorithm> commonCryptoHMACAlgorithm(CryptoAlgorithmIdentifier hashFunction)
 {

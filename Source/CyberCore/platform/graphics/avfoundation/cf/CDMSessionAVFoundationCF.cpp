@@ -33,8 +33,8 @@
 #include "MediaPlayer.h"
 #include "NotImplemented.h"
 #include <AVFoundationCF/AVFoundationCF.h>
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/Uint8Array.h>
 #include <wtf/SoftLinking.h>
 #include <wtf/UUID.h>
 #include <wtf/text/CString.h>

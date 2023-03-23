@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Report;
 class ReportingObserverCallback;

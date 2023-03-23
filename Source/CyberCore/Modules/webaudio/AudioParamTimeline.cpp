@@ -36,7 +36,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void fillWithValue(float* values, float value, unsigned endFrame, unsigned& writeIndex)
 {
@@ -1046,6 +1046,6 @@ bool AudioParamTimeline::hasValues(size_t startFrame, double sampleRate) const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

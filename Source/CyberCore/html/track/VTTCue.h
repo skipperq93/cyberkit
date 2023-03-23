@@ -39,7 +39,7 @@
 #include "VTTRegion.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentFragment;
 class HTMLDivElement;
@@ -270,16 +270,16 @@ private:
     CueLignAlignment m_lineAlignment { LignAlignmentStart };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct LogArgument<WebCore::VTTCue> : LogArgument<WebCore::TextTrackCue> { };
+template<> struct LogArgument<CyberCore::VTTCue> : LogArgument<CyberCore::TextTrackCue> { };
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::VTTCue)
-static bool isType(const WebCore::TextTrackCue& cue) { return cue.cueType() == WebCore::TextTrackCue::WebVTT || cue.cueType() == WebCore::TextTrackCue::ConvertedToWebVTT; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::VTTCue)
+static bool isType(const CyberCore::TextTrackCue& cue) { return cue.cueType() == CyberCore::TextTrackCue::WebVTT || cue.cueType() == CyberCore::TextTrackCue::ConvertedToWebVTT; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

@@ -52,7 +52,7 @@ static void drawPageBackground(cairo_t* ctx, const std::optional<CyberCore::Colo
 
 void WKPageHandleKeyboardEvent(WKPageRef pageRef, WKKeyboardEvent event)
 {
-    using WebKit::NativeWebKeyboardEvent;
+    using CyberKit::NativeWebKeyboardEvent;
 
     wpe_input_keyboard_event wpeEvent;
     wpeEvent.time = 0;
@@ -73,13 +73,13 @@ void WKPageHandleKeyboardEvent(WKPageRef pageRef, WKKeyboardEvent event)
 
     NativeWebKeyboardEvent::HandledByInputMethod handledByInputMethod = NativeWebKeyboardEvent::HandledByInputMethod::No;
     std::optional<Vector<CyberCore::CompositionUnderline>> preeditUnderlines;
-    std::optional<WebKit::EditingRange> preeditSelectionRange;
-    WebKit::toImpl(pageRef)->handleKeyboardEvent(NativeWebKeyboardEvent(&wpeEvent, ""_s, handledByInputMethod, WTFMove(preeditUnderlines), WTFMove(preeditSelectionRange)));
+    std::optional<CyberKit::EditingRange> preeditSelectionRange;
+    CyberKit::toImpl(pageRef)->handleKeyboardEvent(NativeWebKeyboardEvent(&wpeEvent, ""_s, handledByInputMethod, WTFMove(preeditUnderlines), WTFMove(preeditSelectionRange)));
 }
 
 void WKPageHandleMouseEvent(WKPageRef pageRef, WKMouseEvent event)
 {
-    using WebKit::NativeWebMouseEvent;
+    using CyberKit::NativeWebMouseEvent;
 
     wpe_input_pointer_event wpeEvent;
 
@@ -125,13 +125,13 @@ void WKPageHandleMouseEvent(WKPageRef pageRef, WKMouseEvent event)
 
     const float deviceScaleFactor = 1;
 
-    WebKit::toImpl(pageRef)->handleMouseEvent(NativeWebMouseEvent(&wpeEvent, deviceScaleFactor));
+    CyberKit::toImpl(pageRef)->handleMouseEvent(NativeWebMouseEvent(&wpeEvent, deviceScaleFactor));
 }
 
 void WKPageHandleWheelEvent(WKPageRef pageRef, WKWheelEvent event)
 {
-    using WebKit::WebWheelEvent;
-    using WebKit::NativeWebWheelEvent;
+    using CyberKit::WebWheelEvent;
+    using CyberKit::NativeWebWheelEvent;
 
     const float deviceScaleFactor = 1;
     int positionX = event.position.x;
@@ -143,7 +143,7 @@ void WKPageHandleWheelEvent(WKPageRef pageRef, WKWheelEvent event)
         1, static_cast<int32_t>(event.delta.width), 0
     };
 
-    WebKit::toImpl(pageRef)->handleWheelEvent(NativeWebWheelEvent(&xEvent, deviceScaleFactor, WebWheelEvent::Phase::PhaseNone, WebWheelEvent::Phase::PhaseNone));
+    CyberKit::toImpl(pageRef)->handleWheelEvent(NativeWebWheelEvent(&xEvent, deviceScaleFactor, WebWheelEvent::Phase::PhaseNone, WebWheelEvent::Phase::PhaseNone));
 
     struct wpe_input_axis_event yEvent = {
         wpe_input_axis_event_type_motion,
@@ -151,13 +151,13 @@ void WKPageHandleWheelEvent(WKPageRef pageRef, WKWheelEvent event)
         0, static_cast<int32_t>(event.delta.height), 0
     };
 
-    WebKit::toImpl(pageRef)->handleWheelEvent(NativeWebWheelEvent(&yEvent, deviceScaleFactor, WebWheelEvent::Phase::PhaseNone, WebWheelEvent::Phase::PhaseNone));
+    CyberKit::toImpl(pageRef)->handleWheelEvent(NativeWebWheelEvent(&yEvent, deviceScaleFactor, WebWheelEvent::Phase::PhaseNone, WebWheelEvent::Phase::PhaseNone));
 }
 
 void WKPagePaint(WKPageRef pageRef, unsigned char* surfaceData, WKSize wkSurfaceSize, WKRect wkPaintRect)
 {
-    auto surfaceSize = WebKit::toIntSize(wkSurfaceSize);
-    auto paintRect = WebKit::toIntRect(wkPaintRect);
+    auto surfaceSize = CyberKit::toIntSize(wkSurfaceSize);
+    auto paintRect = CyberKit::toIntRect(wkPaintRect);
     if (!surfaceData || surfaceSize.isEmpty())
         return;
 
@@ -168,11 +168,11 @@ void WKPagePaint(WKPageRef pageRef, unsigned char* surfaceData, WKSize wkSurface
 
     cairo_t* ctx = cairo_create(surface);
 
-    auto page = WebKit::toImpl(pageRef);
+    auto page = CyberKit::toImpl(pageRef);
     auto& backgroundColor = page->backgroundColor();
     page->endPrinting();
-    if (auto* drawingArea = static_cast<WebKit::DrawingAreaProxyCoordinatedGraphics*>(page->drawingArea())) {
-        // FIXME: We should port WebKit1's rect coalescing logic here.
+    if (auto* drawingArea = static_cast<CyberKit::DrawingAreaProxyCoordinatedGraphics*>(page->drawingArea())) {
+        // FIXME: We should port CyberKit1's rect coalescing logic here.
         CyberCore::Region unpaintedRegion;
         drawingArea->paint(ctx, paintRect, unpaintedRegion);
 

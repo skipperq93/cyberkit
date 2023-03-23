@@ -70,7 +70,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLLinkElement);
 
@@ -688,4 +688,4 @@ String HTMLLinkElement::fetchPriorityForBindings() const
     return convertEnumerationToString(parseEnumerationFromString<RequestPriority>(attributeWithoutSynchronization(fetchpriorityAttr)).value_or(RequestPriority::Auto));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

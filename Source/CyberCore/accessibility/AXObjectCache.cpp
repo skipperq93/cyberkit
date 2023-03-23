@@ -130,7 +130,7 @@
 #pragma warning(disable: 4701)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1155,7 +1155,7 @@ void AXObjectCache::handleLiveRegionCreated(Node* node)
     if (liveRegionStatus.isEmpty()) {
         const AtomString& ariaRole = element->attributeWithoutSynchronization(roleAttr);
         if (!ariaRole.isEmpty())
-            liveRegionStatus = AtomString { AccessibilityObject::defaultLiveRegionStatusForRole(AccessibilityObject::ariaRoleToWebCoreRole(ariaRole)) };
+            liveRegionStatus = AtomString { AccessibilityObject::defaultLiveRegionStatusForRole(AccessibilityObject::ariaRoleToCyberCoreRole(ariaRole)) };
     }
 
     if (AccessibilityObject::liveRegionStatusIsEnabled(liveRegionStatus))
@@ -2476,7 +2476,7 @@ static Node* resetNodeAndOffsetForReplacedNode(Node& replacedNode, int& offset, 
 {
     // Use this function to include the replaced node itself in the range we are creating.
     auto nodeRange = AXObjectCache::rangeForNodeContents(replacedNode);
-    bool isInNode = static_cast<unsigned>(characterCount) <= WebCore::characterCount(nodeRange);
+    bool isInNode = static_cast<unsigned>(characterCount) <= CyberCore::characterCount(nodeRange);
     offset = replacedNode.computeNodeIndex() + (isInNode ? 0 : 1);
     return replacedNode.parentNode();
 }
@@ -4216,6 +4216,6 @@ AXTextChange AXObjectCache::textChangeForEditType(AXTextEditType type)
 }
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ACCESSIBILITY)

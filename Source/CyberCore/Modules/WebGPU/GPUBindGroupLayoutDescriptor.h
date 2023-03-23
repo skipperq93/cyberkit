@@ -30,7 +30,7 @@
 #include <pal/graphics/WebGPU/WebGPUBindGroupLayoutDescriptor.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUBindGroupLayoutDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::BindGroupLayoutDescriptor convertToBacking() const

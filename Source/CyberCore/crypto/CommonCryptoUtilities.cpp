@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 bool getCommonCryptoDigestAlgorithm(CryptoAlgorithmIdentifier hashFunction, CCDigestAlgorithm& algorithm)
 {
@@ -55,6 +55,6 @@ bool getCommonCryptoDigestAlgorithm(CryptoAlgorithmIdentifier hashFunction, CCDi
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

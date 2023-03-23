@@ -25,17 +25,17 @@
 
 #import <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebEditCommandProxy;
 }
 
 @interface WKEditCommand : NSObject {
 @private
-    RefPtr<WebKit::WebEditCommandProxy> _command;
+    RefPtr<CyberKit::WebEditCommandProxy> _command;
 }
-- (instancetype)initWithWebEditCommandProxy:(Ref<WebKit::WebEditCommandProxy>&&)command;
+- (instancetype)initWithWebEditCommandProxy:(Ref<CyberKit::WebEditCommandProxy>&&)command;
 - (instancetype)init NS_UNAVAILABLE;
-- (WebKit::WebEditCommandProxy&)command;
+- (CyberKit::WebEditCommandProxy&)command;
 @end
 
 // WKEditorUndoTarget serves as the target when registering with the platform undo manager,

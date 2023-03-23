@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebConnection.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebConnection> {
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN

@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentDetailsBase {
     std::optional<Vector<PaymentItem>> displayItems;
@@ -41,6 +41,6 @@ struct PaymentDetailsBase {
     std::optional<Vector<PaymentDetailsModifier>> modifiers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

@@ -25,7 +25,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: No need to use all capitals and a CSS prefix on all these names. Should fix that.
 enum class CSSUnitType : uint8_t {
@@ -148,4 +148,4 @@ CSSUnitType canonicalUnitTypeForUnitType(CSSUnitType);
 WTF::TextStream& operator<<(WTF::TextStream&, CSSUnitCategory);
 WTF::TextStream& operator<<(WTF::TextStream&, CSSUnitType);
 
-} // namespace WebCore
+} // namespace CyberCore

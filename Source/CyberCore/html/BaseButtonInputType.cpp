@@ -36,7 +36,7 @@
 #include "HTMLNames.h"
 #include "RenderButton.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -68,4 +68,4 @@ void BaseButtonInputType::setValue(const String& sanitizedValue, bool, TextField
     element()->setAttributeWithoutSynchronization(valueAttr, AtomString { sanitizedValue });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include "AudioNodeOutput.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ChannelSplitterNode);
 
@@ -110,6 +110,6 @@ ExceptionOr<void> ChannelSplitterNode::setChannelInterpretation(ChannelInterpret
     return AudioNode::setChannelInterpretation(interpretation);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

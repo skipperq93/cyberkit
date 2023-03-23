@@ -28,7 +28,7 @@
 
 #include "AudioNodeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DynamicsCompressorOptions : AudioNodeOptions {
     float attack { 0.003 };
@@ -38,6 +38,6 @@ struct DynamicsCompressorOptions : AudioNodeOptions {
     float threshold { -24 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

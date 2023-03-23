@@ -33,7 +33,7 @@
 #include "FormattingQuirks.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 // This class implements the layout logic for flex formatting contexts.

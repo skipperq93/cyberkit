@@ -30,7 +30,7 @@
 #include "AuthenticatorManager.h"
 #include <CyberCore/MockWebAuthenticationConfiguration.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MockAuthenticatorManager final : public AuthenticatorManager {
 public:
@@ -48,6 +48,6 @@ private:
     CyberCore::MockWebAuthenticationConfiguration m_testConfiguration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

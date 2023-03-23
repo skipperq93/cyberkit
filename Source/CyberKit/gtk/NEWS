@@ -106,7 +106,7 @@ What's new in CyberKitGTK 2.37.1?
     disabled by default via web view settings.
   - Add new API to set WebView's Content-Security-Policy for web extensions support.
   - Add new API to run async JavaScript functions.
-  - Expose typed arrays in JavaScriptCore GLib API.
+  - Expose typed arrays in CyberScriptCore GLib API.
   - Add support for PDF documents using PDF.js.
   - Show font name and font variant settings in the inspector.
   - MediaSession is enabled by default, allowing remote media control using MPRIS.
@@ -460,10 +460,10 @@ CyberKitGTK+ 2.21.5
 
 What's new in CyberKitGTK+ 2.21.5?
 
-  - Add API to evaluate code in a new object to JavaScriptCore GLib API.
-  - Add API to check for syntax errors in given code to JavaScriptCore GLib API.
+  - Add API to evaluate code in a new object to CyberScriptCore GLib API.
+  - Add API to check for syntax errors in given code to CyberScriptCore GLib API.
   - Update jsc_context_evaluate_with_source_uri() to receive also a starting line number.
-  - Add API to allow creating variadic functions to JavaScriptCore GLib API.
+  - Add API to allow creating variadic functions to CyberScriptCore GLib API.
   - Add --host option to WebDriver process.
   - Handle acceptInsecureCertificates capability in WebDriver.
   - Fix video freezes when GStreamerGL is not installed.
@@ -502,7 +502,7 @@ What's new in CyberKitGTK+ 2.21.2?
 
   - Remove resource load statistics API, it's not ready yet.
   - Add initial implementation of WebDriver advance user insteraction commands.
-  - Add introspectable alternatives for functions using vargars to JavaScriptCore GLib API.
+  - Add introspectable alternatives for functions using vargars to CyberScriptCore GLib API.
   - Implement MouseEvent.buttons.
   - Do TLS error checking on GTlsConnection::accept-certificate to finish the load earlier in case of errors.
   - Fix downloads started by context menu failing in some websites due to missing user agent HTTP header.
@@ -516,9 +516,9 @@ CyberKitGTK+ 2.21.1
 
 What's new in CyberKitGTK+ 2.21.1?
 
-  - Add initial JavaScriptCore GLib API.
-  - Use JavaScriptCore GLib API in CyberKit layer and deprecate most of the DOM bindings API as well as
-    methods using the JavaScriptCore C API.
+  - Add initial CyberScriptCore GLib API.
+  - Use CyberScriptCore GLib API in CyberKit layer and deprecate most of the DOM bindings API as well as
+    methods using the CyberScriptCore C API.
   - Switch to use complex text code path unconditionally.
   - Properly close the connection to the Wayland nested compositor in the WebProcess.
   - Implement support for Graphics ARIA roles.
@@ -849,7 +849,7 @@ CyberKitGTK+ 2.11.2
 
 What's new in CyberKitGTK+ 2.11.2?
 
-  - Enable FTL by default in JavaScriptCore for x86_64.
+  - Enable FTL by default in CyberScriptCore for x86_64.
   - Improved media backend performance by better handling glib main loop sources.
   - Fix rendering of lines when using solid colors.
   - Fix web process crashes due to BadDrawable X errors in accelerated compositing mode.
@@ -2015,7 +2015,7 @@ CyberKitGTK+ 1.3.10
 What's new in CyberKitGTK+ 1.3.10?
 
   - Port form control theming code to GtkStyleContext.
-  - Add a new 'make jsc' target to build only JavaScriptCore and the jsc binary.
+  - Add a new 'make jsc' target to build only CyberScriptCore and the jsc binary.
   - Initial support for drag-and-drop file uploads.
   - WOFF font face support.
   - Many other bugfixes.

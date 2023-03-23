@@ -28,7 +28,7 @@
 
 #import <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 id HistoryItem::viewState() const
 {
@@ -40,4 +40,4 @@ void HistoryItem::setViewState(id statePList)
     m_viewState = adoptNS([statePList copy]);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

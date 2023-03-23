@@ -37,7 +37,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSource;
 
@@ -59,6 +59,6 @@ private:
     HashMap<ScriptExecutionContextIdentifier, HashSet<String>> m_urlsPerContext;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

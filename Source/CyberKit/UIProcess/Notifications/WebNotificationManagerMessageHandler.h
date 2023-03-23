@@ -27,7 +27,7 @@
 
 #include "NotificationManagerMessageHandler.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -45,4 +45,4 @@ private:
     WebPageProxy& m_webPageProxy;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

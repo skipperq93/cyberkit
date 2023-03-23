@@ -43,14 +43,14 @@
 #include "JSTestObj.h"
 #include "ScriptExecutionContext.h"
 #include "TestSupplemental.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
@@ -72,11 +72,11 @@
 
 #if ENABLE(Condition22) || ENABLE(Condition23)
 #include "JSDOMConvertSequences.h"
-#include <JavaScriptCore/JSArray.h>
+#include <CyberScriptCore/JSArray.h>
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -669,7 +669,7 @@ static inline JSValue jsTestInterfaceConstructor_supplementalStaticReadOnlyAttrG
 {
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLLong>(lexicalGlobalObject, throwScope, WebCore::TestSupplemental::supplementalStaticReadOnlyAttr())));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLLong>(lexicalGlobalObject, throwScope, CyberCore::TestSupplemental::supplementalStaticReadOnlyAttr())));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestInterfaceConstructor_supplementalStaticReadOnlyAttr, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -684,7 +684,7 @@ static inline JSValue jsTestInterfaceConstructor_supplementalStaticAttrGetter(JS
 {
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, WebCore::TestSupplemental::supplementalStaticAttr())));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, CyberCore::TestSupplemental::supplementalStaticAttr())));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestInterfaceConstructor_supplementalStaticAttr, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -703,7 +703,7 @@ static inline bool setJSTestInterfaceConstructor_supplementalStaticAttrSetter(JS
     auto nativeValue = convert<IDLDOMString>(lexicalGlobalObject, value);
     RETURN_IF_EXCEPTION(throwScope, false);
     invokeFunctorPropagatingExceptionIfNecessary(lexicalGlobalObject, throwScope, [&] {
-        return WebCore::TestSupplemental::setSupplementalStaticAttr(WTFMove(nativeValue));
+        return CyberCore::TestSupplemental::setSupplementalStaticAttr(WTFMove(nativeValue));
     });
     return true;
 }
@@ -721,7 +721,7 @@ static inline JSValue jsTestInterface_supplementalStr1Getter(JSGlobalObject& lex
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     auto& impl = thisObject.wrapped();
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, WebCore::TestSupplemental::supplementalStr1(impl))));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, CyberCore::TestSupplemental::supplementalStr1(impl))));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestInterface_supplementalStr1, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -737,7 +737,7 @@ static inline JSValue jsTestInterface_supplementalStr2Getter(JSGlobalObject& lex
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     auto& impl = thisObject.wrapped();
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, WebCore::TestSupplemental::supplementalStr2(impl))));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, CyberCore::TestSupplemental::supplementalStr2(impl))));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestInterface_supplementalStr2, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -757,7 +757,7 @@ static inline bool setJSTestInterface_supplementalStr2Setter(JSGlobalObject& lex
     auto nativeValue = convert<IDLDOMString>(lexicalGlobalObject, value);
     RETURN_IF_EXCEPTION(throwScope, false);
     invokeFunctorPropagatingExceptionIfNecessary(lexicalGlobalObject, throwScope, [&] {
-        return WebCore::TestSupplemental::setSupplementalStr2(impl, WTFMove(nativeValue));
+        return CyberCore::TestSupplemental::setSupplementalStr2(impl, WTFMove(nativeValue));
     });
     return true;
 }
@@ -805,7 +805,7 @@ static inline JSValue jsTestInterface_supplementalNodeGetter(JSGlobalObject& lex
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     auto& impl = thisObject.wrapped();
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLInterface<Node>>(lexicalGlobalObject, *thisObject.globalObject(), throwScope, WebCore::TestSupplemental::supplementalNode(impl))));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLInterface<Node>>(lexicalGlobalObject, *thisObject.globalObject(), throwScope, CyberCore::TestSupplemental::supplementalNode(impl))));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestInterface_supplementalNode, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -825,7 +825,7 @@ static inline bool setJSTestInterface_supplementalNodeSetter(JSGlobalObject& lex
     auto nativeValue = convert<IDLInterface<Node>>(lexicalGlobalObject, value, [](JSC::JSGlobalObject& lexicalGlobalObject, JSC::ThrowScope& scope) { throwAttributeTypeError(lexicalGlobalObject, scope, "TestInterface", "supplementalNode", "Node"); });
     RETURN_IF_EXCEPTION(throwScope, false);
     invokeFunctorPropagatingExceptionIfNecessary(lexicalGlobalObject, throwScope, [&] {
-        return WebCore::TestSupplemental::setSupplementalNode(impl, *nativeValue);
+        return CyberCore::TestSupplemental::setSupplementalNode(impl, *nativeValue);
     });
     return true;
 }
@@ -843,7 +843,7 @@ static inline JSValue jsTestInterface_reflectAttributeGetter(JSGlobalObject& lex
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     auto& impl = thisObject.wrapped();
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, throwScope, impl.attributeWithoutSynchronization(WebCore::HTMLNames::reflectattributeAttr))));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, throwScope, impl.attributeWithoutSynchronization(CyberCore::HTMLNames::reflectattributeAttr))));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestInterface_reflectAttribute, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -863,7 +863,7 @@ static inline bool setJSTestInterface_reflectAttributeSetter(JSGlobalObject& lex
     auto nativeValue = convert<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, value);
     RETURN_IF_EXCEPTION(throwScope, false);
     invokeFunctorPropagatingExceptionIfNecessary(lexicalGlobalObject, throwScope, [&] {
-        return impl.setAttributeWithoutSynchronization(WebCore::HTMLNames::reflectattributeAttr, WTFMove(nativeValue));
+        return impl.setAttributeWithoutSynchronization(CyberCore::HTMLNames::reflectattributeAttr, WTFMove(nativeValue));
     });
     return true;
 }
@@ -1020,7 +1020,7 @@ static inline JSC::EncodedJSValue jsTestInterfacePrototypeFunction_supplementalM
     UNUSED_PARAM(throwScope);
     UNUSED_PARAM(callFrame);
     auto& impl = castedThis->wrapped();
-    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLUndefined>(*lexicalGlobalObject, throwScope, [&]() -> decltype(auto) { return WebCore::TestSupplemental::supplementalMethod1(impl); })));
+    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLUndefined>(*lexicalGlobalObject, throwScope, [&]() -> decltype(auto) { return CyberCore::TestSupplemental::supplementalMethod1(impl); })));
 }
 
 JSC_DEFINE_HOST_FUNCTION(jsTestInterfacePrototypeFunction_supplementalMethod1, (JSGlobalObject* lexicalGlobalObject, CallFrame* callFrame))
@@ -1049,7 +1049,7 @@ static inline JSC::EncodedJSValue jsTestInterfacePrototypeFunction_supplementalM
     EnsureStillAliveScope argument1 = callFrame->uncheckedArgument(1);
     auto objArg = convert<IDLInterface<TestObj>>(*lexicalGlobalObject, argument1.value(), [](JSC::JSGlobalObject& lexicalGlobalObject, JSC::ThrowScope& scope) { throwArgumentTypeError(lexicalGlobalObject, scope, 1, "objArg", "TestInterface", "supplementalMethod2", "TestObj"); });
     RETURN_IF_EXCEPTION(throwScope, encodedJSValue());
-    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLInterface<TestObj>>(*lexicalGlobalObject, *castedThis->globalObject(), throwScope, WebCore::TestSupplemental::supplementalMethod2(impl, *context, WTFMove(strArg), *objArg))));
+    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLInterface<TestObj>>(*lexicalGlobalObject, *castedThis->globalObject(), throwScope, CyberCore::TestSupplemental::supplementalMethod2(impl, *context, WTFMove(strArg), *objArg))));
 }
 
 JSC_DEFINE_HOST_FUNCTION(jsTestInterfacePrototypeFunction_supplementalMethod2, (JSGlobalObject* lexicalGlobalObject, CallFrame* callFrame))
@@ -1083,7 +1083,7 @@ static inline JSC::EncodedJSValue jsTestInterfaceConstructorFunction_supplementa
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     UNUSED_PARAM(throwScope);
     UNUSED_PARAM(callFrame);
-    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLUndefined>(*lexicalGlobalObject, throwScope, [&]() -> decltype(auto) { return WebCore::TestSupplemental::supplementalMethod4(); })));
+    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLUndefined>(*lexicalGlobalObject, throwScope, [&]() -> decltype(auto) { return CyberCore::TestSupplemental::supplementalMethod4(); })));
 }
 
 JSC_DEFINE_HOST_FUNCTION(jsTestInterfaceConstructorFunction_supplementalMethod4, (JSGlobalObject* lexicalGlobalObject, CallFrame* callFrame))
@@ -1109,7 +1109,7 @@ public:
     {
         if constexpr (mode == JSC::SubspaceAccess::Concurrently)
             return nullptr;
-        return WebCore::subspaceForImpl<TestInterfaceIterator, UseCustomHeapCellType::No>(vm,
+        return CyberCore::subspaceForImpl<TestInterfaceIterator, UseCustomHeapCellType::No>(vm,
             [] (auto& spaces) { return spaces.m_clientSubspaceForTestInterfaceIterator.get(); },
             [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestInterfaceIterator = std::forward<decltype(space)>(space); },
             [] (auto& spaces) { return spaces.m_subspaceForTestInterfaceIterator.get(); },
@@ -1187,7 +1187,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestInterfacePrototypeFunction_forEach, (JSC::JSGloba
 
 JSC::GCClient::IsoSubspace* JSTestInterface::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestInterface, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestInterface, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestInterface.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestInterface = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestInterface.get(); },
@@ -1228,9 +1228,9 @@ void JSTestInterfaceOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* cont
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestInterface@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestInterface@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore13TestInterfaceE[]; }
+extern "C" { extern void* _ZTVN7CyberCore13TestInterfaceE[]; }
 #endif
 #endif
 
@@ -1241,9 +1241,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestInterface@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestInterface@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore13TestInterfaceE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore13TestInterfaceE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

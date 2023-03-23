@@ -31,7 +31,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include "JSGPUAdapter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GPU::GPU(Ref<PAL::WebGPU::GPU>&& backing)
     : m_backing(WTFMove(backing))
@@ -79,4 +79,4 @@ Ref<GPUCompositorIntegration> GPU::createCompositorIntegration()
     return GPUCompositorIntegration::create(m_backing->createCompositorIntegration());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

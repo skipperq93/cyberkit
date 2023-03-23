@@ -31,7 +31,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IdTargetObserver;
 
@@ -70,4 +70,4 @@ inline void IdTargetObserverRegistry::notifyObservers(const AtomStringImpl& id)
     IdTargetObserverRegistry::notifyObserversInternal(id);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

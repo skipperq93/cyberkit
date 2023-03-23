@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechSynthesisVoice : public RefCounted<SpeechSynthesisVoice> {
 public:
@@ -52,6 +52,6 @@ private:
     Ref<PlatformSpeechSynthesisVoice> m_platformVoice;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

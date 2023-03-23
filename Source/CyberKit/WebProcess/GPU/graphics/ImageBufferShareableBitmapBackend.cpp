@@ -36,7 +36,7 @@
 #include <CyberCore/GraphicsContextCG.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferShareableBitmapBackend);
@@ -163,4 +163,4 @@ void ImageBufferShareableBitmapBackend::putPixelBuffer(const PixelBuffer& pixelB
     ImageBufferBackend::putPixelBuffer(pixelBuffer, srcRect, destPoint, destFormat, m_bitmap->data());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -43,7 +43,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebKit {
+namespace CyberKit {
     
 enum UserObservablePageCounterType { };
 typedef RefCounter<UserObservablePageCounterType> UserObservablePageCounter;
@@ -196,6 +196,6 @@ inline auto ProcessThrottler::backgroundActivity(ASCIILiteral name) -> UniqueRef
 
 WTF::TextStream& operator<<(WTF::TextStream&, const ProcessThrottler&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ProcessThrottler_h

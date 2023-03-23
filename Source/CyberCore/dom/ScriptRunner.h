@@ -31,7 +31,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class ScriptElement;

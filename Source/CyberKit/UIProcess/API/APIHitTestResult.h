@@ -47,7 +47,7 @@ class WebFrame;
 
 class HitTestResult : public API::ObjectImpl<API::Object::Type::HitTestResult> {
 public:
-    static Ref<HitTestResult> create(const WebKit::WebHitTestResultData&);
+    static Ref<HitTestResult> create(const CyberKit::WebHitTestResultData&);
 
     WTF::String absoluteImageURL() const { return m_data.absoluteImageURL; }
     WTF::String absolutePDFURL() const { return m_data.absolutePDFURL; }
@@ -62,7 +62,7 @@ public:
 
     CyberCore::IntRect elementBoundingBox() const { return m_data.elementBoundingBox; }
 
-    bool isScrollbar() const { return m_data.isScrollbar != WebKit::WebHitTestResultData::IsScrollbar::No; }
+    bool isScrollbar() const { return m_data.isScrollbar != CyberKit::WebHitTestResultData::IsScrollbar::No; }
 
     bool isSelected() const { return m_data.isSelected; }
 
@@ -73,12 +73,12 @@ public:
     bool isDownloadableMedia() const { return m_data.isDownloadableMedia; }
 
 private:
-    explicit HitTestResult(const WebKit::WebHitTestResultData& hitTestResultData)
+    explicit HitTestResult(const CyberKit::WebHitTestResultData& hitTestResultData)
         : m_data(hitTestResultData)
     {
     }
 
-    WebKit::WebHitTestResultData m_data;
+    CyberKit::WebHitTestResultData m_data;
 };
 
 } // namespace API

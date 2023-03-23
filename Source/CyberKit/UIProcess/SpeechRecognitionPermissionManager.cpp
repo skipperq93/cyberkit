@@ -30,7 +30,7 @@
 #include "APIUIClient.h"
 #include "MediaPermissionUtilities.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 static SpeechRecognitionPermissionManager::CheckResult computeMicrophoneAccess()
 {
@@ -249,5 +249,5 @@ void SpeechRecognitionPermissionManager::decideByDefaultAction(const CyberCore::
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

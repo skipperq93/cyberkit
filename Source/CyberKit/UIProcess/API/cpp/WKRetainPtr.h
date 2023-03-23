@@ -29,7 +29,7 @@
 #include <algorithm>
 #include <wtf/HashTraits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<typename T> class WKRetainPtr {
 public:
@@ -251,11 +251,11 @@ template<typename T> inline WKRetainPtr<T> retainWK(T ptr)
     return ptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-using WebKit::WKRetainPtr;
-using WebKit::adoptWK;
-using WebKit::retainWK;
+using CyberKit::WKRetainPtr;
+using CyberKit::adoptWK;
+using CyberKit::retainWK;
 
 namespace WTF {
 

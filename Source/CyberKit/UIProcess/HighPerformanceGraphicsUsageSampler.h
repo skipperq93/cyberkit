@@ -27,7 +27,7 @@
 
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessPool;
 
@@ -43,4 +43,4 @@ private:
     RunLoop::Timer m_timer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

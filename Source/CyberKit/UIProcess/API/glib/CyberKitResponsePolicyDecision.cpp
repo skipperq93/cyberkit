@@ -18,40 +18,40 @@
  */
 
 #include "config.h"
-#include "WebKitResponsePolicyDecision.h"
+#include "CyberKitResponsePolicyDecision.h"
 
-#include "WebKitPolicyDecisionPrivate.h"
-#include "WebKitResponsePolicyDecisionPrivate.h"
-#include "WebKitURIRequestPrivate.h"
-#include "WebKitURIResponsePrivate.h"
+#include "CyberKitPolicyDecisionPrivate.h"
+#include "CyberKitResponsePolicyDecisionPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
+#include "CyberKitURIResponsePrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitResponsePolicyDecision:
- * @See_also: #WebKitPolicyDecision, #WebKitWebView
+ * CyberKitResponsePolicyDecision:
+ * @See_also: #CyberKitPolicyDecision, #CyberKitWebView
  *
  * A policy decision for resource responses.
  *
- * WebKitResponsePolicyDecision represents a policy decision for a
+ * CyberKitResponsePolicyDecision represents a policy decision for a
  * resource response, whether from the network or the local system.
  * A very common use case for these types of decision is deciding
  * whether or not to download a particular resource or to load it
  * normally.
  */
 
-struct _WebKitResponsePolicyDecisionPrivate {
+struct _CyberKitResponsePolicyDecisionPrivate {
     RefPtr<API::NavigationResponse> navigationResponse;
-    GRefPtr<WebKitURIRequest> request;
-    GRefPtr<WebKitURIResponse> response;
+    GRefPtr<CyberKitURIRequest> request;
+    GRefPtr<CyberKitURIResponse> response;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitResponsePolicyDecision, webkit_response_policy_decision, WEBKIT_TYPE_POLICY_DECISION, WebKitPolicyDecision)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitResponsePolicyDecision, webkit_response_policy_decision, WEBKIT_TYPE_POLICY_DECISION, CyberKitPolicyDecision)
 
 enum {
     PROP_0,
@@ -61,7 +61,7 @@ enum {
 
 static void webkitResponsePolicyDecisionGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitResponsePolicyDecision* decision = WEBKIT_RESPONSE_POLICY_DECISION(object);
+    CyberKitResponsePolicyDecision* decision = WEBKIT_RESPONSE_POLICY_DECISION(object);
     switch (propId) {
     case PROP_REQUEST:
         g_value_set_object(value, webkit_response_policy_decision_get_request(decision));
@@ -75,15 +75,15 @@ static void webkitResponsePolicyDecisionGetProperty(GObject* object, guint propI
     }
 }
 
-static void webkit_response_policy_decision_class_init(WebKitResponsePolicyDecisionClass* decisionClass)
+static void webkit_response_policy_decision_class_init(CyberKitResponsePolicyDecisionClass* decisionClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(decisionClass);
     objectClass->get_property = webkitResponsePolicyDecisionGetProperty;
 
     /**
-     * WebKitResponsePolicyDecision:request:
+     * CyberKitResponsePolicyDecision:request:
      *
-     * This property contains the #WebKitURIRequest associated with this
+     * This property contains the #CyberKitURIRequest associated with this
      * policy decision.
      */
     g_object_class_install_property(objectClass,
@@ -94,9 +94,9 @@ static void webkit_response_policy_decision_class_init(WebKitResponsePolicyDecis
             WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitResponsePolicyDecision:response:
+     * CyberKitResponsePolicyDecision:response:
      *
-     * This property contains the #WebKitURIResponse associated with this
+     * This property contains the #CyberKitURIResponse associated with this
      * policy decision.
      */
     g_object_class_install_property(objectClass,
@@ -110,19 +110,19 @@ static void webkit_response_policy_decision_class_init(WebKitResponsePolicyDecis
 
 /**
  * webkit_response_policy_decision_get_request:
- * @decision: a #WebKitResponsePolicyDecision
+ * @decision: a #CyberKitResponsePolicyDecision
  *
- * Return the #WebKitURIRequest associated with the response decision.
+ * Return the #CyberKitURIRequest associated with the response decision.
  *
  * Modifications to the returned object are <emphasis>not</emphasis> taken
  * into account when the request is sent over the network, and is intended
  * only to aid in evaluating whether a response decision should be taken or
  * not. To modify requests before they are sent over the network the
- * #WebKitPage::send-request signal can be used instead.
+ * #CyberKitPage::send-request signal can be used instead.
  *
  * Returns: (transfer none): The URI request that is associated with this policy decision.
  */
-WebKitURIRequest* webkit_response_policy_decision_get_request(WebKitResponsePolicyDecision* decision)
+CyberKitURIRequest* webkit_response_policy_decision_get_request(CyberKitResponsePolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_RESPONSE_POLICY_DECISION(decision), nullptr);
     if (!decision->priv->request)
@@ -132,13 +132,13 @@ WebKitURIRequest* webkit_response_policy_decision_get_request(WebKitResponsePoli
 
 /**
  * webkit_response_policy_decision_get_response:
- * @decision: a #WebKitResponsePolicyDecision
+ * @decision: a #CyberKitResponsePolicyDecision
  *
- * Gets the value of the #WebKitResponsePolicyDecision:response property.
+ * Gets the value of the #CyberKitResponsePolicyDecision:response property.
  *
  * Returns: (transfer none): The URI response that is associated with this policy decision.
  */
-WebKitURIResponse* webkit_response_policy_decision_get_response(WebKitResponsePolicyDecision* decision)
+CyberKitURIResponse* webkit_response_policy_decision_get_response(CyberKitResponsePolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_RESPONSE_POLICY_DECISION(decision), nullptr);
     if (!decision->priv->response)
@@ -148,18 +148,18 @@ WebKitURIResponse* webkit_response_policy_decision_get_response(WebKitResponsePo
 
 /**
  * webkit_response_policy_decision_is_mime_type_supported:
- * @decision: a #WebKitResponsePolicyDecision
+ * @decision: a #CyberKitResponsePolicyDecision
  *
- * Gets whether the MIME type of the response can be displayed in the #WebKitWebView.
+ * Gets whether the MIME type of the response can be displayed in the #CyberKitWebView.
  *
- * Gets whether the MIME type of the response can be displayed in the #WebKitWebView
+ * Gets whether the MIME type of the response can be displayed in the #CyberKitWebView
  * that triggered this policy decision request. See also webkit_web_view_can_show_mime_type().
  *
  * Returns: %TRUE if the MIME type of the response is supported or %FALSE otherwise
  *
  * Since: 2.4
  */
-gboolean webkit_response_policy_decision_is_mime_type_supported(WebKitResponsePolicyDecision* decision)
+gboolean webkit_response_policy_decision_is_mime_type_supported(CyberKitResponsePolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_RESPONSE_POLICY_DECISION(decision), FALSE);
     return decision->priv->navigationResponse->canShowMIMEType();
@@ -167,7 +167,7 @@ gboolean webkit_response_policy_decision_is_mime_type_supported(WebKitResponsePo
 
 /**
  * webkit_response_policy_decision_is_main_frame_main_resource:
- * @decision: a #WebKitResponsePolicyDecision
+ * @decision: a #CyberKitResponsePolicyDecision
  *
  * Gets whether the request is the main frame main resource
  *
@@ -175,7 +175,7 @@ gboolean webkit_response_policy_decision_is_mime_type_supported(WebKitResponsePo
  *
  * Since: 2.40
  */
-gboolean webkit_response_policy_decision_is_main_frame_main_resource(WebKitResponsePolicyDecision* decision)
+gboolean webkit_response_policy_decision_is_main_frame_main_resource(CyberKitResponsePolicyDecision* decision)
 {
     g_return_val_if_fail(WEBKIT_IS_RESPONSE_POLICY_DECISION(decision), FALSE);
 
@@ -185,11 +185,11 @@ gboolean webkit_response_policy_decision_is_main_frame_main_resource(WebKitRespo
     return decision->priv->navigationResponse->request().requester() == ResourceRequestRequester::Main;
 }
 
-WebKitPolicyDecision* webkitResponsePolicyDecisionCreate(Ref<API::NavigationResponse>&& response, Ref<WebKit::WebFramePolicyListenerProxy>&& listener)
+CyberKitPolicyDecision* webkitResponsePolicyDecisionCreate(Ref<API::NavigationResponse>&& response, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener)
 {
-    WebKitResponsePolicyDecision* responseDecision = WEBKIT_RESPONSE_POLICY_DECISION(g_object_new(WEBKIT_TYPE_RESPONSE_POLICY_DECISION, nullptr));
+    CyberKitResponsePolicyDecision* responseDecision = WEBKIT_RESPONSE_POLICY_DECISION(g_object_new(WEBKIT_TYPE_RESPONSE_POLICY_DECISION, nullptr));
     responseDecision->priv->navigationResponse = WTFMove(response);
-    WebKitPolicyDecision* decision = WEBKIT_POLICY_DECISION(responseDecision);
+    CyberKitPolicyDecision* decision = WEBKIT_POLICY_DECISION(responseDecision);
     webkitPolicyDecisionSetListener(decision, WTFMove(listener));
     return decision;
 }

@@ -39,7 +39,7 @@
 #include <cmath>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSUnitValue);
 
@@ -274,4 +274,4 @@ RefPtr<CSSCalcExpressionNode> CSSUnitValue::toCalcExpressionNode() const
     return CSSCalcPrimitiveValueNode::create(CSSPrimitiveValue::create(m_value, m_unit));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

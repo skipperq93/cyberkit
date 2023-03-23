@@ -28,7 +28,7 @@
 
 #include "JSCDATASection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -44,4 +44,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, text);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

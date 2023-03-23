@@ -29,7 +29,7 @@
 #include "MediaCapabilities.h"
 #include "Navigator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorMediaCapabilities::NavigatorMediaCapabilities()
     : m_mediaCapabilities(MediaCapabilities::create())
@@ -64,4 +64,4 @@ MediaCapabilities& NavigatorMediaCapabilities::mediaCapabilities() const
     return m_mediaCapabilities;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

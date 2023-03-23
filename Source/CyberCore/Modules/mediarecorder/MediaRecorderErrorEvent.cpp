@@ -31,7 +31,7 @@
 #include "DOMException.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaRecorderErrorEvent);
 
@@ -63,6 +63,6 @@ EventInterface MediaRecorderErrorEvent::eventInterface() const
     return MediaRecorderErrorEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

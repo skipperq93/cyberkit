@@ -33,7 +33,7 @@
 
 #define AUTHORIZATIONSESSION_RELEASE_LOG(fmt, ...) RELEASE_LOG(AppSSO, "%p - [InitiatingAction=%s][State=%s] NavigationSOAuthorizationSession::" fmt, this, initiatingActionString(), stateString(), ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 NavigationSOAuthorizationSession::NavigationSOAuthorizationSession(RetainPtr<WKSOAuthorizationDelegate> delegate, Ref<API::NavigationAction>&& navigationAction, WebPageProxy& page, InitiatingAction action, Callback&& completionHandler)
     : SOAuthorizationSession(delegate, WTFMove(navigationAction), page, action)
@@ -89,7 +89,7 @@ bool NavigationSOAuthorizationSession::pageActiveURLDidChangeDuringWaiting() con
     return !page || page->pageLoadState().activeURL() != m_waitingPageActiveURL;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef AUTHORIZATIONSESSION_RELEASE_LOG
 

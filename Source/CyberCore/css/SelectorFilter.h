@@ -33,7 +33,7 @@
 #include <wtf/BloomFilter.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSelector;
 
@@ -93,4 +93,4 @@ inline bool SelectorFilter::fastRejectSelector(const Hashes& hashes) const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

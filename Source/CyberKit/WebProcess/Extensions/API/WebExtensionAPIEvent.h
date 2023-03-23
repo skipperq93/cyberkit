@@ -35,7 +35,7 @@
 
 OBJC_CLASS JSValue;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionAPIEvent : public WebExtensionAPIObject, public JSWebExtensionWrappable {
     WEB_EXTENSION_DECLARE_JS_WRAPPER_CLASS(WebExtensionAPIEvent, event);
@@ -65,6 +65,6 @@ private:
     ListenerVector m_listeners;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

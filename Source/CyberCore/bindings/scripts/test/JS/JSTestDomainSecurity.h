@@ -24,7 +24,7 @@
 #include "TestDomainSecurity.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDomainSecurity : public JSDOMWrapper<TestDomainSecurity> {
 public:
@@ -92,4 +92,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDomainSecurity> {
     using ToWrappedReturnType = TestDomainSecurity*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

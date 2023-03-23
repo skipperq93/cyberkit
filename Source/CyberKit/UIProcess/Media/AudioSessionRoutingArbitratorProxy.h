@@ -36,7 +36,7 @@
 #import <CyberCore/SharedRoutingArbitrator.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 

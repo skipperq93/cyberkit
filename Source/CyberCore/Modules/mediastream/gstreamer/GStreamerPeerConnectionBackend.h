@@ -28,7 +28,7 @@
 #include <gst/gst.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerMediaEndpoint;
 class GStreamerRtpReceiverBackend;
@@ -125,6 +125,6 @@ private:
     bool m_isReconfiguring { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

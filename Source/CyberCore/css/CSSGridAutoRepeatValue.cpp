@@ -33,7 +33,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSGridAutoRepeatValue::CSSGridAutoRepeatValue(bool isAutoFit, CSSValueListBuilder builder)
     : CSSValueContainingVector(GridAutoRepeatClass, SpaceSeparator, WTFMove(builder))
@@ -66,4 +66,4 @@ bool CSSGridAutoRepeatValue::equals(const CSSGridAutoRepeatValue& other) const
     return m_isAutoFit == other.m_isAutoFit && itemsEqual(other);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

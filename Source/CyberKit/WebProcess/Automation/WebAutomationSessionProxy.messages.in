@@ -28,7 +28,7 @@ messages -> WebAutomationSessionProxy NotRefCounted {
     ResolveChildFrameWithName(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String name) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
     ResolveParentFrame(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
 
-    ComputeElementLayout(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, enum:uint8_t WebKit::CoordinateSystem coordinateSystem) -> (std::optional<String> errorType, CyberCore::FloatRect rect, std::optional<CyberCore::IntPoint> inViewCenterPoint, bool isObscured)
+    ComputeElementLayout(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, enum:uint8_t CyberKit::CoordinateSystem coordinateSystem) -> (std::optional<String> errorType, CyberCore::FloatRect rect, std::optional<CyberCore::IntPoint> inViewCenterPoint, bool isObscured)
 
     GetComputedRole(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)
     GetComputedLabel(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)

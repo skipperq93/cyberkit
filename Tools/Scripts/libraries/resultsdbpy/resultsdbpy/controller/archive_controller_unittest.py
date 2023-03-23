@@ -35,7 +35,7 @@ from resultsdbpy.model.configuration_context_unittest import ConfigurationContex
 from resultsdbpy.model.mock_cassandra_context import MockCassandraContext
 from resultsdbpy.model.mock_model_factory import MockModelFactory
 from resultsdbpy.model.model import Model
-from resultsdbpy.model.repository import StashRepository, WebKitRepository
+from resultsdbpy.model.repository import StashRepository, CyberKitRepository
 from resultsdbpy.model.wait_for_docker_test_case import WaitForDockerTestCase
 
 
@@ -49,7 +49,7 @@ class ArchiveControllerUnittest(FlaskTestCase, WaitForDockerTestCase):
 
         with MockModelFactory.safari(), MockModelFactory.webkit():
             safari = StashRepository('https://bitbucket.example.com/projects/SAFARI/repos/safari')
-            webkit = WebKitRepository()
+            webkit = CyberKitRepository()
 
         cassandra.drop_keyspace(keyspace=cls.KEYSPACE)
         cassandra_instance = cassandra(keyspace=cls.KEYSPACE, create_keyspace=True)

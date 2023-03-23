@@ -192,7 +192,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 
 - (RetainPtr<UIImage>)displayImage
 {
-    return WebKit::iconForImageFile(self.fileURL);
+    return CyberKit::iconForImageFile(self.fileURL);
 }
 
 @end
@@ -210,7 +210,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 
 - (RetainPtr<UIImage>)displayImage
 {
-    return WebKit::iconForVideoFile(self.fileURL);
+    return CyberKit::iconForVideoFile(self.fileURL);
 }
 
 @end
@@ -398,7 +398,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 
 @implementation WKFileUploadPanel {
     WeakObjCPtr<WKContentView> _view;
-    RefPtr<WebKit::WebOpenPanelResultListenerProxy> _listener;
+    RefPtr<CyberKit::WebOpenPanelResultListenerProxy> _listener;
     RetainPtr<NSSet<NSString *>> _acceptedUTIs;
     OptionSet<WKFileUploadPanelImagePickerType> _allowedImagePickerTypes;
     CGPoint _interactionPoint;
@@ -502,7 +502,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
         filenames.uncheckedAppend(String::fromUTF8(fileURL.fileSystemRepresentation));
 
     NSData *png = UIImagePNGRepresentation(iconImage);
-    RefPtr<API::Data> iconImageDataRef = adoptRef(WebKit::toImpl(WKDataCreate(reinterpret_cast<const unsigned char*>([png bytes]), [png length])));
+    RefPtr<API::Data> iconImageDataRef = adoptRef(CyberKit::toImpl(WKDataCreate(reinterpret_cast<const unsigned char*>([png bytes]), [png length])));
 
     _listener->chooseFiles(filenames, displayString, iconImageDataRef.get());
     [self _dispatchDidDismiss];
@@ -510,7 +510,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 
 #pragma mark - Present / Dismiss API
 
-- (void)presentWithParameters:(API::OpenPanelParameters*)parameters resultListener:(WebKit::WebOpenPanelResultListenerProxy*)listener
+- (void)presentWithParameters:(API::OpenPanelParameters*)parameters resultListener:(CyberKit::WebOpenPanelResultListenerProxy*)listener
 {
     ASSERT(!_listener);
 
@@ -954,7 +954,7 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
 
         [retainedSelf->_view _removeTemporaryDirectoriesWhenDeallocated:std::exchange(retainedSelf->_temporaryUploadedFileURLs, { })];
         RunLoop::main().dispatch([retainedSelf = WTFMove(retainedSelf), maybeMovedURLs = WTFMove(maybeMovedURLs)] {
-            [retainedSelf _chooseFiles:maybeMovedURLs.get() displayString:displayStringForDocumentsAtURLs(maybeMovedURLs.get()) iconImage:WebKit::iconForFiles({ maybeMovedURLs.get()[0].absoluteString }).get()];
+            [retainedSelf _chooseFiles:maybeMovedURLs.get() displayString:displayStringForDocumentsAtURLs(maybeMovedURLs.get()) iconImage:CyberKit::iconForFiles({ maybeMovedURLs.get()[0].absoluteString }).get()];
         });
     }).get());
 }

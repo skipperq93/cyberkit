@@ -30,7 +30,7 @@
 #include "CSSValue.h"
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 class BuilderState;
@@ -60,6 +60,6 @@ private:
     Ref<CSSValue> m_filterValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSFilterImageValue, isFilterImageValue())

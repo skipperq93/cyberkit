@@ -28,9 +28,9 @@
 
 #if ENABLE(APPLE_PAY)
 
-#include "ApplePayPaymentSetupFeaturesWebKit.h"
+#include "ApplePayPaymentSetupFeaturesCyberKit.h"
 #include "DataReference.h"
-#include "PaymentSetupConfigurationWebKit.h"
+#include "PaymentSetupConfigurationCyberKit.h"
 #include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPaymentCoordinatorMessages.h"
@@ -45,7 +45,7 @@
 #include <CyberCore/PaymentCoordinator.h>
 #include <wtf/URL.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPaymentCoordinator::WebPaymentCoordinator(WebPage& webPage)
     : m_webPage(webPage)

@@ -32,7 +32,7 @@
 #include "ParsingUtilities.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Helper class for "scanning" an input string and performing parsing of
 // "micro-syntax"-like constructs.
@@ -166,18 +166,18 @@ template<bool characterPredicate(UChar)>
 inline void VTTScanner::skipWhile()
 {
     if (m_is8Bit)
-        WebCore::skipWhile<LCharPredicateAdapter<characterPredicate> >(m_data.characters8, m_end.characters8);
+        CyberCore::skipWhile<LCharPredicateAdapter<characterPredicate> >(m_data.characters8, m_end.characters8);
     else
-        WebCore::skipWhile<characterPredicate>(m_data.characters16, m_end.characters16);
+        CyberCore::skipWhile<characterPredicate>(m_data.characters16, m_end.characters16);
 }
 
 template<bool characterPredicate(UChar)>
 inline void VTTScanner::skipUntil()
 {
     if (m_is8Bit)
-        WebCore::skipUntil<LCharPredicateAdapter<characterPredicate> >(m_data.characters8, m_end.characters8);
+        CyberCore::skipUntil<LCharPredicateAdapter<characterPredicate> >(m_data.characters8, m_end.characters8);
     else
-        WebCore::skipUntil<characterPredicate>(m_data.characters16, m_end.characters16);
+        CyberCore::skipUntil<characterPredicate>(m_data.characters16, m_end.characters16);
 }
 
 template<bool characterPredicate(UChar)>
@@ -185,11 +185,11 @@ inline VTTScanner::Run VTTScanner::collectWhile()
 {
     if (m_is8Bit) {
         const LChar* current = m_data.characters8;
-        WebCore::skipWhile<LCharPredicateAdapter<characterPredicate>>(current, m_end.characters8);
+        CyberCore::skipWhile<LCharPredicateAdapter<characterPredicate>>(current, m_end.characters8);
         return Run(position(), current, m_is8Bit);
     }
     const UChar* current = m_data.characters16;
-    WebCore::skipWhile<characterPredicate>(current, m_end.characters16);
+    CyberCore::skipWhile<characterPredicate>(current, m_end.characters16);
     return Run(position(), reinterpret_cast<Position>(current), m_is8Bit);
 }
 
@@ -198,11 +198,11 @@ inline VTTScanner::Run VTTScanner::collectUntil()
 {
     if (m_is8Bit) {
         const LChar* current = m_data.characters8;
-        WebCore::skipUntil<LCharPredicateAdapter<characterPredicate> >(current, m_end.characters8);
+        CyberCore::skipUntil<LCharPredicateAdapter<characterPredicate> >(current, m_end.characters8);
         return Run(position(), current, m_is8Bit);
     }
     const UChar* current = m_data.characters16;
-    WebCore::skipUntil<characterPredicate>(current, m_end.characters16);
+    CyberCore::skipUntil<characterPredicate>(current, m_end.characters16);
     return Run(position(), reinterpret_cast<Position>(current), m_is8Bit);
 }
 
@@ -227,4 +227,4 @@ inline void VTTScanner::advance(unsigned amount)
         m_data.characters16 += amount;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

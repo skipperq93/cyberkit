@@ -37,7 +37,7 @@
 #include "VectorMath.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void replaceNaNValues(float* values, unsigned numberOfValues, float defaultValue)
 {
@@ -391,6 +391,6 @@ WTFLogChannel& AudioParam::logChannel() const
 #endif
     
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -29,7 +29,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCTransformEvent);
 
@@ -54,7 +54,7 @@ EventInterface RTCTransformEvent::eventInterface() const
     return RTCTransformEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)
 

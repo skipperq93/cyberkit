@@ -29,7 +29,7 @@
 #include <optional>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CSSUnitType : uint8_t;
 

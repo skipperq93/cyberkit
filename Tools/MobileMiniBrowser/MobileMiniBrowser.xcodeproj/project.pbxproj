@@ -319,7 +319,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = WebKit;
+				ORGANIZATIONNAME = CyberKit;
 				TargetAttributes = {
 					CD1DAF911D709E3600017CF0 = {
 						CreatedOnToolsVersion = 8.0;

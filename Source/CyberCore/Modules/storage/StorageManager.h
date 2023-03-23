@@ -30,7 +30,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemDirectoryHandle;
 class NavigatorBase;
@@ -52,4 +52,4 @@ private:
     WeakPtr<NavigatorBase> m_navigator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

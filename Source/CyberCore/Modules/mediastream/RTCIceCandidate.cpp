@@ -38,7 +38,7 @@
 #include "RTCIceCandidateInit.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCIceCandidate);
 
@@ -76,6 +76,6 @@ RTCIceCandidateInit RTCIceCandidate::toJSON() const
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

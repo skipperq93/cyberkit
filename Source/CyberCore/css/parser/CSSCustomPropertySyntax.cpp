@@ -31,7 +31,7 @@
 #include "ParsingUtilities.h"
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename CharacterType>
 auto CSSCustomPropertySyntax::parseComponent(StringParsingBuffer<CharacterType> buffer) -> std::optional<Component>

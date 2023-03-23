@@ -31,7 +31,7 @@
 #include "StylePropertiesInlines.h"
 #include "StyledElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<InlineStylePropertyMap> InlineStylePropertyMap::create(StyledElement& element)
 {
@@ -142,4 +142,4 @@ void InlineStylePropertyMap::clearElement()
     m_element = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

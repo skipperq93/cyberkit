@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLInputStream;
 class PendingScript;
@@ -45,4 +45,4 @@ public:
     virtual void appendCurrentInputStreamToPreloadScannerAndScan() = 0;    
 };
 
-} // namespace WebCore
+} // namespace CyberCore

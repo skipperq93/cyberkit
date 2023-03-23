@@ -28,7 +28,7 @@
 #include "AudioNode.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 struct AudioIOPosition;
@@ -72,4 +72,4 @@ private:
     float m_sampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,15 +31,15 @@
 
 WKTypeID WKNavigationResponseGetTypeID()
 {
-    return WebKit::toAPI(API::NavigationResponse::APIType);
+    return CyberKit::toAPI(API::NavigationResponse::APIType);
 }
 
 bool WKNavigationResponseCanShowMIMEType(WKNavigationResponseRef response)
 {
-    return WebKit::toImpl(response)->canShowMIMEType();
+    return CyberKit::toImpl(response)->canShowMIMEType();
 }
 
 WKURLResponseRef WKNavigationResponseCopyResponse(WKNavigationResponseRef response)
 {
-    return WebKit::toAPI(API::URLResponse::create(WebKit::toImpl(response)->response()).leakRef());
+    return CyberKit::toAPI(API::URLResponse::create(CyberKit::toImpl(response)->response()).leakRef());
 }

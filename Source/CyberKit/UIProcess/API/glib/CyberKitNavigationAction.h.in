@@ -19,19 +19,19 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitNavigationAction_h
-#define WebKitNavigationAction_h
+#ifndef CyberKitNavigationAction_h
+#define CyberKitNavigationAction_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_NAVIGATION_ACTION (webkit_navigation_action_get_type())
 
 /**
- * WebKitNavigationType:
+ * CyberKitNavigationType:
  * @WEBKIT_NAVIGATION_TYPE_LINK_CLICKED: The navigation was triggered by clicking a link.
  * @WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED: The navigation was triggered by submitting a form.
  * @WEBKIT_NAVIGATION_TYPE_BACK_FORWARD: The navigation was triggered by navigating forward or backward.
@@ -48,40 +48,40 @@ typedef enum {
     WEBKIT_NAVIGATION_TYPE_RELOAD,
     WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED,
     WEBKIT_NAVIGATION_TYPE_OTHER
-} WebKitNavigationType;
+} CyberKitNavigationType;
 
-typedef struct _WebKitNavigationAction WebKitNavigationAction;
+typedef struct _CyberKitNavigationAction CyberKitNavigationAction;
 
 
 WEBKIT_API GType
 webkit_navigation_action_get_type            (void);
 
-WEBKIT_API WebKitNavigationAction *
-webkit_navigation_action_copy                (WebKitNavigationAction *navigation);
+WEBKIT_API CyberKitNavigationAction *
+webkit_navigation_action_copy                (CyberKitNavigationAction *navigation);
 
 WEBKIT_API void
-webkit_navigation_action_free                (WebKitNavigationAction *navigation);
+webkit_navigation_action_free                (CyberKitNavigationAction *navigation);
 
-WEBKIT_API WebKitNavigationType
-webkit_navigation_action_get_navigation_type (WebKitNavigationAction *navigation);
-
-WEBKIT_API guint
-webkit_navigation_action_get_mouse_button    (WebKitNavigationAction *navigation);
+WEBKIT_API CyberKitNavigationType
+webkit_navigation_action_get_navigation_type (CyberKitNavigationAction *navigation);
 
 WEBKIT_API guint
-webkit_navigation_action_get_modifiers       (WebKitNavigationAction *navigation);
+webkit_navigation_action_get_mouse_button    (CyberKitNavigationAction *navigation);
 
-WEBKIT_API WebKitURIRequest *
-webkit_navigation_action_get_request         (WebKitNavigationAction *navigation);
+WEBKIT_API guint
+webkit_navigation_action_get_modifiers       (CyberKitNavigationAction *navigation);
+
+WEBKIT_API CyberKitURIRequest *
+webkit_navigation_action_get_request         (CyberKitNavigationAction *navigation);
 
 WEBKIT_API gboolean
-webkit_navigation_action_is_user_gesture     (WebKitNavigationAction *navigation);
+webkit_navigation_action_is_user_gesture     (CyberKitNavigationAction *navigation);
 
 WEBKIT_API gboolean
-webkit_navigation_action_is_redirect         (WebKitNavigationAction *navigation);
+webkit_navigation_action_is_redirect         (CyberKitNavigationAction *navigation);
 
 WEBKIT_API const char *
-webkit_navigation_action_get_frame_name      (WebKitNavigationAction *navigation);
+webkit_navigation_action_get_frame_name      (CyberKitNavigationAction *navigation);
 
 G_END_DECLS
 

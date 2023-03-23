@@ -16,7 +16,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-// This file is a copy of flatpak-syscalls-private.h, reformatted a bit to placate WebKit's style checker.
+// This file is a copy of flatpak-syscalls-private.h, reformatted a bit to placate CyberKit's style checker.
 //
 // Upstream is here:
 // https://github.com/flatpak/flatpak/blob/26b12484eb8a6219b9e7aa287b298a894b2f34ca/common/flatpak-syscalls-private.h

@@ -37,7 +37,7 @@
 #include "KeyboardEvent.h"
 #include "LocalizedStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& CheckboxInputType::formControlType() const
 {
@@ -103,4 +103,4 @@ bool CheckboxInputType::shouldAppearIndeterminate() const
     return element()->indeterminate();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

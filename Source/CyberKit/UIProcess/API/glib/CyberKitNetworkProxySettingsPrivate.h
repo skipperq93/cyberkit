@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "WebKitNetworkProxySettings.h"
+#include "CyberKitNetworkProxySettings.h"
 #include <CyberCore/SoupNetworkProxySettings.h>
 
-const CyberCore::SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySettings(WebKitNetworkProxySettings*);
+const CyberCore::SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySettings(CyberKitNetworkProxySettings*);

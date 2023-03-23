@@ -44,7 +44,7 @@ OBJC_CLASS LAContext;
 OBJC_CLASS NSError;
 OBJC_CLASS WKASCAuthorizationPresenterDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuthenticatorManager;
 
@@ -93,6 +93,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

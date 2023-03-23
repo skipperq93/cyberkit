@@ -28,7 +28,7 @@
 #include <optional>
 #include <wtf/WallTime.h>
 
-namespace WebCore::PCM {
+namespace CyberCore::PCM {
 
 enum class AttributionReportEndpoint : bool { Source, Destination };
 

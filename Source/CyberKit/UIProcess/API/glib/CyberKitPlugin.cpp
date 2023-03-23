@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitPlugin.h"
+#include "CyberKitPlugin.h"
 
 #include <wtf/glib/WTFGType.h>
 
 /**
- * WebKitPlugin:
+ * CyberKitPlugin:
  *
  * Represents a plugin, enabling fine-grained control.
  *
@@ -31,26 +31,26 @@
  * various platform plugin directories. This object can be used to get
  * more information about a plugin, and enable/disable it, allowing
  * fine-grained control of plugins. The list of available plugins can
- * be obtained from the #WebKitWebContext, with
+ * be obtained from the #CyberKitWebContext, with
  * webkit_web_context_get_plugins().
  *
  * Deprecated: 2.32
  */
 
-struct _WebKitPluginPrivate {
+struct _CyberKitPluginPrivate {
 };
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-WEBKIT_DEFINE_TYPE(WebKitPlugin, webkit_plugin, G_TYPE_OBJECT)
+WEBKIT_DEFINE_TYPE(CyberKitPlugin, webkit_plugin, G_TYPE_OBJECT)
 ALLOW_DEPRECATED_DECLARATIONS_END
 
-static void webkit_plugin_class_init(WebKitPluginClass*)
+static void webkit_plugin_class_init(CyberKitPluginClass*)
 {
 }
 
 /**
  * webkit_plugin_get_name:
- * @plugin: a #WebKitPlugin
+ * @plugin: a #CyberKitPlugin
  *
  * Obtain the plugin name.
  *
@@ -58,14 +58,14 @@ static void webkit_plugin_class_init(WebKitPluginClass*)
  *
  * Deprecated: 2.32
  */
-const char* webkit_plugin_get_name(WebKitPlugin*)
+const char* webkit_plugin_get_name(CyberKitPlugin*)
 {
     return nullptr;
 }
 
 /**
  * webkit_plugin_get_description:
- * @plugin: a #WebKitPlugin
+ * @plugin: a #CyberKitPlugin
  *
  * Obtain the plugin description.
  *
@@ -73,14 +73,14 @@ const char* webkit_plugin_get_name(WebKitPlugin*)
  *
  * Deprecated: 2.32
  */
-const char* webkit_plugin_get_description(WebKitPlugin*)
+const char* webkit_plugin_get_description(CyberKitPlugin*)
 {
     return nullptr;
 }
 
 /**
  * webkit_plugin_get_path:
- * @plugin: a #WebKitPlugin
+ * @plugin: a #CyberKitPlugin
  *
  * Obtain the absolute path where the plugin is installed.
  *
@@ -88,25 +88,25 @@ const char* webkit_plugin_get_description(WebKitPlugin*)
  *
  * Deprecated: 2.32
  */
-const char* webkit_plugin_get_path(WebKitPlugin*)
+const char* webkit_plugin_get_path(CyberKitPlugin*)
 {
     return nullptr;
 }
 
 /**
  * webkit_plugin_get_mime_info_list:
- * @plugin: a #WebKitPlugin
+ * @plugin: a #CyberKitPlugin
  *
  * Get information about MIME types handled by the plugin.
  *
  * Get information about MIME types handled by the plugin,
- * as a list of #WebKitMimeInfo.
+ * as a list of #CyberKitMimeInfo.
  *
- * Returns: (element-type WebKitMimeInfo) (transfer none): a #GList of #WebKitMimeInfo.
+ * Returns: (element-type CyberKitMimeInfo) (transfer none): a #GList of #CyberKitMimeInfo.
  *
  * Deprecated: 2.32
  */
-GList* webkit_plugin_get_mime_info_list(WebKitPlugin*)
+GList* webkit_plugin_get_mime_info_list(CyberKitPlugin*)
 {
     return nullptr;
 }

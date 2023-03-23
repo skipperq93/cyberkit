@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RequestAnimationFrameCallback : public RefCounted<RequestAnimationFrameCallback>, public ActiveDOMCallback {
 public:
@@ -54,4 +54,4 @@ public:
     static constexpr Seconds aggressiveThrottlingAnimationInterval { 10_s };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -1324,11 +1324,11 @@ msgctxt "Undo action name"
 msgid "Remove Background"
 msgstr "ფონის წაშლა"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "JSC Options"
 msgstr "JSC -ის მორგება"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "Show JSC Options"
 msgstr "JSC -ის პარამეტრების ჩვენება"
 

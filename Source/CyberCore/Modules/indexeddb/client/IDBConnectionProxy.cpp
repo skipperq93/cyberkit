@@ -41,7 +41,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBClient {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBConnectionProxy);
@@ -638,4 +638,4 @@ void IDBConnectionProxy::setContextSuspended(ScriptExecutionContext& currentCont
 }
 
 } // namesapce IDBClient
-} // namespace WebCore
+} // namespace CyberCore

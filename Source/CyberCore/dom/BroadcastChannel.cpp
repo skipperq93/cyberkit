@@ -42,7 +42,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BroadcastChannel);
 
@@ -281,4 +281,4 @@ bool BroadcastChannel::isEligibleForMessaging() const
     return !downcast<WorkerGlobalScope>(*context).isClosing();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

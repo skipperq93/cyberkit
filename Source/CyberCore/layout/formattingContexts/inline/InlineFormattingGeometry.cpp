@@ -36,7 +36,7 @@
 #include "LayoutElementBox.h"
 #include "LengthFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 InlineFormattingGeometry::InlineFormattingGeometry(const InlineFormattingContext& inlineFormattingContext)

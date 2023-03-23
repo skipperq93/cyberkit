@@ -28,7 +28,7 @@
 #include "ImageBuffer.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SerializationState : uint8_t {
     OriginClean              = 1 << 0,
@@ -67,4 +67,4 @@ private:
     OptionSet<SerializationState> m_serializationState;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

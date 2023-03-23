@@ -40,18 +40,18 @@ namespace CyberCore {
 class Color;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebColorPickerMac;
 }
 
 @protocol WKColorPickerUIMac <NSObject>
-- (void)setAndShowPicker:(WebKit::WebColorPickerMac*)picker withColor:(NSColor *)color suggestions:(Vector<CyberCore::Color>&&)suggestions;
+- (void)setAndShowPicker:(CyberKit::WebColorPickerMac*)picker withColor:(NSColor *)color suggestions:(Vector<CyberCore::Color>&&)suggestions;
 - (void)invalidate;
 - (void)setColor:(NSColor *)color;
 - (void)didChooseColor:(id)sender;
 @end
 
-namespace WebKit {
+namespace CyberKit {
     
 class WebColorPickerMac final : public WebColorPicker {
 public:        
@@ -70,6 +70,6 @@ private:
     Vector<CyberCore::Color> m_suggestions;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INPUT_TYPE_COLOR) && USE(APPKIT)

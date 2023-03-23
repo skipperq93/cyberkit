@@ -30,7 +30,7 @@
 #include "Navigator.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorClipboard::NavigatorClipboard(Navigator& navigator)
     : m_navigator(navigator)

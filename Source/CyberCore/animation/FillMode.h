@@ -27,10 +27,10 @@
 
 #include <wtf/Markable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class FillMode : uint8_t { None, Forwards, Backwards, Both, Auto };
 
 using OptionalFillMode = Markable<FillMode, EnumMarkableTraits<FillMode>>;
 
-} // namespace WebCore
+} // namespace CyberCore

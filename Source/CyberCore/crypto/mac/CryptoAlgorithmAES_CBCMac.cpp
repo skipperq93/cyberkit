@@ -32,7 +32,7 @@
 #include "CryptoKeyAES.h"
 #include <CommonCrypto/CommonCrypto.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<Vector<uint8_t>> transformAES_CBC(CCOperation operation, const Vector<uint8_t>& iv, const Vector<uint8_t>& key, const Vector<uint8_t>& data, CryptoAlgorithmAES_CBC::Padding padding)
 {
@@ -95,6 +95,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_CBC::platformDecrypt(const Crypt
     return data;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

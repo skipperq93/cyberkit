@@ -32,7 +32,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 
 // FIXME(191518)
@@ -141,7 +141,7 @@ void HidConnection::registerDataReceivedCallbackInternal()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)
 

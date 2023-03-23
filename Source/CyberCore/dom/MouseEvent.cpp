@@ -37,7 +37,7 @@
 #include <CyberScriptCore/JSGlobalObjectInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MouseEvent);
 
@@ -50,7 +50,7 @@ Ref<MouseEvent> MouseEvent::create(const AtomString& type, const MouseEventInit&
 
 Ref<MouseEvent> MouseEvent::create(const AtomString& eventType, RefPtr<WindowProxy>&& view, const PlatformMouseEvent& event, int detail, Node* relatedTarget)
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     bool isMouseEnterOrLeave = eventType == eventNames.mouseenterEvent || eventType == eventNames.mouseleaveEvent;
     auto isCancelable = !isMouseEnterOrLeave ? IsCancelable::Yes : IsCancelable::No;
     auto canBubble = !isMouseEnterOrLeave ? CanBubble::Yes : CanBubble::No;
@@ -195,7 +195,7 @@ RefPtr<Node> MouseEvent::toElement() const
 {
     // MSIE extension - "the object toward which the user is moving the mouse pointer"
     EventTarget* target;
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (type() == eventNames.mouseoutEvent || type() == eventNames.mouseleaveEvent)
         target = relatedTarget();
     else
@@ -207,7 +207,7 @@ RefPtr<Node> MouseEvent::fromElement() const
 {
     // MSIE extension - "object from which activation or the mouse pointer is exiting during the event" (huh?)
     EventTarget* target;
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (type() == eventNames.mouseoutEvent || type() == eventNames.mouseleaveEvent)
         target = this->target();
     else
@@ -215,4 +215,4 @@ RefPtr<Node> MouseEvent::fromElement() const
     return dynamicDowncast<Node>(target);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

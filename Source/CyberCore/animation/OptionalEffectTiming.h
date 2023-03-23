@@ -31,7 +31,7 @@
 #include <variant>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct OptionalEffectTiming {
     std::optional<std::variant<double, String>> duration;
@@ -44,4 +44,4 @@ struct OptionalEffectTiming {
     OptionalPlaybackDirection direction;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

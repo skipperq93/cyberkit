@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebBackForwardListItem.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebBackForwardListItem> {
     using WrapperClass = WKBackForwardListItem;
@@ -38,6 +38,6 @@ template<> struct WrapperTraits<WebBackForwardListItem> {
 
 @interface WKBackForwardListItem () <WKObject>
 
-@property (readonly) WebKit::WebBackForwardListItem& _item;
+@property (readonly) CyberKit::WebBackForwardListItem& _item;
 
 @end

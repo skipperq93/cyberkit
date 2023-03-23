@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayLogoStyle : bool {
     White,
@@ -62,10 +62,10 @@ private:
     ApplePayLogoStyle m_applePayLogoStyle;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ApplePayLogoSystemImage)
-    static bool isType(const WebCore::SystemImage& systemImage) { return systemImage.systemImageType() == WebCore::SystemImageType::ApplePayLogo; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ApplePayLogoSystemImage)
+    static bool isType(const CyberCore::SystemImage& systemImage) { return systemImage.systemImageType() == CyberCore::SystemImageType::ApplePayLogo; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(APPLE_PAY)

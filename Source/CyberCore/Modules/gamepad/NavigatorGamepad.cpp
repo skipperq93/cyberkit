@@ -35,7 +35,7 @@
 #include "Navigator.h"
 #include "PlatformGamepad.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorGamepad::NavigatorGamepad(Navigator& navigator)
     : m_navigator(navigator)
@@ -158,6 +158,6 @@ void NavigatorGamepad::gamepadDisconnected(PlatformGamepad& platformGamepad)
     m_gamepads[platformGamepad.index()] = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

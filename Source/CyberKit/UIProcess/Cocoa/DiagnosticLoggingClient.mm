@@ -30,7 +30,7 @@
 #import "WKSharedAPICast.h"
 #import "_WKDiagnosticLoggingDelegate.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 DiagnosticLoggingClient::DiagnosticLoggingClient(WKWebView *webView)
     : m_webView(webView)
@@ -54,7 +54,7 @@ void DiagnosticLoggingClient::setDelegate(id <_WKDiagnosticLoggingDelegate> dele
     m_delegateMethods.webviewLogDiagnosticMessageWithDomain = [delegate respondsToSelector:@selector(_webView:logDiagnosticMessageWithDomain:domain:)];
 }
 
-void DiagnosticLoggingClient::logDiagnosticMessage(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description)
+void DiagnosticLoggingClient::logDiagnosticMessage(CyberKit::WebPageProxy*, const WTF::String& message, const WTF::String& description)
 {
     if (m_delegateMethods.webviewLogDiagnosticMessage)
         [m_delegate.get() _webView:m_webView logDiagnosticMessage:message description:description];
@@ -80,19 +80,19 @@ static _WKDiagnosticLoggingDomain toWKDiagnosticLoggingDomain(CyberCore::Diagnos
     }
 }
 
-void DiagnosticLoggingClient::logDiagnosticMessageWithResult(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, CyberCore::DiagnosticLoggingResultType result)
+void DiagnosticLoggingClient::logDiagnosticMessageWithResult(CyberKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, CyberCore::DiagnosticLoggingResultType result)
 {
     if (m_delegateMethods.webviewLogDiagnosticMessageWithResult)
         [m_delegate.get() _webView:m_webView logDiagnosticMessageWithResult:message description:description result:toWKDiagnosticLoggingResultType(result)];
 }
 
-void DiagnosticLoggingClient::logDiagnosticMessageWithValue(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, const WTF::String& value)
+void DiagnosticLoggingClient::logDiagnosticMessageWithValue(CyberKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, const WTF::String& value)
 {
     if (m_delegateMethods.webviewLogDiagnosticMessageWithValue)
         [m_delegate.get() _webView:m_webView logDiagnosticMessageWithValue:message description:description value:value];
 }
 
-void DiagnosticLoggingClient::logDiagnosticMessageWithEnhancedPrivacy(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description)
+void DiagnosticLoggingClient::logDiagnosticMessageWithEnhancedPrivacy(CyberKit::WebPageProxy*, const WTF::String& message, const WTF::String& description)
 {
     if (m_delegateMethods.webviewLogDiagnosticMessageWithEnhancedPrivacy)
         [m_delegate.get() _webView:m_webView logDiagnosticMessageWithEnhancedPrivacy:message description:description];
@@ -110,4 +110,4 @@ void DiagnosticLoggingClient::logDiagnosticMessageWithDomain(WebPageProxy*, cons
         [m_delegate.get() _webView:m_webView logDiagnosticMessageWithDomain:message domain:toWKDiagnosticLoggingDomain(domain)];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

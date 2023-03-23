@@ -29,7 +29,7 @@
 #include "IIRFilter.h"
 #include "IIRProcessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IIRDSPKernel final : public AudioDSPKernel {
 public:
@@ -52,4 +52,4 @@ private:
     double m_tailTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 
 #if ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 static int s_uniqueId = 0;
 
@@ -86,11 +86,11 @@ TrackListBase* TrackBase::trackList() const
     return m_trackList.get();
 }
 
-WebCoreOpaqueRoot TrackBase::opaqueRoot()
+CyberCoreOpaqueRoot TrackBase::opaqueRoot()
 {
     if (auto trackList = this->trackList())
         return trackList->opaqueRoot();
-    return WebCoreOpaqueRoot { this };
+    return CyberCoreOpaqueRoot { this };
 }
 
 // See: https://tools.ietf.org/html/bcp47#section-2.1
@@ -198,6 +198,6 @@ void MediaTrackBase::setKindInternal(const AtomString& kind)
         m_kind = emptyAtom();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

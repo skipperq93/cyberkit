@@ -34,7 +34,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBResultData;
 
@@ -185,4 +185,4 @@ private:
 };
 
 } // namespace IDBClient
-} // namespace WebCore
+} // namespace CyberCore

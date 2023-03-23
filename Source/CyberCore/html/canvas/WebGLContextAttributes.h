@@ -31,11 +31,11 @@
 
 #include "GraphicsContextGLAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using WebGLPowerPreference = GraphicsContextGLPowerPreference;
 using WebGLContextAttributes = GraphicsContextGLAttributes;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

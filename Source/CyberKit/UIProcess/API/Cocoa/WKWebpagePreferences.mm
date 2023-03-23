@@ -42,36 +42,36 @@
 #import <wtf/cocoa/Entitlements.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 
-WKContentMode contentMode(WebKit::WebContentMode contentMode)
+WKContentMode contentMode(CyberKit::WebContentMode contentMode)
 {
     switch (contentMode) {
-    case WebKit::WebContentMode::Recommended:
+    case CyberKit::WebContentMode::Recommended:
         return WKContentModeRecommended;
-    case WebKit::WebContentMode::Mobile:
+    case CyberKit::WebContentMode::Mobile:
         return WKContentModeMobile;
-    case WebKit::WebContentMode::Desktop:
+    case CyberKit::WebContentMode::Desktop:
         return WKContentModeDesktop;
     }
     ASSERT_NOT_REACHED();
     return WKContentModeRecommended;
 }
 
-WebKit::WebContentMode webContentMode(WKContentMode contentMode)
+CyberKit::WebContentMode webContentMode(WKContentMode contentMode)
 {
     switch (contentMode) {
     case WKContentModeRecommended:
-        return WebKit::WebContentMode::Recommended;
+        return CyberKit::WebContentMode::Recommended;
     case WKContentModeMobile:
-        return WebKit::WebContentMode::Mobile;
+        return CyberKit::WebContentMode::Mobile;
     case WKContentModeDesktop:
-        return WebKit::WebContentMode::Desktop;
+        return CyberKit::WebContentMode::Desktop;
     }
     ASSERT_NOT_REACHED();
-    return WebKit::WebContentMode::Recommended;
+    return CyberKit::WebContentMode::Recommended;
 }
 
 #endif // PLATFORM(IOS_FAMILY)
@@ -162,7 +162,7 @@ private:
     WeakObjCPtr<id> m_object;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @implementation WKWebpagePreferences
 
@@ -187,7 +187,7 @@ private:
         return nil;
 
     API::Object::constructInWrapper<API::WebsitePolicies>(self);
-    _lockdownModeObserver = makeUnique<WebKit::WebPagePreferencesLockdownModeObserver>(self);
+    _lockdownModeObserver = makeUnique<CyberKit::WebPagePreferencesLockdownModeObserver>(self);
 
     return self;
 }
@@ -243,19 +243,19 @@ private:
 
 - (void)_setAllowedAutoplayQuirks:(_WKWebsiteAutoplayQuirk)allowedQuirks
 {
-    OptionSet<WebKit::WebsiteAutoplayQuirk> quirks;
+    OptionSet<CyberKit::WebsiteAutoplayQuirk> quirks;
 
     if (allowedQuirks & _WKWebsiteAutoplayQuirkInheritedUserGestures)
-        quirks.add(WebKit::WebsiteAutoplayQuirk::InheritedUserGestures);
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::InheritedUserGestures);
 
     if (allowedQuirks & _WKWebsiteAutoplayQuirkSynthesizedPauseEvents)
-        quirks.add(WebKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents);
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents);
 
     if (allowedQuirks & _WKWebsiteAutoplayQuirkArbitraryUserGestures)
-        quirks.add(WebKit::WebsiteAutoplayQuirk::ArbitraryUserGestures);
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::ArbitraryUserGestures);
 
     if (allowedQuirks & _WKWebsiteAutoplayQuirkPerDocumentAutoplayBehavior)
-        quirks.add(WebKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior);
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior);
 
     _websitePolicies->setAllowedAutoplayQuirks(quirks);
 }
@@ -265,16 +265,16 @@ private:
     _WKWebsiteAutoplayQuirk quirks = 0;
     auto allowedQuirks = _websitePolicies->allowedAutoplayQuirks();
 
-    if (allowedQuirks.contains(WebKit::WebsiteAutoplayQuirk::InheritedUserGestures))
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::InheritedUserGestures))
         quirks |= _WKWebsiteAutoplayQuirkInheritedUserGestures;
 
-    if (allowedQuirks.contains(WebKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents))
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents))
         quirks |= _WKWebsiteAutoplayQuirkSynthesizedPauseEvents;
 
-    if (allowedQuirks.contains(WebKit::WebsiteAutoplayQuirk::ArbitraryUserGestures))
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::ArbitraryUserGestures))
         quirks |= _WKWebsiteAutoplayQuirkArbitraryUserGestures;
 
-    if (allowedQuirks.contains(WebKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior))
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior))
         quirks |= _WKWebsiteAutoplayQuirkPerDocumentAutoplayBehavior;
 
     return quirks;
@@ -284,16 +284,16 @@ private:
 {
     switch (policy) {
     case _WKWebsiteAutoplayPolicyDefault:
-        _websitePolicies->setAutoplayPolicy(WebKit::WebsiteAutoplayPolicy::Default);
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::Default);
         break;
     case _WKWebsiteAutoplayPolicyAllow:
-        _websitePolicies->setAutoplayPolicy(WebKit::WebsiteAutoplayPolicy::Allow);
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::Allow);
         break;
     case _WKWebsiteAutoplayPolicyAllowWithoutSound:
-        _websitePolicies->setAutoplayPolicy(WebKit::WebsiteAutoplayPolicy::AllowWithoutSound);
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::AllowWithoutSound);
         break;
     case _WKWebsiteAutoplayPolicyDeny:
-        _websitePolicies->setAutoplayPolicy(WebKit::WebsiteAutoplayPolicy::Deny);
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::Deny);
         break;
     }
 }
@@ -301,13 +301,13 @@ private:
 - (_WKWebsiteAutoplayPolicy)_autoplayPolicy
 {
     switch (_websitePolicies->autoplayPolicy()) {
-    case WebKit::WebsiteAutoplayPolicy::Default:
+    case CyberKit::WebsiteAutoplayPolicy::Default:
         return _WKWebsiteAutoplayPolicyDefault;
-    case WebKit::WebsiteAutoplayPolicy::Allow:
+    case CyberKit::WebsiteAutoplayPolicy::Allow:
         return _WKWebsiteAutoplayPolicyAllow;
-    case WebKit::WebsiteAutoplayPolicy::AllowWithoutSound:
+    case CyberKit::WebsiteAutoplayPolicy::AllowWithoutSound:
         return _WKWebsiteAutoplayPolicyAllowWithoutSound;
-    case WebKit::WebsiteAutoplayPolicy::Deny:
+    case CyberKit::WebsiteAutoplayPolicy::Deny:
         return _WKWebsiteAutoplayPolicyDeny;
     }
 }
@@ -362,13 +362,13 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 {
     switch (policy) {
     case _WKWebsitePopUpPolicyDefault:
-        _websitePolicies->setPopUpPolicy(WebKit::WebsitePopUpPolicy::Default);
+        _websitePolicies->setPopUpPolicy(CyberKit::WebsitePopUpPolicy::Default);
         break;
     case _WKWebsitePopUpPolicyAllow:
-        _websitePolicies->setPopUpPolicy(WebKit::WebsitePopUpPolicy::Allow);
+        _websitePolicies->setPopUpPolicy(CyberKit::WebsitePopUpPolicy::Allow);
         break;
     case _WKWebsitePopUpPolicyBlock:
-        _websitePolicies->setPopUpPolicy(WebKit::WebsitePopUpPolicy::Block);
+        _websitePolicies->setPopUpPolicy(CyberKit::WebsitePopUpPolicy::Block);
         break;
     }
 }
@@ -376,11 +376,11 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 - (_WKWebsitePopUpPolicy)_popUpPolicy
 {
     switch (_websitePolicies->popUpPolicy()) {
-    case WebKit::WebsitePopUpPolicy::Default:
+    case CyberKit::WebsitePopUpPolicy::Default:
         return _WKWebsitePopUpPolicyDefault;
-    case WebKit::WebsitePopUpPolicy::Allow:
+    case CyberKit::WebsitePopUpPolicy::Allow:
         return _WKWebsitePopUpPolicyAllow;
-    case WebKit::WebsitePopUpPolicy::Block:
+    case CyberKit::WebsitePopUpPolicy::Block:
         return _WKWebsitePopUpPolicyBlock;
     }
 }
@@ -548,34 +548,34 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 
 - (void)setPreferredContentMode:(WKContentMode)contentMode
 {
-    _websitePolicies->setPreferredContentMode(WebKit::webContentMode(contentMode));
+    _websitePolicies->setPreferredContentMode(CyberKit::webContentMode(contentMode));
 }
 
 - (WKContentMode)preferredContentMode
 {
-    return WebKit::contentMode(_websitePolicies->preferredContentMode());
+    return CyberKit::contentMode(_websitePolicies->preferredContentMode());
 }
 
 #endif // PLATFORM(IOS_FAMILY)
 
 - (void)_setMouseEventPolicy:(_WKWebsiteMouseEventPolicy)policy
 {
-    _websitePolicies->setMouseEventPolicy(WebKit::coreMouseEventPolicy(policy));
+    _websitePolicies->setMouseEventPolicy(CyberKit::coreMouseEventPolicy(policy));
 }
 
 - (_WKWebsiteMouseEventPolicy)_mouseEventPolicy
 {
-    return WebKit::mouseEventPolicy(_websitePolicies->mouseEventPolicy());
+    return CyberKit::mouseEventPolicy(_websitePolicies->mouseEventPolicy());
 }
 
 - (void)_setModalContainerObservationPolicy:(_WKWebsiteModalContainerObservationPolicy)policy
 {
-    _websitePolicies->setModalContainerObservationPolicy(WebKit::coreModalContainerObservationPolicy(policy));
+    _websitePolicies->setModalContainerObservationPolicy(CyberKit::coreModalContainerObservationPolicy(policy));
 }
 
 - (_WKWebsiteModalContainerObservationPolicy)_modalContainerObservationPolicy
 {
-    return WebKit::modalContainerObservationPolicy(_websitePolicies->modalContainerObservationPolicy());
+    return CyberKit::modalContainerObservationPolicy(_websitePolicies->modalContainerObservationPolicy());
 }
 
 - (BOOL)isLockdownModeEnabled

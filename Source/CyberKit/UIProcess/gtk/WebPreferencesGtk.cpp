@@ -30,7 +30,7 @@
 #include "HardwareAccelerationManager.h"
 #include <CyberCore/NotImplemented.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPreferences::platformInitializeStore()
 {
@@ -49,4 +49,4 @@ void WebPreferences::platformInitializeStore()
     setThreadedScrollingEnabled(compositingState.forceCompositingMode);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

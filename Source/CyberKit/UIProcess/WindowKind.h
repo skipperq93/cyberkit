@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WindowKind : uint8_t {
     Unparented,
@@ -33,4 +33,4 @@ enum class WindowKind : uint8_t {
     InProcessSnapshotting,
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -24,7 +24,7 @@
 #include "TestStringifierOperationImplementedAs.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestStringifierOperationImplementedAs : public JSDOMWrapper<TestStringifierOperationImplementedAs> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestStringifierOperationImplemente
     using ToWrappedReturnType = TestStringifierOperationImplementedAs*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

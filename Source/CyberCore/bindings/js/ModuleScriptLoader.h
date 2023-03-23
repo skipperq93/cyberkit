@@ -30,7 +30,7 @@
 #include <CyberScriptCore/ScriptFetcher.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ModuleScriptLoaderClient;
 
@@ -62,4 +62,4 @@ protected:
     RefPtr<JSC::ScriptFetchParameters> m_parameters;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

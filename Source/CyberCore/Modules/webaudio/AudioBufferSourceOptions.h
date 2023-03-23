@@ -28,7 +28,7 @@
 
 #include "AudioBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioBufferSourceOptions {
     RefPtr<AudioBuffer> buffer;

@@ -27,7 +27,7 @@
 
 #include <wtf/RetainPtr.h>
 
-@interface WebKitTestRunnerDraggingInfo : NSObject <NSDraggingInfo> {
+@interface CyberKitTestRunnerDraggingInfo : NSObject <NSDraggingInfo> {
 @private
     NSSize _offset;
     RetainPtr<NSImage> _draggedImage;

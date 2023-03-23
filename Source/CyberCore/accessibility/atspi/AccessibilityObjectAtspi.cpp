@@ -39,7 +39,7 @@
 #include <glib/gi18n-lib.h>
 #include <wtf/UUID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<AccessibilityObjectAtspi> AccessibilityObjectAtspi::create(AXCoreObject* coreObject, AccessibilityRootAtspi* root)
 {
@@ -53,7 +53,7 @@ static inline bool roleIsTextType(AccessibilityRole role)
         || role == AccessibilityRole::Div
         || role == AccessibilityRole::Cell
         || role == AccessibilityRole::Link
-        || role == AccessibilityRole::WebCoreLink
+        || role == AccessibilityRole::CyberCoreLink
         || role == AccessibilityRole::ListItem
         || role == AccessibilityRole::Pre
         || role == AccessibilityRole::GridCell
@@ -259,7 +259,7 @@ static Atspi::Role atspiRole(AccessibilityRole role)
     case AccessibilityRole::GridCell:
         return Atspi::Role::TableCell;
     case AccessibilityRole::Link:
-    case AccessibilityRole::WebCoreLink:
+    case AccessibilityRole::CyberCoreLink:
     case AccessibilityRole::ImageMapLink:
         return Atspi::Role::Link;
     case AccessibilityRole::ImageMap:
@@ -678,7 +678,7 @@ CString AccessibilityObjectAtspi::name() const
         if (text.text.isEmpty())
             continue;
 
-        // WebCore Accessibility should provide us with the text alternative computation
+        // CyberCore Accessibility should provide us with the text alternative computation
         // in the order defined by that spec. So take the first thing that our platform
         // does not expose via the AtkObject description.
         if (text.textSource != AccessibilityTextSource::Help && text.textSource != AccessibilityTextSource::Summary)
@@ -698,7 +698,7 @@ CString AccessibilityObjectAtspi::description() const
 
     bool nameTextAvailable = false;
     for (const auto& text : textOrder) {
-        // WebCore Accessibility should provide us with the text alternative computation
+        // CyberCore Accessibility should provide us with the text alternative computation
         // in the order defined by that spec. So take the first thing that our platform
         // does not expose via the AtkObject name.
         if (text.textSource == AccessibilityTextSource::Help || text.textSource == AccessibilityTextSource::Summary)
@@ -1441,7 +1441,7 @@ AccessibilityObjectInclusion AccessibilityObject::accessibilityPlatformIncludesO
         return AccessibilityObjectInclusion::DefaultBehavior;
 
     // We always want to include paragraphs that have rendered content.
-    // WebCore Accessibility does so unless there is a RenderBlock child.
+    // CyberCore Accessibility does so unless there is a RenderBlock child.
     if (roleValue() == AccessibilityRole::Paragraph) {
         auto child = childrenOfType<RenderBlock>(downcast<RenderElement>(*renderObject)).first();
         return child ? AccessibilityObjectInclusion::IncludeObject : AccessibilityObjectInclusion::DefaultBehavior;
@@ -1498,6 +1498,6 @@ AccessibilityObjectInclusion AccessibilityObject::accessibilityPlatformIncludesO
     return AccessibilityObjectInclusion::DefaultBehavior;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

@@ -30,7 +30,7 @@
 #include "RealtimeIncomingVideoSourceGStreamer.h"
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RTCRtpParameters GStreamerRtpReceiverBackend::getParameters()
 {
@@ -71,6 +71,6 @@ std::unique_ptr<RTCDtlsTransportBackend> GStreamerRtpReceiverBackend::dtlsTransp
     return transport ? makeUnique<GStreamerDtlsTransportBackend>(transport) : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

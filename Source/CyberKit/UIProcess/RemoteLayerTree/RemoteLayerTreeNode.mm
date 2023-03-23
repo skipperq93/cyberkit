@@ -34,7 +34,7 @@
 #import <UIKit/UIView.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSString *const WKRemoteLayerTreeNodePropertyKey = @"WKRemoteLayerTreeNode";
 
@@ -112,7 +112,7 @@ RemoteLayerTreeNode* RemoteLayerTreeNode::forCALayer(CALayer *layer)
 
 NSString *RemoteLayerTreeNode::appendLayerDescription(NSString *description, CALayer *layer)
 {
-    NSString *layerDescription = [NSString stringWithFormat:@" layerID = %llu \"%@\"", WebKit::RemoteLayerTreeNode::layerID(layer).object().toUInt64(), layer.name ? layer.name : @""];
+    NSString *layerDescription = [NSString stringWithFormat:@" layerID = %llu \"%@\"", CyberKit::RemoteLayerTreeNode::layerID(layer).object().toUInt64(), layer.name ? layer.name : @""];
     return [description stringByAppendingString:layerDescription];
 }
 

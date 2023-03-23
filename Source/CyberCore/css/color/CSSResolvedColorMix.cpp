@@ -28,7 +28,7 @@
 
 #include "ColorInterpolation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
 
@@ -125,4 +125,4 @@ Color mix(const CSSResolvedColorMix& colorMix)
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore

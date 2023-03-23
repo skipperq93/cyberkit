@@ -40,7 +40,7 @@ class JSValue;
     
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomElementRegistry;
 class DOMWindow;

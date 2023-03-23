@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EXTFragDepth);
 
@@ -52,6 +52,6 @@ bool EXTFragDepth::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_EXT_frag_depth"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

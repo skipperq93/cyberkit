@@ -29,7 +29,7 @@
 #include "Element.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PseudoElement final : public Element {
     WTF_MAKE_ISO_ALLOCATED(PseudoElement);
@@ -56,8 +56,8 @@ private:
 
 const QualifiedName& pseudoElementTagName();
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::PseudoElement)
-    static bool isType(const WebCore::Node& node) { return node.isPseudoElement(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::PseudoElement)
+    static bool isType(const CyberCore::Node& node) { return node.isPseudoElement(); }
 SPECIALIZE_TYPE_TRAITS_END()

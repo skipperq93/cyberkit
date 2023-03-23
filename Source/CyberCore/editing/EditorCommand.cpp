@@ -68,7 +68,7 @@
 #include <pal/text/KillRing.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -503,7 +503,7 @@ static bool executeInsertLineBreak(Frame& frame, Event* event, EditorCommandSour
 
 static bool executeInsertNewline(Frame& frame, Event* event, EditorCommandSource, const String&)
 {
-    Frame* targetFrame = WebCore::targetFrame(frame, event);
+    Frame* targetFrame = CyberCore::targetFrame(frame, event);
     return targetFrame->eventHandler().handleTextInputEvent("\n"_s, event, targetFrame->editor().canEditRichly() ? TextEventInputKeyboard : TextEventInputLineBreak);
 }
 
@@ -1956,4 +1956,4 @@ bool Editor::Command::allowExecutionWhenDisabled() const
     return m_command->allowExecutionWhenDisabled(*m_frame, m_source);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

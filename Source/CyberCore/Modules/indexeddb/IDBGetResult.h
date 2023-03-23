@@ -33,7 +33,7 @@
 #include "SharedBuffer.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBGetResult {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(IDBGetResult, WEBCORE_EXPORT);
@@ -103,4 +103,4 @@ private:
     bool m_isDefined { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

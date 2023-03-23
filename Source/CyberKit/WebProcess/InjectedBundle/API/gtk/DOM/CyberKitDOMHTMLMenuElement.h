@@ -54,7 +54,7 @@ webkit_dom_html_menu_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_menu_element_get_compact(CyberKitDOMHTMLMenuElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_menu_element_get_compact(CyberKitDOMHTMLMenuElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_menu_element_set_compact(CyberKitDOMHTMLMenuElement* self, gboolean value);

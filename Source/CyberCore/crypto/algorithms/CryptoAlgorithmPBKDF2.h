@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmPbkdf2Params;
 class CryptoKeyRaw;
@@ -51,6 +51,6 @@ private:
     static ExceptionOr<Vector<uint8_t>> platformDeriveBits(const CryptoAlgorithmPbkdf2Params&, const CryptoKeyRaw&, size_t);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

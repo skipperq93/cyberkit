@@ -34,7 +34,7 @@
 #import "WebProcessProxy.h"
 #import <CyberCore/AudioSession.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

@@ -32,7 +32,7 @@
 #include "CSSParserObserver.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserObserverWrapper {
 public:
@@ -75,4 +75,4 @@ private:
     Vector<CommentPosition>::iterator m_commentIterator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <CyberCore/SpeechRecognitionRequest.h>
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using SpeechRecognitionPermissionRequestCallback = CompletionHandler<void(std::optional<CyberCore::SpeechRecognitionError>&&)>;
 
@@ -85,4 +85,4 @@ private:
     CompletionHandler<void(bool)> m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

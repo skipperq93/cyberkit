@@ -25,9 +25,9 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // Upstream means before a line break, downstream means after a line break.
 enum class Affinity : bool { Upstream, Downstream };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -45,7 +45,7 @@ constexpr NSString * kDefaultTimeZoneIdentifier = @"UTC";
 @interface WKDateTimePicker : NSObject
 
 - (id)initWithParams:(CyberCore::DateTimeChooserParameters&&)params inView:(NSView *)view;
-- (void)showPicker:(WebKit::WebDateTimePickerMac&)picker;
+- (void)showPicker:(CyberKit::WebDateTimePickerMac&)picker;
 - (void)updatePicker:(CyberCore::DateTimeChooserParameters&&)params;
 - (void)invalidate;
 
@@ -57,7 +57,7 @@ constexpr NSString * kDefaultTimeZoneIdentifier = @"UTC";
 @interface WKDateTimePickerBackdropView : NSView
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebDateTimePickerMac> WebDateTimePickerMac::create(WebPageProxy& page, NSView *view)
 {
@@ -101,7 +101,7 @@ void WebDateTimePickerMac::didChooseDate(StringView date)
     m_page->didChooseDate(date);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @implementation WKDateTimePickerWindow {
     RetainPtr<WKDateTimePickerBackdropView> _backdropView;
@@ -177,7 +177,7 @@ void WebDateTimePickerMac::didChooseDate(StringView date)
 @end
 
 @implementation WKDateTimePicker {
-    WeakPtr<WebKit::WebDateTimePickerMac> _picker;
+    WeakPtr<CyberKit::WebDateTimePickerMac> _picker;
     CyberCore::DateTimeChooserParameters _params;
     WeakObjCPtr<NSView> _presentingView;
 
@@ -226,7 +226,7 @@ void WebDateTimePickerMac::didChooseDate(StringView date)
     return self;
 }
 
-- (void)showPicker:(WebKit::WebDateTimePickerMac&)picker
+- (void)showPicker:(CyberKit::WebDateTimePickerMac&)picker
 {
     _picker = picker;
 

@@ -36,7 +36,7 @@
 #include "RenderImage.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -217,4 +217,4 @@ String ImageInputType::resultForDialogSubmit() const
     return makeString(m_clickLocation.x(), ',', m_clickLocation.y());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

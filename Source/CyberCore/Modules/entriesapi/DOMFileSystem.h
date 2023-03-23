@@ -32,7 +32,7 @@
 #include <wtf/WorkQueue.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class File;
 class FileSystemFileEntry;
@@ -77,4 +77,4 @@ private:
     Ref<WorkQueue> m_workQueue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

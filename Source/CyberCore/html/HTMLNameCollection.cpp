@@ -34,7 +34,7 @@
 #include "NodeTraversal.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

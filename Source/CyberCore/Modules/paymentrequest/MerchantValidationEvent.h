@@ -30,7 +30,7 @@
 #include "Event.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 class Document;
@@ -62,6 +62,6 @@ private:
     URL m_validationURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

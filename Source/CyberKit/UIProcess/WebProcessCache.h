@@ -33,7 +33,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessPool;
 class WebsiteDataStore;
@@ -102,4 +102,4 @@ private:
     RunLoop::Timer m_evictionTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

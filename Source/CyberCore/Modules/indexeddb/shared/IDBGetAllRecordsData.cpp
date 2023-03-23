@@ -29,7 +29,7 @@
 #include "IDBKeyRangeData.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBGetAllRecordsData IDBGetAllRecordsData::isolatedCopy() const
 {
@@ -47,4 +47,4 @@ String IDBGetAllRecordsData::loggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 #include "Document.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CDATASection);
 
@@ -59,4 +59,4 @@ Ref<Text> CDATASection::virtualCreate(String&& data)
     return create(document(), WTFMove(data));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

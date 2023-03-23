@@ -32,7 +32,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String convertHTMLTextToInterchangeFormat(const String& in, const Text* node)
 {
@@ -91,4 +91,4 @@ String convertHTMLTextToInterchangeFormat(const String& in, const Text* node)
     return s.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

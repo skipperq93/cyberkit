@@ -32,7 +32,7 @@
 
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 VTTScanner::VTTScanner(const String& line)
     : m_is8Bit(line.is8Bit())

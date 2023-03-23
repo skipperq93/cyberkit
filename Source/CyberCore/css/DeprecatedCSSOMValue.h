@@ -31,7 +31,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeprecatedCSSOMValue : public RefCounted<DeprecatedCSSOMValue>, public CanMakeWeakPtr<DeprecatedCSSOMValue> {
 public:
@@ -99,11 +99,11 @@ private:
     Ref<const CSSValue> m_value;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CSSOM_VALUE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-static bool isType(const WebCore::DeprecatedCSSOMValue& value) { return value.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+static bool isType(const CyberCore::DeprecatedCSSOMValue& value) { return value.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 SPECIALIZE_TYPE_TRAITS_CSSOM_VALUE(DeprecatedCSSOMComplexValue, isComplexValue())

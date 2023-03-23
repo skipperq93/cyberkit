@@ -42,7 +42,7 @@ namespace CyberCore {
 class AuthenticatorAssertionResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class Authenticator : public RefCounted<Authenticator>, public CanMakeWeakPtr<Authenticator> {
 public:
@@ -84,6 +84,6 @@ private:
     WebAuthenticationRequestData m_pendingRequestData;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

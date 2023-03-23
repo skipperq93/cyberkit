@@ -32,7 +32,7 @@
 #include "MediaQuery.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class DeferredPromise;

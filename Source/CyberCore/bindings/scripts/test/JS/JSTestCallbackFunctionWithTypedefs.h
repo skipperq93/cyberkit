@@ -25,7 +25,7 @@
 #include "TestCallbackFunctionWithTypedefs.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestCallbackFunctionWithTypedefs final : public TestCallbackFunctionWithTypedefs {
 public:
@@ -51,4 +51,4 @@ private:
 JSC::JSValue toJS(TestCallbackFunctionWithTypedefs&);
 inline JSC::JSValue toJS(TestCallbackFunctionWithTypedefs* impl) { return impl ? toJS(*impl) : JSC::jsNull(); }
 
-} // namespace WebCore
+} // namespace CyberCore

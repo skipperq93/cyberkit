@@ -24,7 +24,7 @@
 #include "TestEnabledBySetting.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestEnabledBySetting : public JSDOMWrapper<TestEnabledBySetting> {
 public:
@@ -92,4 +92,4 @@ template<> struct JSDOMWrapperConverterTraits<TestEnabledBySetting> {
     using ToWrappedReturnType = TestEnabledBySetting*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

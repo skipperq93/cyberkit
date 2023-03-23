@@ -65,7 +65,7 @@
 #include "DataDetection.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLAnchorElement);
 
@@ -197,7 +197,7 @@ void HTMLAnchorElement::defaultEventHandler(Event& event)
         if (hasEditableStyle()) {
             // This keeps track of the editable block that the selection was in (if it was in one) just before the link was clicked
             // for the LiveWhenNotFocused editable link behavior
-            auto& eventNames = WebCore::eventNames();
+            auto& eventNames = CyberCore::eventNames();
             if (event.type() == eventNames.mousedownEvent && is<MouseEvent>(event) && downcast<MouseEvent>(event).button() != RightButton && document().frame()) {
                 setRootEditableElementForSelectionOnMouseDown(document().frame()->selection().selection().rootEditableElement());
                 m_wasShiftKeyDownOnMouseDown = downcast<MouseEvent>(event).shiftKey();

@@ -40,7 +40,7 @@
 #include <CyberScriptCore/ArrayBufferView.h>
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool populateFontFaceWithArrayBuffer(CSSFontFace& fontFace, Ref<JSC::ArrayBufferView>&& arrayBufferView)
 {

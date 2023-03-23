@@ -31,12 +31,12 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayAMSUIRequest {
     String engagementRequest; // required JSON
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_AMS_UI) && ENABLE(PAYMENT_REQUEST)

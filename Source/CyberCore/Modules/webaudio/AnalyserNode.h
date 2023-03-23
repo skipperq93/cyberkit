@@ -28,7 +28,7 @@
 #include "AudioBasicInspectorNode.h"
 #include "RealtimeAnalyser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnalyserNode final : public AudioBasicInspectorNode {
     WTF_MAKE_ISO_ALLOCATED(AnalyserNode);
@@ -72,4 +72,4 @@ private:
     RealtimeAnalyser m_analyser;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

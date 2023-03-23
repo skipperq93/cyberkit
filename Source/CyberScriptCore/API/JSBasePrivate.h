@@ -27,7 +27,7 @@
 #define JSBasePrivate_h
 
 #include <CyberScriptCore/JSBase.h>
-#include <CyberScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/CyberKitAvailability.h>
 
 #ifdef __cplusplus
 extern "C" {

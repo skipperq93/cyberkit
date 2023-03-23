@@ -34,12 +34,12 @@
 
 namespace API {
 
-Ref<FrameInfo> FrameInfo::create(WebKit::FrameInfoData&& frameInfoData, RefPtr<WebKit::WebPageProxy>&& page)
+Ref<FrameInfo> FrameInfo::create(CyberKit::FrameInfoData&& frameInfoData, RefPtr<CyberKit::WebPageProxy>&& page)
 {
-    return adoptRef(*new FrameInfo(WTFMove(frameInfoData), std::forward<RefPtr<WebKit::WebPageProxy>&&>(page)));
+    return adoptRef(*new FrameInfo(WTFMove(frameInfoData), std::forward<RefPtr<CyberKit::WebPageProxy>&&>(page)));
 }
 
-FrameInfo::FrameInfo(WebKit::FrameInfoData&& data, RefPtr<WebKit::WebPageProxy>&& page)
+FrameInfo::FrameInfo(CyberKit::FrameInfoData&& data, RefPtr<CyberKit::WebPageProxy>&& page)
     : m_data(WTFMove(data))
     , m_page(WTFMove(page)) { }
 

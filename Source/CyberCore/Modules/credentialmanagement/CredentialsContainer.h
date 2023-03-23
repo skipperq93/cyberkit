@@ -36,7 +36,7 @@ namespace WebAuthn {
 enum class Scope;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -64,6 +64,6 @@ private:
     WeakPtr<Document, WeakPtrImplWithEventTargetData> m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

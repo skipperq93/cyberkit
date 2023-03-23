@@ -24,7 +24,7 @@
 #include "TestDefaultToJSONFilteredByExposed.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDefaultToJSONFilteredByExposed : public JSDOMWrapper<TestDefaultToJSONFilteredByExposed> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDefaultToJSONFilteredByExposed
     using ToWrappedReturnType = TestDefaultToJSONFilteredByExposed*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

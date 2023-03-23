@@ -29,13 +29,13 @@
 #include "GPUVertexFormat.h"
 #include <pal/graphics/WebGPU/WebGPUVertexAttribute.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUVertexAttribute {
     PAL::WebGPU::VertexAttribute convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(format),
+            CyberCore::convertToBacking(format),
             offset,
             shaderLocation,
         };

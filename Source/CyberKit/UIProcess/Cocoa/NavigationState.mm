@@ -89,7 +89,7 @@
 #import <pal/spi/cocoa/LaunchServicesSPI.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static HashMap<WebPageProxy*, WeakPtr<NavigationState>>& navigationStates()
@@ -782,7 +782,7 @@ void NavigationState::NavigationClient::didCommitNavigation(WebPageProxy& page, 
         [navigationDelegate webView:m_navigationState->m_webView didCommitNavigation:wrapper(navigation)];
 }
 
-void NavigationState::NavigationClient::didCommitLoadForFrame(WebKit::WebPageProxy& page, CyberCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
+void NavigationState::NavigationClient::didCommitLoadForFrame(CyberKit::WebPageProxy& page, CyberCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
 {
     if (!m_navigationState)
         return;
@@ -942,34 +942,34 @@ bool NavigationState::NavigationClient::shouldBypassContentModeSafeguards() cons
 void NavigationState::NavigationClient::didReceiveAuthenticationChallenge(WebPageProxy&, AuthenticationChallengeProxy& authenticationChallenge)
 {
     if (!m_navigationState)
-        return authenticationChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+        return authenticationChallenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
 
     if (!m_navigationState->m_navigationDelegateMethods.webViewDidReceiveAuthenticationChallengeCompletionHandler)
-        return authenticationChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+        return authenticationChallenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
 
     auto navigationDelegate = m_navigationState->m_navigationDelegate.get();
     if (!navigationDelegate)
-        return authenticationChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+        return authenticationChallenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
 
     auto checker = CompletionHandlerCallChecker::create(navigationDelegate.get(), @selector(webView:didReceiveAuthenticationChallenge:completionHandler:));
     [static_cast<id <WKNavigationDelegatePrivate>>(navigationDelegate.get()) webView:m_navigationState->m_webView didReceiveAuthenticationChallenge:wrapper(authenticationChallenge) completionHandler:makeBlockPtr([challenge = Ref { authenticationChallenge }, checker = WTFMove(checker)](NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential) {
         if (checker->completionHandlerHasBeenCalled())
             return;
         checker->didCallCompletionHandler();
-        challenge->listener().completeChallenge(WebKit::toAuthenticationChallengeDisposition(disposition), Credential(credential));
+        challenge->listener().completeChallenge(CyberKit::toAuthenticationChallengeDisposition(disposition), Credential(credential));
     }).get()];
 }
 
 static bool systemAllowsLegacyTLSFor(WebPageProxy& page)
 {
     bool enableLegacyTLS = page.websiteDataStore().configuration().legacyTLSEnabled();
-    if (id value = [[NSUserDefaults standardUserDefaults] objectForKey:@"WebKitEnableLegacyTLS"])
+    if (id value = [[NSUserDefaults standardUserDefaults] objectForKey:@"CyberKitEnableLegacyTLS"])
         enableLegacyTLS = [value boolValue];
     if (!enableLegacyTLS) {
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)
-        enableLegacyTLS = [[PAL::getMCProfileConnectionClass() sharedConnection] effectiveBoolValueForSetting:@"allowDeprecatedWebKitTLS"] == MCRestrictedBoolExplicitYes;
+        enableLegacyTLS = [[PAL::getMCProfileConnectionClass() sharedConnection] effectiveBoolValueForSetting:@"allowDeprecatedCyberKitTLS"] == MCRestrictedBoolExplicitYes;
 #elif PLATFORM(MAC)
-        enableLegacyTLS = CFPreferencesGetAppBooleanValue(CFSTR("allowDeprecatedWebKitTLS"), CFSTR("com.apple.applicationaccess"), nullptr);
+        enableLegacyTLS = CFPreferencesGetAppBooleanValue(CFSTR("allowDeprecatedCyberKitTLS"), CFSTR("com.apple.applicationaccess"), nullptr);
 #endif
     }
     return enableLegacyTLS;
@@ -1501,4 +1501,4 @@ void NavigationState::didSwapWebProcesses()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

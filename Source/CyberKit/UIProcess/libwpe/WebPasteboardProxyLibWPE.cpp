@@ -30,7 +30,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebPasteboardProxy::getPasteboardTypes(CompletionHandler<void(Vector<String>&&)>&& completionHandler)
@@ -55,4 +55,4 @@ void WebPasteboardProxy::writeStringToPasteboard(const String& pasteboardType, c
     PlatformPasteboard().write(pasteboardType, text);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

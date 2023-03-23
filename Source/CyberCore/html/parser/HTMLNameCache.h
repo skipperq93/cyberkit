@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLNameCache {
 public:
@@ -136,4 +136,4 @@ private:
     static QualifiedNameCache& qualifiedNameCache();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

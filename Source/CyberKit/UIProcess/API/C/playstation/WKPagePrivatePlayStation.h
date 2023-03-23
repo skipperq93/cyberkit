@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKEventPlayStation.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKEventPlayStation.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -19,20 +19,20 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitScriptDialog_h
-#define WebKitScriptDialog_h
+#ifndef CyberKitScriptDialog_h
+#define CyberKitScriptDialog_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_SCRIPT_DIALOG (webkit_script_dialog_get_type())
 
-typedef struct _WebKitScriptDialog WebKitScriptDialog;
+typedef struct _CyberKitScriptDialog CyberKitScriptDialog;
 
 /**
- * WebKitScriptDialogType:
+ * CyberKitScriptDialogType:
  * @WEBKIT_SCRIPT_DIALOG_ALERT: Alert script dialog, used to show a
  * message to the user.
  * @WEBKIT_SCRIPT_DIALOG_CONFIRM: Confirm script dialog, used to ask
@@ -42,43 +42,43 @@ typedef struct _WebKitScriptDialog WebKitScriptDialog;
  * @WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM: Before unload confirm dialog,
  * used to ask confirmation to leave the current page to the user. Since 2.12
  *
- * Enum values used for determining the type of #WebKitScriptDialog
+ * Enum values used for determining the type of #CyberKitScriptDialog
  */
 typedef enum {
     WEBKIT_SCRIPT_DIALOG_ALERT,
     WEBKIT_SCRIPT_DIALOG_CONFIRM,
     WEBKIT_SCRIPT_DIALOG_PROMPT,
     WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM
-} WebKitScriptDialogType;
+} CyberKitScriptDialogType;
 
 WEBKIT_API GType
 webkit_script_dialog_get_type                (void);
 
-WEBKIT_API WebKitScriptDialog *
-webkit_script_dialog_ref                     (WebKitScriptDialog *dialog);
+WEBKIT_API CyberKitScriptDialog *
+webkit_script_dialog_ref                     (CyberKitScriptDialog *dialog);
 
 WEBKIT_API void
-webkit_script_dialog_unref                   (WebKitScriptDialog *dialog);
+webkit_script_dialog_unref                   (CyberKitScriptDialog *dialog);
 
-WEBKIT_API WebKitScriptDialogType
-webkit_script_dialog_get_dialog_type         (WebKitScriptDialog *dialog);
+WEBKIT_API CyberKitScriptDialogType
+webkit_script_dialog_get_dialog_type         (CyberKitScriptDialog *dialog);
 
 WEBKIT_API const gchar *
-webkit_script_dialog_get_message             (WebKitScriptDialog *dialog);
+webkit_script_dialog_get_message             (CyberKitScriptDialog *dialog);
 
 WEBKIT_API void
-webkit_script_dialog_confirm_set_confirmed   (WebKitScriptDialog *dialog,
+webkit_script_dialog_confirm_set_confirmed   (CyberKitScriptDialog *dialog,
                                               gboolean            confirmed);
 
 WEBKIT_API const gchar *
-webkit_script_dialog_prompt_get_default_text (WebKitScriptDialog *dialog);
+webkit_script_dialog_prompt_get_default_text (CyberKitScriptDialog *dialog);
 
 WEBKIT_API void
-webkit_script_dialog_prompt_set_text         (WebKitScriptDialog *dialog,
+webkit_script_dialog_prompt_set_text         (CyberKitScriptDialog *dialog,
                                               const gchar        *text);
 
 WEBKIT_API void
-webkit_script_dialog_close                   (WebKitScriptDialog *dialog);
+webkit_script_dialog_close                   (CyberKitScriptDialog *dialog);
 
 G_END_DECLS
 

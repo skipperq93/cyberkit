@@ -35,7 +35,7 @@
 #include "StaticNodeList.h"
 #include "StyledElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ASSERT_ENABLED
 static bool isSingleTagNameSelector(const CSSSelector& selector)

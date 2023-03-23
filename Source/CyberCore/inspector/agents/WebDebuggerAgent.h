@@ -28,7 +28,7 @@
 #include "InspectorWebAgentBase.h"
 #include <CyberScriptCore/InspectorDebuggerAgent.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventListener;
 class EventTarget;
@@ -71,4 +71,4 @@ private:
     int m_nextPostMessageIdentifier { 1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

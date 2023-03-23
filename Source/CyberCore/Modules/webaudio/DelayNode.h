@@ -26,7 +26,7 @@
 
 #include "AudioBasicProcessorNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DelayOptions;
 
@@ -41,4 +41,4 @@ private:
     DelayNode(BaseAudioContext&, double maxDelayTime);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

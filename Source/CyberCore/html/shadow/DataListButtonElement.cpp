@@ -34,7 +34,7 @@
 #include "MouseEvent.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DataListButtonElement);
 
@@ -72,6 +72,6 @@ void DataListButtonElement::defaultEventHandler(Event& event)
         HTMLDivElement::defaultEventHandler(event);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATALIST_ELEMENT)

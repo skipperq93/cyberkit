@@ -24,7 +24,7 @@
 #include "TestMapLike.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestMapLike : public JSDOMWrapper<TestMapLike> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestMapLike> {
     using ToWrappedReturnType = TestMapLike*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

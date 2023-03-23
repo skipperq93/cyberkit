@@ -29,11 +29,11 @@
 
 #include "EventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentRequestUpdateEventInit : EventInit {
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

@@ -27,7 +27,7 @@
 
 #include "TestController.h"
 #include <CyberCore/GtkVersioning.h>
-#include <WebKit/WKTextCheckerGLib.h>
+#include <CyberKit/WKTextCheckerGLib.h>
 #include <wtf/glib/GRefPtr.h>
 
 void initializeGtkSettings()

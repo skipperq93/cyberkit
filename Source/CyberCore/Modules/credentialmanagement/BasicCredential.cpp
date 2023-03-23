@@ -32,7 +32,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BasicCredential::BasicCredential(const String& id, Type type, Discovery discovery)
     : m_id(id)
@@ -62,6 +62,6 @@ void BasicCredential::isConditionalMediationAvailable(Document& document, DOMPro
         promise.reject(Exception { InvalidStateError });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

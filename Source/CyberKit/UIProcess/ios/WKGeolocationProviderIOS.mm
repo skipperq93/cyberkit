@@ -62,16 +62,16 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 
 struct GeolocationRequestData {
     URL url;
-    WebKit::FrameInfoData frameInfo;
+    CyberKit::FrameInfoData frameInfo;
     Function<void(bool)> completionHandler;
     RetainPtr<WKWebView> view;
 };
 
 @implementation WKGeolocationProviderIOS {
-    RefPtr<WebKit::WebGeolocationManagerProxy> _geolocationManager;
+    RefPtr<CyberKit::WebGeolocationManagerProxy> _geolocationManager;
     RetainPtr<id <_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
     BOOL _isCyberCoreGeolocationActive;
-    RefPtr<WebKit::WebGeolocationPosition> _lastActivePosition;
+    RefPtr<CyberKit::WebGeolocationPosition> _lastActivePosition;
     Deque<GeolocationRequestData> _requestsWaitingForCoreLocationAuthorization;
 }
 
@@ -130,17 +130,17 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
     return nil;
 }
 
-- (id)initWithProcessPool:(WebKit::WebProcessPool&)processPool
+- (id)initWithProcessPool:(CyberKit::WebProcessPool&)processPool
 {
     self = [super init];
     if (!self)
         return nil;
 
-    // On iOS, WebKit normally provides the location. However, if the client sets a coreLocationProvider, then we use that one instead.
-    // This is useful for WebKitTestRunner to provide a dummy geolocation provider. It is also used by certain apps to deny all
+    // On iOS, CyberKit normally provides the location. However, if the client sets a coreLocationProvider, then we use that one instead.
+    // This is useful for CyberKitTestRunner to provide a dummy geolocation provider. It is also used by certain apps to deny all
     // geolocation authorization as a way to disable support for geolocation.
     if (wrapper(processPool)._coreLocationProvider) {
-        _geolocationManager = processPool.supplement<WebKit::WebGeolocationManagerProxy>();
+        _geolocationManager = processPool.supplement<CyberKit::WebGeolocationManagerProxy>();
         WKGeolocationProviderV1 providerCallback = {
             { 1, self },
             startUpdatingCallback,
@@ -154,7 +154,7 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
     return self;
 }
 
-- (void)decidePolicyForGeolocationRequestFromOrigin:(WebKit::FrameInfoData&&)frameInfo completionHandler:(Function<void(bool)>&&)completionHandler view:(WKWebView *)contentView
+- (void)decidePolicyForGeolocationRequestFromOrigin:(CyberKit::FrameInfoData&&)frameInfo completionHandler:(Function<void(bool)>&&)completionHandler view:(WKWebView *)contentView
 {
     CyberCore::RegistrableDomain registrableDomain(frameInfo.securityOrigin);
     GeolocationRequestData geolocationRequestData { [contentView URL], WTFMove(frameInfo), WTFMove(completionHandler), contentView };
@@ -193,7 +193,7 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
     id<WKUIDelegatePrivate> uiDelegate = static_cast<id <WKUIDelegatePrivate>>([request.view UIDelegate]);
     if ([uiDelegate respondsToSelector:@selector(_webView:requestGeolocationAuthorizationForURL:frame:decisionHandler:)]) {
         RetainPtr<WKFrameInfo> frameInfo = wrapper(API::FrameInfo::create(WTFMove(request.frameInfo), request.view->_page.get()));
-        auto checker = WebKit::CompletionHandlerCallChecker::create(uiDelegate, @selector(_webView:requestGeolocationAuthorizationForURL:frame:decisionHandler:));
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(uiDelegate, @selector(_webView:requestGeolocationAuthorizationForURL:frame:decisionHandler:));
         [uiDelegate _webView:request.view.get() requestGeolocationAuthorizationForURL:request.url frame:frameInfo.get() decisionHandler:makeBlockPtr([decisionHandler = WTFMove(decisionHandler), checker = WTFMove(checker)](BOOL authorized) {
             if (checker->completionHandlerHasBeenCalled())
                 return;

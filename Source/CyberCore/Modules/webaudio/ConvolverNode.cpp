@@ -45,7 +45,7 @@
 // Very large FFTs will have worse phase errors. Given these constraints 32768 is a good compromise.
 constexpr size_t MaxFFTSize = 32768;
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ConvolverNode);
 
@@ -241,6 +241,6 @@ void ConvolverNode::checkNumberOfChannelsForInput(AudioNodeInput* input)
     AudioNode::checkNumberOfChannelsForInput(input);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

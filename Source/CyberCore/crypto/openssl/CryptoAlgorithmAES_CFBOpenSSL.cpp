@@ -32,7 +32,7 @@
 #include "CryptoKeyAES.h"
 #include "OpenSSLUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> cfb8(const Vector<uint8_t>& key, const Vector<uint8_t>& iv, const Vector<uint8_t>& input, bool encrypt)
 {
@@ -100,6 +100,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_CFB::platformDecrypt(const Crypt
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -45,7 +45,7 @@ class FrontendRouter;
 class InspectorAgent;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Frame;
@@ -156,4 +156,4 @@ private:
     bool m_didCreateLazyAgents { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

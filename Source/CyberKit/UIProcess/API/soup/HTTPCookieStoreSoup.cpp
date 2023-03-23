@@ -33,7 +33,7 @@
 
 namespace API {
 
-void HTTPCookieStore::setCookiePersistentStorage(const WTF::String& storagePath, WebKit::SoupCookiePersistentStorageType storageType)
+void HTTPCookieStore::setCookiePersistentStorage(const WTF::String& storagePath, CyberKit::SoupCookiePersistentStorageType storageType)
 {
     if (auto* networkProcess = networkProcessIfExists())
         networkProcess->send(Messages::WebCookieManager::SetCookiePersistentStorage(m_sessionID, storagePath, storageType), 0);

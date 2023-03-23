@@ -38,7 +38,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -350,4 +350,4 @@ ExceptionOr<std::optional<Vector<RefPtr<Node>>>> InspectorAuditAccessibilityObje
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

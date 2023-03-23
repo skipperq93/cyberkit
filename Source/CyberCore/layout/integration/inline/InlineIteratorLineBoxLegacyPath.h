@@ -30,7 +30,7 @@
 #include "LegacyEllipsisBox.h"
 #include "LegacyRootInlineBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 class LineBoxIteratorLegacyPath {

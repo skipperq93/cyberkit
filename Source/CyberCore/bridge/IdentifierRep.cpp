@@ -32,7 +32,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 typedef HashSet<IdentifierRep*> IdentifierSet;
@@ -108,4 +108,4 @@ bool IdentifierRep::isValid(IdentifierRep* identifier)
     return identifierSet().contains(identifier);
 }
     
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ClientOrigin;
 class FetchResponse;
@@ -65,4 +65,4 @@ protected:
     HashMap<uint64_t, uint64_t> m_opaqueResponseToSizeWithPaddingMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

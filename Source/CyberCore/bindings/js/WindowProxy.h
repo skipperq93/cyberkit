@@ -30,7 +30,7 @@ namespace JSC {
 class Debugger;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractDOMWindow;
 class AbstractFrame;
@@ -99,4 +99,4 @@ private:
     UniqueRef<ProxyMap> m_jsWindowProxies;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

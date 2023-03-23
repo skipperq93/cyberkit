@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSColor);
 
@@ -42,4 +42,4 @@ CSSColor::CSSColor(CSSKeywordish, Vector<CSSColorPercent>, CSSNumberish alpha)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

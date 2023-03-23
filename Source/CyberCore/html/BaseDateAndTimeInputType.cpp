@@ -61,7 +61,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -580,6 +580,6 @@ void BaseDateAndTimeInputType::closeDateTimeChooser()
         m_dateTimeChooser->endChooser();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

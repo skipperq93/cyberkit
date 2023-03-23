@@ -32,7 +32,7 @@
 #include "WebProcessMessages.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 static const Seconds expirationDelay { 30_min };
 
@@ -79,4 +79,4 @@ void WebBackForwardCacheEntry::expirationTimerFired()
     m_backForwardCache.removeEntry(*item); // Will destroy |this|.
 }
 
-} // namespace WebKit
+} // namespace CyberKit

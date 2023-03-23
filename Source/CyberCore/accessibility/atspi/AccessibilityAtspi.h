@@ -35,7 +35,7 @@ typedef struct _GDBusInterfaceVTable GDBusInterfaceVTable;
 typedef struct _GDBusProxy GDBusProxy;
 typedef struct _GVariant GVariant;
 
-namespace WebCore {
+namespace CyberCore {
 class AccessibilityObjectAtspi;
 class AccessibilityRootAtspi;
 enum class AccessibilityRole;
@@ -142,6 +142,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

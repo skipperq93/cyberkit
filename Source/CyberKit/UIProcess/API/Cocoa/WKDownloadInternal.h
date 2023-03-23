@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import <wtf/WeakObjCPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<DownloadProxy> {
     using WrapperClass = WKDownload;
@@ -38,7 +38,7 @@ template<> struct WrapperTraits<DownloadProxy> {
 
 @interface WKDownload () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::DownloadProxy> _download;
+    API::ObjectStorage<CyberKit::DownloadProxy> _download;
     WeakObjCPtr<id <WKDownloadDelegate> > _delegate;
 }
 @end

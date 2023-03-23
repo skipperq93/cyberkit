@@ -27,7 +27,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class SecurityOriginData;
@@ -40,4 +40,4 @@ public:
     virtual void setClientBadge(Page&, const SecurityOriginData&, std::optional<uint64_t>) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

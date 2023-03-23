@@ -30,7 +30,7 @@
 #include <CyberScriptCore/InspectorProtocolObjects.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Frame;
@@ -74,4 +74,4 @@ private:
     RefPtr<JSC::Breakpoint> m_pauseOnAllAnimationFramesBreakpoint;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

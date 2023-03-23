@@ -30,7 +30,7 @@
 #include "SegmentedString.h"
 #include "TextResourceDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DecodedDataDocumentParser::DecodedDataDocumentParser(Document& document)
     : DocumentParser(document)

@@ -33,7 +33,7 @@
 #include <wtf/GregorianDateTime.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateComponents;
 class RenderStyle;
@@ -96,6 +96,6 @@ private:
     WeakPtr<FieldOwner> m_fieldOwner;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

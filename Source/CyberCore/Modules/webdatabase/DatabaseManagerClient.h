@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOriginData;
 
@@ -48,4 +48,4 @@ public:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

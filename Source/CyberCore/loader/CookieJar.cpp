@@ -40,7 +40,7 @@
 #include "StorageSessionProvider.h"
 #include <wtf/SystemTracing.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking(const Document& document)
 {

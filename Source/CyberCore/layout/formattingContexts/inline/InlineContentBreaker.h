@@ -29,7 +29,7 @@
 #include "LayoutUnits.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class InlineItem;

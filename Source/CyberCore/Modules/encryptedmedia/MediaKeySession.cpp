@@ -54,7 +54,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/LoggerHelper.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaKeySession);
 
@@ -848,6 +848,6 @@ void MediaKeySession::displayChanged(PlatformDisplayID displayID)
     m_instanceSession->displayChanged(displayID);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

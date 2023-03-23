@@ -40,7 +40,7 @@
 #include <CyberScriptCore/ScriptCallStack.h>
 #include <CyberScriptCore/ScriptCallStackFactory.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -118,6 +118,6 @@ Ref<Inspector::Protocol::Canvas::ShaderProgram> InspectorShaderProgram::buildObj
         .release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

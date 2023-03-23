@@ -31,7 +31,7 @@
 #include "DistanceModelType.h"
 #include "PanningModelType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PannerOptions : AudioNodeOptions {
     PanningModelType panningModel { PanningModelType::Equalpower };
@@ -50,6 +50,6 @@ struct PannerOptions : AudioNodeOptions {
     double coneOuterGain { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

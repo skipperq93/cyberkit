@@ -27,7 +27,7 @@
 
 #include "AccessibilityMockObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilityMenuList;
 class AccessibilityMenuListOption;
@@ -62,6 +62,6 @@ private:
     AccessibilityMenuListOption* menuListOptionAccessibilityObject(HTMLElement*) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityMenuListPopup, isMenuListPopup())

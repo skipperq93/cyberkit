@@ -31,7 +31,7 @@
 
 #include "WebGLRenderingContextBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLVertexArrayObjectOES> WebGLVertexArrayObjectOES::create(WebGLRenderingContextBase& context, Type type)
 {

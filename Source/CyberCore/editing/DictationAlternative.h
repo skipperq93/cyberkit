@@ -28,11 +28,11 @@
 #include "CharacterRange.h"
 #include "DictationContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DictationAlternative {
     CharacterRange range;
     DictationContext context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

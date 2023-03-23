@@ -36,7 +36,7 @@ class FrontendChannel;
 class FrontendRouter;
 };
 
-namespace WebCore {
+namespace CyberCore {
 
 class InstrumentingAgents;
 class WebInjectedScriptManager;
@@ -90,4 +90,4 @@ private:
     bool m_didCreateLazyAgents { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

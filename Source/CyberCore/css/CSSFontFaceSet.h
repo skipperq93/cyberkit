@@ -33,7 +33,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class CSSSegmentedFontFace;

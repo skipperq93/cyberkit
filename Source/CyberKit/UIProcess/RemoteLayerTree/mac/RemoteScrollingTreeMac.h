@@ -37,7 +37,7 @@ namespace CyberCore {
 class PlatformMouseEvent;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteScrollingCoordinatorProxy;
 
@@ -61,6 +61,6 @@ private:
     Ref<CyberCore::ScrollingTreeNode> createScrollingTreeNode(CyberCore::ScrollingNodeType, CyberCore::ScrollingNodeID) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC) && ENABLE(UI_SIDE_COMPOSITING)

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUCommandBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUCommandBuffer::label() const
 {

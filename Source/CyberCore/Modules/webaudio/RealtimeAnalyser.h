@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FFTFrame;
 
@@ -103,4 +103,4 @@ private:
     NoiseInjectionPolicy m_noiseInjectionPolicy { NoiseInjectionPolicy::None };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

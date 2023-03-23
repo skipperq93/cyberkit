@@ -32,7 +32,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class PlatformAudioData;
@@ -65,6 +65,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

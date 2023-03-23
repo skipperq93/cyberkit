@@ -33,7 +33,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CustomElementDefaultARIA);
 
@@ -147,4 +147,4 @@ void CustomElementDefaultARIA::setElementsForAttribute(const QualifiedName& name
     m_map.set(name, elements);
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

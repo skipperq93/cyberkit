@@ -40,7 +40,7 @@ OBJC_CLASS _WKPreviewControllerDataSource;
 OBJC_CLASS _WKPreviewControllerDelegate;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 

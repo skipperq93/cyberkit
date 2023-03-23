@@ -1,5 +1,5 @@
 # This file is used to simulate the wkbuiltins/ directory when generate-js-builtins.py
-# is run from JavaScriptCore framework's private headers directory, which is flattened.
+# is run from CyberScriptCore framework's private headers directory, which is flattened.
 
 from builtins_model import *
 from builtins_templates import *

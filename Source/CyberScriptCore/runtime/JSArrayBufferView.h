@@ -39,7 +39,7 @@ class LLIntOffsetsExtractor;
 // 1) It provides those parts of JSGenericTypedArrayView that don't depend
 //    on template parameters.
 //
-// 2) It represents the DOM/WebCore-visible "JSArrayBufferView" type, which
+// 2) It represents the DOM/CyberCore-visible "JSArrayBufferView" type, which
 //    C++ code uses when it wants to pass around a view of an array buffer
 //    without concern for the actual type of the view.
 //
@@ -47,7 +47,7 @@ class LLIntOffsetsExtractor;
 // compile and link times by having as much code and data as possible not
 // be subject to template specialization. (2) is *almost* a matter of
 // semantics; indeed at the very least it is a matter of obeying a contract
-// that we have with WebCore right now.
+// that we have with CyberCore right now.
 //
 // One convenient thing that saves us from too much crazy is that
 // ArrayBufferView is not instantiable.
@@ -170,7 +170,7 @@ enum class CopyType {
     Unobservable,
 };
 
-// When WebCore uses a JSArrayBufferView, it expects to be able to get the native
+// When CyberCore uses a JSArrayBufferView, it expects to be able to get the native
 // ArrayBuffer and little else. This requires slowing down and wasting memory,
 // and then accessing things via the Butterfly. When JS uses a JSArrayBufferView
 // it is always via the usual methods in the MethodTable, so this class's

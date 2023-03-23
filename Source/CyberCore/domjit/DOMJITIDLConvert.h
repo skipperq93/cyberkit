@@ -27,7 +27,7 @@
 
 #include "IDLTypes.h"
 
-namespace WebCore { namespace DOMJIT {
+namespace CyberCore { namespace DOMJIT {
 
 template<typename IDLType>
 struct DirectConverter;

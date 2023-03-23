@@ -27,16 +27,16 @@
 
 #import <pal/cocoa/AppSSOSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 class SOAuthorizationSession;
 class WebPageProxy;
 }
 
 @interface WKSOAuthorizationDelegate : NSObject <SOAuthorizationDelegate> {
 @package
-    RefPtr<WebKit::SOAuthorizationSession> _session;
+    RefPtr<CyberKit::SOAuthorizationSession> _session;
 }
-- (void)setSession:(RefPtr<WebKit::SOAuthorizationSession>&&)session;
+- (void)setSession:(RefPtr<CyberKit::SOAuthorizationSession>&&)session;
 @end
 
 #endif

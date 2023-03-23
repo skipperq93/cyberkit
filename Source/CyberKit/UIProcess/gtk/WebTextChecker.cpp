@@ -32,7 +32,7 @@
 #include "WebProcessPool.h"
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebTextChecker* WebTextChecker::singleton()
 {
@@ -77,4 +77,4 @@ void WebTextChecker::changeSpellingToWord(WebPageProxy* page, const String& text
     page->changeSpellingToWord(text);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

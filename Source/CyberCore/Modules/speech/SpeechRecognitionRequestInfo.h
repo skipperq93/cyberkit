@@ -29,7 +29,7 @@
 #include "FrameIdentifier.h"
 #include "SpeechRecognitionConnectionClientIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SpeechRecognitionRequestInfo {
     SpeechRecognitionConnectionClientIdentifier clientIdentifier;
@@ -41,4 +41,4 @@ struct SpeechRecognitionRequestInfo {
     FrameIdentifier frameIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include "HTMLObjectElement.h"
 #include "IdTargetObserver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

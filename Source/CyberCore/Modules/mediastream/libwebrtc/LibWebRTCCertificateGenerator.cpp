@@ -41,7 +41,7 @@ ALLOW_COMMA_BEGIN
 ALLOW_COMMA_END
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace LibWebRTCCertificateGenerator {
 
@@ -124,6 +124,6 @@ void generateCertificate(Ref<SecurityOrigin>&& origin, LibWebRTCProvider& provid
 
 } // namespace LibWebRTCCertificateGenerator
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

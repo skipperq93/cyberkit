@@ -52,7 +52,7 @@
 - (void)interpretKeyEvents:(NSArray *)eventArray;
 @end
 
-@interface WebHTMLView (WebKitSecretsTextInputControllerIsAwareOf)
+@interface WebHTMLView (CyberKitSecretsTextInputControllerIsAwareOf)
 - (WebFrame *)_frame;
 - (NSAttributedString *)_attributedStringFromDOMRange:(DOMRange *)range;
 - (NSAttributedString *)_legacyAttributedStringFrom:(DOMNode*)startContainer offset:(int)startOffset to:(DOMNode*)endContainer offset:(int)endOffset;

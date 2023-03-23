@@ -33,7 +33,7 @@
 
 OBJC_CLASS SCNScene;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Model;
 

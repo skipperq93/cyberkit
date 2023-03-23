@@ -18,9 +18,9 @@
  */
 
 #include "config.h"
-#include "WebKitUserContent.h"
+#include "CyberKitUserContent.h"
 
-#include "WebKitUserContentPrivate.h"
+#include "CyberKitUserContentPrivate.h"
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/CString.h>
@@ -35,7 +35,7 @@ API::ContentWorld& webkitContentWorld(const char* worldName)
     }).iterator->value;
 }
 
-static inline UserContentInjectedFrames toUserContentInjectedFrames(WebKitUserContentInjectedFrames injectedFrames)
+static inline UserContentInjectedFrames toUserContentInjectedFrames(CyberKitUserContentInjectedFrames injectedFrames)
 {
     switch (injectedFrames) {
     case WEBKIT_USER_CONTENT_INJECT_TOP_FRAME:
@@ -48,7 +48,7 @@ static inline UserContentInjectedFrames toUserContentInjectedFrames(WebKitUserCo
     }
 }
 
-static inline UserStyleLevel toUserStyleLevel(WebKitUserStyleLevel styleLevel)
+static inline UserStyleLevel toUserStyleLevel(CyberKitUserStyleLevel styleLevel)
 {
     switch (styleLevel) {
     case WEBKIT_USER_STYLE_LEVEL_USER:
@@ -61,7 +61,7 @@ static inline UserStyleLevel toUserStyleLevel(WebKitUserStyleLevel styleLevel)
     }
 }
 
-static inline UserScriptInjectionTime toUserScriptInjectionTime(WebKitUserScriptInjectionTime injectionTime)
+static inline UserScriptInjectionTime toUserScriptInjectionTime(CyberKitUserScriptInjectionTime injectionTime)
 {
     switch (injectionTime) {
     case WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_START:
@@ -86,15 +86,15 @@ static inline Vector<String> toStringVector(const char* const* strv)
 }
 
 /**
- * WebKitUserStyleSheet: (ref-func webkit_user_style_sheet_ref) (unref-func webkit_user_style_sheet_unref)
+ * CyberKitUserStyleSheet: (ref-func webkit_user_style_sheet_ref) (unref-func webkit_user_style_sheet_unref)
  *
  * A CSS style sheet which can be injected in loaded pages.
  *
  * Since: 2.6
  */
 
-struct _WebKitUserStyleSheet {
-    _WebKitUserStyleSheet(const gchar* source, WebKitUserContentInjectedFrames injectedFrames, WebKitUserStyleLevel level, const char* const* allowList, const char* const* blockList, API::ContentWorld& world)
+struct _CyberKitUserStyleSheet {
+    _CyberKitUserStyleSheet(const gchar* source, CyberKitUserContentInjectedFrames injectedFrames, CyberKitUserStyleLevel level, const char* const* allowList, const char* const* blockList, API::ContentWorld& world)
         : userStyleSheet(adoptRef(new API::UserStyleSheet(UserStyleSheet {
             String::fromUTF8(source), URL { },
             toStringVector(allowList), toStringVector(blockList),
@@ -108,21 +108,21 @@ struct _WebKitUserStyleSheet {
     int referenceCount;
 };
 
-G_DEFINE_BOXED_TYPE(WebKitUserStyleSheet, webkit_user_style_sheet, webkit_user_style_sheet_ref, webkit_user_style_sheet_unref)
+G_DEFINE_BOXED_TYPE(CyberKitUserStyleSheet, webkit_user_style_sheet, webkit_user_style_sheet_ref, webkit_user_style_sheet_unref)
 
 /**
  * webkit_user_style_sheet_ref:
- * @user_style_sheet: a #WebKitUserStyleSheet
+ * @user_style_sheet: a #CyberKitUserStyleSheet
  *
  * Atomically increments the reference count of @user_style_sheet by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed #WebKitUserStyleSheet
+ * Returns: The passed #CyberKitUserStyleSheet
  *
  * Since: 2.6
  */
-WebKitUserStyleSheet* webkit_user_style_sheet_ref(WebKitUserStyleSheet* userStyleSheet)
+CyberKitUserStyleSheet* webkit_user_style_sheet_ref(CyberKitUserStyleSheet* userStyleSheet)
 {
     g_atomic_int_inc(&userStyleSheet->referenceCount);
     return userStyleSheet;
@@ -130,20 +130,20 @@ WebKitUserStyleSheet* webkit_user_style_sheet_ref(WebKitUserStyleSheet* userStyl
 
 /**
  * webkit_user_style_sheet_unref:
- * @user_style_sheet: a #WebKitUserStyleSheet
+ * @user_style_sheet: a #CyberKitUserStyleSheet
  *
  * Atomically decrements the reference count of @user_style_sheet by one.
  *
  * If the reference count drops to 0, all memory allocated by
- * #WebKitUserStyleSheet is released. This function is MT-safe and may be
+ * #CyberKitUserStyleSheet is released. This function is MT-safe and may be
  * called from any thread.
  *
  * Since: 2.6
  */
-void webkit_user_style_sheet_unref(WebKitUserStyleSheet* userStyleSheet)
+void webkit_user_style_sheet_unref(CyberKitUserStyleSheet* userStyleSheet)
 {
     if (g_atomic_int_dec_and_test(&userStyleSheet->referenceCount)) {
-        userStyleSheet->~WebKitUserStyleSheet();
+        userStyleSheet->~CyberKitUserStyleSheet();
         fastFree(userStyleSheet);
     }
 }
@@ -151,8 +151,8 @@ void webkit_user_style_sheet_unref(WebKitUserStyleSheet* userStyleSheet)
 /**
  * webkit_user_style_sheet_new: (constructor)
  * @source: Source code of the user style sheet.
- * @injected_frames: A #WebKitUserContentInjectedFrames value
- * @level: A #WebKitUserStyleLevel
+ * @injected_frames: A #CyberKitUserContentInjectedFrames value
+ * @level: A #CyberKitUserStyleLevel
  * @allow_list: (array zero-terminated=1) (allow-none): An allow_list of URI patterns or %NULL
  * @block_list: (array zero-terminated=1) (allow-none): A block_list of URI patterns or %NULL
  *
@@ -166,24 +166,24 @@ void webkit_user_style_sheet_unref(WebKitUserStyleSheet* userStyleSheet)
  * *host* and *path* components can contain the wildcard character (`*`) to
  * represent zero or more other characters.
  *
- * Returns: A new #WebKitUserStyleSheet
+ * Returns: A new #CyberKitUserStyleSheet
  *
  * Since: 2.6
  */
-WebKitUserStyleSheet* webkit_user_style_sheet_new(const gchar* source, WebKitUserContentInjectedFrames injectedFrames, WebKitUserStyleLevel level, const char* const* allowList, const char* const* blockList)
+CyberKitUserStyleSheet* webkit_user_style_sheet_new(const gchar* source, CyberKitUserContentInjectedFrames injectedFrames, CyberKitUserStyleLevel level, const char* const* allowList, const char* const* blockList)
 {
     g_return_val_if_fail(source, nullptr);
-    WebKitUserStyleSheet* userStyleSheet = static_cast<WebKitUserStyleSheet*>(fastMalloc(sizeof(WebKitUserStyleSheet)));
-    new (userStyleSheet) WebKitUserStyleSheet(source, injectedFrames, level, allowList, blockList, API::ContentWorld::pageContentWorld());
+    CyberKitUserStyleSheet* userStyleSheet = static_cast<CyberKitUserStyleSheet*>(fastMalloc(sizeof(CyberKitUserStyleSheet)));
+    new (userStyleSheet) CyberKitUserStyleSheet(source, injectedFrames, level, allowList, blockList, API::ContentWorld::pageContentWorld());
     return userStyleSheet;
 }
 
 /**
  * webkit_user_style_sheet_new_for_world: (constructor)
  * @source: Source code of the user style sheet.
- * @injected_frames: A #WebKitUserContentInjectedFrames value
- * @level: A #WebKitUserStyleLevel
- * @world_name: the name of a #WebKitScriptWorld
+ * @injected_frames: A #CyberKitUserContentInjectedFrames value
+ * @level: A #CyberKitUserStyleLevel
+ * @world_name: the name of a #CyberKitScriptWorld
  * @allow_list: (array zero-terminated=1) (allow-none): An allow_list of URI patterns or %NULL
  * @block_list: (array zero-terminated=1) (allow-none): A block_list of URI patterns or %NULL
  *
@@ -192,35 +192,35 @@ WebKitUserStyleSheet* webkit_user_style_sheet_new(const gchar* source, WebKitUse
  * Creates a new user style sheet for script world with name @world_name.
  * See webkit_user_style_sheet_new() for a full description.
  *
- * Returns: A new #WebKitUserStyleSheet
+ * Returns: A new #CyberKitUserStyleSheet
  *
  * Since: 2.22
  */
-WebKitUserStyleSheet* webkit_user_style_sheet_new_for_world(const gchar* source, WebKitUserContentInjectedFrames injectedFrames, WebKitUserStyleLevel level, const char* worldName, const char* const* allowList, const char* const* blockList)
+CyberKitUserStyleSheet* webkit_user_style_sheet_new_for_world(const gchar* source, CyberKitUserContentInjectedFrames injectedFrames, CyberKitUserStyleLevel level, const char* worldName, const char* const* allowList, const char* const* blockList)
 {
     g_return_val_if_fail(source, nullptr);
     g_return_val_if_fail(worldName, nullptr);
 
-    WebKitUserStyleSheet* userStyleSheet = static_cast<WebKitUserStyleSheet*>(fastMalloc(sizeof(WebKitUserStyleSheet)));
-    new (userStyleSheet) WebKitUserStyleSheet(source, injectedFrames, level, allowList, blockList, webkitContentWorld(worldName));
+    CyberKitUserStyleSheet* userStyleSheet = static_cast<CyberKitUserStyleSheet*>(fastMalloc(sizeof(CyberKitUserStyleSheet)));
+    new (userStyleSheet) CyberKitUserStyleSheet(source, injectedFrames, level, allowList, blockList, webkitContentWorld(worldName));
     return userStyleSheet;
 }
 
-API::UserStyleSheet& webkitUserStyleSheetGetUserStyleSheet(WebKitUserStyleSheet* userStyleSheet)
+API::UserStyleSheet& webkitUserStyleSheetGetUserStyleSheet(CyberKitUserStyleSheet* userStyleSheet)
 {
     return *userStyleSheet->userStyleSheet;
 }
 
 /**
- * WebKitUserScript: (ref-func webkit_user_script_ref) (unref-func webkit_user_script_unref)
+ * CyberKitUserScript: (ref-func webkit_user_script_ref) (unref-func webkit_user_script_unref)
  *
  * A JavaScript snippet which can be injected in loaded pages.
  *
  * Since: 2.6
  */
 
-struct _WebKitUserScript {
-    _WebKitUserScript(const gchar* source, WebKitUserContentInjectedFrames injectedFrames, WebKitUserScriptInjectionTime injectionTime, const gchar* const* allowList, const gchar* const* blockList, API::ContentWorld& world)
+struct _CyberKitUserScript {
+    _CyberKitUserScript(const gchar* source, CyberKitUserContentInjectedFrames injectedFrames, CyberKitUserScriptInjectionTime injectionTime, const gchar* const* allowList, const gchar* const* blockList, API::ContentWorld& world)
         : userScript(adoptRef(new API::UserScript(UserScript {
             String::fromUTF8(source), URL { },
             toStringVector(allowList), toStringVector(blockList),
@@ -234,21 +234,21 @@ struct _WebKitUserScript {
     int referenceCount;
 };
 
-G_DEFINE_BOXED_TYPE(WebKitUserScript, webkit_user_script, webkit_user_script_ref, webkit_user_script_unref)
+G_DEFINE_BOXED_TYPE(CyberKitUserScript, webkit_user_script, webkit_user_script_ref, webkit_user_script_unref)
 
 /**
  * webkit_user_script_ref:
- * @user_script: a #WebKitUserScript
+ * @user_script: a #CyberKitUserScript
  *
  * Atomically increments the reference count of @user_script by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed #WebKitUserScript
+ * Returns: The passed #CyberKitUserScript
  *
  * Since: 2.6
  */
-WebKitUserScript* webkit_user_script_ref(WebKitUserScript* userScript)
+CyberKitUserScript* webkit_user_script_ref(CyberKitUserScript* userScript)
 {
     g_atomic_int_inc(&userScript->referenceCount);
     return userScript;
@@ -256,20 +256,20 @@ WebKitUserScript* webkit_user_script_ref(WebKitUserScript* userScript)
 
 /**
  * webkit_user_script_unref:
- * @user_script: a #WebKitUserScript
+ * @user_script: a #CyberKitUserScript
  *
  * Atomically decrements the reference count of @user_script by one.
  *
  * If the reference count drops to 0, all memory allocated by
- * #WebKitUserScript is released. This function is MT-safe and may be called
+ * #CyberKitUserScript is released. This function is MT-safe and may be called
  * from any thread.
  *
  * Since: 2.6
  */
-void webkit_user_script_unref(WebKitUserScript* userScript)
+void webkit_user_script_unref(CyberKitUserScript* userScript)
 {
     if (g_atomic_int_dec_and_test(&userScript->referenceCount)) {
-        userScript->~WebKitUserScript();
+        userScript->~CyberKitUserScript();
         fastFree(userScript);
     }
 }
@@ -277,8 +277,8 @@ void webkit_user_script_unref(WebKitUserScript* userScript)
 /**
  * webkit_user_script_new: (constructor)
  * @source: Source code of the user script.
- * @injected_frames: A #WebKitUserContentInjectedFrames value
- * @injection_time: A #WebKitUserScriptInjectionTime value
+ * @injected_frames: A #CyberKitUserContentInjectedFrames value
+ * @injection_time: A #CyberKitUserScriptInjectionTime value
  * @allow_list: (array zero-terminated=1) (allow-none): An allow_list of URI patterns or %NULL
  * @block_list: (array zero-terminated=1) (allow-none): A block_list of URI patterns or %NULL
  *
@@ -292,24 +292,24 @@ void webkit_user_script_unref(WebKitUserScript* userScript)
  * *host* and *path* components can contain the wildcard character (`*`) to
  * represent zero or more other characters.
  *
- * Returns: A new #WebKitUserScript
+ * Returns: A new #CyberKitUserScript
  *
  * Since: 2.6
  */
-WebKitUserScript* webkit_user_script_new(const gchar* source, WebKitUserContentInjectedFrames injectedFrames, WebKitUserScriptInjectionTime injectionTime, const gchar* const* allowList, const gchar* const* blockList)
+CyberKitUserScript* webkit_user_script_new(const gchar* source, CyberKitUserContentInjectedFrames injectedFrames, CyberKitUserScriptInjectionTime injectionTime, const gchar* const* allowList, const gchar* const* blockList)
 {
     g_return_val_if_fail(source, nullptr);
-    WebKitUserScript* userScript = static_cast<WebKitUserScript*>(fastMalloc(sizeof(WebKitUserScript)));
-    new (userScript) WebKitUserScript(source, injectedFrames, injectionTime, allowList, blockList, API::ContentWorld::pageContentWorld());
+    CyberKitUserScript* userScript = static_cast<CyberKitUserScript*>(fastMalloc(sizeof(CyberKitUserScript)));
+    new (userScript) CyberKitUserScript(source, injectedFrames, injectionTime, allowList, blockList, API::ContentWorld::pageContentWorld());
     return userScript;
 }
 
 /**
  * webkit_user_script_new_for_world: (constructor)
  * @source: Source code of the user script.
- * @injected_frames: A #WebKitUserContentInjectedFrames value
- * @injection_time: A #WebKitUserScriptInjectionTime value
- * @world_name: the name of a #WebKitScriptWorld
+ * @injected_frames: A #CyberKitUserContentInjectedFrames value
+ * @injection_time: A #CyberKitUserScriptInjectionTime value
+ * @world_name: the name of a #CyberKitScriptWorld
  * @allow_list: (array zero-terminated=1) (allow-none): An allow_list of URI patterns or %NULL
  * @block_list: (array zero-terminated=1) (allow-none): A block_list of URI patterns or %NULL
  *
@@ -317,36 +317,36 @@ WebKitUserScript* webkit_user_script_new(const gchar* source, WebKitUserContentI
  *
  * See webkit_user_script_new() for a full description.
  *
- * Returns: A new #WebKitUserScript
+ * Returns: A new #CyberKitUserScript
  *
  * Since: 2.22
  */
-WebKitUserScript* webkit_user_script_new_for_world(const gchar* source, WebKitUserContentInjectedFrames injectedFrames, WebKitUserScriptInjectionTime injectionTime, const char* worldName, const gchar* const* allowList, const gchar* const* blockList)
+CyberKitUserScript* webkit_user_script_new_for_world(const gchar* source, CyberKitUserContentInjectedFrames injectedFrames, CyberKitUserScriptInjectionTime injectionTime, const char* worldName, const gchar* const* allowList, const gchar* const* blockList)
 {
     g_return_val_if_fail(source, nullptr);
     g_return_val_if_fail(worldName, nullptr);
 
-    WebKitUserScript* userScript = static_cast<WebKitUserScript*>(fastMalloc(sizeof(WebKitUserScript)));
-    new (userScript) WebKitUserScript(source, injectedFrames, injectionTime, allowList, blockList, webkitContentWorld(worldName));
+    CyberKitUserScript* userScript = static_cast<CyberKitUserScript*>(fastMalloc(sizeof(CyberKitUserScript)));
+    new (userScript) CyberKitUserScript(source, injectedFrames, injectionTime, allowList, blockList, webkitContentWorld(worldName));
     return userScript;
 }
 
-API::UserScript& webkitUserScriptGetUserScript(WebKitUserScript* userScript)
+API::UserScript& webkitUserScriptGetUserScript(CyberKitUserScript* userScript)
 {
     return *userScript->userScript;
 }
 
 
 /**
- * WebKitUserContentFilter: (ref-func webkit_user_content_filter_ref) (unref-func webkit_user_content_filter_unref)
+ * CyberKitUserContentFilter: (ref-func webkit_user_content_filter_ref) (unref-func webkit_user_content_filter_unref)
  *
  * A compiled set of rules which applied to resource loads.
  *
  * Since: 2.24
  */
 
-struct _WebKitUserContentFilter {
-    _WebKitUserContentFilter(RefPtr<API::ContentRuleList>&& contentRuleList)
+struct _CyberKitUserContentFilter {
+    _CyberKitUserContentFilter(RefPtr<API::ContentRuleList>&& contentRuleList)
         : contentRuleList(WTFMove(contentRuleList))
 #if ENABLE(CONTENT_EXTENSIONS)
         , identifier(this->contentRuleList->name().utf8())
@@ -360,11 +360,11 @@ struct _WebKitUserContentFilter {
     int referenceCount;
 };
 
-G_DEFINE_BOXED_TYPE(WebKitUserContentFilter, webkit_user_content_filter, webkit_user_content_filter_ref, webkit_user_content_filter_unref)
+G_DEFINE_BOXED_TYPE(CyberKitUserContentFilter, webkit_user_content_filter, webkit_user_content_filter_ref, webkit_user_content_filter_unref)
 
 /**
  * webkit_user_content_filter_ref:
- * @user_content_filter: A #WebKitUserContentFilter
+ * @user_content_filter: A #CyberKitUserContentFilter
  *
  * Atomically increments the reference count of @user_content_filter by one.
  *
@@ -374,7 +374,7 @@ G_DEFINE_BOXED_TYPE(WebKitUserContentFilter, webkit_user_content_filter, webkit_
  *
  * Since: 2.24
  */
-WebKitUserContentFilter* webkit_user_content_filter_ref(WebKitUserContentFilter* userContentFilter)
+CyberKitUserContentFilter* webkit_user_content_filter_ref(CyberKitUserContentFilter* userContentFilter)
 {
     g_return_val_if_fail(userContentFilter, nullptr);
     g_atomic_int_inc(&userContentFilter->referenceCount);
@@ -383,52 +383,52 @@ WebKitUserContentFilter* webkit_user_content_filter_ref(WebKitUserContentFilter*
 
 /**
  * webkit_user_content_filter_unref:
- * @user_content_filter: A #WebKitUserContentFilter
+ * @user_content_filter: A #CyberKitUserContentFilter
  *
  * Atomically decrements the reference count of @user_content_filter by one.
  *
  * If the reference count drops to 0, all the memory allocated by the
- * #WebKitUserContentFilter is released. This function is MT-safe and may
+ * #CyberKitUserContentFilter is released. This function is MT-safe and may
  * be called from any thread.
  *
  * Since: 2.24
  */
-void webkit_user_content_filter_unref(WebKitUserContentFilter* userContentFilter)
+void webkit_user_content_filter_unref(CyberKitUserContentFilter* userContentFilter)
 {
     g_return_if_fail(userContentFilter);
     if (g_atomic_int_dec_and_test(&userContentFilter->referenceCount)) {
-        userContentFilter->~WebKitUserContentFilter();
+        userContentFilter->~CyberKitUserContentFilter();
         fastFree(userContentFilter);
     }
 }
 
 /**
  * webkit_user_content_filter_get_identifier:
- * @user_content_filter: A #WebKitUserContentFilter
+ * @user_content_filter: A #CyberKitUserContentFilter
  *
  * Obtain the identifier previously used to save the @user_content_filter.
  *
  * Obtain the identifier previously used to save the @user_content_filter in the
- * #WebKitUserContentFilterStore.
+ * #CyberKitUserContentFilterStore.
  *
  * Returns: (transfer none): the identifier for the filter
  *
  * Since: 2.24
  */
-const char* webkit_user_content_filter_get_identifier(WebKitUserContentFilter* userContentFilter)
+const char* webkit_user_content_filter_get_identifier(CyberKitUserContentFilter* userContentFilter)
 {
     g_return_val_if_fail(userContentFilter, nullptr);
     return userContentFilter->identifier.data();
 }
 
-WebKitUserContentFilter* webkitUserContentFilterCreate(RefPtr<API::ContentRuleList>&& contentRuleList)
+CyberKitUserContentFilter* webkitUserContentFilterCreate(RefPtr<API::ContentRuleList>&& contentRuleList)
 {
-    WebKitUserContentFilter* userContentFilter = static_cast<WebKitUserContentFilter*>(fastMalloc(sizeof(WebKitUserContentFilter)));
-    new (userContentFilter) WebKitUserContentFilter(WTFMove(contentRuleList));
+    CyberKitUserContentFilter* userContentFilter = static_cast<CyberKitUserContentFilter*>(fastMalloc(sizeof(CyberKitUserContentFilter)));
+    new (userContentFilter) CyberKitUserContentFilter(WTFMove(contentRuleList));
     return userContentFilter;
 }
 
-API::ContentRuleList& webkitUserContentFilterGetContentRuleList(WebKitUserContentFilter* userContentFilter)
+API::ContentRuleList& webkitUserContentFilterGetContentRuleList(CyberKitUserContentFilter* userContentFilter)
 {
     ASSERT(userContentFilter);
     return *userContentFilter->contentRuleList;

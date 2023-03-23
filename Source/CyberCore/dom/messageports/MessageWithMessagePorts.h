@@ -29,11 +29,11 @@
 #include "TransferredMessagePort.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MessageWithMessagePorts {
     RefPtr<SerializedScriptValue> message;
     Vector<TransferredMessagePort> transferredPorts;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

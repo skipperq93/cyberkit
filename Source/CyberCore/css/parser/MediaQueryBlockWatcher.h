@@ -29,7 +29,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserToken;
 
@@ -43,4 +43,4 @@ private:
     unsigned m_blockLevel { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

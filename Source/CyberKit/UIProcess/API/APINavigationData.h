@@ -33,7 +33,7 @@ namespace API {
 
 class NavigationData : public ObjectImpl<Object::Type::NavigationData> {
 public:
-    static Ref<NavigationData> create(const WebKit::WebNavigationDataStore& store)
+    static Ref<NavigationData> create(const CyberKit::WebNavigationDataStore& store)
     {
         return adoptRef(*new NavigationData(store));
     }
@@ -46,9 +46,9 @@ public:
     const CyberCore::ResourceResponse& response() const { return m_store.response; }
 
 private:
-    explicit NavigationData(const WebKit::WebNavigationDataStore&);
+    explicit NavigationData(const CyberKit::WebNavigationDataStore&);
 
-    WebKit::WebNavigationDataStore m_store;
+    CyberKit::WebNavigationDataStore m_store;
 };
 
 } // namespace API

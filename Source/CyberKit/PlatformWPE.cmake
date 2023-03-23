@@ -357,7 +357,7 @@ list(APPEND CyberKit_INCLUDE_DIRECTORIES
 )
 
 list(APPEND CyberKit_PRIVATE_INCLUDE_DIRECTORIES
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
 )
 
 list(APPEND CyberKit_SYSTEM_INCLUDE_DIRECTORIES
@@ -470,7 +470,7 @@ if (ENABLE_WPE_QT_API)
 
     set(qtwpe_INCLUDE_DIRECTORIES
         $<TARGET_PROPERTY:CyberKit,INCLUDE_DIRECTORIES>
-        ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
+        ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
         ${CMAKE_BINARY_DIR}
         ${GLIB_INCLUDE_DIRS}
         ${Qt5_INCLUDE_DIRS}
@@ -523,30 +523,30 @@ install(FILES ${WPE_API_INSTALLED_HEADERS}
         COMPONENT "Development"
 )
 
-# XXX: Using ${JavaScriptCore_INSTALLED_HEADERS} here expands to nothing.
-GI_INTROSPECT(WPEJavaScriptCore ${WPE_API_VERSION} jsc/jsc.h
+# XXX: Using ${CyberScriptCore_INSTALLED_HEADERS} here expands to nothing.
+GI_INTROSPECT(WPECyberScriptCore ${WPE_API_VERSION} jsc/jsc.h
     TARGET CyberKit
     PACKAGE wpe-javascriptcore
     SYMBOL_PREFIX jsc
     DEPENDENCIES GObject-2.0
     OPTIONS
-        -I${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
-        -I${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}
+        -I${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
+        -I${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}
     SOURCES
         ${JAVASCRIPTCORE_DIR}/API/glib/JSCOptions.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCClass.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCContext.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCDefines.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCException.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCValue.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVersion.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVirtualMachine.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCWeakValue.h
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/jsc.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCClass.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCContext.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCDefines.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCException.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCValue.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVersion.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVirtualMachine.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCWeakValue.h
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/jsc.h
         ${JAVASCRIPTCORE_DIR}/API/glib
     NO_IMPLICIT_SOURCES
 )
-GI_DOCGEN(WPEJavaScriptCore "${JAVASCRIPTCORE_DIR}/API/glib/docs/jsc.toml.in")
+GI_DOCGEN(WPECyberScriptCore "${JAVASCRIPTCORE_DIR}/API/glib/docs/jsc.toml.in")
 
 set(WPE_SOURCES_FOR_INTROSPECTION
     UIProcess/API/wpe/CyberKitColor.cpp
@@ -568,11 +568,11 @@ GI_INTROSPECT(WPECyberKit ${WPE_API_VERSION} wpe/webkit.h
     IDENTIFIER_PREFIX CyberKit
     SYMBOL_PREFIX webkit
     DEPENDENCIES
-        WPEJavaScriptCore
+        WPECyberScriptCore
         Soup-${SOUP_API_VERSION}:libsoup-${SOUP_API_VERSION}
     OPTIONS
-        -I${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
-        -I${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}
+        -I${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
+        -I${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}
     SOURCES
         ${WPE_API_INSTALLED_HEADERS}
         Shared/API/glib
@@ -587,11 +587,11 @@ GI_INTROSPECT(WPEWebExtension ${WPE_API_VERSION} wpe/webkit-web-extension.h
     IDENTIFIER_PREFIX CyberKit
     SYMBOL_PREFIX webkit
     DEPENDENCIES
-        WPEJavaScriptCore
+        WPECyberScriptCore
         Soup-${SOUP_API_VERSION}:libsoup-${SOUP_API_VERSION}
     OPTIONS
-        -I${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
-        -I${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}
+        -I${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
+        -I${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}
     SOURCES
         ${WPE_WEB_EXTENSION_API_INSTALLED_HEADERS}
         ${WPE_DOM_SOURCES_FOR_INTROSPECTION}

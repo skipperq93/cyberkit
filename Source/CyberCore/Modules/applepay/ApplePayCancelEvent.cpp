@@ -31,7 +31,7 @@
 #include "ApplePaySessionError.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ApplePayCancelEvent);
 
@@ -51,6 +51,6 @@ EventInterface ApplePayCancelEvent::eventInterface() const
     return ApplePayCancelEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

@@ -34,7 +34,7 @@
 #include <wtf/Forward.h>
 #endif // ENABLE(WEB_AUTHN)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PublicKeyCredentialRequestOptions {
 #if ENABLE(WEB_AUTHN)
@@ -48,4 +48,4 @@ struct PublicKeyCredentialRequestOptions {
 #endif // ENABLE(WEB_AUTHN)
 };
 
-} // namespace WebCore
+} // namespace CyberCore

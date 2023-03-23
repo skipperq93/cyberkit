@@ -70,7 +70,7 @@
 #include "Settings.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(LayoutIntegration_LineLayout);
@@ -692,7 +692,7 @@ void LineLayout::updateInlineContentConstraints()
     auto border = logicalBorder(flow, isLeftToRightInlineDirection, writingMode);
     auto scrollbarSize = scrollbarLogicalSize(flow);
 
-    auto contentBoxWidth = WebCore::isHorizontalWritingMode(writingMode) ? flow.contentWidth() : flow.contentHeight();
+    auto contentBoxWidth = CyberCore::isHorizontalWritingMode(writingMode) ? flow.contentWidth() : flow.contentHeight();
     auto contentBoxLeft = border.horizontal.left + padding.horizontal.left;
     auto contentBoxTop = border.vertical.top + padding.vertical.top;
 

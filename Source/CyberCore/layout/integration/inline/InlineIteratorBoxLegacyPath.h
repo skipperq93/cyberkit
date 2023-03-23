@@ -31,7 +31,7 @@
 #include "TextBoxSelectableRange.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 enum class TextRunMode { Painting, Editing };

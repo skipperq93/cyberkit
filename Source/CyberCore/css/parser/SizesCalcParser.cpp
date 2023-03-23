@@ -34,7 +34,7 @@
 #include "RenderView.h"
 #include "SizesAttributeParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SizesCalcParser::SizesCalcParser(CSSParserTokenRange range, const Document& document)
     : m_result(0)
@@ -255,4 +255,4 @@ bool SizesCalcParser::calculate()
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

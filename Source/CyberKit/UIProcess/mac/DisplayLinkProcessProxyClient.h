@@ -31,7 +31,7 @@
 
 #include "Connection.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 

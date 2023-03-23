@@ -33,7 +33,7 @@
 #include <CyberCore/GtkVersioning.h>
 #include <glib/gi18n-lib.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<WebColorPickerGtk> WebColorPickerGtk::create(WebPageProxy& page, const Color& initialColor, const IntRect& rect)
@@ -109,6 +109,6 @@ void WebColorPickerGtk::showColorPicker(const Color& color)
     gtk_widget_show(m_colorChooser);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INPUT_TYPE_COLOR)

@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum BroadcastChannelIdentifierType { };
 using BroadcastChannelIdentifier = ObjectIdentifier<BroadcastChannelIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

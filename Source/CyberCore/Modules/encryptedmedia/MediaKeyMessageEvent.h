@@ -34,7 +34,7 @@
 #include "MediaKeyMessageType.h"
 #include <CyberScriptCore/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaKeyMessageEventInit;
 
@@ -64,6 +64,6 @@ private:
     RefPtr<JSC::ArrayBuffer> m_message;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

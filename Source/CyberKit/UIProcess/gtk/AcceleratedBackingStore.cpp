@@ -39,7 +39,7 @@
 #include "AcceleratedBackingStoreX11.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 bool AcceleratedBackingStore::checkRequirements()
@@ -78,4 +78,4 @@ AcceleratedBackingStore::AcceleratedBackingStore(WebPageProxy& webPage)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

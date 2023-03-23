@@ -45,7 +45,7 @@
 #include "Logging.h"
 #include "TransformationMatrix.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 BoxFactory::BoxFactory(TreeBuilder& builder, float pixelSnappingFactor)
@@ -301,5 +301,5 @@ const Layout::Box* BoxFactory::bodyBoxFromRootBox(const Layout::ElementBox& root
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

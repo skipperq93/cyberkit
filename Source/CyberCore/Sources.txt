@@ -668,9 +668,9 @@ bindings/js/ScriptModuleLoader.cpp
 bindings/js/ScriptWrappable.cpp
 bindings/js/SerializedScriptValue.cpp
 bindings/js/StructuredClone.cpp
-bindings/js/WebCoreJITOperations.cpp
-bindings/js/WebCoreJSClientData.cpp
-bindings/js/WebCoreTypedArrayController.cpp
+bindings/js/CyberCoreJITOperations.cpp
+bindings/js/CyberCoreJSClientData.cpp
+bindings/js/CyberCoreTypedArrayController.cpp
 bindings/js/WorkerModuleScriptLoader.cpp
 bindings/js/WindowProxy.cpp
 bridge/IdentifierRep.cpp
@@ -1219,7 +1219,7 @@ editing/VisiblePosition.cpp
 editing/VisibleSelection.cpp
 editing/VisibleUnits.cpp
 editing/WebContentReader.cpp
-editing/WebCorePasteboardFileReader.cpp
+editing/CyberCorePasteboardFileReader.cpp
 editing/WrapContentsInDummySpanCommand.cpp
 editing/markup.cpp
 fileapi/AsyncFileStream.cpp
@@ -2047,8 +2047,8 @@ platform/VideoEncoder.cpp
 platform/VideoDecoder.cpp
 platform/VideoFrame.cpp
 platform/VideoPixelFormat.cpp
-platform/WebCoreCrossThreadCopier.cpp
-platform/WebCorePersistentCoders.cpp
+platform/CyberCoreCrossThreadCopier.cpp
+platform/CyberCorePersistentCoders.cpp
 platform/Widget.cpp
 platform/animation/Animation.cpp
 platform/animation/AnimationList.cpp
@@ -3031,8 +3031,8 @@ SVGElementFactory.cpp
 StyleBuilderGenerated.cpp
 StylePropertyShorthandFunctions.cpp
 UserAgentStyleSheetsData.cpp
-WebCoreJSBuiltinInternals.cpp
-WebCoreJSBuiltins.cpp
+CyberCoreJSBuiltinInternals.cpp
+CyberCoreJSBuiltins.cpp
 
 // IDL bindings
 // FIXME: We should probably move these into ${DerivedSources}/bindings/js/ so they get bundled with the custom bindings.

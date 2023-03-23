@@ -31,7 +31,7 @@
 #include "Navigator.h"
 #include "WebXRSystem.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WebXRSystem& NavigatorWebXR::xr(Navigator& navigatorObject)
 {
@@ -52,6 +52,6 @@ NavigatorWebXR& NavigatorWebXR::from(Navigator& navigator)
     return *supplement;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

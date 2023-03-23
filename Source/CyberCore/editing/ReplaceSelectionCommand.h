@@ -28,7 +28,7 @@
 #include "CompositeEditCommand.h"
 #include "NodeTraversal.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentFragment;
 class Range;
@@ -141,4 +141,4 @@ private:
     bool m_ignoreMailBlockquote;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

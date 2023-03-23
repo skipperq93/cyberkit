@@ -30,7 +30,7 @@
 #include "CSSPrimitiveValue.h"
 #include "MIMETypeRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSImageSetOptionValue::Type::Type(String mimeType)
     : m_isSupported(MIMETypeRegistry::isSupportedImageMIMEType(mimeType))
@@ -150,4 +150,4 @@ void CSSImageSetOptionValue::setType(String&& type)
     m_type = { WTFMove(type) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

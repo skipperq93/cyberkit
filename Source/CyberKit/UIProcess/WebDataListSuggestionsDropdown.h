@@ -32,7 +32,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -50,6 +50,6 @@ protected:
     WeakPtr<WebPageProxy> m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATALIST_ELEMENT)

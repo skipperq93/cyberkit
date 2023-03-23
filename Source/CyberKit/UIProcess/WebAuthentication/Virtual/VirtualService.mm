@@ -39,7 +39,7 @@
 #import <wtf/UniqueRef.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 using namespace CyberCore;
 
@@ -84,6 +84,6 @@ void VirtualService::startDiscoveryInternal()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

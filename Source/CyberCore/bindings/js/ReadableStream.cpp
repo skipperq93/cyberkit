@@ -31,11 +31,11 @@
 #include "JSDOMConvertSequences.h"
 #include "JSReadableStreamSink.h"
 #include "JSReadableStreamSource.h"
-#include "WebCoreJSBuiltinInternals.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSBuiltinInternals.h"
+#include "CyberCoreJSClientData.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static inline ExceptionOr<JSObject*> invokeConstructor(JSC::JSGlobalObject& lexicalGlobalObject, const JSC::Identifier& identifier, const Function<void(MarkedArgumentBuffer&, JSC::JSGlobalObject&, JSDOMGlobalObject&)>& buildArguments)
@@ -67,7 +67,7 @@ static inline ExceptionOr<JSObject*> invokeConstructor(JSC::JSGlobalObject& lexi
 
 ExceptionOr<Ref<ReadableStream>> ReadableStream::create(JSC::JSGlobalObject& lexicalGlobalObject, RefPtr<ReadableStreamSource>&& source)
 {
-    auto& builtinNames = WebCore::builtinNames(lexicalGlobalObject.vm());
+    auto& builtinNames = CyberCore::builtinNames(lexicalGlobalObject.vm());
 
     auto objectOrException = invokeConstructor(lexicalGlobalObject, builtinNames.ReadableStreamPrivateName(), [&source](auto& args, auto& lexicalGlobalObject, auto& globalObject) {
         args.append(source ? toJSNewlyCreated(&lexicalGlobalObject, &globalObject, source.releaseNonNull()) : JSC::jsUndefined());
@@ -131,7 +131,7 @@ std::optional<std::pair<Ref<ReadableStream>, Ref<ReadableStream>>> ReadableStrea
 
 void ReadableStream::lock()
 {
-    auto& builtinNames = WebCore::builtinNames(m_globalObject->vm());
+    auto& builtinNames = CyberCore::builtinNames(m_globalObject->vm());
     invokeConstructor(*m_globalObject, builtinNames.ReadableStreamDefaultReaderPrivateName(), [this](auto& args, auto&, auto&) {
         args.append(readableStream());
     });

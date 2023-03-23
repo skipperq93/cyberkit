@@ -41,7 +41,7 @@
 #include <wtf/text/StringView.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !USE(UNIFIED_TEXT_CHECKING)
 
@@ -562,7 +562,7 @@ void TextCheckingHelper::markAllUngrammaticalPhrases() const
 
 bool TextCheckingHelper::unifiedTextCheckerEnabled() const
 {
-    return WebCore::unifiedTextCheckerEnabled(m_range.start.document().frame());
+    return CyberCore::unifiedTextCheckerEnabled(m_range.start.document().frame());
 }
 
 void checkTextOfParagraph(TextCheckerClient& client, StringView text, OptionSet<TextCheckingType> checkingTypes, Vector<TextCheckingResult>& results, const VisibleSelection& currentSelection)

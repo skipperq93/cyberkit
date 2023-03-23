@@ -26,7 +26,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RadioButtonGroup {
     WTF_MAKE_FAST_ALLOCATED;

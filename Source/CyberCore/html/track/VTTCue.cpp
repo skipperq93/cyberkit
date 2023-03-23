@@ -63,7 +63,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(VTTCue);
 WTF_MAKE_ISO_ALLOCATED_IMPL(VTTCueBox);
@@ -1431,6 +1431,6 @@ void VTTCue::cancelSpeaking()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

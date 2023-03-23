@@ -31,7 +31,7 @@
 
 #if ENABLE(APPLICATION_MANIFEST)
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ApplicationManifest> {
     using WrapperClass = _WKApplicationManifest;

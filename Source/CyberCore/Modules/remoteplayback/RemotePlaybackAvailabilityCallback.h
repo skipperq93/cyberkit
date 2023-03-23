@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemotePlaybackAvailabilityCallback : public RefCounted<RemotePlaybackAvailabilityCallback>, public ActiveDOMCallback {
 public:

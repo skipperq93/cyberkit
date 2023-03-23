@@ -29,7 +29,7 @@
 
 #include "LibWebRTCRtpTransformableFrame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void LibWebRTCRtpTransformBackend::setInputCallback(Callback&& callback)
 {
@@ -93,6 +93,6 @@ void LibWebRTCRtpTransformBackend::UnregisterTransformedFrameSinkCallback(uint32
     UnregisterTransformedFrameCallback();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

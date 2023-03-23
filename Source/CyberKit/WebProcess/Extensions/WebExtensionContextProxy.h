@@ -37,7 +37,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionAPINamespace;
 class WebExtensionMatchPattern;
@@ -89,7 +89,7 @@ private:
     void dispatchWebNavigationOnErrorOccurredEvent(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
 
     // Permissions support
-    void dispatchPermissionsEvent(const WebKit::WebExtensionEventListenerType&, HashSet<String> permissions, HashSet<String> origins);
+    void dispatchPermissionsEvent(const CyberKit::WebExtensionEventListenerType&, HashSet<String> permissions, HashSet<String> origins);
 
     // IPC::MessageReceiver.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
@@ -104,6 +104,6 @@ private:
     WeakFrameSet m_extensionContentFrames;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

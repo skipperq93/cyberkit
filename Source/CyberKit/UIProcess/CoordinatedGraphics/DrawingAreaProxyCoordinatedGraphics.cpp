@@ -46,7 +46,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 DrawingAreaProxyCoordinatedGraphics::DrawingAreaProxyCoordinatedGraphics(WebPageProxy& webPageProxy)
@@ -463,4 +463,4 @@ void DrawingAreaProxyCoordinatedGraphics::dispatchAfterEnsuringDrawing(Completio
     m_drawingMonitor->start(WTFMove(callbackFunction));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

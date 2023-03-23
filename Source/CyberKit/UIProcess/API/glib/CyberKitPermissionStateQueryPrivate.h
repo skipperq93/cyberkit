@@ -20,9 +20,9 @@
 #pragma once
 
 #include "APISecurityOrigin.h"
-#include "WebKitPermissionStateQuery.h"
+#include "CyberKitPermissionStateQuery.h"
 #include <CyberCore/PermissionState.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-WebKitPermissionStateQuery* webkitPermissionStateQueryCreate(const WTF::String& permissionName, API::SecurityOrigin&, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&&);
+CyberKitPermissionStateQuery* webkitPermissionStateQueryCreate(const WTF::String& permissionName, API::SecurityOrigin&, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&&);

@@ -34,7 +34,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithm;
 
@@ -68,6 +68,6 @@ private:
     HashMap<unsigned, std::pair<String, CryptoAlgorithmConstructor>> m_constructors WTF_GUARDED_BY_LOCK(m_lock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

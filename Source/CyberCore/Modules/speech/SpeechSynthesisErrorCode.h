@@ -26,7 +26,7 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SpeechSynthesisErrorCode {
     Canceled,
@@ -43,6 +43,6 @@ enum class SpeechSynthesisErrorCode {
     NotAllowed
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

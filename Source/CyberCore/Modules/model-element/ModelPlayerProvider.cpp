@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ModelPlayerProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ModelPlayerProvider::~ModelPlayerProvider() = default;
 

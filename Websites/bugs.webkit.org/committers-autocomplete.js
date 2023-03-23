@@ -23,8 +23,8 @@
 // OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 // DAMAGE.
 
-WebKitCommitters = (function() {
-    var COMMITTERS_URL = 'https://raw.githubusercontent.com/WebKit/WebKit/main/metadata/contributors.json';
+CyberKitCommitters = (function() {
+    var COMMITTERS_URL = 'https://raw.githubusercontent.com/CyberKit/CyberKit/main/metadata/contributors.json';
     var m_committers;
 
     function statusToType(status) {
@@ -314,7 +314,7 @@ WebKitCommitters = (function() {
             field.addEventListener("focus", function(e) { enableAutoComplete(e.target); }, false);
     }
 
-    WebKitCommitters.getCommitters(function (committers) {
+    CyberKitCommitters.getCommitters(function (committers) {
         m_committers = committers;
     });
 })();

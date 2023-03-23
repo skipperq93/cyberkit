@@ -35,7 +35,7 @@
 #include <wtf/ObjectIdentifier.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin;
 class MediaKeySystem;
@@ -73,6 +73,6 @@ private:
     CompletionHandler<void(Ref<DeferredPromise>&&)> m_allowCompletionHandler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

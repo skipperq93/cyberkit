@@ -95,7 +95,7 @@
 #include "SelectionGeometry.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLElement);
 
@@ -1398,14 +1398,14 @@ SelectionRenderingBehavior HTMLElement::selectionRenderingBehavior(const Node* n
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #ifndef NDEBUG
 
 // For use in the debugger
-void dumpInnerHTML(WebCore::HTMLElement*);
+void dumpInnerHTML(CyberCore::HTMLElement*);
 
-void dumpInnerHTML(WebCore::HTMLElement* element)
+void dumpInnerHTML(CyberCore::HTMLElement* element)
 {
     printf("%s\n", element->innerHTML().ascii().data());
 }

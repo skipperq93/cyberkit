@@ -24,7 +24,7 @@
 #include "DeprecatedCSSOMPrimitiveValue.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeprecatedCSSOMRGBColor final : public RefCounted<DeprecatedCSSOMRGBColor> {
 public:
@@ -62,4 +62,4 @@ private:
     Ref<DeprecatedCSSOMPrimitiveValue> m_alpha;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ class JSValue;
 
 OBJC_CLASS PKPaymentMerchantSession;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaymentMerchantSession {
 public:

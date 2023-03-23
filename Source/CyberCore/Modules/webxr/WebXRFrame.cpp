@@ -37,7 +37,7 @@
 #include <CyberScriptCore/GenericTypedArrayViewInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRFrame);
 
@@ -379,6 +379,6 @@ ExceptionOr<bool> WebXRFrame::fillPoses(const Document& document, const Vector<R
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

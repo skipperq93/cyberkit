@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OESTextureHalfFloatLinear final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(OESTextureHalfFloatLinear);
@@ -40,4 +40,4 @@ public:
     static bool supported(GraphicsContextGL&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -48,7 +48,7 @@
 #include <wtf/URL.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

@@ -83,7 +83,7 @@
 #import <CyberKit/WebHistory.h>
 #import <CyberKit/WebHistoryItemPrivate.h>
 #import <CyberKit/WebInspector.h>
-#import <CyberKit/WebKitNSStringExtras.h>
+#import <CyberKit/CyberKitNSStringExtras.h>
 #import <CyberKit/WebPluginDatabase.h>
 #import <CyberKit/WebPreferenceKeysPrivate.h>
 #import <CyberKit/WebPreferences.h>
@@ -442,7 +442,7 @@ static NSSet *allowedFontFamilySet()
         @"Trebuchet MS",
         @"Verdana",
         @"Webdings",
-        @"WebKit WeightWatcher",
+        @"CyberKit WeightWatcher",
         @"FontWithFeaturesOTF",
         @"FontWithFeaturesTTF",
         @"Wingdings 2",
@@ -518,15 +518,15 @@ static void activateTestingFonts()
 {
     constexpr NSString *fontFileNames[] = {
         @"AHEM____.TTF",
-        @"WebKitWeightWatcher100.ttf",
-        @"WebKitWeightWatcher200.ttf",
-        @"WebKitWeightWatcher300.ttf",
-        @"WebKitWeightWatcher400.ttf",
-        @"WebKitWeightWatcher500.ttf",
-        @"WebKitWeightWatcher600.ttf",
-        @"WebKitWeightWatcher700.ttf",
-        @"WebKitWeightWatcher800.ttf",
-        @"WebKitWeightWatcher900.ttf",
+        @"CyberKitWeightWatcher100.ttf",
+        @"CyberKitWeightWatcher200.ttf",
+        @"CyberKitWeightWatcher300.ttf",
+        @"CyberKitWeightWatcher400.ttf",
+        @"CyberKitWeightWatcher500.ttf",
+        @"CyberKitWeightWatcher600.ttf",
+        @"CyberKitWeightWatcher700.ttf",
+        @"CyberKitWeightWatcher800.ttf",
+        @"CyberKitWeightWatcher900.ttf",
         @"FontWithFeatures.ttf",
         @"FontWithFeatures.otf",
     };
@@ -886,8 +886,8 @@ static void setWebPreferencesForTestOptions(WebPreferences *preferences, const W
             preferences.userStyleSheetEnabled = NO;
 
         preferences.acceleratedDrawingEnabled = useAcceleratedDrawing;
-        preferences.editableLinkBehavior = WebKitEditableLinkOnlyLiveWithShiftKey;
-        preferences.frameFlattening = WebKitFrameFlatteningDisabled;
+        preferences.editableLinkBehavior = CyberKitEditableLinkOnlyLiveWithShiftKey;
+        preferences.frameFlattening = CyberKitFrameFlatteningDisabled;
         preferences.cacheModel = WebCacheModelDocumentBrowser;
 
         preferences.privateBrowsingEnabled = options.useEphemeralSession();
@@ -905,7 +905,7 @@ static void setWebPreferencesForTestOptions(WebPreferences *preferences, const W
             [preferences _setStringPreferenceForTestingWithValue:toNS(value).get() forKey:toNS(WTR::TestOptions::toCyberKitLegacyPreferenceKey(key)).get()];
 
         // FIXME: Tests currently expect this to always be false in CyberKitLegacy testing - https://bugs.webkit.org/show_bug.cgi?id=222864.
-        [preferences _setBoolPreferenceForTestingWithValue:NO forKey:@"WebKitLayoutFormattingContextEnabled"];
+        [preferences _setBoolPreferenceForTestingWithValue:NO forKey:@"CyberKitLayoutFormattingContextEnabled"];
     }];
 
     [WebPreferences _clearNetworkLoaderSession:^{ }];
@@ -932,8 +932,8 @@ static void setDefaultsToConsistentValuesForTesting()
         @"AppleHighlightColor": @"0.709800 0.835300 1.000000",
         @"AppleOtherHighlightColor":@"0.500000 0.500000 0.500000",
         @"AppleLanguages": @[ @"en" ],
-        WebKitEnableFullDocumentTeardownPreferenceKey: @YES,
-        @"UseWebKitWebInspector": @YES,
+        CyberKitEnableFullDocumentTeardownPreferenceKey: @YES,
+        @"UseCyberKitWebInspector": @YES,
 #if !PLATFORM(IOS_FAMILY)
         @"NSPreferredSpellServerLanguage": @"en_US",
         @"NSUserDictionaryReplacementItems": @[],
@@ -963,8 +963,8 @@ static void setDefaultsToConsistentValuesForTesting()
     NSDictionary *processInstanceDefaults = @{
         WebDatabaseDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"Databases"],
         WebStorageDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalStorage"],
-        WebKitLocalCacheDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalCache"],
-        WebKitResourceLoadStatisticsDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalStorage"],
+        CyberKitLocalCacheDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalCache"],
+        CyberKitResourceLoadStatisticsDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalStorage"],
     };
 
     [[NSUserDefaults standardUserDefaults] setVolatileDomain:processInstanceDefaults forName:NSArgumentDomain];
@@ -1315,7 +1315,7 @@ int DumpRenderTreeMain(int argc, const char *argv[])
 
 #if PLATFORM(IOS_FAMILY)
 IGNORE_WARNINGS_BEGIN("deprecated-implementations")
-    _UIApplicationLoadWebKit();
+    _UIApplicationLoadCyberKit();
 IGNORE_WARNINGS_END
 #endif
 
@@ -1838,7 +1838,7 @@ static void resetWebViewToConsistentState(const WTR::TestOptions& options, Reset
 }
 
 #if PLATFORM(IOS_FAMILY)
-// Work around <rdar://problem/9909073> WebKit's method of calling delegates on
+// Work around <rdar://problem/9909073> CyberKit's method of calling delegates on
 // the main thread is not thread safe. If the web thread is attempting to call
 // out to a delegate method on the main thread, we want to spin the main thread
 // run loop until the delegate method completes before taking the web thread

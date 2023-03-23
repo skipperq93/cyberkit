@@ -55,7 +55,7 @@ namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcessProxy;
 class WebProcessProxy;
@@ -139,4 +139,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

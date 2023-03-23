@@ -1,4 +1,4 @@
-Test for WebKit bug 15106: Dragging text inside an element with "user-drag: element" and "user-select: none" should initiate a drag
+Test for CyberKit bug 15106: Dragging text inside an element with "user-drag: element" and "user-select: none" should initiate a drag
 
 SUCCESS Expected '3' and got it.
 

@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class SQLTransaction;
@@ -156,4 +156,4 @@ private:
     Vector<String>& m_result;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

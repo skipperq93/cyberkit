@@ -55,7 +55,7 @@ webkit_dom_html_select_element_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_html_select_element_item(CyberKitDOMHTMLSelectElement* self, gulong index);
@@ -67,7 +67,7 @@ webkit_dom_html_select_element_item(CyberKitDOMHTMLSelectElement* self, gulong i
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_html_select_element_named_item(CyberKitDOMHTMLSelectElement* self, const gchar* name);
@@ -80,7 +80,7 @@ webkit_dom_html_select_element_named_item(CyberKitDOMHTMLSelectElement* self, co
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_add(CyberKitDOMHTMLSelectElement* self, CyberKitDOMHTMLElement* element, CyberKitDOMHTMLElement* before, GError** error);
@@ -91,7 +91,7 @@ webkit_dom_html_select_element_add(CyberKitDOMHTMLSelectElement* self, CyberKitD
  * @index: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_remove(CyberKitDOMHTMLSelectElement* self, glong index);
@@ -102,7 +102,7 @@ webkit_dom_html_select_element_remove(CyberKitDOMHTMLSelectElement* self, glong 
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_select_element_get_autofocus(CyberKitDOMHTMLSelectElement* self);
@@ -113,7 +113,7 @@ webkit_dom_html_select_element_get_autofocus(CyberKitDOMHTMLSelectElement* self)
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_autofocus(CyberKitDOMHTMLSelectElement* self, gboolean value);
@@ -124,7 +124,7 @@ webkit_dom_html_select_element_set_autofocus(CyberKitDOMHTMLSelectElement* self,
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_select_element_get_disabled(CyberKitDOMHTMLSelectElement* self);
@@ -135,7 +135,7 @@ webkit_dom_html_select_element_get_disabled(CyberKitDOMHTMLSelectElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_disabled(CyberKitDOMHTMLSelectElement* self, gboolean value);
@@ -146,7 +146,7 @@ webkit_dom_html_select_element_set_disabled(CyberKitDOMHTMLSelectElement* self, 
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLFormElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLFormElement*
 webkit_dom_html_select_element_get_form(CyberKitDOMHTMLSelectElement* self);
@@ -157,7 +157,7 @@ webkit_dom_html_select_element_get_form(CyberKitDOMHTMLSelectElement* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_select_element_get_multiple(CyberKitDOMHTMLSelectElement* self);
@@ -168,7 +168,7 @@ webkit_dom_html_select_element_get_multiple(CyberKitDOMHTMLSelectElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_multiple(CyberKitDOMHTMLSelectElement* self, gboolean value);
@@ -179,7 +179,7 @@ webkit_dom_html_select_element_set_multiple(CyberKitDOMHTMLSelectElement* self, 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_select_element_get_name(CyberKitDOMHTMLSelectElement* self);
@@ -190,7 +190,7 @@ webkit_dom_html_select_element_get_name(CyberKitDOMHTMLSelectElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_name(CyberKitDOMHTMLSelectElement* self, const gchar* value);
@@ -201,7 +201,7 @@ webkit_dom_html_select_element_set_name(CyberKitDOMHTMLSelectElement* self, cons
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_select_element_get_size(CyberKitDOMHTMLSelectElement* self);
@@ -212,7 +212,7 @@ webkit_dom_html_select_element_get_size(CyberKitDOMHTMLSelectElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_size(CyberKitDOMHTMLSelectElement* self, glong value);
@@ -223,7 +223,7 @@ webkit_dom_html_select_element_set_size(CyberKitDOMHTMLSelectElement* self, glon
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_select_element_get_select_type(CyberKitDOMHTMLSelectElement* self);
@@ -234,7 +234,7 @@ webkit_dom_html_select_element_get_select_type(CyberKitDOMHTMLSelectElement* sel
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLOptionsCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLOptionsCollection*
 webkit_dom_html_select_element_get_options(CyberKitDOMHTMLSelectElement* self);
@@ -245,7 +245,7 @@ webkit_dom_html_select_element_get_options(CyberKitDOMHTMLSelectElement* self);
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_html_select_element_get_length(CyberKitDOMHTMLSelectElement* self);
@@ -257,7 +257,7 @@ webkit_dom_html_select_element_get_length(CyberKitDOMHTMLSelectElement* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_length(CyberKitDOMHTMLSelectElement* self, gulong value, GError** error);
@@ -268,7 +268,7 @@ webkit_dom_html_select_element_set_length(CyberKitDOMHTMLSelectElement* self, gu
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_select_element_get_selected_index(CyberKitDOMHTMLSelectElement* self);
@@ -279,7 +279,7 @@ webkit_dom_html_select_element_get_selected_index(CyberKitDOMHTMLSelectElement* 
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_selected_index(CyberKitDOMHTMLSelectElement* self, glong value);
@@ -290,7 +290,7 @@ webkit_dom_html_select_element_set_selected_index(CyberKitDOMHTMLSelectElement* 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_select_element_get_value(CyberKitDOMHTMLSelectElement* self);
@@ -301,7 +301,7 @@ webkit_dom_html_select_element_get_value(CyberKitDOMHTMLSelectElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_select_element_set_value(CyberKitDOMHTMLSelectElement* self, const gchar* value);
@@ -312,7 +312,7 @@ webkit_dom_html_select_element_set_value(CyberKitDOMHTMLSelectElement* self, con
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_select_element_get_will_validate(CyberKitDOMHTMLSelectElement* self);

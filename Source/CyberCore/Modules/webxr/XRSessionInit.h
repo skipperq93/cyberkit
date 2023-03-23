@@ -34,13 +34,13 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct XRSessionInit {
     Vector<JSC::JSValue> requiredFeatures;
     Vector<JSC::JSValue> optionalFeatures;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

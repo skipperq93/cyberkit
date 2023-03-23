@@ -28,10 +28,10 @@
 #include "JSXPathResult.h"
 
 #include "JSNodeCustom.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "XPathValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSXPathResult::visitAdditionalChildren(Visitor& visitor)
@@ -40,10 +40,10 @@ void JSXPathResult::visitAdditionalChildren(Visitor& visitor)
     if (value.isNodeSet()) {
         // FIXME: This looks like it might race, but I'm not sure.
         for (auto& node : value.toNodeSet())
-            addWebCoreOpaqueRoot(visitor, node.get());
+            addCyberCoreOpaqueRoot(visitor, node.get());
     }
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSXPathResult);
 
-} // namespace WebCore
+} // namespace CyberCore

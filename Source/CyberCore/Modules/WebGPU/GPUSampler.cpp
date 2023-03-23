@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUSampler.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUSampler::label() const
 {

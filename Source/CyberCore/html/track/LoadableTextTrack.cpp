@@ -38,7 +38,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(LoadableTextTrack);
 
@@ -171,6 +171,6 @@ bool LoadableTextTrack::isDefault() const
     return m_trackElement && m_trackElement->hasAttributeWithoutSynchronization(defaultAttr);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

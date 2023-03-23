@@ -7,7 +7,7 @@ async function maybeGarbageCollectAsync() {
     // Exposed in SpiderMonkey shell as well
     await self.gc();
   } else if (self.GCController) {
-    // Present in some WebKit development environments
+    // Present in some CyberKit development environments
     await GCController.collect();
   } else {
     /* eslint-disable no-console */

@@ -28,7 +28,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebProcessPool;
 }
 
@@ -39,8 +39,8 @@ class AutomationClient {
 public:
     virtual ~AutomationClient() { }
 
-    virtual bool allowsRemoteAutomation(WebKit::WebProcessPool*) { return false; }
-    virtual void didRequestAutomationSession(WebKit::WebProcessPool*, const WTF::String&) { }
+    virtual bool allowsRemoteAutomation(CyberKit::WebProcessPool*) { return false; }
+    virtual void didRequestAutomationSession(CyberKit::WebProcessPool*, const WTF::String&) { }
 };
 
 } // namespace API

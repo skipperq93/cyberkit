@@ -18,16 +18,16 @@
  */
 
 #include "config.h"
-#include "WebKitNotification.h"
+#include "CyberKitNotification.h"
 
-#include "WebKitNotificationPrivate.h"
+#include "CyberKitNotificationPrivate.h"
 #include "WebNotification.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
 /**
- * WebKitNotification:
+ * CyberKitNotification:
  *
  * Holds information about a notification that should be shown to the user.
  *
@@ -50,8 +50,8 @@ enum {
     LAST_SIGNAL
 };
 
-struct _WebKitNotificationPrivate {
-    RefPtr<WebKit::WebNotification> notification;
+struct _CyberKitNotificationPrivate {
+    RefPtr<CyberKit::WebNotification> notification;
     CString title;
     CString body;
     CString tag;
@@ -60,11 +60,11 @@ struct _WebKitNotificationPrivate {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitNotification, webkit_notification, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitNotification, webkit_notification, G_TYPE_OBJECT, GObject)
 
 static void webkitNotificationGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitNotification* notification = WEBKIT_NOTIFICATION(object);
+    CyberKitNotification* notification = WEBKIT_NOTIFICATION(object);
 
     switch (propId) {
     case PROP_ID:
@@ -84,13 +84,13 @@ static void webkitNotificationGetProperty(GObject* object, guint propId, GValue*
     }
 }
 
-static void webkit_notification_class_init(WebKitNotificationClass* notificationClass)
+static void webkit_notification_class_init(CyberKitNotificationClass* notificationClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(notificationClass);
     objectClass->get_property = webkitNotificationGetProperty;
 
     /**
-     * WebKitNotification:id:
+     * CyberKitNotification:id:
      *
      * The unique id for the notification.
      *
@@ -104,7 +104,7 @@ static void webkit_notification_class_init(WebKitNotificationClass* notification
             WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitNotification:title:
+     * CyberKitNotification:title:
      *
      * The title for the notification.
      *
@@ -118,7 +118,7 @@ static void webkit_notification_class_init(WebKitNotificationClass* notification
             WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitNotification:body:
+     * CyberKitNotification:body:
      *
      * The body for the notification.
      *
@@ -132,7 +132,7 @@ static void webkit_notification_class_init(WebKitNotificationClass* notification
             WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitNotification:tag:
+     * CyberKitNotification:tag:
      *
      * The tag identifier for the notification.
      *
@@ -146,8 +146,8 @@ static void webkit_notification_class_init(WebKitNotificationClass* notification
             WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitNotification::closed:
-     * @notification: the #WebKitNotification on which the signal is emitted
+     * CyberKitNotification::closed:
+     * @notification: the #CyberKitNotification on which the signal is emitted
      *
      * Emitted when a notification has been withdrawn.
      *
@@ -167,8 +167,8 @@ static void webkit_notification_class_init(WebKitNotificationClass* notification
             G_TYPE_NONE, 0);
 
     /**
-     * WebKitNotification::clicked:
-     * @notification: the #WebKitNotification on which the signal is emitted
+     * CyberKitNotification::clicked:
+     * @notification: the #CyberKitNotification on which the signal is emitted
      *
      * Emitted when a notification has been clicked. See webkit_notification_clicked().
      *
@@ -185,21 +185,21 @@ static void webkit_notification_class_init(WebKitNotificationClass* notification
             G_TYPE_NONE, 0);
 }
 
-WebKitNotification* webkitNotificationCreate(WebKit::WebNotification& webNotification)
+CyberKitNotification* webkitNotificationCreate(CyberKit::WebNotification& webNotification)
 {
-    WebKitNotification* notification = WEBKIT_NOTIFICATION(g_object_new(WEBKIT_TYPE_NOTIFICATION, nullptr));
+    CyberKitNotification* notification = WEBKIT_NOTIFICATION(g_object_new(WEBKIT_TYPE_NOTIFICATION, nullptr));
     notification->priv->notification = &webNotification;
     return notification;
 }
 
-const WebKit::WebNotification& webkitNotificationGetWebNotification(WebKitNotification* notification)
+const CyberKit::WebNotification& webkitNotificationGetWebNotification(CyberKitNotification* notification)
 {
     return *notification->priv->notification;
 }
 
 /**
  * webkit_notification_get_id:
- * @notification: a #WebKitNotification
+ * @notification: a #CyberKitNotification
  *
  * Obtains the unique id for the notification.
  *
@@ -207,7 +207,7 @@ const WebKit::WebNotification& webkitNotificationGetWebNotification(WebKitNotifi
  *
  * Since: 2.8
  */
-guint64 webkit_notification_get_id(WebKitNotification* notification)
+guint64 webkit_notification_get_id(CyberKitNotification* notification)
 {
     g_return_val_if_fail(WEBKIT_IS_NOTIFICATION(notification), 0);
 
@@ -216,7 +216,7 @@ guint64 webkit_notification_get_id(WebKitNotification* notification)
 
 /**
  * webkit_notification_get_title:
- * @notification: a #WebKitNotification
+ * @notification: a #CyberKitNotification
  *
  * Obtains the title for the notification.
  *
@@ -224,7 +224,7 @@ guint64 webkit_notification_get_id(WebKitNotification* notification)
  *
  * Since: 2.8
  */
-const gchar* webkit_notification_get_title(WebKitNotification* notification)
+const gchar* webkit_notification_get_title(CyberKitNotification* notification)
 {
     g_return_val_if_fail(WEBKIT_IS_NOTIFICATION(notification), nullptr);
 
@@ -236,7 +236,7 @@ const gchar* webkit_notification_get_title(WebKitNotification* notification)
 
 /**
  * webkit_notification_get_body:
- * @notification: a #WebKitNotification
+ * @notification: a #CyberKitNotification
  *
  * Obtains the body for the notification.
  *
@@ -244,7 +244,7 @@ const gchar* webkit_notification_get_title(WebKitNotification* notification)
  *
  * Since: 2.8
  */
-const gchar* webkit_notification_get_body(WebKitNotification* notification)
+const gchar* webkit_notification_get_body(CyberKitNotification* notification)
 {
     g_return_val_if_fail(WEBKIT_IS_NOTIFICATION(notification), nullptr);
 
@@ -256,7 +256,7 @@ const gchar* webkit_notification_get_body(WebKitNotification* notification)
 
 /**
  * webkit_notification_get_tag:
- * @notification: a #WebKitNotification
+ * @notification: a #CyberKitNotification
  *
  * Obtains the tag identifier for the notification.
  *
@@ -264,7 +264,7 @@ const gchar* webkit_notification_get_body(WebKitNotification* notification)
  *
  * Since: 2.16
  */
-const gchar* webkit_notification_get_tag(WebKitNotification* notification)
+const gchar* webkit_notification_get_tag(CyberKitNotification* notification)
 {
     g_return_val_if_fail(WEBKIT_IS_NOTIFICATION(notification), nullptr);
 
@@ -276,13 +276,13 @@ const gchar* webkit_notification_get_tag(WebKitNotification* notification)
 
 /**
  * webkit_notification_close:
- * @notification: a #WebKitNotification
+ * @notification: a #CyberKitNotification
  *
  * Closes the notification.
  *
  * Since: 2.8
  */
-void webkit_notification_close(WebKitNotification* notification)
+void webkit_notification_close(CyberKitNotification* notification)
 {
     g_return_if_fail(WEBKIT_IS_NOTIFICATION(notification));
 
@@ -291,16 +291,16 @@ void webkit_notification_close(WebKitNotification* notification)
 
 /**
  * webkit_notification_clicked:
- * @notification: a #WebKitNotification
+ * @notification: a #CyberKitNotification
  *
- * Tells WebKit the notification has been clicked.
+ * Tells CyberKit the notification has been clicked.
  *
  * This will emit the
- * #WebKitNotification::clicked signal.
+ * #CyberKitNotification::clicked signal.
  *
  * Since: 2.12
  */
-void webkit_notification_clicked(WebKitNotification* notification)
+void webkit_notification_clicked(CyberKitNotification* notification)
 {
     g_return_if_fail(WEBKIT_IS_NOTIFICATION(notification));
 

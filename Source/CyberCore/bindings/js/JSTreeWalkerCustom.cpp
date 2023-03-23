@@ -21,18 +21,18 @@
 #include "JSTreeWalker.h"
 
 #include "Node.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/SlotVisitorInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSTreeWalker::visitAdditionalChildren(Visitor& visitor)
 {
     if (auto* filter = wrapped().filter())
-        addWebCoreOpaqueRoot(visitor, *filter);
+        addCyberCoreOpaqueRoot(visitor, *filter);
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSTreeWalker);
 
-} // namespace WebCore
+} // namespace CyberCore

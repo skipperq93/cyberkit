@@ -42,7 +42,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class FilterOperations;
@@ -266,6 +266,6 @@ private:
     bool m_hasAcceleratedPropertyOverriddenByCascadeProperty { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ANIMATION_EFFECT(KeyframeEffect, isKeyframeEffect());

@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMInstance;
 class SharedBuffer;
@@ -46,6 +46,6 @@ public:
     virtual void cdmClientUnrequestedInitializationDataReceived(const String&, Ref<SharedBuffer>&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

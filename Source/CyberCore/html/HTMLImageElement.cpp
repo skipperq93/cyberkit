@@ -67,7 +67,7 @@
 #include "ImageControlsMac.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLImageElement);
 

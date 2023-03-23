@@ -39,7 +39,7 @@
 #include "RealtimeMediaSource.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaStream);
 
@@ -387,6 +387,6 @@ WTFLogChannel& MediaStream::logChannel() const
 }
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

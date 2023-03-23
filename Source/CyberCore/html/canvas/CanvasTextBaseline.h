@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CanvasTextBaseline { Top, Hanging, Middle, Alphabetic, Ideographic, Bottom };
 

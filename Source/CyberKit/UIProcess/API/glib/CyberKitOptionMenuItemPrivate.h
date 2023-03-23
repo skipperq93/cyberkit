@@ -19,14 +19,14 @@
 
 #pragma once
 
-#include "WebKitOptionMenuItem.h"
+#include "CyberKitOptionMenuItem.h"
 #include "WebPopupItem.h"
 #include <wtf/text/CString.h>
 
-struct _WebKitOptionMenuItem {
-    _WebKitOptionMenuItem() = default;
+struct _CyberKitOptionMenuItem {
+    _CyberKitOptionMenuItem() = default;
 
-    _WebKitOptionMenuItem(const WebKit::WebPopupItem& item)
+    _CyberKitOptionMenuItem(const CyberKit::WebPopupItem& item)
         : label(item.m_text.stripWhiteSpace().utf8())
         , isGroupLabel(item.m_isLabel)
         , isGroupChild(item.m_text.startsWith("    "_s))
@@ -36,7 +36,7 @@ struct _WebKitOptionMenuItem {
             tooltip = item.m_toolTip.utf8();
     }
 
-    explicit _WebKitOptionMenuItem(_WebKitOptionMenuItem* other)
+    explicit _CyberKitOptionMenuItem(_CyberKitOptionMenuItem* other)
         : label(other->label)
         , tooltip(other->tooltip)
         , isGroupLabel(other->isGroupLabel)

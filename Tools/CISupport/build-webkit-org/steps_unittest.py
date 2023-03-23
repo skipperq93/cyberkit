@@ -992,7 +992,7 @@ class TestRunCyberKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunJavaScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         os.environ['RESULTS_SERVER_API_KEY'] = 'test-api-key'
@@ -1004,8 +1004,8 @@ class TestRunJavaScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def configureStep(self, platform=None, fullPlatform=None, configuration=None):
-        self.setupStep(RunJavaScriptCoreTests())
-        self.commandExtra = RunJavaScriptCoreTests.commandExtra
+        self.setupStep(RunCyberScriptCoreTests())
+        self.commandExtra = RunCyberScriptCoreTests.commandExtra
         if platform:
             self.setProperty('platform', platform)
         if fullPlatform:

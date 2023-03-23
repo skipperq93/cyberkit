@@ -31,7 +31,7 @@
 #include "config.h"
 #include "CSSTransformListValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSTransformListValue::CSSTransformListValue(CSSValueListBuilder builder)
     : CSSValueContainingVector(TransformListClass, SpaceSeparator, WTFMove(builder))

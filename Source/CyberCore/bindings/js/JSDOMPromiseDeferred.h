@@ -32,7 +32,7 @@
 #include <CyberScriptCore/CatchScope.h>
 #include <CyberScriptCore/JSPromise.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMWindow;
 enum class RejectAsHandled : uint8_t { No, Yes };
@@ -368,4 +368,4 @@ inline JSC::JSValue callPromiseFunction(JSC::JSGlobalObject& lexicalGlobalObject
     return callPromiseFunction<bindingPromiseFunctionAdapter<bindingPromiseFunction>>(lexicalGlobalObject, callFrame);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

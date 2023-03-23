@@ -28,21 +28,21 @@
 #if ENABLE(WEBGL)
 
 #include "JSWebGLRenderingContext.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
 void JSWebGLRenderingContext::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped());
+    addCyberCoreOpaqueRoot(visitor, wrapped());
     wrapped().addMembersToOpaqueRoots(visitor);
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSWebGLRenderingContext);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -28,7 +28,7 @@
 
 #if USE(GTK4)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<ViewSnapshot> ViewSnapshot::create(GRefPtr<GdkTexture>&& texture)
@@ -83,6 +83,6 @@ CyberCore::IntSize ViewSnapshot::size() const
     return { width, height };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

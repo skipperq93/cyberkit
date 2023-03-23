@@ -32,7 +32,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRViewport : public RefCounted<WebXRViewport> {
     WTF_MAKE_ISO_ALLOCATED(WebXRViewport);
@@ -53,6 +53,6 @@ private:
     IntRect m_viewport;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

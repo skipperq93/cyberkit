@@ -27,7 +27,7 @@
 
 #include "WebURLSchemeHandler.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebURLSchemeTask;
 
@@ -43,4 +43,4 @@ private:
     void platformStopTask(WebPageProxy&, WebURLSchemeTask&) final { }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

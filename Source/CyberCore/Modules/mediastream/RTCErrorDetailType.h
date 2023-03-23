@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCErrorDetailType : uint8_t {
     DataChannelFailure,
@@ -37,18 +37,18 @@ enum class RTCErrorDetailType : uint8_t {
     SdpSyntaxError
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::RTCErrorDetailType> {
+template<> struct EnumTraits<CyberCore::RTCErrorDetailType> {
     using values = EnumValues<
-        WebCore::RTCErrorDetailType,
-        WebCore::RTCErrorDetailType::DataChannelFailure,
-        WebCore::RTCErrorDetailType::DtlsFailure,
-        WebCore::RTCErrorDetailType::FingerprintFailure,
-        WebCore::RTCErrorDetailType::SctpFailure,
-        WebCore::RTCErrorDetailType::SdpSyntaxError
+        CyberCore::RTCErrorDetailType,
+        CyberCore::RTCErrorDetailType::DataChannelFailure,
+        CyberCore::RTCErrorDetailType::DtlsFailure,
+        CyberCore::RTCErrorDetailType::FingerprintFailure,
+        CyberCore::RTCErrorDetailType::SctpFailure,
+        CyberCore::RTCErrorDetailType::SdpSyntaxError
     >;
 };
 

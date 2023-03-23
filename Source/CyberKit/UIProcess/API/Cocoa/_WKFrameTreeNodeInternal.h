@@ -27,7 +27,7 @@
 #import "WKObject.h"
 #import "_WKFrameTreeNode.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::FrameTreeNode> {
     using WrapperClass = _WKFrameTreeNode;

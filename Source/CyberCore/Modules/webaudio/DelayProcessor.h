@@ -29,7 +29,7 @@
 #include <memory>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioDSPKernel;
     
@@ -48,4 +48,4 @@ private:
     Ref<AudioParam> m_delayTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wpe/wpe.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 int ProcessProviderLibWPE::wpeProcessType(ProcessLauncher::ProcessType processType)
 {
@@ -86,6 +86,6 @@ void ProcessProviderLibWPE::kill(ProcessID processID)
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWPE) && !ENABLE(BUBBLEWRAP_SANDBOX)

@@ -28,7 +28,7 @@
 #include "LayoutElementBox.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class InitialContainingBlock final : public ElementBox {

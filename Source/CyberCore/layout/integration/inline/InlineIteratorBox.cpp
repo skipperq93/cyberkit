@@ -34,7 +34,7 @@
 #include "RenderLineBreak.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 BoxIterator::BoxIterator(Box::PathVariant&& pathVariant)

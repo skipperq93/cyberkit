@@ -43,7 +43,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(VIDEO)
 class RemoteVideoFrameObjectHeapProxy;
@@ -421,7 +421,7 @@ private:
 #endif
 };
 
-// The GCGL types map to following WebKit IPC types. The list is used by generate-gpup-webgl script.
+// The GCGL types map to following CyberKit IPC types. The list is used by generate-gpup-webgl script.
 static_assert(std::is_same_v<GCGLenum, uint32_t>);
 static_assert(sizeof(GCGLboolean) == sizeof(bool));
 static_assert(std::is_same_v<GCGLbitfield, uint32_t>);
@@ -448,6 +448,6 @@ static_assert(sizeof(GCGLvoidptr) <= sizeof(uint64_t));
 static_assert(sizeof(GCGLsync) <= sizeof(uint64_t) && sizeof(GCGLsync) == sizeof(intptr_t));
 // End of list used by generate-gpup-webgl script.
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

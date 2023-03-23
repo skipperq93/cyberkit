@@ -28,7 +28,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(BoxRareGeometry);
@@ -71,5 +71,5 @@ FloatRoundedRect roundedInsetBorderForRect(const FloatRect& borderRect, const Fl
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

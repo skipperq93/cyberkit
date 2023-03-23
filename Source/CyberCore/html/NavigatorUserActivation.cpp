@@ -30,7 +30,7 @@
 #include "UserActivation.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorUserActivation::NavigatorUserActivation(Navigator& navigator)
     : m_userActivation(UserActivation::create(navigator))

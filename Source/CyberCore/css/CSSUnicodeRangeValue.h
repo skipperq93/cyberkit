@@ -28,7 +28,7 @@
 #include "CSSValue.h"
 #include <unicode/umachine.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSUnicodeRangeValue final : public CSSValue {
 public:
@@ -56,6 +56,6 @@ private:
     UChar32 m_to;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSUnicodeRangeValue, isUnicodeRangeValue())

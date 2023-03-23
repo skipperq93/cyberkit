@@ -19,24 +19,24 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitWebInspector_h
-#define WebKitWebInspector_h
+#ifndef CyberKitWebInspector_h
+#define CyberKitWebInspector_h
 
 #include <glib-object.h>
-#include <webkit/WebKitDefines.h>
-#include <webkit/WebKitWebViewBase.h>
+#include <webkit/CyberKitDefines.h>
+#include <webkit/CyberKitWebViewBase.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_INSPECTOR            (webkit_web_inspector_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_WEB_INSPECTOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_INSPECTOR, WebKitWebInspector))
+#define WEBKIT_WEB_INSPECTOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_INSPECTOR, CyberKitWebInspector))
 #define WEBKIT_IS_WEB_INSPECTOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_WEB_INSPECTOR))
-#define WEBKIT_WEB_INSPECTOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_INSPECTOR, WebKitWebInspectorClass))
+#define WEBKIT_WEB_INSPECTOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_INSPECTOR, CyberKitWebInspectorClass))
 #define WEBKIT_IS_WEB_INSPECTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_WEB_INSPECTOR))
-#define WEBKIT_WEB_INSPECTOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_INSPECTOR, WebKitWebInspectorClass))
+#define WEBKIT_WEB_INSPECTOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_INSPECTOR, CyberKitWebInspectorClass))
 
-struct _WebKitWebInspectorClass {
+struct _CyberKitWebInspectorClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -47,34 +47,34 @@ struct _WebKitWebInspectorClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitWebInspector, webkit_web_inspector, WEBKIT, WEB_INSPECTOR, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitWebInspector, webkit_web_inspector, WEBKIT, WEB_INSPECTOR, GObject)
 
-WEBKIT_API WebKitWebViewBase *
-webkit_web_inspector_get_web_view        (WebKitWebInspector *inspector);
+WEBKIT_API CyberKitWebViewBase *
+webkit_web_inspector_get_web_view        (CyberKitWebInspector *inspector);
 
 WEBKIT_API const char *
-webkit_web_inspector_get_inspected_uri   (WebKitWebInspector *inspector);
+webkit_web_inspector_get_inspected_uri   (CyberKitWebInspector *inspector);
 
 WEBKIT_API gboolean
-webkit_web_inspector_is_attached         (WebKitWebInspector *inspector);
+webkit_web_inspector_is_attached         (CyberKitWebInspector *inspector);
 
 WEBKIT_API void
-webkit_web_inspector_attach              (WebKitWebInspector *inspector);
+webkit_web_inspector_attach              (CyberKitWebInspector *inspector);
 
 WEBKIT_API void
-webkit_web_inspector_detach              (WebKitWebInspector *inspector);
+webkit_web_inspector_detach              (CyberKitWebInspector *inspector);
 
 WEBKIT_API void
-webkit_web_inspector_show                (WebKitWebInspector *inspector);
+webkit_web_inspector_show                (CyberKitWebInspector *inspector);
 
 WEBKIT_API void
-webkit_web_inspector_close               (WebKitWebInspector *inspector);
+webkit_web_inspector_close               (CyberKitWebInspector *inspector);
 
 WEBKIT_API guint
-webkit_web_inspector_get_attached_height (WebKitWebInspector *inspector);
+webkit_web_inspector_get_attached_height (CyberKitWebInspector *inspector);
 
 WEBKIT_API gboolean
-webkit_web_inspector_get_can_attach      (WebKitWebInspector* inspector);
+webkit_web_inspector_get_can_attach      (CyberKitWebInspector* inspector);
 
 G_END_DECLS
 

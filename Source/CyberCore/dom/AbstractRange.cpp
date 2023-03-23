@@ -28,7 +28,7 @@
 
 #include "SimpleRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SimpleRange makeSimpleRange(const AbstractRange& range)
 {

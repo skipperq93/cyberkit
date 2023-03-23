@@ -29,7 +29,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const String& mousePointerEventType()
 {
@@ -49,4 +49,4 @@ const String& touchPointerEventType()
     return touchType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

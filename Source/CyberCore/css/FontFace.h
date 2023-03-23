@@ -39,7 +39,7 @@ class ArrayBuffer;
 class ArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename IDLType> class DOMPromiseProxyWithResolveCallback;
 

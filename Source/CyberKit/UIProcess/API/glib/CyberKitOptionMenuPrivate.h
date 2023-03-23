@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "WebKitOptionMenu.h"
-#include "WebKitPopupMenu.h"
+#include "CyberKitOptionMenu.h"
+#include "CyberKitPopupMenu.h"
 
-WebKitOptionMenu* webkitOptionMenuCreate(WebKit::WebKitPopupMenu&, const Vector<WebKit::WebPopupItem>&, int32_t selectedIndex);
-void webkitOptionMenuSetEvent(WebKitOptionMenu*, GdkEvent*);
+CyberKitOptionMenu* webkitOptionMenuCreate(CyberKit::CyberKitPopupMenu&, const Vector<CyberKit::WebPopupItem>&, int32_t selectedIndex);
+void webkitOptionMenuSetEvent(CyberKitOptionMenu*, GdkEvent*);

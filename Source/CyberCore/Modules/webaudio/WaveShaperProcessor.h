@@ -32,7 +32,7 @@
 #include <wtf/Lock.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // WaveShaperProcessor is an AudioDSPKernelProcessor which uses WaveShaperDSPKernel objects to implement non-linear distortion effects.
 
@@ -72,4 +72,4 @@ private:
     mutable Lock m_processLock;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

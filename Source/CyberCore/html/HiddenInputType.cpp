@@ -39,7 +39,7 @@
 #include "InputTypeNames.h"
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -106,4 +106,4 @@ bool HiddenInputType::shouldRespectHeightAndWidthAttributes()
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

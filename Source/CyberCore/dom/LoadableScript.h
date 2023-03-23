@@ -29,7 +29,7 @@
 #include <wtf/HashCountedSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LoadableScriptClient;
 class ScriptElement;

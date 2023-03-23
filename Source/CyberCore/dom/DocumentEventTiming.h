@@ -28,7 +28,7 @@
 
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DocumentEventTiming {
     MonotonicTime domLoading;
@@ -38,4 +38,4 @@ struct DocumentEventTiming {
     MonotonicTime domComplete;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

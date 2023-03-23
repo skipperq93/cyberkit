@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 class WebProcessPool;

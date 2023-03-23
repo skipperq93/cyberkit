@@ -27,7 +27,7 @@
 
 #include "HTMLInputElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AutofillElements {
     WTF_MAKE_FAST_ALLOCATED;
@@ -43,4 +43,4 @@ private:
     RefPtr<HTMLInputElement> m_secondPassword;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

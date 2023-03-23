@@ -32,7 +32,7 @@
 #include "CryptoKeyAES.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmAES_KWInternal {
 static constexpr auto ALG128 = "A128KW"_s;

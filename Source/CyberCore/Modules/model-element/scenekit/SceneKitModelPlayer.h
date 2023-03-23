@@ -38,7 +38,7 @@
 
 OBJC_CLASS SCNMetalLayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ModelPlayerClient;
 class SceneKitModel;

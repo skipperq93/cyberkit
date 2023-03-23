@@ -32,7 +32,7 @@
 #include <wtf/ArgumentCoder.h>
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SpeechRecognitionUpdateType : uint8_t {
     Start,
@@ -72,14 +72,14 @@ private:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename> struct LogArgument;
 
-template<> struct LogArgument<WebCore::SpeechRecognitionUpdateType> {
-    static String toString(const WebCore::SpeechRecognitionUpdateType type)
+template<> struct LogArgument<CyberCore::SpeechRecognitionUpdateType> {
+    static String toString(const CyberCore::SpeechRecognitionUpdateType type)
     {
         return convertEnumerationToString(type);
     }

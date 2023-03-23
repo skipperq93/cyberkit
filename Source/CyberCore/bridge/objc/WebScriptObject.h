@@ -235,7 +235,7 @@ WEBCORE_EXPORT @interface WebScriptObject : NSObject
     @method JSObject
     @result The equivalent JSObjectRef for this WebScriptObject.
     @discussion Use this method to bridge between the WebScriptObject and 
-    JavaScriptCore APIs.
+    CyberScriptCore APIs.
 */
 - (JSObjectRef)JSObject WEBKIT_AVAILABLE_MAC(10_5);
 
@@ -306,7 +306,7 @@ WEBCORE_EXPORT @interface WebScriptObject : NSObject
     @method JSValue
     @result The equivalent Objective-C JSValue for this WebScriptObject.
     @discussion Use this method to bridge between the WebScriptObject and 
-    JavaScriptCore Objective-C APIs.
+    CyberScriptCore Objective-C APIs.
 */
 - (JSValue *)JSValue;
 #endif

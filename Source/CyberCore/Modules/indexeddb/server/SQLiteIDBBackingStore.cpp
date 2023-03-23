@@ -54,7 +54,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 namespace IDBServer {
 
@@ -1514,7 +1514,7 @@ IDBError SQLiteIDBBackingStore::uncheckedPutIndexKey(const IDBIndexInfo& info, c
     return IDBError { };
 }
 
-IDBError SQLiteIDBBackingStore::uncheckedPutIndexRecord(int64_t objectStoreID, int64_t indexID, const WebCore::IDBKeyData& keyValue, const WebCore::IDBKeyData& indexKey, int64_t recordID)
+IDBError SQLiteIDBBackingStore::uncheckedPutIndexRecord(int64_t objectStoreID, int64_t indexID, const CyberCore::IDBKeyData& keyValue, const CyberCore::IDBKeyData& indexKey, int64_t recordID)
 {
     LOG(IndexedDB, "SQLiteIDBBackingStore::uncheckedPutIndexRecord - %s, %s", keyValue.loggingString().utf8().data(), indexKey.loggingString().utf8().data());
 
@@ -2849,4 +2849,4 @@ void SQLiteIDBBackingStore::handleLowMemoryWarning()
 #undef BLOB_FILES_TABLE_SCHEMA_SUFFIX
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

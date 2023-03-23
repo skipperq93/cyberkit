@@ -21,22 +21,22 @@
 #error "Only <wpe/webkit.h> can be included directly."
 #endif
 
-#ifndef WebKitRectangle_h
-#define WebKitRectangle_h
+#ifndef CyberKitRectangle_h
+#define CyberKitRectangle_h
 
 #include <glib-object.h>
-#include <wpe/WebKitDefines.h>
+#include <wpe/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
-struct _WebKitRectangle {
+struct _CyberKitRectangle {
     gint x;
     gint y;
     gint width;
     gint height;
 };
 
-typedef struct _WebKitRectangle WebKitRectangle;
+typedef struct _CyberKitRectangle CyberKitRectangle;
 
 #define WEBKIT_TYPE_RECTANGLE (webkit_rectangle_get_type())
 
@@ -45,4 +45,4 @@ webkit_rectangle_get_type     (void);
 
 G_END_DECLS
 
-#endif /* WebKitRectangle_h */
+#endif /* CyberKitRectangle_h */

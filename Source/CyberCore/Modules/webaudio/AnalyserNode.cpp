@@ -32,7 +32,7 @@
 #include "AudioNodeOutput.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AnalyserNode);
 
@@ -191,6 +191,6 @@ double AnalyserNode::tailTime() const
     return RealtimeAnalyser::MaxFFTSize / static_cast<double>(context().sampleRate());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

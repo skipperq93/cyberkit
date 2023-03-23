@@ -720,7 +720,7 @@ static void StartWebThread()
     pthread_attr_init(&tattr);
     pthread_attr_setscope(&tattr, PTHREAD_SCOPE_SYSTEM);
     // The web thread is a secondary thread, and secondary threads are usually given
-    // a 512 kb stack, but we need more space in order to have room for the JavaScriptCore
+    // a 512 kb stack, but we need more space in order to have room for the CyberScriptCore
     // reentrancy limit. This limit works on both the simulator and the device.
     pthread_attr_setstacksize(&tattr, 800 * KB);
 

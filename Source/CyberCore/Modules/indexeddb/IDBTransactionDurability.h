@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class IDBTransactionDurability : uint8_t {
     Strict,
@@ -35,16 +35,16 @@ enum class IDBTransactionDurability : uint8_t {
     Default
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::IDBTransactionDurability> {
+template<> struct EnumTraits<CyberCore::IDBTransactionDurability> {
     using values = EnumValues<
-        WebCore::IDBTransactionDurability,
-        WebCore::IDBTransactionDurability::Strict,
-        WebCore::IDBTransactionDurability::Relaxed,
-        WebCore::IDBTransactionDurability::Default
+        CyberCore::IDBTransactionDurability,
+        CyberCore::IDBTransactionDurability::Strict,
+        CyberCore::IDBTransactionDurability::Relaxed,
+        CyberCore::IDBTransactionDurability::Default
     >;
 };
 

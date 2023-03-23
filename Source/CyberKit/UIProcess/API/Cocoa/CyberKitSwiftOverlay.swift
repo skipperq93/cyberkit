@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@_exported import WebKit
+@_exported import CyberKit
 
 @available(iOS 14.0, macOS 10.16, *)
 extension WKPDFConfiguration {

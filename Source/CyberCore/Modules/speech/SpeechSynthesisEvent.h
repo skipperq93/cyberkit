@@ -31,7 +31,7 @@
 #include "SpeechSynthesisEventInit.h"
 #include "SpeechSynthesisUtterance.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechSynthesisEvent : public Event {
     WTF_MAKE_ISO_ALLOCATED(SpeechSynthesisEvent);
@@ -58,6 +58,6 @@ private:
     String m_name;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

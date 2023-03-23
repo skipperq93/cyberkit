@@ -29,7 +29,7 @@
 #include "LayoutElementBox.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 class InlineTextBox;
 

@@ -33,7 +33,7 @@
 
 #include "HTMLDivElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DetailsMarkerControl final : public HTMLDivElement {
     WTF_MAKE_ISO_ALLOCATED(DetailsMarkerControl);
@@ -47,4 +47,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

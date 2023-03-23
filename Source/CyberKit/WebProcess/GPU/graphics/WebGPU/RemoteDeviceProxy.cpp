@@ -46,7 +46,7 @@
 #include "WebGPUCommandEncoderDescriptor.h"
 #include "WebGPUConvertToBackingContext.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 RemoteDeviceProxy::RemoteDeviceProxy(Ref<PAL::WebGPU::SupportedFeatures>&& features, Ref<PAL::WebGPU::SupportedLimits>&& limits, RemoteAdapterProxy& parent, ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier, WebGPUIdentifier queueIdentifier)
     : Device(WTFMove(features), WTFMove(limits))
@@ -330,6 +330,6 @@ void RemoteDeviceProxy::setLabelInternal(const String& label)
     UNUSED_VARIABLE(sendResult);
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

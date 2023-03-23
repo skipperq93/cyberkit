@@ -33,7 +33,7 @@
 #include <wtf/text/TextStream.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 
 FragmentDirectiveParser::FragmentDirectiveParser(StringView fragmentDirective)
 {
@@ -120,4 +120,4 @@ void FragmentDirectiveParser::parseFragmentDirective(StringView fragmentDirectiv
     m_parsedTextDirectives = parsedTextDirectives;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

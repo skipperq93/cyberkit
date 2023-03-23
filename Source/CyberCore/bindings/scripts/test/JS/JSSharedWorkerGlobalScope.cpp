@@ -34,18 +34,18 @@
 #include "JSSharedWorkerGlobalScope.h"
 #include "ScriptExecutionContext.h"
 #include "SharedWorkerGlobalScope.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Attributes
@@ -167,7 +167,7 @@ JSC_DEFINE_CUSTOM_GETTER(jsSharedWorkerGlobalScope_SharedWorkerGlobalScopeConstr
 
 JSC::GCClient::IsoSubspace* JSSharedWorkerGlobalScope::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSSharedWorkerGlobalScope, UseCustomHeapCellType::Yes>(vm,
+    return CyberCore::subspaceForImpl<JSSharedWorkerGlobalScope, UseCustomHeapCellType::Yes>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForSharedWorkerGlobalScope.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForSharedWorkerGlobalScope = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForSharedWorkerGlobalScope.get(); },

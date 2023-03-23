@@ -26,7 +26,7 @@
 #include "config.h"
 #include "AuxiliaryProcessMain.h"
 
-#include <JavaScriptCore/Options.h>
+#include <CyberScriptCore/Options.h>
 #include <CyberCore/ProcessIdentifier.h>
 #include <signal.h>
 #include <stdlib.h>

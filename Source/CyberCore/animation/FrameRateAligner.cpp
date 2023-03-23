@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FrameRateAligner.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FrameRateAligner::FrameRateAligner() = default;
 
@@ -144,5 +144,5 @@ std::optional<FramesPerSecond> FrameRateAligner::maximumFrameRate() const
     return maximumFrameRate;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

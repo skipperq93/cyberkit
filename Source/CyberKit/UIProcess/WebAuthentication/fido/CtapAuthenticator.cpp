@@ -44,7 +44,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 using namespace fido;
 
@@ -412,6 +412,6 @@ Vector<AuthenticatorTransport> CtapAuthenticator::transports() const
     return Vector { driver().transport() };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

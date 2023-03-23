@@ -28,7 +28,7 @@
 #include "WebProcessPool.h"
 #include <CyberCore/ResourceRequest.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 LegacyCustomProtocolManagerProxy::LegacyCustomProtocolManagerProxy(NetworkProcessProxy& networkProcessProxy)
     : m_networkProcessProxy(networkProcessProxy)
@@ -82,4 +82,4 @@ void LegacyCustomProtocolManagerProxy::didFinishLoading(LegacyCustomProtocolID c
     m_networkProcessProxy.send(Messages::LegacyCustomProtocolManager::DidFinishLoading(customProtocolID), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

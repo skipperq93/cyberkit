@@ -38,7 +38,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define WEBVTT_ADVANCE_TO(stateName)                        \
     do {                                                    \

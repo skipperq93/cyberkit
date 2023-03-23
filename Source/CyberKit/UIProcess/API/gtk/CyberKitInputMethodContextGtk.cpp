@@ -18,16 +18,16 @@
  */
 
 #include "config.h"
-#include "WebKitInputMethodContext.h"
+#include "CyberKitInputMethodContext.h"
 
-#include "WebKitInputMethodContextPrivate.h"
+#include "CyberKitInputMethodContextPrivate.h"
 #include <CyberCore/Color.h>
 
 using namespace CyberCore;
 
 /**
  * webkit_input_method_underline_set_color:
- * @underline: a #WebKitInputMethodUnderline
+ * @underline: a #CyberKitInputMethodUnderline
  * @rgba: (nullable): a #GdkRGBA or %NULL
  *
  * Set the color of the underline.
@@ -37,7 +37,7 @@ using namespace CyberCore;
  *
  * Since: 2.28
  */
-void webkit_input_method_underline_set_color(WebKitInputMethodUnderline* underline, const GdkRGBA* rgba)
+void webkit_input_method_underline_set_color(CyberKitInputMethodUnderline* underline, const GdkRGBA* rgba)
 {
     g_return_if_fail(underline);
 
@@ -52,7 +52,7 @@ void webkit_input_method_underline_set_color(WebKitInputMethodUnderline* underli
 
 /**
  * webkit_input_method_context_filter_key_event:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  * @key_event: the key event to filter
  *
  * Allow @key_event to be handled by the input method.
@@ -65,9 +65,9 @@ void webkit_input_method_underline_set_color(WebKitInputMethodUnderline* underli
  * Since: 2.28
  */
 #if USE(GTK4)
-gboolean webkit_input_method_context_filter_key_event(WebKitInputMethodContext* context, GdkEvent* keyEvent)
+gboolean webkit_input_method_context_filter_key_event(CyberKitInputMethodContext* context, GdkEvent* keyEvent)
 #else
-gboolean webkit_input_method_context_filter_key_event(WebKitInputMethodContext* context, GdkEventKey* keyEvent)
+gboolean webkit_input_method_context_filter_key_event(CyberKitInputMethodContext* context, GdkEventKey* keyEvent)
 #endif
 {
     g_return_val_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context), FALSE);

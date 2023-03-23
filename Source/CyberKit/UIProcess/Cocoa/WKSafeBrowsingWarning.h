@@ -37,7 +37,7 @@
 #import <UIKit/UIKit.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 class SafeBrowsingWarning;
 enum class ContinueUnsafeLoad : bool;
 }
@@ -68,8 +68,8 @@ using RectType = CGRect;
 #endif
 {
 @package
-    CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)> _completionHandler;
-    RefPtr<const WebKit::SafeBrowsingWarning> _warning;
+    CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)> _completionHandler;
+    RefPtr<const CyberKit::SafeBrowsingWarning> _warning;
     WeakObjCPtr<WKSafeBrowsingTextView> _details;
     WeakObjCPtr<WKSafeBrowsingBox> _box;
 #if PLATFORM(WATCHOS)
@@ -77,7 +77,7 @@ using RectType = CGRect;
 #endif
 }
 
-- (instancetype)initWithFrame:(RectType)frame safeBrowsingWarning:(const WebKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler;
+- (instancetype)initWithFrame:(RectType)frame safeBrowsingWarning:(const CyberKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler;
 
 - (BOOL)forMainFrameNavigation;
 

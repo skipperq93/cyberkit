@@ -30,7 +30,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 
@@ -48,8 +48,8 @@ private:
     const String m_bodyMessage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::TestReportBody)
-    static bool isType(const WebCore::ReportBody& reportBody) { return reportBody.reportBodyType() == WebCore::ViolationReportType::Test; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::TestReportBody)
+    static bool isType(const CyberCore::ReportBody& reportBody) { return reportBody.reportBodyType() == CyberCore::ViolationReportType::Test; }
 SPECIALIZE_TYPE_TRAITS_END()

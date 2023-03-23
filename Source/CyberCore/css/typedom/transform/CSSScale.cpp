@@ -41,7 +41,7 @@
 #include "ExceptionOr.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSScale);
 
@@ -192,4 +192,4 @@ RefPtr<CSSValue> CSSScale::toCSSValue() const
     return CSSFunctionValue::create(CSSValueScale3d, x.releaseNonNull(), y.releaseNonNull(), z.releaseNonNull());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

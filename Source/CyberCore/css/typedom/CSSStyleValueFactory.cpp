@@ -55,7 +55,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<CSSStyleValue> CSSStyleValueFactory::constructStyleValueForShorthandSerialization(const String& serialization)
 {
@@ -373,4 +373,4 @@ ExceptionOr<Vector<Ref<CSSStyleValue>>> CSSStyleValueFactory::vectorFromStyleVal
     return { WTFMove(styleValues) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

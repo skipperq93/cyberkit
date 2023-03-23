@@ -38,7 +38,7 @@ namespace JSC {
 class JSValue;
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 class PaintRenderingContext2D;
 
 class CSSPaintCallback : public RefCounted<CSSPaintCallback>, public CanMakeWeakPtr<CSSPaintCallback>, public ActiveDOMCallback {
@@ -52,5 +52,5 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

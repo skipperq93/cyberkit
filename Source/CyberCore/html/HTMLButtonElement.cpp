@@ -42,7 +42,7 @@
 #include "ImageControlsMac.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLButtonElement);
 
@@ -136,7 +136,7 @@ void HTMLButtonElement::defaultEventHandler(Event& event)
     if (ImageControlsMac::handleEvent(*this, event))
         return;
 #endif
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (event.type() == eventNames.DOMActivateEvent && !isDisabledFormControl()) {
         RefPtr<HTMLFormElement> protectedForm(form());
 

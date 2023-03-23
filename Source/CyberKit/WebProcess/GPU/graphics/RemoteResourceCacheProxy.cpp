@@ -32,7 +32,7 @@
 #include "RemoteImageBufferProxy.h"
 #include "RemoteRenderingBackendProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteResourceCacheProxy::RemoteResourceCacheProxy(RemoteRenderingBackendProxy& remoteRenderingBackendProxy)
@@ -260,6 +260,6 @@ void RemoteResourceCacheProxy::releaseMemory()
     m_remoteRenderingBackendProxy.releaseAllRemoteResources();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

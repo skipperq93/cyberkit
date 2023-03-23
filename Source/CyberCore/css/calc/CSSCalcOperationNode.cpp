@@ -39,7 +39,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This is the result of the "To add two types type1 and type2, perform the following steps:" rules.
 

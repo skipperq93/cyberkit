@@ -55,16 +55,16 @@ FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES = DerivedSources.make $(PLATFORM_HEADER
 # --------
 
 VPATH = \
-    $(JavaScriptCore) \
-    $(JavaScriptCore)/parser \
-    $(JavaScriptCore)/runtime \
-    $(JavaScriptCore)/interpreter \
-    $(JavaScriptCore)/jit \
-    $(JavaScriptCore)/builtins \
-    $(JavaScriptCore)/wasm/js \
+    $(CyberScriptCore) \
+    $(CyberScriptCore)/parser \
+    $(CyberScriptCore)/runtime \
+    $(CyberScriptCore)/interpreter \
+    $(CyberScriptCore)/jit \
+    $(CyberScriptCore)/builtins \
+    $(CyberScriptCore)/wasm/js \
 #
 
-JavaScriptCore_SCRIPTS_DIR = $(JavaScriptCore)/Scripts
+CyberScriptCore_SCRIPTS_DIR = $(CyberScriptCore)/Scripts
 
 .PHONY : all
 all : \
@@ -84,73 +84,73 @@ JSC_BUILTINS_FILES = JSCBuiltins.h JSCBuiltins.cpp
 all : $(JSC_BUILTINS_FILES)
 
 BUILTINS_GENERATOR_SCRIPTS = \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/__init__.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/wkbuiltins.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generator.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_model.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_templates.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_combined_header.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_combined_implementation.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_separate_header.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_separate_implementation.py \
-    ${JavaScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_wrapper_header.py \
-    ${JavaScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_wrapper_implementation.py \
-    ${JavaScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_internals_wrapper_header.py \
-    ${JavaScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_internals_wrapper_implementation.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/generate-js-builtins.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/lazywriter.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/__init__.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/wkbuiltins.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generator.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_model.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_templates.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_combined_header.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_combined_implementation.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_separate_header.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins/builtins_generate_separate_implementation.py \
+    ${CyberScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_wrapper_header.py \
+    ${CyberScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_wrapper_implementation.py \
+    ${CyberScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_internals_wrapper_header.py \
+    ${CyberScriptCore_SCRIPTS_DIR}/wkbuiltins/builtins_generate_internals_wrapper_implementation.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/generate-js-builtins.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/lazywriter.py \
 #
 
-JavaScriptCore_BUILTINS_SOURCES = \
-    $(JavaScriptCore)/builtins/AsyncFromSyncIteratorPrototype.js \
-    $(JavaScriptCore)/builtins/ArrayConstructor.js \
-    $(JavaScriptCore)/builtins/ArrayIteratorPrototype.js \
-    $(JavaScriptCore)/builtins/ArrayPrototype.js \
-    $(JavaScriptCore)/builtins/AsyncIteratorPrototype.js \
-    $(JavaScriptCore)/builtins/AsyncFunctionPrototype.js \
-    $(JavaScriptCore)/builtins/AsyncGeneratorPrototype.js \
-    $(JavaScriptCore)/builtins/DatePrototype.js \
-    $(JavaScriptCore)/builtins/FunctionPrototype.js \
-    $(JavaScriptCore)/builtins/GeneratorPrototype.js \
-    $(JavaScriptCore)/builtins/GlobalObject.js \
-    $(JavaScriptCore)/builtins/GlobalOperations.js \
-    $(JavaScriptCore)/builtins/InternalPromiseConstructor.js \
-    $(JavaScriptCore)/builtins/IteratorHelpers.js \
-    $(JavaScriptCore)/builtins/IteratorPrototype.js \
-    $(JavaScriptCore)/builtins/MapIteratorPrototype.js \
-    $(JavaScriptCore)/builtins/MapPrototype.js \
-    $(JavaScriptCore)/builtins/ModuleLoader.js \
-    $(JavaScriptCore)/builtins/NumberConstructor.js \
-    $(JavaScriptCore)/builtins/ObjectConstructor.js \
-    $(JavaScriptCore)/builtins/PromiseConstructor.js \
-    $(JavaScriptCore)/builtins/PromiseOperations.js \
-    $(JavaScriptCore)/builtins/PromisePrototype.js \
-    $(JavaScriptCore)/builtins/ProxyHelpers.js \
-    $(JavaScriptCore)/builtins/ReflectObject.js \
-    $(JavaScriptCore)/builtins/RegExpPrototype.js \
-    ${JavaScriptCore}/builtins/RegExpStringIteratorPrototype.js \
-    $(JavaScriptCore)/builtins/SetIteratorPrototype.js \
-    $(JavaScriptCore)/builtins/SetPrototype.js \
-    $(JavaScriptCore)/builtins/ShadowRealmPrototype.js \
-    $(JavaScriptCore)/builtins/StringConstructor.js \
-    $(JavaScriptCore)/builtins/StringIteratorPrototype.js \
-    $(JavaScriptCore)/builtins/StringPrototype.js \
-    $(JavaScriptCore)/builtins/TypedArrayConstructor.js \
-    $(JavaScriptCore)/builtins/TypedArrayPrototype.js \
-    $(JavaScriptCore)/builtins/WebAssembly.js \
-    $(JavaScriptCore)/inspector/InjectedScriptSource.js \
+CyberScriptCore_BUILTINS_SOURCES = \
+    $(CyberScriptCore)/builtins/AsyncFromSyncIteratorPrototype.js \
+    $(CyberScriptCore)/builtins/ArrayConstructor.js \
+    $(CyberScriptCore)/builtins/ArrayIteratorPrototype.js \
+    $(CyberScriptCore)/builtins/ArrayPrototype.js \
+    $(CyberScriptCore)/builtins/AsyncIteratorPrototype.js \
+    $(CyberScriptCore)/builtins/AsyncFunctionPrototype.js \
+    $(CyberScriptCore)/builtins/AsyncGeneratorPrototype.js \
+    $(CyberScriptCore)/builtins/DatePrototype.js \
+    $(CyberScriptCore)/builtins/FunctionPrototype.js \
+    $(CyberScriptCore)/builtins/GeneratorPrototype.js \
+    $(CyberScriptCore)/builtins/GlobalObject.js \
+    $(CyberScriptCore)/builtins/GlobalOperations.js \
+    $(CyberScriptCore)/builtins/InternalPromiseConstructor.js \
+    $(CyberScriptCore)/builtins/IteratorHelpers.js \
+    $(CyberScriptCore)/builtins/IteratorPrototype.js \
+    $(CyberScriptCore)/builtins/MapIteratorPrototype.js \
+    $(CyberScriptCore)/builtins/MapPrototype.js \
+    $(CyberScriptCore)/builtins/ModuleLoader.js \
+    $(CyberScriptCore)/builtins/NumberConstructor.js \
+    $(CyberScriptCore)/builtins/ObjectConstructor.js \
+    $(CyberScriptCore)/builtins/PromiseConstructor.js \
+    $(CyberScriptCore)/builtins/PromiseOperations.js \
+    $(CyberScriptCore)/builtins/PromisePrototype.js \
+    $(CyberScriptCore)/builtins/ProxyHelpers.js \
+    $(CyberScriptCore)/builtins/ReflectObject.js \
+    $(CyberScriptCore)/builtins/RegExpPrototype.js \
+    ${CyberScriptCore}/builtins/RegExpStringIteratorPrototype.js \
+    $(CyberScriptCore)/builtins/SetIteratorPrototype.js \
+    $(CyberScriptCore)/builtins/SetPrototype.js \
+    $(CyberScriptCore)/builtins/ShadowRealmPrototype.js \
+    $(CyberScriptCore)/builtins/StringConstructor.js \
+    $(CyberScriptCore)/builtins/StringIteratorPrototype.js \
+    $(CyberScriptCore)/builtins/StringPrototype.js \
+    $(CyberScriptCore)/builtins/TypedArrayConstructor.js \
+    $(CyberScriptCore)/builtins/TypedArrayPrototype.js \
+    $(CyberScriptCore)/builtins/WebAssembly.js \
+    $(CyberScriptCore)/inspector/InjectedScriptSource.js \
 #
 
 # The combined output file depends on the contents of builtins and generator scripts, so
 # adding, modifying, or removing builtins or scripts will trigger regeneration of files.
 
-JavaScriptCore_BUILTINS_DEPENDENCIES_LIST : $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py DerivedSources.make
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(JavaScriptCore_BUILTINS_SOURCES) $(BUILTINS_GENERATOR_SCRIPTS)' $@
+CyberScriptCore_BUILTINS_DEPENDENCIES_LIST : $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py DerivedSources.make
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(CyberScriptCore_BUILTINS_SOURCES) $(BUILTINS_GENERATOR_SCRIPTS)' $@
 
 JSC_BUILTINS_FILES_PATTERNS = $(subst .,%,$(JSC_BUILTINS_FILES))
 
-$(JSC_BUILTINS_FILES_PATTERNS) : $(BUILTINS_GENERATOR_SCRIPTS) $(JavaScriptCore_BUILTINS_SOURCES) JavaScriptCore_BUILTINS_DEPENDENCIES_LIST
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --combined --output-directory . --framework CyberScriptCore $(JavaScriptCore_BUILTINS_SOURCES)
+$(JSC_BUILTINS_FILES_PATTERNS) : $(BUILTINS_GENERATOR_SCRIPTS) $(CyberScriptCore_BUILTINS_SOURCES) CyberScriptCore_BUILTINS_DEPENDENCIES_LIST
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --combined --output-directory . --framework CyberScriptCore $(CyberScriptCore_BUILTINS_SOURCES)
 
 # Perfect hash lookup tables for JavaScript classes.
 
@@ -246,11 +246,11 @@ OBJECT_LUT_HEADERS = \
     WebAssemblyTagPrototype.lut.h \
 #
 
-$(OBJECT_LUT_HEADERS): %.lut.h : %.cpp $(JavaScriptCore)/create_hash_table
-	$(PERL) $(JavaScriptCore)/create_hash_table $< > $@
+$(OBJECT_LUT_HEADERS): %.lut.h : %.cpp $(CyberScriptCore)/create_hash_table
+	$(PERL) $(CyberScriptCore)/create_hash_table $< > $@
 
-Lexer.lut.h: Keywords.table $(JavaScriptCore)/create_hash_table
-	$(PERL) $(JavaScriptCore)/create_hash_table $< > $@
+Lexer.lut.h: Keywords.table $(CyberScriptCore)/create_hash_table
+	$(PERL) $(CyberScriptCore)/create_hash_table $< > $@
 
 # character tables for Yarr
 
@@ -275,13 +275,13 @@ BYTECODE_FILES_PATTERNS = $(subst .,%,$(BYTECODE_FILES))
 
 all : $(BYTECODE_FILES)
 
-$(BYTECODE_FILES_PATTERNS): $(wildcard $(JavaScriptCore)/generator/*.rb) $(JavaScriptCore)/bytecode/BytecodeList.rb $(JavaScriptCore)/wasm/wasm.json
-	$(RUBY) $(JavaScriptCore)/generator/main.rb $(JavaScriptCore)/bytecode/BytecodeList.rb \
+$(BYTECODE_FILES_PATTERNS): $(wildcard $(CyberScriptCore)/generator/*.rb) $(CyberScriptCore)/bytecode/BytecodeList.rb $(CyberScriptCore)/wasm/wasm.json
+	$(RUBY) $(CyberScriptCore)/generator/main.rb $(CyberScriptCore)/bytecode/BytecodeList.rb \
     --bytecode_structs_h BytecodeStructs.h \
     --init_bytecodes_asm InitBytecodes.asm \
     --bytecodes_h Bytecodes.h \
     --bytecode_indices_h BytecodeIndices.h \
-    --wasm_json $(JavaScriptCore)/wasm/wasm.json \
+    --wasm_json $(CyberScriptCore)/wasm/wasm.json \
     --wasm_llint_generator_h WasmLLIntGeneratorInlines.h \
     --init_wasm_llint InitWasm.asm \
     --bytecode_dumper BytecodeDumperGenerated.cpp \
@@ -289,53 +289,53 @@ $(BYTECODE_FILES_PATTERNS): $(wildcard $(JavaScriptCore)/generator/*.rb) $(JavaS
 # Inspector interfaces
 
 INSPECTOR_DOMAINS := \
-    $(JavaScriptCore)/inspector/protocol/Animation.json \
-    $(JavaScriptCore)/inspector/protocol/ApplicationCache.json \
-    $(JavaScriptCore)/inspector/protocol/Audit.json \
-    $(JavaScriptCore)/inspector/protocol/Browser.json \
-    $(JavaScriptCore)/inspector/protocol/CPUProfiler.json \
-    $(JavaScriptCore)/inspector/protocol/CSS.json \
-    $(JavaScriptCore)/inspector/protocol/Canvas.json \
-    $(JavaScriptCore)/inspector/protocol/Console.json \
-    $(JavaScriptCore)/inspector/protocol/DOM.json \
-    $(JavaScriptCore)/inspector/protocol/DOMDebugger.json \
-    $(JavaScriptCore)/inspector/protocol/DOMStorage.json \
-    $(JavaScriptCore)/inspector/protocol/Database.json \
-    $(JavaScriptCore)/inspector/protocol/Debugger.json \
-    $(JavaScriptCore)/inspector/protocol/GenericTypes.json \
-    $(JavaScriptCore)/inspector/protocol/Heap.json \
-    $(JavaScriptCore)/inspector/protocol/IndexedDB.json \
-    $(JavaScriptCore)/inspector/protocol/Inspector.json \
-    $(JavaScriptCore)/inspector/protocol/LayerTree.json \
-    $(JavaScriptCore)/inspector/protocol/Memory.json \
-    $(JavaScriptCore)/inspector/protocol/Network.json \
-    $(JavaScriptCore)/inspector/protocol/Page.json \
-    $(JavaScriptCore)/inspector/protocol/Recording.json \
-    $(JavaScriptCore)/inspector/protocol/Runtime.json \
-    $(JavaScriptCore)/inspector/protocol/ScriptProfiler.json \
-    $(JavaScriptCore)/inspector/protocol/Security.json \
-    $(JavaScriptCore)/inspector/protocol/ServiceWorker.json \
-    $(JavaScriptCore)/inspector/protocol/Target.json \
-    $(JavaScriptCore)/inspector/protocol/Timeline.json \
-    $(JavaScriptCore)/inspector/protocol/Worker.json \
+    $(CyberScriptCore)/inspector/protocol/Animation.json \
+    $(CyberScriptCore)/inspector/protocol/ApplicationCache.json \
+    $(CyberScriptCore)/inspector/protocol/Audit.json \
+    $(CyberScriptCore)/inspector/protocol/Browser.json \
+    $(CyberScriptCore)/inspector/protocol/CPUProfiler.json \
+    $(CyberScriptCore)/inspector/protocol/CSS.json \
+    $(CyberScriptCore)/inspector/protocol/Canvas.json \
+    $(CyberScriptCore)/inspector/protocol/Console.json \
+    $(CyberScriptCore)/inspector/protocol/DOM.json \
+    $(CyberScriptCore)/inspector/protocol/DOMDebugger.json \
+    $(CyberScriptCore)/inspector/protocol/DOMStorage.json \
+    $(CyberScriptCore)/inspector/protocol/Database.json \
+    $(CyberScriptCore)/inspector/protocol/Debugger.json \
+    $(CyberScriptCore)/inspector/protocol/GenericTypes.json \
+    $(CyberScriptCore)/inspector/protocol/Heap.json \
+    $(CyberScriptCore)/inspector/protocol/IndexedDB.json \
+    $(CyberScriptCore)/inspector/protocol/Inspector.json \
+    $(CyberScriptCore)/inspector/protocol/LayerTree.json \
+    $(CyberScriptCore)/inspector/protocol/Memory.json \
+    $(CyberScriptCore)/inspector/protocol/Network.json \
+    $(CyberScriptCore)/inspector/protocol/Page.json \
+    $(CyberScriptCore)/inspector/protocol/Recording.json \
+    $(CyberScriptCore)/inspector/protocol/Runtime.json \
+    $(CyberScriptCore)/inspector/protocol/ScriptProfiler.json \
+    $(CyberScriptCore)/inspector/protocol/Security.json \
+    $(CyberScriptCore)/inspector/protocol/ServiceWorker.json \
+    $(CyberScriptCore)/inspector/protocol/Target.json \
+    $(CyberScriptCore)/inspector/protocol/Timeline.json \
+    $(CyberScriptCore)/inspector/protocol/Worker.json \
 #
 
 INSPECTOR_GENERATOR_SCRIPTS = \
-	$(JavaScriptCore)/inspector/scripts/codegen/__init__.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/cpp_generator_templates.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/cpp_generator.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generate_cpp_backend_dispatcher_header.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generate_cpp_backend_dispatcher_implementation.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generate_cpp_frontend_dispatcher_header.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generate_cpp_frontend_dispatcher_implementation.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generate_cpp_protocol_types_header.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generate_cpp_protocol_types_implementation.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generate_js_backend_commands.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generator_templates.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/generator.py \
-	$(JavaScriptCore)/inspector/scripts/codegen/models.py \
-	$(JavaScriptCore)/inspector/scripts/generate-inspector-protocol-bindings.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate-combined-inspector-json.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/__init__.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/cpp_generator_templates.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/cpp_generator.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generate_cpp_backend_dispatcher_header.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generate_cpp_backend_dispatcher_implementation.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generate_cpp_frontend_dispatcher_header.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generate_cpp_frontend_dispatcher_implementation.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generate_cpp_protocol_types_header.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generate_cpp_protocol_types_implementation.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generate_js_backend_commands.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generator_templates.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/generator.py \
+	$(CyberScriptCore)/inspector/scripts/codegen/models.py \
+	$(CyberScriptCore)/inspector/scripts/generate-inspector-protocol-bindings.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate-combined-inspector-json.py \
 #
 
 # TODO: Is there some way to not hardcode this? Can we get it from
@@ -358,15 +358,15 @@ all : $(INSPECTOR_DISPATCHER_FILES)
 # adding, modifying, or removing domains will trigger regeneration of inspector files.
 
 .PHONY: force
-EnabledInspectorDomains : $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py force
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(INSPECTOR_DOMAINS)' $@
+EnabledInspectorDomains : $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py force
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(INSPECTOR_DOMAINS)' $@
 
-CombinedDomains.json : $(JavaScriptCore_SCRIPTS_DIR)/generate-combined-inspector-json.py $(INSPECTOR_DOMAINS) EnabledInspectorDomains
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/generate-combined-inspector-json.py $(INSPECTOR_DOMAINS) "$(FEATURE_AND_PLATFORM_DEFINES)" > ./CombinedDomains.json
+CombinedDomains.json : $(CyberScriptCore_SCRIPTS_DIR)/generate-combined-inspector-json.py $(INSPECTOR_DOMAINS) EnabledInspectorDomains
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/generate-combined-inspector-json.py $(INSPECTOR_DOMAINS) "$(FEATURE_AND_PLATFORM_DEFINES)" > ./CombinedDomains.json
 
 # Inspector Backend Dispatchers, Frontend Dispatchers, Type Builders
 $(INSPECTOR_DISPATCHER_FILES_PATTERNS) : CombinedDomains.json $(INSPECTOR_GENERATOR_SCRIPTS)
-	$(PYTHON) $(JavaScriptCore)/inspector/scripts/generate-inspector-protocol-bindings.py --framework CyberScriptCore --outputDir inspector ./CombinedDomains.json
+	$(PYTHON) $(CyberScriptCore)/inspector/scripts/generate-inspector-protocol-bindings.py --framework CyberScriptCore --outputDir inspector ./CombinedDomains.json
 
 AIR_OPCODE_FILES = \
     AirOpcode.h \
@@ -377,20 +377,20 @@ AIR_OPCODE_FILES_PATTERNS = $(subst .,%,$(AIR_OPCODE_FILES))
 
 all : $(AIR_OPCODE_FILES)
 
-$(AIR_OPCODE_FILES_PATTERNS) : $(JavaScriptCore)/b3/air/opcode_generator.rb $(JavaScriptCore)/b3/air/AirOpcode.opcodes
+$(AIR_OPCODE_FILES_PATTERNS) : $(CyberScriptCore)/b3/air/opcode_generator.rb $(CyberScriptCore)/b3/air/AirOpcode.opcodes
 	$(RUBY) $^
 
-UnicodePatternTables.h: $(JavaScriptCore)/yarr/generateYarrUnicodePropertyTables.py $(JavaScriptCore)/yarr/hasher.py $(JavaScriptCore)/ucd/DerivedBinaryProperties.txt $(JavaScriptCore)/ucd/DerivedCoreProperties.txt $(JavaScriptCore)/ucd/DerivedNormalizationProps.txt $(JavaScriptCore)/ucd/PropList.txt $(JavaScriptCore)/ucd/PropertyAliases.txt $(JavaScriptCore)/ucd/PropertyValueAliases.txt $(JavaScriptCore)/ucd/ScriptExtensions.txt $(JavaScriptCore)/ucd/Scripts.txt $(JavaScriptCore)/ucd/UnicodeData.txt $(JavaScriptCore)/ucd/emoji-data.txt
-	$(PYTHON) $(JavaScriptCore)/yarr/generateYarrUnicodePropertyTables.py $(JavaScriptCore)/ucd ./UnicodePatternTables.h
+UnicodePatternTables.h: $(CyberScriptCore)/yarr/generateYarrUnicodePropertyTables.py $(CyberScriptCore)/yarr/hasher.py $(CyberScriptCore)/ucd/DerivedBinaryProperties.txt $(CyberScriptCore)/ucd/DerivedCoreProperties.txt $(CyberScriptCore)/ucd/DerivedNormalizationProps.txt $(CyberScriptCore)/ucd/PropList.txt $(CyberScriptCore)/ucd/PropertyAliases.txt $(CyberScriptCore)/ucd/PropertyValueAliases.txt $(CyberScriptCore)/ucd/ScriptExtensions.txt $(CyberScriptCore)/ucd/Scripts.txt $(CyberScriptCore)/ucd/UnicodeData.txt $(CyberScriptCore)/ucd/emoji-data.txt
+	$(PYTHON) $(CyberScriptCore)/yarr/generateYarrUnicodePropertyTables.py $(CyberScriptCore)/ucd ./UnicodePatternTables.h
 
-yarr/YarrCanonicalizeUnicode.cpp: $(JavaScriptCore)/yarr/generateYarrCanonicalizeUnicode $(JavaScriptCore)/ucd/CaseFolding.txt
-	$(PYTHON) $(JavaScriptCore)/yarr/generateYarrCanonicalizeUnicode $(JavaScriptCore)/ucd/CaseFolding.txt ./yarr/YarrCanonicalizeUnicode.cpp
+yarr/YarrCanonicalizeUnicode.cpp: $(CyberScriptCore)/yarr/generateYarrCanonicalizeUnicode $(CyberScriptCore)/ucd/CaseFolding.txt
+	$(PYTHON) $(CyberScriptCore)/yarr/generateYarrCanonicalizeUnicode $(CyberScriptCore)/ucd/CaseFolding.txt ./yarr/YarrCanonicalizeUnicode.cpp
 
-WasmOps.h: $(JavaScriptCore)/wasm/generateWasmOpsHeader.py $(JavaScriptCore)/wasm/generateWasm.py $(JavaScriptCore)/wasm/wasm.json
-	$(PYTHON) $(JavaScriptCore)/wasm/generateWasmOpsHeader.py $(JavaScriptCore)/wasm/wasm.json ./WasmOps.h
+WasmOps.h: $(CyberScriptCore)/wasm/generateWasmOpsHeader.py $(CyberScriptCore)/wasm/generateWasm.py $(CyberScriptCore)/wasm/wasm.json
+	$(PYTHON) $(CyberScriptCore)/wasm/generateWasmOpsHeader.py $(CyberScriptCore)/wasm/wasm.json ./WasmOps.h
 
-WasmB3IRGeneratorInlines.h: $(JavaScriptCore)/wasm/generateWasmB3IRGeneratorInlinesHeader.py $(JavaScriptCore)/wasm/generateWasm.py $(JavaScriptCore)/wasm/wasm.json
-	$(PYTHON) $(JavaScriptCore)/wasm/generateWasmB3IRGeneratorInlinesHeader.py $(JavaScriptCore)/wasm/wasm.json ./WasmB3IRGeneratorInlines.h
+WasmB3IRGeneratorInlines.h: $(CyberScriptCore)/wasm/generateWasmB3IRGeneratorInlinesHeader.py $(CyberScriptCore)/wasm/generateWasm.py $(CyberScriptCore)/wasm/wasm.json
+	$(PYTHON) $(CyberScriptCore)/wasm/generateWasmB3IRGeneratorInlinesHeader.py $(CyberScriptCore)/wasm/wasm.json ./WasmB3IRGeneratorInlines.h
 
 # Dynamically-defined targets are listed below. Static targets belong up top.
 

@@ -18,26 +18,26 @@
  */
 
 #include "config.h"
-#include "WebKitScriptDialog.h"
+#include "CyberKitScriptDialog.h"
 
-#include "WebKitScriptDialogImpl.h"
-#include "WebKitScriptDialogPrivate.h"
+#include "CyberKitScriptDialogImpl.h"
+#include "CyberKitScriptDialogPrivate.h"
 
-void webkitScriptDialogAccept(WebKitScriptDialog* scriptDialog)
+void webkitScriptDialogAccept(CyberKitScriptDialog* scriptDialog)
 {
     if (!WEBKIT_IS_SCRIPT_DIALOG_IMPL(scriptDialog->nativeDialog))
         return;
     webkitScriptDialogImplConfirm(WEBKIT_SCRIPT_DIALOG_IMPL(scriptDialog->nativeDialog));
 }
 
-void webkitScriptDialogDismiss(WebKitScriptDialog* scriptDialog)
+void webkitScriptDialogDismiss(CyberKitScriptDialog* scriptDialog)
 {
     if (!WEBKIT_IS_SCRIPT_DIALOG_IMPL(scriptDialog->nativeDialog))
         return;
     webkitScriptDialogImplCancel(WEBKIT_SCRIPT_DIALOG_IMPL(scriptDialog->nativeDialog));
 }
 
-void webkitScriptDialogSetUserInput(WebKitScriptDialog* scriptDialog, const String& userInput)
+void webkitScriptDialogSetUserInput(CyberKitScriptDialog* scriptDialog, const String& userInput)
 {
     if (!WEBKIT_IS_SCRIPT_DIALOG_IMPL(scriptDialog->nativeDialog))
         return;
@@ -45,7 +45,7 @@ void webkitScriptDialogSetUserInput(WebKitScriptDialog* scriptDialog, const Stri
     webkitScriptDialogImplSetEntryText(WEBKIT_SCRIPT_DIALOG_IMPL(scriptDialog->nativeDialog), userInput);
 }
 
-bool webkitScriptDialogIsUserHandled(WebKitScriptDialog* scriptDialog)
+bool webkitScriptDialogIsUserHandled(CyberKitScriptDialog* scriptDialog)
 {
     return !WEBKIT_IS_SCRIPT_DIALOG_IMPL(scriptDialog->nativeDialog);
 }

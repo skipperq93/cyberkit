@@ -70,7 +70,7 @@
 #include "TextResourceDecoder.h"
 #include "ThreadableLoaderClient.h"
 #include "WebConsoleAgent.h"
-#include "WebCorePersistentCoders.h"
+#include "CyberCorePersistentCoders.h"
 #include "WebSocket.h"
 #include "WebSocketChannel.h"
 #include "WebSocketFrame.h"
@@ -94,7 +94,7 @@
 
 typedef Inspector::NetworkBackendDispatcherHandler::LoadResourceCallback LoadResourceCallback;
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -1046,7 +1046,7 @@ Protocol::ErrorStringOr<String> InspectorNetworkAgent::getSerializedCertificate(
         return makeUnexpected("Missing certificate of resource for given requestId"_s);
 
     WTF::Persistence::Encoder encoder;
-    WTF::Persistence::Coder<WebCore::CertificateInfo>::encode(encoder, certificate.value());
+    WTF::Persistence::Coder<CyberCore::CertificateInfo>::encode(encoder, certificate.value());
     return base64EncodeToString(encoder.buffer(), encoder.bufferSize());
 }
 
@@ -1539,4 +1539,4 @@ void InspectorNetworkAgent::mainFrameNavigated(DocumentLoader& loader)
     m_resourcesData->clear(loaderIdentifier(&loader));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

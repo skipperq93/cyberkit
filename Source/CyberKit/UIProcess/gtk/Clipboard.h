@@ -39,7 +39,7 @@ class SelectionData;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrameProxy;
 
@@ -68,4 +68,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

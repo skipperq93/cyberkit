@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Generates WebKit WebGL layout tests from the Khronos WebGL conformance tests"""
+"""Generates CyberKit WebGL layout tests from the Khronos WebGL conformance tests"""
 
 # To use this, get a copy of the WebGL conformance tests then run this script
 # eg.
@@ -35,11 +35,11 @@
 #   cd ~/temp
 #   git clone git://github.com/KhronosGroup/WebGL.git
 #   mkdir backup
-#   mv ~/WebKit/LayoutTests/webgl/{1.0.3,2.0.0,sdk} backup/
-#   ~/WebKit/Tools/Scripts/update-webgl-conformance-tests ~/temp/WebGL
-#   ~/WebKit/Tools/Scripts/run-webkit-tests --debug --webgl --order=random webgl
-#   ~/WebKit/Tools/Scripts/run-webkit-tests --release --webgl --order=random webgl
-#   ~/WebKit/Tools/Scripts/check-for-duplicated-platform-test-results -n 2>&1 | grep webgl
+#   mv ~/CyberKit/LayoutTests/webgl/{1.0.3,2.0.0,sdk} backup/
+#   ~/CyberKit/Tools/Scripts/update-webgl-conformance-tests ~/temp/WebGL
+#   ~/CyberKit/Tools/Scripts/run-webkit-tests --debug --webgl --order=random webgl
+#   ~/CyberKit/Tools/Scripts/run-webkit-tests --release --webgl --order=random webgl
+#   ~/CyberKit/Tools/Scripts/check-for-duplicated-platform-test-results -n 2>&1 | grep webgl
 #   [ Update TestExpectations ]
 #   [ Check in the result ]
 #

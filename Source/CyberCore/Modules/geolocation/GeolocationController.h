@@ -35,7 +35,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationClient;
 class GeolocationError;
@@ -93,6 +93,6 @@ private:
     bool m_isUpdating { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GEOLOCATION)

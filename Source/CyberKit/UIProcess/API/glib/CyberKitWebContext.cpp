@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitWebContext.h"
+#include "CyberKitWebContext.h"
 
 #include "APIAutomationClient.h"
 #include "APIInjectedBundleClient.h"
@@ -30,32 +30,32 @@
 #include "TextChecker.h"
 #include "TextCheckerState.h"
 #include "WebAutomationSession.h"
-#include "WebKitAutomationSessionPrivate.h"
-#include "WebKitDownloadPrivate.h"
-#include "WebKitGeolocationManagerPrivate.h"
-#include "WebKitInitialize.h"
-#include "WebKitInjectedBundleClient.h"
-#include "WebKitMemoryPressureSettings.h"
-#include "WebKitMemoryPressureSettingsPrivate.h"
-#include "WebKitNotificationProvider.h"
-#include "WebKitPrivate.h"
-#include "WebKitProtocolHandler.h"
-#include "WebKitSecurityManagerPrivate.h"
-#include "WebKitSecurityOriginPrivate.h"
-#include "WebKitSettingsPrivate.h"
-#include "WebKitURISchemeRequestPrivate.h"
-#include "WebKitUserContentManagerPrivate.h"
-#include "WebKitUserMessagePrivate.h"
-#include "WebKitWebContextPrivate.h"
-#include "WebKitWebViewPrivate.h"
-#include "WebKitWebsiteDataManagerPrivate.h"
-#include "WebKitWebsitePoliciesPrivate.h"
+#include "CyberKitAutomationSessionPrivate.h"
+#include "CyberKitDownloadPrivate.h"
+#include "CyberKitGeolocationManagerPrivate.h"
+#include "CyberKitInitialize.h"
+#include "CyberKitInjectedBundleClient.h"
+#include "CyberKitMemoryPressureSettings.h"
+#include "CyberKitMemoryPressureSettingsPrivate.h"
+#include "CyberKitNotificationProvider.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitProtocolHandler.h"
+#include "CyberKitSecurityManagerPrivate.h"
+#include "CyberKitSecurityOriginPrivate.h"
+#include "CyberKitSettingsPrivate.h"
+#include "CyberKitURISchemeRequestPrivate.h"
+#include "CyberKitUserContentManagerPrivate.h"
+#include "CyberKitUserMessagePrivate.h"
+#include "CyberKitWebContextPrivate.h"
+#include "CyberKitWebViewPrivate.h"
+#include "CyberKitWebsiteDataManagerPrivate.h"
+#include "CyberKitWebsitePoliciesPrivate.h"
 #include "WebNotificationManagerProxy.h"
 #include "WebProcessMessages.h"
 #include "WebURLSchemeHandler.h"
 #include "WebsiteDataStore.h"
 #include "WebsiteDataType.h"
-#include <JavaScriptCore/RemoteInspector.h>
+#include <CyberScriptCore/RemoteInspector.h>
 #include <CyberCore/ContentSecurityPolicy.h>
 #include <CyberCore/ResourceLoaderIdentifier.h>
 #include <cstdlib>
@@ -77,30 +77,30 @@
 #include <wtf/text/CString.h>
 
 #if PLATFORM(GTK)
-#include "WebKitRemoteInspectorProtocolHandler.h"
+#include "CyberKitRemoteInspectorProtocolHandler.h"
 #endif
 
 #if ENABLE(2022_GLIB_API)
-#include "WebKitNetworkSession.h"
+#include "CyberKitNetworkSession.h"
 #endif
 
 #if !ENABLE(2022_GLIB_API)
-#include "WebKitFaviconDatabasePrivate.h"
+#include "CyberKitFaviconDatabasePrivate.h"
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitWebContext:
+ * CyberKitWebContext:
  *
- * Manages aspects common to all #WebKitWebView<!-- -->s
+ * Manages aspects common to all #CyberKitWebView<!-- -->s
  *
- * The #WebKitWebContext manages all aspects common to all
- * #WebKitWebView<!-- -->s.
+ * The #CyberKitWebContext manages all aspects common to all
+ * #CyberKitWebView<!-- -->s.
  *
- * You can define the #WebKitCacheModel with
+ * You can define the #CyberKitCacheModel with
  * webkit_web_context_set_cache_model(), depending on the needs of
- * your application. You can access the #WebKitSecurityManager to specify
+ * your application. You can access the #CyberKitSecurityManager to specify
  * the behaviour of your application regarding security using
  * webkit_web_context_get_security_manager().
  *
@@ -114,7 +114,7 @@ using namespace WebKit;
  *
  * TLS certificate validation failure is now treated as a transport
  * error by default. To handle TLS failures differently, you can
- * connect to #WebKitWebView::load-failed-with-tls-errors.
+ * connect to #CyberKitWebView::load-failed-with-tls-errors.
  * Alternatively, you can use webkit_web_context_set_tls_errors_policy()
  * to set the policy %WEBKIT_TLS_ERRORS_POLICY_IGNORE; however, this is
  * not appropriate for Internet applications.
@@ -151,21 +151,21 @@ enum {
     LAST_SIGNAL
 };
 
-class WebKitURISchemeHandler final : public WebURLSchemeHandler {
+class CyberKitURISchemeHandler final : public WebURLSchemeHandler {
 public:
-    static Ref<WebKitURISchemeHandler> create(WebKitWebContext* context, WebKitURISchemeRequestCallback callback, void* userData, GDestroyNotify destroyNotify)
+    static Ref<CyberKitURISchemeHandler> create(CyberKitWebContext* context, CyberKitURISchemeRequestCallback callback, void* userData, GDestroyNotify destroyNotify)
     {
-        return adoptRef(*new WebKitURISchemeHandler(context, callback, userData, destroyNotify));
+        return adoptRef(*new CyberKitURISchemeHandler(context, callback, userData, destroyNotify));
     }
 
-    ~WebKitURISchemeHandler()
+    ~CyberKitURISchemeHandler()
     {
         if (m_destroyNotify)
             m_destroyNotify(m_userData);
     }
 
 private:
-    WebKitURISchemeHandler(WebKitWebContext* context, WebKitURISchemeRequestCallback callback, void* userData, GDestroyNotify destroyNotify)
+    CyberKitURISchemeHandler(CyberKitWebContext* context, CyberKitURISchemeRequestCallback callback, void* userData, GDestroyNotify destroyNotify)
         : m_context(context)
         , m_callback(callback)
         , m_userData(userData)
@@ -178,7 +178,7 @@ private:
         if (!m_callback)
             return;
 
-        GRefPtr<WebKitURISchemeRequest> request = adoptGRef(webkitURISchemeRequestCreate(m_context, page, task));
+        GRefPtr<CyberKitURISchemeRequest> request = adoptGRef(webkitURISchemeRequestCreate(m_context, page, task));
         auto addResult = m_requests.add({ task.resourceLoaderID(), task.pageProxyID() }, WTFMove(request));
         ASSERT(addResult.isNewEntry);
         m_callback(addResult.iterator->value.get(), m_userData);
@@ -199,20 +199,20 @@ private:
         m_requests.remove({ task.resourceLoaderID(), task.pageProxyID() });
     }
 
-    WebKitWebContext* m_context { nullptr };
-    WebKitURISchemeRequestCallback m_callback { nullptr };
+    CyberKitWebContext* m_context { nullptr };
+    CyberKitURISchemeRequestCallback m_callback { nullptr };
     void* m_userData { nullptr };
     GDestroyNotify m_destroyNotify { nullptr };
-    HashMap<std::pair<CyberCore::ResourceLoaderIdentifier, WebPageProxyIdentifier>, GRefPtr<WebKitURISchemeRequest>> m_requests;
+    HashMap<std::pair<CyberCore::ResourceLoaderIdentifier, WebPageProxyIdentifier>, GRefPtr<CyberKitURISchemeRequest>> m_requests;
 };
 
-typedef HashMap<String, RefPtr<WebKitURISchemeHandler> > URISchemeHandlerMap;
+typedef HashMap<String, RefPtr<CyberKitURISchemeHandler> > URISchemeHandlerMap;
 
-class WebKitAutomationClient;
+class CyberKitAutomationClient;
 
-struct _WebKitWebContextPrivate {
+struct _CyberKitWebContextPrivate {
 #if !ENABLE(2022_GLIB_API)
-    _WebKitWebContextPrivate()
+    _CyberKitWebContextPrivate()
         : dnsPrefetchHystereris([this](PAL::HysteresisState state) { if (state == PAL::HysteresisState::Stopped) dnsPrefetchedHosts.clear(); })
     {
     }
@@ -226,18 +226,18 @@ struct _WebKitWebContextPrivate {
 #endif
 
 #if !ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitFaviconDatabase> faviconDatabase;
+    GRefPtr<CyberKitFaviconDatabase> faviconDatabase;
     CString faviconDatabaseDirectory;
 #endif
-    GRefPtr<WebKitSecurityManager> securityManager;
+    GRefPtr<CyberKitSecurityManager> securityManager;
     URISchemeHandlerMap uriSchemeHandlers;
-    GRefPtr<WebKitGeolocationManager> geolocationManager;
-    std::unique_ptr<WebKitNotificationProvider> notificationProvider;
+    GRefPtr<CyberKitGeolocationManager> geolocationManager;
+    std::unique_ptr<CyberKitNotificationProvider> notificationProvider;
 #if !ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitWebsiteDataManager> websiteDataManager;
+    GRefPtr<CyberKitWebsiteDataManager> websiteDataManager;
 #endif
 
-    HashMap<WebPageProxyIdentifier, WebKitWebView*> webViews;
+    HashMap<WebPageProxyIdentifier, CyberKitWebView*> webViews;
 
     CString webExtensionsDirectory;
     GRefPtr<GVariant> webExtensionsInitializationUserData;
@@ -247,41 +247,41 @@ struct _WebKitWebContextPrivate {
 #if PLATFORM(GTK)
     std::unique_ptr<RemoteInspectorProtocolHandler> remoteInspectorProtocolHandler;
 #endif
-    std::unique_ptr<WebKitAutomationClient> automationClient;
-    GRefPtr<WebKitAutomationSession> automationSession;
+    std::unique_ptr<CyberKitAutomationClient> automationClient;
+    GRefPtr<CyberKitAutomationSession> automationSession;
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> automationNetworkSession;
+    GRefPtr<CyberKitNetworkSession> automationNetworkSession;
 #endif
 #endif
-    std::unique_ptr<WebKitProtocolHandler> webkitProtocolHandler;
+    std::unique_ptr<CyberKitProtocolHandler> webkitProtocolHandler;
 
 #if !ENABLE(2022_GLIB_API)
     HashSet<String> dnsPrefetchedHosts;
     PAL::HysteresisActivity dnsPrefetchHystereris;
 #endif
 
-    WebKitMemoryPressureSettings* memoryPressureSettings;
+    CyberKitMemoryPressureSettings* memoryPressureSettings;
 
     CString timeZoneOverride;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebContext, webkit_web_context, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebContext, webkit_web_context, G_TYPE_OBJECT, GObject)
 
-std::unique_ptr<WebKitNotificationProvider> s_serviceWorkerNotificationProvider;
+std::unique_ptr<CyberKitNotificationProvider> s_serviceWorkerNotificationProvider;
 
 #if ENABLE(REMOTE_INSPECTOR)
-class WebKitAutomationClient final : Inspector::RemoteInspector::Client {
+class CyberKitAutomationClient final : Inspector::RemoteInspector::Client {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit WebKitAutomationClient(WebKitWebContext* context)
+    explicit CyberKitAutomationClient(CyberKitWebContext* context)
         : m_webContext(context)
     {
         Inspector::RemoteInspector::singleton().setClient(this);
     }
 
-    ~WebKitAutomationClient()
+    ~CyberKitAutomationClient()
     {
         Inspector::RemoteInspector::singleton().setClient(nullptr);
     }
@@ -313,10 +313,10 @@ private:
         m_webContext->priv->processPool->setAutomationSession(&webkitAutomationSessionGetSession(m_webContext->priv->automationSession.get()));
     }
 
-    WebKitWebContext* m_webContext;
+    CyberKitWebContext* m_webContext;
 };
 
-void webkitWebContextWillCloseAutomationSession(WebKitWebContext* webContext)
+void webkitWebContextWillCloseAutomationSession(CyberKitWebContext* webContext)
 {
     webContext->priv->processPool->setAutomationSession(nullptr);
     webContext->priv->automationSession = nullptr;
@@ -343,7 +343,7 @@ static const char* injectedBundleDirectory()
 
 static void webkitWebContextGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebContext* context = WEBKIT_WEB_CONTEXT(object);
+    CyberKitWebContext* context = WEBKIT_WEB_CONTEXT(object);
 
     switch (propID) {
 #if PLATFORM(GTK) && !USE(GTK4)
@@ -374,7 +374,7 @@ static void webkitWebContextGetProperty(GObject* object, guint propID, GValue* v
 
 static void webkitWebContextSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebContext* context = WEBKIT_WEB_CONTEXT(object);
+    CyberKitWebContext* context = WEBKIT_WEB_CONTEXT(object);
 
     switch (propID) {
 #if PLATFORM(GTK) && !USE(GTK4)
@@ -399,7 +399,7 @@ static void webkitWebContextSetProperty(GObject* object, guint propID, const GVa
 #endif
     case PROP_MEMORY_PRESSURE_SETTINGS: {
         gpointer settings = g_value_get_boxed(value);
-        context->priv->memoryPressureSettings = settings ? webkit_memory_pressure_settings_copy(static_cast<WebKitMemoryPressureSettings*>(settings)) : nullptr;
+        context->priv->memoryPressureSettings = settings ? webkit_memory_pressure_settings_copy(static_cast<CyberKitMemoryPressureSettings*>(settings)) : nullptr;
         break;
     }
     case PROP_TIME_ZONE_OVERRIDE: {
@@ -419,8 +419,8 @@ static void webkitWebContextConstructed(GObject* object)
 
     GUniquePtr<char> bundleFilename(g_build_filename(injectedBundleDirectory(), INJECTED_BUNDLE_FILENAME, nullptr));
 
-    WebKitWebContext* webContext = WEBKIT_WEB_CONTEXT(object);
-    WebKitWebContextPrivate* priv = webContext->priv;
+    CyberKitWebContext* webContext = WEBKIT_WEB_CONTEXT(object);
+    CyberKitWebContextPrivate* priv = webContext->priv;
 
     API::ProcessPoolConfiguration configuration;
     configuration.setInjectedBundlePath(FileSystem::stringFromFileSystemRepresentation(bundleFilename.get()));
@@ -446,7 +446,7 @@ static void webkitWebContextConstructed(GObject* object)
     priv->processPool = WebProcessPool::create(configuration);
     priv->processPool->setUserMessageHandler([webContext](UserMessage&& message, CompletionHandler<void(UserMessage&&)>&& completionHandler) {
         // Sink the floating ref.
-        GRefPtr<WebKitUserMessage> userMessage = webkitUserMessageCreate(WTFMove(message), WTFMove(completionHandler));
+        GRefPtr<CyberKitUserMessage> userMessage = webkitUserMessageCreate(WTFMove(message), WTFMove(completionHandler));
         gboolean returnValue;
         g_signal_emit(webContext, signals[USER_MESSAGE_RECEIVED], 0, userMessage.get(), &returnValue);
     });
@@ -464,16 +464,16 @@ static void webkitWebContextConstructed(GObject* object)
     attachInjectedBundleClientToContext(webContext);
 
     priv->geolocationManager = adoptGRef(webkitGeolocationManagerCreate(priv->processPool->supplement<WebGeolocationManagerProxy>()));
-    priv->notificationProvider = makeUnique<WebKitNotificationProvider>(priv->processPool->supplement<WebNotificationManagerProxy>(), webContext);
+    priv->notificationProvider = makeUnique<CyberKitNotificationProvider>(priv->processPool->supplement<WebNotificationManagerProxy>(), webContext);
 #if PLATFORM(GTK) && ENABLE(REMOTE_INSPECTOR)
     priv->remoteInspectorProtocolHandler = makeUnique<RemoteInspectorProtocolHandler>(webContext);
 #endif
-    priv->webkitProtocolHandler = makeUnique<WebKitProtocolHandler>(webContext);
+    priv->webkitProtocolHandler = makeUnique<CyberKitProtocolHandler>(webContext);
 }
 
 static void webkitWebContextDispose(GObject* object)
 {
-    WebKitWebContextPrivate* priv = WEBKIT_WEB_CONTEXT(object)->priv;
+    CyberKitWebContextPrivate* priv = WEBKIT_WEB_CONTEXT(object)->priv;
     if (!priv->clientsDetached) {
         priv->clientsDetached = true;
         priv->processPool->setInjectedBundleClient(nullptr);
@@ -494,7 +494,7 @@ static void webkitWebContextDispose(GObject* object)
     G_OBJECT_CLASS(webkit_web_context_parent_class)->dispose(object);
 }
 
-static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass)
+static void webkit_web_context_class_init(CyberKitWebContextClass* webContextClass)
 {
     webkitInitialize();
 
@@ -503,7 +503,7 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
     bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-    s_serviceWorkerNotificationProvider = makeUnique<WebKitNotificationProvider>(&WebNotificationManagerProxy::sharedServiceWorkerManager(), nullptr);
+    s_serviceWorkerNotificationProvider = makeUnique<CyberKitNotificationProvider>(&WebNotificationManagerProxy::sharedServiceWorkerManager(), nullptr);
 
     gObjectClass->get_property = webkitWebContextGetProperty;
     gObjectClass->set_property = webkitWebContextSetProperty;
@@ -512,13 +512,13 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
 
 #if PLATFORM(GTK) && !USE(GTK4)
     /**
-     * WebKitWebContext:local-storage-directory:
+     * CyberKitWebContext:local-storage-directory:
      *
      * The directory where local storage data will be saved.
      *
      * Since: 2.8
      *
-     * Deprecated: 2.10. Use #WebKitWebsiteDataManager:local-storage-directory instead.
+     * Deprecated: 2.10. Use #CyberKitWebsiteDataManager:local-storage-directory instead.
      */
     sObjProperties[PROP_LOCAL_STORAGE_DIRECTORY] =
         g_param_spec_string(
@@ -530,9 +530,9 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
 
 #if !ENABLE(2022_GLIB_API)
     /**
-     * WebKitWebContext:website-data-manager:
+     * CyberKitWebContext:website-data-manager:
      *
-     * The #WebKitWebsiteDataManager associated with this context.
+     * The #CyberKitWebsiteDataManager associated with this context.
      *
      * Since: 2.10
      */
@@ -546,7 +546,7 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
 
 #if PLATFORM(GTK) && !USE(GTK4)
     /**
-     * WebKitWebContext:process-swap-on-cross-site-navigation-enabled:
+     * CyberKitWebContext:process-swap-on-cross-site-navigation-enabled:
      *
      * Whether swap Web processes on cross-site navigations is enabled.
      *
@@ -566,7 +566,7 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
     /**
-     * WebKitWebContext:use-system-appearance-for-scrollbars:
+     * CyberKitWebContext:use-system-appearance-for-scrollbars:
      *
      * Whether to use system appearance for rendering scrollbars.
      *
@@ -585,9 +585,9 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
 #endif
 
     /**
-     * WebKitWebContext:memory-pressure-settings:
+     * CyberKitWebContext:memory-pressure-settings:
      *
-     * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
+     * The #CyberKitMemoryPressureSettings applied to the web processes created by this context.
      *
      * Since: 2.34
      */
@@ -599,7 +599,7 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
             static_cast<GParamFlags>(WEBKIT_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 
     /**
-     * WebKitWebContext:time-zone-override:
+     * CyberKitWebContext:time-zone-override:
      *
      * The timezone override for this web context. Setting this property provides a better
      * alternative to configure the timezone information for all webviews managed by the WebContext.
@@ -623,9 +623,9 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
 
 #if !ENABLE(2022_GLIB_API)
     /**
-     * WebKitWebContext::download-started:
-     * @context: the #WebKitWebContext
-     * @download: the #WebKitDownload associated with this event
+     * CyberKitWebContext::download-started:
+     * @context: the #CyberKitWebContext
+     * @download: the #CyberKitDownload associated with this event
      *
      * This signal is emitted when a new download request is made.
      */
@@ -633,7 +633,7 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
         g_signal_new("download-started",
             G_TYPE_FROM_CLASS(gObjectClass),
             G_SIGNAL_RUN_LAST,
-            G_STRUCT_OFFSET(WebKitWebContextClass, download_started),
+            G_STRUCT_OFFSET(CyberKitWebContextClass, download_started),
             nullptr, nullptr,
             g_cclosure_marshal_VOID__OBJECT,
             G_TYPE_NONE, 1,
@@ -641,8 +641,8 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
 #endif
 
     /**
-     * WebKitWebContext::initialize-web-extensions:
-     * @context: the #WebKitWebContext
+     * CyberKitWebContext::initialize-web-extensions:
+     * @context: the #CyberKitWebContext
      *
      * This signal is emitted when a new web process is about to be
      * launched. It signals the most appropriate moment to use
@@ -655,16 +655,16 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
         g_signal_new("initialize-web-extensions",
             G_TYPE_FROM_CLASS(gObjectClass),
             G_SIGNAL_RUN_LAST,
-            G_STRUCT_OFFSET(WebKitWebContextClass, initialize_web_extensions),
+            G_STRUCT_OFFSET(CyberKitWebContextClass, initialize_web_extensions),
             nullptr, nullptr,
             g_cclosure_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     /**
-     * WebKitWebContext::initialize-notification-permissions:
-     * @context: the #WebKitWebContext
+     * CyberKitWebContext::initialize-notification-permissions:
+     * @context: the #CyberKitWebContext
      *
-     * This signal is emitted when a #WebKitWebContext needs to set
+     * This signal is emitted when a #CyberKitWebContext needs to set
      * initial notification permissions for a web process. It is emitted
      * when a new web process is about to be launched, and signals the
      * most appropriate moment to use
@@ -679,15 +679,15 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
         g_signal_new("initialize-notification-permissions",
             G_TYPE_FROM_CLASS(gObjectClass),
             G_SIGNAL_RUN_LAST,
-            G_STRUCT_OFFSET(WebKitWebContextClass, initialize_notification_permissions),
+            G_STRUCT_OFFSET(CyberKitWebContextClass, initialize_notification_permissions),
             nullptr, nullptr,
             g_cclosure_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     /**
-     * WebKitWebContext::automation-started:
-     * @context: the #WebKitWebContext
-     * @session: the #WebKitAutomationSession associated with this event
+     * CyberKitWebContext::automation-started:
+     * @context: the #CyberKitWebContext
+     * @session: the #CyberKitAutomationSession associated with this event
      *
      * This signal is emitted when a new automation request is made.
      * Note that it will never be emitted if automation is not enabled in @context,
@@ -699,19 +699,19 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
         g_signal_new("automation-started",
             G_TYPE_FROM_CLASS(gObjectClass),
             G_SIGNAL_RUN_LAST,
-            G_STRUCT_OFFSET(WebKitWebContextClass, automation_started),
+            G_STRUCT_OFFSET(CyberKitWebContextClass, automation_started),
             nullptr, nullptr,
             g_cclosure_marshal_VOID__OBJECT,
             G_TYPE_NONE, 1,
             WEBKIT_TYPE_AUTOMATION_SESSION);
 
     /**
-     * WebKitWebContext::user-message-received:
-     * @context: the #WebKitWebContext
-     * @message: the #WebKitUserMessage received
+     * CyberKitWebContext::user-message-received:
+     * @context: the #CyberKitWebContext
+     * @message: the #CyberKitUserMessage received
      *
-     * This signal is emitted when a #WebKitUserMessage is received from a
-     * #WebKitWebExtension. You can reply to the message using
+     * This signal is emitted when a #CyberKitUserMessage is received from a
+     * #CyberKitWebExtension. You can reply to the message using
      * webkit_user_message_send_reply().
      *
      * You can handle the user message asynchronously by calling g_object_ref() on
@@ -725,7 +725,7 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
         "user-message-received",
         G_TYPE_FROM_CLASS(gObjectClass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitWebContextClass, user_message_received),
+        G_STRUCT_OFFSET(CyberKitWebContextClass, user_message_received),
         g_signal_accumulator_true_handled, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_BOOLEAN, 1,
@@ -734,7 +734,7 @@ static void webkit_web_context_class_init(WebKitWebContextClass* webContextClass
 
 static gpointer createDefaultWebContext(gpointer)
 {
-    static GRefPtr<WebKitWebContext> webContext = adoptGRef(WEBKIT_WEB_CONTEXT(g_object_new(WEBKIT_TYPE_WEB_CONTEXT, nullptr)));
+    static GRefPtr<CyberKitWebContext> webContext = adoptGRef(WEBKIT_WEB_CONTEXT(g_object_new(WEBKIT_TYPE_WEB_CONTEXT, nullptr)));
     return webContext.get();
 }
 
@@ -743,9 +743,9 @@ static gpointer createDefaultWebContext(gpointer)
  *
  * Gets the default web context.
  *
- * Returns: (transfer none): a #WebKitWebContext
+ * Returns: (transfer none): a #CyberKitWebContext
  */
-WebKitWebContext* webkit_web_context_get_default(void)
+CyberKitWebContext* webkit_web_context_get_default(void)
 {
     static GOnce onceInit = G_ONCE_INIT;
     return WEBKIT_WEB_CONTEXT(g_once(&onceInit, createDefaultWebContext, 0));
@@ -754,13 +754,13 @@ WebKitWebContext* webkit_web_context_get_default(void)
 /**
  * webkit_web_context_new:
  *
- * Create a new #WebKitWebContext.
+ * Create a new #CyberKitWebContext.
  *
- * Returns: (transfer full): a newly created #WebKitWebContext
+ * Returns: (transfer full): a newly created #CyberKitWebContext
  *
  * Since: 2.8
  */
-WebKitWebContext* webkit_web_context_new(void)
+CyberKitWebContext* webkit_web_context_new(void)
 {
     return WEBKIT_WEB_CONTEXT(g_object_new(WEBKIT_TYPE_WEB_CONTEXT, nullptr));
 }
@@ -769,36 +769,36 @@ WebKitWebContext* webkit_web_context_new(void)
 /**
  * webkit_web_context_new_ephemeral:
  *
- * Create a new ephemeral #WebKitWebContext.
+ * Create a new ephemeral #CyberKitWebContext.
  *
- * An ephemeral #WebKitWebContext is a context
- * created with an ephemeral #WebKitWebsiteDataManager. This is just a convenient method
- * to create ephemeral contexts without having to create your own #WebKitWebsiteDataManager.
- * All #WebKitWebView<!-- -->s associated with this context will also be ephemeral. Websites will
+ * An ephemeral #CyberKitWebContext is a context
+ * created with an ephemeral #CyberKitWebsiteDataManager. This is just a convenient method
+ * to create ephemeral contexts without having to create your own #CyberKitWebsiteDataManager.
+ * All #CyberKitWebView<!-- -->s associated with this context will also be ephemeral. Websites will
  * not store any data in the client storage.
  * This is normally used to implement private instances.
  *
- * Returns: (transfer full): a new ephemeral #WebKitWebContext.
+ * Returns: (transfer full): a new ephemeral #CyberKitWebContext.
  *
  * Since: 2.16
  */
-WebKitWebContext* webkit_web_context_new_ephemeral()
+CyberKitWebContext* webkit_web_context_new_ephemeral()
 {
-    GRefPtr<WebKitWebsiteDataManager> manager = adoptGRef(webkit_website_data_manager_new_ephemeral());
+    GRefPtr<CyberKitWebsiteDataManager> manager = adoptGRef(webkit_website_data_manager_new_ephemeral());
     return WEBKIT_WEB_CONTEXT(g_object_new(WEBKIT_TYPE_WEB_CONTEXT, "website-data-manager", manager.get(), nullptr));
 }
 
 /**
  * webkit_web_context_new_with_website_data_manager:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Create a new #WebKitWebContext with a #WebKitWebsiteDataManager.
+ * Create a new #CyberKitWebContext with a #CyberKitWebsiteDataManager.
  *
- * Returns: (transfer full): a newly created #WebKitWebContext
+ * Returns: (transfer full): a newly created #CyberKitWebContext
  *
  * Since: 2.10
  */
-WebKitWebContext* webkit_web_context_new_with_website_data_manager(WebKitWebsiteDataManager* manager)
+CyberKitWebContext* webkit_web_context_new_with_website_data_manager(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
@@ -807,15 +807,15 @@ WebKitWebContext* webkit_web_context_new_with_website_data_manager(WebKitWebsite
 
 /**
  * webkit_web_context_get_website_data_manager:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  *
- * Get the #WebKitWebsiteDataManager of @context.
+ * Get the #CyberKitWebsiteDataManager of @context.
  *
- * Returns: (transfer none): a #WebKitWebsiteDataManager
+ * Returns: (transfer none): a #CyberKitWebsiteDataManager
  *
  * Since: 2.10
  */
-WebKitWebsiteDataManager* webkit_web_context_get_website_data_manager(WebKitWebContext* context)
+CyberKitWebsiteDataManager* webkit_web_context_get_website_data_manager(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
 
@@ -824,15 +824,15 @@ WebKitWebsiteDataManager* webkit_web_context_get_website_data_manager(WebKitWebC
 
 /**
  * webkit_web_context_is_ephemeral:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  *
- * Get whether a #WebKitWebContext is ephemeral.
+ * Get whether a #CyberKitWebContext is ephemeral.
  *
  * Returns: %TRUE if @context is ephemeral or %FALSE otherwise.
  *
  * Since: 2.16
  */
-gboolean webkit_web_context_is_ephemeral(WebKitWebContext* context)
+gboolean webkit_web_context_is_ephemeral(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), FALSE);
 
@@ -842,7 +842,7 @@ gboolean webkit_web_context_is_ephemeral(WebKitWebContext* context)
 
 /**
  * webkit_web_context_is_automation_allowed:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  *
  * Get whether automation is allowed in @context.
  *
@@ -852,7 +852,7 @@ gboolean webkit_web_context_is_ephemeral(WebKitWebContext* context)
  *
  * Since: 2.18
  */
-gboolean webkit_web_context_is_automation_allowed(WebKitWebContext* context)
+gboolean webkit_web_context_is_automation_allowed(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), FALSE);
 
@@ -865,23 +865,23 @@ gboolean webkit_web_context_is_automation_allowed(WebKitWebContext* context)
 
 /**
  * webkit_web_context_set_automation_allowed:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  * @allowed: value to set
  *
  * Set whether automation is allowed in @context.
  *
  * When automation is enabled the browser could
  * be controlled by another process by requesting an automation session. When a new automation
- * session is requested the signal #WebKitWebContext::automation-started is emitted.
+ * session is requested the signal #CyberKitWebContext::automation-started is emitted.
  * Automation is disabled by default, so you need to explicitly call this method passing %TRUE
  * to enable it.
  *
- * Note that only one #WebKitWebContext can have automation enabled, so this will do nothing
- * if there's another #WebKitWebContext with automation already enabled.
+ * Note that only one #CyberKitWebContext can have automation enabled, so this will do nothing
+ * if there's another #CyberKitWebContext with automation already enabled.
  *
  * Since: 2.18
  */
-void webkit_web_context_set_automation_allowed(WebKitWebContext* context, gboolean allowed)
+void webkit_web_context_set_automation_allowed(CyberKitWebContext* context, gboolean allowed)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -890,10 +890,10 @@ void webkit_web_context_set_automation_allowed(WebKitWebContext* context, gboole
 #if ENABLE(REMOTE_INSPECTOR)
     if (allowed) {
         if (Inspector::RemoteInspector::singleton().client()) {
-            g_warning("Not enabling automation on WebKitWebContext because there's another context with automation enabled, only one is allowed");
+            g_warning("Not enabling automation on CyberKitWebContext because there's another context with automation enabled, only one is allowed");
             return;
         }
-        context->priv->automationClient = makeUnique<WebKitAutomationClient>(context);
+        context->priv->automationClient = makeUnique<CyberKitAutomationClient>(context);
     } else
         context->priv->automationClient = nullptr;
 #endif
@@ -902,15 +902,15 @@ void webkit_web_context_set_automation_allowed(WebKitWebContext* context, gboole
 #if ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_get_network_session_for_automation:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  *
- * Get the #WebKitNetworkSession used for automation sessions started in @context.
+ * Get the #CyberKitNetworkSession used for automation sessions started in @context.
  *
- * Returns: (transfer none) (nullable): a #WebKitNetworkSession, or %NULL if automation is not enabled
+ * Returns: (transfer none) (nullable): a #CyberKitNetworkSession, or %NULL if automation is not enabled
  *
  * Since: 2.40
  */
-WebKitNetworkSession* webkit_web_context_get_network_session_for_automation(WebKitWebContext* context)
+CyberKitNetworkSession* webkit_web_context_get_network_session_for_automation(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
 
@@ -925,22 +925,22 @@ WebKitNetworkSession* webkit_web_context_get_network_session_for_automation(WebK
 #endif
 /**
  * webkit_web_context_set_cache_model:
- * @context: the #WebKitWebContext
- * @cache_model: a #WebKitCacheModel
+ * @context: the #CyberKitWebContext
+ * @cache_model: a #CyberKitCacheModel
  *
  * Specifies a usage model for WebViews.
  *
- * Specifies a usage model for WebViews, which WebKit will use to
+ * Specifies a usage model for WebViews, which CyberKit will use to
  * determine its caching behavior. All web views follow the cache
  * model. This cache model determines the RAM and disk space to use
  * for caching previously viewed content .
  *
  * Research indicates that users tend to browse within clusters of
  * documents that hold resources in common, and to revisit previously
- * visited documents. WebKit and the frameworks below it include
+ * visited documents. CyberKit and the frameworks below it include
  * built-in caches that take advantage of these patterns,
  * substantially improving document load speed in browsing
- * situations. The WebKit cache model controls the behaviors of all of
+ * situations. The CyberKit cache model controls the behaviors of all of
  * these caches, including various CyberCore caches.
  *
  * Browsers can improve document load speed substantially by
@@ -949,7 +949,7 @@ WebKitNetworkSession* webkit_web_context_get_network_session_for_automation(WebK
  * specifying %WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER. The default value is
  * %WEBKIT_CACHE_MODEL_WEB_BROWSER.
  */
-void webkit_web_context_set_cache_model(WebKitWebContext*, WebKitCacheModel model)
+void webkit_web_context_set_cache_model(CyberKitWebContext*, CyberKitCacheModel model)
 {
     CacheModel cacheModel;
 
@@ -973,7 +973,7 @@ void webkit_web_context_set_cache_model(WebKitWebContext*, WebKitCacheModel mode
 
 /**
  * webkit_web_context_get_cache_model:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  *
  * Returns the current cache model.
  *
@@ -981,9 +981,9 @@ void webkit_web_context_set_cache_model(WebKitWebContext*, WebKitCacheModel mode
  * value check the documentation of the function
  * webkit_web_context_set_cache_model().
  *
- * Returns: the current #WebKitCacheModel
+ * Returns: the current #CyberKitCacheModel
  */
-WebKitCacheModel webkit_web_context_get_cache_model(WebKitWebContext* context)
+CyberKitCacheModel webkit_web_context_get_cache_model(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), WEBKIT_CACHE_MODEL_WEB_BROWSER);
 
@@ -1004,13 +1004,13 @@ WebKitCacheModel webkit_web_context_get_cache_model(WebKitWebContext* context)
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_clear_cache:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
  * Clears all resources currently cached.
  *
  * See also webkit_web_context_set_cache_model().
  */
-void webkit_web_context_clear_cache(WebKitWebContext* context)
+void webkit_web_context_clear_cache(CyberKitWebContext* context)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1023,9 +1023,9 @@ void webkit_web_context_clear_cache(WebKitWebContext* context)
 
 /**
  * webkit_web_context_set_network_proxy_settings:
- * @context: a #WebKitWebContext
- * @proxy_mode: a #WebKitNetworkProxyMode
- * @proxy_settings: (allow-none): a #WebKitNetworkProxySettings, or %NULL
+ * @context: a #CyberKitWebContext
+ * @proxy_mode: a #CyberKitNetworkProxyMode
+ * @proxy_settings: (allow-none): a #CyberKitNetworkProxySettings, or %NULL
  *
  * Set the network proxy settings to be used by connections started in @context.
  *
@@ -1035,13 +1035,13 @@ void webkit_web_context_clear_cache(WebKitWebContext* context)
  * %WEBKIT_NETWORK_PROXY_MODE_NO_PROXY to make sure no proxies are used at all,
  * or %WEBKIT_NETWORK_PROXY_MODE_CUSTOM to provide your own proxy settings.
  * When @proxy_mode is %WEBKIT_NETWORK_PROXY_MODE_CUSTOM @proxy_settings must be
- * a valid #WebKitNetworkProxySettings; otherwise, @proxy_settings must be %NULL.
+ * a valid #CyberKitNetworkProxySettings; otherwise, @proxy_settings must be %NULL.
  *
  * Since: 2.16
  *
  * Deprecated: 2.32. Use webkit_website_data_manager_set_network_proxy_settings() instead.
  */
-void webkit_web_context_set_network_proxy_settings(WebKitWebContext* context, WebKitNetworkProxyMode proxyMode, WebKitNetworkProxySettings* proxySettings)
+void webkit_web_context_set_network_proxy_settings(CyberKitWebContext* context, CyberKitNetworkProxyMode proxyMode, CyberKitNetworkProxySettings* proxySettings)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1050,19 +1050,19 @@ void webkit_web_context_set_network_proxy_settings(WebKitWebContext* context, We
 
 /**
  * webkit_web_context_download_uri:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @uri: the URI to download
  *
  * Requests downloading of the specified URI string.
  *
- * The download operation will not be associated to any #WebKitWebView,
- * if you are interested in starting a download from a particular #WebKitWebView use
+ * The download operation will not be associated to any #CyberKitWebView,
+ * if you are interested in starting a download from a particular #CyberKitWebView use
  * webkit_web_view_download_uri() instead.
  *
- * Returns: (transfer full): a new #WebKitDownload representing
+ * Returns: (transfer full): a new #CyberKitDownload representing
  *    the download operation.
  */
-WebKitDownload* webkit_web_context_download_uri(WebKitWebContext* context, const gchar* uri)
+CyberKitDownload* webkit_web_context_download_uri(CyberKitWebContext* context, const gchar* uri)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
     g_return_val_if_fail(uri, nullptr);
@@ -1071,7 +1071,7 @@ WebKitDownload* webkit_web_context_download_uri(WebKitWebContext* context, const
     auto& websiteDataStore = webkitWebsiteDataManagerGetDataStore(context->priv->websiteDataManager.get());
     auto& downloadProxy = context->priv->processPool->download(websiteDataStore, nullptr, request);
     auto download = webkitDownloadCreate(downloadProxy);
-    downloadProxy.setDidStartCallback([context = GRefPtr<WebKitWebContext> { context }, download = download.get()](auto* downloadProxy) {
+    downloadProxy.setDidStartCallback([context = GRefPtr<CyberKitWebContext> { context }, download = download.get()](auto* downloadProxy) {
         if (!downloadProxy)
             return;
 
@@ -1083,13 +1083,13 @@ WebKitDownload* webkit_web_context_download_uri(WebKitWebContext* context, const
 
 /**
  * webkit_web_context_get_cookie_manager:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
- * Get the #WebKitCookieManager of the @context's #WebKitWebsiteDataManager.
+ * Get the #CyberKitCookieManager of the @context's #CyberKitWebsiteDataManager.
  *
- * Returns: (transfer none): the #WebKitCookieManager of @context.
+ * Returns: (transfer none): the #CyberKitCookieManager of @context.
  */
-WebKitCookieManager* webkit_web_context_get_cookie_manager(WebKitWebContext* context)
+CyberKitCookieManager* webkit_web_context_get_cookie_manager(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
 
@@ -1099,15 +1099,15 @@ WebKitCookieManager* webkit_web_context_get_cookie_manager(WebKitWebContext* con
 
 /**
  * webkit_web_context_get_geolocation_manager:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
- * Get the #WebKitGeolocationManager of @context.
+ * Get the #CyberKitGeolocationManager of @context.
  *
- * Returns: (transfer none): the #WebKitGeolocationManager of @context.
+ * Returns: (transfer none): the #CyberKitGeolocationManager of @context.
  *
  * Since: 2.26
  */
-WebKitGeolocationManager* webkit_web_context_get_geolocation_manager(WebKitWebContext* context)
+CyberKitGeolocationManager* webkit_web_context_get_geolocation_manager(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
 
@@ -1115,9 +1115,9 @@ WebKitGeolocationManager* webkit_web_context_get_geolocation_manager(WebKitWebCo
 }
 
 #if !ENABLE(2022_GLIB_API)
-static void ensureFaviconDatabase(WebKitWebContext* context)
+static void ensureFaviconDatabase(CyberKitWebContext* context)
 {
-    WebKitWebContextPrivate* priv = context->priv;
+    CyberKitWebContextPrivate* priv = context->priv;
     if (priv->faviconDatabase)
         return;
 
@@ -1126,7 +1126,7 @@ static void ensureFaviconDatabase(WebKitWebContext* context)
 
 /**
  * webkit_web_context_set_favicon_database_directory:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @path: (allow-none): an absolute path to the icon database
  * directory or %NULL to use the defaults
  *
@@ -1139,13 +1139,13 @@ static void ensureFaviconDatabase(WebKitWebContext* context)
  * Calling this method also means enabling the favicons database for
  * its use from the applications, so that's why it's expected to be
  * called only once. Further calls for the same instance of
- * #WebKitWebContext won't cause any effect.
+ * #CyberKitWebContext won't cause any effect.
  */
-void webkit_web_context_set_favicon_database_directory(WebKitWebContext* context, const gchar* path)
+void webkit_web_context_set_favicon_database_directory(CyberKitWebContext* context, const gchar* path)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
-    WebKitWebContextPrivate* priv = context->priv;
+    CyberKitWebContextPrivate* priv = context->priv;
     ensureFaviconDatabase(context);
 
     String directoryPath = FileSystem::stringFromFileSystemRepresentation(path);
@@ -1171,7 +1171,7 @@ void webkit_web_context_set_favicon_database_directory(WebKitWebContext* context
 
 /**
  * webkit_web_context_get_favicon_database_directory:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
  * Get the directory path to store the favicons database.
  *
@@ -1187,11 +1187,11 @@ void webkit_web_context_set_favicon_database_directory(WebKitWebContext* context
  * Returns: (transfer none): the path of the directory of the favicons
  * database associated with @context, or %NULL.
  */
-const gchar* webkit_web_context_get_favicon_database_directory(WebKitWebContext *context)
+const gchar* webkit_web_context_get_favicon_database_directory(CyberKitWebContext *context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), 0);
 
-    WebKitWebContextPrivate* priv = context->priv;
+    CyberKitWebContextPrivate* priv = context->priv;
     if (priv->faviconDatabaseDirectory.isNull())
         return 0;
 
@@ -1200,16 +1200,16 @@ const gchar* webkit_web_context_get_favicon_database_directory(WebKitWebContext 
 
 /**
  * webkit_web_context_get_favicon_database:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
- * Get the #WebKitFaviconDatabase associated with @context.
+ * Get the #CyberKitFaviconDatabase associated with @context.
  *
  * To initialize the database you need to call
  * webkit_web_context_set_favicon_database_directory().
  *
- * Returns: (transfer none): the #WebKitFaviconDatabase of @context.
+ * Returns: (transfer none): the #CyberKitFaviconDatabase of @context.
  */
-WebKitFaviconDatabase* webkit_web_context_get_favicon_database(WebKitWebContext* context)
+CyberKitFaviconDatabase* webkit_web_context_get_favicon_database(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), 0);
 
@@ -1220,17 +1220,17 @@ WebKitFaviconDatabase* webkit_web_context_get_favicon_database(WebKitWebContext*
 
 /**
  * webkit_web_context_get_security_manager:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
- * Get the #WebKitSecurityManager of @context.
+ * Get the #CyberKitSecurityManager of @context.
  *
- * Returns: (transfer none): the #WebKitSecurityManager of @context.
+ * Returns: (transfer none): the #CyberKitSecurityManager of @context.
  */
-WebKitSecurityManager* webkit_web_context_get_security_manager(WebKitWebContext* context)
+CyberKitSecurityManager* webkit_web_context_get_security_manager(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), 0);
 
-    WebKitWebContextPrivate* priv = context->priv;
+    CyberKitWebContextPrivate* priv = context->priv;
     if (!priv->securityManager)
         priv->securityManager = adoptGRef(webkitSecurityManagerCreate(context));
 
@@ -1240,21 +1240,21 @@ WebKitSecurityManager* webkit_web_context_get_security_manager(WebKitWebContext*
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_set_additional_plugins_directory:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @directory: the directory to add
  *
- * Set an additional directory where WebKit will look for plugins.
+ * Set an additional directory where CyberKit will look for plugins.
  *
  * Deprecated: 2.32
  */
-void webkit_web_context_set_additional_plugins_directory(WebKitWebContext*, const char*)
+void webkit_web_context_set_additional_plugins_directory(CyberKitWebContext*, const char*)
 {
     g_warning("webkit_web_context_set_additional_plugins_directory is deprecated and does nothing. Netscape plugins are no longer supported.");
 }
 
 /**
  * webkit_web_context_get_plugins:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
@@ -1266,7 +1266,7 @@ void webkit_web_context_set_additional_plugins_directory(WebKitWebContext*, cons
  *
  * Deprecated: 2.32
  */
-void webkit_web_context_get_plugins(WebKitWebContext* context, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_web_context_get_plugins(CyberKitWebContext* context, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1278,18 +1278,18 @@ void webkit_web_context_get_plugins(WebKitWebContext* context, GCancellable* can
 
 /**
  * webkit_web_context_get_plugins_finish:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finish an asynchronous operation started with webkit_web_context_get_plugins.
  *
- * Returns: (element-type WebKitPlugin) (transfer full): a #GList of #WebKitPlugin. You must free the #GList with
- *    g_list_free() and unref the #WebKitPlugin<!-- -->s with g_object_unref() when you're done with them.
+ * Returns: (element-type CyberKitPlugin) (transfer full): a #GList of #CyberKitPlugin. You must free the #GList with
+ *    g_list_free() and unref the #CyberKitPlugin<!-- -->s with g_object_unref() when you're done with them.
  *
  * Deprecated: 2.32
  */
-GList* webkit_web_context_get_plugins_finish(WebKitWebContext* context, GAsyncResult* result, GError** error)
+GList* webkit_web_context_get_plugins_finish(CyberKitWebContext* context, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, context), nullptr);
@@ -1300,25 +1300,25 @@ GList* webkit_web_context_get_plugins_finish(WebKitWebContext* context, GAsyncRe
 
 /**
  * webkit_web_context_register_uri_scheme:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @scheme: the network scheme to register
- * @callback: (scope async): a #WebKitURISchemeRequestCallback
+ * @callback: (scope async): a #CyberKitURISchemeRequestCallback
  * @user_data: data to pass to callback function
  * @user_data_destroy_func: destroy notify for @user_data
  *
  * Register @scheme in @context.
  *
  * Register @scheme in @context, so that when an URI request with @scheme is made in the
- * #WebKitWebContext, the #WebKitURISchemeRequestCallback registered will be called with a
- * #WebKitURISchemeRequest.
+ * #CyberKitWebContext, the #CyberKitURISchemeRequestCallback registered will be called with a
+ * #CyberKitURISchemeRequest.
  * It is possible to handle URI scheme requests asynchronously, by calling g_object_ref() on the
- * #WebKitURISchemeRequest and calling webkit_uri_scheme_request_finish() later
+ * #CyberKitURISchemeRequest and calling webkit_uri_scheme_request_finish() later
  * when the data of the request is available or
  * webkit_uri_scheme_request_finish_error() in case of error.
  *
  * ```c
  * static void
- * about_uri_scheme_request_cb (WebKitURISchemeRequest *request,
+ * about_uri_scheme_request_cb (CyberKitURISchemeRequest *request,
  *                              gpointer                user_data)
  * {
  *     GInputStream *stream;
@@ -1344,7 +1344,7 @@ GList* webkit_web_context_get_plugins_finish(WebKitWebContext* context, GAsyncRe
  * }
  * ```
  */
-void webkit_web_context_register_uri_scheme(WebKitWebContext* context, const char* scheme, WebKitURISchemeRequestCallback callback, gpointer userData, GDestroyNotify destroyNotify)
+void webkit_web_context_register_uri_scheme(CyberKitWebContext* context, const char* scheme, CyberKitURISchemeRequestCallback callback, gpointer userData, GDestroyNotify destroyNotify)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
     g_return_if_fail(scheme);
@@ -1361,7 +1361,7 @@ void webkit_web_context_register_uri_scheme(WebKitWebContext* context, const cha
         return;
     }
 
-    auto handler = WebKitURISchemeHandler::create(context, callback, userData, destroyNotify);
+    auto handler = CyberKitURISchemeHandler::create(context, callback, userData, destroyNotify);
     auto addResult = context->priv->uriSchemeHandlers.add(String::fromUTF8(scheme), WTFMove(handler));
     if (addResult.isNewEntry) {
         for (auto* webView : context->priv->webViews.values())
@@ -1373,12 +1373,12 @@ void webkit_web_context_register_uri_scheme(WebKitWebContext* context, const cha
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_set_sandbox_enabled:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @enabled: if %TRUE enable sandboxing
  *
- * Set whether WebKit subprocesses will be sandboxed.
+ * Set whether CyberKit subprocesses will be sandboxed.
  *
- * Set whether WebKit subprocesses will be sandboxed, limiting access to the system.
+ * Set whether CyberKit subprocesses will be sandboxed, limiting access to the system.
  * This method **must be called before any web process has been created**,
  * as early as possible in your application. Calling it later is a fatal error.
  *
@@ -1386,7 +1386,7 @@ void webkit_web_context_register_uri_scheme(WebKitWebContext* context, const cha
  *
  * Since: 2.26
  */
-void webkit_web_context_set_sandbox_enabled(WebKitWebContext* context, gboolean enabled)
+void webkit_web_context_set_sandbox_enabled(CyberKitWebContext* context, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1437,7 +1437,7 @@ static bool pathIsBlocked(const char* path)
 
 /**
  * webkit_web_context_add_path_to_sandbox:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @path: (type filename): an absolute path to mount in the sandbox
  * @read_only: if %TRUE the path will be read-only
  *
@@ -1455,7 +1455,7 @@ static bool pathIsBlocked(const char* path)
  *
  * Since: 2.26
  */
-void webkit_web_context_add_path_to_sandbox(WebKitWebContext* context, const char* path, gboolean readOnly)
+void webkit_web_context_add_path_to_sandbox(CyberKitWebContext* context, const char* path, gboolean readOnly)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1474,7 +1474,7 @@ void webkit_web_context_add_path_to_sandbox(WebKitWebContext* context, const cha
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_get_sandbox_enabled:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
  * Get whether sandboxing is currently enabled.
  *
@@ -1482,7 +1482,7 @@ void webkit_web_context_add_path_to_sandbox(WebKitWebContext* context, const cha
  *
  * Since: 2.26
  */
-gboolean webkit_web_context_get_sandbox_enabled(WebKitWebContext* context)
+gboolean webkit_web_context_get_sandbox_enabled(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), FALSE);
 
@@ -1492,13 +1492,13 @@ gboolean webkit_web_context_get_sandbox_enabled(WebKitWebContext* context)
 
 /**
  * webkit_web_context_get_spell_checking_enabled:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
  * Get whether spell checking feature is currently enabled.
  *
  * Returns: %TRUE If spell checking is enabled, or %FALSE otherwise.
  */
-gboolean webkit_web_context_get_spell_checking_enabled(WebKitWebContext* context)
+gboolean webkit_web_context_get_spell_checking_enabled(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), FALSE);
 
@@ -1511,12 +1511,12 @@ gboolean webkit_web_context_get_spell_checking_enabled(WebKitWebContext* context
 
 /**
  * webkit_web_context_set_spell_checking_enabled:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @enabled: Value to be set
  *
  * Enable or disable the spell checking feature.
  */
-void webkit_web_context_set_spell_checking_enabled(WebKitWebContext* context, gboolean enabled)
+void webkit_web_context_set_spell_checking_enabled(CyberKitWebContext* context, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1527,7 +1527,7 @@ void webkit_web_context_set_spell_checking_enabled(WebKitWebContext* context, gb
 
 /**
  * webkit_web_context_get_spell_checking_languages:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
  * Get the the list of spell checking languages.
  *
@@ -1540,7 +1540,7 @@ void webkit_web_context_set_spell_checking_enabled(WebKitWebContext* context, gb
  * Returns: (array zero-terminated=1) (element-type utf8) (transfer none): A %NULL-terminated
  *    array of languages if available, or %NULL otherwise.
  */
-const gchar* const* webkit_web_context_get_spell_checking_languages(WebKitWebContext* context)
+const gchar* const* webkit_web_context_get_spell_checking_languages(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
 
@@ -1563,7 +1563,7 @@ const gchar* const* webkit_web_context_get_spell_checking_languages(WebKitWebCon
 
 /**
  * webkit_web_context_set_spell_checking_languages:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @languages: (array zero-terminated=1) (transfer none): a %NULL-terminated list of spell checking languages
  *
  * Set the list of spell checking languages to be used for spell
@@ -1576,9 +1576,9 @@ const gchar* const* webkit_web_context_get_spell_checking_languages(WebKitWebCon
  *
  * You need to call this function with a valid list of languages at
  * least once in order to properly enable the spell checking feature
- * in WebKit.
+ * in CyberKit.
  */
-void webkit_web_context_set_spell_checking_languages(WebKitWebContext* context, const gchar* const* languages)
+void webkit_web_context_set_spell_checking_languages(CyberKitWebContext* context, const gchar* const* languages)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
     g_return_if_fail(languages);
@@ -1593,7 +1593,7 @@ void webkit_web_context_set_spell_checking_languages(WebKitWebContext* context, 
 
 /**
  * webkit_web_context_set_preferred_languages:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @languages: (allow-none) (array zero-terminated=1) (element-type utf8) (transfer none): a %NULL-terminated list of language identifiers
  *
  * Set the list of preferred languages.
@@ -1602,12 +1602,12 @@ void webkit_web_context_set_spell_checking_languages(WebKitWebContext* context, 
  * to least desirable. The list will be used in the following ways:
  *
  * - Determining how to build the `Accept-Language` HTTP header that will be
- *   included in the network requests started by the #WebKitWebContext.
+ *   included in the network requests started by the #CyberKitWebContext.
  * - Setting the values of `navigator.language` and `navigator.languages`.
  * - The first item in the list sets the default locale for JavaScript
  *   `Intl` functions.
  */
-void webkit_web_context_set_preferred_languages(WebKitWebContext* context, const gchar* const* languageList)
+void webkit_web_context_set_preferred_languages(CyberKitWebContext* context, const gchar* const* languageList)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1628,14 +1628,14 @@ void webkit_web_context_set_preferred_languages(WebKitWebContext* context, const
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_set_tls_errors_policy:
- * @context: a #WebKitWebContext
- * @policy: a #WebKitTLSErrorsPolicy
+ * @context: a #CyberKitWebContext
+ * @policy: a #CyberKitTLSErrorsPolicy
  *
  * Set the TLS errors policy of @context as @policy.
  *
  * Deprecated: 2.32. Use webkit_website_data_manager_set_tls_errors_policy() instead.
  */
-void webkit_web_context_set_tls_errors_policy(WebKitWebContext* context, WebKitTLSErrorsPolicy policy)
+void webkit_web_context_set_tls_errors_policy(CyberKitWebContext* context, CyberKitTLSErrorsPolicy policy)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1644,15 +1644,15 @@ void webkit_web_context_set_tls_errors_policy(WebKitWebContext* context, WebKitT
 
 /**
  * webkit_web_context_get_tls_errors_policy:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
  * Get the TLS errors policy of @context.
  *
- * Returns: a #WebKitTLSErrorsPolicy
+ * Returns: a #CyberKitTLSErrorsPolicy
  *
  * Deprecated: 2.32. Use webkit_website_data_manager_get_tls_errors_policy() instead.
  */
-WebKitTLSErrorsPolicy webkit_web_context_get_tls_errors_policy(WebKitWebContext* context)
+CyberKitTLSErrorsPolicy webkit_web_context_get_tls_errors_policy(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 
@@ -1662,17 +1662,17 @@ WebKitTLSErrorsPolicy webkit_web_context_get_tls_errors_policy(WebKitWebContext*
 
 /**
  * webkit_web_context_set_web_extensions_directory:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @directory: the directory to add
  *
- * Set the directory where WebKit will look for Web Extensions.
+ * Set the directory where CyberKit will look for Web Extensions.
  *
  * This method must be called before loading anything in this context,
  * otherwise it will not have any effect. You can connect to
- * #WebKitWebContext::initialize-web-extensions to call this method
+ * #CyberKitWebContext::initialize-web-extensions to call this method
  * before anything is loaded.
  */
-void webkit_web_context_set_web_extensions_directory(WebKitWebContext* context, const char* directory)
+void webkit_web_context_set_web_extensions_directory(CyberKitWebContext* context, const char* directory)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
     g_return_if_fail(directory);
@@ -1683,21 +1683,21 @@ void webkit_web_context_set_web_extensions_directory(WebKitWebContext* context, 
 
 /**
  * webkit_web_context_set_web_extensions_initialization_user_data:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @user_data: a #GVariant
  *
  * Set user data to be passed to Web Extensions on initialization.
  *
  * The data will be passed to the
- * #WebKitWebExtensionInitializeWithUserDataFunction.
+ * #CyberKitWebExtensionInitializeWithUserDataFunction.
  * This method must be called before loading anything in this context,
  * otherwise it will not have any effect. You can connect to
- * #WebKitWebContext::initialize-web-extensions to call this method
+ * #CyberKitWebContext::initialize-web-extensions to call this method
  * before anything is loaded.
  *
  * Since: 2.4
  */
-void webkit_web_context_set_web_extensions_initialization_user_data(WebKitWebContext* context, GVariant* userData)
+void webkit_web_context_set_web_extensions_initialization_user_data(CyberKitWebContext* context, GVariant* userData)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
     g_return_if_fail(userData);
@@ -1708,7 +1708,7 @@ void webkit_web_context_set_web_extensions_initialization_user_data(WebKitWebCon
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_web_context_set_disk_cache_directory:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @directory: the directory to set
  *
  * Set the directory where disk cache files will be stored.
@@ -1716,22 +1716,22 @@ void webkit_web_context_set_web_extensions_initialization_user_data(WebKitWebCon
  * This method must be called before loading anything in this context, otherwise
  * it will not have any effect.
  *
- * Note that this method overrides the directory set in the #WebKitWebsiteDataManager,
+ * Note that this method overrides the directory set in the #CyberKitWebsiteDataManager,
  * but it doesn't change the value returned by webkit_website_data_manager_get_disk_cache_directory()
- * since the #WebKitWebsiteDataManager is immutable.
+ * since the #CyberKitWebsiteDataManager is immutable.
  *
  * Deprecated: 2.10. Use webkit_web_context_new_with_website_data_manager() instead.
  */
-void webkit_web_context_set_disk_cache_directory(WebKitWebContext*, const char*)
+void webkit_web_context_set_disk_cache_directory(CyberKitWebContext*, const char*)
 {
-    g_warning("webkit_web_context_set_disk_cache_directory is deprecated and does nothing, use WebKitWebsiteDataManager instead");
+    g_warning("webkit_web_context_set_disk_cache_directory is deprecated and does nothing, use CyberKitWebsiteDataManager instead");
 }
 #endif
 
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_prefetch_dns:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @hostname: a hostname to be resolved
  *
  * Resolve the domain name of the given @hostname in advance.
@@ -1739,7 +1739,7 @@ void webkit_web_context_set_disk_cache_directory(WebKitWebContext*, const char*)
  * Resolve the domain name of the given @hostname in advance, so that if a URI
  * of @hostname is requested the load will be performed more quickly.
  */
-void webkit_web_context_prefetch_dns(WebKitWebContext* context, const char* hostname)
+void webkit_web_context_prefetch_dns(CyberKitWebContext* context, const char* hostname)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
     g_return_if_fail(hostname);
@@ -1753,7 +1753,7 @@ void webkit_web_context_prefetch_dns(WebKitWebContext* context, const char* host
 
 /**
  * webkit_web_context_allow_tls_certificate_for_host:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @certificate: a #GTlsCertificate
  * @host: the host for which a certificate is to be allowed
  *
@@ -1761,7 +1761,7 @@ void webkit_web_context_prefetch_dns(WebKitWebContext* context, const char* host
  *
  * Since: 2.6
  */
-void webkit_web_context_allow_tls_certificate_for_host(WebKitWebContext* context, GTlsCertificate* certificate, const gchar* host)
+void webkit_web_context_allow_tls_certificate_for_host(CyberKitWebContext* context, GTlsCertificate* certificate, const gchar* host)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
     g_return_if_fail(G_IS_TLS_CERTIFICATE(certificate));
@@ -1776,8 +1776,8 @@ void webkit_web_context_allow_tls_certificate_for_host(WebKitWebContext* context
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_context_set_process_model:
- * @context: the #WebKitWebContext
- * @process_model: a #WebKitProcessModel
+ * @context: the #CyberKitWebContext
+ * @process_model: a #CyberKitProcessModel
  *
  * This function previously allowed specifying the process model to use.
  * However, since 2.26, the only allowed process model is
@@ -1788,7 +1788,7 @@ void webkit_web_context_allow_tls_certificate_for_host(WebKitWebContext* context
  *
  * Deprecated: 2.40
  */
-void webkit_web_context_set_process_model(WebKitWebContext* context, WebKitProcessModel processModel)
+void webkit_web_context_set_process_model(CyberKitWebContext* context, CyberKitProcessModel processModel)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1798,7 +1798,7 @@ void webkit_web_context_set_process_model(WebKitWebContext* context, WebKitProce
 
 /**
  * webkit_web_context_get_process_model:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  *
  * Returns %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES.
  *
@@ -1811,7 +1811,7 @@ void webkit_web_context_set_process_model(WebKitWebContext* context, WebKitProce
  *
  * Deprecated: 2.40
  */
-WebKitProcessModel webkit_web_context_get_process_model(WebKitWebContext* context)
+CyberKitProcessModel webkit_web_context_get_process_model(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES);
 
@@ -1820,7 +1820,7 @@ WebKitProcessModel webkit_web_context_get_process_model(WebKitWebContext* contex
 
 /**
  * webkit_web_context_set_web_process_count_limit:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  * @limit: the maximum number of web processes
  *
  * Sets the maximum number of web processes.
@@ -1834,7 +1834,7 @@ WebKitProcessModel webkit_web_context_get_process_model(WebKitWebContext* contex
  *
  * Deprecated: 2.26
  */
-void webkit_web_context_set_web_process_count_limit(WebKitWebContext* context, guint limit)
+void webkit_web_context_set_web_process_count_limit(CyberKitWebContext* context, guint limit)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1843,7 +1843,7 @@ void webkit_web_context_set_web_process_count_limit(WebKitWebContext* context, g
 
 /**
  * webkit_web_context_get_web_process_count_limit:
- * @context: the #WebKitWebContext
+ * @context: the #CyberKitWebContext
  *
  * Gets the maximum number of web processes that can be created at the same time for the @context.
  *
@@ -1855,7 +1855,7 @@ void webkit_web_context_set_web_process_count_limit(WebKitWebContext* context, g
  *
  * Deprecated: 2.26
  */
-guint webkit_web_context_get_web_process_count_limit(WebKitWebContext* context)
+guint webkit_web_context_get_web_process_count_limit(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), 0);
 
@@ -1863,7 +1863,7 @@ guint webkit_web_context_get_web_process_count_limit(WebKitWebContext* context)
 }
 #endif
 
-static void addOriginToMap(WebKitSecurityOrigin* origin, HashMap<String, bool>* map, bool allowed)
+static void addOriginToMap(CyberKitSecurityOrigin* origin, HashMap<String, bool>* map, bool allowed)
 {
     String string = webkitSecurityOriginGetSecurityOriginData(origin).toString();
     if (string != "null"_s)
@@ -1872,16 +1872,16 @@ static void addOriginToMap(WebKitSecurityOrigin* origin, HashMap<String, bool>* 
 
 /**
  * webkit_web_context_initialize_notification_permissions:
- * @context: the #WebKitWebContext
- * @allowed_origins: (element-type WebKitSecurityOrigin): a #GList of security origins
- * @disallowed_origins: (element-type WebKitSecurityOrigin): a #GList of security origins
+ * @context: the #CyberKitWebContext
+ * @allowed_origins: (element-type CyberKitSecurityOrigin): a #GList of security origins
+ * @disallowed_origins: (element-type CyberKitSecurityOrigin): a #GList of security origins
  *
  * Sets initial desktop notification permissions for the @context.
  *
  * @allowed_origins and @disallowed_origins must each be #GList of
- * #WebKitSecurityOrigin objects representing origins that will,
+ * #CyberKitSecurityOrigin objects representing origins that will,
  * respectively, either always or never have permission to show desktop
- * notifications. No #WebKitNotificationPermissionRequest will ever be
+ * notifications. No #CyberKitNotificationPermissionRequest will ever be
  * generated for any of the security origins represented in
  * @allowed_origins or @disallowed_origins. This function is necessary
  * because some webpages proactively check whether they have permission
@@ -1889,42 +1889,42 @@ static void addOriginToMap(WebKitSecurityOrigin* origin, HashMap<String, bool>* 
  *
  * This function only affects web processes that have not already been
  * created. The best time to call it is when handling
- * #WebKitWebContext::initialize-notification-permissions so as to
+ * #CyberKitWebContext::initialize-notification-permissions so as to
  * ensure that new web processes receive the most recent set of
  * permissions.
  *
  * Since: 2.16
  */
-void webkit_web_context_initialize_notification_permissions(WebKitWebContext* context, GList* allowedOrigins, GList* disallowedOrigins)
+void webkit_web_context_initialize_notification_permissions(CyberKitWebContext* context, GList* allowedOrigins, GList* disallowedOrigins)
 {
     HashMap<String, bool> map;
     g_list_foreach(allowedOrigins, [](gpointer data, gpointer userData) {
-        addOriginToMap(static_cast<WebKitSecurityOrigin*>(data), static_cast<HashMap<String, bool>*>(userData), true);
+        addOriginToMap(static_cast<CyberKitSecurityOrigin*>(data), static_cast<HashMap<String, bool>*>(userData), true);
     }, &map);
     g_list_foreach(disallowedOrigins, [](gpointer data, gpointer userData) {
-        addOriginToMap(static_cast<WebKitSecurityOrigin*>(data), static_cast<HashMap<String, bool>*>(userData), false);
+        addOriginToMap(static_cast<CyberKitSecurityOrigin*>(data), static_cast<HashMap<String, bool>*>(userData), false);
     }, &map);
     context->priv->notificationProvider->setNotificationPermissions(WTFMove(map));
 }
 
 /**
  * webkit_web_context_send_message_to_all_extensions:
- * @context: the #WebKitWebContext
- * @message: a #WebKitUserMessage
+ * @context: the #CyberKitWebContext
+ * @message: a #CyberKitUserMessage
  *
- * Send @message to all #WebKitWebExtension<!-- -->s associated to @context.
+ * Send @message to all #CyberKitWebExtension<!-- -->s associated to @context.
  *
  * If @message is floating, it's consumed.
  *
  * Since: 2.28
  */
-void webkit_web_context_send_message_to_all_extensions(WebKitWebContext* context, WebKitUserMessage* message)
+void webkit_web_context_send_message_to_all_extensions(CyberKitWebContext* context, CyberKitUserMessage* message)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
     g_return_if_fail(WEBKIT_IS_USER_MESSAGE(message));
 
     // We sink the reference in case of being floating.
-    GRefPtr<WebKitUserMessage> adoptedMessage = message;
+    GRefPtr<CyberKitUserMessage> adoptedMessage = message;
     for (auto& process : context->priv->processPool->processes())
         process->send(Messages::WebProcess::SendMessageToWebExtension(webkitUserMessageGetMessage(message)), 0);
 }
@@ -1932,14 +1932,14 @@ void webkit_web_context_send_message_to_all_extensions(WebKitWebContext* context
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_web_context_set_use_system_appearance_for_scrollbars:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  * @enabled: value to set
  *
- * Set the #WebKitWebContext:use-system-appearance-for-scrollbars property.
+ * Set the #CyberKitWebContext:use-system-appearance-for-scrollbars property.
  *
  * Since: 2.30
  */
-void webkit_web_context_set_use_system_appearance_for_scrollbars(WebKitWebContext* context, gboolean enabled)
+void webkit_web_context_set_use_system_appearance_for_scrollbars(CyberKitWebContext* context, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_WEB_CONTEXT(context));
 
@@ -1958,15 +1958,15 @@ void webkit_web_context_set_use_system_appearance_for_scrollbars(WebKitWebContex
 
 /**
  * webkit_web_context_get_use_system_appearance_for_scrollbars:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
- * Get the #WebKitWebContext:use-system-appearance-for-scrollbars property.
+ * Get the #CyberKitWebContext:use-system-appearance-for-scrollbars property.
  *
  * Returns: %TRUE if scrollbars are rendering using the system appearance, or %FALSE otherwise
  *
  * Since: 2.30
  */
-gboolean webkit_web_context_get_use_system_appearance_for_scrollbars(WebKitWebContext* context)
+gboolean webkit_web_context_get_use_system_appearance_for_scrollbars(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), TRUE);
 
@@ -1976,32 +1976,32 @@ gboolean webkit_web_context_get_use_system_appearance_for_scrollbars(WebKitWebCo
 
 /**
  * webkit_web_context_get_time_zone_override:
- * @context: a #WebKitWebContext
+ * @context: a #CyberKitWebContext
  *
- * Get the #WebKitWebContext:time-zone-override property.
+ * Get the #CyberKitWebContext:time-zone-override property.
  *
  * Since: 2.38
  */
-const gchar* webkit_web_context_get_time_zone_override(WebKitWebContext* context)
+const gchar* webkit_web_context_get_time_zone_override(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
 
     return context->priv->timeZoneOverride.data();
 }
 
-void webkitWebContextInitializeNotificationPermissions(WebKitWebContext* context)
+void webkitWebContextInitializeNotificationPermissions(CyberKitWebContext* context)
 {
     g_signal_emit(context, signals[INITIALIZE_NOTIFICATION_PERMISSIONS], 0);
 }
 
 #if !ENABLE(2022_GLIB_API)
-void webkitWebContextDownloadStarted(WebKitWebContext* context, WebKitDownload* download)
+void webkitWebContextDownloadStarted(CyberKitWebContext* context, CyberKitDownload* download)
 {
     g_signal_emit(context, signals[DOWNLOAD_STARTED], 0, download);
 }
 #endif
 
-GVariant* webkitWebContextInitializeWebExtensions(WebKitWebContext* context)
+GVariant* webkitWebContextInitializeWebExtensions(CyberKitWebContext* context)
 {
     g_signal_emit(context, signals[INITIALIZE_WEB_EXTENSIONS], 0);
     return g_variant_new("(msmv)",
@@ -2009,14 +2009,14 @@ GVariant* webkitWebContextInitializeWebExtensions(WebKitWebContext* context)
         context->priv->webExtensionsInitializationUserData.get());
 }
 
-WebProcessPool& webkitWebContextGetProcessPool(WebKitWebContext* context)
+WebProcessPool& webkitWebContextGetProcessPool(CyberKitWebContext* context)
 {
     g_assert(WEBKIT_IS_WEB_CONTEXT(context));
 
     return *context->priv->processPool;
 }
 
-void webkitWebContextCreatePageForWebView(WebKitWebContext* context, WebKitWebView* webView, WebKitUserContentManager* userContentManager, WebKitWebView* relatedView, WebKitWebsitePolicies* defaultWebsitePolicies)
+void webkitWebContextCreatePageForWebView(CyberKitWebContext* context, CyberKitWebView* webView, CyberKitUserContentManager* userContentManager, CyberKitWebView* relatedView, CyberKitWebsitePolicies* defaultWebsitePolicies)
 {
     auto pageConfiguration = API::PageConfiguration::create();
     pageConfiguration->setProcessPool(context->priv->processPool.get());
@@ -2025,7 +2025,7 @@ void webkitWebContextCreatePageForWebView(WebKitWebContext* context, WebKitWebVi
     pageConfiguration->setUserContentController(userContentManager ? webkitUserContentManagerGetUserContentControllerProxy(userContentManager) : nullptr);
     pageConfiguration->setControlledByAutomation(webkit_web_view_is_controlled_by_automation(webView));
 
-    WebKitWebExtensionMode webExtensionMode = webkit_web_view_get_web_extension_mode(webView);
+    CyberKitWebExtensionMode webExtensionMode = webkit_web_view_get_web_extension_mode(webView);
     const char* defaultContentSecurityPolicy = webkit_web_view_get_default_content_security_policy(webView);
 
     if (webExtensionMode == WEBKIT_WEB_EXTENSION_MODE_MANIFESTV3)
@@ -2036,7 +2036,7 @@ void webkitWebContextCreatePageForWebView(WebKitWebContext* context, WebKitWebVi
     if (defaultContentSecurityPolicy)
         pageConfiguration->setOverrideContentSecurityPolicy(String::fromUTF8(defaultContentSecurityPolicy));
 
-    WebKitWebsiteDataManager* manager = webkitWebViewGetWebsiteDataManager(webView);
+    CyberKitWebsiteDataManager* manager = webkitWebViewGetWebsiteDataManager(webView);
 #if !ENABLE(2022_GLIB_API)
     if (!manager)
         manager = context->priv->websiteDataManager.get();
@@ -2054,12 +2054,12 @@ void webkitWebContextCreatePageForWebView(WebKitWebContext* context, WebKitWebVi
     context->priv->webViews.set(page.identifier(), webView);
 }
 
-void webkitWebContextWebViewDestroyed(WebKitWebContext* context, WebKitWebView* webView)
+void webkitWebContextWebViewDestroyed(CyberKitWebContext* context, CyberKitWebView* webView)
 {
     context->priv->webViews.remove(webkitWebViewGetPage(webView).identifier());
 }
 
-WebKitWebView* webkitWebContextGetWebViewForPage(WebKitWebContext* context, WebPageProxy* page)
+CyberKitWebView* webkitWebContextGetWebViewForPage(CyberKitWebContext* context, WebPageProxy* page)
 {
     return page ? context->priv->webViews.get(page->identifier()) : nullptr;
 }

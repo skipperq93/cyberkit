@@ -27,7 +27,7 @@
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaSessionReadyState : uint8_t {
     Havenothing,
@@ -37,18 +37,18 @@ enum class MediaSessionReadyState : uint8_t {
     Haveenoughdata,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MediaSessionReadyState> {
+template<> struct EnumTraits<CyberCore::MediaSessionReadyState> {
     using values = EnumValues<
-        WebCore::MediaSessionReadyState,
-        WebCore::MediaSessionReadyState::Havenothing,
-        WebCore::MediaSessionReadyState::Havemetadata,
-        WebCore::MediaSessionReadyState::Havecurrentdata,
-        WebCore::MediaSessionReadyState::Havefuturedata,
-        WebCore::MediaSessionReadyState::Haveenoughdata
+        CyberCore::MediaSessionReadyState,
+        CyberCore::MediaSessionReadyState::Havenothing,
+        CyberCore::MediaSessionReadyState::Havemetadata,
+        CyberCore::MediaSessionReadyState::Havecurrentdata,
+        CyberCore::MediaSessionReadyState::Havefuturedata,
+        CyberCore::MediaSessionReadyState::Haveenoughdata
     >;
 };
 

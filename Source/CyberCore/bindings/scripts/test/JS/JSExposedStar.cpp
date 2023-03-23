@@ -35,18 +35,18 @@
 #include "JSDOMWrapperCache.h"
 #include "JSWorkerGlobalScopeBase.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -233,7 +233,7 @@ JSC_DEFINE_HOST_FUNCTION(jsExposedStarPrototypeFunction_operationJustForWorkerCo
 
 JSC::GCClient::IsoSubspace* JSExposedStar::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSExposedStar, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSExposedStar, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForExposedStar.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForExposedStar = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForExposedStar.get(); },
@@ -253,9 +253,9 @@ void JSExposedStar::analyzeHeap(JSCell* cell, HeapAnalyzer& analyzer)
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7ExposedStar@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7ExposedStar@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore11ExposedStarE[]; }
+extern "C" { extern void* _ZTVN7CyberCore11ExposedStarE[]; }
 #endif
 #endif
 
@@ -266,9 +266,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7ExposedStar@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7ExposedStar@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore11ExposedStarE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore11ExposedStarE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

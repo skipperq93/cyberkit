@@ -41,7 +41,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLBodyElement);
 
@@ -195,4 +195,4 @@ void HTMLBodyElement::addSubresourceAttributeURLs(ListHashSet<URL>& urls) const
     addSubresourceURL(urls, document().completeURL(attributeWithoutSynchronization(backgroundAttr)));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

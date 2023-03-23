@@ -52,12 +52,12 @@ WEBCORE_EXPORT CtapDeviceResponseCode getResponseCode(const Vector<uint8_t>&);
 // and converts response to AuthenticatorMakeCredentialResponse object with
 // CBOR map keys that conform to format of attestation object defined by the
 // WebAuthN spec : https://w3c.github.io/webauthn/#fig-attStructs
-WEBCORE_EXPORT RefPtr<WebCore::AuthenticatorAttestationResponse> readCTAPMakeCredentialResponse(const Vector<uint8_t>&, WebCore::AuthenticatorAttachment, Vector<WebCore::AuthenticatorTransport>&&, const WebCore::AttestationConveyancePreference& = WebCore::AttestationConveyancePreference::Direct);
+WEBCORE_EXPORT RefPtr<CyberCore::AuthenticatorAttestationResponse> readCTAPMakeCredentialResponse(const Vector<uint8_t>&, CyberCore::AuthenticatorAttachment, Vector<CyberCore::AuthenticatorTransport>&&, const CyberCore::AttestationConveyancePreference& = CyberCore::AttestationConveyancePreference::Direct);
 
 // De-serializes CBOR encoded response to AuthenticatorGetAssertion /
 // AuthenticatorGetNextAssertion request to AuthenticatorGetAssertionResponse
 // object.
-WEBCORE_EXPORT RefPtr<WebCore::AuthenticatorAssertionResponse> readCTAPGetAssertionResponse(const Vector<uint8_t>&, WebCore::AuthenticatorAttachment);
+WEBCORE_EXPORT RefPtr<CyberCore::AuthenticatorAssertionResponse> readCTAPGetAssertionResponse(const Vector<uint8_t>&, CyberCore::AuthenticatorAttachment);
 
 // De-serializes CBOR encoded response to AuthenticatorGetInfo request to
 // AuthenticatorGetInfoResponse object.

@@ -71,7 +71,7 @@ class BuiltinsSeparateImplementationGenerator(BuiltinsGenerator):
         if self.model().framework is Frameworks.CyberScriptCore:
             sections.append(Template(Templates.SeparateJSCImplementationStaticMacros).substitute(args))
         elif self.model().framework is Frameworks.CyberCore:
-            sections.append(Template(Templates.SeparateWebCoreImplementationStaticMacros).substitute(args))
+            sections.append(Template(Templates.SeparateCyberCoreImplementationStaticMacros).substitute(args))
         sections.append(Template(Templates.NamespaceBottom).substitute(args))
         if conditional_guard is not None:
             sections.append("#endif // %s\n" % conditional_guard)
@@ -99,7 +99,7 @@ class BuiltinsSeparateImplementationGenerator(BuiltinsGenerator):
                 ("CyberScriptCore", "runtime/VM.h"),
             ),
             (["CyberCore"],
-                ("CyberCore", "bindings/js/WebCoreJSClientData.h"),
+                ("CyberCore", "bindings/js/CyberCoreJSClientData.h"),
             ),
             (["CyberScriptCore", "CyberCore"],
                 ("CyberScriptCore", "runtime/IdentifierInlines.h"),

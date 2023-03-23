@@ -97,17 +97,17 @@
 #if __has_include(<CyberKitAdditions/BaseAudioContextAdditions.cpp>)
 #include <CyberKitAdditions/BaseAudioContextAdditions.cpp>
 #else
-namespace WebCore {
+namespace CyberCore {
 
 static NoiseInjectionPolicy noiseInjectionPolicy(const Document&)
 {
     return NoiseInjectionPolicy::None;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BaseAudioContext);
 
@@ -139,7 +139,7 @@ BaseAudioContext::BaseAudioContext(Document& document)
     , m_contextID(generateContextID())
     , m_worklet(AudioWorklet::create(*this))
     , m_listener(AudioListener::create(*this))
-    , m_noiseInjectionPolicy(WebCore::noiseInjectionPolicy(document))
+    , m_noiseInjectionPolicy(CyberCore::noiseInjectionPolicy(document))
 {
     liveAudioContexts().add(m_contextID);
 
@@ -965,6 +965,6 @@ WTFLogChannel& BaseAudioContext::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

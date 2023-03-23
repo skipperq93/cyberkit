@@ -28,7 +28,7 @@
 
 #include <CyberScriptCore/Debugger.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class Page;
@@ -63,4 +63,4 @@ private:
     Page& m_page;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

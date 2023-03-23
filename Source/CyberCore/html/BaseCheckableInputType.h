@@ -32,7 +32,7 @@
 
 #include "InputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Base of checkbox and radio types.
 class BaseCheckableInputType : public InputType {
@@ -59,4 +59,4 @@ private:
     void setValue(const String&, bool, TextFieldEventBehavior, TextControlSetValueSelection) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

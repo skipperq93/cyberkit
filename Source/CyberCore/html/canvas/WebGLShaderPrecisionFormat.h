@@ -31,7 +31,7 @@
 #include "GraphicsTypesGL.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLShaderPrecisionFormat : public RefCounted<WebGLShaderPrecisionFormat> {
 public:
@@ -49,6 +49,6 @@ private:
     GCGLint m_precision;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -29,7 +29,7 @@
 #include "JSDOMBinding.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
@@ -40,4 +40,4 @@ void JSIDBTransaction::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSIDBTransaction);
 
-} // namespace WebCore
+} // namespace CyberCore

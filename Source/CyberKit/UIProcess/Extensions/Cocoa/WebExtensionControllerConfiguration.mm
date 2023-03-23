@@ -35,7 +35,7 @@
 #import "SandboxUtilities.h"
 #import <wtf/FileSystem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 String WebExtensionControllerConfiguration::createStorageDirectoryPath(std::optional<UUID> identifier)
 {
@@ -49,17 +49,17 @@ String WebExtensionControllerConfiguration::createStorageDirectoryPath(std::opti
 
         String identifierPath = identifier ? identifier->toString() : "Default"_s;
         if (processHasContainer()) {
-            defaultStoragePath.get() = FileSystem::pathByAppendingComponents(libraryPath, { "WebKit"_s, "WebExtensions"_s, identifierPath });
+            defaultStoragePath.get() = FileSystem::pathByAppendingComponents(libraryPath, { "CyberKit"_s, "WebExtensions"_s, identifierPath });
             return;
         }
 
         String appDirectoryName = [NSBundle mainBundle].bundleIdentifier ?: [NSProcessInfo processInfo].processName;
-        defaultStoragePath.get() = FileSystem::pathByAppendingComponents(libraryPath, { "WebKit"_s, appDirectoryName, "WebExtensions"_s, identifierPath });
+        defaultStoragePath.get() = FileSystem::pathByAppendingComponents(libraryPath, { "CyberKit"_s, appDirectoryName, "WebExtensions"_s, identifierPath });
     });
 
     return defaultStoragePath.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

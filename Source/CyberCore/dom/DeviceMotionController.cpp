@@ -33,7 +33,7 @@
 #include "EventNames.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DeviceMotionController::DeviceMotionController(DeviceMotionClient& client)
     : DeviceController(client)
@@ -96,4 +96,4 @@ bool DeviceMotionController::isActiveAt(Page* page)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

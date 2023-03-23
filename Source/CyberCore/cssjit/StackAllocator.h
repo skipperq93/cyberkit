@@ -31,7 +31,7 @@
 #include <CyberScriptCore/MacroAssembler.h>
 #include <limits>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StackAllocator {
 public:
@@ -272,6 +272,6 @@ private:
     bool m_hasFunctionCallPadding;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CSS_SELECTOR_JIT)

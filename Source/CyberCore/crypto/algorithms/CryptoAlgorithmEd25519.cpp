@@ -33,7 +33,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(COCOA)
 ExceptionOr<Vector<uint8_t>> CryptoAlgorithmEd25519::platformSign(const CryptoKeyOKP&, const Vector<uint8_t>&)
@@ -194,5 +194,5 @@ void CryptoAlgorithmEd25519::exportKey(CryptoKeyFormat format, Ref<CryptoKey>&& 
     callback(format, WTFMove(result));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif // ENABLE(WEB_CRYPTO)

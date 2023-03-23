@@ -28,7 +28,7 @@
 
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCNetworkManager : public ThreadSafeRefCounted<RTCNetworkManager, WTF::DestructionThread::MainRunLoop> {
 public:
@@ -38,6 +38,6 @@ public:
     virtual void unregisterMDNSNames() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

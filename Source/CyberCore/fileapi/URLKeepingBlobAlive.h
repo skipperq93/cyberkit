@@ -28,7 +28,7 @@
 #include "SecurityOriginData.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // URL class which keeps the blob alive if the URL is a blob URL.
 class URLKeepingBlobAlive {
@@ -58,4 +58,4 @@ private:
     SecurityOriginData m_topOrigin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

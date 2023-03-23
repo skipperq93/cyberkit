@@ -29,7 +29,7 @@ namespace JSC {
 class VM;
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventLoop;
 class EventLoopTask;
@@ -57,4 +57,4 @@ private:
     Vector<std::unique_ptr<EventLoopTask>> m_checkpointTasks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

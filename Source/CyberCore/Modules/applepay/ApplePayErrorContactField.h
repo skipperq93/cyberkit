@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayErrorContactField : uint8_t {
     PhoneNumber,
@@ -47,6 +47,6 @@ enum class ApplePayErrorContactField : uint8_t {
     CountryCode,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

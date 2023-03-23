@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InsertLineBreakCommand : public CompositeEditCommand {
 public:
@@ -46,4 +46,4 @@ private:
     bool shouldUseBreakElement(const Position&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

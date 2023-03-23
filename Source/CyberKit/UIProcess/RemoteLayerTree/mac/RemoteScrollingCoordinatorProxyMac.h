@@ -30,7 +30,7 @@
 #include "RemoteScrollingCoordinatorProxy.h"
 #include <CyberCore/WheelEventDeltaFilter.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(SCROLLING_THREAD)
 class RemoteLayerTreeEventDispatcher;
@@ -61,7 +61,7 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 SPECIALIZE_TYPE_TRAITS_REMOTE_SCROLLING_COORDINATOR_PROXY(RemoteScrollingCoordinatorProxyMac, isRemoteScrollingCoordinatorProxyMac());
 

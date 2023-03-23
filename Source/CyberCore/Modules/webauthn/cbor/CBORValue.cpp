@@ -101,7 +101,7 @@ CBORValue::CBORValue(BinaryValue&& inBytes)
 {
 }
 
-CBORValue::CBORValue(const WebCore::BufferSource& bufferSource)
+CBORValue::CBORValue(const CyberCore::BufferSource& bufferSource)
     : m_type(Type::ByteString)
     , m_byteStringValue(bufferSource.data(), bufferSource.length())
 {

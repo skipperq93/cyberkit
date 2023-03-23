@@ -56,7 +56,7 @@ webkit_dom_dom_implementation_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_implementation_has_feature(CyberKitDOMDOMImplementation* self, const gchar* feature, const gchar* version);
@@ -71,7 +71,7 @@ webkit_dom_dom_implementation_has_feature(CyberKitDOMDOMImplementation* self, co
  *
  * Returns: (transfer none): A #CyberKitDOMDocumentType
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDocumentType*
 webkit_dom_dom_implementation_create_document_type(CyberKitDOMDOMImplementation* self, const gchar* qualifiedName, const gchar* publicId, const gchar* systemId, GError** error);
@@ -86,7 +86,7 @@ webkit_dom_dom_implementation_create_document_type(CyberKitDOMDOMImplementation*
  *
  * Returns: (transfer none): A #CyberKitDOMDocument
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDocument*
 webkit_dom_dom_implementation_create_document(CyberKitDOMDOMImplementation* self, const gchar* namespaceURI, const gchar* qualifiedName, CyberKitDOMDocumentType* doctype, GError** error);
@@ -100,7 +100,7 @@ webkit_dom_dom_implementation_create_document(CyberKitDOMDOMImplementation* self
  *
  * Returns: (transfer full): A #CyberKitDOMCSSStyleSheet
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSStyleSheet*
 webkit_dom_dom_implementation_create_css_style_sheet(CyberKitDOMDOMImplementation* self, const gchar* title, const gchar* media, GError** error);
@@ -112,7 +112,7 @@ webkit_dom_dom_implementation_create_css_style_sheet(CyberKitDOMDOMImplementatio
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLDocument
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLDocument*
 webkit_dom_dom_implementation_create_html_document(CyberKitDOMDOMImplementation* self, const gchar* title);

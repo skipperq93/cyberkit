@@ -24,7 +24,7 @@
 
 #include "ImageLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLImageLoader final : public ImageLoader {
 public:

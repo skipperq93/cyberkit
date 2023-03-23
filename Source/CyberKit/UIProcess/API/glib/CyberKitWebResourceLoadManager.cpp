@@ -18,53 +18,53 @@
  */
 
 #include "config.h"
-#include "WebKitWebResourceLoadManager.h"
+#include "CyberKitWebResourceLoadManager.h"
 
 #include "WebFrameProxy.h"
-#include "WebKitWebResourcePrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitWebResourcePrivate.h"
+#include "CyberKitWebViewPrivate.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-WebKitWebResourceLoadManager::WebKitWebResourceLoadManager(WebKitWebView* webView)
+CyberKitWebResourceLoadManager::CyberKitWebResourceLoadManager(CyberKitWebView* webView)
     : m_webView(webView)
 {
-    g_signal_connect(m_webView, "load-changed", G_CALLBACK(+[](WebKitWebView*, WebKitLoadEvent loadEvent, WebKitWebResourceLoadManager* manager) {
+    g_signal_connect(m_webView, "load-changed", G_CALLBACK(+[](CyberKitWebView*, CyberKitLoadEvent loadEvent, CyberKitWebResourceLoadManager* manager) {
         if (loadEvent == WEBKIT_LOAD_STARTED)
             manager->m_resources.clear();
     }), this);
 }
 
-WebKitWebResourceLoadManager::~WebKitWebResourceLoadManager()
+CyberKitWebResourceLoadManager::~CyberKitWebResourceLoadManager()
 {
     g_signal_handlers_disconnect_by_data(m_webView, this);
 }
 
-void WebKitWebResourceLoadManager::didInitiateLoad(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceRequest&& request)
+void CyberKitWebResourceLoadManager::didInitiateLoad(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceRequest&& request)
 {
     auto* frame = WebFrameProxy::webFrame(frameID);
     if (!frame)
         return;
 
-    GRefPtr<WebKitWebResource> resource = adoptGRef(webkitWebResourceCreate(*frame, request));
+    GRefPtr<CyberKitWebResource> resource = adoptGRef(webkitWebResourceCreate(*frame, request));
     m_resources.set({ resourceID, frameID }, resource);
     webkitWebViewResourceLoadStarted(m_webView, resource.get(), WTFMove(request));
 }
 
-void WebKitWebResourceLoadManager::didSendRequest(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceRequest&& request, ResourceResponse&& redirectResponse)
+void CyberKitWebResourceLoadManager::didSendRequest(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceRequest&& request, ResourceResponse&& redirectResponse)
 {
     if (auto* resource = m_resources.get({ resourceID, frameID }))
         webkitWebResourceSentRequest(resource, WTFMove(request), WTFMove(redirectResponse));
 }
 
-void WebKitWebResourceLoadManager::didReceiveResponse(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceResponse&& response)
+void CyberKitWebResourceLoadManager::didReceiveResponse(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceResponse&& response)
 {
     if (auto* resource = m_resources.get({ resourceID, frameID }))
         webkitWebResourceSetResponse(resource, WTFMove(response));
 }
 
-void WebKitWebResourceLoadManager::didFinishLoad(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceError&& error)
+void CyberKitWebResourceLoadManager::didFinishLoad(ResourceLoaderIdentifier resourceID, FrameIdentifier frameID, ResourceError&& error)
 {
     auto resource = m_resources.take({ resourceID, frameID });
     if (!resource)
@@ -75,4 +75,4 @@ void WebKitWebResourceLoadManager::didFinishLoad(ResourceLoaderIdentifier resour
     else
         webkitWebResourceFailed(resource.get(), WTFMove(error));
 }
-} // namespace WebKit
+} // namespace CyberKit

@@ -30,7 +30,7 @@
 #include "FlexRect.h"
 #include "LayoutContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 FlexLayout::FlexLayout(const ElementBox& flexBox)

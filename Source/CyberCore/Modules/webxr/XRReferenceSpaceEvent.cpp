@@ -32,7 +32,7 @@
 #include "WebXRRigidTransform.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(XRReferenceSpaceEvent);
 
@@ -61,6 +61,6 @@ WebXRRigidTransform* XRReferenceSpaceEvent::transform() const
     return m_transform.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

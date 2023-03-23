@@ -29,11 +29,11 @@
  */
 
 #include "config.h"
-#include "WebKitSettings.h"
+#include "CyberKitSettings.h"
 
-#include "WebKitEnumTypes.h"
-#include "WebKitInitialize.h"
-#include "WebKitSettingsPrivate.h"
+#include "CyberKitEnumTypes.h"
+#include "CyberKitInitialize.h"
+#include "CyberKitSettingsPrivate.h"
 #include "WebPageProxy.h"
 #include "WebPreferences.h"
 #include <CyberCore/HTTPParsers.h>
@@ -53,11 +53,11 @@
 #include <CyberCore/PlatformDisplay.h>
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
-struct _WebKitSettingsPrivate {
-    _WebKitSettingsPrivate()
-        : preferences(WebPreferences::create(String(), "WebKit2."_s, "WebKit2."_s))
+struct _CyberKitSettingsPrivate {
+    _CyberKitSettingsPrivate()
+        : preferences(WebPreferences::create(String(), "CyberKit2."_s, "CyberKit2."_s))
     {
         defaultFontFamily = preferences->standardFontFamily().utf8();
         monospaceFontFamily = preferences->fixedFontFamily().utf8();
@@ -88,23 +88,23 @@ struct _WebKitSettingsPrivate {
 };
 
 /**
- * WebKitSettings:
+ * CyberKitSettings:
  *
- * Control the behaviour of a #WebKitWebView.
+ * Control the behaviour of a #CyberKitWebView.
  *
- * #WebKitSettings can be applied to a #WebKitWebView to control text charset,
+ * #CyberKitSettings can be applied to a #CyberKitWebView to control text charset,
  * color, font sizes, printing mode, script support, loading of images and various
- * other things on a #WebKitWebView. After creation, a #WebKitSettings object
+ * other things on a #CyberKitWebView. After creation, a #CyberKitSettings object
  * contains default settings.
  *
  * ```c
  * // Disable JavaScript
- * WebKitSettings *settings = webkit_web_view_group_get_settings (my_view_group);
+ * CyberKitSettings *settings = webkit_web_view_group_get_settings (my_view_group);
  * webkit_settings_set_enable_javascript (settings, FALSE);
  * ```
  */
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitSettings, webkit_settings, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitSettings, webkit_settings, G_TYPE_OBJECT, GObject)
 
 enum {
     PROP_0,
@@ -191,7 +191,7 @@ static void webKitSettingsConstructed(GObject* object)
 {
     G_OBJECT_CLASS(webkit_settings_parent_class)->constructed(object);
 
-    WebKitSettings* settings = WEBKIT_SETTINGS(object);
+    CyberKitSettings* settings = WEBKIT_SETTINGS(object);
     WebPreferences* prefs = settings->priv->preferences.get();
     prefs->setShouldRespectImageOrientation(true);
 
@@ -210,7 +210,7 @@ static void webKitSettingsConstructed(GObject* object)
 
 static void webKitSettingsSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitSettings* settings = WEBKIT_SETTINGS(object);
+    CyberKitSettings* settings = WEBKIT_SETTINGS(object);
 
     switch (propId) {
     case PROP_ENABLE_JAVASCRIPT:
@@ -390,7 +390,7 @@ static void webKitSettingsSetProperty(GObject* object, guint propId, const GValu
         break;
 #if PLATFORM(GTK)
     case PROP_HARDWARE_ACCELERATION_POLICY:
-        webkit_settings_set_hardware_acceleration_policy(settings, static_cast<WebKitHardwareAccelerationPolicy>(g_value_get_enum(value)));
+        webkit_settings_set_hardware_acceleration_policy(settings, static_cast<CyberKitHardwareAccelerationPolicy>(g_value_get_enum(value)));
         break;
     case PROP_ENABLE_BACK_FORWARD_NAVIGATION_GESTURES:
         webkit_settings_set_enable_back_forward_navigation_gestures(settings, g_value_get_boolean(value));
@@ -419,7 +419,7 @@ static void webKitSettingsSetProperty(GObject* object, guint propId, const GValu
 
 static void webKitSettingsGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitSettings* settings = WEBKIT_SETTINGS(object);
+    CyberKitSettings* settings = WEBKIT_SETTINGS(object);
 
     switch (propId) {
     case PROP_ENABLE_JAVASCRIPT:
@@ -623,7 +623,7 @@ static void webKitSettingsGetProperty(GObject* object, guint propId, GValue* val
     }
 }
 
-static void webkit_settings_class_init(WebKitSettingsClass* klass)
+static void webkit_settings_class_init(CyberKitSettingsClass* klass)
 {
     webkitInitialize();
 
@@ -636,7 +636,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
     GParamFlags readWriteConstructParamFlags = static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT);
 
     /**
-     * WebKitSettings:enable-javascript:
+     * CyberKitSettings:enable-javascript:
      *
      * Determines whether or not JavaScript executes within a page.
      */
@@ -649,7 +649,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:auto-load-images:
+     * CyberKitSettings:auto-load-images:
      *
      * Determines whether images should be automatically loaded or not.
      * On devices where network bandwidth is of concern, it might be
@@ -664,10 +664,10 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:load-icons-ignoring-image-load-setting:
+     * CyberKitSettings:load-icons-ignoring-image-load-setting:
      *
      * Determines whether a site can load favicons irrespective
-     * of the value of #WebKitSettings:auto-load-images.
+     * of the value of #CyberKitSettings:auto-load-images.
      */
     sObjProperties[PROP_LOAD_ICONS_IGNORING_IMAGE_LOAD_SETTING] =
         g_param_spec_boolean(
@@ -678,7 +678,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-offline-web-application-cache:
+     * CyberKitSettings:enable-offline-web-application-cache:
      *
      * Whether to enable HTML5 offline web application cache support. Offline
      * web application cache allows web applications to run even when
@@ -696,7 +696,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-html5-local-storage:
+     * CyberKitSettings:enable-html5-local-storage:
      *
      * Whether to enable HTML5 local storage support. Local storage provides
      * simple synchronous storage access.
@@ -713,7 +713,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-html5-database:
+     * CyberKitSettings:enable-html5-database:
      *
      * Whether to enable HTML5 client-side SQL database support (IndexedDB).
      */
@@ -727,7 +727,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 
 #if !ENABLE(2022_GLIB_API)
     /**
-     * WebKitSettings:enable-xss-auditor:
+     * CyberKitSettings:enable-xss-auditor:
      *
      * Whether to enable the XSS auditor. This feature filters some kinds of
      * reflective XSS attacks on vulnerable web sites.
@@ -743,7 +743,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             static_cast<GParamFlags>(readWriteConstructParamFlags | G_PARAM_DEPRECATED));
 
     /**
-     * WebKitSettings:enable-frame-flattening:
+     * CyberKitSettings:enable-frame-flattening:
      *
      * Frame flattening is no longer supported. This property does nothing.
      *
@@ -758,7 +758,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             static_cast<GParamFlags>(readWriteConstructParamFlags | G_PARAM_DEPRECATED));
 
     /**
-     * WebKitSettings:enable-plugins:
+     * CyberKitSettings:enable-plugins:
      *
      * Determines whether or not plugins on the page are enabled.
      *
@@ -773,7 +773,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             static_cast<GParamFlags>(readWriteConstructParamFlags | G_PARAM_DEPRECATED));
 
     /**
-     * WebKitSettings:enable-java:
+     * CyberKitSettings:enable-java:
      *
      * Determines whether or not Java is enabled on the page.
      *
@@ -789,7 +789,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 #endif
 
     /**
-     * WebKitSettings:javascript-can-open-windows-automatically:
+     * CyberKitSettings:javascript-can-open-windows-automatically:
      *
      * Whether JavaScript can open popup windows automatically without user
      * intervention.
@@ -803,7 +803,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-hyperlink-auditing:
+     * CyberKitSettings:enable-hyperlink-auditing:
      *
      * Determines whether or not hyperlink auditing is enabled.
      *
@@ -819,7 +819,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:default-font-family:
+     * CyberKitSettings:default-font-family:
      *
      * The font family to use as the default for content that does not specify a font.
      */
@@ -832,7 +832,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:monospace-font-family:
+     * CyberKitSettings:monospace-font-family:
      *
      * The font family used as the default for content using a monospace font.
      *
@@ -846,7 +846,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:serif-font-family:
+     * CyberKitSettings:serif-font-family:
      *
      * The font family used as the default for content using a serif font.
      */
@@ -859,7 +859,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:sans-serif-font-family:
+     * CyberKitSettings:sans-serif-font-family:
      *
      * The font family used as the default for content using a sans-serif font.
      */
@@ -872,7 +872,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:cursive-font-family:
+     * CyberKitSettings:cursive-font-family:
      *
      * The font family used as the default for content using a cursive font.
      */
@@ -885,7 +885,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:fantasy-font-family:
+     * CyberKitSettings:fantasy-font-family:
      *
      * The font family used as the default for content using a fantasy font.
      */
@@ -898,7 +898,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:pictograph-font-family:
+     * CyberKitSettings:pictograph-font-family:
      *
      * The font family used as the default for content using a pictograph font.
      */
@@ -911,7 +911,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:default-font-size:
+     * CyberKitSettings:default-font-size:
      *
      * The default font size in pixels to use for content displayed if
      * no font size is specified.
@@ -925,7 +925,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:default-monospace-font-size:
+     * CyberKitSettings:default-monospace-font-size:
      *
      * The default font size in pixels to use for content displayed in
      * monospace font if no font size is specified.
@@ -939,7 +939,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:minimum-font-size:
+     * CyberKitSettings:minimum-font-size:
      *
      * The minimum font size in pixels used to display text. This setting
      * controls the absolute smallest size. Values other than 0 can
@@ -954,7 +954,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:default-charset:
+     * CyberKitSettings:default-charset:
      *
      * The default text charset used when interpreting content with an unspecified charset.
      */
@@ -968,12 +968,12 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 
 #if PLATFORM(GTK) && !USE(GTK4)
     /**
-     * WebKitSettings:enable-private-browsing:
+     * CyberKitSettings:enable-private-browsing:
      *
      * Determines whether or not private browsing is enabled. Private browsing
      * will disable history, cache and form auto-fill for any pages visited.
      *
-     * Deprecated: 2.16. Use #WebKitWebView:is-ephemeral or #WebKitWebsiteDataManager:is-ephemeral instead.
+     * Deprecated: 2.16. Use #CyberKitWebView:is-ephemeral or #CyberKitWebsiteDataManager:is-ephemeral instead.
      */
     sObjProperties[PROP_ENABLE_PRIVATE_BROWSING] =
         g_param_spec_boolean(
@@ -985,7 +985,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 #endif
 
     /**
-     * WebKitSettings:enable-developer-extras:
+     * CyberKitSettings:enable-developer-extras:
      *
      * Determines whether or not developer tools, such as the Web Inspector, are enabled.
      */
@@ -998,7 +998,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-resizable-text-areas:
+     * CyberKitSettings:enable-resizable-text-areas:
      *
      * Determines whether or not text areas can be resized.
      */
@@ -1011,7 +1011,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-tabs-to-links:
+     * CyberKitSettings:enable-tabs-to-links:
      *
      * Determines whether the tab key cycles through the elements on the page.
      * When this setting is enabled, users will be able to focus the next element
@@ -1027,7 +1027,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-dns-prefetching:
+     * CyberKitSettings:enable-dns-prefetching:
      *
      * Determines whether or not to prefetch domain names. DNS prefetching attempts
      * to resolve domain names before a user tries to follow a link.
@@ -1041,7 +1041,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-caret-browsing:
+     * CyberKitSettings:enable-caret-browsing:
      *
      * Whether to enable accessibility enhanced keyboard navigation.
      */
@@ -1054,7 +1054,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-fullscreen:
+     * CyberKitSettings:enable-fullscreen:
      *
      * Whether to enable the Javascript Fullscreen API. The API
      * allows any HTML element to request fullscreen display. See also
@@ -1070,7 +1070,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:print-backgrounds:
+     * CyberKitSettings:print-backgrounds:
      *
      * Whether background images should be drawn during printing.
      */
@@ -1083,7 +1083,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-webaudio:
+     * CyberKitSettings:enable-webaudio:
      *
      *
      * Enable or disable support for WebAudio on pages. WebAudio is an
@@ -1100,7 +1100,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-    * WebKitSettings:enable-webgl:
+    * CyberKitSettings:enable-webgl:
     *
     * Enable or disable support for WebGL on pages. WebGL enables web
     * content to use an API based on OpenGL ES 2.0.
@@ -1114,13 +1114,13 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:allow-modal-dialogs:
+     * CyberKitSettings:allow-modal-dialogs:
      *
      * Determine whether it's allowed to create and run modal dialogs
-     * from a #WebKitWebView through JavaScript with
+     * from a #CyberKitWebView through JavaScript with
      * <function>window.showModalDialog</function>. If it's set to
-     * %FALSE, the associated #WebKitWebView won't be able to create
-     * new modal dialogs, so not even the #WebKitWebView::create
+     * %FALSE, the associated #CyberKitWebView won't be able to create
+     * new modal dialogs, so not even the #CyberKitWebView::create
      * signal will be emitted.
      */
     sObjProperties[PROP_ALLOW_MODAL_DIALOGS] =
@@ -1132,9 +1132,9 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:zoom-text-only:
+     * CyberKitSettings:zoom-text-only:
      *
-     * Whether #WebKitWebView:zoom-level affects only the
+     * Whether #CyberKitWebView:zoom-level affects only the
      * text of the page or all the contents. Other contents containing text
      * like form controls will be also affected by zoom factor when
      * this property is enabled.
@@ -1148,7 +1148,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:javascript-can-access-clipboard:
+     * CyberKitSettings:javascript-can-access-clipboard:
      *
      * Whether JavaScript can access the clipboard. The default value is %FALSE. If
      * set to %TRUE, document.execCommand() allows cut, copy and paste commands.
@@ -1163,7 +1163,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:media-playback-requires-user-gesture:
+     * CyberKitSettings:media-playback-requires-user-gesture:
      *
      * Whether a user gesture (such as clicking the play button)
      * would be required to start media playback or load media. This is off
@@ -1180,7 +1180,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:media-playback-allows-inline:
+     * CyberKitSettings:media-playback-allows-inline:
      *
      * Whether media playback is full-screen only or inline playback is allowed.
      * This is %TRUE by default, so media playback can be inline. Setting it to
@@ -1195,7 +1195,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:draw-compositing-indicators:
+     * CyberKitSettings:draw-compositing-indicators:
      *
      * Whether to draw compositing borders and repaint counters on layers drawn
      * with accelerated compositing. This is useful for debugging issues related
@@ -1210,13 +1210,13 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-site-specific-quirks:
+     * CyberKitSettings:enable-site-specific-quirks:
      *
      * Whether to turn on site-specific quirks. Turning this on will
-     * tell WebKit to use some site-specific workarounds for
+     * tell CyberKit to use some site-specific workarounds for
      * better web compatibility. For example, older versions of
-     * MediaWiki will incorrectly send to WebKit a CSS file with KHTML
-     * workarounds. By turning on site-specific quirks, WebKit will
+     * MediaWiki will incorrectly send to CyberKit a CSS file with KHTML
+     * workarounds. By turning on site-specific quirks, CyberKit will
      * special-case this and other cases to make some specific sites work.
      */
     sObjProperties[PROP_ENABLE_SITE_SPECIFIC_QUIRKS] =
@@ -1228,7 +1228,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-page-cache:
+     * CyberKitSettings:enable-page-cache:
      *
      * Enable or disable the page cache. Disabling the page cache is
      * generally only useful for special circumstances like low-memory
@@ -1249,9 +1249,9 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:user-agent:
+     * CyberKitSettings:user-agent:
      *
-     * The user-agent string used by WebKit. Unusual user-agent strings may cause web
+     * The user-agent string used by CyberKit. Unusual user-agent strings may cause web
      * content to render incorrectly or fail to run, as many web pages are written to
      * parse the user-agent strings of only the most popular browsers. Therefore, it's
      * typically better to not completely override the standard user-agent, but to use
@@ -1269,7 +1269,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-smooth-scrolling:
+     * CyberKitSettings:enable-smooth-scrolling:
      *
      * Enable or disable smooth scrolling.
      */
@@ -1283,11 +1283,11 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 
 #if !ENABLE(2022_GLIB_API)
     /**
-     * WebKitSettings:enable-accelerated-2d-canvas:
+     * CyberKitSettings:enable-accelerated-2d-canvas:
      *
      * Enable or disable accelerated 2D canvas. Accelerated 2D canvas is only available
-     * if WebKit was compiled with a version of Cairo including the unstable CairoGL API.
-     * When accelerated 2D canvas is enabled, WebKit may render some 2D canvas content
+     * if CyberKit was compiled with a version of Cairo including the unstable CairoGL API.
+     * When accelerated 2D canvas is enabled, CyberKit may render some 2D canvas content
      * using hardware accelerated drawing operations.
      *
      * Since: 2.2
@@ -1304,7 +1304,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 #endif
 
     /**
-     * WebKitSettings:enable-write-console-messages-to-stdout:
+     * CyberKitSettings:enable-write-console-messages-to-stdout:
      *
      * Enable or disable writing console messages to stdout. These are messages
      * sent to the console with console.log and related methods.
@@ -1320,7 +1320,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-media-stream:
+     * CyberKitSettings:enable-media-stream:
      *
      * Enable or disable support for MediaStream on pages. MediaStream
      * is an experimental proposal for allowing web pages to access
@@ -1339,7 +1339,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-mock-capture-devices:
+     * CyberKitSettings:enable-mock-capture-devices:
      *
      * Enable or disable the Mock Capture Devices. Those are fake
      * Microphone and Camera devices to be used as MediaStream
@@ -1355,7 +1355,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
    /**
-     * WebKitSettings:enable-spatial-navigation:
+     * CyberKitSettings:enable-spatial-navigation:
      *
      * Whether to enable Spatial Navigation. This feature consists in the ability
      * to navigate between focusable elements in a Web page, such as hyperlinks
@@ -1375,7 +1375,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-mediasource:
+     * CyberKitSettings:enable-mediasource:
      *
      * Enable or disable support for MediaSource on pages. MediaSource
      * extends HTMLMediaElement to allow JavaScript to generate media
@@ -1394,7 +1394,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
    /**
-     * WebKitSettings:enable-encrypted-media:
+     * CyberKitSettings:enable-encrypted-media:
      *
      * Enable or disable support for Encrypted Media API on pages.
      * EncryptedMedia is an experimental JavaScript API for playing encrypted media in HTML.
@@ -1414,7 +1414,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-media-capabilities:
+     * CyberKitSettings:enable-media-capabilities:
      *
      * Enable or disable support for MediaCapabilities on pages. This
      * specification intends to provide APIs to allow websites to make an optimal
@@ -1436,10 +1436,10 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:allow-file-access-from-file-urls:
+     * CyberKitSettings:allow-file-access-from-file-urls:
      *
      * Whether file access is allowed from file URLs. By default, when
-     * something is loaded in a #WebKitWebView using a file URI, cross
+     * something is loaded in a #CyberKitWebView using a file URI, cross
      * origin requests to other file resources are not allowed. This
      * setting allows you to change that behaviour, so that it would be
      * possible to do a XMLHttpRequest of a local file, for example.
@@ -1455,11 +1455,11 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:allow-universal-access-from-file-urls:
+     * CyberKitSettings:allow-universal-access-from-file-urls:
      *
      * Whether or not JavaScript running in the context of a file scheme URL
      * should be allowed to access content from any origin.  By default, when
-     * something is loaded in a #WebKitWebView using a file scheme URL,
+     * something is loaded in a #CyberKitWebView using a file scheme URL,
      * access to the local file system and arbitrary local storage is not
      * allowed. This setting allows you to change that behaviour, so that
      * it would be possible to use local storage, for example.
@@ -1475,7 +1475,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:allow-top-navigation-to-data-urls:
+     * CyberKitSettings:allow-top-navigation-to-data-urls:
      *
      * Whether or not the top frame is allowed to navigate to data URLs. It is disabled by default
      * due to the risk it poses when loading untrusted URLs, with data URLs being used in scamming
@@ -1494,9 +1494,9 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 
 #if PLATFORM(GTK)
     /**
-     * WebKitSettings:hardware-acceleration-policy:
+     * CyberKitSettings:hardware-acceleration-policy:
      *
-     * The #WebKitHardwareAccelerationPolicy to decide how to enable and disable
+     * The #CyberKitHardwareAccelerationPolicy to decide how to enable and disable
      * hardware acceleration. Disabling hardware acceleration might
      * cause some websites to not render correctly or consume more CPU.
      *
@@ -1516,7 +1516,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-back-forward-navigation-gestures:
+     * CyberKitSettings:enable-back-forward-navigation-gestures:
      *
      * Enable or disable horizontal swipe gesture for back-forward navigation.
      *
@@ -1532,11 +1532,11 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
 #endif // PLATFORM(GTK)
 
     /**
-     * WebKitSettings:enable-javascript-markup:
+     * CyberKitSettings:enable-javascript-markup:
      *
      * Determines whether or not JavaScript markup is allowed in document. When this setting is disabled,
      * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
-     * executing JavaScript is still allowed if #WebKitSettings:enable-javascript is %TRUE.
+     * executing JavaScript is still allowed if #CyberKitSettings:enable-javascript is %TRUE.
      *
      * Since: 2.24
      */
@@ -1549,7 +1549,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-media:
+     * CyberKitSettings:enable-media:
      *
      * Enable or disable support for media playback on pages. This setting is enabled by
      * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
@@ -1566,7 +1566,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:media-content-types-requiring-hardware-support:
+     * CyberKitSettings:media-content-types-requiring-hardware-support:
      *
      * List of media content types requiring hardware support, split by semicolons (:).
      * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
@@ -1582,7 +1582,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
             readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:enable-webrtc:
+     * CyberKitSettings:enable-webrtc:
      *
      * Enable WebRTC support for loaded pages.
      *
@@ -1601,7 +1601,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
         readWriteConstructParamFlags);
 
     /**
-     * WebKitSettings:disable-web-security:
+     * CyberKitSettings:disable-web-security:
      *
      * Enable or disable support for Web Security on pages.
      *
@@ -1622,7 +1622,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
     g_object_class_install_properties(gObjectClass, N_PROPERTIES, sObjProperties);
 }
 
-WebPreferences* webkitSettingsGetPreferences(WebKitSettings* settings)
+WebPreferences* webkitSettingsGetPreferences(CyberKitSettings* settings)
 {
     return settings->priv->preferences.get();
 }
@@ -1630,14 +1630,14 @@ WebPreferences* webkitSettingsGetPreferences(WebKitSettings* settings)
 /**
  * webkit_settings_new:
  *
- * Creates a new #WebKitSettings instance with default values.
+ * Creates a new #CyberKitSettings instance with default values.
  *
- * It must be manually attached to a #WebKitWebView.
+ * It must be manually attached to a #CyberKitWebView.
  * See also webkit_settings_new_with_settings().
  *
- * Returns: a new #WebKitSettings instance.
+ * Returns: a new #CyberKitSettings instance.
  */
-WebKitSettings* webkit_settings_new()
+CyberKitSettings* webkit_settings_new()
 {
     return WEBKIT_SETTINGS(g_object_new(WEBKIT_TYPE_SETTINGS, NULL));
 }
@@ -1648,30 +1648,30 @@ WebKitSettings* webkit_settings_new()
  * @...: value of first setting, followed by more settings,
  *    %NULL-terminated
  *
- * Creates a new #WebKitSettings instance with the given settings.
+ * Creates a new #CyberKitSettings instance with the given settings.
  *
- * It must be manually attached to a #WebKitWebView.
+ * It must be manually attached to a #CyberKitWebView.
  *
- * Returns: a new #WebKitSettings instance.
+ * Returns: a new #CyberKitSettings instance.
  */
-WebKitSettings* webkit_settings_new_with_settings(const gchar* firstSettingName, ...)
+CyberKitSettings* webkit_settings_new_with_settings(const gchar* firstSettingName, ...)
 {
     va_list args;
     va_start(args, firstSettingName);
-    WebKitSettings* settings = WEBKIT_SETTINGS(g_object_new_valist(WEBKIT_TYPE_SETTINGS, firstSettingName, args));
+    CyberKitSettings* settings = WEBKIT_SETTINGS(g_object_new_valist(WEBKIT_TYPE_SETTINGS, firstSettingName, args));
     va_end(args);
     return settings;
 }
 
 /**
  * webkit_settings_get_enable_javascript:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-javascript property.
+ * Get the #CyberKitSettings:enable-javascript property.
  *
  * Returns: %TRUE If JavaScript is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_javascript(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_javascript(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1680,16 +1680,16 @@ gboolean webkit_settings_get_enable_javascript(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_javascript:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-javascript property.
+ * Set the #CyberKitSettings:enable-javascript property.
  */
-void webkit_settings_set_enable_javascript(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_javascript(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->javaScriptEnabled();
     if (currentValue == enabled)
         return;
@@ -1700,13 +1700,13 @@ void webkit_settings_set_enable_javascript(WebKitSettings* settings, gboolean en
 
 /**
  * webkit_settings_get_auto_load_images:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:auto-load-images property.
+ * Get the #CyberKitSettings:auto-load-images property.
  *
  * Returns: %TRUE If auto loading of images is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_auto_load_images(WebKitSettings* settings)
+gboolean webkit_settings_get_auto_load_images(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1715,16 +1715,16 @@ gboolean webkit_settings_get_auto_load_images(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_auto_load_images:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:auto-load-images property.
+ * Set the #CyberKitSettings:auto-load-images property.
  */
-void webkit_settings_set_auto_load_images(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_auto_load_images(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->loadsImagesAutomatically();
     if (currentValue == enabled)
         return;
@@ -1735,13 +1735,13 @@ void webkit_settings_set_auto_load_images(WebKitSettings* settings, gboolean ena
 
 /**
  * webkit_settings_get_load_icons_ignoring_image_load_setting:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:load-icons-ignoring-image-load-setting property.
+ * Get the #CyberKitSettings:load-icons-ignoring-image-load-setting property.
  *
  * Returns: %TRUE If site icon can be loaded irrespective of image loading preference or %FALSE otherwise.
  */
-gboolean webkit_settings_get_load_icons_ignoring_image_load_setting(WebKitSettings* settings)
+gboolean webkit_settings_get_load_icons_ignoring_image_load_setting(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1750,16 +1750,16 @@ gboolean webkit_settings_get_load_icons_ignoring_image_load_setting(WebKitSettin
 
 /**
  * webkit_settings_set_load_icons_ignoring_image_load_setting:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:load-icons-ignoring-image-load-setting property.
+ * Set the #CyberKitSettings:load-icons-ignoring-image-load-setting property.
  */
-void webkit_settings_set_load_icons_ignoring_image_load_setting(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_load_icons_ignoring_image_load_setting(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->loadsSiteIconsIgnoringImageLoadingPreference();
     if (currentValue == enabled)
         return;
@@ -1770,13 +1770,13 @@ void webkit_settings_set_load_icons_ignoring_image_load_setting(WebKitSettings* 
 
 /**
  * webkit_settings_get_enable_offline_web_application_cache:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-offline-web-application-cache property.
+ * Get the #CyberKitSettings:enable-offline-web-application-cache property.
  *
  * Returns: %TRUE If HTML5 offline web application cache support is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_offline_web_application_cache(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_offline_web_application_cache(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1785,16 +1785,16 @@ gboolean webkit_settings_get_enable_offline_web_application_cache(WebKitSettings
 
 /**
  * webkit_settings_set_enable_offline_web_application_cache:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-offline-web-application-cache property.
+ * Set the #CyberKitSettings:enable-offline-web-application-cache property.
  */
-void webkit_settings_set_enable_offline_web_application_cache(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_offline_web_application_cache(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->offlineWebApplicationCacheEnabled();
     if (currentValue == enabled)
         return;
@@ -1805,13 +1805,13 @@ void webkit_settings_set_enable_offline_web_application_cache(WebKitSettings* se
 
 /**
  * webkit_settings_get_enable_html5_local_storage:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-html5-local-storage property.
+ * Get the #CyberKitSettings:enable-html5-local-storage property.
  *
  * Returns: %TRUE If HTML5 local storage support is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_html5_local_storage(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_html5_local_storage(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1820,16 +1820,16 @@ gboolean webkit_settings_get_enable_html5_local_storage(WebKitSettings* settings
 
 /**
  * webkit_settings_set_enable_html5_local_storage:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-html5-local-storage property.
+ * Set the #CyberKitSettings:enable-html5-local-storage property.
  */
-void webkit_settings_set_enable_html5_local_storage(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_html5_local_storage(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->localStorageEnabled();
     if (currentValue == enabled)
         return;
@@ -1840,13 +1840,13 @@ void webkit_settings_set_enable_html5_local_storage(WebKitSettings* settings, gb
 
 /**
  * webkit_settings_get_enable_html5_database:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-html5-database property.
+ * Get the #CyberKitSettings:enable-html5-database property.
  *
  * Returns: %TRUE if IndexedDB support is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_html5_database(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_html5_database(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1855,16 +1855,16 @@ gboolean webkit_settings_get_enable_html5_database(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_html5_database:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-html5-database property.
+ * Set the #CyberKitSettings:enable-html5-database property.
  */
-void webkit_settings_set_enable_html5_database(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_html5_database(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->databasesEnabled();
     if (currentValue == enabled)
         return;
@@ -1876,7 +1876,7 @@ void webkit_settings_set_enable_html5_database(WebKitSettings* settings, gboolea
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_settings_get_enable_xss_auditor:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
  * The XSS auditor has been removed. This function returns %FALSE.
  *
@@ -1884,7 +1884,7 @@ void webkit_settings_set_enable_html5_database(WebKitSettings* settings, gboolea
  *
  * Deprecated: 2.38. This function does nothing.
  */
-gboolean webkit_settings_get_enable_xss_auditor(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_xss_auditor(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1893,21 +1893,21 @@ gboolean webkit_settings_get_enable_xss_auditor(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_xss_auditor:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
  * The XSS auditor has been removed. This function does nothing.
  *
  * Deprecated: 2.38. This function does nothing.
  */
-void webkit_settings_set_enable_xss_auditor(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_xss_auditor(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 }
 
 /**
  * webkit_settings_get_enable_frame_flattening:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
  * Frame flattening is no longer supported. This function returns %FALSE.
  *
@@ -1915,7 +1915,7 @@ void webkit_settings_set_enable_xss_auditor(WebKitSettings* settings, gboolean e
  *
  * Deprecated: 2.38
  **/
-gboolean webkit_settings_get_enable_frame_flattening(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_frame_flattening(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1924,29 +1924,29 @@ gboolean webkit_settings_get_enable_frame_flattening(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_frame_flattening:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
  * Frame flattening is no longer supported. This function does nothing.
  *
  * Deprecated: 2.38
  */
-void webkit_settings_set_enable_frame_flattening(WebKitSettings* settings, gboolean)
+void webkit_settings_set_enable_frame_flattening(CyberKitSettings* settings, gboolean)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 }
 
 /**
  * webkit_settings_get_enable_plugins:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-plugins property.
+ * Get the #CyberKitSettings:enable-plugins property.
  *
  * Returns: %TRUE If plugins are enabled or %FALSE otherwise.
  *
  * Deprecated: 2.32
  */
-gboolean webkit_settings_get_enable_plugins(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_plugins(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1957,14 +1957,14 @@ gboolean webkit_settings_get_enable_plugins(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_plugins:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-plugins property.
+ * Set the #CyberKitSettings:enable-plugins property.
  *
  * Deprecated: 2.32
  */
-void webkit_settings_set_enable_plugins(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_plugins(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
@@ -1974,15 +1974,15 @@ void webkit_settings_set_enable_plugins(WebKitSettings* settings, gboolean enabl
 
 /**
  * webkit_settings_get_enable_java:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-java property.
+ * Get the #CyberKitSettings:enable-java property.
  *
  * Returns: %FALSE always.
  *
  * Deprecated: 2.38. This function always returns %FALSE.
  */
-gboolean webkit_settings_get_enable_java(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_java(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -1993,16 +1993,16 @@ gboolean webkit_settings_get_enable_java(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_java:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-java property.
+ * Set the #CyberKitSettings:enable-java property.
  *
  * Deprecated function that does nothing.
  *
  * Deprecated: 2.38. This function does nothing.
  */
-void webkit_settings_set_enable_java(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_java(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
@@ -2013,13 +2013,13 @@ void webkit_settings_set_enable_java(WebKitSettings* settings, gboolean enabled)
 
 /**
  * webkit_settings_get_javascript_can_open_windows_automatically:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:javascript-can-open-windows-automatically property.
+ * Get the #CyberKitSettings:javascript-can-open-windows-automatically property.
  *
  * Returns: %TRUE If JavaScript can open window automatically or %FALSE otherwise.
  */
-gboolean webkit_settings_get_javascript_can_open_windows_automatically(WebKitSettings* settings)
+gboolean webkit_settings_get_javascript_can_open_windows_automatically(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2028,16 +2028,16 @@ gboolean webkit_settings_get_javascript_can_open_windows_automatically(WebKitSet
 
 /**
  * webkit_settings_set_javascript_can_open_windows_automatically:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:javascript-can-open-windows-automatically property.
+ * Set the #CyberKitSettings:javascript-can-open-windows-automatically property.
  */
-void webkit_settings_set_javascript_can_open_windows_automatically(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_javascript_can_open_windows_automatically(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->javaScriptCanOpenWindowsAutomatically();
     if (currentValue == enabled)
         return;
@@ -2048,13 +2048,13 @@ void webkit_settings_set_javascript_can_open_windows_automatically(WebKitSetting
 
 /**
  * webkit_settings_get_enable_hyperlink_auditing:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-hyperlink-auditing property.
+ * Get the #CyberKitSettings:enable-hyperlink-auditing property.
  *
  * Returns: %TRUE If hyper link auditing is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_hyperlink_auditing(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_hyperlink_auditing(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2063,16 +2063,16 @@ gboolean webkit_settings_get_enable_hyperlink_auditing(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_hyperlink_auditing:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-hyperlink-auditing property.
+ * Set the #CyberKitSettings:enable-hyperlink-auditing property.
  */
-void webkit_settings_set_enable_hyperlink_auditing(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_hyperlink_auditing(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->hyperlinkAuditingEnabled();
     if (currentValue == enabled)
         return;
@@ -2083,13 +2083,13 @@ void webkit_settings_set_enable_hyperlink_auditing(WebKitSettings* settings, gbo
 
 /**
  * webkit_settings_get_default_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:default-font-family property.
+ * Gets the #CyberKitSettings:default-font-family property.
  *
  * Returns: The default font family used to display content that does not specify a font.
  */
-const gchar* webkit_settings_get_default_font_family(WebKitSettings* settings)
+const gchar* webkit_settings_get_default_font_family(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2098,17 +2098,17 @@ const gchar* webkit_settings_get_default_font_family(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_default_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @default_font_family: the new default font family
  *
- * Set the #WebKitSettings:default-font-family property.
+ * Set the #CyberKitSettings:default-font-family property.
  */
-void webkit_settings_set_default_font_family(WebKitSettings* settings, const gchar* defaultFontFamily)
+void webkit_settings_set_default_font_family(CyberKitSettings* settings, const gchar* defaultFontFamily)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(defaultFontFamily);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->defaultFontFamily.data(), defaultFontFamily))
         return;
 
@@ -2120,13 +2120,13 @@ void webkit_settings_set_default_font_family(WebKitSettings* settings, const gch
 
 /**
  * webkit_settings_get_monospace_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:monospace-font-family property.
+ * Gets the #CyberKitSettings:monospace-font-family property.
  *
  * Returns: Default font family used to display content marked with monospace font.
  */
-const gchar* webkit_settings_get_monospace_font_family(WebKitSettings* settings)
+const gchar* webkit_settings_get_monospace_font_family(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2135,17 +2135,17 @@ const gchar* webkit_settings_get_monospace_font_family(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_monospace_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @monospace_font_family: the new default monospace font family
  *
- * Set the #WebKitSettings:monospace-font-family property.
+ * Set the #CyberKitSettings:monospace-font-family property.
  */
-void webkit_settings_set_monospace_font_family(WebKitSettings* settings, const gchar* monospaceFontFamily)
+void webkit_settings_set_monospace_font_family(CyberKitSettings* settings, const gchar* monospaceFontFamily)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(monospaceFontFamily);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->monospaceFontFamily.data(), monospaceFontFamily))
         return;
 
@@ -2157,13 +2157,13 @@ void webkit_settings_set_monospace_font_family(WebKitSettings* settings, const g
 
 /**
  * webkit_settings_get_serif_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:serif-font-family property.
+ * Gets the #CyberKitSettings:serif-font-family property.
  *
  * Returns: The default font family used to display content marked with serif font.
  */
-const gchar* webkit_settings_get_serif_font_family(WebKitSettings* settings)
+const gchar* webkit_settings_get_serif_font_family(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2172,17 +2172,17 @@ const gchar* webkit_settings_get_serif_font_family(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_serif_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @serif_font_family: the new default serif font family
  *
- * Set the #WebKitSettings:serif-font-family property.
+ * Set the #CyberKitSettings:serif-font-family property.
  */
-void webkit_settings_set_serif_font_family(WebKitSettings* settings, const gchar* serifFontFamily)
+void webkit_settings_set_serif_font_family(CyberKitSettings* settings, const gchar* serifFontFamily)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(serifFontFamily);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->serifFontFamily.data(), serifFontFamily))
         return;
 
@@ -2194,13 +2194,13 @@ void webkit_settings_set_serif_font_family(WebKitSettings* settings, const gchar
 
 /**
  * webkit_settings_get_sans_serif_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:sans-serif-font-family property.
+ * Gets the #CyberKitSettings:sans-serif-font-family property.
  *
  * Returns: The default font family used to display content marked with sans-serif font.
  */
-const gchar* webkit_settings_get_sans_serif_font_family(WebKitSettings* settings)
+const gchar* webkit_settings_get_sans_serif_font_family(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2209,17 +2209,17 @@ const gchar* webkit_settings_get_sans_serif_font_family(WebKitSettings* settings
 
 /**
  * webkit_settings_set_sans_serif_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @sans_serif_font_family: the new default sans-serif font family
  *
- * Set the #WebKitSettings:sans-serif-font-family property.
+ * Set the #CyberKitSettings:sans-serif-font-family property.
  */
-void webkit_settings_set_sans_serif_font_family(WebKitSettings* settings, const gchar* sansSerifFontFamily)
+void webkit_settings_set_sans_serif_font_family(CyberKitSettings* settings, const gchar* sansSerifFontFamily)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(sansSerifFontFamily);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->sansSerifFontFamily.data(), sansSerifFontFamily))
         return;
 
@@ -2231,13 +2231,13 @@ void webkit_settings_set_sans_serif_font_family(WebKitSettings* settings, const 
 
 /**
  * webkit_settings_get_cursive_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:cursive-font-family property.
+ * Gets the #CyberKitSettings:cursive-font-family property.
  *
  * Returns: The default font family used to display content marked with cursive font.
  */
-const gchar* webkit_settings_get_cursive_font_family(WebKitSettings* settings)
+const gchar* webkit_settings_get_cursive_font_family(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2246,17 +2246,17 @@ const gchar* webkit_settings_get_cursive_font_family(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_cursive_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @cursive_font_family: the new default cursive font family
  *
- * Set the #WebKitSettings:cursive-font-family property.
+ * Set the #CyberKitSettings:cursive-font-family property.
  */
-void webkit_settings_set_cursive_font_family(WebKitSettings* settings, const gchar* cursiveFontFamily)
+void webkit_settings_set_cursive_font_family(CyberKitSettings* settings, const gchar* cursiveFontFamily)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(cursiveFontFamily);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->cursiveFontFamily.data(), cursiveFontFamily))
         return;
 
@@ -2268,13 +2268,13 @@ void webkit_settings_set_cursive_font_family(WebKitSettings* settings, const gch
 
 /**
  * webkit_settings_get_fantasy_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:fantasy-font-family property.
+ * Gets the #CyberKitSettings:fantasy-font-family property.
  *
  * Returns: The default font family used to display content marked with fantasy font.
  */
-const gchar* webkit_settings_get_fantasy_font_family(WebKitSettings* settings)
+const gchar* webkit_settings_get_fantasy_font_family(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2283,17 +2283,17 @@ const gchar* webkit_settings_get_fantasy_font_family(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_fantasy_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @fantasy_font_family: the new default fantasy font family
  *
- * Set the #WebKitSettings:fantasy-font-family property.
+ * Set the #CyberKitSettings:fantasy-font-family property.
  */
-void webkit_settings_set_fantasy_font_family(WebKitSettings* settings, const gchar* fantasyFontFamily)
+void webkit_settings_set_fantasy_font_family(CyberKitSettings* settings, const gchar* fantasyFontFamily)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(fantasyFontFamily);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->fantasyFontFamily.data(), fantasyFontFamily))
         return;
 
@@ -2305,13 +2305,13 @@ void webkit_settings_set_fantasy_font_family(WebKitSettings* settings, const gch
 
 /**
  * webkit_settings_get_pictograph_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:pictograph-font-family property.
+ * Gets the #CyberKitSettings:pictograph-font-family property.
  *
  * Returns: The default font family used to display content marked with pictograph font.
  */
-const gchar* webkit_settings_get_pictograph_font_family(WebKitSettings* settings)
+const gchar* webkit_settings_get_pictograph_font_family(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2320,17 +2320,17 @@ const gchar* webkit_settings_get_pictograph_font_family(WebKitSettings* settings
 
 /**
  * webkit_settings_set_pictograph_font_family:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @pictograph_font_family: the new default pictograph font family
  *
- * Set the #WebKitSettings:pictograph-font-family property.
+ * Set the #CyberKitSettings:pictograph-font-family property.
  */
-void webkit_settings_set_pictograph_font_family(WebKitSettings* settings, const gchar* pictographFontFamily)
+void webkit_settings_set_pictograph_font_family(CyberKitSettings* settings, const gchar* pictographFontFamily)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(pictographFontFamily);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->pictographFontFamily.data(), pictographFontFamily))
         return;
 
@@ -2342,13 +2342,13 @@ void webkit_settings_set_pictograph_font_family(WebKitSettings* settings, const 
 
 /**
  * webkit_settings_get_default_font_size:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:default-font-size property.
+ * Gets the #CyberKitSettings:default-font-size property.
  *
  * Returns: The default font size, in pixels.
  */
-guint32 webkit_settings_get_default_font_size(WebKitSettings* settings)
+guint32 webkit_settings_get_default_font_size(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2357,16 +2357,16 @@ guint32 webkit_settings_get_default_font_size(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_default_font_size:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @font_size: default font size to be set in pixels
  *
- * Set the #WebKitSettings:default-font-size property.
+ * Set the #CyberKitSettings:default-font-size property.
  */
-void webkit_settings_set_default_font_size(WebKitSettings* settings, guint32 fontSize)
+void webkit_settings_set_default_font_size(CyberKitSettings* settings, guint32 fontSize)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     uint32_t currentSize = priv->preferences->defaultFontSize();
     if (currentSize == fontSize)
         return;
@@ -2377,13 +2377,13 @@ void webkit_settings_set_default_font_size(WebKitSettings* settings, guint32 fon
 
 /**
  * webkit_settings_get_default_monospace_font_size:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:default-monospace-font-size property.
+ * Gets the #CyberKitSettings:default-monospace-font-size property.
  *
  * Returns: Default monospace font size, in pixels.
  */
-guint32 webkit_settings_get_default_monospace_font_size(WebKitSettings* settings)
+guint32 webkit_settings_get_default_monospace_font_size(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2392,16 +2392,16 @@ guint32 webkit_settings_get_default_monospace_font_size(WebKitSettings* settings
 
 /**
  * webkit_settings_set_default_monospace_font_size:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @font_size: default monospace font size to be set in pixels
  *
- * Set the #WebKitSettings:default-monospace-font-size property.
+ * Set the #CyberKitSettings:default-monospace-font-size property.
  */
-void webkit_settings_set_default_monospace_font_size(WebKitSettings* settings, guint32 fontSize)
+void webkit_settings_set_default_monospace_font_size(CyberKitSettings* settings, guint32 fontSize)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     uint32_t currentSize = priv->preferences->defaultFixedFontSize();
     if (currentSize == fontSize)
         return;
@@ -2412,13 +2412,13 @@ void webkit_settings_set_default_monospace_font_size(WebKitSettings* settings, g
 
 /**
  * webkit_settings_get_minimum_font_size:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:minimum-font-size property.
+ * Gets the #CyberKitSettings:minimum-font-size property.
  *
  * Returns: Minimum font size, in pixels.
  */
-guint32 webkit_settings_get_minimum_font_size(WebKitSettings* settings)
+guint32 webkit_settings_get_minimum_font_size(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2427,16 +2427,16 @@ guint32 webkit_settings_get_minimum_font_size(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_minimum_font_size:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @font_size: minimum font size to be set in pixels
  *
- * Set the #WebKitSettings:minimum-font-size property.
+ * Set the #CyberKitSettings:minimum-font-size property.
  */
-void webkit_settings_set_minimum_font_size(WebKitSettings* settings, guint32 fontSize)
+void webkit_settings_set_minimum_font_size(CyberKitSettings* settings, guint32 fontSize)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     uint32_t currentSize = priv->preferences->minimumFontSize();
     if (currentSize == fontSize)
         return;
@@ -2447,13 +2447,13 @@ void webkit_settings_set_minimum_font_size(WebKitSettings* settings, guint32 fon
 
 /**
  * webkit_settings_get_default_charset:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:default-charset property.
+ * Gets the #CyberKitSettings:default-charset property.
  *
  * Returns: Default charset.
  */
-const gchar* webkit_settings_get_default_charset(WebKitSettings* settings)
+const gchar* webkit_settings_get_default_charset(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -2462,17 +2462,17 @@ const gchar* webkit_settings_get_default_charset(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_default_charset:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @default_charset: default charset to be set
  *
- * Set the #WebKitSettings:default-charset property.
+ * Set the #CyberKitSettings:default-charset property.
  */
-void webkit_settings_set_default_charset(WebKitSettings* settings, const gchar* defaultCharset)
+void webkit_settings_set_default_charset(CyberKitSettings* settings, const gchar* defaultCharset)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
     g_return_if_fail(defaultCharset);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->defaultCharset.data(), defaultCharset))
         return;
 
@@ -2485,15 +2485,15 @@ void webkit_settings_set_default_charset(WebKitSettings* settings, const gchar* 
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_settings_get_enable_private_browsing:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-private-browsing property.
+ * Get the #CyberKitSettings:enable-private-browsing property.
  *
  * Returns: %TRUE If private browsing is enabled or %FALSE otherwise.
  *
- * Deprecated: 2.16. Use #WebKitWebView:is-ephemeral or #WebKitWebContext:is-ephemeral instead.
+ * Deprecated: 2.16. Use #CyberKitWebView:is-ephemeral or #CyberKitWebContext:is-ephemeral instead.
  */
-gboolean webkit_settings_get_enable_private_browsing(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_private_browsing(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2502,30 +2502,30 @@ gboolean webkit_settings_get_enable_private_browsing(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_private_browsing:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-private-browsing property.
+ * Set the #CyberKitSettings:enable-private-browsing property.
  *
- * Deprecated: 2.16. Use #WebKitWebView:is-ephemeral or #WebKitWebContext:is-ephemeral instead.
+ * Deprecated: 2.16. Use #CyberKitWebView:is-ephemeral or #CyberKitWebContext:is-ephemeral instead.
  */
-void webkit_settings_set_enable_private_browsing(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_private_browsing(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    g_warning("webkit_settings_set_enable_private_browsing is deprecated and does nothing, use #WebKitWebView:is-ephemeral or #WebKitWebContext:is-ephemeral instead");
+    g_warning("webkit_settings_set_enable_private_browsing is deprecated and does nothing, use #CyberKitWebView:is-ephemeral or #CyberKitWebContext:is-ephemeral instead");
 }
 #endif
 
 /**
  * webkit_settings_get_enable_developer_extras:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-developer-extras property.
+ * Get the #CyberKitSettings:enable-developer-extras property.
  *
  * Returns: %TRUE If developer extras is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_developer_extras(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_developer_extras(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2534,16 +2534,16 @@ gboolean webkit_settings_get_enable_developer_extras(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_developer_extras:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-developer-extras property.
+ * Set the #CyberKitSettings:enable-developer-extras property.
  */
-void webkit_settings_set_enable_developer_extras(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_developer_extras(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->developerExtrasEnabled();
     if (currentValue == enabled)
         return;
@@ -2554,13 +2554,13 @@ void webkit_settings_set_enable_developer_extras(WebKitSettings* settings, gbool
 
 /**
  * webkit_settings_get_enable_resizable_text_areas:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-resizable-text-areas property.
+ * Get the #CyberKitSettings:enable-resizable-text-areas property.
  *
  * Returns: %TRUE If text areas can be resized or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_resizable_text_areas(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_resizable_text_areas(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2569,16 +2569,16 @@ gboolean webkit_settings_get_enable_resizable_text_areas(WebKitSettings* setting
 
 /**
  * webkit_settings_set_enable_resizable_text_areas:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-resizable-text-areas property.
+ * Set the #CyberKitSettings:enable-resizable-text-areas property.
  */
-void webkit_settings_set_enable_resizable_text_areas(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_resizable_text_areas(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->textAreasAreResizable();
     if (currentValue == enabled)
         return;
@@ -2589,13 +2589,13 @@ void webkit_settings_set_enable_resizable_text_areas(WebKitSettings* settings, g
 
 /**
  * webkit_settings_get_enable_tabs_to_links:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-tabs-to-links property.
+ * Get the #CyberKitSettings:enable-tabs-to-links property.
  *
  * Returns: %TRUE If tabs to link is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_tabs_to_links(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_tabs_to_links(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2604,16 +2604,16 @@ gboolean webkit_settings_get_enable_tabs_to_links(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_tabs_to_links:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-tabs-to-links property.
+ * Set the #CyberKitSettings:enable-tabs-to-links property.
  */
-void webkit_settings_set_enable_tabs_to_links(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_tabs_to_links(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->tabsToLinks();
     if (currentValue == enabled)
         return;
@@ -2624,13 +2624,13 @@ void webkit_settings_set_enable_tabs_to_links(WebKitSettings* settings, gboolean
 
 /**
  * webkit_settings_get_enable_dns_prefetching:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-dns-prefetching property.
+ * Get the #CyberKitSettings:enable-dns-prefetching property.
  *
  * Returns: %TRUE If DNS prefetching is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_dns_prefetching(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_dns_prefetching(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2639,16 +2639,16 @@ gboolean webkit_settings_get_enable_dns_prefetching(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_dns_prefetching:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-dns-prefetching property.
+ * Set the #CyberKitSettings:enable-dns-prefetching property.
  */
-void webkit_settings_set_enable_dns_prefetching(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_dns_prefetching(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->dnsPrefetchingEnabled();
     if (currentValue == enabled)
         return;
@@ -2659,13 +2659,13 @@ void webkit_settings_set_enable_dns_prefetching(WebKitSettings* settings, gboole
 
 /**
  * webkit_settings_get_enable_caret_browsing:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-caret-browsing property.
+ * Get the #CyberKitSettings:enable-caret-browsing property.
  *
  * Returns: %TRUE If caret browsing is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_caret_browsing(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_caret_browsing(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2674,16 +2674,16 @@ gboolean webkit_settings_get_enable_caret_browsing(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_caret_browsing:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-caret-browsing property.
+ * Set the #CyberKitSettings:enable-caret-browsing property.
  */
-void webkit_settings_set_enable_caret_browsing(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_caret_browsing(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->caretBrowsingEnabled();
     if (currentValue == enabled)
         return;
@@ -2694,13 +2694,13 @@ void webkit_settings_set_enable_caret_browsing(WebKitSettings* settings, gboolea
 
 /**
  * webkit_settings_get_enable_fullscreen:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-fullscreen property.
+ * Get the #CyberKitSettings:enable-fullscreen property.
  *
  * Returns: %TRUE If fullscreen support is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_fullscreen(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_fullscreen(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2709,16 +2709,16 @@ gboolean webkit_settings_get_enable_fullscreen(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_fullscreen:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-fullscreen property.
+ * Set the #CyberKitSettings:enable-fullscreen property.
  */
-void webkit_settings_set_enable_fullscreen(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_fullscreen(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->fullScreenEnabled();
     if (currentValue == enabled)
         return;
@@ -2729,13 +2729,13 @@ void webkit_settings_set_enable_fullscreen(WebKitSettings* settings, gboolean en
 
 /**
  * webkit_settings_get_print_backgrounds:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:print-backgrounds property.
+ * Get the #CyberKitSettings:print-backgrounds property.
  *
  * Returns: %TRUE If background images should be printed or %FALSE otherwise.
  */
-gboolean webkit_settings_get_print_backgrounds(WebKitSettings* settings)
+gboolean webkit_settings_get_print_backgrounds(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2744,16 +2744,16 @@ gboolean webkit_settings_get_print_backgrounds(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_print_backgrounds:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @print_backgrounds: Value to be set
  *
- * Set the #WebKitSettings:print-backgrounds property.
+ * Set the #CyberKitSettings:print-backgrounds property.
  */
-void webkit_settings_set_print_backgrounds(WebKitSettings* settings, gboolean printBackgrounds)
+void webkit_settings_set_print_backgrounds(CyberKitSettings* settings, gboolean printBackgrounds)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->shouldPrintBackgrounds();
     if (currentValue == printBackgrounds)
         return;
@@ -2764,13 +2764,13 @@ void webkit_settings_set_print_backgrounds(WebKitSettings* settings, gboolean pr
 
 /**
  * webkit_settings_get_enable_webaudio:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-webaudio property.
+ * Get the #CyberKitSettings:enable-webaudio property.
  *
  * Returns: %TRUE If webaudio support is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_webaudio(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_webaudio(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2779,16 +2779,16 @@ gboolean webkit_settings_get_enable_webaudio(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_webaudio:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-webaudio property.
+ * Set the #CyberKitSettings:enable-webaudio property.
  */
-void webkit_settings_set_enable_webaudio(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_webaudio(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->webAudioEnabled();
     if (currentValue == enabled)
         return;
@@ -2799,13 +2799,13 @@ void webkit_settings_set_enable_webaudio(WebKitSettings* settings, gboolean enab
 
 /**
  * webkit_settings_get_enable_webgl:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-webgl property.
+ * Get the #CyberKitSettings:enable-webgl property.
  *
  * Returns: %TRUE If WebGL support is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_webgl(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_webgl(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2814,16 +2814,16 @@ gboolean webkit_settings_get_enable_webgl(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_webgl:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-webgl property.
+ * Set the #CyberKitSettings:enable-webgl property.
  */
-void webkit_settings_set_enable_webgl(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_webgl(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->webGLEnabled();
     if (currentValue == enabled)
         return;
@@ -2834,13 +2834,13 @@ void webkit_settings_set_enable_webgl(WebKitSettings* settings, gboolean enabled
 
 /**
  * webkit_settings_get_allow_modal_dialogs:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:allow-modal-dialogs property.
+ * Get the #CyberKitSettings:allow-modal-dialogs property.
  *
  * Returns: %TRUE if it's allowed to create and run modal dialogs or %FALSE otherwise.
  */
-gboolean webkit_settings_get_allow_modal_dialogs(WebKitSettings* settings)
+gboolean webkit_settings_get_allow_modal_dialogs(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
     return settings->priv->allowModalDialogs;
@@ -2848,16 +2848,16 @@ gboolean webkit_settings_get_allow_modal_dialogs(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_allow_modal_dialogs:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @allowed: Value to be set
  *
- * Set the #WebKitSettings:allow-modal-dialogs property.
+ * Set the #CyberKitSettings:allow-modal-dialogs property.
  */
-void webkit_settings_set_allow_modal_dialogs(WebKitSettings* settings, gboolean allowed)
+void webkit_settings_set_allow_modal_dialogs(CyberKitSettings* settings, gboolean allowed)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (priv->allowModalDialogs == allowed)
         return;
 
@@ -2867,14 +2867,14 @@ void webkit_settings_set_allow_modal_dialogs(WebKitSettings* settings, gboolean 
 
 /**
  * webkit_settings_get_zoom_text_only:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:zoom-text-only property.
+ * Get the #CyberKitSettings:zoom-text-only property.
  *
  * Returns: %TRUE If zoom level of the view should only affect the text
  *    or %FALSE if all view contents should be scaled.
  */
-gboolean webkit_settings_get_zoom_text_only(WebKitSettings* settings)
+gboolean webkit_settings_get_zoom_text_only(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2883,16 +2883,16 @@ gboolean webkit_settings_get_zoom_text_only(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_zoom_text_only:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @zoom_text_only: Value to be set
  *
- * Set the #WebKitSettings:zoom-text-only property.
+ * Set the #CyberKitSettings:zoom-text-only property.
  */
-void webkit_settings_set_zoom_text_only(WebKitSettings* settings, gboolean zoomTextOnly)
+void webkit_settings_set_zoom_text_only(CyberKitSettings* settings, gboolean zoomTextOnly)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (priv->zoomTextOnly == zoomTextOnly)
         return;
 
@@ -2902,13 +2902,13 @@ void webkit_settings_set_zoom_text_only(WebKitSettings* settings, gboolean zoomT
 
 /**
  * webkit_settings_get_javascript_can_access_clipboard:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:javascript-can-access-clipboard property.
+ * Get the #CyberKitSettings:javascript-can-access-clipboard property.
  *
  * Returns: %TRUE If javascript-can-access-clipboard is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_javascript_can_access_clipboard(WebKitSettings* settings)
+gboolean webkit_settings_get_javascript_can_access_clipboard(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2918,16 +2918,16 @@ gboolean webkit_settings_get_javascript_can_access_clipboard(WebKitSettings* set
 
 /**
  * webkit_settings_set_javascript_can_access_clipboard:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:javascript-can-access-clipboard property.
+ * Set the #CyberKitSettings:javascript-can-access-clipboard property.
  */
-void webkit_settings_set_javascript_can_access_clipboard(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_javascript_can_access_clipboard(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->javaScriptCanAccessClipboard() && priv->preferences->domPasteAllowed();
     if (currentValue == enabled)
         return;
@@ -2939,14 +2939,14 @@ void webkit_settings_set_javascript_can_access_clipboard(WebKitSettings* setting
 
 /**
  * webkit_settings_get_media_playback_requires_user_gesture:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:media-playback-requires-user-gesture property.
+ * Get the #CyberKitSettings:media-playback-requires-user-gesture property.
  *
  * Returns: %TRUE If an user gesture is needed to play or load media
  *    or %FALSE if no user gesture is needed.
  */
-gboolean webkit_settings_get_media_playback_requires_user_gesture(WebKitSettings* settings)
+gboolean webkit_settings_get_media_playback_requires_user_gesture(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -2955,16 +2955,16 @@ gboolean webkit_settings_get_media_playback_requires_user_gesture(WebKitSettings
 
 /**
  * webkit_settings_set_media_playback_requires_user_gesture:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:media-playback-requires-user-gesture property.
+ * Set the #CyberKitSettings:media-playback-requires-user-gesture property.
  */
-void webkit_settings_set_media_playback_requires_user_gesture(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_media_playback_requires_user_gesture(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->requiresUserGestureForMediaPlayback();
     if (currentValue == enabled)
         return;
@@ -2975,14 +2975,14 @@ void webkit_settings_set_media_playback_requires_user_gesture(WebKitSettings* se
 
 /**
  * webkit_settings_get_media_playback_allows_inline:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:media-playback-allows-inline property.
+ * Get the #CyberKitSettings:media-playback-allows-inline property.
  *
  * Returns: %TRUE If inline playback is allowed for media
  *    or %FALSE if only fullscreen playback is allowed.
  */
-gboolean webkit_settings_get_media_playback_allows_inline(WebKitSettings* settings)
+gboolean webkit_settings_get_media_playback_allows_inline(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), TRUE);
 
@@ -2991,16 +2991,16 @@ gboolean webkit_settings_get_media_playback_allows_inline(WebKitSettings* settin
 
 /**
  * webkit_settings_set_media_playback_allows_inline:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:media-playback-allows-inline property.
+ * Set the #CyberKitSettings:media-playback-allows-inline property.
  */
-void webkit_settings_set_media_playback_allows_inline(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_media_playback_allows_inline(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->allowsInlineMediaPlayback();
     if (currentValue == enabled)
         return;
@@ -3011,13 +3011,13 @@ void webkit_settings_set_media_playback_allows_inline(WebKitSettings* settings, 
 
 /**
  * webkit_settings_get_draw_compositing_indicators:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:draw-compositing-indicators property.
+ * Get the #CyberKitSettings:draw-compositing-indicators property.
  *
  * Returns: %TRUE If compositing borders are drawn or %FALSE otherwise.
  */
-gboolean webkit_settings_get_draw_compositing_indicators(WebKitSettings* settings)
+gboolean webkit_settings_get_draw_compositing_indicators(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
     return settings->priv->preferences->compositingBordersVisible()
@@ -3026,16 +3026,16 @@ gboolean webkit_settings_get_draw_compositing_indicators(WebKitSettings* setting
 
 /**
  * webkit_settings_set_draw_compositing_indicators:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:draw-compositing-indicators property.
+ * Set the #CyberKitSettings:draw-compositing-indicators property.
  */
-void webkit_settings_set_draw_compositing_indicators(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_draw_compositing_indicators(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (priv->preferences->compositingBordersVisible() == enabled
         && priv->preferences->compositingRepaintCountersVisible() == enabled)
         return;
@@ -3047,13 +3047,13 @@ void webkit_settings_set_draw_compositing_indicators(WebKitSettings* settings, g
 
 /**
  * webkit_settings_get_enable_site_specific_quirks:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-site-specific-quirks property.
+ * Get the #CyberKitSettings:enable-site-specific-quirks property.
  *
  * Returns: %TRUE if site specific quirks are enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_site_specific_quirks(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_site_specific_quirks(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3062,16 +3062,16 @@ gboolean webkit_settings_get_enable_site_specific_quirks(WebKitSettings* setting
 
 /**
  * webkit_settings_set_enable_site_specific_quirks:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-site-specific-quirks property.
+ * Set the #CyberKitSettings:enable-site-specific-quirks property.
  */
-void webkit_settings_set_enable_site_specific_quirks(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_site_specific_quirks(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->needsSiteSpecificQuirks();
     if (currentValue == enabled)
         return;
@@ -3082,13 +3082,13 @@ void webkit_settings_set_enable_site_specific_quirks(WebKitSettings* settings, g
 
 /**
  * webkit_settings_get_enable_page_cache:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-page-cache property.
+ * Get the #CyberKitSettings:enable-page-cache property.
  *
  * Returns: %TRUE if page cache enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_page_cache(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_page_cache(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3097,16 +3097,16 @@ gboolean webkit_settings_get_enable_page_cache(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_page_cache:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-page-cache property.
+ * Set the #CyberKitSettings:enable-page-cache property.
  */
-void webkit_settings_set_enable_page_cache(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_page_cache(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->usesBackForwardCache();
     if (currentValue == enabled)
         return;
@@ -3117,33 +3117,33 @@ void webkit_settings_set_enable_page_cache(WebKitSettings* settings, gboolean en
 
 /**
  * webkit_settings_get_user_agent:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:user-agent property.
+ * Get the #CyberKitSettings:user-agent property.
  *
  * Returns: The current value of the user-agent property.
  */
-const char* webkit_settings_get_user_agent(WebKitSettings* settings)
+const char* webkit_settings_get_user_agent(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     ASSERT(!priv->userAgent.isNull());
     return priv->userAgent.data();
 }
 
 /**
  * webkit_settings_set_user_agent:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @user_agent: (allow-none): The new custom user agent string or %NULL to use the default user agent
  *
- * Set the #WebKitSettings:user-agent property.
+ * Set the #CyberKitSettings:user-agent property.
  */
-void webkit_settings_set_user_agent(WebKitSettings* settings, const char* userAgent)
+void webkit_settings_set_user_agent(CyberKitSettings* settings, const char* userAgent)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
 
     String userAgentString;
     if (userAgent && *userAgent) {
@@ -3162,17 +3162,17 @@ void webkit_settings_set_user_agent(WebKitSettings* settings, const char* userAg
 
 /**
  * webkit_settings_set_user_agent_with_application_details:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @application_name: (allow-none): The application name used for the user agent or %NULL to use the default user agent.
  * @application_version: (allow-none): The application version for the user agent or %NULL to user the default version.
  *
- * Set the #WebKitSettings:user-agent property by appending the application details.
+ * Set the #CyberKitSettings:user-agent property by appending the application details.
  *
- * Set the #WebKitSettings:user-agent property by appending the application details to the default user
+ * Set the #CyberKitSettings:user-agent property by appending the application details to the default user
  * agent. If no application name or version is given, the default user agent used will be used. If only
  * the version is given, the default engine version is used with the given application name.
  */
-void webkit_settings_set_user_agent_with_application_details(WebKitSettings* settings, const char* applicationName, const char* applicationVersion)
+void webkit_settings_set_user_agent_with_application_details(CyberKitSettings* settings, const char* applicationName, const char* applicationVersion)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
@@ -3182,13 +3182,13 @@ void webkit_settings_set_user_agent_with_application_details(WebKitSettings* set
 
 /**
  * webkit_settings_get_enable_smooth_scrolling:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-smooth-scrolling property.
+ * Get the #CyberKitSettings:enable-smooth-scrolling property.
  *
  * Returns: %TRUE if smooth scrolling is enabled or %FALSE otherwise.
  */
-gboolean webkit_settings_get_enable_smooth_scrolling(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_smooth_scrolling(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3197,16 +3197,16 @@ gboolean webkit_settings_get_enable_smooth_scrolling(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_smooth_scrolling:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-smooth-scrolling property.
+ * Set the #CyberKitSettings:enable-smooth-scrolling property.
  */
-void webkit_settings_set_enable_smooth_scrolling(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_smooth_scrolling(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->scrollAnimatorEnabled();
     if (currentValue == enabled)
         return;
@@ -3218,9 +3218,9 @@ void webkit_settings_set_enable_smooth_scrolling(WebKitSettings* settings, gbool
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_settings_get_enable_accelerated_2d_canvas:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-accelerated-2d-canvas property.
+ * Get the #CyberKitSettings:enable-accelerated-2d-canvas property.
  *
  * Returns: %TRUE if accelerated 2D canvas is enabled or %FALSE otherwise.
  *
@@ -3228,7 +3228,7 @@ void webkit_settings_set_enable_smooth_scrolling(WebKitSettings* settings, gbool
  *
  * Deprecated: 2.32.
  */
-gboolean webkit_settings_get_enable_accelerated_2d_canvas(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_accelerated_2d_canvas(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3237,16 +3237,16 @@ gboolean webkit_settings_get_enable_accelerated_2d_canvas(WebKitSettings* settin
 
 /**
  * webkit_settings_set_enable_accelerated_2d_canvas:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-accelerated-2d-canvas property.
+ * Set the #CyberKitSettings:enable-accelerated-2d-canvas property.
  *
  * Since: 2.2
  *
  * Deprecated: 2.32.
  */
-void webkit_settings_set_enable_accelerated_2d_canvas(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_accelerated_2d_canvas(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 }
@@ -3254,16 +3254,16 @@ void webkit_settings_set_enable_accelerated_2d_canvas(WebKitSettings* settings, 
 
 /**
  * webkit_settings_get_enable_write_console_messages_to_stdout:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-write-console-messages-to-stdout property.
+ * Get the #CyberKitSettings:enable-write-console-messages-to-stdout property.
  *
  * Returns: %TRUE if writing console messages to stdout is enabled or %FALSE
  * otherwise.
  *
  * Since: 2.2
  */
-gboolean webkit_settings_get_enable_write_console_messages_to_stdout(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_write_console_messages_to_stdout(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3272,18 +3272,18 @@ gboolean webkit_settings_get_enable_write_console_messages_to_stdout(WebKitSetti
 
 /**
  * webkit_settings_set_enable_write_console_messages_to_stdout:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-write-console-messages-to-stdout property.
+ * Set the #CyberKitSettings:enable-write-console-messages-to-stdout property.
  *
  * Since: 2.2
  */
-void webkit_settings_set_enable_write_console_messages_to_stdout(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_write_console_messages_to_stdout(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->logsPageMessagesToSystemConsoleEnabled();
     if (currentValue == enabled)
         return;
@@ -3294,15 +3294,15 @@ void webkit_settings_set_enable_write_console_messages_to_stdout(WebKitSettings*
 
 /**
  * webkit_settings_get_enable_media_stream:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-media-stream property.
+ * Get the #CyberKitSettings:enable-media-stream property.
  *
  * Returns: %TRUE If mediastream support is enabled or %FALSE otherwise.
  *
  * Since: 2.4
  */
-gboolean webkit_settings_get_enable_media_stream(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_media_stream(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3311,18 +3311,18 @@ gboolean webkit_settings_get_enable_media_stream(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_media_stream:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-media-stream property.
+ * Set the #CyberKitSettings:enable-media-stream property.
  *
  * Since: 2.4
  */
-void webkit_settings_set_enable_media_stream(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_media_stream(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->mediaStreamEnabled();
     if (currentValue == enabled)
         return;
@@ -3334,7 +3334,7 @@ void webkit_settings_set_enable_media_stream(WebKitSettings* settings, gboolean 
 
 /**
  * webkit_settings_get_enable_webrtc:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
  * Get the [property@Settings:enable-webrtc] property.
  *
@@ -3342,7 +3342,7 @@ void webkit_settings_set_enable_media_stream(WebKitSettings* settings, gboolean 
  *
  * Since: 2.38
  */
-gboolean webkit_settings_get_enable_webrtc(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_webrtc(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3351,7 +3351,7 @@ gboolean webkit_settings_get_enable_webrtc(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_webrtc:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
  * Set the [property@Settings:enable-webrtc] property.
@@ -3360,11 +3360,11 @@ gboolean webkit_settings_get_enable_webrtc(WebKitSettings* settings)
  *
  * Since: 2.38
  */
-void webkit_settings_set_enable_webrtc(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_webrtc(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->peerConnectionEnabled();
     if (currentValue == enabled)
         return;
@@ -3377,15 +3377,15 @@ void webkit_settings_set_enable_webrtc(WebKitSettings* settings, gboolean enable
 
 /**
  * webkit_settings_get_enable_mock_capture_devices:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-mock-capture-devices property.
+ * Get the #CyberKitSettings:enable-mock-capture-devices property.
  *
  * Returns: %TRUE If mock capture devices is enabled or %FALSE otherwise.
  *
  * Since: 2.24
  */
-gboolean webkit_settings_get_enable_mock_capture_devices(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_mock_capture_devices(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3394,18 +3394,18 @@ gboolean webkit_settings_get_enable_mock_capture_devices(WebKitSettings* setting
 
 /**
  * webkit_settings_set_enable_mock_capture_devices:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-mock-capture-devices property.
+ * Set the #CyberKitSettings:enable-mock-capture-devices property.
  *
  * Since: 2.4
  */
-void webkit_settings_set_enable_mock_capture_devices(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_mock_capture_devices(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->mockCaptureDevicesEnabled();
     if (currentValue == enabled)
         return;
@@ -3416,18 +3416,18 @@ void webkit_settings_set_enable_mock_capture_devices(WebKitSettings* settings, g
 
 /**
  * webkit_settings_set_enable_spatial_navigation:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-spatial-navigation property.
+ * Set the #CyberKitSettings:enable-spatial-navigation property.
  *
  * Since: 2.2
  */
-void webkit_settings_set_enable_spatial_navigation(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_spatial_navigation(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->spatialNavigationEnabled();
 
     if (currentValue == enabled)
@@ -3440,15 +3440,15 @@ void webkit_settings_set_enable_spatial_navigation(WebKitSettings* settings, gbo
 
 /**
  * webkit_settings_get_enable_spatial_navigation:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-spatial-navigation property.
+ * Get the #CyberKitSettings:enable-spatial-navigation property.
  *
  * Returns: %TRUE If HTML5 spatial navigation support is enabled or %FALSE otherwise.
  *
  * Since: 2.2
  */
-gboolean webkit_settings_get_enable_spatial_navigation(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_spatial_navigation(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3457,15 +3457,15 @@ gboolean webkit_settings_get_enable_spatial_navigation(WebKitSettings* settings)
 
 /**
  * webkit_settings_get_enable_mediasource:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-mediasource property.
+ * Get the #CyberKitSettings:enable-mediasource property.
  *
  * Returns: %TRUE If MediaSource support is enabled or %FALSE otherwise.
  *
  * Since: 2.4
  */
-gboolean webkit_settings_get_enable_mediasource(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_mediasource(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3474,18 +3474,18 @@ gboolean webkit_settings_get_enable_mediasource(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_mediasource:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-mediasource property.
+ * Set the #CyberKitSettings:enable-mediasource property.
  *
  * Since: 2.4
  */
-void webkit_settings_set_enable_mediasource(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_mediasource(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->mediaSourceEnabled();
     if (currentValue == enabled)
         return;
@@ -3496,15 +3496,15 @@ void webkit_settings_set_enable_mediasource(WebKitSettings* settings, gboolean e
 
 /**
  * webkit_settings_get_enable_encrypted_media:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-encrypted-media property.
+ * Get the #CyberKitSettings:enable-encrypted-media property.
  *
  * Returns: %TRUE if EncryptedMedia support is enabled or %FALSE otherwise.
  *
  * Since: 2.20
  */
-gboolean webkit_settings_get_enable_encrypted_media(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_encrypted_media(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3514,18 +3514,18 @@ gboolean webkit_settings_get_enable_encrypted_media(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_encrypted_media:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-encrypted-media property.
+ * Set the #CyberKitSettings:enable-encrypted-media property.
  *
  * Since: 2.20
  */
-void webkit_settings_set_enable_encrypted_media(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_encrypted_media(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->encryptedMediaAPIEnabled();
     if (currentValue == enabled)
         return;
@@ -3536,15 +3536,15 @@ void webkit_settings_set_enable_encrypted_media(WebKitSettings* settings, gboole
 
 /**
  * webkit_settings_get_enable_media_capabilities:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-media-capabilities property.
+ * Get the #CyberKitSettings:enable-media-capabilities property.
  *
  * Returns: %TRUE if MediaCapabilities support is enabled or %FALSE otherwise.
  *
  * Since: 2.22
  */
-gboolean webkit_settings_get_enable_media_capabilities(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_media_capabilities(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3554,18 +3554,18 @@ gboolean webkit_settings_get_enable_media_capabilities(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_media_capabilities:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-media-capabilities property.
+ * Set the #CyberKitSettings:enable-media-capabilities property.
  *
  * Since: 2.22
  */
-void webkit_settings_set_enable_media_capabilities(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_media_capabilities(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->mediaCapabilitiesEnabled();
     if (currentValue == enabled)
         return;
@@ -3576,15 +3576,15 @@ void webkit_settings_set_enable_media_capabilities(WebKitSettings* settings, gbo
 
 /**
  * webkit_settings_get_allow_file_access_from_file_urls:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:allow-file-access-from-file-urls property.
+ * Get the #CyberKitSettings:allow-file-access-from-file-urls property.
  *
  * Returns: %TRUE If file access from file URLs is allowed or %FALSE otherwise.
  *
  * Since: 2.10
  */
-gboolean webkit_settings_get_allow_file_access_from_file_urls(WebKitSettings* settings)
+gboolean webkit_settings_get_allow_file_access_from_file_urls(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3593,18 +3593,18 @@ gboolean webkit_settings_get_allow_file_access_from_file_urls(WebKitSettings* se
 
 /**
  * webkit_settings_set_allow_file_access_from_file_urls:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @allowed: Value to be set
  *
- * Set the #WebKitSettings:allow-file-access-from-file-urls property.
+ * Set the #CyberKitSettings:allow-file-access-from-file-urls property.
  *
  * Since: 2.10
  */
-void webkit_settings_set_allow_file_access_from_file_urls(WebKitSettings* settings, gboolean allowed)
+void webkit_settings_set_allow_file_access_from_file_urls(CyberKitSettings* settings, gboolean allowed)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (priv->preferences->allowFileAccessFromFileURLs() == allowed)
         return;
 
@@ -3614,15 +3614,15 @@ void webkit_settings_set_allow_file_access_from_file_urls(WebKitSettings* settin
 
 /**
  * webkit_settings_get_allow_universal_access_from_file_urls:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:allow-universal-access-from-file-urls property.
+ * Get the #CyberKitSettings:allow-universal-access-from-file-urls property.
  *
  * Returns: %TRUE If universal access from file URLs is allowed or %FALSE otherwise.
  *
  * Since: 2.14
  */
-gboolean webkit_settings_get_allow_universal_access_from_file_urls(WebKitSettings* settings)
+gboolean webkit_settings_get_allow_universal_access_from_file_urls(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3631,18 +3631,18 @@ gboolean webkit_settings_get_allow_universal_access_from_file_urls(WebKitSetting
 
 /**
  * webkit_settings_set_allow_universal_access_from_file_urls:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @allowed: Value to be set
  *
- * Set the #WebKitSettings:allow-universal-access-from-file-urls property.
+ * Set the #CyberKitSettings:allow-universal-access-from-file-urls property.
  *
  * Since: 2.14
  */
-void webkit_settings_set_allow_universal_access_from_file_urls(WebKitSettings* settings, gboolean allowed)
+void webkit_settings_set_allow_universal_access_from_file_urls(CyberKitSettings* settings, gboolean allowed)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (priv->preferences->allowUniversalAccessFromFileURLs() == allowed)
         return;
 
@@ -3652,16 +3652,16 @@ void webkit_settings_set_allow_universal_access_from_file_urls(WebKitSettings* s
 
 /**
  * webkit_settings_get_allow_top_navigation_to_data_urls:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:allow-top-navigation-to-data-urls property.
+ * Get the #CyberKitSettings:allow-top-navigation-to-data-urls property.
  *
  * Returns: %TRUE If navigation to data URLs from the top frame is allowed or %FALSE\
  * otherwise.
  *
  * Since: 2.28
  */
-gboolean webkit_settings_get_allow_top_navigation_to_data_urls(WebKitSettings* settings)
+gboolean webkit_settings_get_allow_top_navigation_to_data_urls(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3670,18 +3670,18 @@ gboolean webkit_settings_get_allow_top_navigation_to_data_urls(WebKitSettings* s
 
 /**
  * webkit_settings_set_allow_top_navigation_to_data_urls:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @allowed: Value to be set
  *
- * Set the #WebKitSettings:allow-top-navigation-to-data-urls property.
+ * Set the #CyberKitSettings:allow-top-navigation-to-data-urls property.
  *
  * Since: 2.28
  */
-void webkit_settings_set_allow_top_navigation_to_data_urls(WebKitSettings* settings, gboolean allowed)
+void webkit_settings_set_allow_top_navigation_to_data_urls(CyberKitSettings* settings, gboolean allowed)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (priv->preferences->allowTopNavigationToDataURLs() == allowed)
         return;
 
@@ -3692,19 +3692,19 @@ void webkit_settings_set_allow_top_navigation_to_data_urls(WebKitSettings* setti
 #if PLATFORM(GTK)
 /**
  * webkit_settings_get_hardware_acceleration_policy:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:hardware-acceleration-policy property.
+ * Get the #CyberKitSettings:hardware-acceleration-policy property.
  *
- * Return: a #WebKitHardwareAccelerationPolicy
+ * Return: a #CyberKitHardwareAccelerationPolicy
  *
  * Since: 2.16
  */
-WebKitHardwareAccelerationPolicy webkit_settings_get_hardware_acceleration_policy(WebKitSettings* settings)
+CyberKitHardwareAccelerationPolicy webkit_settings_get_hardware_acceleration_policy(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS);
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
 #if USE(GTK4)
     return priv->preferences->acceleratedCompositingEnabled() ? WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS : WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER;
 #else
@@ -3720,18 +3720,18 @@ WebKitHardwareAccelerationPolicy webkit_settings_get_hardware_acceleration_polic
 
 /**
  * webkit_settings_set_hardware_acceleration_policy:
- * @settings: a #WebKitSettings
- * @policy: a #WebKitHardwareAccelerationPolicy
+ * @settings: a #CyberKitSettings
+ * @policy: a #CyberKitHardwareAccelerationPolicy
  *
- * Set the #WebKitSettings:hardware-acceleration-policy property.
+ * Set the #CyberKitSettings:hardware-acceleration-policy property.
  *
  * Since: 2.16
  */
-void webkit_settings_set_hardware_acceleration_policy(WebKitSettings* settings, WebKitHardwareAccelerationPolicy policy)
+void webkit_settings_set_hardware_acceleration_policy(CyberKitSettings* settings, CyberKitHardwareAccelerationPolicy policy)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool changed = false;
     switch (policy) {
     case WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS:
@@ -3783,15 +3783,15 @@ void webkit_settings_set_hardware_acceleration_policy(WebKitSettings* settings, 
 
 /**
  * webkit_settings_get_enable_back_forward_navigation_gestures:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-back-forward-navigation-gestures property.
+ * Get the #CyberKitSettings:enable-back-forward-navigation-gestures property.
  *
  * Returns: %TRUE if horizontal swipe gesture will trigger back-forward navigaiton or %FALSE otherwise.
  *
  * Since: 2.24
  */
-gboolean webkit_settings_get_enable_back_forward_navigation_gestures(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_back_forward_navigation_gestures(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3800,18 +3800,18 @@ gboolean webkit_settings_get_enable_back_forward_navigation_gestures(WebKitSetti
 
 /**
  * webkit_settings_set_enable_back_forward_navigation_gestures:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: value to be set
  *
- * Set the #WebKitSettings:enable-back-forward-navigation-gestures property.
+ * Set the #CyberKitSettings:enable-back-forward-navigation-gestures property.
  *
  * Since: 2.24
  */
-void webkit_settings_set_enable_back_forward_navigation_gestures(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_back_forward_navigation_gestures(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (priv->enableBackForwardNavigationGestures == enabled)
         return;
 
@@ -3828,7 +3828,7 @@ void webkit_settings_set_enable_back_forward_navigation_gestures(WebKitSettings*
  * Convert @pixels to the equivalent value in points, based on the current
  * screen DPI. Applications can use this function to convert font size values
  * in pixels to font size values in points when getting the font size properties
- * of #WebKitSettings.
+ * of #CyberKitSettings.
  *
  * Returns: the equivalent font size in points.
  *
@@ -3848,7 +3848,7 @@ guint32 webkit_settings_font_size_to_points(guint32 pixels)
  * Convert @points to the equivalent value in pixels, based on the current
  * screen DPI. Applications can use this function to convert font size values
  * in points to font size values in pixels when setting the font size properties
- * of #WebKitSettings.
+ * of #CyberKitSettings.
  *
  * Returns: the equivalent font size in pixels.
  *
@@ -3862,15 +3862,15 @@ guint32 webkit_settings_font_size_to_pixels(guint32 points)
 
 /**
  * webkit_settings_get_enable_javascript_markup:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-javascript-markup property.
+ * Get the #CyberKitSettings:enable-javascript-markup property.
  *
  * Returns: %TRUE if JavaScript markup is enabled or %FALSE otherwise.
  *
  * Since: 2.24
  */
-gboolean webkit_settings_get_enable_javascript_markup(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_javascript_markup(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3879,18 +3879,18 @@ gboolean webkit_settings_get_enable_javascript_markup(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_javascript_markup:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-javascript-markup property.
+ * Set the #CyberKitSettings:enable-javascript-markup property.
  *
  * Since: 2.24
  */
-void webkit_settings_set_enable_javascript_markup(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_javascript_markup(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->javaScriptMarkupEnabled();
     if (currentValue == enabled)
         return;
@@ -3901,15 +3901,15 @@ void webkit_settings_set_enable_javascript_markup(WebKitSettings* settings, gboo
 
 /**
  * webkit_settings_get_enable_media:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:enable-media property.
+ * Get the #CyberKitSettings:enable-media property.
  *
  * Returns: %TRUE if media support is enabled or %FALSE otherwise.
  *
  * Since: 2.26
  */
-gboolean webkit_settings_get_enable_media(WebKitSettings* settings)
+gboolean webkit_settings_get_enable_media(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -3918,18 +3918,18 @@ gboolean webkit_settings_get_enable_media(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_enable_media:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @enabled: Value to be set
  *
- * Set the #WebKitSettings:enable-media property.
+ * Set the #CyberKitSettings:enable-media property.
  *
  * Since: 2.26
  */
-void webkit_settings_set_enable_media(WebKitSettings* settings, gboolean enabled)
+void webkit_settings_set_enable_media(CyberKitSettings* settings, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = priv->preferences->mediaEnabled();
     if (currentValue == enabled)
         return;
@@ -3938,29 +3938,29 @@ void webkit_settings_set_enable_media(WebKitSettings* settings, gboolean enabled
     g_object_notify_by_pspec(G_OBJECT(settings), sObjProperties[PROP_ENABLE_MEDIA]);
 }
 
-void webkitSettingsSetMediaCaptureRequiresSecureConnection(WebKitSettings* settings, bool required)
+void webkitSettingsSetMediaCaptureRequiresSecureConnection(CyberKitSettings* settings, bool required)
 {
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     priv->preferences->setMediaCaptureRequiresSecureConnection(required);
 }
 
-void webkitSettingsSetGetUserMediaRequiresFocus(WebKitSettings* settings, bool required)
+void webkitSettingsSetGetUserMediaRequiresFocus(CyberKitSettings* settings, bool required)
 {
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     priv->preferences->setGetUserMediaRequiresFocus(required);
 }
 
 /**
  * webkit_settings_get_media_content_types_requiring_hardware_support:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Gets the #WebKitSettings:media-content-types-requiring-hardware-support property.
+ * Gets the #CyberKitSettings:media-content-types-requiring-hardware-support property.
  *
  * Returns: Media content types requiring hardware support, or %NULL.
  *
  * Since: 2.30
  */
-const gchar* webkit_settings_get_media_content_types_requiring_hardware_support(WebKitSettings* settings)
+const gchar* webkit_settings_get_media_content_types_requiring_hardware_support(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), 0);
 
@@ -3972,18 +3972,18 @@ const gchar* webkit_settings_get_media_content_types_requiring_hardware_support(
 
 /**
  * webkit_settings_set_media_content_types_requiring_hardware_support:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @content_types: (allow-none): list of media content types requiring hardware support split by semicolons (:) or %NULL to use the default value.
  *
- * Set the #WebKitSettings:media-content-types-requiring-hardware-support property.
+ * Set the #CyberKitSettings:media-content-types-requiring-hardware-support property.
  *
  * Since: 2.30
  */
-void webkit_settings_set_media_content_types_requiring_hardware_support(WebKitSettings* settings, const gchar* mediaContentTypesRequiringHardwareSupport)
+void webkit_settings_set_media_content_types_requiring_hardware_support(CyberKitSettings* settings, const gchar* mediaContentTypesRequiringHardwareSupport)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     if (!g_strcmp0(priv->mediaContentTypesRequiringHardwareSupport.data(), mediaContentTypesRequiringHardwareSupport))
         return;
 
@@ -3995,15 +3995,15 @@ void webkit_settings_set_media_content_types_requiring_hardware_support(WebKitSe
 
 /**
  * webkit_settings_get_disable_web_security:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Get the #WebKitSettings:disable-web-security property.
+ * Get the #CyberKitSettings:disable-web-security property.
  *
  * Returns: %TRUE If web security support is disabled or %FALSE otherwise.
  *
  * Since: 2.40
 */
-gboolean webkit_settings_get_disable_web_security(WebKitSettings* settings)
+gboolean webkit_settings_get_disable_web_security(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), FALSE);
 
@@ -4012,18 +4012,18 @@ gboolean webkit_settings_get_disable_web_security(WebKitSettings* settings)
 
 /**
  * webkit_settings_set_disable_web_security:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  * @disabled: Value to be set
  *
- * Set the #WebKitSettings:disable-web-security property.
+ * Set the #CyberKitSettings:disable-web-security property.
  *
  * Since: 2.40
  */
-void webkit_settings_set_disable_web_security(WebKitSettings* settings, gboolean disabled)
+void webkit_settings_set_disable_web_security(CyberKitSettings* settings, gboolean disabled)
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    WebKitSettingsPrivate* priv = settings->priv;
+    CyberKitSettingsPrivate* priv = settings->priv;
     bool currentValue = !priv->preferences->webSecurityEnabled();
     if (currentValue == disabled)
         return;

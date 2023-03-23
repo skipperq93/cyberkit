@@ -36,7 +36,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class FileReaderLoader;
@@ -61,4 +61,4 @@ private:
     ExceptionOr<String> startLoadingString(ScriptExecutionContext&, FileReaderLoader&, Blob&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

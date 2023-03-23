@@ -47,7 +47,7 @@ class WebAudioBufferList;
 }
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioDestinationProxy final : public CyberCore::AudioDestinationResampler, public GPUProcessConnection::Client {
     WTF_MAKE_NONCOPYABLE(RemoteAudioDestinationProxy);
@@ -91,6 +91,6 @@ private:
     std::atomic<bool> m_shouldStopThread { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO)

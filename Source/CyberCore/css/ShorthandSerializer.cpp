@@ -39,7 +39,7 @@
 #include "StylePropertiesInlines.h"
 #include "StylePropertyShorthand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned maxShorthandLength = 17; // FIXME: Generate this from CSSProperties.json.
 
@@ -150,7 +150,7 @@ inline CSSValue& ShorthandSerializer::longhandValue(unsigned index) const
 
 inline String ShorthandSerializer::serializeValue(Longhand longhand)
 {
-    return WebCore::serializeLonghandValue(longhand.property, longhand.value);
+    return CyberCore::serializeLonghandValue(longhand.property, longhand.value);
 }
 
 inline bool ShorthandSerializer::isInitialValue(Longhand longhand)
@@ -166,7 +166,7 @@ inline unsigned ShorthandSerializer::longhandIndex(unsigned index, CSSPropertyID
 
 inline CSSValueID ShorthandSerializer::longhandValueID(unsigned index) const
 {
-    return WebCore::longhandValueID(longhandProperty(index), longhandValue(index));
+    return CyberCore::longhandValueID(longhandProperty(index), longhandValue(index));
 }
 
 inline String ShorthandSerializer::serializeLonghandValue(unsigned index) const

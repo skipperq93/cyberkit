@@ -30,7 +30,7 @@
 
 #import "UIKitSPI.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 InputViewUpdateDeferrer::InputViewUpdateDeferrer(UIView *view)
     : m_view(view)

@@ -22,16 +22,16 @@
 
 messages -> WebPageProxy {
     # UI messages
-    CreateNewPage(struct WebKit::FrameInfoData originatingFrameInfoData, WebKit::WebPageProxyIdentifier originatingPageID, CyberCore::ResourceRequest request, struct CyberCore::WindowFeatures windowFeatures, struct WebKit::NavigationActionData navigationActionData) -> (std::optional<CyberCore::PageIdentifier> newPageID, std::optional<WebKit::WebPageCreationParameters> newPageParameters) Synchronous
+    CreateNewPage(struct CyberKit::FrameInfoData originatingFrameInfoData, CyberKit::WebPageProxyIdentifier originatingPageID, CyberCore::ResourceRequest request, struct CyberCore::WindowFeatures windowFeatures, struct CyberKit::NavigationActionData navigationActionData) -> (std::optional<CyberCore::PageIdentifier> newPageID, std::optional<CyberKit::WebPageCreationParameters> newPageParameters) Synchronous
     ShowPage()
     ClosePage()
-    RunJavaScriptAlert(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, String message) -> () Synchronous
-    RunJavaScriptConfirm(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, String message) -> (bool result) Synchronous
-    RunJavaScriptPrompt(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, String message, String defaultValue) -> (String result) Synchronous
-    MouseDidMoveOverElement(struct WebKit::WebHitTestResultData hitTestResultData, uint32_t modifiers, WebKit::UserData userData)
+    RunJavaScriptAlert(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message) -> () Synchronous
+    RunJavaScriptConfirm(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message) -> (bool result) Synchronous
+    RunJavaScriptPrompt(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message, String defaultValue) -> (String result) Synchronous
+    MouseDidMoveOverElement(struct CyberKit::WebHitTestResultData hitTestResultData, uint32_t modifiers, CyberKit::UserData userData)
 
     DidChangeViewportProperties(struct CyberCore::ViewportAttributes attributes)
-    DidReceiveEvent(enum:int8_t WebKit::WebEventType eventType, bool handled)
+    DidReceiveEvent(enum:int8_t CyberKit::WebEventType eventType, bool handled)
     SetCursor(CyberCore::Cursor cursor)
     SetCursorHiddenUntilMouseMoves(bool hiddenUntilMouseMoves)
     SetStatusText(String statusText)
@@ -59,10 +59,10 @@ messages -> WebPageProxy {
     HideValidationMessage()
 #endif
 
-    RunBeforeUnloadConfirmPanel(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, String message) -> (bool shouldClose) Synchronous
+    RunBeforeUnloadConfirmPanel(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message) -> (bool shouldClose) Synchronous
     PageDidScroll(CyberCore::IntPoint scrollPosition)
     SetHasActiveAnimatedScrolls(bool hasActiveAnimatedScrolls)
-    RunOpenPanel(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, struct CyberCore::FileChooserSettings parameters)
+    RunOpenPanel(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, struct CyberCore::FileChooserSettings parameters)
     ShowShareSheet(struct CyberCore::ShareDataWithParsedURL shareData) -> (bool granted)
     ShowContactPicker(struct CyberCore::ContactsRequestData requestData) -> (std::optional<Vector<CyberCore::ContactInfo>> info)
     PrintFrame(CyberCore::FrameIdentifier frameID, String title, CyberCore::FloatSize pdfFirstPageSize) -> () Synchronous
@@ -98,10 +98,10 @@ messages -> WebPageProxy {
 #endif
 
     # Policy messages
-    DecidePolicyForResponse(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, CyberCore::ResourceResponse response, CyberCore::ResourceRequest request, bool canShowMIMEType, String downloadAttribute, uint64_t listenerID)
-    DecidePolicyForNavigationActionAsync(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, struct WebKit::NavigationActionData navigationActionData, struct WebKit::FrameInfoData originatingFrameInfoData, std::optional<WebKit::WebPageProxyIdentifier> originatingPageID, CyberCore::ResourceRequest originalRequest, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody, CyberCore::ResourceResponse redirectResponse, uint64_t listenerID)
-    DecidePolicyForNavigationActionSync(CyberCore::FrameIdentifier frameID, bool isMainFrame, struct WebKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, struct WebKit::NavigationActionData navigationActionData, struct WebKit::FrameInfoData originatingFrameInfoData, std::optional<WebKit::WebPageProxyIdentifier> originatingPageID, CyberCore::ResourceRequest originalRequest, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody, CyberCore::ResourceResponse redirectResponse) -> (struct WebKit::PolicyDecision PolicyDecision) Synchronous
-    DecidePolicyForNewWindowAction(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, struct WebKit::NavigationActionData navigationActionData, CyberCore::ResourceRequest request, String frameName, uint64_t listenerID)
+    DecidePolicyForResponse(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, CyberCore::ResourceResponse response, CyberCore::ResourceRequest request, bool canShowMIMEType, String downloadAttribute, uint64_t listenerID)
+    DecidePolicyForNavigationActionAsync(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, struct CyberKit::NavigationActionData navigationActionData, struct CyberKit::FrameInfoData originatingFrameInfoData, std::optional<CyberKit::WebPageProxyIdentifier> originatingPageID, CyberCore::ResourceRequest originalRequest, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody, CyberCore::ResourceResponse redirectResponse, uint64_t listenerID)
+    DecidePolicyForNavigationActionSync(CyberCore::FrameIdentifier frameID, bool isMainFrame, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, struct CyberKit::NavigationActionData navigationActionData, struct CyberKit::FrameInfoData originatingFrameInfoData, std::optional<CyberKit::WebPageProxyIdentifier> originatingPageID, CyberCore::ResourceRequest originalRequest, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody, CyberCore::ResourceResponse redirectResponse) -> (struct CyberKit::PolicyDecision PolicyDecision) Synchronous
+    DecidePolicyForNewWindowAction(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, struct CyberKit::NavigationActionData navigationActionData, CyberCore::ResourceRequest request, String frameName, uint64_t listenerID)
 
     # Progress messages
     DidChangeProgress(double value)
@@ -114,24 +114,24 @@ messages -> WebPageProxy {
     DidCreateMainFrame(CyberCore::FrameIdentifier frameID)
 
     # Frame load messages
-    DidStartProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, URL url, URL unreachableURL, WebKit::UserData userData)
-    DidReceiveServerRedirectForProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, CyberCore::ResourceRequest request, WebKit::UserData userData)
+    DidStartProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, URL url, URL unreachableURL, CyberKit::UserData userData)
+    DidReceiveServerRedirectForProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, CyberCore::ResourceRequest request, CyberKit::UserData userData)
     WillPerformClientRedirectForFrame(CyberCore::FrameIdentifier frameID, String url, double delay, enum:bool CyberCore::LockBackForwardList lockBackForwardList)
     DidCancelClientRedirectForFrame(CyberCore::FrameIdentifier frameID)
     DidChangeProvisionalURLForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, URL url)
-    DidFailProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, String provisionalURL, CyberCore::ResourceError error, enum:bool CyberCore::WillContinueLoading willContinueLoading, WebKit::UserData userData, enum:bool CyberCore::WillInternallyHandleFailure willInternallyHandleFailure)
-    DidCommitLoadForFrame(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, String mimeType, bool hasCustomContentProvider, enum:uint8_t CyberCore::FrameLoadType loadType, CyberCore::CertificateInfo certificateInfo, bool usedLegacyTLS, bool wasPrivateRelayed, bool containsPluginDocument, enum:bool CyberCore::HasInsecureContent hasInsecureContent, enum:uint8_t CyberCore::MouseEventPolicy mouseEventPolicy, WebKit::UserData userData)
-    DidFailLoadForFrame(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, CyberCore::ResourceError error, WebKit::UserData userData)
-    DidFinishDocumentLoadForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, WebKit::UserData userData)
-    DidFinishLoadForFrame(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, WebKit::UserData userData)
-    DidFirstLayoutForFrame(CyberCore::FrameIdentifier frameID, WebKit::UserData userData)
-    DidFirstVisuallyNonEmptyLayoutForFrame(CyberCore::FrameIdentifier frameID, WebKit::UserData userData)
+    DidFailProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, String provisionalURL, CyberCore::ResourceError error, enum:bool CyberCore::WillContinueLoading willContinueLoading, CyberKit::UserData userData, enum:bool CyberCore::WillInternallyHandleFailure willInternallyHandleFailure)
+    DidCommitLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, String mimeType, bool hasCustomContentProvider, enum:uint8_t CyberCore::FrameLoadType loadType, CyberCore::CertificateInfo certificateInfo, bool usedLegacyTLS, bool wasPrivateRelayed, bool containsPluginDocument, enum:bool CyberCore::HasInsecureContent hasInsecureContent, enum:uint8_t CyberCore::MouseEventPolicy mouseEventPolicy, CyberKit::UserData userData)
+    DidFailLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, CyberCore::ResourceError error, CyberKit::UserData userData)
+    DidFinishDocumentLoadForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, CyberKit::UserData userData)
+    DidFinishLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, CyberKit::UserData userData)
+    DidFirstLayoutForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
+    DidFirstVisuallyNonEmptyLayoutForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
     DidReachLayoutMilestone(OptionSet<CyberCore::LayoutMilestone> layoutMilestones)
-    DidReceiveTitleForFrame(CyberCore::FrameIdentifier frameID, String title, WebKit::UserData userData)
-    DidDisplayInsecureContentForFrame(CyberCore::FrameIdentifier frameID, WebKit::UserData userData)
-    DidRunInsecureContentForFrame(CyberCore::FrameIdentifier frameID, WebKit::UserData userData)
-    DidSameDocumentNavigationForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, enum:uint8_t WebKit::SameDocumentNavigationType type, URL url, WebKit::UserData userData)
-    DidSameDocumentNavigationForFrameViaJSHistoryAPI(CyberCore::FrameIdentifier frameID, enum:uint8_t WebKit::SameDocumentNavigationType type, URL url, struct WebKit::NavigationActionData navigationActionData, WebKit::UserData userData);
+    DidReceiveTitleForFrame(CyberCore::FrameIdentifier frameID, String title, CyberKit::UserData userData)
+    DidDisplayInsecureContentForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
+    DidRunInsecureContentForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
+    DidSameDocumentNavigationForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, enum:uint8_t CyberKit::SameDocumentNavigationType type, URL url, CyberKit::UserData userData)
+    DidSameDocumentNavigationForFrameViaJSHistoryAPI(CyberCore::FrameIdentifier frameID, enum:uint8_t CyberKit::SameDocumentNavigationType type, URL url, struct CyberKit::NavigationActionData navigationActionData, CyberKit::UserData userData);
     DidChangeMainDocument(CyberCore::FrameIdentifier frameID)
     DidExplicitOpenForFrame(CyberCore::FrameIdentifier frameID, URL url, String mimeType)
     DidDestroyNavigation(uint64_t navigationID)
@@ -149,7 +149,7 @@ messages -> WebPageProxy {
 #endif
 
     # History client messages.
-    DidNavigateWithNavigationData(struct WebKit::WebNavigationDataStore store, CyberCore::FrameIdentifier frameID)
+    DidNavigateWithNavigationData(struct CyberKit::WebNavigationDataStore store, CyberCore::FrameIdentifier frameID)
     DidPerformClientRedirect(String sourceURLString, String destinationURLString, CyberCore::FrameIdentifier frameID)
     DidPerformServerRedirect(String sourceURLString, String destinationURLString, CyberCore::FrameIdentifier frameID)
     DidUpdateHistoryTitle(String title, String url, CyberCore::FrameIdentifier frameID)
@@ -158,21 +158,21 @@ messages -> WebPageProxy {
     DidFinishLoadingDataForCustomContentProvider(String suggestedFilename, IPC::DataReference data)
 
     # Forms messages
-    WillSubmitForm(CyberCore::FrameIdentifier frameID, CyberCore::FrameIdentifier sourceFrameID, Vector<std::pair<String, String>> textFieldValues, WebKit::FormSubmitListenerIdentifier listenerID, WebKit::UserData userData)
+    WillSubmitForm(CyberCore::FrameIdentifier frameID, CyberCore::FrameIdentifier sourceFrameID, Vector<std::pair<String, String>> textFieldValues, CyberKit::FormSubmitListenerIdentifier listenerID, CyberKit::UserData userData)
 
 #if PLATFORM(IOS_FAMILY)
-    InterpretKeyEvent(struct WebKit::EditorState state, bool isCharEvent) -> (bool handled) Synchronous
-    DidReceivePositionInformation(struct WebKit::InteractionInformationAtPosition information)
-    SaveImageToLibrary(WebKit::SharedMemory::Handle handle, String authorizationToken)
+    InterpretKeyEvent(struct CyberKit::EditorState state, bool isCharEvent) -> (bool handled) Synchronous
+    DidReceivePositionInformation(struct CyberKit::InteractionInformationAtPosition information)
+    SaveImageToLibrary(CyberKit::SharedMemory::Handle handle, String authorizationToken)
     ShowPlaybackTargetPicker(bool hasVideo, CyberCore::IntRect elementRect, enum:uint8_t CyberCore::RouteSharingPolicy policy, String routingContextUID)
     CommitPotentialTapFailed()
     DidNotHandleTapAsClick(CyberCore::IntPoint point)
     DidCompleteSyntheticClick()
-    DisableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIdentifier requestID)
-    HandleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier requestID, CyberCore::FloatRect renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
+    DisableDoubleTapGesturesDuringTapIfNecessary(CyberKit::TapIdentifier requestID)
+    HandleSmartMagnificationInformationForPotentialTap(CyberKit::TapIdentifier requestID, CyberCore::FloatRect renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
 #endif
 #if ENABLE(DATA_DETECTION)
-    SetDataDetectionResult(struct WebKit::DataDetectionResult dataDetectionResult)
+    SetDataDetectionResult(struct CyberKit::DataDetectionResult dataDetectionResult)
     HandleClickForDataDetectionResult(struct CyberCore::DataDetectorElementInfo info, CyberCore::IntPoint location)
 #endif
 
@@ -184,15 +184,15 @@ messages -> WebPageProxy {
     # Support for connecting the Accessibility worlds of the UI and the Web processes
     BindAccessibilityTree(String plugID)
 
-    SetInputMethodState(std::optional<WebKit::InputMethodState> state);
+    SetInputMethodState(std::optional<CyberKit::InputMethodState> state);
 #endif
 
     # BackForward messages
-    BackForwardAddItem(struct WebKit::BackForwardListItemState itemState)
-    BackForwardGoToItem(CyberCore::BackForwardItemIdentifier itemID) -> (struct WebKit::WebBackForwardListCounts counts) Synchronous
+    BackForwardAddItem(struct CyberKit::BackForwardListItemState itemState)
+    BackForwardGoToItem(CyberCore::BackForwardItemIdentifier itemID) -> (struct CyberKit::WebBackForwardListCounts counts) Synchronous
     BackForwardItemAtIndex(int32_t itemIndex) -> (std::optional<CyberCore::BackForwardItemIdentifier> itemID) Synchronous
     BackForwardListContainsItem(CyberCore::BackForwardItemIdentifier itemID) -> (bool contains) Synchronous
-    BackForwardListCounts() -> (struct WebKit::WebBackForwardListCounts counts) Synchronous
+    BackForwardListCounts() -> (struct CyberKit::WebBackForwardListCounts counts) Synchronous
     BackForwardClear()
     WillGoToBackForwardListItem(CyberCore::BackForwardItemIdentifier itemID, bool inBackForwardCache)
 
@@ -200,8 +200,8 @@ messages -> WebPageProxy {
     RegisterEditCommandForUndo(uint64_t commandID, String label) AllowedWhenWaitingForSyncReply
     ClearAllEditCommands()
     RegisterInsertionUndoGrouping()
-    CanUndoRedo(enum:bool WebKit::UndoOrRedo undoOrRedo) -> (bool result) Synchronous
-    ExecuteUndoRedo(enum:bool WebKit::UndoOrRedo undoOrRedo) -> () Synchronous
+    CanUndoRedo(enum:bool CyberKit::UndoOrRedo undoOrRedo) -> (bool result) Synchronous
+    ExecuteUndoRedo(enum:bool CyberKit::UndoOrRedo undoOrRedo) -> () Synchronous
 
     # Diagnostic messages logging
     LogDiagnosticMessageFromWebProcess(String message, String description, enum:bool CyberCore::ShouldSample shouldSample)
@@ -215,12 +215,12 @@ messages -> WebPageProxy {
     LogScrollingEvent(uint32_t eventType, MonotonicTime timestamp, uint64_t data)
 
     # Editor notifications
-    EditorStateChanged(struct WebKit::EditorState editorState)
+    EditorStateChanged(struct CyberKit::EditorState editorState)
     CompositionWasCanceled()
     SetHasHadSelectionChangesFromUserInteraction(bool hasHadUserSelectionChanges)
 
 #if ENABLE(IMAGE_ANALYSIS)
-    RequestTextRecognition(URL imageURL, WebKit::ShareableBitmapHandle imageData, String source, String target) -> (struct CyberCore::TextRecognitionResult result)
+    RequestTextRecognition(URL imageURL, CyberKit::ShareableBitmapHandle imageData, String source, String target) -> (struct CyberCore::TextRecognitionResult result)
 #endif
 
 #if HAVE(TRANSLATION_UI_SERVICES) && ENABLE(CONTEXT_MENUS)
@@ -245,14 +245,14 @@ messages -> WebPageProxy {
     DidFindString(String string, Vector<CyberCore::IntRect> matchRect, uint32_t matchCount, int32_t matchIndex, bool didWrapAround)
     DidFailToFindString(String string)
     DidFindStringMatches(String string, Vector<Vector<CyberCore::IntRect>> matches, int32_t firstIndexAfterSelection)
-    DidGetImageForFindMatch(struct CyberCore::ImageBufferBackendParameters parameters, WebKit::ShareableBitmapHandle contentImageHandle, uint32_t matchIndex)
+    DidGetImageForFindMatch(struct CyberCore::ImageBufferBackendParameters parameters, CyberKit::ShareableBitmapHandle contentImageHandle, uint32_t matchIndex)
 
     # PopupMenu messages
-    ShowPopupMenu(CyberCore::IntRect rect, uint64_t textDirection, Vector<WebKit::WebPopupItem> items, int32_t selectedIndex, struct WebKit::PlatformPopupMenuData data)
+    ShowPopupMenu(CyberCore::IntRect rect, uint64_t textDirection, Vector<CyberKit::WebPopupItem> items, int32_t selectedIndex, struct CyberKit::PlatformPopupMenuData data)
     HidePopupMenu()
 
 #if ENABLE(CONTEXT_MENUS)
-    ShowContextMenu(WebKit::ContextMenuContextData contextMenuContextData, WebKit::UserData userData)
+    ShowContextMenu(CyberKit::ContextMenuContextData contextMenuContextData, CyberKit::UserData userData)
 #endif
 
 #if ENABLE(SERVICE_WORKER)
@@ -266,7 +266,7 @@ messages -> WebPageProxy {
     ReachedApplicationCacheOriginQuota(String originIdentifier, uint64_t currentQuota, uint64_t totalBytesNeeded) -> (uint64_t newQuota) Synchronous
 
     # Geolocation messages
-    RequestGeolocationPermissionForFrame(WebKit::GeolocationIdentifier geolocationID, struct WebKit::FrameInfoData frameInfo)
+    RequestGeolocationPermissionForFrame(CyberKit::GeolocationIdentifier geolocationID, struct CyberKit::FrameInfoData frameInfo)
     RevokeGeolocationAuthorizationToken(String authorizationToken);
 
 #if ENABLE(MEDIA_STREAM)
@@ -295,7 +295,7 @@ messages -> WebPageProxy {
     GetGuessesForWord(String word, String context, int32_t insertionPoint) -> (Vector<String> guesses) Synchronous
     LearnWord(String word)
     IgnoreWord(String word)
-    RequestCheckingOfString(WebKit::TextCheckerRequestID requestID, CyberCore::TextCheckingRequestData request, int32_t insertionPoint)
+    RequestCheckingOfString(CyberKit::TextCheckerRequestID requestID, CyberCore::TextCheckingRequestData request, int32_t insertionPoint)
 
     # Drag and drop messages
 #if ENABLE(DRAG_SUPPORT)
@@ -303,11 +303,11 @@ messages -> WebPageProxy {
     DidEndDragging();
 #endif
 #if PLATFORM(COCOA) && ENABLE(DRAG_SUPPORT)
-    StartDrag(struct CyberCore::DragItem dragItem, WebKit::ShareableBitmapHandle dragImage)
-    SetPromisedDataForImage(String pasteboardName, WebKit::SharedMemory::Handle imageHandle, String filename, String extension, String title, String url, String visibleURL, WebKit::SharedMemory::Handle archiveHandle, String originIdentifier)
+    StartDrag(struct CyberCore::DragItem dragItem, CyberKit::ShareableBitmapHandle dragImage)
+    SetPromisedDataForImage(String pasteboardName, CyberKit::SharedMemory::Handle imageHandle, String filename, String extension, String title, String url, String visibleURL, CyberKit::SharedMemory::Handle archiveHandle, String originIdentifier)
 #endif
 #if PLATFORM(GTK) && ENABLE(DRAG_SUPPORT)
-    StartDrag(CyberCore::SelectionData selectionData, OptionSet<CyberCore::DragOperation> dragOperationMask, WebKit::ShareableBitmapHandle dragImage, CyberCore::IntPoint dragImageHotspot)
+    StartDrag(CyberCore::SelectionData selectionData, OptionSet<CyberCore::DragOperation> dragOperationMask, CyberKit::ShareableBitmapHandle dragImage, CyberCore::IntPoint dragImageHotspot)
 #endif
 
 #if ENABLE(DRAG_SUPPORT)
@@ -346,9 +346,9 @@ messages -> WebPageProxy {
 #endif
 
 #if HAVE(TOUCH_BAR)
-    TouchBarMenuDataChanged(WebKit::TouchBarMenuData touchBarMenuData)
-    TouchBarMenuItemDataAdded(struct WebKit::TouchBarMenuItemData touchBarMenuItemData)
-    TouchBarMenuItemDataRemoved(struct WebKit::TouchBarMenuItemData touchBarMenuItemData)
+    TouchBarMenuDataChanged(CyberKit::TouchBarMenuData touchBarMenuData)
+    TouchBarMenuItemDataAdded(struct CyberKit::TouchBarMenuItemData touchBarMenuItemData)
+    TouchBarMenuItemDataRemoved(struct CyberKit::TouchBarMenuItemData touchBarMenuItemData)
 #endif
 
 #if USE(APPKIT)
@@ -392,9 +392,9 @@ messages -> WebPageProxy {
     CouldNotRestorePageState()
     RestorePageState(std::optional<CyberCore::FloatPoint> scrollPosition, CyberCore::FloatPoint scrollOrigin, CyberCore::RectEdges<float> obscuredInsetsOnSave, double scale)
     RestorePageCenterAndScale(std::optional<CyberCore::FloatPoint> unobscuredCenter, double scale)
-    DidGetTapHighlightGeometries(WebKit::TapIdentifier requestID, CyberCore::Color color, Vector<CyberCore::FloatQuad> geometries, CyberCore::IntSize topLeftRadius, CyberCore::IntSize topRightRadius, CyberCore::IntSize bottomLeftRadius, CyberCore::IntSize bottomRightRadius, bool nodeHasBuiltInClickHandling)
+    DidGetTapHighlightGeometries(CyberKit::TapIdentifier requestID, CyberCore::Color color, Vector<CyberCore::FloatQuad> geometries, CyberCore::IntSize topLeftRadius, CyberCore::IntSize topRightRadius, CyberCore::IntSize bottomLeftRadius, CyberCore::IntSize bottomRightRadius, bool nodeHasBuiltInClickHandling)
 
-    ElementDidFocus(struct WebKit::FocusedElementInformation information, bool userIsInteracting, bool blurPreviousNode, OptionSet<CyberCore::ActivityState::Flag> activityStateChanges, WebKit::UserData userData)
+    ElementDidFocus(struct CyberKit::FocusedElementInformation information, bool userIsInteracting, bool blurPreviousNode, OptionSet<CyberCore::ActivityState::Flag> activityStateChanges, CyberKit::UserData userData)
     ElementDidBlur()
     UpdateInputContextAfterBlurringAndRefocusingElement()
     FocusedElementDidChangeInputMode(enum:uint8_t CyberCore::InputMode mode)
@@ -410,9 +410,9 @@ messages -> WebPageProxy {
     DisableInspectorNodeSearch()
 
     UpdateStringForFind(String findString)
-    HandleAutocorrectionContext(struct WebKit::WebAutocorrectionContext context)
+    HandleAutocorrectionContext(struct CyberKit::WebAutocorrectionContext context)
 
-    ShowDataDetectorsUIForPositionInformation(struct WebKit::InteractionInformationAtPosition information)
+    ShowDataDetectorsUIForPositionInformation(struct CyberKit::InteractionInformationAtPosition information)
 #endif
 
     DidChangeInspectorFrontendCount(uint32_t count)
@@ -427,12 +427,12 @@ messages -> WebPageProxy {
 
 #if ENABLE(PDFKIT_PLUGIN) && !ENABLE(UI_PROCESS_PDF_HUD)
     SavePDFToFileInDownloadsFolder(String suggestedFilename, URL originatingURL, IPC::DataReference data)
-    SavePDFToTemporaryFolderAndOpenWithNativeApplication(String suggestedFilename, struct WebKit::FrameInfoData sourceFrameInfo, IPC::DataReference data, String pdfUUID)
-    OpenPDFFromTemporaryFolderWithNativeApplication(struct WebKit::FrameInfoData sourceFrameInfo, String pdfUUID)
+    SavePDFToTemporaryFolderAndOpenWithNativeApplication(String suggestedFilename, struct CyberKit::FrameInfoData sourceFrameInfo, IPC::DataReference data, String pdfUUID)
+    OpenPDFFromTemporaryFolderWithNativeApplication(struct CyberKit::FrameInfoData sourceFrameInfo, String pdfUUID)
 #endif
 
 #if ENABLE(PDFKIT_PLUGIN)
-    ShowPDFContextMenu(struct WebKit::PDFContextMenu contextMenu, WebKit::PDFPluginIdentifier identifier) -> (std::optional<int32_t> selectedItem) Synchronous
+    ShowPDFContextMenu(struct CyberKit::PDFContextMenu contextMenu, CyberKit::PDFPluginIdentifier identifier) -> (std::optional<int32_t> selectedItem) Synchronous
 #endif
 
     DidUpdateActivityState()
@@ -451,7 +451,7 @@ messages -> WebPageProxy {
 
 #if USE(QUICK_LOOK)
     DidStartLoadForQuickLookDocumentInMainFrame(String fileName, String uti)
-    DidFinishLoadForQuickLookDocumentInMainFrame(WebKit::ShareableResource::Handle resource)
+    DidFinishLoadForQuickLookDocumentInMainFrame(CyberKit::ShareableResource::Handle resource)
     RequestPasswordForQuickLookDocumentInMainFrame(String fileName) -> (String password)
 #endif
 
@@ -466,14 +466,14 @@ messages -> WebPageProxy {
     HandleAutoplayEvent(enum:uint8_t CyberCore::AutoplayEvent event, OptionSet<CyberCore::AutoplayEventFlags> flags)
 
 #if PLATFORM(MAC)
-    DidPerformImmediateActionHitTest(struct WebKit::WebHitTestResultData result, bool contentPreventsDefault, WebKit::UserData userData)
+    DidPerformImmediateActionHitTest(struct CyberKit::WebHitTestResultData result, bool contentPreventsDefault, CyberKit::UserData userData)
 #endif
-    HandleMessage(String messageName, WebKit::UserData messageBody)
-    HandleSynchronousMessage(String messageName, WebKit::UserData messageBody) -> (WebKit::UserData returnData) Synchronous
+    HandleMessage(String messageName, CyberKit::UserData messageBody)
+    HandleSynchronousMessage(String messageName, CyberKit::UserData messageBody) -> (CyberKit::UserData returnData) Synchronous
 
-    HandleAutoFillButtonClick(WebKit::UserData userData)
+    HandleAutoFillButtonClick(CyberKit::UserData userData)
 
-    DidResignInputElementStrongPasswordAppearance(WebKit::UserData userData)
+    DidResignInputElementStrongPasswordAppearance(CyberKit::UserData userData)
 
 #if ENABLE(CONTENT_EXTENSIONS)
     ContentRuleListNotification(URL url, struct CyberCore::ContentRuleListResults results)
@@ -510,7 +510,7 @@ messages -> WebPageProxy {
     
     RequestScrollToRect(CyberCore::FloatRect targetRect, CyberCore::FloatPoint origin)
 
-    GetLoadDecisionForIcon(struct CyberCore::LinkIcon icon, WebKit::CallbackID callbackID)
+    GetLoadDecisionForIcon(struct CyberCore::LinkIcon icon, CyberKit::CallbackID callbackID)
 
 #if PLATFORM(MAC)
     DidHandleAcceptedCandidate()
@@ -518,12 +518,12 @@ messages -> WebPageProxy {
 
     SetIsUsingHighPerformanceWebGL(bool isUsingHighPerformanceWebGL)
 
-    StartURLSchemeTask(struct WebKit::URLSchemeTaskParameters parameters)
-    StopURLSchemeTask(WebKit::WebURLSchemeHandlerIdentifier handlerIdentifier, CyberCore::ResourceLoaderIdentifier taskIdentifier)
-    LoadSynchronousURLSchemeTask(struct WebKit::URLSchemeTaskParameters parameters) -> (CyberCore::ResourceResponse response, CyberCore::ResourceError error, Vector<uint8_t> data) Synchronous
+    StartURLSchemeTask(struct CyberKit::URLSchemeTaskParameters parameters)
+    StopURLSchemeTask(CyberKit::WebURLSchemeHandlerIdentifier handlerIdentifier, CyberCore::ResourceLoaderIdentifier taskIdentifier)
+    LoadSynchronousURLSchemeTask(struct CyberKit::URLSchemeTaskParameters parameters) -> (CyberCore::ResourceResponse response, CyberCore::ResourceError error, Vector<uint8_t> data) Synchronous
 
 #if ENABLE(DEVICE_ORIENTATION)
-    ShouldAllowDeviceOrientationAndMotionAccess(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, bool mayPrompt) -> (enum:uint8_t CyberCore::DeviceOrientationOrMotionPermissionState permissionState)
+    ShouldAllowDeviceOrientationAndMotionAccess(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, bool mayPrompt) -> (enum:uint8_t CyberCore::DeviceOrientationOrMotionPermissionState permissionState)
 #endif
 
 #if ENABLE(ATTACHMENT_ELEMENT)
@@ -546,7 +546,7 @@ messages -> WebPageProxy {
 #endif
 
 #if ENABLE(SPEECH_SYNTHESIS)
-    SpeechSynthesisVoiceList() -> (Vector<WebKit::WebSpeechSynthesisVoice> voiceList) Synchronous
+    SpeechSynthesisVoiceList() -> (Vector<CyberKit::WebSpeechSynthesisVoice> voiceList) Synchronous
     SpeechSynthesisSpeak(String text, String lang, float volume, float rate, float pitch, MonotonicTime startTime, String voiceURI, String voiceName, String voiceLang, bool localService, bool defaultVoice) -> ()
     SpeechSynthesisSetFinishedCallback() -> ()
     SpeechSynthesisCancel()
@@ -556,9 +556,9 @@ messages -> WebPageProxy {
 #endif
 
 #if ENABLE(UI_PROCESS_PDF_HUD)
-    CreatePDFHUD(WebKit::PDFPluginIdentifier identifier, CyberCore::IntRect boundingBox)
-    UpdatePDFHUDLocation(WebKit::PDFPluginIdentifier identifier, CyberCore::IntRect boundingBox)
-    RemovePDFHUD(WebKit::PDFPluginIdentifier identifier)
+    CreatePDFHUD(CyberKit::PDFPluginIdentifier identifier, CyberCore::IntRect boundingBox)
+    UpdatePDFHUDLocation(CyberKit::PDFPluginIdentifier identifier, CyberCore::IntRect boundingBox)
+    RemovePDFHUD(CyberKit::PDFPluginIdentifier identifier)
 #endif
 
     ConfigureLoggingChannel(String channelName, enum:uint8_t WTFLogChannelState state, enum:uint8_t WTFLogLevel level)
@@ -568,7 +568,7 @@ messages -> WebPageProxy {
 #endif
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    DidCreateContextInWebProcessForVisibilityPropagation(WebKit::LayerHostingContextID contextID);
+    DidCreateContextInWebProcessForVisibilityPropagation(CyberKit::LayerHostingContextID contextID);
 #endif
 
 #if ENABLE(WEB_AUTHN)
@@ -576,8 +576,8 @@ messages -> WebPageProxy {
 #endif
 
 #if PLATFORM(GTK) || PLATFORM(WPE)
-    SendMessageToWebView(struct WebKit::UserMessage userMessage)
-    SendMessageToWebViewWithReply(struct WebKit::UserMessage userMessage) -> (struct WebKit::UserMessage replyMessage)
+    SendMessageToWebView(struct CyberKit::UserMessage userMessage)
+    SendMessageToWebViewWithReply(struct CyberKit::UserMessage userMessage) -> (struct CyberKit::UserMessage replyMessage)
 #endif
 
     DidFindTextManipulationItems(Vector<CyberCore::TextManipulationItem> items)
@@ -595,8 +595,8 @@ messages -> WebPageProxy {
 #endif
 
 #if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
-    TakeModelElementFullscreen(struct WebKit::ModelIdentifier modelIdentifier)
-    ModelElementSetInteractionEnabled(struct WebKit::ModelIdentifier modelIdentifier, bool isInteractionEnabled)
+    TakeModelElementFullscreen(struct CyberKit::ModelIdentifier modelIdentifier)
+    ModelElementSetInteractionEnabled(struct CyberKit::ModelIdentifier modelIdentifier, bool isInteractionEnabled)
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
     ModelElementCreateRemotePreview(String uuid, CyberCore::FloatSize size) -> (Expected<std::pair<String, uint32_t>, CyberCore::ResourceError> result)
@@ -609,18 +609,18 @@ messages -> WebPageProxy {
     ModelInlinePreviewUUIDs() -> (Vector<String> uuids)
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW)
-    ModelElementGetCamera(struct WebKit::ModelIdentifier modelIdentifier) -> (Expected<CyberCore::HTMLModelElementCamera, CyberCore::ResourceError> result)
-    ModelElementSetCamera(struct WebKit::ModelIdentifier modelIdentifier, struct CyberCore::HTMLModelElementCamera camera) -> (bool success)
-    ModelElementIsPlayingAnimation(struct WebKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
-    ModelElementSetAnimationIsPlaying(struct WebKit::ModelIdentifier modelIdentifier, bool isPlaying) -> (bool success)
-    ModelElementIsLoopingAnimation(struct WebKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
-    ModelElementSetIsLoopingAnimation(struct WebKit::ModelIdentifier modelIdentifier, bool isLooping) -> (bool success)
-    ModelElementAnimationDuration(struct WebKit::ModelIdentifier modelIdentifier) -> (Expected<Seconds, CyberCore::ResourceError> result)
-    ModelElementAnimationCurrentTime(struct WebKit::ModelIdentifier modelIdentifier) -> (Expected<Seconds, CyberCore::ResourceError> result)
-    ModelElementSetAnimationCurrentTime(struct WebKit::ModelIdentifier modelIdentifier, Seconds currentTime) -> (bool success)
-    ModelElementHasAudio(struct WebKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
-    ModelElementIsMuted(struct WebKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
-    ModelElementSetIsMuted(struct WebKit::ModelIdentifier modelIdentifier, bool isMuted) -> (bool success)
+    ModelElementGetCamera(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<CyberCore::HTMLModelElementCamera, CyberCore::ResourceError> result)
+    ModelElementSetCamera(struct CyberKit::ModelIdentifier modelIdentifier, struct CyberCore::HTMLModelElementCamera camera) -> (bool success)
+    ModelElementIsPlayingAnimation(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementSetAnimationIsPlaying(struct CyberKit::ModelIdentifier modelIdentifier, bool isPlaying) -> (bool success)
+    ModelElementIsLoopingAnimation(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementSetIsLoopingAnimation(struct CyberKit::ModelIdentifier modelIdentifier, bool isLooping) -> (bool success)
+    ModelElementAnimationDuration(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<Seconds, CyberCore::ResourceError> result)
+    ModelElementAnimationCurrentTime(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<Seconds, CyberCore::ResourceError> result)
+    ModelElementSetAnimationCurrentTime(struct CyberKit::ModelIdentifier modelIdentifier, Seconds currentTime) -> (bool success)
+    ModelElementHasAudio(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementIsMuted(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementSetIsMuted(struct CyberKit::ModelIdentifier modelIdentifier, bool isMuted) -> (bool success)
 #endif
 
 #if ENABLE(APPLE_PAY_AMS_UI)

@@ -32,7 +32,7 @@
 #include <wtf/Function.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePaySetupFeature;
 class Document;

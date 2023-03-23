@@ -30,7 +30,7 @@
 #include "WebGLRenderingContextBase.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLContextGroup : public RefCounted<WebGLContextGroup> {
 public:
@@ -58,6 +58,6 @@ private:
     HashSet<WebGLSharedObject*> m_groupObjects;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

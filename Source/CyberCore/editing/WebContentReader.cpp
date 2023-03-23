@@ -29,7 +29,7 @@
 #include "Document.h"
 #include "DocumentFragment.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void WebContentReader::addFragment(Ref<DocumentFragment>&& newFragment)
 {

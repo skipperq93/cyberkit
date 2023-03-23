@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PageTransitionEvent);
 
@@ -51,4 +51,4 @@ EventInterface PageTransitionEvent::eventInterface() const
     return PageTransitionEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

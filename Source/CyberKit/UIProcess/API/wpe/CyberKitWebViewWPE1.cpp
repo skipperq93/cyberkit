@@ -18,20 +18,20 @@
  */
 
 #include "config.h"
-#include "WebKitWebView.h"
+#include "CyberKitWebView.h"
 
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 
 #if !ENABLE(2022_GLIB_API)
 
-guint createContextMenuSignal(WebKitWebViewClass* webViewClass)
+guint createContextMenuSignal(CyberKitWebViewClass* webViewClass)
 {
     /**
-     * WebKitWebView::context-menu:
-     * @web_view: the #WebKitWebView on which the signal is emitted
-     * @context_menu: the proposed #WebKitContextMenu
+     * CyberKitWebView::context-menu:
+     * @web_view: the #CyberKitWebView on which the signal is emitted
+     * @context_menu: the proposed #CyberKitContextMenu
      * @event: an untyped pointer that is always %NULL
-     * @hit_test_result: a #WebKitHitTestResult
+     * @hit_test_result: a #CyberKitHitTestResult
      *
      * Emitted when a context menu is about to be displayed to give the application
      * a chance to customize the proposed menu, prevent the menu from being displayed,
@@ -40,7 +40,7 @@ guint createContextMenuSignal(WebKitWebViewClass* webViewClass)
      * <listitem><para>
      *  To customize the proposed menu you can use webkit_context_menu_prepend(),
      *  webkit_context_menu_append() or webkit_context_menu_insert() to add new
-     *  #WebKitContextMenuItem<!-- -->s to @context_menu, webkit_context_menu_move_item()
+     *  #CyberKitContextMenuItem<!-- -->s to @context_menu, webkit_context_menu_move_item()
      *  to reorder existing items, or webkit_context_menu_remove() to remove an
      *  existing item. The signal handler should return %FALSE, and the menu represented
      *  by @context_menu will be shown.
@@ -52,7 +52,7 @@ guint createContextMenuSignal(WebKitWebViewClass* webViewClass)
      * <listitem><para>
      *  To build your own menu, you can remove all items from the proposed menu with
      *  webkit_context_menu_remove_all(), add your own items and return %FALSE so
-     *  that the menu will be shown. You can also ignore the proposed #WebKitContextMenu,
+     *  that the menu will be shown. You can also ignore the proposed #CyberKitContextMenu,
      *  build your own menu and return %TRUE to prevent the proposed menu from being shown.
      * </para></listitem>
      * <listitem><para>
@@ -64,7 +64,7 @@ guint createContextMenuSignal(WebKitWebViewClass* webViewClass)
      * If the signal handler returns %FALSE the context menu represented by @context_menu
      * will be shown, if it return %TRUE the context menu will not be shown.
      *
-     * The proposed #WebKitContextMenu passed in @context_menu argument is only valid
+     * The proposed #CyberKitContextMenu passed in @context_menu argument is only valid
      * during the signal emission.
      *
      * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -74,7 +74,7 @@ guint createContextMenuSignal(WebKitWebViewClass* webViewClass)
         "context-menu",
         G_TYPE_FROM_CLASS(webViewClass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitWebViewClass, context_menu),
+        G_STRUCT_OFFSET(CyberKitWebViewClass, context_menu),
         g_signal_accumulator_true_handled, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_BOOLEAN,

@@ -26,7 +26,7 @@
 #include "HTMLElement.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLScriptElement final : public HTMLElement, public ScriptElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLScriptElement);

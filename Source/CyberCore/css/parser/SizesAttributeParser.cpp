@@ -41,7 +41,7 @@
 #include "SizesCalcParser.h"
 #include "StyleScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 float SizesAttributeParser::computeLength(double value, CSSUnitType type, const Document& document)
 {
@@ -164,4 +164,4 @@ unsigned SizesAttributeParser::effectiveSizeDefaultValue()
     return clampTo<float>(CSSPrimitiveValue::computeNonCalcLengthDouble({ style, &style, renderer->parentStyle(), renderer }, CSSUnitType::CSS_VW, 100.0));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

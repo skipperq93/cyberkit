@@ -38,7 +38,7 @@ class ArrayBuffer;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -83,16 +83,16 @@ private:
     JSC::Strong<JSC::Unknown> m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct LogArgument<WebCore::DataCue> : LogArgument<WebCore::TextTrackCue> { };
+template<> struct LogArgument<CyberCore::DataCue> : LogArgument<CyberCore::TextTrackCue> { };
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::DataCue)
-static bool isType(const WebCore::TextTrackCue& cue) { return cue.cueType() == WebCore::TextTrackCue::Data; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::DataCue)
+static bool isType(const CyberCore::TextTrackCue& cue) { return cue.cueType() == CyberCore::TextTrackCue::Data; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

@@ -39,7 +39,7 @@
 #include "Theme.h"
 #include <wtf/Function.h>
 
-namespace WebCore::MQ::Features {
+namespace CyberCore::MQ::Features {
 
 struct BooleanSchema : public FeatureSchema {
     using ValueFunction = Function<bool(const FeatureEvaluationContext&)>;

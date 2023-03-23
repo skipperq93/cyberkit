@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "WebKitSecurityOrigin.h"
+#include "CyberKitSecurityOrigin.h"
 #include <CyberCore/SecurityOrigin.h>
 
-WebKitSecurityOrigin* webkitSecurityOriginCreate(CyberCore::SecurityOriginData&&);
-const CyberCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(WebKitSecurityOrigin*);
+CyberKitSecurityOrigin* webkitSecurityOriginCreate(CyberCore::SecurityOriginData&&);
+const CyberCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(CyberKitSecurityOrigin*);

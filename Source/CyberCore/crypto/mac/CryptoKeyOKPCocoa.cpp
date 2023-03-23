@@ -35,7 +35,7 @@
 
 #include <pal/spi/cocoa/CoreCryptoSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool CryptoKeyOKP::isPlatformSupportedCurve(NamedCurve namedCurve)
 {
@@ -327,6 +327,6 @@ Vector<uint8_t> CryptoKeyOKP::platformExportRaw() const
     return m_data;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

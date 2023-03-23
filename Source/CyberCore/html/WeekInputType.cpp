@@ -40,7 +40,7 @@
 #include "InputTypeNames.h"
 #include "StepRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -97,6 +97,6 @@ void WeekInputType::setupLayoutParameters(DateTimeEditElement::LayoutParameters&
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

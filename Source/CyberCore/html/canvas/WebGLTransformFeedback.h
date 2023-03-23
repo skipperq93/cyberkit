@@ -39,7 +39,7 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGL2RenderingContext;
 class WebGLBuffer;
@@ -91,6 +91,6 @@ private:
     RefPtr<WebGLProgram> m_program;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

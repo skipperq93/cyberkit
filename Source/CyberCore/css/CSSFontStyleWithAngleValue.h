@@ -27,7 +27,7 @@
 
 #include "CSSPrimitiveValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class is currently only used for oblique. If we use it for more styles in the future we'll need to store the keyword.
 class CSSFontStyleWithAngleValue final : public CSSValue {

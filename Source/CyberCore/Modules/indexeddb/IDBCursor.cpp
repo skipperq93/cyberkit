@@ -42,7 +42,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBCursor);
@@ -294,7 +294,7 @@ void IDBCursor::uncheckedIterateCursor(const IDBKeyData& key, const IDBKeyData& 
     transaction().iterateCursor(*this, { key, primaryKey, 0 });
 }
 
-ExceptionOr<Ref<WebCore::IDBRequest>> IDBCursor::deleteFunction()
+ExceptionOr<Ref<CyberCore::IDBRequest>> IDBCursor::deleteFunction()
 {
     LOG(IndexedDB, "IDBCursor::deleteFunction");
     ASSERT(canCurrentThreadAccessThreadLocalData(effectiveObjectStore().transaction().database().originThread()));
@@ -397,4 +397,4 @@ void IDBCursor::clearPrefetchedRecords()
     m_prefetchedRecords.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

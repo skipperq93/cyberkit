@@ -36,7 +36,7 @@ namespace CyberCore {
 struct ExceptionData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -98,6 +98,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_SESSION_COORDINATOR)

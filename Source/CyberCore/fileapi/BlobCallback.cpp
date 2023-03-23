@@ -29,7 +29,7 @@
 #include "Blob.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void BlobCallback::scheduleCallback(ScriptExecutionContext& context, RefPtr<Blob>&& blob)
 {
@@ -38,4 +38,4 @@ void BlobCallback::scheduleCallback(ScriptExecutionContext& context, RefPtr<Blob
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

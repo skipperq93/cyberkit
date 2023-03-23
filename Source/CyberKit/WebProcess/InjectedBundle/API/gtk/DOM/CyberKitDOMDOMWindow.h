@@ -56,7 +56,7 @@ webkit_dom_dom_window_get_type(void);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDOMSelection*
 webkit_dom_dom_window_get_selection(CyberKitDOMDOMWindow* self);
@@ -67,7 +67,7 @@ webkit_dom_dom_window_get_selection(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_focus(CyberKitDOMDOMWindow* self);
@@ -78,7 +78,7 @@ webkit_dom_dom_window_focus(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_blur(CyberKitDOMDOMWindow* self);
@@ -89,7 +89,7 @@ webkit_dom_dom_window_blur(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_close(CyberKitDOMDOMWindow* self);
@@ -100,7 +100,7 @@ webkit_dom_dom_window_close(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_print(CyberKitDOMDOMWindow* self);
@@ -111,7 +111,7 @@ webkit_dom_dom_window_print(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_stop(CyberKitDOMDOMWindow* self);
@@ -123,7 +123,7 @@ webkit_dom_dom_window_stop(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_alert(CyberKitDOMDOMWindow* self, const gchar* message);
@@ -137,7 +137,7 @@ webkit_dom_dom_window_alert(CyberKitDOMDOMWindow* self, const gchar* message);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_window_confirm(CyberKitDOMDOMWindow* self, const gchar* message);
@@ -152,7 +152,7 @@ webkit_dom_dom_window_confirm(CyberKitDOMDOMWindow* self, const gchar* message);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
 webkit_dom_dom_window_prompt(CyberKitDOMDOMWindow* self, const gchar* message, const gchar* defaultValue);
@@ -172,7 +172,7 @@ webkit_dom_dom_window_prompt(CyberKitDOMDOMWindow* self, const gchar* message, c
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_window_find(CyberKitDOMDOMWindow* self, const gchar* string, gboolean caseSensitive, gboolean backwards, gboolean wrap, gboolean wholeWord, gboolean searchInFrames, gboolean showDialog);
@@ -185,7 +185,7 @@ webkit_dom_dom_window_find(CyberKitDOMDOMWindow* self, const gchar* string, gboo
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_scroll_by(CyberKitDOMDOMWindow* self, gdouble x, gdouble y);
@@ -198,7 +198,7 @@ webkit_dom_dom_window_scroll_by(CyberKitDOMDOMWindow* self, gdouble x, gdouble y
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_scroll_to(CyberKitDOMDOMWindow* self, gdouble x, gdouble y);
@@ -211,7 +211,7 @@ webkit_dom_dom_window_scroll_to(CyberKitDOMDOMWindow* self, gdouble x, gdouble y
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_move_by(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
@@ -224,7 +224,7 @@ webkit_dom_dom_window_move_by(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_move_to(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
@@ -237,7 +237,7 @@ webkit_dom_dom_window_move_to(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_resize_by(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
@@ -250,7 +250,7 @@ webkit_dom_dom_window_resize_by(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_resize_to(CyberKitDOMDOMWindow* self, gfloat width, gfloat height);
@@ -265,7 +265,7 @@ webkit_dom_dom_window_resize_to(CyberKitDOMDOMWindow* self, gfloat width, gfloat
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMCSSStyleDeclaration*
 webkit_dom_dom_window_get_computed_style(CyberKitDOMDOMWindow* self, CyberKitDOMElement* element, const gchar* pseudoElement);
@@ -276,7 +276,7 @@ webkit_dom_dom_window_get_computed_style(CyberKitDOMDOMWindow* self, CyberKitDOM
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_capture_events(CyberKitDOMDOMWindow* self);
@@ -287,7 +287,7 @@ webkit_dom_dom_window_capture_events(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_release_events(CyberKitDOMDOMWindow* self);
@@ -300,7 +300,7 @@ webkit_dom_dom_window_release_events(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_dom_window_get_frame_element(CyberKitDOMDOMWindow* self);
@@ -313,7 +313,7 @@ webkit_dom_dom_window_get_frame_element(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_window_get_offscreen_buffering(CyberKitDOMDOMWindow* self);
@@ -326,7 +326,7 @@ webkit_dom_dom_window_get_offscreen_buffering(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_outer_height(CyberKitDOMDOMWindow* self);
@@ -339,7 +339,7 @@ webkit_dom_dom_window_get_outer_height(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_outer_width(CyberKitDOMDOMWindow* self);
@@ -352,7 +352,7 @@ webkit_dom_dom_window_get_outer_width(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_inner_height(CyberKitDOMDOMWindow* self);
@@ -365,7 +365,7 @@ webkit_dom_dom_window_get_inner_height(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_inner_width(CyberKitDOMDOMWindow* self);
@@ -378,7 +378,7 @@ webkit_dom_dom_window_get_inner_width(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_screen_x(CyberKitDOMDOMWindow* self);
@@ -391,7 +391,7 @@ webkit_dom_dom_window_get_screen_x(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_screen_y(CyberKitDOMDOMWindow* self);
@@ -404,7 +404,7 @@ webkit_dom_dom_window_get_screen_y(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_screen_left(CyberKitDOMDOMWindow* self);
@@ -417,7 +417,7 @@ webkit_dom_dom_window_get_screen_left(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_screen_top(CyberKitDOMDOMWindow* self);
@@ -430,7 +430,7 @@ webkit_dom_dom_window_get_screen_top(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_scroll_x(CyberKitDOMDOMWindow* self);
@@ -443,7 +443,7 @@ webkit_dom_dom_window_get_scroll_x(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_scroll_y(CyberKitDOMDOMWindow* self);
@@ -456,7 +456,7 @@ webkit_dom_dom_window_get_scroll_y(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_page_x_offset(CyberKitDOMDOMWindow* self);
@@ -469,7 +469,7 @@ webkit_dom_dom_window_get_page_x_offset(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_page_y_offset(CyberKitDOMDOMWindow* self);
@@ -482,7 +482,7 @@ webkit_dom_dom_window_get_page_y_offset(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_window_get_closed(CyberKitDOMDOMWindow* self);
@@ -495,7 +495,7 @@ webkit_dom_dom_window_get_closed(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_dom_window_get_length(CyberKitDOMDOMWindow* self);
@@ -508,7 +508,7 @@ webkit_dom_dom_window_get_length(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
 webkit_dom_dom_window_get_name(CyberKitDOMDOMWindow* self);
@@ -520,7 +520,7 @@ webkit_dom_dom_window_get_name(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_set_name(CyberKitDOMDOMWindow* self, const gchar* value);
@@ -533,7 +533,7 @@ webkit_dom_dom_window_set_name(CyberKitDOMDOMWindow* self, const gchar* value);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
 webkit_dom_dom_window_get_status(CyberKitDOMDOMWindow* self);
@@ -545,7 +545,7 @@ webkit_dom_dom_window_get_status(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_set_status(CyberKitDOMDOMWindow* self, const gchar* value);
@@ -558,7 +558,7 @@ webkit_dom_dom_window_set_status(CyberKitDOMDOMWindow* self, const gchar* value)
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
 webkit_dom_dom_window_get_default_status(CyberKitDOMDOMWindow* self);
@@ -570,7 +570,7 @@ webkit_dom_dom_window_get_default_status(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_window_set_default_status(CyberKitDOMDOMWindow* self, const gchar* value);
@@ -583,7 +583,7 @@ webkit_dom_dom_window_set_default_status(CyberKitDOMDOMWindow* self, const gchar
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_dom_window_get_self(CyberKitDOMDOMWindow* self);
@@ -596,7 +596,7 @@ webkit_dom_dom_window_get_self(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_dom_window_get_window(CyberKitDOMDOMWindow* self);
@@ -609,7 +609,7 @@ webkit_dom_dom_window_get_window(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_dom_window_get_frames(CyberKitDOMDOMWindow* self);
@@ -622,7 +622,7 @@ webkit_dom_dom_window_get_frames(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_dom_window_get_opener(CyberKitDOMDOMWindow* self);
@@ -635,7 +635,7 @@ webkit_dom_dom_window_get_opener(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_dom_window_get_parent(CyberKitDOMDOMWindow* self);
@@ -648,7 +648,7 @@ webkit_dom_dom_window_get_parent(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_dom_window_get_top(CyberKitDOMDOMWindow* self);
@@ -661,7 +661,7 @@ webkit_dom_dom_window_get_top(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMDocument*
 webkit_dom_dom_window_get_document(CyberKitDOMDOMWindow* self);
@@ -674,7 +674,7 @@ webkit_dom_dom_window_get_document(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gdouble
 webkit_dom_dom_window_get_device_pixel_ratio(CyberKitDOMDOMWindow* self);
@@ -687,7 +687,7 @@ webkit_dom_dom_window_get_device_pixel_ratio(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
 webkit_dom_dom_window_get_orientation(CyberKitDOMDOMWindow* self);
@@ -702,7 +702,7 @@ webkit_dom_dom_window_get_orientation(CyberKitDOMDOMWindow* self);
  *
  * Since: 2.8
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_window_webkit_message_handlers_post_message(CyberKitDOMDOMWindow* window, const gchar* handler, const gchar* message);

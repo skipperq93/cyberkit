@@ -3,7 +3,7 @@ From: Philippe Normand <philn@igalia.com>
 Date: Wed, 25 Jan 2023 12:25:24 +0000
 Subject: [PATCH 2/5] ffmpeg: Support more codecs
 
-Needed for WebKit layout tests.
+Needed for CyberKit layout tests.
 ---
  elements/include/ffmpeg.yml | 12 +++++++-----
  1 file changed, 7 insertions(+), 5 deletions(-)

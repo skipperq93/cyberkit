@@ -26,14 +26,14 @@
 #include "config.h"
 #include "JSDOMSetLike.h"
 
-#include "WebCoreJSBuiltinInternals.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSBuiltinInternals.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/CatchScope.h>
 #include <CyberScriptCore/JSSet.h>
 #include <CyberScriptCore/JSSetInlines.h>
 #include <CyberScriptCore/VMTrapsInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void DOMSetAdapter::clear()
 {

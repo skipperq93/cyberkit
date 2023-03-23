@@ -40,7 +40,7 @@
 #include "StyledElement.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PropertySetCSSStyleDeclaration);
 WTF_MAKE_ISO_ALLOCATED_IMPL(StyleRuleCSSStyleDeclaration);
@@ -338,7 +338,7 @@ bool PropertySetCSSStyleDeclaration::isExposed(CSSPropertyID propertyID) const
     auto parserContext = cssParserContext();
     bool parsingDescriptor = parserContext.enclosingRuleType && *parserContext.enclosingRuleType != StyleRuleType::Style;
 
-    return WebCore::isExposed(propertyID, &parserContext.propertySettings)
+    return CyberCore::isExposed(propertyID, &parserContext.propertySettings)
         && (!CSSProperty::isDescriptorOnly(propertyID) || parsingDescriptor);
 }
 
@@ -480,4 +480,4 @@ CSSParserContext InlineCSSStyleDeclaration::cssParserContext() const
     return context;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

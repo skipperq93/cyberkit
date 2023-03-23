@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct IDBDatabaseNameAndVersion {
     String name;
@@ -37,4 +37,4 @@ struct IDBDatabaseNameAndVersion {
     IDBDatabaseNameAndVersion isolatedCopy() && { return { WTFMove(name).isolatedCopy(), version }; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

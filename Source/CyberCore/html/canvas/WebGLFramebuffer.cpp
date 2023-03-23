@@ -28,7 +28,7 @@
 
 #if ENABLE(WEBGL)
 
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebGLContextGroup.h"
 #include "WebGLDrawBuffers.h"
 #include "WebGLRenderingContextBase.h"
@@ -37,7 +37,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
 
@@ -117,7 +117,7 @@ namespace {
 
     void WebGLRenderbufferAttachment::addMembersToOpaqueRoots(const AbstractLocker&, JSC::AbstractSlotVisitor& visitor)
     {
-        addWebCoreOpaqueRoot(visitor, m_renderbuffer.get());
+        addCyberCoreOpaqueRoot(visitor, m_renderbuffer.get());
     }
 
     class WebGLTextureAttachment : public WebGLFramebuffer::WebGLAttachment {
@@ -208,7 +208,7 @@ namespace {
 
     void WebGLTextureAttachment::addMembersToOpaqueRoots(const AbstractLocker&, JSC::AbstractSlotVisitor& visitor)
     {
-        addWebCoreOpaqueRoot(visitor, m_texture.get());
+        addCyberCoreOpaqueRoot(visitor, m_texture.get());
     }
 
 } // anonymous namespace

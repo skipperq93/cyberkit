@@ -2,18 +2,18 @@
 set -e
 set -o pipefail
 
-# Build WebKit, run benchmarks, and spit out compressed PGO profiles
+# Build CyberKit, run benchmarks, and spit out compressed PGO profiles
 
 DisplayHelp() {
     echo "Usage: build-and-collect-pgo-profiles [ options ]"
     echo "  -h              Show this help message."
-    echo "  -o <directory>  Directory in which output files are stored. Default: /Volumes/WebKit/BenchmarkProfiles/."
-    echo "  -a <app>        Path to Safari.app to generate profiles for. If not specified, the script will build WebKit."
+    echo "  -o <directory>  Directory in which output files are stored. Default: /Volumes/CyberKit/BenchmarkProfiles/."
+    echo "  -a <app>        Path to Safari.app to generate profiles for. If not specified, the script will build CyberKit."
     echo "  -d <directory>  Path to build directory. Use seperately from -a."
     echo "  -y              Use for automated collection. No user input."
 }
 
-BASE="/Volumes/WebKit/BenchmarkProfiles/"
+BASE="/Volumes/CyberKit/BenchmarkProfiles/"
 
 while getopts "o:a:d:yh" flag; do
     case "${flag}" in
@@ -65,12 +65,12 @@ mkdir -p "$BASE/speedometer"
 mkdir -p "$BASE/jetstream"
 mkdir -p "$BASE/motionmark"
 mkdir -p "$BASE/output"
-mkdir -p "$BASE/Internal/WebKit/WebKitAdditions/Profiling/"
+mkdir -p "$BASE/Internal/CyberKit/CyberKitAdditions/Profiling/"
 
 if [[ -z $APP ]] ; then
     cd Internal
-    echo "Building WebKit..."
-    rm -rf ../OpenSource/WebKitBuild
+    echo "Building CyberKit..."
+    rm -rf ../OpenSource/CyberKitBuild
     make release WK_LTO_MODE=thin ENABLE_LLVM_PROFILE_GENERATION=ON
     cd ../
 else
@@ -128,7 +128,7 @@ rm *.result
 
 $SPTH/pgo-profile combine --jetstream "$BASE/jetstream" --speedometer "$BASE/speedometer" --motionmark "$BASE/motionmark" --output "$BASE/output"
 
-$SPTH/pgo-profile compress --input "$BASE/output" --output "$BASE/Internal/WebKit/WebKitAdditions/Profiling/"
+$SPTH/pgo-profile compress --input "$BASE/output" --output "$BASE/Internal/CyberKit/CyberKitAdditions/Profiling/"
 
-echo "Done! Find your profiles in $BASE/Internal/WebKit/WebKitAdditions/Profiling/"
+echo "Done! Find your profiles in $BASE/Internal/CyberKit/CyberKitAdditions/Profiling/"
 echo "To check these in, do: 'cp -r $BASE/Internal/ ../Internal/'"

@@ -26,9 +26,9 @@
 #include "config.h"
 #include "JSAbortSignal.h"
 
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool JSAbortSignalOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, JSC::AbstractSlotVisitor& visitor, const char** reason)
 {
@@ -48,7 +48,7 @@ bool JSAbortSignalOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> ha
         return true;
     }
 
-    return containsWebCoreOpaqueRoot(visitor, abortSignal);
+    return containsCyberCoreOpaqueRoot(visitor, abortSignal);
 }
 
 template<typename Visitor>
@@ -59,4 +59,4 @@ void JSAbortSignal::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSAbortSignal);
 
-} // namespace WebCore
+} // namespace CyberCore

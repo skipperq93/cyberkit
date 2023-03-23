@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoveFormatCommand : public CompositeEditCommand {
 public:
@@ -43,4 +43,4 @@ private:
     EditAction editingAction() const override { return EditAction::Unspecified; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

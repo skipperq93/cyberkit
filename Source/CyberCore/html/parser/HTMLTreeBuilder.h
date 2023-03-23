@@ -31,7 +31,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSCustomElementInterface;
 class HTMLDocumentParser;
@@ -260,4 +260,4 @@ inline DocumentFragment* HTMLTreeBuilder::FragmentParsingContext::fragment() con
     return m_fragment;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

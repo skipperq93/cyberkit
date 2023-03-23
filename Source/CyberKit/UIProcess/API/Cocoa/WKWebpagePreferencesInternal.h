@@ -27,7 +27,7 @@
 #import "WKObject.h"
 #import <CyberKit/WKWebpagePreferencesPrivate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::WebsitePolicies> {
     using WrapperClass = WKWebpagePreferences;
@@ -45,7 +45,7 @@ class WebPagePreferencesLockdownModeObserver;
 @interface WKWebpagePreferences () <WKObject> {
 @package
     API::ObjectStorage<API::WebsitePolicies> _websitePolicies;
-    std::unique_ptr<WebKit::WebPagePreferencesLockdownModeObserver> _lockdownModeObserver;
+    std::unique_ptr<CyberKit::WebPagePreferencesLockdownModeObserver> _lockdownModeObserver;
 }
 
 @property (class, nonatomic, readonly) WKWebpagePreferences *defaultPreferences;

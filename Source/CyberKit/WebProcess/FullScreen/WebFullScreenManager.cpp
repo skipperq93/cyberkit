@@ -52,7 +52,7 @@
 #include "PlaybackSessionManager.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 using CyberCore::FloatSize;
@@ -501,6 +501,6 @@ void WebFullScreenManager::setMainVideoElement(RefPtr<CyberCore::HTMLVideoElemen
 
 #endif // ENABLE(VIDEO)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(FULLSCREEN_API)

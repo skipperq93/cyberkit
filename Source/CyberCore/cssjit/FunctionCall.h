@@ -33,7 +33,7 @@
 #include <CyberScriptCore/JSCPtrTag.h>
 #include <CyberScriptCore/MacroAssembler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FunctionCall {
 public:
@@ -190,6 +190,6 @@ private:
     JSC::MacroAssembler::RegisterID m_secondArgument;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CSS_SELECTOR_JIT)

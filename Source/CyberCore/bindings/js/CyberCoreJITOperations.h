@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(JIT_OPERATION_VALIDATION) || ENABLE(JIT_OPERATION_DISASSEMBLY)
 

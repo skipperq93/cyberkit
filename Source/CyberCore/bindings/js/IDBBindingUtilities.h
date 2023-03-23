@@ -36,7 +36,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBIndexInfo;
 class IDBKey;

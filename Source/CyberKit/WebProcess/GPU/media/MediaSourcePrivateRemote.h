@@ -44,7 +44,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaPlayerPrivateRemote;
 class SourceBufferPrivateRemote;
@@ -105,6 +105,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

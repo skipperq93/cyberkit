@@ -31,7 +31,7 @@
 #include "ScriptWrappable.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaDeviceInfo final : public RefCounted<MediaDeviceInfo>, public ScriptWrappable {
     WTF_MAKE_ISO_ALLOCATED(MediaDeviceInfo);

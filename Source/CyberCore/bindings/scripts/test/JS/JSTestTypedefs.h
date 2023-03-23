@@ -24,7 +24,7 @@
 #include "TestTypedefs.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestTypedefs : public JSDOMWrapper<TestTypedefs> {
 public:
@@ -92,4 +92,4 @@ template<> struct JSDOMWrapperConverterTraits<TestTypedefs> {
     using ToWrappedReturnType = TestTypedefs*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -26,7 +26,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ElementName : uint16_t;
 enum class Namespace : uint8_t;
@@ -171,17 +171,17 @@ inline AtomString QualifiedName::toAtomString() const
     return makeAtomString(prefix(), ':', localName());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
     
     template<typename T> struct DefaultHash;
 
-    template<> struct DefaultHash<WebCore::QualifiedName> : WebCore::QualifiedNameHash { };
+    template<> struct DefaultHash<CyberCore::QualifiedName> : CyberCore::QualifiedNameHash { };
     
-    template<> struct HashTraits<WebCore::QualifiedName> : SimpleClassHashTraits<WebCore::QualifiedName> {
+    template<> struct HashTraits<CyberCore::QualifiedName> : SimpleClassHashTraits<CyberCore::QualifiedName> {
         static const bool emptyValueIsZero = false;
-        static WebCore::QualifiedName emptyValue() { return WebCore::nullQName(); }
+        static CyberCore::QualifiedName emptyValue() { return CyberCore::nullQName(); }
     };
 
 } // namespace WTF

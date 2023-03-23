@@ -27,7 +27,7 @@
 #include "CanvasActivityRecord.h"
 
 const unsigned maximumNumberOfStringsToRecord = 10;
-namespace WebCore {
+namespace CyberCore {
 bool CanvasActivityRecord::recordWrittenOrMeasuredText(const String& text)
 {
     // We limit the size of the textWritten HashSet to save memory and prevent bloating
@@ -43,4 +43,4 @@ void CanvasActivityRecord::mergeWith(const CanvasActivityRecord& otherCanvasActi
     textWritten.add(otherCanvasActivityRecord.textWritten.begin(), otherCanvasActivityRecord.textWritten.end());
     wasDataRead |= otherCanvasActivityRecord.wasDataRead;
 }
-} // namespace WebCore
+} // namespace CyberCore

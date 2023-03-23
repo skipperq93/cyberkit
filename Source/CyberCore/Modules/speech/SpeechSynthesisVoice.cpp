@@ -28,7 +28,7 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SpeechSynthesisVoice> SpeechSynthesisVoice::create(PlatformSpeechSynthesisVoice& voice)
 {
@@ -40,6 +40,6 @@ SpeechSynthesisVoice::SpeechSynthesisVoice(PlatformSpeechSynthesisVoice& voice)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

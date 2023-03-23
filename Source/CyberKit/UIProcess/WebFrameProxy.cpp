@@ -51,7 +51,7 @@
 
 #define MESSAGE_CHECK(process, assertion) MESSAGE_CHECK_BASE(assertion, process->connection())
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 class WebPageProxy;
@@ -464,6 +464,6 @@ void WebFrameProxy::getFrameInfo(CompletionHandler<void(FrameTreeNodeData&&)>&& 
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK

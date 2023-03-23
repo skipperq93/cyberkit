@@ -31,7 +31,7 @@
 #include "TextTrackCueGeneric.h"
 #include "WebVTTParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GenericTextTrackCueMap {
 public:
@@ -85,6 +85,6 @@ private:
     std::unique_ptr<WebVTTParser> m_webVTTParser;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

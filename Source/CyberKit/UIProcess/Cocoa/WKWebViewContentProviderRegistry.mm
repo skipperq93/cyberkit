@@ -42,7 +42,7 @@
 
 @implementation WKWebViewContentProviderRegistry {
     HashMap<String, Class <WKWebViewContentProvider>, ASCIICaseInsensitiveHash> _contentProviderForMIMEType;
-    HashCountedSet<WebKit::WebPageProxy*> _pages;
+    HashCountedSet<CyberKit::WebPageProxy*> _pages;
 }
 
 - (instancetype)initWithConfiguration:(WKWebViewConfiguration *)configuration
@@ -65,13 +65,13 @@
     return self;
 }
 
-- (void)addPage:(WebKit::WebPageProxy&)page
+- (void)addPage:(CyberKit::WebPageProxy&)page
 {
     ASSERT(!_pages.contains(&page));
     _pages.add(&page);
 }
 
-- (void)removePage:(WebKit::WebPageProxy&)page
+- (void)removePage:(CyberKit::WebPageProxy&)page
 {
     ASSERT(_pages.contains(&page));
     _pages.remove(&page);

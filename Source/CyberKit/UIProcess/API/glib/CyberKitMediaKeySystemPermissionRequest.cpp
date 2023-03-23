@@ -18,53 +18,53 @@
  */
 
 #include "config.h"
-#include "WebKitMediaKeySystemPermissionRequest.h"
+#include "CyberKitMediaKeySystemPermissionRequest.h"
 
 #include "MediaKeySystemPermissionRequest.h"
-#include "WebKitMediaKeySystemPermissionRequestPrivate.h"
-#include "WebKitPermissionRequest.h"
+#include "CyberKitMediaKeySystemPermissionRequestPrivate.h"
+#include "CyberKitPermissionRequest.h"
 #include <wtf/glib/WTFGType.h>
 
 #if !ENABLE(2022_GLIB_API)
-typedef WebKitPermissionRequestIface WebKitPermissionRequestInterface;
+typedef CyberKitPermissionRequestIface CyberKitPermissionRequestInterface;
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitMediaKeySystemPermissionRequest:
- * @See_also: #WebKitPermissionRequest, #WebKitWebView
+ * CyberKitMediaKeySystemPermissionRequest:
+ * @See_also: #CyberKitPermissionRequest, #CyberKitWebView
  *
  * A permission request for using an EME Content Decryption Module.
  *
- * WebKitMediaKeySystemPermissionRequest represents a request for permission to decide whether
- * WebKit should use the given CDM to access protected media when requested through the
+ * CyberKitMediaKeySystemPermissionRequest represents a request for permission to decide whether
+ * CyberKit should use the given CDM to access protected media when requested through the
  * MediaKeySystem API.
  *
- * When a WebKitMediaKeySystemPermissionRequest is not handled by the user,
+ * When a CyberKitMediaKeySystemPermissionRequest is not handled by the user,
  * it is denied by default.
  *
  * When handling this permission request the application may perform additional installation of the
  * requested CDM, unless it is already present on the host system.
  */
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface*);
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface*);
 
-struct _WebKitMediaKeySystemPermissionRequestPrivate {
+struct _CyberKitMediaKeySystemPermissionRequestPrivate {
     RefPtr<MediaKeySystemPermissionRequest> request;
     bool madeDecision;
     CString keySystem;
 };
 
 WEBKIT_DEFINE_FINAL_TYPE_WITH_CODE(
-    WebKitMediaKeySystemPermissionRequest, webkit_media_key_system_permission_request, G_TYPE_OBJECT, GObject,
+    CyberKitMediaKeySystemPermissionRequest, webkit_media_key_system_permission_request, G_TYPE_OBJECT, GObject,
     G_IMPLEMENT_INTERFACE(WEBKIT_TYPE_PERMISSION_REQUEST, webkit_permission_request_interface_init))
 
-static void webkitMediaKeySystemPermissionRequestAllow(WebKitPermissionRequest* request)
+static void webkitMediaKeySystemPermissionRequestAllow(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(request));
 
-    WebKitMediaKeySystemPermissionRequestPrivate* priv = WEBKIT_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(request)->priv;
+    CyberKitMediaKeySystemPermissionRequestPrivate* priv = WEBKIT_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(request)->priv;
 
     // Only one decision at a time.
     if (priv->madeDecision)
@@ -74,11 +74,11 @@ static void webkitMediaKeySystemPermissionRequestAllow(WebKitPermissionRequest* 
     priv->madeDecision = true;
 }
 
-static void webkitMediaKeySystemPermissionRequestDeny(WebKitPermissionRequest* request)
+static void webkitMediaKeySystemPermissionRequestDeny(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(request));
 
-    WebKitMediaKeySystemPermissionRequestPrivate* priv = WEBKIT_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(request)->priv;
+    CyberKitMediaKeySystemPermissionRequestPrivate* priv = WEBKIT_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(request)->priv;
 
     // Only one decision at a time.
     if (priv->madeDecision)
@@ -88,7 +88,7 @@ static void webkitMediaKeySystemPermissionRequestDeny(WebKitPermissionRequest* r
     priv->madeDecision = true;
 }
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface* iface)
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface* iface)
 {
     iface->allow = webkitMediaKeySystemPermissionRequestAllow;
     iface->deny = webkitMediaKeySystemPermissionRequestDeny;
@@ -101,22 +101,22 @@ static void webkitMediaKeySystemPermissionRequestDispose(GObject* object)
     G_OBJECT_CLASS(webkit_media_key_system_permission_request_parent_class)->dispose(object);
 }
 
-static void webkit_media_key_system_permission_request_class_init(WebKitMediaKeySystemPermissionRequestClass* klass)
+static void webkit_media_key_system_permission_request_class_init(CyberKitMediaKeySystemPermissionRequestClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->dispose = webkitMediaKeySystemPermissionRequestDispose;
 }
 
-WebKitMediaKeySystemPermissionRequest* webkitMediaKeySystemPermissionRequestCreate(Ref<MediaKeySystemPermissionRequest>&& request)
+CyberKitMediaKeySystemPermissionRequest* webkitMediaKeySystemPermissionRequestCreate(Ref<MediaKeySystemPermissionRequest>&& request)
 {
-    WebKitMediaKeySystemPermissionRequest* permissionRequest = WEBKIT_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST, NULL));
+    CyberKitMediaKeySystemPermissionRequest* permissionRequest = WEBKIT_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_MEDIA_KEY_SYSTEM_PERMISSION_REQUEST, NULL));
     permissionRequest->priv->request = WTFMove(request);
     return permissionRequest;
 }
 
 /**
  * webkit_media_key_system_permission_get_name:
- * @request: a #WebKitMediaKeySystemPermissionRequest
+ * @request: a #CyberKitMediaKeySystemPermissionRequest
  *
  * Get the key system for which access permission is being requested.
  *
@@ -125,7 +125,7 @@ WebKitMediaKeySystemPermissionRequest* webkitMediaKeySystemPermissionRequestCrea
  * Since: 2.32
  */
 const gchar*
-webkit_media_key_system_permission_get_name(WebKitMediaKeySystemPermissionRequest* request)
+webkit_media_key_system_permission_get_name(CyberKitMediaKeySystemPermissionRequest* request)
 {
     auto* priv = request->priv;
     if (priv->keySystem.isNull())

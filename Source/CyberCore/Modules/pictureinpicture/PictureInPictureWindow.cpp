@@ -32,7 +32,7 @@
 #include "EventNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PictureInPictureWindow);
 
@@ -64,6 +64,6 @@ void PictureInPictureWindow::close()
     m_size = { 0, 0 };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PICTURE_IN_PICTURE_API)

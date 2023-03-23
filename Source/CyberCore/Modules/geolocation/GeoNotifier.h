@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Geolocation;
 class GeolocationPosition;
@@ -75,6 +75,6 @@ private:
     bool m_useCachedPosition;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GEOLOCATION)

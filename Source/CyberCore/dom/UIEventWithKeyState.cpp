@@ -23,7 +23,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(UIEventWithKeyState);
 
@@ -87,4 +87,4 @@ UIEventWithKeyState* findEventWithKeyState(Event* event)
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

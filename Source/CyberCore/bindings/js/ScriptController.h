@@ -52,7 +52,7 @@ class RootObject;
 }
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedScriptFetcher;
 class Frame;
@@ -205,4 +205,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

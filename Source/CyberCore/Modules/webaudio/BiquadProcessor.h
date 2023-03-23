@@ -33,7 +33,7 @@
 #include <memory>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // BiquadProcessor is an AudioDSPKernelProcessor which uses Biquad objects to implement several common filters.
 
@@ -85,4 +85,4 @@ private:
     bool m_shouldUseARate { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

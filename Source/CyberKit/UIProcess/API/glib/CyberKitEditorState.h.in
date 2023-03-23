@@ -19,23 +19,23 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitEditorState_h
-#define WebKitEditorState_h
+#ifndef CyberKitEditorState_h
+#define CyberKitEditorState_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_EDITOR_STATE            (webkit_editor_state_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_EDITOR_STATE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_EDITOR_STATE, WebKitEditorState))
+#define WEBKIT_EDITOR_STATE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_EDITOR_STATE, CyberKitEditorState))
 #define WEBKIT_IS_EDITOR_STATE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_EDITOR_STATE))
-#define WEBKIT_EDITOR_STATE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_EDITOR_STATE, WebKitEditorStateClass))
+#define WEBKIT_EDITOR_STATE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_EDITOR_STATE, CyberKitEditorStateClass))
 #define WEBKIT_IS_EDITOR_STATE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_EDITOR_STATE))
-#define WEBKIT_EDITOR_STATE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_EDITOR_STATE, WebKitEditorStateClass))
+#define WEBKIT_EDITOR_STATE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_EDITOR_STATE, CyberKitEditorStateClass))
 
-struct _WebKitEditorStateClass {
+struct _CyberKitEditorStateClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -46,10 +46,10 @@ struct _WebKitEditorStateClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitEditorState, webkit_editor_state, WEBKIT, EDITOR_STATE, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitEditorState, webkit_editor_state, WEBKIT, EDITOR_STATE, GObject)
 
 /**
- * WebKitEditorTypingAttributes:
+ * CyberKitEditorTypingAttributes:
  * @WEBKIT_EDITOR_TYPING_ATTRIBUTE_NONE: No typing attributes.
  * @WEBKIT_EDITOR_TYPING_ATTRIBUTE_BOLD: Bold typing attribute.
  * @WEBKIT_EDITOR_TYPING_ATTRIBUTE_ITALIC: Italic typing attribute.
@@ -67,25 +67,25 @@ typedef enum
     WEBKIT_EDITOR_TYPING_ATTRIBUTE_ITALIC         = 1 << 3,
     WEBKIT_EDITOR_TYPING_ATTRIBUTE_UNDERLINE      = 1 << 4,
     WEBKIT_EDITOR_TYPING_ATTRIBUTE_STRIKETHROUGH  = 1 << 5
-} WebKitEditorTypingAttributes;
+} CyberKitEditorTypingAttributes;
 
 WEBKIT_API guint
-webkit_editor_state_get_typing_attributes (WebKitEditorState *editor_state);
+webkit_editor_state_get_typing_attributes (CyberKitEditorState *editor_state);
 
 WEBKIT_API gboolean
-webkit_editor_state_is_cut_available      (WebKitEditorState *editor_state);
+webkit_editor_state_is_cut_available      (CyberKitEditorState *editor_state);
 
 WEBKIT_API gboolean
-webkit_editor_state_is_copy_available     (WebKitEditorState *editor_state);
+webkit_editor_state_is_copy_available     (CyberKitEditorState *editor_state);
 
 WEBKIT_API gboolean
-webkit_editor_state_is_paste_available    (WebKitEditorState *editor_state);
+webkit_editor_state_is_paste_available    (CyberKitEditorState *editor_state);
 
 WEBKIT_API gboolean
-webkit_editor_state_is_undo_available     (WebKitEditorState *editor_state);
+webkit_editor_state_is_undo_available     (CyberKitEditorState *editor_state);
 
 WEBKIT_API gboolean
-webkit_editor_state_is_redo_available     (WebKitEditorState *editor_state);
+webkit_editor_state_is_redo_available     (CyberKitEditorState *editor_state);
 
 G_END_DECLS
 

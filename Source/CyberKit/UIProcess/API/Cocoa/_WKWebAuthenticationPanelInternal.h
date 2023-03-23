@@ -30,7 +30,7 @@
 #import "APIWebAuthenticationPanel.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::WebAuthenticationPanel> {
     using WrapperClass = _WKWebAuthenticationPanel;

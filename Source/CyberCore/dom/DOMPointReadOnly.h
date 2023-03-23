@@ -36,11 +36,11 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMMatrixInit;
 class DOMPoint;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class DOMPointReadOnly : public ScriptWrappable, public RefCounted<DOMPointReadOnly> {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(DOMPointReadOnly, WEBCORE_EXPORT);
@@ -72,7 +72,7 @@ protected:
     double m_w;
 };
 
-WebCoreOpaqueRoot root(DOMPointReadOnly*);
+CyberCoreOpaqueRoot root(DOMPointReadOnly*);
 
-} // namespace WebCore
+} // namespace CyberCore
 

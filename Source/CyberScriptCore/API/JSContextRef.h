@@ -28,7 +28,7 @@
 
 #include <CyberScriptCore/JSObjectRef.h>
 #include <CyberScriptCore/JSValueRef.h>
-#include <CyberScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/CyberKitAvailability.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>
@@ -76,7 +76,7 @@ JS_EXPORT void JSContextGroupRelease(JSContextGroupRef group) JSC_API_AVAILABLE(
 @discussion JSGlobalContextCreate allocates a global object and populates it with all the
  built-in JavaScript objects, such as Object, Function, String, and Array.
 
- In WebKit version 4.0 and later, the context is created in a unique context group.
+ In CyberKit version 4.0 and later, the context is created in a unique context group.
  Therefore, scripts may execute in it concurrently with scripts executing in other contexts.
  However, you may not use values created in the context in other contexts.
 @param globalObjectClass The class to use when creating the global object. Pass 

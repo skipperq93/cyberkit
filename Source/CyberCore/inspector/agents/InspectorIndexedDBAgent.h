@@ -39,7 +39,7 @@ namespace Inspector {
 class InjectedScriptManager;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -69,4 +69,4 @@ private:
     Page& m_inspectedPage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

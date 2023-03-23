@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-namespace WebKit {
+namespace CyberKit {
 
 MockAuthenticatorManager::MockAuthenticatorManager(CyberCore::MockWebAuthenticationConfiguration&& configuration)
     : m_testConfiguration(WTFMove(configuration))
@@ -61,6 +61,6 @@ void MockAuthenticatorManager::filterTransports(TransportSet& transports) const
     transports.remove(CyberCore::AuthenticatorTransport::Ble);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

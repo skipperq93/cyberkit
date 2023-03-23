@@ -29,7 +29,7 @@ from resultsdbpy.model.mock_cassandra_context import MockCassandraContext
 from resultsdbpy.model.mock_model_factory import MockModelFactory
 from resultsdbpy.model.model import Model
 from resultsdbpy.model.wait_for_docker_test_case import WaitForDockerTestCase
-from resultsdbpy.model.repository import StashRepository, WebKitRepository
+from resultsdbpy.model.repository import StashRepository, CyberKitRepository
 from webkitcorepy import OutputCapture
 from webkitscmpy import Commit
 
@@ -42,7 +42,7 @@ class CommitControllerTest(FlaskTestCase, WaitForDockerTestCase):
         with MockModelFactory.safari(), MockModelFactory.webkit():
             redis_instance = redis()
             safari = StashRepository('https://bitbucket.example.com/projects/SAFARI/repos/safari')
-            webkit = WebKitRepository()
+            webkit = CyberKitRepository()
 
             cassandra.drop_keyspace(keyspace=cls.KEYSPACE)
             cassandra_instance = cassandra(keyspace=cls.KEYSPACE, create_keyspace=True)

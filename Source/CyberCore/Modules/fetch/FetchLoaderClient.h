@@ -30,7 +30,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError;
 class ResourceResponse;
@@ -47,4 +47,4 @@ public:
     virtual void didFail(const ResourceError&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include <CyberCore/UserMediaClient.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserMediaPermissionRequestProxy;
 class WebProcessProxy;
@@ -63,6 +63,6 @@ private:
     bool m_denyNextRequest { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

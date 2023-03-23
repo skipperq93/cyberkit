@@ -28,7 +28,7 @@
 
 #include "IDBTransaction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBTransactionInfo::IDBTransactionInfo(const IDBResourceIdentifier& identifier)
     : m_identifier(identifier)
@@ -116,4 +116,4 @@ String IDBTransactionInfo::loggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

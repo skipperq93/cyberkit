@@ -2,7 +2,7 @@ test contents:
 | "hello world"
 | <span>
 |   style="font-weight: bold;"
-|   "WebKit"
+|   "CyberKit"
 | <em>
 |   <script>
 |     "var i=0;"
@@ -34,7 +34,7 @@ PASS: Extracting entire contents yields:
 | "hello world"
 | <span>
 |   style="font-weight: bold;"
-|   "WebKit"
+|   "CyberKit"
 | <em>
 |   <script>
 |     "var i=0;"
@@ -74,12 +74,12 @@ PASS: Extracting single text node and a span yields:
 | "hello world"
 | <span>
 |   style="font-weight: bold;"
-|   "WebKit"
+|   "CyberKit"
 
 PASS: Extracting span through first b yields:
 | <span>
 |   style="font-weight: bold;"
-|   "WebKit"
+|   "CyberKit"
 | <em>
 |   <script>
 |     "var i=0;"

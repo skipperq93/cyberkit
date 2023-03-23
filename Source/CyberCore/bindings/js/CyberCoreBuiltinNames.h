@@ -30,10 +30,10 @@
 #include <CyberScriptCore/BuiltinUtils.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <CyberKitAdditions/WebCoreBuiltinNamesAdditions.h>
+#include <CyberKitAdditions/CyberCoreBuiltinNamesAdditions.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !defined(WEBCORE_ADDITIONAL_PRIVATE_IDENTIFIERS)
 #define WEBCORE_ADDITIONAL_PRIVATE_IDENTIFIERS(macro)
@@ -677,13 +677,13 @@ namespace WebCore {
     WEBCORE_ADDITIONAL_PRIVATE_IDENTIFIERS(macro) \
     WEBCORE_COMMON_PRIVATE_IDENTIFIERS_FOR_SHADOWREALM_EACH_PROPERTY_NAME(macro) \
 
-class WebCoreBuiltinNames {
+class CyberCoreBuiltinNames {
 public:
     // FIXME: Remove the __attribute__((nodebug)) when <rdar://68246686> is fixed.
 #if COMPILER(CLANG)
     __attribute__((nodebug))
 #endif
-    explicit WebCoreBuiltinNames(JSC::VM& vm)
+    explicit CyberCoreBuiltinNames(JSC::VM& vm)
         : m_vm(vm)
         WEBCORE_COMMON_PRIVATE_IDENTIFIERS_EACH_PROPERTY_NAME(INITIALIZE_BUILTIN_NAMES)
     {
@@ -699,4 +699,4 @@ private:
     WEBCORE_COMMON_PRIVATE_IDENTIFIERS_EACH_PROPERTY_NAME(DECLARE_BUILTIN_NAMES)
 };
 
-} // namespace WebCore
+} // namespace CyberCore

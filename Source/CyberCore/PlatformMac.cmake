@@ -27,11 +27,11 @@ find_library(XML2_LIBRARY XML2)
 find_package(SQLite3 REQUIRED)
 find_package(ZLIB REQUIRED)
 
-list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberCore_UNIFIED_SOURCE_LIST_FILES
     "SourcesCocoa.txt"
 )
 
-list(APPEND WebCore_LIBRARIES
+list(APPEND CyberCore_LIBRARIES
     ${ACCELERATE_LIBRARY}
     ${AUDIOTOOLBOX_LIBRARY}
     ${AUDIOUNIT_LIBRARY}
@@ -71,20 +71,20 @@ add_definitions(-iframework ${QUARTZ_LIBRARY}/Frameworks)
 
 find_library(COREUI_FRAMEWORK CoreUI HINTS ${CMAKE_OSX_SYSROOT}/System/Library/PrivateFrameworks)
 if (NOT COREUI_FRAMEWORK-NOTFOUND)
-    list(APPEND WebCore_LIBRARIES ${COREUI_FRAMEWORK})
+    list(APPEND CyberCore_LIBRARIES ${COREUI_FRAMEWORK})
 endif ()
 
 find_library(DATADETECTORSCORE_FRAMEWORK DataDetectorsCore HINTS ${CMAKE_OSX_SYSROOT}/System/Library/PrivateFrameworks)
 if (NOT DATADETECTORSCORE_FRAMEWORK-NOTFOUND)
-    list(APPEND WebCore_LIBRARIES ${DATADETECTORSCORE_FRAMEWORK})
+    list(APPEND CyberCore_LIBRARIES ${DATADETECTORSCORE_FRAMEWORK})
 endif ()
 
 find_library(LOOKUP_FRAMEWORK Lookup HINTS ${CMAKE_OSX_SYSROOT}/System/Library/PrivateFrameworks)
 if (NOT LOOKUP_FRAMEWORK-NOTFOUND)
-    list(APPEND WebCore_LIBRARIES ${LOOKUP_FRAMEWORK})
+    list(APPEND CyberCore_LIBRARIES ${LOOKUP_FRAMEWORK})
 endif ()
 
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}/libwebrtc/PrivateHeaders"
     "${CMAKE_SOURCE_DIR}/Source/ThirdParty/libwebrtc/Source"
     "${WEBCORE_DIR}/Modules/webauthn/apdu"
@@ -143,15 +143,15 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/spi/cocoa"
     "${WEBCORE_DIR}/platform/spi/mac"
     "${WEBCORE_DIR}/plugins/mac"
-    "${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}"
+    "${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}"
 )
 
-list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES
     "${CMAKE_OSX_SYSROOT}/usr/include/libxslt"
     "${CMAKE_OSX_SYSROOT}/usr/include/libxml2"
 )
 
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     Modules/geolocation/cocoa/GeolocationPositionDataCocoa.mm
 
     Modules/paymentrequest/MerchantValidationEvent.cpp
@@ -225,7 +225,7 @@ list(APPEND WebCore_SOURCES
     platform/cocoa/TelephoneNumberDetectorCocoa.cpp
     platform/cocoa/ThemeCocoa.mm
     platform/cocoa/VideoToolboxSoftLink.cpp
-    platform/cocoa/WebCoreNSErrorExtras.mm
+    platform/cocoa/CyberCoreNSErrorExtras.mm
 
     platform/gamepad/cocoa/GameControllerSoftLink.mm
 
@@ -263,7 +263,7 @@ list(APPEND WebCore_SOURCES
     platform/graphics/avfoundation/objc/SourceBufferPrivateAVFObjC.mm
     platform/graphics/avfoundation/objc/VideoTrackPrivateAVFObjC.cpp
     platform/graphics/avfoundation/objc/VideoTrackPrivateMediaSourceAVFObjC.mm
-    platform/graphics/avfoundation/objc/WebCoreAVFResourceLoader.mm
+    platform/graphics/avfoundation/objc/CyberCoreAVFResourceLoader.mm
 
     platform/graphics/ca/GraphicsLayerCA.cpp
     platform/graphics/ca/LayerPool.cpp
@@ -325,8 +325,8 @@ list(APPEND WebCore_SOURCES
     platform/graphics/cocoa/IOSurfacePoolCocoa.mm
     platform/graphics/cocoa/UnrealizedCoreTextFont.cpp
     platform/graphics/cocoa/WebActionDisablingCALayerDelegate.mm
-    platform/graphics/cocoa/WebCoreCALayerExtras.mm
-    platform/graphics/cocoa/WebCoreDecompressionSession.mm
+    platform/graphics/cocoa/CyberCoreCALayerExtras.mm
+    platform/graphics/cocoa/CyberCoreDecompressionSession.mm
     platform/graphics/cocoa/WebMAudioUtilitiesCocoa.mm
     platform/graphics/cocoa/WebProcessGraphicsContextGLCocoa.mm
 
@@ -383,11 +383,11 @@ list(APPEND WebCore_SOURCES
     platform/mac/ThreadCheck.mm
     platform/mac/UserActivityMac.mm
     platform/mac/ValidationBubbleMac.mm
-    platform/mac/WebCoreFullScreenPlaceholderView.mm
-    platform/mac/WebCoreFullScreenWarningView.mm
-    platform/mac/WebCoreFullScreenWindow.mm
-    platform/mac/WebCoreNSURLExtras.mm
-    platform/mac/WebCoreObjCExtras.mm
+    platform/mac/CyberCoreFullScreenPlaceholderView.mm
+    platform/mac/CyberCoreFullScreenWarningView.mm
+    platform/mac/CyberCoreFullScreenWindow.mm
+    platform/mac/CyberCoreNSURLExtras.mm
+    platform/mac/CyberCoreObjCExtras.mm
     platform/mac/WebNSAttributedStringExtras.mm
     platform/mac/WidgetMac.mm
 
@@ -412,7 +412,7 @@ list(APPEND WebCore_SOURCES
     platform/network/cocoa/ProtectionSpaceCocoa.mm
     platform/network/cocoa/ResourceRequestCocoa.mm
     platform/network/cocoa/ResourceResponseCocoa.mm
-    platform/network/cocoa/WebCoreNSURLSession.mm
+    platform/network/cocoa/CyberCoreNSURLSession.mm
 
     platform/network/mac/AuthenticationMac.mm
     platform/network/mac/BlobDataFileReferenceMac.mm
@@ -424,8 +424,8 @@ list(APPEND WebCore_SOURCES
     platform/network/mac/ResourceHandleMac.mm
     platform/network/mac/SynchronousLoaderClient.mm
     platform/network/mac/UTIUtilities.mm
-    platform/network/mac/WebCoreResourceHandleAsOperationQueueDelegate.mm
-    platform/network/mac/WebCoreURLResponse.mm
+    platform/network/mac/CyberCoreResourceHandleAsOperationQueueDelegate.mm
+    platform/network/mac/CyberCoreURLResponse.mm
 
     platform/text/cocoa/LocaleCocoa.mm
 
@@ -441,13 +441,13 @@ list(APPEND WebCore_SOURCES
     xml/SoftLinkLibxslt.cpp
 )
 
-list(APPEND WebCore_USER_AGENT_STYLE_SHEETS
-    ${WebCore_DERIVED_SOURCES_DIR}/ModernMediaControls.css
+list(APPEND CyberCore_USER_AGENT_STYLE_SHEETS
+    ${CyberCore_DERIVED_SOURCES_DIR}/ModernMediaControls.css
 
     ${WEBCORE_DIR}/html/shadow/mac/imageControlsMac.css
 )
 
-list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
     Modules/airplay/WebMediaSessionManager.h
     Modules/airplay/WebMediaSessionManagerClient.h
 
@@ -468,12 +468,12 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     Modules/applepay/ApplePayRecurringPaymentDateUnit.h
     Modules/applepay/ApplePayRecurringPaymentRequest.h
     Modules/applepay/ApplePaySetupConfiguration.h
-    Modules/applepay/ApplePaySetupFeatureWebCore.h
+    Modules/applepay/ApplePaySetupFeatureCyberCore.h
     Modules/applepay/ApplePayShippingContactEditingMode.h
     Modules/applepay/ApplePayShippingContactUpdate.h
     Modules/applepay/ApplePayShippingMethod.h
     Modules/applepay/ApplePayShippingMethodUpdate.h
-    Modules/applepay/PaymentInstallmentConfigurationWebCore.h
+    Modules/applepay/PaymentInstallmentConfigurationCyberCore.h
     Modules/applepay/PaymentSessionError.h
     Modules/applepay/PaymentSummaryItems.h
 
@@ -551,7 +551,7 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     page/cocoa/ImageOverlayDataDetectionResultIdentifier.h
 
     page/mac/TextIndicatorWindow.h
-    page/mac/WebCoreFrameView.h
+    page/mac/CyberCoreFrameView.h
 
     page/scrolling/ScrollingStateOverflowScrollProxyNode.h
 
@@ -677,7 +677,7 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/graphics/cocoa/SourceBufferParserWebM.h
     platform/graphics/cocoa/VP9UtilitiesCocoa.h
     platform/graphics/cocoa/WebActionDisablingCALayerDelegate.h
-    platform/graphics/cocoa/WebCoreCALayerExtras.h
+    platform/graphics/cocoa/CyberCoreCALayerExtras.h
     platform/graphics/cocoa/WebMAudioUtilitiesCocoa.h
 
     platform/graphics/cv/CVUtilities.h
@@ -697,7 +697,7 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/ios/WebAVPlayerController.h
 
     platform/ios/wak/FloatingPointEnvironment.h
-    platform/ios/wak/WebCoreThreadRun.h
+    platform/ios/wak/CyberCoreThreadRun.h
 
     platform/mac/HIDDevice.h
     platform/mac/HIDElement.h
@@ -714,12 +714,12 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/mac/ScrollbarThemeMac.h
     platform/mac/StringUtilities.h
     platform/mac/VideoFullscreenInterfaceMac.h
-    platform/mac/WebCoreFullScreenPlaceholderView.h
-    platform/mac/WebCoreFullScreenWindow.h
-    platform/mac/WebCoreNSFontManagerExtras.h
-    platform/mac/WebCoreNSURLExtras.h
-    platform/mac/WebCoreObjCExtras.h
-    platform/mac/WebCoreView.h
+    platform/mac/CyberCoreFullScreenPlaceholderView.h
+    platform/mac/CyberCoreFullScreenWindow.h
+    platform/mac/CyberCoreNSFontManagerExtras.h
+    platform/mac/CyberCoreNSURLExtras.h
+    platform/mac/CyberCoreObjCExtras.h
+    platform/mac/CyberCoreView.h
     platform/mac/WebGLBlocklist.h
     platform/mac/WebNSAttributedStringExtras.h
     platform/mac/WebPlaybackControlsManager.h
@@ -755,19 +755,19 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/network/cocoa/CredentialCocoa.h
     platform/network/cocoa/HTTPCookieAcceptPolicyCocoa.h
     platform/network/cocoa/ProtectionSpaceCocoa.h
-    platform/network/cocoa/WebCoreNSURLSession.h
+    platform/network/cocoa/CyberCoreNSURLSession.h
 
     platform/network/mac/AuthenticationMac.h
     platform/network/mac/FormDataStreamMac.h
     platform/network/mac/UTIUtilities.h
-    platform/network/mac/WebCoreURLResponse.h
+    platform/network/mac/CyberCoreURLResponse.h
 
     testing/MockWebAuthenticationConfiguration.h
 
     testing/cocoa/WebViewVisualIdentificationOverlay.h
 )
 
-list(APPEND WebCore_IDL_FILES
+list(APPEND CyberCore_IDL_FILES
     Modules/applepay/ApplePayAutomaticReloadPaymentRequest.idl
     Modules/applepay/ApplePayCancelEvent.idl
     Modules/applepay/ApplePayContactField.idl
@@ -833,11 +833,11 @@ set(ADDITIONAL_BINDINGS_DEPENDENCIES
 )
 set(CSS_VALUE_PLATFORM_DEFINES "WTF_PLATFORM_MAC=1 HAVE_OS_DARK_MODE_SUPPORT=1 WTF_PLATFORM_COCOA=1 ENABLE_APPLE_PAY_NEW_BUTTON_TYPES=1")
 
-set(WebCore_USER_AGENT_SCRIPTS ${WebCore_DERIVED_SOURCES_DIR}/ModernMediaControls.js)
+set(CyberCore_USER_AGENT_SCRIPTS ${CyberCore_DERIVED_SOURCES_DIR}/ModernMediaControls.js)
 
-list(APPEND WebCoreTestSupport_LIBRARIES PRIVATE WebCore)
-list(APPEND WebCoreTestSupport_PRIVATE_HEADERS testing/cocoa/WebArchiveDumpSupport.h)
-list(APPEND WebCoreTestSupport_SOURCES
+list(APPEND CyberCoreTestSupport_LIBRARIES PRIVATE CyberCore)
+list(APPEND CyberCoreTestSupport_PRIVATE_HEADERS testing/cocoa/WebArchiveDumpSupport.h)
+list(APPEND CyberCoreTestSupport_SOURCES
     testing/Internals.mm
     testing/MockApplePaySetupFeature.cpp
     testing/MockContentFilter.cpp
@@ -849,7 +849,7 @@ list(APPEND WebCoreTestSupport_SOURCES
 
     testing/cocoa/WebArchiveDumpSupport.mm
 )
-list(APPEND WebCoreTestSupport_IDL_FILES
+list(APPEND CyberCoreTestSupport_IDL_FILES
     testing/MockPaymentAddress.idl
     testing/MockPaymentContactFields.idl
     testing/MockPaymentCoordinator.idl
@@ -857,6 +857,6 @@ list(APPEND WebCoreTestSupport_IDL_FILES
     testing/MockWebAuthenticationConfiguration.idl
 )
 
-if (NOT EXISTS ${CMAKE_BINARY_DIR}/WebCore/CyberKitAvailability.h)
-    file(COPY platform/cocoa/CyberKitAvailability.h DESTINATION ${CMAKE_BINARY_DIR}/WebCore)
+if (NOT EXISTS ${CMAKE_BINARY_DIR}/CyberCore/CyberKitAvailability.h)
+    file(COPY platform/cocoa/CyberKitAvailability.h DESTINATION ${CMAKE_BINARY_DIR}/CyberCore)
 endif ()

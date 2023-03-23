@@ -101,7 +101,7 @@
 #include "AudioSessionRoutingArbitrator.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static void languagesChanged(void* context)
@@ -417,6 +417,6 @@ void GPUProcessConnection::updateMediaConfiguration()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

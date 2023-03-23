@@ -30,7 +30,7 @@
 #include "WebGLSharedObject.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLShader final : public WebGLSharedObject {
 public:
@@ -51,6 +51,6 @@ private:
     String m_source;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

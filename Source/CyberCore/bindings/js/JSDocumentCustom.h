@@ -33,19 +33,19 @@ namespace JSC {
 namespace JSCastingHelpers {
 
 template<>
-struct InheritsTraits<WebCore::JSDocument> {
-    static constexpr std::optional<JSTypeRange> typeRange { JSTypeRange { static_cast<JSType>(WebCore::JSDocumentWrapperType), static_cast<JSType>(WebCore::JSDocumentWrapperType) } };
+struct InheritsTraits<CyberCore::JSDocument> {
+    static constexpr std::optional<JSTypeRange> typeRange { JSTypeRange { static_cast<JSType>(CyberCore::JSDocumentWrapperType), static_cast<JSType>(CyberCore::JSDocumentWrapperType) } };
     template<typename From>
     static inline bool inherits(From* from)
     {
-        return inheritsJSTypeImpl<WebCore::JSDocument>(from, *typeRange);
+        return inheritsJSTypeImpl<CyberCore::JSDocument>(from, *typeRange);
     }
 };
 
 } // namespace JSCastingHelpers
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 
 class TreeScope;
 
@@ -53,4 +53,4 @@ JSC::JSObject* cachedDocumentWrapper(JSC::JSGlobalObject&, JSDOMGlobalObject&, D
 void reportMemoryForDocumentIfFrameless(JSC::JSGlobalObject&, Document&);
 void setAdoptedStyleSheetsOnTreeScope(TreeScope&, JSC::JSGlobalObject&, JSC::JSValue);
 
-} // namespace WebCore
+} // namespace CyberCore

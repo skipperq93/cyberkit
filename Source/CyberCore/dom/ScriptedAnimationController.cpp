@@ -37,7 +37,7 @@
 #include <wtf/Ref.h>
 #include <wtf/SystemTracing.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScriptedAnimationController::ScriptedAnimationController(Document& document)
     : m_document(document)

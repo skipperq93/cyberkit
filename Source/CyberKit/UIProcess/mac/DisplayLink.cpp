@@ -34,7 +34,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -333,6 +333,6 @@ void DisplayLinkCollection::setDisplayLinkForDisplayWantsFullSpeedUpdates(Displa
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(CVDISPLAYLINK)

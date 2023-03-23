@@ -32,7 +32,7 @@
 // JSC should never include this file, or any *Inline.h file, from interface headers, since
 // this could lead to a circular dependency.
 //
-// WebCore, or any other downstream client of JSC, is allowed to include this file in headers.
+// CyberCore, or any other downstream client of JSC, is allowed to include this file in headers.
 // In fact, it can make a lot of sense: outside of JSC, this file becomes a kind of umbrella
 // header that pulls in most (all?) of the interesting things in JSC.
 

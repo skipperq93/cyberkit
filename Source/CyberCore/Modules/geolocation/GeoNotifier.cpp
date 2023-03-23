@@ -32,7 +32,7 @@
 
 #include "Geolocation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GeoNotifier::GeoNotifier(Geolocation& geolocation, Ref<PositionCallback>&& successCallback, RefPtr<PositionErrorCallback>&& errorCallback, PositionOptions&& options)
     : m_geolocation(geolocation)
@@ -127,6 +127,6 @@ void GeoNotifier::timerFired()
     m_geolocation->requestTimedOut(this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GEOLOCATION)

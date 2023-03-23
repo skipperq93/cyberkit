@@ -70,7 +70,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/LocalAuthenticatorAdditions.h>
+#import <CyberKitAdditions/LocalAuthenticatorAdditions.h>
 #else
 static void updateQueryIfNecessary(NSMutableDictionary *)
 {
@@ -127,7 +127,7 @@ NSString * const _WKLocalAuthenticatorCredentialLastUsedDateKey = @"_WKLocalAuth
 
 @implementation _WKWebAuthenticationPanel {
 #if ENABLE(WEB_AUTHN)
-    WeakPtr<WebKit::WebAuthenticationPanelClient> _client;
+    WeakPtr<CyberKit::WebAuthenticationPanelClient> _client;
     RetainPtr<NSMutableSet> _transports;
 #endif
 }
@@ -164,7 +164,7 @@ NSString * const _WKLocalAuthenticatorCredentialLastUsedDateKey = @"_WKLocalAuth
 
 - (void)setDelegate:(id<_WKWebAuthenticationPanelDelegate>)delegate
 {
-    auto client = WTF::makeUniqueRef<WebKit::WebAuthenticationPanelClient>(self, delegate);
+    auto client = WTF::makeUniqueRef<CyberKit::WebAuthenticationPanelClient>(self, delegate);
     _client = client.get();
     _panel->setClient(WTFMove(client));
 }
@@ -402,7 +402,7 @@ static RetainPtr<NSArray> getAllLocalAuthenticatorCredentialsImpl(NSString *acce
 + (void)clearAllLocalAuthenticatorCredentials
 {
 #if ENABLE(WEB_AUTHN)
-    WebKit::LocalAuthenticator::clearAllCredentials();
+    CyberKit::LocalAuthenticator::clearAllCredentials();
 #endif
 }
 
@@ -989,7 +989,7 @@ static RetainPtr<_WKAuthenticatorAttestationResponse> wkAuthenticatorAttestation
             handler(nil, [NSError errorWithDomain:WKErrorDomain code:exception.code userInfo:@{ NSLocalizedDescriptionKey: exception.message }]);
         });
     };
-    _panel->handleRequest({ WTFMove(hash), [_WKWebAuthenticationPanel convertToCoreCreationOptionsWithOptions:options], nullptr, WebKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, std::nullopt, std::nullopt }, WTFMove(callback));
+    _panel->handleRequest({ WTFMove(hash), [_WKWebAuthenticationPanel convertToCoreCreationOptionsWithOptions:options], nullptr, CyberKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, std::nullopt, std::nullopt }, WTFMove(callback));
 #endif
 }
 
@@ -1003,7 +1003,7 @@ static RetainPtr<_WKAuthenticatorAttestationResponse> wkAuthenticatorAttestation
             handler(nil, [NSError errorWithDomain:WKErrorDomain code:exception.code userInfo:@{ NSLocalizedDescriptionKey: exception.message }]);
         });
     };
-    _panel->handleRequest({ vectorFromNSData(clientDataHash), [_WKWebAuthenticationPanel convertToCoreCreationOptionsWithOptions:options], nullptr, WebKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, toCyberCore(mediation), std::nullopt }, WTFMove(callback));
+    _panel->handleRequest({ vectorFromNSData(clientDataHash), [_WKWebAuthenticationPanel convertToCoreCreationOptionsWithOptions:options], nullptr, CyberKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, toCyberCore(mediation), std::nullopt }, WTFMove(callback));
 #endif
 }
 
@@ -1057,7 +1057,7 @@ static RetainPtr<_WKAuthenticatorAssertionResponse> wkAuthenticatorAssertionResp
             handler(nil, [NSError errorWithDomain:WKErrorDomain code:exception.code userInfo:@{ NSLocalizedDescriptionKey: exception.message }]);
         });
     };
-    _panel->handleRequest({ WTFMove(hash), [_WKWebAuthenticationPanel convertToCoreRequestOptionsWithOptions:options], nullptr, WebKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, std::nullopt, std::nullopt }, WTFMove(callback));
+    _panel->handleRequest({ WTFMove(hash), [_WKWebAuthenticationPanel convertToCoreRequestOptionsWithOptions:options], nullptr, CyberKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, std::nullopt, std::nullopt }, WTFMove(callback));
 #endif
 }
 
@@ -1071,7 +1071,7 @@ static RetainPtr<_WKAuthenticatorAssertionResponse> wkAuthenticatorAssertionResp
             handler(nil, [NSError errorWithDomain:WKErrorDomain code:exception.code userInfo:@{ NSLocalizedDescriptionKey: exception.message }]);
         });
     };
-    _panel->handleRequest({ vectorFromNSData(clientDataHash), [_WKWebAuthenticationPanel convertToCoreRequestOptionsWithOptions:options], nullptr, WebKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, toCyberCore(mediation), std::nullopt }, WTFMove(callback));
+    _panel->handleRequest({ vectorFromNSData(clientDataHash), [_WKWebAuthenticationPanel convertToCoreRequestOptionsWithOptions:options], nullptr, CyberKit::WebAuthenticationPanelResult::Unavailable, nullptr, std::nullopt, { }, true, String(), nullptr, toCyberCore(mediation), std::nullopt }, WTFMove(callback));
 #endif
 }
 
@@ -1083,7 +1083,7 @@ static RetainPtr<_WKAuthenticatorAssertionResponse> wkAuthenticatorAssertionResp
 + (BOOL)isUserVerifyingPlatformAuthenticatorAvailable
 {
 #if ENABLE(WEB_AUTHN)
-    return WebKit::LocalService::isAvailable();
+    return CyberKit::LocalService::isAvailable();
 #else
     return NO;
 #endif

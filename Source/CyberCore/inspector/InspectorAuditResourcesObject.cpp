@@ -38,7 +38,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -134,4 +134,4 @@ CachedResourceClient& InspectorAuditResourcesObject::clientForResource(const Cac
     return m_cachedResourceClient;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

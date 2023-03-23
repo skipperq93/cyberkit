@@ -178,7 +178,7 @@ my $isoSubspacesHeaderCode = <<END;
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 class DOMIsoSubspaces {
@@ -194,7 +194,7 @@ my $clientISOSubspacesHeaderCode = <<END;
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 class DOMClientIsoSubspaces {
@@ -212,7 +212,7 @@ my $constructorsHeaderCode = <<END;
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DOMConstructorID : uint16_t {
 END
@@ -345,13 +345,13 @@ GeneratePartialInterface($testGlobalContextName, $testGlobalScopeConstructorsCod
 
 if ($isoSubspacesHeaderFile) {
     $isoSubspacesHeaderCode .= "};\n";
-    $isoSubspacesHeaderCode .= "} // namespace WebCore\n";
+    $isoSubspacesHeaderCode .= "} // namespace CyberCore\n";
     WriteFileIfChanged($isoSubspacesHeaderFile, $isoSubspacesHeaderCode);
 }
 
 if ($clientISOSubspacesHeaderFile) {
     $clientISOSubspacesHeaderCode .= "};\n";
-    $clientISOSubspacesHeaderCode .= "} // namespace WebCore\n";
+    $clientISOSubspacesHeaderCode .= "} // namespace CyberCore\n";
     WriteFileIfChanged($clientISOSubspacesHeaderFile, $clientISOSubspacesHeaderCode);
 }
 
@@ -374,7 +374,7 @@ if ($constructorsHeaderFile) {
     $constructorsHeaderCode .= "    ConstructorArray m_array { };\n";
     $constructorsHeaderCode .= "};\n";
     $constructorsHeaderCode .= "\n";
-    $constructorsHeaderCode .= "} // namespace WebCore\n";
+    $constructorsHeaderCode .= "} // namespace CyberCore\n";
     WriteFileIfChanged($constructorsHeaderFile, $constructorsHeaderCode);
 }
 
@@ -414,7 +414,7 @@ sub RemoveWellKnownPrefix
 
     if ($srcroot and $sdkroot and $built_products_dir) {
         $path =~ s/^${pwd}/./;
-        $path =~ s/^${srcroot}/WebCore/;
+        $path =~ s/^${srcroot}/CyberCore/;
         $path =~ s/^${sdkroot}/\$(SDKROOT)/;
         $path =~ s/^${built_products_dir}/\$(BUILT_PRODUCTS_DIR)/;
     } else {

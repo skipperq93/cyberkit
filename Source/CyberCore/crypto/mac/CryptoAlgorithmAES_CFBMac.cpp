@@ -32,7 +32,7 @@
 #include "CryptoKeyAES.h"
 #include <CommonCrypto/CommonCrypto.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<Vector<uint8_t>> transformAES_CFB(CCOperation operation, const Vector<uint8_t>& iv, const Vector<uint8_t>& key, const Vector<uint8_t>& data)
 {
@@ -74,6 +74,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_CFB::platformDecrypt(const Crypt
     return transformAES_CFB(kCCDecrypt, parameters.ivVector(), key.key(), cipherText);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

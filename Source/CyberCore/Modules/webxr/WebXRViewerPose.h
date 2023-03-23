@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRViewerPose : public WebXRPose {
     WTF_MAKE_ISO_ALLOCATED(WebXRViewerPose);
@@ -56,7 +56,7 @@ private:
     JSValueInWrappedObject m_cachedViews;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_WEBXRPOSE(WebXRViewerPose, isViewerPose())
 

@@ -32,7 +32,7 @@
 
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSubgridValue final : public CSSValueContainingVector {
 public:
@@ -45,6 +45,6 @@ private:
     explicit CSSSubgridValue(CSSValueListBuilder);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSSubgridValue, isSubgridValue());

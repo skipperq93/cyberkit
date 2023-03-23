@@ -241,11 +241,11 @@ class GlobalVariablesTest(unittest.TestCase):
         assertCheck(path, "whitespace/carriage_return")
 
         # Test if the exception for GDBInterface.cpp is in place.
-        assertNoCheck(os.path.join('Source', 'JavaScriptCore', 'jit', 'GDBInterface.cpp'),
+        assertNoCheck(os.path.join('Source', 'CyberScriptCore', 'jit', 'GDBInterface.cpp'),
                       "readability/naming")
 
         # Javascript keywords.
-        assertCheck(os.path.join('Source', 'JavaScriptCore', 'parser', 'Keywords.table'), "whitespace/carriage_return")
+        assertCheck(os.path.join('Source', 'CyberScriptCore', 'parser', 'Keywords.table'), "whitespace/carriage_return")
 
         # Test if the exception for DataDetectorsCoreSPI.h is in place.
         assertNoCheck(os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h'),

@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation;
 class RenderStyle;
@@ -72,6 +72,6 @@ private:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_WEB_ANIMATION(CSSTransition, isCSSTransition())

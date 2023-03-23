@@ -51,21 +51,21 @@
 #include "JSTestSubObj.h"
 #include "ScriptExecutionContext.h"
 #include "SerializedScriptValue.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSArray.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSArray.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <variant>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -781,7 +781,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestTypedefsPrototypeFunction_callWithSequenceThatReq
 
 JSC::GCClient::IsoSubspace* JSTestTypedefs::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestTypedefs, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestTypedefs, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestTypedefs.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestTypedefs = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestTypedefs.get(); },
@@ -816,9 +816,9 @@ void JSTestTypedefsOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* conte
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestTypedefs@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestTypedefs@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore12TestTypedefsE[]; }
+extern "C" { extern void* _ZTVN7CyberCore12TestTypedefsE[]; }
 #endif
 #endif
 
@@ -829,9 +829,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestTypedefs@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestTypedefs@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore12TestTypedefsE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore12TestTypedefsE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

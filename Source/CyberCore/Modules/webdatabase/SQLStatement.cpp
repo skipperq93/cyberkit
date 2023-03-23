@@ -73,7 +73,7 @@
 //     Note: unlike with SQLTransaction, there is no JS representation of SQLStatement.
 //     Hence, there is no GC dependency at play here.
 
-namespace WebCore {
+namespace CyberCore {
 
 SQLStatement::SQLStatement(Database& database, const String& statement, Vector<SQLValue>&& arguments, RefPtr<SQLStatementCallback>&& callback, RefPtr<SQLStatementErrorCallback>&& errorCallback, int permissions)
     : m_statement(statement.isolatedCopy())
@@ -260,4 +260,4 @@ bool SQLStatement::lastExecutionFailedDueToQuota() const
     return m_error && m_error->code() == SQLError::QUOTA_ERR;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

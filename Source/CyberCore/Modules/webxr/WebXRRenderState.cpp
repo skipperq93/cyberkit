@@ -32,7 +32,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRRenderState);
 
@@ -62,6 +62,6 @@ WebXRRenderState::WebXRRenderState(const WebXRRenderState& other)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

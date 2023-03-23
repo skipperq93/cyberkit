@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebFormSubmissionListenerProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebFormSubmissionListenerProxy::continueSubmission()
 {
@@ -34,4 +34,4 @@ void WebFormSubmissionListenerProxy::continueSubmission()
         completionHandler();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

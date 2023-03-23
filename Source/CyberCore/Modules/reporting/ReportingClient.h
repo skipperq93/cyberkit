@@ -29,7 +29,7 @@
 #include <CyberScriptCore/ConsoleTypes.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 class Report;
@@ -45,4 +45,4 @@ struct WEBCORE_EXPORT ReportingClient {
     virtual String httpUserAgent() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

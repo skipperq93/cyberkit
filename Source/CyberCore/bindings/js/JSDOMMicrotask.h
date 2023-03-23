@@ -28,7 +28,7 @@
 #include <CyberScriptCore/JSCJSValue.h>
 #include <CyberScriptCore/Microtask.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<JSC::Microtask> createJSDOMMicrotask(JSC::VM&, JSC::JSObject* job);
 

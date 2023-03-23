@@ -31,7 +31,7 @@
 #include "WKAPICast.h"
 #include <wtf/CompletionHandler.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKUserContentExtensionStoreGetTypeID()
 {

@@ -43,7 +43,7 @@
 #include "ScriptController.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioScheduledSourceNode);
 
@@ -206,6 +206,6 @@ void AudioScheduledSourceNode::finish()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

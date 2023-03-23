@@ -30,7 +30,7 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentOrderDetails {
     String orderTypeIdentifier; // required
@@ -39,6 +39,6 @@ struct ApplePayPaymentOrderDetails {
     String authenticationToken; // required
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_PAYMENT_ORDER_DETAILS)

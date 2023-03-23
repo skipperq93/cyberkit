@@ -64,9 +64,9 @@ class TestGit(testing.PathTestCase):
             self.assertEqual(local.Git(self.path).remote(), None)
 
     def test_remote_github(self):
-        with mocks.local.Git(self.path, remote='git@github.example.com:WebKit/WebKit.git'):
+        with mocks.local.Git(self.path, remote='git@github.example.com:CyberKit/CyberKit.git'):
             self.assertIsInstance(local.Git(self.path).remote(), remote.GitHub)
-        with mocks.local.Git(self.path, remote='https://github.example.com/WebKit/WebKit.git'):
+        with mocks.local.Git(self.path, remote='https://github.example.com/CyberKit/CyberKit.git'):
             self.assertIsInstance(local.Git(self.path).remote(), remote.GitHub)
 
     def test_remote_bitbucket(self):
@@ -523,31 +523,31 @@ CommitDate: {time_c}
 
     def test_source_remotes_single(self):
         with mocks.local.Git(self.path, remotes={
-            'origin': 'git@github.example.com:WebKit/WebKit.git',
-            'fork': 'git@github.example.com:Contributor/WebKit.git',
+            'origin': 'git@github.example.com:CyberKit/CyberKit.git',
+            'fork': 'git@github.example.com:Contributor/CyberKit.git',
         }), OutputCapture():
             project_config = os.path.join(self.path, 'metadata', local.Git.GIT_CONFIG_EXTENSION)
             os.mkdir(os.path.dirname(project_config))
             with open(project_config, 'w') as f:
                 f.write('[webkitscmpy "remotes"]\n')
-                f.write('    origin = git@github.example.com:WebKit/WebKit.git\n')
-                f.write('    security = git@github.example.com:WebKit/WebKit-security.git\n')
+                f.write('    origin = git@github.example.com:CyberKit/CyberKit.git\n')
+                f.write('    security = git@github.example.com:CyberKit/CyberKit-security.git\n')
 
             self.assertEqual(local.Git(self.path).source_remotes(), ['origin'])
 
     def test_source_remotes_multiple(self):
         with mocks.local.Git(self.path, remotes={
-            'origin': 'git@github.example.com:WebKit/WebKit.git',
-            'fork': 'git@github.example.com:Contributor/WebKit.git',
-            'security': 'git@github.example.com:WebKit/WebKit-security.git',
-            'security-fork': 'git@github.example.com:Contributor/WebKit-security.git',
+            'origin': 'git@github.example.com:CyberKit/CyberKit.git',
+            'fork': 'git@github.example.com:Contributor/CyberKit.git',
+            'security': 'git@github.example.com:CyberKit/CyberKit-security.git',
+            'security-fork': 'git@github.example.com:Contributor/CyberKit-security.git',
         }), OutputCapture():
             project_config = os.path.join(self.path, 'metadata', local.Git.GIT_CONFIG_EXTENSION)
             os.mkdir(os.path.dirname(project_config))
             with open(project_config, 'w') as f:
                 f.write('[webkitscmpy "remotes"]\n')
-                f.write('    origin = git@github.example.com:WebKit/WebKit.git\n')
-                f.write('    security = git@github.example.com:WebKit/WebKit-security.git\n')
+                f.write('    origin = git@github.example.com:CyberKit/CyberKit.git\n')
+                f.write('    security = git@github.example.com:CyberKit/CyberKit-security.git\n')
 
             self.assertEqual(local.Git(self.path).source_remotes(), ['origin', 'security'])
             self.assertEqual(
@@ -575,13 +575,13 @@ CommitDate: {time_c}
 
 
 class TestGitHub(testing.TestCase):
-    remote = 'https://github.example.com/WebKit/WebKit'
+    remote = 'https://github.example.com/CyberKit/CyberKit'
 
     def test_detection(self):
-        self.assertEqual(remote.GitHub.is_webserver('https://github.example.com/WebKit/webkit'), True)
-        self.assertEqual(remote.GitHub.is_webserver('http://github.example.com/WebKit/webkit'), True)
+        self.assertEqual(remote.GitHub.is_webserver('https://github.example.com/CyberKit/webkit'), True)
+        self.assertEqual(remote.GitHub.is_webserver('http://github.example.com/CyberKit/webkit'), True)
         self.assertEqual(remote.GitHub.is_webserver('https://svn.example.org/repository/webkit'), False)
-        self.assertEqual(remote.GitHub.is_webserver('https://bitbucket.example.com/projects/WebKit/repos/webkit'), False)
+        self.assertEqual(remote.GitHub.is_webserver('https://bitbucket.example.com/projects/CyberKit/repos/webkit'), False)
 
     def test_branches(self):
         with mocks.remote.GitHub():
@@ -745,10 +745,10 @@ class TestBitBucket(testing.TestCase):
     remote = 'https://bitbucket.example.com/projects/WEBKIT/repos/webkit'
 
     def test_detection(self):
-        self.assertEqual(remote.BitBucket.is_webserver('https://bitbucket.example.com/projects/WebKit/repos/webkit'), True)
-        self.assertEqual(remote.BitBucket.is_webserver('http://bitbucket.example.com/projects/WebKit/repos/webkit'), True)
+        self.assertEqual(remote.BitBucket.is_webserver('https://bitbucket.example.com/projects/CyberKit/repos/webkit'), True)
+        self.assertEqual(remote.BitBucket.is_webserver('http://bitbucket.example.com/projects/CyberKit/repos/webkit'), True)
         self.assertEqual(remote.BitBucket.is_webserver('https://svn.example.org/repository/webkit'), False)
-        self.assertEqual(remote.BitBucket.is_webserver('https://github.example.com/WebKit/webkit'), False)
+        self.assertEqual(remote.BitBucket.is_webserver('https://github.example.com/CyberKit/webkit'), False)
 
     def test_branches(self):
         with mocks.remote.BitBucket():

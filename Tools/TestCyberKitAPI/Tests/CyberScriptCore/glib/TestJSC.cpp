@@ -24,7 +24,7 @@
 #include "jsc/JSCContextInternal.h"
 #undef JSC_COMPILATION
 
-#include <JavaScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSContextRef.h>
 #include <jsc/jsc.h>
 #include <wtf/HashSet.h>
 #include <wtf/Threading.h>
@@ -248,7 +248,7 @@ static void testJSCBasic()
         checker.watch(context.get());
         ExceptionHandler exceptionHandler(context.get());
 
-        GUniquePtr<char> scriptFile(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "JavaScriptCore", "glib", "script.js", nullptr));
+        GUniquePtr<char> scriptFile(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "CyberScriptCore", "glib", "script.js", nullptr));
         GUniqueOutPtr<char> contents;
         gsize contentsSize;
         g_assert_true(g_file_get_contents(scriptFile.get(), &contents.outPtr(), &contentsSize, nullptr));

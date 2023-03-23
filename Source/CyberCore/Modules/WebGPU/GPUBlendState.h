@@ -28,7 +28,7 @@
 #include "GPUBlendComponent.h"
 #include <pal/graphics/WebGPU/WebGPUBlendState.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUBlendState {
     PAL::WebGPU::BlendState convertToBacking() const

@@ -31,7 +31,7 @@
 #include "AccessibilityMockObject.h"
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLInputElement;
 
@@ -78,8 +78,8 @@ private:
     bool computeAccessibilityIsIgnored() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilitySliderThumb) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isSliderThumb(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilitySliderThumb) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isSliderThumb(); } \
 SPECIALIZE_TYPE_TRAITS_END()

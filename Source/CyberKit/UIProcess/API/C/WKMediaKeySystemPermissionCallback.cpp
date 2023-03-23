@@ -29,7 +29,7 @@
 #include "MediaKeySystemPermissionRequest.h"
 #include "WKAPICast.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKMediaKeySystemPermissionCallbackGetTypeID()
 {

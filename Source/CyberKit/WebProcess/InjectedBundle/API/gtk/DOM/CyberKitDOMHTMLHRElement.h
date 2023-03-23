@@ -54,7 +54,7 @@ webkit_dom_html_hr_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_hr_element_get_align(CyberKitDOMHTMLHRElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_hr_element_get_align(CyberKitDOMHTMLHRElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_hr_element_set_align(CyberKitDOMHTMLHRElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_hr_element_set_align(CyberKitDOMHTMLHRElement* self, const gchar
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_hr_element_get_no_shade(CyberKitDOMHTMLHRElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_hr_element_get_no_shade(CyberKitDOMHTMLHRElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_hr_element_set_no_shade(CyberKitDOMHTMLHRElement* self, gboolean value);
@@ -98,7 +98,7 @@ webkit_dom_html_hr_element_set_no_shade(CyberKitDOMHTMLHRElement* self, gboolean
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_hr_element_get_size(CyberKitDOMHTMLHRElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_hr_element_get_size(CyberKitDOMHTMLHRElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_hr_element_set_size(CyberKitDOMHTMLHRElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_hr_element_set_size(CyberKitDOMHTMLHRElement* self, const gchar*
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_hr_element_get_width(CyberKitDOMHTMLHRElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_hr_element_get_width(CyberKitDOMHTMLHRElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_hr_element_set_width(CyberKitDOMHTMLHRElement* self, const gchar* value);

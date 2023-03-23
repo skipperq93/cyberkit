@@ -32,7 +32,7 @@
 #include "UserMediaClient.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UserMediaRequest;
 
@@ -89,6 +89,6 @@ inline void UserMediaController::removeDeviceChangeObserver(UserMediaClient::Dev
     m_client->removeDeviceChangeObserver(token);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

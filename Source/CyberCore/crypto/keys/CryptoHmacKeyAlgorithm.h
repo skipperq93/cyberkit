@@ -27,7 +27,7 @@
 
 #include "CryptoKeyAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CryptoHmacKeyAlgorithm : CryptoKeyAlgorithm {
     // The inner hash function to use.

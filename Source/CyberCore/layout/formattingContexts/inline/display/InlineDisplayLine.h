@@ -30,7 +30,7 @@
 #include "TextRun.h"
 #include "TextUtil.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineDisplay {
 
 class Line {

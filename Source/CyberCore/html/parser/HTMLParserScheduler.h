@@ -30,10 +30,10 @@
 #include <wtf/RefPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLDocumentParser;
@@ -128,4 +128,4 @@ private:
     bool m_documentHasActiveParserYieldTokens { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

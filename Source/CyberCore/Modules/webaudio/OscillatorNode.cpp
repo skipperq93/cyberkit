@@ -35,7 +35,7 @@
 #include "VectorMath.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OscillatorNode);
 
@@ -449,6 +449,6 @@ bool OscillatorNode::propagatesSilence() const
     return !m_periodicWave.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

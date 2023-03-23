@@ -33,7 +33,7 @@
 #include "CryptoKeyEC.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CryptoAlgorithm> CryptoAlgorithmECDH::create()
 {
@@ -230,6 +230,6 @@ void CryptoAlgorithmECDH::exportKey(CryptoKeyFormat format, Ref<CryptoKey>&& key
     callback(format, WTFMove(result));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

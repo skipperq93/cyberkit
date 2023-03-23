@@ -50,7 +50,7 @@
 #include "ScriptModuleLoader.h"
 #include "SecurityOrigin.h"
 #include "Settings.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/CodeBlock.h>
 #include <CyberScriptCore/DeferredWorkTimer.h>
 #include <CyberScriptCore/JSInternalPromise.h>
@@ -70,7 +70,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 const ClassInfo JSDOMWindowBase::s_info = { "Window"_s, &JSDOMGlobalObject::s_info, nullptr, nullptr, CREATE_METHOD_TABLE(JSDOMWindowBase) };
@@ -113,7 +113,7 @@ JSDOMWindowBase::~JSDOMWindowBase() = default;
 
 SUPPRESS_ASAN inline void JSDOMWindowBase::initStaticGlobals(JSC::VM& vm)
 {
-    auto& builtinNames = WebCore::builtinNames(vm);
+    auto& builtinNames = CyberCore::builtinNames(vm);
 
     GlobalPropertyInfo staticGlobals[] = {
         GlobalPropertyInfo(builtinNames.documentPublicName(), jsNull(), PropertyAttribute::DontDelete | PropertyAttribute::ReadOnly),
@@ -368,4 +368,4 @@ void JSDOMWindowBase::fireFrameClearedWatchpointsForWindow(DOMWindow* window)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

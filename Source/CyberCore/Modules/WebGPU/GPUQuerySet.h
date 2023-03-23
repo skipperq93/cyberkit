@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GPUQuerySet : public RefCounted<GPUQuerySet> {
 public:

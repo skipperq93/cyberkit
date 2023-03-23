@@ -636,7 +636,7 @@ sub printHeaderHead
 
 $includes
 
-namespace WebCore {
+namespace CyberCore {
 
 ${definitions}namespace ${namespace}Names {
 
@@ -653,7 +653,7 @@ sub printCppHead
     print F "\n";
     print F $includes;
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     print F "namespace ${namespace}Names {\n";
     print F "\n";
@@ -736,11 +736,11 @@ sub printTypeHelpers
         next if $elementCount > 1;
 
         print F <<END
-namespace WebCore {
+namespace CyberCore {
 class $class;
 }
 namespace WTF {
-template<typename ArgType> class TypeCastTraits<const WebCore::$class, ArgType, false /* isBaseType */> {
+template<typename ArgType> class TypeCastTraits<const CyberCore::$class, ArgType, false /* isBaseType */> {
 public:
     static bool isOfType(ArgType& node) { return checkTagName(node); }
 private:
@@ -748,19 +748,19 @@ END
        ;
        if ($parameters{namespace} eq "HTML" && ($allElements{$elementKey}{wrapperOnlyIfMediaIsAvailable} || $allElements{$elementKey}{settingsConditional} || $allElements{$elementKey}{deprecatedGlobalSettingsConditional})) {
            print F <<END
-    static bool checkTagName(const WebCore::HTMLElement& element) { return !element.isHTMLUnknownElement() && element.hasTagName(WebCore::$parameters{namespace}Names::$allElements{$elementKey}{identifier}Tag); }
-    static bool checkTagName(const WebCore::Node& node) { return is<WebCore::HTMLElement>(node) && checkTagName(downcast<WebCore::HTMLElement>(node)); }
+    static bool checkTagName(const CyberCore::HTMLElement& element) { return !element.isHTMLUnknownElement() && element.hasTagName(CyberCore::$parameters{namespace}Names::$allElements{$elementKey}{identifier}Tag); }
+    static bool checkTagName(const CyberCore::Node& node) { return is<CyberCore::HTMLElement>(node) && checkTagName(downcast<CyberCore::HTMLElement>(node)); }
 END
            ;
        } else {
            print F <<END
-    static bool checkTagName(const WebCore::$parameters{namespace}Element& element) { return element.hasTagName(WebCore::$parameters{namespace}Names::$allElements{$elementKey}{identifier}Tag); }
-    static bool checkTagName(const WebCore::Node& node) { return node.hasTagName(WebCore::$parameters{namespace}Names::$allElements{$elementKey}{identifier}Tag); }
+    static bool checkTagName(const CyberCore::$parameters{namespace}Element& element) { return element.hasTagName(CyberCore::$parameters{namespace}Names::$allElements{$elementKey}{identifier}Tag); }
+    static bool checkTagName(const CyberCore::Node& node) { return node.hasTagName(CyberCore::$parameters{namespace}Names::$allElements{$elementKey}{identifier}Tag); }
 END
            ;
        }
        print F <<END
-    static bool checkTagName(const WebCore::EventTarget& target) { return is<WebCore::Node>(target) && checkTagName(downcast<WebCore::Node>(target)); }
+    static bool checkTagName(const CyberCore::EventTarget& target) { return is<CyberCore::Node>(target) && checkTagName(downcast<CyberCore::Node>(target)); }
 };
 }
 END
@@ -809,24 +809,24 @@ END
 
     if (keys %allElements) {
         print F "// Tags\n";
-        printMacros($F, "WEBCORE_EXPORT extern LazyNeverDestroyed<const WebCore::$parameters{namespace}QualifiedName>", "Tag", \%allElements, "identifier");
+        printMacros($F, "WEBCORE_EXPORT extern LazyNeverDestroyed<const CyberCore::$parameters{namespace}QualifiedName>", "Tag", \%allElements, "identifier");
     }
 
     if (keys %allAttrs) {
         print F "// Attributes\n";
-        printMacros($F, "WEBCORE_EXPORT extern LazyNeverDestroyed<const WebCore::QualifiedName>", "Attr", \%allAttrs, "identifier");
+        printMacros($F, "WEBCORE_EXPORT extern LazyNeverDestroyed<const CyberCore::QualifiedName>", "Attr", \%allAttrs, "identifier");
     }
 
     print F "\n";
 
     if (keys %allElements) {
         print F "const unsigned $parameters{namespace}TagsCount = ", scalar(keys %allElements), ";\n";
-        print F "const WebCore::$parameters{namespace}QualifiedName* const* get$parameters{namespace}Tags();\n";
+        print F "const CyberCore::$parameters{namespace}QualifiedName* const* get$parameters{namespace}Tags();\n";
     }
 
     if (keys %allAttrs) {
         print F "const unsigned $parameters{namespace}AttrsCount = ", scalar(keys %allAttrs), ";\n";
-        print F "const WebCore::QualifiedName* const* get$parameters{namespace}Attrs();\n";
+        print F "const CyberCore::QualifiedName* const* get$parameters{namespace}Attrs();\n";
     }
 
     printInit($F, 1);
@@ -852,7 +852,7 @@ sub printTagNameHeaderFile
     print F "#include <wtf/NeverDestroyed.h>\n";
     print F "#include <wtf/text/AtomString.h>\n";
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     print F "class QualifiedName;\n";
     print F "\n";
@@ -935,7 +935,7 @@ sub printTagNameHeaderFile
         print F "}\n";
         print F "\n";
     }
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
     close F;
 }
 
@@ -953,7 +953,7 @@ sub printTagNameCppFile
         print F "#include \"${namespace}Names.h\"\n";
     }
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     print F "static constexpr void* tagQualifiedNamePointers[] = {\n";
     my %handledTags = ();
@@ -1009,7 +1009,7 @@ sub printTagNameCppFile
     print F "}\n";
     print F "#endif\n";
     print F "\n";
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
     close F;
 }
 
@@ -1026,7 +1026,7 @@ sub printElementNameHeaderFile
     print F "#include \"TagName.h\"\n";
     print F "#include <wtf/Forward.h>\n";
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     print F "class QualifiedName;\n";
     print F "\n";
@@ -1120,7 +1120,7 @@ sub printElementNameHeaderFile
     print F "    return ElementName::Unknown;\n";
     print F "}\n";
     print F "\n";
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
     close F;
 }
 
@@ -1138,7 +1138,7 @@ sub printElementNameCppFile
         print F "#include \"${namespace}Names.h\"\n";
     }
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     for my $namespace (sort keys %allElementsPerNamespace) {
         my $namespaceIdentifier = $namespace eq "" ? "NoNamespace" : $namespace;
@@ -1185,7 +1185,7 @@ sub printElementNameCppFile
     print F "    return nullQName();\n";
     print F "}\n";
     print F "\n";
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
     close F;
 }
 
@@ -1200,7 +1200,7 @@ sub printNamespaceHeaderFile
     print F "\n";
     print F "#include <wtf/Forward.h>\n";
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     print F "enum class Namespace : uint8_t {\n";
     print F "    Unknown,\n";
@@ -1212,7 +1212,7 @@ sub printNamespaceHeaderFile
     print F "\n";
     print F "Namespace findNamespace(const AtomString&);\n";
     print F "\n";
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
     close F;
 }
 
@@ -1335,7 +1335,7 @@ sub printNamesCppFile
     open F, ">$cppPath";
     
     printLicenseHeader($F);
-    printCppHead($F, "DOM", $parameters{namespace}, <<END, "WebCore");
+    printCppHead($F, "DOM", $parameters{namespace}, <<END, "CyberCore");
 #include "ElementName.h"
 #include "Namespace.h"
 END
@@ -1360,8 +1360,8 @@ END
             print F "WEBCORE_EXPORT LazyNeverDestroyed<const $parameters{namespace}QualifiedName> $allElements{$elementKey}{identifier}Tag;\n";
         }
 
-        print F "\n\nconst WebCore::$parameters{namespace}QualifiedName* const* get$parameters{namespace}Tags()\n";
-        print F "{\n    static const WebCore::$parameters{namespace}QualifiedName* const $parameters{namespace}Tags[] = {\n";
+        print F "\n\nconst CyberCore::$parameters{namespace}QualifiedName* const* get$parameters{namespace}Tags()\n";
+        print F "{\n    static const CyberCore::$parameters{namespace}QualifiedName* const $parameters{namespace}Tags[] = {\n";
         for my $elementKey (sort keys %allElements) {
             print F "        &$allElements{$elementKey}{identifier}Tag.get(),\n";
         }
@@ -1375,8 +1375,8 @@ END
         for my $attrKey (sort keys %allAttrs) {
             print F "WEBCORE_EXPORT LazyNeverDestroyed<const QualifiedName> $allAttrs{$attrKey}{identifier}Attr;\n";
         }
-        print F "\n\nconst WebCore::QualifiedName* const* get$parameters{namespace}Attrs()\n";
-        print F "{\n    static const WebCore::QualifiedName* const $parameters{namespace}Attrs[] = {\n";
+        print F "\n\nconst CyberCore::QualifiedName* const* get$parameters{namespace}Attrs()\n";
+        print F "{\n    static const CyberCore::QualifiedName* const $parameters{namespace}Attrs[] = {\n";
         for my $attrKey (sort keys %allAttrs) {
             print F "        &$allAttrs{$attrKey}{identifier}Attr.get(),\n";
         }
@@ -1425,7 +1425,7 @@ sub printNamespaceCppFile
         print F "#include \"${namespace}Names.h\"\n";
     }
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     print F "Namespace findNamespace(const AtomString& namespaceURI)\n";
     print F "{\n";
@@ -1439,7 +1439,7 @@ sub printNamespaceCppFile
     print F "    return Namespace::Unknown;\n";
     print F "}\n";
     print F "\n";
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
     close F;
 }
 
@@ -1598,7 +1598,7 @@ END
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using $parameters{namespace}ConstructorFunction = Ref<$parameters{namespace}Element> (*)(const QualifiedName&, Document&$formElementArgumentForDeclaration, bool createdByParser);
 
@@ -1711,7 +1711,7 @@ Ref<$parameters{namespace}Element> $parameters{namespace}ElementFactory::createE
     return $parameters{fallbackInterfaceName}::create(name, document);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 END
     ;
@@ -1734,7 +1734,7 @@ sub printFactoryHeaderFile
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLFormElement;
@@ -1892,7 +1892,7 @@ END
 
 using namespace JSC;
 
-namespace WebCore {
+namespace CyberCore {
 
 using Create$parameters{namespace}ElementWrapperFunction = JSDOMObject* (*)(JSDOMGlobalObject*, Ref<$parameters{namespace}Element>&&);
 
@@ -2003,7 +2003,7 @@ sub printWrapperFactoryHeaderFile
     print F <<END
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class JSDOMObject;
     class JSDOMGlobalObject;

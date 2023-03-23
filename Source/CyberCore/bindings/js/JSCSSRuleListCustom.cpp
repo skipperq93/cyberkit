@@ -33,7 +33,7 @@
 #include "JSStyleSheetCustom.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 bool JSCSSRuleListOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, AbstractSlotVisitor& visitor, const char** reason)
@@ -46,14 +46,14 @@ bool JSCSSRuleListOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> ha
         if (UNLIKELY(reason))
             *reason = "CSSStyleSheet is opaque root";
 
-        return containsWebCoreOpaqueRoot(visitor, styleSheet);
+        return containsCyberCoreOpaqueRoot(visitor, styleSheet);
     }
     
     if (CSSRule* cssRule = jsCSSRuleList->wrapped().item(0)) {
         if (UNLIKELY(reason))
             *reason = "CSSRule is opaque root";
 
-        return containsWebCoreOpaqueRoot(visitor, cssRule);
+        return containsCyberCoreOpaqueRoot(visitor, cssRule);
     }
     return false;
 }

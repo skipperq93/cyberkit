@@ -23,7 +23,7 @@
 #include "JSDOMWrapper.h"
 #include "JSWorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedWorkerGlobalScope;
 
@@ -104,4 +104,4 @@ template<> struct JSDOMWrapperConverterTraits<SharedWorkerGlobalScope> {
     using ToWrappedReturnType = SharedWorkerGlobalScope*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

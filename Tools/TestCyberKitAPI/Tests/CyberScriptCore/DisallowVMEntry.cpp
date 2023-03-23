@@ -46,7 +46,7 @@ static void enterScope(VM& vm, unsigned entryCount, unsigned remainingEntries)
     EXPECT_EQ(vm.disallowVMEntryCount, entryCount);
 }
 
-TEST(JavaScriptCore_DisallowVMEntry, NestedScopes)
+TEST(CyberScriptCore_DisallowVMEntry, NestedScopes)
 {
     WTF::initializeMainThread();
     JSC::initialize();
@@ -60,7 +60,7 @@ TEST(JavaScriptCore_DisallowVMEntry, NestedScopes)
     }
 }
 
-TEST(JavaScriptCore_DisallowVMEntry, CopyConstruction)
+TEST(CyberScriptCore_DisallowVMEntry, CopyConstruction)
 {
     WTF::initializeMainThread();
     JSC::initialize();
@@ -84,7 +84,7 @@ TEST(JavaScriptCore_DisallowVMEntry, CopyConstruction)
     }
 }
 
-TEST(JavaScriptCore_DisallowVMEntry, CopyAssignment)
+TEST(CyberScriptCore_DisallowVMEntry, CopyAssignment)
 {
     WTF::initializeMainThread();
     JSC::initialize();

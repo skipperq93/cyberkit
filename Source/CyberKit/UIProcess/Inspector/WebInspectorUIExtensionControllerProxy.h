@@ -39,7 +39,7 @@ namespace API {
 class InspectorExtension;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -91,6 +91,6 @@ private:
     bool m_frontendLoaded { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

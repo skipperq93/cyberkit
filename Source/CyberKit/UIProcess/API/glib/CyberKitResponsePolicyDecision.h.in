@@ -19,27 +19,27 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitResponsePolicyDecision_h
-#define WebKitResponsePolicyDecision_h
+#ifndef CyberKitResponsePolicyDecision_h
+#define CyberKitResponsePolicyDecision_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitPolicyDecision.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIResponse.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPolicyDecision.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIResponse.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_RESPONSE_POLICY_DECISION            (webkit_response_policy_decision_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_RESPONSE_POLICY_DECISION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_RESPONSE_POLICY_DECISION, WebKitResponsePolicyDecision))
-#define WEBKIT_RESPONSE_POLICY_DECISION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_RESPONSE_POLICY_DECISION, WebKitResponsePolicyDecisionClass))
+#define WEBKIT_RESPONSE_POLICY_DECISION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_RESPONSE_POLICY_DECISION, CyberKitResponsePolicyDecision))
+#define WEBKIT_RESPONSE_POLICY_DECISION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_RESPONSE_POLICY_DECISION, CyberKitResponsePolicyDecisionClass))
 #define WEBKIT_IS_RESPONSE_POLICY_DECISION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_RESPONSE_POLICY_DECISION))
 #define WEBKIT_IS_RESPONSE_POLICY_DECISION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_RESPONSE_POLICY_DECISION))
-#define WEBKIT_RESPONSE_POLICY_DECISION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_RESPONSE_POLICY_DECISION, WebKitResponsePolicyDecisionClass))
+#define WEBKIT_RESPONSE_POLICY_DECISION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_RESPONSE_POLICY_DECISION, CyberKitResponsePolicyDecisionClass))
 
-struct _WebKitResponsePolicyDecisionClass {
-    WebKitPolicyDecisionClass parent_class;
+struct _CyberKitResponsePolicyDecisionClass {
+    CyberKitPolicyDecisionClass parent_class;
 
     /*< private >*/
     void (*_webkit_reserved0) (void);
@@ -49,19 +49,19 @@ struct _WebKitResponsePolicyDecisionClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitResponsePolicyDecision, webkit_response_policy_decision, WEBKIT, RESPONSE_POLICY_DECISION, WebKitPolicyDecision)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitResponsePolicyDecision, webkit_response_policy_decision, WEBKIT, RESPONSE_POLICY_DECISION, CyberKitPolicyDecision)
 
-WEBKIT_API WebKitURIRequest *
-webkit_response_policy_decision_get_request                 (WebKitResponsePolicyDecision *decision);
+WEBKIT_API CyberKitURIRequest *
+webkit_response_policy_decision_get_request                 (CyberKitResponsePolicyDecision *decision);
 
-WEBKIT_API WebKitURIResponse *
-webkit_response_policy_decision_get_response                (WebKitResponsePolicyDecision *decision);
-
-WEBKIT_API gboolean
-webkit_response_policy_decision_is_mime_type_supported      (WebKitResponsePolicyDecision *decision);
+WEBKIT_API CyberKitURIResponse *
+webkit_response_policy_decision_get_response                (CyberKitResponsePolicyDecision *decision);
 
 WEBKIT_API gboolean
-webkit_response_policy_decision_is_main_frame_main_resource (WebKitResponsePolicyDecision* decision);
+webkit_response_policy_decision_is_mime_type_supported      (CyberKitResponsePolicyDecision *decision);
+
+WEBKIT_API gboolean
+webkit_response_policy_decision_is_main_frame_main_resource (CyberKitResponsePolicyDecision* decision);
 
 G_END_DECLS
 

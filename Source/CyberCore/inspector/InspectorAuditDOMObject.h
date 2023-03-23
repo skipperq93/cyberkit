@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Node;
@@ -53,4 +53,4 @@ private:
     PageAuditAgent& m_auditAgent;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

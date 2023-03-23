@@ -28,7 +28,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSFontStyleRangeValue::customCSSText() const
 {

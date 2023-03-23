@@ -25,10 +25,10 @@
 
 bool WKContextConfigurationDisableFontHintingForTesting(WKContextConfigurationRef configuration)
 {
-    return WebKit::toImpl(configuration)->disableFontHintingForTesting();
+    return CyberKit::toImpl(configuration)->disableFontHintingForTesting();
 }
 
 void WKContextConfigurationSetDisableFontHintingForTesting(WKContextConfigurationRef configuration, bool disable)
 {
-    WebKit::toImpl(configuration)->setDisableFontHintingForTesting(disable);
+    CyberKit::toImpl(configuration)->setDisableFontHintingForTesting(disable);
 }

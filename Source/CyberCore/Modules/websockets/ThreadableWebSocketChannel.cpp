@@ -48,7 +48,7 @@
 #include "WorkerThread.h"
 #include "WorkerThreadableWebSocketChannel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ThreadableWebSocketChannel> ThreadableWebSocketChannel::create(Document& document, WebSocketChannelClient& client, SocketProvider& provider)
 {
@@ -154,4 +154,4 @@ std::optional<ResourceRequest> ThreadableWebSocketChannel::webSocketConnectReque
     return request;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

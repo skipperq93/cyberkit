@@ -31,7 +31,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBDatabaseInfo;
 
@@ -71,4 +71,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

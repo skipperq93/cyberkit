@@ -29,7 +29,7 @@
 #include "NodeFilterCondition.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NativeNodeFilter final : public NodeFilter {
 public:
@@ -48,4 +48,4 @@ private:
     Ref<NodeFilterCondition> m_condition;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

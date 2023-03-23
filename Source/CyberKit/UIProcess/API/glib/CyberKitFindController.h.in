@@ -19,23 +19,23 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitFindController_h
-#define WebKitFindController_h
+#ifndef CyberKitFindController_h
+#define CyberKitFindController_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_FIND_CONTROLLER            (webkit_find_controller_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_FIND_CONTROLLER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FIND_CONTROLLER, WebKitFindController))
-#define WEBKIT_FIND_CONTROLLER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FIND_CONTROLLER, WebKitFindControllerClass))
+#define WEBKIT_FIND_CONTROLLER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FIND_CONTROLLER, CyberKitFindController))
+#define WEBKIT_FIND_CONTROLLER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FIND_CONTROLLER, CyberKitFindControllerClass))
 #define WEBKIT_IS_FIND_CONTROLLER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_FIND_CONTROLLER))
 #define WEBKIT_IS_FIND_CONTROLLER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_FIND_CONTROLLER))
-#define WEBKIT_FIND_CONTROLLER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FIND_CONTROLLER, WebKitFindControllerClass))
+#define WEBKIT_FIND_CONTROLLER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FIND_CONTROLLER, CyberKitFindControllerClass))
 
-struct _WebKitFindControllerClass {
+struct _CyberKitFindControllerClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -46,12 +46,12 @@ struct _WebKitFindControllerClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitFindController, webkit_find_controller, WEBKIT, FIND_CONTROLLER, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitFindController, webkit_find_controller, WEBKIT, FIND_CONTROLLER, GObject)
 
-typedef struct _WebKitWebView WebKitWebView;
+typedef struct _CyberKitWebView CyberKitWebView;
 
 /**
- * WebKitFindOptions:
+ * CyberKitFindOptions:
  * @WEBKIT_FIND_OPTIONS_NONE: no search flags, this means a case
  *   sensitive, no wrap, forward only search.
  * @WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE: case insensitive search.
@@ -73,40 +73,40 @@ typedef enum {
   WEBKIT_FIND_OPTIONS_TREAT_MEDIAL_CAPITAL_AS_WORD_START = 1 << 2,
   WEBKIT_FIND_OPTIONS_BACKWARDS =                          1 << 3,
   WEBKIT_FIND_OPTIONS_WRAP_AROUND =                        1 << 4
-} WebKitFindOptions;
+} CyberKitFindOptions;
 
 WEBKIT_API void
-webkit_find_controller_search              (WebKitFindController *find_controller,
+webkit_find_controller_search              (CyberKitFindController *find_controller,
                                             const gchar          *search_text,
                                             guint32               find_options,
                                             guint                 max_match_count);
 
 WEBKIT_API void
-webkit_find_controller_search_finish       (WebKitFindController *find_controller);
+webkit_find_controller_search_finish       (CyberKitFindController *find_controller);
 
 WEBKIT_API void
-webkit_find_controller_search_next         (WebKitFindController *find_controller);
+webkit_find_controller_search_next         (CyberKitFindController *find_controller);
 
 WEBKIT_API void
-webkit_find_controller_search_previous     (WebKitFindController *find_controller);
+webkit_find_controller_search_previous     (CyberKitFindController *find_controller);
 
 WEBKIT_API void
-webkit_find_controller_count_matches       (WebKitFindController *find_controller,
+webkit_find_controller_count_matches       (CyberKitFindController *find_controller,
                                             const gchar          *search_text,
                                             guint32               find_options,
                                             guint                 max_match_count);
 
 WEBKIT_API const gchar *
-webkit_find_controller_get_search_text     (WebKitFindController *find_controller);
+webkit_find_controller_get_search_text     (CyberKitFindController *find_controller);
 
 WEBKIT_API guint32
-webkit_find_controller_get_options         (WebKitFindController *find_controller);
+webkit_find_controller_get_options         (CyberKitFindController *find_controller);
 
 WEBKIT_API guint
-webkit_find_controller_get_max_match_count (WebKitFindController *find_controller);
+webkit_find_controller_get_max_match_count (CyberKitFindController *find_controller);
 
-WEBKIT_API WebKitWebView *
-webkit_find_controller_get_web_view        (WebKitFindController *find_controller);
+WEBKIT_API CyberKitWebView *
+webkit_find_controller_get_web_view        (CyberKitFindController *find_controller);
 
 G_END_DECLS
 

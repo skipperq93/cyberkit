@@ -47,7 +47,7 @@ static inline NSCorrectionIndicatorType correctionIndicatorType(CyberCore::Alter
     }
 }
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 CorrectionPanel::CorrectionPanel()
@@ -145,6 +145,6 @@ void CorrectionPanel::handleAcceptedReplacement(WebViewImpl& webViewImpl, NSStri
         m_resultForDismissal = adoptNS([acceptedReplacement copy]);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(AUTOCORRECTION_PANEL)

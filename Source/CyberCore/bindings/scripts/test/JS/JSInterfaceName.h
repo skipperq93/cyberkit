@@ -24,7 +24,7 @@
 #include "JSDOMWrapper.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSInterfaceName : public JSDOMWrapper<InterfaceName> {
 public:
@@ -93,4 +93,4 @@ template<> struct JSDOMWrapperConverterTraits<InterfaceName> {
     using ToWrappedReturnType = InterfaceName*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

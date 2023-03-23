@@ -27,7 +27,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BeforeTextInsertedEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(BeforeTextInsertedEvent);
@@ -51,6 +51,6 @@ private:
     String m_text;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(BeforeTextInsertedEvent)

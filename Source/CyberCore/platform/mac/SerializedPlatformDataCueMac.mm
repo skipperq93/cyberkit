@@ -36,7 +36,7 @@
 #import <CyberScriptCore/JSArrayBuffer.h>
 #import <CyberScriptCore/JSContextRef.h>
 #import <CyberScriptCore/JSObjectRef.h>
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <objc/runtime.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 

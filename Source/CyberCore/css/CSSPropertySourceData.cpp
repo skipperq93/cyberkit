@@ -35,7 +35,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SourceRange::SourceRange()
     : start(0)
@@ -92,4 +92,4 @@ unsigned CSSPropertySourceData::hash() const
     return StringHash::hash(name) + 3 * StringHash::hash(value) + 7 * important + 13 * parsedOk + 31;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

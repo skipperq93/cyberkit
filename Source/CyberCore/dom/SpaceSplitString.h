@@ -23,7 +23,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpaceSplitStringData {
     WTF_MAKE_NONCOPYABLE(SpaceSplitStringData);
@@ -130,4 +130,4 @@ inline SpaceSplitString::SpaceSplitString(const AtomString& string, ShouldFoldCa
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

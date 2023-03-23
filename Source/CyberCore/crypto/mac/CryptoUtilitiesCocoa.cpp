@@ -31,7 +31,7 @@
 #include "CryptoAlgorithmAES_CTR.h"
 #include <CommonCrypto/CommonCrypto.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Vector<uint8_t>> transformAES_CTR(CCOperation operation, const Vector<uint8_t>& counter, size_t counterLength, const Vector<uint8_t>& key, const uint8_t* data, size_t dataSize)
 {
@@ -175,6 +175,6 @@ Vector<uint8_t> calculateSHA256Signature(const Vector<uint8_t>& key, const uint8
     return calculateHMACSignature(kCCHmacAlgSHA256, key, data, size);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

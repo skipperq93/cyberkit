@@ -50,7 +50,7 @@
 #include "TextIterator.h"
 #include "VisibleUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -905,4 +905,4 @@ bool TypingCommand::isTypingCommand() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

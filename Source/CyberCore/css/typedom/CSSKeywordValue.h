@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ExceptionOr;
 class CSSKeywordValue;
@@ -57,8 +57,8 @@ private:
     String m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSKeywordValue)
-    static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSKeywordValue; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSKeywordValue)
+    static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSKeywordValue; }
 SPECIALIZE_TYPE_TRAITS_END()

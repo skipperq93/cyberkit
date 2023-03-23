@@ -34,7 +34,7 @@
 typedef struct _GSubprocess GSubprocess;
 typedef struct _GSubprocessLauncher GSubprocessLauncher;
 
-namespace WebKit {
+namespace CyberKit {
 
 GRefPtr<GSubprocess> bubblewrapSpawn(GSubprocessLauncher*, const ProcessLauncher::LaunchOptions&, char** argv, GError**);
 int argumentsToFileDescriptor(const Vector<CString>&, const char*);

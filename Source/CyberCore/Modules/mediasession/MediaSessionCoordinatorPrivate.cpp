@@ -31,7 +31,7 @@
 #include <wtf/Logger.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void MediaSessionCoordinatorPrivate::setLogger(const Logger& logger, const void* logIdentifier)
 {
@@ -39,6 +39,6 @@ void MediaSessionCoordinatorPrivate::setLogger(const Logger& logger, const void*
     m_logIdentifier = logIdentifier;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SESSION_COORDINATOR)

@@ -29,7 +29,7 @@
 
 #include "FetchResponse.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FetchBodySource::FetchBodySource(FetchBodyOwner& bodyOwner)
     : m_bodyOwner(bodyOwner)
@@ -94,4 +94,4 @@ void FetchBodySource::error(const Exception& value)
     m_bodyOwner = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

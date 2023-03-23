@@ -36,7 +36,7 @@
 #include <wtf/Deque.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class Document;
@@ -140,6 +140,6 @@ private:
     unsigned m_videoBitsPerSecond { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

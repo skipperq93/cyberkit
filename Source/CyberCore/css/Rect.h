@@ -22,7 +22,7 @@
 
 #include "RectBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Rect final : public RectBase {
 public:
@@ -42,4 +42,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

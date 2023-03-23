@@ -30,8 +30,8 @@
 
 #include <unicode/utypes.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT bool isCharacterSmartReplaceExempt(UChar32 c, bool isPreviousCharacter);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -42,7 +42,7 @@
 #import <pal/cocoa/AVFoundationSoftLink.h>
 #import <pal/cocoa/SpeechSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool checkSandboxRequirementForType(MediaPermissionType type)
 {
@@ -306,4 +306,4 @@ bool checkSpeechRecognitionServiceAvailability(const String& localeIdentifier)
 
 #endif // HAVE(SPEECHRECOGNIZER)
 
-} // namespace WebKit
+} // namespace CyberKit

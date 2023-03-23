@@ -39,7 +39,7 @@
 #include <wtf/Lock.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventTarget;
 
@@ -88,4 +88,4 @@ void EventListenerMap::visitJSEventListeners(Visitor& visitor)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

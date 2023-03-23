@@ -28,7 +28,7 @@
 #include "Event.h"
 #include "IDBRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBRequestCompletionEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(IDBRequestCompletionEvent);
@@ -44,4 +44,4 @@ private:
     Ref<IDBRequest> m_request;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

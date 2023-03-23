@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentFilterUnblockHandler;
 class ResourceError;
@@ -48,6 +48,6 @@ public:
     virtual void handleProvisionalLoadFailureFromContentFilter(const URL& blockedPageURL, SubstituteData&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

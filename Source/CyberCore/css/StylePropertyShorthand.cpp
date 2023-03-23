@@ -23,7 +23,7 @@
 #include "StylePropertyShorthand.h"
 #include "StylePropertyShorthandFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StylePropertyShorthand animationShorthandForParsing()
 {
@@ -63,4 +63,4 @@ unsigned indexOfShorthandForLonghand(CSSPropertyID shorthandID, const StylePrope
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -44,10 +44,10 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class XRFrameRequestCallback;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 class WebXRSystem;
 class WebXRView;
 class WebXRViewerSpace;
@@ -167,8 +167,8 @@ private:
     bool m_inputInitialized { false };
 };
 
-WebCoreOpaqueRoot root(WebXRSession*);
+CyberCoreOpaqueRoot root(WebXRSession*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

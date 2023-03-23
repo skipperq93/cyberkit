@@ -133,7 +133,7 @@ static NSString *getUTIForUSDMIMEType(const String& mimeType)
 
 - (void)thumbnailView:(ASVThumbnailView *)thumbnailView wantsToPresentPreviewController:(QLPreviewController *)previewController forItem:(QLItem *)item
 {
-    RefPtr<WebKit::WebPageProxy> page = _webView->_page;
+    RefPtr<CyberKit::WebPageProxy> page = _webView->_page;
     UIViewController *presentingViewController = page->uiClient().presentingViewController();
     [presentingViewController presentViewController:previewController animated:YES completion:nil];
 }
@@ -180,13 +180,13 @@ static NSString *getUTIForUSDMIMEType(const String& mimeType)
 
 - (void)web_countStringMatches:(NSString *)string options:(_WKFindOptions)options maxCount:(NSUInteger)maxCount
 {
-    RefPtr<WebKit::WebPageProxy> page = _webView->_page;
+    RefPtr<CyberKit::WebPageProxy> page = _webView->_page;
     page->findClient().didCountStringMatches(page.get(), string, 0);
 }
 
 - (void)web_findString:(NSString *)string options:(_WKFindOptions)options maxCount:(NSUInteger)maxCount
 {
-    RefPtr<WebKit::WebPageProxy> page = _webView->_page;
+    RefPtr<CyberKit::WebPageProxy> page = _webView->_page;
     page->findClient().didFailToFindString(page.get(), string);
 }
 

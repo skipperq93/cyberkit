@@ -30,7 +30,7 @@
 #include "Event.h"
 #include "PaymentSessionError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaymentSessionError;
 
@@ -53,6 +53,6 @@ private:
     PaymentSessionError m_sessionError;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

@@ -37,7 +37,7 @@
 #include "LocalizedStrings.h"
 
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -182,6 +182,6 @@ void AccessibilityMediaObject::enterFullscreen() const
     element->enterFullscreen();
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

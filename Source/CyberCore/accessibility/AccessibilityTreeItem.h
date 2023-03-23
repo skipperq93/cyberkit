@@ -30,7 +30,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityTreeItem final : public AccessibilityRenderObject {
 public:
@@ -46,6 +46,6 @@ private:
     bool m_isTreeItemValid;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityTreeItem, isTreeItem())

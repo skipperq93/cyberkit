@@ -41,8 +41,8 @@ shift;
 open HEADER, ">", $header or die;
 open OUT, ">", $out or die;
 
-print HEADER "namespace WebCore {\n";
-print OUT "namespace WebCore {\n";
+print HEADER "namespace CyberCore {\n";
+print OUT "namespace CyberCore {\n";
 
 for my $in (@ARGV) {
     $in =~ /(\w+)\.css$/ or $in =~ /(\w+)\.js$/ or die;

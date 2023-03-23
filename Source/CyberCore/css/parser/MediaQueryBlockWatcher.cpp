@@ -32,7 +32,7 @@
 
 #include "CSSParserToken.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaQueryBlockWatcher::MediaQueryBlockWatcher()
 {
@@ -48,4 +48,4 @@ void MediaQueryBlockWatcher::handleToken(const CSSParserToken& token)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

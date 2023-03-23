@@ -34,7 +34,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObject, Ref<ImageData>&& imageData)

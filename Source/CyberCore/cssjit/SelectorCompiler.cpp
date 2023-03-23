@@ -61,7 +61,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace SelectorCompiler {
 
 extern "C" {
@@ -4373,6 +4373,6 @@ void SelectorCodeGenerator::generateNthFilterTest(Assembler::JumpList& failureCa
 }
 
 }; // namespace SelectorCompiler.
-}; // namespace WebCore.
+}; // namespace CyberCore.
 
 #endif // ENABLE(CSS_SELECTOR_JIT)

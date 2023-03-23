@@ -29,7 +29,7 @@
 #include "GPUBuffer.h"
 #include "GPUQuerySet.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUCommandEncoder::label() const
 {

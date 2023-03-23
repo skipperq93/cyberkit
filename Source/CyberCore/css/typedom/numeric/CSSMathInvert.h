@@ -27,7 +27,7 @@
 
 #include "CSSMathValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSMathInvert final : public CSSMathValue {
     WTF_MAKE_ISO_ALLOCATED(CSSMathInvert);
@@ -49,10 +49,10 @@ private:
     Ref<CSSNumericValue> m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSMathInvert)
-static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSMathInvert; }
-static bool isType(const WebCore::CSSNumericValue& numericValue) { return numericValue.getType() == WebCore::CSSStyleValueType::CSSMathInvert; }
-static bool isType(const WebCore::CSSMathValue& mathValue) { return mathValue.getType() == WebCore::CSSStyleValueType::CSSMathInvert; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSMathInvert)
+static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSMathInvert; }
+static bool isType(const CyberCore::CSSNumericValue& numericValue) { return numericValue.getType() == CyberCore::CSSStyleValueType::CSSMathInvert; }
+static bool isType(const CyberCore::CSSMathValue& mathValue) { return mathValue.getType() == CyberCore::CSSStyleValueType::CSSMathInvert; }
 SPECIALIZE_TYPE_TRAITS_END()

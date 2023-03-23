@@ -31,7 +31,7 @@
 #include "Page.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 NavigatorWebDriver::NavigatorWebDriver() = default;
@@ -68,4 +68,4 @@ bool NavigatorWebDriver::webdriver(const Navigator& navigator)
     return NavigatorWebDriver::isControlledByAutomation(navigator);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include "DOMException.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void ErrorCallback::scheduleCallback(ScriptExecutionContext& context, Ref<DOMException>&& exception)
 {

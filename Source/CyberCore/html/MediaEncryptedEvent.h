@@ -37,7 +37,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaEncryptedEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(MediaEncryptedEvent);
@@ -64,6 +64,6 @@ private:
     RefPtr<JSC::ArrayBuffer> m_initData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

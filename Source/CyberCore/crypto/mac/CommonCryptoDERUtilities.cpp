@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 size_t bytesUsedToEncodedLength(uint8_t octet)
 {
@@ -72,6 +72,6 @@ size_t bytesNeededForEncodedLength(size_t length)
     return 1 + extraBytesNeededForEncodedLength(length);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

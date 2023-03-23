@@ -30,7 +30,7 @@
 #include "InlineLineBuilder.h"
 #include "TextUtil.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class Box;

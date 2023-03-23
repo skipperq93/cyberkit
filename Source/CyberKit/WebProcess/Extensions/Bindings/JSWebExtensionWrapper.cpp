@@ -31,7 +31,7 @@
 #include "JSWebExtensionWrappable.h"
 #include <CyberScriptCore/JSObjectRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 JSValueRef JSWebExtensionWrapper::wrap(JSContextRef context, JSWebExtensionWrappable* object)
 {
@@ -81,6 +81,6 @@ void JSWebExtensionWrapper::finalize(JSObjectRef object)
         wrappable->deref();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

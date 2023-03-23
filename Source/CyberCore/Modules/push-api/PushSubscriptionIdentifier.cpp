@@ -28,7 +28,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Do not change this without thinking about backwards compatibility. Topics are persisted in both PushDatabase and APS.
 String makePushTopic(const PushSubscriptionSetIdentifier& set, const String& scope)
@@ -64,4 +64,4 @@ String PushSubscriptionSetIdentifier::debugDescription() const
     return builder.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

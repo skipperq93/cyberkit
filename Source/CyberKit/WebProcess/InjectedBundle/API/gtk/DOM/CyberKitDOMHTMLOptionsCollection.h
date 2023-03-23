@@ -55,7 +55,7 @@ webkit_dom_html_options_collection_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_html_options_collection_named_item(CyberKitDOMHTMLOptionsCollection* self, const gchar* name);
@@ -66,7 +66,7 @@ webkit_dom_html_options_collection_named_item(CyberKitDOMHTMLOptionsCollection* 
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_options_collection_get_selected_index(CyberKitDOMHTMLOptionsCollection* self);
@@ -77,7 +77,7 @@ webkit_dom_html_options_collection_get_selected_index(CyberKitDOMHTMLOptionsColl
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_options_collection_set_selected_index(CyberKitDOMHTMLOptionsCollection* self, glong value);
@@ -88,7 +88,7 @@ webkit_dom_html_options_collection_set_selected_index(CyberKitDOMHTMLOptionsColl
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_html_options_collection_get_length(CyberKitDOMHTMLOptionsCollection* self);

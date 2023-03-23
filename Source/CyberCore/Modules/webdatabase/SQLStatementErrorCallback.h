@@ -32,7 +32,7 @@
 #include "CallbackResult.h"
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLTransaction;
 class SQLError;
@@ -44,4 +44,4 @@ public:
     virtual CallbackResult<bool> handleEvent(SQLTransaction&, SQLError&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

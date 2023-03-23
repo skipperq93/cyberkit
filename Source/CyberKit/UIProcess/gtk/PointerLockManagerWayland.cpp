@@ -39,7 +39,7 @@
 #include <gdk/gdkwayland.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 PointerLockManagerWayland::PointerLockManagerWayland(WebPageProxy& webPage, const FloatPoint& position, const FloatPoint& globalPosition, WebMouseEventButton button, unsigned short buttons, OptionSet<WebEventModifier> modifiers)
@@ -130,6 +130,6 @@ bool PointerLockManagerWayland::unlock()
     return PointerLockManager::unlock();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(WAYLAND)

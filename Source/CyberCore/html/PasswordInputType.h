@@ -32,7 +32,7 @@
 
 #include "BaseTextInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PasswordInputType final : public BaseTextInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -52,6 +52,6 @@ private:
     bool shouldRespectListAttribute() final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(PasswordInputType, Type::Password)

@@ -39,7 +39,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 int64_t HistoryItem::generateSequenceNumber()
 {
@@ -511,11 +511,11 @@ const char* HistoryItem::logString() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #ifndef NDEBUG
 
-int showTree(const WebCore::HistoryItem* item)
+int showTree(const CyberCore::HistoryItem* item)
 {
     return item->showTree();
 }

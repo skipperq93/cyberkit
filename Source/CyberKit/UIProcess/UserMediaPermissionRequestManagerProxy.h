@@ -43,7 +43,7 @@ struct MediaStreamRequest;
 class SecurityOrigin;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -203,7 +203,7 @@ private:
 
 String convertEnumerationToString(UserMediaPermissionRequestManagerProxy::RequestAction);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if ENABLE(MEDIA_STREAM)
 namespace WTF {
@@ -212,8 +212,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebKit::UserMediaPermissionRequestManagerProxy::RequestAction> {
-    static String toString(const WebKit::UserMediaPermissionRequestManagerProxy::RequestAction type)
+struct LogArgument<CyberKit::UserMediaPermissionRequestManagerProxy::RequestAction> {
+    static String toString(const CyberKit::UserMediaPermissionRequestManagerProxy::RequestAction type)
     {
         return convertEnumerationToString(type);
     }

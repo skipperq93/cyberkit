@@ -61,8 +61,8 @@ public:
 #endif
 #endif // ENABLE(JIT_OPERATION_VALIDATION)
 
-    static void populatePointersInJavaScriptCore();
-    static void populatePointersInJavaScriptCoreForLLInt();
+    static void populatePointersInCyberScriptCore();
+    static void populatePointersInCyberScriptCoreForLLInt();
 
     JS_EXPORT_PRIVATE static void populatePointersInEmbedder(const JITOperationAnnotation* beginOperations, const JITOperationAnnotation* endOperations);
 
@@ -88,8 +88,8 @@ public:
 
 private:
 #if ENABLE(JIT_OPERATION_DISASSEMBLY)
-    static void populateDisassemblyLabelsInJavaScriptCore();
-    static void populateDisassemblyLabelsInJavaScriptCoreForLLInt();
+    static void populateDisassemblyLabelsInCyberScriptCore();
+    static void populateDisassemblyLabelsInCyberScriptCoreForLLInt();
     static void addDisassemblyLabels(const JITOperationAnnotation* begin, const JITOperationAnnotation* end);
 #endif
 
@@ -118,16 +118,16 @@ inline JITOperationList& JITOperationList::instance()
 
 #else // not ENABLE(JIT_OPERATION_VALIDATION)
 
-ALWAYS_INLINE void JITOperationList::populatePointersInJavaScriptCore()
+ALWAYS_INLINE void JITOperationList::populatePointersInCyberScriptCore()
 {
     if (UNLIKELY(Options::needDisassemblySupport()))
-        populateDisassemblyLabelsInJavaScriptCore();
+        populateDisassemblyLabelsInCyberScriptCore();
 }
 
-ALWAYS_INLINE void JITOperationList::populatePointersInJavaScriptCoreForLLInt()
+ALWAYS_INLINE void JITOperationList::populatePointersInCyberScriptCoreForLLInt()
 {
     if (UNLIKELY(Options::needDisassemblySupport()))
-        populateDisassemblyLabelsInJavaScriptCoreForLLInt();
+        populateDisassemblyLabelsInCyberScriptCoreForLLInt();
 }
 
 #endif // ENABLE(JIT_OPERATION_VALIDATION)
@@ -138,8 +138,8 @@ class JITOperationList {
 public:
     static void initialize() { }
 
-    static void populatePointersInJavaScriptCore() { }
-    static void populatePointersInJavaScriptCoreForLLInt() { }
+    static void populatePointersInCyberScriptCore() { }
+    static void populatePointersInCyberScriptCoreForLLInt() { }
 
     template<typename T> static void assertIsJITOperation(T) { }
     template<typename T> static void assertIsJITOperationWithValidation(T) { }

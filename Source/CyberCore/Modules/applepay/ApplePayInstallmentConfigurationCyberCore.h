@@ -29,11 +29,11 @@
 
 #include "ApplePayInstallmentItem.h"
 #include "ApplePayInstallmentRetailChannel.h"
-#include "ApplePaySetupFeatureTypeWebCore.h"
+#include "ApplePaySetupFeatureTypeCyberCore.h"
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayInstallmentConfiguration {
     ApplePaySetupFeatureType featureType { ApplePaySetupFeatureType::AppleCard };
@@ -49,6 +49,6 @@ struct ApplePayInstallmentConfiguration {
     ApplePayInstallmentRetailChannel retailChannel { ApplePayInstallmentRetailChannel::Unknown };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_INSTALLMENTS)

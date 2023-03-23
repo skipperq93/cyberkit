@@ -30,8 +30,8 @@
 
 #if ENABLE(RESOURCE_USAGE)
 
-#include <JavaScriptCore/GCActivityCallback.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/GCActivityCallback.h>
+#include <CyberScriptCore/VM.h>
 #include <psapi.h>
 
 namespace CyberCore {

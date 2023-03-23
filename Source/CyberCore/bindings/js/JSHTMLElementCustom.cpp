@@ -40,7 +40,7 @@
 #include <CyberScriptCore/InternalFunction.h>
 #include <CyberScriptCore/JSWithScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -157,4 +157,4 @@ JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<H
     return createJSHTMLWrapper(globalObject, WTFMove(element));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

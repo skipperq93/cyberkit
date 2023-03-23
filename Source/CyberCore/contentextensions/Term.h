@@ -35,7 +35,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -674,6 +674,6 @@ inline size_t Term::memoryUsed() const
 #endif
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

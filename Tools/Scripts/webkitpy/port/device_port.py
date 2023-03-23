@@ -66,7 +66,7 @@ class DevicePort(DarwinPort):
         if self.get_option('driver_name'):
             return self.get_option('driver_name')
         if self.get_option('webkit_test_runner'):
-            return 'WebKitTestRunnerApp.app'
+            return 'CyberKitTestRunnerApp.app'
         return 'DumpRenderTree.app'
 
     # A device is the target host for a specific worker number.

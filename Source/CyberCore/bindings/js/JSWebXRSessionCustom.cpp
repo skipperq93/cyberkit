@@ -25,20 +25,20 @@
 
 #include "config.h"
 #include "JSWebXRSession.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
 #if ENABLE(WEBXR)
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSWebXRSession::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped());
+    addCyberCoreOpaqueRoot(visitor, wrapped());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSWebXRSession);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

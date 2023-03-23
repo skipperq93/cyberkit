@@ -31,7 +31,7 @@
 #import "ApplePayLineItem.h"
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSDecimalNumber *toDecimalNumber(const String& amount)
 {
@@ -50,9 +50,9 @@ static PKPaymentSummaryItemType toPKPaymentSummaryItemType(ApplePayLineItem::Typ
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-namespace WebCore {
+namespace CyberCore {
 
 #if (HAVE(PASSKIT_RECURRING_SUMMARY_ITEM) || HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 

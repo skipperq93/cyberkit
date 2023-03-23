@@ -35,10 +35,10 @@
 #import "NearFieldSoftLink.h"
 
 @implementation WKNFReaderSessionDelegate {
-    WeakPtr<WebKit::NfcConnection> _connection;
+    WeakPtr<CyberKit::NfcConnection> _connection;
 }
 
-- (instancetype)initWithConnection:(WebKit::NfcConnection&)connection
+- (instancetype)initWithConnection:(CyberKit::NfcConnection&)connection
 {
     if ((self = [super init]))
         _connection = connection;

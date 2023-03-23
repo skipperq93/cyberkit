@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLElement;
 class HTMLQualifiedName;
@@ -61,4 +61,4 @@ private:
     Type m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "CryptoKeyAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CryptoAesKeyAlgorithm : CryptoKeyAlgorithm {
     // The length, in bits, of the key.

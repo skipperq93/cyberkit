@@ -24,7 +24,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRule;
 class CSSStyleSheet;
@@ -88,4 +88,4 @@ private:
     Rule& m_rule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

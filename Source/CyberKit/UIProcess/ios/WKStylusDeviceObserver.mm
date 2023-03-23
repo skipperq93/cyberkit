@@ -70,7 +70,7 @@ static Seconds changeTimeInterval { 10_min };
     if (hasStylusDevice != _hasStylusDevice) {
         _hasStylusDevice = hasStylusDevice;
 
-        WebKit::WebProcessProxy::notifyHasStylusDeviceChanged(_hasStylusDevice);
+        CyberKit::WebProcessProxy::notifyHasStylusDeviceChanged(_hasStylusDevice);
     }
 
     [_changeTimer invalidate];

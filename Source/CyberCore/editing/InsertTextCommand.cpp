@@ -35,7 +35,7 @@
 #include "Text.h"
 #include "VisibleUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 InsertTextCommand::InsertTextCommand(Document& document, const String& text, bool selectInsertedText, RebalanceType rebalanceType, EditAction editingAction)
     : CompositeEditCommand(document, editingAction)

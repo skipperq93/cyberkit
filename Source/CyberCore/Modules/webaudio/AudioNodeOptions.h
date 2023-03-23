@@ -30,7 +30,7 @@
 #include "ChannelCountMode.h"
 #include "ChannelInterpretation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioNodeOptions {
     std::optional<unsigned> channelCount;
@@ -38,6 +38,6 @@ struct AudioNodeOptions {
     std::optional<ChannelInterpretation> channelInterpretation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

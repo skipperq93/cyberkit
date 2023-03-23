@@ -34,7 +34,7 @@
 #include "WebTextChecker.h"
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 #if PLATFORM(GTK)
 
@@ -71,7 +71,7 @@ void WKTextCheckerSetSpellCheckingLanguages(const char* const* languages)
     Vector<String> spellCheckingLanguages;
     for (size_t i = 0; languages[i]; ++i)
         spellCheckingLanguages.append(String::fromUTF8(languages[i]));
-    WebKit::TextChecker::setSpellCheckingLanguages(spellCheckingLanguages);
+    CyberKit::TextChecker::setSpellCheckingLanguages(spellCheckingLanguages);
 #endif
 }
 
@@ -79,5 +79,5 @@ void WKTextCheckerSetSpellCheckingLanguages(const char* const* languages)
 
 void WKTextCheckerSetContinuousSpellCheckingEnabled(bool enabled)
 {
-    WebKit::TextChecker::setContinuousSpellCheckingEnabled(enabled);
+    CyberKit::TextChecker::setContinuousSpellCheckingEnabled(enabled);
 }

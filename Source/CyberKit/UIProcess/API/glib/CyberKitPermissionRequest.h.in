@@ -19,45 +19,45 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitPermissionRequest_h
-#define WebKitPermissionRequest_h
+#ifndef CyberKitPermissionRequest_h
+#define CyberKitPermissionRequest_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_PERMISSION_REQUEST           (webkit_permission_request_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_PERMISSION_REQUEST(obj)           (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_PERMISSION_REQUEST, WebKitPermissionRequest))
+#define WEBKIT_PERMISSION_REQUEST(obj)           (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_PERMISSION_REQUEST, CyberKitPermissionRequest))
 #define WEBKIT_IS_PERMISSION_REQUEST(obj)        (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_PERMISSION_REQUEST))
-#define WEBKIT_PERMISSION_REQUEST_GET_IFACE(obj) (G_TYPE_INSTANCE_GET_INTERFACE((obj), WEBKIT_TYPE_PERMISSION_REQUEST, WebKitPermissionRequestIface))
+#define WEBKIT_PERMISSION_REQUEST_GET_IFACE(obj) (G_TYPE_INSTANCE_GET_INTERFACE((obj), WEBKIT_TYPE_PERMISSION_REQUEST, CyberKitPermissionRequestIface))
 
-typedef struct _WebKitPermissionRequest WebKitPermissionRequest;
-typedef struct _WebKitPermissionRequestIface WebKitPermissionRequestIface;
+typedef struct _CyberKitPermissionRequest CyberKitPermissionRequest;
+typedef struct _CyberKitPermissionRequestIface CyberKitPermissionRequestIface;
 
 WEBKIT_API GType
 webkit_permission_request_get_type (void);
 #else
-WEBKIT_API G_DECLARE_INTERFACE (WebKitPermissionRequest, webkit_permission_request, WEBKIT, PERMISSION_REQUEST, GObject)
+WEBKIT_API G_DECLARE_INTERFACE (CyberKitPermissionRequest, webkit_permission_request, WEBKIT, PERMISSION_REQUEST, GObject)
 #endif
 
 #if ENABLE(2022_GLIB_API)
-struct _WebKitPermissionRequestInterface {
+struct _CyberKitPermissionRequestInterface {
 #else
-struct _WebKitPermissionRequestIface {
+struct _CyberKitPermissionRequestIface {
 #endif
     GTypeInterface parent_interface;
 
-    void (* allow) (WebKitPermissionRequest *request);
-    void (* deny)  (WebKitPermissionRequest *request);
+    void (* allow) (CyberKitPermissionRequest *request);
+    void (* deny)  (CyberKitPermissionRequest *request);
 };
 
 WEBKIT_API void
-webkit_permission_request_allow    (WebKitPermissionRequest *request);
+webkit_permission_request_allow    (CyberKitPermissionRequest *request);
 
 WEBKIT_API void
-webkit_permission_request_deny     (WebKitPermissionRequest *request);
+webkit_permission_request_deny     (CyberKitPermissionRequest *request);
 
 G_END_DECLS
 

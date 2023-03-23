@@ -39,7 +39,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPermissionControllerProxy::WebPermissionControllerProxy(WebProcessProxy& process)
     : m_process(process)
@@ -104,4 +104,4 @@ RefPtr<WebPageProxy> WebPermissionControllerProxy::mostReasonableWebPageProxy(co
     return webPageProxy;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

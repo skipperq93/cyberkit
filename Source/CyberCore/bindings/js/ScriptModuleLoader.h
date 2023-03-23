@@ -44,7 +44,7 @@ class SourceOrigin;
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMGlobalObject;
 class ScriptExecutionContext;
@@ -80,4 +80,4 @@ private:
     JSC::JSGlobalObject* m_shadowRealmGlobal { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -39,7 +39,7 @@
 #import <CyberCore/CyberCoreCALayerExtras.h>
 #import <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<RemoteScrollingTree> RemoteScrollingTree::create(RemoteScrollingCoordinatorProxy& scrollingCoordinator)
@@ -218,6 +218,6 @@ OptionSet<EventListenerRegionType> RemoteScrollingTreeMac::eventListenerRegionTy
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC) && ENABLE(UI_SIDE_COMPOSITING)

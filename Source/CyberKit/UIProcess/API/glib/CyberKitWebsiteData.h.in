@@ -19,17 +19,17 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitWebsiteData_h
-#define WebKitWebsiteData_h
+#ifndef CyberKitWebsiteData_h
+#define CyberKitWebsiteData_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEBSITE_DATA (webkit_website_data_get_type())
 
-typedef struct _WebKitWebsiteData WebKitWebsiteData;
+typedef struct _CyberKitWebsiteData CyberKitWebsiteData;
 
 #if ENABLE(2022_GLIB_API)
 typedef enum {
@@ -46,7 +46,7 @@ typedef enum {
     WEBKIT_WEBSITE_DATA_SERVICE_WORKER_REGISTRATIONS = 1 << 10,
     WEBKIT_WEBSITE_DATA_DOM_CACHE                    = 1 << 11,
     WEBKIT_WEBSITE_DATA_ALL                          = (1 << 12) - 1
-} WebKitWebsiteDataTypes;
+} CyberKitWebsiteDataTypes;
 #else
 typedef enum {
     WEBKIT_WEBSITE_DATA_MEMORY_CACHE                 = 1 << 0,
@@ -64,28 +64,28 @@ typedef enum {
     WEBKIT_WEBSITE_DATA_SERVICE_WORKER_REGISTRATIONS = 1 << 12,
     WEBKIT_WEBSITE_DATA_DOM_CACHE                    = 1 << 13,
     WEBKIT_WEBSITE_DATA_ALL                          = (1 << 14) - 1
-} WebKitWebsiteDataTypes;
+} CyberKitWebsiteDataTypes;
 #endif
 
 WEBKIT_API GType
 webkit_website_data_get_type      (void);
 
-WEBKIT_API WebKitWebsiteData *
-webkit_website_data_ref           (WebKitWebsiteData     *website_data);
+WEBKIT_API CyberKitWebsiteData *
+webkit_website_data_ref           (CyberKitWebsiteData     *website_data);
 
 WEBKIT_API void
-webkit_website_data_unref         (WebKitWebsiteData     *website_data);
+webkit_website_data_unref         (CyberKitWebsiteData     *website_data);
 
 WEBKIT_API const char *
-webkit_website_data_get_name      (WebKitWebsiteData     *website_data);
+webkit_website_data_get_name      (CyberKitWebsiteData     *website_data);
 
-WEBKIT_API WebKitWebsiteDataTypes
-webkit_website_data_get_types     (WebKitWebsiteData     *website_data);
+WEBKIT_API CyberKitWebsiteDataTypes
+webkit_website_data_get_types     (CyberKitWebsiteData     *website_data);
 
 WEBKIT_API guint64
-webkit_website_data_get_size      (WebKitWebsiteData     *website_data,
-                                   WebKitWebsiteDataTypes types);
+webkit_website_data_get_size      (CyberKitWebsiteData     *website_data,
+                                   CyberKitWebsiteDataTypes types);
 
 G_END_DECLS
 
-#endif /* WebKitWebsiteData_h */
+#endif /* CyberKitWebsiteData_h */

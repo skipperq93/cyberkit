@@ -29,7 +29,7 @@
 
 #include <CyberCore/VP9Utilities.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct MediaOverridesForTesting {
     std::optional<bool> systemHasAC;
@@ -87,6 +87,6 @@ struct MediaOverridesForTesting {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -28,7 +28,7 @@
 
 #if WK_HAVE_C_SPI
 
-#include <JavaScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/ConsoleMessage.h>
 
 namespace TestCyberKitAPI {
 

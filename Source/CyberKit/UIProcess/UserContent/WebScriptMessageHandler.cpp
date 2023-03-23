@@ -28,7 +28,7 @@
 
 #include "APIContentWorld.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebScriptMessageHandler> WebScriptMessageHandler::create(std::unique_ptr<Client> client, const String& name, API::ContentWorld& world)
 {
@@ -46,4 +46,4 @@ WebScriptMessageHandler::~WebScriptMessageHandler()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

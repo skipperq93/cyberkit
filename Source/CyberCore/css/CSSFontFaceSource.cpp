@@ -45,7 +45,7 @@
 #include "SVGURIReference.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void CSSFontFaceSource::setStatus(Status newStatus)
 {

@@ -39,7 +39,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class CSSSegmentedFontFace;
@@ -159,4 +159,4 @@ private:
     CyberKitFontFamilyNames::FamilyNamesList<AtomString> m_fontFamilyNames;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

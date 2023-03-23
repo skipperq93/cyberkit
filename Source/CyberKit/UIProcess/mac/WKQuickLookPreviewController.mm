@@ -38,10 +38,10 @@
 @implementation WKQuickLookPreviewController {
     RetainPtr<QLItem> _item;
     RetainPtr<NSData> _imageData;
-    WebKit::QuickLookPreviewActivity _activity;
+    CyberKit::QuickLookPreviewActivity _activity;
 }
 
-- (instancetype)initWithPage:(WebKit::WebPageProxy&)page imageData:(NSData *)imageData title:(NSString *)title imageURL:(NSURL *)imageURL activity:(WebKit::QuickLookPreviewActivity)activity
+- (instancetype)initWithPage:(CyberKit::WebPageProxy&)page imageData:(NSData *)imageData title:(NSString *)title imageURL:(NSURL *)imageURL activity:(CyberKit::QuickLookPreviewActivity)activity
 {
     if (!(self = [super init]))
         return nil;
@@ -115,7 +115,7 @@
 
 - (QLPreviewActivity)previewPanel:(QLPreviewPanel *)previewPanel initialActivityForItem:(id <QLPreviewItem>)item
 {
-    return _activity == WebKit::QuickLookPreviewActivity::VisualSearch ? QLPreviewActivityVisualSearch : QLPreviewActivityNone;
+    return _activity == CyberKit::QuickLookPreviewActivity::VisualSearch ? QLPreviewActivityVisualSearch : QLPreviewActivityNone;
 }
 
 @end

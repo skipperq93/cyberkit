@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WebProcessCache.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebProcessCache::platformInitialize()
 {
@@ -43,4 +43,4 @@ void WebProcessCache::platformInitialize()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

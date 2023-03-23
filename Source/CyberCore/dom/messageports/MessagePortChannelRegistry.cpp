@@ -30,7 +30,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MessagePortChannelRegistry::MessagePortChannelRegistry() = default;
 
@@ -161,4 +161,4 @@ MessagePortChannel* MessagePortChannelRegistry::existingChannelContainingPort(co
     return m_openChannels.get(port);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

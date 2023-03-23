@@ -56,7 +56,7 @@
 #include "TextResourceDecoder.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool canReferToParentFrameEncoding(const Frame* frame, const Frame* parentFrame) 
 {
@@ -340,4 +340,4 @@ void DocumentWriter::setDocumentWasLoadedAsPartOfNavigation()
     m_parser->setDocumentWasLoadedAsPartOfNavigation();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

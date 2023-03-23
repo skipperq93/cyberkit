@@ -30,7 +30,7 @@
 #include "DOMWindow.h"
 #include "JSExecState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -86,4 +86,4 @@ void WebInjectedScriptManager::discardInjectedScriptsFor(DOMWindow& window)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -81,7 +81,7 @@ struct NotificationData;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DownloadProxy;
 class DownloadProxyMap;
@@ -131,7 +131,7 @@ public:
 
     void fetchWebsiteData(PAL::SessionID, OptionSet<WebsiteDataType>, OptionSet<WebsiteDataFetchOption>, CompletionHandler<void(WebsiteData)>&&);
     void deleteWebsiteData(PAL::SessionID, OptionSet<WebsiteDataType>, WallTime modifiedSince, CompletionHandler<void()>&& completionHandler);
-    void deleteWebsiteDataForOrigins(PAL::SessionID, OptionSet<WebKit::WebsiteDataType>, const Vector<CyberCore::SecurityOriginData>& origins, const Vector<String>& cookieHostNames, const Vector<String>& HSTSCacheHostNames, const Vector<RegistrableDomain>&, CompletionHandler<void()>&&);
+    void deleteWebsiteDataForOrigins(PAL::SessionID, OptionSet<CyberKit::WebsiteDataType>, const Vector<CyberCore::SecurityOriginData>& origins, const Vector<String>& cookieHostNames, const Vector<String>& HSTSCacheHostNames, const Vector<RegistrableDomain>&, CompletionHandler<void()>&&);
     void renameOriginInWebsiteData(PAL::SessionID, const CyberCore::SecurityOriginData&, const CyberCore::SecurityOriginData&, OptionSet<WebsiteDataType>, CompletionHandler<void()>&&);
     void websiteDataOriginDirectoryForTesting(PAL::SessionID, CyberCore::ClientOrigin&&, OptionSet<WebsiteDataType>, CompletionHandler<void(const String&)>&&);
 
@@ -425,7 +425,7 @@ private:
     std::optional<UploadActivity> m_uploadActivity;
 
 #if PLATFORM(COCOA)
-    class XPCEventHandler : public WebKit::XPCEventHandler {
+    class XPCEventHandler : public CyberKit::XPCEventHandler {
     public:
         XPCEventHandler(const NetworkProcessProxy&);
 
@@ -446,4 +446,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

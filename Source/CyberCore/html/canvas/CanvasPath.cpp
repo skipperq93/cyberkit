@@ -43,7 +43,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void CanvasPath::closePath()
 {

@@ -44,10 +44,10 @@
 #include <wtf/HexNumber.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-static const LPCWSTR kWebKit2WebPopupMenuProxyWindowClassName = L"WebKit2WebPopupMenuProxyWindowClass";
+static const LPCWSTR kCyberKit2WebPopupMenuProxyWindowClassName = L"CyberKit2WebPopupMenuProxyWindowClass";
 
 static constexpr int defaultAnimationDuration = 200;
 static constexpr int maxPopupHeight = 320;
@@ -157,7 +157,7 @@ bool WebPopupMenuProxyWin::registerWindowClass()
     wcex.hCursor        = ::LoadCursor(0, IDC_ARROW);
     wcex.hbrBackground  = 0;
     wcex.lpszMenuName   = 0;
-    wcex.lpszClassName  = kWebKit2WebPopupMenuProxyWindowClassName;
+    wcex.lpszClassName  = kCyberKit2WebPopupMenuProxyWindowClassName;
     wcex.hIconSm        = 0;
 
     return !!::RegisterClassEx(&wcex);
@@ -200,7 +200,7 @@ void WebPopupMenuProxyWin::showPopupMenu(const IntRect& rect, TextDirection, dou
 
         DWORD exStyle = WS_EX_LTRREADING;
 
-        m_popup = ::CreateWindowEx(exStyle, kWebKit2WebPopupMenuProxyWindowClassName, TEXT("PopupMenu"),
+        m_popup = ::CreateWindowEx(exStyle, kCyberKit2WebPopupMenuProxyWindowClassName, TEXT("PopupMenu"),
             WS_POPUP | WS_BORDER,
             m_windowRect.x(), m_windowRect.y(), m_windowRect.width(), m_windowRect.height(),
             hostWindow, 0, instanceHandle(), this);
@@ -965,4 +965,4 @@ String WebPopupMenuProxyWin::debugDescription() const
     return makeString("WebPopupMenuProxyWin 0x", hex(reinterpret_cast<uintptr_t>(this), Lowercase));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

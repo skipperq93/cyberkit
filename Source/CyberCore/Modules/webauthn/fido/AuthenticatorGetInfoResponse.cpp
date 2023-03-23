@@ -77,33 +77,33 @@ AuthenticatorGetInfoResponse& AuthenticatorGetInfoResponse::setOptions(Authentic
     return *this;
 }
 
-AuthenticatorGetInfoResponse& AuthenticatorGetInfoResponse::setTransports(Vector<WebCore::AuthenticatorTransport>&& transports)
+AuthenticatorGetInfoResponse& AuthenticatorGetInfoResponse::setTransports(Vector<CyberCore::AuthenticatorTransport>&& transports)
 {
     m_transports = WTFMove(transports);
     return *this;
 }
 
-static String toString(WebCore::AuthenticatorTransport transport)
+static String toString(CyberCore::AuthenticatorTransport transport)
 {
     switch (transport) {
-    case WebCore::AuthenticatorTransport::Usb:
-        return WebCore::authenticatorTransportUsb;
+    case CyberCore::AuthenticatorTransport::Usb:
+        return CyberCore::authenticatorTransportUsb;
         break;
-    case WebCore::AuthenticatorTransport::Nfc:
-        return WebCore::authenticatorTransportNfc;
+    case CyberCore::AuthenticatorTransport::Nfc:
+        return CyberCore::authenticatorTransportNfc;
         break;
-    case WebCore::AuthenticatorTransport::Ble:
-        return WebCore::authenticatorTransportBle;
+    case CyberCore::AuthenticatorTransport::Ble:
+        return CyberCore::authenticatorTransportBle;
         break;
-    case WebCore::AuthenticatorTransport::Internal:
-        return WebCore::authenticatorTransportInternal;
+    case CyberCore::AuthenticatorTransport::Internal:
+        return CyberCore::authenticatorTransportInternal;
         break;
-    case WebCore::AuthenticatorTransport::Cable:
-        return WebCore::authenticatorTransportCable;
-    case WebCore::AuthenticatorTransport::Hybrid:
-        return WebCore::authenticatorTransportHybrid;
-    case WebCore::AuthenticatorTransport::SmartCard:
-        return WebCore::authenticatorTransportSmartCard;
+    case CyberCore::AuthenticatorTransport::Cable:
+        return CyberCore::authenticatorTransportCable;
+    case CyberCore::AuthenticatorTransport::Hybrid:
+        return CyberCore::authenticatorTransportHybrid;
+    case CyberCore::AuthenticatorTransport::SmartCard:
+        return CyberCore::authenticatorTransportSmartCard;
     default:
         break;
     }

@@ -22,4 +22,4 @@ After setting the view scale to 3, the current scale is: 3.00000
 After setting the view scale to 1, the minimum scale is: 1.00000
 After setting the view scale to 1, the current scale is: 1.00000
 
-This test verifies that changing view scale to zoom to a scale of S > 1 results in a minimum scale of S, rather than a value close to (but not exactly) S. This test requires WebKitTestRunner.
+This test verifies that changing view scale to zoom to a scale of S > 1 results in a minimum scale of S, rather than a value close to (but not exactly) S. This test requires CyberKitTestRunner.

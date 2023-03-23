@@ -29,7 +29,7 @@
 #include "WKAPICast.h"
 #include "WebFormSubmissionListenerProxy.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKFormSubmissionListenerGetTypeID()
 {

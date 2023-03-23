@@ -32,7 +32,7 @@
 #import <wtf/NakedPtr.h>
 #import <wtf/NakedRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 class WebViewImpl;
 }
@@ -41,15 +41,15 @@ class WebViewImpl;
 
 @interface WKViewLayoutStrategy : NSObject {
 @package
-    NakedPtr<WebKit::WebPageProxy> _page;
-    NakedPtr<WebKit::WebViewImpl> _webViewImpl;
+    NakedPtr<CyberKit::WebPageProxy> _page;
+    NakedPtr<CyberKit::WebViewImpl> _webViewImpl;
     NSView *_view;
 
     WKLayoutMode _layoutMode;
     unsigned _frameSizeUpdatesDisabledCount;
 }
 
-+ (instancetype)layoutStrategyWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode;
++ (instancetype)layoutStrategyWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode;
 
 - (void)invalidate;
 

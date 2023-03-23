@@ -32,7 +32,7 @@
 #include "HTMLOptionElement.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -96,4 +96,4 @@ bool GenericCachedHTMLCollection<traversalType>::elementMatches(Element& element
 template bool GenericCachedHTMLCollection<CollectionTraversalType::Descendants>::elementMatches(Element&) const;
 template bool GenericCachedHTMLCollection<CollectionTraversalType::ChildrenOnly>::elementMatches(Element&) const;
 
-} // namespace WebCore
+} // namespace CyberCore

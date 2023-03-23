@@ -64,7 +64,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -494,7 +494,7 @@ void InspectorAnimationAgent::didCreateWebAnimation(WebAnimation& animation)
     }
 
     // It is not safe in all cases to resolve animation properties while still resolving styles, so binding animations
-    // must be defered to prevent reentrancy into `WebCore::Document::updateStyleIfNeeded`.
+    // must be defered to prevent reentrancy into `CyberCore::Document::updateStyleIfNeeded`.
     m_animationsPendingBinding.set(animation, Inspector::createScriptCallStack(JSExecState::currentState())->buildInspectorObject());
     if (!m_animationBindingTimer.isActive())
         m_animationBindingTimer.startOneShot(0_s);
@@ -631,4 +631,4 @@ void InspectorAnimationAgent::stopTrackingDeclarativeAnimation(DeclarativeAnimat
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

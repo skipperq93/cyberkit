@@ -32,7 +32,7 @@
 #include "RenderView.h"
 #include "StyleFontSizeFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace MQ {
 
 MediaQueryEvaluator::MediaQueryEvaluator(const AtomString& mediaType, const Document& document, const RenderStyle* rootElementStyle)

@@ -8,7 +8,7 @@ baseURLs = [
   ["GObject", "https://docs.gtk.org/gobject/"],
   ["Gio", "https://docs.gtk.org/gio/"],
   ["Soup", "https://libsoup.org/libsoup-3.0/"],
-  ["WPEJavaScriptCore", "../wpe-javascriptcore" + baseURLApiLevelSuffix],
+  ["WPECyberScriptCore", "../wpe-javascriptcore" + baseURLApiLevelSuffix],
   ["WPEWebExtension", "../wpe-web-extension" + baseURLApiLevelSuffix],
   ["WPECyberKit", "../wpe-webkit" + baseURLApiLevelSuffix]
 ]

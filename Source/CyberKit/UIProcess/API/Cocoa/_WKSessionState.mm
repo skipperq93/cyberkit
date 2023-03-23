@@ -35,7 +35,7 @@
     if (!(self = [super init]))
         return nil;
 
-    if (!WebKit::decodeSessionState(data, _sessionState)) {
+    if (!CyberKit::decodeSessionState(data, _sessionState)) {
         [self release];
         return nil;
     }
@@ -43,7 +43,7 @@
     return self;
 }
 
-- (instancetype)_initWithSessionState:(WebKit::SessionState)sessionState
+- (instancetype)_initWithSessionState:(CyberKit::SessionState)sessionState
 {
     if (!(self = [super init]))
         return nil;
@@ -55,7 +55,7 @@
 
 - (NSData *)data
 {
-    return WebKit::encodeSessionState(_sessionState).autorelease();
+    return CyberKit::encodeSessionState(_sessionState).autorelease();
 }
 
 @end

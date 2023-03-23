@@ -23,8 +23,8 @@
 #include "JSDOMConvertDictionary.h"
 #include "TestDictionary.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> TestDictionary convertDictionary<TestDictionary>(JSC::JSGlobalObject&, JSC::JSValue);
 
-} // namespace WebCore
+} // namespace CyberCore

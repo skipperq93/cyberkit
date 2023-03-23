@@ -29,7 +29,7 @@
 #include "JSDOMConvertBase.h"
 #include <CyberScriptCore/Error.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ImplementationClass> struct JSDOMWrapperConverterTraits;
 
@@ -100,4 +100,4 @@ template<typename T> struct VariadicConverter<IDLInterface<T>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

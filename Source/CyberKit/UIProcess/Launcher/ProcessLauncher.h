@@ -44,7 +44,7 @@
 #include "XPCEventHandler.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(GTK) || PLATFORM(WPE)
 enum class SandboxPermission {
@@ -139,4 +139,4 @@ private:
     ProcessID m_processIdentifier { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

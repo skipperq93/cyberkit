@@ -31,7 +31,7 @@
 #include "CachedScriptFetcher.h"
 #include <CyberScriptCore/SourceProvider.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedScriptSourceProvider : public JSC::SourceProvider, public CachedResourceClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -75,4 +75,4 @@ inline StringView CachedScriptSourceProvider::source() const
     return m_cachedScript->script();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

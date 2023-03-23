@@ -40,7 +40,7 @@
 #include <CyberCore/SecurityOriginData.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if !RELEASE_LOG_DISABLED
@@ -117,4 +117,4 @@ Ref<MediaKeySystemPermissionRequestProxy> MediaKeySystemPermissionRequestManager
     return request;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

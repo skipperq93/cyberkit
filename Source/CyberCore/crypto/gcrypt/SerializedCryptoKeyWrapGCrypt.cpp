@@ -30,7 +30,7 @@
 
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<Vector<uint8_t>> defaultWebCryptoMasterKey()
 {

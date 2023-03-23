@@ -35,7 +35,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

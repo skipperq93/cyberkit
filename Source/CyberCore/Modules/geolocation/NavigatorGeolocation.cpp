@@ -32,7 +32,7 @@
 #include "Geolocation.h"
 #include "Navigator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorGeolocation::NavigatorGeolocation(Navigator& navigator)
     : m_navigator(navigator)
@@ -77,6 +77,6 @@ Geolocation* NavigatorGeolocation::geolocation() const
     return m_geolocation.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GEOLOCATION)

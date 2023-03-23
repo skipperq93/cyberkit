@@ -31,7 +31,7 @@
 #include <wtf/StdSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedDecoder;
 class KeyedEncoder;
@@ -208,4 +208,4 @@ struct IDBKeyDataHashTraits : public WTF::CustomHashTraits<IDBKeyData> {
 
 using IDBKeyDataSet = StdSet<IDBKeyData>;
 
-} // namespace WebCore
+} // namespace CyberCore

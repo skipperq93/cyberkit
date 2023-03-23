@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AuthenticatorTransport : uint8_t {
     Usb,
@@ -41,6 +41,6 @@ enum class AuthenticatorTransport : uint8_t {
     SmartCard
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

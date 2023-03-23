@@ -35,7 +35,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://www.w3.org/TR/css-counter-styles-3/#cyclic-system
 String CSSCounterStyle::counterForSystemCyclic(int value) const

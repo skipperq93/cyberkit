@@ -712,7 +712,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (BOOL)mouseDownCanMoveWindow
 {
-    return WebKit::WebViewImpl::mouseDownCanMoveWindow();
+    return CyberKit::WebViewImpl::mouseDownCanMoveWindow();
 }
 
 - (void)viewDidHide
@@ -854,7 +854,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (BOOL)wantsUpdateLayer
 {
-    return WebKit::WebViewImpl::wantsUpdateLayer();
+    return CyberKit::WebViewImpl::wantsUpdateLayer();
 }
 
 - (void)updateLayer
@@ -1525,7 +1525,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (BOOL)_canChangeFrameLayout:(_WKFrameHandle *)frameHandle
 {
-    if (auto* webFrameProxy = WebKit::WebFrameProxy::webFrame(frameHandle->_frameHandle->frameID()))
+    if (auto* webFrameProxy = CyberKit::WebFrameProxy::webFrame(frameHandle->_frameHandle->frameID()))
         return _impl->canChangeFrameLayout(*webFrameProxy);
     return false;
 }
@@ -1612,7 +1612,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (NSPrintOperation *)_printOperationWithPrintInfo:(NSPrintInfo *)printInfo forFrame:(_WKFrameHandle *)frameHandle
 {
-    if (auto* webFrameProxy = WebKit::WebFrameProxy::webFrame(frameHandle->_frameHandle->frameID()))
+    if (auto* webFrameProxy = CyberKit::WebFrameProxy::webFrame(frameHandle->_frameHandle->frameID()))
         return _impl->printOperationWithPrintInfo(printInfo, *webFrameProxy);
     return nil;
 }

@@ -31,7 +31,7 @@
 #include "Supplementable.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;
@@ -108,6 +108,6 @@ private:
     StorageAccessScope m_storageAccessScope = StorageAccessScope::PerPage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TRACKING_PREVENTION)

@@ -76,7 +76,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED
 
@@ -818,7 +818,7 @@ private:
 
     bool canInterpolate(const RenderStyle& from, const RenderStyle& to, CompositeOperation) const final
     {
-        return WebCore::canInterpolate(this->value(from), this->value(to));
+        return CyberCore::canInterpolate(this->value(from), this->value(to));
     }
 };
 
@@ -2739,7 +2739,7 @@ public:
     {
         destination.setAspectRatioType(context.progress < 0.5 ? from.aspectRatioType() : to.aspectRatioType());
         if (!context.isDiscrete) {
-            auto aspectRatioDst = WebCore::blend(log(from.logicalAspectRatio()), log(to.logicalAspectRatio()), context);
+            auto aspectRatioDst = CyberCore::blend(log(from.logicalAspectRatio()), log(to.logicalAspectRatio()), context);
             destination.setAspectRatio(exp(aspectRatioDst), 1);
             return;
         }

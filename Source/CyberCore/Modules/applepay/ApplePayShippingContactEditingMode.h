@@ -27,13 +27,13 @@
 
 #if ENABLE(APPLE_PAY_SHIPPING_CONTACT_EDITING_MODE)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayShippingContactEditingMode : bool {
     Enabled,
     StorePickup,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_SHIPPING_CONTACT_EDITING_MODE)

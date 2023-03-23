@@ -35,7 +35,7 @@
 #include "LayoutUnit.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 UsedVerticalMargin::PositiveAndNegativePair::Values BlockMarginCollapse::precomputedPositiveNegativeValues(const ElementBox& layoutBox, const BlockFormattingGeometry& formattingGeometry) const

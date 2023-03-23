@@ -39,7 +39,7 @@ class JSArrayBuffer;
 class JSArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBKey : public RefCounted<IDBKey> {
     WTF_MAKE_ISO_ALLOCATED(IDBKey);
@@ -209,4 +209,4 @@ inline int compareBinaryKeyData(const ThreadSafeDataBuffer& a, const ThreadSafeD
     return compareBinaryKeyData(*aData, *bData);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

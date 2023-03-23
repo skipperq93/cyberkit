@@ -25,7 +25,7 @@
 #include "AXObjectCache.h"
 #include "DocumentInlines.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void FrameSelection::notifyAccessibilityForSelectionChange(const AXTextStateChangeIntent& intent)
 {
@@ -39,6 +39,6 @@ void FrameSelection::notifyAccessibilityForSelectionChange(const AXTextStateChan
         cache->postTextStateChangeNotification(m_selection.start(), intent, m_selection);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

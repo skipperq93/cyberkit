@@ -30,7 +30,7 @@ typedef struct _GtkEventControllerKey GtkEventControllerKey;
 typedef struct _GdkEventKey GdkEventKey;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class KeyBindingTranslator {
 public:
@@ -54,5 +54,5 @@ private:
     Vector<String> m_pendingEditorCommands;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

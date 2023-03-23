@@ -22,7 +22,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MeterValueElement;
 class RenderMeter;
@@ -79,4 +79,4 @@ private:
     RefPtr<HTMLElement> m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

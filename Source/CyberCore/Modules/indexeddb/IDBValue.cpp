@@ -29,7 +29,7 @@
 #include "SerializedScriptValue.h"
 #include <wtf/CrossThreadTask.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBValue::IDBValue()
 {
@@ -99,4 +99,4 @@ size_t IDBValue::size() const
     return totalSize;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -43,7 +43,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class FileReaderLoaderClient;
@@ -123,4 +123,4 @@ private:
     std::optional<ExceptionCode> m_errorCode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

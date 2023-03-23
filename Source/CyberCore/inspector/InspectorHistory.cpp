@@ -33,7 +33,7 @@
 
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class UndoableStateMark : public InspectorHistory::Action {
 private:
@@ -109,4 +109,4 @@ void InspectorHistory::reset()
     m_history.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

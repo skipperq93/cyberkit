@@ -124,7 +124,7 @@ RemoteInspector& RemoteInspector::singleton()
 }
 
 RemoteInspector::RemoteInspector()
-    : m_xpcQueue(dispatch_queue_create("com.apple.JavaScriptCore.remote-inspector-xpc", DISPATCH_QUEUE_SERIAL))
+    : m_xpcQueue(dispatch_queue_create("com.apple.CyberScriptCore.remote-inspector-xpc", DISPATCH_QUEUE_SERIAL))
 {
 }
 
@@ -456,7 +456,7 @@ void RemoteInspector::xpcConnectionUnhandledMessage(RemoteInspectorXPCConnection
 RetainPtr<NSDictionary> RemoteInspector::listingForInspectionTarget(const RemoteInspectionTarget& target) const
 {
     // Must collect target information on the WebThread, Main, or Worker thread since RemoteTargets are
-    // implemented by non-threadsafe JSC / WebCore classes such as JSGlobalObject or WebCore::Page.
+    // implemented by non-threadsafe JSC / CyberCore classes such as JSGlobalObject or CyberCore::Page.
 
     if (!target.allowsInspectionByPolicy())
         return nil;
@@ -505,7 +505,7 @@ RetainPtr<NSDictionary> RemoteInspector::listingForInspectionTarget(const Remote
 RetainPtr<NSDictionary> RemoteInspector::listingForAutomationTarget(const RemoteAutomationTarget& target) const
 {
     // Must collect target information on the WebThread or Main thread since RemoteTargets are
-    // implemented by non-threadsafe JSC / WebCore classes such as JSGlobalObject or WebCore::Page.
+    // implemented by non-threadsafe JSC / CyberCore classes such as JSGlobalObject or CyberCore::Page.
     ASSERT(isMainThread());
 
     if (target.isPendingTermination())

@@ -39,7 +39,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class BlobLoader;
@@ -71,4 +71,4 @@ private:
     ProcessError m_processError;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

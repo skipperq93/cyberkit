@@ -36,7 +36,7 @@
 #include "RenderView.h"
 #include "StyleBuilderState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSToLengthConversionData::CSSToLengthConversionData(const RenderStyle& style, const Style::BuilderContext& builderContext)
     : m_style(&style)
@@ -134,4 +134,4 @@ void CSSToLengthConversionData::setUsesContainerUnits() const
         m_viewportDependencyDetectionStyle->setUsesContainerUnits();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

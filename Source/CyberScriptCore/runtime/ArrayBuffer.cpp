@@ -632,7 +632,7 @@ ASCIILiteral errorMessageForTransfer(ArrayBuffer* buffer)
         return "Cannot transfer a SharedArrayBuffer"_s;
     if (buffer->isWasmMemory())
         return "Cannot transfer a WebAssembly.Memory"_s;
-    return "Cannot transfer an ArrayBuffer whose backing store has been accessed by the JavaScriptCore C API"_s;
+    return "Cannot transfer an ArrayBuffer whose backing store has been accessed by the CyberScriptCore C API"_s;
 }
 
 } // namespace JSC

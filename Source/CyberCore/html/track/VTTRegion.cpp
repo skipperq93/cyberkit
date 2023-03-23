@@ -47,7 +47,7 @@
 #include "WebVTTParser.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // The default values are defined within the WebVTT Regions Spec.
 // https://dvcs.w3.org/hg/text-tracks/raw-file/default/608toVTT/region.html
@@ -413,6 +413,6 @@ void VTTRegion::scrollTimerFired()
     displayLastTextTrackCueBox();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

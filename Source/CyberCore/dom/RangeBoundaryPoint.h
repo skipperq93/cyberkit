@@ -28,7 +28,7 @@
 #include "BoundaryPoint.h"
 #include "CharacterData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RangeBoundaryPoint {
 public:
@@ -146,4 +146,4 @@ inline BoundaryPoint makeBoundaryPoint(const RangeBoundaryPoint& point)
     return { point.container(), point.offset() };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

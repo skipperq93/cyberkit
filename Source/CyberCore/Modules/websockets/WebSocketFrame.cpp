@@ -27,7 +27,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Constants for hybi-10 frame format.
 constexpr uint8_t finalBit = 0x80;
@@ -181,4 +181,4 @@ WebSocketFrame::WebSocketFrame(OpCode opCode, bool final, bool compress, bool ma
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

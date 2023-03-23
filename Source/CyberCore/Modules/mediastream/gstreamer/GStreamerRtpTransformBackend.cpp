@@ -24,7 +24,7 @@
 
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void GStreamerRtpTransformBackend::setInputCallback(Callback&& callback)
 {
@@ -42,6 +42,6 @@ void GStreamerRtpTransformBackend::processTransformedFrame(RTCRtpTransformableFr
     notImplemented();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

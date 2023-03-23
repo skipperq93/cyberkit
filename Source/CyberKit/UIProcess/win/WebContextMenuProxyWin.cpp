@@ -35,7 +35,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static HMENU createMenu(const ContextMenuContextData &context)
@@ -112,5 +112,5 @@ WebContextMenuProxyWin::~WebContextMenuProxyWin()
         ::DestroyMenu(m_menu);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 #endif // ENABLE(CONTEXT_MENUS)

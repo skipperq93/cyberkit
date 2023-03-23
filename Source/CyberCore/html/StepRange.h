@@ -23,7 +23,7 @@
 #include "Decimal.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AnyStepHandling : bool { Reject, Default };
 
@@ -116,4 +116,4 @@ private:
     const bool m_isReversible { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

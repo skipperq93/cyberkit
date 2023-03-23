@@ -49,7 +49,7 @@
 #include "TextIterator.h"
 #include "VisibleUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline bool TextManipulationControllerExclusionRule::match(const Element& element) const
 {
@@ -318,7 +318,7 @@ static bool isEnclosingItemBoundaryElement(const Element& element)
         return false;
 
     auto role = [](const Element& element) -> AccessibilityRole {
-        return AccessibilityObject::ariaRoleToWebCoreRole(element.attributeWithoutSynchronization(HTMLNames::roleAttr));
+        return AccessibilityObject::ariaRoleToCyberCoreRole(element.attributeWithoutSynchronization(HTMLNames::roleAttr));
     };
 
     if (element.hasTagName(HTMLNames::buttonTag) || role(element) == AccessibilityRole::Button)
@@ -650,7 +650,7 @@ void TextManipulationController::flushPendingItemsForCallback()
     m_pendingItemsForCallback.clear();
 }
 
-auto TextManipulationController::completeManipulation(const Vector<WebCore::TextManipulationItem>& completionItems) -> Vector<ManipulationFailure>
+auto TextManipulationController::completeManipulation(const Vector<CyberCore::TextManipulationItem>& completionItems) -> Vector<ManipulationFailure>
 {
     Vector<ManipulationFailure> failures;
     HashSet<Ref<Node>> containersWithoutVisualOverflowBeforeReplacement;
@@ -944,4 +944,4 @@ void TextManipulationController::removeNode(Node& node)
     m_textNodesWithNewRenderer.remove(node);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

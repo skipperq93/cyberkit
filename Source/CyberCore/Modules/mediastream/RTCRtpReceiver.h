@@ -39,7 +39,7 @@
 #include "RTCRtpTransform.h"
 #include "ScriptWrappable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class PeerConnectionBackend;
@@ -103,6 +103,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -54,7 +54,7 @@
 #include <gio/gdesktopappinfo.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static const Seconds s_dbusCallTimeout = 20_ms;
 
@@ -561,4 +561,4 @@ void NotificationService::removeObserver(Observer& observer)
     m_observers.remove(&observer);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

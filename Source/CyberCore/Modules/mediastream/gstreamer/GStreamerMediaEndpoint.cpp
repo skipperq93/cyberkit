@@ -61,7 +61,7 @@
 GST_DEBUG_CATEGORY(webkit_webrtc_endpoint_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_endpoint_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 GStreamerMediaEndpoint::GStreamerMediaEndpoint(GStreamerPeerConnectionBackend& peerConnection)
     : m_peerConnectionBackend(peerConnection)
@@ -1435,7 +1435,7 @@ void GStreamerMediaEndpoint::gatherDecoderImplementationName(Function<void(Strin
     callback({ });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if !RELEASE_LOG_DISABLED
 namespace WTF {
@@ -1444,8 +1444,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::RTCStatsLogger> {
-    static String toString(const WebCore::RTCStatsLogger& logger)
+struct LogArgument<CyberCore::RTCStatsLogger> {
+    static String toString(const CyberCore::RTCStatsLogger& logger)
     {
         return String(logger.toJSONString());
     }

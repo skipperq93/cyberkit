@@ -21,7 +21,7 @@
 
 #include "JSDOMConstructorBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename JSClass> class JSDOMConstructor final : public JSDOMConstructorBase {
 public:
@@ -69,4 +69,4 @@ template<typename JSClass> inline void JSDOMConstructor<JSClass>::finishCreation
     initializeProperties(vm, globalObject);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

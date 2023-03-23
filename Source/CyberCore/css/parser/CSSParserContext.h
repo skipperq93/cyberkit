@@ -33,7 +33,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -120,16 +120,16 @@ struct CSSParserContextHash {
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct HashTraits<WebCore::CSSParserContext> : GenericHashTraits<WebCore::CSSParserContext> {
-    static void constructDeletedValue(WebCore::CSSParserContext& slot) { new (NotNull, &slot.baseURL) URL(WTF::HashTableDeletedValue); }
-    static bool isDeletedValue(const WebCore::CSSParserContext& value) { return value.baseURL.isHashTableDeletedValue(); }
-    static WebCore::CSSParserContext emptyValue() { return WebCore::CSSParserContext(WebCore::HTMLStandardMode); }
+template<> struct HashTraits<CyberCore::CSSParserContext> : GenericHashTraits<CyberCore::CSSParserContext> {
+    static void constructDeletedValue(CyberCore::CSSParserContext& slot) { new (NotNull, &slot.baseURL) URL(WTF::HashTableDeletedValue); }
+    static bool isDeletedValue(const CyberCore::CSSParserContext& value) { return value.baseURL.isHashTableDeletedValue(); }
+    static CyberCore::CSSParserContext emptyValue() { return CyberCore::CSSParserContext(CyberCore::HTMLStandardMode); }
 };
 
-template<> struct DefaultHash<WebCore::CSSParserContext> : WebCore::CSSParserContextHash { };
+template<> struct DefaultHash<CyberCore::CSSParserContext> : CyberCore::CSSParserContextHash { };
 
 } // namespace WTF

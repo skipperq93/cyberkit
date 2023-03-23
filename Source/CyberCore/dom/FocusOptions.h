@@ -28,7 +28,7 @@
 #include "FocusDirection.h"
 #include "SelectionRestorationMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class FocusRemovalEventsMode : bool { Dispatch, DoNotDispatch };
 
@@ -45,4 +45,4 @@ struct FocusOptions {
     bool preventScroll { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

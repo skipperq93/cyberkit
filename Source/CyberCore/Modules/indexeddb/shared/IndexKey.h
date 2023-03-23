@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IndexKey {
 public:
@@ -50,4 +50,4 @@ private:
 
 typedef HashMap<uint64_t, IndexKey> IndexIDToIndexKeyMap;
 
-} // namespace WebCore
+} // namespace CyberCore

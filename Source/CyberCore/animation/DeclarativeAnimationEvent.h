@@ -28,7 +28,7 @@
 #include "AnimationEventBase.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeclarativeAnimationEvent : public AnimationEventBase {
     WTF_MAKE_ISO_ALLOCATED(DeclarativeAnimationEvent);
@@ -49,4 +49,4 @@ private:
     PseudoId m_pseudoId { PseudoId::None };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

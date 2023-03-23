@@ -39,7 +39,7 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class EventTarget;
@@ -97,4 +97,4 @@ private:
     Inspector::PerGlobalObjectWrapperWorld m_wrappers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

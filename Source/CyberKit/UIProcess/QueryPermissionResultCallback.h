@@ -29,7 +29,7 @@
 #include <CyberCore/PermissionState.h>
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class QueryPermissionResultCallback : public API::ObjectImpl<API::Object::Type::QueryPermissionResultCallback> {
 public:
@@ -52,4 +52,4 @@ private:
     CompletionHandler<void(std::optional<CyberCore::PermissionState>)> m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

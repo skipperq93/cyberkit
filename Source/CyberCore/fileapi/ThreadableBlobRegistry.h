@@ -33,7 +33,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobPart;
 class SecurityOrigin;
@@ -59,4 +59,4 @@ public:
     static RefPtr<SecurityOrigin> getCachedOrigin(const URL&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

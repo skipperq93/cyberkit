@@ -1,5 +1,5 @@
 framework module CyberScriptCore [extern_c] {
-  umbrella header "JavaScriptCore.h"
+  umbrella header "CyberScriptCore.h"
 
   export *
   module * {

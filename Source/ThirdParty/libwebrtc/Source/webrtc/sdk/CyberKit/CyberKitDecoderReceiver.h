@@ -27,14 +27,14 @@
 
 #include "api/video_codecs/video_decoder.h"
 #include "VTVideoDecoderSPI.h"
-#include "WebKitUtilities.h"
+#include "CyberKitUtilities.h"
 
 namespace webrtc {
 
-class WebKitDecoderReceiver final : public DecodedImageCallback {
+class CyberKitDecoderReceiver final : public DecodedImageCallback {
 public:
-    explicit WebKitDecoderReceiver(VTVideoDecoderSession);
-    ~WebKitDecoderReceiver();
+    explicit CyberKitDecoderReceiver(VTVideoDecoderSession);
+    ~CyberKitDecoderReceiver();
 
     VTVideoDecoderFrame currentFrame() const { return m_currentFrame; }
     void setCurrentFrame(VTVideoDecoderFrame currentFrame) { m_currentFrame = currentFrame; }

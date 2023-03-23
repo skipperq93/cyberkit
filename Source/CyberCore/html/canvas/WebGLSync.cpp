@@ -34,7 +34,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLSync> WebGLSync::create(WebGLRenderingContextBase& ctx)
 {

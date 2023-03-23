@@ -34,7 +34,7 @@
 #include "Editing.h"
 #include "HTMLSpanElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ReplaceNodeWithSpanCommand::ReplaceNodeWithSpanCommand(Ref<HTMLElement>&& element)
     : SimpleEditCommand(element->document())
@@ -82,4 +82,4 @@ void ReplaceNodeWithSpanCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

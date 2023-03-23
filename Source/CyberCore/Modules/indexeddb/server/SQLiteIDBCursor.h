@@ -35,7 +35,7 @@
 #include <wtf/Deque.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBCursorInfo;
 class IDBGetResult;
@@ -140,4 +140,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

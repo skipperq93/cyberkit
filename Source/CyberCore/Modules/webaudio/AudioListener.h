@@ -35,7 +35,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioParam;
 class BaseAudioContext;
@@ -130,4 +130,4 @@ private:
     bool m_isUpVectorDirty { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

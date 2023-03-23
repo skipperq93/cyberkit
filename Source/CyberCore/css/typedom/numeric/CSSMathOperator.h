@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CSSMathOperator : uint8_t {
     Sum,
@@ -37,4 +37,4 @@ enum class CSSMathOperator : uint8_t {
     Clamp
 };
 
-} // namespace WebCore
+} // namespace CyberCore

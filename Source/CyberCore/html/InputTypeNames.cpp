@@ -26,7 +26,7 @@
 #include "HTMLNames.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace InputTypeNames {
 
@@ -157,6 +157,6 @@ const AtomString& week()
     return name;
 }
 
-} // namespace WebCore::InputTypeNames
+} // namespace CyberCore::InputTypeNames
 
-} // namespace WebCore
+} // namespace CyberCore

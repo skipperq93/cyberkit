@@ -44,7 +44,7 @@
 
 constexpr unsigned EnabledInputChannels = 2;
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DefaultAudioDestinationNode);
 
@@ -285,6 +285,6 @@ void DefaultAudioDestinationNode::updateIsEffectivelyPlayingAudio()
     context().isPlayingAudioDidChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

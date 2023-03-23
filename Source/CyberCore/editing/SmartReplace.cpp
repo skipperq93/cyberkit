@@ -36,7 +36,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void addAllCodePoints(USet* smartSet, const String& string)
 {
@@ -44,7 +44,7 @@ static void addAllCodePoints(USet* smartSet, const String& string)
         uset_add(smartSet, string[i]);
 }
 
-// This is mostly a port of the code in WebCore/editing/SmartReplaceCF.cpp
+// This is mostly a port of the code in CyberCore/editing/SmartReplaceCF.cpp
 // except we use ICU instead of CoreFoundation character classes.
 static USet* getSmartSet(bool isPreviousCharacter)
 {

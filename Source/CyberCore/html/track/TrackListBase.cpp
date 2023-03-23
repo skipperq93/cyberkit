@@ -34,7 +34,7 @@
 #include "TrackEvent.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TrackListBase);
 
@@ -48,11 +48,11 @@ TrackListBase::~TrackListBase()
 {
 }
 
-WebCoreOpaqueRoot TrackListBase::opaqueRoot()
+CyberCoreOpaqueRoot TrackListBase::opaqueRoot()
 {
     if (auto* rootObserver = m_opaqueRootObserver.get())
         return (*rootObserver)();
-    return WebCoreOpaqueRoot { this };
+    return CyberCoreOpaqueRoot { this };
 }
 
 unsigned TrackListBase::length() const
@@ -163,6 +163,6 @@ bool TrackListBase::isAnyTrackEnabled() const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

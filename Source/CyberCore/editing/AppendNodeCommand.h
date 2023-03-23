@@ -27,7 +27,7 @@
 
 #include "EditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AppendNodeCommand : public SimpleEditCommand {
 public:
@@ -50,4 +50,4 @@ private:
     Ref<Node> m_node;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

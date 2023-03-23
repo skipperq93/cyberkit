@@ -24,7 +24,7 @@
 #include "JSTestDefaultToJSON.h"
 #include "TestDefaultToJSONInherit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDefaultToJSONInherit : public JSTestDefaultToJSON {
 public:
@@ -72,4 +72,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDefaultToJSONInherit> {
     using ToWrappedReturnType = TestDefaultToJSONInherit*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

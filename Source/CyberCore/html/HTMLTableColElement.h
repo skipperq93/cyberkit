@@ -27,7 +27,7 @@
 
 #include "HTMLTablePartElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableColElement final : public HTMLTablePartElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLTableColElement);

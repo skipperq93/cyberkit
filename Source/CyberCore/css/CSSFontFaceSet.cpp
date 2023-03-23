@@ -40,7 +40,7 @@
 #include "StyleBuilderConverter.h"
 #include "StyleProperties.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontFaceSet::CSSFontFaceSet(CSSFontSelector* owningFontSelector)
     : m_owningFontSelector(owningFontSelector)

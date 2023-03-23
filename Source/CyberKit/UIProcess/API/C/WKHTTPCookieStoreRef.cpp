@@ -31,12 +31,12 @@
 
 WKTypeID WKHTTPCookieStoreGetTypeID()
 {
-    return WebKit::toAPI(API::HTTPCookieStore::APIType);
+    return CyberKit::toAPI(API::HTTPCookieStore::APIType);
 }
 
 void WKHTTPCookieStoreDeleteAllCookies(WKHTTPCookieStoreRef cookieStore, void* context, WKHTTPCookieStoreDeleteAllCookiesFunction callback)
 {
-    WebKit::toImpl(cookieStore)->deleteAllCookies([context, callback] {
+    CyberKit::toImpl(cookieStore)->deleteAllCookies([context, callback] {
         if (callback)
             callback(context);
     });
@@ -44,7 +44,7 @@ void WKHTTPCookieStoreDeleteAllCookies(WKHTTPCookieStoreRef cookieStore, void* c
 
 void WKHTTPCookieStoreSetHTTPCookieAcceptPolicy(WKHTTPCookieStoreRef cookieStore, WKHTTPCookieAcceptPolicy policy, void* context, WKHTTPCookieStoreSetHTTPCookieAcceptPolicyFunction callback)
 {
-    WebKit::toImpl(cookieStore)->setHTTPCookieAcceptPolicy(WebKit::toHTTPCookieAcceptPolicy(policy), [context, callback] {
+    CyberKit::toImpl(cookieStore)->setHTTPCookieAcceptPolicy(CyberKit::toHTTPCookieAcceptPolicy(policy), [context, callback] {
         if (callback)
             callback(context);
     });

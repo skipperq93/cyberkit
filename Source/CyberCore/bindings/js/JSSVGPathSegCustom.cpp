@@ -42,7 +42,7 @@
 #include "JSSVGPathSegMovetoRel.h"
 #include "SVGPathSeg.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<SVGPathSeg>&& object)

@@ -31,7 +31,7 @@
 #include "RTCIceCandidate.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCPeerConnectionIceEvent);
 
@@ -65,6 +65,6 @@ EventInterface RTCPeerConnectionIceEvent::eventInterface() const
     return RTCPeerConnectionIceEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

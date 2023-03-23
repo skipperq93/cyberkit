@@ -33,7 +33,7 @@
 #include <wtf/Ref.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBCursorInfo;
 class IDBDatabase;
@@ -153,4 +153,4 @@ private:
 };
 
 } // namespace IDBClient
-} // namespace WebCore
+} // namespace CyberCore

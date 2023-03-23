@@ -44,7 +44,7 @@ namespace CyberCore {
 class FloatRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class DrawingAreaProxy;
 class RemoteLayerTreeTransaction;
 class WebFrameProxy;
@@ -56,7 +56,7 @@ enum class ViewStabilityFlag : uint8_t;
 
 @interface WKContentView : WKApplicationStateTrackingView {
 @package
-    RefPtr<WebKit::WebPageProxy> _page;
+    RefPtr<CyberKit::WebPageProxy> _page;
     WeakObjCPtr<WKWebView> _webView;
 }
 
@@ -65,7 +65,7 @@ enum class ViewStabilityFlag : uint8_t;
 @property (nonatomic, readonly) WKBrowsingContextController *browsingContextController;
 #pragma clang diagnostic pop
 
-@property (nonatomic, readonly) WebKit::WebPageProxy* page;
+@property (nonatomic, readonly) CyberKit::WebPageProxy* page;
 @property (nonatomic, readonly) BOOL isFocusingElement;
 @property (nonatomic, getter=isShowingInspectorIndication) BOOL showingInspectorIndication;
 @property (nonatomic, readonly, getter=isResigningFirstResponder) BOOL resigningFirstResponder;
@@ -73,7 +73,7 @@ enum class ViewStabilityFlag : uint8_t;
 @property (nonatomic, readonly) UIInterfaceOrientation interfaceOrientation;
 @property (nonatomic, readonly) NSUndoManager *undoManagerForWebView;
 
-- (instancetype)initWithFrame:(CGRect)frame processPool:(NakedRef<WebKit::WebProcessPool>)processPool configuration:(Ref<API::PageConfiguration>&&)configuration webView:(WKWebView *)webView;
+- (instancetype)initWithFrame:(CGRect)frame processPool:(NakedRef<CyberKit::WebProcessPool>)processPool configuration:(Ref<API::PageConfiguration>&&)configuration webView:(WKWebView *)webView;
 
 - (void)didUpdateVisibleRect:(CGRect)visibleRect
     unobscuredRect:(CGRect)unobscuredRect
@@ -83,7 +83,7 @@ enum class ViewStabilityFlag : uint8_t;
     unobscuredSafeAreaInsets:(UIEdgeInsets)unobscuredSafeAreaInsets
     inputViewBounds:(CGRect)inputViewBounds
     scale:(CGFloat)scale minimumScale:(CGFloat)minimumScale
-    viewStability:(OptionSet<WebKit::ViewStabilityFlag>)viewStability
+    viewStability:(OptionSet<CyberKit::ViewStabilityFlag>)viewStability
     enclosedInScrollableAncestorView:(BOOL)enclosedInScrollableAncestorView
     sendEvenIfUnchanged:(BOOL)sendEvenIfUnchanged;
 
@@ -97,7 +97,7 @@ enum class ViewStabilityFlag : uint8_t;
 - (WKWebView *)webView;
 - (UIView *)rootContentView;
 
-- (std::unique_ptr<WebKit::DrawingAreaProxy>)_createDrawingAreaProxy:(WebKit::WebProcessProxy&)process;
+- (std::unique_ptr<CyberKit::DrawingAreaProxy>)_createDrawingAreaProxy:(CyberKit::WebProcessProxy&)process;
 - (void)_processDidExit;
 #if ENABLE(GPU_PROCESS)
 - (void)_gpuProcessDidExit;
@@ -118,7 +118,7 @@ enum class ViewStabilityFlag : uint8_t;
 - (void)_showInspectorHighlight:(const CyberCore::InspectorOverlay::Highlight&)highlight;
 - (void)_hideInspectorHighlight;
 
-- (void)_didCommitLayerTree:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction;
+- (void)_didCommitLayerTree:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction;
 - (void)_layerTreeCommitComplete;
 
 - (void)_setAccessibilityWebProcessToken:(NSData *)data;

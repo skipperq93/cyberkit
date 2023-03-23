@@ -29,7 +29,7 @@
 #include "WebConnectionMessages.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebConnectionToWebProcess> WebConnectionToWebProcess::create(WebProcessProxy* process)
 {
@@ -76,4 +76,4 @@ uint64_t WebConnectionToWebProcess::messageSenderDestinationID() const
     return 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

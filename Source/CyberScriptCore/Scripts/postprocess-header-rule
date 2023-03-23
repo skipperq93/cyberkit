@@ -38,11 +38,11 @@ function process_definitions () {
     source "${DEFINITIONS_FILE}"
 }
 
-DEFINITIONS_PATH=usr/local/include/WebKitAdditions/Scripts/postprocess-framework-headers-definitions
+DEFINITIONS_PATH=usr/local/include/CyberKitAdditions/Scripts/postprocess-framework-headers-definitions
 
 process_definitions "${BUILT_PRODUCTS_DIR}/${DEFINITIONS_PATH}" || process_definitions "${SDKROOT}/${DEFINITIONS_PATH}"
 
-# WebKitAdditions may set WK_FRAMEWORK_HEADER_POSTPROCESSING_DISABLED=YES when
+# CyberKitAdditions may set WK_FRAMEWORK_HEADER_POSTPROCESSING_DISABLED=YES when
 # postprocessing should be disabled based on the deployment target version
 # (e.g. for a downlevel build).
 if [ "${WK_FRAMEWORK_HEADER_POSTPROCESSING_DISABLED}" == "YES" ]; then

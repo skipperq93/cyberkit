@@ -1,22 +1,22 @@
 # Rename contents of files
-echo "(1/8) Replacing JavaScriptCore"
-git grep -l 'JavaScriptCore' | LC_ALL=C xargs sed -i '' 's|JavaScriptCore|CyberScriptCore|g'
-echo "(2/8) Replacing WebCore"
-git grep -l 'WebCore' | LC_ALL=C xargs sed -i '' 's|WebCore|CyberCore|g'
-echo "(3/8) Replacing WebKitLegacy"
-git grep -l 'WebKitLegacy' | LC_ALL=C xargs sed -i '' 's|WebKitLegacy|CyberKitLegacy|g'
-echo "(4/8) Replacing WebKit"
-git grep -l 'WebKit' | LC_ALL=C xargs sed -i '' 's|WebKit|CyberKit|g'
+echo "(1/8) Replacing CyberScriptCore"
+LC_ALL=C git grep -lz "CyberScriptCore" . | xargs -0 gsed -i 's|CyberScriptCore|CyberScriptCore|g'
+echo "(2/8) Replacing CyberCore"
+LC_ALL=C git grep -lz "CyberCore" . | xargs -0 gsed -i 's|CyberCore|CyberCore|g'
+echo "(3/8) Replacing CyberKitLegacy"
+LC_ALL=C git grep -lz "CyberKitLegacy" . | xargs -0 gsed -i 's|CyberKitLegacy|CyberKitLegacy|g'
+echo "(4/8) Replacing CyberKit"
+LC_ALL=C git grep -lz "CyberKit" . | xargs -0 gsed -i 's|CyberKit|CyberKit|g'
 
 # Rename some actual files
-echo "(5/8) Renaming JavaScriptCore"
-find . -name "*JavaScriptCore*" -exec rename 's|JavaScriptCore|CyberScriptCore|g' {} ";"
-echo "(6/8) Renaming WebCore"
-find . -name "*WebCore*" -exec rename 's|WebCore|CyberCore|g' {} ";"
-echo "(7/8) Renaming WebKitLegacy"
-find . -name "*WebKitLegacy*" -exec rename 's|WebKitLegacy|CyberKitLegacy|g' {} ";"
-echo "(8/8) Renaming WebKit"
-find . -name "*WebKit*" -exec rename 's|WebKit|CyberKit|g' {} ";"
+echo "(5/8) Renaming CyberScriptCore"
+find . -name "*CyberScriptCore*" -exec rename 's|CyberScriptCore|CyberScriptCore|g' {} ";"
+echo "(6/8) Renaming CyberCore"
+find . -name "*CyberCore*" -exec rename 's|CyberCore|CyberCore|g' {} ";"
+echo "(7/8) Renaming CyberKitLegacy"
+find . -name "*CyberKitLegacy*" -exec rename 's|CyberKitLegacy|CyberKitLegacy|g' {} ";"
+echo "(8/8) Renaming CyberKit"
+find . -name "*CyberKit*" -exec rename 's|CyberKit|CyberKit|g' {} ";"
 
 # Update git to track this
 git add *

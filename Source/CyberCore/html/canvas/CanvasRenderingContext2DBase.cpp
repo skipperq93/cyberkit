@@ -79,7 +79,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -2737,4 +2737,4 @@ DestinationColorSpace CanvasRenderingContext2DBase::colorSpace() const
     return toDestinationColorSpace(m_settings.colorSpace);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

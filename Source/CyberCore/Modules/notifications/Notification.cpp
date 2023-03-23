@@ -54,7 +54,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Notification);
 
@@ -440,6 +440,6 @@ void Notification::ensureOnNotificationThread(const NotificationData& notificati
     ensureOnNotificationThread(notification.contextIdentifier, notification.notificationID, WTFMove(task));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

@@ -38,7 +38,7 @@ class CallFrame;
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomElementReactionQueueItem;
 class Document;

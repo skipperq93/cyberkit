@@ -184,89 +184,89 @@ typedef CF_ENUM(UInt32, AXTextSelectionGranularity)
 
 #endif // AXTextStateChangeDefined
 
-static AXTextStateChangeType platformChangeTypeForWebCoreChangeType(WebCore::AXTextStateChangeType changeType)
+static AXTextStateChangeType platformChangeTypeForCyberCoreChangeType(CyberCore::AXTextStateChangeType changeType)
 {
     switch (changeType) {
-    case WebCore::AXTextStateChangeTypeUnknown:
+    case CyberCore::AXTextStateChangeTypeUnknown:
         return kAXTextStateChangeTypeUnknown;
-    case WebCore::AXTextStateChangeTypeEdit:
+    case CyberCore::AXTextStateChangeTypeEdit:
         return kAXTextStateChangeTypeEdit;
-    case WebCore::AXTextStateChangeTypeSelectionMove:
+    case CyberCore::AXTextStateChangeTypeSelectionMove:
         return kAXTextStateChangeTypeSelectionMove;
-    case WebCore::AXTextStateChangeTypeSelectionExtend:
+    case CyberCore::AXTextStateChangeTypeSelectionExtend:
         return kAXTextStateChangeTypeSelectionExtend;
-    case WebCore::AXTextStateChangeTypeSelectionBoundary:
+    case CyberCore::AXTextStateChangeTypeSelectionBoundary:
         return kAXTextStateChangeTypeSelectionBoundary;
     }
 }
 
-static AXTextEditType platformEditTypeForWebCoreEditType(WebCore::AXTextEditType changeType)
+static AXTextEditType platformEditTypeForCyberCoreEditType(CyberCore::AXTextEditType changeType)
 {
     switch (changeType) {
-    case WebCore::AXTextEditTypeUnknown:
+    case CyberCore::AXTextEditTypeUnknown:
         return kAXTextEditTypeUnknown;
-    case WebCore::AXTextEditTypeDelete:
+    case CyberCore::AXTextEditTypeDelete:
         return kAXTextEditTypeDelete;
-    case WebCore::AXTextEditTypeInsert:
+    case CyberCore::AXTextEditTypeInsert:
         return kAXTextEditTypeInsert;
-    case WebCore::AXTextEditTypeTyping:
+    case CyberCore::AXTextEditTypeTyping:
         return kAXTextEditTypeTyping;
-    case WebCore::AXTextEditTypeDictation:
+    case CyberCore::AXTextEditTypeDictation:
         return kAXTextEditTypeDictation;
-    case WebCore::AXTextEditTypeCut:
+    case CyberCore::AXTextEditTypeCut:
         return kAXTextEditTypeCut;
-    case WebCore::AXTextEditTypePaste:
+    case CyberCore::AXTextEditTypePaste:
         return kAXTextEditTypePaste;
-    case WebCore::AXTextEditTypeAttributesChange:
+    case CyberCore::AXTextEditTypeAttributesChange:
         return kAXTextEditTypeAttributesChange;
     }
 }
 
-static AXTextSelectionDirection platformDirectionForWebCoreDirection(WebCore::AXTextSelectionDirection direction)
+static AXTextSelectionDirection platformDirectionForCyberCoreDirection(CyberCore::AXTextSelectionDirection direction)
 {
     switch (direction) {
-    case WebCore::AXTextSelectionDirectionUnknown:
+    case CyberCore::AXTextSelectionDirectionUnknown:
         return kAXTextSelectionDirectionUnknown;
-    case WebCore::AXTextSelectionDirectionBeginning:
+    case CyberCore::AXTextSelectionDirectionBeginning:
         return kAXTextSelectionDirectionBeginning;
-    case WebCore::AXTextSelectionDirectionEnd:
+    case CyberCore::AXTextSelectionDirectionEnd:
         return kAXTextSelectionDirectionEnd;
-    case WebCore::AXTextSelectionDirectionPrevious:
+    case CyberCore::AXTextSelectionDirectionPrevious:
         return kAXTextSelectionDirectionPrevious;
-    case WebCore::AXTextSelectionDirectionNext:
+    case CyberCore::AXTextSelectionDirectionNext:
         return kAXTextSelectionDirectionNext;
-    case WebCore::AXTextSelectionDirectionDiscontiguous:
+    case CyberCore::AXTextSelectionDirectionDiscontiguous:
         return kAXTextSelectionDirectionDiscontiguous;
     }
 }
 
-static AXTextSelectionGranularity platformGranularityForWebCoreGranularity(WebCore::AXTextSelectionGranularity granularity)
+static AXTextSelectionGranularity platformGranularityForCyberCoreGranularity(CyberCore::AXTextSelectionGranularity granularity)
 {
     switch (granularity) {
-    case WebCore::AXTextSelectionGranularityUnknown:
+    case CyberCore::AXTextSelectionGranularityUnknown:
         return kAXTextSelectionGranularityUnknown;
-    case WebCore::AXTextSelectionGranularityCharacter:
+    case CyberCore::AXTextSelectionGranularityCharacter:
         return kAXTextSelectionGranularityCharacter;
-    case WebCore::AXTextSelectionGranularityWord:
+    case CyberCore::AXTextSelectionGranularityWord:
         return kAXTextSelectionGranularityWord;
-    case WebCore::AXTextSelectionGranularityLine:
+    case CyberCore::AXTextSelectionGranularityLine:
         return kAXTextSelectionGranularityLine;
-    case WebCore::AXTextSelectionGranularitySentence:
+    case CyberCore::AXTextSelectionGranularitySentence:
         return kAXTextSelectionGranularitySentence;
-    case WebCore::AXTextSelectionGranularityParagraph:
+    case CyberCore::AXTextSelectionGranularityParagraph:
         return kAXTextSelectionGranularityParagraph;
-    case WebCore::AXTextSelectionGranularityPage:
+    case CyberCore::AXTextSelectionGranularityPage:
         return kAXTextSelectionGranularityPage;
-    case WebCore::AXTextSelectionGranularityDocument:
+    case CyberCore::AXTextSelectionGranularityDocument:
         return kAXTextSelectionGranularityDocument;
-    case WebCore::AXTextSelectionGranularityAll:
+    case CyberCore::AXTextSelectionGranularityAll:
         return kAXTextSelectionGranularityAll;
     }
 }
 
 // The simple Cocoa calls in this file don't throw exceptions.
 
-namespace WebCore {
+namespace CyberCore {
 
 void AXObjectCache::attachWrapper(AccessibilityObject* object)
 {
@@ -286,7 +286,7 @@ static void AXPostNotificationWithUserInfo(AccessibilityObjectWrapper *object, N
     if (id associatedPluginParent = [object associatedPluginParent])
         object = associatedPluginParent;
 
-    // To simplify monitoring for notifications in tests, repost as a simple NSNotification instead of forcing test infrastucture to setup an IPC client and do all the translation between WebCore types and platform specific IPC types and back
+    // To simplify monitoring for notifications in tests, repost as a simple NSNotification instead of forcing test infrastucture to setup an IPC client and do all the translation between CyberCore types and platform specific IPC types and back
     if (UNLIKELY(axShouldRepostNotificationsForTests))
         [object accessibilityPostedNotification:notification userInfo:userInfo];
     else if (skipSystemNotification)
@@ -481,12 +481,12 @@ void AXObjectCache::postTextStateChangePlatformNotification(AXCoreObject* object
     if (m_isSynchronizingSelection)
         [userInfo setObject:@YES forKey:NSAccessibilityTextStateSyncKey];
     if (intent.type != AXTextStateChangeTypeUnknown) {
-        [userInfo setObject:@(platformChangeTypeForWebCoreChangeType(intent.type)) forKey:NSAccessibilityTextStateChangeTypeKey];
+        [userInfo setObject:@(platformChangeTypeForCyberCoreChangeType(intent.type)) forKey:NSAccessibilityTextStateChangeTypeKey];
         switch (intent.type) {
         case AXTextStateChangeTypeSelectionMove:
         case AXTextStateChangeTypeSelectionExtend:
         case AXTextStateChangeTypeSelectionBoundary:
-            [userInfo setObject:@(platformDirectionForWebCoreDirection(intent.selection.direction)) forKey:NSAccessibilityTextSelectionDirection];
+            [userInfo setObject:@(platformDirectionForCyberCoreDirection(intent.selection.direction)) forKey:NSAccessibilityTextSelectionDirection];
             switch (intent.selection.direction) {
             case AXTextSelectionDirectionUnknown:
                 break;
@@ -494,7 +494,7 @@ void AXObjectCache::postTextStateChangePlatformNotification(AXCoreObject* object
             case AXTextSelectionDirectionEnd:
             case AXTextSelectionDirectionPrevious:
             case AXTextSelectionDirectionNext:
-                [userInfo setObject:@(platformGranularityForWebCoreGranularity(intent.selection.granularity)) forKey:NSAccessibilityTextSelectionGranularity];
+                [userInfo setObject:@(platformGranularityForCyberCoreGranularity(intent.selection.granularity)) forKey:NSAccessibilityTextSelectionGranularity];
                 break;
             case AXTextSelectionDirectionDiscontiguous:
                 break;
@@ -549,7 +549,7 @@ static NSDictionary *textReplacementChangeDictionary(AXCoreObject& object, AXTex
     if (!length)
         return nil;
     auto change = adoptNS([[NSMutableDictionary alloc] initWithCapacity:4]);
-    [change setObject:@(platformEditTypeForWebCoreEditType(type)) forKey:NSAccessibilityTextEditType];
+    [change setObject:@(platformEditTypeForCyberCoreEditType(type)) forKey:NSAccessibilityTextEditType];
     if (length > AXValueChangeTruncationLength) {
         [change setObject:@(length) forKey:NSAccessibilityTextChangeValueLength];
         text = [text substringToIndex:AXValueChangeTruncationLength];
@@ -570,7 +570,7 @@ void AXObjectCache::postTextStateChangePlatformNotification(AccessibilityObject*
 static void postUserInfoForChanges(AXCoreObject& rootWebArea, AXCoreObject& object, NSMutableArray* changes, std::optional<PageIdentifier> pageID)
 {
     auto userInfo = adoptNS([[NSMutableDictionary alloc] initWithCapacity:4]);
-    [userInfo setObject:@(platformChangeTypeForWebCoreChangeType(AXTextStateChangeTypeEdit)) forKey:NSAccessibilityTextStateChangeTypeKey];
+    [userInfo setObject:@(platformChangeTypeForCyberCoreChangeType(AXTextStateChangeTypeEdit)) forKey:NSAccessibilityTextStateChangeTypeKey];
     if (changes.count)
         [userInfo setObject:changes forKey:NSAccessibilityTextChangeValues];
 

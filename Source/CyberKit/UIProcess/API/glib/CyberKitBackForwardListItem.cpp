@@ -18,41 +18,41 @@
  */
 
 #include "config.h"
-#include "WebKitBackForwardListItem.h"
+#include "CyberKitBackForwardListItem.h"
 
-#include "WebKitBackForwardListPrivate.h"
+#include "CyberKitBackForwardListPrivate.h"
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitBackForwardListItem:
- * @See_also: #WebKitBackForwardList
+ * CyberKitBackForwardListItem:
+ * @See_also: #CyberKitBackForwardList
  *
- * One item of the #WebKitBackForwardList.
+ * One item of the #CyberKitBackForwardList.
  *
- * A history item is part of the #WebKitBackForwardList and consists
+ * A history item is part of the #CyberKitBackForwardList and consists
  * out of a title and a URI.
  */
 
-struct _WebKitBackForwardListItemPrivate {
+struct _CyberKitBackForwardListItemPrivate {
     RefPtr<WebBackForwardListItem> webListItem;
     CString uri;
     CString title;
     CString originalURI;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitBackForwardListItem, webkit_back_forward_list_item, G_TYPE_INITIALLY_UNOWNED, GInitiallyUnowned)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitBackForwardListItem, webkit_back_forward_list_item, G_TYPE_INITIALLY_UNOWNED, GInitiallyUnowned)
 
-static void webkit_back_forward_list_item_class_init(WebKitBackForwardListItemClass*)
+static void webkit_back_forward_list_item_class_init(CyberKitBackForwardListItemClass*)
 {
 }
 
-typedef HashMap<WebBackForwardListItem*, WebKitBackForwardListItem*> HistoryItemsMap;
+typedef HashMap<WebBackForwardListItem*, CyberKitBackForwardListItem*> HistoryItemsMap;
 
 static HistoryItemsMap& historyItemsMap()
 {
@@ -66,12 +66,12 @@ static void webkitBackForwardListItemFinalized(gpointer webListItem, GObject* fi
     historyItemsMap().remove(static_cast<WebBackForwardListItem*>(webListItem));
 }
 
-WebKitBackForwardListItem* webkitBackForwardListItemGetOrCreate(WebBackForwardListItem* webListItem)
+CyberKitBackForwardListItem* webkitBackForwardListItemGetOrCreate(WebBackForwardListItem* webListItem)
 {
     if (!webListItem)
         return 0;
 
-    WebKitBackForwardListItem* listItem = historyItemsMap().get(webListItem);
+    CyberKitBackForwardListItem* listItem = historyItemsMap().get(webListItem);
     if (listItem)
         return listItem;
 
@@ -84,14 +84,14 @@ WebKitBackForwardListItem* webkitBackForwardListItemGetOrCreate(WebBackForwardLi
     return listItem;
 }
 
-WebBackForwardListItem* webkitBackForwardListItemGetItem(WebKitBackForwardListItem* listItem)
+WebBackForwardListItem* webkitBackForwardListItemGetItem(CyberKitBackForwardListItem* listItem)
 {
     return listItem->priv->webListItem.get();
 }
 
 /**
  * webkit_back_forward_list_item_get_uri:
- * @list_item: a #WebKitBackForwardListItem
+ * @list_item: a #CyberKitBackForwardListItem
  *
  * Obtain the URI of the item.
  *
@@ -102,11 +102,11 @@ WebBackForwardListItem* webkitBackForwardListItemGetItem(WebKitBackForwardListIt
  * Returns: the URI of @list_item or %NULL
  *    when the URI is empty.
  */
-const gchar* webkit_back_forward_list_item_get_uri(WebKitBackForwardListItem* listItem)
+const gchar* webkit_back_forward_list_item_get_uri(CyberKitBackForwardListItem* listItem)
 {
     g_return_val_if_fail(WEBKIT_IS_BACK_FORWARD_LIST_ITEM(listItem), 0);
 
-    WebKitBackForwardListItemPrivate* priv = listItem->priv;
+    CyberKitBackForwardListItemPrivate* priv = listItem->priv;
     String url = priv->webListItem->url();
     if (url.isEmpty())
         return 0;
@@ -117,18 +117,18 @@ const gchar* webkit_back_forward_list_item_get_uri(WebKitBackForwardListItem* li
 
 /**
  * webkit_back_forward_list_item_get_title:
- * @list_item: a #WebKitBackForwardListItem
+ * @list_item: a #CyberKitBackForwardListItem
  *
  * Obtain the title of the item.
  *
  * Returns: the page title of @list_item or %NULL
  *    when the title is empty.
  */
-const gchar* webkit_back_forward_list_item_get_title(WebKitBackForwardListItem* listItem)
+const gchar* webkit_back_forward_list_item_get_title(CyberKitBackForwardListItem* listItem)
 {
     g_return_val_if_fail(WEBKIT_IS_BACK_FORWARD_LIST_ITEM(listItem), 0);
 
-    WebKitBackForwardListItemPrivate* priv = listItem->priv;
+    CyberKitBackForwardListItemPrivate* priv = listItem->priv;
     String title = priv->webListItem->title();
     if (title.isEmpty())
         return 0;
@@ -139,7 +139,7 @@ const gchar* webkit_back_forward_list_item_get_title(WebKitBackForwardListItem* 
 
 /**
  * webkit_back_forward_list_item_get_original_uri:
- * @list_item: a #WebKitBackForwardListItem
+ * @list_item: a #CyberKitBackForwardListItem
  *
  * Obtain the original URI of the item.
  *
@@ -148,11 +148,11 @@ const gchar* webkit_back_forward_list_item_get_title(WebKitBackForwardListItem* 
  * Returns: the original URI of @list_item or %NULL
  *    when the original URI is empty.
  */
-const gchar* webkit_back_forward_list_item_get_original_uri(WebKitBackForwardListItem* listItem)
+const gchar* webkit_back_forward_list_item_get_original_uri(CyberKitBackForwardListItem* listItem)
 {
     g_return_val_if_fail(WEBKIT_IS_BACK_FORWARD_LIST_ITEM(listItem), 0);
 
-    WebKitBackForwardListItemPrivate* priv = listItem->priv;
+    CyberKitBackForwardListItemPrivate* priv = listItem->priv;
     String originalURL = priv->webListItem->originalURL();
     if (originalURL.isEmpty())
         return 0;

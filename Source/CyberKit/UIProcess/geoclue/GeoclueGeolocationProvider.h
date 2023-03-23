@@ -36,7 +36,7 @@ namespace CyberCore {
 class GeolocationPositionData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GeoclueGeolocationProvider {
     WTF_MAKE_NONCOPYABLE(GeoclueGeolocationProvider); WTF_MAKE_FAST_ALLOCATED;
@@ -75,4 +75,4 @@ private:
     RunLoop::Timer m_destroyManagerLaterTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

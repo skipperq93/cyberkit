@@ -21,10 +21,10 @@
 
 #if !ENABLE(2022_GLIB_API)
 
-#include "WebKitPrintCustomWidget.h"
+#include "CyberKitPrintCustomWidget.h"
 #include <gtk/gtk.h>
 
-void webkitPrintCustomWidgetEmitCustomWidgetApplySignal(WebKitPrintCustomWidget*);
-void webkitPrintCustomWidgetEmitUpdateCustomWidgetSignal(WebKitPrintCustomWidget*, GtkPageSetup*, GtkPrintSettings*);
+void webkitPrintCustomWidgetEmitCustomWidgetApplySignal(CyberKitPrintCustomWidget*);
+void webkitPrintCustomWidgetEmitUpdateCustomWidgetSignal(CyberKitPrintCustomWidget*, GtkPageSetup*, GtkPrintSettings*);
 
 #endif

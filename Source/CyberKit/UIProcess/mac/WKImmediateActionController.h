@@ -35,7 +35,7 @@
 #import <wtf/NakedRef.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 class WebViewImpl;
 
@@ -52,12 +52,12 @@ enum class ImmediateActionState {
 
 @interface WKImmediateActionController : NSObject <NSImmediateActionGestureRecognizerDelegate> {
 @private
-    NakedPtr<WebKit::WebPageProxy> _page;
+    NakedPtr<CyberKit::WebPageProxy> _page;
     NSView *_view;
-    NakedPtr<WebKit::WebViewImpl> _viewImpl;
+    NakedPtr<CyberKit::WebViewImpl> _viewImpl;
 
-    WebKit::ImmediateActionState _state;
-    WebKit::WebHitTestResultData _hitTestResultData;
+    CyberKit::ImmediateActionState _state;
+    CyberKit::WebHitTestResultData _hitTestResultData;
     BOOL _contentPreventsDefault;
     RefPtr<API::Object> _userData;
     uint32_t _type;
@@ -70,9 +70,9 @@ enum class ImmediateActionState {
     BOOL _hasActiveImmediateAction;
 }
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)viewImpl recognizer:(NSImmediateActionGestureRecognizer *)immediateActionRecognizer;
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)viewImpl recognizer:(NSImmediateActionGestureRecognizer *)immediateActionRecognizer;
 - (void)willDestroyView:(NSView *)view;
-- (void)didPerformImmediateActionHitTest:(const WebKit::WebHitTestResultData&)hitTestResult contentPreventsDefault:(BOOL)contentPreventsDefault userData:(API::Object*)userData;
+- (void)didPerformImmediateActionHitTest:(const CyberKit::WebHitTestResultData&)hitTestResult contentPreventsDefault:(BOOL)contentPreventsDefault userData:(API::Object*)userData;
 - (void)dismissContentRelativeChildWindows;
 - (BOOL)hasActiveImmediateAction;
 

@@ -31,7 +31,7 @@
 #include "JSDOMConvertBufferSource.h"
 #include "WebXRView.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC::JSValue JSWebXRView::projectionMatrix(JSC::JSGlobalObject& lexicalGlobalObject) const
@@ -51,6 +51,6 @@ void JSWebXRView::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSWebXRView);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

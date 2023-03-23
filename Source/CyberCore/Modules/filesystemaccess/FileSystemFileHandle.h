@@ -28,7 +28,7 @@
 #include "FileSystemHandle.h"
 #include "FileSystemSyncAccessHandleIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class File;
 class FileSystemSyncAccessHandle;
@@ -50,8 +50,8 @@ private:
     FileSystemFileHandle(ScriptExecutionContext&, String&&, FileSystemHandleIdentifier, Ref<FileSystemStorageConnection>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::FileSystemFileHandle)
-    static bool isType(const WebCore::FileSystemHandle& handle) { return handle.kind() == WebCore::FileSystemHandle::Kind::File; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::FileSystemFileHandle)
+    static bool isType(const CyberCore::FileSystemHandle& handle) { return handle.kind() == CyberCore::FileSystemHandle::Kind::File; }
 SPECIALIZE_TYPE_TRAITS_END()

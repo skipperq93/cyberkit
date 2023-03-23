@@ -33,7 +33,7 @@
 
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const int UninitializedDescriptor = -1;
 const float DefaultDensityValue = 1.0;
@@ -106,4 +106,4 @@ ImageCandidate bestFitSourceForImageAttributes(float deviceScaleFactor, StringVi
 
 Vector<ImageCandidate> parseImageCandidatesFromSrcsetAttribute(StringView attribute);
 
-} // namespace WebCore
+} // namespace CyberCore

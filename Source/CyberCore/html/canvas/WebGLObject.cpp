@@ -28,7 +28,7 @@
 
 #if ENABLE(WEBGL)
 
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebGLCompressedTextureS3TC.h"
 #include "WebGLContextGroup.h"
 #include "WebGLDebugRendererInfo.h"
@@ -36,7 +36,7 @@
 #include "WebGLLoseContext.h"
 #include "WebGLRenderingContextBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void WebGLObject::setObject(PlatformGLObject object)
 {
@@ -93,11 +93,11 @@ void WebGLObject::onDetached(const AbstractLocker& locker, GraphicsContextGL* co
         deleteObject(locker, context3d);
 }
 
-WebCoreOpaqueRoot root(WebGLObject* object)
+CyberCoreOpaqueRoot root(WebGLObject* object)
 {
-    return WebCoreOpaqueRoot { object };
+    return CyberCoreOpaqueRoot { object };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

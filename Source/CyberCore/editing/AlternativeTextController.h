@@ -32,7 +32,7 @@
 #include <variant>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CompositeEditCommand;
 class Document;
@@ -150,4 +150,4 @@ inline bool AlternativeTextController::shouldRemoveMarkersUponEditing()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

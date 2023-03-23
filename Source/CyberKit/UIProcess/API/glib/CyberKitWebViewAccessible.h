@@ -26,30 +26,30 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE              (webkit_web_view_accessible_get_type())
-#define WEBKIT_WEB_VIEW_ACCESSIBLE(object)           (G_TYPE_CHECK_INSTANCE_CAST((object), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE, WebKitWebViewAccessible))
-#define WEBKIT_WEB_VIEW_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE, WebKitWebViewAccessibleClass))
+#define WEBKIT_WEB_VIEW_ACCESSIBLE(object)           (G_TYPE_CHECK_INSTANCE_CAST((object), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE, CyberKitWebViewAccessible))
+#define WEBKIT_WEB_VIEW_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE, CyberKitWebViewAccessibleClass))
 #define WEBKIT_IS_WEB_VIEW_ACCESSIBLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE((object), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE))
 #define WEBKIT_IS_WEB_VIEW_ACCESSIBLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE((klass), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE))
-#define WEBKIT_WEB_VIEW_ACCESSIBLE_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE, WebKitWebViewAccessibleClass))
+#define WEBKIT_WEB_VIEW_ACCESSIBLE_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE, CyberKitWebViewAccessibleClass))
 
-typedef struct _WebKitWebViewAccessible WebKitWebViewAccessible;
-typedef struct _WebKitWebViewAccessibleClass WebKitWebViewAccessibleClass;
-typedef struct _WebKitWebViewAccessiblePrivate WebKitWebViewAccessiblePrivate;
+typedef struct _CyberKitWebViewAccessible CyberKitWebViewAccessible;
+typedef struct _CyberKitWebViewAccessibleClass CyberKitWebViewAccessibleClass;
+typedef struct _CyberKitWebViewAccessiblePrivate CyberKitWebViewAccessiblePrivate;
 
-struct _WebKitWebViewAccessible {
+struct _CyberKitWebViewAccessible {
     AtkSocket parent;
     /*< private >*/
-    WebKitWebViewAccessiblePrivate* priv;
+    CyberKitWebViewAccessiblePrivate* priv;
 };
 
-struct _WebKitWebViewAccessibleClass {
+struct _CyberKitWebViewAccessibleClass {
     AtkSocketClass parentClass;
 };
 
 GType webkit_web_view_accessible_get_type();
 
-WebKitWebViewAccessible* webkitWebViewAccessibleNew(gpointer);
-void webkitWebViewAccessibleSetWebView(WebKitWebViewAccessible*, gpointer);
+CyberKitWebViewAccessible* webkitWebViewAccessibleNew(gpointer);
+void webkitWebViewAccessibleSetWebView(CyberKitWebViewAccessible*, gpointer);
 
 G_END_DECLS
 

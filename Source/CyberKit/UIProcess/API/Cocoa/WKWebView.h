@@ -123,8 +123,8 @@ typedef NS_ENUM(NSInteger, WKFullscreenState) {
 /*! @abstract Navigates to the requested file URL on the filesystem.
  @param URL The file URL to which to navigate.
  @param readAccessURL The URL to allow read access to.
- @discussion If readAccessURL references a single file, only that file may be loaded by WebKit.
- If readAccessURL references a directory, files inside that file may be loaded by WebKit.
+ @discussion If readAccessURL references a single file, only that file may be loaded by CyberKit.
+ If readAccessURL references a directory, files inside that file may be loaded by CyberKit.
  @result A new navigation for the given file URL.
  */
 - (nullable WKNavigation *)loadFileURL:(NSURL *)URL allowingReadAccessToURL:(NSURL *)readAccessURL WK_API_AVAILABLE(macos(10.11), ios(9.0));
@@ -260,7 +260,7 @@ typedef NS_ENUM(NSInteger, WKFullscreenState) {
  @discussion The completionHandler is passed the result of the script evaluation or an error.
 
  Passing nil is equivalent to targeting the main frame.
- If the frame argument no longer represents a valid frame by the time WebKit attempts to call the JavaScript function your completion handler will be called with a WKErrorJavaScriptInvalidFrameTarget error.
+ If the frame argument no longer represents a valid frame by the time CyberKit attempts to call the JavaScript function your completion handler will be called with a WKErrorJavaScriptInvalidFrameTarget error.
  This might happen for a number of reasons, including but not limited to:
      - The target frame has been removed from the DOM via JavaScript
      - A parent frame has navigated, destroying all of its previous child frames
@@ -310,7 +310,7 @@ typedef NS_ENUM(NSInteger, WKFullscreenState) {
  Any NSArray or NSDictionary containers can only contain objects of those types.
 
  Passing nil is equivalent to targeting the main frame.
- If the frame argument no longer represents a valid frame by the time WebKit attempts to call the JavaScript function your completion handler will be called with a WKErrorJavaScriptInvalidFrameTarget error.
+ If the frame argument no longer represents a valid frame by the time CyberKit attempts to call the JavaScript function your completion handler will be called with a WKErrorJavaScriptInvalidFrameTarget error.
  This might happen for a number of reasons, including but not limited to:
      - The target frame has been removed from the DOM via JavaScript
      - A parent frame has navigated, destroying all of its previous child frames
@@ -326,7 +326,7 @@ typedef NS_ENUM(NSInteger, WKFullscreenState) {
 
  JavaScript has the concept of a "thenable" object, which is any JavaScript object that has a callable "then" property.
  The most well known example of a "thenable" object is a JavaScript promise.
- If your JavaScript returns a "thenable" object WebKit will call "then" on the resulting object and wait for it to be resolved.
+ If your JavaScript returns a "thenable" object CyberKit will call "then" on the resulting object and wait for it to be resolved.
 
  If the object resolves successfully (e.g. Calls the "fulfill" function) your completion handler will be called with the result.
  If the object rejects (e.g. Calls the "reject" function) your completion handler will be called with a WKErrorJavaScriptAsyncFunctionResultRejected error containing the reject reason in the userInfo dictionary.
@@ -441,9 +441,9 @@ If the data is written to a file the resulting file is a valid PDF document.
 */
 - (void)createPDFWithConfiguration:(nullable WKPDFConfiguration *)pdfConfiguration completionHandler:(void (^)(NSData * _Nullable pdfDocumentData, NSError * _Nullable error))completionHandler NS_REFINED_FOR_SWIFT WK_API_AVAILABLE(macos(11.0), ios(14.0));
 
-/* @abstract Create WebKit web archive data representing the current web content of the WKWebView
+/* @abstract Create CyberKit web archive data representing the current web content of the WKWebView
 @param completionHandler A block to invoke when the web archive data is ready.
-@discussion WebKit web archive data represents a snapshot of web content.
+@discussion CyberKit web archive data represents a snapshot of web content.
 It can be used to represent web content on a pasteboard, loaded into a WKWebView directly, and saved to a file for later use.
 The uniform type identifier kUTTypeWebArchive can be used get the related pasteboard type and MIME type.
 */
@@ -560,8 +560,8 @@ The uniform type identifier kUTTypeWebArchive can be used get the related pasteb
  @param request The request specifying the file URL to which to navigate.
  @param readAccessURL The URL to allow read access to.
  @discussion If readAccessURL references a single file, only that file may be
- loaded by WebKit.
- If readAccessURL references a directory, files inside that file may be loaded by WebKit.
+ loaded by CyberKit.
+ If readAccessURL references a directory, files inside that file may be loaded by CyberKit.
  @result A new navigation for the given file URL.
 */
 - (WKNavigation *)loadFileRequest:(NSURLRequest *)request allowingReadAccessToURL:(NSURL *)readAccessURL WK_API_AVAILABLE(macos(12.0), ios(15.0));
@@ -617,7 +617,7 @@ The uniform type identifier kUTTypeWebArchive can be used get the related pasteb
 
 /*! @abstract A WKWebView's fullscreen state.
  @discussion @link WKWebView @link is key-value observing (KVO) compliant for this property. When an element
- in the WKWebView enters fullscreen, WebKit will replace the WKWebView in the application view hierarchy with
+ in the WKWebView enters fullscreen, CyberKit will replace the WKWebView in the application view hierarchy with
  a "placeholder" view, and move the WKWebView into a fullscreen window. When the element exits fullscreen later,
  the WKWebView will be moved back into the application view hierarchy. An application may need to adjust/restore
  its native UI components when the fullscreen state changes. The application should observe the fullscreenState

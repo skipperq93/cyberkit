@@ -33,7 +33,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmPbkdf2Params final : public CryptoAlgorithmParameters {
 public:
@@ -69,7 +69,7 @@ private:
     mutable Vector<uint8_t> m_saltVector;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_ALGORITHM_PARAMETERS(Pbkdf2Params)
 

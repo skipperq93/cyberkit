@@ -35,7 +35,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PushSubscriptionOptions : public RefCounted<PushSubscriptionOptions> {
     WTF_MAKE_ISO_ALLOCATED(PushSubscriptionOptions);
@@ -54,6 +54,6 @@ private:
     mutable RefPtr<JSC::ArrayBuffer> m_applicationServerKey;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -29,7 +29,7 @@
 #include "EventInit.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLElement;
 
@@ -54,4 +54,4 @@ private:
     RefPtr<HTMLElement> m_submitter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

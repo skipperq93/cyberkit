@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLLoseContext final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLLoseContext);
@@ -43,4 +43,4 @@ public:
     void restoreContext();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

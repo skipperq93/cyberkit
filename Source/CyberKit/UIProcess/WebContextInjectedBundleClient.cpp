@@ -31,7 +31,7 @@
 #include "WebProcessPool.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebContextInjectedBundleClient::WebContextInjectedBundleClient(const WKContextInjectedBundleClientBase* client)
 {
@@ -68,4 +68,4 @@ RefPtr<API::Object> WebContextInjectedBundleClient::getInjectedBundleInitializat
     return adoptRef(toImpl(m_client.getInjectedBundleInitializationUserData(toAPI(&processPool), m_client.base.clientInfo)));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

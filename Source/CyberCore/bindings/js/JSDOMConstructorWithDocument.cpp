@@ -23,9 +23,9 @@
 #include "JSDOMConstructorWithDocument.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 STATIC_ASSERT_IS_TRIVIALLY_DESTRUCTIBLE(JSDOMConstructorWithDocument);
 
-} // namespace WebCore
+} // namespace CyberCore

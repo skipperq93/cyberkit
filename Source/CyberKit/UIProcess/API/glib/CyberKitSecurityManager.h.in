@@ -19,23 +19,23 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitSecurityManager_h
-#define WebKitSecurityManager_h
+#ifndef CyberKitSecurityManager_h
+#define CyberKitSecurityManager_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_SECURITY_MANAGER            (webkit_security_manager_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_SECURITY_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_SECURITY_MANAGER, WebKitSecurityManager))
+#define WEBKIT_SECURITY_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_SECURITY_MANAGER, CyberKitSecurityManager))
 #define WEBKIT_IS_SECURITY_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_SECURITY_MANAGER))
-#define WEBKIT_SECURITY_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_SECURITY_MANAGER, WebKitSecurityManagerClass))
+#define WEBKIT_SECURITY_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_SECURITY_MANAGER, CyberKitSecurityManagerClass))
 #define WEBKIT_IS_SECURITY_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_SECURITY_MANAGER))
-#define WEBKIT_SECURITY_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_SECURITY_MANAGER, WebKitSecurityManagerClass))
+#define WEBKIT_SECURITY_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_SECURITY_MANAGER, CyberKitSecurityManagerClass))
 
-struct _WebKitSecurityManagerClass {
+struct _CyberKitSecurityManagerClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -46,54 +46,54 @@ struct _WebKitSecurityManagerClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitSecurityManager, webkit_security_manager, WEBKIT, SECURITY_MANAGER, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitSecurityManager, webkit_security_manager, WEBKIT, SECURITY_MANAGER, GObject)
 
 WEBKIT_API void
-webkit_security_manager_register_uri_scheme_as_local            (WebKitSecurityManager *security_manager,
+webkit_security_manager_register_uri_scheme_as_local            (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API gboolean
-webkit_security_manager_uri_scheme_is_local                     (WebKitSecurityManager *security_manager,
+webkit_security_manager_uri_scheme_is_local                     (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API void
-webkit_security_manager_register_uri_scheme_as_no_access        (WebKitSecurityManager *security_manager,
+webkit_security_manager_register_uri_scheme_as_no_access        (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API gboolean
-webkit_security_manager_uri_scheme_is_no_access                 (WebKitSecurityManager *security_manager,
+webkit_security_manager_uri_scheme_is_no_access                 (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API void
-webkit_security_manager_register_uri_scheme_as_display_isolated (WebKitSecurityManager *security_manager,
+webkit_security_manager_register_uri_scheme_as_display_isolated (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API gboolean
-webkit_security_manager_uri_scheme_is_display_isolated          (WebKitSecurityManager *security_manager,
+webkit_security_manager_uri_scheme_is_display_isolated          (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API void
-webkit_security_manager_register_uri_scheme_as_secure           (WebKitSecurityManager *security_manager,
+webkit_security_manager_register_uri_scheme_as_secure           (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API gboolean
-webkit_security_manager_uri_scheme_is_secure                    (WebKitSecurityManager *security_manager,
+webkit_security_manager_uri_scheme_is_secure                    (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API void
-webkit_security_manager_register_uri_scheme_as_cors_enabled     (WebKitSecurityManager *security_manager,
+webkit_security_manager_register_uri_scheme_as_cors_enabled     (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API gboolean
-webkit_security_manager_uri_scheme_is_cors_enabled              (WebKitSecurityManager *security_manager,
+webkit_security_manager_uri_scheme_is_cors_enabled              (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API void
-webkit_security_manager_register_uri_scheme_as_empty_document   (WebKitSecurityManager *security_manager,
+webkit_security_manager_register_uri_scheme_as_empty_document   (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 WEBKIT_API gboolean
-webkit_security_manager_uri_scheme_is_empty_document            (WebKitSecurityManager *security_manager,
+webkit_security_manager_uri_scheme_is_empty_document            (CyberKitSecurityManager *security_manager,
                                                                  const gchar           *scheme);
 
 G_END_DECLS

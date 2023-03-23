@@ -27,11 +27,11 @@
 
 #include "AnimationFrameRate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AnimationFrameRatePreset : uint8_t { Auto, Low, High, Highest };
 
 constexpr const FramesPerSecond AnimationFrameRatePresetHigh = 60;
 constexpr const FramesPerSecond AnimationFrameRatePresetLow = 30;
 
-} // namespace WebCore
+} // namespace CyberCore

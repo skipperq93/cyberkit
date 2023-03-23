@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RubyElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(RubyElement);
@@ -40,4 +40,4 @@ private:
     RenderPtr<RenderElement> createElementRenderer(RenderStyle&&, const RenderTreePosition&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

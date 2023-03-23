@@ -30,7 +30,7 @@
 #include "Element.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SetNodeAttributeCommand::SetNodeAttributeCommand(Ref<Element>&& element, const QualifiedName& attribute, const AtomString& value)
     : SimpleEditCommand(element->document())
@@ -60,4 +60,4 @@ void SetNodeAttributeCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

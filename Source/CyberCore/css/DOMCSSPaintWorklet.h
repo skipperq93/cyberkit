@@ -33,7 +33,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Worklet;
@@ -70,5 +70,5 @@ private:
     static const char* supplementName();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

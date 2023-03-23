@@ -1,16 +1,16 @@
-list(APPEND JavaScriptCore_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberScriptCore_UNIFIED_SOURCE_LIST_FILES
     "inspector/remote/SourcesSocket.txt"
 )
 
-list(APPEND JavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES
     "${JAVASCRIPTCORE_DIR}/inspector/remote/socket"
 )
 
-list(APPEND JavaScriptCore_PUBLIC_FRAMEWORK_HEADERS
+list(APPEND CyberScriptCore_PUBLIC_FRAMEWORK_HEADERS
     API/JSRemoteInspectorServer.h
 )
 
-list(APPEND JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS
+list(APPEND CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS
     inspector/remote/RemoteAutomationTarget.h
     inspector/remote/RemoteConnectionToTarget.h
     inspector/remote/RemoteControllableTarget.h
@@ -25,10 +25,10 @@ list(APPEND JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS
 )
 
 if (UNIX)
-    list(APPEND JavaScriptCore_SOURCES inspector/remote/socket/posix/RemoteInspectorSocketPOSIX.cpp)
+    list(APPEND CyberScriptCore_SOURCES inspector/remote/socket/posix/RemoteInspectorSocketPOSIX.cpp)
 else ()
-    list(APPEND JavaScriptCore_SOURCES inspector/remote/socket/win/RemoteInspectorSocketWin.cpp)
-    list(APPEND JavaScriptCore_LIBRARIES
+    list(APPEND CyberScriptCore_SOURCES inspector/remote/socket/win/RemoteInspectorSocketWin.cpp)
+    list(APPEND CyberScriptCore_LIBRARIES
         ws2_32
         wsock32
     )

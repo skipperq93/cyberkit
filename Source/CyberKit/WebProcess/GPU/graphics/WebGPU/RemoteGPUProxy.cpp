@@ -41,7 +41,7 @@
 #include <pal/graphics/WebGPU/WebGPUSupportedFeatures.h>
 #include <pal/graphics/WebGPU/WebGPUSupportedLimits.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RefPtr<RemoteGPUProxy> RemoteGPUProxy::create(GPUProcessConnection& gpuProcessConnection, WebGPU::ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier, RenderingBackendIdentifier renderingBackend)
 {
@@ -204,6 +204,6 @@ Ref<PAL::WebGPU::CompositorIntegration> RemoteGPUProxy::createCompositorIntegrat
     return WebGPU::RemoteCompositorIntegrationProxy::create(*this, m_convertToBackingContext, identifier);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

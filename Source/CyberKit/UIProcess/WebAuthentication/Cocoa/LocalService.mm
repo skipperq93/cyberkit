@@ -35,12 +35,12 @@
 #import "LocalAuthenticationSoftLink.h"
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/LocalServiceAdditions.h>
+#import <CyberKitAdditions/LocalServiceAdditions.h>
 #else
 #define LOCAL_SERVICE_ADDITIONS
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 LocalService::LocalService(Observer& observer)
     : AuthenticatorTransportService(observer)
@@ -88,6 +88,6 @@ UniqueRef<LocalConnection> LocalService::createLocalConnection() const
     return makeUniqueRef<LocalConnection>();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

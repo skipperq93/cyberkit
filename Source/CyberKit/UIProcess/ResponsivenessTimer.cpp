@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ResponsivenessTimer.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 ResponsivenessTimer::ResponsivenessTimer(ResponsivenessTimer::Client& client, Seconds responsivenessTimeout)
     : m_client(client)
@@ -157,4 +157,4 @@ void ResponsivenessTimer::processTerminated()
     invalidate();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

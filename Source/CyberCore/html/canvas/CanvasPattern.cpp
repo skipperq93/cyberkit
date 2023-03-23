@@ -32,7 +32,7 @@
 #include "Pattern.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CanvasPattern> CanvasPattern::create(SourceImage&& image, bool repeatX, bool repeatY, bool originClean)
 {
@@ -82,4 +82,4 @@ ExceptionOr<void> CanvasPattern::setTransform(DOMMatrix2DInit&& matrixInit)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

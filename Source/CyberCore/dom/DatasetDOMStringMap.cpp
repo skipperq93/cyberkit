@@ -32,7 +32,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DatasetDOMStringMap);
 
@@ -204,4 +204,4 @@ bool DatasetDOMStringMap::deleteNamedProperty(const String& name)
     return m_element.removeAttribute(convertPropertyNameToAttributeName(name));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

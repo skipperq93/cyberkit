@@ -33,7 +33,7 @@
 #include "RenderBlockFlow.h"
 #include "StaticRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Highlight::Highlight(Ref<StaticRange>&& range)
 {

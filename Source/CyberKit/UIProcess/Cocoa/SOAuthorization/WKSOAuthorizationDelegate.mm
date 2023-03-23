@@ -140,7 +140,7 @@
     _session->fallBackToWebPath();
 }
 
-- (void)setSession:(RefPtr<WebKit::SOAuthorizationSession>&&)session
+- (void)setSession:(RefPtr<CyberKit::SOAuthorizationSession>&&)session
 {
     RELEASE_ASSERT(RunLoop::isMain());
     WKSOAUTHORIZATIONDELEGATE_RELEASE_LOG("setSession: (existing session = %p, new session = %p)", _session.get(), session.get());

@@ -28,7 +28,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class Node;
@@ -47,4 +47,4 @@ private:
     RefPtr<Node> m_previousFocusedNode;
 };    
 
-} // namespace WebCore
+} // namespace CyberCore

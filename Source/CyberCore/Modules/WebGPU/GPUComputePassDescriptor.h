@@ -29,14 +29,14 @@
 #include "GPUObjectDescriptorBase.h"
 #include <pal/graphics/WebGPU/WebGPUComputePassDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUComputePassDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::ComputePassDescriptor convertToBacking() const
     {
         return {
             { label },
-            WebCore::convertToBacking(timestampWrites),
+            CyberCore::convertToBacking(timestampWrites),
         };
     }
 

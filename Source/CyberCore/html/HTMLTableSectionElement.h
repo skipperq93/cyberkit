@@ -28,7 +28,7 @@
 #include "HTMLNames.h"
 #include "HTMLTablePartElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableSectionElement final : public HTMLTablePartElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLTableSectionElement);
@@ -48,9 +48,9 @@ private:
     const MutableStyleProperties* additionalPresentationalHintStyle() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLTableSectionElement)
-    static bool isType(const WebCore::HTMLElement& element) { return element.hasTagName(WebCore::HTMLNames::theadTag) || element.hasTagName(WebCore::HTMLNames::tfootTag) || element.hasTagName(WebCore::HTMLNames::tbodyTag); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::HTMLElement>(node) && isType(downcast<WebCore::HTMLElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLTableSectionElement)
+    static bool isType(const CyberCore::HTMLElement& element) { return element.hasTagName(CyberCore::HTMLNames::theadTag) || element.hasTagName(CyberCore::HTMLNames::tfootTag) || element.hasTagName(CyberCore::HTMLNames::tbodyTag); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::HTMLElement>(node) && isType(downcast<CyberCore::HTMLElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

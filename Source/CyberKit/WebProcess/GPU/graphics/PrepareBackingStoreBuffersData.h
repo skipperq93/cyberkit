@@ -32,7 +32,7 @@
 #include "SwapBuffersDisplayRequirement.h"
 #include <CyberCore/RenderingResourceIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct PrepareBackingStoreBuffersInputData {
     BufferIdentifierSet bufferSet;
@@ -46,6 +46,6 @@ struct PrepareBackingStoreBuffersOutputData {
     SwapBuffersDisplayRequirement displayRequirement { SwapBuffersDisplayRequirement::NeedsNoDisplay };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

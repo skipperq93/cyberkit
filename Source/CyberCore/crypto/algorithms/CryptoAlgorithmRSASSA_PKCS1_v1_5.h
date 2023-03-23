@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoKeyRSA;
 
@@ -53,6 +53,6 @@ private:
     static ExceptionOr<bool> platformVerify(const CryptoKeyRSA&, const Vector<uint8_t>&, const Vector<uint8_t>&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

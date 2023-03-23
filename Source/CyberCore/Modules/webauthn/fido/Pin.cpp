@@ -47,7 +47,7 @@
 #include <pal/crypto/CryptoDigest.h>
 
 namespace fido {
-using namespace WebCore;
+using namespace CyberCore;
 using CBOR = cbor::CBORValue;
 
 namespace pin {
@@ -185,12 +185,12 @@ cbor::CBORValue::MapValue encodeCOSEPublicKey(const Vector<uint8_t>& rawPublicKe
     return publicKeyMap;
 }
 
-TokenResponse::TokenResponse(Ref<WebCore::CryptoKeyHMAC>&& token)
+TokenResponse::TokenResponse(Ref<CyberCore::CryptoKeyHMAC>&& token)
     : m_token(WTFMove(token))
 {
 }
 
-std::optional<TokenResponse> TokenResponse::parse(const WebCore::CryptoKeyAES& sharedKey, const Vector<uint8_t>& inBuffer)
+std::optional<TokenResponse> TokenResponse::parse(const CyberCore::CryptoKeyAES& sharedKey, const Vector<uint8_t>& inBuffer)
 {
     auto decodedMap = decodeResponseMap(inBuffer);
     if (!decodedMap)
@@ -268,7 +268,7 @@ std::optional<TokenRequest> TokenRequest::tryCreate(const CString& pin, const Cr
     return TokenRequest(sharedKey.releaseNonNull(), WTFMove(coseKey), WTFMove(pinHash));
 }
 
-TokenRequest::TokenRequest(Ref<WebCore::CryptoKeyAES>&& sharedKey, cbor::CBORValue::MapValue&& coseKey, Vector<uint8_t>&& pinHash)
+TokenRequest::TokenRequest(Ref<CyberCore::CryptoKeyAES>&& sharedKey, cbor::CBORValue::MapValue&& coseKey, Vector<uint8_t>&& pinHash)
     : m_sharedKey(WTFMove(sharedKey))
     , m_coseKey(WTFMove(coseKey))
     , m_pinHash(WTFMove(pinHash))

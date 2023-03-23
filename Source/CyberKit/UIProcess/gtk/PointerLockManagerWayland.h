@@ -36,7 +36,7 @@
 struct zwp_locked_pointer_v1;
 struct zwp_pointer_constraints_v1;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -60,6 +60,6 @@ private:
     struct zwp_relative_pointer_v1* m_relativePointer { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(WAYLAND)

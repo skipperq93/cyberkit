@@ -30,7 +30,7 @@
 #include "FloatSize.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -147,4 +147,4 @@ WEBCORE_EXPORT void setViewportFeature(ViewportArguments&, StringView key, Strin
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const ViewportArguments&);
 
-} // namespace WebCore
+} // namespace CyberCore

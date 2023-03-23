@@ -26,7 +26,7 @@
 #include "config.h"
 #include "NativeNodeFilter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NativeNodeFilter::NativeNodeFilter(ScriptExecutionContext* context, Ref<NodeFilterCondition>&& condition)
     : NodeFilter(context)
@@ -44,4 +44,4 @@ CallbackResult<unsigned short> NativeNodeFilter::acceptNode(Node& node)
     return m_condition->acceptNode(node);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

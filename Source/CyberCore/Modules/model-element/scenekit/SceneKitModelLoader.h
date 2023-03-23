@@ -30,7 +30,7 @@
 #import <wtf/Forward.h>
 #import <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Model;
 class SceneKitModelLoaderClient;

@@ -35,7 +35,7 @@
 #include "JSExecStateInstrumentation.h"
 #include "JSWorkerGlobalScope.h"
 #include "ScriptController.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "WorkerGlobalScope.h"
 #include <CyberScriptCore/ExceptionHelpers.h>
 #include <CyberScriptCore/JSLock.h>
@@ -44,7 +44,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSEventListener::JSEventListener(JSObject* function, JSObject* wrapper, bool isAttribute, CreatedFromMarkup createdFromMarkup, DOMWrapperWorld& isolatedWorld)
@@ -287,4 +287,4 @@ String JSEventListener::functionName() const
     return handlerFunction->name(vm);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

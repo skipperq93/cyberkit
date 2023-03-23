@@ -40,7 +40,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/SoftLinking.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void collectDescendantViewsAtPoint(Vector<UIView *, 16>& viewsAtPoint, UIView *parent, CGPoint point, UIEvent *event)
 {
@@ -281,7 +281,7 @@ static Class scrollViewScrollIndicatorClass()
 - (UIView *)_web_findDescendantViewAtPoint:(CGPoint)point withEvent:(UIEvent *)event
 {
     Vector<UIView *, 16> viewsAtPoint;
-    WebKit::collectDescendantViewsAtPoint(viewsAtPoint, self, point, event);
+    CyberKit::collectDescendantViewsAtPoint(viewsAtPoint, self, point, event);
 
     LOG_WITH_STREAM(UIHitTesting, stream << (void*)self << "_web_findDescendantViewAtPoint " << CyberCore::FloatPoint(point) << " found " << viewsAtPoint.size() << " views");
 
@@ -293,14 +293,14 @@ static Class scrollViewScrollIndicatorClass()
         }
 
         if ([view isKindOfClass:[WKChildScrollView class]]) {
-            if (WebKit::isScrolledBy((WKChildScrollView *)view, viewsAtPoint.last())) {
+            if (CyberKit::isScrolledBy((WKChildScrollView *)view, viewsAtPoint.last())) {
                 LOG_WITH_STREAM(UIHitTesting, stream << " " << (void*)view << " is child scroll view and scrolled by " << (void*)viewsAtPoint.last());
                 return view;
             }
         }
 
-        if ([view isKindOfClass:WebKit::scrollViewScrollIndicatorClass()] && [view.superview isKindOfClass:WKChildScrollView.class]) {
-            if (WebKit::isScrolledBy((WKChildScrollView *)view.superview, viewsAtPoint.last())) {
+        if ([view isKindOfClass:CyberKit::scrollViewScrollIndicatorClass()] && [view.superview isKindOfClass:WKChildScrollView.class]) {
+            if (CyberKit::isScrolledBy((WKChildScrollView *)view.superview, viewsAtPoint.last())) {
                 LOG_WITH_STREAM(UIHitTesting, stream << " " << (void*)view << " is the scroll indicator of child scroll view, which is scrolled by " << (void*)viewsAtPoint.last());
                 return view;
             }
@@ -329,7 +329,7 @@ static Class scrollViewScrollIndicatorClass()
 
 - (NSString *)description
 {
-    return WebKit::RemoteLayerTreeNode::appendLayerDescription(super.description, self.layer);
+    return CyberKit::RemoteLayerTreeNode::appendLayerDescription(super.description, self.layer);
 }
 
 @end
@@ -411,7 +411,7 @@ static Class scrollViewScrollIndicatorClass()
 
 - (NSString *)description
 {
-    return WebKit::RemoteLayerTreeNode::appendLayerDescription(super.description, self.layer);
+    return CyberKit::RemoteLayerTreeNode::appendLayerDescription(super.description, self.layer);
 }
 
 @end

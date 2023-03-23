@@ -28,7 +28,7 @@
 
 #include "TextChecker.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 void WKTextCheckerSetTestingMode(bool enabled)
 {

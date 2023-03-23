@@ -36,7 +36,7 @@ static const size_t maximumSnapshotCacheSize = 50 * (1024 * 1024);
 static const size_t maximumSnapshotCacheSize = 400 * (1024 * 1024);
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ViewSnapshotStore::ViewSnapshotStore()
@@ -126,4 +126,4 @@ ViewSnapshot::~ViewSnapshot()
     clearImage();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

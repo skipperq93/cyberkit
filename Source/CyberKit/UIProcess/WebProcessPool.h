@@ -101,7 +101,7 @@ class PowerSourceNotifier;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LockdownModeObserver;
 class HighPerformanceGraphicsUsageSampler;
@@ -366,7 +366,7 @@ public:
     void gpuProcessDidFinishLaunching(ProcessID);
     void gpuProcessExited(ProcessID, ProcessTerminationReason);
 
-    void createGPUProcessConnection(WebProcessProxy&, IPC::Connection::Handle&&, WebKit::GPUProcessConnectionParameters&&);
+    void createGPUProcessConnection(WebProcessProxy&, IPC::Connection::Handle&&, CyberKit::GPUProcessConnectionParameters&&);
 
     GPUProcessProxy& ensureGPUProcess();
     GPUProcessProxy* gpuProcess() const { return m_gpuProcess.get(); }
@@ -869,4 +869,4 @@ void WebProcessPool::sendToAllRemoteWorkerProcesses(const T& message)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -31,7 +31,7 @@
 #include "CSSValuePool.h"
 #include "TextFlags.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FontVariantLigaturesValues extractFontVariantLigatures(const CSSValue& value)
 {
@@ -184,4 +184,4 @@ FontVariantEastAsianValues extractFontVariantEastAsian(const CSSValue& value)
     return FontVariantEastAsianValues(variant, width, ruby);
 }
 
-} // WebCore namespace
+} // CyberCore namespace

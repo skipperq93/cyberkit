@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SpeechRecognitionConnectionClientIdentifierType { };
 using SpeechRecognitionConnectionClientIdentifier = ObjectIdentifier<SpeechRecognitionConnectionClientIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -50,7 +50,7 @@ class Logger;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class BufferSource;
 class CDM;
@@ -151,6 +151,6 @@ private:
     DisplayChangedObserver m_displayChangedObserver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

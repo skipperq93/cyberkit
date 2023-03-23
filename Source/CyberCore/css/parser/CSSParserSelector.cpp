@@ -30,7 +30,7 @@
 #pragma warning(disable: 4701)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<CSSParserSelector> CSSParserSelector::parsePagePseudoSelector(StringView pseudoTypeString)
 {

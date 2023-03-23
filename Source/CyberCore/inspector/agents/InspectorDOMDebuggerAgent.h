@@ -46,7 +46,7 @@ namespace Inspector {
 class InjectedScriptManager;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class RegisteredEventListener;
@@ -133,4 +133,4 @@ private:
     RefPtr<JSC::Breakpoint> m_pauseOnAllURLsBreakpoint;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

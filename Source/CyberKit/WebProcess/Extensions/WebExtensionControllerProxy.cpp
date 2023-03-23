@@ -35,7 +35,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -138,6 +138,6 @@ RefPtr<WebExtensionContextProxy> WebExtensionControllerProxy::extensionContext(W
     return extensionContext(frame.url());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

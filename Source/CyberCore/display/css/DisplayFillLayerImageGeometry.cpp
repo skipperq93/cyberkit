@@ -33,7 +33,7 @@
 #include "LengthFunctions.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 static inline LayoutUnit resolveWidthForRatio(LayoutUnit height, const LayoutSize& intrinsicRatio)
@@ -388,5 +388,5 @@ Vector<FillLayerImageGeometry, 1> calculateFillLayerImageGeometry(const RenderSt
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -24,19 +24,19 @@
  */
 
 #import "config.h"
-#import "WebKitTestRunnerWindow.h"
+#import "CyberKitTestRunnerWindow.h"
 
 #import "PlatformWebView.h"
 #import <wtf/MainThread.h>
 #import <wtf/Vector.h>
 
-@implementation WebKitTestRunnerWindow
+@implementation CyberKitTestRunnerWindow
 
-static Vector<WebKitTestRunnerWindow *> allWindows;
+static Vector<CyberKitTestRunnerWindow *> allWindows;
 
 @synthesize platformWebView = _platformWebView;
 
-+ (WebKitTestRunnerWindow *)_WTR_keyWindow
++ (CyberKitTestRunnerWindow *)_WTR_keyWindow
 {
     ASSERT(isMainThread());
     for (auto window : allWindows) {

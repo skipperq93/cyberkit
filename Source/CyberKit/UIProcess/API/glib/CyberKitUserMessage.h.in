@@ -19,23 +19,23 @@
 
 @SHARED_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitUserMessage_h
-#define WebKitUserMessage_h
+#ifndef CyberKitUserMessage_h
+#define CyberKitUserMessage_h
 
 #include <gio/gio.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_USER_MESSAGE            (webkit_user_message_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_USER_MESSAGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_USER_MESSAGE, WebKitUserMessage))
+#define WEBKIT_USER_MESSAGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_USER_MESSAGE, CyberKitUserMessage))
 #define WEBKIT_IS_USER_MESSAGE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_USER_MESSAGE))
-#define WEBKIT_USER_MESSAGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_USER_MESSAGE, WebKitUserMessageClass))
+#define WEBKIT_USER_MESSAGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_USER_MESSAGE, CyberKitUserMessageClass))
 #define WEBKIT_IS_USER_MESSAGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_USER_MESSAGE))
-#define WEBKIT_USER_MESSAGE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_USER_MESSAGE, WebKitUserMessageClass))
+#define WEBKIT_USER_MESSAGE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_USER_MESSAGE, CyberKitUserMessageClass))
 
-struct _WebKitUserMessageClass {
+struct _CyberKitUserMessageClass {
     GInitiallyUnownedClass parent_class;
 
     /*< private >*/
@@ -46,12 +46,12 @@ struct _WebKitUserMessageClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitUserMessage, webkit_user_message, WEBKIT, USER_MESSAGE, GInitiallyUnowned)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitUserMessage, webkit_user_message, WEBKIT, USER_MESSAGE, GInitiallyUnowned)
 
 #define WEBKIT_USER_MESSAGE_ERROR webkit_user_message_error_quark ()
 
 /**
- * WebKitUserMessageError:
+ * CyberKitUserMessageError:
  * @WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE: The message was not handled by the receiver.
  *
  * Enum values used to denote errors happening when sending user messages.
@@ -60,32 +60,32 @@ WEBKIT_DECLARE_FINAL_TYPE (WebKitUserMessage, webkit_user_message, WEBKIT, USER_
  */
 typedef enum {
     WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE
-} WebKitUserMessageError;
+} CyberKitUserMessageError;
 
 WEBKIT_API GQuark
 webkit_user_message_error_quark      (void);
 
-WEBKIT_API WebKitUserMessage *
+WEBKIT_API CyberKitUserMessage *
 webkit_user_message_new              (const char        *name,
                                       GVariant          *parameters);
 
-WEBKIT_API WebKitUserMessage *
+WEBKIT_API CyberKitUserMessage *
 webkit_user_message_new_with_fd_list (const char        *name,
                                       GVariant          *parameters,
                                       GUnixFDList       *fd_list);
 
 WEBKIT_API const char *
-webkit_user_message_get_name         (WebKitUserMessage *message);
+webkit_user_message_get_name         (CyberKitUserMessage *message);
 
 WEBKIT_API GVariant *
-webkit_user_message_get_parameters   (WebKitUserMessage *message);
+webkit_user_message_get_parameters   (CyberKitUserMessage *message);
 
 WEBKIT_API GUnixFDList *
-webkit_user_message_get_fd_list      (WebKitUserMessage *message);
+webkit_user_message_get_fd_list      (CyberKitUserMessage *message);
 
 WEBKIT_API void
-webkit_user_message_send_reply       (WebKitUserMessage *message,
-                                      WebKitUserMessage *reply);
+webkit_user_message_send_reply       (CyberKitUserMessage *message,
+                                      CyberKitUserMessage *reply);
 
 G_END_DECLS
 

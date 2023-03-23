@@ -33,7 +33,7 @@
 #include "WebXRSession.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class ScriptExecutionContext;
@@ -89,11 +89,11 @@ private:
     WeakPtr<WebXRSession> m_session;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_WEBXRSPACE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::WebXRSpace& context) { return context.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::WebXRSpace& context) { return context.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEBXR)

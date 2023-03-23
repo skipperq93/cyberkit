@@ -25,7 +25,7 @@
 
 import Combine
 import SwiftUI
-import WebKit
+import CyberKit
 
 /// Holds the dynamic state of a `WebView`.
 final public class WebViewState : ObservableObject {

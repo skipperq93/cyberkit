@@ -38,7 +38,7 @@
 #include "PaintWorkletGlobalScope.h"
 #include "StylePropertyShorthand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MainThreadStylePropertyMapReadOnly::MainThreadStylePropertyMapReadOnly() = default;
 
@@ -104,4 +104,4 @@ ExceptionOr<bool> MainThreadStylePropertyMapReadOnly::has(ScriptExecutionContext
     return !!result.returnValue();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,21 +25,21 @@
 
 #pragma once
 
-#include "WebKitUserContentManager.h"
-#include "WebKitWebContext.h"
-#include "WebKitWebsitePolicies.h"
+#include "CyberKitUserContentManager.h"
+#include "CyberKitWebContext.h"
+#include "CyberKitWebsitePolicies.h"
 #include "WebProcessPool.h"
 #include <CyberCore/ResourceRequest.h>
 
-WebKit::WebProcessPool& webkitWebContextGetProcessPool(WebKitWebContext*);
+CyberKit::WebProcessPool& webkitWebContextGetProcessPool(CyberKitWebContext*);
 #if !ENABLE(2022_GLIB_API)
-void webkitWebContextDownloadStarted(WebKitWebContext*, WebKitDownload*);
+void webkitWebContextDownloadStarted(CyberKitWebContext*, CyberKitDownload*);
 #endif
-void webkitWebContextCreatePageForWebView(WebKitWebContext*, WebKitWebView*, WebKitUserContentManager*, WebKitWebView*, WebKitWebsitePolicies*);
-void webkitWebContextWebViewDestroyed(WebKitWebContext*, WebKitWebView*);
-WebKitWebView* webkitWebContextGetWebViewForPage(WebKitWebContext*, WebKit::WebPageProxy*);
-GVariant* webkitWebContextInitializeWebExtensions(WebKitWebContext*);
-void webkitWebContextInitializeNotificationPermissions(WebKitWebContext*);
+void webkitWebContextCreatePageForWebView(CyberKitWebContext*, CyberKitWebView*, CyberKitUserContentManager*, CyberKitWebView*, CyberKitWebsitePolicies*);
+void webkitWebContextWebViewDestroyed(CyberKitWebContext*, CyberKitWebView*);
+CyberKitWebView* webkitWebContextGetWebViewForPage(CyberKitWebContext*, CyberKit::WebPageProxy*);
+GVariant* webkitWebContextInitializeWebExtensions(CyberKitWebContext*);
+void webkitWebContextInitializeNotificationPermissions(CyberKitWebContext*);
 #if ENABLE(REMOTE_INSPECTOR)
-void webkitWebContextWillCloseAutomationSession(WebKitWebContext*);
+void webkitWebContextWillCloseAutomationSession(CyberKitWebContext*);
 #endif

@@ -31,7 +31,7 @@
 #include "DFANode.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -80,6 +80,6 @@ inline void DFANode::RangeIterator::resetTarget(uint32_t newTarget)
 }
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

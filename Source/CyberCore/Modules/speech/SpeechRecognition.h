@@ -31,7 +31,7 @@
 #include "SpeechRecognitionConnectionClient.h"
 #include "SpeechRecognitionResult.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class SpeechRecognitionResult;
@@ -109,4 +109,4 @@ private:
     RefPtr<SpeechRecognitionConnection> m_connection;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

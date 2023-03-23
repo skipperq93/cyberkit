@@ -26,7 +26,7 @@
 
 #include "GenericMediaQueryTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace MQ {
 
 enum class Prefix : bool { Not, Only };

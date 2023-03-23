@@ -31,7 +31,7 @@
 #import "CtapHidDriver.h"
 #import "HidConnection.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 
 // FIXME(191518)
@@ -88,6 +88,6 @@ void HidService::deviceAdded(IOHIDDeviceRef device)
     getInfo(WTF::makeUnique<CtapHidDriver>(createHidConnection(device)));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

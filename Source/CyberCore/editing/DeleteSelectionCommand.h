@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EditingStyle;
 
@@ -108,4 +108,4 @@ private:
     RefPtr<Node> m_temporaryPlaceholder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

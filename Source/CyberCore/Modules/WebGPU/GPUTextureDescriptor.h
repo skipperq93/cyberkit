@@ -33,21 +33,21 @@
 #include "GPUTextureUsage.h"
 #include <pal/graphics/WebGPU/WebGPUTextureDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUTextureDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::TextureDescriptor convertToBacking() const
     {
         return {
             { label },
-            WebCore::convertToBacking(size),
+            CyberCore::convertToBacking(size),
             mipLevelCount,
             sampleCount,
-            WebCore::convertToBacking(dimension),
-            WebCore::convertToBacking(format),
+            CyberCore::convertToBacking(dimension),
+            CyberCore::convertToBacking(format),
             convertTextureUsageFlagsToBacking(usage),
             viewFormats.map([] (auto viewFormat) {
-                return WebCore::convertToBacking(viewFormat);
+                return CyberCore::convertToBacking(viewFormat);
             }),
         };
     }

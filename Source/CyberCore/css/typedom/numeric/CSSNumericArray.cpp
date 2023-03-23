@@ -32,7 +32,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSNumericArray);
 
@@ -69,4 +69,4 @@ void CSSNumericArray::forEach(Function<void(const CSSNumericValue&, bool first)>
         function(m_array[i], !i);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

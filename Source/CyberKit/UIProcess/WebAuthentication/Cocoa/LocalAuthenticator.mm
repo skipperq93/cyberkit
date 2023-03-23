@@ -53,7 +53,7 @@
 #import <wtf/text/StringHash.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/LocalAuthenticatorAdditions.h>
+#import <CyberKitAdditions/LocalAuthenticatorAdditions.h>
 #else
 static void updateQueryIfNecessary(NSMutableDictionary *)
 {
@@ -68,7 +68,7 @@ static bool shouldUpdateQuery()
 }
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 using namespace CyberCore;
 using namespace WebAuthn;
@@ -708,6 +708,6 @@ bool LocalAuthenticator::validateUserVerification(LocalConnection::UserVerificat
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

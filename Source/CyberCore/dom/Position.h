@@ -34,7 +34,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineBox;
 class RenderElement;
@@ -343,10 +343,10 @@ inline bool offsetIsBeforeLastNodeOffset(unsigned offset, Node* anchorNode)
     return offset < currentOffset;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showTree(const WebCore::Position&);
-void showTree(const WebCore::Position*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showTree(const CyberCore::Position&);
+void showTree(const CyberCore::Position*);
 #endif

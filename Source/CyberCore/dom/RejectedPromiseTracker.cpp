@@ -46,7 +46,7 @@
 #include <CyberScriptCore/WeakGCMapInlines.h>
 #include <CyberScriptCore/WeakInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 using namespace Inspector;
 
@@ -199,4 +199,4 @@ void RejectedPromiseTracker::reportRejectionHandled(Ref<DOMPromise>&& rejectedPr
     target->dispatchEvent(event);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,11 +25,11 @@
 
 #if USE(INSERTION_UNDO_GROUPING)
 
-namespace WebCore {
+namespace CyberCore {
     
 WEBCORE_EXPORT bool shouldRegisterInsertionUndoGroup(NSAttributedString *);
 WEBCORE_EXPORT void registerInsertionUndoGroupingWithUndoManager(NSUndoManager *);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

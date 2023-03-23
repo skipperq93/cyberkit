@@ -55,7 +55,7 @@ extern "C" AXUIElementRef NSAccessibilityCreateAXUIElementRef(id element);
 
 @interface WebAccessibilityObjectWrapper : WebAccessibilityObjectWrapperBase
 
-- (RetainPtr<AXTextMarkerRef>)textMarkerForFirstPositionInTextControl:(WebCore::HTMLTextFormControlElement&)textControl;
+- (RetainPtr<AXTextMarkerRef>)textMarkerForFirstPositionInTextControl:(CyberCore::HTMLTextFormControlElement&)textControl;
 
 // When a plugin uses a CyberKit control to act as a surrogate view (e.g. PDF use CyberKit to create text fields).
 - (id)associatedPluginParent;
@@ -69,7 +69,7 @@ typedef const struct __AXTextMarkerRange* AXTextMarkerRangeRef;
 
 #endif // PLATFORM(MAC)
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilityObject;
 struct CharacterOffset;
@@ -97,4 +97,4 @@ AXTextMarkerRef startOrEndTextMarkerForRange(AXObjectCache*, const std::optional
 AXTextMarkerRangeRef textMarkerRangeFromRange(AXObjectCache*, const std::optional<SimpleRange>&);
 std::optional<SimpleRange> rangeForTextMarkerRange(AXObjectCache*, AXTextMarkerRangeRef);
 
-} // namespace WebCore
+} // namespace CyberCore

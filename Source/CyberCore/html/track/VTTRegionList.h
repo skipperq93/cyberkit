@@ -30,7 +30,7 @@
 
 #include "VTTRegion.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class VTTRegionList : public RefCounted<VTTRegionList> {
 public:
@@ -66,6 +66,6 @@ inline void VTTRegionList::clear()
     m_vector.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

@@ -31,7 +31,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 using PushMessageDataInit = std::variant<RefPtr<JSC::ArrayBufferView>, RefPtr<JSC::ArrayBuffer>, String>;
 
@@ -39,6 +39,6 @@ struct PushEventInit : ExtendableEventInit {
     std::optional<PushMessageDataInit> data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

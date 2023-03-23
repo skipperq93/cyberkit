@@ -22,7 +22,7 @@
 
 #include "EditingBehaviorType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EditingBehavior {
 public:
@@ -105,4 +105,4 @@ private:
     EditingBehaviorType m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

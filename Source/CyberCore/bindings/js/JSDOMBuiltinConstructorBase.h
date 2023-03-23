@@ -21,7 +21,7 @@
 
 #include "JSDOMConstructorBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMBuiltinConstructorBase : public JSDOMConstructorBase {
 public:
@@ -64,4 +64,4 @@ inline void JSDOMBuiltinConstructorBase::setInitializeFunction(JSC::VM& vm, JSC:
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

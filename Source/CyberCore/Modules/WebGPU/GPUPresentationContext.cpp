@@ -29,7 +29,7 @@
 #include "GPUCanvasConfiguration.h"
 #include "GPUTexture.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void GPUPresentationContext::configure(const GPUCanvasConfiguration& canvasConfiguration)
 {
@@ -56,4 +56,4 @@ void GPUPresentationContext::present()
     m_currentTexture = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

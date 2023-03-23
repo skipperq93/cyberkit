@@ -50,7 +50,7 @@
 #include <wtf/JSONValues.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -219,4 +219,4 @@ RefPtr<StorageArea> InspectorDOMStorageAgent::findStorageArea(Protocol::ErrorStr
     return m_inspectedPage.storageNamespaceProvider().localStorageArea(document);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

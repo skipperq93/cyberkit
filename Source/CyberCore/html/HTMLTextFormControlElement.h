@@ -27,7 +27,7 @@
 #include "HTMLFormControlElement.h"
 #include "PointerEventTypeNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Position;
 class RenderTextControl;
@@ -184,10 +184,10 @@ private:
 
 WEBCORE_EXPORT HTMLTextFormControlElement* enclosingTextFormControl(const Position&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLTextFormControlElement)
-    static bool isType(const WebCore::Element& element) { return element.isTextFormControlElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
-    static bool isType(const WebCore::EventTarget& target) { return is<WebCore::Node>(target) && isType(downcast<WebCore::Node>(target)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLTextFormControlElement)
+    static bool isType(const CyberCore::Element& element) { return element.isTextFormControlElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
+    static bool isType(const CyberCore::EventTarget& target) { return is<CyberCore::Node>(target) && isType(downcast<CyberCore::Node>(target)); }
 SPECIALIZE_TYPE_TRAITS_END()

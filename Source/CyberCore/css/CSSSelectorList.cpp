@@ -31,7 +31,7 @@
 #include "CommonAtomStrings.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSSelectorList::CSSSelectorList(const CSSSelectorList& other)
 {
@@ -193,4 +193,4 @@ bool CSSSelectorList::hasExplicitNestingParent() const
 
     return forEachSelector(functor, this);
 }
-} // namespace WebCore
+} // namespace CyberCore

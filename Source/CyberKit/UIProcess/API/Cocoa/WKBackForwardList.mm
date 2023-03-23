@@ -31,7 +31,7 @@
 #import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKBackForwardList {
-    API::ObjectStorage<WebKit::WebBackForwardList> _list;
+    API::ObjectStorage<CyberKit::WebBackForwardList> _list;
 }
 
 - (void)dealloc
@@ -46,32 +46,32 @@
 
 - (WKBackForwardListItem *)currentItem
 {
-    return WebKit::wrapper(_list->currentItem());
+    return CyberKit::wrapper(_list->currentItem());
 }
 
 - (WKBackForwardListItem *)backItem
 {
-    return WebKit::wrapper(_list->backItem());
+    return CyberKit::wrapper(_list->backItem());
 }
 
 - (WKBackForwardListItem *)forwardItem
 {
-    return WebKit::wrapper(_list->forwardItem());
+    return CyberKit::wrapper(_list->forwardItem());
 }
 
 - (WKBackForwardListItem *)itemAtIndex:(NSInteger)index
 {
-    return WebKit::wrapper(_list->itemAtIndex(index));
+    return CyberKit::wrapper(_list->itemAtIndex(index));
 }
 
 - (NSArray *)backList
 {
-    return WebKit::wrapper(_list->backList());
+    return CyberKit::wrapper(_list->backList());
 }
 
 - (NSArray *)forwardList
 {
-    return WebKit::wrapper(_list->forwardList());
+    return CyberKit::wrapper(_list->forwardList());
 }
 
 #pragma mark WKObject protocol implementation

@@ -28,7 +28,7 @@
 #include "LinkIcon.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 enum class LinkIconType : uint8_t;

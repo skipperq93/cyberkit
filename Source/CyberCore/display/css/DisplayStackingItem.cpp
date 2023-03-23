@@ -30,7 +30,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 StackingItem::StackingItem(std::unique_ptr<BoxModelBox>&& box)
@@ -65,5 +65,5 @@ void StackingItem::sortLists()
 
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

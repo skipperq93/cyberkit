@@ -27,7 +27,7 @@
 
 #include "TextManipulationItem.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextManipulationControllerManipulationFailure {
     enum class Type : uint8_t {
@@ -42,4 +42,4 @@ struct TextManipulationControllerManipulationFailure {
     Type type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

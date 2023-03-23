@@ -27,7 +27,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <CyberScriptCore/JSGlobalObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue jsDate(JSGlobalObject& lexicalGlobalObject, WallTime value)
@@ -50,4 +50,4 @@ WallTime valueToDate(JSC::JSGlobalObject& lexicalGlobalObject, JSValue value)
     return WallTime::fromRawSeconds(Seconds::fromMilliseconds(milliseconds).value());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

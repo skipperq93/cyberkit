@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableElement;
 
@@ -47,9 +47,9 @@ protected:
     void collectPresentationalHintsForAttribute(const QualifiedName&, const AtomString&, MutableStyleProperties&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLTablePartElement)
-    static bool isType(const WebCore::Element& element) { return element.isHTMLTablePartElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLTablePartElement)
+    static bool isType(const CyberCore::Element& element) { return element.isHTMLTablePartElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

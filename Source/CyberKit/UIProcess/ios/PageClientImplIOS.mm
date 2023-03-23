@@ -80,7 +80,7 @@
 - (BOOL)_isHostedInAnotherProcess;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 PageClientImpl::PageClientImpl(WKContentView *contentView, WKWebView *webView)
@@ -163,7 +163,7 @@ bool PageClientImpl::canTakeForegroundAssertions()
 
 bool PageClientImpl::isViewInWindow()
 {
-    // FIXME: in WebKitTestRunner, m_webView is nil, so check the content view instead.
+    // FIXME: in CyberKitTestRunner, m_webView is nil, so check the content view instead.
     if (auto webView = m_webView.get())
         return [webView window];
 
@@ -269,12 +269,12 @@ void PageClientImpl::didChangeContentSize(const CyberCore::IntSize&)
     notImplemented();
 }
 
-void PageClientImpl::disableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIdentifier requestID)
+void PageClientImpl::disableDoubleTapGesturesDuringTapIfNecessary(CyberKit::TapIdentifier requestID)
 {
     [m_contentView _disableDoubleTapGesturesDuringTapIfNecessary:requestID];
 }
 
-void PageClientImpl::handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier requestID, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
+void PageClientImpl::handleSmartMagnificationInformationForPotentialTap(CyberKit::TapIdentifier requestID, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
 {
     [m_contentView _handleSmartMagnificationInformationForPotentialTap:requestID renderRect:renderRect fitEntireRect:fitEntireRect viewportMinimumScale:viewportMinimumScale viewportMaximumScale:viewportMaximumScale nodeIsRootLevel:nodeIsRootLevel];
 }
@@ -506,7 +506,7 @@ void PageClientImpl::makeViewBlank(bool makeBlank)
     [m_contentView layer].opacity = makeBlank ? 0 : 1;
 }
 
-void PageClientImpl::showSafeBrowsingWarning(const SafeBrowsingWarning& warning, CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&& completionHandler)
+void PageClientImpl::showSafeBrowsingWarning(const SafeBrowsingWarning& warning, CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)>&& completionHandler)
 {
     if (auto webView = m_webView.get())
         [webView _showSafeBrowsingWarning:warning completionHandler:WTFMove(completionHandler)];
@@ -578,7 +578,7 @@ void PageClientImpl::commitPotentialTapFailed()
     [m_contentView _commitPotentialTapFailed];
 }
 
-void PageClientImpl::didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const CyberCore::Color& color, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling)
+void PageClientImpl::didGetTapHighlightGeometries(CyberKit::TapIdentifier requestID, const CyberCore::Color& color, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling)
 {
     [m_contentView _didGetTapHighlightForRequest:requestID color:color quads:highlightedQuads topLeftRadius:topLeftRadius topRightRadius:topRightRadius bottomLeftRadius:bottomLeftRadius bottomRightRadius:bottomRightRadius nodeHasBuiltInClickHandling:nodeHasBuiltInClickHandling];
 }
@@ -1125,7 +1125,7 @@ bool PageClientImpl::hasResizableWindows() const
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)
 

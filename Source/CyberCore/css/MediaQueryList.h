@@ -24,7 +24,7 @@
 #include "MediaQuery.h"
 #include "MediaQueryMatcher.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace MQ {
 class MediaQueryEvaluator;

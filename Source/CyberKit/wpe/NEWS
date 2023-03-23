@@ -43,7 +43,7 @@ What's new in WPE CyberKit 2.37.1?
     disabled by default via web view settings.
   - Add new API to set WebView's Content-Security-Policy for web extensions support.
   - Add new API to run async JavaScript functions.
-  - Expose typed arrays in JavaScriptCore GLib API.
+  - Expose typed arrays in CyberScriptCore GLib API.
   - Add support for PDF documents using PDF.js.
   - Show font name and font variant settings in the inspector.
   - MediaSession is enabled by default, allowing remote media control using MPRIS.
@@ -261,10 +261,10 @@ WPE CyberKit 2.21.91
 
 What' new in WPE CyberKit 2.21.2?
 
-  - Add API to evaluate code in a new object to JavaScriptCore GLib API.
-  - Add API to check for syntax errors in given code to JavaScriptCore GLib API.
+  - Add API to evaluate code in a new object to CyberScriptCore GLib API.
+  - Add API to check for syntax errors in given code to CyberScriptCore GLib API.
   - Update jsc_context_evaluate_with_source_uri() to receive also a starting line number.
-  - Add API to allow creating variadic functions to JavaScriptCore GLib API.
+  - Add API to allow creating variadic functions to CyberScriptCore GLib API.
   - Add API to run javascript from a CyberKitWebView in an isolated world.
   - Disable Gigacage if mmap fails to allocate in Linux.
   - Fix WebProcess crash when trying to use the remote Web Inspector.
@@ -281,7 +281,7 @@ What' new in WPE CyberKit 2.21.2?
 
   - Add initial support for the fullscreen Web API.
   - Add initial implementation of WebDriver advance user interaction commands.
-  - Add introspectable alternatives for functions using vargars to JavaScriptCore GLib API.
+  - Add introspectable alternatives for functions using vargars to CyberScriptCore GLib API.
   - Fix memory pressure monitor to reliably notify all subprocesses.
   - Fix building with the Raspberry Pi userland GPU driver and certain versions of GStreamer-GL.
   - Fix building with the ICU headers in a non-default directory.

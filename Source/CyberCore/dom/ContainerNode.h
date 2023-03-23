@@ -26,7 +26,7 @@
 #include "CollectionType.h"
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLCollection;
 class RadioNodeList;
@@ -279,8 +279,8 @@ private:
     ChildNodesLazySnapshot* m_nextSnapshot;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ContainerNode)
-    static bool isType(const WebCore::Node& node) { return node.isContainerNode(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ContainerNode)
+    static bool isType(const CyberCore::Node& node) { return node.isContainerNode(); }
 SPECIALIZE_TYPE_TRAITS_END()

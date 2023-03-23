@@ -43,7 +43,7 @@ enum class DOMPasteAccessResponse : uint8_t;
 struct PromisedAttachmentInfo;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class UndoOrRedo : bool;
 
@@ -146,7 +146,7 @@ private:
     void clearTextIndicator(CyberCore::TextIndicatorDismissalAnimation) override;
     void setTextIndicatorAnimationProgress(float) override;
 
-    void showSafeBrowsingWarning(const SafeBrowsingWarning&, CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&&) override;
+    void showSafeBrowsingWarning(const SafeBrowsingWarning&, CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)>&&) override;
     void clearSafeBrowsingWarning() override;
     void clearSafeBrowsingWarningIfForMainFrameNavigation() override;
 
@@ -163,7 +163,7 @@ private:
     void wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent&) override;
 
     void commitPotentialTapFailed() override;
-    void didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const CyberCore::Color&, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling) override;
+    void didGetTapHighlightGeometries(CyberKit::TapIdentifier requestID, const CyberCore::Color&, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling) override;
 
     void didCommitLayerTree(const RemoteLayerTreeTransaction&) override;
     void layerTreeCommitComplete() override;
@@ -194,8 +194,8 @@ private:
     bool showShareSheet(const CyberCore::ShareDataWithParsedURL&, WTF::CompletionHandler<void(bool)>&&) override;
     void showContactPicker(const CyberCore::ContactsRequestData&, WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&&) override;
     
-    void disableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIdentifier) override;
-    void handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel) override;
+    void disableDoubleTapGesturesDuringTapIfNecessary(CyberKit::TapIdentifier) override;
+    void handleSmartMagnificationInformationForPotentialTap(CyberKit::TapIdentifier, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel) override;
 
     double minimumZoomScale() const override;
     CyberCore::FloatRect documentRect() const override;
@@ -322,6 +322,6 @@ private:
     WeakObjCPtr<WKContentView> m_contentView;
     RetainPtr<WKEditorUndoTarget> m_undoTarget;
 };
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

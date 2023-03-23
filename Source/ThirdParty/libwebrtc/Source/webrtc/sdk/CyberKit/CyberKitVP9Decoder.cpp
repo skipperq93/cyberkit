@@ -23,26 +23,26 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitVP9Decoder.h"
+#include "CyberKitVP9Decoder.h"
 
-#include "WebKitDecoder.h"
-#include "WebKitDecoderReceiver.h"
+#include "CyberKitDecoder.h"
+#include "CyberKitDecoderReceiver.h"
 #include "modules/video_coding/codecs/vp9/libvpx_vp9_decoder.h"
 #include "rtc_base/logging.h"
 #include "system_wrappers/include/cpu_info.h"
 
 namespace webrtc {
 
-static OSStatus createWebKitVP9Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef*);
-void registerWebKitVP9Decoder()
+static OSStatus createCyberKitVP9Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef*);
+void registerCyberKitVP9Decoder()
 {
-    VTRegisterVideoDecoder('vp09', createWebKitVP9Decoder);
+    VTRegisterVideoDecoder('vp09', createCyberKitVP9Decoder);
 }
 
 typedef struct {
     std::unique_ptr<LibvpxVp9Decoder> m_instance;
-    std::unique_ptr<WebKitDecoderReceiver> m_receiver;
-} WebKitVP9Decoder;
+    std::unique_ptr<CyberKitDecoderReceiver> m_receiver;
+} CyberKitVP9Decoder;
 
 static OSStatus invalidateVP9Decoder(CMBaseObjectRef);
 static void finalizeVP9Decoder(CMBaseObjectRef);
@@ -60,11 +60,11 @@ struct DecoderBaseClass {
     CMBaseClass alignedClass;
 };
 
-static const DecoderBaseClass WebKitVP9Decoder_BaseClass {
+static const DecoderBaseClass CyberKitVP9Decoder_BaseClass {
     { },
     {
         kCMBaseObject_ClassVersion_1,
-        sizeof(WebKitVP9Decoder),
+        sizeof(CyberKitVP9Decoder),
         nullptr, // Comparison by pointer equality
         invalidateVP9Decoder,
         finalizeVP9Decoder,
@@ -78,9 +78,9 @@ static const DecoderBaseClass WebKitVP9Decoder_BaseClass {
 #pragma pack(pop)
 
 #if defined(CMBASE_OBJECT_NEEDS_ALIGNMENT) && CMBASE_OBJECT_NEEDS_ALIGNMENT
-    static_assert(sizeof(WebKitVP9Decoder_BaseClass.alignedClass.version) == sizeof(uint32_t), "CMBaseClass fixup is required!");
+    static_assert(sizeof(CyberKitVP9Decoder_BaseClass.alignedClass.version) == sizeof(uint32_t), "CMBaseClass fixup is required!");
 #else
-    static_assert(sizeof(WebKitVP9Decoder_BaseClass.alignedClass.version) == sizeof(uintptr_t), "CMBaseClass fixup is not required!");
+    static_assert(sizeof(CyberKitVP9Decoder_BaseClass.alignedClass.version) == sizeof(uintptr_t), "CMBaseClass fixup is not required!");
 #endif
 static_assert(offsetof(DecoderBaseClass, alignedClass) == padSize, "CMBaseClass offset is incorrect!");
 static_assert(alignof(DecoderBaseClass) == 4, "CMBaseClass must have 4 byte alignment");
@@ -94,7 +94,7 @@ struct DecoderClass {
     VTVideoDecoderClass alignedClass;
 };
 
-static const DecoderClass WebKitVP9Decoder_VideoDecoderClass =
+static const DecoderClass CyberKitVP9Decoder_VideoDecoderClass =
 {
     { },
     {
@@ -113,13 +113,13 @@ static const DecoderClass WebKitVP9Decoder_VideoDecoderClass =
 };
 #pragma pack(pop)
 
-static const VTVideoDecoderVTable WebKitVP9DecoderVTable =
+static const VTVideoDecoderVTable CyberKitVP9DecoderVTable =
 {
-    { nullptr, &WebKitVP9Decoder_BaseClass.alignedClass },
-    &WebKitVP9Decoder_VideoDecoderClass.alignedClass
+    { nullptr, &CyberKitVP9Decoder_BaseClass.alignedClass },
+    &CyberKitVP9Decoder_VideoDecoderClass.alignedClass
 };
 
-OSStatus createWebKitVP9Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef* decoderOut)
+OSStatus createCyberKitVP9Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef* decoderOut)
 {
     if (!decoderOut) {
         RTC_LOG(LS_ERROR) << "VP9 decoder creation failed, no decoder output";
@@ -127,7 +127,7 @@ OSStatus createWebKitVP9Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTV
     }
 
     VTVideoDecoderRef decoder = nullptr;
-    auto error = CMDerivedObjectCreate(allocator, &WebKitVP9DecoderVTable.base, VTVideoDecoderGetClassID(), (CMBaseObjectRef*)&decoder);
+    auto error = CMDerivedObjectCreate(allocator, &CyberKitVP9DecoderVTable.base, VTVideoDecoderGetClassID(), (CMBaseObjectRef*)&decoder);
 
     if (!decoder) {
         RTC_LOG(LS_ERROR) << "VP9 decoder creation failed, CMDerivedObjectCreate failed with error " << error;
@@ -144,7 +144,7 @@ OSStatus createWebKitVP9Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTV
 
 OSStatus invalidateVP9Decoder(CMBaseObjectRef instance)
 {
-    auto* decoder = static_cast<WebKitVP9Decoder*>(CMBaseObjectGetDerivedStorage(instance));
+    auto* decoder = static_cast<CyberKitVP9Decoder*>(CMBaseObjectGetDerivedStorage(instance));
     if (!decoder)
         RTC_LOG(LS_ERROR) << "VP9 decoder: invalidation failed as instance has no decoder";
     else {
@@ -161,12 +161,12 @@ void finalizeVP9Decoder(CMBaseObjectRef instance)
 
 CFStringRef copyVP9DecoderDebugDescription(CMBaseObjectRef)
 {
-    return CFSTR("WebKit VP9 decoder");
+    return CFSTR("CyberKit VP9 decoder");
 }
 
-WebKitVP9Decoder* webKitVP9DecoderFromVTDecoder(VTVideoDecoderRef decoder)
+CyberKitVP9Decoder* webKitVP9DecoderFromVTDecoder(VTVideoDecoderRef decoder)
 {
-    return static_cast<WebKitVP9Decoder*>(CMBaseObjectGetDerivedStorage(reinterpret_cast<CMBaseObjectRef>(decoder)));
+    return static_cast<CyberKitVP9Decoder*>(CMBaseObjectGetDerivedStorage(reinterpret_cast<CMBaseObjectRef>(decoder)));
 }
 OSStatus startVP9DecoderSession(VTVideoDecoderRef instance, VTVideoDecoderSession session, CMVideoFormatDescriptionRef formatDescription)
 {
@@ -177,7 +177,7 @@ OSStatus startVP9DecoderSession(VTVideoDecoderRef instance, VTVideoDecoderSessio
     }
 
     decoder->m_instance = std::make_unique<LibvpxVp9Decoder>();
-    decoder->m_receiver = std::make_unique<WebKitDecoderReceiver>(session);
+    decoder->m_receiver = std::make_unique<CyberKitDecoderReceiver>(session);
     decoder->m_receiver->initializeFromFormatDescription(formatDescription);
 
     decoder->m_instance->RegisterDecodeCompleteCallback(decoder->m_receiver.get());
@@ -195,7 +195,7 @@ OSStatus startVP9DecoderSession(VTVideoDecoderRef instance, VTVideoDecoderSessio
     return noErr;
 }
 
-static OSStatus decodeVP9DecoderFrameFromContiguousBlock(WebKitVP9Decoder& decoder, VTVideoDecoderFrame frame, CMBlockBufferRef encodedBuffer)
+static OSStatus decodeVP9DecoderFrameFromContiguousBlock(CyberKitVP9Decoder& decoder, VTVideoDecoderFrame frame, CMBlockBufferRef encodedBuffer)
 {
     RTC_DCHECK(CMBlockBufferIsRangeContiguous(encodedBuffer, 0, 0));
 
@@ -210,7 +210,7 @@ static OSStatus decodeVP9DecoderFrameFromContiguousBlock(WebKitVP9Decoder& decod
     decoder.m_receiver->setCurrentFrame(frame);
 
     EncodedImage image;
-    image.SetEncodedData(WebKitEncodedImageBufferWrapper::create(reinterpret_cast<uint8_t*>(data), size));
+    image.SetEncodedData(CyberKitEncodedImageBufferWrapper::create(reinterpret_cast<uint8_t*>(data), size));
     // We set those values as VP9DecoderImpl checks for getting a full key frame as first frame.
     image._frameType = VideoFrameType::kVideoFrameKey;
     auto error = decoder.m_instance->Decode(image, false, 0);

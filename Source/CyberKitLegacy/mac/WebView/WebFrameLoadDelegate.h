@@ -186,7 +186,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
     @method webView:didClearWindowObject:forFrame:
     @abstract Notifies the delegate that the JavaScript window object in a frame has 
     been cleared in preparation for a new load. This is the preferred place to set custom 
-    properties on the window object using the WebScriptObject and JavaScriptCore APIs.
+    properties on the window object using the WebScriptObject and CyberScriptCore APIs.
     @param webView The webView sending the message.
     @param windowObject The WebScriptObject representing the frame's JavaScript window object.
     @param frame The WebFrame to which windowObject belongs.

@@ -43,7 +43,7 @@ struct DragItem;
 struct TextIndicatorData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct DragSourceState {
     OptionSet<CyberCore::DragSourceAction> action;
@@ -132,6 +132,6 @@ private:
     Vector<ItemAndPreview> m_defaultDropPreviews;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(DRAG_SUPPORT)

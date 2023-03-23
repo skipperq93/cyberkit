@@ -41,7 +41,7 @@ class WheelEventDeltaFilter;
 struct WheelEventHandlingResult;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class DisplayLink;
 class NativeWebWheelEvent;
@@ -99,6 +99,6 @@ private:
     std::optional<DisplayLinkObserverID> m_displayRefreshObserverID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC) && ENABLE(SCROLLING_THREAD)

@@ -55,7 +55,7 @@
 #include "WebInspectorUIProxyClient.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 const unsigned WebInspectorUIProxy::minimumWindowWidth = 500;
@@ -482,7 +482,7 @@ void WebInspectorUIProxy::openLocalInspectorFrontend(bool canAttach, bool underT
         m_inspectorPage->send(Messages::WebInspectorUI::SetDockingUnavailable(!m_canAttach));
     }
 
-    // Notify WebKit client when a local inspector attaches so that it may install delegates prior to the _WKInspector loading its frontend.
+    // Notify CyberKit client when a local inspector attaches so that it may install delegates prior to the _WKInspector loading its frontend.
     m_inspectedPage->uiClient().didAttachLocalInspector(*m_inspectedPage, *this);
 
     // Bail out if the client closed the inspector from the delegate method.
@@ -531,7 +531,7 @@ void WebInspectorUIProxy::closeFrontendPageAndWindow()
     
     SetForScope reentrancyProtector(m_closing, true);
     
-    // Notify WebKit client when a local inspector closes so it can clear _WKInspectorDelegate and perform other cleanup.
+    // Notify CyberKit client when a local inspector closes so it can clear _WKInspectorDelegate and perform other cleanup.
     if (m_inspectedPage)
         m_inspectedPage->uiClient().willCloseLocalInspector(*m_inspectedPage, *this);
 
@@ -924,4 +924,4 @@ void WebInspectorUIProxy::platformAttachAvailabilityChanged(bool)
 
 #endif // !PLATFORM(MAC) && !PLATFORM(GTK) && !PLATFORM(WIN)
 
-} // namespace WebKit
+} // namespace CyberKit

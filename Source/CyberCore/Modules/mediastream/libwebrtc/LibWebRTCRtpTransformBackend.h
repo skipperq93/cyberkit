@@ -41,7 +41,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCRtpTransformBackend : public RTCRtpTransformBackend, public webrtc::FrameTransformerInterface {
 protected:
@@ -90,6 +90,6 @@ inline rtc::RefCountReleaseStatus LibWebRTCRtpTransformBackend::Release() const
     return rtc::RefCountReleaseStatus::kOtherRefsRemained;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

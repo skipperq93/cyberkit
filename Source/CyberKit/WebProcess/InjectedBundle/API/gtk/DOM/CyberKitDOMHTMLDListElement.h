@@ -54,7 +54,7 @@ webkit_dom_html_d_list_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_d_list_element_get_compact(CyberKitDOMHTMLDListElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_d_list_element_get_compact(CyberKitDOMHTMLDListElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_d_list_element_set_compact(CyberKitDOMHTMLDListElement* self, gboolean value);

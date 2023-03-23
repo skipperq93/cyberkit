@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpContributingSource {
     double timestamp;
@@ -37,6 +37,6 @@ struct RTCRtpContributingSource {
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

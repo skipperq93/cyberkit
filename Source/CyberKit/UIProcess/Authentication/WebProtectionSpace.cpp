@@ -28,7 +28,7 @@
 
 #include <CyberCore/SharedBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebProtectionSpace::WebProtectionSpace(const CyberCore::ProtectionSpace& coreProtectionSpace)
     : m_coreProtectionSpace(coreProtectionSpace)
@@ -70,4 +70,4 @@ CyberCore::ProtectionSpace::AuthenticationScheme WebProtectionSpace::authenticat
     return m_coreProtectionSpace.authenticationScheme();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

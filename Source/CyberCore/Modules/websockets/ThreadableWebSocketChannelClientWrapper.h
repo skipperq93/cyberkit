@@ -39,7 +39,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class WebSocketChannelClient;
@@ -104,4 +104,4 @@ private:
     Vector<std::unique_ptr<ScriptExecutionContext::Task>> m_pendingTasks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

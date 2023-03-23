@@ -29,7 +29,7 @@
 #include "JSDOMGuardedObject.h"
 #include <CyberScriptCore/JSObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 class InternalWritableStream final : public DOMGuarded<JSC::JSObject> {
 public:
     static ExceptionOr<Ref<InternalWritableStream>> createFromUnderlyingSink(JSDOMGlobalObject&, JSC::JSValue underlyingSink, JSC::JSValue strategy);

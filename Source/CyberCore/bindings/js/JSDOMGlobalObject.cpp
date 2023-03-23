@@ -60,8 +60,8 @@
 #include "ShadowRealmGlobalScope.h"
 #include "SharedWorkerGlobalScope.h"
 #include "StructuredClone.h"
-#include "WebCoreJSBuiltinInternals.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSBuiltinInternals.h"
+#include "CyberCoreJSClientData.h"
 #include "WorkerGlobalScope.h"
 #include "WorkletGlobalScope.h"
 #include <CyberScriptCore/BuiltinNames.h>
@@ -81,7 +81,7 @@
 #include <CyberScriptCore/JSRemoteInspector.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC_DECLARE_HOST_FUNCTION(makeThisTypeErrorForBuiltins);
@@ -257,7 +257,7 @@ SUPPRESS_ASAN void JSDOMGlobalObject::addBuiltinGlobals(VM& vm)
 {
     m_builtinInternalFunctions->initialize(*this);
 
-    auto& builtinNames = WebCore::builtinNames(vm);
+    auto& builtinNames = CyberCore::builtinNames(vm);
     JSDOMGlobalObject::GlobalPropertyInfo staticGlobals[] = {
         JSDOMGlobalObject::GlobalPropertyInfo(builtinNames.makeThisTypeErrorPrivateName(),
             JSFunction::create(vm, this, 2, String(), makeThisTypeErrorForBuiltins, ImplementationVisibility::Public), PropertyAttribute::DontDelete | PropertyAttribute::ReadOnly),
@@ -792,4 +792,4 @@ JSDOMGlobalObject& legacyActiveGlobalObjectForAccessor(JSC::JSGlobalObject& lexi
     return callerGlobalObject(lexicalGlobalObject, callFrame, skipFirstFrame, lookUpFromVMEntryScope);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

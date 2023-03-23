@@ -34,7 +34,7 @@
 #include "Database.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -65,4 +65,4 @@ void InspectorDatabaseResource::bind(Inspector::DatabaseFrontendDispatcher& data
     databaseFrontendDispatcher.addDatabase(WTFMove(jsonObject));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

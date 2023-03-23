@@ -31,7 +31,7 @@
 #include "WebGLProgram.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLUniformLocation final : public RefCounted<WebGLUniformLocation> {
 public:
@@ -54,6 +54,6 @@ private:
     GCGLenum m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

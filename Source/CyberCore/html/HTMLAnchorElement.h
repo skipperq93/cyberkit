@@ -31,7 +31,7 @@
 #include "URLDecomposition.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTokenList;
 
@@ -140,4 +140,4 @@ private:
 bool isEnterKeyKeydownEvent(Event&);
 bool shouldProhibitLinks(Element*);
 
-} // namespace WebCore
+} // namespace CyberCore

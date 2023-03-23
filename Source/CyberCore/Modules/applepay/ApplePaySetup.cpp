@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "ApplePaySetupWebCore.h"
+#include "ApplePaySetupCyberCore.h"
 
 #if ENABLE(APPLE_PAY)
 
@@ -38,7 +38,7 @@
 #include "Settings.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool shouldDiscloseFeatures(Document& document)
 {
@@ -147,6 +147,6 @@ void ApplePaySetup::suspend(ReasonForSuspension)
     stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

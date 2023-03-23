@@ -29,7 +29,7 @@
 #include <memory>
 #include <wtf/UniqueArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserSelector;
 
@@ -82,4 +82,4 @@ inline const CSSSelector* CSSSelectorList::next(const CSSSelector* current)
     return current->isLastInSelectorList() ? 0 : current + 1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

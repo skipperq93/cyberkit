@@ -33,7 +33,7 @@
 #include "JSIDBCursor.h"
 #include "JSIDBDatabase.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC::JSValue JSIDBRequest::result(JSC::JSGlobalObject& lexicalGlobalObject) const
@@ -104,4 +104,4 @@ void JSIDBRequest::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSIDBRequest);
 
-} // namespace WebCore
+} // namespace CyberCore

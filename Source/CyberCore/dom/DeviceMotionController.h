@@ -29,7 +29,7 @@
 #include "DeviceController.h"
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceMotionClient;
 class DeviceMotionData;
@@ -58,4 +58,4 @@ public:
     static bool isActiveAt(Page*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

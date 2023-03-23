@@ -27,7 +27,7 @@
 #include "TestVoidCallbackFunction.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestVoidCallbackFunction final : public TestVoidCallbackFunction {
 public:
@@ -53,6 +53,6 @@ private:
 JSC::JSValue toJS(TestVoidCallbackFunction&);
 inline JSC::JSValue toJS(TestVoidCallbackFunction* impl) { return impl ? toJS(*impl) : JSC::jsNull(); }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TEST_CONDITIONAL)

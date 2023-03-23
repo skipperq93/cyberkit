@@ -44,7 +44,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PermissionStatus);
 
@@ -127,4 +127,4 @@ void PermissionStatus::eventListenersDidChange()
     m_hasChangeEventListener = hasEventListeners(eventNames().changeEvent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

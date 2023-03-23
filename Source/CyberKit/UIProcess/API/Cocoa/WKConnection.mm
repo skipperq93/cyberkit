@@ -61,7 +61,7 @@ static void didReceiveMessage(WKConnectionRef, WKStringRef messageName, WKTypeRe
 
     if ([delegate respondsToSelector:@selector(connection:didReceiveMessageWithName:body:)]) {
         auto name = bridge_cast(adoptCF(WKStringCopyCFString(kCFAllocatorDefault, messageName)));
-        id body = static_cast<WebKit::ObjCObjectGraph*>(WebKit::toImpl(messageBody))->rootObject();
+        id body = static_cast<CyberKit::ObjCObjectGraph*>(CyberKit::toImpl(messageBody))->rootObject();
         [delegate connection:connection didReceiveMessageWithName:name.get() body:body];
     }
 }
@@ -78,7 +78,7 @@ static void didClose(WKConnectionRef, const void* clientInfo)
 }
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-static void setUpClient(WKConnection *wrapper, WebKit::WebConnection& connection)
+static void setUpClient(WKConnection *wrapper, CyberKit::WebConnection& connection)
 ALLOW_DEPRECATED_DECLARATIONS_END
 {
     WKConnectionClientV0 client;
@@ -108,13 +108,13 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (void)sendMessageWithName:(NSString *)messageName body:(id)messageBody
 {
-    auto wkMessageBody = WebKit::ObjCObjectGraph::create(messageBody);
+    auto wkMessageBody = CyberKit::ObjCObjectGraph::create(messageBody);
     self._connection.postMessage(messageName, wkMessageBody.ptr());
 }
 
-- (WebKit::WebConnection&)_connection
+- (CyberKit::WebConnection&)_connection
 {
-    return static_cast<WebKit::WebConnection&>(API::Object::fromWKObjectExtraSpace(self));
+    return static_cast<CyberKit::WebConnection&>(API::Object::fromWKObjectExtraSpace(self));
 }
 
 #pragma mark WKObject protocol implementation

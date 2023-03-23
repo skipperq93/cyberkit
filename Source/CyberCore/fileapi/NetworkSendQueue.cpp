@@ -29,7 +29,7 @@
 #include "BlobLoader.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NetworkSendQueue::NetworkSendQueue(ScriptExecutionContext& context, WriteString&& writeString, WriteRawData&& writeRawData, ProcessError&& processError)
     : ContextDestructionObserver(&context)
@@ -60,7 +60,7 @@ void NetworkSendQueue::enqueue(const JSC::ArrayBuffer& binaryData, unsigned byte
     m_queue.append(SharedBuffer::create(static_cast<const uint8_t*>(binaryData.data()) + byteOffset, byteLength));
 }
 
-void NetworkSendQueue::enqueue(WebCore::Blob& blob)
+void NetworkSendQueue::enqueue(CyberCore::Blob& blob)
 {
     auto* context = scriptExecutionContext();
     if (!context)
@@ -117,4 +117,4 @@ void NetworkSendQueue::processMessages()
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

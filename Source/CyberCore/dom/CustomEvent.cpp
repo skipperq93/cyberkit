@@ -30,7 +30,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CustomEvent);
 
@@ -75,4 +75,4 @@ EventInterface CustomEvent::eventInterface() const
     return CustomEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

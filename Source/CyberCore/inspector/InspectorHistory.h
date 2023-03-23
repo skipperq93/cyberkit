@@ -33,7 +33,7 @@
 #include "ExceptionOr.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InspectorHistory final {
     WTF_MAKE_NONCOPYABLE(InspectorHistory);
@@ -72,4 +72,4 @@ private:
     size_t m_afterLastActionIndex { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

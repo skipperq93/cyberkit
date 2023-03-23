@@ -37,7 +37,7 @@
 #include "JSEventTarget.h"
 #include "JSRemoteDOMWindow.h"
 #include "ScriptController.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/Debugger.h>
 #include <CyberScriptCore/JSObject.h>
 #include <CyberScriptCore/StrongInlines.h>
@@ -46,7 +46,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -182,4 +182,4 @@ JSC::GCClient::IsoSubspace* JSWindowProxy::subspaceForImpl(JSC::VM& vm)
     return &static_cast<JSVMClientData*>(vm.clientData)->windowProxySpace();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

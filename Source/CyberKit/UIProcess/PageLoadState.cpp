@@ -28,7 +28,7 @@
 
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 // Progress always starts at this value. This helps provide feedback as soon as a load starts.
 static const double initialProgressValue = 0.1;
@@ -501,4 +501,4 @@ void PageLoadState::callObserverCallback(void (Observer::*callback)())
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

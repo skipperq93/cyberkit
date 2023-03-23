@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DeviceMotionData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DeviceMotionData> DeviceMotionData::create()
 {
@@ -46,4 +46,4 @@ DeviceMotionData::DeviceMotionData(RefPtr<Acceleration>&& acceleration, RefPtr<A
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

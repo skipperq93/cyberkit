@@ -20,7 +20,7 @@
 
 #include "JSDOMWindow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractDOMWindow;
 class AbstractFrame;
@@ -56,4 +56,4 @@ inline JSDOMWindow* mainWorldGlobalObject(Frame* frame)
 
 JSC_DECLARE_CUSTOM_GETTER(showModalDialogGetter);
 
-} // namespace WebCore
+} // namespace CyberCore

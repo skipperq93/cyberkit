@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum WCLayerTreeHostIdentifierType { };
 using WCLayerTreeHostIdentifier = ObjectIdentifier<WCLayerTreeHostIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

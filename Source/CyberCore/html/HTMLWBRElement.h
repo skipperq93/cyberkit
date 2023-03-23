@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderLineBreak;
 
@@ -44,4 +44,4 @@ private:
     RenderPtr<RenderElement> createElementRenderer(RenderStyle&&, const RenderTreePosition&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

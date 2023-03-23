@@ -28,7 +28,7 @@
 #include "IDBKeyRangeData.h"
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class IDBGetRecordDataType : bool {
     KeyOnly,
@@ -46,4 +46,4 @@ struct IDBGetRecordData {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<UserGestureToken>& currentToken()
 {

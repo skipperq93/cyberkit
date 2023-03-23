@@ -50,7 +50,7 @@ list(APPEND TestRunnerInjectedBundle_SOURCES
 
 list(APPEND TestRunnerInjectedBundle_LIBRARIES
     ${FOUNDATION_LIBRARY}
-    JavaScriptCore
+    CyberScriptCore
     WTF
     CyberCoreTestSupport
     CyberKit

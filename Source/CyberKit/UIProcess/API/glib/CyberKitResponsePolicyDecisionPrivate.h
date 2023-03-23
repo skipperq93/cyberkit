@@ -21,6 +21,6 @@
 
 #include "APINavigationResponse.h"
 #include "WebFramePolicyListenerProxy.h"
-#include "WebKitResponsePolicyDecision.h"
+#include "CyberKitResponsePolicyDecision.h"
 
-WebKitPolicyDecision* webkitResponsePolicyDecisionCreate(Ref<API::NavigationResponse>&&, Ref<WebKit::WebFramePolicyListenerProxy>&&);
+CyberKitPolicyDecision* webkitResponsePolicyDecisionCreate(Ref<API::NavigationResponse>&&, Ref<CyberKit::WebFramePolicyListenerProxy>&&);

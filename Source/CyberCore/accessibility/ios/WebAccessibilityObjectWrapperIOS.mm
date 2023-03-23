@@ -56,7 +56,7 @@
 #import "TextIterator.h"
 #import "WAKScrollView.h"
 #import "WAKWindow.h"
-#import "WebCoreThread.h"
+#import "CyberCoreThread.h"
 #import "VisibleUnits.h"
 #import <CoreText/CoreText.h>
 #import <wtf/cocoa/VectorCocoa.h>
@@ -89,7 +89,7 @@
 
 @end
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace HTMLNames;
 
 typedef NS_ENUM(NSInteger, UIAccessibilityScrollDirection) {
@@ -161,7 +161,7 @@ static AccessibilityObjectWrapper* AccessibilityUnignoredAncestor(AccessibilityO
 // This is needed for external clients to be able to create a text marker without having a pointer to the cache.
 - (id)initWithData:(NSData *)data accessibilityObject:(AccessibilityObjectWrapper *)wrapper
 {
-    WebCore::AXCoreObject* axObject = wrapper.axBackingObject;
+    CyberCore::AXCoreObject* axObject = wrapper.axBackingObject;
     if (!axObject)
         return nil;
     
@@ -252,7 +252,7 @@ static AccessibilityObjectWrapper* AccessibilityUnignoredAncestor(AccessibilityO
     return self;
 }
 
-- (WebCore::AccessibilityObject *)axBackingObject
+- (CyberCore::AccessibilityObject *)axBackingObject
 {
     return m_axObject;
 }
@@ -717,7 +717,7 @@ static AccessibilityObjectWrapper *ancestorWithRole(const AXCoreObject& descenda
 
         switch (parentRole) {
         case AccessibilityRole::Link:
-        case AccessibilityRole::WebCoreLink:
+        case AccessibilityRole::CyberCoreLink:
             traits |= [self _axLinkTrait];
             if (parent->isVisited())
                 traits |= [self _axVisitedTrait];
@@ -840,7 +840,7 @@ static AccessibilityObjectWrapper *ancestorWithRole(const AXCoreObject& descenda
     uint64_t traits = [self _axWebContentTrait];
     switch (role) {
     case AccessibilityRole::Link:
-    case AccessibilityRole::WebCoreLink:
+    case AccessibilityRole::CyberCoreLink:
         traits |= [self _axLinkTrait];
         if (self.axBackingObject->isVisited())
             traits |= [self _axVisitedTrait];
@@ -991,7 +991,7 @@ static AccessibilityObjectWrapper *ancestorWithRole(const AXCoreObject& descenda
         
     // Links can sometimes be elements (when they only contain static text or don't contain anything).
     // They should not be elements when containing text and other types.
-    case AccessibilityRole::WebCoreLink:
+    case AccessibilityRole::CyberCoreLink:
     case AccessibilityRole::Link:
         if ([self containsUnnaturallySegmentedChildren] || ![self accessibilityElementCount])
             return true;
@@ -1746,7 +1746,7 @@ static void appendStringToResult(NSMutableString *result, NSString *string)
         return NO;
     
     AccessibilityRole role = self.axBackingObject->roleValue();
-    if (role != AccessibilityRole::Link && role != AccessibilityRole::WebCoreLink)
+    if (role != AccessibilityRole::Link && role != AccessibilityRole::CyberCoreLink)
         return NO;
     
     const auto& children = self.axBackingObject->children();
@@ -2016,10 +2016,10 @@ static NSArray *accessibleElementsForObjects(const AXCoreObject::AccessibilityCh
 
 static RenderObject* rendererForView(WAKView* view)
 {
-    if (![view conformsToProtocol:@protocol(WebCoreFrameView)])
+    if (![view conformsToProtocol:@protocol(CyberCoreFrameView)])
         return nil;
     
-    WAKView<WebCoreFrameView>* frameView = (WAKView<WebCoreFrameView>*)view;
+    WAKView<CyberCoreFrameView>* frameView = (WAKView<CyberCoreFrameView>*)view;
     Frame* frame = [frameView _web_frame];
     if (!frame)
         return nil;

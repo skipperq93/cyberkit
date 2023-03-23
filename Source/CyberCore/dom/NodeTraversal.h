@@ -27,7 +27,7 @@
 #include "ContainerNode.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace NodeTraversal {
 
 // Does a pre-order traversal of the tree to find the next node after this one.

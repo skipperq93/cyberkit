@@ -35,7 +35,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaKeyMessageEvent);
 
@@ -58,6 +58,6 @@ RefPtr<JSC::ArrayBuffer> MediaKeyMessageEvent::message() const
     return m_message;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

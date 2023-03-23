@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerOrWorkletGlobalScope;
 
@@ -54,4 +54,4 @@ private:
     HashMap<uint64_t, CompletionHandler<void(Vector<MessageWithMessagePorts>&&, Function<void()>&&)>> m_takeAllMessagesCallbacks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

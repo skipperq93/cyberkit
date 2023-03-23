@@ -34,7 +34,7 @@
 #include "PermissionStatus.h"
 #include "ScriptExecutionContextIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -63,4 +63,4 @@ private:
     ClientOrigin m_origin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

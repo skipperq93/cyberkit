@@ -34,7 +34,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Model;
 

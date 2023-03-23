@@ -29,7 +29,7 @@
 
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
@@ -40,8 +40,8 @@ class WebPageProxy;
 
 - (instancetype)initWithConfiguration:(WKWebViewConfiguration *)configuration;
 
-- (void)addPage:(WebKit::WebPageProxy&)page;
-- (void)removePage:(WebKit::WebPageProxy&)page;
+- (void)addPage:(CyberKit::WebPageProxy&)page;
+- (void)removePage:(CyberKit::WebPageProxy&)page;
 
 - (void)registerProvider:(Class <WKWebViewContentProvider>)contentProvider forMIMEType:(const String&)mimeType;
 - (Class <WKWebViewContentProvider>)providerForMIMEType:(const String&)mimeType;

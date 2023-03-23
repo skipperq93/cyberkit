@@ -32,7 +32,7 @@
 
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPULayoutMode = std::variant<
     RefPtr<GPUPipelineLayout>,

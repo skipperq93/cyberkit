@@ -41,7 +41,7 @@ enum class ClientDataType : bool;
 enum class UserVerificationRequirement : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // Local authenticators normally doesn't need to establish connections
 // between the platform and themselves as they are attached.
@@ -76,6 +76,6 @@ private:
     RetainPtr<LAContext> m_context;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -46,7 +46,7 @@
 #include "StyleColor.h"
 #include "StylePropertyShorthand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool CSSParserFastPaths::isSimpleLengthPropertyID(CSSPropertyID propertyId, bool& acceptsNegativeNumbers)
 {
@@ -923,4 +923,4 @@ RefPtr<CSSValue> CSSParserFastPaths::maybeParseValue(CSSPropertyID propertyID, S
     return parseSimpleTransform(propertyID, string);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

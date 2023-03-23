@@ -32,8 +32,8 @@
 #include "CyberCoreThreadRun.h"
 #include <wtf/ios/CyberCoreThread.h>
 
-// "Fill In" JavaScriptCore's function pointers with ours.
-// JavaScriptCore's functions have the same name, but
+// "Fill In" CyberScriptCore's function pointers with ours.
+// CyberScriptCore's functions have the same name, but
 // they are prefixed with "CyberCore".
 
 #define INIT(function) CyberCore##function = function

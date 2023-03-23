@@ -38,7 +38,7 @@
 #include "TextIterator.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(AUTOCORRECTION_PANEL)
 // On Mac OS X, we use this command to keep track of user undoing a correction for the first time.
@@ -145,4 +145,4 @@ bool SpellingCorrectionCommand::shouldRetainAutocorrectionIndicator() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

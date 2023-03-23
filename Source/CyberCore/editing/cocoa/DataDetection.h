@@ -37,7 +37,7 @@ OBJC_CLASS DDActionContext;
 OBJC_CLASS NSArray;
 OBJC_CLASS NSDictionary;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLDivElement;
@@ -78,6 +78,6 @@ public:
     static bool isDataDetectorElement(const Element&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

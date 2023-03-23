@@ -27,7 +27,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CSSCustomPropertySyntax {
     enum class Type : uint8_t {

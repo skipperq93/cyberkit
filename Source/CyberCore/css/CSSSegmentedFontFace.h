@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontSelector;
 class FontCreationContext;
@@ -67,4 +67,4 @@ private:
     Vector<Ref<CSSFontFace>, 1> m_fontFaces;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

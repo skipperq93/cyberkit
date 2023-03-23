@@ -34,7 +34,7 @@
 #include "Settings.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://drafts.csswg.org/css-values/#url-local-url-flag
 bool ResolvedURL::isLocalURL() const
@@ -52,7 +52,7 @@ CSSParserContext::CSSParserContext(CSSParserMode mode, const URL& baseURL)
     : baseURL(baseURL)
     , mode(mode)
 {
-    // FIXME: We should turn all of the features on from their WebCore Settings defaults.
+    // FIXME: We should turn all of the features on from their CyberCore Settings defaults.
     if (mode == UASheetMode) {
         colorMixEnabled = true;
         focusVisibleEnabled = true;

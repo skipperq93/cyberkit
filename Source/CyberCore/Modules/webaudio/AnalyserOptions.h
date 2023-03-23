@@ -29,7 +29,7 @@
 
 #include "AudioNodeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AnalyserOptions : AudioNodeOptions {
     unsigned fftSize { 2048 };
@@ -38,6 +38,6 @@ struct AnalyserOptions : AudioNodeOptions {
     double smoothingTimeConstant { 0.8 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

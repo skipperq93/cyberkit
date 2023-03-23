@@ -34,7 +34,7 @@
 #include "WebPage.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteWCLayerTreeHostProxy::RemoteWCLayerTreeHostProxy(WebPage& page, bool usesOffscreenRendering)
     : m_page(page)
@@ -84,11 +84,11 @@ uint64_t RemoteWCLayerTreeHostProxy::messageSenderDestinationID() const
     return wcLayerTreeHostIdentifier().toUInt64();
 }
 
-void RemoteWCLayerTreeHostProxy::update(WCUpateInfo&& updateInfo, CompletionHandler<void(std::optional<WebKit::UpdateInfo>)>&& completionHandler)
+void RemoteWCLayerTreeHostProxy::update(WCUpateInfo&& updateInfo, CompletionHandler<void(std::optional<CyberKit::UpdateInfo>)>&& completionHandler)
 {
     sendWithAsyncReply(Messages::RemoteWCLayerTreeHost::Update(updateInfo), WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

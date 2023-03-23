@@ -31,7 +31,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedScript;
 class ContainerNode;

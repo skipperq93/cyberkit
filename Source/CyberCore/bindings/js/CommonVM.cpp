@@ -29,7 +29,7 @@
 #include "DOMWindow.h"
 #include "Frame.h"
 #include "ScriptController.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/MachineStackMarker.h>
 #include <CyberScriptCore/VM.h>
@@ -38,10 +38,10 @@
 #include <wtf/text/AtomString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThreadInternal.h"
+#include "CyberCoreThreadInternal.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::VM* g_commonVMOrNull;
 
@@ -97,5 +97,5 @@ void addImpureProperty(const AtomString& propertyName)
     commonVM().addImpureProperty(propertyName.impl());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

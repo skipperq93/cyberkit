@@ -36,7 +36,7 @@
 #include "URLSearchParams.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class FetchBodyOwner;
@@ -130,4 +130,4 @@ private:
     RefPtr<ReadableStream> m_readableStream;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

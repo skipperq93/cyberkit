@@ -28,7 +28,7 @@
 #include "Node.h"
 #include "Position.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // A Position iterator with constant-time
 // increment, decrement, and several predicates on the Position it is at.
@@ -61,4 +61,4 @@ private:
     int m_offsetInAnchor { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

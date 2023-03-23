@@ -29,11 +29,11 @@
 #import "LegacySessionStateCoding.h"
 #import "WKNSData.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<NSData> encodeSessionState(const SessionState& sessionState)
 {
-    return wrapper(WebKit::encodeLegacySessionState(sessionState));
+    return wrapper(CyberKit::encodeLegacySessionState(sessionState));
 }
 
 bool decodeSessionState(NSData *data, SessionState& state)

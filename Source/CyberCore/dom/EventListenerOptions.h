@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct EventListenerOptions {
     EventListenerOptions(bool capture = false)
@@ -35,4 +35,4 @@ struct EventListenerOptions {
     bool capture { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

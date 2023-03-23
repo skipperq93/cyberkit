@@ -31,7 +31,7 @@
 #include "UndoManager.h"
 #include "VoidCallback.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CustomUndoStep::CustomUndoStep(UndoItem& item)
     : m_undoItem(item)
@@ -80,4 +80,4 @@ void CustomUndoStep::didRemoveFromUndoManager()
         undoItem->invalidate();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

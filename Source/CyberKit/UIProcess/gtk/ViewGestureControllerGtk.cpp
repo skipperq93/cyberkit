@@ -31,7 +31,7 @@
 #include "WebBackForwardList.h"
 #include <CyberCore/GRefPtrGtk.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const Seconds swipeMinAnimationDuration = 100_ms;
@@ -691,4 +691,4 @@ void ViewGestureController::endMagnification()
     endMagnificationGesture();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

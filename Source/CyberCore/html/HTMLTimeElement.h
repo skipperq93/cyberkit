@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTimeElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLTimeElement);
@@ -38,4 +38,4 @@ private:
     HTMLTimeElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "FetchResponse.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -92,4 +92,4 @@ private:
     bool m_isStopped { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

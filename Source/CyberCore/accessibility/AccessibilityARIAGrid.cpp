@@ -37,7 +37,7 @@
 #include "RenderObject.h"
 #include "RenderTableSection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilityARIAGrid::AccessibilityARIAGrid(RenderObject* renderer)
     : AccessibilityTable(renderer)
@@ -141,4 +141,4 @@ void AccessibilityARIAGrid::addChildren()
     addChild(headerContainer(), DescendIfIgnored::No);
 }
     
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "ThreadSafeDataBuffer.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SerializedScriptValue;
 
@@ -56,4 +56,4 @@ private:
     Vector<String> m_blobFilePaths;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

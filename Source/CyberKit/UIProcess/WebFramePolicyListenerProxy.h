@@ -35,7 +35,7 @@ namespace API {
 class WebsitePolicies;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SafeBrowsingWarning;
 
@@ -73,4 +73,4 @@ private:
     Reply m_reply;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -27,7 +27,7 @@
 
 namespace JSC {
 
-// Are you tired of waiting for all of WebKit to build because you changed the implementation of a
+// Are you tired of waiting for all of CyberKit to build because you changed the implementation of a
 // function in HeapInlines.h?  Does it bother you that you're waiting on rebuilding the JS DOM
 // bindings even though your change is in a function called from only 2 .cpp files?  Then HeapUtil.h
 // is for you!  Everything in this class should be a static method that takes a Heap& if needed.

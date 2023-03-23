@@ -150,7 +150,7 @@ static bool enableAssembler()
     if (!Options::useJIT())
         return false;
 
-    char* canUseJITString = getenv("JavaScriptCoreUseJIT");
+    char* canUseJITString = getenv("CyberScriptCoreUseJIT");
     if (canUseJITString && !atoi(canUseJITString))
         return false;
 

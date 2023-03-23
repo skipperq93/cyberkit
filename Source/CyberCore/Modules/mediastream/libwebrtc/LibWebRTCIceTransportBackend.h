@@ -39,7 +39,7 @@ namespace webrtc {
 class IceTransportInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCIceTransportBackendObserver;
 
@@ -59,6 +59,6 @@ private:
     RefPtr<LibWebRTCIceTransportBackendObserver> m_observer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

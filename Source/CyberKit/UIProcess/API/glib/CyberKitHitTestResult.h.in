@@ -19,23 +19,23 @@
 
 @SHARED_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitHitTestResult_h
-#define WebKitHitTestResult_h
+#ifndef CyberKitHitTestResult_h
+#define CyberKitHitTestResult_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_HIT_TEST_RESULT            (webkit_hit_test_result_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_HIT_TEST_RESULT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_HIT_TEST_RESULT, WebKitHitTestResult))
+#define WEBKIT_HIT_TEST_RESULT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_HIT_TEST_RESULT, CyberKitHitTestResult))
 #define WEBKIT_IS_HIT_TEST_RESULT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_HIT_TEST_RESULT))
-#define WEBKIT_HIT_TEST_RESULT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_HIT_TEST_RESULT, WebKitHitTestResultClass))
+#define WEBKIT_HIT_TEST_RESULT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_HIT_TEST_RESULT, CyberKitHitTestResultClass))
 #define WEBKIT_IS_HIT_TEST_RESULT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_HIT_TEST_RESULT))
-#define WEBKIT_HIT_TEST_RESULT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_HIT_TEST_RESULT, WebKitHitTestResultClass))
+#define WEBKIT_HIT_TEST_RESULT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_HIT_TEST_RESULT, CyberKitHitTestResultClass))
 
-struct _WebKitHitTestResultClass {
+struct _CyberKitHitTestResultClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -46,10 +46,10 @@ struct _WebKitHitTestResultClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitHitTestResult, webkit_hit_test_result, WEBKIT, HIT_TEST_RESULT, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitHitTestResult, webkit_hit_test_result, WEBKIT, HIT_TEST_RESULT, GObject)
 
 /**
- * WebKitHitTestResultContext:
+ * CyberKitHitTestResultContext:
  * @WEBKIT_HIT_TEST_RESULT_CONTEXT_DOCUMENT: anywhere in the document.
  * @WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK: a hyperlink element.
  * @WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE: an image element.
@@ -58,7 +58,7 @@ WEBKIT_DECLARE_FINAL_TYPE (WebKitHitTestResult, webkit_hit_test_result, WEBKIT, 
  * @WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR: a scrollbar element.
  * @WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION: a selected element. Since 2.8
  *
- * Enum values with flags representing the context of a #WebKitHitTestResult.
+ * Enum values with flags representing the context of a #CyberKitHitTestResult.
  */
 typedef enum
 {
@@ -69,43 +69,43 @@ typedef enum
     WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE  = 1 << 5,
     WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR = 1 << 6,
     WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION = 1 << 7
-} WebKitHitTestResultContext;
+} CyberKitHitTestResultContext;
 
 WEBKIT_API guint
-webkit_hit_test_result_get_context          (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_get_context          (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API gboolean
-webkit_hit_test_result_context_is_link      (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_context_is_link      (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API gboolean
-webkit_hit_test_result_context_is_image     (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_context_is_image     (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API gboolean
-webkit_hit_test_result_context_is_media     (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_context_is_media     (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API gboolean
-webkit_hit_test_result_context_is_editable  (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_context_is_editable  (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API gboolean
-webkit_hit_test_result_context_is_selection (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_context_is_selection (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_hit_test_result_get_link_uri         (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_get_link_uri         (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_hit_test_result_get_link_title       (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_get_link_title       (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_hit_test_result_get_link_label       (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_get_link_label       (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_hit_test_result_get_image_uri        (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_get_image_uri        (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_hit_test_result_get_media_uri        (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_get_media_uri        (CyberKitHitTestResult *hit_test_result);
 
 WEBKIT_API gboolean
-webkit_hit_test_result_context_is_scrollbar (WebKitHitTestResult *hit_test_result);
+webkit_hit_test_result_context_is_scrollbar (CyberKitHitTestResult *hit_test_result);
 
 G_END_DECLS
 

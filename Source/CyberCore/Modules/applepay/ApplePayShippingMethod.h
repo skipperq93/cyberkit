@@ -31,7 +31,7 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayShippingMethod final {
     String label;
@@ -48,6 +48,6 @@ struct ApplePayShippingMethod final {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -33,7 +33,7 @@
         return;
     }
 
-    // The default WebKit policy delegate passes the URL along to -[NSWorkspace openURL:] here,
+    // The default CyberKit policy delegate passes the URL along to -[NSWorkspace openURL:] here,
     // but we don't want to do that so we just ignore the navigation completely.
     [listener ignore];
 }

@@ -58,7 +58,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const Seconds TCPMaximumSegmentLifetime { 2_min };
 
@@ -858,4 +858,4 @@ const ResourceResponse& WebSocketChannel::serverHandshakeResponse() const
     return m_handshake->serverHandshakeResponse();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,5 +31,5 @@
 
 int main(int argc, char** argv)
 {
-    WebKit::WebProcessMain(argc, argv);
+    CyberKit::WebProcessMain(argc, argv);
 }

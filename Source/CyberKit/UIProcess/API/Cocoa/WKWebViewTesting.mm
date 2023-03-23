@@ -197,7 +197,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 - (NSString *)_scrollingTreeAsText
 {
-    WebKit::RemoteScrollingCoordinatorProxy* coordinator = _page->scrollingCoordinatorProxy();
+    CyberKit::RemoteScrollingCoordinatorProxy* coordinator = _page->scrollingCoordinatorProxy();
     if (!coordinator)
         return @"";
 
@@ -215,7 +215,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 - (void)_disableBackForwardSnapshotVolatilityForTesting
 {
-    WebKit::ViewSnapshotStore::singleton().setDisableSnapshotVolatilityForTesting(true);
+    CyberKit::ViewSnapshotStore::singleton().setDisableSnapshotVolatilityForTesting(true);
 }
 
 - (BOOL)_beginBackSwipeForTesting
@@ -225,7 +225,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 #else
     if (!_gestureController)
         return NO;
-    return _gestureController->beginSimulatedSwipeInDirectionForTesting(WebKit::ViewGestureController::SwipeDirection::Back);
+    return _gestureController->beginSimulatedSwipeInDirectionForTesting(CyberKit::ViewGestureController::SwipeDirection::Back);
 #endif
 }
 
@@ -236,7 +236,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 #else
     if (!_gestureController)
         return NO;
-    return _gestureController->completeSimulatedSwipeInDirectionForTesting(WebKit::ViewGestureController::SwipeDirection::Back);
+    return _gestureController->completeSimulatedSwipeInDirectionForTesting(CyberKit::ViewGestureController::SwipeDirection::Back);
 #endif
 }
 
@@ -267,7 +267,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
         completionHandler();
         return;
     }
-    _page->process().sendPrepareToSuspend(WebKit::IsSuspensionImminent::No, 0.0, [completionHandler = makeBlockPtr(completionHandler)] {
+    _page->process().sendPrepareToSuspend(CyberKit::IsSuspensionImminent::No, 0.0, [completionHandler = makeBlockPtr(completionHandler)] {
         completionHandler();
     });
 }
@@ -275,13 +275,13 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 - (void)_processWillSuspendImminentlyForTesting
 {
     if (_page)
-        _page->process().sendPrepareToSuspend(WebKit::IsSuspensionImminent::Yes, 0.0, [] { });
+        _page->process().sendPrepareToSuspend(CyberKit::IsSuspensionImminent::Yes, 0.0, [] { });
 }
 
 - (void)_processDidResumeForTesting
 {
     if (_page)
-        _page->process().sendProcessDidResume(WebKit::ProcessThrottlerClient::ResumeReason::ForegroundActivity);
+        _page->process().sendProcessDidResume(CyberKit::ProcessThrottlerClient::ResumeReason::ForegroundActivity);
 }
 
 - (void)_setThrottleStateForTesting:(int)value
@@ -289,7 +289,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
     if (!_page)
         return;
 
-    _page->process().setThrottleStateForTesting(static_cast<WebKit::ProcessThrottleState>(value));
+    _page->process().setThrottleStateForTesting(static_cast<CyberKit::ProcessThrottleState>(value));
 }
 
 - (BOOL)_hasServiceWorkerBackgroundActivityForTesting
@@ -313,7 +313,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 - (void)_denyNextUserMediaRequest
 {
 #if ENABLE(MEDIA_STREAM)
-    WebKit::UserMediaProcessManager::singleton().denyNextUserMediaRequest();
+    CyberKit::UserMediaProcessManager::singleton().denyNextUserMediaRequest();
 #endif
 }
 
@@ -376,9 +376,9 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 {
 #if ENABLE(ROUTING_ARBITRATION)
     switch (_page->process().audioSessionRoutingArbitrator().arbitrationStatus()) {
-    case WebKit::AudioSessionRoutingArbitratorProxy::ArbitrationStatus::None: return WKWebViewAudioRoutingArbitrationStatusNone;
-    case WebKit::AudioSessionRoutingArbitratorProxy::ArbitrationStatus::Pending: return WKWebViewAudioRoutingArbitrationStatusPending;
-    case WebKit::AudioSessionRoutingArbitratorProxy::ArbitrationStatus::Active: return WKWebViewAudioRoutingArbitrationStatusActive;
+    case CyberKit::AudioSessionRoutingArbitratorProxy::ArbitrationStatus::None: return WKWebViewAudioRoutingArbitrationStatusNone;
+    case CyberKit::AudioSessionRoutingArbitratorProxy::ArbitrationStatus::Pending: return WKWebViewAudioRoutingArbitrationStatusPending;
+    case CyberKit::AudioSessionRoutingArbitratorProxy::ArbitrationStatus::Active: return WKWebViewAudioRoutingArbitrationStatusActive;
     default: ASSERT_NOT_REACHED();
     }
 #else
@@ -510,7 +510,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 - (void)_computePagesForPrinting:(_WKFrameHandle *)handle completionHandler:(void(^)(void))completionHandler
 {
-    WebKit::PrintInfo printInfo;
+    CyberKit::PrintInfo printInfo;
     _page->computePagesForPrinting(handle->_frameHandle->frameID(), printInfo, [completionHandler = makeBlockPtr(completionHandler)] (const Vector<CyberCore::IntRect>&, double, const CyberCore::FloatBoxExtent&) {
         completionHandler();
     });
@@ -532,7 +532,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 - (void)_setConnectedToHardwareConsoleForTesting:(BOOL)connected
 {
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
-    WebKit::WindowServerConnection::singleton().hardwareConsoleStateChanged(connected ? WebKit::WindowServerConnection::HardwareConsoleState::Connected : WebKit::WindowServerConnection::HardwareConsoleState::Disconnected);
+    CyberKit::WindowServerConnection::singleton().hardwareConsoleStateChanged(connected ? CyberKit::WindowServerConnection::HardwareConsoleState::Connected : CyberKit::WindowServerConnection::HardwareConsoleState::Disconnected);
 #endif
 }
 
@@ -540,7 +540,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 {
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
     class WKMediaSessionCoordinatorForTesting
-        : public WebKit::MediaSessionCoordinatorProxyPrivate
+        : public CyberKit::MediaSessionCoordinatorProxyPrivate
         , public CyberCore::MediaSessionCoordinatorClient {
         WTF_MAKE_FAST_ALLOCATED;
     public:
@@ -556,7 +556,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
     private:
         explicit WKMediaSessionCoordinatorForTesting(id <_WKMediaSessionCoordinator> clientCoordinator)
-            : WebKit::MediaSessionCoordinatorProxyPrivate()
+            : CyberKit::MediaSessionCoordinatorProxyPrivate()
             , m_clientCoordinator(clientCoordinator)
         {
             auto* delegateHelper = [[WKMediaSessionCoordinatorHelper alloc] initWithCoordinator:this];
@@ -615,7 +615,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             return [m_clientCoordinator identifier];
         }
 
-        void join(WebKit::MediaSessionCommandCompletionHandler&& callback) final
+        void join(CyberKit::MediaSessionCommandCompletionHandler&& callback) final
         {
             [m_clientCoordinator joinWithCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
@@ -632,7 +632,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             [m_clientCoordinator leave];
         }
 
-        void seekTo(double time, WebKit::MediaSessionCommandCompletionHandler&& callback) final
+        void seekTo(double time, CyberKit::MediaSessionCommandCompletionHandler&& callback) final
         {
             [m_clientCoordinator seekTo:time withCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
@@ -644,7 +644,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             }).get()];
         }
 
-        void play(WebKit::MediaSessionCommandCompletionHandler&& callback) final
+        void play(CyberKit::MediaSessionCommandCompletionHandler&& callback) final
         {
             [m_clientCoordinator playWithCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
@@ -656,7 +656,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             }).get()];
         }
 
-        void pause(WebKit::MediaSessionCommandCompletionHandler&& callback) final
+        void pause(CyberKit::MediaSessionCommandCompletionHandler&& callback) final
         {
             [m_clientCoordinator pauseWithCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
@@ -668,7 +668,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             }).get()];
         }
 
-        void setTrack(const String& track, WebKit::MediaSessionCommandCompletionHandler&& callback) final
+        void setTrack(const String& track, CyberKit::MediaSessionCommandCompletionHandler&& callback) final
         {
             [m_clientCoordinator setTrack:track withCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
@@ -697,20 +697,20 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
         void readyStateChanged(CyberCore::MediaSessionReadyState state) final
         {
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havenothing) == static_cast<size_t>(WKMediaSessionReadyStateHaveNothing), "WKMediaSessionReadyStateHaveNothing does not match WebKit value");
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havemetadata) == static_cast<size_t>(WKMediaSessionReadyStateHaveMetadata), "WKMediaSessionReadyStateHaveMetadata does not match WebKit value");
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havecurrentdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveCurrentData), "WKMediaSessionReadyStateHaveCurrentData does not match WebKit value");
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havefuturedata) == static_cast<size_t>(WKMediaSessionReadyStateHaveFutureData), "WKMediaSessionReadyStateHaveFutureData does not match WebKit value");
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Haveenoughdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveEnoughData), "WKMediaSessionReadyStateHaveEnoughData does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havenothing) == static_cast<size_t>(WKMediaSessionReadyStateHaveNothing), "WKMediaSessionReadyStateHaveNothing does not match CyberKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havemetadata) == static_cast<size_t>(WKMediaSessionReadyStateHaveMetadata), "WKMediaSessionReadyStateHaveMetadata does not match CyberKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havecurrentdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveCurrentData), "WKMediaSessionReadyStateHaveCurrentData does not match CyberKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havefuturedata) == static_cast<size_t>(WKMediaSessionReadyStateHaveFutureData), "WKMediaSessionReadyStateHaveFutureData does not match CyberKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Haveenoughdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveEnoughData), "WKMediaSessionReadyStateHaveEnoughData does not match CyberKit value");
 
             [m_clientCoordinator readyStateChanged:static_cast<_WKMediaSessionReadyState>(state)];
         }
 
         void playbackStateChanged(CyberCore::MediaSessionPlaybackState state) final
         {
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::None) == static_cast<size_t>(WKMediaSessionPlaybackStateNone), "WKMediaSessionPlaybackStateNone does not match WebKit value");
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::Paused) == static_cast<size_t>(WKMediaSessionPlaybackStatePaused), "WKMediaSessionPlaybackStatePaused does not match WebKit value");
-            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::Playing) == static_cast<size_t>(WKMediaSessionPlaybackStatePlaying), "WKMediaSessionPlaybackStatePlaying does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::None) == static_cast<size_t>(WKMediaSessionPlaybackStateNone), "WKMediaSessionPlaybackStateNone does not match CyberKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::Paused) == static_cast<size_t>(WKMediaSessionPlaybackStatePaused), "WKMediaSessionPlaybackStatePaused does not match CyberKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::Playing) == static_cast<size_t>(WKMediaSessionPlaybackStatePlaying), "WKMediaSessionPlaybackStatePlaying does not match CyberKit value");
 
             [m_clientCoordinator playbackStateChanged:static_cast<_WKMediaSessionPlaybackState>(state)];
         }
@@ -776,9 +776,9 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 - (void)coordinatorStateChanged:(_WKMediaSessionCoordinatorState)state
 {
-    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Waiting) == static_cast<size_t>(WKMediaSessionCoordinatorStateWaiting), "WKMediaSessionCoordinatorStateWaiting does not match WebKit value");
-    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Joined) == static_cast<size_t>(WKMediaSessionCoordinatorStateJoined), "WKMediaSessionCoordinatorStateJoined does not match WebKit value");
-    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Closed) == static_cast<size_t>(WKMediaSessionCoordinatorStateClosed), "WKMediaSessionCoordinatorStateClosed does not match WebKit value");
+    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Waiting) == static_cast<size_t>(WKMediaSessionCoordinatorStateWaiting), "WKMediaSessionCoordinatorStateWaiting does not match CyberKit value");
+    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Joined) == static_cast<size_t>(WKMediaSessionCoordinatorStateJoined), "WKMediaSessionCoordinatorStateJoined does not match CyberKit value");
+    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Closed) == static_cast<size_t>(WKMediaSessionCoordinatorStateClosed), "WKMediaSessionCoordinatorStateClosed does not match CyberKit value");
 
     m_coordinatorClient->coordinatorStateChanged(static_cast<CyberCore::MediaSessionCoordinatorState>(state));
 }

@@ -61,7 +61,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Captures the potential outcomes for fast path html parser.
 enum class HTMLFastPathResult {
@@ -1001,4 +1001,4 @@ bool tryFastParsingHTMLFragment(const String& source, Document& document, Docume
 
 #undef FOR_EACH_SUPPORTED_TAG
 
-} // namespace WebCore
+} // namespace CyberCore

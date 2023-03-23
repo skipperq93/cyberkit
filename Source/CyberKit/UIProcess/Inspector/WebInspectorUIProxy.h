@@ -69,7 +69,7 @@ namespace API {
 class InspectorClient;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrameProxy;
 class WebInspectorUIProxyClient;
@@ -346,4 +346,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

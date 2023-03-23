@@ -37,7 +37,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static MemoryCompactRobinHoodHashMap<String, WindowEventLoop*>& windowEventLoopMap()
 {
@@ -170,4 +170,4 @@ void WindowEventLoop::breakToAllowRenderingUpdate()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 typedef HashMap<WebPageProxy*, unsigned> PageLevelMap;
 
@@ -125,4 +125,4 @@ CFStringRef bundleIdentifierForSandboxBroker()
 }
 #endif // PLATFORM(COCOA)
 
-} // namespace WebKit
+} // namespace CyberKit

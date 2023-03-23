@@ -31,7 +31,7 @@
 #include "DisplayView.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 Tree::Tree() = default;
@@ -55,5 +55,5 @@ void Tree::setBoxNeedsDisplay(Box&, std::optional<UnadjustedAbsoluteFloatRect>) 
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

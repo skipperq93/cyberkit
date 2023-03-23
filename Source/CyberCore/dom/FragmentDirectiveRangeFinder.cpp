@@ -47,7 +47,7 @@
 #include "TextBoundaries.h"
 #include "TextIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace FragmentDirectiveRangeFinder {
 
 enum class BoundaryPointIsAtEnd { No, Yes };
@@ -419,4 +419,4 @@ const Vector<SimpleRange> findRangesFromTextDirectives(Vector<ParsedTextDirectiv
 
 } // FragmentDirectiveRangeFinder
 
-} // WebCore
+} // CyberCore

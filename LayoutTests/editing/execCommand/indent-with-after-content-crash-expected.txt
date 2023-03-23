@@ -1,2 +1,2 @@
-This tests indenting with :after {content: "]"}. The test passes if WebKit doesn't crash.
+This tests indenting with :after {content: "]"}. The test passes if CyberKit doesn't crash.
 PASS.

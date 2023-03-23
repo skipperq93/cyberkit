@@ -38,7 +38,7 @@ list(APPEND TestCyberKitLegacy_LIBRARIES
 )
 
 list(APPEND TestCyberCore_LIBRARIES
-    JavaScriptCore
+    CyberScriptCore
     WTF
     CyberKit
 )
@@ -60,7 +60,7 @@ set(CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS} "-framework Cocoa")
 set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} "-framework Cocoa")
 
 list(APPEND TestCyberKit_LIBRARIES
-    JavaScriptCore
+    CyberScriptCore
     WTF
     ${CARBON_LIBRARY}
 )

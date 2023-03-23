@@ -18,23 +18,23 @@
  */
 
 #include "config.h"
-#include "WebKitSecurityManager.h"
+#include "CyberKitSecurityManager.h"
 
-#include "WebKitSecurityManagerPrivate.h"
-#include "WebKitWebContextPrivate.h"
+#include "CyberKitSecurityManagerPrivate.h"
+#include "CyberKitWebContextPrivate.h"
 #include "WebProcessPool.h"
 #include <CyberCore/LegacySchemeRegistry.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitSecurityManager:
+ * CyberKitSecurityManager:
  *
- * Controls security settings in a #WebKitWebContext.
+ * Controls security settings in a #CyberKitWebContext.
  *
- * The #WebKitSecurityManager defines security settings for URI
- * schemes in a #WebKitWebContext. Get it from the context with
+ * The #CyberKitSecurityManager defines security settings for URI
+ * schemes in a #CyberKitWebContext. Get it from the context with
  * webkit_web_context_get_security_manager(), and use it to register a
  * URI scheme with a certain security level, or to check if it already
  * has it.
@@ -50,24 +50,24 @@ typedef enum {
     SecurityPolicyEmptyDocument
 } SecurityPolicy;
 
-struct _WebKitSecurityManagerPrivate {
-    WebKitWebContext* webContext;
+struct _CyberKitSecurityManagerPrivate {
+    CyberKitWebContext* webContext;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitSecurityManager, webkit_security_manager, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitSecurityManager, webkit_security_manager, G_TYPE_OBJECT, GObject)
 
-static void webkit_security_manager_class_init(WebKitSecurityManagerClass*)
+static void webkit_security_manager_class_init(CyberKitSecurityManagerClass*)
 {
 }
 
-WebKitSecurityManager* webkitSecurityManagerCreate(WebKitWebContext* webContext)
+CyberKitSecurityManager* webkitSecurityManagerCreate(CyberKitWebContext* webContext)
 {
-    WebKitSecurityManager* manager = WEBKIT_SECURITY_MANAGER(g_object_new(WEBKIT_TYPE_SECURITY_MANAGER, NULL));
+    CyberKitSecurityManager* manager = WEBKIT_SECURITY_MANAGER(g_object_new(WEBKIT_TYPE_SECURITY_MANAGER, NULL));
     manager->priv->webContext = webContext;
     return manager;
 }
 
-static void registerSecurityPolicyForURIScheme(WebKitSecurityManager* manager, const char* scheme, SecurityPolicy policy)
+static void registerSecurityPolicyForURIScheme(CyberKitSecurityManager* manager, const char* scheme, SecurityPolicy policy)
 {
     String urlScheme = String::fromUTF8(scheme);
     auto& processPool = webkitWebContextGetProcessPool(manager->priv->webContext);
@@ -127,7 +127,7 @@ static bool checkSecurityPolicyForURIScheme(const char* scheme, SecurityPolicy p
 
 /**
  * webkit_security_manager_register_uri_scheme_as_local:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Register @scheme as a local scheme.
@@ -135,7 +135,7 @@ static bool checkSecurityPolicyForURIScheme(const char* scheme, SecurityPolicy p
  * This means that other non-local pages
  * cannot link to or access URIs of this scheme.
  */
-void webkit_security_manager_register_uri_scheme_as_local(WebKitSecurityManager* manager, const char* scheme)
+void webkit_security_manager_register_uri_scheme_as_local(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager));
     g_return_if_fail(scheme);
@@ -145,7 +145,7 @@ void webkit_security_manager_register_uri_scheme_as_local(WebKitSecurityManager*
 
 /**
  * webkit_security_manager_uri_scheme_is_local:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Whether @scheme is considered as a local scheme.
@@ -154,7 +154,7 @@ void webkit_security_manager_register_uri_scheme_as_local(WebKitSecurityManager*
  *
  * Returns: %TRUE if @scheme is a local scheme or %FALSE otherwise.
  */
-gboolean webkit_security_manager_uri_scheme_is_local(WebKitSecurityManager* manager, const char* scheme)
+gboolean webkit_security_manager_uri_scheme_is_local(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_val_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager), FALSE);
     g_return_val_if_fail(scheme, FALSE);
@@ -164,7 +164,7 @@ gboolean webkit_security_manager_uri_scheme_is_local(WebKitSecurityManager* mana
 
 /**
  * webkit_security_manager_register_uri_scheme_as_no_access:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Register @scheme as a no-access scheme.
@@ -172,7 +172,7 @@ gboolean webkit_security_manager_uri_scheme_is_local(WebKitSecurityManager* mana
  * This means that pages loaded
  * with this URI scheme cannot access pages loaded with any other URI scheme.
  */
-void webkit_security_manager_register_uri_scheme_as_no_access(WebKitSecurityManager* manager, const char* scheme)
+void webkit_security_manager_register_uri_scheme_as_no_access(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager));
     g_return_if_fail(scheme);
@@ -182,7 +182,7 @@ void webkit_security_manager_register_uri_scheme_as_no_access(WebKitSecurityMana
 
 /**
  * webkit_security_manager_uri_scheme_is_no_access:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Whether @scheme is considered as a no-access scheme.
@@ -191,7 +191,7 @@ void webkit_security_manager_register_uri_scheme_as_no_access(WebKitSecurityMana
  *
  * Returns: %TRUE if @scheme is a no-access scheme or %FALSE otherwise.
  */
-gboolean webkit_security_manager_uri_scheme_is_no_access(WebKitSecurityManager* manager, const char* scheme)
+gboolean webkit_security_manager_uri_scheme_is_no_access(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_val_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager), FALSE);
     g_return_val_if_fail(scheme, FALSE);
@@ -201,7 +201,7 @@ gboolean webkit_security_manager_uri_scheme_is_no_access(WebKitSecurityManager* 
 
 /**
  * webkit_security_manager_register_uri_scheme_as_display_isolated:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Register @scheme as a display isolated scheme.
@@ -209,7 +209,7 @@ gboolean webkit_security_manager_uri_scheme_is_no_access(WebKitSecurityManager* 
  * This means that pages cannot
  * display these URIs unless they are from the same scheme.
  */
-void webkit_security_manager_register_uri_scheme_as_display_isolated(WebKitSecurityManager* manager, const char* scheme)
+void webkit_security_manager_register_uri_scheme_as_display_isolated(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager));
     g_return_if_fail(scheme);
@@ -219,7 +219,7 @@ void webkit_security_manager_register_uri_scheme_as_display_isolated(WebKitSecur
 
 /**
  * webkit_security_manager_uri_scheme_is_display_isolated:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Whether @scheme is considered as a display isolated scheme.
@@ -228,7 +228,7 @@ void webkit_security_manager_register_uri_scheme_as_display_isolated(WebKitSecur
  *
  * Returns: %TRUE if @scheme is a display isolated scheme or %FALSE otherwise.
  */
-gboolean webkit_security_manager_uri_scheme_is_display_isolated(WebKitSecurityManager* manager, const char* scheme)
+gboolean webkit_security_manager_uri_scheme_is_display_isolated(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_val_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager), FALSE);
     g_return_val_if_fail(scheme, FALSE);
@@ -238,7 +238,7 @@ gboolean webkit_security_manager_uri_scheme_is_display_isolated(WebKitSecurityMa
 
 /**
  * webkit_security_manager_register_uri_scheme_as_secure:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Register @scheme as a secure scheme.
@@ -247,7 +247,7 @@ gboolean webkit_security_manager_uri_scheme_is_display_isolated(WebKitSecurityMa
  * content warnings won't be generated for this scheme when
  * included by an HTTPS page.
  */
-void webkit_security_manager_register_uri_scheme_as_secure(WebKitSecurityManager* manager, const char* scheme)
+void webkit_security_manager_register_uri_scheme_as_secure(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager));
     g_return_if_fail(scheme);
@@ -257,7 +257,7 @@ void webkit_security_manager_register_uri_scheme_as_secure(WebKitSecurityManager
 
 /**
  * webkit_security_manager_uri_scheme_is_secure:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Whether @scheme is considered as a secure scheme.
@@ -266,7 +266,7 @@ void webkit_security_manager_register_uri_scheme_as_secure(WebKitSecurityManager
  *
  * Returns: %TRUE if @scheme is a secure scheme or %FALSE otherwise.
  */
-gboolean webkit_security_manager_uri_scheme_is_secure(WebKitSecurityManager* manager, const char* scheme)
+gboolean webkit_security_manager_uri_scheme_is_secure(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_val_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager), FALSE);
     g_return_val_if_fail(scheme, FALSE);
@@ -276,7 +276,7 @@ gboolean webkit_security_manager_uri_scheme_is_secure(WebKitSecurityManager* man
 
 /**
  * webkit_security_manager_register_uri_scheme_as_cors_enabled:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Register @scheme as a CORS (Cross-origin resource sharing) enabled scheme.
@@ -284,7 +284,7 @@ gboolean webkit_security_manager_uri_scheme_is_secure(WebKitSecurityManager* man
  * This means that CORS requests are allowed. See W3C CORS specification
  * http://www.w3.org/TR/cors/.
  */
-void webkit_security_manager_register_uri_scheme_as_cors_enabled(WebKitSecurityManager* manager, const char* scheme)
+void webkit_security_manager_register_uri_scheme_as_cors_enabled(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager));
     g_return_if_fail(scheme);
@@ -294,7 +294,7 @@ void webkit_security_manager_register_uri_scheme_as_cors_enabled(WebKitSecurityM
 
 /**
  * webkit_security_manager_uri_scheme_is_cors_enabled:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Whether @scheme is considered as a CORS enabled scheme.
@@ -303,7 +303,7 @@ void webkit_security_manager_register_uri_scheme_as_cors_enabled(WebKitSecurityM
  *
  * Returns: %TRUE if @scheme is a CORS enabled scheme or %FALSE otherwise.
  */
-gboolean webkit_security_manager_uri_scheme_is_cors_enabled(WebKitSecurityManager* manager, const char* scheme)
+gboolean webkit_security_manager_uri_scheme_is_cors_enabled(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_val_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager), FALSE);
     g_return_val_if_fail(scheme, FALSE);
@@ -313,7 +313,7 @@ gboolean webkit_security_manager_uri_scheme_is_cors_enabled(WebKitSecurityManage
 
 /**
  * webkit_security_manager_register_uri_scheme_as_empty_document:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Register @scheme as an empty document scheme.
@@ -321,7 +321,7 @@ gboolean webkit_security_manager_uri_scheme_is_cors_enabled(WebKitSecurityManage
  * This means that
  * they are allowed to commit synchronously.
  */
-void webkit_security_manager_register_uri_scheme_as_empty_document(WebKitSecurityManager* manager, const char* scheme)
+void webkit_security_manager_register_uri_scheme_as_empty_document(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager));
     g_return_if_fail(scheme);
@@ -331,7 +331,7 @@ void webkit_security_manager_register_uri_scheme_as_empty_document(WebKitSecurit
 
 /**
  * webkit_security_manager_uri_scheme_is_empty_document:
- * @security_manager: a #WebKitSecurityManager
+ * @security_manager: a #CyberKitSecurityManager
  * @scheme: a URI scheme
  *
  * Whether @scheme is considered as an empty document scheme.
@@ -340,7 +340,7 @@ void webkit_security_manager_register_uri_scheme_as_empty_document(WebKitSecurit
  *
  * Returns: %TRUE if @scheme is an empty document scheme or %FALSE otherwise.
  */
-gboolean webkit_security_manager_uri_scheme_is_empty_document(WebKitSecurityManager* manager, const char* scheme)
+gboolean webkit_security_manager_uri_scheme_is_empty_document(CyberKitSecurityManager* manager, const char* scheme)
 {
     g_return_val_if_fail(WEBKIT_IS_SECURITY_MANAGER(manager), FALSE);
     g_return_val_if_fail(scheme, FALSE);

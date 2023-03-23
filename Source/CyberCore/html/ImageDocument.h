@@ -26,7 +26,7 @@
 
 #include "HTMLDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageDocumentElement;
 class HTMLImageElement;
@@ -84,9 +84,9 @@ private:
     bool m_shouldShrinkImage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ImageDocument)
-    static bool isType(const WebCore::Document& document) { return document.isImageDocument(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Document>(node) && isType(downcast<WebCore::Document>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ImageDocument)
+    static bool isType(const CyberCore::Document& document) { return document.isImageDocument(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Document>(node) && isType(downcast<CyberCore::Document>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

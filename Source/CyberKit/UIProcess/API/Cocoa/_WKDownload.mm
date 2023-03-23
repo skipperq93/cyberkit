@@ -104,12 +104,12 @@ IGNORE_WARNINGS_END
 
 - (NSData *)resumeData
 {
-    return WebKit::wrapper(_download->_download->legacyResumeData());
+    return CyberKit::wrapper(_download->_download->legacyResumeData());
 }
 
 - (WKFrameInfo *)originatingFrame
 {
-    return WebKit::wrapper(&_download->_download->frameInfo());
+    return CyberKit::wrapper(&_download->_download->frameInfo());
 }
 
 - (id)copyWithZone:(NSZone *)zone

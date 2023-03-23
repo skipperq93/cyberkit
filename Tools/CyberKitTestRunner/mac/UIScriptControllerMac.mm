@@ -40,7 +40,7 @@
 #import <CyberScriptCore/JSContext.h>
 #import <CyberScriptCore/JSStringRefCF.h>
 #import <CyberScriptCore/JSValue.h>
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberScriptCore/OpaqueJSString.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>

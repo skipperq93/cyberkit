@@ -37,7 +37,7 @@
 #include "MediaSource.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String DOMURLMediaSource::createObjectURL(ScriptExecutionContext& scriptExecutionContext, MediaSource& source)
 {
@@ -46,6 +46,6 @@ String DOMURLMediaSource::createObjectURL(ScriptExecutionContext& scriptExecutio
     return DOMURL::createPublicURL(scriptExecutionContext, source);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -33,7 +33,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobLoader;
 class FormData;
@@ -67,4 +67,4 @@ private:
     std::unique_ptr<BlobLoader> m_blobLoader;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

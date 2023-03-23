@@ -31,7 +31,7 @@
 
 #include "CSSParserToken.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserImpl;
 class CSSParserTokenRange;
@@ -67,4 +67,4 @@ private:
     CSSParserImpl& m_parser;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

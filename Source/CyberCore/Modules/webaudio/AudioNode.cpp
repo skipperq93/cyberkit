@@ -43,7 +43,7 @@
 #include <stdio.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioNode);
 
@@ -435,7 +435,7 @@ void AudioNode::updateChannelsForInputs()
         input->markRenderingStateAsDirty();
 }
 
-void AudioNode::initializeDefaultNodeOptions(unsigned count, ChannelCountMode mode, WebCore::ChannelInterpretation interpretation)
+void AudioNode::initializeDefaultNodeOptions(unsigned count, ChannelCountMode mode, CyberCore::ChannelInterpretation interpretation)
 {
     m_channelCount = count;
     m_channelCountMode = mode;
@@ -744,6 +744,6 @@ WTFLogChannel& AudioNode::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

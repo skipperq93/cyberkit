@@ -28,7 +28,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextMetrics : public RefCounted<TextMetrics> {
 public:
@@ -85,4 +85,4 @@ private:
     float m_ideographicBaseline { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -42,7 +42,7 @@
 #include "NodeRareData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLDataListElement);
 
@@ -84,6 +84,6 @@ bool HTMLDataListElement::isSuggestion(const HTMLOptionElement& descendant)
     return !descendant.isDisabledFormControl() && !descendant.value().isEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATALIST_ELEMENT)

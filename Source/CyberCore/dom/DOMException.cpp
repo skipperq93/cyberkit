@@ -31,7 +31,7 @@
 
 #include "Exception.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This array needs to be kept in sync with the ExceptionCode enumeration.
 // http://heycam.github.io/webidl/#idl-DOMException-error-names
@@ -114,4 +114,4 @@ DOMException::DOMException(LegacyCode legacyCode, const String& name, const Stri
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

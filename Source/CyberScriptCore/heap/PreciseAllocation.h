@@ -33,7 +33,7 @@ namespace JSC {
 class IsoSubspace;
 class SlotVisitor;
 
-// WebKit has a good malloc that already knows what to do for large allocations. The GC shouldn't
+// CyberKit has a good malloc that already knows what to do for large allocations. The GC shouldn't
 // have to think about such things. That's where PreciseAllocation comes in. We will allocate large
 // objects directly using malloc, and put the PreciseAllocation header just before them. We can detect
 // when a HeapCell* is a PreciseAllocation because it will have the MarkedBlock::atomSize / 2 bit set.

@@ -34,7 +34,7 @@
 #import <pal/spi/cocoa/NSXPCConnectionSPI.h>
 #import <pal/spi/cocoa/SecKeyProxySPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void AuthenticationChallengeProxy::sendClientCertificateCredentialOverXpc(IPC::Connection& connection, SecKeyProxyStore& secKeyProxyStore, AuthenticationChallengeIdentifier challengeID, const CyberCore::Credential& credential)
 {
@@ -55,6 +55,6 @@ void AuthenticationChallengeProxy::sendClientCertificateCredentialOverXpc(IPC::C
     xpc_connection_send_message(connection.xpcConnection(), message.get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

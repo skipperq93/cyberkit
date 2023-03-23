@@ -24,7 +24,7 @@
 #include "TestConditionallyReadWrite.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestConditionallyReadWrite : public JSDOMWrapper<TestConditionallyReadWrite> {
 public:
@@ -92,4 +92,4 @@ template<> struct JSDOMWrapperConverterTraits<TestConditionallyReadWrite> {
     using ToWrappedReturnType = TestConditionallyReadWrite*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

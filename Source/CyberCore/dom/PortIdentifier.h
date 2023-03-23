@@ -27,7 +27,7 @@
 
 #include "ProcessIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum PortIdentifierType { };
 using PortIdentifier = ObjectIdentifier<PortIdentifierType>;

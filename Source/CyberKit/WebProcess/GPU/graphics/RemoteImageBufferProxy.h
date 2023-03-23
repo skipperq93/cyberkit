@@ -36,7 +36,7 @@
 #include <wtf/Condition.h>
 #include <wtf/Lock.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteRenderingBackendProxy;
 class RemoteImageBufferProxyFlushState;
@@ -165,9 +165,9 @@ private:
     RefPtr<IPC::Connection> m_connection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::RemoteSerializedImageBufferProxy)
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::RemoteSerializedImageBufferProxy)
     static bool isType(const CyberCore::SerializedImageBuffer& buffer) { return buffer.isRemoteSerializedImageBufferProxy(); }
 SPECIALIZE_TYPE_TRAITS_END()
 

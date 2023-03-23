@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUPowerPreference.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUPowerPreference : uint8_t {
     LowPower,

@@ -35,7 +35,7 @@
 #include "HTMLParserIdioms.h"
 #include "ParsingUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool compareByDensity(const ImageCandidate& first, const ImageCandidate& second)
 {
@@ -273,4 +273,4 @@ ImageCandidate bestFitSourceForImageAttributes(float deviceScaleFactor, StringVi
     return pickBestImageCandidate(deviceScaleFactor, imageCandidates, sourceSize);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

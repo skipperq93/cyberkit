@@ -28,7 +28,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ViolationReportType : uint8_t;
 
@@ -47,4 +47,4 @@ private:
     ViolationReportType m_reportBodyType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

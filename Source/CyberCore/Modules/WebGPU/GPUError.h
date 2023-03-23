@@ -30,7 +30,7 @@
 #include <variant>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUError = std::variant<RefPtr<GPUOutOfMemoryError>, RefPtr<GPUValidationError>>;
 

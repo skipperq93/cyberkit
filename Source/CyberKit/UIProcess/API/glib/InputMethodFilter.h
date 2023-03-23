@@ -26,7 +26,7 @@
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>
 
-typedef struct _WebKitInputMethodContext WebKitInputMethodContext;
+typedef struct _CyberKitInputMethodContext CyberKitInputMethodContext;
 
 #if PLATFORM(GTK)
 #if USE(GTK4)
@@ -42,7 +42,7 @@ namespace CyberCore {
 class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InputMethodFilter {
     WTF_MAKE_NONCOPYABLE(InputMethodFilter);
@@ -51,8 +51,8 @@ public:
     InputMethodFilter() = default;
     ~InputMethodFilter();
 
-    void setContext(WebKitInputMethodContext*);
-    WebKitInputMethodContext* context() const { return m_context.get(); }
+    void setContext(CyberKitInputMethodContext*);
+    CyberKitInputMethodContext* context() const { return m_context.get(); }
 
     void setState(std::optional<InputMethodState>&&);
 
@@ -101,7 +101,7 @@ private:
     bool platformEventKeyIsKeyPress(PlatformEventKey*) const;
 
     std::optional<InputMethodState> m_state;
-    GRefPtr<WebKitInputMethodContext> m_context;
+    GRefPtr<CyberKitInputMethodContext> m_context;
 
     struct {
         String text;
@@ -127,4 +127,4 @@ private:
     } m_surrounding;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

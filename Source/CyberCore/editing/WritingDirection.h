@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WritingDirection : uint8_t {
     Natural,
@@ -35,4 +35,4 @@ enum class WritingDirection : uint8_t {
     RightToLeft
 };
 
-} // namespace WebCore
+} // namespace CyberCore

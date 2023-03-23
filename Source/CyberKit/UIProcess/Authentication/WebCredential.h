@@ -30,7 +30,7 @@
 #include "APIString.h"
 #include <CyberCore/Credential.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebCredential : public API::ObjectImpl<API::Object::Type::Credential> {
 public:
@@ -49,6 +49,6 @@ private:
     CyberCore::Credential m_coreCredential;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebCredential_h

@@ -43,7 +43,7 @@ class JSObject;
 class PrivateName;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Document;
@@ -144,4 +144,4 @@ private:
     bool m_isFormAssociated : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

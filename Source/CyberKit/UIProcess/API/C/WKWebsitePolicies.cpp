@@ -35,7 +35,7 @@
 #include "WebsiteDataStore.h"
 #include <CyberCore/DocumentLoader.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKWebsitePoliciesGetTypeID()
 {
@@ -108,7 +108,7 @@ WKWebsiteAutoplayQuirk WKWebsitePoliciesGetAllowedAutoplayQuirks(WKWebsitePolici
 WKWebsiteAutoplayPolicy WKWebsitePoliciesGetAutoplayPolicy(WKWebsitePoliciesRef websitePolicies)
 {
     switch (toImpl(websitePolicies)->autoplayPolicy()) {
-    case WebKit::WebsiteAutoplayPolicy::Default:
+    case CyberKit::WebsiteAutoplayPolicy::Default:
         return kWKWebsiteAutoplayPolicyDefault;
     case WebsiteAutoplayPolicy::Allow:
         return kWKWebsiteAutoplayPolicyAllow;

@@ -32,7 +32,7 @@
 #include "GenericMediaQuerySerialization.h"
 #include "MediaQueryFeatures.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace MQ {
 
 MediaQueryParser::MediaQueryParser(const MediaQueryParserContext& context)

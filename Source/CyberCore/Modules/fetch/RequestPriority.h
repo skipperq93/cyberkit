@@ -24,7 +24,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RequestPriority : uint8_t { High, Low, Auto };
 

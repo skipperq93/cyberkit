@@ -33,7 +33,7 @@
 #include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <wtf/MemoryPressureHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InspectorMemoryAgent final : public InspectorAgentBase, public Inspector::MemoryBackendDispatcherHandler {
     WTF_MAKE_NONCOPYABLE(InspectorMemoryAgent);
@@ -63,6 +63,6 @@ private:
     bool m_tracking { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE)

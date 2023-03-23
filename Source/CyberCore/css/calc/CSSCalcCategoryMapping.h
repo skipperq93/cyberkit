@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CSSUnitType : uint8_t;
 enum class CalculationCategory : uint8_t;

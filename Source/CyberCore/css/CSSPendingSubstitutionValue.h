@@ -32,7 +32,7 @@
 #include "CSSValue.h"
 #include "CSSVariableReferenceValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPendingSubstitutionValue : public CSSValue {
 public:
@@ -59,6 +59,6 @@ private:
     Ref<CSSVariableReferenceValue> m_shorthandValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSPendingSubstitutionValue, isPendingSubstitutionValue())

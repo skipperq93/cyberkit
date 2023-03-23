@@ -32,7 +32,7 @@
 #include "ShadowRoot.h"
 #include "TreeScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CSSStyleSheetObservableArray> CSSStyleSheetObservableArray::create(Document& document)
 {
@@ -164,4 +164,4 @@ void CSSStyleSheetObservableArray::willRemoveSheet(CSSStyleSheet& sheet, CSSStyl
     }, [](std::nullptr_t) { });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <CyberScriptCore/PureNaN.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // The following functions convert values to integers as per the WebIDL specification.
 // The conversion fails if the value cannot be converted to a number or, if EnforceRange is specified,
@@ -408,4 +408,4 @@ template<> struct JSConverter<IDLUnrestrictedDouble> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

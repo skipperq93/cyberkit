@@ -28,12 +28,12 @@
 
 #if ENABLE(WEBGL)
 
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebGLRenderingContextBase.h"
 #include <CyberScriptCore/AbstractSlotVisitorInlines.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WebGLVertexArrayObjectBase::WebGLVertexArrayObjectBase(WebGLRenderingContextBase& context, Type type)
     : WebGLContextObject(context)
@@ -110,9 +110,9 @@ void WebGLVertexArrayObjectBase::setVertexAttribDivisor(GCGLuint index, GCGLuint
 
 void WebGLVertexArrayObjectBase::addMembersToOpaqueRoots(const AbstractLocker&, JSC::AbstractSlotVisitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, m_boundElementArrayBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundElementArrayBuffer.get());
     for (auto& state : m_vertexAttribState)
-        addWebCoreOpaqueRoot(visitor, state.bufferBinding.get());
+        addCyberCoreOpaqueRoot(visitor, state.bufferBinding.get());
 }
 
 bool WebGLVertexArrayObjectBase::areAllEnabledAttribBuffersBound()
@@ -129,9 +129,9 @@ bool WebGLVertexArrayObjectBase::areAllEnabledAttribBuffersBound()
     return *m_allEnabledAttribBuffersBoundCache;
 }
 
-WebCoreOpaqueRoot root(WebGLVertexArrayObjectBase* array)
+CyberCoreOpaqueRoot root(WebGLVertexArrayObjectBase* array)
 {
-    return WebCoreOpaqueRoot { array };
+    return CyberCoreOpaqueRoot { array };
 }
 
 }

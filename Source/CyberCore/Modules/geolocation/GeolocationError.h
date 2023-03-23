@@ -28,7 +28,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationError : public RefCounted<GeolocationError> {
 public:
@@ -53,4 +53,4 @@ private:
     String m_message; 
 };
 
-} // namespace WebCore
+} // namespace CyberCore

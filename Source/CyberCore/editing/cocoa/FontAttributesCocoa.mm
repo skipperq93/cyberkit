@@ -35,7 +35,7 @@
 #import <pal/ios/UIKitSoftLink.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSString *cocoaTextListMarkerName(ListStyleType style, bool ordered)
 {
@@ -147,4 +147,4 @@ RetainPtr<NSDictionary> FontAttributes::createDictionary() const
     return attributes;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

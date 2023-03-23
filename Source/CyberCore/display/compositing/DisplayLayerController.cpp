@@ -41,7 +41,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 LayerController::RootLayerClient::RootLayerClient(LayerController& layerController)
@@ -214,5 +214,5 @@ GraphicsLayerFactory* LayerController::graphicsLayerFactory() const
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

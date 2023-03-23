@@ -37,7 +37,7 @@
 #include "RenderListBox.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -165,4 +165,4 @@ AXCoreObject* AccessibilityListBox::elementAccessibilityHitTest(const IntPoint& 
     return axObjectCache()->getOrCreate(renderer());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

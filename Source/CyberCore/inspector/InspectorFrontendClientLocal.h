@@ -37,7 +37,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class FloatRect;
@@ -88,7 +88,7 @@ public:
     void load(const String&, CompletionHandler<void(const String&)>&& completionHandler) override { completionHandler(nullString()); }
 
     bool canPickColorFromScreen() override { return false; }
-    void pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler) override { completionHandler({ }); }
+    void pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler) override { completionHandler({ }); }
 
     void setInspectorPageDeveloperExtrasEnabled(bool) override { };
 
@@ -138,7 +138,7 @@ protected:
     virtual void setAttachedWindowWidth(unsigned) = 0;
     WEBCORE_EXPORT void restoreAttachedWindowHeight();
 
-    virtual void setSheetRect(const WebCore::FloatRect&) = 0;
+    virtual void setSheetRect(const CyberCore::FloatRect&) = 0;
 
 private:
     friend class FrontendMenuProvider;
@@ -154,4 +154,4 @@ private:
     Ref<InspectorFrontendAPIDispatcher> m_frontendAPIDispatcher;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUCompilationMessageType.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUCompilationMessageType : uint8_t {
     Error,

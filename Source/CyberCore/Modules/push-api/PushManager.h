@@ -36,7 +36,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -59,6 +59,6 @@ private:
     ServiceWorkerRegistration& m_serviceWorkerRegistration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -35,7 +35,7 @@
 #include <CyberScriptCore/ScriptCallStack.h>
 #include <CyberScriptCore/ScriptCallStackFactory.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 using namespace Inspector;
@@ -66,4 +66,4 @@ InjectedScript WorkerDebuggerAgent::injectedScriptForEval(Protocol::ErrorString&
     return injectedScriptManager().injectedScriptFor(m_globalScope.script()->globalScopeWrapper());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

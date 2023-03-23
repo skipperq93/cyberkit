@@ -37,7 +37,7 @@
 #include "SlotAssignmentMode.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLSlotElement;
 class SlotAssignment;
@@ -187,8 +187,8 @@ inline bool hasShadowRootParent(const Node& node)
 
 Vector<ShadowRoot*> assignedShadowRootsIfSlotted(const Node&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ShadowRoot)
-    static bool isType(const WebCore::Node& node) { return node.isShadowRoot(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ShadowRoot)
+    static bool isType(const CyberCore::Node& node) { return node.isShadowRoot(); }
 SPECIALIZE_TYPE_TRAITS_END()

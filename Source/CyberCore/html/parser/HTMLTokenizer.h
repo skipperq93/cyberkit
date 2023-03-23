@@ -30,7 +30,7 @@
 #include "HTMLToken.h"
 #include "InputStreamPreprocessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SegmentedString;
 
@@ -346,4 +346,4 @@ inline bool HTMLTokenizer::neverSkipNullCharacters() const
     return m_forceNullCharacterReplacement;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

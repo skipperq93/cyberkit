@@ -26,26 +26,26 @@
 #include "config.h"
 #include <wtf/SoftLinking.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-extern void* WebKitSwiftLibrary(bool isOptional = false);
-void* WebKitSwiftLibrary(bool isOptional)
+extern void* CyberKitSwiftLibrary(bool isOptional = false);
+void* CyberKitSwiftLibrary(bool isOptional)
 {
     static void* library;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         // Start by searching for the library in DYLD_LIBRARY_PATH:
-        if ((library = dlopen("libWebKitSwift.dylib", RTLD_NOW)))
+        if ((library = dlopen("libCyberKitSwift.dylib", RTLD_NOW)))
             return;
 
         // Then search in the Frameworks/ directory of the currently loaded version of CyberKit.framework:
         Dl_info info { };
-        if (dladdr((const void*)&WebKitSwiftLibrary, &info) && strlen(info.dli_fname)) {
+        if (dladdr((const void*)&CyberKitSwiftLibrary, &info) && strlen(info.dli_fname)) {
             auto dliPath = String::fromUTF8(info.dli_fname);
             if (dliPath.isNull())
                 return;
             auto webkitFrameworkDirectory = WTF::FileSystemImpl::parentPath(dliPath);
-            auto dylibPath = WTF::FileSystemImpl::pathByAppendingComponent(webkitFrameworkDirectory, "Frameworks/libWebKitSwift.dylib"_s);
+            auto dylibPath = WTF::FileSystemImpl::pathByAppendingComponent(webkitFrameworkDirectory, "Frameworks/libCyberKitSwift.dylib"_s);
             if ((library = dlopen(dylibPath.utf8().data(), RTLD_NOW)))
                 return;
         }
@@ -58,5 +58,5 @@ void* WebKitSwiftLibrary(bool isOptional)
 
 }
 
-SOFT_LINK_CLASS_FOR_SOURCE_OPTIONAL(WebKit, WebKitSwift, WKGroupSessionObserver)
+SOFT_LINK_CLASS_FOR_SOURCE_OPTIONAL(CyberKit, CyberKitSwift, WKGroupSessionObserver)
 

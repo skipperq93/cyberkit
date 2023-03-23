@@ -30,7 +30,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 class BoxModelBox;
@@ -75,6 +75,6 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 

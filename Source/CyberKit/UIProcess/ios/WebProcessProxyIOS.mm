@@ -35,7 +35,7 @@
 #import "WebProcessMessages.h"
 #import "WebProcessPool.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebProcessProxy::platformInitialize()
 {
@@ -68,6 +68,6 @@ bool WebProcessProxy::fullKeyboardAccessEnabled()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

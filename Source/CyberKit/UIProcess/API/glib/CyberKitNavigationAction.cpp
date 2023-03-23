@@ -18,83 +18,83 @@
  */
 
 #include "config.h"
-#include "WebKitNavigationAction.h"
+#include "CyberKitNavigationAction.h"
 
-#include "WebKitNavigationActionPrivate.h"
-#include "WebKitPrivate.h"
-#include "WebKitURIRequestPrivate.h"
+#include "CyberKitNavigationActionPrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitNavigationAction:
+ * CyberKitNavigationAction:
  *
  * Provides details about interaction resulting in a resource load.
  */
 
-G_DEFINE_BOXED_TYPE(WebKitNavigationAction, webkit_navigation_action, webkit_navigation_action_copy, webkit_navigation_action_free)
+G_DEFINE_BOXED_TYPE(CyberKitNavigationAction, webkit_navigation_action, webkit_navigation_action_copy, webkit_navigation_action_free)
 
-WebKitNavigationAction* webkitNavigationActionCreate(Ref<API::NavigationAction>&& action)
+CyberKitNavigationAction* webkitNavigationActionCreate(Ref<API::NavigationAction>&& action)
 {
-    WebKitNavigationAction* navigation = static_cast<WebKitNavigationAction*>(fastZeroedMalloc(sizeof(WebKitNavigationAction)));
-    new (navigation) WebKitNavigationAction(WTFMove(action));
+    CyberKitNavigationAction* navigation = static_cast<CyberKitNavigationAction*>(fastZeroedMalloc(sizeof(CyberKitNavigationAction)));
+    new (navigation) CyberKitNavigationAction(WTFMove(action));
     return navigation;
 }
 
 /**
  * webkit_navigation_action_copy:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
  * Make a copy of @navigation.
  *
- * Returns: (transfer full): A copy of passed in #WebKitNavigationAction
+ * Returns: (transfer full): A copy of passed in #CyberKitNavigationAction
  *
  * Since: 2.6
  */
-WebKitNavigationAction* webkit_navigation_action_copy(WebKitNavigationAction* navigation)
+CyberKitNavigationAction* webkit_navigation_action_copy(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, nullptr);
 
-    WebKitNavigationAction* copy = static_cast<WebKitNavigationAction*>(fastZeroedMalloc(sizeof(WebKitNavigationAction)));
-    new (copy) WebKitNavigationAction(navigation);
+    CyberKitNavigationAction* copy = static_cast<CyberKitNavigationAction*>(fastZeroedMalloc(sizeof(CyberKitNavigationAction)));
+    new (copy) CyberKitNavigationAction(navigation);
     return copy;
 }
 
 /**
  * webkit_navigation_action_free:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
- * Free the #WebKitNavigationAction
+ * Free the #CyberKitNavigationAction
  *
  * Since: 2.6
  */
-void webkit_navigation_action_free(WebKitNavigationAction* navigation)
+void webkit_navigation_action_free(CyberKitNavigationAction* navigation)
 {
     g_return_if_fail(navigation);
 
-    navigation->~WebKitNavigationAction();
+    navigation->~CyberKitNavigationAction();
     fastFree(navigation);
 }
 
 /**
  * webkit_navigation_action_get_navigation_type:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
  * Return the type of action that triggered the navigation.
  *
- * Returns: a #WebKitNavigationType
+ * Returns: a #CyberKitNavigationType
  *
  * Since: 2.6
  */
-WebKitNavigationType webkit_navigation_action_get_navigation_type(WebKitNavigationAction* navigation)
+CyberKitNavigationType webkit_navigation_action_get_navigation_type(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, WEBKIT_NAVIGATION_TYPE_OTHER);
-    return toWebKitNavigationType(navigation->action->navigationType());
+    return toCyberKitNavigationType(navigation->action->navigationType());
 }
 
 /**
  * webkit_navigation_action_get_mouse_button:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
  * Return the number of the mouse button that triggered the navigation.
  *
@@ -105,15 +105,15 @@ WebKitNavigationType webkit_navigation_action_get_navigation_type(WebKitNavigati
  *
  * Since: 2.6
  */
-unsigned webkit_navigation_action_get_mouse_button(WebKitNavigationAction* navigation)
+unsigned webkit_navigation_action_get_mouse_button(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, 0);
-    return toWebKitMouseButton(navigation->action->mouseButton());
+    return toCyberKitMouseButton(navigation->action->mouseButton());
 }
 
 /**
  * webkit_navigation_action_get_modifiers:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
  * Return the modifier keys.
  *
@@ -124,7 +124,7 @@ unsigned webkit_navigation_action_get_mouse_button(WebKitNavigationAction* navig
  *
  * Since: 2.6
  */
-unsigned webkit_navigation_action_get_modifiers(WebKitNavigationAction* navigation)
+unsigned webkit_navigation_action_get_modifiers(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, 0);
     return toPlatformModifiers(navigation->action->modifiers());
@@ -132,21 +132,21 @@ unsigned webkit_navigation_action_get_modifiers(WebKitNavigationAction* navigati
 
 /**
  * webkit_navigation_action_get_request:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
- * Return the #WebKitURIRequest associated with the navigation action.
+ * Return the #CyberKitURIRequest associated with the navigation action.
  *
  * Modifications to the returned object are <emphasis>not</emphasis> taken
  * into account when the request is sent over the network, and is intended
  * only to aid in evaluating whether a navigation action should be taken or
  * not. To modify requests before they are sent over the network the
- * #WebKitPage::send-request signal can be used instead.
+ * #CyberKitPage::send-request signal can be used instead.
  *
- * Returns: (transfer none): a #WebKitURIRequest
+ * Returns: (transfer none): a #CyberKitURIRequest
  *
  * Since: 2.6
  */
-WebKitURIRequest* webkit_navigation_action_get_request(WebKitNavigationAction* navigation)
+CyberKitURIRequest* webkit_navigation_action_get_request(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, nullptr);
     if (!navigation->request)
@@ -156,7 +156,7 @@ WebKitURIRequest* webkit_navigation_action_get_request(WebKitNavigationAction* n
 
 /**
  * webkit_navigation_action_is_user_gesture:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
  * Return whether the navigation was triggered by a user gesture like a mouse click.
  *
@@ -164,7 +164,7 @@ WebKitURIRequest* webkit_navigation_action_get_request(WebKitNavigationAction* n
  *
  * Since: 2.6
  */
-gboolean webkit_navigation_action_is_user_gesture(WebKitNavigationAction* navigation)
+gboolean webkit_navigation_action_is_user_gesture(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, FALSE);
     return navigation->action->isProcessingUserGesture();
@@ -172,7 +172,7 @@ gboolean webkit_navigation_action_is_user_gesture(WebKitNavigationAction* naviga
 
 /**
  * webkit_navigation_action_is_redirect:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
  * Returns whether the @navigation was redirected.
  *
@@ -180,7 +180,7 @@ gboolean webkit_navigation_action_is_user_gesture(WebKitNavigationAction* naviga
  *
  * Since: 2.20
  */
-gboolean webkit_navigation_action_is_redirect(WebKitNavigationAction* navigation)
+gboolean webkit_navigation_action_is_redirect(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, FALSE);
     return navigation->action->isRedirect();
@@ -188,7 +188,7 @@ gboolean webkit_navigation_action_is_redirect(WebKitNavigationAction* navigation
 
 /**
  * webkit_navigation_action_get_frame_name:
- * @navigation: a #WebKitNavigationAction
+ * @navigation: a #CyberKitNavigationAction
  *
  * Gets the @navigation target frame name. For example if navigation was triggered by clicking a
  * link with a target attribute equal to "_blank", this will return the value of that attribute.
@@ -198,7 +198,7 @@ gboolean webkit_navigation_action_is_redirect(WebKitNavigationAction* navigation
  *
  * Since: 2.40
  */
-const char* webkit_navigation_action_get_frame_name(WebKitNavigationAction* navigation)
+const char* webkit_navigation_action_get_frame_name(CyberKitNavigationAction* navigation)
 {
     g_return_val_if_fail(navigation, nullptr);
     if (!navigation->frameName) {

@@ -31,7 +31,7 @@
 #include <wtf/Function.h>
 #include <wtf/RefCounter.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLStateTracker {
     WTF_MAKE_FAST_ALLOCATED;
@@ -52,6 +52,6 @@ private:
     StateChangeHandler m_stateChangeHandler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

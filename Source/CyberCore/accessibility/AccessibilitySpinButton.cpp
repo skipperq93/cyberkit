@@ -29,7 +29,7 @@
 #include "AXObjectCache.h"
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<AccessibilitySpinButton> AccessibilitySpinButton::create()
 {
@@ -150,4 +150,4 @@ bool AccessibilitySpinButtonPart::press()
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

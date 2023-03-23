@@ -32,7 +32,7 @@
 #include "LinkLoaderClient.h"
 #include "LinkRelAttribute.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTokenList;
 class HTMLLinkElement;

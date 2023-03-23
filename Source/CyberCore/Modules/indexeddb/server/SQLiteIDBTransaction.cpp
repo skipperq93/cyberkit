@@ -33,7 +33,7 @@
 #include "SQLiteTransaction.h"
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 SQLiteIDBTransaction::SQLiteIDBTransaction(SQLiteIDBBackingStore& backingStore, const IDBTransactionInfo& info)
@@ -222,4 +222,4 @@ void SQLiteIDBTransaction::addRemovedBlobFile(const String& removedFilename)
 
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

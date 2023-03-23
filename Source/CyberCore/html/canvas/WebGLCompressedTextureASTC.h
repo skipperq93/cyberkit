@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLCompressedTextureASTC final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLCompressedTextureASTC);
@@ -46,4 +46,4 @@ private:
     bool m_isLDRSupported : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

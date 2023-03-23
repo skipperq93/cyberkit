@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLCompressedTexturePVRTC);
 
@@ -57,6 +57,6 @@ bool WebGLCompressedTexturePVRTC::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_IMG_texture_compression_pvrtc"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

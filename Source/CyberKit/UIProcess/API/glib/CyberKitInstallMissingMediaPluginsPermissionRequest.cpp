@@ -18,20 +18,20 @@
  */
 
 #include "config.h"
-#include "WebKitInstallMissingMediaPluginsPermissionRequest.h"
+#include "CyberKitInstallMissingMediaPluginsPermissionRequest.h"
 
 #if !ENABLE(2022_GLIB_API)
 
-#include "WebKitPermissionRequest.h"
+#include "CyberKitPermissionRequest.h"
 #include <wtf/glib/WTFGType.h>
 
 /**
- * WebKitInstallMissingMediaPluginsPermissionRequest:
- * @See_also: #WebKitPermissionRequest, #WebKitWebView
+ * CyberKitInstallMissingMediaPluginsPermissionRequest:
+ * @See_also: #CyberKitPermissionRequest, #CyberKitWebView
  *
  * Previously, a permission request for installing missing media plugins.
  *
- * WebKitInstallMissingMediaPluginsPermissionRequest will no longer ever be created, so
+ * CyberKitInstallMissingMediaPluginsPermissionRequest will no longer ever be created, so
  * you can remove any code that attempts to handle it.
  *
  * Since: 2.10
@@ -39,28 +39,28 @@
  * Deprecated: 2.40
  */
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestIface*);
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestIface*);
 
-struct _WebKitInstallMissingMediaPluginsPermissionRequestPrivate {
+struct _CyberKitInstallMissingMediaPluginsPermissionRequestPrivate {
 };
 
 WEBKIT_DEFINE_TYPE_WITH_CODE(
-    WebKitInstallMissingMediaPluginsPermissionRequest, webkit_install_missing_media_plugins_permission_request, G_TYPE_OBJECT,
+    CyberKitInstallMissingMediaPluginsPermissionRequest, webkit_install_missing_media_plugins_permission_request, G_TYPE_OBJECT,
     G_IMPLEMENT_INTERFACE(WEBKIT_TYPE_PERMISSION_REQUEST, webkit_permission_request_interface_init))
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestIface* iface)
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestIface* iface)
 {
     iface->allow = [](auto*) { };
     iface->deny = [](auto*) { };
 }
 
-static void webkit_install_missing_media_plugins_permission_request_class_init(WebKitInstallMissingMediaPluginsPermissionRequestClass*)
+static void webkit_install_missing_media_plugins_permission_request_class_init(CyberKitInstallMissingMediaPluginsPermissionRequestClass*)
 {
 }
 
 /**
  * webkit_install_missing_media_plugins_permission_request_get_description:
- * @request: a #WebKitInstallMissingMediaPluginsPermissionRequest
+ * @request: a #CyberKitInstallMissingMediaPluginsPermissionRequest
  *
  * This function returns an empty string.
  *
@@ -70,7 +70,7 @@ static void webkit_install_missing_media_plugins_permission_request_class_init(W
  *
  * Deprecated: 2.40
  */
-const char* webkit_install_missing_media_plugins_permission_request_get_description(WebKitInstallMissingMediaPluginsPermissionRequest*)
+const char* webkit_install_missing_media_plugins_permission_request_get_description(CyberKitInstallMissingMediaPluginsPermissionRequest*)
 {
     return "";
 }

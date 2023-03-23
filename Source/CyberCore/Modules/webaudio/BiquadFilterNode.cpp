@@ -31,7 +31,7 @@
 #include <CyberScriptCore/Float32Array.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BiquadFilterNode);
 
@@ -83,6 +83,6 @@ ExceptionOr<void> BiquadFilterNode::getFrequencyResponse(const Ref<Float32Array>
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

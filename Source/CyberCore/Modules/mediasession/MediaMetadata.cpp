@@ -40,7 +40,7 @@
 #include "SpaceSplitString.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ArtworkImageLoader::ArtworkImageLoader(Document& document, const String& src, ArtworkImageLoaderCallback&& callback)
     : m_document(document)

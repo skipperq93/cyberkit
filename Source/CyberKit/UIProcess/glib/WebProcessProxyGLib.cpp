@@ -34,7 +34,7 @@
 #include <wtf/FileSystem.h>
 
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebProcessProxy::platformGetLaunchOptions(ProcessLauncher::LaunchOptions& launchOptions)
@@ -89,4 +89,4 @@ void WebProcessProxy::platformResumeProcess()
     kill(id, SIGCONT);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

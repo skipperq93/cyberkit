@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AutocapitalizeType : uint8_t {
     Default,
@@ -35,4 +35,4 @@ enum class AutocapitalizeType : uint8_t {
     AllCharacters
 };
 
-} // namespace WebCore
+} // namespace CyberCore

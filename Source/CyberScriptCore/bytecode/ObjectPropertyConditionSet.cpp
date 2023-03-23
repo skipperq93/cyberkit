@@ -430,7 +430,7 @@ ObjectPropertyConditionSet generateConditionsForPrototypePropertyHitCustom(
                 } else {
                     // This means we materialized a custom out of thin air and it's not DontDelete (i.e, it can be
                     // redefined). This is curious. We don't actually need to crash here. We could blindly cache
-                    // the function. Or we could blindly not cache it. However, we don't actually do this in WebKit
+                    // the function. Or we could blindly not cache it. However, we don't actually do this in CyberKit
                     // right now, so it's reasonable to decide what to do later (or to warn people of forgetting DoneDelete.)
                     ASSERT_NOT_REACHED();
                     return false;

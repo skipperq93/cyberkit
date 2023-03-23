@@ -46,7 +46,7 @@ class JSValue;
 class JSObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AddEventListenerOptions;
 class DOMWrapperWorld;
@@ -229,4 +229,4 @@ inline void EventTarget::setEventTargetFlag(EventTargetFlag flag, bool value)
     weakPtrFactory().setBitfield(bitfield);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

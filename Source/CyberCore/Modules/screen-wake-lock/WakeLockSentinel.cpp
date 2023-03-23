@@ -32,7 +32,7 @@
 #include "WakeLockManager.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WakeLockSentinel);
 
@@ -78,4 +78,4 @@ void WakeLockSentinel::eventListenersDidChange()
     m_hasReleaseEventListener = hasEventListeners(eventNames().releaseEvent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

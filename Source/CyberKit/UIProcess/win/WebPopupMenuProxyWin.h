@@ -33,7 +33,7 @@
 #include <CyberCore/ScrollableArea.h>
 #include <CyberCore/Scrollbar.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebView;
 
@@ -146,4 +146,4 @@ private:
     int m_scaleFactor { 1 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

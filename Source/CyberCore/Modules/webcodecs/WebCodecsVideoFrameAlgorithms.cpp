@@ -31,7 +31,7 @@
 #include "DOMRectReadOnly.h"
 #include "VideoColorSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://w3c.github.io/webcodecs/#valid-videoframebufferinit
 bool isValidVideoFrameBufferInit(const WebCodecsVideoFrame::BufferInit& init)
@@ -321,6 +321,6 @@ bool validateVideoFrameInit(const WebCodecsVideoFrame::Init& init, size_t codedW
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS)

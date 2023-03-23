@@ -36,7 +36,7 @@
 #include "Page.h"
 #include "PlatformStrategies.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -203,4 +203,4 @@ Ref<Protocol::ApplicationCache::ApplicationCacheResource> InspectorApplicationCa
         .release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

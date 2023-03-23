@@ -44,7 +44,7 @@
 #import <pal/spi/ios/SystemPreviewSPI.h>
 
 SOFT_LINK_PRIVATE_FRAMEWORK(AssetViewer);
-SOFT_LINK_CLASS(AssetViewer, ARQuickLookWebKitItem);
+SOFT_LINK_CLASS(AssetViewer, ARQuickLookCyberKitItem);
 
 #if HAVE(UIKIT_WEBKIT_INTERNALS)
 SOFT_LINK_CLASS(AssetViewer, ASVLaunchPreview);
@@ -58,23 +58,23 @@ SOFT_LINK_CLASS(AssetViewer, ASVLaunchPreview);
 
 static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParameterKey";
 
-@interface ARQuickLookWebKitItem ()
+@interface ARQuickLookCyberKitItem ()
 - (void)setAdditionalParameters:(NSDictionary *)parameters;
 @end
 
-@interface _WKPreviewControllerDataSource : NSObject <QLPreviewControllerDataSource, ARQuickLookWebKitItemDelegate> {
+@interface _WKPreviewControllerDataSource : NSObject <QLPreviewControllerDataSource, ARQuickLookCyberKitItemDelegate> {
 #else
 @interface _WKPreviewControllerDataSource : NSObject <QLPreviewControllerDataSource> {
 #endif
     RetainPtr<NSItemProvider> _itemProvider;
 #if HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)
-    RetainPtr<ARQuickLookWebKitItem> _item;
+    RetainPtr<ARQuickLookCyberKitItem> _item;
 #else
     RetainPtr<QLItem> _item;
 #endif
     URL _originatingPageURL;
     URL _downloadedURL;
-    WebKit::SystemPreviewController* _previewController;
+    CyberKit::SystemPreviewController* _previewController;
 };
 
 @property (strong) NSItemProviderCompletionHandler completionHandler;
@@ -84,7 +84,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
 
 @implementation _WKPreviewControllerDataSource
 
-- (instancetype)initWithSystemPreviewController:(WebKit::SystemPreviewController*)previewController MIMEType:(NSString*)mimeType originatingPageURL:(URL)url
+- (instancetype)initWithSystemPreviewController:(CyberKit::SystemPreviewController*)previewController MIMEType:(NSString*)mimeType originatingPageURL:(URL)url
 {
     if (!(self = [super init]))
         return nil;
@@ -119,10 +119,10 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
     NSString *contentType = CyberCore::UTIFromMIMEType("model/vnd.usdz+zip"_s);
 
 #if HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)
-    auto previewItem = adoptNS([WebKit::allocARQuickLookPreviewItemInstance() initWithFileAtURL:_downloadedURL]);
+    auto previewItem = adoptNS([CyberKit::allocARQuickLookPreviewItemInstance() initWithFileAtURL:_downloadedURL]);
     [previewItem setCanonicalWebPageURL:_originatingPageURL];
 
-    _item = adoptNS([allocARQuickLookWebKitItemInstance() initWithPreviewItemProvider:_itemProvider.get() contentType:contentType previewTitle:@"Preview" fileSize:@(0) previewItem:previewItem.get()]);
+    _item = adoptNS([allocARQuickLookCyberKitItemInstance() initWithPreviewItemProvider:_itemProvider.get() contentType:contentType previewTitle:@"Preview" fileSize:@(0) previewItem:previewItem.get()]);
     [_item setDelegate:self];
 
     if ([_item respondsToSelector:(@selector(setAdditionalParameters:))]) {
@@ -170,7 +170,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
 }
 
 #if HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)
-- (void)previewItem:(ARQuickLookWebKitItem *)previewItem didReceiveMessage:(NSDictionary *)message
+- (void)previewItem:(ARQuickLookCyberKitItem *)previewItem didReceiveMessage:(NSDictionary *)message
 {
     if (!_previewController)
         return;
@@ -183,14 +183,14 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
 @end
 
 @interface _WKPreviewControllerDelegate : NSObject <QLPreviewControllerDelegate> {
-    WebKit::SystemPreviewController* _previewController;
+    CyberKit::SystemPreviewController* _previewController;
     CyberCore::IntRect _linkRect;
 };
 @end
 
 @implementation _WKPreviewControllerDelegate
 
-- (id)initWithSystemPreviewController:(WebKit::SystemPreviewController*)previewController
+- (id)initWithSystemPreviewController:(CyberKit::SystemPreviewController*)previewController
 {
     if (!(self = [super init]))
         return nil;
@@ -252,7 +252,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 void SystemPreviewController::start(URL originatingPageURL, const String& mimeType, const CyberCore::SystemPreviewInfo& systemPreviewInfo)
 {

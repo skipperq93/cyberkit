@@ -22,32 +22,32 @@
 #include "WebPopupMenuProxy.h"
 #include <wtf/glib/GRefPtr.h>
 
-typedef struct _WebKitOptionMenu WebKitOptionMenu;
+typedef struct _CyberKitOptionMenu CyberKitOptionMenu;
 
 namespace WKWPE {
 class View;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebKitPopupMenu final : public WebPopupMenuProxy {
+class CyberKitPopupMenu final : public WebPopupMenuProxy {
 public:
-    static Ref<WebKitPopupMenu> create(WKWPE::View&, WebPopupMenuProxy::Client&);
-    ~WebKitPopupMenu() = default;
+    static Ref<CyberKitPopupMenu> create(WKWPE::View&, WebPopupMenuProxy::Client&);
+    ~CyberKitPopupMenu() = default;
 
     void selectItem(unsigned itemIndex);
     void activateItem(std::optional<unsigned> itemIndex);
 
 private:
-    WebKitPopupMenu(WKWPE::View&, WebPopupMenuProxy::Client&);
+    CyberKitPopupMenu(WKWPE::View&, WebPopupMenuProxy::Client&);
 
     void showPopupMenu(const CyberCore::IntRect&, CyberCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>&, const PlatformPopupMenuData&, int32_t selectedIndex) override;
     void hidePopupMenu() override;
     void cancelTracking() override;
 
     WKWPE::View& m_view;
-    GRefPtr<WebKitOptionMenu> m_menu;
+    GRefPtr<CyberKitOptionMenu> m_menu;
     std::optional<unsigned> m_selectedItem;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

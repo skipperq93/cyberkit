@@ -31,7 +31,7 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCIceCandidateFields {
     String foundation;
@@ -51,4 +51,4 @@ struct RTCIceCandidateFields {
 
 std::optional<RTCIceCandidateFields> parseIceCandidateSDP(const String&);
 
-} // namespace WebCore
+} // namespace CyberCore

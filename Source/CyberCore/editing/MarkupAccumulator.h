@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Attribute;
 class DocumentType;
@@ -118,4 +118,4 @@ inline void MarkupAccumulator::endAppendingNode(const Node& node)
         appendEndTag(m_markup, downcast<Element>(node));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

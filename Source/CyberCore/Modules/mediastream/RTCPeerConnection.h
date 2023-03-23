@@ -54,7 +54,7 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromiseDeferredBase;
 class MediaStream;
@@ -286,6 +286,6 @@ private:
     String m_lastCreatedAnswer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

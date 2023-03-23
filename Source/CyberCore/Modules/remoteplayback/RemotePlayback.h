@@ -29,13 +29,13 @@
 
 #include "ActiveDOMObject.h"
 #include "EventTarget.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/HashMap.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class HTMLMediaElement;
@@ -75,7 +75,7 @@ public:
     using RefCounted::ref;
     using RefCounted::deref;
 
-    WebCoreOpaqueRoot opaqueRootConcurrently() const;
+    CyberCoreOpaqueRoot opaqueRootConcurrently() const;
     Node* ownerNode() const;
 
 private:

@@ -42,7 +42,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PushRecord {
     PushSubscriptionIdentifier identifier;
@@ -105,20 +105,20 @@ public:
     WEBCORE_EXPORT void setPushesEnabledForOrigin(const PushSubscriptionSetIdentifier&, const String& securityOrigin, bool, CompletionHandler<void(bool recordsChanged)>&&);
 
 private:
-    PushDatabase(Ref<WorkQueue>&&, UniqueRef<WebCore::SQLiteDatabase>&&);
+    PushDatabase(Ref<WorkQueue>&&, UniqueRef<CyberCore::SQLiteDatabase>&&);
 
-    WebCore::SQLiteStatementAutoResetScope cachedStatementOnQueue(ASCIILiteral query);
-    template<typename... Args> WebCore::SQLiteStatementAutoResetScope bindStatementOnQueue(ASCIILiteral query, Args&&...);
+    CyberCore::SQLiteStatementAutoResetScope cachedStatementOnQueue(ASCIILiteral query);
+    template<typename... Args> CyberCore::SQLiteStatementAutoResetScope bindStatementOnQueue(ASCIILiteral query, Args&&...);
 
     void dispatchOnWorkQueue(Function<void()>&&);
 
     enum class SubscriptionSetState { Enabled, Ignored };
 
     Ref<WorkQueue> m_queue;
-    UniqueRef<WebCore::SQLiteDatabase> m_db;
-    HashMap<const char*, UniqueRef<WebCore::SQLiteStatement>> m_statements;
+    UniqueRef<CyberCore::SQLiteDatabase> m_db;
+    HashMap<const char*, UniqueRef<CyberCore::SQLiteStatement>> m_statements;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

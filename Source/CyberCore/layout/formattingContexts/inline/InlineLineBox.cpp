@@ -29,7 +29,7 @@
 #include "LayoutBoxGeometry.h"
 #include "LayoutElementBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 LineBox::LineBox(const Box& rootLayoutBox, InlineLayoutUnit contentLogicalLeft, InlineLayoutUnit contentLogicalWidth, size_t lineIndex, size_t nonSpanningInlineLevelBoxCount)
@@ -124,5 +124,5 @@ InlineRect LineBox::logicalBorderBoxForInlineBox(const Box& layoutBox, const Box
 }
 
 } // namespace Layout
-} // namespace WebCore
+} // namespace CyberCore
 

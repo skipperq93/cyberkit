@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OESFBORenderMipmap);
 
@@ -52,6 +52,6 @@ bool OESFBORenderMipmap::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_OES_fbo_render_mipmap"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -54,7 +54,7 @@ webkit_dom_html_paragraph_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_paragraph_element_get_align(CyberKitDOMHTMLParagraphElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_paragraph_element_get_align(CyberKitDOMHTMLParagraphElement* sel
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_paragraph_element_set_align(CyberKitDOMHTMLParagraphElement* self, const gchar* value);

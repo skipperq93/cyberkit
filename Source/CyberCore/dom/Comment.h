@@ -24,7 +24,7 @@
 
 #include "CharacterData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Comment final : public CharacterData {
     WTF_MAKE_ISO_ALLOCATED(Comment);
@@ -39,8 +39,8 @@ private:
     Ref<Node> cloneNodeInternal(Document&, CloningOperation) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Comment)
-    static bool isType(const WebCore::Node& node) { return node.nodeType() == WebCore::Node::COMMENT_NODE; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Comment)
+    static bool isType(const CyberCore::Node& node) { return node.nodeType() == CyberCore::Node::COMMENT_NODE; }
 SPECIALIZE_TYPE_TRAITS_END()

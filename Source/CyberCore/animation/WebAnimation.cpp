@@ -60,7 +60,7 @@
 #include <wtf/text/TextStream.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebAnimation);
 
@@ -1650,4 +1650,4 @@ std::optional<Seconds> WebAnimation::convertAnimationTimeToTimelineTime(Seconds 
     return animationTime * (1 / m_playbackRate) + *m_startTime;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

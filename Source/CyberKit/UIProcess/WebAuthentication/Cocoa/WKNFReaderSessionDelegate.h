@@ -27,13 +27,13 @@
 
 #import "NearFieldSPI.h"
 
-namespace WebKit {
+namespace CyberKit {
 class NfcConnection;
 }
 
 @interface WKNFReaderSessionDelegate : NSObject <NFReaderSessionDelegate>
 
-- (instancetype)initWithConnection:(WebKit::NfcConnection&)connection;
+- (instancetype)initWithConnection:(CyberKit::NfcConnection&)connection;
 
 @end
 

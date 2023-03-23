@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WebLockManagerSnapshot {
     struct Info {
@@ -48,4 +48,4 @@ struct WebLockManagerSnapshot {
     WebLockManagerSnapshot isolatedCopy() && { return { crossThreadCopy(WTFMove(held)), crossThreadCopy(WTFMove(pending)) }; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

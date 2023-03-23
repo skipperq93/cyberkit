@@ -61,7 +61,7 @@ enum class RenderingMode : bool;
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class RemoteImageBufferProxy;
@@ -202,6 +202,6 @@ private:
     HashMap<DisplayListRecorderFlushIdentifier, Ref<RemoteImageBufferProxyFlushState>> m_pendingFlushes;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

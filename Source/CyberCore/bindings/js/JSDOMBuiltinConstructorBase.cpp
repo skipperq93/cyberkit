@@ -22,10 +22,10 @@
 #include "config.h"
 #include "JSDOMBuiltinConstructorBase.h"
 
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
@@ -44,4 +44,4 @@ JSC::GCClient::IsoSubspace* JSDOMBuiltinConstructorBase::subspaceForImpl(JSC::VM
     return &static_cast<JSVMClientData*>(vm.clientData)->domBuiltinConstructorSpace();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

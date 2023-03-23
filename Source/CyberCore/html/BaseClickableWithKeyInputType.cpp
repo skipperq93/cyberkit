@@ -35,7 +35,7 @@
 #include "HTMLInputElement.h"
 #include "KeyboardEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -104,4 +104,4 @@ bool BaseClickableWithKeyInputType::accessKeyAction(bool sendMouseEvents)
     return accessKeyAction(*element(), sendMouseEvents);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

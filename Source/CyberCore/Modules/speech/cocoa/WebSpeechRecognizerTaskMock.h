@@ -34,15 +34,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WebSpeechRecognizerTaskMock : WebSpeechRecognizerTask {
 @private
-    WebCore::SpeechRecognitionConnectionClientIdentifier _identifier;
-    BlockPtr<void(const WebCore::SpeechRecognitionUpdate&)> _delegateCallback;
+    CyberCore::SpeechRecognitionConnectionClientIdentifier _identifier;
+    BlockPtr<void(const CyberCore::SpeechRecognitionUpdate&)> _delegateCallback;
     bool _doMultipleRecognitions;
     bool _hasSentSpeechStart;
     bool _hasSentSpeechEnd;
     bool _completed;
 }
 
-- (instancetype)initWithIdentifier:(WebCore::SpeechRecognitionConnectionClientIdentifier)identifier locale:(NSString*)localeIdentifier doMultipleRecognitions:(BOOL)continuous reportInterimResults:(BOOL)interimResults maxAlternatives:(unsigned long)alternatives delegateCallback:(void(^)(const WebCore::SpeechRecognitionUpdate&))callback;
+- (instancetype)initWithIdentifier:(CyberCore::SpeechRecognitionConnectionClientIdentifier)identifier locale:(NSString*)localeIdentifier doMultipleRecognitions:(BOOL)continuous reportInterimResults:(BOOL)interimResults maxAlternatives:(unsigned long)alternatives delegateCallback:(void(^)(const CyberCore::SpeechRecognitionUpdate&))callback;
 - (void)audioSamplesAvailable:(CMSampleBufferRef)sampleBuffer;
 - (void)abort;
 - (void)stop;

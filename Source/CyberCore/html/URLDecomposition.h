@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class URLDecomposition {
 public:
@@ -68,4 +68,4 @@ private:
     virtual void setFullURL(const URL&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

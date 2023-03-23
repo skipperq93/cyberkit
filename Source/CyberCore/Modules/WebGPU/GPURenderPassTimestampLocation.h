@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPURenderPassTimestampLocation.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPURenderPassTimestampLocation : uint8_t {
     Beginning,

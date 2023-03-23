@@ -27,7 +27,7 @@
 
 #include "StorageManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StorageManagerFileSystemAccess {
 public:
@@ -37,4 +37,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

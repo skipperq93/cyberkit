@@ -29,7 +29,7 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SFrameCompatibilityPrefixBuffer {
     const uint8_t* data { nullptr };
@@ -47,6 +47,6 @@ WEBCORE_EXPORT void toRbsp(Vector<uint8_t>&, size_t);
 size_t computeVP8PrefixOffset(const uint8_t*, size_t);
 SFrameCompatibilityPrefixBuffer computeVP8PrefixBuffer(const uint8_t*, size_t);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

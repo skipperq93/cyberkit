@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum EditingBoundaryCrossingRule {
     CanCrossEditingBoundary,
@@ -38,4 +38,4 @@ enum EditableType {
     HasEditableAXRole
 };
 
-} // namespace WebCore
+} // namespace CyberCore

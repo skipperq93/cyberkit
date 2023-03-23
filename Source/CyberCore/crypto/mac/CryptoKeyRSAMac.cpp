@@ -39,7 +39,7 @@
 #include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // OID rsaEncryption: 1.2.840.113549.1.1.1. Per https://tools.ietf.org/html/rfc3279#section-2.3.1
 static const unsigned char RSAOIDHeader[] = {0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05, 0x00};
@@ -413,6 +413,6 @@ ExceptionOr<Vector<uint8_t>> CryptoKeyRSA::exportPkcs8() const
     return WTFMove(result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -31,7 +31,7 @@
 #include "KeyframeEffectStack.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ElementAnimationRareData::ElementAnimationRareData(PseudoId pseudoId)
     : m_pseudoId(pseudoId)
@@ -65,4 +65,4 @@ void ElementAnimationRareData::setLastStyleChangeEventStyle(std::unique_ptr<cons
     m_lastStyleChangeEventStyle = WTFMove(style);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

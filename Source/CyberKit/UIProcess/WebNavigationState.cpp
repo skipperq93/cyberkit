@@ -30,7 +30,7 @@
 #include "WebPageProxy.h"
 #include <CyberCore/ResourceRequest.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebNavigationState::WebNavigationState()
@@ -114,4 +114,4 @@ void WebNavigationState::clearAllNavigations()
     m_navigations.clear();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

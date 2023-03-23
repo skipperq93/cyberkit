@@ -29,11 +29,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/*! @constant WKErrorDomain Indicates a WebKit error. */
+/*! @constant WKErrorDomain Indicates a CyberKit error. */
 WK_EXTERN NSString * const WKErrorDomain WK_API_AVAILABLE(macos(10.10), ios(8.0));
 
 /*! @enum WKErrorCode
- @abstract Constants used by NSError to indicate errors in the WebKit domain.
+ @abstract Constants used by NSError to indicate errors in the CyberKit domain.
  @constant WKErrorUnknown                              Indicates that an unknown error occurred.
  @constant WKErrorWebContentProcessTerminated          Indicates that the Web Content process was terminated.
  @constant WKErrorWebViewInvalidated                   Indicates that the WKWebView was invalidated.

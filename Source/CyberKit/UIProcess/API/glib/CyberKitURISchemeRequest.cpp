@@ -18,14 +18,14 @@
  */
 
 #include "config.h"
-#include "WebKitURISchemeRequest.h"
+#include "CyberKitURISchemeRequest.h"
 
 #include "APIData.h"
-#include "WebKitPrivate.h"
-#include "WebKitURISchemeRequestPrivate.h"
-#include "WebKitURISchemeResponsePrivate.h"
-#include "WebKitWebContextPrivate.h"
-#include "WebKitWebView.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitURISchemeRequestPrivate.h"
+#include "CyberKitURISchemeResponsePrivate.h"
+#include "CyberKitWebContextPrivate.h"
+#include "CyberKitWebView.h"
 #include "WebPageProxy.h"
 #include <CyberCore/GUniquePtrSoup.h>
 #include <CyberCore/HTTPParsers.h>
@@ -36,28 +36,28 @@
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitURISchemeRequest:
+ * CyberKitURISchemeRequest:
  *
  * Represents a URI scheme request.
  *
- * If you register a particular URI scheme in a #WebKitWebContext,
+ * If you register a particular URI scheme in a #CyberKitWebContext,
  * using webkit_web_context_register_uri_scheme(), you have to provide
- * a #WebKitURISchemeRequestCallback. After that, when a URI request
+ * a #CyberKitURISchemeRequestCallback. After that, when a URI request
  * is made with that particular scheme, your callback will be
  * called. There you will be able to access properties such as the
- * scheme, the URI and path, and the #WebKitWebView that initiated the
+ * scheme, the URI and path, and the #CyberKitWebView that initiated the
  * request, and also finish the request with
  * webkit_uri_scheme_request_finish().
  */
 
 static const unsigned int gReadBufferSize = 8192;
 
-struct _WebKitURISchemeRequestPrivate {
-    WebKitWebContext* webContext;
+struct _CyberKitURISchemeRequestPrivate {
+    CyberKitWebContext* webContext;
     RefPtr<WebURLSchemeTask> task;
 
     RefPtr<WebPageProxy> initiatingPage;
@@ -65,7 +65,7 @@ struct _WebKitURISchemeRequestPrivate {
     CString uriScheme;
     CString uriPath;
 
-    GRefPtr<WebKitURISchemeResponse> response;
+    GRefPtr<CyberKitURISchemeResponse> response;
     GRefPtr<GCancellable> cancellable;
     char readBuffer[gReadBufferSize];
     uint64_t bytesRead;
@@ -73,35 +73,35 @@ struct _WebKitURISchemeRequestPrivate {
     GUniquePtr<SoupMessageHeaders> headers;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitURISchemeRequest, webkit_uri_scheme_request, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitURISchemeRequest, webkit_uri_scheme_request, G_TYPE_OBJECT, GObject)
 
-static void webkit_uri_scheme_request_class_init(WebKitURISchemeRequestClass*)
+static void webkit_uri_scheme_request_class_init(CyberKitURISchemeRequestClass*)
 {
 }
 
-WebKitURISchemeRequest* webkitURISchemeRequestCreate(WebKitWebContext* webContext, WebPageProxy& page, WebURLSchemeTask& task)
+CyberKitURISchemeRequest* webkitURISchemeRequestCreate(CyberKitWebContext* webContext, WebPageProxy& page, WebURLSchemeTask& task)
 {
-    WebKitURISchemeRequest* request = WEBKIT_URI_SCHEME_REQUEST(g_object_new(WEBKIT_TYPE_URI_SCHEME_REQUEST, nullptr));
+    CyberKitURISchemeRequest* request = WEBKIT_URI_SCHEME_REQUEST(g_object_new(WEBKIT_TYPE_URI_SCHEME_REQUEST, nullptr));
     request->priv->webContext = webContext;
     request->priv->task = &task;
     request->priv->initiatingPage = &page;
     return request;
 }
 
-void webkitURISchemeRequestCancel(WebKitURISchemeRequest* request)
+void webkitURISchemeRequestCancel(CyberKitURISchemeRequest* request)
 {
     g_cancellable_cancel(request->priv->cancellable.get());
 }
 
 /**
  * webkit_uri_scheme_request_get_scheme:
- * @request: a #WebKitURISchemeRequest
+ * @request: a #CyberKitURISchemeRequest
  *
  * Get the URI scheme of @request.
  *
  * Returns: the URI scheme of @request
  */
-const char* webkit_uri_scheme_request_get_scheme(WebKitURISchemeRequest* request)
+const char* webkit_uri_scheme_request_get_scheme(CyberKitURISchemeRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request), nullptr);
 
@@ -113,13 +113,13 @@ const char* webkit_uri_scheme_request_get_scheme(WebKitURISchemeRequest* request
 
 /**
  * webkit_uri_scheme_request_get_uri:
- * @request: a #WebKitURISchemeRequest
+ * @request: a #CyberKitURISchemeRequest
  *
  * Get the URI of @request.
  *
  * Returns: the full URI of @request
  */
-const char* webkit_uri_scheme_request_get_uri(WebKitURISchemeRequest* request)
+const char* webkit_uri_scheme_request_get_uri(CyberKitURISchemeRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request), nullptr);
 
@@ -131,13 +131,13 @@ const char* webkit_uri_scheme_request_get_uri(WebKitURISchemeRequest* request)
 
 /**
  * webkit_uri_scheme_request_get_path:
- * @request: a #WebKitURISchemeRequest
+ * @request: a #CyberKitURISchemeRequest
  *
  * Get the URI path of @request.
  *
  * Returns: the URI path of @request
  */
-const char* webkit_uri_scheme_request_get_path(WebKitURISchemeRequest* request)
+const char* webkit_uri_scheme_request_get_path(CyberKitURISchemeRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request), nullptr);
 
@@ -149,13 +149,13 @@ const char* webkit_uri_scheme_request_get_path(WebKitURISchemeRequest* request)
 
 /**
  * webkit_uri_scheme_request_get_web_view:
- * @request: a #WebKitURISchemeRequest
+ * @request: a #CyberKitURISchemeRequest
  *
- * Get the #WebKitWebView that initiated the request.
+ * Get the #CyberKitWebView that initiated the request.
  *
- * Returns: (transfer none): the #WebKitWebView that initiated @request.
+ * Returns: (transfer none): the #CyberKitWebView that initiated @request.
  */
-WebKitWebView* webkit_uri_scheme_request_get_web_view(WebKitURISchemeRequest* request)
+CyberKitWebView* webkit_uri_scheme_request_get_web_view(CyberKitURISchemeRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request), nullptr);
 
@@ -164,7 +164,7 @@ WebKitWebView* webkit_uri_scheme_request_get_web_view(WebKitURISchemeRequest* re
 
 /**
  * webkit_uri_scheme_request_get_http_method:
- * @request: a #WebKitURISchemeRequest
+ * @request: a #CyberKitURISchemeRequest
  *
  * Get the HTTP method of the @request.
  *
@@ -172,7 +172,7 @@ WebKitWebView* webkit_uri_scheme_request_get_web_view(WebKitURISchemeRequest* re
  *
  * Since: 2.36
  */
-const gchar* webkit_uri_scheme_request_get_http_method(WebKitURISchemeRequest* request)
+const gchar* webkit_uri_scheme_request_get_http_method(CyberKitURISchemeRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request), nullptr);
 
@@ -184,7 +184,7 @@ const gchar* webkit_uri_scheme_request_get_http_method(WebKitURISchemeRequest* r
 
 /**
  * webkit_uri_scheme_request_get_http_headers:
- * @request: a #WebKitURISchemeRequest
+ * @request: a #CyberKitURISchemeRequest
  *
  * Get the #SoupMessageHeaders of the request.
  *
@@ -192,7 +192,7 @@ const gchar* webkit_uri_scheme_request_get_http_method(WebKitURISchemeRequest* r
  *
  * Since: 2.36
  */
-SoupMessageHeaders* webkit_uri_scheme_request_get_http_headers(WebKitURISchemeRequest* request)
+SoupMessageHeaders* webkit_uri_scheme_request_get_http_headers(CyberKitURISchemeRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request), nullptr);
 
@@ -204,9 +204,9 @@ SoupMessageHeaders* webkit_uri_scheme_request_get_http_headers(WebKitURISchemeRe
     return request->priv->headers.get();
 }
 
-static void webkitURISchemeRequestReadCallback(GInputStream* inputStream, GAsyncResult* result, WebKitURISchemeRequest* schemeRequest)
+static void webkitURISchemeRequestReadCallback(GInputStream* inputStream, GAsyncResult* result, CyberKitURISchemeRequest* schemeRequest)
 {
-    GRefPtr<WebKitURISchemeRequest> request = adoptGRef(schemeRequest);
+    GRefPtr<CyberKitURISchemeRequest> request = adoptGRef(schemeRequest);
     GUniqueOutPtr<GError> error;
     gssize bytesRead = g_input_stream_read_finish(inputStream, result, &error.outPtr());
     if (bytesRead == -1) {
@@ -214,13 +214,13 @@ static void webkitURISchemeRequestReadCallback(GInputStream* inputStream, GAsync
         return;
     }
 
-    WebKitURISchemeRequestPrivate* priv = request->priv;
+    CyberKitURISchemeRequestPrivate* priv = request->priv;
     // Need to check the stream before proceeding as it can be cancelled if finish_error
     // was previously call, which won't be detected by g_input_stream_read_finish().
     if (!priv->response)
         return;
 
-    WebKitURISchemeResponse* resp = priv->response.get();
+    CyberKitURISchemeResponse* resp = priv->response.get();
     if (!priv->bytesRead) {
         auto contentType = String::fromLatin1(webKitURISchemeResponseGetContentType(resp).data());
         ResourceResponse response(priv->task->request().url(), extractMIMETypeFromMediaType(contentType), webKitURISchemeResponseGetStreamLength(resp), emptyString());
@@ -254,20 +254,20 @@ static void webkitURISchemeRequestReadCallback(GInputStream* inputStream, GAsync
 
 /**
  * webkit_uri_scheme_request_finish:
- * @request: a #WebKitURISchemeRequest
+ * @request: a #CyberKitURISchemeRequest
  * @stream: a #GInputStream to read the contents of the request
  * @stream_length: the length of the stream or -1 if not known
  * @content_type: (allow-none): the content type of the stream or %NULL if not known
  *
- * Finish a #WebKitURISchemeRequest by setting the contents of the request and its mime type.
+ * Finish a #CyberKitURISchemeRequest by setting the contents of the request and its mime type.
  */
-void webkit_uri_scheme_request_finish(WebKitURISchemeRequest* request, GInputStream* inputStream, gint64 streamLength, const gchar* contentType)
+void webkit_uri_scheme_request_finish(CyberKitURISchemeRequest* request, GInputStream* inputStream, gint64 streamLength, const gchar* contentType)
 {
     g_return_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request));
     g_return_if_fail(G_IS_INPUT_STREAM(inputStream));
     g_return_if_fail(streamLength == -1 || streamLength >= 0);
 
-    GRefPtr<WebKitURISchemeResponse> response = adoptGRef(webkit_uri_scheme_response_new(inputStream, streamLength));
+    GRefPtr<CyberKitURISchemeResponse> response = adoptGRef(webkit_uri_scheme_response_new(inputStream, streamLength));
     if (contentType)
         webkit_uri_scheme_response_set_content_type(response.get(), contentType);
 
@@ -276,14 +276,14 @@ void webkit_uri_scheme_request_finish(WebKitURISchemeRequest* request, GInputStr
 
 /**
  * webkit_uri_scheme_request_finish_with_response:
- * @request: a #WebKitURISchemeRequest
- * @response: a #WebKitURISchemeResponse
+ * @request: a #CyberKitURISchemeRequest
+ * @response: a #CyberKitURISchemeResponse
  *
- * Finish a #WebKitURISchemeRequest by returning a #WebKitURISchemeResponse
+ * Finish a #CyberKitURISchemeRequest by returning a #CyberKitURISchemeResponse
  *
  * Since: 2.36
  */
-void webkit_uri_scheme_request_finish_with_response(WebKitURISchemeRequest* request, WebKitURISchemeResponse* response)
+void webkit_uri_scheme_request_finish_with_response(CyberKitURISchemeRequest* request, CyberKitURISchemeResponse* response)
 {
     g_return_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request));
     g_return_if_fail(WEBKIT_IS_URI_SCHEME_RESPONSE(response));
@@ -297,19 +297,19 @@ void webkit_uri_scheme_request_finish_with_response(WebKitURISchemeRequest* requ
 
 /**
  * webkit_uri_scheme_request_finish_error:
- * @request: a #WebKitURISchemeRequest
- * @error: a #GError that will be passed to the #WebKitWebView
+ * @request: a #CyberKitURISchemeRequest
+ * @error: a #GError that will be passed to the #CyberKitWebView
  *
- * Finish a #WebKitURISchemeRequest with a #GError.
+ * Finish a #CyberKitURISchemeRequest with a #GError.
  *
  * Since: 2.2
  */
-void webkit_uri_scheme_request_finish_error(WebKitURISchemeRequest* request, GError* error)
+void webkit_uri_scheme_request_finish_error(CyberKitURISchemeRequest* request, GError* error)
 {
     g_return_if_fail(WEBKIT_IS_URI_SCHEME_REQUEST(request));
     g_return_if_fail(error);
 
-    WebKitURISchemeRequestPrivate* priv = request->priv;
+    CyberKitURISchemeRequestPrivate* priv = request->priv;
     priv->response = nullptr;
     ResourceError resourceError(String::fromLatin1(g_quark_to_string(error->domain)), toCyberCoreError(error->code), priv->task->request().url(), String::fromUTF8(error->message));
     priv->task->didComplete(resourceError);

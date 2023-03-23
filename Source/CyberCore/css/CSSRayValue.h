@@ -30,7 +30,7 @@
 
 #include "CSSPrimitiveValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Class containing the value of a ray() function, as used in offset-path:
 // https://drafts.fxtf.org/motion-1/#funcdef-offset-path-ray.
@@ -65,6 +65,6 @@ private:
     bool m_isContaining;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSRayValue, isRayValue())

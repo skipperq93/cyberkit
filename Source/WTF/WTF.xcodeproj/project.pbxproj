@@ -59,7 +59,7 @@
 		1CA85CA9241B0B260071C2F5 /* RuntimeApplicationChecksCocoa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA85CA8241B0B260071C2F5 /* RuntimeApplicationChecksCocoa.cpp */; };
 		1CF18F3B26BB579E004B1722 /* LogChannels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF18F3926BB579E004B1722 /* LogChannels.cpp */; };
 		1CFD5D3D2851AB3E00A0E30B /* EnumeratedArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CFD5D3B2851AB3E00A0E30B /* EnumeratedArray.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		1FA47C8A152502DA00568D1B /* WebCoreThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FA47C88152502DA00568D1B /* WebCoreThread.cpp */; };
+		1FA47C8A152502DA00568D1B /* CyberCoreThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FA47C88152502DA00568D1B /* CyberCoreThread.cpp */; };
 		2CCD892A15C0390200285083 /* GregorianDateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD892915C0390200285083 /* GregorianDateTime.cpp */; };
 		2CDED0EF18115C38004DBA70 /* RunLoopCF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CDED0EE18115C38004DBA70 /* RunLoopCF.cpp */; };
 		2CDED0F318115C85004DBA70 /* RunLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CDED0F118115C85004DBA70 /* RunLoop.cpp */; };
@@ -510,7 +510,7 @@
 		DD4901EB27B4748A00D7E50D /* ParallelJobsOpenMP.h in Headers */ = {isa = PBXBuildFile; fileRef = DD4901E427B4748A00D7E50D /* ParallelJobsOpenMP.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DD4901EC27B4748A00D7E50D /* MainThreadData.h in Headers */ = {isa = PBXBuildFile; fileRef = DD4901E527B4748A00D7E50D /* MainThreadData.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDCAF31D27B1E7C500C45308 /* GenericHashKey.h in Headers */ = {isa = PBXBuildFile; fileRef = E3FD6D6627A1F6AD00935000 /* GenericHashKey.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		DDE99319278D08DC00F60D26 /* libWebKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE99317278D08C900F60D26 /* libWebKitAdditions.a */; };
+		DDE99319278D08DC00F60D26 /* libCyberKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE99317278D08C900F60D26 /* libCyberKitAdditions.a */; };
 		DDF306D827C08654006A526F /* CFStringSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF306C127C08654006A526F /* CFStringSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDF306D927C08654006A526F /* CFRunLoopSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF306C227C08654006A526F /* CFRunLoopSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDF306DA27C08654006A526F /* CFBundleSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF306C327C08654006A526F /* CFBundleSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -541,7 +541,7 @@
 		DDF3071327C086CC006A526F /* CFURLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1F05922164356B0039302C /* CFURLExtras.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDF3072227C086CC006A526F /* RuntimeApplicationChecksCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CA85CA7241B0B110071C2F5 /* RuntimeApplicationChecksCocoa.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDF3073827C086CD006A526F /* TollFreeBridging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4434F91B27948A65007E3E8A /* TollFreeBridging.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		DDF3073B27C086CD006A526F /* WebCoreThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA47C89152502DA00568D1B /* WebCoreThread.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DDF3073B27C086CD006A526F /* CyberCoreThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA47C89152502DA00568D1B /* CyberCoreThread.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDF3073E27C086CD006A526F /* strtod.h in Headers */ = {isa = PBXBuildFile; fileRef = A8A47295151A825A004123FF /* strtod.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDF3074E27C086CD006A526F /* PersistentDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 51F175281F3D486000C74950 /* PersistentDecoder.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDF3076127C086CD006A526F /* SpanCF.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3FEB5D267FCD340054006A /* SpanCF.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -923,7 +923,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				DD403D5628EB93BE009B4684 /* libbmalloc.a in Product Dependencies */,
-				DDE99319278D08DC00F60D26 /* libWebKitAdditions.a in Product Dependencies */,
+				DDE99319278D08DC00F60D26 /* libCyberKitAdditions.a in Product Dependencies */,
 			);
 			name = "Product Dependencies";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1089,8 +1089,8 @@
 		1CF18F3926BB579E004B1722 /* LogChannels.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LogChannels.cpp; sourceTree = "<group>"; };
 		1CF18F3A26BB579E004B1722 /* LogChannels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogChannels.h; sourceTree = "<group>"; };
 		1CFD5D3B2851AB3E00A0E30B /* EnumeratedArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumeratedArray.h; sourceTree = "<group>"; };
-		1FA47C88152502DA00568D1B /* WebCoreThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebCoreThread.cpp; sourceTree = "<group>"; };
-		1FA47C89152502DA00568D1B /* WebCoreThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCoreThread.h; sourceTree = "<group>"; };
+		1FA47C88152502DA00568D1B /* CyberCoreThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CyberCoreThread.cpp; sourceTree = "<group>"; };
+		1FA47C89152502DA00568D1B /* CyberCoreThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyberCoreThread.h; sourceTree = "<group>"; };
 		24F1B248619F412296D1C19C /* RandomDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomDevice.h; sourceTree = "<group>"; };
 		26147B0815DDCCDC00DDB907 /* IntegerToStringConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerToStringConversion.h; sourceTree = "<group>"; };
 		26299B6D17A9E5B800ADEBE5 /* Ref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ref.h; sourceTree = "<group>"; };
@@ -1660,7 +1660,7 @@
 		DDD8BB7A27B347C500C109E0 /* ulistformatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ulistformatter.h; sourceTree = "<group>"; };
 		DDD8BB7B27B347C500C109E0 /* measfmt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = measfmt.h; sourceTree = "<group>"; };
 		DDD8BB7C27B347C500C109E0 /* unifilt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unifilt.h; sourceTree = "<group>"; };
-		DDE99317278D08C900F60D26 /* libWebKitAdditions.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWebKitAdditions.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDE99317278D08C900F60D26 /* libCyberKitAdditions.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCyberKitAdditions.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF306C127C08654006A526F /* CFStringSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFStringSPI.h; sourceTree = "<group>"; };
 		DDF306C227C08654006A526F /* CFRunLoopSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFRunLoopSPI.h; sourceTree = "<group>"; };
 		DDF306C327C08654006A526F /* CFBundleSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFBundleSPI.h; sourceTree = "<group>"; };
@@ -1818,8 +1818,8 @@
 		1FA47C87152502DA00568D1B /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				1FA47C88152502DA00568D1B /* WebCoreThread.cpp */,
-				1FA47C89152502DA00568D1B /* WebCoreThread.h */,
+				1FA47C88152502DA00568D1B /* CyberCoreThread.cpp */,
+				1FA47C89152502DA00568D1B /* CyberCoreThread.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -2767,7 +2767,7 @@
 			isa = PBXGroup;
 			children = (
 				DD403D5528EB93BE009B4684 /* libbmalloc.a */,
-				DDE99317278D08C900F60D26 /* libWebKitAdditions.a */,
+				DDE99317278D08C900F60D26 /* libCyberKitAdditions.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3359,7 +3359,7 @@
 				DD3DC95227A4BF8E007E5B61 /* WeakPtr.h in Headers */,
 				DD3DC91927A4BF8E007E5B61 /* WeakRandom.h in Headers */,
 				DD3DC88A27A4BF8E007E5B61 /* WeakRandomNumber.h in Headers */,
-				DDF3073B27C086CD006A526F /* WebCoreThread.h in Headers */,
+				DDF3073B27C086CD006A526F /* CyberCoreThread.h in Headers */,
 				DD4901EA27B4748A00D7E50D /* WindowsExtras.h in Headers */,
 				DD3DC8AE27A4BF8E007E5B61 /* WordLock.h in Headers */,
 				DD3DC92327A4BF8E007E5B61 /* WorkerPool.h in Headers */,
@@ -3844,7 +3844,7 @@
 				0F66B2921DC97BAB004A1D3F /* WallTime.cpp in Sources */,
 				0F0C03D8299820EB0064230A /* WeakPtr.cpp in Sources */,
 				A8A47414151A825B004123FF /* WeakRandomNumber.cpp in Sources */,
-				1FA47C8A152502DA00568D1B /* WebCoreThread.cpp in Sources */,
+				1FA47C8A152502DA00568D1B /* CyberCoreThread.cpp in Sources */,
 				0FE4479C1B7AAA03009498EB /* WordLock.cpp in Sources */,
 				E388886F20C9095100E632BC /* WorkerPool.cpp in Sources */,
 				E4A0AD391A96245500536DF6 /* WorkQueue.cpp in Sources */,

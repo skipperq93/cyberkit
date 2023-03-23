@@ -27,7 +27,7 @@
 
 #include "FetchRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class DeferredPromise;
@@ -39,4 +39,4 @@ public:
     static void fetch(WorkerGlobalScope&, FetchRequest::Info&&, FetchRequest::Init&&, Ref<DeferredPromise>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

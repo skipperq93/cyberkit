@@ -17,14 +17,14 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitPrintOperationPrivate_h
-#define WebKitPrintOperationPrivate_h
+#ifndef CyberKitPrintOperationPrivate_h
+#define CyberKitPrintOperationPrivate_h
 
 #include "PrintInfo.h"
 #include "WebFrameProxy.h"
-#include "WebKitPrintOperation.h"
+#include "CyberKitPrintOperation.h"
 
-WebKitPrintOperationResponse webkitPrintOperationRunDialogForFrame(WebKitPrintOperation*, GtkWindow* parent, WebKit::WebFrameProxy*);
-void webkitPrintOperationSetPrintMode(WebKitPrintOperation*, WebKit::PrintInfo::PrintMode);
+CyberKitPrintOperationResponse webkitPrintOperationRunDialogForFrame(CyberKitPrintOperation*, GtkWindow* parent, CyberKit::WebFrameProxy*);
+void webkitPrintOperationSetPrintMode(CyberKitPrintOperation*, CyberKit::PrintInfo::PrintMode);
 
-#endif // WebKitPrintOperationPrivate_h
+#endif // CyberKitPrintOperationPrivate_h

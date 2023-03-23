@@ -24,7 +24,7 @@
 
 #include "HTMLPlugInImageElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLEmbedElement final : public HTMLPlugInImageElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLEmbedElement);
@@ -54,4 +54,4 @@ private:
     void parametersForPlugin(Vector<AtomString>& paramNames, Vector<AtomString>& paramValues);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

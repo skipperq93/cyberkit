@@ -19,15 +19,15 @@
  */
 
 #include "config.h"
-#include "WebKitCookieManager.h"
+#include "CyberKitCookieManager.h"
 
 #include "APIHTTPCookieStore.h"
 #include "NetworkProcessProxy.h"
 #include "SoupCookiePersistentStorageType.h"
-#include "WebKitCookieManagerPrivate.h"
-#include "WebKitEnumTypes.h"
-#include "WebKitWebsiteDataManagerPrivate.h"
-#include "WebKitWebsiteDataPrivate.h"
+#include "CyberKitCookieManagerPrivate.h"
+#include "CyberKitEnumTypes.h"
+#include "CyberKitWebsiteDataManagerPrivate.h"
+#include "CyberKitWebsiteDataPrivate.h"
 #include "WebsiteDataRecord.h"
 #include <CyberCore/HTTPCookieAcceptPolicy.h>
 #include <glib/gi18n-lib.h>
@@ -36,15 +36,15 @@
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitCookieManager:
+ * CyberKitCookieManager:
  *
- * Defines how to handle cookies in a #WebKitWebContext.
+ * Defines how to handle cookies in a #CyberKitWebContext.
  *
- * The WebKitCookieManager defines how to set up and handle cookies.
- * You can get it from a #WebKitWebsiteDataManager with
+ * The CyberKitCookieManager defines how to set up and handle cookies.
+ * You can get it from a #CyberKitWebsiteDataManager with
  * webkit_website_data_manager_get_cookie_manager(), and use it to set where to
  * store cookies with webkit_cookie_manager_set_persistent_storage(),
  * or to set the acceptance policy, with webkit_cookie_manager_get_accept_policy().
@@ -70,7 +70,7 @@ private:
     Function<void()> m_callback;
 };
 
-struct _WebKitCookieManagerPrivate {
+struct _CyberKitCookieManagerPrivate {
     API::HTTPCookieStore& cookieStore() const
     {
         ASSERT(dataManager);
@@ -83,21 +83,21 @@ struct _WebKitCookieManagerPrivate {
         return webkitWebsiteDataManagerGetDataStore(dataManager).sessionID();
     }
 
-    ~_WebKitCookieManagerPrivate()
+    ~_CyberKitCookieManagerPrivate()
     {
         cookieStore().unregisterObserver(*m_observer);
     }
 
-    WebKitWebsiteDataManager* dataManager;
+    CyberKitWebsiteDataManager* dataManager;
 
     std::unique_ptr<CookieStoreObserver> m_observer;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitCookieManager, webkit_cookie_manager, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitCookieManager, webkit_cookie_manager, G_TYPE_OBJECT, GObject)
 
-static inline SoupCookiePersistentStorageType toSoupCookiePersistentStorageType(WebKitCookiePersistentStorage kitStorage)
+static inline SoupCookiePersistentStorageType toSoupCookiePersistentStorageType(CyberKitCookiePersistentStorage kitStorage)
 {
     switch (kitStorage) {
     case WEBKIT_COOKIE_PERSISTENT_STORAGE_TEXT:
@@ -110,7 +110,7 @@ static inline SoupCookiePersistentStorageType toSoupCookiePersistentStorageType(
     }
 }
 
-static inline WebKitCookieAcceptPolicy toWebKitCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy httpPolicy)
+static inline CyberKitCookieAcceptPolicy toCyberKitCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy httpPolicy)
 {
     switch (httpPolicy) {
     case CyberCore::HTTPCookieAcceptPolicy::AlwaysAccept:
@@ -125,7 +125,7 @@ static inline WebKitCookieAcceptPolicy toWebKitCookieAcceptPolicy(CyberCore::HTT
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static inline CyberCore::HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(WebKitCookieAcceptPolicy kitPolicy)
+static inline CyberCore::HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(CyberKitCookieAcceptPolicy kitPolicy)
 {
     switch (kitPolicy) {
     case WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS:
@@ -138,13 +138,13 @@ static inline CyberCore::HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(WebKitC
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static void webkit_cookie_manager_class_init(WebKitCookieManagerClass* findClass)
+static void webkit_cookie_manager_class_init(CyberKitCookieManagerClass* findClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(findClass);
 
     /**
-     * WebKitCookieManager::changed:
-     * @cookie_manager: the #WebKitCookieManager
+     * CyberKitCookieManager::changed:
+     * @cookie_manager: the #CyberKitCookieManager
      *
      * This signal is emitted when cookies are added, removed or modified.
      */
@@ -157,9 +157,9 @@ static void webkit_cookie_manager_class_init(WebKitCookieManagerClass* findClass
                      G_TYPE_NONE, 0);
 }
 
-WebKitCookieManager* webkitCookieManagerCreate(WebKitWebsiteDataManager* dataManager)
+CyberKitCookieManager* webkitCookieManagerCreate(CyberKitWebsiteDataManager* dataManager)
 {
-    WebKitCookieManager* manager = WEBKIT_COOKIE_MANAGER(g_object_new(WEBKIT_TYPE_COOKIE_MANAGER, nullptr));
+    CyberKitCookieManager* manager = WEBKIT_COOKIE_MANAGER(g_object_new(WEBKIT_TYPE_COOKIE_MANAGER, nullptr));
     manager->priv->dataManager = dataManager;
     manager->priv->m_observer = makeUnique<CookieStoreObserver>([manager] {
         g_signal_emit(manager, signals[CHANGED], 0);
@@ -170,23 +170,23 @@ WebKitCookieManager* webkitCookieManagerCreate(WebKitWebsiteDataManager* dataMan
 
 /**
  * webkit_cookie_manager_set_persistent_storage:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @filename: the filename to read to/write from
- * @storage: a #WebKitCookiePersistentStorage
+ * @storage: a #CyberKitCookiePersistentStorage
  *
  * Set non-session cookies.
  *
  * Set the @filename where non-session cookies are stored persistently using
  * @storage as the format to read/write the cookies.
  * Cookies are initially read from @filename to create an initial set of cookies.
- * Then, non-session cookies will be written to @filename when the WebKitCookieManager::changed
+ * Then, non-session cookies will be written to @filename when the CyberKitCookieManager::changed
  * signal is emitted.
  * By default, @cookie_manager doesn't store the cookies persistently, so you need to call this
  * method to keep cookies saved across sessions.
  *
- * This method should never be called on a #WebKitCookieManager associated to an ephemeral #WebKitWebsiteDataManager.
+ * This method should never be called on a #CyberKitCookieManager associated to an ephemeral #CyberKitWebsiteDataManager.
  */
-void webkit_cookie_manager_set_persistent_storage(WebKitCookieManager* manager, const char* filename, WebKitCookiePersistentStorage storage)
+void webkit_cookie_manager_set_persistent_storage(CyberKitCookieManager* manager, const char* filename, CyberKitCookiePersistentStorage storage)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
     g_return_if_fail(filename);
@@ -202,8 +202,8 @@ void webkit_cookie_manager_set_persistent_storage(WebKitCookieManager* manager, 
 
 /**
  * webkit_cookie_manager_set_accept_policy:
- * @cookie_manager: a #WebKitCookieManager
- * @policy: a #WebKitCookieAcceptPolicy
+ * @cookie_manager: a #CyberKitCookieManager
+ * @policy: a #CyberKitCookieAcceptPolicy
  *
  * Set the cookie acceptance policy of @cookie_manager as @policy.
  *
@@ -212,7 +212,7 @@ void webkit_cookie_manager_set_persistent_storage(WebKitCookieManager* manager, 
  * will be used instead. Once disabled, the policy will be set back to %WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY.
  * See also webkit_website_data_manager_set_itp_enabled().
  */
-void webkit_cookie_manager_set_accept_policy(WebKitCookieManager* manager, WebKitCookieAcceptPolicy policy)
+void webkit_cookie_manager_set_accept_policy(CyberKitCookieManager* manager, CyberKitCookieAcceptPolicy policy)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
 
@@ -222,7 +222,7 @@ void webkit_cookie_manager_set_accept_policy(WebKitCookieManager* manager, WebKi
 
 /**
  * webkit_cookie_manager_get_accept_policy:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
@@ -236,39 +236,39 @@ void webkit_cookie_manager_set_accept_policy(WebKitCookieManager* manager, WebKi
  * When the operation is finished, @callback will be called. You can then call
  * webkit_cookie_manager_get_accept_policy_finish() to get the result of the operation.
  */
-void webkit_cookie_manager_get_accept_policy(WebKitCookieManager* manager, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_cookie_manager_get_accept_policy(CyberKitCookieManager* manager, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
 
     GRefPtr<GTask> task = adoptGRef(g_task_new(manager, cancellable, callback, userData));
 
     manager->priv->cookieStore().getHTTPCookieAcceptPolicy([task = WTFMove(task)](CyberCore::HTTPCookieAcceptPolicy policy) {
-        g_task_return_int(task.get(), toWebKitCookieAcceptPolicy(policy));
+        g_task_return_int(task.get(), toCyberKitCookieAcceptPolicy(policy));
     });
 }
 
 /**
  * webkit_cookie_manager_get_accept_policy_finish:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finish an asynchronous operation started with webkit_cookie_manager_get_accept_policy().
  *
- * Returns: the cookie acceptance policy of @cookie_manager as a #WebKitCookieAcceptPolicy.
+ * Returns: the cookie acceptance policy of @cookie_manager as a #CyberKitCookieAcceptPolicy.
  */
-WebKitCookieAcceptPolicy webkit_cookie_manager_get_accept_policy_finish(WebKitCookieManager* manager, GAsyncResult* result, GError** error)
+CyberKitCookieAcceptPolicy webkit_cookie_manager_get_accept_policy_finish(CyberKitCookieManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager), WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY);
     g_return_val_if_fail(g_task_is_valid(result, manager), WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY);
 
     gssize returnValue = g_task_propagate_int(G_TASK(result), error);
-    return returnValue == -1 ? WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY : static_cast<WebKitCookieAcceptPolicy>(returnValue);
+    return returnValue == -1 ? WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY : static_cast<CyberKitCookieAcceptPolicy>(returnValue);
 }
 
 /**
  * webkit_cookie_manager_add_cookie:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @cookie: the #SoupCookie to be added
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
@@ -281,7 +281,7 @@ WebKitCookieAcceptPolicy webkit_cookie_manager_get_accept_policy_finish(WebKitCo
  *
  * Since: 2.20
  */
-void webkit_cookie_manager_add_cookie(WebKitCookieManager* manager, SoupCookie* cookie, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_cookie_manager_add_cookie(CyberKitCookieManager* manager, SoupCookie* cookie, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
     g_return_if_fail(cookie);
@@ -294,7 +294,7 @@ void webkit_cookie_manager_add_cookie(WebKitCookieManager* manager, SoupCookie* 
 
 /**
  * webkit_cookie_manager_add_cookie_finish:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
@@ -304,7 +304,7 @@ void webkit_cookie_manager_add_cookie(WebKitCookieManager* manager, SoupCookie* 
  *
  * Since: 2.20
  */
-gboolean webkit_cookie_manager_add_cookie_finish(WebKitCookieManager* manager, GAsyncResult* result, GError** error)
+gboolean webkit_cookie_manager_add_cookie_finish(CyberKitCookieManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager), FALSE);
     g_return_val_if_fail(g_task_is_valid(result, manager), FALSE);
@@ -314,7 +314,7 @@ gboolean webkit_cookie_manager_add_cookie_finish(WebKitCookieManager* manager, G
 
 /**
  * webkit_cookie_manager_get_cookies:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @uri: the URI associated to the cookies to be retrieved
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
@@ -330,7 +330,7 @@ gboolean webkit_cookie_manager_add_cookie_finish(WebKitCookieManager* manager, G
  *
  * Since: 2.20
  */
-void webkit_cookie_manager_get_cookies(WebKitCookieManager* manager, const gchar* uri, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_cookie_manager_get_cookies(CyberKitCookieManager* manager, const gchar* uri, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
     g_return_if_fail(uri);
@@ -349,7 +349,7 @@ void webkit_cookie_manager_get_cookies(WebKitCookieManager* manager, const gchar
 
 /**
  * webkit_cookie_manager_get_cookies_finish:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
@@ -362,7 +362,7 @@ void webkit_cookie_manager_get_cookies(WebKitCookieManager* manager, const gchar
  *
  * Since: 2.20
  */
-GList* webkit_cookie_manager_get_cookies_finish(WebKitCookieManager* manager, GAsyncResult* result, GError** error)
+GList* webkit_cookie_manager_get_cookies_finish(CyberKitCookieManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, manager), nullptr);
@@ -372,7 +372,7 @@ GList* webkit_cookie_manager_get_cookies_finish(WebKitCookieManager* manager, GA
 
 /**
  * webkit_cookie_manager_delete_cookie:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @cookie: the #SoupCookie to be deleted
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
@@ -385,7 +385,7 @@ GList* webkit_cookie_manager_get_cookies_finish(WebKitCookieManager* manager, GA
  *
  * Since: 2.20
  */
-void webkit_cookie_manager_delete_cookie(WebKitCookieManager* manager, SoupCookie* cookie, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_cookie_manager_delete_cookie(CyberKitCookieManager* manager, SoupCookie* cookie, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
     g_return_if_fail(cookie);
@@ -398,7 +398,7 @@ void webkit_cookie_manager_delete_cookie(WebKitCookieManager* manager, SoupCooki
 
 /**
  * webkit_cookie_manager_delete_cookie_finish:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
@@ -408,7 +408,7 @@ void webkit_cookie_manager_delete_cookie(WebKitCookieManager* manager, SoupCooki
  *
  * Since: 2.20
  */
-gboolean webkit_cookie_manager_delete_cookie_finish(WebKitCookieManager* manager, GAsyncResult* result, GError** error)
+gboolean webkit_cookie_manager_delete_cookie_finish(CyberKitCookieManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager), FALSE);
     g_return_val_if_fail(g_task_is_valid(result, manager), FALSE);
@@ -419,7 +419,7 @@ gboolean webkit_cookie_manager_delete_cookie_finish(WebKitCookieManager* manager
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_cookie_manager_get_domains_with_cookies:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
@@ -431,7 +431,7 @@ gboolean webkit_cookie_manager_delete_cookie_finish(WebKitCookieManager* manager
  *
  * Deprecated: 2.16: Use webkit_website_data_manager_fetch() instead.
  */
-void webkit_cookie_manager_get_domains_with_cookies(WebKitCookieManager* manager, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_cookie_manager_get_domains_with_cookies(CyberKitCookieManager* manager, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
 
@@ -447,7 +447,7 @@ void webkit_cookie_manager_get_domains_with_cookies(WebKitCookieManager* manager
 
         GPtrArray* domains = g_ptr_array_sized_new(g_list_length(dataList.get()));
         for (GList* item = dataList.get(); item; item = g_list_next(item)) {
-            auto* data = static_cast<WebKitWebsiteData*>(item->data);
+            auto* data = static_cast<CyberKitWebsiteData*>(item->data);
             g_ptr_array_add(domains, g_strdup(webkit_website_data_get_name(data)));
             webkit_website_data_unref(data);
         }
@@ -458,7 +458,7 @@ void webkit_cookie_manager_get_domains_with_cookies(WebKitCookieManager* manager
 
 /**
  * webkit_cookie_manager_get_domains_with_cookies_finish:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
@@ -472,7 +472,7 @@ void webkit_cookie_manager_get_domains_with_cookies(WebKitCookieManager* manager
  *
  * Deprecated: 2.16: Use webkit_website_data_manager_fetch_finish() instead.
  */
-gchar** webkit_cookie_manager_get_domains_with_cookies_finish(WebKitCookieManager* manager, GAsyncResult* result, GError** error)
+gchar** webkit_cookie_manager_get_domains_with_cookies_finish(CyberKitCookieManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, manager), nullptr);
@@ -482,14 +482,14 @@ gchar** webkit_cookie_manager_get_domains_with_cookies_finish(WebKitCookieManage
 
 /**
  * webkit_cookie_manager_delete_cookies_for_domain:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  * @domain: a domain name
  *
  * Remove all cookies of @cookie_manager for the given @domain.
  *
  * Deprecated: 2.16: Use webkit_website_data_manager_remove() instead.
  */
-void webkit_cookie_manager_delete_cookies_for_domain(WebKitCookieManager* manager, const gchar* domain)
+void webkit_cookie_manager_delete_cookies_for_domain(CyberKitCookieManager* manager, const gchar* domain)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
     g_return_if_fail(domain);
@@ -504,13 +504,13 @@ void webkit_cookie_manager_delete_cookies_for_domain(WebKitCookieManager* manage
 
 /**
  * webkit_cookie_manager_delete_all_cookies:
- * @cookie_manager: a #WebKitCookieManager
+ * @cookie_manager: a #CyberKitCookieManager
  *
  * Delete all cookies of @cookie_manager.
  *
  * Deprecated: 2.16: Use webkit_website_data_manager_clear() instead.
  */
-void webkit_cookie_manager_delete_all_cookies(WebKitCookieManager* manager)
+void webkit_cookie_manager_delete_all_cookies(CyberKitCookieManager* manager)
 {
     g_return_if_fail(WEBKIT_IS_COOKIE_MANAGER(manager));
 

@@ -34,7 +34,7 @@
 #include "MemoryObjectStore.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 std::unique_ptr<MemoryBackingStoreTransaction> MemoryBackingStoreTransaction::create(MemoryIDBBackingStore& backingStore, const IDBTransactionInfo& info)
@@ -294,4 +294,4 @@ void MemoryBackingStoreTransaction::finish()
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

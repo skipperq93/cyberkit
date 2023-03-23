@@ -28,7 +28,7 @@
 
 #include "AcceleratedBackingStore.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 HardwareAccelerationManager& HardwareAccelerationManager::singleton()
@@ -62,4 +62,4 @@ HardwareAccelerationManager::HardwareAccelerationManager()
         m_forceHardwareAcceleration = true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

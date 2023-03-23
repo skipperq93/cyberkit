@@ -34,7 +34,7 @@
 #include "WPEView.h"
 #include "WebContextMenuProxy.h"
 #include "WebContextMenuProxyWPE.h"
-#include "WebKitPopupMenu.h"
+#include "CyberKitPopupMenu.h"
 #include <CyberCore/ActivityState.h>
 #include <CyberCore/DOMPasteAccess.h>
 #include <CyberCore/NotImplemented.h>
@@ -43,7 +43,7 @@
 #include <atk/atk.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 PageClientImpl::PageClientImpl(WKWPE::View& view)
     : m_view(view)
@@ -241,7 +241,7 @@ void PageClientImpl::doneWithTouchEvent(const NativeWebTouchEvent& touchEvent, b
             auto* event = &axisEvent.event;
 #endif
             if (event->type != wpe_input_axis_event_type_null) {
-                page.handleWheelEvent(WebKit::NativeWebWheelEvent(event, page.deviceScaleFactor(),
+                page.handleWheelEvent(CyberKit::NativeWebWheelEvent(event, page.deviceScaleFactor(),
                     axisEvent.phase, WebWheelEvent::Phase::PhaseNone));
             }
         });
@@ -256,7 +256,7 @@ RefPtr<WebPopupMenuProxy> PageClientImpl::createPopupMenuProxy(WebPageProxy& pag
 {
     if (!m_view.client().isGLibBasedAPI())
         return nullptr;
-    return WebKitPopupMenu::create(m_view, page);
+    return CyberKitPopupMenu::create(m_view, page);
 }
 
 #if ENABLE(CONTEXT_MENUS)
@@ -435,9 +435,9 @@ void PageClientImpl::selectionDidChange()
     m_view.selectionDidChange();
 }
 
-WebKitWebResourceLoadManager* PageClientImpl::webResourceLoadManager()
+CyberKitWebResourceLoadManager* PageClientImpl::webResourceLoadManager()
 {
     return m_view.webResourceLoadManager();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

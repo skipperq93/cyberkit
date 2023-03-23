@@ -36,7 +36,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RobinHoodHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

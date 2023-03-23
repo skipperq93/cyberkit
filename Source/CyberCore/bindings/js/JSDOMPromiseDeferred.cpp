@@ -39,7 +39,7 @@
 #include <CyberScriptCore/JSPromiseConstructor.h>
 #include <CyberScriptCore/Strong.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC::JSValue DeferredPromise::promise() const
@@ -297,4 +297,4 @@ void DeferredPromise::handleUncaughtException(CatchScope& scope, JSDOMGlobalObje
     reportException(&lexicalGlobalObject, exception);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

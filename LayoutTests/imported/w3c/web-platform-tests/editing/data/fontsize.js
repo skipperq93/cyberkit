@@ -827,7 +827,7 @@ var browserTests = [
    {}],
 
 // font-size should be removed when applying fontsize without CSS.
-// Blink and WebKit puts <font size="..."> into the <span> element in these
+// Blink and CyberKit puts <font size="..."> into the <span> element in these
 // test cases.  However, this behavior may cause the background color is
 // partially applied to the text because the height is computed without the
 // <font>.  Therefore, it may be better to put <font> outside any inline

@@ -28,7 +28,7 @@
 #include "LayoutSize.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint3D;
 class RenderStyle;
@@ -99,6 +99,6 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 

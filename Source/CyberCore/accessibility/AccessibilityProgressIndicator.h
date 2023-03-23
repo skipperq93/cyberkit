@@ -22,7 +22,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMeterElement;
 class RenderMeter;
@@ -53,4 +53,4 @@ private:
     bool computeAccessibilityIsIgnored() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -57,7 +57,7 @@ webkit_dom_document_fragment_get_type(void);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_fragment_get_element_by_id(CyberKitDOMDocumentFragment* self, const gchar* elementId);
@@ -72,7 +72,7 @@ webkit_dom_document_fragment_get_element_by_id(CyberKitDOMDocumentFragment* self
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_fragment_query_selector(CyberKitDOMDocumentFragment* self, const gchar* selectors, GError** error);
@@ -87,7 +87,7 @@ webkit_dom_document_fragment_query_selector(CyberKitDOMDocumentFragment* self, c
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMNodeList*
 webkit_dom_document_fragment_query_selector_all(CyberKitDOMDocumentFragment* self, const gchar* selectors, GError** error);
@@ -100,7 +100,7 @@ webkit_dom_document_fragment_query_selector_all(CyberKitDOMDocumentFragment* sel
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_fragment_get_children(CyberKitDOMDocumentFragment* self);
@@ -113,7 +113,7 @@ webkit_dom_document_fragment_get_children(CyberKitDOMDocumentFragment* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_fragment_get_first_element_child(CyberKitDOMDocumentFragment* self);
@@ -126,7 +126,7 @@ webkit_dom_document_fragment_get_first_element_child(CyberKitDOMDocumentFragment
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_fragment_get_last_element_child(CyberKitDOMDocumentFragment* self);
@@ -139,7 +139,7 @@ webkit_dom_document_fragment_get_last_element_child(CyberKitDOMDocumentFragment*
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_document_fragment_get_child_element_count(CyberKitDOMDocumentFragment* self);

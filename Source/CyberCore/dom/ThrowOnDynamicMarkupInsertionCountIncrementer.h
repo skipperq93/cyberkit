@@ -27,7 +27,7 @@
 
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThrowOnDynamicMarkupInsertionCountIncrementer {
     WTF_MAKE_NONCOPYABLE(ThrowOnDynamicMarkupInsertionCountIncrementer);
@@ -48,4 +48,4 @@ private:
     Ref<Document> m_document;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

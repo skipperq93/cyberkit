@@ -32,7 +32,7 @@
 #include "GPURenderBundle.h"
 #include "GPURenderPipeline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPURenderPassEncoder::label() const
 {

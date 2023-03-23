@@ -45,7 +45,7 @@
 - (WKPageRef)_pageForTesting;
 @end
 
-@interface WebKitTestRunnerWindow : UIWindow {
+@interface CyberKitTestRunnerWindow : UIWindow {
     WTR::PlatformWebView* _platformWebView;
     CGPoint _fakeOrigin;
     BOOL _initialized;
@@ -53,9 +53,9 @@
 @property (nonatomic) WTR::PlatformWebView* platformWebView;
 @end
 
-static Vector<WebKitTestRunnerWindow *> allWindows;
+static Vector<CyberKitTestRunnerWindow *> allWindows;
 
-@implementation WebKitTestRunnerWindow
+@implementation CyberKitTestRunnerWindow
 @synthesize platformWebView = _platformWebView;
 
 - (id)initWithFrame:(CGRect)frame
@@ -216,7 +216,7 @@ PlatformWebView::PlatformWebView(WKWebViewConfiguration* configuration, const Te
 {
     CGRect rect = CGRectMake(0, 0, options.viewWidth(), options.viewHeight());
 
-    m_window = [[WebKitTestRunnerWindow alloc] initWithFrame:rect];
+    m_window = [[CyberKitTestRunnerWindow alloc] initWithFrame:rect];
     m_window.backgroundColor = [UIColor lightGrayColor];
     m_window.platformWebView = this;
 

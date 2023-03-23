@@ -61,8 +61,8 @@
 #include "ServiceWorkerGlobalScope.h"
 #include "ServiceWorkerProvider.h"
 #include "Settings.h"
-#include "WebCoreJSClientData.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreJSClientData.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WorkerGlobalScope.h"
 #include "WorkerLoaderProxy.h"
 #include "WorkerNavigator.h"
@@ -85,7 +85,7 @@
 #include <wtf/Ref.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 static std::atomic<CrossOriginMode> globalCrossOriginMode { CrossOriginMode::Shared };
@@ -840,9 +840,9 @@ RefPtr<DeferredPromise> ScriptExecutionContext::takeDeferredPromise(DeferredProm
     return m_deferredPromises.take(promise);
 }
 
-WebCoreOpaqueRoot root(ScriptExecutionContext* context)
+CyberCoreOpaqueRoot root(ScriptExecutionContext* context)
 {
-    return WebCoreOpaqueRoot { context };
+    return CyberCoreOpaqueRoot { context };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

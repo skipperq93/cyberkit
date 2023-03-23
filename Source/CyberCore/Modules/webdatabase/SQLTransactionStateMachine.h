@@ -27,7 +27,7 @@
 
 #include "SQLTransactionState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T>
 class SQLTransactionStateMachine {
@@ -106,4 +106,4 @@ void SQLTransactionStateMachine<T>::runStateMachine()
     m_nextState = SQLTransactionState::Idle;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

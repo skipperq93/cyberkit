@@ -71,10 +71,10 @@
 #include <wtf/text/StringBuilder.h>
 
 #if USE(WEB_THREAD)
-#include "WebCoreThreadRun.h"
+#include "CyberCoreThreadRun.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebSocket);
 
@@ -737,4 +737,4 @@ void WebSocket::dispatchErrorEventIfNeeded()
     dispatchEvent(Event::create(eventNames().errorEvent, Event::CanBubble::No, Event::IsCancelable::No));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

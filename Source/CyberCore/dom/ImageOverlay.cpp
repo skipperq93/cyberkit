@@ -65,7 +65,7 @@
 #include "DataDetection.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace ImageOverlay {
 
 static const AtomString& imageOverlayElementIdentifier()
@@ -702,4 +702,4 @@ void updateWithTextRecognitionResult(HTMLElement& element, const TextRecognition
 #endif // ENABLE(IMAGE_ANALYSIS)
 
 } // namespace ImageOverlay
-} // namespace WebCore
+} // namespace CyberCore

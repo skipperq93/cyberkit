@@ -5,7 +5,7 @@ find_package(Qt5 REQUIRED COMPONENTS Core Quick Gui)
 find_package(Qt5Test REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Epoxy REQUIRED IMPORTED_TARGET epoxy)
-pkg_check_modules(WPEWebKit REQUIRED IMPORTED_TARGET wpe-webkit-1.0)
+pkg_check_modules(WPECyberKit REQUIRED IMPORTED_TARGET wpe-webkit-1.0)
 pkg_check_modules(WPEBackendFDO REQUIRED IMPORTED_TARGET wpebackend-fdo-1.0>=1.5.0)
 
 add_library(qtwpe MODULE
@@ -23,7 +23,7 @@ target_compile_definitions(qtwpe PUBLIC
 )
 target_link_libraries(qtwpe PRIVATE
     PkgConfig::Epoxy
-    PkgConfig::WPEWebKit
+    PkgConfig::WPECyberKit
     PkgConfig::WPEBackendFDO
     Qt5::Core
     Qt5::Quick

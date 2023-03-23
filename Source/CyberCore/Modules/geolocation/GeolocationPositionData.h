@@ -33,7 +33,7 @@
 OBJC_CLASS CLLocation;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationPositionData {
 public:
@@ -84,4 +84,4 @@ inline bool GeolocationPositionData::isValid() const
     return !std::isnan(timestamp) && !std::isnan(latitude) && !std::isnan(longitude) && !std::isnan(accuracy);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

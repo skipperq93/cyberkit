@@ -38,7 +38,7 @@
 #include <CyberCore/PasteboardItemInfo.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPasteboardProxy& WebPasteboardProxy::singleton()
 {
@@ -142,4 +142,4 @@ void WebPasteboardProxy::urlStringSuitableForLoading(IPC::Connection&, const Str
 
 #endif // !PLATFORM(COCOA)
 
-} // namespace WebKit
+} // namespace CyberKit

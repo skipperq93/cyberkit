@@ -33,7 +33,7 @@
 #include <CyberScriptCore/InspectorEnvironment.h>
 #include <wtf/Stopwatch.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -125,6 +125,6 @@ void InspectorCPUProfilerAgent::collectSample(const ResourceUsageData& data)
     m_frontendDispatcher->trackingUpdate(WTFMove(event));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE)

@@ -32,7 +32,7 @@
 
 OBJC_CLASS WKDataListSuggestionsController;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebDataListSuggestionsDropdownMac final : public WebDataListSuggestionsDropdown {
 public:
@@ -54,6 +54,6 @@ private:
     RetainPtr<WKDataListSuggestionsController> m_dropdownUI;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATALIST_ELEMENT) && USE(APPKIT)

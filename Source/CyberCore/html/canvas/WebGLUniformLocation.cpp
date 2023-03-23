@@ -30,7 +30,7 @@
 
 #include "WebGLUniformLocation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLUniformLocation> WebGLUniformLocation::create(WebGLProgram* program, GCGLint location, GCGLenum type)
 {

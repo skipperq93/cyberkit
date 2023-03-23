@@ -32,7 +32,7 @@
 #include <CyberCore/FidoHidMessage.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // The following implements the CTAP HID protocol:
 // https://fidoalliance.org/specs/fido-v2.0-ps-20170927/fido-client-to-authenticator-protocol-v2.0-ps-20170927.html#usb
@@ -101,6 +101,6 @@ private:
     Vector<uint8_t> m_nonce;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

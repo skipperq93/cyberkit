@@ -47,7 +47,7 @@ public:
     static Ref<DataTaskClient> create() { return adoptRef(*new DataTaskClient); }
     virtual ~DataTaskClient() { }
 
-    virtual void didReceiveChallenge(DataTask&, CyberCore::AuthenticationChallenge&&, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, CyberCore::Credential&&)>&& completionHandler) const { completionHandler(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue, { }); }
+    virtual void didReceiveChallenge(DataTask&, CyberCore::AuthenticationChallenge&&, CompletionHandler<void(CyberKit::AuthenticationChallengeDisposition, CyberCore::Credential&&)>&& completionHandler) const { completionHandler(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue, { }); }
     virtual void willPerformHTTPRedirection(DataTask&, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, CompletionHandler<void(bool)>&& completionHandler) const { completionHandler(true); }
     virtual void didReceiveResponse(DataTask&, CyberCore::ResourceResponse&&, CompletionHandler<void(bool)>&& completionHandler) const { completionHandler(true); }
     virtual void didReceiveData(DataTask&, const IPC::DataReference&) const { }

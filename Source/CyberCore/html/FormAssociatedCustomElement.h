@@ -31,7 +31,7 @@
 #include "ValidityStateFlags.h"
 #include <CyberScriptCore/JSGlobalObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormAssociatedCustomElement final : public ValidatedFormListedElement {
     WTF_MAKE_NONCOPYABLE(FormAssociatedCustomElement);
@@ -104,4 +104,4 @@ private:
     std::optional<CustomElementFormValue> m_state;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

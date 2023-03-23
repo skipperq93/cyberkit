@@ -16,7 +16,7 @@ set(PROJECT_VERSION_MICRO 0)
 set(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_MICRO})
 
 WEBKIT_OPTION_BEGIN()
-WEBKIT_OPTION_DEFINE(ENABLE_STATIC_JSC "Whether to build JavaScriptCore as a static library." PUBLIC OFF)
+WEBKIT_OPTION_DEFINE(ENABLE_STATIC_JSC "Whether to build CyberScriptCore as a static library." PUBLIC OFF)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_REMOTE_INSPECTOR PRIVATE OFF)
 if (WIN32)
     # FIXME: Enable FTL on Windows. https://bugs.webkit.org/show_bug.cgi?id=145366
@@ -36,7 +36,7 @@ set(ALL_EVENT_LOOP_TYPES
 
 set(DEFAULT_EVENT_LOOP_TYPE "Generic")
 
-set(EVENT_LOOP_TYPE ${DEFAULT_EVENT_LOOP_TYPE} CACHE STRING "Implementation of event loop to be used in JavaScriptCore (one of ${ALL_EVENT_LOOP_TYPES})")
+set(EVENT_LOOP_TYPE ${DEFAULT_EVENT_LOOP_TYPE} CACHE STRING "Implementation of event loop to be used in CyberScriptCore (one of ${ALL_EVENT_LOOP_TYPES})")
 
 set(ENABLE_WEBCORE OFF)
 set(ENABLE_WEBKIT_LEGACY OFF)
@@ -57,7 +57,7 @@ endif ()
 # FIXME: JSCOnly on WIN32 seems to only work with fully static build
 # https://bugs.webkit.org/show_bug.cgi?id=172862
 if (NOT ENABLE_STATIC_JSC AND NOT WIN32)
-    set(JavaScriptCore_LIBRARY_TYPE SHARED)
+    set(CyberScriptCore_LIBRARY_TYPE SHARED)
     set(bmalloc_LIBRARY_TYPE OBJECT)
     set(WTF_LIBRARY_TYPE OBJECT)
 endif ()

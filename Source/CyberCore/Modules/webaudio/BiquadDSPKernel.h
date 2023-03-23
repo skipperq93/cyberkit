@@ -28,7 +28,7 @@
 #include "Biquad.h"
 #include "BiquadProcessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BiquadProcessor;
 
@@ -73,4 +73,4 @@ private:
     double m_tailTime { std::numeric_limits<double>::infinity() };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include "DeclarativeAnimationEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSTransitionEvent final : public DeclarativeAnimationEvent {
     WTF_MAKE_ISO_ALLOCATED(CSSTransitionEvent);
@@ -64,6 +64,6 @@ private:
     String m_propertyName;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ANIMATION_EVENT_BASE(CSSTransitionEvent, isCSSTransitionEvent())

@@ -27,7 +27,7 @@
 
 #include "IntersectionObserver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;

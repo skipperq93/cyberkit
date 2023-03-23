@@ -29,7 +29,7 @@
 #include "GainOptions.h"
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
 
@@ -62,4 +62,4 @@ private:
     Ref<AudioParam> m_gain;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

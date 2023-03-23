@@ -38,10 +38,10 @@
 #include "SimpleRange.h"
 #include "StaticRange.h"
 #include "TextIterator.h"
-#include "WebCorePersistentCoders.h"
+#include "CyberCorePersistentCoders.h"
 #include <wtf/persistence/PersistentCoders.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<AppHighlightRangeData> AppHighlightRangeData::create(const FragmentedSharedBuffer& buffer)
 {
@@ -59,6 +59,6 @@ Ref<FragmentedSharedBuffer> AppHighlightRangeData::toSharedBuffer() const
     return SharedBuffer::create(encoder.buffer(), encoder.bufferSize());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

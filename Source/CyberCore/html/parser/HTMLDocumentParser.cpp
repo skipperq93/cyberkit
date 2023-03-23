@@ -47,7 +47,7 @@
 
 #include <wtf/SystemTracing.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -442,7 +442,7 @@ void HTMLDocumentParser::end()
     ASSERT(!isDetached());
     ASSERT(!isScheduledForResume());
 
-    // Informs the rest of WebCore that parsing is really finished (and deletes this).
+    // Informs the rest of CyberCore that parsing is really finished (and deletes this).
     m_treeBuilder->finished();
 }
 

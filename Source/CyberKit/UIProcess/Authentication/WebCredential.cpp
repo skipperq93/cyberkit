@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebCredential.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebCredential::WebCredential(const CyberCore::Credential& credential)
     : m_coreCredential(credential)
@@ -42,4 +42,4 @@ const CyberCore::Credential& WebCredential::credential()
     return m_coreCredential;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

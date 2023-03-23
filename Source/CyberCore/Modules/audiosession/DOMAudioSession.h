@@ -34,7 +34,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DOMAudioSessionType : uint8_t { Auto, Playback, Transient, TransientSolo, Ambient, PlayAndRecord };
 enum class DOMAudioSessionState : uint8_t { Inactive, Active, Interrupted };
@@ -80,6 +80,6 @@ private:
     mutable std::optional<State> m_state;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DOM_AUDIO_SESSION)

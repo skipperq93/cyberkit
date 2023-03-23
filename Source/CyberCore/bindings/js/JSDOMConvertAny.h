@@ -29,7 +29,7 @@
 #include "JSDOMConvertBase.h"
 #include "JSValueInWrappedObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct Converter<IDLAny> : DefaultConverter<IDLAny> {
     using ReturnType = JSC::JSValue;
@@ -82,4 +82,4 @@ template<> struct VariadicConverter<IDLAny> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

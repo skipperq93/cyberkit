@@ -36,7 +36,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptureDevice;
 class Document;
@@ -66,6 +66,6 @@ protected:
 
 WEBCORE_EXPORT void provideUserMediaTo(Page*, UserMediaClient*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

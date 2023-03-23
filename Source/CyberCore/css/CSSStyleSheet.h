@@ -35,7 +35,7 @@
 #include <wtf/text/AtomStringHash.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSImportRule;
 class CSSParser;
@@ -193,8 +193,8 @@ private:
     mutable std::unique_ptr<CSSRuleList> m_ruleListCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSStyleSheet)
-    static bool isType(const WebCore::StyleSheet& styleSheet) { return styleSheet.isCSSStyleSheet(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSStyleSheet)
+    static bool isType(const CyberCore::StyleSheet& styleSheet) { return styleSheet.isCSSStyleSheet(); }
 SPECIALIZE_TYPE_TRAITS_END()

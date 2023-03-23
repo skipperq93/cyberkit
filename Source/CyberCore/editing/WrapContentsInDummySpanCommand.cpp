@@ -28,7 +28,7 @@
 
 #include "ApplyStyleCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WrapContentsInDummySpanCommand::WrapContentsInDummySpanCommand(Element& element)
     : SimpleEditCommand(element.document())
@@ -86,4 +86,4 @@ void WrapContentsInDummySpanCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes
 }
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore

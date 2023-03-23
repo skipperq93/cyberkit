@@ -64,7 +64,7 @@ class BuiltinsInternalsWrapperImplementationGenerator(BuiltinsGenerator):
                 ("CyberCore", "JSDOMGlobalObject.h"),
             ),
             (["CyberCore"],
-                ("CyberCore", "WebCoreJSClientData.h"),
+                ("CyberCore", "CyberCoreJSClientData.h"),
             ),
             (["CyberCore"],
                 ("CyberScriptCore", "heap/HeapInlines.h"),

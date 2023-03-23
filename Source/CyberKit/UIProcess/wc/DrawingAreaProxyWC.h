@@ -34,7 +34,7 @@ namespace CyberCore {
 class Region;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaProxyWC final : public DrawingAreaProxy {
 public:
@@ -60,6 +60,6 @@ private:
     std::optional<BackingStore> m_backingStore;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

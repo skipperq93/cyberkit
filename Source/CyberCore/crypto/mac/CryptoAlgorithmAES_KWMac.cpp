@@ -31,7 +31,7 @@
 #include "CryptoKeyAES.h"
 #include <CommonCrypto/CommonCrypto.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<Vector<uint8_t>> wrapKeyAES_KW(const Vector<uint8_t>& key, const Vector<uint8_t>& data)
 {
@@ -69,6 +69,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_KW::platformUnwrapKey(const Cryp
     return unwrapKeyAES_KW(key.key(), data);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -40,7 +40,7 @@
 #include "MediaKeys.h"
 #include "MediaKeysRequirement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MediaKeySystemAccess> MediaKeySystemAccess::create(Document& document, const String& keySystem, MediaKeySystemConfiguration&& configuration, Ref<CDM>&& implementation)
 {
@@ -118,6 +118,6 @@ void MediaKeySystemAccess::createMediaKeys(Document& document, Ref<DeferredPromi
     // 3. Return promise.
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

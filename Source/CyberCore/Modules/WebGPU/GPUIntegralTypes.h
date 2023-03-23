@@ -27,7 +27,7 @@
 
 #include <cstdint>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUBufferDynamicOffset = uint32_t;
 using GPUStencilValue = uint32_t;

@@ -34,7 +34,7 @@
 #include "WebXRSession.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://immersive-web.github.io/webxr/#xrboundedreferencespace-native-bounds-geometry
 // It is suggested that points of the native bounds geometry be quantized to the nearest 5cm.
@@ -121,6 +121,6 @@ float WebXRBoundedReferenceSpace::quantize(float value)
     return std::floor(value / BoundsPrecisionInMeters) * BoundsPrecisionInMeters;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

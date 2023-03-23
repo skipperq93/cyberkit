@@ -30,7 +30,7 @@
 
 #include "CryptoAlgorithmRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CryptoKeyRaw::CryptoKeyRaw(CryptoAlgorithmIdentifier identifier, Vector<uint8_t>&& keyData, CryptoKeyUsageBitmap usages)
     : CryptoKey(identifier, CryptoKeyType::Secret, false, usages)
@@ -45,6 +45,6 @@ auto CryptoKeyRaw::algorithm() const -> KeyAlgorithm
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

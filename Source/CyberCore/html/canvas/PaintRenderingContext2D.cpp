@@ -30,7 +30,7 @@
 
 #if ENABLE(CSS_PAINTING_API)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PaintRenderingContext2D);
 
@@ -46,5 +46,5 @@ PaintRenderingContext2D::PaintRenderingContext2D(CanvasBase& canvas)
 
 PaintRenderingContext2D::~PaintRenderingContext2D() = default;
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

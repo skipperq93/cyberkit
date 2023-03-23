@@ -23,10 +23,10 @@
 #include "JSDOMConvertDictionary.h"
 #include "TestInheritedDictionary2.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> TestInheritedDictionary2 convertDictionary<TestInheritedDictionary2>(JSC::JSGlobalObject&, JSC::JSValue);
 
 JSC::JSObject* convertDictionaryToJS(JSC::JSGlobalObject&, JSDOMGlobalObject&, const TestInheritedDictionary2&);
 
-} // namespace WebCore
+} // namespace CyberCore

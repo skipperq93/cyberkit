@@ -31,13 +31,13 @@
 #include <CyberScriptCore/Strong.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentMethodData {
     String supportedMethods;
     JSC::Strong<JSC::JSObject> data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

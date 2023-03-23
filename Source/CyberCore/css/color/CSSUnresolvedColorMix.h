@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 enum class ForVisitedLink : bool;
@@ -60,4 +60,4 @@ StyleColor createStyleColor(const CSSUnresolvedColorMix&, const Document&, Rende
 bool operator==(const CSSUnresolvedColorMix&, const CSSUnresolvedColorMix&);
 bool operator!=(const CSSUnresolvedColorMix&, const CSSUnresolvedColorMix&);
 
-} // namespace WebCore
+} // namespace CyberCore

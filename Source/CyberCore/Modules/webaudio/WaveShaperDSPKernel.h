@@ -31,7 +31,7 @@
 #include "WaveShaperProcessor.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 // WaveShaperDSPKernel is an AudioDSPKernel and is responsible for non-linear distortion on one channel.
 
@@ -70,4 +70,4 @@ private:
     std::unique_ptr<DownSampler> m_downSampler2;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -21,10 +21,10 @@
 
 #if ENABLE(POINTER_LOCK)
 
-#include "WebKitPointerLockPermissionRequest.h"
-#include "WebKitWebView.h"
+#include "CyberKitPointerLockPermissionRequest.h"
+#include "CyberKitWebView.h"
 
-WebKitPointerLockPermissionRequest* webkitPointerLockPermissionRequestCreate(WebKitWebView*);
-void webkitPointerLockPermissionRequestDidLosePointerLock(WebKitPointerLockPermissionRequest*);
+CyberKitPointerLockPermissionRequest* webkitPointerLockPermissionRequestCreate(CyberKitWebView*);
+void webkitPointerLockPermissionRequestDidLosePointerLock(CyberKitPointerLockPermissionRequest*);
 
 #endif // ENABLE(POINTER_LOCK)

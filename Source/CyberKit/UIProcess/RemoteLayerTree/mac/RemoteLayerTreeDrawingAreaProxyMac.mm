@@ -40,7 +40,7 @@
 #import <CyberCore/ScrollingTreeFrameScrollingNode.h>
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static NSString * const transientAnimationKey = @"wkTransientZoomScale";
@@ -91,7 +91,7 @@ RemoteLayerTreeDrawingAreaProxyMac::~RemoteLayerTreeDrawingAreaProxyMac()
 
 DelegatedScrollingMode RemoteLayerTreeDrawingAreaProxyMac::delegatedScrollingMode() const
 {
-    return DelegatedScrollingMode::DelegatedToWebKit;
+    return DelegatedScrollingMode::DelegatedToCyberKit;
 }
 
 std::unique_ptr<RemoteScrollingCoordinatorProxy> RemoteLayerTreeDrawingAreaProxyMac::createScrollingCoordinatorProxy() const
@@ -335,6 +335,6 @@ void RemoteLayerTreeDrawingAreaProxyMac::colorSpaceDidChange()
     m_webPageProxy.send(Messages::DrawingArea::SetColorSpace(m_webPageProxy.colorSpace()), m_identifier);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

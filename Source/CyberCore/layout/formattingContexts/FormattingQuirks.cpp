@@ -33,7 +33,7 @@
 #include "LayoutInitialContainingBlock.h"
 #include "LayoutState.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 FormattingQuirks::FormattingQuirks(const FormattingContext& formattingContext)

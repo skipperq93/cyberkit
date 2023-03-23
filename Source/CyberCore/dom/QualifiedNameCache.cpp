@@ -30,7 +30,7 @@
 #include "ElementName.h"
 #include "Namespace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct QNameComponentsTranslator {
     static unsigned hash(const QualifiedNameComponents& components)
@@ -81,4 +81,4 @@ void QualifiedNameCache::remove(QualifiedName::QualifiedNameImpl& impl)
     m_cache.remove(&impl);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

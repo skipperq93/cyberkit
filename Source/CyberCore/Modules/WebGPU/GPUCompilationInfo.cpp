@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUCompilationInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<Ref<GPUCompilationMessage>> GPUCompilationInfo::messages() const
 {

@@ -18,57 +18,57 @@
  */
 
 #include "config.h"
-#include "WebKitMimeInfo.h"
+#include "CyberKitMimeInfo.h"
 
 /**
- * WebKitMimeInfo: (ref-func webkit_mime_info_ref) (unref-func webkit_mime_info_unref)
+ * CyberKitMimeInfo: (ref-func webkit_mime_info_ref) (unref-func webkit_mime_info_unref)
  *
  * Information about a MIME type.
  */
 
-struct _WebKitMimeInfo {
+struct _CyberKitMimeInfo {
 };
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-G_DEFINE_BOXED_TYPE(WebKitMimeInfo, webkit_mime_info, webkit_mime_info_ref, webkit_mime_info_unref)
+G_DEFINE_BOXED_TYPE(CyberKitMimeInfo, webkit_mime_info, webkit_mime_info_ref, webkit_mime_info_unref)
 ALLOW_DEPRECATED_DECLARATIONS_END
 
 /**
  * webkit_mime_info_ref:
- * @info: a #WebKitMimeInfo
+ * @info: a #CyberKitMimeInfo
  *
  * Atomically increments the reference count of @info by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed in #WebKitMimeInfo
+ * Returns: The passed in #CyberKitMimeInfo
  *
  * Deprecated: 2.32
  */
-WebKitMimeInfo* webkit_mime_info_ref(WebKitMimeInfo*)
+CyberKitMimeInfo* webkit_mime_info_ref(CyberKitMimeInfo*)
 {
     return nullptr;
 }
 
 /**
  * webkit_mime_info_unref:
- * @info: a #WebKitMimeInfo
+ * @info: a #CyberKitMimeInfo
  *
  * Atomically decrements the reference count of @info by one.
  *
- * If the reference count drops to 0, all memory allocated by the #WebKitMimeInfo is
+ * If the reference count drops to 0, all memory allocated by the #CyberKitMimeInfo is
  * released. This function is MT-safe and may be called from any
  * thread.
  *
  * Deprecated: 2.32
  */
-void webkit_mime_info_unref(WebKitMimeInfo*)
+void webkit_mime_info_unref(CyberKitMimeInfo*)
 {
 }
 
 /**
  * webkit_mime_info_get_mime_type:
- * @info: a #WebKitMimeInfo
+ * @info: a #CyberKitMimeInfo
  *
  * Gets the MIME type.
  *
@@ -76,14 +76,14 @@ void webkit_mime_info_unref(WebKitMimeInfo*)
  *
  * Deprecated: 2.32
  */
-const char* webkit_mime_info_get_mime_type(WebKitMimeInfo*)
+const char* webkit_mime_info_get_mime_type(CyberKitMimeInfo*)
 {
     return nullptr;
 }
 
 /**
  * webkit_mime_info_get_description:
- * @info: a #WebKitMimeInfo
+ * @info: a #CyberKitMimeInfo
  *
  * Gets the description of the MIME type.
  *
@@ -91,14 +91,14 @@ const char* webkit_mime_info_get_mime_type(WebKitMimeInfo*)
  *
  * Deprecated: 2.32
  */
-const char* webkit_mime_info_get_description(WebKitMimeInfo*)
+const char* webkit_mime_info_get_description(CyberKitMimeInfo*)
 {
     return nullptr;
 }
 
 /**
  * webkit_mime_info_get_extensions:
- * @info: a #WebKitMimeInfo
+ * @info: a #CyberKitMimeInfo
  *
  * Get the list of file extensions associated to the MIME type.
  *
@@ -107,7 +107,7 @@ const char* webkit_mime_info_get_description(WebKitMimeInfo*)
  *
  * Deprecated: 2.32
  */
-const char* const* webkit_mime_info_get_extensions(WebKitMimeInfo*)
+const char* const* webkit_mime_info_get_extensions(CyberKitMimeInfo*)
 {
     return nullptr;
 }

@@ -30,7 +30,7 @@
 #include "WorkerThread.h"
 #include <CyberScriptCore/InspectorFrontendChannel.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerToPageFrontendChannel final : public Inspector::FrontendChannel {
     WTF_MAKE_FAST_ALLOCATED;
@@ -53,4 +53,4 @@ private:
     WorkerOrWorkletGlobalScope& m_globalScope;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

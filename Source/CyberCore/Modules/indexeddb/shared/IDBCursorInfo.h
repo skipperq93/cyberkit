@@ -29,7 +29,7 @@
 #include "IDBResourceIdentifier.h"
 #include <wtf/ArgumentCoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBTransaction;
 
@@ -90,4 +90,4 @@ private:
     IndexedDB::CursorType m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

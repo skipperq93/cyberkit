@@ -31,7 +31,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValueList;
 class CSSValuePool;
@@ -92,4 +92,4 @@ inline Ref<CSSPrimitiveValue> CSSPrimitiveValue::create(CSSValueID identifier)
     return staticCSSValuePool->m_identifierValues[identifier].get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

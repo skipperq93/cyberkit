@@ -29,7 +29,7 @@
 #include "DeviceClient.h"
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceMotionController;
 class DeviceMotionData;
@@ -45,4 +45,4 @@ public:
     virtual void deviceMotionControllerDestroyed() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

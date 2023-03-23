@@ -19,6 +19,6 @@
 
 #pragma once
 
-#include "WebKitWebView.h"
+#include "CyberKitWebView.h"
 
-void attachNavigationClientToView(WebKitWebView*);
+void attachNavigationClientToView(CyberKitWebView*);

@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "WebKitCredential.h"
+#include "CyberKitCredential.h"
 #include <CyberCore/Credential.h>
 
-WebKitCredential* webkitCredentialCreate(const CyberCore::Credential&);
-const CyberCore::Credential& webkitCredentialGetCredential(WebKitCredential*);
+CyberKitCredential* webkitCredentialCreate(const CyberCore::Credential&);
+const CyberCore::Credential& webkitCredentialGetCredential(CyberKitCredential*);

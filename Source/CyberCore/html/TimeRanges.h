@@ -28,7 +28,7 @@
 #include "ExceptionOr.h"
 #include "PlatformTimeRanges.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TimeRanges : public RefCounted<TimeRanges> {
 public:
@@ -64,4 +64,4 @@ private:
     PlatformTimeRanges m_ranges;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

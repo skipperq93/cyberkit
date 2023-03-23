@@ -61,7 +61,7 @@
 #include <wtf/Scope.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBitmap);
 
@@ -932,4 +932,4 @@ size_t ImageBitmap::memoryCost() const
     return m_memoryCost;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

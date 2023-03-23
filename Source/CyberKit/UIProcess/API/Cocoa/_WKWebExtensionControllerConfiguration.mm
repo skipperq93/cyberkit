@@ -47,19 +47,19 @@ static constexpr NSString *identifierCodingKey = @"identifier";
 
 + (instancetype)defaultConfiguration
 {
-    return WebKit::WebExtensionControllerConfiguration::createDefault()->wrapper();
+    return CyberKit::WebExtensionControllerConfiguration::createDefault()->wrapper();
 }
 
 + (instancetype)nonPersistentConfiguration
 {
-    return WebKit::WebExtensionControllerConfiguration::createNonPersistent()->wrapper();
+    return CyberKit::WebExtensionControllerConfiguration::createNonPersistent()->wrapper();
 }
 
 + (instancetype)configurationWithIdentifier:(NSUUID *)identifier
 {
     NSParameterAssert(identifier);
 
-    return WebKit::WebExtensionControllerConfiguration::create(identifier)->wrapper();
+    return CyberKit::WebExtensionControllerConfiguration::create(identifier)->wrapper();
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
@@ -77,15 +77,15 @@ static constexpr NSString *identifierCodingKey = @"identifier";
     if (!(self = [super init]))
         return nil;
 
-    using IsPersistent = WebKit::WebExtensionControllerConfiguration::IsPersistent;
+    using IsPersistent = CyberKit::WebExtensionControllerConfiguration::IsPersistent;
 
     NSUUID *identifier = [coder decodeObjectOfClass:NSUUID.class forKey:identifierCodingKey];
     BOOL persistent = [coder decodeBoolForKey:persistentCodingKey];
 
     if (identifier)
-        API::Object::constructInWrapper<WebKit::WebExtensionControllerConfiguration>(self, identifier);
+        API::Object::constructInWrapper<CyberKit::WebExtensionControllerConfiguration>(self, identifier);
     else
-        API::Object::constructInWrapper<WebKit::WebExtensionControllerConfiguration>(self, persistent ? IsPersistent::Yes : IsPersistent::No);
+        API::Object::constructInWrapper<CyberKit::WebExtensionControllerConfiguration>(self, persistent ? IsPersistent::Yes : IsPersistent::No);
 
     return self;
 }
@@ -139,7 +139,7 @@ static constexpr NSString *identifierCodingKey = @"identifier";
     return *_webExtensionControllerConfiguration;
 }
 
-- (WebKit::WebExtensionControllerConfiguration&)_webExtensionControllerConfiguration
+- (CyberKit::WebExtensionControllerConfiguration&)_webExtensionControllerConfiguration
 {
     return *_webExtensionControllerConfiguration;
 }

@@ -81,9 +81,9 @@ static NSArray<NSString *> *controlArray()
 
 @implementation WKPDFHUDView {
 @private
-    WeakPtr<WebKit::WebPageProxy> _page;
+    WeakPtr<CyberKit::WebPageProxy> _page;
     RetainPtr<NSString> _activeControl;
-    WebKit::PDFPluginIdentifier _pluginIdentifier;
+    CyberKit::PDFPluginIdentifier _pluginIdentifier;
     CGFloat _deviceScaleFactor;
     RetainPtr<CALayer> _layer;
     RetainPtr<CALayer> _activeLayer;
@@ -94,7 +94,7 @@ static NSArray<NSString *> *controlArray()
     BOOL _initialHideTimerFired;
 }
 
-- (instancetype)initWithFrame:(NSRect)frame pluginIdentifier:(WebKit::PDFPluginIdentifier)pluginIdentifier page:(WebKit::WebPageProxy&)page
+- (instancetype)initWithFrame:(NSRect)frame pluginIdentifier:(CyberKit::PDFPluginIdentifier)pluginIdentifier page:(CyberKit::WebPageProxy&)page
 {
     if (!(self = [super initWithFrame:frame]))
         return nil;

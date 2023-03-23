@@ -32,14 +32,14 @@
 #include "APIInspectorConfiguration.h"
 #include "RemoteInspectorHTTPServer.h"
 #include "RemoteWebInspectorUIProxy.h"
-#include <JavaScriptCore/RemoteInspectorUtils.h>
+#include <CyberScriptCore/RemoteInspectorUtils.h>
 #include <CyberCore/InspectorDebuggableType.h>
 #include <gio/gio.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteInspectorProxy final : public RemoteWebInspectorUIProxyClient {
     WTF_MAKE_FAST_ALLOCATED();
@@ -362,6 +362,6 @@ GString* RemoteInspectorClient::buildTargetListPage(InspectorType inspectorType)
     return html;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

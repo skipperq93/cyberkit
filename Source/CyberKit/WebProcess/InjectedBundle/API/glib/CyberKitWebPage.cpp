@@ -816,7 +816,7 @@ void webkitWebPageDidReceiveUserMessage(CyberKitWebPage* webPage, UserMessage&& 
  * Returns: (transfer none): the #CyberKitDOMDocument currently loaded, or %NULL
  *    if no document is currently loaded.
  *
- * Deprecated: 2.40. Use JavaScriptCore API instead.
+ * Deprecated: 2.40. Use CyberScriptCore API instead.
  */
 CyberKitDOMDocument* webkit_web_page_get_dom_document(CyberKitWebPage* webPage)
 {

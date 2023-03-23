@@ -31,7 +31,7 @@
 #include <wtf/Function.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -51,6 +51,6 @@ inline void DFACombiner::addDFA(DFA&& dfa)
 }
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

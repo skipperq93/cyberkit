@@ -39,7 +39,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ProcessThrottler;
 class ProcessAssertion;
@@ -260,4 +260,4 @@ AuxiliaryProcessProxy::AsyncReplyID AuxiliaryProcessProxy::sendWithAsyncReply(T&
     return { };
 }
     
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 
 #include "WebGLObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextGL;
 class WebGLRenderingContextBase;
@@ -65,6 +65,6 @@ private:
     WebGLRenderingContextBase* m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

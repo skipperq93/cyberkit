@@ -44,7 +44,7 @@
 #include "NetworkLoadMetrics.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CrossOriginPreflightChecker::CrossOriginPreflightChecker(DocumentThreadableLoader& loader, ResourceRequest&& request)
     : m_loader(loader)
@@ -72,7 +72,7 @@ void CrossOriginPreflightChecker::validatePreflightResponse(DocumentThreadableLo
         return;
     }
 
-    auto result = WebCore::validatePreflightResponse(page->sessionID(), request, response, loader.options().storedCredentialsPolicy, loader.securityOrigin(), &CrossOriginAccessControlCheckDisabler::singleton());
+    auto result = CyberCore::validatePreflightResponse(page->sessionID(), request, response, loader.options().storedCredentialsPolicy, loader.securityOrigin(), &CrossOriginAccessControlCheckDisabler::singleton());
     if (!result) {
         loader.document().addConsoleMessage(MessageSource::Security, MessageLevel::Error, result.error());
         loader.preflightFailure(identifier, ResourceError(errorDomainCyberKitInternal, 0, request.url(), result.error(), ResourceError::Type::AccessControl));
@@ -175,4 +175,4 @@ void CrossOriginPreflightChecker::setDefersLoading(bool value)
         m_resource->setDefersLoading(value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -42,7 +42,7 @@
 #include "StringCallback.h"
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DataTransferItem> DataTransferItem::create(WeakPtr<DataTransferItemList>&& list, const String& type)
 {
@@ -113,4 +113,4 @@ RefPtr<FileSystemEntry> DataTransferItem::getAsEntry(ScriptExecutionContext& con
     return DOMFileSystem::createEntryForFile(context, *file);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

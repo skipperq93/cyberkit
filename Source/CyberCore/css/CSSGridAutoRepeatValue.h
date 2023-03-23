@@ -32,7 +32,7 @@
 
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // CSSGridAutoRepeatValue stores the track sizes and line numbers when the auto-repeat
 // syntax is used
@@ -60,6 +60,6 @@ private:
     bool m_isAutoFit { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSGridAutoRepeatValue, isGridAutoRepeatValue());

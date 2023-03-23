@@ -33,7 +33,7 @@
 #include "RTCError.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDataChannelRemoteSource : public RTCDataChannelHandlerClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -60,6 +60,6 @@ private:
     Ref<RTCDataChannelRemoteSourceConnection> m_connection;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

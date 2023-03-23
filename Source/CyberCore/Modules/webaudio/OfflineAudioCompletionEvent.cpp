@@ -33,7 +33,7 @@
 #include "OfflineAudioCompletionEventInit.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OfflineAudioCompletionEvent);
 
@@ -67,6 +67,6 @@ EventInterface OfflineAudioCompletionEvent::eventInterface() const
     return OfflineAudioCompletionEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

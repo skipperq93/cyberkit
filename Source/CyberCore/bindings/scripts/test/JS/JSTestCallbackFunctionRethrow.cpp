@@ -27,10 +27,10 @@
 #include "JSDOMExceptionHandling.h"
 #include "JSDOMGlobalObject.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/JSArray.h>
+#include <CyberScriptCore/JSArray.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSTestCallbackFunctionRethrow::JSTestCallbackFunctionRethrow(JSObject* callback, JSDOMGlobalObject* globalObject)
@@ -92,4 +92,4 @@ JSC::JSValue toJS(TestCallbackFunctionRethrow& impl)
     return static_cast<JSTestCallbackFunctionRethrow&>(impl).callbackData()->callback();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -54,7 +54,7 @@ webkit_dom_html_mod_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_mod_element_get_cite(CyberKitDOMHTMLModElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_mod_element_get_cite(CyberKitDOMHTMLModElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_mod_element_set_cite(CyberKitDOMHTMLModElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_mod_element_set_cite(CyberKitDOMHTMLModElement* self, const gcha
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_mod_element_get_date_time(CyberKitDOMHTMLModElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_mod_element_get_date_time(CyberKitDOMHTMLModElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_mod_element_set_date_time(CyberKitDOMHTMLModElement* self, const gchar* value);

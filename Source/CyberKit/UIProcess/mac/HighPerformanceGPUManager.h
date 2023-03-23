@@ -32,7 +32,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 

@@ -43,7 +43,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSGridLineNamesValue;
 
@@ -425,4 +425,4 @@ RefPtr<CSSValueList> consumeCommaSeparatedListWithoutSingleValueOptimization(CSS
 
 } // namespace CSSPropertyParserHelpers
 
-} // namespace WebCore
+} // namespace CyberCore

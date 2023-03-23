@@ -47,7 +47,7 @@ namespace CyberCore {
 class RegistrableDomain;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class TapHandlingResult : uint8_t;
 
@@ -87,7 +87,7 @@ private:
 
     private:
         // API::UIClient
-        void createNewPage(WebKit::WebPageProxy&, CyberCore::WindowFeatures&&, Ref<API::NavigationAction>&&, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&&) final;
+        void createNewPage(CyberKit::WebPageProxy&, CyberCore::WindowFeatures&&, Ref<API::NavigationAction>&&, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&&) final;
         void close(WebPageProxy*) final;
         void fullscreenMayReturnToInline(WebPageProxy*) final;
         void didEnterFullscreen(WebPageProxy*) final;
@@ -118,7 +118,7 @@ private:
         void showPage(WebPageProxy*) final;
         void focus(WebPageProxy*) final;
         void unfocus(WebPageProxy*) final;
-        bool focusFromServiceWorker(WebKit::WebPageProxy&) final;
+        bool focusFromServiceWorker(CyberKit::WebPageProxy&) final;
 
         bool canRunModal() const final;
         void runModal(WebPageProxy&) final;
@@ -143,7 +143,7 @@ private:
         void willCloseLocalInspector(WebPageProxy&, WebInspectorUIProxy&) final;
 #endif
 #if ENABLE(DEVICE_ORIENTATION)
-        void shouldAllowDeviceOrientationAndMotionAccess(WebKit::WebPageProxy&, WebFrameProxy&, FrameInfoData&&, CompletionHandler<void(bool)>&&) final;
+        void shouldAllowDeviceOrientationAndMotionAccess(CyberKit::WebPageProxy&, WebFrameProxy&, FrameInfoData&&, CompletionHandler<void(bool)>&&) final;
 #endif
         bool needsFontAttributes() const final { return m_uiDelegate ? m_uiDelegate->m_delegateMethods.webViewDidChangeFontAttributes : false; }
         void didChangeFontAttributes(const CyberCore::FontAttributes&) final;
@@ -300,4 +300,4 @@ private:
     } m_delegateMethods;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

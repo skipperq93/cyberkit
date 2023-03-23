@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_CODECS)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WebCodecsEncodedVideoChunkType {
     Key,
@@ -37,11 +37,11 @@ enum class WebCodecsEncodedVideoChunkType {
 }
 
 namespace WTF {
-template<> struct EnumTraits<WebCore::WebCodecsEncodedVideoChunkType> {
+template<> struct EnumTraits<CyberCore::WebCodecsEncodedVideoChunkType> {
     using values = EnumValues<
-        WebCore::WebCodecsEncodedVideoChunkType,
-        WebCore::WebCodecsEncodedVideoChunkType::Key,
-        WebCore::WebCodecsEncodedVideoChunkType::Delta
+        CyberCore::WebCodecsEncodedVideoChunkType,
+        CyberCore::WebCodecsEncodedVideoChunkType::Key,
+        CyberCore::WebCodecsEncodedVideoChunkType::Delta
     >;
 };
 

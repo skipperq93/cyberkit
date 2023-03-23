@@ -34,7 +34,7 @@
 
 OBJC_CLASS NSBlockOperation;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionController;
 
@@ -56,6 +56,6 @@ private:
     HashMap<Ref<WebURLSchemeTask>, RetainPtr<NSBlockOperation>> m_operations;
 }; // class WebExtensionURLSchemeHandler
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

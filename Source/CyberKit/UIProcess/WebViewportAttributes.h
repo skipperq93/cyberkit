@@ -29,7 +29,7 @@
 #include "APIObject.h"
 #include <CyberCore/ViewportArguments.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebViewportAttributes : public API::ObjectImpl<API::Object::Type::ViewportAttributes> {
 public:
@@ -48,6 +48,6 @@ private:
     CyberCore::ViewportAttributes m_attributes;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebViewportAttributes_h

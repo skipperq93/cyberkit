@@ -28,7 +28,7 @@
 
 #include "MutationRecord.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSMutationRecord::visitAdditionalChildren(Visitor& visitor)
@@ -38,4 +38,4 @@ void JSMutationRecord::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSMutationRecord);
 
-} // namespace WebCore
+} // namespace CyberCore

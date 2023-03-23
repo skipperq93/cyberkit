@@ -18,40 +18,40 @@
  */
 
 #include "config.h"
-#include "WebKitPolicyDecision.h"
+#include "CyberKitPolicyDecision.h"
 
 #include "APIWebsitePolicies.h"
 #include "WebFramePolicyListenerProxy.h"
-#include "WebKitPolicyDecisionPrivate.h"
-#include "WebKitWebsitePolicies.h"
-#include "WebKitWebsitePoliciesPrivate.h"
+#include "CyberKitPolicyDecisionPrivate.h"
+#include "CyberKitWebsitePolicies.h"
+#include "CyberKitWebsitePoliciesPrivate.h"
 #include "WebsitePoliciesData.h"
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitPolicyDecision:
- * @See_also: #WebKitWebView
+ * CyberKitPolicyDecision:
+ * @See_also: #CyberKitWebView
  *
  * A pending policy decision.
  *
- * Often WebKit allows the client to decide the policy for certain
+ * Often CyberKit allows the client to decide the policy for certain
  * operations. For instance, a client may want to open a link in a new
  * tab, block a navigation entirely, query the user or trigger a download
- * instead of a navigation. In these cases WebKit will fire the
- * #WebKitWebView::decide-policy signal with a #WebKitPolicyDecision
- * object. If the signal handler does nothing, WebKit will act as if
+ * instead of a navigation. In these cases CyberKit will fire the
+ * #CyberKitWebView::decide-policy signal with a #CyberKitPolicyDecision
+ * object. If the signal handler does nothing, CyberKit will act as if
  * webkit_policy_decision_use() was called as soon as signal handling
  * completes. To make a policy decision asynchronously, simply increment
- * the reference count of the #WebKitPolicyDecision object.
+ * the reference count of the #CyberKitPolicyDecision object.
  */
 
-struct _WebKitPolicyDecisionPrivate {
+struct _CyberKitPolicyDecisionPrivate {
     RefPtr<WebFramePolicyListenerProxy> listener;
 };
 
-WEBKIT_DEFINE_ABSTRACT_TYPE(WebKitPolicyDecision, webkit_policy_decision, G_TYPE_OBJECT)
+WEBKIT_DEFINE_ABSTRACT_TYPE(CyberKitPolicyDecision, webkit_policy_decision, G_TYPE_OBJECT)
 
 static void webkitPolicyDecisionDispose(GObject* object)
 {
@@ -59,12 +59,12 @@ static void webkitPolicyDecisionDispose(GObject* object)
     G_OBJECT_CLASS(webkit_policy_decision_parent_class)->dispose(object);
 }
 
-void webkitPolicyDecisionSetListener(WebKitPolicyDecision* decision, Ref<WebFramePolicyListenerProxy>&& listener)
+void webkitPolicyDecisionSetListener(CyberKitPolicyDecision* decision, Ref<WebFramePolicyListenerProxy>&& listener)
 {
     decision->priv->listener = WTFMove(listener);
 }
 
-static void webkit_policy_decision_class_init(WebKitPolicyDecisionClass* decisionClass)
+static void webkit_policy_decision_class_init(CyberKitPolicyDecisionClass* decisionClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(decisionClass);
     objectClass->dispose = webkitPolicyDecisionDispose;
@@ -72,11 +72,11 @@ static void webkit_policy_decision_class_init(WebKitPolicyDecisionClass* decisio
 
 /**
  * webkit_policy_decision_use:
- * @decision: a #WebKitPolicyDecision
+ * @decision: a #CyberKitPolicyDecision
  *
  * Accept the action which triggered this decision.
  */
-void webkit_policy_decision_use(WebKitPolicyDecision* decision)
+void webkit_policy_decision_use(CyberKitPolicyDecision* decision)
 {
     g_return_if_fail(WEBKIT_IS_POLICY_DECISION(decision));
 
@@ -89,8 +89,8 @@ void webkit_policy_decision_use(WebKitPolicyDecision* decision)
 
 /**
  * webkit_policy_decision_use_with_policies:
- * @decision: a #WebKitPolicyDecision
- * @policies: a #WebKitWebsitePolicies
+ * @decision: a #CyberKitPolicyDecision
+ * @policies: a #CyberKitWebsitePolicies
  *
  * Accept the navigation action and continue with provided @policies.
  *
@@ -104,7 +104,7 @@ void webkit_policy_decision_use(WebKitPolicyDecision* decision)
  *
  * Since: 2.30
  */
-void webkit_policy_decision_use_with_policies(WebKitPolicyDecision* decision, WebKitWebsitePolicies* policies)
+void webkit_policy_decision_use_with_policies(CyberKitPolicyDecision* decision, CyberKitWebsitePolicies* policies)
 {
     g_return_if_fail(WEBKIT_IS_POLICY_DECISION(decision));
     g_return_if_fail(WEBKIT_IS_WEBSITE_POLICIES(policies));
@@ -119,14 +119,14 @@ void webkit_policy_decision_use_with_policies(WebKitPolicyDecision* decision, We
 
 /**
  * webkit_policy_decision_ignore:
- * @decision: a #WebKitPolicyDecision
+ * @decision: a #CyberKitPolicyDecision
  *
- * #WebKitResponsePolicyDecision, this would cancel the request.
+ * #CyberKitResponsePolicyDecision, this would cancel the request.
  *
  * Ignore the action which triggered this decision. For instance, for a
- * #WebKitResponsePolicyDecision, this would cancel the request.
+ * #CyberKitResponsePolicyDecision, this would cancel the request.
  */
-void webkit_policy_decision_ignore(WebKitPolicyDecision* decision)
+void webkit_policy_decision_ignore(CyberKitPolicyDecision* decision)
 {
     g_return_if_fail(WEBKIT_IS_POLICY_DECISION(decision));
 
@@ -139,11 +139,11 @@ void webkit_policy_decision_ignore(WebKitPolicyDecision* decision)
 
 /**
  * webkit_policy_decision_download:
- * @decision: a #WebKitPolicyDecision
+ * @decision: a #CyberKitPolicyDecision
  *
  * Spawn a download from this decision.
  */
-void webkit_policy_decision_download(WebKitPolicyDecision* decision)
+void webkit_policy_decision_download(CyberKitPolicyDecision* decision)
 {
     g_return_if_fail(WEBKIT_IS_POLICY_DECISION(decision));
 

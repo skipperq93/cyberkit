@@ -27,9 +27,9 @@
 
 #include <wtf/RefCounter.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum HiddenPageThrottlingAutoIncreasesCounterType { };
 typedef RefCounter<HiddenPageThrottlingAutoIncreasesCounterType> HiddenPageThrottlingAutoIncreasesCounter;
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebAutomationSession;
 class WebPageProxy;
 }
@@ -58,19 +58,19 @@ public:
     virtual ~AutomationSessionClient() { }
 
     virtual WTF::String sessionIdentifier() const { return WTF::String(); }
-    virtual void didDisconnectFromRemote(WebKit::WebAutomationSession&) { }
-    virtual void requestNewPageWithOptions(WebKit::WebAutomationSession&, AutomationSessionBrowsingContextOptions, CompletionHandler<void(WebKit::WebPageProxy*)>&& completionHandler) { completionHandler(nullptr); }
-    virtual void requestMaximizeWindowOfPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
-    virtual void requestHideWindowOfPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
-    virtual void requestRestoreWindowOfPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
-    virtual void requestSwitchToPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
-    virtual bool isShowingJavaScriptDialogOnPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&) { return false; }
-    virtual void dismissCurrentJavaScriptDialogOnPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&) { }
-    virtual void acceptCurrentJavaScriptDialogOnPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&) { }
-    virtual WTF::String messageOfCurrentJavaScriptDialogOnPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&) { return WTF::String(); }
-    virtual void setUserInputForCurrentJavaScriptPromptOnPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, const WTF::String&) { }
-    virtual std::optional<JavaScriptDialogType> typeOfCurrentJavaScriptDialogOnPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&) { return std::nullopt; }
-    virtual BrowsingContextPresentation currentPresentationOfPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&) { return BrowsingContextPresentation::Window; }
+    virtual void didDisconnectFromRemote(CyberKit::WebAutomationSession&) { }
+    virtual void requestNewPageWithOptions(CyberKit::WebAutomationSession&, AutomationSessionBrowsingContextOptions, CompletionHandler<void(CyberKit::WebPageProxy*)>&& completionHandler) { completionHandler(nullptr); }
+    virtual void requestMaximizeWindowOfPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
+    virtual void requestHideWindowOfPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
+    virtual void requestRestoreWindowOfPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
+    virtual void requestSwitchToPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
+    virtual bool isShowingJavaScriptDialogOnPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&) { return false; }
+    virtual void dismissCurrentJavaScriptDialogOnPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&) { }
+    virtual void acceptCurrentJavaScriptDialogOnPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&) { }
+    virtual WTF::String messageOfCurrentJavaScriptDialogOnPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&) { return WTF::String(); }
+    virtual void setUserInputForCurrentJavaScriptPromptOnPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, const WTF::String&) { }
+    virtual std::optional<JavaScriptDialogType> typeOfCurrentJavaScriptDialogOnPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&) { return std::nullopt; }
+    virtual BrowsingContextPresentation currentPresentationOfPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&) { return BrowsingContextPresentation::Window; }
 };
 
 } // namespace API

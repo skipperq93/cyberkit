@@ -34,19 +34,19 @@
 #include "JSShadowRealmGlobalScope.h"
 #include "ScriptExecutionContext.h"
 #include "ShadowRealmGlobalScope.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/ObjectPrototype.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/ObjectPrototype.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Attributes
@@ -150,7 +150,7 @@ JSC_DEFINE_CUSTOM_GETTER(jsShadowRealmGlobalScope_ShadowRealmGlobalScopeConstruc
 
 JSC::GCClient::IsoSubspace* JSShadowRealmGlobalScope::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSShadowRealmGlobalScope, UseCustomHeapCellType::Yes>(vm,
+    return CyberCore::subspaceForImpl<JSShadowRealmGlobalScope, UseCustomHeapCellType::Yes>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForShadowRealmGlobalScope.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForShadowRealmGlobalScope = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForShadowRealmGlobalScope.get(); },

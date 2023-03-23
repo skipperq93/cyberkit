@@ -37,7 +37,7 @@
 #include "SVGPathUtilities.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSCircleValue::CSSCircleValue(RefPtr<CSSValue> radius, RefPtr<CSSValue> centerX, RefPtr<CSSValue> centerY)
     : CSSValue(CircleClass)
@@ -373,4 +373,4 @@ bool CSSInsetShapeValue::equals(const CSSInsetShapeValue& other) const
         && compareCSSValuePtr(m_bottomLeftRadius, other.m_bottomLeftRadius);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

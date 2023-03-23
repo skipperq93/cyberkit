@@ -36,7 +36,7 @@ template<> struct ClientTraits<WKTextCheckerClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -60,4 +60,4 @@ public:
     void ignoreWord(uint64_t tag, const String& word);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

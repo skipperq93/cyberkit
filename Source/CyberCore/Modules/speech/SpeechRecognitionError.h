@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SpeechRecognitionErrorType : uint8_t {
     NoSpeech,
@@ -45,4 +45,4 @@ struct SpeechRecognitionError {
     String message;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

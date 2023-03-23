@@ -33,7 +33,7 @@
 #include "WindowsKeyboardCodes.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(KeyboardEvent);
 
@@ -89,7 +89,7 @@ static inline KeyboardEvent::KeyLocationCode keyLocationCode(const PlatformKeybo
     case VK_RMENU: // Right Option/Alt
     case VK_RWIN: // Right Windows key (Natural keyboard)
 #if PLATFORM(COCOA)
-    // FIXME: WebCore maps the right command key to VK_APPS even though the USB HID spec.,
+    // FIXME: CyberCore maps the right command key to VK_APPS even though the USB HID spec.,
     // <https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf>, states that it
     // should map to the same key as the right Windows key (VK_RWIN).
     case VK_APPS: // Right Command
@@ -233,4 +233,4 @@ int KeyboardEvent::which() const
     return keyCode();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

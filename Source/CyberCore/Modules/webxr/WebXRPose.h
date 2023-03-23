@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRRigidTransform;
 
@@ -52,11 +52,11 @@ protected:
     bool m_emulatedPosition { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_WEBXRPOSE(ToValueTypeName, predicate)                    \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName)                               \
-    static bool isType(const WebCore::WebXRPose& context) { return context.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName)                               \
+    static bool isType(const CyberCore::WebXRPose& context) { return context.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEBXR)

@@ -29,8 +29,8 @@ import six
 import sys
 
 REBASE_DICTIONARY = {
-    'WebKit2/': 'WebKit/',
-    'WebKit/': 'CyberKitLegacy/'
+    'CyberKit2/': 'CyberKit/',
+    'CyberKit/': 'CyberKitLegacy/'
 }
 class RebaseStatus:
     DO_NOT_NEED = 0

@@ -27,7 +27,7 @@
 #include "GenericMediaQueryEvaluator.h"
 #include "MediaQuery.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 

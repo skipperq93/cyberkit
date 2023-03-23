@@ -28,7 +28,7 @@ promise_test(async (test) => {
     const promise2 = new Promise((resolve, reject) => { window.callback2 = resolve; setTimeout(() => reject("callback2"), 5000); });
 
     // The iframe is responsible to call callback1 and callback2.
-    with_iframe("/WebKit/service-workers/resources/navigation-optimization.py?delay=1.0");
+    with_iframe("/CyberKit/service-workers/resources/navigation-optimization.py?delay=1.0");
 
     await promise1;
     await promise2;
@@ -39,7 +39,7 @@ promise_test(async (test) => {
     const promise2 = new Promise((resolve, reject) => { window.callback2 = resolve; setTimeout(() => reject("callback2"), 5000); });
 
     // The iframe is responsible to call callback1 and callback2.
-    with_iframe("/WebKit/service-workers/resources/navigation-optimization.py?get-body");
+    with_iframe("/CyberKit/service-workers/resources/navigation-optimization.py?get-body");
 
     await promise1;
     await promise2;

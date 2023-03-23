@@ -38,7 +38,7 @@ template<> struct ClientTraits<WKContextInjectedBundleClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessPool;
 
@@ -52,4 +52,4 @@ public:
     RefPtr<API::Object> getInjectedBundleInitializationUserData(WebProcessPool&) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

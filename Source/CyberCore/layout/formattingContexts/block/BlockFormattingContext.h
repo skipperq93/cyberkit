@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutUnit;
 

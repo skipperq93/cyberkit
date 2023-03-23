@@ -32,7 +32,7 @@
 #include "CryptoKeyRSA.h"
 #include "OpenSSLUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Vector<uint8_t>> CryptoAlgorithmRSA_OAEP::platformEncrypt(const CryptoAlgorithmRsaOaepParams& parameters, const CryptoKeyRSA& key, const Vector<uint8_t>& plainText)
 {
@@ -132,6 +132,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmRSA_OAEP::platformDecrypt(const Cryp
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -33,7 +33,7 @@
 #include "WebSocketDeflater.h"
 #include "WebSocketExtensionProcessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebSocketDeflateFramer;
 class WebSocketExtensionProcessor;
@@ -95,4 +95,4 @@ private:
     std::unique_ptr<WebSocketInflater> m_inflater;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

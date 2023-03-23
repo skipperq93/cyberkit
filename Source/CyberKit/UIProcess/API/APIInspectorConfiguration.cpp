@@ -36,17 +36,17 @@ Ref<InspectorConfiguration> InspectorConfiguration::create()
     return adoptRef(*new InspectorConfiguration);
 }
 
-void InspectorConfiguration::addURLSchemeHandler(Ref<WebKit::WebURLSchemeHandler>&& urlSchemeHandler, const WTF::String& urlScheme)
+void InspectorConfiguration::addURLSchemeHandler(Ref<CyberKit::WebURLSchemeHandler>&& urlSchemeHandler, const WTF::String& urlScheme)
 {
     m_customURLSchemes.append(std::make_pair(WTFMove(urlSchemeHandler), urlScheme));
 }
 
-WebKit::WebProcessPool* InspectorConfiguration::processPool()
+CyberKit::WebProcessPool* InspectorConfiguration::processPool()
 {
     return m_processPool.get();
 }
 
-void InspectorConfiguration::setProcessPool(WebKit::WebProcessPool* processPool)
+void InspectorConfiguration::setProcessPool(CyberKit::WebProcessPool* processPool)
 {
     m_processPool = processPool;
 }

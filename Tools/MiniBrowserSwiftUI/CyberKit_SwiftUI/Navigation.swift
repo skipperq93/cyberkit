@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import WebKit
+import CyberKit
 import SwiftUI
 
 extension View {
@@ -106,7 +106,7 @@ public struct NavigationAction {
     }
 
     /// Decides what action to take for this navigation. This method **must** be invoked exactly
-    /// once, otherwise WebKit will raise an exception.
+    /// once, otherwise CyberKit will raise an exception.
     /// - Parameters:
     ///   - policy: The desired policy for this navigation.
     ///   - webpagePreferences: The preferences to use for this navigation, or `nil` to use the
@@ -138,7 +138,7 @@ public struct NavigationResponse {
     }
 
     /// Decides what action to take for this navigation. This method **must** be invoked exactly
-    /// once, otherwise WebKit will raise an exception.
+    /// once, otherwise CyberKit will raise an exception.
     /// - Parameters:
     ///   - policy: The desired policy for this navigation.
     public func decidePolicy(_ policy: Policy) {

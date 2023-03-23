@@ -34,7 +34,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class GamepadButton;
@@ -79,6 +79,6 @@ private:
     RefPtr<GamepadHapticActuator> m_vibrationActuator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

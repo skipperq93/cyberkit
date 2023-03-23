@@ -53,7 +53,7 @@
 #include "ShadowRoot.h"
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsTreeScope {
     void* pointers[11];
@@ -568,4 +568,4 @@ ExceptionOr<void> TreeScope::setAdoptedStyleSheets(Vector<RefPtr<CSSStyleSheet>>
     return m_adoptedStyleSheets->setSheets(WTFMove(sheets));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

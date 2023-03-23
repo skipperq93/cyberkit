@@ -33,7 +33,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 class AudioContext;
@@ -104,4 +104,4 @@ private:
     bool m_hasAudioProcessEventListener { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

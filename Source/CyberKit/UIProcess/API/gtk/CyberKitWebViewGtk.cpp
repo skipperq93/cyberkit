@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitWebView.h"
+#include "CyberKitWebView.h"
 
-#include "WebKitAuthenticationDialog.h"
-#include "WebKitScriptDialogImpl.h"
-#include "WebKitWebViewBasePrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitAuthenticationDialog.h"
+#include "CyberKitScriptDialogImpl.h"
+#include "CyberKitWebViewBasePrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include <CyberCore/Color.h>
 #include <CyberCore/GtkUtilities.h>
 #include <CyberCore/GtkVersioning.h>
@@ -32,7 +32,7 @@
 #include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
-gboolean webkitWebViewAuthenticate(WebKitWebView* webView, WebKitAuthenticationRequest* request)
+gboolean webkitWebViewAuthenticate(CyberKitWebView* webView, CyberKitAuthenticationRequest* request)
 {
     switch (webkit_authentication_request_get_scheme(request)) {
     case WEBKIT_AUTHENTICATION_SCHEME_DEFAULT:
@@ -56,7 +56,7 @@ gboolean webkitWebViewAuthenticate(WebKitWebView* webView, WebKitAuthenticationR
     return TRUE;
 }
 
-gboolean webkitWebViewScriptDialog(WebKitWebView* webView, WebKitScriptDialog* scriptDialog)
+gboolean webkitWebViewScriptDialog(CyberKitWebView* webView, CyberKitScriptDialog* scriptDialog)
 {
     GUniquePtr<char> title(g_strdup_printf("JavaScript - %s", webkitWebViewGetPage(webView).pageLoadState().url().utf8().data()));
     // Limit script dialog size to 80% of the web view size.
@@ -66,9 +66,9 @@ gboolean webkitWebViewScriptDialog(WebKitWebView* webView, WebKitScriptDialog* s
     return TRUE;
 }
 
-static void fileChooserDialogResponseCallback(GtkFileChooser* dialog, gint responseID, WebKitFileChooserRequest* request)
+static void fileChooserDialogResponseCallback(GtkFileChooser* dialog, gint responseID, CyberKitFileChooserRequest* request)
 {
-    GRefPtr<WebKitFileChooserRequest> adoptedRequest = adoptGRef(request);
+    GRefPtr<CyberKitFileChooserRequest> adoptedRequest = adoptGRef(request);
     if (responseID == GTK_RESPONSE_ACCEPT) {
         GRefPtr<GPtrArray> filesArray = adoptGRef(g_ptr_array_new_with_free_func(g_free));
 #if USE(GTK4)
@@ -96,7 +96,7 @@ static void fileChooserDialogResponseCallback(GtkFileChooser* dialog, gint respo
     g_object_unref(dialog);
 }
 
-gboolean webkitWebViewRunFileChooser(WebKitWebView* webView, WebKitFileChooserRequest* request)
+gboolean webkitWebViewRunFileChooser(CyberKitWebView* webView, CyberKitFileChooserRequest* request)
 {
     GtkWidget* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(webView));
     if (!CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
@@ -158,7 +158,7 @@ struct WindowStateEvent {
 static const char* gWindowStateEventID = "wk-window-state-event";
 
 #if USE(GTK4)
-static void surfaceStateChangedCallback(GdkSurface* surface, GParamSpec*, WebKitWebView* view)
+static void surfaceStateChangedCallback(GdkSurface* surface, GParamSpec*, CyberKitWebView* view)
 {
     auto* state = static_cast<WindowStateEvent*>(g_object_get_data(G_OBJECT(view), gWindowStateEventID));
     if (!state) {
@@ -189,7 +189,7 @@ static void surfaceStateChangedCallback(GdkSurface* surface, GParamSpec*, WebKit
     }
 }
 #else
-static gboolean windowStateEventCallback(GtkWidget* window, GdkEventWindowState* event, WebKitWebView* view)
+static gboolean windowStateEventCallback(GtkWidget* window, GdkEventWindowState* event, CyberKitWebView* view)
 {
     auto* state = static_cast<WindowStateEvent*>(g_object_get_data(G_OBJECT(view), gWindowStateEventID));
     if (!state) {
@@ -223,7 +223,7 @@ static gboolean windowStateEventCallback(GtkWidget* window, GdkEventWindowState*
 #endif
 
 static void
-webkitWebViewMonitorWindowState(WebKitWebView* view, GtkWindow* window, WindowStateEvent::Type type, CompletionHandler<void()>&& completionHandler)
+webkitWebViewMonitorWindowState(CyberKitWebView* view, GtkWindow* window, WindowStateEvent::Type type, CompletionHandler<void()>&& completionHandler)
 {
     g_object_set_data_full(G_OBJECT(view), gWindowStateEventID, new WindowStateEvent(type, WTFMove(completionHandler)), [](gpointer userData) {
         delete static_cast<WindowStateEvent*>(userData);
@@ -236,7 +236,7 @@ webkitWebViewMonitorWindowState(WebKitWebView* view, GtkWindow* window, WindowSt
 #endif
 }
 
-void webkitWebViewMaximizeWindow(WebKitWebView* view, CompletionHandler<void()>&& completionHandler)
+void webkitWebViewMaximizeWindow(CyberKitWebView* view, CompletionHandler<void()>&& completionHandler)
 {
     auto* topLevel = gtk_widget_get_toplevel(GTK_WIDGET(view));
     if (!gtk_widget_is_toplevel(topLevel)) {
@@ -267,7 +267,7 @@ void webkitWebViewMaximizeWindow(WebKitWebView* view, CompletionHandler<void()>&
     gtk_widget_show(topLevel);
 }
 
-void webkitWebViewMinimizeWindow(WebKitWebView* view, CompletionHandler<void()>&& completionHandler)
+void webkitWebViewMinimizeWindow(CyberKitWebView* view, CompletionHandler<void()>&& completionHandler)
 {
     auto* topLevel = gtk_widget_get_toplevel(GTK_WIDGET(view));
     if (!gtk_widget_is_toplevel(topLevel)) {
@@ -281,7 +281,7 @@ void webkitWebViewMinimizeWindow(WebKitWebView* view, CompletionHandler<void()>&
     gtk_widget_hide(topLevel);
 }
 
-void webkitWebViewRestoreWindow(WebKitWebView* view, CompletionHandler<void()>&& completionHandler)
+void webkitWebViewRestoreWindow(CyberKitWebView* view, CompletionHandler<void()>&& completionHandler)
 {
     auto* topLevel = gtk_widget_get_toplevel(GTK_WIDGET(view));
     if (!gtk_widget_is_toplevel(topLevel)) {
@@ -318,15 +318,15 @@ void webkitWebViewRestoreWindow(WebKitWebView* view, CompletionHandler<void()>&&
 /**
  * webkit_web_view_new:
  *
- * Creates a new #WebKitWebView with the default #WebKitWebContext.
+ * Creates a new #CyberKitWebView with the default #CyberKitWebContext.
  *
- * Creates a new #WebKitWebView with the default #WebKitWebContext and
- * no #WebKitUserContentManager associated with it.
+ * Creates a new #CyberKitWebView with the default #CyberKitWebContext and
+ * no #CyberKitUserContentManager associated with it.
  * See also webkit_web_view_new_with_context(),
  * webkit_web_view_new_with_user_content_manager(), and
  * webkit_web_view_new_with_settings().
  *
- * Returns: The newly created #WebKitWebView widget
+ * Returns: The newly created #CyberKitWebView widget
  */
 GtkWidget* webkit_web_view_new()
 {
@@ -336,18 +336,18 @@ GtkWidget* webkit_web_view_new()
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_view_new_with_context:
- * @context: the #WebKitWebContext to be used by the #WebKitWebView
+ * @context: the #CyberKitWebContext to be used by the #CyberKitWebView
  *
- * Creates a new #WebKitWebView with the given #WebKitWebContext.
+ * Creates a new #CyberKitWebView with the given #CyberKitWebContext.
  *
- * Creates a new #WebKitWebView with the given #WebKitWebContext and
- * no #WebKitUserContentManager associated with it.
+ * Creates a new #CyberKitWebView with the given #CyberKitWebContext and
+ * no #CyberKitUserContentManager associated with it.
  * See also webkit_web_view_new_with_user_content_manager() and
  * webkit_web_view_new_with_settings().
  *
- * Returns: The newly created #WebKitWebView widget
+ * Returns: The newly created #CyberKitWebView widget
  */
-GtkWidget* webkit_web_view_new_with_context(WebKitWebContext* context)
+GtkWidget* webkit_web_view_new_with_context(CyberKitWebContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), 0);
 
@@ -363,25 +363,25 @@ GtkWidget* webkit_web_view_new_with_context(WebKitWebContext* context)
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_view_new_with_related_view: (constructor)
- * @web_view: the related #WebKitWebView
+ * @web_view: the related #CyberKitWebView
  *
- * Creates a new #WebKitWebView sharing the same web process with @web_view.
+ * Creates a new #CyberKitWebView sharing the same web process with @web_view.
  *
  * This method doesn't have any effect when %WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS
  * process model is used, because a single web process is shared for all the web views in the
- * same #WebKitWebContext. When using %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES process model,
- * this method should always be used when creating the #WebKitWebView in the #WebKitWebView::create signal.
+ * same #CyberKitWebContext. When using %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES process model,
+ * this method should always be used when creating the #CyberKitWebView in the #CyberKitWebView::create signal.
  * You can also use this method to implement other process models based on %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES,
  * like for example, sharing the same web process for all the views in the same security domain.
  *
- * The newly created #WebKitWebView will also have the same #WebKitUserContentManager,
- * #WebKitSettings, and #WebKitWebsitePolicies as @web_view.
+ * The newly created #CyberKitWebView will also have the same #CyberKitUserContentManager,
+ * #CyberKitSettings, and #CyberKitWebsitePolicies as @web_view.
  *
- * Returns: (transfer full): The newly created #WebKitWebView widget
+ * Returns: (transfer full): The newly created #CyberKitWebView widget
  *
  * Since: 2.4
  */
-GtkWidget* webkit_web_view_new_with_related_view(WebKitWebView* webView)
+GtkWidget* webkit_web_view_new_with_related_view(CyberKitWebView* webView)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_VIEW(webView), nullptr);
 
@@ -395,18 +395,18 @@ GtkWidget* webkit_web_view_new_with_related_view(WebKitWebView* webView)
 
 /**
  * webkit_web_view_new_with_settings:
- * @settings: a #WebKitSettings
+ * @settings: a #CyberKitSettings
  *
- * Creates a new #WebKitWebView with the given #WebKitSettings.
+ * Creates a new #CyberKitWebView with the given #CyberKitSettings.
  *
  * See also webkit_web_view_new_with_context(), and
  * webkit_web_view_new_with_user_content_manager().
  *
- * Returns: The newly created #WebKitWebView widget
+ * Returns: The newly created #CyberKitWebView widget
  *
  * Since: 2.6
  */
-GtkWidget* webkit_web_view_new_with_settings(WebKitSettings* settings)
+GtkWidget* webkit_web_view_new_with_settings(CyberKitSettings* settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), nullptr);
     return GTK_WIDGET(g_object_new(WEBKIT_TYPE_WEB_VIEW, "settings", settings, nullptr));
@@ -414,18 +414,18 @@ GtkWidget* webkit_web_view_new_with_settings(WebKitSettings* settings)
 
 /**
  * webkit_web_view_new_with_user_content_manager:
- * @user_content_manager: a #WebKitUserContentManager.
+ * @user_content_manager: a #CyberKitUserContentManager.
  *
- * Creates a new #WebKitWebView with the given #WebKitUserContentManager.
+ * Creates a new #CyberKitWebView with the given #CyberKitUserContentManager.
  *
  * The content loaded in the view may be affected by the content injected
  * in the view by the user content manager.
  *
- * Returns: The newly created #WebKitWebView widget
+ * Returns: The newly created #CyberKitWebView widget
  *
  * Since: 2.6
  */
-GtkWidget* webkit_web_view_new_with_user_content_manager(WebKitUserContentManager* userContentManager)
+GtkWidget* webkit_web_view_new_with_user_content_manager(CyberKitUserContentManager* userContentManager)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_MANAGER(userContentManager), nullptr);
 
@@ -435,7 +435,7 @@ GtkWidget* webkit_web_view_new_with_user_content_manager(WebKitUserContentManage
 
 /**
  * webkit_web_view_set_background_color:
- * @web_view: a #WebKitWebView
+ * @web_view: a #CyberKitWebView
  * @rgba: a #GdkRGBA
  *
  * Sets the color that will be used to draw the @web_view background.
@@ -451,7 +451,7 @@ GtkWidget* webkit_web_view_new_with_user_content_manager(WebKitUserContentManage
  * static void browser_window_set_background_color (BrowserWindow *window,
  *                                                  const GdkRGBA *rgba)
  * {
- *     WebKitWebView *web_view;
+ *     CyberKitWebView *web_view;
  *     GdkScreen *screen = gtk_window_get_screen (GTK_WINDOW (window));
  *     GdkVisual *rgba_visual = gdk_screen_get_rgba_visual (screen);
  *
@@ -468,18 +468,18 @@ GtkWidget* webkit_web_view_new_with_user_content_manager(WebKitUserContentManage
  *
  * Since: 2.8
  */
-void webkit_web_view_set_background_color(WebKitWebView* webView, const GdkRGBA* rgba)
+void webkit_web_view_set_background_color(CyberKitWebView* webView, const GdkRGBA* rgba)
 {
     g_return_if_fail(WEBKIT_IS_WEB_VIEW(webView));
     g_return_if_fail(rgba);
 
-    auto& page = *webkitWebViewBaseGetPage(reinterpret_cast<WebKitWebViewBase*>(webView));
+    auto& page = *webkitWebViewBaseGetPage(reinterpret_cast<CyberKitWebViewBase*>(webView));
     page.setBackgroundColor(CyberCore::Color(*rgba));
 }
 
 /**
  * webkit_web_view_get_background_color:
- * @web_view: a #WebKitWebView
+ * @web_view: a #CyberKitWebView
  * @rgba: (out): a #GdkRGBA to fill in with the background color
  *
  * Gets the color that is used to draw the @web_view background.
@@ -490,11 +490,11 @@ void webkit_web_view_set_background_color(WebKitWebView* webView, const GdkRGBA*
  *
  * Since: 2.8
  */
-void webkit_web_view_get_background_color(WebKitWebView* webView, GdkRGBA* rgba)
+void webkit_web_view_get_background_color(CyberKitWebView* webView, GdkRGBA* rgba)
 {
     g_return_if_fail(WEBKIT_IS_WEB_VIEW(webView));
     g_return_if_fail(rgba);
 
-    auto& page = *webkitWebViewBaseGetPage(reinterpret_cast<WebKitWebViewBase*>(webView));
+    auto& page = *webkitWebViewBaseGetPage(reinterpret_cast<CyberKitWebViewBase*>(webView));
     *rgba = page.backgroundColor().value_or(CyberCore::Color::white);
 }

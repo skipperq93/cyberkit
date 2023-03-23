@@ -54,7 +54,7 @@ webkit_dom_html_font_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_font_element_get_color(CyberKitDOMHTMLFontElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_font_element_get_color(CyberKitDOMHTMLFontElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_font_element_set_color(CyberKitDOMHTMLFontElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_font_element_set_color(CyberKitDOMHTMLFontElement* self, const g
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_font_element_get_face(CyberKitDOMHTMLFontElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_font_element_get_face(CyberKitDOMHTMLFontElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_font_element_set_face(CyberKitDOMHTMLFontElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_font_element_set_face(CyberKitDOMHTMLFontElement* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_font_element_get_size(CyberKitDOMHTMLFontElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_font_element_get_size(CyberKitDOMHTMLFontElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_font_element_set_size(CyberKitDOMHTMLFontElement* self, const gchar* value);

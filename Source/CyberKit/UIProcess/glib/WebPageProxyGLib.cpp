@@ -28,11 +28,11 @@
 #include "WebPageProxy.h"
 
 #include "PageClient.h"
-#include "WebKitWebResourceLoadManager.h"
+#include "CyberKitWebResourceLoadManager.h"
 #include <CyberCore/NotImplemented.h>
 #include <CyberCore/UserAgent.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 String WebPageProxy::userAgentForURL(const URL& url)
 {
@@ -83,4 +83,4 @@ void WebPageProxy::didFinishLoadForResource(CyberCore::ResourceLoaderIdentifier 
         manager->didFinishLoad(resourceID, frameID, WTFMove(error));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

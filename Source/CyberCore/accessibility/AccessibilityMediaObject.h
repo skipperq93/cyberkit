@@ -32,7 +32,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityMediaObject final : public AccessibilityRenderObject {
 public:
@@ -65,9 +65,9 @@ private:
     void mediaSeek(AXSeekDirection);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilityMediaObject) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isMediaObject(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilityMediaObject) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isMediaObject(); } \
 SPECIALIZE_TYPE_TRAITS_END()
 #endif // PLATFORM(IOS_FAMILY)

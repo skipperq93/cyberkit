@@ -18,28 +18,28 @@
  */
 
 #include "config.h"
-#include "WebKitPopupMenu.h"
+#include "CyberKitPopupMenu.h"
 
 #include "NativeWebMouseEvent.h"
-#include "WebKitOptionMenuPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitOptionMenuPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-WebKitPopupMenu::WebKitPopupMenu(GtkWidget* webView, WebPopupMenuProxy::Client& client)
+CyberKitPopupMenu::CyberKitPopupMenu(GtkWidget* webView, WebPopupMenuProxy::Client& client)
     : WebPopupMenuProxyGtk(webView, client)
 {
 }
 
-static void menuCloseCallback(WebKitPopupMenu* popupMenu)
+static void menuCloseCallback(CyberKitPopupMenu* popupMenu)
 {
     popupMenu->activateItem(std::nullopt);
 }
 
-void WebKitPopupMenu::showPopupMenu(const IntRect& rect, TextDirection direction, double pageScaleFactor, const Vector<WebPopupItem>& items, const PlatformPopupMenuData& platformData, int32_t selectedIndex)
+void CyberKitPopupMenu::showPopupMenu(const IntRect& rect, TextDirection direction, double pageScaleFactor, const Vector<WebPopupItem>& items, const PlatformPopupMenuData& platformData, int32_t selectedIndex)
 {
-    GRefPtr<WebKitOptionMenu> menu = adoptGRef(webkitOptionMenuCreate(*this, items, selectedIndex));
+    GRefPtr<CyberKitOptionMenu> menu = adoptGRef(webkitOptionMenuCreate(*this, items, selectedIndex));
     const GdkEvent* event = m_client->currentlyProcessedMouseDownEvent() ? m_client->currentlyProcessedMouseDownEvent()->nativeEvent() : nullptr;
     webkitOptionMenuSetEvent(menu.get(), const_cast<GdkEvent*>(event));
     if (webkitWebViewShowOptionMenu(WEBKIT_WEB_VIEW(m_webView), rect, menu.get())) {
@@ -49,7 +49,7 @@ void WebKitPopupMenu::showPopupMenu(const IntRect& rect, TextDirection direction
         WebPopupMenuProxyGtk::showPopupMenu(rect, direction, pageScaleFactor, items, platformData, selectedIndex);
 }
 
-void WebKitPopupMenu::hidePopupMenu()
+void CyberKitPopupMenu::hidePopupMenu()
 {
     if (!m_menu) {
         WebPopupMenuProxyGtk::hidePopupMenu();
@@ -59,7 +59,7 @@ void WebKitPopupMenu::hidePopupMenu()
     webkit_option_menu_close(m_menu.get());
 }
 
-void WebKitPopupMenu::cancelTracking()
+void CyberKitPopupMenu::cancelTracking()
 {
     if (!m_menu) {
         WebPopupMenuProxyGtk::cancelTracking();
@@ -69,7 +69,7 @@ void WebKitPopupMenu::cancelTracking()
     m_menu = nullptr;
 }
 
-void WebKitPopupMenu::activateItem(std::optional<unsigned> itemIndex)
+void CyberKitPopupMenu::activateItem(std::optional<unsigned> itemIndex)
 {
     WebPopupMenuProxyGtk::activateItem(itemIndex);
     if (m_menu) {
@@ -78,4 +78,4 @@ void WebKitPopupMenu::activateItem(std::optional<unsigned> itemIndex)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

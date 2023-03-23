@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct HTMLModelElementCamera {
     double pitch { 0 };
@@ -35,5 +35,5 @@ struct HTMLModelElementCamera {
     double scale { 1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

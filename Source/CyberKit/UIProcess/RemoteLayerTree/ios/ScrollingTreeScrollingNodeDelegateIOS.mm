@@ -52,7 +52,7 @@
 
 @implementation WKScrollingNodeScrollViewDelegate
 
-- (instancetype)initWithScrollingTreeNodeDelegate:(WebKit::ScrollingTreeScrollingNodeDelegateIOS*)delegate
+- (instancetype)initWithScrollingTreeNodeDelegate:(CyberKit::ScrollingTreeScrollingNodeDelegateIOS*)delegate
 {
     if ((self = [super init]))
         _scrollingTreeNodeDelegate = delegate;
@@ -190,7 +190,7 @@
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ScrollingTreeScrollingNodeDelegateIOS::ScrollingTreeScrollingNodeDelegateIOS(ScrollingTreeScrollingNode& scrollingNode)
@@ -341,7 +341,7 @@ void ScrollingTreeScrollingNodeDelegateIOS::stopAnimatedScroll()
 #if HAVE(UISCROLLVIEW_ASYNCHRONOUS_SCROLL_EVENT_HANDLING)
 void ScrollingTreeScrollingNodeDelegateIOS::handleAsynchronousCancelableScrollEvent(UIScrollView *scrollView, UIScrollEvent *scrollEvent, void (^completion)(BOOL handled))
 {
-    auto& scrollingCoordinatorProxy = downcast<WebKit::RemoteScrollingTree>(scrollingTree()).scrollingCoordinatorProxy();
+    auto& scrollingCoordinatorProxy = downcast<CyberKit::RemoteScrollingTree>(scrollingTree()).scrollingCoordinatorProxy();
     scrollingCoordinatorProxy.webPageProxy().pageClient().handleAsynchronousCancelableScrollEvent(scrollView, scrollEvent, completion);
 }
 #endif
@@ -409,7 +409,7 @@ UIScrollView *ScrollingTreeScrollingNodeDelegateIOS::findActingScrollParent(UISc
     if (!host)
         return nullptr;
     
-    return WebKit::findActingScrollParent(scrollView, *host);
+    return CyberKit::findActingScrollParent(scrollView, *host);
 }
 
 void ScrollingTreeScrollingNodeDelegateIOS::computeActiveTouchActionsForGestureRecognizer(UIGestureRecognizer* gestureRecognizer)
@@ -427,6 +427,6 @@ void ScrollingTreeScrollingNodeDelegateIOS::cancelPointersForGestureRecognizer(U
     downcast<RemoteScrollingTree>(scrollingTree()).scrollingCoordinatorProxy().webPageProxy().pageClient().cancelPointersForGestureRecognizer(gestureRecognizer);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(ASYNC_SCROLLING)

@@ -38,7 +38,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSGroupingRule::CSSGroupingRule(StyleRuleGroup& groupRule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -181,4 +181,4 @@ void CSSGroupingRule::reattach(StyleRuleBase& rule)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

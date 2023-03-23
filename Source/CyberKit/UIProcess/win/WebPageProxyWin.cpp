@@ -32,7 +32,7 @@
 #include <CyberCore/SearchPopupMenuDB.h>
 #include <CyberCore/UserAgent.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPageProxy::platformInitialize()
 {
@@ -82,4 +82,4 @@ void WebPageProxy::dispatchPendingCharEvents(const NativeWebKeyboardEvent& keydo
         m_keyEventQueue.prepend(NativeWebKeyboardEvent(it->hwnd, it->message, it->wParam, it->lParam, { }));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

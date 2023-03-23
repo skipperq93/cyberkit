@@ -29,7 +29,7 @@
 #include "GenericMediaQueryTypes.h"
 #include "LayoutUnit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 

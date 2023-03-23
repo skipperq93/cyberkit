@@ -33,16 +33,16 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUPrimitiveState.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUPrimitiveState {
     PAL::WebGPU::PrimitiveState convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(topology),
-            stripIndexFormat ? std::optional { WebCore::convertToBacking(*stripIndexFormat) } : std::nullopt,
-            WebCore::convertToBacking(frontFace),
-            WebCore::convertToBacking(cullMode),
+            CyberCore::convertToBacking(topology),
+            stripIndexFormat ? std::optional { CyberCore::convertToBacking(*stripIndexFormat) } : std::nullopt,
+            CyberCore::convertToBacking(frontFace),
+            CyberCore::convertToBacking(cullMode),
             unclippedDepth,
         };
     }

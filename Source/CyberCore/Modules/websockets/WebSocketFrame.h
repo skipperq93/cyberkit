@@ -32,7 +32,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WebSocketFrame {
     // RFC6455 opcodes.
@@ -71,4 +71,4 @@ struct WebSocketFrame {
     size_t payloadLength;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

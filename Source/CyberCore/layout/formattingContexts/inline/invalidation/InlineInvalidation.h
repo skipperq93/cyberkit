@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 

@@ -29,7 +29,7 @@
 #include "FrameView.h"
 #include "RenderLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_componentFunctions = {
     // method_call
@@ -211,6 +211,6 @@ void AccessibilityObjectAtspi::scrollToPoint(const IntPoint& point, Atspi::Coord
     m_coreObject->scrollToGlobalPoint(convertedPoint);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

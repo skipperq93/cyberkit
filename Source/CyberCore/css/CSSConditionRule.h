@@ -31,7 +31,7 @@
 
 #include "CSSGroupingRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSConditionRule : public CSSGroupingRule {
 public:
@@ -41,4 +41,4 @@ protected:
     CSSConditionRule(StyleRuleGroup&, CSSStyleSheet* parent);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

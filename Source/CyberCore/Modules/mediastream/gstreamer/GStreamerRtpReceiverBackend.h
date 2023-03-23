@@ -25,7 +25,7 @@
 #include "RTCRtpReceiverBackend.h"
 #include "RealtimeMediaSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerRtpReceiverBackend final : public RTCRtpReceiverBackend {
     WTF_MAKE_FAST_ALLOCATED;
@@ -48,6 +48,6 @@ private:
     GRefPtr<GstWebRTCRTPReceiver> m_rtcReceiver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

@@ -28,7 +28,7 @@
 #include "CSSValue.h"
 #include "TimingFunction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCubicBezierTimingFunctionValue final : public CSSValue {
 public:
@@ -120,7 +120,7 @@ private:
     double m_initialVelocity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSCubicBezierTimingFunctionValue, isCubicBezierTimingFunctionValue())
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSStepsTimingFunctionValue, isStepsTimingFunctionValue())

@@ -39,7 +39,7 @@
 #include "RenderStyle.h"
 #include "SVGPathByteStream.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static Ref<CSSValue> valueForCenterCoordinate(const RenderStyle& style, const BasicShapeCenterCoordinate& center, BoxOrient orientation)
 {

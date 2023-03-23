@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyCDMSession;
 class LegacyCDMSessionClient;
@@ -45,6 +45,6 @@ public:
     virtual std::unique_ptr<LegacyCDMSession> createSession(LegacyCDMSessionClient&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LEGACY_ENCRYPTED_MEDIA)

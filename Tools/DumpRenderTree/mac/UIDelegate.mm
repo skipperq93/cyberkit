@@ -312,31 +312,31 @@ static NSString *addLeadingSpaceStripTrailingSpaces(NSString *string)
 }
 
 #if ENABLE(FULLSCREEN_API)
-- (void)enterFullScreenWithListener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)enterFullScreenWithListener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     [listener webkitWillEnterFullScreen];
     [listener webkitDidEnterFullScreen];
 }
 
-- (void)webView:(WebView *)webView enterFullScreenForElement:(DOMElement*)element listener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)webView:(WebView *)webView enterFullScreenForElement:(DOMElement*)element listener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     if (!gTestRunner->hasCustomFullScreenBehavior())
         [self performSelector:@selector(enterFullScreenWithListener:) withObject:listener afterDelay:0];
 }
 
-- (void)exitFullScreenWithListener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)exitFullScreenWithListener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     [listener webkitWillExitFullScreen];
     [listener webkitDidExitFullScreen];
 }
 
-- (void)webView:(WebView *)webView exitFullScreenForElement:(DOMElement*)element listener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)webView:(WebView *)webView exitFullScreenForElement:(DOMElement*)element listener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     if (!gTestRunner->hasCustomFullScreenBehavior())
         [self performSelector:@selector(exitFullScreenWithListener:) withObject:listener afterDelay:0];
 }
 
-- (void)webView:(WebView *)sender closeFullScreenWithListener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)webView:(WebView *)sender closeFullScreenWithListener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     [listener webkitWillExitFullScreen];
     [listener webkitDidExitFullScreen];

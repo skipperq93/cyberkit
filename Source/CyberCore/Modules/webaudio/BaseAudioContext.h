@@ -50,7 +50,7 @@ enum class MessageLevel : uint8_t;
 enum class MessageSource : uint8_t;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnalyserNode;
 class AsyncAudioDecoder;
@@ -374,6 +374,6 @@ private:
     NoiseInjectionPolicy m_noiseInjectionPolicy { NoiseInjectionPolicy::None };
 };
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

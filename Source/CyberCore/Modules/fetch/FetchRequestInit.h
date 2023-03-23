@@ -33,7 +33,7 @@
 #include <CyberScriptCore/JSCJSValue.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FetchRequestInit {
     String method;

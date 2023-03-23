@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePaySetupFeature;
 class Document;
@@ -64,6 +64,6 @@ private:
     RefPtr<PendingActivity<ApplePaySetup>> m_pendingActivity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

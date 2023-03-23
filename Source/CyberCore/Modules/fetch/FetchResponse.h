@@ -41,7 +41,7 @@ class CallFrame;
 class JSValue;
 };
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbortSignal;
 class FetchRequest;
@@ -181,4 +181,4 @@ private:
     bool m_isUsedForPreload { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -76,7 +76,7 @@
         // DOM
         "CSSPrimitiveValue": true,
         "Exception": true,
-        "WebKitPoint": true,
+        "CyberKitPoint": true,
         "SQLError": true,
 
         // Utilities
@@ -98,7 +98,7 @@
         "isWebInspectorBootstrapScript": true,
         "isWebInspectorConsoleEvaluationScript": true,
         "isWebInspectorInternalScript": true,
-        "isWebKitInternalScript": true,
+        "isCyberKitInternalScript": true,
         "multiplicationSign": true,
         "nullish": true,
         "parseMIMEType": true,

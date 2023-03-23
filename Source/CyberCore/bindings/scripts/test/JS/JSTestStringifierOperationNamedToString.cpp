@@ -32,19 +32,19 @@
 #include "JSDOMOperation.h"
 #include "JSDOMWrapperCache.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -187,7 +187,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestStringifierOperationNamedToStringPrototypeFunctio
 
 JSC::GCClient::IsoSubspace* JSTestStringifierOperationNamedToString::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestStringifierOperationNamedToString, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestStringifierOperationNamedToString, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestStringifierOperationNamedToString.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestStringifierOperationNamedToString = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestStringifierOperationNamedToString.get(); },
@@ -222,9 +222,9 @@ void JSTestStringifierOperationNamedToStringOwner::finalize(JSC::Handle<JSC::Unk
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestStringifierOperationNamedToString@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestStringifierOperationNamedToString@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore37TestStringifierOperationNamedToStringE[]; }
+extern "C" { extern void* _ZTVN7CyberCore37TestStringifierOperationNamedToStringE[]; }
 #endif
 #endif
 
@@ -235,9 +235,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestStringifierOperationNamedToString@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestStringifierOperationNamedToString@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore37TestStringifierOperationNamedToStringE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore37TestStringifierOperationNamedToStringE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

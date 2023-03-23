@@ -27,7 +27,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef xmlDocPtr PlatformTransformSource;
 
@@ -43,6 +43,6 @@ private:
     PlatformTransformSource m_source;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

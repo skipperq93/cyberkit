@@ -39,7 +39,7 @@
 #include "PlatformGamepad.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static NavigatorGamepad* navigatorGamepadFromDOMWindow(DOMWindow& window)
 {
@@ -237,6 +237,6 @@ void GamepadManager::maybeStopMonitoringGamepads()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

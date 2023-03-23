@@ -27,13 +27,13 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PushEncryptionKeyName : bool {
     P256dh,
     Auth
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

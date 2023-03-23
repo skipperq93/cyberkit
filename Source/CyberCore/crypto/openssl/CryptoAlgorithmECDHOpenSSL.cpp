@@ -31,7 +31,7 @@
 #include "CryptoKeyEC.h"
 #include "OpenSSLUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<Vector<uint8_t>> CryptoAlgorithmECDH::platformDeriveBits(const CryptoKeyEC& baseKey, const CryptoKeyEC& publicKey)
 {
@@ -60,6 +60,6 @@ std::optional<Vector<uint8_t>> CryptoAlgorithmECDH::platformDeriveBits(const Cry
     return key;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

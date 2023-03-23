@@ -27,7 +27,7 @@
 
 #include "CSSParserMode.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class Document;
 struct CSSParserContext;
@@ -42,4 +42,4 @@ public:
     CSSParserMode mode { HTMLStandardMode };
 };
     
-} // namespace WebCore
+} // namespace CyberCore

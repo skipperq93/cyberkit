@@ -39,7 +39,7 @@
 #include <wtf/text/TextBreakIterator.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 SimulatedInputSourceState SimulatedInputSourceState::emptyStateForSourceType(SimulatedInputSourceType type)
 {

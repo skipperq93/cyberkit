@@ -8,7 +8,7 @@ function runTest() {
     getSelection().extend(document.createElement('select'));
     document.execCommand('delete', false);
 
-    document.body.innerHTML = `<p>This tests invoking deletion after attempting to extend selection to a disconnected node. WebKit should not crash.</p>PASS.`;
+    document.body.innerHTML = `<p>This tests invoking deletion after attempting to extend selection to a disconnected node. CyberKit should not crash.</p>PASS.`;
 }
 </script>
 <body onload=runTest()>

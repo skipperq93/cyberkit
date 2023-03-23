@@ -32,7 +32,7 @@
 @class WKGeolocationProviderIOS;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebProcessPool> {
     using WrapperClass = WKProcessPool;
@@ -42,7 +42,7 @@ template<> struct WrapperTraits<WebProcessPool> {
 
 @interface WKProcessPool () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebProcessPool> _processPool;
+    API::ObjectStorage<CyberKit::WebProcessPool> _processPool;
 }
 
 #if TARGET_OS_IPHONE

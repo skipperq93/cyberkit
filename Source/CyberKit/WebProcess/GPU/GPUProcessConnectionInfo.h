@@ -30,7 +30,7 @@
 #include "ArgumentCoders.h"
 #include <optional>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct GPUProcessConnectionInfo {
 #if HAVE(AUDIT_TOKEN)
@@ -75,6 +75,6 @@ struct GPUProcessConnectionInfo {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

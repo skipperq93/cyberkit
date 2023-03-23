@@ -33,7 +33,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBKey);
 
@@ -160,4 +160,4 @@ String IDBKey::loggingString() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

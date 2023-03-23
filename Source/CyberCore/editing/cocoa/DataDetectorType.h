@@ -27,7 +27,7 @@
 
 #if ENABLE(DATA_DETECTION)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DataDetectorType : uint8_t {
     None = 0,

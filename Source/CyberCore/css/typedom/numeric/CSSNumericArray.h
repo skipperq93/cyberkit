@@ -31,7 +31,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ExceptionOr;
 
@@ -51,4 +51,4 @@ private:
     CSSNumericArray(FixedVector<Ref<CSSNumericValue>>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

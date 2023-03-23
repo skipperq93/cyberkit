@@ -28,7 +28,7 @@
 #include "JSDOMExceptionHandling.h"
 #include <CyberScriptCore/Error.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Conversion from JSValue -> Implementation
 template<typename T> struct Converter;
@@ -264,4 +264,4 @@ template<typename T> struct DefaultConverter {
 // Conversion from JSValue -> Implementation for variadic arguments
 template<typename IDLType> struct VariadicConverter;
 
-} // namespace WebCore
+} // namespace CyberCore

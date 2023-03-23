@@ -35,7 +35,7 @@
 #include "RenderBlockFlow.h"
 #include "StringTruncator.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 inline static float endPaddingQuirkValue(const RenderBlockFlow& flow)

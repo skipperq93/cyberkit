@@ -39,7 +39,7 @@
 @end
 
 @implementation WKRevealItemPresenter {
-    WeakPtr<WebKit::WebViewImpl> _impl;
+    WeakPtr<CyberKit::WebViewImpl> _impl;
     RetainPtr<RVPresenter> _presenter;
     RetainPtr<RVPresentingContext> _presentingContext;
     RetainPtr<RVItem> _item;
@@ -48,7 +48,7 @@
     BOOL _isHighlightingItem;
 }
 
-- (instancetype)initWithWebViewImpl:(const WebKit::WebViewImpl&)impl item:(RVItem *)item frame:(CGRect)frameInView menuLocation:(CGPoint)menuLocationInView
+- (instancetype)initWithWebViewImpl:(const CyberKit::WebViewImpl&)impl item:(RVItem *)item frame:(CGRect)frameInView menuLocation:(CGPoint)menuLocationInView
 {
     if (!(self = [super init]))
         return nil;

@@ -31,7 +31,7 @@
 #include "AccessibilitySVGElement.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilitySVGRoot final : public AccessibilitySVGElement {
 public:
@@ -50,8 +50,8 @@ private:
     WeakPtr<AccessibilityRenderObject> m_parent;
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilitySVGRoot) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isAccessibilitySVGRoot(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilitySVGRoot) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isAccessibilitySVGRoot(); } \
 SPECIALIZE_TYPE_TRAITS_END()

@@ -33,7 +33,7 @@
 #include "Event.h"
 #include <CyberScriptCore/ArrayBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaEncryptedEventInit : EventInit {
     MediaEncryptedEventInit() = default;
@@ -48,6 +48,6 @@ struct MediaEncryptedEventInit : EventInit {
     RefPtr<JSC::ArrayBuffer> initData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

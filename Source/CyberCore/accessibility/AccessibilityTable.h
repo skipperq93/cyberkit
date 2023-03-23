@@ -32,7 +32,7 @@
 #include "AccessibilityTableCell.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableElement;
 class RenderTableSection;
@@ -106,6 +106,6 @@ private:
     bool isDataTable() const;
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityTable, isAccessibilityTableInstance())

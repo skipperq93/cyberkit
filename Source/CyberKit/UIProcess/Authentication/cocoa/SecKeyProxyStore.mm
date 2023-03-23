@@ -31,7 +31,7 @@
 #import <CyberCore/Credential.h>
 #import <pal/spi/cocoa/SecKeyProxySPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool SecKeyProxyStore::initialize(const CyberCore::Credential& credential)
 {
@@ -40,6 +40,6 @@ bool SecKeyProxyStore::initialize(const CyberCore::Credential& credential)
     return isInitialized();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(SEC_KEY_PROXY)

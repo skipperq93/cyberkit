@@ -24,7 +24,7 @@
 #include "CSSStyleSheet.h"
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -67,4 +67,4 @@ private:
     Style::Scope* m_styleScope { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

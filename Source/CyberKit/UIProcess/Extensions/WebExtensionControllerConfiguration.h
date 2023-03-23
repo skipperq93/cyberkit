@@ -34,7 +34,7 @@
 
 OBJC_CLASS _WKWebExtensionControllerConfiguration;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionControllerConfiguration : public API::ObjectImpl<API::Object::Type::WebExtensionControllerConfiguration> {
     WTF_MAKE_NONCOPYABLE(WebExtensionControllerConfiguration);
@@ -70,6 +70,6 @@ private:
     String m_storageDirectory;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

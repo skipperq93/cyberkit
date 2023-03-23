@@ -32,7 +32,7 @@
 #include "AXObjectCache.h"
 #include "HTMLNames.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -131,4 +131,4 @@ void AccessibilityLabel::insertChild(AXCoreObject* object, unsigned index, Desce
     m_containsOnlyStaticTextDirty = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

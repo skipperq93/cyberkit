@@ -29,7 +29,7 @@
 #include "JSDOMConvertBase.h"
 #include "StringAdaptors.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT String identifierToString(JSC::JSGlobalObject&, const JSC::Identifier&);
 WEBCORE_EXPORT String identifierToByteString(JSC::JSGlobalObject&, const JSC::Identifier&);
@@ -284,4 +284,4 @@ template<typename T>  struct JSConverter<IDLRequiresExistingAtomStringAdaptor<T>
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore

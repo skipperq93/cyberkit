@@ -31,7 +31,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -65,4 +65,4 @@ protected:
     virtual Vector<StylePropertyMapEntry> entries(ScriptExecutionContext*) const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

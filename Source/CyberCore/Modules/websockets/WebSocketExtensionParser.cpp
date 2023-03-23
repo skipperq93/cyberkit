@@ -35,7 +35,7 @@
 #include <wtf/ASCIICType.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool WebSocketExtensionParser::finished()
 {
@@ -141,4 +141,4 @@ bool WebSocketExtensionParser::parseExtension(String& extensionToken, HashMap<St
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

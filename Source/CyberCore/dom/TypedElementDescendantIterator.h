@@ -27,7 +27,7 @@
 
 #include "ElementIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class DoubleElementDescendantIterator;
 template<typename> class DoubleElementDescendantRange;
@@ -323,4 +323,4 @@ template<typename ElementType, bool filter(const ElementType&)> FilteredElementD
     return { root };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

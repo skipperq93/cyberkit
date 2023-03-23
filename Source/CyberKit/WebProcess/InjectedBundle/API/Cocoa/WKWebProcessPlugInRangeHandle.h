@@ -26,7 +26,7 @@
 #import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberKit/WKDataDetectorTypes.h>
 
 @class WKWebProcessPlugInFrame;

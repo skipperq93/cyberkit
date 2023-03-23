@@ -19,34 +19,34 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitDownload_h
-#define WebKitDownload_h
+#ifndef CyberKitDownload_h
+#define CyberKitDownload_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIResponse.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIResponse.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_DOWNLOAD            (webkit_download_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_DOWNLOAD(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_DOWNLOAD, WebKitDownload))
+#define WEBKIT_DOWNLOAD(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_DOWNLOAD, CyberKitDownload))
 #define WEBKIT_IS_DOWNLOAD(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_DOWNLOAD))
-#define WEBKIT_DOWNLOAD_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_DOWNLOAD, WebKitDownloadClass))
+#define WEBKIT_DOWNLOAD_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_DOWNLOAD, CyberKitDownloadClass))
 #define WEBKIT_IS_DOWNLOAD_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_DOWNLOAD))
-#define WEBKIT_DOWNLOAD_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_DOWNLOAD, WebKitDownloadClass))
+#define WEBKIT_DOWNLOAD_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_DOWNLOAD, CyberKitDownloadClass))
 #endif
 
-WEBKIT_DECLARE_TYPE (WebKitDownload, webkit_download, WEBKIT, DOWNLOAD, GObject)
+WEBKIT_DECLARE_TYPE (CyberKitDownload, webkit_download, WEBKIT, DOWNLOAD, GObject)
 
-typedef struct _WebKitWebView WebKitWebView;
+typedef struct _CyberKitWebView CyberKitWebView;
 
-struct _WebKitDownloadClass {
+struct _CyberKitDownloadClass {
     GObjectClass parent_class;
 
     /*< public >*/
-    gboolean (* decide_destination)  (WebKitDownload *download,
+    gboolean (* decide_destination)  (CyberKitDownload *download,
                                       const gchar    *suggested_filename);
 
     /*< private >*/
@@ -56,39 +56,39 @@ struct _WebKitDownloadClass {
     void (*_webkit_reserved3) (void);
 };
 
-WEBKIT_API WebKitURIRequest *
-webkit_download_get_request              (WebKitDownload *download);
+WEBKIT_API CyberKitURIRequest *
+webkit_download_get_request              (CyberKitDownload *download);
 
 WEBKIT_API const gchar *
-webkit_download_get_destination          (WebKitDownload *download);
+webkit_download_get_destination          (CyberKitDownload *download);
 
 WEBKIT_API void
-webkit_download_set_destination          (WebKitDownload *download,
+webkit_download_set_destination          (CyberKitDownload *download,
                                           const gchar    *uri);
 
-WEBKIT_API WebKitURIResponse*
-webkit_download_get_response             (WebKitDownload *download);
+WEBKIT_API CyberKitURIResponse*
+webkit_download_get_response             (CyberKitDownload *download);
 
 WEBKIT_API void
-webkit_download_cancel                   (WebKitDownload *download);
+webkit_download_cancel                   (CyberKitDownload *download);
 
 WEBKIT_API gdouble
-webkit_download_get_estimated_progress   (WebKitDownload *download);
+webkit_download_get_estimated_progress   (CyberKitDownload *download);
 
 WEBKIT_API gdouble
-webkit_download_get_elapsed_time         (WebKitDownload *download);
+webkit_download_get_elapsed_time         (CyberKitDownload *download);
 
 WEBKIT_API guint64
-webkit_download_get_received_data_length (WebKitDownload *download);
+webkit_download_get_received_data_length (CyberKitDownload *download);
 
-WEBKIT_API WebKitWebView *
-webkit_download_get_web_view             (WebKitDownload *download);
+WEBKIT_API CyberKitWebView *
+webkit_download_get_web_view             (CyberKitDownload *download);
 
 WEBKIT_API gboolean
-webkit_download_get_allow_overwrite      (WebKitDownload *download);
+webkit_download_get_allow_overwrite      (CyberKitDownload *download);
 
 WEBKIT_API void
-webkit_download_set_allow_overwrite      (WebKitDownload *download,
+webkit_download_set_allow_overwrite      (CyberKitDownload *download,
                                           gboolean        allowed);
 
 G_END_DECLS

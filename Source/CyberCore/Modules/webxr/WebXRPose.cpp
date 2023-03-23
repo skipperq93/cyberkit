@@ -31,7 +31,7 @@
 #include "WebXRRigidTransform.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRPose);
 
@@ -57,6 +57,6 @@ bool WebXRPose::emulatedPosition() const
     return m_emulatedPosition;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

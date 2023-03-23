@@ -29,12 +29,12 @@
 
 #include "RTCOfferAnswerOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCOfferOptions : RTCOfferAnswerOptions {
     bool iceRestart { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -36,10 +36,10 @@
 #include "Event.h"
 #include "EventNames.h"
 #include "SourceBuffer.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SourceBufferList);
 
@@ -109,11 +109,11 @@ const char* SourceBufferList::activeDOMObjectName() const
     return "SourceBufferList";
 }
 
-WebCoreOpaqueRoot root(SourceBufferList* list)
+CyberCoreOpaqueRoot root(SourceBufferList* list)
 {
-    return WebCoreOpaqueRoot { list };
+    return CyberCoreOpaqueRoot { list };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

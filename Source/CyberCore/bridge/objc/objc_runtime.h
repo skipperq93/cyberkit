@@ -104,7 +104,7 @@ public:
     {
         VM& vm = globalObject->vm();
         // FIXME: deprecatedGetDOMStructure uses the prototype off of the wrong global object
-        Structure* domStructure = WebCore::deprecatedGetDOMStructure<ObjcFallbackObjectImp>(exec);
+        Structure* domStructure = CyberCore::deprecatedGetDOMStructure<ObjcFallbackObjectImp>(exec);
         ObjcFallbackObjectImp* fallbackObject = new (NotNull, allocateCell<ObjcFallbackObjectImp>(vm)) ObjcFallbackObjectImp(globalObject, domStructure, instance, propertyName);
         fallbackObject->finishCreation(globalObject);
         return fallbackObject;

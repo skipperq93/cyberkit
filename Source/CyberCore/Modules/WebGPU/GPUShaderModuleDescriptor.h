@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUShaderModuleDescriptor.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUShaderModuleDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::ShaderModuleDescriptor convertToBacking(const Ref<GPUPipelineLayout>& autoLayout) const

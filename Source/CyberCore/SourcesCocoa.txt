@@ -302,8 +302,8 @@ platform/cocoa/ThemeCocoa.mm
 platform/cocoa/UserAgentCocoa.mm
 platform/cocoa/VideoFullscreenModelVideoElement.mm
 platform/cocoa/VideoToolboxSoftLink.cpp
-platform/cocoa/WebCoreAdditions.mm @no-unify
-platform/cocoa/WebCoreNSErrorExtras.mm
+platform/cocoa/CyberCoreAdditions.mm @no-unify
+platform/cocoa/CyberCoreNSErrorExtras.mm
 platform/gamepad/cocoa/GameControllerGamepad.mm
 platform/gamepad/cocoa/GameControllerGamepadProvider.mm
 platform/gamepad/mac/Dualshock3HIDGamepad.cpp
@@ -353,7 +353,7 @@ platform/graphics/avfoundation/objc/SourceBufferParserAVFObjC.mm
 platform/graphics/avfoundation/objc/VideoLayerManagerObjC.mm @no-unify
 platform/graphics/avfoundation/objc/VideoTrackPrivateAVFObjC.cpp
 platform/graphics/avfoundation/objc/VideoTrackPrivateMediaSourceAVFObjC.mm
-platform/graphics/avfoundation/objc/WebCoreAVFResourceLoader.mm
+platform/graphics/avfoundation/objc/CyberCoreAVFResourceLoader.mm
 platform/graphics/ca/GraphicsLayerCA.cpp
 platform/graphics/ca/LayerPool.cpp
 platform/graphics/ca/PlatformCAAnimation.cpp
@@ -428,8 +428,8 @@ platform/graphics/cocoa/TextTrackRepresentationCocoa.mm
 platform/graphics/cocoa/UnrealizedCoreTextFont.cpp
 platform/graphics/cocoa/VP9UtilitiesCocoa.mm @no-unify
 platform/graphics/cocoa/WebActionDisablingCALayerDelegate.mm
-platform/graphics/cocoa/WebCoreCALayerExtras.mm
-platform/graphics/cocoa/WebCoreDecompressionSession.mm
+platform/graphics/cocoa/CyberCoreCALayerExtras.mm
+platform/graphics/cocoa/CyberCoreDecompressionSession.mm
 platform/graphics/cocoa/WebProcessGraphicsContextGLCocoa.mm
 platform/graphics/cocoa/VideoTrackPrivateWebM.cpp
 platform/graphics/cocoa/controls/ApplePayButtonCocoa.mm
@@ -530,7 +530,7 @@ platform/ios/ValidationBubbleIOS.mm
 platform/ios/VideoFullscreenInterfaceAVKit.mm @no-unify
 platform/ios/WebAVPlayerController.mm
 platform/ios/WebBackgroundTaskController.mm
-platform/ios/WebCoreMotionManager.mm
+platform/ios/CyberCoreMotionManager.mm
 platform/ios/WebEvent.mm @no-unify
 platform/ios/WebItemProviderPasteboard.mm @no-unify
 platform/ios/WebSQLiteDatabaseTrackerClient.mm
@@ -542,9 +542,9 @@ platform/ios/wak/WAKView.mm @no-unify
 platform/ios/wak/WAKWindow.mm
 platform/ios/wak/WKGraphics.mm
 platform/ios/wak/WKView.mm
-platform/ios/wak/WebCoreThread.mm
-platform/ios/wak/WebCoreThreadRun.cpp
-platform/ios/wak/WebCoreThreadSystemInterface.cpp
+platform/ios/wak/CyberCoreThread.mm
+platform/ios/wak/CyberCoreThreadRun.cpp
+platform/ios/wak/CyberCoreThreadSystemInterface.cpp
 platform/mac/BlocklistUpdater.mm
 platform/mac/CursorMac.mm @no-unify
 platform/mac/DataDetectorHighlight.mm
@@ -582,12 +582,12 @@ platform/mac/UserActivityMac.mm
 platform/mac/UserAgentMac.mm
 platform/mac/ValidationBubbleMac.mm
 platform/mac/VideoFullscreenInterfaceMac.mm
-platform/mac/WebCoreFullScreenPlaceholderView.mm
-platform/mac/WebCoreFullScreenWarningView.mm
-platform/mac/WebCoreFullScreenWindow.mm
-platform/mac/WebCoreNSFontManagerExtras.mm
-platform/mac/WebCoreNSURLExtras.mm
-platform/mac/WebCoreObjCExtras.mm
+platform/mac/CyberCoreFullScreenPlaceholderView.mm
+platform/mac/CyberCoreFullScreenWarningView.mm
+platform/mac/CyberCoreFullScreenWindow.mm
+platform/mac/CyberCoreNSFontManagerExtras.mm
+platform/mac/CyberCoreNSURLExtras.mm
+platform/mac/CyberCoreObjCExtras.mm
 platform/mac/WebGLBlocklist.mm
 platform/mac/WebNSAttributedStringExtras.mm
 platform/mac/WebPlaybackControlsManager.mm
@@ -647,9 +647,9 @@ platform/network/cocoa/ProtectionSpaceCocoa.mm
 platform/network/cocoa/RangeResponseGenerator.mm
 platform/network/cocoa/ResourceRequestCocoa.mm
 platform/network/cocoa/ResourceResponseCocoa.mm @no-unify // Unsafe to unify until rdar://problem/48853137 is resolved
-platform/network/cocoa/WebCoreNSURLSession.mm @no-unify
+platform/network/cocoa/CyberCoreNSURLSession.mm @no-unify
 platform/network/ios/NetworkStateNotifierIOS.mm
-platform/network/ios/WebCoreURLResponseIOS.mm
+platform/network/ios/CyberCoreURLResponseIOS.mm
 platform/network/mac/AuthenticationMac.mm
 platform/network/mac/BlobDataFileReferenceMac.mm
 platform/network/mac/CookieStorageMac.mm
@@ -660,7 +660,7 @@ platform/network/mac/ResourceErrorMac.mm
 platform/network/mac/ResourceHandleMac.mm
 platform/network/mac/SynchronousLoaderClient.mm
 platform/network/mac/UTIUtilities.mm
-platform/network/mac/WebCoreURLResponse.mm
+platform/network/mac/CyberCoreURLResponse.mm
 platform/text/cf/HyphenationCF.cpp
 platform/text/cocoa/LocaleCocoa.mm
 platform/text/cocoa/LocalizedDateCache.mm

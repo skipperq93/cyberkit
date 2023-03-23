@@ -70,7 +70,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds clientDataBufferingTimerThrottleDelay { 100_ms };
 static const Seconds elementMainContentCheckInterval { 250_ms };
@@ -1146,10 +1146,10 @@ static bool processRemoteControlCommandIfPlayingMediaStreams(Document& document,
     if (!isDocumentPlayingSeveralMediaStreams(document))
         return false;
 
-    WebCore::MediaProducerMutedStateFlags mutedState;
-    mutedState.add(WebCore::MediaProducerMutedState::AudioIsMuted);
-    mutedState.add(WebCore::MediaProducer::AudioAndVideoCaptureIsMuted);
-    mutedState.add(WebCore::MediaProducerMutedState::ScreenCaptureIsMuted);
+    CyberCore::MediaProducerMutedStateFlags mutedState;
+    mutedState.add(CyberCore::MediaProducerMutedState::AudioIsMuted);
+    mutedState.add(CyberCore::MediaProducer::AudioAndVideoCaptureIsMuted);
+    mutedState.add(CyberCore::MediaProducerMutedState::ScreenCaptureIsMuted);
 
     switch (commandType) {
     case PlatformMediaSession::PlayCommand:

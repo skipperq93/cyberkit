@@ -40,7 +40,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class DatabaseContext;
@@ -196,4 +196,4 @@ private:
     static void notifyDatabasesChanged();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <variant>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUOrigin3DDict {
     PAL::WebGPU::Origin3DDict convertToBacking() const

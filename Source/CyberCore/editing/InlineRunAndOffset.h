@@ -27,7 +27,7 @@
 
 #include "InlineIteratorBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct InlineBoxAndOffset {
     InlineIterator::LeafBoxIterator box { };

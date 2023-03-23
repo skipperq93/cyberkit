@@ -33,7 +33,7 @@
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation;
 class DeclarativeAnimationEvent;
@@ -97,6 +97,6 @@ private:
     double m_previousIteration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_WEB_ANIMATION(DeclarativeAnimation, isDeclarativeAnimation())

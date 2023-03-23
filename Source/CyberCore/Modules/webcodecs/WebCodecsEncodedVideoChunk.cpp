@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_CODECS)
 
-namespace WebCore {
+namespace CyberCore {
 
 WebCodecsEncodedVideoChunk::WebCodecsEncodedVideoChunk(Init&& init)
     : m_storage { WebCodecsEncodedVideoChunkStorage::create(init.type, init.timestamp, init.duration, Span<const uint8_t> { init.data.data(), init.data.length() }) }
@@ -44,6 +44,6 @@ ExceptionOr<void> WebCodecsEncodedVideoChunk::copyTo(BufferSource&& source)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS)

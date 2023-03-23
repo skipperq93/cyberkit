@@ -32,7 +32,7 @@
 #include "RTCPeerConnection.h"
 #include "WebRTCProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RTCController::~RTCController()
 {
@@ -134,6 +134,6 @@ void RTCController::enableICECandidateFiltering()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

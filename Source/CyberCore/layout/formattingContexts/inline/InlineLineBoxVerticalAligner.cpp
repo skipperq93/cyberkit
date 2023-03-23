@@ -30,7 +30,7 @@
 #include "LayoutBoxGeometry.h"
 #include "LayoutChildIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 LineBoxVerticalAligner::LineBoxVerticalAligner(const InlineFormattingContext& inlineFormattingContext)

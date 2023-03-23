@@ -48,7 +48,7 @@
 #include "RenderElement.h"
 #include <CyberScriptCore/ConstructData.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CustomPaintImage::CustomPaintImage(PaintWorkletGlobalScope::PaintDefinition& definition, const FloatSize& size, const RenderElement& element, const Vector<String>& arguments)
     : m_paintDefinition(definition)

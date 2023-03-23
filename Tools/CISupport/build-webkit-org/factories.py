@@ -79,7 +79,7 @@ class BuildFactory(Factory):
 
 
 class TestFactory(Factory):
-    JSCTestClass = RunJavaScriptCoreTests
+    JSCTestClass = RunCyberScriptCoreTests
     LayoutTestClass = RunCyberKitTests
 
     def getProduct(self):
@@ -165,7 +165,7 @@ class BuildAndJSCTestsFactory(Factory):
     def __init__(self, platform, configuration, architectures, triggers=None, additionalArguments=None, device_model=None):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, device_model)
         self.addStep(CompileJSCOnly(timeout=60 * 60))
-        self.addStep(RunJavaScriptCoreTests(timeout=60 * 60))
+        self.addStep(RunCyberScriptCoreTests(timeout=60 * 60))
 
 
 class TestAllButJSCFactory(TestFactory):
@@ -198,7 +198,7 @@ class TestJSCFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, device_model)
         self.addStep(DownloadBuiltProduct())
         self.addStep(ExtractBuiltProduct())
-        self.addStep(RunJavaScriptCoreTests())
+        self.addStep(RunCyberScriptCoreTests())
 
 
 class Test262Factory(Factory):
@@ -214,7 +214,7 @@ class TestJSFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, device_model)
         self.addStep(DownloadBuiltProduct())
         self.addStep(ExtractBuiltProduct())
-        self.addStep(RunJavaScriptCoreTests())
+        self.addStep(RunCyberScriptCoreTests())
         self.addStep(RunTest262Tests())
 
 

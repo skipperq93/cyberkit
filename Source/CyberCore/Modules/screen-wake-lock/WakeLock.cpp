@@ -40,7 +40,7 @@
 #include "WakeLockManager.h"
 #include "WakeLockSentinel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WakeLock::WakeLock(Document* document)
     : ContextDestructionObserver(document)
@@ -95,4 +95,4 @@ Document* WakeLock::document()
     return downcast<Document>(scriptExecutionContext());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

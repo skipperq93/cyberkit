@@ -30,7 +30,7 @@
 #include "TextEventInputType.h"
 #include "UIEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
     class DocumentFragment;
 
@@ -89,6 +89,6 @@ namespace WebCore {
         Vector<DictationAlternative> m_dictationAlternatives;
     };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(TextEvent)

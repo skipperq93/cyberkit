@@ -31,7 +31,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMFormData;
 class Event;
@@ -196,4 +196,4 @@ private:
     bool m_isConstructingEntryList { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

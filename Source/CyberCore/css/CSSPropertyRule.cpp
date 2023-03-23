@@ -32,7 +32,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSPropertyRule::CSSPropertyRule(StyleRuleProperty& rule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -102,4 +102,4 @@ void CSSPropertyRule::reattach(StyleRuleBase& rule)
     m_propertyRule = downcast<StyleRuleProperty>(rule);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

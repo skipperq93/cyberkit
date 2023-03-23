@@ -44,7 +44,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteDisplayListRecorderProxy::RemoteDisplayListRecorderProxy(RemoteImageBufferProxy& imageBuffer, RemoteRenderingBackendProxy& renderingBackend, const FloatRect& initialClip, const AffineTransform& initialCTM)

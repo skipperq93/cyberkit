@@ -38,7 +38,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventPath;
 class EventTarget;
@@ -219,9 +219,9 @@ inline void Event::setCancelBubble(bool cancel)
 
 WTF::TextStream& operator<<(WTF::TextStream&, const Event&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_EVENT(ToValueTypeName) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::Event& event) { return event.is##ToValueTypeName(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::Event& event) { return event.is##ToValueTypeName(); } \
 SPECIALIZE_TYPE_TRAITS_END()

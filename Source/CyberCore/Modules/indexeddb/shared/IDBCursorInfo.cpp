@@ -31,7 +31,7 @@
 #include "IndexedDB.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBCursorInfo IDBCursorInfo::objectStoreCursor(IDBTransaction& transaction, uint64_t objectStoreIdentifier, const IDBKeyRangeData& range, IndexedDB::CursorDirection direction, IndexedDB::CursorType type)
 {
@@ -110,4 +110,4 @@ String IDBCursorInfo::loggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

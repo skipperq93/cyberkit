@@ -52,7 +52,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Permissions);
 
@@ -199,4 +199,4 @@ void Permissions::query(JSC::Strong<JSC::JSObject> permissionDescriptorValue, DO
     workerGlobalScope.thread().workerLoaderProxy().postTaskToLoader(WTFMove(completionHandler));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

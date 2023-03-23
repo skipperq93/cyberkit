@@ -25,7 +25,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLBodyElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLBodyElement);

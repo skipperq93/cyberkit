@@ -28,7 +28,7 @@
 
 #include "StaticRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSStaticRange::visitAdditionalChildren(Visitor& visitor)
@@ -38,4 +38,4 @@ void JSStaticRange::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSStaticRange);
 
-} // namespace WebCore
+} // namespace CyberCore

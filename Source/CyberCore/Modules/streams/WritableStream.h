@@ -29,7 +29,7 @@
 #include <CyberScriptCore/Strong.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InternalWritableStream;
 class JSDOMGlobalObject;
@@ -55,4 +55,4 @@ private:
     Ref<InternalWritableStream> m_internalWritableStream;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

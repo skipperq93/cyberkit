@@ -34,7 +34,7 @@
 #include <CyberScriptCore/IteratorOperations.h>
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ReturnType, bool enabled>
 struct ConditionalReturner;
@@ -426,4 +426,4 @@ struct JSConverter<IDLAllowSharedAdaptor<IDLUnion<IDLArrayBufferView, IDLArrayBu
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

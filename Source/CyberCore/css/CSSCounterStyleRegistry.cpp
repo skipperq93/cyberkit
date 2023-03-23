@@ -31,7 +31,7 @@
 #include "CSSPrimitiveValue.h"
 #include "CSSValuePair.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void CSSCounterStyleRegistry::resolveReferencesIfNeeded()
 {

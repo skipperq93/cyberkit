@@ -36,7 +36,7 @@ namespace CyberCore {
 struct MockWebAuthenticationConfiguration;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class Authenticator;
 
@@ -75,6 +75,6 @@ private:
     WeakPtr<Observer> m_observer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

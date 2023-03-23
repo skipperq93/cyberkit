@@ -47,7 +47,7 @@ class ConsoleMessage;
 class InjectedScriptManager;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class Document;
@@ -266,4 +266,4 @@ private:
     bool m_interceptionEnabled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

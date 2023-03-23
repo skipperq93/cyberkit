@@ -32,13 +32,13 @@
 #include "PublicKeyCredentialCreationOptions.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CredentialCreationOptions {
     RefPtr<AbortSignal> signal;
     std::optional<PublicKeyCredentialCreationOptions> publicKey;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

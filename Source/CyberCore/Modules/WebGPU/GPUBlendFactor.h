@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUBlendFactor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUBlendFactor : uint8_t {
     Zero,

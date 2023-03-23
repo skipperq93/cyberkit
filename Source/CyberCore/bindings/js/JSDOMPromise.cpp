@@ -36,7 +36,7 @@
 
 using namespace JSC;
 
-namespace WebCore {
+namespace CyberCore {
 
 auto DOMPromise::whenSettled(std::function<void()>&& callback) -> IsCallbackRegistered
 {

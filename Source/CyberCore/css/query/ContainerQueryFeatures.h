@@ -26,7 +26,7 @@
 
 #include "GenericMediaQueryTypes.h"
 
-namespace WebCore::CQ {
+namespace CyberCore::CQ {
 
 namespace Features {
 const MQ::FeatureSchema& width();

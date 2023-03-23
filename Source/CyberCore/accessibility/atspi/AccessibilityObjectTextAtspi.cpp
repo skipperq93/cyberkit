@@ -37,7 +37,7 @@
 #include <gio/gio.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilityObjectAtspi::TextGranularity AccessibilityObjectAtspi::atspiBoundaryToTextGranularity(Atspi::TextBoundaryType boundaryType)
 {
@@ -781,7 +781,7 @@ AccessibilityObjectAtspi::TextAttributes AccessibilityObjectAtspi::textAttribute
         }
 
         addAttributeIfNeeded("family-name"_s, style.fontCascade().firstFamily());
-        addAttributeIfNeeded("size"_s, makeString(std::round(style.computedFontPixelSize() * 72 / WebCore::screenDPI()), "pt"));
+        addAttributeIfNeeded("size"_s, makeString(std::round(style.computedFontPixelSize() * 72 / CyberCore::screenDPI()), "pt"));
         addAttributeIfNeeded("weight"_s, makeString(static_cast<float>(style.fontCascade().weight())));
         addAttributeIfNeeded("style"_s, style.fontCascade().italic() ? "italic"_s : "normal"_s);
         addAttributeIfNeeded("strikethrough"_s, style.textDecorationLine() & TextDecorationLine::LineThrough ? "true"_s : "false"_s);
@@ -1027,6 +1027,6 @@ bool AccessibilityObjectAtspi::scrollToPoint(int startOffset, int endOffset, Ats
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

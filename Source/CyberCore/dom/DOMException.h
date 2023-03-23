@@ -31,7 +31,7 @@
 #include "ExceptionCode.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Exception;
 
@@ -69,4 +69,4 @@ private:
     String m_message;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

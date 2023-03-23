@@ -28,7 +28,7 @@
 #include "SegmentedString.h"
 #include <wtf/text/OrdinalNumber.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // The InputStream is made up of a sequence of SegmentedStrings:
 //
@@ -152,4 +152,4 @@ private:
     OrdinalNumber m_column;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

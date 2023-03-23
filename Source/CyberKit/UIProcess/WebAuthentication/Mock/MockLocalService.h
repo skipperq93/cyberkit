@@ -30,7 +30,7 @@
 #include "LocalService.h"
 #include <CyberCore/MockWebAuthenticationConfiguration.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MockLocalService final : public LocalService {
 public:
@@ -43,6 +43,6 @@ private:
     CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

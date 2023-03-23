@@ -29,7 +29,7 @@
 #include "CSSUnits.h"
 #include "CalculationCategory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CalculationCategory calcUnitCategory(CSSUnitType type)
 {

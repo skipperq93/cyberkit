@@ -27,7 +27,7 @@
 
 #include <wtf/Expected.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CallbackResultType {
     Success,

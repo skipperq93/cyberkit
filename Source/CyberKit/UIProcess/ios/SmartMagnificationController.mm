@@ -46,7 +46,7 @@ static const float smartMagnificationElementPadding = 0.05;
 static const double smartMagnificationMaximumScale = 1.6;
 static const double smartMagnificationMinimumScale = 0;
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 SmartMagnificationController::SmartMagnificationController(WKContentView *contentView)
@@ -139,6 +139,6 @@ void SmartMagnificationController::scrollToRect(FloatPoint origin, FloatRect tar
     [m_contentView _scrollToRect:targetRect withOrigin:origin minimumScrollDistance:0];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

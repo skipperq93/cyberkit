@@ -39,7 +39,7 @@
 #include <process-launcher.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !USE(WPE_BACKEND_PLAYSTATION)
 #define MAKE_PROCESS_PATH(x) "/app0/" #x "Process.self"
@@ -121,4 +121,4 @@ void ProcessLauncher::platformInvalidate()
     m_processIdentifier = 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

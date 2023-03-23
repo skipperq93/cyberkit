@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum {
     CryptoKeyUsageEncrypt = 1 << 0,
@@ -54,6 +54,6 @@ enum class CryptoKeyUsage {
     UnwrapKey
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -30,7 +30,7 @@
 #include "JSDOMWrapper.h"
 #include "JSEventTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkletGlobalScope;
 
@@ -80,4 +80,4 @@ inline JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalOb
 JSC::JSValue toJS(JSC::JSGlobalObject*, WorkletGlobalScope&);
 inline JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, WorkletGlobalScope* scope) { return scope ? toJS(lexicalGlobalObject, *scope) : JSC::jsNull(); }
 
-} // namespace WebCore
+} // namespace CyberCore

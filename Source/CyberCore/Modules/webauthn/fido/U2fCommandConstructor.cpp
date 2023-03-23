@@ -41,7 +41,7 @@
 #include "WebAuthenticationUtils.h"
 
 namespace fido {
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace {
 
@@ -116,7 +116,7 @@ std::optional<Vector<uint8_t>> convertToU2fCheckOnlySignCommand(const Vector<uin
     return constructU2fSignCommand(produceRpIdHash(*request.rp.id), clientDataHash, keyHandle.id, true /* checkOnly */);
 }
 
-std::optional<Vector<uint8_t>> convertToU2fSignCommand(const Vector<uint8_t>& clientDataHash, const PublicKeyCredentialRequestOptions& request, const WebCore::BufferSource& keyHandle, bool isAppId)
+std::optional<Vector<uint8_t>> convertToU2fSignCommand(const Vector<uint8_t>& clientDataHash, const PublicKeyCredentialRequestOptions& request, const CyberCore::BufferSource& keyHandle, bool isAppId)
 {
     if (!isConvertibleToU2fSignCommand(request))
         return std::nullopt;

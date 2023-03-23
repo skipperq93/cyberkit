@@ -29,7 +29,7 @@
 
 @class NSTextAlternatives;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AlternativeTextContextController {
 public:
@@ -45,4 +45,4 @@ private:
     HashMap<RetainPtr<NSTextAlternatives>, DictationContext> m_contexts;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

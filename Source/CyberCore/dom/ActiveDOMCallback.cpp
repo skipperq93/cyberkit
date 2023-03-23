@@ -33,7 +33,7 @@
 
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ActiveDOMCallback::ActiveDOMCallback(ScriptExecutionContext* context)
     : ContextDestructionObserver(context)
@@ -60,4 +60,4 @@ bool ActiveDOMCallback::activeDOMObjectAreStopped() const
     return !context || context->activeDOMObjectsAreStopped();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

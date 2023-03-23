@@ -34,7 +34,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLShader> WebGLShader::create(WebGLRenderingContextBase& ctx, GCGLenum type)
 {

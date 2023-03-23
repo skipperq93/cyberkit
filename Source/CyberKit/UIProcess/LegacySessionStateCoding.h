@@ -32,13 +32,13 @@ namespace API {
 class Data;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct SessionState;
 
 RefPtr<API::Data> encodeLegacySessionState(const SessionState&);
 WARN_UNUSED_RETURN bool decodeLegacySessionState(const uint8_t* data, size_t, SessionState&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // LegacySessionStateCoding_h

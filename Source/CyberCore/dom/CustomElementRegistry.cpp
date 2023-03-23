@@ -39,7 +39,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CustomElementRegistry> CustomElementRegistry::create(DOMWindow& window, ScriptExecutionContext* scriptExecutionContext)
 {

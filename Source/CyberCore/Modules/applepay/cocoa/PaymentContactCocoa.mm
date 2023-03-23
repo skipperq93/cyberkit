@@ -38,7 +38,7 @@ SOFT_LINK_FRAMEWORK(Contacts)
 SOFT_LINK_CLASS(Contacts, CNMutablePostalAddress)
 SOFT_LINK_CLASS(Contacts, CNPhoneNumber)
 
-namespace WebCore {
+namespace CyberCore {
 
 static RetainPtr<PKContact> convert(unsigned version, const ApplePayPaymentContact& contact)
 {

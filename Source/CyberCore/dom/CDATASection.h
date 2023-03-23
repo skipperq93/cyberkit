@@ -24,7 +24,7 @@
 
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDATASection final : public Text {
     WTF_MAKE_ISO_ALLOCATED(CDATASection);
@@ -40,8 +40,8 @@ private:
     Ref<Text> virtualCreate(String&&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CDATASection)
-    static bool isType(const WebCore::Node& node) { return node.nodeType() == WebCore::Node::CDATA_SECTION_NODE; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CDATASection)
+    static bool isType(const CyberCore::Node& node) { return node.nodeType() == CyberCore::Node::CDATA_SECTION_NODE; }
 SPECIALIZE_TYPE_TRAITS_END()

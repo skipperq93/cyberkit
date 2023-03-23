@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AuthenticatorAttachment : uint8_t;
 enum class AuthenticatorTransport : uint8_t;
@@ -69,11 +69,11 @@ private:
     AuthenticatorAttachment m_attachment;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_AUTHENTICATOR_RESPONSE(ToClassName, Type) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::AuthenticatorResponse& response) { return response.type() == WebCore::Type; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::AuthenticatorResponse& response) { return response.type() == CyberCore::Type; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEB_AUTHN)

@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AnimationEffectPhase : uint8_t { Before, Active, After, Idle };
 
-} // namespace WebCore
+} // namespace CyberCore

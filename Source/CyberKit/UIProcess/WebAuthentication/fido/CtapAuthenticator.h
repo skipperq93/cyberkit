@@ -40,7 +40,7 @@ namespace CyberCore {
 class CryptoKeyEC;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class CtapDriver;
 
@@ -79,6 +79,6 @@ private:
     Vector<uint8_t> m_pinAuth;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

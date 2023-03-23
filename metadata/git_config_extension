@@ -6,11 +6,11 @@
         update-fork = true
         auto-check = true
 [webkitscmpy "remotes"]
-        origin = git@github.com:WebKit/WebKit.git
-        security = git@github.com:WebKit/WebKit-security.git
-        apple = git@github.com:apple/WebKit.git
+        origin = git@github.com:CyberKit/CyberKit.git
+        security = git@github.com:CyberKit/CyberKit-security.git
+        apple = git@github.com:apple/CyberKit.git
 [webkitscmpy "access"]
-        apple = apple/teams/WebKit
-        security = WebKit/teams/security
+        apple = apple/teams/CyberKit
+        security = CyberKit/teams/security
 [webkitscmpy "pre-pr"]
         style-checker = python3 Tools/Scripts/check-webkit-style

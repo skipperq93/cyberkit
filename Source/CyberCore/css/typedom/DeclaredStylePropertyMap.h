@@ -28,7 +28,7 @@
 #include "StylePropertyMap.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleRule;
 class StyleRule;
@@ -59,4 +59,4 @@ private:
     WeakPtr<CSSStyleRule> m_ownerRule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

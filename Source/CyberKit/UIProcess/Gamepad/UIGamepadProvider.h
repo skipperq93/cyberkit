@@ -32,7 +32,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class UIGamepad;
 class WebPageProxy;

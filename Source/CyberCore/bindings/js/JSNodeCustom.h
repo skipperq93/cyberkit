@@ -30,26 +30,26 @@
 #include "ElementInlines.h"
 #include "JSDOMBinding.h"
 #include "JSNode.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
 namespace JSC {
 namespace JSCastingHelpers {
 
 template<>
-struct InheritsTraits<WebCore::JSNode> {
-    static constexpr std::optional<JSTypeRange> typeRange { { static_cast<JSType>(WebCore::JSNodeType), static_cast<JSType>(WebCore::JSNodeType + WebCore::JSNodeTypeMask) } };
+struct InheritsTraits<CyberCore::JSNode> {
+    static constexpr std::optional<JSTypeRange> typeRange { { static_cast<JSType>(CyberCore::JSNodeType), static_cast<JSType>(CyberCore::JSNodeType + CyberCore::JSNodeTypeMask) } };
     static_assert(std::numeric_limits<uint8_t>::max() == typeRange->last);
     template<typename From>
     static inline bool inherits(From* from)
     {
-        return inheritsJSTypeImpl<WebCore::JSNode>(from, *typeRange);
+        return inheritsJSTypeImpl<CyberCore::JSNode>(from, *typeRange);
     }
 };
 
 } // namespace JSCastingHelpers
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT JSC::JSValue createWrapper(JSC::JSGlobalObject*, JSDOMGlobalObject*, Ref<Node>&&);
 WEBCORE_EXPORT JSC::JSObject* getOutOfLineCachedWrapper(JSDOMGlobalObject*, Node&);
@@ -78,17 +78,17 @@ inline void willCreatePossiblyOrphanedTreeByRemoval(Node& root)
         willCreatePossiblyOrphanedTreeByRemovalSlowCase(root);
 }
 
-inline WebCoreOpaqueRoot root(Node& node)
+inline CyberCoreOpaqueRoot root(Node& node)
 {
     return node.opaqueRoot();
 }
 
-inline WebCoreOpaqueRoot root(Node* node)
+inline CyberCoreOpaqueRoot root(Node* node)
 {
     return node ? root(*node) : nullptr;
 }
 
-inline WebCoreOpaqueRoot root(Document* document)
+inline CyberCoreOpaqueRoot root(Document* document)
 {
     return root(static_cast<Node*>(document));
 }
@@ -98,4 +98,4 @@ ALWAYS_INLINE JSC::JSValue JSNode::nodeType(JSC::JSGlobalObject&) const
     return JSC::jsNumber(static_cast<uint8_t>(type()) & JSNodeTypeMask);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

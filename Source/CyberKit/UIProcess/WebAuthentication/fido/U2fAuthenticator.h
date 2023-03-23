@@ -34,7 +34,7 @@ namespace apdu {
 class ApduResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class CtapDriver;
 
@@ -78,6 +78,6 @@ private:
     bool m_isAppId { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

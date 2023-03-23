@@ -67,7 +67,7 @@
 #include "ScriptController.h"
 #include "Settings.h"
 #include "StringAdaptors.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/JSCInlines.h>
 #include <math.h>
 #include <wtf/IsoMallocInlines.h>
@@ -106,7 +106,7 @@
 #include <pal/cf/CoreMediaSoftLink.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLCanvasElement);
 
@@ -987,7 +987,7 @@ bool HTMLCanvasElement::virtualHasPendingActivity() const
 void HTMLCanvasElement::eventListenersDidChange()
 {
 #if ENABLE(WEBGL)
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     m_hasRelevantWebGLEventListener = hasEventListeners(eventNames.webglcontextchangedEvent)
         || hasEventListeners(eventNames.webglcontextlostEvent)
         || hasEventListeners(eventNames.webglcontextrestoredEvent);
@@ -1062,7 +1062,7 @@ bool HTMLCanvasElement::isControlledByOffscreen() const
     return m_context && m_context->isPlaceholder();
 }
 
-WebCoreOpaqueRoot root(HTMLCanvasElement* canvas)
+CyberCoreOpaqueRoot root(HTMLCanvasElement* canvas)
 {
     return root(static_cast<Node*>(canvas));
 }

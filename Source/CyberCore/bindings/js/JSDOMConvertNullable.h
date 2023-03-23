@@ -31,7 +31,7 @@
 #include "JSDOMConvertNumbers.h"
 #include "JSDOMConvertStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Detail {
 
@@ -147,4 +147,4 @@ template<typename T> struct JSConverter<IDLNullable<T>> {
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore

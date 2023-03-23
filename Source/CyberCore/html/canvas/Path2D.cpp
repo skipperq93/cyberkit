@@ -32,7 +32,7 @@
 #include "DOMMatrix2DInit.h"
 #include "DOMMatrixReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Path2D::~Path2D() = default;
 

@@ -33,7 +33,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 class MemoryIDBBackingStore;
@@ -101,4 +101,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

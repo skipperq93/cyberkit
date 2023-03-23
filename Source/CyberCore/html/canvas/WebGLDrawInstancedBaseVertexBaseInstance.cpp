@@ -32,7 +32,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLDrawInstancedBaseVertexBaseInstance);
 
@@ -100,6 +100,6 @@ void WebGLDrawInstancedBaseVertexBaseInstance::drawElementsInstancedBaseVertexBa
     context->markContextChangedAndNotifyCanvasObserver();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

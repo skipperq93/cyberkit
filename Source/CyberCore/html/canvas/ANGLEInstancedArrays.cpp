@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ANGLEInstancedArrays);
 
@@ -76,6 +76,6 @@ void ANGLEInstancedArrays::vertexAttribDivisorANGLE(GCGLuint index, GCGLuint div
     context->vertexAttribDivisor(index, divisor);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

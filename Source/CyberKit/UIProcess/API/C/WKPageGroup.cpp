@@ -38,7 +38,7 @@
 #include "WebUserContentController.h"
 #include "WebUserContentControllerProxy.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKPageGroupGetTypeID()
 {

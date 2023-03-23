@@ -30,7 +30,7 @@
 #include "ExtendableEvent.h"
 #include "PushEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PushMessageData;
 
@@ -50,6 +50,6 @@ private:
     RefPtr<PushMessageData> m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

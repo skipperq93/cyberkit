@@ -48,7 +48,7 @@
 #include "WebVTTElement.h"
 #include "WebVTTTokenizer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr double secondsPerHour = 3600;
 constexpr double secondsPerMinute = 60;

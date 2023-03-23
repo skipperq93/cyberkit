@@ -31,7 +31,7 @@
 #include "HTMLInputElement.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextMarkerData::TextMarkerData(AXObjectCache& cache, Node* nodeParam, const VisiblePosition& visiblePosition, int charStart, int charOffset, bool ignoredParam)
 {
@@ -209,4 +209,4 @@ std::optional<SimpleRange> AXTextMarkerRange::simpleRange() const
     return { { *startBoundaryPoint, *endBoundaryPoint } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

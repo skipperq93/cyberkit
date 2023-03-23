@@ -33,7 +33,7 @@
 #include "WebPageProxy.h"
 #include "WebURLSchemeHandler.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<WebURLSchemeTask> WebURLSchemeTask::create(WebURLSchemeHandler& handler, WebPageProxy& page, WebProcessProxy& process, PageIdentifier webPageID, URLSchemeTaskParameters&& parameters, SyncLoadCompletionHandler&& syncCompletionHandler)
@@ -260,4 +260,4 @@ NSURLRequest *WebURLSchemeTask::nsRequest() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

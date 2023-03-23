@@ -22,10 +22,10 @@
 
 #include "JSDOMWrapper.h"
 #include "TestPluginInterface.h"
-#include <JavaScriptCore/CallData.h>
+#include <CyberScriptCore/CallData.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestPluginInterface : public JSDOMWrapper<TestPluginInterface> {
 public:
@@ -101,4 +101,4 @@ template<> struct JSDOMWrapperConverterTraits<TestPluginInterface> {
     using ToWrappedReturnType = TestPluginInterface*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

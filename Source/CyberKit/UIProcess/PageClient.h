@@ -139,7 +139,7 @@ struct TranslationContextMenuInfo;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class UndoOrRedo : bool;
 enum class TapHandlingResult : uint8_t;
@@ -200,7 +200,7 @@ using LayerHostingContextID = uint32_t;
 #endif
 
 #if PLATFORM(GTK) || PLATFORM(WPE)
-class WebKitWebResourceLoadManager;
+class CyberKitWebResourceLoadManager;
 #endif
 
 class PageClient : public CanMakeWeakPtr<PageClient> {
@@ -466,7 +466,7 @@ public:
 
 #if PLATFORM(IOS_FAMILY)
     virtual void commitPotentialTapFailed() = 0;
-    virtual void didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const CyberCore::Color&, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling) = 0;
+    virtual void didGetTapHighlightGeometries(CyberKit::TapIdentifier requestID, const CyberCore::Color&, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling) = 0;
 
     virtual void couldNotRestorePageState() = 0;
     virtual void restorePageState(std::optional<CyberCore::FloatPoint> scrollPosition, const CyberCore::FloatPoint& scrollOrigin, const CyberCore::FloatBoxExtent& obscuredInsetsOnSave, double scale) = 0;
@@ -483,8 +483,8 @@ public:
     virtual void saveImageToLibrary(Ref<CyberCore::SharedBuffer>&&) = 0;
     virtual void showPlaybackTargetPicker(bool hasVideo, const CyberCore::IntRect& elementRect, CyberCore::RouteSharingPolicy, const String&) = 0;
     virtual void showDataDetectorsUIForPositionInformation(const InteractionInformationAtPosition&) = 0;
-    virtual void disableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIdentifier) = 0;
-    virtual void handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel) = 0;
+    virtual void disableDoubleTapGesturesDuringTapIfNecessary(CyberKit::TapIdentifier) = 0;
+    virtual void handleSmartMagnificationInformationForPotentialTap(CyberKit::TapIdentifier, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel) = 0;
     virtual double minimumZoomScale() const = 0;
     virtual CyberCore::FloatRect documentRect() const = 0;
     virtual void scrollingNodeScrollViewWillStartPanGesture(CyberCore::ScrollingNodeID) = 0;
@@ -673,8 +673,8 @@ public:
 #endif
 
 #if PLATFORM(GTK) || PLATFORM(WPE)
-    virtual WebKitWebResourceLoadManager* webResourceLoadManager() = 0;
+    virtual CyberKitWebResourceLoadManager* webResourceLoadManager() = 0;
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

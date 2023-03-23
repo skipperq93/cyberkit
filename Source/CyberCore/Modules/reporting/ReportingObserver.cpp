@@ -37,7 +37,7 @@
 #include "WorkerGlobalScope.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ReportingObserver);
 
@@ -148,4 +148,4 @@ void ReportingObserver::appendQueuedReportIfCorrectType(const Ref<Report>& repor
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

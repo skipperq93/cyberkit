@@ -29,7 +29,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static Clipboard& clipboard()
 {
@@ -66,4 +66,4 @@ Clipboard& Clipboard::get(const String& name)
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

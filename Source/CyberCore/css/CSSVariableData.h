@@ -33,7 +33,7 @@
 #include "CSSParserTokenRange.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserTokenRange;
 
@@ -60,4 +60,4 @@ private:
     Vector<CSSParserToken> m_tokens;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

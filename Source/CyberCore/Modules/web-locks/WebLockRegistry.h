@@ -36,7 +36,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Exception;
 struct WebLockManagerSnapshot;
@@ -80,4 +80,4 @@ private:
     HashMap<std::pair<PAL::SessionID, ClientOrigin>, WeakPtr<PerOriginRegistry>> m_perOriginRegistries;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

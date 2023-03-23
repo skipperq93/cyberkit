@@ -28,7 +28,7 @@
 #include "DisplayGeometryTypes.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 class Box;
@@ -59,5 +59,5 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

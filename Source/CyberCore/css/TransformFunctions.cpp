@@ -46,7 +46,7 @@
 #include "TranslateTransformOperation.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static TransformOperation::Type transformOperationType(CSSValueID type)
 {

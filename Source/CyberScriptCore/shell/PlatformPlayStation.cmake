@@ -24,7 +24,7 @@ if (${CMAKE_GENERATOR} MATCHES "Visual Studio")
     # Set the debugger working directory for Visual Studio
     set_target_properties(jsc PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 
-    # Set the startup target to JSC if WebCore disabled
+    # Set the startup target to JSC if CyberCore disabled
     if (NOT ENABLE_WEBCORE)
         set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT jsc)
     endif ()

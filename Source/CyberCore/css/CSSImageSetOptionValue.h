@@ -27,7 +27,7 @@
 
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 
@@ -72,6 +72,6 @@ private:
     std::optional<Type> m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSImageSetOptionValue, isImageSetOptionValue())

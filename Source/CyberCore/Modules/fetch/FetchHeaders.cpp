@@ -31,7 +31,7 @@
 
 #include "HTTPParsers.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://fetch.spec.whatwg.org/#concept-headers-remove-privileged-no-cors-request-headers
 static void removePrivilegedNoCORSRequestHeaders(HTTPHeaderMap& headers)
@@ -338,4 +338,4 @@ FetchHeaders::Iterator::Iterator(FetchHeaders& headers)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

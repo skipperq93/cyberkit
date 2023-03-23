@@ -29,7 +29,7 @@
 #include "EventTarget.h"
 #include "UIEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -70,6 +70,6 @@ private:
     RefPtr<EventTarget> m_relatedTarget;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(FocusEvent)

@@ -24,7 +24,7 @@
 #include "TestNamedSetterWithLegacyOverrideBuiltIns.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestNamedSetterWithLegacyOverrideBuiltIns : public JSDOMWrapper<TestNamedSetterWithLegacyOverrideBuiltIns> {
 public:
@@ -98,4 +98,4 @@ template<> struct JSDOMWrapperConverterTraits<TestNamedSetterWithLegacyOverrideB
     using ToWrappedReturnType = TestNamedSetterWithLegacyOverrideBuiltIns*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

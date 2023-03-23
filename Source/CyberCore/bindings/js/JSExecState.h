@@ -35,7 +35,7 @@
 #include <wtf/ForbidHeapAllocation.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -220,4 +220,4 @@ JSC::JSValue evaluateHandlerFromAnyThread(JSC::JSGlobalObject*, const JSC::Sourc
 
 ScriptExecutionContext* executionContext(JSC::JSGlobalObject*);
 
-} // namespace WebCore
+} // namespace CyberCore

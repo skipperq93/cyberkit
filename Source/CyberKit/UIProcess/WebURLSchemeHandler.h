@@ -37,7 +37,7 @@ namespace CyberCore {
 class ResourceRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct URLSchemeTaskParameters;
 class WebPageProxy;
@@ -79,4 +79,4 @@ private:
 
 }; // class WebURLSchemeHandler
 
-} // namespace WebKit
+} // namespace CyberKit

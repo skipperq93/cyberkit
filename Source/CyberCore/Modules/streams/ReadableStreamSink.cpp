@@ -32,7 +32,7 @@
 #include "SharedBuffer.h"
 #include <CyberScriptCore/Uint8Array.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ReadableStreamToSharedBufferSink::ReadableStreamToSharedBufferSink(Callback&& callback)
     : m_callback { WTFMove(callback) }
@@ -67,4 +67,4 @@ void ReadableStreamToSharedBufferSink::error(String&& message)
         callback(Exception { TypeError, WTFMove(message) });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

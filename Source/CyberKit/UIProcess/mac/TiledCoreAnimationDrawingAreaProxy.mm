@@ -38,7 +38,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/MachSendRight.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace IPC;
 using namespace CyberCore;
 
@@ -223,6 +223,6 @@ void TiledCoreAnimationDrawingAreaProxy::dispatchPresentationCallbacksAfterFlush
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // !PLATFORM(IOS_FAMILY)

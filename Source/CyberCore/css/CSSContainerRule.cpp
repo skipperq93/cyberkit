@@ -32,7 +32,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSContainerRule::CSSContainerRule(StyleRuleContainer& rule, CSSStyleSheet* parent)
     : CSSConditionRule(rule, parent)
@@ -76,5 +76,5 @@ String CSSContainerRule::nameText() const
     return builder.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

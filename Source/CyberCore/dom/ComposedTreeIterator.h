@@ -30,7 +30,7 @@
 #include "HTMLSlotElement.h"
 #include "ShadowRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLSlotElement;
 
@@ -264,4 +264,4 @@ inline Node* nextInComposedTreeIgnoringUserAgentShadow(Node& node)
     return nextSkippingChildrenInComposedTreeIgnoringUserAgentShadow(node);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

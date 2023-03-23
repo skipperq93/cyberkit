@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *
  * This file handles shared library symbol export decorations. It is recommended
- * that all WebKit projects use these definitions so that symbol exports work
- * properly on all platforms and compilers that WebKit builds under.
+ * that all CyberKit projects use these definitions so that symbol exports work
+ * properly on all platforms and compilers that CyberKit builds under.
  */
 
 #pragma once
@@ -33,7 +33,7 @@
 
 #if !defined(JS_EXPORT_PRIVATE)
 
-#if defined(BUILDING_JavaScriptCore) || defined(STATICALLY_LINKED_WITH_JavaScriptCore)
+#if defined(BUILDING_CyberScriptCore) || defined(STATICALLY_LINKED_WITH_CyberScriptCore)
 #define JS_EXPORT_PRIVATE WTF_EXPORT_DECLARATION
 #else
 #define JS_EXPORT_PRIVATE WTF_IMPORT_DECLARATION

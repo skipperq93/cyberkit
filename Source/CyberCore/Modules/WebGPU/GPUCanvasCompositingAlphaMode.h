@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUCanvasCompositingAlphaMode.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUCanvasCompositingAlphaMode : uint8_t {
     Opaque,

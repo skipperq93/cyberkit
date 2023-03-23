@@ -38,7 +38,7 @@
 #import <pal/cocoa/AVFoundationSoftLink.h>
 #import <wtf/spi/darwin/SandboxSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool UserMediaPermissionRequestManagerProxy::permittedToCaptureAudio()
 {
@@ -100,4 +100,4 @@ void UserMediaPermissionRequestManagerProxy::requestSystemValidation(const WebPa
 }
 #endif // ENABLE(MEDIA_STREAM)
 
-} // namespace WebKit
+} // namespace CyberKit

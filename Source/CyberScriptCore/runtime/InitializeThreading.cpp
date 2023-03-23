@@ -99,7 +99,7 @@ void initialize()
 #endif
 #endif
 
-        JITOperationList::populatePointersInJavaScriptCore();
+        JITOperationList::populatePointersInCyberScriptCore();
 
         AssemblyCommentRegistry::initialize();
         LLInt::initialize();
@@ -134,7 +134,7 @@ void initialize()
         RELEASE_ASSERT(!g_jscConfig.initializeHasBeenCalled);
         g_jscConfig.initializeHasBeenCalled = true;
 
-        WTF::registerProfileGenerationCallback<JSCProfileTag>("JavaScriptCore");
+        WTF::registerProfileGenerationCallback<JSCProfileTag>("CyberScriptCore");
     });
 }
 

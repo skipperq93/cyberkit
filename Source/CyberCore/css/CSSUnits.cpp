@@ -23,7 +23,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSUnitCategory unitCategory(CSSUnitType type)
 {
@@ -263,4 +263,4 @@ TextStream& operator<<(TextStream& ts, CSSUnitType unitType)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

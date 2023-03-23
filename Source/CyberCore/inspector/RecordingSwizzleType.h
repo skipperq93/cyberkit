@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // Keep this in sync with WI.Recording.Swizzle.
 enum class RecordingSwizzleType : int {
@@ -57,4 +57,4 @@ enum class RecordingSwizzleType : int {
     DOMPointInit = 25,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

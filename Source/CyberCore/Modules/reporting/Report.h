@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 
@@ -55,4 +55,4 @@ private:
     RefPtr<ReportBody> m_body;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

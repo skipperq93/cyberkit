@@ -18,16 +18,16 @@
  */
 
 #include "config.h"
-#include "WebKitWebsiteDataManager.h"
+#include "CyberKitWebsiteDataManager.h"
 
-#include "WebKitCookieManagerPrivate.h"
-#include "WebKitInitialize.h"
-#include "WebKitMemoryPressureSettings.h"
-#include "WebKitMemoryPressureSettingsPrivate.h"
-#include "WebKitNetworkProxySettingsPrivate.h"
-#include "WebKitPrivate.h"
-#include "WebKitWebsiteDataManagerPrivate.h"
-#include "WebKitWebsiteDataPrivate.h"
+#include "CyberKitCookieManagerPrivate.h"
+#include "CyberKitInitialize.h"
+#include "CyberKitMemoryPressureSettings.h"
+#include "CyberKitMemoryPressureSettingsPrivate.h"
+#include "CyberKitNetworkProxySettingsPrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitWebsiteDataManagerPrivate.h"
+#include "CyberKitWebsiteDataPrivate.h"
 #include "WebProcessPool.h"
 #include "WebsiteDataFetchOption.h"
 #include "WebsiteDataStore.h"
@@ -38,41 +38,41 @@
 #include <wtf/glib/WTFGType.h>
 
 #if PLATFORM(GTK) && ENABLE(2022_GLIB_API)
-#include "WebKitFaviconDatabasePrivate.h"
+#include "CyberKitFaviconDatabasePrivate.h"
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitWebsiteDataManager:
- * @See_also: #WebKitWebContext, #WebKitWebsiteData
+ * CyberKitWebsiteDataManager:
+ * @See_also: #CyberKitWebContext, #CyberKitWebsiteData
  *
  * Manages data stored locally by web sites.
  *
- * You can use WebKitWebsiteDataManager to configure the local directories
- * where website data will be stored. Use #WebKitWebsiteDataManager:base-data-directory
- * and #WebKitWebsiteDataManager:base-cache-directory set a common base directory for all
- * website data and caches. The newly created WebKitWebsiteDataManager must be passed as
- * a construct property to a #WebKitWebContext; you can use webkit_web_context_new_with_website_data_manager()
- * to create a new #WebKitWebContext with a WebKitWebsiteDataManager.
+ * You can use CyberKitWebsiteDataManager to configure the local directories
+ * where website data will be stored. Use #CyberKitWebsiteDataManager:base-data-directory
+ * and #CyberKitWebsiteDataManager:base-cache-directory set a common base directory for all
+ * website data and caches. The newly created CyberKitWebsiteDataManager must be passed as
+ * a construct property to a #CyberKitWebContext; you can use webkit_web_context_new_with_website_data_manager()
+ * to create a new #CyberKitWebContext with a CyberKitWebsiteDataManager.
  * If you don't want to set any specific configuration, you don't need to create
- * a WebKitWebsiteDataManager: the #WebKitWebContext will create a WebKitWebsiteDataManager
- * with the default configuration. To get the WebKitWebsiteDataManager of a #WebKitWebContext,
+ * a CyberKitWebsiteDataManager: the #CyberKitWebContext will create a CyberKitWebsiteDataManager
+ * with the default configuration. To get the CyberKitWebsiteDataManager of a #CyberKitWebContext,
  * you can use webkit_web_context_get_website_data_manager().
  *
- * A WebKitWebsiteDataManager can also be ephemeral, in which case all the directory configuration
- * is not needed because website data will never persist. You can create an ephemeral WebKitWebsiteDataManager
- * with webkit_website_data_manager_new_ephemeral() and pass the ephemeral WebKitWebsiteDataManager to
- * a #WebKitWebContext, or simply use webkit_web_context_new_ephemeral().
+ * A CyberKitWebsiteDataManager can also be ephemeral, in which case all the directory configuration
+ * is not needed because website data will never persist. You can create an ephemeral CyberKitWebsiteDataManager
+ * with webkit_website_data_manager_new_ephemeral() and pass the ephemeral CyberKitWebsiteDataManager to
+ * a #CyberKitWebContext, or simply use webkit_web_context_new_ephemeral().
  *
- * WebKitWebsiteDataManager can also be used to fetch website data, remove data
+ * CyberKitWebsiteDataManager can also be used to fetch website data, remove data
  * stored by particular websites, or clear data for all websites modified since a given
  * period of time.
  *
  * Since: 2.10
  */
 
-using namespace WebKit;
+using namespace CyberKit;
 
 enum {
     PROP_0,
@@ -93,19 +93,19 @@ enum {
     PROP_IS_EPHEMERAL
 };
 
-struct _WebKitWebsiteDataManagerPrivate {
-    RefPtr<WebKit::WebsiteDataStore> websiteDataStore;
+struct _CyberKitWebsiteDataManagerPrivate {
+    RefPtr<CyberKit::WebsiteDataStore> websiteDataStore;
     CString baseDataDirectory;
     CString baseCacheDirectory;
 
 #if PLATFORM(GTK) && ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitFaviconDatabase> faviconDatabase;
+    GRefPtr<CyberKitFaviconDatabase> faviconDatabase;
 #endif
 
 #if !ENABLE(2022_GLIB_API)
-    WebKitTLSErrorsPolicy tlsErrorsPolicy;
+    CyberKitTLSErrorsPolicy tlsErrorsPolicy;
 
-    GRefPtr<WebKitCookieManager> cookieManager;
+    GRefPtr<CyberKitCookieManager> cookieManager;
 
     // These manual directory overrides are deprecated. Please don't add more.
     GUniquePtr<char> localStorageDirectory;
@@ -120,11 +120,11 @@ struct _WebKitWebsiteDataManagerPrivate {
 #endif
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebsiteDataManager, webkit_website_data_manager, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebsiteDataManager, webkit_website_data_manager, G_TYPE_OBJECT, GObject)
 
 static void webkitWebsiteDataManagerGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebsiteDataManager* manager = WEBKIT_WEBSITE_DATA_MANAGER(object);
+    CyberKitWebsiteDataManager* manager = WEBKIT_WEBSITE_DATA_MANAGER(object);
 
 #if !ENABLE(2022_GLIB_API)
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -178,7 +178,7 @@ static void webkitWebsiteDataManagerGetProperty(GObject* object, guint propID, G
 
 static void webkitWebsiteDataManagerSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebsiteDataManager* manager = WEBKIT_WEBSITE_DATA_MANAGER(object);
+    CyberKitWebsiteDataManager* manager = WEBKIT_WEBSITE_DATA_MANAGER(object);
 
     switch (propID) {
     case PROP_BASE_DATA_DIRECTORY:
@@ -218,7 +218,7 @@ static void webkitWebsiteDataManagerSetProperty(GObject* object, guint propID, c
 #endif
     case PROP_IS_EPHEMERAL:
         if (g_value_get_boolean(value))
-            manager->priv->websiteDataStore = WebKit::WebsiteDataStore::createNonPersistent();
+            manager->priv->websiteDataStore = CyberKit::WebsiteDataStore::createNonPersistent();
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, propID, paramSpec);
@@ -230,7 +230,7 @@ static void webkitWebsiteDataManagerConstructed(GObject* object)
 {
     G_OBJECT_CLASS(webkit_website_data_manager_parent_class)->constructed(object);
 
-    WebKitWebsiteDataManagerPrivate* priv = WEBKIT_WEBSITE_DATA_MANAGER(object)->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = WEBKIT_WEBSITE_DATA_MANAGER(object)->priv;
     if (!priv->baseDataDirectory.isNull()) {
         if (!priv->localStorageDirectory)
             priv->localStorageDirectory.reset(g_build_filename(priv->baseDataDirectory.data(), "localstorage", nullptr));
@@ -261,7 +261,7 @@ static void webkitWebsiteDataManagerConstructed(GObject* object)
 }
 #endif
 
-static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass* findClass)
+static void webkit_website_data_manager_class_init(CyberKitWebsiteDataManagerClass* findClass)
 {
     webkitInitialize();
 
@@ -273,7 +273,7 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
 #endif
 
     /**
-     * WebKitWebsiteDataManager:base-data-directory:
+     * CyberKitWebsiteDataManager:base-data-directory:
      *
      * The base directory for website data. If %NULL, a default location will be used.
      *
@@ -289,7 +289,7 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 
     /**
-     * WebKitWebsiteDataManager:base-cache-directory:
+     * CyberKitWebsiteDataManager:base-cache-directory:
      *
      * The base directory for caches. If %NULL, a default location will be used.
      *
@@ -306,13 +306,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
 
 #if !ENABLE(2022_GLIB_API)
     /**
-     * WebKitWebsiteDataManager:local-storage-directory:
+     * CyberKitWebsiteDataManager:local-storage-directory:
      *
      * The directory where local storage data will be stored.
      *
      * Since: 2.10
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-data-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-data-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -324,13 +324,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:disk-cache-directory:
+     * CyberKitWebsiteDataManager:disk-cache-directory:
      *
      * The directory where HTTP disk cache will be stored.
      *
      * Since: 2.10
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-cache-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-cache-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -342,13 +342,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:offline-application-cache-directory:
+     * CyberKitWebsiteDataManager:offline-application-cache-directory:
      *
      * The directory where offline web application cache will be stored.
      *
      * Since: 2.10
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-cache-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-cache-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -360,13 +360,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:indexeddb-directory:
+     * CyberKitWebsiteDataManager:indexeddb-directory:
      *
      * The directory where IndexedDB databases will be stored.
      *
      * Since: 2.10
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-data-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-data-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -378,7 +378,7 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:websql-directory:
+     * CyberKitWebsiteDataManager:websql-directory:
      *
      * The directory where WebSQL databases will be stored.
      *
@@ -396,13 +396,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:hsts-cache-directory:
+     * CyberKitWebsiteDataManager:hsts-cache-directory:
      *
      * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
      *
      * Since: 2.26
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-cache-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-cache-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -414,13 +414,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:itp-directory:
+     * CyberKitWebsiteDataManager:itp-directory:
      *
      * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
      *
      * Since: 2.30
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-data-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-data-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -432,13 +432,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:service-worker-registrations-directory:
+     * CyberKitWebsiteDataManager:service-worker-registrations-directory:
      *
      * The directory where service workers registrations will be stored.
      *
      * Since: 2.30
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-data-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-data-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -450,13 +450,13 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_DEPRECATED)));
 
     /**
-     * WebKitWebsiteDataManager:dom-cache-directory:
+     * CyberKitWebsiteDataManager:dom-cache-directory:
      *
      * The directory where DOM cache will be stored.
      *
      * Since: 2.30
      *
-     * Deprecated: 2.40. Use WebKitWebsiteDataManager:base-cache-directory instead.
+     * Deprecated: 2.40. Use CyberKitWebsiteDataManager:base-cache-directory instead.
      */
     g_object_class_install_property(
         gObjectClass,
@@ -469,11 +469,11 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
 #endif
 
     /**
-     * WebKitWebsiteDataManager:is-ephemeral:
+     * CyberKitWebsiteDataManager:is-ephemeral:
      *
-     * Whether the #WebKitWebsiteDataManager is ephemeral. An ephemeral #WebKitWebsiteDataManager
+     * Whether the #CyberKitWebsiteDataManager is ephemeral. An ephemeral #CyberKitWebsiteDataManager
      * handles all websites data as non-persistent, and nothing will be written to the client
-     * storage. Note that if you create an ephemeral #WebKitWebsiteDataManager all other construction
+     * storage. Note that if you create an ephemeral #CyberKitWebsiteDataManager all other construction
      * parameters to configure data directories will be ignored.
      *
      * Since: 2.16
@@ -488,9 +488,9 @@ static void webkit_website_data_manager_class_init(WebKitWebsiteDataManagerClass
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 }
 
-WebKit::WebsiteDataStore& webkitWebsiteDataManagerGetDataStore(WebKitWebsiteDataManager* manager)
+CyberKit::WebsiteDataStore& webkitWebsiteDataManagerGetDataStore(CyberKitWebsiteDataManager* manager)
 {
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (!priv->websiteDataStore) {
         auto configuration = WebsiteDataStoreConfiguration::createWithBaseDirectories(String::fromUTF8(priv->baseCacheDirectory), String::fromUTF8(priv->baseDataDirectory));
 #if !ENABLE(2022_GLIB_API)
@@ -513,7 +513,7 @@ WebKit::WebsiteDataStore& webkitWebsiteDataManagerGetDataStore(WebKitWebsiteData
         if (priv->domCacheDirectory)
             configuration->setCacheStorageDirectory(FileSystem::stringFromFileSystemRepresentation(priv->domCacheDirectory.get()));
 #endif
-        priv->websiteDataStore = WebKit::WebsiteDataStore::create(WTFMove(configuration), PAL::SessionID::generatePersistentSessionID());
+        priv->websiteDataStore = CyberKit::WebsiteDataStore::create(WTFMove(configuration), PAL::SessionID::generatePersistentSessionID());
 #if !ENABLE(2022_GLIB_API)
         priv->websiteDataStore->setIgnoreTLSErrors(priv->tlsErrorsPolicy == WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 #endif
@@ -523,7 +523,7 @@ WebKit::WebsiteDataStore& webkitWebsiteDataManagerGetDataStore(WebKitWebsiteData
 }
 
 #if ENABLE(2022_GLIB_API)
-WebKitWebsiteDataManager* webkitWebsiteDataManagerCreate(CString&& baseDataDirectory, CString&& baseCacheDirectory)
+CyberKitWebsiteDataManager* webkitWebsiteDataManagerCreate(CString&& baseDataDirectory, CString&& baseCacheDirectory)
 {
     auto* manager = WEBKIT_WEBSITE_DATA_MANAGER(g_object_new(WEBKIT_TYPE_WEBSITE_DATA_MANAGER, nullptr));
     manager->priv->baseDataDirectory = WTFMove(baseDataDirectory);
@@ -536,19 +536,19 @@ WebKitWebsiteDataManager* webkitWebsiteDataManagerCreate(CString&& baseDataDirec
  * @first_option_name: name of the first option to set
  * @...: value of first option, followed by more options, %NULL-terminated
  *
- * Creates a new #WebKitWebsiteDataManager with the given options.
+ * Creates a new #CyberKitWebsiteDataManager with the given options.
  *
- * It must be passed as construction parameter of a #WebKitWebContext.
+ * It must be passed as construction parameter of a #CyberKitWebContext.
  *
- * Returns: (transfer full): the newly created #WebKitWebsiteDataManager
+ * Returns: (transfer full): the newly created #CyberKitWebsiteDataManager
  *
  * Since: 2.10
  */
-WebKitWebsiteDataManager* webkit_website_data_manager_new(const gchar* firstOptionName, ...)
+CyberKitWebsiteDataManager* webkit_website_data_manager_new(const gchar* firstOptionName, ...)
 {
     va_list args;
     va_start(args, firstOptionName);
-    WebKitWebsiteDataManager* manager = WEBKIT_WEBSITE_DATA_MANAGER(g_object_new_valist(WEBKIT_TYPE_WEBSITE_DATA_MANAGER, firstOptionName, args));
+    CyberKitWebsiteDataManager* manager = WEBKIT_WEBSITE_DATA_MANAGER(g_object_new_valist(WEBKIT_TYPE_WEBSITE_DATA_MANAGER, firstOptionName, args));
     va_end(args);
 
     return manager;
@@ -557,15 +557,15 @@ WebKitWebsiteDataManager* webkit_website_data_manager_new(const gchar* firstOpti
 /**
  * webkit_website_data_manager_new_ephemeral:
  *
- * Creates an ephemeral #WebKitWebsiteDataManager.
+ * Creates an ephemeral #CyberKitWebsiteDataManager.
  *
- * See #WebKitWebsiteDataManager:is-ephemeral for more details.
+ * See #CyberKitWebsiteDataManager:is-ephemeral for more details.
  *
- * Returns: (transfer full): a new ephemeral #WebKitWebsiteDataManager.
+ * Returns: (transfer full): a new ephemeral #CyberKitWebsiteDataManager.
  *
  * Since: 2.16
  */
-WebKitWebsiteDataManager* webkit_website_data_manager_new_ephemeral()
+CyberKitWebsiteDataManager* webkit_website_data_manager_new_ephemeral()
 {
     return WEBKIT_WEBSITE_DATA_MANAGER(g_object_new(WEBKIT_TYPE_WEBSITE_DATA_MANAGER, "is-ephemeral", TRUE, nullptr));
 }
@@ -573,17 +573,17 @@ WebKitWebsiteDataManager* webkit_website_data_manager_new_ephemeral()
 
 /**
  * webkit_website_data_manager_is_ephemeral:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get whether a #WebKitWebsiteDataManager is ephemeral.
+ * Get whether a #CyberKitWebsiteDataManager is ephemeral.
  *
- * See #WebKitWebsiteDataManager:is-ephemeral for more details.
+ * See #CyberKitWebsiteDataManager:is-ephemeral for more details.
  *
  * Returns: %TRUE if @manager is ephemeral or %FALSE otherwise.
  *
  * Since: 2.16
  */
-gboolean webkit_website_data_manager_is_ephemeral(WebKitWebsiteDataManager* manager)
+gboolean webkit_website_data_manager_is_ephemeral(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), FALSE);
 
@@ -592,16 +592,16 @@ gboolean webkit_website_data_manager_is_ephemeral(WebKitWebsiteDataManager* mana
 
 /**
  * webkit_website_data_manager_get_base_data_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:base-data-directory property.
+ * Get the #CyberKitWebsiteDataManager:base-data-directory property.
  *
  * Returns: (nullable): the base directory for website data, or %NULL if
- *    #WebKitWebsiteDataManager:base-data-directory was not provided or @manager is ephemeral.
+ *    #CyberKitWebsiteDataManager:base-data-directory was not provided or @manager is ephemeral.
  *
  * Since: 2.10
  */
-const gchar* webkit_website_data_manager_get_base_data_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_base_data_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
@@ -613,16 +613,16 @@ const gchar* webkit_website_data_manager_get_base_data_directory(WebKitWebsiteDa
 
 /**
  * webkit_website_data_manager_get_base_cache_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:base-cache-directory property.
+ * Get the #CyberKitWebsiteDataManager:base-cache-directory property.
  *
  * Returns: (nullable): the base directory for caches, or %NULL if
- *    #WebKitWebsiteDataManager:base-cache-directory was not provided or @manager is ephemeral.
+ *    #CyberKitWebsiteDataManager:base-cache-directory was not provided or @manager is ephemeral.
  *
  * Since: 2.10
  */
-const gchar* webkit_website_data_manager_get_base_cache_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_base_cache_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
@@ -635,9 +635,9 @@ const gchar* webkit_website_data_manager_get_base_cache_directory(WebKitWebsiteD
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_website_data_manager_get_local_storage_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:local-storage-directory property.
+ * Get the #CyberKitWebsiteDataManager:local-storage-directory property.
  *
  * Returns: (allow-none): the directory where local storage data is stored or %NULL if @manager is ephemeral.
  *
@@ -645,24 +645,24 @@ const gchar* webkit_website_data_manager_get_base_cache_directory(WebKitWebsiteD
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_data_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_local_storage_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_local_storage_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->localStorageDirectory)
-        priv->localStorageDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultLocalStorageDirectory().utf8().data()));
+        priv->localStorageDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultLocalStorageDirectory().utf8().data()));
     return priv->localStorageDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_disk_cache_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:disk-cache-directory property.
+ * Get the #CyberKitWebsiteDataManager:disk-cache-directory property.
  *
  * Returns: (allow-none): the directory where HTTP disk cache is stored or %NULL if @manager is ephemeral.
  *
@@ -670,26 +670,26 @@ const gchar* webkit_website_data_manager_get_local_storage_directory(WebKitWebsi
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_cache_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_disk_cache_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_disk_cache_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->diskCacheDirectory) {
         // The default directory already has the subdirectory.
-        priv->diskCacheDirectory.reset(g_strdup(FileSystem::parentPath(WebKit::WebsiteDataStore::defaultNetworkCacheDirectory()).utf8().data()));
+        priv->diskCacheDirectory.reset(g_strdup(FileSystem::parentPath(CyberKit::WebsiteDataStore::defaultNetworkCacheDirectory()).utf8().data()));
     }
     return priv->diskCacheDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_offline_application_cache_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:offline-application-cache-directory property.
+ * Get the #CyberKitWebsiteDataManager:offline-application-cache-directory property.
  *
  * Returns: (allow-none): the directory where offline web application cache is stored or %NULL if @manager is ephemeral.
  *
@@ -697,24 +697,24 @@ const gchar* webkit_website_data_manager_get_disk_cache_directory(WebKitWebsiteD
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_cache_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_offline_application_cache_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_offline_application_cache_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->applicationCacheDirectory)
-        priv->applicationCacheDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultApplicationCacheDirectory().utf8().data()));
+        priv->applicationCacheDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultApplicationCacheDirectory().utf8().data()));
     return priv->applicationCacheDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_indexeddb_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:indexeddb-directory property.
+ * Get the #CyberKitWebsiteDataManager:indexeddb-directory property.
  *
  * Returns: (allow-none): the directory where IndexedDB databases are stored or %NULL if @manager is ephemeral.
  *
@@ -722,24 +722,24 @@ const gchar* webkit_website_data_manager_get_offline_application_cache_directory
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_data_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_indexeddb_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_indexeddb_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->indexedDBDirectory)
-        priv->indexedDBDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultIndexedDBDatabaseDirectory().utf8().data()));
+        priv->indexedDBDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultIndexedDBDatabaseDirectory().utf8().data()));
     return priv->indexedDBDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_websql_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:websql-directory property.
+ * Get the #CyberKitWebsiteDataManager:websql-directory property.
  *
  * Returns: (allow-none): the directory where WebSQL databases are stored or %NULL if @manager is ephemeral.
  *
@@ -747,24 +747,24 @@ const gchar* webkit_website_data_manager_get_indexeddb_directory(WebKitWebsiteDa
  *
  * Deprecated: 2.24. WebSQL is no longer supported. Use IndexedDB instead.
  */
-const gchar* webkit_website_data_manager_get_websql_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_websql_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->webSQLDirectory)
-        priv->webSQLDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultWebSQLDatabaseDirectory().utf8().data()));
+        priv->webSQLDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultWebSQLDatabaseDirectory().utf8().data()));
     return priv->webSQLDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_hsts_cache_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:hsts-cache-directory property.
+ * Get the #CyberKitWebsiteDataManager:hsts-cache-directory property.
  *
  * Returns: (allow-none): the directory where the HSTS cache is stored or %NULL if @manager is ephemeral.
  *
@@ -772,24 +772,24 @@ const gchar* webkit_website_data_manager_get_websql_directory(WebKitWebsiteDataM
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_cache_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_hsts_cache_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_hsts_cache_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->hstsCacheDirectory)
-        priv->hstsCacheDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultHSTSStorageDirectory().utf8().data()));
+        priv->hstsCacheDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultHSTSStorageDirectory().utf8().data()));
     return priv->hstsCacheDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_itp_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:itp-directory property.
+ * Get the #CyberKitWebsiteDataManager:itp-directory property.
  *
  * Returns: (allow-none): the directory where Intelligent Tracking Prevention data is stored or %NULL if @manager is ephemeral.
  *
@@ -797,24 +797,24 @@ const gchar* webkit_website_data_manager_get_hsts_cache_directory(WebKitWebsiteD
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_data_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_itp_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_itp_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->itpDirectory)
-        priv->itpDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultResourceLoadStatisticsDirectory().utf8().data()));
+        priv->itpDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultResourceLoadStatisticsDirectory().utf8().data()));
     return priv->itpDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_service_worker_registrations_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:service-worker-registrations-directory property.
+ * Get the #CyberKitWebsiteDataManager:service-worker-registrations-directory property.
  *
  * Returns: (allow-none): the directory where service worker registrations are stored or %NULL if @manager is ephemeral.
  *
@@ -822,24 +822,24 @@ const gchar* webkit_website_data_manager_get_itp_directory(WebKitWebsiteDataMana
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_data_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_service_worker_registrations_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_service_worker_registrations_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->swRegistrationsDirectory)
-        priv->swRegistrationsDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultServiceWorkerRegistrationDirectory().utf8().data()));
+        priv->swRegistrationsDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultServiceWorkerRegistrationDirectory().utf8().data()));
     return priv->swRegistrationsDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_dom_cache_directory:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitWebsiteDataManager:dom-cache-directory property.
+ * Get the #CyberKitWebsiteDataManager:dom-cache-directory property.
  *
  * Returns: (allow-none): the directory where DOM cache is stored or %NULL if @manager is ephemeral.
  *
@@ -847,30 +847,30 @@ const gchar* webkit_website_data_manager_get_service_worker_registrations_direct
  *
  * Deprecated: 2.40, use webkit_website_data_manager_get_base_cache_directory() instead.
  */
-const gchar* webkit_website_data_manager_get_dom_cache_directory(WebKitWebsiteDataManager* manager)
+const gchar* webkit_website_data_manager_get_dom_cache_directory(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
-    WebKitWebsiteDataManagerPrivate* priv = manager->priv;
+    CyberKitWebsiteDataManagerPrivate* priv = manager->priv;
     if (priv->websiteDataStore && !priv->websiteDataStore->isPersistent())
         return nullptr;
 
     if (!priv->domCacheDirectory)
-        priv->domCacheDirectory.reset(g_strdup(WebKit::WebsiteDataStore::defaultCacheStorageDirectory().utf8().data()));
+        priv->domCacheDirectory.reset(g_strdup(CyberKit::WebsiteDataStore::defaultCacheStorageDirectory().utf8().data()));
     return priv->domCacheDirectory.get();
 }
 
 /**
  * webkit_website_data_manager_get_cookie_manager:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitCookieManager of @manager.
+ * Get the #CyberKitCookieManager of @manager.
  *
- * Returns: (transfer none): a #WebKitCookieManager
+ * Returns: (transfer none): a #CyberKitCookieManager
  *
  * Since: 2.16
  */
-WebKitCookieManager* webkit_website_data_manager_get_cookie_manager(WebKitWebsiteDataManager* manager)
+CyberKitCookieManager* webkit_website_data_manager_get_cookie_manager(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
@@ -882,7 +882,7 @@ WebKitCookieManager* webkit_website_data_manager_get_cookie_manager(WebKitWebsit
 
 /**
  * webkit_website_data_manager_set_itp_enabled:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @enabled: value to set
  *
  * Enable or disable Intelligent Tracking Prevention (ITP).
@@ -894,7 +894,7 @@ WebKitCookieManager* webkit_website_data_manager_get_cookie_manager(WebKitWebsit
  *
  * Since: 2.30
  */
-void webkit_website_data_manager_set_itp_enabled(WebKitWebsiteDataManager* manager, gboolean enabled)
+void webkit_website_data_manager_set_itp_enabled(CyberKitWebsiteDataManager* manager, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
 
@@ -903,7 +903,7 @@ void webkit_website_data_manager_set_itp_enabled(WebKitWebsiteDataManager* manag
 
 /**
  * webkit_website_data_manager_get_itp_enabled:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
  * Get whether Intelligent Tracking Prevention (ITP) is enabled or not.
  *
@@ -911,7 +911,7 @@ void webkit_website_data_manager_set_itp_enabled(WebKitWebsiteDataManager* manag
  *
  * Since: 2.30
  */
-gboolean webkit_website_data_manager_get_itp_enabled(WebKitWebsiteDataManager* manager)
+gboolean webkit_website_data_manager_get_itp_enabled(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), FALSE);
 
@@ -920,7 +920,7 @@ gboolean webkit_website_data_manager_get_itp_enabled(WebKitWebsiteDataManager* m
 
 /**
  * webkit_website_data_manager_set_persistent_credential_storage_enabled:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @enabled: value to set
  *
  * Enable or disable persistent credential storage.
@@ -931,7 +931,7 @@ gboolean webkit_website_data_manager_get_itp_enabled(WebKitWebsiteDataManager* m
  *
  * Since: 2.30
  */
-void webkit_website_data_manager_set_persistent_credential_storage_enabled(WebKitWebsiteDataManager* manager, gboolean enabled)
+void webkit_website_data_manager_set_persistent_credential_storage_enabled(CyberKitWebsiteDataManager* manager, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
 
@@ -940,7 +940,7 @@ void webkit_website_data_manager_set_persistent_credential_storage_enabled(WebKi
 
 /**
  * webkit_website_data_manager_get_persistent_credential_storage_enabled:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
  * Get whether persistent credential storage is enabled or not.
  *
@@ -950,7 +950,7 @@ void webkit_website_data_manager_set_persistent_credential_storage_enabled(WebKi
  *
  * Since: 2.30
  */
-gboolean webkit_website_data_manager_get_persistent_credential_storage_enabled(WebKitWebsiteDataManager* manager)
+gboolean webkit_website_data_manager_get_persistent_credential_storage_enabled(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), FALSE);
 
@@ -959,14 +959,14 @@ gboolean webkit_website_data_manager_get_persistent_credential_storage_enabled(W
 
 /**
  * webkit_website_data_manager_set_tls_errors_policy:
- * @manager: a #WebKitWebsiteDataManager
- * @policy: a #WebKitTLSErrorsPolicy
+ * @manager: a #CyberKitWebsiteDataManager
+ * @policy: a #CyberKitTLSErrorsPolicy
  *
  * Set the TLS errors policy of @manager as @policy.
  *
  * Since: 2.32
  */
-void webkit_website_data_manager_set_tls_errors_policy(WebKitWebsiteDataManager* manager, WebKitTLSErrorsPolicy policy)
+void webkit_website_data_manager_set_tls_errors_policy(CyberKitWebsiteDataManager* manager, CyberKitTLSErrorsPolicy policy)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
 
@@ -979,15 +979,15 @@ void webkit_website_data_manager_set_tls_errors_policy(WebKitWebsiteDataManager*
 
 /**
  * webkit_website_data_manager_get_tls_errors_policy:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
  * Get the TLS errors policy of @manager.
  *
- * Returns: a #WebKitTLSErrorsPolicy
+ * Returns: a #CyberKitTLSErrorsPolicy
  *
  * Since: 2.32
  */
-WebKitTLSErrorsPolicy webkit_website_data_manager_get_tls_errors_policy(WebKitWebsiteDataManager* manager)
+CyberKitTLSErrorsPolicy webkit_website_data_manager_get_tls_errors_policy(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), WEBKIT_TLS_ERRORS_POLICY_FAIL);
 
@@ -996,9 +996,9 @@ WebKitTLSErrorsPolicy webkit_website_data_manager_get_tls_errors_policy(WebKitWe
 
 /**
  * webkit_website_data_manager_set_network_proxy_settings:
- * @manager: a #WebKitWebsiteDataManager
- * @proxy_mode: a #WebKitNetworkProxyMode
- * @proxy_settings: (allow-none): a #WebKitNetworkProxySettings, or %NULL
+ * @manager: a #CyberKitWebsiteDataManager
+ * @proxy_mode: a #CyberKitNetworkProxyMode
+ * @proxy_settings: (allow-none): a #CyberKitNetworkProxySettings, or %NULL
  *
  * Set the network proxy settings to be used by connections started in @manager session.
  *
@@ -1008,11 +1008,11 @@ WebKitTLSErrorsPolicy webkit_website_data_manager_get_tls_errors_policy(WebKitWe
  * %WEBKIT_NETWORK_PROXY_MODE_NO_PROXY to make sure no proxies are used at all,
  * or %WEBKIT_NETWORK_PROXY_MODE_CUSTOM to provide your own proxy settings.
  * When @proxy_mode is %WEBKIT_NETWORK_PROXY_MODE_CUSTOM @proxy_settings must be
- * a valid #WebKitNetworkProxySettings; otherwise, @proxy_settings must be %NULL.
+ * a valid #CyberKitNetworkProxySettings; otherwise, @proxy_settings must be %NULL.
  *
  * Since: 2.32
  */
-void webkit_website_data_manager_set_network_proxy_settings(WebKitWebsiteDataManager* manager, WebKitNetworkProxyMode proxyMode, WebKitNetworkProxySettings* proxySettings)
+void webkit_website_data_manager_set_network_proxy_settings(CyberKitWebsiteDataManager* manager, CyberKitNetworkProxyMode proxyMode, CyberKitNetworkProxySettings* proxySettings)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
     g_return_if_fail((proxyMode != WEBKIT_NETWORK_PROXY_MODE_CUSTOM && !proxySettings) || (proxyMode == WEBKIT_NETWORK_PROXY_MODE_CUSTOM && proxySettings));
@@ -1028,7 +1028,7 @@ void webkit_website_data_manager_set_network_proxy_settings(WebKitWebsiteDataMan
     case WEBKIT_NETWORK_PROXY_MODE_CUSTOM:
         auto settings = webkitNetworkProxySettingsGetNetworkProxySettings(proxySettings);
         if (settings.isEmpty()) {
-            g_warning("Invalid attempt to set custom network proxy settings with an empty WebKitNetworkProxySettings. Use "
+            g_warning("Invalid attempt to set custom network proxy settings with an empty CyberKitNetworkProxySettings. Use "
                 "WEBKIT_NETWORK_PROXY_MODE_NO_PROXY to not use any proxy or WEBKIT_NETWORK_PROXY_MODE_DEFAULT to use the default system settings");
         } else
             dataStore.setNetworkProxySettings(WTFMove(settings));
@@ -1038,7 +1038,7 @@ void webkit_website_data_manager_set_network_proxy_settings(WebKitWebsiteDataMan
 #endif
 
 #if PLATFORM(GTK) && ENABLE(2022_GLIB_API)
-static String webkitWebsiteDataManagerGetFaviconDatabasePath(WebKitWebsiteDataManager* manager)
+static String webkitWebsiteDataManagerGetFaviconDatabasePath(CyberKitWebsiteDataManager* manager)
 {
     if (webkit_website_data_manager_is_ephemeral(manager))
         return { };
@@ -1051,18 +1051,18 @@ static String webkitWebsiteDataManagerGetFaviconDatabasePath(WebKitWebsiteDataMa
 
 /**
  * webkit_website_data_manager_set_favicons_enabled:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @enabled: value to set
  *
  * Set whether website icons are enabled. Website icons are disabled by default.
- * When website icons are disabled, the #WebKitFaviconDatabase of @manager is closed and
+ * When website icons are disabled, the #CyberKitFaviconDatabase of @manager is closed and
  * its reference removed, so webkit_website_data_manager_get_favicon_database() will
- * return %NULL. If website icons are enabled again, a new #WebKitFaviconDatabase will
+ * return %NULL. If website icons are enabled again, a new #CyberKitFaviconDatabase will
  * be created.
  *
  * Since: 2.40
  */
-void webkit_website_data_manager_set_favicons_enabled(WebKitWebsiteDataManager* manager, gboolean enabled)
+void webkit_website_data_manager_set_favicons_enabled(CyberKitWebsiteDataManager* manager, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
 
@@ -1079,7 +1079,7 @@ void webkit_website_data_manager_set_favicons_enabled(WebKitWebsiteDataManager* 
 
 /**
  * webkit_website_data_manager_get_favicons_enabled:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
  * Get whether website icons are enabled.
  *
@@ -1087,7 +1087,7 @@ void webkit_website_data_manager_set_favicons_enabled(WebKitWebsiteDataManager* 
  *
  * Since: 2.40
  */
-gboolean webkit_website_data_manager_get_favicons_enabled(WebKitWebsiteDataManager* manager)
+gboolean webkit_website_data_manager_get_favicons_enabled(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), FALSE);
 
@@ -1096,15 +1096,15 @@ gboolean webkit_website_data_manager_get_favicons_enabled(WebKitWebsiteDataManag
 
 /**
  * webkit_website_data_manager_get_favicon_database:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  *
- * Get the #WebKitFaviconDatabase of @manager.
+ * Get the #CyberKitFaviconDatabase of @manager.
  *
- * Returns: (transfer none) (nullable): a #WebKitFaviconDatabase, or %NULL if website icons are disabled
+ * Returns: (transfer none) (nullable): a #CyberKitFaviconDatabase, or %NULL if website icons are disabled
  *
  * Since: 2.40
  */
-WebKitFaviconDatabase* webkit_website_data_manager_get_favicon_database(WebKitWebsiteDataManager* manager)
+CyberKitFaviconDatabase* webkit_website_data_manager_get_favicon_database(CyberKitWebsiteDataManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
 
@@ -1112,7 +1112,7 @@ WebKitFaviconDatabase* webkit_website_data_manager_get_favicon_database(WebKitWe
 }
 #endif
 
-static OptionSet<WebsiteDataType> toWebsiteDataTypes(WebKitWebsiteDataTypes types)
+static OptionSet<WebsiteDataType> toWebsiteDataTypes(CyberKitWebsiteDataTypes types)
 {
     OptionSet<WebsiteDataType> returnValue;
     if (types & WEBKIT_WEBSITE_DATA_MEMORY_CACHE)
@@ -1150,20 +1150,20 @@ static OptionSet<WebsiteDataType> toWebsiteDataTypes(WebKitWebsiteDataTypes type
 
 /**
  * webkit_website_data_manager_fetch:
- * @manager: a #WebKitWebsiteDataManager
- * @types: #WebKitWebsiteDataTypes
+ * @manager: a #CyberKitWebsiteDataManager
+ * @types: #CyberKitWebsiteDataTypes
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
  *
- * Asynchronously get the list of #WebKitWebsiteData for the given @types.
+ * Asynchronously get the list of #CyberKitWebsiteData for the given @types.
  *
  * When the operation is finished, @callback will be called. You can then call
  * webkit_website_data_manager_fetch_finish() to get the result of the operation.
  *
  * Since: 2.16
  */
-void webkit_website_data_manager_fetch(WebKitWebsiteDataManager* manager, WebKitWebsiteDataTypes types, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_website_data_manager_fetch(CyberKitWebsiteDataManager* manager, CyberKitWebsiteDataTypes types, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
 
@@ -1183,18 +1183,18 @@ void webkit_website_data_manager_fetch(WebKitWebsiteDataManager* manager, WebKit
 
 /**
  * webkit_website_data_manager_fetch_finish:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finish an asynchronous operation started with webkit_website_data_manager_fetch().
  *
- * Returns: (element-type WebKitWebsiteData) (transfer full): a #GList of #WebKitWebsiteData. You must free the #GList with
- *    g_list_free() and unref the #WebKitWebsiteData<!-- -->s with webkit_website_data_unref() when you're done with them.
+ * Returns: (element-type CyberKitWebsiteData) (transfer full): a #GList of #CyberKitWebsiteData. You must free the #GList with
+ *    g_list_free() and unref the #CyberKitWebsiteData<!-- -->s with webkit_website_data_unref() when you're done with them.
  *
  * Since: 2.16
  */
-GList* webkit_website_data_manager_fetch_finish(WebKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
+GList* webkit_website_data_manager_fetch_finish(CyberKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, manager), nullptr);
@@ -1204,9 +1204,9 @@ GList* webkit_website_data_manager_fetch_finish(WebKitWebsiteDataManager* manage
 
 /**
  * webkit_website_data_manager_remove:
- * @manager: a #WebKitWebsiteDataManager
- * @types: #WebKitWebsiteDataTypes
- * @website_data: (element-type WebKitWebsiteData): a #GList of #WebKitWebsiteData
+ * @manager: a #CyberKitWebsiteDataManager
+ * @types: #CyberKitWebsiteDataTypes
+ * @website_data: (element-type CyberKitWebsiteData): a #GList of #CyberKitWebsiteData
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
@@ -1221,18 +1221,18 @@ GList* webkit_website_data_manager_fetch_finish(WebKitWebsiteDataManager* manage
  *
  * Since: 2.16
  */
-void webkit_website_data_manager_remove(WebKitWebsiteDataManager* manager, WebKitWebsiteDataTypes types, GList* websiteData, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_website_data_manager_remove(CyberKitWebsiteDataManager* manager, CyberKitWebsiteDataTypes types, GList* websiteData, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
     g_return_if_fail(websiteData);
 
     // We have to remove the hash salts when cookies are removed.
     if (types & WEBKIT_WEBSITE_DATA_COOKIES)
-        types = static_cast<WebKitWebsiteDataTypes>(types | WEBKIT_WEBSITE_DATA_DEVICE_ID_HASH_SALT);
+        types = static_cast<CyberKitWebsiteDataTypes>(types | WEBKIT_WEBSITE_DATA_DEVICE_ID_HASH_SALT);
 
     Vector<WebsiteDataRecord> records;
     for (GList* item = websiteData; item; item = g_list_next(item)) {
-        WebKitWebsiteData* data = static_cast<WebKitWebsiteData*>(item->data);
+        CyberKitWebsiteData* data = static_cast<CyberKitWebsiteData*>(item->data);
 
         if (webkit_website_data_get_types(data) & types)
             records.append(webkitWebsiteDataGetRecord(data));
@@ -1251,7 +1251,7 @@ void webkit_website_data_manager_remove(WebKitWebsiteDataManager* manager, WebKi
 
 /**
  * webkit_website_data_manager_remove_finish:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
@@ -1261,7 +1261,7 @@ void webkit_website_data_manager_remove(WebKitWebsiteDataManager* manager, WebKi
  *
  * Since: 2.16
  */
-gboolean webkit_website_data_manager_remove_finish(WebKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
+gboolean webkit_website_data_manager_remove_finish(CyberKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), FALSE);
     g_return_val_if_fail(g_task_is_valid(result, manager), FALSE);
@@ -1271,8 +1271,8 @@ gboolean webkit_website_data_manager_remove_finish(WebKitWebsiteDataManager* man
 
 /**
  * webkit_website_data_manager_clear:
- * @manager: a #WebKitWebsiteDataManager
- * @types: #WebKitWebsiteDataTypes
+ * @manager: a #CyberKitWebsiteDataManager
+ * @types: #CyberKitWebsiteDataTypes
  * @timespan: a #GTimeSpan
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
@@ -1291,7 +1291,7 @@ gboolean webkit_website_data_manager_remove_finish(WebKitWebsiteDataManager* man
  *
  * Since: 2.16
  */
-void webkit_website_data_manager_clear(WebKitWebsiteDataManager* manager, WebKitWebsiteDataTypes types, GTimeSpan timeSpan, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_website_data_manager_clear(CyberKitWebsiteDataManager* manager, CyberKitWebsiteDataTypes types, GTimeSpan timeSpan, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
 
@@ -1304,7 +1304,7 @@ void webkit_website_data_manager_clear(WebKitWebsiteDataManager* manager, WebKit
 
 /**
  * webkit_website_data_manager_clear_finish:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
@@ -1314,7 +1314,7 @@ void webkit_website_data_manager_clear(WebKitWebsiteDataManager* manager, WebKit
  *
  * Since: 2.16
  */
-gboolean webkit_website_data_manager_clear_finish(WebKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
+gboolean webkit_website_data_manager_clear_finish(CyberKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), FALSE);
     g_return_val_if_fail(g_task_is_valid(result, manager), FALSE);
@@ -1323,14 +1323,14 @@ gboolean webkit_website_data_manager_clear_finish(WebKitWebsiteDataManager* mana
 }
 
 /**
- * WebKitITPFirstParty: (ref-func webkit_itp_first_party_ref) (unref-func webkit_itp_first_party_unref)
+ * CyberKitITPFirstParty: (ref-func webkit_itp_first_party_ref) (unref-func webkit_itp_first_party_unref)
  *
  * Describes a first party origin.
  *
  * Since: 2.30
  */
-struct _WebKitITPFirstParty {
-    explicit _WebKitITPFirstParty(WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty&& data)
+struct _CyberKitITPFirstParty {
+    explicit _CyberKitITPFirstParty(WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty&& data)
         : domain(data.firstPartyDomain.string().utf8())
         , storageAccessGranted(data.storageAccessGranted)
         , lastUpdated(adoptGRef(g_date_time_new_from_unix_utc(data.timeLastUpdated.secondsAs<gint64>())))
@@ -1346,15 +1346,15 @@ struct _WebKitITPFirstParty {
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_website_data_manager_set_memory_pressure_settings:
- * @settings: a WebKitMemoryPressureSettings.
+ * @settings: a CyberKitMemoryPressureSettings.
  *
- * Sets @settings as the #WebKitMemoryPressureSettings.
+ * Sets @settings as the #CyberKitMemoryPressureSettings.
  *
- * Sets @settings as the #WebKitMemoryPressureSettings to be used by all the network
- * processes created by any instance of #WebKitWebsiteDataManager after this function
+ * Sets @settings as the #CyberKitMemoryPressureSettings to be used by all the network
+ * processes created by any instance of #CyberKitWebsiteDataManager after this function
  * is called.
  *
- * Be sure to call this function before creating any #WebKitWebsiteDataManager, as network
+ * Be sure to call this function before creating any #CyberKitWebsiteDataManager, as network
  * processes of existing instances are not guaranteed to receive the passed settings.
  *
  * The periodic check for used memory is disabled by default on network processes. This will
@@ -1364,36 +1364,36 @@ struct _WebKitITPFirstParty {
  *
  * Since: 2.34
  */
-void webkit_website_data_manager_set_memory_pressure_settings(WebKitMemoryPressureSettings* settings)
+void webkit_website_data_manager_set_memory_pressure_settings(CyberKitMemoryPressureSettings* settings)
 {
     std::optional<MemoryPressureHandler::Configuration> config = settings ? std::make_optional(webkitMemoryPressureSettingsGetMemoryPressureHandlerConfiguration(settings)) : std::nullopt;
     WebProcessPool::setNetworkProcessMemoryPressureHandlerConfiguration(config);
 }
 #endif
 
-G_DEFINE_BOXED_TYPE(WebKitITPFirstParty, webkit_itp_first_party, webkit_itp_first_party_ref, webkit_itp_first_party_unref)
+G_DEFINE_BOXED_TYPE(CyberKitITPFirstParty, webkit_itp_first_party, webkit_itp_first_party_ref, webkit_itp_first_party_unref)
 
-static WebKitITPFirstParty* webkitITPFirstPartyCreate(WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty&& data)
+static CyberKitITPFirstParty* webkitITPFirstPartyCreate(WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty&& data)
 {
-    auto* firstParty = static_cast<WebKitITPFirstParty*>(fastMalloc(sizeof(WebKitITPFirstParty)));
-    new (firstParty) WebKitITPFirstParty(WTFMove(data));
+    auto* firstParty = static_cast<CyberKitITPFirstParty*>(fastMalloc(sizeof(CyberKitITPFirstParty)));
+    new (firstParty) CyberKitITPFirstParty(WTFMove(data));
     return firstParty;
 }
 
 
 /**
  * webkit_itp_first_party_ref:
- * @itp_first_party: a #WebKitITPFirstParty
+ * @itp_first_party: a #CyberKitITPFirstParty
  *
  * Atomically increments the reference count of @itp_first_party by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed #WebKitITPFirstParty
+ * Returns: The passed #CyberKitITPFirstParty
  *
  * Since: 2.30
  */
-WebKitITPFirstParty* webkit_itp_first_party_ref(WebKitITPFirstParty* firstParty)
+CyberKitITPFirstParty* webkit_itp_first_party_ref(CyberKitITPFirstParty* firstParty)
 {
     g_return_val_if_fail(firstParty, nullptr);
 
@@ -1403,29 +1403,29 @@ WebKitITPFirstParty* webkit_itp_first_party_ref(WebKitITPFirstParty* firstParty)
 
 /**
  * webkit_itp_first_party_unref:
- * @itp_first_party: a #WebKitITPFirstParty
+ * @itp_first_party: a #CyberKitITPFirstParty
  *
  * Atomically decrements the reference count of @itp_first_party by one.
  *
  * If the reference count drops to 0, all memory allocated by
- * #WebKitITPFirstParty is released. This function is MT-safe and may be
+ * #CyberKitITPFirstParty is released. This function is MT-safe and may be
  * called from any thread.
  *
  * Since: 2.30
  */
-void webkit_itp_first_party_unref(WebKitITPFirstParty* firstParty)
+void webkit_itp_first_party_unref(CyberKitITPFirstParty* firstParty)
 {
     g_return_if_fail(firstParty);
 
     if (g_atomic_int_dec_and_test(&firstParty->referenceCount)) {
-        firstParty->~WebKitITPFirstParty();
+        firstParty->~CyberKitITPFirstParty();
         fastFree(firstParty);
     }
 }
 
 /**
  * webkit_itp_first_party_get_domain:
- * @itp_first_party: a #WebKitITPFirstParty
+ * @itp_first_party: a #CyberKitITPFirstParty
  *
  * Get the domain name of @itp_first_party.
  *
@@ -1433,7 +1433,7 @@ void webkit_itp_first_party_unref(WebKitITPFirstParty* firstParty)
  *
  * Since: 2.30
  */
-const char* webkit_itp_first_party_get_domain(WebKitITPFirstParty* firstParty)
+const char* webkit_itp_first_party_get_domain(CyberKitITPFirstParty* firstParty)
 {
     g_return_val_if_fail(firstParty, nullptr);
 
@@ -1442,18 +1442,18 @@ const char* webkit_itp_first_party_get_domain(WebKitITPFirstParty* firstParty)
 
 /**
  * webkit_itp_first_party_get_website_data_access_allowed:
- * @itp_first_party: a #WebKitITPFirstParty
+ * @itp_first_party: a #CyberKitITPFirstParty
  *
- * Get whether @itp_first_party has granted website data access to its #WebKitITPThirdParty.
+ * Get whether @itp_first_party has granted website data access to its #CyberKitITPThirdParty.
  *
- * Each @WebKitITPFirstParty is created by webkit_itp_third_party_get_first_parties() and
- * therefore corresponds to exactly one #WebKitITPThirdParty.
+ * Each @CyberKitITPFirstParty is created by webkit_itp_third_party_get_first_parties() and
+ * therefore corresponds to exactly one #CyberKitITPThirdParty.
  *
  * Returns: %TRUE if website data access has been granted, or %FALSE otherwise
  *
  * Since: 2.30
  */
-gboolean webkit_itp_first_party_get_website_data_access_allowed(WebKitITPFirstParty* firstParty)
+gboolean webkit_itp_first_party_get_website_data_access_allowed(CyberKitITPFirstParty* firstParty)
 {
     g_return_val_if_fail(firstParty, FALSE);
 
@@ -1462,18 +1462,18 @@ gboolean webkit_itp_first_party_get_website_data_access_allowed(WebKitITPFirstPa
 
 /**
  * webkit_itp_first_party_get_last_update_time:
- * @itp_first_party: a #WebKitITPFirstParty
+ * @itp_first_party: a #CyberKitITPFirstParty
  *
- * Get the last time a #WebKitITPThirdParty has been seen under @itp_first_party.
+ * Get the last time a #CyberKitITPThirdParty has been seen under @itp_first_party.
  *
- * Each @WebKitITPFirstParty is created by webkit_itp_third_party_get_first_parties() and
- * therefore corresponds to exactly one #WebKitITPThirdParty.
+ * Each @CyberKitITPFirstParty is created by webkit_itp_third_party_get_first_parties() and
+ * therefore corresponds to exactly one #CyberKitITPThirdParty.
  *
  * Returns: (transfer none): the last update time as a #GDateTime
  *
  * Since: 2.30
  */
-GDateTime* webkit_itp_first_party_get_last_update_time(WebKitITPFirstParty* firstParty)
+GDateTime* webkit_itp_first_party_get_last_update_time(CyberKitITPFirstParty* firstParty)
 {
     g_return_val_if_fail(firstParty, nullptr);
 
@@ -1481,22 +1481,22 @@ GDateTime* webkit_itp_first_party_get_last_update_time(WebKitITPFirstParty* firs
 }
 
 /**
- * WebKitITPThirdParty: (ref-func webkit_itp_first_party_ref) (unref-func webkit_itp_first_party_unref)
+ * CyberKitITPThirdParty: (ref-func webkit_itp_first_party_ref) (unref-func webkit_itp_first_party_unref)
  *
  * Describes a third party origin.
  *
  * Since: 2.30
  */
 
-struct _WebKitITPThirdParty {
-    explicit _WebKitITPThirdParty(WebResourceLoadStatisticsStore::ThirdPartyData&& data)
+struct _CyberKitITPThirdParty {
+    explicit _CyberKitITPThirdParty(WebResourceLoadStatisticsStore::ThirdPartyData&& data)
         : domain(data.thirdPartyDomain.string().utf8())
     {
         while (!data.underFirstParties.isEmpty())
             firstParties = g_list_prepend(firstParties, webkitITPFirstPartyCreate(data.underFirstParties.takeLast()));
     }
 
-    ~_WebKitITPThirdParty()
+    ~_CyberKitITPThirdParty()
     {
         g_list_free_full(firstParties, reinterpret_cast<GDestroyNotify>(webkit_itp_first_party_unref));
     }
@@ -1506,28 +1506,28 @@ struct _WebKitITPThirdParty {
     int referenceCount { 1 };
 };
 
-G_DEFINE_BOXED_TYPE(WebKitITPThirdParty, webkit_itp_third_party, webkit_itp_third_party_ref, webkit_itp_third_party_unref)
+G_DEFINE_BOXED_TYPE(CyberKitITPThirdParty, webkit_itp_third_party, webkit_itp_third_party_ref, webkit_itp_third_party_unref)
 
-WebKitITPThirdParty* webkitITPThirdPartyCreate(WebResourceLoadStatisticsStore::ThirdPartyData&& data)
+CyberKitITPThirdParty* webkitITPThirdPartyCreate(WebResourceLoadStatisticsStore::ThirdPartyData&& data)
 {
-    auto* thirdParty = static_cast<WebKitITPThirdParty*>(fastMalloc(sizeof(WebKitITPThirdParty)));
-    new (thirdParty) WebKitITPThirdParty(WTFMove(data));
+    auto* thirdParty = static_cast<CyberKitITPThirdParty*>(fastMalloc(sizeof(CyberKitITPThirdParty)));
+    new (thirdParty) CyberKitITPThirdParty(WTFMove(data));
     return thirdParty;
 }
 
 /**
  * webkit_itp_third_party_ref:
- * @itp_third_party: a #WebKitITPThirdParty
+ * @itp_third_party: a #CyberKitITPThirdParty
  *
  * Atomically increments the reference count of @itp_third_party by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed #WebKitITPThirdParty
+ * Returns: The passed #CyberKitITPThirdParty
  *
  * Since: 2.30
  */
-WebKitITPThirdParty* webkit_itp_third_party_ref(WebKitITPThirdParty* thirdParty)
+CyberKitITPThirdParty* webkit_itp_third_party_ref(CyberKitITPThirdParty* thirdParty)
 {
     g_return_val_if_fail(thirdParty, nullptr);
 
@@ -1537,29 +1537,29 @@ WebKitITPThirdParty* webkit_itp_third_party_ref(WebKitITPThirdParty* thirdParty)
 
 /**
  * webkit_itp_third_party_unref:
- * @itp_third_party: a #WebKitITPThirdParty
+ * @itp_third_party: a #CyberKitITPThirdParty
  *
  * Atomically decrements the reference count of @itp_third_party by one.
  *
  * If the reference count drops to 0, all memory allocated by
- * #WebKitITPThirdParty is released. This function is MT-safe and may be
+ * #CyberKitITPThirdParty is released. This function is MT-safe and may be
  * called from any thread.
  *
  * Since: 2.30
  */
-void webkit_itp_third_party_unref(WebKitITPThirdParty* thirdParty)
+void webkit_itp_third_party_unref(CyberKitITPThirdParty* thirdParty)
 {
     g_return_if_fail(thirdParty);
 
     if (g_atomic_int_dec_and_test(&thirdParty->referenceCount)) {
-        thirdParty->~WebKitITPThirdParty();
+        thirdParty->~CyberKitITPThirdParty();
         fastFree(thirdParty);
     }
 }
 
 /**
  * webkit_itp_third_party_get_domain:
- * @itp_third_party: a #WebKitITPThirdParty
+ * @itp_third_party: a #CyberKitITPThirdParty
  *
  * Get the domain name of @itp_third_party.
  *
@@ -1567,7 +1567,7 @@ void webkit_itp_third_party_unref(WebKitITPThirdParty* thirdParty)
  *
  * Since: 2.30
  */
-const char* webkit_itp_third_party_get_domain(WebKitITPThirdParty* thirdParty)
+const char* webkit_itp_third_party_get_domain(CyberKitITPThirdParty* thirdParty)
 {
     g_return_val_if_fail(thirdParty, nullptr);
 
@@ -1576,15 +1576,15 @@ const char* webkit_itp_third_party_get_domain(WebKitITPThirdParty* thirdParty)
 
 /**
  * webkit_itp_third_party_get_first_parties:
- * @itp_third_party: a #WebKitITPThirdParty
+ * @itp_third_party: a #CyberKitITPThirdParty
  *
- * Get the list of #WebKitITPFirstParty under which @itp_third_party has been seen.
+ * Get the list of #CyberKitITPFirstParty under which @itp_third_party has been seen.
  *
- * Returns: (transfer none) (element-type WebKitITPFirstParty): a #GList of #WebKitITPFirstParty
+ * Returns: (transfer none) (element-type CyberKitITPFirstParty): a #GList of #CyberKitITPFirstParty
  *
  * Since: 2.30
  */
-GList* webkit_itp_third_party_get_first_parties(WebKitITPThirdParty* thirdParty)
+GList* webkit_itp_third_party_get_first_parties(CyberKitITPThirdParty* thirdParty)
 {
     g_return_val_if_fail(thirdParty, nullptr);
 
@@ -1593,22 +1593,22 @@ GList* webkit_itp_third_party_get_first_parties(WebKitITPThirdParty* thirdParty)
 
 /**
  * webkit_website_data_manager_get_itp_summary:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
  *
- * Asynchronously get the list of #WebKitITPThirdParty seen for @manager.
+ * Asynchronously get the list of #CyberKitITPThirdParty seen for @manager.
  *
- * Every #WebKitITPThirdParty
- * contains the list of #WebKitITPFirstParty under which it has been seen.
+ * Every #CyberKitITPThirdParty
+ * contains the list of #CyberKitITPFirstParty under which it has been seen.
  *
  * When the operation is finished, @callback will be called. You can then call
  * webkit_website_data_manager_get_itp_summary_finish() to get the result of the operation.
  *
  * Since: 2.30
  */
-void webkit_website_data_manager_get_itp_summary(WebKitWebsiteDataManager* manager, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_website_data_manager_get_itp_summary(CyberKitWebsiteDataManager* manager, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
 
@@ -1625,19 +1625,19 @@ void webkit_website_data_manager_get_itp_summary(WebKitWebsiteDataManager* manag
 
 /**
  * webkit_website_data_manager_get_itp_summary_finish:
- * @manager: a #WebKitWebsiteDataManager
+ * @manager: a #CyberKitWebsiteDataManager
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finish an asynchronous operation started with webkit_website_data_manager_get_itp_summary().
  *
- * Returns: (transfer full) (element-type WebKitITPThirdParty): a #GList of #WebKitITPThirdParty.
- *    You must free the #GList with g_list_free() and unref the #WebKitITPThirdParty<!-- -->s with
+ * Returns: (transfer full) (element-type CyberKitITPThirdParty): a #GList of #CyberKitITPThirdParty.
+ *    You must free the #GList with g_list_free() and unref the #CyberKitITPThirdParty<!-- -->s with
  *    webkit_itp_third_party_unref() when you're done with them.
  *
  * Since: 2.30
  */
-GList* webkit_website_data_manager_get_itp_summary_finish(WebKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
+GList* webkit_website_data_manager_get_itp_summary_finish(CyberKitWebsiteDataManager* manager, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, manager), nullptr);

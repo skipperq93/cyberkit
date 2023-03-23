@@ -37,7 +37,7 @@
 #include "RenderListItem.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -210,4 +210,4 @@ void BreakBlockquoteCommand::doApply()
     rebalanceWhitespace();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

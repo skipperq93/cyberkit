@@ -29,7 +29,7 @@
 #include <variant>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ExceptionOr;
 class CSSOMVariableReferenceValue;
@@ -58,8 +58,8 @@ private:
     Vector<CSSUnparsedSegment> m_segments;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSUnparsedValue)
-    static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSUnparsedValue; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSUnparsedValue)
+    static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSUnparsedValue; }
 SPECIALIZE_TYPE_TRAITS_END()

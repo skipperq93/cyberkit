@@ -29,7 +29,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/StdMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSample;
 class SampleMap;
@@ -139,4 +139,4 @@ inline void SampleMap::addRange(I begin, I end)
         addSample(*iter->second);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

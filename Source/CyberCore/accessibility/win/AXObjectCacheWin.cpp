@@ -39,7 +39,7 @@
 #define IA2_EVENT_DOCUMENT_LOAD_COMPLETE    261
 
 
-namespace WebCore {
+namespace CyberCore {
 
 void AXObjectCache::detachWrapper(AXCoreObject* obj, AccessibilityDetachmentType)
 {
@@ -168,4 +168,4 @@ void AXObjectCache::platformPerformDeferredCacheUpdate()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

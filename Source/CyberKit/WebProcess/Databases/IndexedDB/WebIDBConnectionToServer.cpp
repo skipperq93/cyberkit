@@ -48,7 +48,7 @@
 #include <CyberCore/IDBValue.h>
 #include <CyberCore/ProcessIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<WebIDBConnectionToServer> WebIDBConnectionToServer::create()
@@ -330,4 +330,4 @@ void WebIDBConnectionToServer::connectionToServerLost()
     m_connectionToServer->connectionToServerLost(IDBError { CyberCore::UnknownError, "An internal error was encountered in the Indexed Database server"_s });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

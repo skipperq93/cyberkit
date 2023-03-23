@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCalcValue;
 class CSSToLengthConversionData;
@@ -430,6 +430,6 @@ inline int CSSValue::integer() const
     return downcast<CSSPrimitiveValue>(*this).intValue();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSPrimitiveValue, isPrimitiveValue())

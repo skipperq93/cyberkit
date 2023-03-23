@@ -19,16 +19,16 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitInputMethodContext_h
-#define WebKitInputMethodContext_h
+#ifndef CyberKitInputMethodContext_h
+#define CyberKitInputMethodContext_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 #if PLATFORM(GTK)
 #include <gdk/gdk.h>
 #elif PLATFORM(WPE)
-#include <wpe/WebKitColor.h>
+#include <wpe/CyberKitColor.h>
 #include <wpe/wpe.h>
 #endif
 
@@ -37,17 +37,17 @@ G_BEGIN_DECLS
 #define WEBKIT_TYPE_INPUT_METHOD_UNDERLINE          (webkit_input_method_underline_get_type())
 #define WEBKIT_TYPE_INPUT_METHOD_CONTEXT            (webkit_input_method_context_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_INPUT_METHOD_CONTEXT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INPUT_METHOD_CONTEXT, WebKitInputMethodContext))
-#define WEBKIT_INPUT_METHOD_CONTEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT, WebKitInputMethodContextClass))
+#define WEBKIT_INPUT_METHOD_CONTEXT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INPUT_METHOD_CONTEXT, CyberKitInputMethodContext))
+#define WEBKIT_INPUT_METHOD_CONTEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT, CyberKitInputMethodContextClass))
 #define WEBKIT_IS_INPUT_METHOD_CONTEXT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_INPUT_METHOD_CONTEXT))
 #define WEBKIT_IS_INPUT_METHOD_CONTEXT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT))
-#define WEBKIT_INPUT_METHOD_CONTEXT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT, WebKitInputMethodContextClass))
+#define WEBKIT_INPUT_METHOD_CONTEXT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT, CyberKitInputMethodContextClass))
 #endif
 
-WEBKIT_DECLARE_DERIVABLE_TYPE (WebKitInputMethodContext, webkit_input_method_context, WEBKIT, INPUT_METHOD_CONTEXT, GObject)
+WEBKIT_DECLARE_DERIVABLE_TYPE (CyberKitInputMethodContext, webkit_input_method_context, WEBKIT, INPUT_METHOD_CONTEXT, GObject)
 
 /**
- * WebKitInputPurpose:
+ * CyberKitInputPurpose:
  * @WEBKIT_INPUT_PURPOSE_FREE_FORM: Editable element expects any characters
  * @WEBKIT_INPUT_PURPOSE_DIGITS: Editable element expects digits
  * @WEBKIT_INPUT_PURPOSE_NUMBER: Editable element expects a number
@@ -68,10 +68,10 @@ typedef enum {
     WEBKIT_INPUT_PURPOSE_URL,
     WEBKIT_INPUT_PURPOSE_EMAIL,
     WEBKIT_INPUT_PURPOSE_PASSWORD
-} WebKitInputPurpose;
+} CyberKitInputPurpose;
 
 /**
- * WebKitInputHints:
+ * CyberKitInputHints:
  * @WEBKIT_INPUT_HINT_NONE: No special behavior suggested
  * @WEBKIT_INPUT_HINT_SPELLCHECK: Suggest spell checking
  * @WEBKIT_INPUT_HINT_LOWERCASE: Suggest to not autocapitlize
@@ -92,55 +92,55 @@ typedef enum {
     WEBKIT_INPUT_HINT_UPPERCASE_WORDS     = 1 << 3,
     WEBKIT_INPUT_HINT_UPPERCASE_SENTENCES = 1 << 4,
     WEBKIT_INPUT_HINT_INHIBIT_OSK         = 1 << 5
-} WebKitInputHints;
+} CyberKitInputHints;
 
-typedef struct _WebKitInputMethodUnderline      WebKitInputMethodUnderline;
+typedef struct _CyberKitInputMethodUnderline      CyberKitInputMethodUnderline;
 
-struct _WebKitInputMethodContextClass {
+struct _CyberKitInputMethodContextClass {
     GObjectClass parent_class;
 
     /*< public >*/
 
     /* Signals */
-    void     (* preedit_started)    (WebKitInputMethodContext *context);
-    void     (* preedit_changed)    (WebKitInputMethodContext *context);
-    void     (* preedit_finished)   (WebKitInputMethodContext *context);
-    void     (* committed)          (WebKitInputMethodContext *context,
+    void     (* preedit_started)    (CyberKitInputMethodContext *context);
+    void     (* preedit_changed)    (CyberKitInputMethodContext *context);
+    void     (* preedit_finished)   (CyberKitInputMethodContext *context);
+    void     (* committed)          (CyberKitInputMethodContext *context,
                                      const char               *text);
-    void     (* delete_surrounding) (WebKitInputMethodContext *context,
+    void     (* delete_surrounding) (CyberKitInputMethodContext *context,
                                      int                       offset,
                                      guint                     n_chars);
 
     /* Virtual functions */
-    void     (* set_enable_preedit) (WebKitInputMethodContext *context,
+    void     (* set_enable_preedit) (CyberKitInputMethodContext *context,
                                      gboolean                  enabled);
-    void     (* get_preedit)        (WebKitInputMethodContext *context,
+    void     (* get_preedit)        (CyberKitInputMethodContext *context,
                                      gchar                   **text,
                                      GList                   **underlines,
                                      guint                    *cursor_offset);
 #if PLATFORM(GTK) && USE(GTK4)
-    gboolean (* filter_key_event)   (WebKitInputMethodContext *context,
+    gboolean (* filter_key_event)   (CyberKitInputMethodContext *context,
                                      GdkEvent                 *key_event);
 #elif PLATFORM(GTK)
-    gboolean (* filter_key_event)   (WebKitInputMethodContext *context,
+    gboolean (* filter_key_event)   (CyberKitInputMethodContext *context,
                                      GdkEventKey              *key_event);
 #elif PLATFORM(WPE)
-    gboolean (* filter_key_event)   (WebKitInputMethodContext        *context,
+    gboolean (* filter_key_event)   (CyberKitInputMethodContext        *context,
                                      struct wpe_input_keyboard_event *key_event);
 #endif
-    void     (* notify_focus_in)    (WebKitInputMethodContext *context);
-    void     (* notify_focus_out)   (WebKitInputMethodContext *context);
-    void     (* notify_cursor_area) (WebKitInputMethodContext *context,
+    void     (* notify_focus_in)    (CyberKitInputMethodContext *context);
+    void     (* notify_focus_out)   (CyberKitInputMethodContext *context);
+    void     (* notify_cursor_area) (CyberKitInputMethodContext *context,
                                      int                       x,
                                      int                       y,
                                      int                       width,
                                      int                       height);
-    void     (* notify_surrounding) (WebKitInputMethodContext *context,
+    void     (* notify_surrounding) (CyberKitInputMethodContext *context,
                                      const gchar              *text,
                                      guint                     length,
                                      guint                     cursor_index,
                                      guint                     selection_index);
-    void     (* reset)              (WebKitInputMethodContext *context);
+    void     (* reset)              (CyberKitInputMethodContext *context);
 
     /*< private >*/
     void (*_webkit_reserved0)  (void);
@@ -164,89 +164,89 @@ struct _WebKitInputMethodContextClass {
 };
 
 WEBKIT_API void
-webkit_input_method_context_set_enable_preedit (WebKitInputMethodContext   *context,
+webkit_input_method_context_set_enable_preedit (CyberKitInputMethodContext   *context,
                                                 gboolean                    enabled);
 
 WEBKIT_API void
-webkit_input_method_context_get_preedit        (WebKitInputMethodContext   *context,
+webkit_input_method_context_get_preedit        (CyberKitInputMethodContext   *context,
                                                 char                      **text,
                                                 GList                     **underlines,
                                                 guint                      *cursor_offset);
 
 #if PLATFORM(GTK) && USE(GTK4)
 WEBKIT_API gboolean
-webkit_input_method_context_filter_key_event   (WebKitInputMethodContext   *context,
+webkit_input_method_context_filter_key_event   (CyberKitInputMethodContext   *context,
                                                 GdkEvent                   *key_event);                                       
 #elif PLATFORM(GTK)
 WEBKIT_API gboolean
-webkit_input_method_context_filter_key_event   (WebKitInputMethodContext   *context,
+webkit_input_method_context_filter_key_event   (CyberKitInputMethodContext   *context,
                                                 GdkEventKey                *key_event);
 #elif PLATFORM(WPE)
 WEBKIT_API gboolean
-webkit_input_method_context_filter_key_event   (WebKitInputMethodContext        *context,
+webkit_input_method_context_filter_key_event   (CyberKitInputMethodContext        *context,
                                                 struct wpe_input_keyboard_event *key_event);
 #endif
 
 WEBKIT_API void
-webkit_input_method_context_notify_focus_in    (WebKitInputMethodContext   *context);
+webkit_input_method_context_notify_focus_in    (CyberKitInputMethodContext   *context);
 
 WEBKIT_API void
-webkit_input_method_context_notify_focus_out   (WebKitInputMethodContext   *context);
+webkit_input_method_context_notify_focus_out   (CyberKitInputMethodContext   *context);
 
 WEBKIT_API void
-webkit_input_method_context_notify_cursor_area (WebKitInputMethodContext   *context,
+webkit_input_method_context_notify_cursor_area (CyberKitInputMethodContext   *context,
                                                 int                         x,
                                                 int                         y,
                                                 int                         width,
                                                 int                         height);
 
 WEBKIT_API void
-webkit_input_method_context_notify_surrounding (WebKitInputMethodContext   *context,
+webkit_input_method_context_notify_surrounding (CyberKitInputMethodContext   *context,
                                                 const gchar                *text,
                                                 int                         length,
                                                 guint                       cursor_index,
                                                 guint                       selection_index);
 
 WEBKIT_API void
-webkit_input_method_context_reset              (WebKitInputMethodContext   *context);
+webkit_input_method_context_reset              (CyberKitInputMethodContext   *context);
 
 
 WEBKIT_API GType
 webkit_input_method_underline_get_type         (void);
 
-WEBKIT_API WebKitInputMethodUnderline *
+WEBKIT_API CyberKitInputMethodUnderline *
 webkit_input_method_underline_new              (guint                       start_offset,
                                                 guint                       end_offset);
 
-WEBKIT_API WebKitInputMethodUnderline *
-webkit_input_method_underline_copy             (WebKitInputMethodUnderline *underline);
+WEBKIT_API CyberKitInputMethodUnderline *
+webkit_input_method_underline_copy             (CyberKitInputMethodUnderline *underline);
 
 WEBKIT_API void
-webkit_input_method_underline_free             (WebKitInputMethodUnderline *underline);
+webkit_input_method_underline_free             (CyberKitInputMethodUnderline *underline);
 
 #if PLATFORM(GTK)
 WEBKIT_API void
-webkit_input_method_underline_set_color        (WebKitInputMethodUnderline *underline,
+webkit_input_method_underline_set_color        (CyberKitInputMethodUnderline *underline,
                                                 const GdkRGBA              *rgba);
 #elif PLATFORM(WPE)
 WEBKIT_API void
-webkit_input_method_underline_set_color        (WebKitInputMethodUnderline *underline,
-                                                WebKitColor                *color);
+webkit_input_method_underline_set_color        (CyberKitInputMethodUnderline *underline,
+                                                CyberKitColor                *color);
 #endif
 
-WEBKIT_API WebKitInputPurpose
-webkit_input_method_context_get_input_purpose  (WebKitInputMethodContext   *context);
+WEBKIT_API CyberKitInputPurpose
+webkit_input_method_context_get_input_purpose  (CyberKitInputMethodContext   *context);
 
 WEBKIT_API void
-webkit_input_method_context_set_input_purpose  (WebKitInputMethodContext   *context,
-                                                WebKitInputPurpose          purpose);
+webkit_input_method_context_set_input_purpose  (CyberKitInputMethodContext   *context,
+                                                CyberKitInputPurpose          purpose);
 
-WEBKIT_API WebKitInputHints
-webkit_input_method_context_get_input_hints    (WebKitInputMethodContext   *context);
+WEBKIT_API CyberKitInputHints
+webkit_input_method_context_get_input_hints    (CyberKitInputMethodContext   *context);
 
 WEBKIT_API void
-webkit_input_method_context_set_input_hints    (WebKitInputMethodContext   *context,
-                                                WebKitInputHints            hints);
+webkit_input_method_context_set_input_hints    (CyberKitInputMethodContext   *context,
+                                                CyberKitInputHints            hints);
 
 
 G_END_DECLS

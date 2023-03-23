@@ -52,7 +52,7 @@ test(function() {
     ["foo:", null, null, null],
     ["foo:", "", null, null],
     [null, null, document.implementation.createDocumentType("foo", "", ""), null],
-    [null, null, document.doctype, null], // This causes a horrible WebKit bug (now fixed in trunk).
+    [null, null, document.doctype, null], // This causes a horrible CyberKit bug (now fixed in trunk).
     [null, null, function() {
         var foo = document.implementation.createDocumentType("bar", "", "");
         document.implementation.createDocument(null, null, foo);

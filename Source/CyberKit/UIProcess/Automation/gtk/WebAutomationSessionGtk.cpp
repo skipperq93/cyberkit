@@ -27,13 +27,13 @@
 #include "WebAutomationSession.h"
 
 #include "WebAutomationSessionMacros.h"
-#include "WebKitWebViewBaseInternal.h"
+#include "CyberKitWebViewBaseInternal.h"
 #include "WebPageProxy.h"
 #include <CyberCore/GtkUtilities.h>
 #include <CyberCore/GtkVersioning.h>
 #include <CyberCore/Scrollbar.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
@@ -70,7 +70,7 @@ void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, 
     unsigned gdkButton = mouseButtonToGdkButton(button);
     auto modifier = stateModifierForGdkButton(gdkButton);
     unsigned state = modifiersToEventState(keyModifiers) | m_currentModifiers;
-    auto* viewWidget = reinterpret_cast<WebKitWebViewBase*>(page.viewWidget());
+    auto* viewWidget = reinterpret_cast<CyberKitWebViewBase*>(page.viewWidget());
 
     switch (interaction) {
     case MouseInteraction::Move:
@@ -298,7 +298,7 @@ void WebAutomationSession::platformSimulateKeyboardInteraction(WebPageProxy& pag
         }
     );
     unsigned modifiers = modifiersForKeyCode(keyCode);
-    auto* viewWidget = reinterpret_cast<WebKitWebViewBase*>(page.viewWidget());
+    auto* viewWidget = reinterpret_cast<CyberKitWebViewBase*>(page.viewWidget());
 
     KeyEventType type;
     switch (interaction) {
@@ -320,7 +320,7 @@ void WebAutomationSession::platformSimulateKeyboardInteraction(WebPageProxy& pag
 
 void WebAutomationSession::platformSimulateKeySequence(WebPageProxy& page, const String& keySequence)
 {
-    auto* viewWidget = reinterpret_cast<WebKitWebViewBase*>(page.viewWidget());
+    auto* viewWidget = reinterpret_cast<CyberKitWebViewBase*>(page.viewWidget());
     for (auto codePoint : StringView(keySequence).codePoints())
         webkitWebViewBaseSynthesizeKeyEvent(viewWidget, KeyEventType::Insert, gdk_unicode_to_keyval(codePoint), m_currentModifiers, ShouldTranslateKeyboardState::Yes);
 }
@@ -329,11 +329,11 @@ void WebAutomationSession::platformSimulateKeySequence(WebPageProxy& page, const
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
 void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, const CyberCore::IntPoint& locationInViewport, const CyberCore::IntSize& delta)
 {
-    auto* viewWidget = reinterpret_cast<WebKitWebViewBase*>(page.viewWidget());
+    auto* viewWidget = reinterpret_cast<CyberKitWebViewBase*>(page.viewWidget());
     FloatSize scrollDelta(delta);
     scrollDelta.scale(1 / static_cast<float>(Scrollbar::pixelsPerLineStep()));
     webkitWebViewBaseSynthesizeWheelEvent(viewWidget, -scrollDelta.width(), -scrollDelta.height(), locationInViewport.x(), locationInViewport.y(), WheelEventPhase::NoPhase, WheelEventPhase::NoPhase, false);
 }
 #endif // ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
 
-} // namespace WebKit
+} // namespace CyberKit

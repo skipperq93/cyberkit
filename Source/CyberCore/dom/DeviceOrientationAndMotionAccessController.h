@@ -34,7 +34,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Page;
@@ -52,6 +52,6 @@ private:
     HashMap<SecurityOriginData, DeviceOrientationOrMotionPermissionState> m_accessStatePerOrigin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DEVICE_ORIENTATION)

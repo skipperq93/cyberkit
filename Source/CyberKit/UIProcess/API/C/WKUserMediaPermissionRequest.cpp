@@ -26,7 +26,7 @@
 #include "WKMutableArray.h"
 #include "WKString.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKUserMediaPermissionRequestGetTypeID()
 {

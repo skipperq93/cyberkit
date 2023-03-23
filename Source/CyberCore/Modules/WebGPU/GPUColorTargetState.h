@@ -31,13 +31,13 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUColorTargetState.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUColorTargetState {
     PAL::WebGPU::ColorTargetState convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(format),
+            CyberCore::convertToBacking(format),
             blend ? std::optional { blend->convertToBacking() } : std::nullopt,
             convertColorWriteFlagsToBacking(writeMask),
         };

@@ -34,7 +34,7 @@
 #include "WebAnimationTypes.h"
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPropertyBlendingClient;
 class Document;
@@ -54,4 +54,4 @@ public:
     static void blendProperty(const CSSPropertyBlendingClient&, AnimatableProperty, RenderStyle& destination, const RenderStyle& from, const RenderStyle& to, double progress, CompositeOperation, IterationCompositeOperation = IterationCompositeOperation::Replace, double currentIteration = 0);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

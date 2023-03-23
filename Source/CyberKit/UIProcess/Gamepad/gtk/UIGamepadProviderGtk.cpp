@@ -28,13 +28,13 @@
 
 #if ENABLE(GAMEPAD)
 
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include "WebPageProxy.h"
 #include <CyberCore/GtkUtilities.h>
 #include <wtf/ProcessPrivilege.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

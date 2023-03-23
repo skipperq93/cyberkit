@@ -33,7 +33,7 @@
 #import <pal/spi/ios/UIKitSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 TextAlternativeWithRange::TextAlternativeWithRange(NSTextAlternatives *anAlternatives, NSRange aRange)
     : range { aRange }
@@ -55,4 +55,4 @@ void collectDictationTextAlternatives(NSAttributedString *string, Vector<TextAlt
     } while (effectiveRange.location < length);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

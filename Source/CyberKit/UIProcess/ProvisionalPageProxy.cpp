@@ -52,7 +52,7 @@
 
 #define MESSAGE_CHECK(process, assertion) MESSAGE_CHECK_BASE(assertion, process->connection())
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -148,7 +148,7 @@ void ProvisionalPageProxy::cancel()
 
     PROVISIONALPAGEPROXY_RELEASE_LOG(ProcessSwapping, "cancel: Simulating a didFailProvisionalLoadForFrame");
     ASSERT(m_mainFrame);
-    auto error = WebKit::cancelledError(m_request);
+    auto error = CyberKit::cancelledError(m_request);
     error.setType(CyberCore::ResourceError::Type::Cancellation);
     FrameInfoData frameInfo {
         true, // isMainFrame
@@ -654,6 +654,6 @@ bool ProvisionalPageProxy::sendMessageWithAsyncReply(UniqueRef<IPC::Encoder>&& e
     return m_process->sendMessage(WTFMove(encoder), sendOptions, WTFMove(handler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK

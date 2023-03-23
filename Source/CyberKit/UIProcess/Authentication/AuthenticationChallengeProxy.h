@@ -34,7 +34,7 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuthenticationDecisionListener;
 class SecKeyProxyStore;
@@ -67,4 +67,4 @@ private:
     Ref<AuthenticationDecisionListener> m_listener;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

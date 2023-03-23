@@ -39,7 +39,7 @@
 #include <wtf/Deque.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static String getDatabaseIdentifier(SQLTransaction& transaction)
 {
@@ -138,4 +138,4 @@ void SQLTransactionCoordinator::shutdown()
     m_coordinationInfoMap.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

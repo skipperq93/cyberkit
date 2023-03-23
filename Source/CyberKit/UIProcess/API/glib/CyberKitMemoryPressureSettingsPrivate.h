@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "WebKitMemoryPressureSettings.h"
+#include "CyberKitMemoryPressureSettings.h"
 #include <wtf/MemoryPressureHandler.h>
 
-const MemoryPressureHandler::Configuration& webkitMemoryPressureSettingsGetMemoryPressureHandlerConfiguration(WebKitMemoryPressureSettings*);
+const MemoryPressureHandler::Configuration& webkitMemoryPressureSettingsGetMemoryPressureHandlerConfiguration(CyberKitMemoryPressureSettings*);

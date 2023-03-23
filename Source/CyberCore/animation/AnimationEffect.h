@@ -45,7 +45,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnimationEffect : public RefCounted<AnimationEffect>, public CanMakeWeakPtr<AnimationEffect> {
 public:
@@ -129,9 +129,9 @@ private:
     Seconds m_endTime { 0_s };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_ANIMATION_EFFECT(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-static bool isType(const WebCore::AnimationEffect& value) { return value.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+static bool isType(const CyberCore::AnimationEffect& value) { return value.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

@@ -31,7 +31,7 @@
 #include "OscillatorType.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PeriodicWave;
     
@@ -42,6 +42,6 @@ struct OscillatorOptions : AudioNodeOptions {
     RefPtr<PeriodicWave> periodicWave;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

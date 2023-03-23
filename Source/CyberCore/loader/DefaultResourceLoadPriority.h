@@ -27,7 +27,7 @@
 #include "CachedResource.h"
 #include "ResourceLoadPriority.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DefaultResourceLoadPriority {
     static ResourceLoadPriority forResourceType(CachedResource::Type);

@@ -40,7 +40,7 @@
 #include <gst/webrtc/webrtc.h>
 #undef GST_USE_UNSTABLE_API
 
-namespace WebCore {
+namespace CyberCore {
 
 inline RTCRtpTransceiverDirection toRTCRtpTransceiverDirection(GstWebRTCRTPTransceiverDirection direction)
 {

@@ -832,8 +832,8 @@ String defaultLocale(JSGlobalObject* globalObject)
     // DefaultLocale ()
     // https://tc39.github.io/ecma402/#sec-defaultlocale
 
-    // WebCore's global objects will have their own ideas of how to determine the language. It may
-    // be determined by WebCore-specific logic like some WK settings. Usually this will return the
+    // CyberCore's global objects will have their own ideas of how to determine the language. It may
+    // be determined by CyberCore-specific logic like some WK settings. Usually this will return the
     // same thing as userPreferredLanguages()[0].
     if (auto defaultLanguage = globalObject->globalObjectMethodTable()->defaultLanguage) {
         String locale = canonicalizeUnicodeLocaleID(defaultLanguage().utf8());

@@ -40,7 +40,7 @@
 #include "ResourceResponse.h"
 #include "WindowEventLoop.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(FetchBodyOwner);
 
@@ -430,4 +430,4 @@ void FetchBodyOwner::setLoadingError(ResourceError&& error)
     m_loadingError = WTFMove(error);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

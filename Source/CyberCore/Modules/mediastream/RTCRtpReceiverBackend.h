@@ -29,7 +29,7 @@
 #include "RTCRtpParameters.h"
 #include "RTCRtpSynchronizationSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDtlsTransportBackend;
 class RTCRtpTransformBackend;
@@ -44,6 +44,6 @@ public:
     virtual std::unique_ptr<RTCDtlsTransportBackend> dtlsTransportBackend() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

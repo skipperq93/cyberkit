@@ -30,17 +30,17 @@
 #include "JSDOMGlobalObjectInlines.h"
 #include "JSDOMWrapperCache.h"
 #include "TestNamespaceConst.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/ObjectPrototype.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/ObjectPrototype.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 using JSTestNamespaceConstDOMConstructor = JSDOMConstructorNotCallable<JSTestNamespaceConst>;
@@ -98,7 +98,7 @@ void JSTestNamespaceConst::destroy(JSC::JSCell* cell)
 
 JSC::GCClient::IsoSubspace* JSTestNamespaceConst::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestNamespaceConst, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestNamespaceConst, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestNamespaceConst.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestNamespaceConst = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestNamespaceConst.get(); },

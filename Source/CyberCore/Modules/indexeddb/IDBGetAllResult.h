@@ -33,7 +33,7 @@
 #include <wtf/ArgumentCoder.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBGetAllResult {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(IDBGetAllResult, WEBCORE_EXPORT);
@@ -78,4 +78,4 @@ private:
     std::optional<IDBKeyPath> m_keyPath;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

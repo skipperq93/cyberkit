@@ -55,7 +55,7 @@ webkit_dom_html_collection_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_html_collection_item(CyberKitDOMHTMLCollection* self, gulong index);
@@ -67,7 +67,7 @@ webkit_dom_html_collection_item(CyberKitDOMHTMLCollection* self, gulong index);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_html_collection_named_item(CyberKitDOMHTMLCollection* self, const gchar* name);
@@ -78,7 +78,7 @@ webkit_dom_html_collection_named_item(CyberKitDOMHTMLCollection* self, const gch
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_html_collection_get_length(CyberKitDOMHTMLCollection* self);

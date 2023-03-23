@@ -40,7 +40,7 @@
 #include "TestReportBody.h"
 #include "ViolationReportType.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<ReportBody>&& reportBody)
@@ -71,4 +71,4 @@ JSValue JSReportBody::toJSON(JSGlobalObject& lexicalGlobalObject, CallFrame& cal
     return jsUndefined();
 }
 
-} // namepace WebCore
+} // namepace CyberCore

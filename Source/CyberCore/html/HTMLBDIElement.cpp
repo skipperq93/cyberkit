@@ -29,7 +29,7 @@
 #include "Document.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLBDIElement);
 
@@ -45,5 +45,5 @@ HTMLBDIElement::HTMLBDIElement(const QualifiedName& name, Document& document)
     document.setIsDirAttributeDirty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

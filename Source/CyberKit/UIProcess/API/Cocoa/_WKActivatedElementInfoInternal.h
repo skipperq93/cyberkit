@@ -30,18 +30,18 @@
 
 #import <CyberCore/IntPoint.h>
 
-namespace WebKit {
+namespace CyberKit {
     class ShareableBitmap;
 }
 
 @interface _WKActivatedElementInfo ()
 
 #if PLATFORM(IOS_FAMILY)
-+ (instancetype)activatedElementInfoWithInteractionInformationAtPosition:(const WebKit::InteractionInformationAtPosition&)information userInfo:(NSDictionary *)userInfo;
-- (instancetype)_initWithInteractionInformationAtPosition:(const WebKit::InteractionInformationAtPosition&)information isUsingAlternateURLForImage:(BOOL)isUsingAlternateURLForImage userInfo:(NSDictionary *)userInfo;
++ (instancetype)activatedElementInfoWithInteractionInformationAtPosition:(const CyberKit::InteractionInformationAtPosition&)information userInfo:(NSDictionary *)userInfo;
+- (instancetype)_initWithInteractionInformationAtPosition:(const CyberKit::InteractionInformationAtPosition&)information isUsingAlternateURLForImage:(BOOL)isUsingAlternateURLForImage userInfo:(NSDictionary *)userInfo;
 #endif
-- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType;
-- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType userInfo:(NSDictionary *)userInfo;
+- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(CyberKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType;
+- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(CyberKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType userInfo:(NSDictionary *)userInfo;
 
 @property (nonatomic, readonly) NSString *imageMIMEType;
 @property (nonatomic, readonly) CyberCore::IntPoint _interactionLocation;

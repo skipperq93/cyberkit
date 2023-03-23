@@ -27,7 +27,7 @@
 
 #include "IDBKeyData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThreadSafeDataBuffer;
 
@@ -95,4 +95,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 
 #include "Element.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void UserActionElementSet::clear()
 {

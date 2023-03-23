@@ -38,7 +38,7 @@
 #include "markup.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool WebContentReader::readFilePath(const String& path, PresentationSize, const String&)
 {
@@ -107,4 +107,4 @@ bool WebContentMarkupReader::readHTML(const String& string)
     return !markup.isEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

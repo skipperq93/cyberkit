@@ -38,7 +38,7 @@
 #import "WebPageProxy.h"
 #import <CyberCore/LocalizedStrings.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 static const float DisabledOptionAlpha = 0.3;
 static const float GroupOptionTextColorAlpha = 0.5;
@@ -1167,7 +1167,7 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
 
 - (void)configurePresentation
 {
-    if (WebKit::currentUserInterfaceIdiomIsSmallScreen()) {
+    if (CyberKit::currentUserInterfaceIdiomIsSmallScreen()) {
         [[_navigationController navigationBar] setBarTintColor:UIColor.systemGroupedBackgroundColor];
 
         UIPresentationController *presentationController = [_navigationController presentationController];

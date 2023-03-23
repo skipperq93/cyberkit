@@ -24,11 +24,11 @@
  */
 
 #import "config.h"
-#import "PaymentInstallmentConfigurationWebCore.h"
+#import "PaymentInstallmentConfigurationCyberCore.h"
 
 #if HAVE(PASSKIT_INSTALLMENTS)
 
-#import "ApplePayInstallmentConfigurationWebCore.h"
+#import "ApplePayInstallmentConfigurationCyberCore.h"
 #import "ApplePayInstallmentItemType.h"
 #import "ApplePayInstallmentRetailChannel.h"
 #import "ExceptionOr.h"
@@ -37,7 +37,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Merge with toDecimalNumber() in WebPaymentCoordinatorProxyCocoa.
 static NSDecimalNumber *toDecimalNumber(const String& amount)
@@ -264,6 +264,6 @@ ApplePayInstallmentConfiguration PaymentInstallmentConfiguration::applePayInstal
     return installmentConfiguration;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(PASSKIT_INSTALLMENTS)

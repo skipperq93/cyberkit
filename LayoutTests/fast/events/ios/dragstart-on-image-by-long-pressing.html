@@ -13,7 +13,7 @@ body, html {
 jsTestIsAsync = true;
 
 addEventListener("load", async () => {
-    description("This test requires WebKitTestRunner. To manually test, load the page in a configuration where drag and drop is enabled by default; start a drag on the image above by long-pressing it, and then drag the image off to the side of the screen and let go. 'dragstart' and 'dragend' events should be dispatched.");
+    description("This test requires CyberKitTestRunner. To manually test, load the page in a configuration where drag and drop is enabled by default; start a drag on the image above by long-pressing it, and then drag the image off to the side of the screen and let go. 'dragstart' and 'dragend' events should be dispatched.");
 
     let image = document.querySelector("img");
     image.addEventListener("dragstart", () => {

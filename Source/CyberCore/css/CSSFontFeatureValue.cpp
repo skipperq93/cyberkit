@@ -29,7 +29,7 @@
 #include "CSSValueKeywords.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontFeatureValue::CSSFontFeatureValue(FontTag&& tag, int value)
     : CSSValue(FontFeatureClass)

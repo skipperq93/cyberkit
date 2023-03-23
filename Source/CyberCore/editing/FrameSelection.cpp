@@ -92,7 +92,7 @@
 #include "SelectionGeometry.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -750,7 +750,7 @@ void FrameSelection::textWasReplaced(CharacterData& node, unsigned offset, unsig
 
 TextDirection FrameSelection::directionOfEnclosingBlock()
 {
-    return WebCore::directionOfEnclosingBlock(m_selection.extent());
+    return CyberCore::directionOfEnclosingBlock(m_selection.extent());
 }
 
 TextDirection FrameSelection::directionOfSelection()
@@ -2003,7 +2003,7 @@ bool FrameSelection::contains(const LayoutPoint& point) const
         return false;
     }
 
-    return WebCore::contains<ComposedTree>(*range, makeBoundaryPoint(innerNode->renderer()->positionForPoint(result.localPoint(), nullptr)));
+    return CyberCore::contains<ComposedTree>(*range, makeBoundaryPoint(innerNode->renderer()->positionForPoint(result.localPoint(), nullptr)));
 }
 
 // Workaround for the fact that it's hard to delete a frame.
@@ -2962,12 +2962,12 @@ void FrameSelection::updateAssociatedLiveRange()
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showTree(const WebCore::FrameSelection& selection)
+void showTree(const CyberCore::FrameSelection& selection)
 {
     selection.showTreeForThis();
 }
 
-void showTree(const WebCore::FrameSelection* selection)
+void showTree(const CyberCore::FrameSelection* selection)
 {
     if (selection)
         selection->showTreeForThis();

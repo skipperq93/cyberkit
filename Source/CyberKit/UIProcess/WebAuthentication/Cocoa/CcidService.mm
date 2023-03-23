@@ -36,23 +36,23 @@
 #import <wtf/RunLoop.h>
 
 @interface _WKSmartCardSlotObserver : NSObject {
-    WeakPtr<WebKit::CcidService> m_service;
+    WeakPtr<CyberKit::CcidService> m_service;
 }
 
-- (instancetype)initWithService:(WeakPtr<WebKit::CcidService>&&)service;
+- (instancetype)initWithService:(WeakPtr<CyberKit::CcidService>&&)service;
 - (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 @end
 
 @interface _WKSmartCardSlotStateObserver : NSObject {
-    WeakPtr<WebKit::CcidService> m_service;
+    WeakPtr<CyberKit::CcidService> m_service;
     RetainPtr<TKSmartCardSlot> m_slot;
 }
 
-- (instancetype)initWithService:(WeakPtr<WebKit::CcidService>&&)service slot:(RetainPtr<TKSmartCardSlot>&&)slot;
+- (instancetype)initWithService:(WeakPtr<CyberKit::CcidService>&&)service slot:(RetainPtr<TKSmartCardSlot>&&)slot;
 - (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 CcidService::CcidService(Observer& observer)
     : FidoService(observer)
@@ -87,7 +87,7 @@ void CcidService::platformStartDiscovery()
 
 void CcidService::onValidCard(RetainPtr<TKSmartCard>&& smartCard)
 {
-    m_connection = WebKit::CcidConnection::create(WTFMove(smartCard), *this);
+    m_connection = CyberKit::CcidConnection::create(WTFMove(smartCard), *this);
 }
 
 void CcidService::updateSlots(NSArray *slots)
@@ -113,10 +113,10 @@ void CcidService::updateSlots(NSArray *slots)
         m_slotNames.remove(slot);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @implementation _WKSmartCardSlotObserver
-- (instancetype)initWithService:(WeakPtr<WebKit::CcidService>&&)service
+- (instancetype)initWithService:(WeakPtr<CyberKit::CcidService>&&)service
 {
     if (!(self = [super init]))
         return nil;
@@ -141,7 +141,7 @@ void CcidService::updateSlots(NSArray *slots)
 @end
 
 @implementation _WKSmartCardSlotStateObserver
-- (instancetype)initWithService:(WeakPtr<WebKit::CcidService>&&)service slot:(RetainPtr<TKSmartCardSlot>&&)slot
+- (instancetype)initWithService:(WeakPtr<CyberKit::CcidService>&&)service slot:(RetainPtr<TKSmartCardSlot>&&)slot
 {
     if (!(self = [super init]))
         return nil;

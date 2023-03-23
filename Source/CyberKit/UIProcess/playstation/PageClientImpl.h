@@ -30,7 +30,7 @@
 #include "WebFullScreenManagerProxy.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaProxy;
 class PlayStationWebView;
@@ -156,4 +156,4 @@ private:
     PlayStationWebView& m_view;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -27,7 +27,7 @@
 
 #include "Quad.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSQuadValue : public CSSValue {
 public:
@@ -49,6 +49,6 @@ inline const Quad& CSSValue::quad() const
     return downcast<CSSQuadValue>(*this).quad();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSQuadValue, isQuad())

@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSKeyframeRule;
 class CSSRuleList;
@@ -96,10 +96,10 @@ private:
     mutable std::unique_ptr<CSSRuleList> m_ruleListCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSKeyframesRule, StyleRuleType::Keyframes)
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleKeyframes)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isKeyframesRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleKeyframes)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isKeyframesRule(); }
 SPECIALIZE_TYPE_TRAITS_END()

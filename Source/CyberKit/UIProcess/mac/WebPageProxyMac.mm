@@ -114,7 +114,7 @@
 
 #import <pal/mac/QuickLookUISoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
     
 static inline bool expectsLegacyImplicitRubberBandControl()
@@ -125,9 +125,9 @@ static inline bool expectsLegacyImplicitRubberBandControl()
         return linkedAgainstSafariExpectingImplicitRubberBandControl;
     }
 
-    const int32_t firstVersionOfWebKit2WithNoImplicitRubberBandControl = 0x021A0200; // 538.2.0
-    int32_t linkedWebKit2Version = NSVersionOfLinkTimeLibrary("WebKit2");
-    return linkedWebKit2Version != -1 && linkedWebKit2Version < firstVersionOfWebKit2WithNoImplicitRubberBandControl;
+    const int32_t firstVersionOfCyberKit2WithNoImplicitRubberBandControl = 0x021A0200; // 538.2.0
+    int32_t linkedCyberKit2Version = NSVersionOfLinkTimeLibrary("CyberKit2");
+    return linkedCyberKit2Version != -1 && linkedCyberKit2Version < firstVersionOfCyberKit2WithNoImplicitRubberBandControl;
 }
 
 void WebPageProxy::platformInitialize()
@@ -351,7 +351,7 @@ void WebPageProxy::executeSavedCommandBySelector(const String& selector, Complet
     completionHandler(pageClient().executeSavedCommandBySelector(selector));
 }
 
-bool WebPageProxy::shouldDelayWindowOrderingForEvent(const WebKit::WebMouseEvent& event)
+bool WebPageProxy::shouldDelayWindowOrderingForEvent(const CyberKit::WebMouseEvent& event)
 {
     if (process().state() != WebProcessProxy::State::Running)
         return false;
@@ -362,7 +362,7 @@ bool WebPageProxy::shouldDelayWindowOrderingForEvent(const WebKit::WebMouseEvent
     return result;
 }
 
-bool WebPageProxy::acceptsFirstMouse(int eventNumber, const WebKit::WebMouseEvent& event)
+bool WebPageProxy::acceptsFirstMouse(int eventNumber, const CyberKit::WebMouseEvent& event)
 {
     if (!hasRunningProcess())
         return false;
@@ -398,7 +398,7 @@ CALayer *WebPageProxy::acceleratedCompositingRootLayer() const
 static NSString *temporaryPDFDirectoryPath()
 {
     static NeverDestroyed path = [] {
-        auto temporaryDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:@"WebKitPDFs-XXXXXX"];
+        auto temporaryDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:@"CyberKitPDFs-XXXXXX"];
         CString templateRepresentation = [temporaryDirectoryTemplate fileSystemRepresentation];
         if (mkdtemp(templateRepresentation.mutableData()))
             return adoptNS([[[NSFileManager defaultManager] stringWithFileSystemRepresentation:templateRepresentation.data() length:templateRepresentation.length()] copy]);
@@ -496,7 +496,7 @@ void WebPageProxy::openPDFFromTemporaryFolderWithNativeApplication(FrameInfoData
 #endif
 
 #if ENABLE(PDFKIT_PLUGIN)
-void WebPageProxy::showPDFContextMenu(const WebKit::PDFContextMenu& contextMenu, PDFPluginIdentifier identifier, CompletionHandler<void(std::optional<int32_t>&&)>&& completionHandler)
+void WebPageProxy::showPDFContextMenu(const CyberKit::PDFContextMenu& contextMenu, PDFPluginIdentifier identifier, CompletionHandler<void(std::optional<int32_t>&&)>&& completionHandler)
 {
     if (!contextMenu.items.size())
         return completionHandler(std::nullopt);
@@ -791,7 +791,7 @@ void WebPageProxy::showImageInQuickLookPreviewPanel(ShareableBitmap& imageBitmap
     [previewPanel makeKeyAndOrderFront:nil];
 
     if (![m_quickLookPreviewController isControlling:previewPanel]) {
-        // The WebKit client may have overridden QLPreviewPanelController methods on the view without calling into the superclass.
+        // The CyberKit client may have overridden QLPreviewPanelController methods on the view without calling into the superclass.
         // In this case, hand over control to the client and clear out our state eagerly, since we don't expect any further delegate
         // calls once the preview panel is dismissed.
         m_quickLookPreviewController.clear();
@@ -823,7 +823,7 @@ void WebPageProxy::handleContextMenuCopySubject(const String& preferredMIMEType)
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)
 

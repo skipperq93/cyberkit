@@ -34,7 +34,7 @@ namespace IPC {
 template<typename T, typename> struct ArgumentCoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class EditingStyle;
 class MutableStyleProperties;
@@ -100,4 +100,4 @@ private:
     FontChanges m_fontChanges;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

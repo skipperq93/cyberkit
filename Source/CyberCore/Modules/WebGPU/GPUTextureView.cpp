@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUTextureView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUTextureView::label() const
 {

@@ -30,7 +30,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
 class AudioNodeInput;
@@ -154,4 +154,4 @@ private:
     typedef HashSet<RefPtr<AudioParam>>::iterator ParamsIterator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

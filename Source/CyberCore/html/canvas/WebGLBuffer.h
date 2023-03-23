@@ -35,7 +35,7 @@ class ArrayBuffer;
 class ArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLBuffer final : public WebGLSharedObject {
 public:
@@ -54,6 +54,6 @@ private:
     GCGLenum m_target { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

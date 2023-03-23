@@ -28,7 +28,7 @@
 #import "APIUserInitiatedAction.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::UserInitiatedAction> {
     using WrapperClass = _WKUserInitiatedAction;

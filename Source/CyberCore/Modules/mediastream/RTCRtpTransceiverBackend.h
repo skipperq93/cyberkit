@@ -30,7 +30,7 @@
 #include "RTCRtpTransceiverDirection.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct RTCRtpCodecCapability;
 
 class RTCRtpTransceiverBackend {
@@ -47,6 +47,6 @@ public:
     virtual ExceptionOr<void> setCodecPreferences(const Vector<RTCRtpCodecCapability>&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

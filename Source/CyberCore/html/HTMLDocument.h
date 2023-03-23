@@ -24,7 +24,7 @@
 
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLDocument : public Document {
     WTF_MAKE_ISO_ALLOCATED(HTMLDocument);
@@ -72,9 +72,9 @@ inline Ref<HTMLDocument> HTMLDocument::create(Frame* frame, const Settings& sett
     return document;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLDocument)
-    static bool isType(const WebCore::Document& document) { return document.isHTMLDocument(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Document>(node) && isType(downcast<WebCore::Document>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLDocument)
+    static bool isType(const CyberCore::Document& document) { return document.isHTMLDocument(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Document>(node) && isType(downcast<CyberCore::Document>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

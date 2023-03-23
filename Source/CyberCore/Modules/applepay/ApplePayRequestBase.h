@@ -29,12 +29,12 @@
 
 #include "ApplePayContactField.h"
 #include "ApplePayFeature.h"
-#include "ApplePayInstallmentConfigurationWebCore.h"
+#include "ApplePayInstallmentConfigurationCyberCore.h"
 #include "ApplePayMerchantCapability.h"
 #include "ApplePayPaymentContact.h"
 #include "ApplePayShippingContactEditingMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class PaymentCoordinator;
@@ -71,6 +71,6 @@ struct ApplePayRequestBase {
 
 ExceptionOr<ApplePaySessionPaymentRequest> convertAndValidate(Document&, unsigned version, ApplePayRequestBase&, const PaymentCoordinator&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

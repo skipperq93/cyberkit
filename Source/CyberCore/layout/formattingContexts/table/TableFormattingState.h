@@ -30,7 +30,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 // TableFormattingState holds the state for a particular table formatting context tree.

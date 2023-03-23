@@ -27,7 +27,7 @@
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaSessionCoordinatorState : uint8_t {
     Waiting,
@@ -35,16 +35,16 @@ enum class MediaSessionCoordinatorState : uint8_t {
     Closed,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MediaSessionCoordinatorState> {
+template<> struct EnumTraits<CyberCore::MediaSessionCoordinatorState> {
     using values = EnumValues<
-        WebCore::MediaSessionCoordinatorState,
-        WebCore::MediaSessionCoordinatorState::Waiting,
-        WebCore::MediaSessionCoordinatorState::Joined,
-        WebCore::MediaSessionCoordinatorState::Closed
+        CyberCore::MediaSessionCoordinatorState,
+        CyberCore::MediaSessionCoordinatorState::Waiting,
+        CyberCore::MediaSessionCoordinatorState::Joined,
+        CyberCore::MediaSessionCoordinatorState::Closed
     >;
 };
 

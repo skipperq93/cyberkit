@@ -35,7 +35,7 @@
 #include "HTMLTextFormControlElement.h"
 #include "NodeTraversal.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ASCIILiteral inputTypeNameForEditingAction(EditAction action)
 {
@@ -237,4 +237,4 @@ void SimpleEditCommand::addNodeAndDescendants(Node* startNode, HashSet<Ref<Node>
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -60,16 +60,16 @@
 #include "JSCSSSupportsRule.h"
 #include "JSNode.h"
 #include "JSStyleSheetCustom.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
 void JSCSSRule::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped());
+    addCyberCoreOpaqueRoot(visitor, wrapped());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSCSSRule);
@@ -125,4 +125,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, object);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

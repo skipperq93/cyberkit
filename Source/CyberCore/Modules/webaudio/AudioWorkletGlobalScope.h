@@ -39,7 +39,7 @@ namespace JSC {
 class VM;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioWorkletProcessorConstructionData;
 class AudioWorkletProcessor;
@@ -88,11 +88,11 @@ private:
     std::optional<JSC::JSLockHolder> m_lockDuringRendering;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioWorkletGlobalScope)
-static bool isType(const WebCore::ScriptExecutionContext& context) { return is<WebCore::WorkletGlobalScope>(context) && downcast<WebCore::WorkletGlobalScope>(context).isAudioWorkletGlobalScope(); }
-static bool isType(const WebCore::WorkletGlobalScope& context) { return context.isAudioWorkletGlobalScope(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioWorkletGlobalScope)
+static bool isType(const CyberCore::ScriptExecutionContext& context) { return is<CyberCore::WorkletGlobalScope>(context) && downcast<CyberCore::WorkletGlobalScope>(context).isAudioWorkletGlobalScope(); }
+static bool isType(const CyberCore::WorkletGlobalScope& context) { return context.isAudioWorkletGlobalScope(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEB_AUDIO)

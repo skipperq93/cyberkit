@@ -45,7 +45,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 
@@ -113,4 +113,4 @@ private:
     HashMap<uint64_t, Function<void()>> m_pendingTasks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

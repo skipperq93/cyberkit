@@ -35,13 +35,13 @@
 
 #include "RTCSdpType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCSessionDescriptionInit {
     RTCSdpType type;
     String sdp;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

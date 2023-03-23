@@ -28,7 +28,7 @@
 
 #if ENABLE(CSS_PAINTING_API)
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
@@ -43,6 +43,6 @@ void JSPaintWorkletGlobalScope::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSPaintWorkletGlobalScope);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

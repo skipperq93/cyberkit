@@ -29,7 +29,7 @@
 #include "HTMLNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLDataElement);
 
@@ -46,4 +46,4 @@ inline HTMLDataElement::HTMLDataElement(const QualifiedName& tagName, Document& 
     ASSERT(hasTagName(dataTag));
 }
 
-} // namespace WebCore.
+} // namespace CyberCore.

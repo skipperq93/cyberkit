@@ -50,7 +50,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class CanvasGradient;
@@ -424,4 +424,4 @@ private:
     CanvasRenderingContext2DSettings m_settings;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

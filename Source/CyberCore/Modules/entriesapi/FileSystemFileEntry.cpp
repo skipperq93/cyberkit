@@ -34,7 +34,7 @@
 #include "FileCallback.h"
 #include "WindowEventLoop.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FileSystemFileEntry> FileSystemFileEntry::create(ScriptExecutionContext& context, DOMFileSystem& filesystem, const String& virtualPath)
 {
@@ -66,4 +66,4 @@ void FileSystemFileEntry::file(ScriptExecutionContext& context, Ref<FileCallback
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

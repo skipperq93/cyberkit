@@ -38,7 +38,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/JSLock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 HTMLImageLoader::HTMLImageLoader(Element& element)
     : ImageLoader(element)

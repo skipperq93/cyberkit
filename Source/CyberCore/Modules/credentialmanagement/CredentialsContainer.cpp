@@ -39,7 +39,7 @@
 #include "SecurityOrigin.h"
 #include "WebAuthenticationConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CredentialsContainer::CredentialsContainer(WeakPtr<Document, WeakPtrImplWithEventTargetData>&& document)
     : m_document(WTFMove(document))
@@ -141,6 +141,6 @@ void CredentialsContainer::preventSilentAccess(DOMPromiseDeferred<void>&& promis
     promise.reject(Exception { NotSupportedError, "Not implemented."_s });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

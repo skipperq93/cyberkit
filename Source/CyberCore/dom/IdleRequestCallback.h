@@ -29,7 +29,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IdleDeadline;
 
@@ -40,4 +40,4 @@ public:
     virtual CallbackResult<void> handleEvent(IdleDeadline&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

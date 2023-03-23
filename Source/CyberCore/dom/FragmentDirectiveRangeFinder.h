@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace FragmentDirectiveRangeFinder {
 
@@ -39,4 +39,4 @@ std::optional<SimpleRange> findRangeFromTextDirective(ParsedTextDirective, Docum
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

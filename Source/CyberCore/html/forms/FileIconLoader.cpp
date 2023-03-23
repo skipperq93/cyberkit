@@ -32,7 +32,7 @@
 
 #include "Icon.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void FileIconLoader::invalidate()
 {

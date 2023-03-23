@@ -22,7 +22,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CollectionType {
     // Unnamed HTMLCollection types cached in the document.
@@ -95,4 +95,4 @@ struct CollectionTypeTraits<FormControls> {
     static const CollectionTraversalType traversalType = CollectionTraversalType::CustomForwardOnly;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include "Node.h"
 #include "QualifiedName.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Attribute;
 class CSSStyleDeclaration;
@@ -83,8 +83,8 @@ private:
     RefPtr<MutableStyleProperties> m_style;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Attr)
-    static bool isType(const WebCore::Node& node) { return node.isAttributeNode(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Attr)
+    static bool isType(const CyberCore::Node& node) { return node.isAttributeNode(); }
 SPECIALIZE_TYPE_TRAITS_END()

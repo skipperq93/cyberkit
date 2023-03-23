@@ -22,14 +22,14 @@
 #if ENABLE(OFFSCREEN_CANVAS)
 
 #include "JSOffscreenCanvasRenderingContext2D.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
-inline WebCoreOpaqueRoot root(OffscreenCanvas* canvas)
+inline CyberCoreOpaqueRoot root(OffscreenCanvas* canvas)
 {
-    return WebCoreOpaqueRoot { canvas };
+    return CyberCoreOpaqueRoot { canvas };
 }
 
 bool JSOffscreenCanvasRenderingContext2DOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, AbstractSlotVisitor& visitor, const char** reason)
@@ -38,17 +38,17 @@ bool JSOffscreenCanvasRenderingContext2DOwner::isReachableFromOpaqueRoots(JSC::H
         *reason = "Canvas is opaque root";
 
     auto* jsOffscreenCanvasRenderingContext = jsCast<JSOffscreenCanvasRenderingContext2D*>(handle.slot()->asCell());
-    return containsWebCoreOpaqueRoot(visitor, jsOffscreenCanvasRenderingContext->wrapped().canvas());
+    return containsCyberCoreOpaqueRoot(visitor, jsOffscreenCanvasRenderingContext->wrapped().canvas());
 }
 
 template<typename Visitor>
 void JSOffscreenCanvasRenderingContext2D::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().canvas());
+    addCyberCoreOpaqueRoot(visitor, wrapped().canvas());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSOffscreenCanvasRenderingContext2D);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

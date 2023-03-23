@@ -20,18 +20,18 @@
 #pragma once
 
 #include "DownloadProxy.h"
-#include "WebKitDownload.h"
+#include "CyberKitDownload.h"
 #include <CyberCore/ResourceError.h>
 #include <CyberCore/ResourceRequest.h>
 #include <wtf/glib/GRefPtr.h>
 
-GRefPtr<WebKitDownload> webkitDownloadCreate(WebKit::DownloadProxy&, WebKitWebView* = nullptr);
-void webkitDownloadStarted(WebKitDownload*);
-bool webkitDownloadIsCancelled(WebKitDownload*);
-void webkitDownloadSetResponse(WebKitDownload*, WebKitURIResponse*);
-void webkitDownloadNotifyProgress(WebKitDownload*, guint64 bytesReceived);
-void webkitDownloadFailed(WebKitDownload*, const CyberCore::ResourceError&);
-void webkitDownloadCancelled(WebKitDownload*);
-void webkitDownloadFinished(WebKitDownload*);
-String webkitDownloadDecideDestinationWithSuggestedFilename(WebKitDownload*, const CString& suggestedFilename, bool& allowOverwrite);
-void webkitDownloadDestinationCreated(WebKitDownload*, const String& destinationPath);
+GRefPtr<CyberKitDownload> webkitDownloadCreate(CyberKit::DownloadProxy&, CyberKitWebView* = nullptr);
+void webkitDownloadStarted(CyberKitDownload*);
+bool webkitDownloadIsCancelled(CyberKitDownload*);
+void webkitDownloadSetResponse(CyberKitDownload*, CyberKitURIResponse*);
+void webkitDownloadNotifyProgress(CyberKitDownload*, guint64 bytesReceived);
+void webkitDownloadFailed(CyberKitDownload*, const CyberCore::ResourceError&);
+void webkitDownloadCancelled(CyberKitDownload*);
+void webkitDownloadFinished(CyberKitDownload*);
+String webkitDownloadDecideDestinationWithSuggestedFilename(CyberKitDownload*, const CString& suggestedFilename, bool& allowOverwrite);
+void webkitDownloadDestinationCreated(CyberKitDownload*, const String& destinationPath);

@@ -55,7 +55,7 @@ webkit_dom_style_sheet_list_get_type(void);
  *
  * Returns: (transfer full): A #CyberKitDOMStyleSheet
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMStyleSheet*
 webkit_dom_style_sheet_list_item(CyberKitDOMStyleSheetList* self, gulong index);
@@ -66,7 +66,7 @@ webkit_dom_style_sheet_list_item(CyberKitDOMStyleSheetList* self, gulong index);
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_style_sheet_list_get_length(CyberKitDOMStyleSheetList* self);

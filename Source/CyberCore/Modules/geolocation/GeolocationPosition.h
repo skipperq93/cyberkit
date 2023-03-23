@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationPosition : public RefCounted<GeolocationPosition> {
 public:
@@ -58,4 +58,4 @@ private:
     EpochTimeStamp m_timestamp;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

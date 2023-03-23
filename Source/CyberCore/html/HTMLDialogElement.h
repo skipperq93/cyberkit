@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLDialogElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLDialogElement);
@@ -60,4 +60,4 @@ private:
     WeakPtr<Element, WeakPtrImplWithEventTargetData> m_previouslyFocusedElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

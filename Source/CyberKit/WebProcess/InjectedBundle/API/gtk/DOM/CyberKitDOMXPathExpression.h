@@ -58,7 +58,7 @@ webkit_dom_xpath_expression_get_type(void);
  *
  * Returns: (transfer full): A #CyberKitDOMXPathResult
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMXPathResult*
 webkit_dom_xpath_expression_evaluate(CyberKitDOMXPathExpression* self, CyberKitDOMNode* contextNode, gushort type, CyberKitDOMXPathResult* inResult, GError** error);

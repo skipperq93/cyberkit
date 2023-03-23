@@ -30,7 +30,7 @@
 
 using namespace JSC;
 
-namespace WebCore {
+namespace CyberCore {
 
 const ClassInfo JSRemoteDOMWindowBase::s_info = { "Window"_s, &JSDOMGlobalObject::s_info, nullptr, nullptr, CREATE_METHOD_TABLE(JSRemoteDOMWindowBase) };
 
@@ -72,4 +72,4 @@ RuntimeFlags JSRemoteDOMWindowBase::javaScriptRuntimeFlags(const JSGlobalObject*
     return RuntimeFlags { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

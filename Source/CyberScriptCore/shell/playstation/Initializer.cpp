@@ -42,9 +42,9 @@ static void initializer(void)
 {
     loadLibraryOrExit("SystemServices");
     loadLibraryOrExit("Perf");
-    loadLibraryOrExit("PosixWebKit");
+    loadLibraryOrExit("PosixCyberKit");
 #if !ENABLE(STATIC_JSC)
-    loadLibraryOrExit("libJavaScriptCore");
+    loadLibraryOrExit("libCyberScriptCore");
 #endif
     loadLibraryOrExit(ICU_LOAD_AT);
 }

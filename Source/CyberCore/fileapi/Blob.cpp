@@ -44,7 +44,7 @@
 #include "SecurityOrigin.h"
 #include "SharedBuffer.h"
 #include "ThreadableBlobRegistry.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Lock.h>
 #include <wtf/MainThread.h>
@@ -52,7 +52,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Blob);
 
@@ -416,9 +416,9 @@ URLKeepingBlobAlive Blob::handle() const
     return { m_internalURL, m_topOrigin };
 }
 
-WebCoreOpaqueRoot root(Blob* blob)
+CyberCoreOpaqueRoot root(Blob* blob)
 {
-    return WebCoreOpaqueRoot { blob };
+    return CyberCoreOpaqueRoot { blob };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

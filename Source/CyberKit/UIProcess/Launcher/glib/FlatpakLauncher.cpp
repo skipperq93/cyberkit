@@ -31,9 +31,9 @@
 #include <gio/gio.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-GRefPtr<GSubprocess> flatpakSpawn(GSubprocessLauncher* launcher, const WebKit::ProcessLauncher::LaunchOptions& launchOptions, char** argv, int childProcessSocket, GError** error)
+GRefPtr<GSubprocess> flatpakSpawn(GSubprocessLauncher* launcher, const CyberKit::ProcessLauncher::LaunchOptions& launchOptions, char** argv, int childProcessSocket, GError** error)
 {
     ASSERT(launcher);
 

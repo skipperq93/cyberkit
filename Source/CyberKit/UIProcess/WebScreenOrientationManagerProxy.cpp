@@ -34,7 +34,7 @@
 #include <CyberCore/Exception.h>
 #include <CyberCore/ScreenOrientationProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebScreenOrientationManagerProxy::WebScreenOrientationManagerProxy(WebPageProxy& page)
     : m_page(page)
@@ -179,4 +179,4 @@ std::optional<CyberCore::Exception> WebScreenOrientationManagerProxy::platformSh
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

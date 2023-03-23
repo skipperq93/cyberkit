@@ -30,7 +30,7 @@
 #include "Element.h"
 #include "ElementData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Attribute;
 class MutableStyleProperties;
@@ -106,8 +106,8 @@ inline const MutableStyleProperties* StyledElement::presentationalHintStyle() co
     return elementData()->presentationalHintStyle();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyledElement)
-    static bool isType(const WebCore::Node& node) { return node.isStyledElement(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyledElement)
+    static bool isType(const CyberCore::Node& node) { return node.isStyledElement(); }
 SPECIALIZE_TYPE_TRAITS_END()

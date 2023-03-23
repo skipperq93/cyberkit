@@ -65,7 +65,7 @@
 #include <variant>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ContainerNode);
 
@@ -1095,4 +1095,4 @@ HTMLCollection* ContainerNode::cachedHTMLCollection(CollectionType type)
     return hasRareData() && rareData()->nodeLists() ? rareData()->nodeLists()->cachedCollection<HTMLCollection>(type) : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

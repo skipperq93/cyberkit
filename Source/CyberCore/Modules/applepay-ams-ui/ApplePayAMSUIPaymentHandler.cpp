@@ -34,7 +34,7 @@
 #include "JSDOMConvert.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<ApplePayAMSUIRequest> convertAndValidateApplePayAMSUIRequest(Document& document, JSC::JSValue data)
 {
@@ -172,6 +172,6 @@ ExceptionOr<void> ApplePayAMSUIPaymentHandler::retry(PaymentValidationErrors&&)
     return show(document());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) && ENABLE(PAYMENT_REQUEST)

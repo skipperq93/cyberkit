@@ -34,7 +34,7 @@ namespace CyberCore {
 class ResourceError;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class AuthenticationChallengeProxy;
 class WebBackForwardListItem;
 class WebFrameProxy;
@@ -53,17 +53,17 @@ class LoaderClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     virtual ~LoaderClient() { }
-    virtual void didStartProvisionalLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
-    virtual void didReceiveServerRedirectForProvisionalLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
-    virtual void didFailProvisionalLoadWithErrorForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) { }
-    virtual void didFinishLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
-    virtual void didFailLoadWithErrorForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) { }
-    virtual void didFirstVisuallyNonEmptyLayoutForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Object*) { }
-    virtual void didReachLayoutMilestone(WebKit::WebPageProxy&, OptionSet<CyberCore::LayoutMilestone>) { }
-    virtual bool shouldKeepCurrentBackForwardListItemInList(WebKit::WebPageProxy&, WebKit::WebBackForwardListItem&) { return true; }
-    virtual bool processDidCrash(WebKit::WebPageProxy&) { return false; }
-    virtual void didChangeBackForwardList(WebKit::WebPageProxy&, WebKit::WebBackForwardListItem*, Vector<Ref<WebKit::WebBackForwardListItem>>&&) { }
-    virtual void didCommitLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
+    virtual void didStartProvisionalLoadForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
+    virtual void didReceiveServerRedirectForProvisionalLoadForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
+    virtual void didFailProvisionalLoadWithErrorForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) { }
+    virtual void didFinishLoadForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
+    virtual void didFailLoadWithErrorForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) { }
+    virtual void didFirstVisuallyNonEmptyLayoutForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Object*) { }
+    virtual void didReachLayoutMilestone(CyberKit::WebPageProxy&, OptionSet<CyberCore::LayoutMilestone>) { }
+    virtual bool shouldKeepCurrentBackForwardListItemInList(CyberKit::WebPageProxy&, CyberKit::WebBackForwardListItem&) { return true; }
+    virtual bool processDidCrash(CyberKit::WebPageProxy&) { return false; }
+    virtual void didChangeBackForwardList(CyberKit::WebPageProxy&, CyberKit::WebBackForwardListItem*, Vector<Ref<CyberKit::WebBackForwardListItem>>&&) { }
+    virtual void didCommitLoadForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
 };
 
 } // namespace API

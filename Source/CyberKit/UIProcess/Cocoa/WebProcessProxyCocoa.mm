@@ -70,7 +70,7 @@
 #import "TCCSoftLink.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static const Seconds unexpectedActivityDuration = 10_s;
 
@@ -78,7 +78,7 @@ const MemoryCompactLookupOnlyRobinHoodHashSet<String>& WebProcessProxy::platform
 {
     static NeverDestroyed<MemoryCompactLookupOnlyRobinHoodHashSet<String>> platformPathsWithAssumedReadAccess(std::initializer_list<String> {
         [NSBundle bundleWithIdentifier:@"com.apple.CyberCore"].resourcePath.stringByStandardizingPath,
-        [NSBundle bundleWithIdentifier:@"com.apple.WebKit"].resourcePath.stringByStandardizingPath
+        [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"].resourcePath.stringByStandardizingPath
     });
 
     return platformPathsWithAssumedReadAccess;
@@ -308,14 +308,14 @@ bool WebProcessProxy::messageSourceIsValidWebContentProcess()
         return true;
 #endif
 
-    // WebKitTestRunner does not pass the isPlatformBinary check, we should return early in this case.
+    // CyberKitTestRunner does not pass the isPlatformBinary check, we should return early in this case.
     if (isRunningTest(CyberCore::applicationBundleIdentifier()))
         return true;
 
     // Confirm that the connection is from a WebContent process:
     auto [signingIdentifier, isPlatformBinary] = codeSigningIdentifierAndPlatformBinaryStatus(connection()->xpcConnection());
 
-    if (!isPlatformBinary || !signingIdentifier.startsWith("com.apple.WebKit.WebContent"_s)) {
+    if (!isPlatformBinary || !signingIdentifier.startsWith("com.apple.CyberKit.WebContent"_s)) {
         RELEASE_LOG_ERROR(Process, "Process is not an entitled WebContent process.");
         return false;
     }

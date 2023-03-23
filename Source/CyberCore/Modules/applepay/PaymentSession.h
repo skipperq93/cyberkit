@@ -30,7 +30,7 @@
 #include "ExceptionOr.h"
 #include "PaymentSessionBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Payment;
@@ -56,6 +56,6 @@ public:
     virtual void didCancelPaymentSession(PaymentSessionError&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

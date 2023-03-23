@@ -28,7 +28,7 @@
 #include "IDBDatabaseIdentifier.h"
 #include "IDBRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBResultData;
 
@@ -74,4 +74,4 @@ private:
     bool m_isBlocked { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

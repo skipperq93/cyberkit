@@ -35,7 +35,7 @@
 #include "WebProcess.h"
 #include <wtf/MainThread.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore::DOMCacheEngine;
 
 WebCacheStorageConnection::WebCacheStorageConnection(WebCacheStorageProvider& provider)

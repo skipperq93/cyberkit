@@ -35,8 +35,8 @@
 #import "JSHTMLElement.h"
 #import "JSPluginElementFunctions.h"
 #import "ObjCRuntimeObject.h"
-#import "WebCoreJITOperations.h"
-#import "WebCoreObjCExtras.h"
+#import "CyberCoreJITOperations.h"
+#import "CyberCoreObjCExtras.h"
 #import "objc_instance.h"
 #import "runtime_object.h"
 #import "runtime_root.h"
@@ -56,7 +56,7 @@
 #import <wtf/text/WTFString.h>
 
 using namespace JSC::Bindings;
-using namespace WebCore;
+using namespace CyberCore;
 
 using JSC::CallData;
 using JSC::Identifier;
@@ -68,7 +68,7 @@ using JSC::jsCast;
 using JSC::jsUndefined;
 using JSC::makeSource;
 
-namespace WebCore {
+namespace CyberCore {
 
 static Lock wrapperCacheLock;
 static CreateWrapperFunction createDOMWrapperFunction;
@@ -154,7 +154,7 @@ void disconnectWindowWrapper(WebScriptObject *windowWrapper)
     disconnectWindowWrapperFunction(windowWrapper);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 @implementation WebScriptObjectPrivate
 
@@ -167,7 +167,7 @@ void disconnectWindowWrapper(WebScriptObject *windowWrapper)
 #if !USE(WEB_THREAD)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -176,15 +176,15 @@ void disconnectWindowWrapper(WebScriptObject *windowWrapper)
     ASSERT(jsObject);
     auto& wrapped = *toJS(jsObject);
 
-    if (WebCore::createDOMWrapperFunction) {
-        if (auto wrapper = WebCore::createDOMWrapperFunction(wrapped)) {
+    if (CyberCore::createDOMWrapperFunction) {
+        if (auto wrapper = CyberCore::createDOMWrapperFunction(wrapped)) {
             if (![wrapper _hasImp]) // new wrapper, not from cache
                 [wrapper _setImp:&wrapped originRootObject:originRootObject rootObject:rootObject];
             return wrapper;
         }
     }
 
-    return WebCore::createJSWrapper(&wrapped, originRootObject, rootObject);
+    return CyberCore::createJSWrapper(&wrapped, originRootObject, rootObject);
 }
 
 - (void)_setImp:(JSObject*)imp originRootObject:(RefPtr<RootObject>&&)originRootObject rootObject:(RefPtr<RootObject>&&)rootObject
@@ -199,7 +199,7 @@ void disconnectWindowWrapper(WebScriptObject *windowWrapper)
     _private->rootObject = rootObject.leakRef();
     _private->originRootObject = originRootObject.leakRef();
 
-    WebCore::addJSWrapper(self, imp);
+    CyberCore::addJSWrapper(self, imp);
 
     if (_private->rootObject)
         _private->rootObject->gcProtect(imp);
@@ -301,14 +301,14 @@ void disconnectWindowWrapper(WebScriptObject *windowWrapper)
 {
     // If we're releasing the last reference to this object, remove if from the map.
     if (_private->imp)
-        WebCore::removeJSWrapperIfRetainCountOne(self, _private->imp);
+        CyberCore::removeJSWrapperIfRetainCountOne(self, _private->imp);
 
     [super release];
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebScriptObject class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebScriptObject class], self))
         return;
 
     if (_private->rootObject && _private->rootObject->isValid())

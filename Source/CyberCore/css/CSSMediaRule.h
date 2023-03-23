@@ -24,7 +24,7 @@
 
 #include "CSSConditionRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaList;
 class StyleRuleMedia;
@@ -56,6 +56,6 @@ private:
     mutable RefPtr<MediaList> m_mediaCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSMediaRule, StyleRuleType::Media)

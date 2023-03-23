@@ -39,7 +39,7 @@
 // Set output to stereo by default.
 static constexpr unsigned defaultNumberOfOutputChannels = 2;
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DynamicsCompressorNode);
 
@@ -155,6 +155,6 @@ ExceptionOr<void> DynamicsCompressorNode::setChannelCountMode(ChannelCountMode m
     return AudioNode::setChannelCountMode(mode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

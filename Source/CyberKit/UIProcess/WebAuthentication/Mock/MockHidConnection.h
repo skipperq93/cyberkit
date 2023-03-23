@@ -32,7 +32,7 @@
 #include <CyberCore/MockWebAuthenticationConfiguration.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // The following basically simulates an external HID token that:
 //    1. Supports only one protocol, either CTAP2 or U2F.
@@ -72,6 +72,6 @@ private:
     Vector<uint8_t> m_nonce;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

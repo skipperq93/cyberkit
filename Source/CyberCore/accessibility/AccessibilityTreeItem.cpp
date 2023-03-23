@@ -32,7 +32,7 @@
 #include "AXObjectCache.h"
 #include "HTMLNames.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
     
@@ -65,4 +65,4 @@ AccessibilityRole AccessibilityTreeItem::determineAccessibilityRole()
     return AccessibilityRenderObject::determineAccessibilityRole();
 }
     
-} // namespace WebCore
+} // namespace CyberCore

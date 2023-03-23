@@ -36,7 +36,7 @@
 #include "GraphicsContext.h"
 #include "Path.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr float labelPadding = 4;
 static constexpr float labelArrowSize = 6;
@@ -420,4 +420,4 @@ FloatSize InspectorOverlayLabel::expectedSize(const String& text, Arrow::Directi
     return InspectorOverlayLabel::expectedSize({ { text, Color::black } }, direction);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

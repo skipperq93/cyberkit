@@ -32,7 +32,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(Box);
@@ -75,5 +75,5 @@ String Box::debugDescription() const
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

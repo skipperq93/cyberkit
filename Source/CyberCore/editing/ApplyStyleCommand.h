@@ -29,7 +29,7 @@
 #include "HTMLElement.h"
 #include "WritingDirection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class EditingStyle;
@@ -136,4 +136,4 @@ bool isLegacyAppleStyleSpan(const Node*);
 bool isStyleSpanOrSpanWithOnlyStyleAttribute(const Element&);
 Ref<HTMLElement> createStyleSpanElement(Document&);
 
-} // namespace WebCore
+} // namespace CyberCore

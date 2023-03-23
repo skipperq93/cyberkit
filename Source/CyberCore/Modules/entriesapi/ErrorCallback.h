@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMException;
 
@@ -44,4 +44,4 @@ public:
     void scheduleCallback(ScriptExecutionContext&, Ref<DOMException>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

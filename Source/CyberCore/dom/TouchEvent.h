@@ -33,7 +33,7 @@
 #include "MouseRelatedEvent.h"
 #include "TouchList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TouchEvent final : public MouseRelatedEvent {
     WTF_MAKE_ISO_ALLOCATED(TouchEvent);
@@ -87,7 +87,7 @@ private:
     RefPtr<TouchList> m_changedTouches;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(TouchEvent)
 

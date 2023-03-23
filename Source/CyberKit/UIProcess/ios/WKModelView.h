@@ -31,7 +31,7 @@ namespace CyberCore {
 class Model;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
@@ -39,7 +39,7 @@ OBJC_CLASS ASVInlinePreview;
 
 @interface WKModelView : WKCompositingView <WKNativelyInteractible>
 
-- (instancetype)initWithModel:(CyberCore::Model&)model layerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID page:(WebKit::WebPageProxy&)page NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithModel:(CyberCore::Model&)model layerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID page:(CyberKit::WebPageProxy&)page NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;

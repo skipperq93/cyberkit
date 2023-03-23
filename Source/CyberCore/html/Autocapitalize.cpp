@@ -31,7 +31,7 @@
 #include "CommonAtomStrings.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AutocapitalizeType autocapitalizeTypeForAttributeValue(const AtomString& attributeValue)
 {
@@ -77,6 +77,6 @@ const AtomString& stringForAutocapitalizeType(AutocapitalizeType type)
     return nullAtom();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(AUTOCAPITALIZE)

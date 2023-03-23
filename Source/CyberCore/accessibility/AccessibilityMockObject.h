@@ -27,7 +27,7 @@
 
 #include "AccessibilityObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityMockObject : public AccessibilityObject {
     
@@ -53,6 +53,6 @@ private:
     bool computeAccessibilityIsIgnored() const override;
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityMockObject, isMockObject())

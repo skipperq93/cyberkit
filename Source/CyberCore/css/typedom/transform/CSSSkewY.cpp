@@ -38,7 +38,7 @@
 #include "ExceptionOr.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSSkewY);
 
@@ -117,4 +117,4 @@ RefPtr<CSSValue> CSSSkewY::toCSSValue() const
     return CSSFunctionValue::create(CSSValueSkewY, WTFMove(arguments));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

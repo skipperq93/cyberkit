@@ -46,7 +46,7 @@ using WKRevealController = id;
 using CocoaView = UIView;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestResult;
 class VisibleSelection;
@@ -69,6 +69,6 @@ public:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

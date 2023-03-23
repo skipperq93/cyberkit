@@ -34,7 +34,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentMethodUpdate final : public ApplePayDetailsUpdateBase {
 #if ENABLE(APPLE_PAY_UPDATE_SHIPPING_METHODS_WHEN_CHANGING_LINE_ITEMS)
@@ -48,6 +48,6 @@ struct ApplePayPaymentMethodUpdate final : public ApplePayDetailsUpdateBase {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

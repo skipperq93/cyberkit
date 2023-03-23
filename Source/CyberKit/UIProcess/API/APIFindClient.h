@@ -35,7 +35,7 @@ namespace CyberCore {
 class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
@@ -46,12 +46,12 @@ class FindClient {
 public:
     virtual ~FindClient() { }
 
-    virtual void didCountStringMatches(WebKit::WebPageProxy*, const WTF::String&, uint32_t) { }
-    virtual void didFindString(WebKit::WebPageProxy*, const WTF::String&, const Vector<CyberCore::IntRect>& matchRects, uint32_t, int32_t, bool didWrapAround) { }
-    virtual void didFailToFindString(WebKit::WebPageProxy*, const WTF::String&) { }
+    virtual void didCountStringMatches(CyberKit::WebPageProxy*, const WTF::String&, uint32_t) { }
+    virtual void didFindString(CyberKit::WebPageProxy*, const WTF::String&, const Vector<CyberCore::IntRect>& matchRects, uint32_t, int32_t, bool didWrapAround) { }
+    virtual void didFailToFindString(CyberKit::WebPageProxy*, const WTF::String&) { }
 
-    virtual void didAddLayerForFindOverlay(WebKit::WebPageProxy*, PlatformLayer*) { }
-    virtual void didRemoveLayerForFindOverlay(WebKit::WebPageProxy*) { }
+    virtual void didAddLayerForFindOverlay(CyberKit::WebPageProxy*, PlatformLayer*) { }
+    virtual void didRemoveLayerForFindOverlay(CyberKit::WebPageProxy*) { }
 };
 
 } // namespace API

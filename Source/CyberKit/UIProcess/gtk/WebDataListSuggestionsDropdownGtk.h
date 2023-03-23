@@ -33,7 +33,7 @@ typedef struct _GtkTreePath GtkTreePath;
 typedef struct _GtkTreeView GtkTreeView;
 typedef struct _GtkTreeViewColumn GtkTreeViewColumn;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -61,6 +61,6 @@ private:
     GtkWidget* m_treeView { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATALIST_ELEMENT)

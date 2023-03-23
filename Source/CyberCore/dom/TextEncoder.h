@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextEncoder : public RefCounted<TextEncoder> {
 public:

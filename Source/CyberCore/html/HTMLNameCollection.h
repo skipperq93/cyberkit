@@ -27,7 +27,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -107,7 +107,7 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(WindowNameCollection, WindowNamedItems)
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(DocumentNameCollection, DocumentNamedItems)

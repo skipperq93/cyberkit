@@ -29,7 +29,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLContextEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(WebGLContextEvent);
@@ -60,6 +60,6 @@ private:
     String m_statusMessage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

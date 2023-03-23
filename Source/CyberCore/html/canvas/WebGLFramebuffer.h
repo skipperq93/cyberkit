@@ -41,7 +41,7 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLRenderbuffer;
 class WebGLTexture;
@@ -136,6 +136,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

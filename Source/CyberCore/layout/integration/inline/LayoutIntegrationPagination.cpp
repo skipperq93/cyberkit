@@ -30,7 +30,7 @@
 #include "RenderBlockFlow.h"
 #include "RenderTableCell.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 Vector<LineAdjustment> computeAdjustmentsForPagination(const InlineContent& inlineContent, RenderBlockFlow& flow)

@@ -22,7 +22,7 @@
 
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CSSValueID : uint16_t;
 
@@ -39,4 +39,4 @@ struct Counter {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

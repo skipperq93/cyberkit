@@ -40,7 +40,7 @@
 #include <wtf/Ref.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomElementReactionQueueItem {
     using AdoptedPayload = std::tuple<Ref<Document>, Ref<Document>>;

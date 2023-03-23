@@ -48,8 +48,8 @@
 #include "Location.h"
 #include "ScheduledAction.h"
 #include "Settings.h"
-#include "WebCoreJSClientData.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreJSClientData.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/BuiltinNames.h>
 #include <CyberScriptCore/HeapAnalyzer.h>
 #include <CyberScriptCore/InternalFunction.h>
@@ -66,7 +66,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static JSC_DECLARE_HOST_FUNCTION(jsDOMWindowInstanceFunction_openDatabase);
@@ -77,7 +77,7 @@ static JSC_DECLARE_CUSTOM_GETTER(jsDOMWindow_webkit);
 template<typename Visitor>
 void JSDOMWindow::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped());
+    addCyberCoreOpaqueRoot(visitor, wrapped());
     
     // Normally JSEventTargetCustom.cpp's JSEventTarget::visitAdditionalChildren() would call this. But
     // even though DOMWindow is an EventTarget, JSDOMWindow does not subclass JSEventTarget, so we need
@@ -116,7 +116,7 @@ bool jsDOMWindowGetOwnPropertySlotRestrictedAccess(JSDOMGlobalObject* thisObject
     VM& vm = lexicalGlobalObject.vm();
     auto scope = DECLARE_THROW_SCOPE(vm);
 
-    auto& builtinNames = WebCore::builtinNames(vm);
+    auto& builtinNames = CyberCore::builtinNames(vm);
 
     // https://html.spec.whatwg.org/#crossorigingetownpropertyhelper-(-o,-p-)
 
@@ -332,7 +332,7 @@ void JSDOMWindow::analyzeHeap(JSCell* cell, HeapAnalyzer& analyzer)
 template <CrossOriginObject objectType>
 static void addCrossOriginPropertyNames(VM& vm, PropertyNameArray& propertyNames)
 {
-    auto& builtinNames = WebCore::builtinNames(vm);
+    auto& builtinNames = CyberCore::builtinNames(vm);
     switch (objectType) {
     case CrossOriginObject::Location: {
         static const Identifier* const properties[] = { &builtinNames.hrefPublicName(), &vm.propertyNames->replace };
@@ -418,7 +418,7 @@ bool JSDOMWindow::defineOwnProperty(JSC::JSObject* object, JSC::JSGlobalObject* 
         return typeError(lexicalGlobalObject, scope, shouldThrow, makeUnsupportedIndexedSetterErrorMessage("Window"));
     scope.release();
 
-    auto& builtinNames = WebCore::builtinNames(vm);
+    auto& builtinNames = CyberCore::builtinNames(vm);
     if (propertyName == builtinNames.documentPublicName() || propertyName == builtinNames.windowPublicName())
         return JSObject::defineOwnProperty(thisObject, lexicalGlobalObject, propertyName, descriptor, shouldThrow);
 
@@ -641,7 +641,7 @@ static inline JSC::EncodedJSValue jsDOMWindowInstanceFunction_openDatabaseBody(J
         throwArgumentMustBeFunctionError(lexicalGlobalObject, scope, 4, "creationCallback", "Window", "openDatabase");
     });
     RETURN_IF_EXCEPTION(throwScope, encodedJSValue());
-    return JSValue::encode(toJS<IDLNullable<IDLInterface<Database>>>(*lexicalGlobalObject, *castedThis->globalObject(), throwScope, WebCore::DOMWindowWebDatabase::openDatabase(impl, WTFMove(name), WTFMove(version), WTFMove(displayName), WTFMove(estimatedSize), WTFMove(creationCallback))));
+    return JSValue::encode(toJS<IDLNullable<IDLInterface<Database>>>(*lexicalGlobalObject, *castedThis->globalObject(), throwScope, CyberCore::DOMWindowWebDatabase::openDatabase(impl, WTFMove(name), WTFMove(version), WTFMove(displayName), WTFMove(estimatedSize), WTFMove(creationCallback))));
 }
 
 JSC_DEFINE_HOST_FUNCTION(jsDOMWindowInstanceFunction_openDatabase, (JSGlobalObject* globalObject, CallFrame* callFrame))
@@ -676,4 +676,4 @@ JSDOMWindow& mainWorldGlobalObject(Frame& frame)
     return *jsCast<JSDOMWindow*>(frame.windowProxy().jsWindowProxy(mainThreadNormalWorld())->window());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

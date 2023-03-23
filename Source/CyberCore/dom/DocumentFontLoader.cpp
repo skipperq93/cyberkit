@@ -37,7 +37,7 @@
 #include "FrameDestructionObserverInlines.h"
 #include "FrameLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DocumentFontLoader::DocumentFontLoader(Document& document)
     : m_document(document)
@@ -143,4 +143,4 @@ void DocumentFontLoader::resumeFontLoading()
         m_fontLoadingTimer.startOneShot(0_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

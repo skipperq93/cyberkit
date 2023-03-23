@@ -27,7 +27,7 @@
 
 #include "FrameLoaderClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT EmptyFrameLoaderClient : public FrameLoaderClient {
 private:
@@ -198,4 +198,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

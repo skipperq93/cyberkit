@@ -34,7 +34,7 @@
 
 OBJC_CLASS NSAttributedString;
 
-namespace WebKit {
+namespace CyberKit {
 
 class TextCheckingController final {
     WTF_MAKE_FAST_ALLOCATED;
@@ -50,6 +50,6 @@ private:
     WebPageProxy& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PLATFORM_DRIVEN_TEXT_CHECKING)

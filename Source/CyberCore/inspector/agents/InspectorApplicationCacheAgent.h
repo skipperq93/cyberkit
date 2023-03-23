@@ -34,7 +34,7 @@ namespace Inspector {
 class ApplicationCacheFrontendDispatcher;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class Page;
@@ -73,5 +73,5 @@ private:
     Page& m_inspectedPage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -27,7 +27,7 @@
 
 #include "PseudoElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace NodeTraversal {
 

@@ -27,7 +27,7 @@
 #include "PlatformEvent.h"
 #include "UIEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class UIEventWithKeyState : public UIEvent {
     WTF_MAKE_ISO_ALLOCATED(UIEventWithKeyState);
@@ -78,4 +78,4 @@ private:
 
 UIEventWithKeyState* findEventWithKeyState(Event*);
 
-} // namespace WebCore
+} // namespace CyberCore

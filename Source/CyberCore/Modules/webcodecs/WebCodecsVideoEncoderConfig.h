@@ -34,7 +34,7 @@
 #include "WebCodecsAlphaOption.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WebCodecsVideoEncoderConfig {
     String codec;

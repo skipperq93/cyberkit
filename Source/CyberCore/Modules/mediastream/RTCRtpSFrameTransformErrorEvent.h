@@ -29,7 +29,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCRtpSFrameTransformErrorEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(RTCRtpSFrameTransformErrorEvent);
@@ -55,6 +55,6 @@ private:
     Type m_errorType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

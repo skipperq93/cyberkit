@@ -30,7 +30,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 
@@ -41,6 +41,6 @@ public:
     virtual CallbackResult<void> handleEvent(AudioBuffer*) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

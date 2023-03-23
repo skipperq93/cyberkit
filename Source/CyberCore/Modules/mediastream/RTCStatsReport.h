@@ -27,7 +27,7 @@
 
 #include "RTCIceCandidateType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMMapAdapter;
 
@@ -376,4 +376,4 @@ inline RTCStatsReport::RTCStatsReport(MapInitializer&& mapInitializer)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

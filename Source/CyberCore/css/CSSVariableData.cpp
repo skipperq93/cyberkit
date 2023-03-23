@@ -38,7 +38,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename CharacterType> void CSSVariableData::updateTokens(const CSSParserTokenRange& range)
 {
@@ -79,4 +79,4 @@ CSSVariableData::CSSVariableData(const CSSParserTokenRange& range)
     m_tokens.shrinkToFit();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

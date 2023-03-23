@@ -62,7 +62,7 @@
 #include <CyberCore/AuthenticatorTransport.h>
 #endif // ENABLE(WEB_AUTHN)
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace Inspector;
 using namespace CyberCore;
@@ -102,7 +102,7 @@ void WebAutomationSession::setClient(std::unique_ptr<API::AutomationSessionClien
     m_client = WTFMove(client);
 }
 
-void WebAutomationSession::setProcessPool(WebKit::WebProcessPool* processPool)
+void WebAutomationSession::setProcessPool(CyberKit::WebProcessPool* processPool)
 {
     if (m_processPool)
         m_processPool->removeMessageReceiver(Messages::WebAutomationSession::messageReceiverName());
@@ -2131,7 +2131,7 @@ static std::optional<UChar32> pressedCharKey(const String& pressedCharKeyString)
 
 void WebAutomationSession::performInteractionSequence(const Inspector::Protocol::Automation::BrowsingContextHandle& handle, const Inspector::Protocol::Automation::FrameHandle& frameHandle, Ref<JSON::Array>&& inputSources, Ref<JSON::Array>&& steps, Ref<WebAutomationSession::PerformInteractionSequenceCallback>&& callback)
 {
-    // This command implements WebKit support for §17.5 Perform Actions.
+    // This command implements CyberKit support for §17.5 Perform Actions.
 
 #if !ENABLE(WEBDRIVER_ACTIONS_API)
     ASYNC_FAIL_WITH_PREDEFINED_ERROR(NotImplemented);
@@ -2329,7 +2329,7 @@ void WebAutomationSession::performInteractionSequence(const Inspector::Protocol:
 
 void WebAutomationSession::cancelInteractionSequence(const Inspector::Protocol::Automation::BrowsingContextHandle& handle, const Inspector::Protocol::Automation::FrameHandle& frameHandle, Ref<CancelInteractionSequenceCallback>&& callback)
 {
-    // This command implements WebKit support for §17.6 Release Actions.
+    // This command implements CyberKit support for §17.6 Release Actions.
 
 #if !ENABLE(WEBDRIVER_ACTIONS_API)
     ASYNC_FAIL_WITH_PREDEFINED_ERROR(NotImplemented);
@@ -2463,4 +2463,4 @@ std::optional<String> WebAutomationSession::platformGenerateLocalFilePathForRemo
 }
 #endif // !PLATFORM(COCOA)
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -57,7 +57,7 @@ bool gigacageEnabledForProcess()
 
 bool shouldAllowMiniMode()
 {
-    // Mini mode is mainly meant for constraining memory usage in bursty daemons that use JavaScriptCore.
+    // Mini mode is mainly meant for constraining memory usage in bursty daemons that use CyberScriptCore.
     // It's also contributed to power regressions when enabled for large application processes and in the
     // CyberKit GPU process. So we disable mini mode for those processes.
     bool isApplication = false;

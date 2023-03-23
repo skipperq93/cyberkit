@@ -33,7 +33,7 @@
 #include "ServiceWorkerGlobalScope.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerGlobalScope;
 
@@ -83,4 +83,4 @@ inline JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalOb
 JSC::JSValue toJS(JSC::JSGlobalObject*, WorkerGlobalScope&);
 inline JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, WorkerGlobalScope* scope) { return scope ? toJS(lexicalGlobalObject, *scope) : JSC::jsNull(); }
 
-} // namespace WebCore
+} // namespace CyberCore

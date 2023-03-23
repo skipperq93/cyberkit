@@ -27,11 +27,11 @@
 
 #include "NodeFilter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned short NodeFilterCondition::acceptNode(Node&) const
 {
     return NodeFilter::FILTER_ACCEPT;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

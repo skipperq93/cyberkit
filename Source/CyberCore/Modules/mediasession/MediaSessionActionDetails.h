@@ -29,7 +29,7 @@
 
 #include "MediaSessionAction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaSessionActionDetails {
     MediaSessionAction action = MediaSessionAction::Play;

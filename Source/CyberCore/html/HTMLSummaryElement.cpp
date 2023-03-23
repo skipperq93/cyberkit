@@ -35,7 +35,7 @@
 #include "SlotAssignment.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLSummaryElement);
 
@@ -117,7 +117,7 @@ bool HTMLSummaryElement::supportsFocus() const
 void HTMLSummaryElement::defaultEventHandler(Event& event)
 {
     if (isActiveSummary()) {
-        auto& eventNames = WebCore::eventNames();
+        auto& eventNames = CyberCore::eventNames();
         if (event.type() == eventNames.DOMActivateEvent && !isClickableControl(event.target())) {
             if (RefPtr<HTMLDetailsElement> details = detailsElement())
                 details->toggleOpen();

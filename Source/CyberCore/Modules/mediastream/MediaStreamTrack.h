@@ -39,7 +39,7 @@
 #include "PlatformMediaSession.h"
 #include <wtf/LoggerHelper.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSourceProvider;
 class Document;
@@ -219,6 +219,6 @@ private:
 
 typedef Vector<Ref<MediaStreamTrack>> MediaStreamTrackVector;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

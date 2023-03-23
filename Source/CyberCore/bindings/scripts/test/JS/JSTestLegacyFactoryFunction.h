@@ -24,7 +24,7 @@
 #include "TestLegacyFactoryFunction.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestLegacyFactoryFunction : public JSDOMWrapper<TestLegacyFactoryFunction> {
 public:
@@ -91,4 +91,4 @@ template<> struct JSDOMWrapperConverterTraits<TestLegacyFactoryFunction> {
     using ToWrappedReturnType = TestLegacyFactoryFunction*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

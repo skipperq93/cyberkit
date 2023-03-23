@@ -47,7 +47,7 @@
 typedef struct objc_object* id;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedPage;
 class Document;
@@ -297,9 +297,9 @@ private:
     std::optional<PolicyContainer> m_policyContainer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-extern "C" int showTree(const WebCore::HistoryItem*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+extern "C" int showTree(const CyberCore::HistoryItem*);
 #endif

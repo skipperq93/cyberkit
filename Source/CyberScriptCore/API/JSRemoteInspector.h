@@ -27,7 +27,7 @@
 #define JSRemoteInspector_h
 
 #include <CyberScriptCore/JSBase.h>
-#include <CyberScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/CyberKitAvailability.h>
 
 #if defined(WIN32) || defined(_WIN32)
 #include <stdint.h>

@@ -30,7 +30,7 @@
 #include "CSSValue.h"
 #include "MediaQueryParserContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace MQ {
 
 static AtomString consumeFeatureName(CSSParserTokenRange& range)

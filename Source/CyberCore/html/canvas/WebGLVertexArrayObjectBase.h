@@ -40,9 +40,9 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class WebGLVertexArrayObjectBase : public WebGLContextObject {
 public:
@@ -96,8 +96,8 @@ protected:
     std::optional<bool> m_allEnabledAttribBuffersBoundCache;
 };
 
-WebCoreOpaqueRoot root(WebGLVertexArrayObjectBase*);
+CyberCoreOpaqueRoot root(WebGLVertexArrayObjectBase*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

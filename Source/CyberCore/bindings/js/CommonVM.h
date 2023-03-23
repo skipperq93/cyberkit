@@ -31,7 +31,7 @@ namespace JSC {
 class VM;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 Frame* lexicalFrameFromCommonVM();
@@ -54,5 +54,5 @@ inline JSC::VM& commonVM()
 
 void addImpureProperty(const AtomString&);
 
-} // namespace WebCore
+} // namespace CyberCore
 

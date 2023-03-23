@@ -31,7 +31,7 @@
 
 #if ENABLE(DATALIST_ELEMENT)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DataListSuggestionActivationType : uint8_t {
     ControlClicked,
@@ -50,6 +50,6 @@ struct DataListSuggestionInformation {
     IntRect elementRect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATALIST_ELEMENT)

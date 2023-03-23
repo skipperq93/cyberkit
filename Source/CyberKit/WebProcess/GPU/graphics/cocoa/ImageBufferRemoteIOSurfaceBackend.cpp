@@ -34,7 +34,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferRemoteIOSurfaceBackend);
@@ -123,6 +123,6 @@ void ImageBufferRemoteIOSurfaceBackend::putPixelBuffer(const PixelBuffer&, const
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(IOSURFACE)

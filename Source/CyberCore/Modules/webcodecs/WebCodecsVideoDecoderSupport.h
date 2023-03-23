@@ -29,7 +29,7 @@
 
 #include "WebCodecsVideoDecoderConfig.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WebCodecsVideoDecoderSupport {
     std::optional<bool> supported;

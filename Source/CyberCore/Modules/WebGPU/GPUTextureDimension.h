@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUTextureDimension.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUTextureDimension : uint8_t {
     _1d,

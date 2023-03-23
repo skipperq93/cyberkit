@@ -32,7 +32,7 @@
 #include <CyberCore/ManetteGamepadProvider.h>
 #include <wtf/ProcessPrivilege.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

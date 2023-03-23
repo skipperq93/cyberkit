@@ -133,7 +133,7 @@ const char* TestController::platformLibraryPathForTesting()
 
 void TestController::platformConfigureViewForTest(const TestInvocation&)
 {
-    WKRetainPtr<WKStringRef> appName = adoptWK(WKStringCreateWithUTF8CString("WebKitTestRunnerWPE"));
+    WKRetainPtr<WKStringRef> appName = adoptWK(WKStringCreateWithUTF8CString("CyberKitTestRunnerWPE"));
     WKPageSetApplicationNameForUserAgent(mainWebView()->page(), appName.get());
 }
 

@@ -49,16 +49,16 @@ private:
         , m_respondsToDidReceiveData([delegate respondsToSelector:@selector(dataTask:didReceiveData:)])
         , m_respondsToDidCompleteWithError([delegate respondsToSelector:@selector(dataTask:didCompleteWithError:)]) { }
 
-    void didReceiveChallenge(API::DataTask& task, CyberCore::AuthenticationChallenge&& challenge, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, CyberCore::Credential&&)>&& completionHandler) const final
+    void didReceiveChallenge(API::DataTask& task, CyberCore::AuthenticationChallenge&& challenge, CompletionHandler<void(CyberKit::AuthenticationChallengeDisposition, CyberCore::Credential&&)>&& completionHandler) const final
     {
         if (!m_delegate || !m_respondsToDidReceiveAuthenticationChallenge)
-            return completionHandler(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue, { });
-        auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(dataTask:didReceiveAuthenticationChallenge:completionHandler:));
+            return completionHandler(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue, { });
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(dataTask:didReceiveAuthenticationChallenge:completionHandler:));
         [m_delegate dataTask:wrapper(task) didReceiveAuthenticationChallenge:mac(challenge) completionHandler:makeBlockPtr([checker = WTFMove(checker), completionHandler = WTFMove(completionHandler)](NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
-            completionHandler(WebKit::toAuthenticationChallengeDisposition(disposition), CyberCore::Credential(credential));
+            completionHandler(CyberKit::toAuthenticationChallengeDisposition(disposition), CyberCore::Credential(credential));
         }).get()];
     }
 
@@ -66,7 +66,7 @@ private:
     {
         if (!m_delegate || !m_respondsToWillPerformHTTPRedirection)
             return completionHandler(true);
-        auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(dataTask:willPerformHTTPRedirection:newRequest:decisionHandler:));
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(dataTask:willPerformHTTPRedirection:newRequest:decisionHandler:));
         [m_delegate dataTask:wrapper(task) willPerformHTTPRedirection:(NSHTTPURLResponse *)response.nsURLResponse() newRequest:request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody) decisionHandler:makeBlockPtr([checker = WTFMove(checker), completionHandler = WTFMove(completionHandler)] (_WKDataTaskRedirectPolicy policy) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
@@ -79,7 +79,7 @@ private:
     {
         if (!m_delegate || !m_respondsToDidReceiveResponse)
             return completionHandler(true);
-        auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(dataTask:didReceiveResponse:decisionHandler:));
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(dataTask:didReceiveResponse:decisionHandler:));
         [m_delegate dataTask:wrapper(task) didReceiveResponse:response.nsURLResponse() decisionHandler:makeBlockPtr([checker = WTFMove(checker), completionHandler = WTFMove(completionHandler)] (_WKDataTaskResponsePolicy policy) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;

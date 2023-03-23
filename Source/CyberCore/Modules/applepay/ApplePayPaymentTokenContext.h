@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentTokenContext {
     String merchantIdentifier; // required
@@ -39,6 +39,6 @@ struct ApplePayPaymentTokenContext {
     String amount; // required
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_MULTI_MERCHANT_PAYMENTS)

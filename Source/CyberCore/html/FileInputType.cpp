@@ -56,16 +56,16 @@
 #include "UTIUtilities.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class UploadButtonElement;
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::UploadButtonElement)
-    static bool isType(const WebCore::Element& element) { return element.isUploadButton(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::UploadButtonElement)
+    static bool isType(const CyberCore::Element& element) { return element.isUploadButton(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -508,8 +508,8 @@ bool FileInputType::receiveDroppedFilesWithImageTranscoding(const Vector<String>
     if (transcodingMIMEType.isNull())
         return { };
 
-    auto transcodingUTI = WebCore::UTIFromMIMEType(transcodingMIMEType);
-    auto transcodingExtension = WebCore::MIMETypeRegistry::preferredExtensionForMIMEType(transcodingMIMEType);
+    auto transcodingUTI = CyberCore::UTIFromMIMEType(transcodingMIMEType);
+    auto transcodingExtension = CyberCore::MIMETypeRegistry::preferredExtensionForMIMEType(transcodingMIMEType);
 
     auto callFilesChosen = [protectedThis = Ref { *this }, paths](const Vector<String>& replacementPaths) {
         protectedThis->filesChosen(paths, replacementPaths);
@@ -572,4 +572,4 @@ String FileInputType::defaultToolTip() const
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,7 +24,7 @@
 #include "CSSRule.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRuleList;
 class CSSStyleDeclaration;
@@ -74,6 +74,6 @@ private:
     mutable std::unique_ptr<CSSRuleList> m_ruleListCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSStyleRule, StyleRuleType::Style)

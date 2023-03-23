@@ -28,7 +28,7 @@
 #include "Event.h"
 #include <wtf/Markable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebAnimation;
 
@@ -56,7 +56,7 @@ private:
 }
 
 #define SPECIALIZE_TYPE_TRAITS_ANIMATION_EVENT_BASE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-static bool isType(const WebCore::AnimationEventBase& value) { return value.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+static bool isType(const CyberCore::AnimationEventBase& value) { return value.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

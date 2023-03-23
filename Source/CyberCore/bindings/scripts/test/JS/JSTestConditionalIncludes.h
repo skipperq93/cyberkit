@@ -24,7 +24,7 @@
 #include "TestConditionalIncludes.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestConditionalIncludes : public JSDOMWrapper<TestConditionalIncludes> {
 public:
@@ -103,4 +103,4 @@ template<> struct JSDOMWrapperConverterTraits<TestConditionalIncludes> {
     using ToWrappedReturnType = TestConditionalIncludes*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

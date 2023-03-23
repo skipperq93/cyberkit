@@ -35,7 +35,7 @@ template<> struct ClientTraits<WKPageFormClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFormClient : public API::FormClient, API::Client<WKPageFormClientBase> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -45,4 +45,4 @@ public:
     void willSubmitForm(WebPageProxy&, WebFrameProxy&, WebFrameProxy&, const Vector<std::pair<String, String>>& textFieldValues, API::Object* userData, WTF::Function<void(void)>&&) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

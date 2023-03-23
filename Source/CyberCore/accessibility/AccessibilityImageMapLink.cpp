@@ -35,7 +35,7 @@
 #include "HTMLNames.h"
 #include "RenderBoxModelObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -66,13 +66,13 @@ AccessibilityObject* AccessibilityImageMapLink::parentObject() const
 AccessibilityRole AccessibilityImageMapLink::roleValue() const
 {
     if (!m_areaElement)
-        return AccessibilityRole::WebCoreLink;
+        return AccessibilityRole::CyberCoreLink;
     
     const AtomString& ariaRole = getAttribute(roleAttr);
     if (!ariaRole.isEmpty())
-        return AccessibilityObject::ariaRoleToWebCoreRole(ariaRole);
+        return AccessibilityObject::ariaRoleToCyberCoreRole(ariaRole);
 
-    return AccessibilityRole::WebCoreLink;
+    return AccessibilityRole::CyberCoreLink;
 }
     
 Element* AccessibilityImageMapLink::actionElement() const
@@ -181,4 +181,4 @@ String AccessibilityImageMapLink::nameForMSAA() const
     return accessibilityDescription();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

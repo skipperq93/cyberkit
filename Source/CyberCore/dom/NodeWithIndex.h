@@ -27,7 +27,7 @@
 
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // For use when you want to get the index for a node repeatedly and
 // only want to walk the child list to figure out the index once.
@@ -58,4 +58,4 @@ private:
     mutable int m_index;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -41,7 +41,7 @@
 #include "SecurityOrigin.h"
 #include "SecurityOriginData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // How the DatabaseContext Life-Cycle works?
 // ========================================
@@ -210,4 +210,4 @@ bool DatabaseContext::isContextThread() const
     return scriptExecutionContext()->isContextThread();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

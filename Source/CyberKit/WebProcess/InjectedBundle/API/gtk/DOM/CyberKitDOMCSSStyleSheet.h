@@ -57,7 +57,7 @@ webkit_dom_css_style_sheet_get_type(void);
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_css_style_sheet_insert_rule(CyberKitDOMCSSStyleSheet* self, const gchar* rule, gulong index, GError** error);
@@ -69,7 +69,7 @@ webkit_dom_css_style_sheet_insert_rule(CyberKitDOMCSSStyleSheet* self, const gch
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_css_style_sheet_delete_rule(CyberKitDOMCSSStyleSheet* self, gulong index, GError** error);
@@ -84,7 +84,7 @@ webkit_dom_css_style_sheet_delete_rule(CyberKitDOMCSSStyleSheet* self, gulong in
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_css_style_sheet_add_rule(CyberKitDOMCSSStyleSheet* self, const gchar* selector, const gchar* style, gulong index, GError** error);
@@ -96,7 +96,7 @@ webkit_dom_css_style_sheet_add_rule(CyberKitDOMCSSStyleSheet* self, const gchar*
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_css_style_sheet_remove_rule(CyberKitDOMCSSStyleSheet* self, gulong index, GError** error);
@@ -107,7 +107,7 @@ webkit_dom_css_style_sheet_remove_rule(CyberKitDOMCSSStyleSheet* self, gulong in
  *
  * Returns: (transfer full): A #CyberKitDOMCSSRule
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSRule*
 webkit_dom_css_style_sheet_get_owner_rule(CyberKitDOMCSSStyleSheet* self);
@@ -118,7 +118,7 @@ webkit_dom_css_style_sheet_get_owner_rule(CyberKitDOMCSSStyleSheet* self);
  *
  * Returns: (transfer full): A #CyberKitDOMCSSRuleList
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSRuleList*
 webkit_dom_css_style_sheet_get_css_rules(CyberKitDOMCSSStyleSheet* self);
@@ -129,7 +129,7 @@ webkit_dom_css_style_sheet_get_css_rules(CyberKitDOMCSSStyleSheet* self);
  *
  * Returns: (transfer full): A #CyberKitDOMCSSRuleList
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSRuleList*
 webkit_dom_css_style_sheet_get_rules(CyberKitDOMCSSStyleSheet* self);

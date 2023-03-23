@@ -29,10 +29,10 @@
 #include "IDBBindingUtilities.h"
 #include "JSDOMBinding.h"
 #include "JSIDBCursorWithValue.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC::JSValue JSIDBCursor::key(JSC::JSGlobalObject& lexicalGlobalObject) const
@@ -56,7 +56,7 @@ void JSIDBCursor::visitAdditionalChildren(Visitor& visitor)
 {
     auto& cursor = wrapped();
     if (auto* request = cursor.request())
-        addWebCoreOpaqueRoot(visitor, *request);
+        addCyberCoreOpaqueRoot(visitor, *request);
     cursor.keyWrapper().visit(visitor);
     cursor.primaryKeyWrapper().visit(visitor);
 }
@@ -75,4 +75,4 @@ JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* global
     return wrap(lexicalGlobalObject, globalObject, cursor);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

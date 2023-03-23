@@ -32,7 +32,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 
@@ -70,6 +70,6 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 

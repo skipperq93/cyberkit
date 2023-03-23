@@ -29,10 +29,10 @@
 #include "JSHTMLDocument.h"
 #include "JSXMLDocument.h"
 #include "NodeTraversal.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/HeapAnalyzer.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static inline JSValue createNewDocumentWrapper(JSGlobalObject& lexicalGlobalObject, JSDOMGlobalObject& globalObject, Ref<Document>&& passedDocument)
@@ -115,7 +115,7 @@ void JSDocument::setAdoptedStyleSheets(JSC::JSGlobalObject& lexicalGlobalObject,
 template<typename Visitor>
 void JSDocument::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, static_cast<ScriptExecutionContext&>(wrapped()));
+    addCyberCoreOpaqueRoot(visitor, static_cast<ScriptExecutionContext&>(wrapped()));
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSDocument);
@@ -127,4 +127,4 @@ void JSDocument::analyzeHeap(JSCell* cell, HeapAnalyzer& analyzer)
     analyzer.setLabelForCell(cell, thisObject->wrapped().url().string());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

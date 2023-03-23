@@ -30,5 +30,5 @@
 
 size_t WKGetWebURLSchemeTaskInstanceCount()
 {
-    return WebKit::WebURLSchemeTask::instanceCount();
+    return CyberKit::WebURLSchemeTask::instanceCount();
 }

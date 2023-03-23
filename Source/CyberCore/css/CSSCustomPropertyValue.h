@@ -35,7 +35,7 @@
 #include <wtf/PointerComparison.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserToken;
 
@@ -128,6 +128,6 @@ private:
     mutable RefPtr<CSSVariableData> m_cachedTokens;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSCustomPropertyValue, isCustomPropertyValue())

@@ -45,20 +45,20 @@
 #include "TestAttributeCallTracer.h"
 #include "TestInterfaceCallTracer.h"
 #include "TestOperationCallTracer.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <variant>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -511,7 +511,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestCallTracerPrototypeFunction_testOperationWithDefa
 
 JSC::GCClient::IsoSubspace* JSTestCallTracer::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestCallTracer, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestCallTracer, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestCallTracer.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestCallTracer = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestCallTracer.get(); },
@@ -546,9 +546,9 @@ void JSTestCallTracerOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* con
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestCallTracer@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestCallTracer@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore14TestCallTracerE[]; }
+extern "C" { extern void* _ZTVN7CyberCore14TestCallTracerE[]; }
 #endif
 #endif
 
@@ -559,9 +559,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestCallTracer@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestCallTracer@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore14TestCallTracerE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore14TestCallTracerE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

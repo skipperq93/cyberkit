@@ -28,7 +28,7 @@
 
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class Database;
@@ -42,4 +42,4 @@ public:
     ~DOMWindowWebDatabase() = delete;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include "WebGeolocationManagerMessages.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: This should be used by all Cocoa ports
 #if PLATFORM(IOS_FAMILY)
@@ -73,4 +73,4 @@ void WebGeolocationManagerProxy::resetGeolocation(const String& websiteIdentifie
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

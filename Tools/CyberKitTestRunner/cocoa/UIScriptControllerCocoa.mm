@@ -31,7 +31,7 @@
 #import "TestController.h"
 #import "TestRunnerWKWebView.h"
 #import "UIScriptContext.h"
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberKit/WKURLCF.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>

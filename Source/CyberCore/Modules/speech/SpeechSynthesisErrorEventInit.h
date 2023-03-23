@@ -29,12 +29,12 @@
 
 #include "SpeechSynthesisEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SpeechSynthesisErrorEventInit : SpeechSynthesisEventInit {
     SpeechSynthesisErrorCode error;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

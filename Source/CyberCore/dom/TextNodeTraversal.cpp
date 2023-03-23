@@ -29,7 +29,7 @@
 #include "ContainerNode.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace TextNodeTraversal {
 
 void appendContents(const ContainerNode& root, StringBuilder& result)

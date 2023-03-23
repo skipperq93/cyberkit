@@ -34,7 +34,7 @@
 #include <openssl/evp.h>
 #include <wtf/CryptographicUtilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> calculateSignature(const EVP_MD* algorithm, const Vector<uint8_t>& key, const uint8_t* data, size_t dataLength)
 {
@@ -84,6 +84,6 @@ ExceptionOr<bool> CryptoAlgorithmHMAC::platformVerify(const CryptoKeyHMAC& key, 
     return signature.size() == expectedSignature->size() && !constantTimeMemcmp(expectedSignature->data(), signature.data(), expectedSignature->size());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -32,7 +32,7 @@
 #include <wtf/Function.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmParameters;
 struct JsonWebKey;
@@ -69,7 +69,7 @@ private:
     Vector<uint8_t> m_key;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_KEY(CryptoKeyHMAC, CryptoKeyClass::HMAC)
 

@@ -27,7 +27,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class HardwareAccelerationManager {
     WTF_MAKE_NONCOPYABLE(HardwareAccelerationManager);
@@ -45,4 +45,4 @@ private:
     bool m_forceHardwareAcceleration : 1;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

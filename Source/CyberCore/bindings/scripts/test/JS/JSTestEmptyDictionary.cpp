@@ -22,11 +22,11 @@
 #include "JSTestEmptyDictionary.h"
 
 #include "JSDOMGlobalObject.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ObjectConstructor.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<> TestEmptyDictionary convertDictionary<TestEmptyDictionary>(JSGlobalObject& lexicalGlobalObject, JSValue value)
@@ -56,4 +56,4 @@ JSC::JSObject* convertDictionaryToJS(JSC::JSGlobalObject& lexicalGlobalObject, J
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

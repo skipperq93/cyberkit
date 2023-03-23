@@ -30,7 +30,7 @@
 
 #include <wpe/wpe.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ProcessID ProcessProviderLibWPE::launchProcess(const ProcessLauncher::LaunchOptions& launchOptions, char** argv, int childProcessSocket)
 {
@@ -50,6 +50,6 @@ ProcessID ProcessProviderLibWPE::launchProcess(const ProcessLauncher::LaunchOpti
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWPE) && !ENABLE(BUBBLEWRAP_SANDBOX)

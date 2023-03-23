@@ -50,7 +50,7 @@ namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebNavigationDataStore;
 
@@ -104,7 +104,7 @@ private:
         void didFailProvisionalNavigationWithError(WebPageProxy&, FrameInfoData&&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) override;
         void didFailProvisionalLoadWithErrorForFrame(WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, FrameInfoData&&) override;
         void didCommitNavigation(WebPageProxy&, API::Navigation*, API::Object*) override;
-        void didCommitLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, FrameInfoData&&) override;
+        void didCommitLoadForFrame(CyberKit::WebPageProxy&, CyberCore::ResourceRequest&&, FrameInfoData&&) override;
         void didFinishDocumentLoad(WebPageProxy&, API::Navigation*, API::Object*) override;
         void didFinishNavigation(WebPageProxy&, API::Navigation*, API::Object*) override;
         void didFinishLoadForFrame(WebPageProxy&, CyberCore::ResourceRequest&&, FrameInfoData&&) override;
@@ -281,4 +281,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

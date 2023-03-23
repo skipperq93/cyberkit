@@ -33,7 +33,7 @@
 
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsNodeRareData {
     uint32_t m_tabIndex;
@@ -50,4 +50,4 @@ static_assert(Page::maxNumberOfFrames < 1024, "Frame limit should fit in rare da
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(NodeListsNodeData);
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(NodeRareData);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@ namespace JSC {
 class JSObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaymentMethodChangeEvent final : public PaymentRequestUpdateEvent {
     WTF_MAKE_ISO_ALLOCATED(PaymentMethodChangeEvent);
@@ -71,6 +71,6 @@ private:
     JSValueInWrappedObject m_cachedMethodDetails;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

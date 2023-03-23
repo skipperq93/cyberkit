@@ -34,7 +34,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoColorSpace : public RefCounted<VideoColorSpace> {
     WTF_MAKE_FAST_ALLOCATED;

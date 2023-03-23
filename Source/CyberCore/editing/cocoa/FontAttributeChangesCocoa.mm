@@ -32,7 +32,7 @@
 #import "FontCache.h"
 #import "FontDescription.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const String& FontChanges::platformFontFamilyNameForCSS() const
 {
@@ -40,7 +40,7 @@ const String& FontChanges::platformFontFamilyNameForCSS() const
     // In some cases, the only way to get exactly what we are looking for is to use
     // the Postscript name. If we don't find a font with the same Postscript name,
     // then we'll have to use the Postscript name to make the CSS specific enough.
-    // This logic was originally from WebHTMLView, and is now in WebCore so that it can
+    // This logic was originally from WebHTMLView, and is now in CyberCore so that it can
     // be shared between CyberKitLegacy and CyberKit.
     auto cfFontName = m_fontName.createCFString();
     RetainPtr<CFStringRef> fontNameFromDescription;
@@ -57,6 +57,6 @@ const String& FontChanges::platformFontFamilyNameForCSS() const
     return m_fontName;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

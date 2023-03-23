@@ -24,7 +24,7 @@
 #include "TestNamedGetterCallWith.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestNamedGetterCallWith : public JSDOMWrapper<TestNamedGetterCallWith> {
 public:
@@ -95,4 +95,4 @@ template<> struct JSDOMWrapperConverterTraits<TestNamedGetterCallWith> {
     using ToWrappedReturnType = TestNamedGetterCallWith*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

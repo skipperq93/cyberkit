@@ -35,7 +35,7 @@ struct NotificationData;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -79,4 +79,4 @@ public:
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

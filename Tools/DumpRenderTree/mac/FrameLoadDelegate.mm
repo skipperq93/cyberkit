@@ -45,7 +45,7 @@
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <Foundation/NSNotification.h>
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberKit/WebFramePrivate.h>
 #import <CyberKit/WebHTMLViewPrivate.h>
 #import <CyberKit/WebNSURLExtras.h>
@@ -251,7 +251,7 @@ IGNORE_WARNINGS_END
     if (!done && gTestRunner->dumpFrameLoadCallbacks()) {
         NSString *string = [NSString stringWithFormat:@"%@ - didFailProvisionalLoadWithError", [frame _drt_descriptionSuitableForTestResult]];
         printf("%s\n", [string UTF8String]);
-        if (error.code == WebKitErrorCannotShowURL) {
+        if (error.code == CyberKitErrorCannotShowURL) {
             string = [NSString stringWithFormat:@"%@ - (ErrorCodeCannotShowURL)", [frame _drt_descriptionSuitableForTestResult]];
             printf("%s\n", [string UTF8String]);
         }

@@ -36,7 +36,7 @@
 #include "WorkerFileSystemStorageConnection.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FileSystemFileHandle);
 
@@ -124,5 +124,5 @@ void FileSystemFileHandle::unregisterSyncAccessHandle(FileSystemSyncAccessHandle
     connection().unregisterSyncAccessHandle(identifier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

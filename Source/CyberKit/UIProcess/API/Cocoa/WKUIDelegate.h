@@ -59,8 +59,8 @@ typedef NS_ENUM(NSInteger, WKMediaCaptureType) {
 } WK_API_AVAILABLE(macos(12.0), ios(15.0));
 
 /*! @enum WKDialogResult
-@abstract Constants returned by showLockdownModeFirstUseMessage to indicate how WebKit should treat first use.
-@constant WKDialogResultShowDefault Indicates that the client did not display a first use message. WebKit should show the default.
+@abstract Constants returned by showLockdownModeFirstUseMessage to indicate how CyberKit should treat first use.
+@constant WKDialogResultShowDefault Indicates that the client did not display a first use message. CyberKit should show the default.
 @constant WKDialogResultAskAgain Indicates the client handled the message, but wants to be checked if other WKWebViews are used.
 @constant WKDialogResultHandled Indicates the client handled the message and no further checks are needed.
 */
@@ -85,7 +85,7 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
  be created.
  @param windowFeatures Window features requested by the webpage.
  @result A new web view or nil.
- @discussion The web view returned must be created with the specified configuration. WebKit will load the request in the returned web view.
+ @discussion The web view returned must be created with the specified configuration. CyberKit will load the request in the returned web view.
 
  If you do not implement this method, the web view will cancel the navigation.
  */
@@ -175,7 +175,7 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
  webView:previewingViewControllerForElement:defaultActions: and webView:commitPreviewingViewController:
  from being invoked.
  
- This method will only be invoked for elements that have default preview in WebKit, which is
+ This method will only be invoked for elements that have default preview in CyberKit, which is
  limited to links. In the future, it could be invoked for additional elements.
  */
 - (BOOL)webView:(WKWebView *)webView shouldPreviewElement:(WKPreviewElementInfo *)elementInfo WK_API_DEPRECATED_WITH_REPLACEMENT("webView:contextMenuConfigurationForElement:completionHandler:", ios(10.0, 13.0));
@@ -183,14 +183,14 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
 /*! @abstract Allows your app to provide a custom view controller to show when the given element is peeked.
  @param webView The web view invoking the delegate method.
  @param elementInfo The elementInfo for the element the user is peeking.
- @param defaultActions An array of the actions that WebKit would use as previewActionItems for this element by 
+ @param defaultActions An array of the actions that CyberKit would use as previewActionItems for this element by 
  default. These actions would be used if allowsLinkPreview is YES but these delegate methods have not been 
  implemented, or if this delegate method returns nil.
  @discussion Returning a view controller will result in that view controller being displayed as a peek preview.
  To use the defaultActions, your app is responsible for returning whichever of those actions it wants in your 
  view controller's implementation of -previewActionItems.
  
- Returning nil will result in WebKit's default preview behavior. webView:commitPreviewingViewController: will only be invoked
+ Returning nil will result in CyberKit's default preview behavior. webView:commitPreviewingViewController: will only be invoked
  if a non-nil view controller was returned.
  */
 - (nullable UIViewController *)webView:(WKWebView *)webView previewingViewControllerForElement:(WKPreviewElementInfo *)elementInfo defaultActions:(NSArray<id <WKPreviewActionItem>> *)previewActions WK_API_DEPRECATED_WITH_REPLACEMENT("webView:contextMenuConfigurationForElement:completionHandler:", ios(10.0, 13.0));
@@ -247,7 +247,7 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
 
 /*! @abstract Displays a Lockdown Mode warning panel.
  @param webView The web view invoking the delegate method.
- @param message The message WebKit would display if this delegate were not invoked.
+ @param message The message CyberKit would display if this delegate were not invoked.
  @param completionHandler The completion handler you must invoke to resume after the first use message is displayed.
  @discussion The panel should have a single OK button.
 

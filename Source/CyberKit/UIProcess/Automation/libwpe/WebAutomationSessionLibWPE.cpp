@@ -30,7 +30,7 @@
 #include "WebPageProxy.h"
 #include <wpe/wpe.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
@@ -395,5 +395,5 @@ void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, 
 }
 #endif // ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
 
-} // namespace WebKit
+} // namespace CyberKit
 

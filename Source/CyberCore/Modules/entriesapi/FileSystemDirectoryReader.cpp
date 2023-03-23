@@ -37,7 +37,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FileSystemDirectoryReader);
 
@@ -111,4 +111,4 @@ void FileSystemDirectoryReader::readEntries(ScriptExecutionContext& context, Ref
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

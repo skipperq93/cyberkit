@@ -35,7 +35,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 class AudioBufferCallback;
@@ -82,4 +82,4 @@ private:
     MessageQueue<DecodingTask> m_queue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

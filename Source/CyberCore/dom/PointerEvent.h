@@ -35,7 +35,7 @@
 #include "PlatformTouchEventIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -139,10 +139,10 @@ private:
 
 inline bool PointerEvent::typeIsEnterOrLeave(const AtomString& type)
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     return type == eventNames.pointerenterEvent || type == eventNames.pointerleaveEvent;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(PointerEvent)

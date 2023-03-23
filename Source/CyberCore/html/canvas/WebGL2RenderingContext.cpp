@@ -50,7 +50,7 @@
 #include "OESTextureFloatLinear.h"
 #include "RenderBox.h"
 #include "WebCodecsVideoFrame.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebGLActiveInfo.h"
 #include "WebGLBuffer.h"
 #include "WebGLClipCullDistance.h"
@@ -89,7 +89,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const GCGLuint64 MaxClientWaitTimeout = 0u;
 
@@ -3056,29 +3056,29 @@ void WebGL2RenderingContext::addMembersToOpaqueRoots(JSC::AbstractSlotVisitor& v
     WebGLRenderingContextBase::addMembersToOpaqueRoots(visitor);
 
     Locker locker { objectGraphLock() };
-    addWebCoreOpaqueRoot(visitor, m_readFramebufferBinding.get());
+    addCyberCoreOpaqueRoot(visitor, m_readFramebufferBinding.get());
     if (m_readFramebufferBinding)
         m_readFramebufferBinding->addMembersToOpaqueRoots(locker, visitor);
 
-    addWebCoreOpaqueRoot(visitor, m_boundTransformFeedback.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundTransformFeedback.get());
     if (m_boundTransformFeedback)
         m_boundTransformFeedback->addMembersToOpaqueRoots(locker, visitor);
 
-    addWebCoreOpaqueRoot(visitor, m_boundCopyReadBuffer.get());
-    addWebCoreOpaqueRoot(visitor, m_boundCopyWriteBuffer.get());
-    addWebCoreOpaqueRoot(visitor, m_boundPixelPackBuffer.get());
-    addWebCoreOpaqueRoot(visitor, m_boundPixelUnpackBuffer.get());
-    addWebCoreOpaqueRoot(visitor, m_boundTransformFeedbackBuffer.get());
-    addWebCoreOpaqueRoot(visitor, m_boundUniformBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundCopyReadBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundCopyWriteBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundPixelPackBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundPixelUnpackBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundTransformFeedbackBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundUniformBuffer.get());
 
     for (auto& buffer : m_boundIndexedUniformBuffers)
-        addWebCoreOpaqueRoot(visitor, buffer.get());
+        addCyberCoreOpaqueRoot(visitor, buffer.get());
 
     for (auto& entry : m_activeQueries)
-        addWebCoreOpaqueRoot(visitor, entry.get());
+        addCyberCoreOpaqueRoot(visitor, entry.get());
 
     for (auto& entry : m_boundSamplers)
-        addWebCoreOpaqueRoot(visitor, entry.get());
+        addCyberCoreOpaqueRoot(visitor, entry.get());
 }
 
 WebGLAny WebGL2RenderingContext::getParameter(GCGLenum pname)
@@ -3565,6 +3565,6 @@ void WebGL2RenderingContext::updateBuffersToAutoClear(ClearBufferCaller caller, 
     m_context->setBuffersToAutoClear(m_context->getBuffersToAutoClear() & (~buffersToClear));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

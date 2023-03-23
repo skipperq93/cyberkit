@@ -20,8 +20,8 @@
 #pragma once
 
 #include "APIWebsitePolicies.h"
-#include "WebKitWebsitePolicies.h"
+#include "CyberKitWebsitePolicies.h"
 #include "WebsitePoliciesData.h"
 
-API::WebsitePolicies* webkitWebsitePoliciesGetWebsitePolicies(WebKitWebsitePolicies*);
-WebKit::WebsitePoliciesData webkitWebsitePoliciesGetPoliciesData(WebKitWebsitePolicies*);
+API::WebsitePolicies* webkitWebsitePoliciesGetWebsitePolicies(CyberKitWebsitePolicies*);
+CyberKit::WebsitePoliciesData webkitWebsitePoliciesGetPoliciesData(CyberKitWebsitePolicies*);

@@ -36,7 +36,7 @@
 #include "UserGestureIndicator.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using FetchResponsePromise = DOMPromiseDeferred<IDLInterface<FetchResponse>>;
 

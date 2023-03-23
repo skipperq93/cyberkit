@@ -29,7 +29,7 @@
 #include "OscillatorType.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PeriodicWave;
 
@@ -95,12 +95,12 @@ private:
 
 String convertEnumerationToString(OscillatorType); // In JSOscillatorNode.cpp
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct LogArgument<WebCore::OscillatorType> {
-    static String toString(WebCore::OscillatorType type) { return convertEnumerationToString(type); }
+template<> struct LogArgument<CyberCore::OscillatorType> {
+    static String toString(CyberCore::OscillatorType type) { return convertEnumerationToString(type); }
 };
 
 } // namespace WTF

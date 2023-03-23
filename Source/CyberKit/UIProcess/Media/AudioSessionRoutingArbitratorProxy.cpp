@@ -30,7 +30,7 @@
 
 #include "AudioSessionRoutingArbitratorProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 AudioSessionRoutingArbitratorProxy::AudioSessionRoutingArbitratorProxy(WebProcessProxy& proxy)
     : m_process(proxy)

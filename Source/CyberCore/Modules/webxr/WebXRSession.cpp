@@ -34,7 +34,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include "JSWebXRReferenceSpace.h"
 #include "SecurityOrigin.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebXRBoundedReferenceSpace.h"
 #include "WebXRFrame.h"
 #include "WebXRSystem.h"
@@ -45,7 +45,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRSession);
 
@@ -655,11 +655,11 @@ bool WebXRSession::isHandTrackingEnabled() const
 }
 #endif
 
-WebCoreOpaqueRoot root(WebXRSession* session)
+CyberCoreOpaqueRoot root(WebXRSession* session)
 {
-    return WebCoreOpaqueRoot { session };
+    return CyberCoreOpaqueRoot { session };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

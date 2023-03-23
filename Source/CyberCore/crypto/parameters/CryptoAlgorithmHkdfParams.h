@@ -33,7 +33,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmHkdfParams final : public CryptoAlgorithmParameters {
 public:
@@ -79,7 +79,7 @@ private:
     mutable Vector<uint8_t> m_infoVector;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_ALGORITHM_PARAMETERS(HkdfParams)
 

@@ -33,7 +33,7 @@ OBJC_CLASS PKDeferredPaymentSummaryItem;
 OBJC_CLASS PKPaymentSummaryItem;
 OBJC_CLASS PKRecurringPaymentSummaryItem;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayLineItem;
 
@@ -52,6 +52,6 @@ WEBCORE_EXPORT PKAutomaticReloadPaymentSummaryItem *platformAutomaticReloadSumma
 WEBCORE_EXPORT PKPaymentSummaryItem *platformSummaryItem(const ApplePayLineItem&);
 WEBCORE_EXPORT NSArray *platformSummaryItems(const ApplePayLineItem& total, const Vector<ApplePayLineItem>&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

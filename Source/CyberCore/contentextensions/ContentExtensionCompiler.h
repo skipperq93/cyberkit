@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 class ContentExtensionCompilationClient {
 public:
@@ -49,6 +49,6 @@ public:
 
 WEBCORE_EXPORT std::error_code compileRuleList(ContentExtensionCompilationClient&, String&& ruleJSON, Vector<ContentExtensionRule>&&);
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

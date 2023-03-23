@@ -36,7 +36,7 @@
 #include "Settings.h"
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PublicKeyCredential> PublicKeyCredential::create(Ref<AuthenticatorResponse>&& response)
 {
@@ -70,6 +70,6 @@ void PublicKeyCredential::isUserVerifyingPlatformAuthenticatorAvailable(Document
         page->authenticatorCoordinator().isUserVerifyingPlatformAuthenticatorAvailable(document, WTFMove(promise));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

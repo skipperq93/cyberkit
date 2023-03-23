@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct HTMLEntityTableEntry;
 
@@ -66,4 +66,4 @@ private:
     const HTMLEntityTableEntry* m_last;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

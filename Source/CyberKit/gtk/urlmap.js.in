@@ -9,7 +9,7 @@ baseURLs = [
   ["Gio", "https://docs.gtk.org/gio/"],
   ["Gdk", "https://docs.gtk.org/gdk@GTK_API_VERSION@/"],
   ["Gtk", "https://docs.gtk.org/gtk@GTK_API_VERSION@/"],
-  ["JavaScriptCore", "../javascriptcoregtk" + baseURLApiLevelSuffix],
+  ["CyberScriptCore", "../javascriptcoregtk" + baseURLApiLevelSuffix],
   ["Soup", "https://libsoup.org/libsoup-3.0/"],
   ["CyberKit2", "../webkit@WEBKITGTK_API_INFIX@gtk" + baseURLApiLevelSuffix],
   ["CyberKit2WebExtension", "../webkit@WEBKITGTK_API_INFIX@gtk-web-extension" + baseURLApiLevelSuffix]

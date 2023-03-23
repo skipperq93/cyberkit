@@ -37,7 +37,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Event);
 
@@ -200,4 +200,4 @@ TextStream& operator<<(TextStream& ts, const Event& event)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

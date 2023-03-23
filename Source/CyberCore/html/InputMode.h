@@ -27,7 +27,7 @@
 
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class InputMode : uint8_t {
     Unspecified,
@@ -57,4 +57,4 @@ const AtomString& search();
 
 } // namespace InputModeNames
 
-} // namespace WebCore
+} // namespace CyberCore

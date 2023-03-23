@@ -34,7 +34,7 @@
 #include <utility>
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUBindingResource = std::variant<RefPtr<GPUSampler>, RefPtr<GPUTextureView>, GPUBufferBinding, RefPtr<GPUExternalTexture>>;
 
@@ -59,7 +59,7 @@ struct GPUBindGroupEntry {
     {
         return {
             binding,
-            WebCore::convertToBacking(resource),
+            CyberCore::convertToBacking(resource),
         };
     }
 

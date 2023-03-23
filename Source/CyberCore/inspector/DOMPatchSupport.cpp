@@ -52,7 +52,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using HTMLNames::bodyTag;
 using HTMLNames::headTag;
@@ -516,4 +516,4 @@ void DOMPatchSupport::dumpMap(const ResultMap& map, const String& name)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "JSNodeCustom.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSResizeObserver::visitAdditionalChildren(Visitor& visitor)
@@ -53,4 +53,4 @@ bool JSResizeObserverOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown>
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

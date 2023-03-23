@@ -31,7 +31,7 @@
 #include "CBORReader.h"
 #include "CBORWriter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<AuthenticationExtensionsClientInputs> AuthenticationExtensionsClientInputs::fromCBOR(Span<const uint8_t> buffer)
 {
@@ -69,6 +69,6 @@ Vector<uint8_t> AuthenticationExtensionsClientInputs::toCBOR() const
     return *clientInputs;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

@@ -30,7 +30,7 @@
 #include "ViolationReportType.h"
 #include <wtf/ArgumentCoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class COEPInheritenceViolationReportBody : public ReportBody {
     WTF_MAKE_ISO_ALLOCATED(COEPInheritenceViolationReportBody);
@@ -50,8 +50,8 @@ private:
     String m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::COEPInheritenceViolationReportBody)
-    static bool isType(const WebCore::ReportBody& reportBody) { return reportBody.reportBodyType() == WebCore::ViolationReportType::COEPInheritenceViolation; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::COEPInheritenceViolationReportBody)
+    static bool isType(const CyberCore::ReportBody& reportBody) { return reportBody.reportBodyType() == CyberCore::ViolationReportType::COEPInheritenceViolation; }
 SPECIALIZE_TYPE_TRAITS_END()

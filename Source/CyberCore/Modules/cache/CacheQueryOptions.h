@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CacheQueryOptions {
     bool ignoreSearch { false };
@@ -35,4 +35,4 @@ struct CacheQueryOptions {
     bool ignoreVary { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

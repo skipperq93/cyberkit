@@ -33,7 +33,7 @@
 #include "WebPageProxy.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool WebTextCheckerClient::continuousSpellCheckingAllowed()
 {
@@ -178,4 +178,4 @@ void WebTextCheckerClient::ignoreWord(uint64_t tag, const String& word)
     m_client.ignoreWord(tag, toAPI(word.impl()), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

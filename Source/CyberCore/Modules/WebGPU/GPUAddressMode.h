@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUAddressMode.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUAddressMode : uint8_t {
     ClampToEdge,

@@ -28,7 +28,7 @@
 #include "ShadowRootMode.h"
 #include "SlotAssignmentMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ShadowRootInit {
     ShadowRootMode mode;

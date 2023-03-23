@@ -33,7 +33,7 @@
 #if ENABLE(WEB_AUTHN)
 
 namespace fido {
-using namespace WebCore;
+using namespace CyberCore;
 
 bool isCtapDeviceResponseCode(CtapDeviceResponseCode code)
 {

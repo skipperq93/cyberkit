@@ -35,7 +35,7 @@
 #include "ResourceResponse.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // 2.5. Resources
 // https://notifications.spec.whatwg.org/#resources
@@ -166,6 +166,6 @@ void NotificationResourcesLoader::ResourceLoader::didFail(const ResourceError&)
         m_completionHandler(this, nullptr);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

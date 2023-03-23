@@ -44,7 +44,7 @@ class ScrollingTreeScrollingNode;
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ScrollingTreeScrollingNodeDelegateIOS final : public CyberCore::ScrollingTreeScrollingNodeDelegate {
     WTF_MAKE_FAST_ALLOCATED;
@@ -99,15 +99,15 @@ private:
     bool m_updatingFromStateNode { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @interface WKScrollingNodeScrollViewDelegate : NSObject <UIScrollViewDelegate> {
-    WebKit::ScrollingTreeScrollingNodeDelegateIOS* _scrollingTreeNodeDelegate;
+    CyberKit::ScrollingTreeScrollingNodeDelegateIOS* _scrollingTreeNodeDelegate;
 }
 
 @property (nonatomic, getter=_isInUserInteraction) BOOL inUserInteraction;
 
-- (instancetype)initWithScrollingTreeNodeDelegate:(WebKit::ScrollingTreeScrollingNodeDelegateIOS*)delegate;
+- (instancetype)initWithScrollingTreeNodeDelegate:(CyberKit::ScrollingTreeScrollingNodeDelegateIOS*)delegate;
 
 @end
 

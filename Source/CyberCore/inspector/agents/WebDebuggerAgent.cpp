@@ -32,7 +32,7 @@
 #include "ScriptExecutionContext.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -194,4 +194,4 @@ void WebDebuggerAgent::didClearAsyncStackTraceData()
     m_nextPostMessageIdentifier = 1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

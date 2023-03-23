@@ -32,7 +32,7 @@
 #include "WebExtensionAPIObject.h"
 #include "WebExtensionMatchPattern.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -59,6 +59,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

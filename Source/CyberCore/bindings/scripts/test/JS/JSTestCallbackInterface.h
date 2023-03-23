@@ -29,7 +29,7 @@
 #include "TestCallbackInterface.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestCallbackInterface final : public TestCallbackInterface {
 public:
@@ -74,6 +74,6 @@ template<> const char* expectedEnumerationValues<TestCallbackInterface::Enum>();
 
 template<> TestCallbackInterface::Dictionary convertDictionary<TestCallbackInterface::Dictionary>(JSC::JSGlobalObject&, JSC::JSValue);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TEST_CONDITIONAL)

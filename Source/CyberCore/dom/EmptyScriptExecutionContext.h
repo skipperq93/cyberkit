@@ -33,7 +33,7 @@
 
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EmptyScriptExecutionContext final : public RefCounted<EmptyScriptExecutionContext>, public ScriptExecutionContext {
 public:
@@ -133,4 +133,4 @@ private:
     Settings::Values m_settingsValues;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

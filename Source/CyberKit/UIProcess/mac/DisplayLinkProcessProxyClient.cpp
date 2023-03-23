@@ -33,7 +33,7 @@
 #include "EventDispatcherMessages.h"
 #include "WebProcessMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void DisplayLinkProcessProxyClient::setConnection(RefPtr<IPC::Connection>&& connection)
 {

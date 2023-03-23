@@ -60,7 +60,7 @@
 #include "HTMLVideoElement.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 ALWAYS_INLINE bool isAutofilled(const Element& element)
 {
@@ -599,4 +599,4 @@ ALWAYS_INLINE bool matchesUserValidPseudoClass(const Element& element)
     return element.matchesUserValidPseudoClass();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

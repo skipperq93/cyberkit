@@ -28,7 +28,7 @@
 #include "AudioDestinationNode.h"
 #include "AudioIOCallback.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
 class AudioDestination;
@@ -88,4 +88,4 @@ private:
     bool m_muted { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -1330,11 +1330,11 @@ msgctxt "Undo action name"
 msgid "Remove Background"
 msgstr "Usunięcie tła"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "JSC Options"
 msgstr "Opcje JSC"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "Show JSC Options"
 msgstr "Wyświetl opcje JSC"
 

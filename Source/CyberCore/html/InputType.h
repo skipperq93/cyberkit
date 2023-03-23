@@ -41,7 +41,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BeforeTextInsertedEvent;
 class Chrome;
@@ -429,9 +429,9 @@ ALWAYS_INLINE bool isInvalidInputType(const InputType& baseInputType, const Stri
     return inputType.typeMismatch() || inputType.stepMismatch(value) || inputType.rangeUnderflow(value) || inputType.rangeOverflow(value) || inputType.patternMismatch(value) || inputType.valueMissing(value) || inputType.hasBadInput();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(ToValueTypeName, TypeEnumValue) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-static bool isType(const WebCore::InputType& input) { return input.type() == WebCore::InputType::TypeEnumValue; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+static bool isType(const CyberCore::InputType& input) { return input.type() == CyberCore::InputType::TypeEnumValue; } \
 SPECIALIZE_TYPE_TRAITS_END()

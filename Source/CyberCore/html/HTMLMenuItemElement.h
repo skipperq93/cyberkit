@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMenuItemElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLMenuItemElement);
@@ -41,4 +41,4 @@ private:
     void removedFromAncestor(RemovalType, ContainerNode&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

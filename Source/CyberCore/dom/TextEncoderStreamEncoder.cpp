@@ -29,7 +29,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<Uint8Array> TextEncoderStreamEncoder::encode(const String& input)
 {

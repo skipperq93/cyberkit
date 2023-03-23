@@ -40,7 +40,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLMediaElement;
@@ -165,12 +165,12 @@ String convertEnumerationToString(MediaSessionAction);
 
 namespace WTF {
 
-template<> struct LogArgument<WebCore::MediaSessionPlaybackState> {
-    static String toString(WebCore::MediaSessionPlaybackState state) { return convertEnumerationToString(state); }
+template<> struct LogArgument<CyberCore::MediaSessionPlaybackState> {
+    static String toString(CyberCore::MediaSessionPlaybackState state) { return convertEnumerationToString(state); }
 };
 
-template<> struct LogArgument<WebCore::MediaSessionAction> {
-    static String toString(WebCore::MediaSessionAction action) { return convertEnumerationToString(action); }
+template<> struct LogArgument<CyberCore::MediaSessionAction> {
+    static String toString(CyberCore::MediaSessionAction action) { return convertEnumerationToString(action); }
 };
 
 }

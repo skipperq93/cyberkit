@@ -32,7 +32,7 @@
 #include "OpenSSLUtilities.h"
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static int curveIdentifier(CryptoKeyEC::NamedCurve curve)
 {
@@ -459,6 +459,6 @@ Vector<uint8_t> CryptoKeyEC::platformExportPkcs8() const
     return keyData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

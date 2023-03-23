@@ -13,8 +13,8 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
         message(STATUS "The CMake build type is: ${CMAKE_BUILD_TYPE}")
     endif ()
 
-    option(ENABLE_JAVASCRIPTCORE "Enable building JavaScriptCore" ON)
-    option(ENABLE_WEBCORE "Enable building JavaScriptCore" ON)
+    option(ENABLE_JAVASCRIPTCORE "Enable building CyberScriptCore" ON)
+    option(ENABLE_WEBCORE "Enable building CyberScriptCore" ON)
     option(ENABLE_WEBKIT "Enable building CyberKit" ON)
 
     if (NOT ENABLE_JAVASCRIPTCORE)
@@ -151,7 +151,7 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
     # can be tricky. Override these in Options*.cmake for your port as needed.
     set(bmalloc_LIBRARY_TYPE STATIC)
     set(WTF_LIBRARY_TYPE STATIC)
-    set(JavaScriptCore_LIBRARY_TYPE STATIC)
+    set(CyberScriptCore_LIBRARY_TYPE STATIC)
     set(PAL_LIBRARY_TYPE STATIC)
     set(CyberCore_LIBRARY_TYPE STATIC)
     set(CyberKitLegacy_LIBRARY_TYPE SHARED)
@@ -255,7 +255,7 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
     # -----------------------------------------------------------------------------
 
     file(MAKE_DIRECTORY ${WTF_DERIVED_SOURCES_DIR})
-    file(MAKE_DIRECTORY ${JavaScriptCore_DERIVED_SOURCES_DIR})
+    file(MAKE_DIRECTORY ${CyberScriptCore_DERIVED_SOURCES_DIR})
 
     if (ENABLE_WEBCORE)
         file(MAKE_DIRECTORY ${PAL_DERIVED_SOURCES_DIR})

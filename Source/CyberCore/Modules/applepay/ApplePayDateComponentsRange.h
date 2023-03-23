@@ -29,13 +29,13 @@
 
 #include "ApplePayDateComponents.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayDateComponentsRange {
     ApplePayDateComponents startDateComponents;
     ApplePayDateComponents endDateComponents;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)

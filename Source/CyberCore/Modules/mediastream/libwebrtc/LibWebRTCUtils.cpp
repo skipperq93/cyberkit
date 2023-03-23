@@ -48,7 +48,7 @@ ALLOW_COMMA_END
 ALLOW_DEPRECATED_DECLARATIONS_END
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 webrtc::Priority fromRTCPriorityType(RTCPriorityType priority)
 {
@@ -458,6 +458,6 @@ RefPtr<RTCError> toRTCError(const webrtc::RTCError& rtcError)
     return RTCError::create(*detail, String::fromLatin1(rtcError.message()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

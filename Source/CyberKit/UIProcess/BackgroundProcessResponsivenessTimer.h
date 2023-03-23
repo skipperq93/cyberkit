@@ -28,7 +28,7 @@
 #include "ResponsivenessTimer.h"
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 

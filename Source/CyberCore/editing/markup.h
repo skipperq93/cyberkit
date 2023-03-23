@@ -34,7 +34,7 @@
 #include <wtf/Function.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ArchiveResource;
 class ContainerNode;

@@ -37,7 +37,7 @@
 #include "RenderTableCell.h"
 #include "RenderTableSection.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -206,4 +206,4 @@ void AccessibilityTableColumn::addChildren()
     }
 }
     
-} // namespace WebCore
+} // namespace CyberCore

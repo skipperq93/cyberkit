@@ -27,11 +27,11 @@
 #include "runtime_object.h"
 
 #include "JSDOMBinding.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "runtime_method.h"
 #include <CyberScriptCore/Error.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace JSC {
 namespace Bindings {

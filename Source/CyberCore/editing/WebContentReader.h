@@ -31,7 +31,7 @@
 #include "SimpleRange.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ArchiveResource;
 

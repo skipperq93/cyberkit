@@ -29,7 +29,7 @@
 #include "EditAction.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLElement;
@@ -66,4 +66,4 @@ private:
     Type m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

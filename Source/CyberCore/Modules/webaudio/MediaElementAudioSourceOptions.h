@@ -28,12 +28,12 @@
 
 #include "HTMLMediaElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaElementAudioSourceOptions {
     RefPtr<HTMLMediaElement> mediaElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // #if ENABLE(WEB_AUDIO) && ENABLE(VIDEO)

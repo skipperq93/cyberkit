@@ -34,7 +34,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 
 namespace {
@@ -152,6 +152,6 @@ void NfcConnection::startPolling()
         LOG_ERROR("Couldn't start NFC reader polling: %@", error);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN) && HAVE(NEAR_FIELD)

@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Attribute;
 class ShareableElementData;
@@ -46,4 +46,4 @@ private:
     ShareableElementDataCache m_shareableElementDataCache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

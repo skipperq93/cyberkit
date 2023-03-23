@@ -38,7 +38,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebAssemblyScriptSourceCode {
 public:
@@ -63,6 +63,6 @@ private:
     CachedResourceHandle<CachedScript> m_cachedScript;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBASSEMBLY)

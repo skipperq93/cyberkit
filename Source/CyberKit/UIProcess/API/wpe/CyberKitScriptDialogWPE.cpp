@@ -18,14 +18,14 @@
  */
 
 #include "config.h"
-#include "WebKitScriptDialog.h"
+#include "CyberKitScriptDialog.h"
 
-#include "WebKitScriptDialogPrivate.h"
+#include "CyberKitScriptDialogPrivate.h"
 
 // Callbacks invoked by WebDriver commands
 // As WPE has currently no public API to allow the browser to respond to these commands,
 // we mimic the expected behavior in these callbacks like one would do in a reference browser.
-void webkitScriptDialogAccept(WebKitScriptDialog* dialog)
+void webkitScriptDialogAccept(CyberKitScriptDialog* dialog)
 {
     auto dialog_type = webkit_script_dialog_get_dialog_type(dialog);
     if (dialog_type == WEBKIT_SCRIPT_DIALOG_CONFIRM || dialog_type == WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM)
@@ -36,7 +36,7 @@ void webkitScriptDialogAccept(WebKitScriptDialog* dialog)
     webkit_script_dialog_unref(dialog);
 }
 
-void webkitScriptDialogDismiss(WebKitScriptDialog* dialog)
+void webkitScriptDialogDismiss(CyberKitScriptDialog* dialog)
 {
     auto dialog_type = webkit_script_dialog_get_dialog_type(dialog);
     if (dialog_type == WEBKIT_SCRIPT_DIALOG_CONFIRM || dialog_type == WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM)
@@ -44,7 +44,7 @@ void webkitScriptDialogDismiss(WebKitScriptDialog* dialog)
     webkit_script_dialog_unref(dialog);
 }
 
-void webkitScriptDialogSetUserInput(WebKitScriptDialog* dialog, const String& input)
+void webkitScriptDialogSetUserInput(CyberKitScriptDialog* dialog, const String& input)
 {
     if (webkit_script_dialog_get_dialog_type(dialog) != WEBKIT_SCRIPT_DIALOG_PROMPT)
         return;
@@ -52,7 +52,7 @@ void webkitScriptDialogSetUserInput(WebKitScriptDialog* dialog, const String& in
     webkit_script_dialog_prompt_set_text(dialog, input.utf8().data());
 }
 
-bool webkitScriptDialogIsUserHandled(WebKitScriptDialog* dialog)
+bool webkitScriptDialogIsUserHandled(CyberKitScriptDialog* dialog)
 {
     return dialog->isUserHandled;
 }

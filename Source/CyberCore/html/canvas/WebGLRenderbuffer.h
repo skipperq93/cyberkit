@@ -29,7 +29,7 @@
 
 #include "WebGLSharedObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLRenderbuffer final : public WebGLSharedObject {
 public:
@@ -77,6 +77,6 @@ private:
     bool m_hasEverBeenBound;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

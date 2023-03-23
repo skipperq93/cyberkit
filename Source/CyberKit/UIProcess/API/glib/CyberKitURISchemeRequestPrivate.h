@@ -19,11 +19,11 @@
 
 #pragma once
 
-#include "WebKitURISchemeRequest.h"
-#include "WebKitWebContext.h"
+#include "CyberKitURISchemeRequest.h"
+#include "CyberKitWebContext.h"
 #include "WebPageProxy.h"
 #include "WebURLSchemeTask.h"
 #include <CyberCore/ResourceRequest.h>
 
-WebKitURISchemeRequest* webkitURISchemeRequestCreate(WebKitWebContext*, WebKit::WebPageProxy&, WebKit::WebURLSchemeTask&);
-void webkitURISchemeRequestCancel(WebKitURISchemeRequest*);
+CyberKitURISchemeRequest* webkitURISchemeRequestCreate(CyberKitWebContext*, CyberKit::WebPageProxy&, CyberKit::WebURLSchemeTask&);
+void webkitURISchemeRequestCancel(CyberKitURISchemeRequest*);

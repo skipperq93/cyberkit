@@ -65,7 +65,7 @@
 #include <wtf/text/StringBuilder.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1647,16 +1647,16 @@ PartialOrdering documentOrder(const Position& a, const Position& b)
 template PartialOrdering treeOrder<ComposedTree>(const Position&, const Position&);
 template PartialOrdering treeOrder<ShadowIncludingTree>(const Position&, const Position&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showTree(const WebCore::Position& pos)
+void showTree(const CyberCore::Position& pos)
 {
     pos.showTreeForThis();
 }
 
-void showTree(const WebCore::Position* pos)
+void showTree(const CyberCore::Position* pos)
 {
     if (pos)
         pos->showTreeForThis();

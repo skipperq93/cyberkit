@@ -35,7 +35,7 @@
 #include <CyberScriptCore/Forward.h>
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CyberKitMediaKeyError;
 class CyberKitMediaKeys;

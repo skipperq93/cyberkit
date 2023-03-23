@@ -30,7 +30,7 @@
 #include "HidService.h"
 #include <CyberCore/MockWebAuthenticationConfiguration.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MockHidService final : public HidService {
 public:
@@ -43,6 +43,6 @@ private:
     CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

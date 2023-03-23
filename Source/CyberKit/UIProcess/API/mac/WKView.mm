@@ -37,7 +37,7 @@
 #import "WKProcessGroupPrivate.h"
 #import "WKWebViewMac.h"
 #import "WebBackForwardListItem.h"
-#import "WebKit2Initialize.h"
+#import "CyberKit2Initialize.h"
 #import "WebPageGroup.h"
 #import "WebPageProxy.h"
 #import "WebPreferences.h"
@@ -54,7 +54,7 @@
 
 @interface WKViewData : NSObject {
 @public
-    std::unique_ptr<WebKit::WebViewImpl> _impl;
+    std::unique_ptr<CyberKit::WebViewImpl> _impl;
 }
 
 @end
@@ -356,7 +356,7 @@ When possible, editing-related methods should be implemented in CyberCore with t
 EditorCommand mechanism and invoked via WEBCORE_COMMAND, rather than implementing
 individual methods here with Mac-specific code.
 
-Editing-related methods still unimplemented that are implemented in WebKit1:
+Editing-related methods still unimplemented that are implemented in CyberKit1:
 
 - (void)complete:(id)sender;
 - (void)makeBaseWritingDirectionLeftToRight:(id)sender;
@@ -775,7 +775,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (BOOL)mouseDownCanMoveWindow
 {
-    return WebKit::WebViewImpl::mouseDownCanMoveWindow();
+    return CyberKit::WebViewImpl::mouseDownCanMoveWindow();
 }
 
 - (void)viewDidHide
@@ -957,16 +957,16 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
         _data->_impl->page().setIconLoadingClient(makeUnique<IconLoadingClient>(self));
 }
 
-- (instancetype)initWithFrame:(NSRect)frame processPool:(NakedRef<WebKit::WebProcessPool>)processPool configuration:(Ref<API::PageConfiguration>&&)configuration
+- (instancetype)initWithFrame:(NSRect)frame processPool:(NakedRef<CyberKit::WebProcessPool>)processPool configuration:(Ref<API::PageConfiguration>&&)configuration
 {
     self = [super initWithFrame:frame];
     if (!self)
         return nil;
 
-    WebKit::InitializeWebKit2();
+    CyberKit::InitializeCyberKit2();
 
     _data = [[WKViewData alloc] init];
-    _data->_impl = makeUnique<WebKit::WebViewImpl>(self, nullptr, processPool.get(), WTFMove(configuration));
+    _data->_impl = makeUnique<CyberKit::WebViewImpl>(self, nullptr, processPool.get(), WTFMove(configuration));
 
     [self maybeInstallIconLoadingClient];
     [WebViewVisualIdentificationOverlay installForWebViewIfNeeded:self kind:@"WKView" deprecated:YES];
@@ -1045,7 +1045,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (id)_web_immediateActionAnimationControllerForHitTestResultInternal:(API::HitTestResult*)hitTestResult withType:(uint32_t)type userData:(API::Object*)userData
 {
-    return [self _immediateActionAnimationControllerForHitTestResult:WebKit::toAPI(hitTestResult) withType:type userData:WebKit::toAPI(userData)];
+    return [self _immediateActionAnimationControllerForHitTestResult:CyberKit::toAPI(hitTestResult) withType:type userData:CyberKit::toAPI(userData)];
 }
 
 - (void)_web_prepareForImmediateActionAnimation
@@ -1191,7 +1191,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (void)saveBackForwardSnapshotForItem:(WKBackForwardListItemRef)item
 {
-    _data->_impl->saveBackForwardSnapshotForItem(*WebKit::toImpl(item));
+    _data->_impl->saveBackForwardSnapshotForItem(*CyberKit::toImpl(item));
 }
 
 - (id)initWithFrame:(NSRect)frame contextRef:(WKContextRef)contextRef pageGroupRef:(WKPageGroupRef)pageGroupRef
@@ -1215,20 +1215,20 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(NS
 - (id)initWithFrame:(NSRect)frame contextRef:(WKContextRef)contextRef pageGroupRef:(WKPageGroupRef)pageGroupRef relatedToPage:(WKPageRef)relatedPage
 {
     auto configuration = API::PageConfiguration::create();
-    configuration->setProcessPool(WebKit::toImpl(contextRef));
-    configuration->setPageGroup(WebKit::toImpl(pageGroupRef));
-    configuration->setRelatedPage(WebKit::toImpl(relatedPage));
+    configuration->setProcessPool(CyberKit::toImpl(contextRef));
+    configuration->setPageGroup(CyberKit::toImpl(pageGroupRef));
+    configuration->setRelatedPage(CyberKit::toImpl(relatedPage));
 #if PLATFORM(MAC)
     configuration->setPreferences(&configuration->pageGroup()->preferences());
     configuration->preferences()->setSystemLayoutDirection(static_cast<uint32_t>(toUserInterfaceLayoutDirection(self.userInterfaceLayoutDirection)));
 #endif
 
-    return [self initWithFrame:frame processPool:*WebKit::toImpl(contextRef) configuration:WTFMove(configuration)];
+    return [self initWithFrame:frame processPool:*CyberKit::toImpl(contextRef) configuration:WTFMove(configuration)];
 }
 
 - (id)initWithFrame:(NSRect)frame configurationRef:(WKPageConfigurationRef)configurationRef
 {
-    Ref<API::PageConfiguration> configuration = WebKit::toImpl(configurationRef)->copy();
+    Ref<API::PageConfiguration> configuration = CyberKit::toImpl(configurationRef)->copy();
     auto& processPool = *configuration->processPool();
 
     return [self initWithFrame:frame processPool:processPool configuration:WTFMove(configuration)];
@@ -1236,7 +1236,7 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(NS
 
 - (BOOL)wantsUpdateLayer
 {
-    return WebKit::WebViewImpl::wantsUpdateLayer();
+    return CyberKit::WebViewImpl::wantsUpdateLayer();
 }
 
 - (void)updateLayer
@@ -1246,17 +1246,17 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(NS
 
 - (WKPageRef)pageRef
 {
-    return WebKit::toAPI(&_data->_impl->page());
+    return CyberKit::toAPI(&_data->_impl->page());
 }
 
 - (BOOL)canChangeFrameLayout:(WKFrameRef)frameRef
 {
-    return _data->_impl->canChangeFrameLayout(*WebKit::toImpl(frameRef));
+    return _data->_impl->canChangeFrameLayout(*CyberKit::toImpl(frameRef));
 }
 
 - (NSPrintOperation *)printOperationWithPrintInfo:(NSPrintInfo *)printInfo forFrame:(WKFrameRef)frameRef
 {
-    return _data->_impl->printOperationWithPrintInfo(printInfo, *WebKit::toImpl(frameRef));
+    return _data->_impl->printOperationWithPrintInfo(printInfo, *CyberKit::toImpl(frameRef));
 }
 
 - (void)setFrame:(NSRect)rect andScrollBy:(NSSize)offset
@@ -1281,7 +1281,7 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(NS
 
 + (void)hideWordDefinitionWindow
 {
-    WebKit::WebViewImpl::hideWordDefinitionWindow();
+    CyberKit::WebViewImpl::hideWordDefinitionWindow();
 }
 
 - (NSSize)minimumSizeForAutoLayout

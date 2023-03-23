@@ -22,7 +22,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Event;
@@ -38,4 +38,4 @@ void dispatchScopedEvent(Node&, Event&);
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 #include "JSEvent.h"
 #include "TestEventConstructor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestEventConstructor : public JSEvent {
 public:
@@ -79,4 +79,4 @@ template<> struct JSDOMWrapperConverterTraits<TestEventConstructor> {
 template<> TestEventConstructor::Init convertDictionary<TestEventConstructor::Init>(JSC::JSGlobalObject&, JSC::JSValue);
 
 
-} // namespace WebCore
+} // namespace CyberCore

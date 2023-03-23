@@ -28,7 +28,7 @@
 #include "Event.h"
 #include "SecurityPolicyViolationEventDisposition.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SecurityPolicyViolationEventInit : EventInit {
     SecurityPolicyViolationEventInit() = default;
@@ -110,4 +110,4 @@ private:
     unsigned m_columnNumber;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

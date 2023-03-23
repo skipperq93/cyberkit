@@ -13,7 +13,7 @@ function runTest() {
     selection.modify("extend", "forward", "documentboundary");
     document.execCommand("insertUnorderedList", false, null);
     setTimeout(() => {
-        document.body.innerHTML = 'This test passes if WebKit does not hit any assertions.<br>PASS';
+        document.body.innerHTML = 'This test passes if CyberKit does not hit any assertions.<br>PASS';
         if (window.testRunner)
             testRunner.notifyDone();
     }, 0);

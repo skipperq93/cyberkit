@@ -30,7 +30,7 @@
 #include "JSDOMConvertStrings.h"
 #include "ScheduledAction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct Converter<IDLScheduledAction> : DefaultConverter<IDLScheduledAction> {
     static std::unique_ptr<ScheduledAction> convert(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSValue value, JSDOMGlobalObject& globalObject)

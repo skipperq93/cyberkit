@@ -29,7 +29,7 @@
 #import "WebInspectorUIProxy.h"
 #import <wtf/WeakObjCPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebInspectorUIProxy> {
     using WrapperClass = _WKInspector;
@@ -39,7 +39,7 @@ template<> struct WrapperTraits<WebInspectorUIProxy> {
 
 @interface _WKInspector () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebInspectorUIProxy> _inspector;
+    API::ObjectStorage<CyberKit::WebInspectorUIProxy> _inspector;
     WeakObjCPtr<id <_WKInspectorDelegate> > _delegate;
 }
 @end

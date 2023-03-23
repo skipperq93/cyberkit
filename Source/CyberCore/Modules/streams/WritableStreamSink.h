@@ -36,7 +36,7 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WritableStreamSink : public RefCounted<WritableStreamSink> {
 public:
@@ -72,4 +72,4 @@ inline void SimpleWritableStreamSink::write(ScriptExecutionContext& context, JSC
     promise.settle(m_writeCallback(context, value));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -1,4 +1,4 @@
-Tests geometry map with float acculated offset. The test passes if WebKit doesn't crash or hit an assertion.
+Tests geometry map with float acculated offset. The test passes if CyberKit doesn't crash or hit an assertion.
 
 
 

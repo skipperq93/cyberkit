@@ -30,7 +30,7 @@
 #include "AuthenticatorResponse.h"
 #include "AuthenticatorTransport.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticatorAttestationResponse : public AuthenticatorResponse {
 public:
@@ -55,7 +55,7 @@ private:
     Vector<AuthenticatorTransport> m_transports;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_AUTHENTICATOR_RESPONSE(AuthenticatorAttestationResponse, AuthenticatorResponse::Type::Attestation)
 

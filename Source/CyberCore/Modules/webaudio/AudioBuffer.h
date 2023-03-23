@@ -37,10 +37,10 @@
 #include <wtf/Lock.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class AudioBuffer : public RefCounted<AudioBuffer> {
 public:
@@ -111,6 +111,6 @@ private:
     bool m_needsAdditionalNoise { false };
 };
 
-WebCoreOpaqueRoot root(AudioBuffer*);
+CyberCoreOpaqueRoot root(AudioBuffer*);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -124,7 +124,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, m_page->process().connection())
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if PLATFORM(IOS_FAMILY) && !HAVE(AVKIT)
@@ -550,7 +550,7 @@ void VideoFullscreenManagerProxy::hasVideoInPictureInPictureDidChange(bool value
 
 #pragma mark Messages from VideoFullscreenManager
 
-void VideoFullscreenManagerProxy::setupFullscreenWithID(PlaybackSessionContextIdentifier contextId, WebKit::LayerHostingContextID videoLayerID, const CyberCore::FloatRect& initialRect, const CyberCore::FloatSize& videoDimensions, float hostingDeviceScaleFactor, HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture)
+void VideoFullscreenManagerProxy::setupFullscreenWithID(PlaybackSessionContextIdentifier contextId, CyberKit::LayerHostingContextID videoLayerID, const CyberCore::FloatRect& initialRect, const CyberCore::FloatSize& videoDimensions, float hostingDeviceScaleFactor, HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture)
 {
     MESSAGE_CHECK(videoLayerID);
 
@@ -923,7 +923,7 @@ AVPlayerViewController *VideoFullscreenManagerProxy::playerViewController(Playba
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK
 

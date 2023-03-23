@@ -30,7 +30,7 @@
 #include "ApplePayShippingMethod.h"
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePayShippingMethodSelectedEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(ApplePayShippingMethodSelectedEvent);

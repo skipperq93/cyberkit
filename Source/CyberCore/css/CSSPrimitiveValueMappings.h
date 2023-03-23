@@ -50,7 +50,7 @@
 #include "ApplePayButtonPart.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename TargetType> TargetType fromCSSValue(const CSSValue& value)
 {

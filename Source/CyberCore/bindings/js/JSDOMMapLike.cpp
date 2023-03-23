@@ -26,14 +26,14 @@
 #include "config.h"
 #include "JSDOMMapLike.h"
 
-#include "WebCoreJSBuiltinInternals.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSBuiltinInternals.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/CatchScope.h>
 #include <CyberScriptCore/HashMapImplInlines.h>
 #include <CyberScriptCore/JSMap.h>
 #include <CyberScriptCore/VMTrapsInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::pair<bool, std::reference_wrapper<JSC::JSObject>> getBackingMap(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSObject& mapLike)
 {

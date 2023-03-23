@@ -26,8 +26,8 @@
 
 #pragma once
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKGeometry.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKGeometry.h>
 #include <windows.h>
 
 #ifdef __cplusplus

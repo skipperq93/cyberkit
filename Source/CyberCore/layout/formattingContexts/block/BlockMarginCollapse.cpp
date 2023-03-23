@@ -37,7 +37,7 @@
 #include "LayoutUnit.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static bool hasBorder(const BorderValue& borderValue)

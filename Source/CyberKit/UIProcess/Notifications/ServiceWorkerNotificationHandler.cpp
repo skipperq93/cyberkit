@@ -31,7 +31,7 @@
 #include <CyberCore/NotificationData.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ServiceWorkerNotificationHandler& ServiceWorkerNotificationHandler::singleton()
 {
@@ -88,4 +88,4 @@ void ServiceWorkerNotificationHandler::didDestroyNotification(const UUID& notifi
         dataStore->didDestroyServiceWorkerNotification(notificationID);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

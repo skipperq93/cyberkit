@@ -29,7 +29,7 @@
 #include "CSSValue.h"
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontStyleRangeValue final : public CSSValue {
 public:

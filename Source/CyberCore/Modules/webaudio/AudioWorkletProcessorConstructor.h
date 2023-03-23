@@ -35,7 +35,7 @@
 #include <CyberScriptCore/Strong.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioWorkletProcessor;
 
@@ -46,6 +46,6 @@ public:
     virtual CallbackResult<RefPtr<AudioWorkletProcessor>> handleEvent(JSC::Strong<JSC::JSObject> options) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

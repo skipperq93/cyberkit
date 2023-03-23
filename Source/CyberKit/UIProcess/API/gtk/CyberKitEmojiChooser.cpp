@@ -31,7 +31,7 @@
 // is safe to use g_type_from_name().
 
 #include "config.h"
-#include "WebKitEmojiChooser.h"
+#include "CyberKitEmojiChooser.h"
 
 #if GTK_CHECK_VERSION(3, 24, 0) && !USE(GTK4)
 

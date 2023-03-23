@@ -29,7 +29,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AutofillMantle {
     Expectation,
@@ -122,76 +122,76 @@ public:
     NonAutofillCredentialType nonAutofillCredentialType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::AutofillFieldName> {
+template<> struct EnumTraits<CyberCore::AutofillFieldName> {
     using values = EnumValues<
-        WebCore::AutofillFieldName,
-        WebCore::AutofillFieldName::None,
-        WebCore::AutofillFieldName::Name,
-        WebCore::AutofillFieldName::HonorificPrefix,
-        WebCore::AutofillFieldName::GivenName,
-        WebCore::AutofillFieldName::AdditionalName,
-        WebCore::AutofillFieldName::FamilyName,
-        WebCore::AutofillFieldName::HonorificSuffix,
-        WebCore::AutofillFieldName::Nickname,
-        WebCore::AutofillFieldName::Username,
-        WebCore::AutofillFieldName::NewPassword,
-        WebCore::AutofillFieldName::CurrentPassword,
-        WebCore::AutofillFieldName::OrganizationTitle,
-        WebCore::AutofillFieldName::Organization,
-        WebCore::AutofillFieldName::StreetAddress,
-        WebCore::AutofillFieldName::AddressLine1,
-        WebCore::AutofillFieldName::AddressLine2,
-        WebCore::AutofillFieldName::AddressLine3,
-        WebCore::AutofillFieldName::AddressLevel4,
-        WebCore::AutofillFieldName::AddressLevel3,
-        WebCore::AutofillFieldName::AddressLevel2,
-        WebCore::AutofillFieldName::AddressLevel1,
-        WebCore::AutofillFieldName::Country,
-        WebCore::AutofillFieldName::CountryName,
-        WebCore::AutofillFieldName::PostalCode,
-        WebCore::AutofillFieldName::CcName,
-        WebCore::AutofillFieldName::CcGivenName,
-        WebCore::AutofillFieldName::CcAdditionalName,
-        WebCore::AutofillFieldName::CcFamilyName,
-        WebCore::AutofillFieldName::CcNumber,
-        WebCore::AutofillFieldName::CcExp,
-        WebCore::AutofillFieldName::CcExpMonth,
-        WebCore::AutofillFieldName::CcExpYear,
-        WebCore::AutofillFieldName::CcCsc,
-        WebCore::AutofillFieldName::CcType,
-        WebCore::AutofillFieldName::TransactionCurrency,
-        WebCore::AutofillFieldName::TransactionAmount,
-        WebCore::AutofillFieldName::Language,
-        WebCore::AutofillFieldName::Bday,
-        WebCore::AutofillFieldName::BdayDay,
-        WebCore::AutofillFieldName::BdayMonth,
-        WebCore::AutofillFieldName::BdayYear,
-        WebCore::AutofillFieldName::Sex,
-        WebCore::AutofillFieldName::URL,
-        WebCore::AutofillFieldName::Photo,
-        WebCore::AutofillFieldName::Tel,
-        WebCore::AutofillFieldName::TelCountryCode,
-        WebCore::AutofillFieldName::TelNational,
-        WebCore::AutofillFieldName::TelAreaCode,
-        WebCore::AutofillFieldName::TelLocal,
-        WebCore::AutofillFieldName::TelLocalPrefix,
-        WebCore::AutofillFieldName::TelLocalSuffix,
-        WebCore::AutofillFieldName::TelExtension,
-        WebCore::AutofillFieldName::Email,
-        WebCore::AutofillFieldName::Impp,
-        WebCore::AutofillFieldName::WebAuthn
+        CyberCore::AutofillFieldName,
+        CyberCore::AutofillFieldName::None,
+        CyberCore::AutofillFieldName::Name,
+        CyberCore::AutofillFieldName::HonorificPrefix,
+        CyberCore::AutofillFieldName::GivenName,
+        CyberCore::AutofillFieldName::AdditionalName,
+        CyberCore::AutofillFieldName::FamilyName,
+        CyberCore::AutofillFieldName::HonorificSuffix,
+        CyberCore::AutofillFieldName::Nickname,
+        CyberCore::AutofillFieldName::Username,
+        CyberCore::AutofillFieldName::NewPassword,
+        CyberCore::AutofillFieldName::CurrentPassword,
+        CyberCore::AutofillFieldName::OrganizationTitle,
+        CyberCore::AutofillFieldName::Organization,
+        CyberCore::AutofillFieldName::StreetAddress,
+        CyberCore::AutofillFieldName::AddressLine1,
+        CyberCore::AutofillFieldName::AddressLine2,
+        CyberCore::AutofillFieldName::AddressLine3,
+        CyberCore::AutofillFieldName::AddressLevel4,
+        CyberCore::AutofillFieldName::AddressLevel3,
+        CyberCore::AutofillFieldName::AddressLevel2,
+        CyberCore::AutofillFieldName::AddressLevel1,
+        CyberCore::AutofillFieldName::Country,
+        CyberCore::AutofillFieldName::CountryName,
+        CyberCore::AutofillFieldName::PostalCode,
+        CyberCore::AutofillFieldName::CcName,
+        CyberCore::AutofillFieldName::CcGivenName,
+        CyberCore::AutofillFieldName::CcAdditionalName,
+        CyberCore::AutofillFieldName::CcFamilyName,
+        CyberCore::AutofillFieldName::CcNumber,
+        CyberCore::AutofillFieldName::CcExp,
+        CyberCore::AutofillFieldName::CcExpMonth,
+        CyberCore::AutofillFieldName::CcExpYear,
+        CyberCore::AutofillFieldName::CcCsc,
+        CyberCore::AutofillFieldName::CcType,
+        CyberCore::AutofillFieldName::TransactionCurrency,
+        CyberCore::AutofillFieldName::TransactionAmount,
+        CyberCore::AutofillFieldName::Language,
+        CyberCore::AutofillFieldName::Bday,
+        CyberCore::AutofillFieldName::BdayDay,
+        CyberCore::AutofillFieldName::BdayMonth,
+        CyberCore::AutofillFieldName::BdayYear,
+        CyberCore::AutofillFieldName::Sex,
+        CyberCore::AutofillFieldName::URL,
+        CyberCore::AutofillFieldName::Photo,
+        CyberCore::AutofillFieldName::Tel,
+        CyberCore::AutofillFieldName::TelCountryCode,
+        CyberCore::AutofillFieldName::TelNational,
+        CyberCore::AutofillFieldName::TelAreaCode,
+        CyberCore::AutofillFieldName::TelLocal,
+        CyberCore::AutofillFieldName::TelLocalPrefix,
+        CyberCore::AutofillFieldName::TelLocalSuffix,
+        CyberCore::AutofillFieldName::TelExtension,
+        CyberCore::AutofillFieldName::Email,
+        CyberCore::AutofillFieldName::Impp,
+        CyberCore::AutofillFieldName::WebAuthn
     >;
 };
 
-template<> struct EnumTraits<WebCore::NonAutofillCredentialType> {
+template<> struct EnumTraits<CyberCore::NonAutofillCredentialType> {
     using values = EnumValues<
-        WebCore::NonAutofillCredentialType,
-        WebCore::NonAutofillCredentialType::None,
-        WebCore::NonAutofillCredentialType::WebAuthn
+        CyberCore::NonAutofillCredentialType,
+        CyberCore::NonAutofillCredentialType::None,
+        CyberCore::NonAutofillCredentialType::WebAuthn
     >;
 };
 

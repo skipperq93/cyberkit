@@ -28,7 +28,7 @@
 #include "Element.h"
 #include <wtf/FixedVector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTokenList {
     WTF_MAKE_FAST_ALLOCATED;
@@ -71,7 +71,7 @@ private:
     ExceptionOr<void> removeInternal(const AtomString* tokens, size_t length);
 
     Element& m_element;
-    const WebCore::QualifiedName& m_attributeName;
+    const CyberCore::QualifiedName& m_attributeName;
     bool m_inUpdateAssociatedAttributeFromTokens { false };
     bool m_tokensNeedUpdating { true };
     Vector<AtomString> m_tokens;
@@ -89,4 +89,4 @@ inline const AtomString& DOMTokenList::item(unsigned index) const
     return index < tokens.size() ? tokens[index] : nullAtom();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

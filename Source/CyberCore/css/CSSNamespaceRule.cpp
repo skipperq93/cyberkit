@@ -30,7 +30,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSNamespaceRule::CSSNamespaceRule(StyleRuleNamespace& namespaceRule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -64,4 +64,4 @@ void CSSNamespaceRule::reattach(StyleRuleBase&)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -3,7 +3,7 @@ LocalizedStringsGtk.cpp
 ../LocalizedStrings.cpp
 ../network/soup/NetworkStorageSessionSoup.cpp
 ../../editing/EditAction.cpp
-../../../JavaScriptCore/API/glib/JSCOptions.cpp
+../../../CyberScriptCore/API/glib/JSCOptions.cpp
 ../../../CyberKit/NetworkProcess/soup/CyberKitDirectoryInputStream.cpp
 ../../../CyberKit/Shared/WebErrors.cpp
 ../../../CyberKit/Shared/gtk/WebErrorsGtk.cpp

@@ -45,7 +45,7 @@
 #include <wpe/wpe.h>
 #include <wtf/NeverDestroyed.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 namespace WKWPE {
 
@@ -175,7 +175,7 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
             if (event->type == wpe_input_pointer_event_type_button && event->state == 1)
                 view.m_inputMethodFilter.cancelComposition();
             auto& page = view.page();
-            page.handleMouseEvent(WebKit::NativeWebMouseEvent(event, page.deviceScaleFactor()));
+            page.handleMouseEvent(CyberKit::NativeWebMouseEvent(event, page.deviceScaleFactor()));
         },
         // handle_axis_event
         [](void* data, struct wpe_input_axis_event* event)
@@ -204,7 +204,7 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
                     phase = WebWheelEvent::Phase::PhaseEnded;
 
                 auto& page = view.page();
-                page.handleWheelEvent(WebKit::NativeWebWheelEvent(event, page.deviceScaleFactor(), phase, momentumPhase));
+                page.handleWheelEvent(CyberKit::NativeWebWheelEvent(event, page.deviceScaleFactor(), phase, momentumPhase));
                 return;
             }
 #endif
@@ -226,7 +226,7 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
 
             if (shouldDispatch) {
                 auto& page = view.page();
-                page.handleWheelEvent(WebKit::NativeWebWheelEvent(event, page.deviceScaleFactor(), phase, momentumPhase));
+                page.handleWheelEvent(CyberKit::NativeWebWheelEvent(event, page.deviceScaleFactor(), phase, momentumPhase));
             }
         },
         // handle_touch_event
@@ -236,7 +236,7 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
             auto& view = *reinterpret_cast<View*>(data);
             auto& page = view.page();
 
-            WebKit::NativeWebTouchEvent touchEvent(event, page.deviceScaleFactor());
+            CyberKit::NativeWebTouchEvent touchEvent(event, page.deviceScaleFactor());
 
             // If already gesturing axis events, short-cut directly to the controller,
             // avoiding the usual roundtrip.
@@ -256,7 +256,7 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
                         auto* event = &axisEvent.event;
 #endif
                         if (event->type != wpe_input_axis_event_type_null) {
-                            page.handleWheelEvent(WebKit::NativeWebWheelEvent(event, page.deviceScaleFactor(),
+                            page.handleWheelEvent(CyberKit::NativeWebWheelEvent(event, page.deviceScaleFactor(),
                                 axisEvent.phase, WebWheelEvent::Phase::PhaseNone));
                             handledThroughGestureController = true;
                         }
@@ -358,17 +358,17 @@ void View::didReceiveUserMessage(UserMessage&& message, CompletionHandler<void(U
     m_client->didReceiveUserMessage(*this, WTFMove(message), WTFMove(completionHandler));
 }
 
-WebKitWebResourceLoadManager* View::webResourceLoadManager()
+CyberKitWebResourceLoadManager* View::webResourceLoadManager()
 {
     return m_client->webResourceLoadManager();
 }
 
-void View::setInputMethodContext(WebKitInputMethodContext* context)
+void View::setInputMethodContext(CyberKitInputMethodContext* context)
 {
     m_inputMethodFilter.setContext(context);
 }
 
-WebKitInputMethodContext* View::inputMethodContext() const
+CyberKitInputMethodContext* View::inputMethodContext() const
 {
     return m_inputMethodFilter.context();
 }
@@ -424,7 +424,7 @@ void View::handleKeyboardEvent(struct wpe_input_keyboard_event* event)
     if (filterResult.handled)
         return;
 
-    page().handleKeyboardEvent(WebKit::NativeWebKeyboardEvent(event, event->pressed ? filterResult.keyText : String(), NativeWebKeyboardEvent::HandledByInputMethod::No, std::nullopt, std::nullopt));
+    page().handleKeyboardEvent(CyberKit::NativeWebKeyboardEvent(event, event->pressed ? filterResult.keyText : String(), NativeWebKeyboardEvent::HandledByInputMethod::No, std::nullopt, std::nullopt));
 }
 
 void View::synthesizeCompositionKeyPress(const String& text, std::optional<Vector<CyberCore::CompositionUnderline>>&& underlines, std::optional<EditingRange>&& selectionRange)
@@ -434,7 +434,7 @@ void View::synthesizeCompositionKeyPress(const String& text, std::optional<Vecto
     // composition results. WPE doesn't have an equivalent, so we send VoidSymbol
     // here to CyberCore. PlatformKeyEvent converts this code into VK_PROCESSKEY.
     static struct wpe_input_keyboard_event event = { 0, WPE_KEY_VoidSymbol, 0, true, 0 };
-    page().handleKeyboardEvent(WebKit::NativeWebKeyboardEvent(&event, text, NativeWebKeyboardEvent::HandledByInputMethod::Yes, WTFMove(underlines), WTFMove(selectionRange)));
+    page().handleKeyboardEvent(CyberKit::NativeWebKeyboardEvent(&event, text, NativeWebKeyboardEvent::HandledByInputMethod::Yes, WTFMove(underlines), WTFMove(selectionRange)));
 }
 
 void View::close()
@@ -455,7 +455,7 @@ bool View::setFullScreen(bool fullScreenState)
 #endif
 
 #if ENABLE(ACCESSIBILITY)
-WebKitWebViewAccessible* View::accessible() const
+CyberKitWebViewAccessible* View::accessible() const
 {
     if (!m_accessible)
         m_accessible = webkitWebViewAccessibleNew(const_cast<View*>(this));
@@ -464,7 +464,7 @@ WebKitWebViewAccessible* View::accessible() const
 #endif
 
 #if ENABLE(GAMEPAD)
-WebKit::WebPageProxy* View::platformWebPageProxyForGamepadInput()
+CyberKit::WebPageProxy* View::platformWebPageProxyForGamepadInput()
 {
     const auto& views = viewsVector();
     if (views.isEmpty())

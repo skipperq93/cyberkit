@@ -28,7 +28,7 @@
 #include "ImageOrientation.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImageBitmapOptions {
     enum class Orientation { None, FlipY };

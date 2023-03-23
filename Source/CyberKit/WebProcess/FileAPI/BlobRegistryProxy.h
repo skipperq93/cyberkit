@@ -27,7 +27,7 @@
 
 #include <CyberCore/BlobRegistry.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class BlobRegistryProxy final : public CyberCore::BlobRegistry {
 public:

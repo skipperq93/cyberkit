@@ -28,7 +28,7 @@
 #include "JSDOMBindingSecurity.h"
 #include "JSDOMWindow.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace BindingSecurity {
 
 inline bool shouldAllowAccessToDOMWindow(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMWindow& target, SecurityReportingOption reportingOption = LogSecurityError)
@@ -39,4 +39,4 @@ inline bool shouldAllowAccessToDOMWindow(JSC::JSGlobalObject* lexicalGlobalObjec
 }
 
 } // namespace BindingSecurity
-} // namespace WebCore
+} // namespace CyberCore

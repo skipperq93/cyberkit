@@ -23,7 +23,7 @@
 #include "JSDOMWrapper.h"
 #include "JSEventTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 
@@ -107,4 +107,4 @@ template<> struct JSDOMWrapperConverterTraits<DOMWindow> {
     using ToWrappedReturnType = DOMWindow*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

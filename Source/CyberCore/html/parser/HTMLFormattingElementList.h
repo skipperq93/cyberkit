@@ -30,7 +30,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -133,4 +133,4 @@ private:
     Vector<Entry> m_entries;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# This script imports the W3C Web Performance WG's test suite into WebKit.
+# This script imports the W3C Web Performance WG's test suite into CyberKit.
 #
 # You must have checked out the 'webperf' repository from https://dvcs.w3.org/hg/
 #

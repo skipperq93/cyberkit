@@ -24,15 +24,15 @@
  */
 
 #include "config.h"
-#include "WebKitInspectorWindow.h"
+#include "CyberKitInspectorWindow.h"
 
 #include "WebInspectorUIProxy.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GUniquePtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
-struct _WebKitInspectorWindow {
+struct _CyberKitInspectorWindow {
     GtkWindow parent;
 
     GtkWidget* headerBar;
@@ -42,17 +42,17 @@ struct _WebKitInspectorWindow {
 #endif
 };
 
-struct _WebKitInspectorWindowClass {
+struct _CyberKitInspectorWindowClass {
     GtkWindowClass parent;
 };
 
-G_DEFINE_TYPE(WebKitInspectorWindow, webkit_inspector_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE(CyberKitInspectorWindow, webkit_inspector_window, GTK_TYPE_WINDOW)
 
-static void webkit_inspector_window_class_init(WebKitInspectorWindowClass*)
+static void webkit_inspector_window_class_init(CyberKitInspectorWindowClass*)
 {
 }
 
-static void webkit_inspector_window_init(WebKitInspectorWindow* window)
+static void webkit_inspector_window_init(CyberKitInspectorWindow* window)
 {
     window->headerBar = gtk_header_bar_new();
 
@@ -95,7 +95,7 @@ GtkWidget* webkitInspectorWindowNew()
         "default-width", WebInspectorUIProxy::initialWindowWidth, "default-height", WebInspectorUIProxy::initialWindowHeight, nullptr));
 }
 
-void webkitInspectorWindowSetSubtitle(WebKitInspectorWindow* window, const char* subtitle)
+void webkitInspectorWindowSetSubtitle(CyberKitInspectorWindow* window, const char* subtitle)
 {
     g_return_if_fail(WEBKIT_IS_INSPECTOR_WINDOW(window));
 

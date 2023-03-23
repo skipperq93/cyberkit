@@ -32,7 +32,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateTimeNumericFieldElement : public DateTimeFieldElement {
     WTF_MAKE_ISO_ALLOCATED(DateTimeNumericFieldElement);
@@ -80,6 +80,6 @@ private:
     MonotonicTime m_lastDigitCharTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

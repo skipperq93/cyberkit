@@ -25,25 +25,25 @@
  */
 
 #include "config.h"
-#include "WebKitNotificationProvider.h"
+#include "CyberKitNotificationProvider.h"
 
 #include "APIArray.h"
 #include "APINotificationProvider.h"
 #include "APINumber.h"
 #include "NotificationService.h"
-#include "WebKitNotificationPrivate.h"
-#include "WebKitWebContextPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitNotificationPrivate.h"
+#include "CyberKitWebContextPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include "WebNotificationManagerProxy.h"
 #include "WebPageProxy.h"
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 
 class NotificationProvider final : public API::NotificationProvider {
 public:
-    explicit NotificationProvider(WebKitNotificationProvider& provider)
+    explicit NotificationProvider(CyberKitNotificationProvider& provider)
         : m_provider(provider)
     {
     }
@@ -69,10 +69,10 @@ private:
         return m_provider.notificationPermissions();
     }
 
-    WebKitNotificationProvider& m_provider;
+    CyberKitNotificationProvider& m_provider;
 };
 
-WebKitNotificationProvider::WebKitNotificationProvider(WebNotificationManagerProxy* notificationManager, WebKitWebContext* webContext)
+CyberKitNotificationProvider::CyberKitNotificationProvider(WebNotificationManagerProxy* notificationManager, CyberKitWebContext* webContext)
     : m_webContext(webContext)
     , m_notificationManager(notificationManager)
 {
@@ -80,7 +80,7 @@ WebKitNotificationProvider::WebKitNotificationProvider(WebNotificationManagerPro
     m_notificationManager->setProvider(makeUnique<NotificationProvider>(*this));
 }
 
-WebKitNotificationProvider::~WebKitNotificationProvider()
+CyberKitNotificationProvider::~CyberKitNotificationProvider()
 {
     if (m_observerRegistered)
         NotificationService::singleton().removeObserver(*this);
@@ -88,7 +88,7 @@ WebKitNotificationProvider::~WebKitNotificationProvider()
     m_notificationManager->setProvider(nullptr);
 }
 
-void WebKitNotificationProvider::apiNotificationCloseCallback(WebKitNotification* notification, WebKitNotificationProvider* provider)
+void CyberKitNotificationProvider::apiNotificationCloseCallback(CyberKitNotification* notification, CyberKitNotificationProvider* provider)
 {
     uint64_t notificationID = webkit_notification_get_id(notification);
     Vector<RefPtr<API::Object>> arrayIDs;
@@ -97,18 +97,18 @@ void WebKitNotificationProvider::apiNotificationCloseCallback(WebKitNotification
     provider->m_apiNotifications.remove(notificationID);
 }
 
-void WebKitNotificationProvider::apiNotificationClickedCallback(WebKitNotification* notification, WebKitNotificationProvider* provider)
+void CyberKitNotificationProvider::apiNotificationClickedCallback(CyberKitNotification* notification, CyberKitNotificationProvider* provider)
 {
     provider->m_notificationManager->providerDidClickNotification(webkit_notification_get_id(notification));
 }
 
-void WebKitNotificationProvider::closeAPINotification(uint64_t notificationID)
+void CyberKitNotificationProvider::closeAPINotification(uint64_t notificationID)
 {
     if (auto notification = m_apiNotifications.take(notificationID))
         webkit_notification_close(notification.get());
 }
 
-void WebKitNotificationProvider::withdrawAnyPreviousAPINotificationMatchingTag(const CString& tag)
+void CyberKitNotificationProvider::withdrawAnyPreviousAPINotificationMatchingTag(const CString& tag)
 {
     if (!tag.length())
         return;
@@ -126,7 +126,7 @@ void WebKitNotificationProvider::withdrawAnyPreviousAPINotificationMatchingTag(c
 #endif
 }
 
-void WebKitNotificationProvider::show(WebPageProxy* page, WebNotification& webNotification, RefPtr<CyberCore::NotificationResources>&& resources)
+void CyberKitNotificationProvider::show(WebPageProxy* page, WebNotification& webNotification, RefPtr<CyberCore::NotificationResources>&& resources)
 {
     if (!page || !m_webContext) {
         // FIXME: glib API needs to find their own solution to handling pageless notifications.
@@ -134,7 +134,7 @@ void WebKitNotificationProvider::show(WebPageProxy* page, WebNotification& webNo
         return;
     }
 
-    GRefPtr<WebKitNotification> notification = m_apiNotifications.get(webNotification.notificationID());
+    GRefPtr<CyberKitNotification> notification = m_apiNotifications.get(webNotification.notificationID());
     if (!notification) {
         withdrawAnyPreviousAPINotificationMatchingTag(webNotification.tag().utf8());
         notification = adoptGRef(webkitNotificationCreate(webNotification));
@@ -154,7 +154,7 @@ void WebKitNotificationProvider::show(WebPageProxy* page, WebNotification& webNo
     }
 }
 
-void WebKitNotificationProvider::show(WebNotification& webNotification, const RefPtr<CyberCore::NotificationResources>& resources)
+void CyberKitNotificationProvider::show(WebNotification& webNotification, const RefPtr<CyberCore::NotificationResources>& resources)
 {
     if (!m_observerRegistered) {
         NotificationService::singleton().addObserver(*this);
@@ -165,7 +165,7 @@ void WebKitNotificationProvider::show(WebNotification& webNotification, const Re
         m_notificationManager->providerDidShowNotification(webNotification.notificationID());
 }
 
-void WebKitNotificationProvider::cancelNotificationByID(uint64_t notificationID)
+void CyberKitNotificationProvider::cancelNotificationByID(uint64_t notificationID)
 {
     closeAPINotification(notificationID);
 
@@ -173,30 +173,30 @@ void WebKitNotificationProvider::cancelNotificationByID(uint64_t notificationID)
         NotificationService::singleton().cancelNotification(notificationID);
 }
 
-void WebKitNotificationProvider::cancel(const WebNotification& webNotification)
+void CyberKitNotificationProvider::cancel(const WebNotification& webNotification)
 {
     cancelNotificationByID(webNotification.notificationID());
 }
 
-void WebKitNotificationProvider::clearNotifications(const Vector<uint64_t>& notificationIDs)
+void CyberKitNotificationProvider::clearNotifications(const Vector<uint64_t>& notificationIDs)
 {
     for (const auto& item : notificationIDs)
         cancelNotificationByID(item);
 }
 
-HashMap<WTF::String, bool> WebKitNotificationProvider::notificationPermissions()
+HashMap<WTF::String, bool> CyberKitNotificationProvider::notificationPermissions()
 {
     if (m_webContext)
         webkitWebContextInitializeNotificationPermissions(m_webContext);
     return m_notificationPermissions;
 }
 
-void WebKitNotificationProvider::setNotificationPermissions(HashMap<String, bool>&& permissionsMap)
+void CyberKitNotificationProvider::setNotificationPermissions(HashMap<String, bool>&& permissionsMap)
 {
     m_notificationPermissions = WTFMove(permissionsMap);
 }
 
-void WebKitNotificationProvider::didClickNotification(uint64_t notificationID)
+void CyberKitNotificationProvider::didClickNotification(uint64_t notificationID)
 {
     if (auto* notification = m_apiNotifications.get(notificationID))
         webkit_notification_clicked(notification);
@@ -204,7 +204,7 @@ void WebKitNotificationProvider::didClickNotification(uint64_t notificationID)
     m_notificationManager->providerDidClickNotification(notificationID);
 }
 
-void WebKitNotificationProvider::didCloseNotification(uint64_t notificationID)
+void CyberKitNotificationProvider::didCloseNotification(uint64_t notificationID)
 {
     closeAPINotification(notificationID);
 

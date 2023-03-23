@@ -28,7 +28,7 @@
 
 #include "AudioNodeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DelayOptions : AudioNodeOptions {
     double maxDelayTime { 1 };

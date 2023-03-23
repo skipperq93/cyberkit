@@ -437,7 +437,7 @@
         "documentation-url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of",
         "description": "The for...of loops iterate over the values provided by the iterator of the target object.",
         "specification": "ES6",
-        "comment": "Older versions of WebKit only supported iterating JavaScript arrays."
+        "comment": "Older versions of CyberKit only supported iterating JavaScript arrays."
     },
     {
         "name": "new.target",

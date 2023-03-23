@@ -35,7 +35,7 @@
 #include <CyberCore/WebLockManagerSnapshot.h>
 #include <CyberCore/WebLockRegistry.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, m_process.connection())
 
@@ -121,4 +121,4 @@ void WebLockRegistryProxy::processDidExit()
 
 #undef MESSAGE_CHECK
 
-} // namespace WebKit
+} // namespace CyberKit

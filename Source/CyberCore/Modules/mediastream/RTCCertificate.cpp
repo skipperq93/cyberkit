@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RTCCertificate> RTCCertificate::create(Ref<SecurityOrigin>&& origin, double expires, Vector<DtlsFingerprint>&& fingerprints, String&& pemCertificate, String&& pemPrivateKey)
 {

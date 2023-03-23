@@ -35,7 +35,7 @@
 #include <wtf/glib/GRefPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class KeyPathType { Null, String, Array };
 
@@ -49,7 +49,7 @@ RefPtr<SharedBuffer> serializeIDBKeyPath(const std::optional<IDBKeyPath>& keyPat
             encoder->encodeString("string"_s, string);
         }, [&](const Vector<String>& vector) {
             encoder->encodeEnum("type"_s, KeyPathType::Array);
-            encoder->encodeObjects("array"_s, vector.begin(), vector.end(), [](WebCore::KeyedEncoder& encoder, const String& string) {
+            encoder->encodeObjects("array"_s, vector.begin(), vector.end(), [](CyberCore::KeyedEncoder& encoder, const String& string) {
                 encoder.encodeString("string"_s, string);
             });
         });
@@ -417,4 +417,4 @@ bool deserializeIDBKeyData(const uint8_t* data, size_t size, IDBKeyData& result)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

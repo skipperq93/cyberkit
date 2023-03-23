@@ -31,7 +31,7 @@
 OBJC_CLASS WKWebView;
 OBJC_CLASS _WKInspectorConfiguration;
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) WKWebView *webView;
 @property (nonatomic, weak) id <WKInspectorViewControllerDelegate> delegate;
 
-- (instancetype)initWithConfiguration:(_WKInspectorConfiguration *)configuration inspectedPage:(NakedPtr<WebKit::WebPageProxy>)inspectedPage;
+- (instancetype)initWithConfiguration:(_WKInspectorConfiguration *)configuration inspectedPage:(NakedPtr<CyberKit::WebPageProxy>)inspectedPage;
 
 + (BOOL)viewIsInspectorWebView:(NSView *)view;
 + (NSURL * _Nullable)URLForInspectorResource:(NSString *)resource;

@@ -29,7 +29,7 @@
 #include "TransformationMatrix.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Display {
 
@@ -58,6 +58,6 @@ FloatRoundedRect roundedInsetBorderForRect(const FloatRect&, const FloatRoundedR
 
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 

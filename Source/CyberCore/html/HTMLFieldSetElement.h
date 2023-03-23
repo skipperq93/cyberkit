@@ -26,7 +26,7 @@
 #include "HTMLFormControlElement.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFieldSetElement final : public HTMLFormControlElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLFieldSetElement);

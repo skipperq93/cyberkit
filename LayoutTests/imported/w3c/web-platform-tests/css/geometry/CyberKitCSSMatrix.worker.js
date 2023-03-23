@@ -3,7 +3,7 @@
 importScripts('/resources/testharness.js');
 
 test(() => {
-  assert_false('WebKitCSSMatrix' in self);
-}, 'WebKitCSSMatrix in worker');
+  assert_false('CyberKitCSSMatrix' in self);
+}, 'CyberKitCSSMatrix in worker');
 
 done();

@@ -36,7 +36,7 @@
 #include <wtf/Forward.h>
 #include <wtf/KeyValuePair.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioWorkletNodeOptions : AudioNodeOptions {
     unsigned numberOfInputs = 1;
@@ -46,6 +46,6 @@ struct AudioWorkletNodeOptions : AudioNodeOptions {
     JSC::Strong<JSC::JSObject> processorOptions;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

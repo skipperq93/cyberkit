@@ -50,7 +50,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 #if USE(APPLE_INTERNAL_SDK)
 #import <CyberKitAdditions/ContentRuleListAdditions.mm>
@@ -382,6 +382,6 @@ void applyResultsToRequest(ContentRuleListResults&& results, Page* page, Resourc
     }
 }
     
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

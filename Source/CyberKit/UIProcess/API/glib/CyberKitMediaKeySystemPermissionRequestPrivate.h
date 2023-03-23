@@ -20,6 +20,6 @@
 #pragma once
 
 #include "MediaKeySystemPermissionRequest.h"
-#include "WebKitMediaKeySystemPermissionRequest.h"
+#include "CyberKitMediaKeySystemPermissionRequest.h"
 
-WebKitMediaKeySystemPermissionRequest* webkitMediaKeySystemPermissionRequestCreate(WTF::Ref<WebKit::MediaKeySystemPermissionRequest>&&);
+CyberKitMediaKeySystemPermissionRequest* webkitMediaKeySystemPermissionRequestCreate(WTF::Ref<CyberKit::MediaKeySystemPermissionRequest>&&);

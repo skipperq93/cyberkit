@@ -49,7 +49,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkerThreadableWebSocketChannel::WorkerThreadableWebSocketChannel(WorkerGlobalScope& context, WebSocketChannelClient& client, const String& taskMode, SocketProvider& provider)
     : m_workerGlobalScope(context)
@@ -603,4 +603,4 @@ void WorkerThreadableWebSocketChannel::Bridge::waitForMethodCompletion()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

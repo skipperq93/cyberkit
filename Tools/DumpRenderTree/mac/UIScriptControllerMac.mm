@@ -121,7 +121,7 @@ void UIScriptControllerMac::overridePreference(JSStringRef preferenceRef, JSStri
     WebPreferences *preferences = mainFrame.webView.preferences;
 
     RetainPtr<CFStringRef> value = adoptCF(JSStringCopyCFString(kCFAllocatorDefault, valueRef));
-    if (JSStringIsEqualToUTF8CString(preferenceRef, "WebKitMinimumFontSize"))
+    if (JSStringIsEqualToUTF8CString(preferenceRef, "CyberKitMinimumFontSize"))
         preferences.minimumFontSize = [(__bridge NSString *)value.get() doubleValue];
 }
 

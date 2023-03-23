@@ -39,7 +39,7 @@ namespace CyberCore {
 class IntSize;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaProxy;
 
@@ -152,8 +152,8 @@ private:
     bool m_isBeingDestroyed { false };
     bool m_usesOffscreenRendering { false };
 
-    std::unique_ptr<WebKit::PageClientImpl> m_pageClient;
+    std::unique_ptr<CyberKit::PageClientImpl> m_pageClient;
     RefPtr<WebPageProxy> m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

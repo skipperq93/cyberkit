@@ -25,13 +25,13 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKitTestRunnerPasteboard_h
-#define WebKitTestRunnerPasteboard_h
+#ifndef CyberKitTestRunnerPasteboard_h
+#define CyberKitTestRunnerPasteboard_h
 
 #import <AppKit/AppKit.h>
 
-@interface WebKitTestRunnerPasteboard : NSPasteboard
+@interface CyberKitTestRunnerPasteboard : NSPasteboard
 + (void)releaseLocalPasteboards;
 @end
 
-#endif // WebKitTestRunnerPasteboard_h
+#endif // CyberKitTestRunnerPasteboard_h

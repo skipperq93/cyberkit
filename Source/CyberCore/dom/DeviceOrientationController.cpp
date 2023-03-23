@@ -33,7 +33,7 @@
 #include "EventNames.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DeviceOrientationController::DeviceOrientationController(DeviceOrientationClient& client)
     : DeviceController(client)
@@ -103,4 +103,4 @@ void provideDeviceOrientationTo(Page& page, DeviceOrientationClient& client)
     DeviceOrientationController::provideTo(&page, DeviceOrientationController::supplementName(), makeUnique<DeviceOrientationController>(client));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

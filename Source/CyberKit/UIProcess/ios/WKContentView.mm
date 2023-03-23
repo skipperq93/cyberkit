@@ -49,7 +49,7 @@
 #import "WKWebViewConfiguration.h"
 #import "WKWebViewIOS.h"
 #import "WebFrameProxy.h"
-#import "WebKit2Initialize.h"
+#import "CyberKit2Initialize.h"
 #import "WebPageGroup.h"
 #import "WebPageMessages.h"
 #import "WebPageProxyMessages.h"
@@ -78,12 +78,12 @@
 @interface _WKPrintFormattingAttributes : NSObject
 @property (nonatomic, readonly) size_t pageCount;
 @property (nonatomic, readonly) CyberCore::FrameIdentifier frameID;
-@property (nonatomic, readonly) WebKit::PrintInfo printInfo;
+@property (nonatomic, readonly) CyberKit::PrintInfo printInfo;
 @end
 
 @implementation _WKPrintFormattingAttributes
 
-- (instancetype)initWithPageCount:(size_t)pageCount frameID:(CyberCore::FrameIdentifier)frameID printInfo:(WebKit::PrintInfo)printInfo
+- (instancetype)initWithPageCount:(size_t)pageCount frameID:(CyberCore::FrameIdentifier)frameID printInfo:(CyberKit::PrintInfo)printInfo
 {
     if (!(self = [super init]))
         return nil;
@@ -143,18 +143,18 @@ typedef NS_ENUM(NSInteger, _WKPrintRenderingCallbackType) {
 
 - (void)undo 
 {
-    [self.contentView generateSyntheticEditingCommand:WebKit::SyntheticEditingCommandType::Undo];
+    [self.contentView generateSyntheticEditingCommand:CyberKit::SyntheticEditingCommandType::Undo];
 }
 
 - (void)redo 
 {
-    [self.contentView generateSyntheticEditingCommand:WebKit::SyntheticEditingCommandType::Redo];
+    [self.contentView generateSyntheticEditingCommand:CyberKit::SyntheticEditingCommandType::Redo];
 }
 
 @end
 
 @implementation WKContentView {
-    std::unique_ptr<WebKit::PageClientImpl> _pageClient;
+    std::unique_ptr<CyberKit::PageClientImpl> _pageClient;
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     RetainPtr<WKBrowsingContextController> _browsingContextController;
     ALLOW_DEPRECATED_DECLARATIONS_END
@@ -197,7 +197,7 @@ static NSArray *keyCommandsPlaceholderHackForEvernote(id self, SEL _cmd)
     return reinterpret_cast<SuperKeyCommandsFunction>(&objc_msgSendSuper)(&super, @selector(keyCommands));
 }
 
-- (instancetype)_commonInitializationWithProcessPool:(WebKit::WebProcessPool&)processPool configuration:(Ref<API::PageConfiguration>&&)configuration
+- (instancetype)_commonInitializationWithProcessPool:(CyberKit::WebProcessPool&)processPool configuration:(Ref<API::PageConfiguration>&&)configuration
 {
     ASSERT(_pageClient);
 
@@ -210,10 +210,10 @@ static NSArray *keyCommandsPlaceholderHackForEvernote(id self, SEL _cmd)
     _page->windowScreenDidChange(_page->generateDisplayIDFromPageID(), std::nullopt);
 
 #if ENABLE(FULLSCREEN_API)
-    _page->setFullscreenClient(makeUnique<WebKit::FullscreenClient>(self.webView));
+    _page->setFullscreenClient(makeUnique<CyberKit::FullscreenClient>(self.webView));
 #endif
 
-    WebKit::WebProcessPool::statistics().wkViewCount++;
+    CyberKit::WebProcessPool::statistics().wkViewCount++;
 
     _rootContentView = adoptNS([[UIView alloc] init]);
     [_rootContentView layer].name = @"RootContent";
@@ -324,14 +324,14 @@ static NSArray *keyCommandsPlaceholderHackForEvernote(id self, SEL _cmd)
 }
 #endif // HAVE(VISIBILITY_PROPAGATION_VIEW)
 
-- (instancetype)initWithFrame:(CGRect)frame processPool:(NakedRef<WebKit::WebProcessPool>)processPool configuration:(Ref<API::PageConfiguration>&&)configuration webView:(WKWebView *)webView
+- (instancetype)initWithFrame:(CGRect)frame processPool:(NakedRef<CyberKit::WebProcessPool>)processPool configuration:(Ref<API::PageConfiguration>&&)configuration webView:(WKWebView *)webView
 {
     if (!(self = [super initWithFrame:frame webView:webView]))
         return nil;
 
-    WebKit::InitializeWebKit2();
+    CyberKit::InitializeCyberKit2();
 
-    _pageClient = makeUnique<WebKit::PageClientImpl>(self, webView);
+    _pageClient = makeUnique<CyberKit::PageClientImpl>(self, webView);
     _webView = webView;
 
     return [self _commonInitializationWithProcessPool:processPool configuration:WTFMove(configuration)];
@@ -345,7 +345,7 @@ static NSArray *keyCommandsPlaceholderHackForEvernote(id self, SEL _cmd)
 
     _page->close();
 
-    WebKit::WebProcessPool::statistics().wkViewCount--;
+    CyberKit::WebProcessPool::statistics().wkViewCount--;
 
     [self _removeTemporaryFilesIfNecessary];
     
@@ -383,7 +383,7 @@ static NSArray *keyCommandsPlaceholderHackForEvernote(id self, SEL _cmd)
     _temporaryURLsToDeleteWhenDeallocated.appendVector(WTFMove(urls));
 }
 
-- (WebKit::WebPageProxy*)page
+- (CyberKit::WebPageProxy*)page
 {
     return _page.get();
 }
@@ -523,7 +523,7 @@ static CyberCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
     unobscuredSafeAreaInsets:(UIEdgeInsets)unobscuredSafeAreaInsets
     inputViewBounds:(CGRect)inputViewBounds
     scale:(CGFloat)zoomScale minimumScale:(CGFloat)minimumScale
-    viewStability:(OptionSet<WebKit::ViewStabilityFlag>)viewStability
+    viewStability:(OptionSet<CyberKit::ViewStabilityFlag>)viewStability
     enclosedInScrollableAncestorView:(BOOL)enclosedInScrollableAncestorView
     sendEvenIfUnchanged:(BOOL)sendEvenIfUnchanged
 {
@@ -544,7 +544,7 @@ static CyberCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
     CGRect unobscuredContentRectRespectingInputViewBounds = [self _computeUnobscuredContentRectRespectingInputViewBounds:unobscuredContentRect inputViewBounds:inputViewBounds];
     CyberCore::FloatRect fixedPositionRectForLayout = _page->computeLayoutViewportRect(unobscuredContentRect, unobscuredContentRectRespectingInputViewBounds, _page->layoutViewportRect(), zoomScale, CyberCore::FrameView::LayoutViewportConstraint::ConstrainedToDocumentRect);
 
-    WebKit::VisibleContentRectUpdateInfo visibleContentRectUpdateInfo(
+    CyberKit::VisibleContentRectUpdateInfo visibleContentRectUpdateInfo(
         visibleContentRect,
         unobscuredContentRect,
         floatBoxExtent(contentInsets),
@@ -559,7 +559,7 @@ static CyberCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
         self.webView._allowsViewportShrinkToFit,
         enclosedInScrollableAncestorView,
         velocityData,
-        downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*drawingArea).lastCommittedLayerTreeTransactionID());
+        downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*drawingArea).lastCommittedLayerTreeTransactionID());
 
     LOG_WITH_STREAM(VisibleRects, stream << "-[WKContentView didUpdateVisibleRect]" << visibleContentRectUpdateInfo.dump());
 
@@ -679,19 +679,19 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
         return;
 
     if (registerProcess)
-        [WebKit::getNSAccessibilityRemoteUIElementClass() registerRemoteUIProcessIdentifier:pid];
+        [CyberKit::getNSAccessibilityRemoteUIElementClass() registerRemoteUIProcessIdentifier:pid];
     else
-        [WebKit::getNSAccessibilityRemoteUIElementClass() unregisterRemoteUIProcessIdentifier:pid];
+        [CyberKit::getNSAccessibilityRemoteUIElementClass() unregisterRemoteUIProcessIdentifier:pid];
 #endif
 }
 
 - (void)_accessibilityRegisterUIProcessTokens
 {
     auto uuid = [NSUUID UUID];
-    NSData *remoteElementToken = WebKit::newAccessibilityRemoteToken(uuid);
+    NSData *remoteElementToken = CyberKit::newAccessibilityRemoteToken(uuid);
 
     // Store information about the WebProcess that can later be retrieved by the iOS Accessibility runtime.
-    if (_page->process().state() == WebKit::WebProcessProxy::State::Running) {
+    if (_page->process().state() == CyberKit::WebProcessProxy::State::Running) {
         [self _updateRemoteAccessibilityRegistration:YES];
         storeAccessibilityRemoteConnectionInformation(self, _page->process().processIdentifier(), uuid);
 
@@ -717,9 +717,9 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
 
 #pragma mark PageClientImpl methods
 
-- (std::unique_ptr<WebKit::DrawingAreaProxy>)_createDrawingAreaProxy:(WebKit::WebProcessProxy&)process
+- (std::unique_ptr<CyberKit::DrawingAreaProxy>)_createDrawingAreaProxy:(CyberKit::WebProcessProxy&)process
 {
-    return makeUnique<WebKit::RemoteLayerTreeDrawingAreaProxyIOS>(*_page, process);
+    return makeUnique<CyberKit::RemoteLayerTreeDrawingAreaProxyIOS>(*_page, process);
 }
 
 - (void)_processDidExit
@@ -776,7 +776,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
 }
 #endif
 
-- (void)_didCommitLayerTree:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction
+- (void)_didCommitLayerTree:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction
 {
     CGSize contentsSize = layerTreeTransaction.contentsSize();
     CGPoint scrollOrigin = -layerTreeTransaction.scrollOrigin();
@@ -935,14 +935,14 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
     [self _waitForDrawToPDFCallbackForPrintFormatterIfNeeded:printFormatter];
 
     // The first page can have a smaller content rect than subsequent pages if a top content inset
-    // is specified. Since WebKit requires a uniform content rect for each page during layout, use
+    // is specified. Since CyberKit requires a uniform content rect for each page during layout, use
     // the intersection of the first and non-first page rects.
     // FIXME: Teach CyberCore::PrintContext to accept an initial content offset when paginating.
     CGRect printingRect = CGRectIntersection([printFormatter _pageContentRect:YES], [printFormatter _pageContentRect:NO]);
     if (CGRectIsEmpty(printingRect))
         return nil;
 
-    WebKit::PrintInfo printInfo;
+    CyberKit::PrintInfo printInfo;
     printInfo.pageSetupScaleFactor = 1;
     printInfo.snapshotFirstPage = printFormatter.snapshotFirstPage;
 
@@ -1016,7 +1016,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
 
     ensureOnMainRunLoop([formatterAttributes = retainPtr(formatterAttributes), isPrintingOnBackgroundThread, printFormatter = retainPtr(printFormatter), retainedSelf = retainPtr(self)] {
         // Begin generating the image in expectation of a (eventual) request for the drawn data.
-        auto callbackID = retainedSelf->_page->drawToImage([formatterAttributes frameID], [formatterAttributes printInfo], [formatterAttributes pageCount], [isPrintingOnBackgroundThread, printFormatter, retainedSelf](WebKit::ShareableBitmapHandle&& imageHandle) mutable {
+        auto callbackID = retainedSelf->_page->drawToImage([formatterAttributes frameID], [formatterAttributes printInfo], [formatterAttributes pageCount], [isPrintingOnBackgroundThread, printFormatter, retainedSelf](CyberKit::ShareableBitmapHandle&& imageHandle) mutable {
             if (!isPrintingOnBackgroundThread)
                 retainedSelf->_printRenderingCallbackID = { };
             else {
@@ -1029,7 +1029,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
                 return;
             }
 
-            auto bitmap = WebKit::ShareableBitmap::create(imageHandle, WebKit::SharedMemory::Protection::ReadOnly);
+            auto bitmap = CyberKit::ShareableBitmap::create(imageHandle, CyberKit::SharedMemory::Protection::ReadOnly);
             if (!bitmap) {
                 [printFormatter _setPrintPreviewImage:nullptr];
                 return;

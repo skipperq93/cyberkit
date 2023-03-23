@@ -35,7 +35,7 @@
 #include "Event.h"
 #include "Node.h"
 
-namespace WebCore { namespace DOMJIT {
+namespace CyberCore { namespace DOMJIT {
 
 template<typename DOMInterface>
 struct TypeChecker {

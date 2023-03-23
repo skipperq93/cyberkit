@@ -36,14 +36,14 @@
 #import "TestRunnerWKWebView.h"
 #import "UIKitSPI.h"
 #import "UIScriptContext.h"
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberScriptCore/OpaqueJSString.h>
 #import <UIKit/UIKit.h>
 #import <CyberCore/FloatPoint.h>
 #import <CyberCore/FloatRect.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MonotonicTime.h>
@@ -130,7 +130,7 @@ void UIScriptControllerIOS::waitForOutstandingCallbacks()
     while (eventGenerator.hasOutstandingCallbacks) {
         [NSRunLoop.currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:timeoutDate];
         if ([timeoutDate compare:NSDate.date] == NSOrderedAscending)
-            [NSException raise:@"WebKitTestRunnerTestProblem" format:@"The previous test completed before all synthesized events had been handled. Perhaps you're calling notifyDone() too early?"];
+            [NSException raise:@"CyberKitTestRunnerTestProblem" format:@"The previous test completed before all synthesized events had been handled. Perhaps you're calling notifyDone() too early?"];
     }
 }
 
@@ -829,7 +829,7 @@ JSObjectRef UIScriptControllerIOS::textSelectionCaretRect() const
 static void clipSelectionViewRectToContentView(CGRect& rect, UIView *contentView)
 {
     rect = CGRectIntersection(contentView.bounds, rect);
-    // The content view (a WKContentView in WebKit) is expected to implement the optional text input method -_selectionClipRect.
+    // The content view (a WKContentView in CyberKit) is expected to implement the optional text input method -_selectionClipRect.
     ASSERT([contentView respondsToSelector:@selector(_selectionClipRect)]);
     auto selectionClipRect = [(UIView <UITextInputInternal> *)contentView _selectionClipRect];
     if (!CGRectIsNull(selectionClipRect))

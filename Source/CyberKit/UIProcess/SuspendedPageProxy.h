@@ -38,7 +38,7 @@ namespace CyberCore {
 class RegistrableDomain;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebBackForwardCache;
 class WebPageProxy;
@@ -124,4 +124,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

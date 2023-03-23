@@ -27,7 +27,7 @@
 
 #include <wtf/Seconds.h>
 
-namespace WebCore::PCM {
+namespace CyberCore::PCM {
 
 struct AttributionSecondsUntilSendData {
     std::optional<Seconds> sourceSeconds;

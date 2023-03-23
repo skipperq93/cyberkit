@@ -27,7 +27,7 @@
 
 #include "CachedHTMLCollection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AllDescendantsCollection : public CachedHTMLCollection<AllDescendantsCollection, CollectionTypeTraits<AllDescendants>::traversalType> {
     WTF_MAKE_ISO_ALLOCATED(AllDescendantsCollection);

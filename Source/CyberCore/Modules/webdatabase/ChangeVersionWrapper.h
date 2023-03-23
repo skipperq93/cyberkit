@@ -31,7 +31,7 @@
 #include "SQLTransaction.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLError;
 
@@ -52,4 +52,4 @@ private:
     RefPtr<SQLError> m_sqlError;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

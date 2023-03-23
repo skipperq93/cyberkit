@@ -27,7 +27,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMenuList;
 
@@ -50,6 +50,6 @@ private:
     void addChildren() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityMenuList, isMenuList())

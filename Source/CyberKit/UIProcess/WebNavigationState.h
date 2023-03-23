@@ -39,7 +39,7 @@ class ResourceRequest;
 enum class FrameLoadType : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 class WebBackForwardListItem;
@@ -74,4 +74,4 @@ private:
     uint64_t m_navigationID { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

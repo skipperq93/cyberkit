@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebKit/WKViewClient.h>
+#include <CyberKit/WKViewClient.h>
 
 #ifdef __cplusplus
 extern "C" {

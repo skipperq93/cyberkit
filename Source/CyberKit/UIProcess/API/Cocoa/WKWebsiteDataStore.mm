@@ -57,7 +57,7 @@
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
-class WebsiteDataStoreClient final : public WebKit::WebsiteDataStoreClient {
+class WebsiteDataStoreClient final : public CyberKit::WebsiteDataStoreClient {
 public:
     WebsiteDataStoreClient(WKWebsiteDataStore *dataStore, id<_WKWebsiteDataStoreDelegate> delegate)
         : m_dataStore(dataStore)
@@ -80,7 +80,7 @@ private:
             return;
         }
 
-        auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(requestStorageSpace: frameOrigin: quota: currentSize: spaceRequired: decisionHandler:));
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(requestStorageSpace: frameOrigin: quota: currentSize: spaceRequired: decisionHandler:));
         auto decisionHandler = makeBlockPtr([completionHandler = WTFMove(completionHandler), checker = WTFMove(checker)](unsigned long long quota) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
@@ -94,33 +94,33 @@ private:
         [m_delegate.getAutoreleased() requestStorageSpace:mainFrameURL frameOrigin:frameURL quota:quota currentSize:currentSize spaceRequired:spaceRequired decisionHandler:decisionHandler.get()];
     }
 
-    void didReceiveAuthenticationChallenge(Ref<WebKit::AuthenticationChallengeProxy>&& challenge) final
+    void didReceiveAuthenticationChallenge(Ref<CyberKit::AuthenticationChallengeProxy>&& challenge) final
     {
         if (!m_hasAuthenticationChallengeSelector || !m_delegate) {
-            challenge->listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
+            challenge->listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
             return;
         }
 
         auto nsURLChallenge = wrapper(challenge);
-        auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(didReceiveAuthenticationChallenge: completionHandler:));
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(didReceiveAuthenticationChallenge: completionHandler:));
         auto completionHandler = makeBlockPtr([challenge = WTFMove(challenge), checker = WTFMove(checker)](NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
-            challenge->listener().completeChallenge(WebKit::toAuthenticationChallengeDisposition(disposition), CyberCore::Credential(credential));
+            challenge->listener().completeChallenge(CyberKit::toAuthenticationChallengeDisposition(disposition), CyberCore::Credential(credential));
         });
 
         [m_delegate.getAutoreleased() didReceiveAuthenticationChallenge:nsURLChallenge completionHandler:completionHandler.get()];
     }
 
-    void openWindowFromServiceWorker(const String& url, const CyberCore::SecurityOriginData& serviceWorkerOrigin, CompletionHandler<void(WebKit::WebPageProxy*)>&& callback)
+    void openWindowFromServiceWorker(const String& url, const CyberCore::SecurityOriginData& serviceWorkerOrigin, CompletionHandler<void(CyberKit::WebPageProxy*)>&& callback)
     {
         if (!m_hasOpenWindowSelector || !m_delegate || !m_dataStore) {
             callback({ });
             return;
         }
 
-        auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(websiteDataStore:openWindow:fromServiceWorkerOrigin:completionHandler:));
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(websiteDataStore:openWindow:fromServiceWorkerOrigin:completionHandler:));
         auto completionHandler = makeBlockPtr([callback = WTFMove(callback), checker = WTFMove(checker)](WKWebView *newWebView) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
@@ -180,7 +180,7 @@ private:
             return;
         }
 
-        auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(requestBackgroundFetchPermission: frameOrigin: decisionHandler:));
+        auto checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.getAutoreleased(), @selector(requestBackgroundFetchPermission: frameOrigin: decisionHandler:));
         auto decisionHandler = makeBlockPtr([completionHandler = WTFMove(completionHandler), checker = WTFMove(checker)](bool result) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
@@ -209,12 +209,12 @@ private:
 
 + (WKWebsiteDataStore *)defaultDataStore
 {
-    return wrapper(WebKit::WebsiteDataStore::defaultDataStore());
+    return wrapper(CyberKit::WebsiteDataStore::defaultDataStore());
 }
 
 + (WKWebsiteDataStore *)nonPersistentDataStore
 {
-    return wrapper(WebKit::WebsiteDataStore::createNonPersistent());
+    return wrapper(CyberKit::WebsiteDataStore::createNonPersistent());
 }
 
 - (instancetype)init
@@ -226,7 +226,7 @@ private:
         return nil;
 
     RELEASE_LOG_ERROR(Storage, "Application is calling [WKWebsiteDataStore init], which is not supported");
-    API::Object::constructInWrapper<WebKit::WebsiteDataStore>(self, WebKit::WebsiteDataStoreConfiguration::create(WebKit::IsPersistent::No), PAL::SessionID::generateEphemeralSessionID());
+    API::Object::constructInWrapper<CyberKit::WebsiteDataStore>(self, CyberKit::WebsiteDataStoreConfiguration::create(CyberKit::IsPersistent::No), PAL::SessionID::generateEphemeralSessionID());
 
     return self;
 }
@@ -236,7 +236,7 @@ private:
     if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebsiteDataStore.class, self))
         return;
 
-    _websiteDataStore->WebKit::WebsiteDataStore::~WebsiteDataStore();
+    _websiteDataStore->CyberKit::WebsiteDataStore::~WebsiteDataStore();
 
     [super dealloc];
 }
@@ -298,14 +298,14 @@ static WallTime toSystemClockTime(NSDate *date)
 - (void)removeDataOfTypes:(NSSet *)dataTypes modifiedSince:(NSDate *)date completionHandler:(void (^)(void))completionHandler
 {
     auto completionHandlerCopy = makeBlockPtr(completionHandler);
-    _websiteDataStore->removeData(WebKit::toWebsiteDataTypes(dataTypes), toSystemClockTime(date ? date : [NSDate distantPast]), [completionHandlerCopy] {
+    _websiteDataStore->removeData(CyberKit::toWebsiteDataTypes(dataTypes), toSystemClockTime(date ? date : [NSDate distantPast]), [completionHandlerCopy] {
         completionHandlerCopy();
     });
 }
 
-static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecords)
+static Vector<CyberKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecords)
 {
-    Vector<WebKit::WebsiteDataRecord> result;
+    Vector<CyberKit::WebsiteDataRecord> result;
 
     for (WKWebsiteDataRecord *dataRecord in dataRecords)
         result.append(dataRecord->_websiteDataRecord->websiteDataRecord());
@@ -317,7 +317,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 {
     auto completionHandlerCopy = makeBlockPtr(completionHandler);
 
-    _websiteDataStore->removeData(WebKit::toWebsiteDataTypes(dataTypes), toWebsiteDataRecords(dataRecords), [completionHandlerCopy] {
+    _websiteDataStore->removeData(CyberKit::toWebsiteDataTypes(dataTypes), toWebsiteDataRecords(dataRecords), [completionHandlerCopy] {
         completionHandlerCopy();
     });
 }
@@ -355,18 +355,18 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
 + (BOOL)_defaultDataStoreExists
 {
-    return WebKit::WebsiteDataStore::defaultDataStoreExists();
+    return CyberKit::WebsiteDataStore::defaultDataStoreExists();
 }
 
 + (void)_deleteDefaultDataStoreForTesting
 {
-    return WebKit::WebsiteDataStore::deleteDefaultDataStoreForTesting();
+    return CyberKit::WebsiteDataStore::deleteDefaultDataStoreForTesting();
 }
 
 + (void)_fetchAllIdentifiers:(void(^)(NSArray<NSUUID *> *))completionHandler
 {
     auto completionHandlerCopy = makeBlockPtr(completionHandler);
-    WebKit::WebsiteDataStore::fetchAllDataStoreIdentifiers([completionHandlerCopy](auto&& identifiers) {
+    CyberKit::WebsiteDataStore::fetchAllDataStoreIdentifiers([completionHandlerCopy](auto&& identifiers) {
         auto result = adoptNS([[NSMutableArray alloc] initWithCapacity:identifiers.size()]);
         for (auto identifier : identifiers)
             [result addObject:(NSUUID *)identifier];
@@ -381,7 +381,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
         [NSException raise:NSInvalidArgumentException format:@"Identifier cannot be nil"];
 
     auto completionHandlerCopy = makeBlockPtr(completionHandler);
-    WebKit::WebsiteDataStore::removeDataStoreWithIdentifier(UUID(identifier), [completionHandlerCopy](const String& errorString) {
+    CyberKit::WebsiteDataStore::removeDataStoreWithIdentifier(UUID(identifier), [completionHandlerCopy](const String& errorString) {
         if (errorString.isEmpty())
             return completionHandlerCopy(nil);
 
@@ -395,7 +395,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
         return nil;
 
     auto sessionID = configuration.isPersistent ? PAL::SessionID::generatePersistentSessionID() : PAL::SessionID::generateEphemeralSessionID();
-    API::Object::constructInWrapper<WebKit::WebsiteDataStore>(self, configuration->_configuration->copy(), sessionID);
+    API::Object::constructInWrapper<CyberKit::WebsiteDataStore>(self, configuration->_configuration->copy(), sessionID);
 
     return self;
 }
@@ -404,11 +404,11 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 {
     auto completionHandlerCopy = makeBlockPtr(completionHandler);
 
-    OptionSet<WebKit::WebsiteDataFetchOption> fetchOptions;
+    OptionSet<CyberKit::WebsiteDataFetchOption> fetchOptions;
     if (options & _WKWebsiteDataStoreFetchOptionComputeSizes)
-        fetchOptions.add(WebKit::WebsiteDataFetchOption::ComputeSizes);
+        fetchOptions.add(CyberKit::WebsiteDataFetchOption::ComputeSizes);
 
-    _websiteDataStore->fetchData(WebKit::toWebsiteDataTypes(dataTypes), fetchOptions, [completionHandlerCopy = WTFMove(completionHandlerCopy)](auto websiteDataRecords) {
+    _websiteDataStore->fetchData(CyberKit::toWebsiteDataTypes(dataTypes), fetchOptions, [completionHandlerCopy = WTFMove(completionHandlerCopy)](auto websiteDataRecords) {
         Vector<RefPtr<API::Object>> elements;
         elements.reserveInitialCapacity(websiteDataRecords.size());
 
@@ -524,7 +524,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
 + (void)_allowWebsiteDataRecordsForAllOrigins
 {
-    WebKit::WebsiteDataStore::allowWebsiteDataRecordsForAllOrigins();
+    CyberKit::WebsiteDataStore::allowWebsiteDataRecordsForAllOrigins();
 }
 
 - (void)_loadedSubresourceDomainsFor:(WKWebView *)webView completionHandler:(void (^)(NSArray<NSString *> *domains))completionHandler
@@ -651,7 +651,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 - (void)_clearResourceLoadStatistics:(void (^)(void))completionHandler
 {
 #if ENABLE(TRACKING_PREVENTION)
-    _websiteDataStore->scheduleClearInMemoryAndPersistent(WebKit::ShouldGrandfatherStatistics::No, [completionHandler = makeBlockPtr(completionHandler)]() {
+    _websiteDataStore->scheduleClearInMemoryAndPersistent(CyberKit::ShouldGrandfatherStatistics::No, [completionHandler = makeBlockPtr(completionHandler)]() {
         completionHandler();
     });
 #else
@@ -681,7 +681,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
 + (void)_setCachedProcessSuspensionDelayForTesting:(double)delayInSeconds
 {
-    WebKit::WebsiteDataStore::setCachedProcessSuspensionDelayForTesting(Seconds(delayInSeconds));
+    CyberKit::WebsiteDataStore::setCachedProcessSuspensionDelayForTesting(Seconds(delayInSeconds));
 }
 
 - (void)_isRelationshipOnlyInDatabaseOnce:(NSURL *)firstPartyURL thirdParty:(NSURL *)thirdPartyURL completionHandler:(void (^)(BOOL))completionHandler
@@ -759,7 +759,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
     auto oldOrigin = CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(oldName);
     auto newOrigin = CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(newName);
-    _websiteDataStore->renameOriginInWebsiteData(WTFMove(oldOrigin), WTFMove(newOrigin), WebKit::toWebsiteDataTypes(dataTypes), [completionHandler = makeBlockPtr(completionHandler)] {
+    _websiteDataStore->renameOriginInWebsiteData(WTFMove(oldOrigin), WTFMove(newOrigin), CyberKit::toWebsiteDataTypes(dataTypes), [completionHandler = makeBlockPtr(completionHandler)] {
         completionHandler();
     });
 }
@@ -788,7 +788,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 + (WKNotificationManagerRef)_sharedServiceWorkerNotificationManager
 {
     LOG(Push, "Accessing _sharedServiceWorkerNotificationManager");
-    return WebKit::toAPI(&WebKit::WebNotificationManagerProxy::sharedServiceWorkerManager());
+    return CyberKit::toAPI(&CyberKit::WebNotificationManagerProxy::sharedServiceWorkerManager());
 }
 
 - (void)_allowTLSCertificateChain:(NSArray *)certificateChain forHost:(NSString *)host
@@ -871,12 +871,12 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
 + (void)_makeNextNetworkProcessLaunchFailForTesting
 {
-    WebKit::WebsiteDataStore::makeNextNetworkProcessLaunchFailForTesting();
+    CyberKit::WebsiteDataStore::makeNextNetworkProcessLaunchFailForTesting();
 }
 
 + (void)_setNetworkProcessSuspensionAllowedForTesting:(BOOL)allowed
 {
-    WebKit::NetworkProcessProxy::setSuspensionAllowedForTesting(allowed);
+    CyberKit::NetworkProcessProxy::setSuspensionAllowedForTesting(allowed);
 }
 
 - (BOOL)_networkProcessExists
@@ -886,7 +886,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
 + (BOOL)_defaultNetworkProcessExists
 {
-    return !!WebKit::NetworkProcessProxy::defaultNetworkProcess();
+    return !!CyberKit::NetworkProcessProxy::defaultNetworkProcess();
 }
 
 - (void)_countNonDefaultSessionSets:(void(^)(size_t))completionHandler
@@ -906,7 +906,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
     RELEASE_LOG(Push, "Getting pending push messages");
 
 #if ENABLE(SERVICE_WORKER)
-    _websiteDataStore->networkProcess().getPendingPushMessages(_websiteDataStore->sessionID(), [completionHandler = makeBlockPtr(completionHandler)] (const Vector<WebKit::WebPushMessage>& messages) {
+    _websiteDataStore->networkProcess().getPendingPushMessages(_websiteDataStore->sessionID(), [completionHandler = makeBlockPtr(completionHandler)] (const Vector<CyberKit::WebPushMessage>& messages) {
         auto result = adoptNS([[NSMutableArray alloc] initWithCapacity:messages.size()]);
         for (auto& message : messages)
             [result addObject:message.toDictionary()];
@@ -920,7 +920,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 -(void)_processPushMessage:(NSDictionary *)pushMessageDictionary completionHandler:(void(^)(bool wasProcessed))completionHandler
 {
 #if ENABLE(SERVICE_WORKER)
-    auto pushMessage = WebKit::WebPushMessage::fromDictionary(pushMessageDictionary);
+    auto pushMessage = CyberKit::WebPushMessage::fromDictionary(pushMessageDictionary);
     if (!pushMessage) {
         RELEASE_LOG_ERROR(Push, "Asked to handle an invalid push message");
         completionHandler(false);
@@ -1017,7 +1017,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
 -(void)_originDirectoryForTesting:(NSURL *)origin topOrigin:(NSURL *)topOrigin type:(NSString *)dataType completionHandler:(void(^)(NSString *))completionHandler
 {
-    auto websiteDataType = WebKit::toWebsiteDataType(dataType);
+    auto websiteDataType = CyberKit::toWebsiteDataType(dataType);
     if (!websiteDataType)
         return completionHandler(nil);
 

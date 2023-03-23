@@ -28,7 +28,7 @@
 #include "InspectorWebAgentBase.h"
 #include <CyberScriptCore/InspectorAuditAgent.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerOrWorkletGlobalScope;
 
@@ -45,4 +45,4 @@ private:
     WorkerOrWorkletGlobalScope& m_globalScope;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

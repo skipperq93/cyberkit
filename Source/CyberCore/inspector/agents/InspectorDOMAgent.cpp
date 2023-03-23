@@ -125,7 +125,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -2186,8 +2186,8 @@ void InspectorDOMAgent::processAccessibilityChildren(AXCoreObject& axObject, JSO
     
 Ref<Protocol::DOM::AccessibilityProperties> InspectorDOMAgent::buildObjectForAccessibilityProperties(Node& node)
 {
-    if (!WebCore::AXObjectCache::accessibilityEnabled())
-        WebCore::AXObjectCache::enableAccessibility();
+    if (!CyberCore::AXObjectCache::accessibilityEnabled())
+        CyberCore::AXObjectCache::enableAccessibility();
 
     Node* activeDescendantNode = nullptr;
     bool busy = false;
@@ -2343,7 +2343,7 @@ Ref<Protocol::DOM::AccessibilityProperties> InspectorDOMAgent::buildObjectForAcc
                     liveRegionRelevant = JSON::ArrayOf<String>::create();
                     SpaceSplitString values(AtomString { ariaRelevantAttrValue }, SpaceSplitString::ShouldFoldCase::Yes);
                     // @aria-relevant="all" is exposed as ["additions","removals","text"], in order.
-                    // This order is controlled in WebCore and expected in WebInspectorUI.
+                    // This order is controlled in CyberCore and expected in WebInspectorUI.
                     if (values.contains("all"_s)) {
                         liveRegionRelevant->addItem(ariaRelevantAdditions);
                         liveRegionRelevant->addItem(ariaRelevantRemovals);
@@ -3103,4 +3103,4 @@ Protocol::ErrorStringOr<void> InspectorDOMAgent::setAllowEditingUserAgentShadowT
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

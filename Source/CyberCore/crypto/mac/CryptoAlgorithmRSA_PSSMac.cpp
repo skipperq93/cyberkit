@@ -33,7 +33,7 @@
 #include "CryptoDigestAlgorithm.h"
 #include "CryptoKeyRSA.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<Vector<uint8_t>> signRSA_PSS(CryptoAlgorithmIdentifier hash, const PlatformRSAKey key, size_t keyLength, const Vector<uint8_t>& data, size_t saltLength)
 {
@@ -41,7 +41,7 @@ static ExceptionOr<Vector<uint8_t>> signRSA_PSS(CryptoAlgorithmIdentifier hash, 
     if (!getCommonCryptoDigestAlgorithm(hash, digestAlgorithm))
         return Exception { OperationError };
 
-    auto cryptoDigestAlgorithm = WebCore::cryptoDigestAlgorithm(hash);
+    auto cryptoDigestAlgorithm = CyberCore::cryptoDigestAlgorithm(hash);
     if (!cryptoDigestAlgorithm)
         return Exception { OperationError };
     auto digest = PAL::CryptoDigest::create(*cryptoDigestAlgorithm);
@@ -66,7 +66,7 @@ static ExceptionOr<bool> verifyRSA_PSS(CryptoAlgorithmIdentifier hash, const Pla
     if (!getCommonCryptoDigestAlgorithm(hash, digestAlgorithm))
         return Exception { OperationError };
 
-    auto cryptoDigestAlgorithm = WebCore::cryptoDigestAlgorithm(hash);
+    auto cryptoDigestAlgorithm = CyberCore::cryptoDigestAlgorithm(hash);
     if (!cryptoDigestAlgorithm)
         return Exception { OperationError };
     auto digest = PAL::CryptoDigest::create(*cryptoDigestAlgorithm);
@@ -91,6 +91,6 @@ ExceptionOr<bool> CryptoAlgorithmRSA_PSS::platformVerify(const CryptoAlgorithmRs
     return verifyRSA_PSS(key.hashAlgorithmIdentifier(), key.platformKey(), signature, data, parameters.saltLength);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO) && HAVE(RSA_PSS)

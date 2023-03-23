@@ -32,7 +32,7 @@
 
 OBJC_CLASS RBSProcessMonitor;
 
-namespace WebKit {
+namespace CyberKit {
 
 class ProcessStateMonitor : public CanMakeWeakPtr<ProcessStateMonitor> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -54,6 +54,6 @@ private:
     RetainPtr<RBSProcessMonitor> m_rbsMonitor;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

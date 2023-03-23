@@ -33,7 +33,7 @@
 #include "CSSPrimitiveValue.h"
 #include "CSSStyleValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSMathValue : public CSSNumericValue {
 public:
@@ -73,8 +73,8 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSMathValue)
-static bool isType(const WebCore::CSSStyleValue& styleValue) { return WebCore::isCSSMathValue(styleValue.getType()); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSMathValue)
+static bool isType(const CyberCore::CSSStyleValue& styleValue) { return CyberCore::isCSSMathValue(styleValue.getType()); }
 SPECIALIZE_TYPE_TRAITS_END()

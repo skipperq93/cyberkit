@@ -32,7 +32,7 @@
 #include "PaymentRequest.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PaymentRequestUpdateEvent);
 
@@ -86,6 +86,6 @@ EventInterface PaymentRequestUpdateEvent::eventInterface() const
     return PaymentRequestUpdateEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

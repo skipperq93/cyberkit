@@ -39,7 +39,7 @@
 
 #import "LocalAuthenticationSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebAuthenticationPanelClient::WebAuthenticationPanelClient(_WKWebAuthenticationPanel *panel, id <_WKWebAuthenticationPanelDelegate> delegate)
     : m_panel(panel)
@@ -240,6 +240,6 @@ void WebAuthenticationPanelClient::requestLAContextForUserVerification(Completio
     }).get()];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

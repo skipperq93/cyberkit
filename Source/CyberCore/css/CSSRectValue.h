@@ -27,7 +27,7 @@
 
 #include "Rect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRectValue : public CSSValue {
 public:
@@ -49,6 +49,6 @@ inline const Rect& CSSValue::rect() const
     return downcast<CSSRectValue>(*this).rect();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSRectValue, isRect())

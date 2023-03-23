@@ -278,10 +278,10 @@ PASS Should throw NOT_SUPPORTED_ERR for non-legacy event interface "TransitionEv
 PASS Should throw NOT_SUPPORTED_ERR for pluralized non-legacy event interface "TransitionEvents"
 PASS Should throw NOT_SUPPORTED_ERR for non-legacy event interface "WebGLContextEvent"
 PASS Should throw NOT_SUPPORTED_ERR for pluralized non-legacy event interface "WebGLContextEvents"
-PASS Should throw NOT_SUPPORTED_ERR for non-legacy event interface "WebKitAnimationEvent"
-PASS Should throw NOT_SUPPORTED_ERR for pluralized non-legacy event interface "WebKitAnimationEvents"
-PASS Should throw NOT_SUPPORTED_ERR for non-legacy event interface "WebKitTransitionEvent"
-PASS Should throw NOT_SUPPORTED_ERR for pluralized non-legacy event interface "WebKitTransitionEvents"
+PASS Should throw NOT_SUPPORTED_ERR for non-legacy event interface "CyberKitAnimationEvent"
+PASS Should throw NOT_SUPPORTED_ERR for pluralized non-legacy event interface "CyberKitAnimationEvents"
+PASS Should throw NOT_SUPPORTED_ERR for non-legacy event interface "CyberKitTransitionEvent"
+PASS Should throw NOT_SUPPORTED_ERR for pluralized non-legacy event interface "CyberKitTransitionEvents"
 FAIL Should throw NOT_SUPPORTED_ERR for non-legacy event interface "WheelEvent" assert_throws_dom: function "function () {
       var evt = document.createEvent(eventInterface);
     }" did not throw

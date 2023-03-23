@@ -31,7 +31,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/StrongInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RTCEncodedFrame::RTCEncodedFrame(Ref<RTCRtpTransformableFrame>&& frame)
     : m_frame(WTFMove(frame))
@@ -61,6 +61,6 @@ Ref<RTCRtpTransformableFrame> RTCEncodedFrame::rtcFrame()
     return m_frame;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

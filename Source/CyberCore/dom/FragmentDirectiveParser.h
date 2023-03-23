@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ParsedTextDirective {
     String textStart;
@@ -56,4 +56,4 @@ private:
     bool m_isValid { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

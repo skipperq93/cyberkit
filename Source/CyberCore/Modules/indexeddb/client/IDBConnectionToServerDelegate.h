@@ -29,7 +29,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBCursorInfo;
 class IDBIndexInfo;
@@ -90,4 +90,4 @@ public:
 };
 
 } // namespace IDBClient
-} // namespace WebCore
+} // namespace CyberCore

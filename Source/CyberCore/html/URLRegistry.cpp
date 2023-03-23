@@ -30,7 +30,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Lock allRegistriesLock;
 static Vector<URLRegistry*>& allRegistries() WTF_REQUIRES_LOCK(allRegistriesLock)
@@ -61,4 +61,4 @@ URLRegistry::~URLRegistry()
     RELEASE_ASSERT_NOT_REACHED(); // All our registries are singleton objects.
 }
 
-} // namespace WebCore
+} // namespace CyberCore

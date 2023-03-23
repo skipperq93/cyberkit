@@ -38,7 +38,7 @@
 #import <pal/spi/ios/UIKitSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 DictationContext AlternativeTextUIController::addAlternatives(NSTextAlternatives *alternatives)
 {
@@ -102,4 +102,4 @@ void AlternativeTextUIController::removeAlternatives(DictationContext context)
     m_contextController.removeAlternativesForContext(context);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

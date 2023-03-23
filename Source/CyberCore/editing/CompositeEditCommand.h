@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EditingStyle;
 class DataTransfer;
@@ -225,4 +225,4 @@ private:
     RefPtr<EditCommandComposition> m_composition;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

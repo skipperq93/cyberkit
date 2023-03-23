@@ -32,7 +32,7 @@
 
 #include "BaseCheckableInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CheckboxInputType final : public BaseCheckableInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -54,6 +54,6 @@ private:
     bool shouldAppearIndeterminate() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(CheckboxInputType, Type::Checkbox)

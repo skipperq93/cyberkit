@@ -39,7 +39,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OfflineAudioContext);
 
@@ -253,6 +253,6 @@ bool OfflineAudioContext::virtualHasPendingActivity() const
     return state() == State::Running;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

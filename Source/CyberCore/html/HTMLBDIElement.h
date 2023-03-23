@@ -22,7 +22,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLBDIElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLBDIElement);
@@ -33,4 +33,4 @@ private:
     HTMLBDIElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

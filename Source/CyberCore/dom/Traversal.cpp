@@ -30,7 +30,7 @@
 #include "NodeFilter.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NodeIteratorBase::NodeIteratorBase(Node& rootNode, unsigned whatToShow, RefPtr<NodeFilter>&& nodeFilter)
     : m_root(rootNode)
@@ -60,4 +60,4 @@ ExceptionOr<unsigned short> NodeIteratorBase::acceptNode(Node& node)
     return callbackResult.releaseReturnValue();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

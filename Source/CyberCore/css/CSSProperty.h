@@ -26,7 +26,7 @@
 #include "WritingMode.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValueList;
 
@@ -114,10 +114,10 @@ private:
 
 typedef Vector<CSSProperty, 256> ParsedPropertyVector;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template <> struct VectorTraits<WebCore::CSSProperty> : VectorTraitsBase<false, WebCore::CSSProperty> {
+template <> struct VectorTraits<CyberCore::CSSProperty> : VectorTraitsBase<false, CyberCore::CSSProperty> {
     static const bool canInitializeWithMemset = true;
     static const bool canMoveWithMemcpy = true;
 };

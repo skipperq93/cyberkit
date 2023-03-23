@@ -40,7 +40,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataTransferItem;
 class Document;
@@ -83,4 +83,4 @@ private:
     mutable std::optional<Vector<Ref<DataTransferItem>>> m_items;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

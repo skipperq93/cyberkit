@@ -36,7 +36,7 @@
 #include "ApplePayPaymentHandler.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<PaymentHandler> PaymentHandler::create(Document& document, PaymentRequest& paymentRequest, const PaymentRequest::MethodIdentifier& identifier)
 {
@@ -103,6 +103,6 @@ bool PaymentHandler::hasActiveSession(Document& document)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NotificationPermissionCallback : public RefCounted<NotificationPermissionCallback>, public ActiveDOMCallback {
 public:
@@ -42,6 +42,6 @@ public:
     virtual CallbackResult<void> handleEvent(Notification::Permission) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

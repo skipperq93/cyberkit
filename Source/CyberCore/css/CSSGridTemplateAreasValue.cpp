@@ -37,7 +37,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSGridTemplateAreasValue::CSSGridTemplateAreasValue(NamedGridAreaMap map, size_t rowCount, size_t columnCount)
     : CSSValue(GridTemplateAreasClass)
@@ -116,4 +116,4 @@ bool CSSGridTemplateAreasValue::equals(const CSSGridTemplateAreasValue& other) c
     return m_map == other.m_map && m_rowCount == other.m_rowCount && m_columnCount == other.m_columnCount;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

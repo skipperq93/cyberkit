@@ -29,7 +29,7 @@
 
 #include "AuthenticatorTransportService.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class LocalConnection;
 
@@ -46,6 +46,6 @@ private:
     virtual UniqueRef<LocalConnection> createLocalConnection() const;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

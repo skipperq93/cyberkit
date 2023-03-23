@@ -23,7 +23,7 @@
 #include "ElementInlines.h"
 #include "HTMLFormElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://html.spec.whatwg.org/multipage/forms.html#form-associated-element
 class FormAssociatedElement {
@@ -101,4 +101,4 @@ inline void FormAssociatedElement::elementRemovedFromAncestor(Element& element, 
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

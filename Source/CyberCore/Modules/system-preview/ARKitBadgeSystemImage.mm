@@ -38,7 +38,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSBundle *arKitBundle()
 {
@@ -227,6 +227,6 @@ void ARKitBadgeSystemImage::draw(GraphicsContext& graphicsContext, const FloatRe
     CGContextRestoreGState(ctx);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(SYSTEM_PREVIEW)

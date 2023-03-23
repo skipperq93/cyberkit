@@ -33,7 +33,7 @@
 #include <wtf/ThreadSafeWeakPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(ACCESSIBILITY_ISOLATED_TREE)
 class AXIsolatedTree;
@@ -181,4 +181,4 @@ inline AXTreePtr axTreeForID(AXID axID)
     return AXTreeStore<AXObjectCache>::axObjectCacheForID(axID);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -53,7 +53,7 @@ webkit_dom_html_marquee_element_get_type(void);
  * @self: A #CyberKitDOMHTMLMarqueeElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_marquee_element_start(CyberKitDOMHTMLMarqueeElement* self);
@@ -63,7 +63,7 @@ webkit_dom_html_marquee_element_start(CyberKitDOMHTMLMarqueeElement* self);
  * @self: A #CyberKitDOMHTMLMarqueeElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_marquee_element_stop(CyberKitDOMHTMLMarqueeElement* self);

@@ -32,7 +32,7 @@
 #include "JSNode.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 bool JSDeprecatedCSSOMValueOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, AbstractSlotVisitor& visitor, const char** reason)
@@ -44,7 +44,7 @@ bool JSDeprecatedCSSOMValueOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Un
     if (UNLIKELY(reason))
         *reason = "CSSStyleDeclaration is opaque root";
 
-    return containsWebCoreOpaqueRoot(visitor, jsCSSValue->wrapped().owner());
+    return containsCyberCoreOpaqueRoot(visitor, jsCSSValue->wrapped().owner());
 }
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<DeprecatedCSSOMValue>&& value)
@@ -62,4 +62,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

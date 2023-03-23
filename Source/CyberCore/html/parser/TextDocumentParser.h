@@ -26,7 +26,7 @@
 
 #include "HTMLDocumentParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextDocumentParser final : public HTMLDocumentParser {
 public:
@@ -45,4 +45,4 @@ private:
     bool m_hasInsertedFakeFormattingElements { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

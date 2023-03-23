@@ -38,7 +38,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr Seconds typeAheadTimeout { 1_s };
 
@@ -197,6 +197,6 @@ void DateTimeNumericFieldElement::handleBlurEvent(Event& event)
     DateTimeFieldElement::handleBlurEvent(event);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

@@ -19,23 +19,23 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitGeolocationManager_h
-#define WebKitGeolocationManager_h
+#ifndef CyberKitGeolocationManager_h
+#define CyberKitGeolocationManager_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_GEOLOCATION_MANAGER            (webkit_geolocation_manager_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_GEOLOCATION_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_GEOLOCATION_MANAGER, WebKitGeolocationManager))
+#define WEBKIT_GEOLOCATION_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_GEOLOCATION_MANAGER, CyberKitGeolocationManager))
 #define WEBKIT_IS_GEOLOCATION_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_GEOLOCATION_MANAGER))
-#define WEBKIT_GEOLOCATION_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_GEOLOCATION_MANAGER, WebKitGeolocationManagerClass))
+#define WEBKIT_GEOLOCATION_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_GEOLOCATION_MANAGER, CyberKitGeolocationManagerClass))
 #define WEBKIT_IS_GEOLOCATION_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_GEOLOCATION_MANAGER))
-#define WEBKIT_GEOLOCATION_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_GEOLOCATION_MANAGER, WebKitGeolocationManagerClass))
+#define WEBKIT_GEOLOCATION_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_GEOLOCATION_MANAGER, CyberKitGeolocationManagerClass))
 
-struct _WebKitGeolocationManagerClass {
+struct _CyberKitGeolocationManagerClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -46,58 +46,58 @@ struct _WebKitGeolocationManagerClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitGeolocationManager, webkit_geolocation_manager, WEBKIT, GEOLOCATION_MANAGER, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitGeolocationManager, webkit_geolocation_manager, WEBKIT, GEOLOCATION_MANAGER, GObject)
 
 #define WEBKIT_TYPE_GEOLOCATION_POSITION           (webkit_geolocation_position_get_type())
 
-typedef struct _WebKitGeolocationPosition WebKitGeolocationPosition;
+typedef struct _CyberKitGeolocationPosition CyberKitGeolocationPosition;
 
 WEBKIT_API void
-webkit_geolocation_manager_update_position           (WebKitGeolocationManager  *manager,
-                                                     WebKitGeolocationPosition *position);
+webkit_geolocation_manager_update_position           (CyberKitGeolocationManager  *manager,
+                                                     CyberKitGeolocationPosition *position);
 
 WEBKIT_API void
-webkit_geolocation_manager_failed                    (WebKitGeolocationManager  *manager,
+webkit_geolocation_manager_failed                    (CyberKitGeolocationManager  *manager,
                                                      const char                *error_message);
 
 WEBKIT_API gboolean
-webkit_geolocation_manager_get_enable_high_accuracy (WebKitGeolocationManager  *manager);
+webkit_geolocation_manager_get_enable_high_accuracy (CyberKitGeolocationManager  *manager);
 
 
 WEBKIT_API GType
 webkit_geolocation_position_get_type                (void);
 
-WEBKIT_API WebKitGeolocationPosition *
+WEBKIT_API CyberKitGeolocationPosition *
 webkit_geolocation_position_new                     (double                     latitude,
                                                      double                     longitude,
                                                      double                     accuracy);
 
-WEBKIT_API WebKitGeolocationPosition *
-webkit_geolocation_position_copy                    (WebKitGeolocationPosition *position);
+WEBKIT_API CyberKitGeolocationPosition *
+webkit_geolocation_position_copy                    (CyberKitGeolocationPosition *position);
 
 WEBKIT_API void
-webkit_geolocation_position_free                    (WebKitGeolocationPosition *position);
+webkit_geolocation_position_free                    (CyberKitGeolocationPosition *position);
 
 WEBKIT_API void
-webkit_geolocation_position_set_timestamp           (WebKitGeolocationPosition *position,
+webkit_geolocation_position_set_timestamp           (CyberKitGeolocationPosition *position,
                                                      guint64                    timestamp);
 
 WEBKIT_API void
-webkit_geolocation_position_set_altitude            (WebKitGeolocationPosition *position,
+webkit_geolocation_position_set_altitude            (CyberKitGeolocationPosition *position,
                                                      double                     altitude);
 
 WEBKIT_API void
-webkit_geolocation_position_set_altitude_accuracy   (WebKitGeolocationPosition *position,
+webkit_geolocation_position_set_altitude_accuracy   (CyberKitGeolocationPosition *position,
                                                      double                     altitude_accuracy);
 
 WEBKIT_API void
-webkit_geolocation_position_set_heading             (WebKitGeolocationPosition *position,
+webkit_geolocation_position_set_heading             (CyberKitGeolocationPosition *position,
                                                      double                     heading);
 
 WEBKIT_API void
-webkit_geolocation_position_set_speed               (WebKitGeolocationPosition *position,
+webkit_geolocation_position_set_speed               (CyberKitGeolocationPosition *position,
                                                      double                     speed);
 
 G_END_DECLS
 
-#endif /* WebKitGeolocationManager_h */
+#endif /* CyberKitGeolocationManager_h */

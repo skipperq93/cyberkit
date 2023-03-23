@@ -31,5 +31,5 @@
 
 WKWebsiteDataStore *WKWebsiteDataStoreGetDataStore(WKWebsiteDataStoreRef dataStore)
 {
-    return dataStore ? wrapper(WebKit::toImpl(dataStore)) : nil;
+    return dataStore ? wrapper(CyberKit::toImpl(dataStore)) : nil;
 }

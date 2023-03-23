@@ -32,7 +32,7 @@
 #import "SharedBuffer.h"
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void ClipboardImageReader::readBuffer(const String&, const String&, Ref<SharedBuffer>&& buffer)
 {
@@ -43,6 +43,6 @@ void ClipboardImageReader::readBuffer(const String&, const String&, Ref<SharedBu
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

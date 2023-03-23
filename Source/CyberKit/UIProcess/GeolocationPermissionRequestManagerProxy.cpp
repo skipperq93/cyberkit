@@ -31,7 +31,7 @@
 #include "WebProcessProxy.h"
 #include <wtf/UUID.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 GeolocationPermissionRequestManagerProxy::GeolocationPermissionRequestManagerProxy(WebPageProxy& page)
     : m_page(page)
@@ -87,4 +87,4 @@ void GeolocationPermissionRequestManagerProxy::revokeAuthorizationToken(const St
     m_validAuthorizationTokens.remove(authorizationToken);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

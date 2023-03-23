@@ -39,7 +39,7 @@
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/ProcessPrivilege.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebPopupMenuProxyMac::WebPopupMenuProxyMac(NSView *webView, WebPopupMenuProxy::Client& client)
@@ -228,6 +228,6 @@ void WebPopupMenuProxyMac::cancelTracking()
     m_wasCanceled = true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(APPKIT)

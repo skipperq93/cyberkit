@@ -41,7 +41,7 @@
 #include "CommonAtomStrings.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& AudioTrack::descriptionKeyword()
 {
@@ -230,6 +230,6 @@ void AudioTrack::setLogger(const Logger& logger, const void* logIdentifier)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

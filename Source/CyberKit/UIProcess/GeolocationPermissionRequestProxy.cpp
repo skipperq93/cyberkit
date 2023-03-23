@@ -28,7 +28,7 @@
 
 #include "GeolocationPermissionRequestManagerProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 GeolocationPermissionRequestProxy::GeolocationPermissionRequestProxy(GeolocationPermissionRequestManagerProxy* manager, GeolocationIdentifier geolocationID)
     : m_manager(manager)
@@ -59,4 +59,4 @@ void GeolocationPermissionRequestProxy::invalidate()
     m_manager = nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

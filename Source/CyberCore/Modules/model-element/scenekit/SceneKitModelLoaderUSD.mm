@@ -36,7 +36,7 @@
 #import "SceneKitModelLoaderClient.h"
 #import <pal/spi/cocoa/SceneKitSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SceneKitModelLoaderUSD final : public SceneKitModelLoader {
 public:
@@ -95,7 +95,7 @@ private:
     RetainPtr<SCNScene> m_scene;
 };
 
-static RetainPtr<NSURL> writeToTemporaryFile(WebCore::Model& modelSource)
+static RetainPtr<NSURL> writeToTemporaryFile(CyberCore::Model& modelSource)
 {
     // FIXME: DO NOT SHIP!!! We must not write these to disk; we need SceneKit
     // to support reading USD files from its [SCNSceneSource initWithData:options:],

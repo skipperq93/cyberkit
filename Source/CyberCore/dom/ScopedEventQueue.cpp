@@ -35,7 +35,7 @@
 #include "Node.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScopedEventQueue& ScopedEventQueue::singleton()
 {

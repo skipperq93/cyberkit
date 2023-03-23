@@ -33,7 +33,7 @@
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<VisitedLinkStore> VisitedLinkStore::create()
@@ -140,4 +140,4 @@ void VisitedLinkStore::didUpdateSharedStringHashes(const Vector<CyberCore::Share
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

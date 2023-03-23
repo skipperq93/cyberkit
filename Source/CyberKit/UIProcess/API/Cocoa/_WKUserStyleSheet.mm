@@ -31,7 +31,7 @@
 #import "WKNSArray.h"
 #import "WKNSURLExtras.h"
 #import "WKWebViewInternal.h"
-#import "WebKit2Initialize.h"
+#import "CyberKit2Initialize.h"
 #import "WebPageProxy.h"
 #import "_WKUserContentWorldInternal.h"
 #import <CyberCore/CyberCoreObjCExtras.h>
@@ -45,7 +45,7 @@
         return nil;
 
     // FIXME: In the API test, we can use generateUniqueURL below before the API::Object constructor has done this... where should this really be?
-    WebKit::InitializeWebKit2();
+    CyberKit::InitializeCyberKit2();
 
     API::Object::constructInWrapper<API::UserStyleSheet>(self, CyberCore::UserStyleSheet { source, API::UserStyleSheet::generateUniqueURL(), { }, { }, forMainFrameOnly ? CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly : CyberCore::UserContentInjectedFrames::InjectInAllFrames, CyberCore::UserStyleUserLevel }, API::ContentWorld::pageContentWorld());
 
@@ -55,7 +55,7 @@
 - (instancetype)initWithSource:(NSString *)source forWKWebView:(WKWebView *)webView forMainFrameOnly:(BOOL)forMainFrameOnly includeMatchPatternStrings:(NSArray<NSString *> *)includeMatchPatternStrings excludeMatchPatternStrings:(NSArray<NSString *> *)excludeMatchPatternStrings baseURL:(NSURL *)baseURL level:(_WKUserStyleLevel)level contentWorld:(WKContentWorld *)contentWorld
 {
 
-    WebKit::InitializeWebKit2();
+    CyberKit::InitializeCyberKit2();
 
     API::Object::constructInWrapper<API::UserStyleSheet>(self, CyberCore::UserStyleSheet { source, baseURL, makeVector<String>(includeMatchPatternStrings), makeVector<String>(excludeMatchPatternStrings), forMainFrameOnly ? CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly : CyberCore::UserContentInjectedFrames::InjectInAllFrames, API::toCyberCoreUserStyleLevel(level), webView ? std::optional<CyberCore::PageIdentifier>([webView _page]->webPageID()) : std::nullopt }, contentWorld ? *contentWorld->_contentWorld : API::ContentWorld::pageContentWorld());
 

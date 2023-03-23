@@ -33,7 +33,7 @@
 
 #include "InputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SliderThumbElement;
 
@@ -86,6 +86,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(RangeInputType, Type::Range)

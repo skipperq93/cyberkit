@@ -33,7 +33,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class DocumentFragment;
@@ -43,5 +43,5 @@ enum class ParserContentPolicy : uint8_t;
 
 bool tryFastParsingHTMLFragment(const String& source, Document&, DocumentFragment&, Element& contextElement, OptionSet<ParserContentPolicy>);
 
-} // namespace WebCore
+} // namespace CyberCore
 

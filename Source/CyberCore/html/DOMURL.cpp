@@ -37,7 +37,7 @@
 #include "URLSearchParams.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline DOMURL::DOMURL(URL&& completeURL, const URL& baseURL)
     : m_baseURL(baseURL)
@@ -119,4 +119,4 @@ void DOMURL::revokeObjectURL(ScriptExecutionContext& scriptExecutionContext, con
     scriptExecutionContext.publicURLManager().revoke(url);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

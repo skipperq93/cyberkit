@@ -67,13 +67,13 @@ static void* kWindowContentLayoutObserverContext = &kWindowContentLayoutObserver
 
 @interface WKWebInspectorUIProxyObjCAdapter () <NSWindowDelegate, WKInspectorViewControllerDelegate>
 
-- (instancetype)initWithWebInspectorUIProxy:(WebKit::WebInspectorUIProxy*)inspectorProxy;
+- (instancetype)initWithWebInspectorUIProxy:(CyberKit::WebInspectorUIProxy*)inspectorProxy;
 - (void)invalidate;
 
 @end
 
 @implementation WKWebInspectorUIProxyObjCAdapter {
-    WebKit::WebInspectorUIProxy* _inspectorProxy;
+    CyberKit::WebInspectorUIProxy* _inspectorProxy;
 }
 
 - (WKInspectorRef)inspectorRef
@@ -88,7 +88,7 @@ static void* kWindowContentLayoutObserverContext = &kWindowContentLayoutObserver
     return nil;
 }
 
-- (instancetype)initWithWebInspectorUIProxy:(WebKit::WebInspectorUIProxy*)inspectorProxy
+- (instancetype)initWithWebInspectorUIProxy:(CyberKit::WebInspectorUIProxy*)inspectorProxy
 {
     ASSERT_ARG(inspectorProxy, inspectorProxy);
 
@@ -307,12 +307,12 @@ static void* kWindowContentLayoutObserverContext = &kWindowContentLayoutObserver
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebInspectorUIProxy::didBecomeActive()
 {
-    m_inspectorPage->send(Messages::WebInspectorUI::UpdateFindString(WebKit::stringForFind()));
+    m_inspectorPage->send(Messages::WebInspectorUI::UpdateFindString(CyberKit::stringForFind()));
 }
 
 void WebInspectorUIProxy::attachmentViewDidChange(NSView *oldView, NSView *newView)
@@ -457,7 +457,7 @@ WebPageProxy* WebInspectorUIProxy::platformCreateFrontendPage()
     [[NSNotificationCenter defaultCenter] addObserver:m_objCAdapter.get() selector:@selector(inspectedViewFrameDidChange:) name:NSViewFrameDidChangeNotification object:inspectedView];
 
     auto configuration = inspectedPage()->uiClient().configurationForLocalInspector(*inspectedPage(),  *this);
-    m_inspectorViewController = adoptNS([[WKInspectorViewController alloc] initWithConfiguration: WebKit::wrapper(configuration.get()) inspectedPage:inspectedPage()]);
+    m_inspectorViewController = adoptNS([[WKInspectorViewController alloc] initWithConfiguration: CyberKit::wrapper(configuration.get()) inspectedPage:inspectedPage()]);
     [m_inspectorViewController.get() setDelegate:m_objCAdapter.get()];
 
     WebPageProxy *inspectorPage = [m_inspectorViewController webView]->_page.get();
@@ -953,7 +953,7 @@ void WebInspectorUIProxy::applyForcedAppearance()
     [m_inspectorViewController webView].appearance = platformAppearance;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if HAVE(SAFARI_FOR_WEBKIT_DEVELOPMENT_REQUIRING_EXTRA_SYMBOLS)
 WK_EXPORT @interface WKWebInspectorProxyObjCAdapter : WKWebInspectorUIProxyObjCAdapter

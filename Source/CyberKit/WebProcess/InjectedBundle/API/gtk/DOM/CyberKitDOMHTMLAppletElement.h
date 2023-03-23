@@ -54,7 +54,7 @@ webkit_dom_html_applet_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_align(CyberKitDOMHTMLAppletElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_applet_element_get_align(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_align(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_applet_element_set_align(CyberKitDOMHTMLAppletElement* self, con
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_alt(CyberKitDOMHTMLAppletElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_applet_element_get_alt(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_alt(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_applet_element_set_alt(CyberKitDOMHTMLAppletElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_archive(CyberKitDOMHTMLAppletElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_applet_element_get_archive(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_archive(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_applet_element_set_archive(CyberKitDOMHTMLAppletElement* self, c
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_code(CyberKitDOMHTMLAppletElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_applet_element_get_code(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_code(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -142,7 +142,7 @@ webkit_dom_html_applet_element_set_code(CyberKitDOMHTMLAppletElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_code_base(CyberKitDOMHTMLAppletElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_applet_element_get_code_base(CyberKitDOMHTMLAppletElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_code_base(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -164,7 +164,7 @@ webkit_dom_html_applet_element_set_code_base(CyberKitDOMHTMLAppletElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_height(CyberKitDOMHTMLAppletElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_applet_element_get_height(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_height(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -186,7 +186,7 @@ webkit_dom_html_applet_element_set_height(CyberKitDOMHTMLAppletElement* self, co
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_applet_element_get_hspace(CyberKitDOMHTMLAppletElement* self);
@@ -197,7 +197,7 @@ webkit_dom_html_applet_element_get_hspace(CyberKitDOMHTMLAppletElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_hspace(CyberKitDOMHTMLAppletElement* self, glong value);
@@ -208,7 +208,7 @@ webkit_dom_html_applet_element_set_hspace(CyberKitDOMHTMLAppletElement* self, gl
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_name(CyberKitDOMHTMLAppletElement* self);
@@ -219,7 +219,7 @@ webkit_dom_html_applet_element_get_name(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_name(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -230,7 +230,7 @@ webkit_dom_html_applet_element_set_name(CyberKitDOMHTMLAppletElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_object(CyberKitDOMHTMLAppletElement* self);
@@ -241,7 +241,7 @@ webkit_dom_html_applet_element_get_object(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_object(CyberKitDOMHTMLAppletElement* self, const gchar* value);
@@ -252,7 +252,7 @@ webkit_dom_html_applet_element_set_object(CyberKitDOMHTMLAppletElement* self, co
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_applet_element_get_vspace(CyberKitDOMHTMLAppletElement* self);
@@ -263,7 +263,7 @@ webkit_dom_html_applet_element_get_vspace(CyberKitDOMHTMLAppletElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_vspace(CyberKitDOMHTMLAppletElement* self, glong value);
@@ -274,7 +274,7 @@ webkit_dom_html_applet_element_set_vspace(CyberKitDOMHTMLAppletElement* self, gl
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_applet_element_get_width(CyberKitDOMHTMLAppletElement* self);
@@ -285,7 +285,7 @@ webkit_dom_html_applet_element_get_width(CyberKitDOMHTMLAppletElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_applet_element_set_width(CyberKitDOMHTMLAppletElement* self, const gchar* value);

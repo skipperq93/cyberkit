@@ -31,7 +31,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Report);
 
@@ -86,4 +86,4 @@ Ref<FormData> Report::createReportFormDataForViolation(const String& type, const
     return FormData::create(reportList->toJSONString().utf8());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

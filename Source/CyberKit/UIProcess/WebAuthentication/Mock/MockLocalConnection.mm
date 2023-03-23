@@ -39,7 +39,7 @@
 
 #import "LocalAuthenticationSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 MockLocalConnection::MockLocalConnection(const MockWebAuthenticationConfiguration& configuration)
@@ -168,6 +168,6 @@ void MockLocalConnection::filterResponses(Vector<Ref<AuthenticatorAssertionRespo
     responses.append(WTFMove(response));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -36,7 +36,7 @@
 #include "SharedBuffer.h"
 #include "UserGestureIndicator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class DOMFormData;
@@ -101,4 +101,4 @@ private:
     std::unique_ptr<FormDataConsumer> m_formDataConsumer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

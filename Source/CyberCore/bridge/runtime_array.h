@@ -49,7 +49,7 @@ public:
         VM& vm = lexicalGlobalObject->vm();
         // FIXME: deprecatedGetDOMStructure uses the prototype off of the wrong global object
         // We need to pass in the right global object for "array".
-        Structure* domStructure = WebCore::deprecatedGetDOMStructure<RuntimeArray>(lexicalGlobalObject);
+        Structure* domStructure = CyberCore::deprecatedGetDOMStructure<RuntimeArray>(lexicalGlobalObject);
         RuntimeArray* runtimeArray = new (NotNull, allocateCell<RuntimeArray>(vm)) RuntimeArray(vm, domStructure);
         runtimeArray->finishCreation(vm, array);
         return runtimeArray;

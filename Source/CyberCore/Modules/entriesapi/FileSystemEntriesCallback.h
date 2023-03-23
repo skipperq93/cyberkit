@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemEntry;
 
@@ -44,4 +44,4 @@ public:
     void scheduleCallback(ScriptExecutionContext&, const Vector<Ref<FileSystemEntry>>&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

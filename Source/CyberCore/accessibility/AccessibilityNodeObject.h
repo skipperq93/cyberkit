@@ -32,7 +32,7 @@
 #include "LayoutRect.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class AXObjectCache;
 class Element;
@@ -225,6 +225,6 @@ private:
     Node* m_node;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityNodeObject, isAccessibilityNodeObject())

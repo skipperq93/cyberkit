@@ -27,7 +27,7 @@
 #include "JSDOMExceptionHandling.h"
 #include <CyberScriptCore/Error.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename JSClass>
 class IDLAttribute {
@@ -134,4 +134,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

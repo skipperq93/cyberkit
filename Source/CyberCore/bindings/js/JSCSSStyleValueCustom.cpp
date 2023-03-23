@@ -42,7 +42,7 @@
 #include "JSCSSUnparsedValue.h"
 #include "JSDOMWrapperCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<CSSStyleValue>&& value)
@@ -85,4 +85,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, object);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -368,10 +368,10 @@ class SCMTest(unittest.TestCase):
         scm.discard_untracked_files(discard_ignored_files=True)
         self.assertEqual(scm.untracked_files(True), [])
 
-        os.mkdir("WebKitBuild")
-        self.assertEqual(scm.untracked_files(True), ["WebKitBuild"])
+        os.mkdir("CyberKitBuild")
+        self.assertEqual(scm.untracked_files(True), ["CyberKitBuild"])
         scm.discard_untracked_files(discard_ignored_files=True, keep_webkitbuild_directory=True)
-        self.assertEqual(scm.untracked_files(True), ["WebKitBuild"])
+        self.assertEqual(scm.untracked_files(True), ["CyberKitBuild"])
         scm.discard_untracked_files(discard_ignored_files=True, keep_webkitbuild_directory=False)
         self.assertEqual(scm.untracked_files(True), [])
 
@@ -865,7 +865,7 @@ class GitTest(SCMTest):
         """Sets up fresh git repository with one commit. Then setups a second git
         repo that tracks the first one."""
         # FIXME: We should instead clone a git repo that is tracking an SVN repo.
-        # That better matches what we do with WebKit.
+        # That better matches what we do with CyberKit.
         self.original_dir = os.getcwd()
 
         self.untracking_checkout_path = tempfile.mkdtemp(suffix="git_test_checkout2")

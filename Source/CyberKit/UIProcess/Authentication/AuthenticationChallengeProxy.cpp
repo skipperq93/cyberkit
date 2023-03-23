@@ -40,7 +40,7 @@
 #include "SecKeyProxyStore.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 AuthenticationChallengeProxy::AuthenticationChallengeProxy(CyberCore::AuthenticationChallenge&& authenticationChallenge, AuthenticationChallengeIdentifier challengeID, Ref<IPC::Connection>&& connection, WeakPtr<SecKeyProxyStore>&& secKeyProxyStore)
     : m_coreAuthenticationChallenge(WTFMove(authenticationChallenge))
@@ -73,4 +73,4 @@ WebProtectionSpace* AuthenticationChallengeProxy::protectionSpace() const
     return m_webProtectionSpace.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

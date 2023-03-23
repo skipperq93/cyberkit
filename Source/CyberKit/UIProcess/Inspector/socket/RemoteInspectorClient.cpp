@@ -34,7 +34,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteInspectorProxy final : public RemoteWebInspectorUIProxyClient {
     WTF_MAKE_FAST_ALLOCATED();
@@ -291,6 +291,6 @@ void RemoteInspectorClient::sendMessageToFrontend(const Event& event)
     proxy->sendMessageToFrontend(event.message.value());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

@@ -47,7 +47,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextTrack);
 
@@ -654,6 +654,6 @@ void TextTrack::newCuesAvailable(const TextTrackCueList& list)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

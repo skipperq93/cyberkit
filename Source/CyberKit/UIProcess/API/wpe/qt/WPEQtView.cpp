@@ -139,7 +139,7 @@ void WPEQtView::notifyLoadProgressCallback(WPEQtView* view)
     Q_EMIT view->loadProgressChanged();
 }
 
-void WPEQtView::notifyLoadChangedCallback(WebKitWebView*, WebKitLoadEvent event, WPEQtView* view)
+void WPEQtView::notifyLoadChangedCallback(CyberKitWebView*, CyberKitLoadEvent event, WPEQtView* view)
 {
     bool statusSet = false;
     WPEQtView::LoadStatus loadStatus;
@@ -164,7 +164,7 @@ void WPEQtView::notifyLoadChangedCallback(WebKitWebView*, WebKitLoadEvent event,
     }
 }
 
-void WPEQtView::notifyLoadFailedCallback(WebKitWebView*, WebKitLoadEvent, const gchar* failingURI, GError* error, WPEQtView* view)
+void WPEQtView::notifyLoadFailedCallback(CyberKitWebView*, CyberKitLoadEvent, const gchar* failingURI, GError* error, WPEQtView* view)
 {
     view->setErrorOccured(true);
 
@@ -406,7 +406,7 @@ static void jsAsyncReadyCallback(GObject* object, GAsyncResult* result, gpointer
 {
     GError* error { nullptr };
     std::unique_ptr<JavascriptCallbackData> data(reinterpret_cast<JavascriptCallbackData*>(userData));
-    WebKitJavascriptResult* jsResult = webkit_web_view_evaluate_javascript_finish(WEBKIT_WEB_VIEW(object), result, &error);
+    CyberKitJavascriptResult* jsResult = webkit_web_view_evaluate_javascript_finish(WEBKIT_WEB_VIEW(object), result, &error);
     if (!jsResult) {
         qWarning("Error running javascript: %s", error->message);
         g_error_free(error);
@@ -515,7 +515,7 @@ void WPEQtView::touchEvent(QTouchEvent* event)
         m_backend->dispatchTouchEvent(event);
 }
 
-WebKitWebView* WPEQtView::webView() const
+CyberKitWebView* WPEQtView::webView() const
 {
     return m_webView;
 }

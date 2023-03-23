@@ -28,7 +28,7 @@
 #include "Event.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 struct AudioProcessingEventInit;
@@ -60,4 +60,4 @@ private:
     double m_playbackTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

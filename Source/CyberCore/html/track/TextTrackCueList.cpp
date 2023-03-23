@@ -39,7 +39,7 @@
 #define ASSERT_SORTED(begin, end) ((void)0)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool cueSortsBefore(const RefPtr<TextTrackCue>& a, const RefPtr<TextTrackCue>& b)
 {
@@ -141,6 +141,6 @@ void TextTrackCueList::updateCueIndex(const TextTrackCue& cue)
     ASSERT_SORTED(m_vector.begin(), m_vector.end());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

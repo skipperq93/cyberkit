@@ -27,7 +27,7 @@
 
 #include "DocumentParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RawDataDocumentParser : public DocumentParser {
 protected:
@@ -61,4 +61,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

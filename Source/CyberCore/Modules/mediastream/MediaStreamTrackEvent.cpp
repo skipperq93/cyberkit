@@ -30,7 +30,7 @@
 #include "MediaStreamTrack.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaStreamTrackEvent);
 
@@ -68,7 +68,7 @@ EventInterface MediaStreamTrackEvent::eventInterface() const
     return MediaStreamTrackEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)
 

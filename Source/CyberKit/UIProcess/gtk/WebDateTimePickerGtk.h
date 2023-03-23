@@ -32,7 +32,7 @@
 #include <CyberCore/DateComponents.h>
 #include <CyberCore/DateTimeChooserParameters.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebDateTimePickerGtk final : public WebDateTimePicker {
 public:
@@ -56,6 +56,6 @@ private:
     bool m_inUpdate { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

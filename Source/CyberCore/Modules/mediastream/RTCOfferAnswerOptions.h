@@ -28,12 +28,12 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCOfferAnswerOptions {
     bool voiceActivityDetection { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

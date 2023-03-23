@@ -44,7 +44,7 @@ class GLContext;
 class IntSize;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -96,6 +96,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(WAYLAND)

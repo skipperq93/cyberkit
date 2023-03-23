@@ -36,7 +36,7 @@
 OBJC_CLASS NSArray;
 OBJC_CLASS NSMenu;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItem;
 class WebPageProxy;
@@ -75,6 +75,6 @@ private:
     WeakPtr<WebPageProxy> m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

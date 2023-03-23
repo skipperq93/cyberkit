@@ -33,7 +33,7 @@
 #import "ProcessAssertion.h"
 #import "RunningBoardServicesSPI.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr double maxPrepareForSuspensionDelayInSecond = 15;
 
@@ -130,6 +130,6 @@ void ProcessStateMonitor::checkRemainingRunTime()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

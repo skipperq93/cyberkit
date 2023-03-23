@@ -39,7 +39,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/LineEnding.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 BlobBuilder::BlobBuilder(EndingType endings)
     : m_endings(endings)
@@ -91,4 +91,4 @@ Vector<BlobPart> BlobBuilder::finalize()
     return WTFMove(m_items);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

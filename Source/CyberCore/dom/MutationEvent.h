@@ -26,7 +26,7 @@
 #include "Event.h"
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MutationEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(MutationEvent);
@@ -68,4 +68,4 @@ private:
     unsigned short m_attrChange { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

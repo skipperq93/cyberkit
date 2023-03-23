@@ -30,8 +30,8 @@
 #include "AccessibilityNotificationHandler.h"
 #include "InjectedBundle.h"
 #include "InjectedBundlePage.h"
-#include <JavaScriptCore/JSStringRef.h>
-#include <JavaScriptCore/OpaqueJSString.h>
+#include <CyberScriptCore/JSStringRef.h>
+#include <CyberScriptCore/OpaqueJSString.h>
 #include <CyberCore/AccessibilityAtspiEnums.h>
 #include <CyberCore/AccessibilityObjectAtspi.h>
 #include <CyberKit/WKBundleFrame.h>

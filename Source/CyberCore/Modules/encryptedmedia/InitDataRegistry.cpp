@@ -42,7 +42,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
     const uint32_t kCencMaxBoxSize = 64 * KB;

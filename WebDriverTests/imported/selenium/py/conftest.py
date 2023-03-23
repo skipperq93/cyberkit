@@ -37,9 +37,9 @@ drivers = (
     'Ie',
     'Remote',
     'Safari',
-    'WebKitGTK',
+    'CyberKitGTK',
     'ChromiumEdge',
-    'WPEWebKit',
+    'WPECyberKit',
 )
 
 
@@ -82,7 +82,7 @@ def driver(request):
         pytest.skip("Safari tests can only run on an Apple OS")
     if (driver_class == "Ie" or driver_class == "Edge") and _platform != "Windows":
         pytest.skip("IE and EdgeHTML Tests can only run on Windows")
-    if "WebKit" in driver_class and _platform != "Linux":
+    if "CyberKit" in driver_class and _platform != "Linux":
         pytest.skip("Webkit tests can only run on Linux")
 
     # conditionally mark tests as expected to fail based on driver
@@ -116,11 +116,11 @@ def driver(request):
             capabilities = DesiredCapabilities.FIREFOX.copy()
             kwargs.update({'desired_capabilities': capabilities})
             options = get_options('Firefox', request.config)
-        if driver_class == 'WebKitGTK':
+        if driver_class == 'CyberKitGTK':
             options = get_options(driver_class, request.config)
         if driver_class == 'ChromiumEdge':
             options = get_options(driver_class, request.config)
-        if driver_class == 'WPEWebKit':
+        if driver_class == 'WPECyberKit':
             options = get_options(driver_class, request.config)
         if driver_path is not None:
             kwargs['executable_path'] = driver_path
@@ -145,7 +145,7 @@ def get_options(driver_class, config):
     if browser_path or browser_args:
         if not options:
             options = getattr(webdriver, '{}Options'.format(driver_class))()
-        if driver_class == 'WebKitGTK':
+        if driver_class == 'CyberKitGTK':
             options.overlay_scrollbars_enabled = False
         if browser_path is not None:
             options.binary_location = browser_path

@@ -30,9 +30,9 @@
 #if ENABLE(RESOURCE_USAGE) && OS(LINUX)
 
 #include "WorkerThread.h"
-#include <JavaScriptCore/GCActivityCallback.h>
-#include <JavaScriptCore/SamplingProfiler.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/GCActivityCallback.h>
+#include <CyberScriptCore/SamplingProfiler.h>
+#include <CyberScriptCore/VM.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>

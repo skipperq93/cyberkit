@@ -27,7 +27,7 @@
 #include "ScriptExecutionContextIdentifier.h"
 #include "XMLDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMImplementation final : public ScriptWrappable {
     WTF_MAKE_ISO_ALLOCATED(DOMImplementation);
@@ -50,4 +50,4 @@ private:
     Document& m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

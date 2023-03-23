@@ -29,7 +29,7 @@
 #include "WKAPICast.h"
 #include "WebProcessPool.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebContextConnectionClient::didCreateConnection(WebProcessPool* processPool, WebConnection* connection)
 {
@@ -39,4 +39,4 @@ void WebContextConnectionClient::didCreateConnection(WebProcessPool* processPool
     m_client.didCreateConnection(toAPI(processPool), toAPI(connection), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

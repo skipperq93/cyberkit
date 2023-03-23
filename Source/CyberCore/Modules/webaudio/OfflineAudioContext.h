@@ -32,7 +32,7 @@
 #include <wtf/Lock.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct OfflineAudioContextOptions;
 
@@ -73,8 +73,8 @@ private:
     bool m_didStartRendering { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::OfflineAudioContext)
-    static bool isType(const WebCore::BaseAudioContext& context) { return context.isOfflineContext(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::OfflineAudioContext)
+    static bool isType(const CyberCore::BaseAudioContext& context) { return context.isOfflineContext(); }
 SPECIALIZE_TYPE_TRAITS_END()

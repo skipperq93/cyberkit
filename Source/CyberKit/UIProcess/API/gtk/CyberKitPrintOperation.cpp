@@ -18,14 +18,14 @@
  */
 
 #include "config.h"
-#include "WebKitPrintOperation.h"
+#include "CyberKitPrintOperation.h"
 
 #include "SharedMemory.h"
-#include "WebKitError.h"
-#include "WebKitPrintCustomWidgetPrivate.h"
-#include "WebKitPrintOperationPrivate.h"
-#include "WebKitPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitError.h"
+#include "CyberKitPrintCustomWidgetPrivate.h"
+#include "CyberKitPrintOperationPrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include "WebPageProxy.h"
 #include <CyberCore/GtkUtilities.h>
 #include <CyberCore/GtkVersioning.h>
@@ -41,14 +41,14 @@
 #include <gtk/gtkunixprint.h>
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitPrintOperation:
+ * CyberKitPrintOperation:
  *
  * Controls a print operation.
  *
- * A #WebKitPrintOperation controls a print operation in WebKit. With
+ * A #CyberKitPrintOperation controls a print operation in CyberKit. With
  * a similar API to #GtkPrintOperation, it lets you set the print
  * settings with webkit_print_operation_set_print_settings() or
  * display the print dialog with webkit_print_operation_run_dialog().
@@ -74,8 +74,8 @@ enum {
     LAST_SIGNAL
 };
 
-struct _WebKitPrintOperationPrivate {
-    GWeakPtr<WebKitWebView> webView;
+struct _CyberKitPrintOperationPrivate {
+    GWeakPtr<CyberKitWebView> webView;
     PrintInfo::PrintMode printMode;
 
     GRefPtr<GtkPrintSettings> printSettings;
@@ -89,11 +89,11 @@ struct _WebKitPrintOperationPrivate {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitPrintOperation, webkit_print_operation, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitPrintOperation, webkit_print_operation, G_TYPE_OBJECT, GObject)
 
 static void webkitPrintOperationGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitPrintOperation* printOperation = WEBKIT_PRINT_OPERATION(object);
+    CyberKitPrintOperation* printOperation = WEBKIT_PRINT_OPERATION(object);
 
     switch (propId) {
     case PROP_WEB_VIEW:
@@ -112,7 +112,7 @@ static void webkitPrintOperationGetProperty(GObject* object, guint propId, GValu
 
 static void webkitPrintOperationSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitPrintOperation* printOperation = WEBKIT_PRINT_OPERATION(object);
+    CyberKitPrintOperation* printOperation = WEBKIT_PRINT_OPERATION(object);
 
     switch (propId) {
     case PROP_WEB_VIEW:
@@ -140,16 +140,16 @@ static gboolean webkitPrintOperationAccumulatorObjectHandled(GSignalInvocationHi
 }
 #endif
 
-static void webkit_print_operation_class_init(WebKitPrintOperationClass* printOperationClass)
+static void webkit_print_operation_class_init(CyberKitPrintOperationClass* printOperationClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(printOperationClass);
     gObjectClass->get_property = webkitPrintOperationGetProperty;
     gObjectClass->set_property = webkitPrintOperationSetProperty;
 
     /**
-     * WebKitPrintOperation:web-view:
+     * CyberKitPrintOperation:web-view:
      *
-     * The #WebKitWebView that will be printed.
+     * The #CyberKitWebView that will be printed.
      */
     sObjProperties[PROP_WEB_VIEW] =
         g_param_spec_object(
@@ -159,7 +159,7 @@ static void webkit_print_operation_class_init(WebKitPrintOperationClass* printOp
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
     /**
-     * WebKitPrintOperation:print-settings:
+     * CyberKitPrintOperation:print-settings:
      *
      * The initial #GtkPrintSettings for the print operation.
      */
@@ -170,7 +170,7 @@ static void webkit_print_operation_class_init(WebKitPrintOperationClass* printOp
             GTK_TYPE_PRINT_SETTINGS,
             WEBKIT_PARAM_READWRITE);
     /**
-     * WebKitPrintOperation:page-setup:
+     * CyberKitPrintOperation:page-setup:
      *
      * The initial #GtkPageSetup for the print operation.
      */
@@ -184,8 +184,8 @@ static void webkit_print_operation_class_init(WebKitPrintOperationClass* printOp
     g_object_class_install_properties(gObjectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitPrintOperation::finished:
-     * @print_operation: the #WebKitPrintOperation on which the signal was emitted
+     * CyberKitPrintOperation::finished:
+     * @print_operation: the #CyberKitPrintOperation on which the signal was emitted
      *
      * Emitted when the print operation has finished doing everything
      * required for printing.
@@ -199,13 +199,13 @@ static void webkit_print_operation_class_init(WebKitPrintOperationClass* printOp
                      G_TYPE_NONE, 0);
 
     /**
-     * WebKitPrintOperation::failed:
-     * @print_operation: the #WebKitPrintOperation on which the signal was emitted
+     * CyberKitPrintOperation::failed:
+     * @print_operation: the #CyberKitPrintOperation on which the signal was emitted
      * @error: the #GError that was triggered
      *
      * Emitted when an error occurs while printing. The given @error, of the domain
      * %WEBKIT_PRINT_ERROR, contains further details of the failure.
-     * The #WebKitPrintOperation::finished signal is emitted after this one.
+     * The #CyberKitPrintOperation::finished signal is emitted after this one.
      */
     signals[FAILED] =
         g_signal_new(
@@ -221,15 +221,15 @@ static void webkit_print_operation_class_init(WebKitPrintOperationClass* printOp
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 
     /**
-     * WebKitPrintOperation::create-custom-widget:
-     * @print_operation: the #WebKitPrintOperation on which the signal was emitted
+     * CyberKitPrintOperation::create-custom-widget:
+     * @print_operation: the #CyberKitPrintOperation on which the signal was emitted
      *
      * Emitted when displaying the print dialog with webkit_print_operation_run_dialog().
-     * The returned #WebKitPrintCustomWidget will be added to the print dialog and
+     * The returned #CyberKitPrintCustomWidget will be added to the print dialog and
      * it will be owned by the @print_operation. However, the object is guaranteed
-     * to be alive until the #WebKitPrintCustomWidget::apply is emitted.
+     * to be alive until the #CyberKitPrintCustomWidget::apply is emitted.
      *
-     * Returns: (transfer full): A #WebKitPrintCustomWidget that will be embedded in the dialog.
+     * Returns: (transfer full): A #CyberKitPrintCustomWidget that will be embedded in the dialog.
      *
      * Since: 2.16
      *
@@ -251,13 +251,13 @@ static void webkit_print_operation_class_init(WebKitPrintOperationClass* printOp
 
 #if HAVE(GTK_UNIX_PRINTING)
 #if !ENABLE(2022_GLIB_API)
-static void notifySelectedPrinterCallback(GtkPrintUnixDialog* dialog, GParamSpec*, WebKitPrintCustomWidget* printCustomWidget)
+static void notifySelectedPrinterCallback(GtkPrintUnixDialog* dialog, GParamSpec*, CyberKitPrintCustomWidget* printCustomWidget)
 {
     webkitPrintCustomWidgetEmitUpdateCustomWidgetSignal(printCustomWidget, gtk_print_unix_dialog_get_page_setup(dialog), gtk_print_unix_dialog_get_settings(dialog));
 }
 #endif
 
-static WebKitPrintOperationResponse webkitPrintOperationRunDialog(WebKitPrintOperation* printOperation, GtkWindow* parent)
+static CyberKitPrintOperationResponse webkitPrintOperationRunDialog(CyberKitPrintOperation* printOperation, GtkWindow* parent)
 {
     GtkPrintUnixDialog* printDialog = GTK_PRINT_UNIX_DIALOG(gtk_print_unix_dialog_new(0, parent));
     gtk_print_unix_dialog_set_manual_capabilities(printDialog, static_cast<GtkPrintCapabilities>(GTK_PRINT_CAPABILITY_NUMBER_UP
@@ -268,7 +268,7 @@ static WebKitPrintOperationResponse webkitPrintOperationRunDialog(WebKitPrintOpe
                                                                                                  | GTK_PRINT_CAPABILITY_COLLATE
                                                                                                  | GTK_PRINT_CAPABILITY_SCALE));
 
-    WebKitPrintOperationPrivate* priv = printOperation->priv;
+    CyberKitPrintOperationPrivate* priv = printOperation->priv;
     // Make sure the initial settings of the GtkPrintUnixDialog is a valid
     // GtkPrintSettings object to work around a crash happening in the GTK+
     // file print backend. https://bugzilla.gnome.org/show_bug.cgi?id=703784.
@@ -282,7 +282,7 @@ static WebKitPrintOperationResponse webkitPrintOperationRunDialog(WebKitPrintOpe
     gtk_print_unix_dialog_set_embed_page_setup(printDialog, TRUE);
 
 #if !ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitPrintCustomWidget> customWidget;
+    GRefPtr<CyberKitPrintCustomWidget> customWidget;
     g_signal_emit(printOperation, signals[CREATE_CUSTOM_WIDGET], 0, &customWidget.outPtr());
     if (customWidget) {
         ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -295,7 +295,7 @@ static WebKitPrintOperationResponse webkitPrintOperationRunDialog(WebKitPrintOpe
     }
 #endif
 
-    WebKitPrintOperationResponse returnValue = WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL;
+    CyberKitPrintOperationResponse returnValue = WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL;
     if (gtk_dialog_run(GTK_DIALOG(printDialog)) == GTK_RESPONSE_OK) {
         priv->printSettings = adoptGRef(gtk_print_unix_dialog_get_settings(printDialog));
         priv->pageSetup = gtk_print_unix_dialog_get_page_setup(printDialog);
@@ -313,25 +313,25 @@ static WebKitPrintOperationResponse webkitPrintOperationRunDialog(WebKitPrintOpe
 }
 #else
 // TODO: We need to add an implementation for Windows.
-static WebKitPrintOperationResponse webkitPrintOperationRunDialog(WebKitPrintOperation*, GtkWindow*)
+static CyberKitPrintOperationResponse webkitPrintOperationRunDialog(CyberKitPrintOperation*, GtkWindow*)
 {
     notImplemented();
     return WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL;
 }
 #endif
 
-static void webkitPrintOperationFailed(WebKitPrintOperation* printOperation, GUniquePtr<GError>&& error)
+static void webkitPrintOperationFailed(CyberKitPrintOperation* printOperation, GUniquePtr<GError>&& error)
 {
     g_signal_emit(printOperation, signals[FAILED], 0, error.get());
 }
 
-static void webkitPrintOperationFailed(WebKitPrintOperation* printOperation, CyberCore::ResourceError&& error)
+static void webkitPrintOperationFailed(CyberKitPrintOperation* printOperation, CyberCore::ResourceError&& error)
 {
     webkitPrintOperationFailed(printOperation, GUniquePtr<GError> { g_error_new_literal(g_quark_from_string(error.domain().utf8().data()),
-        toWebKitError(error.errorCode()), error.localizedDescription().utf8().data()) });
+        toCyberKitError(error.errorCode()), error.localizedDescription().utf8().data()) });
 }
 
-static void webkitPrintOperationFinished(WebKitPrintOperation* printOperation)
+static void webkitPrintOperationFinished(CyberKitPrintOperation* printOperation)
 {
     auto* priv = printOperation->priv;
     priv->printJob = nullptr;
@@ -340,7 +340,7 @@ static void webkitPrintOperationFinished(WebKitPrintOperation* printOperation)
     g_signal_emit(printOperation, signals[FINISHED], 0);
 }
 
-static void webkitPrintOperationPrintPagesForFrame(WebKitPrintOperation* printOperation, WebFrameProxy* webFrame, GtkPrinter* printer, GtkPrintSettings* printSettings, GtkPageSetup* pageSetup)
+static void webkitPrintOperationPrintPagesForFrame(CyberKitPrintOperation* printOperation, WebFrameProxy* webFrame, GtkPrinter* printer, GtkPrintSettings* printSettings, GtkPageSetup* pageSetup)
 {
     if (!printer) {
         webkitPrintOperationFailed(printOperation, GUniquePtr<GError> { g_error_new_literal(WEBKIT_PRINT_ERROR, WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND, _("Printer not found")) });
@@ -351,7 +351,7 @@ static void webkitPrintOperationPrintPagesForFrame(WebKitPrintOperation* printOp
 #if HAVE(GTK_UNIX_PRINTING)
     static unsigned jobNumber = 0;
     const char* applicationName = g_get_application_name();
-    GUniquePtr<char> jobName(g_strdup_printf("%s job #%u", applicationName ? applicationName : "WebKit", ++jobNumber));
+    GUniquePtr<char> jobName(g_strdup_printf("%s job #%u", applicationName ? applicationName : "CyberKit", ++jobNumber));
     auto* priv = printOperation->priv;
     priv->printJob = adoptGRef(gtk_print_job_new(jobName.get(), printer, printSettings, pageSetup));
 
@@ -361,7 +361,7 @@ static void webkitPrintOperationPrintPagesForFrame(WebKitPrintOperation* printOp
 
     PrintInfo printInfo(priv->printJob.get(), printOperation->priv->printMode);
     auto& page = webkitWebViewGetPage(printOperation->priv->webView.get());
-    page.drawPagesForPrinting(webFrame, printInfo, [printOperation = GRefPtr<WebKitPrintOperation>(printOperation)](std::optional<SharedMemory::Handle>&& data, CyberCore::ResourceError&& error) mutable {
+    page.drawPagesForPrinting(webFrame, printInfo, [printOperation = GRefPtr<CyberKitPrintOperation>(printOperation)](std::optional<SharedMemory::Handle>&& data, CyberCore::ResourceError&& error) mutable {
         auto* priv = printOperation->priv;
         // When running synchronously, WebPageProxy::printFrame() calls endPrinting().
         if (priv->printMode == PrintInfo::PrintModeAsync && priv->webView)
@@ -384,7 +384,7 @@ static void webkitPrintOperationPrintPagesForFrame(WebKitPrintOperation* printOp
         }
 
         gtk_print_job_send(priv->printJob.get(), [](GtkPrintJob* printJob, gpointer userData, const GError* error) {
-            auto printOperation = adoptGRef(static_cast<WebKitPrintOperation*>(userData));
+            auto printOperation = adoptGRef(static_cast<CyberKitPrintOperation*>(userData));
             if (error)
                 webkitPrintOperationFailed(printOperation.get(), GUniquePtr<GError> { g_error_new_literal(WEBKIT_PRINT_ERROR, WEBKIT_PRINT_ERROR_GENERAL, error->message) });
             webkitPrintOperationFinished(printOperation.get());
@@ -393,16 +393,16 @@ static void webkitPrintOperationPrintPagesForFrame(WebKitPrintOperation* printOp
 #endif
 }
 
-WebKitPrintOperationResponse webkitPrintOperationRunDialogForFrame(WebKitPrintOperation* printOperation, GtkWindow* parent, WebFrameProxy* webFrame)
+CyberKitPrintOperationResponse webkitPrintOperationRunDialogForFrame(CyberKitPrintOperation* printOperation, GtkWindow* parent, WebFrameProxy* webFrame)
 {
-    WebKitPrintOperationPrivate* priv = printOperation->priv;
+    CyberKitPrintOperationPrivate* priv = printOperation->priv;
     if (!parent) {
         GtkWidget* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(priv->webView.get()));
         if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
             parent = GTK_WINDOW(toplevel);
     }
 
-    WebKitPrintOperationResponse response = webkitPrintOperationRunDialog(printOperation, parent);
+    CyberKitPrintOperationResponse response = webkitPrintOperationRunDialog(printOperation, parent);
     if (response == WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL)
         return response;
 
@@ -410,20 +410,20 @@ WebKitPrintOperationResponse webkitPrintOperationRunDialogForFrame(WebKitPrintOp
     return response;
 }
 
-void webkitPrintOperationSetPrintMode(WebKitPrintOperation* printOperation, PrintInfo::PrintMode printMode)
+void webkitPrintOperationSetPrintMode(CyberKitPrintOperation* printOperation, PrintInfo::PrintMode printMode)
 {
     printOperation->priv->printMode = printMode;
 }
 
 /**
  * webkit_print_operation_new:
- * @web_view: a #WebKitWebView
+ * @web_view: a #CyberKitWebView
  *
- * Create a new #WebKitPrintOperation to print @web_view contents.
+ * Create a new #CyberKitPrintOperation to print @web_view contents.
  *
- * Returns: (transfer full): a new #WebKitPrintOperation.
+ * Returns: (transfer full): a new #CyberKitPrintOperation.
  */
-WebKitPrintOperation* webkit_print_operation_new(WebKitWebView* webView)
+CyberKitPrintOperation* webkit_print_operation_new(CyberKitWebView* webView)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_VIEW(webView), 0);
 
@@ -432,7 +432,7 @@ WebKitPrintOperation* webkit_print_operation_new(WebKitWebView* webView)
 
 /**
  * webkit_print_operation_get_print_settings:
- * @print_operation: a #WebKitPrintOperation
+ * @print_operation: a #CyberKitPrintOperation
  *
  * Return the current print settings of @print_operation.
  *
@@ -442,7 +442,7 @@ WebKitPrintOperation* webkit_print_operation_new(WebKitWebView* webView)
  *
  * Returns: (transfer none): the current #GtkPrintSettings of @print_operation.
  */
-GtkPrintSettings* webkit_print_operation_get_print_settings(WebKitPrintOperation* printOperation)
+GtkPrintSettings* webkit_print_operation_get_print_settings(CyberKitPrintOperation* printOperation)
 {
     g_return_val_if_fail(WEBKIT_IS_PRINT_OPERATION(printOperation), 0);
 
@@ -451,7 +451,7 @@ GtkPrintSettings* webkit_print_operation_get_print_settings(WebKitPrintOperation
 
 /**
  * webkit_print_operation_set_print_settings:
- * @print_operation: a #WebKitPrintOperation
+ * @print_operation: a #CyberKitPrintOperation
  * @print_settings: a #GtkPrintSettings to set
  *
  *  Set the current print settings of @print_operation.
@@ -459,7 +459,7 @@ GtkPrintSettings* webkit_print_operation_get_print_settings(WebKitPrintOperation
  * Set the current print settings of @print_operation. Current print settings are used for
  * the initial values of the print dialog when webkit_print_operation_run_dialog() is called.
  */
-void webkit_print_operation_set_print_settings(WebKitPrintOperation* printOperation, GtkPrintSettings* printSettings)
+void webkit_print_operation_set_print_settings(CyberKitPrintOperation* printOperation, GtkPrintSettings* printSettings)
 {
     g_return_if_fail(WEBKIT_IS_PRINT_OPERATION(printOperation));
     g_return_if_fail(GTK_IS_PRINT_SETTINGS(printSettings));
@@ -473,7 +473,7 @@ void webkit_print_operation_set_print_settings(WebKitPrintOperation* printOperat
 
 /**
  * webkit_print_operation_get_page_setup:
- * @print_operation: a #WebKitPrintOperation
+ * @print_operation: a #CyberKitPrintOperation
  *
  * Return the current page setup of @print_operation.
  *
@@ -483,7 +483,7 @@ void webkit_print_operation_set_print_settings(WebKitPrintOperation* printOperat
  *
  * Returns: (transfer none): the current #GtkPageSetup of @print_operation.
  */
-GtkPageSetup* webkit_print_operation_get_page_setup(WebKitPrintOperation* printOperation)
+GtkPageSetup* webkit_print_operation_get_page_setup(CyberKitPrintOperation* printOperation)
 {
     g_return_val_if_fail(WEBKIT_IS_PRINT_OPERATION(printOperation), 0);
 
@@ -492,7 +492,7 @@ GtkPageSetup* webkit_print_operation_get_page_setup(WebKitPrintOperation* printO
 
 /**
  * webkit_print_operation_set_page_setup:
- * @print_operation: a #WebKitPrintOperation
+ * @print_operation: a #CyberKitPrintOperation
  * @page_setup: a #GtkPageSetup to set
  *
  * Set the current page setup of @print_operation.
@@ -500,7 +500,7 @@ GtkPageSetup* webkit_print_operation_get_page_setup(WebKitPrintOperation* printO
  * Current page setup is used for the
  * initial values of the print dialog when webkit_print_operation_run_dialog() is called.
  */
-void webkit_print_operation_set_page_setup(WebKitPrintOperation* printOperation, GtkPageSetup* pageSetup)
+void webkit_print_operation_set_page_setup(CyberKitPrintOperation* printOperation, GtkPageSetup* pageSetup)
 {
     g_return_if_fail(WEBKIT_IS_PRINT_OPERATION(printOperation));
     g_return_if_fail(GTK_IS_PAGE_SETUP(pageSetup));
@@ -514,7 +514,7 @@ void webkit_print_operation_set_page_setup(WebKitPrintOperation* printOperation,
 
 /**
  * webkit_print_operation_run_dialog:
- * @print_operation: a #WebKitPrintOperation
+ * @print_operation: a #CyberKitPrintOperation
  * @parent: (allow-none): transient parent of the print dialog
  *
  * Run the print dialog and start printing.
@@ -523,18 +523,18 @@ void webkit_print_operation_set_page_setup(WebKitPrintOperation* printOperation,
  * the user. This method returns when the print dialog is closed.
  * If the print dialog is cancelled %WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL
  * is returned. If the user clicks on the print button, %WEBKIT_PRINT_OPERATION_RESPONSE_PRINT
- * is returned and the print operation starts. In this case, the #WebKitPrintOperation::finished
+ * is returned and the print operation starts. In this case, the #CyberKitPrintOperation::finished
  * signal is emitted when the operation finishes. If an error occurs while printing, the signal
- * #WebKitPrintOperation::failed is emitted before #WebKitPrintOperation::finished.
+ * #CyberKitPrintOperation::failed is emitted before #CyberKitPrintOperation::finished.
  * If the print dialog is not cancelled current print settings and page setup of @print_operation
  * are updated with options selected by the user when Print button is pressed in print dialog.
  * You can get the updated print settings and page setup by calling
  * webkit_print_operation_get_print_settings() and webkit_print_operation_get_page_setup()
  * after this method.
  *
- * Returns: the #WebKitPrintOperationResponse of the print dialog
+ * Returns: the #CyberKitPrintOperationResponse of the print dialog
  */
-WebKitPrintOperationResponse webkit_print_operation_run_dialog(WebKitPrintOperation* printOperation, GtkWindow* parent)
+CyberKitPrintOperationResponse webkit_print_operation_run_dialog(CyberKitPrintOperation* printOperation, GtkWindow* parent)
 {
     g_return_val_if_fail(WEBKIT_IS_PRINT_OPERATION(printOperation), WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL);
 
@@ -568,7 +568,7 @@ static GRefPtr<GtkPrinter> printerFromSettingsOrDefault(GtkPrintSettings* settin
 
 /**
  * webkit_print_operation_print:
- * @print_operation: a #WebKitPrintOperation
+ * @print_operation: a #CyberKitPrintOperation
  *
  * Start a print operation using current print settings and page setup.
  *
@@ -577,15 +577,15 @@ static GRefPtr<GtkPrinter> printerFromSettingsOrDefault(GtkPrintSettings* settin
  * are not set with webkit_print_operation_set_print_settings() and
  * webkit_print_operation_set_page_setup(), the default options will be used
  * and the print job will be sent to the default printer.
- * The #WebKitPrintOperation::finished signal is emitted when the printing
+ * The #CyberKitPrintOperation::finished signal is emitted when the printing
  * operation finishes. If an error occurs while printing the signal
- * #WebKitPrintOperation::failed is emitted before #WebKitPrintOperation::finished.
+ * #CyberKitPrintOperation::failed is emitted before #CyberKitPrintOperation::finished.
  */
-void webkit_print_operation_print(WebKitPrintOperation* printOperation)
+void webkit_print_operation_print(CyberKitPrintOperation* printOperation)
 {
     g_return_if_fail(WEBKIT_IS_PRINT_OPERATION(printOperation));
 
-    WebKitPrintOperationPrivate* priv = printOperation->priv;
+    CyberKitPrintOperationPrivate* priv = printOperation->priv;
     GRefPtr<GtkPrintSettings> printSettings = priv->printSettings ? priv->printSettings : adoptGRef(gtk_print_settings_new());
     GRefPtr<GtkPageSetup> pageSetup = priv->pageSetup ? priv->pageSetup : adoptGRef(gtk_page_setup_new());
     GRefPtr<GtkPrinter> printer = printerFromSettingsOrDefault(printSettings.get());

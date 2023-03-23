@@ -29,7 +29,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 
@@ -61,6 +61,6 @@ private:
     OptionSet<LineBoxContain> m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSLineBoxContainValue, isLineBoxContainValue())

@@ -31,7 +31,7 @@
 
 #include "JSDOMPromiseDeferred.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue JSReadableStreamSource::start(JSGlobalObject& lexicalGlobalObject, CallFrame& callFrame, Ref<DeferredPromise>&& promise)

@@ -68,7 +68,7 @@ struct LogArgument<std::optional<T>> {
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 template<typename... Arguments>
@@ -165,6 +165,6 @@ static void tryNextSupportedConfiguration(Document& document, RefPtr<CDM>&& impl
     promise->reject(NotSupportedError);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

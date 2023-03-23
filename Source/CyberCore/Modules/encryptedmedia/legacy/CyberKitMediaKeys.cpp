@@ -32,7 +32,7 @@
 #include "CyberKitMediaKeySession.h"
 #include <CyberScriptCore/Uint8Array.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Ref<CyberKitMediaKeys>> CyberKitMediaKeys::create(const String& keySystem)
 {

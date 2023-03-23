@@ -27,7 +27,7 @@
 
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CSSValueID : uint16_t;
 
@@ -56,6 +56,6 @@ private:
     CSSValueID m_name { };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSFunctionValue, isFunctionValue())

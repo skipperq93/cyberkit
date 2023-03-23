@@ -63,7 +63,7 @@
 #include "UTIUtilities.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLAttachmentElement);
 
@@ -504,7 +504,7 @@ void HTMLAttachmentElement::updateThumbnail(const RefPtr<Image>& thumbnail)
     invalidateRendering();
 }
 
-void HTMLAttachmentElement::updateIcon(const RefPtr<Image>& icon, const WebCore::FloatSize& iconSize)
+void HTMLAttachmentElement::updateIcon(const RefPtr<Image>& icon, const CyberCore::FloatSize& iconSize)
 {
     m_icon = icon;
     m_iconSize = iconSize;
@@ -526,6 +526,6 @@ bool HTMLAttachmentElement::childShouldCreateRenderer(const Node& child) const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)

@@ -39,7 +39,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PaymentResponse);
 
@@ -166,6 +166,6 @@ void PaymentResponse::suspend(ReasonForSuspension reason)
     stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

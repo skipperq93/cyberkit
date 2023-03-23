@@ -36,7 +36,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ServicesController& ServicesController::singleton()
 {
@@ -45,7 +45,7 @@ ServicesController& ServicesController::singleton()
 }
 
 ServicesController::ServicesController()
-    : m_refreshQueue(dispatch_queue_create("com.apple.WebKit.ServicesController", DISPATCH_QUEUE_SERIAL))
+    : m_refreshQueue(dispatch_queue_create("com.apple.CyberKit.ServicesController", DISPATCH_QUEUE_SERIAL))
     , m_hasPendingRefresh(false)
     , m_hasImageServices(false)
     , m_hasSelectionServices(false)
@@ -135,6 +135,6 @@ void ServicesController::refreshExistingServices(bool refreshImmediately)
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_CONTROLS)

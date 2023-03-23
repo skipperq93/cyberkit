@@ -72,7 +72,7 @@ class TestClean(testing.PathTestCase):
     def test_clean_pr(self):
         with OutputCapture(), mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
             repo.staged['added.txt'] = 'added'
             self.assertEqual(0, program.main(
@@ -91,7 +91,7 @@ class TestClean(testing.PathTestCase):
     def test_delete_pr_branches(self):
         with OutputCapture(), mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
             repo.staged['added.txt'] = 'added'
             self.assertEqual(0, program.main(
@@ -110,7 +110,7 @@ class TestClean(testing.PathTestCase):
     def test_delete_pr_branches_invalid_remote(self):
         with OutputCapture() as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ), mocks.local.Svn():
             self.assertEqual(1, program.main(
                 args=('delete-pr-branches', '-v', '--remote=all'),

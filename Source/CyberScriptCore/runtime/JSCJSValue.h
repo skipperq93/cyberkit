@@ -314,7 +314,7 @@ public:
 
     std::optional<uint32_t> toUInt32AfterToNumeric(JSGlobalObject*) const;
 
-    // Floating point conversions (this is a convenience function for WebCore;
+    // Floating point conversions (this is a convenience function for CyberCore;
     // single precision float is not a representation used in JS or JSC).
     float toFloat(JSGlobalObject* globalObject) const { return static_cast<float>(toNumber(globalObject)); }
 

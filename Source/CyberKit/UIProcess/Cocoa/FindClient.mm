@@ -28,7 +28,7 @@
 
 #import "_WKFindDelegate.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 FindClient::FindClient(WKWebView *webView)
     : m_webView(webView)
@@ -69,16 +69,16 @@ void FindClient::didFailToFindString(WebPageProxy*, const String& string)
         [m_delegate.get() _webView:m_webView didFailToFindString:string];
 }
 
-void FindClient::didAddLayerForFindOverlay(WebKit::WebPageProxy*, PlatformLayer* layer)
+void FindClient::didAddLayerForFindOverlay(CyberKit::WebPageProxy*, PlatformLayer* layer)
 {
     if (m_delegateMethods.webviewDidAddLayerForFindOverlay)
         [m_delegate _webView:m_webView didAddLayerForFindOverlay:layer];
 }
 
-void FindClient::didRemoveLayerForFindOverlay(WebKit::WebPageProxy*)
+void FindClient::didRemoveLayerForFindOverlay(CyberKit::WebPageProxy*)
 {
     if (m_delegateMethods.webviewDidRemoveLayerForFindOverlay)
         [m_delegate _webViewDidRemoveLayerForFindOverlay:m_webView];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

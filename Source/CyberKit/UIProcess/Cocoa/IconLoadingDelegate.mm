@@ -32,7 +32,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 IconLoadingDelegate::IconLoadingDelegate(WKWebView *webView)
     : m_webView(webView)
@@ -97,4 +97,4 @@ void IconLoadingDelegate::IconLoadingClient::getLoadDecisionForIcon(const CyberC
     }).get()];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

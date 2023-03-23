@@ -35,7 +35,7 @@
 #include "UserMediaPermissionRequestManagerProxy.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline NSString *makeKey(const String& identifier, const String& keyPrefix, const String& key)
 {
@@ -223,4 +223,4 @@ void WebPreferences::platformDeleteKey(const String& key)
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:makeKey(m_identifier, m_keyPrefix, key)];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

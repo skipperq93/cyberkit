@@ -485,7 +485,7 @@ public:
     // heap access.
     //
     // It's totally fine to acquireAccess() upon VM instantiation and keep it that way. This is how
-    // WebCore uses us. For most other clients, JSLock does acquireAccess()/releaseAccess() for you.
+    // CyberCore uses us. For most other clients, JSLock does acquireAccess()/releaseAccess() for you.
     void acquireAccess();
     
     // Releases heap access. If the GC is blocking waiting to do bad things to the heap, it will be

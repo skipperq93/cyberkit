@@ -30,5 +30,5 @@
 
 int WKWebProcessMain(int argc, const char** argv)
 {
-    return WebKit::XPCServiceMain(argc, argv);
+    return CyberKit::XPCServiceMain(argc, argv);
 }

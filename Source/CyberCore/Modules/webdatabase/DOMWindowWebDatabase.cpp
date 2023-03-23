@@ -33,7 +33,7 @@
 #include "Document.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<RefPtr<Database>> DOMWindowWebDatabase::openDatabase(DOMWindow& window, const String& name, const String& version, const String& displayName, unsigned estimatedSize, RefPtr<DatabaseCallback>&& creationCallback)
 {
@@ -59,4 +59,4 @@ ExceptionOr<RefPtr<Database>> DOMWindowWebDatabase::openDatabase(DOMWindow& wind
     return RefPtr<Database> { result.releaseReturnValue() };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

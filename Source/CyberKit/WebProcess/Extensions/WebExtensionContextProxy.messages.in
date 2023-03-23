@@ -27,14 +27,14 @@
 
 messages -> WebExtensionContextProxy {
     // Permissions support
-    DispatchPermissionsEvent(WebKit::WebExtensionEventListenerType type, HashSet<String> permissions, HashSet<String> origins)
+    DispatchPermissionsEvent(CyberKit::WebExtensionEventListenerType type, HashSet<String> permissions, HashSet<String> origins)
 
     // webNavigation support
-    DispatchWebNavigationOnBeforeNavigateEvent(WebKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
-    DispatchWebNavigationOnCommittedEvent(WebKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
-    DispatchWebNavigationOnDOMContentLoadedEvent(WebKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
-    DispatchWebNavigationOnCompletedEvent(WebKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
-    DispatchWebNavigationOnErrorOccurredEvent(WebKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
+    DispatchWebNavigationOnBeforeNavigateEvent(CyberKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
+    DispatchWebNavigationOnCommittedEvent(CyberKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
+    DispatchWebNavigationOnDOMContentLoadedEvent(CyberKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
+    DispatchWebNavigationOnCompletedEvent(CyberKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
+    DispatchWebNavigationOnErrorOccurredEvent(CyberKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
 
 }
 

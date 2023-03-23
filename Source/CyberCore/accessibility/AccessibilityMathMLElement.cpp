@@ -33,7 +33,7 @@
 #include "AXObjectCache.h"
 #include "MathMLNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilityMathMLElement::AccessibilityMathMLElement(RenderObject* renderer, bool isAnonymousOperator)
     : AccessibilityRenderObject(renderer)
@@ -448,6 +448,6 @@ int AccessibilityMathMLElement::mathLineThickness() const
     return downcast<RenderMathMLFraction>(*m_renderer).relativeLineThickness();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MATHML)

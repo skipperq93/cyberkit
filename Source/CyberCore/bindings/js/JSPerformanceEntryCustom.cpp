@@ -45,7 +45,7 @@
 #include "PerformanceResourceTiming.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<PerformanceEntry>&& entry)
@@ -72,4 +72,4 @@ JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* global
     return wrap(lexicalGlobalObject, globalObject, entry);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

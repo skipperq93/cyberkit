@@ -54,7 +54,7 @@ struct ScreenProperties;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 class WebsiteDataStore;
@@ -190,6 +190,6 @@ private:
     HashSet<PAL::SessionID> m_sessionIDs;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -30,7 +30,7 @@
 #include "WebPageProxy.h"
 #include "WebURLSchemeTask.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebURLSchemeHandler::WebURLSchemeHandler()
@@ -123,4 +123,4 @@ void WebURLSchemeHandler::removeTaskFromPageMap(WebPageProxyIdentifier pageID, C
         m_tasksByPageIdentifier.remove(iterator);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

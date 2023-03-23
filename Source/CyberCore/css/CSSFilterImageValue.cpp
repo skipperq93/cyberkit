@@ -31,7 +31,7 @@
 #include "StyleBuilderState.h"
 #include "StyleFilterImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFilterImageValue::CSSFilterImageValue(Ref<CSSValue>&& imageValueOrNone, Ref<CSSValue>&& filterValue)
     : CSSValue { FilterImageClass }
@@ -62,4 +62,4 @@ RefPtr<StyleImage> CSSFilterImageValue::createStyleImage(Style::BuilderState& st
     return StyleFilterImage::create(state.createStyleImage(m_imageValueOrNone), state.createFilterOperations(m_filterValue).value_or(FilterOperations { }));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

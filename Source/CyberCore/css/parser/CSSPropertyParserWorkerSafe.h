@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class CSSValue;
@@ -76,4 +76,4 @@ RefPtr<CSSPrimitiveValue> consumeFontWeightAbsolute(CSSParserTokenRange&);
 
 } // namespace CSSPropertyParserHelpersWorkerSafe
 
-} // namespace WebCore
+} // namespace CyberCore

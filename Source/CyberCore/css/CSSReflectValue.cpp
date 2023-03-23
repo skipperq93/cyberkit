@@ -28,7 +28,7 @@
 
 #include "CSSPrimitiveValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSReflectValue::CSSReflectValue(CSSValueID direction, Ref<CSSPrimitiveValue> offset, RefPtr<CSSValue> mask)
     : CSSValue(ReflectClass)
@@ -57,4 +57,4 @@ bool CSSReflectValue::equals(const CSSReflectValue& other) const
         && compareCSSValuePtr(m_mask, other.m_mask);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

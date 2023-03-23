@@ -28,7 +28,7 @@
 #include "Event.h"
 #include "SpeechRecognitionErrorCode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionErrorEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(SpeechRecognitionErrorEvent);
@@ -55,4 +55,4 @@ private:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore

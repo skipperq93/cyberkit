@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUFrontFace.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUFrontFace : uint8_t {
     Ccw,

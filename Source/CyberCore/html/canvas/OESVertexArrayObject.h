@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OESVertexArrayObject final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(OESVertexArrayObject);
@@ -45,4 +45,4 @@ public:
     void bindVertexArrayOES(WebGLVertexArrayObjectOES*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

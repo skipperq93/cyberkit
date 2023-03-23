@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmAesCbcCfbParams;
 class CryptoKeyAES;
@@ -61,6 +61,6 @@ private:
     ExceptionOr<size_t> getKeyLength(const CryptoAlgorithmParameters&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

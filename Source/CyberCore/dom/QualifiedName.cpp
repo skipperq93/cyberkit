@@ -27,7 +27,7 @@
 #include "ThreadGlobalData.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(QualifiedName);
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(QualifiedNameQualifiedNameImpl);

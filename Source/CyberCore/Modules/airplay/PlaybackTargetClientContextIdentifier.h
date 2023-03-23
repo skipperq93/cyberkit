@@ -29,7 +29,7 @@
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum PlaybackTargetClientContextIdentifierType { };
 using PlaybackTargetClientContextIdentifier = ObjectIdentifier<PlaybackTargetClientContextIdentifierType>;

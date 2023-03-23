@@ -29,7 +29,7 @@
 #include "CalcExpressionInversion.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<CalcExpressionNode> CSSCalcInvertNode::createCalcExpression(const CSSToLengthConversionData& conversionData) const
 {

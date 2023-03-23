@@ -42,7 +42,7 @@
 namespace WTR {
 
 static LPCWSTR hostWindowClassName = L"WTRWebViewHostWindow";
-static LPCWSTR testRunnerWindowName = L"WebKitTestRunner";
+static LPCWSTR testRunnerWindowName = L"CyberKitTestRunner";
 
 static void registerWindowClass()
 {

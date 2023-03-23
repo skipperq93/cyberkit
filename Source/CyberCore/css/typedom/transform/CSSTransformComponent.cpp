@@ -32,7 +32,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSTransformComponent::toString() const
 {
@@ -41,4 +41,4 @@ String CSSTransformComponent::toString() const
     return builder.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

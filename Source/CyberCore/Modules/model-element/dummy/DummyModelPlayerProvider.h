@@ -27,7 +27,7 @@
 
 #include "ModelPlayerProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT DummyModelPlayerProvider final : public ModelPlayerProvider {
 public:

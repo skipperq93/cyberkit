@@ -33,7 +33,7 @@ namespace JSC {
 class ArrayBuffer;
 };
 
-namespace WebCore {
+namespace CyberCore {
 
 class FetchBodyOwner;
 
@@ -66,4 +66,4 @@ private:
     RefPtr<ActiveDOMObject::PendingActivity<FetchBodyOwner>> m_pendingActivity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

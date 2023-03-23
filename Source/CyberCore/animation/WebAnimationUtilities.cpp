@@ -41,7 +41,7 @@
 #include "KeyframeEffectStack.h"
 #include "WebAnimation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool compareDeclarativeAnimationOwningElementPositionsInDocumentTreeOrder(const Styleable& a, const Styleable& b)
 {
@@ -344,4 +344,4 @@ AtomString animatablePropertyAsString(AnimatableProperty property)
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore

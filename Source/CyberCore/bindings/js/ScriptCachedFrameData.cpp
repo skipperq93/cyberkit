@@ -44,7 +44,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <CyberScriptCore/WeakGCMapInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 ScriptCachedFrameData::ScriptCachedFrameData(Frame& frame)
@@ -105,4 +105,4 @@ void ScriptCachedFrameData::clear()
     GCController::singleton().garbageCollectSoon();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

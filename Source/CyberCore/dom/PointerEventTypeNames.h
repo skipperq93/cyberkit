@@ -27,10 +27,10 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT const String& mousePointerEventType();
 WEBCORE_EXPORT const String& penPointerEventType();
 const String& touchPointerEventType();
 
-} // namespace WebCore
+} // namespace CyberCore

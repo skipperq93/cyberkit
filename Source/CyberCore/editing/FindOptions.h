@@ -27,7 +27,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum FindOptionFlag {
     CaseInsensitive = 1 << 0,
@@ -45,4 +45,4 @@ enum FindOptionFlag {
 
 using FindOptions = OptionSet<FindOptionFlag>;
 
-} // namespace WebCore
+} // namespace CyberCore

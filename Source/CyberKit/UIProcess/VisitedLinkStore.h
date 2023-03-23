@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
     
@@ -69,4 +69,4 @@ private:
     SharedStringHashStore m_linkHashStore;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

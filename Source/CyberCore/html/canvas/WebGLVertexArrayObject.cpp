@@ -33,7 +33,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 Ref<WebGLVertexArrayObject> WebGLVertexArrayObject::create(WebGLRenderingContextBase& context, Type type)
 {

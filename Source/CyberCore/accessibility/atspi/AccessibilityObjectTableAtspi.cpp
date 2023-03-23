@@ -30,7 +30,7 @@
 #include <gio/gio.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_tableFunctions = {
     // method_call
@@ -361,6 +361,6 @@ Vector<RefPtr<AccessibilityObjectAtspi>> AccessibilityObjectAtspi::columnHeaders
     return wrapperVector(m_coreObject->columnHeaders());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

@@ -29,7 +29,7 @@
 #include "CSSValueKeywords.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSBackgroundRepeatValue::CSSBackgroundRepeatValue(CSSValueID xValue, CSSValueID yValue)
     : CSSValue(BackgroundRepeatClass)
@@ -61,4 +61,4 @@ bool CSSBackgroundRepeatValue::equals(const CSSBackgroundRepeatValue& other) con
     return m_xValue == other.m_xValue && m_yValue == other.m_yValue;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

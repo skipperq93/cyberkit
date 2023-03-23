@@ -33,7 +33,7 @@
 #include <variant>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMPointInit;
 

@@ -89,7 +89,7 @@ typedef struct {
 typedef PlatformGtkScrollData* PlatformScrollEvent;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class ViewSnapshot;
 class WebBackForwardListItem;
@@ -490,4 +490,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -33,7 +33,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AsyncAudioDecoder::AsyncAudioDecoder()
 {
@@ -107,6 +107,6 @@ void AsyncAudioDecoder::DecodingTask::notifyComplete()
     delete this;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

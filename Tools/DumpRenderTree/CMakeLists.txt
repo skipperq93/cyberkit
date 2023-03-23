@@ -17,18 +17,18 @@ set(DumpRenderTree_SOURCES
 )
 
 set(DumpRenderTree_LIBRARIES
-    WebKit::TestRunnerShared
-    WebKit::CyberCoreTestSupport
+    CyberKit::TestRunnerShared
+    CyberKit::CyberCoreTestSupport
 )
 set(DumpRenderTree_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
     CyberCore
     CyberKitLegacy
 )
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND WebKitTestRunner_FRAMEWORKS bmalloc)
+    list(APPEND CyberKitTestRunner_FRAMEWORKS bmalloc)
 endif ()
 
 set(DumpRenderTree_PRIVATE_INCLUDE_DIRECTORIES

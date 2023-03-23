@@ -30,7 +30,7 @@
 #include "LayoutIntegrationLineLayout.h"
 #include "TextPainter.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 InlineContent::InlineContent(const LineLayout& lineLayout)

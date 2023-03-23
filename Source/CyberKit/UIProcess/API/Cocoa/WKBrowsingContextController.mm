@@ -77,17 +77,17 @@ NSString * const WKActionCanShowMIMETypeKey = @"WKActionCanShowMIMETypeKey";
 ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN
 @implementation WKBrowsingContextController {
 ALLOW_DEPRECATED_IMPLEMENTATIONS_END
-    RefPtr<WebKit::WebPageProxy> _page;
-    std::unique_ptr<WebKit::PageLoadStateObserver> _pageLoadStateObserver;
+    RefPtr<CyberKit::WebPageProxy> _page;
+    std::unique_ptr<CyberKit::PageLoadStateObserver> _pageLoadStateObserver;
 
     WeakObjCPtr<id <WKBrowsingContextLoadDelegate>> _loadDelegate;
     WeakObjCPtr<id <WKBrowsingContextPolicyDelegate>> _policyDelegate;
 }
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-static HashMap<WebKit::WebPageProxy*, __unsafe_unretained WKBrowsingContextController *>& browsingContextControllerMap()
+static HashMap<CyberKit::WebPageProxy*, __unsafe_unretained WKBrowsingContextController *>& browsingContextControllerMap()
 {
-    static NeverDestroyed<HashMap<WebKit::WebPageProxy*, __unsafe_unretained WKBrowsingContextController *>> browsingContextControllerMap;
+    static NeverDestroyed<HashMap<CyberKit::WebPageProxy*, __unsafe_unretained WKBrowsingContextController *>> browsingContextControllerMap;
     return browsingContextControllerMap;
 }
 ALLOW_DEPRECATED_DECLARATIONS_END
@@ -110,11 +110,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 + (void)registerSchemeForCustomProtocol:(NSString *)scheme
 {
     if ([NSThread isMainThread])
-        WebKit::WebProcessPool::registerGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme);
+        CyberKit::WebProcessPool::registerGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme);
     else {
         // This cannot be RunLoop::main().dispatch because it is called before the main runloop is initialized.  See rdar://problem/73615999
         WorkQueue::main().dispatch([scheme = retainPtr(scheme)] {
-            WebKit::WebProcessPool::registerGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme.get());
+            CyberKit::WebProcessPool::registerGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme.get());
         });
     }
 }
@@ -122,11 +122,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 + (void)unregisterSchemeForCustomProtocol:(NSString *)scheme
 {
     if ([NSThread isMainThread])
-        WebKit::WebProcessPool::unregisterGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme);
+        CyberKit::WebProcessPool::unregisterGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme);
     else {
         // This cannot be RunLoop::main().dispatch because it is called before the main runloop is initialized.  See rdar://problem/73615999
         WorkQueue::main().dispatch([scheme = retainPtr(scheme)] {
-            WebKit::WebProcessPool::unregisterGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme.get());
+            CyberKit::WebProcessPool::unregisterGlobalURLSchemeAsHavingCustomProtocolHandlers(scheme.get());
         });
     }
 }
@@ -138,9 +138,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (void)loadRequest:(NSURLRequest *)request userData:(id)userData
 {
-    RefPtr<WebKit::ObjCObjectGraph> wkUserData;
+    RefPtr<CyberKit::ObjCObjectGraph> wkUserData;
     if (userData)
-        wkUserData = WebKit::ObjCObjectGraph::create(userData);
+        wkUserData = CyberKit::ObjCObjectGraph::create(userData);
 
     _page->loadRequest(request, CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow, wkUserData.get());
 }
@@ -155,9 +155,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if (![URL isFileURL] || (allowedDirectory && ![allowedDirectory isFileURL]))
         [NSException raise:NSInvalidArgumentException format:@"Attempted to load a non-file URL"];
 
-    RefPtr<WebKit::ObjCObjectGraph> wkUserData;
+    RefPtr<CyberKit::ObjCObjectGraph> wkUserData;
     if (userData)
-        wkUserData = WebKit::ObjCObjectGraph::create(userData);
+        wkUserData = CyberKit::ObjCObjectGraph::create(userData);
 
     _page->loadFile(bytesAsString(bridge_cast(URL)), bytesAsString(bridge_cast(allowedDirectory)), wkUserData.get());
 }
@@ -169,9 +169,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (void)loadHTMLString:(NSString *)HTMLString baseURL:(NSURL *)baseURL userData:(id)userData
 {
-    RefPtr<WebKit::ObjCObjectGraph> wkUserData;
+    RefPtr<CyberKit::ObjCObjectGraph> wkUserData;
     if (userData)
-        wkUserData = WebKit::ObjCObjectGraph::create(userData);
+        wkUserData = CyberKit::ObjCObjectGraph::create(userData);
 
     NSData *data = [HTMLString dataUsingEncoding:NSUTF8StringEncoding];
     _page->loadData({ static_cast<const uint8_t*>(data.bytes), data.length }, "text/html"_s, "UTF-8"_s, bytesAsString(bridge_cast(baseURL)), wkUserData.get());
@@ -190,9 +190,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)encodingName baseURL:(NSURL *)baseURL userData:(id)userData
 {
-    RefPtr<WebKit::ObjCObjectGraph> wkUserData;
+    RefPtr<CyberKit::ObjCObjectGraph> wkUserData;
     if (userData)
-        wkUserData = WebKit::ObjCObjectGraph::create(userData);
+        wkUserData = CyberKit::ObjCObjectGraph::create(userData);
 
     _page->loadData({ static_cast<const uint8_t*>(data.bytes), data.length }, MIMEType, encodingName, bytesAsString(bridge_cast(baseURL)), wkUserData.get());
 }
@@ -313,7 +313,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (NSArray *)certificateChain
 {
-    if (WebKit::WebFrameProxy* mainFrame = _page->mainFrame())
+    if (CyberKit::WebFrameProxy* mainFrame = _page->mainFrame())
         return (__bridge NSArray *)CyberCore::CertificateInfo::certificateChainFromSecTrust(mainFrame->certificateInfo().trust().get()).autorelease();
 
     return nil;
@@ -371,7 +371,7 @@ static void didFailProvisionalNavigation(WKPageRef page, WKNavigationRef, WKErro
     auto loadDelegate = browsingContext->_loadDelegate.get();
 
     if ([loadDelegate respondsToSelector:@selector(browsingContextController:didFailProvisionalLoadWithError:)])
-        [loadDelegate browsingContextController:browsingContext didFailProvisionalLoadWithError:wrapper(*WebKit::toImpl(error))];
+        [loadDelegate browsingContextController:browsingContext didFailProvisionalLoadWithError:wrapper(*CyberKit::toImpl(error))];
 }
 
 static void didCommitNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userData, const void* clientInfo)
@@ -404,7 +404,7 @@ static void didFailNavigation(WKPageRef page, WKNavigationRef, WKErrorRef error,
     auto loadDelegate = browsingContext->_loadDelegate.get();
 
     if ([loadDelegate respondsToSelector:@selector(browsingContextController:didFailLoadWithError:)])
-        [loadDelegate browsingContextController:browsingContext didFailLoadWithError:wrapper(*WebKit::toImpl(error))];
+        [loadDelegate browsingContextController:browsingContext didFailLoadWithError:wrapper(*CyberKit::toImpl(error))];
 }
 
 static bool canAuthenticateAgainstProtectionSpace(WKPageRef page, WKProtectionSpaceRef protectionSpace, const void *clientInfo)
@@ -415,7 +415,7 @@ static bool canAuthenticateAgainstProtectionSpace(WKPageRef page, WKProtectionSp
     auto loadDelegate = browsingContext->_loadDelegate.get();
 
     if ([loadDelegate respondsToSelector:@selector(browsingContextController:canAuthenticateAgainstProtectionSpace:)])
-        return [(id <WKBrowsingContextLoadDelegatePrivate>)loadDelegate browsingContextController:browsingContext canAuthenticateAgainstProtectionSpace:WebKit::toImpl(protectionSpace)->protectionSpace().nsSpace()];
+        return [(id <WKBrowsingContextLoadDelegatePrivate>)loadDelegate browsingContextController:browsingContext canAuthenticateAgainstProtectionSpace:CyberKit::toImpl(protectionSpace)->protectionSpace().nsSpace()];
 
     return false;
 }
@@ -428,7 +428,7 @@ static void didReceiveAuthenticationChallenge(WKPageRef page, WKAuthenticationCh
     auto loadDelegate = browsingContext->_loadDelegate.get();
 
     if ([loadDelegate respondsToSelector:@selector(browsingContextController:didReceiveAuthenticationChallenge:)])
-        [(id <WKBrowsingContextLoadDelegatePrivate>)loadDelegate browsingContextController:browsingContext didReceiveAuthenticationChallenge:wrapper(*WebKit::toImpl(authenticationChallenge))];
+        [(id <WKBrowsingContextLoadDelegatePrivate>)loadDelegate browsingContextController:browsingContext didReceiveAuthenticationChallenge:wrapper(*CyberKit::toImpl(authenticationChallenge))];
 }
 
 static void processDidCrash(WKPageRef page, const void* clientInfo)
@@ -443,7 +443,7 @@ static void processDidCrash(WKPageRef page, const void* clientInfo)
 }
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-static void setUpPageLoaderClient(WKBrowsingContextController *browsingContext, WebKit::WebPageProxy& page)
+static void setUpPageLoaderClient(WKBrowsingContextController *browsingContext, CyberKit::WebPageProxy& page)
 ALLOW_DEPRECATED_DECLARATIONS_END
 {
     WKPageNavigationClientV0 loaderClient;
@@ -482,7 +482,7 @@ static BlockPtr<void(WKPolicyDecision)> makePolicyDecisionBlock(WKFramePolicyLis
 }
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-static void setUpPagePolicyClient(WKBrowsingContextController *browsingContext, WebKit::WebPageProxy& page)
+static void setUpPagePolicyClient(WKBrowsingContextController *browsingContext, CyberKit::WebPageProxy& page)
 ALLOW_DEPRECATED_DECLARATIONS_END
 {
     WKPagePolicyClientInternal policyClient;
@@ -510,7 +510,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
             if (originatingFrame) {
                 actionDictionary = adoptNS([actionDictionary mutableCopy]);
-                [(NSMutableDictionary *)actionDictionary.get() setObject:(NSURL *)WebKit::toImpl(originatingFrame)->url() forKey:WKActionOriginatingFrameURLKey];
+                [(NSMutableDictionary *)actionDictionary.get() setObject:(NSURL *)CyberKit::toImpl(originatingFrame)->url() forKey:WKActionOriginatingFrameURLKey];
             }
             
             [policyDelegate browsingContextController:browsingContext decidePolicyForNavigationAction:actionDictionary.get() decisionHandler:makePolicyDecisionBlock(listener).get()];
@@ -532,7 +532,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
                 WKActionModifierFlagsKey: @(modifiers),
                 WKActionMouseButtonKey: @(mouseButton),
                 WKActionURLRequestKey: adoptNS(WKURLRequestCopyNSURLRequest(request)).get(),
-                WKActionFrameNameKey: WebKit::toImpl(frameName)->wrapper()
+                WKActionFrameNameKey: CyberKit::toImpl(frameName)->wrapper()
             };
             
             [policyDelegate browsingContextController:browsingContext decidePolicyForNewWindowAction:actionDictionary decisionHandler:makePolicyDecisionBlock(listener).get()];
@@ -619,9 +619,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if (!(self = [super init]))
         return nil;
 
-    _page = WebKit::toImpl(pageRef);
+    _page = CyberKit::toImpl(pageRef);
 
-    _pageLoadStateObserver = makeUnique<WebKit::PageLoadStateObserver>(self);
+    _pageLoadStateObserver = makeUnique<CyberKit::PageLoadStateObserver>(self);
     _page->pageLoadState().addObserver(*_pageLoadStateObserver);
 
     ASSERT(!browsingContextControllerMap().contains(_page.get()));
@@ -632,7 +632,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 + (WKBrowsingContextController *)_browsingContextControllerForPageRef:(WKPageRef)pageRef
 {
-    return browsingContextControllerMap().get(WebKit::toImpl(pageRef));
+    return browsingContextControllerMap().get(CyberKit::toImpl(pageRef));
 }
 
 @end
@@ -644,7 +644,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (WKPageRef)_pageRef
 {
-    return WebKit::toAPI(_page.get());
+    return CyberKit::toAPI(_page.get());
 }
 
 - (void)setPaginationMode:(WKBrowsingContextPaginationMode)paginationMode

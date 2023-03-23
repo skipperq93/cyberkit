@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT DummyModelPlayer final : public ModelPlayer {
 public:
@@ -48,8 +48,8 @@ private:
     void handleMouseDown(const LayoutPoint&, MonotonicTime) override;
     void handleMouseMove(const LayoutPoint&, MonotonicTime) override;
     void handleMouseUp(const LayoutPoint&, MonotonicTime) override;
-    void getCamera(CompletionHandler<void(std::optional<WebCore::HTMLModelElementCamera>&&)>&&) override;
-    void setCamera(WebCore::HTMLModelElementCamera, CompletionHandler<void(bool success)>&&) override;
+    void getCamera(CompletionHandler<void(std::optional<CyberCore::HTMLModelElementCamera>&&)>&&) override;
+    void setCamera(CyberCore::HTMLModelElementCamera, CompletionHandler<void(bool success)>&&) override;
     void isPlayingAnimation(CompletionHandler<void(std::optional<bool>&&)>&&) override;
     void setAnimationIsPlaying(bool, CompletionHandler<void(bool success)>&&) override;
     void isLoopingAnimation(CompletionHandler<void(std::optional<bool>&&)>&&) override;

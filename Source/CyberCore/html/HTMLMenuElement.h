@@ -24,7 +24,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMenuElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLMenuElement);
@@ -43,4 +43,4 @@ private:
     bool m_isTouchBarMenu;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -46,7 +46,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isValidCSSUnitTypeForDoubleConversion(CSSUnitType unitType)
 {
@@ -1596,4 +1596,4 @@ void CSSPrimitiveValue::collectComputedStyleDependencies(ComputedStyleDependenci
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

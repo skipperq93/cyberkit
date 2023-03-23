@@ -120,7 +120,7 @@ SOFT_LINK_CLASS_OPTIONAL(AppleMediaServicesUI, AMSUIEngagementTask)
 
 #define WEBPAGEPROXY_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - [pageProxyID=%llu, webPageID=%llu, PID=%i] WebPageProxy::" fmt, this, m_identifier.toUInt64(), m_webPageID.toUInt64(), m_process->processIdentifier(), ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 constexpr IntSize iconSize = IntSize(400, 400);
@@ -131,7 +131,7 @@ static bool exceedsRenderTreeSizeSizeThreshold(uint64_t thresholdSize, uint64_t 
     return committedSize > thresholdSize * thesholdSizeFraction;
 }
 
-void WebPageProxy::didCommitLayerTree(const WebKit::RemoteLayerTreeTransaction& layerTreeTransaction)
+void WebPageProxy::didCommitLayerTree(const CyberKit::RemoteLayerTreeTransaction& layerTreeTransaction)
 {
     themeColorChanged(layerTreeTransaction.themeColor());
     pageExtendedBackgroundColorDidChange(layerTreeTransaction.pageExtendedBackgroundColor());
@@ -345,14 +345,14 @@ void WebPageProxy::platformCloneAttachment(Ref<API::Attachment>&& fromAttachment
     });
 }
 
-static RefPtr<WebKit::ShareableBitmap> convertPlatformImageToBitmap(CocoaImage *image, const CyberCore::FloatSize& fittingSize)
+static RefPtr<CyberKit::ShareableBitmap> convertPlatformImageToBitmap(CocoaImage *image, const CyberCore::FloatSize& fittingSize)
 {
     FloatSize originalThumbnailSize([image size]);
     auto resultRect = roundedIntRect(largestRectWithAspectRatioInsideRect(originalThumbnailSize.aspectRatio(), { { }, fittingSize }));
     resultRect.setLocation({ });
 
-    WebKit::ShareableBitmapConfiguration bitmapConfiguration;
-    auto bitmap = WebKit::ShareableBitmap::create(resultRect.size(), bitmapConfiguration);
+    CyberKit::ShareableBitmapConfiguration bitmapConfiguration;
+    auto bitmap = CyberKit::ShareableBitmap::create(resultRect.size(), bitmapConfiguration);
     if (!bitmap)
         return nullptr;
 
@@ -366,7 +366,7 @@ static RefPtr<WebKit::ShareableBitmap> convertPlatformImageToBitmap(CocoaImage *
     return bitmap;
 }
 
-RefPtr<WebKit::ShareableBitmap> WebPageProxy::iconForAttachment(const String& fileName, const String& contentType, const String& title, FloatSize& size)
+RefPtr<CyberKit::ShareableBitmap> WebPageProxy::iconForAttachment(const String& fileName, const String& contentType, const String& title, FloatSize& size)
 {
 #if PLATFORM(IOS_FAMILY)
     auto imageAndSize = RenderThemeIOS::iconForAttachment(fileName, contentType, title);
@@ -986,13 +986,13 @@ void WebPageProxy::replaceImageForRemoveBackground(const ElementContext& element
 
 bool WebPageProxy::useGPUProcessForDOMRenderingEnabled() const
 {
-    if (id useGPUProcessForDOMRendering = [[NSUserDefaults standardUserDefaults] objectForKey:@"WebKit2GPUProcessForDOMRendering"])
+    if (id useGPUProcessForDOMRendering = [[NSUserDefaults standardUserDefaults] objectForKey:@"CyberKit2GPUProcessForDOMRendering"])
         return [useGPUProcessForDOMRendering boolValue];
 
     return preferences().useGPUProcessForDOMRenderingEnabled();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK_COMPLETION
 #undef MESSAGE_CHECK

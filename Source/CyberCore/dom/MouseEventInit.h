@@ -27,7 +27,7 @@
 
 #include "MouseRelatedEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MouseEventInit : MouseRelatedEventInit {
     int clientX { 0 };

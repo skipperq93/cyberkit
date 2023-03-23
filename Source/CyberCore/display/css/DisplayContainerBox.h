@@ -27,7 +27,7 @@
 
 #include "DisplayBoxModelBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ContainerBox);
@@ -46,7 +46,7 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_DISPLAY_BOX(ContainerBox, isContainerBox())
 

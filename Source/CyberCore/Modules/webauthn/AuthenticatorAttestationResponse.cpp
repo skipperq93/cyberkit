@@ -34,7 +34,7 @@
 #include "CryptoKeyEC.h"
 #include "WebAuthenticationUtils.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<cbor::CBORValue> coseKeyForAttestationObject(Ref<ArrayBuffer> attObj)
 {
@@ -184,6 +184,6 @@ RefPtr<ArrayBuffer> AuthenticatorAttestationResponse::getPublicKey() const
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

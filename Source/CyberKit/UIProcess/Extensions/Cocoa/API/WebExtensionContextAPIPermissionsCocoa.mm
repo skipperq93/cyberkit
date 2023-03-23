@@ -44,7 +44,7 @@
 #import <CyberKit/_WKWebExtensionMatchPattern.h>
 #import <CyberKit/_WKWebExtensionPermission.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSString *permissionsKey = @"permissions";
 static NSString *originsKey = @"origins";
@@ -169,6 +169,6 @@ void WebExtensionContext::firePermissionsEventListenerIfNecessary(WebExtensionEv
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

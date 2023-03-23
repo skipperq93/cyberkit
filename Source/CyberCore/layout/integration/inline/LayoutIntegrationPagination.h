@@ -27,7 +27,7 @@
 
 #include "LayoutIntegrationInlineContent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlockFlow;
 

@@ -37,7 +37,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class ThreadableWebSocketChannelClientWrapper;
@@ -177,4 +177,4 @@ private:
     WebSocketChannelIdentifier m_progressIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

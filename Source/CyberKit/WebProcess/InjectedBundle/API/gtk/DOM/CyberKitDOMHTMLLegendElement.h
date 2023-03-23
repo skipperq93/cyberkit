@@ -54,7 +54,7 @@ webkit_dom_html_legend_element_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLFormElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLFormElement*
 webkit_dom_html_legend_element_get_form(CyberKitDOMHTMLLegendElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_legend_element_get_form(CyberKitDOMHTMLLegendElement* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_legend_element_get_align(CyberKitDOMHTMLLegendElement* self);
@@ -76,7 +76,7 @@ webkit_dom_html_legend_element_get_align(CyberKitDOMHTMLLegendElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_legend_element_set_align(CyberKitDOMHTMLLegendElement* self, const gchar* value);

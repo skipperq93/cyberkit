@@ -28,7 +28,7 @@
 #include "CompositeEditCommand.h"
 #include "EditAction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InsertNestedListCommand final : public CompositeEditCommand {
 public:
@@ -63,4 +63,4 @@ private:
     Type m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

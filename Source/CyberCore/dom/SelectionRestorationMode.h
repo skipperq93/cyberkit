@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SelectionRestorationMode : uint8_t {
     RestoreOrSelectAll,
@@ -33,5 +33,5 @@ enum class SelectionRestorationMode : uint8_t {
     PlaceCaretAtStart,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

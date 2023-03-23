@@ -513,7 +513,7 @@ class DownloadBuiltProductFromMaster(transfer.FileDownload):
         return super(DownloadBuiltProductFromMaster, self).getResultSummary()
 
 
-class RunJavaScriptCoreTests(TestWithFailureCount):
+class RunCyberScriptCoreTests(TestWithFailureCount):
     name = "jscore-test"
     description = ["jscore-tests running"]
     descriptionDone = ["jscore-tests"]

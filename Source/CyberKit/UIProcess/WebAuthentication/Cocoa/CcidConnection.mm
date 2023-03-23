@@ -33,7 +33,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 
 namespace {
@@ -142,6 +142,6 @@ void CcidConnection::startPolling()
     trySelectFidoApplet();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

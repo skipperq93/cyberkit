@@ -24,16 +24,16 @@
 #include "FeatureDefines.xcconfig"
 #include "../../../Configurations/Version.xcconfig"
 
-GCC_PREFIX_HEADER = WebCorePrefix.h;
+GCC_PREFIX_HEADER = CyberCorePrefix.h;
 GCC_PREPROCESSOR_DEFINITIONS = $(DEBUG_DEFINES) BUILDING_WEBKIT GL_SILENCE_DEPRECATION=1 GLES_SILENCE_DEPRECATION=1 $(GCC_PREPROCESSOR_DEFINITIONS_$(ENABLE_PDFJS)) $(inherited);
 GCC_PREPROCESSOR_DEFINITIONS_ENABLE_PDFJS = ENABLE_PDFJS=1;
 
 PROFILE_DATA_PATH = $(PROFILE_DATA_PATH_INTERNAL_$(USE_INTERNAL_SDK));
 PROFILE_DATA_PATH_INTERNAL_ = $(SRCROOT)/../../Tools/Profiling/Empty.profdata;
-PROFILE_DATA_PATH_INTERNAL_YES = $(BUILT_PRODUCTS_DIR)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/CyberKitAdditions/Profiling/WebCore.profdata.compressed;
-PROFILE_DATA_PATH_INTERNAL_YES[config=Production] = $(SDK_DIR)$(WK_ALTERNATE_WEBKIT_SDK_PATH)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/CyberKitAdditions/Profiling/WebCore.profdata.compressed;
+PROFILE_DATA_PATH_INTERNAL_YES = $(BUILT_PRODUCTS_DIR)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/CyberKitAdditions/Profiling/CyberCore.profdata.compressed;
+PROFILE_DATA_PATH_INTERNAL_YES[config=Production] = $(SDK_DIR)$(WK_ALTERNATE_WEBKIT_SDK_PATH)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/CyberKitAdditions/Profiling/CyberCore.profdata.compressed;
 
-PROFILE_DATA_FLAGS_ENABLED = -fprofile-instr-use=$(BUILT_PRODUCTS_DIR)/DerivedSources/WebCore/WebCore.profdata;
+PROFILE_DATA_FLAGS_ENABLED = -fprofile-instr-use=$(BUILT_PRODUCTS_DIR)/DerivedSources/CyberCore/CyberCore.profdata;
 
 PROFILE_DATA_FLAGS = $(PROFILE_DATA_FLAGS_$(CONFIGURATION)_$(WK_PLATFORM_NAME));
 PROFILE_DATA_FLAGS_Release_macosx = $(PROFILE_DATA_FLAGS_Release_macosx$(WK_MACOS_1200));
@@ -56,7 +56,7 @@ FRAMEWORK_SEARCH_PATHS[sdk=macosx*] = $(WK_QUOTED_OVERRIDE_FRAMEWORKS_DIR);
 
 SYSTEM_FRAMEWORK_SEARCH_PATHS = $(inherited) $(SDK_DIR)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks $(SDK_DIR)$(SYSTEM_LIBRARY_DIR)/Frameworks
 
-HEADER_SEARCH_PATHS = PAL ForwardingHeaders /usr/include/libxslt /usr/include/libxml2 "$(BUILT_PRODUCTS_DIR)/DerivedSources/WebCore" "$(BUILT_PRODUCTS_DIR)$(WK_LIBRARY_HEADERS_FOLDER_PATH)" $(WEBKITADDITIONS_HEADER_SEARCH_PATHS) $(ANGLE_HEADER_SEARCH_PATHS) $(LIBWEBRTC_HEADER_SEARCH_PATHS) $(HEADER_SEARCH_PATHS) $(SRCROOT);
+HEADER_SEARCH_PATHS = PAL ForwardingHeaders /usr/include/libxslt /usr/include/libxml2 "$(BUILT_PRODUCTS_DIR)/DerivedSources/CyberCore" "$(BUILT_PRODUCTS_DIR)$(WK_LIBRARY_HEADERS_FOLDER_PATH)" $(WEBKITADDITIONS_HEADER_SEARCH_PATHS) $(ANGLE_HEADER_SEARCH_PATHS) $(LIBWEBRTC_HEADER_SEARCH_PATHS) $(HEADER_SEARCH_PATHS) $(SRCROOT);
 SYSTEM_HEADER_SEARCH_PATHS = $(PROJECT_DIR)/PAL/ThirdParty/libavif/include $(SDK_DIR)$(WK_ALTERNATE_WEBKIT_SDK_PATH)$(WK_LIBRARY_HEADERS_FOLDER_PATH) $(inherited);
 LIBRARY_SEARCH_PATHS = "$(SDK_DIR)$(WEBCORE_LIBRARY_DIR)" $(SDK_DIR)$(WK_LIBRARY_INSTALL_PATH) $(inherited);
 
@@ -70,7 +70,7 @@ INSTALLHDRS_COPY_PHASE = YES;
 INSTALLHDRS_SCRIPT_PHASE = YES;
 PRODUCT_NAME = CyberCore;
 PRODUCT_BUNDLE_IDENTIFIER = com.apple.$(PRODUCT_NAME:rfc1034identifier);
-UNEXPORTED_SYMBOLS_FILE = Configurations/WebCore.unexp;
+UNEXPORTED_SYMBOLS_FILE = Configurations/CyberCore.unexp;
 
 ALTERNATE_ROOT_PATH[sdk=iphone*] = $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;
 ALTERNATE_ROOT_PATH[sdk=macosx*] = $(ALTERNATE_ROOT_PATH_$(WK_USE_ALTERNATE_FRAMEWORKS_DIR));
@@ -162,8 +162,8 @@ OTHER_LDFLAGS_PLATFORM_cocoatouch = -allowable_client CyberKit -allowable_client
 OTHER_LDFLAGS_PLATFORM_macosx = -sub_library libobjc -umbrella CyberKit $(PROFILE_GENERATE_OR_USE_LDFLAGS);
 
 SECTORDER_FLAGS = $(SECTORDER_FLAGS_$(CONFIGURATION));
-SECTORDER_FLAGS_Production[sdk=iphoneos*] = -Wl,-order_file,$(SDKROOT)/AppleInternal/OrderFiles/WebCore.order;
-SECTORDER_FLAGS_Production[sdk=macosx*] = -Wl,-order_file,WebCore.order;
+SECTORDER_FLAGS_Production[sdk=iphoneos*] = -Wl,-order_file,$(SDKROOT)/AppleInternal/OrderFiles/CyberCore.order;
+SECTORDER_FLAGS_Production[sdk=macosx*] = -Wl,-order_file,CyberCore.order;
 
 EXCLUDED_SOURCE_FILE_NAMES = pdfjs*/*;
 EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*] = $(inherited) *.tiff *Cursor.png npapi.h npfunctions.h npruntime.h npruntime_internal.h;
@@ -176,8 +176,8 @@ WK_RELOCATABLE_FRAMEWORK_LDFLAGS_YES_macosx = -Wl,-not_for_dyld_shared_cache;
 
 // Enable InstallAPI support, when built with WEBCORE_ENABLE_INSTALLAPI=YES.
 SUPPORTS_TEXT_BASED_API = $(SUPPORTS_TEXT_BASED_API_$(TARGET_NAME))
-SUPPORTS_TEXT_BASED_API_WebCore = $(WEBCORE_ENABLE_INSTALLAPI)
-TEXT_BASED_API_FILE = WebCore.tbd
+SUPPORTS_TEXT_BASED_API_CyberCore = $(WEBCORE_ENABLE_INSTALLAPI)
+TEXT_BASED_API_FILE = CyberCore.tbd
 
 WK_HAVE_URL_FORMATTING = $(WK_HAVE_URL_FORMATTING_$(WK_PLATFORM_NAME));
 WK_HAVE_URL_FORMATTING_iphoneos = YES;

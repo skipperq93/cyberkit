@@ -35,7 +35,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class InspectorDatabaseResource;
@@ -74,4 +74,4 @@ private:
     MemoryCompactRobinHoodHashMap<String, RefPtr<InspectorDatabaseResource>> m_resources;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "JSDOMException.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AbortController);
 
@@ -61,7 +61,7 @@ void AbortController::abort(JSDOMGlobalObject& globalObject, JSC::JSValue reason
     m_signal->signalAbort(reason);
 }
 
-WebCoreOpaqueRoot AbortController::opaqueRoot()
+CyberCoreOpaqueRoot AbortController::opaqueRoot()
 {
     return root(&signal());
 }

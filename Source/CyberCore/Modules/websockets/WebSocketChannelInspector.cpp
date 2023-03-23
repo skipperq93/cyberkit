@@ -32,7 +32,7 @@
 #include "ProgressTracker.h"
 #include "WebSocketFrame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WebSocketChannelInspector::WebSocketChannelInspector(Document& document)
     : m_document(document)
@@ -121,4 +121,4 @@ WebSocketFrame WebSocketChannelInspector::createFrame(const uint8_t* data, size_
     return frame;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

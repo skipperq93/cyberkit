@@ -24,7 +24,7 @@
 #include "CSSPrimitiveValue.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSValueContainingVector::CSSValueContainingVector(ClassType type, ValueSeparator separator)
     : CSSValue(type)
@@ -202,7 +202,7 @@ bool CSSValueContainingVector::hasValue(CSSValue& otherValue) const
 bool CSSValueContainingVector::hasValue(CSSValueID otherValue) const
 {
     for (auto& value : *this) {
-        if (WebCore::isValueID(value, otherValue))
+        if (CyberCore::isValueID(value, otherValue))
             return true;
     }
     return false;
@@ -268,4 +268,4 @@ bool CSSValueContainingVector::customTraverseSubresources(const Function<bool(co
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

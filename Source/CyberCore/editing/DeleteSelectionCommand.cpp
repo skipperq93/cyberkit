@@ -47,7 +47,7 @@
 #include "Text.h"
 #include "VisibleUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1079,4 +1079,4 @@ bool DeleteSelectionCommand::preservesTypingStyle() const
     return m_typingStyle;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

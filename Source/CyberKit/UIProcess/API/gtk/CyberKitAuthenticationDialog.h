@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "WebKitAuthenticationRequest.h"
-#include "WebKitWebViewDialog.h"
+#include "CyberKitAuthenticationRequest.h"
+#include "CyberKitWebViewDialog.h"
 #include <gtk/gtk.h>
 
 enum CredentialStorageMode {
@@ -31,28 +31,28 @@ enum CredentialStorageMode {
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_AUTHENTICATION_DIALOG            (webkit_authentication_dialog_get_type())
-#define WEBKIT_AUTHENTICATION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUTHENTICATION_DIALOG, WebKitAuthenticationDialog))
+#define WEBKIT_AUTHENTICATION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUTHENTICATION_DIALOG, CyberKitAuthenticationDialog))
 #define WEBKIT_IS_AUTHENTICATION_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_AUTHENTICATION_DIALOG))
-#define WEBKIT_AUTHENTICATION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_AUTHENTICATION_DIALOG, WebKitAuthenticationDialogClass))
+#define WEBKIT_AUTHENTICATION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_AUTHENTICATION_DIALOG, CyberKitAuthenticationDialogClass))
 #define WEBKIT_IS_AUTHENTICATION_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_AUTHENTICATION_DIALOG))
-#define WEBKIT_AUTHENTICATION_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_AUTHENTICATION_DIALOG, WebKitAuthenticationDialogClass))
+#define WEBKIT_AUTHENTICATION_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_AUTHENTICATION_DIALOG, CyberKitAuthenticationDialogClass))
 
-typedef struct _WebKitAuthenticationDialog        WebKitAuthenticationDialog;
-typedef struct _WebKitAuthenticationDialogClass   WebKitAuthenticationDialogClass;
-typedef struct _WebKitAuthenticationDialogPrivate WebKitAuthenticationDialogPrivate;
+typedef struct _CyberKitAuthenticationDialog        CyberKitAuthenticationDialog;
+typedef struct _CyberKitAuthenticationDialogClass   CyberKitAuthenticationDialogClass;
+typedef struct _CyberKitAuthenticationDialogPrivate CyberKitAuthenticationDialogPrivate;
 
-struct _WebKitAuthenticationDialog {
-    WebKitWebViewDialog parent;
+struct _CyberKitAuthenticationDialog {
+    CyberKitWebViewDialog parent;
 
     /*< private >*/
-    WebKitAuthenticationDialogPrivate* priv;
+    CyberKitAuthenticationDialogPrivate* priv;
 };
 
-struct _WebKitAuthenticationDialogClass {
-    WebKitWebViewDialogClass parentClass;
+struct _CyberKitAuthenticationDialogClass {
+    CyberKitWebViewDialogClass parentClass;
 };
 
 GType webkit_authentication_dialog_get_type();
-GtkWidget* webkitAuthenticationDialogNew(WebKitAuthenticationRequest*, CredentialStorageMode);
+GtkWidget* webkitAuthenticationDialogNew(CyberKitAuthenticationRequest*, CredentialStorageMode);
 
 G_END_DECLS

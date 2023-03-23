@@ -40,7 +40,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://drafts.csswg.org/css-syntax/#input-preprocessing
 String CSSTokenizer::preprocessString(const String& string)
@@ -868,4 +868,4 @@ StringView CSSTokenizer::registerString(const String& string)
     return string;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

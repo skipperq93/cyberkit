@@ -23,7 +23,7 @@
 #include "RectBase.h"
 #include <wtf/text/StringConcatenate.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Quad final : public RectBase {
 public:
@@ -51,4 +51,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

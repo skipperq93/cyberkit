@@ -29,7 +29,7 @@
 
 #include "HTMLDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaDocument final : public HTMLDocument {
     WTF_MAKE_ISO_ALLOCATED(MediaDocument);
@@ -57,11 +57,11 @@ private:
     String m_outgoingReferrer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MediaDocument)
-    static bool isType(const WebCore::Document& document) { return document.isMediaDocument(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Document>(node) && isType(downcast<WebCore::Document>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MediaDocument)
+    static bool isType(const CyberCore::Document& document) { return document.isMediaDocument(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Document>(node) && isType(downcast<CyberCore::Document>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO)

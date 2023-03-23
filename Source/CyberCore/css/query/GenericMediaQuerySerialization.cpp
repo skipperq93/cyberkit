@@ -28,7 +28,7 @@
 #include "CSSMarkup.h"
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace MQ {
 
 static void serialize(StringBuilder& builder, const QueryInParens& queryInParens)

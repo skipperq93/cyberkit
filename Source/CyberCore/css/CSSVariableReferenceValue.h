@@ -33,7 +33,7 @@
 #include "CSSValue.h"
 #include "CSSValueKeywords.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserToken;
 class CSSParserTokenRange;
@@ -73,6 +73,6 @@ private:
     const CSSParserContext m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSVariableReferenceValue, isVariableReferenceValue())

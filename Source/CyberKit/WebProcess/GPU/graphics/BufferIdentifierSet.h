@@ -29,7 +29,7 @@
 
 #include <CyberCore/RenderingResourceIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct BufferIdentifierSet {
     std::optional<CyberCore::RenderingResourceIdentifier> front;
@@ -37,6 +37,6 @@ struct BufferIdentifierSet {
     std::optional<CyberCore::RenderingResourceIdentifier> secondaryBack;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

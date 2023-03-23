@@ -31,7 +31,7 @@
 #include "AccessibilityTable.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityTableCell;
 class AccessibilityTableHeaderContainer;
@@ -57,6 +57,6 @@ private:
     bool addTableCellChild(AXCoreObject*, HashSet<AccessibilityObject*>& appendedRows, unsigned& columnCount);
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityARIAGrid, isAccessibilityARIAGridInstance())

@@ -27,7 +27,7 @@
 
 // WIRConstants are "Web Inspector Relay" constants shared between
 // the WebInspector framework on the OS X side, webinspectord, and
-// iOS WebKit on the device side.
+// iOS CyberKit on the device side.
 
 #define WIRXPCMachPortName                      "com.apple.webinspector"
 #define WIRXPCDebuggerServiceName               "com.apple.webinspector.debugger"
@@ -83,7 +83,7 @@
 #define WIRTypeJavaScript                       @"WIRTypeJavaScript"
 #define WIRTypePage                             @"WIRTypePage"
 #define WIRTypeServiceWorker                    @"WIRTypeServiceWorker"
-#define WIRTypeWeb                              @"WIRTypeWeb" // COMPATIBILITY (iOS 13): "Web" was split into "Page" (WebCore::Page) and "WebPage" (WebKit::WebPageProxy).
+#define WIRTypeWeb                              @"WIRTypeWeb" // COMPATIBILITY (iOS 13): "Web" was split into "Page" (CyberCore::Page) and "WebPage" (CyberKit::WebPageProxy).
 #define WIRTypeWebPage                          @"WIRTypeWebPage"
 #define WIRAutomaticallyPause                   @"WIRAutomaticallyPause"
 #define WIRMessageDataTypeChunkSupportedKey     @"WIRMessageDataTypeChunkSupportedKey"
@@ -124,7 +124,7 @@
 #define WIRSimulatorProductVersionKey           @"WIRSimulatorProductVersionKey"
 #define WIRSimulatorNameKey                     @"WIRSimulatorNameKey"
 
-// These definitions are shared between webinspectord and WebKit.
+// These definitions are shared between webinspectord and CyberKit.
 
 #define WIRPermissionDenied                     @"WIRPermissionDenied"
 #define WIRProxyApplicationParentPIDKey         @"WIRProxyApplicationParentPID"

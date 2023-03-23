@@ -27,7 +27,7 @@
 #import "WKObject.h"
 #import "_WKCustomHeaderFields.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::CustomHeaderFields> {
     using WrapperClass = _WKCustomHeaderFields;

@@ -18,9 +18,9 @@
  */
 
 #include "config.h"
-#include "WebKitPrintCustomWidget.h"
+#include "CyberKitPrintCustomWidget.h"
 
-#include "WebKitPrintCustomWidgetPrivate.h"
+#include "CyberKitPrintCustomWidgetPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 #include <wtf/glib/GRefPtr.h>
@@ -28,14 +28,14 @@
 #include <wtf/text/CString.h>
 
 /**
- * WebKitPrintCustomWidget:
- * @See_also: #WebKitPrintOperation
+ * CyberKitPrintCustomWidget:
+ * @See_also: #CyberKitPrintOperation
  *
  * Allows to embed a custom widget in print dialog.
  *
- * A WebKitPrintCustomWidget allows to embed a custom widget in the print
- * dialog by connecting to the #WebKitPrintOperation::create-custom-widget
- * signal, creating a new WebKitPrintCustomWidget with
+ * A CyberKitPrintCustomWidget allows to embed a custom widget in the print
+ * dialog by connecting to the #CyberKitPrintOperation::create-custom-widget
+ * signal, creating a new CyberKitPrintCustomWidget with
  * webkit_print_custom_widget_new() and returning it from there. You can later
  * use webkit_print_operation_run_dialog() to display the dialog.
  *
@@ -67,18 +67,18 @@ enum {
     PROP_TITLE
 };
 
-struct _WebKitPrintCustomWidgetPrivate {
+struct _CyberKitPrintCustomWidgetPrivate {
     CString title;
     GRefPtr<GtkWidget> widget;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_TYPE(WebKitPrintCustomWidget, webkit_print_custom_widget, G_TYPE_OBJECT)
+WEBKIT_DEFINE_TYPE(CyberKitPrintCustomWidget, webkit_print_custom_widget, G_TYPE_OBJECT)
 
 static void webkitPrintCustomWidgetGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitPrintCustomWidget* printCustomWidget = WEBKIT_PRINT_CUSTOM_WIDGET(object);
+    CyberKitPrintCustomWidget* printCustomWidget = WEBKIT_PRINT_CUSTOM_WIDGET(object);
 
     switch (propId) {
     case PROP_WIDGET:
@@ -94,7 +94,7 @@ static void webkitPrintCustomWidgetGetProperty(GObject* object, guint propId, GV
 
 static void webkitPrintCustomWidgetSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitPrintCustomWidget* printCustomWidget = WEBKIT_PRINT_CUSTOM_WIDGET(object);
+    CyberKitPrintCustomWidget* printCustomWidget = WEBKIT_PRINT_CUSTOM_WIDGET(object);
 
     switch (propId) {
     case PROP_WIDGET:
@@ -108,14 +108,14 @@ static void webkitPrintCustomWidgetSetProperty(GObject* object, guint propId, co
     }
 }
 
-static void webkit_print_custom_widget_class_init(WebKitPrintCustomWidgetClass* printCustomWidgetClass)
+static void webkit_print_custom_widget_class_init(CyberKitPrintCustomWidgetClass* printCustomWidgetClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(printCustomWidgetClass);
     objectClass->get_property = webkitPrintCustomWidgetGetProperty;
     objectClass->set_property = webkitPrintCustomWidgetSetProperty;
 
     /**
-     * WebKitPrintCustomWidget:widget:
+     * CyberKitPrintCustomWidget:widget:
      *
      * The custom #GtkWidget that will be embedded in the dialog.
      *
@@ -133,7 +133,7 @@ static void webkit_print_custom_widget_class_init(WebKitPrintCustomWidgetClass* 
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 
     /**
-     * WebKitPrintCustomWidget:title:
+     * CyberKitPrintCustomWidget:title:
      *
      * The title of the custom widget.
      *
@@ -151,8 +151,8 @@ static void webkit_print_custom_widget_class_init(WebKitPrintCustomWidgetClass* 
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 
     /**
-     * WebKitPrintCustomWidget::update:
-     * @print_custom_widget: the #WebKitPrintCustomWidget on which the signal was emitted
+     * CyberKitPrintCustomWidget::update:
+     * @print_custom_widget: the #CyberKitPrintCustomWidget on which the signal was emitted
      * @page_setup: actual page setup
      * @print_settings: actual print settings
      *
@@ -169,15 +169,15 @@ static void webkit_print_custom_widget_class_init(WebKitPrintCustomWidgetClass* 
             "update",
             G_TYPE_FROM_CLASS(printCustomWidgetClass),
             G_SIGNAL_RUN_LAST,
-            G_STRUCT_OFFSET(WebKitPrintCustomWidgetClass, update),
+            G_STRUCT_OFFSET(CyberKitPrintCustomWidgetClass, update),
             0, 0,
             g_cclosure_marshal_generic,
             G_TYPE_NONE, 2,
             GTK_TYPE_PAGE_SETUP, GTK_TYPE_PRINT_SETTINGS);
 
     /**
-     * WebKitPrintCustomWidget::apply:
-     * @print_custom_widget: the #WebKitPrintCustomWidget on which the signal was emitted
+     * CyberKitPrintCustomWidget::apply:
+     * @print_custom_widget: the #CyberKitPrintCustomWidget on which the signal was emitted
      *
      * Emitted right before the printing will start. You should read the information
      * from the widget and update the content based on it if necessary. The widget
@@ -192,7 +192,7 @@ static void webkit_print_custom_widget_class_init(WebKitPrintCustomWidgetClass* 
             "apply",
             G_TYPE_FROM_CLASS(printCustomWidgetClass),
             G_SIGNAL_RUN_LAST,
-            G_STRUCT_OFFSET(WebKitPrintCustomWidgetClass, apply),
+            G_STRUCT_OFFSET(CyberKitPrintCustomWidgetClass, apply),
             0, 0,
             g_cclosure_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
@@ -203,20 +203,20 @@ static void webkit_print_custom_widget_class_init(WebKitPrintCustomWidgetClass* 
  * @widget: a #GtkWidget
  * @title: a @widget's title
  *
- * Create a new #WebKitPrintCustomWidget with given @widget and @title.
+ * Create a new #CyberKitPrintCustomWidget with given @widget and @title.
  *
  * The @widget
  * ownership is taken and it is destroyed together with the dialog even if this
  * object could still be alive at that point. You typically want to pass a container
  * widget with multiple widgets in it.
  *
- * Returns: (transfer full): a new #WebKitPrintOperation.
+ * Returns: (transfer full): a new #CyberKitPrintOperation.
  *
  * Since: 2.16
  *
  * Deprecated: 2.40
  */
-WebKitPrintCustomWidget* webkit_print_custom_widget_new(GtkWidget* widget, const char* title)
+CyberKitPrintCustomWidget* webkit_print_custom_widget_new(GtkWidget* widget, const char* title)
 {
     g_return_val_if_fail(GTK_IS_WIDGET(widget), nullptr);
     g_return_val_if_fail(title, nullptr);
@@ -226,15 +226,15 @@ WebKitPrintCustomWidget* webkit_print_custom_widget_new(GtkWidget* widget, const
 
 /**
  * webkit_print_custom_widget_get_widget:
- * @print_custom_widget: a #WebKitPrintCustomWidget
+ * @print_custom_widget: a #CyberKitPrintCustomWidget
  *
- * Return the value of #WebKitPrintCustomWidget:widget property.
+ * Return the value of #CyberKitPrintCustomWidget:widget property.
  *
- * Return the value of #WebKitPrintCustomWidget:widget property for the given
+ * Return the value of #CyberKitPrintCustomWidget:widget property for the given
  * @print_custom_widget object. The returned value will always be valid if called
- * from #WebKitPrintCustomWidget::apply or #WebKitPrintCustomWidget::update
+ * from #CyberKitPrintCustomWidget::apply or #CyberKitPrintCustomWidget::update
  * callbacks, but it will be %NULL if called after the
- * #WebKitPrintCustomWidget::apply signal is emitted.
+ * #CyberKitPrintCustomWidget::apply signal is emitted.
  *
  * Returns: (transfer none): a #GtkWidget.
  *
@@ -242,7 +242,7 @@ WebKitPrintCustomWidget* webkit_print_custom_widget_new(GtkWidget* widget, const
  *
  * Deprecated: 2.40
  */
-GtkWidget* webkit_print_custom_widget_get_widget(WebKitPrintCustomWidget* printCustomWidget)
+GtkWidget* webkit_print_custom_widget_get_widget(CyberKitPrintCustomWidget* printCustomWidget)
 {
     g_return_val_if_fail(WEBKIT_IS_PRINT_CUSTOM_WIDGET(printCustomWidget), nullptr);
 
@@ -251,11 +251,11 @@ GtkWidget* webkit_print_custom_widget_get_widget(WebKitPrintCustomWidget* printC
 
 /**
  * webkit_print_custom_widget_get_title:
- * @print_custom_widget: a #WebKitPrintCustomWidget
+ * @print_custom_widget: a #CyberKitPrintCustomWidget
  *
- * Return the value of #WebKitPrintCustomWidget:title property.
+ * Return the value of #CyberKitPrintCustomWidget:title property.
  *
- * Return the value of #WebKitPrintCustomWidget:title property for the given
+ * Return the value of #CyberKitPrintCustomWidget:title property for the given
  * @print_custom_widget object.
  *
  * Returns: Title of the @print_custom_widget.
@@ -264,20 +264,20 @@ GtkWidget* webkit_print_custom_widget_get_widget(WebKitPrintCustomWidget* printC
  *
  * Deprecated: 2.40
  */
-const gchar* webkit_print_custom_widget_get_title(WebKitPrintCustomWidget* printCustomWidget)
+const gchar* webkit_print_custom_widget_get_title(CyberKitPrintCustomWidget* printCustomWidget)
 {
     g_return_val_if_fail(WEBKIT_IS_PRINT_CUSTOM_WIDGET(printCustomWidget), nullptr);
 
     return printCustomWidget->priv->title.data();
 }
 
-void webkitPrintCustomWidgetEmitCustomWidgetApplySignal(WebKitPrintCustomWidget* printCustomWidget)
+void webkitPrintCustomWidgetEmitCustomWidgetApplySignal(CyberKitPrintCustomWidget* printCustomWidget)
 {
     g_signal_emit(printCustomWidget, signals[APPLY], 0);
     printCustomWidget->priv->widget = nullptr;
 }
 
-void webkitPrintCustomWidgetEmitUpdateCustomWidgetSignal(WebKitPrintCustomWidget *printCustomWidget, GtkPageSetup *pageSetup, GtkPrintSettings *printSettings)
+void webkitPrintCustomWidgetEmitUpdateCustomWidgetSignal(CyberKitPrintCustomWidget *printCustomWidget, GtkPageSetup *pageSetup, GtkPrintSettings *printSettings)
 {
     g_signal_emit(printCustomWidget, signals[UPDATE], 0, pageSetup, printSettings);
 }

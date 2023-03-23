@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ToggleEvent);
 
@@ -66,4 +66,4 @@ EventInterface ToggleEvent::eventInterface() const
     return ToggleEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

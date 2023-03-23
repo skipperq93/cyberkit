@@ -34,7 +34,7 @@
 #include "SharedBuffer.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileReaderLoaderClient : public CanMakeWeakPtr<FileReaderLoaderClient> {
 public:
@@ -47,4 +47,4 @@ public:
     virtual void didFail(ExceptionCode errorCode) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

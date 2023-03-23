@@ -29,7 +29,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBActiveDOMObject : public ActiveDOMObject {
 public:
@@ -89,4 +89,4 @@ private:
     Lock m_scriptExecutionContextLock;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

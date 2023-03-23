@@ -33,7 +33,7 @@
 #include "ScriptExecutionContextIdentifier.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<RTCDataChannelRemoteHandler> RTCDataChannelRemoteHandler::create(RTCDataChannelIdentifier remoteIdentifier, RefPtr<RTCDataChannelRemoteHandlerConnection>&& connection)
 {
@@ -125,6 +125,6 @@ void RTCDataChannelRemoteHandler::close()
     m_connection->close(m_remoteIdentifier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

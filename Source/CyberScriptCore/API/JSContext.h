@@ -24,7 +24,7 @@
  */
 
 #import <CyberScriptCore/JavaScript.h>
-#import <CyberScriptCore/WebKitAvailability.h>
+#import <CyberScriptCore/CyberKitAvailability.h>
 
 #if JSC_OBJC_API_ENABLED
 
@@ -129,7 +129,7 @@ JSC_CLASS_AVAILABLE(macos(10.9), ios(7.0))
 @property
 @abstract Get the global object of the context.
 @discussion This method retrieves the global object of the JavaScript execution context.
- Instances of JSContext originating from WebKit will return a reference to the
+ Instances of JSContext originating from CyberKit will return a reference to the
  WindowProxy object.
 @result The global object.
 */

@@ -32,7 +32,7 @@
 #include "ColorSerialization.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class GraphicsContext;
@@ -105,4 +105,4 @@ inline String CanvasStyle::color() const
     return serializationForHTML(std::get<Color>(m_style));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

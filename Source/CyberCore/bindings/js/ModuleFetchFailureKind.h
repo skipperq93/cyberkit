@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ModuleFetchFailureKind {
     WasPropagatedError,
@@ -34,5 +34,5 @@ enum class ModuleFetchFailureKind {
     WasResolveError,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

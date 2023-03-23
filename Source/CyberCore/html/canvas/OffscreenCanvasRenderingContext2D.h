@@ -31,7 +31,7 @@
 
 #include "OffscreenCanvas.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OffscreenCanvasRenderingContext2D final : public CanvasRenderingContext2DBase {
     WTF_MAKE_ISO_ALLOCATED(OffscreenCanvasRenderingContext2D);
@@ -56,8 +56,8 @@ private:
     const FontProxy* fontProxy() final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::OffscreenCanvasRenderingContext2D, isOffscreen2d())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::OffscreenCanvasRenderingContext2D, isOffscreen2d())
 
 #endif

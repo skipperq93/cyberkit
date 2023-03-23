@@ -29,13 +29,13 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpHeaderExtensionParameters {
     String uri;
     unsigned short id;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

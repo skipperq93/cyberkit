@@ -33,7 +33,7 @@ namespace PAL {
 class TextCodec;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMetaCharsetParser {
     WTF_MAKE_NONCOPYABLE(HTMLMetaCharsetParser); WTF_MAKE_FAST_ALLOCATED;
@@ -59,4 +59,4 @@ private:
     PAL::TextEncoding m_encoding;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

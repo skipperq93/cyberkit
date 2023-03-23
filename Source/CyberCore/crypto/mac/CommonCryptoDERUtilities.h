@@ -33,7 +33,7 @@
 // The following constants and functions are for customized DER implementations.
 // They are not intended to be used outside Crypto codes, and should be removed
 // once the above bug is fixed.
-namespace WebCore {
+namespace CyberCore {
 
 // Per X.690 08/2015: https://www.itu.int/rec/T-REC-X.680-X.693/en
 static const unsigned char BitStringMark = 0x03;
@@ -51,6 +51,6 @@ size_t extraBytesNeededForEncodedLength(size_t);
 void addEncodedASN1Length(Vector<uint8_t>&, size_t);
 size_t bytesNeededForEncodedLength(size_t);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

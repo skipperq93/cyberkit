@@ -24,52 +24,52 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 messages -> MediaPlayerPrivateRemote NotRefCounted {
-    NetworkStateChanged(struct WebKit::RemoteMediaPlayerState state)
-    ReadyStateChanged(struct WebKit::RemoteMediaPlayerState state)
+    NetworkStateChanged(struct CyberKit::RemoteMediaPlayerState state)
+    ReadyStateChanged(struct CyberKit::RemoteMediaPlayerState state)
     FirstVideoFrameAvailable()
     VolumeChanged(double volume)
     MuteChanged(bool mute)
-    TimeChanged(struct WebKit::RemoteMediaPlayerState state)
-    DurationChanged(struct WebKit::RemoteMediaPlayerState state)
+    TimeChanged(struct CyberKit::RemoteMediaPlayerState state)
+    DurationChanged(struct CyberKit::RemoteMediaPlayerState state)
     RateChanged(double rate)
     PlaybackStateChanged(bool paused, MediaTime mediaTime, MonotonicTime wallTime)
     EngineFailedToLoad(int64_t platformErrorCode)
-    UpdateCachedState(struct WebKit::RemoteMediaPlayerState state)
-    CharacteristicChanged(struct WebKit::RemoteMediaPlayerState state)
+    UpdateCachedState(struct CyberKit::RemoteMediaPlayerState state)
+    CharacteristicChanged(struct CyberKit::RemoteMediaPlayerState state)
     SizeChanged(CyberCore::FloatSize naturalSize)
     RenderingModeChanged()
 
     CurrentTimeChanged(MediaTime mediaTime, MonotonicTime wallTime, bool timeIsProgressing)
 
-    AddRemoteAudioTrack(WebKit::TrackPrivateRemoteIdentifier trackID, struct WebKit::AudioTrackPrivateRemoteConfiguration configuration)
-    RemoveRemoteAudioTrack(WebKit::TrackPrivateRemoteIdentifier trackID)
-    RemoteAudioTrackConfigurationChanged(WebKit::TrackPrivateRemoteIdentifier trackID, struct WebKit::AudioTrackPrivateRemoteConfiguration configuration)
+    AddRemoteAudioTrack(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberKit::AudioTrackPrivateRemoteConfiguration configuration)
+    RemoveRemoteAudioTrack(CyberKit::TrackPrivateRemoteIdentifier trackID)
+    RemoteAudioTrackConfigurationChanged(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberKit::AudioTrackPrivateRemoteConfiguration configuration)
 
-    AddRemoteVideoTrack(WebKit::TrackPrivateRemoteIdentifier trackID, struct WebKit::VideoTrackPrivateRemoteConfiguration configuration)
-    RemoveRemoteVideoTrack(WebKit::TrackPrivateRemoteIdentifier trackID)
-    RemoteVideoTrackConfigurationChanged(WebKit::TrackPrivateRemoteIdentifier trackID, struct WebKit::VideoTrackPrivateRemoteConfiguration configuration)
+    AddRemoteVideoTrack(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberKit::VideoTrackPrivateRemoteConfiguration configuration)
+    RemoveRemoteVideoTrack(CyberKit::TrackPrivateRemoteIdentifier trackID)
+    RemoteVideoTrackConfigurationChanged(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberKit::VideoTrackPrivateRemoteConfiguration configuration)
 
-    AddRemoteTextTrack(WebKit::TrackPrivateRemoteIdentifier trackID, struct WebKit::TextTrackPrivateRemoteConfiguration configuration)
-    RemoveRemoteTextTrack(WebKit::TrackPrivateRemoteIdentifier trackID)
-    RemoteTextTrackConfigurationChanged(WebKit::TrackPrivateRemoteIdentifier trackID, struct WebKit::TextTrackPrivateRemoteConfiguration configuration)
+    AddRemoteTextTrack(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberKit::TextTrackPrivateRemoteConfiguration configuration)
+    RemoveRemoteTextTrack(CyberKit::TrackPrivateRemoteIdentifier trackID)
+    RemoteTextTrackConfigurationChanged(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberKit::TextTrackPrivateRemoteConfiguration configuration)
 
-    ParseWebVTTFileHeader(WebKit::TrackPrivateRemoteIdentifier trackID, String header)
-    ParseWebVTTCueData(WebKit::TrackPrivateRemoteIdentifier trackID, IPC::DataReference data)
-    ParseWebVTTCueDataStruct(WebKit::TrackPrivateRemoteIdentifier trackID, CyberCore::ISOWebVTTCue cueData)
+    ParseWebVTTFileHeader(CyberKit::TrackPrivateRemoteIdentifier trackID, String header)
+    ParseWebVTTCueData(CyberKit::TrackPrivateRemoteIdentifier trackID, IPC::DataReference data)
+    ParseWebVTTCueDataStruct(CyberKit::TrackPrivateRemoteIdentifier trackID, CyberCore::ISOWebVTTCue cueData)
 
-    AddDataCue(WebKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, IPC::DataReference data)
+    AddDataCue(CyberKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, IPC::DataReference data)
 #if ENABLE(DATACUE_VALUE)
-    AddDataCueWithType(WebKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, CyberCore::SerializedPlatformDataCueValue cueData, String type)
-    UpdateDataCue(WebKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, CyberCore::SerializedPlatformDataCueValue cueData)
-    RemoveDataCue(WebKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, CyberCore::SerializedPlatformDataCueValue cueData)
+    AddDataCueWithType(CyberKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, CyberCore::SerializedPlatformDataCueValue cueData, String type)
+    UpdateDataCue(CyberKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, CyberCore::SerializedPlatformDataCueValue cueData)
+    RemoveDataCue(CyberKit::TrackPrivateRemoteIdentifier trackID, MediaTime start, MediaTime end, CyberCore::SerializedPlatformDataCueValue cueData)
 #endif
 
-    AddGenericCue(WebKit::TrackPrivateRemoteIdentifier trackID, struct CyberCore::GenericCueData cue)
-    UpdateGenericCue(WebKit::TrackPrivateRemoteIdentifier trackID, struct CyberCore::GenericCueData cue)
-    RemoveGenericCue(WebKit::TrackPrivateRemoteIdentifier trackID, struct CyberCore::GenericCueData cue)
+    AddGenericCue(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberCore::GenericCueData cue)
+    UpdateGenericCue(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberCore::GenericCueData cue)
+    RemoveGenericCue(CyberKit::TrackPrivateRemoteIdentifier trackID, struct CyberCore::GenericCueData cue)
 
-    RequestResource(WebKit::RemoteMediaResourceIdentifier remoteMediaResourceIdentifier, CyberCore::ResourceRequest request, enum:uint8_t CyberCore::PlatformMediaResourceLoader::LoadOptions options)
-    RemoveResource(WebKit::RemoteMediaResourceIdentifier remoteMediaResourceIdentifier)
+    RequestResource(CyberKit::RemoteMediaResourceIdentifier remoteMediaResourceIdentifier, CyberCore::ResourceRequest request, enum:uint8_t CyberCore::PlatformMediaResourceLoader::LoadOptions options)
+    RemoveResource(CyberKit::RemoteMediaResourceIdentifier remoteMediaResourceIdentifier)
     SendH2Ping(URL url) -> (Expected<Seconds, CyberCore::ResourceError> result)
     ResourceNotSupported()
 
@@ -93,8 +93,8 @@ messages -> MediaPlayerPrivateRemote NotRefCounted {
 #endif
 
 #if PLATFORM(COCOA)
-    PushVideoFrameMetadata(struct CyberCore::VideoFrameMetadata metadata, WebKit::RemoteVideoFrameProxy::Properties frameProperties);
-    LayerHostingContextIdChanged(std::optional<WebKit::LayerHostingContextID> inlineLayerHostingContextId, CyberCore::IntSize presentationSize);
+    PushVideoFrameMetadata(struct CyberCore::VideoFrameMetadata metadata, CyberKit::RemoteVideoFrameProxy::Properties frameProperties);
+    LayerHostingContextIdChanged(std::optional<CyberKit::LayerHostingContextID> inlineLayerHostingContextId, CyberCore::IntSize presentationSize);
 #endif
 }
 

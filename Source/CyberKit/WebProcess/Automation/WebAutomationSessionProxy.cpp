@@ -67,7 +67,7 @@
 #include <CyberCore/HTMLDataListElement.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -1046,4 +1046,4 @@ void WebAutomationSessionProxy::deleteCookie(CyberCore::PageIdentifier pageID, s
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

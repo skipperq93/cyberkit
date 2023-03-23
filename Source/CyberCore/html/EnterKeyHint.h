@@ -28,7 +28,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class EnterKeyHint : uint8_t {
     Unspecified,
@@ -44,21 +44,21 @@ enum class EnterKeyHint : uint8_t {
 EnterKeyHint enterKeyHintForAttributeValue(StringView);
 String attributeValueForEnterKeyHint(EnterKeyHint);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::EnterKeyHint> {
+template<> struct EnumTraits<CyberCore::EnterKeyHint> {
     using values = EnumValues<
-        WebCore::EnterKeyHint,
-        WebCore::EnterKeyHint::Unspecified,
-        WebCore::EnterKeyHint::Enter,
-        WebCore::EnterKeyHint::Done,
-        WebCore::EnterKeyHint::Go,
-        WebCore::EnterKeyHint::Next,
-        WebCore::EnterKeyHint::Previous,
-        WebCore::EnterKeyHint::Search,
-        WebCore::EnterKeyHint::Send
+        CyberCore::EnterKeyHint,
+        CyberCore::EnterKeyHint::Unspecified,
+        CyberCore::EnterKeyHint::Enter,
+        CyberCore::EnterKeyHint::Done,
+        CyberCore::EnterKeyHint::Go,
+        CyberCore::EnterKeyHint::Next,
+        CyberCore::EnterKeyHint::Previous,
+        CyberCore::EnterKeyHint::Search,
+        CyberCore::EnterKeyHint::Send
     >;
 };
 

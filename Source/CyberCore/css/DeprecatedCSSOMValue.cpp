@@ -29,7 +29,7 @@
 #include "DeprecatedCSSOMPrimitiveValue.h"
 #include "DeprecatedCSSOMValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void DeprecatedCSSOMValue::operator delete(DeprecatedCSSOMValue* value, std::destroying_delete_t)
 {

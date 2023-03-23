@@ -72,7 +72,7 @@
 #include <CyberKitAdditions/MediaControlsHostAdditions.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& MediaControlsHost::automaticKeyword()
 {
@@ -772,6 +772,6 @@ bool MediaControlsHost::showMediaControlsContextMenu(HTMLElement& target, String
 
 #endif // ENABLE(MODERN_MEDIA_CONTROLS)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

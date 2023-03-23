@@ -39,7 +39,7 @@
 #error Unknown network backend
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void InspectorResourceURLSchemeHandler::platformStartTask(WebPageProxy&, WebURLSchemeTask& task)
 {
@@ -65,4 +65,4 @@ void InspectorResourceURLSchemeHandler::platformStartTask(WebPageProxy&, WebURLS
     task.didComplete({ });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

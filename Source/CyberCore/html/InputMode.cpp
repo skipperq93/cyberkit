@@ -29,7 +29,7 @@
 #include "CommonAtomStrings.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 InputMode inputModeForAttributeValue(const AtomString& value)
 {
@@ -125,4 +125,4 @@ const AtomString& search()
 
 } // namespace InputModeNames
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -51,7 +51,7 @@
 #include <CyberCore/ScreenCaptureKitCaptureSource.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if ENABLE(MEDIA_STREAM)
@@ -1022,4 +1022,4 @@ String convertEnumerationToString(UserMediaPermissionRequestManagerProxy::Reques
     return values[static_cast<size_t>(enumerationValue)];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

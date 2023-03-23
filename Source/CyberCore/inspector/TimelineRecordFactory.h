@@ -37,7 +37,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class FloatQuad;
@@ -66,4 +66,4 @@ private:
     TimelineRecordFactory() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

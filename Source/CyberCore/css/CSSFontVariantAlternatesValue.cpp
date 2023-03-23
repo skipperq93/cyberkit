@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontVariantAlternatesValue::CSSFontVariantAlternatesValue(FontVariantAlternates&& alternates)
     : CSSValue(FontVariantAlternatesClass)

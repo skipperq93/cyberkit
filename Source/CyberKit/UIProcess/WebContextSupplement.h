@@ -26,7 +26,7 @@
 #ifndef WebContextSupplement_h
 #define WebContextSupplement_h
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcessProxy;
 class WebProcessPool;
@@ -60,6 +60,6 @@ private:
     WebProcessPool* m_processPool;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebContextSupplement_h

@@ -28,7 +28,7 @@
 
 #include "JSDOMGlobalObjectInlines.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 DOMGuardedObject::DOMGuardedObject(JSDOMGlobalObject& globalObject, JSCell& guarded)

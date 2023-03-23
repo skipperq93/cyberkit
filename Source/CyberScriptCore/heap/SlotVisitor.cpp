@@ -641,7 +641,7 @@ NEVER_INLINE SlotVisitor::SharedDrainResult SlotVisitor::drainFromShared(SharedD
                     // - It's possible that the mutator will allocate soon. Then it will check if we
                     //   reached termination. This is the most likely outcome in programs that allocate
                     //   a lot.
-                    // - WebCore never releases access. But WebCore has a runloop. The runloop will check
+                    // - CyberCore never releases access. But CyberCore has a runloop. The runloop will check
                     //   if we reached termination.
                     // So, this tells the runloop that it's got things to do.
                     m_heap.m_stopIfNecessaryTimer->scheduleSoon();

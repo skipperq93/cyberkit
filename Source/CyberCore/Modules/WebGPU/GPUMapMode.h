@@ -30,7 +30,7 @@
 #include <pal/graphics/WebGPU/WebGPUMapMode.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUMapModeFlags = uint32_t;
 

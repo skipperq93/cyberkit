@@ -24,7 +24,7 @@
 #include "TestTaggedWrapper.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_DECLARE_PTRTAG(TestTaggedWrapperPtrTag)
 class JSTestTaggedWrapper : public JSDOMWrapper<TestTaggedWrapper, SignedPtrTraits<TestTaggedWrapper, TestTaggedWrapperPtrTag>> {
@@ -91,4 +91,4 @@ template<> struct JSDOMWrapperConverterTraits<TestTaggedWrapper> {
     using ToWrappedReturnType = TestTaggedWrapper*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

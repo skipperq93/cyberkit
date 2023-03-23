@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUTextureFormat : uint8_t {
     // 8-bit formats

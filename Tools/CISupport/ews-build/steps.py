@@ -1208,7 +1208,7 @@ class CheckChangeRelevance(AnalyzeChange):
         re.compile(rb'Source/WebDriver', re.IGNORECASE),
         re.compile(rb'Source/WTF', re.IGNORECASE),
         re.compile(rb'Source/bmalloc', re.IGNORECASE),
-        re.compile(rb'Source/JavaScriptCore', re.IGNORECASE),
+        re.compile(rb'Source/CyberScriptCore', re.IGNORECASE),
         re.compile(rb'Source/ThirdParty', re.IGNORECASE),
         re.compile(rb'LayoutTests', re.IGNORECASE),
         re.compile(rb'Tools', re.IGNORECASE),
@@ -2938,7 +2938,7 @@ class CompileJSCWithoutChange(CompileJSC):
         return shell.Compile.evaluateCommand(self, cmd)
 
 
-class RunJavaScriptCoreTests(shell.Test, AddToLogMixin):
+class RunCyberScriptCoreTests(shell.Test, AddToLogMixin):
     name = 'jscore-test'
     description = ['jscore-tests running']
     descriptionDone = ['jscore-tests']
@@ -3051,7 +3051,7 @@ class RunJavaScriptCoreTests(shell.Test, AddToLogMixin):
         return super().getResultSummary()
 
 
-class RunJSCTestsWithoutChange(RunJavaScriptCoreTests):
+class RunJSCTestsWithoutChange(RunCyberScriptCoreTests):
     name = 'jscore-test-without-change'
     prefix = 'jsc_clean_tree_'
 

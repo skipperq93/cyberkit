@@ -27,7 +27,7 @@
 
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CSSValueID : uint16_t;
 
@@ -48,6 +48,6 @@ private:
     CSSValueID m_yValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSBackgroundRepeatValue, isBackgroundRepeatValue())

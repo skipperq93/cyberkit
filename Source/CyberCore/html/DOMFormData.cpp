@@ -35,7 +35,7 @@
 #include "HTMLFormControlElement.h"
 #include "HTMLFormElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DOMFormData::DOMFormData(ScriptExecutionContext* context, const PAL::TextEncoding& encoding)
     : ContextDestructionObserver(context)
@@ -200,4 +200,4 @@ std::optional<KeyValuePair<String, DOMFormData::FormDataEntryValue>> DOMFormData
     return makeKeyValuePair(item.name, item.data);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

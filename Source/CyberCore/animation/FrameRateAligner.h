@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameRateAligner {
     WTF_MAKE_FAST_ALLOCATED;
@@ -58,4 +58,4 @@ private:
     ReducedResolutionSeconds m_timestamp;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FileSystemEntry);
 
@@ -89,4 +89,4 @@ void FileSystemEntry::getParent(ScriptExecutionContext& context, RefPtr<FileSyst
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

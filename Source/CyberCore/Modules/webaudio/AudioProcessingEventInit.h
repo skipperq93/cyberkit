@@ -28,7 +28,7 @@
 #include "AudioBuffer.h"
 #include "EventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioProcessingEventInit : EventInit {
     double playbackTime;

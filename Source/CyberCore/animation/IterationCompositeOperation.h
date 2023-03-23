@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class IterationCompositeOperation : uint8_t { Replace, Accumulate };
 
-} // namespace WebCore
+} // namespace CyberCore

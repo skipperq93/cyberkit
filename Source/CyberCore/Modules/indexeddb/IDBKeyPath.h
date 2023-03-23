@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using IDBKeyPath = std::variant<String, Vector<String>>;
 bool isIDBKeyPathValid(const IDBKeyPath&);
@@ -48,4 +48,4 @@ void IDBParseKeyPath(const String&, Vector<String>&, IDBKeyPathParseError&);
 String loggingString(const IDBKeyPath&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

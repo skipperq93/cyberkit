@@ -35,7 +35,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 GeoclueGeolocationProvider::GeoclueGeolocationProvider()
     : m_destroyManagerLaterTimer(RunLoop::current(), this, &GeoclueGeolocationProvider::destroyManager)
@@ -305,4 +305,4 @@ void GeoclueGeolocationProvider::didFail(CString errorMessage)
         m_updateNotifyFunction({ }, errorMessage);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

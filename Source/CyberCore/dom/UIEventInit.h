@@ -29,7 +29,7 @@
 #include "WindowProxy.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct UIEventInit : public EventInit {
     RefPtr<WindowProxy> view;

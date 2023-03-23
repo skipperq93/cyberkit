@@ -29,9 +29,9 @@
 
 @interface _WKSessionState () {
 @package
-    WebKit::SessionState _sessionState;
+    CyberKit::SessionState _sessionState;
 }
 
-- (instancetype)_initWithSessionState:(WebKit::SessionState)sessionState;
+- (instancetype)_initWithSessionState:(CyberKit::SessionState)sessionState;
 
 @end

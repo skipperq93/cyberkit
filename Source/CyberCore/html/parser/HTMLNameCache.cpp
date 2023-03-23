@@ -26,7 +26,7 @@
 #include "config.h"
 #include "HTMLNameCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 HTMLNameCache::AtomStringCache& HTMLNameCache::atomStringCache()
 {
@@ -40,4 +40,4 @@ HTMLNameCache::QualifiedNameCache& HTMLNameCache::qualifiedNameCache()
     return cache.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

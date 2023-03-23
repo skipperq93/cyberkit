@@ -28,7 +28,7 @@
 #include "HTMLDivElement.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class YouTubeEmbedShadowElement final : public HTMLDivElement {
     WTF_MAKE_ISO_ALLOCATED(YouTubeEmbedShadowElement);
@@ -41,4 +41,4 @@ private:
     YouTubeEmbedShadowElement(Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

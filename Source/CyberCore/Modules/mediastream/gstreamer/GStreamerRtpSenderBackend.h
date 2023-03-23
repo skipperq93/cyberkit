@@ -27,7 +27,7 @@
 #include "RealtimeOutgoingVideoSourceGStreamer.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerPeerConnectionBackend;
 
@@ -103,6 +103,6 @@ private:
     GUniquePtr<GstStructure> m_initData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

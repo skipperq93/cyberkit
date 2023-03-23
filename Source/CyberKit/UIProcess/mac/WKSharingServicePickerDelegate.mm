@@ -48,12 +48,12 @@
     return delegate;
 }
 
-- (WebKit::WebContextMenuProxyMac*)menuProxy
+- (CyberKit::WebContextMenuProxyMac*)menuProxy
 {
     return _menuProxy;
 }
 
-- (void)setMenuProxy:(WebKit::WebContextMenuProxyMac*)menuProxy
+- (void)setMenuProxy:(CyberKit::WebContextMenuProxyMac*)menuProxy
 {
     _menuProxy = menuProxy;
 }

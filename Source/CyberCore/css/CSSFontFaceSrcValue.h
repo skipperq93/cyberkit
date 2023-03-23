@@ -30,7 +30,7 @@
 #include "CachedResourceHandle.h"
 #include "ResourceLoaderOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedFont;
 class FontLoadRequest;
@@ -79,7 +79,7 @@ private:
     CachedResourceHandle<CachedFont> m_cachedFont;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSFontFaceSrcLocalValue, isFontFaceSrcLocalValue())
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSFontFaceSrcResourceValue, isFontFaceSrcResourceValue())

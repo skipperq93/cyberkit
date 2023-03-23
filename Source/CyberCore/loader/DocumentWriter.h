@@ -33,7 +33,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class DocumentParser;
@@ -87,4 +87,4 @@ private:
     bool m_encodingWasChosenByUser { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

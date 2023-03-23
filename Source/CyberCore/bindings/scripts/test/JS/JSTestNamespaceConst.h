@@ -22,7 +22,7 @@
 
 #include "JSDOMWrapper.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestNamespaceConst : public JSDOMObject {
 public:
@@ -59,4 +59,4 @@ protected:
 
 
 
-} // namespace WebCore
+} // namespace CyberCore

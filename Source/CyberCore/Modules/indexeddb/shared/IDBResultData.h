@@ -36,7 +36,7 @@
 #include <wtf/ArgumentCoder.h>
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThreadSafeDataBuffer;
 
@@ -134,31 +134,31 @@ private:
     uint64_t m_resultInteger { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::IDBResultType> {
+template<> struct EnumTraits<CyberCore::IDBResultType> {
     using values = EnumValues<
-        WebCore::IDBResultType,
-        WebCore::IDBResultType::Error,
-        WebCore::IDBResultType::OpenDatabaseSuccess,
-        WebCore::IDBResultType::OpenDatabaseUpgradeNeeded,
-        WebCore::IDBResultType::DeleteDatabaseSuccess,
-        WebCore::IDBResultType::CreateObjectStoreSuccess,
-        WebCore::IDBResultType::DeleteObjectStoreSuccess,
-        WebCore::IDBResultType::ClearObjectStoreSuccess,
-        WebCore::IDBResultType::PutOrAddSuccess,
-        WebCore::IDBResultType::GetRecordSuccess,
-        WebCore::IDBResultType::GetAllRecordsSuccess,
-        WebCore::IDBResultType::GetCountSuccess,
-        WebCore::IDBResultType::DeleteRecordSuccess,
-        WebCore::IDBResultType::CreateIndexSuccess,
-        WebCore::IDBResultType::DeleteIndexSuccess,
-        WebCore::IDBResultType::OpenCursorSuccess,
-        WebCore::IDBResultType::IterateCursorSuccess,
-        WebCore::IDBResultType::RenameObjectStoreSuccess,
-        WebCore::IDBResultType::RenameIndexSuccess
+        CyberCore::IDBResultType,
+        CyberCore::IDBResultType::Error,
+        CyberCore::IDBResultType::OpenDatabaseSuccess,
+        CyberCore::IDBResultType::OpenDatabaseUpgradeNeeded,
+        CyberCore::IDBResultType::DeleteDatabaseSuccess,
+        CyberCore::IDBResultType::CreateObjectStoreSuccess,
+        CyberCore::IDBResultType::DeleteObjectStoreSuccess,
+        CyberCore::IDBResultType::ClearObjectStoreSuccess,
+        CyberCore::IDBResultType::PutOrAddSuccess,
+        CyberCore::IDBResultType::GetRecordSuccess,
+        CyberCore::IDBResultType::GetAllRecordsSuccess,
+        CyberCore::IDBResultType::GetCountSuccess,
+        CyberCore::IDBResultType::DeleteRecordSuccess,
+        CyberCore::IDBResultType::CreateIndexSuccess,
+        CyberCore::IDBResultType::DeleteIndexSuccess,
+        CyberCore::IDBResultType::OpenCursorSuccess,
+        CyberCore::IDBResultType::IterateCursorSuccess,
+        CyberCore::IDBResultType::RenameObjectStoreSuccess,
+        CyberCore::IDBResultType::RenameIndexSuccess
     >;
 };
 

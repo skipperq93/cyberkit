@@ -28,7 +28,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct CanvasActivityRecord {
     HashSet<String> textWritten;
     bool wasDataRead { false };
@@ -36,4 +36,4 @@ struct CanvasActivityRecord {
     WEBCORE_EXPORT bool recordWrittenOrMeasuredText(const String&);
     void mergeWith(const CanvasActivityRecord&);
 };
-} // namespace WebCore
+} // namespace CyberCore

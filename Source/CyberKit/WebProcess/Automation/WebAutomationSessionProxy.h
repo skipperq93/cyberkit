@@ -40,7 +40,7 @@ class AccessibilityObject;
 class Element;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebPage;
@@ -94,4 +94,4 @@ private:
     HashMap<CyberCore::FrameIdentifier, RefPtr<WebAutomationDOMWindowObserver>> m_frameObservers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

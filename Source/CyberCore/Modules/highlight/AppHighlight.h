@@ -31,14 +31,14 @@
 #include <wtf/persistence/PersistentCoders.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CreateNewGroupForHighlight : bool { No, Yes };
 
 enum class HighlightRequestOriginatedInApp : bool { No, Yes };
 
 struct AppHighlight {
-    Ref<WebCore::FragmentedSharedBuffer> highlight;
+    Ref<CyberCore::FragmentedSharedBuffer> highlight;
     std::optional<String> text;
     CreateNewGroupForHighlight isNewGroup;
     HighlightRequestOriginatedInApp requestOriginatedInApp;

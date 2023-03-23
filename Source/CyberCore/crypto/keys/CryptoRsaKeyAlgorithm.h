@@ -28,7 +28,7 @@
 #include "CryptoKeyAlgorithm.h"
 #include <CyberScriptCore/Uint8Array.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CryptoRsaKeyAlgorithm : CryptoKeyAlgorithm {
     // The length, in bits, of the RSA modulus

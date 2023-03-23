@@ -24,7 +24,7 @@
  */
 
 import SwiftUI
-import WebKit
+import CyberKit
 
 /// A view that displays interactive web content.
 ///

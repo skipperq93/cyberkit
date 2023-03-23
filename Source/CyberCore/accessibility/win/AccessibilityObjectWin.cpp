@@ -30,7 +30,7 @@
 
 #include "AXObjectCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void AccessibilityObject::detachPlatformWrapper(AccessibilityDetachmentType detachmentType)
 {
@@ -54,6 +54,6 @@ AccessibilityObjectInclusion AccessibilityObject::accessibilityPlatformIncludesO
     return AccessibilityObjectInclusion::DefaultBehavior;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ACCESSIBILITY)

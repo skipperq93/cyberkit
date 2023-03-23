@@ -368,19 +368,19 @@ class LogicalPropertyGroup:
 
     logical_property_group_resolvers = {
         "logical": {
-            # Order matches LogicalBoxAxis enum in Source/WebCore/platform/text/WritingMode.h.
+            # Order matches LogicalBoxAxis enum in Source/CyberCore/platform/text/WritingMode.h.
             "axis": ["inline", "block"],
-            # Order matches LogicalBoxSide enum in Source/WebCore/platform/text/WritingMode.h.
+            # Order matches LogicalBoxSide enum in Source/CyberCore/platform/text/WritingMode.h.
             "side": ["block-start", "inline-end", "block-end", "inline-start"],
-            # Order matches LogicalBoxCorner enum in Source/WebCore/platform/text/WritingMode.h.
+            # Order matches LogicalBoxCorner enum in Source/CyberCore/platform/text/WritingMode.h.
             "corner": ["start-start", "start-end", "end-start", "end-end"],
         },
         "physical": {
-            # Order matches BoxAxis enum in Source/WebCore/platform/text/WritingMode.h.
+            # Order matches BoxAxis enum in Source/CyberCore/platform/text/WritingMode.h.
             "axis": ["horizontal", "vertical"],
-            # Order matches BoxSide enum in Source/WebCore/platform/text/WritingMode.h.
+            # Order matches BoxSide enum in Source/CyberCore/platform/text/WritingMode.h.
             "side": ["top", "right", "bottom", "left"],
-            # Order matches BoxCorner enum in Source/WebCore/platform/text/WritingMode.h.
+            # Order matches BoxCorner enum in Source/CyberCore/platform/text/WritingMode.h.
             "corner": ["top-left", "top-right", "bottom-right", "bottom-left"],
         },
     }
@@ -2475,7 +2475,7 @@ class GenerateCSSPropertyNames:
 
         self.generation_context.generate_open_namespace(
             to=to,
-            namespace="WebCore"
+            namespace="CyberCore"
         )
 
         to.write_block("""\
@@ -2503,7 +2503,7 @@ class GenerateCSSPropertyNames:
     def _generate_css_property_names_gperf_footing(self, *, to):
         self.generation_context.generate_close_namespace(
             to=to,
-            namespace="WebCore"
+            namespace="CyberCore"
         )
 
         to.write("IGNORE_WARNINGS_END")
@@ -3053,20 +3053,20 @@ class GenerateCSSPropertyNames:
     def _generate_css_property_names_h_hash_traits(self, *, to):
         with self.generation_context.namespace("WTF", to=to):
             to.write_block("""\
-                template<> struct DefaultHash<WebCore::CSSPropertyID> : IntHash<unsigned> { };
+                template<> struct DefaultHash<CyberCore::CSSPropertyID> : IntHash<unsigned> { };
 
-                template<> struct HashTraits<WebCore::CSSPropertyID> : GenericHashTraits<WebCore::CSSPropertyID> {
+                template<> struct HashTraits<CyberCore::CSSPropertyID> : GenericHashTraits<CyberCore::CSSPropertyID> {
                     static const bool emptyValueIsZero = true;
-                    static void constructDeletedValue(WebCore::CSSPropertyID& slot) { slot = static_cast<WebCore::CSSPropertyID>(std::numeric_limits<uint16_t>::max()); }
-                    static bool isDeletedValue(WebCore::CSSPropertyID value) { return static_cast<uint16_t>(value) == std::numeric_limits<uint16_t>::max(); }
+                    static void constructDeletedValue(CyberCore::CSSPropertyID& slot) { slot = static_cast<CyberCore::CSSPropertyID>(std::numeric_limits<uint16_t>::max()); }
+                    static bool isDeletedValue(CyberCore::CSSPropertyID value) { return static_cast<uint16_t>(value) == std::numeric_limits<uint16_t>::max(); }
                 };
                 """)
 
     def _generate_css_property_names_h_iterator_traits(self, *, to):
         with self.generation_context.namespace("std", to=to):
             to.write_block("""\
-                template<> struct iterator_traits<WebCore::AllCSSPropertiesRange::Iterator> { using value_type = WebCore::CSSPropertyID; };
-                template<> struct iterator_traits<WebCore::AllLonghandCSSPropertiesRange::Iterator> { using value_type = WebCore::CSSPropertyID; };
+                template<> struct iterator_traits<CyberCore::AllCSSPropertiesRange::Iterator> { using value_type = CyberCore::CSSPropertyID; };
+                template<> struct iterator_traits<CyberCore::AllLonghandCSSPropertiesRange::Iterator> { using value_type = CyberCore::CSSPropertyID; };
                 """)
 
     def generate_css_property_names_h(self):
@@ -3090,7 +3090,7 @@ class GenerateCSSPropertyNames:
                 ]
             )
 
-            with self.generation_context.namespace("WebCore", to=writer):
+            with self.generation_context.namespace("CyberCore", to=writer):
                 self.generation_context.generate_forward_declarations(
                     to=writer,
                     classes=["Settings"]
@@ -3680,7 +3680,7 @@ class GenerateStyleBuilderGenerated:
                 ]
             )
 
-            with self.generation_context.namespaces(["WebCore", "Style"], to=writer):
+            with self.generation_context.namespaces(["CyberCore", "Style"], to=writer):
                 self._generate_style_builder_generated_cpp_builder_functions_class(
                     to=writer
                 )
@@ -3723,7 +3723,7 @@ class GenerateStylePropertyShorthandFunctions:
                 to=writer
             )
 
-            with self.generation_context.namespace("WebCore", to=writer):
+            with self.generation_context.namespace("CyberCore", to=writer):
                 self.generation_context.generate_forward_declarations(
                     to=writer,
                     classes=["StylePropertyShorthand"]
@@ -3815,7 +3815,7 @@ class GenerateStylePropertyShorthandFunctions:
                 ]
             )
 
-            with self.generation_context.namespace("WebCore", to=writer):
+            with self.generation_context.namespace("CyberCore", to=writer):
                 longhand_to_shorthands = {}
                 shorthand_to_longhand_count = {}
 
@@ -3904,7 +3904,7 @@ class GenerateCSSPropertyParsing:
                 ]
             )
 
-            with self.generation_context.namespace("WebCore", to=writer):
+            with self.generation_context.namespace("CyberCore", to=writer):
                 self.generation_context.generate_forward_declarations(
                     to=writer,
                     classes=[
@@ -3945,7 +3945,7 @@ class GenerateCSSPropertyParsing:
                 ]
             )
 
-            with self.generation_context.namespace("WebCore", to=writer):
+            with self.generation_context.namespace("CyberCore", to=writer):
                 self.generation_context.generate_using_namespace_declarations(
                     to=writer,
                     namespaces=["CSSPropertyParserHelpers", "CSSPropertyParserHelpersWorkerSafe"]
@@ -4621,20 +4621,20 @@ class KeywordFastPathGenerator:
 
 # Each shared grammar rule has a corresponding `SharedGrammarRuleConsumer` which defines how
 # that rules parsing is exposed and if the parsing function for the rule should be exported in
-# the header for use in other areas of WebCore. Currently, all non-exported rules are 'skipped'
+# the header for use in other areas of CyberCore. Currently, all non-exported rules are 'skipped'
 # here. Note, that does not mean the rule isn't used, as a reference of that rule by a property
 # or another shared rule will still use the grammar, it will just be simplified into the parents
 # grammar with no explicit function being emitted. That leaves only exported rules actually
 # having functions emitted. The current set of kinds of `SharedGrammarRuleConsumer` are:
 #
 #   - `SkipSharedGrammarRuleConsumer`:
-#        Used when the shared property rule is not needed by other parts of WebCore, and therefore
+#        Used when the shared property rule is not needed by other parts of CyberCore, and therefore
 #        no explicit function needs to be emitted. Used for any shared rule that is not marked
 #        as 'exported`.
 #
 #   - `GeneratedSharedGrammarRuleConsumer`:
 #        Used for all exported rules. These generate a dedicated `consume` function which is exported
-#        in `CSSPropertyParser` for use by other parts of WebCore.
+#        in `CSSPropertyParser` for use by other parts of CyberCore.
 #
 # `SharedGrammarRuleConsumer` abstract interface:
 #
@@ -4716,7 +4716,7 @@ class GeneratedSharedGrammarRuleConsumer(SharedGrammarRuleConsumer):
 
 # Each CSS property has a corresponding `PropertyConsumer` which defines how that property's
 # parsing works, if the parsing function for the property should be exported in the header for
-# use in other areas of WebCore, and what fast paths it exposes. The current set of kinds of
+# use in other areas of CyberCore, and what fast paths it exposes. The current set of kinds of
 # `PropertyConsumer` are:
 #
 #   - `SkipPropertyConsumer`:

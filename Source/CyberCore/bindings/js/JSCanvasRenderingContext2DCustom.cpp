@@ -21,9 +21,9 @@
 #include "JSCanvasRenderingContext2D.h"
 
 #include "JSNodeCustom.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool JSCanvasRenderingContext2DOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, JSC::AbstractSlotVisitor& visitor, const char** reason)
 {
@@ -31,15 +31,15 @@ bool JSCanvasRenderingContext2DOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC
         *reason = "Canvas is opaque root";
 
     JSCanvasRenderingContext2D* jsCanvasRenderingContext = JSC::jsCast<JSCanvasRenderingContext2D*>(handle.slot()->asCell());
-    return containsWebCoreOpaqueRoot(visitor, jsCanvasRenderingContext->wrapped().canvas());
+    return containsCyberCoreOpaqueRoot(visitor, jsCanvasRenderingContext->wrapped().canvas());
 }
 
 template<typename Visitor>
 void JSCanvasRenderingContext2D::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().canvas());
+    addCyberCoreOpaqueRoot(visitor, wrapped().canvas());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSCanvasRenderingContext2D);
 
-} // namespace WebCore
+} // namespace CyberCore

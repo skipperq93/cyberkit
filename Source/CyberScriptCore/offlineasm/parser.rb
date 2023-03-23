@@ -837,7 +837,7 @@ class Parser
                 if @options[:webkit_additions_path]
                     additionsDirectoryName = @options[:webkit_additions_path]
                 else
-                    additionsDirectoryName = "#{@buildProductsDirectory}#{@headersFolderPath}/WebKitAdditions/"
+                    additionsDirectoryName = "#{@buildProductsDirectory}#{@headersFolderPath}/CyberKitAdditions/"
                 end
                 fileName = IncludeFile.new(moduleName, additionsDirectoryName).fileName
                 if not File.exist?(fileName)
@@ -873,7 +873,7 @@ class Parser
                 if @options[:webkit_additions_path]
                     additionsDirectoryName = @options[:webkit_additions_path]
                 else
-                    additionsDirectoryName = "#{@buildProductsDirectory}#{@headersFolderPath}/WebKitAdditions/"
+                    additionsDirectoryName = "#{@buildProductsDirectory}#{@headersFolderPath}/CyberKitAdditions/"
                 end
                 fileName = IncludeFile.new(moduleName, additionsDirectoryName).fileName
                 if not File.exist?(fileName)

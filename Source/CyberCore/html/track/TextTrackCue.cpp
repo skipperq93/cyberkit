@@ -60,7 +60,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextTrackCue);
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextTrackCueBox);
@@ -532,6 +532,6 @@ const char* TextTrackCue::activeDOMObjectName() const
     return "TextTrackCue";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

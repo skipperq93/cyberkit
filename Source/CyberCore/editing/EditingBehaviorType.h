@@ -20,7 +20,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // There are multiple editing details that are different on Windows than Macintosh.
 // We use a single switch for all of them. Some examples:
@@ -42,4 +42,4 @@ enum class EditingBehaviorType : uint8_t {
     iOS,
 };
 
-} // WebCore namespace
+} // CyberCore namespace

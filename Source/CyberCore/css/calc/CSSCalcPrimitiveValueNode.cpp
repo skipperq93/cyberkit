@@ -35,7 +35,7 @@
 #include "Logging.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CSSCalcPrimitiveValueNode> CSSCalcPrimitiveValueNode::create(Ref<CSSPrimitiveValue>&& value)
 {

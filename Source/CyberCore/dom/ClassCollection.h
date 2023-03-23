@@ -33,7 +33,7 @@
 #include "Element.h"
 #include "SpaceSplitString.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ClassCollection final : public CachedHTMLCollection<ClassCollection, CollectionTypeTraits<ByClass>::traversalType> {
     WTF_MAKE_ISO_ALLOCATED(ClassCollection);
@@ -67,6 +67,6 @@ inline bool ClassCollection::elementMatches(Element& element) const
     return element.classNames().containsAll(m_classNames);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(ClassCollection, ByClass)

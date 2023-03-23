@@ -31,7 +31,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMURL;
 class ScriptExecutionContext;
@@ -77,4 +77,4 @@ private:
     Vector<KeyValuePair<String, String>> m_pairs;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

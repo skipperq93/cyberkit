@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoKey;
 
@@ -38,6 +38,6 @@ struct CryptoKeyPair {
     RefPtr<CryptoKey> privateKey;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

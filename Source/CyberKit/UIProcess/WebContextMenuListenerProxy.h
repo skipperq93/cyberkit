@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItem;
 
@@ -57,6 +57,6 @@ private:
     WeakPtr<Client> m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

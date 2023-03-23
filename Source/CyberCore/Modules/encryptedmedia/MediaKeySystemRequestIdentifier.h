@@ -26,9 +26,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum MediaKeySystemRequestIdentifierType { };
 using MediaKeySystemRequestIdentifier = ObjectIdentifier<MediaKeySystemRequestIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

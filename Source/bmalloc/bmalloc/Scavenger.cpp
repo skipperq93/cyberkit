@@ -301,7 +301,7 @@ void Scavenger::threadRunLoop()
 {
     setSelfQOSClass();
 #if BOS(DARWIN)
-    setThreadName("JavaScriptCore bmalloc scavenger");
+    setThreadName("CyberScriptCore bmalloc scavenger");
 #else
     setThreadName("BMScavenger");
 #endif

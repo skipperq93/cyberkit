@@ -46,7 +46,7 @@
 #include "StylePropertiesInlines.h"
 #include "StyleRuleImport.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsStyleRuleBase : public WTF::RefCountedBase {
     unsigned bitfields : 5;
@@ -532,4 +532,4 @@ Ref<StyleRuleNamespace> StyleRuleNamespace::create(const AtomString& prefix, con
     return adoptRef(*new StyleRuleNamespace(prefix, uri));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

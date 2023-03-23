@@ -20,7 +20,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SimulatedClickMouseEventOptions {
     SendNoEvents,
@@ -33,4 +33,4 @@ enum SimulatedClickVisualOptions {
     ShowPressedLook
 };
 
-} // namespace WebCore
+} // namespace CyberCore

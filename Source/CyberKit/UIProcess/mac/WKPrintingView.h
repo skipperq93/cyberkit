@@ -39,7 +39,7 @@
 @class PDFDestination;
 @class PDFDocument;
 
-namespace WebKit {
+namespace CyberKit {
 class ShareableBitmap;
 class WebFrameProxy;
 }
@@ -49,10 +49,10 @@ class WebFrameProxy;
     WeakObjCPtr<NSPrintOperation> _printOperation;
     RetainPtr<NSView> _wkView;
 
-    RefPtr<WebKit::WebFrameProxy> _webFrame;
+    RefPtr<CyberKit::WebFrameProxy> _webFrame;
     Vector<CyberCore::IntRect> _printingPageRects;
     double _totalScaleFactorForPrinting;
-    HashMap<CyberCore::IntRect, RefPtr<WebKit::ShareableBitmap>> _pagePreviews;
+    HashMap<CyberCore::IntRect, RefPtr<CyberKit::ShareableBitmap>> _pagePreviews;
 
     Vector<uint8_t> _printedPagesData;
     RetainPtr<PDFDocument> _printedPagesPDFDocument;
@@ -70,7 +70,7 @@ class WebFrameProxy;
     NSTimer *_autodisplayResumeTimer;
 }
 
-- (id)initWithFrameProxy:(WebKit::WebFrameProxy&)frame view:(NSView *)wkView;
+- (id)initWithFrameProxy:(CyberKit::WebFrameProxy&)frame view:(NSView *)wkView;
 
 @end
 

@@ -29,7 +29,7 @@
 #include <CyberCore/EditorClient.h>
 #include <CyberCore/TextCheckerClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 struct TextCheckerState;
@@ -91,4 +91,4 @@ public:
     static void requestCheckingOfString(Ref<TextCheckerCompletion>&&, int32_t insertionPoint);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

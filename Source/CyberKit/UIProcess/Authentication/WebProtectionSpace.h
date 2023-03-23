@@ -29,7 +29,7 @@
 #include "APIObject.h"
 #include <CyberCore/ProtectionSpace.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProtectionSpace : public API::ObjectImpl<API::Object::Type::ProtectionSpace> {
 public:
@@ -55,6 +55,6 @@ private:
     CyberCore::ProtectionSpace m_coreProtectionSpace;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebProtectionSpace_h

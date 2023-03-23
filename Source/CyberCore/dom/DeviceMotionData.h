@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceMotionData : public RefCounted<DeviceMotionData> {
 public:
@@ -110,4 +110,4 @@ private:
     std::optional<double> m_interval;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

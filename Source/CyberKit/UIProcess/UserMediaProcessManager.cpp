@@ -32,7 +32,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/TranslatedProcess.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(SANDBOX_EXTENSIONS)
 static const ASCIILiteral audioExtensionPath { "com.apple.webkit.microphone"_s };
@@ -260,6 +260,6 @@ void UserMediaProcessManager::beginMonitoringCaptureDevices()
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

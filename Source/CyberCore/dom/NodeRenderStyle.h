@@ -28,7 +28,7 @@
 #include "RenderStyle.h"
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline const RenderStyle* Node::renderStyle() const
 {
@@ -38,4 +38,4 @@ inline const RenderStyle* Node::renderStyle() const
     return &renderer->style();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

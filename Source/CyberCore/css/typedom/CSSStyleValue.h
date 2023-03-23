@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> class ExceptionOr;
 struct CSSParserContext;
@@ -133,4 +133,4 @@ protected:
     RefPtr<CSSValue> m_propertyValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

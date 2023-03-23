@@ -35,7 +35,7 @@
 #include <wtf/WeakHashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntRect;
 class Node;
@@ -95,4 +95,4 @@ private:
     bool m_suppressLayerChangeEvents { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

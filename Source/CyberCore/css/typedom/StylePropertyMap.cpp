@@ -36,7 +36,7 @@
 #include "StylePropertyShorthand.h"
 #include <wtf/FixedVector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<CSSValue> cssValueFromStyleValues(std::optional<CSSPropertyID> propertyID, Vector<Ref<CSSStyleValue>>&& values)
 {
@@ -185,4 +185,4 @@ ExceptionOr<void> StylePropertyMap::remove(Document& document, const AtomString&
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,10 +31,10 @@
 #include <CyberScriptCore/WeakInlines.h>
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class includes a lot of GC related subtle things, and changing this class easily causes GC crashes.
-// Any changes on this class must be reviewed by JavaScriptCore reviewers too.
+// Any changes on this class must be reviewed by CyberScriptCore reviewers too.
 class JSValueInWrappedObject {
     // It must be neither copyable nor movable. Changing this will break concurrent GC.
     WTF_MAKE_NONCOPYABLE(JSValueInWrappedObject);
@@ -122,4 +122,4 @@ inline JSC::JSValue cachedPropertyValue(JSC::ThrowScope& throwScope, JSC::JSGlob
     return cachedValue.getValue();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

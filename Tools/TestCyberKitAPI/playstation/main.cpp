@@ -53,9 +53,9 @@ int main(int argc, char** argv)
     loadLibraryOrExit(Cairo_LOAD_AT);
     loadLibraryOrExit(CyberKitRequirements_LOAD_AT);
 #endif
-#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestCyberKit) || defined(BUILDING_TestJavaScriptCore)
+#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestCyberKit) || defined(BUILDING_TestCyberScriptCore)
 #if !ENABLE(STATIC_JSC)
-    loadLibraryOrExit("libJavaScriptCore");
+    loadLibraryOrExit("libCyberScriptCore");
 #endif
 #endif
 #if defined(BUILDING_TestCyberKit)

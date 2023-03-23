@@ -37,7 +37,7 @@
 #include "Settings.h"
 #include "WindowEventLoop.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MediaKeySystemRequest> MediaKeySystemRequest::create(Document& document, const String& keySystem, Ref<DeferredPromise>&& promise)
 {
@@ -123,6 +123,6 @@ Document* MediaKeySystemRequest::document() const
     return downcast<Document>(scriptExecutionContext());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

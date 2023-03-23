@@ -37,7 +37,7 @@ namespace CyberCore {
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DisplayCaptureSessionManager {
 public:
@@ -63,6 +63,6 @@ private:
     std::optional<unsigned> m_indexOfDeviceSelectedForTesting;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)

@@ -78,7 +78,7 @@ static HashMap<CFTypeRef, ObjcInstance*>& wrapperCache()
 RuntimeObject* ObjcInstance::newRuntimeObject(JSGlobalObject* lexicalGlobalObject)
 {
     // FIXME: deprecatedGetDOMStructure uses the prototype off of the wrong global object.
-    return ObjCRuntimeObject::create(lexicalGlobalObject->vm(), WebCore::deprecatedGetDOMStructure<ObjCRuntimeObject>(lexicalGlobalObject), this);
+    return ObjCRuntimeObject::create(lexicalGlobalObject->vm(), CyberCore::deprecatedGetDOMStructure<ObjCRuntimeObject>(lexicalGlobalObject), this);
 }
 
 void ObjcInstance::setGlobalException(NSString *exception, JSGlobalObject* exceptionEnvironment)
@@ -177,7 +177,7 @@ public:
         VM& vm = globalObject->vm();
         // FIXME: deprecatedGetDOMStructure uses the prototype off of the wrong global object
         // We need to pass in the right global object for "i".
-        Structure* domStructure = WebCore::deprecatedGetDOMStructure<ObjCRuntimeMethod>(lexicalGlobalObject);
+        Structure* domStructure = CyberCore::deprecatedGetDOMStructure<ObjCRuntimeMethod>(lexicalGlobalObject);
         ObjCRuntimeMethod* runtimeMethod = new (NotNull, allocateCell<ObjCRuntimeMethod>(vm)) ObjCRuntimeMethod(vm, domStructure, method);
         runtimeMethod->finishCreation(vm, name);
         return runtimeMethod;

@@ -37,7 +37,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -112,6 +112,6 @@ void WebExtensionContextProxy::enumerateNamespaceObjects(const Function<void(Web
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

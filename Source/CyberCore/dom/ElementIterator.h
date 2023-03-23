@@ -32,7 +32,7 @@
 #include "ElementIteratorAssertions.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename ElementType>
 class ElementIterator {
@@ -232,7 +232,7 @@ template<typename ElementType> constexpr bool ElementIterator<ElementType>::oper
     return m_current != other.m_current;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #include "ElementAncestorIterator.h"
 #include "ElementChildIterator.h"

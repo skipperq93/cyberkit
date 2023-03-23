@@ -29,10 +29,10 @@
 #include "WKAPICast.h"
 #include "WebsiteDataStore.h"
 #include <CyberCore/CurlProxySettings.h>
-#include <WebKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
 #include <wtf/URL.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 void WKWebsiteDataStoreEnableDefaultNetworkProxySettings(WKWebsiteDataStoreRef dataStoreRef)
 {

@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmAesKeyParams final : public CryptoAlgorithmParameters {
 public:
@@ -38,7 +38,7 @@ public:
     Class parametersClass() const final { return Class::AesKeyParams; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_ALGORITHM_PARAMETERS(AesKeyParams)
 

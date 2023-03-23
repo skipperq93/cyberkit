@@ -33,7 +33,7 @@
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRRigidTransform;
 class WebXRSession;
@@ -69,7 +69,7 @@ private:
     void derefEventTarget() final { deref(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_WEBXRSPACE(WebXRReferenceSpace, isReferenceSpace())
 

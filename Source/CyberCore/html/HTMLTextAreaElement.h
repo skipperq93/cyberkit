@@ -25,7 +25,7 @@
 
 #include "HTMLTextFormControlElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BeforeTextInsertedEvent;
 class RenderTextControlMultiLine;

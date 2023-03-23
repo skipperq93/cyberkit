@@ -138,7 +138,7 @@ header = <<-EOS
 
 #include <CyberScriptCore/DOMJITHeapRange.h>
 
-namespace WebCore { namespace DOMJIT { namespace AbstractHeapRepository {
+namespace CyberCore { namespace DOMJIT { namespace AbstractHeapRepository {
 EOS
 
 footer = <<-EOS

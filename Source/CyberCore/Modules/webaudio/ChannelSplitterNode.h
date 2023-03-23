@@ -27,7 +27,7 @@
 #include "AudioNode.h"
 #include "ChannelSplitterOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
     
@@ -51,4 +51,4 @@ private:
     ChannelSplitterNode(BaseAudioContext&, unsigned numberOfOutputs);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

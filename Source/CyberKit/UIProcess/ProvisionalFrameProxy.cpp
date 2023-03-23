@@ -40,7 +40,7 @@
 #include <CyberCore/FrameIdentifier.h>
 #include <CyberCore/ShouldTreatAsContinuingLoad.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ProvisionalFrameProxy::ProvisionalFrameProxy(WebFrameProxy& frame, Ref<WebProcessProxy>&& process, const CyberCore::ResourceRequest& request)
     : m_frame(frame)

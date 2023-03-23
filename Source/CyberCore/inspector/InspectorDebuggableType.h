@@ -30,8 +30,8 @@ namespace Inspector {
 enum class DebuggableType : uint8_t {
     ITML,          // -[JSContext _setITMLDebuggableType]
     JavaScript,    // JSC::JSGlobalObject
-    Page,          // WebCore::Page
-    ServiceWorker, // WebCore::ServiceWorkerThreadProxy
+    Page,          // CyberCore::Page
+    ServiceWorker, // CyberCore::ServiceWorkerThreadProxy
     WebPage,       // CyberKit::WebPageProxy
 };
 

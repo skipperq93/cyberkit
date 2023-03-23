@@ -24,7 +24,7 @@
 #include "RTCRtpTransformBackend.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerRtpTransformBackend : public RTCRtpTransformBackend {
 protected:
@@ -55,6 +55,6 @@ inline GStreamerRtpTransformBackend::GStreamerRtpTransformBackend(MediaType medi
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

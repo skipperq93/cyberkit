@@ -28,17 +28,17 @@
 #include "JSResizeObserverEntry.h"
 
 #include "JSNodeCustom.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSResizeObserverEntry::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().target());
-    addWebCoreOpaqueRoot(visitor, wrapped().contentRect());
+    addCyberCoreOpaqueRoot(visitor, wrapped().target());
+    addCyberCoreOpaqueRoot(visitor, wrapped().contentRect());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSResizeObserverEntry);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeAnalyser::RealtimeAnalyser(NoiseInjectionPolicy policy)
     : m_inputBuffer(InputBufferSize)
@@ -289,6 +289,6 @@ void RealtimeAnalyser::getByteTimeDomainData(Uint8Array& destinationArray)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

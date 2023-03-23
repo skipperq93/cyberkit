@@ -29,7 +29,7 @@
 #include "WKAPICast.h"
 #include "WebProcessPool.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebContextClient::plugInAutoStartOriginHashesChanged(WebProcessPool* processPool)
 {
@@ -72,4 +72,4 @@ void WebContextClient::gpuProcessDidCrash(WebProcessPool* processPool, ProcessID
         m_client.gpuProcessDidCrash(toAPI(processPool), processID, m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

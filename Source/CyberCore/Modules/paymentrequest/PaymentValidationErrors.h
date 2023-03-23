@@ -31,7 +31,7 @@
 #include "PayerErrorFields.h"
 #include <CyberScriptCore/Strong.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentValidationErrors {
     PayerErrorFields payer;
@@ -40,6 +40,6 @@ struct PaymentValidationErrors {
     JSC::Strong<JSC::JSObject> paymentMethod;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

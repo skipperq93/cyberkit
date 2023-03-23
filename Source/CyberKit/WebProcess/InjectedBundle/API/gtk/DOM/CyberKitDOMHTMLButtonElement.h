@@ -54,7 +54,7 @@ webkit_dom_html_button_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_button_element_get_autofocus(CyberKitDOMHTMLButtonElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_button_element_get_autofocus(CyberKitDOMHTMLButtonElement* self)
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_button_element_set_autofocus(CyberKitDOMHTMLButtonElement* self, gboolean value);
@@ -76,7 +76,7 @@ webkit_dom_html_button_element_set_autofocus(CyberKitDOMHTMLButtonElement* self,
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_button_element_get_disabled(CyberKitDOMHTMLButtonElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_button_element_get_disabled(CyberKitDOMHTMLButtonElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_button_element_set_disabled(CyberKitDOMHTMLButtonElement* self, gboolean value);
@@ -98,7 +98,7 @@ webkit_dom_html_button_element_set_disabled(CyberKitDOMHTMLButtonElement* self, 
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLFormElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLFormElement*
 webkit_dom_html_button_element_get_form(CyberKitDOMHTMLButtonElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_button_element_get_form(CyberKitDOMHTMLButtonElement* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_button_element_get_button_type(CyberKitDOMHTMLButtonElement* self);
@@ -120,7 +120,7 @@ webkit_dom_html_button_element_get_button_type(CyberKitDOMHTMLButtonElement* sel
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_button_element_set_button_type(CyberKitDOMHTMLButtonElement* self, const gchar* value);
@@ -131,7 +131,7 @@ webkit_dom_html_button_element_set_button_type(CyberKitDOMHTMLButtonElement* sel
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_button_element_get_name(CyberKitDOMHTMLButtonElement* self);
@@ -142,7 +142,7 @@ webkit_dom_html_button_element_get_name(CyberKitDOMHTMLButtonElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_button_element_set_name(CyberKitDOMHTMLButtonElement* self, const gchar* value);
@@ -153,7 +153,7 @@ webkit_dom_html_button_element_set_name(CyberKitDOMHTMLButtonElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_button_element_get_value(CyberKitDOMHTMLButtonElement* self);
@@ -164,7 +164,7 @@ webkit_dom_html_button_element_get_value(CyberKitDOMHTMLButtonElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_button_element_set_value(CyberKitDOMHTMLButtonElement* self, const gchar* value);
@@ -175,7 +175,7 @@ webkit_dom_html_button_element_set_value(CyberKitDOMHTMLButtonElement* self, con
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_button_element_get_will_validate(CyberKitDOMHTMLButtonElement* self);

@@ -30,7 +30,7 @@
 #include "APIString.h"
 #include "WKGrammarDetail.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebGrammarDetail> WebGrammarDetail::create(int location, int length, API::Array* guesses, const String& userDescription)
 {
@@ -68,4 +68,4 @@ WebGrammarDetail::WebGrammarDetail(const CyberCore::GrammarDetail& grammarDetail
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

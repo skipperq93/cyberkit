@@ -27,7 +27,7 @@
 
 #include <array>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CSSNumericBaseType : uint8_t {
     Length,
@@ -73,4 +73,4 @@ constexpr const char* debugString(CSSNumericBaseType type)
     return "invalid";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

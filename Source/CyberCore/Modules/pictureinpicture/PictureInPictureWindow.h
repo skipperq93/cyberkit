@@ -33,7 +33,7 @@
 #include "IntSize.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PictureInPictureWindow final
     : public ActiveDOMObject
@@ -67,6 +67,6 @@ private:
     IntSize m_size;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PICTURE_IN_PICTURE_API)

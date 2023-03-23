@@ -37,7 +37,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSString *permissionsKey = @"permissions";
 static NSString *originsKey = @"origins";
@@ -227,6 +227,6 @@ WebExtensionAPIEvent& WebExtensionAPIPermissions::onRemoved()
     return *m_onRemoved;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

@@ -44,7 +44,7 @@
 
             return {
                 total: {
-                    label: "WebKit",
+                    label: "CyberKit",
                     amount: shippingOptions[shippingOptionIndex].overrideTotal,
                 },
                 displayItems: [

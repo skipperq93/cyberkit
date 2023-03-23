@@ -39,7 +39,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HRTFDatabaseLoader;
 class BaseAudioContext;
@@ -161,6 +161,6 @@ private:
     mutable Lock m_processLock;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

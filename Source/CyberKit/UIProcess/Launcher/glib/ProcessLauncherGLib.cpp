@@ -51,7 +51,7 @@
 #include <bmalloc/valgrind.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if OS(LINUX)
 static bool isFlatpakSpawnUsable()
@@ -84,7 +84,7 @@ static int connectionOptions()
 
     // We use CLOEXEC for the client socket here even though we need to leak it to the child,
     // because we don't want it leaking to xdg-dbus-proxy. If the IPC socket is unexpectedly open in
-    // an extra subprocess, WebKit won't notice when its child process crashes. We can ensure it
+    // an extra subprocess, CyberKit won't notice when its child process crashes. We can ensure it
     // gets leaked into only the correct subprocess by using g_subprocess_launcher_take_fd() later.
     return IPC::PlatformConnectionOptions::SetCloexecOnClient | IPC::PlatformConnectionOptions::SetCloexecOnServer;
 }
@@ -271,4 +271,4 @@ void ProcessLauncher::platformInvalidate()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

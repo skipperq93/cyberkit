@@ -89,7 +89,7 @@
 #include "DataDetection.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

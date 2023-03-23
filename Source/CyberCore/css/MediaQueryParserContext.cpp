@@ -30,7 +30,7 @@
 #include "Document.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 MediaQueryParserContext::MediaQueryParserContext(const CSSParserContext& context)
 {
@@ -43,4 +43,4 @@ MediaQueryParserContext::MediaQueryParserContext(const Document& document)
     useSystemAppearance = document.page() ? document.page()->useSystemAppearance() : false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

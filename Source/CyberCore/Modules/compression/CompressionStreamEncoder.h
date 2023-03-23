@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <zlib.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CompressionStreamEncoder : public RefCounted<CompressionStreamEncoder> {
 public:
@@ -74,4 +74,4 @@ private:
         std::memset(&m_zstream, 0, sizeof(m_zstream));
     }
 };
-} // namespace WebCore
+} // namespace CyberCore

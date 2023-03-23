@@ -36,13 +36,13 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 
 @interface WKGroupActivitiesCoordinatorDelegate : NSObject<AVPlaybackCoordinatorPlaybackControlDelegate> {
-    WeakPtr<WebKit::GroupActivitiesCoordinator> _parent;
+    WeakPtr<CyberKit::GroupActivitiesCoordinator> _parent;
 }
-- (id)initWithParent:(WebKit::GroupActivitiesCoordinator&)parent;
+- (id)initWithParent:(CyberKit::GroupActivitiesCoordinator&)parent;
 @end
 
 @implementation WKGroupActivitiesCoordinatorDelegate
-- (id)initWithParent:(WebKit::GroupActivitiesCoordinator&)parent
+- (id)initWithParent:(CyberKit::GroupActivitiesCoordinator&)parent
 {
     self = [super init];
     if (!self)
@@ -100,7 +100,7 @@
 }
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

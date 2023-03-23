@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class DatabaseTask;
@@ -83,4 +83,4 @@ private:
     DatabaseTaskSynchronizer* m_cleanupSync { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/URL.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaFragmentURIParser final {
 public:
@@ -57,6 +57,6 @@ private:
     Vector<std::pair<String, String>> m_fragments;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

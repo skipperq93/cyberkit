@@ -33,7 +33,7 @@
 #include "WebAnimation.h"
 #include "WebAnimationUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AnimationEffect::AnimationEffect()
     : m_timingFunction(LinearTimingFunction::create())
@@ -592,4 +592,4 @@ Seconds AnimationEffect::timeToNextTick(const BasicEffectTiming& timing) const
     return Seconds::infinity();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

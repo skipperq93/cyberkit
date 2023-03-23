@@ -35,7 +35,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // These values are at the discretion of the user agent.
 static const auto defaultPreflightCacheTimeout = 5_s;
@@ -147,4 +147,4 @@ void CrossOriginPreflightResultCache::clear()
     m_preflightHashMap.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

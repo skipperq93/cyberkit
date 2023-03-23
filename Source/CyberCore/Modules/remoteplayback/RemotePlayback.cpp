@@ -40,7 +40,7 @@
 #include "RemotePlaybackAvailabilityCallback.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RemotePlayback);
 
@@ -52,7 +52,7 @@ Ref<RemotePlayback> RemotePlayback::create(HTMLMediaElement& element)
 }
 
 RemotePlayback::RemotePlayback(HTMLMediaElement& element)
-    : WebCore::ActiveDOMObject(element.scriptExecutionContext())
+    : CyberCore::ActiveDOMObject(element.scriptExecutionContext())
 #if !RELEASE_LOG_DISABLED
     , m_logger(element.logger())
     , m_logIdentifier(element.logIdentifier())
@@ -65,7 +65,7 @@ RemotePlayback::~RemotePlayback()
 {
 }
 
-WebCoreOpaqueRoot RemotePlayback::opaqueRootConcurrently() const
+CyberCoreOpaqueRoot RemotePlayback::opaqueRootConcurrently() const
 {
     return root(m_mediaElement.get());
 }

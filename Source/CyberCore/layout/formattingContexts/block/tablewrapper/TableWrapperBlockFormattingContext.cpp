@@ -38,7 +38,7 @@
 #include "TableFormattingState.h"
 #include "TableWrapperBlockFormattingQuirks.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TableWrapperBlockFormattingContext);

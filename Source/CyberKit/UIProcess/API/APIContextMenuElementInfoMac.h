@@ -39,13 +39,13 @@ public:
         return adoptRef(*new ContextMenuElementInfoMac(std::forward<Args>(args)...));
     }
 
-    const WebKit::WebHitTestResultData& hitTestResultData() const { return m_hitTestResultData; }
+    const CyberKit::WebHitTestResultData& hitTestResultData() const { return m_hitTestResultData; }
 
 private:
-    ContextMenuElementInfoMac(const WebKit::WebHitTestResultData& hitTestResultData)
+    ContextMenuElementInfoMac(const CyberKit::WebHitTestResultData& hitTestResultData)
         : m_hitTestResultData(hitTestResultData) { }
 
-    WebKit::WebHitTestResultData m_hitTestResultData;
+    CyberKit::WebHitTestResultData m_hitTestResultData;
 };
 
 } // namespace API

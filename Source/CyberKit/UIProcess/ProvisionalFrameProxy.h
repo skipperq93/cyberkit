@@ -43,7 +43,7 @@ class ResourceRequest;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrameProxy;
 class WebProcessProxy;
@@ -77,4 +77,4 @@ private:
     CyberCore::LayerHostingContextIdentifier m_layerHostingContextIdentifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

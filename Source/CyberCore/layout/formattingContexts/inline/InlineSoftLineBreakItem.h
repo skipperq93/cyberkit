@@ -27,7 +27,7 @@
 
 #include "InlineItem.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class InlineSoftLineBreakItem : public InlineItem {

@@ -39,7 +39,7 @@
 #include "ResourceError.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(FetchBodyOwner);
 
@@ -140,4 +140,4 @@ private:
     std::variant<std::nullptr_t, Exception, ResourceError> m_loadingError;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

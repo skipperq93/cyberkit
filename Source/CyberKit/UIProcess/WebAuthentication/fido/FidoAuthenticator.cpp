@@ -30,7 +30,7 @@
 
 #include "CtapDriver.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 FidoAuthenticator::FidoAuthenticator(std::unique_ptr<CtapDriver>&& driver)
     : m_driver(WTFMove(driver))
@@ -56,6 +56,6 @@ std::unique_ptr<CtapDriver> FidoAuthenticator::releaseDriver()
     return WTFMove(m_driver);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

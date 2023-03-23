@@ -29,7 +29,7 @@
 #include "WritingMode.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserObserver;
 class CSSSelectorList;
@@ -87,4 +87,4 @@ private:
     CSSParserContext m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

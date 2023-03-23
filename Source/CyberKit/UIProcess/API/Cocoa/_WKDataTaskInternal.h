@@ -28,7 +28,7 @@
 #import "_WKDataTask.h"
 #import <wtf/WeakObjCPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::DataTask> {
     using WrapperClass = _WKDataTask;

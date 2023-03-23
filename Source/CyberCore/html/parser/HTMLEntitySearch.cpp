@@ -28,7 +28,7 @@
 
 #include "HTMLEntityTable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const HTMLEntityTableEntry* halfway(const HTMLEntityTableEntry* left, const HTMLEntityTableEntry* right)
 {

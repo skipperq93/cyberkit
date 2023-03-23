@@ -35,7 +35,7 @@ template<> struct ClientTraits<WKContextConnectionClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebConnection;
 class WebProcessPool;
@@ -45,6 +45,6 @@ public:
     void didCreateConnection(WebProcessPool*, WebConnection*);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebContextConnectionClient_h

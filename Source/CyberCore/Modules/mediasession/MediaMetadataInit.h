@@ -29,7 +29,7 @@
 
 #if ENABLE(MEDIA_SESSION)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaMetadataInit {
     String title;

@@ -26,7 +26,7 @@
 #include "Node.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 WTF_MAKE_ISO_ALLOCATED_IMPL(UIEvent);
 
@@ -104,4 +104,4 @@ int UIEvent::which() const
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

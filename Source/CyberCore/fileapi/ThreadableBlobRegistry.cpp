@@ -50,7 +50,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<String, RefPtr<SecurityOrigin>> BlobUrlOriginMap;
 
@@ -215,4 +215,4 @@ RefPtr<SecurityOrigin> ThreadableBlobRegistry::getCachedOrigin(const URL& url)
     return SecurityOrigin::createOpaque();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

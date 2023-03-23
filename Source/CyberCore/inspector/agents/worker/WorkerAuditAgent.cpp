@@ -33,7 +33,7 @@
 #include <CyberScriptCore/InjectedScriptManager.h>
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -58,4 +58,4 @@ InjectedScript WorkerAuditAgent::injectedScriptForEval(Protocol::ErrorString& er
     return injectedScriptManager().injectedScriptFor(m_globalScope.script()->globalScopeWrapper());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

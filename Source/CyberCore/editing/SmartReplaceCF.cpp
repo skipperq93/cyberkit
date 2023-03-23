@@ -34,7 +34,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static CFMutableCharacterSetRef getSmartSet(bool isPreviousCharacter)
 {

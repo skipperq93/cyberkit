@@ -30,7 +30,7 @@
 
 #import "EventNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static AtomString mouseEventType(PlatformTouchPoint::TouchPhaseType phase)
 {
@@ -55,6 +55,6 @@ Ref<MouseEvent> MouseEvent::create(const PlatformTouchEvent& event, unsigned ind
         event.modifiers(), 0, 0, nullptr, 0, 0, IsSimulated::No, IsTrusted::Yes));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TOUCH_EVENTS) && PLATFORM(IOS_FAMILY)

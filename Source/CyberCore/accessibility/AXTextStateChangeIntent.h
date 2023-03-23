@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
     
 enum AXTextStateChangeType {
     AXTextStateChangeTypeUnknown,
@@ -91,4 +91,4 @@ struct AXTextStateChangeIntent {
     { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <VirtualService.h>
 #include <wtf/UUID.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct VirtualCredential;
 
@@ -103,6 +103,6 @@ void VirtualAuthenticatorManager::decidePolicyForLocalAuthenticator(CompletionHa
     completionHandler(LocalAuthenticatorPolicy::Allow);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -32,7 +32,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentFragment;
 class TemplateContentDocumentFragment;
@@ -63,4 +63,4 @@ private:
     WeakPtr<ShadowRoot, WeakPtrImplWithEventTargetData> m_declarativeShadowRoot;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

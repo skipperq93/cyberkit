@@ -40,7 +40,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMException;
 class DOMStringList;
@@ -290,4 +290,4 @@ private:
     IDBTransaction* m_transaction;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

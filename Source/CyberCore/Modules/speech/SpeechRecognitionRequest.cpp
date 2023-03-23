@@ -26,13 +26,13 @@
 #include "config.h"
 #include "SpeechRecognitionRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SpeechRecognitionRequest::SpeechRecognitionRequest(SpeechRecognitionRequestInfo&& requestInfo)
     : m_info(WTFMove(requestInfo))
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 

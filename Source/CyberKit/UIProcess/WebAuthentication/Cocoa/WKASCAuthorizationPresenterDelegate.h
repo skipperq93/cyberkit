@@ -29,7 +29,7 @@
 
 #import "AuthenticationServicesCoreSPI.h"
 
-namespace WebKit {
+namespace CyberKit {
 class AuthenticatorPresenterCoordinator;
 }
 
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WKASCAuthorizationPresenterDelegate : NSObject <ASCAuthorizationPresenterDelegate>
 
-- (instancetype)initWithCoordinator:(WebKit::AuthenticatorPresenterCoordinator&)coordinator;
+- (instancetype)initWithCoordinator:(CyberKit::AuthenticatorPresenterCoordinator&)coordinator;
 
 @end
 

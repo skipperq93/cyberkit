@@ -27,10 +27,10 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCDegradationPreference { MaintainFramerate, MaintainResolution, Balanced };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

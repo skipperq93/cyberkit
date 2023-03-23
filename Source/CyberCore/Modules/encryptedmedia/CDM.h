@@ -45,7 +45,7 @@ class Logger;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMFactory;
 class CDMInstance;

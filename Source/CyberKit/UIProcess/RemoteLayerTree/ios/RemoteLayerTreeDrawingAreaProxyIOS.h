@@ -31,7 +31,7 @@
 
 OBJC_CLASS WKDisplayLinkHandler;
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeDrawingAreaProxyIOS final : public RemoteLayerTreeDrawingAreaProxy {
 public:
@@ -52,6 +52,6 @@ private:
     RetainPtr<WKDisplayLinkHandler> m_displayLinkHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

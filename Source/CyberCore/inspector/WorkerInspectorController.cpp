@@ -56,7 +56,7 @@
 #include "ServiceWorkerGlobalScope.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 using namespace Inspector;
@@ -226,12 +226,12 @@ void WorkerInspectorController::createLazyAgents()
 
 InspectorFunctionCallHandler WorkerInspectorController::functionCallHandler() const
 {
-    return WebCore::functionCallHandlerFromAnyThread;
+    return CyberCore::functionCallHandlerFromAnyThread;
 }
 
 InspectorEvaluateHandler WorkerInspectorController::evaluateHandler() const
 {
-    return WebCore::evaluateHandlerFromAnyThread;
+    return CyberCore::evaluateHandlerFromAnyThread;
 }
 
 Stopwatch& WorkerInspectorController::executionStopwatch() const
@@ -250,4 +250,4 @@ VM& WorkerInspectorController::vm()
     return m_globalScope.vm();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

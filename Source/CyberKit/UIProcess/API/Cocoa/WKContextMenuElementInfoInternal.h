@@ -29,7 +29,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ContextMenuElementInfo> {
     using WrapperClass = WKContextMenuElementInfo;

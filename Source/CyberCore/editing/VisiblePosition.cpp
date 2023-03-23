@@ -51,7 +51,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -836,21 +836,21 @@ VisiblePosition midpoint(const VisiblePositionRange& range)
     if (!rootContainerNode)
         return { };
     auto scope = makeRangeSelectingNodeContents(*rootContainerNode);
-    auto characterRange = WebCore::characterRange(scope, *makeSimpleRange(range.start, range.end));
+    auto characterRange = CyberCore::characterRange(scope, *makeSimpleRange(range.start, range.end));
     return makeContainerOffsetPosition(resolveCharacterLocation(scope, characterRange.location + characterRange.length / 2));
 }
 
-}  // namespace WebCore
+}  // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showTree(const WebCore::VisiblePosition* vpos)
+void showTree(const CyberCore::VisiblePosition* vpos)
 {
     if (vpos)
         vpos->showTreeForThis();
 }
 
-void showTree(const WebCore::VisiblePosition& vpos)
+void showTree(const CyberCore::VisiblePosition& vpos)
 {
     vpos.showTreeForThis();
 }

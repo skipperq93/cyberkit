@@ -35,7 +35,7 @@
 #include <wtf/text/StringView.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSTokenizerInputStream;
 class CSSParserObserverWrapper;
@@ -130,4 +130,4 @@ private:
     CSSTokenizerInputStream m_input;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

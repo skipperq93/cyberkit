@@ -32,7 +32,7 @@
 #include <CyberScriptCore/ScriptFetcher.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedScript;
 class Document;
@@ -97,4 +97,4 @@ private:
     bool m_isLoaded { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "ExceptionOr.h"
 #include "ScriptWrappable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -58,4 +58,4 @@ private:
     Element& m_element;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -71,10 +71,10 @@
 #include "DrawingAreaProxyWC.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-static const LPCWSTR kWebKit2WebViewWindowClassName = L"WebKit2WebViewWindowClass";
+static const LPCWSTR kCyberKit2WebViewWindowClassName = L"CyberKit2WebViewWindowClass";
 
 static const int kMaxToolTipWidth = 250;
 
@@ -213,7 +213,7 @@ bool WebView::registerWebViewWindowClass()
     wcex.hCursor = ::LoadCursor(0, IDC_ARROW);
     wcex.hbrBackground = 0;
     wcex.lpszMenuName = 0;
-    wcex.lpszClassName = kWebKit2WebViewWindowClassName;
+    wcex.lpszClassName = kCyberKit2WebViewWindowClassName;
     wcex.hIconSm = 0;
 
     return !!::RegisterClassEx(&wcex);
@@ -224,7 +224,7 @@ WebView::WebView(RECT rect, const API::PageConfiguration& configuration, HWND pa
 {
     registerWebViewWindowClass();
 
-    m_window = ::CreateWindowExW(0, kWebKit2WebViewWindowClassName, 0, WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_VISIBLE,
+    m_window = ::CreateWindowExW(0, kCyberKit2WebViewWindowClassName, 0, WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_VISIBLE,
         rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, parentWindow ? parentWindow : HWND_MESSAGE, 0, instanceHandle(), this);
     ASSERT(::IsWindow(m_window));
     // We only check our window style, and not ::IsWindowVisible, because m_isVisible only tracks
@@ -246,7 +246,7 @@ WebView::WebView(RECT rect, const API::PageConfiguration& configuration, HWND pa
     m_page->setURLSchemeHandlerForScheme(RemoteInspectorProtocolHandler::create(*m_page), "inspector"_s);
 #endif
 
-    // FIXME: Initializing the tooltip window here matches WebKit win, but seems like something
+    // FIXME: Initializing the tooltip window here matches CyberKit win, but seems like something
     // we could do on demand to save resources.
     initializeToolTipWindow();
 
@@ -373,7 +373,7 @@ LRESULT WebView::onWheelEvent(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 {
     NativeWebWheelEvent wheelEvent(hWnd, message, wParam, lParam);
     if (wheelEvent.controlKey()) {
-        // We do not want WebKit to handle Control + Wheel, this should be handled by the client application
+        // We do not want CyberKit to handle Control + Wheel, this should be handled by the client application
         // to zoom the page.
         handled = false;
         return 0;
@@ -454,7 +454,7 @@ LRESULT WebView::onKeyEvent(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     Vector<MSG> pendingCharEvents;
     if (message == WM_KEYDOWN) {
         MSG msg;
-        // WM_SYSCHAR events should not be removed, because WebKit is using WM_SYSCHAR for access keys and they can't be canceled.
+        // WM_SYSCHAR events should not be removed, because CyberKit is using WM_SYSCHAR for access keys and they can't be canceled.
         while (PeekMessage(&msg, hWnd, WM_CHAR, WM_DEADCHAR, PM_REMOVE)) {
             if (msg.message == WM_CHAR)
                 pendingCharEvents.append(msg);
@@ -484,7 +484,7 @@ void WebView::paint(HDC hdc, const IntRect& dirtyRect)
     m_page->endPrinting();
     if (m_page->drawingArea()) {
         auto painter = [&](auto drawingArea) {
-            // FIXME: We should port WebKit1's rect coalescing logic here.
+            // FIXME: We should port CyberKit1's rect coalescing logic here.
             Region unpaintedRegion;
 #if USE(CAIRO)
             cairo_surface_t* surface = cairo_win32_surface_create(hdc);
@@ -944,4 +944,4 @@ bool WebView::usesOffscreenRendering() const
     return m_usesOffscreenRendering;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

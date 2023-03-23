@@ -36,7 +36,7 @@ namespace CyberCore {
 struct ExceptionData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 using MediaSessionCommandCompletionHandler = CompletionHandler<void(std::optional<CyberCore::ExceptionData>&&)>;
 
@@ -71,6 +71,6 @@ private:
     WeakPtr<CyberCore::MediaSessionCoordinatorClient> m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_SESSION_COORDINATOR)

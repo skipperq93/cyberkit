@@ -38,7 +38,7 @@
 #import <CyberCore/WebEvent.h>
 #import <wtf/BlockPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebAutomationSession::sendSynthesizedEventsToPage(WebPageProxy& page, NSArray *eventsToSend)
@@ -225,6 +225,6 @@ void WebAutomationSession::platformSimulateTouchInteraction(WebPageProxy& page, 
 }
 #endif // ENABLE(WEBDRIVER_TOUCH_INTERACTIONS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -32,7 +32,7 @@
 #include <wtf/HashFunctions.h>
 #include <wtf/HashTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Layout {
 
@@ -222,16 +222,16 @@ struct CellSpan {
 
 namespace WTF {
 struct SlotPositionHash {
-    static unsigned hash(const WebCore::Layout::SlotPosition& slotPosition) { return pairIntHash(slotPosition.column, slotPosition.row); }
-    static bool equal(const WebCore::Layout::SlotPosition& a, const WebCore::Layout::SlotPosition& b) { return a == b; }
+    static unsigned hash(const CyberCore::Layout::SlotPosition& slotPosition) { return pairIntHash(slotPosition.column, slotPosition.row); }
+    static bool equal(const CyberCore::Layout::SlotPosition& a, const CyberCore::Layout::SlotPosition& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
-template<> struct HashTraits<WebCore::Layout::SlotPosition> : GenericHashTraits<WebCore::Layout::SlotPosition> {
-    static WebCore::Layout::SlotPosition emptyValue() { return WebCore::Layout::SlotPosition(0, std::numeric_limits<size_t>::max()); }
+template<> struct HashTraits<CyberCore::Layout::SlotPosition> : GenericHashTraits<CyberCore::Layout::SlotPosition> {
+    static CyberCore::Layout::SlotPosition emptyValue() { return CyberCore::Layout::SlotPosition(0, std::numeric_limits<size_t>::max()); }
 
-    static void constructDeletedValue(WebCore::Layout::SlotPosition& slot) { slot.column = std::numeric_limits<size_t>::max(); }
-    static bool isDeletedValue(const WebCore::Layout::SlotPosition& slot) { return slot.column == std::numeric_limits<size_t>::max(); }
+    static void constructDeletedValue(CyberCore::Layout::SlotPosition& slot) { slot.column = std::numeric_limits<size_t>::max(); }
+    static bool isDeletedValue(const CyberCore::Layout::SlotPosition& slot) { return slot.column == std::numeric_limits<size_t>::max(); }
 };
-template<> struct DefaultHash<WebCore::Layout::SlotPosition> : SlotPositionHash { };
+template<> struct DefaultHash<CyberCore::Layout::SlotPosition> : SlotPositionHash { };
 }
 

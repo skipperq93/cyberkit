@@ -18,44 +18,44 @@
  */
 
 #include "config.h"
-#include "WebKitScriptDialog.h"
+#include "CyberKitScriptDialog.h"
 
-#include "WebKitScriptDialogPrivate.h"
+#include "CyberKitScriptDialogPrivate.h"
 
 /**
- * WebKitScriptDialog: (ref-func webkit_script_dialog_ref) (unref-func webkit_script_dialog_unref)
+ * CyberKitScriptDialog: (ref-func webkit_script_dialog_ref) (unref-func webkit_script_dialog_unref)
  *
  * Carries details to be shown in user-facing dialogs.
  */
 
-G_DEFINE_BOXED_TYPE(WebKitScriptDialog, webkit_script_dialog, webkit_script_dialog_ref, webkit_script_dialog_unref)
+G_DEFINE_BOXED_TYPE(CyberKitScriptDialog, webkit_script_dialog, webkit_script_dialog_ref, webkit_script_dialog_unref)
 
-WebKitScriptDialog* webkitScriptDialogCreate(unsigned type, const CString& message, const CString& defaultText, Function<void(bool, const String&)>&& completionHandler)
+CyberKitScriptDialog* webkitScriptDialogCreate(unsigned type, const CString& message, const CString& defaultText, Function<void(bool, const String&)>&& completionHandler)
 {
-    auto* dialog = static_cast<WebKitScriptDialog*>(fastMalloc(sizeof(WebKitScriptDialog)));
-    new (dialog) WebKitScriptDialog(type, message, defaultText, WTFMove(completionHandler));
+    auto* dialog = static_cast<CyberKitScriptDialog*>(fastMalloc(sizeof(CyberKitScriptDialog)));
+    new (dialog) CyberKitScriptDialog(type, message, defaultText, WTFMove(completionHandler));
     return dialog;
 }
 
-bool webkitScriptDialogIsRunning(WebKitScriptDialog* scriptDialog)
+bool webkitScriptDialogIsRunning(CyberKitScriptDialog* scriptDialog)
 {
     return !!scriptDialog->completionHandler;
 }
 
 /**
  * webkit_script_dialog_ref:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  *
  * Atomically increments the reference count of @dialog by one.
  *
  * This
  * function is MT-safe and may be called from any thread.
  *
- * Returns: The passed in #WebKitScriptDialog
+ * Returns: The passed in #CyberKitScriptDialog
  *
  * Since: 2.24
  */
-WebKitScriptDialog* webkit_script_dialog_ref(WebKitScriptDialog* dialog)
+CyberKitScriptDialog* webkit_script_dialog_ref(CyberKitScriptDialog* dialog)
 {
     g_atomic_int_inc(&dialog->referenceCount);
     return dialog;
@@ -63,50 +63,50 @@ WebKitScriptDialog* webkit_script_dialog_ref(WebKitScriptDialog* dialog)
 
 /**
  * webkit_script_dialog_unref:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  *
  * Atomically decrements the reference count of @dialog by one.
  *
  * If the
- * reference count drops to 0, all memory allocated by the #WebKitScriptdialog is
+ * reference count drops to 0, all memory allocated by the #CyberKitScriptdialog is
  * released. This function is MT-safe and may be called from any
  * thread.
  *
  * Since: 2.24
  */
-void webkit_script_dialog_unref(WebKitScriptDialog* dialog)
+void webkit_script_dialog_unref(CyberKitScriptDialog* dialog)
 {
     if (g_atomic_int_dec_and_test(&dialog->referenceCount)) {
         webkit_script_dialog_close(dialog);
-        dialog->~WebKitScriptDialog();
+        dialog->~CyberKitScriptDialog();
         fastFree(dialog);
     }
 }
 
 /**
  * webkit_script_dialog_get_dialog_type:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  *
- * Get the dialog type of a #WebKitScriptDialog.
+ * Get the dialog type of a #CyberKitScriptDialog.
  *
- * Returns: the #WebKitScriptDialogType of @dialog
+ * Returns: the #CyberKitScriptDialogType of @dialog
  */
-WebKitScriptDialogType webkit_script_dialog_get_dialog_type(WebKitScriptDialog* dialog)
+CyberKitScriptDialogType webkit_script_dialog_get_dialog_type(CyberKitScriptDialog* dialog)
 {
     g_return_val_if_fail(dialog, WEBKIT_SCRIPT_DIALOG_ALERT);
 
-    return static_cast<WebKitScriptDialogType>(dialog->type);
+    return static_cast<CyberKitScriptDialogType>(dialog->type);
 }
 
 /**
  * webkit_script_dialog_get_message:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  *
- * Get the message of a #WebKitScriptDialog.
+ * Get the message of a #CyberKitScriptDialog.
  *
  * Returns: the message of @dialog.
  */
-const char* webkit_script_dialog_get_message(WebKitScriptDialog* dialog)
+const char* webkit_script_dialog_get_message(CyberKitScriptDialog* dialog)
 {
     g_return_val_if_fail(dialog, 0);
 
@@ -115,19 +115,19 @@ const char* webkit_script_dialog_get_message(WebKitScriptDialog* dialog)
 
 /**
  * webkit_script_dialog_confirm_set_confirmed:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  * @confirmed: whether user confirmed the dialog
  *
  * Set whether the user confirmed the dialog.
  *
  * This method is used for %WEBKIT_SCRIPT_DIALOG_CONFIRM and %WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM dialogs when
- * #WebKitWebView::script-dialog signal is emitted to set whether the user
- * confirmed the dialog or not. The default implementation of #WebKitWebView::script-dialog
+ * #CyberKitWebView::script-dialog signal is emitted to set whether the user
+ * confirmed the dialog or not. The default implementation of #CyberKitWebView::script-dialog
  * signal sets %TRUE when the OK or Stay buttons are clicked and %FALSE otherwise.
- * It's an error to use this method with a #WebKitScriptDialog that is not of type
+ * It's an error to use this method with a #CyberKitScriptDialog that is not of type
  * %WEBKIT_SCRIPT_DIALOG_CONFIRM or %WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM
  */
-void webkit_script_dialog_confirm_set_confirmed(WebKitScriptDialog* dialog, gboolean confirmed)
+void webkit_script_dialog_confirm_set_confirmed(CyberKitScriptDialog* dialog, gboolean confirmed)
 {
     g_return_if_fail(dialog);
     g_return_if_fail(dialog->type == WEBKIT_SCRIPT_DIALOG_CONFIRM || dialog->type == WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM);
@@ -137,16 +137,16 @@ void webkit_script_dialog_confirm_set_confirmed(WebKitScriptDialog* dialog, gboo
 
 /**
  * webkit_script_dialog_prompt_get_default_text:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  *
- * Get the default text of a #WebKitScriptDialog of type %WEBKIT_SCRIPT_DIALOG_PROMPT.
+ * Get the default text of a #CyberKitScriptDialog of type %WEBKIT_SCRIPT_DIALOG_PROMPT.
  *
- * It's an error to use this method with a #WebKitScriptDialog that is not of type
+ * It's an error to use this method with a #CyberKitScriptDialog that is not of type
  * %WEBKIT_SCRIPT_DIALOG_PROMPT.
  *
  * Returns: the default text of @dialog
  */
-const char* webkit_script_dialog_prompt_get_default_text(WebKitScriptDialog* dialog)
+const char* webkit_script_dialog_prompt_get_default_text(CyberKitScriptDialog* dialog)
 {
     g_return_val_if_fail(dialog, 0);
     g_return_val_if_fail(dialog->type == WEBKIT_SCRIPT_DIALOG_PROMPT, 0);
@@ -156,19 +156,19 @@ const char* webkit_script_dialog_prompt_get_default_text(WebKitScriptDialog* dia
 
 /**
  * webkit_script_dialog_prompt_set_text:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  * @text: the text to set
  *
  * Set the text entered by the user in the dialog.
  *
  * This method is used for %WEBKIT_SCRIPT_DIALOG_PROMPT dialogs when
- * #WebKitWebView::script-dialog signal is emitted to set the text
- * entered by the user. The default implementation of #WebKitWebView::script-dialog
+ * #CyberKitWebView::script-dialog signal is emitted to set the text
+ * entered by the user. The default implementation of #CyberKitWebView::script-dialog
  * signal sets the text of the entry form when OK button is clicked, otherwise %NULL is set.
- * It's an error to use this method with a #WebKitScriptDialog that is not of type
+ * It's an error to use this method with a #CyberKitScriptDialog that is not of type
  * %WEBKIT_SCRIPT_DIALOG_PROMPT.
  */
-void webkit_script_dialog_prompt_set_text(WebKitScriptDialog* dialog, const char* text)
+void webkit_script_dialog_prompt_set_text(CyberKitScriptDialog* dialog, const char* text)
 {
     g_return_if_fail(dialog);
     g_return_if_fail(dialog->type == WEBKIT_SCRIPT_DIALOG_PROMPT);
@@ -178,18 +178,18 @@ void webkit_script_dialog_prompt_set_text(WebKitScriptDialog* dialog, const char
 
 /**
  * webkit_script_dialog_close:
- * @dialog: a #WebKitScriptDialog
+ * @dialog: a #CyberKitScriptDialog
  *
  * Close @dialog.
  *
- * When handling a #WebKitScriptDialog asynchronously (webkit_script_dialog_ref()
- * was called in #WebKitWebView::script-dialog callback), this function needs to be called to notify
+ * When handling a #CyberKitScriptDialog asynchronously (webkit_script_dialog_ref()
+ * was called in #CyberKitWebView::script-dialog callback), this function needs to be called to notify
  * that we are done with the script dialog. The dialog will be closed on destruction if this function
  * hasn't been called before.
  *
  * Since: 2.24
  */
-void webkit_script_dialog_close(WebKitScriptDialog* dialog)
+void webkit_script_dialog_close(CyberKitScriptDialog* dialog)
 {
     g_return_if_fail(dialog);
 

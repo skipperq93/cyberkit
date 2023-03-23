@@ -30,7 +30,7 @@
 #include "IndexedDB.h"
 #include <wtf/ArgumentCoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBOpenDBRequest;
 class IDBTransaction;
@@ -90,4 +90,4 @@ private:
     IndexedDB::RequestType m_requestType { IndexedDB::RequestType::Other };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

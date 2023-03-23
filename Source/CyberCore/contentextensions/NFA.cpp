@@ -31,7 +31,7 @@
 #include <wtf/ASCIICType.h>
 #include <wtf/DataLog.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -121,6 +121,6 @@ void NFA::debugPrintDot() const
 
 } // namespace ContentExtensions
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

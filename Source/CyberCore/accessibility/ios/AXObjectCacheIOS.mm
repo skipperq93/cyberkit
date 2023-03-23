@@ -34,7 +34,7 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 void AXObjectCache::attachWrapper(AccessibilityObject* object)
 {
@@ -96,7 +96,7 @@ void AXObjectCache::postPlatformNotification(AXCoreObject* object, AXNotificatio
         return;
 
     // iOS notifications must ultimately call UIKit UIAccessibilityPostNotification.
-    // But WebCore is not linked with UIKit. So a workaround is to override the wrapper's
+    // But CyberCore is not linked with UIKit. So a workaround is to override the wrapper's
     // postNotification method in the system CyberKitAccessibility bundle that does link UIKit.
     auto notificationName = notificationPlatformName(notification);
     if (notificationName.isNull())

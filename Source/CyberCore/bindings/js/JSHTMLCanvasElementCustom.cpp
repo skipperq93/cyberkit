@@ -26,18 +26,18 @@
 #include "config.h"
 #include "JSHTMLCanvasElement.h"
 
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/SlotVisitor.h>
 #include <CyberScriptCore/SlotVisitorInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSHTMLCanvasElement::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, static_cast<CanvasBase&>(wrapped()));
+    addCyberCoreOpaqueRoot(visitor, static_cast<CanvasBase&>(wrapped()));
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSHTMLCanvasElement);
 
-} // namespace WebCore
+} // namespace CyberCore

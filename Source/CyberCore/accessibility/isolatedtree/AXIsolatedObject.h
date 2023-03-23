@@ -40,7 +40,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AXIsolatedTree;
 
@@ -566,7 +566,7 @@ inline T AXIsolatedObject::propertyValue(AXPropertyName propertyName) const
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AXIsolatedObject, isAXIsolatedObjectInstance())
 

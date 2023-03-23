@@ -18,11 +18,11 @@
  */
 
 #include "config.h"
-#include "WebKitPrivate.h"
+#include "CyberKitPrivate.h"
 
 #include "APIError.h"
 #include "WebEvent.h"
-#include "WebKitError.h"
+#include "CyberKitError.h"
 
 #if PLATFORM(GTK)
 #include <CyberCore/GtkVersioning.h>
@@ -31,38 +31,38 @@
 #endif
 
 #if PLATFORM(GTK)
-unsigned toPlatformModifiers(OptionSet<WebKit::WebEventModifier> wkModifiers)
+unsigned toPlatformModifiers(OptionSet<CyberKit::WebEventModifier> wkModifiers)
 {
     unsigned modifiers = 0;
-    if (wkModifiers.contains(WebKit::WebEventModifier::ShiftKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::ShiftKey))
         modifiers |= GDK_SHIFT_MASK;
-    if (wkModifiers.contains(WebKit::WebEventModifier::ControlKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::ControlKey))
         modifiers |= GDK_CONTROL_MASK;
-    if (wkModifiers.contains(WebKit::WebEventModifier::AltKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::AltKey))
         modifiers |= GDK_MOD1_MASK;
-    if (wkModifiers.contains(WebKit::WebEventModifier::MetaKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::MetaKey))
         modifiers |= GDK_META_MASK;
-    if (wkModifiers.contains(WebKit::WebEventModifier::CapsLockKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::CapsLockKey))
         modifiers |= GDK_LOCK_MASK;
     return modifiers;
 }
 #elif PLATFORM(WPE)
-unsigned toPlatformModifiers(OptionSet<WebKit::WebEventModifier> wkModifiers)
+unsigned toPlatformModifiers(OptionSet<CyberKit::WebEventModifier> wkModifiers)
 {
     unsigned modifiers = 0;
-    if (wkModifiers.contains(WebKit::WebEventModifier::ShiftKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::ShiftKey))
         modifiers |= wpe_input_keyboard_modifier_shift;
-    if (wkModifiers.contains(WebKit::WebEventModifier::ControlKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::ControlKey))
         modifiers |= wpe_input_keyboard_modifier_control;
-    if (wkModifiers.contains(WebKit::WebEventModifier::AltKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::AltKey))
         modifiers |= wpe_input_keyboard_modifier_alt;
-    if (wkModifiers.contains(WebKit::WebEventModifier::MetaKey))
+    if (wkModifiers.contains(CyberKit::WebEventModifier::MetaKey))
         modifiers |= wpe_input_keyboard_modifier_meta;
     return modifiers;
 }
 #endif
 
-WebKitNavigationType toWebKitNavigationType(CyberCore::NavigationType type)
+CyberKitNavigationType toCyberKitNavigationType(CyberCore::NavigationType type)
 {
     switch (type) {
     case CyberCore::NavigationType::LinkClicked:
@@ -83,23 +83,23 @@ WebKitNavigationType toWebKitNavigationType(CyberCore::NavigationType type)
     }
 }
 
-unsigned toWebKitMouseButton(WebKit::WebMouseEventButton button)
+unsigned toCyberKitMouseButton(CyberKit::WebMouseEventButton button)
 {
     switch (button) {
-    case WebKit::WebMouseEventButton::NoButton:
+    case CyberKit::WebMouseEventButton::NoButton:
         return 0;
-    case WebKit::WebMouseEventButton::LeftButton:
+    case CyberKit::WebMouseEventButton::LeftButton:
         return 1;
-    case WebKit::WebMouseEventButton::MiddleButton:
+    case CyberKit::WebMouseEventButton::MiddleButton:
         return 2;
-    case WebKit::WebMouseEventButton::RightButton:
+    case CyberKit::WebMouseEventButton::RightButton:
         return 3;
     }
     ASSERT_NOT_REACHED();
     return 0;
 }
 
-unsigned toWebKitError(unsigned webCoreError)
+unsigned toCyberKitError(unsigned webCoreError)
 {
     switch (webCoreError) {
     case API::Error::Network::Cancelled:

@@ -22,7 +22,7 @@
 
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace InputTypeNames {
 
@@ -51,4 +51,4 @@ const AtomString& week();
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

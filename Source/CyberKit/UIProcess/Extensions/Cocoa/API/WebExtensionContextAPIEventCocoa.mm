@@ -38,7 +38,7 @@
 #import "WebProcessProxy.h"
 #import "_WKWebExtensionControllerInternal.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebExtensionContext::addListener(WebPageProxyIdentifier identifier, WebExtensionEventListenerType type)
 {
@@ -74,6 +74,6 @@ void WebExtensionContext::removeListener(WebPageProxyIdentifier identifier, WebE
     m_eventListenerPages.remove(iterator);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

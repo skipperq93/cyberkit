@@ -49,7 +49,7 @@
 #include "UserContentController.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Rough size estimate for the memory cache.
 unsigned StyleSheetContents::estimatedSizeInBytes() const

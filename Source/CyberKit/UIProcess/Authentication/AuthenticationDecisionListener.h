@@ -30,7 +30,7 @@
 #include <CyberCore/Credential.h>
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class AuthenticationChallengeDisposition : uint8_t;
 class AuthenticationChallengeProxy;
@@ -51,4 +51,4 @@ private:
     CompletionHandler<void(AuthenticationChallengeDisposition, const CyberCore::Credential&)> m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -25,7 +25,7 @@
 #include "ActiveDOMObject.h"
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMarquee;
 
@@ -64,4 +64,4 @@ private:
     RenderMarquee* renderMarquee() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

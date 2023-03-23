@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSessionActionHandler : public RefCounted<MediaSessionActionHandler>, public ActiveDOMCallback {
 public:
@@ -42,6 +42,6 @@ public:
     virtual CallbackResult<void> handleEvent(const MediaSessionActionDetails&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SESSION);

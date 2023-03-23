@@ -34,9 +34,9 @@
 typedef struct _GSubprocess GSubprocess;
 typedef struct _GSubprocessLauncher GSubprocessLauncher;
 
-namespace WebKit {
+namespace CyberKit {
 
-GRefPtr<GSubprocess> flatpakSpawn(GSubprocessLauncher*, const WebKit::ProcessLauncher::LaunchOptions&, char** argv, int childProcessSocket, GError**);
+GRefPtr<GSubprocess> flatpakSpawn(GSubprocessLauncher*, const CyberKit::ProcessLauncher::LaunchOptions&, char** argv, int childProcessSocket, GError**);
 
 };
 

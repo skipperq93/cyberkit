@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BackForwardClient;
 class HistoryItem;
@@ -71,4 +71,4 @@ private:
     Ref<BackForwardClient> m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

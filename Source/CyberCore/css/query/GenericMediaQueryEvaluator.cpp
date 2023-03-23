@@ -29,7 +29,7 @@
 #include "CSSPrimitiveValue.h"
 #include "CSSToLengthConversionData.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace MQ {
 
 static std::optional<LayoutUnit> computeLength(const CSSValue* value, const CSSToLengthConversionData& conversionData)

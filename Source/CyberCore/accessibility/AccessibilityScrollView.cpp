@@ -34,7 +34,7 @@
 #include "RenderElement.h"
 #include "Widget.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 AccessibilityScrollView::AccessibilityScrollView(ScrollView* view)
     : m_scrollView(view)
@@ -282,4 +282,4 @@ void AccessibilityScrollView::scrollTo(const IntPoint& point) const
         scrollView->setScrollPosition(point);
 }
 
-} // namespace WebCore    
+} // namespace CyberCore    

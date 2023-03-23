@@ -51,7 +51,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 using namespace Inspector;
@@ -207,4 +207,4 @@ void CommandLineAPIHost::clearAllWrappers()
     m_inspectedObject = makeUnique<InspectableObject>();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

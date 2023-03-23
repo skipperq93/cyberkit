@@ -36,7 +36,7 @@ namespace CyberCore {
 class PlatformMouseEvent;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteScrollingCoordinatorProxy;
 
@@ -73,8 +73,8 @@ protected:
     RemoteScrollingCoordinatorProxy& m_scrollingCoordinatorProxy;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_SCROLLING_TREE(WebKit::RemoteScrollingTree, isRemoteScrollingTree());
+SPECIALIZE_TYPE_TRAITS_SCROLLING_TREE(CyberKit::RemoteScrollingTree, isRemoteScrollingTree());
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

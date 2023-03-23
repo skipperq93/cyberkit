@@ -23,7 +23,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaList;
 class StyleRuleImport;
@@ -61,6 +61,6 @@ private:
     mutable RefPtr<CSSStyleSheet> m_styleSheetCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSImportRule, StyleRuleType::Import)

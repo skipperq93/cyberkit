@@ -38,7 +38,7 @@
 #include <CyberCore/NotImplemented.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebPreferences> WebPreferences::create(const String& identifier, const String& keyPrefix, const String& globalDebugKeyPrefix)
 {
@@ -302,4 +302,4 @@ bool WebPreferences::platformGetDoubleUserValueForKey(const String&, double&)
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

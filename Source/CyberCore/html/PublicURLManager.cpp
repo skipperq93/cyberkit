@@ -33,7 +33,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<PublicURLManager> PublicURLManager::create(ScriptExecutionContext* context)
 {
@@ -91,4 +91,4 @@ const char* PublicURLManager::activeDOMObjectName() const
     return "PublicURLManager";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

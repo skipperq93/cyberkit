@@ -20,6 +20,6 @@
 #pragma once
 
 #include <CyberCore/SerializedScriptValue.h>
-#include "WebKitJavascriptResult.h"
+#include "CyberKitJavascriptResult.h"
 
-WebKitJavascriptResult* webkitJavascriptResultCreate(CyberCore::SerializedScriptValue&);
+CyberKitJavascriptResult* webkitJavascriptResultCreate(CyberCore::SerializedScriptValue&);

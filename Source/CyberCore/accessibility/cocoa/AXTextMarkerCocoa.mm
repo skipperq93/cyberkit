@@ -32,7 +32,7 @@
 #import "WebAccessibilityObjectWrapperIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 AXTextMarker::AXTextMarker(PlatformTextMarkerData platformData)
 {
@@ -87,4 +87,4 @@ RetainPtr<AXTextMarkerRangeRef> AXTextMarkerRange::platformData() const
 }
 #endif // PLATFORM(MAC)
 
-} // namespace WebCore
+} // namespace CyberCore

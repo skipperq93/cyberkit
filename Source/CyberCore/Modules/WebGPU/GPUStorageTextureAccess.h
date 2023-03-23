@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUStorageTextureAccess.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUStorageTextureAccess : uint8_t {
     WriteOnly,

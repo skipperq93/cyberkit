@@ -29,7 +29,7 @@
 #include "MediaKeySystemClient.h"
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaKeySystemRequest;
 
@@ -63,6 +63,6 @@ inline void MediaKeySystemController::cancelMediaKeySystemRequest(MediaKeySystem
         m_client->cancelMediaKeySystemRequest(request);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

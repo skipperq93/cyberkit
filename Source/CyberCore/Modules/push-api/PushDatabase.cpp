@@ -56,7 +56,7 @@
     !(ss).pushPartition.isNull() ? (ss).pushPartition : emptyString(), \
     uuidToSpan((ss).dataStoreIdentifier)
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr ASCIILiteral pushDatabaseSchemaV1Statements[] = {
     "PRAGMA auto_vacuum=INCREMENTAL"_s,
@@ -326,7 +326,7 @@ SQLiteStatementAutoResetScope PushDatabase::cachedStatementOnQueue(ASCIILiteral 
 }
 
 template<typename... Args>
-WebCore::SQLiteStatementAutoResetScope PushDatabase::bindStatementOnQueue(ASCIILiteral query, Args&&... args)
+CyberCore::SQLiteStatementAutoResetScope PushDatabase::bindStatementOnQueue(ASCIILiteral query, Args&&... args)
 {
     auto sql = cachedStatementOnQueue(query);
     if (!sql || !sql->bind(std::forward<Args>(args)...)) {
@@ -844,6 +844,6 @@ void PushDatabase::setPushesEnabledForOrigin(const PushSubscriptionSetIdentifier
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

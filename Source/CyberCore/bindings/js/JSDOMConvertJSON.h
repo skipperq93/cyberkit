@@ -29,7 +29,7 @@
 #include "JSDOMConvertBase.h"
 #include <CyberScriptCore/JSONObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct Converter<IDLJSON> : DefaultConverter<IDLJSON> {
     static String convert(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSValue value)
@@ -48,4 +48,4 @@ template<> struct JSConverter<IDLJSON> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

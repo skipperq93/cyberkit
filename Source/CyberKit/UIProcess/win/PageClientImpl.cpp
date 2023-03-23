@@ -39,7 +39,7 @@
 #include "DrawingAreaProxyWC.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 PageClientImpl::PageClientImpl(WebView& view)
@@ -384,4 +384,4 @@ void PageClientImpl::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, co
     completionHandler(CyberCore::DOMPasteAccessResponse::DeniedForGesture);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

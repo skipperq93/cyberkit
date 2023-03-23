@@ -86,7 +86,7 @@ struct MockWebAuthenticationConfiguration;
 struct NotificationData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuthenticatorManager;
 class AuxiliaryProcessProxy;

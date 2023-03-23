@@ -26,7 +26,7 @@
 #include "config.h"
 #include "AuxiliaryProcessMain.h"
 
-#include <JavaScriptCore/ExecutableAllocator.h>
+#include <CyberScriptCore/ExecutableAllocator.h>
 #include <cstring>
 #include <wtf/text/StringToIntegerConversion.h>
 

@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include "FloatPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasRenderingContext;
 class Gradient;

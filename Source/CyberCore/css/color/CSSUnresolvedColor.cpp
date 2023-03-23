@@ -28,18 +28,18 @@
 
 #include "StyleBuilderState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSUnresolvedColor::~CSSUnresolvedColor() = default;
 
 void CSSUnresolvedColor::serializationForCSS(StringBuilder& builder) const
 {
-    return WTF::switchOn(m_value, [&] (auto& unresolved) { WebCore::serializationForCSS(builder, unresolved); });
+    return WTF::switchOn(m_value, [&] (auto& unresolved) { CyberCore::serializationForCSS(builder, unresolved); });
 }
 
 String CSSUnresolvedColor::serializationForCSS() const
 {
-    return WTF::switchOn(m_value, [] (auto& unresolved) -> String { return WebCore::serializationForCSS(unresolved); });
+    return WTF::switchOn(m_value, [] (auto& unresolved) -> String { return CyberCore::serializationForCSS(unresolved); });
 }
 
 bool CSSUnresolvedColor::equals(const CSSUnresolvedColor& other) const
@@ -51,9 +51,9 @@ StyleColor CSSUnresolvedColor::createStyleColor(const Document& document, Render
 {
     return WTF::switchOn(m_value,
         [&] (const CSSUnresolvedColorMix& unresolved) {
-            return WebCore::createStyleColor(unresolved, document, style, forVisitedLink);
+            return CyberCore::createStyleColor(unresolved, document, style, forVisitedLink);
         }
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore

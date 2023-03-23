@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OESElementIndexUint);
 
@@ -52,6 +52,6 @@ bool OESElementIndexUint::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_OES_element_index_uint"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

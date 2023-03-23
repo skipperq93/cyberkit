@@ -59,7 +59,7 @@
 #include <wtf/text/WTFString.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static String resourceName(const URL& url)
 {
@@ -543,4 +543,4 @@ bool WebSocketHandshake::checkResponseHeaders()
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

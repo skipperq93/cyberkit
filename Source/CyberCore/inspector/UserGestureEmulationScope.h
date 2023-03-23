@@ -32,7 +32,7 @@
 
 #include "UserGestureIndicator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ChromeClient;
 class Document;
@@ -52,4 +52,4 @@ private:
     bool m_userWasInteracting;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

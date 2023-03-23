@@ -35,7 +35,7 @@ if (ENABLE_WEBINSPECTORUI)
 endif ()
 
 if (ENABLE_WEBCORE)
-    add_subdirectory(WebCore)
+    add_subdirectory(CyberCore)
 endif ()
 
 if (ENABLE_WEBKIT_LEGACY)

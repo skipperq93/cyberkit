@@ -17,51 +17,51 @@
  */
 
 #include "config.h"
-#include "WebKitDeviceInfoPermissionRequest.h"
+#include "CyberKitDeviceInfoPermissionRequest.h"
 
 #include "DeviceIdHashSaltStorage.h"
 #include "UserMediaPermissionCheckProxy.h"
-#include "WebKitDeviceInfoPermissionRequestPrivate.h"
-#include "WebKitPermissionRequest.h"
+#include "CyberKitDeviceInfoPermissionRequestPrivate.h"
+#include "CyberKitPermissionRequest.h"
 #include "WebsiteDataStore.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 
 #if !ENABLE(2022_GLIB_API)
-typedef WebKitPermissionRequestIface WebKitPermissionRequestInterface;
+typedef CyberKitPermissionRequestIface CyberKitPermissionRequestInterface;
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitDeviceInfoPermissionRequest:
- * @See_also: #WebKitPermissionRequest, #WebKitWebView
+ * CyberKitDeviceInfoPermissionRequest:
+ * @See_also: #CyberKitPermissionRequest, #CyberKitWebView
  *
  * A permission request for accessing user's audio/video devices.
  *
- * WebKitUserMediaPermissionRequest represents a request for
- * permission to whether WebKit should be allowed to access the user's
+ * CyberKitUserMediaPermissionRequest represents a request for
+ * permission to whether CyberKit should be allowed to access the user's
  * devices information when requested through the enumerateDevices API.
  *
- * When a WebKitDeviceInfoPermissionRequest is not handled by the user,
+ * When a CyberKitDeviceInfoPermissionRequest is not handled by the user,
  * it is denied by default.
  *
  * Since: 2.24
  */
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface*);
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface*);
 
-struct _WebKitDeviceInfoPermissionRequestPrivate {
+struct _CyberKitDeviceInfoPermissionRequestPrivate {
     RefPtr<UserMediaPermissionCheckProxy> request;
     RefPtr<DeviceIdHashSaltStorage> deviceIdHashSaltStorage;
     bool madeDecision;
 };
 
 WEBKIT_DEFINE_FINAL_TYPE_WITH_CODE(
-    WebKitDeviceInfoPermissionRequest, webkit_device_info_permission_request, G_TYPE_OBJECT, GObject,
+    CyberKitDeviceInfoPermissionRequest, webkit_device_info_permission_request, G_TYPE_OBJECT, GObject,
     G_IMPLEMENT_INTERFACE(WEBKIT_TYPE_PERMISSION_REQUEST, webkit_permission_request_interface_init))
 
-static void webkitDeviceInfoPermissionRequestAllow(WebKitPermissionRequest* request)
+static void webkitDeviceInfoPermissionRequestAllow(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_DEVICE_INFO_PERMISSION_REQUEST(request));
 
@@ -80,7 +80,7 @@ static void webkitDeviceInfoPermissionRequestAllow(WebKitPermissionRequest* requ
     priv->request->setUserMediaAccessInfo(true);
 }
 
-static void webkitDeviceInfoPermissionRequestDeny(WebKitPermissionRequest* request)
+static void webkitDeviceInfoPermissionRequestDeny(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_DEVICE_INFO_PERMISSION_REQUEST(request));
 
@@ -99,7 +99,7 @@ static void webkitDeviceInfoPermissionRequestDeny(WebKitPermissionRequest* reque
     priv->request->setUserMediaAccessInfo(false);
 }
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface* iface)
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface* iface)
 {
     iface->allow = webkitDeviceInfoPermissionRequestAllow;
     iface->deny = webkitDeviceInfoPermissionRequestDeny;
@@ -112,13 +112,13 @@ static void webkitDeviceInfoPermissionRequestDispose(GObject* object)
     G_OBJECT_CLASS(webkit_device_info_permission_request_parent_class)->dispose(object);
 }
 
-static void webkit_device_info_permission_request_class_init(WebKitDeviceInfoPermissionRequestClass* klass)
+static void webkit_device_info_permission_request_class_init(CyberKitDeviceInfoPermissionRequestClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->dispose = webkitDeviceInfoPermissionRequestDispose;
 }
 
-WebKitDeviceInfoPermissionRequest* webkitDeviceInfoPermissionRequestCreate(UserMediaPermissionCheckProxy& request, DeviceIdHashSaltStorage* deviceIdHashSaltStorage)
+CyberKitDeviceInfoPermissionRequest* webkitDeviceInfoPermissionRequestCreate(UserMediaPermissionCheckProxy& request, DeviceIdHashSaltStorage* deviceIdHashSaltStorage)
 {
     auto* deviceInfoPermissionRequest = WEBKIT_DEVICE_INFO_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_DEVICE_INFO_PERMISSION_REQUEST, nullptr));
 

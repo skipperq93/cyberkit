@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLCompressedTextureETC1 final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLCompressedTextureETC1);
@@ -40,4 +40,4 @@ public:
     static bool supported(GraphicsContextGL&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "WebCodecsAlphaOption.h"
 #include "WebCodecsVideoFrameData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BufferSource;
 class CSSStyleImageValue;

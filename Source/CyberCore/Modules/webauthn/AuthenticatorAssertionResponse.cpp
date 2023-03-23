@@ -30,7 +30,7 @@
 
 #include "AuthenticatorResponseData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<AuthenticatorAssertionResponse> AuthenticatorAssertionResponse::create(Ref<ArrayBuffer>&& rawId, Ref<ArrayBuffer>&& authenticatorData, Ref<ArrayBuffer>&& signature, RefPtr<ArrayBuffer>&& userHandle, std::optional<AuthenticationExtensionsClientOutputs>&& extensions, AuthenticatorAttachment attachment)
 {
@@ -84,6 +84,6 @@ AuthenticatorResponseData AuthenticatorAssertionResponse::data() const
     return data;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

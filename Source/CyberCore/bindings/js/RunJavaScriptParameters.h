@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RunAsAsyncFunction : bool { No, Yes };
 enum class ForceUserGesture : bool { No, Yes };
@@ -102,4 +102,4 @@ struct RunJavaScriptParameters {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

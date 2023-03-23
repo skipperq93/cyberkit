@@ -33,7 +33,7 @@
 #include "SVGPathByteStream.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WindRule : bool;
 
@@ -141,7 +141,7 @@ private:
     WindRule m_windRule { };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSCircleValue, isCircle())
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSEllipseValue, isEllipse())

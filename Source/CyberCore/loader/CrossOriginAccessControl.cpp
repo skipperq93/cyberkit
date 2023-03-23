@@ -45,7 +45,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isOnAccessControlSimpleRequestMethodAllowlist(const String& method)
 {
@@ -339,4 +339,4 @@ std::optional<ResourceError> validateRangeRequestedFlag(const ResourceRequest& r
     return std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

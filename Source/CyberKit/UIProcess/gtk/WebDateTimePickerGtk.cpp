@@ -29,12 +29,12 @@
 
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
 
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include <gtk/gtk.h>
 #include <wtf/SetForScope.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebDateTimePickerGtk> WebDateTimePickerGtk::create(WebPageProxy& page)
 {
@@ -186,6 +186,6 @@ void WebDateTimePickerGtk::update(CyberCore::DateTimeChooserParameters&& params)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

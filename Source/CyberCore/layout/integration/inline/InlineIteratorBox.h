@@ -30,7 +30,7 @@
 #include "LegacyInlineElementBox.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderLineBreak;
 class RenderObject;

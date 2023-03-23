@@ -39,7 +39,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserObserver;
 class CSSParserObserverWrapper;
@@ -195,4 +195,4 @@ private:
     CSSParserObserverWrapper* m_observerWrapper { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

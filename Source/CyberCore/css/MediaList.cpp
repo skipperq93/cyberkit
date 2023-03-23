@@ -32,7 +32,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaList::MediaList(CSSStyleSheet* parentSheet)
     : m_parentStyleSheet(parentSheet)
@@ -139,5 +139,5 @@ TextStream& operator<<(TextStream& ts, const MediaList& mediaList)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

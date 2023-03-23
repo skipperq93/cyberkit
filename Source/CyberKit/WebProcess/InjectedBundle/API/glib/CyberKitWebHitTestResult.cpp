@@ -24,9 +24,9 @@
 #include "InjectedBundleScriptWorld.h"
 #include "CyberKitScriptWorldPrivate.h"
 #include "CyberKitWebHitTestResultPrivate.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/JSLock.h>
 #include <CyberCore/Frame.h>
 #include <CyberCore/JSNode.h>
 #include <CyberCore/Node.h>

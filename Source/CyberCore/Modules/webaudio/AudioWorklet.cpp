@@ -39,7 +39,7 @@
 #include "WorkerRunLoop.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioWorklet);
 
@@ -88,6 +88,6 @@ void AudioWorklet::createProcessor(const String& name, TransferredMessagePort po
     }, WorkerRunLoop::defaultMode());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

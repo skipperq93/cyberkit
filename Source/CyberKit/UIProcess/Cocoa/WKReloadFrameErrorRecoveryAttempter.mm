@@ -63,7 +63,7 @@
     if (!webView)
         return NO;
 
-    auto* webFrameProxy = WebKit::WebFrameProxy::webFrame(_frameHandle->_frameHandle->frameID());
+    auto* webFrameProxy = CyberKit::WebFrameProxy::webFrame(_frameHandle->_frameHandle->frameID());
     if (!webFrameProxy)
         return NO;
 

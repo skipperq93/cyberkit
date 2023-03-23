@@ -33,7 +33,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LabelsNodeList;
 class LiveNodeList;
@@ -375,4 +375,4 @@ inline NodeRareData& Node::ensureRareData()
     return *rareData();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

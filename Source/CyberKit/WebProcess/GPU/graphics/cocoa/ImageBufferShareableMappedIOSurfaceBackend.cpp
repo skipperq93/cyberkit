@@ -35,7 +35,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/spi/cocoa/IOSurfaceSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferShareableMappedIOSurfaceBackend);
@@ -96,6 +96,6 @@ RefPtr<NativeImage> ImageBufferShareableMappedIOSurfaceBackend::copyNativeImage(
     return ImageBufferIOSurfaceBackend::copyNativeImage(copyBehavior);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && HAVE(IOSURFACE)

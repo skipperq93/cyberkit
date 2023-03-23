@@ -24,7 +24,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLUListElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLUListElement);
@@ -39,4 +39,4 @@ private:
     void collectPresentationalHintsForAttribute(const QualifiedName&, const AtomString&, MutableStyleProperties&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

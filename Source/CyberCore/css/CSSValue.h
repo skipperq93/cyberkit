@@ -26,7 +26,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/ASCIILiteral.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class CSSStyleDeclaration;
@@ -345,9 +345,9 @@ inline bool compareCSSValue(const Ref<CSSValueType>& first, const Ref<CSSValueTy
     return first.get().equals(second);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CSS_VALUE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::CSSValue& value) { return value.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::CSSValue& value) { return value.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

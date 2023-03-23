@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 class WebProcessPool;
@@ -53,4 +53,4 @@ private:
     MonotonicTime m_lastCPUTime;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -30,7 +30,7 @@
 
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void Authenticator::handleRequest(const WebAuthenticationRequestData& data)
 {
@@ -54,6 +54,6 @@ void Authenticator::receiveRespond(Respond&& respond) const
     m_observer->respondReceived(WTFMove(respond));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

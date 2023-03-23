@@ -27,7 +27,7 @@
 
 #include "CachedHTMLCollection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template <CollectionTraversalType traversalType>
 class GenericCachedHTMLCollection final : public CachedHTMLCollection<GenericCachedHTMLCollection<traversalType>, traversalType> {
@@ -47,4 +47,4 @@ private:
     { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

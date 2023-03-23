@@ -36,7 +36,7 @@
  *   @ In Windows native implementation, the destructor function will be called
  *     only once.
  * This semantic discrepancy does not impose any problem because nowhere in
- * WebKit the repeated call bahavior is utilized.
+ * CyberKit the repeated call bahavior is utilized.
  */
 
 #pragma once
@@ -46,7 +46,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/Threading.h>
 
-// X11 headers define a bunch of macros with common terms, interfering with WebCore and WTF enum values.
+// X11 headers define a bunch of macros with common terms, interfering with CyberCore and WTF enum values.
 // As a workaround, we explicitly undef them here.
 #if defined(False)
 #undef False

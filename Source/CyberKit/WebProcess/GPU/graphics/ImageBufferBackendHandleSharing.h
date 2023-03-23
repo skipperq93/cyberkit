@@ -28,7 +28,7 @@
 #include "ImageBufferBackendHandle.h"
 #include <CyberCore/ImageBufferBackend.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ImageBufferBackendHandleSharing : public CyberCore::ImageBufferBackendSharing {
 public:
@@ -43,11 +43,11 @@ private:
     bool isImageBufferBackendHandleSharing() const final { return true; }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #define SPECIALIZE_TYPE_TRAITS_IMAGE_BUFFER_BACKEND_SHARING(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
     static bool isType(const CyberCore::ImageBufferBackendSharing& backendSharing) { return backendSharing.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_IMAGE_BUFFER_BACKEND_SHARING(WebKit::ImageBufferBackendHandleSharing, isImageBufferBackendHandleSharing())
+SPECIALIZE_TYPE_TRAITS_IMAGE_BUFFER_BACKEND_SHARING(CyberKit::ImageBufferBackendHandleSharing, isImageBufferBackendHandleSharing())

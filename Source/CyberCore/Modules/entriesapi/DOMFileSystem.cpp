@@ -36,7 +36,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DOMFileSystem);
 
@@ -348,4 +348,4 @@ void DOMFileSystem::getFile(ScriptExecutionContext& context, FileSystemFileEntry
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

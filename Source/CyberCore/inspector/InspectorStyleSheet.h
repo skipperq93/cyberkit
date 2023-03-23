@@ -32,7 +32,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRuleList;
 class CSSSelector;
@@ -269,4 +269,4 @@ private:
     mutable bool m_isStyleTextValid;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

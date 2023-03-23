@@ -29,7 +29,7 @@
 #include "IDBDatabaseNameAndVersion.h"
 #include "UniqueIDBDatabaseConnection.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 Ref<IDBConnectionToClient> IDBConnectionToClient::create(IDBConnectionToClientDelegate& delegate)
@@ -211,4 +211,4 @@ void IDBConnectionToClient::connectionToClientClosed()
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

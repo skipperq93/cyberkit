@@ -25,7 +25,7 @@
 #include "config.h"
 #include "TextDecoderStreamDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Ref<TextDecoderStreamDecoder>> TextDecoderStreamDecoder::create(const String& label, bool fatal, bool ignoreBOM)
 {

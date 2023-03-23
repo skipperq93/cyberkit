@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitAccessibleApplication.h"
+#include "CyberKitAccessibleApplication.h"
 
 #if defined(ENABLE_ACCESSIBILITY) && ENABLE_ACCESSIBILITY
 
-struct _WebKitAccessibleApplicationPrivate {
+struct _CyberKitAccessibleApplicationPrivate {
     AtkObject* child;
 };
 
@@ -35,8 +35,8 @@ static void webkitAccessibleApplicationWindowInterfaceInit(AtkWindowIface*)
 {
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitAccessibleApplication, webkit_accessible_application, ATK_TYPE_OBJECT,
-    G_ADD_PRIVATE(WebKitAccessibleApplication)
+G_DEFINE_TYPE_WITH_CODE(CyberKitAccessibleApplication, webkit_accessible_application, ATK_TYPE_OBJECT,
+    G_ADD_PRIVATE(CyberKitAccessibleApplication)
     G_IMPLEMENT_INTERFACE(ATK_TYPE_WINDOW, webkitAccessibleApplicationWindowInterfaceInit))
 
 static void webkitAccessibleApplicationFinalize(GObject* object)
@@ -74,7 +74,7 @@ static const char* webkitAccessibleApplicationGetName(AtkObject*)
     return g_get_prgname();
 }
 
-static void webkit_accessible_application_class_init(WebKitAccessibleApplicationClass* klass)
+static void webkit_accessible_application_class_init(CyberKitAccessibleApplicationClass* klass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(klass);
     gobjectClass->finalize = webkitAccessibleApplicationFinalize;
@@ -87,19 +87,19 @@ static void webkit_accessible_application_class_init(WebKitAccessibleApplication
     atkObjectClass->get_parent = nullptr;
 }
 
-static void webkit_accessible_application_init(WebKitAccessibleApplication* accessible)
+static void webkit_accessible_application_init(CyberKitAccessibleApplication* accessible)
 {
-    accessible->priv = static_cast<WebKitAccessibleApplicationPrivate*>(webkit_accessible_application_get_instance_private(accessible));
+    accessible->priv = static_cast<CyberKitAccessibleApplicationPrivate*>(webkit_accessible_application_get_instance_private(accessible));
 }
 
-WebKitAccessibleApplication* webkitAccessibleApplicationNew()
+CyberKitAccessibleApplication* webkitAccessibleApplicationNew()
 {
     auto* accessible = ATK_OBJECT(g_object_new(WEBKIT_TYPE_ACCESSIBLE_APPLICATION, nullptr));
     atk_object_initialize(accessible, nullptr);
     return WEBKIT_ACCESSIBLE_APPLICATION(accessible);
 }
 
-void webkitAccessibleApplicationSetChild(WebKitAccessibleApplication* accessible, AtkObject* child)
+void webkitAccessibleApplicationSetChild(CyberKitAccessibleApplication* accessible, AtkObject* child)
 {
     g_return_if_fail(WEBKIT_IS_ACCESSIBLE_APPLICATION(accessible));
 

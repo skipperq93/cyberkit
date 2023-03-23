@@ -38,7 +38,7 @@ class ResourceRequest;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class AuthenticationChallengeProxy;
 class DownloadProxy;
 class WebsiteDataStore;
@@ -56,16 +56,16 @@ class DownloadClient : public RefCounted<DownloadClient> {
 public:
     virtual ~DownloadClient() { }
 
-    virtual void legacyDidStart(WebKit::DownloadProxy&) { }
-    virtual void didReceiveAuthenticationChallenge(WebKit::DownloadProxy&, WebKit::AuthenticationChallengeProxy& challenge) { challenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::Cancel); }
-    virtual void didReceiveData(WebKit::DownloadProxy&, uint64_t, uint64_t, uint64_t) { }
-    virtual void decideDestinationWithSuggestedFilename(WebKit::DownloadProxy&, const CyberCore::ResourceResponse&, const WTF::String&, CompletionHandler<void(WebKit::AllowOverwrite, WTF::String)>&& completionHandler) { completionHandler(WebKit::AllowOverwrite::No, { }); }
-    virtual void didCreateDestination(WebKit::DownloadProxy&, const WTF::String&) { }
-    virtual void didFinish(WebKit::DownloadProxy&) { }
-    virtual void didFail(WebKit::DownloadProxy&, const CyberCore::ResourceError&, API::Data* resumeData) { }
-    virtual void legacyDidCancel(WebKit::DownloadProxy&) { }
-    virtual void processDidCrash(WebKit::DownloadProxy&) { }
-    virtual void willSendRequest(WebKit::DownloadProxy&, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) { completionHandler(WTFMove(request)); }
+    virtual void legacyDidStart(CyberKit::DownloadProxy&) { }
+    virtual void didReceiveAuthenticationChallenge(CyberKit::DownloadProxy&, CyberKit::AuthenticationChallengeProxy& challenge) { challenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::Cancel); }
+    virtual void didReceiveData(CyberKit::DownloadProxy&, uint64_t, uint64_t, uint64_t) { }
+    virtual void decideDestinationWithSuggestedFilename(CyberKit::DownloadProxy&, const CyberCore::ResourceResponse&, const WTF::String&, CompletionHandler<void(CyberKit::AllowOverwrite, WTF::String)>&& completionHandler) { completionHandler(CyberKit::AllowOverwrite::No, { }); }
+    virtual void didCreateDestination(CyberKit::DownloadProxy&, const WTF::String&) { }
+    virtual void didFinish(CyberKit::DownloadProxy&) { }
+    virtual void didFail(CyberKit::DownloadProxy&, const CyberCore::ResourceError&, API::Data* resumeData) { }
+    virtual void legacyDidCancel(CyberKit::DownloadProxy&) { }
+    virtual void processDidCrash(CyberKit::DownloadProxy&) { }
+    virtual void willSendRequest(CyberKit::DownloadProxy&, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) { completionHandler(WTFMove(request)); }
 };
 
 } // namespace API

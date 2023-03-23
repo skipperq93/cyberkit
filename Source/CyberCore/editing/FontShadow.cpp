@@ -30,7 +30,7 @@
 #include "CommonAtomStrings.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String serializationForCSS(const FontShadow& shadow)
 {
@@ -49,4 +49,4 @@ String serializationForCSS(const FontShadow& shadow)
     return builder.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

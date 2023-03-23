@@ -29,7 +29,7 @@
 #include "ColorInterpolationMethod.h"
 #include "Gradient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct StyleGradientImageStop;
 class StyleImage;
@@ -456,7 +456,7 @@ private:
 
 bool operator==(const CSSConicGradientValue::Data&, const CSSConicGradientValue::Data&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSLinearGradientValue, isLinearGradientValue())
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSRadialGradientValue, isRadialGradientValue())

@@ -35,12 +35,12 @@
 #include "CommonCryptoUtilities.h"
 
 typedef CCRSACryptorRef PlatformRSAKey;
-namespace WebCore {
+namespace CyberCore {
 struct CCRSACryptorRefDeleter {
     void operator()(CCRSACryptorRef key) const { CCRSACryptorRelease(key); }
 };
 }
-typedef std::unique_ptr<typename std::remove_pointer<CCRSACryptorRef>::type, WebCore::CCRSACryptorRefDeleter> PlatformRSAKeyContainer;
+typedef std::unique_ptr<typename std::remove_pointer<CCRSACryptorRef>::type, CyberCore::CCRSACryptorRefDeleter> PlatformRSAKeyContainer;
 #endif
 
 #if USE(GCRYPT)
@@ -53,10 +53,10 @@ typedef std::unique_ptr<typename std::remove_pointer<gcry_sexp_t>::type, PAL::GC
 #if USE(OPENSSL)
 #include "crypto/openssl/OpenSSLCryptoUniquePtr.h"
 typedef EVP_PKEY* PlatformRSAKey;
-typedef WebCore::EvpPKeyPtr PlatformRSAKeyContainer;
+typedef CyberCore::EvpPKeyPtr PlatformRSAKeyContainer;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoKeyRSAComponents;
 class PromiseWrapper;
@@ -107,7 +107,7 @@ private:
     CryptoAlgorithmIdentifier m_hash;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_KEY(CryptoKeyRSA, CryptoKeyClass::RSA)
 

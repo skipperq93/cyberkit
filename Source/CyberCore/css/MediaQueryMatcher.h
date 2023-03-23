@@ -25,7 +25,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class MediaQueryList;
@@ -74,4 +74,4 @@ private:
     unsigned m_evaluationRound { 1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

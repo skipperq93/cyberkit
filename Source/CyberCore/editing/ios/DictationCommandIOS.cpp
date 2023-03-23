@@ -36,7 +36,7 @@
 #include "TextIterator.h"
 #include "VisibleUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DictationCommandIOS::DictationCommandIOS(Document& document, Vector<Vector<String>>&& dictationPhrases, id metadata)
     : CompositeEditCommand(document, EditAction::Dictation)
@@ -83,6 +83,6 @@ void DictationCommandIOS::doApply()
     addMarker(resultRange, DocumentMarker::DictationResult, m_metadata);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

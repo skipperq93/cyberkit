@@ -33,7 +33,7 @@
 #include "RTCError.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 webrtc::DataChannelInit LibWebRTCDataChannelHandler::fromRTCDataChannelInit(const RTCDataChannelInit& options)
 {
@@ -224,6 +224,6 @@ void LibWebRTCDataChannelHandler::postTask(Function<void()>&& function)
     ScriptExecutionContext::postTaskTo(m_contextIdentifier, WTFMove(function));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

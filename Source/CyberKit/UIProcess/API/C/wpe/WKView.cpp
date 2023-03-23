@@ -32,7 +32,7 @@
 #include "WKAPICast.h"
 #include "WPEView.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 namespace API {
 template<> struct ClientTraits<WKViewClientBase> {

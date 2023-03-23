@@ -27,7 +27,7 @@
 
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IdTargetObserverRegistry;
 
@@ -44,4 +44,4 @@ private:
     AtomString m_id;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

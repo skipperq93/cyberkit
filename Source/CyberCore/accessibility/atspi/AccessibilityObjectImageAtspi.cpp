@@ -26,7 +26,7 @@
 #include "AccessibilityObject.h"
 #include <gio/gio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_imageFunctions = {
     // method_call
@@ -97,6 +97,6 @@ String AccessibilityObjectAtspi::imageDescription() const
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

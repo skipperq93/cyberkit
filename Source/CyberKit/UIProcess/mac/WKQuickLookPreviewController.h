@@ -29,7 +29,7 @@
 
 #import <Foundation/Foundation.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 enum class QuickLookPreviewActivity : uint8_t { None, VisualSearch };
 }
@@ -37,7 +37,7 @@ enum class QuickLookPreviewActivity : uint8_t { None, VisualSearch };
 @class QLPreviewPanel;
 
 @interface WKQuickLookPreviewController : NSObject
-- (instancetype)initWithPage:(WebKit::WebPageProxy&)page imageData:(NSData *)data title:(NSString *)title imageURL:(NSURL *)imageURL activity:(WebKit::QuickLookPreviewActivity)activity;
+- (instancetype)initWithPage:(CyberKit::WebPageProxy&)page imageData:(NSData *)data title:(NSString *)title imageURL:(NSURL *)imageURL activity:(CyberKit::QuickLookPreviewActivity)activity;
 - (void)beginControl:(QLPreviewPanel *)panel;
 - (BOOL)isControlling:(QLPreviewPanel *)panel;
 - (void)endControl:(QLPreviewPanel *)panel;

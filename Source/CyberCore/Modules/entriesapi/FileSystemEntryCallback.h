@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemEntry;
 
@@ -41,4 +41,4 @@ public:
     virtual CallbackResult<void> handleEvent(FileSystemEntry&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

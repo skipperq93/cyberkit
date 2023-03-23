@@ -28,7 +28,7 @@
 #include "Document.h"
 #include "ScriptDisallowedScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ElementIteratorAssertions {
 public:
@@ -70,4 +70,4 @@ inline void ElementIteratorAssertions::clear()
     m_eventDispatchAssertion = std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include "InbandTextTrackPrivateClient.h"
 #include "TextTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandTextTrack : public TextTrack, private InbandTextTrackPrivateClient {
     WTF_MAKE_ISO_ALLOCATED(InbandTextTrack);
@@ -88,10 +88,10 @@ private:
     MediaTime startTimeVariance() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::InbandTextTrack)
-    static bool isType(const WebCore::TextTrack& track) { return track.isInband(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::InbandTextTrack)
+    static bool isType(const CyberCore::TextTrack& track) { return track.isInband(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO)

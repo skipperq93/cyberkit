@@ -28,7 +28,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Geolocation;
 class GeolocationPositionData;
@@ -60,4 +60,4 @@ protected:
 
 WEBCORE_EXPORT void provideGeolocationTo(Page*, GeolocationClient&);
 
-} // namespace WebCore
+} // namespace CyberCore

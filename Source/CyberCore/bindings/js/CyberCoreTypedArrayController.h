@@ -32,12 +32,12 @@ namespace JSC {
 class WeakHandleOwner;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
-class WebCoreTypedArrayController : public JSC::TypedArrayController {
+class CyberCoreTypedArrayController : public JSC::TypedArrayController {
 public:
-    WebCoreTypedArrayController(bool allowAtomicsWait);
-    virtual ~WebCoreTypedArrayController();
+    CyberCoreTypedArrayController(bool allowAtomicsWait);
+    virtual ~CyberCoreTypedArrayController();
     
     JSC::JSArrayBuffer* toJS(JSC::JSGlobalObject*, JSC::JSGlobalObject*, JSC::ArrayBuffer*) override;
     void registerWrapper(JSC::JSGlobalObject*, ArrayBuffer*, JSC::JSArrayBuffer*) override;
@@ -56,4 +56,4 @@ private:
     bool m_allowAtomicsWait;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "EditingBoundary.h"
 #include "VisibleSelection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 class LayoutUnit;
@@ -126,4 +126,4 @@ unsigned forwardSearchForBoundaryWithTextIterator(TextIterator&, Vector<UChar, 1
 Node* findStartOfParagraph(Node*, Node*, Node*, int&, Position::AnchorType&, EditingBoundaryCrossingRule);
 Node* findEndOfParagraph(Node*, Node*, Node*, int&, Position::AnchorType&, EditingBoundaryCrossingRule);
 
-} // namespace WebCore
+} // namespace CyberCore

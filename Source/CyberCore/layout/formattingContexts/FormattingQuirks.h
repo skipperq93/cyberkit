@@ -27,7 +27,7 @@
 
 #include "FormattingContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class FormattingQuirks {
@@ -52,7 +52,7 @@ protected:
 }
 
 #define SPECIALIZE_TYPE_TRAITS_LAYOUT_FORMATTING_QUIRKS(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Layout::ToValueTypeName) \
-    static bool isType(const WebCore::Layout::FormattingQuirks& formattingQuirks) { return formattingQuirks.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Layout::ToValueTypeName) \
+    static bool isType(const CyberCore::Layout::FormattingQuirks& formattingQuirks) { return formattingQuirks.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

@@ -30,7 +30,7 @@
 
 OBJC_CLASS UIView;
 
-namespace WebKit {
+namespace CyberKit {
 
 class InputViewUpdateDeferrer {
     WTF_MAKE_FAST_ALLOCATED;

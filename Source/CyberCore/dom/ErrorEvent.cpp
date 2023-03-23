@@ -38,7 +38,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ErrorEvent);
@@ -107,4 +107,4 @@ bool ErrorEvent::isErrorEvent() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -44,7 +44,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebCodecsVideoEncoder);
 
@@ -365,7 +365,7 @@ void WebCodecsVideoEncoder::processControlMessageQueue()
         m_controlMessageQueue.takeFirst()();
 }
 
-void WebCore::WebCodecsVideoEncoder::suspend(ReasonForSuspension)
+void CyberCore::WebCodecsVideoEncoder::suspend(ReasonForSuspension)
 {
     // FIXME: Implement.
 }
@@ -385,6 +385,6 @@ bool WebCodecsVideoEncoder::virtualHasPendingActivity() const
     return m_state == WebCodecsCodecState::Configured && (m_encodeQueueSize || m_beingEncodedQueueSize || m_isFlushing);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS)

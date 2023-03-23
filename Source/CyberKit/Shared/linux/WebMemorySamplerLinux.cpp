@@ -28,9 +28,9 @@
 
 #if ENABLE(MEMORY_SAMPLER)
 
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/MemoryStatistics.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/MemoryStatistics.h>
 #include <CyberCore/CommonVM.h>
 #include <CyberCore/JSDOMWindow.h>
 #include <CyberCore/NotImplemented.h>

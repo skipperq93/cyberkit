@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLDebugRendererInfo);
 
@@ -46,6 +46,6 @@ WebGLExtension::ExtensionName WebGLDebugRendererInfo::getName() const
     return WebGLDebugRendererInfoName;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

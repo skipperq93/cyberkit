@@ -25,7 +25,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataTransfer;
 
@@ -60,4 +60,4 @@ private:
     RefPtr<DataTransfer> m_clipboardData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

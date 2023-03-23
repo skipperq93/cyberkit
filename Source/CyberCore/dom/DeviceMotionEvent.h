@@ -29,7 +29,7 @@
 #include "Event.h"
 #include "IDLTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceMotionData;
 template<typename IDLType> class DOMPromiseDeferred;
@@ -85,4 +85,4 @@ private:
     RefPtr<DeviceMotionData> m_deviceMotionData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

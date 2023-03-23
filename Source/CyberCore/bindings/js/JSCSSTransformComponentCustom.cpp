@@ -36,7 +36,7 @@
 #include "JSCSSTranslate.h"
 #include "JSDOMWrapperCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<CSSTransformComponent>&& value)
@@ -68,4 +68,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, object);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue convertToJSValue(JSC::JSGlobalObject&, JSDOMGlobalObject&, const WebGLAny&);
 JSC::JSValue convertToJSValue(JSC::JSGlobalObject&, JSDOMGlobalObject&, WebGLExtension&);
@@ -63,6 +63,6 @@ template<> struct JSConverter<IDLWebGLExtension> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -35,7 +35,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 HashMap<PageIdentifier, Ref<AXIsolatedTree>>& AXIsolatedTree::treePageCache()
 {
@@ -858,6 +858,6 @@ void AXIsolatedTree::applyPendingChanges()
     m_pendingPropertyChanges.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ACCESSIBILITY_ISOLATED_TREE)

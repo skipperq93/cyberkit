@@ -30,7 +30,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilityListBox final : public AccessibilityRenderObject {
 public:
@@ -54,6 +54,6 @@ private:
     AXCoreObject* elementAccessibilityHitTest(const IntPoint&) const override;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityListBox, isAccessibilityListBoxInstance())

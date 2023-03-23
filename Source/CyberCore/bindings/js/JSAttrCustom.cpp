@@ -30,17 +30,17 @@
 #include "JSAttr.h"
 
 #include "Element.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSAttr::visitAdditionalChildren(Visitor& visitor)
 {
     if (auto* element = wrapped().ownerElement())
-        addWebCoreOpaqueRoot(visitor, *element);
+        addCyberCoreOpaqueRoot(visitor, *element);
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSAttr);
 
-} // namespace WebCore
+} // namespace CyberCore

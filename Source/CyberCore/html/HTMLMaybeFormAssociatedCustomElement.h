@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormAssociatedCustomElement;
 
@@ -78,9 +78,9 @@ private:
 
 static_assert(sizeof(HTMLMaybeFormAssociatedCustomElement) == sizeof(HTMLElement));
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLMaybeFormAssociatedCustomElement)
-    static bool isType(const WebCore::Element& element) { return element.isMaybeFormAssociatedCustomElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLMaybeFormAssociatedCustomElement)
+    static bool isType(const CyberCore::Element& element) { return element.isMaybeFormAssociatedCustomElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

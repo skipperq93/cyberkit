@@ -35,7 +35,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -62,6 +62,6 @@ private:
     HashMap<RefPtr<CyberCore::Document>, Vector<Ref<CyberCore::MediaKeySystemRequest>>> m_pendingMediaKeySystemRequests;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_STREAM)

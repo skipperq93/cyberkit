@@ -28,7 +28,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 class ScriptExecutionContext;
@@ -60,4 +60,4 @@ public:
     virtual size_t memoryCost() const { return 0; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

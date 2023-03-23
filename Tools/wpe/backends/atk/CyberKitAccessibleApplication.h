@@ -32,30 +32,30 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_ACCESSIBLE_APPLICATION            (webkit_accessible_application_get_type())
-#define WEBKIT_ACCESSIBLE_APPLICATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_ACCESSIBLE_APPLICATION, WebKitAccessibleApplication))
+#define WEBKIT_ACCESSIBLE_APPLICATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_ACCESSIBLE_APPLICATION, CyberKitAccessibleApplication))
 #define WEBKIT_IS_ACCESSIBLE_APPLICATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_ACCESSIBLE_APPLICATION))
-#define WEBKIT_ACCESSIBLE_APPLICATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_ACCESSIBLE_APPLICATION, WebKitAccessibleApplicationClass))
+#define WEBKIT_ACCESSIBLE_APPLICATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_ACCESSIBLE_APPLICATION, CyberKitAccessibleApplicationClass))
 #define WEBKIT_IS_ACCESSIBLE_APPLICATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_ACCESSIBLE_APPLICATION))
-#define WEBKIT_ACCESSIBLE_APPLICATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_ACCESSIBLE_APPLICATION, WebKitAccessibleApplicationClass))
+#define WEBKIT_ACCESSIBLE_APPLICATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_ACCESSIBLE_APPLICATION, CyberKitAccessibleApplicationClass))
 
-typedef struct _WebKitAccessibleApplication        WebKitAccessibleApplication;
-typedef struct _WebKitAccessibleApplicationClass   WebKitAccessibleApplicationClass;
-typedef struct _WebKitAccessibleApplicationPrivate WebKitAccessibleApplicationPrivate;
+typedef struct _CyberKitAccessibleApplication        CyberKitAccessibleApplication;
+typedef struct _CyberKitAccessibleApplicationClass   CyberKitAccessibleApplicationClass;
+typedef struct _CyberKitAccessibleApplicationPrivate CyberKitAccessibleApplicationPrivate;
 
-struct _WebKitAccessibleApplication {
+struct _CyberKitAccessibleApplication {
     AtkObject parent;
 
-    WebKitAccessibleApplicationPrivate *priv;
+    CyberKitAccessibleApplicationPrivate *priv;
 };
 
-struct _WebKitAccessibleApplicationClass {
+struct _CyberKitAccessibleApplicationClass {
     AtkObjectClass parent;
 };
 
 GType webkit_accessible_application_get_type(void);
 
-WebKitAccessibleApplication* webkitAccessibleApplicationNew(void);
-void webkitAccessibleApplicationSetChild(WebKitAccessibleApplication*, AtkObject*);
+CyberKitAccessibleApplication* webkitAccessibleApplicationNew(void);
+void webkitAccessibleApplicationSetChild(CyberKitAccessibleApplication*, AtkObject*);
 
 G_END_DECLS
 

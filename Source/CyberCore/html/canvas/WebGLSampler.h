@@ -33,7 +33,7 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLSampler final : public WebGLSharedObject {
 public:
@@ -45,6 +45,6 @@ private:
     void deleteObjectImpl(const AbstractLocker&, GraphicsContextGL*, PlatformGLObject) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

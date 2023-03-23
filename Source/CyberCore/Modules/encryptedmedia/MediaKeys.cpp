@@ -43,7 +43,7 @@
 #include <wtf/Logger.h>
 #include <wtf/LoggerHelper.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !RELEASE_LOG_DISABLED
 static WTFLogChannel& logChannel() { return LogEME; }
@@ -193,6 +193,6 @@ const void* MediaKeys::nextChildIdentifier() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

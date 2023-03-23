@@ -30,7 +30,7 @@
 #include "RTCRtpScriptTransformer.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCTransformEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(RTCTransformEvent);
@@ -47,6 +47,6 @@ private:
     Ref<RTCRtpScriptTransformer> m_transformer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

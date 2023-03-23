@@ -19,24 +19,24 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitAutomationSession_h
-#define WebKitAutomationSession_h
+#ifndef CyberKitAutomationSession_h
+#define CyberKitAutomationSession_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitApplicationInfo.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitApplicationInfo.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_AUTOMATION_SESSION            (webkit_automation_session_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_AUTOMATION_SESSION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUTOMATION_SESSION, WebKitAutomationSession))
+#define WEBKIT_AUTOMATION_SESSION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUTOMATION_SESSION, CyberKitAutomationSession))
 #define WEBKIT_IS_AUTOMATION_SESSION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_AUTOMATION_SESSION))
-#define WEBKIT_AUTOMATION_SESSION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_AUTOMATION_SESSION, WebKitAutomationSessionClass))
+#define WEBKIT_AUTOMATION_SESSION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_AUTOMATION_SESSION, CyberKitAutomationSessionClass))
 #define WEBKIT_IS_AUTOMATION_SESSION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_AUTOMATION_SESSION))
-#define WEBKIT_AUTOMATION_SESSION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_AUTOMATION_SESSION, WebKitAutomationSessionClass))
+#define WEBKIT_AUTOMATION_SESSION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_AUTOMATION_SESSION, CyberKitAutomationSessionClass))
 
-struct _WebKitAutomationSessionClass {
+struct _CyberKitAutomationSessionClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -47,10 +47,10 @@ struct _WebKitAutomationSessionClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitAutomationSession, webkit_automation_session, WEBKIT, AUTOMATION_SESSION, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitAutomationSession, webkit_automation_session, WEBKIT, AUTOMATION_SESSION, GObject)
 
 /**
- * WebKitAutomationBrowsingContextPresentation:
+ * CyberKitAutomationBrowsingContextPresentation:
  * @WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_WINDOW: a window
  * @WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB: a tab
  *
@@ -61,18 +61,18 @@ WEBKIT_DECLARE_FINAL_TYPE (WebKitAutomationSession, webkit_automation_session, W
 typedef enum {
     WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_WINDOW,
     WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB
-} WebKitAutomationBrowsingContextPresentation;
+} CyberKitAutomationBrowsingContextPresentation;
 
 WEBKIT_API const char *
-webkit_automation_session_get_id               (WebKitAutomationSession *session);
+webkit_automation_session_get_id               (CyberKitAutomationSession *session);
 
 WEBKIT_API void
-webkit_automation_session_set_application_info (WebKitAutomationSession *session,
-                                                WebKitApplicationInfo   *info);
+webkit_automation_session_set_application_info (CyberKitAutomationSession *session,
+                                                CyberKitApplicationInfo   *info);
 
-WEBKIT_API WebKitApplicationInfo *
-webkit_automation_session_get_application_info (WebKitAutomationSession *session);
+WEBKIT_API CyberKitApplicationInfo *
+webkit_automation_session_get_application_info (CyberKitAutomationSession *session);
 
 G_END_DECLS
 
-#endif /* WebKitAutomationSession_h */
+#endif /* CyberKitAutomationSession_h */

@@ -49,7 +49,7 @@ using FramesPerSecond = unsigned;
 using PlatformDisplayID = uint32_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LayerTreeContext;
 class WebPageProxy;
@@ -165,10 +165,10 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #define SPECIALIZE_TYPE_TRAITS_DRAWING_AREA_PROXY(ToValueTypeName, ProxyType) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::ToValueTypeName) \
-    static bool isType(const WebKit::DrawingAreaProxy& proxy) { return proxy.type() == WebKit::ProxyType; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::ToValueTypeName) \
+    static bool isType(const CyberKit::DrawingAreaProxy& proxy) { return proxy.type() == CyberKit::ProxyType; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

@@ -16,7 +16,7 @@ list(APPEND WebDriver_PRIVATE_INCLUDE_DIRECTORIES
 )
 
 list(APPEND WebDriver_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
 )
 
 WEBKIT_WRAP_EXECUTABLE(WebDriver

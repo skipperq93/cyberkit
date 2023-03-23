@@ -28,13 +28,13 @@
 
 #include "DOMHighResTimeStamp.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioTimestamp {
     double contextTime;
     DOMHighResTimeStamp performanceTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(WEB_AUDIO)

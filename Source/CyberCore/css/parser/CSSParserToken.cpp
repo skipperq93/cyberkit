@@ -38,7 +38,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename CharacterType>
 CSSUnitType cssPrimitiveValueUnitFromTrie(const CharacterType* data, unsigned length)
@@ -730,4 +730,4 @@ void CSSParserToken::serialize(StringBuilder& builder, const CSSParserToken* nex
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

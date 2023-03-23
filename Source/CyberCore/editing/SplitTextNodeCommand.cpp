@@ -32,7 +32,7 @@
 #include "Text.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SplitTextNodeCommand::SplitTextNodeCommand(Ref<Text>&& text, int offset)
     : SimpleEditCommand(text->document())
@@ -112,4 +112,4 @@ void SplitTextNodeCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore

@@ -26,7 +26,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // Cross-Origin isolation via COOP+COEP headers.
 enum class CrossOriginMode : bool { Shared, Isolated };

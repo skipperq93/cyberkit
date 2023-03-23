@@ -26,7 +26,7 @@
 
 #include "HTMLDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextDocument final : public HTMLDocument {
     WTF_MAKE_ISO_ALLOCATED(TextDocument);
@@ -44,4 +44,4 @@ private:
     Ref<DocumentParser> createParser() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

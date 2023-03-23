@@ -18,9 +18,9 @@
  */
 
 #include "config.h"
-#include "WebKitNetworkProxySettings.h"
+#include "CyberKitNetworkProxySettings.h"
 
-#include "WebKitNetworkProxySettingsPrivate.h"
+#include "CyberKitNetworkProxySettingsPrivate.h"
 #include <CyberCore/SoupNetworkProxySettings.h>
 #include <wtf/URL.h>
 #include <wtf/glib/WTFGType.h>
@@ -29,24 +29,24 @@
 using namespace CyberCore;
 
 /**
- * WebKitNetworkProxySettings:
- * @See_also: #WebKitWebContext
+ * CyberKitNetworkProxySettings:
+ * @See_also: #CyberKitWebContext
  *
  * Configures network proxies.
  *
- * WebKitNetworkProxySettings can be used to provide a custom proxy configuration
- * to a #WebKitWebContext. You need to call webkit_web_context_set_network_proxy_settings()
- * with %WEBKIT_NETWORK_PROXY_MODE_CUSTOM and a WebKitNetworkProxySettings.
+ * CyberKitNetworkProxySettings can be used to provide a custom proxy configuration
+ * to a #CyberKitWebContext. You need to call webkit_web_context_set_network_proxy_settings()
+ * with %WEBKIT_NETWORK_PROXY_MODE_CUSTOM and a CyberKitNetworkProxySettings.
  *
  * Since: 2.16
  */
-struct _WebKitNetworkProxySettings {
-    _WebKitNetworkProxySettings()
+struct _CyberKitNetworkProxySettings {
+    _CyberKitNetworkProxySettings()
         : settings(SoupNetworkProxySettings::Mode::Custom)
     {
     }
 
-    explicit _WebKitNetworkProxySettings(const SoupNetworkProxySettings& otherSettings)
+    explicit _CyberKitNetworkProxySettings(const SoupNetworkProxySettings& otherSettings)
         : settings(otherSettings)
     {
     }
@@ -54,9 +54,9 @@ struct _WebKitNetworkProxySettings {
     SoupNetworkProxySettings settings;
 };
 
-G_DEFINE_BOXED_TYPE(WebKitNetworkProxySettings, webkit_network_proxy_settings, webkit_network_proxy_settings_copy, webkit_network_proxy_settings_free)
+G_DEFINE_BOXED_TYPE(CyberKitNetworkProxySettings, webkit_network_proxy_settings, webkit_network_proxy_settings_copy, webkit_network_proxy_settings_free)
 
-const SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySettings(WebKitNetworkProxySettings* proxySettings)
+const SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySettings(CyberKitNetworkProxySettings* proxySettings)
 {
     ASSERT(proxySettings);
     return proxySettings->settings;
@@ -67,7 +67,7 @@ const SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySetting
  * @default_proxy_uri: (allow-none): the default proxy URI to use, or %NULL.
  * @ignore_hosts: (allow-none) (array zero-terminated=1): an optional list of hosts/IP addresses to not use a proxy for.
  *
- * Create a new #WebKitNetworkProxySettings with the given @default_proxy_uri and @ignore_hosts.
+ * Create a new #CyberKitNetworkProxySettings with the given @default_proxy_uri and @ignore_hosts.
  *
  * The default proxy URI will be used for any URI that doesn't match @ignore_hosts, and doesn't match any
  * of the schemes added with webkit_network_proxy_settings_add_proxy_for_scheme().
@@ -99,14 +99,14 @@ const SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySetting
  * to connections made to hosts identified by address. That is, if example.com has an address of 192.168.1.1, and @ignore_hosts
  * contains only "192.168.1.1", then a connection to "example.com" will use the proxy, and a connection to 192.168.1.1" will not.
  *
- * Returns: (transfer full): A new #WebKitNetworkProxySettings.
+ * Returns: (transfer full): A new #CyberKitNetworkProxySettings.
  *
  * Since: 2.16
  */
-WebKitNetworkProxySettings* webkit_network_proxy_settings_new(const char* defaultProxyURI, const char* const* ignoreHosts)
+CyberKitNetworkProxySettings* webkit_network_proxy_settings_new(const char* defaultProxyURI, const char* const* ignoreHosts)
 {
-    WebKitNetworkProxySettings* proxySettings = static_cast<WebKitNetworkProxySettings*>(fastMalloc(sizeof(WebKitNetworkProxySettings)));
-    new (proxySettings) WebKitNetworkProxySettings;
+    CyberKitNetworkProxySettings* proxySettings = static_cast<CyberKitNetworkProxySettings*>(fastMalloc(sizeof(CyberKitNetworkProxySettings)));
+    new (proxySettings) CyberKitNetworkProxySettings;
     if (defaultProxyURI) {
         g_return_val_if_fail(URL(String::fromUTF8(defaultProxyURI)).isValid(), nullptr);
         proxySettings->settings.defaultProxyURL = defaultProxyURI;
@@ -118,42 +118,42 @@ WebKitNetworkProxySettings* webkit_network_proxy_settings_new(const char* defaul
 
 /**
  * webkit_network_proxy_settings_copy:
- * @proxy_settings: a #WebKitNetworkProxySettings
+ * @proxy_settings: a #CyberKitNetworkProxySettings
  *
- * Make a copy of the #WebKitNetworkProxySettings.
+ * Make a copy of the #CyberKitNetworkProxySettings.
  *
- * Returns: (transfer full): A copy of passed in #WebKitNetworkProxySettings
+ * Returns: (transfer full): A copy of passed in #CyberKitNetworkProxySettings
  *
  * Since: 2.16
  */
-WebKitNetworkProxySettings* webkit_network_proxy_settings_copy(WebKitNetworkProxySettings* proxySettings)
+CyberKitNetworkProxySettings* webkit_network_proxy_settings_copy(CyberKitNetworkProxySettings* proxySettings)
 {
     g_return_val_if_fail(proxySettings, nullptr);
 
-    WebKitNetworkProxySettings* copy = static_cast<WebKitNetworkProxySettings*>(fastMalloc(sizeof(WebKitNetworkProxySettings)));
-    new (copy) WebKitNetworkProxySettings(webkitNetworkProxySettingsGetNetworkProxySettings(proxySettings));
+    CyberKitNetworkProxySettings* copy = static_cast<CyberKitNetworkProxySettings*>(fastMalloc(sizeof(CyberKitNetworkProxySettings)));
+    new (copy) CyberKitNetworkProxySettings(webkitNetworkProxySettingsGetNetworkProxySettings(proxySettings));
     return copy;
 }
 
 /**
  * webkit_network_proxy_settings_free:
- * @proxy_settings: A #WebKitNetworkProxySettings
+ * @proxy_settings: A #CyberKitNetworkProxySettings
  *
- * Free the #WebKitNetworkProxySettings.
+ * Free the #CyberKitNetworkProxySettings.
  *
  * Since: 2.16
  */
-void webkit_network_proxy_settings_free(WebKitNetworkProxySettings* proxySettings)
+void webkit_network_proxy_settings_free(CyberKitNetworkProxySettings* proxySettings)
 {
     g_return_if_fail(proxySettings);
 
-    proxySettings->~WebKitNetworkProxySettings();
+    proxySettings->~CyberKitNetworkProxySettings();
     fastFree(proxySettings);
 }
 
 /**
  * webkit_network_proxy_settings_add_proxy_for_scheme:
- * @proxy_settings: a #WebKitNetworkProxySettings
+ * @proxy_settings: a #CyberKitNetworkProxySettings
  * @scheme: the URI scheme to add a proxy for
  * @proxy_uri: the proxy URI to use for @uri_scheme
  *
@@ -165,7 +165,7 @@ void webkit_network_proxy_settings_free(WebKitNetworkProxySettings* proxySetting
  *
  * Since: 2.16
  */
-void webkit_network_proxy_settings_add_proxy_for_scheme(WebKitNetworkProxySettings* proxySettings, const char* scheme, const char* proxyURI)
+void webkit_network_proxy_settings_add_proxy_for_scheme(CyberKitNetworkProxySettings* proxySettings, const char* scheme, const char* proxyURI)
 {
     g_return_if_fail(proxySettings);
     g_return_if_fail(scheme);

@@ -29,7 +29,7 @@
 
 #if !ENABLE(2022_GLIB_API)
 #if PLATFORM(GTK)
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/JSBase.h>
 #include <webkitdom/webkitdom.h>
 #elif PLATFORM(WPE)
 #include <wpe/webkitdom.h>

@@ -541,7 +541,7 @@ Automation may create pull requests and forks in unexpected locations
 
         if isinstance(repository, local.Git):
             if 'true' != repository.config().get('webkitscmpy.setup', ''):
-                info_url = 'https://github.com/WebKit/WebKit/wiki/Git-Config#Configuration-Options'
+                info_url = 'https://github.com/CyberKit/CyberKit/wiki/Git-Config#Configuration-Options'
                 print('For detailed information about the options configured by this script, please see:\n{}'.format(info_url))
                 if not args.defaults and Terminal.choose("Would you like to open this URL in your browser?", default='Yes') == 'Yes':
                     if not Terminal.open_url(info_url):

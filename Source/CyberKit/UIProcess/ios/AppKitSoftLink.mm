@@ -29,7 +29,7 @@
 
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_FOR_SOURCE(WebKit, AppKit)
-SOFT_LINK_CLASS_FOR_SOURCE(WebKit, AppKit, NSAccessibilityRemoteUIElement)
+SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, AppKit)
+SOFT_LINK_CLASS_FOR_SOURCE(CyberKit, AppKit, NSAccessibilityRemoteUIElement)
 
 #endif

@@ -34,7 +34,7 @@
 #include "MemoryIndex.h"
 #include "MemoryObjectStore.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 MemoryIndexCursor::MemoryIndexCursor(MemoryIndex& index, const IDBCursorInfo& info)
@@ -219,4 +219,4 @@ void MemoryIndexCursor::indexValueChanged(const IDBKeyData& key, const IDBKeyDat
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

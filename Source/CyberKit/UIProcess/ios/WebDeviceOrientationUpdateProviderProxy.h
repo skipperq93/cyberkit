@@ -30,7 +30,7 @@
 #include "MessageReceiver.h"
 #include <CyberCore/MotionManagerClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -57,6 +57,6 @@ private:
     WebPageProxy& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)

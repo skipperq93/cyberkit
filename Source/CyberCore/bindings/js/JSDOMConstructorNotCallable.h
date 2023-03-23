@@ -27,9 +27,9 @@
 #pragma once
 
 #include "JSDOMWrapper.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename JSClass> class JSDOMConstructorNotCallable : public JSDOMObject {
 public:
@@ -82,4 +82,4 @@ template<typename JSClass> inline void JSDOMConstructorNotCallable<JSClass>::fin
     initializeProperties(vm, globalObject);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

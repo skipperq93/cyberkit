@@ -40,7 +40,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBDatabase;
 class IDBDatabaseIdentifier;
@@ -176,4 +176,4 @@ private:
 };
 
 } // namespace IDBClient
-} // namespace WebCore
+} // namespace CyberCore

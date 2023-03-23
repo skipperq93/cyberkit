@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSBorderImageWidthValue::CSSBorderImageWidthValue(Quad widths, bool overridesBorderWidths)
     : CSSValue(BorderImageWidthClass)
@@ -59,4 +59,4 @@ bool CSSBorderImageWidthValue::equals(const CSSBorderImageWidthValue& other) con
     return m_overridesBorderWidths == other.m_overridesBorderWidths && m_widths.equals(other.m_widths);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

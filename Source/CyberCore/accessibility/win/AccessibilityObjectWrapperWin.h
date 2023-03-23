@@ -28,7 +28,7 @@
 #include <unknwn.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class AccessibilityObject;
  
@@ -52,4 +52,4 @@ namespace WebCore {
         AccessibilityObject* m_object;
     };
 
-} // namespace WebCore
+} // namespace CyberCore

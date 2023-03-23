@@ -26,7 +26,7 @@
 #include "HTMLElement.h"
 #include "MediaQuery.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMetaElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLMetaElement);
@@ -58,4 +58,4 @@ private:
     std::optional<Color> m_contentColor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

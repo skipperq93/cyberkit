@@ -38,7 +38,7 @@ class AbstractSlotVisitor;
 class SlotVisitor;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -61,4 +61,4 @@ public:
     virtual void visitJSFunction(JSC::SlotVisitor&) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

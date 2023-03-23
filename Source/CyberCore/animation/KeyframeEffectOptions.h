@@ -30,7 +30,7 @@
 #include "EffectTiming.h"
 #include "IterationCompositeOperation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct KeyframeEffectOptions : EffectTiming {
     IterationCompositeOperation iterationComposite { IterationCompositeOperation::Replace };
@@ -38,4 +38,4 @@ struct KeyframeEffectOptions : EffectTiming {
     String pseudoElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

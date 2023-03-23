@@ -34,7 +34,7 @@
 #include "CryptoDigestAlgorithm.h"
 #include "CryptoKeyEC.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<Vector<uint8_t>> signECDSA(CryptoAlgorithmIdentifier hash, const PlatformECKey key, size_t keyLengthInBytes, const Vector<uint8_t>& data)
 {
@@ -42,7 +42,7 @@ static ExceptionOr<Vector<uint8_t>> signECDSA(CryptoAlgorithmIdentifier hash, co
     if (!getCommonCryptoDigestAlgorithm(hash, digestAlgorithm))
         return Exception { OperationError };
 
-    auto cryptoDigestAlgorithm = WebCore::cryptoDigestAlgorithm(hash);
+    auto cryptoDigestAlgorithm = CyberCore::cryptoDigestAlgorithm(hash);
     if (!cryptoDigestAlgorithm)
         return Exception { OperationError };
     auto digest = PAL::CryptoDigest::create(*cryptoDigestAlgorithm);
@@ -103,7 +103,7 @@ static ExceptionOr<bool> verifyECDSA(CryptoAlgorithmIdentifier hash, const Platf
     if (!getCommonCryptoDigestAlgorithm(hash, digestAlgorithm))
         return Exception { OperationError };
 
-    auto cryptoDigestAlgorithm = WebCore::cryptoDigestAlgorithm(hash);
+    auto cryptoDigestAlgorithm = CyberCore::cryptoDigestAlgorithm(hash);
     if (!cryptoDigestAlgorithm)
         return Exception { OperationError };
     auto digest = PAL::CryptoDigest::create(*cryptoDigestAlgorithm);
@@ -167,6 +167,6 @@ ExceptionOr<bool> CryptoAlgorithmECDSA::platformVerify(const CryptoAlgorithmEcds
     return verifyECDSA(parameters.hashIdentifier, key.platformKey(), key.keySizeInBytes(), signature, data);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -20,6 +20,6 @@
 #pragma once
 
 #include "WebFramePolicyListenerProxy.h"
-#include "WebKitPolicyDecision.h"
+#include "CyberKitPolicyDecision.h"
 
-void webkitPolicyDecisionSetListener(WebKitPolicyDecision*, Ref<WebKit::WebFramePolicyListenerProxy>&&);
+void webkitPolicyDecisionSetListener(CyberKitPolicyDecision*, Ref<CyberKit::WebFramePolicyListenerProxy>&&);

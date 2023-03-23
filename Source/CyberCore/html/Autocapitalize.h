@@ -30,11 +30,11 @@
 #include "AutocapitalizeTypes.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AutocapitalizeType autocapitalizeTypeForAttributeValue(const AtomString&);
 const AtomString& stringForAutocapitalizeType(AutocapitalizeType);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(AUTOCAPITALIZE)

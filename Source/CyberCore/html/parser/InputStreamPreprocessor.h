@@ -30,7 +30,7 @@
 #include "SegmentedString.h"
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // http://www.whatwg.org/specs/web-apps/current-work/#preprocessing-the-input-stream
 template <typename Tokenizer>
@@ -121,4 +121,4 @@ private:
     bool m_skipNextNewLine { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

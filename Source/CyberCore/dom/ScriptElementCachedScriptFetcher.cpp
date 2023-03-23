@@ -29,7 +29,7 @@
 #include "Element.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const ASCIILiteral ScriptElementCachedScriptFetcher::defaultCrossOriginModeForModule { "anonymous"_s };
 

@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebImage;
 class WebPageProxy;
 }
@@ -42,8 +42,8 @@ class FindMatchesClient {
 public:
     virtual ~FindMatchesClient() { }
 
-    virtual void didFindStringMatches(WebKit::WebPageProxy*, const WTF::String&, const WTF::Vector<WTF::Vector<CyberCore::IntRect>>&, int32_t) { }
-    virtual void didGetImageForMatchResult(WebKit::WebPageProxy*, WebKit::WebImage*, int32_t) { }
+    virtual void didFindStringMatches(CyberKit::WebPageProxy*, const WTF::String&, const WTF::Vector<WTF::Vector<CyberCore::IntRect>>&, int32_t) { }
+    virtual void didGetImageForMatchResult(CyberKit::WebPageProxy*, CyberKit::WebImage*, int32_t) { }
 };
 
 } // namespace API

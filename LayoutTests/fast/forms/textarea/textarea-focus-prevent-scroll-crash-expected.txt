@@ -1,4 +1,4 @@
 This tests calling focus({preventScroll: true}) and removing textarea's children.
-WebKit should not crash or hit any assertions.
+CyberKit should not crash or hit any assertions.
 
 PASS

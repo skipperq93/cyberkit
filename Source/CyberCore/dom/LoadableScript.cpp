@@ -33,7 +33,7 @@
 #include "LoadableScriptClient.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void LoadableScript::addClient(LoadableScriptClient& client)
 {

@@ -25,7 +25,7 @@
 #include "CSSValueKeywords.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StylePropertyShorthand {
 public:
@@ -66,4 +66,4 @@ StylePropertyShorthandVector matchingShorthandsForLonghand(CSSPropertyID);
 
 unsigned indexOfShorthandForLonghand(CSSPropertyID, const StylePropertyShorthandVector&);
 
-} // namespace WebCore
+} // namespace CyberCore

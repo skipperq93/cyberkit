@@ -35,7 +35,7 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUBindGroupLayoutEntry.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUBindGroupLayoutEntry {
     PAL::WebGPU::BindGroupLayoutEntry convertToBacking() const

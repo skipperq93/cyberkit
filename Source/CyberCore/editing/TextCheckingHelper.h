@@ -24,7 +24,7 @@
 #include "SimpleRange.h"
 #include "TextChecking.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EditorClient;
 class Frame;
@@ -117,4 +117,4 @@ void checkTextOfParagraph(TextCheckerClient&, StringView, OptionSet<TextChecking
 bool unifiedTextCheckerEnabled(const Frame*);
 bool platformDrivenTextCheckerEnabled();
 
-} // namespace WebCore
+} // namespace CyberCore

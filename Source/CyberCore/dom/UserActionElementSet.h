@@ -32,7 +32,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -77,4 +77,4 @@ private:
     HashMap<RefPtr<Element>, OptionSet<Flag>> m_elements;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

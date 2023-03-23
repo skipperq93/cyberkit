@@ -35,7 +35,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <CyberScriptCore/TypedArrays.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ReadableStreamSource;
 
@@ -70,4 +70,4 @@ inline JSDOMGlobalObject& ReadableStreamDefaultController::globalObject() const
     return *static_cast<JSDOMGlobalObject*>(m_jsController->globalObject());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@ OBJC_CLASS NSView;
 OBJC_CLASS NSWindow;
 OBJC_CLASS WKMenuDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItemData;
 
@@ -90,6 +90,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

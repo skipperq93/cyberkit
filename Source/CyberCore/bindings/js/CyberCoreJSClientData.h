@@ -22,15 +22,15 @@
 #pragma once
 
 #include "DOMWrapperWorld.h"
-#include "WebCoreBuiltinNames.h"
-#include "WebCoreJSBuiltins.h"
+#include "CyberCoreBuiltinNames.h"
+#include "CyberCoreJSBuiltins.h"
 #include "WorkerThreadType.h"
 #include <wtf/Function.h>
 #include <wtf/HashSet.h>
 #include <wtf/RefPtr.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ExtendedDOMClientIsoSubspaces;
 class ExtendedDOMIsoSubspaces;
@@ -134,7 +134,7 @@ public:
 
     JSHeapData& heapData() { return *m_heapData; }
 
-    WebCoreBuiltinNames& builtinNames() { return m_builtinNames; }
+    CyberCoreBuiltinNames& builtinNames() { return m_builtinNames; }
     JSBuiltinFunctions& builtinFunctions() { return m_builtinFunctions; }
     
     JSC::GCClient::IsoSubspace& domBuiltinConstructorSpace() { return m_domBuiltinConstructorSpace; }
@@ -155,7 +155,7 @@ private:
     RefPtr<DOMWrapperWorld> m_normalWorld;
 
     JSBuiltinFunctions m_builtinFunctions;
-    WebCoreBuiltinNames m_builtinNames;
+    CyberCoreBuiltinNames m_builtinNames;
 
     JSHeapData* m_heapData;
     JSC::GCClient::IsoSubspace m_domBuiltinConstructorSpace;
@@ -219,9 +219,9 @@ IGNORE_WARNINGS_END
     return clientSpace;
 }
 
-ALWAYS_INLINE WebCoreBuiltinNames& builtinNames(JSC::VM& vm)
+ALWAYS_INLINE CyberCoreBuiltinNames& builtinNames(JSC::VM& vm)
 {
     return static_cast<JSVMClientData*>(vm.clientData)->builtinNames();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

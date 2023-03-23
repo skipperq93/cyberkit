@@ -39,7 +39,7 @@
 #include "ContentExtensionStyleSheet.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleSheet;
 class Document;
@@ -100,4 +100,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

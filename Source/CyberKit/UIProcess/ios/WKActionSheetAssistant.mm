@@ -101,7 +101,7 @@ static LSAppLink *appLinkForURL(NSURL *url)
     WeakObjCPtr<id <WKActionSheetAssistantDelegate>> _delegate;
     RetainPtr<WKActionSheet> _interactionSheet;
     RetainPtr<_WKActivatedElementInfo> _elementInfo;
-    std::optional<WebKit::InteractionInformationAtPosition> _positionInformation;
+    std::optional<CyberKit::InteractionInformationAtPosition> _positionInformation;
 #if USE(UICONTEXTMENU)
 #if ENABLE(DATA_DETECTION)
     RetainPtr<UIContextMenuInteraction> _dataDetectorContextMenuInteraction;
@@ -165,7 +165,7 @@ static LSAppLink *appLinkForURL(NSURL *url)
     UIView *view = _view.getAutoreleased();
     UIView *superview = [view window];
 
-    // FIXME: WebKit has a delegate to retrieve the superview for the image sheet (superviewForImageSheetForWebView)
+    // FIXME: CyberKit has a delegate to retrieve the superview for the image sheet (superviewForImageSheetForWebView)
     // Do we need it in WK2?
 
     // Find the top most view with a view controller
@@ -299,7 +299,7 @@ static const CGFloat presentationElementRectPadding = 15;
     return _interactionSheet != nil;
 }
 
-- (void)interactionDidStartWithPositionInformation:(const WebKit::InteractionInformationAtPosition&)information
+- (void)interactionDidStartWithPositionInformation:(const CyberKit::InteractionInformationAtPosition&)information
 {
 #if ENABLE(DATA_DETECTION)
     if (!_delegate)
@@ -318,7 +318,7 @@ static const CGFloat presentationElementRectPadding = 15;
 #endif
 }
 
-- (std::optional<WebKit::InteractionInformationAtPosition>)currentPositionInformation
+- (std::optional<CyberKit::InteractionInformationAtPosition>)currentPositionInformation
 {
     return _positionInformation;
 }
@@ -445,7 +445,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     showImageSheetWithAlternateURLBlock(nil, nil);
 }
 
-- (WKActionSheetPresentationStyle)_presentationStyleForPositionInfo:(const WebKit::InteractionInformationAtPosition&)positionInfo elementInfo:(_WKActivatedElementInfo *)elementInfo
+- (WKActionSheetPresentationStyle)_presentationStyleForPositionInfo:(const CyberKit::InteractionInformationAtPosition&)positionInfo elementInfo:(_WKActivatedElementInfo *)elementInfo
 {
     auto apparentElementRect = [_view convertRect:positionInfo.bounds toView:[_view window]];
     if (CGRectIsEmpty(apparentElementRect))
@@ -545,7 +545,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 
     if ([elementInfo imageURL]) {
-        if (TCCAccessPreflight(WebKit::get_TCC_kTCCServicePhotos(), NULL) != kTCCAccessPreflightDenied)
+        if (TCCAccessPreflight(CyberKit::get_TCC_kTCCServicePhotos(), NULL) != kTCCAccessPreflightDenied)
             [defaultActions addObject:[_WKElementAction _elementActionWithType:_WKElementActionTypeSaveImage info:elementInfo assistant:self]];
     }
 
@@ -585,7 +585,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if ([getSSReadingListClass() supportsURL:targetURL])
         [defaultActions addObject:[_WKElementAction _elementActionWithType:_WKElementActionTypeAddToReadingList info:elementInfo assistant:self]];
 #endif
-    if (TCCAccessPreflight(WebKit::get_TCC_kTCCServicePhotos(), NULL) != kTCCAccessPreflightDenied)
+    if (TCCAccessPreflight(CyberKit::get_TCC_kTCCServicePhotos(), NULL) != kTCCAccessPreflightDenied)
         [defaultActions addObject:[_WKElementAction _elementActionWithType:_WKElementActionTypeSaveImage info:elementInfo assistant:self]];
 
     [defaultActions addObject:[_WKElementAction _elementActionWithType:_WKElementActionTypeCopy info:elementInfo assistant:self]];
@@ -759,7 +759,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 #endif // ENABLE(DATA_DETECTION)
 
-- (void)showDataDetectorsUIForPositionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation
+- (void)showDataDetectorsUIForPositionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation
 {
 #if ENABLE(DATA_DETECTION)
     if (!_delegate)
@@ -888,7 +888,7 @@ static NSMutableArray<UIMenuElement *> *menuElementsFromDefaultActions(RetainPtr
     return actions;
 }
 
-- (NSMutableArray<UIMenuElement *> *)suggestedActionsForContextMenuWithPositionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation
+- (NSMutableArray<UIMenuElement *> *)suggestedActionsForContextMenuWithPositionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation
 {
     auto elementInfo = adoptNS([[_WKActivatedElementInfo alloc] _initWithInteractionInformationAtPosition:positionInformation isUsingAlternateURLForImage:NO userInfo:nil]);
     RetainPtr<NSArray<_WKElementAction *>> defaultActionsFromAssistant = positionInformation.isLink ? [self defaultActionsForLinkSheet:elementInfo.get()] : [self defaultActionsForImageSheet:elementInfo.get()];
@@ -1041,7 +1041,7 @@ static NSMutableArray<UIMenuElement *> *menuElementsFromDefaultActions(RetainPtr
 
     switch (type) {
     case _WKElementActionTypeCopy:
-        [delegate actionSheetAssistant:self performAction:WebKit::SheetAction::Copy];
+        [delegate actionSheetAssistant:self performAction:CyberKit::SheetAction::Copy];
         break;
     case _WKElementActionTypeOpen:
         if (element._isUsingAlternateURLForImage)
@@ -1050,7 +1050,7 @@ static NSMutableArray<UIMenuElement *> *menuElementsFromDefaultActions(RetainPtr
             [delegate actionSheetAssistant:self openElementAtLocation:element._interactionLocation];
         break;
     case _WKElementActionTypeSaveImage:
-        [delegate actionSheetAssistant:self performAction:WebKit::SheetAction::SaveImage];
+        [delegate actionSheetAssistant:self performAction:CyberKit::SheetAction::SaveImage];
         break;
     case _WKElementActionTypeShare:
         if (URL(element.imageURL).protocolIsData() && element.image && [delegate respondsToSelector:@selector(actionSheetAssistant:shareElementWithImage:rect:)])
@@ -1077,10 +1077,10 @@ static NSMutableArray<UIMenuElement *> *menuElementsFromDefaultActions(RetainPtr
         break;
 #if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
     case _WKElementActionPlayAnimation:
-        [delegate actionSheetAssistant:self performAction:WebKit::SheetAction::PlayAnimation];
+        [delegate actionSheetAssistant:self performAction:CyberKit::SheetAction::PlayAnimation];
         break;
     case _WKElementActionPauseAnimation:
-        [delegate actionSheetAssistant:self performAction:WebKit::SheetAction::PauseAnimation];
+        [delegate actionSheetAssistant:self performAction:CyberKit::SheetAction::PauseAnimation];
         break;
 #endif // ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
     default:

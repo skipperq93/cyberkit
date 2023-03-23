@@ -30,7 +30,7 @@
 #import "APIContextMenuElementInfoMac.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ContextMenuElementInfoMac> {
     using WrapperClass = _WKContextMenuElementInfo;

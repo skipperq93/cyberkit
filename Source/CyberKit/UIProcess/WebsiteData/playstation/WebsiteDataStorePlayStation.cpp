@@ -29,7 +29,7 @@
 #include <CyberCore/NotImplemented.h>
 #include <wtf/FileSystem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebsiteDataStore::platformInitialize()
 {
@@ -60,4 +60,4 @@ UnifiedOriginStorageLevel WebsiteDataStore::defaultUnifiedOriginStorageLevel()
     return UnifiedOriginStorageLevel::None;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

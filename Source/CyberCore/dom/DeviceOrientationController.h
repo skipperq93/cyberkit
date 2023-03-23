@@ -29,7 +29,7 @@
 #include "DeviceController.h"
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceOrientationClient;
 class DeviceOrientationData;
@@ -59,4 +59,4 @@ public:
     static bool isActiveAt(Page*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

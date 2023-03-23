@@ -35,7 +35,7 @@
 struct z_stream_s;
 typedef z_stream_s z_stream;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebSocketDeflater {
     WTF_MAKE_FAST_ALLOCATED;
@@ -81,4 +81,4 @@ private:
     std::unique_ptr<z_stream> m_stream;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

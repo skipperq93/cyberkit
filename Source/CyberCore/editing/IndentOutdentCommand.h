@@ -28,7 +28,7 @@
 #include "ApplyBlockElementCommand.h"
 #include "EditAction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IndentOutdentCommand : public ApplyBlockElementCommand {
 public:
@@ -57,4 +57,4 @@ private:
     EIndentType m_typeOfAction;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

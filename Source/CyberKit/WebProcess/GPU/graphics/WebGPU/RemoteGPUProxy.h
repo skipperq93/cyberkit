@@ -35,11 +35,11 @@
 #include <pal/graphics/WebGPU/WebGPUPresentationContext.h>
 #include <wtf/Deque.h>
 
-namespace WebKit {
+namespace CyberKit {
 class GPUProcessConnection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace WebGPU {
 class ConvertToBackingContext;
@@ -114,6 +114,6 @@ private:
     RefPtr<IPC::StreamClientConnection> m_streamConnection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

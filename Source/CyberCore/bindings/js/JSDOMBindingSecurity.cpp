@@ -33,7 +33,7 @@
 #include <wtf/text/WTFString.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 void printErrorMessageForFrame(Frame* frame, const String& message)
@@ -119,4 +119,4 @@ bool BindingSecurity::shouldAllowAccessToNode(JSC::JSGlobalObject& lexicalGlobal
     return !target || canAccessDocument(&lexicalGlobalObject, &target->document(), LogSecurityError);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

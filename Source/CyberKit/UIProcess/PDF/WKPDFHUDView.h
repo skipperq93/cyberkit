@@ -27,13 +27,13 @@
 
 #import "PDFPluginIdentifier.h"
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
 @interface WKPDFHUDView : NSView
 
-- (instancetype)initWithFrame:(NSRect)frame pluginIdentifier:(WebKit::PDFPluginIdentifier)pluginIdentifier page:(WebKit::WebPageProxy&)page;
+- (instancetype)initWithFrame:(NSRect)frame pluginIdentifier:(CyberKit::PDFPluginIdentifier)pluginIdentifier page:(CyberKit::WebPageProxy&)page;
 - (void)setFrame:(NSRect)frame;
 - (void)mouseMoved:(NSEvent *)event;
 - (void)mouseDown:(NSEvent *)event;

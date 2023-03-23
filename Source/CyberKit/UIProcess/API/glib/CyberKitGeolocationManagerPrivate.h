@@ -20,6 +20,6 @@
 #pragma once
 
 #include "WebGeolocationManagerProxy.h"
-#include "WebKitGeolocationManager.h"
+#include "CyberKitGeolocationManager.h"
 
-WebKitGeolocationManager* webkitGeolocationManagerCreate(WebKit::WebGeolocationManagerProxy*);
+CyberKitGeolocationManager* webkitGeolocationManagerCreate(CyberKit::WebGeolocationManagerProxy*);

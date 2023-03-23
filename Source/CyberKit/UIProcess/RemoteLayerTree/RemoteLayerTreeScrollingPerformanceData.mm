@@ -32,7 +32,7 @@
 #import <CyberCore/TileController.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteLayerTreeScrollingPerformanceData::RemoteLayerTreeScrollingPerformanceData(RemoteLayerTreeDrawingAreaProxy& drawingArea)

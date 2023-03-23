@@ -35,7 +35,7 @@
  * at the very beginning of the program execution, before any other JavaScript
  * API call. Most of the options are only useful for testing and debugging.
  * Only a few of them are documented; you can use the undocumented options at
- * your own risk. (You can find the list of options in the WebKit source code).
+ * your own risk. (You can find the list of options in the CyberKit source code).
  *
  * The API allows to set and get any option using the types defined in #JSCOptionType.
  * You can also iterate all the available options using jsc_options_foreach() and

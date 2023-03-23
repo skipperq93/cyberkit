@@ -8,8 +8,8 @@ for Safari and Safari Technology Preview.
     * `"/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --enable`
 
   * Allow pop-up windows:
-    * `defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically 1` or
-    * `defaults write com.apple.SafariTechnologyPreview WebKitJavaScriptCanOpenWindowsAutomatically 1`
+    * `defaults write com.apple.Safari CyberKitJavaScriptCanOpenWindowsAutomatically 1` or
+    * `defaults write com.apple.SafariTechnologyPreview CyberKitJavaScriptCanOpenWindowsAutomatically 1`
 
   * Turn on additional experimental features Safari Technology Preview:
     * `defaults write com.apple.SafariTechnologyPreview ExperimentalServerTimingEnabled 1`

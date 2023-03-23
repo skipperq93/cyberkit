@@ -18,24 +18,24 @@
  */
 
 #include "config.h"
-#include "WebKitUIClient.h"
+#include "CyberKitUIClient.h"
 
 #include "APIUIClient.h"
 #include "DrawingAreaProxy.h"
 #include "NotificationPermissionRequest.h"
-#include "WebKitDeviceInfoPermissionRequestPrivate.h"
-#include "WebKitFileChooserRequestPrivate.h"
-#include "WebKitGeolocationPermissionRequestPrivate.h"
-#include "WebKitMediaKeySystemPermissionRequestPrivate.h"
-#include "WebKitNavigationActionPrivate.h"
-#include "WebKitNotificationPermissionRequestPrivate.h"
-#include "WebKitPermissionStateQueryPrivate.h"
-#include "WebKitPointerLockPermissionRequestPrivate.h"
-#include "WebKitURIRequestPrivate.h"
-#include "WebKitUserMediaPermissionRequestPrivate.h"
-#include "WebKitWebViewPrivate.h"
-#include "WebKitWebsiteDataAccessPermissionRequestPrivate.h"
-#include "WebKitWindowPropertiesPrivate.h"
+#include "CyberKitDeviceInfoPermissionRequestPrivate.h"
+#include "CyberKitFileChooserRequestPrivate.h"
+#include "CyberKitGeolocationPermissionRequestPrivate.h"
+#include "CyberKitMediaKeySystemPermissionRequestPrivate.h"
+#include "CyberKitNavigationActionPrivate.h"
+#include "CyberKitNotificationPermissionRequestPrivate.h"
+#include "CyberKitPermissionStateQueryPrivate.h"
+#include "CyberKitPointerLockPermissionRequestPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
+#include "CyberKitUserMediaPermissionRequestPrivate.h"
+#include "CyberKitWebViewPrivate.h"
+#include "CyberKitWebsiteDataAccessPermissionRequestPrivate.h"
+#include "CyberKitWindowPropertiesPrivate.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
@@ -49,11 +49,11 @@
 #include <CyberCore/GtkVersioning.h>
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 class UIClient : public API::UIClient {
 public:
-    explicit UIClient(WebKitWebView* webView)
+    explicit UIClient(CyberKitWebView* webView)
         : m_webView(webView)
     {
     }
@@ -61,7 +61,7 @@ public:
 private:
     void createNewPage(WebPageProxy& page, CyberCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& apiNavigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler) final
     {
-        WebKitNavigationAction navigationAction(WTFMove(apiNavigationAction));
+        CyberKitNavigationAction navigationAction(WTFMove(apiNavigationAction));
         completionHandler(webkitWebViewCreateNewPage(m_webView, windowFeatures, &navigationAction));
     }
 
@@ -75,19 +75,19 @@ private:
         webkitWebViewClosePage(m_webView);
     }
 
-    void runJavaScriptAlert(WebPageProxy& page, const String& message, WebFrameProxy*, WebKit::FrameInfoData&&, Function<void()>&& completionHandler) final
+    void runJavaScriptAlert(WebPageProxy& page, const String& message, WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void()>&& completionHandler) final
     {
         page.makeViewBlankIfUnpaintedSinceLastLoadCommit();
         webkitWebViewRunJavaScriptAlert(m_webView, message.utf8(), WTFMove(completionHandler));
     }
 
-    void runJavaScriptConfirm(WebPageProxy& page, const String& message, WebFrameProxy*, WebKit::FrameInfoData&&, Function<void(bool)>&& completionHandler) final
+    void runJavaScriptConfirm(WebPageProxy& page, const String& message, WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void(bool)>&& completionHandler) final
     {
         page.makeViewBlankIfUnpaintedSinceLastLoadCommit();
         webkitWebViewRunJavaScriptConfirm(m_webView, message.utf8(), WTFMove(completionHandler));
     }
 
-    void runJavaScriptPrompt(WebPageProxy& page, const String& message, const String& defaultValue, WebFrameProxy*, WebKit::FrameInfoData&&, Function<void(const String&)>&& completionHandler) final
+    void runJavaScriptPrompt(WebPageProxy& page, const String& message, const String& defaultValue, WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void(const String&)>&& completionHandler) final
     {
         page.makeViewBlankIfUnpaintedSinceLastLoadCommit();
         webkitWebViewRunJavaScriptPrompt(m_webView, message.utf8(), defaultValue.utf8(), WTFMove(completionHandler));
@@ -95,7 +95,7 @@ private:
 
     bool canRunBeforeUnloadConfirmPanel() const final { return true; }
 
-    void runBeforeUnloadConfirmPanel(WebPageProxy&, const String& message, WebFrameProxy*, WebKit::FrameInfoData&&, Function<void(bool)>&& completionHandler) final
+    void runBeforeUnloadConfirmPanel(WebPageProxy&, const String& message, WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void(bool)>&& completionHandler) final
     {
         webkitWebViewRunJavaScriptBeforeUnloadConfirm(m_webView, message.utf8(), WTFMove(completionHandler));
     }
@@ -269,16 +269,16 @@ private:
         completionHandler(defaultQuota);
     }
 
-    bool runOpenPanel(WebPageProxy&, WebFrameProxy*, WebKit::FrameInfoData&&, API::OpenPanelParameters* parameters, WebOpenPanelResultListenerProxy* listener) final
+    bool runOpenPanel(WebPageProxy&, WebFrameProxy*, CyberKit::FrameInfoData&&, API::OpenPanelParameters* parameters, WebOpenPanelResultListenerProxy* listener) final
     {
-        GRefPtr<WebKitFileChooserRequest> request = adoptGRef(webkitFileChooserRequestCreate(parameters, listener));
+        GRefPtr<CyberKitFileChooserRequest> request = adoptGRef(webkitFileChooserRequestCreate(parameters, listener));
         webkitWebViewRunFileChooserRequest(m_webView, request.get());
         return true;
     }
 
-    void decidePolicyForGeolocationPermissionRequest(WebPageProxy&, WebFrameProxy&, const WebKit::FrameInfoData&, Function<void(bool)>& completionHandler) final
+    void decidePolicyForGeolocationPermissionRequest(WebPageProxy&, WebFrameProxy&, const CyberKit::FrameInfoData&, Function<void(bool)>& completionHandler) final
     {
-        GRefPtr<WebKitGeolocationPermissionRequest> geolocationPermissionRequest = adoptGRef(webkitGeolocationPermissionRequestCreate(GeolocationPermissionRequest::create(std::exchange(completionHandler, nullptr)).ptr()));
+        GRefPtr<CyberKitGeolocationPermissionRequest> geolocationPermissionRequest = adoptGRef(webkitGeolocationPermissionRequestCreate(GeolocationPermissionRequest::create(std::exchange(completionHandler, nullptr)).ptr()));
         webkitWebViewMakePermissionRequest(m_webView, WEBKIT_PERMISSION_REQUEST(geolocationPermissionRequest.get()));
     }
 
@@ -290,7 +290,7 @@ private:
 
     void decidePolicyForUserMediaPermissionRequest(WebPageProxy&, WebFrameProxy&, API::SecurityOrigin& userMediaDocumentOrigin, API::SecurityOrigin& topLevelDocumentOrigin, UserMediaPermissionRequestProxy& permissionRequest) final
     {
-        GRefPtr<WebKitUserMediaPermissionRequest> userMediaPermissionRequest = adoptGRef(webkitUserMediaPermissionRequestCreate(permissionRequest, userMediaDocumentOrigin, topLevelDocumentOrigin));
+        GRefPtr<CyberKitUserMediaPermissionRequest> userMediaPermissionRequest = adoptGRef(webkitUserMediaPermissionRequestCreate(permissionRequest, userMediaDocumentOrigin, topLevelDocumentOrigin));
         webkitWebViewMakePermissionRequest(m_webView, WEBKIT_PERMISSION_REQUEST(userMediaPermissionRequest.get()));
     }
 
@@ -302,13 +302,13 @@ private:
 
     void decidePolicyForNotificationPermissionRequest(WebPageProxy&, API::SecurityOrigin&, CompletionHandler<void(bool allowed)>&& completionHandler) final
     {
-        GRefPtr<WebKitNotificationPermissionRequest> notificationPermissionRequest = adoptGRef(webkitNotificationPermissionRequestCreate(NotificationPermissionRequest::create(WTFMove(completionHandler)).ptr()));
+        GRefPtr<CyberKitNotificationPermissionRequest> notificationPermissionRequest = adoptGRef(webkitNotificationPermissionRequestCreate(NotificationPermissionRequest::create(WTFMove(completionHandler)).ptr()));
         webkitWebViewMakePermissionRequest(m_webView, WEBKIT_PERMISSION_REQUEST(notificationPermissionRequest.get()));
     }
 
     void requestStorageAccessConfirm(WebPageProxy&, WebFrameProxy*, const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) final
     {
-        GRefPtr<WebKitWebsiteDataAccessPermissionRequest> websiteDataAccessPermissionRequest = adoptGRef(webkitWebsiteDataAccessPermissionRequestCreate(requestingDomain, currentDomain, WTFMove(completionHandler)));
+        GRefPtr<CyberKitWebsiteDataAccessPermissionRequest> websiteDataAccessPermissionRequest = adoptGRef(webkitWebsiteDataAccessPermissionRequestCreate(requestingDomain, currentDomain, WTFMove(completionHandler)));
         webkitWebViewMakePermissionRequest(m_webView, WEBKIT_PERMISSION_REQUEST(websiteDataAccessPermissionRequest.get()));
     }
 
@@ -354,7 +354,7 @@ private:
 #if ENABLE(POINTER_LOCK)
     void requestPointerLock(WebPageProxy* page) final
     {
-        GRefPtr<WebKitPointerLockPermissionRequest> permissionRequest = adoptGRef(webkitPointerLockPermissionRequestCreate(m_webView));
+        GRefPtr<CyberKitPointerLockPermissionRequest> permissionRequest = adoptGRef(webkitPointerLockPermissionRequestCreate(m_webView));
         RELEASE_ASSERT(!m_pointerLockPermissionRequest);
         m_pointerLockPermissionRequest.reset(permissionRequest.get());
         webkitWebViewMakePermissionRequest(m_webView, WEBKIT_PERMISSION_REQUEST(permissionRequest.get()));
@@ -377,13 +377,13 @@ private:
         webkit_permission_state_query_unref(query);
     }
 
-    WebKitWebView* m_webView;
+    CyberKitWebView* m_webView;
 #if ENABLE(POINTER_LOCK)
-    GWeakPtr<WebKitPointerLockPermissionRequest> m_pointerLockPermissionRequest { nullptr };
+    GWeakPtr<CyberKitPointerLockPermissionRequest> m_pointerLockPermissionRequest { nullptr };
 #endif
 };
 
-void attachUIClientToView(WebKitWebView* webView)
+void attachUIClientToView(CyberKitWebView* webView)
 {
     webkitWebViewGetPage(webView).setUIClient(makeUnique<UIClient>(webView));
 }

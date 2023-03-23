@@ -29,7 +29,7 @@
 #include <pal/text/TextCodec.h>
 #include <pal/text/TextEncodingRegistry.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextDecoder::TextDecoder(StringView label, Options options)
     : m_textEncoding(label)

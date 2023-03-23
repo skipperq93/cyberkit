@@ -88,7 +88,7 @@
 #include "PageDebuggable.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 using namespace Inspector;
@@ -491,12 +491,12 @@ bool InspectorController::canAccessInspectedScriptState(JSC::JSGlobalObject* lex
 
 InspectorFunctionCallHandler InspectorController::functionCallHandler() const
 {
-    return WebCore::functionCallHandlerFromAnyThread;
+    return CyberCore::functionCallHandlerFromAnyThread;
 }
 
 InspectorEvaluateHandler InspectorController::evaluateHandler() const
 {
-    return WebCore::evaluateHandlerFromAnyThread;
+    return CyberCore::evaluateHandlerFromAnyThread;
 }
 
 void InspectorController::frontendInitialized()
@@ -539,4 +539,4 @@ void InspectorController::didComposite(Frame& frame)
     InspectorInstrumentation::didComposite(frame);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

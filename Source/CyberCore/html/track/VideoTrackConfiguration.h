@@ -31,7 +31,7 @@
 #include "VideoColorSpace.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using VideoTrackConfigurationInit = PlatformVideoTrackConfiguration;
 

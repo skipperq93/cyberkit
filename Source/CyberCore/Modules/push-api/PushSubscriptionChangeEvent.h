@@ -30,7 +30,7 @@
 #include "ExtendableEvent.h"
 #include "PushSubscriptionChangeEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PushSubscriptionChangeEvent final : public ExtendableEvent {
     WTF_MAKE_ISO_ALLOCATED(PushSubscriptionChangeEvent);
@@ -50,6 +50,6 @@ private:
     RefPtr<PushSubscription> m_oldSubscription;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

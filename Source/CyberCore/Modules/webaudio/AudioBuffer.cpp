@@ -36,11 +36,11 @@
 #include "AudioContext.h"
 #include "AudioFileReader.h"
 #include "AudioUtilities.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/TypedArrayInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<AudioBuffer> AudioBuffer::create(unsigned numberOfChannels, size_t numberOfFrames, float sampleRate, LegacyPreventDetaching preventDetaching)
 {
@@ -325,9 +325,9 @@ Ref<AudioBuffer> AudioBuffer::clone(ShouldCopyChannelData shouldCopyChannelData)
     return clone.releaseNonNull();
 }
 
-WebCoreOpaqueRoot root(AudioBuffer* buffer)
+CyberCoreOpaqueRoot root(AudioBuffer* buffer)
 {
-    return WebCoreOpaqueRoot { buffer };
+    return CyberCoreOpaqueRoot { buffer };
 }
 
 void AudioBuffer::applyNoiseIfNeeded()
@@ -341,6 +341,6 @@ void AudioBuffer::applyNoiseIfNeeded()
     m_needsAdditionalNoise = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -33,7 +33,7 @@ class BackendDispatcher;
 class FrontendRouter;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -52,4 +52,4 @@ protected:
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

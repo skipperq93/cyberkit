@@ -30,7 +30,7 @@
 #include "APIHitTestResult.h"
 #include "WKAPICast.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKHitTestResultGetTypeID()
 {

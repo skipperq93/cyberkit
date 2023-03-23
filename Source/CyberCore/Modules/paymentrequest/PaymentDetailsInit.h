@@ -31,13 +31,13 @@
 #include "PaymentItem.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 struct PaymentDetailsInit final : public PaymentDetailsBase {
     String id;
     PaymentItem total;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

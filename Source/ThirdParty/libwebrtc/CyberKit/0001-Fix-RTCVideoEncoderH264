@@ -6,7 +6,7 @@ index 4028e7acee0..89248b40d74 100644
  #include "sdk/objc/components/video_codec/nalu_rewriter.h"
  #include "third_party/libyuv/include/libyuv/convert_from.h"
  
-+#include "sdk/WebKit/WebKitUtilities.h"
++#include "sdk/CyberKit/CyberKitUtilities.h"
 +
 +#import <dlfcn.h>
 +#import <objc/runtime.h>
@@ -531,7 +531,7 @@ index 0683ea79e56..c7d79d32771 100644
  #include <VideoToolbox/VideoToolbox.h>
  #include <string>
  
-+#include "sdk/WebKit/VideoProcessingSoftLink.h"
++#include "sdk/CyberKit/VideoProcessingSoftLink.h"
 +
  // Convenience function for creating a dictionary.
  inline CFDictionaryRef CreateCFTypeDictionary(CFTypeRef* keys,

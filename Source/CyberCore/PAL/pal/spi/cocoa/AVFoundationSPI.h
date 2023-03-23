@@ -426,7 +426,7 @@ NS_ASSUME_NONNULL_END
 #endif
 
 #if !USE(APPLE_INTERNAL_SDK)
-@interface AVSampleBufferDisplayLayer (WebCorePrivate)
+@interface AVSampleBufferDisplayLayer (CyberCorePrivate)
 @property (assign, nonatomic) BOOL preventsDisplaySleepDuringVideoPlayback;
 @end
 #endif

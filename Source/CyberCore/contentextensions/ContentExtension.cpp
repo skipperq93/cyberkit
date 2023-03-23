@@ -35,7 +35,7 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 Ref<ContentExtension> ContentExtension::create(const String& identifier, Ref<CompiledContentExtension>&& compiledExtension, URL&& extensionBaseURL, ShouldCompileCSS shouldCompileCSS)
 {
@@ -155,6 +155,6 @@ const DFABytecodeInterpreter::Actions& ContentExtension::frameURLActions(const U
     return m_cachedFrameURLActions;
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

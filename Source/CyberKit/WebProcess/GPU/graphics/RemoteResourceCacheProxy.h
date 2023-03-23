@@ -38,7 +38,7 @@ class Font;
 class ImageBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteImageBufferProxy;
 class RemoteRenderingBackendProxy;
@@ -94,6 +94,6 @@ private:
     uint64_t m_renderingUpdateID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

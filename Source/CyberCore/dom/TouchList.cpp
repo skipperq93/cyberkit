@@ -29,7 +29,7 @@
 
 #include "TouchList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Touch* TouchList::item(unsigned index)
 {
@@ -43,6 +43,6 @@ const Touch* TouchList::item(unsigned index) const
     return const_cast<TouchList*>(this)->item(index);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -37,7 +37,7 @@ namespace WKWPE {
 class View;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 WK_ADD_API_MAPPING(WKGrammarDetailRef, WebGrammarDetail)
 WK_ADD_API_MAPPING(WKViewRef, WKWPE::View)

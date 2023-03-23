@@ -31,7 +31,7 @@
 #include "ScriptExecutionContext.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void JSExecState::didLeaveScriptContext(JSC::JSGlobalObject* lexicalGlobalObject)
 {
@@ -58,4 +58,4 @@ ScriptExecutionContext* executionContext(JSC::JSGlobalObject* globalObject)
     return JSC::jsCast<JSDOMGlobalObject*>(globalObject)->scriptExecutionContext();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_documentFunctions = {
     // method_call
@@ -138,6 +138,6 @@ String AccessibilityObjectAtspi::documentLocale() const
     return document->contentLanguage();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

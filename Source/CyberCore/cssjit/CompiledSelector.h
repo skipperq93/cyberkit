@@ -33,7 +33,7 @@
 
 #define CSS_SELECTOR_JIT_PROFILING 0
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SelectorCompilationStatus : uint8_t {
     NotCompiled,

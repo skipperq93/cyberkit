@@ -33,7 +33,7 @@
 #include "NodeRareData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -109,4 +109,4 @@ bool RadioNodeList::elementMatches(Element& element) const
     return element.getIdAttribute() == m_name || element.getNameAttribute() == m_name;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

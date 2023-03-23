@@ -31,7 +31,7 @@
 #include "Performance.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DOMHighResTimeStamp IdleDeadline::timeRemaining(Document& document) const
 {
@@ -53,4 +53,4 @@ bool IdleDeadline::didTimeout(Document& document) const
     return deadline >= now;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

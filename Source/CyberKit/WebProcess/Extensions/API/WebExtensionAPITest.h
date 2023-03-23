@@ -34,7 +34,7 @@
 
 OBJC_CLASS NSString;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -74,6 +74,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

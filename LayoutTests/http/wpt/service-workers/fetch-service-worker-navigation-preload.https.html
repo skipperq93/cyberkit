@@ -12,7 +12,7 @@ var activeWorker;
 var frame;
 const channel = new MessageChannel();
 const uuid = token();
-const url = "/WebKit/service-workers/resources/fetch-service-worker-preload-script.py?useNavigationPreloadPromise=true&token=" + uuid;
+const url = "/CyberKit/service-workers/resources/fetch-service-worker-preload-script.py?useNavigationPreloadPromise=true&token=" + uuid;
 
 function waitUntilActivating()
 {
@@ -35,10 +35,10 @@ promise_test(async (test) => {
         await fetch("").then(() => { }, () => { });
     }
 
-    let registration = await navigator.serviceWorker.register("/WebKit/service-workers/fetch-service-worker-preload-worker.js", { scope : url });
+    let registration = await navigator.serviceWorker.register("/CyberKit/service-workers/fetch-service-worker-preload-worker.js", { scope : url });
     if (!registration.installing) {
         registration.unregister();
-        registration = await navigator.serviceWorker.register("/WebKit/service-workers/fetch-service-worker-preload-worker.js", { scope : url });
+        registration = await navigator.serviceWorker.register("/CyberKit/service-workers/fetch-service-worker-preload-worker.js", { scope : url });
     }
 
     activeWorker = registration.installing;

@@ -31,7 +31,7 @@
 #include "WKView.h"
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlayStationWebView : public API::ObjectImpl<API::Object::Type::View> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -73,7 +73,7 @@ private:
     PlayStationWebView(const API::PageConfiguration&);
 
     std::unique_ptr<API::ViewClient> m_client;
-    std::unique_ptr<WebKit::PageClientImpl> m_pageClient;
+    std::unique_ptr<CyberKit::PageClientImpl> m_pageClient;
     RefPtr<WebPageProxy> m_page;
     OptionSet<CyberCore::ActivityState::Flag> m_viewStateFlags;
 
@@ -83,4 +83,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

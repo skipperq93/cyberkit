@@ -30,11 +30,11 @@
 #include "config.h"
 #include "CSSConditionRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSConditionRule::CSSConditionRule(StyleRuleGroup& group, CSSStyleSheet* parent)
     : CSSGroupingRule(group, parent)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

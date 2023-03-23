@@ -34,7 +34,7 @@
 #include "InspectorWebAgentBase.h"
 #include "WebConsoleAgent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PageConsoleAgent final : public WebConsoleAgent {
     WTF_MAKE_NONCOPYABLE(PageConsoleAgent);
@@ -51,4 +51,4 @@ private:
     Page& m_inspectedPage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -23,7 +23,7 @@
 #include "CSSPrimitiveValue.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Used for text-shadow and box-shadow
 CSSShadowValue::CSSShadowValue(RefPtr<CSSPrimitiveValue>&& x, RefPtr<CSSPrimitiveValue>&& y, RefPtr<CSSPrimitiveValue>&& blur, RefPtr<CSSPrimitiveValue>&& spread, RefPtr<CSSPrimitiveValue>&& style, RefPtr<CSSPrimitiveValue>&& color)

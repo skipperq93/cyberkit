@@ -30,22 +30,22 @@
 #import "APIInspectorExtension.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 class InspectorExtensionDelegate;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::InspectorExtension> {
     using WrapperClass = _WKInspectorExtension;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @interface _WKInspectorExtension () <WKObject> {
 @package
     API::ObjectStorage<API::InspectorExtension> _extension;
-    std::unique_ptr<WebKit::InspectorExtensionDelegate> _delegate;
+    std::unique_ptr<CyberKit::InspectorExtensionDelegate> _delegate;
 }
 
 @end

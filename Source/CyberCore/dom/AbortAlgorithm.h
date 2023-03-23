@@ -33,7 +33,7 @@ namespace JSC {
 class JSValue;
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbortAlgorithm : public ThreadSafeRefCounted<AbortAlgorithm>, public ActiveDOMCallback {
 public:
@@ -42,5 +42,5 @@ public:
     virtual CallbackResult<void> handleEvent(JSC::JSValue) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

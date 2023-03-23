@@ -30,7 +30,7 @@
 #include "LayoutRect.h"
 #include <wtf/ListHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlock;
 class RenderBox;

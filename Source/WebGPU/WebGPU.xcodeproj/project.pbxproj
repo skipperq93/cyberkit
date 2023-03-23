@@ -171,7 +171,7 @@
 
 /* Begin PBXFileReference section */
 		0D4D2E80294A89CF0000A1AB /* BindableResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindableResource.h; sourceTree = "<group>"; };
-		1C023D4A274495B9001DB734 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C023D4A274495B9001DB734 /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0F41EC280940650005886D /* HardwareCapabilities.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HardwareCapabilities.mm; sourceTree = "<group>"; };
 		1C0F41ED280940650005886D /* HardwareCapabilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HardwareCapabilities.h; sourceTree = "<group>"; };
 		1C2CEDED271E8A7300EDC16F /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -223,7 +223,7 @@
 		1C5ACAEA273A560D0095F8D5 /* TextureView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TextureView.mm; sourceTree = "<group>"; };
 		1C9F7CDD29762F51006B5BE9 /* PresentationContext.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PresentationContext.mm; sourceTree = "<group>"; };
 		1C9F7CDE29762F51006B5BE9 /* PresentationContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentationContext.h; sourceTree = "<group>"; };
-		1CBAB0912718CCA0006080BB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CBAB0912718CCA0006080BB /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CBD2E922977DAC900BBF52C /* PresentationContextCoreAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentationContextCoreAnimation.h; sourceTree = "<group>"; };
 		1CBD2E932977DAC900BBF52C /* PresentationContextCoreAnimation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PresentationContextCoreAnimation.mm; sourceTree = "<group>"; };
 		1CBD2E942977DAC900BBF52C /* PresentationContextIOSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentationContextIOSurface.h; sourceTree = "<group>"; };
@@ -526,8 +526,8 @@
 				1CEBD82B2716CAFB00A5254D /* CoreFoundation.framework */,
 				1CEBD82D2716CB1600A5254D /* Foundation.framework */,
 				664C92FC286A66090008D143 /* IOSurface.framework */,
-				1C023D4A274495B9001DB734 /* JavaScriptCore.framework */,
-				1CBAB0912718CCA0006080BB /* JavaScriptCore.framework */,
+				1C023D4A274495B9001DB734 /* CyberScriptCore.framework */,
+				1CBAB0912718CCA0006080BB /* CyberScriptCore.framework */,
 				1CEBD8302716CB3800A5254D /* libicucore.tbd */,
 				1CEBD8292716CAE700A5254D /* libWTF.a */,
 				1C2CEDED271E8A7300EDC16F /* Metal.framework */,

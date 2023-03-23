@@ -18,33 +18,33 @@
  */
 
 #include "config.h"
-#include "WebKitFormSubmissionRequest.h"
+#include "CyberKitFormSubmissionRequest.h"
 
 #include "APIDictionary.h"
 #include "APIString.h"
 #include "WebFormSubmissionListenerProxy.h"
-#include "WebKitFormSubmissionRequestPrivate.h"
+#include "CyberKitFormSubmissionRequestPrivate.h"
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitFormSubmissionRequest:
+ * CyberKitFormSubmissionRequest:
  *
  * Represents a form submission request.
  *
- * When a form is about to be submitted in a #WebKitWebView, the
- * #WebKitWebView::submit-form signal is emitted. Its request argument
+ * When a form is about to be submitted in a #CyberKitWebView, the
+ * #CyberKitWebView::submit-form signal is emitted. Its request argument
  * contains information about the text fields of the form, that are
  * typically used to store login information, returned as lists by
  * webkit_form_submission_request_list_text_fields(). You can submit the
  * form with webkit_form_submission_request_submit().
  */
 
-struct _WebKitFormSubmissionRequestPrivate {
+struct _CyberKitFormSubmissionRequestPrivate {
     RefPtr<WebFormSubmissionListenerProxy> listener;
     GRefPtr<GPtrArray> textFieldNames;
     GRefPtr<GPtrArray> textFieldValues;
@@ -52,11 +52,11 @@ struct _WebKitFormSubmissionRequestPrivate {
     bool handledRequest;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitFormSubmissionRequest, webkit_form_submission_request, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitFormSubmissionRequest, webkit_form_submission_request, G_TYPE_OBJECT, GObject)
 
 static void webkitFormSubmissionRequestDispose(GObject* object)
 {
-    WebKitFormSubmissionRequest* request = WEBKIT_FORM_SUBMISSION_REQUEST(object);
+    CyberKitFormSubmissionRequest* request = WEBKIT_FORM_SUBMISSION_REQUEST(object);
 
     // Make sure the request is always handled before finalizing.
     if (!request->priv->handledRequest)
@@ -65,15 +65,15 @@ static void webkitFormSubmissionRequestDispose(GObject* object)
     G_OBJECT_CLASS(webkit_form_submission_request_parent_class)->dispose(object);
 }
 
-static void webkit_form_submission_request_class_init(WebKitFormSubmissionRequestClass* requestClass)
+static void webkit_form_submission_request_class_init(CyberKitFormSubmissionRequestClass* requestClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(requestClass);
     objectClass->dispose = webkitFormSubmissionRequestDispose;
 }
 
-WebKitFormSubmissionRequest* webkitFormSubmissionRequestCreate(const Vector<std::pair<String, String>>& values, Ref<WebFormSubmissionListenerProxy>&& listener)
+CyberKitFormSubmissionRequest* webkitFormSubmissionRequestCreate(const Vector<std::pair<String, String>>& values, Ref<WebFormSubmissionListenerProxy>&& listener)
 {
-    WebKitFormSubmissionRequest* request = WEBKIT_FORM_SUBMISSION_REQUEST(g_object_new(WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, nullptr));
+    CyberKitFormSubmissionRequest* request = WEBKIT_FORM_SUBMISSION_REQUEST(g_object_new(WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, nullptr));
     if (values.size()) {
         request->priv->textFieldNames = adoptGRef(g_ptr_array_new_full(values.size(), g_free));
         request->priv->textFieldValues = adoptGRef(g_ptr_array_new_full(values.size(), g_free));
@@ -89,7 +89,7 @@ WebKitFormSubmissionRequest* webkitFormSubmissionRequestCreate(const Vector<std:
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_form_submission_request_get_text_fields:
- * @request: a #WebKitFormSubmissionRequest
+ * @request: a #CyberKitFormSubmissionRequest
  *
  * Get the values of the text fields contained in the form associated to @request.
  *
@@ -103,7 +103,7 @@ WebKitFormSubmissionRequest* webkitFormSubmissionRequestCreate(const Vector<std:
  *
  * Deprecated: 2.20. Use webkit_form_submission_request_list_text_fields() instead.
  */
-GHashTable* webkit_form_submission_request_get_text_fields(WebKitFormSubmissionRequest* request)
+GHashTable* webkit_form_submission_request_get_text_fields(CyberKitFormSubmissionRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_FORM_SUBMISSION_REQUEST(request), nullptr);
 
@@ -122,7 +122,7 @@ GHashTable* webkit_form_submission_request_get_text_fields(WebKitFormSubmissionR
 
 /**
  * webkit_form_submission_request_list_text_fields:
- * @request: a #WebKitFormSubmissionRequest
+ * @request: a #CyberKitFormSubmissionRequest
  * @field_names: (out) (optional) (element-type utf8) (transfer none):
  *    names of the text fields in the form
  * @field_values: (out) (optional) (element-type utf8) (transfer none):
@@ -141,7 +141,7 @@ GHashTable* webkit_form_submission_request_get_text_fields(WebKitFormSubmissionR
  *
  * Since: 2.20
  */
-gboolean webkit_form_submission_request_list_text_fields(WebKitFormSubmissionRequest* request, GPtrArray** fieldNames, GPtrArray** fieldValues)
+gboolean webkit_form_submission_request_list_text_fields(CyberKitFormSubmissionRequest* request, GPtrArray** fieldNames, GPtrArray** fieldValues)
 {
     g_return_val_if_fail(WEBKIT_IS_FORM_SUBMISSION_REQUEST(request), FALSE);
 
@@ -155,11 +155,11 @@ gboolean webkit_form_submission_request_list_text_fields(WebKitFormSubmissionReq
 
 /**
  * webkit_form_submission_request_submit:
- * @request: a #WebKitFormSubmissionRequest
+ * @request: a #CyberKitFormSubmissionRequest
  *
  * Continue the form submission.
  */
-void webkit_form_submission_request_submit(WebKitFormSubmissionRequest* request)
+void webkit_form_submission_request_submit(CyberKitFormSubmissionRequest* request)
 {
     g_return_if_fail(WEBKIT_IS_FORM_SUBMISSION_REQUEST(request));
 

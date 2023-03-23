@@ -35,7 +35,7 @@
 #include <wtf/MachSendRight.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 DrawingAreaProxy::DrawingAreaProxy(DrawingAreaType type, WebPageProxy& webPageProxy)
@@ -108,4 +108,4 @@ void DrawingAreaProxy::viewExposedRectChangedTimerFired()
 }
 #endif // PLATFORM(MAC)
 
-} // namespace WebKit
+} // namespace CyberKit

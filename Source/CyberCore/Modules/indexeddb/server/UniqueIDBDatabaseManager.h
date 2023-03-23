@@ -28,7 +28,7 @@
 #include "IDBDatabaseIdentifier.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ClientOrigin;
 
@@ -52,4 +52,4 @@ public:
 
 } // namespace IDBServer
 
-} // namespace WebCore
+} // namespace CyberCore

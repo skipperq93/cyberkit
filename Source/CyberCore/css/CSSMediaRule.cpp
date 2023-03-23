@@ -29,7 +29,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSMediaRule::CSSMediaRule(StyleRuleMedia& mediaRule, CSSStyleSheet* parent)
     : CSSConditionRule(mediaRule, parent)
@@ -74,4 +74,4 @@ MediaList* CSSMediaRule::media() const
     return m_mediaCSSOMWrapper.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

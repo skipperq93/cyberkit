@@ -27,8 +27,8 @@
 
 #include "SpeechRecognitionError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using SpeechRecognitionErrorCode = SpeechRecognitionErrorType;
 
-} // namespace WebCore
+} // namespace CyberCore

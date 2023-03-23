@@ -43,7 +43,7 @@
 
 #import "AuthenticationServicesCoreSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static inline Ref<ArrayBuffer> toArrayBuffer(NSData *data)
@@ -525,15 +525,15 @@ void WebAuthenticatorCoordinatorProxy::performRequest(RetainPtr<ASCCredentialReq
 
 static inline bool canCurrentProcessAccessPasskeysForRelyingParty(const CyberCore::SecurityOriginData& data)
 {
-    if ([getASCWebKitSPISupportClass() respondsToSelector:@selector(canCurrentProcessAccessPasskeysForRelyingParty:)])
-        return [getASCWebKitSPISupportClass() canCurrentProcessAccessPasskeysForRelyingParty:data.securityOrigin()->domain()];
+    if ([getASCCyberKitSPISupportClass() respondsToSelector:@selector(canCurrentProcessAccessPasskeysForRelyingParty:)])
+        return [getASCCyberKitSPISupportClass() canCurrentProcessAccessPasskeysForRelyingParty:data.securityOrigin()->domain()];
     return false;
 }
 
 void WebAuthenticatorCoordinatorProxy::isConditionalMediationAvailable(const CyberCore::SecurityOriginData& data, QueryCompletionHandler&& handler)
 {
     if (canCurrentProcessAccessPasskeysForRelyingParty(data)) {
-        handler([getASCWebKitSPISupportClass() shouldUseAlternateCredentialStore]);
+        handler([getASCCyberKitSPISupportClass() shouldUseAlternateCredentialStore]);
         return;
     }
     handler(false);
@@ -542,8 +542,8 @@ void WebAuthenticatorCoordinatorProxy::isConditionalMediationAvailable(const Cyb
 void WebAuthenticatorCoordinatorProxy::isUserVerifyingPlatformAuthenticatorAvailable(const SecurityOriginData& data, QueryCompletionHandler&& handler)
 {
     if (canCurrentProcessAccessPasskeysForRelyingParty(data)) {
-        if ([getASCWebKitSPISupportClass() shouldUseAlternateCredentialStore]) {
-            handler(![getASCWebKitSPISupportClass() respondsToSelector:@selector(arePasskeysDisallowedForRelyingParty:)] || ![getASCWebKitSPISupportClass() arePasskeysDisallowedForRelyingParty:data.securityOrigin()->domain()]);
+        if ([getASCCyberKitSPISupportClass() shouldUseAlternateCredentialStore]) {
+            handler(![getASCCyberKitSPISupportClass() respondsToSelector:@selector(arePasskeysDisallowedForRelyingParty:)] || ![getASCCyberKitSPISupportClass() arePasskeysDisallowedForRelyingParty:data.securityOrigin()->domain()]);
             return;
         }
         handler(LocalService::isAvailable());
@@ -559,6 +559,6 @@ void WebAuthenticatorCoordinatorProxy::cancel()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(UNIFIED_ASC_AUTH_UI)

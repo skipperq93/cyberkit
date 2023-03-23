@@ -35,12 +35,12 @@
 #include <wtf/RefPtr.h>
 
 #if ENABLE(ACCESSIBILITY)
-#include "WebKitWebViewAccessible.h"
+#include "CyberKitWebViewAccessible.h"
 #include <wtf/glib/GRefPtr.h>
 #endif
 
 typedef struct OpaqueJSContext* JSGlobalContextRef;
-typedef struct _WebKitInputMethodContext WebKitInputMethodContext;
+typedef struct _CyberKitInputMethodContext CyberKitInputMethodContext;
 struct wpe_input_keyboard_event;
 struct wpe_view_backend;
 
@@ -52,9 +52,9 @@ namespace CyberCore {
 struct CompositionUnderline;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class TouchGestureController;
-class WebKitWebResourceLoadManager;
+class CyberKitWebResourceLoadManager;
 class WebPageGroup;
 class WebProcessPool;
 struct EditingRange;
@@ -77,17 +77,17 @@ public:
     void frameDisplayed();
     void willStartLoad();
     void didChangePageID();
-    void didReceiveUserMessage(WebKit::UserMessage&&, CompletionHandler<void(WebKit::UserMessage&&)>&&);
-    WebKit::WebKitWebResourceLoadManager* webResourceLoadManager();
+    void didReceiveUserMessage(CyberKit::UserMessage&&, CompletionHandler<void(CyberKit::UserMessage&&)>&&);
+    CyberKit::CyberKitWebResourceLoadManager* webResourceLoadManager();
 
-    void setInputMethodContext(WebKitInputMethodContext*);
-    WebKitInputMethodContext* inputMethodContext() const;
-    void setInputMethodState(std::optional<WebKit::InputMethodState>&&);
-    void synthesizeCompositionKeyPress(const String&, std::optional<Vector<CyberCore::CompositionUnderline>>&&, std::optional<WebKit::EditingRange>&&);
+    void setInputMethodContext(CyberKitInputMethodContext*);
+    CyberKitInputMethodContext* inputMethodContext() const;
+    void setInputMethodState(std::optional<CyberKit::InputMethodState>&&);
+    void synthesizeCompositionKeyPress(const String&, std::optional<Vector<CyberCore::CompositionUnderline>>&&, std::optional<CyberKit::EditingRange>&&);
 
     void selectionDidChange();
 
-    WebKit::WebPageProxy& page() { return *m_pageProxy; }
+    CyberKit::WebPageProxy& page() { return *m_pageProxy; }
 
     API::ViewClient& client() const { return *m_client; }
     struct wpe_view_backend* backend() { return m_backend; }
@@ -104,14 +104,14 @@ public:
 #endif
 
 #if ENABLE(ACCESSIBILITY)
-    WebKitWebViewAccessible* accessible() const;
+    CyberKitWebViewAccessible* accessible() const;
 #endif
 
 #if ENABLE(TOUCH_EVENTS)
-    WebKit::TouchGestureController& touchGestureController() const { return *m_touchGestureController; }
+    CyberKit::TouchGestureController& touchGestureController() const { return *m_touchGestureController; }
 #endif
 #if ENABLE(GAMEPAD)
-    static WebKit::WebPageProxy* platformWebPageProxyForGamepadInput();
+    static CyberKit::WebPageProxy* platformWebPageProxyForGamepadInput();
 #endif
 
 private:
@@ -124,10 +124,10 @@ private:
     std::unique_ptr<API::ViewClient> m_client;
 
 #if ENABLE(TOUCH_EVENTS)
-    std::unique_ptr<WebKit::TouchGestureController> m_touchGestureController;
+    std::unique_ptr<CyberKit::TouchGestureController> m_touchGestureController;
 #endif
-    std::unique_ptr<WebKit::PageClientImpl> m_pageClient;
-    RefPtr<WebKit::WebPageProxy> m_pageProxy;
+    std::unique_ptr<CyberKit::PageClientImpl> m_pageClient;
+    RefPtr<CyberKit::WebPageProxy> m_pageProxy;
     CyberCore::IntSize m_size;
     OptionSet<CyberCore::ActivityState::Flag> m_viewStateFlags;
 
@@ -138,13 +138,13 @@ private:
 #endif
 
 #if ENABLE(ACCESSIBILITY)
-    mutable GRefPtr<WebKitWebViewAccessible> m_accessible;
+    mutable GRefPtr<CyberKitWebViewAccessible> m_accessible;
 #endif
 
     bool m_horizontalScrollActive { false };
     bool m_verticalScrollActive { false };
 
-    WebKit::InputMethodFilter m_inputMethodFilter;
+    CyberKit::InputMethodFilter m_inputMethodFilter;
 };
 
 } // namespace WKWPE

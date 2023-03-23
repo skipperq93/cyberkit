@@ -26,7 +26,7 @@
 #include "JSDOMOperation.h"
 #include "JSDOMPromiseDeferred.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename JSClass>
 class IDLOperationReturningPromise {
@@ -92,4 +92,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

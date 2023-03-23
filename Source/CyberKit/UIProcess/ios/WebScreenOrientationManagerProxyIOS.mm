@@ -32,7 +32,7 @@
 #import "WebPageProxy.h"
 #import <CyberCore/Exception.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebScreenOrientationManagerProxy::platformInitialize()
 {
@@ -62,6 +62,6 @@ std::optional<CyberCore::Exception> WebScreenOrientationManagerProxy::platformSh
     return std::nullopt;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

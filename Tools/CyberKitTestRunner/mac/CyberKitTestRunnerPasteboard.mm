@@ -26,7 +26,7 @@
  */
 
 #import "config.h"
-#import "WebKitTestRunnerPasteboard.h"
+#import "CyberKitTestRunnerPasteboard.h"
 
 #import "NSPasteboardAdditions.h"
 #import <objc/runtime.h>
@@ -49,7 +49,7 @@
 static Lock localPasteboardsLock;
 static RetainPtr<NSMutableDictionary> localPasteboards WTF_GUARDED_BY_LOCK(localPasteboardsLock);
 
-@implementation WebKitTestRunnerPasteboard
+@implementation CyberKitTestRunnerPasteboard
 
 // Return a local pasteboard so we don't disturb the real pasteboards when running tests.
 + (NSPasteboard *)_pasteboardWithName:(NSString *)name

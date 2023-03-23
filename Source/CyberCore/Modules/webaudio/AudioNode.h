@@ -35,7 +35,7 @@
 
 #define DEBUG_AUDIONODE_REFERENCES 0
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioNodeInput;
 struct AudioNodeOptions;
@@ -300,12 +300,12 @@ using AudioConnectionRefPtr = RefPtr<T, RawPtrTraits<T>, AudioNodeConnectionRefD
 
 String convertEnumerationToString(AudioNode::NodeType);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
     
-template<> struct LogArgument<WebCore::AudioNode::NodeType> {
-    static String toString(WebCore::AudioNode::NodeType type) { return convertEnumerationToString(type); }
+template<> struct LogArgument<CyberCore::AudioNode::NodeType> {
+    static String toString(CyberCore::AudioNode::NodeType type) { return convertEnumerationToString(type); }
 };
 
 } // namespace WTF

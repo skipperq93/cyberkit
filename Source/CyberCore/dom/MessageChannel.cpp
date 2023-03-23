@@ -31,7 +31,7 @@
 #include "MessagePortChannelProvider.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::pair<Ref<MessagePort>, Ref<MessagePort>> generateMessagePorts(ScriptExecutionContext& context)
 {
@@ -61,4 +61,4 @@ MessageChannel::MessageChannel(ScriptExecutionContext& context)
 
 MessageChannel::~MessageChannel() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

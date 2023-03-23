@@ -33,7 +33,7 @@
 #include "RenderInline.h"
 #include "TextBoxPainter.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 InlineContentPainter::InlineContentPainter(PaintInfo& paintInfo, const LayoutPoint& paintOffset, const RenderInline* layerRenderer, const InlineContent& inlineContent, const BoxTree& boxTree)

@@ -36,7 +36,7 @@
 #include "Frame.h"
 #include "FrameDestructionObserverInlines.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ApplicationManifestLoader::ApplicationManifestLoader(DocumentLoader& documentLoader, const URL& url, bool useCredentials)
     : m_documentLoader(documentLoader)
@@ -121,6 +121,6 @@ void ApplicationManifestLoader::notifyFinished(CachedResource& resource, const N
     m_documentLoader.finishedLoadingApplicationManifest(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLICATION_MANIFEST)

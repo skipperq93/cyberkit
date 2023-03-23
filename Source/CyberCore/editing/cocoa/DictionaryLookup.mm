@@ -143,18 +143,18 @@ SOFT_LINK(UIKitMacHelper, UINSSharedRevealController, id<UINSRevealController>, 
 
 @interface WebRevealHighlight : NSObject<UIRVPresenterHighlightDelegate>
 
-- (instancetype)initWithHighlightRect:(NSRect)highlightRect view:(UIView *)view image:(RefPtr<WebCore::Image>&&)image;
+- (instancetype)initWithHighlightRect:(NSRect)highlightRect view:(UIView *)view image:(RefPtr<CyberCore::Image>&&)image;
 
 @end
 
 @implementation WebRevealHighlight {
-    RefPtr<WebCore::Image> _image;
+    RefPtr<CyberCore::Image> _image;
     CGRect _highlightRect;
     BOOL _highlighting;
     UIView *_view;
 }
 
-- (instancetype)initWithHighlightRect:(NSRect)highlightRect view:(UIView *)view image:(RefPtr<WebCore::Image>&&)image
+- (instancetype)initWithHighlightRect:(NSRect)highlightRect view:(UIView *)view image:(RefPtr<CyberCore::Image>&&)image
 {
     if (!(self = [super init]))
         return nil;
@@ -167,7 +167,7 @@ SOFT_LINK(UIKitMacHelper, UINSSharedRevealController, id<UINSRevealController>, 
     return self;
 }
 
-- (void)setImage:(RefPtr<WebCore::Image>&&)image
+- (void)setImage:(RefPtr<CyberCore::Image>&&)image
 {
     _image = WTFMove(image);
 }
@@ -222,7 +222,7 @@ SOFT_LINK(UIKitMacHelper, UINSSharedRevealController, id<UINSRevealController>, 
         highlightRect = CGRectUnion(highlightRect, rect.CGRectValue);
     highlightRect = [_view convertRect:highlightRect fromView:nil];
     
-    WebCore::CGContextStateSaver saveState(context);
+    CyberCore::CGContextStateSaver saveState(context);
     CGAffineTransform contextTransform = CGContextGetCTM(context);
     CGFloat backingScale = contextTransform.a;
     CGFloat macCatalystScaleFactor = [PAL::getUIApplicationClass() sharedApplication]._iOSMacScale;
@@ -243,7 +243,7 @@ SOFT_LINK(UIKitMacHelper, UINSSharedRevealController, id<UINSRevealController>, 
 
 #endif // ENABLE(REVEAL)
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(REVEAL)
 
@@ -518,6 +518,6 @@ std::optional<std::tuple<SimpleRange, NSDictionary *>> DictionaryLookup::rangeAt
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

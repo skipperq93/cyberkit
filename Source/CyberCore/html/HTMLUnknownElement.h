@@ -31,7 +31,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLUnknownElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLUnknownElement);
@@ -48,4 +48,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

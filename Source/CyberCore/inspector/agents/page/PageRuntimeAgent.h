@@ -39,7 +39,7 @@ namespace JSC {
 class CallFrame;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Frame;
@@ -78,4 +78,4 @@ private:
     Page& m_inspectedPage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

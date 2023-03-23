@@ -27,12 +27,12 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentAPIVersion {
     static unsigned current();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

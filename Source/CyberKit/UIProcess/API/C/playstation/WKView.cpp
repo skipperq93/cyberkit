@@ -54,27 +54,27 @@ WKCursorType toWKCursorType(const CyberCore::Cursor& cursor)
 
 WKViewRef WKViewCreate(WKPageConfigurationRef configuration)
 {
-    return WebKit::toAPI(WebKit::PlayStationWebView::create(*WebKit::toImpl(configuration)).leakRef());
+    return CyberKit::toAPI(CyberKit::PlayStationWebView::create(*CyberKit::toImpl(configuration)).leakRef());
 }
 
 WKPageRef WKViewGetPage(WKViewRef view)
 {
-    return WebKit::toAPI(WebKit::toImpl(view)->page());
+    return CyberKit::toAPI(CyberKit::toImpl(view)->page());
 }
 
 void WKViewSetSize(WKViewRef view, WKSize viewSize)
 {
-    WebKit::toImpl(view)->setViewSize(WebKit::toIntSize(viewSize));
+    CyberKit::toImpl(view)->setViewSize(CyberKit::toIntSize(viewSize));
 }
 
 static void setViewActivityStateFlag(WKViewRef view, CyberCore::ActivityState::Flag flag, bool set)
 {
-    auto viewState = WebKit::toImpl(view)->viewState();
+    auto viewState = CyberKit::toImpl(view)->viewState();
     if (set)
         viewState.add(flag);
     else
         viewState.remove(flag);
-    WebKit::toImpl(view)->setViewState(viewState);
+    CyberKit::toImpl(view)->setViewState(viewState);
 }
 
 void WKViewSetFocus(WKViewRef view, bool focused)
@@ -95,42 +95,42 @@ void WKViewSetVisible(WKViewRef view, bool visible)
 void WKViewWillEnterFullScreen(WKViewRef view)
 {
 #if ENABLE(FULLSCREEN_API)
-    WebKit::toImpl(view)->willEnterFullScreen();
+    CyberKit::toImpl(view)->willEnterFullScreen();
 #endif
 }
 
 void WKViewDidEnterFullScreen(WKViewRef view)
 {
 #if ENABLE(FULLSCREEN_API)
-    WebKit::toImpl(view)->didEnterFullScreen();
+    CyberKit::toImpl(view)->didEnterFullScreen();
 #endif
 }
 
 void WKViewWillExitFullScreen(WKViewRef view)
 {
 #if ENABLE(FULLSCREEN_API)
-    WebKit::toImpl(view)->willExitFullScreen();
+    CyberKit::toImpl(view)->willExitFullScreen();
 #endif
 }
 
 void WKViewDidExitFullScreen(WKViewRef view)
 {
 #if ENABLE(FULLSCREEN_API)
-    WebKit::toImpl(view)->didExitFullScreen();
+    CyberKit::toImpl(view)->didExitFullScreen();
 #endif
 }
 
 void WKViewRequestExitFullScreen(WKViewRef view)
 {
 #if ENABLE(FULLSCREEN_API)
-    WebKit::toImpl(view)->requestExitFullScreen();
+    CyberKit::toImpl(view)->requestExitFullScreen();
 #endif
 }
 
 bool WKViewIsFullScreen(WKViewRef view)
 {
 #if ENABLE(FULLSCREEN_API)
-    return WebKit::toImpl(view)->isFullScreen();
+    return CyberKit::toImpl(view)->isFullScreen();
 #else
     return false;
 #endif
@@ -146,55 +146,55 @@ void WKViewSetViewClient(WKViewRef view, const WKViewClientBase* client)
         }
 
     private:
-        void setViewNeedsDisplay(WebKit::PlayStationWebView& view, const CyberCore::Region& region) final
+        void setViewNeedsDisplay(CyberKit::PlayStationWebView& view, const CyberCore::Region& region) final
         {
             if (!m_client.setViewNeedsDisplay)
                 return;
-            m_client.setViewNeedsDisplay(WebKit::toAPI(&view), WebKit::toAPI(region.bounds()), m_client.base.clientInfo);
+            m_client.setViewNeedsDisplay(CyberKit::toAPI(&view), CyberKit::toAPI(region.bounds()), m_client.base.clientInfo);
         }
 
-        void enterFullScreen(WebKit::PlayStationWebView& view)
+        void enterFullScreen(CyberKit::PlayStationWebView& view)
         {
             if (!m_client.enterFullScreen)
                 return;
-            m_client.enterFullScreen(WebKit::toAPI(&view), m_client.base.clientInfo);
+            m_client.enterFullScreen(CyberKit::toAPI(&view), m_client.base.clientInfo);
         }
         
-        void exitFullScreen(WebKit::PlayStationWebView& view)
+        void exitFullScreen(CyberKit::PlayStationWebView& view)
         {
             if (!m_client.exitFullScreen)
                 return;
-            m_client.exitFullScreen(WebKit::toAPI(&view), m_client.base.clientInfo);
+            m_client.exitFullScreen(CyberKit::toAPI(&view), m_client.base.clientInfo);
         }
         
-        void closeFullScreen(WebKit::PlayStationWebView& view)
+        void closeFullScreen(CyberKit::PlayStationWebView& view)
         {
             if (!m_client.closeFullScreen)
                 return;
-            m_client.closeFullScreen(WebKit::toAPI(&view), m_client.base.clientInfo);
+            m_client.closeFullScreen(CyberKit::toAPI(&view), m_client.base.clientInfo);
         }
         
-        void beganEnterFullScreen(WebKit::PlayStationWebView& view, const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
+        void beganEnterFullScreen(CyberKit::PlayStationWebView& view, const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
         {
             if (!m_client.beganEnterFullScreen)
                 return;
-            m_client.beganEnterFullScreen(WebKit::toAPI(&view), WebKit::toAPI(initialFrame), WebKit::toAPI(finalFrame), m_client.base.clientInfo);
+            m_client.beganEnterFullScreen(CyberKit::toAPI(&view), CyberKit::toAPI(initialFrame), CyberKit::toAPI(finalFrame), m_client.base.clientInfo);
         }
         
-        void beganExitFullScreen(WebKit::PlayStationWebView& view, const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
+        void beganExitFullScreen(CyberKit::PlayStationWebView& view, const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
         {
             if (!m_client.beganExitFullScreen)
                 return;
-            m_client.beganExitFullScreen(WebKit::toAPI(&view), WebKit::toAPI(initialFrame), WebKit::toAPI(finalFrame), m_client.base.clientInfo);
+            m_client.beganExitFullScreen(CyberKit::toAPI(&view), CyberKit::toAPI(initialFrame), CyberKit::toAPI(finalFrame), m_client.base.clientInfo);
         }
 
-        void setCursor(WebKit::PlayStationWebView& view, const CyberCore::Cursor& cursor) final
+        void setCursor(CyberKit::PlayStationWebView& view, const CyberCore::Cursor& cursor) final
         {
             if (!m_client.setCursor)
                 return;
-            m_client.setCursor(WebKit::toAPI(&view), toWKCursorType(cursor), m_client.base.clientInfo);
+            m_client.setCursor(CyberKit::toAPI(&view), toWKCursorType(cursor), m_client.base.clientInfo);
         }
     };
 
-    WebKit::toImpl(view)->setClient(makeUnique<ViewClient>(client));
+    CyberKit::toImpl(view)->setClient(makeUnique<ViewClient>(client));
 }

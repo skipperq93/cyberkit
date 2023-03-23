@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Function.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebFrameProxy;
 class WebPageProxy;
 }
@@ -41,7 +41,7 @@ class FormClient {
 public:
     virtual ~FormClient() { }
 
-    virtual void willSubmitForm(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, WebKit::WebFrameProxy&, const Vector<std::pair<WTF::String, WTF::String>>&, API::Object*, WTF::Function<void(void)>&& completionHandler)
+    virtual void willSubmitForm(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, CyberKit::WebFrameProxy&, const Vector<std::pair<WTF::String, WTF::String>>&, API::Object*, WTF::Function<void(void)>&& completionHandler)
     {
         completionHandler();
     }

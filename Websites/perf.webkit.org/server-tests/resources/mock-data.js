@@ -36,10 +36,10 @@ MockData = {
             db.insert('build_triggerables', {id: 1000, name: 'build-webkit'}),
             db.insert('build_workers', {id: 20, name: 'sync-worker', password_hash: crypto.createHash('sha256').update('password').digest('hex')}),
             db.insert('repositories', {id: this.macosRepositoryId(), name: 'macOS'}),
-            db.insert('repositories', {id: this.webkitRepositoryId(), name: 'WebKit'}),
+            db.insert('repositories', {id: this.webkitRepositoryId(), name: 'CyberKit'}),
             db.insert('repositories', {id: this.sharedRepositoryId(), name: 'Shared'}),
-            db.insert('repositories', {id: this.ownedJSCRepositoryId(), owner: this.webkitRepositoryId(), name: 'JavaScriptCore'}),
-            db.insert('repositories', {id: this.jscRepositoryId(), name: 'JavaScriptCore'}),
+            db.insert('repositories', {id: this.ownedJSCRepositoryId(), owner: this.webkitRepositoryId(), name: 'CyberScriptCore'}),
+            db.insert('repositories', {id: this.jscRepositoryId(), name: 'CyberScriptCore'}),
             db.insert('triggerable_repository_groups', {id: 2001, name: 'webkit-svn', triggerable: 1000, accepts_roots: true}),
             db.insert('triggerable_repositories', {repository: this.macosRepositoryId(), group: 2001}),
             db.insert('triggerable_repositories', {repository: this.webkitRepositoryId(), group: 2001, accepts_patch: true}),
@@ -164,18 +164,18 @@ MockData = {
         return Promise.all([
             db.insert('build_triggerables', {id: this.emptyTriggeragbleId(), name: 'empty-triggerable'}),
             db.insert('repositories', {id: this.macosRepositoryId(), name: 'macOS'}),
-            db.insert('repositories', {id: this.webkitRepositoryId(), name: 'WebKit'}),
-            db.insert('repositories', {id: this.gitWebkitRepositoryId(), name: 'Git-WebKit'}),
+            db.insert('repositories', {id: this.webkitRepositoryId(), name: 'CyberKit'}),
+            db.insert('repositories', {id: this.gitWebkitRepositoryId(), name: 'Git-CyberKit'}),
             db.insert('platforms', {id: MockData.somePlatformId(), name: 'some platform'}),
             db.insert('tests', {id: MockData.someTestId(), name: 'some test'}),
             db.insert('test_metrics', {id: 5300, test: MockData.someTestId(), name: 'some metric'}),
             db.insert('test_configurations', {id: 5400, metric: 5300, platform: MockData.somePlatformId(), type: 'current'}),
         ]);
     },
-    addMockTestGroupWithGitWebKit(db)
+    addMockTestGroupWithGitCyberKit(db)
     {
         return Promise.all([
-            db.insert('repositories', {id: this.gitWebkitRepositoryId(), name: 'Git-WebKit'}),
+            db.insert('repositories', {id: this.gitWebkitRepositoryId(), name: 'Git-CyberKit'}),
             db.insert('triggerable_repository_groups', {id: 2002, name: 'webkit-git', triggerable: 1000}),
             db.insert('triggerable_repositories', {repository: this.macosRepositoryId(), group: 2002}),
             db.insert('triggerable_repositories', {repository: this.gitWebkitRepositoryId(), group: 2002}),
@@ -247,7 +247,7 @@ MockData = {
             db.insert('analysis_tasks', {id: 1080, platform: 65, metric: 300, name: 'some task with component test',
                 start_run: 801, start_run_time: '2015-10-27T12:05:27.1Z',
                 end_run: 801, end_run_time: '2015-10-27T12:05:27.1Z'}),
-            db.insert('repositories', {id: this.gitWebkitRepositoryId(), name: 'Git-WebKit'}),
+            db.insert('repositories', {id: this.gitWebkitRepositoryId(), name: 'Git-CyberKit'}),
             db.insert('commits', {id: 193116, repository: this.gitWebkitRepositoryId(), revision: '2ceda45d3cd63cde58d0dbf5767714e03d902e43', revision_identifier: '193116@main', time: (new Date(1445945816878)).toISOString()}),
             db.insert('commits', {id: 196336, repository: this.gitWebkitRepositoryId(), revision: '8e294365a452a89785d6536ca7f0fc8a95fa152d', revision_identifier: '196336@main', time: (new Date(1448225325650)).toISOString()}),
             db.insert('analysis_test_groups', {id: 900, task: 1080, name: 'some test group with component test', initial_repetition_count: 4}),
@@ -328,10 +328,10 @@ MockData = {
             'buildRequestArgument': 'build-request-id',
             'repositoryGroups': {
                 'webkit-svn': {
-                    'repositories': {'WebKit': {}, 'macOS': {}},
+                    'repositories': {'CyberKit': {}, 'macOS': {}},
                     'testProperties': {
                         'os': {'revision': 'macOS'},
-                        'wk': {'revision': 'WebKit'},
+                        'wk': {'revision': 'CyberKit'},
                     }
                 }
             },
@@ -363,17 +363,17 @@ MockData = {
             'buildRequestArgument': 'build-request-id',
             'repositoryGroups': {
                 'webkit-svn': {
-                    'repositories': {'WebKit': {'acceptsPatch': true}, 'macOS': {}},
+                    'repositories': {'CyberKit': {'acceptsPatch': true}, 'macOS': {}},
                     'acceptsRoots': true,
                     'testProperties': {
                         'os': {'revision': 'macOS'},
-                        'wk': {'revision': 'WebKit'},
+                        'wk': {'revision': 'CyberKit'},
                         'roots': {"roots": {}},
                     },
                     'buildProperties': {
                         'os': {'revision': 'macOS'},
-                        'wk': {'revision': 'WebKit'},
-                        'wk-patch': {'patch': 'WebKit'},
+                        'wk': {'revision': 'CyberKit'},
+                        'wk-patch': {'patch': 'CyberKit'},
                     }
                 }
             },
@@ -410,10 +410,10 @@ MockData = {
             'buildRequestArgument': 'build-request-id',
             'repositoryGroups': {
                 'webkit-svn': {
-                    'repositories': {'WebKit': {}, 'macOS': {}},
+                    'repositories': {'CyberKit': {}, 'macOS': {}},
                     'testProperties': {
                         'os': {'revision': 'macOS'},
-                        'wk': {'revision': 'WebKit'},
+                        'wk': {'revision': 'CyberKit'},
                     }
                 }
             },

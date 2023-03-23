@@ -32,7 +32,7 @@
 #include "JsonWebKey.h"
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const ASCIILiteral X25519 { "X25519"_s };
 static const ASCIILiteral Ed25519 { "Ed25519"_s };
@@ -247,6 +247,6 @@ Vector<uint8_t> CryptoKeyOKP::platformExportRaw() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

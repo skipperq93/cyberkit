@@ -29,7 +29,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CyberKitPlaybackTargetAvailabilityEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(CyberKitPlaybackTargetAvailabilityEvent);
@@ -60,6 +60,6 @@ private:
     String m_availability;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET_AVAILABILITY_API)

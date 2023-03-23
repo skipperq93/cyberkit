@@ -31,7 +31,7 @@
 #include "CryptoKeyRSA.h"
 #include "OpenSSLUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Vector<uint8_t>> CryptoAlgorithmRSASSA_PKCS1_v1_5::platformSign(const CryptoKeyRSA& key, const Vector<uint8_t>& data)
 {
@@ -96,6 +96,6 @@ ExceptionOr<bool> CryptoAlgorithmRSASSA_PKCS1_v1_5::platformVerify(const CryptoK
     return ret == 1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

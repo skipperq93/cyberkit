@@ -29,8 +29,8 @@ function xhrPromise(url) {
     });
 }
 var origin = new URL("https://raw.githubusercontent.com/");
-var loadJavaScriptCoreFeatures = xhrPromise(new URL("/WebKit/WebKit/main/Source/JavaScriptCore/features.json", origin));
-var loadWebCoreFeatures = xhrPromise(new URL("/WebKit/WebKit/main/Source/WebCore/features.json", origin));
+var loadCyberScriptCoreFeatures = xhrPromise(new URL("/CyberKit/CyberKit/main/Source/CyberScriptCore/features.json", origin));
+var loadCyberCoreFeatures = xhrPromise(new URL("/CyberKit/CyberKit/main/Source/CyberCore/features.json", origin));
 </script>
 
 <style>
@@ -1147,7 +1147,7 @@ function initializeStatusPage() {
     }
 
 
-    Promise.all([loadJavaScriptCoreFeatures, loadWebCoreFeatures]).then(displayFeatures).catch(displayError);
+    Promise.all([loadCyberScriptCoreFeatures, loadCyberCoreFeatures]).then(displayFeatures).catch(displayError);
 }
 
 document.addEventListener("DOMContentLoaded", initializeStatusPage);

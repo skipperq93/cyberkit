@@ -37,7 +37,7 @@
 #include <pal/crypto/gcrypt/Utilities.h>
 #include <wtf/CryptographicUtilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> gcryptEncrypt(const Vector<uint8_t>& key, const Vector<uint8_t>& iv, const Vector<uint8_t>& plainText, const Vector<uint8_t>& additionalData, uint8_t tagLength)
 {
@@ -195,6 +195,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_GCM::platformDecrypt(const Crypt
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

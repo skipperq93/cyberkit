@@ -35,7 +35,7 @@
 #include "CSSValueKeywords.h"
 #include <wtf/ASCIICType.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 // Space characters as defined by the CSS specification.
 // http://www.w3.org/TR/css3-syntax/#whitespace
@@ -82,4 +82,4 @@ inline bool isValidCustomIdentifier(CSSValueID valueID)
     return !isCSSWideKeyword(valueID) && valueID != CSSValueDefault;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

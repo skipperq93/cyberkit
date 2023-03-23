@@ -33,7 +33,7 @@
 #include "LinkIconType.h"
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const unsigned defaultTouchIconWidth = 60;
 

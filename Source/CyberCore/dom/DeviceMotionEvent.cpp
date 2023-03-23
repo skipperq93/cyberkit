@@ -31,7 +31,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DeviceMotionEvent);
 
@@ -149,4 +149,4 @@ void DeviceMotionEvent::requestPermission(Document& document, PermissionPromise&
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

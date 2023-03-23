@@ -42,7 +42,7 @@
 #include "RealtimeOutgoingAudioSourceGStreamer.h"
 #include "RealtimeOutgoingVideoSourceGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::unique_ptr<PeerConnectionBackend> createGStreamerPeerConnectionBackend(RTCPeerConnection& peerConnection)
 {
@@ -370,6 +370,6 @@ bool GStreamerPeerConnectionBackend::isNegotiationNeeded(uint32_t eventId) const
     return m_endpoint->isNegotiationNeeded(eventId);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

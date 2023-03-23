@@ -33,7 +33,7 @@
 
 OBJC_CLASS LAContext;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticatorAssertionResponse : public AuthenticatorResponse {
 public:
@@ -82,7 +82,7 @@ private:
     RetainPtr<LAContext> m_laContext;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_AUTHENTICATOR_RESPONSE(AuthenticatorAssertionResponse, AuthenticatorResponse::Type::Assertion)
 

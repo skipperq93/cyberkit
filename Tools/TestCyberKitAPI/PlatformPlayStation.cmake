@@ -13,14 +13,14 @@ list(APPEND TestWTF_PRIVATE_INCLUDE_DIRECTORIES
 
 WEBKIT_ADD_TARGET_CXX_FLAGS(TestWTF -Wno-unused-function)
 
-list(APPEND TestJavaScriptCore_SOURCES
+list(APPEND TestCyberScriptCore_SOURCES
     ${test_main_SOURCES}
 )
-list(APPEND TestJavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND TestCyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES
     ${WEBKIT_LIBRARIES_DIR}/include
 )
 
-WEBKIT_ADD_TARGET_CXX_FLAGS(TestJavaScriptCore -Wno-unused-function)
+WEBKIT_ADD_TARGET_CXX_FLAGS(TestCyberScriptCore -Wno-unused-function)
 
 list(APPEND TestCyberCore_SOURCES
     ${test_main_SOURCES}

@@ -27,7 +27,7 @@
 
 #include "CSSMathValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSMathClamp final : public CSSMathValue {
     WTF_MAKE_ISO_ALLOCATED(CSSMathClamp);
@@ -53,10 +53,10 @@ private:
     Ref<CSSNumericValue> m_upper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSMathClamp)
-static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSMathClamp; }
-static bool isType(const WebCore::CSSNumericValue& numericValue) { return numericValue.getType() == WebCore::CSSStyleValueType::CSSMathClamp; }
-static bool isType(const WebCore::CSSMathValue& mathValue) { return mathValue.getType() == WebCore::CSSStyleValueType::CSSMathClamp; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSMathClamp)
+static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSMathClamp; }
+static bool isType(const CyberCore::CSSNumericValue& numericValue) { return numericValue.getType() == CyberCore::CSSStyleValueType::CSSMathClamp; }
+static bool isType(const CyberCore::CSSMathValue& mathValue) { return mathValue.getType() == CyberCore::CSSStyleValueType::CSSMathClamp; }
 SPECIALIZE_TYPE_TRAITS_END()

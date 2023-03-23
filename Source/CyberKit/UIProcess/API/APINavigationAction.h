@@ -51,11 +51,11 @@ public:
     const WTF::URL& originalURL() const { return !m_originalURL.isNull() ? m_originalURL : m_request.url(); }
 
     CyberCore::NavigationType navigationType() const { return m_navigationActionData.navigationType; }
-    OptionSet<WebKit::WebEventModifier> modifiers() const { return m_navigationActionData.modifiers; }
-    WebKit::WebMouseEventButton mouseButton() const { return m_navigationActionData.mouseButton; }
-    WebKit::WebMouseEventSyntheticClickType syntheticClickType() const { return m_navigationActionData.syntheticClickType; }
+    OptionSet<CyberKit::WebEventModifier> modifiers() const { return m_navigationActionData.modifiers; }
+    CyberKit::WebMouseEventButton mouseButton() const { return m_navigationActionData.mouseButton; }
+    CyberKit::WebMouseEventSyntheticClickType syntheticClickType() const { return m_navigationActionData.syntheticClickType; }
 #if PLATFORM(MAC) || HAVE(UIKIT_WITH_MOUSE_SUPPORT)
-    const std::optional<WebKit::WebHitTestResultData>& webHitTestResultData() const { return m_navigationActionData.webHitTestResultData; }
+    const std::optional<CyberKit::WebHitTestResultData>& webHitTestResultData() const { return m_navigationActionData.webHitTestResultData; }
 #endif
     CyberCore::FloatPoint clickLocationInRootViewCoordinates() const { return m_navigationActionData.clickLocationInRootViewCoordinates; }
     bool canHandleRequest() const { return m_navigationActionData.canHandleRequest; }
@@ -76,10 +76,10 @@ public:
     void unsetShouldPerformSOAuthorization() { m_shouldPerformSOAuthorization = false; }
 #endif
 
-    const WebKit::NavigationActionData& data() const { return m_navigationActionData; }
+    const CyberKit::NavigationActionData& data() const { return m_navigationActionData; }
     
 private:
-    NavigationAction(WebKit::NavigationActionData&& navigationActionData, API::FrameInfo* sourceFrame, API::FrameInfo* targetFrame, std::optional<WTF::String> targetFrameName, CyberCore::ResourceRequest&& request, const WTF::URL& originalURL, bool shouldOpenAppLinks, RefPtr<UserInitiatedAction>&& userInitiatedAction, API::Navigation* mainFrameNavigation)
+    NavigationAction(CyberKit::NavigationActionData&& navigationActionData, API::FrameInfo* sourceFrame, API::FrameInfo* targetFrame, std::optional<WTF::String> targetFrameName, CyberCore::ResourceRequest&& request, const WTF::URL& originalURL, bool shouldOpenAppLinks, RefPtr<UserInitiatedAction>&& userInitiatedAction, API::Navigation* mainFrameNavigation)
         : m_sourceFrame(sourceFrame)
         , m_targetFrame(targetFrame)
         , m_targetFrameName(targetFrameName)
@@ -92,7 +92,7 @@ private:
     {
     }
 
-    NavigationAction(WebKit::NavigationActionData&& navigationActionData, API::FrameInfo* sourceFrame, API::FrameInfo* targetFrame, std::optional<WTF::String> targetFrameName, CyberCore::ResourceRequest&& request, const WTF::URL& originalURL, bool shouldOpenAppLinks, RefPtr<UserInitiatedAction>&& userInitiatedAction)
+    NavigationAction(CyberKit::NavigationActionData&& navigationActionData, API::FrameInfo* sourceFrame, API::FrameInfo* targetFrame, std::optional<WTF::String> targetFrameName, CyberCore::ResourceRequest&& request, const WTF::URL& originalURL, bool shouldOpenAppLinks, RefPtr<UserInitiatedAction>&& userInitiatedAction)
         : NavigationAction(WTFMove(navigationActionData), sourceFrame, targetFrame, targetFrameName, WTFMove(request), originalURL, shouldOpenAppLinks, WTFMove(userInitiatedAction), nullptr)
     {
     }
@@ -111,7 +111,7 @@ private:
 
     RefPtr<UserInitiatedAction> m_userInitiatedAction;
 
-    WebKit::NavigationActionData m_navigationActionData;
+    CyberKit::NavigationActionData m_navigationActionData;
     RefPtr<Navigation> m_mainFrameNavigation;
 };
 

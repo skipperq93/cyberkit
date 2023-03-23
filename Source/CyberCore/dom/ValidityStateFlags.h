@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ValidityStateFlags {
     bool valueMissing : 1 { false };

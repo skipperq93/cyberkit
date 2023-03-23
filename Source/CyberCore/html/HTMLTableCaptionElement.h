@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableCaptionElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLTableCaptionElement);
@@ -40,4 +40,4 @@ private:
     void collectPresentationalHintsForAttribute(const QualifiedName&, const AtomString&, MutableStyleProperties&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "EmptyScriptExecutionContext.h"
 #include "JSDOMGlobalObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSIDBSerializationGlobalObject final : public JSDOMGlobalObject {
 public:
@@ -60,5 +60,5 @@ private:
     Ref<EmptyScriptExecutionContext> m_scriptExecutionContext;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

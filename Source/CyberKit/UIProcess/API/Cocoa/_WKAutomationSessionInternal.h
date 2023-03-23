@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebAutomationSession.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebAutomationSession> {
     using WrapperClass = _WKAutomationSession;
@@ -38,6 +38,6 @@ template<> struct WrapperTraits<WebAutomationSession> {
 
 @interface _WKAutomationSession () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebAutomationSession> _session;
+    API::ObjectStorage<CyberKit::WebAutomationSession> _session;
 }
 @end

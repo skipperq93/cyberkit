@@ -35,7 +35,7 @@
 #define WEBPROCESSCACHE_RELEASE_LOG(fmt, ...) RELEASE_LOG(ProcessSwapping, "%p - [PID=%d] WebProcessCache::" fmt, this, ##__VA_ARGS__)
 #define WEBPROCESSCACHE_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ProcessSwapping, "%p - [PID=%d] WebProcessCache::" fmt, this, ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 Seconds WebProcessCache::cachedProcessLifetime { 30_min };
 Seconds WebProcessCache::clearingDelayAfterApplicationResignsActive { 5_min };
@@ -342,4 +342,4 @@ void WebProcessCache::platformInitialize()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -28,7 +28,7 @@
 #include "DisplayBox.h"
 #include "InlineDisplayBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(TextBox);
@@ -50,7 +50,7 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_DISPLAY_BOX(TextBox, isTextBox())
 

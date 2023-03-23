@@ -28,7 +28,7 @@
 #import "APINavigationAction.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::NavigationAction> {
     using WrapperClass = WKNavigationAction;

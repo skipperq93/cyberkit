@@ -37,7 +37,7 @@
 #include "Supplementable.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindowIndexedDatabase : public DOMWindowProperty, public Supplement<DOMWindow> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -157,4 +157,4 @@ IDBFactory* WindowOrWorkerGlobalScopeIndexedDatabase::indexedDB(DOMWindow& windo
     return DOMWindowIndexedDatabase::from(window)->indexedDB();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin;
 class URLRegistry;
@@ -55,4 +55,4 @@ private:
     bool m_isStopped { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

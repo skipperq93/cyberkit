@@ -31,7 +31,7 @@
 #include "CachedHTMLCollection.h"
 #include "HTMLTableElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableRowElement;
 
@@ -53,6 +53,6 @@ private:
     explicit HTMLTableRowsCollection(HTMLTableElement&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(HTMLTableRowsCollection, TableRows)

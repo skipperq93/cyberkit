@@ -28,7 +28,7 @@
 #include "QualifiedName.h"
 #include <wtf/Hasher.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This has no counterpart in DOM.
 // It is an internal representation of the node value of an Attr.
@@ -93,11 +93,11 @@ inline bool Attribute::matches(const AtomString& prefix, const AtomString& local
     return nameMatchesFilter(m_name, prefix, localName, namespaceURI);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<>
-struct VectorTraits<WebCore::Attribute> : SimpleClassVectorTraits { };
+struct VectorTraits<CyberCore::Attribute> : SimpleClassVectorTraits { };
 
 } // namespace WTF

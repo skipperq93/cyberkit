@@ -40,7 +40,7 @@
 #include "WorkerThread.h"
 #include <CyberScriptCore/VM.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -93,7 +93,7 @@ void WorkerDebugger::reportException(JSC::JSGlobalObject* exec, JSC::Exception* 
 {
     JSC::Debugger::reportException(exec, exception);
 
-    WebCore::reportException(exec, exception);
+    CyberCore::reportException(exec, exception);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

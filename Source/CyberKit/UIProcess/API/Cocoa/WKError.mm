@@ -31,7 +31,7 @@
 #import <wtf/text/WTFString.h>
 
 NSString * const WKErrorDomain = @"WKErrorDomain";
-NSString * const _WKLegacyErrorDomain = @"WebKitErrorDomain";
+NSString * const _WKLegacyErrorDomain = @"CyberKitErrorDomain";
 
 NSString * const _WKJavaScriptExceptionMessageErrorKey = @"WKJavaScriptExceptionMessage";
 NSString * const _WKJavaScriptExceptionLineNumberErrorKey = @"WKJavaScriptExceptionLineNumber";

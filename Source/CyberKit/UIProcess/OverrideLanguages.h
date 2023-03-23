@@ -28,9 +28,9 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void setOverrideLanguages(Vector<String>&&);
 const Vector<String>& overrideLanguages();
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -35,7 +35,7 @@ class CallFrame;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMGlobalObject;
 class WebGLBuffer;
@@ -79,6 +79,6 @@ using WebGLAny = std::variant<
     RefPtr<WebGLVertexArrayObjectOES>
 >;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

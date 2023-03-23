@@ -35,7 +35,7 @@
 
 @protocol _WKAutomationDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class AutomationClient final : public API::AutomationClient, Inspector::RemoteInspector::Client {
     WTF_MAKE_FAST_ALLOCATED;
@@ -46,7 +46,7 @@ public:
 private:
     // API::AutomationClient
     bool allowsRemoteAutomation(WebProcessPool*) final { return remoteAutomationAllowed(); }
-    void didRequestAutomationSession(WebKit::WebProcessPool*, const String& sessionIdentifier) final;
+    void didRequestAutomationSession(CyberKit::WebProcessPool*, const String& sessionIdentifier) final;
 
     // RemoteInspector::Client
     bool remoteAutomationAllowed() const final;
@@ -67,6 +67,6 @@ private:
     } m_delegateMethods;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

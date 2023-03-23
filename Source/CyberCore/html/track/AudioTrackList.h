@@ -29,7 +29,7 @@
 
 #include "TrackListBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrack;
 
@@ -60,10 +60,10 @@ private:
 };
 static_assert(sizeof(AudioTrackList) == sizeof(TrackListBase));
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioTrackList)
-    static bool isType(const WebCore::TrackListBase& trackList) { return trackList.type() == WebCore::TrackListBase::AudioTrackList; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioTrackList)
+    static bool isType(const CyberCore::TrackListBase& trackList) { return trackList.type() == CyberCore::TrackListBase::AudioTrackList; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO)

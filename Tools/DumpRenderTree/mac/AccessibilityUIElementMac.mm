@@ -73,7 +73,7 @@
 
 typedef void (*AXPostedNotificationCallback)(id element, NSString* notification, void* context);
 
-@interface NSObject (WebKitAccessibilityAdditions)
+@interface NSObject (CyberKitAccessibilityAdditions)
 - (BOOL)accessibilityReplaceRange:(NSRange)range withText:(NSString *)string;
 - (BOOL)accessibilityInsertText:(NSString *)text;
 - (NSArray *)accessibilityArrayAttributeValues:(NSString *)attribute index:(NSUInteger)index maxCount:(NSUInteger)maxCount;

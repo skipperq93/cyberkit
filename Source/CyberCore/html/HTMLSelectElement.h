@@ -30,7 +30,7 @@
 #include "TypeAhead.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLOptionsCollection;
 

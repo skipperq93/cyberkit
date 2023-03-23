@@ -37,7 +37,7 @@ template<> struct ClientTraits<WKPageInjectedBundleClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -48,4 +48,4 @@ public:
     void didReceiveSynchronousMessageFromInjectedBundle(WebPageProxy*, const String&, API::Object*, CompletionHandler<void(RefPtr<API::Object>)>&&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

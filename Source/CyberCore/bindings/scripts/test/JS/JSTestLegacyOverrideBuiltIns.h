@@ -24,7 +24,7 @@
 #include "TestLegacyOverrideBuiltIns.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestLegacyOverrideBuiltIns : public JSDOMWrapper<TestLegacyOverrideBuiltIns> {
 public:
@@ -95,4 +95,4 @@ template<> struct JSDOMWrapperConverterTraits<TestLegacyOverrideBuiltIns> {
     using ToWrappedReturnType = TestLegacyOverrideBuiltIns*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

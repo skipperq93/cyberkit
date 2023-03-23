@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace WebKit {
+namespace CyberKit {
 
 class WindowServerConnection {
 public:
@@ -45,4 +45,4 @@ private:
     bool m_applicationWindowModificationsHaveStopped;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

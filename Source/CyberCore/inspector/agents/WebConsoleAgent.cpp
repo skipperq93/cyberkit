@@ -41,7 +41,7 @@
 #include <CyberScriptCore/ScriptArguments.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -97,4 +97,4 @@ void WebConsoleAgent::didFailLoading(ResourceLoaderIdentifier requestIdentifier,
     addMessageToConsole(makeUnique<ConsoleMessage>(MessageSource::Network, MessageType::Log, level, WTFMove(message), error.failingURL().string(), 0, 0, nullptr, requestIdentifier.toUInt64()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

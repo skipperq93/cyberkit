@@ -31,7 +31,7 @@
 #include "Gamepad.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GamepadEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(GamepadEvent);
@@ -63,6 +63,6 @@ private:
     RefPtr<Gamepad> m_gamepad;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

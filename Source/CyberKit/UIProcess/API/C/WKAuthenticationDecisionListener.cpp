@@ -31,24 +31,24 @@
 #include "WKAPICast.h"
 #include "WebCredential.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKAuthenticationDecisionListenerGetTypeID()
 {
-    return WebKit::toAPI(AuthenticationDecisionListener::APIType);
+    return CyberKit::toAPI(AuthenticationDecisionListener::APIType);
 }
 
 void WKAuthenticationDecisionListenerUseCredential(WKAuthenticationDecisionListenerRef authenticationListener, WKCredentialRef credential)
 {
-    WebKit::toImpl(authenticationListener)->completeChallenge(AuthenticationChallengeDisposition::UseCredential, credential ? WebKit::toImpl(credential)->credential() : CyberCore::Credential());
+    CyberKit::toImpl(authenticationListener)->completeChallenge(AuthenticationChallengeDisposition::UseCredential, credential ? CyberKit::toImpl(credential)->credential() : CyberCore::Credential());
 }
 
 void WKAuthenticationDecisionListenerCancel(WKAuthenticationDecisionListenerRef authenticationListener)
 {
-    WebKit::toImpl(authenticationListener)->completeChallenge(AuthenticationChallengeDisposition::Cancel);
+    CyberKit::toImpl(authenticationListener)->completeChallenge(AuthenticationChallengeDisposition::Cancel);
 }
 
 void WKAuthenticationDecisionListenerRejectProtectionSpaceAndContinue(WKAuthenticationDecisionListenerRef authenticationListener)
 {
-    WebKit::toImpl(authenticationListener)->completeChallenge(AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+    CyberKit::toImpl(authenticationListener)->completeChallenge(AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
 }

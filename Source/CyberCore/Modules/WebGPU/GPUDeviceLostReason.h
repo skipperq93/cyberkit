@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUDeviceLostReason.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUDeviceLostReason : uint8_t {
     Destroyed,

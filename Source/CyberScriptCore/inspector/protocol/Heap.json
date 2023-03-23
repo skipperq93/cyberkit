@@ -16,7 +16,7 @@
         },
         {
             "id": "HeapSnapshotData",
-            "description": "JavaScriptCore HeapSnapshot JSON data.",
+            "description": "CyberScriptCore HeapSnapshot JSON data.",
             "type": "string"
         }
     ],

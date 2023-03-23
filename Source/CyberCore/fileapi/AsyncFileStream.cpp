@@ -43,7 +43,7 @@
 #include <wtf/Threading.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AsyncFileStream::Internals {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
@@ -77,7 +77,7 @@ static void callOnFileThread(Function<void ()>&& function)
 
     static std::once_flag createFileThreadOnce;
     std::call_once(createFileThreadOnce, [] {
-        Thread::create("WebCore: AsyncFileStream", [] {
+        Thread::create("CyberCore: AsyncFileStream", [] {
             for (;;) {
                 AutodrainedPool pool;
 
@@ -177,4 +177,4 @@ void AsyncFileStream::read(void* buffer, int length)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

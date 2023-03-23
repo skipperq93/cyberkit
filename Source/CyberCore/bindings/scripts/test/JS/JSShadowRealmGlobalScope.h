@@ -23,7 +23,7 @@
 #include "JSDOMWrapper.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ShadowRealmGlobalScope;
 
@@ -86,4 +86,4 @@ template<> struct JSDOMWrapperConverterTraits<ShadowRealmGlobalScope> {
     using ToWrappedReturnType = ShadowRealmGlobalScope*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

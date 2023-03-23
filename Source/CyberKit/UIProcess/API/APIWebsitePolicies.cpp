@@ -74,17 +74,17 @@ Ref<WebsitePolicies> WebsitePolicies::copy() const
 
 WebsitePolicies::~WebsitePolicies() = default;
 
-void WebsitePolicies::setWebsiteDataStore(RefPtr<WebKit::WebsiteDataStore>&& websiteDataStore)
+void WebsitePolicies::setWebsiteDataStore(RefPtr<CyberKit::WebsiteDataStore>&& websiteDataStore)
 {
     m_websiteDataStore = WTFMove(websiteDataStore);
 }
 
-void WebsitePolicies::setUserContentController(RefPtr<WebKit::WebUserContentControllerProxy>&& controller)
+void WebsitePolicies::setUserContentController(RefPtr<CyberKit::WebUserContentControllerProxy>&& controller)
 {
     m_userContentController = WTFMove(controller);
 }
 
-WebKit::WebsitePoliciesData WebsitePolicies::data()
+CyberKit::WebsitePoliciesData WebsitePolicies::data()
 {
     Vector<CyberCore::CustomHeaderFields> customHeaderFields;
     customHeaderFields.reserveInitialCapacity(this->customHeaderFields().size());
@@ -120,7 +120,7 @@ WebKit::WebsitePoliciesData WebsitePolicies::data()
 
 bool WebsitePolicies::lockdownModeEnabled() const
 {
-    return m_lockdownModeEnabled ? *m_lockdownModeEnabled : WebKit::lockdownModeEnabledBySystem();
+    return m_lockdownModeEnabled ? *m_lockdownModeEnabled : CyberKit::lockdownModeEnabledBySystem();
 }
 
 }

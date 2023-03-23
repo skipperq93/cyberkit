@@ -29,7 +29,7 @@
 
 #include "PlatformVideoTransferCharacteristics.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using VideoTransferCharacteristics = PlatformVideoTransferCharacteristics;
 

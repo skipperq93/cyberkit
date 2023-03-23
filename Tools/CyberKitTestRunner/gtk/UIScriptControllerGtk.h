@@ -28,7 +28,7 @@
 #include "PlatformWebView.h"
 #include "TestController.h"
 #include "UIScriptControllerCommon.h"
-#include <WebKit/WKViewPrivate.h>
+#include <CyberKit/WKViewPrivate.h>
 
 namespace WTR {
 

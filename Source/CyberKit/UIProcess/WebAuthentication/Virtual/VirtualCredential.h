@@ -30,7 +30,7 @@
 #include <CyberCore/AuthenticatorTransport.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct VirtualCredential {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
@@ -43,6 +43,6 @@ struct VirtualCredential {
     bool isVerificationRequired;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

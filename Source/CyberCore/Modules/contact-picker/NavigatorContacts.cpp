@@ -30,7 +30,7 @@
 #include "Navigator.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorContacts::NavigatorContacts(Navigator& navigator)
     : m_navigator(navigator)

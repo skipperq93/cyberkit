@@ -31,7 +31,7 @@
 #include <wtf/dtoa.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBKeyPathLexer {
 public:
@@ -231,4 +231,4 @@ String loggingString(const IDBKeyPath& path)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

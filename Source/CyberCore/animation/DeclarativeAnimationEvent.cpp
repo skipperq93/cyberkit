@@ -29,7 +29,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DeclarativeAnimationEvent);
 
@@ -59,4 +59,4 @@ const String& DeclarativeAnimationEvent::pseudoElement()
     return m_pseudoElement;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,13 +29,13 @@
 
 #include "ApplePayRequestBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayRequest : public ApplePayRequestBase {
     unsigned long version;
     String merchantIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) && ENABLE(PAYMENT_REQUEST)

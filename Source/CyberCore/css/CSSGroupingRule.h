@@ -26,7 +26,7 @@
 #include <memory>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRuleList;
 class StyleRuleGroup;
@@ -57,4 +57,4 @@ private:
     mutable std::unique_ptr<CSSRuleList> m_ruleListCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -18,25 +18,25 @@
  */
 
 #include "config.h"
-#include "WebKitEditorState.h"
+#include "CyberKitEditorState.h"
 
 #include "EditorState.h"
-#include "WebKitEditorStatePrivate.h"
+#include "CyberKitEditorStatePrivate.h"
 #include "WebPageProxy.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitEditorState:
- * @See_also: #WebKitWebView
+ * CyberKitEditorState:
+ * @See_also: #CyberKitWebView
  *
  * Web editor state.
  *
- * WebKitEditorState represents the state of a #WebKitWebView editor.
- * Use webkit_web_view_get_editor_state() to get the WebKitEditorState
- * of a #WebKitWebView.
+ * CyberKitEditorState represents the state of a #CyberKitWebView editor.
+ * Use webkit_web_view_get_editor_state() to get the CyberKitEditorState
+ * of a #CyberKitWebView.
  *
  * Since: 2.10
  */
@@ -49,7 +49,7 @@ enum {
 
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
-struct _WebKitEditorStatePrivate {
+struct _CyberKitEditorStatePrivate {
     WebPageProxy* page;
     unsigned typingAttributes;
     unsigned isCutAvailable : 1;
@@ -59,11 +59,11 @@ struct _WebKitEditorStatePrivate {
     unsigned isRedoAvailable : 1;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitEditorState, webkit_editor_state, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitEditorState, webkit_editor_state, G_TYPE_OBJECT, GObject)
 
 static void webkitEditorStateGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitEditorState* editorState = WEBKIT_EDITOR_STATE(object);
+    CyberKitEditorState* editorState = WEBKIT_EDITOR_STATE(object);
 
     switch (propId) {
     case PROP_TYPING_ATTRIBUTES:
@@ -74,15 +74,15 @@ static void webkitEditorStateGetProperty(GObject* object, guint propId, GValue* 
     }
 }
 
-static void webkit_editor_state_class_init(WebKitEditorStateClass* editorStateClass)
+static void webkit_editor_state_class_init(CyberKitEditorStateClass* editorStateClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(editorStateClass);
     objectClass->get_property = webkitEditorStateGetProperty;
 
     /**
-     * WebKitEditorState:typing-attributes:
+     * CyberKitEditorState:typing-attributes:
      *
-     * Bitmask of #WebKitEditorTypingAttributes flags.
+     * Bitmask of #CyberKitEditorTypingAttributes flags.
      * See webkit_editor_state_get_typing_attributes() for more information.
      *
      * Since: 2.10
@@ -98,7 +98,7 @@ static void webkit_editor_state_class_init(WebKitEditorStateClass* editorStateCl
     g_object_class_install_properties(objectClass, N_PROPERTIES, sObjProperties);
 }
 
-static void webkitEditorStateSetTypingAttributes(WebKitEditorState* editorState, unsigned typingAttributes)
+static void webkitEditorStateSetTypingAttributes(CyberKitEditorState* editorState, unsigned typingAttributes)
 {
     if (typingAttributes == editorState->priv->typingAttributes)
         return;
@@ -107,16 +107,16 @@ static void webkitEditorStateSetTypingAttributes(WebKitEditorState* editorState,
     g_object_notify_by_pspec(G_OBJECT(editorState), sObjProperties[PROP_TYPING_ATTRIBUTES]);
 }
 
-WebKitEditorState* webkitEditorStateCreate(WebPageProxy& page)
+CyberKitEditorState* webkitEditorStateCreate(WebPageProxy& page)
 {
-    WebKitEditorState* editorState = WEBKIT_EDITOR_STATE(g_object_new(WEBKIT_TYPE_EDITOR_STATE, nullptr));
+    CyberKitEditorState* editorState = WEBKIT_EDITOR_STATE(g_object_new(WEBKIT_TYPE_EDITOR_STATE, nullptr));
     editorState->priv->page = &page;
     editorState->priv->typingAttributes = WEBKIT_EDITOR_TYPING_ATTRIBUTE_NONE;
     webkitEditorStateChanged(editorState, page.editorState());
     return editorState;
 }
 
-void webkitEditorStateChanged(WebKitEditorState* editorState, const EditorState& newState)
+void webkitEditorStateChanged(CyberKitEditorState* editorState, const EditorState& newState)
 {
     if (!newState.hasPostLayoutData())
         return;
@@ -144,7 +144,7 @@ void webkitEditorStateChanged(WebKitEditorState* editorState, const EditorState&
 
 /**
  * webkit_editor_state_get_typing_attributes:
- * @editor_state: a #WebKitEditorState
+ * @editor_state: a #CyberKitEditorState
  *
  * Gets the typing attributes at the current cursor position.
  *
@@ -153,11 +153,11 @@ void webkitEditorStateChanged(WebKitEditorState* editorState, const EditorState&
  * typing attributes are considered active only when they are
  * present throughout the selection.
  *
- * Returns: a bitmask of #WebKitEditorTypingAttributes flags
+ * Returns: a bitmask of #CyberKitEditorTypingAttributes flags
  *
  * Since: 2.10
  */
-guint webkit_editor_state_get_typing_attributes(WebKitEditorState* editorState)
+guint webkit_editor_state_get_typing_attributes(CyberKitEditorState* editorState)
 {
     g_return_val_if_fail(WEBKIT_IS_EDITOR_STATE(editorState), WEBKIT_EDITOR_TYPING_ATTRIBUTE_NONE);
 
@@ -166,7 +166,7 @@ guint webkit_editor_state_get_typing_attributes(WebKitEditorState* editorState)
 
 /**
  * webkit_editor_state_is_cut_available:
- * @editor_state: a #WebKitEditorState
+ * @editor_state: a #CyberKitEditorState
  *
  * Gets whether a cut command can be issued.
  *
@@ -174,7 +174,7 @@ guint webkit_editor_state_get_typing_attributes(WebKitEditorState* editorState)
  *
  * Since: 2.20
  */
-gboolean webkit_editor_state_is_cut_available(WebKitEditorState* editorState)
+gboolean webkit_editor_state_is_cut_available(CyberKitEditorState* editorState)
 {
     g_return_val_if_fail(WEBKIT_IS_EDITOR_STATE(editorState), FALSE);
 
@@ -183,7 +183,7 @@ gboolean webkit_editor_state_is_cut_available(WebKitEditorState* editorState)
 
 /**
  * webkit_editor_state_is_copy_available:
- * @editor_state: a #WebKitEditorState
+ * @editor_state: a #CyberKitEditorState
  *
  * Gets whether a copy command can be issued.
  *
@@ -191,7 +191,7 @@ gboolean webkit_editor_state_is_cut_available(WebKitEditorState* editorState)
  *
  * Since: 2.20
  */
-gboolean webkit_editor_state_is_copy_available(WebKitEditorState* editorState)
+gboolean webkit_editor_state_is_copy_available(CyberKitEditorState* editorState)
 {
     g_return_val_if_fail(WEBKIT_IS_EDITOR_STATE(editorState), FALSE);
 
@@ -200,7 +200,7 @@ gboolean webkit_editor_state_is_copy_available(WebKitEditorState* editorState)
 
 /**
  * webkit_editor_state_is_paste_available:
- * @editor_state: a #WebKitEditorState
+ * @editor_state: a #CyberKitEditorState
  *
  * Gets whether a paste command can be issued.
  *
@@ -208,7 +208,7 @@ gboolean webkit_editor_state_is_copy_available(WebKitEditorState* editorState)
  *
  * Since: 2.20
  */
-gboolean webkit_editor_state_is_paste_available(WebKitEditorState* editorState)
+gboolean webkit_editor_state_is_paste_available(CyberKitEditorState* editorState)
 {
     g_return_val_if_fail(WEBKIT_IS_EDITOR_STATE(editorState), FALSE);
 
@@ -217,7 +217,7 @@ gboolean webkit_editor_state_is_paste_available(WebKitEditorState* editorState)
 
 /**
  * webkit_editor_state_is_undo_available:
- * @editor_state: a #WebKitEditorState
+ * @editor_state: a #CyberKitEditorState
  *
  * Gets whether an undo command can be issued.
  *
@@ -225,7 +225,7 @@ gboolean webkit_editor_state_is_paste_available(WebKitEditorState* editorState)
  *
  * Since: 2.20
  */
-gboolean webkit_editor_state_is_undo_available(WebKitEditorState* editorState)
+gboolean webkit_editor_state_is_undo_available(CyberKitEditorState* editorState)
 {
     g_return_val_if_fail(WEBKIT_IS_EDITOR_STATE(editorState), FALSE);
 
@@ -234,7 +234,7 @@ gboolean webkit_editor_state_is_undo_available(WebKitEditorState* editorState)
 
 /**
  * webkit_editor_state_is_redo_available:
- * @editor_state: a #WebKitEditorState
+ * @editor_state: a #CyberKitEditorState
  *
  * Gets whether a redo command can be issued.
  *
@@ -242,7 +242,7 @@ gboolean webkit_editor_state_is_undo_available(WebKitEditorState* editorState)
  *
  * Since: 2.20
  */
-gboolean webkit_editor_state_is_redo_available(WebKitEditorState* editorState)
+gboolean webkit_editor_state_is_redo_available(CyberKitEditorState* editorState)
 {
     g_return_val_if_fail(WEBKIT_IS_EDITOR_STATE(editorState), FALSE);
 

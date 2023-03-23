@@ -34,7 +34,7 @@
 #include "ApplePayRecurringPaymentRequest.h"
 #include "ApplePayShippingMethod.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayModifier {
     std::optional<ApplePayPaymentMethodType> paymentMethodType;
@@ -57,6 +57,6 @@ struct ApplePayModifier {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) && ENABLE(PAYMENT_REQUEST)

@@ -30,8 +30,8 @@
 #include "ImageOrientation.h"
 #include "PixelBuffer.h"
 #include "VideoPixelFormat.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 
 #if USE(CAIRO)
 #include <cairo.h>

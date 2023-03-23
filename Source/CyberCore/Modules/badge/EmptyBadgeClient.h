@@ -27,7 +27,7 @@
 
 #include "BadgeClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EmptyBadgeClient final : public BadgeClient {
 public:
@@ -40,4 +40,4 @@ private:
     void setClientBadge(Page&, const SecurityOriginData&, std::optional<uint64_t>) final { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

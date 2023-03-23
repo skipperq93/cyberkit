@@ -82,10 +82,10 @@
 @end
 #else
 SOFT_LINK_PRIVATE_FRAMEWORK(CyberKitLegacy)
-SOFT_LINK(CyberKitLegacy, _WebCreateFragment, void, (WebCore::Document& document, NSAttributedString *string, WebCore::FragmentAndResources& result), (document, string, result))
+SOFT_LINK(CyberKitLegacy, _WebCreateFragment, void, (CyberCore::Document& document, NSAttributedString *string, CyberCore::FragmentAndResources& result), (document, string, result))
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MACCATALYST)
 

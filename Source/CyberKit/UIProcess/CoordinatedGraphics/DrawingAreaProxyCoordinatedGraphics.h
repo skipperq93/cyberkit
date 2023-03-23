@@ -36,7 +36,7 @@ namespace CyberCore {
 class Region;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaProxyCoordinatedGraphics final : public DrawingAreaProxy {
 public:
@@ -143,4 +143,4 @@ private:
     std::unique_ptr<DrawingMonitor> m_drawingMonitor;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

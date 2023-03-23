@@ -34,7 +34,7 @@
 #import <signal.h>
 #import <wtf/ProcessPrivilege.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool WebProcessProxy::fullKeyboardAccessEnabled()
 {
@@ -43,12 +43,12 @@ bool WebProcessProxy::fullKeyboardAccessEnabled()
 
 bool WebProcessProxy::shouldAllowNonValidInjectedCode() const
 {
-    static bool isSystemWebKit = [] {
+    static bool isSystemCyberKit = [] {
         NSBundle *webkit2Bundle = [NSBundle bundleForClass:NSClassFromString(@"WKWebView")];
         return [webkit2Bundle.bundlePath hasPrefix:@"/System/"];
     }();
 
-    if (!isSystemWebKit)
+    if (!isSystemCyberKit)
         return false;
 
     static bool isPlatformBinary = currentProcessIsPlatformBinary();
@@ -95,6 +95,6 @@ void WebProcessProxy::platformResumeProcess()
     // FIXME: Adopt RunningBoard on macOS to support process suspension.
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

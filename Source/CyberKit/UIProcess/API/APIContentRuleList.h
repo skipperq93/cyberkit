@@ -29,7 +29,7 @@
 #include "NetworkCacheData.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebCompiledContentRuleList;
 }
 
@@ -38,23 +38,23 @@ namespace API {
 class ContentRuleList final : public ObjectImpl<Object::Type::ContentRuleList> {
 public:
 #if ENABLE(CONTENT_EXTENSIONS)
-    static Ref<ContentRuleList> create(Ref<WebKit::WebCompiledContentRuleList>&& contentRuleList, WebKit::NetworkCache::Data&& mappedFile)
+    static Ref<ContentRuleList> create(Ref<CyberKit::WebCompiledContentRuleList>&& contentRuleList, CyberKit::NetworkCache::Data&& mappedFile)
     {
         return adoptRef(*new ContentRuleList(WTFMove(contentRuleList), WTFMove(mappedFile)));
     }
 
-    ContentRuleList(Ref<WebKit::WebCompiledContentRuleList>&&, WebKit::NetworkCache::Data&&);
+    ContentRuleList(Ref<CyberKit::WebCompiledContentRuleList>&&, CyberKit::NetworkCache::Data&&);
     virtual ~ContentRuleList();
 
     const WTF::String& name() const;
-    const WebKit::WebCompiledContentRuleList& compiledRuleList() const { return m_compiledRuleList.get(); }
+    const CyberKit::WebCompiledContentRuleList& compiledRuleList() const { return m_compiledRuleList.get(); }
     
     static bool supportsRegularExpression(const WTF::String&);
     static std::error_code parseRuleList(const WTF::String&);
 
 private:
-    Ref<WebKit::WebCompiledContentRuleList> m_compiledRuleList;
-    WebKit::NetworkCache::Data m_mappedFile;
+    Ref<CyberKit::WebCompiledContentRuleList> m_compiledRuleList;
+    CyberKit::NetworkCache::Data m_mappedFile;
 #endif // ENABLE(CONTENT_EXTENSIONS)
 };
 

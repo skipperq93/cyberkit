@@ -18,17 +18,17 @@
  */
 
 #include "config.h"
-#include "WebKitApplicationInfo.h"
+#include "CyberKitApplicationInfo.h"
 
 #include <wtf/text/CString.h>
 
 /**
- * WebKitApplicationInfo: (ref-func webkit_application_info_ref) (unref-func webkit_application_info_unref)
+ * CyberKitApplicationInfo: (ref-func webkit_application_info_ref) (unref-func webkit_application_info_unref)
  *
  * Information about an application running in automation mode.
  */
 
-struct _WebKitApplicationInfo {
+struct _CyberKitApplicationInfo {
     CString name;
     uint64_t majorVersion;
     uint64_t minorVersion;
@@ -37,38 +37,38 @@ struct _WebKitApplicationInfo {
     int referenceCount { 1 };
 };
 
-G_DEFINE_BOXED_TYPE(WebKitApplicationInfo, webkit_application_info, webkit_application_info_ref, webkit_application_info_unref)
+G_DEFINE_BOXED_TYPE(CyberKitApplicationInfo, webkit_application_info, webkit_application_info_ref, webkit_application_info_unref)
 
 /**
  * webkit_application_info_new: (constructor)
  *
- * Creates a new #WebKitApplicationInfo
+ * Creates a new #CyberKitApplicationInfo
  *
- * Returns: (transfer full): the newly created #WebKitApplicationInfo.
+ * Returns: (transfer full): the newly created #CyberKitApplicationInfo.
  *
  * since: 2.18
  */
-WebKitApplicationInfo* webkit_application_info_new()
+CyberKitApplicationInfo* webkit_application_info_new()
 {
-    WebKitApplicationInfo* info = static_cast<WebKitApplicationInfo*>(fastMalloc(sizeof(WebKitApplicationInfo)));
-    new (info) WebKitApplicationInfo();
+    CyberKitApplicationInfo* info = static_cast<CyberKitApplicationInfo*>(fastMalloc(sizeof(CyberKitApplicationInfo)));
+    new (info) CyberKitApplicationInfo();
     return info;
 }
 
 /**
  * webkit_application_info_ref:
- * @info: a #WebKitApplicationInfo
+ * @info: a #CyberKitApplicationInfo
  *
  * Atomically increments the reference count of @info by one.
  *
  * This
  * function is MT-safe and may be called from any thread.
  *
- * Returns: The passed in #WebKitApplicationInfo
+ * Returns: The passed in #CyberKitApplicationInfo
  *
  * Since: 2.18
  */
-WebKitApplicationInfo* webkit_application_info_ref(WebKitApplicationInfo* info)
+CyberKitApplicationInfo* webkit_application_info_ref(CyberKitApplicationInfo* info)
 {
     g_atomic_int_inc(&info->referenceCount);
     return info;
@@ -76,28 +76,28 @@ WebKitApplicationInfo* webkit_application_info_ref(WebKitApplicationInfo* info)
 
 /**
  * webkit_application_info_unref:
- * @info: a #WebKitApplicationInfo
+ * @info: a #CyberKitApplicationInfo
  *
  * Atomically decrements the reference count of @info by one.
  *
  * If the
- * reference count drops to 0, all memory allocated by the #WebKitApplicationInfo is
+ * reference count drops to 0, all memory allocated by the #CyberKitApplicationInfo is
  * released. This function is MT-safe and may be called from any
  * thread.
  *
  * Since: 2.18
  */
-void webkit_application_info_unref(WebKitApplicationInfo* info)
+void webkit_application_info_unref(CyberKitApplicationInfo* info)
 {
     if (g_atomic_int_dec_and_test(&info->referenceCount)) {
-        info->~WebKitApplicationInfo();
+        info->~CyberKitApplicationInfo();
         fastFree(info);
     }
 }
 
 /**
  * webkit_application_info_set_name:
- * @info: a #WebKitApplicationInfo
+ * @info: a #CyberKitApplicationInfo
  * @name: the application name
  *
  * Set the name of the application.
@@ -107,7 +107,7 @@ void webkit_application_info_unref(WebKitApplicationInfo* info)
  *
  * Since: 2.18
  */
-void webkit_application_info_set_name(WebKitApplicationInfo* info, const char* name)
+void webkit_application_info_set_name(CyberKitApplicationInfo* info, const char* name)
 {
     g_return_if_fail(info);
 
@@ -116,7 +116,7 @@ void webkit_application_info_set_name(WebKitApplicationInfo* info, const char* n
 
 /**
  * webkit_application_info_get_name:
- * @info: a #WebKitApplicationInfo
+ * @info: a #CyberKitApplicationInfo
  *
  * Get the name of the application.
  *
@@ -127,7 +127,7 @@ void webkit_application_info_set_name(WebKitApplicationInfo* info, const char* n
  *
  * Since: 2.18
  */
-const char* webkit_application_info_get_name(WebKitApplicationInfo* info)
+const char* webkit_application_info_get_name(CyberKitApplicationInfo* info)
 {
     g_return_val_if_fail(info, nullptr);
 
@@ -139,7 +139,7 @@ const char* webkit_application_info_get_name(WebKitApplicationInfo* info)
 
 /**
  * webkit_application_info_set_version:
- * @info: a #WebKitApplicationInfo
+ * @info: a #CyberKitApplicationInfo
  * @major: the major version number
  * @minor: the minor version number
  * @micro: the micro version number
@@ -153,7 +153,7 @@ const char* webkit_application_info_get_name(WebKitApplicationInfo* info)
  *
  * Since: 2.18
  */
-void webkit_application_info_set_version(WebKitApplicationInfo* info, guint64 major, guint64 minor, guint64 micro)
+void webkit_application_info_set_version(CyberKitApplicationInfo* info, guint64 major, guint64 minor, guint64 micro)
 {
     g_return_if_fail(info);
 
@@ -164,7 +164,7 @@ void webkit_application_info_set_version(WebKitApplicationInfo* info, guint64 ma
 
 /**
  * webkit_application_info_get_version:
- * @info: a #WebKitApplicationInfo
+ * @info: a #CyberKitApplicationInfo
  * @major: (out): return location for the major version number
  * @minor: (out) (allow-none): return location for the minor version number
  * @micro: (out) (allow-none): return location for the micro version number
@@ -173,7 +173,7 @@ void webkit_application_info_set_version(WebKitApplicationInfo* info, guint64 ma
  *
  * Since: 2.18
  */
-void webkit_application_info_get_version(WebKitApplicationInfo* info, guint64* major, guint64* minor, guint64* micro)
+void webkit_application_info_get_version(CyberKitApplicationInfo* info, guint64* major, guint64* minor, guint64* micro)
 {
     g_return_if_fail(info && major);
 

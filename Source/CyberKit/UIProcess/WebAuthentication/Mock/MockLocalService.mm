@@ -32,12 +32,12 @@
 #import <wtf/RunLoop.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/MockLocalServiceAdditions.h>
+#import <CyberKitAdditions/MockLocalServiceAdditions.h>
 #else
 #define MOCK_LOCAL_SERVICE_ADDITIONS
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 MockLocalService::MockLocalService(Observer& observer, const CyberCore::MockWebAuthenticationConfiguration& configuration)
     : LocalService(observer)
@@ -56,6 +56,6 @@ UniqueRef<LocalConnection> MockLocalService::createLocalConnection() const
     return makeUniqueRef<MockLocalConnection>(m_configuration);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

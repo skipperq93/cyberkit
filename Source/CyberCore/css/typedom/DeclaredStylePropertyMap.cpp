@@ -36,7 +36,7 @@
 #include "StylePropertiesInlines.h"
 #include "StyleRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DeclaredStylePropertyMap> DeclaredStylePropertyMap::create(CSSStyleRule& ownerRule)
 {
@@ -168,4 +168,4 @@ void DeclaredStylePropertyMap::clear()
     styleRule->mutableProperties().clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

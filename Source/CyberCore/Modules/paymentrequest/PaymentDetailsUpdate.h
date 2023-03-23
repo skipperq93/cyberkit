@@ -33,7 +33,7 @@
 #include "PaymentItem.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentDetailsUpdate final : PaymentDetailsBase {
     String error;
@@ -43,6 +43,6 @@ struct PaymentDetailsUpdate final : PaymentDetailsBase {
     JSC::Strong<JSC::JSObject> paymentMethodErrors;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

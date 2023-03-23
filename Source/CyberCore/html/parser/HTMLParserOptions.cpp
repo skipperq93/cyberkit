@@ -34,7 +34,7 @@
 #include "Settings.h"
 #include "SubframeLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 HTMLParserOptions::HTMLParserOptions()
     : scriptingFlag(false)

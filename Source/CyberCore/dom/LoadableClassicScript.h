@@ -33,7 +33,7 @@
 #include "ReferrerPolicy.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WeakPtrImplWithEventTargetData;
 
@@ -85,6 +85,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::LoadableClassicScript)
-    static bool isType(const WebCore::LoadableScript& script) { return script.isClassicScript(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::LoadableClassicScript)
+    static bool isType(const CyberCore::LoadableScript& script) { return script.isClassicScript(); }
 SPECIALIZE_TYPE_TRAITS_END()

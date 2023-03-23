@@ -131,12 +131,12 @@ if __name__ == "__main__":
     scm = SCMDetector(filesystem, Executive()).detect_scm_system(cwd)
 
     if scm is None:
-        _log.error("WebKit checkout not found: You must run this script "
-                   "from within a WebKit checkout.")
+        _log.error("CyberKit checkout not found: You must run this script "
+                   "from within a CyberKit checkout.")
         sys.exit(1)
 
     checkout_root = scm.checkout_root
-    _log.debug("WebKit checkout found with root: %s" % checkout_root)
+    _log.debug("CyberKit checkout found with root: %s" % checkout_root)
     change_directory(filesystem, checkout_root=checkout_root, paths=None)
 
     strings_extractor = StringsExtractor([r"(WI\.UIString\(.*)", r"\"((?:[^\"\\]|\\.)*?)\""])

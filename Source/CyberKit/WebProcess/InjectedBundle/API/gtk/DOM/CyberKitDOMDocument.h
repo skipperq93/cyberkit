@@ -56,7 +56,7 @@ webkit_dom_document_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_create_element(CyberKitDOMDocument* self, const gchar* tagName, GError** error);
@@ -67,7 +67,7 @@ webkit_dom_document_create_element(CyberKitDOMDocument* self, const gchar* tagNa
  *
  * Returns: (transfer none): A #CyberKitDOMDocumentFragment
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDocumentFragment*
 webkit_dom_document_create_document_fragment(CyberKitDOMDocument* self);
@@ -79,7 +79,7 @@ webkit_dom_document_create_document_fragment(CyberKitDOMDocument* self);
  *
  * Returns: (transfer none): A #CyberKitDOMText
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMText*
 webkit_dom_document_create_text_node(CyberKitDOMDocument* self, const gchar* data);
@@ -91,7 +91,7 @@ webkit_dom_document_create_text_node(CyberKitDOMDocument* self, const gchar* dat
  *
  * Returns: (transfer none): A #CyberKitDOMComment
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMComment*
 webkit_dom_document_create_comment(CyberKitDOMDocument* self, const gchar* data);
@@ -104,7 +104,7 @@ webkit_dom_document_create_comment(CyberKitDOMDocument* self, const gchar* data)
  *
  * Returns: (transfer none): A #CyberKitDOMCDATASection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCDATASection*
 webkit_dom_document_create_cdata_section(CyberKitDOMDocument* self, const gchar* data, GError** error);
@@ -118,7 +118,7 @@ webkit_dom_document_create_cdata_section(CyberKitDOMDocument* self, const gchar*
  *
  * Returns: (transfer none): A #CyberKitDOMProcessingInstruction
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMProcessingInstruction*
 webkit_dom_document_create_processing_instruction(CyberKitDOMDocument* self, const gchar* target, const gchar* data, GError** error);
@@ -131,7 +131,7 @@ webkit_dom_document_create_processing_instruction(CyberKitDOMDocument* self, con
  *
  * Returns: (transfer none): A #CyberKitDOMAttr
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMAttr*
 webkit_dom_document_create_attribute(CyberKitDOMDocument* self, const gchar* name, GError** error);
@@ -145,7 +145,7 @@ webkit_dom_document_create_attribute(CyberKitDOMDocument* self, const gchar* nam
  *
  * Since: 2.12
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_elements_by_tag_name_as_html_collection(CyberKitDOMDocument* self, const gchar* tagname);
@@ -159,7 +159,7 @@ webkit_dom_document_get_elements_by_tag_name_as_html_collection(CyberKitDOMDocum
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_document_import_node(CyberKitDOMDocument* self, CyberKitDOMNode* importedNode, gboolean deep, GError** error);
@@ -173,7 +173,7 @@ webkit_dom_document_import_node(CyberKitDOMDocument* self, CyberKitDOMNode* impo
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_create_element_ns(CyberKitDOMDocument* self, const gchar* namespaceURI, const gchar* qualifiedName, GError** error);
@@ -187,7 +187,7 @@ webkit_dom_document_create_element_ns(CyberKitDOMDocument* self, const gchar* na
  *
  * Returns: (transfer none): A #CyberKitDOMAttr
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMAttr*
 webkit_dom_document_create_attribute_ns(CyberKitDOMDocument* self, const gchar* namespaceURI, const gchar* qualifiedName, GError** error);
@@ -202,7 +202,7 @@ webkit_dom_document_create_attribute_ns(CyberKitDOMDocument* self, const gchar* 
  *
  * Since: 2.12
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_elements_by_tag_name_ns_as_html_collection(CyberKitDOMDocument* self, const gchar* namespaceURI, const gchar* localName);
@@ -215,7 +215,7 @@ webkit_dom_document_get_elements_by_tag_name_ns_as_html_collection(CyberKitDOMDo
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_document_adopt_node(CyberKitDOMDocument* self, CyberKitDOMNode* source, GError** error);
@@ -228,7 +228,7 @@ webkit_dom_document_adopt_node(CyberKitDOMDocument* self, CyberKitDOMNode* sourc
  *
  * Returns: (transfer full): A #CyberKitDOMEvent
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMEvent*
 webkit_dom_document_create_event(CyberKitDOMDocument* self, const gchar* eventType, GError** error);
@@ -239,7 +239,7 @@ webkit_dom_document_create_event(CyberKitDOMDocument* self, const gchar* eventTy
  *
  * Returns: (transfer full): A #CyberKitDOMRange
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMRange*
 webkit_dom_document_create_range(CyberKitDOMDocument* self);
@@ -255,7 +255,7 @@ webkit_dom_document_create_range(CyberKitDOMDocument* self);
  *
  * Returns: (transfer full): A #CyberKitDOMNodeIterator
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNodeIterator*
 webkit_dom_document_create_node_iterator(CyberKitDOMDocument* self, CyberKitDOMNode* root, gulong whatToShow, CyberKitDOMNodeFilter* filter, gboolean expandEntityReferences, GError** error);
@@ -271,7 +271,7 @@ webkit_dom_document_create_node_iterator(CyberKitDOMDocument* self, CyberKitDOMN
  *
  * Returns: (transfer full): A #CyberKitDOMTreeWalker
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMTreeWalker*
 webkit_dom_document_create_tree_walker(CyberKitDOMDocument* self, CyberKitDOMNode* root, gulong whatToShow, CyberKitDOMNodeFilter* filter, gboolean expandEntityReferences, GError** error);
@@ -284,7 +284,7 @@ webkit_dom_document_create_tree_walker(CyberKitDOMDocument* self, CyberKitDOMNod
  *
  * Returns: (transfer full): A #CyberKitDOMCSSStyleDeclaration
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSStyleDeclaration*
 webkit_dom_document_get_override_style(CyberKitDOMDocument* self, CyberKitDOMElement* element, const gchar* pseudoElement);
@@ -298,7 +298,7 @@ webkit_dom_document_get_override_style(CyberKitDOMDocument* self, CyberKitDOMEle
  *
  * Returns: (transfer full): A #CyberKitDOMXPathExpression
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMXPathExpression*
 webkit_dom_document_create_expression(CyberKitDOMDocument* self, const gchar* expression, CyberKitDOMXPathNSResolver* resolver, GError** error);
@@ -310,7 +310,7 @@ webkit_dom_document_create_expression(CyberKitDOMDocument* self, const gchar* ex
  *
  * Returns: (transfer full): A #CyberKitDOMXPathNSResolver
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMXPathNSResolver*
 webkit_dom_document_create_ns_resolver(CyberKitDOMDocument* self, CyberKitDOMNode* nodeResolver);
@@ -327,7 +327,7 @@ webkit_dom_document_create_ns_resolver(CyberKitDOMDocument* self, CyberKitDOMNod
  *
  * Returns: (transfer full): A #CyberKitDOMXPathResult
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMXPathResult*
 webkit_dom_document_evaluate(CyberKitDOMDocument* self, const gchar* expression, CyberKitDOMNode* contextNode, CyberKitDOMXPathNSResolver* resolver, gushort type, CyberKitDOMXPathResult* inResult, GError** error);
@@ -341,7 +341,7 @@ webkit_dom_document_evaluate(CyberKitDOMDocument* self, const gchar* expression,
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_exec_command(CyberKitDOMDocument* self, const gchar* command, gboolean userInterface, const gchar* value);
@@ -353,7 +353,7 @@ webkit_dom_document_exec_command(CyberKitDOMDocument* self, const gchar* command
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_query_command_enabled(CyberKitDOMDocument* self, const gchar* command);
@@ -365,7 +365,7 @@ webkit_dom_document_query_command_enabled(CyberKitDOMDocument* self, const gchar
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_query_command_indeterm(CyberKitDOMDocument* self, const gchar* command);
@@ -377,7 +377,7 @@ webkit_dom_document_query_command_indeterm(CyberKitDOMDocument* self, const gcha
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_query_command_state(CyberKitDOMDocument* self, const gchar* command);
@@ -389,7 +389,7 @@ webkit_dom_document_query_command_state(CyberKitDOMDocument* self, const gchar* 
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_query_command_supported(CyberKitDOMDocument* self, const gchar* command);
@@ -401,7 +401,7 @@ webkit_dom_document_query_command_supported(CyberKitDOMDocument* self, const gch
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_query_command_value(CyberKitDOMDocument* self, const gchar* command);
@@ -413,7 +413,7 @@ webkit_dom_document_query_command_value(CyberKitDOMDocument* self, const gchar* 
  *
  * Returns: (transfer full): A #CyberKitDOMNodeList
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNodeList*
 webkit_dom_document_get_elements_by_name(CyberKitDOMDocument* self, const gchar* elementName);
@@ -426,7 +426,7 @@ webkit_dom_document_get_elements_by_name(CyberKitDOMDocument* self, const gchar*
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_element_from_point(CyberKitDOMDocument* self, glong x, glong y);
@@ -437,7 +437,7 @@ webkit_dom_document_element_from_point(CyberKitDOMDocument* self, glong x, glong
  *
  * Returns: (transfer full): A #CyberKitDOMCSSStyleDeclaration
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSStyleDeclaration*
 webkit_dom_document_create_css_style_declaration(CyberKitDOMDocument* self);
@@ -451,7 +451,7 @@ webkit_dom_document_create_css_style_declaration(CyberKitDOMDocument* self);
  *
  * Since: 2.12
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_elements_by_class_name_as_html_collection(CyberKitDOMDocument* self, const gchar* classNames);
@@ -462,7 +462,7 @@ webkit_dom_document_get_elements_by_class_name_as_html_collection(CyberKitDOMDoc
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_has_focus(CyberKitDOMDocument* self);
@@ -474,7 +474,7 @@ webkit_dom_document_has_focus(CyberKitDOMDocument* self);
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_element_by_id(CyberKitDOMDocument* self, const gchar* elementId);
@@ -487,7 +487,7 @@ webkit_dom_document_get_element_by_id(CyberKitDOMDocument* self, const gchar* el
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_query_selector(CyberKitDOMDocument* self, const gchar* selectors, GError** error);
@@ -500,7 +500,7 @@ webkit_dom_document_query_selector(CyberKitDOMDocument* self, const gchar* selec
  *
  * Returns: (transfer full): A #CyberKitDOMNodeList
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNodeList*
 webkit_dom_document_query_selector_all(CyberKitDOMDocument* self, const gchar* selectors, GError** error);
@@ -511,7 +511,7 @@ webkit_dom_document_query_selector_all(CyberKitDOMDocument* self, const gchar* s
  *
  * Returns: (transfer none): A #CyberKitDOMDocumentType
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDocumentType*
 webkit_dom_document_get_doctype(CyberKitDOMDocument* self);
@@ -522,7 +522,7 @@ webkit_dom_document_get_doctype(CyberKitDOMDocument* self);
  *
  * Returns: (transfer full): A #CyberKitDOMDOMImplementation
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDOMImplementation*
 webkit_dom_document_get_implementation(CyberKitDOMDocument* self);
@@ -533,7 +533,7 @@ webkit_dom_document_get_implementation(CyberKitDOMDocument* self);
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_document_element(CyberKitDOMDocument* self);
@@ -544,7 +544,7 @@ webkit_dom_document_get_document_element(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_input_encoding(CyberKitDOMDocument* self);
@@ -555,7 +555,7 @@ webkit_dom_document_get_input_encoding(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_xml_encoding(CyberKitDOMDocument* self);
@@ -566,7 +566,7 @@ webkit_dom_document_get_xml_encoding(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_xml_version(CyberKitDOMDocument* self);
@@ -578,7 +578,7 @@ webkit_dom_document_get_xml_version(CyberKitDOMDocument* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_xml_version(CyberKitDOMDocument* self, const gchar* value, GError** error);
@@ -589,7 +589,7 @@ webkit_dom_document_set_xml_version(CyberKitDOMDocument* self, const gchar* valu
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_get_xml_standalone(CyberKitDOMDocument* self);
@@ -601,7 +601,7 @@ webkit_dom_document_get_xml_standalone(CyberKitDOMDocument* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_xml_standalone(CyberKitDOMDocument* self, gboolean value, GError** error);
@@ -612,7 +612,7 @@ webkit_dom_document_set_xml_standalone(CyberKitDOMDocument* self, gboolean value
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_document_uri(CyberKitDOMDocument* self);
@@ -623,7 +623,7 @@ webkit_dom_document_get_document_uri(CyberKitDOMDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_document_uri(CyberKitDOMDocument* self, const gchar* value);
@@ -634,7 +634,7 @@ webkit_dom_document_set_document_uri(CyberKitDOMDocument* self, const gchar* val
  *
  * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_document_get_default_view(CyberKitDOMDocument* self);
@@ -645,7 +645,7 @@ webkit_dom_document_get_default_view(CyberKitDOMDocument* self);
  *
  * Returns: (transfer none): A #CyberKitDOMStyleSheetList
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMStyleSheetList*
 webkit_dom_document_get_style_sheets(CyberKitDOMDocument* self);
@@ -656,7 +656,7 @@ webkit_dom_document_get_style_sheets(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_title(CyberKitDOMDocument* self);
@@ -667,7 +667,7 @@ webkit_dom_document_get_title(CyberKitDOMDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_title(CyberKitDOMDocument* self, const gchar* value);
@@ -680,7 +680,7 @@ webkit_dom_document_set_title(CyberKitDOMDocument* self, const gchar* value);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_design_mode(CyberKitDOMDocument* self);
@@ -692,7 +692,7 @@ webkit_dom_document_get_design_mode(CyberKitDOMDocument* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_design_mode(CyberKitDOMDocument* self, const gchar* value);
@@ -703,7 +703,7 @@ webkit_dom_document_set_design_mode(CyberKitDOMDocument* self, const gchar* valu
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_referrer(CyberKitDOMDocument* self);
@@ -714,7 +714,7 @@ webkit_dom_document_get_referrer(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_domain(CyberKitDOMDocument* self);
@@ -725,7 +725,7 @@ webkit_dom_document_get_domain(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_url(CyberKitDOMDocument* self);
@@ -737,7 +737,7 @@ webkit_dom_document_get_url(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_cookie(CyberKitDOMDocument* self, GError** error);
@@ -749,7 +749,7 @@ webkit_dom_document_get_cookie(CyberKitDOMDocument* self, GError** error);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_cookie(CyberKitDOMDocument* self, const gchar* value, GError** error);
@@ -760,7 +760,7 @@ webkit_dom_document_set_cookie(CyberKitDOMDocument* self, const gchar* value, GE
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
 webkit_dom_document_get_body(CyberKitDOMDocument* self);
@@ -772,7 +772,7 @@ webkit_dom_document_get_body(CyberKitDOMDocument* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_body(CyberKitDOMDocument* self, CyberKitDOMHTMLElement* value, GError** error);
@@ -783,7 +783,7 @@ webkit_dom_document_set_body(CyberKitDOMDocument* self, CyberKitDOMHTMLElement* 
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLHeadElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLHeadElement*
 webkit_dom_document_get_head(CyberKitDOMDocument* self);
@@ -794,7 +794,7 @@ webkit_dom_document_get_head(CyberKitDOMDocument* self);
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_images(CyberKitDOMDocument* self);
@@ -805,7 +805,7 @@ webkit_dom_document_get_images(CyberKitDOMDocument* self);
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_applets(CyberKitDOMDocument* self);
@@ -816,7 +816,7 @@ webkit_dom_document_get_applets(CyberKitDOMDocument* self);
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_links(CyberKitDOMDocument* self);
@@ -827,7 +827,7 @@ webkit_dom_document_get_links(CyberKitDOMDocument* self);
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_forms(CyberKitDOMDocument* self);
@@ -838,7 +838,7 @@ webkit_dom_document_get_forms(CyberKitDOMDocument* self);
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_anchors(CyberKitDOMDocument* self);
@@ -851,7 +851,7 @@ webkit_dom_document_get_anchors(CyberKitDOMDocument* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_embeds(CyberKitDOMDocument* self);
@@ -864,7 +864,7 @@ webkit_dom_document_get_embeds(CyberKitDOMDocument* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_plugins(CyberKitDOMDocument* self);
@@ -877,7 +877,7 @@ webkit_dom_document_get_plugins(CyberKitDOMDocument* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_scripts(CyberKitDOMDocument* self);
@@ -888,7 +888,7 @@ webkit_dom_document_get_scripts(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_last_modified(CyberKitDOMDocument* self);
@@ -899,7 +899,7 @@ webkit_dom_document_get_last_modified(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_charset(CyberKitDOMDocument* self);
@@ -910,7 +910,7 @@ webkit_dom_document_get_charset(CyberKitDOMDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_charset(CyberKitDOMDocument* self, const gchar* value);
@@ -921,7 +921,7 @@ webkit_dom_document_set_charset(CyberKitDOMDocument* self, const gchar* value);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_ready_state(CyberKitDOMDocument* self);
@@ -932,7 +932,7 @@ webkit_dom_document_get_ready_state(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_character_set(CyberKitDOMDocument* self);
@@ -945,7 +945,7 @@ webkit_dom_document_get_character_set(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_preferred_stylesheet_set(CyberKitDOMDocument* self);
@@ -958,7 +958,7 @@ webkit_dom_document_get_preferred_stylesheet_set(CyberKitDOMDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_selected_stylesheet_set(CyberKitDOMDocument* self);
@@ -970,7 +970,7 @@ webkit_dom_document_get_selected_stylesheet_set(CyberKitDOMDocument* self);
  *
  * This function has been removed and does nothing.
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_selected_stylesheet_set(CyberKitDOMDocument* self, const gchar* value);
@@ -981,7 +981,7 @@ webkit_dom_document_set_selected_stylesheet_set(CyberKitDOMDocument* self, const
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_active_element(CyberKitDOMDocument* self);
@@ -994,7 +994,7 @@ webkit_dom_document_get_active_element(CyberKitDOMDocument* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_compat_mode(CyberKitDOMDocument* self);
@@ -1009,7 +1009,7 @@ webkit_dom_document_get_compat_mode(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMRange*
 webkit_dom_document_caret_range_from_point(CyberKitDOMDocument* self, glong x, glong y);
@@ -1020,7 +1020,7 @@ webkit_dom_document_caret_range_from_point(CyberKitDOMDocument* self, glong x, g
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_webkit_cancel_fullscreen(CyberKitDOMDocument* self);
@@ -1031,7 +1031,7 @@ webkit_dom_document_webkit_cancel_fullscreen(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_webkit_exit_fullscreen(CyberKitDOMDocument* self);
@@ -1042,7 +1042,7 @@ webkit_dom_document_webkit_exit_fullscreen(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_exit_pointer_lock(CyberKitDOMDocument* self);
@@ -1055,7 +1055,7 @@ webkit_dom_document_exit_pointer_lock(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_content_type(CyberKitDOMDocument* self);
@@ -1068,7 +1068,7 @@ webkit_dom_document_get_content_type(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_dir(CyberKitDOMDocument* self);
@@ -1080,7 +1080,7 @@ webkit_dom_document_get_dir(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_document_set_dir(CyberKitDOMDocument* self, const gchar* value);
@@ -1093,7 +1093,7 @@ webkit_dom_document_set_dir(CyberKitDOMDocument* self, const gchar* value);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_get_webkit_is_fullscreen(CyberKitDOMDocument* self);
@@ -1106,7 +1106,7 @@ webkit_dom_document_get_webkit_is_fullscreen(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_get_webkit_fullscreen_keyboard_input_allowed(CyberKitDOMDocument* self);
@@ -1119,7 +1119,7 @@ webkit_dom_document_get_webkit_fullscreen_keyboard_input_allowed(CyberKitDOMDocu
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_webkit_current_fullscreen_element(CyberKitDOMDocument* self);
@@ -1132,7 +1132,7 @@ webkit_dom_document_get_webkit_current_fullscreen_element(CyberKitDOMDocument* s
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_get_webkit_fullscreen_enabled(CyberKitDOMDocument* self);
@@ -1145,7 +1145,7 @@ webkit_dom_document_get_webkit_fullscreen_enabled(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_webkit_fullscreen_element(CyberKitDOMDocument* self);
@@ -1158,7 +1158,7 @@ webkit_dom_document_get_webkit_fullscreen_element(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_pointer_lock_element(CyberKitDOMDocument* self);
@@ -1171,7 +1171,7 @@ webkit_dom_document_get_pointer_lock_element(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_visibility_state(CyberKitDOMDocument* self);
@@ -1184,7 +1184,7 @@ webkit_dom_document_get_visibility_state(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_document_get_hidden(CyberKitDOMDocument* self);
@@ -1197,7 +1197,7 @@ webkit_dom_document_get_hidden(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLScriptElement*
 webkit_dom_document_get_current_script(CyberKitDOMDocument* self);
@@ -1210,7 +1210,7 @@ webkit_dom_document_get_current_script(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_get_origin(CyberKitDOMDocument* self);
@@ -1223,7 +1223,7 @@ webkit_dom_document_get_origin(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_scrolling_element(CyberKitDOMDocument* self);
@@ -1236,7 +1236,7 @@ webkit_dom_document_get_scrolling_element(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_document_get_children(CyberKitDOMDocument* self);
@@ -1249,7 +1249,7 @@ webkit_dom_document_get_children(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_first_element_child(CyberKitDOMDocument* self);
@@ -1262,7 +1262,7 @@ webkit_dom_document_get_first_element_child(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_document_get_last_element_child(CyberKitDOMDocument* self);
@@ -1275,7 +1275,7 @@ webkit_dom_document_get_last_element_child(CyberKitDOMDocument* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_document_get_child_element_count(CyberKitDOMDocument* self);

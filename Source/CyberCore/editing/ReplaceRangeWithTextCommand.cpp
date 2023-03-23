@@ -38,7 +38,7 @@
 #include "TextIterator.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ReplaceRangeWithTextCommand::ReplaceRangeWithTextCommand(const SimpleRange& rangeToBeReplaced, const String& text)
     : CompositeEditCommand(rangeToBeReplaced.start.document(), EditAction::InsertReplacement)
@@ -88,4 +88,4 @@ Vector<RefPtr<StaticRange>> ReplaceRangeWithTextCommand::targetRanges() const
     return { 1, StaticRange::create(m_rangeToBeReplaced) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

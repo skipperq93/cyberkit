@@ -32,7 +32,7 @@
 #include "ImageBitmap.h"
 #include "PaintRenderingContext2D.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CustomPaintCanvas> CustomPaintCanvas::create(ScriptExecutionContext& context, unsigned width, unsigned height)
 {

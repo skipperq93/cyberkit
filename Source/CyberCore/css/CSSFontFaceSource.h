@@ -30,7 +30,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontFace;
 class CSSFontSelector;
@@ -99,4 +99,4 @@ private:
     bool m_hasSVGFontFaceElement { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

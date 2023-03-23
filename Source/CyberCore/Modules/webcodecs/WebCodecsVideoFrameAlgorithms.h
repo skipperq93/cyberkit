@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CODECS)
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isValidVideoFrameBufferInit(const WebCodecsVideoFrame::BufferInit&);
 bool verifyRectOffsetAlignment(VideoPixelFormat, const DOMRectInit&);

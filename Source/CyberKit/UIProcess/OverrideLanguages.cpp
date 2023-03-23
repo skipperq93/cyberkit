@@ -27,7 +27,7 @@
 #include "OverrideLanguages.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static Vector<String>& overrideLanguagesStorage()
 {
@@ -45,4 +45,4 @@ const Vector<String>& overrideLanguages()
     return overrideLanguagesStorage();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

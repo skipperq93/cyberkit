@@ -39,7 +39,7 @@
 #include <wtf/Vector.h>
 
 namespace fido {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace cbor;
 
 using UVAvailability = AuthenticatorSupportedOptions::UserVerificationAvailability;

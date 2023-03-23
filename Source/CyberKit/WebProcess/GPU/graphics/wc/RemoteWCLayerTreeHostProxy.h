@@ -33,7 +33,7 @@
 #include "UpdateInfo.h"
 #include "WCLayerTreeHostIdentifier.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WCUpateInfo;
 
@@ -45,7 +45,7 @@ public:
     RemoteWCLayerTreeHostProxy(WebPage&, bool usesOffscreenRendering);
     ~RemoteWCLayerTreeHostProxy();
 
-    void update(WCUpateInfo&&, CompletionHandler<void(std::optional<WebKit::UpdateInfo>)>&&);
+    void update(WCUpateInfo&&, CompletionHandler<void(std::optional<CyberKit::UpdateInfo>)>&&);
 
 private:
     WCLayerTreeHostIdentifier wcLayerTreeHostIdentifier() const { return m_wcLayerTreeHostIdentifier; };
@@ -65,6 +65,6 @@ private:
     bool m_usesOffscreenRendering { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

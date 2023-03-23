@@ -30,12 +30,12 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 void serializeString(Vector<uint8_t>&, const String&);
 String deserializeString(Span<const uint8_t>);
 size_t stringSerializedLength(Span<const uint8_t>);
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

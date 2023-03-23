@@ -28,7 +28,7 @@
 #include "IDBCursor.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBCursorWithValue final : public IDBCursor {
     WTF_MAKE_ISO_ALLOCATED(IDBCursorWithValue);
@@ -45,8 +45,8 @@ private:
     IDBCursorWithValue(IDBIndex&, const IDBCursorInfo&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::IDBCursorWithValue)
-    static bool isType(const WebCore::IDBCursor& cursor) { return cursor.isKeyCursorWithValue(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::IDBCursorWithValue)
+    static bool isType(const CyberCore::IDBCursor& cursor) { return cursor.isKeyCursorWithValue(); }
 SPECIALIZE_TYPE_TRAITS_END()

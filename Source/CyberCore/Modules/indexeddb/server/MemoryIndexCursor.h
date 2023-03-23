@@ -29,7 +29,7 @@
 #include "IndexValueStore.h"
 #include "MemoryCursor.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 class MemoryIndex;
@@ -54,4 +54,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

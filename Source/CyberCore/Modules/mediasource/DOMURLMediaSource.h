@@ -34,7 +34,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSource;
 class ScriptExecutionContext;
@@ -44,6 +44,6 @@ public:
     static String createObjectURL(ScriptExecutionContext&, MediaSource&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

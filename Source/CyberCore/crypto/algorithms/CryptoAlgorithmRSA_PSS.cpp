@@ -36,7 +36,7 @@
 #include <variant>
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmRSA_PSSInternal {
 static constexpr auto ALG1 = "PS1"_s;

@@ -31,7 +31,7 @@
 #import <wtf/RetainPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // A range of a node within a document that is "marked", such as the range of a misspelled word.
 // It optionally includes a description that could be displayed in the user interface.
@@ -178,4 +178,4 @@ inline const String& DocumentMarker::description() const
     return std::holds_alternative<String>(m_data) ? std::get<String>(m_data) : emptyString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

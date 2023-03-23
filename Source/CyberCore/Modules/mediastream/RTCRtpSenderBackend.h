@@ -29,7 +29,7 @@
 #include <wtf/FixedVector.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamTrack;
 class RTCDTMFSenderBackend;
@@ -55,6 +55,6 @@ public:
     virtual std::unique_ptr<RTCDtlsTransportBackend> dtlsTransportBackend() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -37,7 +37,7 @@ namespace CyberCore {
 class PlatformGamepad;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GamepadData;
 

@@ -27,11 +27,11 @@
 
 #include "PredefinedColorSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CanvasRenderingContext2DSettings {
     bool desynchronized { false };
     PredefinedColorSpace colorSpace { PredefinedColorSpace::SRGB };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -39,7 +39,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename CharType>
 static String stripLeadingAndTrailingHTMLSpaces(String string, CharType characters, unsigned length)

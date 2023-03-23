@@ -36,7 +36,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ThreadableWebSocketChannelClientWrapper::ThreadableWebSocketChannelClientWrapper(ScriptExecutionContext& context, WebSocketChannelClient& client)
     : m_context(context)
@@ -269,4 +269,4 @@ void ThreadableWebSocketChannelClientWrapper::processPendingTasks()
         task->performTask(m_context);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

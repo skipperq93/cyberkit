@@ -34,7 +34,7 @@
 #include "MessagePortChannelProvider.h"
 #include "MessageWithMessagePorts.h"
 #include "StructuredSerializeOptions.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WorkerGlobalScope.h"
 #include "WorkerThread.h"
 #include <wtf/CompletionHandler.h>
@@ -42,7 +42,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MessagePort);
 
@@ -395,9 +395,9 @@ const char* MessagePort::activeDOMObjectName() const
     return "MessagePort";
 }
 
-WebCoreOpaqueRoot root(MessagePort* port)
+CyberCoreOpaqueRoot root(MessagePort* port)
 {
-    return WebCoreOpaqueRoot { port };
+    return CyberCoreOpaqueRoot { port };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

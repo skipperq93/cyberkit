@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ElementIdentifierType { };
 using ElementIdentifier = ObjectIdentifier<ElementIdentifierType>;

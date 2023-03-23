@@ -31,7 +31,7 @@
 #include <cmath>
 #include <limits>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://drafts.fxtf.org/geometry/#dom-dommatrixreadonly-dommatrixreadonly
 ExceptionOr<Ref<DOMMatrix>> DOMMatrix::create(ScriptExecutionContext& scriptExecutionContext, std::optional<std::variant<String, Vector<double>>>&& init)
@@ -252,4 +252,4 @@ ExceptionOr<Ref<DOMMatrix>> DOMMatrix::setMatrixValueForBindings(const String& s
     return Ref<DOMMatrix> { *this };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

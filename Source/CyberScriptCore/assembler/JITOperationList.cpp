@@ -88,7 +88,7 @@ SUPPRESS_ASAN ALWAYS_INLINE void JITOperationList::addPointers(const JITOperatio
     }
 }
 
-void JITOperationList::populatePointersInJavaScriptCore()
+void JITOperationList::populatePointersInCyberScriptCore()
 {
     static std::once_flag onceKey;
     std::call_once(onceKey, [] {
@@ -96,7 +96,7 @@ void JITOperationList::populatePointersInJavaScriptCore()
             jitOperationList->addPointers(&startOfJITOperationsInJSC, &endOfJITOperationsInJSC);
 #if ENABLE(JIT_OPERATION_DISASSEMBLY)
         if (UNLIKELY(Options::needDisassemblySupport()))
-            populateDisassemblyLabelsInJavaScriptCore();
+            populateDisassemblyLabelsInCyberScriptCore();
 #endif
     });
 }
@@ -198,7 +198,7 @@ static LLIntOperations llintOperations()
 
 #if ENABLE(JIT_OPERATION_VALIDATION)
 
-void JITOperationList::populatePointersInJavaScriptCoreForLLInt()
+void JITOperationList::populatePointersInCyberScriptCoreForLLInt()
 {
     static std::once_flag onceKey;
     std::call_once(onceKey, [] {
@@ -208,7 +208,7 @@ void JITOperationList::populatePointersInJavaScriptCoreForLLInt()
         }
 #if ENABLE(JIT_OPERATION_DISASSEMBLY)
         if (UNLIKELY(Options::needDisassemblySupport()))
-            JITOperationList::populateDisassemblyLabelsInJavaScriptCoreForLLInt();
+            JITOperationList::populateDisassemblyLabelsInCyberScriptCoreForLLInt();
 #endif
     });
 }
@@ -238,7 +238,7 @@ SUPPRESS_ASAN void JITOperationList::addDisassemblyLabels(const JITOperationAnno
     }
 }
 
-void JITOperationList::populateDisassemblyLabelsInJavaScriptCore()
+void JITOperationList::populateDisassemblyLabelsInCyberScriptCore()
 {
     ASSERT(Options::needDisassemblySupport());
     static std::once_flag onceKey;
@@ -248,7 +248,7 @@ void JITOperationList::populateDisassemblyLabelsInJavaScriptCore()
     });
 }
 
-void JITOperationList::populateDisassemblyLabelsInJavaScriptCoreForLLInt()
+void JITOperationList::populateDisassemblyLabelsInCyberScriptCoreForLLInt()
 {
     ASSERT(Options::needDisassemblySupport());
     static std::once_flag onceKey;

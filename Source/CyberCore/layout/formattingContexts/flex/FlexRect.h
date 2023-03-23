@@ -27,7 +27,7 @@
 
 #include "LayoutRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class FlexRect {

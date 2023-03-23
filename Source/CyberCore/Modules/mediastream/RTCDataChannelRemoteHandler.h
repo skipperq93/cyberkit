@@ -34,7 +34,7 @@
 #include <wtf/Lock.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDataChannelHandlerClient;
 class RTCDataChannelRemoteHandlerConnection;
@@ -81,6 +81,6 @@ private:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -54,7 +54,7 @@ webkit_dom_blob_get_type(void);
  *
  * Returns: A #guint64
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED guint64
 webkit_dom_blob_get_size(CyberKitDOMBlob* self);

@@ -38,7 +38,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class StyleColorOptions : uint8_t {
     ForVisitedLink = 1 << 0,
@@ -216,4 +216,4 @@ WEBCORE_EXPORT String serializationForCSS(const StyleColorMix&);
 WEBCORE_EXPORT String serializationForCSS(const StyleCurrentColor&);
 WEBCORE_EXPORT String serializationForCSS(const StyleColor&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "EventTargetConcrete.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EventTargetConcrete);
 
@@ -40,4 +40,4 @@ EventTargetConcrete::EventTargetConcrete(ScriptExecutionContext& context)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

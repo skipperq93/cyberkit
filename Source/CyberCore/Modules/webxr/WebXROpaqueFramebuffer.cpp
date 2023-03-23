@@ -40,7 +40,7 @@
 #include "GraphicsContextGLCocoa.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using GL = GraphicsContextGL;
 
@@ -369,6 +369,6 @@ bool WebXROpaqueFramebuffer::setupFramebuffer()
     return gl.checkFramebufferStatus(GL::FRAMEBUFFER) == GL::FRAMEBUFFER_COMPLETE;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

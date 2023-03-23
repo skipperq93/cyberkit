@@ -86,7 +86,7 @@ class PyWebSocket(http_server.Lighttpd):
             self._pid_file = self._filesystem.join(self._runtime_path, '%s.pid' % self._name)
 
         # Webkit tests
-        # FIXME: This is the wrong way to detect if we're in Chrome vs. WebKit!
+        # FIXME: This is the wrong way to detect if we're in Chrome vs. CyberKit!
         # The port objects are supposed to abstract this.
         if self._root:
             self._layout_tests = self._filesystem.abspath(self._root)

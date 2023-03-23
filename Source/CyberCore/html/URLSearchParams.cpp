@@ -28,7 +28,7 @@
 #include "DOMURL.h"
 #include <wtf/URLParser.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 URLSearchParams::URLSearchParams(const String& init, DOMURL* associatedURL)
     : m_associatedURL(associatedURL)

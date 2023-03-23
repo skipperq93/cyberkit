@@ -40,7 +40,7 @@
 #include "ExceptionOr.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSMatrixComponent);
 
@@ -198,4 +198,4 @@ RefPtr<CSSValue> CSSMatrixComponent::toCSSValue() const
     return CSSFunctionValue::create(CSSValueMatrix3d, WTFMove(arguments));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

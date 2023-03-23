@@ -20,11 +20,11 @@
 #include "config.h"
 #include "InputMethodFilter.h"
 
-#include "WebKitInputMethodContextPrivate.h"
+#include "CyberKitInputMethodContextPrivate.h"
 #include <CyberCore/IntRect.h>
 #include <wpe/wpe.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 IntRect InputMethodFilter::platformTransformCursorRectToViewCoordinates(const IntRect& cursorRect)
@@ -37,4 +37,4 @@ bool InputMethodFilter::platformEventKeyIsKeyPress(PlatformEventKey* event) cons
     return event->pressed;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

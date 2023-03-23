@@ -31,7 +31,7 @@
 #include "WebContextMenuItem.h"
 #include "WebContextMenuListenerProxy.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKContextMenuListenerGetTypeID()
 {

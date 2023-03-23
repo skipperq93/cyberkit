@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 class WebLock;
@@ -42,4 +42,4 @@ public:
     virtual CallbackResult<RefPtr<DOMPromise>> handleEvent(WebLock*) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -14,5 +14,5 @@ list(APPEND WebDriver_PRIVATE_INCLUDE_DIRECTORIES
 )
 
 list(APPEND WebDriver_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
 )

@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmParameters {
     WTF_MAKE_FAST_ALLOCATED;
@@ -64,11 +64,11 @@ public:
     virtual Class parametersClass() const { return Class::None; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CRYPTO_ALGORITHM_PARAMETERS(ToClassName) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CryptoAlgorithm##ToClassName) \
-static bool isType(const WebCore::CryptoAlgorithmParameters& parameters) { return parameters.parametersClass() == WebCore::CryptoAlgorithmParameters::Class::ToClassName; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CryptoAlgorithm##ToClassName) \
+static bool isType(const CyberCore::CryptoAlgorithmParameters& parameters) { return parameters.parametersClass() == CyberCore::CryptoAlgorithmParameters::Class::ToClassName; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -34,7 +34,7 @@ OBJC_CLASS NSAttributedString;
 OBJC_CLASS NSURL;
 OBJC_CLASS SSBServiceLookupResult;
 
-namespace WebKit {
+namespace CyberKit {
 
 class SafeBrowsingWarning : public RefCounted<SafeBrowsingWarning> {
 public:
@@ -79,4 +79,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

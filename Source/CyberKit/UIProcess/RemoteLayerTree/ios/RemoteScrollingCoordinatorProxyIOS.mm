@@ -47,7 +47,7 @@
 #import <CyberCore/ScrollingTreePositionedNode.h>
 #import <tuple>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteScrollingCoordinatorProxyIOS::RemoteScrollingCoordinatorProxyIOS(WebPageProxy& webPageProxy)
@@ -354,6 +354,6 @@ CGPoint RemoteScrollingCoordinatorProxyIOS::nearestActiveContentInsetAdjustedSna
     return activePoint;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(ASYNC_SCROLLING)

@@ -39,7 +39,7 @@
 #include "IntRect.h"
 #include "RenderListBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
     
@@ -222,4 +222,4 @@ int AccessibilityListBoxOption::listBoxOptionIndex() const
     return -1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

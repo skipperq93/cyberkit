@@ -36,7 +36,7 @@
 #include "JSFile.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<Blob>&& blob)
@@ -51,4 +51,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, blob);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

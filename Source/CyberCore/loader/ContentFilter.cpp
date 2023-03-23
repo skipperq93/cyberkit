@@ -50,7 +50,7 @@
 #include <wtf/text/CString.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<ContentFilter::Type>& ContentFilter::types()
 {
@@ -320,7 +320,7 @@ URL ContentFilter::url()
 const URL& ContentFilter::blockedPageURL()
 {
     static NeverDestroyed blockedPageURL = [] () -> URL {
-        auto webCoreBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.WebCore"));
+        auto webCoreBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.CyberCore"));
         return adoptCF(CFBundleCopyResourceURL(webCoreBundle, CFSTR("ContentFilterBlockedPage"), CFSTR("html"), nullptr)).get();
     }();
     return blockedPageURL;
@@ -373,6 +373,6 @@ void ContentFilter::deliverStoredResourceData()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebKitTestRunnerDraggingInfo.h"
+#import "CyberKitTestRunnerDraggingInfo.h"
 
 #import "EventSenderProxy.h"
 #import "PlatformWebView.h"
@@ -33,7 +33,7 @@
 
 using namespace WTR;
 
-@implementation WebKitTestRunnerDraggingInfo
+@implementation CyberKitTestRunnerDraggingInfo
 
 - (id)initWithImage:(NSImage *)image offset:(NSSize)offset pasteboard:(NSPasteboard *)pasteboard source:(id)source
 {
@@ -94,18 +94,18 @@ using namespace WTR;
 
 - (int)draggingSequenceNumber
 {
-    NSLog(@"WebKitTestRunner doesn't support draggingSequenceNumber");
+    NSLog(@"CyberKitTestRunner doesn't support draggingSequenceNumber");
     return 0;
 }
 
 - (void)slideDraggedImageTo:(NSPoint)screenPoint
 {
-    NSLog(@"WebKitTestRunner doesn't support slideDraggedImageTo:");
+    NSLog(@"CyberKitTestRunner doesn't support slideDraggedImageTo:");
 }
 
 - (NSArray *)namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 {
-    NSLog(@"WebKitTestRunner doesn't support namesOfPromisedFilesDroppedAtDestination:");
+    NSLog(@"CyberKitTestRunner doesn't support namesOfPromisedFilesDroppedAtDestination:");
     return nil;
 }
 

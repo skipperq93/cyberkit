@@ -30,7 +30,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityList final : public AccessibilityRenderObject {
 public:
@@ -50,6 +50,6 @@ private:
     bool childHasPseudoVisibleListItemMarkers(RenderObject*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityList, isList())

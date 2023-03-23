@@ -54,7 +54,7 @@ webkit_dom_html_param_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_param_element_get_name(CyberKitDOMHTMLParamElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_param_element_get_name(CyberKitDOMHTMLParamElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_param_element_set_name(CyberKitDOMHTMLParamElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_param_element_set_name(CyberKitDOMHTMLParamElement* self, const 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_param_element_get_type_attr(CyberKitDOMHTMLParamElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_param_element_get_type_attr(CyberKitDOMHTMLParamElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_param_element_set_type_attr(CyberKitDOMHTMLParamElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_param_element_set_type_attr(CyberKitDOMHTMLParamElement* self, c
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_param_element_get_value(CyberKitDOMHTMLParamElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_param_element_get_value(CyberKitDOMHTMLParamElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_param_element_set_value(CyberKitDOMHTMLParamElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_param_element_set_value(CyberKitDOMHTMLParamElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_param_element_get_value_type(CyberKitDOMHTMLParamElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_param_element_get_value_type(CyberKitDOMHTMLParamElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_param_element_set_value_type(CyberKitDOMHTMLParamElement* self, const gchar* value);

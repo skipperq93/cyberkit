@@ -112,7 +112,7 @@ document.execCommand('insertLineBreak');
 shouldBe('textArea.value', '"\\n\\n\\n"');
 
 // According to the HTML5 specification, maxLength is code-point length.
-// However WebKit handles it as grapheme length.
+// However CyberKit handles it as grapheme length.
 
 // fancyX should be treated as 1 grapheme.
 var fancyX = "x\u0305\u0332";// + String.fromCharCode(0x305) + String.fromCharCode(0x332);

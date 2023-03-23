@@ -25,7 +25,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLStyleElement;
@@ -61,4 +61,4 @@ private:
     Vector<RefPtr<StyleSheet>> m_detachedStyleSheets;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

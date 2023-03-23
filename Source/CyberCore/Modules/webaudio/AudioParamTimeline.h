@@ -33,7 +33,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioParamTimeline {
     WTF_MAKE_NONCOPYABLE(AudioParamTimeline);
@@ -211,4 +211,4 @@ private:
     mutable Lock m_eventsLock;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

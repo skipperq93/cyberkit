@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "WebKitWebResource.h"
-#include "WebKitWebView.h"
+#include "CyberKitWebResource.h"
+#include "CyberKitWebView.h"
 #include <CyberCore/GlobalFrameIdentifier.h>
 #include <CyberCore/ResourceLoaderIdentifier.h>
 #include <wtf/HashMap.h>
@@ -32,13 +32,13 @@ class ResourceRequest;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebKitWebResourceLoadManager {
+class CyberKitWebResourceLoadManager {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit WebKitWebResourceLoadManager(WebKitWebView*);
-    ~WebKitWebResourceLoadManager();
+    explicit CyberKitWebResourceLoadManager(CyberKitWebView*);
+    ~CyberKitWebResourceLoadManager();
 
     void didInitiateLoad(CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier, CyberCore::ResourceRequest&&);
     void didSendRequest(CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier, CyberCore::ResourceRequest&&, CyberCore::ResourceResponse&&);
@@ -46,8 +46,8 @@ public:
     void didFinishLoad(CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier, CyberCore::ResourceError&&);
 
 private:
-    WebKitWebView* m_webView { nullptr };
-    HashMap<std::pair<CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier>, GRefPtr<WebKitWebResource>> m_resources;
+    CyberKitWebView* m_webView { nullptr };
+    HashMap<std::pair<CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier>, GRefPtr<CyberKitWebResource>> m_resources;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

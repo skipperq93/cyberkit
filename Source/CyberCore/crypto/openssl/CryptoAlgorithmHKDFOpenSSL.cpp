@@ -33,7 +33,7 @@
 #include "OpenSSLUtilities.h"
 #include <openssl/hkdf.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Vector<uint8_t>> CryptoAlgorithmHKDF::platformDeriveBits(const CryptoAlgorithmHkdfParams& parameters, const CryptoKeyRaw& key, size_t length)
 {
@@ -48,6 +48,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmHKDF::platformDeriveBits(const Crypt
     return output;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

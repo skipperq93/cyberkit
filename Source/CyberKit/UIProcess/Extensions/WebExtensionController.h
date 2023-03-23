@@ -45,7 +45,7 @@
 OBJC_CLASS NSError;
 OBJC_CLASS _WKWebExtensionController;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionContext;
 class WebPageProxy;
@@ -147,6 +147,6 @@ void WebExtensionController::sendToAllProcesses(const T& message, ObjectIdentifi
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

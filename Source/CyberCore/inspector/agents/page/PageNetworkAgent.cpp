@@ -37,7 +37,7 @@
 #include "WebSocket.h"
 #include "WebSocketChannel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -139,4 +139,4 @@ void PageNetworkAgent::addConsoleMessage(std::unique_ptr<Inspector::ConsoleMessa
     m_inspectedPage.console().addMessage(WTFMove(message));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

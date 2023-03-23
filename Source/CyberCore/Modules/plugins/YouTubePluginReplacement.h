@@ -30,7 +30,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WeakPtrImplWithEventTargetData;
 class YouTubeEmbedShadowElement;

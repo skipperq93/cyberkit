@@ -31,7 +31,7 @@
 #include "InlineLineBuilder.h"
 #include "LayoutBoxGeometry.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 LineBoxBuilder::LineBoxBuilder(const InlineFormattingContext& inlineFormattingContext, const LineBuilder::LineContent& lineContent, const BlockLayoutState& blockLayoutState)

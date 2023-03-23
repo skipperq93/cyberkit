@@ -40,7 +40,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DOMMatrixReadOnly);
 
@@ -411,4 +411,4 @@ ExceptionOr<String> DOMMatrixReadOnly::toString() const
     return makeString("matrix3d(", m_matrix.m11(), ", ", m_matrix.m12(), ", ", m_matrix.m13(), ", ", m_matrix.m14(), ", ", m_matrix.m21(), ", ", m_matrix.m22(), ", ", m_matrix.m23(), ", ", m_matrix.m24(), ", ", m_matrix.m31(), ", ", m_matrix.m32(), ", ", m_matrix.m33(), ", ", m_matrix.m34(), ", ", m_matrix.m41(), ", ", m_matrix.m42(), ", ", m_matrix.m43(), ", ", m_matrix.m44(), ')');
 }
 
-} // namespace WebCore
+} // namespace CyberCore

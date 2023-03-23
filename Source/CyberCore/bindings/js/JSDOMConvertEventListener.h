@@ -28,7 +28,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> struct Converter<IDLEventListener<T>> : DefaultConverter<IDLEventListener<T>> {
     using ReturnType = RefPtr<T>;
@@ -48,4 +48,4 @@ template<typename T> struct Converter<IDLEventListener<T>> : DefaultConverter<ID
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

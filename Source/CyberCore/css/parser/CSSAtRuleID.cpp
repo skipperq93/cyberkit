@@ -32,7 +32,7 @@
 
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSAtRuleID cssAtRuleID(StringView name)
 {
@@ -64,5 +64,5 @@ CSSAtRuleID cssAtRuleID(StringView name)
     return cssAtRules.get(name, CSSAtRuleInvalid);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

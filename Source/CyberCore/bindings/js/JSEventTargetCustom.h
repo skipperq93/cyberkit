@@ -30,7 +30,7 @@
 #include "JSDOMBindingSecurity.h"
 #include "JSDOMOperation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Wrapper type for JSEventTarget's castedThis because JSDOMWindow and JSWorkerGlobalScope do not inherit JSEventTarget.
 class JSEventTargetWrapper {
@@ -81,4 +81,4 @@ public:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore

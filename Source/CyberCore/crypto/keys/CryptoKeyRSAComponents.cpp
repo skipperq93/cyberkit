@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 CryptoKeyRSAComponents::CryptoKeyRSAComponents(const Vector<uint8_t>& modulus, const Vector<uint8_t>& exponent)
     : m_type(Type::Public)
@@ -88,6 +88,6 @@ CryptoKeyRSAComponents::CryptoKeyRSAComponents(Vector<uint8_t>&& modulus, Vector
 
 CryptoKeyRSAComponents::~CryptoKeyRSAComponents() = default;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

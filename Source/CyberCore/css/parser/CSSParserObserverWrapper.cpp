@@ -32,7 +32,7 @@
 
 #include "CSSParserTokenRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned CSSParserObserverWrapper::startOffset(const CSSParserTokenRange& range)
 {
@@ -69,4 +69,4 @@ void CSSParserObserverWrapper::yieldCommentsBefore(const CSSParserTokenRange& ra
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

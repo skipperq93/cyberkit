@@ -31,7 +31,7 @@
 #include <libsoup/soup.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteInspectorHTTPServer final : public RemoteInspectorObserver {
 public:
@@ -61,6 +61,6 @@ private:
     HashMap<SoupWebsocketConnection*, std::pair<uint64_t, uint64_t>> m_webSocketConnectionToTargetMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

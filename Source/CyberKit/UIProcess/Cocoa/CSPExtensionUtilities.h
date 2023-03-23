@@ -30,9 +30,9 @@
 #import "WKWebViewConfigurationPrivate.h"
 #import <CyberCore/ContentSecurityPolicy.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 _WKContentSecurityPolicyModeForExtension toWKContentSecurityPolicyModeForExtension(CyberCore::ContentSecurityPolicyModeForExtension);
 CyberCore::ContentSecurityPolicyModeForExtension toContentSecurityPolicyModeForExtension(_WKContentSecurityPolicyModeForExtension);
 
-} // namespace WebKit
+} // namespace CyberKit

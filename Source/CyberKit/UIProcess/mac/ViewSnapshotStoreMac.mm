@@ -34,7 +34,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<ViewSnapshot> ViewSnapshot::create(std::unique_ptr<CyberCore::IOSurface> surface)
 {
@@ -108,4 +108,4 @@ RetainPtr<CGImageRef> ViewSnapshot::asImageForTesting()
     return m_surface->createImage();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

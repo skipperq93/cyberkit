@@ -29,7 +29,7 @@
 #include "CSSPrimitiveValue.h"
 #include "DeprecatedCSSOMValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeprecatedCSSOMCounter;
 class DeprecatedCSSOMRGBColor;
@@ -86,7 +86,7 @@ public:
     static ExceptionOr<void> setFloatValue(unsigned short, double) { return Exception { NoModificationAllowedError }; }
     static ExceptionOr<void> setStringValue(unsigned short, const String&) { return Exception { NoModificationAllowedError }; }
 
-    bool isCSSWideKeyword() const { return WebCore::isCSSWideKeyword(valueID(m_value.get())); }
+    bool isCSSWideKeyword() const { return CyberCore::isCSSWideKeyword(valueID(m_value.get())); }
     static unsigned short cssValueType() { return CSS_PRIMITIVE_VALUE; }
 
 private:
@@ -99,6 +99,6 @@ private:
     Ref<const CSSValue> m_value;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSSOM_VALUE(DeprecatedCSSOMPrimitiveValue, isPrimitiveValue())

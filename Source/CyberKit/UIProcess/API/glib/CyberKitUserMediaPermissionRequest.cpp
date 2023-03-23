@@ -17,31 +17,31 @@
  */
 
 #include "config.h"
-#include "WebKitUserMediaPermissionRequest.h"
+#include "CyberKitUserMediaPermissionRequest.h"
 
 #include "UserMediaPermissionRequestProxy.h"
-#include "WebKitPermissionRequest.h"
-#include "WebKitUserMediaPermissionRequestPrivate.h"
+#include "CyberKitPermissionRequest.h"
+#include "CyberKitUserMediaPermissionRequestPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 
 #if !ENABLE(2022_GLIB_API)
-typedef WebKitPermissionRequestIface WebKitPermissionRequestInterface;
+typedef CyberKitPermissionRequestIface CyberKitPermissionRequestInterface;
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitUserMediaPermissionRequest:
- * @See_also: #WebKitPermissionRequest, #WebKitWebView
+ * CyberKitUserMediaPermissionRequest:
+ * @See_also: #CyberKitPermissionRequest, #CyberKitWebView
  *
  * A permission request for accessing user's audio/video devices.
  *
- * WebKitUserMediaPermissionRequest represents a request for
- * permission to decide whether WebKit should be allowed to access the user's
+ * CyberKitUserMediaPermissionRequest represents a request for
+ * permission to decide whether CyberKit should be allowed to access the user's
  * audio and video source devices when requested through the getUserMedia API.
  *
- * When a WebKitUserMediaPermissionRequest is not handled by the user,
+ * When a CyberKitUserMediaPermissionRequest is not handled by the user,
  * it is denied by default.
  *
  * Since: 2.8
@@ -53,22 +53,22 @@ enum {
     PROP_IS_FOR_VIDEO_DEVICE
 };
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface*);
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface*);
 
-struct _WebKitUserMediaPermissionRequestPrivate {
+struct _CyberKitUserMediaPermissionRequestPrivate {
     RefPtr<UserMediaPermissionRequestProxy> request;
     bool madeDecision;
 };
 
 WEBKIT_DEFINE_FINAL_TYPE_WITH_CODE(
-    WebKitUserMediaPermissionRequest, webkit_user_media_permission_request, G_TYPE_OBJECT, GObject,
+    CyberKitUserMediaPermissionRequest, webkit_user_media_permission_request, G_TYPE_OBJECT, GObject,
     G_IMPLEMENT_INTERFACE(WEBKIT_TYPE_PERMISSION_REQUEST, webkit_permission_request_interface_init))
 
-static void webkitUserMediaPermissionRequestAllow(WebKitPermissionRequest* request)
+static void webkitUserMediaPermissionRequestAllow(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(request));
 
-    WebKitUserMediaPermissionRequestPrivate* priv = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(request)->priv;
+    CyberKitUserMediaPermissionRequestPrivate* priv = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(request)->priv;
 
     // Only one decision at a time.
     if (priv->madeDecision)
@@ -85,11 +85,11 @@ static void webkitUserMediaPermissionRequestAllow(WebKitPermissionRequest* reque
     priv->request->allow(audioDevice, videoDevice);
 }
 
-static void webkitUserMediaPermissionRequestDeny(WebKitPermissionRequest* request)
+static void webkitUserMediaPermissionRequestDeny(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(request));
 
-    WebKitUserMediaPermissionRequestPrivate* priv = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(request)->priv;
+    CyberKitUserMediaPermissionRequestPrivate* priv = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(request)->priv;
 
     // Only one decision at a time.
     if (priv->madeDecision)
@@ -99,7 +99,7 @@ static void webkitUserMediaPermissionRequestDeny(WebKitPermissionRequest* reques
     priv->request->deny(UserMediaPermissionRequestProxy::UserMediaAccessDenialReason::PermissionDenied);
 }
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface* iface)
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface* iface)
 {
     iface->allow = webkitUserMediaPermissionRequestAllow;
     iface->deny = webkitUserMediaPermissionRequestDeny;
@@ -114,7 +114,7 @@ static void webkitUserMediaPermissionRequestDispose(GObject* object)
 
 /**
  * webkit_user_media_permission_is_for_audio_device:
- * @request: a #WebKitUserMediaPermissionRequest
+ * @request: a #CyberKitUserMediaPermissionRequest
  *
  * Check whether the permission request is for an audio device.
  *
@@ -122,7 +122,7 @@ static void webkitUserMediaPermissionRequestDispose(GObject* object)
  *
  * Since: 2.8
  */
-gboolean webkit_user_media_permission_is_for_audio_device(WebKitUserMediaPermissionRequest* request)
+gboolean webkit_user_media_permission_is_for_audio_device(CyberKitUserMediaPermissionRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(request), FALSE);
     return request->priv->request->requiresAudioCapture();
@@ -130,7 +130,7 @@ gboolean webkit_user_media_permission_is_for_audio_device(WebKitUserMediaPermiss
 
 /**
  * webkit_user_media_permission_is_for_video_device:
- * @request: a #WebKitUserMediaPermissionRequest
+ * @request: a #CyberKitUserMediaPermissionRequest
  *
  * Check whether the permission request is for a video device.
  *
@@ -138,7 +138,7 @@ gboolean webkit_user_media_permission_is_for_audio_device(WebKitUserMediaPermiss
  *
  * Since: 2.8
  */
-gboolean webkit_user_media_permission_is_for_video_device(WebKitUserMediaPermissionRequest* request)
+gboolean webkit_user_media_permission_is_for_video_device(CyberKitUserMediaPermissionRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(request), FALSE);
     return request->priv->request->requiresVideoCapture();
@@ -146,7 +146,7 @@ gboolean webkit_user_media_permission_is_for_video_device(WebKitUserMediaPermiss
 
 /**
  * webkit_user_media_permission_is_for_display_device:
- * @request: a #WebKitUserMediaPermissionRequest
+ * @request: a #CyberKitUserMediaPermissionRequest
  *
  * Check whether the permission request is for a display device.
  *
@@ -154,7 +154,7 @@ gboolean webkit_user_media_permission_is_for_video_device(WebKitUserMediaPermiss
  *
  * Since: 2.34
  */
-gboolean webkit_user_media_permission_is_for_display_device(WebKitUserMediaPermissionRequest* request)
+gboolean webkit_user_media_permission_is_for_display_device(CyberKitUserMediaPermissionRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(request), FALSE);
     return request->priv->request->requiresDisplayCapture();
@@ -162,7 +162,7 @@ gboolean webkit_user_media_permission_is_for_display_device(WebKitUserMediaPermi
 
 static void webkitUserMediaPermissionRequestGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitUserMediaPermissionRequest* request = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(object);
+    CyberKitUserMediaPermissionRequest* request = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(object);
 
     switch (propId) {
     case PROP_IS_FOR_AUDIO_DEVICE:
@@ -176,14 +176,14 @@ static void webkitUserMediaPermissionRequestGetProperty(GObject* object, guint p
     }
 }
 
-static void webkit_user_media_permission_request_class_init(WebKitUserMediaPermissionRequestClass* klass)
+static void webkit_user_media_permission_request_class_init(CyberKitUserMediaPermissionRequestClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->dispose = webkitUserMediaPermissionRequestDispose;
     objectClass->get_property = webkitUserMediaPermissionRequestGetProperty;
 
     /**
-     * WebKitUserMediaPermissionRequest:is-for-audio-device:
+     * CyberKitUserMediaPermissionRequest:is-for-audio-device:
      *
      * Whether the media device to which the permission was requested has a microphone or not.
      *
@@ -196,7 +196,7 @@ static void webkit_user_media_permission_request_class_init(WebKitUserMediaPermi
             WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitUserMediaPermissionRequest:is-for-video-device:
+     * CyberKitUserMediaPermissionRequest:is-for-video-device:
      *
      * Whether the media device to which the permission was requested has a video capture capability or not.
      *
@@ -209,9 +209,9 @@ static void webkit_user_media_permission_request_class_init(WebKitUserMediaPermi
             WEBKIT_PARAM_READABLE));
 }
 
-WebKitUserMediaPermissionRequest* webkitUserMediaPermissionRequestCreate(UserMediaPermissionRequestProxy& request, API::SecurityOrigin& userMediaDocumentOrigin, API::SecurityOrigin& topLevelDocumentOrigin)
+CyberKitUserMediaPermissionRequest* webkitUserMediaPermissionRequestCreate(UserMediaPermissionRequestProxy& request, API::SecurityOrigin& userMediaDocumentOrigin, API::SecurityOrigin& topLevelDocumentOrigin)
 {
-    WebKitUserMediaPermissionRequest* usermediaPermissionRequest = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_USER_MEDIA_PERMISSION_REQUEST, nullptr));
+    CyberKitUserMediaPermissionRequest* usermediaPermissionRequest = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_USER_MEDIA_PERMISSION_REQUEST, nullptr));
 
     // FIXME: store SecurityOrigins
     UNUSED_PARAM(userMediaDocumentOrigin);

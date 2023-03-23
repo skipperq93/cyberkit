@@ -29,7 +29,7 @@
 #include "LayoutUnits.h"
 #include <unicode/ubidi.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class InlineItemsBuilder;
@@ -108,8 +108,8 @@ inline void InlineItem::setWidth(InlineLayoutUnit width)
 }
 
 #define SPECIALIZE_TYPE_TRAITS_INLINE_ITEM(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Layout::ToValueTypeName) \
-    static bool isType(const WebCore::Layout::InlineItem& inlineItem) { return inlineItem.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Layout::ToValueTypeName) \
+    static bool isType(const CyberCore::Layout::InlineItem& inlineItem) { return inlineItem.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 }

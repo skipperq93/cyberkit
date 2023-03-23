@@ -40,7 +40,7 @@
 #include "MediaRecorderPrivateGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<MediaRecorderPrivate> MediaRecorderProvider::createMediaRecorderPrivate(MediaStreamPrivate& stream, const MediaRecorderPrivateOptions& options)
 {

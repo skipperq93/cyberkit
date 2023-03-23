@@ -31,7 +31,7 @@
 #include "WKAPICast.h"
 #include "WebView.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKViewRef WKViewCreate(RECT rect, WKPageConfigurationRef configurationRef, HWND parentWindow)
 {

@@ -32,7 +32,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class Clipboard;
@@ -78,4 +78,4 @@ private:
     PresentationStyle m_presentationStyle { PresentationStyle::Unspecified };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

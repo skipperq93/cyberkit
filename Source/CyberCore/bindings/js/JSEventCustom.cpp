@@ -32,11 +32,11 @@
 #include "JSDOMWrapperCache.h"
 #include <CyberScriptCore/JSCJSValue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObject, Event& event)
 {
     return wrap(lexicalGlobalObject, globalObject, event);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

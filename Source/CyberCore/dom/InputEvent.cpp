@@ -32,7 +32,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(InputEvent);
 
@@ -66,4 +66,4 @@ RefPtr<DataTransfer> InputEvent::dataTransfer() const
     return m_dataTransfer;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -39,7 +39,7 @@ enum class NotificationDirection : uint8_t;
 struct NotificationData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebNotification : public API::ObjectImpl<API::Object::Type::Notification>, public Identified<WebNotification> {
 public:
@@ -93,4 +93,4 @@ inline bool isNotificationIDValid(uint64_t id)
     return id && id != static_cast<uint64_t>(-1);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

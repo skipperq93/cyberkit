@@ -69,7 +69,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -731,4 +731,4 @@ void InspectorIndexedDBAgent::clearObjectStore(const String& securityOrigin, con
     clearObjectStore->start(idbFactory, &document->securityOrigin(), databaseName);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

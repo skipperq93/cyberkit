@@ -27,7 +27,7 @@
 
 #include "HTMLDivElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextPlaceholderElement final : public HTMLDivElement {
     WTF_MAKE_ISO_ALLOCATED(TextPlaceholderElement);
@@ -43,9 +43,9 @@ private:
     void removedFromAncestor(RemovalType, ContainerNode& oldParentOfRemovedTree) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::TextPlaceholderElement)
-    static bool isType(const WebCore::Element& element) { return element.isTextPlaceholderElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::TextPlaceholderElement)
+    static bool isType(const CyberCore::Element& element) { return element.isTextPlaceholderElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

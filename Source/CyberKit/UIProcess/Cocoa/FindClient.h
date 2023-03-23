@@ -34,7 +34,7 @@
 @class WKWebView;
 @protocol _WKFindDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class FindClient final : public API::FindClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -50,8 +50,8 @@ private:
     virtual void didFindString(WebPageProxy*, const String&, const Vector<CyberCore::IntRect>&, uint32_t matchCount, int32_t matchIndex, bool didWrapAround);
     virtual void didFailToFindString(WebPageProxy*, const String&);
 
-    virtual void didAddLayerForFindOverlay(WebKit::WebPageProxy*, CALayer *);
-    virtual void didRemoveLayerForFindOverlay(WebKit::WebPageProxy*);
+    virtual void didAddLayerForFindOverlay(CyberKit::WebPageProxy*, CALayer *);
+    virtual void didRemoveLayerForFindOverlay(CyberKit::WebPageProxy*);
     
     WKWebView *m_webView;
     WeakObjCPtr<id <_WKFindDelegate>> m_delegate;
@@ -65,6 +65,6 @@ private:
     } m_delegateMethods;
 };
     
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // FindClient_h

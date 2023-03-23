@@ -31,10 +31,10 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextGL;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 class WebGLContextGroup;
 class WebGLRenderingContextBase;
 
@@ -98,8 +98,8 @@ inline PlatformGLObject objectOrZero(WebGLObject* object)
     return object ? object->object() : 0;
 }
 
-WebCoreOpaqueRoot root(WebGLObject*);
+CyberCoreOpaqueRoot root(WebGLObject*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

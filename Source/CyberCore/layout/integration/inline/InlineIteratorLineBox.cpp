@@ -31,7 +31,7 @@
 #include "RenderBlockFlow.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 LineBoxIterator::LineBoxIterator(LineBox::PathVariant&& pathVariant)

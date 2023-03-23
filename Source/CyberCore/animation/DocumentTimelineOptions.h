@@ -27,10 +27,10 @@
 
 #include "DOMHighResTimeStamp.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DocumentTimelineOptions {
     DOMHighResTimeStamp originTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

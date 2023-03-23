@@ -35,7 +35,7 @@
 #include <CyberScriptCore/Weak.h>
 #include <CyberScriptCore/WeakInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline JSDOMObject* ScriptWrappable::wrapper() const
 {
@@ -53,4 +53,4 @@ inline void ScriptWrappable::clearWrapper(JSDOMObject* wrapper)
     weakClear(m_wrapper, wrapper);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

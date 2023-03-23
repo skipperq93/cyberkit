@@ -36,7 +36,7 @@ namespace JSC {
 class VM;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 class JSDOMGlobalObject;
@@ -64,4 +64,4 @@ private:
     JSC::WeakGCMap<JSC::JSPromise*, JSC::JSPromise> m_outstandingRejectedPromises;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

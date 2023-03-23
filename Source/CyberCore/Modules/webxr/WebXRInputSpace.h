@@ -33,7 +33,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRInputSpace : public RefCounted<WebXRInputSpace>, public WebXRSpace {
     WTF_MAKE_ISO_ALLOCATED(WebXRInputSpace);
@@ -59,6 +59,6 @@ private:
     PlatformXR::Device::FrameData::InputSourcePose m_pose;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

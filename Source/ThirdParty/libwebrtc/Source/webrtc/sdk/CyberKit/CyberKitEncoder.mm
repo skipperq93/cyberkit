@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitEncoder.h"
+#include "CyberKitEncoder.h"
 
-#include "WebKitUtilities.h"
+#include "CyberKitUtilities.h"
 #include "api/video/video_frame.h"
 #include "components/video_codec/RTCCodecSpecificInfoH264+Private.h"
 #include "media/engine/encoder_simulcast_proxy.h"
@@ -193,7 +193,7 @@ void setVideoEncoderCallbacks(VideoEncoderCreateCallback createCallback, VideoEn
 
 class RemoteVideoEncoder final : public webrtc::VideoEncoder {
 public:
-    explicit RemoteVideoEncoder(WebKitVideoEncoder);
+    explicit RemoteVideoEncoder(CyberKitVideoEncoder);
     ~RemoteVideoEncoder();
 
 private:
@@ -204,7 +204,7 @@ private:
     void SetRates(const RateControlParameters&) final;
     EncoderInfo GetEncoderInfo() const final;
 
-    WebKitVideoEncoder m_internalEncoder;
+    CyberKitVideoEncoder m_internalEncoder;
 };
 
 class RemoteVideoEncoderFactory final : public VideoEncoderFactory {
@@ -236,7 +236,7 @@ std::unique_ptr<VideoEncoder> RemoteVideoEncoderFactory::CreateVideoEncoder(cons
     return std::make_unique<RemoteVideoEncoder>(internalEncoder);
 }
 
-std::unique_ptr<webrtc::VideoEncoderFactory> createWebKitEncoderFactory(WebKitH265 supportsH265, WebKitVP9 supportsVP9, WebKitH264LowLatency useH264LowLatency, WebKitAv1 supportsAv1)
+std::unique_ptr<webrtc::VideoEncoderFactory> createCyberKitEncoderFactory(CyberKitH265 supportsH265, CyberKitVP9 supportsVP9, CyberKitH264LowLatency useH264LowLatency, CyberKitAv1 supportsAv1)
 {
 #if ENABLE_VCP_ENCODER || ENABLE_VCP_VTB_ENCODER
     static std::once_flag onceFlag;
@@ -245,12 +245,12 @@ std::unique_ptr<webrtc::VideoEncoderFactory> createWebKitEncoderFactory(WebKitH2
     });
 #endif
 
-    auto internalFactory = ObjCToNativeVideoEncoderFactory([[RTCDefaultVideoEncoderFactory alloc] initWithH265: supportsH265 == WebKitH265::On vp9Profile0:supportsVP9 > WebKitVP9::Off vp9Profile2:supportsVP9 == WebKitVP9::Profile0And2 lowLatencyH264:useH264LowLatency == WebKitH264LowLatency::On av1:supportsAv1 == WebKitAv1::On]);
+    auto internalFactory = ObjCToNativeVideoEncoderFactory([[RTCDefaultVideoEncoderFactory alloc] initWithH265: supportsH265 == CyberKitH265::On vp9Profile0:supportsVP9 > CyberKitVP9::Off vp9Profile2:supportsVP9 == CyberKitVP9::Profile0And2 lowLatencyH264:useH264LowLatency == CyberKitH264LowLatency::On av1:supportsAv1 == CyberKitAv1::On]);
 
     return std::make_unique<VideoEncoderFactoryWithSimulcast>(std::make_unique<RemoteVideoEncoderFactory>(std::move(internalFactory)));
 }
 
-RemoteVideoEncoder::RemoteVideoEncoder(WebKitVideoEncoder internalEncoder)
+RemoteVideoEncoder::RemoteVideoEncoder(CyberKitVideoEncoder internalEncoder)
     : m_internalEncoder(internalEncoder)
 {
 }
@@ -312,7 +312,7 @@ int32_t RemoteVideoEncoder::RegisterEncodeCompleteCallback(EncodedImageCallback*
     return videoEncoderCallbacks().registerEncodeCompleteCallback(m_internalEncoder, callback);
 }
 
-void encoderVideoTaskComplete(void* callback, webrtc::VideoCodecType codecType, const uint8_t* buffer, size_t length, const WebKitEncodedFrameInfo& info)
+void encoderVideoTaskComplete(void* callback, webrtc::VideoCodecType codecType, const uint8_t* buffer, size_t length, const CyberKitEncodedFrameInfo& info)
 {
     webrtc::EncodedImage encodedImage;
     encodedImage.SetEncodedData(EncodedImageBuffer::Create(buffer, length));
@@ -346,7 +346,7 @@ void* createLocalEncoder(const webrtc::SdpVideoFormat& format, bool useAnnexB, L
     [encoder setCallback:^BOOL(RTCEncodedImage *_Nonnull frame, id<RTCCodecSpecificInfo> _Nonnull codecSpecificInfo, RTCRtpFragmentationHeader * _Nullable header) {
         EncodedImage encodedImage = [frame nativeEncodedImage];
 
-        WebKitEncodedFrameInfo info;
+        CyberKitEncodedFrameInfo info;
         info.width = encodedImage._encodedWidth;
         info.height = encodedImage._encodedHeight;
         info.timeStamp = encodedImage.Timestamp();

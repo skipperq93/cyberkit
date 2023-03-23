@@ -28,7 +28,7 @@
 
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<TextCheckerCompletion> TextCheckerCompletion::create(TextCheckerRequestID requestID, const TextCheckingRequestData& requestData, WebPageProxy* page)
@@ -66,4 +66,4 @@ void TextCheckerCompletion::didCancelCheckingText() const
     m_page->didCancelCheckingText(m_requestID);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

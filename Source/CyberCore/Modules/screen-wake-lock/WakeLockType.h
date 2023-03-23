@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore  {
+namespace CyberCore  {
 
 enum class WakeLockType : uint8_t { Screen };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include "SessionState.h"
 #include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RefPtr<API::Data> encodeLegacySessionState(const SessionState& sessionState)
 {
@@ -73,4 +73,4 @@ bool decodeLegacySessionState(const uint8_t* data, size_t dataSize, SessionState
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

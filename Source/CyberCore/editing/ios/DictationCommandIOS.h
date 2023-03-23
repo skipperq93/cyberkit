@@ -30,7 +30,7 @@
 #import "CompositeEditCommand.h"
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DictationCommandIOS final : public CompositeEditCommand {
 public:
@@ -45,6 +45,6 @@ private:
     RetainPtr<id> m_metadata;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -28,7 +28,7 @@
 
 namespace API {
 
-NavigationData::NavigationData(const WebKit::WebNavigationDataStore& store)
+NavigationData::NavigationData(const CyberKit::WebNavigationDataStore& store)
     : m_store(store)
 {
 }
@@ -37,4 +37,4 @@ NavigationData::~NavigationData()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

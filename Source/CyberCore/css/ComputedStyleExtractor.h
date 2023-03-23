@@ -22,7 +22,7 @@
 
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation;
 class CSSFunctionValue;
@@ -109,4 +109,4 @@ private:
 
 RefPtr<CSSFunctionValue> transformOperationAsCSSValue(const TransformOperation&, const RenderStyle&);
 
-} // namespace WebCore
+} // namespace CyberCore

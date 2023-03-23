@@ -30,7 +30,7 @@
 #include "RenderLineBreak.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLWBRElement);
 
@@ -52,4 +52,4 @@ RenderPtr<RenderElement> HTMLWBRElement::createElementRenderer(RenderStyle&& sty
     return createRenderer<RenderLineBreak>(*this, WTFMove(style));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

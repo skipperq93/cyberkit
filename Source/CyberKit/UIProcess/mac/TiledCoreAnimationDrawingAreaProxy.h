@@ -29,7 +29,7 @@
 
 #include "DrawingAreaProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class TiledCoreAnimationDrawingAreaProxy final : public DrawingAreaProxy {
 public:
@@ -79,7 +79,7 @@ private:
     CyberCore::IntSize m_lastSentSizeToContentAutoSizeMaximumSize;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 SPECIALIZE_TYPE_TRAITS_DRAWING_AREA_PROXY(TiledCoreAnimationDrawingAreaProxy, DrawingAreaType::TiledCoreAnimation)
 

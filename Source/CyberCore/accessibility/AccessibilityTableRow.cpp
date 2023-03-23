@@ -38,7 +38,7 @@
 #include "RenderTableCell.h"
 #include "RenderTableRow.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
     
@@ -186,4 +186,4 @@ int AccessibilityTableRow::axRowIndex() const
     return value >= 1 ? value : -1;
 }
     
-} // namespace WebCore
+} // namespace CyberCore

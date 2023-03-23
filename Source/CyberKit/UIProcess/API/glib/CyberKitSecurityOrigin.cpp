@@ -18,18 +18,18 @@
  */
 
 #include "config.h"
-#include "WebKitSecurityOrigin.h"
+#include "CyberKitSecurityOrigin.h"
 
-#include "WebKitSecurityOriginPrivate.h"
+#include "CyberKitSecurityOriginPrivate.h"
 #include <wtf/URL.h>
 #include <wtf/text/CString.h>
 
 /**
- * WebKitSecurityOrigin:
+ * CyberKitSecurityOrigin:
  *
  * A security boundary for websites.
  *
- * #WebKitSecurityOrigin is a representation of a security domain
+ * #CyberKitSecurityOrigin is a representation of a security domain
  * defined by websites. A security origin consists of a protocol, a
  * hostname, and an optional port number.
  *
@@ -41,8 +41,8 @@
  * Since: 2.16
  */
 
-struct _WebKitSecurityOrigin {
-    explicit _WebKitSecurityOrigin(CyberCore::SecurityOriginData&& data)
+struct _CyberKitSecurityOrigin {
+    explicit _CyberKitSecurityOrigin(CyberCore::SecurityOriginData&& data)
         : securityOriginData(WTFMove(data))
     {
     }
@@ -53,16 +53,16 @@ struct _WebKitSecurityOrigin {
     int referenceCount { 1 };
 };
 
-G_DEFINE_BOXED_TYPE(WebKitSecurityOrigin, webkit_security_origin, webkit_security_origin_ref, webkit_security_origin_unref)
+G_DEFINE_BOXED_TYPE(CyberKitSecurityOrigin, webkit_security_origin, webkit_security_origin_ref, webkit_security_origin_unref)
 
-WebKitSecurityOrigin* webkitSecurityOriginCreate(CyberCore::SecurityOriginData&& data)
+CyberKitSecurityOrigin* webkitSecurityOriginCreate(CyberCore::SecurityOriginData&& data)
 {
-    WebKitSecurityOrigin* origin = static_cast<WebKitSecurityOrigin*>(fastMalloc(sizeof(WebKitSecurityOrigin)));
-    new (origin) WebKitSecurityOrigin(WTFMove(data));
+    CyberKitSecurityOrigin* origin = static_cast<CyberKitSecurityOrigin*>(fastMalloc(sizeof(CyberKitSecurityOrigin)));
+    new (origin) CyberKitSecurityOrigin(WTFMove(data));
     return origin;
 }
 
-const CyberCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(WebKitSecurityOrigin* origin)
+const CyberCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(CyberKitSecurityOrigin* origin)
 {
     ASSERT(origin);
     return origin->securityOriginData;
@@ -78,11 +78,11 @@ const CyberCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(W
  * Create a new security origin from the provided protocol, host and
  * port.
  *
- * Returns: (transfer full): A #WebKitSecurityOrigin.
+ * Returns: (transfer full): A #CyberKitSecurityOrigin.
  *
  * Since: 2.16
  */
-WebKitSecurityOrigin* webkit_security_origin_new(const gchar* protocol, const gchar* host, guint16 port)
+CyberKitSecurityOrigin* webkit_security_origin_new(const gchar* protocol, const gchar* host, guint16 port)
 {
     g_return_val_if_fail(protocol, nullptr);
     g_return_val_if_fail(host, nullptr);
@@ -102,13 +102,13 @@ WebKitSecurityOrigin* webkit_security_origin_new(const gchar* protocol, const gc
  *
  * Create a new security origin from the provided URI. Components of
  * @uri other than protocol, host, and port do not affect the created
- * #WebKitSecurityOrigin.
+ * #CyberKitSecurityOrigin.
  *
- * Returns: (transfer full): A #WebKitSecurityOrigin.
+ * Returns: (transfer full): A #CyberKitSecurityOrigin.
  *
  * Since: 2.16
  */
-WebKitSecurityOrigin* webkit_security_origin_new_for_uri(const gchar* uri)
+CyberKitSecurityOrigin* webkit_security_origin_new_for_uri(const gchar* uri)
 {
     g_return_val_if_fail(uri, nullptr);
 
@@ -117,17 +117,17 @@ WebKitSecurityOrigin* webkit_security_origin_new_for_uri(const gchar* uri)
 
 /**
  * webkit_security_origin_ref:
- * @origin: a #WebKitSecurityOrigin
+ * @origin: a #CyberKitSecurityOrigin
  *
  * Atomically increments the reference count of @origin by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed #WebKitSecurityOrigin
+ * Returns: The passed #CyberKitSecurityOrigin
  *
  * Since: 2.16
  */
-WebKitSecurityOrigin* webkit_security_origin_ref(WebKitSecurityOrigin* origin)
+CyberKitSecurityOrigin* webkit_security_origin_ref(CyberKitSecurityOrigin* origin)
 {
     g_return_val_if_fail(origin, nullptr);
 
@@ -137,37 +137,37 @@ WebKitSecurityOrigin* webkit_security_origin_ref(WebKitSecurityOrigin* origin)
 
 /**
  * webkit_security_origin_unref:
- * @origin: A #WebKitSecurityOrigin
+ * @origin: A #CyberKitSecurityOrigin
  *
  * Atomically decrements the reference count of @origin by one.
  *
  * If the reference count drops to 0, all memory allocated by
- * #WebKitSecurityOrigin is released. This function is MT-safe and may be
+ * #CyberKitSecurityOrigin is released. This function is MT-safe and may be
  * called from any thread.
  *
  * Since: 2.16
  */
-void webkit_security_origin_unref(WebKitSecurityOrigin* origin)
+void webkit_security_origin_unref(CyberKitSecurityOrigin* origin)
 {
     g_return_if_fail(origin);
 
     if (g_atomic_int_dec_and_test(&origin->referenceCount)) {
-        origin->~WebKitSecurityOrigin();
+        origin->~CyberKitSecurityOrigin();
         fastFree(origin);
     }
 }
 
 /**
  * webkit_security_origin_get_protocol:
- * @origin: a #WebKitSecurityOrigin
+ * @origin: a #CyberKitSecurityOrigin
  *
  * Gets the protocol of @origin.
  *
- * Returns: (allow-none): The protocol of the #WebKitSecurityOrigin
+ * Returns: (allow-none): The protocol of the #CyberKitSecurityOrigin
  *
  * Since: 2.16
  */
-const gchar* webkit_security_origin_get_protocol(WebKitSecurityOrigin* origin)
+const gchar* webkit_security_origin_get_protocol(CyberKitSecurityOrigin* origin)
 {
     g_return_val_if_fail(origin, nullptr);
 
@@ -181,18 +181,18 @@ const gchar* webkit_security_origin_get_protocol(WebKitSecurityOrigin* origin)
 
 /**
  * webkit_security_origin_get_host:
- * @origin: a #WebKitSecurityOrigin
+ * @origin: a #CyberKitSecurityOrigin
  *
  * Gets the hostname of @origin.
  *
  * It is reasonable for this to be %NULL
  * if its protocol does not require a host component.
  *
- * Returns: (allow-none): The host of the #WebKitSecurityOrigin
+ * Returns: (allow-none): The host of the #CyberKitSecurityOrigin
  *
  * Since: 2.16
  */
-const gchar* webkit_security_origin_get_host(WebKitSecurityOrigin* origin)
+const gchar* webkit_security_origin_get_host(CyberKitSecurityOrigin* origin)
 {
     g_return_val_if_fail(origin, nullptr);
 
@@ -206,7 +206,7 @@ const gchar* webkit_security_origin_get_host(WebKitSecurityOrigin* origin)
 
 /**
  * webkit_security_origin_get_port:
- * @origin: a #WebKitSecurityOrigin
+ * @origin: a #CyberKitSecurityOrigin
  *
  * Gets the port of @origin.
  *
@@ -214,13 +214,13 @@ const gchar* webkit_security_origin_get_host(WebKitSecurityOrigin* origin)
  * port is the default port for the given protocol. For example,
  * http://example.com has the same security origin as
  * http://example.com:80, and this function will return 0 for a
- * #WebKitSecurityOrigin constructed from either URI.
+ * #CyberKitSecurityOrigin constructed from either URI.
  *
- * Returns: The port of the #WebKitSecurityOrigin.
+ * Returns: The port of the #CyberKitSecurityOrigin.
  *
  * Since: 2.16
  */
-guint16 webkit_security_origin_get_port(WebKitSecurityOrigin* origin)
+guint16 webkit_security_origin_get_port(CyberKitSecurityOrigin* origin)
 {
     g_return_val_if_fail(origin, 0);
 
@@ -230,11 +230,11 @@ guint16 webkit_security_origin_get_port(WebKitSecurityOrigin* origin)
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_security_origin_is_opaque:
- * @origin: a #WebKitSecurityOrigin
+ * @origin: a #CyberKitSecurityOrigin
  *
  * This function returns %FALSE.
  *
- * This function returns %FALSE. #WebKitSecurityOrigin is now a simple
+ * This function returns %FALSE. #CyberKitSecurityOrigin is now a simple
  * wrapper around a <protocol, host, port> triplet, and no longer
  * represents an origin as defined by web standards that may be opaque.
  *
@@ -244,7 +244,7 @@ guint16 webkit_security_origin_get_port(WebKitSecurityOrigin* origin)
  *
  * Deprecated: 2.32
  */
-gboolean webkit_security_origin_is_opaque(WebKitSecurityOrigin* origin)
+gboolean webkit_security_origin_is_opaque(CyberKitSecurityOrigin* origin)
 {
     g_return_val_if_fail(origin, FALSE);
 
@@ -254,7 +254,7 @@ gboolean webkit_security_origin_is_opaque(WebKitSecurityOrigin* origin)
 
 /**
  * webkit_security_origin_to_string:
- * @origin: a #WebKitSecurityOrigin
+ * @origin: a #CyberKitSecurityOrigin
  *
  * Gets a string representation of @origin.
  *
@@ -266,7 +266,7 @@ gboolean webkit_security_origin_is_opaque(WebKitSecurityOrigin* origin)
  *
  * Since: 2.16
  */
-gchar* webkit_security_origin_to_string(WebKitSecurityOrigin* origin)
+gchar* webkit_security_origin_to_string(CyberKitSecurityOrigin* origin)
 {
     g_return_val_if_fail(origin, nullptr);
 

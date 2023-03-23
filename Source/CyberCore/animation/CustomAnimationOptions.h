@@ -29,12 +29,12 @@
 #include "AnimationFrameRatePreset.h"
 #include "EffectTiming.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CustomAnimationOptions : EffectTiming {
     String id;
     std::variant<FramesPerSecond, AnimationFrameRatePreset> frameRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

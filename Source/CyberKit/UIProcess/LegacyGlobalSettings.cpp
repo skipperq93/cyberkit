@@ -29,7 +29,7 @@
 #include "WebProcessPool.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 LegacyGlobalSettings::LegacyGlobalSettings() = default;
 
@@ -46,4 +46,4 @@ void LegacyGlobalSettings::setCacheModel(CacheModel cacheModel)
         processPool->setCacheModel(cacheModel);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

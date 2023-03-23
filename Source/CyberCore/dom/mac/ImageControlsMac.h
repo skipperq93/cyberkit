@@ -27,7 +27,7 @@
 
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class HTMLElement;
@@ -49,4 +49,4 @@ WEBCORE_EXPORT bool hasImageControls(const HTMLElement&);
 #endif // ENABLE(SERVICE_CONTROLS)
 
 } // namespace ImageControlsMac
-} // namespace WebCore
+} // namespace CyberCore

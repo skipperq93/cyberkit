@@ -48,7 +48,7 @@
 #include <unicode/ubrk.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 using namespace WTF::Unicode;

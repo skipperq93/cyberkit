@@ -94,7 +94,7 @@
 #include <wtf/text/WTFString.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -518,7 +518,7 @@ AccessibilityObject* AccessibilityObject::nextSiblingUnignored(int limit) const
 
 AccessibilityObject* AccessibilityObject::firstAccessibleObjectFromNode(const Node* node)
 {
-    return WebCore::firstAccessibleObjectFromNode(node, [] (const AccessibilityObject& accessible) {
+    return CyberCore::firstAccessibleObjectFromNode(node, [] (const AccessibilityObject& accessible) {
         return !accessible.accessibilityIsIgnored();
     });
 }
@@ -2073,7 +2073,7 @@ String AccessibilityObject::localizedActionVerb() const
     case AccessibilityRole::Switch:
         return isChecked() ? checkedCheckBoxAction : uncheckedCheckBoxAction;
     case AccessibilityRole::Link:
-    case AccessibilityRole::WebCoreLink:
+    case AccessibilityRole::CyberCoreLink:
         return linkAction;
     case AccessibilityRole::PopUpButton:
         return menuListAction;
@@ -2106,7 +2106,7 @@ String AccessibilityObject::actionVerb() const
     case AccessibilityRole::Switch:
         return isChecked() ? "uncheck"_s : "check"_s;
     case AccessibilityRole::Link:
-    case AccessibilityRole::WebCoreLink:
+    case AccessibilityRole::CyberCoreLink:
         return "jump"_s;
     case AccessibilityRole::PopUpButton:
     case AccessibilityRole::MenuListPopup:
@@ -2382,10 +2382,10 @@ static void initializeRoleMap()
         { "doc-acknowledgments"_s, AccessibilityRole::LandmarkDocRegion },
         { "doc-afterword"_s, AccessibilityRole::LandmarkDocRegion },
         { "doc-appendix"_s, AccessibilityRole::LandmarkDocRegion },
-        { "doc-backlink"_s, AccessibilityRole::WebCoreLink },
+        { "doc-backlink"_s, AccessibilityRole::CyberCoreLink },
         { "doc-biblioentry"_s, AccessibilityRole::ListItem },
         { "doc-bibliography"_s, AccessibilityRole::LandmarkDocRegion },
-        { "doc-biblioref"_s, AccessibilityRole::WebCoreLink },
+        { "doc-biblioref"_s, AccessibilityRole::CyberCoreLink },
         { "doc-chapter"_s, AccessibilityRole::LandmarkDocRegion },
         { "doc-colophon"_s, AccessibilityRole::ApplicationTextGroup },
         { "doc-conclusion"_s, AccessibilityRole::LandmarkDocRegion },
@@ -2402,10 +2402,10 @@ static void initializeRoleMap()
         { "doc-footnote"_s, AccessibilityRole::Footnote },
         { "doc-foreword"_s, AccessibilityRole::LandmarkDocRegion },
         { "doc-glossary"_s, AccessibilityRole::LandmarkDocRegion },
-        { "doc-glossref"_s, AccessibilityRole::WebCoreLink },
+        { "doc-glossref"_s, AccessibilityRole::CyberCoreLink },
         { "doc-index"_s, AccessibilityRole::LandmarkNavigation },
         { "doc-introduction"_s, AccessibilityRole::LandmarkDocRegion },
-        { "doc-noteref"_s, AccessibilityRole::WebCoreLink },
+        { "doc-noteref"_s, AccessibilityRole::CyberCoreLink },
         { "doc-notice"_s, AccessibilityRole::DocumentNote },
         { "doc-pagebreak"_s, AccessibilityRole::Splitter },
         { "doc-pagelist"_s, AccessibilityRole::LandmarkNavigation },
@@ -2439,7 +2439,7 @@ static void initializeRoleMap()
         { "image"_s, AccessibilityRole::Image },
         { "img"_s, AccessibilityRole::Image },
         { "insertion"_s, AccessibilityRole::Insertion },
-        { "link"_s, AccessibilityRole::WebCoreLink },
+        { "link"_s, AccessibilityRole::CyberCoreLink },
         { "list"_s, AccessibilityRole::List },
         { "listitem"_s, AccessibilityRole::ListItem },
         { "listbox"_s, AccessibilityRole::ListBox },
@@ -2514,7 +2514,7 @@ static ARIAReverseRoleMap& reverseAriaRoleMap()
     return *gAriaReverseRoleMap;
 }
 
-AccessibilityRole AccessibilityObject::ariaRoleToWebCoreRole(const String& value)
+AccessibilityRole AccessibilityObject::ariaRoleToCyberCoreRole(const String& value)
 {
     if (value.isNull() || value.isEmpty())
         return AccessibilityRole::Unknown;
@@ -4029,7 +4029,7 @@ static bool isAccessibilityObjectSearchMatchAtIndex(RefPtr<AXCoreObject> axObjec
         bool isLink = axObject->isLink();
 #if PLATFORM(IOS_FAMILY)
         if (!isLink)
-            isLink = axObject->isDescendantOfRole(AccessibilityRole::WebCoreLink);
+            isLink = axObject->isDescendantOfRole(AccessibilityRole::CyberCoreLink);
 #endif
         return isLink;
     }
@@ -4225,4 +4225,4 @@ void findMatchingObjects(const AccessibilitySearchCriteria& criteria, AXCoreObje
 
 } // namespace Accessibility
 
-} // namespace WebCore
+} // namespace CyberCore

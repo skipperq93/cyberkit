@@ -39,7 +39,7 @@
 #include "SerializedScriptValue.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSTestVoidCallbackFunction::JSTestVoidCallbackFunction(JSObject* callback, JSDOMGlobalObject* globalObject)
@@ -103,6 +103,6 @@ JSC::JSValue toJS(TestVoidCallbackFunction& impl)
     return static_cast<JSTestVoidCallbackFunction&>(impl).callbackData()->callback();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TEST_CONDITIONAL)

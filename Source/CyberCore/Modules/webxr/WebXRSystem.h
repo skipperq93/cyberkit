@@ -45,7 +45,7 @@ namespace JSC {
 class JSGlobalObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class Navigator;
@@ -113,7 +113,7 @@ private:
         explicit DummyInlineDevice(ScriptExecutionContext&);
 
     private:
-        void initializeTrackingAndRendering(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&) final { }
+        void initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&) final { }
         void shutDownTrackingAndRendering() final { }
         void initializeReferenceSpace(PlatformXR::ReferenceSpaceType) final { }
 
@@ -141,6 +141,6 @@ private:
     WeakPtr<PlatformXR::Device> m_inlineXRDevice;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

@@ -46,7 +46,7 @@
 #include <wtf/ObjectIdentifier.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStream;
 class SecurityOrigin;
@@ -98,6 +98,6 @@ private:
     TrackConstraints m_videoConstraints;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

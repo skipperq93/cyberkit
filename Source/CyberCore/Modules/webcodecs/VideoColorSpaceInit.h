@@ -29,7 +29,7 @@
 
 #include "PlatformVideoColorSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using VideoColorSpaceInit = PlatformVideoColorSpace;
 

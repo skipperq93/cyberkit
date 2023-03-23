@@ -34,7 +34,7 @@
 #import <CyberCore/ScrollingTree.h>
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<ScrollingTreeFrameScrollingNodeRemoteIOS> ScrollingTreeFrameScrollingNodeRemoteIOS::create(ScrollingTree& scrollingTree, ScrollingNodeType nodeType, ScrollingNodeID nodeID)

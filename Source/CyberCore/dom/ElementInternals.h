@@ -33,7 +33,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFormElement;
 class FormAssociatedCustomElement;
@@ -82,4 +82,4 @@ private:
     WeakPtr<HTMLElement, WeakPtrImplWithEventTargetData> m_element;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "FormattingQuirks.h"
 #include "InlineLineBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class InlineFormattingContext;

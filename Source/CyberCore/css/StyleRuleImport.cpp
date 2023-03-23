@@ -34,7 +34,7 @@
 #include "StyleSheetContents.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<StyleRuleImport> StyleRuleImport::create(const String& href, MQ::MediaQueryList&& mediaQueries, std::optional<CascadeLayerName>&& cascadeLayerName)
 {
@@ -175,4 +175,4 @@ void StyleRuleImport::requestStyleSheet()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

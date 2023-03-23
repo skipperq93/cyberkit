@@ -27,7 +27,7 @@
 
 #include "ElementIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ElementChildRange;
 
@@ -129,4 +129,4 @@ inline ElementChildRange<const ElementType> childrenOfType(const ContainerNode& 
     return ElementChildRange<const ElementType>(parent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -44,7 +44,7 @@ WK_CLASS_AVAILABLE(macos(10.10), ios(8.0))
  */
 @property (nonatomic, readonly, copy) NSURLResponse *response;
 
-/*! @abstract A Boolean value indicating whether WebKit can display the response's MIME type natively.
+/*! @abstract A Boolean value indicating whether CyberKit can display the response's MIME type natively.
  @discussion Allowing a navigation response with a MIME type that can't be shown will cause the navigation to fail.
  */
 @property (nonatomic, readonly) BOOL canShowMIMEType;

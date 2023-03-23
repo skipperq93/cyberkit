@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ChannelCountMode {
     Max,
@@ -33,4 +33,4 @@ enum class ChannelCountMode {
     Explicit,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

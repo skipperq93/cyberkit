@@ -22,10 +22,10 @@
 
 #include "JSDOMWrapper.h"
 #include "TestException.h"
-#include <JavaScriptCore/ErrorPrototype.h>
+#include <CyberScriptCore/ErrorPrototype.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestException : public JSDOMWrapper<TestException> {
 public:
@@ -91,4 +91,4 @@ template<> struct JSDOMWrapperConverterTraits<TestException> {
     using ToWrappedReturnType = TestException*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "Supplementable.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Navigator;
 class WakeLock;
@@ -52,4 +52,4 @@ private:
     Navigator& m_navigator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

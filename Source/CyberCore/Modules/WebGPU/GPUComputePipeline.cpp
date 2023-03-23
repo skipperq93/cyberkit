@@ -28,7 +28,7 @@
 
 #include "GPUBindGroupLayout.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUComputePipeline::label() const
 {
@@ -46,4 +46,4 @@ Ref<GPUBindGroupLayout> GPUComputePipeline::getBindGroupLayout(uint32_t index)
     return GPUBindGroupLayout::create(m_backing->getBindGroupLayout(index));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

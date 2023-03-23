@@ -30,7 +30,7 @@
 #import "APIWebAuthenticationAssertionResponse.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::WebAuthenticationAssertionResponse> {
     using WrapperClass = _WKWebAuthenticationAssertionResponse;

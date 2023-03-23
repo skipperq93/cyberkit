@@ -17,7 +17,7 @@ set(TestRunnerShared_SOURCES
 
 set(TestRunnerShared_LIBRARIES CyberKit::CyberCoreTestSupport)
 set(TestRunnerShared_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
     CyberCore

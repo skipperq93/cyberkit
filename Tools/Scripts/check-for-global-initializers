@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# "check-for-global-initializers" script for WebKit Open Source Project
+# "check-for-global-initializers" script for CyberKit Open Source Project
 
 # Intended to be invoked from an Xcode build step to check if there are
 # any global initializers in a target.
@@ -96,7 +96,7 @@ for my $file (sort @files) {
 
         # Special cases for files that have initializers in debug builds.
         if ($configuration eq "Debug" or $variant eq "debug" or $debugRoot) {
-            if ($target eq "JavaScriptCore") {
+            if ($target eq "CyberScriptCore") {
                 next if $shortName eq "AllInOneFile.o";
                 next if $shortName eq "Opcode.o";
                 next if $shortName eq "Structure.o";
@@ -117,11 +117,11 @@ for my $file (sort @files) {
                 next if $shortName eq "SubresourceLoader.o";
                 next if $shortName eq "XMLHttpRequest.o";
             }
-            if ($target eq "WebKit") {
+            if ($target eq "CyberKit") {
                 next if $shortName eq "HostedNetscapePluginStream.o";
                 next if $shortName eq "NetscapePluginInstanceProxy.o";
             }
-            if ($target eq "WebKit2") {
+            if ($target eq "CyberKit2") {
                 next if $shortName eq "WebContext.o";
                 next if $shortName eq "WebFrame.o";
                 next if $shortName eq "WebPage.o";

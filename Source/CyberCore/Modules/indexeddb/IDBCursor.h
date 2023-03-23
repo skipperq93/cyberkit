@@ -36,7 +36,7 @@
 #include <variant>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBGetResult;
 class IDBIndex;
@@ -130,4 +130,4 @@ inline IDBCursorDirection IDBCursor::direction() const
     return m_info.cursorDirection();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

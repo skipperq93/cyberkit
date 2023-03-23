@@ -24,7 +24,7 @@
 #include "ExceptionOr.h"
 #include "ScriptWrappable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSProperty;
 class CSSRule;
@@ -100,4 +100,4 @@ protected:
     CSSStyleDeclaration() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

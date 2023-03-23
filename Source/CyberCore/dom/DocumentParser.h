@@ -28,7 +28,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentWriter;
 class SegmentedString;
@@ -84,7 +84,7 @@ public:
     // Document is expected to detach the parser before releasing its ref.
     // After detach, m_document is cleared.  The parser will unwind its
     // callstacks, but not produce any more nodes.
-    // It is impossible for the parser to touch the rest of WebCore after
+    // It is impossible for the parser to touch the rest of CyberCore after
     // detach is called.
     virtual void detach();
 
@@ -116,4 +116,4 @@ private:
     WeakPtr<Document, WeakPtrImplWithEventTargetData> m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

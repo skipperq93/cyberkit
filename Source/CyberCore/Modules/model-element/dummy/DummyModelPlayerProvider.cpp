@@ -28,7 +28,7 @@
 
 #include "DummyModelPlayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DummyModelPlayerProvider::DummyModelPlayerProvider() = default;
 DummyModelPlayerProvider::~DummyModelPlayerProvider() = default;

@@ -41,7 +41,7 @@ namespace JSC {
 class AbstractSlotVisitor;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class QualifiedName;
 
@@ -75,4 +75,4 @@ private:
     MemoryCompactLookupOnlyRobinHoodHashSet<AtomString> m_attributeFilter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

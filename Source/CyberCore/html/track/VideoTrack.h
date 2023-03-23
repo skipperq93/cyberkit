@@ -32,7 +32,7 @@
 #include "VideoTrackPrivateClient.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaDescription;
 class VideoTrack;
@@ -102,10 +102,10 @@ private:
     bool m_selected { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::VideoTrack)
-    static bool isType(const WebCore::TrackBase& track) { return track.type() == WebCore::TrackBase::VideoTrack; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::VideoTrack)
+    static bool isType(const CyberCore::TrackBase& track) { return track.type() == CyberCore::TrackBase::VideoTrack; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

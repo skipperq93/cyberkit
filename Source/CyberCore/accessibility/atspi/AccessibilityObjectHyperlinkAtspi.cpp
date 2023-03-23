@@ -27,7 +27,7 @@
 #include <wtf/URL.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_hyperlinkFunctions = {
     // method_call
@@ -102,6 +102,6 @@ unsigned AccessibilityObjectAtspi::offsetInParent() const
     return parent->wrapper()->characterOffset(objectReplacementCharacter, index).value_or(0);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

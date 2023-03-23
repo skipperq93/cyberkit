@@ -31,7 +31,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaQueryParserContext;
 

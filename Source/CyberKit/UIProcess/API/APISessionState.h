@@ -33,15 +33,15 @@ namespace API {
 
 class SessionState final : public ObjectImpl<Object::Type::SessionState> {
 public:
-    static Ref<SessionState> create(WebKit::SessionState);
+    static Ref<SessionState> create(CyberKit::SessionState);
     virtual ~SessionState();
 
-    const WebKit::SessionState& sessionState() const { return m_sessionState; }
+    const CyberKit::SessionState& sessionState() const { return m_sessionState; }
 
 private:
-    explicit SessionState(WebKit::SessionState);
+    explicit SessionState(CyberKit::SessionState);
 
-    const WebKit::SessionState m_sessionState;
+    const CyberKit::SessionState m_sessionState;
 };
 
 } // namespace API

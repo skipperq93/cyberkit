@@ -33,7 +33,7 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLTimerQueryEXT final : public WebGLContextObject {
 public:
@@ -54,6 +54,6 @@ private:
     GCGLenum m_target { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

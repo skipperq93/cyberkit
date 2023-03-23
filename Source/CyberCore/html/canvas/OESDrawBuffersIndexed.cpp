@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OESDrawBuffersIndexed);
 
@@ -123,6 +123,6 @@ void OESDrawBuffersIndexed::colorMaskiOES(GCGLuint buf, GCGLboolean red, GCGLboo
     context->graphicsContextGL()->colorMaskiOES(buf, red, green, blue, alpha);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

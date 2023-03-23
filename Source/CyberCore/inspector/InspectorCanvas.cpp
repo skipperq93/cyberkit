@@ -96,7 +96,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -1364,5 +1364,5 @@ Ref<JSON::ArrayOf<JSON::Value>> InspectorCanvas::buildArrayForImageData(const Im
     return array;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -47,7 +47,7 @@
 #include "XLinkNames.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void Editor::pasteWithPasteboard(Pasteboard* pasteboard, OptionSet<PasteOption> options)
 {
@@ -130,4 +130,4 @@ RefPtr<DocumentFragment> Editor::webContentFromPasteboard(Pasteboard& pasteboard
     return WTFMove(reader.fragment);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

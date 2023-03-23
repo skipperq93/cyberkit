@@ -63,10 +63,10 @@ class TestTrack(testing.PathTestCase):
 
     def test_branch(self):
         with OutputCapture() as captured, mocks.local.Git(self.path, remotes={
-            'origin': 'git@github.example.com:WebKit/WebKit.git',
-            'fork': 'git@github.example.com:Contributor/WebKit.git',
-            'security': 'git@github.example.com:WebKit/WebKit-security.git',
-            'security-fork': 'git@github.example.com:Contributor/WebKit-security.git',
+            'origin': 'git@github.example.com:CyberKit/CyberKit.git',
+            'fork': 'git@github.example.com:Contributor/CyberKit.git',
+            'security': 'git@github.example.com:CyberKit/CyberKit-security.git',
+            'security-fork': 'git@github.example.com:Contributor/CyberKit-security.git',
         }) as mocked, mocks.local.Svn(), MockTime, Terminal.override_atty(sys.stdin, isatty=False):
             mocked.remotes['security/hidden-branch'] = [mocked.commits[mocked.branch][-1]]
             mocked.remotes['security-fork/hidden-branch'] = [mocked.commits[mocked.branch][-1]]
@@ -75,8 +75,8 @@ class TestTrack(testing.PathTestCase):
             os.mkdir(os.path.dirname(project_config))
             with open(project_config, 'w') as f:
                 f.write('[webkitscmpy "remotes"]\n')
-                f.write('    origin = git@github.example.com:WebKit/WebKit.git\n')
-                f.write('    security = git@github.example.com:WebKit/WebKit-security.git\n')
+                f.write('    origin = git@github.example.com:CyberKit/CyberKit.git\n')
+                f.write('    security = git@github.example.com:CyberKit/CyberKit-security.git\n')
 
             self.assertEqual(0, program.main(
                 args=('track', 'hidden-branch'),
@@ -91,10 +91,10 @@ class TestTrack(testing.PathTestCase):
 
     def test_eng_branch(self):
         with OutputCapture() as captured, mocks.local.Git(self.path, remotes={
-            'origin': 'git@github.example.com:WebKit/WebKit.git',
-            'fork': 'git@github.example.com:Contributor/WebKit.git',
-            'security': 'git@github.example.com:WebKit/WebKit-security.git',
-            'security-fork': 'git@github.example.com:Contributor/WebKit-security.git',
+            'origin': 'git@github.example.com:CyberKit/CyberKit.git',
+            'fork': 'git@github.example.com:Contributor/CyberKit.git',
+            'security': 'git@github.example.com:CyberKit/CyberKit-security.git',
+            'security-fork': 'git@github.example.com:Contributor/CyberKit-security.git',
         }) as mocked, mocks.local.Svn(), MockTime, Terminal.override_atty(sys.stdin, isatty=False):
             mocked.remotes['security/hidden-branch'] = [mocked.commits[mocked.branch][-1]]
             mocked.remotes['security-fork/hidden-branch'] = [mocked.commits[mocked.branch][-1]]
@@ -104,8 +104,8 @@ class TestTrack(testing.PathTestCase):
             os.mkdir(os.path.dirname(project_config))
             with open(project_config, 'w') as f:
                 f.write('[webkitscmpy "remotes"]\n')
-                f.write('    origin = git@github.example.com:WebKit/WebKit.git\n')
-                f.write('    security = git@github.example.com:WebKit/WebKit-security.git\n')
+                f.write('    origin = git@github.example.com:CyberKit/CyberKit.git\n')
+                f.write('    security = git@github.example.com:CyberKit/CyberKit-security.git\n')
 
             self.assertEqual(0, program.main(
                 args=('track', 'eng/hidden'),

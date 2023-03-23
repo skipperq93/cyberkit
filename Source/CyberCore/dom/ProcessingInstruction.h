@@ -26,7 +26,7 @@
 #include "CachedStyleSheetClient.h"
 #include "CharacterData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleSheet;
 class CSSStyleSheet;
@@ -95,8 +95,8 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ProcessingInstruction)
-    static bool isType(const WebCore::Node& node) { return node.nodeType() == WebCore::Node::PROCESSING_INSTRUCTION_NODE; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ProcessingInstruction)
+    static bool isType(const CyberCore::Node& node) { return node.nodeType() == CyberCore::Node::PROCESSING_INSTRUCTION_NODE; }
 SPECIALIZE_TYPE_TRAITS_END()

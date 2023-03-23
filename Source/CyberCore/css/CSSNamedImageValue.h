@@ -28,7 +28,7 @@
 #include "CSSValue.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleImage;
 
@@ -56,6 +56,6 @@ private:
     mutable RefPtr<StyleImage> m_cachedStyleImage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSNamedImageValue, isNamedImageValue())

@@ -28,7 +28,7 @@
 #include <wtf/URL.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class FrameLoadState {
 public:
@@ -79,4 +79,4 @@ private:
     WeakHashSet<Observer> m_observers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

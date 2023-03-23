@@ -18,58 +18,58 @@
  */
 
 #include "config.h"
-#include "WebKitPermissionRequest.h"
+#include "CyberKitPermissionRequest.h"
 
 #if !ENABLE(2022_GLIB_API)
-typedef WebKitPermissionRequestIface WebKitPermissionRequestInterface;
+typedef CyberKitPermissionRequestIface CyberKitPermissionRequestInterface;
 #endif
 
 /**
- * WebKitPermissionRequest:
- * @See_also: #WebKitWebView
+ * CyberKitPermissionRequest:
+ * @See_also: #CyberKitWebView
  *
  * A permission request.
  *
  * There are situations where an embedder would need to ask the user
  * for permission to do certain types of operations, such as switching
  * to fullscreen mode or reporting the user's location through the
- * standard Geolocation API. In those cases, WebKit will emit a
- * #WebKitWebView::permission-request signal with a
- * #WebKitPermissionRequest object attached to it.
+ * standard Geolocation API. In those cases, CyberKit will emit a
+ * #CyberKitWebView::permission-request signal with a
+ * #CyberKitPermissionRequest object attached to it.
  */
 
-G_DEFINE_INTERFACE(WebKitPermissionRequest, webkit_permission_request, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(CyberKitPermissionRequest, webkit_permission_request, G_TYPE_OBJECT)
 
-static void webkit_permission_request_default_init(WebKitPermissionRequestInterface*)
+static void webkit_permission_request_default_init(CyberKitPermissionRequestInterface*)
 {
 }
 
 /**
  * webkit_permission_request_allow:
- * @request: a #WebKitPermissionRequest
+ * @request: a #CyberKitPermissionRequest
  *
  * Allow the action which triggered this request.
  */
-void webkit_permission_request_allow(WebKitPermissionRequest* request)
+void webkit_permission_request_allow(CyberKitPermissionRequest* request)
 {
     g_return_if_fail(WEBKIT_IS_PERMISSION_REQUEST(request));
 
-    WebKitPermissionRequestInterface* iface = WEBKIT_PERMISSION_REQUEST_GET_IFACE(request);
+    CyberKitPermissionRequestInterface* iface = WEBKIT_PERMISSION_REQUEST_GET_IFACE(request);
     if (iface->allow)
         iface->allow(request);
 }
 
 /**
  * webkit_permission_request_deny:
- * @request: a #WebKitPermissionRequest
+ * @request: a #CyberKitPermissionRequest
  *
  * Deny the action which triggered this request.
  */
-void webkit_permission_request_deny(WebKitPermissionRequest* request)
+void webkit_permission_request_deny(CyberKitPermissionRequest* request)
 {
     g_return_if_fail(WEBKIT_IS_PERMISSION_REQUEST(request));
 
-    WebKitPermissionRequestInterface* iface = WEBKIT_PERMISSION_REQUEST_GET_IFACE(request);
+    CyberKitPermissionRequestInterface* iface = WEBKIT_PERMISSION_REQUEST_GET_IFACE(request);
     if (iface->deny)
         iface->deny(request);
 }

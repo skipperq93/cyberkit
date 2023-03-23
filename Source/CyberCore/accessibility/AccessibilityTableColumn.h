@@ -32,7 +32,7 @@
 #include "AccessibilityTable.h"
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class RenderTableSection;
 
@@ -64,8 +64,8 @@ private:
     unsigned m_columnIndex;
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilityTableColumn) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isAccessibilityTableColumnInstance(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilityTableColumn) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isAccessibilityTableColumnInstance(); } \
 SPECIALIZE_TYPE_TRAITS_END()

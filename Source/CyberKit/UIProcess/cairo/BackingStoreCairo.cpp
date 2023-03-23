@@ -42,7 +42,7 @@
 #include <gdk/gdkx.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 std::unique_ptr<BackingStoreBackendCairo> BackingStore::createBackend()
@@ -104,4 +104,4 @@ void BackingStore::scroll(const IntRect& scrollRect, const IntSize& scrollOffset
     m_backend->scroll(scrollRect, scrollOffset);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

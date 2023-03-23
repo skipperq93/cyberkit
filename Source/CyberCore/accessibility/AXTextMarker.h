@@ -26,7 +26,7 @@
 
 #include "AccessibilityObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CharacterOffset;
 
@@ -167,4 +167,4 @@ private:
     AXTextMarker m_end;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

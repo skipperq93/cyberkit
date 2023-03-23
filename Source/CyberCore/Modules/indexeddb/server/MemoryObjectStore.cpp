@@ -39,7 +39,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <CyberScriptCore/JSLock.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 namespace IDBServer {
 
@@ -517,4 +517,4 @@ void MemoryObjectStore::renameIndex(MemoryIndex& index, const String& newName)
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

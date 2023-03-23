@@ -32,7 +32,7 @@
 #include <wtf/URL.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplicationManifest {
     enum class Display : uint8_t {
@@ -66,7 +66,7 @@ struct ApplicationManifest {
     Vector<Icon> icons;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLICATION_MANIFEST)
 

@@ -31,7 +31,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLError : public ThreadSafeRefCounted<SQLError> {
 public:
@@ -65,4 +65,4 @@ private:
     String m_message;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

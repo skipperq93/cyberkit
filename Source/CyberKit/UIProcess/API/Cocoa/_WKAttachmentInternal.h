@@ -26,7 +26,7 @@
 #import "APIAttachment.h"
 #import <CyberKit/_WKAttachment.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::Attachment> {
     using WrapperClass = _WKAttachment;

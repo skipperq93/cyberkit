@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // ModifySelectionListLevelCommand provides functions useful for both increasing and decreasing the list level.
 // It is the base class of IncreaseSelectionListLevelCommand and DecreaseSelectionListLevelCommand.
@@ -86,4 +86,4 @@ private:
     void doApply() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

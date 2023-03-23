@@ -32,11 +32,11 @@
 #include "CryptoKeyPair.h"
 #include "CryptoKeyRSAComponents.h"
 #include "OpenSSLUtilities.h"
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 #include <openssl/X509.h>
 #include <openssl/evp.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static size_t getRSAModulusLength(RSA* rsa)
 {
@@ -403,6 +403,6 @@ std::unique_ptr<CryptoKeyRSAComponents> CryptoKeyRSA::exportData() const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

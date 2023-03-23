@@ -32,7 +32,7 @@
 #include "EventNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextEvent);
 
@@ -136,4 +136,4 @@ bool TextEvent::isTextEvent() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

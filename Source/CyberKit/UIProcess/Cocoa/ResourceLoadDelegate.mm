@@ -32,7 +32,7 @@
 #import "_WKResourceLoadDelegate.h"
 #import "_WKResourceLoadInfoInternal.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 ResourceLoadDelegate::ResourceLoadDelegate(WKWebView *webView)
     : m_webView(webView)
@@ -74,7 +74,7 @@ ResourceLoadDelegate::ResourceLoadClient::ResourceLoadClient(ResourceLoadDelegat
 
 ResourceLoadDelegate::ResourceLoadClient::~ResourceLoadClient() = default;
 
-void ResourceLoadDelegate::ResourceLoadClient::didSendRequest(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceRequest&& request) const
+void ResourceLoadDelegate::ResourceLoadClient::didSendRequest(CyberKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceRequest&& request) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didSendRequest)
         return;
@@ -86,7 +86,7 @@ void ResourceLoadDelegate::ResourceLoadClient::didSendRequest(WebKit::ResourceLo
     [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didSendRequest:request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody)];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didPerformHTTPRedirection(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response, CyberCore::ResourceRequest&& request) const
+void ResourceLoadDelegate::ResourceLoadClient::didPerformHTTPRedirection(CyberKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response, CyberCore::ResourceRequest&& request) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didPerformHTTPRedirection)
         return;
@@ -98,7 +98,7 @@ void ResourceLoadDelegate::ResourceLoadClient::didPerformHTTPRedirection(WebKit:
     [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didPerformHTTPRedirection:response.nsURLResponse() newRequest:request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody)];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didReceiveChallenge(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::AuthenticationChallenge&& challenge) const
+void ResourceLoadDelegate::ResourceLoadClient::didReceiveChallenge(CyberKit::ResourceLoadInfo&& loadInfo, CyberCore::AuthenticationChallenge&& challenge) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didReceiveChallenge)
         return;
@@ -110,7 +110,7 @@ void ResourceLoadDelegate::ResourceLoadClient::didReceiveChallenge(WebKit::Resou
     [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didReceiveChallenge:mac(challenge)];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didReceiveResponse(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response) const
+void ResourceLoadDelegate::ResourceLoadClient::didReceiveResponse(CyberKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didReceiveResponse)
         return;
@@ -122,7 +122,7 @@ void ResourceLoadDelegate::ResourceLoadClient::didReceiveResponse(WebKit::Resour
     [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didReceiveResponse:response.nsURLResponse()];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didCompleteWithError(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response, CyberCore::ResourceError&& error) const
+void ResourceLoadDelegate::ResourceLoadClient::didCompleteWithError(CyberKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response, CyberCore::ResourceError&& error) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didCompleteWithError)
         return;
@@ -134,4 +134,4 @@ void ResourceLoadDelegate::ResourceLoadClient::didCompleteWithError(WebKit::Reso
     [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didCompleteWithError:error.nsError() response:response.nsURLResponse()];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -31,7 +31,7 @@
 #include "RTCDataChannel.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDataChannelEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(RTCDataChannelEvent);
@@ -54,6 +54,6 @@ private:
     Ref<RTCDataChannel> m_channel;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

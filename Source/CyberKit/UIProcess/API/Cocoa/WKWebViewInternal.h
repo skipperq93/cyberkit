@@ -79,7 +79,7 @@ struct ExceptionDetails;
 enum class WheelScrollGestureState : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 enum class ContinueUnsafeLoad : bool;
 class IconLoadingDelegate;
 class NavigationState;
@@ -130,7 +130,7 @@ struct PerWebProcessState {
     BOOL hasCommittedLoadForMainFrame { NO };
     BOOL needsResetViewStateAfterCommitLoadForMainFrame { NO };
 
-    WebKit::DynamicViewportUpdateMode dynamicViewportUpdateMode { WebKit::DynamicViewportUpdateMode::NotResizing };
+    CyberKit::DynamicViewportUpdateMode dynamicViewportUpdateMode { CyberKit::DynamicViewportUpdateMode::NotResizing };
 
     BOOL waitingForEndAnimatedResize { NO };
     BOOL waitingForCommitAfterAnimatedResize { NO };
@@ -167,10 +167,10 @@ struct PerWebProcessState {
     std::optional<CGRect> frozenVisibleContentRect;
     std::optional<CGRect> frozenUnobscuredContentRect;
 
-    WebKit::TransactionID firstPaintAfterCommitLoadTransactionID;
-    WebKit::TransactionID lastTransactionID;
+    CyberKit::TransactionID firstPaintAfterCommitLoadTransactionID;
+    CyberKit::TransactionID lastTransactionID;
 
-    std::optional<WebKit::TransactionID> firstTransactionIDAfterPageRestore;
+    std::optional<CyberKit::TransactionID> firstTransactionIDAfterPageRestore;
 
     CyberCore::GraphicsLayer::PlatformLayerID pendingFindLayerID;
     CyberCore::GraphicsLayer::PlatformLayerID committedFindLayerID;
@@ -184,12 +184,12 @@ struct PerWebProcessState {
 
 @package
     RetainPtr<WKWebViewConfiguration> _configuration;
-    RefPtr<WebKit::WebPageProxy> _page;
+    RefPtr<CyberKit::WebPageProxy> _page;
 
-    std::unique_ptr<WebKit::NavigationState> _navigationState;
-    std::unique_ptr<WebKit::UIDelegate> _uiDelegate;
-    std::unique_ptr<WebKit::IconLoadingDelegate> _iconLoadingDelegate;
-    std::unique_ptr<WebKit::ResourceLoadDelegate> _resourceLoadDelegate;
+    std::unique_ptr<CyberKit::NavigationState> _navigationState;
+    std::unique_ptr<CyberKit::UIDelegate> _uiDelegate;
+    std::unique_ptr<CyberKit::IconLoadingDelegate> _iconLoadingDelegate;
+    std::unique_ptr<CyberKit::ResourceLoadDelegate> _resourceLoadDelegate;
 
     WeakObjCPtr<id <_WKTextManipulationDelegate>> _textManipulationDelegate;
     WeakObjCPtr<id <_WKInputDelegate>> _inputDelegate;
@@ -207,7 +207,7 @@ struct PerWebProcessState {
     CocoaEdgeInsets _maximumViewportInset;
 
 #if PLATFORM(MAC)
-    std::unique_ptr<WebKit::WebViewImpl> _impl;
+    std::unique_ptr<CyberKit::WebViewImpl> _impl;
     RetainPtr<WKTextFinderClient> _textFinderClient;
 
     // Only used with UI-side compositing.
@@ -218,7 +218,7 @@ struct PerWebProcessState {
 #if PLATFORM(IOS_FAMILY)
     RetainPtr<WKScrollView> _scrollView;
     RetainPtr<WKContentView> _contentView;
-    std::unique_ptr<WebKit::ViewGestureController> _gestureController;
+    std::unique_ptr<CyberKit::ViewGestureController> _gestureController;
     Vector<BlockPtr<void ()>> _visibleContentRectUpdateCallbacks;
 
 #if ENABLE(FULLSCREEN_API)
@@ -257,7 +257,7 @@ struct PerWebProcessState {
 
     BOOL _allowsViewportShrinkToFit;
 
-    WebKit::DynamicViewportSizeUpdateID _currentDynamicViewportSizeUpdateID;
+    CyberKit::DynamicViewportSizeUpdateID _currentDynamicViewportSizeUpdateID;
     CATransform3D _resizeAnimationTransformAdjustments;
     CGFloat _animatedResizeOldMinimumEffectiveDeviceWidth;
     int32_t _animatedResizeOldOrientation;
@@ -298,7 +298,7 @@ struct PerWebProcessState {
 
     RetainPtr<WKPasswordView> _passwordView;
 
-    OptionSet<WebKit::ViewStabilityFlag> _viewStabilityWhenVisibleContentRectUpdateScheduled;
+    OptionSet<CyberKit::ViewStabilityFlag> _viewStabilityWhenVisibleContentRectUpdateScheduled;
 
     std::optional<CyberCore::WheelScrollGestureState> _currentScrollGestureState;
     uint64_t _wheelEventCountInCurrentScrollGesture;
@@ -335,14 +335,14 @@ struct PerWebProcessState {
 
 - (void)_recalculateViewportSizesWithMinimumViewportInset:(CocoaEdgeInsets)minimumViewportInset maximumViewportInset:(CocoaEdgeInsets)maximumViewportInset throwOnInvalidInput:(BOOL)throwOnInvalidInput;
 
-- (void)_showSafeBrowsingWarning:(const WebKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler;
+- (void)_showSafeBrowsingWarning:(const CyberKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler;
 - (void)_clearSafeBrowsingWarning;
 - (void)_clearSafeBrowsingWarningIfForMainFrameNavigation;
 
 - (std::optional<BOOL>)_resolutionForShareSheetImmediateCompletionForTesting;
 
 - (WKPageRef)_pageForTesting;
-- (NakedPtr<WebKit::WebPageProxy>)_page;
+- (NakedPtr<CyberKit::WebPageProxy>)_page;
 
 @end
 

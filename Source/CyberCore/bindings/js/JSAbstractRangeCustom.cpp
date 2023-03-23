@@ -30,7 +30,7 @@
 #include "JSRange.h"
 #include "JSStaticRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObject, AbstractRange& range)
 {

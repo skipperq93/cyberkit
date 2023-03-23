@@ -31,7 +31,7 @@
 #import "Logging.h"
 #import "WKContentViewInteraction.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 GestureRecognizerConsistencyEnforcer::GestureRecognizerConsistencyEnforcer(WKContentView *view)
     : m_view(view)
@@ -88,6 +88,6 @@ void GestureRecognizerConsistencyEnforcer::timerFired()
     RELEASE_LOG_FAULT(ViewGestures, "Touch event gesture recognizer failed to reset after ending gesture deferral: %@", possibleDeferringGestures);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -28,7 +28,7 @@
 #include "WKDeclarationSpecifiers.h"
 #include <wtf/Seconds.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct FullscreenTouchSecheuristicParameters {
     Seconds rampUpSpeed;

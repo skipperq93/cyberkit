@@ -25,7 +25,7 @@
 messages -> GPUProcessProxy {
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    DidCreateContextForVisibilityPropagation(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID, WebKit::LayerHostingContextID contextID)
+    DidCreateContextForVisibilityPropagation(CyberKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID, CyberKit::LayerHostingContextID contextID)
 #endif
 
 #if ENABLE(VP9)

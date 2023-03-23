@@ -33,7 +33,7 @@
 #include "SharedStringHash.h"
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -60,4 +60,4 @@ inline InsideLink VisitedLinkState::determineLinkState(const Element& element)
     return determineLinkStateSlowCase(element);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

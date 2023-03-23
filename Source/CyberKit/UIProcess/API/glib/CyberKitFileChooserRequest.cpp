@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitFileChooserRequest.h"
+#include "CyberKitFileChooserRequest.h"
 
 #include "APIArray.h"
 #include "APIOpenPanelParameters.h"
 #include "APIString.h"
-#include "WebKitFileChooserRequestPrivate.h"
+#include "CyberKitFileChooserRequestPrivate.h"
 #include "WebOpenPanelResultListenerProxy.h"
 #include <glib/gi18n-lib.h>
 #include <pal/text/TextEncoding.h>
@@ -34,34 +34,34 @@
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitFileChooserRequest:
- * @See_also: #WebKitWebView
+ * CyberKitFileChooserRequest:
+ * @See_also: #CyberKitWebView
  *
  * A request to open a file chooser.
  *
  * Whenever the user interacts with an HTML input element with
- * file type, WebKit will need to show a dialog to choose one or
+ * file type, CyberKit will need to show a dialog to choose one or
  * more files to be uploaded to the server along with the rest of the
  * form data. For that to happen in a general way, instead of just
  * opening a #GtkFileChooserDialog (which might be not desirable in
  * some cases, which could prefer to use their own file chooser
- * dialog), WebKit will fire the #WebKitWebView::run-file-chooser
- * signal with a #WebKitFileChooserRequest object, which will allow
+ * dialog), CyberKit will fire the #CyberKitWebView::run-file-chooser
+ * signal with a #CyberKitFileChooserRequest object, which will allow
  * the client application to specify the files to be selected, to
  * inspect the details of the request (e.g. if multiple selection
  * should be allowed) and to cancel the request, in case nothing was
  * selected.
  *
  * In case the client application does not wish to handle this signal,
- * WebKit will provide a default handler which will asynchronously run
+ * CyberKit will provide a default handler which will asynchronously run
  * a regular #GtkFileChooserDialog for the user to interact with.
  */
 
-struct _WebKitFileChooserRequestPrivate {
+struct _CyberKitFileChooserRequestPrivate {
     RefPtr<API::OpenPanelParameters> parameters;
     RefPtr<WebOpenPanelResultListenerProxy> listener;
 #if PLATFORM(GTK)
@@ -72,7 +72,7 @@ struct _WebKitFileChooserRequestPrivate {
     bool handledRequest;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitFileChooserRequest, webkit_file_chooser_request, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitFileChooserRequest, webkit_file_chooser_request, G_TYPE_OBJECT, GObject)
 
 enum {
     PROP_0,
@@ -86,7 +86,7 @@ enum {
 
 static void webkitFileChooserRequestDispose(GObject* object)
 {
-    WebKitFileChooserRequest* request = WEBKIT_FILE_CHOOSER_REQUEST(object);
+    CyberKitFileChooserRequest* request = WEBKIT_FILE_CHOOSER_REQUEST(object);
 
     // Make sure the request is always handled before finalizing.
     if (!request->priv->handledRequest)
@@ -97,7 +97,7 @@ static void webkitFileChooserRequestDispose(GObject* object)
 
 static void webkitFileChooserRequestGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitFileChooserRequest* request = WEBKIT_FILE_CHOOSER_REQUEST(object);
+    CyberKitFileChooserRequest* request = WEBKIT_FILE_CHOOSER_REQUEST(object);
     switch (propId) {
 #if PLATFORM(GTK)
     case PROP_FILTER:
@@ -119,7 +119,7 @@ static void webkitFileChooserRequestGetProperty(GObject* object, guint propId, G
     }
 }
 
-static void webkit_file_chooser_request_class_init(WebKitFileChooserRequestClass* requestClass)
+static void webkit_file_chooser_request_class_init(CyberKitFileChooserRequestClass* requestClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(requestClass);
     objectClass->dispose = webkitFileChooserRequestDispose;
@@ -127,7 +127,7 @@ static void webkit_file_chooser_request_class_init(WebKitFileChooserRequestClass
 
 #if PLATFORM(GTK)
     /**
-     * WebKitFileChooserRequest:filter:
+     * CyberKitFileChooserRequest:filter:
      *
      * The filter currently associated with the request. See
      * webkit_file_chooser_request_get_mime_types_filter() for more
@@ -142,7 +142,7 @@ static void webkit_file_chooser_request_class_init(WebKitFileChooserRequestClass
 #endif
 
     /**
-     * WebKitFileChooserRequest:mime-types:
+     * CyberKitFileChooserRequest:mime-types:
      *
      * A %NULL-terminated array of strings containing the list of MIME
      * types the file chooser dialog should handle. See
@@ -155,7 +155,7 @@ static void webkit_file_chooser_request_class_init(WebKitFileChooserRequestClass
                                                       G_TYPE_STRV,
                                                       WEBKIT_PARAM_READABLE));
     /**
-     * WebKitFileChooserRequest:select-multiple:
+     * CyberKitFileChooserRequest:select-multiple:
      *
      * Whether the file chooser should allow selecting multiple
      * files. See
@@ -169,7 +169,7 @@ static void webkit_file_chooser_request_class_init(WebKitFileChooserRequestClass
                                                        FALSE,
                                                        WEBKIT_PARAM_READABLE));
     /**
-     * WebKitFileChooserRequest:selected-files:
+     * CyberKitFileChooserRequest:selected-files:
      *
      * A %NULL-terminated array of strings containing the list of
      * selected files associated to the current request. See
@@ -183,9 +183,9 @@ static void webkit_file_chooser_request_class_init(WebKitFileChooserRequestClass
                                                       WEBKIT_PARAM_READABLE));
 }
 
-WebKitFileChooserRequest* webkitFileChooserRequestCreate(API::OpenPanelParameters* parameters, WebOpenPanelResultListenerProxy* listener)
+CyberKitFileChooserRequest* webkitFileChooserRequestCreate(API::OpenPanelParameters* parameters, WebOpenPanelResultListenerProxy* listener)
 {
-    WebKitFileChooserRequest* request = WEBKIT_FILE_CHOOSER_REQUEST(g_object_new(WEBKIT_TYPE_FILE_CHOOSER_REQUEST, NULL));
+    CyberKitFileChooserRequest* request = WEBKIT_FILE_CHOOSER_REQUEST(g_object_new(WEBKIT_TYPE_FILE_CHOOSER_REQUEST, NULL));
     request->priv->parameters = parameters;
     request->priv->listener = listener;
     return request;
@@ -193,7 +193,7 @@ WebKitFileChooserRequest* webkitFileChooserRequestCreate(API::OpenPanelParameter
 
 /**
  * webkit_file_chooser_request_get_mime_types:
- * @request: a #WebKitFileChooserRequest
+ * @request: a #CyberKitFileChooserRequest
  *
  * Get the list of MIME types the file chooser dialog should handle.
  *
@@ -207,10 +207,10 @@ WebKitFileChooserRequest* webkitFileChooserRequestCreate(API::OpenPanelParameter
  * Returns: (array zero-terminated=1) (transfer none): a
  * %NULL-terminated array of strings if a list of accepted MIME types
  * is defined or %NULL otherwise, meaning that any MIME type should be
- * accepted. This array and its contents are owned by WebKit and
+ * accepted. This array and its contents are owned by CyberKit and
  * should not be modified or freed.
  */
-const gchar* const* webkit_file_chooser_request_get_mime_types(WebKitFileChooserRequest* request)
+const gchar* const* webkit_file_chooser_request_get_mime_types(CyberKitFileChooserRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_FILE_CHOOSER_REQUEST(request), 0);
     if (request->priv->mimeTypes)
@@ -237,7 +237,7 @@ const gchar* const* webkit_file_chooser_request_get_mime_types(WebKitFileChooser
 #if PLATFORM(GTK)
 /**
  * webkit_file_chooser_request_get_mime_types_filter:
- * @request: a #WebKitFileChooserRequest
+ * @request: a #CyberKitFileChooserRequest
  *
  * Get the filter currently associated with the request.
  *
@@ -252,9 +252,9 @@ const gchar* const* webkit_file_chooser_request_get_mime_types(WebKitFileChooser
  *
  * Returns: (transfer none): a #GtkFileFilter if a list of accepted
  * MIME types is defined or %NULL otherwise. The returned object is
- * owned by WebKit should not be modified or freed.
+ * owned by CyberKit should not be modified or freed.
  */
-GtkFileFilter* webkit_file_chooser_request_get_mime_types_filter(WebKitFileChooserRequest* request)
+GtkFileFilter* webkit_file_chooser_request_get_mime_types_filter(CyberKitFileChooserRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_FILE_CHOOSER_REQUEST(request), 0);
     if (request->priv->filter)
@@ -283,18 +283,18 @@ GtkFileFilter* webkit_file_chooser_request_get_mime_types_filter(WebKitFileChoos
 
 /**
  * webkit_file_chooser_request_get_select_multiple:
- * @request: a #WebKitFileChooserRequest
+ * @request: a #CyberKitFileChooserRequest
  *
  * Whether the file chooser should allow selecting multiple files.
  *
  * Determine whether the file chooser associated to this
- * #WebKitFileChooserRequest should allow selecting multiple files,
+ * #CyberKitFileChooserRequest should allow selecting multiple files,
  * which depends on the HTML input element having a 'multiple'
  * attribute defined.
  *
  * Returns: %TRUE if the file chooser should allow selecting multiple files or %FALSE otherwise.
  */
-gboolean webkit_file_chooser_request_get_select_multiple(WebKitFileChooserRequest* request)
+gboolean webkit_file_chooser_request_get_select_multiple(CyberKitFileChooserRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_FILE_CHOOSER_REQUEST(request), FALSE);
     return request->priv->parameters->allowMultipleFiles();
@@ -302,14 +302,14 @@ gboolean webkit_file_chooser_request_get_select_multiple(WebKitFileChooserReques
 
 /**
  * webkit_file_chooser_request_select_files:
- * @request: a #WebKitFileChooserRequest
+ * @request: a #CyberKitFileChooserRequest
  * @files: (array zero-terminated=1) (transfer none): a
  * %NULL-terminated array of strings, containing paths to local files.
  *
- * Ask WebKit to select local files for upload and complete the
+ * Ask CyberKit to select local files for upload and complete the
  * request.
  */
-void webkit_file_chooser_request_select_files(WebKitFileChooserRequest* request, const gchar* const* files)
+void webkit_file_chooser_request_select_files(CyberKitFileChooserRequest* request, const gchar* const* files)
 {
     g_return_if_fail(WEBKIT_IS_FILE_CHOOSER_REQUEST(request));
     g_return_if_fail(files);
@@ -330,7 +330,7 @@ void webkit_file_chooser_request_select_files(WebKitFileChooserRequest* request,
 
 /**
  * webkit_file_chooser_request_get_selected_files:
- * @request: a #WebKitFileChooserRequest
+ * @request: a #CyberKitFileChooserRequest
  *
  * Get the list of selected files associated to the request.
  *
@@ -347,10 +347,10 @@ void webkit_file_chooser_request_select_files(WebKitFileChooserRequest* request,
  * Returns: (array zero-terminated=1) (transfer none): a
  * %NULL-terminated array of strings if there are selected files
  * associated with the request or %NULL otherwise. This array and its
- * contents are owned by WebKit and should not be modified or
+ * contents are owned by CyberKit and should not be modified or
  * freed.
  */
-const gchar* const* webkit_file_chooser_request_get_selected_files(WebKitFileChooserRequest* request)
+const gchar* const* webkit_file_chooser_request_get_selected_files(CyberKitFileChooserRequest* request)
 {
     g_return_val_if_fail(WEBKIT_IS_FILE_CHOOSER_REQUEST(request), 0);
     if (request->priv->selectedFiles)
@@ -376,16 +376,16 @@ const gchar* const* webkit_file_chooser_request_get_selected_files(WebKitFileCho
 
 /**
  * webkit_file_chooser_request_cancel:
- * @request: a #WebKitFileChooserRequest
+ * @request: a #CyberKitFileChooserRequest
  *
- * Ask WebKit to cancel the request.
+ * Ask CyberKit to cancel the request.
  *
  * It's important to do this in case
  * no selection has been made in the client, otherwise the request
  * won't be properly completed and the browser will keep the request
  * pending forever, which might cause the browser to hang.
  */
-void webkit_file_chooser_request_cancel(WebKitFileChooserRequest* request)
+void webkit_file_chooser_request_cancel(CyberKitFileChooserRequest* request)
 {
     g_return_if_fail(WEBKIT_IS_FILE_CHOOSER_REQUEST(request));
     request->priv->listener->cancel();

@@ -60,9 +60,9 @@
 #include "ShadowRoot.h"
 #include "GCReachableRef.h"
 #include "Text.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 using namespace HTMLNames;
@@ -81,7 +81,7 @@ bool JSNodeOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, v
     if (UNLIKELY(reason))
         *reason = "Connected node";
 
-    return containsWebCoreOpaqueRoot(visitor, node);
+    return containsCyberCoreOpaqueRoot(visitor, node);
 }
 
 JSScope* JSNode::pushEventHandlerScope(JSGlobalObject* lexicalGlobalObject, JSScope* node) const
@@ -94,7 +94,7 @@ JSScope* JSNode::pushEventHandlerScope(JSGlobalObject* lexicalGlobalObject, JSSc
 template<typename Visitor>
 void JSNode::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped());
+    addCyberCoreOpaqueRoot(visitor, wrapped());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSNode);
@@ -178,4 +178,4 @@ void willCreatePossiblyOrphanedTreeByRemovalSlowCase(Node& root)
     toJS(&globalObject, &globalObject, root);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

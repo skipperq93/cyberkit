@@ -33,7 +33,7 @@
 
 #include "HTMLFormControlElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTokenList;
 
@@ -65,4 +65,4 @@ private:
     std::unique_ptr<DOMTokenList> m_forTokens;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

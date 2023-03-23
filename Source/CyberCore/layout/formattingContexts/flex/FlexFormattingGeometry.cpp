@@ -29,7 +29,7 @@
 #include "FlexFormattingContext.h"
 #include "LayoutContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 FlexFormattingGeometry::FlexFormattingGeometry(const FlexFormattingContext& flexFormattingContext)

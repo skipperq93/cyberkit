@@ -37,7 +37,7 @@
 #include "ColorChooser.h"
 #include "ColorChooserClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ColorInputType final : public BaseClickableWithKeyInputType, private ColorChooserClient {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -85,7 +85,7 @@ private:
     std::unique_ptr<ColorChooser> m_chooser;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(ColorInputType, Type::Color)
 

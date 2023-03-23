@@ -47,7 +47,7 @@ namespace IPC {
 class Semaphore;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioSourceProviderManager;
 class RemoteMediaPlayerManager;
@@ -164,6 +164,6 @@ private:
     WeakHashSet<Client> m_clients;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -27,7 +27,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleNamespace;
 
@@ -50,6 +50,6 @@ private:
     Ref<StyleRuleNamespace> m_namespaceRule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSNamespaceRule, StyleRuleType::Namespace)

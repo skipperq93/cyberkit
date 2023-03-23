@@ -47,7 +47,7 @@
 #include "VisibleUnits.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 
 #if USE(DICTATION_ALTERNATIVES) || USE(AUTOCORRECTION_PANEL)
@@ -530,7 +530,7 @@ bool AlternativeTextController::processMarkersOnTextToBeReplacedByResult(const T
     return true;
 }
 
-bool AlternativeTextController::shouldStartTimerFor(const WebCore::DocumentMarker &marker, int endOffset) const
+bool AlternativeTextController::shouldStartTimerFor(const CyberCore::DocumentMarker &marker, int endOffset) const
 {
     return (((marker.type() == DocumentMarker::Replacement && !marker.description().isNull()) || marker.type() == DocumentMarker::Spelling || marker.type() == DocumentMarker::DictationAlternatives) && static_cast<int>(marker.endOffset()) == endOffset);
 }
@@ -681,4 +681,4 @@ void AlternativeTextController::applyDictationAlternative(const String& alternat
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

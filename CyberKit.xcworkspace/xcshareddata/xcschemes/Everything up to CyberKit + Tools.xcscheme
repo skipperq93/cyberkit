@@ -157,7 +157,7 @@
                BlueprintIdentifier = "A115CCB41B9D769D00E89159"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:Tools/WebKitTestRunner/WebKitTestRunner.xcodeproj">
+               ReferencedContainer = "container:Tools/CyberKitTestRunner/CyberKitTestRunner.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -213,7 +213,7 @@
                BlueprintIdentifier = "7C83E02B1D0A5E1000FEBCF3"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:Tools/TestWebKitAPI/TestWebKitAPI.xcodeproj">
+               ReferencedContainer = "container:Tools/TestCyberKitAPI/TestCyberKitAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -225,9 +225,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD1EB7BA285AB55600CD5D9C"
-               BuildableName = "lldbWebKitTester (Platform filters)"
-               BlueprintName = "lldbWebKitTester (Platform filters)"
-               ReferencedContainer = "container:Tools/lldb/lldbWebKitTester/lldbWebKitTester.xcodeproj">
+               BuildableName = "lldbCyberKitTester (Platform filters)"
+               BlueprintName = "lldbCyberKitTester (Platform filters)"
+               ReferencedContainer = "container:Tools/lldb/lldbCyberKitTester/lldbCyberKitTester.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -1,11 +1,11 @@
 This tests inserting a font element with both font-size CSS property and size attribute.
-WebKit should not strip just font-size property. Two instances of "hello world" should look identical to each other.
+CyberKit should not strip just font-size property. Two instances of "hello world" should look identical to each other.
 
 Insertion point:
 | <div>
 |   contenteditable=""
 |   style="font-size: 25px;"
-|   "WebKit"
+|   "CyberKit"
 
 Content to insert:
 | <font>
@@ -27,4 +27,4 @@ After insertion:
 |     color="blue"
 |     style="font-size: 15px;"
 |     "world <#selection-caret>"
-|   "WebKit"
+|   "CyberKit"

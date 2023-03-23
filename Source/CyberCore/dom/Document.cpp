@@ -363,7 +363,7 @@
 #define DOCUMENT_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", isMainFrame=%d] Document::" fmt, this, valueOrDefault(pageID()).toUInt64(), valueOrDefault(frameID()).object().toUInt64(), this == &topDocument(), ##__VA_ARGS__)
 #define DOCUMENT_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", isMainFrame=%d] Document::" fmt, this, valueOrDefault(pageID()).toUInt64(), valueOrDefault(frameID()).object().toUInt64(), this == &topDocument(), ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Document);
 
@@ -2932,8 +2932,8 @@ AXObjectCache* Document::axObjectCache() const
         return nullptr;
     
     // The only document that actually has a AXObjectCache is the top-level
-    // document.  This is because we need to be able to get from any WebCoreAXObject
-    // to any other WebCoreAXObject on the same page.  Using a single cache allows
+    // document.  This is because we need to be able to get from any CyberCoreAXObject
+    // to any other CyberCoreAXObject on the same page.  Using a single cache allows
     // lookups across nested webareas (i.e. multiple documents).
     Document& topDocument = this->topDocument();
 
@@ -4932,7 +4932,7 @@ bool Document::setFocusedElement(Element* element, const FocusOptions& options)
             if (focusWidget) {
                 // Make sure a widget has the right size before giving it focus.
                 // Otherwise, we are testing edge cases of the Widget code.
-                // Specifically, in WebCore this does not work well for text fields.
+                // Specifically, in CyberCore this does not work well for text fields.
                 updateLayout();
                 // Re-get the widget in case updating the layout changed things.
                 focusWidget = widgetForElement(m_focusedElement.get());
@@ -5435,7 +5435,7 @@ bool Document::hasListenerTypeForEventType(PlatformEvent::Type eventType) const
 
 void Document::addListenerTypeIfNeeded(const AtomString& eventType)
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (eventType == eventNames.DOMSubtreeModifiedEvent)
         addListenerType(DOMSUBTREEMODIFIED_LISTENER);
     else if (eventType == eventNames.DOMNodeInsertedEvent)
@@ -5558,7 +5558,7 @@ String Document::referrer()
 String Document::referrerForBindings()
 {
     if (auto* loader = topDocument().loader(); loader
-        && loader->networkConnectionIntegrityPolicy().contains(WebCore::NetworkConnectionIntegrity::Enabled)
+        && loader->networkConnectionIntegrityPolicy().contains(CyberCore::NetworkConnectionIntegrity::Enabled)
         && !RegistrableDomain { URL { frame()->loader().referrer() } }.matches(securityOrigin().data()))
         return String();
     return referrer();
@@ -9365,7 +9365,7 @@ void Document::updateSleepDisablerIfNeeded()
     MediaProducerMediaStateFlags activeVideoCaptureMask { MediaProducerMediaState::HasActiveVideoCaptureDevice, MediaProducerMediaState::HasActiveScreenCaptureDevice, MediaProducerMediaState::HasActiveWindowCaptureDevice };
     if (m_mediaState & activeVideoCaptureMask) {
         if (!m_sleepDisabler)
-            m_sleepDisabler = makeUnique<SleepDisabler>("com.apple.WebCore: Document doing camera, screen or window capture"_s, PAL::SleepDisabler::Type::Display);
+            m_sleepDisabler = makeUnique<SleepDisabler>("com.apple.CyberCore: Document doing camera, screen or window capture"_s, PAL::SleepDisabler::Type::Display);
         return;
     }
     m_sleepDisabler = nullptr;
@@ -9536,7 +9536,7 @@ void Document::resetObservationSizeForContainIntrinsicSize(Element& target)
     m_resizeObserverForContainIntrinsicSize->resetObservationSize(target);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef DOCUMENT_RELEASE_LOG
 #undef DOCUMENT_RELEASE_LOG_ERROR

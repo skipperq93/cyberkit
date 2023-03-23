@@ -31,11 +31,11 @@ namespace WTF {
 class String;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 void updateStringForFind(const WTF::String&);
 WTF::String stringForFind();
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

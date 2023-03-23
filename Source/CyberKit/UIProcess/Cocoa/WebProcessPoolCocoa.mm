@@ -130,8 +130,8 @@
 #endif
 
 #if ENABLE(WEBCONTENT_CRASH_TESTING)
-#if __has_include(<WebKitAdditions/InternalBuildAdditions.h>)
-#include <WebKitAdditions/InternalBuildAdditions.h>
+#if __has_include(<CyberKitAdditions/InternalBuildAdditions.h>)
+#include <CyberKitAdditions/InternalBuildAdditions.h>
 #else
 static bool isInternalBuild()
 {
@@ -139,8 +139,8 @@ static bool isInternalBuild()
 }
 #endif
 
-#if __has_include(<WebKitAdditions/InternalCanaryState.h>)
-#include <WebKitAdditions/InternalCanaryState.h>
+#if __has_include(<CyberKitAdditions/InternalCanaryState.h>)
+#include <CyberKitAdditions/InternalCanaryState.h>
 #else
 static bool canaryInBaseState()
 {
@@ -159,21 +159,21 @@ SOFT_LINK_CLASS(OSAnalytics, OSASystemConfiguration)
 #import <pal/cocoa/MediaToolboxSoftLink.h>
 
 NSString *WebServiceWorkerRegistrationDirectoryDefaultsKey = @"WebServiceWorkerRegistrationDirectory";
-NSString *WebKitLocalCacheDefaultsKey = @"WebKitLocalCache";
-NSString *WebKitJSCJITEnabledDefaultsKey = @"WebKitJSCJITEnabledDefaultsKey";
-NSString *WebKitJSCFTLJITEnabledDefaultsKey = @"WebKitJSCFTLJITEnabledDefaultsKey";
+NSString *CyberKitLocalCacheDefaultsKey = @"CyberKitLocalCache";
+NSString *CyberKitJSCJITEnabledDefaultsKey = @"CyberKitJSCJITEnabledDefaultsKey";
+NSString *CyberKitJSCFTLJITEnabledDefaultsKey = @"CyberKitJSCFTLJITEnabledDefaultsKey";
 
 #if !PLATFORM(IOS_FAMILY) || PLATFORM(MACCATALYST)
-static NSString *WebKitApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification = @"NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification";
+static NSString *CyberKitApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification = @"NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification";
 static CFStringRef AppleColorPreferencesChangedNotification = CFSTR("AppleColorPreferencesChangedNotification");
 #endif
 
-static NSString * const WebKitSuppressMemoryPressureHandlerDefaultsKey = @"WebKitSuppressMemoryPressureHandler";
+static NSString * const CyberKitSuppressMemoryPressureHandlerDefaultsKey = @"CyberKitSuppressMemoryPressureHandler";
 
-static NSString * const WebKitMediaStreamingActivity = @"WebKitMediaStreamingActivity";
+static NSString * const CyberKitMediaStreamingActivity = @"CyberKitMediaStreamingActivity";
 
 #if ENABLE(TRACKING_PREVENTION) && !RELEASE_LOG_DISABLED
-static NSString * const WebKitLogCookieInformationDefaultsKey = @"WebKitLogCookieInformation";
+static NSString * const CyberKitLogCookieInformationDefaultsKey = @"CyberKitLogCookieInformation";
 #endif
 
 #if HAVE(POWERLOG_TASK_MODE_QUERY) && ENABLE(GPU_PROCESS)
@@ -194,37 +194,37 @@ SOFT_LINK_CONSTANT_MAY_FAIL(libAccessibility, kAXSReduceMotionAutoplayAnimatedIm
 #define WEBPROCESSPOOL_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - WebProcessPool::" fmt, this, ##__VA_ARGS__)
 
 @interface WKProcessPoolWeakObserver : NSObject {
-    WeakPtr<WebKit::WebProcessPool> m_weakPtr;
+    WeakPtr<CyberKit::WebProcessPool> m_weakPtr;
 }
-@property (nonatomic, readonly, direct) RefPtr<WebKit::WebProcessPool> pool;
+@property (nonatomic, readonly, direct) RefPtr<CyberKit::WebProcessPool> pool;
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithWeakPtr:(WeakPtr<WebKit::WebProcessPool>&&)weakPtr NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithWeakPtr:(WeakPtr<CyberKit::WebProcessPool>&&)weakPtr NS_DESIGNATED_INITIALIZER;
 @end
 
 NS_DIRECT_MEMBERS
 @implementation WKProcessPoolWeakObserver
-- (instancetype)initWithWeakPtr:(WeakPtr<WebKit::WebProcessPool>&&)weakPtr
+- (instancetype)initWithWeakPtr:(WeakPtr<CyberKit::WebProcessPool>&&)weakPtr
 {
     if ((self = [super init]))
         m_weakPtr = WTFMove(weakPtr);
     return self;
 }
 
-- (RefPtr<WebKit::WebProcessPool>)pool
+- (RefPtr<CyberKit::WebProcessPool>)pool
 {
     return m_weakPtr.get();
 }
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static void registerUserDefaults()
 {
     NSMutableDictionary *registrationDictionary = [NSMutableDictionary dictionary];
     
-    [registrationDictionary setObject:@YES forKey:WebKitJSCJITEnabledDefaultsKey];
-    [registrationDictionary setObject:@YES forKey:WebKitJSCFTLJITEnabledDefaultsKey];
+    [registrationDictionary setObject:@YES forKey:CyberKitJSCJITEnabledDefaultsKey];
+    [registrationDictionary setObject:@YES forKey:CyberKitJSCFTLJITEnabledDefaultsKey];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:registrationDictionary];
 }
@@ -321,9 +321,9 @@ void WebProcessPool::platformInitialize()
     registerUserDefaults();
 
     // FIXME: This should be able to share code with CyberCore's MemoryPressureHandler (and be platform independent).
-    // Right now it cannot because WebKit1 and WebKit2 need to be able to coexist in the UI process,
+    // Right now it cannot because CyberKit1 and CyberKit2 need to be able to coexist in the UI process,
     // and you can only have one CyberCore::MemoryPressureHandler.
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"WebKitSuppressMemoryPressureHandler"])
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"CyberKitSuppressMemoryPressureHandler"])
         installMemoryPressureHandler();
 
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)
@@ -338,7 +338,7 @@ void WebProcessPool::platformInitialize()
     [WKWebInspectorPreferenceObserver sharedInstance];
 #endif
 
-    PAL::registerNotifyCallback("com.apple.WebKit.logProcessState"_s, ^{
+    PAL::registerNotifyCallback("com.apple.CyberKit.logProcessState"_s, ^{
         for (const auto& pool : WebProcessPool::allProcessPools())
             logProcessPoolState(pool.get());
     });
@@ -374,10 +374,10 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    parameters.shouldEnableJIT = [defaults boolForKey:WebKitJSCJITEnabledDefaultsKey];
-    parameters.shouldEnableFTLJIT = [defaults boolForKey:WebKitJSCFTLJITEnabledDefaultsKey];
+    parameters.shouldEnableJIT = [defaults boolForKey:CyberKitJSCJITEnabledDefaultsKey];
+    parameters.shouldEnableFTLJIT = [defaults boolForKey:CyberKitJSCFTLJITEnabledDefaultsKey];
     parameters.shouldEnableMemoryPressureReliefLogging = [defaults boolForKey:@"LogMemoryJetsamDetails"];
-    parameters.shouldSuppressMemoryPressureHandler = [defaults boolForKey:WebKitSuppressMemoryPressureHandlerDefaultsKey];
+    parameters.shouldSuppressMemoryPressureHandler = [defaults boolForKey:CyberKitSuppressMemoryPressureHandlerDefaultsKey];
 
 #if HAVE(HOSTED_CORE_ANIMATION)
     parameters.acceleratedCompositingPort = MachSendRight::create([CARemoteLayerServer sharedServer].serverPort);
@@ -453,7 +453,7 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
 #endif
 
 #if ENABLE(TRACKING_PREVENTION) && !RELEASE_LOG_DISABLED
-    parameters.shouldLogUserInteraction = [defaults boolForKey:WebKitLogCookieInformationDefaultsKey];
+    parameters.shouldLogUserInteraction = [defaults boolForKey:CyberKitLogCookieInformationDefaultsKey];
 #endif
 
     auto screenProperties = CyberCore::collectScreenProperties();
@@ -544,7 +544,7 @@ void WebProcessPool::platformInitializeNetworkProcess(NetworkProcessCreationPara
 
     parameters.networkATSContext = adoptCF(_CFNetworkCopyATSContext());
 
-    parameters.shouldSuppressMemoryPressureHandler = [defaults boolForKey:WebKitSuppressMemoryPressureHandlerDefaultsKey];
+    parameters.shouldSuppressMemoryPressureHandler = [defaults boolForKey:CyberKitSuppressMemoryPressureHandlerDefaultsKey];
 
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
     ASSERT(parameters.uiProcessCookieStorageIdentifier.isEmpty());
@@ -566,14 +566,14 @@ void WebProcessPool::setJavaScriptConfigurationFileEnabledFromDefaults()
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    setJavaScriptConfigurationFileEnabled([defaults boolForKey:@"WebKitJavaScriptCoreUseConfigFile"]);
+    setJavaScriptConfigurationFileEnabled([defaults boolForKey:@"CyberKitCyberScriptCoreUseConfigFile"]);
 }
 #endif
 
 bool WebProcessPool::omitPDFSupport()
 {
     // Since this is a "secret default" we don't bother registering it.
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"WebKitOmitPDFSupport"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"CyberKitOmitPDFSupport"];
 }
 
 bool WebProcessPool::processSuppressionEnabled() const
@@ -704,7 +704,7 @@ void WebProcessPool::registerNotificationObservers()
     });
     m_systemSleepListener = PAL::SystemSleepListener::create(*this);
     // Listen for enhanced accessibility changes and propagate them to the WebProcess.
-    m_enhancedAccessibilityObserver = [[NSNotificationCenter defaultCenter] addObserverForName:WebKitApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil queue:[NSOperationQueue currentQueue] usingBlock:^(NSNotification *note) {
+    m_enhancedAccessibilityObserver = [[NSNotificationCenter defaultCenter] addObserverForName:CyberKitApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil queue:[NSOperationQueue currentQueue] usingBlock:^(NSNotification *note) {
         setEnhancedAccessibility([[[note userInfo] objectForKey:@"AXEnhancedUserInterface"] boolValue]);
     }];
 
@@ -798,8 +798,8 @@ void WebProcessPool::registerNotificationObservers()
 #endif
     if (![UIApplication sharedApplication]) {
         m_applicationLaunchObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue currentQueue] usingBlock:^(NSNotification *notification) {
-            if (WebKit::updateCurrentUserInterfaceIdiom())
-                sendToAllProcesses(Messages::WebProcess::UserInterfaceIdiomDidChange(WebKit::currentUserInterfaceIdiomIsSmallScreen()));
+            if (CyberKit::updateCurrentUserInterfaceIdiom())
+                sendToAllProcesses(Messages::WebProcess::UserInterfaceIdiomDidChange(CyberKit::currentUserInterfaceIdiomIsSmallScreen()));
         }];
     }
 #endif
@@ -911,25 +911,25 @@ void WebProcessPool::clearPermanentCredentialsForProtectionSpace(CyberCore::Prot
 
 int networkProcessLatencyQOS()
 {
-    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"WebKitNetworkProcessLatencyQOS"];
+    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"CyberKitNetworkProcessLatencyQOS"];
     return qos;
 }
 
 int networkProcessThroughputQOS()
 {
-    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"WebKitNetworkProcessThroughputQOS"];
+    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"CyberKitNetworkProcessThroughputQOS"];
     return qos;
 }
 
 int webProcessLatencyQOS()
 {
-    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"WebKitWebProcessLatencyQOS"];
+    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"CyberKitWebProcessLatencyQOS"];
     return qos;
 }
 
 int webProcessThroughputQOS()
 {
-    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"WebKitWebProcessThroughputQOS"];
+    static const int qos = [[NSUserDefaults standardUserDefaults] integerForKey:@"CyberKitWebProcessThroughputQOS"];
     return qos;
 }
 
@@ -1211,4 +1211,4 @@ void WebProcessPool::registerHighDynamicRangeChangeCallback()
 }
 #endif // PLATFORM(MAC) || PLATFORM(IOS)
 
-} // namespace WebKit
+} // namespace CyberKit

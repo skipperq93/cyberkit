@@ -29,7 +29,7 @@
 #include "WKBase.h"
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ASCIILiteral processAssertionTypeDescription(ProcessAssertionType type)
 {
@@ -90,5 +90,5 @@ ProcessAndUIAssertion::~ProcessAndUIAssertion() = default;
 
 #endif // !USE(RUNNINGBOARD)
 
-} // namespace WebKit
+} // namespace CyberKit
 

@@ -31,7 +31,7 @@
 #include "ScriptExecutionContext.h"
 #include <pal/crypto/CryptoDigest.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CryptoAlgorithm> CryptoAlgorithmSHA384::create()
 {

@@ -19,6 +19,6 @@
 
 #pragma once
 
-#include "WebKitWebInspector.h"
+#include "CyberKitWebInspector.h"
 
-WebKitWebInspector* webkitWebInspectorCreate(WebKit::WebInspectorUIProxy*);
+CyberKitWebInspector* webkitWebInspectorCreate(CyberKit::WebInspectorUIProxy*);

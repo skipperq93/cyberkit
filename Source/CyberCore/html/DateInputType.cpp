@@ -41,7 +41,7 @@
 #include "PlatformLocale.h"
 #include "StepRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -104,5 +104,5 @@ void DateInputType::setupLayoutParameters(DateTimeEditElement::LayoutParameters&
     layoutParameters.fallbackDateTimeFormat = "yyyy-MM-dd"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioWorkletProcessorConstructionData {
     WTF_MAKE_FAST_ALLOCATED;
@@ -52,6 +52,6 @@ private:
     Ref<MessagePort> m_port;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

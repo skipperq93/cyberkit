@@ -79,7 +79,7 @@
 
 static BOOL shouldForwardScrollViewDelegateMethodToExternalDelegate(SEL selector)
 {
-    // We cannot forward viewForZoomingInScrollView: to the external delegate, because WebKit
+    // We cannot forward viewForZoomingInScrollView: to the external delegate, because CyberKit
     // owns the content of the scroll view, and depends on viewForZoomingInScrollView being the
     // content view. Any other view returned by the external delegate will break our behavior.
     if (sel_isEqual(selector, @selector(viewForZoomingInScrollView:)))

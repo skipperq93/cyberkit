@@ -30,7 +30,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PermissionName : uint8_t;
 enum class PermissionQuerySource : uint8_t;
@@ -65,4 +65,4 @@ private:
     void permissionChanged(PermissionName, const SecurityOriginData&) final { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

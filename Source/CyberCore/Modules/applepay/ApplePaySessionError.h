@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePaySessionError {
     using InfoRecord = Vector<KeyValuePair<String, String>>;
@@ -39,6 +39,6 @@ struct ApplePaySessionError {
     InfoRecord info;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

@@ -36,7 +36,7 @@
 GST_DEBUG_CATEGORY_STATIC(webkit_webrtc_utils_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_utils_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline RTCIceComponent toRTCIceComponent(int component)
 {
@@ -528,6 +528,6 @@ GRefPtr<GstCaps> capsFromSDPMedia(const GstSDPMedia* media)
     return caps;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

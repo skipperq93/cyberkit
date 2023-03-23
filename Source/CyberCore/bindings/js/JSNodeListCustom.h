@@ -27,7 +27,7 @@
 
 #include "JSDOMBinding.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT JSC::JSValue createWrapper(JSDOMGlobalObject&, Ref<NodeList>&&);
 
@@ -38,4 +38,4 @@ ALWAYS_INLINE JSC::JSValue toJS(JSC::JSGlobalObject*, JSDOMGlobalObject* globalO
     return createWrapper(*globalObject, nodeList);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

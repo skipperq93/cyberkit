@@ -28,7 +28,7 @@
 
 #include "ResourceLoadTiming.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentLoadTiming : public ResourceLoadTiming {
 public:
@@ -56,4 +56,4 @@ private:
     bool m_hasSameOriginAsPreviousDocument { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

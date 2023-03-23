@@ -37,7 +37,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Clipboard::Clipboard(Type type)
     : m_clipboard(gtk_clipboard_get_for_display(gdk_display_get_default(), type == Type::Clipboard ? GDK_SELECTION_CLIPBOARD : GDK_SELECTION_PRIMARY))
@@ -240,6 +240,6 @@ void Clipboard::clear()
     gtk_clipboard_clear(m_clipboard);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

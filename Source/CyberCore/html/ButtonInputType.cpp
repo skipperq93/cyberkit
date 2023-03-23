@@ -33,11 +33,11 @@
 
 #include "InputTypeNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& ButtonInputType::formControlType() const
 {
     return InputTypeNames::button();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

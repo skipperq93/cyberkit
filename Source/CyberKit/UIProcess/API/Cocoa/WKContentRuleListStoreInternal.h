@@ -28,7 +28,7 @@
 #import "APIContentRuleListStore.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ContentRuleListStore> {
     using WrapperClass = WKContentRuleListStore;

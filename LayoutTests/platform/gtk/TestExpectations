@@ -1,4 +1,4 @@
-# These are the layout test expectations for the GTK port of WebKit.
+# These are the layout test expectations for the GTK port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 #
@@ -212,7 +212,7 @@ accessibility/custom-elements/modal.html [ Skip ]
 # This list is divided into two parts:
 # a. Tests that we never expect to pass, because they use features we likely
 #    will never implement (Mac-only features, for instance).
-# b. Missing CyberCore/WebKit features that we'll want someday.
+# b. Missing CyberCore/CyberKit features that we'll want someday.
 
 # 3. TESTS CRASHING
 # Please open a bug for each test crashing with any important information.
@@ -235,7 +235,7 @@ accessibility/custom-elements/modal.html [ Skip ]
 # These tests are essentially marked as flaky, but are noted as failing only on specific architecture.
 #
 # 8. WEBKIT2 REGRESSIONS
-# Tests that are now failing because of the switch to WebKit2, probably misssing some
+# Tests that are now failing because of the switch to CyberKit2, probably misssing some
 # test harness support.
 #
 # 9. TESTS FAILING
@@ -266,7 +266,7 @@ webkit.org/b/98925 fast/viewport/viewport-legacy-ordering-6.html [ Skip ]
 webkit.org/b/98925 fast/viewport/viewport-legacy-xhtmlmp-remove-and-add.html [ Skip ]
 webkit.org/b/98925 fast/viewport/viewport-legacy-xhtmlmp.html [ Skip ]
 
-# WebKitGTK+ uses different keyboard accelerators than Safari (via Chromium).
+# CyberKitGTK+ uses different keyboard accelerators than Safari (via Chromium).
 fast/events/option-tab.html [ WontFix Failure ]
 
 # These pass while they're marked as WontFix - check it.
@@ -754,7 +754,7 @@ webkit.org/b/85958 fast/forms/file/file-input-capture.html [ Failure ]
 # This tests fail since the upgrade of GTK to 3.16 and Cairo to 1.14 on the JHBuild
 webkit.org/b/146731 fast/backgrounds/hidpi-background-image-contain-cover-scale-needs-more-precision.html [ ImageOnlyFailure Timeout ]
 
-# WebKitGTK+ doesn't have killring support.
+# CyberKitGTK+ doesn't have killring support.
 webkit.org/b/152379 editing/pasteboard/emacs-killring-alternating-append-prepend.html [ Failure ]
 webkit.org/b/152379 editing/pasteboard/emacs-killring-backward-delete-prepend.html [ Failure ]
 
@@ -1657,9 +1657,9 @@ webkit.org/b/83560 fast/events/drop-with-file-paths.html [ Failure ]
 # 8. WEBKIT2 REGRESSIONS
 #////////////////////////////////////////////////////////////////////////////////////////
 #
-# [GTK] Drag and drop can't be tested with WebKitTestRunner
+# [GTK] Drag and drop can't be tested with CyberKitTestRunner
 # https://bugs.webkit.org/show_bug.cgi?id=157179
-# Implement EditingCallbacks deletegates in the WebKitTestRunner
+# Implement EditingCallbacks deletegates in the CyberKitTestRunner
 webkit.org/b/157179 editing/pasteboard/4947130.html [ Failure ]
 webkit.org/b/157179 editing/pasteboard/dataTransfer-setData-getData.html [ Failure ]
 webkit.org/b/157179 editing/pasteboard/drag-and-drop-image-contenteditable.html [ Failure Timeout ]
@@ -1717,17 +1717,17 @@ webkit.org/b/157179 fast/events/ondragenter.html [ Failure ]
 webkit.org/b/157179 fast/events/drag-customData.html  [ Timeout ]
 webkit.org/b/157179 fast/events/drag-and-drop-autoscroll-inner-frame.html [ Timeout ]
 
-# WebKit2 testRunner.setEditingBehaviour appears broken sometimes.
+# CyberKit2 testRunner.setEditingBehaviour appears broken sometimes.
 webkit.org/b/144764 [ Release ] editing/selection/move-by-word-visually-mac.html [ Failure ]
 
-# WebKit2 needs textInputController.selectedRange
+# CyberKit2 needs textInputController.selectedRange
 Bug(GTK) editing/selection/mixed-editability-10.html [ Failure ]
 
 # Implement testRunner.numberOfPendingGeolocationPermissionRequests()
 # http://webkit.org/b/93977
 webkit.org/b/93977 fast/dom/Geolocation/page-reload-cancel-permission-requests.html [ Timeout ]
 
-# WebKitTestRunner needs a more-complete implementation of eventSender
+# CyberKitTestRunner needs a more-complete implementation of eventSender
 # https://bugs.webkit.org/show_bug.cgi?id=42194
 webkit.org/b/42194 fast/events/5056619.html [ Failure ]
 webkit.org/b/42194 http/tests/security/drag-drop-same-unique-origin.html [ Failure ]
@@ -1814,7 +1814,7 @@ webkit.org/b/182352 http/tests/misc/bubble-drag-events.html [ Failure ]
 # Dragging images and links results in a DataTransfer object containing a non-empty files array
 webkit.org/b/52094 editing/pasteboard/files-during-page-drags.html [ Failure ]
 
-# Expose title direction in WebKit API
+# Expose title direction in CyberKit API
 webkit.org/b/58845 fast/dom/title-directionality.html [ Failure ]
 webkit.org/b/58845 fast/dom/title-directionality-removeChild.html [ Failure ]
 

@@ -62,7 +62,7 @@
 #include "LibWebRTCProvider.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(LIBWEBRTC) || USE(GSTREAMER_WEBRTC)
 
@@ -627,7 +627,7 @@ void PeerConnectionBackend::generateCertificate(Document& document, const Certif
         promise.settle(WTFMove(result));
     });
 #elif USE(GSTREAMER_WEBRTC)
-    auto certificate = ::WebCore::generateCertificate(document.securityOrigin(), info);
+    auto certificate = ::CyberCore::generateCertificate(document.securityOrigin(), info);
     if (certificate.has_value())
         promise.resolve(*certificate);
     else
@@ -651,6 +651,6 @@ WTFLogChannel& PeerConnectionBackend::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

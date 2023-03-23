@@ -29,7 +29,7 @@
 #include "Navigator.h"
 #include "Permissions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorPermissions::NavigatorPermissions(Navigator& navigator)
     : m_navigator(navigator)
@@ -66,4 +66,4 @@ const char* NavigatorPermissions::supplementName()
     return "NavigatorPermissions";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

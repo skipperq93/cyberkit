@@ -45,7 +45,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -151,6 +151,6 @@ void MonthInputType::setupLayoutParameters(DateTimeEditElement::LayoutParameters
     layoutParameters.fallbackDateTimeFormat = "yyyy-MM"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

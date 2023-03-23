@@ -1,4 +1,4 @@
 PASS
 
 
-WebKit Bug #117176: Assertion below CyberCore::FlexBoxIterator::next(). This test passes if it does not assert in a debug build.
+CyberKit Bug #117176: Assertion below CyberCore::FlexBoxIterator::next(). This test passes if it does not assert in a debug build.

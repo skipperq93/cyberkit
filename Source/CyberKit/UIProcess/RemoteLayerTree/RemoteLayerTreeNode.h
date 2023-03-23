@@ -35,7 +35,7 @@ OBJC_CLASS NSString;
 OBJC_CLASS UIView;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeScrollbars;
 

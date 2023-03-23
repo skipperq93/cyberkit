@@ -31,8 +31,8 @@
 
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_FOR_HEADER(WebKit, QuickLookThumbnailing)
-SOFT_LINK_CLASS_FOR_HEADER(WebKit, QLThumbnailGenerationRequest)
-SOFT_LINK_CLASS_FOR_HEADER(WebKit, QLThumbnailGenerator)
+SOFT_LINK_FRAMEWORK_FOR_HEADER(CyberKit, QuickLookThumbnailing)
+SOFT_LINK_CLASS_FOR_HEADER(CyberKit, QLThumbnailGenerationRequest)
+SOFT_LINK_CLASS_FOR_HEADER(CyberKit, QLThumbnailGenerator)
 
 #endif // HAVE(QUICKLOOK_THUMBNAILING)

@@ -33,12 +33,12 @@
 #include "EventNames.h"
 #include "JSDOMException.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/Exception.h>
 #include <CyberScriptCore/JSCast.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AbortSignal);
 
@@ -173,9 +173,9 @@ void AbortSignal::throwIfAborted(JSC::JSGlobalObject& lexicalGlobalObject)
     throwException(&lexicalGlobalObject, scope, m_reason.getValue());
 }
 
-WebCoreOpaqueRoot root(AbortSignal* signal)
+CyberCoreOpaqueRoot root(AbortSignal* signal)
 {
-    return WebCoreOpaqueRoot { signal };
+    return CyberCoreOpaqueRoot { signal };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "CSSCalcExpressionNode.h"
 #include "CalcOperator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCalcOperationNode final : public CSSCalcExpressionNode {
     WTF_MAKE_FAST_ALLOCATED;
@@ -162,4 +162,4 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CSSCALCEXPRESSION_NODE(CSSCalcOperationNode, type() == WebCore::CSSCalcExpressionNode::Type::CssCalcOperation)
+SPECIALIZE_TYPE_TRAITS_CSSCALCEXPRESSION_NODE(CSSCalcOperationNode, type() == CyberCore::CSSCalcExpressionNode::Type::CssCalcOperation)

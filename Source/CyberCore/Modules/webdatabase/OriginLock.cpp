@@ -26,7 +26,7 @@
 #include "config.h"
 #include "OriginLock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static String lockFileNameForPath(const String& originPath)
 {
@@ -82,4 +82,4 @@ void OriginLock::deleteLockFile(const String& originPath)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "HTMLDivElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextFieldInputType;
 
@@ -50,4 +50,4 @@ private:
     AutoFillButtonOwner& m_owner;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

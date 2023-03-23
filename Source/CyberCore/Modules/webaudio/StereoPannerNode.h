@@ -33,7 +33,7 @@
 #include "StereoPanner.h"
 #include "StereoPannerOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
 
@@ -64,6 +64,6 @@ private:
     AudioFloatArray m_sampleAccurateValues;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DOMStringList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String DOMStringList::item(unsigned index) const
 {
@@ -52,4 +52,4 @@ void DOMStringList::sort()
     std::sort(m_strings.begin(), m_strings.end(), WTF::codePointCompareLessThan);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

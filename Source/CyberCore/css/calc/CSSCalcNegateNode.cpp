@@ -29,7 +29,7 @@
 #include "CalcExpressionNegation.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<CalcExpressionNode> CSSCalcNegateNode::createCalcExpression(const CSSToLengthConversionData& conversionData) const
 {

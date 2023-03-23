@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ClipboardItem;
 class DeferredPromise;
@@ -116,4 +116,4 @@ private:
     RefPtr<ItemWriter> m_activeItemWriter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

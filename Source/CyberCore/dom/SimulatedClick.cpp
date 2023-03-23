@@ -34,7 +34,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SimulatedMouseEvent final : public MouseEvent {
     WTF_MAKE_ISO_ALLOCATED_INLINE(SimulatedMouseEvent);
@@ -90,7 +90,7 @@ bool simulateClick(Element& element, Event* underlyingEvent, SimulatedClickMouse
     if (!elementsDispatchingSimulatedClicks.get().add(&element).isNewEntry)
         return false;
 
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (mouseEventOptions == SendMouseOverUpDownEvents)
         simulateMouseEvent(eventNames.mouseoverEvent, element, underlyingEvent, creationOptions);
 
@@ -108,4 +108,4 @@ bool simulateClick(Element& element, Event* underlyingEvent, SimulatedClickMouse
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

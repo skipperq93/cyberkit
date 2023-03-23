@@ -34,7 +34,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class CtapDriver : public CanMakeWeakPtr<CtapDriver> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -61,6 +61,6 @@ private:
     CyberCore::AuthenticatorTransport m_transport;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

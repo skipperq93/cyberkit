@@ -30,7 +30,7 @@
 #include "VideoFrame.h"
 #include "VideoPixelFormat.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WebCodecsVideoFrameData {
     // We might want to make memory cost take into account the video frame format.

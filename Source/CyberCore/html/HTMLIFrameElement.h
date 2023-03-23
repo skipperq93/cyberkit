@@ -26,7 +26,7 @@
 #include "FeaturePolicy.h"
 #include "HTMLFrameElementBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTokenList;
 class LazyLoadFrameObserver;
@@ -73,4 +73,4 @@ private:
     std::unique_ptr<LazyLoadFrameObserver> m_lazyLoadFrameObserver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

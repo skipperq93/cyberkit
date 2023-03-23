@@ -52,7 +52,7 @@ static bool soupServerListen(SoupServer* server, const std::optional<String>& ho
 
 bool HTTPServer::listen(const std::optional<String>& host, unsigned port)
 {
-    m_soupServer = adoptGRef(soup_server_new("server-header", "WebKitWebDriver", nullptr));
+    m_soupServer = adoptGRef(soup_server_new("server-header", "CyberKitWebDriver", nullptr));
     GUniqueOutPtr<GError> error;
     if (!soupServerListen(m_soupServer.get(), host, port, &error.outPtr())) {
         WTFLogAlways("Failed to start HTTP server at port %u: %s", port, error->message);

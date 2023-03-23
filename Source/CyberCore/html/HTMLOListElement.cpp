@@ -37,7 +37,7 @@ template<typename T, typename E> inline std::optional<T> optionalValue(Expected<
     return expected ? std::optional<T>(WTFMove(expected.value())) : std::nullopt;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLOListElement);
 

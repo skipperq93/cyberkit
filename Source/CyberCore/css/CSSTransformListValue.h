@@ -32,7 +32,7 @@
 
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSTransformListValue final : public CSSValueContainingVector {
 public:
@@ -47,6 +47,6 @@ private:
     explicit CSSTransformListValue(Ref<CSSValue>);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSTransformListValue, isTransformListValue());

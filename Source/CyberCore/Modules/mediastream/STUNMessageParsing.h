@@ -30,7 +30,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 namespace WebRTC {
 
 struct STUNMessageLengths {
@@ -44,6 +44,6 @@ enum class MessageType { STUN, Data };
 WEBCORE_EXPORT Vector<uint8_t> extractMessages(Vector<uint8_t>&&, MessageType, const Function<void(const uint8_t* data, size_t size)>&);
 
 } // namespace WebRTC
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

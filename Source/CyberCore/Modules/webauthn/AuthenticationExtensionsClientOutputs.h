@@ -31,7 +31,7 @@
 #include "CBORWriter.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AuthenticationExtensionsClientOutputs {
     struct CredentialPropertiesOutput {
@@ -44,6 +44,6 @@ struct AuthenticationExtensionsClientOutputs {
     WEBCORE_EXPORT static std::optional<AuthenticationExtensionsClientOutputs> fromCBOR(const Vector<uint8_t>&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

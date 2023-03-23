@@ -30,7 +30,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityLabel final : public AccessibilityRenderObject {
 public:
@@ -53,8 +53,8 @@ private:
     bool m_containsOnlyStaticText : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilityLabel) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isLabel(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilityLabel) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isLabel(); } \
 SPECIALIZE_TYPE_TRAITS_END()

@@ -52,7 +52,7 @@ int main(int argc, char** argv)
     loadLibraryOrExit(ICU_LOAD_AT);
     loadLibraryOrExit(CyberKitRequirements_LOAD_AT);
 #if !ENABLE(STATIC_JSC)
-    loadLibraryOrExit("libJavaScriptCore");
+    loadLibraryOrExit("libCyberScriptCore");
 #endif
     loadLibraryOrExit("libCyberKit");
 

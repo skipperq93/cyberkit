@@ -20,14 +20,14 @@
 #pragma once
 
 #include "APIData.h"
-#include "WebKitFaviconDatabase.h"
+#include "CyberKitFaviconDatabase.h"
 #include <CyberCore/LinkIcon.h>
 
-WebKitFaviconDatabase* webkitFaviconDatabaseCreate();
-void webkitFaviconDatabaseOpen(WebKitFaviconDatabase*, const String& path, bool isEphemeral);
-void webkitFaviconDatabaseClose(WebKitFaviconDatabase*);
+CyberKitFaviconDatabase* webkitFaviconDatabaseCreate();
+void webkitFaviconDatabaseOpen(CyberKitFaviconDatabase*, const String& path, bool isEphemeral);
+void webkitFaviconDatabaseClose(CyberKitFaviconDatabase*);
 #if PLATFORM(GTK)
-void webkitFaviconDatabaseGetLoadDecisionForIcon(WebKitFaviconDatabase*, const CyberCore::LinkIcon&, const String&, bool isEphemeral, Function<void(bool)>&&);
-void webkitFaviconDatabaseSetIconForPageURL(WebKitFaviconDatabase*, const CyberCore::LinkIcon&, API::Data&, const String&, bool isEphemeral);
-void webkitFaviconDatabaseGetFaviconInternal(WebKitFaviconDatabase*, const gchar* pageURI, bool isEphemeral, GCancellable*, GAsyncReadyCallback, gpointer);
+void webkitFaviconDatabaseGetLoadDecisionForIcon(CyberKitFaviconDatabase*, const CyberCore::LinkIcon&, const String&, bool isEphemeral, Function<void(bool)>&&);
+void webkitFaviconDatabaseSetIconForPageURL(CyberKitFaviconDatabase*, const CyberCore::LinkIcon&, API::Data&, const String&, bool isEphemeral);
+void webkitFaviconDatabaseGetFaviconInternal(CyberKitFaviconDatabase*, const gchar* pageURI, bool isEphemeral, GCancellable*, GAsyncReadyCallback, gpointer);
 #endif

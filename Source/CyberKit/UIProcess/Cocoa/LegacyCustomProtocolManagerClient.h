@@ -36,7 +36,7 @@ namespace CyberCore {
 class ResourceRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LegacyCustomProtocolManagerProxy;
 
@@ -49,5 +49,5 @@ private:
     HashMap<LegacyCustomProtocolID, RetainPtr<WKCustomProtocolLoader>> m_loaderMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

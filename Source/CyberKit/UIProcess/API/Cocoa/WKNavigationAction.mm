@@ -65,14 +65,14 @@ static WKNavigationType toWKNavigationType(CyberCore::NavigationType navigationT
 }
 
 #if PLATFORM(IOS_FAMILY)
-static WKSyntheticClickType toWKSyntheticClickType(WebKit::WebMouseEventSyntheticClickType syntheticClickType)
+static WKSyntheticClickType toWKSyntheticClickType(CyberKit::WebMouseEventSyntheticClickType syntheticClickType)
 {
     switch (syntheticClickType) {
-    case WebKit::WebMouseEventSyntheticClickType::NoTap:
+    case CyberKit::WebMouseEventSyntheticClickType::NoTap:
         return WKSyntheticClickTypeNoTap;
-    case WebKit::WebMouseEventSyntheticClickType::OneFingerTap:
+    case CyberKit::WebMouseEventSyntheticClickType::OneFingerTap:
         return WKSyntheticClickTypeOneFingerTap;
-    case WebKit::WebMouseEventSyntheticClickType::TwoFingerTap:
+    case CyberKit::WebMouseEventSyntheticClickType::TwoFingerTap:
         return WKSyntheticClickTypeTwoFingerTap;
     }
     ASSERT_NOT_REACHED();
@@ -143,12 +143,12 @@ static WKSyntheticClickType toWKSyntheticClickType(WebKit::WebMouseEventSyntheti
 
 - (NSEventModifierFlags)modifierFlags
 {
-    return WebKit::WebEventFactory::toNSEventModifierFlags(_navigationAction->modifiers());
+    return CyberKit::WebEventFactory::toNSEventModifierFlags(_navigationAction->modifiers());
 }
 
 - (NSInteger)buttonNumber
 {
-    return WebKit::WebEventFactory::toNSButtonNumber(_navigationAction->mouseButton());
+    return CyberKit::WebEventFactory::toNSButtonNumber(_navigationAction->mouseButton());
 }
 
 #else

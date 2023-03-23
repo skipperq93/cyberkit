@@ -36,7 +36,7 @@
 #include "OffscreenCanvas.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasBase;
 class GPU;
@@ -69,6 +69,6 @@ protected:
     GPUCanvasContext(CanvasBase&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::GPUCanvasContext, isWebGPU())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::GPUCanvasContext, isWebGPU())

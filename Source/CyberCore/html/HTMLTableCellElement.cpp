@@ -34,7 +34,7 @@
 #include "RenderTableCell.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLTableCellElement);
 
@@ -208,4 +208,4 @@ HTMLTableCellElement* HTMLTableCellElement::cellAbove() const
     return downcast<HTMLTableCellElement>(cellAboveRenderer->element());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

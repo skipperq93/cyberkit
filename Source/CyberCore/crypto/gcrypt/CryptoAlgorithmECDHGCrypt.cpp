@@ -35,7 +35,7 @@
 #include <pal/crypto/gcrypt/Handle.h>
 #include <pal/crypto/gcrypt/Utilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> gcryptDerive(gcry_sexp_t baseKeySexp, gcry_sexp_t publicKeySexp, size_t keySizeInBytes)
 {
@@ -105,6 +105,6 @@ std::optional<Vector<uint8_t>> CryptoAlgorithmECDH::platformDeriveBits(const Cry
     return gcryptDerive(baseKey.platformKey(), publicKey.platformKey(), (baseKey.keySizeInBits() + 7) / 8);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

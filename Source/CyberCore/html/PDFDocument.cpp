@@ -48,7 +48,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PDFDocument);
 
@@ -240,6 +240,6 @@ void PDFDocument::injectStyleAndContentScript()
     contentDocument->body()->appendChild(script);
 }
 
-} // namepsace WebCore
+} // namepsace CyberCore
 
 #endif // ENABLE(PDFJS)

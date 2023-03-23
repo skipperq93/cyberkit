@@ -44,7 +44,7 @@
 #include "markup.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLTemplateElement);
 
@@ -178,4 +178,4 @@ void HTMLTemplateElement::attachAsDeclarativeShadowRootIfNeeded(Element& host)
     remove();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

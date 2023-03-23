@@ -31,7 +31,7 @@
 #include "Text.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(StaticRange);
 
@@ -78,8 +78,8 @@ ExceptionOr<Ref<StaticRange>> StaticRange::create(Init&& init)
 
 void StaticRange::visitNodesConcurrently(JSC::AbstractSlotVisitor& visitor) const
 {
-    addWebCoreOpaqueRoot(visitor, start.container.get());
-    addWebCoreOpaqueRoot(visitor, end.container.get());
+    addCyberCoreOpaqueRoot(visitor, start.container.get());
+    addCyberCoreOpaqueRoot(visitor, end.container.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

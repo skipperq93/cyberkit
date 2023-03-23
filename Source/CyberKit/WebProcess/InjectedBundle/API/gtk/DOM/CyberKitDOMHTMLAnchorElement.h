@@ -54,7 +54,7 @@ webkit_dom_html_anchor_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_charset(CyberKitDOMHTMLAnchorElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_anchor_element_get_charset(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_charset(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_anchor_element_set_charset(CyberKitDOMHTMLAnchorElement* self, c
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_coords(CyberKitDOMHTMLAnchorElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_anchor_element_get_coords(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_coords(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_anchor_element_set_coords(CyberKitDOMHTMLAnchorElement* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_hreflang(CyberKitDOMHTMLAnchorElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_anchor_element_get_hreflang(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_hreflang(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_anchor_element_set_hreflang(CyberKitDOMHTMLAnchorElement* self, 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_name(CyberKitDOMHTMLAnchorElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_anchor_element_get_name(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_name(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -142,7 +142,7 @@ webkit_dom_html_anchor_element_set_name(CyberKitDOMHTMLAnchorElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_rel(CyberKitDOMHTMLAnchorElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_anchor_element_get_rel(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_rel(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -164,7 +164,7 @@ webkit_dom_html_anchor_element_set_rel(CyberKitDOMHTMLAnchorElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_rev(CyberKitDOMHTMLAnchorElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_anchor_element_get_rev(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_rev(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -186,7 +186,7 @@ webkit_dom_html_anchor_element_set_rev(CyberKitDOMHTMLAnchorElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_shape(CyberKitDOMHTMLAnchorElement* self);
@@ -197,7 +197,7 @@ webkit_dom_html_anchor_element_get_shape(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_shape(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -208,7 +208,7 @@ webkit_dom_html_anchor_element_set_shape(CyberKitDOMHTMLAnchorElement* self, con
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_target(CyberKitDOMHTMLAnchorElement* self);
@@ -219,7 +219,7 @@ webkit_dom_html_anchor_element_get_target(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_target(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -230,7 +230,7 @@ webkit_dom_html_anchor_element_set_target(CyberKitDOMHTMLAnchorElement* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_type_attr(CyberKitDOMHTMLAnchorElement* self);
@@ -241,7 +241,7 @@ webkit_dom_html_anchor_element_get_type_attr(CyberKitDOMHTMLAnchorElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_type_attr(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -252,7 +252,7 @@ webkit_dom_html_anchor_element_set_type_attr(CyberKitDOMHTMLAnchorElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_text(CyberKitDOMHTMLAnchorElement* self);
@@ -264,7 +264,7 @@ webkit_dom_html_anchor_element_get_text(CyberKitDOMHTMLAnchorElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_text(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -275,7 +275,7 @@ webkit_dom_html_anchor_element_set_text(CyberKitDOMHTMLAnchorElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_href(CyberKitDOMHTMLAnchorElement* self);
@@ -286,7 +286,7 @@ webkit_dom_html_anchor_element_get_href(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_href(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -297,7 +297,7 @@ webkit_dom_html_anchor_element_set_href(CyberKitDOMHTMLAnchorElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_protocol(CyberKitDOMHTMLAnchorElement* self);
@@ -308,7 +308,7 @@ webkit_dom_html_anchor_element_get_protocol(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_protocol(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -319,7 +319,7 @@ webkit_dom_html_anchor_element_set_protocol(CyberKitDOMHTMLAnchorElement* self, 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_host(CyberKitDOMHTMLAnchorElement* self);
@@ -330,7 +330,7 @@ webkit_dom_html_anchor_element_get_host(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_host(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -341,7 +341,7 @@ webkit_dom_html_anchor_element_set_host(CyberKitDOMHTMLAnchorElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_hostname(CyberKitDOMHTMLAnchorElement* self);
@@ -352,7 +352,7 @@ webkit_dom_html_anchor_element_get_hostname(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_hostname(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -363,7 +363,7 @@ webkit_dom_html_anchor_element_set_hostname(CyberKitDOMHTMLAnchorElement* self, 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_port(CyberKitDOMHTMLAnchorElement* self);
@@ -374,7 +374,7 @@ webkit_dom_html_anchor_element_get_port(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_port(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -385,7 +385,7 @@ webkit_dom_html_anchor_element_set_port(CyberKitDOMHTMLAnchorElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_pathname(CyberKitDOMHTMLAnchorElement* self);
@@ -396,7 +396,7 @@ webkit_dom_html_anchor_element_get_pathname(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_pathname(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -407,7 +407,7 @@ webkit_dom_html_anchor_element_set_pathname(CyberKitDOMHTMLAnchorElement* self, 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_search(CyberKitDOMHTMLAnchorElement* self);
@@ -418,7 +418,7 @@ webkit_dom_html_anchor_element_get_search(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_search(CyberKitDOMHTMLAnchorElement* self, const gchar* value);
@@ -429,7 +429,7 @@ webkit_dom_html_anchor_element_set_search(CyberKitDOMHTMLAnchorElement* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_anchor_element_get_hash(CyberKitDOMHTMLAnchorElement* self);
@@ -440,7 +440,7 @@ webkit_dom_html_anchor_element_get_hash(CyberKitDOMHTMLAnchorElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_anchor_element_set_hash(CyberKitDOMHTMLAnchorElement* self, const gchar* value);

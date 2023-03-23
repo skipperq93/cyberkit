@@ -35,7 +35,7 @@
 #include <wtf/Function.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileStreamClient;
 class FileStream;
@@ -59,4 +59,4 @@ private:
     std::unique_ptr<Internals> m_internals;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

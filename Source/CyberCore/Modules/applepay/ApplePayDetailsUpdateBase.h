@@ -33,7 +33,7 @@
 #include "ApplePayRecurringPaymentRequest.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayDetailsUpdateBase {
     ApplePayLineItem newTotal;
@@ -52,6 +52,6 @@ struct ApplePayDetailsUpdateBase {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

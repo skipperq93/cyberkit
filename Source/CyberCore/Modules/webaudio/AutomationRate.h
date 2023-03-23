@@ -30,10 +30,10 @@
 
 #if ENABLE(WEB_AUDIO)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AutomationRate : bool { ARate, KRate };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

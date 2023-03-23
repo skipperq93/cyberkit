@@ -37,7 +37,7 @@
 #include <wtf/SoftLinking.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 bool CDMPrivateMediaPlayer::supportsKeySystem(const String& keySystem)
 {

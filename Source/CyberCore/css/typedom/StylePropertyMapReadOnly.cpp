@@ -42,7 +42,7 @@
 #include "CSSValueList.h"
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<CSSStyleValue> StylePropertyMapReadOnly::reifyValue(RefPtr<CSSValue>&& value, std::optional<CSSPropertyID> propertyID, Document& document)
 {
@@ -97,4 +97,4 @@ std::optional<StylePropertyMapReadOnly::StylePropertyMapEntry> StylePropertyMapR
     return m_values[m_index++];
 }
 
-} // namespace WebCore
+} // namespace CyberCore

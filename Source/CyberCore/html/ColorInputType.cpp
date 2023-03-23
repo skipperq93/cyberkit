@@ -55,7 +55,7 @@
 #include "ShadowRoot.h"
 #include "UserGestureIndicator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -313,6 +313,6 @@ void ColorInputType::selectColor(StringView string)
         didChooseColor(color.value());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(INPUT_TYPE_COLOR)

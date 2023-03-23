@@ -26,7 +26,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLLabelElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLLabelElement);

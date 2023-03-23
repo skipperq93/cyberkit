@@ -29,7 +29,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 std::unique_ptr<ProcessThrottler::BackgroundActivity> UIRemoteObjectRegistry::backgroundActivity(ASCIILiteral name)
 {
@@ -60,4 +60,4 @@ uint64_t UIRemoteObjectRegistry::messageDestinationID()
     return m_page.webPageID().toUInt64();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

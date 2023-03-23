@@ -30,7 +30,7 @@
 #include "CSSValue.h"
 #include "CSSValueKeywords.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<CompositeOperation> toCompositeOperation(const CSSValue& value)
 {
@@ -49,4 +49,4 @@ std::optional<CompositeOperation> toCompositeOperation(const CSSValue& value)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

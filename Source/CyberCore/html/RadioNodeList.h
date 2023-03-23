@@ -28,7 +28,7 @@
 
 #include "LiveNodeList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RadioNodeList final : public CachedLiveNodeList<RadioNodeList> {
     WTF_MAKE_ISO_ALLOCATED(RadioNodeList);
@@ -48,4 +48,4 @@ private:
     bool m_isRootedAtTreeScope;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

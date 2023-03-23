@@ -21,13 +21,13 @@
 #include "config.h"
 #include "JSTestDefaultToJSONEnum.h"
 
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSString.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSString.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/SortedArrayMap.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 String convertEnumerationToString(TestDefaultToJSONEnum enumerationValue)
@@ -69,4 +69,4 @@ template<> const char* expectedEnumerationValues<TestDefaultToJSONEnum>()
     return "\"EnumValue1\", \"EnumValue2\"";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

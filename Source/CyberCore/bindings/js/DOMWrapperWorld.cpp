@@ -23,12 +23,12 @@
 
 #include "CommonVM.h"
 #include "JSDOMWindow.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "WindowProxy.h"
 #include <wtf/MainThread.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 DOMWrapperWorld::DOMWrapperWorld(JSC::VM& vm, Type type, const String& name)
@@ -75,4 +75,4 @@ DOMWrapperWorld& mainThreadNormalWorld()
     return cachedNormalWorld;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

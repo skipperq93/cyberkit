@@ -31,7 +31,7 @@
 #include "LayoutUnits.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutSize;
 struct Length;
@@ -111,7 +111,7 @@ private:
 }
 
 #define SPECIALIZE_TYPE_TRAITS_LAYOUT_FORMATTING_CONTEXT(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Layout::ToValueTypeName) \
-    static bool isType(const WebCore::Layout::FormattingContext& formattingContext) { return formattingContext.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Layout::ToValueTypeName) \
+    static bool isType(const CyberCore::Layout::FormattingContext& formattingContext) { return formattingContext.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

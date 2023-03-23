@@ -17,12 +17,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitSecurityManagerPrivate_h
-#define WebKitSecurityManagerPrivate_h
+#ifndef CyberKitSecurityManagerPrivate_h
+#define CyberKitSecurityManagerPrivate_h
 
-#include "WebKitSecurityManager.h"
-#include "WebKitWebContext.h"
+#include "CyberKitSecurityManager.h"
+#include "CyberKitWebContext.h"
 
-WebKitSecurityManager* webkitSecurityManagerCreate(WebKitWebContext*);
+CyberKitSecurityManager* webkitSecurityManagerCreate(CyberKitWebContext*);
 
-#endif // WebKitSecurityManagerPrivate_h
+#endif // CyberKitSecurityManagerPrivate_h

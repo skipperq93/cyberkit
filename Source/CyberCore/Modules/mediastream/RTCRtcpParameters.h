@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtcpParameters {
     String cname;
@@ -37,6 +37,6 @@ struct RTCRtcpParameters {
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

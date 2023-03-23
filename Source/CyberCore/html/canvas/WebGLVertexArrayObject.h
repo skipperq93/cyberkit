@@ -33,7 +33,7 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGL2RenderingContext;
 
@@ -46,6 +46,6 @@ private:
     void deleteObjectImpl(const AbstractLocker&, GraphicsContextGL*, PlatformGLObject) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

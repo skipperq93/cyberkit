@@ -18,42 +18,42 @@
  */
 
 #include "config.h"
-#include "WebKitWebInspector.h"
+#include "CyberKitWebInspector.h"
 
 #include "WebInspectorUIProxy.h"
 #include "WebInspectorUIProxyClient.h"
-#include "WebKitWebInspectorPrivate.h"
+#include "CyberKitWebInspectorPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitWebInspector:
+ * CyberKitWebInspector:
  *
- * Access to the WebKit inspector.
+ * Access to the CyberKit inspector.
  *
- * The WebKit Inspector is a graphical tool to inspect and change the
- * content of a #WebKitWebView. It also includes an interactive
+ * The CyberKit Inspector is a graphical tool to inspect and change the
+ * content of a #CyberKitWebView. It also includes an interactive
  * JavaScript debugger. Using this class one can get a #GtkWidget
  * which can be embedded into an application to show the inspector.
  *
- * The inspector is available when the #WebKitSettings of the
- * #WebKitWebView has set the #WebKitSettings:enable-developer-extras
+ * The inspector is available when the #CyberKitSettings of the
+ * #CyberKitWebView has set the #CyberKitSettings:enable-developer-extras
  * to true, otherwise no inspector is available.
  *
  * ```c
  * // Enable the developer extras
- * WebKitSettings *settings = webkit_web_view_get_settings (WEBKIT_WEB_VIEW(my_webview));
+ * CyberKitSettings *settings = webkit_web_view_get_settings (WEBKIT_WEB_VIEW(my_webview));
  * g_object_set (G_OBJECT(settings), "enable-developer-extras", TRUE, NULL);
  *
  * // Load some data or reload to be able to inspect the page
  * webkit_web_view_load_uri (WEBKIT_WEB_VIEW(my_webview), "http://www.gnome.org");
  *
  * // Show the inspector
- * WebKitWebInspector *inspector = webkit_web_view_get_inspector (WEBKIT_WEB_VIEW(my_webview));
+ * CyberKitWebInspector *inspector = webkit_web_view_get_inspector (WEBKIT_WEB_VIEW(my_webview));
  * webkit_web_inspector_show (WEBKIT_WEB_INSPECTOR(inspector));
  * ```
  */
@@ -78,8 +78,8 @@ enum {
 
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
-struct _WebKitWebInspectorPrivate {
-    ~_WebKitWebInspectorPrivate()
+struct _CyberKitWebInspectorPrivate {
+    ~_CyberKitWebInspectorPrivate()
     {
         webInspector->setClient(nullptr);
     }
@@ -90,13 +90,13 @@ struct _WebKitWebInspectorPrivate {
     bool canAttach;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebInspector, webkit_web_inspector, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebInspector, webkit_web_inspector, G_TYPE_OBJECT, GObject)
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
 static void webkitWebInspectorGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebInspector* inspector = WEBKIT_WEB_INSPECTOR(object);
+    CyberKitWebInspector* inspector = WEBKIT_WEB_INSPECTOR(object);
 
     switch (propId) {
     case PROP_INSPECTED_URI:
@@ -113,13 +113,13 @@ static void webkitWebInspectorGetProperty(GObject* object, guint propId, GValue*
     }
 }
 
-static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
+static void webkit_web_inspector_class_init(CyberKitWebInspectorClass* findClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(findClass);
     gObjectClass->get_property = webkitWebInspectorGetProperty;
 
     /**
-     * WebKitWebInspector:inspected-uri:
+     * CyberKitWebInspector:inspected-uri:
      *
      * The URI that is currently being inspected.
      */
@@ -130,7 +130,7 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
             nullptr,
             WEBKIT_PARAM_READABLE);
     /**
-     * WebKitWebInspector:attached-height:
+     * CyberKitWebInspector:attached-height:
      *
      * The height that the inspector view should have when it is attached.
      */
@@ -142,7 +142,7 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
             WEBKIT_PARAM_READABLE);
 
     /**
-     * WebKitWebInspector:can-attach:
+     * CyberKitWebInspector:can-attach:
      *
      * Whether the @inspector can be attached to the same window that contains
      * the inspected view.
@@ -159,14 +159,14 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
     g_object_class_install_properties(gObjectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitWebInspector::open-window:
-     * @inspector: the #WebKitWebInspector on which the signal is emitted
+     * CyberKitWebInspector::open-window:
+     * @inspector: the #CyberKitWebInspector on which the signal is emitted
      *
      * Emitted when the inspector is requested to open in a separate window.
      * If this signal is not handled, a #GtkWindow with the inspector will be
      * created and shown, so you only need to handle this signal if you want
      * to use your own window.
-     * This signal is emitted after #WebKitWebInspector::detach to show
+     * This signal is emitted after #CyberKitWebInspector::detach to show
      * the inspector in a separate window after being detached.
      *
      * To prevent the inspector from being shown you can connect to this
@@ -185,8 +185,8 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
         G_TYPE_BOOLEAN, 0);
 
     /**
-     * WebKitWebInspector::bring-to-front:
-     * @inspector: the #WebKitWebInspector on which the signal is emitted
+     * CyberKitWebInspector::bring-to-front:
+     * @inspector: the #CyberKitWebInspector on which the signal is emitted
      *
      * Emitted when the inspector should be shown.
      *
@@ -213,8 +213,8 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
         G_TYPE_BOOLEAN, 0);
 
     /**
-     * WebKitWebInspector::closed:
-     * @inspector: the #WebKitWebInspector on which the signal is emitted
+     * CyberKitWebInspector::closed:
+     * @inspector: the #CyberKitWebInspector on which the signal is emitted
      *
      * Emitted when the inspector page is closed. If you are using your own
      * inspector window, you should connect to this signal and destroy your
@@ -229,8 +229,8 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
                      G_TYPE_NONE, 0);
 
     /**
-     * WebKitWebInspector::attach:
-     * @inspector: the #WebKitWebInspector on which the signal is emitted
+     * CyberKitWebInspector::attach:
+     * @inspector: the #CyberKitWebInspector on which the signal is emitted
      *
      * Emitted when the inspector is requested to be attached to the window
      * where the inspected web view is.
@@ -255,15 +255,15 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
         G_TYPE_BOOLEAN, 0);
 
     /**
-     * WebKitWebInspector::detach:
-     * @inspector: the #WebKitWebInspector on which the signal is emitted
+     * CyberKitWebInspector::detach:
+     * @inspector: the #CyberKitWebInspector on which the signal is emitted
      *
      * Emitted when the inspector is requested to be detached from the window
      * it is currently attached to. The inspector is detached when the inspector page
      * is about to be closed, and this signal is emitted right before
-     * #WebKitWebInspector::closed, or when the user clicks on the detach button
+     * #CyberKitWebInspector::closed, or when the user clicks on the detach button
      * in the inspector view to show the inspector in a separate window. In this case
-     * the signal #WebKitWebInspector::open-window is emitted after this one.
+     * the signal #CyberKitWebInspector::open-window is emitted after this one.
      *
      * To prevent the inspector view from being detached you can connect to this
      * signal and simply return %TRUE.
@@ -281,10 +281,10 @@ static void webkit_web_inspector_class_init(WebKitWebInspectorClass* findClass)
         G_TYPE_BOOLEAN, 0);
 }
 
-class WebKitInspectorClient final : public WebInspectorUIProxyClient {
+class CyberKitInspectorClient final : public WebInspectorUIProxyClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit WebKitInspectorClient(WebKitWebInspector* inspector)
+    explicit CyberKitInspectorClient(CyberKitWebInspector* inspector)
         : m_inspector(inspector)
     {
     }
@@ -352,29 +352,29 @@ private:
         g_object_notify_by_pspec(G_OBJECT(m_inspector), sObjProperties[PROP_CAN_ATTACH]);
     }
 
-    WebKitWebInspector* m_inspector;
+    CyberKitWebInspector* m_inspector;
 };
 
-WebKitWebInspector* webkitWebInspectorCreate(WebInspectorUIProxy* webInspector)
+CyberKitWebInspector* webkitWebInspectorCreate(WebInspectorUIProxy* webInspector)
 {
-    WebKitWebInspector* inspector = WEBKIT_WEB_INSPECTOR(g_object_new(WEBKIT_TYPE_WEB_INSPECTOR, NULL));
+    CyberKitWebInspector* inspector = WEBKIT_WEB_INSPECTOR(g_object_new(WEBKIT_TYPE_WEB_INSPECTOR, NULL));
     inspector->priv->webInspector = webInspector;
-    webInspector->setClient(makeUnique<WebKitInspectorClient>(inspector));
+    webInspector->setClient(makeUnique<CyberKitInspectorClient>(inspector));
     return inspector;
 }
 
 /**
  * webkit_web_inspector_get_web_view:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
- * Get the #WebKitWebViewBase used to display the inspector.
+ * Get the #CyberKitWebViewBase used to display the inspector.
  *
  * This might be %NULL if the inspector hasn't been loaded yet,
  * or it has been closed.
  *
- * Returns: (transfer none): the #WebKitWebViewBase used to display the inspector or %NULL
+ * Returns: (transfer none): the #CyberKitWebViewBase used to display the inspector or %NULL
  */
-WebKitWebViewBase* webkit_web_inspector_get_web_view(WebKitWebInspector* inspector)
+CyberKitWebViewBase* webkit_web_inspector_get_web_view(CyberKitWebInspector* inspector)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector), 0);
 
@@ -383,7 +383,7 @@ WebKitWebViewBase* webkit_web_inspector_get_web_view(WebKitWebInspector* inspect
 
 /**
  * webkit_web_inspector_get_inspected_uri:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Get the URI that is currently being inspected.
  *
@@ -394,7 +394,7 @@ WebKitWebViewBase* webkit_web_inspector_get_web_view(WebKitWebInspector* inspect
  *
  * Returns: the URI that is currently being inspected or %NULL
  */
-const char* webkit_web_inspector_get_inspected_uri(WebKitWebInspector* inspector)
+const char* webkit_web_inspector_get_inspected_uri(CyberKitWebInspector* inspector)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector), 0);
 
@@ -403,7 +403,7 @@ const char* webkit_web_inspector_get_inspected_uri(WebKitWebInspector* inspector
 
 /**
  * webkit_web_inspector_get_can_attach:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Whether the @inspector can be attached to the same window that contains
  * the inspected view.
@@ -413,7 +413,7 @@ const char* webkit_web_inspector_get_inspected_uri(WebKitWebInspector* inspector
  *
  * Since: 2.8
  */
-gboolean webkit_web_inspector_get_can_attach(WebKitWebInspector* inspector)
+gboolean webkit_web_inspector_get_can_attach(CyberKitWebInspector* inspector)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector), FALSE);
 
@@ -422,14 +422,14 @@ gboolean webkit_web_inspector_get_can_attach(WebKitWebInspector* inspector)
 
 /**
  * webkit_web_inspector_is_attached:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Whether the @inspector view is currently attached to the same window that contains
  * the inspected view.
  *
  * Returns: %TRUE if @inspector is currently attached or %FALSE otherwise
  */
-gboolean webkit_web_inspector_is_attached(WebKitWebInspector* inspector)
+gboolean webkit_web_inspector_is_attached(CyberKitWebInspector* inspector)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector), FALSE);
 
@@ -438,14 +438,14 @@ gboolean webkit_web_inspector_is_attached(WebKitWebInspector* inspector)
 
 /**
  * webkit_web_inspector_attach:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Request @inspector to be attached.
  *
- * The signal #WebKitWebInspector::attach
+ * The signal #CyberKitWebInspector::attach
  * will be emitted. If the inspector is already attached it does nothing.
  */
-void webkit_web_inspector_attach(WebKitWebInspector* inspector)
+void webkit_web_inspector_attach(CyberKitWebInspector* inspector)
 {
     g_return_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector));
 
@@ -456,14 +456,14 @@ void webkit_web_inspector_attach(WebKitWebInspector* inspector)
 
 /**
  * webkit_web_inspector_detach:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Request @inspector to be detached.
  *
- * The signal #WebKitWebInspector::detach
+ * The signal #CyberKitWebInspector::detach
  * will be emitted. If the inspector is already detached it does nothing.
  */
-void webkit_web_inspector_detach(WebKitWebInspector* inspector)
+void webkit_web_inspector_detach(CyberKitWebInspector* inspector)
 {
     g_return_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector));
 
@@ -474,11 +474,11 @@ void webkit_web_inspector_detach(WebKitWebInspector* inspector)
 
 /**
  * webkit_web_inspector_show:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Request @inspector to be shown.
  */
-void webkit_web_inspector_show(WebKitWebInspector* inspector)
+void webkit_web_inspector_show(CyberKitWebInspector* inspector)
 {
     g_return_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector));
 
@@ -487,11 +487,11 @@ void webkit_web_inspector_show(WebKitWebInspector* inspector)
 
 /**
  * webkit_web_inspector_close:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Request @inspector to be closed.
  */
-void webkit_web_inspector_close(WebKitWebInspector* inspector)
+void webkit_web_inspector_close(CyberKitWebInspector* inspector)
 {
     g_return_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector));
 
@@ -500,7 +500,7 @@ void webkit_web_inspector_close(WebKitWebInspector* inspector)
 
 /**
  * webkit_web_inspector_get_attached_height:
- * @inspector: a #WebKitWebInspector
+ * @inspector: a #CyberKitWebInspector
  *
  * Get the height that the inspector view when attached.
  *
@@ -510,7 +510,7 @@ void webkit_web_inspector_close(WebKitWebInspector* inspector)
  *
  * Returns: the height of the inspector view when attached
  */
-guint webkit_web_inspector_get_attached_height(WebKitWebInspector* inspector)
+guint webkit_web_inspector_get_attached_height(CyberKitWebInspector* inspector)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_INSPECTOR(inspector), 0);
 

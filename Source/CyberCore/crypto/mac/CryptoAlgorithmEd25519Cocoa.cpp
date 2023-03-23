@@ -31,7 +31,7 @@
 #include "CryptoKeyOKP.h"
 #include <pal/spi/cocoa/CoreCryptoSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<Vector<uint8_t>> signEd25519(const Vector<uint8_t>& sk, size_t, const Vector<uint8_t>& data)
 {

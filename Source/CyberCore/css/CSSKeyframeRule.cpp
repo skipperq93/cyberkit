@@ -34,7 +34,7 @@
 #include "StylePropertiesInlines.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleRuleKeyframe::StyleRuleKeyframe(Ref<StyleProperties>&& properties)
     : StyleRuleBase(StyleRuleType::Keyframe)
@@ -122,4 +122,4 @@ void CSSKeyframeRule::reattach(StyleRuleBase&)
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

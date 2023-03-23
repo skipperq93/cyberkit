@@ -29,10 +29,10 @@
 
 #include "PlatformXR.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using XRHandedness = PlatformXR::XRHandedness;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

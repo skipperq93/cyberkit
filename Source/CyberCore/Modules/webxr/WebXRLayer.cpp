@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRLayer);
 
@@ -42,6 +42,6 @@ WebXRLayer::WebXRLayer(ScriptExecutionContext* context)
 
 WebXRLayer::~WebXRLayer() = default;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

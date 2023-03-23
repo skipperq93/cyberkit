@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<PermissionController>& sharedController()
 {
@@ -50,4 +50,4 @@ void PermissionController::setSharedController(Ref<PermissionController>&& contr
     sharedController() = WTFMove(controller);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

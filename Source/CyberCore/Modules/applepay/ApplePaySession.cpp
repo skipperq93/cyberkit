@@ -67,7 +67,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ApplePaySession);
 
@@ -1155,6 +1155,6 @@ bool ApplePaySession::virtualHasPendingActivity() const
     return m_state != State::Idle && !isFinalState();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

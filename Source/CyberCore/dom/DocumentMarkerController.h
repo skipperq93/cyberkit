@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class LayoutPoint;
@@ -132,8 +132,8 @@ inline bool DocumentMarkerController::hasMarkers() const
     return !m_markers.isEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-void showDocumentMarkers(const WebCore::DocumentMarkerController*);
+void showDocumentMarkers(const CyberCore::DocumentMarkerController*);
 #endif

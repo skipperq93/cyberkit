@@ -36,8 +36,8 @@ WK_API_AVAILABLE(macos(10.13), ios(11.0))
  @param completionHandler A completion handler called with the request you should use to commit to the redirection.
  @discussion When performing a load of a URL over a network, the server might decide a different URL should be loaded instead.
  A common example is an HTTP redirect.
- When this happens, you should notify WebKit by sending the servers response and a proposed new request to the WKURLSchemeTask.
- WebKit might decide that changes need to be make to the proposed request.
+ When this happens, you should notify CyberKit by sending the servers response and a proposed new request to the WKURLSchemeTask.
+ CyberKit might decide that changes need to be make to the proposed request.
  This is communicated through the completionHandler which tells you the request you should make to commit to the redirection.
 
  An exception will be thrown if you make any other callbacks to the WKURLSchemeTask while this completionHandler is pending, other than didFailWithError:.

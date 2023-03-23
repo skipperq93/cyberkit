@@ -29,7 +29,7 @@
 #include "StyleRuleType.h"
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCustomPropertyValue;
 class CSSProperty;
@@ -159,4 +159,4 @@ bool isInitialValueForLonghand(CSSPropertyID, const CSSValue&);
 ASCIILiteral initialValueTextForLonghand(CSSPropertyID);
 CSSValueID initialValueIDForLonghand(CSSPropertyID); // Returns CSSPropertyInvalid if not a keyword.
 
-} // namespace WebCore
+} // namespace CyberCore

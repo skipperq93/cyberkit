@@ -37,7 +37,7 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMediaElement;
 class VTTCue;
@@ -103,6 +103,6 @@ private:
     bool m_needsToGenerateTextTrackRepresentation { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

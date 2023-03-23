@@ -34,7 +34,7 @@ namespace WTF {
 class URL;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebURLSchemeTask;
 
@@ -66,6 +66,6 @@ private:
     String m_targetListsHtml;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

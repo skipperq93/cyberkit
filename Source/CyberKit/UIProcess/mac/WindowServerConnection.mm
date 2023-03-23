@@ -31,7 +31,7 @@
 #import "WebProcessPool.h"
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(MAC)
 void WindowServerConnection::applicationWindowModificationsStopped(bool stopped)
@@ -137,6 +137,6 @@ WindowServerConnection::WindowServerConnection()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC) || PLATFORM(MACCATALYST)

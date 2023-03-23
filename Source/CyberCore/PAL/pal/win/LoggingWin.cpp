@@ -37,7 +37,7 @@ namespace PAL {
 String logLevelString()
 {
 #if !LOG_DISABLED
-    static constexpr const char* loggingEnvironmentVariable = "WebCoreLogging";
+    static constexpr const char* loggingEnvironmentVariable = "CyberCoreLogging";
     DWORD length = GetEnvironmentVariableA(loggingEnvironmentVariable, 0, 0);
     if (!length)
         return emptyString();

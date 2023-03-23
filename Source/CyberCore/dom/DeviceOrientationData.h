@@ -29,7 +29,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceOrientationData : public RefCounted<DeviceOrientationData> {
 public:
@@ -73,4 +73,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

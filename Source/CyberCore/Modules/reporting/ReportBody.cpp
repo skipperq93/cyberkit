@@ -29,7 +29,7 @@
 #include "FormData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ReportBody);
 
@@ -44,4 +44,4 @@ ViolationReportType ReportBody::reportBodyType() const
     return m_reportBodyType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

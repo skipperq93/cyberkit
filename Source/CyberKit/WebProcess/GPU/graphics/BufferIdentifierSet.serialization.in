@@ -22,7 +22,7 @@
 
 #if ENABLE(GPU_PROCESS)
 
-struct WebKit::BufferIdentifierSet {
+struct CyberKit::BufferIdentifierSet {
     std::optional<CyberCore::RenderingResourceIdentifier> front;
     std::optional<CyberCore::RenderingResourceIdentifier> back;
     std::optional<CyberCore::RenderingResourceIdentifier> secondaryBack;

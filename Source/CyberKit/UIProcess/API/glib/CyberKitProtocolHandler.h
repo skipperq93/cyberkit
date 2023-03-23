@@ -19,20 +19,20 @@
 
 #pragma once
 
-#include "WebKitURISchemeRequest.h"
-#include "WebKitWebContext.h"
+#include "CyberKitURISchemeRequest.h"
+#include "CyberKitWebContext.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebKitProtocolHandler {
+class CyberKitProtocolHandler {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit WebKitProtocolHandler(WebKitWebContext*);
-    ~WebKitProtocolHandler() = default;
+    explicit CyberKitProtocolHandler(CyberKitWebContext*);
+    ~CyberKitProtocolHandler() = default;
 
 private:
-    void handleRequest(WebKitURISchemeRequest*);
-    void handleGPU(WebKitURISchemeRequest*);
+    void handleRequest(CyberKitURISchemeRequest*);
+    void handleGPU(CyberKitURISchemeRequest*);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

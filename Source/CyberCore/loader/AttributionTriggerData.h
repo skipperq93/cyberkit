@@ -31,7 +31,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/URL.h>
 
-namespace WebCore::PCM {
+namespace CyberCore::PCM {
 
 enum class WasSent : bool { No, Yes };
 

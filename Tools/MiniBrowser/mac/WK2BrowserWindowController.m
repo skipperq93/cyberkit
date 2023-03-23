@@ -110,7 +110,7 @@ static const int testFooterBannerHeight = 58;
 
     SettingsController *settingsController = [[NSApplication sharedApplication] browserAppDelegate].settingsController;
     // This setting installs the new WK2 Icon Loading Delegate and tests that mechanism by
-    // telling WebKit to load every icon referenced by the page.
+    // telling CyberKit to load every icon referenced by the page.
     if (settingsController.loadsAllSiteIcons)
         _webView._iconLoadingDelegate = self;
     

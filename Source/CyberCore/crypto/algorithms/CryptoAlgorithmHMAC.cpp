@@ -32,7 +32,7 @@
 #include "CryptoKeyHMAC.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmHMACInternal {
 static constexpr auto ALG1 = "HS1"_s;

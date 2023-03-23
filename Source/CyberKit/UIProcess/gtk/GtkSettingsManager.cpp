@@ -29,7 +29,7 @@
 #include "GtkSettingsManagerProxyMessages.h"
 #include "WebProcessPool.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 GtkSettingsManager& GtkSettingsManager::singleton()
@@ -209,4 +209,4 @@ GtkSettingsManager::GtkSettingsManager()
     g_signal_connect_swapped(m_settings, "notify::gtk-overlay-scrolling", G_CALLBACK(settingsChangedCallback), this);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

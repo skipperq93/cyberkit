@@ -30,7 +30,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore { 
+namespace CyberCore { 
 
 enum class FetchHeadersGuard : uint8_t {
     None,
@@ -40,18 +40,18 @@ enum class FetchHeadersGuard : uint8_t {
     Response
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraitsForPersistence<WebCore::FetchHeadersGuard> {
+template<> struct EnumTraitsForPersistence<CyberCore::FetchHeadersGuard> {
     using values = EnumValues<
-    WebCore::FetchHeadersGuard,
-    WebCore::FetchHeadersGuard::None,
-    WebCore::FetchHeadersGuard::Immutable,
-    WebCore::FetchHeadersGuard::Request,
-    WebCore::FetchHeadersGuard::RequestNoCors,
-    WebCore::FetchHeadersGuard::Response
+    CyberCore::FetchHeadersGuard,
+    CyberCore::FetchHeadersGuard::None,
+    CyberCore::FetchHeadersGuard::Immutable,
+    CyberCore::FetchHeadersGuard::Request,
+    CyberCore::FetchHeadersGuard::RequestNoCors,
+    CyberCore::FetchHeadersGuard::Response
     >;
 };
 

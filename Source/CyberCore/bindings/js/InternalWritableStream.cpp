@@ -27,11 +27,11 @@
 #include "InternalWritableStream.h"
 
 #include "Exception.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/JSArrayBufferViewInlines.h>
 #include <CyberScriptCore/JSObjectInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<JSC::JSValue> invokeWritableStreamFunction(JSC::JSGlobalObject& globalObject, const JSC::Identifier& identifier, const JSC::MarkedArgumentBuffer& arguments)
 {

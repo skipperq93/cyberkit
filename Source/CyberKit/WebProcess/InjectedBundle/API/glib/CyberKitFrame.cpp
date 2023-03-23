@@ -23,9 +23,9 @@
 #include "CyberKitFramePrivate.h"
 #include "CyberKitScriptWorldPrivate.h"
 #include "CyberKitWebFormManagerPrivate.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/JSLock.h>
 #include <CyberCore/Frame.h>
 #include <CyberCore/FrameLoader.h>
 #include <CyberCore/JSNode.h>
@@ -186,7 +186,7 @@ const gchar* webkit_frame_get_uri(CyberKitFrame* frame)
  * @frame: a #CyberKitFrame
  *
  * Gets the global JavaScript execution context. Use this function to bridge
- * between the CyberKit and JavaScriptCore APIs.
+ * between the CyberKit and CyberScriptCore APIs.
  *
  * Returns: (transfer none): the global JavaScript context of @frame
  *
@@ -228,7 +228,7 @@ JSGlobalContextRef webkit_frame_get_javascript_context_for_script_world(CyberKit
  * @frame: a #CyberKitFrame
  *
  * Get the JavaScript execution context of @frame. Use this function to bridge
- * between the CyberKit and JavaScriptCore APIs.
+ * between the CyberKit and CyberScriptCore APIs.
  *
  * Returns: (transfer full): the #JSCContext for the JavaScript execution context of @frame.
  *

@@ -30,7 +30,7 @@
 
 #include <CyberCore/CairoUtilities.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<ViewSnapshot> ViewSnapshot::create(RefPtr<cairo_surface_t>&& surface)
@@ -84,6 +84,6 @@ CyberCore::IntSize ViewSnapshot::size() const
     return { width, height };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

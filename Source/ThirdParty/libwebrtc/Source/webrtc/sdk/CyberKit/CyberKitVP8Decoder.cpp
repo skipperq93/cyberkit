@@ -23,26 +23,26 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitVP8Decoder.h"
+#include "CyberKitVP8Decoder.h"
 
-#include "WebKitDecoder.h"
-#include "WebKitDecoderReceiver.h"
+#include "CyberKitDecoder.h"
+#include "CyberKitDecoderReceiver.h"
 #include "modules/video_coding/codecs/vp8/libvpx_vp8_decoder.h"
 #include "rtc_base/logging.h"
 #include "system_wrappers/include/cpu_info.h"
 
 namespace webrtc {
 
-static OSStatus createWebKitVP8Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef*);
-void registerWebKitVP8Decoder()
+static OSStatus createCyberKitVP8Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef*);
+void registerCyberKitVP8Decoder()
 {
-    VTRegisterVideoDecoder('vp08', createWebKitVP8Decoder);
+    VTRegisterVideoDecoder('vp08', createCyberKitVP8Decoder);
 }
 
 typedef struct {
     std::unique_ptr<LibvpxVp8Decoder> m_instance;
-    std::unique_ptr<WebKitDecoderReceiver> m_receiver;
-} WebKitVP8Decoder;
+    std::unique_ptr<CyberKitDecoderReceiver> m_receiver;
+} CyberKitVP8Decoder;
 
 static OSStatus invalidateVP8Decoder(CMBaseObjectRef);
 static void finalizeVP8Decoder(CMBaseObjectRef);
@@ -60,11 +60,11 @@ struct DecoderBaseClass {
     CMBaseClass alignedClass;
 };
 
-static const DecoderBaseClass WebKitVP8Decoder_BaseClass {
+static const DecoderBaseClass CyberKitVP8Decoder_BaseClass {
     { },
     {
         kCMBaseObject_ClassVersion_1,
-        sizeof(WebKitVP8Decoder),
+        sizeof(CyberKitVP8Decoder),
         nullptr, // Comparison by pointer equality
         invalidateVP8Decoder,
         finalizeVP8Decoder,
@@ -78,9 +78,9 @@ static const DecoderBaseClass WebKitVP8Decoder_BaseClass {
 #pragma pack(pop)
 
 #if defined(CMBASE_OBJECT_NEEDS_ALIGNMENT) && CMBASE_OBJECT_NEEDS_ALIGNMENT
-    static_assert(sizeof(WebKitVP8Decoder_BaseClass.alignedClass.version) == sizeof(uint32_t), "CMBaseClass fixup is required!");
+    static_assert(sizeof(CyberKitVP8Decoder_BaseClass.alignedClass.version) == sizeof(uint32_t), "CMBaseClass fixup is required!");
 #else
-    static_assert(sizeof(WebKitVP8Decoder_BaseClass.alignedClass.version) == sizeof(uintptr_t), "CMBaseClass fixup is not required!");
+    static_assert(sizeof(CyberKitVP8Decoder_BaseClass.alignedClass.version) == sizeof(uintptr_t), "CMBaseClass fixup is not required!");
 #endif
 static_assert(offsetof(DecoderBaseClass, alignedClass) == padSize, "CMBaseClass offset is incorrect!");
 static_assert(alignof(DecoderBaseClass) == 4, "CMBaseClass must have 4 byte alignment");
@@ -94,7 +94,7 @@ struct DecoderClass {
     VTVideoDecoderClass alignedClass;
 };
 
-static const DecoderClass WebKitVP8Decoder_VideoDecoderClass =
+static const DecoderClass CyberKitVP8Decoder_VideoDecoderClass =
 {
     { },
     {
@@ -114,20 +114,20 @@ static const DecoderClass WebKitVP8Decoder_VideoDecoderClass =
 #pragma pack(pop)
 
 #if defined(CMBASE_OBJECT_NEEDS_ALIGNMENT) && CMBASE_OBJECT_NEEDS_ALIGNMENT
-    static_assert(sizeof(WebKitVP8Decoder_VideoDecoderClass.alignedClass.version) == sizeof(uint32_t), "CMBaseClass fixup is required!");
+    static_assert(sizeof(CyberKitVP8Decoder_VideoDecoderClass.alignedClass.version) == sizeof(uint32_t), "CMBaseClass fixup is required!");
 #else
-    static_assert(sizeof(WebKitVP8Decoder_VideoDecoderClass.alignedClass.version) == sizeof(uintptr_t), "CMBaseClass fixup is not required!");
+    static_assert(sizeof(CyberKitVP8Decoder_VideoDecoderClass.alignedClass.version) == sizeof(uintptr_t), "CMBaseClass fixup is not required!");
 #endif
 static_assert(offsetof(DecoderClass, alignedClass) == padSize, "CMBaseClass offset is incorrect!");
 static_assert(alignof(DecoderClass) == 4, "CMBaseClass must have 4 byte alignment");
 
-static const VTVideoDecoderVTable WebKitVP8DecoderVTable =
+static const VTVideoDecoderVTable CyberKitVP8DecoderVTable =
 {
-    { nullptr, &WebKitVP8Decoder_BaseClass.alignedClass },
-    &WebKitVP8Decoder_VideoDecoderClass.alignedClass
+    { nullptr, &CyberKitVP8Decoder_BaseClass.alignedClass },
+    &CyberKitVP8Decoder_VideoDecoderClass.alignedClass
 };
 
-OSStatus createWebKitVP8Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef* decoderOut)
+OSStatus createCyberKitVP8Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTVideoDecoderRef* decoderOut)
 {
     if (!decoderOut) {
         RTC_LOG(LS_ERROR) << "VP8 decoder creation failed, no decoder output";
@@ -135,7 +135,7 @@ OSStatus createWebKitVP8Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTV
     }
 
     VTVideoDecoderRef decoder = nullptr;
-    auto error = CMDerivedObjectCreate(allocator, &WebKitVP8DecoderVTable.base, VTVideoDecoderGetClassID(), (CMBaseObjectRef*)&decoder);
+    auto error = CMDerivedObjectCreate(allocator, &CyberKitVP8DecoderVTable.base, VTVideoDecoderGetClassID(), (CMBaseObjectRef*)&decoder);
 
     if (!decoder) {
         RTC_LOG(LS_ERROR) << "VP8 decoder creation failed, CMDerivedObjectCreate failed with error " << error;
@@ -152,7 +152,7 @@ OSStatus createWebKitVP8Decoder(FigVideoCodecType, CFAllocatorRef allocator, VTV
 
 OSStatus invalidateVP8Decoder(CMBaseObjectRef instance)
 {
-    auto* decoder = static_cast<WebKitVP8Decoder*>(CMBaseObjectGetDerivedStorage(instance));
+    auto* decoder = static_cast<CyberKitVP8Decoder*>(CMBaseObjectGetDerivedStorage(instance));
     if (!decoder)
         RTC_LOG(LS_ERROR) << "VP8 decoder: invalidation failed as instance has no decoder";
     else {
@@ -169,12 +169,12 @@ void finalizeVP8Decoder(CMBaseObjectRef instance)
 
 CFStringRef copyVP8DecoderDebugDescription(CMBaseObjectRef)
 {
-    return CFSTR("WebKit VP8 decoder");
+    return CFSTR("CyberKit VP8 decoder");
 }
 
-WebKitVP8Decoder* webKitVP8DecoderFromVTDecoder(VTVideoDecoderRef decoder)
+CyberKitVP8Decoder* webKitVP8DecoderFromVTDecoder(VTVideoDecoderRef decoder)
 {
-    return static_cast<WebKitVP8Decoder*>(CMBaseObjectGetDerivedStorage(reinterpret_cast<CMBaseObjectRef>(decoder)));
+    return static_cast<CyberKitVP8Decoder*>(CMBaseObjectGetDerivedStorage(reinterpret_cast<CMBaseObjectRef>(decoder)));
 }
 OSStatus startVP8DecoderSession(VTVideoDecoderRef instance, VTVideoDecoderSession session, CMVideoFormatDescriptionRef formatDescription)
 {
@@ -185,7 +185,7 @@ OSStatus startVP8DecoderSession(VTVideoDecoderRef instance, VTVideoDecoderSessio
     }
 
     decoder->m_instance = std::make_unique<LibvpxVp8Decoder>();
-    decoder->m_receiver = std::make_unique<WebKitDecoderReceiver>(session);
+    decoder->m_receiver = std::make_unique<CyberKitDecoderReceiver>(session);
     decoder->m_receiver->initializeFromFormatDescription(formatDescription);
 
     decoder->m_instance->RegisterDecodeCompleteCallback(decoder->m_receiver.get());
@@ -198,7 +198,7 @@ OSStatus startVP8DecoderSession(VTVideoDecoderRef instance, VTVideoDecoderSessio
     return noErr;
 }
 
-static OSStatus decodeVP8DecoderFrameFromContiguousBlock(WebKitVP8Decoder& decoder, VTVideoDecoderFrame frame, CMBlockBufferRef encodedBuffer)
+static OSStatus decodeVP8DecoderFrameFromContiguousBlock(CyberKitVP8Decoder& decoder, VTVideoDecoderFrame frame, CMBlockBufferRef encodedBuffer)
 {
     RTC_DCHECK(CMBlockBufferIsRangeContiguous(encodedBuffer, 0, 0));
 
@@ -213,7 +213,7 @@ static OSStatus decodeVP8DecoderFrameFromContiguousBlock(WebKitVP8Decoder& decod
     decoder.m_receiver->setCurrentFrame(frame);
 
     EncodedImage image;
-    image.SetEncodedData(WebKitEncodedImageBufferWrapper::create(reinterpret_cast<uint8_t*>(data), size));
+    image.SetEncodedData(CyberKitEncodedImageBufferWrapper::create(reinterpret_cast<uint8_t*>(data), size));
     // We set those values as VP8DecoderImpl checks for getting a full key frame as first frame.
     image._frameType = VideoFrameType::kVideoFrameKey;
     auto error = decoder.m_instance->Decode(image, false, 0);

@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CryptoKeyType {
     Public,
@@ -35,6 +35,6 @@ enum class CryptoKeyType {
     Secret
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

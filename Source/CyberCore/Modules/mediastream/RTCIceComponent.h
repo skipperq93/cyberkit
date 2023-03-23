@@ -24,8 +24,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCIceComponent { Rtp, Rtcp };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@
 #import <CyberScriptCore/JSLock.h>
 #import <wtf/RetainPtr.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace JSC {
 namespace Bindings {

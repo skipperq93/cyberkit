@@ -32,7 +32,7 @@
 #include "RenderFrame.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLFrameElement);
 
@@ -94,4 +94,4 @@ void HTMLFrameElement::parseAttribute(const QualifiedName& name, const AtomStrin
         HTMLFrameElementBase::parseAttribute(name, value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

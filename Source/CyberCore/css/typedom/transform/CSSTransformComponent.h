@@ -29,7 +29,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CSSTransformType : uint8_t {
     MatrixComponent,
@@ -65,4 +65,4 @@ private:
     Is2D m_is2D;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

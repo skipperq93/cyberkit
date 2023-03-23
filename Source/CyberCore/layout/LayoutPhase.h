@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class PhaseScope;

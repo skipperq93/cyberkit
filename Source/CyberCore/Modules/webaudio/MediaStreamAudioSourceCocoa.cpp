@@ -37,7 +37,7 @@
 #include <pal/cf/CoreMediaSoftLink.h>
 #include "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline CAAudioStreamDescription streamDescription(size_t sampleRate, size_t channelCount)
 {
@@ -91,6 +91,6 @@ void MediaStreamAudioSource::consumeAudio(AudioBus& bus, size_t numberOfFrames)
     audioSamplesAvailable(mediaTime, *m_audioBuffer, description, numberOfFrames);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

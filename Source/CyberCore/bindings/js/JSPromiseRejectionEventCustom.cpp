@@ -31,7 +31,7 @@
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/JSCJSValueInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSPromiseRejectionEvent::visitAdditionalChildren(Visitor& visitor)
@@ -41,4 +41,4 @@ void JSPromiseRejectionEvent::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSPromiseRejectionEvent);
 
-} // namespace WebCore
+} // namespace CyberCore

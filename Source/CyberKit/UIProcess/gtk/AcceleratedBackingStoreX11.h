@@ -32,7 +32,7 @@
 #include <CyberCore/RefPtrCairo.h>
 #include <CyberCore/XUniqueResource.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -57,6 +57,6 @@ private:
     CyberCore::XUniqueDamage m_damage;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(X11)

@@ -24,7 +24,7 @@
 #include "TestMapLikeWithOverriddenOperations.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestMapLikeWithOverriddenOperations : public JSDOMWrapper<TestMapLikeWithOverriddenOperations> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestMapLikeWithOverriddenOperation
     using ToWrappedReturnType = TestMapLikeWithOverriddenOperations*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

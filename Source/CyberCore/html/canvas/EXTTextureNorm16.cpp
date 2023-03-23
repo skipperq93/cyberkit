@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EXTTextureNorm16);
 
@@ -52,6 +52,6 @@ bool EXTTextureNorm16::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_EXT_texture_norm16"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

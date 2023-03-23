@@ -29,13 +29,13 @@
 #include "JSDOMBinding.h"
 #include "JSHTMLElement.h"
 #include "JSPluginElementFunctions.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "runtime_object.h"
 #include <CyberScriptCore/Error.h>
 #include <CyberScriptCore/FunctionPrototype.h>
 #include <CyberScriptCore/JSGlobalObjectInlines.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace JSC {
 

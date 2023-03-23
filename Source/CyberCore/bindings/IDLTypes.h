@@ -47,7 +47,7 @@ class JSValue;
 class JSObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBKey;
 class IDBKeyData;
@@ -358,4 +358,4 @@ template<typename T>
 struct IsIDLArrayBufferViewAllowShared : public std::integral_constant<bool, std::is_base_of<IDLAllowSharedAdaptor<IDLArrayBufferView>, T>::value> { };
 
 
-} // namespace WebCore
+} // namespace CyberCore

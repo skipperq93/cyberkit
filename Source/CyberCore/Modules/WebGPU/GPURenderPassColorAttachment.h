@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURenderPassColorAttachment {
     PAL::WebGPU::RenderPassColorAttachment convertToBacking() const
@@ -43,9 +43,9 @@ struct GPURenderPassColorAttachment {
         return {
             view->backing(),
             resolveTarget ? &resolveTarget->backing() : nullptr,
-            clearValue ? std::optional { WebCore::convertToBacking(*clearValue) } : std::nullopt,
-            WebCore::convertToBacking(loadOp),
-            WebCore::convertToBacking(storeOp),
+            clearValue ? std::optional { CyberCore::convertToBacking(*clearValue) } : std::nullopt,
+            CyberCore::convertToBacking(loadOp),
+            CyberCore::convertToBacking(storeOp),
         };
     }
 

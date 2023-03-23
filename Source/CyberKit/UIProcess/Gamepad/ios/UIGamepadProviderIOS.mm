@@ -31,7 +31,7 @@
 #import "UIKitSPI.h"
 #import "WKWebViewInternal.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPageProxy* UIGamepadProvider::platformWebPageProxyForGamepadInput()
 {

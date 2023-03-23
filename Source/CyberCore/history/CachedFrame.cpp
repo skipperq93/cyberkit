@@ -53,7 +53,7 @@
 #include "ChromeClient.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, cachedFrameCounter, ("CachedFrame"));
 
@@ -341,4 +341,4 @@ WasPrivateRelayed CachedFrame::wasPrivateRelayed() const
     return allFramesRelayed ? WasPrivateRelayed::Yes : WasPrivateRelayed::No;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

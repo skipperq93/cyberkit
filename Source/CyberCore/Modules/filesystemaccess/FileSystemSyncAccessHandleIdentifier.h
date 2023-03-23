@@ -27,10 +27,10 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum FileSystemSyncAccessHandleIdentifierType { };
 using FileSystemSyncAccessHandleIdentifier = ObjectIdentifier<FileSystemSyncAccessHandleIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore
 

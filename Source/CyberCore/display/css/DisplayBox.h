@@ -31,7 +31,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 class ContainerBox;
@@ -98,10 +98,10 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_DISPLAY_BOX(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Display::ToValueTypeName) \
-    static bool isType(const WebCore::Display::Box& box) { return box.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Display::ToValueTypeName) \
+    static bool isType(const CyberCore::Display::Box& box) { return box.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

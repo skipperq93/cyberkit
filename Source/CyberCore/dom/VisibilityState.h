@@ -30,11 +30,11 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class VisibilityState : bool {
     Hidden,
     Visible
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -54,7 +54,7 @@ webkit_dom_html_base_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_base_element_get_href(CyberKitDOMHTMLBaseElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_base_element_get_href(CyberKitDOMHTMLBaseElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_base_element_set_href(CyberKitDOMHTMLBaseElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_base_element_set_href(CyberKitDOMHTMLBaseElement* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_base_element_get_target(CyberKitDOMHTMLBaseElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_base_element_get_target(CyberKitDOMHTMLBaseElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_base_element_set_target(CyberKitDOMHTMLBaseElement* self, const gchar* value);

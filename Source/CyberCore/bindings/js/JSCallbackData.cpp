@@ -35,7 +35,7 @@
 #include "JSExecStateInstrumentation.h"
 #include <CyberScriptCore/Exception.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // https://webidl.spec.whatwg.org/#call-a-user-objects-operation
@@ -112,4 +112,4 @@ bool JSCallbackDataWeak::WeakOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::
     return visitor.containsOpaqueRoot(context);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

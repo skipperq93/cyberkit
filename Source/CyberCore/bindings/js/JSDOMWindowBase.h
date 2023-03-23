@@ -38,7 +38,7 @@
 #include <wtf/GetPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Frame;
@@ -131,4 +131,4 @@ DOMWindow& firstDOMWindow(JSC::JSGlobalObject&);
 DOMWindow& legacyActiveDOMWindowForAccessor(JSC::JSGlobalObject&, JSC::CallFrame&);
 DOMWindow& legacyActiveDOMWindowForAccessor(JSC::JSGlobalObject&);
 
-} // namespace WebCore
+} // namespace CyberCore

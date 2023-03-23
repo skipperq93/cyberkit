@@ -24,13 +24,13 @@
 
 #include "JSTestStandaloneEnumeration.h"
 
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSString.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSString.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/SortedArrayMap.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 String convertEnumerationToString(TestStandaloneEnumeration enumerationValue)
@@ -72,6 +72,6 @@ template<> const char* expectedEnumerationValues<TestStandaloneEnumeration>()
     return "\"enumValue1\", \"enumValue2\"";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONDITION)

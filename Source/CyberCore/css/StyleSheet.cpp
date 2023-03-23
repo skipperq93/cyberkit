@@ -22,7 +22,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleSheet::~StyleSheet() = default;
 

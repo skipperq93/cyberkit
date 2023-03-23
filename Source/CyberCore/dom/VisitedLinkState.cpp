@@ -40,7 +40,7 @@
 #include "VisitedLinkStore.h"
 #include "XLinkNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -125,4 +125,4 @@ InsideLink VisitedLinkState::determineLinkStateSlowCase(const Element& element)
     return InsideLink::InsideVisited;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

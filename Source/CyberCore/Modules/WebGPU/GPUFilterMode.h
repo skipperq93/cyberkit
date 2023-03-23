@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUFilterMode.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUFilterMode : uint8_t {
     Nearest,

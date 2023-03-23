@@ -29,13 +29,13 @@
 
 #include "AudioTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackMediaSource {
 public:
     static SourceBuffer* sourceBuffer(AudioTrack& track) { return track.sourceBuffer(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

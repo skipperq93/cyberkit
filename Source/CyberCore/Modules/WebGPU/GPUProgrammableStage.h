@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUPipelineConstantValue = double; // May represent WGSL’s bool, f32, i32, u32.
 

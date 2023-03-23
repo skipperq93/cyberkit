@@ -31,12 +31,12 @@
 #include <wtf/HashSet.h>
 #include <wtf/HashTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GamepadHapticEffectType : uint8_t { DualRumble, TriggerRumble };
 
 using GamepadHapticEffectTypeSet = HashSet<GamepadHapticEffectType, IntHash<GamepadHapticEffectType>, WTF::StrongEnumHashTraits<GamepadHapticEffectType>>;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

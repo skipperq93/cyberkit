@@ -32,7 +32,7 @@
 #include "ScriptExecutionContextIdentifier.h"
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ElementContext {
     FloatRect boundingRect;

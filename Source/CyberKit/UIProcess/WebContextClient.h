@@ -37,7 +37,7 @@ template<> struct ClientTraits<WKContextClientBase> {
 }
 
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessPool;
 enum class ProcessTerminationReason;
@@ -50,4 +50,4 @@ public:
     void gpuProcessDidCrash(WebProcessPool*, ProcessID, ProcessTerminationReason);
 };
 
-} // namespace WebKit
+} // namespace CyberKit

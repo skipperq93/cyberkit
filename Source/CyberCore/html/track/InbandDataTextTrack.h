@@ -30,7 +30,7 @@
 
 #include "InbandTextTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataCue;
 
@@ -63,6 +63,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

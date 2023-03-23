@@ -28,7 +28,7 @@
 #include "AccessibilityMockObject.h"
 #include "SpinButtonElement.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilitySpinButton final : public AccessibilityMockObject {
 public:
@@ -72,12 +72,12 @@ private:
     unsigned m_isIncrementor : 1;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilitySpinButton) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isNativeSpinButton(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilitySpinButton) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isNativeSpinButton(); } \
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilitySpinButtonPart) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isSpinButtonPart(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilitySpinButtonPart) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isSpinButtonPart(); } \
 SPECIALIZE_TYPE_TRAITS_END()

@@ -27,7 +27,7 @@
 
 #include "IndexedDB.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using IDBCursorDirection = IndexedDB::CursorDirection;
 

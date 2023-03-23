@@ -32,7 +32,7 @@
 
 OBJC_CLASS PKPaymentSetupFeature;
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePaySetupFeatureState : uint8_t;
 enum class ApplePaySetupFeatureType : uint8_t;
@@ -66,6 +66,6 @@ private:
     RetainPtr<PKPaymentSetupFeature> m_feature;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

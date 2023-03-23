@@ -30,7 +30,7 @@ namespace JSC {
 class SlotVisitor;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -40,4 +40,4 @@ public:
     virtual unsigned short acceptNode(Node&) const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

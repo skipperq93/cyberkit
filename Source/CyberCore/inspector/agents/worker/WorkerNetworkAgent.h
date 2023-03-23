@@ -27,7 +27,7 @@
 
 #include "InspectorNetworkAgent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerNetworkAgent final : public InspectorNetworkAgent {
     WTF_MAKE_NONCOPYABLE(WorkerNetworkAgent);
@@ -51,4 +51,4 @@ private:
     WorkerOrWorkletGlobalScope& m_globalScope;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

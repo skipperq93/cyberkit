@@ -2,7 +2,7 @@ function dispatchWheelEvent(element, deltaX, deltaY)
 {
     var event = document.createEvent('WheelEvent');
     var dontCare = 0;
-    event.initWebKitWheelEvent(deltaX, deltaY, document.defaultView, dontCare, dontCare, dontCare, dontCare, false, false, false, false);
+    event.initCyberKitWheelEvent(deltaX, deltaY, document.defaultView, dontCare, dontCare, dontCare, dontCare, false, false, false, false);
     element.dispatchEvent(event);
 }
 

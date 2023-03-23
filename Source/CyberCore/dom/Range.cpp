@@ -54,7 +54,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -721,7 +721,7 @@ ExceptionOr<Ref<DocumentFragment>> Range::createContextualFragment(const String&
         element = node.parentElement();
     if (!element || (element->document().isHTMLDocument() && is<HTMLHtmlElement>(*element)))
         element = HTMLBodyElement::create(node.document());
-    return WebCore::createContextualFragment(*element, markup, { ParserContentPolicy::AllowScriptingContent, ParserContentPolicy::AllowPluginContent, ParserContentPolicy::DoNotMarkAlreadyStarted });
+    return CyberCore::createContextualFragment(*element, markup, { ParserContentPolicy::AllowScriptingContent, ParserContentPolicy::AllowPluginContent, ParserContentPolicy::DoNotMarkAlreadyStarted });
 }
 
 ExceptionOr<Node*> Range::checkNodeOffsetPair(Node& node, unsigned offset)
@@ -1120,15 +1120,15 @@ RefPtr<Range> createLiveRange(const std::optional<SimpleRange>& range)
 
 void Range::visitNodesConcurrently(JSC::AbstractSlotVisitor& visitor) const
 {
-    addWebCoreOpaqueRoot(visitor, m_start.container());
-    addWebCoreOpaqueRoot(visitor, m_end.container());
+    addCyberCoreOpaqueRoot(visitor, m_start.container());
+    addCyberCoreOpaqueRoot(visitor, m_end.container());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showTree(const WebCore::Range* range)
+void showTree(const CyberCore::Range* range)
 {
     if (range) {
         range->startContainer().showTreeAndMark(&range->startContainer(), "S", &range->endContainer(), "E");

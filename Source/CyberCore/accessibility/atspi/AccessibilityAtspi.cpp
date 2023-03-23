@@ -34,7 +34,7 @@
 #include <wtf/UUID.h>
 #include <wtf/glib/RunLoopSourcePriority.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilityAtspi& AccessibilityAtspi::singleton()
 {
@@ -701,7 +701,7 @@ static constexpr std::pair<AccessibilityRole, RoleNameEntry> roleNames[] = {
     { AccessibilityRole::UserInterfaceTooltip, { "tool tip", N_("tool tip") } },
     { AccessibilityRole::Video, { "video", N_("video") } },
     { AccessibilityRole::WebArea, { "document web", N_("document web") } },
-    { AccessibilityRole::WebCoreLink, { "link", N_("link") } },
+    { AccessibilityRole::CyberCoreLink, { "link", N_("link") } },
     { AccessibilityRole::Window, { "window", N_("window") } }
 };
 
@@ -918,6 +918,6 @@ void AccessibilityAtspi::notifyLoadEvent(AccessibilityObjectAtspi& atspiObject, 
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

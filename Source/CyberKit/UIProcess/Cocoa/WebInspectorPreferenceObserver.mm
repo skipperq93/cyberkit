@@ -51,7 +51,7 @@
     if (!(self = [super init]))
         return nil;
 
-    auto sandboxBrokerBundleIdentifier = WebKit::bundleIdentifierForSandboxBroker();
+    auto sandboxBrokerBundleIdentifier = CyberKit::bundleIdentifierForSandboxBroker();
     m_userDefaults = adoptNS([[NSUserDefaults alloc] initWithSuiteName:bridge_cast(sandboxBrokerBundleIdentifier)]);
     if (!m_userDefaults) {
         WTFLogAlways("Could not init user defaults instance for domain %s.", sandboxBrokerBundleIdentifier);
@@ -66,7 +66,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey, id> *)change context:(void *)context
 {
     RunLoop::main().dispatch([] {
-        for (auto& pool : WebKit::WebProcessPool::allProcessPools()) {
+        for (auto& pool : CyberKit::WebProcessPool::allProcessPools()) {
             for (size_t i = 0; i < pool->processes().size(); ++i) {
                 auto process = pool->processes()[i];
                 process->enableRemoteInspectorIfNeeded();

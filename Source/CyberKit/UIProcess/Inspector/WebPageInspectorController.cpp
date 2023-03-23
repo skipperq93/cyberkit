@@ -40,7 +40,7 @@
 #include <CyberScriptCore/InspectorTargetAgent.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace Inspector;
 
@@ -267,4 +267,4 @@ void WebPageInspectorController::browserExtensionsDisabled(HashSet<String>&& ext
         m_enabledBrowserAgent->extensionsDisabled(WTFMove(extensionIDs));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

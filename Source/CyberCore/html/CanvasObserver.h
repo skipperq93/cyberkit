@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasBase;
 class FloatRect;
@@ -43,4 +43,4 @@ public:
     virtual void canvasDestroyed(CanvasBase&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

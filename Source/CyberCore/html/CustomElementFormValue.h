@@ -29,8 +29,8 @@
 #include "File.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using CustomElementFormValue = std::variant<RefPtr<File>, String, RefPtr<DOMFormData>>;
 
-} // namespace WebCore
+} // namespace CyberCore

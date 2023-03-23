@@ -27,7 +27,7 @@
 #include "NodeRareData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TagCollection);
 WTF_MAKE_ISO_ALLOCATED_IMPL(TagCollectionNS);
@@ -71,4 +71,4 @@ HTMLTagCollection::~HTMLTagCollection()
     ownerNode().nodeLists()->removeCachedCollection(this, m_qualifiedName);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

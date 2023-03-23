@@ -55,7 +55,7 @@ webkit_dom_named_node_map_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_named_node_map_get_named_item(CyberKitDOMNamedNodeMap* self, const gchar* name);
@@ -68,7 +68,7 @@ webkit_dom_named_node_map_get_named_item(CyberKitDOMNamedNodeMap* self, const gc
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_named_node_map_set_named_item(CyberKitDOMNamedNodeMap* self, CyberKitDOMNode* node, GError** error);
@@ -81,7 +81,7 @@ webkit_dom_named_node_map_set_named_item(CyberKitDOMNamedNodeMap* self, CyberKit
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_named_node_map_remove_named_item(CyberKitDOMNamedNodeMap* self, const gchar* name, GError** error);
@@ -93,7 +93,7 @@ webkit_dom_named_node_map_remove_named_item(CyberKitDOMNamedNodeMap* self, const
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_named_node_map_item(CyberKitDOMNamedNodeMap* self, gulong index);
@@ -106,7 +106,7 @@ webkit_dom_named_node_map_item(CyberKitDOMNamedNodeMap* self, gulong index);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_named_node_map_get_named_item_ns(CyberKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName);
@@ -119,7 +119,7 @@ webkit_dom_named_node_map_get_named_item_ns(CyberKitDOMNamedNodeMap* self, const
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_named_node_map_set_named_item_ns(CyberKitDOMNamedNodeMap* self, CyberKitDOMNode* node, GError** error);
@@ -133,7 +133,7 @@ webkit_dom_named_node_map_set_named_item_ns(CyberKitDOMNamedNodeMap* self, Cyber
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_named_node_map_remove_named_item_ns(CyberKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName, GError** error);
@@ -144,7 +144,7 @@ webkit_dom_named_node_map_remove_named_item_ns(CyberKitDOMNamedNodeMap* self, co
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_named_node_map_get_length(CyberKitDOMNamedNodeMap* self);

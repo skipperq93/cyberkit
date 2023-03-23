@@ -1,5 +1,5 @@
 
-// Function called from WebCore.
+// Function called from CyberCore.
 function createOverlay(shadowRoot, titleText, subtitleText)
 {
     // Generate the following structure:

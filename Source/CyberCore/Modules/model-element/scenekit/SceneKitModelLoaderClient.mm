@@ -29,7 +29,7 @@
 
 #import "SceneKitModelLoaderClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Defining trivial virtual destructor in implementation to pin vtable.
 SceneKitModelLoaderClient::~SceneKitModelLoaderClient() = default;

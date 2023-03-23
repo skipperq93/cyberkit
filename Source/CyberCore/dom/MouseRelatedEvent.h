@@ -26,7 +26,7 @@
 #include "LayoutPoint.h"
 #include "UIEventWithKeyState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameView;
 
@@ -110,4 +110,4 @@ private:
     bool m_hasCachedRelativePosition { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

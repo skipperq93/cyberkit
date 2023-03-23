@@ -32,7 +32,7 @@
 #include "DisplayLinkObserverID.h"
 #include <CyberCore/AnimationFrameRate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class DisplayLink;
 class RemoteLayerTreeDisplayLinkClient;
@@ -92,7 +92,7 @@ private:
     std::optional<CyberCore::FloatPoint> m_transientZoomOrigin;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // #if PLATFORM(MAC)
 

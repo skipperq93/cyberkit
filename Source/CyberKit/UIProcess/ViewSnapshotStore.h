@@ -44,7 +44,7 @@
 #endif
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebBackForwardListItem;
 class WebPageProxy;
@@ -163,4 +163,4 @@ private:
     bool m_disableSnapshotVolatility { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

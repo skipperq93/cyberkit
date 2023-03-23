@@ -18,43 +18,43 @@
  */
 
 #include "config.h"
-#include "WebKitPopupMenu.h"
+#include "CyberKitPopupMenu.h"
 
 #include "APIViewClient.h"
 #include "WPEView.h"
-#include "WebKitOptionMenuPrivate.h"
-#include "WebKitWebViewClient.h"
+#include "CyberKitOptionMenuPrivate.h"
+#include "CyberKitWebViewClient.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-Ref<WebKitPopupMenu> WebKitPopupMenu::create(WKWPE::View& view, WebPopupMenuProxy::Client& client)
+Ref<CyberKitPopupMenu> CyberKitPopupMenu::create(WKWPE::View& view, WebPopupMenuProxy::Client& client)
 {
     ASSERT(view.client().isGLibBasedAPI());
-    return adoptRef(*new WebKitPopupMenu(view, client));
+    return adoptRef(*new CyberKitPopupMenu(view, client));
 }
 
-WebKitPopupMenu::WebKitPopupMenu(WKWPE::View& view, WebPopupMenuProxy::Client& client)
+CyberKitPopupMenu::CyberKitPopupMenu(WKWPE::View& view, WebPopupMenuProxy::Client& client)
     : WebPopupMenuProxy(client)
     , m_view(view)
 {
 }
 
-static void menuCloseCallback(WebKitPopupMenu* popupMenu)
+static void menuCloseCallback(CyberKitPopupMenu* popupMenu)
 {
     popupMenu->activateItem(std::nullopt);
 }
 
-void WebKitPopupMenu::showPopupMenu(const IntRect& rect, TextDirection direction, double pageScaleFactor, const Vector<WebPopupItem>& items, const PlatformPopupMenuData& platformData, int32_t selectedIndex)
+void CyberKitPopupMenu::showPopupMenu(const IntRect& rect, TextDirection direction, double pageScaleFactor, const Vector<WebPopupItem>& items, const PlatformPopupMenuData& platformData, int32_t selectedIndex)
 {
-    GRefPtr<WebKitOptionMenu> menu = static_cast<WebKitWebViewClient&>(m_view.client()).showOptionMenu(*this, rect, items, selectedIndex);
+    GRefPtr<CyberKitOptionMenu> menu = static_cast<CyberKitWebViewClient&>(m_view.client()).showOptionMenu(*this, rect, items, selectedIndex);
     if (menu) {
         m_menu = WTFMove(menu);
         g_signal_connect_swapped(m_menu.get(), "close", G_CALLBACK(menuCloseCallback), this);
     }
 }
 
-void WebKitPopupMenu::hidePopupMenu()
+void CyberKitPopupMenu::hidePopupMenu()
 {
     if (m_menu) {
         g_signal_handlers_disconnect_matched(m_menu.get(), G_SIGNAL_MATCH_DATA, 0, 0, nullptr, nullptr, this);
@@ -62,20 +62,20 @@ void WebKitPopupMenu::hidePopupMenu()
     }
 }
 
-void WebKitPopupMenu::cancelTracking()
+void CyberKitPopupMenu::cancelTracking()
 {
     hidePopupMenu();
     m_menu = nullptr;
 }
 
-void WebKitPopupMenu::selectItem(unsigned itemIndex)
+void CyberKitPopupMenu::selectItem(unsigned itemIndex)
 {
     if (m_client)
         m_client->setTextFromItemForPopupMenu(this, itemIndex);
     m_selectedItem = itemIndex;
 }
 
-void WebKitPopupMenu::activateItem(std::optional<unsigned> itemIndex)
+void CyberKitPopupMenu::activateItem(std::optional<unsigned> itemIndex)
 {
     if (m_client)
         m_client->valueChangedForPopupMenu(this, itemIndex.value_or(m_selectedItem.value_or(-1)));
@@ -85,4 +85,4 @@ void WebKitPopupMenu::activateItem(std::optional<unsigned> itemIndex)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

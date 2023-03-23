@@ -45,7 +45,7 @@
 #include "HTMLModelElement.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLSourceElement);
 

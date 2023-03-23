@@ -32,7 +32,7 @@
 #include "HTMLElement.h"
 #include "TextTrackClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMediaElement;
 class LoadableTextTrack;

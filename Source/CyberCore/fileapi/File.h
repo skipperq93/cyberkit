@@ -32,7 +32,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class File final : public Blob {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(File, WEBCORE_EXPORT);
@@ -120,8 +120,8 @@ private:
     mutable std::optional<bool> m_isDirectory;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::File)
-    static bool isType(const WebCore::Blob& blob) { return blob.isFile(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::File)
+    static bool isType(const CyberCore::Blob& blob) { return blob.isFile(); }
 SPECIALIZE_TYPE_TRAITS_END()

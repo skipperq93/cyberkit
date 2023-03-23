@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUValidationError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const String& GPUValidationError::message() const
 {

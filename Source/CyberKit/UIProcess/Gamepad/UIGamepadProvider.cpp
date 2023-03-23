@@ -36,7 +36,7 @@
 #include <CyberCore/PlatformGamepad.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const Seconds maximumGamepadUpdateInterval { 1_s / 120. };

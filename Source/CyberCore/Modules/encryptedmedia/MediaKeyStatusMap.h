@@ -35,7 +35,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaKeySession;
 class ScriptExecutionContext;
@@ -75,6 +75,6 @@ private:
     const MediaKeySession* m_session;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

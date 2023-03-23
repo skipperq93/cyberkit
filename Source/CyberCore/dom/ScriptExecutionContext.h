@@ -59,7 +59,7 @@ class ConsoleMessage;
 class ScriptCallStack;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventLoop;
 class CachedScript;
@@ -78,7 +78,7 @@ class RejectedPromiseTracker;
 class RTCDataChannelRemoteHandlerConnection;
 class ResourceRequest;
 class SocketProvider;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 enum class LoadedFromOpaqueSource : uint8_t;
 enum class TaskSource : uint8_t;
 
@@ -418,6 +418,6 @@ private:
     bool m_hasLoggedAuthenticatedEncryptionWarning { false };
 };
 
-WebCoreOpaqueRoot root(ScriptExecutionContext*);
+CyberCoreOpaqueRoot root(ScriptExecutionContext*);
 
-} // namespace WebCore
+} // namespace CyberCore

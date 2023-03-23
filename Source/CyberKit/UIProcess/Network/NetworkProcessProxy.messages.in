@@ -21,33 +21,33 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> NetworkProcessProxy LegacyReceiver {
-    DidReceiveAuthenticationChallenge(PAL::SessionID sessionID, WebKit::WebPageProxyIdentifier pageID, std::optional<CyberCore::SecurityOriginData> topOrigin, CyberCore::AuthenticationChallenge challenge, bool negotiatedLegacyTLS, WebKit::AuthenticationChallengeIdentifier challengeID)
-    NegotiatedLegacyTLS(WebKit::WebPageProxyIdentifier pageID)
-    DidNegotiateModernTLS(WebKit::WebPageProxyIdentifier pageID, URL url)
+    DidReceiveAuthenticationChallenge(PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier pageID, std::optional<CyberCore::SecurityOriginData> topOrigin, CyberCore::AuthenticationChallenge challenge, bool negotiatedLegacyTLS, CyberKit::AuthenticationChallengeIdentifier challengeID)
+    NegotiatedLegacyTLS(CyberKit::WebPageProxyIdentifier pageID)
+    DidNegotiateModernTLS(CyberKit::WebPageProxyIdentifier pageID, URL url)
 
-    DidFailLoadDueToNetworkConnectionIntegrity(WebKit::WebPageProxyIdentifier pageID, URL url)
+    DidFailLoadDueToNetworkConnectionIntegrity(CyberKit::WebPageProxyIdentifier pageID, URL url)
 
-    TestProcessIncomingSyncMessagesWhenWaitingForSyncReply(WebKit::WebPageProxyIdentifier pageID) -> (bool handled) Synchronous
+    TestProcessIncomingSyncMessagesWhenWaitingForSyncReply(CyberKit::WebPageProxyIdentifier pageID) -> (bool handled) Synchronous
     TerminateUnresponsiveServiceWorkerProcesses(CyberCore::ProcessIdentifier processIdentifier)
 
     # Diagnostic messages logging
-    LogDiagnosticMessage(WebKit::WebPageProxyIdentifier pageID, String message, String description, enum:bool CyberCore::ShouldSample shouldSample)
-    LogDiagnosticMessageWithResult(WebKit::WebPageProxyIdentifier pageID, String message, String description, uint32_t result, enum:bool CyberCore::ShouldSample shouldSample)
-    LogDiagnosticMessageWithValue(WebKit::WebPageProxyIdentifier pageID, String message, String description, double value, unsigned significantFigures, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessage(CyberKit::WebPageProxyIdentifier pageID, String message, String description, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithResult(CyberKit::WebPageProxyIdentifier pageID, String message, String description, uint32_t result, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithValue(CyberKit::WebPageProxyIdentifier pageID, String message, String description, double value, unsigned significantFigures, enum:bool CyberCore::ShouldSample shouldSample)
 
 #if ENABLE(TRACKING_PREVENTION)
     LogTestingEvent(PAL::SessionID sessionID, String event)
     NotifyResourceLoadStatisticsProcessed()
     NotifyWebsiteDataDeletionForRegistrableDomainsFinished()
     NotifyWebsiteDataScanForRegistrableDomainsFinished()
-    RequestStorageAccessConfirm(WebKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain) -> (bool userDidGrantAccess)
-    DeleteWebsiteDataInUIProcessForRegistrableDomains(PAL::SessionID sessionID, OptionSet<WebKit::WebsiteDataType> dataTypes, OptionSet<WebKit::WebsiteDataFetchOption> fetchOptions, Vector<CyberCore::RegistrableDomain> domains) -> (HashSet<CyberCore::RegistrableDomain> domainsWithMatchingDataRecords)
-    DidCommitCrossSiteLoadWithDataTransferFromPrevalentResource(WebKit::WebPageProxyIdentifier pageID)
+    RequestStorageAccessConfirm(CyberKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain) -> (bool userDidGrantAccess)
+    DeleteWebsiteDataInUIProcessForRegistrableDomains(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> dataTypes, OptionSet<CyberKit::WebsiteDataFetchOption> fetchOptions, Vector<CyberCore::RegistrableDomain> domains) -> (HashSet<CyberCore::RegistrableDomain> domainsWithMatchingDataRecords)
+    DidCommitCrossSiteLoadWithDataTransferFromPrevalentResource(CyberKit::WebPageProxyIdentifier pageID)
     SetDomainsWithUserInteraction(HashSet<CyberCore::RegistrableDomain> domains)
     SetDomainsWithCrossPageStorageAccess(HashMap<CyberCore::RegistrableDomain, CyberCore::RegistrableDomain> domains) -> ()
 #endif
 #if ENABLE(CONTENT_EXTENSIONS)
-    ContentExtensionRules(WebKit::UserContentControllerIdentifier identifier)
+    ContentExtensionRules(CyberKit::UserContentControllerIdentifier identifier)
 #endif
 
     TerminateWebProcess(CyberCore::ProcessIdentifier webProcessIdentifier)
@@ -57,10 +57,10 @@ messages -> NetworkProcessProxy LegacyReceiver {
     EndServiceWorkerBackgroundProcessing(CyberCore::ProcessIdentifier serviceWorkerProcessIdentifier)
     RequestBackgroundFetchPermission(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin) -> (bool result)
 #endif
-    EstablishRemoteWorkerContextConnectionToNetworkProcess(enum:bool WebKit::RemoteWorkerType workerType, CyberCore::RegistrableDomain registrableDomain, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PAL::SessionID sessionID) -> (CyberCore::ProcessIdentifier remoteProcessIdentifier)
-    RemoteWorkerContextConnectionNoLongerNeeded(enum:bool WebKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier identifier)
-    RegisterRemoteWorkerClientProcess(enum:bool WebKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier clientProcessIdentifier, CyberCore::ProcessIdentifier remoteWorkerProcessIdentifier);
-    UnregisterRemoteWorkerClientProcess(enum:bool WebKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier clientProcessIdentifier, CyberCore::ProcessIdentifier remoteWorkerProcessIdentifier);
+    EstablishRemoteWorkerContextConnectionToNetworkProcess(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::RegistrableDomain registrableDomain, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PAL::SessionID sessionID) -> (CyberCore::ProcessIdentifier remoteProcessIdentifier)
+    RemoteWorkerContextConnectionNoLongerNeeded(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier identifier)
+    RegisterRemoteWorkerClientProcess(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier clientProcessIdentifier, CyberCore::ProcessIdentifier remoteWorkerProcessIdentifier);
+    UnregisterRemoteWorkerClientProcess(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier clientProcessIdentifier, CyberCore::ProcessIdentifier remoteWorkerProcessIdentifier);
 
     SetWebProcessHasUploads(CyberCore::ProcessIdentifier processID, bool hasUpload)
 
@@ -69,40 +69,40 @@ messages -> NetworkProcessProxy LegacyReceiver {
 #endif
 
     RequestStorageSpace(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, uint64_t quota, uint64_t currentSize, uint64_t spaceRequired) -> (std::optional<uint64_t> newQuota)
-    IncreaseQuota(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, WebKit::QuotaIncreaseRequestIdentifier identifier, uint64_t quota, uint64_t currentSize, uint64_t spaceRequested)
+    IncreaseQuota(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, CyberKit::QuotaIncreaseRequestIdentifier identifier, uint64_t quota, uint64_t currentSize, uint64_t spaceRequested)
     
-    ResourceLoadDidSendRequest(WebKit::WebPageProxyIdentifier pageIdentifier, struct WebKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceRequest request, std::optional<IPC::FormDataReference> httpBody)
-    ResourceLoadDidPerformHTTPRedirection(WebKit::WebPageProxyIdentifier pageIdentifier, struct WebKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse resourceResponse, CyberCore::ResourceRequest request)
-    ResourceLoadDidReceiveChallenge(WebKit::WebPageProxyIdentifier pageIdentifier, struct WebKit::ResourceLoadInfo resourceLoadInfo, CyberCore::AuthenticationChallenge challenge)
-    ResourceLoadDidReceiveResponse(WebKit::WebPageProxyIdentifier pageIdentifier, struct WebKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse response)
-    ResourceLoadDidCompleteWithError(WebKit::WebPageProxyIdentifier pageIdentifier, struct WebKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse response, CyberCore::ResourceError error)
+    ResourceLoadDidSendRequest(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceRequest request, std::optional<IPC::FormDataReference> httpBody)
+    ResourceLoadDidPerformHTTPRedirection(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse resourceResponse, CyberCore::ResourceRequest request)
+    ResourceLoadDidReceiveChallenge(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::AuthenticationChallenge challenge)
+    ResourceLoadDidReceiveResponse(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse response)
+    ResourceLoadDidCompleteWithError(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse response, CyberCore::ResourceError error)
     
-    TriggerBrowsingContextGroupSwitchForNavigation(WebKit::WebPageProxyIdentifier pageIdentifier, uint64_t navigationID, enum:uint8_t CyberCore::BrowsingContextGroupSwitchDecision browsingContextGroupSwitchDecision, CyberCore::RegistrableDomain responseDomain, WebKit::NetworkResourceLoadIdentifier existingNetworkResourceLoadIdentifierToResume) -> (bool success)
+    TriggerBrowsingContextGroupSwitchForNavigation(CyberKit::WebPageProxyIdentifier pageIdentifier, uint64_t navigationID, enum:uint8_t CyberCore::BrowsingContextGroupSwitchDecision browsingContextGroupSwitchDecision, CyberCore::RegistrableDomain responseDomain, CyberKit::NetworkResourceLoadIdentifier existingNetworkResourceLoadIdentifierToResume) -> (bool success)
 
 #if USE(SOUP)
     DidExceedMemoryLimit()
 #endif
 
 #if ENABLE(APPLE_PAY_REMOTE_UI_USES_SCENE)
-    GetWindowSceneIdentifierForPaymentPresentation(WebKit::WebPageProxyIdentifier webPageProxyIdentifier) -> (String sceneID)
+    GetWindowSceneIdentifierForPaymentPresentation(CyberKit::WebPageProxyIdentifier webPageProxyIdentifier) -> (String sceneID)
 #endif
 
-    DataTaskReceivedChallenge(WebKit::DataTaskIdentifier identifier, CyberCore::AuthenticationChallenge challenge) -> (enum:uint8_t WebKit::AuthenticationChallengeDisposition disposition, CyberCore::Credential credential)
-    DataTaskWillPerformHTTPRedirection(WebKit::DataTaskIdentifier identifier, CyberCore::ResourceResponse response, CyberCore::ResourceRequest request) -> (bool allowed)
-    DataTaskDidReceiveResponse(WebKit::DataTaskIdentifier identifier, CyberCore::ResourceResponse response) -> (bool allowed)
-    DataTaskDidReceiveData(WebKit::DataTaskIdentifier identifier, IPC::DataReference data)
-    DataTaskDidCompleteWithError(WebKit::DataTaskIdentifier identifier, CyberCore::ResourceError error)
+    DataTaskReceivedChallenge(CyberKit::DataTaskIdentifier identifier, CyberCore::AuthenticationChallenge challenge) -> (enum:uint8_t CyberKit::AuthenticationChallengeDisposition disposition, CyberCore::Credential credential)
+    DataTaskWillPerformHTTPRedirection(CyberKit::DataTaskIdentifier identifier, CyberCore::ResourceResponse response, CyberCore::ResourceRequest request) -> (bool allowed)
+    DataTaskDidReceiveResponse(CyberKit::DataTaskIdentifier identifier, CyberCore::ResourceResponse response) -> (bool allowed)
+    DataTaskDidReceiveData(CyberKit::DataTaskIdentifier identifier, IPC::DataReference data)
+    DataTaskDidCompleteWithError(CyberKit::DataTaskIdentifier identifier, CyberCore::ResourceError error)
 
     OpenWindowFromServiceWorker(PAL::SessionID sessionID, String urlString, CyberCore::SecurityOriginData serviceWorkerOrigin) -> (std::optional<CyberCore::PageIdentifier> newPage)
     NavigateServiceWorkerClient(CyberCore::FrameIdentifier frameIdentifier, CyberCore::ScriptExecutionContextIdentifier documentIdentifier, URL url) -> (std::optional<CyberCore::PageIdentifier> page, std::optional<CyberCore::FrameIdentifier> frame)
 
     CookiesDidChange(PAL::SessionID sessionID)
 
-    DeleteWebsiteDataInWebProcessesForOrigin(OptionSet<WebKit::WebsiteDataType> websiteDataTypes, struct CyberCore::ClientOrigin origin, PAL::SessionID sessionID, WebKit::WebPageProxyIdentifier webPageProxyID) -> ()
+    DeleteWebsiteDataInWebProcessesForOrigin(OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, struct CyberCore::ClientOrigin origin, PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier webPageProxyID) -> ()
     ReloadExecutionContextsForOrigin(struct CyberCore::ClientOrigin origin, PAL::SessionID sessionID, std::optional<CyberCore::FrameIdentifier> triggeringFrame) -> ()
 
 #if ENABLE(NETWORK_ISSUE_REPORTING)
-    ReportNetworkIssue(WebKit::WebPageProxyIdentifier webPageProxyIdentifier, URL requestURL)
+    ReportNetworkIssue(CyberKit::WebPageProxyIdentifier webPageProxyIdentifier, URL requestURL)
 #endif
 }
 

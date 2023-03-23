@@ -45,7 +45,7 @@
 #include "SourceBuffer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& VideoTrack::signKeyword()
 {
@@ -249,6 +249,6 @@ void VideoTrack::setLogger(const Logger& logger, const void* logIdentifier)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUVertexStepMode.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUVertexStepMode : uint8_t {
     Vertex,

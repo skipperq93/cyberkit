@@ -30,7 +30,7 @@
 
 #include <CyberCore/NotImplemented.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !HAVE(MEDIA_USAGE_FRAMEWORK)
 std::unique_ptr<MediaUsageManager> MediaUsageManager::create()
@@ -59,6 +59,6 @@ void MediaUsageManager::updateMediaUsage(CyberCore::MediaSessionIdentifier ident
     notImplemented();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_USAGE)

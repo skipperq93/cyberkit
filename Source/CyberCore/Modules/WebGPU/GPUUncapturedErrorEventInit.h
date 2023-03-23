@@ -29,7 +29,7 @@
 #include "GPUError.h"
 #include <pal/graphics/WebGPU/WebGPUUncapturedErrorEventInit.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUUncapturedErrorEventInit : public EventInit {
     GPUError error;

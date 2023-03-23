@@ -36,7 +36,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class ResourceResponse;
@@ -163,4 +163,4 @@ private:
     size_t m_maximumSingleResourceContentSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

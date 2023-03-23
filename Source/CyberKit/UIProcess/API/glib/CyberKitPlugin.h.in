@@ -19,33 +19,33 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitPlugin_h
-#define WebKitPlugin_h
+#ifndef CyberKitPlugin_h
+#define CyberKitPlugin_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_PLUGIN            (webkit_plugin_get_type())
-#define WEBKIT_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_PLUGIN, WebKitPlugin))
+#define WEBKIT_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_PLUGIN, CyberKitPlugin))
 #define WEBKIT_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_PLUGIN))
-#define WEBKIT_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_PLUGIN, WebKitPluginClass))
+#define WEBKIT_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_PLUGIN, CyberKitPluginClass))
 #define WEBKIT_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_PLUGIN))
-#define WEBKIT_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_PLUGIN, WebKitPluginClass))
+#define WEBKIT_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_PLUGIN, CyberKitPluginClass))
 
-typedef struct _WebKitPlugin        WebKitPlugin;
-typedef struct _WebKitPluginClass   WebKitPluginClass;
-typedef struct _WebKitPluginPrivate WebKitPluginPrivate;
+typedef struct _CyberKitPlugin        CyberKitPlugin;
+typedef struct _CyberKitPluginClass   CyberKitPluginClass;
+typedef struct _CyberKitPluginPrivate CyberKitPluginPrivate;
 
-struct _WebKitPlugin {
+struct _CyberKitPlugin {
     GObject parent;
 
     /*< private >*/
-    WebKitPluginPrivate *priv;
+    CyberKitPluginPrivate *priv;
 };
 
-struct _WebKitPluginClass {
+struct _CyberKitPluginClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -59,16 +59,16 @@ WEBKIT_DEPRECATED GType
 webkit_plugin_get_type           (void);
 
 WEBKIT_DEPRECATED const gchar *
-webkit_plugin_get_name           (WebKitPlugin *plugin);
+webkit_plugin_get_name           (CyberKitPlugin *plugin);
 
 WEBKIT_DEPRECATED const gchar *
-webkit_plugin_get_description    (WebKitPlugin *plugin);
+webkit_plugin_get_description    (CyberKitPlugin *plugin);
 
 WEBKIT_DEPRECATED const gchar *
-webkit_plugin_get_path           (WebKitPlugin *plugin);
+webkit_plugin_get_path           (CyberKitPlugin *plugin);
 
 WEBKIT_DEPRECATED GList *
-webkit_plugin_get_mime_info_list (WebKitPlugin *plugin);
+webkit_plugin_get_mime_info_list (CyberKitPlugin *plugin);
 
 G_END_DECLS
 

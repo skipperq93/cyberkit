@@ -28,7 +28,7 @@
 #include "FormattingGeometry.h"
 #include "TableGrid.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class TableFormattingContext;

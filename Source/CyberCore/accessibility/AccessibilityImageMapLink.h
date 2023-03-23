@@ -32,7 +32,7 @@
 #include "HTMLAreaElement.h"
 #include "HTMLMapElement.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityImageMapLink final : public AccessibilityMockObject {
 public:
@@ -78,6 +78,6 @@ private:
     RefPtr<HTMLMapElement> m_mapElement;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityImageMapLink, isImageMapLink())

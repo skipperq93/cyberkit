@@ -35,7 +35,7 @@
 #include "DocumentInlines.h"
 #include "TextRecognitionOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AXImage::AXImage(RenderImage* renderer)
     : AccessibilityRenderObject(renderer)
@@ -85,4 +85,4 @@ std::optional<AXCoreObject::AccessibilityChildrenVector> AXImage::imageOverlayEl
     return std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

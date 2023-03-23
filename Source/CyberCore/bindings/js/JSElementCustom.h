@@ -33,12 +33,12 @@ namespace JSC {
 namespace JSCastingHelpers {
 
 template<>
-struct InheritsTraits<WebCore::JSElement> {
-    static constexpr std::optional<JSTypeRange> typeRange { JSTypeRange { static_cast<JSType>(WebCore::JSElementType), static_cast<JSType>(WebCore::JSElementType) } };
+struct InheritsTraits<CyberCore::JSElement> {
+    static constexpr std::optional<JSTypeRange> typeRange { JSTypeRange { static_cast<JSType>(CyberCore::JSElementType), static_cast<JSType>(CyberCore::JSElementType) } };
     template<typename From>
     static inline bool inherits(From* from)
     {
-        return inheritsJSTypeImpl<WebCore::JSElement>(from, *typeRange);
+        return inheritsJSTypeImpl<CyberCore::JSElement>(from, *typeRange);
     }
 };
 

@@ -33,7 +33,7 @@
 #include "RenderElement.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AppendNodeCommand::AppendNodeCommand(Ref<ContainerNode>&& parent, Ref<Node>&& node, EditAction editingAction)
     : SimpleEditCommand(parent->document(), editingAction)
@@ -67,4 +67,4 @@ void AppendNodeCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

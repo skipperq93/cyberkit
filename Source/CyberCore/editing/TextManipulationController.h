@@ -36,7 +36,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -120,4 +120,4 @@ private:
     TextManipulationTokenIdentifier m_tokenIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

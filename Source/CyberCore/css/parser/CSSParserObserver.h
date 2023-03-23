@@ -24,7 +24,7 @@
 
 #include "StyleRuleType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserToken;
 class CSSParserTokenRange;
@@ -42,4 +42,4 @@ public:
     virtual void observeComment(unsigned startOffset, unsigned endOffset) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

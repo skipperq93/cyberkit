@@ -32,7 +32,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLDebugShaders);
 
@@ -64,6 +64,6 @@ String WebGLDebugShaders::getTranslatedShaderSource(WebGLShader& shader)
     return context->graphicsContextGL()->getTranslatedShaderSourceANGLE(shader.object());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -30,13 +30,13 @@
 #include "PeriodicWaveConstraints.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PeriodicWaveOptions : PeriodicWaveConstraints {
     std::optional<Vector<float>> real;
     std::optional<Vector<float>> imag;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -29,7 +29,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 struct MessagePortIdentifier;
@@ -54,4 +54,4 @@ public:
     virtual void postMessageToRemote(MessageWithMessagePorts&&, const MessagePortIdentifier& remoteTarget) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

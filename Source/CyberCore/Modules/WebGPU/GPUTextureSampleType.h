@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUTextureSampleType.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUTextureSampleType : uint8_t {
     Float,

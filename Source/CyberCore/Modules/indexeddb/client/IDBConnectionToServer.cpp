@@ -40,7 +40,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBClient {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBConnectionToServer);
@@ -520,4 +520,4 @@ void IDBConnectionToServer::didGetAllDatabaseNamesAndVersions(const IDBResourceI
 }
 
 } // namespace IDBClient
-} // namespace WebCore
+} // namespace CyberCore

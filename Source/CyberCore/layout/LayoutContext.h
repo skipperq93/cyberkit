@@ -28,7 +28,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class IntRect;

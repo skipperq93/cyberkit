@@ -20,13 +20,13 @@
 #include "config.h"
 #include "InputMethodFilter.h"
 
-#include "WebKitInputMethodContextPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitInputMethodContextPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include "WebPageProxy.h"
 #include <CyberCore/PlatformDisplay.h>
 #include <wtf/SetForScope.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 InputMethodFilter::~InputMethodFilter()
@@ -59,7 +59,7 @@ void InputMethodFilter::deleteSurroundingCallback(InputMethodFilter* filter, int
     filter->deleteSurrounding(offset, characterCount);
 }
 
-void InputMethodFilter::setContext(WebKitInputMethodContext* context)
+void InputMethodFilter::setContext(CyberKitInputMethodContext* context)
 {
     if (m_context) {
         webkitInputMethodContextSetWebView(m_context.get(), nullptr);
@@ -142,7 +142,7 @@ bool InputMethodFilter::isViewFocused() const
     return webkitWebViewGetPage(webView).isViewFocused();
 }
 
-static WebKitInputPurpose toWebKitPurpose(InputMethodState::Purpose purpose)
+static CyberKitInputPurpose toCyberKitPurpose(InputMethodState::Purpose purpose)
 {
     switch (purpose) {
     case InputMethodState::Purpose::FreeForm:
@@ -164,7 +164,7 @@ static WebKitInputPurpose toWebKitPurpose(InputMethodState::Purpose purpose)
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static WebKitInputHints toWebKitHints(const OptionSet<InputMethodState::Hint>& hints)
+static CyberKitInputHints toCyberKitHints(const OptionSet<InputMethodState::Hint>& hints)
 {
     unsigned wkHints = 0;
     if (hints.contains(InputMethodState::Hint::Spellcheck))
@@ -179,7 +179,7 @@ static WebKitInputHints toWebKitHints(const OptionSet<InputMethodState::Hint>& h
         wkHints |= WEBKIT_INPUT_HINT_UPPERCASE_SENTENCES;
     if (hints.contains(InputMethodState::Hint::InhibitOnScreenKeyboard))
         wkHints |= WEBKIT_INPUT_HINT_INHIBIT_OSK;
-    return static_cast<WebKitInputHints>(wkHints);
+    return static_cast<CyberKitInputHints>(wkHints);
 }
 
 void InputMethodFilter::notifyContentType()
@@ -188,8 +188,8 @@ void InputMethodFilter::notifyContentType()
         return;
 
     g_object_freeze_notify(G_OBJECT(m_context.get()));
-    webkit_input_method_context_set_input_purpose(m_context.get(), toWebKitPurpose(m_state->purpose));
-    webkit_input_method_context_set_input_hints(m_context.get(), toWebKitHints(m_state->hints));
+    webkit_input_method_context_set_input_purpose(m_context.get(), toCyberKitPurpose(m_state->purpose));
+    webkit_input_method_context_set_input_hints(m_context.get(), toCyberKitHints(m_state->hints));
     g_object_thaw_notify(G_OBJECT(m_context.get()));
 }
 
@@ -280,7 +280,7 @@ void InputMethodFilter::preeditChanged()
     m_preedit.cursorOffset = std::min(cursorOffset, m_preedit.text.length());
     if (underlines) {
         for (auto* it = underlines; it; it = g_list_next(it)) {
-            auto* underline = static_cast<WebKitInputMethodUnderline*>(it->data);
+            auto* underline = static_cast<CyberKitInputMethodUnderline*>(it->data);
             m_preedit.underlines.append(webkitInputMethodUnderlineGetCompositionUnderline(underline));
         }
         g_list_free_full(underlines, reinterpret_cast<GDestroyNotify>(webkit_input_method_underline_free));
@@ -353,4 +353,4 @@ void InputMethodFilter::cancelComposition()
     webkit_input_method_context_reset(m_context.get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

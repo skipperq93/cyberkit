@@ -35,7 +35,7 @@
 #include "MediaKeySystemRequest.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const char* MediaKeySystemController::supplementName()
 {
@@ -69,6 +69,6 @@ void MediaKeySystemController::logRequestMediaKeySystemDenial(Document& document
         window->printErrorMessage(makeString("Not allowed to access MediaKeySystem."));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

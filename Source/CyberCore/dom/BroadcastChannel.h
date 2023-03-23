@@ -38,7 +38,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class SerializedScriptValue;
 
@@ -89,4 +89,4 @@ private:
     bool m_hasRelevantEventListener { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

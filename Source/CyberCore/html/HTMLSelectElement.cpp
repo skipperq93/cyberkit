@@ -57,7 +57,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLSelectElement);
 
@@ -1152,7 +1152,7 @@ void HTMLSelectElement::menuListDefaultEventHandler(Event& event)
     ASSERT(renderer());
     ASSERT(renderer()->isMenuList());
 
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (event.type() == eventNames.keydownEvent) {
         if (!is<KeyboardEvent>(event))
             return;
@@ -1354,7 +1354,7 @@ void HTMLSelectElement::listBoxDefaultEventHandler(Event& event)
 {
     auto& listItems = this->listItems();
 
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (event.type() == eventNames.mousedownEvent && is<MouseEvent>(event) && downcast<MouseEvent>(event).button() == LeftButton) {
         focus();
         document().updateStyleIfNeeded();

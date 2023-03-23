@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUBufferBindingType.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUBufferBindingType : uint8_t {
     Uniform,

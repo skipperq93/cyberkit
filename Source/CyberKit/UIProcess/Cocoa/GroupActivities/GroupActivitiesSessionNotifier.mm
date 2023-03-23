@@ -32,9 +32,9 @@
 #import "WKGroupSession.h"
 #import "WebPageProxy.h"
 
-#import "WebKitSwiftSoftLink.h"
+#import "CyberKitSwiftSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace PAL;
 using namespace CyberCore;

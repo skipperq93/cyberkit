@@ -235,7 +235,7 @@ list(INSERT CyberKit_INCLUDE_DIRECTORIES 0
 )
 
 list(APPEND CyberKit_PRIVATE_INCLUDE_DIRECTORIES
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
 )
 
 list(APPEND CyberKit_INCLUDE_DIRECTORIES
@@ -537,7 +537,7 @@ GI_INTROSPECT(CyberKit${WEBKITGTK_API_INFIX} ${WEBKITGTK_API_VERSION} webkit${WE
     IDENTIFIER_PREFIX CyberKit
     SYMBOL_PREFIX webkit
     DEPENDENCIES
-        JavaScriptCore
+        CyberScriptCore
         Gtk-${GTK_API_VERSION}.0:${GTK_PKGCONFIG_PACKAGE}
         Soup-${SOUP_API_VERSION}:libsoup-${SOUP_API_VERSION}
     SOURCES
@@ -557,7 +557,7 @@ GI_INTROSPECT(CyberKit${WEBKITGTK_API_INFIX}WebExtension ${WEBKITGTK_API_VERSION
     IDENTIFIER_PREFIX CyberKit
     SYMBOL_PREFIX webkit
     DEPENDENCIES
-        JavaScriptCore
+        CyberScriptCore
         Gtk-${GTK_API_VERSION}.0:${GTK_PKGCONFIG_PACKAGE}
         Soup-${SOUP_API_VERSION}:libsoup-${SOUP_API_VERSION}
     SOURCES

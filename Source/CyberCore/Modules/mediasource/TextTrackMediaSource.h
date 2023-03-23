@@ -29,7 +29,7 @@
 
 #include "TextTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SourceBuffer;
 
@@ -38,6 +38,6 @@ public:
     static SourceBuffer* sourceBuffer(TextTrack& track) { return track.sourceBuffer(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

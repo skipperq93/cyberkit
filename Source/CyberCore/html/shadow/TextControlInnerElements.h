@@ -29,7 +29,7 @@
 #include "HTMLDivElement.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTextControlInnerBlock;
 
@@ -128,14 +128,14 @@ private:
     std::optional<Style::ResolvedStyle> resolveCustomStyle(const Style::ResolutionContext&, const RenderStyle* shadowHostStyle) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::TextControlInnerTextElement)
-    static bool isType(const WebCore::HTMLElement& element) { return element.isTextControlInnerTextElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::HTMLElement>(node) && isType(downcast<WebCore::HTMLElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::TextControlInnerTextElement)
+    static bool isType(const CyberCore::HTMLElement& element) { return element.isTextControlInnerTextElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::HTMLElement>(node) && isType(downcast<CyberCore::HTMLElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SearchFieldResultsButtonElement)
-    static bool isType(const WebCore::HTMLElement& element) { return element.isSearchFieldResultsButtonElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::HTMLElement>(node) && isType(downcast<WebCore::HTMLElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SearchFieldResultsButtonElement)
+    static bool isType(const CyberCore::HTMLElement& element) { return element.isSearchFieldResultsButtonElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::HTMLElement>(node) && isType(downcast<CyberCore::HTMLElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

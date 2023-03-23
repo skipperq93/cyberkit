@@ -32,10 +32,10 @@
 
 #include "DOMMatrixReadOnly.h"
 #include "DOMPoint.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DOMPointReadOnly);
     
@@ -56,10 +56,10 @@ ExceptionOr<Ref<DOMPoint>> DOMPointReadOnly::matrixTransform(DOMMatrixInit&& mat
     return { DOMPoint::create(x, y, z, w) };
 }
 
-WebCoreOpaqueRoot root(DOMPointReadOnly* point)
+CyberCoreOpaqueRoot root(DOMPointReadOnly* point)
 {
-    return WebCoreOpaqueRoot { point };
+    return CyberCoreOpaqueRoot { point };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -24,8 +24,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCIceTcpCandidateType { Active, Passive, So };
 
-} // namespace WebCore
+} // namespace CyberCore

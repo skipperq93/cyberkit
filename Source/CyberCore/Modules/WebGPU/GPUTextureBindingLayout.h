@@ -29,14 +29,14 @@
 #include "GPUTextureViewDimension.h"
 #include <pal/graphics/WebGPU/WebGPUTextureBindingLayout.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUTextureBindingLayout {
     PAL::WebGPU::TextureBindingLayout convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(sampleType),
-            WebCore::convertToBacking(viewDimension),
+            CyberCore::convertToBacking(sampleType),
+            CyberCore::convertToBacking(viewDimension),
             multisampled,
         };
     }

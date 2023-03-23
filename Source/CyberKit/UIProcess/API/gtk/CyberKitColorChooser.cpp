@@ -18,33 +18,33 @@
  */
 
 #include "config.h"
-#include "WebKitColorChooser.h"
+#include "CyberKitColorChooser.h"
 
-#include "WebKitColorChooserRequestPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitColorChooserRequestPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include <CyberCore/Color.h>
 #include <CyberCore/IntRect.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-Ref<WebKitColorChooser> WebKitColorChooser::create(WebPageProxy& page, const CyberCore::Color& initialColor, const CyberCore::IntRect& rect)
+Ref<CyberKitColorChooser> CyberKitColorChooser::create(WebPageProxy& page, const CyberCore::Color& initialColor, const CyberCore::IntRect& rect)
 {
-    return adoptRef(*new WebKitColorChooser(page, initialColor, rect));
+    return adoptRef(*new CyberKitColorChooser(page, initialColor, rect));
 }
 
-WebKitColorChooser::WebKitColorChooser(WebPageProxy& page, const Color& initialColor, const IntRect& rect)
+CyberKitColorChooser::CyberKitColorChooser(WebPageProxy& page, const Color& initialColor, const IntRect& rect)
     : WebColorPickerGtk(page, initialColor, rect)
     , m_elementRect(rect)
 {
 }
 
-WebKitColorChooser::~WebKitColorChooser()
+CyberKitColorChooser::~CyberKitColorChooser()
 {
     endPicker();
 }
 
-void WebKitColorChooser::endPicker()
+void CyberKitColorChooser::endPicker()
 {
     if (!m_request) {
         WebColorPickerGtk::endPicker();
@@ -54,24 +54,24 @@ void WebKitColorChooser::endPicker()
     webkit_color_chooser_request_finish(m_request.get());
 }
 
-void WebKitColorChooser::colorChooserRequestFinished(WebKitColorChooserRequest*, WebKitColorChooser* colorChooser)
+void CyberKitColorChooser::colorChooserRequestFinished(CyberKitColorChooserRequest*, CyberKitColorChooser* colorChooser)
 {
     colorChooser->m_request = nullptr;
 }
 
-void WebKitColorChooser::colorChooserRequestRGBAChanged(WebKitColorChooserRequest* request, GParamSpec*, WebKitColorChooser* colorChooser)
+void CyberKitColorChooser::colorChooserRequestRGBAChanged(CyberKitColorChooserRequest* request, GParamSpec*, CyberKitColorChooser* colorChooser)
 {
     GdkRGBA rgba;
     webkit_color_chooser_request_get_rgba(request, &rgba);
     colorChooser->didChooseColor(rgba);
 }
 
-void WebKitColorChooser::showColorPicker(const Color& color)
+void CyberKitColorChooser::showColorPicker(const Color& color)
 {
     m_initialColor = color;
-    GRefPtr<WebKitColorChooserRequest> request = adoptGRef(webkitColorChooserRequestCreate(this));
-    g_signal_connect(request.get(), "notify::rgba", G_CALLBACK(WebKitColorChooser::colorChooserRequestRGBAChanged), this);
-    g_signal_connect(request.get(), "finished", G_CALLBACK(WebKitColorChooser::colorChooserRequestFinished), this);
+    GRefPtr<CyberKitColorChooserRequest> request = adoptGRef(webkitColorChooserRequestCreate(this));
+    g_signal_connect(request.get(), "notify::rgba", G_CALLBACK(CyberKitColorChooser::colorChooserRequestRGBAChanged), this);
+    g_signal_connect(request.get(), "finished", G_CALLBACK(CyberKitColorChooser::colorChooserRequestFinished), this);
 
     if (webkitWebViewEmitRunColorChooser(WEBKIT_WEB_VIEW(m_webView), request.get()))
         m_request = request;
@@ -79,4 +79,4 @@ void WebKitColorChooser::showColorPicker(const Color& color)
         WebColorPickerGtk::showColorPicker(color);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

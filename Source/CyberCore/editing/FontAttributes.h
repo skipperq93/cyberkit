@@ -33,7 +33,7 @@
 OBJC_CLASS NSDictionary;
 OBJC_CLASS NSTextList;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextList {
     ListStyleType style { ListStyleType::None };
@@ -65,4 +65,4 @@ struct FontAttributes {
     bool hasMultipleFonts { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

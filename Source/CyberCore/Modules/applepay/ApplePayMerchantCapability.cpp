@@ -28,7 +28,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<ApplePaySessionPaymentRequest::MerchantCapabilities> convertAndValidate(const Vector<ApplePayMerchantCapability>& merchantCapabilities)
 {
@@ -57,6 +57,6 @@ ExceptionOr<ApplePaySessionPaymentRequest::MerchantCapabilities> convertAndValid
     return WTFMove(result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

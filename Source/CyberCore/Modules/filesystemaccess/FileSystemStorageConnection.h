@@ -33,7 +33,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemDirectoryHandle;
 class FileSystemFileHandle;
@@ -76,9 +76,9 @@ public:
     virtual void requestNewCapacityForSyncAccessHandle(FileSystemHandleIdentifier, FileSystemSyncAccessHandleIdentifier, uint64_t newCapacity, RequestCapacityCallback&&) = 0;
     virtual void registerSyncAccessHandle(FileSystemSyncAccessHandleIdentifier, ScriptExecutionContextIdentifier) = 0;
     virtual void unregisterSyncAccessHandle(FileSystemSyncAccessHandleIdentifier) = 0;
-    virtual void invalidateAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier) = 0;
+    virtual void invalidateAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier) = 0;
     virtual void getHandleNames(FileSystemHandleIdentifier, GetHandleNamesCallback&&) = 0;
     virtual void getHandle(FileSystemHandleIdentifier, const String& name, GetHandleCallback&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

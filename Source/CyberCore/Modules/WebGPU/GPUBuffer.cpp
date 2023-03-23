@@ -28,7 +28,7 @@
 
 #include "JSDOMPromiseDeferred.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUBuffer::label() const
 {

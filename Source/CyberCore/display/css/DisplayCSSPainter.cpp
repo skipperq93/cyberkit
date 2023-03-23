@@ -40,7 +40,7 @@
 
 #define SHOW_ITEM_EXTENTS 0
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 static void applyClipIfNecessary(const Box& box, PaintingContext& paintingContext, GraphicsContextStateSaver& stateSaver)
@@ -205,5 +205,5 @@ void CSSPainter::paintTree(const Tree& displayTree, PaintingContext& paintingCon
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

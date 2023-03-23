@@ -71,7 +71,7 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ANGLEInstancedArrays;
 class EXTBlendMinMax;
@@ -104,7 +104,7 @@ class OESVertexArrayObject;
 class OffscreenCanvas;
 #endif
 class WebCodecsVideoFrame;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 class WebGLActiveInfo;
 class WebGLClipCullDistance;
 class WebGLColorBufferFloat;
@@ -1149,10 +1149,10 @@ private:
     uint64_t m_activeOrdinal { 0 };
 };
 
-WebCoreOpaqueRoot root(WebGLRenderingContextBase*);
+CyberCoreOpaqueRoot root(WebGLRenderingContextBase*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::WebGLRenderingContextBase, isWebGL())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::WebGLRenderingContextBase, isWebGL())
 
 #endif

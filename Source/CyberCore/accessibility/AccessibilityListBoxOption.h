@@ -30,7 +30,7 @@
 
 #include "AccessibilityObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLElement;
 class HTMLSelectElement;
@@ -68,6 +68,6 @@ private:
     WeakPtr<HTMLElement, WeakPtrImplWithEventTargetData> m_optionElement;
 };
     
-} // namespace WebCore 
+} // namespace CyberCore 
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityListBoxOption, isListBoxOption())

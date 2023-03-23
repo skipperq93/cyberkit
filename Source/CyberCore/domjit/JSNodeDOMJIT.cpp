@@ -37,7 +37,7 @@
 #include <CyberScriptCore/Snippet.h>
 #include <CyberScriptCore/SnippetParams.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 Ref<JSC::Snippet> checkSubClassSnippetForJSNode()

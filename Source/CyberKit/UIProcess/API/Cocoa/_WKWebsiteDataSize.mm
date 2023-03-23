@@ -30,7 +30,7 @@
 
 @implementation _WKWebsiteDataSize
 
-- (instancetype)initWithSize:(const WebKit::WebsiteDataRecord::Size&)size
+- (instancetype)initWithSize:(const CyberKit::WebsiteDataRecord::Size&)size
 {
     if (!(self = [super init]))
         return nil;
@@ -50,7 +50,7 @@
     unsigned long long size = 0;
 
     for (NSString *dataType in dataTypes) {
-        if (auto websiteDataType = WebKit::toWebsiteDataType(dataType))
+        if (auto websiteDataType = CyberKit::toWebsiteDataType(dataType))
             size += _size.typeSizes.get(static_cast<unsigned>(*websiteDataType));
     }
     

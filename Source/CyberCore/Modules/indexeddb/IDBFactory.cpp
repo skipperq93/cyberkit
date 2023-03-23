@@ -40,7 +40,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBFactory);
@@ -171,4 +171,4 @@ void IDBFactory::getAllDatabaseNames(ScriptExecutionContext& context, Function<v
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

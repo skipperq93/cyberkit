@@ -68,6 +68,6 @@ CFStringEncoding webDefaultCFStringEncoding()
     return kCFStringEncodingISOLatin1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -41,7 +41,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptSourceCode {
 public:
@@ -96,4 +96,4 @@ private:
     CachedResourceHandle<CachedScript> m_cachedScript;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

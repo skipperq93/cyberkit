@@ -29,7 +29,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VoidCallback : public RefCounted<VoidCallback>, public ActiveDOMCallback {
 public:
@@ -38,4 +38,4 @@ public:
     virtual CallbackResult<void> handleEvent() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

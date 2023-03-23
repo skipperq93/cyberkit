@@ -36,7 +36,7 @@
 #include <CyberScriptCore/Forward.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageData : public RefCounted<ImageData> {
 public:
@@ -71,4 +71,4 @@ private:
 
 WEBCORE_EXPORT TextStream& operator<<(TextStream&, const ImageData&);
 
-} // namespace WebCore
+} // namespace CyberCore

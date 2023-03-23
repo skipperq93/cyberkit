@@ -29,7 +29,7 @@
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class UndoItem;
@@ -55,4 +55,4 @@ private:
     WeakPtr<UndoItem> m_undoItem;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

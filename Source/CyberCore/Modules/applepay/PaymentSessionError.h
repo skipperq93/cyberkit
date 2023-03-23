@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSError;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePaySessionError;
 
@@ -49,6 +49,6 @@ private:
     RetainPtr<NSError> m_platformError;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

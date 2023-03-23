@@ -24,7 +24,7 @@
 #include "TestAsyncKeyValueIterable.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestAsyncKeyValueIterable : public JSDOMWrapper<TestAsyncKeyValueIterable> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestAsyncKeyValueIterable> {
     using ToWrappedReturnType = TestAsyncKeyValueIterable*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

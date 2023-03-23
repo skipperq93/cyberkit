@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ClipboardAccessPolicy {
     Allow,
@@ -33,4 +33,4 @@ enum class ClipboardAccessPolicy {
     RequiresUserGesture
 };
 
-} // namespace WebCore
+} // namespace CyberCore

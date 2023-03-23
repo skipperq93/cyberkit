@@ -34,7 +34,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCalcExpressionNode;
 class CSSCalcSymbolTable;
@@ -89,6 +89,6 @@ private:
 
 TextStream& operator<<(TextStream&, const CSSCalcValue&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSCalcValue, isCalcValue())

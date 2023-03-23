@@ -30,7 +30,7 @@
 #include "Node.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RemoveNodePreservingChildrenCommand::RemoveNodePreservingChildrenCommand(Ref<Node>&& node, ShouldAssumeContentIsAlwaysEditable shouldAssumeContentIsAlwaysEditable, EditAction editingAction)
     : CompositeEditCommand(node->document(), editingAction)

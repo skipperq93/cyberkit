@@ -24,7 +24,7 @@
 #include "TestNamedDeleterWithIdentifier.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestNamedDeleterWithIdentifier : public JSDOMWrapper<TestNamedDeleterWithIdentifier> {
 public:
@@ -97,4 +97,4 @@ template<> struct JSDOMWrapperConverterTraits<TestNamedDeleterWithIdentifier> {
     using ToWrappedReturnType = TestNamedDeleterWithIdentifier*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #import "PlatformWebView.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberKit/WKPagePrivateMac.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKSerializedScriptValue.h>

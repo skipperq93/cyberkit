@@ -33,7 +33,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CSSCursorImageValue> CSSCursorImageValue::create(Ref<CSSValue>&& imageValue, const std::optional<IntPoint>& hotSpot, LoadedFromOpaqueSource loadedFromOpaqueSource)
 {
@@ -78,4 +78,4 @@ RefPtr<StyleImage> CSSCursorImageValue::createStyleImage(Style::BuilderState& st
     return StyleCursorImage::create(styleImage.releaseNonNull(), m_hotSpot, m_originalURL, m_loadedFromOpaqueSource);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

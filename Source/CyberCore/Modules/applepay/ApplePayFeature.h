@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayFeature : uint8_t {
 #if ENABLE(APPLE_PAY_LATER)
@@ -71,51 +71,51 @@ enum class ApplePayFeature : uint8_t {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ApplePayFeature> {
+template<> struct EnumTraits<CyberCore::ApplePayFeature> {
     using values = EnumValues<
-        WebCore::ApplePayFeature
+        CyberCore::ApplePayFeature
 #if ENABLE(APPLE_PAY_LATER)
-        , WebCore::ApplePayFeature::ApplePayLater
+        , CyberCore::ApplePayFeature::ApplePayLater
 #endif
 #if ENABLE(APPLE_PAY_PAYMENT_ORDER_DETAILS)
-        , WebCore::ApplePayFeature::AuthorizationResultOrderDetails
+        , CyberCore::ApplePayFeature::AuthorizationResultOrderDetails
 #endif
-        , WebCore::ApplePayFeature::LineItemPaymentTiming
+        , CyberCore::ApplePayFeature::LineItemPaymentTiming
 #if ENABLE(APPLE_PAY_AUTOMATIC_RELOAD_PAYMENTS)
-        , WebCore::ApplePayFeature::PaymentRequestAutomaticReload
+        , CyberCore::ApplePayFeature::PaymentRequestAutomaticReload
 #endif
 #if ENABLE(APPLE_PAY_COUPON_CODE)
-        , WebCore::ApplePayFeature::PaymentRequestCouponCode
+        , CyberCore::ApplePayFeature::PaymentRequestCouponCode
 #endif
 #if ENABLE(APPLE_PAY_MULTI_MERCHANT_PAYMENTS)
-        , WebCore::ApplePayFeature::PaymentRequestMultiTokenContexts
+        , CyberCore::ApplePayFeature::PaymentRequestMultiTokenContexts
 #endif
 #if ENABLE(APPLE_PAY_RECURRING_PAYMENTS)
-        , WebCore::ApplePayFeature::PaymentRequestRecurring
+        , CyberCore::ApplePayFeature::PaymentRequestRecurring
 #endif
 #if ENABLE(APPLE_PAY_SHIPPING_CONTACT_EDITING_MODE)
-        , WebCore::ApplePayFeature::PaymentRequestShippingContactEditingMode
+        , CyberCore::ApplePayFeature::PaymentRequestShippingContactEditingMode
 #endif
 #if ENABLE(APPLE_PAY_AUTOMATIC_RELOAD_LINE_ITEM)
-        , WebCore::ApplePayFeature::PaymentTimingAutomaticReload
+        , CyberCore::ApplePayFeature::PaymentTimingAutomaticReload
 #endif
 #if ENABLE(APPLE_PAY_DEFERRED_LINE_ITEM)
-        , WebCore::ApplePayFeature::PaymentTimingDeferred
+        , CyberCore::ApplePayFeature::PaymentTimingDeferred
 #endif
-        , WebCore::ApplePayFeature::PaymentTimingImmediate
+        , CyberCore::ApplePayFeature::PaymentTimingImmediate
 #if ENABLE(APPLE_PAY_RECURRING_LINE_ITEM)
-        , WebCore::ApplePayFeature::PaymentTimingRecurring
+        , CyberCore::ApplePayFeature::PaymentTimingRecurring
 #endif
 #if ENABLE(APPLE_PAY_SHIPPING_CONTACT_EDITING_MODE)
-        , WebCore::ApplePayFeature::ShippingContactEditingModeEnabled
-        , WebCore::ApplePayFeature::ShippingContactEditingModeStorePickup
+        , CyberCore::ApplePayFeature::ShippingContactEditingModeEnabled
+        , CyberCore::ApplePayFeature::ShippingContactEditingModeStorePickup
 #endif
 #if ENABLE(APPLE_PAY_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
-        , WebCore::ApplePayFeature::ShippingMethodDateComponentsRange
+        , CyberCore::ApplePayFeature::ShippingMethodDateComponentsRange
 #endif
     >;
 };

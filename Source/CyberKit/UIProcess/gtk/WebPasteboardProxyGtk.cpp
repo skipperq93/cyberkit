@@ -37,7 +37,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/SetForScope.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebPasteboardProxy::getTypes(const String& pasteboardName, CompletionHandler<void(Vector<String>&&)>&& completionHandler)
@@ -142,4 +142,4 @@ void WebPasteboardProxy::writeCustomData(IPC::Connection&, const Vector<Pasteboa
     completionHandler(0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

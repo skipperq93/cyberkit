@@ -18,25 +18,25 @@
  */
 
 #include "config.h"
-#include "WebKitWebViewBackend.h"
+#include "CyberKitWebViewBackend.h"
 
-#include "WebKitWebViewBackendPrivate.h"
+#include "CyberKitWebViewBackendPrivate.h"
 
 /**
- * WebKitWebViewBackend:
- * @See_also: #WebKitWebView.
+ * CyberKitWebViewBackend:
+ * @See_also: #CyberKitWebView.
  *
  * A web view backend.
  *
- * A WebKitWebViewBackend is a boxed type wrapping a WPE backend used to create a
- * #WebKitWebView. A WebKitWebViewBackend is created with webkit_web_view_backend_new()
- * and it should be passed to a WebKitWebView constructor that will take the ownership.
+ * A CyberKitWebViewBackend is a boxed type wrapping a WPE backend used to create a
+ * #CyberKitWebView. A CyberKitWebViewBackend is created with webkit_web_view_backend_new()
+ * and it should be passed to a CyberKitWebView constructor that will take the ownership.
  *
  * Since: 2.20
  */
 
-struct _WebKitWebViewBackend {
-    _WebKitWebViewBackend(struct wpe_view_backend* backend, GDestroyNotify notifyCallback, gpointer notifyCallbackData)
+struct _CyberKitWebViewBackend {
+    _CyberKitWebViewBackend(struct wpe_view_backend* backend, GDestroyNotify notifyCallback, gpointer notifyCallbackData)
         : backend(backend)
         , notifyCallback(notifyCallback)
         , notifyCallbackData(notifyCallbackData)
@@ -46,7 +46,7 @@ struct _WebKitWebViewBackend {
         ASSERT(notifyCallbackData);
     }
 
-    ~_WebKitWebViewBackend()
+    ~_CyberKitWebViewBackend()
     {
         notifyCallback(notifyCallbackData);
     }
@@ -57,20 +57,20 @@ struct _WebKitWebViewBackend {
     int referenceCount { 1 };
 };
 
-static WebKitWebViewBackend* webkitWebViewBackendRef(WebKitWebViewBackend* viewBackend)
+static CyberKitWebViewBackend* webkitWebViewBackendRef(CyberKitWebViewBackend* viewBackend)
 {
     ASSERT(viewBackend);
     g_atomic_int_inc(&viewBackend->referenceCount);
     return viewBackend;
 }
 
-G_DEFINE_BOXED_TYPE(WebKitWebViewBackend, webkit_web_view_backend, webkitWebViewBackendRef, webkitWebViewBackendUnref)
+G_DEFINE_BOXED_TYPE(CyberKitWebViewBackend, webkit_web_view_backend, webkitWebViewBackendRef, webkitWebViewBackendUnref)
 
-void webkitWebViewBackendUnref(WebKitWebViewBackend* viewBackend)
+void webkitWebViewBackendUnref(CyberKitWebViewBackend* viewBackend)
 {
     ASSERT(viewBackend);
     if (g_atomic_int_dec_and_test(&viewBackend->referenceCount)) {
-        viewBackend->~WebKitWebViewBackend();
+        viewBackend->~CyberKitWebViewBackend();
         fastFree(viewBackend);
     }
 }
@@ -81,28 +81,28 @@ void webkitWebViewBackendUnref(WebKitWebViewBackend* viewBackend)
  * @notify: (nullable): a #GDestroyNotify, or %NULL
  * @user_data: user data to pass to @notify
  *
- * Create a new #WebKitWebViewBackend for the given WPE @backend. You can pass a #GDestroyNotify
+ * Create a new #CyberKitWebViewBackend for the given WPE @backend. You can pass a #GDestroyNotify
  * that will be called when the object is destroyed passing @user_data as the argument. If @notify
  * is %NULL, wpe_view_backend_destroy() will be used with @backend as argument.
- * The returned #WebKitWebViewBackend should never be freed by the user; it must be passed to a
- * #WebKitWebView constructor that will take the ownership.
+ * The returned #CyberKitWebViewBackend should never be freed by the user; it must be passed to a
+ * #CyberKitWebView constructor that will take the ownership.
  *
- * Returns: a newly created #WebKitWebViewBackend
+ * Returns: a newly created #CyberKitWebViewBackend
  *
  * Since: 2.20
  */
-WebKitWebViewBackend* webkit_web_view_backend_new(struct wpe_view_backend* backend, GDestroyNotify notify, gpointer userData)
+CyberKitWebViewBackend* webkit_web_view_backend_new(struct wpe_view_backend* backend, GDestroyNotify notify, gpointer userData)
 {
     g_return_val_if_fail(backend, nullptr);
 
-    auto* viewBackend = static_cast<WebKitWebViewBackend*>(fastMalloc(sizeof(WebKitWebViewBackend)));
-    new (viewBackend) WebKitWebViewBackend(backend, notify ? notify : reinterpret_cast<GDestroyNotify>(wpe_view_backend_destroy), notify ? userData : backend);
+    auto* viewBackend = static_cast<CyberKitWebViewBackend*>(fastMalloc(sizeof(CyberKitWebViewBackend)));
+    new (viewBackend) CyberKitWebViewBackend(backend, notify ? notify : reinterpret_cast<GDestroyNotify>(wpe_view_backend_destroy), notify ? userData : backend);
     return viewBackend;
 }
 
 /**
  * webkit_web_view_backend_get_wpe_backend:
- * @view_backend: a #WebKitWebViewBackend
+ * @view_backend: a #CyberKitWebViewBackend
  *
  * Get the WPE backend of @view_backend
  *
@@ -110,7 +110,7 @@ WebKitWebViewBackend* webkit_web_view_backend_new(struct wpe_view_backend* backe
  *
  * Since: 2.20
  */
-struct wpe_view_backend* webkit_web_view_backend_get_wpe_backend(WebKitWebViewBackend* viewBackend)
+struct wpe_view_backend* webkit_web_view_backend_get_wpe_backend(CyberKitWebViewBackend* viewBackend)
 {
     g_return_val_if_fail(viewBackend, nullptr);
     return viewBackend->backend;
@@ -118,14 +118,14 @@ struct wpe_view_backend* webkit_web_view_backend_get_wpe_backend(WebKitWebViewBa
 
 namespace WTF {
 
-template <> WebKitWebViewBackend* refGPtr(WebKitWebViewBackend* ptr)
+template <> CyberKitWebViewBackend* refGPtr(CyberKitWebViewBackend* ptr)
 {
     if (ptr)
         webkitWebViewBackendRef(ptr);
     return ptr;
 }
 
-template <> void derefGPtr(WebKitWebViewBackend* ptr)
+template <> void derefGPtr(CyberKitWebViewBackend* ptr)
 {
     if (ptr)
         webkitWebViewBackendUnref(ptr);

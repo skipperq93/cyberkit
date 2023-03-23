@@ -54,7 +54,7 @@ namespace PAL {
 class KillRing;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AlternativeTextController;
 class ArchiveResource;
@@ -719,4 +719,4 @@ inline bool Editor::markedTextMatchesAreHighlighted() const
     return m_areMarkedTextMatchesHighlighted;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

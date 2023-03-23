@@ -32,7 +32,7 @@
 #include "DeprecatedCSSOMRGBColor.h"
 #include "DeprecatedCSSOMRect.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 unsigned short DeprecatedCSSOMPrimitiveValue::primitiveType() const
 {

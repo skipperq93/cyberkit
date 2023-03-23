@@ -35,12 +35,12 @@
 #include "CommonCryptoUtilities.h"
 
 typedef CCECCryptorRef PlatformECKey;
-namespace WebCore {
+namespace CyberCore {
 struct CCECCryptorRefDeleter {
     void operator()(CCECCryptorRef key) const { CCECCryptorRelease(key); }
 };
 }
-typedef std::unique_ptr<typename std::remove_pointer<CCECCryptorRef>::type, WebCore::CCECCryptorRefDeleter> PlatformECKeyContainer;
+typedef std::unique_ptr<typename std::remove_pointer<CCECCryptorRef>::type, CyberCore::CCECCryptorRefDeleter> PlatformECKeyContainer;
 #endif
 
 #if USE(GCRYPT)
@@ -53,10 +53,10 @@ typedef std::unique_ptr<typename std::remove_pointer<gcry_sexp_t>::type, PAL::GC
 #if USE(OPENSSL)
 #include "crypto/openssl/OpenSSLCryptoUniquePtr.h"
 typedef EVP_PKEY* PlatformECKey;
-typedef WebCore::EvpPKeyPtr PlatformECKeyContainer;
+typedef CyberCore::EvpPKeyPtr PlatformECKeyContainer;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct JsonWebKey;
 
@@ -115,7 +115,7 @@ private:
     NamedCurve m_curve;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_KEY(CryptoKeyEC, CryptoKeyClass::EC)
 

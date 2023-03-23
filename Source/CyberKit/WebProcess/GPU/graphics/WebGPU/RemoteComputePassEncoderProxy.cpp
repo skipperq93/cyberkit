@@ -31,7 +31,7 @@
 #include "RemoteComputePassEncoderMessages.h"
 #include "WebGPUConvertToBackingContext.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 RemoteComputePassEncoderProxy::RemoteComputePassEncoderProxy(RemoteCommandEncoderProxy& parent, ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier)
     : m_backing(identifier)
@@ -129,6 +129,6 @@ void RemoteComputePassEncoderProxy::setLabelInternal(const String& label)
     UNUSED_VARIABLE(sendResult);
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

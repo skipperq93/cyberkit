@@ -31,7 +31,7 @@
 #include "RTCDataChannel.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCDataChannelEvent);
 
@@ -67,7 +67,7 @@ EventInterface RTCDataChannelEvent::eventInterface() const
     return RTCDataChannelEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)
 

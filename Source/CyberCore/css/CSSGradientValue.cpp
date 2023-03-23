@@ -34,7 +34,7 @@
 #include "StyleGradientImage.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool styleImageIsCacheable(const CSSGradientColorStopList& stops)
 {
@@ -335,18 +335,18 @@ String CSSLinearGradientValue::customCSSText() const
             wroteSomething = true;
         },
         [&] (Horizontal horizontal) {
-            result.append("to ", WebCore::cssText(horizontal));
+            result.append("to ", CyberCore::cssText(horizontal));
             wroteSomething = true;
         },
         [&] (Vertical vertical) {
             if (vertical == Vertical::Bottom)
                 return;
     
-            result.append("to ", WebCore::cssText(vertical));
+            result.append("to ", CyberCore::cssText(vertical));
             wroteSomething = true;
         },
         [&] (const std::pair<Horizontal, Vertical>& pair) {
-            result.append("to ", WebCore::cssText(pair.first), ' ', WebCore::cssText(pair.second));
+            result.append("to ", CyberCore::cssText(pair.first), ' ', CyberCore::cssText(pair.second));
             wroteSomething = true;
         }
     );
@@ -421,13 +421,13 @@ String CSSPrefixedLinearGradientValue::customCSSText() const
             result.append(angle.value->cssText());
         },
         [&] (Horizontal horizontal) {
-            result.append(WebCore::cssText(horizontal));
+            result.append(CyberCore::cssText(horizontal));
         },
         [&] (Vertical vertical) {
-            result.append(WebCore::cssText(vertical));
+            result.append(CyberCore::cssText(vertical));
         },
         [&] (const std::pair<Horizontal, Vertical>& pair) {
-            result.append(WebCore::cssText(pair.first), ' ', WebCore::cssText(pair.second));
+            result.append(CyberCore::cssText(pair.first), ' ', CyberCore::cssText(pair.second));
         }
     );
 
@@ -549,7 +549,7 @@ String CSSRadialGradientValue::customCSSText() const
         },
         [&] (const Extent& data) {
             if (data.extent != ExtentKeyword::FarthestCorner) {
-                result.append(WebCore::cssText(data.extent));
+                result.append(CyberCore::cssText(data.extent));
                 wroteSomething = true;
             }
 
@@ -569,7 +569,7 @@ String CSSRadialGradientValue::customCSSText() const
         },
         [&] (const CircleOfExtent& data) {
             if (data.extent != ExtentKeyword::FarthestCorner)
-                result.append("circle ", WebCore::cssText(data.extent));
+                result.append("circle ", CyberCore::cssText(data.extent));
             else
                 result.append("circle");
             wroteSomething = true;
@@ -587,7 +587,7 @@ String CSSRadialGradientValue::customCSSText() const
         },
         [&] (const EllipseOfExtent& data) {
             if (data.extent != ExtentKeyword::FarthestCorner) {
-                result.append(WebCore::cssText(data.extent));
+                result.append(CyberCore::cssText(data.extent));
                 wroteSomething = true;
             }
             appendOptionalPosition(data.position);
@@ -725,13 +725,13 @@ String CSSPrefixedRadialGradientValue::customCSSText() const
     WTF::switchOn(m_data.gradientBox,
         [&] (std::monostate) { },
         [&] (const ShapeKeyword& shape) {
-            result.append(", ", WebCore::cssText(shape), " cover");
+            result.append(", ", CyberCore::cssText(shape), " cover");
         },
         [&] (const ExtentKeyword& extent) {
-            result.append(", ellipse ", WebCore::cssText(extent));
+            result.append(", ellipse ", CyberCore::cssText(extent));
         },
         [&] (const ShapeAndExtent& shapeAndExtent) {
-            result.append(", ", WebCore::cssText(shapeAndExtent.shape), ' ', WebCore::cssText(shapeAndExtent.extent));
+            result.append(", ", CyberCore::cssText(shapeAndExtent.shape), ' ', CyberCore::cssText(shapeAndExtent.extent));
         },
         [&] (const MeasuredSize& measuredSize) {
             result.append(", ", measuredSize.size.first->cssText(), ' ', measuredSize.size.second->cssText());
@@ -866,4 +866,4 @@ bool CSSConicGradientValue::equals(const CSSConicGradientValue& other) const
         && m_data == other.m_data;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

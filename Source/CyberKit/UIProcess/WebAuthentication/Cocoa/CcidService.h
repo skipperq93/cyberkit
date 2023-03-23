@@ -35,7 +35,7 @@ OBJC_CLASS NSArray;
 OBJC_CLASS TKSmartCardSlot;
 OBJC_CLASS TKSmartCard;
 
-namespace WebKit {
+namespace CyberKit {
 
 class CcidConnection;
 
@@ -62,6 +62,6 @@ private:
     HashSet<String> m_slotNames;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

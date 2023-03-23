@@ -32,7 +32,7 @@
 #include "WebProcessPool.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebPageInjectedBundleClient::didReceiveMessageFromInjectedBundle(WebPageProxy* page, const String& messageName, API::Object* messageBody)
@@ -58,4 +58,4 @@ void WebPageInjectedBundleClient::didReceiveSynchronousMessageFromInjectedBundle
     m_client.didReceiveSynchronousMessageFromInjectedBundleWithListener(toAPI(page), toAPI(messageName.impl()), toAPI(messageBody), toAPI(API::MessageListener::create(WTFMove(completionHandler)).ptr()), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

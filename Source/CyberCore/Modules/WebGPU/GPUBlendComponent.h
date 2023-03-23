@@ -29,15 +29,15 @@
 #include "GPUBlendOperation.h"
 #include <pal/graphics/WebGPU/WebGPUBlendComponent.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUBlendComponent {
     PAL::WebGPU::BlendComponent convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(operation),
-            WebCore::convertToBacking(srcFactor),
-            WebCore::convertToBacking(dstFactor),
+            CyberCore::convertToBacking(operation),
+            CyberCore::convertToBacking(srcFactor),
+            CyberCore::convertToBacking(dstFactor),
         };
     }
 

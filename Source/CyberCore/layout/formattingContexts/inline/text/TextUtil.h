@@ -31,7 +31,7 @@
 #include "LayoutUnits.h"
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 class TextRun;

@@ -174,8 +174,8 @@ class ChangeLogTest(unittest.TestCase):
         commit_text = '''
 2011-03-23  Ojan Vafai  <ojan@chromium.org>
 
-        Add failing result for WebKit2. All tests that require
-        focus fail on WebKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
+        Add failing result for CyberKit2. All tests that require
+        focus fail on CyberKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
 
         * platform/mac-wk2/fast/css/pseudo-any-expected.txt: Added.
 
@@ -186,8 +186,8 @@ class ChangeLogTest(unittest.TestCase):
         commit_text = '''
 2011-03-23  Ojan Vafai  <ojan@chromium.org>
 
-        Add failing result for WebKit2. All tests that require
-        focus fail on WebKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
+        Add failing result for CyberKit2. All tests that require
+        focus fail on CyberKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
         https://bugs.webkit.org/show_bug.cgi?id=12345
 
         * platform/mac-wk2/fast/css/pseudo-any-expected.txt: Added.
@@ -209,7 +209,7 @@ class ChangeLogTest(unittest.TestCase):
         Reviewed by Steve Falkenburg.
 
         * UIProcess/Launcher/win/ProcessLauncherWin.cpp:
-        (WebKit::ProcessLauncher::launchProcess): Surround the executable path in quotes.
+        (CyberKit::ProcessLauncher::launchProcess): Surround the executable path in quotes.
 
         '''
 
@@ -218,7 +218,7 @@ class ChangeLogTest(unittest.TestCase):
         commit_text = '''
 2011-03-29  Timothy Hatcher  <timothy@apple.com>
 
-        Update CyberCore Localizable.strings to contain CyberCore, WebKit/mac and WebKit2 strings.
+        Update CyberCore Localizable.strings to contain CyberCore, CyberKit/mac and CyberKit2 strings.
 
         https://webkit.org/b/57354
 
@@ -488,8 +488,8 @@ class ChangeLogTest(unittest.TestCase):
         contents = """
         2011-03-23  Ojan Vafai  <ojan@chromium.org>
 
-                Add failing result for WebKit2. All tests that require
-                focus fail on WebKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
+                Add failing result for CyberKit2. All tests that require
+                focus fail on CyberKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
                 <rdar://problem/42824228>
 
                 * platform/mac-wk2/fast/css/pseudo-any-expected.txt: Added.

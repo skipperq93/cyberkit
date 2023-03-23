@@ -38,8 +38,8 @@
 #include "WorkerRunLoop.h"
 #include "WorkerThread.h"
 
-namespace WebCore {
-using namespace WebCore::DOMCacheEngine;
+namespace CyberCore {
+using namespace CyberCore::DOMCacheEngine;
 
 struct CrossThreadRecordData {
     uint64_t identifier;
@@ -317,4 +317,4 @@ void WorkerCacheStorageConnection::clearPendingRequests()
         callback(makeUnexpected(DOMCacheEngine::Error::Stopped));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

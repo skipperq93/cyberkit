@@ -28,7 +28,7 @@
 #import "APIProcessPoolConfiguration.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ProcessPoolConfiguration> {
     using WrapperClass = _WKProcessPoolConfiguration;

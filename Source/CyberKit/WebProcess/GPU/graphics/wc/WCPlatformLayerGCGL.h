@@ -31,7 +31,7 @@
 #include "WCContentBufferIdentifier.h"
 #include <CyberCore/WCPlatformLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCPlatformLayerGCGL : public CyberCore::WCPlatformLayer {
 public:
@@ -51,6 +51,6 @@ private:
     Vector<WCContentBufferIdentifier> m_contentBufferIdentifiers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC) && ENABLE(WEBGL)

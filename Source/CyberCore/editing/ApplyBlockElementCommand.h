@@ -33,7 +33,7 @@
 #include "CompositeEditCommand.h"
 #include "QualifiedName.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplyBlockElementCommand : public CompositeEditCommand {
 protected:
@@ -56,4 +56,4 @@ private:
     Position m_endOfLastParagraph;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

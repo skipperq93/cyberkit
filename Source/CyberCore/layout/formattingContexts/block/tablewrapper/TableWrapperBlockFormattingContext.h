@@ -30,7 +30,7 @@
 #include "TableWrapperBlockFormattingQuirks.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 // This class implements the special block formatting context layout logic for the table wrapper.

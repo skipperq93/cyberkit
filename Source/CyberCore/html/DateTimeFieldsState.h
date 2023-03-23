@@ -30,7 +30,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DateTimeFieldsState {
     enum class Meridiem : bool { AM, PM };
@@ -52,6 +52,6 @@ struct DateTimeFieldsState {
     std::optional<Meridiem> meridiem;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

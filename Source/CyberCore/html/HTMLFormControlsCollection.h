@@ -26,7 +26,7 @@
 #include "HTMLFormElement.h"
 #include "RadioNodeList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormListedElement;
 class HTMLImageElement;
@@ -63,6 +63,6 @@ inline HTMLElement* HTMLFormControlsCollection::item(unsigned offset) const
     return downcast<HTMLElement>(CachedHTMLCollection::item(offset));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(HTMLFormControlsCollection, FormControls)

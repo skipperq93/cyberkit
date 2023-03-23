@@ -26,7 +26,7 @@
 #pragma once
 
 #include "ScriptWrappable.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
@@ -34,7 +34,7 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbortSignal;
 class JSDOMGlobalObject;
@@ -49,7 +49,7 @@ public:
     AbortSignal& signal();
     void abort(JSDOMGlobalObject&, JSC::JSValue reason);
 
-    WebCoreOpaqueRoot opaqueRoot();
+    CyberCoreOpaqueRoot opaqueRoot();
 
 private:
     explicit AbortController(ScriptExecutionContext&);

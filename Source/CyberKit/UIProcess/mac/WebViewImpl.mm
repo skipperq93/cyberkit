@@ -182,10 +182,10 @@ WTF_DECLARE_CF_TYPE_TRAIT(CGImage);
 @end
 
 @implementation WKMouseTrackingObserver {
-    WeakPtr<WebKit::WebViewImpl> _impl;
+    WeakPtr<CyberKit::WebViewImpl> _impl;
 }
 
-- (instancetype)initWithViewImpl:(WebKit::WebViewImpl&)impl
+- (instancetype)initWithViewImpl:(CyberKit::WebViewImpl&)impl
 {
     if ((self = [super init]))
         _impl = impl;
@@ -213,15 +213,15 @@ WTF_DECLARE_CF_TYPE_TRAIT(CGImage);
 @end
 
 @interface WKAccessibilitySettingsObserver : NSObject {
-    WebKit::WebViewImpl *_impl;
+    CyberKit::WebViewImpl *_impl;
 }
 
-- (instancetype)initWithImpl:(WebKit::WebViewImpl&)impl;
+- (instancetype)initWithImpl:(CyberKit::WebViewImpl&)impl;
 @end
 
 @implementation WKAccessibilitySettingsObserver
 
-- (instancetype)initWithImpl:(WebKit::WebViewImpl&)impl
+- (instancetype)initWithImpl:(CyberKit::WebViewImpl&)impl
 {
     self = [super init];
     if (!self)
@@ -251,7 +251,7 @@ WTF_DECLARE_CF_TYPE_TRAIT(CGImage);
 @end
 
 @interface WKWindowVisibilityObserver : NSObject
-- (instancetype)initWithView:(NSView *)view impl:(WebKit::WebViewImpl&)impl;
+- (instancetype)initWithView:(NSView *)view impl:(CyberKit::WebViewImpl&)impl;
 - (void)startObserving:(NSWindow *)window;
 - (void)stopObserving:(NSWindow *)window;
 - (void)startObservingFontPanel;
@@ -260,13 +260,13 @@ WTF_DECLARE_CF_TYPE_TRAIT(CGImage);
 
 @implementation WKWindowVisibilityObserver {
     NSView *_view;
-    WebKit::WebViewImpl *_impl;
+    CyberKit::WebViewImpl *_impl;
 
     BOOL _didRegisterForLookupPopoverCloseNotifications;
     BOOL _shouldObserveFontPanel;
 }
 
-- (instancetype)initWithView:(NSView *)view impl:(WebKit::WebViewImpl&)impl
+- (instancetype)initWithView:(NSView *)view impl:(CyberKit::WebViewImpl&)impl
 {
     self = [super init];
     if (!self)
@@ -576,15 +576,15 @@ static void* keyValueObservingContext = &keyValueObservingContext;
 @end
 
 @interface WKDOMPasteMenuDelegate : NSObject<NSMenuDelegate>
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl&)impl pasteAccessCategory:(CyberCore::DOMPasteAccessCategory)category;
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl&)impl pasteAccessCategory:(CyberCore::DOMPasteAccessCategory)category;
 @end
 
 @implementation WKDOMPasteMenuDelegate {
-    WeakPtr<WebKit::WebViewImpl> _impl;
+    WeakPtr<CyberKit::WebViewImpl> _impl;
     CyberCore::DOMPasteAccessCategory _category;
 }
 
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl&)impl pasteAccessCategory:(CyberCore::DOMPasteAccessCategory)category
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl&)impl pasteAccessCategory:(CyberCore::DOMPasteAccessCategory)category
 {
     if (!(self = [super init]))
         return nil;
@@ -655,13 +655,13 @@ static void* keyValueObservingContext = &keyValueObservingContext;
 
 @interface WKTextListTouchBarViewController : NSViewController {
 @private
-    WebKit::WebViewImpl* _webViewImpl;
-    WebKit::ListType _currentListType;
+    CyberKit::WebViewImpl* _webViewImpl;
+    CyberKit::ListType _currentListType;
 }
 
-@property (nonatomic) WebKit::ListType currentListType;
+@property (nonatomic) CyberKit::ListType currentListType;
 
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl*)webViewImpl;
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl*)webViewImpl;
 
 @end
 
@@ -678,7 +678,7 @@ static const NSUInteger noListSegment = 0;
 static const NSUInteger unorderedListSegment = 1;
 static const NSUInteger orderedListSegment = 2;
 
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl*)webViewImpl
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl*)webViewImpl
 {
     if (!(self = [super init]))
         return nil;
@@ -721,9 +721,9 @@ static const NSUInteger orderedListSegment = 2;
         // There is no "remove list" edit command, but InsertOrderedList and InsertUnorderedList both
         // behave as toggles, so we can invoke the appropriate edit command depending on our _currentListType
         // to remove an existing list. We don't have to do anything if _currentListType is NoList.
-        if (_currentListType == WebKit::OrderedList)
+        if (_currentListType == CyberKit::OrderedList)
             _webViewImpl->page().executeEditCommand(@"InsertOrderedList", @"");
-        else if (_currentListType == WebKit::UnorderedList)
+        else if (_currentListType == CyberKit::UnorderedList)
             _webViewImpl->page().executeEditCommand(@"InsertUnorderedList", @"");
         break;
     case unorderedListSegment:
@@ -737,17 +737,17 @@ static const NSUInteger orderedListSegment = 2;
     _webViewImpl->dismissTextTouchBarPopoverItemWithIdentifier(NSTouchBarItemIdentifierTextList);
 }
 
-- (void)setCurrentListType:(WebKit::ListType)listType
+- (void)setCurrentListType:(CyberKit::ListType)listType
 {
     NSSegmentedControl *insertListControl = (NSSegmentedControl *)self.view;
     switch (listType) {
-    case WebKit::NoList:
+    case CyberKit::NoList:
         [insertListControl setSelected:YES forSegment:noListSegment];
         break;
-    case WebKit::OrderedList:
+    case CyberKit::OrderedList:
         [insertListControl setSelected:YES forSegment:orderedListSegment];
         break;
-    case WebKit::UnorderedList:
+    case CyberKit::UnorderedList:
         [insertListControl setSelected:YES forSegment:unorderedListSegment];
         break;
     }
@@ -767,7 +767,7 @@ static const NSUInteger orderedListSegment = 2;
     RetainPtr<WKTextListTouchBarViewController> _textListTouchBarViewController;
 
 @private
-    WebKit::WebViewImpl* _webViewImpl;
+    CyberKit::WebViewImpl* _webViewImpl;
 }
 
 @property (nonatomic) BOOL textIsBold;
@@ -776,7 +776,7 @@ static const NSUInteger orderedListSegment = 2;
 @property (nonatomic) NSTextAlignment currentTextAlignment;
 @property (nonatomic, retain, readwrite) NSColor *textColor;
 
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl*)webViewImpl;
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl*)webViewImpl;
 @end
 
 @implementation WKTextTouchBarItemController
@@ -786,7 +786,7 @@ static const NSUInteger orderedListSegment = 2;
 @synthesize textIsUnderlined = _textIsUnderlined;
 @synthesize currentTextAlignment = _currentTextAlignment;
 
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl*)webViewImpl
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl*)webViewImpl
 {
     if (!(self = [super init]))
         return nil;
@@ -1034,18 +1034,18 @@ static NSArray<NSString *> *passwordTextTouchBarDefaultItemIdentifiers()
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
 @interface WKImageAnalysisOverlayViewDelegate : NSObject<VKCImageAnalysisOverlayViewDelegate>
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl&)impl;
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl&)impl;
 @end
 
 @implementation WKImageAnalysisOverlayViewDelegate {
-    WeakPtr<WebKit::WebViewImpl> _impl;
+    WeakPtr<CyberKit::WebViewImpl> _impl;
     __weak VKCImageAnalysisOverlayView *_overlayView;
     __weak NSResponder *_lastOverlayResponderView;
 }
 
 static void* imageOverlayObservationContext = &imageOverlayObservationContext;
 
-- (instancetype)initWithWebViewImpl:(WebKit::WebViewImpl&)impl
+- (instancetype)initWithWebViewImpl:(CyberKit::WebViewImpl&)impl
 {
     if (!(self = [super init]))
         return nil;
@@ -1117,7 +1117,7 @@ static void* imageOverlayObservationContext = &imageOverlayObservationContext;
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSTrackingAreaOptions trackingAreaOptions()
 {
@@ -1148,7 +1148,7 @@ WebViewImpl::WebViewImpl(NSView <WebViewImplDelegate> *view, WKWebView *outerWeb
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanCommunicateWithWindowServer));
     [NSApp registerServicesMenuSendTypes:PasteboardTypes::forSelection() returnTypes:PasteboardTypes::forEditing()];
 
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"WebKit2UseRemoteLayerTreeDrawingArea"] boolValue]
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"CyberKit2UseRemoteLayerTreeDrawingArea"] boolValue]
         || m_page->preferences().siteIsolationEnabled())
         m_drawingAreaType = DrawingAreaType::RemoteLayerTree;
 
@@ -1201,7 +1201,7 @@ WebViewImpl::WebViewImpl(NSView <WebViewImplDelegate> *view, WKWebView *outerWeb
     view.layerContentsPlacement = NSViewLayerContentsPlacementTopLeft;
 
 #if ENABLE(FULLSCREEN_API)
-    m_page->setFullscreenClient(makeUnique<WebKit::FullscreenClient>(outerWebView));
+    m_page->setFullscreenClient(makeUnique<CyberKit::FullscreenClient>(outerWebView));
 #endif
 
 #if HAVE(NSSCROLLVIEW_SEPARATOR_TRACKING_ADAPTER)
@@ -1646,7 +1646,7 @@ CGSize WebViewImpl::fixedLayoutSize() const
     return m_page->fixedLayoutSize();
 }
 
-std::unique_ptr<WebKit::DrawingAreaProxy> WebViewImpl::createDrawingAreaProxy(WebProcessProxy& process)
+std::unique_ptr<CyberKit::DrawingAreaProxy> WebViewImpl::createDrawingAreaProxy(WebProcessProxy& process)
 {
     switch (m_drawingAreaType) {
     case DrawingAreaType::TiledCoreAnimation:
@@ -2061,7 +2061,7 @@ bool WebViewImpl::acceptsFirstMouse(NSEvent *event)
 
     // There's a chance that responding to this event will run a nested event loop, and
     // fetching a new event might release the old one. Retaining and then autoreleasing
-    // the current event prevents that from causing a problem inside WebKit or AppKit code.
+    // the current event prevents that from causing a problem inside CyberKit or AppKit code.
     retainPtr(event).autorelease();
 
     if (![m_view hitTest:event.locationInWindow])
@@ -2080,7 +2080,7 @@ bool WebViewImpl::shouldDelayWindowOrderingForEvent(NSEvent *event)
 
     // There's a chance that responding to this event will run a nested event loop, and
     // fetching a new event might release the old one. Retaining and then autoreleasing
-    // the current event prevents that from causing a problem inside WebKit or AppKit code.
+    // the current event prevents that from causing a problem inside CyberKit or AppKit code.
     retainPtr(event).autorelease();
 
     if (![m_view hitTest:event.locationInWindow])
@@ -2805,7 +2805,7 @@ bool WebViewImpl::validateUserInterfaceItem(id <NSValidatedUserInterfaceItem> it
     SEL action = [item action];
 
     if (action == @selector(showGuessPanel:)) {
-        if (NSMenuItem *menuItem = WebKit::menuItem(item))
+        if (NSMenuItem *menuItem = CyberKit::menuItem(item))
             [menuItem setTitle:CyberCore::contextMenuItemTagShowSpellingPanel(![[[NSSpellChecker sharedSpellChecker] spellingPanel] isVisible])];
         return m_page->editorState().isContentEditable;
     }
@@ -2833,7 +2833,7 @@ bool WebViewImpl::validateUserInterfaceItem(id <NSValidatedUserInterfaceItem> it
     }
 
     if (action == @selector(orderFrontSubstitutionsPanel:)) {
-        if (NSMenuItem *menuItem = WebKit::menuItem(item))
+        if (NSMenuItem *menuItem = CyberKit::menuItem(item))
             [menuItem setTitle:CyberCore::contextMenuItemTagShowSubstitutions(![[[NSSpellChecker sharedSpellChecker] substitutionsPanel] isVisible])];
         return m_page->editorState().isContentEditable;
     }
@@ -3126,7 +3126,7 @@ void WebViewImpl::capitalizeWord()
 }
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/WebViewImplAdditions.mm>
+#include <CyberKitAdditions/WebViewImplAdditions.mm>
 #else
 static Vector<CyberCore::CompositionUnderline> extractInitialUnderlines(NSAttributedString *)
 {
@@ -3925,7 +3925,7 @@ bool WebViewImpl::performDragOperation(id <NSDraggingInfo> draggingInfo)
         if (![files isKindOfClass:[NSArray class]])
             return false;
 
-        NSString *dropDestinationPath = FileSystem::createTemporaryDirectory(@"WebKitDropDestination");
+        NSString *dropDestinationPath = FileSystem::createTemporaryDirectory(@"CyberKitDropDestination");
         if (!dropDestinationPath)
             return false;
 
@@ -5087,7 +5087,7 @@ bool WebViewImpl::performKeyEquivalent(NSEvent *event)
 
     // There's a chance that responding to this event will run a nested event loop, and
     // fetching a new event might release the old one. Retaining and then autoreleasing
-    // the current event prevents that from causing a problem inside WebKit or AppKit code.
+    // the current event prevents that from causing a problem inside CyberKit or AppKit code.
     retainPtr(event).autorelease();
 
     // We get Esc key here after processing either Esc or Cmd+period. The former starts as a keyDown, and the latter starts as a key equivalent,
@@ -6000,7 +6000,7 @@ void WebViewImpl::didFinishPresentation(WKRevealItemPresenter *presenter)
 CocoaImageAnalyzer *WebViewImpl::ensureImageAnalyzer()
 {
     if (!m_imageAnalyzer) {
-        m_imageAnalyzerQueue = WorkQueue::create("WebKit image analyzer queue");
+        m_imageAnalyzerQueue = WorkQueue::create("CyberKit image analyzer queue");
         m_imageAnalyzer = createImageAnalyzer();
         [m_imageAnalyzer setCallbackQueue:m_imageAnalyzerQueue->dispatchQueue()];
     }
@@ -6099,7 +6099,7 @@ void WebViewImpl::beginTextRecognitionForVideoInElementFullscreen(const Shareabl
     if (!image)
         return;
 
-    auto request = WebKit::createImageAnalyzerRequest(image.get(), VKAnalysisTypeText);
+    auto request = CyberKit::createImageAnalyzerRequest(image.get(), VKAnalysisTypeText);
     m_currentImageAnalysisRequestID = processImageAnalyzerRequest(request.get(), [this, weakThis = WeakPtr { *this }, bounds](CocoaImageAnalysis *result, NSError *error) {
         if (!weakThis || !m_currentImageAnalysisRequestID)
             return;
@@ -6157,6 +6157,6 @@ void WebViewImpl::uninstallImageAnalysisOverlayView()
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

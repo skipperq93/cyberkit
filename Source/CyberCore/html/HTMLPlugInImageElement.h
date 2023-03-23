@@ -22,7 +22,7 @@
 
 #include "HTMLPlugInElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLImageLoader;
 
@@ -90,9 +90,9 @@ private:
     bool m_hasUpdateScheduledForAfterStyleResolution { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLPlugInImageElement)
-    static bool isType(const WebCore::HTMLPlugInElement& element) { return element.isPlugInImageElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::HTMLPlugInElement>(node) && isType(downcast<WebCore::HTMLPlugInElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLPlugInImageElement)
+    static bool isType(const CyberCore::HTMLPlugInElement& element) { return element.isPlugInImageElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::HTMLPlugInElement>(node) && isType(downcast<CyberCore::HTMLPlugInElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

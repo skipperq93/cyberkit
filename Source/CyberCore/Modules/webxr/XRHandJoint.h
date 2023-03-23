@@ -29,7 +29,7 @@
 
 #include "PlatformXR.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using XRHandJoint = PlatformXR::HandJoint;
 

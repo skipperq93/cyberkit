@@ -32,7 +32,7 @@
 #include <CyberCore/LogInitialization.h>
 #include <wtf/LogInitialization.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace UIProcess {
 
@@ -42,7 +42,7 @@ void initializeLoggingIfNecessary()
     std::call_once(onceFlag, [] {
         WTF::logChannels().initializeLogChannelsIfNecessary(wtfLogLevelString());
         CyberCore::logChannels().initializeLogChannelsIfNecessary(webCoreLogLevelString());
-        WebKit::logChannels().initializeLogChannelsIfNecessary(webKitLogLevelString());
+        CyberKit::logChannels().initializeLogChannelsIfNecessary(webKitLogLevelString());
     });
 }
 
@@ -59,7 +59,7 @@ String webCoreLogLevelString()
 
 String webKitLogLevelString()
 {
-    return WebKit::logLevelString();
+    return CyberKit::logLevelString();
 }
 #endif
 

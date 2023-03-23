@@ -87,7 +87,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebProcessPool>(self, *configuration->_processPoolConfiguration);
+    API::Object::constructInWrapper<CyberKit::WebProcessPool>(self, *configuration->_processPoolConfiguration);
 
     return self;
 }
@@ -174,7 +174,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 + (NSArray<WKProcessPool *> *)_allProcessPoolsForTesting
 {
-    return createNSArray(WebKit::WebProcessPool::allProcessPools(), [] (auto& pool) {
+    return createNSArray(CyberKit::WebProcessPool::allProcessPools(), [] (auto& pool) {
         return wrapper(pool.get());
     }).autorelease();
 }
@@ -187,9 +187,9 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 + (NSURL *)_websiteDataURLForContainerWithURL:(NSURL *)containerURL bundleIdentifierIfNotInContainer:(NSString *)bundleIdentifier
 {
     NSURL *url = [containerURL URLByAppendingPathComponent:@"Library" isDirectory:YES];
-    url = [url URLByAppendingPathComponent:@"WebKit" isDirectory:YES];
+    url = [url URLByAppendingPathComponent:@"CyberKit" isDirectory:YES];
 
-    if (!WebKit::processHasContainer() && bundleIdentifier)
+    if (!CyberKit::processHasContainer() && bundleIdentifier)
         url = [url URLByAppendingPathComponent:bundleIdentifier isDirectory:YES];
 
     return [url URLByAppendingPathComponent:@"WebsiteData" isDirectory:YES];
@@ -292,7 +292,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 - (void)_setDownloadDelegate:(id <_WKDownloadDelegate>)downloadDelegate
 {
     _downloadDelegate = downloadDelegate;
-    _processPool->setLegacyDownloadClient(adoptRef(*new WebKit::LegacyDownloadClient(downloadDelegate)));
+    _processPool->setLegacyDownloadClient(adoptRef(*new CyberKit::LegacyDownloadClient(downloadDelegate)));
 }
 
 - (id <_WKAutomationDelegate>)_automationDelegate
@@ -303,7 +303,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 - (void)_setAutomationDelegate:(id <_WKAutomationDelegate>)automationDelegate
 {
     _automationDelegate = automationDelegate;
-    _processPool->setAutomationClient(makeUnique<WebKit::AutomationClient>(self, automationDelegate));
+    _processPool->setAutomationClient(makeUnique<CyberKit::AutomationClient>(self, automationDelegate));
 }
 
 - (void)_warmInitialProcess
@@ -358,7 +358,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 - (void)_setUseSeparateServiceWorkerProcess:(BOOL)useSeparateServiceWorkerProcess
 {
-    WebKit::WebProcessPool::setUseSeparateServiceWorkerProcess(useSeparateServiceWorkerProcess);
+    CyberKit::WebProcessPool::setUseSeparateServiceWorkerProcess(useSeparateServiceWorkerProcess);
 }
 
 - (pid_t)_prewarmedProcessIdentifier
@@ -399,7 +399,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 {
     for (auto& process : _processPool->processes()) {
         if (process->processIdentifier() == pid)
-            process->requestTermination(WebKit::ProcessTerminationReason::RequestedByClient);
+            process->requestTermination(CyberKit::ProcessTerminationReason::RequestedByClient);
         return YES;
     }
     return NO;
@@ -480,7 +480,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 + (void)_forceGameControllerFramework
 {
 #if ENABLE(GAMEPAD)
-    WebKit::UIGamepadProvider::setUsesGameControllerFramework();
+    CyberKit::UIGamepadProvider::setUsesGameControllerFramework();
 #endif
 }
 
@@ -501,17 +501,17 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 + (void)_setCaptivePortalModeEnabledGloballyForTesting:(BOOL)isEnabled
 {
-    WebKit::setLockdownModeEnabledGloballyForTesting(!!isEnabled);
+    CyberKit::setLockdownModeEnabledGloballyForTesting(!!isEnabled);
 }
 
 + (BOOL)_lockdownModeEnabledGloballyForTesting
 {
-    return WebKit::lockdownModeEnabledBySystem();
+    return CyberKit::lockdownModeEnabledBySystem();
 }
 
 + (void)_clearCaptivePortalModeEnabledGloballyForTesting
 {
-    WebKit::setLockdownModeEnabledGloballyForTesting(std::nullopt);
+    CyberKit::setLockdownModeEnabledGloballyForTesting(std::nullopt);
 }
 
 - (BOOL)_isCookieStoragePartitioningEnabled
@@ -546,7 +546,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 - (_WKDownload *)_resumeDownloadFromData:(NSData *)resumeData websiteDataStore:(WKWebsiteDataStore *)dataStore  path:(NSString *)path originatingWebView:(WKWebView *)webView
 {
-    return [_WKDownload downloadWithDownload:wrapper(_processPool->resumeDownload(*dataStore->_websiteDataStore, [webView _page], API::Data::createWithoutCopying(resumeData).get(), path, WebKit::CallDownloadDidStart::No))];
+    return [_WKDownload downloadWithDownload:wrapper(_processPool->resumeDownload(*dataStore->_websiteDataStore, [webView _page], API::Data::createWithoutCopying(resumeData).get(), path, CyberKit::CallDownloadDidStart::No))];
 }
 
 - (void)_getActivePagesOriginsInWebProcessForTesting:(pid_t)pid completionHandler:(void(^)(NSArray<NSString *> *))completionHandler
@@ -577,7 +577,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 + (void)_setWebProcessCountLimit:(unsigned)limit
 {
-    WebKit::WebProcessProxy::setProcessCountLimit(limit);
+    CyberKit::WebProcessProxy::setProcessCountLimit(limit);
 }
 
 - (void)_garbageCollectJavaScriptObjectsForTesting
@@ -587,17 +587,17 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 - (size_t)_numberOfConnectedGamepadsForTesting
 {
-    return _processPool->numberOfConnectedGamepadsForTesting(WebKit::WebProcessPool::GamepadType::All);
+    return _processPool->numberOfConnectedGamepadsForTesting(CyberKit::WebProcessPool::GamepadType::All);
 }
 
 - (size_t)_numberOfConnectedHIDGamepadsForTesting
 {
-    return _processPool->numberOfConnectedGamepadsForTesting(WebKit::WebProcessPool::GamepadType::HID);
+    return _processPool->numberOfConnectedGamepadsForTesting(CyberKit::WebProcessPool::GamepadType::HID);
 }
 
 - (size_t)_numberOfConnectedGameControllerFrameworkGamepadsForTesting
 {
-    return _processPool->numberOfConnectedGamepadsForTesting(WebKit::WebProcessPool::GamepadType::GameControllerFramework);
+    return _processPool->numberOfConnectedGamepadsForTesting(CyberKit::WebProcessPool::GamepadType::GameControllerFramework);
 }
 
 - (void)_setUsesOnlyHIDGamepadProviderForTesting:(BOOL)usesHIDProvider
@@ -612,7 +612,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 - (WKNotificationManagerRef)_notificationManagerForTesting
 {
-    return WebKit::toAPI(_processPool->supplement<WebKit::WebNotificationManagerProxy>());
+    return CyberKit::toAPI(_processPool->supplement<CyberKit::WebNotificationManagerProxy>());
 }
 
 @end

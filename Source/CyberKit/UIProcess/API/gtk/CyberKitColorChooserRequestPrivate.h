@@ -24,12 +24,12 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKitColorChooserRequestPrivate_h
-#define WebKitColorChooserRequestPrivate_h
+#ifndef CyberKitColorChooserRequestPrivate_h
+#define CyberKitColorChooserRequestPrivate_h
 
-#include "WebKitColorChooser.h"
-#include "WebKitColorChooserRequest.h"
+#include "CyberKitColorChooser.h"
+#include "CyberKitColorChooserRequest.h"
 
-WebKitColorChooserRequest* webkitColorChooserRequestCreate(WebKit::WebKitColorChooser*);
+CyberKitColorChooserRequest* webkitColorChooserRequestCreate(CyberKit::CyberKitColorChooser*);
 
-#endif // WebKitColorChooserRequestPrivate_h
+#endif // CyberKitColorChooserRequestPrivate_h

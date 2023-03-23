@@ -27,7 +27,7 @@
 
 #if ENABLE(WEBXR)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class XREnvironmentBlendMode {
     Opaque,
@@ -35,6 +35,6 @@ enum class XREnvironmentBlendMode {
     AlphaBlend
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

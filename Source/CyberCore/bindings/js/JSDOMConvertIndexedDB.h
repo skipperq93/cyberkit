@@ -29,7 +29,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct JSConverter<IDLIDBKey> {
     static constexpr bool needsState = true;
@@ -64,4 +64,4 @@ template<> struct JSConverter<IDLIDBValue> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

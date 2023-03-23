@@ -32,7 +32,7 @@ namespace CyberCore {
 enum class ModalContainerControlType : uint8_t;
 }
 
-@interface _WKModalContainerInfo (WebKitInternal)
+@interface _WKModalContainerInfo (CyberKitInternal)
 
 - (instancetype)initWithTypes:(OptionSet<CyberCore::ModalContainerControlType>)types;
 

@@ -34,7 +34,7 @@
 #include "SecurityOriginPolicy.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SecurityContext::SecurityContext() = default;
 

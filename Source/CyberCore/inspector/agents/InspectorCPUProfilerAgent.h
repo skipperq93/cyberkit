@@ -32,7 +32,7 @@
 #include <CyberScriptCore/InspectorBackendDispatchers.h>
 #include <CyberScriptCore/InspectorFrontendDispatchers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InspectorCPUProfilerAgent final : public InspectorAgentBase, public Inspector::CPUProfilerBackendDispatcherHandler {
     WTF_MAKE_NONCOPYABLE(InspectorCPUProfilerAgent);
@@ -57,6 +57,6 @@ private:
     bool m_tracking { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE)

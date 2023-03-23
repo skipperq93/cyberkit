@@ -36,7 +36,7 @@
 #include "Settings.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef Function<void(ViewportErrorCode, StringView, StringView)> InternalViewportErrorHandler;
 
@@ -499,4 +499,4 @@ TextStream& operator<<(TextStream& ts, const ViewportArguments& viewportArgument
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

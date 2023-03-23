@@ -31,7 +31,7 @@
 #include "AudioUtilities.h"
 #include "BiquadDSPKernel.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 BiquadProcessor::BiquadProcessor(BaseAudioContext& context, float sampleRate, size_t numberOfChannels, bool autoInitialize)
     : AudioDSPKernelProcessor(sampleRate, numberOfChannels)
@@ -144,6 +144,6 @@ void BiquadProcessor::getFrequencyResponse(unsigned nFrequencies, const float* f
     responseKernel->getFrequencyResponse(nFrequencies, frequencyHz, magResponse, phaseResponse);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

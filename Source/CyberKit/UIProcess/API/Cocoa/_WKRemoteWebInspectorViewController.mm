@@ -50,7 +50,7 @@
 - (void)closeFromFrontend;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 class _WKRemoteWebInspectorUIProxyClient final : public RemoteWebInspectorUIProxyClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -83,10 +83,10 @@ private:
     _WKRemoteWebInspectorViewController *m_controller;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @implementation _WKRemoteWebInspectorViewController {
-    std::unique_ptr<WebKit::_WKRemoteWebInspectorUIProxyClient> m_remoteInspectorClient;
+    std::unique_ptr<CyberKit::_WKRemoteWebInspectorUIProxyClient> m_remoteInspectorClient;
     _WKInspectorConfiguration *_configuration;
 }
 
@@ -97,8 +97,8 @@ private:
 
     _configuration = [configuration copy];
 
-    m_remoteInspectorProxy = WebKit::RemoteWebInspectorUIProxy::create();
-    m_remoteInspectorClient = makeUnique<WebKit::_WKRemoteWebInspectorUIProxyClient>(self);
+    m_remoteInspectorProxy = CyberKit::RemoteWebInspectorUIProxy::create();
+    m_remoteInspectorClient = makeUnique<CyberKit::_WKRemoteWebInspectorUIProxyClient>(self);
     m_remoteInspectorProxy->setClient(m_remoteInspectorClient.get());
 
     return self;

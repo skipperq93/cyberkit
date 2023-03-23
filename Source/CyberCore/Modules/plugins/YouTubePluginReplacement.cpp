@@ -36,7 +36,7 @@
 #include "YouTubeEmbedShadowElement.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void YouTubePluginReplacement::registerPluginReplacement(PluginReplacementRegistrar registrar)
 {

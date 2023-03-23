@@ -69,7 +69,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void DocumentThreadableLoader::loadResourceSynchronously(Document& document, ResourceRequest&& request, ThreadableLoaderClient& client, const ThreadableLoaderOptions& options, RefPtr<SecurityOrigin>&& origin, std::unique_ptr<ContentSecurityPolicy>&& contentSecurityPolicy, std::optional<CrossOriginEmbedderPolicy>&& crossOriginEmbedderPolicy)
 {
@@ -770,4 +770,4 @@ void DocumentThreadableLoader::logErrorAndFail(const ResourceError& error)
     m_client->didFail(error);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

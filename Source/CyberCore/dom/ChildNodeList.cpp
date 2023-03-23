@@ -27,7 +27,7 @@
 #include "NodeRareData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EmptyNodeList);
 WTF_MAKE_ISO_ALLOCATED_IMPL(ChildNodeList);
@@ -89,4 +89,4 @@ void ChildNodeList::invalidateCache()
     m_indexCache.invalidate();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

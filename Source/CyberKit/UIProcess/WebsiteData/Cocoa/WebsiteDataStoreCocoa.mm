@@ -59,7 +59,7 @@
 #import <pal/spi/ios/ManagedConfigurationSPI.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static HashSet<WebsiteDataStore*>& dataStores()
 {
@@ -71,7 +71,7 @@ static HashSet<WebsiteDataStore*>& dataStores()
 #if ENABLE(APP_BOUND_DOMAINS)
 static WorkQueue& appBoundDomainQueue()
 {
-    static auto& queue = WorkQueue::create("com.apple.WebKit.AppBoundDomains").leakRef();
+    static auto& queue = WorkQueue::create("com.apple.CyberKit.AppBoundDomains").leakRef();
     return queue;
 }
 static std::atomic<bool> hasInitializedAppBoundDomains = false;
@@ -81,7 +81,7 @@ static std::atomic<bool> keyExists = false;
 #if ENABLE(MANAGED_DOMAINS)
 static WorkQueue& managedDomainQueue()
 {
-    static auto& queue = WorkQueue::create("com.apple.WebKit.ManagedDomains").leakRef();
+    static auto& queue = WorkQueue::create("com.apple.CyberKit.ManagedDomains").leakRef();
     return queue;
 }
 static std::atomic<bool> hasInitializedManagedDomains = false;
@@ -90,7 +90,7 @@ static std::atomic<bool> managedKeyExists = false;
 
 static bool experimentalFeatureEnabled(const String& key, bool defaultValue = false)
 {
-    auto defaultsKey = adoptNS([[NSString alloc] initWithFormat:@"WebKitExperimental%@", static_cast<NSString *>(key)]);
+    auto defaultsKey = adoptNS([[NSString alloc] initWithFormat:@"CyberKitExperimental%@", static_cast<NSString *>(key)]);
     if ([[NSUserDefaults standardUserDefaults] objectForKey:defaultsKey.get()] != nil)
         return [[NSUserDefaults standardUserDefaults] boolForKey:defaultsKey.get()];
 
@@ -101,9 +101,9 @@ static NSString* applicationOrProcessIdentifier()
 {
     NSString *identifier = [NSBundle mainBundle].bundleIdentifier;
     NSString *processName = [NSProcessInfo processInfo].processName;
-    // SafariForWebKitDevelopment has the same bundle identifier as Safari, but it does not have the privilege to
+    // SafariForCyberKitDevelopment has the same bundle identifier as Safari, but it does not have the privilege to
     // access Safari's paths.
-    if ([identifier isEqualToString:@"com.apple.Safari"] && [processName isEqualToString:@"SafariForWebKitDevelopment"])
+    if ([identifier isEqualToString:@"com.apple.Safari"] && [processName isEqualToString:@"SafariForCyberKitDevelopment"])
         identifier = processName;
     if (!identifier)
         identifier = processName;
@@ -155,8 +155,8 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
             resourceLoadStatisticsManualPrevalentResource = CyberCore::RegistrableDomain { url };
     }
 #if !RELEASE_LOG_DISABLED
-    static NSString * const WebKitLogCookieInformationDefaultsKey = @"WebKitLogCookieInformation";
-    shouldLogCookieInformation = [defaults boolForKey:WebKitLogCookieInformationDefaultsKey];
+    static NSString * const CyberKitLogCookieInformationDefaultsKey = @"CyberKitLogCookieInformation";
+    shouldLogCookieInformation = [defaults boolForKey:CyberKitLogCookieInformationDefaultsKey];
 #endif
 #endif // ENABLE(TRACKING_PREVENTION)
 
@@ -174,9 +174,9 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
 #endif
     // FIXME: Remove these once Safari adopts _WKWebsiteDataStoreConfiguration.httpProxy and .httpsProxy.
     if (!httpProxy.isValid() && (isSafari || isMiniBrowser))
-        httpProxy = URL { [defaults stringForKey:(NSString *)WebKit2HTTPProxyDefaultsKey] };
+        httpProxy = URL { [defaults stringForKey:(NSString *)CyberKit2HTTPProxyDefaultsKey] };
     if (!httpsProxy.isValid() && (isSafari || isMiniBrowser))
-        httpsProxy = URL { [defaults stringForKey:(NSString *)WebKit2HTTPSProxyDefaultsKey] };
+        httpsProxy = URL { [defaults stringForKey:(NSString *)CyberKit2HTTPSProxyDefaultsKey] };
 
 #if HAVE(CFNETWORK_ALTERNATIVE_SERVICE)
     SandboxExtension::Handle alternativeServiceStorageDirectoryExtensionHandle;
@@ -250,8 +250,8 @@ static String defaultWebsiteDataStoreRootDirectory()
     dispatch_once(&onceToken, ^{
         NSURL *libraryDirectory = [[NSFileManager defaultManager] URLForDirectory:NSLibraryDirectory inDomain:NSUserDomainMask appropriateForURL:nullptr create:NO error:nullptr];
         RELEASE_ASSERT(libraryDirectory);
-        NSURL *webkitDirectory = [libraryDirectory URLByAppendingPathComponent:@"WebKit" isDirectory:YES];
-        if (!WebKit::processHasContainer())
+        NSURL *webkitDirectory = [libraryDirectory URLByAppendingPathComponent:@"CyberKit" isDirectory:YES];
+        if (!CyberKit::processHasContainer())
             webkitDirectory = [webkitDirectory URLByAppendingPathComponent:applicationOrProcessIdentifier() isDirectory:YES];
 
         websiteDataStoreDirectory.get() = [webkitDirectory URLByAppendingPathComponent:@"WebsiteDataStore" isDirectory:YES];
@@ -316,7 +316,7 @@ String WebsiteDataStore::defaultApplicationCacheDirectory(const String& baseDire
     if (CyberCore::IOSApplication::isMobileSafari() || CyberCore::IOSApplication::isWebBookmarksD()) {
         NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.apple.WebAppCache"];
 
-        return WebKit::stringByResolvingSymlinksInPath(String { cachePath.stringByStandardizingPath });
+        return CyberKit::stringByResolvingSymlinksInPath(String { cachePath.stringByStandardizingPath });
     }
 #endif
 
@@ -450,9 +450,9 @@ String WebsiteDataStore::defaultResourceLoadStatisticsDirectory(const String& ba
 String WebsiteDataStore::defaultJavaScriptConfigurationDirectory(const String& baseDirectory)
 {
     if (!baseDirectory.isEmpty())
-        return FileSystem::pathByAppendingComponent(baseDirectory, "JavaScriptCoreDebug"_s);
+        return FileSystem::pathByAppendingComponent(baseDirectory, "CyberScriptCoreDebug"_s);
 
-    return tempDirectoryFileSystemRepresentation("JavaScriptCoreDebug"_s, ShouldCreateDirectory::No);
+    return tempDirectoryFileSystemRepresentation("CyberScriptCoreDebug"_s, ShouldCreateDirectory::No);
 }
 
 #if ENABLE(ARKIT_INLINE_PREVIEW)
@@ -475,10 +475,10 @@ String WebsiteDataStore::tempDirectoryFileSystemRepresentation(const String& dir
         if (!url)
             RELEASE_ASSERT_NOT_REACHED();
         
-        if (!WebKit::processHasContainer())
+        if (!CyberKit::processHasContainer())
             url = [url URLByAppendingPathComponent:applicationOrProcessIdentifier() isDirectory:YES];
         
-        tempURL.get() = [url URLByAppendingPathComponent:@"WebKit" isDirectory:YES];
+        tempURL.get() = [url URLByAppendingPathComponent:@"CyberKit" isDirectory:YES];
     });
     
     NSURL *url = [tempURL.get() URLByAppendingPathComponent:directoryName isDirectory:YES];
@@ -500,10 +500,10 @@ String WebsiteDataStore::cacheDirectoryFileSystemRepresentation(const String& di
         if (!url)
             RELEASE_ASSERT_NOT_REACHED();
 
-        if (!WebKit::processHasContainer())
+        if (!CyberKit::processHasContainer())
             url = [url URLByAppendingPathComponent:applicationOrProcessIdentifier() isDirectory:YES];
 
-        cacheURL.get() = [url URLByAppendingPathComponent:@"WebKit" isDirectory:YES];
+        cacheURL.get() = [url URLByAppendingPathComponent:@"CyberKit" isDirectory:YES];
     });
 
     NSURL *url = [cacheURL.get() URLByAppendingPathComponent:directoryName isDirectory:YES];
@@ -524,8 +524,8 @@ String WebsiteDataStore::websiteDataDirectoryFileSystemRepresentation(const Stri
         if (!url)
             RELEASE_ASSERT_NOT_REACHED();
 
-        url = [url URLByAppendingPathComponent:@"WebKit" isDirectory:YES];
-        if (!WebKit::processHasContainer())
+        url = [url URLByAppendingPathComponent:@"CyberKit" isDirectory:YES];
+        if (!CyberKit::processHasContainer())
             url = [url URLByAppendingPathComponent:applicationOrProcessIdentifier() isDirectory:YES];
 
         websiteDataURL.get() = [url URLByAppendingPathComponent:@"WebsiteData" isDirectory:YES];
@@ -823,7 +823,7 @@ bool WebsiteDataStore::networkProcessHasEntitlementForTesting(const String& enti
 UnifiedOriginStorageLevel WebsiteDataStore::defaultUnifiedOriginStorageLevel()
 {
     auto defaultUnifiedOriginStorageLevelValue = UnifiedOriginStorageLevel::Basic;
-    NSString* unifiedOriginStorageLevelKey = @"WebKitDebugUnifiedOriginStorageLevel";
+    NSString* unifiedOriginStorageLevelKey = @"CyberKitDebugUnifiedOriginStorageLevel";
     if ([[NSUserDefaults standardUserDefaults] objectForKey:unifiedOriginStorageLevelKey] == nil)
         return defaultUnifiedOriginStorageLevelValue;
 
@@ -873,7 +873,7 @@ String WebsiteDataStore::resolvedContainerCachesNetworkingDirectory()
         if (!isPersistent())
             m_resolvedContainerCachesNetworkingDirectory = emptyString();
         else {
-            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.Networking/"_s);
+            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.CyberKit.Networking/"_s);
             m_resolvedContainerCachesNetworkingDirectory = resolveAndCreateReadWriteDirectoryForSandboxExtension(directory);
         }
     }
@@ -887,7 +887,7 @@ String WebsiteDataStore::resolvedContainerCachesWebContentDirectory()
         if (!isPersistent())
             m_resolvedContainerCachesWebContentDirectory = emptyString();
         else {
-            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.WebContent/"_s);
+            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.CyberKit.WebContent/"_s);
             m_resolvedContainerCachesWebContentDirectory = resolveAndCreateReadWriteDirectoryForSandboxExtension(directory);
         }
     }

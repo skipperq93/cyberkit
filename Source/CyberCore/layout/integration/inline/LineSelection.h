@@ -29,7 +29,7 @@
 #include "InlineIteratorLineBox.h"
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LineSelection {
 public:

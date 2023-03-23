@@ -42,7 +42,7 @@
 enum class ElementName : uint16_t;
 enum class Namespace : uint8_t;
 
-namespace WebCore {
+namespace CyberCore {
 
 class QualifiedNameCache {
     WTF_MAKE_FAST_ALLOCATED;

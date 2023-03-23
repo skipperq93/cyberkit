@@ -27,7 +27,7 @@
 
 #include "ElementIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ElementAncestorRange;
 
@@ -127,4 +127,4 @@ inline ElementAncestorRange<const ElementType> ancestorsOfType(const Node& desce
     return ElementAncestorRange<const ElementType>(findElementAncestorOfType<const ElementType>(descendant));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

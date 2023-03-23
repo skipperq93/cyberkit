@@ -29,11 +29,11 @@
 #include "StringUtils.h"
 #include "ToolkittenUtils.h"
 #include <KeyboardEvents.h>
-#include <WebKit/WKPage.h>
-#include <WebKit/WKPagePrivatePlayStation.h>
-#include <WebKit/WKPreferencesRef.h>
-#include <WebKit/WKPreferencesRefPrivate.h>
-#include <WebKit/WKURL.h>
+#include <CyberKit/WKPage.h>
+#include <CyberKit/WKPagePrivatePlayStation.h>
+#include <CyberKit/WKPreferencesRef.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKURL.h>
 #include <cairo.h>
 #include <map>
 #include <toolkitten/Application.h>

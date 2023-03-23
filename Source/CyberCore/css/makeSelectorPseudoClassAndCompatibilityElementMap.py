@@ -103,7 +103,7 @@ IGNORE_WARNINGS_BEGIN("implicit-fallthrough")
 // Older versions of gperf like to use the `register` keyword.
 #define register
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SelectorPseudoClassOrCompatibilityPseudoElementEntry {
     const char* name;
@@ -201,7 +201,7 @@ PseudoClassOrCompatibilityPseudoElement parsePseudoClassAndCompatibilityElementS
     return { CSSSelector::PseudoClassUnknown, CSSSelector::PseudoElementUnknown };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 IGNORE_WARNINGS_END
 

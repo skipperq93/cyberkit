@@ -32,7 +32,7 @@
 #include "NativeWebMouseEvent.h"
 #include "WebContextMenuItem.h"
 #include "WebContextMenuItemData.h"
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 #include <CyberCore/GUniquePtrGtk.h>
@@ -45,7 +45,7 @@ static const char* gContextMenuActionId = "webkit-context-menu-action";
 static const char* gContextMenuTitle = "webkit-context-menu-title";
 static const char* gContextMenuItemGroup = "webkitContextMenu";
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if USE(GTK4)
@@ -307,5 +307,5 @@ WebContextMenuProxyGtk::~WebContextMenuProxyGtk()
     destroyMenuWidget(m_menu);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 #endif // ENABLE(CONTEXT_MENUS)

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUPipelineLayout.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUPipelineLayout::label() const
 {

@@ -41,7 +41,7 @@
 #include <CyberCore/ScrollingThread.h>
 #include <CyberCore/WheelEventDeltaFilter.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 class RemoteLayerTreeEventDispatcherDisplayLinkClient final : public DisplayLink::Client {
@@ -272,6 +272,6 @@ void RemoteLayerTreeEventDispatcher::windowScreenDidChange(CyberCore::PlatformDi
     // FIXME: Restart the displayLink if necessary.
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC) && ENABLE(SCROLLING_THREAD)

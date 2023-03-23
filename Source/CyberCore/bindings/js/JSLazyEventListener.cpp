@@ -37,7 +37,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, eventListenerCounter, ("JSLazyEventListener"));
@@ -221,4 +221,4 @@ RefPtr<JSLazyEventListener> JSLazyEventListener::create(DOMWindow& window, const
     return create({ attributeName, attributeValue, document, nullptr, toJSDOMWindow(document.frame(), mainThreadNormalWorld()), document.isSVGDocument() });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

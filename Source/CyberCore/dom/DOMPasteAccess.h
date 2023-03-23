@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DOMPasteAccessCategory : uint8_t {
     General,
@@ -44,4 +44,4 @@ enum class DOMPasteAccessResponse : uint8_t {
     GrantedForGesture
 };
 
-} // namespace WebCore
+} // namespace CyberCore

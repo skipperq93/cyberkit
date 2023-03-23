@@ -42,7 +42,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextTrackCueGeneric);
 
@@ -270,6 +270,6 @@ void TextTrackCueGeneric::toJSON(JSON::Object& object) const
         object.setString("font"_s, m_fontName);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

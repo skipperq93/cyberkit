@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUTextureAspect.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUTextureAspect : uint8_t {
     All,

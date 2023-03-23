@@ -24,7 +24,7 @@
 #include "TestIndexedSetterNoIdentifier.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestIndexedSetterNoIdentifier : public JSDOMWrapper<TestIndexedSetterNoIdentifier> {
 public:
@@ -98,4 +98,4 @@ template<> struct JSDOMWrapperConverterTraits<TestIndexedSetterNoIdentifier> {
     using ToWrappedReturnType = TestIndexedSetterNoIdentifier*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool areEffectParametersValid(GamepadHapticEffectType effectType, const GamepadEffectParameters& parameters)
 {
@@ -190,6 +190,6 @@ RefPtr<DeferredPromise>& GamepadHapticActuator::promiseForEffectType(EffectType 
     return m_dualRumbleEffectPromise;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

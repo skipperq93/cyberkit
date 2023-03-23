@@ -38,7 +38,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCDtlsTransport);
 
@@ -100,6 +100,6 @@ void RTCDtlsTransport::onError()
     onStateChanged(RTCDtlsTransportState::Failed, { });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

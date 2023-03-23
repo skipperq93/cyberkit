@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_AUDIO)
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
@@ -39,6 +39,6 @@ void JSAudioBuffer::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSAudioBuffer);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

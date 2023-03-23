@@ -10,8 +10,8 @@ cd "${BUILT_PRODUCTS_DIR}/DerivedSources/CyberKit"
 export CyberKit2="${SRCROOT}"
 
 if [ -z $1 ] || [ $1 != "sandbox-profiles-ios" ]; then
-    /bin/ln -sfh "${JAVASCRIPTCORE_PRIVATE_HEADERS_DIR}" JavaScriptCorePrivateHeaders
-    export JavaScriptCore_SCRIPTS_DIR="JavaScriptCorePrivateHeaders"
+    /bin/ln -sfh "${JAVASCRIPTCORE_PRIVATE_HEADERS_DIR}" CyberScriptCorePrivateHeaders
+    export CyberScriptCore_SCRIPTS_DIR="CyberScriptCorePrivateHeaders"
 
     /bin/ln -sfh "${WEBCORE_PRIVATE_HEADERS_DIR}" CyberCorePrivateHeaders
     export CyberCorePrivateHeaders="CyberCorePrivateHeaders"

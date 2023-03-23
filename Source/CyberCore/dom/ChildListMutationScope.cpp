@@ -37,7 +37,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<ContainerNode*, ChildListMutationAccumulator*> AccumulatorMap;
 static AccumulatorMap& accumulatorMap()
@@ -145,4 +145,4 @@ bool ChildListMutationAccumulator::isEmpty()
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

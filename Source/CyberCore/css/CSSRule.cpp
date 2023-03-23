@@ -26,7 +26,7 @@
 #include "StyleRule.h"
 #include "StyleSheetContents.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsCSSRule : public RefCounted<SameSizeAsCSSRule> {
     virtual ~SameSizeAsCSSRule();
@@ -58,4 +58,4 @@ const CSSParserContext& CSSRule::parserContext() const
     return styleSheet ? styleSheet->contents().parserContext() : strictCSSParserContext();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

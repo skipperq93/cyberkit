@@ -29,7 +29,7 @@
 #include <wtf/ArgumentCoder.h>
 #include <wtf/Hasher.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBRequest;
 
@@ -118,14 +118,14 @@ struct IDBResourceIdentifierHashTraits : WTF::CustomHashTraits<IDBResourceIdenti
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct HashTraits<WebCore::IDBResourceIdentifier> : WebCore::IDBResourceIdentifierHashTraits { };
-template<> struct DefaultHash<WebCore::IDBResourceIdentifier> : WebCore::IDBResourceIdentifierHash { };
+template<> struct HashTraits<CyberCore::IDBResourceIdentifier> : CyberCore::IDBResourceIdentifierHashTraits { };
+template<> struct DefaultHash<CyberCore::IDBResourceIdentifier> : CyberCore::IDBResourceIdentifierHash { };
 
-inline WebCore::IDBConnectionIdentifier crossThreadCopy(WebCore::IDBConnectionIdentifier identifier)
+inline CyberCore::IDBConnectionIdentifier crossThreadCopy(CyberCore::IDBConnectionIdentifier identifier)
 {
     return identifier;
 }

@@ -35,7 +35,7 @@
 #include <CyberScriptCore/ConsoleMessage.h>
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ApplicationManifest ApplicationManifestParser::parse(Document& document, const String& source, const URL& manifestURL, const URL& documentURL)
 {
@@ -368,6 +368,6 @@ String ApplicationManifestParser::parseGenericString(const JSON::Object& manifes
     return stringValue.stripWhiteSpace();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLICATION_MANIFEST)

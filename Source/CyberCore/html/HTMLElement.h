@@ -31,7 +31,7 @@
 #include "Autocapitalize.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ElementInternals;
 class FormListedElement;
@@ -229,11 +229,11 @@ inline bool Node::hasTagName(const HTMLQualifiedName& name) const
     return is<HTMLElement>(*this) && downcast<HTMLElement>(*this).hasTagName(name);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLElement)
-    static bool isType(const WebCore::Node& node) { return node.isHTMLElement(); }
-    static bool isType(const WebCore::EventTarget& target) { return is<WebCore::Node>(target) && isType(downcast<WebCore::Node>(target)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLElement)
+    static bool isType(const CyberCore::Node& node) { return node.isHTMLElement(); }
+    static bool isType(const CyberCore::EventTarget& target) { return is<CyberCore::Node>(target) && isType(downcast<CyberCore::Node>(target)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #include "HTMLElementTypeHelpers.h"

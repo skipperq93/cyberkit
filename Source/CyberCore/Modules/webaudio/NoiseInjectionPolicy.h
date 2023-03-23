@@ -25,11 +25,11 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class NoiseInjectionPolicy : bool {
     None,
     Minimal
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -45,7 +45,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const void* nextLogIdentifier()
 {

@@ -29,7 +29,7 @@
 #include "CSSMathValue.h"
 #include "CSSNumericValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSNumericArray;
 
@@ -53,10 +53,10 @@ private:
     Ref<CSSNumericArray> m_values;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSMathSum)
-static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSMathSum; }
-static bool isType(const WebCore::CSSNumericValue& numericValue) { return numericValue.getType() == WebCore::CSSStyleValueType::CSSMathSum; }
-static bool isType(const WebCore::CSSMathValue& mathValue) { return mathValue.getType() == WebCore::CSSStyleValueType::CSSMathSum; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSMathSum)
+static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSMathSum; }
+static bool isType(const CyberCore::CSSNumericValue& numericValue) { return numericValue.getType() == CyberCore::CSSStyleValueType::CSSMathSum; }
+static bool isType(const CyberCore::CSSMathValue& mathValue) { return mathValue.getType() == CyberCore::CSSStyleValueType::CSSMathSum; }
 SPECIALIZE_TYPE_TRAITS_END()

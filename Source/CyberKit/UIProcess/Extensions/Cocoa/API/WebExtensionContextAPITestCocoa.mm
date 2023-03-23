@@ -36,7 +36,7 @@
 #import "_WKWebExtensionControllerDelegatePrivate.h"
 #import "_WKWebExtensionControllerInternal.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebExtensionContext::testResult(bool result, String message, String sourceURL, unsigned lineNumber)
 {
@@ -132,6 +132,6 @@ void WebExtensionContext::testFinished(bool result, String message, String sourc
     NSLog(@"EXTENSION TEST FAILED: %@ (%@:%u)", (NSString *)message, (NSString *)sourceURL, lineNumber);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

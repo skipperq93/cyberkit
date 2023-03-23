@@ -30,7 +30,7 @@
 #include <CyberScriptCore/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CyberKitMediaKeyError : public RefCounted<CyberKitMediaKeyError> {
 public:
@@ -56,6 +56,6 @@ private:
     unsigned long m_systemCode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LEGACY_ENCRYPTED_MEDIA)

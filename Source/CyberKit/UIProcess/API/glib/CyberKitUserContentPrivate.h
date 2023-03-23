@@ -17,21 +17,21 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitUserContentPrivate_h
-#define WebKitUserContentPrivate_h
+#ifndef CyberKitUserContentPrivate_h
+#define CyberKitUserContentPrivate_h
 
 #include "APIContentRuleList.h"
 #include "APIContentWorld.h"
 #include "APIUserScript.h"
 #include "APIUserStyleSheet.h"
-#include "WebKitUserContent.h"
+#include "CyberKitUserContent.h"
 #include <CyberCore/UserScript.h>
 #include <CyberCore/UserStyleSheet.h>
 
-API::UserScript& webkitUserScriptGetUserScript(WebKitUserScript*);
-API::UserStyleSheet& webkitUserStyleSheetGetUserStyleSheet(WebKitUserStyleSheet*);
+API::UserScript& webkitUserScriptGetUserScript(CyberKitUserScript*);
+API::UserStyleSheet& webkitUserStyleSheetGetUserStyleSheet(CyberKitUserStyleSheet*);
 API::ContentWorld& webkitContentWorld(const char*);
-API::ContentRuleList& webkitUserContentFilterGetContentRuleList(WebKitUserContentFilter*);
-WebKitUserContentFilter* webkitUserContentFilterCreate(RefPtr<API::ContentRuleList>&&);
+API::ContentRuleList& webkitUserContentFilterGetContentRuleList(CyberKitUserContentFilter*);
+CyberKitUserContentFilter* webkitUserContentFilterCreate(RefPtr<API::ContentRuleList>&&);
 
-#endif // WebKitUserContentPrivate_h
+#endif // CyberKitUserContentPrivate_h

@@ -19,26 +19,26 @@
 
 @SHARED_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitContextMenu_h
-#define WebKitContextMenu_h
+#ifndef CyberKitContextMenu_h
+#define CyberKitContextMenu_h
 
 #include <glib-object.h>
 #if PLATFORM(GTK)
 #include <gtk/gtk.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_CONTEXT_MENU            (webkit_context_menu_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_CONTEXT_MENU(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_CONTEXT_MENU, WebKitContextMenu))
+#define WEBKIT_CONTEXT_MENU(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_CONTEXT_MENU, CyberKitContextMenu))
 #define WEBKIT_IS_CONTEXT_MENU(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_CONTEXT_MENU))
-#define WEBKIT_CONTEXT_MENU_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_CONTEXT_MENU, WebKitContextMenuClass))
+#define WEBKIT_CONTEXT_MENU_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_CONTEXT_MENU, CyberKitContextMenuClass))
 #define WEBKIT_IS_CONTEXT_MENU_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_CONTEXT_MENU))
-#define WEBKIT_CONTEXT_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_CONTEXT_MENU, WebKitContextMenuClass))
+#define WEBKIT_CONTEXT_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_CONTEXT_MENU, CyberKitContextMenuClass))
 
-struct _WebKitContextMenuClass {
+struct _CyberKitContextMenuClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -49,66 +49,66 @@ struct _WebKitContextMenuClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitContextMenu, webkit_context_menu, WEBKIT, CONTEXT_MENU, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitContextMenu, webkit_context_menu, WEBKIT, CONTEXT_MENU, GObject)
 
-typedef struct _WebKitContextMenuItem WebKitContextMenuItem;
+typedef struct _CyberKitContextMenuItem CyberKitContextMenuItem;
 
-WEBKIT_API WebKitContextMenu *
+WEBKIT_API CyberKitContextMenu *
 webkit_context_menu_new                  (void);
 
-WEBKIT_API WebKitContextMenu *
+WEBKIT_API CyberKitContextMenu *
 webkit_context_menu_new_with_items       (GList                 *items);
 
 WEBKIT_API void
-webkit_context_menu_prepend              (WebKitContextMenu     *menu,
-                                          WebKitContextMenuItem *item);
+webkit_context_menu_prepend              (CyberKitContextMenu     *menu,
+                                          CyberKitContextMenuItem *item);
 
 WEBKIT_API void
-webkit_context_menu_append               (WebKitContextMenu     *menu,
-                                          WebKitContextMenuItem *item);
+webkit_context_menu_append               (CyberKitContextMenu     *menu,
+                                          CyberKitContextMenuItem *item);
 
 WEBKIT_API void
-webkit_context_menu_insert               (WebKitContextMenu     *menu,
-                                          WebKitContextMenuItem *item,
+webkit_context_menu_insert               (CyberKitContextMenu     *menu,
+                                          CyberKitContextMenuItem *item,
                                           gint                   position);
 
 WEBKIT_API void
-webkit_context_menu_move_item            (WebKitContextMenu     *menu,
-                                          WebKitContextMenuItem *item,
+webkit_context_menu_move_item            (CyberKitContextMenu     *menu,
+                                          CyberKitContextMenuItem *item,
                                           gint                   position);
 WEBKIT_API GList *
-webkit_context_menu_get_items            (WebKitContextMenu     *menu);
+webkit_context_menu_get_items            (CyberKitContextMenu     *menu);
 
 WEBKIT_API guint
-webkit_context_menu_get_n_items          (WebKitContextMenu     *menu);
+webkit_context_menu_get_n_items          (CyberKitContextMenu     *menu);
 
-WEBKIT_API WebKitContextMenuItem *
-webkit_context_menu_first                (WebKitContextMenu     *menu);
+WEBKIT_API CyberKitContextMenuItem *
+webkit_context_menu_first                (CyberKitContextMenu     *menu);
 
-WEBKIT_API WebKitContextMenuItem *
-webkit_context_menu_last                 (WebKitContextMenu     *menu);
+WEBKIT_API CyberKitContextMenuItem *
+webkit_context_menu_last                 (CyberKitContextMenu     *menu);
 
-WEBKIT_API WebKitContextMenuItem *
-webkit_context_menu_get_item_at_position (WebKitContextMenu     *menu,
+WEBKIT_API CyberKitContextMenuItem *
+webkit_context_menu_get_item_at_position (CyberKitContextMenu     *menu,
                                           guint                  position);
 
 WEBKIT_API void
-webkit_context_menu_remove               (WebKitContextMenu     *menu,
-                                          WebKitContextMenuItem *item);
+webkit_context_menu_remove               (CyberKitContextMenu     *menu,
+                                          CyberKitContextMenuItem *item);
 
 WEBKIT_API void
-webkit_context_menu_remove_all           (WebKitContextMenu     *menu);
+webkit_context_menu_remove_all           (CyberKitContextMenu     *menu);
 
 WEBKIT_API void
-webkit_context_menu_set_user_data        (WebKitContextMenu     *menu,
+webkit_context_menu_set_user_data        (CyberKitContextMenu     *menu,
                                           GVariant              *user_data);
 
 WEBKIT_API GVariant *
-webkit_context_menu_get_user_data        (WebKitContextMenu     *menu);
+webkit_context_menu_get_user_data        (CyberKitContextMenu     *menu);
 
 #if PLATFORM(GTK)
 WEBKIT_API GdkEvent *
-webkit_context_menu_get_event            (WebKitContextMenu     *menu);
+webkit_context_menu_get_event            (CyberKitContextMenu     *menu);
 #endif
 
 G_END_DECLS

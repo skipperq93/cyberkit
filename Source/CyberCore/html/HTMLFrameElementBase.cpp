@@ -42,7 +42,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLFrameElementBase);
 
@@ -224,4 +224,4 @@ ScrollbarMode HTMLFrameElementBase::scrollingMode() const
         ? ScrollbarMode::AlwaysOff : ScrollbarMode::Auto;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

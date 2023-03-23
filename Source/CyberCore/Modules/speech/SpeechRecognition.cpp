@@ -38,7 +38,7 @@
 #include "SpeechRecognitionResultList.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SpeechRecognition);
 
@@ -206,4 +206,4 @@ void SpeechRecognition::didEnd()
     queueTaskToDispatchEvent(*this, TaskSource::Speech, Event::create(eventNames().endEvent, Event::CanBubble::No, Event::IsCancelable::No));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

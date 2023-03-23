@@ -254,7 +254,7 @@ void RemoteInspector::updateHasActiveDebugSession()
     m_hasActiveDebugSession = hasActiveDebuggerSession;
 
     // FIXME: Expose some way to access this state in an embedder.
-    // Legacy iOS WebKit 1 had a notification. This will need to be smarter with WebKit2.
+    // Legacy iOS CyberKit 1 had a notification. This will need to be smarter with CyberKit2.
 }
 
 RemoteInspector::Client::~Client()

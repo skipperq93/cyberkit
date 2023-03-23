@@ -40,12 +40,12 @@
 #include "JSTestObj.h"
 #include "ScriptExecutionContext.h"
 #include "TestNamespaceObject.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/ObjectPrototype.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/ObjectPrototype.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 
@@ -56,7 +56,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -173,7 +173,7 @@ static inline JSValue jsTestNamespaceObjectConstructor_namespaceAttributeFromPar
 {
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLDouble>(lexicalGlobalObject, throwScope, WebCore::TestNamespaceObjectImpl::namespaceAttributeFromPartial())));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLDouble>(lexicalGlobalObject, throwScope, CyberCore::TestNamespaceObjectImpl::namespaceAttributeFromPartial())));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestNamespaceObjectConstructor_namespaceAttributeFromPartial, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -263,7 +263,7 @@ static inline JSC::EncodedJSValue jsTestNamespaceObjectConstructorFunction_names
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     UNUSED_PARAM(throwScope);
     UNUSED_PARAM(callFrame);
-    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLUndefined>(*lexicalGlobalObject, throwScope, [&]() -> decltype(auto) { return WebCore::TestNamespaceObjectImpl::operationFromPartialImpl(); })));
+    RELEASE_AND_RETURN(throwScope, JSValue::encode(toJS<IDLUndefined>(*lexicalGlobalObject, throwScope, [&]() -> decltype(auto) { return CyberCore::TestNamespaceObjectImpl::operationFromPartialImpl(); })));
 }
 
 JSC_DEFINE_HOST_FUNCTION(jsTestNamespaceObjectConstructorFunction_namespaceOperationFromPartial, (JSGlobalObject* lexicalGlobalObject, CallFrame* callFrame))
@@ -275,7 +275,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestNamespaceObjectConstructorFunction_namespaceOpera
 
 JSC::GCClient::IsoSubspace* JSTestNamespaceObject::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestNamespaceObject, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestNamespaceObject, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestNamespaceObject.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestNamespaceObject = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestNamespaceObject.get(); },

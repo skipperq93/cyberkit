@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GamepadButton : public RefCounted<GamepadButton> {
 public:
@@ -49,6 +49,6 @@ private:
     double m_value { 0.0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

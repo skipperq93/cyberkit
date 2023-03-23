@@ -28,7 +28,7 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 String deserializeString(Span<const uint8_t> span)
 {
@@ -50,6 +50,6 @@ size_t stringSerializedLength(Span<const uint8_t> span)
     return *reinterpret_cast<const uint32_t*>(span.data());
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

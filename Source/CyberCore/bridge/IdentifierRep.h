@@ -29,7 +29,7 @@
 #include <wtf/FastMalloc.h>
 #include <string.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class IdentifierRep {
     WTF_MAKE_FAST_ALLOCATED;
@@ -66,5 +66,5 @@ private:
     bool m_isString;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

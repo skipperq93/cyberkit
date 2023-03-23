@@ -34,7 +34,7 @@
 #include <wtf/Deque.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -408,6 +408,6 @@ ASCIILiteral URLFilterParser::statusString(ParseStatus status)
 }
     
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

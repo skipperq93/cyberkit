@@ -40,7 +40,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class GeoNotifier;
@@ -166,6 +166,6 @@ private:
     GeoNotifierSet m_requestsAwaitingCachedPosition;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GEOLOCATION)

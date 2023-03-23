@@ -35,7 +35,7 @@
 #import <CyberCore/ResourceResponse.h>
 #import <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #define AUTHORIZATIONSESSION_RELEASE_LOG(fmt, ...) RELEASE_LOG(AppSSO, "%p - [InitiatingAction=%s][State=%s] SubFrameSOAuthorizationSession::" fmt, this, initiatingActionString(), stateString(), ##__VA_ARGS__)
@@ -135,7 +135,7 @@ void SubFrameSOAuthorizationSession::loadRequestToFrame()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef AUTHORIZATIONSESSION_RELEASE_LOG
 

@@ -27,7 +27,7 @@
 
 #include "MediaPlayerEnums.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMediaElementEnums : public MediaPlayerEnums {
 public:
@@ -49,7 +49,7 @@ String convertEnumerationToString(HTMLMediaElementEnums::ReadyState);
 String convertEnumerationToString(HTMLMediaElementEnums::NetworkState);
 String convertEnumerationToString(HTMLMediaElementEnums::TextTrackVisibilityCheckType);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -57,24 +57,24 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::HTMLMediaElementEnums::ReadyState> {
-    static String toString(const WebCore::HTMLMediaElementEnums::ReadyState state)
+struct LogArgument<CyberCore::HTMLMediaElementEnums::ReadyState> {
+    static String toString(const CyberCore::HTMLMediaElementEnums::ReadyState state)
     {
         return convertEnumerationToString(state);
     }
 };
 
 template <>
-struct LogArgument<WebCore::HTMLMediaElementEnums::NetworkState> {
-    static String toString(const WebCore::HTMLMediaElementEnums::NetworkState state)
+struct LogArgument<CyberCore::HTMLMediaElementEnums::NetworkState> {
+    static String toString(const CyberCore::HTMLMediaElementEnums::NetworkState state)
     {
         return convertEnumerationToString(state);
     }
 };
 
 template <>
-struct LogArgument<WebCore::HTMLMediaElementEnums::TextTrackVisibilityCheckType> {
-    static String toString(const WebCore::HTMLMediaElementEnums::TextTrackVisibilityCheckType type)
+struct LogArgument<CyberCore::HTMLMediaElementEnums::TextTrackVisibilityCheckType> {
+    static String toString(const CyberCore::HTMLMediaElementEnums::TextTrackVisibilityCheckType type)
     {
         return convertEnumerationToString(type);
     }

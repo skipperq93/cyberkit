@@ -26,10 +26,10 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GetAnimationsOptions {
     bool subtree { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RenderingBackendIdentifierType { };
 using RenderingBackendIdentifier = ObjectIdentifier<RenderingBackendIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

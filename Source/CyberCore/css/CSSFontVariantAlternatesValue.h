@@ -29,7 +29,7 @@
 #include "FontTaggedSettings.h"
 #include "TextFlags.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontVariantAlternatesValue final : public CSSValue {
 public:
@@ -49,6 +49,6 @@ private:
     const FontVariantAlternates m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSFontVariantAlternatesValue, isFontVariantAlternatesValue())

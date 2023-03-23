@@ -33,7 +33,7 @@
 
 #if ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebVTTTokenTypes {
 public:
@@ -93,6 +93,6 @@ private:
     AtomString m_classes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

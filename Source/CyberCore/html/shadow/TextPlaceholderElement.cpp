@@ -30,7 +30,7 @@
 #include "HTMLTextFormControlElement.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextPlaceholderElement);
 
@@ -68,4 +68,4 @@ void TextPlaceholderElement::removedFromAncestor(RemovalType removalType, Contai
     HTMLDivElement::removedFromAncestor(removalType, oldParentOfRemovedTree);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

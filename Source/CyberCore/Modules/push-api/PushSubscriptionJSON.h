@@ -33,7 +33,7 @@
 #include <wtf/KeyValuePair.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PushSubscriptionJSON {
     String endpoint;
@@ -41,6 +41,6 @@ struct PushSubscriptionJSON {
     Vector<KeyValuePair<String, String>> keys;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "WebKitWebsiteData.h"
+#include "CyberKitWebsiteData.h"
 #include "WebsiteDataRecord.h"
 
-WebKitWebsiteData* webkitWebsiteDataCreate(WebKit::WebsiteDataRecord&&);
-const WebKit::WebsiteDataRecord& webkitWebsiteDataGetRecord(WebKitWebsiteData*);
+CyberKitWebsiteData* webkitWebsiteDataCreate(CyberKit::WebsiteDataRecord&&);
+const CyberKit::WebsiteDataRecord& webkitWebsiteDataGetRecord(CyberKitWebsiteData*);

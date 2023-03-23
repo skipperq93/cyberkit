@@ -68,7 +68,7 @@
 - (NSArray<_WKFrameTreeNode *> *)childFrames
 {
     return createNSArray(_node->childFrames(), [&] (auto& child) {
-        return wrapper(API::FrameTreeNode::create(WebKit::FrameTreeNodeData(child), _node->page()));
+        return wrapper(API::FrameTreeNode::create(CyberKit::FrameTreeNodeData(child), _node->page()));
     }).autorelease();
 }
 
@@ -89,7 +89,7 @@
 
 - (pid_t)_processIdentifier
 {
-    auto* frame = WebKit::WebFrameProxy::webFrame(_node->handle()->frameID());
+    auto* frame = CyberKit::WebFrameProxy::webFrame(_node->handle()->frameID());
     return frame ? frame->processIdentifier() : 0;
 }
 

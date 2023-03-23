@@ -42,7 +42,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ContactsManager);
 
@@ -116,4 +116,4 @@ void ContactsManager::select(const Vector<ContactProperty>& properties, const Co
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

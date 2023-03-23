@@ -33,7 +33,7 @@
 #include "FrameSelection.h"
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextInsertionBaseCommand::TextInsertionBaseCommand(Document& document, EditAction editingAction)
     : CompositeEditCommand(document, editingAction)

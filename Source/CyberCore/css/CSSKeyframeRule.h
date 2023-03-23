@@ -28,7 +28,7 @@
 #include "CSSRule.h"
 #include "StyleRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleDeclaration;
 class CSSKeyframesRule;
@@ -90,4 +90,4 @@ private:
     friend class CSSKeyframesRule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

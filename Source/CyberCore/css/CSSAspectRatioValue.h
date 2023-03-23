@@ -30,7 +30,7 @@
 
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSAspectRatioValue final : public CSSValue {
 public:
@@ -58,6 +58,6 @@ private:
     float m_denominatorValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSAspectRatioValue, isAspectRatioValue())

@@ -36,7 +36,7 @@
 #include "ElementIterator.h"
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLCollection;
 
@@ -59,6 +59,6 @@ private:
     HTMLDataListElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATALIST_ELEMENT)

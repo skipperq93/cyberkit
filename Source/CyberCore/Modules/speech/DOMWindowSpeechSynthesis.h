@@ -31,7 +31,7 @@
 #include "SpeechSynthesis.h"
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class DOMWindow;
 
@@ -51,6 +51,6 @@ private:
     RefPtr<SpeechSynthesis> m_speechSynthesis;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

@@ -33,7 +33,7 @@
 #include "RTCPeerConnection.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCIceTransport);
 
@@ -117,6 +117,6 @@ std::optional<RTCIceTransport::CandidatePair> RTCIceTransport::getSelectedCandid
     return m_selectedCandidatePair;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

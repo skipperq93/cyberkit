@@ -32,12 +32,12 @@
 #include "WebProcessPool.h"
 #include <CyberCore/MockMediaDevice.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 void WKAddMockMediaDevice(WKContextRef context, WKStringRef persistentId, WKStringRef label, WKStringRef type)
 {
 #if ENABLE(MEDIA_STREAM)
-    String typeString = WebKit::toImpl(type)->string();
+    String typeString = CyberKit::toImpl(type)->string();
     std::variant<CyberCore::MockMicrophoneProperties, CyberCore::MockSpeakerProperties, CyberCore::MockCameraProperties, CyberCore::MockDisplayProperties> properties;
     if (typeString == "camera"_s)
         properties = CyberCore::MockCameraProperties { };
@@ -48,7 +48,7 @@ void WKAddMockMediaDevice(WKContextRef context, WKStringRef persistentId, WKStri
     else if (typeString != "microphone"_s)
         return;
 
-    toImpl(context)->addMockMediaDevice({ WebKit::toImpl(persistentId)->string(), WebKit::toImpl(label)->string(), false, WTFMove(properties) });
+    toImpl(context)->addMockMediaDevice({ CyberKit::toImpl(persistentId)->string(), CyberKit::toImpl(label)->string(), false, WTFMove(properties) });
 #endif
 }
 
@@ -59,7 +59,7 @@ void WKClearMockMediaDevices(WKContextRef context)
 
 void WKRemoveMockMediaDevice(WKContextRef context, WKStringRef persistentId)
 {
-    toImpl(context)->removeMockMediaDevice(WebKit::toImpl(persistentId)->string());
+    toImpl(context)->removeMockMediaDevice(CyberKit::toImpl(persistentId)->string());
 }
 
 void WKResetMockMediaDevices(WKContextRef context)
@@ -69,5 +69,5 @@ void WKResetMockMediaDevices(WKContextRef context)
 
 void WKSetMockMediaDeviceIsEphemeral(WKContextRef context, WKStringRef persistentId, bool isEphemeral)
 {
-    toImpl(context)->setMockMediaDeviceIsEphemeral(WebKit::toImpl(persistentId)->string(), isEphemeral);
+    toImpl(context)->setMockMediaDeviceIsEphemeral(CyberKit::toImpl(persistentId)->string(), isEphemeral);
 }

@@ -30,7 +30,7 @@
 #include "Event.h"
 #include "PaymentRequestUpdateEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 struct PaymentRequestUpdateEventInit;
@@ -58,6 +58,6 @@ private:
     bool m_waitForUpdate { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

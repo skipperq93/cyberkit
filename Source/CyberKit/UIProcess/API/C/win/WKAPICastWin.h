@@ -30,10 +30,10 @@
 #error "Please #include \"WKAPICast.h\" instead of this file directly."
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebView;
 
 WK_ADD_API_MAPPING(WKViewRef, WebView)
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 #include "Microtasks.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void EventLoop::queueTask(std::unique_ptr<EventLoopTask>&& task)
 {
@@ -204,4 +204,4 @@ void EventLoop::removeAssociatedContext(ScriptExecutionContext& context)
     m_associatedContexts.remove(context);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkerMessagePortChannelProvider::WorkerMessagePortChannelProvider(WorkerOrWorkletGlobalScope& scope)
     : m_scope(scope)
@@ -121,4 +121,4 @@ void WorkerMessagePortChannelProvider::takeAllMessagesForPort(const MessagePortI
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -23,7 +23,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class DOMWindow;
@@ -62,4 +62,4 @@ private:
     WeakPtr<ContainerNode, WeakPtrImplWithEventTargetData> m_originalNode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

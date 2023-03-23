@@ -28,8 +28,8 @@
 
 #include "CSSCustomPropertyValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSRegisteredCustomProperty::~CSSRegisteredCustomProperty() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

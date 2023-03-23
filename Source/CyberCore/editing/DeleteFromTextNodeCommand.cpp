@@ -31,7 +31,7 @@
 #include "Editing.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DeleteFromTextNodeCommand::DeleteFromTextNodeCommand(Ref<Text>&& node, unsigned offset, unsigned count, EditAction editingAction)
     : SimpleEditCommand(node->document(), editingAction)
@@ -70,4 +70,4 @@ void DeleteFromTextNodeCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

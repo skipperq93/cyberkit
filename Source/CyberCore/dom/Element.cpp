@@ -146,7 +146,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Element);
 
@@ -432,7 +432,7 @@ static bool isCompatibilityMouseEvent(const MouseEvent& mouseEvent)
 {
     // https://www.w3.org/TR/pointerevents/#compatibility-mapping-with-mouse-events
     const auto& type = mouseEvent.type();
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     return type != eventNames.clickEvent && type != eventNames.mouseoverEvent && type != eventNames.mouseoutEvent && type != eventNames.mouseenterEvent && type != eventNames.mouseleaveEvent;
 }
 
@@ -5331,4 +5331,4 @@ void Element::setDisplayContentsChanged(bool changed)
     setEventTargetFlag(EventTargetFlag::DisplayContentsChanged, changed);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DirectoryFileListCreator::~DirectoryFileListCreator()
 {
@@ -116,4 +116,4 @@ void DirectoryFileListCreator::cancel()
     m_workQueue = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

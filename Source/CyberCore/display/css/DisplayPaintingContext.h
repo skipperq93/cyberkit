@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 
@@ -37,6 +37,6 @@ struct PaintingContext {
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 

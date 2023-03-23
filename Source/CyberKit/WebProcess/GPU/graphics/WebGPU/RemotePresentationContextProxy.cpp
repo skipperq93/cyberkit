@@ -33,7 +33,7 @@
 #include "WebGPUCanvasConfiguration.h"
 #include "WebGPUConvertToBackingContext.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 RemotePresentationContextProxy::RemotePresentationContextProxy(RemoteGPUProxy& parent, ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier)
     : m_backing(identifier)
@@ -80,6 +80,6 @@ void RemotePresentationContextProxy::present()
     m_currentTexture = nullptr;
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

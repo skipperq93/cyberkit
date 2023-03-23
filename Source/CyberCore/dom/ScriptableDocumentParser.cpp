@@ -30,7 +30,7 @@
 #include "Settings.h"
 #include "StyleScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScriptableDocumentParser::ScriptableDocumentParser(Document& document, OptionSet<ParserContentPolicy> parserContentPolicy)
     : DecodedDataDocumentParser(document)

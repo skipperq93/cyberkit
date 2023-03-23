@@ -55,7 +55,7 @@
 #include <CyberScriptCore/JSLock.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioWorkletNode);
 
@@ -326,6 +326,6 @@ bool AudioWorkletNode::virtualHasPendingActivity() const
     return !context().isClosed();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

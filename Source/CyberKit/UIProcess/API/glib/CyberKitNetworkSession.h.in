@@ -19,28 +19,28 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitNetworkSession_h
-#define WebKitNetworkSession_h
+#ifndef CyberKitNetworkSession_h
+#define CyberKitNetworkSession_h
 
 #include <gio/gio.h>
-#include <@API_INCLUDE_PREFIX@/WebKitCookieManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDownload.h>
-#include <@API_INCLUDE_PREFIX@/WebKitMemoryPressureSettings.h>
-#include <@API_INCLUDE_PREFIX@/WebKitNetworkProxySettings.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebsiteDataManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitCookieManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDownload.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitMemoryPressureSettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkProxySettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteDataManager.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_NETWORK_SESSION            (webkit_network_session_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_NETWORK_SESSION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_NETWORK_SESSION, WebKitNetworkSession))
+#define WEBKIT_NETWORK_SESSION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_NETWORK_SESSION, CyberKitNetworkSession))
 #define WEBKIT_IS_NETWORK_SESSION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_NETWORK_SESSION))
-#define WEBKIT_NETWORK_SESSION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_NETWORK_SESSION, WebKitNetworkSessionClass))
+#define WEBKIT_NETWORK_SESSION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_NETWORK_SESSION, CyberKitNetworkSessionClass))
 #define WEBKIT_IS_NETWORK_SESSION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_NETWORK_SESSION))
-#define WEBKIT_NETWORK_SESSION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_NETWORK_SESSION, WebKitNetworkSessionClass))
+#define WEBKIT_NETWORK_SESSION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_NETWORK_SESSION, CyberKitNetworkSessionClass))
 
-struct _WebKitNetworkSessionClass {
+struct _CyberKitNetworkSessionClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -51,75 +51,75 @@ struct _WebKitNetworkSessionClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitNetworkSession, webkit_network_session, WEBKIT, NETWORK_SESSION, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitNetworkSession, webkit_network_session, WEBKIT, NETWORK_SESSION, GObject)
 
-WEBKIT_API WebKitNetworkSession *
+WEBKIT_API CyberKitNetworkSession *
 webkit_network_session_get_default                               (void);
 
-WEBKIT_API WebKitNetworkSession *
+WEBKIT_API CyberKitNetworkSession *
 webkit_network_session_new                                       (const char                   *data_directory,
                                                                   const char                   *cache_directory);
-WEBKIT_API WebKitNetworkSession *
+WEBKIT_API CyberKitNetworkSession *
 webkit_network_session_new_ephemeral                             (void);
 
 WEBKIT_API gboolean
-webkit_network_session_is_ephemeral                              (WebKitNetworkSession         *session);
+webkit_network_session_is_ephemeral                              (CyberKitNetworkSession         *session);
 
-WEBKIT_API WebKitWebsiteDataManager *
-webkit_network_session_get_website_data_manager                  (WebKitNetworkSession         *session);
+WEBKIT_API CyberKitWebsiteDataManager *
+webkit_network_session_get_website_data_manager                  (CyberKitNetworkSession         *session);
 
-WEBKIT_API WebKitCookieManager *
-webkit_network_session_get_cookie_manager                        (WebKitNetworkSession         *session);
+WEBKIT_API CyberKitCookieManager *
+webkit_network_session_get_cookie_manager                        (CyberKitNetworkSession         *session);
 
 WEBKIT_API void
-webkit_network_session_set_itp_enabled                           (WebKitNetworkSession         *session,
+webkit_network_session_set_itp_enabled                           (CyberKitNetworkSession         *session,
                                                                   gboolean                      enabled);
 
 WEBKIT_API gboolean
-webkit_network_session_get_itp_enabled                           (WebKitNetworkSession         *session);
+webkit_network_session_get_itp_enabled                           (CyberKitNetworkSession         *session);
 
 WEBKIT_API void
-webkit_network_session_set_persistent_credential_storage_enabled (WebKitNetworkSession         *session,
+webkit_network_session_set_persistent_credential_storage_enabled (CyberKitNetworkSession         *session,
                                                                   gboolean                      enabled);
 
 WEBKIT_API gboolean
-webkit_network_session_get_persistent_credential_storage_enabled (WebKitNetworkSession         *session);
+webkit_network_session_get_persistent_credential_storage_enabled (CyberKitNetworkSession         *session);
 
 WEBKIT_API void
-webkit_network_session_set_tls_errors_policy                     (WebKitNetworkSession         *session,
-                                                                  WebKitTLSErrorsPolicy         policy);
+webkit_network_session_set_tls_errors_policy                     (CyberKitNetworkSession         *session,
+                                                                  CyberKitTLSErrorsPolicy         policy);
 
-WEBKIT_API WebKitTLSErrorsPolicy
-webkit_network_session_get_tls_errors_policy                     (WebKitNetworkSession         *session);
+WEBKIT_API CyberKitTLSErrorsPolicy
+webkit_network_session_get_tls_errors_policy                     (CyberKitNetworkSession         *session);
 
 WEBKIT_API void
-webkit_network_session_allow_tls_certificate_for_host            (WebKitNetworkSession         *session,
+webkit_network_session_allow_tls_certificate_for_host            (CyberKitNetworkSession         *session,
                                                                   GTlsCertificate              *certificate,
                                                                   const char                   *host);
 
 WEBKIT_API void
-webkit_network_session_set_proxy_settings                        (WebKitNetworkSession         *session,
-                                                                  WebKitNetworkProxyMode        proxy_mode,
-                                                                  WebKitNetworkProxySettings   *proxy_settings);
+webkit_network_session_set_proxy_settings                        (CyberKitNetworkSession         *session,
+                                                                  CyberKitNetworkProxyMode        proxy_mode,
+                                                                  CyberKitNetworkProxySettings   *proxy_settings);
 
 WEBKIT_API void
-webkit_network_session_set_memory_pressure_settings              (WebKitMemoryPressureSettings *settings);
+webkit_network_session_set_memory_pressure_settings              (CyberKitMemoryPressureSettings *settings);
 
 WEBKIT_API void
-webkit_network_session_get_itp_summary                           (WebKitNetworkSession         *session,
+webkit_network_session_get_itp_summary                           (CyberKitNetworkSession         *session,
                                                                   GCancellable                 *cancellable,
                                                                   GAsyncReadyCallback           callback,
                                                                   gpointer                      user_data);
 WEBKIT_API GList *
-webkit_network_session_get_itp_summary_finish                    (WebKitNetworkSession         *session,
+webkit_network_session_get_itp_summary_finish                    (CyberKitNetworkSession         *session,
                                                                   GAsyncResult                 *result,
                                                                   GError                      **error);
 WEBKIT_API void
-webkit_network_session_prefetch_dns                              (WebKitNetworkSession         *session,
+webkit_network_session_prefetch_dns                              (CyberKitNetworkSession         *session,
                                                                   const char                   *hostname);
 
-WEBKIT_API WebKitDownload *
-webkit_network_session_download_uri                              (WebKitNetworkSession         *session,
+WEBKIT_API CyberKitDownload *
+webkit_network_session_download_uri                              (CyberKitNetworkSession         *session,
                                                                   const char                   *uri);
 
 G_END_DECLS

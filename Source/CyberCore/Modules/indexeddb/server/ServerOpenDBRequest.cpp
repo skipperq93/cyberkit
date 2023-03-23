@@ -28,7 +28,7 @@
 
 #include "IDBResultData.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 Ref<ServerOpenDBRequest> ServerOpenDBRequest::create(IDBConnectionToClient& connection, const IDBRequestData& requestData)
@@ -84,4 +84,4 @@ void ServerOpenDBRequest::connectionClosedOrFiredVersionChangeEvent(uint64_t con
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

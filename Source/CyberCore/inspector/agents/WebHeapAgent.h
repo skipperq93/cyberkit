@@ -29,7 +29,7 @@
 #include <CyberScriptCore/InspectorHeapAgent.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SendGarbageCollectionEventsTask;
 struct GarbageCollectionData;
@@ -55,4 +55,4 @@ protected:
     std::unique_ptr<SendGarbageCollectionEventsTask> m_sendGarbageCollectionEventsTask;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

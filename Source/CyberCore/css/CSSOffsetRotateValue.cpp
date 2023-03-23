@@ -28,7 +28,7 @@
 
 #include "CSSValuePool.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSOffsetRotateValue::customCSSText() const
 {
@@ -59,4 +59,4 @@ bool CSSOffsetRotateValue::equals(const CSSOffsetRotateValue& o) const
         && compareCSSValuePtr(m_angle, o.m_angle);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

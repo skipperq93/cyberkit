@@ -25,7 +25,7 @@
 #include "FormListedElement.h"
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // ValidityState is not a separate object, but rather an interface of FormListedElement that
 // is published as part of the DOM. We could implement this as a base class of FormListedElement,
@@ -44,4 +44,4 @@ inline ValidityState* FormListedElement::validity()
     return static_cast<ValidityState*>(this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

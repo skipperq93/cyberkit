@@ -29,11 +29,11 @@
 
 #include "RTCOfferAnswerOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCAnswerOptions : public RTCOfferAnswerOptions {
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

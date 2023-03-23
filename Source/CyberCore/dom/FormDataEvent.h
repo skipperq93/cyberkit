@@ -28,7 +28,7 @@
 #include "Event.h"
 #include "EventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMFormData;
 
@@ -52,4 +52,4 @@ private:
     Ref<DOMFormData> m_formData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

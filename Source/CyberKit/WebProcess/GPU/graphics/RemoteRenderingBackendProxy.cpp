@@ -42,7 +42,7 @@
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -470,6 +470,6 @@ bool RemoteRenderingBackendProxy::isCached(const ImageBuffer& imageBuffer) const
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

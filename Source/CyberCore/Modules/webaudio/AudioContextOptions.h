@@ -31,13 +31,13 @@
 #include <optional>
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioContextOptions {
     std::variant<AudioContextLatencyCategory, double> latencyHint { AudioContextLatencyCategory::Interactive };
     std::optional<float> sampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

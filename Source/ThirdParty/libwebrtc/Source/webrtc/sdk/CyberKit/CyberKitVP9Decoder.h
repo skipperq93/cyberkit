@@ -27,6 +27,6 @@
 
 namespace webrtc {
 
-void registerWebKitVP9Decoder();
+void registerCyberKitVP9Decoder();
 
 }

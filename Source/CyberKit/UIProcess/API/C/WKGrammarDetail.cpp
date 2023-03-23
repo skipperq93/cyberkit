@@ -31,7 +31,7 @@
 #include "WKAPICast.h"
 #include "WebGrammarDetail.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKGrammarDetailGetTypeID()
 {

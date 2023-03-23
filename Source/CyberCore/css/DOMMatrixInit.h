@@ -27,7 +27,7 @@
 
 #include "DOMMatrix2DInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMMatrixInit : DOMMatrix2DInit {
     double m13 { 0 };
@@ -43,4 +43,4 @@ struct DOMMatrixInit : DOMMatrix2DInit {
     std::optional<bool> is2D;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

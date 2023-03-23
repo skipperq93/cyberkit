@@ -33,7 +33,7 @@
 #import <wtf/RefPtr.h>
 #import <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct AccessibilitySearchCriteria;
 class AccessibilityObject;
 class AXIsolatedObject;
@@ -55,41 +55,41 @@ RetainPtr<NSAttributedString> attributedStringCreate(Node*, StringView, AXCoreOb
 }
 
 @interface WebAccessibilityObjectWrapperBase : NSObject {
-    WebCore::AccessibilityObject* m_axObject;
+    CyberCore::AccessibilityObject* m_axObject;
 
 #if ENABLE(ACCESSIBILITY_ISOLATED_TREE)
-    WebCore::AXIsolatedObject* m_isolatedObject;
+    CyberCore::AXIsolatedObject* m_isolatedObject;
     // To be accessed only on the main thread.
     bool m_isolatedObjectInitialized;
 #endif
 
-    WebCore::AXID _identifier;
+    CyberCore::AXID _identifier;
 }
 
-- (id)initWithAccessibilityObject:(WebCore::AccessibilityObject*)axObject;
+- (id)initWithAccessibilityObject:(CyberCore::AccessibilityObject*)axObject;
 #if ENABLE(ACCESSIBILITY_ISOLATED_TREE)
-- (void)attachIsolatedObject:(WebCore::AXIsolatedObject*)isolatedObject;
+- (void)attachIsolatedObject:(CyberCore::AXIsolatedObject*)isolatedObject;
 - (BOOL)hasIsolatedObject;
 #endif
 
 - (void)detach;
 #if ENABLE(ACCESSIBILITY_ISOLATED_TREE)
-- (void)detachIsolatedObject:(WebCore::AccessibilityDetachmentType)detachmentType;
+- (void)detachIsolatedObject:(CyberCore::AccessibilityDetachmentType)detachmentType;
 #endif
 
-@property (nonatomic, assign) WebCore::AXID identifier;
+@property (nonatomic, assign) CyberCore::AXID identifier;
 
 // FIXME: unified these two methods into one.
 #if PLATFORM(MAC)
 // Updates the underlying object and accessibility hierarchy , and returns the
 // corresponding AXCoreObject.
-- (WebCore::AXCoreObject*)updateObjectBackingStore;
+- (CyberCore::AXCoreObject*)updateObjectBackingStore;
 #else
 - (BOOL)_prepareAccessibilityCall;
 #endif
 
 // This can be either an AccessibilityObject or an AXIsolatedObject
-- (WebCore::AXCoreObject*)axBackingObject;
+- (CyberCore::AXCoreObject*)axBackingObject;
 
 - (NSArray<NSDictionary *> *)lineRectsAndText;
 
@@ -104,9 +104,9 @@ RetainPtr<NSAttributedString> attributedStringCreate(Node*, StringView, AXCoreOb
 - (void)accessibilityPostedNotification:(NSString *)notificationName;
 - (void)accessibilityPostedNotification:(NSString *)notificationName userInfo:(NSDictionary *)userInfo;
 
-- (CGPathRef)convertPathToScreenSpace:(const WebCore::Path&)path;
+- (CGPathRef)convertPathToScreenSpace:(const CyberCore::Path&)path;
 
-- (CGRect)convertRectToSpace:(const WebCore::FloatRect&)rect space:(WebCore::AccessibilityConversionSpace)space;
+- (CGRect)convertRectToSpace:(const CyberCore::FloatRect&)rect space:(CyberCore::AccessibilityConversionSpace)space;
 
 // Math related functions
 - (NSArray *)accessibilityMathPostscriptPairs;
@@ -116,11 +116,11 @@ RetainPtr<NSAttributedString> attributedStringCreate(Node*, StringView, AXCoreOb
 
 - (NSDictionary<NSString *, id> *)baseAccessibilityResolvedEditingStyles;
 
-extern WebCore::AccessibilitySearchCriteria accessibilitySearchCriteriaForSearchPredicateParameterizedAttribute(const NSDictionary *);
+extern CyberCore::AccessibilitySearchCriteria accessibilitySearchCriteriaForSearchPredicateParameterizedAttribute(const NSDictionary *);
 
-extern NSArray *makeNSArray(const WebCore::AXCoreObject::AccessibilityChildrenVector&);
-extern NSRange makeNSRange(std::optional<WebCore::SimpleRange>);
-extern std::optional<WebCore::SimpleRange> makeDOMRange(WebCore::Document*, NSRange);
+extern NSArray *makeNSArray(const CyberCore::AXCoreObject::AccessibilityChildrenVector&);
+extern NSRange makeNSRange(std::optional<CyberCore::SimpleRange>);
+extern std::optional<CyberCore::SimpleRange> makeDOMRange(CyberCore::Document*, NSRange);
 
 #if PLATFORM(IOS_FAMILY)
 - (id)_accessibilityWebDocumentView;

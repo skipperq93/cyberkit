@@ -44,7 +44,7 @@
 #include <wtf/text/CString.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleProperties);
 
@@ -90,12 +90,12 @@ String serializeLonghandValue(CSSPropertyID property, const CSSValue& value)
 
 inline String StyleProperties::serializeLonghandValue(CSSPropertyID propertyID) const
 {
-    return WebCore::serializeLonghandValue(propertyID, getPropertyCSSValue(propertyID).get());
+    return CyberCore::serializeLonghandValue(propertyID, getPropertyCSSValue(propertyID).get());
 }
 
 inline String StyleProperties::serializeShorthandValue(CSSPropertyID propertyID) const
 {
-    return WebCore::serializeShorthandValue(*this, propertyID);
+    return CyberCore::serializeShorthandValue(*this, propertyID);
 }
 
 String StyleProperties::getPropertyValue(CSSPropertyID propertyID) const
@@ -109,7 +109,7 @@ std::optional<Color> StyleProperties::propertyAsColor(CSSPropertyID property) co
     if (!value)
         return std::nullopt;
     return value->isColor() ? value->color()
-        : CSSParser::parseColorWithoutContext(WebCore::serializeLonghandValue(property, *value));
+        : CSSParser::parseColorWithoutContext(CyberCore::serializeLonghandValue(property, *value));
 }
 
 std::optional<CSSValueID> StyleProperties::propertyAsValueID(CSSPropertyID property) const
@@ -319,7 +319,7 @@ StringBuilder StyleProperties::asTextInternal() const
             continue;
 
         if (value.isNull())
-            value = WebCore::serializeLonghandValue(propertyID, *property.value());
+            value = CyberCore::serializeLonghandValue(propertyID, *property.value());
 
         if (numDecls++)
             result.append(' ');
@@ -419,7 +419,7 @@ String StyleProperties::PropertyReference::cssName() const
 
 String StyleProperties::PropertyReference::cssText() const
 {
-    return makeString(cssName(), ": ", WebCore::serializeLonghandValue(id(), *m_value), isImportant() ? " !important;" : ";");
+    return makeString(cssName(), ": ", CyberCore::serializeLonghandValue(id(), *m_value), isImportant() ? " !important;" : ";");
 }
 
-} // namespace WebCore
+} // namespace CyberCore

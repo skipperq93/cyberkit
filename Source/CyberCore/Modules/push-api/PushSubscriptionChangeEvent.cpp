@@ -31,7 +31,7 @@
 #include "PushSubscription.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PushSubscriptionChangeEvent);
 
@@ -56,6 +56,6 @@ PushSubscriptionChangeEvent::PushSubscriptionChangeEvent(const AtomString& type,
 
 PushSubscriptionChangeEvent::~PushSubscriptionChangeEvent() = default;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

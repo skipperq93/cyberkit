@@ -18,38 +18,38 @@
  */
 
 #include "config.h"
-#include "WebKitPermissionStateQuery.h"
+#include "CyberKitPermissionStateQuery.h"
 
 #include "APISecurityOrigin.h"
-#include "WebKitPermissionStateQueryPrivate.h"
-#include "WebKitSecurityOriginPrivate.h"
+#include "CyberKitPermissionStateQueryPrivate.h"
+#include "CyberKitSecurityOriginPrivate.h"
 #include <wtf/glib/WTFGType.h>
 
 /**
- * WebKitPermissionStateQuery:
- * @See_also: #WebKitWebView
+ * CyberKitPermissionStateQuery:
+ * @See_also: #CyberKitWebView
  *
  * This query represents a user's choice to allow or deny access to "powerful features" of the
  * platform, as specified in the [Permissions W3C
  * Specification](https://w3c.github.io/permissions/).
  *
- * When signalled by the #WebKitWebView through the `query-permission-state` signal, the application
+ * When signalled by the #CyberKitWebView through the `query-permission-state` signal, the application
  * has to eventually respond, via `webkit_permission_state_query_finish()`, whether it grants,
  * denies or requests a dedicated permission prompt for the given query.
  *
- * When a #WebKitPermissionStateQuery is not handled by the user, the user-agent is instructed to
+ * When a #CyberKitPermissionStateQuery is not handled by the user, the user-agent is instructed to
  * `prompt` the user for the given permission.
  */
 
-struct _WebKitPermissionStateQuery {
-    explicit _WebKitPermissionStateQuery(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
+struct _CyberKitPermissionStateQuery {
+    explicit _CyberKitPermissionStateQuery(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
         : permissionName(permissionName.utf8())
         , securityOrigin(webkitSecurityOriginCreate(origin.securityOrigin().isolatedCopy()))
         , completionHandler(WTFMove(completionHandler))
     {
     }
 
-    ~_WebKitPermissionStateQuery()
+    ~_CyberKitPermissionStateQuery()
     {
         // Fallback to Prompt response unless the completion handler was already called.
         if (completionHandler)
@@ -59,33 +59,33 @@ struct _WebKitPermissionStateQuery {
     }
 
     CString permissionName;
-    WebKitSecurityOrigin* securityOrigin;
+    CyberKitSecurityOrigin* securityOrigin;
     CompletionHandler<void(std::optional<CyberCore::PermissionState>)> completionHandler;
     int referenceCount { 1 };
 };
 
-G_DEFINE_BOXED_TYPE(WebKitPermissionStateQuery, webkit_permission_state_query, webkit_permission_state_query_ref, webkit_permission_state_query_unref)
+G_DEFINE_BOXED_TYPE(CyberKitPermissionStateQuery, webkit_permission_state_query, webkit_permission_state_query_ref, webkit_permission_state_query_unref)
 
-WebKitPermissionStateQuery* webkitPermissionStateQueryCreate(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
+CyberKitPermissionStateQuery* webkitPermissionStateQueryCreate(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
 {
-    WebKitPermissionStateQuery* query = static_cast<WebKitPermissionStateQuery*>(fastMalloc(sizeof(WebKitPermissionStateQuery)));
-    new (query) WebKitPermissionStateQuery(permissionName, origin, WTFMove(completionHandler));
+    CyberKitPermissionStateQuery* query = static_cast<CyberKitPermissionStateQuery*>(fastMalloc(sizeof(CyberKitPermissionStateQuery)));
+    new (query) CyberKitPermissionStateQuery(permissionName, origin, WTFMove(completionHandler));
     return query;
 }
 
 /**
  * webkit_permission_state_query_ref:
- * @query: a #WebKitPermissionStateQuery
+ * @query: a #CyberKitPermissionStateQuery
  *
  * Atomically increments the reference count of @query by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed #WebKitPermissionStateQuery
+ * Returns: The passed #CyberKitPermissionStateQuery
  *
  * Since: 2.40
  */
-WebKitPermissionStateQuery* webkit_permission_state_query_ref(WebKitPermissionStateQuery* query)
+CyberKitPermissionStateQuery* webkit_permission_state_query_ref(CyberKitPermissionStateQuery* query)
 {
     g_return_val_if_fail(query, nullptr);
 
@@ -95,28 +95,28 @@ WebKitPermissionStateQuery* webkit_permission_state_query_ref(WebKitPermissionSt
 
 /**
  * webkit_permission_state_query_unref:
- * @query: a #WebKitPermissionStateQuery
+ * @query: a #CyberKitPermissionStateQuery
  *
  * Atomically decrements the reference count of @query by one.
  *
- * If the reference count drops to 0, all memory allocated by #WebKitPermissionStateQuery is
+ * If the reference count drops to 0, all memory allocated by #CyberKitPermissionStateQuery is
  * released. This function is MT-safe and may be called from any thread.
  *
  * Since: 2.40
  */
-void webkit_permission_state_query_unref(WebKitPermissionStateQuery* query)
+void webkit_permission_state_query_unref(CyberKitPermissionStateQuery* query)
 {
     g_return_if_fail(query);
 
     if (g_atomic_int_dec_and_test(&query->referenceCount)) {
-        query->~WebKitPermissionStateQuery();
+        query->~CyberKitPermissionStateQuery();
         fastFree(query);
     }
 }
 
 /**
  * webkit_permission_state_query_get_name:
- * @query: a #WebKitPermissionStateQuery
+ * @query: a #CyberKitPermissionStateQuery
  *
  * Get the permission name for which access is being queried.
  *
@@ -125,7 +125,7 @@ void webkit_permission_state_query_unref(WebKitPermissionStateQuery* query)
  * Since: 2.40
  */
 const gchar*
-webkit_permission_state_query_get_name(WebKitPermissionStateQuery* query)
+webkit_permission_state_query_get_name(CyberKitPermissionStateQuery* query)
 {
     g_return_val_if_fail(query, nullptr);
 
@@ -134,17 +134,17 @@ webkit_permission_state_query_get_name(WebKitPermissionStateQuery* query)
 
 /**
  * webkit_permission_state_query_get_security_origin:
- * @query: a #WebKitPermissionStateQuery
+ * @query: a #CyberKitPermissionStateQuery
  *
  * Get the permission origin for which access is being queried.
  *
- * Returns: (transfer none): A #WebKitSecurityOrigin representing the origin from which the
+ * Returns: (transfer none): A #CyberKitSecurityOrigin representing the origin from which the
  * @query was emitted.
  *
  * Since: 2.40
  */
-WebKitSecurityOrigin *
-webkit_permission_state_query_get_security_origin(WebKitPermissionStateQuery* query)
+CyberKitSecurityOrigin *
+webkit_permission_state_query_get_security_origin(CyberKitPermissionStateQuery* query)
 {
     g_return_val_if_fail(query, nullptr);
 
@@ -153,16 +153,16 @@ webkit_permission_state_query_get_security_origin(WebKitPermissionStateQuery* qu
 
 /**
  * webkit_permission_state_query_finish:
- * @query: a #WebKitPermissionStateQuery
- * @state: a #WebKitPermissionState
+ * @query: a #CyberKitPermissionStateQuery
+ * @state: a #CyberKitPermissionState
  *
  * Notify the web-engine of the selected permission state for the given query. This function should
- * only be called as a response to the `WebKitWebView::query-permission-state` signal.
+ * only be called as a response to the `CyberKitWebView::query-permission-state` signal.
  *
  * Since: 2.40
  */
 void
-webkit_permission_state_query_finish(WebKitPermissionStateQuery* query, WebKitPermissionState state)
+webkit_permission_state_query_finish(CyberKitPermissionStateQuery* query, CyberKitPermissionState state)
 {
     g_return_if_fail(query);
     g_return_if_fail(query->completionHandler);

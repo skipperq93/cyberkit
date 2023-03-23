@@ -33,7 +33,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<const CSSStyleRule*, String> SelectorTextCache;
 static SelectorTextCache& selectorTextCache()
@@ -196,4 +196,4 @@ CSSRuleList& CSSStyleRule::cssRules() const
     return *m_ruleListCSSOMWrapper;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

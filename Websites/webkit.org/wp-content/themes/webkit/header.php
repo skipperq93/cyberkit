@@ -6,10 +6,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover">
 
-    <title><?php if ( is_front_page() ) echo "WebKit";
-        else { wp_title(''); echo ' | WebKit'; } ?></title>
+    <title><?php if ( is_front_page() ) echo "CyberKit";
+        else { wp_title(''); echo ' | CyberKit'; } ?></title>
 
-    <meta name="application-name" content="WebKit">
+    <meta name="application-name" content="CyberKit">
 
     <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>?2022100501" media="all">
     <link rel="stylesheet" href="https://www.apple.com/wss/fonts?families=SF+Pro,v1" type="text/css">
@@ -32,9 +32,9 @@
 </head>
 <body <?php body_class(); ?>>
     <?php include_invert_lightness_filter(); ?>
-    <header aria-label="WebKit.org Header" id="header">
+    <header aria-label="CyberKit.org Header" id="header">
         <div class="page-width">
-        <a href="/"><div id="logo" class="site-logo">WebKit</div></a>
+        <a href="/"><div id="logo" class="site-logo">CyberKit</div></a>
         <nav id="site-nav" aria-label="Site Menu">
 <?php wp_nav_menu( array(
 'walker'          => new Responsive_Toggle_Walker_Nav_Menu(),

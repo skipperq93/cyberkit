@@ -24,5 +24,5 @@
  */
 
 messages -> WebPermissionControllerProxy NotRefCounted {
-    Query(struct CyberCore::ClientOrigin origin, struct CyberCore::PermissionDescriptor descriptor, std::optional<WebKit::WebPageProxyIdentifier> identifier, enum:uint8_t CyberCore::PermissionQuerySource source) -> (std::optional<CyberCore::PermissionState> state)
+    Query(struct CyberCore::ClientOrigin origin, struct CyberCore::PermissionDescriptor descriptor, std::optional<CyberKit::WebPageProxyIdentifier> identifier, enum:uint8_t CyberCore::PermissionQuerySource source) -> (std::optional<CyberCore::PermissionState> state)
 }

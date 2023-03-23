@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ChangeVersionData {
 public:
@@ -42,4 +42,4 @@ private:
     String m_newVersion;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

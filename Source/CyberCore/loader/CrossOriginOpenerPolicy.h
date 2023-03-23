@@ -28,7 +28,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicy;
 class Frame;
@@ -98,17 +98,17 @@ struct CrossOriginOpenerPolicyEnforcementResult {
 CrossOriginOpenerPolicy obtainCrossOriginOpenerPolicy(const ResourceResponse&);
 WEBCORE_EXPORT std::optional<CrossOriginOpenerPolicyEnforcementResult> doCrossOriginOpenerHandlingOfResponse(ReportingClient&, const ResourceResponse&, const std::optional<NavigationRequester>&, ContentSecurityPolicy* responseCSP, SandboxFlags effectiveSandboxFlags, const String& referrer, bool isDisplayingInitialEmptyDocument, const CrossOriginOpenerPolicyEnforcementResult& currentCoopEnforcementResult);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CrossOriginOpenerPolicyValue> {
+template<> struct EnumTraits<CyberCore::CrossOriginOpenerPolicyValue> {
     using values = EnumValues<
-    WebCore::CrossOriginOpenerPolicyValue,
-    WebCore::CrossOriginOpenerPolicyValue::UnsafeNone,
-    WebCore::CrossOriginOpenerPolicyValue::SameOrigin,
-    WebCore::CrossOriginOpenerPolicyValue::SameOriginPlusCOEP,
-    WebCore::CrossOriginOpenerPolicyValue::SameOriginAllowPopups
+    CyberCore::CrossOriginOpenerPolicyValue,
+    CyberCore::CrossOriginOpenerPolicyValue::UnsafeNone,
+    CyberCore::CrossOriginOpenerPolicyValue::SameOrigin,
+    CyberCore::CrossOriginOpenerPolicyValue::SameOriginPlusCOEP,
+    CyberCore::CrossOriginOpenerPolicyValue::SameOriginAllowPopups
     >;
 };
 

@@ -47,7 +47,7 @@ includeOnlyBackends(validBackends)
 $options = {}
 OptionParser.new do |opts|
     opts.banner = "Usage: generate_settings_extractor.rb asmFile settingFile [--webkit-additions-path=<path>] [--depfile=<depfile>]"
-    opts.on("--webkit-additions-path=PATH", "WebKitAdditions path.") do |path|
+    opts.on("--webkit-additions-path=PATH", "CyberKitAdditions path.") do |path|
         $options[:webkit_additions_path] = path
     end
     opts.on("--depfile=DEPFILE", "path to write Makefile-style discovered dependencies to.") do |path|

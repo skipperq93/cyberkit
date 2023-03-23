@@ -38,12 +38,12 @@
 #include "ResourceRequest.h"
 #include "URLKeepingBlobAlive.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class ScriptExecutionContext;
 class URLSearchParams;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class FetchRequest final : public FetchBodyOwner {
 public:
@@ -107,6 +107,6 @@ private:
     FetchIdentifier m_navigationPreloadIdentifier;
 };
 
-WebCoreOpaqueRoot root(FetchRequest*);
+CyberCoreOpaqueRoot root(FetchRequest*);
 
-} // namespace WebCore
+} // namespace CyberCore

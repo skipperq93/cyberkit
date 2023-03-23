@@ -29,7 +29,7 @@
 #include "InlineFormattingContext.h"
 #include "InlineLineBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class LineBox;

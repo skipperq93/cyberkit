@@ -26,7 +26,7 @@
 #include "TestInterface.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT JSTestInterface : public JSDOMWrapper<TestInterface> {
 public:
@@ -118,6 +118,6 @@ template<> struct JSDOMWrapperConverterTraits<TestInterface> {
     using ToWrappedReturnType = TestInterface*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(Condition1) || ENABLE(Condition2)

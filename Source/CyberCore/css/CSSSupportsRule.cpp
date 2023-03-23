@@ -36,7 +36,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSSupportsRule::CSSSupportsRule(StyleRuleSupports& rule, CSSStyleSheet* parent)
     : CSSConditionRule(rule, parent)
@@ -61,4 +61,4 @@ String CSSSupportsRule::conditionText() const
     return downcast<StyleRuleSupports>(groupRule()).conditionText();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

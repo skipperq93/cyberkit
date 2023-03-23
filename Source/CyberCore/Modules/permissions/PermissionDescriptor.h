@@ -28,7 +28,7 @@
 #include "PermissionName.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PermissionDescriptor {
     PermissionName name;
@@ -36,4 +36,4 @@ struct PermissionDescriptor {
     bool operator==(const PermissionDescriptor& descriptor) const { return name == descriptor.name; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

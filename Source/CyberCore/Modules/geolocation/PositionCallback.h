@@ -29,7 +29,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationPosition;
 
@@ -40,4 +40,4 @@ public:
     virtual CallbackResult<void> handleEvent(GeolocationPosition*) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

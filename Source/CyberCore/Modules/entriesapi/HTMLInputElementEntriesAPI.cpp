@@ -31,7 +31,7 @@
 #include "FileList.h"
 #include "HTMLInputElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

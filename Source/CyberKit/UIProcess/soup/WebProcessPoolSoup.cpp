@@ -33,7 +33,7 @@
 #include "WebProcessMessages.h"
 #include <wtf/Language.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 std::optional<MemoryPressureHandler::Configuration> WebProcessPool::s_networkProcessMemoryPressureHandlerConfiguration;
 
@@ -48,4 +48,4 @@ void WebProcessPool::platformInitializeNetworkProcess(NetworkProcessCreationPara
 #endif // OS(LINUX)
 }
 
-} // namespace WebKit
+} // namespace CyberKit

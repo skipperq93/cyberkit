@@ -29,7 +29,7 @@
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyCDM;
 
@@ -53,6 +53,6 @@ protected:
     LegacyCDM* m_cdm;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LEGACY_ENCRYPTED_MEDIA)

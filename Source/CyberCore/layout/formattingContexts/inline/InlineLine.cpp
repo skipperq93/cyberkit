@@ -34,7 +34,7 @@
 #include "TextUtil.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 Line::Line(const InlineFormattingContext& inlineFormattingContext)

@@ -30,7 +30,7 @@
 #include "HTMLFormElement.h"
 #include "TouchList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventContext {
     WTF_MAKE_FAST_ALLOCATED;
@@ -150,4 +150,4 @@ inline TouchList& EventContext::touchList(TouchListType type)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

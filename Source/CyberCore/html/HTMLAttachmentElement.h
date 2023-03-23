@@ -30,7 +30,7 @@
 #include "HTMLElement.h"
 #include "Image.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class File;
 class HTMLImageElement;
@@ -60,7 +60,7 @@ public:
     WEBCORE_EXPORT void updateAttributes(std::optional<uint64_t>&& newFileSize, const AtomString& newContentType, const AtomString& newFilename);
     WEBCORE_EXPORT void updateEnclosingImageWithData(const String& contentType, Ref<FragmentedSharedBuffer>&& data);
     WEBCORE_EXPORT void updateThumbnail(const RefPtr<Image>& thumbnail);
-    WEBCORE_EXPORT void updateIcon(const RefPtr<Image>& icon, const WebCore::FloatSize&);
+    WEBCORE_EXPORT void updateIcon(const RefPtr<Image>& icon, const CyberCore::FloatSize&);
 
     InsertedIntoAncestorResult insertedIntoAncestor(InsertionType, ContainerNode&) final;
     void removedFromAncestor(RemovalType, ContainerNode&) final;
@@ -132,6 +132,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)

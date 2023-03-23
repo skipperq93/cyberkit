@@ -34,7 +34,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSBundle *passKitBundle()
 {
@@ -111,6 +111,6 @@ void ApplePayLogoSystemImage::draw(GraphicsContext& context, const FloatRect& de
     CGContextDrawPDFPage(context.platformContext(), page.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

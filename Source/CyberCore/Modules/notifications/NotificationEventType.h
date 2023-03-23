@@ -27,22 +27,22 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class NotificationEventType : bool {
     Click,
     Close,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::NotificationEventType> {
+template<> struct EnumTraits<CyberCore::NotificationEventType> {
     using values = EnumValues<
-        WebCore::NotificationEventType,
-        WebCore::NotificationEventType::Click,
-        WebCore::NotificationEventType::Close
+        CyberCore::NotificationEventType,
+        CyberCore::NotificationEventType::Click,
+        CyberCore::NotificationEventType::Close
     >;
 };
 

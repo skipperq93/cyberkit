@@ -56,7 +56,7 @@ static NSString * const UIAccessibilityTextualContextSourceCode = @"UIAccessibil
     uint64_t m_accessibilityTraitsFromAncestor;
 }
 
-- (WebCore::AccessibilityObject *)axBackingObject;
+- (CyberCore::AccessibilityObject *)axBackingObject;
 
 - (id)accessibilityHitTest:(CGPoint)point;
 - (AccessibilityObjectWrapper *)accessibilityPostProcessHitTest:(CGPoint)point;

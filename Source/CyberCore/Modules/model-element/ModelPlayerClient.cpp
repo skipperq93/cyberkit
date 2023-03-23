@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ModelPlayerClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ModelPlayerClient::~ModelPlayerClient() = default;
 

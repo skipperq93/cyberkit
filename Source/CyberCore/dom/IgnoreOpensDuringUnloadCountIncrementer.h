@@ -27,7 +27,7 @@
 
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IgnoreOpensDuringUnloadCountIncrementer {
     WTF_MAKE_NONCOPYABLE(IgnoreOpensDuringUnloadCountIncrementer);
@@ -51,4 +51,4 @@ private:
     unsigned* m_count;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

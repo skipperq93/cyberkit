@@ -36,7 +36,7 @@
 #include "RTCIceCandidateFields.h"
 #include "ScriptWrappable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCIceCandidateInit;
 
@@ -76,6 +76,6 @@ private:
     Fields m_fields;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

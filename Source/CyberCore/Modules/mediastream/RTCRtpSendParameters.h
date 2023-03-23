@@ -32,7 +32,7 @@
 #include "RTCRtpParameters.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpSendParameters : RTCRtpParameters {
     RTCRtpSendParameters() = default;
@@ -47,6 +47,6 @@ struct RTCRtpSendParameters : RTCRtpParameters {
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

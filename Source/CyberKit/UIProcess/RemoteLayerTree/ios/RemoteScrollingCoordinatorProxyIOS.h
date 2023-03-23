@@ -31,7 +31,7 @@
 
 OBJC_CLASS UIScrollView;
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteScrollingCoordinatorProxyIOS final : public RemoteScrollingCoordinatorProxy {
 public:
@@ -77,7 +77,7 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 SPECIALIZE_TYPE_TRAITS_REMOTE_SCROLLING_COORDINATOR_PROXY(RemoteScrollingCoordinatorProxyIOS, isRemoteScrollingCoordinatorProxyIOS());
 

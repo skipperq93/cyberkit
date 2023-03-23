@@ -31,7 +31,7 @@
 #include "JSDOMWrapperCache.h"
 #include <CyberScriptCore/JSTypedArrays.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct IDLInt8Array : IDLTypedArray<JSC::Int8Array> { };
 struct IDLInt16Array : IDLTypedArray<JSC::Int16Array> { };
@@ -466,4 +466,4 @@ struct Converter<IDLAllowSharedAdaptor<T>> : DefaultConverter<T> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AudioContextLatencyCategory {
     Balanced,
@@ -33,4 +33,4 @@ enum class AudioContextLatencyCategory {
     Playback,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

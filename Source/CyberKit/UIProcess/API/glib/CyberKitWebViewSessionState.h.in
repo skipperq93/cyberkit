@@ -19,32 +19,32 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitWebViewSessionState_h
-#define WebKitWebViewSessionState_h
+#ifndef CyberKitWebViewSessionState_h
+#define CyberKitWebViewSessionState_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_VIEW_SESSION_STATE (webkit_web_view_session_state_get_type())
 
-typedef struct _WebKitWebViewSessionState WebKitWebViewSessionState;
+typedef struct _CyberKitWebViewSessionState CyberKitWebViewSessionState;
 
 WEBKIT_API GType
 webkit_web_view_session_state_get_type  (void);
 
-WEBKIT_API WebKitWebViewSessionState *
+WEBKIT_API CyberKitWebViewSessionState *
 webkit_web_view_session_state_new       (GBytes *data);
 
-WEBKIT_API WebKitWebViewSessionState *
-webkit_web_view_session_state_ref       (WebKitWebViewSessionState *state);
+WEBKIT_API CyberKitWebViewSessionState *
+webkit_web_view_session_state_ref       (CyberKitWebViewSessionState *state);
 
 WEBKIT_API void
-webkit_web_view_session_state_unref     (WebKitWebViewSessionState *state);
+webkit_web_view_session_state_unref     (CyberKitWebViewSessionState *state);
 
 WEBKIT_API GBytes *
-webkit_web_view_session_state_serialize (WebKitWebViewSessionState *state);
+webkit_web_view_session_state_serialize (CyberKitWebViewSessionState *state);
 
 G_END_DECLS
 

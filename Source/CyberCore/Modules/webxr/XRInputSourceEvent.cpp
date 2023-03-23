@@ -32,7 +32,7 @@
 #include "WebXRInputSource.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(XRInputSourceEvent);
 
@@ -67,6 +67,6 @@ void XRInputSourceEvent::setFrameActive(bool active)
     m_frame->setActive(active);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

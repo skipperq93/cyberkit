@@ -35,7 +35,7 @@
 #include "WindowProxy.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 
@@ -107,4 +107,4 @@ private:
     mutable Lock m_concurrentDataAccessLock;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

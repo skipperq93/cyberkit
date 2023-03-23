@@ -34,7 +34,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/Sandbox.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 CString XDGDBusProxy::makeProxy(const char* baseDirectory, const char* proxyTemplate)
 {
@@ -197,6 +197,6 @@ bool XDGDBusProxy::launch()
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(BUBBLEWRAP_SANDBOX)

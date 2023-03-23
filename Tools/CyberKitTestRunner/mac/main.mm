@@ -45,7 +45,7 @@ static void setDefaultsToConsistentValuesForTesting()
         @"NSOverlayScrollersEnabled": @NO,
         @"NSScrollAnimationEnabled" : @NO,
         @"AppleShowScrollBars": @"Always",
-        @"WebKit2UseRemoteLayerTreeDrawingArea": @NO,
+        @"CyberKit2UseRemoteLayerTreeDrawingArea": @NO,
     };
 
     [[NSUserDefaults standardUserDefaults] setValuesForKeysWithDictionary:dict];
@@ -57,7 +57,7 @@ static void disableAppNapInUIProcess()
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSActivityOptions options = (NSActivityUserInitiatedAllowingIdleSystemSleep | NSActivityLatencyCritical) & ~(NSActivitySuddenTerminationDisabled | NSActivityAutomaticTerminationDisabled);
-        assertion.get() = [[NSProcessInfo processInfo] beginActivityWithOptions:options reason:@"WebKitTestRunner should not be subject to process suppression"];
+        assertion.get() = [[NSProcessInfo processInfo] beginActivityWithOptions:options reason:@"CyberKitTestRunner should not be subject to process suppression"];
     });
     ASSERT_UNUSED(assertion, assertion.get());
 }

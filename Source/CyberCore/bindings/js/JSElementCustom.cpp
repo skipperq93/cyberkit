@@ -45,10 +45,10 @@
 #include "MathMLElement.h"
 #include "NodeList.h"
 #include "SVGElement.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 using namespace HTMLNames;
@@ -115,37 +115,37 @@ static JSValue getElementsArrayAttribute(JSGlobalObject& lexicalGlobalObject, co
 
 JSValue JSElement::ariaControlsElements(JSGlobalObject& lexicalGlobalObject) const
 {
-    return getElementsArrayAttribute(lexicalGlobalObject, *this, WebCore::HTMLNames::aria_controlsAttr);
+    return getElementsArrayAttribute(lexicalGlobalObject, *this, CyberCore::HTMLNames::aria_controlsAttr);
 }
 
 JSValue JSElement::ariaDescribedByElements(JSGlobalObject& lexicalGlobalObject) const
 {
-    return getElementsArrayAttribute(lexicalGlobalObject, *this, WebCore::HTMLNames::aria_describedbyAttr);
+    return getElementsArrayAttribute(lexicalGlobalObject, *this, CyberCore::HTMLNames::aria_describedbyAttr);
 }
 
 JSValue JSElement::ariaDetailsElements(JSGlobalObject& lexicalGlobalObject) const
 {
-    return getElementsArrayAttribute(lexicalGlobalObject, *this, WebCore::HTMLNames::aria_detailsAttr);
+    return getElementsArrayAttribute(lexicalGlobalObject, *this, CyberCore::HTMLNames::aria_detailsAttr);
 }
 
 JSValue JSElement::ariaErrorMessageElements(JSGlobalObject& lexicalGlobalObject) const
 {
-    return getElementsArrayAttribute(lexicalGlobalObject, *this, WebCore::HTMLNames::aria_errormessageAttr);
+    return getElementsArrayAttribute(lexicalGlobalObject, *this, CyberCore::HTMLNames::aria_errormessageAttr);
 }
 
 JSValue JSElement::ariaFlowToElements(JSGlobalObject& lexicalGlobalObject) const
 {
-    return getElementsArrayAttribute(lexicalGlobalObject, *this, WebCore::HTMLNames::aria_flowtoAttr);
+    return getElementsArrayAttribute(lexicalGlobalObject, *this, CyberCore::HTMLNames::aria_flowtoAttr);
 }
 
 JSValue JSElement::ariaLabelledByElements(JSGlobalObject& lexicalGlobalObject) const
 {
-    return getElementsArrayAttribute(lexicalGlobalObject, *this, WebCore::HTMLNames::aria_labelledbyAttr);
+    return getElementsArrayAttribute(lexicalGlobalObject, *this, CyberCore::HTMLNames::aria_labelledbyAttr);
 }
 
 JSValue JSElement::ariaOwnsElements(JSGlobalObject& lexicalGlobalObject) const
 {
-    return getElementsArrayAttribute(lexicalGlobalObject, *this, WebCore::HTMLNames::aria_ownsAttr);
+    return getElementsArrayAttribute(lexicalGlobalObject, *this, CyberCore::HTMLNames::aria_ownsAttr);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

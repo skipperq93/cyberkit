@@ -47,7 +47,7 @@ constexpr unsigned MaxPeriodicWaveSize = 16384;
 
 constexpr float CentsPerRange = 1200 / NumberOfOctaveBands;
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PeriodicWave> PeriodicWave::create(float sampleRate, Float32Array& real, Float32Array& imaginary)
 {
@@ -339,6 +339,6 @@ unsigned PeriodicWave::periodicWaveSize() const
     return MaxPeriodicWaveSize;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -31,7 +31,7 @@
 #include "AccessibilityRenderObject.h"
 #include "RenderImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AXImage : public AccessibilityRenderObject {
 public:
@@ -45,4 +45,4 @@ private:
     std::optional<AccessibilityChildrenVector> imageOverlayElements() override;
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 

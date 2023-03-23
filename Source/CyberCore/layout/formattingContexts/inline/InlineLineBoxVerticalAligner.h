@@ -28,7 +28,7 @@
 #include "InlineFormattingContext.h"
 #include "InlineFormattingGeometry.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class LineBoxVerticalAligner {

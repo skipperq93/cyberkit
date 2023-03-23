@@ -54,7 +54,7 @@ webkit_dom_html_u_list_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_u_list_element_get_compact(CyberKitDOMHTMLUListElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_u_list_element_get_compact(CyberKitDOMHTMLUListElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_u_list_element_set_compact(CyberKitDOMHTMLUListElement* self, gboolean value);
@@ -76,7 +76,7 @@ webkit_dom_html_u_list_element_set_compact(CyberKitDOMHTMLUListElement* self, gb
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_u_list_element_get_type_attr(CyberKitDOMHTMLUListElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_u_list_element_get_type_attr(CyberKitDOMHTMLUListElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_u_list_element_set_type_attr(CyberKitDOMHTMLUListElement* self, const gchar* value);

@@ -40,7 +40,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PannerNode);
 
@@ -589,6 +589,6 @@ void PannerNode::invalidateCachedPropertiesIfNecessary()
         m_cachedConeGain = std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

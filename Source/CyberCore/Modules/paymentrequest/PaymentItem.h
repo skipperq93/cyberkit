@@ -30,7 +30,7 @@
 #include "PaymentCurrencyAmount.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentItem {
     String label;
@@ -38,6 +38,6 @@ struct PaymentItem {
     bool pending { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

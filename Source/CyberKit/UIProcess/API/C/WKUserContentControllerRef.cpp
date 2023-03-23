@@ -33,7 +33,7 @@
 #include "WKAPICast.h"
 #include "WebUserContentControllerProxy.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKUserContentControllerGetTypeID()
 {

@@ -25,7 +25,7 @@
 #include "HTMLElement.h"
 #include "StringWithDirection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTitleElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLTitleElement);

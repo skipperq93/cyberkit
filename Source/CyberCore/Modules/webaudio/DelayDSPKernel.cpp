@@ -32,7 +32,7 @@
 #include "VectorMath.h"
 #include <algorithm>
 
-namespace WebCore {
+namespace CyberCore {
 
 static size_t bufferLengthForDelay(double maxDelayTime, double sampleRate)
 {
@@ -235,6 +235,6 @@ bool DelayDSPKernel::requiresTailProcessing() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

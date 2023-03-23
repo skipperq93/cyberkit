@@ -30,7 +30,7 @@
 #include "Event.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePayCouponCodeChangedEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(ApplePayCouponCodeChangedEvent);
@@ -53,6 +53,6 @@ private:
     const String m_couponCode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_COUPON_CODE)

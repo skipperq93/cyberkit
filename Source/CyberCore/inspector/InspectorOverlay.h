@@ -51,7 +51,7 @@ template <typename T>
 using ErrorStringOr = Expected<T, ErrorString>;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WeakPtrImplWithEventTargetData;
 class FontCascade;
@@ -359,4 +359,4 @@ template<class Decoder> std::optional<InspectorOverlay::Highlight::GridHighlight
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

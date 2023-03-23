@@ -27,7 +27,7 @@
 #include "GPUSupportedFeatures.h"
 #include "IDLTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void GPUSupportedFeatures::initializeSetLike(DOMSetAdapter& set) const
 {

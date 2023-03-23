@@ -29,7 +29,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ProvisionalPageProxy;
 class WebPageProxy;
@@ -63,4 +63,4 @@ private:
     WeakPtr<ProvisionalPageProxy> m_provisionalPage;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

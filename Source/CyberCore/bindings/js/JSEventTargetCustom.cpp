@@ -41,7 +41,7 @@
 #include "OffscreenCanvas.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<EventTarget>&& value)
@@ -81,4 +81,4 @@ void JSEventTarget::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSEventTarget);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -357,7 +357,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 
     validate(_configuration.get());
 
-    WebKit::WebProcessPool& processPool = *[_configuration processPool]->_processPool;
+    CyberKit::WebProcessPool& processPool = *[_configuration processPool]->_processPool;
 
     auto pageConfiguration = [configuration copyPageConfiguration];
 
@@ -375,7 +375,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
     _needsToPresentLockdownModeMessage = YES;
 
     auto fastClickingEnabled = []() {
-        if (NSNumber *enabledValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"WebKitFastClickingDisabled"])
+        if (NSNumber *enabledValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"CyberKitFastClickingDisabled"])
             return enabledValue.boolValue;
         return defaultFastClickingEnabled;
     };
@@ -408,7 +408,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 #endif
 
 #if PLATFORM(MAC)
-    _impl = makeUnique<WebKit::WebViewImpl>(self, self, processPool, pageConfiguration.copyRef());
+    _impl = makeUnique<CyberKit::WebViewImpl>(self, self, processPool, pageConfiguration.copyRef());
     _page = &_impl->page();
 
     _impl->setAutomaticallyAdjustsContentInsets(true);
@@ -419,15 +419,15 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 
     _page->setApplicationNameForDesktopUserAgent(configuration._applicationNameForDesktopUserAgent);
 
-    _navigationState = makeUnique<WebKit::NavigationState>(self);
+    _navigationState = makeUnique<CyberKit::NavigationState>(self);
     _page->setNavigationClient(_navigationState->createNavigationClient());
 
-    _uiDelegate = makeUnique<WebKit::UIDelegate>(self);
-    _page->setFindClient(makeUnique<WebKit::FindClient>(self));
-    _page->setDiagnosticLoggingClient(makeUnique<WebKit::DiagnosticLoggingClient>(self));
+    _uiDelegate = makeUnique<CyberKit::UIDelegate>(self);
+    _page->setFindClient(makeUnique<CyberKit::FindClient>(self));
+    _page->setDiagnosticLoggingClient(makeUnique<CyberKit::DiagnosticLoggingClient>(self));
 
-    _iconLoadingDelegate = makeUnique<WebKit::IconLoadingDelegate>(self);
-    _resourceLoadDelegate = makeUnique<WebKit::ResourceLoadDelegate>(self);
+    _iconLoadingDelegate = makeUnique<CyberKit::IconLoadingDelegate>(self);
+    _resourceLoadDelegate = makeUnique<CyberKit::ResourceLoadDelegate>(self);
 
     for (auto& pair : pageConfiguration->urlSchemeHandlers())
         _page->setURLSchemeHandlerForScheme(pair.value.get(), pair.key);
@@ -466,14 +466,14 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 #endif
 
 #if PLATFORM(MAC)
-    if (auto pageGroup = WebKit::toImpl([_configuration _pageGroup]))
+    if (auto pageGroup = CyberKit::toImpl([_configuration _pageGroup]))
         pageConfiguration->setPageGroup(pageGroup);
     else
 #endif
     {
         NSString *groupIdentifier = [_configuration _groupIdentifier];
         if (groupIdentifier.length)
-            pageConfiguration->setPageGroup(WebKit::WebPageGroup::create(groupIdentifier).ptr());
+            pageConfiguration->setPageGroup(CyberKit::WebPageGroup::create(groupIdentifier).ptr());
     }
 
     pageConfiguration->setAdditionalSupportedImageTypes(makeVector<String>([_configuration _additionalSupportedImageTypes]));
@@ -568,7 +568,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 #endif
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(SERVICE_WORKER)
-    bool hasServiceWorkerEntitlement = (WTF::processHasEntitlement("com.apple.developer.WebKit.ServiceWorkers"_s) || WTF::processHasEntitlement("com.apple.developer.web-browser"_s)) && ![_configuration preferences]._serviceWorkerEntitlementDisabledForTesting;
+    bool hasServiceWorkerEntitlement = (WTF::processHasEntitlement("com.apple.developer.CyberKit.ServiceWorkers"_s) || WTF::processHasEntitlement("com.apple.developer.web-browser"_s)) && ![_configuration preferences]._serviceWorkerEntitlementDisabledForTesting;
     if (!hasServiceWorkerEntitlement && ![_configuration limitsNavigationsToAppBoundDomains])
         pageConfiguration->preferences()->setServiceWorkersEnabled(false);
     pageConfiguration->preferences()->setServiceWorkerEntitlementDisabledForTesting(!![_configuration preferences]._serviceWorkerEntitlementDisabledForTesting);
@@ -581,8 +581,8 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
         pageConfiguration->preferences()->setNeedsSiteSpecificQuirks(false);
 
 #if PLATFORM(IOS_FAMILY)
-    pageConfiguration->preferences()->setAlternateFormControlDesignEnabled(WebKit::defaultAlternateFormControlDesignEnabled());
-    pageConfiguration->preferences()->setVideoFullscreenRequiresElementFullscreen(WebKit::defaultVideoFullscreenRequiresElementFullscreen());
+    pageConfiguration->preferences()->setAlternateFormControlDesignEnabled(CyberKit::defaultAlternateFormControlDesignEnabled());
+    pageConfiguration->preferences()->setVideoFullscreenRequiresElementFullscreen(CyberKit::defaultVideoFullscreenRequiresElementFullscreen());
 #endif
 
     pageConfiguration->preferences()->setMarkedTextInputEnabled(!![_configuration _markedTextInputEnabled]);
@@ -1026,16 +1026,16 @@ static bool validateArgument(id argument)
     _page->resumeAllMediaPlayback(makeBlockPtr(completionHandler));
 }
 
-static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState mediaPlaybackState)
+static WKMediaPlaybackState toWKMediaPlaybackState(CyberKit::MediaPlaybackState mediaPlaybackState)
 {
     switch (mediaPlaybackState) {
-    case WebKit::MediaPlaybackState::NoMediaPlayback:
+    case CyberKit::MediaPlaybackState::NoMediaPlayback:
         return WKMediaPlaybackStateNone;
-    case WebKit::MediaPlaybackState::MediaPlaybackPlaying:
+    case CyberKit::MediaPlaybackState::MediaPlaybackPlaying:
         return WKMediaPlaybackStatePlaying;
-    case WebKit::MediaPlaybackState::MediaPlaybackPaused:
+    case CyberKit::MediaPlaybackState::MediaPlaybackPaused:
         return WKMediaPlaybackStatePaused;
-    case WebKit::MediaPlaybackState::MediaPlaybackSuspended:
+    case CyberKit::MediaPlaybackState::MediaPlaybackSuspended:
         return WKMediaPlaybackStateSuspended;
     default:
         break;
@@ -1222,21 +1222,21 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
     CyberCore::IntSize bitmapSize(snapshotWidth, imageHeight);
     bitmapSize.scale(deviceScale, deviceScale);
 
-    WebKit::SnapshotOptions snapshotOptions = WebKit::SnapshotOptionsInViewCoordinates;
+    CyberKit::SnapshotOptions snapshotOptions = CyberKit::SnapshotOptionsInViewCoordinates;
     if (!snapshotConfiguration._includesSelectionHighlighting)
-        snapshotOptions |= WebKit::SnapshotOptionsExcludeSelectionHighlighting;
+        snapshotOptions |= CyberKit::SnapshotOptionsExcludeSelectionHighlighting;
 
     // Software snapshot will not capture elements rendered with hardware acceleration (WebGL, video, etc).
     // This code doesn't consider snapshotConfiguration.afterScreenUpdates since the software snapshot always
     // contains recent updates. If we ever have a UI-side snapshot mechanism on macOS, we will need to factor
     // in snapshotConfiguration.afterScreenUpdates at that time.
-    _page->takeSnapshot(CyberCore::enclosingIntRect(rectInViewCoordinates), bitmapSize, snapshotOptions, [handler, snapshotWidth, imageHeight](const WebKit::ShareableBitmapHandle& imageHandle) {
+    _page->takeSnapshot(CyberCore::enclosingIntRect(rectInViewCoordinates), bitmapSize, snapshotOptions, [handler, snapshotWidth, imageHeight](const CyberKit::ShareableBitmapHandle& imageHandle) {
         if (imageHandle.isNull()) {
             tracePoint(TakeSnapshotEnd, snapshotFailedTraceValue);
             handler(nil, createNSError(WKErrorUnknown).get());
             return;
         }
-        auto bitmap = WebKit::ShareableBitmap::create(imageHandle, WebKit::SharedMemory::Protection::ReadOnly);
+        auto bitmap = CyberKit::ShareableBitmap::create(imageHandle, CyberKit::SharedMemory::Protection::ReadOnly);
         RetainPtr<CGImageRef> cgImage = bitmap ? bitmap->makeCGImage() : nullptr;
         auto image = adoptNS([[NSImage alloc] initWithCGImage:cgImage.get() size:NSMakeSize(snapshotWidth, imageHeight)]);
         tracePoint(TakeSnapshotEnd, true);
@@ -1311,7 +1311,7 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
     _allowsBackForwardNavigationGestures = allowsBackForwardNavigationGestures;
 
     if (allowsBackForwardNavigationGestures && !_gestureController) {
-        _gestureController = makeUnique<WebKit::ViewGestureController>(*_page);
+        _gestureController = makeUnique<CyberKit::ViewGestureController>(*_page);
         _gestureController->installSwipeHandler(self, [self scrollView]);
         if (WKWebView *alternateWebView = [_configuration _alternateWebViewForNavigationGestures])
             _gestureController->setAlternateBackForwardListSourcePage(alternateWebView->_page.get());
@@ -1386,16 +1386,16 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
     return _page->pageZoomFactor();
 }
 
-inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configuration)
+inline OptionSet<CyberKit::FindOptions> toFindOptions(WKFindConfiguration *configuration)
 {
-    OptionSet<WebKit::FindOptions> findOptions;
+    OptionSet<CyberKit::FindOptions> findOptions;
 
     if (!configuration.caseSensitive)
-        findOptions.add(WebKit::FindOptions::CaseInsensitive);
+        findOptions.add(CyberKit::FindOptions::CaseInsensitive);
     if (configuration.backwards)
-        findOptions.add(WebKit::FindOptions::Backwards);
+        findOptions.add(CyberKit::FindOptions::Backwards);
     if (configuration.wraps)
-        findOptions.add(WebKit::FindOptions::WrapAround);
+        findOptions.add(CyberKit::FindOptions::WrapAround);
 
     return findOptions;
 }
@@ -1431,7 +1431,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 
 - (id)interactionState
 {
-    return WebKit::encodeSessionState(_page->sessionState()).autorelease();
+    return CyberKit::encodeSessionState(_page->sessionState()).autorelease();
 }
 
 - (void)setInteractionState:(id)interactionState
@@ -1440,8 +1440,8 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
     if (![(id)interactionState isKindOfClass:[NSData class]])
         return;
 
-    WebKit::SessionState sessionState;
-    if (!WebKit::decodeSessionState((NSData *)(interactionState), sessionState))
+    CyberKit::SessionState sessionState;
+    if (!CyberKit::decodeSessionState((NSData *)(interactionState), sessionState))
         return;
     _page->restoreFromSessionState(sessionState, true);
 }
@@ -1562,7 +1562,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 
 #pragma mark - macOS/iOS internal
 
-- (void)_showSafeBrowsingWarning:(const WebKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler
+- (void)_showSafeBrowsingWarning:(const CyberKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler
 {
     _safeBrowsingWarning = adoptNS([[WKSafeBrowsingWarning alloc] initWithFrame:self.bounds safeBrowsingWarning:warning completionHandler:[weakSelf = WeakObjCPtr<WKWebView>(self), completionHandler = WTFMove(completionHandler)] (auto&& result) mutable {
         completionHandler(WTFMove(result));
@@ -1570,7 +1570,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
         if (!strongSelf)
             return;
         bool navigatesFrame = WTF::switchOn(result,
-            [] (WebKit::ContinueUnsafeLoad continueUnsafeLoad) { return continueUnsafeLoad == WebKit::ContinueUnsafeLoad::Yes; },
+            [] (CyberKit::ContinueUnsafeLoad continueUnsafeLoad) { return continueUnsafeLoad == CyberKit::ContinueUnsafeLoad::Yes; },
             [] (const URL&) { return true; }
         );
         bool forMainFrameNavigation = [strongSelf->_safeBrowsingWarning forMainFrameNavigation];
@@ -1620,7 +1620,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
             return;
 
 #if PLATFORM(IOS_FAMILY)
-        if (!withoutWaitingForAnimatedResize && strongSelf->_perProcessState.dynamicViewportUpdateMode != WebKit::DynamicViewportUpdateMode::NotResizing) {
+        if (!withoutWaitingForAnimatedResize && strongSelf->_perProcessState.dynamicViewportUpdateMode != CyberKit::DynamicViewportUpdateMode::NotResizing) {
             strongSelf->_callbacksDeferredDuringResize.append([updateBlockCopy] {
                 updateBlockCopy();
             });
@@ -1752,7 +1752,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
     return toAPI(_page.get());
 }
 
-- (NakedPtr<WebKit::WebPageProxy>)_page
+- (NakedPtr<CyberKit::WebPageProxy>)_page
 {
     return _page.get();
 }
@@ -1798,7 +1798,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
     });
 }
 
-static NSDictionary *dictionaryRepresentationForEditorState(const WebKit::EditorState& state)
+static NSDictionary *dictionaryRepresentationForEditorState(const CyberKit::EditorState& state)
 {
     if (!state.hasPostLayoutData())
         return @{ @"post-layout-data" : @NO };
@@ -1806,33 +1806,33 @@ static NSDictionary *dictionaryRepresentationForEditorState(const WebKit::Editor
     auto& postLayoutData = *state.postLayoutData;
     return @{
         @"post-layout-data" : @YES,
-        @"bold": postLayoutData.typingAttributes & WebKit::AttributeBold ? @YES : @NO,
-        @"italic": postLayoutData.typingAttributes & WebKit::AttributeItalics ? @YES : @NO,
-        @"underline": postLayoutData.typingAttributes & WebKit::AttributeUnderline ? @YES : @NO,
-        @"text-alignment": @(nsTextAlignment(static_cast<WebKit::TextAlignment>(postLayoutData.textAlignment))),
+        @"bold": postLayoutData.typingAttributes & CyberKit::AttributeBold ? @YES : @NO,
+        @"italic": postLayoutData.typingAttributes & CyberKit::AttributeItalics ? @YES : @NO,
+        @"underline": postLayoutData.typingAttributes & CyberKit::AttributeUnderline ? @YES : @NO,
+        @"text-alignment": @(nsTextAlignment(static_cast<CyberKit::TextAlignment>(postLayoutData.textAlignment))),
         @"text-color": (NSString *)serializationForCSS(postLayoutData.textColor)
     };
 }
 
-static NSTextAlignment nsTextAlignment(WebKit::TextAlignment alignment)
+static NSTextAlignment nsTextAlignment(CyberKit::TextAlignment alignment)
 {
     switch (alignment) {
-    case WebKit::NoAlignment:
+    case CyberKit::NoAlignment:
         return NSTextAlignmentNatural;
-    case WebKit::LeftAlignment:
+    case CyberKit::LeftAlignment:
         return NSTextAlignmentLeft;
-    case WebKit::RightAlignment:
+    case CyberKit::RightAlignment:
         return NSTextAlignmentRight;
-    case WebKit::CenterAlignment:
+    case CyberKit::CenterAlignment:
         return NSTextAlignmentCenter;
-    case WebKit::JustifiedAlignment:
+    case CyberKit::JustifiedAlignment:
         return NSTextAlignmentJustified;
     }
     ASSERT_NOT_REACHED();
     return NSTextAlignmentNatural;
 }
 
-static _WKSelectionAttributes selectionAttributes(const WebKit::EditorState& editorState, _WKSelectionAttributes previousAttributes)
+static _WKSelectionAttributes selectionAttributes(const CyberKit::EditorState& editorState, _WKSelectionAttributes previousAttributes)
 {
     _WKSelectionAttributes attributes = _WKSelectionAttributeNoSelection;
     if (editorState.selectionIsNone)
@@ -1941,13 +1941,13 @@ static _WKSelectionAttributes selectionAttributes(const WebKit::EditorState& edi
 
     WKFullscreenState state = WKFullscreenStateNotInFullscreen;
     switch (fullscreenManager->fullscreenState()) {
-    case WebKit::WebFullScreenManagerProxy::FullscreenState::EnteringFullscreen:
+    case CyberKit::WebFullScreenManagerProxy::FullscreenState::EnteringFullscreen:
         state = WKFullscreenStateEnteringFullscreen;
         break;
-    case WebKit::WebFullScreenManagerProxy::FullscreenState::InFullscreen:
+    case CyberKit::WebFullScreenManagerProxy::FullscreenState::InFullscreen:
         state = WKFullscreenStateInFullscreen;
         break;
-    case WebKit::WebFullScreenManagerProxy::FullscreenState::ExitingFullscreen:
+    case CyberKit::WebFullScreenManagerProxy::FullscreenState::ExitingFullscreen:
         state = WKFullscreenStateExitingFullscreen;
         break;
     default:
@@ -2137,7 +2137,7 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(FORWARD_ACTION_TO_WKCONTENTVIEW)
 
 - (void)_frames:(void (^)(_WKFrameTreeNode *))completionHandler
 {
-    _page->getAllFrames([completionHandler = makeBlockPtr(completionHandler), page = Ref { *_page.get() }] (WebKit::FrameTreeNodeData&& data) {
+    _page->getAllFrames([completionHandler = makeBlockPtr(completionHandler), page = Ref { *_page.get() }] (CyberKit::FrameTreeNodeData&& data) {
         completionHandler(wrapper(API::FrameTreeNode::create(WTFMove(data), page.get())));
     });
 }
@@ -2357,7 +2357,7 @@ static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationIt
 #if ENABLE(IMAGE_ANALYSIS)
     THROW_IF_SUSPENDED;
 
-    if (!_page || !_page->preferences().visualTranslationEnabled() || !WebKit::languageIdentifierSupportsLiveText(sourceLanguageIdentifier))
+    if (!_page || !_page->preferences().visualTranslationEnabled() || !CyberKit::languageIdentifierSupportsLiveText(sourceLanguageIdentifier))
         return;
 
     _page->startVisualTranslation(sourceLanguageIdentifier, targetLanguageIdentifier);
@@ -2383,12 +2383,12 @@ static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationIt
 
 + (NSString *)_stringForFind
 {
-    return WebKit::stringForFind();
+    return CyberKit::stringForFind();
 }
 
 + (void)_setStringForFind:(NSString *)findString
 {
-    WebKit::updateStringForFind(findString);
+    CyberKit::updateStringForFind(findString);
 }
 
 - (_WKRemoteObjectRegistry *)_remoteObjectRegistry
@@ -2509,7 +2509,7 @@ static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationIt
 
 - (_WKMediaMutedState)_mediaMutedState
 {
-    return WebKit::toWKMediaMutedState(_page->mutedStateFlags());
+    return CyberKit::toWKMediaMutedState(_page->mutedStateFlags());
 }
 
 - (void)_closeAllMediaPresentations
@@ -2543,9 +2543,9 @@ static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationIt
 }
 
 #if ENABLE(APP_HIGHLIGHTS)
-static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, NSData *highlight)
+static void convertAndAddHighlight(Vector<Ref<CyberKit::SharedMemory>>& buffers, NSData *highlight)
 {
-    auto sharedMemory = WebKit::SharedMemory::allocate(highlight.length);
+    auto sharedMemory = CyberKit::SharedMemory::allocate(highlight.length);
     if (sharedMemory) {
         [highlight getBytes:sharedMemory->data() length:highlight.length];
         buffers.append(*sharedMemory);
@@ -2557,7 +2557,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 {
     THROW_IF_SUSPENDED;
 #if ENABLE(APP_HIGHLIGHTS)
-    Vector<Ref<WebKit::SharedMemory>> buffers;
+    Vector<Ref<CyberKit::SharedMemory>> buffers;
 
     for (NSData *highlight in highlights)
         convertAndAddHighlight(buffers, highlight);
@@ -2572,7 +2572,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 {
     THROW_IF_SUSPENDED;
 #if ENABLE(APP_HIGHLIGHTS)
-    Vector<Ref<WebKit::SharedMemory>> buffers;
+    Vector<Ref<CyberKit::SharedMemory>> buffers;
     
     convertAndAddHighlight(buffers, highlight);
     _page->restoreAppHighlightsAndScrollToIndex(buffers, 0);
@@ -2617,7 +2617,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (WKNavigation *)_loadData:(NSData *)data MIMEType:(NSString *)MIMEType characterEncodingName:(NSString *)characterEncodingName baseURL:(NSURL *)baseURL userData:(id)userData
 {
     THROW_IF_SUSPENDED;
-    return wrapper(_page->loadData({ static_cast<const uint8_t*>(data.bytes), data.length }, MIMEType, characterEncodingName, baseURL.absoluteString, WebKit::ObjCObjectGraph::create(userData).ptr()));
+    return wrapper(_page->loadData({ static_cast<const uint8_t*>(data.bytes), data.length }, MIMEType, characterEncodingName, baseURL.absoluteString, CyberKit::ObjCObjectGraph::create(userData).ptr()));
 }
 
 - (WKNavigation *)_loadRequest:(NSURLRequest *)request shouldOpenExternalURLs:(BOOL)shouldOpenExternalURLs
@@ -2729,7 +2729,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 
 - (NSArray *)_certificateChain
 {
-    if (WebKit::WebFrameProxy* mainFrame = _page->mainFrame())
+    if (CyberKit::WebFrameProxy* mainFrame = _page->mainFrame())
         return (__bridge NSArray *)CyberCore::CertificateInfo::certificateChainFromSecTrust(mainFrame->certificateInfo().trust().get()).autorelease();
 
     return nil;
@@ -2843,12 +2843,12 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (void)_killWebContentProcessAndResetState
 {
     THROW_IF_SUSPENDED;
-    Ref<WebKit::WebProcessProxy> protectedProcessProxy(_page->process());
-    protectedProcessProxy->requestTermination(WebKit::ProcessTerminationReason::RequestedByClient);
+    Ref<CyberKit::WebProcessProxy> protectedProcessProxy(_page->process());
+    protectedProcessProxy->requestTermination(CyberKit::ProcessTerminationReason::RequestedByClient);
 
     if (auto* provisionalPageProxy = _page->provisionalPageProxy()) {
-        Ref<WebKit::WebProcessProxy> protectedProcessProxy(provisionalPageProxy->process());
-        protectedProcessProxy->requestTermination(WebKit::ProcessTerminationReason::RequestedByClient);
+        Ref<CyberKit::WebProcessProxy> protectedProcessProxy(provisionalPageProxy->process());
+        protectedProcessProxy->requestTermination(CyberKit::ProcessTerminationReason::RequestedByClient);
     }
 }
 
@@ -2875,7 +2875,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (NSData *)_sessionStateData
 {
     // FIXME: This should not use the legacy session state encoder.
-    return wrapper(WebKit::encodeLegacySessionState(_page->sessionState()));
+    return wrapper(CyberKit::encodeLegacySessionState(_page->sessionState()));
 }
 
 - (_WKSessionState *)_sessionState
@@ -2885,7 +2885,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 
 - (_WKSessionState *)_sessionStateWithFilter:(BOOL (^)(WKBackForwardListItem *item))filter
 {
-    WebKit::SessionState sessionState = _page->sessionState([filter](WebKit::WebBackForwardListItem& item) {
+    CyberKit::SessionState sessionState = _page->sessionState([filter](CyberKit::WebBackForwardListItem& item) {
         if (!filter)
             return true;
 
@@ -2899,8 +2899,8 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 {
     THROW_IF_SUSPENDED;
     // FIXME: This should not use the legacy session state decoder.
-    WebKit::SessionState sessionState;
-    if (!WebKit::decodeLegacySessionState(static_cast<const uint8_t*>(sessionStateData.bytes), sessionStateData.length, sessionState))
+    CyberKit::SessionState sessionState;
+    if (!CyberKit::decodeLegacySessionState(static_cast<const uint8_t*>(sessionStateData.bytes), sessionStateData.length, sessionState))
         return;
 
     _page->restoreFromSessionState(WTFMove(sessionState), true);
@@ -2909,7 +2909,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (WKNavigation *)_restoreSessionState:(_WKSessionState *)sessionState andNavigate:(BOOL)navigate
 {
     THROW_IF_SUSPENDED;
-    return wrapper(_page->restoreFromSessionState(sessionState ? sessionState->_sessionState : WebKit::SessionState { }, navigate));
+    return wrapper(_page->restoreFromSessionState(sessionState ? sessionState->_sessionState : CyberKit::SessionState { }, navigate));
 }
 
 - (void)_close
@@ -3016,13 +3016,13 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (void)_showSafeBrowsingWarningWithURL:(NSURL *)url title:(NSString *)title warning:(NSString *)warning detailsWithLinks:(NSAttributedString *)details completionHandler:(void(^)(BOOL, NSURL *))completionHandler
 {
     THROW_IF_SUSPENDED;
-    auto safeBrowsingWarning = WebKit::SafeBrowsingWarning::create(url, title, warning, details);
-    auto wrapper = [completionHandler = makeBlockPtr(completionHandler)] (std::variant<WebKit::ContinueUnsafeLoad, URL>&& variant) {
-        switchOn(variant, [&] (WebKit::ContinueUnsafeLoad continueUnsafeLoad) {
+    auto safeBrowsingWarning = CyberKit::SafeBrowsingWarning::create(url, title, warning, details);
+    auto wrapper = [completionHandler = makeBlockPtr(completionHandler)] (std::variant<CyberKit::ContinueUnsafeLoad, URL>&& variant) {
+        switchOn(variant, [&] (CyberKit::ContinueUnsafeLoad continueUnsafeLoad) {
             switch (continueUnsafeLoad) {
-            case WebKit::ContinueUnsafeLoad::Yes:
+            case CyberKit::ContinueUnsafeLoad::Yes:
                 return completionHandler(YES, nil);
-            case WebKit::ContinueUnsafeLoad::No:
+            case CyberKit::ContinueUnsafeLoad::No:
                 return completionHandler(NO, nil);
             }
         }, [&] (URL url) {
@@ -3038,12 +3038,12 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 
 + (NSURL *)_confirmMalwareSentinel
 {
-    return WebKit::SafeBrowsingWarning::confirmMalwareSentinel();
+    return CyberKit::SafeBrowsingWarning::confirmMalwareSentinel();
 }
 
 + (NSURL *)_visitUnsafeWebsiteSentinel
 {
-    return WebKit::SafeBrowsingWarning::visitUnsafeWebsiteSentinel();
+    return CyberKit::SafeBrowsingWarning::visitUnsafeWebsiteSentinel();
 }
 
 - (void)_isJITEnabled:(void(^)(BOOL))completionHandler
@@ -3217,7 +3217,7 @@ static inline OptionSet<CyberCore::LayoutMilestone> layoutMilestones(_WKRenderin
 - (void)_getContentsAsStringWithCompletionHandler:(void (^)(NSString *, NSError *))completionHandler
 {
     THROW_IF_SUSPENDED;
-    _page->getContentsAsString(WebKit::ContentAsStringIncludesChildFrames::No, [handler = makeBlockPtr(completionHandler)](String string) {
+    _page->getContentsAsString(CyberKit::ContentAsStringIncludesChildFrames::No, [handler = makeBlockPtr(completionHandler)](String string) {
         handler(string, nil);
     });
 }
@@ -3225,7 +3225,7 @@ static inline OptionSet<CyberCore::LayoutMilestone> layoutMilestones(_WKRenderin
 - (void)_getContentsAsStringWithCompletionHandlerKeepIPCConnectionAliveForTesting:(void (^)(NSString *, NSError *))completionHandler
 {
     THROW_IF_SUSPENDED;
-    _page->getContentsAsString(WebKit::ContentAsStringIncludesChildFrames::No, [handler = makeBlockPtr(completionHandler), connection = RefPtr { _page->process().connection() }](String string) {
+    _page->getContentsAsString(CyberKit::ContentAsStringIncludesChildFrames::No, [handler = makeBlockPtr(completionHandler), connection = RefPtr { _page->process().connection() }](String string) {
         handler(string, nil);
     });
 }
@@ -3233,7 +3233,7 @@ static inline OptionSet<CyberCore::LayoutMilestone> layoutMilestones(_WKRenderin
 - (void)_getContentsOfAllFramesAsStringWithCompletionHandler:(void (^)(NSString *))completionHandler
 {
     THROW_IF_SUSPENDED;
-    _page->getContentsAsString(WebKit::ContentAsStringIncludesChildFrames::Yes, [handler = makeBlockPtr(completionHandler)](String string) {
+    _page->getContentsAsString(CyberKit::ContentAsStringIncludesChildFrames::Yes, [handler = makeBlockPtr(completionHandler)](String string) {
         handler(string);
     });
 }
@@ -3402,7 +3402,7 @@ static inline OptionSet<CyberCore::LayoutMilestone> layoutMilestones(_WKRenderin
     if (!diagnosticLoggingClient)
         return nil;
 
-    return static_cast<WebKit::DiagnosticLoggingClient&>(*diagnosticLoggingClient).delegate().autorelease();
+    return static_cast<CyberKit::DiagnosticLoggingClient&>(*diagnosticLoggingClient).delegate().autorelease();
 }
 
 - (void)_setDiagnosticLoggingDelegate:(id<_WKDiagnosticLoggingDelegate>)diagnosticLoggingDelegate
@@ -3411,43 +3411,43 @@ static inline OptionSet<CyberCore::LayoutMilestone> layoutMilestones(_WKRenderin
     if (!diagnosticLoggingClient)
         return;
 
-    static_cast<WebKit::DiagnosticLoggingClient&>(*diagnosticLoggingClient).setDelegate(diagnosticLoggingDelegate);
+    static_cast<CyberKit::DiagnosticLoggingClient&>(*diagnosticLoggingClient).setDelegate(diagnosticLoggingDelegate);
 }
 
 - (id <_WKFindDelegate>)_findDelegate
 {
-    return static_cast<WebKit::FindClient&>(_page->findClient()).delegate().autorelease();
+    return static_cast<CyberKit::FindClient&>(_page->findClient()).delegate().autorelease();
 }
 
 - (void)_setFindDelegate:(id<_WKFindDelegate>)findDelegate
 {
-    static_cast<WebKit::FindClient&>(_page->findClient()).setDelegate(findDelegate);
+    static_cast<CyberKit::FindClient&>(_page->findClient()).setDelegate(findDelegate);
 }
 
-static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFindOptions)
+static inline OptionSet<CyberKit::FindOptions> toFindOptions(_WKFindOptions wkFindOptions)
 {
-    OptionSet<WebKit::FindOptions> findOptions;
+    OptionSet<CyberKit::FindOptions> findOptions;
 
     if (wkFindOptions & _WKFindOptionsCaseInsensitive)
-        findOptions.add(WebKit::FindOptions::CaseInsensitive);
+        findOptions.add(CyberKit::FindOptions::CaseInsensitive);
     if (wkFindOptions & _WKFindOptionsAtWordStarts)
-        findOptions.add(WebKit::FindOptions::AtWordStarts);
+        findOptions.add(CyberKit::FindOptions::AtWordStarts);
     if (wkFindOptions & _WKFindOptionsTreatMedialCapitalAsWordStart)
-        findOptions.add(WebKit::FindOptions::TreatMedialCapitalAsWordStart);
+        findOptions.add(CyberKit::FindOptions::TreatMedialCapitalAsWordStart);
     if (wkFindOptions & _WKFindOptionsBackwards)
-        findOptions.add(WebKit::FindOptions::Backwards);
+        findOptions.add(CyberKit::FindOptions::Backwards);
     if (wkFindOptions & _WKFindOptionsWrapAround)
-        findOptions.add(WebKit::FindOptions::WrapAround);
+        findOptions.add(CyberKit::FindOptions::WrapAround);
     if (wkFindOptions & _WKFindOptionsShowOverlay)
-        findOptions.add(WebKit::FindOptions::ShowOverlay);
+        findOptions.add(CyberKit::FindOptions::ShowOverlay);
     if (wkFindOptions & _WKFindOptionsShowFindIndicator)
-        findOptions.add(WebKit::FindOptions::ShowFindIndicator);
+        findOptions.add(CyberKit::FindOptions::ShowFindIndicator);
     if (wkFindOptions & _WKFindOptionsShowHighlight)
-        findOptions.add(WebKit::FindOptions::ShowHighlight);
+        findOptions.add(CyberKit::FindOptions::ShowHighlight);
     if (wkFindOptions & _WKFindOptionsNoIndexChange)
-        findOptions.add(WebKit::FindOptions::NoIndexChange);
+        findOptions.add(CyberKit::FindOptions::NoIndexChange);
     if (wkFindOptions & _WKFindOptionsDetermineMatchIndex)
-        findOptions.add(WebKit::FindOptions::DetermineMatchIndex);
+        findOptions.add(CyberKit::FindOptions::DetermineMatchIndex);
 
     return findOptions;
 }
@@ -3471,7 +3471,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
     // While AppKit contains logic in NSBarTextFinder to automatically update the find pasteboard
     // when the find string changes, this (along with the find pasteboard itself) are both missing
     // from iOS; thus, on iOS, we update the current find-in-page string here.
-    WebKit::updateStringForFind(string);
+    CyberKit::updateStringForFind(string);
 
     if (_customContentView) {
         [_customContentView web_findString:string options:options maxCount:maxCount];
@@ -3568,7 +3568,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 
         virtual ~FormClient() { }
 
-        void willSubmitForm(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, WebKit::WebFrameProxy& sourceFrame, const Vector<std::pair<WTF::String, WTF::String>>& textFieldValues, API::Object* userData, WTF::Function<void(void)>&& completionHandler) override
+        void willSubmitForm(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, CyberKit::WebFrameProxy& sourceFrame, const Vector<std::pair<WTF::String, WTF::String>>& textFieldValues, API::Object* userData, WTF::Function<void(void)>&& completionHandler) override
         {
             if (userData && userData->type() != API::Object::Type::Data) {
                 ASSERT(!userData || userData->type() == API::Object::Type::Data);
@@ -3601,7 +3601,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
                 }
             }
 
-            auto checker = WebKit::CompletionHandlerCallChecker::create(inputDelegate.get(), @selector(_webView:willSubmitFormValues:userObject:submissionHandler:));
+            auto checker = CyberKit::CompletionHandlerCallChecker::create(inputDelegate.get(), @selector(_webView:willSubmitFormValues:userObject:submissionHandler:));
             [inputDelegate _webView:m_webView willSubmitFormValues:valueMap.get() userObject:userObject submissionHandler:makeBlockPtr([completionHandler = WTFMove(completionHandler), checker = WTFMove(checker)] {
                 if (checker->completionHandlerHasBeenCalled())
                     return;
@@ -3783,7 +3783,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 - (NSArray *)_scrollPerformanceData
 {
 #if PLATFORM(IOS_FAMILY)
-    if (WebKit::RemoteLayerTreeScrollingPerformanceData* scrollPerfData = _page->scrollingPerformanceData())
+    if (CyberKit::RemoteLayerTreeScrollingPerformanceData* scrollPerfData = _page->scrollingPerformanceData())
         return scrollPerfData->data();
 #endif
     return nil;
@@ -3812,8 +3812,8 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 - (void)_setFullscreenDelegate:(id<_WKFullscreenDelegate>)delegate
 {
 #if ENABLE(FULLSCREEN_API)
-    if (is<WebKit::FullscreenClient>(_page->fullscreenClient()))
-        downcast<WebKit::FullscreenClient>(_page->fullscreenClient()).setDelegate(delegate);
+    if (is<CyberKit::FullscreenClient>(_page->fullscreenClient()))
+        downcast<CyberKit::FullscreenClient>(_page->fullscreenClient()).setDelegate(delegate);
 #endif
 }
 
@@ -3821,8 +3821,8 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 - (id<_WKFullscreenDelegate>)_fullscreenDelegate
 {
 #if ENABLE(FULLSCREEN_API)
-    if (is<WebKit::FullscreenClient>(_page->fullscreenClient()))
-        return downcast<WebKit::FullscreenClient>(_page->fullscreenClient()).delegate().autorelease();
+    if (is<CyberKit::FullscreenClient>(_page->fullscreenClient()))
+        return downcast<CyberKit::FullscreenClient>(_page->fullscreenClient()).delegate().autorelease();
 #endif
     return nil;
 }
@@ -3839,7 +3839,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 
 - (_WKMediaCaptureStateDeprecated)_mediaCaptureState
 {
-    return WebKit::toWKMediaCaptureStateDeprecated(_page->reportedMediaState());
+    return CyberKit::toWKMediaCaptureStateDeprecated(_page->reportedMediaState());
 }
 
 - (void)_setMediaCaptureEnabled:(BOOL)enabled
@@ -4001,7 +4001,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
     if (!name)
         return;
 
-    WebKit::WebProcessProxy::permissionChanged(*name, origin->_securityOrigin->securityOrigin());
+    CyberKit::WebProcessProxy::permissionChanged(*name, origin->_securityOrigin->securityOrigin());
 }
 
 @end

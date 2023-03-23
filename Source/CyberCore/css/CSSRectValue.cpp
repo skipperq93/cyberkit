@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CSSRectValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSRectValue::CSSRectValue(Rect rect)
     : CSSValue(RectClass)
@@ -49,4 +49,4 @@ bool CSSRectValue::equals(const CSSRectValue& other) const
     return m_rect.equals(other.m_rect);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

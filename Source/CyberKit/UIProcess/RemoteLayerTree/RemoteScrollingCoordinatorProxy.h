@@ -45,7 +45,7 @@ class FloatPoint;
 class PlatformWheelEvent;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NativeWebWheelEvent;
 class RemoteLayerTreeHost;
@@ -158,11 +158,11 @@ protected:
     HashSet<CyberCore::GraphicsLayer::PlatformLayerID> m_layersWithScrollingRelations;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #define SPECIALIZE_TYPE_TRAITS_REMOTE_SCROLLING_COORDINATOR_PROXY(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::ToValueTypeName) \
-    static bool isType(const WebKit::RemoteScrollingCoordinatorProxy& scrollingCoordinatorProxy) { return scrollingCoordinatorProxy.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::ToValueTypeName) \
+    static bool isType(const CyberKit::RemoteScrollingCoordinatorProxy& scrollingCoordinatorProxy) { return scrollingCoordinatorProxy.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

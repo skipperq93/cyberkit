@@ -37,7 +37,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ClientState;
 class IntRect;
@@ -58,7 +58,7 @@ public:
     WEBCORE_EXPORT void removePlaybackTargetPickerClient(WebMediaSessionManagerClient&, PlaybackTargetClientContextIdentifier);
     WEBCORE_EXPORT void removeAllPlaybackTargetPickerClients(WebMediaSessionManagerClient&);
     WEBCORE_EXPORT void showPlaybackTargetPicker(WebMediaSessionManagerClient&, PlaybackTargetClientContextIdentifier, const IntRect&, bool, bool);
-    WEBCORE_EXPORT void clientStateDidChange(WebMediaSessionManagerClient&, PlaybackTargetClientContextIdentifier, WebCore::MediaProducerMediaStateFlags);
+    WEBCORE_EXPORT void clientStateDidChange(WebMediaSessionManagerClient&, PlaybackTargetClientContextIdentifier, CyberCore::MediaProducerMediaStateFlags);
 
     bool alwaysOnLoggingAllowed() const;
 
@@ -66,16 +66,16 @@ protected:
     WebMediaSessionManager();
     virtual ~WebMediaSessionManager();
 
-    virtual WebCore::MediaPlaybackTargetPicker& platformPicker() = 0;
+    virtual CyberCore::MediaPlaybackTargetPicker& platformPicker() = 0;
     static WebMediaSessionManager& platformManager();
 
 private:
 
-    WebCore::MediaPlaybackTargetPicker& targetPicker();
-    WebCore::MediaPlaybackTargetPickerMock& mockPicker();
+    CyberCore::MediaPlaybackTargetPicker& targetPicker();
+    CyberCore::MediaPlaybackTargetPickerMock& mockPicker();
 
     // MediaPlaybackTargetPicker::Client
-    void setPlaybackTarget(Ref<WebCore::MediaPlaybackTarget>&&) final;
+    void setPlaybackTarget(Ref<CyberCore::MediaPlaybackTarget>&&) final;
     void externalOutputDeviceAvailableDidChange(bool) final;
     void playbackTargetPickerWasDismissed() final;
 
@@ -108,7 +108,7 @@ private:
 
     Vector<std::unique_ptr<ClientState>> m_clientState;
     RefPtr<MediaPlaybackTarget> m_playbackTarget;
-    std::unique_ptr<WebCore::MediaPlaybackTargetPickerMock> m_pickerOverride;
+    std::unique_ptr<CyberCore::MediaPlaybackTargetPickerMock> m_pickerOverride;
     ConfigurationTasks m_taskFlags { NoTask };
     std::unique_ptr<WebMediaSessionLogger> m_logger;
     Seconds m_currentWatchdogInterval;
@@ -118,16 +118,16 @@ private:
     bool m_mockPickerEnabled { false };
 };
 
-String mediaProducerStateString(WebCore::MediaProducerMediaStateFlags);
+String mediaProducerStateString(CyberCore::MediaProducerMediaStateFlags);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename> struct LogArgument;
 
-template<> struct LogArgument<WebCore::MediaProducerMediaStateFlags> {
-    static String toString(WebCore::MediaProducerMediaStateFlags flags) { return WebCore::mediaProducerStateString(flags); }
+template<> struct LogArgument<CyberCore::MediaProducerMediaStateFlags> {
+    static String toString(CyberCore::MediaProducerMediaStateFlags flags) { return CyberCore::mediaProducerStateString(flags); }
 };
 
 } // namespace WTF

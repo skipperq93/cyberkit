@@ -31,7 +31,7 @@
 #include <variant>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class SharedBuffer;
@@ -100,4 +100,4 @@ private:
     Vector<KeyValuePair<String, RefPtr<DOMPromise>>> m_itemPromises;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

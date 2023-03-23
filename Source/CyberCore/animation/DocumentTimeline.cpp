@@ -48,7 +48,7 @@
 #include "RenderLayerBacking.h"
 #include "WebAnimationTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DocumentTimeline> DocumentTimeline::create(Document& document)
 {
@@ -499,4 +499,4 @@ Seconds DocumentTimeline::convertTimelineTimeToOriginRelativeTime(Seconds timeli
     return timelineTime + m_originTime;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

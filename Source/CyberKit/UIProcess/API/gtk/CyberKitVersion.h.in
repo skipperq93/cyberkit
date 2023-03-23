@@ -21,10 +21,10 @@
 #error "Only <webkit@WEBKITGTK_API_INFIX@/webkit@WEBKITGTK_API_INFIX@.h> can be included directly."
 #endif
 
-#ifndef WebKitVersion_h
-#define WebKitVersion_h
+#ifndef CyberKitVersion_h
+#define CyberKitVersion_h
 
-#include <webkit/WebKitDefines.h>
+#include <webkit/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 

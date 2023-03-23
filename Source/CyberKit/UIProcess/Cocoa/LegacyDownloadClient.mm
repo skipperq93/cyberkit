@@ -46,7 +46,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/FileSystem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 
@@ -130,7 +130,7 @@ void LegacyDownloadClient::didReceiveAuthenticationChallenge(DownloadProxy& down
 {
     // FIXME: System Preview needs code here.
     if (!m_delegateMethods.downloadDidReceiveAuthenticationChallengeCompletionHandler) {
-        authenticationChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
+        authenticationChallenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
         return;
     }
 
@@ -308,4 +308,4 @@ void LegacyDownloadClient::releaseActivityTokenIfNecessary(DownloadProxy& downlo
 
 ALLOW_DEPRECATED_DECLARATIONS_END
 
-} // namespace WebKit
+} // namespace CyberKit

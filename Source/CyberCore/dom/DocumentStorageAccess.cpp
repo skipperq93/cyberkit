@@ -44,7 +44,7 @@
 #include "Settings.h"
 #include "UserGestureIndicator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DocumentStorageAccess::DocumentStorageAccess(Document& document)
     : m_document(document)
@@ -313,6 +313,6 @@ bool DocumentStorageAccess::hasFrameSpecificStorageAccess() const
     return frame && frame->loader().client().hasFrameSpecificStorageAccess();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TRACKING_PREVENTION)

@@ -30,7 +30,7 @@ promise_test(async (test) => {
     const iframe = await with_iframe("resources/empty.html");
 
     const options = { method: "POST", cache: "no-cache", mode: "cors", body: "body" };
-    const response = await iframe.contentWindow.fetch(get_host_info().HTTP_REMOTE_ORIGIN +  "/WebKit/service-workers/resources/cross-origin-allow.py", options);
+    const response = await iframe.contentWindow.fetch(get_host_info().HTTP_REMOTE_ORIGIN +  "/CyberKit/service-workers/resources/cross-origin-allow.py", options);
     assert_not_equals(await response.text(), "no cache-control header");
     iframe.remove();
 }, "Ensure cache-control does not break service worker fetch handling");
@@ -41,10 +41,10 @@ promise_test(async (test) => {
     const id = token();
     const blob = new Blob(["test"], { type: "application/badabaoo" });
 
-    iframe.contentWindow.navigator.sendBeacon(get_host_info().HTTP_REMOTE_ORIGIN +  "/WebKit/service-workers/resources/cross-origin-allow-for-beacon.py?token=" + id, blob);
+    iframe.contentWindow.navigator.sendBeacon(get_host_info().HTTP_REMOTE_ORIGIN +  "/CyberKit/service-workers/resources/cross-origin-allow-for-beacon.py?token=" + id, blob);
     await new Promise(resolve => setTimeout(resolve, 50));
 
-    const response = await fetch("/WebKit/service-workers/resources/cross-origin-allow-for-beacon.py?token=" + id);
+    const response = await fetch("/CyberKit/service-workers/resources/cross-origin-allow-for-beacon.py?token=" + id);
     assert_equals(await response.text(), "preflight ok");
 
     iframe.remove();

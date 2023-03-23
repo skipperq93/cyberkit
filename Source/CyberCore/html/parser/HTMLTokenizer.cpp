@@ -34,7 +34,7 @@
 #include <wtf/text/StringBuilder.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

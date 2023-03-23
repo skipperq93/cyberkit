@@ -31,7 +31,7 @@
 #include <wtf/Lock.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RTCDataChannelEvent;
@@ -86,6 +86,6 @@ private:
     bool m_closing { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

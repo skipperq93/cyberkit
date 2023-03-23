@@ -33,7 +33,7 @@
 #include "JSFileSystemFileHandle.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FileSystemDirectoryHandle);
 
@@ -202,6 +202,6 @@ void FileSystemDirectoryHandleIterator::advance(CompletionHandler<void(Exception
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 

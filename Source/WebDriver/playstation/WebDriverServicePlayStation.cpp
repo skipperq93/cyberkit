@@ -35,10 +35,10 @@ namespace WebDriver {
 
 void WebDriverService::platformInit()
 {
-    dlopen("PosixWebKit", RTLD_NOW);
+    dlopen("PosixCyberKit", RTLD_NOW);
 
 #if defined(ENABLE_STATIC_JSC) && !ENABLE_STATIC_JSC
-    dlopen("libJavaScriptCore", RTLD_NOW);
+    dlopen("libCyberScriptCore", RTLD_NOW);
 #endif
 }
 

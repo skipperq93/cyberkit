@@ -64,7 +64,7 @@ webkit_dom_wheel_event_get_type(void);
  * @metaKey: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_wheel_event_init_wheel_event(CyberKitDOMWheelEvent* self, glong wheelDeltaX, glong wheelDeltaY, CyberKitDOMDOMWindow* view, glong screenX, glong screenY, glong clientX, glong clientY, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey);
@@ -75,7 +75,7 @@ webkit_dom_wheel_event_init_wheel_event(CyberKitDOMWheelEvent* self, glong wheel
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_wheel_event_get_wheel_delta_x(CyberKitDOMWheelEvent* self);
@@ -86,7 +86,7 @@ webkit_dom_wheel_event_get_wheel_delta_x(CyberKitDOMWheelEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_wheel_event_get_wheel_delta_y(CyberKitDOMWheelEvent* self);
@@ -97,7 +97,7 @@ webkit_dom_wheel_event_get_wheel_delta_y(CyberKitDOMWheelEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_wheel_event_get_wheel_delta(CyberKitDOMWheelEvent* self);

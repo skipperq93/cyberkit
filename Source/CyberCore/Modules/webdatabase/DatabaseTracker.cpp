@@ -52,10 +52,10 @@
 #include <wtf/text/StringBuilder.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<DatabaseTracker> DatabaseTracker::trackerWithDatabasePath(const String& databasePath)
 {
@@ -1338,4 +1338,4 @@ void DatabaseTracker::notifyDatabasesChanged()
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

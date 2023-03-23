@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUExternalTextureDescriptor.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLVideoElement;
 
@@ -41,7 +41,7 @@ struct GPUExternalTextureDescriptor : public GPUObjectDescriptorBase {
         return {
             { label },
             // FIXME: Handle the video element.
-            WebCore::convertToBacking(colorSpace),
+            CyberCore::convertToBacking(colorSpace),
         };
     }
 

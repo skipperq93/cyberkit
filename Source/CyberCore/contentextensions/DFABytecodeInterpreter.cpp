@@ -31,7 +31,7 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 template <typename IntType>
 static IntType getBits(Span<const uint8_t> bytecode, uint32_t index)
@@ -404,6 +404,6 @@ auto DFABytecodeInterpreter::interpret(const String& urlString, ResourceFlags fl
     return actions;
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

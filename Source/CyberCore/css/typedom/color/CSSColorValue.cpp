@@ -31,7 +31,7 @@
 #include "CSSUnits.h"
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<CSSKeywordValue> CSSColorValue::colorSpace()
 {
@@ -147,4 +147,4 @@ RefPtr<CSSValue> CSSColorValue::toCSSValue() const
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@ namespace WTF {
 class StringBuilder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 namespace TextNodeTraversal {
 
 // First text child of the node.
@@ -115,4 +115,4 @@ inline Text* nextSibling(const Node& current)
 }
 
 } // namespace TextNodeTraversal
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "HTMLUListElement.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ModifySelectionListLevelCommand::ModifySelectionListLevelCommand(Document& document)
     : CompositeEditCommand(document)

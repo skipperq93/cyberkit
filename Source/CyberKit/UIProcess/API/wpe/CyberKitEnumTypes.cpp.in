@@ -19,7 +19,7 @@
  */
 
 #include "config.h"
-#include "WebKitEnumTypes.h"
+#include "CyberKitEnumTypes.h"
 
 #include <wpe/webkit.h>
 extern "C" {

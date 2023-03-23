@@ -26,7 +26,7 @@
 #include <wtf/Forward.h>
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLQuoteElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLQuoteElement);
@@ -39,4 +39,4 @@ private:
     bool isURLAttribute(const Attribute&) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

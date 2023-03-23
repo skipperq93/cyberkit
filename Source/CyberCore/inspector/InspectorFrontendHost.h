@@ -37,7 +37,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasPath;
 class CanvasRenderingContext2D;
@@ -185,4 +185,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

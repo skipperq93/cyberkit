@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WeakPtrImplWithEventTargetData;
@@ -63,4 +63,4 @@ private:
     WebSocketChannelIdentifier m_progressIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitProtocolHandler.h"
+#include "CyberKitProtocolHandler.h"
 
 #include "BuildRevision.h"
-#include "WebKitError.h"
-#include "WebKitVersion.h"
-#include "WebKitWebView.h"
+#include "CyberKitError.h"
+#include "CyberKitVersion.h"
+#include "CyberKitWebView.h"
 #include <CyberCore/FloatRect.h>
 #include <CyberCore/GLContext.h>
 #include <CyberCore/IntRect.h>
@@ -82,13 +82,13 @@
 #include <gst/gst.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-WebKitProtocolHandler::WebKitProtocolHandler(WebKitWebContext* context)
+CyberKitProtocolHandler::CyberKitProtocolHandler(CyberKitWebContext* context)
 {
-    webkit_web_context_register_uri_scheme(context, "webkit", [](WebKitURISchemeRequest* request, gpointer userData) {
-        static_cast<WebKitProtocolHandler*>(userData)->handleRequest(request);
+    webkit_web_context_register_uri_scheme(context, "webkit", [](CyberKitURISchemeRequest* request, gpointer userData) {
+        static_cast<CyberKitProtocolHandler*>(userData)->handleRequest(request);
     }, this, nullptr);
 
     auto* manager = webkit_web_context_get_security_manager(context);
@@ -96,7 +96,7 @@ WebKitProtocolHandler::WebKitProtocolHandler(WebKitWebContext* context)
     webkit_security_manager_register_uri_scheme_as_local(manager, "webkit");
 }
 
-void WebKitProtocolHandler::handleRequest(WebKitURISchemeRequest* request)
+void CyberKitProtocolHandler::handleRequest(CyberKitURISchemeRequest* request)
 {
     URL requestURL = URL(String::fromLatin1(webkit_uri_scheme_request_get_uri(request)));
     if (requestURL.host() == "gpu"_s) {
@@ -111,14 +111,14 @@ void WebKitProtocolHandler::handleRequest(WebKitURISchemeRequest* request)
 static inline const char* webkitPortName()
 {
 #if PLATFORM(GTK)
-    return "WebKitGTK";
+    return "CyberKitGTK";
 #elif PLATFORM(WPE)
-    return "WPE WebKit";
+    return "WPE CyberKit";
 #endif
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static const char* hardwareAccelerationPolicy(WebKitURISchemeRequest* request)
+static const char* hardwareAccelerationPolicy(CyberKitURISchemeRequest* request)
 {
 #if PLATFORM(WPE)
     return "always";
@@ -141,7 +141,7 @@ static const char* hardwareAccelerationPolicy(WebKitURISchemeRequest* request)
 }
 
 #if ENABLE(WEBGL)
-static bool webGLEnabled(WebKitURISchemeRequest* request)
+static bool webGLEnabled(CyberKitURISchemeRequest* request)
 {
     auto* webView = webkit_uri_scheme_request_get_web_view(request);
     ASSERT(webView);
@@ -168,7 +168,7 @@ static const char* openGLAPI(bool isEGL)
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-void WebKitProtocolHandler::handleGPU(WebKitURISchemeRequest* request)
+void CyberKitProtocolHandler::handleGPU(CyberKitURISchemeRequest* request)
 {
     GString* html = g_string_new(
         "<html><head><title>GPU information</title>"
@@ -192,7 +192,7 @@ void WebKitProtocolHandler::handleGPU(WebKitURISchemeRequest* request)
 
     g_string_append_printf(html,
         " <tbody><tr>"
-        "  <td><div class=\"titlename\">WebKit version</div></td>"
+        "  <td><div class=\"titlename\">CyberKit version</div></td>"
         "  <td>%s %d.%d.%d (%s)</td>"
         " </tbody></tr>",
         webkitPortName(), WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION, BUILD_REVISION);
@@ -501,4 +501,4 @@ void WebKitProtocolHandler::handleGPU(WebKitURISchemeRequest* request)
     webkit_uri_scheme_request_finish(request, stream.get(), streamLength, "text/html");
 }
 
-} // namespace WebKit
+} // namespace CyberKit

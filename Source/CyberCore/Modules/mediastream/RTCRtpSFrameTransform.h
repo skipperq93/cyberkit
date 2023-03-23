@@ -37,7 +37,7 @@ namespace JSC {
 class JSGlobalObject;
 };
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoKey;
 class RTCRtpTransformBackend;
@@ -103,6 +103,6 @@ private:
     RefPtr<SimpleReadableStreamSource> m_readableStreamSource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -34,7 +34,7 @@
 #include <wtf/HashSet.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CompositeEditCommand;
 class Document;
@@ -116,4 +116,4 @@ inline SimpleEditCommand* toSimpleEditCommand(EditCommand* command)
     return static_cast<SimpleEditCommand*>(command);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include "RenderMarquee.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLMarqueeElement);
 
@@ -182,4 +182,4 @@ RenderMarquee* HTMLMarqueeElement::renderMarquee() const
     return scrollableArea->marquee();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

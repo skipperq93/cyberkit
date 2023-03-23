@@ -31,7 +31,7 @@
 #include "ProcessIdentifier.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessagePortChannelRegistry {
 public:
@@ -55,4 +55,4 @@ private:
     HashMap<MessagePortIdentifier, MessagePortChannel*> m_openChannels;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,7 +24,7 @@
 #include "TestReadOnlySetLike.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestReadOnlySetLike : public JSDOMWrapper<TestReadOnlySetLike> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestReadOnlySetLike> {
     using ToWrappedReturnType = TestReadOnlySetLike*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

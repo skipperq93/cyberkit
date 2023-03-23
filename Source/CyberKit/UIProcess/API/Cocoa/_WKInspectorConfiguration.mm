@@ -58,7 +58,7 @@
 
 - (void)setURLSchemeHandler:(id <WKURLSchemeHandler>)urlSchemeHandler forURLScheme:(NSString *)urlScheme
 {
-    _configuration->addURLSchemeHandler(WebKit::WebURLSchemeHandlerCocoa::create(urlSchemeHandler), urlScheme);
+    _configuration->addURLSchemeHandler(CyberKit::WebURLSchemeHandlerCocoa::create(urlSchemeHandler), urlScheme);
 }
 
 - (void)setProcessPool:(WKProcessPool *)processPool
@@ -74,7 +74,7 @@
 - (void)applyToWebViewConfiguration:(WKWebViewConfiguration *)configuration
 {
     for (auto pair : _configuration->urlSchemeHandlers()) {
-        auto& handler = static_cast<WebKit::WebURLSchemeHandlerCocoa&>(pair.first.get());
+        auto& handler = static_cast<CyberKit::WebURLSchemeHandlerCocoa&>(pair.first.get());
         [configuration setURLSchemeHandler:handler.apiHandler() forURLScheme:pair.second];
     }
 
@@ -90,7 +90,7 @@
     _WKInspectorConfiguration *configuration = [(_WKInspectorConfiguration *)[[self class] allocWithZone:zone] init];
 
     for (auto pair : _configuration->urlSchemeHandlers()) {
-        auto& handler = static_cast<WebKit::WebURLSchemeHandlerCocoa&>(pair.first.get());
+        auto& handler = static_cast<CyberKit::WebURLSchemeHandlerCocoa&>(pair.first.get());
         [configuration setURLSchemeHandler:handler.apiHandler() forURLScheme:pair.second];
     }
 

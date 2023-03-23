@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EXTColorBufferFloat);
 
@@ -57,6 +57,6 @@ bool EXTColorBufferFloat::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_EXT_color_buffer_float"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -45,7 +45,7 @@ class ResourceError;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct URLSchemeTaskParameters;
 class WebURLSchemeHandler;
@@ -119,4 +119,4 @@ private:
     bool m_waitingForRedirectCompletionHandlerCallback { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

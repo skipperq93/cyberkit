@@ -31,31 +31,31 @@
 
 WKTypeID WKFeatureGetTypeID()
 {
-    return WebKit::toAPI(API::Feature::APIType);
+    return CyberKit::toAPI(API::Feature::APIType);
 }
 
 WKStringRef WKFeatureCopyName(WKFeatureRef feature)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(feature)->name());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(feature)->name());
 }
 
 WKStringRef WKFeatureCopyKey(WKFeatureRef feature)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(feature)->key());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(feature)->key());
 }
 
 WKStringRef WKFeatureCopyDetails(WKFeatureRef feature)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(feature)->details());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(feature)->details());
 }
 
 bool WKFeatureDefaultValue(WKFeatureRef feature)
 {
-    return WebKit::toImpl(feature)->defaultValue();
+    return CyberKit::toImpl(feature)->defaultValue();
 }
 
 bool WKFeatureIsHidden(WKFeatureRef feature)
 {
-    return WebKit::toImpl(feature)->isHidden();
+    return CyberKit::toImpl(feature)->isHidden();
 }
 

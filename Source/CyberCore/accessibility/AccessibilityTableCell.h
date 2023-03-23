@@ -30,7 +30,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityTable;
 class AccessibilityTableRow;
@@ -83,6 +83,6 @@ private:
     bool isTableCellInSameColGroup(AXCoreObject*);
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityTableCell, isTableCell())

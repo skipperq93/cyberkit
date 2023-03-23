@@ -29,7 +29,7 @@
 
 #if PLATFORM(X11)
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -45,6 +45,6 @@ private:
     void didReceiveMotionEvent(const CyberCore::FloatPoint&) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(X11)

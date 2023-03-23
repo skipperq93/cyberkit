@@ -33,7 +33,7 @@
 #include "ScriptWrappable.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamTrack;
 class RTCDTMFSenderBackend;
@@ -81,6 +81,6 @@ private:
     bool m_isPendingPlayoutTask { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

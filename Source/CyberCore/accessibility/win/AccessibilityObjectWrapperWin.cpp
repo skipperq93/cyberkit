@@ -35,7 +35,7 @@
 #include "QualifiedName.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void AccessibilityObjectWrapper::accessibilityAttributeValue(const AtomString& attributeName, VARIANT* result)
 {
@@ -61,7 +61,7 @@ void AccessibilityObjectWrapper::accessibilityAttributeValue(const AtomString& a
         ASSERT(V_VT(result) == VT_EMPTY);
 
         V_VT(result) = VT_BSTR;
-        V_BSTR(result) = WebCore::BString(m_object->getAttribute(WebCore::HTMLNames::idAttr)).release();
+        V_BSTR(result) = CyberCore::BString(m_object->getAttribute(CyberCore::HTMLNames::idAttr)).release();
         return;
     }
 
@@ -70,12 +70,12 @@ void AccessibilityObjectWrapper::accessibilityAttributeValue(const AtomString& a
         V_VT(result) = VT_BSTR;
         PlainTextRange textRange = m_object->selectedTextRange();
         String range = makeString('{', textRange.start, ", ", textRange.length, '}');
-        V_BSTR(result) = WebCore::BString(range).release();
+        V_BSTR(result) = CyberCore::BString(range).release();
         return;
     }
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ACCESSIBILITY)

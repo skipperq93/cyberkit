@@ -27,7 +27,7 @@
  */
 
 #include "config.h"
-#include "WebKitWebViewBase.h"
+#include "CyberKitWebViewBase.h"
 
 #include "APIPageConfiguration.h"
 #include "AcceleratedBackingStore.h"
@@ -44,13 +44,13 @@
 #include "ViewGestureController.h"
 #include "WebEventFactory.h"
 #include "WebInspectorUIProxy.h"
-#include "WebKit2Initialize.h"
-#include "WebKitEmojiChooser.h"
-#include "WebKitInitialize.h"
-#include "WebKitInputMethodContextImplGtk.h"
-#include "WebKitWebViewAccessible.h"
-#include "WebKitWebViewBaseInternal.h"
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKit2Initialize.h"
+#include "CyberKitEmojiChooser.h"
+#include "CyberKitInitialize.h"
+#include "CyberKitInputMethodContextImplGtk.h"
+#include "CyberKitWebViewAccessible.h"
+#include "CyberKitWebViewBaseInternal.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include "WebPageGroup.h"
 #include "WebPageProxy.h"
 #include "WebPopupMenuProxyGtk.h"
@@ -90,7 +90,7 @@
 #include "WebFullScreenManagerProxy.h"
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 #if !USE(GTK4)
@@ -225,17 +225,17 @@ struct MotionEvent {
 };
 
 #if !USE(GTK4)
-typedef HashMap<GtkWidget*, IntRect> WebKitWebViewChildrenMap;
+typedef HashMap<GtkWidget*, IntRect> CyberKitWebViewChildrenMap;
 typedef HashMap<uint32_t, GUniquePtr<GdkEvent>> TouchEventsMap;
 #else
 typedef HashMap<uint32_t, GRefPtr<GdkEvent>> TouchEventsMap;
 #endif
 
-struct _WebKitWebViewBasePrivate {
-    _WebKitWebViewBasePrivate()
-        : updateActivityStateTimer(RunLoop::main(), this, &_WebKitWebViewBasePrivate::updateActivityStateTimerFired)
+struct _CyberKitWebViewBasePrivate {
+    _CyberKitWebViewBasePrivate()
+        : updateActivityStateTimer(RunLoop::main(), this, &_CyberKitWebViewBasePrivate::updateActivityStateTimerFired)
 #if GTK_CHECK_VERSION(3, 24, 0)
-        , releaseEmojiChooserTimer(RunLoop::main(), this, &_WebKitWebViewBasePrivate::releaseEmojiChooserTimerFired)
+        , releaseEmojiChooserTimer(RunLoop::main(), this, &_CyberKitWebViewBasePrivate::releaseEmojiChooserTimerFired)
 #endif
     {
 #if GTK_CHECK_VERSION(3, 24, 0)
@@ -266,7 +266,7 @@ struct _WebKitWebViewBasePrivate {
 #endif
 
 #if !USE(GTK4)
-    WebKitWebViewChildrenMap children;
+    CyberKitWebViewChildrenMap children;
 #endif
     std::unique_ptr<PageClientImpl> pageClient;
     RefPtr<WebPageProxy> pageProxy;
@@ -354,20 +354,20 @@ struct _WebKitWebViewBasePrivate {
 };
 
 /**
- * WebKitWebViewBase:
+ * CyberKitWebViewBase:
  *
  * Internal base class.
  */
 
 #if USE(GTK4)
-WEBKIT_DEFINE_TYPE(WebKitWebViewBase, webkit_web_view_base, GTK_TYPE_WIDGET)
+WEBKIT_DEFINE_TYPE(CyberKitWebViewBase, webkit_web_view_base, GTK_TYPE_WIDGET)
 #else
-WEBKIT_DEFINE_TYPE(WebKitWebViewBase, webkit_web_view_base, GTK_TYPE_CONTAINER)
+WEBKIT_DEFINE_TYPE(CyberKitWebViewBase, webkit_web_view_base, GTK_TYPE_CONTAINER)
 #endif
 
-static void webkitWebViewBaseScheduleUpdateActivityState(WebKitWebViewBase* webViewBase, OptionSet<ActivityState::Flag> flagsToUpdate)
+static void webkitWebViewBaseScheduleUpdateActivityState(CyberKitWebViewBase* webViewBase, OptionSet<ActivityState::Flag> flagsToUpdate)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->activityStateFlagsToUpdate.add(flagsToUpdate);
     if (priv->updateActivityStateTimer.isActive())
         return;
@@ -376,13 +376,13 @@ static void webkitWebViewBaseScheduleUpdateActivityState(WebKitWebViewBase* webV
 }
 
 #if !USE(GTK4)
-static gboolean toplevelWindowFocusInEvent(GtkWidget* widget, GdkEventFocus*, WebKitWebViewBase* webViewBase)
+static gboolean toplevelWindowFocusInEvent(GtkWidget* widget, GdkEventFocus*, CyberKitWebViewBase* webViewBase)
 {
     // Spurious focus in events can occur when the window is hidden.
     if (!gtk_widget_get_visible(widget))
         return FALSE;
 
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->activityState & ActivityState::WindowIsActive)
         return FALSE;
 
@@ -392,9 +392,9 @@ static gboolean toplevelWindowFocusInEvent(GtkWidget* widget, GdkEventFocus*, We
     return FALSE;
 }
 
-static gboolean toplevelWindowFocusOutEvent(GtkWidget*, GdkEventFocus*, WebKitWebViewBase* webViewBase)
+static gboolean toplevelWindowFocusOutEvent(GtkWidget*, GdkEventFocus*, CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (!(priv->activityState & ActivityState::WindowIsActive))
         return FALSE;
 
@@ -404,9 +404,9 @@ static gboolean toplevelWindowFocusOutEvent(GtkWidget*, GdkEventFocus*, WebKitWe
     return FALSE;
 }
 
-static gboolean toplevelWindowStateEvent(GtkWidget*, GdkEventWindowState* event, WebKitWebViewBase* webViewBase)
+static gboolean toplevelWindowStateEvent(GtkWidget*, GdkEventWindowState* event, CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (!(event->changed_mask & GDK_WINDOW_STATE_ICONIFIED))
         return FALSE;
 
@@ -423,20 +423,20 @@ static gboolean toplevelWindowStateEvent(GtkWidget*, GdkEventWindowState* event,
     return FALSE;
 }
 
-static void toplevelWindowRealized(WebKitWebViewBase* webViewBase)
+static void toplevelWindowRealized(CyberKitWebViewBase* webViewBase)
 {
     gtk_widget_realize(GTK_WIDGET(webViewBase));
 
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->toplevelWindowRealizedID) {
         g_signal_handler_disconnect(priv->toplevelOnScreenWindow, priv->toplevelWindowRealizedID);
         priv->toplevelWindowRealizedID = 0;
     }
 }
 
-static void webkitWebViewBaseSetToplevelOnScreenWindow(WebKitWebViewBase* webViewBase, GtkWindow* window)
+static void webkitWebViewBaseSetToplevelOnScreenWindow(CyberKitWebViewBase* webViewBase, GtkWindow* window)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->toplevelOnScreenWindow == window)
         return;
 
@@ -493,8 +493,8 @@ static void webkitWebViewBaseSetToplevelOnScreenWindow(WebKitWebViewBase* webVie
 
 static void webkitWebViewBaseRealize(GtkWidget* widget)
 {
-    WebKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webView->priv;
+    CyberKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webView->priv;
 
 #if USE(GTK4)
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->realize(widget);
@@ -547,7 +547,7 @@ static void webkitWebViewBaseRealize(GtkWidget* widget)
 
 static void webkitWebViewBaseUnrealize(GtkWidget* widget)
 {
-    WebKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(widget);
 
     auto* imContext = webView->priv->inputMethodFilter.context();
     if (WEBKIT_IS_INPUT_METHOD_CONTEXT_IMPL_GTK(imContext))
@@ -560,16 +560,16 @@ static void webkitWebViewBaseUnrealize(GtkWidget* widget)
 }
 
 #if !USE(GTK4)
-static bool webkitWebViewChildIsInternalWidget(WebKitWebViewBase* webViewBase, GtkWidget* widget)
+static bool webkitWebViewChildIsInternalWidget(CyberKitWebViewBase* webViewBase, GtkWidget* widget)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     return widget == priv->inspectorView || widget == priv->dialog || widget == priv->keyBindingTranslator.widget();
 }
 
 static void webkitWebViewBaseContainerAdd(GtkContainer* container, GtkWidget* widget)
 {
-    WebKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(container);
-    WebKitWebViewBasePrivate* priv = webView->priv;
+    CyberKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(container);
+    CyberKitWebViewBasePrivate* priv = webView->priv;
 
     // Internal widgets like the web inspector and authentication dialog have custom
     // allocations so we don't need to add them to our list of children.
@@ -583,9 +583,9 @@ static void webkitWebViewBaseContainerAdd(GtkContainer* container, GtkWidget* wi
 }
 #endif
 
-void webkitWebViewBaseAddDialog(WebKitWebViewBase* webViewBase, GtkWidget* dialog)
+void webkitWebViewBaseAddDialog(CyberKitWebViewBase* webViewBase, GtkWidget* dialog)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->dialog = dialog;
 #if USE(GTK4)
     g_object_add_weak_pointer(G_OBJECT(dialog), reinterpret_cast<void**>(&priv->dialog));
@@ -598,9 +598,9 @@ void webkitWebViewBaseAddDialog(WebKitWebViewBase* webViewBase, GtkWidget* dialo
 }
 
 #if USE(GTK4)
-static void webkitWebViewBaseRemoveDialog(WebKitWebViewBase* webViewBase, GtkWidget* dialog)
+static void webkitWebViewBaseRemoveDialog(CyberKitWebViewBase* webViewBase, GtkWidget* dialog)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (!priv->dialog)
         return;
 
@@ -612,8 +612,8 @@ static void webkitWebViewBaseRemoveDialog(WebKitWebViewBase* webViewBase, GtkWid
 #if !USE(GTK4)
 static void webkitWebViewBaseContainerRemove(GtkContainer* container, GtkWidget* widget)
 {
-    WebKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(container);
-    WebKitWebViewBasePrivate* priv = webView->priv;
+    CyberKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(container);
+    CyberKitWebViewBasePrivate* priv = webView->priv;
     GtkWidget* widgetContainer = GTK_WIDGET(container);
 
     gboolean wasVisible = gtk_widget_get_visible(widget);
@@ -638,8 +638,8 @@ static void webkitWebViewBaseContainerRemove(GtkContainer* container, GtkWidget*
 
 static void webkitWebViewBaseContainerForall(GtkContainer* container, gboolean includeInternals, GtkCallback callback, gpointer callbackData)
 {
-    WebKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(container);
-    WebKitWebViewBasePrivate* priv = webView->priv;
+    CyberKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(container);
+    CyberKitWebViewBasePrivate* priv = webView->priv;
 
     for (const auto& child : copyToVector(priv->children.keys())) {
         if (priv->children.contains(child))
@@ -656,7 +656,7 @@ static void webkitWebViewBaseContainerForall(GtkContainer* container, gboolean i
         (*callback)(priv->dialog, callbackData);
 }
 
-void webkitWebViewBaseChildMoveResize(WebKitWebViewBase* webView, GtkWidget* child, const IntRect& childRect)
+void webkitWebViewBaseChildMoveResize(CyberKitWebViewBase* webView, GtkWidget* child, const IntRect& childRect)
 {
     const IntRect& geometry = webView->priv->children.get(child);
     if (geometry == childRect)
@@ -667,7 +667,7 @@ void webkitWebViewBaseChildMoveResize(WebKitWebViewBase* webView, GtkWidget* chi
 }
 #endif
 
-void webkitWebViewBaseAddWebInspector(WebKitWebViewBase* webViewBase, GtkWidget* inspector, AttachmentSide attachmentSide)
+void webkitWebViewBaseAddWebInspector(CyberKitWebViewBase* webViewBase, GtkWidget* inspector, AttachmentSide attachmentSide)
 {
     if (webViewBase->priv->inspectorView == inspector && webViewBase->priv->inspectorAttachmentSide == attachmentSide)
         return;
@@ -683,7 +683,7 @@ void webkitWebViewBaseAddWebInspector(WebKitWebViewBase* webViewBase, GtkWidget*
     gtk_widget_set_parent(inspector, GTK_WIDGET(webViewBase));
 }
 
-void webkitWebViewBaseRemoveWebInspector(WebKitWebViewBase* webViewBase, GtkWidget* inspector)
+void webkitWebViewBaseRemoveWebInspector(CyberKitWebViewBase* webViewBase, GtkWidget* inspector)
 {
     if (webViewBase->priv->inspectorView != inspector)
         return;
@@ -696,7 +696,7 @@ void webkitWebViewBaseRemoveWebInspector(WebKitWebViewBase* webViewBase, GtkWidg
 }
 
 #if GTK_CHECK_VERSION(3, 24, 0)
-static void webkitWebViewBaseCompleteEmojiChooserRequest(WebKitWebViewBase* webView, const String& text)
+static void webkitWebViewBaseCompleteEmojiChooserRequest(CyberKitWebViewBase* webView, const String& text)
 {
     if (auto completionHandler = std::exchange(webView->priv->emojiChooserCompletionHandler, nullptr))
         completionHandler(text);
@@ -705,7 +705,7 @@ static void webkitWebViewBaseCompleteEmojiChooserRequest(WebKitWebViewBase* webV
 
 static void webkitWebViewBaseDispose(GObject* gobject)
 {
-    WebKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(gobject);
+    CyberKitWebViewBase* webView = WEBKIT_WEB_VIEW_BASE(gobject);
 #if USE(GTK4)
     webkitWebViewBaseRemoveDialog(webView, webView->priv->dialog);
     webkitWebViewBaseRemoveWebInspector(webView, webView->priv->inspectorView);
@@ -744,7 +744,7 @@ static void webkitWebViewBaseSnapshot(GtkWidget* widget, GtkSnapshot* snapshot)
     if (widgetSize.isEmpty())
         return;
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
     auto* drawingArea = static_cast<DrawingAreaProxyCoordinatedGraphics*>(webViewBase->priv->pageProxy->drawingArea());
     if (!drawingArea)
         return;
@@ -781,7 +781,7 @@ static void webkitWebViewBaseSnapshot(GtkWidget* widget, GtkSnapshot* snapshot)
 #else
 static gboolean webkitWebViewBaseDraw(GtkWidget* widget, cairo_t* cr)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
     auto* drawingArea = static_cast<DrawingAreaProxyCoordinatedGraphics*>(webViewBase->priv->pageProxy->drawingArea());
     if (!drawingArea)
         return FALSE;
@@ -822,8 +822,8 @@ static void webkitWebViewBaseChildAllocate(GtkWidget* child, gpointer userData)
     if (!gtk_widget_get_visible(child))
         return;
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(userData);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(userData);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     const IntRect& geometry = priv->children.get(child);
     if (geometry.isEmpty())
         return;
@@ -848,13 +848,13 @@ static void webkitWebViewBaseSizeAllocate(GtkWidget* widget, GtkAllocation* allo
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->size_allocate(widget, allocation);
 #endif
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
 #if !USE(GTK4)
     gtk_container_foreach(GTK_CONTAINER(webViewBase), webkitWebViewBaseChildAllocate, webViewBase);
 #endif
 
     IntRect viewRect(allocation->x, allocation->y, allocation->width, allocation->height);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->inspectorView) {
         GtkAllocation childAllocation = viewRect;
 
@@ -902,7 +902,7 @@ static void webkitWebViewBaseSizeAllocate(GtkWidget* widget, GtkAllocation* allo
 #if USE(GTK4)
 static void webkitWebViewBaseMeasure(GtkWidget* widget, GtkOrientation orientation, int, int* minimumSize, int* naturalSize, int*, int*)
 {
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
     switch (orientation) {
     case GTK_ORIENTATION_HORIZONTAL:
         *naturalSize = priv->contentsSize.width();
@@ -917,14 +917,14 @@ static void webkitWebViewBaseMeasure(GtkWidget* widget, GtkOrientation orientati
 #else
 static void webkitWebViewBaseGetPreferredWidth(GtkWidget* widget, gint* minimumSize, gint* naturalSize)
 {
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
     *minimumSize = 0;
     *naturalSize = priv->contentsSize.width();
 }
 
 static void webkitWebViewBaseGetPreferredHeight(GtkWidget* widget, gint* minimumSize, gint* naturalSize)
 {
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
     *minimumSize = 0;
     *naturalSize = priv->contentsSize.height();
 }
@@ -934,8 +934,8 @@ static void webkitWebViewBaseMap(GtkWidget* widget)
 {
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->map(widget);
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     OptionSet<ActivityState::Flag> flagsToUpdate;
     if (!(priv->activityState & ActivityState::IsVisible))
         flagsToUpdate.add(ActivityState::IsVisible);
@@ -966,8 +966,8 @@ static void webkitWebViewBaseUnmap(GtkWidget* widget)
 {
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->unmap(widget);
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (!(priv->activityState & ActivityState::IsVisible))
         return;
 
@@ -975,7 +975,7 @@ static void webkitWebViewBaseUnmap(GtkWidget* widget)
     webkitWebViewBaseScheduleUpdateActivityState(webViewBase, ActivityState::IsVisible);
 }
 
-static bool shouldForwardKeyEvent(WebKitWebViewBase* webViewBase, GdkEvent* event)
+static bool shouldForwardKeyEvent(CyberKitWebViewBase* webViewBase, GdkEvent* event)
 {
 #if USE(GTK4)
     return event && webViewBase->priv->keyEventsToPropagate.removeFirst(event);
@@ -984,7 +984,7 @@ static bool shouldForwardKeyEvent(WebKitWebViewBase* webViewBase, GdkEvent* even
 #endif
 }
 
-static bool shouldForwardWheelEvent(WebKitWebViewBase* webViewBase, GdkEvent* event)
+static bool shouldForwardWheelEvent(CyberKitWebViewBase* webViewBase, GdkEvent* event)
 {
 #if USE(GTK4)
     if (!event || webViewBase->priv->wheelEventsToPropagate.isEmpty())
@@ -1016,7 +1016,7 @@ static bool shouldForwardWheelEvent(WebKitWebViewBase* webViewBase, GdkEvent* ev
 #if !USE(GTK4)
 static gboolean webkitWebViewBaseFocusInEvent(GtkWidget* widget, GdkEventFocus* event)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
     webkitWebViewBaseSetFocus(webViewBase, true);
     webViewBase->priv->inputMethodFilter.notifyFocusedIn();
 
@@ -1025,7 +1025,7 @@ static gboolean webkitWebViewBaseFocusInEvent(GtkWidget* widget, GdkEventFocus* 
 
 static gboolean webkitWebViewBaseFocusOutEvent(GtkWidget* widget, GdkEventFocus* event)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
     webkitWebViewBaseSetFocus(webViewBase, false);
     webViewBase->priv->inputMethodFilter.notifyFocusedOut();
 
@@ -1034,8 +1034,8 @@ static gboolean webkitWebViewBaseFocusOutEvent(GtkWidget* widget, GdkEventFocus*
 
 static gboolean webkitWebViewBaseKeyPressEvent(GtkWidget* widget, GdkEventKey* keyEvent)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     // Since WebProcess key event handling is not synchronous, handle the event in two passes.
     // When WebProcess processes the input event, it will call PageClientImpl::doneWithKeyEvent
@@ -1085,8 +1085,8 @@ static gboolean webkitWebViewBaseKeyPressEvent(GtkWidget* widget, GdkEventKey* k
 
 static gboolean webkitWebViewBaseKeyReleaseEvent(GtkWidget* widget, GdkEventKey* keyEvent)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     if (!priv->inputMethodFilter.filterKeyEvent(reinterpret_cast<GdkEvent*>(keyEvent)).handled)
         priv->pageProxy->handleKeyboardEvent(NativeWebKeyboardEvent(reinterpret_cast<GdkEvent*>(keyEvent), { }, { }));
@@ -1096,21 +1096,21 @@ static gboolean webkitWebViewBaseKeyReleaseEvent(GtkWidget* widget, GdkEventKey*
 #endif
 
 #if USE(GTK4)
-static void webkitWebViewBaseFocusEnter(WebKitWebViewBase* webViewBase, GtkEventController*)
+static void webkitWebViewBaseFocusEnter(CyberKitWebViewBase* webViewBase, GtkEventController*)
 {
     webkitWebViewBaseSetFocus(webViewBase, true);
     webViewBase->priv->inputMethodFilter.notifyFocusedIn();
 }
 
-static void webkitWebViewBaseFocusLeave(WebKitWebViewBase* webViewBase, GtkEventController*)
+static void webkitWebViewBaseFocusLeave(CyberKitWebViewBase* webViewBase, GtkEventController*)
 {
     webkitWebViewBaseSetFocus(webViewBase, false);
     webViewBase->priv->inputMethodFilter.notifyFocusedOut();
 }
 
-static gboolean webkitWebViewBaseKeyPressed(WebKitWebViewBase* webViewBase, unsigned keyval, unsigned, GdkModifierType state, GtkEventController* controller)
+static gboolean webkitWebViewBaseKeyPressed(CyberKitWebViewBase* webViewBase, unsigned keyval, unsigned, GdkModifierType state, GtkEventController* controller)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     auto* event = gtk_event_controller_get_current_event(controller);
 
     // Since WebProcess key event handling is not synchronous, handle the event in two passes.
@@ -1154,9 +1154,9 @@ static gboolean webkitWebViewBaseKeyPressed(WebKitWebViewBase* webViewBase, unsi
     return GDK_EVENT_STOP;
 }
 
-static void webkitWebViewBaseKeyReleased(WebKitWebViewBase* webViewBase, unsigned, unsigned, GdkModifierType, GtkEventController* controller)
+static void webkitWebViewBaseKeyReleased(CyberKitWebViewBase* webViewBase, unsigned, unsigned, GdkModifierType, GtkEventController* controller)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     auto* event = gtk_event_controller_get_current_event(controller);
     if (!priv->inputMethodFilter.filterKeyEvent(event).handled)
@@ -1165,9 +1165,9 @@ static void webkitWebViewBaseKeyReleased(WebKitWebViewBase* webViewBase, unsigne
 #endif
 
 #if !USE(GTK4)
-static void webkitWebViewBaseHandleMouseEvent(WebKitWebViewBase* webViewBase, GdkEvent* event)
+static void webkitWebViewBaseHandleMouseEvent(CyberKitWebViewBase* webViewBase, GdkEvent* event)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     ASSERT(!priv->dialog);
 
     int clickCount = 0;
@@ -1218,8 +1218,8 @@ static void webkitWebViewBaseHandleMouseEvent(WebKitWebViewBase* webViewBase, Gd
 
 static gboolean webkitWebViewBaseButtonPressEvent(GtkWidget* widget, GdkEventButton* event)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     if (priv->dialog)
         return GDK_EVENT_STOP;
@@ -1234,8 +1234,8 @@ static gboolean webkitWebViewBaseButtonPressEvent(GtkWidget* widget, GdkEventBut
 
 static gboolean webkitWebViewBaseButtonReleaseEvent(GtkWidget* widget, GdkEventButton* event)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     if (priv->dialog)
         return GDK_EVENT_STOP;
@@ -1249,11 +1249,11 @@ static gboolean webkitWebViewBaseButtonReleaseEvent(GtkWidget* widget, GdkEventB
 #endif
 
 #if USE(GTK4)
-static void webkitWebViewBaseButtonPressed(WebKitWebViewBase* webViewBase, int clickCount, double x, double y, GtkGesture* gesture)
+static void webkitWebViewBaseButtonPressed(CyberKitWebViewBase* webViewBase, int clickCount, double x, double y, GtkGesture* gesture)
 {
     if (gtk_gesture_single_get_current_sequence(GTK_GESTURE_SINGLE(gesture)))
         return;
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return;
 
@@ -1274,11 +1274,11 @@ static void webkitWebViewBaseButtonPressed(WebKitWebViewBase* webViewBase, int c
     priv->pageProxy->handleMouseEvent(NativeWebMouseEvent(event, { clampToInteger(x), clampToInteger(y) }, clickCount, std::nullopt));
 }
 
-static void webkitWebViewBaseButtonReleased(WebKitWebViewBase* webViewBase, int clickCount, double x, double y, GtkGesture* gesture)
+static void webkitWebViewBaseButtonReleased(CyberKitWebViewBase* webViewBase, int clickCount, double x, double y, GtkGesture* gesture)
 {
     if (gtk_gesture_single_get_current_sequence(GTK_GESTURE_SINGLE(gesture)))
         return;
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return;
 
@@ -1307,7 +1307,7 @@ static bool shouldInvertDirectionForScrollEvent(WebHitTestResultData::IsScrollba
 }
 
 #if !USE(GTK4)
-static void webkitWebViewBaseHandleWheelEvent(WebKitWebViewBase* webViewBase, GdkEvent* event, std::optional<WebWheelEvent::Phase> phase = std::nullopt, std::optional<WebWheelEvent::Phase> momentum = std::nullopt)
+static void webkitWebViewBaseHandleWheelEvent(CyberKitWebViewBase* webViewBase, GdkEvent* event, std::optional<WebWheelEvent::Phase> phase = std::nullopt, std::optional<WebWheelEvent::Phase> momentum = std::nullopt)
 {
     ViewGestureController* controller = webkitWebViewBaseViewGestureController(webViewBase);
     if (controller && controller->isSwipeGestureEnabled()) {
@@ -1327,7 +1327,7 @@ static void webkitWebViewBaseHandleWheelEvent(WebKitWebViewBase* webViewBase, Gd
             return;
     }
 
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     ASSERT(!priv->dialog);
     if (phase)
         priv->pageProxy->handleWheelEvent(NativeWebWheelEvent(event, phase.value(), momentum.value_or(WebWheelEvent::Phase::PhaseNone)));
@@ -1337,8 +1337,8 @@ static void webkitWebViewBaseHandleWheelEvent(WebKitWebViewBase* webViewBase, Gd
 
 static gboolean webkitWebViewBaseScrollEvent(GtkWidget* widget, GdkEventScroll* event)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     if (shouldForwardWheelEvent(webViewBase, reinterpret_cast<GdkEvent*>(event)))
         return GDK_EVENT_PROPAGATE;
@@ -1373,9 +1373,9 @@ static gboolean webkitWebViewBaseScrollEvent(GtkWidget* widget, GdkEventScroll* 
 #endif
 
 #if USE(GTK4)
-static gboolean handleScroll(WebKitWebViewBase* webViewBase, double deltaX, double deltaY, bool isEnd, GtkEventController* eventController)
+static gboolean handleScroll(CyberKitWebViewBase* webViewBase, double deltaX, double deltaY, bool isEnd, GtkEventController* eventController)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return GDK_EVENT_PROPAGATE;
 
@@ -1412,17 +1412,17 @@ static gboolean handleScroll(WebKitWebViewBase* webViewBase, double deltaX, doub
     return GDK_EVENT_STOP;
 }
 
-static void webkitWebViewBaseScrollBegin(WebKitWebViewBase* webViewBase, GtkEventController* controller)
+static void webkitWebViewBaseScrollBegin(CyberKitWebViewBase* webViewBase, GtkEventController* controller)
 {
     handleScroll(webViewBase, 0, 0, false, controller);
 }
 
-static gboolean webkitWebViewBaseScroll(WebKitWebViewBase* webViewBase, double deltaX, double deltaY, GtkEventController* eventController)
+static gboolean webkitWebViewBaseScroll(CyberKitWebViewBase* webViewBase, double deltaX, double deltaY, GtkEventController* eventController)
 {
     return handleScroll(webViewBase, deltaX, deltaY, false, eventController);
 }
 
-static void webkitWebViewBaseScrollEnd(WebKitWebViewBase* webViewBase, GtkEventController* controller)
+static void webkitWebViewBaseScrollEnd(CyberKitWebViewBase* webViewBase, GtkEventController* controller)
 {
     handleScroll(webViewBase, 0, 0, true, controller);
 }
@@ -1431,8 +1431,8 @@ static void webkitWebViewBaseScrollEnd(WebKitWebViewBase* webViewBase, GtkEventC
 #if !USE(GTK4)
 static gboolean webkitWebViewBasePopupMenu(GtkWidget* widget)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     GdkEvent* currentEvent = gtk_get_current_event();
     if (!currentEvent)
@@ -1445,8 +1445,8 @@ static gboolean webkitWebViewBasePopupMenu(GtkWidget* widget)
 
 static gboolean webkitWebViewBaseMotionNotifyEvent(GtkWidget* widget, GdkEventMotion* event)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     if (priv->dialog) {
         auto* widgetClass = GTK_WIDGET_CLASS(webkit_web_view_base_parent_class);
@@ -1470,8 +1470,8 @@ static gboolean webkitWebViewBaseMotionNotifyEvent(GtkWidget* widget, GdkEventMo
 
 static gboolean webkitWebViewBaseCrossingNotifyEvent(GtkWidget* widget, GdkEventCrossing* crossingEvent)
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     if (priv->dialog)
         return GDK_EVENT_PROPAGATE;
@@ -1521,9 +1521,9 @@ static gboolean webkitWebViewBaseCrossingNotifyEvent(GtkWidget* widget, GdkEvent
 #endif
 
 #if USE(GTK4)
-static void webkitWebViewBaseEnter(WebKitWebViewBase* webViewBase, double x, double y, GdkCrossingMode, GtkEventController*)
+static void webkitWebViewBaseEnter(CyberKitWebViewBase* webViewBase, double x, double y, GdkCrossingMode, GtkEventController*)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return;
 
@@ -1538,9 +1538,9 @@ static void webkitWebViewBaseEnter(WebKitWebViewBase* webViewBase, double x, dou
     priv->pageProxy->handleMouseEvent(NativeWebMouseEvent({ clampToInteger(x), clampToInteger(y) }));
 }
 
-static gboolean webkitWebViewBaseMotion(WebKitWebViewBase* webViewBase, double x, double y, GtkEventController* controller)
+static gboolean webkitWebViewBaseMotion(CyberKitWebViewBase* webViewBase, double x, double y, GtkEventController* controller)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return GDK_EVENT_PROPAGATE;
 
@@ -1561,9 +1561,9 @@ static gboolean webkitWebViewBaseMotion(WebKitWebViewBase* webViewBase, double x
     return GDK_EVENT_PROPAGATE;
 }
 
-static void webkitWebViewBaseLeave(WebKitWebViewBase* webViewBase, GdkCrossingMode, GtkEventController*)
+static void webkitWebViewBaseLeave(CyberKitWebViewBase* webViewBase, GdkCrossingMode, GtkEventController*)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return;
 
@@ -1616,9 +1616,9 @@ static inline WebPlatformTouchPoint::TouchPointState touchPointStateForEvents(Gd
     }
 }
 
-static void webkitWebViewBaseGetTouchPointsForEvent(WebKitWebViewBase* webViewBase, GdkEvent* event, Vector<WebPlatformTouchPoint>& touchPoints)
+static void webkitWebViewBaseGetTouchPointsForEvent(CyberKitWebViewBase* webViewBase, GdkEvent* event, Vector<WebPlatformTouchPoint>& touchPoints)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     GdkEventType type = gdk_event_get_event_type(event);
     bool touchEnd = (type == GDK_TOUCH_END) || (type == GDK_TOUCH_CANCEL);
     touchPoints.reserveInitialCapacity(touchEnd ? priv->touchEvents.size() + 1 : priv->touchEvents.size());
@@ -1638,8 +1638,8 @@ static gboolean webkitWebViewBaseTouchEvent(GtkWidget* widget, GdkEvent* event)
 static gboolean webkitWebViewBaseTouchEvent(GtkWidget* widget, GdkEventTouch* event)
 #endif
 {
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
 
     if (priv->dialog)
         return GDK_EVENT_STOP;
@@ -1696,9 +1696,9 @@ static gboolean webkitWebViewBaseTouchEvent(GtkWidget* widget, GdkEventTouch* ev
 }
 #endif // ENABLE(TOUCH_EVENTS)
 
-void webkitWebViewBaseSetEnableBackForwardNavigationGesture(WebKitWebViewBase* webViewBase, bool enabled)
+void webkitWebViewBaseSetEnableBackForwardNavigationGesture(CyberKitWebViewBase* webViewBase, bool enabled)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->isBackForwardNavigationGestureEnabled = enabled;
 
     if (auto* controller = webkitWebViewBaseViewGestureController(webViewBase))
@@ -1707,12 +1707,12 @@ void webkitWebViewBaseSetEnableBackForwardNavigationGesture(WebKitWebViewBase* w
     priv->pageProxy->setShouldRecordNavigationSnapshots(enabled);
 }
 
-ViewGestureController* webkitWebViewBaseViewGestureController(WebKitWebViewBase* webViewBase)
+ViewGestureController* webkitWebViewBaseViewGestureController(CyberKitWebViewBase* webViewBase)
 {
     return webViewBase->priv->viewGestureController.get();
 }
 
-bool webkitWebViewBaseBeginBackSwipeForTesting(WebKitWebViewBase* webViewBase)
+bool webkitWebViewBaseBeginBackSwipeForTesting(CyberKitWebViewBase* webViewBase)
 {
     if (auto* gestureController = webkitWebViewBaseViewGestureController(webViewBase))
         return gestureController->beginSimulatedSwipeInDirectionForTesting(ViewGestureController::SwipeDirection::Back);
@@ -1720,7 +1720,7 @@ bool webkitWebViewBaseBeginBackSwipeForTesting(WebKitWebViewBase* webViewBase)
     return FALSE;
 }
 
-bool webkitWebViewBaseCompleteBackSwipeForTesting(WebKitWebViewBase* webViewBase)
+bool webkitWebViewBaseCompleteBackSwipeForTesting(CyberKitWebViewBase* webViewBase)
 {
     if (auto* gestureController = webkitWebViewBaseViewGestureController(webViewBase))
         return gestureController->completeSimulatedSwipeInDirectionForTesting(ViewGestureController::SwipeDirection::Back);
@@ -1728,7 +1728,7 @@ bool webkitWebViewBaseCompleteBackSwipeForTesting(WebKitWebViewBase* webViewBase
     return FALSE;
 }
 
-GVariant* webkitWebViewBaseContentsOfUserInterfaceItem(WebKitWebViewBase* webViewBase, const char* userInterfaceItem)
+GVariant* webkitWebViewBaseContentsOfUserInterfaceItem(CyberKitWebViewBase* webViewBase, const char* userInterfaceItem)
 {
     if (g_strcmp0(userInterfaceItem, "validationBubble"))
         return nullptr;
@@ -1752,7 +1752,7 @@ GVariant* webkitWebViewBaseContentsOfUserInterfaceItem(WebKitWebViewBase* webVie
 
 static gboolean webkitWebViewBaseQueryTooltip(GtkWidget* widget, gint /* x */, gint /* y */, gboolean keyboardMode, GtkTooltip* tooltip)
 {
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
 
     if (keyboardMode) {
         // TODO: https://bugs.webkit.org/show_bug.cgi?id=61732.
@@ -1776,7 +1776,7 @@ static gboolean webkitWebViewBaseQueryTooltip(GtkWidget* widget, gint /* x */, g
 #if !USE(GTK4) && ENABLE(ACCESSIBILITY)
 static AtkObject* webkitWebViewBaseGetAccessible(GtkWidget* widget)
 {
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
     if (!priv->accessible) {
         // Create the accessible object and associate it to the widget.
         priv->accessible = adoptGRef(ATK_OBJECT(webkitWebViewAccessibleNew(widget)));
@@ -1793,9 +1793,9 @@ static AtkObject* webkitWebViewBaseGetAccessible(GtkWidget* widget)
 #endif
 
 #if USE(GTK4)
-static void toplevelWindowIsActiveChanged(GtkWindow* window, GParamSpec*, WebKitWebViewBase* webViewBase)
+static void toplevelWindowIsActiveChanged(GtkWindow* window, GParamSpec*, CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (gtk_window_is_active(window)) {
         if (priv->activityState & ActivityState::WindowIsActive)
             return;
@@ -1813,11 +1813,11 @@ static void toplevelWindowIsActiveChanged(GtkWindow* window, GParamSpec*, WebKit
     webkitWebViewBaseScheduleUpdateActivityState(webViewBase, ActivityState::WindowIsActive);
 }
 
-static void toplevelWindowStateChanged(GdkSurface* surface, GParamSpec*, WebKitWebViewBase* webViewBase)
+static void toplevelWindowStateChanged(GdkSurface* surface, GParamSpec*, CyberKitWebViewBase* webViewBase)
 {
     auto state = gdk_toplevel_get_state(GDK_TOPLEVEL(surface));
     bool visible = !(state & GDK_TOPLEVEL_STATE_MINIMIZED);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (visible) {
         if (priv->activityState & ActivityState::IsVisible)
             return;
@@ -1830,17 +1830,17 @@ static void toplevelWindowStateChanged(GdkSurface* surface, GParamSpec*, WebKitW
     webkitWebViewBaseScheduleUpdateActivityState(webViewBase, ActivityState::IsVisible);
 }
 
-static void toplevelWindowRealized(WebKitWebViewBase* webViewBase)
+static void toplevelWindowRealized(CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     g_clear_signal_handler(&priv->toplevelWindowRealizedID, priv->toplevelOnScreenWindow);
     priv->toplevelWindowStateChangedID =
         g_signal_connect(gtk_native_get_surface(GTK_NATIVE(priv->toplevelOnScreenWindow)), "notify::state", G_CALLBACK(toplevelWindowStateChanged), webViewBase);
 }
 
-static void toplevelWindowUnrealized(WebKitWebViewBase* webViewBase)
+static void toplevelWindowUnrealized(CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     g_clear_signal_handler(&priv->toplevelWindowUnrealizedID, priv->toplevelOnScreenWindow);
     g_clear_signal_handler(&priv->toplevelWindowStateChangedID, gtk_native_get_surface(GTK_NATIVE(priv->toplevelOnScreenWindow)));
 }
@@ -1849,8 +1849,8 @@ static void webkitWebViewBaseRoot(GtkWidget* widget)
 {
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->root(widget);
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->toplevelOnScreenWindow = GTK_WINDOW(gtk_widget_get_root(widget));
 
     OptionSet<ActivityState::Flag> flagsToUpdate;
@@ -1882,8 +1882,8 @@ static void webkitWebViewBaseUnroot(GtkWidget* widget)
 {
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->unroot(widget);
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     g_clear_signal_handler(&priv->toplevelIsActiveID, priv->toplevelOnScreenWindow);
     g_clear_signal_handler(&priv->toplevelWindowRealizedID, priv->toplevelOnScreenWindow);
     g_clear_signal_handler(&priv->toplevelWindowUnrealizedID, priv->toplevelOnScreenWindow);
@@ -1906,7 +1906,7 @@ static void webkitWebViewBaseUnroot(GtkWidget* widget)
 #else
 static void webkitWebViewBaseHierarchyChanged(GtkWidget* widget, GtkWidget* oldToplevel)
 {
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
     if (widgetIsOnscreenToplevelWindow(oldToplevel) && GTK_WINDOW(oldToplevel) == priv->toplevelOnScreenWindow) {
         webkitWebViewBaseSetToplevelOnScreenWindow(WEBKIT_WEB_VIEW_BASE(widget), nullptr);
         return;
@@ -1931,7 +1931,7 @@ static gboolean webkitWebViewBaseGrabFocus(GtkWidget* widget)
 #if USE(GTK4)
 static void webkitWebViewBaseMoveFocus(GtkWidget* widget, GtkDirectionType direction)
 {
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
     if (priv->dialog)
         g_signal_emit_by_name(priv->dialog, "move-focus", direction);
 
@@ -1942,7 +1942,7 @@ static gboolean webkitWebViewBaseFocus(GtkWidget* widget, GtkDirectionType direc
 {
     // If a dialog is active, we need to forward focus events there. This
     // ensures that you can tab between elements in the box.
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(widget)->priv;
     if (priv->dialog) {
         gboolean returnValue;
         g_signal_emit_by_name(priv->dialog, "focus", direction, &returnValue);
@@ -1958,8 +1958,8 @@ static void webkitWebViewBaseCssChanged(GtkWidget* widget, GtkCssStyleChange* ch
 {
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->css_changed(widget, change);
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->pageProxy->accentColorDidChange();
 }
 #else
@@ -1967,15 +1967,15 @@ static void webkitWebViewBaseStyleUpdated(GtkWidget* widget)
 {
     GTK_WIDGET_CLASS(webkit_web_view_base_parent_class)->style_updated(widget);
 
-    WebKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBase* webViewBase = WEBKIT_WEB_VIEW_BASE(widget);
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->pageProxy->accentColorDidChange();
 }
 #endif
 
-static void webkitWebViewBaseZoomBegin(WebKitWebViewBase* webViewBase, GdkEventSequence* sequence, GtkGesture* gesture)
+static void webkitWebViewBaseZoomBegin(CyberKitWebViewBase* webViewBase, GdkEventSequence* sequence, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->pageGrabbedTouch)
         return;
 
@@ -1992,9 +1992,9 @@ static void webkitWebViewBaseZoomBegin(WebKitWebViewBase* webViewBase, GdkEventS
 #endif
 }
 
-static void webkitWebViewBaseZoomChanged(WebKitWebViewBase* webViewBase, gdouble scale, GtkGesture* gesture)
+static void webkitWebViewBaseZoomChanged(CyberKitWebViewBase* webViewBase, gdouble scale, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->pageGrabbedTouch)
         return;
 
@@ -2011,9 +2011,9 @@ static void webkitWebViewBaseZoomChanged(WebKitWebViewBase* webViewBase, gdouble
     controller->setMagnification(scale, origin);
 }
 
-static void webkitWebViewBaseZoomEnd(WebKitWebViewBase* webViewBase, GdkEventSequence* sequence, GtkGesture* gesture)
+static void webkitWebViewBaseZoomEnd(CyberKitWebViewBase* webViewBase, GdkEventSequence* sequence, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->pageGrabbedTouch)
         return;
 
@@ -2026,19 +2026,19 @@ static void webkitWebViewBaseZoomEnd(WebKitWebViewBase* webViewBase, GdkEventSeq
     controller->endMagnification();
 }
 
-static void webkitWebViewBaseTouchLongPress(WebKitWebViewBase* webViewBase, gdouble x, gdouble y, GtkGesture*)
+static void webkitWebViewBaseTouchLongPress(CyberKitWebViewBase* webViewBase, gdouble x, gdouble y, GtkGesture*)
 {
     webViewBase->priv->isLongPressed = true;
 }
 
-static void webkitWebViewBaseTouchPress(WebKitWebViewBase* webViewBase, int nPress, double x, double y, GtkGesture*)
+static void webkitWebViewBaseTouchPress(CyberKitWebViewBase* webViewBase, int nPress, double x, double y, GtkGesture*)
 {
     webViewBase->priv->isLongPressed = false;
 }
 
-static void webkitWebViewBaseTouchRelease(WebKitWebViewBase* webViewBase, int nPress, double x, double y, GtkGesture* gesture)
+static void webkitWebViewBaseTouchRelease(CyberKitWebViewBase* webViewBase, int nPress, double x, double y, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->pageGrabbedTouch)
         return;
     if (priv->isBeingDragged)
@@ -2060,9 +2060,9 @@ static void webkitWebViewBaseTouchRelease(WebKitWebViewBase* webViewBase, int nP
     webkitWebViewBaseSynthesizeMouseEvent(webViewBase, MouseEventType::Release, button, buttons, x, y, modifiers, nPress, mousePointerEventType(), PlatformMouseEvent::IsTouch::Yes);
 }
 
-static void webkitWebViewBaseTouchDragBegin(WebKitWebViewBase* webViewBase, gdouble startX, gdouble startY, GtkGesture* gesture)
+static void webkitWebViewBaseTouchDragBegin(CyberKitWebViewBase* webViewBase, gdouble startX, gdouble startY, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->dragOffset.set(0, 0);
     priv->isBeingDragged = false;
 
@@ -2072,9 +2072,9 @@ static void webkitWebViewBaseTouchDragBegin(WebKitWebViewBase* webViewBase, gdou
     webkitWebViewBaseSynthesizeWheelEvent(webViewBase, event, 0, 0, startX, startY, WheelEventPhase::Began, WheelEventPhase::NoPhase, true);
 }
 
-static void webkitWebViewBaseTouchDragUpdate(WebKitWebViewBase* webViewBase, double offsetX, double offsetY, GtkGesture* gesture)
+static void webkitWebViewBaseTouchDragUpdate(CyberKitWebViewBase* webViewBase, double offsetX, double offsetY, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->pageGrabbedTouch)
         return;
 
@@ -2119,9 +2119,9 @@ static void webkitWebViewBaseTouchDragUpdate(WebKitWebViewBase* webViewBase, dou
     }
 }
 
-static void webkitWebViewBaseTouchDragEnd(WebKitWebViewBase* webViewBase, gdouble offsetX, gdouble offsetY, GtkGesture* gesture)
+static void webkitWebViewBaseTouchDragEnd(CyberKitWebViewBase* webViewBase, gdouble offsetX, gdouble offsetY, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->pageGrabbedTouch)
         return;
 
@@ -2133,15 +2133,15 @@ static void webkitWebViewBaseTouchDragEnd(WebKitWebViewBase* webViewBase, gdoubl
     }
 }
 
-static void webkitWebViewBaseTouchDragCancel(WebKitWebViewBase* webViewBase, GdkEventSequence*, GtkGesture*)
+static void webkitWebViewBaseTouchDragCancel(CyberKitWebViewBase* webViewBase, GdkEventSequence*, GtkGesture*)
 {
     if (auto* controller = webkitWebViewBaseViewGestureController(webViewBase))
         controller->cancelSwipe();
 }
 
-static void webkitWebViewBaseTouchSwipe(WebKitWebViewBase* webViewBase, gdouble velocityX, gdouble velocityY, GtkGesture* gesture)
+static void webkitWebViewBaseTouchSwipe(CyberKitWebViewBase* webViewBase, gdouble velocityX, gdouble velocityY, GtkGesture* gesture)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->pageGrabbedTouch || !priv->isBeingDragged || priv->isLongPressed)
         return;
 
@@ -2169,7 +2169,7 @@ static void webkitWebViewBaseConstructed(GObject* object)
     GtkWidget* viewWidget = GTK_WIDGET(object);
     gtk_widget_set_can_focus(viewWidget, TRUE);
 
-    WebKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(object)->priv;
+    CyberKitWebViewBasePrivate* priv = WEBKIT_WEB_VIEW_BASE(object)->priv;
     priv->pageClient = makeUnique<PageClientImpl>(viewWidget);
     gtk_widget_set_parent(priv->keyBindingTranslator.widget(), viewWidget);
 
@@ -2273,14 +2273,14 @@ static void webkitWebViewBaseConstructed(GObject* object)
     g_signal_connect_object(gesture, "swipe", G_CALLBACK(webkitWebViewBaseTouchSwipe), viewWidget, G_CONNECT_SWAPPED);
 
     auto* settings = gtk_settings_get_default();
-    auto callback = +[](WebKitWebViewBase* webViewBase) {
+    auto callback = +[](CyberKitWebViewBase* webViewBase) {
         webViewBase->priv->pageProxy->effectiveAppearanceDidChange();
     };
     g_signal_connect_object(settings, "notify::gtk-theme-name", G_CALLBACK(callback), viewWidget, G_CONNECT_SWAPPED);
     g_signal_connect_object(settings, "notify::gtk-application-prefer-dark-theme", G_CALLBACK(callback), viewWidget, G_CONNECT_SWAPPED);
 }
 
-static void webkit_web_view_base_class_init(WebKitWebViewBaseClass* webkitWebViewBaseClass)
+static void webkit_web_view_base_class_init(CyberKitWebViewBaseClass* webkitWebViewBaseClass)
 {
     GtkWidgetClass* widgetClass = GTK_WIDGET_CLASS(webkitWebViewBaseClass);
     widgetClass->realize = webkitWebViewBaseRealize;
@@ -2349,34 +2349,34 @@ static void webkit_web_view_base_class_init(WebKitWebViewBaseClass* webkitWebVie
     containerClass->forall = webkitWebViewBaseContainerForall;
 #endif
 
-    // Before creating a WebKitWebViewBasePriv we need to be sure that WebKit is started.
+    // Before creating a CyberKitWebViewBasePriv we need to be sure that CyberKit is started.
     // Usually starting a context triggers webkitInitialize, but in case
     // we create a view without asking before for a default_context we get a crash.
-    WebKit::webkitInitialize();
+    CyberKit::webkitInitialize();
 
     gtk_widget_class_set_css_name(widgetClass, "webkitwebview");
 }
 
-WebKitWebViewBase* webkitWebViewBaseCreate(const API::PageConfiguration& configuration)
+CyberKitWebViewBase* webkitWebViewBaseCreate(const API::PageConfiguration& configuration)
 {
-    WebKitWebViewBase* webkitWebViewBase = WEBKIT_WEB_VIEW_BASE(g_object_new(WEBKIT_TYPE_WEB_VIEW_BASE, nullptr));
+    CyberKitWebViewBase* webkitWebViewBase = WEBKIT_WEB_VIEW_BASE(g_object_new(WEBKIT_TYPE_WEB_VIEW_BASE, nullptr));
     webkitWebViewBaseCreateWebPage(webkitWebViewBase, configuration.copy());
     return webkitWebViewBase;
 }
 
-WebPageProxy* webkitWebViewBaseGetPage(WebKitWebViewBase* webkitWebViewBase)
+WebPageProxy* webkitWebViewBaseGetPage(CyberKitWebViewBase* webkitWebViewBase)
 {
     return webkitWebViewBase->priv->pageProxy.get();
 }
 
-static void deviceScaleFactorChanged(WebKitWebViewBase* webkitWebViewBase)
+static void deviceScaleFactorChanged(CyberKitWebViewBase* webkitWebViewBase)
 {
     webkitWebViewBase->priv->pageProxy->setIntrinsicDeviceScaleFactor(gtk_widget_get_scale_factor(GTK_WIDGET(webkitWebViewBase)));
 }
 
-void webkitWebViewBaseCreateWebPage(WebKitWebViewBase* webkitWebViewBase, Ref<API::PageConfiguration>&& configuration)
+void webkitWebViewBaseCreateWebPage(CyberKitWebViewBase* webkitWebViewBase, Ref<API::PageConfiguration>&& configuration)
 {
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     WebProcessPool* processPool = configuration->processPool();
     priv->pageProxy = processPool->createWebPage(*priv->pageClient, WTFMove(configuration));
     priv->acceleratedBackingStore = AcceleratedBackingStore::create(*priv->pageProxy);
@@ -2387,9 +2387,9 @@ void webkitWebViewBaseCreateWebPage(WebKitWebViewBase* webkitWebViewBase, Ref<AP
     g_signal_connect(webkitWebViewBase, "notify::scale-factor", G_CALLBACK(deviceScaleFactorChanged), nullptr);
 }
 
-void webkitWebViewBaseSetTooltipText(WebKitWebViewBase* webViewBase, const char* tooltip)
+void webkitWebViewBaseSetTooltipText(CyberKitWebViewBase* webViewBase, const char* tooltip)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (tooltip && tooltip[0] != '\0') {
         priv->tooltipText = tooltip;
         gtk_widget_set_has_tooltip(GTK_WIDGET(webViewBase), TRUE);
@@ -2401,20 +2401,20 @@ void webkitWebViewBaseSetTooltipText(WebKitWebViewBase* webViewBase, const char*
     gtk_widget_trigger_tooltip_query(GTK_WIDGET(webViewBase));
 }
 
-void webkitWebViewBaseSetTooltipArea(WebKitWebViewBase* webViewBase, const IntRect& tooltipArea)
+void webkitWebViewBaseSetTooltipArea(CyberKitWebViewBase* webViewBase, const IntRect& tooltipArea)
 {
     webViewBase->priv->tooltipArea = tooltipArea;
 }
 
-void webkitWebViewBaseSetMouseIsOverScrollbar(WebKitWebViewBase* webViewBase, WebHitTestResultData::IsScrollbar isScrollbar)
+void webkitWebViewBaseSetMouseIsOverScrollbar(CyberKitWebViewBase* webViewBase, WebHitTestResultData::IsScrollbar isScrollbar)
 {
     webViewBase->priv->mouseIsOverScrollbar = isScrollbar;
 }
 
 #if ENABLE(DRAG_SUPPORT)
-void webkitWebViewBaseStartDrag(WebKitWebViewBase* webViewBase, SelectionData&& selectionData, OptionSet<DragOperation> dragOperationMask, RefPtr<ShareableBitmap>&& image, IntPoint&& dragImageHotspot)
+void webkitWebViewBaseStartDrag(CyberKitWebViewBase* webViewBase, SelectionData&& selectionData, OptionSet<DragOperation> dragOperationMask, RefPtr<ShareableBitmap>&& image, IntPoint&& dragImageHotspot)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (!priv->dragSource)
         priv->dragSource = makeUnique<DragSource>(GTK_WIDGET(webViewBase));
 
@@ -2427,13 +2427,13 @@ void webkitWebViewBaseStartDrag(WebKitWebViewBase* webViewBase, SelectionData&& 
 #endif
 }
 
-void webkitWebViewBaseDidPerformDragControllerAction(WebKitWebViewBase* webViewBase)
+void webkitWebViewBaseDidPerformDragControllerAction(CyberKitWebViewBase* webViewBase)
 {
     webViewBase->priv->dropTarget->didPerformAction();
 }
 #endif // ENABLE(DRAG_SUPPORT)
 
-void webkitWebViewBasePropagateKeyEvent(WebKitWebViewBase* webkitWebViewBase, GdkEvent* event)
+void webkitWebViewBasePropagateKeyEvent(CyberKitWebViewBase* webkitWebViewBase, GdkEvent* event)
 {
 #if USE(GTK4)
     webkitWebViewBase->priv->keyEventsToPropagate.append(event);
@@ -2445,7 +2445,7 @@ void webkitWebViewBasePropagateKeyEvent(WebKitWebViewBase* webkitWebViewBase, Gd
 #endif
 }
 
-void webkitWebViewBasePropagateWheelEvent(WebKitWebViewBase* webkitWebViewBase, GdkEvent* event)
+void webkitWebViewBasePropagateWheelEvent(CyberKitWebViewBase* webkitWebViewBase, GdkEvent* event)
 {
 #if USE(GTK4)
     webkitWebViewBase->priv->wheelEventsToPropagate.append(event);
@@ -2457,10 +2457,10 @@ void webkitWebViewBasePropagateWheelEvent(WebKitWebViewBase* webkitWebViewBase, 
 #endif
 }
 
-void webkitWebViewBaseEnterFullScreen(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseEnterFullScreen(CyberKitWebViewBase* webkitWebViewBase)
 {
 #if ENABLE(FULLSCREEN_API)
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     ASSERT(!priv->fullScreenModeActive);
 
     WebFullScreenManagerProxy* fullScreenManagerProxy = priv->pageProxy->fullScreenManager();
@@ -2475,10 +2475,10 @@ void webkitWebViewBaseEnterFullScreen(WebKitWebViewBase* webkitWebViewBase)
 #endif
 }
 
-void webkitWebViewBaseExitFullScreen(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseExitFullScreen(CyberKitWebViewBase* webkitWebViewBase)
 {
 #if ENABLE(FULLSCREEN_API)
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     ASSERT(priv->fullScreenModeActive);
 
     WebFullScreenManagerProxy* fullScreenManagerProxy = priv->pageProxy->fullScreenManager();
@@ -2493,7 +2493,7 @@ void webkitWebViewBaseExitFullScreen(WebKitWebViewBase* webkitWebViewBase)
 #endif
 }
 
-bool webkitWebViewBaseIsFullScreen(WebKitWebViewBase* webkitWebViewBase)
+bool webkitWebViewBaseIsFullScreen(CyberKitWebViewBase* webkitWebViewBase)
 {
 #if ENABLE(FULLSCREEN_API)
     return webkitWebViewBase->priv->fullScreenModeActive;
@@ -2502,7 +2502,7 @@ bool webkitWebViewBaseIsFullScreen(WebKitWebViewBase* webkitWebViewBase)
 #endif
 }
 
-void webkitWebViewBaseSetInspectorViewSize(WebKitWebViewBase* webkitWebViewBase, unsigned size)
+void webkitWebViewBaseSetInspectorViewSize(CyberKitWebViewBase* webkitWebViewBase, unsigned size)
 {
     if (webkitWebViewBase->priv->inspectorViewSize == size)
         return;
@@ -2511,35 +2511,35 @@ void webkitWebViewBaseSetInspectorViewSize(WebKitWebViewBase* webkitWebViewBase,
         gtk_widget_queue_resize_no_redraw(GTK_WIDGET(webkitWebViewBase));
 }
 
-void webkitWebViewBaseSetActiveContextMenuProxy(WebKitWebViewBase* webkitWebViewBase, WebContextMenuProxyGtk* contextMenuProxy)
+void webkitWebViewBaseSetActiveContextMenuProxy(CyberKitWebViewBase* webkitWebViewBase, WebContextMenuProxyGtk* contextMenuProxy)
 {
     webkitWebViewBase->priv->activeContextMenuProxy = contextMenuProxy;
-    g_signal_connect(contextMenuProxy->gtkWidget(), WebContextMenuProxyGtk::widgetDismissedSignal, G_CALLBACK(+[](GtkWidget* widget, WebKitWebViewBase* webViewBase) {
+    g_signal_connect(contextMenuProxy->gtkWidget(), WebContextMenuProxyGtk::widgetDismissedSignal, G_CALLBACK(+[](GtkWidget* widget, CyberKitWebViewBase* webViewBase) {
         if (webViewBase->priv->activeContextMenuProxy && webViewBase->priv->activeContextMenuProxy->gtkWidget() == widget)
             webViewBase->priv->activeContextMenuProxy = nullptr;
     }), webkitWebViewBase);
 }
 
-WebContextMenuProxyGtk* webkitWebViewBaseGetActiveContextMenuProxy(WebKitWebViewBase* webkitWebViewBase)
+WebContextMenuProxyGtk* webkitWebViewBaseGetActiveContextMenuProxy(CyberKitWebViewBase* webkitWebViewBase)
 {
     return webkitWebViewBase->priv->activeContextMenuProxy;
 }
 
 #if USE(GTK4)
-GRefPtr<GdkEvent> webkitWebViewBaseTakeContextMenuEvent(WebKitWebViewBase* webkitWebViewBase)
+GRefPtr<GdkEvent> webkitWebViewBaseTakeContextMenuEvent(CyberKitWebViewBase* webkitWebViewBase)
 {
     return std::exchange(webkitWebViewBase->priv->contextMenuEvent, nullptr);
 }
 #else
-GUniquePtr<GdkEvent> webkitWebViewBaseTakeContextMenuEvent(WebKitWebViewBase* webkitWebViewBase)
+GUniquePtr<GdkEvent> webkitWebViewBaseTakeContextMenuEvent(CyberKitWebViewBase* webkitWebViewBase)
 {
     return WTFMove(webkitWebViewBase->priv->contextMenuEvent);
 }
 #endif
 
-void webkitWebViewBaseSetFocus(WebKitWebViewBase* webViewBase, bool focused)
+void webkitWebViewBaseSetFocus(CyberKitWebViewBase* webViewBase, bool focused)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (!priv->shouldNotifyFocusEvents)
         return;
     if ((focused && priv->activityState & ActivityState::IsFocused) || (!focused && !(priv->activityState & ActivityState::IsFocused)))
@@ -2552,7 +2552,7 @@ void webkitWebViewBaseSetFocus(WebKitWebViewBase* webViewBase, bool focused)
         // If the view has received the focus and the window is not active
         // mark the current window as active now. This can happen if the
         // toplevel window is a GTK_WINDOW_POPUP and the focus has been
-        // set programatically like WebKitTestRunner does, because POPUP
+        // set programatically like CyberKitTestRunner does, because POPUP
         // can't be focused.
         if (!(priv->activityState & ActivityState::WindowIsActive)) {
             priv->activityState.add(ActivityState::WindowIsActive);
@@ -2564,15 +2564,15 @@ void webkitWebViewBaseSetFocus(WebKitWebViewBase* webViewBase, bool focused)
     webkitWebViewBaseScheduleUpdateActivityState(webViewBase, flagsToUpdate);
 }
 
-void webkitWebViewBaseSetEditable(WebKitWebViewBase* webViewBase, bool editable)
+void webkitWebViewBaseSetEditable(CyberKitWebViewBase* webViewBase, bool editable)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->pageProxy->setEditable(editable);
 }
 
-IntSize webkitWebViewBaseGetViewSize(WebKitWebViewBase* webViewBase)
+IntSize webkitWebViewBaseGetViewSize(CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     int width = priv->viewSize.width();
     int height = priv->viewSize.height();
 
@@ -2615,12 +2615,12 @@ IntSize webkitWebViewBaseGetViewSize(WebKitWebViewBase* webViewBase)
     return IntSize();
 }
 
-bool webkitWebViewBaseIsInWindowActive(WebKitWebViewBase* webViewBase)
+bool webkitWebViewBaseIsInWindowActive(CyberKitWebViewBase* webViewBase)
 {
     return webViewBase->priv->activityState.contains(ActivityState::WindowIsActive);
 }
 
-bool webkitWebViewBaseIsFocused(WebKitWebViewBase* webViewBase)
+bool webkitWebViewBaseIsFocused(CyberKitWebViewBase* webViewBase)
 {
 #if ENABLE(DEVELOPER_MODE)
     // Xvfb doesn't support toplevel focus, so the view is never focused. We consider it to tbe focused when
@@ -2633,22 +2633,22 @@ bool webkitWebViewBaseIsFocused(WebKitWebViewBase* webViewBase)
     return webViewBase->priv->activityState.contains(ActivityState::IsFocused);
 }
 
-bool webkitWebViewBaseIsVisible(WebKitWebViewBase* webViewBase)
+bool webkitWebViewBaseIsVisible(CyberKitWebViewBase* webViewBase)
 {
     return webViewBase->priv->activityState.contains(ActivityState::IsVisible);
 }
 
-bool webkitWebViewBaseIsInWindow(WebKitWebViewBase* webViewBase)
+bool webkitWebViewBaseIsInWindow(CyberKitWebViewBase* webViewBase)
 {
     return webViewBase->priv->activityState.contains(ActivityState::IsInWindow);
 }
 
-void webkitWebViewBaseSetInputMethodState(WebKitWebViewBase* webkitWebViewBase, std::optional<InputMethodState>&& state)
+void webkitWebViewBaseSetInputMethodState(CyberKitWebViewBase* webkitWebViewBase, std::optional<InputMethodState>&& state)
 {
     webkitWebViewBase->priv->inputMethodFilter.setState(WTFMove(state));
 }
 
-void webkitWebViewBaseUpdateTextInputState(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseUpdateTextInputState(CyberKitWebViewBase* webkitWebViewBase)
 {
     const auto& editorState = webkitWebViewBase->priv->pageProxy->editorState();
     if (editorState.hasPostLayoutAndVisualData()) {
@@ -2658,63 +2658,63 @@ void webkitWebViewBaseUpdateTextInputState(WebKitWebViewBase* webkitWebViewBase)
     }
 }
 
-void webkitWebViewBaseSetContentsSize(WebKitWebViewBase* webkitWebViewBase, const IntSize& contentsSize)
+void webkitWebViewBaseSetContentsSize(CyberKitWebViewBase* webkitWebViewBase, const IntSize& contentsSize)
 {
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     if (priv->contentsSize == contentsSize)
         return;
     priv->contentsSize = contentsSize;
 }
 
-void webkitWebViewBaseResetClickCounter(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseResetClickCounter(CyberKitWebViewBase* webkitWebViewBase)
 {
 #if !USE(GTK4)
     webkitWebViewBase->priv->clickCounter.reset();
 #endif
 }
 
-void webkitWebViewBaseEnterAcceleratedCompositingMode(WebKitWebViewBase* webkitWebViewBase, const LayerTreeContext& layerTreeContext)
+void webkitWebViewBaseEnterAcceleratedCompositingMode(CyberKitWebViewBase* webkitWebViewBase, const LayerTreeContext& layerTreeContext)
 {
     ASSERT(webkitWebViewBase->priv->acceleratedBackingStore);
     webkitWebViewBase->priv->acceleratedBackingStore->update(layerTreeContext);
 }
 
-void webkitWebViewBaseUpdateAcceleratedCompositingMode(WebKitWebViewBase* webkitWebViewBase, const LayerTreeContext& layerTreeContext)
+void webkitWebViewBaseUpdateAcceleratedCompositingMode(CyberKitWebViewBase* webkitWebViewBase, const LayerTreeContext& layerTreeContext)
 {
     ASSERT(webkitWebViewBase->priv->acceleratedBackingStore);
     webkitWebViewBase->priv->acceleratedBackingStore->update(layerTreeContext);
 }
 
-void webkitWebViewBaseExitAcceleratedCompositingMode(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseExitAcceleratedCompositingMode(CyberKitWebViewBase* webkitWebViewBase)
 {
     ASSERT(webkitWebViewBase->priv->acceleratedBackingStore);
     webkitWebViewBase->priv->acceleratedBackingStore->update(LayerTreeContext());
 }
 
-bool webkitWebViewBaseMakeGLContextCurrent(WebKitWebViewBase* webkitWebViewBase)
+bool webkitWebViewBaseMakeGLContextCurrent(CyberKitWebViewBase* webkitWebViewBase)
 {
     ASSERT(webkitWebViewBase->priv->acceleratedBackingStore);
     return webkitWebViewBase->priv->acceleratedBackingStore->makeContextCurrent();
 }
 
-void webkitWebViewBaseWillSwapWebProcess(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseWillSwapWebProcess(CyberKitWebViewBase* webkitWebViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     if (priv->viewGestureController)
         priv->viewGestureController->disconnectFromProcess();
 }
 
-void webkitWebViewBaseDidExitWebProcess(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseDidExitWebProcess(CyberKitWebViewBase* webkitWebViewBase)
 {
     webkitWebViewBase->priv->viewGestureController = nullptr;
 }
 
-void webkitWebViewBaseDidRelaunchWebProcess(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseDidRelaunchWebProcess(CyberKitWebViewBase* webkitWebViewBase)
 {
     // Queue a resize to ensure the new DrawingAreaProxy is resized.
     gtk_widget_queue_resize_no_redraw(GTK_WIDGET(webkitWebViewBase));
 
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     if (priv->acceleratedBackingStore) {
         auto* drawingArea = static_cast<DrawingAreaProxyCoordinatedGraphics*>(priv->pageProxy->drawingArea());
         priv->acceleratedBackingStore->update(drawingArea->layerTreeContext());
@@ -2722,18 +2722,18 @@ void webkitWebViewBaseDidRelaunchWebProcess(WebKitWebViewBase* webkitWebViewBase
     if (priv->viewGestureController)
         priv->viewGestureController->connectToProcess();
     else {
-        priv->viewGestureController = makeUnique<WebKit::ViewGestureController>(*priv->pageProxy);
+        priv->viewGestureController = makeUnique<CyberKit::ViewGestureController>(*priv->pageProxy);
         priv->viewGestureController->setSwipeGestureEnabled(priv->isBackForwardNavigationGestureEnabled);
     }
 }
 
-void webkitWebViewBasePageClosed(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBasePageClosed(CyberKitWebViewBase* webkitWebViewBase)
 {
     if (webkitWebViewBase->priv->acceleratedBackingStore)
         webkitWebViewBase->priv->acceleratedBackingStore->update({ });
 }
 
-RefPtr<WebKit::ViewSnapshot> webkitWebViewBaseTakeViewSnapshot(WebKitWebViewBase* webkitWebViewBase, std::optional<IntRect>&& clipRect)
+RefPtr<CyberKit::ViewSnapshot> webkitWebViewBaseTakeViewSnapshot(CyberKitWebViewBase* webkitWebViewBase, std::optional<IntRect>&& clipRect)
 {
     WebPageProxy* page = webkitWebViewBase->priv->pageProxy.get();
 
@@ -2755,7 +2755,7 @@ RefPtr<WebKit::ViewSnapshot> webkitWebViewBaseTakeViewSnapshot(WebKitWebViewBase
 
     return ViewSnapshot::create(WTFMove(surface));
 #else
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     auto* renderer = gtk_native_get_renderer(GTK_NATIVE(priv->toplevelOnScreenWindow));
 
     GRefPtr<GtkSnapshot> snapshot = adoptGRef(gtk_snapshot_new());
@@ -2788,42 +2788,42 @@ RefPtr<WebKit::ViewSnapshot> webkitWebViewBaseTakeViewSnapshot(WebKitWebViewBase
 #endif
 }
 
-void webkitWebViewBaseDidStartProvisionalLoadForMainFrame(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseDidStartProvisionalLoadForMainFrame(CyberKitWebViewBase* webkitWebViewBase)
 {
     ViewGestureController* controller = webkitWebViewBaseViewGestureController(webkitWebViewBase);
     if (controller && controller->isSwipeGestureEnabled())
         controller->didStartProvisionalLoadForMainFrame();
 }
 
-void webkitWebViewBaseDidFirstVisuallyNonEmptyLayoutForMainFrame(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseDidFirstVisuallyNonEmptyLayoutForMainFrame(CyberKitWebViewBase* webkitWebViewBase)
 {
     ViewGestureController* controller = webkitWebViewBaseViewGestureController(webkitWebViewBase);
     if (controller && controller->isSwipeGestureEnabled())
         controller->didFirstVisuallyNonEmptyLayoutForMainFrame();
 }
 
-void webkitWebViewBaseDidFinishNavigation(WebKitWebViewBase* webkitWebViewBase, API::Navigation* navigation)
+void webkitWebViewBaseDidFinishNavigation(CyberKitWebViewBase* webkitWebViewBase, API::Navigation* navigation)
 {
     ViewGestureController* controller = webkitWebViewBaseViewGestureController(webkitWebViewBase);
     if (controller && controller->isSwipeGestureEnabled())
         controller->didFinishNavigation(navigation);
 }
 
-void webkitWebViewBaseDidFailNavigation(WebKitWebViewBase* webkitWebViewBase, API::Navigation* navigation)
+void webkitWebViewBaseDidFailNavigation(CyberKitWebViewBase* webkitWebViewBase, API::Navigation* navigation)
 {
     ViewGestureController* controller = webkitWebViewBaseViewGestureController(webkitWebViewBase);
     if (controller && controller->isSwipeGestureEnabled())
         controller->didFailNavigation(navigation);
 }
 
-void webkitWebViewBaseDidSameDocumentNavigationForMainFrame(WebKitWebViewBase* webkitWebViewBase, SameDocumentNavigationType type)
+void webkitWebViewBaseDidSameDocumentNavigationForMainFrame(CyberKitWebViewBase* webkitWebViewBase, SameDocumentNavigationType type)
 {
     ViewGestureController* controller = webkitWebViewBaseViewGestureController(webkitWebViewBase);
     if (controller && controller->isSwipeGestureEnabled())
         controller->didSameDocumentNavigationForMainFrame(type);
 }
 
-void webkitWebViewBaseDidRestoreScrollPosition(WebKitWebViewBase* webkitWebViewBase)
+void webkitWebViewBaseDidRestoreScrollPosition(CyberKitWebViewBase* webkitWebViewBase)
 {
     ViewGestureController* controller = webkitWebViewBaseViewGestureController(webkitWebViewBase);
     if (controller && controller->isSwipeGestureEnabled())
@@ -2831,26 +2831,26 @@ void webkitWebViewBaseDidRestoreScrollPosition(WebKitWebViewBase* webkitWebViewB
 }
 
 #if GTK_CHECK_VERSION(3, 24, 0)
-static void emojiChooserEmojiPicked(WebKitWebViewBase* webkitWebViewBase, const char* text)
+static void emojiChooserEmojiPicked(CyberKitWebViewBase* webkitWebViewBase, const char* text)
 {
     webkitWebViewBaseCompleteEmojiChooserRequest(webkitWebViewBase, String::fromUTF8(text));
 }
 
-static void emojiChooserClosed(WebKitWebViewBase* webkitWebViewBase)
+static void emojiChooserClosed(CyberKitWebViewBase* webkitWebViewBase)
 {
     // The emoji chooser first closes the popover and then emits emoji-picked signal, so complete
     // the request if the emoji isn't picked before the next run loop iteration.
-    RunLoop::main().dispatch([webViewBase = GRefPtr<WebKitWebViewBase>(webkitWebViewBase)] {
+    RunLoop::main().dispatch([webViewBase = GRefPtr<CyberKitWebViewBase>(webkitWebViewBase)] {
         webkitWebViewBaseCompleteEmojiChooserRequest(webViewBase.get(), emptyString());
     });
     webkitWebViewBase->priv->releaseEmojiChooserTimer.startOneShot(2_min);
 }
 #endif
 
-void webkitWebViewBaseShowEmojiChooser(WebKitWebViewBase* webkitWebViewBase, const IntRect& caretRect, CompletionHandler<void(String)>&& completionHandler)
+void webkitWebViewBaseShowEmojiChooser(CyberKitWebViewBase* webkitWebViewBase, const IntRect& caretRect, CompletionHandler<void(String)>&& completionHandler)
 {
 #if GTK_CHECK_VERSION(3, 24, 0)
-    WebKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webkitWebViewBase->priv;
     priv->releaseEmojiChooserTimer.stop();
 
     if (!priv->emojiChooser) {
@@ -2878,7 +2878,7 @@ void webkitWebViewBaseShowEmojiChooser(WebKitWebViewBase* webkitWebViewBase, con
 }
 
 #if USE(WPE_RENDERER)
-int webkitWebViewBaseRenderHostFileDescriptor(WebKitWebViewBase* webkitWebViewBase)
+int webkitWebViewBaseRenderHostFileDescriptor(CyberKitWebViewBase* webkitWebViewBase)
 {
     if (!webkitWebViewBase->priv->acceleratedBackingStore)
         return -1;
@@ -2886,9 +2886,9 @@ int webkitWebViewBaseRenderHostFileDescriptor(WebKitWebViewBase* webkitWebViewBa
 }
 #endif
 
-void webkitWebViewBaseRequestPointerLock(WebKitWebViewBase* webViewBase)
+void webkitWebViewBaseRequestPointerLock(CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     ASSERT(!priv->pointerLockManager);
     if (!priv->lastMotionEvent)
         priv->lastMotionEvent = MotionEvent(GTK_WIDGET(webViewBase), nullptr);
@@ -2903,9 +2903,9 @@ void webkitWebViewBaseRequestPointerLock(WebKitWebViewBase* webViewBase)
     priv->pageProxy->didDenyPointerLock();
 }
 
-void webkitWebViewBaseDidLosePointerLock(WebKitWebViewBase* webViewBase)
+void webkitWebViewBaseDidLosePointerLock(CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (!priv->pointerLockManager)
         return;
 
@@ -2913,22 +2913,22 @@ void webkitWebViewBaseDidLosePointerLock(WebKitWebViewBase* webViewBase)
     priv->pointerLockManager = nullptr;
 }
 
-void webkitWebViewBaseSetInputMethodContext(WebKitWebViewBase* webViewBase, WebKitInputMethodContext* context)
+void webkitWebViewBaseSetInputMethodContext(CyberKitWebViewBase* webViewBase, CyberKitInputMethodContext* context)
 {
     webViewBase->priv->inputMethodFilter.setContext(context);
 }
 
-WebKitInputMethodContext* webkitWebViewBaseGetInputMethodContext(WebKitWebViewBase* webViewBase)
+CyberKitInputMethodContext* webkitWebViewBaseGetInputMethodContext(CyberKitWebViewBase* webViewBase)
 {
     return webViewBase->priv->inputMethodFilter.context();
 }
 
-void webkitWebViewBaseSynthesizeCompositionKeyPress(WebKitWebViewBase* webViewBase, const String& text, std::optional<Vector<CompositionUnderline>>&& underlines, std::optional<EditingRange>&& selectionRange)
+void webkitWebViewBaseSynthesizeCompositionKeyPress(CyberKitWebViewBase* webViewBase, const String& text, std::optional<Vector<CompositionUnderline>>&& underlines, std::optional<EditingRange>&& selectionRange)
 {
     webViewBase->priv->pageProxy->handleKeyboardEvent(NativeWebKeyboardEvent(text, WTFMove(underlines), WTFMove(selectionRange)));
 }
 
-static inline OptionSet<WebEventModifier> toWebKitModifiers(unsigned modifiers)
+static inline OptionSet<WebEventModifier> toCyberKitModifiers(unsigned modifiers)
 {
     OptionSet<WebEventModifier> webEventModifiers;
     if (modifiers & GDK_CONTROL_MASK)
@@ -2955,9 +2955,9 @@ static inline PointerID primaryPointerForType(const String& pointerType)
     return mousePointerID;
 }
 
-void webkitWebViewBaseSynthesizeMouseEvent(WebKitWebViewBase* webViewBase, MouseEventType type, unsigned button, unsigned short buttons, int x, int y, unsigned modifiers, int clickCount, const String& pointerType, PlatformMouseEvent::IsTouch isTouchEvent)
+void webkitWebViewBaseSynthesizeMouseEvent(CyberKitWebViewBase* webViewBase, MouseEventType type, unsigned button, unsigned short buttons, int x, int y, unsigned modifiers, int clickCount, const String& pointerType, PlatformMouseEvent::IsTouch isTouchEvent)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return;
 
@@ -3034,18 +3034,18 @@ void webkitWebViewBaseSynthesizeMouseEvent(WebKitWebViewBase* webViewBase, Mouse
 
         if (priv->lastMotionEvent)
             movementDelta = FloatPoint(x, y) - priv->lastMotionEvent->globalPosition;
-        priv->lastMotionEvent = MotionEvent(FloatPoint(x, y), widgetRootCoords(GTK_WIDGET(webViewBase), x, y), webEventButton, webEventButtons, toWebKitModifiers(modifiers));
+        priv->lastMotionEvent = MotionEvent(FloatPoint(x, y), widgetRootCoords(GTK_WIDGET(webViewBase), x, y), webEventButton, webEventButtons, toCyberKitModifiers(modifiers));
         break;
     }
 
     priv->pageProxy->handleMouseEvent(NativeWebMouseEvent(webEventType, webEventButton, webEventButtons, { x, y },
-        widgetRootCoords(GTK_WIDGET(webViewBase), x, y), clickCount, toWebKitModifiers(modifiers), movementDelta,
+        widgetRootCoords(GTK_WIDGET(webViewBase), x, y), clickCount, toCyberKitModifiers(modifiers), movementDelta,
         primaryPointerForType(pointerType), pointerType.isNull() ? mousePointerEventType() : pointerType, isTouchEvent));
 }
 
-void webkitWebViewBaseSynthesizeKeyEvent(WebKitWebViewBase* webViewBase, KeyEventType type, unsigned keyval, unsigned modifiers, ShouldTranslateKeyboardState shouldTranslate)
+void webkitWebViewBaseSynthesizeKeyEvent(CyberKitWebViewBase* webViewBase, KeyEventType type, unsigned keyval, unsigned modifiers, ShouldTranslateKeyboardState shouldTranslate)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return;
 
@@ -3105,10 +3105,10 @@ void webkitWebViewBaseSynthesizeKeyEvent(WebKitWebViewBase* webViewBase, KeyEven
         gdk_keymap_translate_keyboard_state(gdk_keymap_get_for_display(display), keycode, static_cast<GdkModifierType>(modifiers), 0, &keyval, nullptr, nullptr, nullptr);
 #endif
     }
-    auto webEventModifiers = toWebKitModifiers(modifiers);
+    auto webEventModifiers = toCyberKitModifiers(modifiers);
 
     if (type != KeyEventType::Release) {
-        // Modifier masks are set different in X than other platforms. This code makes WebKitGTK
+        // Modifier masks are set different in X than other platforms. This code makes CyberKitGTK
         // to behave similar to other platforms and other browsers under X (see http://crbug.com/127142#c8).
         switch (keyval) {
         case GDK_KEY_Control_L:
@@ -3165,7 +3165,7 @@ void webkitWebViewBaseSynthesizeKeyEvent(WebKitWebViewBase* webViewBase, KeyEven
     }
 }
 
-static inline WebWheelEvent::Phase toWebKitWheelEventPhase(WheelEventPhase phase)
+static inline WebWheelEvent::Phase toCyberKitWheelEventPhase(WheelEventPhase phase)
 {
     switch (phase) {
     case WheelEventPhase::NoPhase:
@@ -3185,14 +3185,14 @@ static inline WebWheelEvent::Phase toWebKitWheelEventPhase(WheelEventPhase phase
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-void webkitWebViewBaseSynthesizeWheelEvent(WebKitWebViewBase* webViewBase, double deltaX, double deltaY, int x, int y, WheelEventPhase phase, WheelEventPhase momentumPhase, bool hasPreciseDeltas)
+void webkitWebViewBaseSynthesizeWheelEvent(CyberKitWebViewBase* webViewBase, double deltaX, double deltaY, int x, int y, WheelEventPhase phase, WheelEventPhase momentumPhase, bool hasPreciseDeltas)
 {
     webkitWebViewBaseSynthesizeWheelEvent(webViewBase, nullptr, deltaX, deltaY, x, y, phase, momentumPhase, hasPreciseDeltas);
 }
 
-void webkitWebViewBaseSynthesizeWheelEvent(WebKitWebViewBase* webViewBase, const GdkEvent* event, double deltaX, double deltaY, int x, int y, WheelEventPhase phase, WheelEventPhase momentumPhase, bool hasPreciseDeltas)
+void webkitWebViewBaseSynthesizeWheelEvent(CyberKitWebViewBase* webViewBase, const GdkEvent* event, double deltaX, double deltaY, int x, int y, WheelEventPhase phase, WheelEventPhase momentumPhase, bool hasPreciseDeltas)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->dialog)
         return;
 
@@ -3202,12 +3202,12 @@ void webkitWebViewBaseSynthesizeWheelEvent(WebKitWebViewBase* webViewBase, const
         delta.scale(static_cast<float>(Scrollbar::pixelsPerLineStep()));
 
     priv->pageProxy->handleWheelEvent(NativeWebWheelEvent(const_cast<GdkEvent*>(event), { x, y }, widgetRootCoords(GTK_WIDGET(webViewBase), x, y),
-        delta, wheelTicks, toWebKitWheelEventPhase(phase), toWebKitWheelEventPhase(momentumPhase), true));
+        delta, wheelTicks, toCyberKitWheelEventPhase(phase), toCyberKitWheelEventPhase(momentumPhase), true));
 }
 
-void webkitWebViewBaseMakeBlank(WebKitWebViewBase* webViewBase, bool makeBlank)
+void webkitWebViewBaseMakeBlank(CyberKitWebViewBase* webViewBase, bool makeBlank)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     if (priv->isBlank == makeBlank)
         return;
 
@@ -3215,14 +3215,14 @@ void webkitWebViewBaseMakeBlank(WebKitWebViewBase* webViewBase, bool makeBlank)
     gtk_widget_queue_draw(GTK_WIDGET(webViewBase));
 }
 
-void webkitWebViewBasePageGrabbedTouch(WebKitWebViewBase* webViewBase)
+void webkitWebViewBasePageGrabbedTouch(CyberKitWebViewBase* webViewBase)
 {
-    WebKitWebViewBasePrivate* priv = webViewBase->priv;
+    CyberKitWebViewBasePrivate* priv = webViewBase->priv;
     priv->pageGrabbedTouch = true;
     gtk_gesture_set_state(priv->touchGestureGroup, GTK_EVENT_SEQUENCE_DENIED);
 }
 
-void webkitWebViewBaseSetShouldNotifyFocusEvents(WebKitWebViewBase* webViewBase, bool shouldNotifyFocusEvents)
+void webkitWebViewBaseSetShouldNotifyFocusEvents(CyberKitWebViewBase* webViewBase, bool shouldNotifyFocusEvents)
 {
     webViewBase->priv->shouldNotifyFocusEvents = shouldNotifyFocusEvents;
 }

@@ -48,7 +48,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 String WebExtensionController::storageDirectory(WebExtensionContext& extensionContext) const
 {
@@ -299,6 +299,6 @@ void WebExtensionController::didFailLoadForFrame(WebPageProxyIdentifier pageID, 
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

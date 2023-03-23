@@ -31,7 +31,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/JSONValues.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DeprecationReportBody);
 
@@ -79,4 +79,4 @@ Ref<FormData> DeprecationReportBody::createReportFormDataForViolation() const
     return FormData::create(reportObject->toJSONString().utf8());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

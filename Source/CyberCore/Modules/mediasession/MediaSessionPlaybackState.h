@@ -27,7 +27,7 @@
 
 #if ENABLE(MEDIA_SESSION)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaSessionPlaybackState : uint8_t {
     None,
@@ -35,16 +35,16 @@ enum class MediaSessionPlaybackState : uint8_t {
     Playing,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MediaSessionPlaybackState> {
+template<> struct EnumTraits<CyberCore::MediaSessionPlaybackState> {
     using values = EnumValues<
-        WebCore::MediaSessionPlaybackState,
-        WebCore::MediaSessionPlaybackState::None,
-        WebCore::MediaSessionPlaybackState::Paused,
-        WebCore::MediaSessionPlaybackState::Playing
+        CyberCore::MediaSessionPlaybackState,
+        CyberCore::MediaSessionPlaybackState::None,
+        CyberCore::MediaSessionPlaybackState::Paused,
+        CyberCore::MediaSessionPlaybackState::Playing
     >;
 };
 

@@ -27,7 +27,7 @@
 
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class XPCEventHandler : public ThreadSafeRefCounted<XPCEventHandler> {
 public:

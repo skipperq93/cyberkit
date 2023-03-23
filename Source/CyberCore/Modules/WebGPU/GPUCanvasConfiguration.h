@@ -33,7 +33,7 @@
 #include <pal/graphics/WebGPU/WebGPUCanvasConfiguration.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUCanvasConfiguration {
     PAL::WebGPU::CanvasConfiguration convertToBacking() const
@@ -41,13 +41,13 @@ struct GPUCanvasConfiguration {
         ASSERT(device);
         return {
             device->backing(),
-            WebCore::convertToBacking(format),
+            CyberCore::convertToBacking(format),
             convertTextureUsageFlagsToBacking(usage),
             viewFormats.map([] (auto& viewFormat) {
-                return WebCore::convertToBacking(viewFormat);
+                return CyberCore::convertToBacking(viewFormat);
             }),
-            WebCore::convertToBacking(colorSpace),
-            WebCore::convertToBacking(compositingAlphaMode),
+            CyberCore::convertToBacking(colorSpace),
+            CyberCore::convertToBacking(compositingAlphaMode),
         };
     }
 

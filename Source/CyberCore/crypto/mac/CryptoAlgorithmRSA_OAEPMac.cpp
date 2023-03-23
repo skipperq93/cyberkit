@@ -32,7 +32,7 @@
 #include "CryptoAlgorithmRsaOaepParams.h"
 #include "CryptoKeyRSA.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<Vector<uint8_t>> encryptRSA_OAEP(CryptoAlgorithmIdentifier hash, const Vector<uint8_t>& label, const PlatformRSAKey key, size_t keyLength, const Vector<uint8_t>& data)
 {
@@ -73,6 +73,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmRSA_OAEP::platformDecrypt(const Cryp
     return decryptRSA_OAEP(key.hashAlgorithmIdentifier(), parameters.labelVector(), key.platformKey(), key.keySizeInBits(), cipherText);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

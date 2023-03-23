@@ -24,23 +24,23 @@
  */
 
 #include "config.h"
-#include "WebCoreJITOperations.h"
+#include "CyberCoreJITOperations.h"
 
 #include <CyberScriptCore/JITOperationList.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(JIT_OPERATION_VALIDATION) || ENABLE(JIT_OPERATION_DISASSEMBLY)
 
-extern const JSC::JITOperationAnnotation startOfJITOperationsInWebCore __asm("section$start$__DATA_CONST$__jsc_ops");
-extern const JSC::JITOperationAnnotation endOfJITOperationsInWebCore __asm("section$end$__DATA_CONST$__jsc_ops");
+extern const JSC::JITOperationAnnotation startOfJITOperationsInCyberCore __asm("section$start$__DATA_CONST$__jsc_ops");
+extern const JSC::JITOperationAnnotation endOfJITOperationsInCyberCore __asm("section$end$__DATA_CONST$__jsc_ops");
 
 #if ENABLE(JIT_OPERATION_VALIDATION)
 void populateJITOperations()
 {
     static std::once_flag onceKey;
     std::call_once(onceKey, [] {
-        JSC::JITOperationList::populatePointersInEmbedder(&startOfJITOperationsInWebCore, &endOfJITOperationsInWebCore);
+        JSC::JITOperationList::populatePointersInEmbedder(&startOfJITOperationsInCyberCore, &endOfJITOperationsInCyberCore);
     });
 #if ENABLE(JIT_OPERATION_DISASSEMBLY)
     if (UNLIKELY(JSC::Options::needDisassemblySupport()))
@@ -54,7 +54,7 @@ void populateDisassemblyLabels()
 {
     static std::once_flag onceKey;
     std::call_once(onceKey, [] {
-        JSC::JITOperationList::populateDisassemblyLabelsInEmbedder(&startOfJITOperationsInWebCore, &endOfJITOperationsInWebCore);
+        JSC::JITOperationList::populateDisassemblyLabelsInEmbedder(&startOfJITOperationsInCyberCore, &endOfJITOperationsInCyberCore);
     });
 }
 #endif // ENABLE(JIT_OPERATION_DISASSEMBLY)

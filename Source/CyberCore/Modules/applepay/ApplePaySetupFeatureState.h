@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePaySetupFeatureState : uint8_t {
     Unsupported,
@@ -36,6 +36,6 @@ enum class ApplePaySetupFeatureState : uint8_t {
     Completed,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

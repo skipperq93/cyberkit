@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7C4AB3A01AF0276C003FC8D1"
-               BuildableName = "lldbWebKitTester"
-               BlueprintName = "lldbWebKitTester"
-               ReferencedContainer = "container:lldbWebKitTester.xcodeproj">
+               BuildableName = "lldbCyberKitTester"
+               BlueprintName = "lldbCyberKitTester"
+               ReferencedContainer = "container:lldbCyberKitTester.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C4AB3A01AF0276C003FC8D1"
-            BuildableName = "lldbWebKitTester"
-            BlueprintName = "lldbWebKitTester"
-            ReferencedContainer = "container:lldbWebKitTester.xcodeproj">
+            BuildableName = "lldbCyberKitTester"
+            BlueprintName = "lldbCyberKitTester"
+            ReferencedContainer = "container:lldbCyberKitTester.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C4AB3A01AF0276C003FC8D1"
-            BuildableName = "lldbWebKitTester"
-            BlueprintName = "lldbWebKitTester"
-            ReferencedContainer = "container:lldbWebKitTester.xcodeproj">
+            BuildableName = "lldbCyberKitTester"
+            BlueprintName = "lldbCyberKitTester"
+            ReferencedContainer = "container:lldbCyberKitTester.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

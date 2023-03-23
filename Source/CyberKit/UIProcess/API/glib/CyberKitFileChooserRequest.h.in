@@ -19,11 +19,11 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitFileChooserRequest_h
-#define WebKitFileChooserRequest_h
+#ifndef CyberKitFileChooserRequest_h
+#define CyberKitFileChooserRequest_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 #if PLATFORM(GTK)
 #include <gtk/gtk.h>
@@ -33,13 +33,13 @@ G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_FILE_CHOOSER_REQUEST            (webkit_file_chooser_request_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_FILE_CHOOSER_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FILE_CHOOSER_REQUEST, WebKitFileChooserRequest))
-#define WEBKIT_FILE_CHOOSER_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FILE_CHOOSER_REQUEST, WebKitFileChooserRequestClass))
+#define WEBKIT_FILE_CHOOSER_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FILE_CHOOSER_REQUEST, CyberKitFileChooserRequest))
+#define WEBKIT_FILE_CHOOSER_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FILE_CHOOSER_REQUEST, CyberKitFileChooserRequestClass))
 #define WEBKIT_IS_FILE_CHOOSER_REQUEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_FILE_CHOOSER_REQUEST))
 #define WEBKIT_IS_FILE_CHOOSER_REQUEST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_FILE_CHOOSER_REQUEST))
-#define WEBKIT_FILE_CHOOSER_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FILE_CHOOSER_REQUEST, WebKitFileChooserRequestClass))
+#define WEBKIT_FILE_CHOOSER_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FILE_CHOOSER_REQUEST, CyberKitFileChooserRequestClass))
 
-struct _WebKitFileChooserRequestClass {
+struct _CyberKitFileChooserRequestClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -50,28 +50,28 @@ struct _WebKitFileChooserRequestClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitFileChooserRequest, webkit_file_chooser_request, WEBKIT, FILE_CHOOSER_REQUEST, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitFileChooserRequest, webkit_file_chooser_request, WEBKIT, FILE_CHOOSER_REQUEST, GObject)
 
 WEBKIT_API const gchar * const *
-webkit_file_chooser_request_get_mime_types        (WebKitFileChooserRequest *request);
+webkit_file_chooser_request_get_mime_types        (CyberKitFileChooserRequest *request);
 
 #if PLATFORM(GTK)
 WEBKIT_API GtkFileFilter *
-webkit_file_chooser_request_get_mime_types_filter (WebKitFileChooserRequest *request);
+webkit_file_chooser_request_get_mime_types_filter (CyberKitFileChooserRequest *request);
 #endif
 
 WEBKIT_API gboolean
-webkit_file_chooser_request_get_select_multiple   (WebKitFileChooserRequest *request);
+webkit_file_chooser_request_get_select_multiple   (CyberKitFileChooserRequest *request);
 
 WEBKIT_API void
-webkit_file_chooser_request_select_files          (WebKitFileChooserRequest *request,
+webkit_file_chooser_request_select_files          (CyberKitFileChooserRequest *request,
                                                    const gchar * const      *files);
 
 WEBKIT_API const gchar * const *
-webkit_file_chooser_request_get_selected_files    (WebKitFileChooserRequest *request);
+webkit_file_chooser_request_get_selected_files    (CyberKitFileChooserRequest *request);
 
 WEBKIT_API void
-webkit_file_chooser_request_cancel                (WebKitFileChooserRequest *request);
+webkit_file_chooser_request_cancel                (CyberKitFileChooserRequest *request);
 
 G_END_DECLS
 

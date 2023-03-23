@@ -30,7 +30,7 @@
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebsiteDataStore;
 
@@ -55,4 +55,4 @@ private:
     HashMap<UUID, PAL::SessionID> m_notificationToSessionMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

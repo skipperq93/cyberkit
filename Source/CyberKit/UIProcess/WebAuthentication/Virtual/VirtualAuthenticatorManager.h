@@ -32,7 +32,7 @@
 #include "VirtualCredential.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 struct VirtualCredential;
 
 class VirtualAuthenticatorManager final : public AuthenticatorManager {
@@ -61,6 +61,6 @@ private:
     HashMap<String, Vector<VirtualCredential>> m_credentialsByAuthenticator;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

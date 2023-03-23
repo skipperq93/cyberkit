@@ -44,7 +44,7 @@
 #include "OffscreenCanvas.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isCurrentColorString(const String& colorString)
 {

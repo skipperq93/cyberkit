@@ -75,7 +75,7 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 UIDelegate::UIDelegate(WKWebView *webView)
     : m_webView(webView)
@@ -293,7 +293,7 @@ void UIDelegate::UIClient::mouseDidMoveOverElement(WebPageProxy&, const WebHitTe
 }
 #endif
 
-void UIDelegate::UIClient::createNewPage(WebKit::WebPageProxy&, CyberCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& navigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler)
+void UIDelegate::UIClient::createNewPage(CyberKit::WebPageProxy&, CyberCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& navigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler(nullptr);
@@ -454,7 +454,7 @@ void UIDelegate::UIClient::requestStorageAccessConfirm(WebPageProxy& webPageProx
     }).get()];
 }
 
-void UIDelegate::UIClient::decidePolicyForGeolocationPermissionRequest(WebKit::WebPageProxy& page, WebKit::WebFrameProxy& frame, const FrameInfoData& frameInfo, Function<void(bool)>& completionHandler)
+void UIDelegate::UIClient::decidePolicyForGeolocationPermissionRequest(CyberKit::WebPageProxy& page, CyberKit::WebFrameProxy& frame, const FrameInfoData& frameInfo, Function<void(bool)>& completionHandler)
 {
     if (!m_uiDelegate || (!m_uiDelegate->m_delegateMethods.webViewRequestGeolocationPermissionForFrameDecisionHandler && !m_uiDelegate->m_delegateMethods.webViewRequestGeolocationPermissionForOriginDecisionHandler))
         return;
@@ -706,7 +706,7 @@ void UIDelegate::UIClient::handleAutoplayEvent(WebPageProxy&, CyberCore::Autopla
     [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() handleAutoplayEvent:toWKAutoplayEvent(event) withFlags:toWKAutoplayEventFlags(flags)];
 }
 
-void UIDelegate::UIClient::decidePolicyForNotificationPermissionRequest(WebKit::WebPageProxy&, API::SecurityOrigin& securityOrigin, CompletionHandler<void(bool allowed)>&& completionHandler)
+void UIDelegate::UIClient::decidePolicyForNotificationPermissionRequest(CyberKit::WebPageProxy&, API::SecurityOrigin& securityOrigin, CompletionHandler<void(bool allowed)>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler(false);
@@ -887,7 +887,7 @@ void UIDelegate::UIClient::pageDidScroll(WebPageProxy*)
     [(id <WKUIDelegatePrivate>)delegate _webViewDidScroll:m_uiDelegate->m_webView.get().get()];
 }
 
-bool UIDelegate::UIClient::focusFromServiceWorker(WebKit::WebPageProxy& proxy)
+bool UIDelegate::UIClient::focusFromServiceWorker(CyberKit::WebPageProxy& proxy)
 {
     bool hasImplementation = m_uiDelegate && m_uiDelegate->m_delegateMethods.focusWebViewFromServiceWorker && m_uiDelegate->m_delegate.get();
     if (!hasImplementation) {
@@ -952,7 +952,7 @@ void UIDelegate::UIClient::didNotHandleWheelEvent(WebPageProxy*, const NativeWeb
     [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() didNotHandleWheelEvent:event.nativeEvent()];
 }
 
-void UIDelegate::UIClient::setIsResizable(WebKit::WebPageProxy&, bool resizable)
+void UIDelegate::UIClient::setIsResizable(CyberKit::WebPageProxy&, bool resizable)
 {
     if (!m_uiDelegate)
         return;
@@ -967,7 +967,7 @@ void UIDelegate::UIClient::setIsResizable(WebKit::WebPageProxy&, bool resizable)
     [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() setResizable:resizable];
 }
 
-void UIDelegate::UIClient::setWindowFrame(WebKit::WebPageProxy&, const CyberCore::FloatRect& frame)
+void UIDelegate::UIClient::setWindowFrame(CyberKit::WebPageProxy&, const CyberCore::FloatRect& frame)
 {
     if (!m_uiDelegate)
         return;
@@ -982,7 +982,7 @@ void UIDelegate::UIClient::setWindowFrame(WebKit::WebPageProxy&, const CyberCore
     [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() setWindowFrame:frame];
 }
 
-void UIDelegate::UIClient::windowFrame(WebKit::WebPageProxy&, Function<void(CyberCore::FloatRect)>&& completionHandler)
+void UIDelegate::UIClient::windowFrame(CyberKit::WebPageProxy&, Function<void(CyberCore::FloatRect)>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler({ });
@@ -1150,7 +1150,7 @@ bool UIDelegate::UIClient::runOpenPanel(WebPageProxy& page, WebFrameProxy* webFr
 #endif
 
 #if ENABLE(DEVICE_ORIENTATION)
-void UIDelegate::UIClient::shouldAllowDeviceOrientationAndMotionAccess(WebKit::WebPageProxy& page, WebFrameProxy& webFrameProxy, FrameInfoData&& frameInfo, CompletionHandler<void(bool)>&& completionHandler)
+void UIDelegate::UIClient::shouldAllowDeviceOrientationAndMotionAccess(CyberKit::WebPageProxy& page, WebFrameProxy& webFrameProxy, FrameInfoData&& frameInfo, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto securityOrigin = CyberCore::SecurityOrigin::createFromString(page.pageLoadState().activeURL());
     if (!m_uiDelegate || !m_uiDelegate->m_delegate.get() || !m_uiDelegate->m_delegateMethods.webViewRequestDeviceOrientationAndMotionPermissionForOriginDecisionHandler) {
@@ -2031,4 +2031,4 @@ void UIDelegate::UIClient::endXRSession(WebPageProxy&)
 }
 #endif // ENABLE(WEBXR)
 
-} // namespace WebKit
+} // namespace CyberKit

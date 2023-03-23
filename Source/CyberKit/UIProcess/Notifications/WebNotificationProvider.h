@@ -37,7 +37,7 @@ template<> struct ClientTraits<WKNotificationProviderBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebNotification;
 class WebNotificationManagerProxy;
@@ -59,6 +59,6 @@ public:
     HashMap<WTF::String, bool> notificationPermissions() override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebNotificationProvider_h

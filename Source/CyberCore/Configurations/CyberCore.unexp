@@ -18,20 +18,20 @@ __ZTVNSt3__119basic_ostringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE
 
 # FIXME: The following symbols only appear in Debug builds with Xcode 5.x.
 # They should be removed from this list after determining how to remove the
-# weak externals from WebCore.
+# weak externals from CyberCore.
 
 # Soft-linked functions in source files.  Most probably have
 # __attribute__((visibility("default"))) declared in the original header
 # file, so if the compiler doesn't inline the redeclared method in the
-# SOFT_LINK() macro, it gets exported from WebCore.
+# SOFT_LINK() macro, it gets exported from CyberCore.
 
-# Source/WebCore/platform/graphics/avfoundation/AudioSourceProviderAVFObjC.mm
+# Source/CyberCore/platform/graphics/avfoundation/AudioSourceProviderAVFObjC.mm
 _AudioConverterConvertComplexBuffer
 _AudioConverterNew
 _MTAudioProcessingTapGetSourceAudio
 _MTAudioProcessingTapGetStorage
 
-# Source/WebCore/platform/graphics/avfoundation/objc/MediaPlayerPrivateAVFoundationObjC.mm
+# Source/CyberCore/platform/graphics/avfoundation/objc/MediaPlayerPrivateAVFoundationObjC.mm
 _CVPixelBufferGetBaseAddress
 _CVPixelBufferGetBytesPerRow
 _CVPixelBufferGetDataSize
@@ -43,10 +43,10 @@ _CVPixelBufferUnlockBaseAddress
 _VTPixelTransferSessionCreate
 _VTPixelTransferSessionTransferImage
 
-# Source/WebCore/platform/cocoa/TelephoneNumberDetectorCocoa.cpp
+# Source/CyberCore/platform/cocoa/TelephoneNumberDetectorCocoa.cpp
 _DDDFAScannerCreateFromCache
 _DDDFAScannerFirstResultInUnicharArray
-# Source/WebCore/page/mac/ServicesOverlayController.mm
+# Source/CyberCore/page/mac/ServicesOverlayController.mm
 _DDHighlightCreateWithRectsInVisibleRectWithStyleAndDirection
 _DDHighlightCreateWithRectsInVisibleRectWithStyleScaleAndDirection
 _DDHighlightGetBoundingRect
@@ -54,11 +54,11 @@ _DDHighlightGetLayerWithContext
 _DDHighlightPointIsOnHighlight
 
 
-# Subclasses of an exported C++ class in JavaScriptCore.
+# Subclasses of an exported C++ class in CyberScriptCore.
 
-# Source/JavaScriptCore/inspector/ScriptDebugServer.h
+# Source/CyberScriptCore/inspector/ScriptDebugServer.h
 __ZTVN9Inspector17ScriptDebugServer4TaskE
-# Source/JavaScriptCore/inspector/agents/InspectorDebuggerAgent.h
+# Source/CyberScriptCore/inspector/agents/InspectorDebuggerAgent.h
 __ZTVN9Inspector22InspectorDebuggerAgent8ListenerE
 
 # Member functions of an exported C++ class in WTF

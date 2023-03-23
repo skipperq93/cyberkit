@@ -23,7 +23,7 @@
 #include "JSDOMConvertDictionary.h"
 #include "TestDerivedDictionary2.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> TestDerivedDictionary2 convertDictionary<TestDerivedDictionary2>(JSC::JSGlobalObject&, JSC::JSValue);
 
@@ -33,4 +33,4 @@ template<> TestDerivedDictionary2::Dictionary convertDictionary<TestDerivedDicti
 
 JSC::JSObject* convertDictionaryToJS(JSC::JSGlobalObject&, JSDOMGlobalObject&, const TestDerivedDictionary2::Dictionary&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -59,7 +59,7 @@ class SessionDescriptionInterface;
 class SetSessionDescriptionObserver;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class LibWebRTCProvider;
 class LibWebRTCPeerConnectionBackend;
 class LibWebRTCRtpReceiverBackend;
@@ -203,6 +203,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

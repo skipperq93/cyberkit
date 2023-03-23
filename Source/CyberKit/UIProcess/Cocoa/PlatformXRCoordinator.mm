@@ -29,6 +29,6 @@
 
 #if ENABLE(WEBXR) && USE(APPLE_INTERNAL_SDK)
 
-#import <WebKitAdditions/PlatformXRSystemAdditions.mm>
+#import <CyberKitAdditions/PlatformXRSystemAdditions.mm>
 
 #endif // ENABLE(WEBXR) && USE(APPLE_INTERNAL_SDK)

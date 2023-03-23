@@ -28,7 +28,7 @@
 #include "CSSValue.h"
 #include "FontTaggedSettings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontFeatureValue final : public CSSValue {
 public:
@@ -50,6 +50,6 @@ private:
     const int m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSFontFeatureValue, isFontFeatureValue())

@@ -34,7 +34,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BitmapImage;
 class NetworkLoadMetrics;
@@ -82,6 +82,6 @@ private:
     RefPtr<NotificationResources> m_resources;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

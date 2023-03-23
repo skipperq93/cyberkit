@@ -30,7 +30,7 @@
 #import "APIOpenPanelParameters.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::OpenPanelParameters> {
     using WrapperClass = WKOpenPanelParameters;

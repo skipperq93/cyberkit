@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaQueryListEvent);
 
@@ -56,4 +56,4 @@ Ref<MediaQueryListEvent> MediaQueryListEvent::create(const AtomString& type, con
     return adoptRef(*new MediaQueryListEvent(type, init, isTrusted));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

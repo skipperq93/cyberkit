@@ -30,7 +30,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlock;
 class RenderBoxModelObject;

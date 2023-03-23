@@ -32,7 +32,7 @@
 #include "JSDOMConvertInterface.h"
 #include "JSDOMConvertStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 

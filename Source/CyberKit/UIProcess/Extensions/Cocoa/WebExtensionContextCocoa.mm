@@ -65,16 +65,16 @@ static constexpr NSString *lastSeenVersionStateKey = @"LastSeenVersion";
 static constexpr NSInteger currentBackgroundPageListenerStateVersion = 1;
 
 @interface _WKWebExtensionContextDelegate : NSObject <WKNavigationDelegate, WKUIDelegate> {
-    WeakPtr<WebKit::WebExtensionContext> _webExtensionContext;
+    WeakPtr<CyberKit::WebExtensionContext> _webExtensionContext;
 }
 
-- (instancetype)initWithWebExtensionContext:(WebKit::WebExtensionContext&)context;
+- (instancetype)initWithWebExtensionContext:(CyberKit::WebExtensionContext&)context;
 
 @end
 
 @implementation _WKWebExtensionContextDelegate
 
-- (instancetype)initWithWebExtensionContext:(WebKit::WebExtensionContext&)context
+- (instancetype)initWithWebExtensionContext:(CyberKit::WebExtensionContext&)context
 {
     if (!(self = [super init]))
         return nil;
@@ -123,7 +123,7 @@ static constexpr NSInteger currentBackgroundPageListenerStateVersion = 1;
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 WebExtensionContext::WebExtensionContext(Ref<WebExtension>&& extension)
     : WebExtensionContext()
@@ -1544,7 +1544,7 @@ void WebExtensionContext::addInjectedContent(const InjectedContentVector& inject
 
         for (auto& includeMatchPattern : injectedContentData.includeMatchPatterns) {
             // Paths are not matched here since all we need to match at this point is scheme and host.
-            // The path matching will happen in WebKit when deciding to inject content into a frame.
+            // The path matching will happen in CyberKit when deciding to inject content into a frame.
 
             // When the include pattern matches all hosts, we can generate a restricted patten here and skip
             // the more expensive calls to matchesPattern() below since we know they will match.
@@ -1717,6 +1717,6 @@ void WebExtensionContext::removeInjectedContent(WebUserContentControllerProxy& u
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

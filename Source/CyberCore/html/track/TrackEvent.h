@@ -32,7 +32,7 @@
 #include "TextTrack.h"
 #include "VideoTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TrackEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(TrackEvent);
@@ -66,6 +66,6 @@ private:
     std::optional<TrackEventTrack> m_track;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

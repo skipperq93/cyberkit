@@ -44,7 +44,7 @@ const int64_t P_256 = 1;
 
 } // namespace COSE
 
-namespace WebCore {
+namespace CyberCore {
 
 // Length of the SHA-256 hash of the RP ID asssociated with the credential:
 // https://www.w3.org/TR/webauthn/#sec-authenticator-data
@@ -96,7 +96,7 @@ constexpr auto authenticatorTransportSmartCard = "smart-card"_s;
 constexpr auto authenticatorTransportHybrid = "hybrid"_s;
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WebAuthn {
 

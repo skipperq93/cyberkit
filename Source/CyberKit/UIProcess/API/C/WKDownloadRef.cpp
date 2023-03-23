@@ -41,7 +41,7 @@ template<> struct ClientTraits<WKDownloadClientBase> {
 };
 }
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKDownloadGetTypeID()
 {
@@ -82,16 +82,16 @@ void WKDownloadSetClient(WKDownloadRef download, WKDownloadClientBase* client)
 
     private:
         
-        void didReceiveAuthenticationChallenge(WebKit::DownloadProxy& download, WebKit::AuthenticationChallengeProxy& challenge) override
+        void didReceiveAuthenticationChallenge(CyberKit::DownloadProxy& download, CyberKit::AuthenticationChallengeProxy& challenge) override
         {
             if (!m_client.didReceiveAuthenticationChallenge) {
-                challenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+                challenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
                 return;
             }
             m_client.didReceiveAuthenticationChallenge(toAPI(download), toAPI(challenge), m_client.base.clientInfo);
         }
 
-        void didReceiveData(WebKit::DownloadProxy& download, uint64_t bytesWritten, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite) override
+        void didReceiveData(CyberKit::DownloadProxy& download, uint64_t bytesWritten, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite) override
         {
             if (!m_client.didWriteData)
                 return;
@@ -99,40 +99,40 @@ void WKDownloadSetClient(WKDownloadRef download, WKDownloadClientBase* client)
 
         }
 
-        void decideDestinationWithSuggestedFilename(WebKit::DownloadProxy& download, const CyberCore::ResourceResponse& response, const WTF::String& suggestedFilename, CompletionHandler<void(WebKit::AllowOverwrite, WTF::String)>&& completionHandler) override
+        void decideDestinationWithSuggestedFilename(CyberKit::DownloadProxy& download, const CyberCore::ResourceResponse& response, const WTF::String& suggestedFilename, CompletionHandler<void(CyberKit::AllowOverwrite, WTF::String)>&& completionHandler) override
         {
             if (!m_client.decideDestinationWithResponse) {
-                completionHandler(WebKit::AllowOverwrite::No, { });
+                completionHandler(CyberKit::AllowOverwrite::No, { });
                 return;
             }
             auto destination = adoptRef(toImpl(m_client.decideDestinationWithResponse(toAPI(download), toAPI(response), toAPI(suggestedFilename.impl()), m_client.base.clientInfo)));
             if (!destination) {
-                completionHandler(WebKit::AllowOverwrite::No, { });
+                completionHandler(CyberKit::AllowOverwrite::No, { });
                 return;
             }
-            completionHandler(WebKit::AllowOverwrite::No, destination->string());
+            completionHandler(CyberKit::AllowOverwrite::No, destination->string());
         }
 
-        void didFinish(WebKit::DownloadProxy& download) override
+        void didFinish(CyberKit::DownloadProxy& download) override
         {
             if (!m_client.didFinish)
                 return;
             m_client.didFinish(toAPI(download), m_client.base.clientInfo);
         }
 
-        void didFail(WebKit::DownloadProxy& download, const CyberCore::ResourceError& error, API::Data* resumeData) override
+        void didFail(CyberKit::DownloadProxy& download, const CyberCore::ResourceError& error, API::Data* resumeData) override
         {
             if (!m_client.didFailWithError)
                 return;
             m_client.didFailWithError(toAPI(download), toAPI(error), toAPI(resumeData), m_client.base.clientInfo);
         }
 
-        void processDidCrash(WebKit::DownloadProxy& download) override
+        void processDidCrash(CyberKit::DownloadProxy& download) override
         {
-            didFail(download, CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, download.request().url(), "Network process crashed during download"_s }, nullptr);
+            didFail(download, CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, download.request().url(), "Network process crashed during download"_s }, nullptr);
         }
 
-        void willSendRequest(WebKit::DownloadProxy& download, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse& response, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) override
+        void willSendRequest(CyberKit::DownloadProxy& download, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse& response, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) override
         {
             if (!m_client.willPerformHTTPRedirection) {
                 completionHandler(WTFMove(request));

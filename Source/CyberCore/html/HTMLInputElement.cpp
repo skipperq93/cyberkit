@@ -84,7 +84,7 @@
 #include "TouchEvent.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLInputElement);
 
@@ -1139,7 +1139,7 @@ void HTMLInputElement::setValueFromRenderer(const String& value)
 
 void HTMLInputElement::willDispatchEvent(Event& event, InputElementClickState& state)
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (event.type() == eventNames.textInputEvent && m_inputType->shouldSubmitImplicitly(event))
         event.stopPropagation();
     if (event.type() == eventNames.clickEvent && is<MouseEvent>(event) && downcast<MouseEvent>(event).button() == LeftButton) {

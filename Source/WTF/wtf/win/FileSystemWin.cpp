@@ -156,7 +156,7 @@ CString fileSystemRepresentation(const String& path)
 static String bundleName()
 {
     static const NeverDestroyed<String> name = [] {
-        String name { "WebKit"_s };
+        String name { "CyberKit"_s };
 
 #if USE(CF)
         if (CFBundleRef bundle = CFBundleGetMainBundle()) {

@@ -47,7 +47,7 @@ enum class MouseMoveOrigin;
 enum class VirtualKey;
 } } }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AutomationCommandError;
 using AutomationCompletionHandler = WTF::CompletionHandler<void(std::optional<AutomationCommandError>)>;
@@ -194,6 +194,6 @@ private:
     unsigned m_inputSourceStateIndex { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBDRIVER_ACTIONS_API)

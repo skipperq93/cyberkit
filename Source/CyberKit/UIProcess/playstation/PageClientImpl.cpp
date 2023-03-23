@@ -34,7 +34,7 @@
 #include "DrawingAreaProxyWC.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 PageClientImpl::PageClientImpl(PlayStationWebView& view)
     : m_view(view)
@@ -335,4 +335,4 @@ void PageClientImpl::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, co
     completionHandler(CyberCore::DOMPasteAccessResponse::DeniedForGesture);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

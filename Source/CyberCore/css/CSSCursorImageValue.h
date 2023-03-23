@@ -25,7 +25,7 @@
 #include "ResourceLoaderOptions.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleImage;
 
@@ -56,6 +56,6 @@ private:
     LoadedFromOpaqueSource m_loadedFromOpaqueSource { LoadedFromOpaqueSource::No };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSCursorImageValue, isCursorImageValue())

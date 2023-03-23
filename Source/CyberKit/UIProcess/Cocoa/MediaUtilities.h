@@ -30,9 +30,9 @@
 #import <CyberCore/MediaProducer.h>
 #import <CyberKit/WKWebViewPrivate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 _WKMediaCaptureStateDeprecated toWKMediaCaptureStateDeprecated(CyberCore::MediaProducerMediaStateFlags);
 _WKMediaMutedState toWKMediaMutedState(CyberCore::MediaProducerMutedStateFlags);
 
-} // namespace WebKit
+} // namespace CyberKit

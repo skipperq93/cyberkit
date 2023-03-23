@@ -47,7 +47,7 @@
 #define MESSAGE_CHECK_WITH_RETURN_VALUE(assertion, returnValue) MESSAGE_CHECK_WITH_RETURN_VALUE_BASE(assertion, (&connection), returnValue)
 #define MESSAGE_CHECK_COMPLETION(assertion, completion) MESSAGE_CHECK_COMPLETION_BASE(assertion, (&connection), completion)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void WebPasteboardProxy::grantAccessToCurrentTypes(WebProcessProxy& process, const String& pasteboardName)
@@ -705,7 +705,7 @@ void WebPasteboardProxy::testIPCSharedMemory(IPC::Connection& connection, const 
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK_COMPLETION
 #undef MESSAGE_CHECK_WITH_RETURN_VALUE

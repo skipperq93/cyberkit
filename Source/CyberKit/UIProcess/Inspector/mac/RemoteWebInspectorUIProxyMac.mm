@@ -48,9 +48,9 @@
 #import <wtf/text/Base64.h>
 
 @interface WKRemoteWebInspectorUIProxyObjCAdapter : NSObject <NSWindowDelegate, WKInspectorViewControllerDelegate> {
-    WebKit::RemoteWebInspectorUIProxy* _inspectorProxy;
+    CyberKit::RemoteWebInspectorUIProxy* _inspectorProxy;
 }
-- (instancetype)initWithRemoteWebInspectorUIProxy:(WebKit::RemoteWebInspectorUIProxy*)inspectorProxy;
+- (instancetype)initWithRemoteWebInspectorUIProxy:(CyberKit::RemoteWebInspectorUIProxy*)inspectorProxy;
 @end
 
 @implementation WKRemoteWebInspectorUIProxyObjCAdapter
@@ -62,7 +62,7 @@
     return rect;
 }
 
-- (instancetype)initWithRemoteWebInspectorUIProxy:(WebKit::RemoteWebInspectorUIProxy*)inspectorProxy
+- (instancetype)initWithRemoteWebInspectorUIProxy:(CyberKit::RemoteWebInspectorUIProxy*)inspectorProxy
 {
     if (!(self = [super init]))
         return nil;
@@ -89,7 +89,7 @@
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WKWebView *RemoteWebInspectorUIProxy::webView() const
@@ -99,7 +99,7 @@ WKWebView *RemoteWebInspectorUIProxy::webView() const
 
 void RemoteWebInspectorUIProxy::didBecomeActive()
 {
-    m_inspectorPage->send(Messages::RemoteWebInspectorUI::UpdateFindString(WebKit::stringForFind()));
+    m_inspectorPage->send(Messages::RemoteWebInspectorUI::UpdateFindString(CyberKit::stringForFind()));
 }
 
 WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
@@ -107,7 +107,7 @@ WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
     m_objCAdapter = adoptNS([[WKRemoteWebInspectorUIProxyObjCAdapter alloc] initWithRemoteWebInspectorUIProxy:this]);
 
     Ref<API::InspectorConfiguration> configuration = m_client->configurationForRemoteInspector(*this);
-    m_inspectorView = adoptNS([[WKInspectorViewController alloc] initWithConfiguration: WebKit::wrapper(configuration) inspectedPage:nullptr]);
+    m_inspectorView = adoptNS([[WKInspectorViewController alloc] initWithConfiguration: CyberKit::wrapper(configuration) inspectedPage:nullptr]);
     [m_inspectorView.get() setDelegate:m_objCAdapter.get()];
 
     m_window = WebInspectorUIProxy::createFrontendWindow(NSZeroRect, WebInspectorUIProxy::InspectionTargetType::Remote);
@@ -255,6 +255,6 @@ void RemoteWebInspectorUIProxy::platformShowCertificate(const CertificateInfo& c
     [certificateView setDetailsDisclosed:YES];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

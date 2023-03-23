@@ -32,7 +32,7 @@
 #include "MemoryBackingStoreTransaction.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 class MemoryObjectStore;
@@ -103,4 +103,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

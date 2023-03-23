@@ -27,7 +27,7 @@
 #include "JSHTMLDocument.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObject, Ref<HTMLDocument>&& passedDocument)
@@ -45,4 +45,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return toJSNewlyCreated(lexicalGlobalObject, globalObject, Ref<HTMLDocument>(document));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

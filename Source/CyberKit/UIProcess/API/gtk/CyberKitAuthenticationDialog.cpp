@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitAuthenticationDialog.h"
+#include "CyberKitAuthenticationDialog.h"
 
 #include "AuthenticationDecisionListener.h"
-#include "WebKitAuthenticationRequestPrivate.h"
-#include "WebKitCredentialPrivate.h"
-#include "WebKitWebView.h"
+#include "CyberKitAuthenticationRequestPrivate.h"
+#include "CyberKitCredentialPrivate.h"
+#include "CyberKitWebView.h"
 #include <CyberCore/GtkUtilities.h>
 #include <CyberCore/GtkVersioning.h>
 #include <glib/gi18n-lib.h>
@@ -32,10 +32,10 @@
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
-struct _WebKitAuthenticationDialogPrivate {
-    GRefPtr<WebKitAuthenticationRequest> request;
+struct _CyberKitAuthenticationDialogPrivate {
+    GRefPtr<CyberKitAuthenticationRequest> request;
     CredentialStorageMode credentialStorageMode;
     GtkWidget* loginEntry;
     GtkWidget* passwordEntry;
@@ -44,9 +44,9 @@ struct _WebKitAuthenticationDialogPrivate {
     unsigned long authenticationCancelledID;
 };
 
-WEBKIT_DEFINE_TYPE(WebKitAuthenticationDialog, webkit_authentication_dialog, WEBKIT_TYPE_WEB_VIEW_DIALOG)
+WEBKIT_DEFINE_TYPE(CyberKitAuthenticationDialog, webkit_authentication_dialog, WEBKIT_TYPE_WEB_VIEW_DIALOG)
 
-static void webkitAuthenticationDialogDestroy(WebKitAuthenticationDialog* authDialog)
+static void webkitAuthenticationDialogDestroy(CyberKitAuthenticationDialog* authDialog)
 {
 #if USE(GTK4)
     gtk_widget_unparent(GTK_WIDGET(authDialog));
@@ -55,9 +55,9 @@ static void webkitAuthenticationDialogDestroy(WebKitAuthenticationDialog* authDi
 #endif
 }
 
-static void okButtonClicked(GtkButton*, WebKitAuthenticationDialog* authDialog)
+static void okButtonClicked(GtkButton*, CyberKitAuthenticationDialog* authDialog)
 {
-    WebKitAuthenticationDialogPrivate* priv = authDialog->priv;
+    CyberKitAuthenticationDialogPrivate* priv = authDialog->priv;
     const char* username = gtk_entry_get_text(GTK_ENTRY(priv->loginEntry));
     const char* password = gtk_entry_get_text(GTK_ENTRY(priv->passwordEntry));
 #if USE(GTK4)
@@ -69,20 +69,20 @@ static void okButtonClicked(GtkButton*, WebKitAuthenticationDialog* authDialog)
     CyberCore::CredentialPersistence persistence = rememberPassword && priv->credentialStorageMode == AllowPersistentStorage ?
         CyberCore::CredentialPersistencePermanent : CyberCore::CredentialPersistenceForSession;
 
-    // FIXME: Use a stack allocated WebKitCredential.
-    WebKitCredential* credential = webkitCredentialCreate(CyberCore::Credential(String::fromUTF8(username), String::fromUTF8(password), persistence));
+    // FIXME: Use a stack allocated CyberKitCredential.
+    CyberKitCredential* credential = webkitCredentialCreate(CyberCore::Credential(String::fromUTF8(username), String::fromUTF8(password), persistence));
     webkit_authentication_request_authenticate(priv->request.get(), credential);
     webkit_credential_free(credential);
     webkitAuthenticationDialogDestroy(authDialog);
 }
 
-static void cancelButtonClicked(GtkButton*, WebKitAuthenticationDialog* authDialog)
+static void cancelButtonClicked(GtkButton*, CyberKitAuthenticationDialog* authDialog)
 {
     webkit_authentication_request_authenticate(authDialog->priv->request.get(), nullptr);
     webkitAuthenticationDialogDestroy(authDialog);
 }
 
-static void authenticationCancelled(WebKitAuthenticationRequest*, WebKitAuthenticationDialog* authDialog)
+static void authenticationCancelled(CyberKitAuthenticationRequest*, CyberKitAuthenticationDialog* authDialog)
 {
     webkitAuthenticationDialogDestroy(authDialog);
 }
@@ -97,7 +97,7 @@ static GtkWidget* createLabelWithLineWrap(const char* text)
     return label;
 }
 
-static void webkitAuthenticationDialogInitialize(WebKitAuthenticationDialog* authDialog)
+static void webkitAuthenticationDialogInitialize(CyberKitAuthenticationDialog* authDialog)
 {
     GtkWidget* vBox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 20);
 
@@ -139,7 +139,7 @@ static void webkitAuthenticationDialogInitialize(WebKitAuthenticationDialog* aut
     gtk_widget_show(button);
 #endif
 
-    WebKitAuthenticationDialogPrivate* priv = authDialog->priv;
+    CyberKitAuthenticationDialogPrivate* priv = authDialog->priv;
     button = gtk_button_new_with_mnemonic(_("_Authenticate"));
     priv->defaultButton = button;
     g_signal_connect(button, "clicked", G_CALLBACK(okButtonClicked), authDialog);
@@ -282,7 +282,7 @@ static void webkitAuthenticationDialogUnmap(GtkWidget* widget)
 
 static void webkitAuthenticationDialogMap(GtkWidget* widget)
 {
-    WebKitAuthenticationDialogPrivate* priv = WEBKIT_AUTHENTICATION_DIALOG(widget)->priv;
+    CyberKitAuthenticationDialogPrivate* priv = WEBKIT_AUTHENTICATION_DIALOG(widget)->priv;
     gtk_widget_grab_focus(priv->loginEntry);
     auto* toplevel = gtk_widget_get_toplevel(widget);
     if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
@@ -293,7 +293,7 @@ static void webkitAuthenticationDialogMap(GtkWidget* widget)
 
 static void webkitAuthenticationDialogDispose(GObject* object)
 {
-    WebKitAuthenticationDialogPrivate* priv = WEBKIT_AUTHENTICATION_DIALOG(object)->priv;
+    CyberKitAuthenticationDialogPrivate* priv = WEBKIT_AUTHENTICATION_DIALOG(object)->priv;
     if (priv->authenticationCancelledID) {
         g_signal_handler_disconnect(priv->request.get(), priv->authenticationCancelledID);
         priv->authenticationCancelledID = 0;
@@ -306,7 +306,7 @@ static void webkitAuthenticationDialogDispose(GObject* object)
     G_OBJECT_CLASS(webkit_authentication_dialog_parent_class)->dispose(object);
 }
 
-static void webkit_authentication_dialog_class_init(WebKitAuthenticationDialogClass* klass)
+static void webkit_authentication_dialog_class_init(CyberKitAuthenticationDialogClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->dispose = webkitAuthenticationDialogDispose;
@@ -319,9 +319,9 @@ static void webkit_authentication_dialog_class_init(WebKitAuthenticationDialogCl
 #endif
 }
 
-GtkWidget* webkitAuthenticationDialogNew(WebKitAuthenticationRequest* request, CredentialStorageMode mode)
+GtkWidget* webkitAuthenticationDialogNew(CyberKitAuthenticationRequest* request, CredentialStorageMode mode)
 {
-    WebKitAuthenticationDialog* authDialog = WEBKIT_AUTHENTICATION_DIALOG(g_object_new(WEBKIT_TYPE_AUTHENTICATION_DIALOG, NULL));
+    CyberKitAuthenticationDialog* authDialog = WEBKIT_AUTHENTICATION_DIALOG(g_object_new(WEBKIT_TYPE_AUTHENTICATION_DIALOG, NULL));
     authDialog->priv->request = request;
     authDialog->priv->credentialStorageMode = mode;
     webkitAuthenticationDialogInitialize(authDialog);

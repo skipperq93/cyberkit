@@ -32,7 +32,7 @@
 
 #include <utility>
 
-namespace WebCore {
+namespace CyberCore {
 
 static CSSCounterStyleDescriptors::Ranges translateRangeFromStyleProperties(const StyleProperties& properties)
 {
@@ -219,4 +219,4 @@ CSSCounterStyleDescriptors CSSCounterStyleDescriptors::create(AtomString name, c
     return descriptors;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

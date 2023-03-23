@@ -35,7 +35,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSOMVariableReferenceValue);
 
@@ -74,4 +74,4 @@ void CSSOMVariableReferenceValue::serialize(StringBuilder& builder, OptionSet<Se
     builder.append(')');
 }
 
-} // namespace WebCore
+} // namespace CyberCore

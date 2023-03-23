@@ -34,7 +34,7 @@
 static const CGFloat checkmarkImageViewWidth = 32;
 static const CGFloat selectMenuItemHorizontalMargin = 9;
 static const CGFloat selectMenuItemCellHeight = 44;
-static NSString * const selectMenuCellReuseIdentifier = @"WebKitSelectMenuItemCell";
+static NSString * const selectMenuCellReuseIdentifier = @"CyberKitSelectMenuItemCell";
 
 typedef NS_ENUM(NSInteger, PUICQuickboardListSection) {
     PUICQuickboardListSectionHeaderView,

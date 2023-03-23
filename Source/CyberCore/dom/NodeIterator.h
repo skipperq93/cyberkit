@@ -30,7 +30,7 @@
 #include "Traversal.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NodeIterator final : public ScriptWrappable, public RefCounted<NodeIterator>, public NodeIteratorBase {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(NodeIterator, WEBCORE_EXPORT);
@@ -69,4 +69,4 @@ private:
     NodePointer m_candidateNode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

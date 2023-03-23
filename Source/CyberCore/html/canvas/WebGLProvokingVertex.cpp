@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLProvokingVertex);
 
@@ -61,6 +61,6 @@ void WebGLProvokingVertex::provokingVertexWEBGL(GCGLenum provokeMode)
     context->graphicsContextGL()->provokingVertexANGLE(provokeMode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

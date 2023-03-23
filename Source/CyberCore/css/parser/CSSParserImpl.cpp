@@ -61,7 +61,7 @@
 #include <bitset>
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSParserImpl::CSSParserImpl(const CSSParserContext& context, StyleSheetContents* styleSheet)
     : m_context(context)
@@ -1290,4 +1290,4 @@ Vector<double> CSSParserImpl::consumeKeyframeKeyList(CSSParserTokenRange range)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

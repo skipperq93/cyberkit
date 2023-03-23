@@ -533,7 +533,7 @@ static void testWebViewRunJavaScript(WebViewTest* test, gconstpointer)
     g_assert_no_error(error.get());
     g_assert_true(WebViewTest::javascriptResultIsUndefined(javascriptResult));
 
-    GUniquePtr<char> scriptFile(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "JavaScriptCore", "glib", "script.js", nullptr));
+    GUniquePtr<char> scriptFile(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "CyberScriptCore", "glib", "script.js", nullptr));
     GUniqueOutPtr<char> contents;
     gsize contentsSize;
     g_assert_true(g_file_get_contents(scriptFile.get(), &contents.outPtr(), &contentsSize, nullptr));

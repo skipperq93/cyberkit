@@ -29,7 +29,7 @@
 #include "LayoutState.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class Box;
@@ -105,7 +105,7 @@ inline std::optional<IntrinsicWidthConstraints> FormattingState::intrinsicWidthC
 }
 
 #define SPECIALIZE_TYPE_TRAITS_LAYOUT_FORMATTING_STATE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Layout::ToValueTypeName) \
-    static bool isType(const WebCore::Layout::FormattingState& formattingState) { return formattingState.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Layout::ToValueTypeName) \
+    static bool isType(const CyberCore::Layout::FormattingState& formattingState) { return formattingState.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

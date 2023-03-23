@@ -28,7 +28,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace IndexedDB {
 
@@ -112,4 +112,4 @@ enum class CursorIterateOption : bool {
 
 } // namespace IndexedDB
 
-} // namespace WebCore
+} // namespace CyberCore

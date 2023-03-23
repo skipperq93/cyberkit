@@ -25,11 +25,11 @@
 
 #pragma once
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 #include <CyberCore/PlatformMouseEvent.h>
 #include <wtf/text/WTFString.h>
 
-typedef struct _WebKitWebViewBase WebKitWebViewBase;
+typedef struct _CyberKitWebViewBase CyberKitWebViewBase;
 
 struct KeyEvent {
     unsigned type { 0 };
@@ -38,12 +38,12 @@ struct KeyEvent {
 };
 
 enum class MouseEventType { Press, Release, Motion };
-WK_EXPORT void webkitWebViewBaseSynthesizeMouseEvent(WebKitWebViewBase*, MouseEventType type, unsigned button, unsigned short buttons, int x, int y, unsigned modifiers, int clickCount, const String& pointerType = "mouse"_s, CyberCore::PlatformMouseEvent::IsTouch isTouchEvent = CyberCore::PlatformMouseEvent::IsTouch::No);
+WK_EXPORT void webkitWebViewBaseSynthesizeMouseEvent(CyberKitWebViewBase*, MouseEventType type, unsigned button, unsigned short buttons, int x, int y, unsigned modifiers, int clickCount, const String& pointerType = "mouse"_s, CyberCore::PlatformMouseEvent::IsTouch isTouchEvent = CyberCore::PlatformMouseEvent::IsTouch::No);
 
 enum class KeyEventType { Press, Release, Insert };
 enum class ShouldTranslateKeyboardState { No, Yes };
-WK_EXPORT void webkitWebViewBaseSynthesizeKeyEvent(WebKitWebViewBase*, KeyEventType, unsigned keyVal, unsigned modifiers, ShouldTranslateKeyboardState);
+WK_EXPORT void webkitWebViewBaseSynthesizeKeyEvent(CyberKitWebViewBase*, KeyEventType, unsigned keyVal, unsigned modifiers, ShouldTranslateKeyboardState);
 
 enum class WheelEventPhase { NoPhase, Began, Changed, Ended, Cancelled, MayBegin };
-WK_EXPORT void webkitWebViewBaseSynthesizeWheelEvent(WebKitWebViewBase*, double deltaX, double deltaY, int x, int y, WheelEventPhase, WheelEventPhase momentumPhase, bool);
+WK_EXPORT void webkitWebViewBaseSynthesizeWheelEvent(CyberKitWebViewBase*, double deltaX, double deltaY, int x, int y, WheelEventPhase, WheelEventPhase momentumPhase, bool);
 

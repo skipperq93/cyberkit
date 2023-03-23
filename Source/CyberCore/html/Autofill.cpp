@@ -34,7 +34,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AutofillCategory : uint8_t { Off, Automatic, Normal, Contact, Credential };
 
@@ -333,4 +333,4 @@ AutofillData AutofillData::createFromHTMLFormControlElement(const HTMLFormContro
     return { field, idlValue, credentialType };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

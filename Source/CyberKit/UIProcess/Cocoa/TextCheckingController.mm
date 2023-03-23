@@ -32,7 +32,7 @@
 #import "WebProcessProxy.h"
 #import <CyberCore/AttributedString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 TextCheckingController::TextCheckingController(WebPageProxy& webPageProxy)
     : m_page(webPageProxy)
@@ -55,6 +55,6 @@ void TextCheckingController::removeAnnotationRelativeToSelection(NSString *annot
     m_page.send(Messages::TextCheckingControllerProxy::RemoveAnnotationRelativeToSelection(annotationName, selectionOffset, length));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PLATFORM_DRIVEN_TEXT_CHECKING)

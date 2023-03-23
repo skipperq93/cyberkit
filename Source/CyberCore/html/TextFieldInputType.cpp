@@ -71,7 +71,7 @@
 #include "HTMLOptionElement.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -239,7 +239,7 @@ void TextFieldInputType::forwardEvent(Event& event)
             return;
     }
 
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     bool isFocusEvent = event.type() == eventNames.focusEvent;
     bool isBlurEvent = event.type() == eventNames.blurEvent;
     if (isFocusEvent || isBlurEvent)
@@ -1036,4 +1036,4 @@ bool TextFieldInputType::isFocusingWithDataListDropdown() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

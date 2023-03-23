@@ -30,7 +30,7 @@
 #include "ScriptBufferSourceProvider.h"
 #include <CyberScriptCore/SourceProvider.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebAssemblyScriptBufferSourceProvider final : public JSC::BaseWebAssemblySourceProvider, public AbstractScriptBufferHolder {
     WTF_MAKE_FAST_ALLOCATED;
@@ -103,6 +103,6 @@ private:
     String m_source;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBASSEMBLY)

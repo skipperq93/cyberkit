@@ -28,7 +28,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -90,4 +90,4 @@ struct HashableActionListHashTraits : public WTF::CustomHashTraits<HashableActio
 };
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore

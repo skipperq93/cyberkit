@@ -37,7 +37,7 @@
 #include <CyberScriptCore/Strong.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ErrorEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(ErrorEvent);
@@ -96,6 +96,6 @@ private:
     bool m_triedToSerialize { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(ErrorEvent)

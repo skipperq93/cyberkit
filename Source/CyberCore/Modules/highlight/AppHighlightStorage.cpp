@@ -46,7 +46,7 @@
 #include "TextIterator.h"
 #include <wtf/UUID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(APP_HIGHLIGHTS)
 
@@ -267,7 +267,7 @@ bool AppHighlightStorage::attemptToRestoreHighlightAndScroll(AppHighlightRangeDa
     strongDocument->appHighlightRegister().addAnnotationHighlightWithRange(StaticRange::create(*range));
     
     if (scroll == ScrollToHighlight::Yes) {
-        auto textIndicator = TextIndicator::createWithRange(range.value(), { TextIndicatorOption::DoNotClipToVisibleRect }, WebCore::TextIndicatorPresentationTransition::Bounce);
+        auto textIndicator = TextIndicator::createWithRange(range.value(), { TextIndicatorOption::DoNotClipToVisibleRect }, CyberCore::TextIndicatorPresentationTransition::Bounce);
         if (textIndicator)
             m_document->page()->chrome().client().setTextIndicator(textIndicator->data());
 
@@ -296,4 +296,4 @@ void AppHighlightStorage::restoreUnrestoredAppHighlights()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

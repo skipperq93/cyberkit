@@ -38,7 +38,7 @@
 #include "NfcService.h"
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 UniqueRef<AuthenticatorTransportService> AuthenticatorTransportService::create(CyberCore::AuthenticatorTransport transport, Observer& observer)
 {
@@ -97,6 +97,6 @@ void AuthenticatorTransportService::restartDiscovery()
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

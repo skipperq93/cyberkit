@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -81,4 +81,4 @@ inline IDBDatabaseNameAndVersionRequest::~IDBDatabaseNameAndVersionRequest()
     ASSERT(canCurrentThreadAccessThreadLocalData(originThread()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

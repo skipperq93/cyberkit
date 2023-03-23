@@ -27,7 +27,7 @@
 #include "GenericMediaQueryTypes.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace MQ {
 
 void serialize(StringBuilder&, const Feature&);

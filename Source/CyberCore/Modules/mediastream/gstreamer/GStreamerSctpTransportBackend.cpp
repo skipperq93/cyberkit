@@ -28,7 +28,7 @@
 GST_DEBUG_CATEGORY(webkit_webrtc_sctp_transport_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_sctp_transport_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline RTCSctpTransportState toRTCSctpTransportState(GstWebRTCSCTPTransportState state)
 {
@@ -100,6 +100,6 @@ void GStreamerSctpTransportBackend::stateChanged()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

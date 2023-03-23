@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMFileSystem;
 class ErrorCallback;
@@ -62,4 +62,4 @@ private:
     String m_virtualPath;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

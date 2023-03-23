@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ContactInfo {
     Vector<String> name;
@@ -36,4 +36,4 @@ struct ContactInfo {
     Vector<String> tel;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

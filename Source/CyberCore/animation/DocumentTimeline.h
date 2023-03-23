@@ -32,7 +32,7 @@
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnimationEventBase;
 class CustomEffectCallback;
@@ -106,6 +106,6 @@ private:
     bool m_shouldScheduleAnimationResolutionForNewPendingEvents { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ANIMATION_TIMELINE(DocumentTimeline, isDocumentTimeline())

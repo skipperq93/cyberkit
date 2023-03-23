@@ -28,10 +28,10 @@
 #include <wtf/MainThread.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptDisallowedScope {
 public:
@@ -196,4 +196,4 @@ private:
     WEBCORE_EXPORT static unsigned s_count;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -54,7 +54,7 @@ webkit_dom_html_iframe_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_align(CyberKitDOMHTMLIFrameElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_iframe_element_get_align(CyberKitDOMHTMLIFrameElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_align(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_iframe_element_set_align(CyberKitDOMHTMLIFrameElement* self, con
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_frame_border(CyberKitDOMHTMLIFrameElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_iframe_element_get_frame_border(CyberKitDOMHTMLIFrameElement* se
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_frame_border(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_iframe_element_set_frame_border(CyberKitDOMHTMLIFrameElement* se
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_height(CyberKitDOMHTMLIFrameElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_iframe_element_get_height(CyberKitDOMHTMLIFrameElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_height(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_iframe_element_set_height(CyberKitDOMHTMLIFrameElement* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_long_desc(CyberKitDOMHTMLIFrameElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_iframe_element_get_long_desc(CyberKitDOMHTMLIFrameElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_long_desc(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -142,7 +142,7 @@ webkit_dom_html_iframe_element_set_long_desc(CyberKitDOMHTMLIFrameElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_margin_height(CyberKitDOMHTMLIFrameElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_iframe_element_get_margin_height(CyberKitDOMHTMLIFrameElement* s
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_margin_height(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -164,7 +164,7 @@ webkit_dom_html_iframe_element_set_margin_height(CyberKitDOMHTMLIFrameElement* s
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_margin_width(CyberKitDOMHTMLIFrameElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_iframe_element_get_margin_width(CyberKitDOMHTMLIFrameElement* se
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_margin_width(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -186,7 +186,7 @@ webkit_dom_html_iframe_element_set_margin_width(CyberKitDOMHTMLIFrameElement* se
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_name(CyberKitDOMHTMLIFrameElement* self);
@@ -197,7 +197,7 @@ webkit_dom_html_iframe_element_get_name(CyberKitDOMHTMLIFrameElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_name(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -208,7 +208,7 @@ webkit_dom_html_iframe_element_set_name(CyberKitDOMHTMLIFrameElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_scrolling(CyberKitDOMHTMLIFrameElement* self);
@@ -219,7 +219,7 @@ webkit_dom_html_iframe_element_get_scrolling(CyberKitDOMHTMLIFrameElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_scrolling(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -230,7 +230,7 @@ webkit_dom_html_iframe_element_set_scrolling(CyberKitDOMHTMLIFrameElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_src(CyberKitDOMHTMLIFrameElement* self);
@@ -241,7 +241,7 @@ webkit_dom_html_iframe_element_get_src(CyberKitDOMHTMLIFrameElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_src(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -252,7 +252,7 @@ webkit_dom_html_iframe_element_set_src(CyberKitDOMHTMLIFrameElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_iframe_element_get_width(CyberKitDOMHTMLIFrameElement* self);
@@ -263,7 +263,7 @@ webkit_dom_html_iframe_element_get_width(CyberKitDOMHTMLIFrameElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_iframe_element_set_width(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
@@ -274,7 +274,7 @@ webkit_dom_html_iframe_element_set_width(CyberKitDOMHTMLIFrameElement* self, con
  *
  * Returns: (transfer none): A #CyberKitDOMDocument
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDocument*
 webkit_dom_html_iframe_element_get_content_document(CyberKitDOMHTMLIFrameElement* self);
@@ -285,7 +285,7 @@ webkit_dom_html_iframe_element_get_content_document(CyberKitDOMHTMLIFrameElement
  *
  * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_html_iframe_element_get_content_window(CyberKitDOMHTMLIFrameElement* self);

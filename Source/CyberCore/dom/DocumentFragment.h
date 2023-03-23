@@ -26,7 +26,7 @@
 #include "ContainerNode.h"
 #include "FragmentScriptingPermission.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentFragment : public ContainerNode {
     WTF_MAKE_ISO_ALLOCATED(DocumentFragment);
@@ -54,8 +54,8 @@ private:
     bool childTypeAllowed(NodeType) const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::DocumentFragment)
-    static bool isType(const WebCore::Node& node) { return node.isDocumentFragment(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::DocumentFragment)
+    static bool isType(const CyberCore::Node& node) { return node.isDocumentFragment(); }
 SPECIALIZE_TYPE_TRAITS_END()

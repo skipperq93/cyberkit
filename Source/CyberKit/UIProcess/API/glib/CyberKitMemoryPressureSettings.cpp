@@ -18,17 +18,17 @@
  */
 
 #include "config.h"
-#include "WebKitMemoryPressureSettings.h"
+#include "CyberKitMemoryPressureSettings.h"
 
 #include <wtf/MemoryPressureHandler.h>
 
 /**
- * WebKitMemoryPressureSettings:
- * @See_also: #WebKitWebContext, #WebKitWebsiteDataManager
+ * CyberKitMemoryPressureSettings:
+ * @See_also: #CyberKitWebContext, #CyberKitWebsiteDataManager
  *
  * A boxed type representing the settings for the memory pressure handler
  *
- * #WebKitMemoryPressureSettings is a boxed type that can be used to provide some custom settings
+ * #CyberKitMemoryPressureSettings is a boxed type that can be used to provide some custom settings
  * to control how the memory pressure situations are handled by the different processes.
  *
  * The memory pressure system implemented inside the different process will try to keep the memory usage
@@ -40,53 +40,53 @@
  * example, setting memory limit too low with a fast poll interval can cause the process to constantly
  * be trying to release memory.
  *
- * A #WebKitMemoryPressureSettings can be passed to a #WebKitWebContext constructor, and the settings will
+ * A #CyberKitMemoryPressureSettings can be passed to a #CyberKitWebContext constructor, and the settings will
  * be applied to all the web processes created by that context.
  *
- * A #WebKitMemoryPressureSettings can be passed to webkit_website_data_manager_set_memory_pressure_settings(),
+ * A #CyberKitMemoryPressureSettings can be passed to webkit_website_data_manager_set_memory_pressure_settings(),
  * and the settings will be applied to all the network processes created after that call by any instance of
- * #WebKitWebsiteDataManager.
+ * #CyberKitWebsiteDataManager.
  *
  * Since: 2.34
  */
-struct _WebKitMemoryPressureSettings {
+struct _CyberKitMemoryPressureSettings {
     MemoryPressureHandler::Configuration configuration;
 };
 
-G_DEFINE_BOXED_TYPE(WebKitMemoryPressureSettings, webkit_memory_pressure_settings, webkit_memory_pressure_settings_copy, webkit_memory_pressure_settings_free);
+G_DEFINE_BOXED_TYPE(CyberKitMemoryPressureSettings, webkit_memory_pressure_settings, webkit_memory_pressure_settings_copy, webkit_memory_pressure_settings_free);
 
 /**
  * webkit_memory_pressure_settings_new:
  *
- * Create a new #WebKitMemoryPressureSettings with the default values.
+ * Create a new #CyberKitMemoryPressureSettings with the default values.
  *
- * Returns: (transfer full): A new #WebKitMemoryPressureSettings instance filled with the default values.
+ * Returns: (transfer full): A new #CyberKitMemoryPressureSettings instance filled with the default values.
  *
  * Since: 2.34
  */
-WebKitMemoryPressureSettings* webkit_memory_pressure_settings_new()
+CyberKitMemoryPressureSettings* webkit_memory_pressure_settings_new()
 {
-    WebKitMemoryPressureSettings* memoryPressureSettings = static_cast<WebKitMemoryPressureSettings*>(fastMalloc(sizeof(WebKitMemoryPressureSettings)));
-    new (memoryPressureSettings) WebKitMemoryPressureSettings;
+    CyberKitMemoryPressureSettings* memoryPressureSettings = static_cast<CyberKitMemoryPressureSettings*>(fastMalloc(sizeof(CyberKitMemoryPressureSettings)));
+    new (memoryPressureSettings) CyberKitMemoryPressureSettings;
 
     return memoryPressureSettings;
 }
 
 /**
  * webkit_memory_pressure_settings_copy:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  *
  * Make a copy of @settings.
  *
- * Returns: (transfer full): A copy of of the passed #WebKitMemoryPressureSettings.
+ * Returns: (transfer full): A copy of of the passed #CyberKitMemoryPressureSettings.
  *
  * Since: 2.34
  */
-WebKitMemoryPressureSettings* webkit_memory_pressure_settings_copy(WebKitMemoryPressureSettings* settings)
+CyberKitMemoryPressureSettings* webkit_memory_pressure_settings_copy(CyberKitMemoryPressureSettings* settings)
 {
     g_return_val_if_fail(settings, nullptr);
 
-    WebKitMemoryPressureSettings* copy = static_cast<WebKitMemoryPressureSettings*>(fastZeroedMalloc(sizeof(WebKitMemoryPressureSettings)));
+    CyberKitMemoryPressureSettings* copy = static_cast<CyberKitMemoryPressureSettings*>(fastZeroedMalloc(sizeof(CyberKitMemoryPressureSettings)));
 
     copy->configuration = settings->configuration;
 
@@ -95,13 +95,13 @@ WebKitMemoryPressureSettings* webkit_memory_pressure_settings_copy(WebKitMemoryP
 
 /**
  * webkit_memory_pressure_settings_free:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  *
- * Free the #WebKitMemoryPressureSettings.
+ * Free the #CyberKitMemoryPressureSettings.
  *
  * Since: 2.34
  */
-void webkit_memory_pressure_settings_free(WebKitMemoryPressureSettings* settings)
+void webkit_memory_pressure_settings_free(CyberKitMemoryPressureSettings* settings)
 {
     g_return_if_fail(settings);
 
@@ -110,7 +110,7 @@ void webkit_memory_pressure_settings_free(WebKitMemoryPressureSettings* settings
 
 /**
  * webkit_memory_pressure_settings_set_memory_limit:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  * @memory_limit: amount of memory (in MB) that the process is allowed to use.
  *
  * Sets @memory_limit the memory limit value to @settings.
@@ -119,7 +119,7 @@ void webkit_memory_pressure_settings_free(WebKitMemoryPressureSettings* settings
  *
  * Since: 2.34
  */
-void webkit_memory_pressure_settings_set_memory_limit(WebKitMemoryPressureSettings* settings, guint memoryLimit)
+void webkit_memory_pressure_settings_set_memory_limit(CyberKitMemoryPressureSettings* settings, guint memoryLimit)
 {
     g_return_if_fail(settings);
     g_return_if_fail(memoryLimit);
@@ -129,7 +129,7 @@ void webkit_memory_pressure_settings_set_memory_limit(WebKitMemoryPressureSettin
 
 /**
  * webkit_memory_pressure_settings_get_memory_limit:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  *
  * Gets the memory usage limit.
  *
@@ -137,7 +137,7 @@ void webkit_memory_pressure_settings_set_memory_limit(WebKitMemoryPressureSettin
  *
  * Since: 2.34
  */
-guint webkit_memory_pressure_settings_get_memory_limit(WebKitMemoryPressureSettings* settings)
+guint webkit_memory_pressure_settings_get_memory_limit(CyberKitMemoryPressureSettings* settings)
 {
     g_return_val_if_fail(settings, 0);
 
@@ -146,7 +146,7 @@ guint webkit_memory_pressure_settings_get_memory_limit(WebKitMemoryPressureSetti
 
 /**
  * webkit_memory_pressure_settings_set_conservative_threshold:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  * @value: fraction of the memory limit where the conservative policy starts working.
  *
  * Sets the memory limit for the conservative policy to start working.
@@ -160,7 +160,7 @@ guint webkit_memory_pressure_settings_get_memory_limit(WebKitMemoryPressureSetti
  *
  * Since: 2.34
  */
-void webkit_memory_pressure_settings_set_conservative_threshold(WebKitMemoryPressureSettings* settings, gdouble value)
+void webkit_memory_pressure_settings_set_conservative_threshold(CyberKitMemoryPressureSettings* settings, gdouble value)
 {
     g_return_if_fail(settings);
     g_return_if_fail(value > 0 && value < 1);
@@ -171,7 +171,7 @@ void webkit_memory_pressure_settings_set_conservative_threshold(WebKitMemoryPres
 
 /**
  * webkit_memory_pressure_settings_get_conservative_threshold:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  *
  * Gets the conservative memory usage threshold.
  *
@@ -179,7 +179,7 @@ void webkit_memory_pressure_settings_set_conservative_threshold(WebKitMemoryPres
  *
  * Since: 2.34
  */
-gdouble webkit_memory_pressure_settings_get_conservative_threshold(WebKitMemoryPressureSettings* settings)
+gdouble webkit_memory_pressure_settings_get_conservative_threshold(CyberKitMemoryPressureSettings* settings)
 {
     g_return_val_if_fail(settings, 0);
 
@@ -188,7 +188,7 @@ gdouble webkit_memory_pressure_settings_get_conservative_threshold(WebKitMemoryP
 
 /**
  * webkit_memory_pressure_settings_set_strict_threshold:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  * @value: fraction of the memory limit where the strict policy starts working.
  *
  * Sets the memory limit for the strict policy to start working.
@@ -203,7 +203,7 @@ gdouble webkit_memory_pressure_settings_get_conservative_threshold(WebKitMemoryP
  *
  * Since: 2.34
  */
-void webkit_memory_pressure_settings_set_strict_threshold(WebKitMemoryPressureSettings* settings, gdouble value)
+void webkit_memory_pressure_settings_set_strict_threshold(CyberKitMemoryPressureSettings* settings, gdouble value)
 {
     g_return_if_fail(settings);
     g_return_if_fail(value > 0 && value < 1);
@@ -215,7 +215,7 @@ void webkit_memory_pressure_settings_set_strict_threshold(WebKitMemoryPressureSe
 
 /**
  * webkit_memory_pressure_settings_get_strict_threshold:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  *
  * Gets the strict memory usage threshold.
  *
@@ -223,7 +223,7 @@ void webkit_memory_pressure_settings_set_strict_threshold(WebKitMemoryPressureSe
  *
  * Since: 2.34
  */
-gdouble webkit_memory_pressure_settings_get_strict_threshold(WebKitMemoryPressureSettings* settings)
+gdouble webkit_memory_pressure_settings_get_strict_threshold(CyberKitMemoryPressureSettings* settings)
 {
     g_return_val_if_fail(settings, 0);
 
@@ -232,7 +232,7 @@ gdouble webkit_memory_pressure_settings_get_strict_threshold(WebKitMemoryPressur
 
 /**
  * webkit_memory_pressure_settings_set_kill_threshold:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  * @value: fraction of the memory limit where the process will be killed because
  *   of excessive memory usage.
  *
@@ -245,7 +245,7 @@ gdouble webkit_memory_pressure_settings_get_strict_threshold(WebKitMemoryPressur
  *
  * Since: 2.34
  */
-void webkit_memory_pressure_settings_set_kill_threshold(WebKitMemoryPressureSettings* settings, gdouble value)
+void webkit_memory_pressure_settings_set_kill_threshold(CyberKitMemoryPressureSettings* settings, gdouble value)
 {
     g_return_if_fail(settings);
     g_return_if_fail(value >= 0);
@@ -256,7 +256,7 @@ void webkit_memory_pressure_settings_set_kill_threshold(WebKitMemoryPressureSett
 
 /**
  * webkit_memory_pressure_settings_get_kill_threshold:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  *
  * Gets the kill memory usage threshold.
  *
@@ -264,7 +264,7 @@ void webkit_memory_pressure_settings_set_kill_threshold(WebKitMemoryPressureSett
  *
  * Since: 2.34
  */
-gdouble webkit_memory_pressure_settings_get_kill_threshold(WebKitMemoryPressureSettings* settings)
+gdouble webkit_memory_pressure_settings_get_kill_threshold(CyberKitMemoryPressureSettings* settings)
 {
     g_return_val_if_fail(settings, 0);
 
@@ -274,7 +274,7 @@ gdouble webkit_memory_pressure_settings_get_kill_threshold(WebKitMemoryPressureS
 
 /**
  * webkit_memory_pressure_settings_set_poll_interval:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  * @value: period (in seconds) between memory usage measurements.
  *
  * Sets @value as the poll interval used by @settings.
@@ -283,7 +283,7 @@ gdouble webkit_memory_pressure_settings_get_kill_threshold(WebKitMemoryPressureS
  *
  * Since: 2.34
  */
-void webkit_memory_pressure_settings_set_poll_interval(WebKitMemoryPressureSettings* settings, gdouble value)
+void webkit_memory_pressure_settings_set_poll_interval(CyberKitMemoryPressureSettings* settings, gdouble value)
 {
     g_return_if_fail(settings);
     g_return_if_fail(value > 0);
@@ -293,7 +293,7 @@ void webkit_memory_pressure_settings_set_poll_interval(WebKitMemoryPressureSetti
 
 /**
  * webkit_memory_pressure_settings_get_poll_interval:
- * @settings: a #WebKitMemoryPressureSettings
+ * @settings: a #CyberKitMemoryPressureSettings
  *
  * Gets the interval at which memory usage is checked.
  *
@@ -301,14 +301,14 @@ void webkit_memory_pressure_settings_set_poll_interval(WebKitMemoryPressureSetti
  *
  * Since: 2.34
  */
-gdouble webkit_memory_pressure_settings_get_poll_interval(WebKitMemoryPressureSettings* settings)
+gdouble webkit_memory_pressure_settings_get_poll_interval(CyberKitMemoryPressureSettings* settings)
 {
     g_return_val_if_fail(settings, 0);
 
     return settings->configuration.pollInterval.seconds();
 }
 
-const MemoryPressureHandler::Configuration& webkitMemoryPressureSettingsGetMemoryPressureHandlerConfiguration(WebKitMemoryPressureSettings* settings)
+const MemoryPressureHandler::Configuration& webkitMemoryPressureSettingsGetMemoryPressureHandlerConfiguration(CyberKitMemoryPressureSettings* settings)
 {
     return settings->configuration;
 }

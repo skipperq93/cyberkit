@@ -30,7 +30,7 @@
 #include <CyberScriptCore/BuiltinNames.h>
 #include <CyberScriptCore/CommonIdentifiers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Optimize / rework maplike<> and setlike<> declarations.
 // A few ideas in https://bugs.webkit.org/show_bug.cgi?id=241639.

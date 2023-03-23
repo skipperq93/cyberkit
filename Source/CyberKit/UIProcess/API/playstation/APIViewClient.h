@@ -31,7 +31,7 @@ class IntRect;
 class Region;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class PlayStationWebView;
 }
 
@@ -42,13 +42,13 @@ class ViewClient {
 public:
     virtual ~ViewClient() = default;
 
-    virtual void setViewNeedsDisplay(WebKit::PlayStationWebView&, const CyberCore::Region&) { }
-    virtual void enterFullScreen(WebKit::PlayStationWebView&) { }
-    virtual void exitFullScreen(WebKit::PlayStationWebView&) { }
-    virtual void closeFullScreen(WebKit::PlayStationWebView&) { }
-    virtual void beganEnterFullScreen(WebKit::PlayStationWebView&, const CyberCore::IntRect&, const CyberCore::IntRect&) { }
-    virtual void beganExitFullScreen(WebKit::PlayStationWebView&, const CyberCore::IntRect&, const CyberCore::IntRect&) { }
-    virtual void setCursor(WebKit::PlayStationWebView& view, const CyberCore::Cursor& cursor) { }
+    virtual void setViewNeedsDisplay(CyberKit::PlayStationWebView&, const CyberCore::Region&) { }
+    virtual void enterFullScreen(CyberKit::PlayStationWebView&) { }
+    virtual void exitFullScreen(CyberKit::PlayStationWebView&) { }
+    virtual void closeFullScreen(CyberKit::PlayStationWebView&) { }
+    virtual void beganEnterFullScreen(CyberKit::PlayStationWebView&, const CyberCore::IntRect&, const CyberCore::IntRect&) { }
+    virtual void beganExitFullScreen(CyberKit::PlayStationWebView&, const CyberCore::IntRect&, const CyberCore::IntRect&) { }
+    virtual void setCursor(CyberKit::PlayStationWebView& view, const CyberCore::Cursor& cursor) { }
 };
 
 } // namespace API

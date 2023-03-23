@@ -25,7 +25,7 @@
 
 #include "HTMLFrameElementBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderFrame;
 
@@ -52,4 +52,4 @@ private:
     bool m_frameBorderSet { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

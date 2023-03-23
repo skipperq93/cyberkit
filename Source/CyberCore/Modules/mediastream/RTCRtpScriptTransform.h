@@ -36,7 +36,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCRtpScriptTransformer;
 class RTCRtpTransformBackend;
@@ -88,6 +88,6 @@ private:
     WeakPtr<RTCRtpScriptTransformer> m_transformer WTF_GUARDED_BY_LOCK(m_transformerLock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

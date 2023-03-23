@@ -31,7 +31,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 
@@ -61,8 +61,8 @@ private:
     const std::optional<unsigned> m_columnNumber;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::DeprecationReportBody)
-    static bool isType(const WebCore::ReportBody& reportBody) { return reportBody.reportBodyType() == WebCore::ViolationReportType::Deprecation; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::DeprecationReportBody)
+    static bool isType(const CyberCore::ReportBody& reportBody) { return reportBody.reportBodyType() == CyberCore::ViolationReportType::Deprecation; }
 SPECIALIZE_TYPE_TRAITS_END()

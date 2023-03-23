@@ -31,7 +31,7 @@
 #include "Document.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurrentScriptIncrementer {
     WTF_MAKE_NONCOPYABLE(CurrentScriptIncrementer);
@@ -52,4 +52,4 @@ private:
     Document& m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

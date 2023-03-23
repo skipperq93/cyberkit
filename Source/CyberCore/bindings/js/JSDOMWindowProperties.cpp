@@ -34,9 +34,9 @@
 #include "JSDOMWindowBase.h"
 #include "JSElement.h"
 #include "JSHTMLCollection.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -142,4 +142,4 @@ JSC::GCClient::IsoSubspace* JSDOMWindowProperties::subspaceForImpl(JSC::VM& vm)
     return &static_cast<JSVMClientData*>(vm.clientData)->domWindowPropertiesSpace();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

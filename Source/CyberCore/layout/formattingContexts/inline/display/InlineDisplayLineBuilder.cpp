@@ -30,7 +30,7 @@
 #include "LayoutBoxGeometry.h"
 #include "TextUtil.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static InlineRect flipLogicalLineRectToVisualForWritingMode(const InlineRect& lineLogicalRect, WritingMode writingMode)

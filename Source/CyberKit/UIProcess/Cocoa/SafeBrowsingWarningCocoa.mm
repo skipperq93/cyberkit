@@ -31,7 +31,7 @@
 #import <pal/spi/cocoa/NSAttributedStringSPI.h>
 #import <wtf/Language.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if HAVE(SAFE_BROWSING)
 

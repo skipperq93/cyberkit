@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SpeechRecognitionUpdate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String convertEnumerationToString(SpeechRecognitionUpdateType enumerationValue)
 {
@@ -96,4 +96,4 @@ Vector<SpeechRecognitionResultData> SpeechRecognitionUpdate::result() const
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore

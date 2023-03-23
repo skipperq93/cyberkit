@@ -30,7 +30,7 @@
 
 #include <wpe/playstation.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ProcessID ProcessProviderLibWPE::launchProcess(const ProcessLauncher::LaunchOptions& launchOptions , char** argv, int childProcessSocket)
 {
@@ -46,6 +46,6 @@ ProcessID ProcessProviderLibWPE::launchProcess(const ProcessLauncher::LaunchOpti
     return wpe_process_launch(m_provider.get(), static_cast<wpe_process_type>(wpeProcessType(launchOptions.processType)), &userdata);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(WPE_BACKEND_PLAYSTATION)

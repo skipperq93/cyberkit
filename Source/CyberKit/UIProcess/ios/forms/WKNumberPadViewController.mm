@@ -257,7 +257,7 @@ static CGFloat inputLabelFontSize()
     fadeOutAnimation.duration = numberPadViewDismissAnimationDuration;
     fadeOutAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 #if USE(APPLE_INTERNAL_SDK)
-    [self.contentView addAnimation:fadeOutAnimation forKey:@"WebKitNumberPadFadeOutAnimationKey"];
+    [self.contentView addAnimation:fadeOutAnimation forKey:@"CyberKitNumberPadFadeOutAnimationKey"];
 #endif
     self.contentView.alpha = 0;
 }

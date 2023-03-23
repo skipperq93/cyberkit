@@ -31,7 +31,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // A helper class to safely dereference the callback objects held by
 // SQLStatement and SQLTransaction on the proper thread. The 'wrapped'
@@ -99,4 +99,4 @@ private:
     RefPtr<ScriptExecutionContext> m_scriptExecutionContext WTF_GUARDED_BY_LOCK(m_lock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

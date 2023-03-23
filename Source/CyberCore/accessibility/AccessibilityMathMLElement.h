@@ -36,7 +36,7 @@
 #include "RenderMathMLOperator.h"
 #include "RenderMathMLRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilityMathMLElement : public AccessibilityRenderObject {
 
@@ -108,7 +108,7 @@ private:
     bool m_isAnonymousOperator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityMathMLElement, isMathElement())
 

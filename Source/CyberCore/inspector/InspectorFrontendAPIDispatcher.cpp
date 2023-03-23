@@ -37,7 +37,7 @@
 #include <CyberScriptCore/JSPromise.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using EvaluationError = InspectorFrontendAPIDispatcher::EvaluationError;
 

@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_CODECS)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WebCodecsAlphaOption {
     Keep,

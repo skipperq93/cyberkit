@@ -36,7 +36,7 @@
 
 OBJC_CLASS WKGroupSession;
 
-namespace WebKit {
+namespace CyberKit {
 
 class GroupActivitiesSession : public RefCounted<GroupActivitiesSession> {
     WTF_MAKE_FAST_ALLOCATED;

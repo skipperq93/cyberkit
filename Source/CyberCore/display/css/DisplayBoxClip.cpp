@@ -28,7 +28,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(BoxClip);
@@ -70,5 +70,5 @@ void BoxClip::pushRoundedClip(const FloatRoundedRect& roundedRect)
 
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

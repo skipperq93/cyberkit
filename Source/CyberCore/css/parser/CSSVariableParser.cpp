@@ -36,7 +36,7 @@
 #include "CSSParserTokenRange.h"
 #include "CSSPropertyParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool CSSVariableParser::isValidVariableName(const CSSParserToken& token)
 {
@@ -193,4 +193,4 @@ RefPtr<CSSCustomPropertyValue> CSSVariableParser::parseInitialValueForUniversalS
     return CSSCustomPropertyValue::createSyntaxAll(variableName, CSSVariableData::create(range));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

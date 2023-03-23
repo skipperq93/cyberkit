@@ -30,7 +30,7 @@
 #include "DynamicsCompressorOptions.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DynamicsCompressor;
 
@@ -78,4 +78,4 @@ private:
     float m_reduction { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

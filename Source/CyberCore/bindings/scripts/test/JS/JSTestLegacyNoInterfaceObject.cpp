@@ -39,18 +39,18 @@
 #include "JSDOMWrapperCache.h"
 #include "JSNode.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -334,7 +334,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestLegacyNoInterfaceObjectConstructorFunction_static
 
 JSC::GCClient::IsoSubspace* JSTestLegacyNoInterfaceObject::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestLegacyNoInterfaceObject, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestLegacyNoInterfaceObject, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestLegacyNoInterfaceObject.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestLegacyNoInterfaceObject = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestLegacyNoInterfaceObject.get(); },
@@ -369,9 +369,9 @@ void JSTestLegacyNoInterfaceObjectOwner::finalize(JSC::Handle<JSC::Unknown> hand
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestLegacyNoInterfaceObject@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestLegacyNoInterfaceObject@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore27TestLegacyNoInterfaceObjectE[]; }
+extern "C" { extern void* _ZTVN7CyberCore27TestLegacyNoInterfaceObjectE[]; }
 #endif
 #endif
 
@@ -382,9 +382,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestLegacyNoInterfaceObject@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestLegacyNoInterfaceObject@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore27TestLegacyNoInterfaceObjectE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore27TestLegacyNoInterfaceObjectE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

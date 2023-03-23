@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WEBCORE_EXPORT CustomHeaderFields {
     Vector<HTTPHeaderField> fields;
@@ -38,4 +38,4 @@ struct WEBCORE_EXPORT CustomHeaderFields {
     bool thirdPartyDomainsMatch(const URL&) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -47,7 +47,7 @@
 #include <wtf/ASCIICType.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -300,4 +300,4 @@ void NumberInputType::attributeChanged(const QualifiedName& name)
     TextFieldInputType::attributeChanged(name);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

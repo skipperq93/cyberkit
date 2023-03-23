@@ -48,7 +48,7 @@
 #include <CyberScriptCore/RegularExpression.h>
 #include <wtf/JSONValues.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -490,4 +490,4 @@ bool InspectorDOMDebuggerAgent::EventBreakpoint::matches(const String& eventName
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

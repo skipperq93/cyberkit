@@ -43,7 +43,7 @@
 #if PLATFORM(IOS_FAMILY)
 #import <UIKit/UIApplication.h>
 
-using WebKit::ProcessAndUIAssertion;
+using CyberKit::ProcessAndUIAssertion;
 #endif
 
 static WorkQueue& assertionsWorkQueue()
@@ -80,7 +80,7 @@ static bool processHasActiveRunTimeLimitation()
     std::atomic<bool> _backgroundTaskWasInvalidated;
     ThreadSafeWeakHashSet<ProcessAndUIAssertion> _assertionsNeedingBackgroundTask;
     dispatch_block_t _pendingTaskReleaseTask;
-    std::unique_ptr<WebKit::ProcessStateMonitor> m_processStateMonitor;
+    std::unique_ptr<CyberKit::ProcessStateMonitor> m_processStateMonitor;
 }
 
 + (WKProcessAssertionBackgroundTaskManager *)shared
@@ -104,7 +104,7 @@ static bool processHasActiveRunTimeLimitation()
 
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:[UIApplication sharedApplication] queue:nil usingBlock:^(NSNotification *) {
         if (![self _hasBackgroundTask])
-            WebKit::WebProcessPool::notifyProcessPoolsApplicationIsAboutToSuspend();
+            CyberKit::WebProcessPool::notifyProcessPoolsApplicationIsAboutToSuspend();
     }];
 
     return self;
@@ -177,7 +177,7 @@ static bool processHasActiveRunTimeLimitation()
         RELEASE_LOG(ProcessSuspension, "%p - WKProcessAssertionBackgroundTaskManager: beginBackgroundTaskWithName", self);
         RBSTarget *target = [RBSTarget currentProcess];
         RBSDomainAttribute *domainAttribute = [RBSDomainAttribute attributeWithDomain:@"com.apple.common" name:@"FinishTaskInterruptable"];
-        _backgroundTask = adoptNS([[RBSAssertion alloc] initWithExplanation:@"WebKit UIProcess background task" target:target attributes:@[domainAttribute]]);
+        _backgroundTask = adoptNS([[RBSAssertion alloc] initWithExplanation:@"CyberKit UIProcess background task" target:target attributes:@[domainAttribute]]);
         [_backgroundTask addObserver:self];
 
         _backgroundTaskWasInvalidated = false;
@@ -209,7 +209,7 @@ static bool processHasActiveRunTimeLimitation()
 - (void)_handleBackgroundTaskExpiration
 {
     auto remainingTime = [RBSProcessHandle currentProcess].activeLimitations.runTime;
-    RELEASE_LOG(ProcessSuspension, "WKProcessAssertionBackgroundTaskManager: Background task expired while holding WebKit ProcessAssertion (isMainThread=%d, remainingTime=%g).", RunLoop::isMain(), remainingTime);
+    RELEASE_LOG(ProcessSuspension, "WKProcessAssertionBackgroundTaskManager: Background task expired while holding CyberKit ProcessAssertion (isMainThread=%d, remainingTime=%g).", RunLoop::isMain(), remainingTime);
 
     callOnMainRunLoopAndWait([self] {
         [self _handleBackgroundTaskExpirationOnMainThread];
@@ -246,7 +246,7 @@ static bool processHasActiveRunTimeLimitation()
     RELEASE_LOG(ProcessSuspension, "%p - WKProcessAssertionBackgroundTaskManager: endBackgroundTask", self);
     if (processHasActiveRunTimeLimitation()) {
 #if PLATFORM(IOS_FAMILY)
-        WebKit::WebProcessPool::notifyProcessPoolsApplicationIsAboutToSuspend();
+        CyberKit::WebProcessPool::notifyProcessPoolsApplicationIsAboutToSuspend();
 #endif
         if (m_processStateMonitor)
             m_processStateMonitor->processWillBeSuspendedImmediately();
@@ -265,8 +265,8 @@ static bool processHasActiveRunTimeLimitation()
     }
 
     if (!m_processStateMonitor) {
-        m_processStateMonitor = makeUnique<WebKit::ProcessStateMonitor>([](bool suspended) {
-            for (auto& processPool : WebKit::WebProcessPool::allProcessPools())
+        m_processStateMonitor = makeUnique<CyberKit::ProcessStateMonitor>([](bool suspended) {
+            for (auto& processPool : CyberKit::WebProcessPool::allProcessPools())
                 processPool->setProcessesShouldSuspend(suspended);
         });
     }
@@ -313,7 +313,7 @@ typedef void(^RBSAssertionInvalidationCallbackType)();
 }
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSString *runningBoardNameForAssertionType(ProcessAssertionType assertionType)
 {
@@ -520,6 +520,6 @@ void ProcessAndUIAssertion::processAssertionWasInvalidated()
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(RUNNINGBOARD)

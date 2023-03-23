@@ -30,7 +30,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleCounterStyle;
 
@@ -114,4 +114,4 @@ private:
     bool m_isFallingBack { false };
     bool m_isExtendedUnresolved { true };
 };
-} // namespace WebCore
+} // namespace CyberCore

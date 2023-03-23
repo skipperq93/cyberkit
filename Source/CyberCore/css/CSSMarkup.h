@@ -26,7 +26,7 @@
 
 // Helper functions for converting from CSSValues to text.
 
-namespace WebCore {
+namespace CyberCore {
 
 // Common serializing methods. See: http://dev.w3.org/csswg/cssom/#common-serializing-idioms
 void serializeIdentifier(const String& identifier, StringBuilder& appendTo, bool skipStartChecks = false);
@@ -35,4 +35,4 @@ String serializeString(const String&);
 String serializeURL(const String&);
 String serializeFontFamily(const String&);
 
-} // namespace WebCore
+} // namespace CyberCore

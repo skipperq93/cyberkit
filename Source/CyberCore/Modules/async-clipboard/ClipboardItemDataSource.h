@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Clipboard;
 class ClipboardItem;
@@ -54,4 +54,4 @@ protected:
     ClipboardItem& m_item;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

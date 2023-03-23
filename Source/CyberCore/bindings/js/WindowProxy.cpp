@@ -36,7 +36,7 @@
 #include <CyberScriptCore/WeakGCMapInlines.h>
 #include <wtf/MemoryPressureHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -219,4 +219,4 @@ void WindowProxy::setJSWindowProxies(ProxyMap&& windowProxies)
     m_jsWindowProxies = makeUniqueRef<ProxyMap>(WTFMove(windowProxies));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

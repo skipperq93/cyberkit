@@ -38,7 +38,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCRtpScriptTransform);
 
@@ -142,6 +142,6 @@ void RTCRtpScriptTransform::clear(RTCRtpScriptTransformer::ClearCallback clearCa
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

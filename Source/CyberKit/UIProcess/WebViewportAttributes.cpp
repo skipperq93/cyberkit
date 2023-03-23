@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebViewportAttributes.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebViewportAttributes::WebViewportAttributes(const CyberCore::ViewportAttributes& attributes)
     : m_attributes(attributes)
@@ -37,4 +37,4 @@ WebViewportAttributes::~WebViewportAttributes()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

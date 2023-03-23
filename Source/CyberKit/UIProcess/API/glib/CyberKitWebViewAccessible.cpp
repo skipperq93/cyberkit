@@ -18,17 +18,17 @@
  */
 
 #include "config.h"
-#include "WebKitWebViewAccessible.h"
+#include "CyberKitWebViewAccessible.h"
 
 #if ENABLE(ACCESSIBILITY) && !USE(GTK4)
 
 #include <wtf/glib/WTFGType.h>
 
-struct _WebKitWebViewAccessiblePrivate {
+struct _CyberKitWebViewAccessiblePrivate {
     gpointer webView;
 };
 
-WEBKIT_DEFINE_TYPE(WebKitWebViewAccessible, webkit_web_view_accessible, ATK_TYPE_SOCKET)
+WEBKIT_DEFINE_TYPE(CyberKitWebViewAccessible, webkit_web_view_accessible, ATK_TYPE_SOCKET)
 
 static void webkitWebViewAccessibleInitialize(AtkObject* atkObject, gpointer data)
 {
@@ -41,7 +41,7 @@ static void webkitWebViewAccessibleInitialize(AtkObject* atkObject, gpointer dat
 
 static AtkStateSet* webkitWebViewAccessibleRefStateSet(AtkObject* atkObject)
 {
-    WebKitWebViewAccessible* accessible = WEBKIT_WEB_VIEW_ACCESSIBLE(atkObject);
+    CyberKitWebViewAccessible* accessible = WEBKIT_WEB_VIEW_ACCESSIBLE(atkObject);
 
     AtkStateSet* stateSet;
     if (accessible->priv->webView) {
@@ -78,7 +78,7 @@ static gint webkitWebViewAccessibleGetIndexInParent(AtkObject* atkObject)
     return -1;
 }
 
-static void webkit_web_view_accessible_class_init(WebKitWebViewAccessibleClass* klass)
+static void webkit_web_view_accessible_class_init(CyberKitWebViewAccessibleClass* klass)
 {
     // No need to implement get_n_children() and ref_child() here
     // since this is a subclass of AtkSocket and all the logic related
@@ -89,14 +89,14 @@ static void webkit_web_view_accessible_class_init(WebKitWebViewAccessibleClass* 
     atkObjectClass->get_index_in_parent = webkitWebViewAccessibleGetIndexInParent;
 }
 
-WebKitWebViewAccessible* webkitWebViewAccessibleNew(gpointer webView)
+CyberKitWebViewAccessible* webkitWebViewAccessibleNew(gpointer webView)
 {
     AtkObject* object = ATK_OBJECT(g_object_new(WEBKIT_TYPE_WEB_VIEW_ACCESSIBLE, nullptr));
     atk_object_initialize(object, webView);
     return WEBKIT_WEB_VIEW_ACCESSIBLE(object);
 }
 
-void webkitWebViewAccessibleSetWebView(WebKitWebViewAccessible* accessible, gpointer webView)
+void webkitWebViewAccessibleSetWebView(CyberKitWebViewAccessible* accessible, gpointer webView)
 {
     g_return_if_fail(WEBKIT_IS_WEB_VIEW_ACCESSIBLE(accessible));
 

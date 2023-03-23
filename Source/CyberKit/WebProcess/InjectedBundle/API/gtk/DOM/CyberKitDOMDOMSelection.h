@@ -56,7 +56,7 @@ webkit_dom_dom_selection_get_type(void);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_collapse(CyberKitDOMDOMSelection* self, CyberKitDOMNode* node, gulong offset);
@@ -68,7 +68,7 @@ webkit_dom_dom_selection_collapse(CyberKitDOMDOMSelection* self, CyberKitDOMNode
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_collapse_to_end(CyberKitDOMDOMSelection* self, GError** error);
@@ -80,7 +80,7 @@ webkit_dom_dom_selection_collapse_to_end(CyberKitDOMDOMSelection* self, GError**
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_collapse_to_start(CyberKitDOMDOMSelection* self, GError** error);
@@ -91,7 +91,7 @@ webkit_dom_dom_selection_collapse_to_start(CyberKitDOMDOMSelection* self, GError
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_delete_from_document(CyberKitDOMDOMSelection* self);
@@ -106,7 +106,7 @@ webkit_dom_dom_selection_delete_from_document(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_selection_contains_node(CyberKitDOMDOMSelection* self, CyberKitDOMNode* node, gboolean allowPartial);
@@ -118,7 +118,7 @@ webkit_dom_dom_selection_contains_node(CyberKitDOMDOMSelection* self, CyberKitDO
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_select_all_children(CyberKitDOMDOMSelection* self, CyberKitDOMNode* node);
@@ -132,7 +132,7 @@ webkit_dom_dom_selection_select_all_children(CyberKitDOMDOMSelection* self, Cybe
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_extend(CyberKitDOMDOMSelection* self, CyberKitDOMNode* node, gulong offset, GError** error);
@@ -147,7 +147,7 @@ webkit_dom_dom_selection_extend(CyberKitDOMDOMSelection* self, CyberKitDOMNode* 
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMRange*
 webkit_dom_dom_selection_get_range_at(CyberKitDOMDOMSelection* self, gulong index, GError** error);
@@ -158,7 +158,7 @@ webkit_dom_dom_selection_get_range_at(CyberKitDOMDOMSelection* self, gulong inde
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_remove_all_ranges(CyberKitDOMDOMSelection* self);
@@ -170,7 +170,7 @@ webkit_dom_dom_selection_remove_all_ranges(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_add_range(CyberKitDOMDOMSelection* self, CyberKitDOMRange* range);
@@ -185,7 +185,7 @@ webkit_dom_dom_selection_add_range(CyberKitDOMDOMSelection* self, CyberKitDOMRan
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_set_base_and_extent(CyberKitDOMDOMSelection* self, CyberKitDOMNode* baseNode, gulong baseOffset, CyberKitDOMNode* extentNode, gulong extentOffset);
@@ -198,7 +198,7 @@ webkit_dom_dom_selection_set_base_and_extent(CyberKitDOMDOMSelection* self, Cybe
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_set_position(CyberKitDOMDOMSelection* self, CyberKitDOMNode* node, gulong offset);
@@ -209,7 +209,7 @@ webkit_dom_dom_selection_set_position(CyberKitDOMDOMSelection* self, CyberKitDOM
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_empty(CyberKitDOMDOMSelection* self);
@@ -223,7 +223,7 @@ webkit_dom_dom_selection_empty(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_selection_modify(CyberKitDOMDOMSelection* self, const gchar* alter, const gchar* direction, const gchar* granularity);
@@ -236,7 +236,7 @@ webkit_dom_dom_selection_modify(CyberKitDOMDOMSelection* self, const gchar* alte
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_dom_selection_get_anchor_node(CyberKitDOMDOMSelection* self);
@@ -249,7 +249,7 @@ webkit_dom_dom_selection_get_anchor_node(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_dom_selection_get_anchor_offset(CyberKitDOMDOMSelection* self);
@@ -262,7 +262,7 @@ webkit_dom_dom_selection_get_anchor_offset(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_dom_selection_get_focus_node(CyberKitDOMDOMSelection* self);
@@ -275,7 +275,7 @@ webkit_dom_dom_selection_get_focus_node(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_dom_selection_get_focus_offset(CyberKitDOMDOMSelection* self);
@@ -288,7 +288,7 @@ webkit_dom_dom_selection_get_focus_offset(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_selection_get_is_collapsed(CyberKitDOMDOMSelection* self);
@@ -301,7 +301,7 @@ webkit_dom_dom_selection_get_is_collapsed(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_dom_selection_get_range_count(CyberKitDOMDOMSelection* self);
@@ -314,7 +314,7 @@ webkit_dom_dom_selection_get_range_count(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
 webkit_dom_dom_selection_get_selection_type(CyberKitDOMDOMSelection* self);
@@ -327,7 +327,7 @@ webkit_dom_dom_selection_get_selection_type(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_dom_selection_get_base_node(CyberKitDOMDOMSelection* self);
@@ -340,7 +340,7 @@ webkit_dom_dom_selection_get_base_node(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_dom_selection_get_base_offset(CyberKitDOMDOMSelection* self);
@@ -353,7 +353,7 @@ webkit_dom_dom_selection_get_base_offset(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_dom_selection_get_extent_node(CyberKitDOMDOMSelection* self);
@@ -366,7 +366,7 @@ webkit_dom_dom_selection_get_extent_node(CyberKitDOMDOMSelection* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_dom_selection_get_extent_offset(CyberKitDOMDOMSelection* self);

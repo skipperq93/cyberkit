@@ -56,7 +56,7 @@ typedef const struct __AXTextMarker* AXTextMarkerRef;
 typedef const struct __AXTextMarkerRange* AXTextMarkerRangeRef;
 OBJC_CLASS NSAttributedString;
 #elif USE(ATSPI)
-typedef WebCore::AccessibilityObjectAtspi AccessibilityObjectWrapper;
+typedef CyberCore::AccessibilityObjectAtspi AccessibilityObjectWrapper;
 #else
 class AccessibilityObjectWrapper;
 #endif
@@ -69,7 +69,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AXCoreObject;
 class AXObjectCache;
@@ -257,7 +257,7 @@ enum class AccessibilityRole {
     Video,
     WebApplication,
     WebArea,
-    WebCoreLink,
+    CyberCoreLink,
     Window,
 };
 
@@ -568,8 +568,8 @@ ALWAYS_INLINE String accessibilityRoleToString(AccessibilityRole role)
         return "WebApplication"_s;
     case AccessibilityRole::WebArea:
         return "WebArea"_s;
-    case AccessibilityRole::WebCoreLink:
-        return "WebCoreLink"_s;
+    case AccessibilityRole::CyberCoreLink:
+        return "CyberCoreLink"_s;
     case AccessibilityRole::Window:
         return "Window"_s;
     }
@@ -827,7 +827,7 @@ public:
     void setObjectID(AXID axID) { m_id = axID; }
     AXID objectID() const { return m_id; }
 
-    // When the corresponding WebCore object that this accessible object
+    // When the corresponding CyberCore object that this accessible object
     // represents is deleted, it must be detached.
     void detach(AccessibilityDetachmentType);
     virtual bool isDetached() const = 0;
@@ -1662,4 +1662,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, const AccessibilitySearchCriteria&
 WTF::TextStream& operator<<(WTF::TextStream&, AccessibilityObjectInclusion);
 WTF::TextStream& operator<<(WTF::TextStream&, const AXCoreObject&);
 
-} // namespace WebCore
+} // namespace CyberCore

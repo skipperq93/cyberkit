@@ -32,7 +32,7 @@
 #include <CyberScriptCore/Strong.h>
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmHmacKeyParams final : public CryptoAlgorithmParameters {
 public:
@@ -54,7 +54,7 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_ALGORITHM_PARAMETERS(HmacKeyParams)
 

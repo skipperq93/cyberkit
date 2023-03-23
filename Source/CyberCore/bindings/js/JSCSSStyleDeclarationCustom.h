@@ -25,12 +25,12 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class CSSStyleDeclaration;
 
-WebCoreOpaqueRoot root(CSSStyleDeclaration*);
+CyberCoreOpaqueRoot root(CSSStyleDeclaration*);
 
-} // namespace WebCore
+} // namespace CyberCore

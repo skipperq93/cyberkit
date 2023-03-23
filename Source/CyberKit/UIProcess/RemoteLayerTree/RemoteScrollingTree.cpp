@@ -36,7 +36,7 @@
 #include <CyberCore/ScrollingTreePositionedNodeCocoa.h>
 #include <CyberCore/ScrollingTreeStickyNodeCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteScrollingTree::RemoteScrollingTree(RemoteScrollingCoordinatorProxy& scrollingCoordinator)
@@ -125,6 +125,6 @@ void RemoteScrollingTree::removeWheelEventTestCompletionDeferralForReason(Scroll
     m_scrollingCoordinatorProxy.removeWheelEventTestCompletionDeferralForReason(nodeID, reason);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

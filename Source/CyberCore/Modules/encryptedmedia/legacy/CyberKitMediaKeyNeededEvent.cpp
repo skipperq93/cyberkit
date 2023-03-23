@@ -31,7 +31,7 @@
 #include <CyberScriptCore/Uint8Array.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CyberKitMediaKeyNeededEvent);
 
@@ -54,6 +54,6 @@ EventInterface CyberKitMediaKeyNeededEvent::eventInterface() const
     return CyberKitMediaKeyNeededEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

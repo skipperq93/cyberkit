@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLLoseContext);
 
@@ -71,6 +71,6 @@ void WebGLLoseContext::loseParentContext(WebGLRenderingContextBase::LostContextM
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

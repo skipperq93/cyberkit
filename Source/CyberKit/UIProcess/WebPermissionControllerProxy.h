@@ -36,7 +36,7 @@ struct PermissionDescriptor;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 class WebProcessProxy;
@@ -59,4 +59,4 @@ private:
     WebProcessProxy& m_process;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

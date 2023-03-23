@@ -33,10 +33,10 @@
 #include "CDMMediaCapability.h"
 #include "MediaKeyEncryptionScheme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using MediaKeySystemMediaCapability = CDMMediaCapability;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

@@ -28,7 +28,7 @@
 
 #if ENABLE(PAYMENT_REQUEST)
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue JSPaymentMethodChangeEvent::methodDetails(JSC::JSGlobalObject& lexicalGlobalObject) const
 {
@@ -55,6 +55,6 @@ void JSPaymentMethodChangeEvent::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSPaymentMethodChangeEvent);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

@@ -19,6 +19,6 @@
 
 #pragma once
 
-#include "WebKitFormSubmissionRequest.h"
+#include "CyberKitFormSubmissionRequest.h"
 
-WebKitFormSubmissionRequest* webkitFormSubmissionRequestCreate(const Vector<std::pair<String, String>>&, Ref<WebKit::WebFormSubmissionListenerProxy>&&);
+CyberKitFormSubmissionRequest* webkitFormSubmissionRequestCreate(const Vector<std::pair<String, String>>&, Ref<CyberKit::WebFormSubmissionListenerProxy>&&);

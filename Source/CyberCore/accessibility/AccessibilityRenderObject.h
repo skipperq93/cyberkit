@@ -34,7 +34,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilitySVGRoot;
 class AXObjectCache;
@@ -269,6 +269,6 @@ private:
     IntPoint linkClickPoint();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityRenderObject, isAccessibilityRenderObject())

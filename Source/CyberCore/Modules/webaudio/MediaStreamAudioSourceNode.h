@@ -32,7 +32,7 @@
 #include "MultiChannelResampler.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
 struct MediaStreamAudioSourceOptions;
@@ -75,6 +75,6 @@ private:
     double m_sourceSampleRate WTF_GUARDED_BY_LOCK(m_processLock) { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && ENABLE(MEDIA_STREAM)

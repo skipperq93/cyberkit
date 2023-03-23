@@ -38,7 +38,7 @@
 #include <wtf/text/StringView.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Keep LinkRelAttribute::isSupported() in sync when updating this constructor.
 LinkRelAttribute::LinkRelAttribute(Document& document, StringView rel)

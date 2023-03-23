@@ -31,175 +31,175 @@
 
 WKTypeID WKWebsiteDataStoreConfigurationGetTypeID()
 {
-    return WebKit::toAPI(WebKit::WebsiteDataStoreConfiguration::APIType);
+    return CyberKit::toAPI(CyberKit::WebsiteDataStoreConfiguration::APIType);
 }
 
 WKWebsiteDataStoreConfigurationRef WKWebsiteDataStoreConfigurationCreate()
 {
 #if PLATFORM(COCOA)
-    auto configuration = WebKit::WebsiteDataStoreConfiguration::create(WebKit::IsPersistent::Yes);
+    auto configuration = CyberKit::WebsiteDataStoreConfiguration::create(CyberKit::IsPersistent::Yes);
 #else
-    auto configuration = WebKit::WebsiteDataStoreConfiguration::createWithBaseDirectories(nullString(), nullString());
+    auto configuration = CyberKit::WebsiteDataStoreConfiguration::createWithBaseDirectories(nullString(), nullString());
 #endif
     return toAPI(&configuration.leakRef());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyApplicationCacheDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->applicationCacheDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->applicationCacheDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetApplicationCacheDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setApplicationCacheDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setApplicationCacheDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyNetworkCacheDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->networkCacheDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->networkCacheDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetNetworkCacheDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setNetworkCacheDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setNetworkCacheDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyIndexedDBDatabaseDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->indexedDBDatabaseDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->indexedDBDatabaseDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetIndexedDBDatabaseDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setIndexedDBDatabaseDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setIndexedDBDatabaseDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyLocalStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->localStorageDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->localStorageDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetLocalStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setLocalStorageDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setLocalStorageDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyWebSQLDatabaseDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->webSQLDatabaseDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->webSQLDatabaseDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetWebSQLDatabaseDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setWebSQLDatabaseDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setWebSQLDatabaseDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyCacheStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->cacheStorageDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->cacheStorageDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetCacheStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setCacheStorageDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setCacheStorageDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyGeneralStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->generalStorageDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->generalStorageDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetGeneralStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setGeneralStorageDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setGeneralStorageDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyMediaKeysStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->mediaKeysStorageDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->mediaKeysStorageDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetMediaKeysStorageDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setMediaKeysStorageDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setMediaKeysStorageDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyResourceLoadStatisticsDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->resourceLoadStatisticsDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->resourceLoadStatisticsDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetResourceLoadStatisticsDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setResourceLoadStatisticsDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setResourceLoadStatisticsDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyServiceWorkerRegistrationDirectory(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->serviceWorkerRegistrationDirectory());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->serviceWorkerRegistrationDirectory());
 }
 
 void WKWebsiteDataStoreConfigurationSetServiceWorkerRegistrationDirectory(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef directory)
 {
-    WebKit::toImpl(configuration)->setServiceWorkerRegistrationDirectory(WebKit::toImpl(directory)->string());
+    CyberKit::toImpl(configuration)->setServiceWorkerRegistrationDirectory(CyberKit::toImpl(directory)->string());
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyCookieStorageFile(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->cookieStorageFile());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->cookieStorageFile());
 }
 
 void WKWebsiteDataStoreConfigurationSetCookieStorageFile(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef cookieStorageFile)
 {
-    WebKit::toImpl(configuration)->setCookieStorageFile(WebKit::toImpl(cookieStorageFile)->string());
+    CyberKit::toImpl(configuration)->setCookieStorageFile(CyberKit::toImpl(cookieStorageFile)->string());
 }
 
 uint64_t WKWebsiteDataStoreConfigurationGetPerOriginStorageQuota(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toImpl(configuration)->perOriginStorageQuota();
+    return CyberKit::toImpl(configuration)->perOriginStorageQuota();
 }
 
 void WKWebsiteDataStoreConfigurationSetPerOriginStorageQuota(WKWebsiteDataStoreConfigurationRef configuration, uint64_t quota)
 {
-    WebKit::toImpl(configuration)->setPerOriginStorageQuota(quota);
+    CyberKit::toImpl(configuration)->setPerOriginStorageQuota(quota);
 }
 
 bool WKWebsiteDataStoreConfigurationGetNetworkCacheSpeculativeValidationEnabled(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toImpl(configuration)->networkCacheSpeculativeValidationEnabled();
+    return CyberKit::toImpl(configuration)->networkCacheSpeculativeValidationEnabled();
 }
 
 void WKWebsiteDataStoreConfigurationSetNetworkCacheSpeculativeValidationEnabled(WKWebsiteDataStoreConfigurationRef configuration, bool enabled)
 {
-    WebKit::toImpl(configuration)->setNetworkCacheSpeculativeValidationEnabled(enabled);
+    CyberKit::toImpl(configuration)->setNetworkCacheSpeculativeValidationEnabled(enabled);
 }
 
 bool WKWebsiteDataStoreConfigurationGetTestingSessionEnabled(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toImpl(configuration)->testingSessionEnabled();
+    return CyberKit::toImpl(configuration)->testingSessionEnabled();
 }
 
 void WKWebsiteDataStoreConfigurationSetTestingSessionEnabled(WKWebsiteDataStoreConfigurationRef configuration, bool enabled)
 {
-    WebKit::toImpl(configuration)->setTestingSessionEnabled(enabled);
+    CyberKit::toImpl(configuration)->setTestingSessionEnabled(enabled);
 }
 
 bool WKWebsiteDataStoreConfigurationGetStaleWhileRevalidateEnabled(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toImpl(configuration)->staleWhileRevalidateEnabled();
+    return CyberKit::toImpl(configuration)->staleWhileRevalidateEnabled();
 }
 
 void WKWebsiteDataStoreConfigurationSetStaleWhileRevalidateEnabled(WKWebsiteDataStoreConfigurationRef configuration, bool enabled)
 {
-    WebKit::toImpl(configuration)->setStaleWhileRevalidateEnabled(enabled);
+    CyberKit::toImpl(configuration)->setStaleWhileRevalidateEnabled(enabled);
 }
 
 WKStringRef WKWebsiteDataStoreConfigurationCopyPCMMachServiceName(WKWebsiteDataStoreConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->pcmMachServiceName());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->pcmMachServiceName());
 }
 
 void WKWebsiteDataStoreConfigurationSetPCMMachServiceName(WKWebsiteDataStoreConfigurationRef configuration, WKStringRef name)
 {
-    WebKit::toImpl(configuration)->setPCMMachServiceName(name ? WebKit::toImpl(name)->string() : String());
+    CyberKit::toImpl(configuration)->setPCMMachServiceName(name ? CyberKit::toImpl(name)->string() : String());
 }

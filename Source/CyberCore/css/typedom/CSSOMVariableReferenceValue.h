@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ExceptionOr;
 class CSSUnparsedValue;
@@ -55,4 +55,4 @@ private:
     RefPtr<CSSUnparsedValue> m_fallback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

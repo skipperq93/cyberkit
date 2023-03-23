@@ -30,7 +30,7 @@
 #include "UniqueIDBDatabaseConnection.h"
 #include "UniqueIDBDatabaseTransaction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBResultData::IDBResultData()
 {
@@ -243,4 +243,4 @@ const IDBGetAllResult& IDBResultData::getAllResult() const
     return *m_getAllResult;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -50,14 +50,14 @@ function addElementAsFirstChild(tagName, className)
     withoutRenderer.insertBefore(newElement.cloneNode(), withoutRenderer.firstChild);
 }
 
-function removeWebKitClassFromElementsOfClass(className)
+function removeCyberKitClassFromElementsOfClass(className)
 {
     var allElementsToUpdate = document.querySelectorAll('.' + className);
     for (var i = 0; i < allElementsToUpdate.length; ++i)
         allElementsToUpdate[i].classList.remove("webkit");
 }
 
-function addWebKitClassToElementsOfClass(className)
+function addCyberKitClassToElementsOfClass(className)
 {
     var allElementsToUpdate = document.querySelectorAll('.' + className);
     for (var i = 0; i < allElementsToUpdate.length; ++i)
@@ -76,23 +76,23 @@ debug("Initialy, &lt;foo&gt; is the first of its type, the style should match.")
 testColor(["element_5"]);
 
 debug("Removing the .webkit class from the first element, nothing should match.");
-removeWebKitClassFromElementsOfClass("element_1");
+removeCyberKitClassFromElementsOfClass("element_1");
 testColor([]);
 
 debug("Adding it back, we should be back to the original state.");
-addWebKitClassToElementsOfClass("element_1");
+addCyberKitClassToElementsOfClass("element_1");
 testColor(["element_5"]);
 
 debug("Removing the .webkit class from the third element, nothing should match.");
-removeWebKitClassFromElementsOfClass("element_3");
+removeCyberKitClassFromElementsOfClass("element_3");
 testColor([]);
 
 debug("Adding it back, we should be back to the original state.");
-addWebKitClassToElementsOfClass("element_3");
+addCyberKitClassToElementsOfClass("element_3");
 testColor(["element_5"]);
 
 debug("Removing the .webkit class from the second element, nothing should match.");
-removeWebKitClassFromElementsOfClass("element_2");
+removeCyberKitClassFromElementsOfClass("element_2");
 testColor([]);
 
 debug("Adding an element &lt;target&gt; on top, we should have a match again, skipping 2.");
@@ -100,7 +100,7 @@ addElementAsFirstChild("target", "element_0")
 testColor(["element_5"]);
 
 debug("Adding the .webkit calss back on 2, we should now match 2 elements.");
-addWebKitClassToElementsOfClass("element_2");
+addCyberKitClassToElementsOfClass("element_2");
 testColor(["element_4", "element_5"]);
 
 debug("Removing the element we added should put us back in the initial state.");

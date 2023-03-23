@@ -32,7 +32,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 WebExtensionAPIWebNavigationEvent& WebExtensionAPIWebNavigation::onBeforeNavigate()
 {
@@ -79,6 +79,6 @@ void WebExtensionAPIWebNavigation::getFrame(WebPage* webPage, NSDictionary *deta
     // FIXME: Implement this.
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

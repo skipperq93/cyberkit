@@ -49,7 +49,7 @@
 #include <pal/crypto/CryptoDigest.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace AuthenticatorCoordinatorInternal {
 
@@ -316,6 +316,6 @@ void AuthenticatorCoordinator::resetUserGestureRequirement()
     m_client->resetUserGestureRequirement();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

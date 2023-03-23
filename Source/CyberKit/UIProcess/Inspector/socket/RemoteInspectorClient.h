@@ -27,15 +27,15 @@
 
 #if ENABLE(REMOTE_INSPECTOR)
 
-#include <JavaScriptCore/RemoteControllableTarget.h>
-#include <JavaScriptCore/RemoteInspectorConnectionClient.h>
+#include <CyberScriptCore/RemoteControllableTarget.h>
+#include <CyberScriptCore/RemoteInspectorConnectionClient.h>
 #include <CyberCore/InspectorDebuggableType.h>
 #include <wtf/HashMap.h>
 #include <wtf/URL.h>
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteInspectorClient;
 class RemoteInspectorProxy;
@@ -94,6 +94,6 @@ private:
     HashMap<std::pair<ConnectionID, TargetID>, std::unique_ptr<RemoteInspectorProxy>> m_inspectorProxyMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

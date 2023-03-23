@@ -30,7 +30,7 @@
 #include "EffectTiming.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomEffect final : public AnimationEffect {
 public:
@@ -48,6 +48,6 @@ private:
     Ref<CustomEffectCallback> m_callback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ANIMATION_EFFECT(CustomEffect, isCustomEffect());

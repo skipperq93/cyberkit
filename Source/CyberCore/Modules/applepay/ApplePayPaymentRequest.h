@@ -36,7 +36,7 @@
 #include "ApplePaySessionPaymentRequest.h"
 #include "ApplePayShippingMethod.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentRequest : ApplePayRequestBase {
     using ShippingType = ApplePaySessionPaymentRequest::ShippingType;

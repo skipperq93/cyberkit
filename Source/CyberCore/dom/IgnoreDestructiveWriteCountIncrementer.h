@@ -27,7 +27,7 @@
 
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IgnoreDestructiveWriteCountIncrementer {
     WTF_MAKE_NONCOPYABLE(IgnoreDestructiveWriteCountIncrementer);
@@ -51,4 +51,4 @@ private:
     unsigned* m_count;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

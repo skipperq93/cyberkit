@@ -35,7 +35,7 @@ OBJC_CLASS BKSApplicationStateMonitor;
 OBJC_CLASS UIView;
 OBJC_CLASS UIWindow;
 
-namespace WebKit {
+namespace CyberKit {
 
 class ApplicationStateTracker : public CanMakeWeakPtr<ApplicationStateTracker> {
     WTF_MAKE_FAST_ALLOCATED;

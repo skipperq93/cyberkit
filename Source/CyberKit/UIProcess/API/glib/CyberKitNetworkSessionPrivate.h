@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "WebKitDownload.h"
-#include "WebKitNetworkSession.h"
+#include "CyberKitDownload.h"
+#include "CyberKitNetworkSession.h"
 
-void webkitNetworkSessionDownloadStarted(WebKitNetworkSession*, WebKitDownload*);
+void webkitNetworkSessionDownloadStarted(CyberKitNetworkSession*, CyberKitDownload*);

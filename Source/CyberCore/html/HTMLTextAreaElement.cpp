@@ -51,7 +51,7 @@
 #include <wtf/Ref.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLTextAreaElement);
 
@@ -542,4 +542,4 @@ void HTMLTextAreaElement::copyNonAttributePropertiesFromElement(const Element& s
     updateValidity();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

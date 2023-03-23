@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SpeechRecognitionErrorEvent);
 
@@ -61,4 +61,4 @@ EventInterface SpeechRecognitionErrorEvent::eventInterface() const
     return SpeechRecognitionErrorEventInterfaceType;
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

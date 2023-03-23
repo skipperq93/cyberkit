@@ -36,7 +36,7 @@
 
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
     
@@ -93,4 +93,4 @@ bool AccessibilityTree::isTreeValid() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

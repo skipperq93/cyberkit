@@ -29,7 +29,7 @@
 #include "RemoteDOMWindow.h"
 #include <CyberScriptCore/StructureInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSWindowProxy;
 
@@ -57,4 +57,4 @@ private:
     RefPtr<RemoteDOMWindow> m_wrapped;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

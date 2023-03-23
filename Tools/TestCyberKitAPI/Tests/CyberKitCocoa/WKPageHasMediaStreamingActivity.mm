@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberKit/WKPagePrivate.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <notify.h>

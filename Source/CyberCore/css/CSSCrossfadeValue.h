@@ -27,7 +27,7 @@
 
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class StyleImage;
@@ -59,6 +59,6 @@ private:
     bool m_isPrefixed;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSCrossfadeValue, isCrossfadeValue())

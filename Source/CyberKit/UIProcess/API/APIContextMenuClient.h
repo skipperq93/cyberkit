@@ -41,7 +41,7 @@ namespace CyberCore {
 class IntPoint;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebContextMenuItemData;
 class WebPageProxy;
 }
@@ -53,14 +53,14 @@ class ContextMenuClient {
 public:
     virtual ~ContextMenuClient() { }
 
-    virtual void getContextMenuFromProposedMenu(WebKit::WebPageProxy&, Vector<Ref<WebKit::WebContextMenuItem>>&& proposedMenu, WebKit::WebContextMenuListenerProxy& listener, const WebKit::WebHitTestResultData&, API::Object* /* userData */) { listener.useContextMenuItems(WTFMove(proposedMenu)); }
-    virtual void customContextMenuItemSelected(WebKit::WebPageProxy&, const WebKit::WebContextMenuItemData&) { }
-    virtual void showContextMenu(WebKit::WebPageProxy&, const CyberCore::IntPoint&, const Vector<Ref<WebKit::WebContextMenuItem>>&) { }
+    virtual void getContextMenuFromProposedMenu(CyberKit::WebPageProxy&, Vector<Ref<CyberKit::WebContextMenuItem>>&& proposedMenu, CyberKit::WebContextMenuListenerProxy& listener, const CyberKit::WebHitTestResultData&, API::Object* /* userData */) { listener.useContextMenuItems(WTFMove(proposedMenu)); }
+    virtual void customContextMenuItemSelected(CyberKit::WebPageProxy&, const CyberKit::WebContextMenuItemData&) { }
+    virtual void showContextMenu(CyberKit::WebPageProxy&, const CyberCore::IntPoint&, const Vector<Ref<CyberKit::WebContextMenuItem>>&) { }
     virtual bool canShowContextMenu() const { return false; }
-    virtual bool hideContextMenu(WebKit::WebPageProxy&) { return false; }
+    virtual bool hideContextMenu(CyberKit::WebPageProxy&) { return false; }
 
 #if PLATFORM(MAC)
-    virtual void menuFromProposedMenu(WebKit::WebPageProxy&, NSMenu *menu, const WebKit::WebHitTestResultData&, API::Object*, CompletionHandler<void(RetainPtr<NSMenu>&&)>&& completionHandler) { completionHandler(menu); }
+    virtual void menuFromProposedMenu(CyberKit::WebPageProxy&, NSMenu *menu, const CyberKit::WebHitTestResultData&, API::Object*, CompletionHandler<void(RetainPtr<NSMenu>&&)>&& completionHandler) { completionHandler(menu); }
 #endif
 };
 

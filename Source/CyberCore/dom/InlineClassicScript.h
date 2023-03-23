@@ -27,7 +27,7 @@
 
 #include "ScriptElementCachedScriptFetcher.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptElement;
 

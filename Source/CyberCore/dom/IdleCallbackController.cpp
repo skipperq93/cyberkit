@@ -31,7 +31,7 @@
 #include "IdleDeadline.h"
 #include "WindowEventLoop.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IdleCallbackController::IdleCallbackController(Document& document)
     : m_document(document)
@@ -132,4 +132,4 @@ void IdleCallbackController::invokeIdleCallbacks(MonotonicTime deadline)
         queueTaskToStartIdlePeriod();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,19 +28,19 @@
 #include "JSIntersectionObserverEntry.h"
 
 #include "JSNodeCustom.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSIntersectionObserverEntry::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().target());
-    addWebCoreOpaqueRoot(visitor, wrapped().boundingClientRect());
-    addWebCoreOpaqueRoot(visitor, wrapped().intersectionRect());
-    addWebCoreOpaqueRoot(visitor, wrapped().rootBounds());
+    addCyberCoreOpaqueRoot(visitor, wrapped().target());
+    addCyberCoreOpaqueRoot(visitor, wrapped().boundingClientRect());
+    addCyberCoreOpaqueRoot(visitor, wrapped().intersectionRect());
+    addCyberCoreOpaqueRoot(visitor, wrapped().rootBounds());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSIntersectionObserverEntry);
 
-} // namespace WebCore
+} // namespace CyberCore

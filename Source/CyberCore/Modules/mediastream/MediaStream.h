@@ -42,7 +42,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/RobinHoodHashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -159,6 +159,6 @@ private:
     bool m_isWaitingUntilMediaCanStart { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -37,7 +37,7 @@
 #include "FileReaderLoader.h"
 #include <CyberScriptCore/ArrayBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FileReaderSync::FileReaderSync()
 {
@@ -90,4 +90,4 @@ ExceptionOr<String> FileReaderSync::startLoadingString(ScriptExecutionContext& s
     return loader.stringResult();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

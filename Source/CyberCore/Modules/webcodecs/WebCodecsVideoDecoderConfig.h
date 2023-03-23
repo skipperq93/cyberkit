@@ -32,7 +32,7 @@
 #include "VideoColorSpaceInit.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WebCodecsVideoDecoderConfig {
     String codec;

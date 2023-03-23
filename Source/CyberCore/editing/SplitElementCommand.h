@@ -27,7 +27,7 @@
 
 #include "EditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SplitElementCommand : public SimpleEditCommand {
 public:
@@ -53,4 +53,4 @@ private:
     Ref<Node> m_atChild;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

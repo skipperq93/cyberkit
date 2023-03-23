@@ -51,13 +51,13 @@ public:
     }
 
 private:
-    void willSendRequest(WebKit::DownloadProxy& download, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse& response, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) final
+    void willSendRequest(CyberKit::DownloadProxy& download, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse& response, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) final
     {
         if (!m_delegate || !m_respondsToWillPerformHTTPRedirection)
             return completionHandler(WTFMove(request));
 
         RetainPtr<NSURLRequest> nsRequest = request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
-        [m_delegate download:wrapper(download) willPerformHTTPRedirection:static_cast<NSHTTPURLResponse *>(response.nsURLResponse()) newRequest:nsRequest.get() decisionHandler:makeBlockPtr([request = WTFMove(request), completionHandler = WTFMove(completionHandler), checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(download:willPerformHTTPRedirection:newRequest:decisionHandler:))](WKDownloadRedirectPolicy policy) mutable {
+        [m_delegate download:wrapper(download) willPerformHTTPRedirection:static_cast<NSHTTPURLResponse *>(response.nsURLResponse()) newRequest:nsRequest.get() decisionHandler:makeBlockPtr([request = WTFMove(request), completionHandler = WTFMove(completionHandler), checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(download:willPerformHTTPRedirection:newRequest:decisionHandler:))](WKDownloadRedirectPolicy policy) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
@@ -72,27 +72,27 @@ private:
         }).get()];
     }
 
-    void didReceiveAuthenticationChallenge(WebKit::DownloadProxy& download, WebKit::AuthenticationChallengeProxy& challenge) final
+    void didReceiveAuthenticationChallenge(CyberKit::DownloadProxy& download, CyberKit::AuthenticationChallengeProxy& challenge) final
     {
         if (!m_delegate || !m_respondsToDidReceiveAuthenticationChallenge)
-            return challenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+            return challenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
 
-        [m_delegate download:wrapper(download) didReceiveAuthenticationChallenge:wrapper(challenge) completionHandler:makeBlockPtr([challenge = Ref { challenge }, checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(download:didReceiveAuthenticationChallenge:completionHandler:))] (NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential) mutable {
+        [m_delegate download:wrapper(download) didReceiveAuthenticationChallenge:wrapper(challenge) completionHandler:makeBlockPtr([challenge = Ref { challenge }, checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(download:didReceiveAuthenticationChallenge:completionHandler:))] (NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
             switch (disposition) {
             case NSURLSessionAuthChallengeUseCredential:
-                challenge->listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::UseCredential, credential ? CyberCore::Credential(credential) : CyberCore::Credential());
+                challenge->listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::UseCredential, credential ? CyberCore::Credential(credential) : CyberCore::Credential());
                 break;
             case NSURLSessionAuthChallengePerformDefaultHandling:
-                challenge->listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
+                challenge->listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::PerformDefaultHandling);
                 break;
             case NSURLSessionAuthChallengeCancelAuthenticationChallenge:
-                challenge->listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::Cancel);
+                challenge->listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::Cancel);
                 break;
             case NSURLSessionAuthChallengeRejectProtectionSpace:
-                challenge->listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
+                challenge->listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue);
                 break;
             default:
                 [NSException raise:NSInvalidArgumentException format:@"Invalid NSURLSessionAuthChallengeDisposition (%ld)", (long)disposition];
@@ -100,21 +100,21 @@ private:
         }).get()];
     }
 
-    void decideDestinationWithSuggestedFilename(WebKit::DownloadProxy& download, const CyberCore::ResourceResponse& response, const WTF::String& suggestedFilename, CompletionHandler<void(WebKit::AllowOverwrite, WTF::String)>&& completionHandler) final
+    void decideDestinationWithSuggestedFilename(CyberKit::DownloadProxy& download, const CyberCore::ResourceResponse& response, const WTF::String& suggestedFilename, CompletionHandler<void(CyberKit::AllowOverwrite, WTF::String)>&& completionHandler) final
     {
         if (!m_delegate)
-            return completionHandler(WebKit::AllowOverwrite::No, { });
+            return completionHandler(CyberKit::AllowOverwrite::No, { });
 
-        [m_delegate download:wrapper(download) decideDestinationUsingResponse:response.nsURLResponse() suggestedFilename:suggestedFilename completionHandler:makeBlockPtr([download = Ref { download }, completionHandler = WTFMove(completionHandler), checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(download:decideDestinationUsingResponse:suggestedFilename:completionHandler:))] (NSURL *destination) mutable {
+        [m_delegate download:wrapper(download) decideDestinationUsingResponse:response.nsURLResponse() suggestedFilename:suggestedFilename completionHandler:makeBlockPtr([download = Ref { download }, completionHandler = WTFMove(completionHandler), checker = CyberKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(download:decideDestinationUsingResponse:suggestedFilename:completionHandler:))] (NSURL *destination) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
 
             if (!destination)
-                return completionHandler(WebKit::AllowOverwrite::No, { });
+                return completionHandler(CyberKit::AllowOverwrite::No, { });
             
             if (!destination.isFileURL) {
-                completionHandler(WebKit::AllowOverwrite::No, { });
+                completionHandler(CyberKit::AllowOverwrite::No, { });
                 [NSException raise:NSInvalidArgumentException format:@"destination must be a file URL"];
                 return;
             }
@@ -124,31 +124,31 @@ private:
                 RunLoop::main().dispatch([download] {
                     download->didFail([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCannotCreateFile userInfo:nil], { });
                 });
-                completionHandler(WebKit::AllowOverwrite::No, { });
+                completionHandler(CyberKit::AllowOverwrite::No, { });
                 return;
             }
             if ([fileManager fileExistsAtPath:destination.path]) {
                 RunLoop::main().dispatch([download] {
                     download->didFail([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCannotCreateFile userInfo:nil], { });
                 });
-                completionHandler(WebKit::AllowOverwrite::No, { });
+                completionHandler(CyberKit::AllowOverwrite::No, { });
                 return;
             }
 
             wrapper(download.get()).progress.fileURL = destination;
 
-            completionHandler(WebKit::AllowOverwrite::No, destination.path);
+            completionHandler(CyberKit::AllowOverwrite::No, destination.path);
         }).get()];
     }
 
-    void didReceiveData(WebKit::DownloadProxy& download, uint64_t, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite) final
+    void didReceiveData(CyberKit::DownloadProxy& download, uint64_t, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite) final
     {
         NSProgress *progress = wrapper(download).progress;
         progress.totalUnitCount = totalBytesExpectedToWrite;
         progress.completedUnitCount = totalBytesWritten;
     }
 
-    void didFinish(WebKit::DownloadProxy& download) final
+    void didFinish(CyberKit::DownloadProxy& download) final
     {
         if (!m_delegate || !m_respondsToDidFinish)
             return;
@@ -156,7 +156,7 @@ private:
         [m_delegate downloadDidFinish:wrapper(download)];
     }
 
-    void didFail(WebKit::DownloadProxy& download, const CyberCore::ResourceError& error, API::Data* resumeData) final
+    void didFail(CyberKit::DownloadProxy& download, const CyberCore::ResourceError& error, API::Data* resumeData) final
     {
         if (!m_delegate || !m_respondsToDidFailWithError)
             return;
@@ -164,7 +164,7 @@ private:
         [m_delegate download:wrapper(download) didFailWithError:error.nsError() resumeData:wrapper(resumeData)];
     }
 
-    void processDidCrash(WebKit::DownloadProxy& download) final
+    void processDidCrash(CyberKit::DownloadProxy& download) final
     {
         if (!m_delegate || !m_respondsToDidFailWithError)
             return;

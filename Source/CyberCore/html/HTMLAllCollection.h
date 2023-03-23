@@ -27,7 +27,7 @@
 
 #include "AllDescendantsCollection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLAllCollection final : public AllDescendantsCollection {
 public:
@@ -63,7 +63,7 @@ private:
     AtomString m_name;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(HTMLAllCollection, DocAll)
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(HTMLAllNamedSubCollection, DocumentAllNamedItems)

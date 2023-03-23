@@ -37,7 +37,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<uint8_t> convertBytesToVector(const uint8_t byteArray[], const size_t length)
 {
@@ -201,6 +201,6 @@ Vector<uint8_t> encodeRawPublicKey(const Vector<uint8_t>& x, const Vector<uint8_
     return rawKey;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

@@ -33,7 +33,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRule;
 class CSSProperty;
@@ -144,4 +144,4 @@ private:
     StyledElement* m_parentElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

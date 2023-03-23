@@ -36,20 +36,20 @@
 #include "JSDOMConvertNullable.h"
 #include "JSDOMConvertStrings.h"
 #include "JSDocument.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "XMLHttpRequestUpload.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
 void JSXMLHttpRequest::visitAdditionalChildren(Visitor& visitor)
 {
     if (auto* upload = wrapped().optionalUpload())
-        addWebCoreOpaqueRoot(visitor, *upload);
+        addCyberCoreOpaqueRoot(visitor, *upload);
 
     if (auto* responseDocument = wrapped().optionalResponseXML())
-        addWebCoreOpaqueRoot(visitor, *responseDocument);
+        addCyberCoreOpaqueRoot(visitor, *responseDocument);
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSXMLHttpRequest);
@@ -113,4 +113,4 @@ JSValue JSXMLHttpRequest::response(JSGlobalObject& lexicalGlobalObject) const
     return cacheResult(value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

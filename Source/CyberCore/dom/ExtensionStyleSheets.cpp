@@ -45,7 +45,7 @@
 #include "UserContentURLPattern.h"
 #include "UserStyleSheet.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(CONTENT_EXTENSIONS)
 using namespace ContentExtensions;

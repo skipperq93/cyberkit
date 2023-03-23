@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OESTextureFloat);
 
@@ -60,6 +60,6 @@ bool OESTextureFloat::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_OES_texture_float"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

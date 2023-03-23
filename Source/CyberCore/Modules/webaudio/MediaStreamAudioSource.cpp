@@ -31,7 +31,7 @@
 #include "NotImplemented.h"
 #include "PlatformAudioData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaStreamAudioSource::MediaStreamAudioSource(float sampleRate)
     : RealtimeMediaSource(CaptureDevice { { }, CaptureDevice::DeviceType::Microphone, "MediaStreamAudioDestinationNode"_s })
@@ -63,6 +63,6 @@ void MediaStreamAudioSource::consumeAudio(AudioBus&, size_t)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

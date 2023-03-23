@@ -32,7 +32,7 @@
 #include "WebGLRenderingContextBase.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WebGLSharedObject::WebGLSharedObject(WebGLRenderingContextBase& context)
     : m_contextGroup(context.contextGroup())

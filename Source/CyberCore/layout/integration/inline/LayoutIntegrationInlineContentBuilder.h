@@ -28,7 +28,7 @@
 #include "InlineFormattingState.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlockFlow;
 

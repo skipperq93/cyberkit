@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class BiquadFilterType {
     Lowpass,
@@ -38,4 +38,4 @@ enum class BiquadFilterType {
     Allpass
 };
 
-} // namespace WebCore
+} // namespace CyberCore

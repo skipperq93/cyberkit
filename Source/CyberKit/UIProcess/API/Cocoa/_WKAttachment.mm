@@ -90,7 +90,7 @@ static const NSInteger InvalidAttachmentErrorCode = 2;
 
 - (NSFileWrapper *)fileWrapper
 {
-    // FIXME: This API is potentially unsafe for WebKit clients, since the file wrapper that's
+    // FIXME: This API is potentially unsafe for CyberKit clients, since the file wrapper that's
     // returned could be simultaneously accessed from a background thread, due to QuickLook
     // thumbnailing. This should be replaced with a method that instead takes a callback, and
     // invokes with callback with a file wrapper in a way that guarantees thread safety.

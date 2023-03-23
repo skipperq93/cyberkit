@@ -32,7 +32,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileList final : public ScriptWrappable, public RefCounted<FileList> {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(FileList, WEBCORE_EXPORT);
@@ -72,4 +72,4 @@ private:
     Vector<Ref<File>> m_files;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

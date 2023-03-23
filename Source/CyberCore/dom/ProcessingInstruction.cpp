@@ -40,7 +40,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ProcessingInstruction);
 

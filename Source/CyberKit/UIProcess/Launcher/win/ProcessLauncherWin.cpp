@@ -33,21 +33,21 @@
 #include <shlwapi.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static LPCWSTR processName(ProcessLauncher::ProcessType processType)
 {
     switch (processType) {
     case ProcessLauncher::ProcessType::Web:
-        return L"WebKitWebProcess.exe";
+        return L"CyberKitWebProcess.exe";
     case ProcessLauncher::ProcessType::Network:
-        return L"WebKitNetworkProcess.exe";
+        return L"CyberKitNetworkProcess.exe";
 #if ENABLE(GPU_PROCESS)
     case ProcessLauncher::ProcessType::GPU:
-        return L"WebKitGPUProcess.exe";
+        return L"CyberKitGPUProcess.exe";
 #endif
     }
-    return L"WebKitWebProcess.exe";
+    return L"CyberKitWebProcess.exe";
 }
 
 void ProcessLauncher::launchProcess()
@@ -62,9 +62,9 @@ void ProcessLauncher::launchProcess()
     // Ensure that the child process inherits the client identifier.
     ::SetHandleInformation(clientIdentifier, HANDLE_FLAG_INHERIT, HANDLE_FLAG_INHERIT);
 
-    // To get the full file path to WebKit2WebProcess.exe, we fild the location of WebKit2.dll,
+    // To get the full file path to CyberKit2WebProcess.exe, we fild the location of CyberKit2.dll,
     // remove the last path component.
-    HMODULE webKitModule = ::GetModuleHandle(L"WebKit2.dll");
+    HMODULE webKitModule = ::GetModuleHandle(L"CyberKit2.dll");
     ASSERT(webKitModule);
     if (!webKitModule)
         return;
@@ -136,4 +136,4 @@ void ProcessLauncher::platformInvalidate()
     m_hProcess.clear();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

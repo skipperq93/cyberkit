@@ -48,7 +48,7 @@ using ExtensionTabID = String;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class InspectorFrontendAPIDispatcher;
@@ -130,7 +130,7 @@ public:
     virtual void load(const String& path, CompletionHandler<void(const String&)>&&) = 0;
 
     virtual bool canPickColorFromScreen() = 0;
-    virtual void pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&&) = 0;
+    virtual void pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&&) = 0;
 
     virtual void inspectedURLChanged(const String&) = 0;
     virtual void showCertificate(const CertificateInfo&) = 0;
@@ -191,24 +191,24 @@ std::optional<InspectorFrontendClient::SaveData> InspectorFrontendClient::SaveDa
     } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::InspectorFrontendClient::Appearance> {
+template<> struct EnumTraits<CyberCore::InspectorFrontendClient::Appearance> {
     using values = EnumValues<
-        WebCore::InspectorFrontendClient::Appearance,
-        WebCore::InspectorFrontendClient::Appearance::System,
-        WebCore::InspectorFrontendClient::Appearance::Light,
-        WebCore::InspectorFrontendClient::Appearance::Dark
+        CyberCore::InspectorFrontendClient::Appearance,
+        CyberCore::InspectorFrontendClient::Appearance::System,
+        CyberCore::InspectorFrontendClient::Appearance::Light,
+        CyberCore::InspectorFrontendClient::Appearance::Dark
     >;
 };
 
-template<> struct EnumTraits<WebCore::InspectorFrontendClient::SaveMode> {
+template<> struct EnumTraits<CyberCore::InspectorFrontendClient::SaveMode> {
     using values = EnumValues<
-        WebCore::InspectorFrontendClient::SaveMode,
-        WebCore::InspectorFrontendClient::SaveMode::SingleFile,
-        WebCore::InspectorFrontendClient::SaveMode::FileVariants
+        CyberCore::InspectorFrontendClient::SaveMode,
+        CyberCore::InspectorFrontendClient::SaveMode::SingleFile,
+        CyberCore::InspectorFrontendClient::SaveMode::FileVariants
     >;
 };
 

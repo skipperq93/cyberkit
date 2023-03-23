@@ -30,7 +30,7 @@
 #include "ConstantSourceOptions.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ConstantSourceNode final : public AudioScheduledSourceNode {
     WTF_MAKE_ISO_ALLOCATED(ConstantSourceNode);
@@ -60,4 +60,4 @@ private:
     AudioFloatArray m_sampleAccurateValues;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "WebFormSubmissionListenerProxy.h"
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebFormClient::WebFormClient(const WKPageFormClientBase* wkClient)
 {
@@ -54,4 +54,4 @@ void WebFormClient::willSubmitForm(WebPageProxy& page, WebFrameProxy& frame, Web
     m_client.willSubmitForm(toAPI(&page), toAPI(&frame), toAPI(&sourceFrame), toAPI(textFieldsMap.ptr()), toAPI(userData), toAPI(listener.ptr()), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

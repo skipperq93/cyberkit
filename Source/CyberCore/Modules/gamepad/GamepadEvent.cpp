@@ -29,7 +29,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(GamepadEvent);
 
@@ -45,6 +45,6 @@ GamepadEvent::GamepadEvent(const AtomString& eventType, const Init& initializer,
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

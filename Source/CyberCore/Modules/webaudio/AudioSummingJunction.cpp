@@ -32,7 +32,7 @@
 #include "AudioNodeOutput.h"
 #include <algorithm>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioSummingJunction::AudioSummingJunction(BaseAudioContext& context)
     : m_context(context, EnableWeakPtrThreadingAssertions::No) // WebAudio code uses locking when accessing the context.
@@ -120,6 +120,6 @@ unsigned AudioSummingJunction::maximumNumberOfChannels() const
     return maxChannels;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrameProxy;
 class WebPageProxy;

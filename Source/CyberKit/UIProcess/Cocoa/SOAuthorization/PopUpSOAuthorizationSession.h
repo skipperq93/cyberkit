@@ -37,7 +37,7 @@ namespace API {
 class NavigationAction;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 // FSM: Idle => Active => Completed
 class PopUpSOAuthorizationSession final : public SOAuthorizationSession {
@@ -67,6 +67,6 @@ private:
     RetainPtr<WKWebView> m_secretWebView;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

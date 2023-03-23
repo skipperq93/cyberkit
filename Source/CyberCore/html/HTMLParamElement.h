@@ -24,7 +24,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLParamElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLParamElement);
@@ -43,4 +43,4 @@ private:
     void addSubresourceAttributeURLs(ListHashSet<URL>&) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

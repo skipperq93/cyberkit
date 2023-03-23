@@ -80,7 +80,7 @@ class SessionID;
 class TextEncoding;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AXObjectCache;
 class AppHighlightStorage;
@@ -2124,9 +2124,9 @@ private:
     WeakListHashSet<ShadowRoot, WeakPtrImplWithEventTargetData> m_inDocumentShadowRoots;
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-    using TargetIdToClientMap = HashMap<PlaybackTargetClientContextIdentifier, WebCore::MediaPlaybackTargetClient*>;
+    using TargetIdToClientMap = HashMap<PlaybackTargetClientContextIdentifier, CyberCore::MediaPlaybackTargetClient*>;
     TargetIdToClientMap m_idToClientMap;
-    using TargetClientToIdMap = HashMap<WebCore::MediaPlaybackTargetClient*, PlaybackTargetClientContextIdentifier>;
+    using TargetClientToIdMap = HashMap<CyberCore::MediaPlaybackTargetClient*, PlaybackTargetClientContextIdentifier>;
     TargetClientToIdMap m_clientToIDMap;
 #endif
 
@@ -2381,10 +2381,10 @@ Element* eventTargetElementForDocument(Document*);
 
 WTF::TextStream& operator<<(WTF::TextStream&, const Document&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Document)
-    static bool isType(const WebCore::ScriptExecutionContext& context) { return context.isDocument(); }
-    static bool isType(const WebCore::Node& node) { return node.isDocumentNode(); }
-    static bool isType(const WebCore::EventTarget& target) { return is<WebCore::Node>(target) && isType(downcast<WebCore::Node>(target)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Document)
+    static bool isType(const CyberCore::ScriptExecutionContext& context) { return context.isDocument(); }
+    static bool isType(const CyberCore::Node& node) { return node.isDocumentNode(); }
+    static bool isType(const CyberCore::EventTarget& target) { return is<CyberCore::Node>(target) && isType(downcast<CyberCore::Node>(target)); }
 SPECIALIZE_TYPE_TRAITS_END()

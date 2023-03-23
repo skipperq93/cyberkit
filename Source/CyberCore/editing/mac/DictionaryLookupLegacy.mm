@@ -47,7 +47,7 @@
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSRange tokenRange(const String& string, NSRange range, NSDictionary **options)
 {
@@ -269,6 +269,6 @@ id <NSImmediateActionAnimationController> DictionaryLookup::animationControllerF
     return showPopupOrCreateAnimationController(true, dictionaryPopupInfo, view, textIndicatorInstallationCallback, rootViewToViewConversionCallback);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC) && !ENABLE(REVEAL)

@@ -42,7 +42,7 @@ extern WTFLogChannel LogMedia;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -201,6 +201,6 @@ WTFLogChannel& MediaSourcePrivateRemote::logChannel() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

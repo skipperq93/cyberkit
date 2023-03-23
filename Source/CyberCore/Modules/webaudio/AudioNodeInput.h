@@ -29,7 +29,7 @@
 #include "AudioSummingJunction.h"
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioNode;
 class AudioNodeOutput;
@@ -94,4 +94,4 @@ private:
     RefPtr<AudioBus> m_internalSummingBus;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

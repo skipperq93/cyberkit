@@ -44,7 +44,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 struct WebsitePoliciesData;
 class WebsiteDataStore;
 }
@@ -59,7 +59,7 @@ public:
 
     Ref<WebsitePolicies> copy() const;
 
-    WebKit::WebsitePoliciesData data();
+    CyberKit::WebsitePoliciesData data();
 
     const CyberCore::ContentExtensionEnablement& contentExtensionEnablement() const { return m_contentExtensionEnablement; }
     void setContentExtensionEnablement(CyberCore::ContentExtensionEnablement&& enablement) { m_contentExtensionEnablement = WTFMove(enablement); }
@@ -67,11 +67,11 @@ public:
     void setActiveContentRuleListActionPatterns(HashMap<WTF::String, Vector<WTF::String>>&& patterns) { m_activeContentRuleListActionPatterns = WTFMove(patterns); }
     const HashMap<WTF::String, Vector<WTF::String>>& activeContentRuleListActionPatterns() const { return m_activeContentRuleListActionPatterns; }
     
-    OptionSet<WebKit::WebsiteAutoplayQuirk> allowedAutoplayQuirks() const { return m_allowedAutoplayQuirks; }
-    void setAllowedAutoplayQuirks(OptionSet<WebKit::WebsiteAutoplayQuirk> quirks) { m_allowedAutoplayQuirks = quirks; }
+    OptionSet<CyberKit::WebsiteAutoplayQuirk> allowedAutoplayQuirks() const { return m_allowedAutoplayQuirks; }
+    void setAllowedAutoplayQuirks(OptionSet<CyberKit::WebsiteAutoplayQuirk> quirks) { m_allowedAutoplayQuirks = quirks; }
     
-    WebKit::WebsiteAutoplayPolicy autoplayPolicy() const { return m_autoplayPolicy; }
-    void setAutoplayPolicy(WebKit::WebsiteAutoplayPolicy policy) { m_autoplayPolicy = policy; }
+    CyberKit::WebsiteAutoplayPolicy autoplayPolicy() const { return m_autoplayPolicy; }
+    void setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy policy) { m_autoplayPolicy = policy; }
 
 #if ENABLE(DEVICE_ORIENTATION)
     CyberCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState() const { return m_deviceOrientationAndMotionAccessState; }
@@ -81,14 +81,14 @@ public:
     const Vector<CyberCore::CustomHeaderFields>& customHeaderFields() const { return m_customHeaderFields; }
     void setCustomHeaderFields(Vector<CyberCore::CustomHeaderFields>&& fields) { m_customHeaderFields = WTFMove(fields); }
 
-    WebKit::WebsitePopUpPolicy popUpPolicy() const { return m_popUpPolicy; }
-    void setPopUpPolicy(WebKit::WebsitePopUpPolicy policy) { m_popUpPolicy = policy; }
+    CyberKit::WebsitePopUpPolicy popUpPolicy() const { return m_popUpPolicy; }
+    void setPopUpPolicy(CyberKit::WebsitePopUpPolicy policy) { m_popUpPolicy = policy; }
 
-    WebKit::WebsiteDataStore* websiteDataStore() const { return m_websiteDataStore.get(); }
-    void setWebsiteDataStore(RefPtr<WebKit::WebsiteDataStore>&&);
+    CyberKit::WebsiteDataStore* websiteDataStore() const { return m_websiteDataStore.get(); }
+    void setWebsiteDataStore(RefPtr<CyberKit::WebsiteDataStore>&&);
     
-    WebKit::WebUserContentControllerProxy* userContentController() const { return m_userContentController.get(); }
-    void setUserContentController(RefPtr<WebKit::WebUserContentControllerProxy>&&);
+    CyberKit::WebUserContentControllerProxy* userContentController() const { return m_userContentController.get(); }
+    void setUserContentController(RefPtr<CyberKit::WebUserContentControllerProxy>&&);
 
     void setCustomUserAgent(const WTF::String& customUserAgent) { m_customUserAgent = customUserAgent; }
     const WTF::String& customUserAgent() const { return m_customUserAgent; }
@@ -99,20 +99,20 @@ public:
     void setCustomNavigatorPlatform(const WTF::String& customNavigatorPlatform) { m_customNavigatorPlatform = customNavigatorPlatform; }
     const WTF::String& customNavigatorPlatform() const { return m_customNavigatorPlatform; }
 
-    WebKit::WebContentMode preferredContentMode() const { return m_preferredContentMode; }
-    void setPreferredContentMode(WebKit::WebContentMode mode) { m_preferredContentMode = mode; }
+    CyberKit::WebContentMode preferredContentMode() const { return m_preferredContentMode; }
+    void setPreferredContentMode(CyberKit::WebContentMode mode) { m_preferredContentMode = mode; }
 
-    WebKit::WebsiteMetaViewportPolicy metaViewportPolicy() const { return m_metaViewportPolicy; }
-    void setMetaViewportPolicy(WebKit::WebsiteMetaViewportPolicy policy) { m_metaViewportPolicy = policy; }
+    CyberKit::WebsiteMetaViewportPolicy metaViewportPolicy() const { return m_metaViewportPolicy; }
+    void setMetaViewportPolicy(CyberKit::WebsiteMetaViewportPolicy policy) { m_metaViewportPolicy = policy; }
 
-    WebKit::WebsiteMediaSourcePolicy mediaSourcePolicy() const { return m_mediaSourcePolicy; }
-    void setMediaSourcePolicy(WebKit::WebsiteMediaSourcePolicy policy) { m_mediaSourcePolicy = policy; }
+    CyberKit::WebsiteMediaSourcePolicy mediaSourcePolicy() const { return m_mediaSourcePolicy; }
+    void setMediaSourcePolicy(CyberKit::WebsiteMediaSourcePolicy policy) { m_mediaSourcePolicy = policy; }
 
-    WebKit::WebsiteSimulatedMouseEventsDispatchPolicy simulatedMouseEventsDispatchPolicy() const { return m_simulatedMouseEventsDispatchPolicy; }
-    void setSimulatedMouseEventsDispatchPolicy(WebKit::WebsiteSimulatedMouseEventsDispatchPolicy policy) { m_simulatedMouseEventsDispatchPolicy = policy; }
+    CyberKit::WebsiteSimulatedMouseEventsDispatchPolicy simulatedMouseEventsDispatchPolicy() const { return m_simulatedMouseEventsDispatchPolicy; }
+    void setSimulatedMouseEventsDispatchPolicy(CyberKit::WebsiteSimulatedMouseEventsDispatchPolicy policy) { m_simulatedMouseEventsDispatchPolicy = policy; }
 
-    WebKit::WebsiteLegacyOverflowScrollingTouchPolicy legacyOverflowScrollingTouchPolicy() const { return m_legacyOverflowScrollingTouchPolicy; }
-    void setLegacyOverflowScrollingTouchPolicy(WebKit::WebsiteLegacyOverflowScrollingTouchPolicy policy) { m_legacyOverflowScrollingTouchPolicy = policy; }
+    CyberKit::WebsiteLegacyOverflowScrollingTouchPolicy legacyOverflowScrollingTouchPolicy() const { return m_legacyOverflowScrollingTouchPolicy; }
+    void setLegacyOverflowScrollingTouchPolicy(CyberKit::WebsiteLegacyOverflowScrollingTouchPolicy policy) { m_legacyOverflowScrollingTouchPolicy = policy; }
 
     bool allowSiteSpecificQuirksToOverrideContentMode() const { return m_allowSiteSpecificQuirksToOverrideContentMode; }
     void setAllowSiteSpecificQuirksToOverrideContentMode(bool value) { m_allowSiteSpecificQuirksToOverrideContentMode = value; }
@@ -152,23 +152,23 @@ private:
     // FIXME: replace most or all of these members with a WebsitePoliciesData.
     CyberCore::ContentExtensionEnablement m_contentExtensionEnablement { CyberCore::ContentExtensionDefaultEnablement::Enabled, { } };
     HashMap<WTF::String, Vector<WTF::String>> m_activeContentRuleListActionPatterns;
-    OptionSet<WebKit::WebsiteAutoplayQuirk> m_allowedAutoplayQuirks;
-    WebKit::WebsiteAutoplayPolicy m_autoplayPolicy { WebKit::WebsiteAutoplayPolicy::Default };
+    OptionSet<CyberKit::WebsiteAutoplayQuirk> m_allowedAutoplayQuirks;
+    CyberKit::WebsiteAutoplayPolicy m_autoplayPolicy { CyberKit::WebsiteAutoplayPolicy::Default };
 #if ENABLE(DEVICE_ORIENTATION)
     CyberCore::DeviceOrientationOrMotionPermissionState m_deviceOrientationAndMotionAccessState { CyberCore::DeviceOrientationOrMotionPermissionState::Prompt };
 #endif
     Vector<CyberCore::CustomHeaderFields> m_customHeaderFields;
-    WebKit::WebsitePopUpPolicy m_popUpPolicy { WebKit::WebsitePopUpPolicy::Default };
-    RefPtr<WebKit::WebsiteDataStore> m_websiteDataStore;
-    RefPtr<WebKit::WebUserContentControllerProxy> m_userContentController;
+    CyberKit::WebsitePopUpPolicy m_popUpPolicy { CyberKit::WebsitePopUpPolicy::Default };
+    RefPtr<CyberKit::WebsiteDataStore> m_websiteDataStore;
+    RefPtr<CyberKit::WebUserContentControllerProxy> m_userContentController;
     WTF::String m_customUserAgent;
     WTF::String m_customUserAgentAsSiteSpecificQuirks;
     WTF::String m_customNavigatorPlatform;
-    WebKit::WebContentMode m_preferredContentMode { WebKit::WebContentMode::Recommended };
-    WebKit::WebsiteMetaViewportPolicy m_metaViewportPolicy { WebKit::WebsiteMetaViewportPolicy::Default };
-    WebKit::WebsiteMediaSourcePolicy m_mediaSourcePolicy { WebKit::WebsiteMediaSourcePolicy::Default };
-    WebKit::WebsiteSimulatedMouseEventsDispatchPolicy m_simulatedMouseEventsDispatchPolicy { WebKit::WebsiteSimulatedMouseEventsDispatchPolicy::Default };
-    WebKit::WebsiteLegacyOverflowScrollingTouchPolicy m_legacyOverflowScrollingTouchPolicy { WebKit::WebsiteLegacyOverflowScrollingTouchPolicy::Default };
+    CyberKit::WebContentMode m_preferredContentMode { CyberKit::WebContentMode::Recommended };
+    CyberKit::WebsiteMetaViewportPolicy m_metaViewportPolicy { CyberKit::WebsiteMetaViewportPolicy::Default };
+    CyberKit::WebsiteMediaSourcePolicy m_mediaSourcePolicy { CyberKit::WebsiteMediaSourcePolicy::Default };
+    CyberKit::WebsiteSimulatedMouseEventsDispatchPolicy m_simulatedMouseEventsDispatchPolicy { CyberKit::WebsiteSimulatedMouseEventsDispatchPolicy::Default };
+    CyberKit::WebsiteLegacyOverflowScrollingTouchPolicy m_legacyOverflowScrollingTouchPolicy { CyberKit::WebsiteLegacyOverflowScrollingTouchPolicy::Default };
     bool m_allowSiteSpecificQuirksToOverrideContentMode { false };
     WTF::String m_applicationNameForDesktopUserAgent;
     bool m_allowContentChangeObserverQuirk { false };

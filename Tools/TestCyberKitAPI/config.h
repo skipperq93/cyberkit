@@ -42,7 +42,7 @@
 #if defined(BUILDING_WITH_CMAKE)
 
 // CMake path
-#if defined(BUILDING_TestJSC) || defined(BUILDING_TestJavaScriptCore)
+#if defined(BUILDING_TestJSC) || defined(BUILDING_TestCyberScriptCore)
 #include <CyberScriptCore/JSExportMacros.h>
 #endif
 

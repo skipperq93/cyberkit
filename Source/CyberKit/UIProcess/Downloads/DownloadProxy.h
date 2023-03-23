@@ -52,7 +52,7 @@ class ResourceError;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DownloadProxyMap;
 class WebPageProxy;
@@ -151,4 +151,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -30,7 +30,7 @@
 #include "JSDOMGlobalObject.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Specialized by generated code for IDL enumeration conversion.
 template<typename T> std::optional<T> parseEnumerationFromString(const String&);
@@ -69,4 +69,4 @@ template<typename T> struct JSConverter<IDLEnumeration<T>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

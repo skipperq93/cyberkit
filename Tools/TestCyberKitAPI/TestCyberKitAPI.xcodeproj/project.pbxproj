@@ -588,7 +588,7 @@
 		7B9FC5CB28A52D90007570E7 /* libboringssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CFACF62226F73C60056C7D0 /* libboringssl.a */; };
 		7B9FC5CD28A52DC0007570E7 /* libCyberKitPlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9FC5CC28A52DC0007570E7 /* libCyberKitPlatform.a */; };
 		7B9FC5CE28A52ECD007570E7 /* CyberCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9FC5B628A52236007570E7 /* CyberCore.framework */; };
-		7B9FC5D528A53137007570E7 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC90964D1255620C00083756 /* JavaScriptCore.framework */; };
+		7B9FC5D528A53137007570E7 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC90964D1255620C00083756 /* CyberScriptCore.framework */; };
 		7B9FC5D628A5326A007570E7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4FFAA01ED3D0DE00F7111F /* ImageIO.framework */; };
 		7BA3936C271EDFCA0015911C /* TestGraphicsContextGLCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7BA3936B271EDFCA0015911C /* TestGraphicsContextGLCocoa.mm */; };
 		7BAA4A9028CA14AE004CE938 /* StreamConnectionTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA4A8F28CA14AE004CE938 /* StreamConnectionTests.cpp */; };
@@ -3085,7 +3085,7 @@
 		BC90957E12554CF900083756 /* Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		BC90957F12554CF900083756 /* DebugRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugRelease.xcconfig; sourceTree = "<group>"; };
 		BC90958012554CF900083756 /* TestCyberKitAPI.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = TestCyberKitAPI.xcconfig; sourceTree = "<group>"; };
-		BC90964D1255620C00083756 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC90964D1255620C00083756 /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC909778125571AB00083756 /* simple.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = simple.html; sourceTree = "<group>"; };
 		BC909779125571AB00083756 /* PageLoadBasic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PageLoadBasic.cpp; sourceTree = "<group>"; };
 		BC90995D12567BC100083756 /* WKString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WKString.cpp; sourceTree = "<group>"; };
@@ -3566,7 +3566,7 @@
 			files = (
 				7B9FC5B128A5221B007570E7 /* CryptoTokenKit.framework in Frameworks */,
 				7B9FC5D628A5326A007570E7 /* ImageIO.framework in Frameworks */,
-				7B9FC5D528A53137007570E7 /* JavaScriptCore.framework in Frameworks */,
+				7B9FC5D528A53137007570E7 /* CyberScriptCore.framework in Frameworks */,
 				7B9FC58528A267A7007570E7 /* libgtest.a in Frameworks */,
 				7B9FC3AA28A26137007570E7 /* libicucore.dylib in Frameworks */,
 				7B9FC5CD28A52DC0007570E7 /* libCyberKitPlatform.a in Frameworks */,
@@ -3692,7 +3692,7 @@
 			children = (
 				C02B7853126613AE0026BF0F /* Carbon.framework */,
 				BCB9E9F011235BDE00A137E0 /* Cocoa.framework */,
-				BC90964D1255620C00083756 /* JavaScriptCore.framework */,
+				BC90964D1255620C00083756 /* CyberScriptCore.framework */,
 				F3FC3EE213678B7300126A65 /* libgtest.a */,
 				C081224813FC1B0300DC39AE /* CyberKit.framework */,
 			);

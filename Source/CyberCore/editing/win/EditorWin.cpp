@@ -35,7 +35,7 @@
 #include "Range.h"
 #include "windows.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void Editor::pasteWithPasteboard(Pasteboard* pasteboard, OptionSet<PasteOption> options)
 {
@@ -84,4 +84,4 @@ RefPtr<DocumentFragment> Editor::webContentFromPasteboard(Pasteboard& pasteboard
     return createFragmentFromPlatformData(pasteboard.dragDataMap(), *m_document.frame());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

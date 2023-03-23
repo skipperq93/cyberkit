@@ -36,7 +36,7 @@
 #    - Add a ignore in the shouldIgnoreLine()
 #    - perl -I Tools/Scripts/ Tools/Scripts/webkitperl/filter-build-webkit_unittest/shouldIgnoreLine_unittests.pl
 
-package FilterBuildWebKit;
+package FilterBuildCyberKit;
 
 BEGIN {
     use Exporter   ();
@@ -219,9 +219,9 @@ sub main() {
             printLine($line, STYLE_PLAIN);
         } elsif ($line =~ /^Scripts\/generate-unified-source-bundles.rb/) {
             printLine("Generating unified sources", STYLE_PLAIN);
-        } elsif ($line =~ /^ruby JavaScriptCore\/generator\/main.rb JavaScriptCore\/bytecode\/BytecodeList.rb.*/) {
+        } elsif ($line =~ /^ruby CyberScriptCore\/generator\/main.rb CyberScriptCore\/bytecode\/BytecodeList.rb.*/) {
             printLine("Generating bytecode list", STYLE_PLAIN);
-        } elsif ($line =~ /^ruby JavaScriptCore\/b3\/air\/opcode_generator.rb JavaScriptCore\/b3\/air\/AirOpcode.opcodes$/) {
+        } elsif ($line =~ /^ruby CyberScriptCore\/b3\/air\/opcode_generator.rb CyberScriptCore\/b3\/air\/AirOpcode.opcodes$/) {
             printLine("Generating opcodes", STYLE_PLAIN);
         } elsif ($line =~ /^.*ruby CyberCore\/Scripts\/GenerateSettings.rb\s+.*\s+--template\s+.*(\/\S+).erb/) {
             my $path = basename($1);
@@ -231,7 +231,7 @@ sub main() {
         } elsif ($line =~ /^.*\/generate-inspector-protocol-bindings.py\s+--framework\s+(\S+).*(\/\S+).json/) {
             my $path = basename($2);
             printLine("Generating inspector protocol bindings $1 $path", STYLE_PLAIN);
-        } elsif ($line =~ /^bash -c "perl JavaScriptCorePrivateHeaders\/xxd.pl .* \<\(gzip -cn .*\) .*"/) {
+        } elsif ($line =~ /^bash -c "perl CyberScriptCorePrivateHeaders\/xxd.pl .* \<\(gzip -cn .*\) .*"/) {
             printLine("Converting WHLSLStandardLibrary", STYLE_PLAIN);
         } elsif ($line =~ /^sh .*\/generate-https-upgrade-database\.sh .*\/HTTPSUpgradeList.txt HTTPSUpgradeList.db/) {
             printLine("Converting HTTPSUpgradeList", STYLE_PLAIN);
@@ -386,9 +386,9 @@ sub shouldIgnoreLine($$)
     return 1 if $line =~ /^note: Execution policy exception registration failed and was skipped: Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"/;
     return 1 if $line =~ /^note: detected encoding of input file as Unicode \(.*\)/;
     return 1 if $line =~ /make(\[\d+\])?: Nothing to be done for/;
-    return 1 if $line =~ /^JavaScriptCore\/create_hash_table/;
-    return 1 if $line =~ /JavaScriptCore.framework\/PrivateHeaders\/create_hash_table/;
-    return 1 if $line =~ /^JavaScriptCore\/pcre\/dftables/;
+    return 1 if $line =~ /^CyberScriptCore\/create_hash_table/;
+    return 1 if $line =~ /CyberScriptCore.framework\/PrivateHeaders\/create_hash_table/;
+    return 1 if $line =~ /^CyberScriptCore\/pcre\/dftables/;
     return 1 if $line =~ /^Creating hashtable for /;
     return 1 if $line =~ /^Wrote output to /;
     return 1 if $line =~ /^UNDOCUMENTED: /;

@@ -24,7 +24,7 @@
 #include "JSDOMGlobalObject.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WindowProxy;
 
@@ -108,4 +108,4 @@ inline bool isWorldCompatible(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSV
     return !value.isObject() || &worldForDOMObject(*value.getObject()) == &currentWorld(lexicalGlobalObject);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

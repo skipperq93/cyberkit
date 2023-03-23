@@ -32,7 +32,7 @@
 #include "NodeTraversal.h"
 #include "ShadowRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SimpleRange::SimpleRange(const BoundaryPoint& start, const BoundaryPoint& end)
     : start(start)

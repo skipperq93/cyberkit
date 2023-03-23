@@ -36,7 +36,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 TextCheckerState& checkerState()
@@ -303,4 +303,4 @@ Vector<String> TextChecker::loadedSpellCheckingLanguages()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

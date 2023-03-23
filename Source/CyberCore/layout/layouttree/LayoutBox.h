@@ -30,7 +30,7 @@
 #include <wtf/CheckedPtr.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Layout {
 
@@ -253,7 +253,7 @@ inline bool Box::isContainingBlockForOutOfFlowPosition() const
 }
 
 #define SPECIALIZE_TYPE_TRAITS_LAYOUT_BOX(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Layout::ToValueTypeName) \
-    static bool isType(const WebCore::Layout::Box& box) { return box.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Layout::ToValueTypeName) \
+    static bool isType(const CyberCore::Layout::Box& box) { return box.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

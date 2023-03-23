@@ -32,7 +32,7 @@
 #include <CyberCore/ApduResponse.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace apdu;
 using namespace fido;
 
@@ -87,6 +87,6 @@ void CtapNfcDriver::respondAsync(ResponseCallback&& callback, Vector<uint8_t>&& 
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN) && HAVE(NEAR_FIELD)

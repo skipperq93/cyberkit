@@ -28,7 +28,7 @@
 #include "CSSFontVariationValue.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontVariationValue::CSSFontVariationValue(FontTag tag, float value)
     : CSSValue(FontVariationClass)

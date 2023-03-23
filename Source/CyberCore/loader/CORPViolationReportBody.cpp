@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CORPViolationReportBody);
 
@@ -56,4 +56,4 @@ String CORPViolationReportBody::disposition() const
     return m_disposition == COEPDisposition::Reporting ? "reporting"_s : "enforce"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -57,7 +57,7 @@ public:
         VM& vm = lexicalGlobalObject->vm();
         // FIXME: deprecatedGetDOMStructure uses the prototype off of the wrong global object
         // We need to pass in the right global object for "array".
-        Structure* domStructure = WebCore::deprecatedGetDOMStructure<JSObservableArray>(lexicalGlobalObject);
+        Structure* domStructure = CyberCore::deprecatedGetDOMStructure<JSObservableArray>(lexicalGlobalObject);
         JSObservableArray* observableArray = new (NotNull, allocateCell<JSObservableArray>(vm)) JSObservableArray(vm, domStructure);
         observableArray->finishCreation(vm, WTFMove(array));
         return observableArray;

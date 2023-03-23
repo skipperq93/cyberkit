@@ -39,7 +39,7 @@ OBJC_CLASS NSString;
 OBJC_CLASS NSURL;
 OBJC_CLASS _WKWebExtensionWebNavigationURLFilter;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionAPIWebNavigationEvent : public WebExtensionAPIObject, public JSWebExtensionWrappable {
     WEB_EXTENSION_DECLARE_JS_WRAPPER_CLASS(WebExtensionAPIWebNavigationEvent, webNavigationEvent);
@@ -67,6 +67,6 @@ private:
     ListenerVector m_listeners;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

@@ -29,12 +29,12 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentSessionBase : RefCounted<PaymentSessionBase> {
     virtual ~PaymentSessionBase() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) || ENABLE(PAYMENT_REQUEST)

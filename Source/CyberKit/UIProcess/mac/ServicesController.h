@@ -32,7 +32,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ServicesController {
     WTF_MAKE_NONCOPYABLE(ServicesController);
@@ -64,7 +64,7 @@ private:
     RetainPtr<id> m_uiExtensionWatcher;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_CONTROLS)
 #endif // ServicesController_h

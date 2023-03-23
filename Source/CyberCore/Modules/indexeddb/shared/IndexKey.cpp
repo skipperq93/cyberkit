@@ -28,7 +28,7 @@
 
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IndexKey::IndexKey() = default;
 
@@ -82,4 +82,4 @@ Vector<IDBKeyData> IndexKey::multiEntry() const
     return multiEntry;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

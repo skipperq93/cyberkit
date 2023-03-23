@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://w3c.github.io/csswg-drafts/cssom-1/#the-cssrule-interface
 
@@ -56,4 +56,4 @@ enum class StyleRuleType : uint8_t {
 
 static constexpr auto firstUnexposedStyleRuleType = StyleRuleType::LayerBlock;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include "JSNodeCustom.h"
 #include "QualifiedName.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MutationObserverRegistration::MutationObserverRegistration(MutationObserver& observer, Node& node, MutationObserverOptions options, const MemoryCompactLookupOnlyRobinHoodHashSet<AtomString>& attributeFilter)
     : m_observer(observer)
@@ -113,15 +113,15 @@ bool MutationObserverRegistration::shouldReceiveMutationFrom(Node& node, Mutatio
 
 bool MutationObserverRegistration::isReachableFromOpaqueRoots(JSC::AbstractSlotVisitor& visitor) const
 {
-    if (containsWebCoreOpaqueRoot(visitor, m_node))
+    if (containsCyberCoreOpaqueRoot(visitor, m_node))
         return true;
 
     for (auto& node : m_transientRegistrationNodes) {
-        if (containsWebCoreOpaqueRoot(visitor, node.get()))
+        if (containsCyberCoreOpaqueRoot(visitor, node.get()))
             return true;
     }
 
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

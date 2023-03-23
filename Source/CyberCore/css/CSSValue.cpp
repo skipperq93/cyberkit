@@ -81,7 +81,7 @@
 #include "DeprecatedCSSOMValueList.h"
 #include "EventTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsCSSValue {
     uint32_t refCount;

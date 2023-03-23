@@ -54,7 +54,7 @@ webkit_dom_html_table_element_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
 webkit_dom_html_table_element_create_t_head(CyberKitDOMHTMLTableElement* self);
@@ -64,7 +64,7 @@ webkit_dom_html_table_element_create_t_head(CyberKitDOMHTMLTableElement* self);
  * @self: A #CyberKitDOMHTMLTableElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_delete_t_head(CyberKitDOMHTMLTableElement* self);
@@ -75,7 +75,7 @@ webkit_dom_html_table_element_delete_t_head(CyberKitDOMHTMLTableElement* self);
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
 webkit_dom_html_table_element_create_t_foot(CyberKitDOMHTMLTableElement* self);
@@ -85,7 +85,7 @@ webkit_dom_html_table_element_create_t_foot(CyberKitDOMHTMLTableElement* self);
  * @self: A #CyberKitDOMHTMLTableElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_delete_t_foot(CyberKitDOMHTMLTableElement* self);
@@ -96,7 +96,7 @@ webkit_dom_html_table_element_delete_t_foot(CyberKitDOMHTMLTableElement* self);
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
 webkit_dom_html_table_element_create_caption(CyberKitDOMHTMLTableElement* self);
@@ -106,7 +106,7 @@ webkit_dom_html_table_element_create_caption(CyberKitDOMHTMLTableElement* self);
  * @self: A #CyberKitDOMHTMLTableElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_delete_caption(CyberKitDOMHTMLTableElement* self);
@@ -119,7 +119,7 @@ webkit_dom_html_table_element_delete_caption(CyberKitDOMHTMLTableElement* self);
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
 webkit_dom_html_table_element_insert_row(CyberKitDOMHTMLTableElement* self, glong index, GError** error);
@@ -131,7 +131,7 @@ webkit_dom_html_table_element_insert_row(CyberKitDOMHTMLTableElement* self, glon
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_delete_row(CyberKitDOMHTMLTableElement* self, glong index, GError** error);
@@ -142,7 +142,7 @@ webkit_dom_html_table_element_delete_row(CyberKitDOMHTMLTableElement* self, glon
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLTableCaptionElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLTableCaptionElement*
 webkit_dom_html_table_element_get_caption(CyberKitDOMHTMLTableElement* self);
@@ -154,7 +154,7 @@ webkit_dom_html_table_element_get_caption(CyberKitDOMHTMLTableElement* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_caption(CyberKitDOMHTMLTableElement* self, CyberKitDOMHTMLTableCaptionElement* value, GError** error);
@@ -165,7 +165,7 @@ webkit_dom_html_table_element_set_caption(CyberKitDOMHTMLTableElement* self, Cyb
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLTableSectionElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLTableSectionElement*
 webkit_dom_html_table_element_get_t_head(CyberKitDOMHTMLTableElement* self);
@@ -177,7 +177,7 @@ webkit_dom_html_table_element_get_t_head(CyberKitDOMHTMLTableElement* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_t_head(CyberKitDOMHTMLTableElement* self, CyberKitDOMHTMLTableSectionElement* value, GError** error);
@@ -188,7 +188,7 @@ webkit_dom_html_table_element_set_t_head(CyberKitDOMHTMLTableElement* self, Cybe
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLTableSectionElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLTableSectionElement*
 webkit_dom_html_table_element_get_t_foot(CyberKitDOMHTMLTableElement* self);
@@ -200,7 +200,7 @@ webkit_dom_html_table_element_get_t_foot(CyberKitDOMHTMLTableElement* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_t_foot(CyberKitDOMHTMLTableElement* self, CyberKitDOMHTMLTableSectionElement* value, GError** error);
@@ -211,7 +211,7 @@ webkit_dom_html_table_element_set_t_foot(CyberKitDOMHTMLTableElement* self, Cybe
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_html_table_element_get_rows(CyberKitDOMHTMLTableElement* self);
@@ -222,7 +222,7 @@ webkit_dom_html_table_element_get_rows(CyberKitDOMHTMLTableElement* self);
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_html_table_element_get_t_bodies(CyberKitDOMHTMLTableElement* self);
@@ -233,7 +233,7 @@ webkit_dom_html_table_element_get_t_bodies(CyberKitDOMHTMLTableElement* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_align(CyberKitDOMHTMLTableElement* self);
@@ -244,7 +244,7 @@ webkit_dom_html_table_element_get_align(CyberKitDOMHTMLTableElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_align(CyberKitDOMHTMLTableElement* self, const gchar* value);
@@ -255,7 +255,7 @@ webkit_dom_html_table_element_set_align(CyberKitDOMHTMLTableElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_bg_color(CyberKitDOMHTMLTableElement* self);
@@ -266,7 +266,7 @@ webkit_dom_html_table_element_get_bg_color(CyberKitDOMHTMLTableElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_bg_color(CyberKitDOMHTMLTableElement* self, const gchar* value);
@@ -277,7 +277,7 @@ webkit_dom_html_table_element_set_bg_color(CyberKitDOMHTMLTableElement* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_border(CyberKitDOMHTMLTableElement* self);
@@ -288,7 +288,7 @@ webkit_dom_html_table_element_get_border(CyberKitDOMHTMLTableElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_border(CyberKitDOMHTMLTableElement* self, const gchar* value);
@@ -299,7 +299,7 @@ webkit_dom_html_table_element_set_border(CyberKitDOMHTMLTableElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_cell_padding(CyberKitDOMHTMLTableElement* self);
@@ -310,7 +310,7 @@ webkit_dom_html_table_element_get_cell_padding(CyberKitDOMHTMLTableElement* self
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_cell_padding(CyberKitDOMHTMLTableElement* self, const gchar* value);
@@ -321,7 +321,7 @@ webkit_dom_html_table_element_set_cell_padding(CyberKitDOMHTMLTableElement* self
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_cell_spacing(CyberKitDOMHTMLTableElement* self);
@@ -332,7 +332,7 @@ webkit_dom_html_table_element_get_cell_spacing(CyberKitDOMHTMLTableElement* self
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_cell_spacing(CyberKitDOMHTMLTableElement* self, const gchar* value);
@@ -343,7 +343,7 @@ webkit_dom_html_table_element_set_cell_spacing(CyberKitDOMHTMLTableElement* self
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_rules(CyberKitDOMHTMLTableElement* self);
@@ -354,7 +354,7 @@ webkit_dom_html_table_element_get_rules(CyberKitDOMHTMLTableElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_rules(CyberKitDOMHTMLTableElement* self, const gchar* value);
@@ -365,7 +365,7 @@ webkit_dom_html_table_element_set_rules(CyberKitDOMHTMLTableElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_summary(CyberKitDOMHTMLTableElement* self);
@@ -376,7 +376,7 @@ webkit_dom_html_table_element_get_summary(CyberKitDOMHTMLTableElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_summary(CyberKitDOMHTMLTableElement* self, const gchar* value);
@@ -387,7 +387,7 @@ webkit_dom_html_table_element_set_summary(CyberKitDOMHTMLTableElement* self, con
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_element_get_width(CyberKitDOMHTMLTableElement* self);
@@ -398,7 +398,7 @@ webkit_dom_html_table_element_get_width(CyberKitDOMHTMLTableElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_element_set_width(CyberKitDOMHTMLTableElement* self, const gchar* value);

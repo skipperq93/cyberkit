@@ -27,7 +27,7 @@
 
 #include "CSSColorValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSLCH final : public CSSColorValue {
     WTF_MAKE_ISO_ALLOCATED(CSSLCH);
@@ -52,4 +52,4 @@ private:
     RectifiedCSSColorPercent m_alpha;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

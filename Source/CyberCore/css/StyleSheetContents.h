@@ -29,7 +29,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleSheet;
 class CachedCSSStyleSheet;
@@ -182,4 +182,4 @@ private:
     Vector<CSSStyleSheet*> m_clients;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

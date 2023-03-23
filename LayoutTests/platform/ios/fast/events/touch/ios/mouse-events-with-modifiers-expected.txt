@@ -1,4 +1,4 @@
-This logs DOM mousedown, mousemove, and mouseup events that are dispatched when single tapping an element while holding modifier keys. Must be run in WebKitTestRunner.
+This logs DOM mousedown, mousemove, and mouseup events that are dispatched when single tapping an element while holding modifier keys. Must be run in CyberKitTestRunner.
 
 
 Test Command + Single Tap:

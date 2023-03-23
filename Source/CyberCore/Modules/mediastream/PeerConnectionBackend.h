@@ -44,7 +44,7 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;
@@ -280,6 +280,6 @@ inline PeerConnectionBackend::DescriptionStates PeerConnectionBackend::Descripti
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

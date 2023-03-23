@@ -28,7 +28,7 @@
 
 #import <CoreLocation/CLLocation.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GeolocationPositionData::GeolocationPositionData(CLLocation *location)
     : timestamp(location.timestamp.timeIntervalSince1970)
@@ -50,4 +50,4 @@ GeolocationPositionData::GeolocationPositionData(CLLocation *location)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

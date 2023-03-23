@@ -70,7 +70,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 KeyframeEffect::ParsedKeyframe::ParsedKeyframe()
@@ -2486,4 +2486,4 @@ bool KeyframeEffect::preventsAnimationReadiness() const
     return document() && !document()->hasBrowsingContext();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

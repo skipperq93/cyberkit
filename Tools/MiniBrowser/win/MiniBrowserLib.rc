@@ -124,7 +124,7 @@ BEGIN
     BEGIN
         MENUITEM "Use AVFoundation",            IDM_AVFOUNDATION, CHECKED
         MENUITEM "Use Accelerated Compositing", IDM_ACC_COMPOSITING, CHECKED
-        MENUITEM "Enable WebKit Full Screen",   IDM_WK_FULLSCREEN, CHECKED
+        MENUITEM "Enable CyberKit Full Screen",   IDM_WK_FULLSCREEN, CHECKED
         MENUITEM SEPARATOR
         MENUITEM "Show Compositing Borders",    IDM_COMPOSITING_BORDERS
         MENUITEM "Show Tiled Drawing indicator", IDM_DEBUG_INFO_LAYER

@@ -31,7 +31,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class LoadableScriptErrorType : uint8_t {
     Fetch,

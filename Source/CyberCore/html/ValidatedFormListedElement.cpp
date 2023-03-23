@@ -52,7 +52,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

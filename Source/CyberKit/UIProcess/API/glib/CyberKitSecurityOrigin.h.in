@@ -19,52 +19,52 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitSecurityOrigin_h
-#define WebKitSecurityOrigin_h
+#ifndef CyberKitSecurityOrigin_h
+#define CyberKitSecurityOrigin_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_SECURITY_ORIGIN (webkit_security_origin_get_type())
 
-typedef struct _WebKitSecurityOrigin WebKitSecurityOrigin;
+typedef struct _CyberKitSecurityOrigin CyberKitSecurityOrigin;
 
 WEBKIT_API GType
 webkit_security_origin_get_type     (void);
 
-WEBKIT_API WebKitSecurityOrigin *
+WEBKIT_API CyberKitSecurityOrigin *
 webkit_security_origin_new          (const gchar          *protocol,
                                      const gchar          *host,
                                      guint16               port);
 
-WEBKIT_API WebKitSecurityOrigin *
+WEBKIT_API CyberKitSecurityOrigin *
 webkit_security_origin_new_for_uri  (const gchar          *uri);
 
-WEBKIT_API WebKitSecurityOrigin *
-webkit_security_origin_ref          (WebKitSecurityOrigin *origin);
+WEBKIT_API CyberKitSecurityOrigin *
+webkit_security_origin_ref          (CyberKitSecurityOrigin *origin);
 
 WEBKIT_API void
-webkit_security_origin_unref        (WebKitSecurityOrigin *origin);
+webkit_security_origin_unref        (CyberKitSecurityOrigin *origin);
 
 WEBKIT_API const gchar *
-webkit_security_origin_get_protocol (WebKitSecurityOrigin *origin);
+webkit_security_origin_get_protocol (CyberKitSecurityOrigin *origin);
 
 WEBKIT_API const gchar *
-webkit_security_origin_get_host     (WebKitSecurityOrigin *origin);
+webkit_security_origin_get_host     (CyberKitSecurityOrigin *origin);
 
 WEBKIT_API guint16
-webkit_security_origin_get_port     (WebKitSecurityOrigin *origin);
+webkit_security_origin_get_port     (CyberKitSecurityOrigin *origin);
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_DEPRECATED gboolean
-webkit_security_origin_is_opaque    (WebKitSecurityOrigin *origin);
+webkit_security_origin_is_opaque    (CyberKitSecurityOrigin *origin);
 #endif
 
 WEBKIT_API gchar *
-webkit_security_origin_to_string    (WebKitSecurityOrigin *origin);
+webkit_security_origin_to_string    (CyberKitSecurityOrigin *origin);
 
 G_END_DECLS
 
-#endif /* WebKitSecurityOrigin_h */
+#endif /* CyberKitSecurityOrigin_h */

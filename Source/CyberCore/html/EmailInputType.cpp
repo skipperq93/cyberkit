@@ -33,7 +33,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // From https://html.spec.whatwg.org/#valid-e-mail-address.
 static constexpr ASCIILiteral emailPattern = "^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"_s;
@@ -107,4 +107,4 @@ String EmailInputType::sanitizeValue(const String& proposedValue) const
     return strippedValue.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

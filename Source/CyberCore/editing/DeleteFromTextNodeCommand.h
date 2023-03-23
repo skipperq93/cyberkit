@@ -27,7 +27,7 @@
 
 #include "EditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Text;
 
@@ -55,4 +55,4 @@ private:
     String m_text;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

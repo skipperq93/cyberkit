@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GeolocationCoordinates.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GeolocationCoordinates::GeolocationCoordinates(GeolocationPositionData&& position)
     : m_position(WTFMove(position))
@@ -34,4 +34,4 @@ GeolocationCoordinates::GeolocationCoordinates(GeolocationPositionData&& positio
     ASSERT(m_position.isValid());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

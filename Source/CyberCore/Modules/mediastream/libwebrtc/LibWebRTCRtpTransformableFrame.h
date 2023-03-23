@@ -33,7 +33,7 @@ namespace webrtc {
 class TransformableFrameInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCRtpTransformableFrame final : public RTCRtpTransformableFrame {
     WTF_MAKE_FAST_ALLOCATED;
@@ -58,6 +58,6 @@ private:
     bool m_isAudioSenderFrame;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

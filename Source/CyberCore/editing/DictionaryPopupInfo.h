@@ -32,7 +32,7 @@
 OBJC_CLASS NSAttributedString;
 OBJC_CLASS NSDictionary;
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 struct DictionaryPopupInfoCocoa {
@@ -49,4 +49,4 @@ struct DictionaryPopupInfo {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

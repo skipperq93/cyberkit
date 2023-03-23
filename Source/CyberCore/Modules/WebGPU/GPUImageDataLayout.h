@@ -29,7 +29,7 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUImageDataLayout.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUImageDataLayout {
     PAL::WebGPU::ImageDataLayout convertToBacking() const

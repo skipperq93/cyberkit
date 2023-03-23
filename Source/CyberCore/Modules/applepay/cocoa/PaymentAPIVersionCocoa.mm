@@ -30,7 +30,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned PaymentAPIVersion::current()
 {
@@ -59,6 +59,6 @@ unsigned PaymentAPIVersion::current()
     return current;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

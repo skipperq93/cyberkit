@@ -83,7 +83,7 @@ protected:
 // This class is suitable and (hopefully!) convenient for cases where a counter is
 // required within the scope of a single function. It can be instantiated as a
 // static variable since it contains a constructor but not a destructor (static
-// variables in WebKit cannot have destructors).
+// variables in CyberKit cannot have destructors).
 //
 // For example:
 //

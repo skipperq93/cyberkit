@@ -33,7 +33,7 @@
 
 #include "WebDebuggerAgent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Document;
@@ -84,4 +84,4 @@ private:
     Vector<UniqueRef<UserGestureEmulationScope>> m_breakpointActionUserGestureEmulationScopeStack;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

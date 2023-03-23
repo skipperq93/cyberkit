@@ -25,14 +25,14 @@
 
 #pragma once
 
-#include "WebKitNavigationAction.h"
+#include "CyberKitNavigationAction.h"
 #include "WebMouseEvent.h"
 #include <CyberCore/FrameLoaderTypes.h>
 
-unsigned toPlatformModifiers(OptionSet<WebKit::WebEventModifier>);
-WebKitNavigationType toWebKitNavigationType(CyberCore::NavigationType);
-unsigned toWebKitMouseButton(WebKit::WebMouseEventButton);
-unsigned toWebKitError(unsigned webCoreError);
+unsigned toPlatformModifiers(OptionSet<CyberKit::WebEventModifier>);
+CyberKitNavigationType toCyberKitNavigationType(CyberCore::NavigationType);
+unsigned toCyberKitMouseButton(CyberKit::WebMouseEventButton);
+unsigned toCyberKitError(unsigned webCoreError);
 unsigned toCyberCoreError(unsigned webKitError);
 
 enum SnapshotRegion {
@@ -40,4 +40,4 @@ enum SnapshotRegion {
     SnapshotRegionFullDocument
 };
 
-static constexpr auto networkCacheSubdirectory = "WebKitCache"_s;
+static constexpr auto networkCacheSubdirectory = "CyberKitCache"_s;

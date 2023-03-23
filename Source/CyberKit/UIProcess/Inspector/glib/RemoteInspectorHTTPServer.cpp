@@ -34,7 +34,7 @@
 #include <wtf/URL.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RemoteInspectorHTTPServer& RemoteInspectorHTTPServer::singleton()
 {
@@ -44,7 +44,7 @@ RemoteInspectorHTTPServer& RemoteInspectorHTTPServer::singleton()
 
 bool RemoteInspectorHTTPServer::start(GRefPtr<GSocketAddress>&& socketAddress, unsigned inspectorPort)
 {
-    m_server = adoptGRef(soup_server_new("server-header", "WebKitInspectorHTTPServer ", nullptr));
+    m_server = adoptGRef(soup_server_new("server-header", "CyberKitInspectorHTTPServer ", nullptr));
 
     GUniqueOutPtr<GError> error;
     if (!soup_server_listen(m_server.get(), socketAddress.get(), static_cast<SoupServerListenOptions>(0), &error.outPtr())) {
@@ -187,6 +187,6 @@ void RemoteInspectorHTTPServer::didCloseWebSocket(SoupWebsocketConnection* conne
     m_client->closeFromFrontend(connectionAndTarget.first, connectionAndTarget.second);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

@@ -30,7 +30,7 @@
 #include "DocumentFragment.h"
 #include "ReplaceSelectionCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MoveSelectionCommand::MoveSelectionCommand(Ref<DocumentFragment>&& fragment, const Position& position, bool smartInsert, bool smartDelete)
     : CompositeEditCommand(position.anchorNode()->document())
@@ -99,4 +99,4 @@ EditAction MoveSelectionCommand::editingAction() const
     return EditAction::DeleteByDrag;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

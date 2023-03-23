@@ -29,7 +29,7 @@
 #include "CSSValueKeywords.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSContentDistributionValue::CSSContentDistributionValue(CSSValueID distribution, CSSValueID position, CSSValueID overflow)
     : CSSValue(ContentDistributionClass)

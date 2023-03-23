@@ -28,7 +28,7 @@
 #import "APIWindowFeatures.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::WindowFeatures> {
     using WrapperClass = WKWindowFeatures;

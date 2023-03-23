@@ -45,7 +45,7 @@
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebExtensionController>(self, WebKit::WebExtensionControllerConfiguration::createDefault());
+    API::Object::constructInWrapper<CyberKit::WebExtensionController>(self, CyberKit::WebExtensionControllerConfiguration::createDefault());
 
     return self;
 }
@@ -57,7 +57,7 @@
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebExtensionController>(self, configuration._webExtensionControllerConfiguration.copy());
+    API::Object::constructInWrapper<CyberKit::WebExtensionController>(self, configuration._webExtensionControllerConfiguration.copy());
 
     return self;
 }
@@ -130,7 +130,7 @@ static inline NSSet *toAPI(const T& inputSet)
     return *_webExtensionController;
 }
 
-- (WebKit::WebExtensionController&)_webExtensionController
+- (CyberKit::WebExtensionController&)_webExtensionController
 {
     return *_webExtensionController;
 }

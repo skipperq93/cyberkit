@@ -44,7 +44,7 @@ class PaymentSessionError;
 struct ApplePayShippingMethod;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcessConnection;
 class WebPage;
@@ -116,9 +116,9 @@ private:
     std::optional<bool> m_lastCanMakePaymentsResult;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::WebPaymentCoordinator)
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::WebPaymentCoordinator)
 static bool isType(const CyberCore::PaymentCoordinatorClient& paymentCoordinatorClient) { return paymentCoordinatorClient.isWebPaymentCoordinator(); }
 SPECIALIZE_TYPE_TRAITS_END()
 

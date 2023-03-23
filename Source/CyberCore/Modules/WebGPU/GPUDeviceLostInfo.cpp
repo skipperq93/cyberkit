@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUDeviceLostInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 auto GPUDeviceLostInfo::reason() const -> Reason
 {

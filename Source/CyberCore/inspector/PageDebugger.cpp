@@ -45,16 +45,16 @@
 #include <wtf/StdLibExtras.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThreadInternal.h"
+#include "CyberCoreThreadInternal.h"
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 using namespace Inspector;
 
 PageDebugger::PageDebugger(Page& page)
-    : Debugger(WebCore::commonVM())
+    : Debugger(CyberCore::commonVM())
     , m_page(page)
 {
 }
@@ -142,7 +142,7 @@ void PageDebugger::reportException(JSGlobalObject* state, JSC::Exception* except
 {
     JSC::Debugger::reportException(state, exception);
 
-    WebCore::reportException(state, exception);
+    CyberCore::reportException(state, exception);
 }
 
 void PageDebugger::setJavaScriptPaused(const PageGroup& pageGroup, bool paused)
@@ -189,4 +189,4 @@ bool PageDebugger::platformShouldContinueRunningEventLoopWhilePaused()
 }
 #endif // !PLATFORM(MAC)
 
-} // namespace WebCore
+} // namespace CyberCore

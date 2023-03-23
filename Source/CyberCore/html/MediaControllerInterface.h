@@ -30,7 +30,7 @@
 #include "ExceptionOr.h"
 #include "HTMLMediaElementEnums.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TimeRanges;
 

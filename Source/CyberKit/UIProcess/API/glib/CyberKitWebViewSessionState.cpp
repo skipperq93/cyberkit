@@ -18,25 +18,25 @@
  */
 
 #include "config.h"
-#include "WebKitWebViewSessionState.h"
+#include "CyberKitWebViewSessionState.h"
 
-#include "WebKitWebViewSessionStatePrivate.h"
+#include "CyberKitWebViewSessionStatePrivate.h"
 #include <CyberCore/BackForwardItemIdentifier.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitWebViewSessionState: (ref-func webkit_web_view_session_state_ref) (unref-func webkit_web_view_session_state_unref)
+ * CyberKitWebViewSessionState: (ref-func webkit_web_view_session_state_ref) (unref-func webkit_web_view_session_state_unref)
  *
  * Handles serialization of a web view's browsing state.
  *
  * Since: 2.12
  */
 
-struct _WebKitWebViewSessionState {
-    _WebKitWebViewSessionState(SessionState&& state)
+struct _CyberKitWebViewSessionState {
+    _CyberKitWebViewSessionState(SessionState&& state)
         : sessionState(WTFMove(state))
         , referenceCount(1)
     {
@@ -46,7 +46,7 @@ struct _WebKitWebViewSessionState {
     int referenceCount;
 };
 
-G_DEFINE_BOXED_TYPE(WebKitWebViewSessionState, webkit_web_view_session_state, webkit_web_view_session_state_ref, webkit_web_view_session_state_unref)
+G_DEFINE_BOXED_TYPE(CyberKitWebViewSessionState, webkit_web_view_session_state, webkit_web_view_session_state_ref, webkit_web_view_session_state_unref)
 
 // Version information:
 //  - Version 2: removed backforward list item identifier since it's always regenerated.
@@ -432,14 +432,14 @@ static bool decodeSessionState(GBytes* data, SessionState& sessionState)
     return true;
 }
 
-WebKitWebViewSessionState* webkitWebViewSessionStateCreate(SessionState&& sessionState)
+CyberKitWebViewSessionState* webkitWebViewSessionStateCreate(SessionState&& sessionState)
 {
-    WebKitWebViewSessionState* state = static_cast<WebKitWebViewSessionState*>(fastMalloc(sizeof(WebKitWebViewSessionState)));
-    new (state) WebKitWebViewSessionState(WTFMove(sessionState));
+    CyberKitWebViewSessionState* state = static_cast<CyberKitWebViewSessionState*>(fastMalloc(sizeof(CyberKitWebViewSessionState)));
+    new (state) CyberKitWebViewSessionState(WTFMove(sessionState));
     return state;
 }
 
-const SessionState& webkitWebViewSessionStateGetSessionState(WebKitWebViewSessionState* state)
+const SessionState& webkitWebViewSessionStateGetSessionState(CyberKitWebViewSessionState* state)
 {
     return state->sessionState;
 }
@@ -448,14 +448,14 @@ const SessionState& webkitWebViewSessionStateGetSessionState(WebKitWebViewSessio
  * webkit_web_view_session_state_new:
  * @data: a #GBytes
  *
- * Creates a new #WebKitWebViewSessionState from serialized data.
+ * Creates a new #CyberKitWebViewSessionState from serialized data.
  *
- * Returns: (transfer full): a new #WebKitWebViewSessionState, or %NULL if @data doesn't contain a
- *     valid serialized #WebKitWebViewSessionState.
+ * Returns: (transfer full): a new #CyberKitWebViewSessionState, or %NULL if @data doesn't contain a
+ *     valid serialized #CyberKitWebViewSessionState.
  *
  * Since: 2.12
  */
-WebKitWebViewSessionState* webkit_web_view_session_state_new(GBytes* data)
+CyberKitWebViewSessionState* webkit_web_view_session_state_new(GBytes* data)
 {
     g_return_val_if_fail(data, nullptr);
 
@@ -467,18 +467,18 @@ WebKitWebViewSessionState* webkit_web_view_session_state_new(GBytes* data)
 
 /**
  * webkit_web_view_session_state_ref:
- * @state: a #WebKitWebViewSessionState
+ * @state: a #CyberKitWebViewSessionState
  *
  * Atomically increments the reference count of @state by one.
  *
  * This
  * function is MT-safe and may be called from any thread.
  *
- * Returns: The passed in #WebKitWebViewSessionState
+ * Returns: The passed in #CyberKitWebViewSessionState
  *
  * Since: 2.12
  */
-WebKitWebViewSessionState* webkit_web_view_session_state_ref(WebKitWebViewSessionState* state)
+CyberKitWebViewSessionState* webkit_web_view_session_state_ref(CyberKitWebViewSessionState* state)
 {
     g_return_val_if_fail(state, nullptr);
     g_atomic_int_inc(&state->referenceCount);
@@ -487,36 +487,36 @@ WebKitWebViewSessionState* webkit_web_view_session_state_ref(WebKitWebViewSessio
 
 /**
  * webkit_web_view_session_state_unref:
- * @state: a #WebKitWebViewSessionState
+ * @state: a #CyberKitWebViewSessionState
  *
  * Atomically decrements the reference count of @state by one.
  *
  * If the
- * reference count drops to 0, all memory allocated by the #WebKitWebViewSessionState is
+ * reference count drops to 0, all memory allocated by the #CyberKitWebViewSessionState is
  * released. This function is MT-safe and may be called from any thread.
  *
  * Since: 2.12
  */
-void webkit_web_view_session_state_unref(WebKitWebViewSessionState* state)
+void webkit_web_view_session_state_unref(CyberKitWebViewSessionState* state)
 {
     g_return_if_fail(state);
     if (g_atomic_int_dec_and_test(&state->referenceCount)) {
-        state->~WebKitWebViewSessionState();
+        state->~CyberKitWebViewSessionState();
         fastFree(state);
     }
 }
 
 /**
  * webkit_web_view_session_state_serialize:
- * @state: a #WebKitWebViewSessionState
+ * @state: a #CyberKitWebViewSessionState
  *
- * Serializes a #WebKitWebViewSessionState.
+ * Serializes a #CyberKitWebViewSessionState.
  *
  * Returns: (transfer full): a #GBytes containing the @state serialized.
  *
  * Since: 2.12
  */
-GBytes* webkit_web_view_session_state_serialize(WebKitWebViewSessionState* state)
+GBytes* webkit_web_view_session_state_serialize(CyberKitWebViewSessionState* state)
 {
     g_return_val_if_fail(state, nullptr);
 

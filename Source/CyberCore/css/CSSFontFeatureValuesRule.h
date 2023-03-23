@@ -29,7 +29,7 @@
 
 #include "StyleRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontFeatureValuesRule final : public CSSRule {
 public:
@@ -82,7 +82,7 @@ private:
     Ref<StyleRuleFontFeatureValuesBlock> m_fontFeatureValuesBlockRule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSFontFeatureValuesRule, StyleRuleType::FontFeatureValues)
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSFontFeatureValuesBlockRule, StyleRuleType::FontFeatureValuesBlock)

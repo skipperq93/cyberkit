@@ -32,7 +32,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<RefPtr<Uint8Array>> CompressionStreamEncoder::encode(const BufferSource&& input)
 {
@@ -151,4 +151,4 @@ ExceptionOr<RefPtr<JSC::ArrayBuffer>> CompressionStreamEncoder::compress(const u
 
     return compressedData;
 }
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Gamepad;
 class Navigator;
@@ -65,6 +65,6 @@ private:
     Vector<RefPtr<Gamepad>> m_gamepads;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

@@ -37,7 +37,7 @@ namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlatformXRCoordinator;
 class WebPageProxy;
@@ -78,6 +78,6 @@ private:
     std::unique_ptr<ProcessThrottler::ForegroundActivity> m_immersiveSessionActivity;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBXR)

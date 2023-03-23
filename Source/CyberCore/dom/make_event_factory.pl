@@ -92,7 +92,7 @@ sub generateImplementation()
     print F "#include \"JSDOMGlobalObject.h\"\n";
     print F "#include <CyberScriptCore/StructureInlines.h>\n";
     print F "\n";
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     # FIXME: Why does Event need toNewlyCreated but EventTarget need toJS?
     if ($factoryFunction eq "toNewlyCreated") {
@@ -142,7 +142,7 @@ sub generateImplementation()
     }
     print F "}\n";
     print F "\n";
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
 
     close F;
 }

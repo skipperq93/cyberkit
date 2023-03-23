@@ -39,7 +39,7 @@
 #include "ThreadableLoader.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
     class CachedRawResource;
     class ContentSecurityPolicy;
     class Document;
@@ -148,4 +148,4 @@ namespace WebCore {
 #endif
     };
 
-} // namespace WebCore
+} // namespace CyberCore

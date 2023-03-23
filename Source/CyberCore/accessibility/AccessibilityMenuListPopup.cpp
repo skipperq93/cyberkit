@@ -34,7 +34,7 @@
 #include "HTMLSelectElement.h"
 #include "RenderMenuList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -161,4 +161,4 @@ void AccessibilityMenuListPopup::didUpdateActiveOption(int optionIndex)
     cache->postNotification(child.get(), document(), AXObjectCache::AXMenuListItemSelected);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

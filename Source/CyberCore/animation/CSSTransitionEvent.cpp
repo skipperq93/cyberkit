@@ -29,7 +29,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSTransitionEvent);
 
@@ -47,4 +47,4 @@ CSSTransitionEvent::CSSTransitionEvent(const AtomString& type, const Init& initi
 
 CSSTransitionEvent::~CSSTransitionEvent() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

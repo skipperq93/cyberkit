@@ -51,7 +51,7 @@ class FragmentedSharedBuffer;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class AuthenticationChallengeProxy;
 class DownloadProxy;
 class WebBackForwardListItem;
@@ -77,73 +77,73 @@ class NavigationClient {
 public:
     virtual ~NavigationClient() { }
 
-    virtual void didStartProvisionalNavigation(WebKit::WebPageProxy&, const CyberCore::ResourceRequest&, Navigation*, Object*) { }
-    virtual void didStartProvisionalLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
-    virtual void didReceiveServerRedirectForProvisionalNavigation(WebKit::WebPageProxy&, Navigation*, Object*) { }
-    virtual void willPerformClientRedirect(WebKit::WebPageProxy&, const WTF::String& destinationURL, double) { }
-    virtual void didPerformClientRedirect(WebKit::WebPageProxy&, const WTF::String& sourceURL, const WTF::String& destinationURL) { }
-    virtual void didCancelClientRedirect(WebKit::WebPageProxy&) { }
-    virtual void didFailProvisionalNavigationWithError(WebKit::WebPageProxy&, WebKit::FrameInfoData&&, Navigation*, const CyberCore::ResourceError&, Object*) { }
-    virtual void didFailProvisionalLoadWithErrorForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, WebKit::FrameInfoData&&) { }
-    virtual void didCommitNavigation(WebKit::WebPageProxy&, Navigation*, Object*) { }
-    virtual void didCommitLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
-    virtual void didFinishDocumentLoad(WebKit::WebPageProxy&, Navigation*, Object*) { }
-    virtual void didFinishNavigation(WebKit::WebPageProxy&, Navigation*, Object*) { }
-    virtual void didFinishLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
-    virtual void didFailLoadDueToNetworkConnectionIntegrity(WebKit::WebPageProxy&, const WTF::URL&) { }
-    virtual void didFailNavigationWithError(WebKit::WebPageProxy&, const WebKit::FrameInfoData&, Navigation*, const CyberCore::ResourceError&, Object*) { }
-    virtual void didFailLoadWithErrorForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, WebKit::FrameInfoData&&) { }
-    virtual void didSameDocumentNavigation(WebKit::WebPageProxy&, Navigation*, WebKit::SameDocumentNavigationType, Object*) { }
-    virtual void didChangeLookalikeCharacters(WebKit::WebPageProxy&, const WTF::URL&, const WTF::URL&) { }
+    virtual void didStartProvisionalNavigation(CyberKit::WebPageProxy&, const CyberCore::ResourceRequest&, Navigation*, Object*) { }
+    virtual void didStartProvisionalLoadForFrame(CyberKit::WebPageProxy&, CyberCore::ResourceRequest&&, CyberKit::FrameInfoData&&) { }
+    virtual void didReceiveServerRedirectForProvisionalNavigation(CyberKit::WebPageProxy&, Navigation*, Object*) { }
+    virtual void willPerformClientRedirect(CyberKit::WebPageProxy&, const WTF::String& destinationURL, double) { }
+    virtual void didPerformClientRedirect(CyberKit::WebPageProxy&, const WTF::String& sourceURL, const WTF::String& destinationURL) { }
+    virtual void didCancelClientRedirect(CyberKit::WebPageProxy&) { }
+    virtual void didFailProvisionalNavigationWithError(CyberKit::WebPageProxy&, CyberKit::FrameInfoData&&, Navigation*, const CyberCore::ResourceError&, Object*) { }
+    virtual void didFailProvisionalLoadWithErrorForFrame(CyberKit::WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, CyberKit::FrameInfoData&&) { }
+    virtual void didCommitNavigation(CyberKit::WebPageProxy&, Navigation*, Object*) { }
+    virtual void didCommitLoadForFrame(CyberKit::WebPageProxy&, CyberCore::ResourceRequest&&, CyberKit::FrameInfoData&&) { }
+    virtual void didFinishDocumentLoad(CyberKit::WebPageProxy&, Navigation*, Object*) { }
+    virtual void didFinishNavigation(CyberKit::WebPageProxy&, Navigation*, Object*) { }
+    virtual void didFinishLoadForFrame(CyberKit::WebPageProxy&, CyberCore::ResourceRequest&&, CyberKit::FrameInfoData&&) { }
+    virtual void didFailLoadDueToNetworkConnectionIntegrity(CyberKit::WebPageProxy&, const WTF::URL&) { }
+    virtual void didFailNavigationWithError(CyberKit::WebPageProxy&, const CyberKit::FrameInfoData&, Navigation*, const CyberCore::ResourceError&, Object*) { }
+    virtual void didFailLoadWithErrorForFrame(CyberKit::WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, CyberKit::FrameInfoData&&) { }
+    virtual void didSameDocumentNavigation(CyberKit::WebPageProxy&, Navigation*, CyberKit::SameDocumentNavigationType, Object*) { }
+    virtual void didChangeLookalikeCharacters(CyberKit::WebPageProxy&, const WTF::URL&, const WTF::URL&) { }
 
-    virtual void didDisplayInsecureContent(WebKit::WebPageProxy&, API::Object*) { }
-    virtual void didRunInsecureContent(WebKit::WebPageProxy&, API::Object*) { }
+    virtual void didDisplayInsecureContent(CyberKit::WebPageProxy&, API::Object*) { }
+    virtual void didRunInsecureContent(CyberKit::WebPageProxy&, API::Object*) { }
 
-    virtual void renderingProgressDidChange(WebKit::WebPageProxy&, OptionSet<CyberCore::LayoutMilestone>) { }
+    virtual void renderingProgressDidChange(CyberKit::WebPageProxy&, OptionSet<CyberCore::LayoutMilestone>) { }
 
-    virtual void navigationResponseDidBecomeDownload(WebKit::WebPageProxy&, NavigationResponse&, WebKit::DownloadProxy&) { }
-    virtual void navigationActionDidBecomeDownload(WebKit::WebPageProxy&, NavigationAction&, WebKit::DownloadProxy&) { }
-    virtual void contextMenuDidCreateDownload(WebKit::WebPageProxy&, WebKit::DownloadProxy&) { }
+    virtual void navigationResponseDidBecomeDownload(CyberKit::WebPageProxy&, NavigationResponse&, CyberKit::DownloadProxy&) { }
+    virtual void navigationActionDidBecomeDownload(CyberKit::WebPageProxy&, NavigationAction&, CyberKit::DownloadProxy&) { }
+    virtual void contextMenuDidCreateDownload(CyberKit::WebPageProxy&, CyberKit::DownloadProxy&) { }
 
-    virtual void didReceiveAuthenticationChallenge(WebKit::WebPageProxy&, WebKit::AuthenticationChallengeProxy& challenge) { challenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::PerformDefaultHandling); }
-    virtual void shouldAllowLegacyTLS(WebKit::WebPageProxy&, WebKit::AuthenticationChallengeProxy&, CompletionHandler<void(bool)>&& completionHandler) { completionHandler(true); }
+    virtual void didReceiveAuthenticationChallenge(CyberKit::WebPageProxy&, CyberKit::AuthenticationChallengeProxy& challenge) { challenge.listener().completeChallenge(CyberKit::AuthenticationChallengeDisposition::PerformDefaultHandling); }
+    virtual void shouldAllowLegacyTLS(CyberKit::WebPageProxy&, CyberKit::AuthenticationChallengeProxy&, CompletionHandler<void(bool)>&& completionHandler) { completionHandler(true); }
     virtual void didNegotiateModernTLS(const WTF::URL&) { }
     virtual bool shouldBypassContentModeSafeguards() const { return false; }
 
     // FIXME: These function should not be part of this client.
-    virtual bool processDidTerminate(WebKit::WebPageProxy&, WebKit::ProcessTerminationReason) { return false; }
-    virtual void processDidBecomeResponsive(WebKit::WebPageProxy&) { }
-    virtual void processDidBecomeUnresponsive(WebKit::WebPageProxy&) { }
+    virtual bool processDidTerminate(CyberKit::WebPageProxy&, CyberKit::ProcessTerminationReason) { return false; }
+    virtual void processDidBecomeResponsive(CyberKit::WebPageProxy&) { }
+    virtual void processDidBecomeUnresponsive(CyberKit::WebPageProxy&) { }
 
-    virtual RefPtr<Data> webCryptoMasterKey(WebKit::WebPageProxy&) { return nullptr; }
+    virtual RefPtr<Data> webCryptoMasterKey(CyberKit::WebPageProxy&) { return nullptr; }
 
 #if USE(QUICK_LOOK)
     virtual void didStartLoadForQuickLookDocumentInMainFrame(const WTF::String& fileName, const WTF::String& uti) { }
     virtual void didFinishLoadForQuickLookDocumentInMainFrame(const CyberCore::FragmentedSharedBuffer&) { }
 #endif
 
-    virtual void decidePolicyForNavigationAction(WebKit::WebPageProxy&, Ref<NavigationAction>&&, Ref<WebKit::WebFramePolicyListenerProxy>&& listener)
+    virtual void decidePolicyForNavigationAction(CyberKit::WebPageProxy&, Ref<NavigationAction>&&, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener)
     {
         listener->use();
     }
 
-    virtual void decidePolicyForNavigationResponse(WebKit::WebPageProxy&, Ref<NavigationResponse>&&, Ref<WebKit::WebFramePolicyListenerProxy>&& listener)
+    virtual void decidePolicyForNavigationResponse(CyberKit::WebPageProxy&, Ref<NavigationResponse>&&, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener)
     {
         listener->use();
     }
     
-    virtual void contentRuleListNotification(WebKit::WebPageProxy&, WTF::URL&&, CyberCore::ContentRuleListResults&&) { };
+    virtual void contentRuleListNotification(CyberKit::WebPageProxy&, WTF::URL&&, CyberCore::ContentRuleListResults&&) { };
 
-    virtual bool willGoToBackForwardListItem(WebKit::WebPageProxy&, WebKit::WebBackForwardListItem&, bool inBackForwardCache) { return false; }
+    virtual bool willGoToBackForwardListItem(CyberKit::WebPageProxy&, CyberKit::WebBackForwardListItem&, bool inBackForwardCache) { return false; }
 
-    virtual void didBeginNavigationGesture(WebKit::WebPageProxy&) { }
-    virtual void willEndNavigationGesture(WebKit::WebPageProxy&, bool willNavigate, WebKit::WebBackForwardListItem&) { }
-    virtual void didEndNavigationGesture(WebKit::WebPageProxy&, bool willNavigate, WebKit::WebBackForwardListItem&) { }
-    virtual void didRemoveNavigationGestureSnapshot(WebKit::WebPageProxy&) { }
-    virtual bool didChangeBackForwardList(WebKit::WebPageProxy&, WebKit::WebBackForwardListItem*, const Vector<Ref<WebKit::WebBackForwardListItem>>&) { return false; }
+    virtual void didBeginNavigationGesture(CyberKit::WebPageProxy&) { }
+    virtual void willEndNavigationGesture(CyberKit::WebPageProxy&, bool willNavigate, CyberKit::WebBackForwardListItem&) { }
+    virtual void didEndNavigationGesture(CyberKit::WebPageProxy&, bool willNavigate, CyberKit::WebBackForwardListItem&) { }
+    virtual void didRemoveNavigationGestureSnapshot(CyberKit::WebPageProxy&) { }
+    virtual bool didChangeBackForwardList(CyberKit::WebPageProxy&, CyberKit::WebBackForwardListItem*, const Vector<Ref<CyberKit::WebBackForwardListItem>>&) { return false; }
 
 #if HAVE(APP_SSO)
-    virtual void decidePolicyForSOAuthorizationLoad(WebKit::WebPageProxy&, WebKit::SOAuthorizationLoadPolicy currentSOAuthorizationLoadPolicy, const WTF::String&, CompletionHandler<void(WebKit::SOAuthorizationLoadPolicy)>&& completionHandler)
+    virtual void decidePolicyForSOAuthorizationLoad(CyberKit::WebPageProxy&, CyberKit::SOAuthorizationLoadPolicy currentSOAuthorizationLoadPolicy, const WTF::String&, CompletionHandler<void(CyberKit::SOAuthorizationLoadPolicy)>&& completionHandler)
     {
         completionHandler(currentSOAuthorizationLoadPolicy);
     }

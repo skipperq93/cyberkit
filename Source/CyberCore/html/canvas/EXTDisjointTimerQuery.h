@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EXTDisjointTimerQuery final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(EXTDisjointTimerQuery);
@@ -49,4 +49,4 @@ public:
     WebGLAny getQueryObjectEXT(WebGLTimerQueryEXT&, GCGLenum pname);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

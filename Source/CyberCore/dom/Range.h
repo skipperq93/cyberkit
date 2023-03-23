@@ -27,7 +27,7 @@
 #include "AbstractRange.h"
 #include "RangeBoundaryPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMRect;
 class DOMRectList;
@@ -142,13 +142,13 @@ WEBCORE_EXPORT std::optional<SimpleRange> makeSimpleRange(const RefPtr<Range>&);
 WEBCORE_EXPORT Ref<Range> createLiveRange(const SimpleRange&);
 WEBCORE_EXPORT RefPtr<Range> createLiveRange(const std::optional<SimpleRange>&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showTree(const WebCore::Range*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showTree(const CyberCore::Range*);
 #endif
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Range)
-    static bool isType(const WebCore::AbstractRange& range) { return range.isLiveRange(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Range)
+    static bool isType(const CyberCore::AbstractRange& range) { return range.isLiveRange(); }
 SPECIALIZE_TYPE_TRAITS_END()

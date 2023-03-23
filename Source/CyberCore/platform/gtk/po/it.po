@@ -1197,11 +1197,11 @@ msgctxt "Undo action name"
 msgid "Insert Drawing"
 msgstr "Inserisci disegno"
 
-#: ../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 msgid "JSC Options"
 msgstr "Opzioni JSC"
 
-#: ../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 msgid "Show JSC Options"
 msgstr "Mostra opzioni JSC"
 

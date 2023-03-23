@@ -29,7 +29,7 @@
 #include "AudioNodeOptions.h"
 #include "BiquadFilterType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BiquadFilterOptions : AudioNodeOptions {
     BiquadFilterType type { BiquadFilterType::Lowpass };
@@ -39,6 +39,6 @@ struct BiquadFilterOptions : AudioNodeOptions {
     float gain { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

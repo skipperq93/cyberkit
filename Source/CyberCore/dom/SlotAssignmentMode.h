@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SlotAssignmentMode : uint8_t {
     Manual,

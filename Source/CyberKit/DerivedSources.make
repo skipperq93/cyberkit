@@ -389,18 +389,18 @@ all : $(SANDBOX_PROFILES) $(SANDBOX_PROFILES_IOS)
 	grep -o '^[^;]*' $< | $(CC) $(SDK_FLAGS) $(TARGET_TRIPLE_FLAGS) $(SANDBOX_DEFINES) $(TEXT_PREPROCESSOR_FLAGS) $(FRAMEWORK_FLAGS) $(HEADER_FLAGS) $(EXTERNAL_FLAGS) -include "wtf/Platform.h" - > $@
 
 AUTOMATION_PROTOCOL_GENERATOR_SCRIPTS = \
-	$(JavaScriptCore_SCRIPTS_DIR)/cpp_generator_templates.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/cpp_generator.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate_cpp_backend_dispatcher_header.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate_cpp_backend_dispatcher_implementation.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate_cpp_frontend_dispatcher_header.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate_cpp_frontend_dispatcher_implementation.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate_cpp_protocol_types_header.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate_cpp_protocol_types_implementation.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generator_templates.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generator.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/models.py \
-	$(JavaScriptCore_SCRIPTS_DIR)/generate-inspector-protocol-bindings.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/cpp_generator_templates.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/cpp_generator.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate_cpp_backend_dispatcher_header.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate_cpp_backend_dispatcher_implementation.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate_cpp_frontend_dispatcher_header.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate_cpp_frontend_dispatcher_implementation.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate_cpp_protocol_types_header.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate_cpp_protocol_types_implementation.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generator_templates.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generator.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/models.py \
+	$(CyberScriptCore_SCRIPTS_DIR)/generate-inspector-protocol-bindings.py \
 #
 
 AUTOMATION_PROTOCOL_INPUT_FILES = \
@@ -419,14 +419,14 @@ AUTOMATION_PROTOCOL_OUTPUT_PATTERNS = $(subst .,%,$(AUTOMATION_PROTOCOL_OUTPUT_F
 
 # JSON-RPC Frontend Dispatchers, Backend Dispatchers, Type Builders
 $(AUTOMATION_PROTOCOL_OUTPUT_PATTERNS) : $(AUTOMATION_PROTOCOL_INPUT_FILES) $(AUTOMATION_PROTOCOL_GENERATOR_SCRIPTS)
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/generate-inspector-protocol-bindings.py --framework CyberKit --backend --outputDir . $(AUTOMATION_PROTOCOL_INPUT_FILES)
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/generate-inspector-protocol-bindings.py --framework CyberKit --backend --outputDir . $(AUTOMATION_PROTOCOL_INPUT_FILES)
 
 all : $(AUTOMATION_PROTOCOL_OUTPUT_FILES)
 
-%ScriptSource.h : %.js $(JavaScriptCore_SCRIPTS_DIR)/jsmin.py $(JavaScriptCore_SCRIPTS_DIR)/xxd.pl
+%ScriptSource.h : %.js $(CyberScriptCore_SCRIPTS_DIR)/jsmin.py $(CyberScriptCore_SCRIPTS_DIR)/xxd.pl
 	echo "//# sourceURL=__InjectedScript_$(notdir $<)" > $(basename $(notdir $<)).min.js
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/jsmin.py < $< >> $(basename $(notdir $<)).min.js
-	$(PERL) $(JavaScriptCore_SCRIPTS_DIR)/xxd.pl $(basename $(notdir $<))ScriptSource $(basename $(notdir $<)).min.js $@
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/jsmin.py < $< >> $(basename $(notdir $<)).min.js
+	$(PERL) $(CyberScriptCore_SCRIPTS_DIR)/xxd.pl $(basename $(notdir $<))ScriptSource $(basename $(notdir $<)).min.js $@
 	$(DELETE) $(basename $(notdir $<)).min.js
 
 all : WebAutomationSessionProxyScriptSource.h

@@ -30,7 +30,7 @@
 #include "WKSharedAPICast.h"
 #include <CyberCore/Image.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 CGImageRef WKIconDatabaseTryGetCGImageForURL(WKIconDatabaseRef, WKURLRef, WKSize)
 {

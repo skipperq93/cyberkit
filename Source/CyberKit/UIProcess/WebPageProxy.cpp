@@ -352,7 +352,7 @@ static const Seconds audibleActivityClearDelay = 10_s;
 
 using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, webPageProxyCounter, ("WebPageProxy"));
 
@@ -834,7 +834,7 @@ void WebPageProxy::setResourceLoadClient(std::unique_ptr<API::ResourceLoadClient
         send(Messages::WebPage::SetHasResourceLoadClient(hasResourceLoadClient));
 }
 
-void WebPageProxy::handleMessage(IPC::Connection& connection, const String& messageName, const WebKit::UserData& messageBody)
+void WebPageProxy::handleMessage(IPC::Connection& connection, const String& messageName, const CyberKit::UserData& messageBody)
 {
     ASSERT(m_process->connection() == &connection);
 
@@ -1350,7 +1350,7 @@ void WebPageProxy::maybeInitializeSandboxExtensionHandle(WebProcessProxy& proces
         return;
 
     // Inspector resources are in a directory with assumed access.
-    RELEASE_ASSERT_WITH_SECURITY_IMPLICATION(!WebKit::isInspectorPage(*this));
+    RELEASE_ASSERT_WITH_SECURITY_IMPLICATION(!CyberKit::isInspectorPage(*this));
 
     bool createdExtension = false;
 #if HAVE(AUDIT_TOKEN)
@@ -4500,7 +4500,7 @@ void WebPageProxy::findString(const String& string, OptionSet<FindOptions> optio
     sendWithAsyncReply(Messages::WebPage::FindString(string, options, maxMatchCount), WTFMove(callbackFunction));
 }
 
-void WebPageProxy::findRectsForStringMatches(const String& string, OptionSet<WebKit::FindOptions> options, unsigned maxMatchCount, CompletionHandler<void(Vector<CyberCore::FloatRect>&&)>&& callbackFunction)
+void WebPageProxy::findRectsForStringMatches(const String& string, OptionSet<CyberKit::FindOptions> options, unsigned maxMatchCount, CompletionHandler<void(Vector<CyberCore::FloatRect>&&)>&& callbackFunction)
 {
     sendWithAsyncReply(Messages::WebPage::FindRectsForStringMatches(string, options, maxMatchCount), WTFMove(callbackFunction));
 }
@@ -4755,7 +4755,7 @@ void WebPageProxy::preferencesDidChange()
     pageClient().preferencesDidChange();
 
     // FIXME: It probably makes more sense to send individual preference changes.
-    // However, WebKitTestRunner depends on getting a preference change notification
+    // However, CyberKitTestRunner depends on getting a preference change notification
     // even if nothing changed in UI process, so that overrides get removed.
 
     // Preferences need to be updated during synchronous printing to make "print backgrounds" preference work when toggled from a print dialog checkbox.
@@ -6237,7 +6237,7 @@ static void trySOAuthorization(Ref<API::NavigationAction>&& navigationAction, We
     uiClientCallback(WTFMove(navigationAction), WTFMove(newPageCallback));
 }
 
-void WebPageProxy::createNewPage(FrameInfoData&& originatingFrameInfoData, WebPageProxyIdentifier originatingPageID, ResourceRequest&& request, WindowFeatures&& windowFeatures, NavigationActionData&& navigationActionData, CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<WebKit::WebPageCreationParameters>)>&& reply)
+void WebPageProxy::createNewPage(FrameInfoData&& originatingFrameInfoData, WebPageProxyIdentifier originatingPageID, ResourceRequest&& request, WindowFeatures&& windowFeatures, NavigationActionData&& navigationActionData, CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<CyberKit::WebPageCreationParameters>)>&& reply)
 {
     MESSAGE_CHECK(m_process, originatingFrameInfoData.frameID);
     MESSAGE_CHECK(m_process, WebFrameProxy::webFrame(*originatingFrameInfoData.frameID));
@@ -6279,7 +6279,7 @@ void WebPageProxy::createNewPage(FrameInfoData&& originatingFrameInfoData, WebPa
     RefPtr<API::UserInitiatedAction> userInitiatedActivity;
     
 #if ENABLE(TRACKING_PREVENTION)
-    // WebKit cancels the original gesture to open the BBC radio player so
+    // CyberKit cancels the original gesture to open the BBC radio player so
     // we can call the Storage Access API first. When we re-initiate the open,
     // we should make sure the client knows that this was user initiated so it
     // does not block the popup.
@@ -7104,7 +7104,7 @@ void WebPageProxy::backForwardListContainsItem(const CyberCore::BackForwardItemI
 
 void WebPageProxy::backForwardGoToItemShared(Ref<WebProcessProxy>&& process, const BackForwardItemIdentifier& itemID, CompletionHandler<void(const WebBackForwardListCounts&)>&& completionHandler)
 {
-    MESSAGE_CHECK_COMPLETION(m_process, !WebKit::isInspectorPage(*this), completionHandler(m_backForwardList->counts()));
+    MESSAGE_CHECK_COMPLETION(m_process, !CyberKit::isInspectorPage(*this), completionHandler(m_backForwardList->counts()));
 
     auto* item = m_backForwardList->itemForID(itemID);
     if (!item)
@@ -8264,7 +8264,7 @@ void WebPageProxy::resetStateAfterProcessTermination(ProcessTerminationReason re
 
     if (reason != ProcessTerminationReason::NavigationSwap) {
         // For bringup of process swapping, NavigationSwap termination will not go out to clients.
-        // If it does *during* process swapping, and the client triggers a reload, that causes bizarre WebKit re-entry.
+        // If it does *during* process swapping, and the client triggers a reload, that causes bizarre CyberKit re-entry.
         // FIXME: This might have to change
         navigationState().clearAllNavigations();
 
@@ -9575,7 +9575,7 @@ IPC::Connection::AsyncReplyID WebPageProxy::computePagesForPrinting(FrameIdentif
 }
 
 #if PLATFORM(COCOA)
-IPC::Connection::AsyncReplyID WebPageProxy::drawRectToImage(WebFrameProxy* frame, const PrintInfo& printInfo, const IntRect& rect, const CyberCore::IntSize& imageSize, CompletionHandler<void(const WebKit::ShareableBitmapHandle&)>&& callback)
+IPC::Connection::AsyncReplyID WebPageProxy::drawRectToImage(WebFrameProxy* frame, const PrintInfo& printInfo, const IntRect& rect, const CyberCore::IntSize& imageSize, CompletionHandler<void(const CyberKit::ShareableBitmapHandle&)>&& callback)
 {
     if (m_isPerformingDOMPrintOperation)
         return sendWithAsyncReply(Messages::WebPage::DrawRectToImageDuringDOMPrintOperation(frame->frameID(), printInfo, rect, imageSize), WTFMove(callback), IPC::SendOption::DispatchMessageEvenWhenWaitingForUnboundedSyncReply);
@@ -11991,7 +11991,7 @@ void WebPageProxy::adjustLayersForLayoutViewport(const FloatPoint& scrollPositio
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef WEBPAGEPROXY_RELEASE_LOG
 #undef WEBPAGEPROXY_RELEASE_LOG_ERROR

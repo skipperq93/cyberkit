@@ -31,7 +31,7 @@
 @interface WKURLSchemeTaskImpl : NSObject <WKURLSchemeTaskPrivate>
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebURLSchemeTask> {
     using WrapperClass = WKURLSchemeTaskImpl;
@@ -41,6 +41,6 @@ template<> struct WrapperTraits<WebURLSchemeTask> {
 
 @interface WKURLSchemeTaskImpl () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebURLSchemeTask> _urlSchemeTask;
+    API::ObjectStorage<CyberKit::WebURLSchemeTask> _urlSchemeTask;
 }
 @end

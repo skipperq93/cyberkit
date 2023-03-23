@@ -28,7 +28,7 @@
 #include "LegacyCustomProtocolID.h"
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 class LegacyCustomProtocolManagerProxy;
 }
 
@@ -43,10 +43,10 @@ class CustomProtocolManagerClient {
 public:
     virtual ~CustomProtocolManagerClient() { }
 
-    virtual void startLoading(WebKit::LegacyCustomProtocolManagerProxy&, WebKit::LegacyCustomProtocolID, const CyberCore::ResourceRequest&) { }
-    virtual void stopLoading(WebKit::LegacyCustomProtocolManagerProxy&, WebKit::LegacyCustomProtocolID) { }
+    virtual void startLoading(CyberKit::LegacyCustomProtocolManagerProxy&, CyberKit::LegacyCustomProtocolID, const CyberCore::ResourceRequest&) { }
+    virtual void stopLoading(CyberKit::LegacyCustomProtocolManagerProxy&, CyberKit::LegacyCustomProtocolID) { }
 
-    virtual void invalidate(WebKit::LegacyCustomProtocolManagerProxy&) { }
+    virtual void invalidate(CyberKit::LegacyCustomProtocolManagerProxy&) { }
 };
 
 } // namespace API

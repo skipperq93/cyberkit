@@ -31,7 +31,7 @@
 #include <CyberCore/NotImplemented.h>
 #include <CyberCore/UserAgent.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPageProxy::platformInitialize()
 {
@@ -68,4 +68,4 @@ void WebPageProxy::didUpdateEditorState(const EditorState&, const EditorState&)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

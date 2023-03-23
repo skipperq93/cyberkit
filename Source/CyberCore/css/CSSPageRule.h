@@ -23,7 +23,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleDeclaration;
 class CSSStyleSheet;
@@ -52,4 +52,4 @@ private:
     mutable RefPtr<StyleRuleCSSStyleDeclaration> m_propertiesCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

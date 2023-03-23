@@ -30,7 +30,7 @@
 #include "RTCRtpSender.h"
 #include "RTCRtpTransform.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCRtpTransform;
 
@@ -40,6 +40,6 @@ public:
     static ExceptionOr<void> setTransform(RTCRtpSender& sender, std::optional<RTCRtpTransform::Internal>&& transform) { return sender.setTransform(RTCRtpTransform::from(WTFMove(transform))); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -29,7 +29,7 @@
 #include "Navigator.h"
 #include "WakeLock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorScreenWakeLock::NavigatorScreenWakeLock(Navigator& navigator)
     : m_navigator(navigator)
@@ -66,4 +66,4 @@ WakeLock& NavigatorScreenWakeLock::wakeLock()
     return *m_wakeLock;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

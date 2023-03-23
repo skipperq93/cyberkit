@@ -26,7 +26,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BeforeUnloadEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(BeforeUnloadEvent);
@@ -55,6 +55,6 @@ private:
     String m_returnValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(BeforeUnloadEvent)

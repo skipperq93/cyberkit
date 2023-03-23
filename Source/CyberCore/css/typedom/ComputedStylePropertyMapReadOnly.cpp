@@ -35,7 +35,7 @@
 #include "StyleScope.h"
 #include <wtf/KeyValuePair.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ComputedStylePropertyMapReadOnly> ComputedStylePropertyMapReadOnly::create(Element& element)
 {
@@ -120,4 +120,4 @@ Vector<StylePropertyMapReadOnly::StylePropertyMapEntry> ComputedStylePropertyMap
     return values;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

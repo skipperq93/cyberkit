@@ -29,7 +29,7 @@
 #include "CommonAtomStrings.h"
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 EnterKeyHint enterKeyHintForAttributeValue(StringView value)
 {
@@ -70,4 +70,4 @@ String attributeValueForEnterKeyHint(EnterKeyHint hint)
     return nullAtom();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLMultiDraw);
 
@@ -203,6 +203,6 @@ bool WebGLMultiDraw::validateOffset(WebGLExtensionScopedContext& context, const 
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

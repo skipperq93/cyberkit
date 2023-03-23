@@ -54,7 +54,7 @@ webkit_dom_html_table_col_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_col_element_get_align(CyberKitDOMHTMLTableColElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_table_col_element_get_align(CyberKitDOMHTMLTableColElement* self
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_col_element_set_align(CyberKitDOMHTMLTableColElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_table_col_element_set_align(CyberKitDOMHTMLTableColElement* self
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_col_element_get_ch(CyberKitDOMHTMLTableColElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_table_col_element_get_ch(CyberKitDOMHTMLTableColElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_col_element_set_ch(CyberKitDOMHTMLTableColElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_table_col_element_set_ch(CyberKitDOMHTMLTableColElement* self, c
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_col_element_get_ch_off(CyberKitDOMHTMLTableColElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_table_col_element_get_ch_off(CyberKitDOMHTMLTableColElement* sel
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_col_element_set_ch_off(CyberKitDOMHTMLTableColElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_table_col_element_set_ch_off(CyberKitDOMHTMLTableColElement* sel
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_table_col_element_get_span(CyberKitDOMHTMLTableColElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_table_col_element_get_span(CyberKitDOMHTMLTableColElement* self)
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_col_element_set_span(CyberKitDOMHTMLTableColElement* self, glong value);
@@ -142,7 +142,7 @@ webkit_dom_html_table_col_element_set_span(CyberKitDOMHTMLTableColElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_col_element_get_v_align(CyberKitDOMHTMLTableColElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_table_col_element_get_v_align(CyberKitDOMHTMLTableColElement* se
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_col_element_set_v_align(CyberKitDOMHTMLTableColElement* self, const gchar* value);
@@ -164,7 +164,7 @@ webkit_dom_html_table_col_element_set_v_align(CyberKitDOMHTMLTableColElement* se
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_col_element_get_width(CyberKitDOMHTMLTableColElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_table_col_element_get_width(CyberKitDOMHTMLTableColElement* self
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_col_element_set_width(CyberKitDOMHTMLTableColElement* self, const gchar* value);

@@ -68,7 +68,7 @@
 #include <wtf/SchedulePair.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplicationCacheHost;
 class ApplicationManifestLoader;
@@ -287,7 +287,7 @@ public:
     WEBCORE_EXPORT URL urlForHistory() const;
     WEBCORE_EXPORT bool urlForHistoryReflectsFailure() const;
 
-    // These accessors accommodate WebCore's somewhat fickle custom of creating history
+    // These accessors accommodate CyberCore's somewhat fickle custom of creating history
     // items for redirects, but only sometimes. For "source" and "destination",
     // these accessors return the URL that would have been used if a history
     // item were created. This allows CyberKit to link history items reflecting
@@ -835,4 +835,4 @@ inline void DocumentLoader::didTellClientAboutLoad(const String& url)
         m_resourcesClientKnowsAbout.add(url);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

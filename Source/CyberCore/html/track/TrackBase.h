@@ -28,12 +28,12 @@
 #if ENABLE(VIDEO)
 
 #include "ContextDestructionObserver.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/LoggerHelper.h>
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SourceBuffer;
 class TrackListBase;
@@ -66,7 +66,7 @@ public:
     void setTrackList(TrackListBase&);
     void clearTrackList();
     TrackListBase* trackList() const;
-    WebCoreOpaqueRoot opaqueRoot();
+    CyberCoreOpaqueRoot opaqueRoot();
 
     virtual bool enabled() const = 0;
 
@@ -118,11 +118,11 @@ private:
     AtomString m_kind;
 };
 
-inline WebCoreOpaqueRoot root(TrackBase* track)
+inline CyberCoreOpaqueRoot root(TrackBase* track)
 {
     return track->opaqueRoot();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

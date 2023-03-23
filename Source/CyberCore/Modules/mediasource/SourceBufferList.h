@@ -37,10 +37,10 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SourceBuffer;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class SourceBufferList final : public RefCounted<SourceBufferList>, public EventTarget, public ActiveDOMObject {
     WTF_MAKE_ISO_ALLOCATED(SourceBufferList);
@@ -84,8 +84,8 @@ private:
     Vector<RefPtr<SourceBuffer>> m_list;
 };
 
-WebCoreOpaqueRoot root(SourceBufferList*);
+CyberCoreOpaqueRoot root(SourceBufferList*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

@@ -30,7 +30,7 @@
 
 #include "IIRDSPKernel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IIRProcessor::IIRProcessor(float sampleRate, unsigned numberOfChannels, const Vector<double>& feedforward, const Vector<double>& feedback, bool isFilterStable)
     : AudioDSPKernelProcessor(sampleRate, numberOfChannels)
@@ -100,6 +100,6 @@ void IIRProcessor::getFrequencyResponse(unsigned length, const float* frequencyH
     m_responseKernel->getFrequencyResponse(length, frequencyHz, magResponse, phaseResponse);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

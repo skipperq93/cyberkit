@@ -28,7 +28,7 @@
 #include "CSSValue.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCounterValue : public CSSValue {
 public:
@@ -49,6 +49,6 @@ private:
     CSSValueID m_listStyle;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSCounterValue, isCounter())

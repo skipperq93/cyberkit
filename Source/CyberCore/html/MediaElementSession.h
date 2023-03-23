@@ -35,7 +35,7 @@
 #include <memory>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaSessionMainContentPurpose { MediaControls, Autoplay };
 enum class MediaPlaybackState { Playing, Paused };
@@ -249,7 +249,7 @@ private:
 
 String convertEnumerationToString(const MediaPlaybackDenialReason);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
     
@@ -257,8 +257,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::MediaPlaybackDenialReason> {
-    static String toString(const WebCore::MediaPlaybackDenialReason reason)
+struct LogArgument<CyberCore::MediaPlaybackDenialReason> {
+    static String toString(const CyberCore::MediaPlaybackDenialReason reason)
     {
         return convertEnumerationToString(reason);
     }
@@ -267,8 +267,8 @@ struct LogArgument<WebCore::MediaPlaybackDenialReason> {
 }; // namespace WTF
 
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MediaElementSession)
-static bool isType(const WebCore::PlatformMediaSession& session) { return WebCore::MediaElementSession::isMediaElementSessionMediaType(session.mediaType()); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MediaElementSession)
+static bool isType(const CyberCore::PlatformMediaSession& session) { return CyberCore::MediaElementSession::isMediaElementSessionMediaType(session.mediaType()); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO)

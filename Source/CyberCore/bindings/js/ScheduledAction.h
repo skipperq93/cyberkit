@@ -28,7 +28,7 @@ namespace JSC {
 class JSGlobalObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Document;
@@ -65,4 +65,4 @@ private:
     String m_code;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

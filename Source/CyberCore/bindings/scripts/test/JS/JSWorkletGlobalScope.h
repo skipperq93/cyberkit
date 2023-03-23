@@ -23,7 +23,7 @@
 #include "JSDOMWrapper.h"
 #include "JSEventTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkletGlobalScope;
 
@@ -107,4 +107,4 @@ template<> struct JSDOMWrapperConverterTraits<WorkletGlobalScope> {
     using ToWrappedReturnType = WorkletGlobalScope*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

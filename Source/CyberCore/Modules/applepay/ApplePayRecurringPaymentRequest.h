@@ -31,7 +31,7 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayRecurringPaymentRequest final {
     String paymentDescription; // required
@@ -42,6 +42,6 @@ struct ApplePayRecurringPaymentRequest final {
     String tokenNotificationURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_RECURRING_PAYMENTS)

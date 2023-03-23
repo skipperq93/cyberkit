@@ -33,7 +33,7 @@
 #include <wtf/FixedVector.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSMathProduct);
 
@@ -128,4 +128,4 @@ RefPtr<CSSCalcExpressionNode> CSSMathProduct::toCalcExpressionNode() const
     return CSSCalcOperationNode::createProduct(WTFMove(values));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

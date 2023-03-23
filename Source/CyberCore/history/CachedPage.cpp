@@ -50,7 +50,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, cachedPageCounter, ("CachedPage"));
@@ -210,4 +210,4 @@ bool CachedPage::hasExpired() const
     return MonotonicTime::now() > m_expirationTime;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

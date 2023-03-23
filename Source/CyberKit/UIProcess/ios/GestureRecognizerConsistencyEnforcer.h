@@ -36,7 +36,7 @@
 @class WKContentView;
 @class WKDeferringGestureRecognizer;
 
-namespace WebKit {
+namespace CyberKit {
 
 class GestureRecognizerConsistencyEnforcer {
     WTF_MAKE_FAST_ALLOCATED;
@@ -58,6 +58,6 @@ private:
     HashSet<RetainPtr<WKDeferringGestureRecognizer>> m_deferringGestureRecognizersWithTouches;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -24,14 +24,14 @@
  */
 
 #include "config.h"
-#include "WebKitUserContentFilterStore.h"
+#include "CyberKitUserContentFilterStore.h"
 
 #include "APIContentRuleList.h"
 #include "APIContentRuleListStore.h"
-#include "WebKitError.h"
-#include "WebKitInitialize.h"
-#include "WebKitUserContent.h"
-#include "WebKitUserContentPrivate.h"
+#include "CyberKitError.h"
+#include "CyberKitInitialize.h"
+#include "CyberKitUserContent.h"
+#include "CyberKitUserContentPrivate.h"
 #include <CyberCore/ContentExtensionError.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/CompletionHandler.h>
@@ -41,22 +41,22 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitUserContentFilterStore:
+ * CyberKitUserContentFilterStore:
  *
  * Handles storage of user content filters on disk.
  *
- * The WebKitUserContentFilterStore provides the means to import and save
+ * The CyberKitUserContentFilterStore provides the means to import and save
  * [JSON rule sets](https://webkit.org/blog/3476/content-blockers-first-look/),
  * which can be loaded later in an efficient manner. Once filters are stored,
- * the #WebKitUserContentFilter objects which represent them can be added to
- * a #WebKitUserContentManager with webkit_user_content_manager_add_filter().
+ * the #CyberKitUserContentFilter objects which represent them can be added to
+ * a #CyberKitUserContentManager with webkit_user_content_manager_add_filter().
  *
  * JSON rule sets are imported using webkit_user_content_filter_store_save() and stored
  * on disk in an implementation defined format. The contents of a filter store must be
- * managed using the #WebKitUserContentFilterStore: a list of all the stored filters
+ * managed using the #CyberKitUserContentFilterStore: a list of all the stored filters
  * can be obtained with webkit_user_content_filter_store_fetch_identifiers(),
  * webkit_user_content_filter_store_load() can be used to retrieve a previously saved
  * filter, and removed from the store with webkit_user_content_filter_store_remove().
@@ -71,25 +71,25 @@ enum {
 };
 
 #if ENABLE(CONTENT_EXTENSIONS)
-static inline GError* toGError(WebKitUserContentFilterError code, const std::error_code error)
+static inline GError* toGError(CyberKitUserContentFilterError code, const std::error_code error)
 {
     ASSERT(error);
     return g_error_new_literal(WEBKIT_USER_CONTENT_FILTER_ERROR, code, error.message().c_str());
 }
 #endif
 
-struct _WebKitUserContentFilterStorePrivate {
+struct _CyberKitUserContentFilterStorePrivate {
     GUniquePtr<char> storagePath;
 #if ENABLE(CONTENT_EXTENSIONS)
     RefPtr<API::ContentRuleListStore> store;
 #endif
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitUserContentFilterStore, webkit_user_content_filter_store, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitUserContentFilterStore, webkit_user_content_filter_store, G_TYPE_OBJECT, GObject)
 
 static void webkitUserContentFilterStoreGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitUserContentFilterStore* store = WEBKIT_USER_CONTENT_FILTER_STORE(object);
+    CyberKitUserContentFilterStore* store = WEBKIT_USER_CONTENT_FILTER_STORE(object);
 
     switch (propID) {
     case PROP_PATH:
@@ -102,7 +102,7 @@ static void webkitUserContentFilterStoreGetProperty(GObject* object, guint propI
 
 static void webkitUserContentFilterStoreSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitUserContentFilterStore* store = WEBKIT_USER_CONTENT_FILTER_STORE(object);
+    CyberKitUserContentFilterStore* store = WEBKIT_USER_CONTENT_FILTER_STORE(object);
 
     switch (propID) {
     case PROP_PATH:
@@ -118,12 +118,12 @@ static void webkitUserContentFilterStoreConstructed(GObject* object)
     G_OBJECT_CLASS(webkit_user_content_filter_store_parent_class)->constructed(object);
 
 #if ENABLE(CONTENT_EXTENSIONS)
-    WebKitUserContentFilterStore* store = WEBKIT_USER_CONTENT_FILTER_STORE(object);
+    CyberKitUserContentFilterStore* store = WEBKIT_USER_CONTENT_FILTER_STORE(object);
     store->priv->store = adoptRef(new API::ContentRuleListStore(FileSystem::stringFromFileSystemRepresentation(store->priv->storagePath.get())));
 #endif
 }
 
-static void webkit_user_content_filter_store_class_init(WebKitUserContentFilterStoreClass* storeClass)
+static void webkit_user_content_filter_store_class_init(CyberKitUserContentFilterStoreClass* storeClass)
 {
     webkitInitialize();
 
@@ -134,7 +134,7 @@ static void webkit_user_content_filter_store_class_init(WebKitUserContentFilterS
     gObjectClass->constructed = webkitUserContentFilterStoreConstructed;
 
     /**
-     * WebKitUserContentFilterStore:path:
+     * CyberKitUserContentFilterStore:path:
      *
      * The directory used for filter storage. This path is used as the base
      * directory where user content filters are stored on disk.
@@ -155,15 +155,15 @@ static void webkit_user_content_filter_store_class_init(WebKitUserContentFilterS
  * webkit_user_content_filter_store_new:
  * @storage_path: path where data for filters will be stored on disk
  *
- * Create a new #WebKitUserContentFilterStore to manipulate filters stored at @storage_path.
+ * Create a new #CyberKitUserContentFilterStore to manipulate filters stored at @storage_path.
  *
  * The path must point to a local filesystem, and will be created if needed.
  *
- * Returns: (transfer full): a newly created #WebKitUserContentFilterStore
+ * Returns: (transfer full): a newly created #CyberKitUserContentFilterStore
  *
  * Since: 2.24
  */
-WebKitUserContentFilterStore* webkit_user_content_filter_store_new(const gchar* storagePath)
+CyberKitUserContentFilterStore* webkit_user_content_filter_store_new(const gchar* storagePath)
 {
     g_return_val_if_fail(storagePath, nullptr);
     return WEBKIT_USER_CONTENT_FILTER_STORE(g_object_new(WEBKIT_TYPE_USER_CONTENT_FILTER_STORE, "path", storagePath, nullptr));
@@ -171,7 +171,7 @@ WebKitUserContentFilterStore* webkit_user_content_filter_store_new(const gchar* 
 
 /**
  * webkit_user_content_filter_store_get_path:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  *
  * Gets the storage path for user content filters.
  *
@@ -179,7 +179,7 @@ WebKitUserContentFilterStore* webkit_user_content_filter_store_new(const gchar* 
  *
  * Since: 2.24
  */
-const char* webkit_user_content_filter_store_get_path(WebKitUserContentFilterStore* store)
+const char* webkit_user_content_filter_store_get_path(CyberKitUserContentFilterStore* store)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store), nullptr);
     return store->priv->storagePath.get();
@@ -211,7 +211,7 @@ static void webkitUserContentFilterStoreSaveBytes(GRefPtr<GTask>&& task, String&
 
 /**
  * webkit_user_content_filter_store_save:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @identifier: a string used to identify the saved filter
  * @source: #GBytes containing the rule set in JSON format
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
@@ -221,7 +221,7 @@ static void webkitUserContentFilterStoreSaveBytes(GRefPtr<GTask>&& task, String&
  * Asynchronously save a content filter from a set source rule.
  *
  * Asynchronously save a content filter from a source rule set in the
- * [WebKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
+ * [CyberKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
  *
  * The @identifier can be used afterwards to refer to the filter when using
  * webkit_user_content_filter_store_remove() and webkit_user_content_filter_store_load().
@@ -233,7 +233,7 @@ static void webkitUserContentFilterStoreSaveBytes(GRefPtr<GTask>&& task, String&
  *
  * Since: 2.24
  */
-void webkit_user_content_filter_store_save(WebKitUserContentFilterStore* store, const gchar* identifier, GBytes* source, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_user_content_filter_store_save(CyberKitUserContentFilterStore* store, const gchar* identifier, GBytes* source, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store));
     g_return_if_fail(identifier);
@@ -250,22 +250,22 @@ void webkit_user_content_filter_store_save(WebKitUserContentFilterStore* store, 
 
 /**
  * webkit_user_content_filter_store_save_finish:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finishes an asynchronous filter save previously started with
  * webkit_user_content_filter_store_save().
  *
- * Returns: (transfer full): a #WebKitUserContentFilter, or %NULL if saving failed
+ * Returns: (transfer full): a #CyberKitUserContentFilter, or %NULL if saving failed
  *
  * Since: 2.24
  */
-WebKitUserContentFilter* webkit_user_content_filter_store_save_finish(WebKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
+CyberKitUserContentFilter* webkit_user_content_filter_store_save_finish(CyberKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store), nullptr);
     g_return_val_if_fail(result, nullptr);
-    return static_cast<WebKitUserContentFilter*>(g_task_propagate_pointer(G_TASK(result), error));
+    return static_cast<CyberKitUserContentFilter*>(g_task_propagate_pointer(G_TASK(result), error));
 }
 
 #if ENABLE(CONTENT_EXTENSIONS)
@@ -277,7 +277,7 @@ WEBKIT_DEFINE_ASYNC_DATA_STRUCT(SaveTaskData)
 
 /**
  * webkit_user_content_filter_store_save_from_file:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @identifier: a string used to identify the saved filter
  * @file: a #GFile containing the rule set in JSON format
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
@@ -295,7 +295,7 @@ WEBKIT_DEFINE_ASYNC_DATA_STRUCT(SaveTaskData)
  *
  * Since: 2.24
  */
-void webkit_user_content_filter_store_save_from_file(WebKitUserContentFilterStore* store, const gchar* identifier, GFile* file, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_user_content_filter_store_save_from_file(CyberKitUserContentFilterStore* store, const gchar* identifier, GFile* file, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store));
     g_return_if_fail(identifier);
@@ -341,27 +341,27 @@ void webkit_user_content_filter_store_save_from_file(WebKitUserContentFilterStor
 
 /**
  * webkit_user_content_filter_store_save_from_file_finish:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finishes and asynchronous filter save previously started with
  * webkit_user_content_filter_store_save_from_file().
  *
- * Returns: (transfer full): a #WebKitUserContentFilter, or %NULL if saving failed.
+ * Returns: (transfer full): a #CyberKitUserContentFilter, or %NULL if saving failed.
  *
  * Since: 2.24
  */
-WebKitUserContentFilter* webkit_user_content_filter_store_save_from_file_finish(WebKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
+CyberKitUserContentFilter* webkit_user_content_filter_store_save_from_file_finish(CyberKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store), nullptr);
     g_return_val_if_fail(result, nullptr);
-    return static_cast<WebKitUserContentFilter*>(g_task_propagate_pointer(G_TASK(result), error));
+    return static_cast<CyberKitUserContentFilter*>(g_task_propagate_pointer(G_TASK(result), error));
 }
 
 /**
  * webkit_user_content_filter_store_remove:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @identifier: a filter identifier
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the removal is completed
@@ -375,7 +375,7 @@ WebKitUserContentFilter* webkit_user_content_filter_store_save_from_file_finish(
  *
  * Since: 2.24
  */
-void webkit_user_content_filter_store_remove(WebKitUserContentFilterStore* store, const gchar* identifier, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_user_content_filter_store_remove(CyberKitUserContentFilterStore* store, const gchar* identifier, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store));
     g_return_if_fail(identifier);
@@ -400,7 +400,7 @@ void webkit_user_content_filter_store_remove(WebKitUserContentFilterStore* store
 
 /**
  * webkit_user_content_filter_store_remove_finish:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
@@ -411,7 +411,7 @@ void webkit_user_content_filter_store_remove(WebKitUserContentFilterStore* store
  *
  * Since: 2.24
  */
-gboolean webkit_user_content_filter_store_remove_finish(WebKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
+gboolean webkit_user_content_filter_store_remove_finish(CyberKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store), FALSE);
     g_return_val_if_fail(result, FALSE);
@@ -420,7 +420,7 @@ gboolean webkit_user_content_filter_store_remove_finish(WebKitUserContentFilterS
 
 /**
  * webkit_user_content_filter_store_load:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @identifier: a filter identifier
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the load is completed
@@ -436,7 +436,7 @@ gboolean webkit_user_content_filter_store_remove_finish(WebKitUserContentFilterS
  *
  * Since: 2.24
  */
-void webkit_user_content_filter_store_load(WebKitUserContentFilterStore* store, const gchar* identifier, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_user_content_filter_store_load(CyberKitUserContentFilterStore* store, const gchar* identifier, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store));
     g_return_if_fail(identifier);
@@ -462,27 +462,27 @@ void webkit_user_content_filter_store_load(WebKitUserContentFilterStore* store, 
 
 /**
  * webkit_user_content_filter_store_load_finish:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignore
  *
  * Finishes an asynchronous filter load previously started with
  * webkit_user_content_filter_store_load().
  *
- * Returns: (transfer full): a #WebKitUserContentFilter, or %NULL if the load failed
+ * Returns: (transfer full): a #CyberKitUserContentFilter, or %NULL if the load failed
  *
  * Since: 2.24
  */
-WebKitUserContentFilter* webkit_user_content_filter_store_load_finish(WebKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
+CyberKitUserContentFilter* webkit_user_content_filter_store_load_finish(CyberKitUserContentFilterStore* store, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store), nullptr);
     g_return_val_if_fail(result, nullptr);
-    return static_cast<WebKitUserContentFilter*>(g_task_propagate_pointer(G_TASK(result), error));
+    return static_cast<CyberKitUserContentFilter*>(g_task_propagate_pointer(G_TASK(result), error));
 }
 
 /**
  * webkit_user_content_filter_store_fetch_identifiers:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the removal is completed
  * @user_data: (closure): the data to pass to the callback function
@@ -495,7 +495,7 @@ WebKitUserContentFilter* webkit_user_content_filter_store_load_finish(WebKitUser
  *
  * Since: 2.24
  */
-void webkit_user_content_filter_store_fetch_identifiers(WebKitUserContentFilterStore* store, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_user_content_filter_store_fetch_identifiers(CyberKitUserContentFilterStore* store, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store));
     g_return_if_fail(callback);
@@ -518,7 +518,7 @@ void webkit_user_content_filter_store_fetch_identifiers(WebKitUserContentFilterS
 
 /**
  * webkit_user_content_filter_store_fetch_identifiers_finish:
- * @store: a #WebKitUserContentFilterStore
+ * @store: a #CyberKitUserContentFilterStore
  * @result: a #GAsyncResult
  *
  * Finishes an asynchronous fetch of the list of stored filters.
@@ -530,7 +530,7 @@ void webkit_user_content_filter_store_fetch_identifiers(WebKitUserContentFilterS
  *
  * Since: 2.24
  */
-gchar** webkit_user_content_filter_store_fetch_identifiers_finish(WebKitUserContentFilterStore* store, GAsyncResult* result)
+gchar** webkit_user_content_filter_store_fetch_identifiers_finish(CyberKitUserContentFilterStore* store, GAsyncResult* result)
 {
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_FILTER_STORE(store), nullptr);
     g_return_val_if_fail(result, nullptr);

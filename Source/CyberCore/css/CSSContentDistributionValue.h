@@ -27,7 +27,7 @@
 
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CSSValueID : uint16_t;
 
@@ -50,6 +50,6 @@ private:
     CSSValueID m_overflow;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSContentDistributionValue, isContentDistributionValue())

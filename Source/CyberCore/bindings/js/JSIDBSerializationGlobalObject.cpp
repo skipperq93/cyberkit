@@ -27,9 +27,9 @@
 #include "JSIDBSerializationGlobalObject.h"
 
 #include "JSDOMGlobalObjectInlines.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -63,5 +63,5 @@ void JSIDBSerializationGlobalObject::destroy(JSCell* cell)
     static_cast<JSIDBSerializationGlobalObject*>(cell)->JSIDBSerializationGlobalObject::~JSIDBSerializationGlobalObject();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

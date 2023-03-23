@@ -68,7 +68,7 @@
 #import "WebAccessibilityObjectWrapperIOS.h"
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // Search Keys
 #ifndef NSAccessibilityAnyTypeSearchKey
@@ -260,7 +260,7 @@ static NSArray *convertMathPairsToNSArray(const AccessibilityObject::Accessibili
     }).autorelease();
 }
 
-NSArray *makeNSArray(const WebCore::AXCoreObject::AccessibilityChildrenVector& children)
+NSArray *makeNSArray(const CyberCore::AXCoreObject::AccessibilityChildrenVector& children)
 {
     return createNSArray(children, [] (const auto& child) -> id {
         if (!child)
@@ -332,7 +332,7 @@ NSArray *makeNSArray(const WebCore::AXCoreObject::AccessibilityChildrenVector& c
 #endif
 
 #if PLATFORM(MAC)
-- (WebCore::AXCoreObject*)updateObjectBackingStore
+- (CyberCore::AXCoreObject*)updateObjectBackingStore
 {
     // Calling updateBackingStore() can invalidate this element so self must be retained.
     // If it does become invalidated, self.axBackingObject will be nil.
@@ -372,7 +372,7 @@ NSArray *makeNSArray(const WebCore::AXCoreObject::AccessibilityChildrenVector& c
     return nil;
 }
 
-- (WebCore::AXCoreObject*)axBackingObject
+- (CyberCore::AXCoreObject*)axBackingObject
 {
     if (isMainThread())
         return m_axObject;
@@ -518,7 +518,7 @@ static void convertPathToScreenSpaceFunction(PathConversionInfo& conversion, con
     return nil;
 }
 
-- (CGRect)convertRectToSpace:(const WebCore::FloatRect&)rect space:(AccessibilityConversionSpace)space
+- (CGRect)convertRectToSpace:(const CyberCore::FloatRect&)rect space:(AccessibilityConversionSpace)space
 {
     auto* backingObject = self.axBackingObject;
     if (!backingObject)
@@ -570,7 +570,7 @@ std::optional<SimpleRange> makeDOMRange(Document* document, NSRange range)
     return resolveCharacterRange(makeRangeSelectingNodeContents(*scope), range);
 }
 
-- (WebCore::AXCoreObject*)baseUpdateBackingStore
+- (CyberCore::AXCoreObject*)baseUpdateBackingStore
 {
 #if PLATFORM(MAC)
     auto* backingObject = self.updateObjectBackingStore;

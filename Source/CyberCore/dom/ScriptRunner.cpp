@@ -32,7 +32,7 @@
 #include "PendingScript.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScriptRunner::ScriptRunner(Document& document)
     : m_document(document)
@@ -148,4 +148,4 @@ void ScriptRunner::clearPendingScripts()
     m_pendingAsyncScripts.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "KeyframeEffectStack.h"
 #include "WebAnimationTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSAnimation;
 class CSSTransition;
@@ -70,5 +70,5 @@ private:
     bool m_hasPendingKeyframesUpdate { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

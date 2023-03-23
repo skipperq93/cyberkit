@@ -28,7 +28,7 @@
 #include <CyberCore/MediaUsageInfo.h>
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaUsageManager {
     WTF_MAKE_FAST_ALLOCATED;

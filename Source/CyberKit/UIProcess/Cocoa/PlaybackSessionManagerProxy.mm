@@ -33,7 +33,7 @@
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #pragma mark - PlaybackSessionModelContext
@@ -655,6 +655,6 @@ bool PlaybackSessionManagerProxy::isPaused(PlaybackSessionContextIdentifier iden
     return !model.isPlaying() && !model.isStalled();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))

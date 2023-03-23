@@ -33,7 +33,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCustomPropertyValue;
 struct CSSParserContext;
@@ -48,4 +48,4 @@ public:
     static bool isValidVariableName(const CSSParserToken&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

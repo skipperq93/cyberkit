@@ -35,18 +35,18 @@
 
 @interface WKCustomProtocolLoader : NSObject <NSURLConnectionDelegate> {
 @private
-    WeakPtr<WebKit::LegacyCustomProtocolManagerProxy> _customProtocolManagerProxy;
-    WebKit::LegacyCustomProtocolID _customProtocolID;
+    WeakPtr<CyberKit::LegacyCustomProtocolManagerProxy> _customProtocolManagerProxy;
+    CyberKit::LegacyCustomProtocolID _customProtocolID;
     NSURLCacheStoragePolicy _storagePolicy;
     RetainPtr<NSURLConnection> _urlConnection;
 }
-- (id)initWithLegacyCustomProtocolManagerProxy:(WebKit::LegacyCustomProtocolManagerProxy&)customProtocolManagerProxy customProtocolID:(WebKit::LegacyCustomProtocolID)customProtocolID request:(NSURLRequest *)request;
+- (id)initWithLegacyCustomProtocolManagerProxy:(CyberKit::LegacyCustomProtocolManagerProxy&)customProtocolManagerProxy customProtocolID:(CyberKit::LegacyCustomProtocolID)customProtocolID request:(NSURLRequest *)request;
 - (void)cancel;
 @end
 
 @implementation WKCustomProtocolLoader
 
-- (id)initWithLegacyCustomProtocolManagerProxy:(WebKit::LegacyCustomProtocolManagerProxy&)customProtocolManagerProxy customProtocolID:(WebKit::LegacyCustomProtocolID)customProtocolID request:(NSURLRequest *)request
+- (id)initWithLegacyCustomProtocolManagerProxy:(CyberKit::LegacyCustomProtocolManagerProxy&)customProtocolManagerProxy customProtocolID:(CyberKit::LegacyCustomProtocolID)customProtocolID request:(NSURLRequest *)request
 {
     self = [super init];
     if (!self)
@@ -101,7 +101,7 @@
         return;
 
     CyberCore::ResourceResponse coreResponse(response);
-    _customProtocolManagerProxy->didReceiveResponse(_customProtocolID, coreResponse, WebKit::toCacheStoragePolicy(_storagePolicy));
+    _customProtocolManagerProxy->didReceiveResponse(_customProtocolID, coreResponse, CyberKit::toCacheStoragePolicy(_storagePolicy));
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -136,10 +136,10 @@
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
-void LegacyCustomProtocolManagerClient::startLoading(LegacyCustomProtocolManagerProxy& manager, WebKit::LegacyCustomProtocolID customProtocolID, const ResourceRequest& coreRequest)
+void LegacyCustomProtocolManagerClient::startLoading(LegacyCustomProtocolManagerProxy& manager, CyberKit::LegacyCustomProtocolID customProtocolID, const ResourceRequest& coreRequest)
 {
     NSURLRequest *request = coreRequest.nsURLRequest(HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
     if (!request)
@@ -151,7 +151,7 @@ void LegacyCustomProtocolManagerClient::startLoading(LegacyCustomProtocolManager
     m_loaderMap.add(customProtocolID, WTFMove(loader));
 }
 
-void LegacyCustomProtocolManagerClient::stopLoading(LegacyCustomProtocolManagerProxy&, WebKit::LegacyCustomProtocolID customProtocolID)
+void LegacyCustomProtocolManagerClient::stopLoading(LegacyCustomProtocolManagerProxy&, CyberKit::LegacyCustomProtocolID customProtocolID)
 {
     m_loaderMap.remove(customProtocolID);
 }
@@ -165,4 +165,4 @@ void LegacyCustomProtocolManagerClient::invalidate(LegacyCustomProtocolManagerPr
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

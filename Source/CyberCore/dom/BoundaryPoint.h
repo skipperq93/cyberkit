@@ -27,7 +27,7 @@
 
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BoundaryPoint {
     Ref<Node> container;

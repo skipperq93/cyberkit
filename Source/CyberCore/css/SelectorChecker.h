@@ -33,7 +33,7 @@
 #include "StyleRelations.h"
 #include "StyleScopeOrdinal.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSelector;
 class Element;
@@ -141,4 +141,4 @@ inline bool SelectorChecker::isCommonPseudoClassSelector(const CSSSelector* sele
         || pseudoType == CSSSelector::PseudoClassFocus;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

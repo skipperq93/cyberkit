@@ -22,7 +22,7 @@
 #include "Document.h"
 #include "JSDOMConstructorBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Constructors using this base class depend on being in a Document and
 // can never be used from a WorkerGlobalScope.
@@ -48,4 +48,4 @@ protected:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include "UIEventInit.h"
 #include "WindowProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Remove this when no one is depending on it anymore.
 typedef WindowProxy AbstractView;
@@ -78,6 +78,6 @@ private:
     int m_detail;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(UIEvent)

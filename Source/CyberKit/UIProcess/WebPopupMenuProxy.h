@@ -34,7 +34,7 @@ namespace CyberCore {
     class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct PlatformPopupMenuData;
 struct WebPopupItem;
@@ -76,6 +76,6 @@ protected:
     Client* m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebPopupMenuProxy_h

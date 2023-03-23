@@ -29,7 +29,7 @@
 #include "HTMLElement.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename HTMLCollectionClass, CollectionTraversalType traversalType>
 class CachedHTMLCollection : public HTMLCollection {
@@ -167,4 +167,4 @@ Element* CachedHTMLCollection<HTMLCollectionClass, traversalType>::namedItem(con
     return namedItemSlow(name);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "ScriptController.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static Seconds parserTimeLimit(Page* page)
 {

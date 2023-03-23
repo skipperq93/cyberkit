@@ -32,7 +32,7 @@
 
 #if ENABLE(MEDIA_STREAM)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaTrackSupportedConstraints {
     bool width;
@@ -49,6 +49,6 @@ struct MediaTrackSupportedConstraints {
     bool displaySurface;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

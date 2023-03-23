@@ -35,7 +35,7 @@
 #include <wtf/cocoa/TypeCastsCocoa.h>
 #include <wtf/cocoa/VectorCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 uint8_t flagsForConfig(const VirtualAuthenticatorConfiguration& config)
@@ -144,6 +144,6 @@ Vector<uint8_t> signatureForPrivateKey(RetainPtr<SecKeyRef> privateKey, const Ve
     return vectorFromNSData((NSData *)signature.get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

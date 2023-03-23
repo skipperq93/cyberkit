@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;
@@ -78,6 +78,6 @@ private:
     RefPtr<DeferredPromise> m_triggerRumbleEffectPromise;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

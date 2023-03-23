@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OESTextureHalfFloatLinear);
 
@@ -52,6 +52,6 @@ bool OESTextureHalfFloatLinear::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_OES_texture_half_float_linear"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

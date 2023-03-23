@@ -42,7 +42,7 @@
     RetainPtr<NSString> _title;
     CyberCore::IntPoint _interactionLocation;
     RetainPtr<NSString> _ID;
-    RefPtr<WebKit::ShareableBitmap> _image;
+    RefPtr<CyberKit::ShareableBitmap> _image;
     RetainPtr<NSString> _imageMIMEType;
     RetainPtr<CocoaImage> _cocoaImage;
 #if PLATFORM(IOS_FAMILY)
@@ -56,12 +56,12 @@
 }
 
 #if PLATFORM(IOS_FAMILY)
-+ (instancetype)activatedElementInfoWithInteractionInformationAtPosition:(const WebKit::InteractionInformationAtPosition&)information userInfo:(NSDictionary *)userInfo
++ (instancetype)activatedElementInfoWithInteractionInformationAtPosition:(const CyberKit::InteractionInformationAtPosition&)information userInfo:(NSDictionary *)userInfo
 {
     return adoptNS([[self alloc] _initWithInteractionInformationAtPosition:information isUsingAlternateURLForImage:NO userInfo:userInfo]).autorelease();
 }
 
-- (instancetype)_initWithInteractionInformationAtPosition:(const WebKit::InteractionInformationAtPosition&)information isUsingAlternateURLForImage:(BOOL)isUsingAlternateURLForImage userInfo:(NSDictionary *)userInfo
+- (instancetype)_initWithInteractionInformationAtPosition:(const CyberKit::InteractionInformationAtPosition&)information isUsingAlternateURLForImage:(BOOL)isUsingAlternateURLForImage userInfo:(NSDictionary *)userInfo
 {
     if (!(self = [super init]))
         return nil;
@@ -95,12 +95,12 @@
 }
 #endif
 
-- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType
+- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(CyberKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType
 {
     return [self _initWithType:type URL:url imageURL:imageURL location:location title:title ID:ID rect:rect image:image imageMIMEType:imageMIMEType userInfo:nil];
 }
 
-- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType userInfo:(NSDictionary *)userInfo
+- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(CyberKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType userInfo:(NSDictionary *)userInfo
 {
     if (!(self = [super init]))
         return nil;

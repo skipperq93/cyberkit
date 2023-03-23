@@ -56,7 +56,7 @@
 - (NSSet<NSURL *> *)mainResourceURLsForCSP
 {
     if (!_mainResourceURLsForCSP)
-        _mainResourceURLsForCSP = adoptNS([[NSSet alloc] initWithObjects:[NSURL URLWithString:WebKit::WebInspectorUIProxy::inspectorPageURL()], [NSURL URLWithString:WebKit::WebInspectorUIProxy::inspectorTestPageURL()], nil]);
+        _mainResourceURLsForCSP = adoptNS([[NSSet alloc] initWithObjects:[NSURL URLWithString:CyberKit::WebInspectorUIProxy::inspectorPageURL()], [NSURL URLWithString:CyberKit::WebInspectorUIProxy::inspectorTestPageURL()], nil]);
 
     return _mainResourceURLsForCSP.get();
 }

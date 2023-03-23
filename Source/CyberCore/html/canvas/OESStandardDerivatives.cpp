@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OESStandardDerivatives);
 
@@ -52,6 +52,6 @@ bool OESStandardDerivatives::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_OES_standard_derivatives"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

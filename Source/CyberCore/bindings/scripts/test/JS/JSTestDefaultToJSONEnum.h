@@ -23,7 +23,7 @@
 #include "JSDOMConvertEnumeration.h"
 #include "TestDefaultToJSONEnum.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String convertEnumerationToString(TestDefaultToJSONEnum);
 template<> JSC::JSString* convertEnumerationToJS(JSC::JSGlobalObject&, TestDefaultToJSONEnum);
@@ -32,4 +32,4 @@ template<> std::optional<TestDefaultToJSONEnum> parseEnumerationFromString<TestD
 template<> std::optional<TestDefaultToJSONEnum> parseEnumeration<TestDefaultToJSONEnum>(JSC::JSGlobalObject&, JSC::JSValue);
 template<> const char* expectedEnumerationValues<TestDefaultToJSONEnum>();
 
-} // namespace WebCore
+} // namespace CyberCore

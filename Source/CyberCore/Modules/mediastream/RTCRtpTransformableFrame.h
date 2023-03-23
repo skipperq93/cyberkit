@@ -30,7 +30,7 @@
 #include <wtf/Span.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCEncodedAudioFrameMetadata {
     uint32_t synchronizationSource;
@@ -61,6 +61,6 @@ public:
     virtual bool isKeyFrame() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

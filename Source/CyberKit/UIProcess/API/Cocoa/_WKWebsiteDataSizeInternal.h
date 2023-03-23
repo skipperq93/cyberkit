@@ -28,9 +28,9 @@
 #import "WebsiteDataRecord.h"
 
 @interface _WKWebsiteDataSize () {
-    WebKit::WebsiteDataRecord::Size _size;
+    CyberKit::WebsiteDataRecord::Size _size;
 }
 
-- (instancetype)initWithSize:(const WebKit::WebsiteDataRecord::Size&)size;
+- (instancetype)initWithSize:(const CyberKit::WebsiteDataRecord::Size&)size;
 
 @end

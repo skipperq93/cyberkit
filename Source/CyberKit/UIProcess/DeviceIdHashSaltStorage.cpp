@@ -37,7 +37,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static constexpr unsigned deviceIdHashSaltStorageVersion { 1 };
@@ -67,7 +67,7 @@ void DeviceIdHashSaltStorage::completePendingHandler(CompletionHandler<void(Hash
 }
 
 DeviceIdHashSaltStorage::DeviceIdHashSaltStorage(const String& deviceIdHashSaltStorageDirectory)
-    : m_queue(WorkQueue::create("com.apple.WebKit.DeviceIdHashSaltStorage"))
+    : m_queue(WorkQueue::create("com.apple.CyberKit.DeviceIdHashSaltStorage"))
     , m_deviceIdHashSaltStorageDirectory(!deviceIdHashSaltStorageDirectory.isEmpty() ? FileSystem::pathByAppendingComponent(deviceIdHashSaltStorageDirectory, String::number(deviceIdHashSaltStorageVersion)) : String())
 {
     if (m_deviceIdHashSaltStorageDirectory.isEmpty()) {
@@ -120,7 +120,7 @@ void DeviceIdHashSaltStorage::loadStorageFromDisk(CompletionHandler<void(HashMap
             auto deviceIdHashSalt = URL::fileURLWithFileSystemPath(originPath).lastPathComponent().toString();
 
             if (hashSaltSize != deviceIdHashSalt.length()) {
-                RELEASE_LOG_ERROR(DiskPersistency, "DeviceIdHashSaltStorage: The length of the hash salt (%d) is different to the length of the hash salts defined in WebKit (%d)", deviceIdHashSalt.length(), hashSaltSize);
+                RELEASE_LOG_ERROR(DiskPersistency, "DeviceIdHashSaltStorage: The length of the hash salt (%d) is different to the length of the hash salts defined in CyberKit (%d)", deviceIdHashSalt.length(), hashSaltSize);
                 continue;
             }
 
@@ -298,4 +298,4 @@ void DeviceIdHashSaltStorage::deleteDeviceIdHashSaltOriginsModifiedSince(WallTim
     RunLoop::main().dispatch(WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

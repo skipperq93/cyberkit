@@ -29,7 +29,7 @@
 #import "WebsiteDataStore.h"
 #import <wtf/WeakObjCPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebsiteDataStore> {
     using WrapperClass = WKWebsiteDataStore;
@@ -39,7 +39,7 @@ template<> struct WrapperTraits<WebsiteDataStore> {
 
 @interface WKWebsiteDataStore () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebsiteDataStore> _websiteDataStore;
+    API::ObjectStorage<CyberKit::WebsiteDataStore> _websiteDataStore;
     WeakObjCPtr<id <_WKWebsiteDataStoreDelegate> > _delegate;
 }
 @end

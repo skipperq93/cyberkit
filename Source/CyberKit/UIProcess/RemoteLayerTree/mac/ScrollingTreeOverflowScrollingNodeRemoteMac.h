@@ -29,7 +29,7 @@
 
 #include <CyberCore/ScrollingTreeOverflowScrollingNodeMac.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ScrollerPairMac;
 

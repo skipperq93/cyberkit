@@ -27,6 +27,6 @@
 
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_FOR_SOURCE(WebKit, LocalAuthentication);
+SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, LocalAuthentication);
 
-SOFT_LINK_CLASS_FOR_SOURCE(WebKit, LocalAuthentication, LAContext);
+SOFT_LINK_CLASS_FOR_SOURCE(CyberKit, LocalAuthentication, LAContext);

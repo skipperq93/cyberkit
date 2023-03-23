@@ -29,7 +29,7 @@
 #include "InlineFormattingContext.h"
 #include "LayoutBoxGeometry.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 InlineFormattingQuirks::InlineFormattingQuirks(const InlineFormattingContext& inlineFormattingContext)

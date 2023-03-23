@@ -46,15 +46,15 @@
 #include "JSTestDefaultToJSONInheritFinal.h"
 #include "JSTestException.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSArray.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/ObjectConstructor.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSArray.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
@@ -66,7 +66,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -817,7 +817,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestDefaultToJSONPrototypeFunction_toJSON, (JSGlobalO
 
 JSC::GCClient::IsoSubspace* JSTestDefaultToJSON::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestDefaultToJSON, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestDefaultToJSON, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestDefaultToJSON.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestDefaultToJSON = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestDefaultToJSON.get(); },
@@ -852,9 +852,9 @@ void JSTestDefaultToJSONOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* 
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestDefaultToJSON@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestDefaultToJSON@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore17TestDefaultToJSONE[]; }
+extern "C" { extern void* _ZTVN7CyberCore17TestDefaultToJSONE[]; }
 #endif
 #endif
 
@@ -865,9 +865,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestDefaultToJSON@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestDefaultToJSON@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore17TestDefaultToJSONE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore17TestDefaultToJSONE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

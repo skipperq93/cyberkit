@@ -34,7 +34,7 @@
 
 OBJC_CLASS TKSmartCard;
 
-namespace WebKit {
+namespace CyberKit {
 
 class CcidService;
 using DataReceivedCallback = Function<void(Vector<uint8_t>&&)>;
@@ -64,6 +64,6 @@ private:
     bool m_contactless { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

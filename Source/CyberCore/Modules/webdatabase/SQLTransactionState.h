@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SQLTransactionState {
     End = 0,
@@ -44,4 +44,4 @@ enum class SQLTransactionState {
     NumberOfStates // Always keep this at the end of the list.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

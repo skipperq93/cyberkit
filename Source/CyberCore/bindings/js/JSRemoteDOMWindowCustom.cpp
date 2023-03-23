@@ -28,9 +28,9 @@
 
 #include "JSDOMExceptionHandling.h"
 #include "JSDOMWindowCustom.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 bool JSRemoteDOMWindow::getOwnPropertySlot(JSObject* object, JSGlobalObject* lexicalGlobalObject, PropertyName propertyName, PropertySlot& slot)
@@ -128,4 +128,4 @@ bool JSRemoteDOMWindow::preventExtensions(JSObject*, JSGlobalObject*)
     return false;
 }
 
-} // namepace WebCore
+} // namepace CyberCore

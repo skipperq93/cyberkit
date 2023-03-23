@@ -62,7 +62,7 @@ class TestSetup(testing.PathTestCase):
 
         self.assertEqual(
             captured.stdout.getvalue(),
-            "Create a private fork of 'WebKit' belonging to 'username' ([Yes]/No): \n"
+            "Create a private fork of 'CyberKit' belonging to 'username' ([Yes]/No): \n"
             'Setup succeeded!\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
@@ -71,7 +71,7 @@ class TestSetup(testing.PathTestCase):
             '''Saving GitHub credentials in system credential store...
 GitHub credentials saved via Keyring!
 Verifying user owned fork...
-Created a private fork of 'WebKit' belonging to 'username'!
+Created a private fork of 'CyberKit' belonging to 'username'!
 ''',
         )
 
@@ -97,7 +97,7 @@ Created a private fork of 'WebKit' belonging to 'username'!
         self.assertEqual(
             captured.stdout.getvalue(),
             'For detailed information about the options configured by this script, please see:\n'
-            'https://github.com/WebKit/WebKit/wiki/Git-Config#Configuration-Options\n\n\n'
+            'https://github.com/CyberKit/CyberKit/wiki/Git-Config#Configuration-Options\n\n\n'
             'Setup succeeded!\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
@@ -123,7 +123,7 @@ Set git editor to 'SVN_LOG_EDITOR' for this repository
             mocks.local.Git(self.path, remote='https://{}.git'.format(remote.remote)) as repo, \
             wkmocks.Environment(EMAIL_ADDRESS='', SVN_LOG_EDITOR=''):
 
-            self.assertEqual('https://github.example.com/WebKit/WebKit.git', local.Git(self.path).url())
+            self.assertEqual('https://github.example.com/CyberKit/CyberKit.git', local.Git(self.path).url())
 
             self.assertEqual(0, program.main(
                 args=('setup', '-v', '-a'),
@@ -135,13 +135,13 @@ Set git editor to 'SVN_LOG_EDITOR' for this repository
             self.assertEqual('Committer', config.get('user.name', ''))
             self.assertEqual('committer@webkit.org', config.get('user.email', ''))
             self.assertEqual('!f()', config.get('credential.https://github.example.com.helper', '').split()[0])
-            self.assertEqual('https://github.example.com/WebKit/WebKit.git', local.Git(self.path).url())
+            self.assertEqual('https://github.example.com/CyberKit/CyberKit.git', local.Git(self.path).url())
 
         programs = ['default'] + [p.name for p in Editor.programs()]
         self.assertEqual(
             captured.stdout.getvalue(),
             '''For detailed information about the options configured by this script, please see:
-https://github.com/WebKit/WebKit/wiki/Git-Config#Configuration-Options
+https://github.com/CyberKit/CyberKit/wiki/Git-Config#Configuration-Options
 Would you like to open this URL in your browser? ([Yes]/No): 
 
 
@@ -157,7 +157,7 @@ a pull request branch? ([when-user-owned]/disabled/always/never):
 Pick a commit message editor for this repository:
     {}
 : 
-Create a private fork of 'WebKit' belonging to 'username' ([Yes]/No): 
+Create a private fork of 'CyberKit' belonging to 'username' ([Yes]/No): 
 Setup succeeded!
 '''.format('\n    '.join([
             '{}) {}'.format(
@@ -182,7 +182,7 @@ Using the default git editor for this repository
 Saving GitHub credentials in system credential store...
 GitHub credentials saved via Keyring!
 Verifying user owned fork...
-Created a private fork of 'WebKit' belonging to 'username'!
+Created a private fork of 'CyberKit' belonging to 'username'!
 Adding forked remote as 'fork'...
 Added remote 'fork'
 Fetching 'fork'

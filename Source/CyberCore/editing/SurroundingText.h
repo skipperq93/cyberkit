@@ -32,7 +32,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Range;
 class VisiblePosition;
@@ -50,4 +50,4 @@ private:
     size_t m_positionOffsetInContent;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

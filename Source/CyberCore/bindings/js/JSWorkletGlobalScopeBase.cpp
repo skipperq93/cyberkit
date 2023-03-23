@@ -35,7 +35,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/Language.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -150,4 +150,4 @@ JSValue toJS(JSGlobalObject*, WorkletGlobalScope& workletGlobalScope)
     return &contextWrapper->proxy();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

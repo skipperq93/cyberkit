@@ -35,7 +35,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/UniqueArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRule;
 class CSSGroupingRule;
@@ -432,69 +432,69 @@ inline CompiledSelector& StyleRule::compiledSelectorForListIndex(unsigned index)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRule)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.type() == WebCore::StyleRuleType::Style; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRule)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.type() == CyberCore::StyleRuleType::Style; }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleWithNesting)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.type() == WebCore::StyleRuleType::StyleWithNesting; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleWithNesting)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.type() == CyberCore::StyleRuleType::StyleWithNesting; }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleGroup)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isGroupRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleGroup)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isGroupRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleFontFace)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isFontFaceRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleFontFace)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isFontFaceRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleFontFeatureValues)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isFontFeatureValuesRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleFontFeatureValues)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isFontFeatureValuesRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleFontFeatureValuesBlock)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isFontFeatureValuesBlockRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleFontFeatureValuesBlock)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isFontFeatureValuesBlockRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleFontPaletteValues)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isFontPaletteValuesRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleFontPaletteValues)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isFontPaletteValuesRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleMedia)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isMediaRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleMedia)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isMediaRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRulePage)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isPageRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRulePage)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isPageRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleSupports)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isSupportsRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleSupports)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isSupportsRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleNamespace)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isNamespaceRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleNamespace)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isNamespaceRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleKeyframe)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isKeyframeRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleKeyframe)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isKeyframeRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleCharset)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isCharsetRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleCharset)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isCharsetRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleLayer)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isLayerRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleLayer)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isLayerRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleContainer)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isContainerRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleContainer)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isContainerRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleProperty)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isPropertyRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleProperty)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isPropertyRule(); }
 SPECIALIZE_TYPE_TRAITS_END()
 

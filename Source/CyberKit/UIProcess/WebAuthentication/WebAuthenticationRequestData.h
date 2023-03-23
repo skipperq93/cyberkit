@@ -43,7 +43,7 @@ namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -56,7 +56,7 @@ struct WebAuthenticationRequestData {
     WebAuthenticationPanelResult panelResult { WebAuthenticationPanelResult::Unavailable };
     RefPtr<API::WebAuthenticationPanel> panel;
     std::optional<CyberCore::GlobalFrameIdentifier> globalFrameID;
-    WebKit::FrameInfoData frameInfo;
+    CyberKit::FrameInfoData frameInfo;
 
     bool processingUserGesture;
     String cachedPin; // Only used to improve NFC Client PIN experience.
@@ -68,6 +68,6 @@ struct WebAuthenticationRequestData {
 CyberCore::ClientDataType getClientDataType(const std::variant<CyberCore::PublicKeyCredentialCreationOptions, CyberCore::PublicKeyCredentialRequestOptions>&);
 CyberCore::UserVerificationRequirement getUserVerificationRequirement(const std::variant<CyberCore::PublicKeyCredentialCreationOptions, CyberCore::PublicKeyCredentialRequestOptions>&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -54,7 +54,7 @@ webkit_dom_html_canvas_element_get_type(void);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_canvas_element_get_width(CyberKitDOMHTMLCanvasElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_canvas_element_get_width(CyberKitDOMHTMLCanvasElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_canvas_element_set_width(CyberKitDOMHTMLCanvasElement* self, glong value);
@@ -76,7 +76,7 @@ webkit_dom_html_canvas_element_set_width(CyberKitDOMHTMLCanvasElement* self, glo
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_canvas_element_get_height(CyberKitDOMHTMLCanvasElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_canvas_element_get_height(CyberKitDOMHTMLCanvasElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_canvas_element_set_height(CyberKitDOMHTMLCanvasElement* self, glong value);

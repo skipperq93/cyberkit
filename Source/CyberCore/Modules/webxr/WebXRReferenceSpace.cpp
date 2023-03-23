@@ -34,7 +34,7 @@
 #include "WebXRSession.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr double DefaultUserHeightInMeters = 1.65;
 
@@ -131,6 +131,6 @@ std::optional<TransformationMatrix> WebXRReferenceSpace::floorOriginTransform() 
     return WebXRFrame::matrixFromPose(*data.floorTransform);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

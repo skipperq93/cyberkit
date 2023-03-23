@@ -32,7 +32,7 @@
 #include <CyberCore/BackingStoreBackendCairo.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class ShareableBitmap;
 class UpdateInfo;
@@ -72,4 +72,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

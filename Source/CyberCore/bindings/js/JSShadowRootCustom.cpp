@@ -28,11 +28,11 @@
 
 #include "JSDocumentCustom.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void JSShadowRoot::setAdoptedStyleSheets(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSValue value)
 {
     setAdoptedStyleSheetsOnTreeScope(wrapped(), lexicalGlobalObject, value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

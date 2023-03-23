@@ -30,7 +30,7 @@
 #include "HTMLElement.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SubmitEvent);
 
@@ -59,4 +59,4 @@ EventInterface SubmitEvent::eventInterface() const
     return SubmitEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

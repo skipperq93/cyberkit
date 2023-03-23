@@ -81,7 +81,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -264,7 +264,7 @@ AccessibilityRole AccessibilityNodeObject::determineAccessibilityRoleFromNode(Tr
         return AccessibilityRole::Unknown;
 
     if (node()->isLink())
-        return AccessibilityRole::WebCoreLink;
+        return AccessibilityRole::CyberCoreLink;
     if (node()->isTextNode())
         return AccessibilityRole::StaticText;
     if (node()->hasTagName(selectTag)) {
@@ -998,7 +998,7 @@ bool AccessibilityNodeObject::isHeading() const
 
 bool AccessibilityNodeObject::isLink() const
 {
-    return roleValue() == AccessibilityRole::WebCoreLink;
+    return roleValue() == AccessibilityRole::CyberCoreLink;
 }
 
 bool AccessibilityNodeObject::isBusy() const
@@ -2554,7 +2554,7 @@ AccessibilityRole AccessibilityNodeObject::determineAriaRoleAttribute() const
     if (ariaRole.isNull() || ariaRole.isEmpty())
         return AccessibilityRole::Unknown;
     
-    AccessibilityRole role = ariaRoleToWebCoreRole(ariaRole);
+    AccessibilityRole role = ariaRoleToCyberCoreRole(ariaRole);
 
     // ARIA states if an item can get focus, it should not be presentational.
     if (role == AccessibilityRole::Presentational && canSetFocusAttribute())
@@ -2603,7 +2603,7 @@ AccessibilityRole AccessibilityNodeObject::remapAriaRoleDueToParent(Accessibilit
     for (AccessibilityObject* parent = parentObject(); parent && !parent->accessibilityIsIgnored(); parent = parent->parentObject()) {
         AccessibilityRole parentAriaRole = parent->ariaRoleAttribute();
 
-        // Selects and listboxes both have options as child roles, but they map to different roles within WebCore.
+        // Selects and listboxes both have options as child roles, but they map to different roles within CyberCore.
         if (role == AccessibilityRole::ListBoxOption && parentAriaRole == AccessibilityRole::Menu)
             return AccessibilityRole::MenuItem;
         // An aria "menuitem" may map to MenuButton or MenuItem depending on its parent.
@@ -2640,4 +2640,4 @@ bool AccessibilityNodeObject::canSetSelectedAttribute() const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

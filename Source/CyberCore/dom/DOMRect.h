@@ -29,7 +29,7 @@
 #include "FloatRect.h"
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatQuad;
 

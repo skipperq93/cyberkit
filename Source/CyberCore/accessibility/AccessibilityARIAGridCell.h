@@ -30,7 +30,7 @@
 
 #include "AccessibilityTableCell.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityARIAGridCell final : public AccessibilityTableCell {
 public:
@@ -52,6 +52,6 @@ private:
     String readOnlyValue() const override;
 }; 
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityARIAGridCell, isAccessibilityARIAGridCellInstance())

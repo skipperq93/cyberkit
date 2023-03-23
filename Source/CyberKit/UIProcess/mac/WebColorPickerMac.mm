@@ -67,13 +67,13 @@ static const CGFloat colorPickerMatrixSwatchWidth = 13.0;
 @interface WKColorPopoverMac : NSObject<WKColorPickerUIMac, WKPopoverColorWellDelegate, NSWindowDelegate> {
 @private
     BOOL _lastChangedByUser;
-    WebKit::WebColorPickerMac *_picker;
+    CyberKit::WebColorPickerMac *_picker;
     RetainPtr<WKPopoverColorWell> _popoverWell;
 }
 - (id)initWithFrame:(const CyberCore::IntRect &)rect inView:(NSView *)view;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebColorPickerMac> WebColorPickerMac::create(WebColorPicker::Client* client, const CyberCore::Color& initialColor, const CyberCore::IntRect& rect, Vector<CyberCore::Color>&& suggestions, NSView *view)
 {
@@ -126,7 +126,7 @@ void WebColorPickerMac::showColorPicker(const CyberCore::Color& color)
     [m_colorPickerUI setAndShowPicker:this withColor:cocoaColor(color).get() suggestions:WTFMove(m_suggestions)];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @implementation WKPopoverColorWell
 
@@ -224,7 +224,7 @@ void WebColorPickerMac::showColorPicker(const CyberCore::Color& color)
     return self;
 }
 
-- (void)setAndShowPicker:(WebKit::WebColorPickerMac*)picker withColor:(NSColor *)color suggestions:(Vector<CyberCore::Color>&&)suggestions
+- (void)setAndShowPicker:(CyberKit::WebColorPickerMac*)picker withColor:(NSColor *)color suggestions:(Vector<CyberCore::Color>&&)suggestions
 {
     _picker = picker;
 

@@ -38,7 +38,7 @@ namespace PAL {
 class Clock;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMediaElement;
 
@@ -157,6 +157,6 @@ private:
     bool m_resetCurrentTimeInNextPlay { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

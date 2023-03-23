@@ -30,7 +30,7 @@
 #error "Please #include \"WKAPICast.h\" instead of this file directly."
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlayStationWebView;
 

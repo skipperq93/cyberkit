@@ -33,7 +33,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebSocketExtensionProcessor {
 public:
@@ -64,4 +64,4 @@ private:
     String m_extensionToken;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

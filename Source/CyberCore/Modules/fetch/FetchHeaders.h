@@ -35,7 +35,7 @@
 #include <wtf/HashTraits.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -132,4 +132,4 @@ inline void FetchHeaders::setGuard(Guard guard)
     m_guard = guard;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

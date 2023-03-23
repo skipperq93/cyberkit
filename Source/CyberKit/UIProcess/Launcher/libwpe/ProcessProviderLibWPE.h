@@ -32,7 +32,7 @@
 
 struct wpe_process_provider;
 
-namespace WebKit {
+namespace CyberKit {
 
 class ProcessProviderLibWPE {
     WTF_MAKE_NONCOPYABLE(ProcessProviderLibWPE);
@@ -55,6 +55,6 @@ private:
     static int wpeProcessType(ProcessLauncher::ProcessType);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWPE) && !ENABLE(BUBBLEWRAP_SANDBOX)

@@ -38,8 +38,8 @@
 #include "WebFramePolicyListenerProxy.h"
 #include "WebInspectorUIMessages.h"
 #include "WebInspectorUIProxyClient.h"
-#include "WebKitInspectorWindow.h"
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitInspectorWindow.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include "WebPageGroup.h"
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
@@ -54,7 +54,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void inspectorViewDestroyed(GtkWidget*, gpointer userData)
 {
@@ -154,7 +154,7 @@ WebPageProxy* WebInspectorUIProxy::platformCreateFrontendPage()
     ASSERT(inspectedPage());
     ASSERT(!m_inspectorView);
 
-    auto preferences = WebPreferences::create(String(), "WebKit2."_s, "WebKit2."_s);
+    auto preferences = WebPreferences::create(String(), "CyberKit2."_s, "CyberKit2."_s);
 #if ENABLE(DEVELOPER_MODE)
     // Allow developers to inspect the Web Inspector in debug builds without changing settings.
     preferences->setDeveloperExtrasEnabled(true);
@@ -165,9 +165,9 @@ WebPageProxy* WebInspectorUIProxy::platformCreateFrontendPage()
     });
     if (m_underTest)
         preferences->setHiddenPageDOMTimerThrottlingEnabled(false);
-    auto pageGroup = WebPageGroup::create(WebKit::defaultInspectorPageGroupIdentifierForPage(inspectedPage()));
+    auto pageGroup = WebPageGroup::create(CyberKit::defaultInspectorPageGroupIdentifierForPage(inspectedPage()));
     auto websiteDataStore = inspectorWebsiteDataStore();
-    auto& processPool = WebKit::defaultInspectorProcessPool(inspectionLevel());
+    auto& processPool = CyberKit::defaultInspectorProcessPool(inspectionLevel());
 
     auto pageConfiguration = API::PageConfiguration::create();
     pageConfiguration->setProcessPool(&processPool);
@@ -557,4 +557,4 @@ void WebInspectorUIProxy::platformAttachAvailabilityChanged(bool available)
         m_client->didChangeAttachAvailability(*this, available);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

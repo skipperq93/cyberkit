@@ -51,7 +51,7 @@
 #include "WindowEventLoop.h"
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<UserMediaRequest> UserMediaRequest::create(Document& document, MediaStreamRequest&& request, TrackConstraints&& audioConstraints, TrackConstraints&& videoConstraints, DOMPromiseDeferred<IDLInterface<MediaStream>>&& promise)
 {
@@ -275,6 +275,6 @@ Document* UserMediaRequest::document() const
     return downcast<Document>(scriptExecutionContext());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

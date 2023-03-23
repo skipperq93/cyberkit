@@ -31,7 +31,7 @@
 #include "WebGeolocationPosition.h"
 #include "WebGeolocationProvider.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKGeolocationManagerGetTypeID()
 {

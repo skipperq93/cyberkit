@@ -32,7 +32,7 @@
 #include <wtf/text/TextPosition.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSEventListener : public EventListener {
 public:
@@ -162,8 +162,8 @@ inline JSC::JSObject* JSEventListener::ensureJSFunction(ScriptExecutionContext& 
     return m_jsFunction.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::JSEventListener)
-static bool isType(const WebCore::EventListener& input) { return input.type() == WebCore::JSEventListener::JSEventListenerType; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::JSEventListener)
+static bool isType(const CyberCore::EventListener& input) { return input.type() == CyberCore::JSEventListener::JSEventListenerType; }
 SPECIALIZE_TYPE_TRAITS_END()

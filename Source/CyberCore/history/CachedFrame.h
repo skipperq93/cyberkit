@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedFrame;
 class CachedFramePlatformData;
@@ -93,4 +93,4 @@ public:
     size_t descendantFrameCount() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

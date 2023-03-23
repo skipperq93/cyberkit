@@ -45,7 +45,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class MediaDeviceInfo;
@@ -138,6 +138,6 @@ private:
     String m_audioOutputDeviceId;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

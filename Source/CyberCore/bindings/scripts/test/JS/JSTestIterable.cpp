@@ -34,20 +34,20 @@
 #include "JSDOMWrapperCache.h"
 #include "JSTestNode.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -196,7 +196,7 @@ public:
     {
         if constexpr (mode == JSC::SubspaceAccess::Concurrently)
             return nullptr;
-        return WebCore::subspaceForImpl<TestIterableIterator, UseCustomHeapCellType::No>(vm,
+        return CyberCore::subspaceForImpl<TestIterableIterator, UseCustomHeapCellType::No>(vm,
             [] (auto& spaces) { return spaces.m_clientSubspaceForTestIterableIterator.get(); },
             [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestIterableIterator = std::forward<decltype(space)>(space); },
             [] (auto& spaces) { return spaces.m_subspaceForTestIterableIterator.get(); },
@@ -274,7 +274,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestIterablePrototypeFunction_forEach, (JSC::JSGlobal
 
 JSC::GCClient::IsoSubspace* JSTestIterable::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestIterable, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestIterable, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestIterable.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestIterable = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestIterable.get(); },
@@ -309,9 +309,9 @@ void JSTestIterableOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* conte
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestIterable@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestIterable@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore12TestIterableE[]; }
+extern "C" { extern void* _ZTVN7CyberCore12TestIterableE[]; }
 #endif
 #endif
 
@@ -322,9 +322,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestIterable@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestIterable@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore12TestIterableE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore12TestIterableE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

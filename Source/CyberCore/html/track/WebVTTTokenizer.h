@@ -36,7 +36,7 @@
 #include "InputStreamPreprocessor.h"
 #include "WebVTTToken.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebVTTTokenizer {
 public:
@@ -50,6 +50,6 @@ private:
     InputStreamPreprocessor<WebVTTTokenizer> m_preprocessor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

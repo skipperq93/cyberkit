@@ -28,7 +28,7 @@
 #import "APIHTTPCookieStore.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::HTTPCookieStore> {
     using WrapperClass = WKHTTPCookieStore;

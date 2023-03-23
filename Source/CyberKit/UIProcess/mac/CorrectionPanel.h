@@ -34,7 +34,7 @@
 #import <CyberCore/AlternativeTextClient.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebViewImpl;
 
@@ -58,7 +58,7 @@ private:
     NSInteger m_spellCheckerDocumentTag;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(AUTOCORRECTION_PANEL)
 

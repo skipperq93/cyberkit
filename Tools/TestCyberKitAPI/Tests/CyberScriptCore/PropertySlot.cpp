@@ -38,7 +38,7 @@ using JSC::PropertySlot;
 using JSC::VM;
 using JSC::jsUndefined;
 
-TEST(JavaScriptCore_PropertySlot, DisallowVMEntryCountBasic)
+TEST(CyberScriptCore_PropertySlot, DisallowVMEntryCountBasic)
 {
     WTF::initializeMainThread();
     JSC::initialize();
@@ -74,7 +74,7 @@ TEST(JavaScriptCore_PropertySlot, DisallowVMEntryCountBasic)
     }
 }
 
-TEST(JavaScriptCore_PropertySlot, VMInquiryReset)
+TEST(CyberScriptCore_PropertySlot, VMInquiryReset)
 {
     WTF::initializeMainThread();
     JSC::initialize();
@@ -98,7 +98,7 @@ TEST(JavaScriptCore_PropertySlot, VMInquiryReset)
     }
 }
 
-TEST(JavaScriptCore_PropertySlot, CopyAssignment)
+TEST(CyberScriptCore_PropertySlot, CopyAssignment)
 {
     WTF::initializeMainThread();
     JSC::initialize();

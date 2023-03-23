@@ -36,7 +36,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void firstTimeItemSelectedCallback(GtkTreeSelection* selection, GtkWidget* treeView)
 {
@@ -251,6 +251,6 @@ void WebDataListSuggestionsDropdownGtk::close()
     gtk_widget_hide(m_popup);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATALIST_ELEMENT)

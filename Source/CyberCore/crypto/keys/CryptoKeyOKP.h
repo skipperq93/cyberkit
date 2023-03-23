@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct JsonWebKey;
 
@@ -85,7 +85,7 @@ private:
     KeyMaterial m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_KEY(CryptoKeyOKP, CryptoKeyClass::OKP)
 

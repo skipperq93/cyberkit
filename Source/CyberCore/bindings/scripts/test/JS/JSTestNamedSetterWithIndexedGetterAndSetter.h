@@ -24,7 +24,7 @@
 #include "TestNamedSetterWithIndexedGetterAndSetter.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestNamedSetterWithIndexedGetterAndSetter : public JSDOMWrapper<TestNamedSetterWithIndexedGetterAndSetter> {
 public:
@@ -98,4 +98,4 @@ template<> struct JSDOMWrapperConverterTraits<TestNamedSetterWithIndexedGetterAn
     using ToWrappedReturnType = TestNamedSetterWithIndexedGetterAndSetter*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

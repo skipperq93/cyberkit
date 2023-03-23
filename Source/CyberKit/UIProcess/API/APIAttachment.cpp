@@ -34,12 +34,12 @@
 
 namespace API {
 
-Ref<Attachment> Attachment::create(const WTF::String& identifier, WebKit::WebPageProxy& webPage)
+Ref<Attachment> Attachment::create(const WTF::String& identifier, CyberKit::WebPageProxy& webPage)
 {
     return adoptRef(*new Attachment(identifier, webPage));
 }
 
-Attachment::Attachment(const WTF::String& identifier, WebKit::WebPageProxy& webPage)
+Attachment::Attachment(const WTF::String& identifier, CyberKit::WebPageProxy& webPage)
     : m_identifier(identifier)
     , m_webPage(webPage)
 {
@@ -56,7 +56,7 @@ void Attachment::updateAttributes(CompletionHandler<void()>&& callback)
         return;
     }
 
-    if (m_webPage->willUpdateAttachmentAttributes(*this) == WebKit::WebPageProxy::ShouldUpdateAttachmentAttributes::No) {
+    if (m_webPage->willUpdateAttachmentAttributes(*this) == CyberKit::WebPageProxy::ShouldUpdateAttachmentAttributes::No) {
         callback();
         return;
     }

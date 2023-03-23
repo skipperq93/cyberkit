@@ -31,7 +31,7 @@
 #include "VirtualAuthenticatorConfiguration.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 struct VirtualAuthenticatorConfiguration;
 
 class VirtualLocalConnection final : public CanMakeWeakPtr<VirtualLocalConnection>, public LocalConnection {
@@ -47,6 +47,6 @@ private:
     VirtualAuthenticatorConfiguration m_configuration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

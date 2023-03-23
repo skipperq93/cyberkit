@@ -27,7 +27,7 @@
 
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class XMLDocument : public Document {
     WTF_MAKE_ISO_ALLOCATED(XMLDocument);
@@ -53,9 +53,9 @@ protected:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::XMLDocument)
-    static bool isType(const WebCore::Document& document) { return document.isXMLDocument(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Document>(node) && isType(downcast<WebCore::Document>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::XMLDocument)
+    static bool isType(const CyberCore::Document& document) { return document.isXMLDocument(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Document>(node) && isType(downcast<CyberCore::Document>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

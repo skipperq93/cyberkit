@@ -36,7 +36,7 @@
 #include "ExceptionOr.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSKeywordValue);
 
@@ -82,4 +82,4 @@ RefPtr<CSSValue> CSSKeywordValue::toCSSValue() const
     return CSSPrimitiveValue::create(keyword);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

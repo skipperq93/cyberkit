@@ -47,7 +47,7 @@
 
 #define AUTHORIZATIONSESSION_RELEASE_LOG(fmt, ...) RELEASE_LOG(AppSSO, "%p - [InitiatingAction=%s][State=%s] SOAuthorizationSession::" fmt, this, toString(m_action), stateString(), ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace {
 
@@ -460,7 +460,7 @@ void SOAuthorizationSession::dismissViewController()
     m_viewController = nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef AUTHORIZATIONSESSION_RELEASE_LOG
 

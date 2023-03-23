@@ -28,7 +28,7 @@
 #include "BiquadFilterOptions.h"
 #include "BiquadProcessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioParam;
 
@@ -55,4 +55,4 @@ private:
     BiquadProcessor* biquadProcessor() { return static_cast<BiquadProcessor*>(processor()); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

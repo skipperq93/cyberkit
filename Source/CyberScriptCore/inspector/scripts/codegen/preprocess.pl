@@ -1,6 +1,6 @@
 #! /usr/bin/env perl
 #
-#   This file is part of the WebKit project
+#   This file is part of the CyberKit project
 #
 #   Copyright (C) 2020 Apple Inc. All rights reserved.
 #

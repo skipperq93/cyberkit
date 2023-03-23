@@ -48,7 +48,7 @@
 #include "CryptoAlgorithmSHA384.h"
 #include "CryptoAlgorithmSHA512.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void CryptoAlgorithmRegistry::platformRegisterAlgorithms()
 {
@@ -73,6 +73,6 @@ void CryptoAlgorithmRegistry::platformRegisterAlgorithms()
     registerAlgorithm<CryptoAlgorithmSHA512>();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

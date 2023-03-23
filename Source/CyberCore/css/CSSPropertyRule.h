@@ -27,7 +27,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleProperty;
 
@@ -51,6 +51,6 @@ private:
     Ref<StyleRuleProperty> m_propertyRule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSPropertyRule, StyleRuleType::Property)

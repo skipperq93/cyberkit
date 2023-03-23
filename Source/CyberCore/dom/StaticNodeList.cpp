@@ -31,7 +31,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(StaticNodeList);
 WTF_MAKE_ISO_ALLOCATED_IMPL(StaticElementList);
@@ -60,4 +60,4 @@ Element* StaticElementList::item(unsigned index) const
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

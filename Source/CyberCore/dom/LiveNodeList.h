@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -166,4 +166,4 @@ void CachedLiveNodeList<NodeListType>::invalidateCacheForDocument(Document& docu
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

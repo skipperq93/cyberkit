@@ -48,12 +48,12 @@
 #include "Settings.h"
 #include "StaticPasteboard.h"
 #include "WebContentReader.h"
-#include "WebCorePasteboardFileReader.h"
+#include "CyberCorePasteboardFileReader.h"
 #include "markup.h"
 #include <wtf/URLParser.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(DRAG_SUPPORT)
 
@@ -372,7 +372,7 @@ Vector<Ref<File>> DataTransfer::filesFromPasteboardAndItemList(ScriptExecutionCo
     bool addedFilesFromPasteboard = false;
     Vector<Ref<File>> files;
     if (allowsFileAccess() && m_pasteboard->fileContentState() != Pasteboard::FileContentState::NoFileOrImageData) {
-        WebCorePasteboardFileReader reader(context);
+        CyberCorePasteboardFileReader reader(context);
         m_pasteboard->read(reader);
         files = WTFMove(reader.files);
         addedFilesFromPasteboard = !files.isEmpty();
@@ -609,13 +609,13 @@ void DragImageLoader::moveToDataTransfer(DataTransfer& newDataTransfer)
     m_dataTransfer = &newDataTransfer;
 }
 
-void DragImageLoader::startLoading(CachedResourceHandle<WebCore::CachedImage>& image)
+void DragImageLoader::startLoading(CachedResourceHandle<CyberCore::CachedImage>& image)
 {
     // FIXME: Does this really trigger a load? Does it need to?
     image->addClient(*this);
 }
 
-void DragImageLoader::stopLoading(CachedResourceHandle<WebCore::CachedImage>& image)
+void DragImageLoader::stopLoading(CachedResourceHandle<CyberCore::CachedImage>& image)
 {
     image->removeClient(*this);
 }
@@ -759,4 +759,4 @@ bool DataTransfer::hasDragImage() const
 
 #endif // ENABLE(DRAG_SUPPORT)
 
-} // namespace WebCore
+} // namespace CyberCore

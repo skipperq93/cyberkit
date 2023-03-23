@@ -40,7 +40,7 @@
 #include <CyberCore/SecurityOrigin.h>
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 MediaKeySystemPermissionRequestManager::MediaKeySystemPermissionRequestManager(WebPage& page)
@@ -140,6 +140,6 @@ void MediaKeySystemPermissionRequestManager::mediaKeySystemWasDenied(MediaKeySys
     request->deny(WTFMove(message));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

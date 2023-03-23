@@ -35,7 +35,7 @@
 #include "ChannelCountMode.h"
 #include <algorithm>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioNodeInput::AudioNodeInput(AudioNode* node)
     : AudioSummingJunction(node->context())
@@ -245,6 +245,6 @@ AudioBus* AudioNodeInput::pull(AudioBus* inPlaceBus, size_t framesToProcess)
     return internalSummingBus;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

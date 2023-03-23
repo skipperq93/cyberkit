@@ -29,9 +29,9 @@
 #include "FetchResponse.h"
 #include <wtf/CryptographicallyRandomNumber.h>
 
-namespace WebCore {
+namespace CyberCore {
 
-using namespace WebCore::DOMCacheEngine;
+using namespace CyberCore::DOMCacheEngine;
 
 static inline uint64_t formDataSize(const FormData& formData)
 {
@@ -76,4 +76,4 @@ uint64_t CacheStorageConnection::computeRecordBodySize(const FetchResponse& resp
     }).iterator->value;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

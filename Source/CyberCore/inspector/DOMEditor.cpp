@@ -41,7 +41,7 @@
 #include "markup.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMEditor::RemoveChildAction final : public InspectorHistory::Action {
     WTF_MAKE_NONCOPYABLE(RemoveChildAction);
@@ -478,4 +478,4 @@ bool DOMEditor::replaceWholeText(Text& textNode, const String& text, ErrorString
     return populateErrorString(replaceWholeText(textNode, text), errorString);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

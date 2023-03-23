@@ -18,10 +18,10 @@
  */
 
 #include "config.h"
-#include "WebKitOptionMenu.h"
+#include "CyberKitOptionMenu.h"
 
-#include "WebKitOptionMenuItemPrivate.h"
-#include "WebKitOptionMenuPrivate.h"
+#include "CyberKitOptionMenuItemPrivate.h"
+#include "CyberKitOptionMenuPrivate.h"
 #include <wtf/glib/WTFGType.h>
 
 #if PLATFORM(GTK)
@@ -29,23 +29,23 @@
 #include <CyberCore/GUniquePtrGtk.h>
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitOptionMenu:
+ * CyberKitOptionMenu:
  *
- * Represents the dropdown menu of a `select` element in a #WebKitWebView.
+ * Represents the dropdown menu of a `select` element in a #CyberKitWebView.
  *
- * When a select element in a #WebKitWebView needs to display a dropdown menu, the signal
- * #WebKitWebView::show-option-menu is emitted, providing a WebKitOptionMenu with the
- * #WebKitOptionMenuItem<!-- -->s that should be displayed.
+ * When a select element in a #CyberKitWebView needs to display a dropdown menu, the signal
+ * #CyberKitWebView::show-option-menu is emitted, providing a CyberKitOptionMenu with the
+ * #CyberKitOptionMenuItem<!-- -->s that should be displayed.
  *
  * Since: 2.18
  */
 
-struct _WebKitOptionMenuPrivate {
-    Vector<WebKitOptionMenuItem> items;
-    RefPtr<WebKitPopupMenu> popupMenu;
+struct _CyberKitOptionMenuPrivate {
+    Vector<CyberKitOptionMenuItem> items;
+    RefPtr<CyberKitPopupMenu> popupMenu;
 #if PLATFORM(GTK)
 #if USE(GTK4)
     GRefPtr<GdkEvent> event;
@@ -63,15 +63,15 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitOptionMenu, webkit_option_menu, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitOptionMenu, webkit_option_menu, G_TYPE_OBJECT, GObject)
 
-static void webkit_option_menu_class_init(WebKitOptionMenuClass* optionMenuClass)
+static void webkit_option_menu_class_init(CyberKitOptionMenuClass* optionMenuClass)
 {
     /**
-     * WebKitOptionMenu::close:
-     * @menu: the #WebKitOptionMenu on which the signal is emitted
+     * CyberKitOptionMenu::close:
+     * @menu: the #CyberKitOptionMenu on which the signal is emitted
      *
-     * Emitted when closing a #WebKitOptionMenu is requested. This can happen
+     * Emitted when closing a #CyberKitOptionMenu is requested. This can happen
      * when the user explicitly calls webkit_option_menu_close() or when the
      * element is detached from the current page.
      *
@@ -86,13 +86,13 @@ static void webkit_option_menu_class_init(WebKitOptionMenuClass* optionMenuClass
             G_TYPE_NONE, 0);
 }
 
-WebKitOptionMenu* webkitOptionMenuCreate(WebKitPopupMenu& popupMenu, const Vector<WebPopupItem>& items, int32_t selectedIndex)
+CyberKitOptionMenu* webkitOptionMenuCreate(CyberKitPopupMenu& popupMenu, const Vector<WebPopupItem>& items, int32_t selectedIndex)
 {
     auto* menu = WEBKIT_OPTION_MENU(g_object_new(WEBKIT_TYPE_OPTION_MENU, nullptr));
     menu->priv->popupMenu = &popupMenu;
     menu->priv->items.reserveInitialCapacity(items.size());
     for (const auto& item : items)
-        menu->priv->items.uncheckedAppend(WebKitOptionMenuItem(item));
+        menu->priv->items.uncheckedAppend(CyberKitOptionMenuItem(item));
     if (selectedIndex >= 0) {
         ASSERT(static_cast<unsigned>(selectedIndex) < menu->priv->items.size());
         menu->priv->items[selectedIndex].isSelected = true;
@@ -101,7 +101,7 @@ WebKitOptionMenu* webkitOptionMenuCreate(WebKitPopupMenu& popupMenu, const Vecto
 }
 
 #if PLATFORM(GTK)
-void webkitOptionMenuSetEvent(WebKitOptionMenu* menu, GdkEvent* event)
+void webkitOptionMenuSetEvent(CyberKitOptionMenu* menu, GdkEvent* event)
 {
 #if USE(GTK4)
     menu->priv->event = event;
@@ -113,15 +113,15 @@ void webkitOptionMenuSetEvent(WebKitOptionMenu* menu, GdkEvent* event)
 
 /**
  * webkit_option_menu_get_n_items:
- * @menu: a #WebKitOptionMenu
+ * @menu: a #CyberKitOptionMenu
  *
  * Gets the length of the @menu.
  *
- * Returns: the number of #WebKitOptionMenuItem<!-- -->s in @menu
+ * Returns: the number of #CyberKitOptionMenuItem<!-- -->s in @menu
  *
  * Since: 2.18
  */
-guint webkit_option_menu_get_n_items(WebKitOptionMenu* menu)
+guint webkit_option_menu_get_n_items(CyberKitOptionMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_OPTION_MENU(menu), 0);
 
@@ -130,16 +130,16 @@ guint webkit_option_menu_get_n_items(WebKitOptionMenu* menu)
 
 /**
  * webkit_option_menu_get_item:
- * @menu: a #WebKitOptionMenu
+ * @menu: a #CyberKitOptionMenu
  * @index: the index of the item
  *
- * Returns the #WebKitOptionMenuItem at @index in @menu.
+ * Returns the #CyberKitOptionMenuItem at @index in @menu.
  *
- * Returns: (transfer none): a #WebKitOptionMenuItem of @menu.
+ * Returns: (transfer none): a #CyberKitOptionMenuItem of @menu.
  *
  * Since: 2.18
  */
-WebKitOptionMenuItem* webkit_option_menu_get_item(WebKitOptionMenu* menu, guint index)
+CyberKitOptionMenuItem* webkit_option_menu_get_item(CyberKitOptionMenu* menu, guint index)
 {
     g_return_val_if_fail(WEBKIT_IS_OPTION_MENU(menu), nullptr);
     g_return_val_if_fail(index < menu->priv->items.size(), nullptr);
@@ -149,10 +149,10 @@ WebKitOptionMenuItem* webkit_option_menu_get_item(WebKitOptionMenu* menu, guint 
 
 /**
  * webkit_option_menu_select_item:
- * @menu: a #WebKitOptionMenu
+ * @menu: a #CyberKitOptionMenu
  * @index: the index of the item
  *
- * Selects the #WebKitOptionMenuItem at @index in @menu.
+ * Selects the #CyberKitOptionMenuItem at @index in @menu.
  *
  * Selecting an item changes the
  * text shown by the combo button, but it doesn't change the value of the element. You need to
@@ -161,7 +161,7 @@ WebKitOptionMenuItem* webkit_option_menu_get_item(WebKitOptionMenu* menu, guint 
  *
  * Since: 2.18
  */
-void webkit_option_menu_select_item(WebKitOptionMenu* menu, guint index)
+void webkit_option_menu_select_item(CyberKitOptionMenu* menu, guint index)
 {
     g_return_if_fail(WEBKIT_IS_OPTION_MENU(menu));
     g_return_if_fail(index < menu->priv->items.size());
@@ -171,10 +171,10 @@ void webkit_option_menu_select_item(WebKitOptionMenu* menu, guint index)
 
 /**
  * webkit_option_menu_activate_item:
- * @menu: a #WebKitOptionMenu
+ * @menu: a #CyberKitOptionMenu
  * @index: the index of the item
  *
- * Activates the #WebKitOptionMenuItem at @index in @menu.
+ * Activates the #CyberKitOptionMenuItem at @index in @menu.
  *
  * Activating an item changes the value
  * of the element making the item the active one. You are expected to close the menu with
@@ -183,7 +183,7 @@ void webkit_option_menu_select_item(WebKitOptionMenu* menu, guint index)
  *
  * Since: 2.18
  */
-void webkit_option_menu_activate_item(WebKitOptionMenu* menu, guint index)
+void webkit_option_menu_activate_item(CyberKitOptionMenu* menu, guint index)
 {
     g_return_if_fail(WEBKIT_IS_OPTION_MENU(menu));
     g_return_if_fail(index < menu->priv->items.size());
@@ -193,19 +193,19 @@ void webkit_option_menu_activate_item(WebKitOptionMenu* menu, guint index)
 
 /**
  * webkit_option_menu_close:
- * @menu: a #WebKitOptionMenu
+ * @menu: a #CyberKitOptionMenu
  *
- * Request to close a #WebKitOptionMenu.
+ * Request to close a #CyberKitOptionMenu.
  *
- * This emits WebKitOptionMenu::close signal.
- * This function should always be called to notify WebKit that the associated
+ * This emits CyberKitOptionMenu::close signal.
+ * This function should always be called to notify CyberKit that the associated
  * menu has been closed. If the menu is closed and neither webkit_option_menu_select_item()
  * nor webkit_option_menu_activate_item() have been called, the element value remains
  * unchanged.
  *
  * Since: 2.18
  */
-void webkit_option_menu_close(WebKitOptionMenu* menu)
+void webkit_option_menu_close(CyberKitOptionMenu* menu)
 {
     g_return_if_fail(WEBKIT_IS_OPTION_MENU(menu));
 
@@ -215,7 +215,7 @@ void webkit_option_menu_close(WebKitOptionMenu* menu)
 #if PLATFORM(GTK)
 /**
  * webkit_option_menu_get_event:
- * @menu: a #WebKitOptionMenu
+ * @menu: a #CyberKitOptionMenu
  *
  * Gets the #GdkEvent that triggered the dropdown menu.
  * If @menu was not triggered by a user interaction, like a mouse click,
@@ -225,7 +225,7 @@ void webkit_option_menu_close(WebKitOptionMenu* menu)
  *
  * Since: 2.40
  */
-GdkEvent* webkit_option_menu_get_event(WebKitOptionMenu* menu)
+GdkEvent* webkit_option_menu_get_event(CyberKitOptionMenu* menu)
 {
     g_return_val_if_fail(WEBKIT_IS_OPTION_MENU(menu), nullptr);
 

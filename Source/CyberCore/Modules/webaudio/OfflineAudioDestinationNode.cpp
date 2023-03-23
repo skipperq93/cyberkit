@@ -45,7 +45,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/threads/BinarySemaphore.h>
  
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OfflineAudioDestinationNode);
 
@@ -197,6 +197,6 @@ auto OfflineAudioDestinationNode::renderOnAudioThread() -> RenderResult
     return RenderResult::Complete;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ContactProperty : uint8_t { Email, Name, Tel };
 
@@ -35,12 +35,12 @@ enum class ContactProperty : uint8_t { Email, Name, Tel };
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ContactProperty> {
+template<> struct EnumTraits<CyberCore::ContactProperty> {
     using values = EnumValues<
-        WebCore::ContactProperty,
-        WebCore::ContactProperty::Email,
-        WebCore::ContactProperty::Name,
-        WebCore::ContactProperty::Tel
+        CyberCore::ContactProperty,
+        CyberCore::ContactProperty::Email,
+        CyberCore::ContactProperty::Name,
+        CyberCore::ContactProperty::Tel
     >;
 };
 

@@ -32,7 +32,7 @@
 #include "HTMLNames.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SplitElementCommand::SplitElementCommand(Ref<Element>&& element, Ref<Node>&& atChild)
     : SimpleEditCommand(element->document())
@@ -110,4 +110,4 @@ void SplitElementCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 }
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore

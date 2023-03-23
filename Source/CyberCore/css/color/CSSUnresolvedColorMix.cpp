@@ -30,7 +30,7 @@
 #include "ColorSerialization.h"
 #include "StyleBuilderState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static void serializationForCSS(StringBuilder& builder, const CSSUnresolvedColorMix::Component& component)
 {
@@ -99,4 +99,4 @@ StyleColor createStyleColor(const CSSUnresolvedColorMix& unresolved, const Docum
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

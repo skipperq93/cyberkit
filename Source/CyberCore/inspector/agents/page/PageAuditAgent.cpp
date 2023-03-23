@@ -44,7 +44,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -112,4 +112,4 @@ void PageAuditAgent::unmuteConsole()
     InspectorAuditAgent::unmuteConsole();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

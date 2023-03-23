@@ -53,7 +53,7 @@
 #include "VideoFrameGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WebCodecsVideoFrame::WebCodecsVideoFrame(ScriptExecutionContext& context)
     : ContextDestructionObserver(&context)
@@ -539,6 +539,6 @@ VideoColorSpace* WebCodecsVideoFrame::colorSpace() const
     return m_colorSpace.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS)

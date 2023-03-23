@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUPredefinedColorSpace.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUPredefinedColorSpace : uint8_t {
     SRGB,

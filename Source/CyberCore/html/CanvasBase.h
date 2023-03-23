@@ -30,7 +30,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class CanvasBase;
@@ -45,7 +45,7 @@ class ImageBuffer;
 class FloatRect;
 class ScriptExecutionContext;
 class SecurityOrigin;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class CanvasDisplayBufferObserver : public CanMakeWeakPtr<CanvasDisplayBufferObserver> {
 public:
@@ -152,11 +152,11 @@ private:
     WeakHashSet<CanvasDisplayBufferObserver> m_displayBufferObservers;
 };
 
-WebCoreOpaqueRoot root(CanvasBase*);
+CyberCoreOpaqueRoot root(CanvasBase*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CANVAS(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-static bool isType(const WebCore::CanvasBase& canvas) { return canvas.predicate; } \
+static bool isType(const CyberCore::CanvasBase& canvas) { return canvas.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

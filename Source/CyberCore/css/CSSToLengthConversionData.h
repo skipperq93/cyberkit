@@ -35,7 +35,7 @@
 #include <optional>
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class FloatSize;
@@ -111,4 +111,4 @@ private:
     RenderStyle* m_viewportDependencyDetectionStyle { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,11 +31,11 @@
 #include <wtf/JSONValues.h>
 #include <wtf/Hasher.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 }
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 struct Action;
 
@@ -303,25 +303,25 @@ inline void add(Hasher& hasher, const ModifyHeadersAction& action)
     add(hasher, action.requestHeaders, action.responseHeaders, action.priority);
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::ContentExtensions::RedirectAction> {
-    using Action = WebCore::ContentExtensions::RedirectAction;
+template<> struct DefaultHash<CyberCore::ContentExtensions::RedirectAction> {
+    using Action = CyberCore::ContentExtensions::RedirectAction;
     static uint32_t hash(const Action& action) { return computeHash(action); }
     static bool equal(const Action& a, const Action& b) { return a == b; }
     static constexpr bool safeToCompareToEmptyOrDeleted = true;
 };
-template<> struct HashTraits<WebCore::ContentExtensions::RedirectAction> : public CustomHashTraits<WebCore::ContentExtensions::RedirectAction> { };
+template<> struct HashTraits<CyberCore::ContentExtensions::RedirectAction> : public CustomHashTraits<CyberCore::ContentExtensions::RedirectAction> { };
 
-template<> struct DefaultHash<WebCore::ContentExtensions::ModifyHeadersAction> {
-    using Action = WebCore::ContentExtensions::ModifyHeadersAction;
+template<> struct DefaultHash<CyberCore::ContentExtensions::ModifyHeadersAction> {
+    using Action = CyberCore::ContentExtensions::ModifyHeadersAction;
     static uint32_t hash(const Action& action) { return computeHash(action); }
     static bool equal(const Action& a, const Action& b) { return a == b; }
     static constexpr bool safeToCompareToEmptyOrDeleted = true;
 };
-template<> struct HashTraits<WebCore::ContentExtensions::ModifyHeadersAction> : public CustomHashTraits<WebCore::ContentExtensions::ModifyHeadersAction> { };
+template<> struct HashTraits<CyberCore::ContentExtensions::ModifyHeadersAction> : public CustomHashTraits<CyberCore::ContentExtensions::ModifyHeadersAction> { };
 
 } // namespace WTF
 

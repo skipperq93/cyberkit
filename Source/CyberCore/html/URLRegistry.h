@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class URLRegistry;
@@ -60,4 +60,4 @@ public:
     virtual URLRegistrable* lookup(const String&) const { ASSERT_NOT_REACHED(); return 0; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

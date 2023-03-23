@@ -40,7 +40,7 @@
 #include "ExceptionOr.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSPerspective);
 
@@ -174,4 +174,4 @@ RefPtr<CSSValue> CSSPerspective::toCSSValue() const
     return CSSFunctionValue::create(CSSValuePerspective, length.releaseNonNull());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

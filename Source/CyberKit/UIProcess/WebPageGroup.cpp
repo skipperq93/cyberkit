@@ -38,7 +38,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringConcatenate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 typedef HashMap<PageGroupIdentifier, WebPageGroup*> WebPageGroupMap;
 
@@ -87,11 +87,11 @@ static WebPageGroupData pageGroupData(const String& identifier)
     return data;
 }
 
-// FIXME: Why does the WebPreferences object here use ".WebKit2" instead of "WebKit2." which all the other constructors use.
-// If it turns out that it's wrong, we can change it to to "WebKit2." and get rid of the globalDebugKeyPrefix from WebPreferences.
+// FIXME: Why does the WebPreferences object here use ".CyberKit2" instead of "CyberKit2." which all the other constructors use.
+// If it turns out that it's wrong, we can change it to to "CyberKit2." and get rid of the globalDebugKeyPrefix from WebPreferences.
 WebPageGroup::WebPageGroup(const String& identifier)
     : m_data(pageGroupData(identifier))
-    , m_preferences(WebPreferences::createWithLegacyDefaults(m_data.identifier, ".WebKit2"_s, "WebKit2."_s))
+    , m_preferences(WebPreferences::createWithLegacyDefaults(m_data.identifier, ".CyberKit2"_s, "CyberKit2."_s))
     , m_userContentController(WebUserContentControllerProxy::create())
 {
     webPageGroupMap().set(m_data.pageGroupID, this);
@@ -133,4 +133,4 @@ WebUserContentControllerProxy& WebPageGroup::userContentController()
     return m_userContentController;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 

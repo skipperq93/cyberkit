@@ -29,7 +29,7 @@
 
 #include "RTCEncodedFrame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCEncodedAudioFrame : public RTCEncodedFrame {
 public:
@@ -47,6 +47,6 @@ private:
     mutable std::optional<Metadata> m_metadata;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

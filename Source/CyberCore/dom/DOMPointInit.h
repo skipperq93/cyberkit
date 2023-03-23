@@ -30,7 +30,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMPointInit {
     double x { 0 };
@@ -39,4 +39,4 @@ struct DOMPointInit {
     double w { 1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

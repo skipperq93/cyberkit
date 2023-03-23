@@ -34,7 +34,7 @@ class AbstractLocker;
 class Lock;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextGL;
 class WebGLContextGroup;
@@ -72,6 +72,6 @@ private:
     WebGLContextGroup* m_contextGroup;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

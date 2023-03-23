@@ -26,7 +26,7 @@
 #include "TestLegacyNoInterfaceObject.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestLegacyNoInterfaceObject : public JSDOMWrapper<TestLegacyNoInterfaceObject> {
 public:
@@ -98,6 +98,6 @@ template<> struct JSDOMWrapperConverterTraits<TestLegacyNoInterfaceObject> {
     using ToWrappedReturnType = TestLegacyNoInterfaceObject*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(Condition22) || ENABLE(Condition23)

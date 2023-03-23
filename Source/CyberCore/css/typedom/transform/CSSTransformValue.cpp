@@ -47,7 +47,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSTransformValue);
 
@@ -188,4 +188,4 @@ RefPtr<CSSValue> CSSTransformValue::toCSSValue() const
     return CSSTransformListValue::create(WTFMove(builder));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

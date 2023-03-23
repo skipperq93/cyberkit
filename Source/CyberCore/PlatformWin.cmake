@@ -11,7 +11,7 @@ if (USE_DAWN)
     include(platform/Dawn.cmake)
 endif ()
 
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/accessibility/win"
     "${WEBCORE_DIR}/page/win"
     "${WEBCORE_DIR}/platform/graphics/egl"
@@ -24,7 +24,7 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/win"
 )
 
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     accessibility/win/AXObjectCacheWin.cpp
     accessibility/win/AccessibilityObjectWin.cpp
     accessibility/win/AccessibilityObjectWrapperWin.cpp
@@ -121,16 +121,16 @@ list(APPEND WebCore_SOURCES
     platform/win/SystemInfo.cpp
     platform/win/UserAgentWin.cpp
     platform/win/WCDataObject.cpp
-    platform/win/WebCoreBundleWin.cpp
-    platform/win/WebCoreInstanceHandle.cpp
-    platform/win/WebCoreTextRenderer.cpp
+    platform/win/CyberCoreBundleWin.cpp
+    platform/win/CyberCoreInstanceHandle.cpp
+    platform/win/CyberCoreTextRenderer.cpp
     platform/win/WheelEventWin.cpp
     platform/win/WidgetWin.cpp
     platform/win/WindowMessageBroadcaster.cpp
     platform/win/WindowsKeyNames.cpp
 )
 
-list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
     accessibility/win/AccessibilityObjectWrapperWin.h
 
     page/win/FrameWin.h
@@ -157,16 +157,16 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/win/SearchPopupMenuWin.h
     platform/win/SystemInfo.h
     platform/win/WCDataObject.h
-    platform/win/WebCoreBundleWin.h
-    platform/win/WebCoreInstanceHandle.h
-    platform/win/WebCoreTextRenderer.h
+    platform/win/CyberCoreBundleWin.h
+    platform/win/CyberCoreInstanceHandle.h
+    platform/win/CyberCoreTextRenderer.h
     platform/win/WindowMessageBroadcaster.h
     platform/win/WindowMessageListener.h
     platform/win/WindowsKeyNames.h
     platform/win/WindowsTouch.h
 )
 
-list(APPEND WebCore_LIBRARIES
+list(APPEND CyberCore_LIBRARIES
     crypt32
     iphlpapi
     usp10
@@ -180,12 +180,12 @@ file(COPY ${ModernMediaControlsImageFiles}
 )
 
 if (USE_CF)
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/loader/archive/cf"
         "${WEBCORE_DIR}/platform/cf"
     )
 
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         editing/SmartReplaceCF.cpp
 
         loader/archive/cf/LegacyWebArchive.cpp
@@ -195,21 +195,21 @@ if (USE_CF)
         platform/text/cf/HyphenationCF.cpp
     )
 
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         loader/archive/cf/LegacyWebArchive.h
     )
 
-    list(APPEND WebCore_LIBRARIES Apple::CoreFoundation)
-    list(APPEND WebCoreTestSupport_LIBRARIES Apple::CoreFoundation)
+    list(APPEND CyberCore_LIBRARIES Apple::CoreFoundation)
+    list(APPEND CyberCoreTestSupport_LIBRARIES Apple::CoreFoundation)
 else ()
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/text/Hyphenation.cpp
     )
 endif ()
 
 if (ENABLE_VIDEO AND USE_MEDIA_FOUNDATION)
     # Define a INTERFACE library for MediaFoundation and link it
-    # explicitly with direct WebCore consumers because /DELAYLOAD causes
+    # explicitly with direct CyberCore consumers because /DELAYLOAD causes
     # linker warnings for modules not using MediaFoundation.
     #  LINK : warning LNK4199: /DELAYLOAD:mf.dll ignored; no imports found from mf.dll
     add_library(MediaFoundation INTERFACE)
@@ -231,19 +231,19 @@ if (ENABLE_VIDEO AND USE_MEDIA_FOUNDATION)
         /DELAYLOAD:mfplat.dll
     )
 
-    list(APPEND WebCore_PRIVATE_LIBRARIES MediaFoundation)
+    list(APPEND CyberCore_PRIVATE_LIBRARIES MediaFoundation)
 endif ()
 
 if (USE_WOFF2)
     # The WOFF2 libraries don't compile as DLLs on Windows, so add in
     # the additional libraries WOFF2::dec requires
-    list(APPEND WebCore_LIBRARIES
+    list(APPEND CyberCore_LIBRARIES
         WOFF2::common
         brotlidec
     )
 endif ()
 
-list(APPEND WebCoreTestSupport_LIBRARIES
+list(APPEND CyberCoreTestSupport_LIBRARIES
     Cairo::Cairo
     shlwapi
 )

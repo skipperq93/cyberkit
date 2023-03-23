@@ -39,7 +39,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 ALLOW_DEPRECATED_DECLARATIONS_END
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCRtpReceiverBackend;
 
@@ -68,6 +68,6 @@ private:
     rtc::scoped_refptr<webrtc::RtpTransceiverInterface> m_rtcTransceiver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

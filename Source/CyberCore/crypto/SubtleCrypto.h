@@ -42,7 +42,7 @@ class ArrayBuffer;
 class CallFrame;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct JsonWebKey;
 

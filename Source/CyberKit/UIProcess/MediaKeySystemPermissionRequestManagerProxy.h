@@ -37,7 +37,7 @@ namespace CyberCore {
 class SecurityOrigin;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -72,4 +72,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

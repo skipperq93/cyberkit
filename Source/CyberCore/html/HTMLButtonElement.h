@@ -25,7 +25,7 @@
 
 #include "HTMLFormControlElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderButton;
 

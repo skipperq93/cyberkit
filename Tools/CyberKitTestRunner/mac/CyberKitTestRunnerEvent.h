@@ -23,5 +23,5 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@interface WebKitTestRunnerEvent : NSEvent
+@interface CyberKitTestRunnerEvent : NSEvent
 @end

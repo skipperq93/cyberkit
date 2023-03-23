@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // These values are arranged so that they can be used with OptionSet.
 // And using it with Markable via EnumMarkableTraits.
@@ -39,4 +39,4 @@ enum class LinkIconType : uint8_t {
     TouchPrecomposedIcon = 1 << 2
 };
 
-} // namespace WebCore
+} // namespace CyberCore

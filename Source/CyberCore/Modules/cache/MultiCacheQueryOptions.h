@@ -28,10 +28,10 @@
 #include "CacheQueryOptions.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MultiCacheQueryOptions : CacheQueryOptions {
     String cacheName;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

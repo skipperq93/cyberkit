@@ -27,7 +27,7 @@
 
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NestingLevelIncrementer {
     WTF_MAKE_NONCOPYABLE(NestingLevelIncrementer);
@@ -47,4 +47,4 @@ private:
     unsigned* m_nestingLevel;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

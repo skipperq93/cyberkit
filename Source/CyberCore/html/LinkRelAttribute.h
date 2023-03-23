@@ -35,7 +35,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Markable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 enum class LinkIconType : uint8_t;

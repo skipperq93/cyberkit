@@ -30,7 +30,7 @@
 #include "ApplePayPaymentContact.h"
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaymentContact;
 

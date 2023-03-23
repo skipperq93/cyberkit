@@ -21,8 +21,8 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebProcessPool {
-    HandleMessage(String messageName, WebKit::UserData messageBody)
-    HandleSynchronousMessage(String messageName, WebKit::UserData messageBody) -> (WebKit::UserData returnData) Synchronous
+    HandleMessage(String messageName, CyberKit::UserData messageBody)
+    HandleSynchronousMessage(String messageName, CyberKit::UserData messageBody) -> (CyberKit::UserData returnData) Synchronous
 
 #if ENABLE(GAMEPAD)
     // FIXME: Consider moving Gamepad messages to their own MessageListener.

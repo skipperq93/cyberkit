@@ -38,7 +38,7 @@
 #include <gdk/gdkx.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 PointerLockManagerX11::PointerLockManagerX11(WebPageProxy& webPage, const FloatPoint& position, const FloatPoint& globalPosition, WebMouseEventButton button, unsigned short buttons, OptionSet<WebEventModifier> modifiers)
@@ -86,6 +86,6 @@ void PointerLockManagerX11::didReceiveMotionEvent(const FloatPoint& point)
     XWarpPointer(display, None, XRootWindow(display, 0), 0, 0, 0, 0, m_initialPoint.x(), m_initialPoint.y());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(WAYLAND)

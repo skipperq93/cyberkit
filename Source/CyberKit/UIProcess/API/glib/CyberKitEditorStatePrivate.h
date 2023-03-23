@@ -20,8 +20,8 @@
 #pragma once
 
 #include "EditorState.h"
-#include "WebKitEditorState.h"
+#include "CyberKitEditorState.h"
 #include "WebPageProxy.h"
 
-WebKitEditorState* webkitEditorStateCreate(WebKit::WebPageProxy&);
-void webkitEditorStateChanged(WebKitEditorState*, const WebKit::EditorState&);
+CyberKitEditorState* webkitEditorStateCreate(CyberKit::WebPageProxy&);
+void webkitEditorStateChanged(CyberKitEditorState*, const CyberKit::EditorState&);

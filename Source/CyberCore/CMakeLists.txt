@@ -1,17 +1,17 @@
-set_property(DIRECTORY . PROPERTY FOLDER "WebCore")
+set_property(DIRECTORY . PROPERTY FOLDER "CyberCore")
 
 include(Headers.cmake)
-include(WebCoreMacros.cmake)
+include(CyberCoreMacros.cmake)
 
 add_subdirectory(PAL/pal)
 
-list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberCore_UNIFIED_SOURCE_LIST_FILES
     "Sources.txt"
 )
 
-set(WebCore_PRIVATE_INCLUDE_DIRECTORIES
+set(CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}"
-    "${WebCore_DERIVED_SOURCES_DIR}"
+    "${CyberCore_DERIVED_SOURCES_DIR}"
     "${WEBCORE_DIR}"
     "${WEBCORE_DIR}/Modules/WebGPU"
     "${WEBCORE_DIR}/Modules/airplay"
@@ -191,7 +191,7 @@ set(WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/xml/parser"
 )
 
-set(WebCore_IDL_INCLUDES
+set(CyberCore_IDL_INCLUDES
     css
     dom
     fileapi
@@ -250,7 +250,7 @@ set(WebCore_IDL_INCLUDES
     loader/appcache
 )
 
-set(WebCore_NON_SVG_IDL_FILES
+set(CyberCore_NON_SVG_IDL_FILES
     Modules/airplay/CyberKitPlaybackTargetAvailabilityEvent.idl
 
     Modules/async-clipboard/Clipboard.idl
@@ -1391,7 +1391,7 @@ set(WebCore_NON_SVG_IDL_FILES
     xml/XSLTProcessor.idl
 )
 
-set(WebCore_SVG_IDL_FILES
+set(CyberCore_SVG_IDL_FILES
     svg/Document+SVG.idl
     svg/SVGAElement.idl
     svg/SVGAngle.idl
@@ -1521,15 +1521,15 @@ set(WebCore_SVG_IDL_FILES
     svg/SVGZoomAndPan.idl
 )
 
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/Modules/gamepad"
 )
 
-list(APPEND WebCore_IDL_INCLUDES
+list(APPEND CyberCore_IDL_INCLUDES
     Modules/gamepad
 )
 
-list(APPEND WebCore_NON_SVG_IDL_FILES
+list(APPEND CyberCore_NON_SVG_IDL_FILES
     Modules/gamepad/Gamepad.idl
     Modules/gamepad/GamepadButton.idl
     Modules/gamepad/GamepadEffectParameters.idl
@@ -1541,7 +1541,7 @@ list(APPEND WebCore_NON_SVG_IDL_FILES
 )
 
 if (ENABLE_GAMEPAD)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         Modules/gamepad/Gamepad.cpp
         Modules/gamepad/GamepadButton.cpp
         Modules/gamepad/GamepadEvent.cpp
@@ -1554,7 +1554,7 @@ if (ENABLE_GAMEPAD)
     )
 endif ()
 
-list(APPEND WebCore_NON_SVG_IDL_FILES
+list(APPEND CyberCore_NON_SVG_IDL_FILES
     Modules/webxr/Navigator+WebXR.idl
     Modules/webxr/WebXRBoundedReferenceSpace.idl
     Modules/webxr/WebXRFrame+HandInput.idl
@@ -1598,7 +1598,7 @@ list(APPEND WebCore_NON_SVG_IDL_FILES
     Modules/webxr/XRWebGLLayerInit.idl
 )
 
-list(APPEND WebCore_NON_SVG_IDL_FILES
+list(APPEND CyberCore_NON_SVG_IDL_FILES
     Modules/WebGPU/GPU.idl
     Modules/WebGPU/GPUAdapter.idl
     Modules/WebGPU/GPUAddressMode.idl
@@ -1739,20 +1739,20 @@ list(APPEND WebCore_NON_SVG_IDL_FILES
     Modules/WebGPU/NavigatorGPU.idl
 )
 
-set(WebCore_IDL_FILES
-    ${WebCore_NON_SVG_IDL_FILES}
-    ${WebCore_SVG_IDL_FILES}
+set(CyberCore_IDL_FILES
+    ${CyberCore_NON_SVG_IDL_FILES}
+    ${CyberCore_SVG_IDL_FILES}
 )
 
-set(WebCore_CSS_PROPERTY_NAMES
+set(CyberCore_CSS_PROPERTY_NAMES
     ${WEBCORE_DIR}/css/CSSProperties.json
 )
 
-set(WebCore_CSS_VALUE_KEYWORDS
+set(CyberCore_CSS_VALUE_KEYWORDS
     ${WEBCORE_DIR}/css/CSSValueKeywords.in
 )
 
-set(WebCore_USER_AGENT_STYLE_SHEETS
+set(CyberCore_USER_AGENT_STYLE_SHEETS
     ${WEBCORE_DIR}/css/counterStyles.css
     ${WEBCORE_DIR}/css/dialog.css
     ${WEBCORE_DIR}/css/fullscreen.css
@@ -1768,72 +1768,72 @@ set(WebCore_USER_AGENT_STYLE_SHEETS
     ${WEBCORE_DIR}/html/shadow/meterElementShadow.css
 )
 
-set(WebCore_PLUG_INS_RESOURCES
+set(CyberCore_PLUG_INS_RESOURCES
     ${WEBCORE_DIR}/Resources/plugIns.js
 )
 
-set(WebCore_LIBRARIES
+set(CyberCore_LIBRARIES
     ICU::uc
     LibXml2::LibXml2
     SQLite::SQLite3
     ZLIB::ZLIB
 )
-set(WebCore_FRAMEWORKS
-    JavaScriptCore
+set(CyberCore_FRAMEWORKS
+    CyberScriptCore
     PAL
     WTF
 )
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND WebCore_FRAMEWORKS bmalloc)
+    list(APPEND CyberCore_FRAMEWORKS bmalloc)
 endif ()
 
 if (ENABLE_XSLT)
-    list(APPEND WebCore_LIBRARIES LibXslt::LibXslt)
+    list(APPEND CyberCore_LIBRARIES LibXslt::LibXslt)
 endif ()
 
 # For platforms that want to use system-provided OpenGL (ES) / EGL headers,
 # these include directories, libraries or definitions need to be
 # added before the ANGLE directories.
 if (USE_ANGLE_EGL)
-    list(APPEND WebCore_LIBRARIES
+    list(APPEND CyberCore_LIBRARIES
         ANGLE::EGL
         ANGLE::GLES
     )
 elseif (USE_LIBEPOXY)
-    list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES
         ${LIBEPOXY_INCLUDE_DIRS}
     )
-    list(APPEND WebCore_LIBRARIES
+    list(APPEND CyberCore_LIBRARIES
         ${LIBEPOXY_LIBRARIES}
     )
     add_definitions(${LIBEPOXY_DEFINITIONS})
 else ()
     if (USE_OPENGL)
-        list(APPEND WebCore_LIBRARIES OpenGL::OpenGL)
+        list(APPEND CyberCore_LIBRARIES OpenGL::OpenGL)
         if (TARGET OpenGL::GLX)
-            list(APPEND WebCore_LIBRARIES OpenGL::GLX)
+            list(APPEND CyberCore_LIBRARIES OpenGL::GLX)
         endif ()
     elseif (USE_OPENGL_ES)
-        list(APPEND WebCore_LIBRARIES OpenGL::GLES)
+        list(APPEND CyberCore_LIBRARIES OpenGL::GLES)
     endif ()
 
     if (USE_EGL)
-        list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
+        list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES
             ${EGL_INCLUDE_DIRS}
         )
-        list(APPEND WebCore_LIBRARIES
+        list(APPEND CyberCore_LIBRARIES
             ${EGL_LIBRARIES}
         )
         add_definitions(${EGL_DEFINITIONS})
     endif ()
 endif ()
 
-set(WebCoreTestSupport_FRAMEWORKS ${WebCore_FRAMEWORKS})
-set(WebCoreTestSupport_DEPENDENCIES WebCoreTestSupportBindings)
-set(WebCoreTestSupport_PRIVATE_HEADERS testing/js/WebCoreTestSupport.h)
+set(CyberCoreTestSupport_FRAMEWORKS ${CyberCore_FRAMEWORKS})
+set(CyberCoreTestSupport_DEPENDENCIES CyberCoreTestSupportBindings)
+set(CyberCoreTestSupport_PRIVATE_HEADERS testing/js/CyberCoreTestSupport.h)
 
 if (ENABLE_LEGACY_ENCRYPTED_MEDIA)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         Modules/encryptedmedia/legacy/LegacyCDM.cpp
         Modules/encryptedmedia/legacy/LegacyCDMPrivateClearKey.cpp
         Modules/encryptedmedia/legacy/LegacyCDMPrivateMediaPlayer.cpp
@@ -1844,12 +1844,12 @@ if (ENABLE_LEGACY_ENCRYPTED_MEDIA)
         Modules/encryptedmedia/legacy/CyberKitMediaKeySession.cpp
         Modules/encryptedmedia/legacy/CyberKitMediaKeys.cpp
     )
-    list(APPEND WebCoreTestSupport_SOURCES
+    list(APPEND CyberCoreTestSupport_SOURCES
         testing/LegacyMockCDM.cpp
     )
 endif ()
 
-list(APPEND WebCore_IDL_FILES
+list(APPEND CyberCore_IDL_FILES
     Modules/encryptedmedia/legacy/CyberKitMediaKeyMessageEvent.idl
     Modules/encryptedmedia/legacy/CyberKitMediaKeyNeededEvent.idl
     Modules/encryptedmedia/legacy/CyberKitMediaKeySession.idl
@@ -1859,7 +1859,7 @@ list(APPEND WebCore_IDL_FILES
 )
 
 if (ENABLE_ENCRYPTED_MEDIA)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         Modules/encryptedmedia/CDM.cpp
         Modules/encryptedmedia/InitDataRegistry.cpp
         Modules/encryptedmedia/MediaKeyMessageEvent.cpp
@@ -1874,17 +1874,17 @@ if (ENABLE_ENCRYPTED_MEDIA)
         html/MediaEncryptedEvent.cpp
     )
 
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/platform/encryptedmedia/clearkey"
     )
 endif ()
 
-list(APPEND WebCore_CSS_VALUE_KEYWORDS
+list(APPEND CyberCore_CSS_VALUE_KEYWORDS
     ${WEBCORE_DIR}/css/SVGCSSValueKeywords.in
 )
 
 if (ENABLE_WEBGL)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         html/canvas/ANGLEInstancedArrays.cpp
         html/canvas/EXTBlendMinMax.cpp
         html/canvas/EXTColorBufferFloat.cpp
@@ -1954,7 +1954,7 @@ if (ENABLE_WEBGL)
     )
 endif ()
 
-list(APPEND WebCore_IDL_FILES
+list(APPEND CyberCore_IDL_FILES
     html/canvas/ANGLEInstancedArrays.idl
     html/canvas/EXTBlendMinMax.idl
     html/canvas/EXTColorBufferFloat.idl
@@ -2021,38 +2021,38 @@ list(APPEND WebCore_IDL_FILES
 )
 
 if (ENABLE_WEBGL)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/FormatConverter.cpp
     )
 
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         ${WEBCORE_DIR}/platform/graphics/angle
     )
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/angle/ANGLEUtilities.cpp
         platform/graphics/angle/GraphicsContextGLANGLE.cpp
     )
 
-    list(APPEND WebCore_LIBRARIES ANGLE::GLES)
+    list(APPEND CyberCore_LIBRARIES ANGLE::GLES)
 elseif (USE_ANGLE_EGL)
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         ${WEBCORE_DIR}/platform/graphics/angle
         ${WEBCORE_DIR}/platform/graphics/opengl
     )
 
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/opengl/TemporaryOpenGLSetting.cpp
     )
 endif ()
 
-list(APPEND WebCore_IDL_FILES
+list(APPEND CyberCore_IDL_FILES
     page/UserMessageHandler.idl
     page/UserMessageHandlersNamespace.idl
     page/CyberKitNamespace.idl
 )
 
 if (ENABLE_USER_MESSAGE_HANDLERS)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         page/UserMessageHandler.cpp
         page/UserMessageHandlerDescriptor.cpp
         page/UserMessageHandlersNamespace.cpp
@@ -2061,40 +2061,40 @@ if (ENABLE_USER_MESSAGE_HANDLERS)
 endif ()
 
 if (USE_LCMS)
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/platform/graphics/lcms"
     )
 
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/graphics/lcms/LCMSUniquePtr.h
     )
 
-    list(APPEND WebCore_LIBRARIES LCMS2::LCMS2)
+    list(APPEND CyberCore_LIBRARIES LCMS2::LCMS2)
 endif ()
 
 if (USE_WOFF2)
-  list(APPEND WebCore_LIBRARIES WOFF2::dec)
+  list(APPEND CyberCore_LIBRARIES WOFF2::dec)
 endif ()
 
 if (USE_XDGMIME)
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES "${THIRDPARTY_DIR}/xdgmime/src")
-    list(APPEND WebCore_LIBRARIES xdgmime)
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES "${THIRDPARTY_DIR}/xdgmime/src")
+    list(APPEND CyberCore_LIBRARIES xdgmime)
 endif ()
 
 if (USE_LIBWEBRTC)
-    list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES
         "${THIRDPARTY_DIR}/libwebrtc/Source"
         "${THIRDPARTY_DIR}/libwebrtc/Source/webrtc"
         "${THIRDPARTY_DIR}/libwebrtc/Source/third_party/libvpx/source/libvpx"
         "${THIRDPARTY_DIR}/libwebrtc/Source/third_party/abseil-cpp"
     )
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/Modules/mediastream/libwebrtc"
         "${WEBCORE_DIR}/platform/libwebrtc"
         "${WEBCORE_DIR}/platform/mediastream/libwebrtc"
     )
-    list(APPEND WebCore_LIBRARIES webrtc)
-    list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
+    list(APPEND CyberCore_LIBRARIES webrtc)
+    list(APPEND CyberCore_UNIFIED_SOURCE_LIST_FILES
         "platform/SourcesLibWebRTC.txt"
     )
 endif ()
@@ -2103,18 +2103,18 @@ if (HAVE_OS_DARK_MODE_SUPPORT)
     set(FEATURE_DEFINES_WITH_SPACE_SEPARATOR "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR} HAVE_OS_DARK_MODE_SUPPORT")
 endif ()
 
-set(WebCoreTestSupport_PRIVATE_INCLUDE_DIRECTORIES
+set(CyberCoreTestSupport_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/mock"
     "${WEBCORE_DIR}/testing"
     "${WEBCORE_DIR}/testing/js"
-    "${WebCore_DERIVED_SOURCES_DIR}"
+    "${CyberCore_DERIVED_SOURCES_DIR}"
 )
 
-set(WebCoreTestSupport_IDL_INCLUDES
+set(CyberCoreTestSupport_IDL_INCLUDES
     testing
 )
 
-set(WebCoreTestSupport_IDL_FILES
+set(CyberCoreTestSupport_IDL_FILES
     testing/GCObservation.idl
     testing/InternalSettings.idl
     testing/Internals.idl
@@ -2129,7 +2129,7 @@ set(WebCoreTestSupport_IDL_FILES
     testing/TypeConversions.idl
 )
 
-list(APPEND WebCoreTestSupport_SOURCES
+list(APPEND CyberCoreTestSupport_SOURCES
     testing/GCObservation.cpp
     testing/InternalSettings.cpp
     testing/Internals.cpp
@@ -2142,11 +2142,11 @@ list(APPEND WebCoreTestSupport_SOURCES
     testing/MockPageOverlay.cpp
     testing/MockPageOverlayClient.cpp
     testing/ServiceWorkerInternals.cpp
-    testing/js/WebCoreTestSupport.cpp
+    testing/js/CyberCoreTestSupport.cpp
 )
 
 if (ENABLE_WEBXR)
-    list(APPEND WebCoreTestSupport_IDL_FILES
+    list(APPEND CyberCoreTestSupport_IDL_FILES
         testing/FakeXRBoundsPoint.idl
         testing/FakeXRButtonStateInit.idl
         testing/FakeXRInputSourceInit.idl
@@ -2157,7 +2157,7 @@ if (ENABLE_WEBXR)
         testing/WebXRTest.idl
         testing/XRSimulateUserActivationFunction.idl
     )
-    list(APPEND WebCoreTestSupport_SOURCES
+    list(APPEND CyberCoreTestSupport_SOURCES
         testing/WebFakeXRDevice.cpp
         testing/WebFakeXRInputController.cpp
         testing/WebXRTest.cpp
@@ -2202,9 +2202,9 @@ else ()
 endif ()
 
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/ModernMediaControls.css
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/ModernMediaControls.css
     DEPENDS ${MODERN_MEDIA_CONTROLS_STYLE_SHEETS}
-    COMMAND ${CAT_PROGRAM} ${MODERN_MEDIA_CONTROLS_STYLE_SHEETS} > ${WebCore_DERIVED_SOURCES_DIR}/ModernMediaControls.css
+    COMMAND ${CAT_PROGRAM} ${MODERN_MEDIA_CONTROLS_STYLE_SHEETS} > ${CyberCore_DERIVED_SOURCES_DIR}/ModernMediaControls.css
     VERBATIM)
 
 set(MODERN_MEDIA_CONTROLS_SCRIPTS
@@ -2285,9 +2285,9 @@ set(MODERN_MEDIA_CONTROLS_SCRIPTS
 )
 
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/ModernMediaControls.js
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/ModernMediaControls.js
     DEPENDS ${MODERN_MEDIA_CONTROLS_SCRIPTS}
-    COMMAND ${CAT_PROGRAM} ${MODERN_MEDIA_CONTROLS_SCRIPTS} > ${WebCore_DERIVED_SOURCES_DIR}/ModernMediaControls.js
+    COMMAND ${CAT_PROGRAM} ${MODERN_MEDIA_CONTROLS_SCRIPTS} > ${CyberCore_DERIVED_SOURCES_DIR}/ModernMediaControls.js
     VERBATIM)
 
 # Modules that the bindings generator scripts may use
@@ -2306,168 +2306,168 @@ set(MAKE_NAMES_DEPENDENCIES
     ${WEBCORE_DIR}/bindings/scripts/Hasher.pm
     ${WEBCORE_DIR}/bindings/scripts/StaticString.pm
 )
-set(SUPPLEMENTAL_DEPENDENCY_FILE ${WebCore_DERIVED_SOURCES_DIR}/supplemental_dependency.tmp)
-set(ISO_SUBSPACES_HEADER_FILE ${WebCore_DERIVED_SOURCES_DIR}/DOMIsoSubspaces.h)
-set(CLIENT_ISO_SUBSPACES_HEADER_FILE ${WebCore_DERIVED_SOURCES_DIR}/DOMClientIsoSubspaces.h)
-set(CONSTRUCTORS_HEADER_FILE ${WebCore_DERIVED_SOURCES_DIR}/DOMConstructors.h)
-set(WINDOW_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/DOMWindowConstructors.idl)
-set(WORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/WorkerGlobalScopeConstructors.idl)
-set(SHADOWREALMGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/ShadowRealmGlobalScopeConstructors.idl)
-set(DEDICATEDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/DedicatedWorkerGlobalScopeConstructors.idl)
-set(SERVICEWORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/ServiceWorkerGlobalScopeConstructors.idl)
-set(SHAREDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/SharedWorkerGlobalScopeConstructors.idl)
-set(WORKLETGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/WorkletGlobalScopeConstructors.idl)
-set(PAINTWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/PaintWorkletGlobalScopeConstructors.idl)
-set(AUDIOWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE ${WebCore_DERIVED_SOURCES_DIR}/AudioWorkletGlobalScopeConstructors.idl)
+set(SUPPLEMENTAL_DEPENDENCY_FILE ${CyberCore_DERIVED_SOURCES_DIR}/supplemental_dependency.tmp)
+set(ISO_SUBSPACES_HEADER_FILE ${CyberCore_DERIVED_SOURCES_DIR}/DOMIsoSubspaces.h)
+set(CLIENT_ISO_SUBSPACES_HEADER_FILE ${CyberCore_DERIVED_SOURCES_DIR}/DOMClientIsoSubspaces.h)
+set(CONSTRUCTORS_HEADER_FILE ${CyberCore_DERIVED_SOURCES_DIR}/DOMConstructors.h)
+set(WINDOW_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/DOMWindowConstructors.idl)
+set(WORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/WorkerGlobalScopeConstructors.idl)
+set(SHADOWREALMGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/ShadowRealmGlobalScopeConstructors.idl)
+set(DEDICATEDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/DedicatedWorkerGlobalScopeConstructors.idl)
+set(SERVICEWORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/ServiceWorkerGlobalScopeConstructors.idl)
+set(SHAREDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/SharedWorkerGlobalScopeConstructors.idl)
+set(WORKLETGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/WorkletGlobalScopeConstructors.idl)
+set(PAINTWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/PaintWorkletGlobalScopeConstructors.idl)
+set(AUDIOWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE ${CyberCore_DERIVED_SOURCES_DIR}/AudioWorkletGlobalScopeConstructors.idl)
 
-set(WebCore_INTERFACE_LIBRARIES WebCore)
-set(WebCore_INTERFACE_INCLUDE_DIRECTORIES ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR})
+set(CyberCore_INTERFACE_LIBRARIES CyberCore)
+set(CyberCore_INTERFACE_INCLUDE_DIRECTORIES ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR})
 
-set(WebCoreTestSupport_INTERFACE_LIBRARIES WebCoreTestSupport)
-set(WebCoreTestSupport_INTERFACE_INCLUDE_DIRECTORIES
-    ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/WebCoreTestSupport
+set(CyberCoreTestSupport_INTERFACE_LIBRARIES CyberCoreTestSupport)
+set(CyberCoreTestSupport_INTERFACE_INCLUDE_DIRECTORIES
+    ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/CyberCoreTestSupport
 )
 
-WEBKIT_FRAMEWORK_DECLARE(WebCore)
-WEBKIT_LIBRARY_DECLARE(WebCoreTestSupport)
+WEBKIT_FRAMEWORK_DECLARE(CyberCore)
+WEBKIT_LIBRARY_DECLARE(CyberCoreTestSupport)
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 
-list(APPEND WebCoreTestSupport_LIBRARIES ${WebCore_LIBRARIES})
-list(APPEND WebCoreTestSupport_PRIVATE_LIBRARIES ${WebCore_PRIVATE_LIBRARIES})
-list(APPEND WebCoreTestSupport_DEPENDENCIES WebCore)
+list(APPEND CyberCoreTestSupport_LIBRARIES ${CyberCore_LIBRARIES})
+list(APPEND CyberCoreTestSupport_PRIVATE_LIBRARIES ${CyberCore_PRIVATE_LIBRARIES})
+list(APPEND CyberCoreTestSupport_DEPENDENCIES CyberCore)
 
 MAKE_HASH_TOOLS(${WEBCORE_DIR}/platform/ColorData)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/ColorData.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/ColorData.cpp)
 
 # Generate DOMJITAbstractHeapRepository.h
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/DOMJITAbstractHeapRepository.h
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/DOMJITAbstractHeapRepository.h
     MAIN_DEPENDENCY domjit/DOMJITAbstractHeapRepository.yaml
     DEPENDS ${WEBCORE_DIR}/domjit/generate-abstract-heap.rb
-    COMMAND ${RUBY_EXECUTABLE} ${WEBCORE_DIR}/domjit/generate-abstract-heap.rb ${WEBCORE_DIR}/domjit/DOMJITAbstractHeapRepository.yaml ${WebCore_DERIVED_SOURCES_DIR}/DOMJITAbstractHeapRepository.h
+    COMMAND ${RUBY_EXECUTABLE} ${WEBCORE_DIR}/domjit/generate-abstract-heap.rb ${WEBCORE_DIR}/domjit/DOMJITAbstractHeapRepository.yaml ${CyberCore_DERIVED_SOURCES_DIR}/DOMJITAbstractHeapRepository.h
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/DOMJITAbstractHeapRepository.h)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/DOMJITAbstractHeapRepository.h)
 
 # Generate XMLViewerCSS.h
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/XMLViewerCSS.h ${WebCore_DERIVED_SOURCES_DIR}/XMLViewer.min.css
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewerCSS.h ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewer.min.css
     MAIN_DEPENDENCY xml/XMLViewer.css
-    DEPENDS ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl ${JavaScriptCore_SCRIPTS_DIR}/cssmin.py
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/cssmin.py < ${WEBCORE_DIR}/xml/XMLViewer.css > ${WebCore_DERIVED_SOURCES_DIR}/XMLViewer.min.css
-    COMMAND ${PERL_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl XMLViewer_css ${WebCore_DERIVED_SOURCES_DIR}/XMLViewer.min.css ${WebCore_DERIVED_SOURCES_DIR}/XMLViewerCSS.h
+    DEPENDS ${CyberScriptCore_SCRIPTS_DIR}/xxd.pl ${CyberScriptCore_SCRIPTS_DIR}/cssmin.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/cssmin.py < ${WEBCORE_DIR}/xml/XMLViewer.css > ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewer.min.css
+    COMMAND ${PERL_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/xxd.pl XMLViewer_css ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewer.min.css ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewerCSS.h
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/XMLViewerCSS.h)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewerCSS.h)
 
 # Generate XMLViewerJS.h
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/XMLViewerJS.h ${WebCore_DERIVED_SOURCES_DIR}/XMLViewer.min.js
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewerJS.h ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewer.min.js
     MAIN_DEPENDENCY xml/XMLViewer.js
-    DEPENDS ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py < ${WEBCORE_DIR}/xml/XMLViewer.js > ${WebCore_DERIVED_SOURCES_DIR}/XMLViewer.min.js
-    COMMAND ${PERL_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl XMLViewer_js ${WebCore_DERIVED_SOURCES_DIR}/XMLViewer.min.js ${WebCore_DERIVED_SOURCES_DIR}/XMLViewerJS.h
+    DEPENDS ${CyberScriptCore_SCRIPTS_DIR}/xxd.pl ${CyberScriptCore_SCRIPTS_DIR}/jsmin.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/jsmin.py < ${WEBCORE_DIR}/xml/XMLViewer.js > ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewer.min.js
+    COMMAND ${PERL_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/xxd.pl XMLViewer_js ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewer.min.js ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewerJS.h
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/XMLViewerJS.h)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/XMLViewerJS.h)
 
 # Generate HTML entity table
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/HTMLEntityTable.cpp
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/HTMLEntityTable.cpp
     MAIN_DEPENDENCY ${WEBCORE_DIR}/html/parser/HTMLEntityNames.in
     DEPENDS ${WEBCORE_DIR}/html/parser/create-html-entity-table
-    COMMAND ${PYTHON_EXECUTABLE} ${WEBCORE_DIR}/html/parser/create-html-entity-table -o ${WebCore_DERIVED_SOURCES_DIR}/HTMLEntityTable.cpp ${WEBCORE_DIR}/html/parser/HTMLEntityNames.in
+    COMMAND ${PYTHON_EXECUTABLE} ${WEBCORE_DIR}/html/parser/create-html-entity-table -o ${CyberCore_DERIVED_SOURCES_DIR}/HTMLEntityTable.cpp ${WEBCORE_DIR}/html/parser/HTMLEntityNames.in
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/HTMLEntityTable.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/HTMLEntityTable.cpp)
 
 # Generate HTTP header names
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.cpp ${WebCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.gperf ${WebCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.h
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.cpp ${CyberCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.gperf ${CyberCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.h
     MAIN_DEPENDENCY ${WEBCORE_DIR}/platform/network/HTTPHeaderNames.in
     DEPENDS ${WEBCORE_DIR}/platform/network/create-http-header-name-table
-    WORKING_DIRECTORY ${WebCore_DERIVED_SOURCES_DIR}
+    WORKING_DIRECTORY ${CyberCore_DERIVED_SOURCES_DIR}
     COMMAND ${PYTHON_EXECUTABLE} ${WEBCORE_DIR}/platform/network/create-http-header-name-table ${WEBCORE_DIR}/platform/network/HTTPHeaderNames.in "${GPERF_EXECUTABLE}"
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.cpp)
 
 # Generate CSS property names
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/CSSProperties.json ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.h ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.cpp ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.gperf ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.h ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.cpp ${WebCore_DERIVED_SOURCES_DIR}/StyleBuilderGenerated.cpp ${WebCore_DERIVED_SOURCES_DIR}/StylePropertyShorthandFunctions.h ${WebCore_DERIVED_SOURCES_DIR}/StylePropertyShorthandFunctions.cpp ${WebCore_DERIVED_SOURCES_DIR}/CSSStyleDeclaration+PropertyNames.idl
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/CSSProperties.json ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.h ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.cpp ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.gperf ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.h ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.cpp ${CyberCore_DERIVED_SOURCES_DIR}/StyleBuilderGenerated.cpp ${CyberCore_DERIVED_SOURCES_DIR}/StylePropertyShorthandFunctions.h ${CyberCore_DERIVED_SOURCES_DIR}/StylePropertyShorthandFunctions.cpp ${CyberCore_DERIVED_SOURCES_DIR}/CSSStyleDeclaration+PropertyNames.idl
     MAIN_DEPENDENCY ${WEBCORE_DIR}/css/process-css-properties.py
-    DEPENDS ${WebCore_CSS_PROPERTY_NAMES}
-    WORKING_DIRECTORY ${WebCore_DERIVED_SOURCES_DIR}
-    COMMAND ${PERL_EXECUTABLE} -ne "print" ${WebCore_CSS_PROPERTY_NAMES} > ${WebCore_DERIVED_SOURCES_DIR}/CSSProperties.json
+    DEPENDS ${CyberCore_CSS_PROPERTY_NAMES}
+    WORKING_DIRECTORY ${CyberCore_DERIVED_SOURCES_DIR}
+    COMMAND ${PERL_EXECUTABLE} -ne "print" ${CyberCore_CSS_PROPERTY_NAMES} > ${CyberCore_DERIVED_SOURCES_DIR}/CSSProperties.json
     COMMAND ${PYTHON_EXECUTABLE} ${WEBCORE_DIR}/css/process-css-properties.py --defines "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}" --gperf-executable "${GPERF_EXECUTABLE}"
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.cpp)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.cpp)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/StyleBuilderGenerated.cpp)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/StylePropertyShorthandFunctions.cpp)
-list(APPEND WebCore_IDL_FILES ${WebCore_DERIVED_SOURCES_DIR}/CSSStyleDeclaration+PropertyNames.idl)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/StyleBuilderGenerated.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/StylePropertyShorthandFunctions.cpp)
+list(APPEND CyberCore_IDL_FILES ${CyberCore_DERIVED_SOURCES_DIR}/CSSStyleDeclaration+PropertyNames.idl)
 
 # Generate CSS value keywords
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.in ${WebCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.h ${WebCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.cpp ${WebCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.gperf
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.in ${CyberCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.h ${CyberCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.cpp ${CyberCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.gperf
     MAIN_DEPENDENCY ${WEBCORE_DIR}/css/process-css-values.py
-    DEPENDS ${WebCore_CSS_VALUE_KEYWORDS}
-    WORKING_DIRECTORY ${WebCore_DERIVED_SOURCES_DIR}
-    COMMAND ${PERL_EXECUTABLE} -ne "print" ${WebCore_CSS_VALUE_KEYWORDS} > ${WebCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.in
+    DEPENDS ${CyberCore_CSS_VALUE_KEYWORDS}
+    WORKING_DIRECTORY ${CyberCore_DERIVED_SOURCES_DIR}
+    COMMAND ${PERL_EXECUTABLE} -ne "print" ${CyberCore_CSS_VALUE_KEYWORDS} > ${CyberCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.in
     COMMAND ${PYTHON_EXECUTABLE} ${WEBCORE_DIR}/css/process-css-values.py --defines "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR} ${CSS_VALUE_PLATFORM_DEFINES}" --gperf-executable "${GPERF_EXECUTABLE}"
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.cpp)
 ADD_SOURCE_WEBCORE_DERIVED_DEPENDENCIES(${WEBCORE_DIR}/css/parser/CSSParser.cpp CSSValueKeywords.h)
 ADD_SOURCE_WEBCORE_DERIVED_DEPENDENCIES(${WEBCORE_DIR}/css/CSSPrimitiveValueMappings.h CSSValueKeywords.h)
 
 # Generate CSS Selector pseudo type name to value maps.
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/SelectorPseudoClassAndCompatibilityElementMap.gperf ${WebCore_DERIVED_SOURCES_DIR}/SelectorPseudoClassAndCompatibilityElementMap.cpp
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/SelectorPseudoClassAndCompatibilityElementMap.gperf ${CyberCore_DERIVED_SOURCES_DIR}/SelectorPseudoClassAndCompatibilityElementMap.cpp
     MAIN_DEPENDENCY ${WEBCORE_DIR}/css/SelectorPseudoClassAndCompatibilityElementMap.in
     DEPENDS ${WEBCORE_DIR}/css/makeSelectorPseudoClassAndCompatibilityElementMap.py
-    WORKING_DIRECTORY ${WebCore_DERIVED_SOURCES_DIR}
+    WORKING_DIRECTORY ${CyberCore_DERIVED_SOURCES_DIR}
     COMMAND ${PYTHON_EXECUTABLE} ${WEBCORE_DIR}/css/makeSelectorPseudoClassAndCompatibilityElementMap.py ${WEBCORE_DIR}/css/SelectorPseudoClassAndCompatibilityElementMap.in "${GPERF_EXECUTABLE}" "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}"
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/SelectorPseudoClassAndCompatibilityElementMap.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/SelectorPseudoClassAndCompatibilityElementMap.cpp)
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/SelectorPseudoElementTypeMap.gperf ${WebCore_DERIVED_SOURCES_DIR}/SelectorPseudoElementTypeMap.cpp
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/SelectorPseudoElementTypeMap.gperf ${CyberCore_DERIVED_SOURCES_DIR}/SelectorPseudoElementTypeMap.cpp
     MAIN_DEPENDENCY ${WEBCORE_DIR}/css/SelectorPseudoElementTypeMap.in
     DEPENDS ${WEBCORE_DIR}/css/makeSelectorPseudoElementsMap.py
-    WORKING_DIRECTORY ${WebCore_DERIVED_SOURCES_DIR}
+    WORKING_DIRECTORY ${CyberCore_DERIVED_SOURCES_DIR}
     COMMAND ${PYTHON_EXECUTABLE} ${WEBCORE_DIR}/css/makeSelectorPseudoElementsMap.py ${WEBCORE_DIR}/css/SelectorPseudoElementTypeMap.in "${GPERF_EXECUTABLE}" "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}"
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/SelectorPseudoElementTypeMap.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/SelectorPseudoElementTypeMap.cpp)
 
 # Generate user agent styles
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheetsData.cpp ${WebCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheets.h
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheetsData.cpp ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheets.h
     MAIN_DEPENDENCY ${WEBCORE_DIR}/css/make-css-file-arrays.pl
-    DEPENDS ${WebCore_USER_AGENT_STYLE_SHEETS} ${WEBCORE_DIR}/bindings/scripts/preprocessor.pm
-    COMMAND ${PERL_EXECUTABLE} ${WEBCORE_DIR}/css/make-css-file-arrays.pl --defines "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}" --preprocessor "${CODE_GENERATOR_PREPROCESSOR}" ${WebCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheets.h ${WebCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheetsData.cpp ${WebCore_USER_AGENT_STYLE_SHEETS}
+    DEPENDS ${CyberCore_USER_AGENT_STYLE_SHEETS} ${WEBCORE_DIR}/bindings/scripts/preprocessor.pm
+    COMMAND ${PERL_EXECUTABLE} ${WEBCORE_DIR}/css/make-css-file-arrays.pl --defines "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}" --preprocessor "${CODE_GENERATOR_PREPROCESSOR}" ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheets.h ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheetsData.cpp ${CyberCore_USER_AGENT_STYLE_SHEETS}
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheetsData.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentStyleSheetsData.cpp)
 ADD_SOURCE_WEBCORE_DERIVED_DEPENDENCIES(${WEBCORE_DIR}/style/StyleResolver.cpp UserAgentStyleSheetsData.cpp UserAgentStyleSheets.h)
 ADD_SOURCE_WEBCORE_DERIVED_DEPENDENCIES(${WEBCORE_DIR}/style/UserAgentStyle.cpp UserAgentStyleSheetsData.cpp UserAgentStyleSheets.h)
 
-if (WebCore_USER_AGENT_SCRIPTS)
+if (CyberCore_USER_AGENT_SCRIPTS)
     # Necessary variables:
-    # WebCore_USER_AGENT_SCRIPTS containing the JavaScript sources list
-    # WebCore_USER_AGENT_SCRIPTS_DEPENDENCIES containing the source file that will load the scripts to add the proper
+    # CyberCore_USER_AGENT_SCRIPTS containing the JavaScript sources list
+    # CyberCore_USER_AGENT_SCRIPTS_DEPENDENCIES containing the source file that will load the scripts to add the proper
     #   dependency and having them built at the right moment
 
     MAKE_JS_FILE_ARRAYS(
-        ${WebCore_DERIVED_SOURCES_DIR}/UserAgentScriptsData.cpp
-        ${WebCore_DERIVED_SOURCES_DIR}/UserAgentScripts.h
-        WebCore
-        WebCore_USER_AGENT_SCRIPTS
-        WebCore_USER_AGENT_SCRIPTS_DEPENDENCIES
+        ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentScriptsData.cpp
+        ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentScripts.h
+        CyberCore
+        CyberCore_USER_AGENT_SCRIPTS
+        CyberCore_USER_AGENT_SCRIPTS_DEPENDENCIES
     )
-    list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/UserAgentScriptsData.cpp)
+    list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/UserAgentScriptsData.cpp)
 endif ()
 
 # Generate plug-in resources
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/PlugInsResourcesData.cpp ${WebCore_DERIVED_SOURCES_DIR}/PlugInsResources.h
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/PlugInsResourcesData.cpp ${CyberCore_DERIVED_SOURCES_DIR}/PlugInsResources.h
     MAIN_DEPENDENCY ${WEBCORE_DIR}/css/make-css-file-arrays.pl
-    DEPENDS ${WebCore_PLUG_INS_RESOURCES} ${WEBCORE_DIR}/bindings/scripts/preprocessor.pm
-    COMMAND ${PERL_EXECUTABLE} ${WEBCORE_DIR}/css/make-css-file-arrays.pl --defines "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}" --preprocessor "${CODE_GENERATOR_PREPROCESSOR}" ${WebCore_DERIVED_SOURCES_DIR}/PlugInsResources.h ${WebCore_DERIVED_SOURCES_DIR}/PlugInsResourcesData.cpp ${WebCore_PLUG_INS_RESOURCES}
+    DEPENDS ${CyberCore_PLUG_INS_RESOURCES} ${WEBCORE_DIR}/bindings/scripts/preprocessor.pm
+    COMMAND ${PERL_EXECUTABLE} ${WEBCORE_DIR}/css/make-css-file-arrays.pl --defines "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}" --preprocessor "${CODE_GENERATOR_PREPROCESSOR}" ${CyberCore_DERIVED_SOURCES_DIR}/PlugInsResources.h ${CyberCore_DERIVED_SOURCES_DIR}/PlugInsResourcesData.cpp ${CyberCore_PLUG_INS_RESOURCES}
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/PlugInsResourcesData.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/PlugInsResourcesData.cpp)
 ADD_SOURCE_WEBCORE_DERIVED_DEPENDENCIES(${WEBCORE_DIR}/dom/Document.cpp PlugInsResourcesData.cpp PlugInsResources.h)
 
 set(FEATURE_DEFINES_JAVASCRIPT "LANGUAGE_JAVASCRIPT ${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}")
@@ -2481,29 +2481,29 @@ set(SETTINGS_TEMPLATES
 set(WTF_WEB_PREFERENCES ${WTF_SCRIPTS_DIR}/Preferences/UnifiedWebPreferences.yaml)
 set_source_files_properties(${WTF_WEB_PREFERENCES} PROPERTIES GENERATED TRUE)
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/Settings.h
-       ${WebCore_DERIVED_SOURCES_DIR}/Settings.cpp
-       ${WebCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.h
-       ${WebCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.cpp
-       ${WebCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.idl
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/Settings.h
+       ${CyberCore_DERIVED_SOURCES_DIR}/Settings.cpp
+       ${CyberCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.h
+       ${CyberCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.cpp
+       ${CyberCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.idl
     MAIN_DEPENDENCY ${WEBCORE_DIR}/page/Settings.yaml
     DEPENDS ${WEBCORE_DIR}/Scripts/GenerateSettings.rb ${SETTINGS_TEMPLATES} WTF_CopyPreferences ${WTF_WEB_PREFERENCES}
-    COMMAND ${RUBY_EXECUTABLE} ${WEBCORE_DIR}/Scripts/GenerateSettings.rb --outputDir ${WebCore_DERIVED_SOURCES_DIR} --template "$<JOIN:${SETTINGS_TEMPLATES},;--template;>" ${WTF_WEB_PREFERENCES} ${WEBCORE_DIR}/page/Settings.yaml
+    COMMAND ${RUBY_EXECUTABLE} ${WEBCORE_DIR}/Scripts/GenerateSettings.rb --outputDir ${CyberCore_DERIVED_SOURCES_DIR} --template "$<JOIN:${SETTINGS_TEMPLATES},;--template;>" ${WTF_WEB_PREFERENCES} ${WEBCORE_DIR}/page/Settings.yaml
     COMMAND_EXPAND_LISTS
     VERBATIM)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/Settings.h)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/Settings.cpp)
-list(APPEND WebCoreTestSupport_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.cpp)
-list(APPEND WebCoreTestSupport_IDL_FILES ${WebCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.idl)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/Settings.h)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/Settings.cpp)
+list(APPEND CyberCoreTestSupport_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.cpp)
+list(APPEND CyberCoreTestSupport_IDL_FILES ${CyberCore_DERIVED_SOURCES_DIR}/InternalSettingsGenerated.idl)
 
-GENERATE_BINDINGS(WebCoreBindings
-    OUTPUT_SOURCE WebCore_SOURCES
-    INPUT_FILES ${WebCore_IDL_FILES}
-    PP_INPUT_FILES ${WebCore_IDL_FILES} ${WebCoreTestSupport_IDL_FILES}
+GENERATE_BINDINGS(CyberCoreBindings
+    OUTPUT_SOURCE CyberCore_SOURCES
+    INPUT_FILES ${CyberCore_IDL_FILES}
+    PP_INPUT_FILES ${CyberCore_IDL_FILES} ${CyberCoreTestSupport_IDL_FILES}
     BASE_DIR ${WEBCORE_DIR}
-    IDL_INCLUDES ${WebCore_IDL_INCLUDES} ${WebCore_DERIVED_SOURCES_DIR}
+    IDL_INCLUDES ${CyberCore_IDL_INCLUDES} ${CyberCore_DERIVED_SOURCES_DIR}
     FEATURES ${FEATURE_DEFINES_JAVASCRIPT}
-    DESTINATION ${WebCore_DERIVED_SOURCES_DIR}
+    DESTINATION ${CyberCore_DERIVED_SOURCES_DIR}
     GENERATOR JS
     SUPPLEMENTAL_DEPFILE ${SUPPLEMENTAL_DEPENDENCY_FILE}
     PP_EXTRA_OUTPUT
@@ -2521,30 +2521,30 @@ GENERATE_BINDINGS(WebCoreBindings
         --workletGlobalScopeConstructorsFile ${WORKLETGLOBALSCOPE_CONSTRUCTORS_FILE}
         --paintWorkletGlobalScopeConstructorsFile ${PAINTWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE}
         --audioWorkletGlobalScopeConstructorsFile ${AUDIOWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE})
-list(APPEND WebCore_DEPENDENCIES WebCoreBindings)
+list(APPEND CyberCore_DEPENDENCIES CyberCoreBindings)
 
 if (ENABLE_WEBINSPECTORUI)
-    list(APPEND WebCore_DEPENDENCIES WebInspectorUI)
+    list(APPEND CyberCore_DEPENDENCIES WebInspectorUI)
 endif ()
 
-GENERATE_BINDINGS(WebCoreTestSupportBindings
-    OUTPUT_SOURCE WebCoreTestSupport_SOURCES
-    INPUT_FILES ${WebCoreTestSupport_IDL_FILES}
+GENERATE_BINDINGS(CyberCoreTestSupportBindings
+    OUTPUT_SOURCE CyberCoreTestSupport_SOURCES
+    INPUT_FILES ${CyberCoreTestSupport_IDL_FILES}
     BASE_DIR ${WEBCORE_DIR}
-    IDL_INCLUDES ${WebCore_IDL_INCLUDES} ${WebCore_DERIVED_SOURCES_DIR} ${WebCoreTestSupport_IDL_INCLUDES}
+    IDL_INCLUDES ${CyberCore_IDL_INCLUDES} ${CyberCore_DERIVED_SOURCES_DIR} ${CyberCoreTestSupport_IDL_INCLUDES}
     FEATURES ${FEATURE_DEFINES_JAVASCRIPT}
-    DESTINATION ${WebCore_DERIVED_SOURCES_DIR}
+    DESTINATION ${CyberCore_DERIVED_SOURCES_DIR}
     GENERATOR JS)
 
-# WebCoreTestSupportBindings needs to have a direct or indirect
-# dependency to WebCoreBindings for CMake Visual Studio generator to
+# CyberCoreTestSupportBindings needs to have a direct or indirect
+# dependency to CyberCoreBindings for CMake Visual Studio generator to
 # eliminate duplicated custom commands. Otherwise,
 # GenerateSettings.rb will be triggered in both projects.
-add_dependencies(WebCoreTestSupportBindings WebCoreBindings)
+add_dependencies(CyberCoreTestSupportBindings CyberCoreBindings)
 
-# WebCore JS Builtins
+# CyberCore JS Builtins
 
-set(WebCore_BUILTINS_SOURCES
+set(CyberCore_BUILTINS_SOURCES
     ${WEBCORE_DIR}/Modules/compression/CompressionStream.js
     ${WEBCORE_DIR}/Modules/compression/DecompressionStream.js
     ${WEBCORE_DIR}/Modules/streams/ByteLengthQueuingStrategy.js
@@ -2571,120 +2571,120 @@ set(WebCore_BUILTINS_SOURCES
 )
 
 set(BUILTINS_GENERATOR_SCRIPTS
-    ${JavaScriptCore_SCRIPTS_DIR}/wkbuiltins.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generator.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_model.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_templates.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_combined_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_combined_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_separate_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_separate_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/generate-js-builtins.py
-    ${JavaScriptCore_SCRIPTS_DIR}/lazywriter.py
+    ${CyberScriptCore_SCRIPTS_DIR}/wkbuiltins.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generator.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_model.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_templates.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_combined_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_combined_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_separate_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_separate_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/generate-js-builtins.py
+    ${CyberScriptCore_SCRIPTS_DIR}/lazywriter.py
 )
 
-foreach (_builtinSource ${WebCore_BUILTINS_SOURCES})
+foreach (_builtinSource ${CyberCore_BUILTINS_SOURCES})
     get_filename_component(_objectName ${_builtinSource} NAME_WE)
     add_custom_command(
-        OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/${_objectName}Builtins.cpp
-               ${WebCore_DERIVED_SOURCES_DIR}/${_objectName}Builtins.h
+        OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/${_objectName}Builtins.cpp
+               ${CyberCore_DERIVED_SOURCES_DIR}/${_objectName}Builtins.h
         MAIN_DEPENDENCY ${_builtinSource}
         DEPENDS ${BUILTINS_GENERATOR_SCRIPTS}
-        COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/generate-js-builtins.py --framework WebCore --output-directory ${WebCore_DERIVED_SOURCES_DIR} ${_builtinSource}
+        COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/generate-js-builtins.py --framework CyberCore --output-directory ${CyberCore_DERIVED_SOURCES_DIR} ${_builtinSource}
         VERBATIM)
-    list(APPEND WebCore_DERIVED_BUILTIN_HEADERS ${WebCore_DERIVED_SOURCES_DIR}/${_objectName}Builtins.h)
+    list(APPEND CyberCore_DERIVED_BUILTIN_HEADERS ${CyberCore_DERIVED_SOURCES_DIR}/${_objectName}Builtins.h)
 endforeach ()
 
 add_custom_command(
-    OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltins.cpp
-           ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltinInternals.cpp
-           ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltins.h
-           ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltinInternals.h
-    DEPENDS ${BUILTINS_GENERATOR_SCRIPTS} ${WebCore_DERIVED_BUILTIN_HEADERS} ${WebCore_BUILTINS_SOURCES}
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/generate-js-builtins.py --wrappers-only --framework WebCore --output-directory ${WebCore_DERIVED_SOURCES_DIR} ${WebCore_BUILTINS_SOURCES}
+    OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/CyberCoreJSBuiltins.cpp
+           ${CyberCore_DERIVED_SOURCES_DIR}/CyberCoreJSBuiltinInternals.cpp
+           ${CyberCore_DERIVED_SOURCES_DIR}/CyberCoreJSBuiltins.h
+           ${CyberCore_DERIVED_SOURCES_DIR}/CyberCoreJSBuiltinInternals.h
+    DEPENDS ${BUILTINS_GENERATOR_SCRIPTS} ${CyberCore_DERIVED_BUILTIN_HEADERS} ${CyberCore_BUILTINS_SOURCES}
+    COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/generate-js-builtins.py --wrappers-only --framework CyberCore --output-directory ${CyberCore_DERIVED_SOURCES_DIR} ${CyberCore_BUILTINS_SOURCES}
     VERBATIM)
-list(APPEND WebCore_SOURCES
-    ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltins.cpp
-    ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltinInternals.cpp)
+list(APPEND CyberCore_SOURCES
+    ${CyberCore_DERIVED_SOURCES_DIR}/CyberCoreJSBuiltins.cpp
+    ${CyberCore_DERIVED_SOURCES_DIR}/CyberCoreJSBuiltinInternals.cpp)
 
 ADD_SOURCE_WEBCORE_DERIVED_DEPENDENCIES(${WEBCORE_DIR}/html/parser/HTMLTreeBuilder.cpp MathMLNames.cpp)
 
 
 GENERATE_DOM_NAMES(HTML ${WEBCORE_DIR}/html/HTMLAttributeNames.in ${WEBCORE_DIR}/html/HTMLTagNames.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/HTMLNames.cpp ${WebCore_DERIVED_SOURCES_DIR}/HTMLElementFactory.cpp ${WebCore_DERIVED_SOURCES_DIR}/JSHTMLElementWrapperFactory.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/HTMLNames.cpp ${CyberCore_DERIVED_SOURCES_DIR}/HTMLElementFactory.cpp ${CyberCore_DERIVED_SOURCES_DIR}/JSHTMLElementWrapperFactory.cpp)
 
 
 GENERATE_EVENT_FACTORY(${WEBCORE_DIR}/dom/EventNames.in Event)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/EventInterfaces.h)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/EventFactory.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/EventInterfaces.h)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/EventFactory.cpp)
 
 
 GENERATE_EVENT_FACTORY(${WEBCORE_DIR}/dom/EventTargetFactory.in EventTarget)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/EventTargetInterfaces.h)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/EventTargetFactory.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/EventTargetInterfaces.h)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/EventTargetFactory.cpp)
 
 
 GENERATE_FONT_NAMES(${WEBCORE_DIR}/css/CyberKitFontFamilyNames.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.cpp)
 
 
 GENERATE_DOM_NAMES(MathML ${WEBCORE_DIR}/mathml/mathattrs.in ${WEBCORE_DIR}/mathml/mathtags.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/MathMLNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/MathMLNames.cpp)
 if (ENABLE_MATHML)
-    list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/MathMLElementFactory.cpp)
+    list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/MathMLElementFactory.cpp)
 endif ()
 
 GENERATE_DOM_NAMES(SVG ${WEBCORE_DIR}/svg/svgattrs.in ${WEBCORE_DIR}/svg/svgtags.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/SVGNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/SVGNames.cpp)
 
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/SVGElementFactory.cpp ${WebCore_DERIVED_SOURCES_DIR}/JSSVGElementWrapperFactory.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/SVGElementFactory.cpp ${CyberCore_DERIVED_SOURCES_DIR}/JSSVGElementWrapperFactory.cpp)
 
 GENERATE_DOM_NAMES(XLink ${WEBCORE_DIR}/svg/xlinkattrs.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/XLinkNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/XLinkNames.cpp)
 
 
 GENERATE_DOM_NAMES(XMLNS ${WEBCORE_DIR}/xml/xmlnsattrs.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/XMLNSNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/XMLNSNames.cpp)
 
 GENERATE_DOM_NAMES(XML ${WEBCORE_DIR}/xml/xmlattrs.in)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/XMLNames.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/XMLNames.cpp)
 
 GENERATE_DOM_NAME_ENUM(TagName)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/TagName.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/TagName.cpp)
 
 GENERATE_DOM_NAME_ENUM(ElementName)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/ElementName.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/ElementName.cpp)
 
 GENERATE_DOM_NAME_ENUM(Namespace)
-list(APPEND WebCore_SOURCES ${WebCore_DERIVED_SOURCES_DIR}/Namespace.cpp)
+list(APPEND CyberCore_SOURCES ${CyberCore_DERIVED_SOURCES_DIR}/Namespace.cpp)
 
-WEBKIT_COMPUTE_SOURCES(WebCore)
+WEBKIT_COMPUTE_SOURCES(CyberCore)
 
-target_precompile_headers(WebCore PRIVATE WebCorePrefix.h)
+target_precompile_headers(CyberCore PRIVATE CyberCorePrefix.h)
 
-WEBKIT_COPY_FILES(WebCore_CopyPrivateHeaders
-    DESTINATION ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/WebCore
-    FILES ${WebCore_PRIVATE_FRAMEWORK_HEADERS}
+WEBKIT_COPY_FILES(CyberCore_CopyPrivateHeaders
+    DESTINATION ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/CyberCore
+    FILES ${CyberCore_PRIVATE_FRAMEWORK_HEADERS}
     FLATTENED
 )
-list(APPEND WebCore_INTERFACE_DEPENDENCIES WebCore_CopyPrivateHeaders)
-list(APPEND WebCoreTestSupport_INTERFACE_DEPENDENCIES WebCore_CopyPrivateHeaders)
-# WebCore_CopyPrivateHeaders needs to have a direct or indirect
-# dependency of WebCore target for CMake Visual Studio generator to
+list(APPEND CyberCore_INTERFACE_DEPENDENCIES CyberCore_CopyPrivateHeaders)
+list(APPEND CyberCoreTestSupport_INTERFACE_DEPENDENCIES CyberCore_CopyPrivateHeaders)
+# CyberCore_CopyPrivateHeaders needs to have a direct or indirect
+# dependency of CyberCore target for CMake Visual Studio generator to
 # eliminate duplicated custom commands. Otherwise, CSSPropertyNames.h
 # will be generated in both projects.
 if (NOT INTERNAL_BUILD)
-    add_dependencies(WebCore_CopyPrivateHeaders WebCore)
+    add_dependencies(CyberCore_CopyPrivateHeaders CyberCore)
 endif ()
 
-WEBKIT_FRAMEWORK(WebCore)
+WEBKIT_FRAMEWORK(CyberCore)
 
 if (APPLE)
-    set_target_properties(WebCore PROPERTIES LINK_FLAGS "-sub_library libobjc -umbrella CyberKit -allowable_client WebCoreTestSupport -allowable_client CyberKit2 -allowable_client CyberKitLegacy")
+    set_target_properties(CyberCore PROPERTIES LINK_FLAGS "-sub_library libobjc -umbrella CyberKit -allowable_client CyberCoreTestSupport -allowable_client CyberKit2 -allowable_client CyberKitLegacy")
 endif ()
 
 # The -ftree-sra optimization (implicit with -O2) causes crashes when
@@ -2692,25 +2692,25 @@ endif ()
 # See https://bugs.webkit.org/show_bug.cgi?id=146440
 string(TOLOWER ${CMAKE_HOST_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_HOST_SYSTEM_PROCESSOR)
 if (CMAKE_COMPILER_IS_GNUCXX AND "${LOWERCASE_CMAKE_HOST_SYSTEM_PROCESSOR}" MATCHES "(i[3-6]86|x86)$")
-    WEBKIT_ADD_TARGET_CXX_FLAGS(WebCore -fno-tree-sra)
+    WEBKIT_ADD_TARGET_CXX_FLAGS(CyberCore -fno-tree-sra)
 endif ()
 
-target_precompile_headers(WebCoreTestSupport PRIVATE testing/js/WebCoreTestSupportPrefix.h)
+target_precompile_headers(CyberCoreTestSupport PRIVATE testing/js/CyberCoreTestSupportPrefix.h)
 
-WEBKIT_COPY_FILES(Copy_WebCoreTestSupportPrivateHeaders
-    DESTINATION ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/WebCoreTestSupport
-    FILES ${WebCoreTestSupport_PRIVATE_HEADERS}
+WEBKIT_COPY_FILES(Copy_CyberCoreTestSupportPrivateHeaders
+    DESTINATION ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/CyberCoreTestSupport
+    FILES ${CyberCoreTestSupport_PRIVATE_HEADERS}
     FLATTENED
 )
-list(APPEND WebCoreTestSupport_INTERFACE_DEPENDENCIES Copy_WebCoreTestSupportPrivateHeaders)
+list(APPEND CyberCoreTestSupport_INTERFACE_DEPENDENCIES Copy_CyberCoreTestSupportPrivateHeaders)
 
-list(APPEND WebCoreTestSupport_INCLUDE_DIRECTORIES ${WebCore_INCLUDE_DIRECTORIES})
-list(APPEND WebCoreTestSupport_PRIVATE_INCLUDE_DIRECTORIES ${WebCore_PRIVATE_INCLUDE_DIRECTORIES})
-list(APPEND WebCoreTestSupport_SYSTEM_INCLUDE_DIRECTORIES ${WebCore_SYSTEM_INCLUDE_DIRECTORIES})
+list(APPEND CyberCoreTestSupport_INCLUDE_DIRECTORIES ${CyberCore_INCLUDE_DIRECTORIES})
+list(APPEND CyberCoreTestSupport_PRIVATE_INCLUDE_DIRECTORIES ${CyberCore_PRIVATE_INCLUDE_DIRECTORIES})
+list(APPEND CyberCoreTestSupport_SYSTEM_INCLUDE_DIRECTORIES ${CyberCore_SYSTEM_INCLUDE_DIRECTORIES})
 
-WEBKIT_LIBRARY(WebCoreTestSupport)
+WEBKIT_LIBRARY(CyberCoreTestSupport)
 
-if (${WebCore_LIBRARY_TYPE} MATCHES "SHARED")
-    set_target_properties(WebCore PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION_MAJOR})
-    install(TARGETS WebCore DESTINATION "${LIB_INSTALL_DIR}")
+if (${CyberCore_LIBRARY_TYPE} MATCHES "SHARED")
+    set_target_properties(CyberCore PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION_MAJOR})
+    install(TARGETS CyberCore DESTINATION "${LIB_INSTALL_DIR}")
 endif ()

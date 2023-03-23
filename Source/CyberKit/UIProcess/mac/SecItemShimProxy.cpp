@@ -34,7 +34,7 @@
 #include <Security/SecBase.h>
 #include <Security/SecItem.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 SecItemShimProxy& SecItemShimProxy::singleton()
 {
@@ -47,7 +47,7 @@ SecItemShimProxy& SecItemShimProxy::singleton()
 }
 
 SecItemShimProxy::SecItemShimProxy()
-    : m_queue(WorkQueue::create("com.apple.WebKit.SecItemShimProxy"))
+    : m_queue(WorkQueue::create("com.apple.CyberKit.SecItemShimProxy"))
 {
 }
 
@@ -103,6 +103,6 @@ void SecItemShimProxy::secItemRequestSync(const SecItemRequestData& data, Comple
     secItemRequest(data, WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SEC_ITEM_SHIM)

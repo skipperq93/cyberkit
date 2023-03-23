@@ -51,7 +51,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SQLTransaction> SQLTransaction::create(Ref<Database>&& database, RefPtr<SQLTransactionCallback>&& callback, RefPtr<VoidCallback>&& successCallback, RefPtr<SQLTransactionErrorCallback>&& errorCallback, RefPtr<SQLTransactionWrapper>&& wrapper, bool readOnly)
 {
@@ -675,4 +675,4 @@ const char* SQLTransaction::debugStepName(void (SQLTransaction::*step)())
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

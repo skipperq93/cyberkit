@@ -29,7 +29,7 @@
 #include "Event.h"
 #include "JSValueInWrappedObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class History;
 class SerializedScriptValue;
@@ -67,4 +67,4 @@ private:
     RefPtr<History> m_history;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "CSSPrimitiveValue.h"
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSOffsetRotateValue final : public CSSValue {
 public:
@@ -65,6 +65,6 @@ private:
     RefPtr<CSSPrimitiveValue> m_angle;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSOffsetRotateValue, isOffsetRotateValue())

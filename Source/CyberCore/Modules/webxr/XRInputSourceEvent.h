@@ -30,7 +30,7 @@
 #include "Event.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRFrame;
 class WebXRInputSource;
@@ -60,6 +60,6 @@ private:
     std::optional<int> m_buttonIndex;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

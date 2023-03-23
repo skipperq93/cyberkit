@@ -31,7 +31,7 @@
 #include <wtf/Deque.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if CPU(ARM64)
 static const JSC::MacroAssembler::RegisterID callerSavedRegisters[] = {
@@ -265,6 +265,6 @@ inline RegisterAllocator::~RegisterAllocator()
     RELEASE_ASSERT(m_reservedCalleeSavedRegisters.isEmpty());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CSS_SELECTOR_JIT)

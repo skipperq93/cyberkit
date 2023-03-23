@@ -28,7 +28,7 @@
 #include "CSSNumericValue.h"
 #include "CSSUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<CSSNumericType> CSSNumericType::create(CSSUnitType unit, int exponent)
 {
@@ -154,7 +154,7 @@ String CSSNumericType::debugString() const
         resolution ? makeString(" resolution:", *resolution) : String(),
         flex ? makeString(" flex:", *flex) : String(),
         percent ? makeString(" percent:", *percent) : String(),
-        percentHint ? makeString(" percentHint:", WebCore::debugString(*percentHint)) : String(),
+        percentHint ? makeString(" percentHint:", CyberCore::debugString(*percentHint)) : String(),
     " }");
 }
 
@@ -215,4 +215,4 @@ size_t CSSNumericType::nonZeroEntryCount() const
     return count;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

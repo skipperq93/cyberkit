@@ -27,7 +27,7 @@
 
 #include "FileSystemEntry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ErrorCallback;
 class FileSystemDirectoryReader;
@@ -57,8 +57,8 @@ private:
 };
 static_assert(sizeof(FileSystemDirectoryEntry) == sizeof(FileSystemEntry));
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::FileSystemDirectoryEntry)
-    static bool isType(const WebCore::FileSystemEntry& entry) { return entry.isDirectory(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::FileSystemDirectoryEntry)
+    static bool isType(const CyberCore::FileSystemEntry& entry) { return entry.isDirectory(); }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -35,10 +35,10 @@ namespace JSC {
 class CallFrame;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBKeyRange;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 struct IDBKeyRangeData;
 
@@ -84,7 +84,7 @@ public:
     void ref();
     void deref();
 
-    WebCoreOpaqueRoot opaqueRoot();
+    CyberCoreOpaqueRoot opaqueRoot();
 
 private:
     IDBIndex(ScriptExecutionContext&, const IDBIndexInfo&, IDBObjectStore&);
@@ -111,6 +111,6 @@ private:
     IDBObjectStore& m_objectStore;
 };
 
-WebCoreOpaqueRoot root(IDBIndex*);
+CyberCoreOpaqueRoot root(IDBIndex*);
 
-} // namespace WebCore
+} // namespace CyberCore

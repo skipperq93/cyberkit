@@ -26,7 +26,7 @@
 #import "config.h"
 #import "AlternativeTextContextController.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DictationContext AlternativeTextContextController::addAlternatives(NSTextAlternatives *alternatives)
 {
@@ -70,4 +70,4 @@ void AlternativeTextContextController::clear()
     m_contexts.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

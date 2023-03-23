@@ -23,26 +23,26 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include "stdafx.h"
-#include "WebKitBrowserWindow.h"
+#include "CyberKitBrowserWindow.h"
 
 #include "Common.h"
 #include "Common2.h"
 #include "MiniBrowserLibResource.h"
 #include <CyberCore/GDIUtilities.h>
-#include <WebKit/WKAuthenticationChallenge.h>
-#include <WebKit/WKAuthenticationDecisionListener.h>
-#include <WebKit/WKCertificateInfoCurl.h>
-#include <WebKit/WKContextConfigurationRef.h>
-#include <WebKit/WKCredential.h>
-#include <WebKit/WKHTTPCookieStoreRef.h>
-#include <WebKit/WKInspector.h>
-#include <WebKit/WKPreferencesRefPrivate.h>
-#include <WebKit/WKProtectionSpace.h>
-#include <WebKit/WKProtectionSpaceCurl.h>
-#include <WebKit/WKSecurityOriginRef.h>
-#include <WebKit/WKWebsiteDataStoreConfigurationRef.h>
-#include <WebKit/WKWebsiteDataStoreRef.h>
-#include <WebKit/WKWebsiteDataStoreRefCurl.h>
+#include <CyberKit/WKAuthenticationChallenge.h>
+#include <CyberKit/WKAuthenticationDecisionListener.h>
+#include <CyberKit/WKCertificateInfoCurl.h>
+#include <CyberKit/WKContextConfigurationRef.h>
+#include <CyberKit/WKCredential.h>
+#include <CyberKit/WKHTTPCookieStoreRef.h>
+#include <CyberKit/WKInspector.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKProtectionSpace.h>
+#include <CyberKit/WKProtectionSpaceCurl.h>
+#include <CyberKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKWebsiteDataStoreConfigurationRef.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKWebsiteDataStoreRefCurl.h>
 #include <filesystem>
 #include <sstream>
 #include <vector>
@@ -128,7 +128,7 @@ WKRetainPtr<WKStringRef> injectedBundlePath()
     return createWKString(path);
 }
 
-Ref<BrowserWindow> WebKitBrowserWindow::create(BrowserWindowClient& client, HWND mainWnd, bool)
+Ref<BrowserWindow> CyberKitBrowserWindow::create(BrowserWindowClient& client, HWND mainWnd, bool)
 {
     auto websiteDataStoreConf = adoptWK(WKWebsiteDataStoreConfigurationCreate());
 
@@ -152,10 +152,10 @@ Ref<BrowserWindow> WebKitBrowserWindow::create(BrowserWindowClient& client, HWND
     WKPageConfigurationSetPreferences(pageConf.get(), preferences.get());
     WKPageConfigurationSetPageGroup(pageConf.get(), pageGroup.get());
 
-    return adoptRef(*new WebKitBrowserWindow(client, pageConf.get(), mainWnd));
+    return adoptRef(*new CyberKitBrowserWindow(client, pageConf.get(), mainWnd));
 }
 
-WebKitBrowserWindow::WebKitBrowserWindow(BrowserWindowClient& client, WKPageConfigurationRef pageConf, HWND mainWnd)
+CyberKitBrowserWindow::CyberKitBrowserWindow(BrowserWindowClient& client, WKPageConfigurationRef pageConf, HWND mainWnd)
     : m_client(client)
     , m_hMainWnd(mainWnd)
 {
@@ -195,7 +195,7 @@ WebKitBrowserWindow::WebKitBrowserWindow(BrowserWindowClient& client, WKPageConf
     resetZoom();
 }
 
-void WebKitBrowserWindow::updateProxySettings()
+void CyberKitBrowserWindow::updateProxySettings()
 {
     auto page = WKViewGetPage(m_view.get());
     auto websiteDataStore = WKPageGetWebsiteDataStore(page);
@@ -215,12 +215,12 @@ void WebKitBrowserWindow::updateProxySettings()
     WKWebsiteDataStoreEnableCustomNetworkProxySettings(websiteDataStore, url.get(), excludeHosts.get());
 }
 
-HRESULT WebKitBrowserWindow::init()
+HRESULT CyberKitBrowserWindow::init()
 {
     return S_OK;
 }
 
-void WebKitBrowserWindow::resetFeatureMenu(FeatureType featureType, HMENU menu, bool resetsSettingsToDefaults)
+void CyberKitBrowserWindow::resetFeatureMenu(FeatureType featureType, HMENU menu, bool resetsSettingsToDefaults)
 {
     auto page = WKViewGetPage(m_view.get());
     auto pgroup = WKPageGetPageGroup(page);
@@ -273,25 +273,25 @@ void WebKitBrowserWindow::resetFeatureMenu(FeatureType featureType, HMENU menu, 
     }
 }
 
-HWND WebKitBrowserWindow::hwnd()
+HWND CyberKitBrowserWindow::hwnd()
 {
     return WKViewGetWindow(m_view.get());
 }
 
-HRESULT WebKitBrowserWindow::loadURL(const BSTR& url)
+HRESULT CyberKitBrowserWindow::loadURL(const BSTR& url)
 {
     auto page = WKViewGetPage(m_view.get());
     WKPageLoadURL(page, createWKURL(_bstr_t(url)).get());
     return true;
 }
 
-void WebKitBrowserWindow::reload()
+void CyberKitBrowserWindow::reload()
 {
     auto page = WKViewGetPage(m_view.get());
     WKPageReload(page);
 }
 
-void WebKitBrowserWindow::navigateForwardOrBackward(bool forward)
+void CyberKitBrowserWindow::navigateForwardOrBackward(bool forward)
 {
     auto page = WKViewGetPage(m_view.get());
     if (forward)
@@ -300,12 +300,12 @@ void WebKitBrowserWindow::navigateForwardOrBackward(bool forward)
         WKPageGoBack(page);
 }
 
-void WebKitBrowserWindow::navigateToHistory(UINT menuID)
+void CyberKitBrowserWindow::navigateToHistory(UINT menuID)
 {
     // Not implemented
 }
 
-void WebKitBrowserWindow::setPreference(UINT menuID, bool enable)
+void CyberKitBrowserWindow::setPreference(UINT menuID, bool enable)
 {
     auto page = WKViewGetPage(m_view.get());
     auto pgroup = WKPageGetPageGroup(page);
@@ -340,66 +340,66 @@ void WebKitBrowserWindow::setPreference(UINT menuID, bool enable)
     }
 }
 
-void WebKitBrowserWindow::print()
+void CyberKitBrowserWindow::print()
 {
     // Not implemented
 }
 
-void WebKitBrowserWindow::launchInspector()
+void CyberKitBrowserWindow::launchInspector()
 {
     auto page = WKViewGetPage(m_view.get());
     auto inspector = WKPageGetInspector(page);
     WKInspectorShow(inspector);
 }
 
-void WebKitBrowserWindow::openProxySettings()
+void CyberKitBrowserWindow::openProxySettings()
 {
     if (askProxySettings(m_hMainWnd, m_proxy))
         updateProxySettings();
 
 }
 
-void WebKitBrowserWindow::setUserAgent(_bstr_t& customUAString)
+void CyberKitBrowserWindow::setUserAgent(_bstr_t& customUAString)
 {
     auto page = WKViewGetPage(m_view.get());
     auto ua = createWKString(customUAString);
     WKPageSetCustomUserAgent(page, ua.get());
 }
 
-_bstr_t WebKitBrowserWindow::userAgent()
+_bstr_t CyberKitBrowserWindow::userAgent()
 {
     auto page = WKViewGetPage(m_view.get());
     auto ua = adoptWK(WKPageCopyUserAgent(page));
     return createString(ua.get()).c_str();
 }
 
-void WebKitBrowserWindow::showLayerTree()
+void CyberKitBrowserWindow::showLayerTree()
 {
     auto page = WKViewGetPage(m_view.get());
     auto name = createWKString("DumpLayerTree");
     WKPagePostMessageToInjectedBundle(page, name.get(), nullptr);
 }
 
-void WebKitBrowserWindow::updateStatistics(HWND hDlg)
+void CyberKitBrowserWindow::updateStatistics(HWND hDlg)
 {
     // Not implemented
 }
 
 
-void WebKitBrowserWindow::resetZoom()
+void CyberKitBrowserWindow::resetZoom()
 {
     auto page = WKViewGetPage(m_view.get());
     WKPageSetPageZoomFactor(page, CyberCore::deviceScaleFactorForWindow(hwnd()));
 }
 
-void WebKitBrowserWindow::zoomIn()
+void CyberKitBrowserWindow::zoomIn()
 {
     auto page = WKViewGetPage(m_view.get());
     double s = WKPageGetPageZoomFactor(page);
     WKPageSetPageZoomFactor(page, s * 1.25);
 }
 
-void WebKitBrowserWindow::zoomOut()
+void CyberKitBrowserWindow::zoomOut()
 {
     auto page = WKViewGetPage(m_view.get());
     double s = WKPageGetPageZoomFactor(page);
@@ -411,7 +411,7 @@ static void deleteAllCookiesCallback(void*)
 
 }
 
-void WebKitBrowserWindow::clearCookies()
+void CyberKitBrowserWindow::clearCookies()
 {
     auto page = WKViewGetPage(m_view.get());
     auto websiteDataStore = WKPageGetWebsiteDataStore(page);
@@ -445,7 +445,7 @@ static void removeLocalStorageCallback(void*)
 {
 }
     
-void WebKitBrowserWindow::clearWebsiteData()
+void CyberKitBrowserWindow::clearWebsiteData()
 {
     auto page = WKViewGetPage(m_view.get());
     auto websiteDataStore = WKPageGetWebsiteDataStore(page);
@@ -458,44 +458,44 @@ void WebKitBrowserWindow::clearWebsiteData()
     WKWebsiteDataStoreRemoveLocalStorage(websiteDataStore, this, removeLocalStorageCallback);
 }
 
-static WebKitBrowserWindow& toWebKitBrowserWindow(const void *clientInfo)
+static CyberKitBrowserWindow& toCyberKitBrowserWindow(const void *clientInfo)
 {
-    return *const_cast<WebKitBrowserWindow*>(static_cast<const WebKitBrowserWindow*>(clientInfo));
+    return *const_cast<CyberKitBrowserWindow*>(static_cast<const CyberKitBrowserWindow*>(clientInfo));
 }
 
-void WebKitBrowserWindow::didChangeTitle(const void* clientInfo)
+void CyberKitBrowserWindow::didChangeTitle(const void* clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     auto page = WKViewGetPage(thisWindow.m_view.get());
     WKRetainPtr<WKStringRef> title = adoptWK(WKPageCopyTitle(page));
-    std::wstring titleString = createString(title.get()) + L" [WebKit]";
+    std::wstring titleString = createString(title.get()) + L" [CyberKit]";
     SetWindowText(thisWindow.m_hMainWnd, titleString.c_str());
 }
 
-void WebKitBrowserWindow::didChangeIsLoading(const void* clientInfo)
+void CyberKitBrowserWindow::didChangeIsLoading(const void* clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     thisWindow.m_client.progressFinished();
 }
 
-void WebKitBrowserWindow::didChangeEstimatedProgress(const void* clientInfo)
+void CyberKitBrowserWindow::didChangeEstimatedProgress(const void* clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     auto page = WKViewGetPage(thisWindow.m_view.get());
     thisWindow.m_client.progressChanged(WKPageGetEstimatedProgress(page));
 }
 
-void WebKitBrowserWindow::didChangeActiveURL(const void* clientInfo)
+void CyberKitBrowserWindow::didChangeActiveURL(const void* clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     auto page = WKViewGetPage(thisWindow.m_view.get());
     WKRetainPtr<WKURLRef> url = adoptWK(WKPageCopyActiveURL(page));
     thisWindow.m_client.activeURLChanged(createString(url.get()));
 }
 
-void WebKitBrowserWindow::didFailProvisionalNavigation(WKPageRef page, WKNavigationRef navigation, WKErrorRef error, WKTypeRef userData, const void* clientInfo)
+void CyberKitBrowserWindow::didFailProvisionalNavigation(WKPageRef page, WKNavigationRef navigation, WKErrorRef error, WKTypeRef userData, const void* clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     std::wstringstream text;
     text << createString(adoptWK(WKErrorCopyLocalizedDescription(error)).get()) << std::endl;
     text << L"Error Code: " << WKErrorGetErrorCode(error) << std::endl;
@@ -504,9 +504,9 @@ void WebKitBrowserWindow::didFailProvisionalNavigation(WKPageRef page, WKNavigat
     MessageBox(thisWindow.m_hMainWnd, text.str().c_str(), L"Provisional Navigation Failure", MB_OK | MB_ICONWARNING);
 }
 
-void WebKitBrowserWindow::didReceiveAuthenticationChallenge(WKPageRef page, WKAuthenticationChallengeRef challenge, const void* clientInfo)
+void CyberKitBrowserWindow::didReceiveAuthenticationChallenge(WKPageRef page, WKAuthenticationChallengeRef challenge, const void* clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     auto protectionSpace = WKAuthenticationChallengeGetProtectionSpace(challenge);
     auto decisionListener = WKAuthenticationChallengeGetDecisionListener(challenge);
     auto authenticationScheme = WKProtectionSpaceGetAuthenticationScheme(protectionSpace);
@@ -534,7 +534,7 @@ void WebKitBrowserWindow::didReceiveAuthenticationChallenge(WKPageRef page, WKAu
     WKAuthenticationDecisionListenerUseCredential(decisionListener, nullptr);
 }
 
-bool WebKitBrowserWindow::canTrustServerCertificate(WKProtectionSpaceRef protectionSpace)
+bool CyberKitBrowserWindow::canTrustServerCertificate(WKProtectionSpaceRef protectionSpace)
 {
     auto host = createString(adoptWK(WKProtectionSpaceCopyHost(protectionSpace)).get());
     auto verificationError = WKProtectionSpaceGetCertificateVerificationError(protectionSpace);
@@ -558,30 +558,30 @@ bool WebKitBrowserWindow::canTrustServerCertificate(WKProtectionSpaceRef protect
     return false;
 }
 
-WKPageRef WebKitBrowserWindow::createNewPage(WKPageRef page, WKPageConfigurationRef pageConf, WKNavigationActionRef navigationAction, WKWindowFeaturesRef windowFeatures, const void *clientInfo)
+WKPageRef CyberKitBrowserWindow::createNewPage(WKPageRef page, WKPageConfigurationRef pageConf, WKNavigationActionRef navigationAction, WKWindowFeaturesRef windowFeatures, const void *clientInfo)
 {
     auto& newWindow = MainWindow::create().leakRef();
     auto factory = [pageConf](BrowserWindowClient& client, HWND mainWnd, bool) -> auto {
-        return adoptRef(*new WebKitBrowserWindow(client, pageConf, mainWnd));
+        return adoptRef(*new CyberKitBrowserWindow(client, pageConf, mainWnd));
     };
     bool ok = newWindow.init(factory, hInst);
     if (!ok)
         return nullptr;
     ShowWindow(newWindow.hwnd(), SW_SHOW);
-    auto& newBrowserWindow = *static_cast<WebKitBrowserWindow*>(newWindow.browserWindow());
+    auto& newBrowserWindow = *static_cast<CyberKitBrowserWindow*>(newWindow.browserWindow());
     WKRetainPtr<WKPageRef> newPage = WKViewGetPage(newBrowserWindow.m_view.get());
     return newPage.leakRef();
 }
 
-void WebKitBrowserWindow::didNotHandleKeyEvent(WKPageRef, WKNativeEventPtr event, const void* clientInfo)
+void CyberKitBrowserWindow::didNotHandleKeyEvent(WKPageRef, WKNativeEventPtr event, const void* clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     PostMessage(thisWindow.m_hMainWnd, event->message, event->wParam, event->lParam);
 }
 
-void WebKitBrowserWindow::runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef frame, WKSecurityOriginRef securityOrigin, WKPageRunJavaScriptAlertResultListenerRef listener, const void *clientInfo)
+void CyberKitBrowserWindow::runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef frame, WKSecurityOriginRef securityOrigin, WKPageRunJavaScriptAlertResultListenerRef listener, const void *clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     std::wstring title = L"Alert: ";
     title += createString(adoptWK(WKSecurityOriginCopyToString(securityOrigin)).get());
     auto text = createString(alertText);
@@ -589,9 +589,9 @@ void WebKitBrowserWindow::runJavaScriptAlert(WKPageRef page, WKStringRef alertTe
     WKPageRunJavaScriptAlertResultListenerCall(listener);
 }
 
-void WebKitBrowserWindow::runJavaScriptConfirm(WKPageRef page, WKStringRef message, WKFrameRef frame, WKSecurityOriginRef securityOrigin, WKPageRunJavaScriptConfirmResultListenerRef listener, const void *clientInfo)
+void CyberKitBrowserWindow::runJavaScriptConfirm(WKPageRef page, WKStringRef message, WKFrameRef frame, WKSecurityOriginRef securityOrigin, WKPageRunJavaScriptConfirmResultListenerRef listener, const void *clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     std::wstring title = L"Confirm: ";
     title += createString(adoptWK(WKSecurityOriginCopyToString(securityOrigin)).get());
     auto text = createString(message);
@@ -599,9 +599,9 @@ void WebKitBrowserWindow::runJavaScriptConfirm(WKPageRef page, WKStringRef messa
     WKPageRunJavaScriptConfirmResultListenerCall(listener, result);
 }
 
-void WebKitBrowserWindow::runJavaScriptPrompt(WKPageRef page, WKStringRef message, WKStringRef defaultValue, WKFrameRef frame, WKSecurityOriginRef securityOrigin, WKPageRunJavaScriptPromptResultListenerRef listener, const void *clientInfo)
+void CyberKitBrowserWindow::runJavaScriptPrompt(WKPageRef page, WKStringRef message, WKStringRef defaultValue, WKFrameRef frame, WKSecurityOriginRef securityOrigin, WKPageRunJavaScriptPromptResultListenerRef listener, const void *clientInfo)
 {
-    auto& thisWindow = toWebKitBrowserWindow(clientInfo);
+    auto& thisWindow = toCyberKitBrowserWindow(clientInfo);
     std::wstring title = L"Prompt: ";
     title += createString(adoptWK(WKSecurityOriginCopyToString(securityOrigin)).get());
     auto text = createString(message);

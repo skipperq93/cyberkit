@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBDatabaseInfo {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(IDBDatabaseInfo, WEBCORE_EXPORT);
@@ -85,4 +85,4 @@ private:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore

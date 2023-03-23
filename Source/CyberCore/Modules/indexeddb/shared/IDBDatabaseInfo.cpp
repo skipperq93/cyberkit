@@ -29,7 +29,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBDatabaseInfo);
 
@@ -172,4 +172,4 @@ void IDBDatabaseInfo::setMaxIndexID(uint64_t maxIndexID)
     m_maxIndexID = maxIndexID;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

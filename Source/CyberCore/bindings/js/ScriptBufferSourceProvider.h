@@ -29,7 +29,7 @@
 #include <CyberScriptCore/SourceProvider.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractScriptBufferHolder : public CanMakeWeakPtr<AbstractScriptBufferHolder> {
 public:
@@ -108,4 +108,4 @@ private:
     mutable std::optional<bool> m_containsOnlyASCII;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

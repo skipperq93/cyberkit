@@ -45,7 +45,7 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/Observer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackList;
 class BufferSource;
@@ -55,7 +55,7 @@ class SourceBufferPrivate;
 class TextTrackList;
 class TimeRanges;
 class VideoTrackList;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class SourceBuffer
     : public RefCounted<SourceBuffer>
@@ -143,7 +143,7 @@ public:
     WTFLogChannel& logChannel() const final;
 #endif
 
-    WebCoreOpaqueRoot opaqueRoot();
+    CyberCoreOpaqueRoot opaqueRoot();
 
     virtual bool isManaged() const { return false; }
     void memoryPressure();
@@ -228,7 +228,7 @@ private:
     MediaSource* m_source;
     AppendMode m_mode { AppendMode::Segments };
 
-    WTF::Observer<WebCoreOpaqueRoot()> m_opaqueRootProvider;
+    WTF::Observer<CyberCoreOpaqueRoot()> m_opaqueRootProvider;
 
     RefPtr<SharedBuffer> m_pendingAppendData;
     Timer m_appendBufferTimer;
@@ -274,6 +274,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

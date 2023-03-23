@@ -31,7 +31,7 @@
 #include "WebGLShaderPrecisionFormat.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // static
 Ref<WebGLShaderPrecisionFormat> WebGLShaderPrecisionFormat::create(GCGLint rangeMin, GCGLint rangeMax, GCGLint precision)

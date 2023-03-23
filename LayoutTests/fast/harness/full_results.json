@@ -18,7 +18,7 @@ ADD_RESULTS({
                         "actual": "IMAGE LEAK",
                         "image_diff_percent": 0.261234,
                         "leaks": [{
-                            "document": "http://localhost:8800/WebKit/cache-storage/image-fail-with-leak.html",
+                            "document": "http://localhost:8800/CyberKit/cache-storage/image-fail-with-leak.html",
                         }]
                     },
                     "image-fail.html": {
@@ -47,9 +47,9 @@ ADD_RESULTS({
                         "actual": "LEAK",
                         "has_stderr": true,
                         "leaks": [{
-                            "document": "http://localhost:8800/WebKit/cache-storage/leaky-worker.html",
+                            "document": "http://localhost:8800/CyberKit/cache-storage/leaky-worker.html",
                             }, {
-                            "document": "http://localhost:8800/WebKit/cache-storage/resources/leaky-worker-subframe.html"
+                            "document": "http://localhost:8800/CyberKit/cache-storage/resources/leaky-worker-subframe.html"
                         }]
                     }
                 }

@@ -32,7 +32,7 @@
 #include "AuthenticatorAttestationResponse.h"
 #include "AuthenticatorResponseData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<AuthenticatorResponse> AuthenticatorResponse::tryCreate(AuthenticatorResponseData&& data, AuthenticatorAttachment attachment)
 {
@@ -99,6 +99,6 @@ AuthenticatorResponse::AuthenticatorResponse(Ref<ArrayBuffer>&& rawId, Authentic
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

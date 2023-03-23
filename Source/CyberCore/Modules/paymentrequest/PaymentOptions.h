@@ -29,7 +29,7 @@
 
 #include "PaymentShippingType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentOptions {
     bool requestPayerName { false };
@@ -40,6 +40,6 @@ struct PaymentOptions {
     PaymentShippingType shippingType { PaymentShippingType::Shipping };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

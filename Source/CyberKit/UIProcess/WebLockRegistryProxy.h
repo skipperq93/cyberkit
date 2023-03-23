@@ -35,7 +35,7 @@ struct ClientOrigin;
 struct WebLockManagerSnapshot;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 
@@ -60,5 +60,5 @@ private:
     bool m_hasEverRequestedLocks { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

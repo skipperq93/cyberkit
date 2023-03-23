@@ -2751,7 +2751,7 @@
         },
         {
             "id": "HeapSnapshotData",
-            "description": "JavaScriptCore HeapSnapshot JSON data.",
+            "description": "CyberScriptCore HeapSnapshot JSON data.",
             "type": "string"
         }
     ],
@@ -3828,7 +3828,7 @@
             "description": "Reloads the main frame of the inspected page.",
             "parameters": [
                 { "name": "ignoreCache", "type": "boolean", "optional": true, "description": "If true, the page is reloaded from its origin without using cached resources." },
-                { "name": "revalidateAllResources", "type": "boolean", "optional": true, "description": "If true, all cached subresources will be revalidated when the main resource loads. Otherwise, only expired cached subresources will be revalidated (the default behavior for most WebKit clients)." }
+                { "name": "revalidateAllResources", "type": "boolean", "optional": true, "description": "If true, all cached subresources will be revalidated when the main resource loads. Otherwise, only expired cached subresources will be revalidated (the default behavior for most CyberKit clients)." }
             ]
         },
         {

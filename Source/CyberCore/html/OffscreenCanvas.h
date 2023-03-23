@@ -48,7 +48,7 @@
 #include "WebGLContextAttributes.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasRenderingContext;
 class DeferredPromise;
@@ -209,6 +209,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CANVAS(WebCore::OffscreenCanvas, isOffscreenCanvas())
+SPECIALIZE_TYPE_TRAITS_CANVAS(CyberCore::OffscreenCanvas, isOffscreenCanvas())
 
 #endif

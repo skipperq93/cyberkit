@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebProcessPool;
 }
 
@@ -41,9 +41,9 @@ class InjectedBundleClient {
 public:
     virtual ~InjectedBundleClient() = default;
 
-    virtual void didReceiveMessageFromInjectedBundle(WebKit::WebProcessPool&, const WTF::String&, API::Object*) { }
-    virtual void didReceiveSynchronousMessageFromInjectedBundle(WebKit::WebProcessPool&, const WTF::String&, API::Object*, CompletionHandler<void(RefPtr<API::Object>)>&& completionHandler) { completionHandler(nullptr); }
-    virtual RefPtr<API::Object> getInjectedBundleInitializationUserData(WebKit::WebProcessPool&) { return nullptr; }
+    virtual void didReceiveMessageFromInjectedBundle(CyberKit::WebProcessPool&, const WTF::String&, API::Object*) { }
+    virtual void didReceiveSynchronousMessageFromInjectedBundle(CyberKit::WebProcessPool&, const WTF::String&, API::Object*, CompletionHandler<void(RefPtr<API::Object>)>&& completionHandler) { completionHandler(nullptr); }
+    virtual RefPtr<API::Object> getInjectedBundleInitializationUserData(CyberKit::WebProcessPool&) { return nullptr; }
 };
 
 } // namespace API

@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayErrorCode : uint8_t {
     Unknown,
@@ -42,6 +42,6 @@ enum class ApplePayErrorCode : uint8_t {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

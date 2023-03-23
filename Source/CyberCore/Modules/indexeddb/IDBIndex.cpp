@@ -34,11 +34,11 @@
 #include "IDBRequest.h"
 #include "IDBTransaction.h"
 #include "Logging.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/HeapInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBIndex);
@@ -435,14 +435,14 @@ void IDBIndex::deref()
     m_objectStore.deref();
 }
 
-WebCoreOpaqueRoot IDBIndex::opaqueRoot()
+CyberCoreOpaqueRoot IDBIndex::opaqueRoot()
 {
-    return WebCoreOpaqueRoot { &m_objectStore };
+    return CyberCoreOpaqueRoot { &m_objectStore };
 }
 
-WebCoreOpaqueRoot root(IDBIndex* index)
+CyberCoreOpaqueRoot root(IDBIndex* index)
 {
     return index ? index->opaqueRoot() : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

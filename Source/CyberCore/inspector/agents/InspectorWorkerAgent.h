@@ -32,7 +32,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -75,4 +75,4 @@ private:
     bool m_enabled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

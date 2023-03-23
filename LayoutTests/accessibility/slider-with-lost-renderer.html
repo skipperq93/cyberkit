@@ -19,7 +19,7 @@
         testOutput += `Initial #slider children count: ${slider.childrenCount}\n`;
 
         setTimeout(async function() {
-            // At the time of writing, WebKit handles "children changed for object" events
+            // At the time of writing, CyberKit handles "children changed for object" events
             // on a deferred timer. So add a child to the slider to queue up a change.
             document.getElementById("slider").appendChild(document.createTextNode("foo"));
             // Force the slider to lose its renderer by changing it to display:contents.

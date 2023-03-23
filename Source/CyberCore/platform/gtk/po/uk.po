@@ -1354,11 +1354,11 @@ msgctxt "Undo action name"
 msgid "Remove Background"
 msgstr "Вилучення тла"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "JSC Options"
 msgstr "Параметри JSC"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "Show JSC Options"
 msgstr "Показати параметри JSC"
 

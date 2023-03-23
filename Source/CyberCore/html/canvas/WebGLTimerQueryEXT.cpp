@@ -30,7 +30,7 @@
 
 #include "WebGLRenderingContextBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLTimerQueryEXT> WebGLTimerQueryEXT::create(WebGLRenderingContextBase& context)
 {

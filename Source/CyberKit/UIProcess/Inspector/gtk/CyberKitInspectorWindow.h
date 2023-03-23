@@ -30,18 +30,18 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_INSPECTOR_WINDOW            (webkit_inspector_window_get_type())
-#define WEBKIT_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INSPECTOR_WINDOW, WebKitInspectorWindow))
+#define WEBKIT_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INSPECTOR_WINDOW, CyberKitInspectorWindow))
 #define WEBKIT_IS_INSPECTOR_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_INSPECTOR_WINDOW))
-#define WEBKIT_INSPECTOR_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INSPECTOR_WINDOW, WebKitInspectorWindowClass))
+#define WEBKIT_INSPECTOR_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INSPECTOR_WINDOW, CyberKitInspectorWindowClass))
 #define WEBKIT_IS_INSPECTOR_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_INSPECTOR_WINDOW))
-#define WEBKIT_INSPECTOR_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INSPECTOR_WINDOW, WebKitInspectorWindowClass))
+#define WEBKIT_INSPECTOR_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INSPECTOR_WINDOW, CyberKitInspectorWindowClass))
 
-typedef struct _WebKitInspectorWindow WebKitInspectorWindow;
-typedef struct _WebKitInspectorWindowClass WebKitInspectorWindowClass;
+typedef struct _CyberKitInspectorWindow CyberKitInspectorWindow;
+typedef struct _CyberKitInspectorWindowClass CyberKitInspectorWindowClass;
 
 GType webkit_inspector_window_get_type(void);
 
 GtkWidget* webkitInspectorWindowNew();
-void webkitInspectorWindowSetSubtitle(WebKitInspectorWindow*, const char* subtitle);
+void webkitInspectorWindowSetSubtitle(CyberKitInspectorWindow*, const char* subtitle);
 
 G_END_DECLS

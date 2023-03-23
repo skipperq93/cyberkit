@@ -30,7 +30,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Navigator;
@@ -56,4 +56,4 @@ private:
     Navigator& m_navigator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

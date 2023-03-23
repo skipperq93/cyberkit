@@ -32,7 +32,7 @@
 
 OBJC_CLASS PKContact;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentContact;
 

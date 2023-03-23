@@ -24,7 +24,7 @@
 #include "ContainerNode.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Delete this class after fixing FormListedElement to avoid calling getElementById during a tree removal.
 #if ASSERT_ENABLED
@@ -83,4 +83,4 @@ inline void disconnectSubframesIfNeeded(ContainerNode& root, SubframeDisconnectP
     disconnectSubframes(root, policy);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include "WebGLVertexArrayObjectBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLVertexArrayObjectOES final : public WebGLVertexArrayObjectBase {
 public:
@@ -40,6 +40,6 @@ private:
     void deleteObjectImpl(const AbstractLocker&, GraphicsContextGL*, PlatformGLObject) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

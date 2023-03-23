@@ -41,7 +41,7 @@
 #include <CyberScriptCore/HeapInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBDatabase);
 
@@ -491,4 +491,4 @@ void IDBDatabase::didDeleteIndexInfo(const IDBIndexInfo& info)
     objectStore->deleteIndex(info.name());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

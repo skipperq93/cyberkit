@@ -44,7 +44,7 @@ namespace CyberCore {
 extern WTFLogChannel LogMedia;
 }
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<RemoteMediaSessionCoordinatorProxy> RemoteMediaSessionCoordinatorProxy::create(WebPageProxy& webPageProxy, Ref<MediaSessionCoordinatorProxyPrivate>&& privateCoordinator)
@@ -187,6 +187,6 @@ WTFLogChannel& RemoteMediaSessionCoordinatorProxy::logChannel() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_SESSION_COORDINATOR)

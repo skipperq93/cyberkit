@@ -30,7 +30,7 @@
 
 #include <wtf/SoftLinking.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ApplePaySessionPaymentRequest::ApplePaySessionPaymentRequest() = default;
 

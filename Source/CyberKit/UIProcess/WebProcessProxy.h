@@ -90,7 +90,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AudioSessionRoutingArbitratorProxy;
 class ObjCObjectGraph;
@@ -533,7 +533,7 @@ private:
     void getNetworkProcessConnection(CompletionHandler<void(NetworkProcessConnectionInfo&&)>&&);
 
 #if ENABLE(GPU_PROCESS)
-    void createGPUProcessConnection(IPC::Connection::Handle&&, WebKit::GPUProcessConnectionParameters&&);
+    void createGPUProcessConnection(IPC::Connection::Handle&&, CyberKit::GPUProcessConnectionParameters&&);
 #endif
 
     bool shouldAllowNonValidInjectedCode() const;
@@ -746,4 +746,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const WebProcessProxy&);
 
-} // namespace WebKit
+} // namespace CyberKit

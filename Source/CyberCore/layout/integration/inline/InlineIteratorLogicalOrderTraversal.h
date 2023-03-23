@@ -29,7 +29,7 @@
 #include "InlineIteratorTextBox.h"
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 struct TextLogicalOrderCacheData {

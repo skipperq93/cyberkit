@@ -35,7 +35,7 @@ namespace API {
 class Array;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebGrammarDetail : public API::ObjectImpl<API::Object::Type::GrammarDetail> {
 public:
@@ -56,6 +56,6 @@ private:
     CyberCore::GrammarDetail m_grammarDetail;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebGrammarDetail_h

@@ -45,7 +45,7 @@ namespace JSC {
     class ArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class RTCPeerConnectionHandler;
@@ -135,6 +135,6 @@ private:
     NetworkSendQueue m_messageQueue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPULoadOp.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPULoadOp : uint8_t {
     Load,

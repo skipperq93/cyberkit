@@ -30,7 +30,7 @@
 
 #include "TextTrackCue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextTrackCueList : public RefCounted<TextTrackCueList> {
 public:
@@ -62,6 +62,6 @@ inline unsigned TextTrackCueList::length() const
     return m_vector.size();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

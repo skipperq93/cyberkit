@@ -43,7 +43,7 @@ namespace CyberCore {
 class CaptureDevice;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SpeechRecognitionRemoteRealtimeMediaSource;
 
@@ -75,6 +75,6 @@ private:
     HashSet<CyberCore::RealtimeMediaSourceIdentifier> m_sourcesNeedingSandboxExtension;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

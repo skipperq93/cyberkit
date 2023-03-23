@@ -29,7 +29,7 @@
 #include "WKAPICast.h"
 #include "WebGeolocationManagerProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebGeolocationProvider::WebGeolocationProvider(const WKGeolocationProviderBase* provider)
 {
@@ -60,4 +60,4 @@ void WebGeolocationProvider::setEnableHighAccuracy(WebGeolocationManagerProxy& g
     m_client.setEnableHighAccuracy(toAPI(&geolocationManager), enabled, m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

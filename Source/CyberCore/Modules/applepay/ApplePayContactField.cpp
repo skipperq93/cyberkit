@@ -28,7 +28,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<ApplePaySessionPaymentRequest::ContactFields> convertAndValidate(unsigned version, const Vector<ApplePayContactField>& contactFields)
 {
@@ -59,6 +59,6 @@ ExceptionOr<ApplePaySessionPaymentRequest::ContactFields> convertAndValidate(uns
     return WTFMove(result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

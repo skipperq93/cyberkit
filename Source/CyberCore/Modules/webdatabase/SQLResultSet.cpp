@@ -29,7 +29,7 @@
 #include "config.h"
 #include "SQLResultSet.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SQLResultSet::SQLResultSet()
     : m_rows(SQLResultSetRowList::create())

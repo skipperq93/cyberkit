@@ -19,27 +19,27 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitOptionMenu_h
-#define WebKitOptionMenu_h
+#ifndef CyberKitOptionMenu_h
+#define CyberKitOptionMenu_h
 
 #include <glib-object.h>
 #if PLATFORM(GTK)
 #include <gtk/gtk.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitOptionMenuItem.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitOptionMenuItem.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_OPTION_MENU            (webkit_option_menu_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_OPTION_MENU(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_OPTION_MENU, WebKitOptionMenu))
+#define WEBKIT_OPTION_MENU(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_OPTION_MENU, CyberKitOptionMenu))
 #define WEBKIT_IS_OPTION_MENU(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_OPTION_MENU))
-#define WEBKIT_OPTION_MENU_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_OPTION_MENU, WebKitOptionMenuClass))
+#define WEBKIT_OPTION_MENU_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_OPTION_MENU, CyberKitOptionMenuClass))
 #define WEBKIT_IS_OPTION_MENU_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_OPTION_MENU))
-#define WEBKIT_OPTION_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_OPTION_MENU, WebKitOptionMenuClass))
+#define WEBKIT_OPTION_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_OPTION_MENU, CyberKitOptionMenuClass))
 
-struct _WebKitOptionMenuClass {
+struct _CyberKitOptionMenuClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -50,29 +50,29 @@ struct _WebKitOptionMenuClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitOptionMenu, webkit_option_menu, WEBKIT, OPTION_MENU, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitOptionMenu, webkit_option_menu, WEBKIT, OPTION_MENU, GObject)
 
 WEBKIT_API guint
-webkit_option_menu_get_n_items    (WebKitOptionMenu *menu);
+webkit_option_menu_get_n_items    (CyberKitOptionMenu *menu);
 
-WEBKIT_API WebKitOptionMenuItem *
-webkit_option_menu_get_item       (WebKitOptionMenu *menu,
+WEBKIT_API CyberKitOptionMenuItem *
+webkit_option_menu_get_item       (CyberKitOptionMenu *menu,
                                    guint             index);
 
 WEBKIT_API void
-webkit_option_menu_select_item    (WebKitOptionMenu *menu,
+webkit_option_menu_select_item    (CyberKitOptionMenu *menu,
                                    guint             index);
 
 WEBKIT_API void
-webkit_option_menu_activate_item  (WebKitOptionMenu *menu,
+webkit_option_menu_activate_item  (CyberKitOptionMenu *menu,
                                    guint             index);
 
 WEBKIT_API void
-webkit_option_menu_close          (WebKitOptionMenu *menu);
+webkit_option_menu_close          (CyberKitOptionMenu *menu);
 
 #if PLATFORM(GTK)
 WEBKIT_API GdkEvent *
-webkit_option_menu_get_event      (WebKitOptionMenu* menu);
+webkit_option_menu_get_event      (CyberKitOptionMenu* menu);
 #endif
 
 G_END_DECLS

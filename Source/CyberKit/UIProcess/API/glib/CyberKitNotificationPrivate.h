@@ -19,9 +19,9 @@
 
 #pragma once
 
-#include "WebKitNotification.h"
+#include "CyberKitNotification.h"
 #include "WebNotification.h"
 #include <wtf/text/CString.h>
 
-WebKitNotification* webkitNotificationCreate(WebKit::WebNotification&);
-const WebKit::WebNotification& webkitNotificationGetWebNotification(WebKitNotification*);
+CyberKitNotification* webkitNotificationCreate(CyberKit::WebNotification&);
+const CyberKit::WebNotification& webkitNotificationGetWebNotification(CyberKitNotification*);

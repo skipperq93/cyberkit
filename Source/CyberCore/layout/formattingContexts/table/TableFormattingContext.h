@@ -33,7 +33,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 // This class implements the layout logic for table formatting contexts.

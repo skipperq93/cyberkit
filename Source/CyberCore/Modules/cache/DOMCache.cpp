@@ -38,8 +38,8 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
-using namespace WebCore::DOMCacheEngine;
+namespace CyberCore {
+using namespace CyberCore::DOMCacheEngine;
 
 Ref<DOMCache> DOMCache::create(ScriptExecutionContext& context, String&& name, DOMCacheIdentifier identifier, Ref<CacheStorageConnection>&& connection)
 {
@@ -171,7 +171,7 @@ void DOMCache::add(RequestInfo&& info, DOMPromiseDeferred<void>&& promise)
 
 static inline bool hasResponseVaryStarHeaderValue(const FetchResponse& response)
 {
-    auto varyValue = response.headers().internalHeaders().get(WebCore::HTTPHeaderName::Vary);
+    auto varyValue = response.headers().internalHeaders().get(CyberCore::HTTPHeaderName::Vary);
     bool hasStar = false;
     varyValue.split(',', [&](StringView view) {
         if (!hasStar && stripLeadingAndTrailingHTTPSpaces(view) == "*"_s)
@@ -575,4 +575,4 @@ const char* DOMCache::activeDOMObjectName() const
     return "Cache";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

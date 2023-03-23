@@ -39,7 +39,7 @@ namespace CyberCore {
 class RegistrableDomain;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 void presentStorageAccessAlert(WKWebView *, const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&&);
 void presentStorageAccessAlertQuirk(WKWebView *, const CyberCore::RegistrableDomain& firstRequestingDomain, const CyberCore::RegistrableDomain& secondRequestingDomain, const CyberCore::RegistrableDomain& current, CompletionHandler<void(bool)>&&);

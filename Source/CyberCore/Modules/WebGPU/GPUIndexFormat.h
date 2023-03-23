@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUIndexFormat.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUIndexFormat : uint8_t {
     Uint16,

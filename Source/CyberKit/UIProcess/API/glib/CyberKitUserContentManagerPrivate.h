@@ -17,14 +17,14 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitUserContentManagerPrivate_h
-#define WebKitUserContentManagerPrivate_h
+#ifndef CyberKitUserContentManagerPrivate_h
+#define CyberKitUserContentManagerPrivate_h
 
 #include "APISerializedScriptValue.h"
-#include "WebKitUserContentManager.h"
+#include "CyberKitUserContentManager.h"
 #include "WebUserContentControllerProxy.h"
 
-WebKit::WebUserContentControllerProxy* webkitUserContentManagerGetUserContentControllerProxy(WebKitUserContentManager*);
-WebKitScriptMessageReply* webKitScriptMessageReplyCreate(CyberCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&);
+CyberKit::WebUserContentControllerProxy* webkitUserContentManagerGetUserContentControllerProxy(CyberKitUserContentManager*);
+CyberKitScriptMessageReply* webKitScriptMessageReplyCreate(CyberCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&);
 
-#endif // WebKitUserContentManagerPrivate_h
+#endif // CyberKitUserContentManagerPrivate_h

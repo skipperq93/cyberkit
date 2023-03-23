@@ -30,7 +30,7 @@
 #include "HTMLToken.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPreloadScanner {
     WTF_MAKE_NONCOPYABLE(CSSPreloadScanner);
@@ -69,4 +69,4 @@ private:
     PreloadRequestStream* m_requests;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

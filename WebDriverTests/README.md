@@ -8,7 +8,7 @@ checking out the repository and copying the files.
 It reads the `importer.json` of the selected suite (selenium or w3c), which
 contains the desired commit alongside the list of paths to skip/import.
 
-The cloned repository sits in `WebKitBuild/` for easier inspection. For example,
+The cloned repository sits in `CyberKitBuild/` for easier inspection. For example,
 to manually check the new commit to be imported.
 
 Once chosen the new commit, update `importer.json` with its hash and

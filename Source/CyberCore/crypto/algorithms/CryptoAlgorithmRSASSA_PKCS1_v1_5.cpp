@@ -34,7 +34,7 @@
 #include "CryptoKeyRSA.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmRSASSA_PKCS1_v1_5Internal {
 static constexpr auto ALG1 = "RS1"_s;

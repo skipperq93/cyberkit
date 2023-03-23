@@ -26,7 +26,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -45,4 +45,4 @@ private:
     ScriptExecutionContext* m_scriptExecutionContext;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

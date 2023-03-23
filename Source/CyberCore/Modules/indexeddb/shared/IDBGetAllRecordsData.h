@@ -27,7 +27,7 @@
 
 #include "IDBKeyRangeData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace IndexedDB {
 enum class GetAllType : bool;
@@ -47,4 +47,4 @@ struct IDBGetAllRecordsData {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

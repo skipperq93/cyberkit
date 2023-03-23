@@ -30,7 +30,7 @@
 
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 ModelElementController::ModelElementController(WebPageProxy& webPageProxy)
     : m_webPageProxy(webPageProxy)

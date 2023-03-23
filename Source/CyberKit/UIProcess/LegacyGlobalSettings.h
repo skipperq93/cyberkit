@@ -30,7 +30,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class LegacyGlobalSettings {
     WTF_MAKE_FAST_ALLOCATED;
@@ -67,4 +67,4 @@ private:
     HashSet<String> m_hostnamesToRegisterAsLocal;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

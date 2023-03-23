@@ -84,7 +84,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -1205,7 +1205,7 @@ Protocol::ErrorStringOr<String> InspectorPageAgent::snapshotNode(Protocol::DOM::
     if (!localMainFrame)
         return makeUnexpected("Main frame isn't local"_s);
 
-    auto snapshot = WebCore::snapshotNode(*localMainFrame, *node, { { }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() });
+    auto snapshot = CyberCore::snapshotNode(*localMainFrame, *node, { { }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() });
     if (!snapshot)
         return makeUnexpected("Could not capture snapshot"_s);
 
@@ -1266,4 +1266,4 @@ Protocol::ErrorStringOr<void> InspectorPageAgent::setScreenSizeOverride(std::opt
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

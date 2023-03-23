@@ -18,35 +18,35 @@
  */
 
 #include "config.h"
-#include "WebKitWebResource.h"
+#include "CyberKitWebResource.h"
 
 #include "APIData.h"
 #include "APIURL.h"
 #include "WebFrameProxy.h"
-#include "WebKitPrivate.h"
-#include "WebKitURIRequestPrivate.h"
-#include "WebKitURIResponsePrivate.h"
-#include "WebKitWebResourcePrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
+#include "CyberKitURIResponsePrivate.h"
+#include "CyberKitWebResourcePrivate.h"
 #include "WebPageProxy.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitWebResource:
+ * CyberKitWebResource:
  *
  * Represents a resource at the end of a URI.
  *
- * A #WebKitWebResource encapsulates content for each resource at the
- * end of a particular URI. For example, one #WebKitWebResource will
+ * A #CyberKitWebResource encapsulates content for each resource at the
+ * end of a particular URI. For example, one #CyberKitWebResource will
  * be created for each separate image and stylesheet when a page is
  * loaded.
  *
  * You can access the response and the URI for a given
- * #WebKitWebResource, using webkit_web_resource_get_uri() and
+ * #CyberKitWebResource, using webkit_web_resource_get_uri() and
  * webkit_web_resource_get_response(), as well as the raw data, using
  * webkit_web_resource_get_data().
  */
@@ -70,20 +70,20 @@ enum {
 
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
-struct _WebKitWebResourcePrivate {
+struct _CyberKitWebResourcePrivate {
     RefPtr<WebFrameProxy> frame;
     CString uri;
-    GRefPtr<WebKitURIResponse> response;
+    GRefPtr<CyberKitURIResponse> response;
     bool isMainResource;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebResource, webkit_web_resource, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebResource, webkit_web_resource, G_TYPE_OBJECT, GObject)
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
 static void webkitWebResourceGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebResource* resource = WEBKIT_WEB_RESOURCE(object);
+    CyberKitWebResource* resource = WEBKIT_WEB_RESOURCE(object);
 
     switch (propId) {
     case PROP_URI:
@@ -97,15 +97,15 @@ static void webkitWebResourceGetProperty(GObject* object, guint propId, GValue* 
     }
 }
 
-static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass)
+static void webkit_web_resource_class_init(CyberKitWebResourceClass* resourceClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(resourceClass);
     objectClass->get_property = webkitWebResourceGetProperty;
 
     /**
-     * WebKitWebResource:uri:
+     * CyberKitWebResource:uri:
      *
-     * The current active URI of the #WebKitWebResource.
+     * The current active URI of the #CyberKitWebResource.
      * See webkit_web_resource_get_uri() for more details.
      */
     sObjProperties[PROP_URI] =
@@ -116,9 +116,9 @@ static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass
             WEBKIT_PARAM_READABLE);
 
     /**
-     * WebKitWebResource:response:
+     * CyberKitWebResource:response:
      *
-     * The #WebKitURIResponse associated with this resource.
+     * The #CyberKitURIResponse associated with this resource.
      */
     sObjProperties[PROP_RESPONSE] =
         g_param_spec_object(
@@ -130,10 +130,10 @@ static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass
     g_object_class_install_properties(objectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitWebResource::sent-request:
-     * @resource: the #WebKitWebResource
-     * @request: a #WebKitURIRequest
-     * @redirected_response: a #WebKitURIResponse, or %NULL
+     * CyberKitWebResource::sent-request:
+     * @resource: the #CyberKitWebResource
+     * @request: a #CyberKitURIRequest
+     * @redirected_response: a #CyberKitURIResponse, or %NULL
      *
      * This signal is emitted when @request has been sent to the
      * server. In case of a server redirection this signal is
@@ -154,8 +154,8 @@ static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass
 
 #if !ENABLE(2022_GLIB_API)
     /**
-     * WebKitWebResource::received-data:
-     * @resource: the #WebKitWebResource
+     * CyberKitWebResource::received-data:
+     * @resource: the #CyberKitWebResource
      * @data_length: the length of data received in bytes
      *
      * This signal is emitted after response is received,
@@ -177,11 +177,11 @@ static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass
 #endif
 
     /**
-     * WebKitWebResource::finished:
-     * @resource: the #WebKitWebResource
+     * CyberKitWebResource::finished:
+     * @resource: the #CyberKitWebResource
      *
      * This signal is emitted when the resource load finishes successfully
-     * or due to an error. In case of errors #WebKitWebResource::failed signal
+     * or due to an error. In case of errors #CyberKitWebResource::failed signal
      * is emitted before this one.
      */
     signals[FINISHED] =
@@ -193,8 +193,8 @@ static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass
                      G_TYPE_NONE, 0);
 
     /**
-     * WebKitWebResource::failed:
-     * @resource: the #WebKitWebResource
+     * CyberKitWebResource::failed:
+     * @resource: the #CyberKitWebResource
      * @error: the #GError that was triggered
      *
      * This signal is emitted when an error occurs during the resource
@@ -211,8 +211,8 @@ static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass
             G_TYPE_ERROR | G_SIGNAL_TYPE_STATIC_SCOPE);
 
     /**
-     * WebKitWebResource::failed-with-tls-errors:
-     * @resource: the #WebKitWebResource
+     * CyberKitWebResource::failed-with-tls-errors:
+     * @resource: the #CyberKitWebResource
      * @certificate: a #GTlsCertificate
      * @errors: a #GTlsCertificateFlags with the verification status of @certificate
      *
@@ -231,7 +231,7 @@ static void webkit_web_resource_class_init(WebKitWebResourceClass* resourceClass
             G_TYPE_TLS_CERTIFICATE_FLAGS);
 }
 
-static void webkitWebResourceUpdateURI(WebKitWebResource* resource, const CString& requestURI)
+static void webkitWebResourceUpdateURI(CyberKitWebResource* resource, const CString& requestURI)
 {
     if (resource->priv->uri == requestURI)
         return;
@@ -240,55 +240,55 @@ static void webkitWebResourceUpdateURI(WebKitWebResource* resource, const CStrin
     g_object_notify_by_pspec(G_OBJECT(resource), sObjProperties[PROP_URI]);
 }
 
-WebKitWebResource* webkitWebResourceCreate(WebFrameProxy& frame, const CyberCore::ResourceRequest& request)
+CyberKitWebResource* webkitWebResourceCreate(WebFrameProxy& frame, const CyberCore::ResourceRequest& request)
 {
-    WebKitWebResource* resource = WEBKIT_WEB_RESOURCE(g_object_new(WEBKIT_TYPE_WEB_RESOURCE, NULL));
+    CyberKitWebResource* resource = WEBKIT_WEB_RESOURCE(g_object_new(WEBKIT_TYPE_WEB_RESOURCE, NULL));
     resource->priv->frame = &frame;
     resource->priv->uri = request.url().string().utf8();
     resource->priv->isMainResource = frame.isMainFrame() && request.requester() == CyberCore::ResourceRequestRequester::Main;
     return resource;
 }
 
-void webkitWebResourceSentRequest(WebKitWebResource* resource, CyberCore::ResourceRequest&& request, CyberCore::ResourceResponse&& redirectResponse)
+void webkitWebResourceSentRequest(CyberKitWebResource* resource, CyberCore::ResourceRequest&& request, CyberCore::ResourceResponse&& redirectResponse)
 {
-    GRefPtr<WebKitURIRequest> uriRequest = adoptGRef(webkitURIRequestCreateForResourceRequest(request));
+    GRefPtr<CyberKitURIRequest> uriRequest = adoptGRef(webkitURIRequestCreateForResourceRequest(request));
     webkitWebResourceUpdateURI(resource, webkit_uri_request_get_uri(uriRequest.get()));
-    GRefPtr<WebKitURIResponse> uriRedirectResponse = !redirectResponse.isNull() ? adoptGRef(webkitURIResponseCreateForResourceResponse(redirectResponse)) : nullptr;
+    GRefPtr<CyberKitURIResponse> uriRedirectResponse = !redirectResponse.isNull() ? adoptGRef(webkitURIResponseCreateForResourceResponse(redirectResponse)) : nullptr;
     g_signal_emit(resource, signals[SENT_REQUEST], 0, uriRequest.get(), uriRedirectResponse.get());
 }
 
-void webkitWebResourceSetResponse(WebKitWebResource* resource, CyberCore::ResourceResponse&& response)
+void webkitWebResourceSetResponse(CyberKitWebResource* resource, CyberCore::ResourceResponse&& response)
 {
     resource->priv->response = adoptGRef(webkitURIResponseCreateForResourceResponse(response));
     g_object_notify_by_pspec(G_OBJECT(resource), sObjProperties[PROP_RESPONSE]);
 }
 
-void webkitWebResourceFinished(WebKitWebResource* resource)
+void webkitWebResourceFinished(CyberKitWebResource* resource)
 {
     g_signal_emit(resource, signals[FINISHED], 0, nullptr);
 }
 
-void webkitWebResourceFailed(WebKitWebResource* resource, CyberCore::ResourceError&& resourceError)
+void webkitWebResourceFailed(CyberKitWebResource* resource, CyberCore::ResourceError&& resourceError)
 {
     if (resourceError.tlsErrors())
         g_signal_emit(resource, signals[FAILED_WITH_TLS_ERRORS], 0, resourceError.certificate(), static_cast<GTlsCertificateFlags>(resourceError.tlsErrors()));
     else {
         GUniquePtr<GError> error(g_error_new_literal(g_quark_from_string(resourceError.domain().utf8().data()),
-            toWebKitError(resourceError.errorCode()), resourceError.localizedDescription().utf8().data()));
+            toCyberKitError(resourceError.errorCode()), resourceError.localizedDescription().utf8().data()));
         g_signal_emit(resource, signals[FAILED], 0, error.get());
     }
 
     webkitWebResourceFinished(resource);
 }
 
-bool webkitWebResourceIsMainResource(WebKitWebResource* resource)
+bool webkitWebResourceIsMainResource(CyberKitWebResource* resource)
 {
     return resource->priv->isMainResource;
 }
 
 /**
  * webkit_web_resource_get_uri:
- * @resource: a #WebKitWebResource
+ * @resource: a #CyberKitWebResource
  *
  * Returns the current active URI of @resource.
  *
@@ -300,12 +300,12 @@ bool webkitWebResourceIsMainResource(WebKitWebResource* resource)
  *   When the resource load starts, the active URI is the requested URI
  * </para></listitem>
  * <listitem><para>
- *   When the initial request is sent to the server, #WebKitWebResource::sent-request
+ *   When the initial request is sent to the server, #CyberKitWebResource::sent-request
  *   signal is emitted without a redirected response, the active URI is the URI of
  *   the request sent to the server.
  * </para></listitem>
  * <listitem><para>
- *   In case of a server redirection, #WebKitWebResource::sent-request signal
+ *   In case of a server redirection, #CyberKitWebResource::sent-request signal
  *   is emitted again with a redirected response, the active URI is the URI the request
  *   was redirected to.
  * </para></listitem>
@@ -320,7 +320,7 @@ bool webkitWebResourceIsMainResource(WebKitWebResource* resource)
  *
  * Returns: the current active URI of @resource
  */
-const char* webkit_web_resource_get_uri(WebKitWebResource* resource)
+const char* webkit_web_resource_get_uri(CyberKitWebResource* resource)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_RESOURCE(resource), 0);
 
@@ -329,18 +329,18 @@ const char* webkit_web_resource_get_uri(WebKitWebResource* resource)
 
 /**
  * webkit_web_resource_get_response:
- * @resource: a #WebKitWebResource
+ * @resource: a #CyberKitWebResource
  *
- * Retrieves the #WebKitURIResponse of the resource load operation.
+ * Retrieves the #CyberKitURIResponse of the resource load operation.
  *
  * This method returns %NULL if called before the response
  * is received from the server. You can connect to notify::response
  * signal to be notified when the response is received.
  *
- * Returns: (transfer none): the #WebKitURIResponse, or %NULL if
+ * Returns: (transfer none): the #CyberKitURIResponse, or %NULL if
  *     the response hasn't been received yet.
  */
-WebKitURIResponse* webkit_web_resource_get_response(WebKitWebResource* resource)
+CyberKitURIResponse* webkit_web_resource_get_response(CyberKitWebResource* resource)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_RESOURCE(resource), 0);
 
@@ -368,7 +368,7 @@ static void resourceDataCallback(API::Data* wkData, GTask* task)
 
 /**
  * webkit_web_resource_get_data:
- * @resource: a #WebKitWebResource
+ * @resource: a #CyberKitWebResource
  * @cancellable: (allow-none): a #GCancellable or %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the request is satisfied
  * @user_data: (closure): the data to pass to callback function
@@ -378,7 +378,7 @@ static void resourceDataCallback(API::Data* wkData, GTask* task)
  * When the operation is finished, @callback will be called. You can then call
  * webkit_web_resource_get_data_finish() to get the result of the operation.
  */
-void webkit_web_resource_get_data(WebKitWebResource* resource, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_web_resource_get_data(CyberKitWebResource* resource, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_WEB_RESOURCE(resource));
 
@@ -398,7 +398,7 @@ void webkit_web_resource_get_data(WebKitWebResource* resource, GCancellable* can
 
 /**
  * webkit_web_resource_get_data_finish:
- * @resource: a #WebKitWebResource
+ * @resource: a #CyberKitWebResource
  * @result: a #GAsyncResult
  * @length: (out) (allow-none): return location for the length of the resource data
  * @error: return location for error or %NULL to ignore
@@ -409,7 +409,7 @@ void webkit_web_resource_get_data(WebKitWebResource* resource, GCancellable* can
  *    string with the data of @resource, or %NULL in case of error. if @length
  *    is not %NULL, the size of the data will be assigned to it.
  */
-guchar* webkit_web_resource_get_data_finish(WebKitWebResource* resource, GAsyncResult* result, gsize* length, GError** error)
+guchar* webkit_web_resource_get_data_finish(CyberKitWebResource* resource, GAsyncResult* result, gsize* length, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_RESOURCE(resource), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, resource), nullptr);

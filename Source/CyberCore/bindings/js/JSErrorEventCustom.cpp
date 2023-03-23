@@ -27,7 +27,7 @@
 #include "config.h"
 #include "JSErrorEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSErrorEvent::visitAdditionalChildren(Visitor& visitor)
@@ -37,4 +37,4 @@ void JSErrorEvent::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSErrorEvent);
 
-} // namespace WebCore
+} // namespace CyberCore

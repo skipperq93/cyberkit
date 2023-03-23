@@ -37,7 +37,7 @@
 #include "RTCSdpType.h"
 #include "ScriptWrappable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCSessionDescriptionInit;
 
@@ -63,6 +63,6 @@ private:
     String m_sdp;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

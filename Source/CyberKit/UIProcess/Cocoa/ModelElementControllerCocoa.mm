@@ -57,7 +57,7 @@
 SOFT_LINK_PRIVATE_FRAMEWORK(AssetViewer);
 SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
 
@@ -96,7 +96,7 @@ void ModelElementController::takeModelElementFullscreen(ModelIdentifier modelIde
     ASVInlinePreview *preview = [modelView preview];
     [preview setCanonicalWebPageURL:originatingPageURL];
     [preview setUrlFragment:originatingPageURL.fragmentIdentifier().createNSString().get()];
-    NSDictionary *previewOptions = @{@"WebKit": @"Model element fullscreen"};
+    NSDictionary *previewOptions = @{@"CyberKit": @"Model element fullscreen"};
     [preview createFullscreenInstanceWithInitialFrame:initialFrame previewOptions:previewOptions completionHandler:^(UIViewController *remoteViewController, CAFenceHandle *fenceHandle, NSError *creationError) {
         if (creationError) {
             LOG(ModelElement, "Unable to create fullscreen instance: %@", [creationError localizedDescription]);
@@ -157,7 +157,7 @@ ASVInlinePreview * ModelElementController::previewForModelIdentifier(ModelIdenti
 void ModelElementController::modelElementCreateRemotePreview(String uuid, CyberCore::FloatSize size, CompletionHandler<void(Expected<std::pair<String, uint32_t>, CyberCore::ResourceError>)>&& completionHandler)
 {
     if (!m_webPageProxy.preferences().modelElementEnabled()) {
-        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Model element disabled"_s }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, { }, "Model element disabled"_s }));
         return;
     }
 
@@ -205,13 +205,13 @@ void ModelElementController::modelElementCreateRemotePreview(String uuid, CyberC
 void ModelElementController::modelElementLoadRemotePreview(String uuid, URL fileURL, CompletionHandler<void(std::optional<CyberCore::ResourceError>&&)>&& completionHandler)
 {
     if (!m_webPageProxy.preferences().modelElementEnabled()) {
-        completionHandler(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Model element disabled"_s });
+        completionHandler(CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, { }, "Model element disabled"_s });
         return;
     }
 
     auto preview = previewForUUID(uuid);
     if (!preview)
-        completionHandler(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Could not find a preview for the provided UUID"_s });
+        completionHandler(CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, { }, "Could not find a preview for the provided UUID"_s });
 
     auto handler = CompletionHandlerWithFinalizer<void(std::optional<CyberCore::ResourceError>&&)>(WTFMove(completionHandler), [](Function<void(std::optional<CyberCore::ResourceError>&&)>& completionHandler) {
         completionHandler(CyberCore::ResourceError { CyberCore::ResourceError::Type::General });
@@ -274,7 +274,7 @@ void ModelElementController::modelElementSizeDidChange(const String& uuid, Cyber
 {
     auto preview = previewForUUID(uuid);
     if (!preview) {
-        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Could not find model"_s }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, { }, "Could not find model"_s }));
         return;
     }
 
@@ -549,6 +549,6 @@ void ModelElementController::setIsMutedForModelElement(ModelIdentifier modelIden
 
 #endif // ENABLE(ARKIT_INLINE_PREVIEW)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ARKIT_INLINE_PREVIEW)

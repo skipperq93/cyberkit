@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUStoreOp.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUStoreOp : uint8_t {
     Store,

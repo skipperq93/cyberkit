@@ -40,21 +40,21 @@ WKCertificateInfoRef WKProtectionSpaceCopyCertificateInfo(WKProtectionSpaceRef p
 
 WKArrayRef WKProtectionSpaceCopyCertificateChain(WKProtectionSpaceRef protectionSpace)
 {
-    auto& certificateChain = WebKit::toImpl(protectionSpace)->protectionSpace().certificateInfo().certificateChain();
+    auto& certificateChain = CyberKit::toImpl(protectionSpace)->protectionSpace().certificateInfo().certificateChain();
     auto certs = WTF::map(certificateChain, [](auto&& certificate) -> RefPtr<API::Object> {
         return API::Data::create(reinterpret_cast<const unsigned char*>(certificate.data()), certificate.size());
     });
-    return WebKit::toAPI(API::Array::create(WTFMove(certs)).leakRef());
+    return CyberKit::toAPI(API::Array::create(WTFMove(certs)).leakRef());
 }
 
 int WKProtectionSpaceGetCertificateVerificationError(WKProtectionSpaceRef protectionSpace)
 {
-    auto& certificateInfo = WebKit::toImpl(protectionSpace)->protectionSpace().certificateInfo();
+    auto& certificateInfo = CyberKit::toImpl(protectionSpace)->protectionSpace().certificateInfo();
     return certificateInfo.verificationError();
 }
 
 WKStringRef WKProtectionSpaceCopyCertificateVerificationErrorDescription(WKProtectionSpaceRef protectionSpace)
 {
-    auto& certificateInfo = WebKit::toImpl(protectionSpace)->protectionSpace().certificateInfo();
-    return WebKit::toCopiedAPI(certificateInfo.verificationErrorDescription());
+    auto& certificateInfo = CyberKit::toImpl(protectionSpace)->protectionSpace().certificateInfo();
+    return CyberKit::toCopiedAPI(certificateInfo.verificationErrorDescription());
 }

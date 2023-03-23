@@ -33,7 +33,7 @@
 #include "SQLTransactionBackend.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ChangeVersionWrapper::ChangeVersionWrapper(String&& oldVersion, String&& newVersion)
     : m_oldVersion(WTFMove(oldVersion).isolatedCopy())
@@ -79,4 +79,4 @@ void ChangeVersionWrapper::handleCommitFailedAfterPostflight(SQLTransaction& tra
     transaction.database().setCachedVersion(m_oldVersion);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUPrimitiveTopology.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUPrimitiveTopology : uint8_t {
     PointList,

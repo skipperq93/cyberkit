@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PayerErrorFields {
     String email;
@@ -37,6 +37,6 @@ struct PayerErrorFields {
     String phone;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

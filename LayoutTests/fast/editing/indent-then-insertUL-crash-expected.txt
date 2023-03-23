@@ -1,1 +1,1 @@
-Tests asynchronous indenting and list insertion commands. The test passes if WebKit doesn't crash or hit an ssertion.
+Tests asynchronous indenting and list insertion commands. The test passes if CyberKit doesn't crash or hit an ssertion.

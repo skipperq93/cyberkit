@@ -29,7 +29,7 @@
 #include "JSDOMConvertBase.h"
 #include <wtf/FixedVector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename IDLType>
 struct VariadicConverter {
@@ -71,4 +71,4 @@ template<typename IDLType> FixedVector<typename VariadicConverter<IDLType>::Item
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

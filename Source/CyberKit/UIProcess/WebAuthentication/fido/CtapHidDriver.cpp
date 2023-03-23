@@ -34,7 +34,7 @@
 #include <wtf/WeakRandomNumber.h>
 #include <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 
 CtapHidDriver::Worker::Worker(UniqueRef<HidConnection>&& connection)
@@ -266,6 +266,6 @@ void CtapHidDriver::cancel()
     reset();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

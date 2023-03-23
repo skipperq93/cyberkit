@@ -25,7 +25,7 @@
  
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum EditorDeleteAction {
     deleteSelectionAction,
@@ -33,4 +33,4 @@ enum EditorDeleteAction {
     forwardDeleteKeyAction
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include "DisplayStyle.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ContainerBox);
@@ -51,5 +51,5 @@ const char* ContainerBox::boxName() const
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

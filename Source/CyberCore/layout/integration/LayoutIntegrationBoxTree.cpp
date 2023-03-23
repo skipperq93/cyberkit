@@ -48,7 +48,7 @@
 #include "LayoutIntegrationLineLayout.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 static constexpr size_t smallTreeThreshold = 8;

@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLDrawBuffers);
 
@@ -87,6 +87,6 @@ void WebGLDrawBuffers::drawBuffersWEBGL(const Vector<GCGLenum>& buffers)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -30,7 +30,7 @@
 #include <variant>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCalcExpressionNode;
 class CSSNumericValue;
@@ -88,8 +88,8 @@ protected:
     CSSNumericType m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSNumericValue)
-    static bool isType(const WebCore::CSSStyleValue& styleValue) { return isCSSNumericValue(styleValue.getType()); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSNumericValue)
+    static bool isType(const CyberCore::CSSStyleValue& styleValue) { return isCSSNumericValue(styleValue.getType()); }
 SPECIALIZE_TYPE_TRAITS_END()

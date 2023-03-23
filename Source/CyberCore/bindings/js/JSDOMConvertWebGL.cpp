@@ -83,7 +83,7 @@
 #include "JSWebGLVertexArrayObjectOES.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // FIXME: This should use the IDLUnion JSConverter.

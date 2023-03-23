@@ -28,7 +28,7 @@
 
 #include "WorkerOrWorkletGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -40,4 +40,4 @@ WorkerConsoleAgent::WorkerConsoleAgent(WorkerAgentContext& context)
 
 WorkerConsoleAgent::~WorkerConsoleAgent() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

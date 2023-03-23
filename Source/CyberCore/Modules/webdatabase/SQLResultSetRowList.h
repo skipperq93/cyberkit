@@ -31,7 +31,7 @@
 #include "ExceptionOr.h"
 #include "SQLValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLResultSetRowList : public RefCounted<SQLResultSetRowList> {
 public:
@@ -53,4 +53,4 @@ private:
     Vector<SQLValue> m_result;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

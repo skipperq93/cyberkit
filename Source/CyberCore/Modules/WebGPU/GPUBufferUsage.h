@@ -30,7 +30,7 @@
 #include <pal/graphics/WebGPU/WebGPUBufferUsage.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUBufferUsageFlags = uint32_t;
 

@@ -28,7 +28,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin;
 
@@ -46,4 +46,4 @@ private:
     Ref<SecurityOrigin> m_securityOrigin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

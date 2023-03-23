@@ -38,7 +38,7 @@
 #include "Logging.h"
 #include "TableFormattingState.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static inline bool isHeightAuto(const Box& layoutBox)

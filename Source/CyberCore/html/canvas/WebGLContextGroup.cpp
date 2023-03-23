@@ -32,7 +32,7 @@
 #include "WebGLRenderingContextBase.h"
 #include "WebGLSharedObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLContextGroup> WebGLContextGroup::create()
 {
@@ -113,6 +113,6 @@ void WebGLContextGroup::loseContextGroup(WebGLRenderingContextBase::LostContextM
     detachAndRemoveAllObjects();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

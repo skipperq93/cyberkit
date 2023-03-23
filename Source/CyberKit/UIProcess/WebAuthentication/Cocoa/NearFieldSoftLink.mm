@@ -29,16 +29,16 @@
 
 #if ENABLE(WEB_AUTHN)
 
-SOFT_LINK_PRIVATE_FRAMEWORK_FOR_SOURCE(WebKit, NearField);
+SOFT_LINK_PRIVATE_FRAMEWORK_FOR_SOURCE(CyberKit, NearField);
 
-SOFT_LINK_CLASS_FOR_SOURCE(WebKit, NearField, NFTag);
-SOFT_LINK_CLASS_FOR_SOURCE(WebKit, NearField, NFSession);
-SOFT_LINK_CLASS_FOR_SOURCE(WebKit, NearField, NFReaderSession);
+SOFT_LINK_CLASS_FOR_SOURCE(CyberKit, NearField, NFTag);
+SOFT_LINK_CLASS_FOR_SOURCE(CyberKit, NearField, NFSession);
+SOFT_LINK_CLASS_FOR_SOURCE(CyberKit, NearField, NFReaderSession);
 
 #if PLATFORM(MAC)
-SOFT_LINK_CLASS_FOR_SOURCE_OPTIONAL(WebKit, NearField, NFHardwareManager);
+SOFT_LINK_CLASS_FOR_SOURCE_OPTIONAL(CyberKit, NearField, NFHardwareManager);
 #else
-SOFT_LINK_CLASS_FOR_SOURCE(WebKit, NearField, NFHardwareManager);
+SOFT_LINK_CLASS_FOR_SOURCE(CyberKit, NearField, NFHardwareManager);
 #endif
 
 #endif // ENABLE(WEB_AUTHN)

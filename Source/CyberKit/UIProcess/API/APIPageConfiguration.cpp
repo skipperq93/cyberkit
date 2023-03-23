@@ -44,7 +44,7 @@
 #endif
 
 namespace API {
-using namespace WebKit;
+using namespace CyberKit;
 
 Ref<PageConfiguration> PageConfiguration::create()
 {
@@ -190,32 +190,32 @@ void PageConfiguration::setRelatedPage(WebPageProxy* relatedPage)
     m_relatedPage = relatedPage;
 }
 
-WebKit::WebPageProxy* PageConfiguration::pageToCloneSessionStorageFrom() const
+CyberKit::WebPageProxy* PageConfiguration::pageToCloneSessionStorageFrom() const
 {
     return m_pageToCloneSessionStorageFrom.get();
 }
 
-void PageConfiguration::setPageToCloneSessionStorageFrom(WebKit::WebPageProxy* pageToCloneSessionStorageFrom)
+void PageConfiguration::setPageToCloneSessionStorageFrom(CyberKit::WebPageProxy* pageToCloneSessionStorageFrom)
 {
     m_pageToCloneSessionStorageFrom = pageToCloneSessionStorageFrom;
 }
 
-WebKit::VisitedLinkStore* PageConfiguration::visitedLinkStore()
+CyberKit::VisitedLinkStore* PageConfiguration::visitedLinkStore()
 {
     return m_visitedLinkStore.get();
 }
 
-void PageConfiguration::setVisitedLinkStore(WebKit::VisitedLinkStore* visitedLinkStore)
+void PageConfiguration::setVisitedLinkStore(CyberKit::VisitedLinkStore* visitedLinkStore)
 {
     m_visitedLinkStore = visitedLinkStore;
 }
 
-WebKit::WebsiteDataStore* PageConfiguration::websiteDataStore()
+CyberKit::WebsiteDataStore* PageConfiguration::websiteDataStore()
 {
     return m_websiteDataStore.get();
 }
 
-void PageConfiguration::setWebsiteDataStore(WebKit::WebsiteDataStore* websiteDataStore)
+void PageConfiguration::setWebsiteDataStore(CyberKit::WebsiteDataStore* websiteDataStore)
 {
     m_websiteDataStore = websiteDataStore;
 }
@@ -230,12 +230,12 @@ void PageConfiguration::setDefaultWebsitePolicies(WebsitePolicies* policies)
     m_defaultWebsitePolicies = policies;
 }
 
-RefPtr<WebKit::WebURLSchemeHandler> PageConfiguration::urlSchemeHandlerForURLScheme(const WTF::String& scheme)
+RefPtr<CyberKit::WebURLSchemeHandler> PageConfiguration::urlSchemeHandlerForURLScheme(const WTF::String& scheme)
 {
     return m_urlSchemeHandlers.get(scheme);
 }
 
-void PageConfiguration::setURLSchemeHandlerForURLScheme(Ref<WebKit::WebURLSchemeHandler>&& handler, const WTF::String& scheme)
+void PageConfiguration::setURLSchemeHandlerForURLScheme(Ref<CyberKit::WebURLSchemeHandler>&& handler, const WTF::String& scheme)
 {
     m_urlSchemeHandlers.set(scheme, WTFMove(handler));
 }

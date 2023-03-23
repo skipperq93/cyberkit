@@ -39,7 +39,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasRenderingContext;
 class ImageBitmap;
@@ -84,5 +84,5 @@ private:
 };
 
 }
-SPECIALIZE_TYPE_TRAITS_CANVAS(WebCore::CustomPaintCanvas, isCustomPaintCanvas())
+SPECIALIZE_TYPE_TRAITS_CANVAS(CyberCore::CustomPaintCanvas, isCustomPaintCanvas())
 #endif

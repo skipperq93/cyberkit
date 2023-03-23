@@ -37,7 +37,7 @@
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::VisitedLinkStore>(self);
+    API::Object::constructInWrapper<CyberKit::VisitedLinkStore>(self);
 
     return self;
 }

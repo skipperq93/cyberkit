@@ -35,7 +35,7 @@
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace UIProcess {
 

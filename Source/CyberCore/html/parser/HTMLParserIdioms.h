@@ -28,7 +28,7 @@
 #include <wtf/Expected.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Decimal;
 class QualifiedName;
@@ -181,4 +181,4 @@ inline unsigned clampHTMLNonNegativeIntegerToRange(StringView stringValue, unsig
     return optionalValue.error() == HTMLIntegerParsingError::PositiveOverflow ? max : defaultValue;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

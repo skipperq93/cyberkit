@@ -34,19 +34,19 @@
 
 WKTypeID WKSessionStateGetTypeID()
 {
-    return WebKit::toAPI(API::SessionState::APIType);
+    return CyberKit::toAPI(API::SessionState::APIType);
 }
 
 WKSessionStateRef WKSessionStateCreateFromData(WKDataRef data)
 {
-    WebKit::SessionState sessionState;
-    if (!WebKit::decodeLegacySessionState(WebKit::toImpl(data)->bytes(), WebKit::toImpl(data)->size(), sessionState))
+    CyberKit::SessionState sessionState;
+    if (!CyberKit::decodeLegacySessionState(CyberKit::toImpl(data)->bytes(), CyberKit::toImpl(data)->size(), sessionState))
         return nullptr;
 
-    return WebKit::toAPI(&API::SessionState::create(WTFMove(sessionState)).leakRef());
+    return CyberKit::toAPI(&API::SessionState::create(WTFMove(sessionState)).leakRef());
 }
 
 WKDataRef WKSessionStateCopyData(WKSessionStateRef sessionState)
 {
-    return WebKit::toAPI(WebKit::encodeLegacySessionState(WebKit::toImpl(sessionState)->sessionState()).leakRef());
+    return CyberKit::toAPI(CyberKit::encodeLegacySessionState(CyberKit::toImpl(sessionState)->sessionState()).leakRef());
 }

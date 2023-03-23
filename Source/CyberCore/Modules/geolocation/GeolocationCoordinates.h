@@ -29,7 +29,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationCoordinates : public RefCounted<GeolocationCoordinates> {
 public:
@@ -58,4 +58,4 @@ private:
     GeolocationPositionData m_position;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

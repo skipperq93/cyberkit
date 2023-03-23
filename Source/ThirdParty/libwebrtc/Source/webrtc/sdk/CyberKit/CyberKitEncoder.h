@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include "WebKitUtilities.h"
+#include "CyberKitUtilities.h"
 #include "api/video_codecs/video_encoder.h"
 #include "api/video_codecs/video_encoder_factory.h"
 #include "api/video/encoded_image.h"
@@ -42,20 +42,20 @@ class VideoFrame;
 struct SdpVideoFormat;
 class Settings;
 
-std::unique_ptr<webrtc::VideoEncoderFactory> createWebKitEncoderFactory(WebKitH265, WebKitVP9, WebKitH264LowLatency, WebKitAv1);
+std::unique_ptr<webrtc::VideoEncoderFactory> createCyberKitEncoderFactory(CyberKitH265, CyberKitVP9, CyberKitH264LowLatency, CyberKitAv1);
 
-using WebKitVideoEncoder = void*;
-using VideoEncoderCreateCallback = WebKitVideoEncoder(*)(const SdpVideoFormat& format);
-using VideoEncoderReleaseCallback = int32_t(*)(WebKitVideoEncoder);
-using VideoEncoderInitializeCallback = int32_t(*)(WebKitVideoEncoder, const VideoCodec&);
-using VideoEncoderEncodeCallback = int32_t(*)(WebKitVideoEncoder, const VideoFrame&, bool shouldEncodeAsKeyFrame);
-using VideoEncoderRegisterEncodeCompleteCallback = int32_t(*)(WebKitVideoEncoder, void* encodedImageCallback);
-using VideoEncoderSetRatesCallback = void(*)(WebKitVideoEncoder, const VideoEncoder::RateControlParameters&);
+using CyberKitVideoEncoder = void*;
+using VideoEncoderCreateCallback = CyberKitVideoEncoder(*)(const SdpVideoFormat& format);
+using VideoEncoderReleaseCallback = int32_t(*)(CyberKitVideoEncoder);
+using VideoEncoderInitializeCallback = int32_t(*)(CyberKitVideoEncoder, const VideoCodec&);
+using VideoEncoderEncodeCallback = int32_t(*)(CyberKitVideoEncoder, const VideoFrame&, bool shouldEncodeAsKeyFrame);
+using VideoEncoderRegisterEncodeCompleteCallback = int32_t(*)(CyberKitVideoEncoder, void* encodedImageCallback);
+using VideoEncoderSetRatesCallback = void(*)(CyberKitVideoEncoder, const VideoEncoder::RateControlParameters&);
 
 void setVideoEncoderCallbacks(VideoEncoderCreateCallback, VideoEncoderReleaseCallback, VideoEncoderInitializeCallback, VideoEncoderEncodeCallback, VideoEncoderRegisterEncodeCompleteCallback, VideoEncoderSetRatesCallback);
 
-using WebKitEncodedFrameTiming = EncodedImage::Timing;
-struct WebKitEncodedFrameInfo {
+using CyberKitEncodedFrameTiming = EncodedImage::Timing;
+struct CyberKitEncodedFrameInfo {
     uint32_t width { 0 };
     uint32_t height { 0 };
     int64_t timeStamp { 0 };
@@ -66,14 +66,14 @@ struct WebKitEncodedFrameInfo {
     VideoContentType contentType { VideoContentType::UNSPECIFIED };
     bool completeFrame = false;
     int qp { -1 };
-    WebKitEncodedFrameTiming timing;
+    CyberKitEncodedFrameTiming timing;
 
     template<class Encoder> void encode(Encoder&) const;
-    template<class Decoder> static bool decode(Decoder&, WebKitEncodedFrameInfo&);
+    template<class Decoder> static bool decode(Decoder&, CyberKitEncodedFrameInfo&);
 };
 
 using LocalEncoder = void*;
-using LocalEncoderCallback = void (^)(const uint8_t* buffer, size_t size, const webrtc::WebKitEncodedFrameInfo&);
+using LocalEncoderCallback = void (^)(const uint8_t* buffer, size_t size, const webrtc::CyberKitEncodedFrameInfo&);
 using LocalEncoderDescriptionCallback = void (^)(const uint8_t* buffer, size_t size);
 void* createLocalEncoder(const webrtc::SdpVideoFormat&, bool useAnnexB, LocalEncoderCallback, LocalEncoderDescriptionCallback);
 void releaseLocalEncoder(LocalEncoder);
@@ -81,11 +81,11 @@ void initializeLocalEncoder(LocalEncoder, uint16_t width, uint16_t height, unsig
 void encodeLocalEncoderFrame(LocalEncoder, CVPixelBufferRef, int64_t timeStampNs, uint32_t timeStamp, webrtc::VideoRotation, bool isKeyframeRequired);
 void setLocalEncoderRates(LocalEncoder, uint32_t bitRate, uint32_t frameRate);
 void setLocalEncoderLowLatency(LocalEncoder, bool isLowLatencyEnabled);
-void encoderVideoTaskComplete(void*, webrtc::VideoCodecType, const uint8_t* buffer, size_t length, const WebKitEncodedFrameInfo&);
+void encoderVideoTaskComplete(void*, webrtc::VideoCodecType, const uint8_t* buffer, size_t length, const CyberKitEncodedFrameInfo&);
 void flushLocalEncoder(LocalEncoder);
 
 template<class Decoder>
-bool WebKitEncodedFrameInfo::decode(Decoder& decoder, WebKitEncodedFrameInfo& info)
+bool CyberKitEncodedFrameInfo::decode(Decoder& decoder, CyberKitEncodedFrameInfo& info)
 {
     if (!decoder.decode(info.width))
         return false;
@@ -131,7 +131,7 @@ bool WebKitEncodedFrameInfo::decode(Decoder& decoder, WebKitEncodedFrameInfo& in
 }
 
 template<class Encoder>
-void WebKitEncodedFrameInfo::encode(Encoder& encoder) const
+void CyberKitEncodedFrameInfo::encode(Encoder& encoder) const
 {
     encoder << width;
     encoder << height;

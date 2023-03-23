@@ -35,7 +35,7 @@
 
 namespace API {
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 static constexpr Seconds navigationActivityTimeout { 30_s };
 
@@ -79,14 +79,14 @@ Navigation::Navigation(WebNavigationState& state, WebBackForwardListItem& target
 {
 }
 
-Navigation::Navigation(WebKit::WebNavigationState& state, std::unique_ptr<SubstituteData>&& substituteData)
+Navigation::Navigation(CyberKit::WebNavigationState& state, std::unique_ptr<SubstituteData>&& substituteData)
     : Navigation(state)
 {
     ASSERT(substituteData);
     m_substituteData = WTFMove(substituteData);
 }
 
-Navigation::Navigation(WebKit::WebNavigationState& state, CyberCore::ResourceRequest&& simulatedRequest, std::unique_ptr<SubstituteData>&& substituteData, WebKit::WebBackForwardListItem* fromItem)
+Navigation::Navigation(CyberKit::WebNavigationState& state, CyberCore::ResourceRequest&& simulatedRequest, std::unique_ptr<SubstituteData>&& substituteData, CyberKit::WebBackForwardListItem* fromItem)
     : Navigation(state, WTFMove(simulatedRequest), fromItem)
 {
     ASSERT(substituteData);

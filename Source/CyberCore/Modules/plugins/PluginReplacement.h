@@ -34,7 +34,7 @@ namespace JSC {
 class JSObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLPlugInElement;
 class RenderElement;

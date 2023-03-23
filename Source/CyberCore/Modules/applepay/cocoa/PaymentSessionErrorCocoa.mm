@@ -31,7 +31,7 @@
 #import "ApplePaySessionError.h"
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<ApplePaySessionError> additionalError(NSError *error)
 {
@@ -78,6 +78,6 @@ ApplePaySessionError PaymentSessionError::unknownError() const
     return { "unknown"_s, { } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

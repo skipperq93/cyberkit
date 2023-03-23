@@ -30,7 +30,7 @@
 #include "RenderBlockFlow.h"
 #include "RenderInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 InlineBox::InlineBox(PathVariant&& path)

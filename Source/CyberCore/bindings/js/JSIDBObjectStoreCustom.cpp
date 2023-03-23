@@ -32,7 +32,7 @@
 #include "JSIDBObjectStore.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
@@ -43,4 +43,4 @@ void JSIDBObjectStore::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSIDBObjectStore);
 
-} // namespace WebCore
+} // namespace CyberCore

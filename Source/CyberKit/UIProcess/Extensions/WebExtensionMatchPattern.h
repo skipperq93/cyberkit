@@ -39,7 +39,7 @@ OBJC_CLASS NSSet;
 OBJC_CLASS NSString;
 OBJC_CLASS _WKWebExtensionMatchPattern;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionMatchPattern : public API::ObjectImpl<API::Object::Type::WebExtensionMatchPattern> {
     WTF_MAKE_NONCOPYABLE(WebExtensionMatchPattern);
@@ -128,23 +128,23 @@ NSSet *toAPI(MatchPatternSet&);
 HashSet<String> toStrings(const MatchPatternSet&);
 MatchPatternSet toPatterns(HashSet<String>&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
 struct WebExtensionMatchPatternHash {
-    static unsigned hash(const WebKit::WebExtensionMatchPattern& pattern) { return pattern.hash(); }
-    static bool equal(const WebKit::WebExtensionMatchPattern& a, const WebKit::WebExtensionMatchPattern& b) { return a == b; }
+    static unsigned hash(const CyberKit::WebExtensionMatchPattern& pattern) { return pattern.hash(); }
+    static bool equal(const CyberKit::WebExtensionMatchPattern& a, const CyberKit::WebExtensionMatchPattern& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
 template<typename T> struct DefaultHash;
-template<> struct DefaultHash<WebKit::WebExtensionMatchPattern> : WebExtensionMatchPatternHash { };
+template<> struct DefaultHash<CyberKit::WebExtensionMatchPattern> : WebExtensionMatchPatternHash { };
 
-template<> struct HashTraits<WebKit::WebExtensionMatchPattern> : SimpleClassHashTraits<WebKit::WebExtensionMatchPattern> {
+template<> struct HashTraits<CyberKit::WebExtensionMatchPattern> : SimpleClassHashTraits<CyberKit::WebExtensionMatchPattern> {
     static const bool emptyValueIsZero = false;
     static const bool hasIsEmptyValueFunction = true;
-    static bool isEmptyValue(const WebKit::WebExtensionMatchPattern& pattern) { return pattern.isValid(); }
+    static bool isEmptyValue(const CyberKit::WebExtensionMatchPattern& pattern) { return pattern.isValid(); }
 };
 
 } // namespace WTF

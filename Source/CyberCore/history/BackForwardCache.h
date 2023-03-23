@@ -30,7 +30,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedPage;
 class Frame;
@@ -73,7 +73,7 @@ public:
 
 private:
     BackForwardCache();
-    ~BackForwardCache() = delete; // Make sure nobody accidentally calls delete -- WebCore does not delete singletons.
+    ~BackForwardCache() = delete; // Make sure nobody accidentally calls delete -- CyberCore does not delete singletons.
 
     static bool canCachePageContainingThisFrame(Frame&);
 
@@ -92,4 +92,4 @@ private:
     friend class WTF::NeverDestroyed<BackForwardCache>;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

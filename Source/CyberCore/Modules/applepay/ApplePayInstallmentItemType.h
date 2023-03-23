@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLE_PAY_INSTALLMENTS)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayInstallmentItemType : uint8_t {
     Generic,
@@ -37,6 +37,6 @@ enum class ApplePayInstallmentItemType : uint8_t {
     Mac,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_INSTALLMENTS)

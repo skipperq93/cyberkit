@@ -29,7 +29,7 @@
 
 #include "NavigationSOAuthorizationSession.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class RedirectSOAuthorizationSession final : public NavigationSOAuthorizationSession {
 public:
@@ -49,6 +49,6 @@ private:
     void beforeStart() final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

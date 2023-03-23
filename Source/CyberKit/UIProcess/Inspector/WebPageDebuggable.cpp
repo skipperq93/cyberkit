@@ -32,7 +32,7 @@
 #include "WebPageInspectorController.h"
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace Inspector;
 
@@ -95,6 +95,6 @@ void WebPageDebuggable::setNameOverride(const String& name)
     update();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

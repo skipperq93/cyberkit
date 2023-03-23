@@ -29,7 +29,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include "JSGPUCompilationInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUShaderModule::label() const
 {

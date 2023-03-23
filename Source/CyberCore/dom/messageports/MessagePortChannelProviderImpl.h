@@ -28,7 +28,7 @@
 #include "MessagePortChannelProvider.h"
 #include "MessagePortChannelRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessagePortChannelProviderImpl final : public MessagePortChannelProvider {
 public:
@@ -46,4 +46,4 @@ private:
     MessagePortChannelRegistry m_registry;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

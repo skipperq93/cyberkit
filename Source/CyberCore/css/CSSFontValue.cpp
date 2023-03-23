@@ -25,7 +25,7 @@
 #include "CSSValueList.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSFontValue::customCSSText() const
 {

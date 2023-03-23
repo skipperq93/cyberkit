@@ -34,7 +34,7 @@
 #include "CSSMarkup.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSGridLineNamesValue::customCSSText() const
 {

@@ -42,7 +42,7 @@
 #include "XLinkNames.h"
 #include <wtf/Language.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilitySVGElement::AccessibilitySVGElement(RenderObject* renderer, AXObjectCache* cache)
     : AccessibilityRenderObject(renderer)
@@ -304,9 +304,9 @@ AccessibilityRole AccessibilitySVGElement::determineAccessibilityRole()
     if (m_renderer->isSVGTSpan())
         return AccessibilityRole::SVGTSpan;
     if (is<SVGAElement>(svgElement))
-        return AccessibilityRole::WebCoreLink;
+        return AccessibilityRole::CyberCoreLink;
 
     return AccessibilityRenderObject::determineAccessibilityRole();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,7 +24,7 @@
 #include "TestInterfaceLeadingUnderscore.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestInterfaceLeadingUnderscore : public JSDOMWrapper<TestInterfaceLeadingUnderscore> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestInterfaceLeadingUnderscore> {
     using ToWrappedReturnType = TestInterfaceLeadingUnderscore*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

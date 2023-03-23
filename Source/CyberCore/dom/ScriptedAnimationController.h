@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Page;
@@ -89,4 +89,4 @@ private:
     OptionSet<ThrottlingReason> m_throttlingReasons;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

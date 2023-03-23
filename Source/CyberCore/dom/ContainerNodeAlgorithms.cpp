@@ -34,7 +34,7 @@
 #include "ShadowRoot.h"
 #include "TypedElementDescendantIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ASSERT_ENABLED
 ContainerChildRemovalScope* ContainerChildRemovalScope::s_scope = nullptr;

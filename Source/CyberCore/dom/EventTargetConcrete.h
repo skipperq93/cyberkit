@@ -32,7 +32,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventTargetConcrete final : public RefCounted<EventTargetConcrete>, public EventTarget, private ContextDestructionObserver {
     WTF_MAKE_ISO_ALLOCATED(EventTargetConcrete);
@@ -52,4 +52,4 @@ private:
     void derefEventTarget() final { deref(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

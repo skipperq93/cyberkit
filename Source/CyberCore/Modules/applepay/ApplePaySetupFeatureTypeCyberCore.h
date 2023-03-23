@@ -27,13 +27,13 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePaySetupFeatureType : uint8_t {
     ApplePay,
     AppleCard,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

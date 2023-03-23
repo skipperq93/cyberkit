@@ -32,7 +32,7 @@
 #include "SpeechRecognitionUpdate.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void SpeechRecognitionCaptureSource::mute()
 {
@@ -74,4 +74,4 @@ SpeechRecognitionCaptureSource::SpeechRecognitionCaptureSource(SpeechRecognition
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

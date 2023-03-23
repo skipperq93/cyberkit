@@ -31,5 +31,5 @@
 
 WKTypeID WKWindowFeaturesGetTypeID()
 {
-    return WebKit::toAPI(API::WindowFeatures::APIType);
+    return CyberKit::toAPI(API::WindowFeatures::APIType);
 }

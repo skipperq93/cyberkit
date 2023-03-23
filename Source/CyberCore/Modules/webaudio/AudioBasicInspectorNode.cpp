@@ -32,7 +32,7 @@
 #include "AudioNodeOutput.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioBasicInspectorNode);
 
@@ -103,6 +103,6 @@ void AudioBasicInspectorNode::updatePullStatus()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

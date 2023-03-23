@@ -30,7 +30,7 @@
 #include "ApplicationManifest.h"
 #include <wtf/JSONValues.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class Document;
@@ -64,6 +64,6 @@ private:
     URL m_manifestURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLICATION_MANIFEST)

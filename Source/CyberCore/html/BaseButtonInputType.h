@@ -32,7 +32,7 @@
 
 #include "BaseClickableWithKeyInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Base of button, file, image, reset, and submit types.
 class BaseButtonInputType : public BaseClickableWithKeyInputType {
@@ -50,4 +50,4 @@ private:
     void setValue(const String&, bool, TextFieldEventBehavior, TextControlSetValueSelection) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

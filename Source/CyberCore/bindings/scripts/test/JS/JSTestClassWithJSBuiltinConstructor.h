@@ -24,7 +24,7 @@
 #include "TestClassWithJSBuiltinConstructor.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestClassWithJSBuiltinConstructor : public JSDOMWrapper<TestClassWithJSBuiltinConstructor> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestClassWithJSBuiltinConstructor>
     using ToWrappedReturnType = TestClassWithJSBuiltinConstructor*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

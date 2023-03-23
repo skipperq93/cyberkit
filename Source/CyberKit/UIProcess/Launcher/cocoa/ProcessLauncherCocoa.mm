@@ -56,14 +56,14 @@
 #import "CodeSigning.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static const char* webContentServiceName(bool nonValidInjectedCodeAllowed, ProcessLauncher::Client* client)
 {
     if (client && client->shouldEnableLockdownMode())
-        return "com.apple.WebKit.WebContent.CaptivePortal";
+        return "com.apple.CyberKit.WebContent.CaptivePortal";
 
-    return nonValidInjectedCodeAllowed ? "com.apple.WebKit.WebContent.Development" : "com.apple.WebKit.WebContent";
+    return nonValidInjectedCodeAllowed ? "com.apple.CyberKit.WebContent.Development" : "com.apple.CyberKit.WebContent";
 }
 
 static const char* serviceName(const ProcessLauncher::LaunchOptions& launchOptions, ProcessLauncher::Client* client)
@@ -72,10 +72,10 @@ static const char* serviceName(const ProcessLauncher::LaunchOptions& launchOptio
     case ProcessLauncher::ProcessType::Web:
         return webContentServiceName(launchOptions.nonValidInjectedCodeAllowed, client);
     case ProcessLauncher::ProcessType::Network:
-        return "com.apple.WebKit.Networking";
+        return "com.apple.CyberKit.Networking";
 #if ENABLE(GPU_PROCESS)
     case ProcessLauncher::ProcessType::GPU:
-        return "com.apple.WebKit.GPU";
+        return "com.apple.CyberKit.GPU";
 #endif
     }
 }
@@ -98,7 +98,7 @@ void ProcessLauncher::launchProcess()
 
     // Inherit UI process localization. It can be different from child process default localization:
     // 1. When the application and system frameworks simply have different localized resources available, we should match the application.
-    // 1.1. An important case is WebKitTestRunner, where we should use English localizations for all system frameworks.
+    // 1.1. An important case is CyberKitTestRunner, where we should use English localizations for all system frameworks.
     // 2. When AppleLanguages is passed as command line argument for UI process, or set in its preferences, we should respect it in child processes.
     auto initializationMessage = adoptOSObject(xpc_dictionary_create(nullptr, nullptr, 0));
     _CFBundleSetupXPCBootstrap(initializationMessage.get());
@@ -124,7 +124,7 @@ void ProcessLauncher::launchProcess()
     }
 
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
-    xpc_dictionary_set_string(initializationMessage.get(), "WebKitBundleVersion", [[NSBundle bundleWithIdentifier:@"com.apple.WebKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey] UTF8String]);
+    xpc_dictionary_set_string(initializationMessage.get(), "CyberKitBundleVersion", [[NSBundle bundleWithIdentifier:@"com.apple.CyberKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey] UTF8String]);
 #endif
     xpc_connection_set_bootstrap(m_xpcConnection.get(), initializationMessage.get());
 
@@ -179,8 +179,8 @@ void ProcessLauncher::launchProcess()
     xpc_dictionary_set_string(bootstrapMessage.get(), "ui-process-name", [[[NSProcessInfo processInfo] processName] UTF8String]);
     xpc_dictionary_set_string(bootstrapMessage.get(), "service-name", name);
 
-    bool isWebKitDevelopmentBuild = ![[[[NSBundle bundleWithIdentifier:@"com.apple.WebKit"] bundlePath] stringByDeletingLastPathComponent] hasPrefix:FileSystem::systemDirectoryPath()];
-    if (isWebKitDevelopmentBuild) {
+    bool isCyberKitDevelopmentBuild = ![[[[NSBundle bundleWithIdentifier:@"com.apple.CyberKit"] bundlePath] stringByDeletingLastPathComponent] hasPrefix:FileSystem::systemDirectoryPath()];
+    if (isCyberKitDevelopmentBuild) {
         xpc_dictionary_set_fd(bootstrapMessage.get(), "stdout", STDOUT_FILENO);
         xpc_dictionary_set_fd(bootstrapMessage.get(), "stderr", STDERR_FILENO);
     }
@@ -321,8 +321,8 @@ void ProcessLauncher::terminateXPCConnection()
         return;
 
     xpc_connection_cancel(m_xpcConnection.get());
-    terminateWithReason(m_xpcConnection.get(), WebKit::ReasonCode::Invalidation, "ProcessLauncher::platformInvalidate");
+    terminateWithReason(m_xpcConnection.get(), CyberKit::ReasonCode::Invalidation, "ProcessLauncher::platformInvalidate");
     m_xpcConnection = nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

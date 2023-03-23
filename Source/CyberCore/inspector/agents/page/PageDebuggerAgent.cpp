@@ -51,7 +51,7 @@
 #include <CyberScriptCore/ScriptCallStackFactory.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -212,4 +212,4 @@ void PageDebuggerAgent::didFireAnimationFrame(int callbackId)
     didDispatchAsyncCall(InspectorDebuggerAgent::AsyncCallType::RequestAnimationFrame, callbackId);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

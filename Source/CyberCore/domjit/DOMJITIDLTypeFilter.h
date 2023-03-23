@@ -28,7 +28,7 @@
 #include "IDLTypes.h"
 #include <CyberScriptCore/SpeculatedType.h>
 
-namespace WebCore { namespace DOMJIT {
+namespace CyberCore { namespace DOMJIT {
 
 template<typename IDLType>
 struct IDLArgumentTypeFilter;

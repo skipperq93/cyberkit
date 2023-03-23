@@ -30,7 +30,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Frame;
@@ -59,4 +59,4 @@ private:
     bool m_contactPickerIsShowing { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

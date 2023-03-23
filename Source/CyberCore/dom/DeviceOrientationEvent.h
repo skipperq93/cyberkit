@@ -29,7 +29,7 @@
 #include "Event.h"
 #include "IDLTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceOrientationData;
 class Document;
@@ -80,4 +80,4 @@ private:
     RefPtr<DeviceOrientationData> m_orientation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

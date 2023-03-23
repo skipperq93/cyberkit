@@ -25,7 +25,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class HTMLSelectElement;
 
@@ -56,4 +56,4 @@ private:
     bool m_isDisabled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,13 +30,13 @@
 
 namespace API {
 
-ContextMenuElementInfo::ContextMenuElementInfo(const WebKit::InteractionInformationAtPosition& info)
+ContextMenuElementInfo::ContextMenuElementInfo(const CyberKit::InteractionInformationAtPosition& info)
     : m_interactionInformation(info)
     , m_userInfo(nullptr)
 {
 }
 
-ContextMenuElementInfo::ContextMenuElementInfo(const WebKit::InteractionInformationAtPosition& info, NSDictionary *userInfo)
+ContextMenuElementInfo::ContextMenuElementInfo(const CyberKit::InteractionInformationAtPosition& info, NSDictionary *userInfo)
     : m_interactionInformation(info)
     , m_userInfo(userInfo)
 {

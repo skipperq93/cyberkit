@@ -30,7 +30,7 @@
 #include "JSDOMPromise.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> struct Converter<IDLPromise<T>> : DefaultConverter<IDLPromise<T>> {
     using ReturnType = RefPtr<DOMPromise>;
@@ -84,4 +84,4 @@ template<typename T> struct JSConverter<IDLPromise<T>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

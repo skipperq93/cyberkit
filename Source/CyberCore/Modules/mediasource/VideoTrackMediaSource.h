@@ -29,13 +29,13 @@
 
 #include "VideoTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoTrackMediaSource {
 public:
     static SourceBuffer* sourceBuffer(VideoTrack& track) { return track.sourceBuffer(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

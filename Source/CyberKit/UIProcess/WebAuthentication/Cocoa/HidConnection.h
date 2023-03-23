@@ -35,7 +35,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class HidConnection {
     WTF_MAKE_FAST_ALLOCATED;
@@ -82,6 +82,6 @@ private:
     bool m_isInitialized { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

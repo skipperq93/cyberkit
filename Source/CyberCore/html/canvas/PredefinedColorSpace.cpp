@@ -28,7 +28,7 @@
 
 #include "DestinationColorSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DestinationColorSpace toDestinationColorSpace(PredefinedColorSpace colorSpace)
 {

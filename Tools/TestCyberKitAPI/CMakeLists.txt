@@ -145,33 +145,33 @@ endif ()
 
 WEBKIT_EXECUTABLE_DECLARE(TestWTF)
 
-# TestJavaScriptCore definitions
+# TestCyberScriptCore definitions
 if (ENABLE_JAVASCRIPTCORE)
-    set(TestJavaScriptCore_SOURCES
+    set(TestCyberScriptCore_SOURCES
         TestsController.cpp
 
-        Tests/JavaScriptCore/DisallowVMEntry.cpp
-        Tests/JavaScriptCore/InspectorConsoleMessage.cpp
-        Tests/JavaScriptCore/PropertySlot.cpp
+        Tests/CyberScriptCore/DisallowVMEntry.cpp
+        Tests/CyberScriptCore/InspectorConsoleMessage.cpp
+        Tests/CyberScriptCore/PropertySlot.cpp
     )
 
-    set(TestJavaScriptCore_LIBRARIES
+    set(TestCyberScriptCore_LIBRARIES
         CyberKit::gtest
     )
-    set(TestJavaScriptCore_FRAMEWORKS
-        JavaScriptCore
+    set(TestCyberScriptCore_FRAMEWORKS
+        CyberScriptCore
         WTF
     )
     if (NOT USE_SYSTEM_MALLOC)
-        list(APPEND TestJavaScriptCore_FRAMEWORKS bmalloc)
+        list(APPEND TestCyberScriptCore_FRAMEWORKS bmalloc)
     endif ()
 
-    set(TestJavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
+    set(TestCyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
         ${TESTWEBKITAPI_DIR}
     )
 
-    WEBKIT_EXECUTABLE_DECLARE(TestJavaScriptCore)
+    WEBKIT_EXECUTABLE_DECLARE(TestCyberScriptCore)
 endif ()
 
 # TestCyberCore definitions
@@ -215,7 +215,7 @@ if (ENABLE_WEBCORE)
         CyberKit::gtest
     )
     set(TestCyberCore_FRAMEWORKS
-        JavaScriptCore
+        CyberScriptCore
         PAL
         WTF
         CyberCore
@@ -248,7 +248,7 @@ if (ENABLE_WEBKIT_LEGACY)
     )
 
     set(TestCyberKitLegacy_FRAMEWORKS
-        JavaScriptCore
+        CyberScriptCore
         PAL
         WTF
         CyberCore
@@ -328,7 +328,7 @@ if (ENABLE_WEBKIT)
 
     set(TestCyberKit_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
-        ${JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+        ${CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
         ${PAL_FRAMEWORK_HEADERS_DIR}
         ${TESTWEBKITAPI_DIR}
         ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
@@ -420,9 +420,9 @@ WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 # TestWTF target
 WEBKIT_TEST(TestWTF)
 
-# TestJavaScriptCore target
+# TestCyberScriptCore target
 if (ENABLE_JAVASCRIPTCORE)
-    WEBKIT_TEST(TestJavaScriptCore)
+    WEBKIT_TEST(TestCyberScriptCore)
 endif ()
 
 # TestCyberCore target

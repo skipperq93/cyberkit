@@ -338,7 +338,7 @@
 //     - This is how a transaction ends normally.
 //     - state CleanupAndTerminate calls doCleanup().
 
-namespace WebCore {
+namespace CyberCore {
 
 SQLTransactionBackend::SQLTransactionBackend(SQLTransaction& frontend)
     : m_frontend(frontend)
@@ -519,4 +519,4 @@ void SQLTransactionBackend::unreachableState()
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

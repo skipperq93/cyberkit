@@ -54,7 +54,7 @@
 #import "markup.h"
 #import <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -352,6 +352,6 @@ void Editor::ensureLastEditCommandHasCurrentSelectionIfOpenForMoreTyping()
     TypingCommand::ensureLastEditCommandHasCurrentSelectionIfOpenForMoreTyping(m_document, m_document.selection().selection());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -27,7 +27,7 @@
 
 #include "DOMClientIsoSubspaces.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ExtendedDOMClientIsoSubspaces : public DOMClientIsoSubspaces {
 public:
@@ -35,4 +35,4 @@ public:
     std::unique_ptr<JSC::GCClient::IsoSubspace> m_clientSubspaceForFileSystemDirectoryHandleIterator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include "IDBCursorInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 IndexValueEntry::IndexValueEntry(bool unique)
@@ -225,4 +225,4 @@ IndexValueEntry::Iterator IndexValueEntry::reverseFind(const IDBKeyData& key, Cu
 
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

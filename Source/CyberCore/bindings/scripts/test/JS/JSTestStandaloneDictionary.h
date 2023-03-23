@@ -26,7 +26,7 @@
 #include "JSDOMConvertDictionary.h"
 #include "JSDOMConvertEnumeration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> WEBCORE_EXPORT DictionaryImplName convertDictionary<DictionaryImplName>(JSC::JSGlobalObject&, JSC::JSValue);
 
@@ -39,6 +39,6 @@ template<> std::optional<TestStandaloneDictionary::EnumInStandaloneDictionaryFil
 template<> std::optional<TestStandaloneDictionary::EnumInStandaloneDictionaryFile> parseEnumeration<TestStandaloneDictionary::EnumInStandaloneDictionaryFile>(JSC::JSGlobalObject&, JSC::JSValue);
 template<> const char* expectedEnumerationValues<TestStandaloneDictionary::EnumInStandaloneDictionaryFile>();
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(Condition1)

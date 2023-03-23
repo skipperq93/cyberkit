@@ -48,10 +48,10 @@
 #import <wtf/WeakObjCPtr.h>
 
 @interface WKSwipeTransitionController : NSObject <_UINavigationInteractiveTransitionBaseDelegate>
-- (instancetype)initWithViewGestureController:(WebKit::ViewGestureController*)gestureController gestureRecognizerView:(UIView *)gestureRecognizerView;
+- (instancetype)initWithViewGestureController:(CyberKit::ViewGestureController*)gestureController gestureRecognizerView:(UIView *)gestureRecognizerView;
 - (void)invalidate;
 
-- (_UINavigationInteractiveTransitionBase *)transitionForDirection:(WebKit::ViewGestureController::SwipeDirection)direction;
+- (_UINavigationInteractiveTransitionBase *)transitionForDirection:(CyberKit::ViewGestureController::SwipeDirection)direction;
 @end
 
 @interface _UIViewControllerTransitionContext (WKDetails)
@@ -60,7 +60,7 @@
 
 @implementation WKSwipeTransitionController
 {
-    WebKit::ViewGestureController *_gestureController;
+    CyberKit::ViewGestureController *_gestureController;
     RetainPtr<_UINavigationInteractiveTransitionBase> _backTransitionController;
     RetainPtr<_UINavigationInteractiveTransitionBase> _forwardTransitionController;
     WeakObjCPtr<UIView> _gestureRecognizerView;
@@ -68,7 +68,7 @@
 
 static const float swipeSnapshotRemovalRenderTreeSizeTargetFraction = 0.5;
 
-- (instancetype)initWithViewGestureController:(WebKit::ViewGestureController*)gestureController gestureRecognizerView:(UIView *)gestureRecognizerView
+- (instancetype)initWithViewGestureController:(CyberKit::ViewGestureController*)gestureController gestureRecognizerView:(UIView *)gestureRecognizerView
 {
     self = [super init];
     if (self) {
@@ -90,14 +90,14 @@ static const float swipeSnapshotRemovalRenderTreeSizeTargetFraction = 0.5;
     _gestureController = nullptr;
 }
 
-- (WebKit::ViewGestureController::SwipeDirection)directionForTransition:(_UINavigationInteractiveTransitionBase *)transition
+- (CyberKit::ViewGestureController::SwipeDirection)directionForTransition:(_UINavigationInteractiveTransitionBase *)transition
 {
-    return transition == _backTransitionController ? WebKit::ViewGestureController::SwipeDirection::Back : WebKit::ViewGestureController::SwipeDirection::Forward;
+    return transition == _backTransitionController ? CyberKit::ViewGestureController::SwipeDirection::Back : CyberKit::ViewGestureController::SwipeDirection::Forward;
 }
 
-- (_UINavigationInteractiveTransitionBase *)transitionForDirection:(WebKit::ViewGestureController::SwipeDirection)direction
+- (_UINavigationInteractiveTransitionBase *)transitionForDirection:(CyberKit::ViewGestureController::SwipeDirection)direction
 {
-    return direction == WebKit::ViewGestureController::SwipeDirection::Back ? _backTransitionController.get() : _forwardTransitionController.get();
+    return direction == CyberKit::ViewGestureController::SwipeDirection::Back ? _backTransitionController.get() : _forwardTransitionController.get();
 }
 
 - (void)startInteractiveTransition:(_UINavigationInteractiveTransitionBase *)transition
@@ -132,10 +132,10 @@ ALLOW_NEW_API_WITHOUT_GUARDS_END
     bool isLTR = [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:[_gestureRecognizerView.get() semanticContentAttribute]] == UIUserInterfaceLayoutDirectionLeftToRight;
 
     switch ([self directionForTransition:transition]) {
-    case WebKit::ViewGestureController::SwipeDirection::Back:
+    case CyberKit::ViewGestureController::SwipeDirection::Back:
         [recognizer setEdges:isLTR ? UIRectEdgeLeft : UIRectEdgeRight];
         break;
-    case WebKit::ViewGestureController::SwipeDirection::Forward:
+    case CyberKit::ViewGestureController::SwipeDirection::Forward:
         [recognizer setEdges:isLTR ? UIRectEdgeRight : UIRectEdgeLeft];
         break;
     }
@@ -149,7 +149,7 @@ ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 void ViewGestureController::platformTeardown()
 {
@@ -469,6 +469,6 @@ bool ViewGestureController::completeSimulatedSwipeInDirectionForTesting(SwipeDir
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

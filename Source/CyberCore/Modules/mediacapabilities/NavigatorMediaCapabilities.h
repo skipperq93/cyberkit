@@ -27,7 +27,7 @@
 
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaCapabilities;
 class Navigator;
@@ -48,4 +48,4 @@ private:
     mutable Ref<MediaCapabilities> m_mediaCapabilities;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

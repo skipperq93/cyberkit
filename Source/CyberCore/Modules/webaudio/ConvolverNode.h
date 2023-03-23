@@ -29,7 +29,7 @@
 #include "ConvolverOptions.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 class Reverb;
@@ -70,4 +70,4 @@ private:
     bool m_normalize { true }; // Only used on the main thread.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

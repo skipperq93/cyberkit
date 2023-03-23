@@ -30,7 +30,7 @@
 #include "ObjectIdentifierReferenceTracker.h"
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RemoteSerializedImageBufferIdentifierType { };
 using RemoteSerializedImageBufferIdentifier = ObjectIdentifier<RemoteSerializedImageBufferIdentifierType>;
@@ -41,6 +41,6 @@ using RemoteSerializedImageBufferReferenceTracker = ObjectIdentifierReferenceTra
 
 
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

@@ -29,7 +29,7 @@
 #include "CalcOperator.h"
 #include "CalculationCategory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCalcExpressionNode;
 class CSSCalcSymbolTable;

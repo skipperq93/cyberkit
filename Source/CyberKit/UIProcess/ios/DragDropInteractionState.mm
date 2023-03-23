@@ -35,7 +35,7 @@
 #import <CyberCore/LocalCurrentTraitCollection.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static UIDragItem *dragItemMatchingIdentifier(id <UIDragSession> session, NSInteger identifier)
@@ -428,6 +428,6 @@ void DragDropInteractionState::updatePreviewsForActiveDragSources()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(DRAG_SUPPORT)

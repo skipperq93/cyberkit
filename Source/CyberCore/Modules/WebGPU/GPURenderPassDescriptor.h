@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURenderPassDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::RenderPassDescriptor convertToBacking() const
@@ -49,7 +49,7 @@ struct GPURenderPassDescriptor : public GPUObjectDescriptorBase {
             }),
             depthStencilAttachment ? std::optional { depthStencilAttachment->convertToBacking() } : std::nullopt,
             occlusionQuerySet ? &occlusionQuerySet->backing() : nullptr,
-            WebCore::convertToBacking(timestampWrites),
+            CyberCore::convertToBacking(timestampWrites),
         };
     }
 

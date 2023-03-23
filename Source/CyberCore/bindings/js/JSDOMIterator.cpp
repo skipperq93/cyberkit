@@ -29,7 +29,7 @@
 #include <CyberScriptCore/ArrayPrototype.h>
 #include <CyberScriptCore/BuiltinNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void addValueIterableMethods(JSC::JSGlobalObject& globalObject, JSC::JSObject& prototype)
 {

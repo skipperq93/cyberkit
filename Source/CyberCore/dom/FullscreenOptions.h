@@ -27,7 +27,7 @@
 
 #if ENABLE(FULLSCREEN_API)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FullscreenOptions {
     enum class NavigationUI : uint8_t { Auto, Show, Hide };
@@ -35,6 +35,6 @@ struct FullscreenOptions {
     NavigationUI navigationUI { NavigationUI::Auto };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

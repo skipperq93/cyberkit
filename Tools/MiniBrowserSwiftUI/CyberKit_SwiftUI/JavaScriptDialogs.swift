@@ -25,7 +25,7 @@
 
 import SwiftUI
 
-/// A view providing the WebKit-default UI for a JavaScript alert.
+/// A view providing the CyberKit-default UI for a JavaScript alert.
 struct JavaScriptAlert : View {
     private var message: String
     private var completion: () -> Void
@@ -45,7 +45,7 @@ struct JavaScriptAlert : View {
     }
 }
 
-/// A view providing the WebKit-default UI for a JavaScript alert.
+/// A view providing the CyberKit-default UI for a JavaScript alert.
 struct JavaScriptConfirm : View {
     private var message: String
     private var completion: (Bool) -> Void
@@ -67,7 +67,7 @@ struct JavaScriptConfirm : View {
     }
 }
 
-/// A view providing the WebKit-default UI for a JavaScript alert.
+/// A view providing the CyberKit-default UI for a JavaScript alert.
 struct JavaScriptPrompt : View {
     private var message: String
     private var completion: (String?) -> Void

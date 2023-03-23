@@ -41,7 +41,7 @@
 #include "WebPage.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -124,6 +124,6 @@ void WebExtensionControllerProxy::didFailLoadForFrame(WebPage& page, WebFrame& f
     WebProcess::singleton().send(Messages::WebExtensionController::DidFailLoadForFrame(page.webPageProxyIdentifier(), frame.frameID(), url), identifier());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

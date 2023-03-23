@@ -20,7 +20,7 @@
 #pragma once
 
 #if USE(ATSPI)
-namespace WebCore {
+namespace CyberCore {
 namespace Atspi {
 
 enum class Role {
@@ -292,6 +292,6 @@ enum class CollectionSortOrder {
 };
 
 } // namespace Atspi
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

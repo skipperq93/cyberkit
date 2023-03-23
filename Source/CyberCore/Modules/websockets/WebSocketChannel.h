@@ -47,7 +47,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class Document;
@@ -233,4 +233,4 @@ private:
     Ref<SocketProvider> m_socketProvider;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

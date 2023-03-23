@@ -25,11 +25,11 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class PasteboardAccessIntent : bool {
     Read,
     Write,
 };
 
-} // namespace WebKit
+} // namespace CyberKit

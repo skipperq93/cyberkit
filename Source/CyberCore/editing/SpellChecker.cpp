@@ -41,7 +41,7 @@
 #include "TextCheckerClient.h"
 #include "TextIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SpellCheckRequest::SpellCheckRequest(const SimpleRange& checkingRange, const SimpleRange& automaticReplacementRange, const SimpleRange& paragraphRange, const String& text, OptionSet<TextCheckingType> options, TextCheckingProcessType type)
     : m_checkingRange(checkingRange)
@@ -236,4 +236,4 @@ void SpellChecker::didCheckCancel(TextCheckingRequestIdentifier identifier)
     didCheck(identifier, Vector<TextCheckingResult>());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class OriginLock;
@@ -74,4 +74,4 @@ private:
     SQLTransaction& m_frontend;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

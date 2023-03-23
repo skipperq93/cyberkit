@@ -54,7 +54,7 @@ class DebuggableInfo;
 class InspectorConfiguration;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteWebInspectorUIProxy;
 class WebPageProxy;
@@ -191,4 +191,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

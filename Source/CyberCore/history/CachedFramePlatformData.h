@@ -28,7 +28,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // The purpose of this class is to give each platform a vessel to store platform data when a page
 // goes into the back/forward cache, and perform some action with that data when the page comes out.
@@ -40,4 +40,4 @@ public:
     virtual void clear() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

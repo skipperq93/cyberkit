@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebInspectorUIProxy;
 
@@ -45,4 +45,4 @@ public:
     virtual void didChangeAttachAvailability(WebInspectorUIProxy&, bool available) = 0;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -50,7 +50,7 @@
 #include "RealtimeOutgoingVideoSource.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::unique_ptr<PeerConnectionBackend> createLibWebRTCPeerConnectionBackend(RTCPeerConnection& peerConnection)
 {
@@ -409,6 +409,6 @@ std::optional<bool> LibWebRTCPeerConnectionBackend::canTrickleIceCandidates() co
     return m_endpoint->canTrickleIceCandidates();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

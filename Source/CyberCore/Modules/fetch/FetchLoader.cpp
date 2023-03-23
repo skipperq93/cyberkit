@@ -44,7 +44,7 @@
 #include "TextResourceDecoder.h"
 #include "ThreadableBlobRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FetchLoader::~FetchLoader()
 {
@@ -168,4 +168,4 @@ void FetchLoader::didFail(const ResourceError& error)
     m_client.didFail(error);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

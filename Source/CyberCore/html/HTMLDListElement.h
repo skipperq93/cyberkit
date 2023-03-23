@@ -24,7 +24,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLDListElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLDListElement);
@@ -35,4 +35,4 @@ private:
     HTMLDListElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

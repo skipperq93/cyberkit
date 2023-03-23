@@ -34,7 +34,7 @@
 #include "JSVideoTrack.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObject, TrackBase& track)
@@ -56,6 +56,6 @@ JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* g
     return jsNull();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

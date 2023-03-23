@@ -24,7 +24,7 @@
 #include "TestEnabledForContext.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestEnabledForContext : public JSDOMWrapper<TestEnabledForContext> {
 public:
@@ -92,4 +92,4 @@ template<> struct JSDOMWrapperConverterTraits<TestEnabledForContext> {
     using ToWrappedReturnType = TestEnabledForContext*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

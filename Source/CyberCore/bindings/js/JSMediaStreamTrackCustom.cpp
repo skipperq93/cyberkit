@@ -31,7 +31,7 @@
 #include "JSCanvasCaptureMediaStreamTrack.h"
 #include "JSDOMBinding.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<MediaStreamTrack>&& object)
 {

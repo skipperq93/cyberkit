@@ -27,7 +27,7 @@
 #include "Element.h"
 #include "NodeTraversal.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename ElementType>
 class Traversal {
@@ -322,4 +322,4 @@ inline Element* ElementTraversal::pseudoAwarePreviousSibling(const Node& current
     return downcast<Element>(node);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

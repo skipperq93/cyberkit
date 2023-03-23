@@ -54,7 +54,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<CSSCalcExpressionNode> createCSS(const CalcExpressionNode&, const RenderStyle&);
 static RefPtr<CSSCalcExpressionNode> createCSS(const Length&, const RenderStyle&);
@@ -427,4 +427,4 @@ TextStream& operator<<(TextStream& ts, const CSSCalcValue& value)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

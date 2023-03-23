@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentFragment;
 
@@ -51,4 +51,4 @@ private:
     bool m_smartDelete;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

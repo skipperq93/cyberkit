@@ -32,7 +32,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename CharacterType>
 static inline bool isCSSTokenizerIdentifier(const CharacterType* characters, unsigned length)
@@ -157,4 +157,4 @@ String serializeFontFamily(const String& string)
     return isCSSTokenizerIdentifier(string) ? string : serializeString(string);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
     
 static const Seconds processSuspensionTimeout { 20_s };
 static const Seconds removeAllAssertionsTimeout { 8_min };
@@ -400,4 +400,4 @@ WTF::TextStream& operator<<(WTF::TextStream& ts, const ProcessThrottler& throttl
     return didLog ? ts : ts << "no-assertion-state"_s;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

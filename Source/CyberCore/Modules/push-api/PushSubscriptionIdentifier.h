@@ -31,7 +31,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum PushSubscriptionIdentifierType { };
 using PushSubscriptionIdentifier = ObjectIdentifier<PushSubscriptionIdentifierType>;
@@ -92,24 +92,24 @@ inline PushSubscriptionSetIdentifier PushSubscriptionSetIdentifier::isolatedCopy
     return { WTFMove(bundleIdentifier).isolatedCopy(), WTFMove(pushPartition).isolatedCopy(), dataStoreIdentifier };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 struct PushSubscriptionSetIdentifierHash {
-    static unsigned hash(const WebCore::PushSubscriptionSetIdentifier& key) { return computeHash(key); }
-    static bool equal(const WebCore::PushSubscriptionSetIdentifier& a, const WebCore::PushSubscriptionSetIdentifier& b) { return a == b; }
+    static unsigned hash(const CyberCore::PushSubscriptionSetIdentifier& key) { return computeHash(key); }
+    static bool equal(const CyberCore::PushSubscriptionSetIdentifier& a, const CyberCore::PushSubscriptionSetIdentifier& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct DefaultHash<WebCore::PushSubscriptionSetIdentifier> : PushSubscriptionSetIdentifierHash { };
+template<> struct DefaultHash<CyberCore::PushSubscriptionSetIdentifier> : PushSubscriptionSetIdentifierHash { };
 
-template<> struct HashTraits<WebCore::PushSubscriptionSetIdentifier> : GenericHashTraits<WebCore::PushSubscriptionSetIdentifier> {
+template<> struct HashTraits<CyberCore::PushSubscriptionSetIdentifier> : GenericHashTraits<CyberCore::PushSubscriptionSetIdentifier> {
     static const bool emptyValueIsZero = false;
-    static WebCore::PushSubscriptionSetIdentifier emptyValue() { return { emptyString(), emptyString(), std::nullopt }; }
+    static CyberCore::PushSubscriptionSetIdentifier emptyValue() { return { emptyString(), emptyString(), std::nullopt }; }
 
-    static void constructDeletedValue(WebCore::PushSubscriptionSetIdentifier& slot) { new (NotNull, &slot) WebCore::PushSubscriptionSetIdentifier { emptyString(), emptyString(), UUID { HashTableDeletedValue } }; }
-    static bool isDeletedValue(const WebCore::PushSubscriptionSetIdentifier& value) { return value.isHashTableDeletedValue(); }
+    static void constructDeletedValue(CyberCore::PushSubscriptionSetIdentifier& slot) { new (NotNull, &slot) CyberCore::PushSubscriptionSetIdentifier { emptyString(), emptyString(), UUID { HashTableDeletedValue } }; }
+    static bool isDeletedValue(const CyberCore::PushSubscriptionSetIdentifier& value) { return value.isHashTableDeletedValue(); }
 };
 
 } // namespace WTF

@@ -33,12 +33,12 @@
 
 #include "WebGrammarDetail.h"
 
-typedef struct _WebKitWebViewBase WebKitWebViewBase;
+typedef struct _CyberKitWebViewBase CyberKitWebViewBase;
 
-namespace WebKit {
+namespace CyberKit {
 
 WK_ADD_API_MAPPING(WKGrammarDetailRef, WebGrammarDetail)
-WK_ADD_API_MAPPING(WKViewRef, WebKitWebViewBase)
+WK_ADD_API_MAPPING(WKViewRef, CyberKitWebViewBase)
 
 inline ProxyingRefPtr<WebGrammarDetail> toAPI(const CyberCore::GrammarDetail& grammarDetail)
 {
@@ -46,15 +46,15 @@ inline ProxyingRefPtr<WebGrammarDetail> toAPI(const CyberCore::GrammarDetail& gr
 }
 
 template<>
-inline WKViewRef toAPI<>(WebKitWebViewBase* view)
+inline WKViewRef toAPI<>(CyberKitWebViewBase* view)
 {
     return reinterpret_cast<WKViewRef>(static_cast<void*>(view));
 }
 
 template<>
-inline WebKitWebViewBase* toImpl<>(WKViewRef view)
+inline CyberKitWebViewBase* toImpl<>(WKViewRef view)
 {
-    return static_cast<WebKitWebViewBase*>(static_cast<void*>(const_cast<typename std::remove_const<typename std::remove_pointer<WKViewRef>::type>::type*>(view)));
+    return static_cast<CyberKitWebViewBase*>(static_cast<void*>(const_cast<typename std::remove_const<typename std::remove_pointer<WKViewRef>::type>::type*>(view)));
 }
 
 }

@@ -41,7 +41,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AXIsolatedObject;
 class AXObjectCache;
@@ -415,6 +415,6 @@ inline RefPtr<AXIsolatedTree> AXIsolatedTree::treeForPageID(std::optional<PageId
     return pageID ? treeForPageID(*pageID) : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

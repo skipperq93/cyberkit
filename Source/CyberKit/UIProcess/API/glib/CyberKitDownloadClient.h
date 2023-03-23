@@ -20,8 +20,8 @@
 #pragma once
 
 #include "DownloadProxy.h"
-#include "WebKitDownload.h"
+#include "CyberKitDownload.h"
 #include <wtf/glib/GRefPtr.h>
 
-void attachDownloadClientToDownload(GRefPtr<WebKitDownload>&&, WebKit::DownloadProxy&);
+void attachDownloadClientToDownload(GRefPtr<CyberKitDownload>&&, CyberKit::DownloadProxy&);
 

@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WebXRJointPose;
@@ -89,6 +89,6 @@ private:
     Ref<WebXRSession> m_session;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

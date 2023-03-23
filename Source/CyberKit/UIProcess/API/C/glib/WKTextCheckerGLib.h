@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKTextChecker.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKTextChecker.h>
 
 #ifdef __cplusplus
 extern "C" {

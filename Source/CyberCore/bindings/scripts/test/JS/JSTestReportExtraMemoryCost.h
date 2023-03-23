@@ -24,7 +24,7 @@
 #include "TestReportExtraMemoryCost.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestReportExtraMemoryCost : public JSDOMWrapper<TestReportExtraMemoryCost> {
 public:
@@ -93,4 +93,4 @@ template<> struct JSDOMWrapperConverterTraits<TestReportExtraMemoryCost> {
     using ToWrappedReturnType = TestReportExtraMemoryCost*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,10 +24,10 @@
 
 #include "GStreamerIceTransportBackend.h"
 #include "GStreamerWebRTCUtils.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GStreamerDtlsTransportBackend::GStreamerDtlsTransportBackend(const GRefPtr<GstWebRTCDTLSTransport>& transport)
     : m_backend(transport)
@@ -89,6 +89,6 @@ void GStreamerDtlsTransportBackend::stateChanged() const
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

@@ -34,7 +34,7 @@
 #include "ScriptDisallowedScope.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DateTimeDayFieldElement);
 
@@ -319,6 +319,6 @@ void DateTimeYearFieldElement::setValueAsDate(const DateComponents& date)
     setValueAsInteger(date.fullYear());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

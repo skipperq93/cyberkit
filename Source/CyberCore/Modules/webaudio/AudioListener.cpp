@@ -37,7 +37,7 @@
 #include "AudioParam.h"
 #include "AudioUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioListener::AudioListener(BaseAudioContext& context)
     : m_positionX(AudioParam::create(context, "positionX"_s, 0.0, -FLT_MAX, FLT_MAX, AutomationRate::ARate))
@@ -257,6 +257,6 @@ FloatPoint3D AudioListener::upVector() const
     return FloatPoint3D { m_upX->value(), m_upY->value(), m_upZ->value() };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

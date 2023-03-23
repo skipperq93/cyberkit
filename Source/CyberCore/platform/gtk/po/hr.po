@@ -1330,11 +1330,11 @@ msgctxt "Undo action name"
 msgid "Remove Background"
 msgstr "Ukloni pozadinu"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "JSC Options"
 msgstr "JSC mogućnosti"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:680
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:680
 msgid "Show JSC Options"
 msgstr "Prikaži JSC sadržaj"
 

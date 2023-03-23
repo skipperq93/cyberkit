@@ -32,7 +32,7 @@
 #include "WebCacheStorageConnection.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<CyberCore::CacheStorageConnection> WebCacheStorageProvider::createCacheStorageConnection()
 {

@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CreateLinkCommand : public CompositeEditCommand {
 public:
@@ -49,4 +49,4 @@ private:
     String m_url;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

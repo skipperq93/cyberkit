@@ -30,7 +30,7 @@
 #include "IDBDatabase.h"
 #include "IDBOpenDBRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBRequestData::IDBRequestData(const IDBClient::IDBConnectionProxy& connectionProxy, const IDBOpenDBRequest& request)
     : m_serverConnectionIdentifier(connectionProxy.serverConnectionIdentifier())
@@ -162,4 +162,4 @@ uint64_t IDBRequestData::requestedVersion() const
     return m_requestedVersion;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

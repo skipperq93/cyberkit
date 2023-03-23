@@ -28,7 +28,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class Navigator;
@@ -53,4 +53,4 @@ private:
     WeakPtr<Navigator> m_navigator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include "AutomationRate.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioParamDescriptor {
     String name;
@@ -46,6 +46,6 @@ struct AudioParamDescriptor {
     AudioParamDescriptor isolatedCopy() && { return { WTFMove(name).isolatedCopy(), defaultValue, minValue, maxValue, automationRate }; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

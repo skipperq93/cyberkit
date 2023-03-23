@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SpeechRecognitionAlternativeData {
     String transcript;
@@ -37,4 +37,4 @@ struct SpeechRecognitionResultData {
     bool isFinal { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

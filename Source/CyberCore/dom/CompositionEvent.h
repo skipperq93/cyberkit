@@ -28,7 +28,7 @@
 
 #include "UIEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CompositionEvent final : public UIEvent {
     WTF_MAKE_ISO_ALLOCATED(CompositionEvent);
@@ -70,6 +70,6 @@ private:
     String m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(CompositionEvent)

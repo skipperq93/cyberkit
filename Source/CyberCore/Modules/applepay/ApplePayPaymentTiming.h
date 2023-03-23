@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayPaymentTiming : uint8_t {
     Immediate,
@@ -42,22 +42,22 @@ enum class ApplePayPaymentTiming : uint8_t {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ApplePayPaymentTiming> {
+template<> struct EnumTraits<CyberCore::ApplePayPaymentTiming> {
     using values = EnumValues<
-        WebCore::ApplePayPaymentTiming,
-        WebCore::ApplePayPaymentTiming::Immediate
+        CyberCore::ApplePayPaymentTiming,
+        CyberCore::ApplePayPaymentTiming::Immediate
 #if ENABLE(APPLE_PAY_RECURRING_LINE_ITEM)
-        , WebCore::ApplePayPaymentTiming::Recurring
+        , CyberCore::ApplePayPaymentTiming::Recurring
 #endif
 #if ENABLE(APPLE_PAY_DEFERRED_LINE_ITEM)
-        , WebCore::ApplePayPaymentTiming::Deferred
+        , CyberCore::ApplePayPaymentTiming::Deferred
 #endif
 #if ENABLE(APPLE_PAY_AUTOMATIC_RELOAD_LINE_ITEM)
-        , WebCore::ApplePayPaymentTiming::AutomaticReload
+        , CyberCore::ApplePayPaymentTiming::AutomaticReload
 #endif
     >;
 };

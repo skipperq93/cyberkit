@@ -42,7 +42,7 @@ namespace CyberCore {
 class ResourceRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -67,6 +67,6 @@ private:
     bool m_hasAppSSO { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

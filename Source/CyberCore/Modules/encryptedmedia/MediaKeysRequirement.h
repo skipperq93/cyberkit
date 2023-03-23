@@ -32,10 +32,10 @@
 
 #include "CDMRequirement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using MediaKeysRequirement = CDMRequirement;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

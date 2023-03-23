@@ -18,10 +18,10 @@
  */
 
 #include "config.h"
-#include "WebKitRectangle.h"
+#include "CyberKitRectangle.h"
 
 /**
- * WebKitRectangle:
+ * CyberKitRectangle:
  * @x: The X coordinate of the top-left corner of the rectangle.
  * @y: The Y coordinate of the top-left corner of the rectangle.
  * @width: The width of the rectangle.
@@ -32,20 +32,20 @@
  * Since: 2.28
  */
 
-static WebKitRectangle* webkit_rectangle_copy(WebKitRectangle* rectangle)
+static CyberKitRectangle* webkit_rectangle_copy(CyberKitRectangle* rectangle)
 {
     g_return_val_if_fail(rectangle, nullptr);
 
-    WebKitRectangle* copy = static_cast<WebKitRectangle*>(fastZeroedMalloc(sizeof(WebKitRectangle)));
+    CyberKitRectangle* copy = static_cast<CyberKitRectangle*>(fastZeroedMalloc(sizeof(CyberKitRectangle)));
     *copy = *rectangle;
     return copy;
 }
 
-static void webkit_rectangle_free(WebKitRectangle* rectangle)
+static void webkit_rectangle_free(CyberKitRectangle* rectangle)
 {
     g_return_if_fail(rectangle);
 
     fastFree(rectangle);
 }
 
-G_DEFINE_BOXED_TYPE(WebKitRectangle, webkit_rectangle, webkit_rectangle_copy, webkit_rectangle_free)
+G_DEFINE_BOXED_TYPE(CyberKitRectangle, webkit_rectangle, webkit_rectangle_copy, webkit_rectangle_free)

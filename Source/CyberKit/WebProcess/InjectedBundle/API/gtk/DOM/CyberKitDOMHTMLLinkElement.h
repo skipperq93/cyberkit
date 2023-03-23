@@ -54,7 +54,7 @@ webkit_dom_html_link_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_link_element_get_disabled(CyberKitDOMHTMLLinkElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_link_element_get_disabled(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_disabled(CyberKitDOMHTMLLinkElement* self, gboolean value);
@@ -76,7 +76,7 @@ webkit_dom_html_link_element_set_disabled(CyberKitDOMHTMLLinkElement* self, gboo
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_charset(CyberKitDOMHTMLLinkElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_link_element_get_charset(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_charset(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_link_element_set_charset(CyberKitDOMHTMLLinkElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_href(CyberKitDOMHTMLLinkElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_link_element_get_href(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_href(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_link_element_set_href(CyberKitDOMHTMLLinkElement* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_hreflang(CyberKitDOMHTMLLinkElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_link_element_get_hreflang(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_hreflang(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -142,7 +142,7 @@ webkit_dom_html_link_element_set_hreflang(CyberKitDOMHTMLLinkElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_media(CyberKitDOMHTMLLinkElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_link_element_get_media(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_media(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -164,7 +164,7 @@ webkit_dom_html_link_element_set_media(CyberKitDOMHTMLLinkElement* self, const g
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_rel(CyberKitDOMHTMLLinkElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_link_element_get_rel(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_rel(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -186,7 +186,7 @@ webkit_dom_html_link_element_set_rel(CyberKitDOMHTMLLinkElement* self, const gch
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_rev(CyberKitDOMHTMLLinkElement* self);
@@ -197,7 +197,7 @@ webkit_dom_html_link_element_get_rev(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_rev(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -208,7 +208,7 @@ webkit_dom_html_link_element_set_rev(CyberKitDOMHTMLLinkElement* self, const gch
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_target(CyberKitDOMHTMLLinkElement* self);
@@ -219,7 +219,7 @@ webkit_dom_html_link_element_get_target(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_target(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -230,7 +230,7 @@ webkit_dom_html_link_element_set_target(CyberKitDOMHTMLLinkElement* self, const 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_link_element_get_type_attr(CyberKitDOMHTMLLinkElement* self);
@@ -241,7 +241,7 @@ webkit_dom_html_link_element_get_type_attr(CyberKitDOMHTMLLinkElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_type_attr(CyberKitDOMHTMLLinkElement* self, const gchar* value);
@@ -252,7 +252,7 @@ webkit_dom_html_link_element_set_type_attr(CyberKitDOMHTMLLinkElement* self, con
  *
  * Returns: (transfer full): A #CyberKitDOMStyleSheet
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMStyleSheet*
 webkit_dom_html_link_element_get_sheet(CyberKitDOMHTMLLinkElement* self);
@@ -265,7 +265,7 @@ webkit_dom_html_link_element_get_sheet(CyberKitDOMHTMLLinkElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDOMTokenList*
 webkit_dom_html_link_element_get_sizes(CyberKitDOMHTMLLinkElement* self);
@@ -277,7 +277,7 @@ webkit_dom_html_link_element_get_sizes(CyberKitDOMHTMLLinkElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_link_element_set_sizes(CyberKitDOMHTMLLinkElement* self, const gchar* value);

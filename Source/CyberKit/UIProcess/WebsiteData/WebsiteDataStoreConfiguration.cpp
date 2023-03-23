@@ -30,7 +30,7 @@
 #include "WebPushDaemonConnectionConfiguration.h"
 #include "WebsiteDataStore.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebsiteDataStoreConfiguration::WebsiteDataStoreConfiguration(IsPersistent isPersistent, ShouldInitializePaths shouldInitializePaths)
     : m_isPersistent(isPersistent)
@@ -188,4 +188,4 @@ WebPushD::WebPushDaemonConnectionConfiguration WebsiteDataStoreConfiguration::we
     return { m_webPushDaemonUsesMockBundlesForTesting, { }, m_webPushPartitionString, m_identifier };
 }
 
-} // namespace WebKit
+} // namespace CyberKit

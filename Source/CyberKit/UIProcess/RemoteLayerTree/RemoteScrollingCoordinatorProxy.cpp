@@ -42,7 +42,7 @@
 #include <CyberCore/ScrollingTreeFrameScrollingNode.h>
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteScrollingCoordinatorProxy::RemoteScrollingCoordinatorProxy(WebPageProxy& webPageProxy)
@@ -319,6 +319,6 @@ void RemoteScrollingCoordinatorProxy::removeWheelEventTestCompletionDeferralForR
     m_webPageProxy.send(Messages::RemoteScrollingCoordinator::StopDeferringScrollingTestCompletionForNode(nodeID, reason));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

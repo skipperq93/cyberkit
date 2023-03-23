@@ -33,7 +33,7 @@ namespace CyberCore {
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserMediaPermissionRequestManagerProxy;
 
@@ -121,7 +121,7 @@ private:
 
 String convertEnumerationToString(UserMediaPermissionRequestProxy::UserMediaAccessDenialReason);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
@@ -129,8 +129,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebKit::UserMediaPermissionRequestProxy::UserMediaAccessDenialReason> {
-    static String toString(const WebKit::UserMediaPermissionRequestProxy::UserMediaAccessDenialReason type)
+struct LogArgument<CyberKit::UserMediaPermissionRequestProxy::UserMediaAccessDenialReason> {
+    static String toString(const CyberKit::UserMediaPermissionRequestProxy::UserMediaAccessDenialReason type)
     {
         return convertEnumerationToString(type);
     }

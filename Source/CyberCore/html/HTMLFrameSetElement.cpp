@@ -43,7 +43,7 @@
 #include "Text.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLFrameSetElement);
 
@@ -239,4 +239,4 @@ Vector<AtomString> HTMLFrameSetElement::supportedPropertyNames() const
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

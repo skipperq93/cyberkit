@@ -25,7 +25,7 @@
 #include "config.h"
 #include "WebLock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebLock> WebLock::create(WebLockIdentifier identifier, const String& name, WebLockMode mode)
 {
@@ -39,4 +39,4 @@ WebLock::WebLock(WebLockIdentifier identifier, const String& name, WebLockMode m
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

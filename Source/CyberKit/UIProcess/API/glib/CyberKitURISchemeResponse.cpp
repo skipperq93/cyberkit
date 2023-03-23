@@ -18,9 +18,9 @@
  */
 
 #include "config.h"
-#include "WebKitURISchemeResponsePrivate.h"
+#include "CyberKitURISchemeResponsePrivate.h"
 
-#include "WebKitPrivate.h"
+#include "CyberKitPrivate.h"
 #include <CyberCore/GUniquePtrSoup.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GRefPtr.h>
@@ -35,27 +35,27 @@ enum {
 
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitURISchemeResponse:
+ * CyberKitURISchemeResponse:
  *
  * Represents a URI scheme response.
  *
- * If you register a particular URI scheme in a #WebKitWebContext,
+ * If you register a particular URI scheme in a #CyberKitWebContext,
  * using webkit_web_context_register_uri_scheme(), you have to provide
- * a #WebKitURISchemeRequestCallback. After that, when a URI response
+ * a #CyberKitURISchemeRequestCallback. After that, when a URI response
  * is made with that particular scheme, your callback will be
  * called. There you will be able to provide more response parameters
- * when the methods and properties of a #WebKitURISchemeRequest is not
+ * when the methods and properties of a #CyberKitURISchemeRequest is not
  * enough.
  *
- * When you finished setting up your #WebKitURISchemeResponse, call
+ * When you finished setting up your #CyberKitURISchemeResponse, call
  * webkit_uri_request_finish_with_response() with it to return the response.
  */
 
-struct _WebKitURISchemeResponsePrivate {
+struct _CyberKitURISchemeResponsePrivate {
     GRefPtr<GInputStream> stream;
     uint64_t streamLength;
 
@@ -65,11 +65,11 @@ struct _WebKitURISchemeResponsePrivate {
     GUniquePtr<SoupMessageHeaders> headers;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitURISchemeResponse, webkit_uri_scheme_response, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitURISchemeResponse, webkit_uri_scheme_response, G_TYPE_OBJECT, GObject)
 
 static void webkitURISchemeResponseSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitURISchemeResponse* response = WEBKIT_URI_SCHEME_RESPONSE(object);
+    CyberKitURISchemeResponse* response = WEBKIT_URI_SCHEME_RESPONSE(object);
 
     switch (propId) {
     case PROP_STREAM:
@@ -86,13 +86,13 @@ static void webkitURISchemeResponseSetProperty(GObject* object, guint propId, co
     }
 }
 
-static void webkit_uri_scheme_response_class_init(WebKitURISchemeResponseClass* klass)
+static void webkit_uri_scheme_response_class_init(CyberKitURISchemeResponseClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->set_property = webkitURISchemeResponseSetProperty;
 
     /**
-     * WebKitURISchemeResponse:stream:
+     * CyberKitURISchemeResponse:stream:
      *
      * The input stream to read from.
      *
@@ -106,7 +106,7 @@ static void webkit_uri_scheme_response_class_init(WebKitURISchemeResponseClass* 
             static_cast<GParamFlags>(WEBKIT_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 
     /**
-     * WebKitURISchemeResponse:stream-length:
+     * CyberKitURISchemeResponse:stream-length:
      *
      * The input stream length in bytes, `-1` for unknown length.
      *
@@ -123,32 +123,32 @@ static void webkit_uri_scheme_response_class_init(WebKitURISchemeResponseClass* 
 }
 
 // Private getters
-int webKitURISchemeResponseGetStatusCode(const WebKitURISchemeResponse* response)
+int webKitURISchemeResponseGetStatusCode(const CyberKitURISchemeResponse* response)
 {
     return response->priv->statusCode;
 }
 
-GInputStream* webKitURISchemeResponseGetStream(const WebKitURISchemeResponse* response)
+GInputStream* webKitURISchemeResponseGetStream(const CyberKitURISchemeResponse* response)
 {
     return response->priv->stream.get();
 }
 
-const CString& webKitURISchemeResponseGetStatusMessage(const WebKitURISchemeResponse* response)
+const CString& webKitURISchemeResponseGetStatusMessage(const CyberKitURISchemeResponse* response)
 {
     return response->priv->statusMessage;
 }
 
-const CString& webKitURISchemeResponseGetContentType(const WebKitURISchemeResponse* response)
+const CString& webKitURISchemeResponseGetContentType(const CyberKitURISchemeResponse* response)
 {
     return response->priv->contentType;
 }
 
-uint64_t webKitURISchemeResponseGetStreamLength(const WebKitURISchemeResponse* response)
+uint64_t webKitURISchemeResponseGetStreamLength(const CyberKitURISchemeResponse* response)
 {
     return response->priv->streamLength;
 }
 
-SoupMessageHeaders* webKitURISchemeResponseGetHeaders(WebKitURISchemeResponse* response)
+SoupMessageHeaders* webKitURISchemeResponseGetHeaders(CyberKitURISchemeResponse* response)
 {
     return response->priv->headers.get();
 }
@@ -158,13 +158,13 @@ SoupMessageHeaders* webKitURISchemeResponseGetHeaders(WebKitURISchemeResponse* r
  * @input_stream: a #GInputStream to read the contents of the request
  * @stream_length: the length of the stream or -1 if not known
  *
- * Create a new #WebKitURISchemeResponse
+ * Create a new #CyberKitURISchemeResponse
  *
- * Returns: (transfer full): the newly created #WebKitURISchemeResponse.
+ * Returns: (transfer full): the newly created #CyberKitURISchemeResponse.
  *
  * Since: 2.36
  */
-WebKitURISchemeResponse* webkit_uri_scheme_response_new(GInputStream* inputStream, gint64 streamLength)
+CyberKitURISchemeResponse* webkit_uri_scheme_response_new(GInputStream* inputStream, gint64 streamLength)
 {
     g_return_val_if_fail(G_IS_INPUT_STREAM(inputStream), nullptr);
     g_return_val_if_fail(streamLength == -1 || streamLength >= 0, nullptr);
@@ -174,14 +174,14 @@ WebKitURISchemeResponse* webkit_uri_scheme_response_new(GInputStream* inputStrea
 
 /**
  * webkit_uri_scheme_response_set_content_type:
- * @response: a #WebKitURISchemeResponse
+ * @response: a #CyberKitURISchemeResponse
  * @content_type: the content type of the stream
  *
  * Sets the content type for the @response
  *
  * Since: 2.36
  */
-void webkit_uri_scheme_response_set_content_type(WebKitURISchemeResponse* response, const gchar* contentType)
+void webkit_uri_scheme_response_set_content_type(CyberKitURISchemeResponse* response, const gchar* contentType)
 {
     g_return_if_fail(WEBKIT_IS_URI_SCHEME_RESPONSE(response));
 
@@ -190,7 +190,7 @@ void webkit_uri_scheme_response_set_content_type(WebKitURISchemeResponse* respon
 
 /**
  * webkit_uri_scheme_response_set_http_headers:
- * @response: a #WebKitURISchemeResponse
+ * @response: a #CyberKitURISchemeResponse
  * @headers: (transfer full): the HTTP headers to be set
  *
  * Assign the provided #SoupMessageHeaders to the response.
@@ -200,7 +200,7 @@ void webkit_uri_scheme_response_set_content_type(WebKitURISchemeResponse* respon
  *
  * Since: 2.36
  */
-void webkit_uri_scheme_response_set_http_headers(WebKitURISchemeResponse* response, SoupMessageHeaders* headers)
+void webkit_uri_scheme_response_set_http_headers(CyberKitURISchemeResponse* response, SoupMessageHeaders* headers)
 {
     g_return_if_fail(WEBKIT_IS_URI_SCHEME_RESPONSE(response));
     g_return_if_fail(soup_message_headers_get_headers_type(headers) == SOUP_MESSAGE_HEADERS_RESPONSE);
@@ -210,7 +210,7 @@ void webkit_uri_scheme_response_set_http_headers(WebKitURISchemeResponse* respon
 
 /**
  * webkit_uri_scheme_response_set_status:
- * @response: a #WebKitURISchemeResponse
+ * @response: a #CyberKitURISchemeResponse
  * @status_code: the HTTP status code to be returned
  * @reason_phrase: (allow-none): a reason phrase
  *
@@ -220,7 +220,7 @@ void webkit_uri_scheme_response_set_http_headers(WebKitURISchemeResponse* respon
  *
  * Since: 2.36
  */
-void webkit_uri_scheme_response_set_status(WebKitURISchemeResponse* response, guint statusCode, const gchar* statusMessage)
+void webkit_uri_scheme_response_set_status(CyberKitURISchemeResponse* response, guint statusCode, const gchar* statusMessage)
 {
     g_return_if_fail(WEBKIT_IS_URI_SCHEME_RESPONSE(response));
 

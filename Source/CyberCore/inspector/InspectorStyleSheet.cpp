@@ -74,7 +74,7 @@
 
 using JSON::ArrayOf;
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -205,7 +205,7 @@ public:
     RuleSourceDataList* sourceData() const { return m_sourceData.get(); }
     void setSourceData(std::unique_ptr<RuleSourceDataList>);
     bool hasSourceData() const { return m_sourceData != nullptr; }
-    WebCore::CSSRuleSourceData* ruleSourceDataAt(unsigned) const;
+    CyberCore::CSSRuleSourceData* ruleSourceDataAt(unsigned) const;
 
 private:
 
@@ -252,7 +252,7 @@ void ParsedStyleSheet::setSourceData(std::unique_ptr<RuleSourceDataList> sourceD
     flattenSourceData(*sourceData, *m_sourceData);
 }
 
-WebCore::CSSRuleSourceData* ParsedStyleSheet::ruleSourceDataAt(unsigned index) const
+CyberCore::CSSRuleSourceData* ParsedStyleSheet::ruleSourceDataAt(unsigned index) const
 {
     if (!hasSourceData() || index >= m_sourceData->size())
         return nullptr;
@@ -1846,4 +1846,4 @@ Ref<CSSRuleSourceData> InspectorStyleSheetForInlineStyle::ruleSourceData() const
     return WTFMove(ruleSourceDataResult.first());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

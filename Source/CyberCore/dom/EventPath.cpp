@@ -34,7 +34,7 @@
 #include "ShadowRoot.h"
 #include "TouchEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool shouldEventCrossShadowBoundary(Event& event, ShadowRoot& shadowRoot, EventTarget& target)
 {

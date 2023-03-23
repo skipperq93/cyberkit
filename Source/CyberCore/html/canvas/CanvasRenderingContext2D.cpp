@@ -61,7 +61,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -244,4 +244,4 @@ void CanvasRenderingContext2D::drawTextInternal(const String& text, double x, do
     drawTextUnchecked(textRun, x, y, fill, maxWidth);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

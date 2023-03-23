@@ -28,7 +28,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ApplePayPaymentAuthorizationResult::isFinalState() const
 {
@@ -48,6 +48,6 @@ bool ApplePayPaymentAuthorizationResult::isFinalState() const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

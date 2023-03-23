@@ -28,12 +28,12 @@
 #if ENABLE(APPLE_PAY)
 
 #include "ApplePaySessionPaymentRequest.h"
-#include "ApplePaySetupFeatureWebCore.h"
+#include "ApplePaySetupFeatureCyberCore.h"
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class PaymentMerchantSession;

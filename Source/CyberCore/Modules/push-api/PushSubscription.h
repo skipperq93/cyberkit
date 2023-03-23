@@ -43,7 +43,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class PushSubscriptionOptions;
 class ScriptExecutionContext;
@@ -77,6 +77,6 @@ private:
     mutable RefPtr<PushSubscriptionOptions> m_options;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

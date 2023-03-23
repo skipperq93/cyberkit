@@ -43,7 +43,7 @@
 constexpr unsigned minSampleRate = 8000;
 constexpr unsigned maxSampleRate = 192000;
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaElementAudioSourceNode);
 
@@ -169,6 +169,6 @@ void MediaElementAudioSourceNode::process(size_t numberOfFrames)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -28,7 +28,7 @@
 
 #include <CyberScriptCore/ConsoleMessage.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleMedia::StyleMedia(DOMWindow& window)
     : DOMWindowProperty(&window)
@@ -44,4 +44,4 @@ String StyleMedia::type() const
     return "screen"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

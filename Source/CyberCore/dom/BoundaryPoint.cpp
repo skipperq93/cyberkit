@@ -27,7 +27,7 @@
 #include "BoundaryPoint.h"
 #include "ContainerNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template PartialOrdering treeOrder<Tree>(const BoundaryPoint&, const BoundaryPoint&);
 template PartialOrdering treeOrder< ShadowIncludingTree >(const BoundaryPoint&, const BoundaryPoint&);

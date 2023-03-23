@@ -427,7 +427,7 @@ static NSMutableArray<NSURL *> *readOnlyAccessPaths()
 
 @end
 
-@implementation NSAttributedString (NSAttributedStringWebKitAdditions)
+@implementation NSAttributedString (NSAttributedStringCyberKitAdditions)
 
 + (void)loadFromHTMLWithRequest:(NSURLRequest *)request options:(NSDictionary<NSAttributedStringDocumentReadingOptionKey, id> *)options completionHandler:(NSAttributedStringCompletionHandler)completionHandler
 {

@@ -73,7 +73,7 @@
 #include "Settings.h"
 #include <CyberScriptCore/JSONObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline PaymentCoordinator& paymentCoordinator(Document& document)
 {
@@ -127,7 +127,7 @@ bool ApplePayPaymentHandler::handlesIdentifier(const PaymentRequest::MethodIdent
 
 bool ApplePayPaymentHandler::hasActiveSession(Document& document)
 {
-    return WebCore::paymentCoordinator(document).hasActiveSession();
+    return CyberCore::paymentCoordinator(document).hasActiveSession();
 }
 
 ApplePayPaymentHandler::ApplePayPaymentHandler(Document& document, const PaymentRequest::MethodIdentifier& identifier, PaymentRequest& paymentRequest)
@@ -145,7 +145,7 @@ Document& ApplePayPaymentHandler::document() const
 
 PaymentCoordinator& ApplePayPaymentHandler::paymentCoordinator() const
 {
-    return WebCore::paymentCoordinator(document());
+    return CyberCore::paymentCoordinator(document());
 }
 
 static ExceptionOr<void> validate(const PaymentCurrencyAmount& amount, const String& expectedCurrency)
@@ -980,6 +980,6 @@ void ApplePayPaymentHandler::didCancelPaymentSession(PaymentSessionError&&)
     m_paymentRequest->cancel();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) && ENABLE(PAYMENT_REQUEST)

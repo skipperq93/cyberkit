@@ -31,7 +31,7 @@
 #include <CyberCore/SecurityOriginData.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 MediaKeySystemPermissionRequestProxy::MediaKeySystemPermissionRequestProxy(MediaKeySystemPermissionRequestManagerProxy& manager, MediaKeySystemRequestIdentifier mediaKeySystemID, FrameIdentifier mainFrameID, FrameIdentifier frameID, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem)
@@ -79,4 +79,4 @@ void MediaKeySystemPermissionRequestProxy::doDefaultAction()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

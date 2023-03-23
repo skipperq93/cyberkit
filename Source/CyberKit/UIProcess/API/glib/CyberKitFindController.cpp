@@ -18,34 +18,34 @@
  */
 
 #include "config.h"
-#include "WebKitFindController.h"
+#include "CyberKitFindController.h"
 
 #include "APIFindClient.h"
 #include "WebFindOptions.h"
-#include "WebKitEnumTypes.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitEnumTypes.h"
+#include "CyberKitWebViewPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitFindController:
+ * CyberKitFindController:
  *
- * Controls text search in a #WebKitWebView.
+ * Controls text search in a #CyberKitWebView.
  *
- * A #WebKitFindController is used to search text in a #WebKitWebView. You
- * can get a #WebKitWebView<!-- -->'s #WebKitFindController with
+ * A #CyberKitFindController is used to search text in a #CyberKitWebView. You
+ * can get a #CyberKitWebView<!-- -->'s #CyberKitFindController with
  * webkit_web_view_get_find_controller(), and later use it to search
  * for text using webkit_find_controller_search(), or get the
  * number of matches using webkit_find_controller_count_matches(). The
  * operations are asynchronous and trigger signals when ready, such as
- * #WebKitFindController::found-text,
- * #WebKitFindController::failed-to-find-text or
- * #WebKitFindController::counted-matches<!-- -->.
+ * #CyberKitFindController::found-text,
+ * #CyberKitFindController::failed-to-find-text or
+ * #CyberKitFindController::counted-matches<!-- -->.
  *
  */
 
@@ -70,52 +70,52 @@ typedef enum {
     FindOperation,
     FindNextPrevOperation,
     CountOperation
-} WebKitFindControllerOperation;
+} CyberKitFindControllerOperation;
 
-struct _WebKitFindControllerPrivate {
+struct _CyberKitFindControllerPrivate {
     CString searchText;
-    OptionSet<WebKit::FindOptions> findOptions;
+    OptionSet<CyberKit::FindOptions> findOptions;
     unsigned maxMatchCount;
-    WebKitWebView* webView;
+    CyberKitWebView* webView;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitFindController, webkit_find_controller, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitFindController, webkit_find_controller, G_TYPE_OBJECT, GObject)
 
-static inline OptionSet<WebKit::FindOptions> toWebFindOptions(uint32_t findOptions)
+static inline OptionSet<CyberKit::FindOptions> toWebFindOptions(uint32_t findOptions)
 {
-    OptionSet<WebKit::FindOptions> options;
+    OptionSet<CyberKit::FindOptions> options;
     if (findOptions & WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE)
-        options.add(WebKit::FindOptions::CaseInsensitive);
+        options.add(CyberKit::FindOptions::CaseInsensitive);
     if (findOptions & WEBKIT_FIND_OPTIONS_AT_WORD_STARTS)
-        options.add(WebKit::FindOptions::AtWordStarts);
+        options.add(CyberKit::FindOptions::AtWordStarts);
     if (findOptions & WEBKIT_FIND_OPTIONS_TREAT_MEDIAL_CAPITAL_AS_WORD_START)
-        options.add(WebKit::FindOptions::TreatMedialCapitalAsWordStart);
+        options.add(CyberKit::FindOptions::TreatMedialCapitalAsWordStart);
     if (findOptions & WEBKIT_FIND_OPTIONS_BACKWARDS)
-        options.add(WebKit::FindOptions::Backwards);
+        options.add(CyberKit::FindOptions::Backwards);
     if (findOptions & WEBKIT_FIND_OPTIONS_WRAP_AROUND)
-        options.add(WebKit::FindOptions::WrapAround);
+        options.add(CyberKit::FindOptions::WrapAround);
     return options;
 }
 
-static inline WebKitFindOptions toWebKitFindOptions(OptionSet<WebKit::FindOptions> findOptions)
+static inline CyberKitFindOptions toCyberKitFindOptions(OptionSet<CyberKit::FindOptions> findOptions)
 {
-    return static_cast<WebKitFindOptions>((findOptions.contains(WebKit::FindOptions::CaseInsensitive) ? WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE : 0)
-        | (findOptions.contains(WebKit::FindOptions::AtWordStarts) ? WEBKIT_FIND_OPTIONS_AT_WORD_STARTS : 0)
-        | (findOptions.contains(WebKit::FindOptions::TreatMedialCapitalAsWordStart) ? WEBKIT_FIND_OPTIONS_TREAT_MEDIAL_CAPITAL_AS_WORD_START : 0)
-        | (findOptions.contains(WebKit::FindOptions::Backwards) ? WEBKIT_FIND_OPTIONS_BACKWARDS : 0)
-        | (findOptions.contains(WebKit::FindOptions::WrapAround) ? WEBKIT_FIND_OPTIONS_WRAP_AROUND : 0));
+    return static_cast<CyberKitFindOptions>((findOptions.contains(CyberKit::FindOptions::CaseInsensitive) ? WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE : 0)
+        | (findOptions.contains(CyberKit::FindOptions::AtWordStarts) ? WEBKIT_FIND_OPTIONS_AT_WORD_STARTS : 0)
+        | (findOptions.contains(CyberKit::FindOptions::TreatMedialCapitalAsWordStart) ? WEBKIT_FIND_OPTIONS_TREAT_MEDIAL_CAPITAL_AS_WORD_START : 0)
+        | (findOptions.contains(CyberKit::FindOptions::Backwards) ? WEBKIT_FIND_OPTIONS_BACKWARDS : 0)
+        | (findOptions.contains(CyberKit::FindOptions::WrapAround) ? WEBKIT_FIND_OPTIONS_WRAP_AROUND : 0));
 }
 
-static inline WebPageProxy& getPage(WebKitFindController* findController)
+static inline WebPageProxy& getPage(CyberKitFindController* findController)
 {
     return webkitWebViewGetPage(findController->priv->webView);
 }
 
 class FindClient final : public API::FindClient {
 public:
-    explicit FindClient(WebKitFindController* findController)
+    explicit FindClient(CyberKitFindController* findController)
         : m_findController(findController)
     {
     }
@@ -136,20 +136,20 @@ private:
         g_signal_emit(m_findController, signals[FAILED_TO_FIND_TEXT], 0);
     }
 
-    WebKitFindController* m_findController;
+    CyberKitFindController* m_findController;
 };
 
 static void webkitFindControllerConstructed(GObject* object)
 {
     G_OBJECT_CLASS(webkit_find_controller_parent_class)->constructed(object);
 
-    WebKitFindController* findController = WEBKIT_FIND_CONTROLLER(object);
+    CyberKitFindController* findController = WEBKIT_FIND_CONTROLLER(object);
     getPage(findController).setFindClient(makeUnique<FindClient>(findController));
 }
 
 static void webkitFindControllerGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitFindController* findController = WEBKIT_FIND_CONTROLLER(object);
+    CyberKitFindController* findController = WEBKIT_FIND_CONTROLLER(object);
 
     switch (propId) {
     case PROP_TEXT:
@@ -171,7 +171,7 @@ static void webkitFindControllerGetProperty(GObject* object, guint propId, GValu
 
 static void webkitFindControllerSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitFindController* findController = WEBKIT_FIND_CONTROLLER(object);
+    CyberKitFindController* findController = WEBKIT_FIND_CONTROLLER(object);
 
     switch (propId) {
     case PROP_WEB_VIEW:
@@ -182,7 +182,7 @@ static void webkitFindControllerSetProperty(GObject* object, guint propId, const
     }
 }
 
-static void webkit_find_controller_class_init(WebKitFindControllerClass* findClass)
+static void webkit_find_controller_class_init(CyberKitFindControllerClass* findClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(findClass);
     gObjectClass->constructed = webkitFindControllerConstructed;
@@ -190,9 +190,9 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
     gObjectClass->set_property = webkitFindControllerSetProperty;
 
     /**
-     * WebKitFindController:text:
+     * CyberKitFindController:text:
      *
-     * The current search text for this #WebKitFindController.
+     * The current search text for this #CyberKitFindController.
      */
     g_object_class_install_property(gObjectClass,
                                     PROP_TEXT,
@@ -202,7 +202,7 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
                                                         WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitFindController:options:
+     * CyberKitFindController:options:
      *
      * The options to be used in the search operation.
      */
@@ -215,7 +215,7 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
                                                        WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitFindController:max-match-count:
+     * CyberKitFindController:max-match-count:
      *
      * The maximum number of matches to report for a given search.
      */
@@ -227,9 +227,9 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
                                                       WEBKIT_PARAM_READABLE));
 
     /**
-     * WebKitFindController:web-view:
+     * CyberKitFindController:web-view:
      *
-     * The #WebKitWebView this controller is associated to.
+     * The #CyberKitWebView this controller is associated to.
      */
     g_object_class_install_property(gObjectClass,
                                     PROP_WEB_VIEW,
@@ -239,8 +239,8 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
                                                         static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 
     /**
-     * WebKitFindController::found-text:
-     * @find_controller: the #WebKitFindController
+     * CyberKitFindController::found-text:
+     * @find_controller: the #CyberKitFindController
      * @match_count: the number of matches found of the search text
      *
      * This signal is emitted when a given text is found in the web
@@ -258,8 +258,8 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
                      G_TYPE_NONE, 1, G_TYPE_UINT);
 
     /**
-     * WebKitFindController::failed-to-find-text:
-     * @find_controller: the #WebKitFindController
+     * CyberKitFindController::failed-to-find-text:
+     * @find_controller: the #CyberKitFindController
      *
      * This signal is emitted when a search operation does not find
      * any result for the given text. It will be issued if the text
@@ -276,11 +276,11 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
                      G_TYPE_NONE, 0);
 
     /**
-     * WebKitFindController::counted-matches:
-     * @find_controller: the #WebKitFindController
+     * CyberKitFindController::counted-matches:
+     * @find_controller: the #CyberKitFindController
      * @match_count: the number of matches of the search text
      *
-     * This signal is emitted when the #WebKitFindController has
+     * This signal is emitted when the #CyberKitFindController has
      * counted the number of matches for a given text after a call
      * to webkit_find_controller_count_matches().
      */
@@ -295,7 +295,7 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
 
 /**
  * webkit_find_controller_get_search_text:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  *
  * Gets the text that @find_controller is searching for.
  *
@@ -304,9 +304,9 @@ static void webkit_find_controller_class_init(WebKitFindControllerClass* findCla
  * webkit_find_controller_search() or
  * webkit_find_controller_count_matches().
  *
- * Returns: the text to look for in the #WebKitWebView.
+ * Returns: the text to look for in the #CyberKitWebView.
  */
-const char* webkit_find_controller_get_search_text(WebKitFindController* findController)
+const char* webkit_find_controller_get_search_text(CyberKitFindController* findController)
 {
     g_return_val_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController), 0);
 
@@ -315,26 +315,26 @@ const char* webkit_find_controller_get_search_text(WebKitFindController* findCon
 
 /**
  * webkit_find_controller_get_options:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  *
- * Gets the #WebKitFindOptions for the current search.
+ * Gets the #CyberKitFindOptions for the current search.
  *
- * Gets a bitmask containing the #WebKitFindOptions associated with
+ * Gets a bitmask containing the #CyberKitFindOptions associated with
  * the current search.
  *
- * Returns: a bitmask containing the #WebKitFindOptions associated
+ * Returns: a bitmask containing the #CyberKitFindOptions associated
  * with the current search.
  */
-guint32 webkit_find_controller_get_options(WebKitFindController* findController)
+guint32 webkit_find_controller_get_options(CyberKitFindController* findController)
 {
     g_return_val_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController), WEBKIT_FIND_OPTIONS_NONE);
 
-    return toWebKitFindOptions(findController->priv->findOptions);
+    return toCyberKitFindOptions(findController->priv->findOptions);
 }
 
 /**
  * webkit_find_controller_get_max_match_count:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  *
  * Gets the maximum number of matches to report.
  *
@@ -345,7 +345,7 @@ guint32 webkit_find_controller_get_options(WebKitFindController* findController)
  *
  * Returns: the maximum number of matches to report.
  */
-guint webkit_find_controller_get_max_match_count(WebKitFindController* findController)
+guint webkit_find_controller_get_max_match_count(CyberKitFindController* findController)
 {
     g_return_val_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController), 0);
 
@@ -354,33 +354,33 @@ guint webkit_find_controller_get_max_match_count(WebKitFindController* findContr
 
 /**
  * webkit_find_controller_get_web_view:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  *
- * Gets the #WebKitWebView this find controller is associated to.
+ * Gets the #CyberKitWebView this find controller is associated to.
  *
  * Do
  * not dereference the returned instance as it belongs to the
- * #WebKitFindController.
+ * #CyberKitFindController.
  *
- * Returns: (transfer none): the #WebKitWebView.
+ * Returns: (transfer none): the #CyberKitWebView.
  */
-WebKitWebView* webkit_find_controller_get_web_view(WebKitFindController* findController)
+CyberKitWebView* webkit_find_controller_get_web_view(CyberKitFindController* findController)
 {
     g_return_val_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController), 0);
 
     return findController->priv->webView;
 }
 
-static void webKitFindControllerPerform(WebKitFindController* findController, WebKitFindControllerOperation operation)
+static void webKitFindControllerPerform(CyberKitFindController* findController, CyberKitFindControllerOperation operation)
 {
-    WebKitFindControllerPrivate* priv = findController->priv;
+    CyberKitFindControllerPrivate* priv = findController->priv;
     if (operation == CountOperation) {
         getPage(findController).countStringMatches(String::fromUTF8(priv->searchText.data()),
             priv->findOptions, priv->maxMatchCount);
         return;
     }
 
-    OptionSet<WebKit::FindOptions> findOptions = priv->findOptions;
+    OptionSet<CyberKit::FindOptions> findOptions = priv->findOptions;
     if (operation == FindOperation)
         // Unconditionally highlight text matches when the search
         // starts. WK1 API was forcing clients to enable/disable
@@ -389,12 +389,12 @@ static void webKitFindControllerPerform(WebKitFindController* findController, We
         // unconditionally show highlights. Both search_next() and
         // search_prev() should not enable highlighting to avoid an
         // extra unmarkAllTextMatches() + markAllTextMatches()
-        findOptions.add(WebKit::FindOptions::ShowHighlight);
+        findOptions.add(CyberKit::FindOptions::ShowHighlight);
 
     getPage(findController).findString(String::fromUTF8(priv->searchText.data()), findOptions, priv->maxMatchCount);
 }
 
-static inline void webKitFindControllerSetSearchData(WebKitFindController* findController, const gchar* searchText, guint32 findOptions, guint maxMatchCount)
+static inline void webKitFindControllerSetSearchData(CyberKitFindController* findController, const gchar* searchText, guint32 findOptions, guint maxMatchCount)
 {
     findController->priv->searchText = searchText;
     findController->priv->findOptions = toWebFindOptions(findOptions);
@@ -403,34 +403,34 @@ static inline void webKitFindControllerSetSearchData(WebKitFindController* findC
 
 /**
  * webkit_find_controller_search:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  * @search_text: the text to look for
- * @find_options: a bitmask with the #WebKitFindOptions used in the search
+ * @find_options: a bitmask with the #CyberKitFindOptions used in the search
  * @max_match_count: the maximum number of matches allowed in the search
  *
  * Looks for @search_text associated with @find_controller.
  *
- * Looks for @search_text in the #WebKitWebView associated with
+ * Looks for @search_text in the #CyberKitWebView associated with
  * @find_controller since the beginning of the document highlighting
  * up to @max_match_count matches. The outcome of the search will be
- * asynchronously provided by the #WebKitFindController::found-text
- * and #WebKitFindController::failed-to-find-text signals.
+ * asynchronously provided by the #CyberKitFindController::found-text
+ * and #CyberKitFindController::failed-to-find-text signals.
  *
  * To look for the next or previous occurrences of the same text
  * with the same find options use webkit_find_controller_search_next()
  * and/or webkit_find_controller_search_previous(). The
- * #WebKitFindController will use the same text and options for the
+ * #CyberKitFindController will use the same text and options for the
  * following searches unless they are modified by another call to this
  * method.
  *
  * Note that if the number of matches is higher than @max_match_count
- * then #WebKitFindController::found-text will report %G_MAXUINT matches
+ * then #CyberKitFindController::found-text will report %G_MAXUINT matches
  * instead of the actual number.
  *
  * Callers should call webkit_find_controller_search_finish() to
  * finish the current search operation.
  */
-void webkit_find_controller_search(WebKitFindController* findController, const gchar* searchText, guint findOptions, guint maxMatchCount)
+void webkit_find_controller_search(CyberKitFindController* findController, const gchar* searchText, guint findOptions, guint maxMatchCount)
 {
     g_return_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController));
     g_return_if_fail(searchText);
@@ -440,55 +440,55 @@ void webkit_find_controller_search(WebKitFindController* findController, const g
 
 /**
  * webkit_find_controller_search_next:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  *
  * Looks for the next occurrence of the search text.
  *
  * Calling this method before webkit_find_controller_search() or
  * webkit_find_controller_count_matches() is a programming error.
  */
-void webkit_find_controller_search_next(WebKitFindController* findController)
+void webkit_find_controller_search_next(CyberKitFindController* findController)
 {
     g_return_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController));
 
-    findController->priv->findOptions.remove(WebKit::FindOptions::Backwards);
-    findController->priv->findOptions.remove(WebKit::FindOptions::ShowHighlight);
+    findController->priv->findOptions.remove(CyberKit::FindOptions::Backwards);
+    findController->priv->findOptions.remove(CyberKit::FindOptions::ShowHighlight);
     webKitFindControllerPerform(findController, FindNextPrevOperation);
 }
 
 /**
  * webkit_find_controller_search_previous:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  *
  * Looks for the previous occurrence of the search text.
  *
  * Calling this method before webkit_find_controller_search() or
  * webkit_find_controller_count_matches() is a programming error.
  */
-void webkit_find_controller_search_previous(WebKitFindController* findController)
+void webkit_find_controller_search_previous(CyberKitFindController* findController)
 {
     g_return_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController));
 
-    findController->priv->findOptions.add(WebKit::FindOptions::Backwards);
-    findController->priv->findOptions.remove(WebKit::FindOptions::ShowHighlight);
+    findController->priv->findOptions.add(CyberKit::FindOptions::Backwards);
+    findController->priv->findOptions.remove(CyberKit::FindOptions::ShowHighlight);
     webKitFindControllerPerform(findController, FindNextPrevOperation);
 }
 
 /**
  * webkit_find_controller_count_matches:
- * @find_controller: the #WebKitFindController
+ * @find_controller: the #CyberKitFindController
  * @search_text: the text to look for
- * @find_options: a bitmask with the #WebKitFindOptions used in the search
+ * @find_options: a bitmask with the #CyberKitFindOptions used in the search
  * @max_match_count: the maximum number of matches allowed in the search
  *
  * Counts the number of matches for @search_text.
  *
  * Counts the number of matches for @search_text found in the
- * #WebKitWebView with the provided @find_options. The number of
+ * #CyberKitWebView with the provided @find_options. The number of
  * matches will be provided by the
- * #WebKitFindController::counted-matches signal.
+ * #CyberKitFindController::counted-matches signal.
  */
-void webkit_find_controller_count_matches(WebKitFindController* findController, const gchar* searchText, guint32 findOptions, guint maxMatchCount)
+void webkit_find_controller_count_matches(CyberKitFindController* findController, const gchar* searchText, guint32 findOptions, guint maxMatchCount)
 {
     g_return_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController));
     g_return_if_fail(searchText);
@@ -499,7 +499,7 @@ void webkit_find_controller_count_matches(WebKitFindController* findController, 
 
 /**
  * webkit_find_controller_search_finish:
- * @find_controller: a #WebKitFindController
+ * @find_controller: a #CyberKitFindController
  *
  * Finishes a find operation.
  *
@@ -510,7 +510,7 @@ void webkit_find_controller_count_matches(WebKitFindController* findController, 
  * This method will be typically called when the search UI is
  * closed/hidden by the client application.
  */
-void webkit_find_controller_search_finish(WebKitFindController* findController)
+void webkit_find_controller_search_finish(CyberKitFindController* findController)
 {
     g_return_if_fail(WEBKIT_IS_FIND_CONTROLLER(findController));
 

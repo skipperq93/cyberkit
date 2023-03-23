@@ -34,7 +34,7 @@ OBJC_CLASS NSDictionary;
 OBJC_CLASS NSString;
 OBJC_CLASS NSURL;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionAPIRuntime;
 
@@ -71,6 +71,6 @@ public:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

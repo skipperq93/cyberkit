@@ -32,7 +32,7 @@
 #include "JSDOMExceptionHandling.h"
 #include <CyberScriptCore/JSTypedArrays.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 enum class CloneMode {
@@ -148,4 +148,4 @@ JSC_DEFINE_HOST_FUNCTION(structuredCloneForStream, (JSGlobalObject* globalObject
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

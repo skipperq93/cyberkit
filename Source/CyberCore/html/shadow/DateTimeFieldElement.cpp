@@ -43,7 +43,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -201,6 +201,6 @@ bool DateTimeFieldElement::supportsFocus() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

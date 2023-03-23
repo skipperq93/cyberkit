@@ -23,12 +23,12 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitDecoder.h"
+#include "CyberKitDecoder.h"
 
 #import "Framework/Headers/WebRTC/RTCVideoCodecFactory.h"
 #import "Framework/Headers/WebRTC/RTCVideoFrameBuffer.h"
 #import "Framework/Native/api/video_decoder_factory.h"
-#import "WebKitUtilities.h"
+#import "CyberKitUtilities.h"
 #import "api/video_codecs/video_decoder.h"
 #import "api/video_codecs/video_decoder_factory.h"
 #import "api/video_codecs/video_decoder_software_fallback_wrapper.h"
@@ -161,7 +161,7 @@ private:
 
 class RemoteVideoDecoder final : public webrtc::VideoDecoder {
 public:
-    RemoteVideoDecoder(WebKitVideoDecoder::Value, bool isVP9);
+    RemoteVideoDecoder(CyberKitVideoDecoder::Value, bool isVP9);
     ~RemoteVideoDecoder();
 
     bool isVP9() const { return m_isVP9; }
@@ -173,7 +173,7 @@ private:
     int32_t Release() final;
     const char* ImplementationName() const final { return "RemoteVideoToolBox"; }
 
-    WebKitVideoDecoder::Value m_internalDecoder;
+    CyberKitVideoDecoder::Value m_internalDecoder;
     bool m_isVP9 { false };
 };
 
@@ -198,7 +198,7 @@ void setVideoDecoderCallbacks(VideoDecoderCreateCallback createCallback, VideoDe
     callbacks.registerDecodeCompleteCallback = registerDecodeCompleteCallback;
 }
 
-RemoteVideoDecoder::RemoteVideoDecoder(WebKitVideoDecoder::Value internalDecoder, bool isVP9)
+RemoteVideoDecoder::RemoteVideoDecoder(CyberKitVideoDecoder::Value internalDecoder, bool isVP9)
     : m_internalDecoder(internalDecoder)
     , m_isVP9(isVP9)
 {
@@ -293,9 +293,9 @@ std::unique_ptr<VideoDecoder> RemoteVideoDecoderFactory::CreateVideoDecoder(cons
     return webrtc::CreateVideoDecoderSoftwareFallbackWrapper(m_internalFactory->CreateVideoDecoder(format), std::move(decoder));
 }
 
-std::unique_ptr<webrtc::VideoDecoderFactory> createWebKitDecoderFactory(WebKitH265 supportsH265, WebKitVP9 supportsVP9, WebKitVP9VTB supportsVP9VTB, WebKitAv1 supportsAv1)
+std::unique_ptr<webrtc::VideoDecoderFactory> createCyberKitDecoderFactory(CyberKitH265 supportsH265, CyberKitVP9 supportsVP9, CyberKitVP9VTB supportsVP9VTB, CyberKitAv1 supportsAv1)
 {
-    auto internalFactory = ObjCToNativeVideoDecoderFactory([[RTCDefaultVideoDecoderFactory alloc] initWithH265: supportsH265 == WebKitH265::On vp9Profile0:supportsVP9 > WebKitVP9::Off vp9Profile2:supportsVP9 == WebKitVP9::Profile0And2 vp9VTB: supportsVP9VTB == WebKitVP9VTB::On av1:supportsAv1==WebKitAv1::On]);
+    auto internalFactory = ObjCToNativeVideoDecoderFactory([[RTCDefaultVideoDecoderFactory alloc] initWithH265: supportsH265 == CyberKitH265::On vp9Profile0:supportsVP9 > CyberKitVP9::Off vp9Profile2:supportsVP9 == CyberKitVP9::Profile0And2 vp9VTB: supportsVP9VTB == CyberKitVP9VTB::On av1:supportsAv1==CyberKitAv1::On]);
     return std::make_unique<RemoteVideoDecoderFactory>(std::move(internalFactory));
 }
 

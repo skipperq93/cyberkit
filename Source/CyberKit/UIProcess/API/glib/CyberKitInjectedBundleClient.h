@@ -17,11 +17,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitInjectedBundleClient_h
-#define WebKitInjectedBundleClient_h
+#ifndef CyberKitInjectedBundleClient_h
+#define CyberKitInjectedBundleClient_h
 
-#include "WebKitWebContext.h"
+#include "CyberKitWebContext.h"
 
-void attachInjectedBundleClientToContext(WebKitWebContext*);
+void attachInjectedBundleClientToContext(CyberKitWebContext*);
 
 #endif

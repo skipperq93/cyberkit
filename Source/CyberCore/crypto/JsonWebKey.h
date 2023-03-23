@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct JsonWebKey {
     String kty;
@@ -58,6 +58,6 @@ struct JsonWebKey {
     String k;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

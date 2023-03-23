@@ -37,7 +37,7 @@ namespace CyberCore {
 class DOMWrapperWorld;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebPage;
@@ -97,6 +97,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

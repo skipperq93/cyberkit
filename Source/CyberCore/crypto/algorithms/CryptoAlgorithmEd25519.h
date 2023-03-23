@@ -27,7 +27,7 @@
 #include "CryptoAlgorithm.h"
 
 #if ENABLE(WEB_CRYPTO)
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoKeyOKP;
 
@@ -56,6 +56,6 @@ inline CryptoAlgorithmIdentifier CryptoAlgorithmEd25519::identifier() const
     return s_identifier;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

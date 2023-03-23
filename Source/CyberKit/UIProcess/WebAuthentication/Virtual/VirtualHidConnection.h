@@ -32,7 +32,7 @@
 #include <CyberCore/FidoHidMessage.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 struct VirtualAuthenticatorConfiguration;
 class VirtualAuthenticatorManager;
 
@@ -58,5 +58,5 @@ private:
     uint32_t m_currentChannel { fido::kHidBroadcastChannel };
     String m_authenticatorId;
 };
-} // namespace WebKit
+} // namespace CyberKit
 #endif

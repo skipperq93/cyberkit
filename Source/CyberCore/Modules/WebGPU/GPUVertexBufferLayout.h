@@ -31,14 +31,14 @@
 #include <pal/graphics/WebGPU/WebGPUVertexBufferLayout.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUVertexBufferLayout {
     PAL::WebGPU::VertexBufferLayout convertToBacking() const
     {
         return {
             arrayStride,
-            WebCore::convertToBacking(stepMode),
+            CyberCore::convertToBacking(stepMode),
             attributes.map([] (auto& attribute) {
                 return attribute.convertToBacking();
             }),

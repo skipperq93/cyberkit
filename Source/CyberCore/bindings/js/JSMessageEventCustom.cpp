@@ -41,7 +41,7 @@
 #include <CyberScriptCore/JSArray.h>
 #include <CyberScriptCore/JSArrayBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue JSMessageEvent::ports(JSC::JSGlobalObject& lexicalGlobalObject) const
 {
@@ -80,4 +80,4 @@ void JSMessageEvent::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSMessageEvent);
 
-} // namespace WebCore
+} // namespace CyberCore

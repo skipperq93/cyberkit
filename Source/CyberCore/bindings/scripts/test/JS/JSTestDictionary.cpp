@@ -22,10 +22,10 @@
 #include "JSTestDictionary.h"
 
 #include "JSDOMConvertNumbers.h"
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<> TestDictionary convertDictionary<TestDictionary>(JSGlobalObject& lexicalGlobalObject, JSValue value)
@@ -53,4 +53,4 @@ template<> TestDictionary convertDictionary<TestDictionary>(JSGlobalObject& lexi
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

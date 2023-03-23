@@ -27,7 +27,7 @@
 #define JSValueRef_h
 
 #include <CyberScriptCore/JSBase.h>
-#include <CyberScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/CyberKitAvailability.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

@@ -34,8 +34,8 @@
 #define MAX_DOM_TREE_DEPTH 5000
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const unsigned maxDOMTreeDepth = MAX_DOM_TREE_DEPTH;
 
-} // namespace WebCore
+} // namespace CyberCore

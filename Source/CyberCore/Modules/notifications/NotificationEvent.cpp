@@ -30,7 +30,7 @@
 
 #if ENABLE(NOTIFICATION_EVENT)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(NotificationEvent);
 
@@ -58,7 +58,7 @@ NotificationEvent::~NotificationEvent()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATION_EVENT)
 

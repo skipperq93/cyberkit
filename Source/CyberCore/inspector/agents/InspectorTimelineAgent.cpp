@@ -61,14 +61,14 @@
 
 #if PLATFORM(IOS_FAMILY)
 #include "RuntimeApplicationChecks.h"
-#include "WebCoreThreadInternal.h"
+#include "CyberCoreThreadInternal.h"
 #endif
 
 #if PLATFORM(COCOA)
 #include "RunLoopObserver.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -860,4 +860,4 @@ void InspectorTimelineAgent::pushCurrentRecord(Ref<JSON::Object>&& data, Timelin
     pushCurrentRecord(createRecordEntry(WTFMove(data), type, captureCallStack, frame, startTime));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

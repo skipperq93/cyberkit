@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUErrorFilter.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUErrorFilter : uint8_t {
     OutOfMemory,

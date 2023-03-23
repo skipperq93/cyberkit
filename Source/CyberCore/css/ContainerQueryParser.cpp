@@ -29,7 +29,7 @@
 #include "CSSPropertyParserHelpers.h"
 #include "ContainerQueryFeatures.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace MQ;
 

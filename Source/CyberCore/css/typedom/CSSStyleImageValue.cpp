@@ -34,7 +34,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSStyleImageValue);
 
@@ -60,4 +60,4 @@ RefPtr<CSSValue> CSSStyleImageValue::toCSSValue() const
     return m_cssValue.copyRef();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

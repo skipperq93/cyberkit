@@ -28,7 +28,7 @@
 #include "EditingBoundary.h"
 #include "Position.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class VisiblePosition {
 public:
@@ -178,10 +178,10 @@ inline bool operator>=(const VisiblePosition& a, const VisiblePosition& b)
     return is_gteq(documentOrder(a, b));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showTree(const WebCore::VisiblePosition*);
-void showTree(const WebCore::VisiblePosition&);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showTree(const CyberCore::VisiblePosition*);
+void showTree(const CyberCore::VisiblePosition&);
 #endif

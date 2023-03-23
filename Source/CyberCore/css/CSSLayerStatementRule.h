@@ -31,7 +31,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleLayer;
 
@@ -51,6 +51,6 @@ private:
     Ref<StyleRuleLayer> m_layerRule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSLayerStatementRule, StyleRuleType::LayerStatement)

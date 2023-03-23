@@ -34,7 +34,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmECDSAInternal {
 static constexpr auto ALG256 = "ES256"_s;
@@ -218,6 +218,6 @@ void CryptoAlgorithmECDSA::exportKey(CryptoKeyFormat format, Ref<CryptoKey>&& ke
     callback(format, WTFMove(result));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

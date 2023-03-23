@@ -27,7 +27,7 @@
 
 #include "AccessibilityObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLOptionElement;
 
@@ -62,6 +62,6 @@ private:
     AccessibilityObject* m_parent;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityMenuListOption, isMenuListOption())

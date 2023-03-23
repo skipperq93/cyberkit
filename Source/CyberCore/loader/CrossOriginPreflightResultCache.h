@@ -35,7 +35,7 @@
 #include <wtf/URLHash.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTTPHeaderMap;
 class ResourceResponse;
@@ -86,4 +86,4 @@ inline CrossOriginPreflightResultCacheItem::CrossOriginPreflightResultCacheItem(
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

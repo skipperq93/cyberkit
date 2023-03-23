@@ -18,21 +18,21 @@
  */
 
 #include "config.h"
-#include "WebKitJavascriptResult.h"
+#include "CyberKitJavascriptResult.h"
 
 #include "APISerializedScriptValue.h"
-#include "WebKitJavascriptResultPrivate.h"
+#include "CyberKitJavascriptResultPrivate.h"
 #include <jsc/JSCContextPrivate.h>
 #include <jsc/JSCValuePrivate.h>
 
 /**
- * WebKitJavascriptResult: (ref-func webkit_javascript_result_ref) (unref-func webkit_javascript_result_unref)
+ * CyberKitJavascriptResult: (ref-func webkit_javascript_result_ref) (unref-func webkit_javascript_result_unref)
  *
  * Result of JavaScript evaluation in a web view.
  */
 
-struct _WebKitJavascriptResult {
-    explicit _WebKitJavascriptResult(CyberCore::SerializedScriptValue& serializedScriptValue)
+struct _CyberKitJavascriptResult {
+    explicit _CyberKitJavascriptResult(CyberCore::SerializedScriptValue& serializedScriptValue)
     {
         jsValue = API::SerializedScriptValue::deserialize(serializedScriptValue);
     }
@@ -42,26 +42,26 @@ struct _WebKitJavascriptResult {
     int referenceCount { 1 };
 };
 
-G_DEFINE_BOXED_TYPE(WebKitJavascriptResult, webkit_javascript_result, webkit_javascript_result_ref, webkit_javascript_result_unref)
+G_DEFINE_BOXED_TYPE(CyberKitJavascriptResult, webkit_javascript_result, webkit_javascript_result_ref, webkit_javascript_result_unref)
 
-WebKitJavascriptResult* webkitJavascriptResultCreate(CyberCore::SerializedScriptValue& serializedScriptValue)
+CyberKitJavascriptResult* webkitJavascriptResultCreate(CyberCore::SerializedScriptValue& serializedScriptValue)
 {
-    WebKitJavascriptResult* result = static_cast<WebKitJavascriptResult*>(fastMalloc(sizeof(WebKitJavascriptResult)));
-    new (result) WebKitJavascriptResult(serializedScriptValue);
+    CyberKitJavascriptResult* result = static_cast<CyberKitJavascriptResult*>(fastMalloc(sizeof(CyberKitJavascriptResult)));
+    new (result) CyberKitJavascriptResult(serializedScriptValue);
     return result;
 }
 
 /**
  * webkit_javascript_result_ref:
- * @js_result: a #WebKitJavascriptResult
+ * @js_result: a #CyberKitJavascriptResult
  *
  * Atomically increments the reference count of @js_result by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed in #WebKitJavascriptResult
+ * Returns: The passed in #CyberKitJavascriptResult
  */
-WebKitJavascriptResult* webkit_javascript_result_ref(WebKitJavascriptResult* javascriptResult)
+CyberKitJavascriptResult* webkit_javascript_result_ref(CyberKitJavascriptResult* javascriptResult)
 {
     g_atomic_int_inc(&javascriptResult->referenceCount);
     return javascriptResult;
@@ -69,19 +69,19 @@ WebKitJavascriptResult* webkit_javascript_result_ref(WebKitJavascriptResult* jav
 
 /**
  * webkit_javascript_result_unref:
- * @js_result: a #WebKitJavascriptResult
+ * @js_result: a #CyberKitJavascriptResult
  *
  * Atomically decrements the reference count of @js_result by one.
  *
  * If the reference count drops to 0,
- * all memory allocated by the #WebKitJavascriptResult is
+ * all memory allocated by the #CyberKitJavascriptResult is
  * released. This function is MT-safe and may be called from any
  * thread.
  */
-void webkit_javascript_result_unref(WebKitJavascriptResult* javascriptResult)
+void webkit_javascript_result_unref(CyberKitJavascriptResult* javascriptResult)
 {
     if (g_atomic_int_dec_and_test(&javascriptResult->referenceCount)) {
-        javascriptResult->~WebKitJavascriptResult();
+        javascriptResult->~CyberKitJavascriptResult();
         fastFree(javascriptResult);
     }
 }
@@ -89,18 +89,18 @@ void webkit_javascript_result_unref(WebKitJavascriptResult* javascriptResult)
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_javascript_result_get_global_context: (skip)
- * @js_result: a #WebKitJavascriptResult
+ * @js_result: a #CyberKitJavascriptResult
  *
  * Get the global Javascript context.
  *
  * Get the global Javascript context that should be used with the
  * <function>JSValueRef</function> returned by webkit_javascript_result_get_value().
  *
- * Returns: the <function>JSGlobalContextRef</function> for the #WebKitJavascriptResult
+ * Returns: the <function>JSGlobalContextRef</function> for the #CyberKitJavascriptResult
  *
  * Deprecated: 2.22: Use jsc_value_get_context() instead.
  */
-JSGlobalContextRef webkit_javascript_result_get_global_context(WebKitJavascriptResult* javascriptResult)
+JSGlobalContextRef webkit_javascript_result_get_global_context(CyberKitJavascriptResult* javascriptResult)
 {
     g_return_val_if_fail(javascriptResult, nullptr);
     return jscContextGetJSContext(jsc_value_get_context(javascriptResult->jsValue.get()));
@@ -108,18 +108,18 @@ JSGlobalContextRef webkit_javascript_result_get_global_context(WebKitJavascriptR
 
 /**
  * webkit_javascript_result_get_value: (skip)
- * @js_result: a #WebKitJavascriptResult
+ * @js_result: a #CyberKitJavascriptResult
  *
  * Get the value of @js_result.
  *
  * You should use the <function>JSGlobalContextRef</function>
  * returned by webkit_javascript_result_get_global_context() to use the <function>JSValueRef</function>.
  *
- * Returns: the <function>JSValueRef</function> of the #WebKitJavascriptResult
+ * Returns: the <function>JSValueRef</function> of the #CyberKitJavascriptResult
  *
  * Deprecated: 2.22: Use webkit_javascript_result_get_js_value() instead.
  */
-JSValueRef webkit_javascript_result_get_value(WebKitJavascriptResult* javascriptResult)
+JSValueRef webkit_javascript_result_get_value(CyberKitJavascriptResult* javascriptResult)
 {
     g_return_val_if_fail(javascriptResult, nullptr);
     return jscValueGetJSValue(javascriptResult->jsValue.get());
@@ -128,15 +128,15 @@ JSValueRef webkit_javascript_result_get_value(WebKitJavascriptResult* javascript
 
 /**
  * webkit_javascript_result_get_js_value:
- * @js_result: a #WebKitJavascriptResult
+ * @js_result: a #CyberKitJavascriptResult
  *
  * Get the #JSCValue of @js_result.
  *
- * Returns: (transfer none): the #JSCValue of the #WebKitJavascriptResult
+ * Returns: (transfer none): the #JSCValue of the #CyberKitJavascriptResult
  *
  * Since: 2.22
  */
-JSCValue* webkit_javascript_result_get_js_value(WebKitJavascriptResult* javascriptResult)
+JSCValue* webkit_javascript_result_get_js_value(CyberKitJavascriptResult* javascriptResult)
 {
     g_return_val_if_fail(javascriptResult, nullptr);
     return javascriptResult->jsValue.get();

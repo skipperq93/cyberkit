@@ -24,7 +24,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLHRElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLHRElement);
@@ -40,4 +40,4 @@ private:
     bool canContainRangeEndPoint() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

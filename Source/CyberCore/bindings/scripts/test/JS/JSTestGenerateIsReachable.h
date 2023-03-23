@@ -24,7 +24,7 @@
 #include "TestGenerateIsReachable.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestGenerateIsReachable : public JSDOMWrapper<TestGenerateIsReachable> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestGenerateIsReachable> {
     using ToWrappedReturnType = TestGenerateIsReachable*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

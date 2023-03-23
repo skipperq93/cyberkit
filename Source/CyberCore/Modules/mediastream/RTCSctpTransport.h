@@ -31,7 +31,7 @@
 #include "EventTarget.h"
 #include "RTCSctpTransportBackend.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDtlsTransport;
 
@@ -77,6 +77,6 @@ private:
     std::optional<unsigned short> m_maxChannels;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

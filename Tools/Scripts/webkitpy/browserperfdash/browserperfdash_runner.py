@@ -44,7 +44,7 @@ def parse_args():
     parser.add_argument('--config-file', dest='config_file', default=None, required=True, help='Configuration file for sending the results to the performance dashboard server(s).')
     parser.add_argument('--browser-version', dest='browser_version', default=None, required=True, help='A string that identifies the browser version.')
     # arguments shared with run-benchmark.
-    parser.add_argument('--build-directory', dest='buildDir', help='Path to the browser executable (e.g. WebKitBuild/Release/).')
+    parser.add_argument('--build-directory', dest='buildDir', help='Path to the browser executable (e.g. CyberKitBuild/Release/).')
     parser.add_argument('--platform', dest='platform', default=default_platform(), choices=BrowserDriverFactory.available_platforms())
     parser.add_argument('--browser', dest='browser', default=default_browser(), choices=BrowserDriverFactory.available_browsers())
     parser.add_argument('--driver', default=WebServerBenchmarkRunner.name, choices=benchmark_runner_subclasses.keys(), help='Use the specified benchmark driver. Defaults to %s.' % WebServerBenchmarkRunner.name)

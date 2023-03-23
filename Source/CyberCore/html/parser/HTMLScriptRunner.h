@@ -31,7 +31,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Frame;
@@ -86,4 +86,4 @@ private:
     bool m_hasScriptsWaitingForStylesheets;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

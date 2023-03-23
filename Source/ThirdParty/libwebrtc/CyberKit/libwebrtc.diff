@@ -653,11 +653,11 @@ index 79694112c81..bfce0f54541 100644
    double a = (x - mean) * (x - mean) / (2 * stddev * stddev);
    return exp(-a) / (stddev * sqrt(2 * PI));
  }
-diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/EncoderUtilities.h b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/EncoderUtilities.h
+diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/EncoderUtilities.h b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/EncoderUtilities.h
 new file mode 100644
 index 00000000000..5b9bdfda114
 --- /dev/null
-+++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/EncoderUtilities.h
++++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/EncoderUtilities.h
 @@ -0,0 +1,50 @@
 +/*
 + * Copyright (C) 2018 Apple Inc. All rights reserved.
@@ -709,11 +709,11 @@ index 00000000000..5b9bdfda114
 +#define CompressionSessionInvalidate VTCompressionSessionInvalidate
 +
 +#endif
-diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/VideoProcessingSoftLink.cpp b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/VideoProcessingSoftLink.cpp
+diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/VideoProcessingSoftLink.cpp b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/VideoProcessingSoftLink.cpp
 new file mode 100644
 index 00000000000..101e87c6677
 --- /dev/null
-+++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/VideoProcessingSoftLink.cpp
++++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/VideoProcessingSoftLink.cpp
 @@ -0,0 +1,78 @@
 +/*
 + * Copyright (C) 2018 Apple Inc. All rights reserved.
@@ -793,11 +793,11 @@ index 00000000000..101e87c6677
 +SOFT_LINK_FUNCTION_FOR_SOURCE(webrtc, VideoProcessing, VPModuleInitialize, void, (), ())
 +
 +#endif // ENABLE_VCP_ENCODER
-diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/VideoProcessingSoftLink.h b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/VideoProcessingSoftLink.h
+diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/VideoProcessingSoftLink.h b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/VideoProcessingSoftLink.h
 new file mode 100644
 index 00000000000..cf866d8a8db
 --- /dev/null
-+++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/VideoProcessingSoftLink.h
++++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/VideoProcessingSoftLink.h
 @@ -0,0 +1,140 @@
 +/*
 + * Copyright (C) 2018 Apple Inc. All rights reserved.
@@ -939,11 +939,11 @@ index 00000000000..cf866d8a8db
 +#endif // ENABLE_VCP_ENCODER
 +
 +#endif // __APPLE__
-diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/WebKitUtilities.h b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/WebKitUtilities.h
+diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/CyberKitUtilities.h b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/CyberKitUtilities.h
 new file mode 100644
 index 00000000000..ef1456eddd3
 --- /dev/null
-+++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/WebKitUtilities.h
++++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/CyberKitUtilities.h
 @@ -0,0 +1,53 @@
 +/*
 + * Copyright (C) 2018-2021 Apple Inc. All rights reserved.
@@ -983,10 +983,10 @@ index 00000000000..ef1456eddd3
 +
 +class VideoFrame;
 +
-+enum class WebKitH265 { Off, On };
-+enum class WebKitVP9 { Off, Profile0, Profile0And2 };
-+enum class WebKitVP9VTB { Off, On };
-+enum class WebKitH264LowLatency { Off, On };
++enum class CyberKitH265 { Off, On };
++enum class CyberKitVP9 { Off, Profile0, Profile0And2 };
++enum class CyberKitVP9VTB { Off, On };
++enum class CyberKitH264LowLatency { Off, On };
 +
 +void setApplicationStatus(bool isActive);
 +
@@ -998,11 +998,11 @@ index 00000000000..ef1456eddd3
 +rtc::scoped_refptr<webrtc::VideoFrameBuffer> pixelBufferToFrame(CVPixelBufferRef);
 +
 +}
-diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/WebKitUtilities.mm b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/WebKitUtilities.mm
+diff --git a/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/CyberKitUtilities.mm b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/CyberKitUtilities.mm
 new file mode 100644
 index 00000000000..65eefa36f2d
 --- /dev/null
-+++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/WebKit/WebKitUtilities.mm
++++ b/Source/ThirdParty/libwebrtc/Source/webrtc/sdk/CyberKit/CyberKitUtilities.mm
 @@ -0,0 +1,178 @@
 +/*
 + * Copyright (C) 2018-2021 Apple Inc. All rights reserved.
@@ -1029,7 +1029,7 @@ index 00000000000..65eefa36f2d
 + * THE POSSIBILITY OF SUCH DAMAGE.
 + */
 +
-+#include "WebKitUtilities.h"
++#include "CyberKitUtilities.h"
 +
 +#include "api/video/video_frame.h"
 +#include "native/src/objc_frame_buffer.h"
@@ -1890,8 +1890,8 @@ index f6690b6d861..a14357fb80c 100644
  #include "third_party/libyuv/include/libyuv/convert_from.h"
  
 -@interface RTCVideoEncoderH264 ()
-+#include "sdk/WebKit/EncoderUtilities.h"
-+#include "sdk/WebKit/WebKitUtilities.h"
++#include "sdk/CyberKit/EncoderUtilities.h"
++#include "sdk/CyberKit/CyberKitUtilities.h"
 +
 +#import <dlfcn.h>
 +#import <objc/runtime.h>
@@ -2514,7 +2514,7 @@ index 0683ea79e56..0c669e8bce6 100644
  #include <VideoToolbox/VideoToolbox.h>
  #include <string>
  
-+#include "sdk/WebKit/EncoderUtilities.h"
++#include "sdk/CyberKit/EncoderUtilities.h"
 +
  // Convenience function for creating a dictionary.
  inline CFDictionaryRef CreateCFTypeDictionary(CFTypeRef* keys,

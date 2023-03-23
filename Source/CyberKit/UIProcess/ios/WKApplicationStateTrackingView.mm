@@ -37,7 +37,7 @@
 
 @implementation WKApplicationStateTrackingView {
     WeakObjCPtr<WKWebView> _webViewToTrack;
-    std::unique_ptr<WebKit::ApplicationStateTracker> _applicationStateTracker;
+    std::unique_ptr<CyberKit::ApplicationStateTracker> _applicationStateTracker;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame webView:(WKWebView *)webView
@@ -67,7 +67,7 @@
     auto page = [_webViewToTrack _page];
     bool lastObservedStateWasBackground = page ? page->lastObservedStateWasBackground() : false;
 
-    _applicationStateTracker = makeUnique<WebKit::ApplicationStateTracker>(self, @selector(_applicationDidEnterBackground), @selector(_applicationDidFinishSnapshottingAfterEnteringBackground), @selector(_applicationWillEnterForeground), @selector(_willBeginSnapshotSequence), @selector(_didCompleteSnapshotSequence));
+    _applicationStateTracker = makeUnique<CyberKit::ApplicationStateTracker>(self, @selector(_applicationDidEnterBackground), @selector(_applicationDidFinishSnapshottingAfterEnteringBackground), @selector(_applicationWillEnterForeground), @selector(_willBeginSnapshotSequence), @selector(_didCompleteSnapshotSequence));
     RELEASE_LOG(ViewState, "%p - WKApplicationStateTrackingView: View with page [%p, pageProxyID=%" PRIu64 "] was added to a window, _lastObservedStateWasBackground=%d, isNowBackground=%d", self, page.get(), page ? page->identifier().toUInt64() : 0, lastObservedStateWasBackground, [self isBackground]);
 
     if (lastObservedStateWasBackground && ![self isBackground])
@@ -99,7 +99,7 @@
         return;
 
     page->applicationWillEnterForeground();
-    page->activityStateDidChange(CyberCore::ActivityState::allFlags() - CyberCore::ActivityState::IsInWindow, WebKit::WebPageProxy::ActivityStateChangeDispatchMode::Immediate, WebKit::WebPageProxy::ActivityStateChangeReplyMode::Synchronous);
+    page->activityStateDidChange(CyberCore::ActivityState::allFlags() - CyberCore::ActivityState::IsInWindow, CyberKit::WebPageProxy::ActivityStateChangeDispatchMode::Immediate, CyberKit::WebPageProxy::ActivityStateChangeReplyMode::Synchronous);
 }
 
 - (void)_willBeginSnapshotSequence

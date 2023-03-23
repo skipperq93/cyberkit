@@ -27,7 +27,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TextIteratorBehavior : uint16_t {
     // Used by selection preservation code. There should be one character emitted between every VisiblePosition
@@ -69,4 +69,4 @@ enum class TextIteratorBehavior : uint16_t {
 
 using TextIteratorBehaviors = OptionSet<TextIteratorBehavior>;
 
-} // namespace WebCore
+} // namespace CyberCore

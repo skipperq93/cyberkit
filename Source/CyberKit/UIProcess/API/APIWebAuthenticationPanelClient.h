@@ -47,11 +47,11 @@ class WebAuthenticationPanelClient {
 public:
     virtual ~WebAuthenticationPanelClient() = default;
 
-    virtual void updatePanel(WebKit::WebAuthenticationStatus) const { }
-    virtual void dismissPanel(WebKit::WebAuthenticationResult) const { }
+    virtual void updatePanel(CyberKit::WebAuthenticationStatus) const { }
+    virtual void dismissPanel(CyberKit::WebAuthenticationResult) const { }
     virtual void requestPin(uint64_t, CompletionHandler<void(const WTF::String&)>&& completionHandler) const { completionHandler(WTF::String()); }
-    virtual void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, WebKit::WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler) const { completionHandler(nullptr); }
-    virtual void decidePolicyForLocalAuthenticator(CompletionHandler<void(WebKit::LocalAuthenticatorPolicy)>&& completionHandler) const { completionHandler(WebKit::LocalAuthenticatorPolicy::Disallow); }
+    virtual void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, CyberKit::WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler) const { completionHandler(nullptr); }
+    virtual void decidePolicyForLocalAuthenticator(CompletionHandler<void(CyberKit::LocalAuthenticatorPolicy)>&& completionHandler) const { completionHandler(CyberKit::LocalAuthenticatorPolicy::Disallow); }
     virtual void requestLAContextForUserVerification(CompletionHandler<void(LAContext *)>&& completionHandler) const { completionHandler(nullptr); }
 };
 

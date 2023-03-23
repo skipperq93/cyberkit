@@ -29,7 +29,7 @@
 
 #include "VirtualAuthenticatorConfiguration.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 uint8_t flagsForConfig(const VirtualAuthenticatorConfiguration&);
 RetainPtr<SecKeyRef> createPrivateKey();
@@ -38,6 +38,6 @@ String base64PrivateKey(RetainPtr<SecKeyRef> privateKey);
 RetainPtr<SecKeyRef> privateKeyFromBase64(const String& base64PrivateKey);
 Vector<uint8_t> signatureForPrivateKey(RetainPtr<SecKeyRef> privateKey, const Vector<uint8_t>& authData, const Vector<uint8_t>& clientDataHash);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

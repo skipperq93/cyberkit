@@ -28,7 +28,7 @@
 #include "EditCommand.h"
 #include "QualifiedName.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SetNodeAttributeCommand : public SimpleEditCommand {
 public:
@@ -53,4 +53,4 @@ private:
     AtomString m_oldValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

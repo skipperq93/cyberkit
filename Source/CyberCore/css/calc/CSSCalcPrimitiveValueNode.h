@@ -27,7 +27,7 @@
 
 #include "CSSCalcExpressionNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class CSSToLengthConversionData;
@@ -85,4 +85,4 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CSSCALCEXPRESSION_NODE(CSSCalcPrimitiveValueNode, type() == WebCore::CSSCalcExpressionNode::Type::CssCalcPrimitiveValue)
+SPECIALIZE_TYPE_TRAITS_CSSCALCEXPRESSION_NODE(CSSCalcPrimitiveValueNode, type() == CyberCore::CSSCalcExpressionNode::Type::CssCalcPrimitiveValue)

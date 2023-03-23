@@ -530,17 +530,17 @@ set(CyberKit_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
 set(CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
 set(CyberKit_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/DerivedSources/CyberKit")
 
-set(JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/JavaScriptCoreGLib/Headers")
-set(JavaScriptCoreGLib_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/JavaScriptCoreGLib/DerivedSources")
+set(CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/CyberScriptCoreGLib/Headers")
+set(CyberScriptCoreGLib_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/CyberScriptCoreGLib/DerivedSources")
 
 set(CyberKitGTK_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/CyberKitGTK/Headers")
 set(CyberKitGTK_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/CyberKitGTK/DerivedSources")
 
-set(JavaScriptCore_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/JavaScriptCore/javascriptcoregtk-${WEBKITGTK_API_VERSION}.pc)
+set(CyberScriptCore_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberScriptCore/javascriptcoregtk-${WEBKITGTK_API_VERSION}.pc)
 set(CyberKitGTK_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberKit/webkit${WEBKITGTK_API_INFIX}gtk-${WEBKITGTK_API_VERSION}.pc)
 set(CyberKitGTKWebExtension_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberKit/webkit${WEBKITGTK_API_INFIX}gtk-web-extension-${WEBKITGTK_API_VERSION}.pc)
 
-set(JavaScriptCore_LIBRARY_TYPE SHARED)
+set(CyberScriptCore_LIBRARY_TYPE SHARED)
 set(SHOULD_INSTALL_JS_SHELL ON)
 
 # Add a typelib file to the list of all typelib dependencies. This makes it easy to

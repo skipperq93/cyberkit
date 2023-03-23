@@ -37,7 +37,7 @@
 #include "RenderListItem.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -202,4 +202,4 @@ AccessibilityRole AccessibilityList::roleValue() const
     return m_role;
 }
     
-} // namespace WebCore
+} // namespace CyberCore

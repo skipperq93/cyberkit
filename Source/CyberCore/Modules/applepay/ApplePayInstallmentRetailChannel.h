@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLE_PAY_INSTALLMENTS)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayInstallmentRetailChannel : uint8_t {
     Unknown,
@@ -36,6 +36,6 @@ enum class ApplePayInstallmentRetailChannel : uint8_t {
     InStore,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_INSTALLMENTS)

@@ -44,7 +44,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CanvasRenderingContext);
 
@@ -200,4 +200,4 @@ void CanvasRenderingContext::checkOrigin(const CSSStyleImageValue&)
     m_canvas.setOriginTainted();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

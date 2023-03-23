@@ -30,7 +30,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBDatabaseNameAndVersionRequest);
 
@@ -75,4 +75,4 @@ void IDBDatabaseNameAndVersionRequest::stop()
     ASSERT(canCurrentThreadAccessThreadLocalData(originThread()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

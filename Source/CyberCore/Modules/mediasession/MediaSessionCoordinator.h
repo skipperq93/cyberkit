@@ -35,7 +35,7 @@
 #include <wtf/Logger.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class DOMPromiseDeferred;
 
@@ -102,7 +102,7 @@ private:
     void playSession(std::optional<double> atTime, std::optional<MonotonicTime> hostTime, CompletionHandler<void(bool)>&&) final;
     void pauseSession(CompletionHandler<void(bool)>&&) final;
     void setSessionTrack(const String&, CompletionHandler<void(bool)>&&) final;
-    void coordinatorStateChanged(WebCore::MediaSessionCoordinatorState) final;
+    void coordinatorStateChanged(CyberCore::MediaSessionCoordinatorState) final;
 
     bool currentPositionApproximatelyEqualTo(double) const;
 

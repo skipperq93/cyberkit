@@ -35,7 +35,7 @@
 #include "LayoutInitialContainingBlock.h"
 #include "LayoutState.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static bool isQuirkContainer(const ElementBox& layoutBox)

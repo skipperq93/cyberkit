@@ -29,7 +29,7 @@
 
 #include "PlatformVideoColorPrimaries.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using VideoColorPrimaries = PlatformVideoColorPrimaries;
 

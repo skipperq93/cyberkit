@@ -30,7 +30,7 @@
 #include "Connection.h"
 #include "WorkQueueMessageReceiver.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class SecItemRequestData;
 class SecItemResponseData;
@@ -56,6 +56,6 @@ private:
     Ref<WorkQueue> m_queue;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SEC_ITEM_SHIM)

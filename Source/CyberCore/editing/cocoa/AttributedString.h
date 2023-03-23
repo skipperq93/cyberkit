@@ -30,11 +30,11 @@
 OBJC_CLASS NSAttributedString;
 OBJC_CLASS NSDictionary;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AttributedString {
     RetainPtr<NSAttributedString> string;
     RetainPtr<NSDictionary> documentAttributes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

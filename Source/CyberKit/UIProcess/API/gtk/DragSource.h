@@ -41,7 +41,7 @@ typedef struct _GdkDrag GdkDrag;
 typedef struct _GdkDragContext GdkDragContext;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class ShareableBitmap;
 
@@ -64,6 +64,6 @@ private:
     std::optional<CyberCore::SelectionData> m_selectionData;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DRAG_SUPPORT)

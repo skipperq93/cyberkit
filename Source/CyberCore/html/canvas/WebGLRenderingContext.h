@@ -30,7 +30,7 @@
 #include "WebGLRenderingContextBase.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLRenderingContext final : public WebGLRenderingContextBase {
     WTF_MAKE_ISO_ALLOCATED(WebGLRenderingContext);
@@ -66,8 +66,8 @@ private:
     WebGLRenderingContext(CanvasBase&, Ref<GraphicsContextGL>&&, GraphicsContextGLAttributes);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::WebGLRenderingContext, isWebGL1())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::WebGLRenderingContext, isWebGL1())
 
 #endif

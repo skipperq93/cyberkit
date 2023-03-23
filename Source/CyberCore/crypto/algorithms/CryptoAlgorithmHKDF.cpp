@@ -33,7 +33,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CryptoAlgorithm> CryptoAlgorithmHKDF::create()
 {
@@ -81,6 +81,6 @@ ExceptionOr<size_t> CryptoAlgorithmHKDF::getKeyLength(const CryptoAlgorithmParam
     return 0;
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

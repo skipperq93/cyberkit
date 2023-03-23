@@ -34,7 +34,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BasicCredential : public RefCounted<BasicCredential> {
 public:
@@ -64,11 +64,11 @@ private:
     Discovery m_discovery;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_BASIC_CREDENTIAL(ToClassName, Type) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::BasicCredential& credential) { return credential.credentialType() == WebCore::Type; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::BasicCredential& credential) { return credential.credentialType() == CyberCore::Type; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEB_AUTHN)

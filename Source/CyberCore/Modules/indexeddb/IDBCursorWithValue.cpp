@@ -29,7 +29,7 @@
 #include <CyberScriptCore/HeapInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBCursorWithValue);
 
@@ -55,4 +55,4 @@ IDBCursorWithValue::IDBCursorWithValue(IDBIndex& index, const IDBCursorInfo& inf
 
 IDBCursorWithValue::~IDBCursorWithValue() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

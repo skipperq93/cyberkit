@@ -40,7 +40,7 @@ class BuiltinsGeneratorTests:
 
     def generate_from_js_builtins(self, builtins_files, output_directory, framework_name="", combined_outputs=False, generate_wrappers=False):
         cmd = [sys.executable,
-               'JavaScriptCore/Scripts/generate-js-builtins.py',
+               'CyberScriptCore/Scripts/generate-js-builtins.py',
                '--output-directory', output_directory,
                '--force',
                '--framework', framework_name,
@@ -157,8 +157,8 @@ class BuiltinsGeneratorTests:
 
         all_tests_passed = True
 
-        input_directory = os.path.join('JavaScriptCore', 'Scripts', 'tests', 'builtins')
-        reference_directory = os.path.join('JavaScriptCore', 'Scripts', 'tests', 'builtins', 'expected')
+        input_directory = os.path.join('CyberScriptCore', 'Scripts', 'tests', 'builtins')
+        reference_directory = os.path.join('CyberScriptCore', 'Scripts', 'tests', 'builtins', 'expected')
         if not self.run_tests(input_directory, reference_directory):
             all_tests_passed = False
 

@@ -31,7 +31,7 @@
 function injectModule(InjectedScriptHost, inspectedGlobalObject, injectedScriptId, injectedScript, {RemoteObject, CommandLineAPI}, CommandLineAPIHost)
 {
 
-// FIXME: <webkit.org/b/239774> Injected script should use WebCore built-ins.
+// FIXME: <webkit.org/b/239774> Injected script should use CyberCore built-ins.
 
 injectedScript._inspectObject = function(object) {
     if (arguments.length === 0)

@@ -36,7 +36,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class SQLError;
@@ -77,4 +77,4 @@ private:
     int m_permissions;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

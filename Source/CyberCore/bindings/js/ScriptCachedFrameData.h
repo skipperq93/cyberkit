@@ -34,7 +34,7 @@
 #include <CyberScriptCore/Strong.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class JSDOMWindow;
@@ -54,4 +54,4 @@ private:
     JSDOMWindowSet m_windows;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

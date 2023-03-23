@@ -40,7 +40,7 @@ static String displayNameForLocalFiles()
     return WEB_UI_STRING("Local documents on your computer", "'Website' name displayed when local documents have stored local data");
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 String WebsiteDataRecord::displayNameForCookieHostName(const String& hostName)
 {

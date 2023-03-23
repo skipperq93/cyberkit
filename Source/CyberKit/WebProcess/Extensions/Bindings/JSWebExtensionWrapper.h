@@ -29,13 +29,13 @@
 
 #include "WebFrame.h"
 #include <CyberScriptCore/JSRetainPtr.h>
-#include <CyberScriptCore/JavaScriptCore.h>
+#include <CyberScriptCore/CyberScriptCore.h>
 #include <wtf/WeakPtr.h>
 
 OBJC_CLASS JSValue;
 OBJC_CLASS NSString;
 
-namespace WebKit {
+namespace CyberKit {
 
 class JSWebExtensionWrappable;
 class WebExtensionAPIRuntimeBase;
@@ -192,11 +192,11 @@ NSString *serializeJSObject(JSContextRef, JSValueRef, JSValueRef* exception);
 
 #endif // __OBJC__
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #ifdef __OBJC__
 
-@interface JSValue (WebKitExtras)
+@interface JSValue (CyberKitExtras)
 - (NSString *)_toJSONString;
 - (NSString *)_toSortedJSONString;
 

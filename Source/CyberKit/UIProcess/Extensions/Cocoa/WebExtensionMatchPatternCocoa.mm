@@ -39,7 +39,7 @@
 #import <wtf/URLParser.h>
 #import <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace WTF;
 using namespace CyberCore;
@@ -427,6 +427,6 @@ NSSet *toAPI(MatchPatternSet& set)
     return [result copy];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

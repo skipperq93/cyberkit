@@ -34,7 +34,7 @@
 #include "TableFormattingContext.h"
 #include "TableFormattingQuirks.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 TableFormattingGeometry::TableFormattingGeometry(const TableFormattingContext& tableFormattingContext)

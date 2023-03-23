@@ -40,7 +40,7 @@
 #include "ReadableStreamSource.h"
 #include <CyberScriptCore/ArrayBufferView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FetchBody::~FetchBody() = default;
 

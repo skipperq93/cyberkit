@@ -9,10 +9,10 @@ if (ENABLE_REMOTE_INSPECTOR)
 endif ()
 
 if (USE_GLIB)
-    list(APPEND JavaScriptCore_SYSTEM_INCLUDE_DIRECTORIES
+    list(APPEND CyberScriptCore_SYSTEM_INCLUDE_DIRECTORIES
         ${GLIB_INCLUDE_DIRS}
     )
-    list(APPEND JavaScriptCore_LIBRARIES
+    list(APPEND CyberScriptCore_LIBRARIES
         ${GLIB_LIBRARIES}
     )
 endif ()

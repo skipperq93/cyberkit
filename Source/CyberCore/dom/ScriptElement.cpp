@@ -64,7 +64,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/SystemTracing.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const auto maxUserGesturePropagationTime = 1_s;
 

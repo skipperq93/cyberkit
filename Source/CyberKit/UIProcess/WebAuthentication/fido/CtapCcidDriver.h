@@ -31,7 +31,7 @@
 #include "CtapDriver.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // The following implements the CTAP NFC protocol:
 // https://fidoalliance.org/specs/fido-v2.0-ps-20190130/fido-client-to-authenticator-protocol-v2.0-ps-20190130.html#nfc
@@ -47,6 +47,6 @@ private:
     Ref<CcidConnection> m_connection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

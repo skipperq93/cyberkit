@@ -32,7 +32,7 @@
 #include <wtf/Markable.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PseudoId : uint16_t;
 
@@ -62,5 +62,5 @@ String pseudoIdAsString(PseudoId);
 ExceptionOr<PseudoId> pseudoIdFromString(const String&);
 AtomString animatablePropertyAsString(AnimatableProperty);
 
-} // namespace WebCore
+} // namespace CyberCore
 

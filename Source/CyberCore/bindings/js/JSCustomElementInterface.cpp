@@ -47,7 +47,7 @@
 #include <CyberScriptCore/JSLock.h>
 #include <CyberScriptCore/WeakInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSCustomElementInterface::JSCustomElementInterface(const QualifiedName& name, JSObject* constructor, JSDOMGlobalObject* globalObject)
@@ -439,4 +439,4 @@ void JSCustomElementInterface::visitJSFunctions(Visitor& visitor) const
 template void JSCustomElementInterface::visitJSFunctions(JSC::AbstractSlotVisitor&) const;
 template void JSCustomElementInterface::visitJSFunctions(JSC::SlotVisitor&) const;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "RenderElement.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RemoveNodeCommand::RemoveNodeCommand(Ref<Node>&& node, ShouldAssumeContentIsAlwaysEditable shouldAssumeContentIsAlwaysEditable, EditAction editingAction)
     : SimpleEditCommand(node->document(), editingAction)

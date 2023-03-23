@@ -117,7 +117,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -681,7 +681,7 @@ String AccessibilityRenderObject::textUnderElement(AccessibilityTextUnderElement
 
         if (nodeDocument && textRange) {
             if (Frame* frame = nodeDocument->frame()) {
-                // catch stale WebCoreAXObject (see <rdar://problem/3960196>)
+                // catch stale CyberCoreAXObject (see <rdar://problem/3960196>)
                 if (frame->document() != nodeDocument)
                     return { };
 
@@ -1979,8 +1979,8 @@ Widget* AccessibilityRenderObject::widgetForAttachmentView() const
     return downcast<RenderWidget>(*m_renderer).widget();
 }
 
-// This function is like a cross-platform version of - (WebCoreTextMarkerRange*)textMarkerRange. It returns
-// a Range that we can convert to a WebCoreTextMarkerRange in the Obj-C file
+// This function is like a cross-platform version of - (CyberCoreTextMarkerRange*)textMarkerRange. It returns
+// a Range that we can convert to a CyberCoreTextMarkerRange in the Obj-C file
 VisiblePositionRange AccessibilityRenderObject::visiblePositionRange() const
 {
     if (!m_renderer)
@@ -2049,7 +2049,7 @@ VisiblePosition AccessibilityRenderObject::visiblePositionForIndex(int index) co
 
 #if USE(ATSPI)
     // We need to consider replaced elements for GTK, as they will be presented with the 'object replacement character' (0xFFFC).
-    return WebCore::visiblePositionForIndex(index, node, TextIteratorBehavior::EmitsObjectReplacementCharacters);
+    return CyberCore::visiblePositionForIndex(index, node, TextIteratorBehavior::EmitsObjectReplacementCharacters);
 #else
     return visiblePositionForIndexUsingCharacterIterator(*node, index);
 #endif
@@ -2077,7 +2077,7 @@ int AccessibilityRenderObject::indexForVisiblePosition(const VisiblePosition& po
     behaviors.add(TextIteratorBehavior::EmitsObjectReplacementCharacters);
 #endif
 
-    return WebCore::indexForVisiblePosition(*node, position, behaviors);
+    return CyberCore::indexForVisiblePosition(*node, position, behaviors);
 }
 
 Element* AccessibilityRenderObject::rootEditableElementForPosition(const Position& position) const
@@ -3587,4 +3587,4 @@ bool AccessibilityRenderObject::isIgnoredElementWithinMathTree() const
 }
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore

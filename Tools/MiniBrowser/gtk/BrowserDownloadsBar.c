@@ -92,7 +92,7 @@ GtkWidget *browser_downloads_bar_new()
 struct _BrowserDownload {
     GtkBox parent;
 
-    WebKitDownload *download;
+    CyberKitDownload *download;
     guint64 contentLength;
     guint64 downloadedSize;
     gboolean finished;
@@ -179,9 +179,9 @@ static void browser_download_class_init(BrowserDownloadClass *klass)
     objectClass->finalize = browserDownloadFinalize;
 }
 
-static void downloadReceivedResponse(WebKitDownload *download, GParamSpec *paramSpec, BrowserDownload *browserDownload)
+static void downloadReceivedResponse(CyberKitDownload *download, GParamSpec *paramSpec, BrowserDownload *browserDownload)
 {
-    WebKitURIResponse *response = webkit_download_get_response(download);
+    CyberKitURIResponse *response = webkit_download_get_response(download);
     browserDownload->contentLength = webkit_uri_response_get_content_length(response);
     char *text = g_strdup_printf("Downloading %s", webkit_uri_response_get_uri(response));
     gtk_label_set_text(GTK_LABEL(browserDownload->statusLabel), text);
@@ -217,7 +217,7 @@ static gchar *remainingTime(BrowserDownload *browserDownload)
     return g_strdup_printf (ngettext ("%u second left", "%u seconds left", secs), secs);
 }
 
-static void downloadProgress(WebKitDownload *download, GParamSpec *paramSpec, BrowserDownload *browserDownload)
+static void downloadProgress(CyberKitDownload *download, GParamSpec *paramSpec, BrowserDownload *browserDownload)
 {
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(browserDownload->progressBar),
                                   webkit_download_get_estimated_progress(download));
@@ -226,12 +226,12 @@ static void downloadProgress(WebKitDownload *download, GParamSpec *paramSpec, Br
     g_free(remaining);
 }
 
-static void downloadReceivedData(WebKitDownload *download, guint64 dataLength, BrowserDownload *browserDownload)
+static void downloadReceivedData(CyberKitDownload *download, guint64 dataLength, BrowserDownload *browserDownload)
 {
     browserDownload->downloadedSize += dataLength;
 }
 
-static void downloadFinished(WebKitDownload *download, BrowserDownload *browserDownload)
+static void downloadFinished(CyberKitDownload *download, BrowserDownload *browserDownload)
 {
     gchar *text = g_strdup_printf("Download completed: %s", webkit_download_get_destination(download));
     gtk_label_set_text(GTK_LABEL(browserDownload->statusLabel), text);
@@ -242,7 +242,7 @@ static void downloadFinished(WebKitDownload *download, BrowserDownload *browserD
     browserDownload->finished = TRUE;
 }
 
-static void downloadFailed(WebKitDownload *download, GError *error, BrowserDownload *browserDownload)
+static void downloadFailed(CyberKitDownload *download, GError *error, BrowserDownload *browserDownload)
 {
     g_signal_handlers_disconnect_by_func(browserDownload->download, downloadFinished, browserDownload);
     if (g_error_matches(error, WEBKIT_DOWNLOAD_ERROR, WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER)) {
@@ -257,7 +257,7 @@ static void downloadFailed(WebKitDownload *download, GError *error, BrowserDownl
     gtk_widget_set_sensitive(browserDownload->actionButton, FALSE);
 }
 
-GtkWidget *browserDownloadNew(WebKitDownload *download)
+GtkWidget *browserDownloadNew(CyberKitDownload *download)
 {
     BrowserDownload *browserDownload = BROWSER_DOWNLOAD(g_object_new(BROWSER_TYPE_DOWNLOAD,
                                                                      "orientation", GTK_ORIENTATION_VERTICAL,
@@ -273,7 +273,7 @@ GtkWidget *browserDownloadNew(WebKitDownload *download)
     return GTK_WIDGET(browserDownload);
 }
 
-void browser_downloads_bar_add_download(BrowserDownloadsBar *downloadsBar, WebKitDownload *download)
+void browser_downloads_bar_add_download(BrowserDownloadsBar *downloadsBar, CyberKitDownload *download)
 {
     GtkWidget *browserDownload = browserDownloadNew(download);
     GtkWidget *contentBox = gtk_info_bar_get_content_area(GTK_INFO_BAR(downloadsBar));

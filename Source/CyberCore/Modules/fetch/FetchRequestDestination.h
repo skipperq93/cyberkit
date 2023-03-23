@@ -27,7 +27,7 @@
 
 #include "FetchOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using FetchRequestDestination = FetchOptions::Destination;
 

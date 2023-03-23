@@ -30,7 +30,7 @@
 #include "WorkerFileSystemStorageConnectionCallbackIdentifier.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WeakPtrImplWithEventTargetData;
 class FileHandle;
@@ -93,8 +93,8 @@ private:
     HashMap<FileSystemSyncAccessHandleIdentifier, WeakPtr<FileSystemSyncAccessHandle>> m_syncAccessHandles;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WorkerFileSystemStorageConnection)
-    static bool isType(const WebCore::FileSystemStorageConnection& connection) { return connection.isWorker(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WorkerFileSystemStorageConnection)
+    static bool isType(const CyberCore::FileSystemStorageConnection& connection) { return connection.isWorker(); }
 SPECIALIZE_TYPE_TRAITS_END()

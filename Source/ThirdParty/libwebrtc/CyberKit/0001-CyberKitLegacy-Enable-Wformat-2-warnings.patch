@@ -21,12 +21,12 @@ Reviewed by NOBODY (OOPS!).
 (vpx_internal_error):
 - Apply LIBVPX_FORMAT_PRINTF() macro to this function to fix
   -Wformat-nonliteral warnings.
-* WebKit/0001-CyberKitLegacy-Enable-Wformat-2-warnings.patch: Add.
+* CyberKit/0001-CyberKitLegacy-Enable-Wformat-2-warnings.patch: Add.
 ---
  .../third_party/libsrtp/crypto/include/err.h  | 12 ++++-
  .../libvpx/vpx/internal/vpx_codec_internal.h  | 12 ++++-
  5 files changed, 96 insertions(+), 3 deletions(-)
- create mode 100644 Source/ThirdParty/libwebrtc/WebKit/0001-CyberKitLegacy-Enable-Wformat-2-warnings.patch
+ create mode 100644 Source/ThirdParty/libwebrtc/CyberKit/0001-CyberKitLegacy-Enable-Wformat-2-warnings.patch
 
 diff --git a/Source/ThirdParty/libwebrtc/Source/third_party/libsrtp/crypto/include/err.h b/Source/ThirdParty/libwebrtc/Source/third_party/libsrtp/crypto/include/err.h
 index 326f5e96b77c..f155bb982ff2 100644

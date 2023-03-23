@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebViewDidMoveToWindowObserver : public CanMakeWeakPtr<WebViewDidMoveToWindowObserver> {
 public:
@@ -36,4 +36,4 @@ public:
     virtual void webViewDidMoveToWindow() = 0;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

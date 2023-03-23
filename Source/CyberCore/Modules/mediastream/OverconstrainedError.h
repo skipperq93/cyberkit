@@ -33,7 +33,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class OverconstrainedError  : public RefCounted<OverconstrainedError> {
 public:
@@ -58,6 +58,6 @@ private:
     String m_message;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

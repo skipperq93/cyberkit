@@ -32,7 +32,7 @@
 #include <wtf/RefPtr.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 

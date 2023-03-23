@@ -34,7 +34,7 @@
 #import "Element.h"
 #import "FrameDestructionObserverInlines.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Need to refactor and figure out how to handle the flipping in a more sensible way so we can
 // use the default DataTransfer::dragImage from DataTransfer.cpp. Note also that this handles cases that

@@ -28,7 +28,7 @@
 #import "AppDelegate.h"
 #import "SettingsController.h"
 #import <CyberKit/WebInspector.h>
-#import <CyberKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <CyberKit/WebNSURLExtras.h>
 #import <CyberKit/WebPreferences.h>
 #import <CyberKit/WebPreferencesPrivate.h>

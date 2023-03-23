@@ -18,32 +18,32 @@
  */
 
 #include "config.h"
-#include "WebKitNavigationClient.h"
+#include "CyberKitNavigationClient.h"
 
 #include "APINavigationAction.h"
 #include "APINavigationClient.h"
 #include "FrameInfoData.h"
-#include "WebKitBackForwardListPrivate.h"
-#include "WebKitDownloadPrivate.h"
-#include "WebKitNavigationPolicyDecisionPrivate.h"
-#include "WebKitPrivate.h"
-#include "WebKitResponsePolicyDecisionPrivate.h"
-#include "WebKitURIResponsePrivate.h"
-#include "WebKitWebContextPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitBackForwardListPrivate.h"
+#include "CyberKitDownloadPrivate.h"
+#include "CyberKitNavigationPolicyDecisionPrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitResponsePolicyDecisionPrivate.h"
+#include "CyberKitURIResponsePrivate.h"
+#include "CyberKitWebContextPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/CString.h>
 
 #if ENABLE(2022_GLIB_API)
-#include "WebKitNetworkSessionPrivate.h"
+#include "CyberKitNetworkSessionPrivate.h"
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 class NavigationClient : public API::NavigationClient {
 public:
-    explicit NavigationClient(WebKitWebView* webView)
+    explicit NavigationClient(CyberKitWebView* webView)
         : m_webView(webView)
     {
     }
@@ -64,7 +64,7 @@ private:
         if (!frameInfo.isMainFrame)
             return;
         GUniquePtr<GError> error(g_error_new_literal(g_quark_from_string(resourceError.domain().utf8().data()),
-            toWebKitError(resourceError.errorCode()), resourceError.localizedDescription().utf8().data()));
+            toCyberKitError(resourceError.errorCode()), resourceError.localizedDescription().utf8().data()));
         if (resourceError.tlsErrors()) {
             webkitWebViewLoadFailedWithTLSErrors(m_webView, resourceError.failingURL().string().utf8().data(), error.get(),
                 static_cast<GTlsCertificateFlags>(resourceError.tlsErrors()), resourceError.certificate());
@@ -87,7 +87,7 @@ private:
         if (!frameInfo.isMainFrame)
             return;
         GUniquePtr<GError> error(g_error_new_literal(g_quark_from_string(resourceError.domain().utf8().data()),
-            toWebKitError(resourceError.errorCode()), resourceError.localizedDescription().utf8().data()));
+            toCyberKitError(resourceError.errorCode()), resourceError.localizedDescription().utf8().data()));
         webkitWebViewLoadFailed(m_webView, WEBKIT_LOAD_COMMITTED, resourceError.failingURL().string().utf8().data(), error.get());
     }
 
@@ -136,26 +136,26 @@ private:
         return false;
     }
 
-    void processDidBecomeResponsive(WebKit::WebPageProxy&) override
+    void processDidBecomeResponsive(CyberKit::WebPageProxy&) override
     {
         webkitWebViewSetIsWebProcessResponsive(m_webView, true);
     }
 
-    void processDidBecomeUnresponsive(WebKit::WebPageProxy&) override
+    void processDidBecomeUnresponsive(CyberKit::WebPageProxy&) override
     {
         webkitWebViewSetIsWebProcessResponsive(m_webView, false);
     }
 
     void decidePolicyForNavigationAction(WebPageProxy&, Ref<API::NavigationAction>&& navigationAction, Ref<WebFramePolicyListenerProxy>&& listener) override
     {
-        WebKitPolicyDecisionType decisionType = navigationAction->targetFrame() ? WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION : WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION;
-        GRefPtr<WebKitPolicyDecision> decision = adoptGRef(webkitNavigationPolicyDecisionCreate(WTFMove(navigationAction), WTFMove(listener)));
+        CyberKitPolicyDecisionType decisionType = navigationAction->targetFrame() ? WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION : WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION;
+        GRefPtr<CyberKitPolicyDecision> decision = adoptGRef(webkitNavigationPolicyDecisionCreate(WTFMove(navigationAction), WTFMove(listener)));
         webkitWebViewMakePolicyDecision(m_webView, decisionType, decision.get());
     }
 
     void decidePolicyForNavigationResponse(WebPageProxy&, Ref<API::NavigationResponse>&& navigationResponse, Ref<WebFramePolicyListenerProxy>&& listener) override
     {
-        GRefPtr<WebKitPolicyDecision> decision = adoptGRef(webkitResponsePolicyDecisionCreate(WTFMove(navigationResponse), WTFMove(listener)));
+        GRefPtr<CyberKitPolicyDecision> decision = adoptGRef(webkitResponsePolicyDecisionCreate(WTFMove(navigationResponse), WTFMove(listener)));
         webkitWebViewMakePolicyDecision(m_webView, WEBKIT_POLICY_DECISION_TYPE_RESPONSE, decision.get());
     }
 
@@ -189,10 +189,10 @@ private:
 #endif
     }
 
-    WebKitWebView* m_webView;
+    CyberKitWebView* m_webView;
 };
 
-void attachNavigationClientToView(WebKitWebView* webView)
+void attachNavigationClientToView(CyberKitWebView* webView)
 {
     webkitWebViewGetPage(webView).setNavigationClient(makeUniqueRef<NavigationClient>(webView));
 }

@@ -34,7 +34,7 @@
 #include "CSSSelectorParser.h"
 #include "StyleRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSSupportsParser::SupportsResult CSSSupportsParser::supportsCondition(CSSParserTokenRange range, CSSParserImpl& parser, SupportsParsingMode mode)
 {
@@ -169,4 +169,4 @@ CSSSupportsParser::SupportsResult CSSSupportsParser::consumeConditionInParenthes
     return consumeSupportsFeatureOrGeneralEnclosed(innerRange);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

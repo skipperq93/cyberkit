@@ -42,7 +42,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 class SourceBuffer;
@@ -190,7 +190,7 @@ private:
 String convertEnumerationToString(MediaSource::EndOfStreamError);
 String convertEnumerationToString(MediaSource::ReadyState);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -198,16 +198,16 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::MediaSource::EndOfStreamError> {
-    static String toString(const WebCore::MediaSource::EndOfStreamError error)
+struct LogArgument<CyberCore::MediaSource::EndOfStreamError> {
+    static String toString(const CyberCore::MediaSource::EndOfStreamError error)
     {
         return convertEnumerationToString(error);
     }
 };
 
 template <>
-struct LogArgument<WebCore::MediaSource::ReadyState> {
-    static String toString(const WebCore::MediaSource::ReadyState state)
+struct LogArgument<CyberCore::MediaSource::ReadyState> {
+    static String toString(const CyberCore::MediaSource::ReadyState state)
     {
         return convertEnumerationToString(state);
     }

@@ -42,7 +42,7 @@ class ArrayBufferView;
 
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasGradient;
 class CanvasPattern;
@@ -210,4 +210,4 @@ public:
     static void recordAction(const HTMLCanvasElement&, String&&, ProcessedArguments&& = { });
 };
 
-} // namespace WebCore
+} // namespace CyberCore

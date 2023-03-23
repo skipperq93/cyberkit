@@ -36,7 +36,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_webrtc_endpoint_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_endpoint_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline void fillRTCStats(RTCStatsReport::Stats& stats, const GstStructure* structure)
 {
@@ -478,6 +478,6 @@ void GStreamerStatsCollector::getStats(CollectorCallback&& callback, GstPad* pad
     }, holder, reinterpret_cast<GDestroyNotify>(destroyCallbackHolder)));
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

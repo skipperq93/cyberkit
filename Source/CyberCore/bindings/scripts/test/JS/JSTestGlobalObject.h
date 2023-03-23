@@ -24,7 +24,7 @@
 #include "TestGlobalObject.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TestGlobalObject;
 
@@ -122,4 +122,4 @@ template<> struct JSDOMWrapperConverterTraits<TestGlobalObject> {
     using ToWrappedReturnType = TestGlobalObject*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

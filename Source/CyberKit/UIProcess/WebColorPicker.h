@@ -34,7 +34,7 @@ namespace CyberCore {
 class Color;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -66,6 +66,6 @@ protected:
     Client* m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INPUT_TYPE_COLOR)

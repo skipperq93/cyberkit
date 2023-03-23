@@ -44,7 +44,7 @@
 #include "PaymentRequest.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -266,4 +266,4 @@ bool WebInjectedScriptHost::isHTMLAllCollection(JSC::VM&, JSC::JSValue value)
     return value.inherits<JSHTMLAllCollection>();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

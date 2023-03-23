@@ -24,7 +24,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSRuleList::CSSRuleList() = default;
 
@@ -44,4 +44,4 @@ void StaticCSSRuleList::deref()
         delete this;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

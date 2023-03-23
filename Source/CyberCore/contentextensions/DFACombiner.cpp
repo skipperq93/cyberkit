@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -222,6 +222,6 @@ void DFACombiner::combineDFAs(unsigned minimumSize, const Function<void(DFA&&)>&
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

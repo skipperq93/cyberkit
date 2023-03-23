@@ -34,7 +34,7 @@
 #include <CyberCore/CrossOriginOpenerPolicy.h>
 #include <CyberCore/SWContextManager.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void BlobRegistryProxy::registerFileBlobURL(const URL& url, Ref<BlobDataFileReference>&& file, const String& path, const String& contentType)

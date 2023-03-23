@@ -32,7 +32,7 @@
 #include "WorkerOrWorkletThread.h"
 #include "WorkletParameters.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioWorkletGlobalScope;
 class AudioWorkletMessagingProxy;
@@ -64,6 +64,6 @@ private:
     WorkletParameters m_parameters;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -31,7 +31,7 @@
 
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSAspectRatioValue::customCSSText() const
 {

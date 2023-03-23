@@ -38,7 +38,7 @@
 #import <UIKit/UIPickerView.h>
 #import <wtf/RetainPtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 static const CGFloat minimumOptionFontSize = 12;
 

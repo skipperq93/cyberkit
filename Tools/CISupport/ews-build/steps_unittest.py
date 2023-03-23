@@ -54,7 +54,7 @@ from steps import (AddReviewerToCommitMessage, AnalyzeAPITestsResults, AnalyzeCo
                    KillOldProcesses, PrintConfiguration, PushCommitToCyberKitRepo, PushPullRequestBranch, ReRunAPITests, ReRunCyberKitPerlTests,
                    MapBranchAlias, ReRunCyberKitTests, RevertPullRequestChanges, RunAPITests, RunAPITestsWithoutChange, RunBindingsTests, RunBuildCyberKitOrgUnitTests,
                    RunBuildbotCheckConfigForBuildCyberKit, RunBuildbotCheckConfigForEWS, RunEWSUnitTests, RunResultsdbpyTests,
-                   RunJavaScriptCoreTests, RunJSCTestsWithoutChange, RunCyberKit1Tests, RunCyberKitPerlTests, RunCyberKitPyPython2Tests,
+                   RunCyberScriptCoreTests, RunJSCTestsWithoutChange, RunCyberKit1Tests, RunCyberKitPerlTests, RunCyberKitPyPython2Tests,
                    RunCyberKitPyPython3Tests, RunCyberKitTests, RunCyberKitTestsInStressMode, RunCyberKitTestsInStressGuardmallocMode,
                    RunCyberKitTestsWithoutChange, RunCyberKitTestsRedTree, RunCyberKitTestsRepeatFailuresRedTree, RunCyberKitTestsRepeatFailuresWithoutChangeRedTree,
                    RunCyberKitTestsWithoutChangeRedTree, AnalyzeLayoutTestsResultsRedTree, TestWithFailureCount, ShowIdentifier,
@@ -1515,7 +1515,7 @@ class TestCompileJSCWithoutChange(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunJavaScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'jsc_results.json'
@@ -1531,9 +1531,9 @@ class TestRunJavaScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def configureStep(self, platform=None, fullPlatform=None, configuration=None):
-        self.setupStep(RunJavaScriptCoreTests())
-        self.prefix = RunJavaScriptCoreTests.prefix
-        self.command_extra = RunJavaScriptCoreTests.command_extra
+        self.setupStep(RunCyberScriptCoreTests())
+        self.prefix = RunCyberScriptCoreTests.prefix
+        self.command_extra = RunCyberScriptCoreTests.command_extra
         if platform:
             self.setProperty('platform', platform)
         if fullPlatform:
@@ -3780,7 +3780,7 @@ class TestCheckChangeRelevance(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def test_relevant_jsc_patch(self):
-        file_names = ['JSTests/', 'Source/JavaScriptCore/', 'Source/WTF/', 'Source/bmalloc/', 'Makefile', 'Makefile.shared',
+        file_names = ['JSTests/', 'Source/CyberScriptCore/', 'Source/WTF/', 'Source/bmalloc/', 'Makefile', 'Makefile.shared',
                       'Source/Makefile', 'Source/Makefile.shared', 'Tools/Scripts/build-webkit', 'Tools/Scripts/build-jsc',
                       'Tools/Scripts/jsc-stress-test-helpers/', 'Tools/Scripts/run-jsc', 'Tools/Scripts/run-jsc-benchmarks',
                       'Tools/Scripts/run-jsc-stress-tests', 'Tools/Scripts/run-javascriptcore-tests', 'Tools/Scripts/run-layout-jsc',
@@ -3798,7 +3798,7 @@ class TestCheckChangeRelevance(BuildStepMixinAdditions, unittest.TestCase):
         return rc
 
     def test_relevant_jsc_arm64_patch(self):
-        file_names = ['JSTests/', 'Source/JavaScriptCore/', 'Source/WTF/', 'Source/bmalloc/', 'Makefile', 'Makefile.shared',
+        file_names = ['JSTests/', 'Source/CyberScriptCore/', 'Source/WTF/', 'Source/bmalloc/', 'Makefile', 'Makefile.shared',
                       'Source/Makefile', 'Source/Makefile.shared', 'Tools/Scripts/build-webkit', 'Tools/Scripts/build-jsc',
                       'Tools/Scripts/jsc-stress-test-helpers/', 'Tools/Scripts/run-jsc', 'Tools/Scripts/run-jsc-benchmarks',
                       'Tools/Scripts/run-jsc-stress-tests', 'Tools/Scripts/run-javascriptcore-tests', 'Tools/Scripts/run-layout-jsc',
@@ -3817,7 +3817,7 @@ class TestCheckChangeRelevance(BuildStepMixinAdditions, unittest.TestCase):
 
     def test_relevant_wk1_patch(self):
         file_names = ['Source/CyberKitLegacy', 'Source/CyberCore', 'Source/WebInspectorUI', 'Source/WebDriver', 'Source/WTF',
-                      'Source/bmalloc', 'Source/JavaScriptCore', 'Source/ThirdParty', 'LayoutTests', 'Tools']
+                      'Source/bmalloc', 'Source/CyberScriptCore', 'Source/ThirdParty', 'LayoutTests', 'Tools']
 
         self.setupStep(CheckChangeRelevance())
         self.setProperty('buildername', 'macOS-Catalina-Release-WK1-Tests-EWS')

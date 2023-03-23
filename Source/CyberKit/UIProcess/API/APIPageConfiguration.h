@@ -39,7 +39,7 @@ OBJC_PROTOCOL(_UIClickInteractionDriving);
 #include <wtf/RetainPtr.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 class VisitedLinkStore;
 class WebPageGroup;
 class WebPageProxy;
@@ -80,37 +80,37 @@ public:
     // FIXME: The configuration properties should return their default values
     // rather than nullptr.
     
-    WebKit::WebProcessPool* processPool();
-    void setProcessPool(WebKit::WebProcessPool*);
+    CyberKit::WebProcessPool* processPool();
+    void setProcessPool(CyberKit::WebProcessPool*);
 
-    WebKit::WebUserContentControllerProxy* userContentController();
-    void setUserContentController(WebKit::WebUserContentControllerProxy*);
+    CyberKit::WebUserContentControllerProxy* userContentController();
+    void setUserContentController(CyberKit::WebUserContentControllerProxy*);
 
 #if ENABLE(WK_WEB_EXTENSIONS)
-    WebKit::WebExtensionController* webExtensionController();
-    void setWebExtensionController(WebKit::WebExtensionController*);
+    CyberKit::WebExtensionController* webExtensionController();
+    void setWebExtensionController(CyberKit::WebExtensionController*);
 
-    WebKit::WebExtensionController* weakWebExtensionController();
-    void setWeakWebExtensionController(WebKit::WebExtensionController*);
+    CyberKit::WebExtensionController* weakWebExtensionController();
+    void setWeakWebExtensionController(CyberKit::WebExtensionController*);
 #endif
 
-    WebKit::WebPageGroup* pageGroup();
-    void setPageGroup(WebKit::WebPageGroup*);
+    CyberKit::WebPageGroup* pageGroup();
+    void setPageGroup(CyberKit::WebPageGroup*);
 
-    WebKit::WebPreferences* preferences();
-    void setPreferences(WebKit::WebPreferences*);
+    CyberKit::WebPreferences* preferences();
+    void setPreferences(CyberKit::WebPreferences*);
 
-    WebKit::WebPageProxy* relatedPage() const;
-    void setRelatedPage(WebKit::WebPageProxy*);
+    CyberKit::WebPageProxy* relatedPage() const;
+    void setRelatedPage(CyberKit::WebPageProxy*);
 
-    WebKit::WebPageProxy* pageToCloneSessionStorageFrom() const;
-    void setPageToCloneSessionStorageFrom(WebKit::WebPageProxy*);
+    CyberKit::WebPageProxy* pageToCloneSessionStorageFrom() const;
+    void setPageToCloneSessionStorageFrom(CyberKit::WebPageProxy*);
 
-    WebKit::VisitedLinkStore* visitedLinkStore();
-    void setVisitedLinkStore(WebKit::VisitedLinkStore*);
+    CyberKit::VisitedLinkStore* visitedLinkStore();
+    void setVisitedLinkStore(CyberKit::VisitedLinkStore*);
 
-    WebKit::WebsiteDataStore* websiteDataStore();
-    void setWebsiteDataStore(WebKit::WebsiteDataStore*);
+    CyberKit::WebsiteDataStore* websiteDataStore();
+    void setWebsiteDataStore(CyberKit::WebsiteDataStore*);
 
     WebsitePolicies* defaultWebsitePolicies() const;
     void setDefaultWebsitePolicies(WebsitePolicies*);
@@ -153,9 +153,9 @@ public:
     void setApplicationManifest(ApplicationManifest*);
 #endif
 
-    RefPtr<WebKit::WebURLSchemeHandler> urlSchemeHandlerForURLScheme(const WTF::String&);
-    void setURLSchemeHandlerForURLScheme(Ref<WebKit::WebURLSchemeHandler>&&, const WTF::String&);
-    const HashMap<WTF::String, Ref<WebKit::WebURLSchemeHandler>>& urlSchemeHandlers() { return m_urlSchemeHandlers; }
+    RefPtr<CyberKit::WebURLSchemeHandler> urlSchemeHandlerForURLScheme(const WTF::String&);
+    void setURLSchemeHandlerForURLScheme(Ref<CyberKit::WebURLSchemeHandler>&&, const WTF::String&);
+    const HashMap<WTF::String, Ref<CyberKit::WebURLSchemeHandler>>& urlSchemeHandlers() { return m_urlSchemeHandlers; }
 
     const Vector<WTF::String>& corsDisablingPatterns() const { return m_corsDisablingPatterns; }
     void setCORSDisablingPatterns(Vector<WTF::String>&& patterns) { m_corsDisablingPatterns = WTFMove(patterns); }
@@ -199,8 +199,8 @@ public:
     const WTF::String& attributedBundleIdentifier() const { return m_attributedBundleIdentifier; }
 
 #if PLATFORM(IOS_FAMILY)
-    WebKit::AttributionOverrideTesting appInitiatedOverrideValueForTesting() const { return m_appInitiatedOverrideValueForTesting; }
-    void setAppInitiatedOverrideValueForTesting(WebKit::AttributionOverrideTesting appInitiatedOverrideValueForTesting) { m_appInitiatedOverrideValueForTesting = appInitiatedOverrideValueForTesting; }
+    CyberKit::AttributionOverrideTesting appInitiatedOverrideValueForTesting() const { return m_appInitiatedOverrideValueForTesting; }
+    void setAppInitiatedOverrideValueForTesting(CyberKit::AttributionOverrideTesting appInitiatedOverrideValueForTesting) { m_appInitiatedOverrideValueForTesting = appInitiatedOverrideValueForTesting; }
 #endif
 
 #if HAVE(TOUCH_BAR)
@@ -216,19 +216,19 @@ public:
 
 private:
 
-    RefPtr<WebKit::WebProcessPool> m_processPool;
-    RefPtr<WebKit::WebUserContentControllerProxy> m_userContentController;
+    RefPtr<CyberKit::WebProcessPool> m_processPool;
+    RefPtr<CyberKit::WebUserContentControllerProxy> m_userContentController;
 #if ENABLE(WK_WEB_EXTENSIONS)
-    RefPtr<WebKit::WebExtensionController> m_webExtensionController;
-    WeakPtr<WebKit::WebExtensionController> m_weakWebExtensionController;
+    RefPtr<CyberKit::WebExtensionController> m_webExtensionController;
+    WeakPtr<CyberKit::WebExtensionController> m_weakWebExtensionController;
 #endif
-    RefPtr<WebKit::WebPageGroup> m_pageGroup;
-    RefPtr<WebKit::WebPreferences> m_preferences;
-    RefPtr<WebKit::WebPageProxy> m_relatedPage;
-    WeakPtr<WebKit::WebPageProxy> m_pageToCloneSessionStorageFrom;
-    RefPtr<WebKit::VisitedLinkStore> m_visitedLinkStore;
+    RefPtr<CyberKit::WebPageGroup> m_pageGroup;
+    RefPtr<CyberKit::WebPreferences> m_preferences;
+    RefPtr<CyberKit::WebPageProxy> m_relatedPage;
+    WeakPtr<CyberKit::WebPageProxy> m_pageToCloneSessionStorageFrom;
+    RefPtr<CyberKit::VisitedLinkStore> m_visitedLinkStore;
 
-    RefPtr<WebKit::WebsiteDataStore> m_websiteDataStore;
+    RefPtr<CyberKit::WebsiteDataStore> m_websiteDataStore;
     RefPtr<WebsitePolicies> m_defaultWebsitePolicies;
 
 #if PLATFORM(IOS_FAMILY)
@@ -252,7 +252,7 @@ private:
     RefPtr<ApplicationManifest> m_applicationManifest;
 #endif
 
-    HashMap<WTF::String, Ref<WebKit::WebURLSchemeHandler>> m_urlSchemeHandlers;
+    HashMap<WTF::String, Ref<CyberKit::WebURLSchemeHandler>> m_urlSchemeHandlers;
     Vector<WTF::String> m_corsDisablingPatterns;
     HashSet<WTF::String> m_maskedURLSchemes;
     bool m_userScriptsShouldWaitUntilNotification { true };
@@ -273,7 +273,7 @@ private:
     WTF::String m_attributedBundleIdentifier;
 
 #if PLATFORM(IOS_FAMILY)
-    WebKit::AttributionOverrideTesting m_appInitiatedOverrideValueForTesting { WebKit::AttributionOverrideTesting::NoOverride };
+    CyberKit::AttributionOverrideTesting m_appInitiatedOverrideValueForTesting { CyberKit::AttributionOverrideTesting::NoOverride };
 #endif
 
 #if HAVE(TOUCH_BAR)

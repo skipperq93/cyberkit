@@ -28,7 +28,7 @@
 #include "GPUObjectDescriptorBase.h"
 #include <pal/graphics/WebGPU/WebGPUCommandBufferDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUCommandBufferDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::CommandBufferDescriptor convertToBacking() const

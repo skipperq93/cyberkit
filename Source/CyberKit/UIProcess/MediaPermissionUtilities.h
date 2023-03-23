@@ -37,7 +37,7 @@ namespace CyberCore {
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -83,4 +83,4 @@ MediaPermissionResult checkSpeechRecognitionServiceAccess();
 bool checkSpeechRecognitionServiceAvailability(const String& localeIdentifier);
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

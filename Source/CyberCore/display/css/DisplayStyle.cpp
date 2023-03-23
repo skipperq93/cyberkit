@@ -32,7 +32,7 @@
 #include "ShadowData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(Style);
@@ -160,5 +160,5 @@ bool Style::collapseWhiteSpace() const
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

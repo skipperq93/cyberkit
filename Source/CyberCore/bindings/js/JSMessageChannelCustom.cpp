@@ -31,20 +31,20 @@
 #include "JSMessageChannel.h"
 #include "JSNodeCustom.h"
 #include "MessagePort.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/SlotVisitorInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSMessageChannel::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().port1());
-    addWebCoreOpaqueRoot(visitor, wrapped().port2());
+    addCyberCoreOpaqueRoot(visitor, wrapped().port1());
+    addCyberCoreOpaqueRoot(visitor, wrapped().port2());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSMessageChannel);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CHANNEL_MESSAGING)

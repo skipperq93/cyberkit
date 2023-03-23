@@ -24,7 +24,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class OverSampleType { None, _2x, _4x };
 

@@ -29,7 +29,7 @@
 #include "HTMLCanvasElement.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextMetrics;
 
@@ -68,6 +68,6 @@ private:
     TextDirection toTextDirection(CanvasRenderingContext2DBase::Direction, const RenderStyle** computedStyle = nullptr) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::CanvasRenderingContext2D, is2d())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::CanvasRenderingContext2D, is2d())

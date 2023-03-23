@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebNotification;
 class WebNotificationManagerProxy;
 class WebPageProxy;
@@ -46,13 +46,13 @@ class NotificationProvider {
 public:
     virtual ~NotificationProvider() = default;
 
-    virtual void show(WebKit::WebPageProxy*, WebKit::WebNotification&, RefPtr<CyberCore::NotificationResources>&&) { }
-    virtual void cancel(WebKit::WebNotification&) { }
-    virtual void didDestroyNotification(WebKit::WebNotification&) { }
+    virtual void show(CyberKit::WebPageProxy*, CyberKit::WebNotification&, RefPtr<CyberCore::NotificationResources>&&) { }
+    virtual void cancel(CyberKit::WebNotification&) { }
+    virtual void didDestroyNotification(CyberKit::WebNotification&) { }
     virtual void clearNotifications(const Vector<uint64_t>& /*notificationIDs*/) { }
 
-    virtual void addNotificationManager(WebKit::WebNotificationManagerProxy&) { }
-    virtual void removeNotificationManager(WebKit::WebNotificationManagerProxy&) { }
+    virtual void addNotificationManager(CyberKit::WebNotificationManagerProxy&) { }
+    virtual void removeNotificationManager(CyberKit::WebNotificationManagerProxy&) { }
 
     virtual HashMap<WTF::String, bool> notificationPermissions() { return HashMap<WTF::String, bool>(); };
 };

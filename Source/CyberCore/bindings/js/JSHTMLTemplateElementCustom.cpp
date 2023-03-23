@@ -34,18 +34,18 @@
 
 #include "JSDOMConvert.h"
 #include "JSDocumentFragment.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
 void JSHTMLTemplateElement::visitAdditionalChildren(Visitor& visitor)
 {
     if (auto* content = wrapped().contentIfAvailable())
-        addWebCoreOpaqueRoot(visitor, *content);
+        addCyberCoreOpaqueRoot(visitor, *content);
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSHTMLTemplateElement);
 
-} // namespace WebCore
+} // namespace CyberCore

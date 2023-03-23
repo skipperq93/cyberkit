@@ -29,7 +29,7 @@
 #include "EffectTiming.h"
 #include "WebAnimationTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ComputedEffectTiming : EffectTiming {
     AnimationEffectPhase phase { AnimationEffectPhase::Idle };
@@ -41,4 +41,4 @@ struct ComputedEffectTiming : EffectTiming {
     double activeDuration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

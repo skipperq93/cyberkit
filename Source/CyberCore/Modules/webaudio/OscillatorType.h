@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class OscillatorType : uint8_t {
     Sine,
@@ -35,4 +35,4 @@ enum class OscillatorType : uint8_t {
     Custom,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

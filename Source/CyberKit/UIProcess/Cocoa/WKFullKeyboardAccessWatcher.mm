@@ -52,7 +52,7 @@ static inline BOOL platformIsFullKeyboardAccessEnabled()
     if (keyExistsAndHasValidFormat) {
         // The keyboard access mode has two bits:
         // Bit 0 is set if user can set the focus to menus, the dock, and various windows using the keyboard.
-        // Bit 1 is set if controls other than text fields are included in the tab order (WebKit also always includes lists).
+        // Bit 1 is set if controls other than text fields are included in the tab order (CyberKit also always includes lists).
         fullKeyboardAccessEnabled = (mode & 0x2);
     }
 #elif PLATFORM(IOS_FAMILY)
@@ -64,7 +64,7 @@ static inline BOOL platformIsFullKeyboardAccessEnabled()
 
 - (void)notifyAllProcessPools
 {
-    for (auto& processPool : WebKit::WebProcessPool::allProcessPools())
+    for (auto& processPool : CyberKit::WebProcessPool::allProcessPools())
         processPool->fullKeyboardAccessModeChanged(fullKeyboardAccessEnabled);
 }
 

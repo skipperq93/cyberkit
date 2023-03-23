@@ -41,7 +41,7 @@
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static VM& clearKeyVM()

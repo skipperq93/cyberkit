@@ -34,7 +34,7 @@
 #import "WebPageProxy.h"
 #import <wtf/RetainPtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 

@@ -28,7 +28,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class Blob;
     
@@ -56,6 +56,6 @@ private:
     double m_timecode { 0 };
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

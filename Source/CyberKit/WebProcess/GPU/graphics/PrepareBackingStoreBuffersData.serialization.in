@@ -24,16 +24,16 @@
 
 header: "PrepareBackingStoreBuffersData.h"
 
-[CustomHeader] struct WebKit::PrepareBackingStoreBuffersInputData {
-    WebKit::BufferIdentifierSet bufferSet;
+[CustomHeader] struct CyberKit::PrepareBackingStoreBuffersInputData {
+    CyberKit::BufferIdentifierSet bufferSet;
     bool supportsPartialRepaint;
     bool hasEmptyDirtyRegion;
 };
 
-[CustomHeader] struct WebKit::PrepareBackingStoreBuffersOutputData {
-    WebKit::BufferIdentifierSet bufferSet;
-    std::optional<WebKit::ImageBufferBackendHandle> frontBufferHandle;
-    WebKit::SwapBuffersDisplayRequirement displayRequirement;
+[CustomHeader] struct CyberKit::PrepareBackingStoreBuffersOutputData {
+    CyberKit::BufferIdentifierSet bufferSet;
+    std::optional<CyberKit::ImageBufferBackendHandle> frontBufferHandle;
+    CyberKit::SwapBuffersDisplayRequirement displayRequirement;
 };
 
 #endif

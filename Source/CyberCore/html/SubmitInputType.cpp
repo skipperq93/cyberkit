@@ -40,7 +40,7 @@
 #include "InputTypeNames.h"
 #include "LocalizedStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& SubmitInputType::formControlType() const
 {
@@ -89,4 +89,4 @@ String SubmitInputType::defaultValue() const
     return submitButtonDefaultLabel();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

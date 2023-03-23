@@ -30,7 +30,7 @@
 #include "StorageEstimate.h"
 #include "StorageProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DummyStorageProvider final : public StorageProvider {
     WTF_MAKE_FAST_ALLOCATED;
@@ -77,4 +77,4 @@ private:
     RefPtr<DummyStorageConnection> m_connection;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

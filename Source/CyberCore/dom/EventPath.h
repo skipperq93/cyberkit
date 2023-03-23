@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Touch;
 
@@ -73,4 +73,4 @@ inline Node* EventPath::eventTargetRespectingTargetRules(Node& referenceNode)
     return &referenceNode;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

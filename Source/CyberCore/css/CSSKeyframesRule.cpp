@@ -33,7 +33,7 @@
 #include "Document.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleRuleKeyframes::StyleRuleKeyframes(const AtomString& name)
     : StyleRuleBase(StyleRuleType::Keyframes)
@@ -195,4 +195,4 @@ void CSSKeyframesRule::reattach(StyleRuleBase& rule)
     m_keyframesRule = downcast<StyleRuleKeyframes>(rule);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

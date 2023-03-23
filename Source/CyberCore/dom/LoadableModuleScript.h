@@ -29,7 +29,7 @@
 #include "LoadableScriptError.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptSourceCode;
 class ModuleFetchParameters;
@@ -69,6 +69,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::LoadableModuleScript)
-    static bool isType(const WebCore::LoadableScript& script) { return script.isModuleScript(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::LoadableModuleScript)
+    static bool isType(const CyberCore::LoadableScript& script) { return script.isModuleScript(); }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -39,7 +39,7 @@ namespace CyberCore {
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebsiteDataRecord {
     static String displayNameForCookieHostName(const String& hostName);

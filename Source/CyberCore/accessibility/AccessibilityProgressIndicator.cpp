@@ -31,7 +31,7 @@
 #include "RenderObject.h"
 #include "RenderProgress.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -158,5 +158,5 @@ String AccessibilityProgressIndicator::gaugeRegionValueDescription() const
     return String();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

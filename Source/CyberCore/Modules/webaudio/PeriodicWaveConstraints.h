@@ -27,12 +27,12 @@
 
 #if ENABLE(WEB_AUDIO)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PeriodicWaveConstraints {
     bool disableNormalization { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

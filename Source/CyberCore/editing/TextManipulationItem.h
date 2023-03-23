@@ -26,7 +26,7 @@
 #pragma once
 #include "TextManipulationToken.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum TextManipulationItemIdentifierType { };
 using TextManipulationItemIdentifier = ObjectIdentifier<TextManipulationItemIdentifierType>;
@@ -36,4 +36,4 @@ struct TextManipulationItem {
     Vector<TextManipulationToken> tokens;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void StringCallback::scheduleCallback(ScriptExecutionContext& context, const String& data)
 {
@@ -44,4 +44,4 @@ void StringCallback::scheduleCallback(ScriptExecutionContext& context, const Str
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include <CyberCore/Settings.h>
 #include <wtf/RefPtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKPreferencesGetTypeID()
 {
@@ -42,13 +42,13 @@ WKTypeID WKPreferencesGetTypeID()
 
 WKPreferencesRef WKPreferencesCreate()
 {
-    auto preferences = WebPreferences::createWithLegacyDefaults(String(), "WebKit2."_s, "WebKit2."_s);
+    auto preferences = WebPreferences::createWithLegacyDefaults(String(), "CyberKit2."_s, "CyberKit2."_s);
     return toAPI(&preferences.leakRef());
 }
 
 WKPreferencesRef WKPreferencesCreateWithIdentifier(WKStringRef identifierRef)
 {
-    auto preferences = WebPreferences::createWithLegacyDefaults(toWTFString(identifierRef), "WebKit2."_s, "WebKit2."_s);
+    auto preferences = WebPreferences::createWithLegacyDefaults(toWTFString(identifierRef), "CyberKit2."_s, "CyberKit2."_s);
     return toAPI(&preferences.leakRef());
 }
 
@@ -1629,22 +1629,22 @@ bool WKPreferencesGetAllowsPictureInPictureMediaPlayback(WKPreferencesRef prefer
 
 WK_EXPORT bool WKPreferencesGetApplePayEnabled(WKPreferencesRef preferencesRef)
 {
-    return WebKit::toImpl(preferencesRef)->applePayEnabled();
+    return CyberKit::toImpl(preferencesRef)->applePayEnabled();
 }
 
 void WKPreferencesSetApplePayEnabled(WKPreferencesRef preferencesRef, bool enabled)
 {
-    WebKit::toImpl(preferencesRef)->setApplePayEnabled(enabled);
+    CyberKit::toImpl(preferencesRef)->setApplePayEnabled(enabled);
 }
 
 bool WKPreferencesGetApplePayCapabilityDisclosureAllowed(WKPreferencesRef preferencesRef)
 {
-    return WebKit::toImpl(preferencesRef)->applePayCapabilityDisclosureAllowed();
+    return CyberKit::toImpl(preferencesRef)->applePayCapabilityDisclosureAllowed();
 }
 
 void WKPreferencesSetApplePayCapabilityDisclosureAllowed(WKPreferencesRef preferencesRef, bool allowed)
 {
-    WebKit::toImpl(preferencesRef)->setApplePayCapabilityDisclosureAllowed(allowed);
+    CyberKit::toImpl(preferencesRef)->setApplePayCapabilityDisclosureAllowed(allowed);
 }
 
 void WKPreferencesSetLinkPreloadEnabled(WKPreferencesRef preferencesRef, bool flag)
@@ -1919,22 +1919,22 @@ bool WKPreferencesGetReferrerPolicyAttributeEnabled(WKPreferencesRef preferences
 
 bool WKPreferencesGetRemotePlaybackEnabled(WKPreferencesRef preferencesRef)
 {
-    return WebKit::toImpl(preferencesRef)->remotePlaybackEnabled();
+    return CyberKit::toImpl(preferencesRef)->remotePlaybackEnabled();
 }
 
 void WKPreferencesSetRemotePlaybackEnabled(WKPreferencesRef preferencesRef, bool enabled)
 {
-    WebKit::toImpl(preferencesRef)->setRemotePlaybackEnabled(enabled);
+    CyberKit::toImpl(preferencesRef)->setRemotePlaybackEnabled(enabled);
 }
 
 bool WKPreferencesGetShouldUseServiceWorkerShortTimeout(WKPreferencesRef preferencesRef)
 {
-    return WebKit::toImpl(preferencesRef)->shouldUseServiceWorkerShortTimeout();
+    return CyberKit::toImpl(preferencesRef)->shouldUseServiceWorkerShortTimeout();
 }
 
 void WKPreferencesSetShouldUseServiceWorkerShortTimeout(WKPreferencesRef preferencesRef, bool enabled)
 {
-    WebKit::toImpl(preferencesRef)->setShouldUseServiceWorkerShortTimeout(enabled);
+    CyberKit::toImpl(preferencesRef)->setShouldUseServiceWorkerShortTimeout(enabled);
 }
 
 void WKPreferencesSetRequestVideoFrameCallbackEnabled(WKPreferencesRef preferencesRef, bool enabled)

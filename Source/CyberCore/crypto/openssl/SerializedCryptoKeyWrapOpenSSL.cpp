@@ -32,7 +32,7 @@
 
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<Vector<uint8_t>> defaultWebCryptoMasterKey()
 {
@@ -63,6 +63,6 @@ bool unwrapSerializedCryptoKey(const Vector<uint8_t>& masterKey, const Vector<ui
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

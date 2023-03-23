@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This test is for the root editable element being nullptr in CompositeEditCommand::moveParagraph. WebKit should not crash.</p>
-<div id="editor" contenteditable><span id="start">hello</span><span id="end"> world</span><span id="text"> WebKit</span></div>
+<p>This test is for the root editable element being nullptr in CompositeEditCommand::moveParagraph. CyberKit should not crash.</p>
+<div id="editor" contenteditable><span id="start">hello</span><span id="end"> world</span><span id="text"> CyberKit</span></div>
 <script>
 
 if (window.testRunner)
@@ -21,7 +21,7 @@ frame.contentWindow.addEventListener('unload', () => {
 getSelection().setBaseAndExtent(start, 0, end, 1);
 document.execCommand('delete', false, null);
 
-document.write('PASS. WebKit did not crash');
+document.write('PASS. CyberKit did not crash');
 
 </script>
 </body>

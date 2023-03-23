@@ -35,7 +35,7 @@
 #include "LayoutChildIterator.h"
 #include "RenderFlexibleBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 FlexLayout::FlexLayout(RenderFlexibleBox& flexBoxRenderer)

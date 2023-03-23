@@ -25,7 +25,7 @@
 #include "CharacterData.h"
 #include "RenderPtr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderText;
 
@@ -72,8 +72,8 @@ private:
     virtual Ref<Text> virtualCreate(String&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Text)
-    static bool isType(const WebCore::Node& node) { return node.isTextNode(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Text)
+    static bool isType(const CyberCore::Node& node) { return node.isTextNode(); }
 SPECIALIZE_TYPE_TRAITS_END()

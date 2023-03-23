@@ -24,7 +24,7 @@
 #include "WebProcessProxy.h"
 #include <CyberCore/UserMediaRequest.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void UserMediaPermissionRequestManagerProxy::platformValidateUserMediaRequestConstraints(RealtimeMediaSourceCenter::ValidConstraintsHandler&& validHandler, RealtimeMediaSourceCenter::InvalidConstraintsHandler&& invalidHandler, CyberCore::MediaDeviceHashSalts&& deviceIDHashSalts)
@@ -42,4 +42,4 @@ void UserMediaPermissionRequestManagerProxy::platformGetMediaStreamDevices(Compl
     m_page.process().connection()->sendWithAsyncReply(Messages::UserMediaCaptureManager::GetMediaStreamDevices(), WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

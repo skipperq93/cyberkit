@@ -30,7 +30,7 @@
 #include "ApplePayInstallmentItemType.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayInstallmentItem {
     ApplePayInstallmentItemType type { ApplePayInstallmentItemType::Generic };
@@ -41,6 +41,6 @@ struct ApplePayInstallmentItem {
     String programTerms;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_INSTALLMENTS)

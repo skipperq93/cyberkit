@@ -38,7 +38,7 @@
 #include "ScriptModuleLoader.h"
 #include "ScriptSourceCode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CachedModuleScriptLoader> CachedModuleScriptLoader::create(ModuleScriptLoaderClient& client, DeferredPromise& promise, CachedScriptFetcher& scriptFetcher, RefPtr<JSC::ScriptFetchParameters>&& parameters)
 {

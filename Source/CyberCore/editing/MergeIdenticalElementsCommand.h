@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MergeIdenticalElementsCommand : public SimpleEditCommand {
 public:
@@ -51,4 +51,4 @@ private:
     RefPtr<Node> m_atChild;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

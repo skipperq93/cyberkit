@@ -35,7 +35,7 @@
 #include <CyberScriptCore/ScriptCallStack.h>
 #include <CyberScriptCore/ScriptCallStackFactory.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 void reportException(JSGlobalObject* lexicalGlobalObject, JSValue exceptionValue, CachedScript* cachedScript, bool fromModule)
@@ -54,7 +54,7 @@ void reportException(JSGlobalObject* lexicalGlobalObject, JSValue exceptionValue
 
 String retrieveErrorMessageWithoutName(JSGlobalObject& lexicalGlobalObject, VM& vm, JSValue exception, CatchScope& catchScope)
 {
-    // FIXME: <http://webkit.org/b/115087> Web Inspector: WebCore::reportException should not evaluate JavaScript handling exceptions
+    // FIXME: <http://webkit.org/b/115087> Web Inspector: CyberCore::reportException should not evaluate JavaScript handling exceptions
     // If this is a custom exception object, call toString on it to try and get a nice string representation for the exception.
     String errorMessage;
     if (auto* error = jsDynamicCast<ErrorInstance*>(exception))
@@ -73,7 +73,7 @@ String retrieveErrorMessageWithoutName(JSGlobalObject& lexicalGlobalObject, VM& 
 
 String retrieveErrorMessage(JSGlobalObject& lexicalGlobalObject, VM& vm, JSValue exception, CatchScope& catchScope)
 {
-    // FIXME: <http://webkit.org/b/115087> Web Inspector: WebCore::reportException should not evaluate JavaScript handling exceptions
+    // FIXME: <http://webkit.org/b/115087> Web Inspector: CyberCore::reportException should not evaluate JavaScript handling exceptions
     // If this is a custom exception object, call toString on it to try and get a nice string representation for the exception.
     String errorMessage;
     if (auto* error = jsDynamicCast<ErrorInstance*>(exception))
@@ -320,4 +320,4 @@ void throwDataCloneError(JSC::JSGlobalObject& lexicalGlobalObject, JSC::ThrowSco
     throwException(&lexicalGlobalObject, scope, createDOMException(&lexicalGlobalObject, DataCloneError));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

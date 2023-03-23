@@ -28,7 +28,7 @@
 #include "StorageConnection.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WeakPtrImplWithEventTargetData;
 class WorkerGlobalScope;
@@ -57,4 +57,4 @@ private:
     HashMap<uint64_t, StorageConnection::GetDirectoryCallback> m_getDirectoryCallbacks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -61,11 +61,11 @@ SOFT_LINK_PRIVATE_FRAMEWORK_OPTIONAL(LinkPresentation)
 #endif
 
 #if HAVE(UIKIT_WEBKIT_INTERNALS)
-#include <WebKitAdditions/WKFullscreenWindowControllerAdditions.h>
+#include <CyberKitAdditions/WKFullscreenWindowControllerAdditions.h>
 #endif
 
-namespace WebKit {
-using namespace WebKit;
+namespace CyberKit {
+using namespace CyberKit;
 using namespace CyberCore;
 
 static CGSize sizeExpandedToSize(CGSize initial, CGSize other)
@@ -156,7 +156,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 static constexpr NSTimeInterval kAnimationDuration = 0.2;
 #if HAVE(UIKIT_WEBKIT_INTERNALS)
@@ -446,8 +446,8 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 @implementation WKFullScreenWindowController {
     RetainPtr<WKFullScreenPlaceholderView> _webViewPlaceholder;
 
-    WebKit::FullScreenState _fullScreenState;
-    WebKit::WKWebViewState _viewState;
+    CyberKit::FullScreenState _fullScreenState;
+    CyberKit::WKWebViewState _viewState;
 
     RetainPtr<UIWindow> _window;
     RetainPtr<UIViewController> _rootViewController;
@@ -465,7 +465,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
     RetainPtr<WKFullScreenParentWindowState> _parentWindowState;
 #endif
 
-    std::unique_ptr<WebKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver> _pipObserver;
+    std::unique_ptr<CyberKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver> _pipObserver;
     BOOL _shouldReturnToFullscreenFromPictureInPicture;
     BOOL _enterFullscreenNeedsExitPictureInPicture;
     BOOL _returnToFullscreenFromPictureInPicture;
@@ -512,9 +512,9 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (BOOL)isFullScreen
 {
-    return _fullScreenState == WebKit::WaitingToEnterFullScreen
-        || _fullScreenState == WebKit::EnteringFullScreen
-        || _fullScreenState == WebKit::InFullScreen;
+    return _fullScreenState == CyberKit::WaitingToEnterFullScreen
+        || _fullScreenState == CyberKit::EnteringFullScreen
+        || _fullScreenState == CyberKit::InFullScreen;
 }
 
 - (UIView *)webViewPlaceholder
@@ -552,7 +552,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
     _lastKnownParentWindow = [webView window];
     _parentWindowState = adoptNS([[WKFullScreenParentWindowState alloc] initWithWindow:_lastKnownParentWindow.get()]);
 #endif
-    _fullScreenState = WebKit::WaitingToEnterFullScreen;
+    _fullScreenState = CyberKit::WaitingToEnterFullScreen;
     _blocksReturnToFullscreenFromPictureInPicture = manager->blocksReturnToFullscreenFromPictureInPicture();
     _originalWindowSize = [webView window].frame.size;
 
@@ -645,7 +645,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
         [CATransaction setDisableActions:YES];
 
         [[_webViewPlaceholder layer] setContents:(id)[snapshotImage CGImage]];
-        WebKit::replaceViewWithView(webView.get(), _webViewPlaceholder.get());
+        CyberKit::replaceViewWithView(webView.get(), _webViewPlaceholder.get());
 
         [webView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         [webView setFrame:[_window bounds]];
@@ -686,16 +686,16 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)beganEnterFullScreenWithInitialFrame:(CGRect)initialFrame finalFrame:(CGRect)finalFrame
 {
-    if (_fullScreenState != WebKit::WaitingToEnterFullScreen)
+    if (_fullScreenState != CyberKit::WaitingToEnterFullScreen)
         return;
-    _fullScreenState = WebKit::EnteringFullScreen;
+    _fullScreenState = CyberKit::EnteringFullScreen;
 
     _initialFrame = initialFrame;
     _finalFrame = finalFrame;
 
-    _initialFrame.size = WebKit::sizeExpandedToSize(_initialFrame.size, CGSizeMake(1, 1));
-    _finalFrame.size = WebKit::sizeExpandedToSize(_finalFrame.size, CGSizeMake(1, 1));
-    _initialFrame = WebKit::safeInlineRect(_initialFrame, [_rootViewController view].frame.size);
+    _initialFrame.size = CyberKit::sizeExpandedToSize(_initialFrame.size, CGSizeMake(1, 1));
+    _finalFrame.size = CyberKit::sizeExpandedToSize(_finalFrame.size, CGSizeMake(1, 1));
+    _initialFrame = CyberKit::safeInlineRect(_initialFrame, [_rootViewController view].frame.size);
 
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
@@ -721,7 +721,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 #endif
 
     [_rootViewController presentViewController:_fullscreenViewController.get() animated:shouldAnimateEnterFullscreenTransition completion:^{
-        _fullScreenState = WebKit::InFullScreen;
+        _fullScreenState = CyberKit::InFullScreen;
 
         if (_exitRequested) {
             _exitRequested = NO;
@@ -729,7 +729,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
             return;
         }
 
-        WebKit::WKWebViewState().applyTo(webView.get());
+        CyberKit::WKWebViewState().applyTo(webView.get());
         auto page = [self._webView _page];
         auto* manager = self._manager;
 
@@ -748,7 +748,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
             if (auto* videoFullscreenManager = self._videoFullscreenManager) {
                 if (!_pipObserver) {
-                    _pipObserver = WTF::makeUnique<WebKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver>([self] (bool inPiP) {
+                    _pipObserver = WTF::makeUnique<CyberKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver>([self] (bool inPiP) {
                         if (inPiP)
                             [self didEnterPictureInPicture];
                         else
@@ -780,7 +780,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)requestRestoreFullScreen
 {
-    if (_fullScreenState != WebKit::NotInFullScreen)
+    if (_fullScreenState != CyberKit::NotInFullScreen)
         return;
 
     // Switch the active tab if needed
@@ -797,7 +797,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)requestExitFullScreen
 {
-    if (_fullScreenState != WebKit::InFullScreen) {
+    if (_fullScreenState != CyberKit::InFullScreen) {
         _exitRequested = YES;
         return;
     }
@@ -814,14 +814,14 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)exitFullScreen
 {
-    if (_fullScreenState == WebKit::NotInFullScreen)
+    if (_fullScreenState == CyberKit::NotInFullScreen)
         return;
 
-    if (_fullScreenState < WebKit::InFullScreen) {
+    if (_fullScreenState < CyberKit::InFullScreen) {
         _exitRequested = YES;
         return;
     }
-    _fullScreenState = WebKit::WaitingToExitFullScreen;
+    _fullScreenState = CyberKit::WaitingToExitFullScreen;
     _exitingFullScreen = YES;
 
     if (auto* manager = self._manager) {
@@ -836,16 +836,16 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)beganExitFullScreenWithInitialFrame:(CGRect)initialFrame finalFrame:(CGRect)finalFrame
 {
-    if (_fullScreenState != WebKit::WaitingToExitFullScreen)
+    if (_fullScreenState != CyberKit::WaitingToExitFullScreen)
         return;
-    _fullScreenState = WebKit::ExitingFullScreen;
+    _fullScreenState = CyberKit::ExitingFullScreen;
 
     _initialFrame = initialFrame;
     _finalFrame = finalFrame;
 
-    _initialFrame.size = WebKit::sizeExpandedToSize(_initialFrame.size, CGSizeMake(1, 1));
-    _finalFrame.size = WebKit::sizeExpandedToSize(_finalFrame.size, CGSizeMake(1, 1));
-    _finalFrame = WebKit::safeInlineRect(_finalFrame, [_rootViewController view].frame.size);
+    _initialFrame.size = CyberKit::sizeExpandedToSize(_initialFrame.size, CGSizeMake(1, 1));
+    _finalFrame.size = CyberKit::sizeExpandedToSize(_finalFrame.size, CGSizeMake(1, 1));
+    _finalFrame = CyberKit::safeInlineRect(_finalFrame, [_rootViewController view].frame.size);
 
     if (auto page = [self._webView _page])
         page->setSuppressVisibilityUpdates(true);
@@ -892,9 +892,9 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)_completedExitFullScreen
 {
-    if (_fullScreenState != WebKit::ExitingFullScreen)
+    if (_fullScreenState != CyberKit::ExitingFullScreen)
         return;
-    _fullScreenState = WebKit::NotInFullScreen;
+    _fullScreenState = CyberKit::NotInFullScreen;
 
     [self _reinsertWebViewUnderPlaceholder];
 
@@ -951,7 +951,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)webViewDidRemoveFromSuperviewWhileInFullscreen
 {
-    if (_fullScreenState == WebKit::InFullScreen && self._webView.window != _window.get())
+    if (_fullScreenState == CyberKit::InFullScreen && self._webView.window != _window.get())
         [self _exitFullscreenImmediately];
 }
 
@@ -976,7 +976,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 {
     _shouldReturnToFullscreenFromPictureInPicture = !_blocksReturnToFullscreenFromPictureInPicture;
 
-    if (_fullScreenState == WebKit::InFullScreen)
+    if (_fullScreenState == CyberKit::InFullScreen)
         [self requestExitFullScreen];
 }
 
@@ -986,7 +986,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
         auto* videoFullscreenInterface = self._videoFullscreenManager ? self._videoFullscreenManager->controlsManagerInterface() : nullptr;
         if (videoFullscreenInterface && videoFullscreenInterface->returningToStandby()) {
             if (!_exitingFullScreen) {
-                if (_fullScreenState == WebKit::InFullScreen)
+                if (_fullScreenState == CyberKit::InFullScreen)
                     videoFullscreenInterface->preparedToReturnToStandby();
                 else
                     [self requestRestoreFullScreen];
@@ -1069,13 +1069,13 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
 
 - (void)_exitFullscreenImmediately
 {
-    if (_fullScreenState == WebKit::NotInFullScreen)
+    if (_fullScreenState == CyberKit::NotInFullScreen)
         return;
 
     _shouldReturnToFullscreenFromPictureInPicture = false;
     _exitRequested = NO;
     _exitingFullScreen = NO;
-    _fullScreenState = WebKit::NotInFullScreen;
+    _fullScreenState = CyberKit::NotInFullScreen;
     _shouldReturnToFullscreenFromPictureInPicture = false;
 
     auto* page = [self._webView _page].get();
@@ -1193,14 +1193,14 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
     [_fullscreenViewController setLocation:text];
 }
 
-- (WebKit::WebFullScreenManagerProxy*)_manager
+- (CyberKit::WebFullScreenManagerProxy*)_manager
 {
     if (auto page = [self._webView _page])
         return page->fullScreenManager();
     return nullptr;
 }
 
-- (WebKit::VideoFullscreenManagerProxy*)_videoFullscreenManager
+- (CyberKit::VideoFullscreenManagerProxy*)_videoFullscreenManager
 {
     if (auto page = [self._webView _page])
         return page->videoFullscreenManager();

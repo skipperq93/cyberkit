@@ -49,7 +49,7 @@
 #endif
 
 #if HAVE(UIKIT_WEBKIT_INTERNALS)
-#include <WebKitAdditions/WKShareSheetAdditions.h>
+#include <CyberKitAdditions/WKShareSheetAdditions.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
@@ -185,7 +185,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
         return FileWriteTask { file.fileName.isolatedCopy(), file.fileData->createNSData() };
     });
 
-    auto queue = WorkQueue::create("com.apple.WebKit.WKShareSheet.ShareableFileWriter");
+    auto queue = WorkQueue::create("com.apple.CyberKit.WKShareSheet.ShareableFileWriter");
     queue->dispatch([shareDataArray = WTFMove(shareDataArray), fileWriteTasks = WTFMove(fileWriteTasks), temporaryDirectory = retainPtr(temporaryDirectory), usePlaceholderFiles, completionHandler = WTFMove(completionHandler)]() mutable {
         for (auto& fileWriteTask : fileWriteTasks) {
             NSURL *fileURL = [WKShareSheet writeFileToShareableURL:CyberCore::ResourceResponseBase::sanitizeSuggestedFilename(fileWriteTask.fileName) data:fileWriteTask.fileData.get() temporaryDirectory:temporaryDirectory.get()];

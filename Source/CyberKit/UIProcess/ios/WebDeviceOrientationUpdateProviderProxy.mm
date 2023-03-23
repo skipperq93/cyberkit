@@ -34,7 +34,7 @@
 #import "WebProcessProxy.h"
 #import <CyberCore/CyberCoreMotionManager.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebDeviceOrientationUpdateProviderProxy::WebDeviceOrientationUpdateProviderProxy(WebPageProxy& page)
     : m_page(page)
@@ -77,6 +77,6 @@ void WebDeviceOrientationUpdateProviderProxy::motionChanged(double xAcceleration
     m_page.send(Messages::WebDeviceOrientationUpdateProvider::DeviceMotionChanged(xAcceleration, yAcceleration, zAcceleration, xAccelerationIncludingGravity, yAccelerationIncludingGravity, zAccelerationIncludingGravity, xRotationRate, yRotationRate, zRotationRate));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

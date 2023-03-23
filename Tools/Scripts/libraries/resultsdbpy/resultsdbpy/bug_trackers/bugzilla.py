@@ -26,7 +26,7 @@ from resultsdbpy.bug_trackers.bug_description import translate_selected_dots_to_
 from resultsdbpy.controller.bug_tracker_controller import BugTrackerConfig
 
 
-class WebKitBugzilla(BugTrackerConfig):
+class CyberKitBugzilla(BugTrackerConfig):
 
     COMPONENTS_LAYOUT_TEST_MAPPING = {
         'Accessibility': {'lower': True},
@@ -49,7 +49,7 @@ class WebKitBugzilla(BugTrackerConfig):
         'History': {'lower': True},
         'HTML Editing': {'keywords': ['editing']},
         'Images': {'lower': True},
-        'JavaScriptCore': {'keywords': ['js', 'jquery', 'regex']},
+        'CyberScriptCore': {'keywords': ['js', 'jquery', 'regex']},
         'Layout and Rendering': {'keywords': ['rendering', 'layers']},
         'MathML': {'lower': True},
         'Media': {'keywords': ['media', 'mediacapturefromelement', 'mediasession', 'mediastream']},
@@ -68,23 +68,23 @@ class WebKitBugzilla(BugTrackerConfig):
         'UI Events': {'keywords': ['events', 'eventloop']},
         'WebAssembly': {'keywords': ['wasm']},
         'Web Audio': {'keywords': ['webaudio']},
-        'CyberCore JavaScript': {'skip': True},  # FIXME maybe need move some keywords from JavaScriptCore
+        'CyberCore JavaScript': {'skip': True},  # FIXME maybe need move some keywords from CyberScriptCore
         'CyberCore Misc.': {'keywords': ['misc']},
         'WebDriver': {'skip': True},
         'WebGL': {'lower': True},
         'WebGPU': {'keywords': ['gpu-process']},
         'Web Inspector': {'keywords': ['inspector']},
-        'WebKit2': {'skip': True},
-        'WebKit API': {'skip': True},
-        'WebKitGTK': {'skip': True},
-        'WebKit Misc.': {'keywords': ['misc']},
-        'WebKit Process Model': {'skip': True},
-        'WebKit Website': {'skip': True},
+        'CyberKit2': {'skip': True},
+        'CyberKit API': {'skip': True},
+        'CyberKitGTK': {'skip': True},
+        'CyberKit Misc.': {'keywords': ['misc']},
+        'CyberKit Process Model': {'skip': True},
+        'CyberKit Website': {'skip': True},
         'WebRTC': {'lower': True},
         'Website Storage': {'keywords': ['storage']},
         'Web Template Framework'
         'WebXR': {'lower': True},
-        'WPE WebKit': {'skip': True},
+        'WPE CyberKit': {'skip': True},
         'XML': {'lower': True},
     }
 
@@ -131,15 +131,15 @@ class WebKitBugzilla(BugTrackerConfig):
         title_components, description_components = translate_selected_dots_to_bug_title_and_description(self.commit_context, selected_rows, test, suite, repositories, will_filter_expected)
 
         component = 'New Bugs'
-        version = 'WebKit Nightly Build'
+        version = 'CyberKit Nightly Build'
         if suite == 'api-tests':
-            component = 'WebKit API'
+            component = 'CyberKit API'
         if suite == 'webkitpy-tests':
             component = 'Tools / Tests'
         if suite == 'internal-media-tests':
             component = 'Media'
         if suite == 'javascriptcore-tests':
-            component = 'JavaScriptCore'
+            component = 'CyberScriptCore'
         if test and any([suite == 'layout-tests', suite == 'internal-security-tests']):
             test_name_parts = test.split('/')
             for k, v in self.COMPONENTS_LAYOUT_TEST_MAPPING.items():
@@ -167,6 +167,6 @@ class WebKitBugzilla(BugTrackerConfig):
         ]
 
         return {
-            'url': 'https://bugs.webkit.org/enter_bug.cgi?product=WebKit&{}'.format('&'.join(bugzilla_url_components)),
+            'url': 'https://bugs.webkit.org/enter_bug.cgi?product=CyberKit&{}'.format('&'.join(bugzilla_url_components)),
             'newWindow': True
         }

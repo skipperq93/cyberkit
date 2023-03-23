@@ -22,10 +22,10 @@
 #include "config.h"
 #include "JSDOMConstructor.h"
 
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 STATIC_ASSERT_IS_TRIVIALLY_DESTRUCTIBLE(JSDOMConstructorBase);
@@ -51,4 +51,4 @@ JSC::GCClient::IsoSubspace* JSDOMConstructorBase::subspaceForImpl(JSC::VM& vm)
     return &static_cast<JSVMClientData*>(vm.clientData)->domConstructorSpace();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Text);
 
@@ -250,4 +250,4 @@ void Text::setDataAndUpdate(const String& newData, unsigned offsetOfReplacedData
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

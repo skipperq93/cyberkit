@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ResidentKeyRequirement : uint8_t {
     Required,
@@ -35,6 +35,6 @@ enum class ResidentKeyRequirement : uint8_t {
     Discouraged
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

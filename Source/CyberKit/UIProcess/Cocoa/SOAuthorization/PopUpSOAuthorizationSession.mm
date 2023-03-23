@@ -40,17 +40,17 @@
 
 @interface WKSOSecretDelegate : NSObject <WKNavigationDelegate, WKUIDelegate> {
 @private
-    ThreadSafeWeakPtr<WebKit::PopUpSOAuthorizationSession> _weakSession;
+    ThreadSafeWeakPtr<CyberKit::PopUpSOAuthorizationSession> _weakSession;
     BOOL _isFirstNavigation;
 }
 
-- (instancetype)initWithSession:(WebKit::PopUpSOAuthorizationSession&)session;
+- (instancetype)initWithSession:(CyberKit::PopUpSOAuthorizationSession&)session;
 
 @end
 
 @implementation WKSOSecretDelegate
 
-- (instancetype)initWithSession:(WebKit::PopUpSOAuthorizationSession&)session
+- (instancetype)initWithSession:(CyberKit::PopUpSOAuthorizationSession&)session
 {
     if ((self = [super init])) {
         _weakSession = session;
@@ -94,7 +94,7 @@
 
 #define AUTHORIZATIONSESSION_RELEASE_LOG(fmt, ...) RELEASE_LOG(AppSSO, "%p - [InitiatingAction=%s][State=%s] PopUpSOAuthorizationSession::" fmt, this, initiatingActionString(), stateString(), ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<SOAuthorizationSession> PopUpSOAuthorizationSession::create(RetainPtr<WKSOAuthorizationDelegate> delegate, WebPageProxy& page, Ref<API::NavigationAction>&& navigationAction, NewPageCallback&& newPageCallback, UIClientCallback&& uiClientCallback)
 {
@@ -199,7 +199,7 @@ void PopUpSOAuthorizationSession::initSecretWebView()
     WTFLogAlways("SecretWebView is created.");
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef AUTHORIZATIONSESSION_RELEASE_LOG
 

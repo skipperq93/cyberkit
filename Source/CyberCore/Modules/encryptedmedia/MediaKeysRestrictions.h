@@ -29,10 +29,10 @@
 
 #include "CDMRestrictions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using MediaKeysRestrictions = CDMRestrictions;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

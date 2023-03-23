@@ -27,13 +27,13 @@
 
 #if ENABLE(WEB_AUTHN)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AuthenticatorAttachment : uint8_t {
     Platform,
     CrossPlatform
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

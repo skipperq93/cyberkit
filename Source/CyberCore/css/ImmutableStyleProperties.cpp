@@ -28,7 +28,7 @@
 #include "CSSCustomPropertyValue.h"
 #include "StylePropertiesInlines.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ImmutableStyleProperties);
 

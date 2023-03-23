@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitWindowProperties.h"
+#include "CyberKitWindowProperties.h"
 
 #include "APIDictionary.h"
 #include "APINumber.h"
 #include "APIURLRequest.h"
-#include "WebKitWindowPropertiesPrivate.h"
+#include "CyberKitWindowPropertiesPrivate.h"
 #include <CyberCore/IntRect.h>
 #include <CyberCore/WindowFeatures.h>
 #include <glib/gi18n-lib.h>
@@ -32,34 +32,34 @@
 using namespace CyberCore;
 
 /**
- * WebKitWindowProperties:
- * @see_also: #WebKitWebView::ready-to-show
+ * CyberKitWindowProperties:
+ * @see_also: #CyberKitWebView::ready-to-show
  *
- * Window properties of a #WebKitWebView.
+ * Window properties of a #CyberKitWebView.
  *
- * The content of a #WebKitWebView can request to change certain
+ * The content of a #CyberKitWebView can request to change certain
  * properties of the window containing the view. This can include the x, y position
  * of the window, the width and height but also if a toolbar,
  * scrollbar, statusbar, locationbar should be visible to the user,
- * and the request to show the #WebKitWebView fullscreen.
+ * and the request to show the #CyberKitWebView fullscreen.
  *
- * The #WebKitWebView::ready-to-show signal handler is the proper place
+ * The #CyberKitWebView::ready-to-show signal handler is the proper place
  * to apply the initial window properties. Then you can monitor the
- * #WebKitWindowProperties by connecting to ::notify signal.
+ * #CyberKitWindowProperties by connecting to ::notify signal.
  *
  * ```c
- * static void ready_to_show_cb (WebKitWebView *web_view, gpointer user_data)
+ * static void ready_to_show_cb (CyberKitWebView *web_view, gpointer user_data)
  * {
  *     GtkWidget *window;
- *     WebKitWindowProperties *window_properties;
+ *     CyberKitWindowProperties *window_properties;
  *     gboolean visible;
  *
- *     // Create the window to contain the WebKitWebView.
+ *     // Create the window to contain the CyberKitWebView.
  *     window = browser_window_new ();
  *     gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (web_view));
  *     gtk_widget_show (GTK_WIDGET (web_view));
  *
- *     // Get the WebKitWindowProperties of the web view and monitor it.
+ *     // Get the CyberKitWindowProperties of the web view and monitor it.
  *     window_properties = webkit_web_view_get_window_properties (web_view);
  *     g_signal_connect (window_properties, "notify::geometry",
  *                       G_CALLBACK (window_geometry_changed), window);
@@ -108,7 +108,7 @@ enum {
 
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
-struct _WebKitWindowPropertiesPrivate {
+struct _CyberKitWindowPropertiesPrivate {
 #if PLATFORM(GTK)
     GdkRectangle geometry;
 #endif
@@ -123,11 +123,11 @@ struct _WebKitWindowPropertiesPrivate {
     bool fullscreen : 1;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWindowProperties, webkit_window_properties, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWindowProperties, webkit_window_properties, G_TYPE_OBJECT, GObject)
 
 static void webkitWindowPropertiesGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWindowProperties* windowProperties = WEBKIT_WINDOW_PROPERTIES(object);
+    CyberKitWindowProperties* windowProperties = WEBKIT_WINDOW_PROPERTIES(object);
 
     switch (propId) {
 #if PLATFORM(GTK)
@@ -163,7 +163,7 @@ static void webkitWindowPropertiesGetProperty(GObject* object, guint propId, GVa
 
 static void webkitWindowPropertiesSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWindowProperties* windowProperties = WEBKIT_WINDOW_PROPERTIES(object);
+    CyberKitWindowProperties* windowProperties = WEBKIT_WINDOW_PROPERTIES(object);
 
     switch (propId) {
 #if PLATFORM(GTK)
@@ -198,7 +198,7 @@ static void webkitWindowPropertiesSetProperty(GObject* object, guint propId, con
     }
 }
 
-static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* requestClass)
+static void webkit_window_properties_class_init(CyberKitWindowPropertiesClass* requestClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(requestClass);
     objectClass->get_property = webkitWindowPropertiesGetProperty;
@@ -208,7 +208,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
 
 #if PLATFORM(GTK)
     /**
-     * WebKitWindowProperties:geometry:
+     * CyberKitWindowProperties:geometry:
      *
      * The size and position of the window on the screen.
      */
@@ -221,7 +221,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
 #endif
 
     /**
-     * WebKitWindowProperties:toolbar-visible:
+     * CyberKitWindowProperties:toolbar-visible:
      *
      * Whether the toolbar should be visible for the window.
      */
@@ -233,7 +233,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
             paramFlags);
 
     /**
-     * WebKitWindowProperties:statusbar-visible:
+     * CyberKitWindowProperties:statusbar-visible:
      *
      * Whether the statusbar should be visible for the window.
      */
@@ -245,7 +245,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
             paramFlags);
 
     /**
-     * WebKitWindowProperties:scrollbars-visible:
+     * CyberKitWindowProperties:scrollbars-visible:
      *
      * Whether the scrollbars should be visible for the window.
      */
@@ -257,7 +257,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
             paramFlags);
 
     /**
-     * WebKitWindowProperties:menubar-visible:
+     * CyberKitWindowProperties:menubar-visible:
      *
      * Whether the menubar should be visible for the window.
      */
@@ -269,7 +269,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
             paramFlags);
 
     /**
-     * WebKitWindowProperties:locationbar-visible:
+     * CyberKitWindowProperties:locationbar-visible:
      *
      * Whether the locationbar should be visible for the window.
      */
@@ -280,7 +280,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
             TRUE,
             paramFlags);
     /**
-     * WebKitWindowProperties:resizable:
+     * CyberKitWindowProperties:resizable:
      *
      * Whether the window can be resized.
      */
@@ -292,7 +292,7 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
             paramFlags);
 
     /**
-     * WebKitWindowProperties:fullscreen:
+     * CyberKitWindowProperties:fullscreen:
      *
      * Whether window will be displayed fullscreen.
      */
@@ -306,13 +306,13 @@ static void webkit_window_properties_class_init(WebKitWindowPropertiesClass* req
     g_object_class_install_properties(objectClass, N_PROPERTIES, sObjProperties);
 }
 
-WebKitWindowProperties* webkitWindowPropertiesCreate()
+CyberKitWindowProperties* webkitWindowPropertiesCreate()
 {
     return WEBKIT_WINDOW_PROPERTIES(g_object_new(WEBKIT_TYPE_WINDOW_PROPERTIES, NULL));
 }
 
 #if PLATFORM(GTK)
-void webkitWindowPropertiesSetGeometry(WebKitWindowProperties* windowProperties, GdkRectangle* geometry)
+void webkitWindowPropertiesSetGeometry(CyberKitWindowProperties* windowProperties, GdkRectangle* geometry)
 {
     if (windowProperties->priv->geometry.x == geometry->x
         && windowProperties->priv->geometry.y == geometry->y
@@ -324,7 +324,7 @@ void webkitWindowPropertiesSetGeometry(WebKitWindowProperties* windowProperties,
 }
 #endif
 
-void webkitWindowPropertiesSetToolbarVisible(WebKitWindowProperties* windowProperties, bool toolbarsVisible)
+void webkitWindowPropertiesSetToolbarVisible(CyberKitWindowProperties* windowProperties, bool toolbarsVisible)
 {
     if (windowProperties->priv->toolbarVisible == toolbarsVisible)
         return;
@@ -332,7 +332,7 @@ void webkitWindowPropertiesSetToolbarVisible(WebKitWindowProperties* windowPrope
     g_object_notify_by_pspec(G_OBJECT(windowProperties), sObjProperties[PROP_TOOLBAR_VISIBLE]);
 }
 
-void webkitWindowPropertiesSetMenubarVisible(WebKitWindowProperties* windowProperties, bool menuBarVisible)
+void webkitWindowPropertiesSetMenubarVisible(CyberKitWindowProperties* windowProperties, bool menuBarVisible)
 {
     if (windowProperties->priv->menubarVisible == menuBarVisible)
         return;
@@ -340,7 +340,7 @@ void webkitWindowPropertiesSetMenubarVisible(WebKitWindowProperties* windowPrope
     g_object_notify_by_pspec(G_OBJECT(windowProperties), sObjProperties[PROP_MENUBAR_VISIBLE]);
 }
 
-void webkitWindowPropertiesSetStatusbarVisible(WebKitWindowProperties* windowProperties, bool statusBarVisible)
+void webkitWindowPropertiesSetStatusbarVisible(CyberKitWindowProperties* windowProperties, bool statusBarVisible)
 {
     if (windowProperties->priv->statusbarVisible == statusBarVisible)
         return;
@@ -348,7 +348,7 @@ void webkitWindowPropertiesSetStatusbarVisible(WebKitWindowProperties* windowPro
     g_object_notify_by_pspec(G_OBJECT(windowProperties), sObjProperties[PROP_STATUSBAR_VISIBLE]);
 }
 
-void webkitWindowPropertiesSetLocationbarVisible(WebKitWindowProperties* windowProperties, bool locationBarVisible)
+void webkitWindowPropertiesSetLocationbarVisible(CyberKitWindowProperties* windowProperties, bool locationBarVisible)
 {
     if (windowProperties->priv->locationbarVisible == locationBarVisible)
         return;
@@ -356,7 +356,7 @@ void webkitWindowPropertiesSetLocationbarVisible(WebKitWindowProperties* windowP
     g_object_notify_by_pspec(G_OBJECT(windowProperties), sObjProperties[PROP_LOCATIONBAR_VISIBLE]);
 }
 
-void webkitWindowPropertiesSetScrollbarsVisible(WebKitWindowProperties* windowProperties, bool scrollBarsVisible)
+void webkitWindowPropertiesSetScrollbarsVisible(CyberKitWindowProperties* windowProperties, bool scrollBarsVisible)
 {
     if (windowProperties->priv->scrollbarsVisible == scrollBarsVisible)
         return;
@@ -364,7 +364,7 @@ void webkitWindowPropertiesSetScrollbarsVisible(WebKitWindowProperties* windowPr
     g_object_notify_by_pspec(G_OBJECT(windowProperties), sObjProperties[PROP_SCROLLBARS_VISIBLE]);
 }
 
-void webkitWindowPropertiesSetResizable(WebKitWindowProperties* windowProperties, bool resizable)
+void webkitWindowPropertiesSetResizable(CyberKitWindowProperties* windowProperties, bool resizable)
 {
     if (windowProperties->priv->resizable == resizable)
         return;
@@ -372,7 +372,7 @@ void webkitWindowPropertiesSetResizable(WebKitWindowProperties* windowProperties
     g_object_notify_by_pspec(G_OBJECT(windowProperties), sObjProperties[PROP_RESIZABLE]);
 }
 
-void webkitWindowPropertiesSetFullscreen(WebKitWindowProperties* windowProperties, bool fullscreen)
+void webkitWindowPropertiesSetFullscreen(CyberKitWindowProperties* windowProperties, bool fullscreen)
 {
     if (windowProperties->priv->fullscreen == fullscreen)
         return;
@@ -380,7 +380,7 @@ void webkitWindowPropertiesSetFullscreen(WebKitWindowProperties* windowPropertie
     g_object_notify_by_pspec(G_OBJECT(windowProperties), sObjProperties[PROP_FULLSCREEN]);
 }
 
-void webkitWindowPropertiesUpdateFromWebWindowFeatures(WebKitWindowProperties* windowProperties, const WindowFeatures& windowFeatures)
+void webkitWindowPropertiesUpdateFromWebWindowFeatures(CyberKitWindowProperties* windowProperties, const WindowFeatures& windowFeatures)
 {
 #if PLATFORM(GTK)
     GdkRectangle geometry = windowProperties->priv->geometry;
@@ -407,12 +407,12 @@ void webkitWindowPropertiesUpdateFromWebWindowFeatures(WebKitWindowProperties* w
 #if PLATFORM(GTK)
 /**
  * webkit_window_properties_get_geometry:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  * @geometry: (out): return location for the window geometry
  *
  * Get the geometry the window should have on the screen when shown.
  */
-void webkit_window_properties_get_geometry(WebKitWindowProperties* windowProperties, GdkRectangle* geometry)
+void webkit_window_properties_get_geometry(CyberKitWindowProperties* windowProperties, GdkRectangle* geometry)
 {
     g_return_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties));
     g_return_if_fail(geometry);
@@ -423,13 +423,13 @@ void webkit_window_properties_get_geometry(WebKitWindowProperties* windowPropert
 
 /**
  * webkit_window_properties_get_toolbar_visible:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  *
  * Get whether the window should have the toolbar visible or not.
  *
  * Returns: %TRUE if toolbar should be visible or %FALSE otherwise.
  */
-gboolean webkit_window_properties_get_toolbar_visible(WebKitWindowProperties* windowProperties)
+gboolean webkit_window_properties_get_toolbar_visible(CyberKitWindowProperties* windowProperties)
 {
     g_return_val_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties), TRUE);
 
@@ -438,13 +438,13 @@ gboolean webkit_window_properties_get_toolbar_visible(WebKitWindowProperties* wi
 
 /**
  * webkit_window_properties_get_statusbar_visible:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  *
  * Get whether the window should have the statusbar visible or not.
  *
  * Returns: %TRUE if statusbar should be visible or %FALSE otherwise.
  */
-gboolean webkit_window_properties_get_statusbar_visible(WebKitWindowProperties* windowProperties)
+gboolean webkit_window_properties_get_statusbar_visible(CyberKitWindowProperties* windowProperties)
 {
     g_return_val_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties), TRUE);
 
@@ -453,13 +453,13 @@ gboolean webkit_window_properties_get_statusbar_visible(WebKitWindowProperties* 
 
 /**
  * webkit_window_properties_get_scrollbars_visible:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  *
  * Get whether the window should have the scrollbars visible or not.
  *
  * Returns: %TRUE if scrollbars should be visible or %FALSE otherwise.
  */
-gboolean webkit_window_properties_get_scrollbars_visible(WebKitWindowProperties* windowProperties)
+gboolean webkit_window_properties_get_scrollbars_visible(CyberKitWindowProperties* windowProperties)
 {
     g_return_val_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties), TRUE);
 
@@ -468,13 +468,13 @@ gboolean webkit_window_properties_get_scrollbars_visible(WebKitWindowProperties*
 
 /**
  * webkit_window_properties_get_menubar_visible:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  *
  * Get whether the window should have the menubar visible or not.
  *
  * Returns: %TRUE if menubar should be visible or %FALSE otherwise.
  */
-gboolean webkit_window_properties_get_menubar_visible(WebKitWindowProperties* windowProperties)
+gboolean webkit_window_properties_get_menubar_visible(CyberKitWindowProperties* windowProperties)
 {
     g_return_val_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties), TRUE);
 
@@ -483,13 +483,13 @@ gboolean webkit_window_properties_get_menubar_visible(WebKitWindowProperties* wi
 
 /**
  * webkit_window_properties_get_locationbar_visible:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  *
  * Get whether the window should have the locationbar visible or not.
  *
  * Returns: %TRUE if locationbar should be visible or %FALSE otherwise.
  */
-gboolean webkit_window_properties_get_locationbar_visible(WebKitWindowProperties* windowProperties)
+gboolean webkit_window_properties_get_locationbar_visible(CyberKitWindowProperties* windowProperties)
 {
     g_return_val_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties), TRUE);
 
@@ -498,13 +498,13 @@ gboolean webkit_window_properties_get_locationbar_visible(WebKitWindowProperties
 
 /**
  * webkit_window_properties_get_resizable:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  *
  * Get whether the window should be resizable by the user or not.
  *
  * Returns: %TRUE if the window should be resizable or %FALSE otherwise.
  */
-gboolean webkit_window_properties_get_resizable(WebKitWindowProperties* windowProperties)
+gboolean webkit_window_properties_get_resizable(CyberKitWindowProperties* windowProperties)
 {
     g_return_val_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties), TRUE);
 
@@ -513,13 +513,13 @@ gboolean webkit_window_properties_get_resizable(WebKitWindowProperties* windowPr
 
 /**
  * webkit_window_properties_get_fullscreen:
- * @window_properties: a #WebKitWindowProperties
+ * @window_properties: a #CyberKitWindowProperties
  *
  * Get whether the window should be shown in fullscreen state or not.
  *
  * Returns: %TRUE if the window should be fullscreen or %FALSE otherwise.
  */
-gboolean webkit_window_properties_get_fullscreen(WebKitWindowProperties* windowProperties)
+gboolean webkit_window_properties_get_fullscreen(CyberKitWindowProperties* windowProperties)
 {
     g_return_val_if_fail(WEBKIT_IS_WINDOW_PROPERTIES(windowProperties), FALSE);
 

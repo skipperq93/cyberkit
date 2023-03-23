@@ -1,4 +1,4 @@
-This test checks that the number of selectors used in insertRule() does not overflow WebKit's internal data structures.
+This test checks that the number of selectors used in insertRule() does not overflow CyberKit's internal data structures.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

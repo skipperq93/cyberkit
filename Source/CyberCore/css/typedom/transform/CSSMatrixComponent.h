@@ -29,7 +29,7 @@
 #include "CSSTransformComponent.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFunctionValue;
 class DOMMatrixReadOnly;
@@ -56,8 +56,8 @@ private:
     Ref<DOMMatrix> m_matrix;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSMatrixComponent)
-    static bool isType(const WebCore::CSSTransformComponent& transform) { return transform.getType() == WebCore::CSSTransformType::MatrixComponent; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSMatrixComponent)
+    static bool isType(const CyberCore::CSSTransformComponent& transform) { return transform.getType() == CyberCore::CSSTransformType::MatrixComponent; }
 SPECIALIZE_TYPE_TRAITS_END()

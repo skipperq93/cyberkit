@@ -36,7 +36,7 @@
 #include <wtf/Deque.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class PlatformSpeechSynthesizerClient;
@@ -115,6 +115,6 @@ private:
     WeakPtr<SpeechSynthesisClient> m_speechSynthesisClient;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

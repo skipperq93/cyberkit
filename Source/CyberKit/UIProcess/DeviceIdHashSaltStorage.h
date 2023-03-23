@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class DeviceIdHashSaltStorage : public ThreadSafeRefCounted<DeviceIdHashSaltStorage, WTF::DestructionThread::MainRunLoop> {
 public:
@@ -83,4 +83,4 @@ private:
     const String m_deviceIdHashSaltStorageDirectory;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -75,7 +75,7 @@
 #include "LibWebRTCProvider.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace PeerConnection;
 
@@ -1086,6 +1086,6 @@ WTFLogChannel& RTCPeerConnection::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

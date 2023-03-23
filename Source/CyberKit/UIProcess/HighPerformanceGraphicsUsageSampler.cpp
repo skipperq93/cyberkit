@@ -30,7 +30,7 @@
 #include "WebProcessPool.h"
 #include <CyberCore/DiagnosticLoggingKeys.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const Seconds samplingInterval { 10_min };
@@ -77,4 +77,4 @@ void HighPerformanceGraphicsUsageSampler::timerFired()
     firstPage->logDiagnosticMessage(DiagnosticLoggingKeys::webGLStateKey(), state, ShouldSample::No);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

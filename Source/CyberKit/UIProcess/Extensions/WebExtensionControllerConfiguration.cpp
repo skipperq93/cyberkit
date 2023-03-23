@@ -28,7 +28,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 WebExtensionControllerConfiguration::WebExtensionControllerConfiguration(IsPersistent persistent)
     : m_storageDirectory(persistent == IsPersistent::Yes ? createStorageDirectoryPath() : nullString())
@@ -64,6 +64,6 @@ bool WebExtensionControllerConfiguration::operator==(const WebExtensionControlle
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

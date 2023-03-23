@@ -31,7 +31,7 @@
 #include "SVGPathUtilities.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMMatrix2DInit;
 
@@ -72,4 +72,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

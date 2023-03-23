@@ -52,7 +52,7 @@ class MemoryHandle;
 } }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(OFFSCREEN_CANVAS_IN_WORKERS)
 class DetachedOffscreenCanvas;

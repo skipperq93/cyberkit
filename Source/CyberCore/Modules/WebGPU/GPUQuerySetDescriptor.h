@@ -32,14 +32,14 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUQuerySetDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::QuerySetDescriptor convertToBacking() const
     {
         return {
             { label },
-            WebCore::convertToBacking(type),
+            CyberCore::convertToBacking(type),
             count,
         };
     }

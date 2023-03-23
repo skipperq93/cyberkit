@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoKeyRaw final : public CryptoKey {
 public:
@@ -50,7 +50,7 @@ private:
     Vector<uint8_t> m_key;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_KEY(CryptoKeyRaw, CryptoKeyClass::Raw)
 

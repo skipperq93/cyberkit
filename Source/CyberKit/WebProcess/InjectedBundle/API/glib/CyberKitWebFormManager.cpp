@@ -21,7 +21,7 @@
 #include "CyberKitWebFormManager.h"
 
 #include "CyberKitWebFormManagerPrivate.h"
-#include <JavaScriptCore/APICast.h>
+#include <CyberScriptCore/APICast.h>
 #include <CyberCore/HTMLInputElement.h>
 #include <CyberCore/HTMLTextAreaElement.h>
 #include <CyberCore/JSNode.h>

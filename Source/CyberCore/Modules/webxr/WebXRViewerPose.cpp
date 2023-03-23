@@ -29,7 +29,7 @@
 
 #if ENABLE(WEBXR)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRViewerPose);
 
@@ -55,6 +55,6 @@ void WebXRViewerPose::setViews(Vector<Ref<WebXRView>>&& views)
     m_views = WTFMove(views);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

@@ -44,7 +44,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FileReader);
 
@@ -241,4 +241,4 @@ void FileReader::enqueueTask(Function<void()>&& task)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

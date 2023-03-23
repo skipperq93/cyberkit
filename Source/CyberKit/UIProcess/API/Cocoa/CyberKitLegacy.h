@@ -39,7 +39,7 @@
 #import <CyberKit/WebFrameView.h>
 #import <CyberKit/WebHistory.h>
 #import <CyberKit/WebHistoryItem.h>
-#import <CyberKit/WebKitErrors.h>
+#import <CyberKit/CyberKitErrors.h>
 #import <CyberKit/WebPlugin.h>
 #import <CyberKit/WebPluginContainer.h>
 #import <CyberKit/WebPluginViewFactory.h>

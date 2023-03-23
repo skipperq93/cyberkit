@@ -25,7 +25,7 @@
 
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class NamedNodeMap;
 
@@ -53,8 +53,8 @@ private:
     String m_systemId;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::DocumentType)
-    static bool isType(const WebCore::Node& node) { return node.nodeType() == WebCore::Node::DOCUMENT_TYPE_NODE; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::DocumentType)
+    static bool isType(const CyberCore::Node& node) { return node.nodeType() == CyberCore::Node::DOCUMENT_TYPE_NODE; }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -35,7 +35,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSLayerBlockRule::CSSLayerBlockRule(StyleRuleLayer& rule, CSSStyleSheet* parent)
     : CSSGroupingRule(rule, parent)
@@ -80,5 +80,5 @@ String stringFromCascadeLayerName(const CascadeLayerName& name)
     return result.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

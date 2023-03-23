@@ -26,7 +26,7 @@
 
 #include "AudioNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // AudioBasicInspectorNode is an AudioNode with one input and one output where the output might not necessarily connect to another node's input.
 // If the output is not connected to any other node, then the AudioBasicInspectorNode's processIfNecessary() function will be called automatically by
@@ -46,4 +46,4 @@ private:
     void updatePullStatus() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

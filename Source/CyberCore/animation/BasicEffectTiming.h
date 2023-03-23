@@ -29,7 +29,7 @@
 #include <wtf/Markable.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BasicEffectTiming {
     Markable<Seconds, Seconds::MarkableTraits> localTime;
@@ -39,4 +39,4 @@ struct BasicEffectTiming {
     AnimationEffectPhase phase;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

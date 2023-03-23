@@ -49,7 +49,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -314,4 +314,4 @@ Database* InspectorDatabaseAgent::databaseForId(const String& databaseId)
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -47,7 +47,7 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool CDM::supportsKeySystem(const String& keySystem)
 {

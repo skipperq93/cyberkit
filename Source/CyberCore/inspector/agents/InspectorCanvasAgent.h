@@ -44,7 +44,7 @@ namespace Inspector {
 class InjectedScriptManager;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CanvasRenderingContext;
 class Frame;
@@ -159,4 +159,4 @@ private:
     std::optional<size_t> m_recordingAutoCaptureFrameCount;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUBlendOperation.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUBlendOperation : uint8_t {
     Add,

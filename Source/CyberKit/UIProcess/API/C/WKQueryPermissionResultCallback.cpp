@@ -29,7 +29,7 @@
 #include "QueryPermissionResultCallback.h"
 #include "WKAPICast.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKQueryPermissionResultCallbackGetTypeID()
 {

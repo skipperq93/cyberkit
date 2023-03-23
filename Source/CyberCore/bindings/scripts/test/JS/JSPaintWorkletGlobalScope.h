@@ -23,7 +23,7 @@
 #include "JSDOMWrapper.h"
 #include "JSWorkletGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaintWorkletGlobalScope;
 
@@ -104,4 +104,4 @@ template<> struct JSDOMWrapperConverterTraits<PaintWorkletGlobalScope> {
     using ToWrappedReturnType = PaintWorkletGlobalScope*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

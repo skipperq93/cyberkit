@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBRequestCompletionEvent);
 
@@ -38,4 +38,4 @@ IDBRequestCompletionEvent::IDBRequestCompletionEvent(const AtomString& type, Can
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

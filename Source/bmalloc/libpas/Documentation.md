@@ -38,7 +38,7 @@ for comprehensive isoheaping of all malloc/new callsites in C/C++ programs.
 Since CyberKit [186504@main](https://commits.webkit.org/186504@main), we've been steadily enabling libpas as a
 replacement for CyberKit's bmalloc and MetaAllocator. This has so far added up to a ~2% Speedometer2 speed-up and
 a ~8% memory improvement (on multiple memory benchmarks). Half of the speed-up comes from replacing the MetaAllocator,
-which was JavaScriptCore's old way of managing executable memory. Now, JSC uses libpas's jit_heap to manage executable
+which was CyberScriptCore's old way of managing executable memory. Now, JSC uses libpas's jit_heap to manage executable
 memory. The other half of the speed-up comes from replacing everything that bmalloc provided -- the fastMalloc API, the
 Gigacage API, and the IsoHeap<> API. All of the memory improvement comes from replacing bmalloc (the MetaAllocator was
 already fairly memory-efficient).
@@ -59,7 +59,7 @@ Libpas tries to be:
 - External metadata. Libpas never puts information about a free object inside that object. The metadata is
   always elsewhere. So, there's no way for a use-after-free to corrupt libpas's understanding of memory.
 - Multiple heap configurations. Not all programs want the same time-memory trade-off. Some malloc users have
-  very bizarre requirements, like what JavaScriptCore does with its ExecutableAllocator. The goal is to support
+  very bizarre requirements, like what CyberScriptCore does with its ExecutableAllocator. The goal is to support
   all kinds of special allocator needs simultaneously in one library.
 - Boatloads of heaps. Libpas was written with the dream of obviating the need for ownership type systems or
   other compiler approaches to fixing the type-safety of use-after-frees. This means that we need one heap per

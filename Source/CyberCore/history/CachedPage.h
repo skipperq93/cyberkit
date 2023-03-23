@@ -28,7 +28,7 @@
 #include "CachedFrame.h"
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class DocumentLoader;
@@ -73,4 +73,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

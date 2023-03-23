@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmAesCbcCfbParams final : public CryptoAlgorithmParameters {
 public:
@@ -61,7 +61,7 @@ private:
     mutable Vector<uint8_t> m_ivVector;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_ALGORITHM_PARAMETERS(AesCbcCfbParams)
 

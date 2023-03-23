@@ -28,7 +28,7 @@
 #include "ElementInlines.h"
 #include "HTMLAnchorElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SharedStringHash HTMLAnchorElement::visitedLinkHash() const
 {

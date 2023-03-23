@@ -33,7 +33,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Locale;
 
@@ -110,6 +110,6 @@ private:
     GregorianDateTime m_placeholderDate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

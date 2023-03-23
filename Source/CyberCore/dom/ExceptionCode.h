@@ -20,7 +20,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ExceptionCode {
     // DOMException error names (https://webidl.spec.whatwg.org/#idl-DOMException-error-names).
@@ -71,50 +71,50 @@ enum ExceptionCode {
     ExistingExceptionError,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ExceptionCode> {
+template<> struct EnumTraits<CyberCore::ExceptionCode> {
     using values = EnumValues<
-    WebCore::ExceptionCode,
-    WebCore::ExceptionCode::IndexSizeError,
-    WebCore::ExceptionCode::HierarchyRequestError,
-    WebCore::ExceptionCode::WrongDocumentError,
-    WebCore::ExceptionCode::InvalidCharacterError,
-    WebCore::ExceptionCode::NoModificationAllowedError,
-    WebCore::ExceptionCode::NotFoundError,
-    WebCore::ExceptionCode::NotSupportedError,
-    WebCore::ExceptionCode::InUseAttributeError,
-    WebCore::ExceptionCode::InvalidStateError,
-    WebCore::ExceptionCode::SyntaxError,
-    WebCore::ExceptionCode::InvalidModificationError,
-    WebCore::ExceptionCode::NamespaceError,
-    WebCore::ExceptionCode::InvalidAccessError,
-    WebCore::ExceptionCode::TypeMismatchError,
-    WebCore::ExceptionCode::SecurityError,
-    WebCore::ExceptionCode::NetworkError,
-    WebCore::ExceptionCode::AbortError,
-    WebCore::ExceptionCode::URLMismatchError,
-    WebCore::ExceptionCode::QuotaExceededError,
-    WebCore::ExceptionCode::TimeoutError,
-    WebCore::ExceptionCode::InvalidNodeTypeError,
-    WebCore::ExceptionCode::DataCloneError,
-    WebCore::ExceptionCode::EncodingError,
-    WebCore::ExceptionCode::NotReadableError,
-    WebCore::ExceptionCode::UnknownError,
-    WebCore::ExceptionCode::ConstraintError,
-    WebCore::ExceptionCode::DataError,
-    WebCore::ExceptionCode::TransactionInactiveError,
-    WebCore::ExceptionCode::ReadonlyError,
-    WebCore::ExceptionCode::VersionError,
-    WebCore::ExceptionCode::OperationError,
-    WebCore::ExceptionCode::NotAllowedError,
-    WebCore::ExceptionCode::RangeError,
-    WebCore::ExceptionCode::TypeError,
-    WebCore::ExceptionCode::JSSyntaxError,
-    WebCore::ExceptionCode::StackOverflowError,
-    WebCore::ExceptionCode::ExistingExceptionError
+    CyberCore::ExceptionCode,
+    CyberCore::ExceptionCode::IndexSizeError,
+    CyberCore::ExceptionCode::HierarchyRequestError,
+    CyberCore::ExceptionCode::WrongDocumentError,
+    CyberCore::ExceptionCode::InvalidCharacterError,
+    CyberCore::ExceptionCode::NoModificationAllowedError,
+    CyberCore::ExceptionCode::NotFoundError,
+    CyberCore::ExceptionCode::NotSupportedError,
+    CyberCore::ExceptionCode::InUseAttributeError,
+    CyberCore::ExceptionCode::InvalidStateError,
+    CyberCore::ExceptionCode::SyntaxError,
+    CyberCore::ExceptionCode::InvalidModificationError,
+    CyberCore::ExceptionCode::NamespaceError,
+    CyberCore::ExceptionCode::InvalidAccessError,
+    CyberCore::ExceptionCode::TypeMismatchError,
+    CyberCore::ExceptionCode::SecurityError,
+    CyberCore::ExceptionCode::NetworkError,
+    CyberCore::ExceptionCode::AbortError,
+    CyberCore::ExceptionCode::URLMismatchError,
+    CyberCore::ExceptionCode::QuotaExceededError,
+    CyberCore::ExceptionCode::TimeoutError,
+    CyberCore::ExceptionCode::InvalidNodeTypeError,
+    CyberCore::ExceptionCode::DataCloneError,
+    CyberCore::ExceptionCode::EncodingError,
+    CyberCore::ExceptionCode::NotReadableError,
+    CyberCore::ExceptionCode::UnknownError,
+    CyberCore::ExceptionCode::ConstraintError,
+    CyberCore::ExceptionCode::DataError,
+    CyberCore::ExceptionCode::TransactionInactiveError,
+    CyberCore::ExceptionCode::ReadonlyError,
+    CyberCore::ExceptionCode::VersionError,
+    CyberCore::ExceptionCode::OperationError,
+    CyberCore::ExceptionCode::NotAllowedError,
+    CyberCore::ExceptionCode::RangeError,
+    CyberCore::ExceptionCode::TypeError,
+    CyberCore::ExceptionCode::JSSyntaxError,
+    CyberCore::ExceptionCode::StackOverflowError,
+    CyberCore::ExceptionCode::ExistingExceptionError
     >;
 };
 

@@ -31,7 +31,7 @@ namespace JSC {
 class VM;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSHeapData;
 
@@ -53,4 +53,4 @@ private:
     uint64_t m_lastExecutionVersion;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

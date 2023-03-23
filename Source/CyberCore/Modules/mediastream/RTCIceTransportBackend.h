@@ -30,7 +30,7 @@
 #include "RTCIceTransportState.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCIceCandidate;
 
@@ -55,6 +55,6 @@ inline bool operator==(const RTCIceTransportBackend& a, const RTCIceTransportBac
     return a.backend() == b.backend();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

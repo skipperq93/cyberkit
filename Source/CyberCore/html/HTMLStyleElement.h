@@ -25,7 +25,7 @@
 #include "HTMLElement.h"
 #include "InlineStyleSheetOwner.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLStyleElement;
 class Page;

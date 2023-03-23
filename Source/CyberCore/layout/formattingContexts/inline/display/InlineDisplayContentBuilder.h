@@ -29,7 +29,7 @@
 #include "InlineLineBuilder.h"
 #include "LayoutUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct AncestorStack;

@@ -27,7 +27,7 @@
 #include "LiveNodeList.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -234,9 +234,9 @@ inline const CollectionNamedElementCache& HTMLCollection::namedItemCaches() cons
     return *m_namedElementCache;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(ClassName, Type) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ClassName) \
-    static bool isType(const WebCore::HTMLCollection& collection) { return collection.type() == WebCore::Type; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ClassName) \
+    static bool isType(const CyberCore::HTMLCollection& collection) { return collection.type() == CyberCore::Type; } \
 SPECIALIZE_TYPE_TRAITS_END()

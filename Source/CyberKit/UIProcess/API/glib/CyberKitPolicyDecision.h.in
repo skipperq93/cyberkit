@@ -19,27 +19,27 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitPolicyDecision_h
-#define WebKitPolicyDecision_h
+#ifndef CyberKitPolicyDecision_h
+#define CyberKitPolicyDecision_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebsitePolicies.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsitePolicies.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_POLICY_DECISION            (webkit_policy_decision_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_POLICY_DECISION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_POLICY_DECISION, WebKitPolicyDecision))
-#define WEBKIT_POLICY_DECISION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_POLICY_DECISION, WebKitPolicyDecisionClass))
+#define WEBKIT_POLICY_DECISION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_POLICY_DECISION, CyberKitPolicyDecision))
+#define WEBKIT_POLICY_DECISION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_POLICY_DECISION, CyberKitPolicyDecisionClass))
 #define WEBKIT_IS_POLICY_DECISION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_POLICY_DECISION))
 #define WEBKIT_IS_POLICY_DECISION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_POLICY_DECISION))
-#define WEBKIT_POLICY_DECISION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_POLICY_DECISION, WebKitPolicyDecisionClass))
+#define WEBKIT_POLICY_DECISION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_POLICY_DECISION, CyberKitPolicyDecisionClass))
 #endif
 
-WEBKIT_DECLARE_DERIVABLE_TYPE (WebKitPolicyDecision, webkit_policy_decision, WEBKIT, POLICY_DECISION, GObject)
+WEBKIT_DECLARE_DERIVABLE_TYPE (CyberKitPolicyDecision, webkit_policy_decision, WEBKIT, POLICY_DECISION, GObject)
 
-struct _WebKitPolicyDecisionClass {
+struct _CyberKitPolicyDecisionClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -56,17 +56,17 @@ struct _WebKitPolicyDecisionClass {
 };
 
 WEBKIT_API void
-webkit_policy_decision_use      (WebKitPolicyDecision *decision);
+webkit_policy_decision_use      (CyberKitPolicyDecision *decision);
 
 WEBKIT_API void
-webkit_policy_decision_use_with_policies  (WebKitPolicyDecision *decision,
-                                           WebKitWebsitePolicies *policies);
+webkit_policy_decision_use_with_policies  (CyberKitPolicyDecision *decision,
+                                           CyberKitWebsitePolicies *policies);
 
 WEBKIT_API void
-webkit_policy_decision_ignore   (WebKitPolicyDecision *decision);
+webkit_policy_decision_ignore   (CyberKitPolicyDecision *decision);
 
 WEBKIT_API void
-webkit_policy_decision_download (WebKitPolicyDecision *decision);
+webkit_policy_decision_download (CyberKitPolicyDecision *decision);
 
 G_END_DECLS
 

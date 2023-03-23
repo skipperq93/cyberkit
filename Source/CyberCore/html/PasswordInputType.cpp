@@ -37,7 +37,7 @@
 #include "InputTypeNames.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& PasswordInputType::formControlType() const
 {
@@ -86,4 +86,4 @@ bool PasswordInputType::shouldRespectListAttribute()
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

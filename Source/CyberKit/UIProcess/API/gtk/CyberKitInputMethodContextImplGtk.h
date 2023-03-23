@@ -19,35 +19,35 @@
 
 #pragma once
 
-#include "WebKitInputMethodContext.h"
+#include "CyberKitInputMethodContext.h"
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK            (webkit_input_method_context_impl_gtk_get_type())
-#define WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK, WebKitInputMethodContextImplGtk))
+#define WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK, CyberKitInputMethodContextImplGtk))
 #define WEBKIT_IS_INPUT_METHOD_CONTEXT_IMPL_GTK(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK))
-#define WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK, WebKitInputMethodContextImplGtkClass))
+#define WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK, CyberKitInputMethodContextImplGtkClass))
 #define WEBKIT_IS_INPUT_METHOD_CONTEXT_IMPL_GTK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK))
-#define WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK, WebKitInputMethodContextImplGtkClass))
+#define WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK, CyberKitInputMethodContextImplGtkClass))
 
-typedef struct _WebKitInputMethodContextImplGtk        WebKitInputMethodContextImplGtk;
-typedef struct _WebKitInputMethodContextImplGtkClass   WebKitInputMethodContextImplGtkClass;
-typedef struct _WebKitInputMethodContextImplGtkPrivate WebKitInputMethodContextImplGtkPrivate;
+typedef struct _CyberKitInputMethodContextImplGtk        CyberKitInputMethodContextImplGtk;
+typedef struct _CyberKitInputMethodContextImplGtkClass   CyberKitInputMethodContextImplGtkClass;
+typedef struct _CyberKitInputMethodContextImplGtkPrivate CyberKitInputMethodContextImplGtkPrivate;
 
-struct _WebKitInputMethodContextImplGtk {
-    WebKitInputMethodContext parent;
+struct _CyberKitInputMethodContextImplGtk {
+    CyberKitInputMethodContext parent;
 
-    WebKitInputMethodContextImplGtkPrivate* priv;
+    CyberKitInputMethodContextImplGtkPrivate* priv;
 };
 
-struct _WebKitInputMethodContextImplGtkClass {
-    WebKitInputMethodContextClass parentClass;
+struct _CyberKitInputMethodContextImplGtkClass {
+    CyberKitInputMethodContextClass parentClass;
 };
 
 GType webkit_input_method_context_impl_gtk_get_type();
-WebKitInputMethodContext* webkitInputMethodContextImplGtkNew();
-void webkitInputMethodContextImplGtkSetClientWidget(WebKitInputMethodContextImplGtk*, GtkWidget*);
+CyberKitInputMethodContext* webkitInputMethodContextImplGtkNew();
+void webkitInputMethodContextImplGtkSetClientWidget(CyberKitInputMethodContextImplGtk*, GtkWidget*);
 
 G_END_DECLS
 

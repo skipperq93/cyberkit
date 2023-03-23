@@ -41,7 +41,7 @@ class AbstractSlotVisitor;
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CharacterData;
 class ContainerNode;
@@ -76,4 +76,4 @@ public:
     virtual void visitNodesConcurrently(JSC::AbstractSlotVisitor&) const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

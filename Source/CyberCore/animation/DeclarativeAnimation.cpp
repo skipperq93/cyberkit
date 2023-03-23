@@ -38,7 +38,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DeclarativeAnimation);
 
@@ -371,4 +371,4 @@ void DeclarativeAnimation::enqueueDOMEvent(const AtomString& eventType, Seconds 
     enqueueAnimationEvent(WTFMove(event));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

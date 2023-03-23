@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionAPIRuntime;
 
@@ -68,7 +68,7 @@ private:
     RefPtr<WebExtensionContextProxy> m_extensionContext;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #define WEB_EXTENSION_DECLARE_JS_WRAPPER_CLASS(ImplClass, ScriptClass) \
 public: \

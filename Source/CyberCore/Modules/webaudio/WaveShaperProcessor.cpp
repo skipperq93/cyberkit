@@ -31,7 +31,7 @@
 #include "WaveShaperDSPKernel.h"
 #include <CyberScriptCore/Float32Array.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 WaveShaperProcessor::WaveShaperProcessor(float sampleRate, size_t numberOfChannels)
     : AudioDSPKernelProcessor(sampleRate, numberOfChannels)
@@ -98,6 +98,6 @@ void WaveShaperProcessor::process(const AudioBus* source, AudioBus* destination,
         static_cast<WaveShaperDSPKernel&>(*m_kernels[i]).process(source->channel(i)->data(), destination->channel(i)->mutableData(), framesToProcess);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

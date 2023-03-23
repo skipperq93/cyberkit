@@ -53,7 +53,7 @@
 #include "RemoteTextureProxy.h"
 #include "RemoteTextureViewProxy.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 WebGPUIdentifier DowncastConvertToBackingContext::convertToBacking(const PAL::WebGPU::Adapter& adapter)
 {
@@ -180,6 +180,6 @@ WebGPUIdentifier DowncastConvertToBackingContext::convertToBacking(const PAL::We
     return static_cast<const RemoteTextureViewProxy&>(textureView).backing();
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // HAVE(GPU_PROCESS)

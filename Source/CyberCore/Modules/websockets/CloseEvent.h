@@ -33,7 +33,7 @@
 #include "Event.h"
 #include "EventNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CloseEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(CloseEvent);
@@ -83,4 +83,4 @@ private:
     String m_reason;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

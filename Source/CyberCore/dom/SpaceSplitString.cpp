@@ -26,7 +26,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static_assert(!(sizeof(SpaceSplitStringData) % sizeof(uintptr_t)), "SpaceSplitStringDataTail is aligned to WordSize");
 
@@ -241,4 +241,4 @@ void SpaceSplitStringData::destroy(SpaceSplitStringData* spaceSplitString)
     fastFree(spaceSplitString);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

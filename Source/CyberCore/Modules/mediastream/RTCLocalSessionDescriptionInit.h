@@ -28,13 +28,13 @@
 
 #include "RTCSdpType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCLocalSessionDescriptionInit {
     std::optional<RTCSdpType> type;
     String sdp;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

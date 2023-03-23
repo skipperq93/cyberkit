@@ -30,7 +30,7 @@
 #include "FormData.h"
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FormDataConsumer::FormDataConsumer(const FormData& formData, ScriptExecutionContext& context, Callback&& callback)
     : m_formData(formData.copy())
@@ -142,4 +142,4 @@ void FormDataConsumer::cancel()
     m_context = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

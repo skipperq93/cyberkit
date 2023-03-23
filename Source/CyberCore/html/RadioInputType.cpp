@@ -35,7 +35,7 @@
 #include "SpatialNavigation.h"
 #include "TypedElementDescendantIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -249,4 +249,4 @@ bool RadioInputType::matchesIndeterminatePseudoClass() const
     return !element.checked();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

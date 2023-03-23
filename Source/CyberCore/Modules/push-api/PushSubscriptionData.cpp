@@ -28,7 +28,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 PushSubscriptionData PushSubscriptionData::isolatedCopy() const &
 {
@@ -40,6 +40,6 @@ PushSubscriptionData PushSubscriptionData::isolatedCopy() &&
     return { identifier, WTFMove(endpoint).isolatedCopy(), expirationTime, WTFMove(serverVAPIDPublicKey), WTFMove(clientECDHPublicKey), WTFMove(sharedAuthenticationSecret) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SuspendedPageProxy;
 class WebBackForwardCacheEntry;
@@ -72,4 +72,4 @@ private:
     Vector<WebBackForwardListItem*, 2> m_itemsWithCachedPage;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

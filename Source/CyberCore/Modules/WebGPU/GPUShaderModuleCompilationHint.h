@@ -29,7 +29,7 @@
 #include "GPUPipelineLayout.h"
 #include <pal/graphics/WebGPU/WebGPUShaderModuleCompilationHint.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUShaderModuleCompilationHint {
     PAL::WebGPU::ShaderModuleCompilationHint convertToBacking(const Ref<GPUPipelineLayout>& autoLayout) const

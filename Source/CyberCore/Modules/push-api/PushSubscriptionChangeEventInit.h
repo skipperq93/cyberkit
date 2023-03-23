@@ -29,7 +29,7 @@
 
 #include "ExtendableEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PushSubscription;
 
@@ -38,6 +38,6 @@ struct PushSubscriptionChangeEventInit : ExtendableEventInit {
     RefPtr<PushSubscription> oldSubscription;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

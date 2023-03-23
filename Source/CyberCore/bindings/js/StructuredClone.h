@@ -32,9 +32,9 @@ class JSGlobalObject;
 using EncodedJSValue = int64_t;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC_DECLARE_HOST_FUNCTION(cloneArrayBuffer);
 JSC_DECLARE_HOST_FUNCTION(structuredCloneForStream);
 
-} // namespace WebCore
+} // namespace CyberCore

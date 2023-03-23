@@ -31,7 +31,7 @@
 #import "PoseAsClass.h"
 #import "TestInvocation.h"
 #import "TestRunnerWKWebView.h"
-#import "WebKitTestRunnerPasteboard.h"
+#import "CyberKitTestRunnerPasteboard.h"
 #import <CyberKit/WKContextPrivate.h>
 #import <CyberKit/WKPageGroup.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
@@ -127,8 +127,8 @@ static void swizzledCancelTracking(NSMenu *menu, SEL)
 
 void TestController::platformInitialize(const Options& options)
 {
-    poseAsClass("WebKitTestRunnerPasteboard", "NSPasteboard");
-    poseAsClass("WebKitTestRunnerEvent", "NSEvent");
+    poseAsClass("CyberKitTestRunnerPasteboard", "NSPasteboard");
+    poseAsClass("CyberKitTestRunnerEvent", "NSEvent");
     
     cocoaPlatformInitialize(options);
 
@@ -155,12 +155,12 @@ void TestController::platformInitialize(const Options& options)
 
 void TestController::platformDestroy()
 {
-    [WebKitTestRunnerPasteboard releaseLocalPasteboards];
+    [CyberKitTestRunnerPasteboard releaseLocalPasteboards];
 }
 
 void TestController::initializeInjectedBundlePath()
 {
-    NSString *nsBundlePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"WebKitTestRunnerInjectedBundle.bundle"];
+    NSString *nsBundlePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"CyberKitTestRunnerInjectedBundle.bundle"];
     m_injectedBundlePath.adopt(WKStringCreateWithCFString((__bridge CFStringRef)nsBundlePath));
 }
 
@@ -361,7 +361,7 @@ static NSSet *allowedFontFamilySet()
         @"Trebuchet MS",
         @"Verdana",
         @"Webdings",
-        @"WebKit WeightWatcher",
+        @"CyberKit WeightWatcher",
         @"FontWithFeaturesOTF",
         @"FontWithFeaturesTTF",
         @"Wingdings 2",

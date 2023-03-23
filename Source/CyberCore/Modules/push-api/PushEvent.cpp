@@ -34,7 +34,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PushEvent);
 
@@ -84,6 +84,6 @@ PushEvent::~PushEvent()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -37,7 +37,7 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 class JSDOMGlobalObject;
@@ -97,4 +97,4 @@ private:
     bool m_suspended { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

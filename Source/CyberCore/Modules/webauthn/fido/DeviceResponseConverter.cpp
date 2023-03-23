@@ -41,7 +41,7 @@
 #include <wtf/Vector.h>
 
 namespace fido {
-using namespace WebCore;
+using namespace CyberCore;
 using CBOR = cbor::CBORValue;
 
 static ProtocolVersion convertStringToProtocolVersion(const String& version)
@@ -114,7 +114,7 @@ static Vector<uint8_t> getCredentialId(const Vector<uint8_t>& authenticatorData)
 
 // Decodes byte array response from authenticator to CBOR value object and
 // checks for correct encoding format.
-RefPtr<AuthenticatorAttestationResponse> readCTAPMakeCredentialResponse(const Vector<uint8_t>& inBuffer, WebCore::AuthenticatorAttachment attachment, Vector<AuthenticatorTransport>&& transports, const AttestationConveyancePreference& attestation)
+RefPtr<AuthenticatorAttestationResponse> readCTAPMakeCredentialResponse(const Vector<uint8_t>& inBuffer, CyberCore::AuthenticatorAttachment attachment, Vector<AuthenticatorTransport>&& transports, const AttestationConveyancePreference& attestation)
 {
     auto decodedMap = decodeResponseMap(inBuffer);
     if (!decodedMap)
@@ -157,7 +157,7 @@ RefPtr<AuthenticatorAttestationResponse> readCTAPMakeCredentialResponse(const Ve
     return AuthenticatorAttestationResponse::create(credentialId, *attestationObject, attachment, WTFMove(transports));
 }
 
-RefPtr<AuthenticatorAssertionResponse> readCTAPGetAssertionResponse(const Vector<uint8_t>& inBuffer, WebCore::AuthenticatorAttachment attachment)
+RefPtr<AuthenticatorAssertionResponse> readCTAPGetAssertionResponse(const Vector<uint8_t>& inBuffer, CyberCore::AuthenticatorAttachment attachment)
 {
     auto decodedMap = decodeResponseMap(inBuffer);
     if (!decodedMap)

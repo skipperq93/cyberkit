@@ -35,7 +35,7 @@
 
 namespace API {
 
-ContentRuleList::ContentRuleList(Ref<WebKit::WebCompiledContentRuleList>&& contentRuleList, WebKit::NetworkCache::Data&& mappedFile)
+ContentRuleList::ContentRuleList(Ref<CyberKit::WebCompiledContentRuleList>&& contentRuleList, CyberKit::NetworkCache::Data&& mappedFile)
     : m_compiledRuleList(WTFMove(contentRuleList))
     , m_mappedFile(WTFMove(mappedFile))
 {

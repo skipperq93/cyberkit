@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLActiveInfo : public RefCounted<WebGLActiveInfo> {
 public:
@@ -58,6 +58,6 @@ private:
     GCGLint m_size;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

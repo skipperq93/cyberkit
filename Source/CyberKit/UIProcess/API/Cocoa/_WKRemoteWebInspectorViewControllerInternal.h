@@ -28,7 +28,7 @@
 
 #if !TARGET_OS_IPHONE
 
-namespace WebKit {
+namespace CyberKit {
 class RemoteWebInspectorUIProxy;
 }
 
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _WKRemoteWebInspectorViewController () {
 @package
-    RefPtr<WebKit::RemoteWebInspectorUIProxy> m_remoteInspectorProxy;
+    RefPtr<CyberKit::RemoteWebInspectorUIProxy> m_remoteInspectorProxy;
 }
 @end
 

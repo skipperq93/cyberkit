@@ -36,7 +36,7 @@
 
 typedef struct _GMenu GMenu;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItem;
 class WebContextMenuItemData;
@@ -71,6 +71,6 @@ private:
 };
 
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

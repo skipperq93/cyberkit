@@ -34,7 +34,7 @@
 #include <atk/atk.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPageProxy::platformInitialize()
 {
@@ -75,4 +75,4 @@ void WebPageProxy::setInputMethodState(std::optional<InputMethodState>&& state)
     static_cast<PageClientImpl&>(pageClient()).setInputMethodState(WTFMove(state));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

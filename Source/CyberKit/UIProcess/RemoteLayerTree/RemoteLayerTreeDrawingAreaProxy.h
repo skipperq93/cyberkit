@@ -33,7 +33,7 @@
 #include <CyberCore/IntPoint.h>
 #include <CyberCore/IntSize.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteScrollingCoordinatorProxy;
 class RemoteLayerTreeTransaction;
@@ -138,6 +138,6 @@ private:
     Vector<Ref<WebProcessProxy>> m_processesWithRegisteredRemoteLayerTreeDrawingAreaProxyMessageReceiver;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 SPECIALIZE_TYPE_TRAITS_DRAWING_AREA_PROXY(RemoteLayerTreeDrawingAreaProxy, DrawingAreaType::RemoteLayerTree)

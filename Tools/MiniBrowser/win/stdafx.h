@@ -59,7 +59,7 @@
 #include <wininet.h>
 #include <wtf/Platform.h>
 
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 
 #if 0

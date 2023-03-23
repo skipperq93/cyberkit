@@ -30,7 +30,7 @@
 #include "AnimationTimeline.h"
 #include "KeyframeEffectOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct KeyframeAnimationOptions : KeyframeEffectOptions {
     String id;
@@ -38,4 +38,4 @@ struct KeyframeAnimationOptions : KeyframeEffectOptions {
     std::variant<FramesPerSecond, AnimationFrameRatePreset> frameRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

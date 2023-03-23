@@ -37,7 +37,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GPUBindGroup;
 class GPUBuffer;

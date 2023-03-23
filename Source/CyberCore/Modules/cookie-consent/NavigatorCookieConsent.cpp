@@ -35,7 +35,7 @@
 #include "Page.h"
 #include "RequestCookieConsentOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void NavigatorCookieConsent::requestCookieConsent(Navigator& navigator, RequestCookieConsentOptions&& options, Ref<DeferredPromise>&& promise)
 {
@@ -79,4 +79,4 @@ NavigatorCookieConsent& NavigatorCookieConsent::from(Navigator& navigator)
     return *supplement;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

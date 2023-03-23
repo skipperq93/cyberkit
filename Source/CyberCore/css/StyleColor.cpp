@@ -39,7 +39,7 @@
 #include "RenderTheme.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Color> resolveAbsoluteComponents(const StyleColorMix&);
 static Color resolveColor(const StyleColorMix&, const Color& currentColor);
@@ -136,7 +136,7 @@ Color StyleColor::resolveColor(const Color& currentColor) const
             return currentColor;
         },
         [&] (const UniqueRef<StyleColorMix>& colorMix) -> Color {
-            return WebCore::resolveColor(colorMix, currentColor);
+            return CyberCore::resolveColor(colorMix, currentColor);
         }
     );
 }
@@ -164,7 +164,7 @@ const Color& StyleColor::absoluteColor() const
 
 StyleColor::ColorKind StyleColor::resolveAbsoluteComponents(StyleColorMix&& colorMix)
 {
-    if (auto absoluteColor = WebCore::resolveAbsoluteComponents(colorMix))
+    if (auto absoluteColor = CyberCore::resolveAbsoluteComponents(colorMix))
         return { WTFMove(*absoluteColor) };
     return { makeUniqueRef<StyleColorMix>(WTFMove(colorMix)) };
 }
@@ -318,4 +318,4 @@ WTF::TextStream& operator<<(WTF::TextStream& out, const StyleColor& color)
     return out;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

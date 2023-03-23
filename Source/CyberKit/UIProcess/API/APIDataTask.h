@@ -31,7 +31,7 @@
 #include <wtf/URL.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 class NetworkProcessProxy;
 class WebPageProxy;
 }
@@ -51,18 +51,18 @@ public:
 
     void cancel();
 
-    WebKit::WebPageProxy* page() { return m_page.get(); }
+    CyberKit::WebPageProxy* page() { return m_page.get(); }
     const WTF::URL& originalURL() const { return m_originalURL; }
     const DataTaskClient& client() const { return m_client.get(); }
     void setClient(Ref<DataTaskClient>&&);
 
 private:
-    DataTask(WebKit::DataTaskIdentifier, WeakPtr<WebKit::WebPageProxy>&&, WTF::URL&&);
+    DataTask(CyberKit::DataTaskIdentifier, WeakPtr<CyberKit::WebPageProxy>&&, WTF::URL&&);
 
-    WebKit::DataTaskIdentifier m_identifier;
-    WeakPtr<WebKit::WebPageProxy> m_page;
+    CyberKit::DataTaskIdentifier m_identifier;
+    WeakPtr<CyberKit::WebPageProxy> m_page;
     WTF::URL m_originalURL;
-    WeakPtr<WebKit::NetworkProcessProxy> m_networkProcess;
+    WeakPtr<CyberKit::NetworkProcessProxy> m_networkProcess;
     std::optional<PAL::SessionID> m_sessionID;
     Ref<DataTaskClient> m_client;
 };

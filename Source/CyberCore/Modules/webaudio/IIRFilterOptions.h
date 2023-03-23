@@ -29,13 +29,13 @@
 #include "AudioNodeOptions.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct IIRFilterOptions : AudioNodeOptions {
     Vector<double> feedforward;
     Vector<double> feedback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

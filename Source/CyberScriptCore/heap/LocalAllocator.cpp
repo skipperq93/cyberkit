@@ -125,7 +125,7 @@ void* LocalAllocator::allocateSlowCase(Heap& heap, GCDeferralContext* deferralCo
     heap.collectIfNecessaryOrDefer(deferralContext);
     
     // Goofy corner case: the GC called a callback and now this directory has a currentBlock. This only
-    // happens when running WebKit tests, which inject a callback into the GC's finalization.
+    // happens when running CyberKit tests, which inject a callback into the GC's finalization.
     if (UNLIKELY(m_currentBlock))
         return allocate(heap, deferralContext, failureMode);
     

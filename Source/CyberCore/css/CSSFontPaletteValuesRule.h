@@ -27,7 +27,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleDeclaration;
 class DOMMapAdapter;
@@ -55,6 +55,6 @@ private:
     Ref<StyleRuleFontPaletteValues> m_fontPaletteValuesRule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSFontPaletteValuesRule, StyleRuleType::FontPaletteValues)

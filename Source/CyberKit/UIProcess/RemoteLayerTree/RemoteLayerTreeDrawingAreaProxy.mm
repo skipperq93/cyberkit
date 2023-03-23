@@ -46,7 +46,7 @@
 #import <wtf/MachSendRight.h>
 #import <wtf/SystemTracing.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace IPC;
 using namespace CyberCore;
 
@@ -379,7 +379,7 @@ void RemoteLayerTreeDrawingAreaProxy::waitForDidUpdateActivityState(ActivityStat
         didRefreshDisplay();
 
     static Seconds activityStateUpdateTimeout = [] {
-        if (id value = [[NSUserDefaults standardUserDefaults] objectForKey:@"WebKitOverrideActivityStateUpdateTimeout"])
+        if (id value = [[NSUserDefaults standardUserDefaults] objectForKey:@"CyberKitOverrideActivityStateUpdateTimeout"])
             return Seconds([value doubleValue]);
         return Seconds::fromMilliseconds(250);
     }();
@@ -437,4 +437,4 @@ void RemoteLayerTreeDrawingAreaProxy::windowKindDidChange()
         m_remoteLayerTreeHost->mapAllIOSurfaceBackingStore();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

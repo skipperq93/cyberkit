@@ -36,7 +36,7 @@
 #include <CyberCore/U2fResponseConverter.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 using namespace apdu;
 using namespace fido;
@@ -261,6 +261,6 @@ void U2fAuthenticator::continueSignCommandAfterResponseReceived(ApduResponse&& a
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

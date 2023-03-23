@@ -33,7 +33,7 @@
 #include "WebGLFramebuffer.h"
 #include "WebGLRenderingContextBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WebGLTexture> WebGLTexture::create(WebGLRenderingContextBase& ctx)
 {

@@ -31,7 +31,7 @@
 
 #include "CryptoAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<PAL::CryptoDigest::Algorithm> cryptoDigestAlgorithm(CryptoAlgorithmIdentifier hashFunction)
 {
@@ -51,6 +51,6 @@ static std::optional<PAL::CryptoDigest::Algorithm> cryptoDigestAlgorithm(CryptoA
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

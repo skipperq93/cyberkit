@@ -65,7 +65,7 @@
 #import <CyberKit/WebHistoryPrivate.h>
 #import <CyberKit/WebInspectorPrivate.h>
 #import <CyberKit/WebNSURLExtras.h>
-#import <CyberKit/WebKitErrors.h>
+#import <CyberKit/CyberKitErrors.h>
 #import <CyberKit/WebPreferences.h>
 #import <CyberKit/WebPreferencesPrivate.h>
 #import <CyberKit/WebQuotaManager.h>

@@ -31,7 +31,7 @@
 #include "DOMJITCheckDOM.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 Ref<JSC::Snippet> checkSubClassSnippetForJSDocumentFragment()

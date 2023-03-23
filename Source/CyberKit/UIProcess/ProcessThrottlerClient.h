@@ -28,7 +28,7 @@
 
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class IsSuspensionImminent : bool;
 enum class ProcessThrottleState : uint8_t;
@@ -45,7 +45,7 @@ public:
     virtual String environmentIdentifier() const { return emptyString(); }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ProcessThrottlerClient_h
 

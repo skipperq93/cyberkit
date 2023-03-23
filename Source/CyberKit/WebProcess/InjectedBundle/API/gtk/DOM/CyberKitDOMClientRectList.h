@@ -58,7 +58,7 @@ webkit_dom_client_rect_list_get_type(void);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_client_rect_list_get_length(CyberKitDOMClientRectList* self);
@@ -74,7 +74,7 @@ webkit_dom_client_rect_list_get_length(CyberKitDOMClientRectList* self);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMClientRect* webkit_dom_client_rect_list_item(CyberKitDOMClientRectList* self, gulong index);
 

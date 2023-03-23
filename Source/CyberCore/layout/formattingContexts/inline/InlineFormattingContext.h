@@ -33,7 +33,7 @@
 #include "InlineLineBuilder.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class BlockLayoutState;

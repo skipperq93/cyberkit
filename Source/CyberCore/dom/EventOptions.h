@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class EventIsTrusted : bool { No, Yes };
 enum class EventCanBubble : bool { No, Yes };

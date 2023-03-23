@@ -30,7 +30,7 @@
 #include "Event.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePayValidateMerchantEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(ApplePayValidateMerchantEvent);

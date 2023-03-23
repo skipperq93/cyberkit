@@ -38,7 +38,7 @@
 
 using namespace Inspector;
 
-namespace WebKit {
+namespace CyberKit {
 
 AutomationClient::AutomationClient(WKProcessPool *processPool, id <_WKAutomationDelegate> delegate)
     : m_processPool(processPool)
@@ -60,7 +60,7 @@ AutomationClient::~AutomationClient()
 
 // MARK: API::AutomationClient
 
-void AutomationClient::didRequestAutomationSession(WebKit::WebProcessPool*, const String& sessionIdentifier)
+void AutomationClient::didRequestAutomationSession(CyberKit::WebProcessPool*, const String& sessionIdentifier)
 {
     requestAutomationSession(sessionIdentifier, { });
 }
@@ -127,6 +127,6 @@ String AutomationClient::browserVersion() const
     return appBundle.infoDictionary[(__bridge NSString *)_kCFBundleShortVersionStringKey];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

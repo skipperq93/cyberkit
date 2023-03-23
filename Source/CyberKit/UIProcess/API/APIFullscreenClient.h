@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
@@ -36,17 +36,17 @@ class FullscreenClient {
 public:
     enum Type {
         APIType,
-        WebKitType
+        CyberKitType
     };
 
     virtual bool isType(Type target) const { return target == APIType; };
 
     virtual ~FullscreenClient() { }
 
-    virtual void willEnterFullscreen(WebKit::WebPageProxy*) { }
-    virtual void didEnterFullscreen(WebKit::WebPageProxy*) { }
-    virtual void willExitFullscreen(WebKit::WebPageProxy*) { }
-    virtual void didExitFullscreen(WebKit::WebPageProxy*) { }
+    virtual void willEnterFullscreen(CyberKit::WebPageProxy*) { }
+    virtual void didEnterFullscreen(CyberKit::WebPageProxy*) { }
+    virtual void willExitFullscreen(CyberKit::WebPageProxy*) { }
+    virtual void didExitFullscreen(CyberKit::WebPageProxy*) { }
 };
 
 } // namespace API

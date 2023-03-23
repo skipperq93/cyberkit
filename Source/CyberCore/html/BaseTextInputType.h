@@ -32,7 +32,7 @@
 
 #include "TextFieldInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Base of email, password, search, tel, text, and URL types.
 // They support maxlength, selection functions, and so on.
@@ -50,4 +50,4 @@ protected:
     bool supportsSelectionAPI() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

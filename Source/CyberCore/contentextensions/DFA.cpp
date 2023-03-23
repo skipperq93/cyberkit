@@ -31,7 +31,7 @@
 #include "DFAMinimizer.h"
 #include <wtf/DataLog.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -167,6 +167,6 @@ void DFA::debugPrintDot() const
 
 } // namespace ContentExtensions
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

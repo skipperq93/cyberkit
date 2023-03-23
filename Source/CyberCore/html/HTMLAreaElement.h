@@ -26,7 +26,7 @@
 #include "LayoutRect.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLImageElement;
 class HitTestResult;

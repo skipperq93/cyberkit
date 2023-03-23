@@ -32,7 +32,7 @@
 #include "RTCRtpTransformBackend.h"
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCRtpReceiver;
 class RTCRtpSender;
@@ -71,6 +71,6 @@ inline bool operator!=(const RTCRtpTransform& a, const RTCRtpTransform& b)
     return !(a == b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLProvokingVertex final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLProvokingVertex);
@@ -42,4 +42,4 @@ public:
     void provokingVertexWEBGL(GCGLenum provokeMode);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

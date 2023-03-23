@@ -26,11 +26,11 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# Command line completion for common commands used in WebKit development.
+# Command line completion for common commands used in CyberKit development.
 #
 # Set-up:
 #   Add a line like this to your .bashrc:
-#     source /path/to/WebKitCode/Tools/Scripts/webkit-tools-completion.sh
+#     source /path/to/CyberKitCode/Tools/Scripts/webkit-tools-completion.sh
 
 __webkit-patch_generate_reply()
 {

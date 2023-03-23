@@ -23,7 +23,7 @@
 #include "DOMObjectCache.h"
 #include "CyberKitDOMNodePrivate.h"
 #include "CyberKitDOMPrivate.h"
-#include <JavaScriptCore/APICast.h>
+#include <CyberScriptCore/APICast.h>
 #include <CyberCore/JSNode.h>
 #include <jsc/JSCContextPrivate.h>
 #include <jsc/JSCValuePrivate.h>

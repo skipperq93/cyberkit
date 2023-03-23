@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CookieConsentDecisionResult : uint8_t {
     NotSupported,
@@ -35,16 +35,16 @@ enum class CookieConsentDecisionResult : uint8_t {
     Dissent,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CookieConsentDecisionResult> {
+template<> struct EnumTraits<CyberCore::CookieConsentDecisionResult> {
     using values = EnumValues<
-    WebCore::CookieConsentDecisionResult,
-    WebCore::CookieConsentDecisionResult::NotSupported,
-    WebCore::CookieConsentDecisionResult::Consent,
-    WebCore::CookieConsentDecisionResult::Dissent
+    CyberCore::CookieConsentDecisionResult,
+    CyberCore::CookieConsentDecisionResult::NotSupported,
+    CyberCore::CookieConsentDecisionResult::Consent,
+    CyberCore::CookieConsentDecisionResult::Dissent
     >;
 };
 

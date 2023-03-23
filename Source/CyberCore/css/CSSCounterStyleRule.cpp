@@ -36,7 +36,7 @@
 #include "StylePropertiesInlines.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleRuleCounterStyle::StyleRuleCounterStyle(const AtomString& name, Ref<StyleProperties>&& properties, CSSCounterStyleDescriptors&& descriptors)
     : StyleRuleBase(StyleRuleType::CounterStyle)
@@ -293,4 +293,4 @@ void CSSCounterStyleRule::setSpeakAs(const String& text)
     setterInternal(CSSPropertySpeakAs, text);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

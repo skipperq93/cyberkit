@@ -34,7 +34,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, messageSenderConnection())
 
-namespace WebKit {
+namespace CyberKit {
 
 SpeechRecognitionServer::SpeechRecognitionServer(Ref<IPC::Connection>&& connection, SpeechRecognitionServerIdentifier identifier, SpeechRecognitionPermissionChecker&& permissionChecker, SpeechRecognitionCheckIfMockSpeechRecognitionEnabled&& checkIfEnabled
 #if ENABLE(MEDIA_STREAM)
@@ -180,6 +180,6 @@ void SpeechRecognitionServer::mute()
         source->mute();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK

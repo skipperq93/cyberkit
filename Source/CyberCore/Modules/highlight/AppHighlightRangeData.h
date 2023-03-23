@@ -29,7 +29,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(APP_HIGHLIGHTS)
 
@@ -118,4 +118,4 @@ private:
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

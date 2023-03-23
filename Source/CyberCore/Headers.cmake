@@ -1,4 +1,4 @@
-set(WebCore_PRIVATE_FRAMEWORK_HEADERS
+set(CyberCore_PRIVATE_FRAMEWORK_HEADERS
     Modules/WebGPU/GPU.h
     Modules/WebGPU/GPUAdapter.h
     Modules/WebGPU/GPUAddressMode.h
@@ -553,9 +553,9 @@ set(WebCore_PRIVATE_FRAMEWORK_HEADERS
     bindings/js/StringAdaptors.h
     bindings/js/WebAssemblyCachedScriptSourceProvider.h
     bindings/js/WebAssemblyScriptSourceCode.h
-    bindings/js/WebCoreJITOperations.h
-    bindings/js/WebCoreOpaqueRoot.h
-    bindings/js/WebCoreTypedArrayController.h
+    bindings/js/CyberCoreJITOperations.h
+    bindings/js/CyberCoreOpaqueRoot.h
+    bindings/js/CyberCoreTypedArrayController.h
     bindings/js/WindowProxy.h
     bindings/js/WorkerScriptFetcher.h
 
@@ -1340,7 +1340,7 @@ set(WebCore_PRIVATE_FRAMEWORK_HEADERS
     page/ValidationMessageClient.h
     page/ViewportConfiguration.h
     page/VisitedLinkStore.h
-    page/WebCoreKeyboardUIMode.h
+    page/CyberCoreKeyboardUIMode.h
     page/CyberKitNamespace.h
     page/WheelEventDeltaFilter.h
     page/WheelEventTestMonitor.h
@@ -1530,7 +1530,7 @@ set(WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/VideoFrameMetadata.h
     platform/VideoFrameTimeMetadata.h
     platform/VideoPixelFormat.h
-    platform/WebCorePersistentCoders.h
+    platform/CyberCorePersistentCoders.h
     platform/Widget.h
     platform/WindowsKeyboardCodes.h
 
@@ -2289,61 +2289,61 @@ set(WebCore_PRIVATE_FRAMEWORK_HEADERS
     xml/XPathResult.h
     xml/XPathValue.h
 
-    ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.h
-    ${WebCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.h
-    ${WebCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.h
-    ${WebCore_DERIVED_SOURCES_DIR}/CommandLineAPIModuleSourceBuiltins.h
-    ${WebCore_DERIVED_SOURCES_DIR}/ElementName.h
-    ${WebCore_DERIVED_SOURCES_DIR}/EventInterfaces.h
-    ${WebCore_DERIVED_SOURCES_DIR}/EventTargetInterfaces.h
-    ${WebCore_DERIVED_SOURCES_DIR}/HTMLElementTypeHelpers.h
-    ${WebCore_DERIVED_SOURCES_DIR}/HTMLNames.h
-    ${WebCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSAbstractRange.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSBlob.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSCSSRule.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSCSSRuleList.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSCSSStyleDeclaration.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDOMBindingInternalsBuiltins.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDOMImplementation.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDOMWindow.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMCounter.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMRGBColor.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMRect.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMValue.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSDocument.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSElement.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSEvent.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSEventTarget.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSFile.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSHTMLCollection.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSHTMLElement.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSHTMLOptionsCollection.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSMediaList.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSNamedNodeMap.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSNode.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSNodeIterator.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSNodeList.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSNotification.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSRange.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSReadableStreamDefaultController.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSStyleSheet.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSStyleSheetList.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSTreeWalker.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSXPathExpression.h
-    ${WebCore_DERIVED_SOURCES_DIR}/JSXPathResult.h
-    ${WebCore_DERIVED_SOURCES_DIR}/Namespace.h
-    ${WebCore_DERIVED_SOURCES_DIR}/ReadableByteStreamInternalsBuiltins.h
-    ${WebCore_DERIVED_SOURCES_DIR}/ReadableStreamInternalsBuiltins.h
-    ${WebCore_DERIVED_SOURCES_DIR}/Settings.h
-    ${WebCore_DERIVED_SOURCES_DIR}/StreamInternalsBuiltins.h
-    ${WebCore_DERIVED_SOURCES_DIR}/TagName.h
-    ${WebCore_DERIVED_SOURCES_DIR}/TransformStreamInternalsBuiltins.h
-    ${WebCore_DERIVED_SOURCES_DIR}/WebCoreJSBuiltinInternals.h
-    ${WebCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.h
-    ${WebCore_DERIVED_SOURCES_DIR}/WritableStreamInternalsBuiltins.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyNames.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/CSSPropertyParsing.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/CSSValueKeywords.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/CommandLineAPIModuleSourceBuiltins.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/ElementName.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/EventInterfaces.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/EventTargetInterfaces.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/HTMLElementTypeHelpers.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/HTMLNames.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/HTTPHeaderNames.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSAbstractRange.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSBlob.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSCSSRule.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSCSSRuleList.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSCSSStyleDeclaration.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDOMBindingInternalsBuiltins.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDOMImplementation.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDOMWindow.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMCounter.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMRGBColor.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMRect.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDeprecatedCSSOMValue.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSDocument.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSElement.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSEvent.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSEventTarget.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSFile.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSHTMLCollection.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSHTMLElement.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSHTMLOptionsCollection.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSMediaList.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSNamedNodeMap.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSNode.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSNodeIterator.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSNodeList.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSNotification.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSRange.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSReadableStreamDefaultController.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSStyleSheet.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSStyleSheetList.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSTreeWalker.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSXPathExpression.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/JSXPathResult.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/Namespace.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/ReadableByteStreamInternalsBuiltins.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/ReadableStreamInternalsBuiltins.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/Settings.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/StreamInternalsBuiltins.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/TagName.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/TransformStreamInternalsBuiltins.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/CyberCoreJSBuiltinInternals.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/CyberKitFontFamilyNames.h
+    ${CyberCore_DERIVED_SOURCES_DIR}/WritableStreamInternalsBuiltins.h
 )
 
 if (ENABLE_OPENCDM)
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS platform/encryptedmedia/CDMOpenCDMTypes.h)
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS platform/encryptedmedia/CDMOpenCDMTypes.h)
 endif ()

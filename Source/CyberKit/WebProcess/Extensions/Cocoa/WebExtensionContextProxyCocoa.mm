@@ -39,13 +39,13 @@
 #include <CyberCore/ProcessQualified.h>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
 // MARK: Permissions support
 
-void WebExtensionContextProxy::dispatchPermissionsEvent(const WebKit::WebExtensionEventListenerType& type, HashSet<String> permissions, HashSet<String> origins)
+void WebExtensionContextProxy::dispatchPermissionsEvent(const CyberKit::WebExtensionEventListenerType& type, HashSet<String> permissions, HashSet<String> origins)
 {
     NSArray<NSString *> *permissionDetails = toAPIArray(permissions);
     NSArray<NSString *> *originDetails = toAPIArray(origins);
@@ -141,6 +141,6 @@ void WebExtensionContextProxy::dispatchWebNavigationOnErrorOccurredEvent(WebPage
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

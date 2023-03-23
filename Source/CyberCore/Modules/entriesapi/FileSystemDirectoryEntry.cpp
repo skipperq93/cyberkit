@@ -36,7 +36,7 @@
 #include "ScriptExecutionContext.h"
 #include "WindowEventLoop.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FileSystemDirectoryEntry> FileSystemDirectoryEntry::create(ScriptExecutionContext& context, DOMFileSystem& filesystem, const String& virtualPath)
 {
@@ -97,4 +97,4 @@ void FileSystemDirectoryEntry::getDirectory(ScriptExecutionContext& context, con
     getEntry(context, path, flags, [](auto& entry) { return entry.isDirectory(); }, WTFMove(successCallback), WTFMove(errorCallback));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

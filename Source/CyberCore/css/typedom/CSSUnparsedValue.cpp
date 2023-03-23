@@ -42,7 +42,7 @@
 #include <wtf/text/StringView.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSUnparsedValue);
 
@@ -154,4 +154,4 @@ RefPtr<CSSValue> CSSUnparsedValue::toCSSValue() const
     return CSSVariableReferenceValue::create(tokenizer.tokenRange(), strictCSSParserContext());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

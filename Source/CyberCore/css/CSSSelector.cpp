@@ -41,7 +41,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1065,4 +1065,4 @@ bool CSSSelector::hasExplicitNestingParent() const
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

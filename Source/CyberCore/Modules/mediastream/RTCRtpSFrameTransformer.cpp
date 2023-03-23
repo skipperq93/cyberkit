@@ -31,7 +31,7 @@
 #include "SFrameUtils.h"
 #include <wtf/Algorithms.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr unsigned AES_CM_128_HMAC_SHA256_NONCE_SIZE = 12;
 
@@ -387,6 +387,6 @@ void RTCRtpSFrameTransformer::updateAuthenticationSize()
 }
 #endif // !PLATFORM(COCOA)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

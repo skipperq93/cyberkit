@@ -29,28 +29,28 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebProcessPool;
 class WebURLSchemeHandler;
 }
 
 namespace API {
 
-using URLSchemeHandlerPair = std::pair<Ref<WebKit::WebURLSchemeHandler>, WTF::String>;
+using URLSchemeHandlerPair = std::pair<Ref<CyberKit::WebURLSchemeHandler>, WTF::String>;
 
 class InspectorConfiguration final : public API::ObjectImpl<Object::Type::InspectorConfiguration> {
 public:
     static Ref<InspectorConfiguration> create();
     
-    void addURLSchemeHandler(Ref<WebKit::WebURLSchemeHandler>&&, const WTF::String& urlScheme);
+    void addURLSchemeHandler(Ref<CyberKit::WebURLSchemeHandler>&&, const WTF::String& urlScheme);
     const Vector<URLSchemeHandlerPair>& urlSchemeHandlers() { return m_customURLSchemes; }
     
-    WebKit::WebProcessPool* processPool();
-    void setProcessPool(WebKit::WebProcessPool*);
+    CyberKit::WebProcessPool* processPool();
+    void setProcessPool(CyberKit::WebProcessPool*);
 
 private:
     Vector<URLSchemeHandlerPair> m_customURLSchemes;
-    RefPtr<WebKit::WebProcessPool> m_processPool;
+    RefPtr<CyberKit::WebProcessPool> m_processPool;
 };
 
 } // namespace API

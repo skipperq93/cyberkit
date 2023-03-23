@@ -27,7 +27,7 @@
 #include "ScriptExecutionContext.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSTestCallbackFunction::JSTestCallbackFunction(JSObject* callback, JSDOMGlobalObject* globalObject)
@@ -89,4 +89,4 @@ JSC::JSValue toJS(TestCallbackFunction& impl)
     return static_cast<JSTestCallbackFunction&>(impl).callbackData()->callback();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include "PseudoElement.h"
 #include "ShadowRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLSlotElement;
 
@@ -129,4 +129,4 @@ inline ComposedTreeAncestorAdapter composedTreeAncestors(Node& node)
     return ComposedTreeAncestorAdapter(node);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "CachedScriptFetcher.h"
 #include "ScriptType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptElementCachedScriptFetcher : public CachedScriptFetcher {
 public:
@@ -54,4 +54,4 @@ private:
     const AtomString m_crossOriginMode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

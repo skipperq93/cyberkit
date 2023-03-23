@@ -1,4 +1,4 @@
-Verifies that Live Text does not trigger for images in editable content. This test requires WebKitTestRunner/DumpRenderTree.
+Verifies that Live Text does not trigger for images in editable content. This test requires CyberKitTestRunner/DumpRenderTree.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

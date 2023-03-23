@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUColorWrite.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUColorWriteFlags = uint32_t;
 class GPUColorWrite : public RefCounted<GPUColorWrite> {

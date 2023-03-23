@@ -54,7 +54,7 @@ webkit_dom_html_pre_element_get_type(void);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_pre_element_get_width(CyberKitDOMHTMLPreElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_pre_element_get_width(CyberKitDOMHTMLPreElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_pre_element_set_width(CyberKitDOMHTMLPreElement* self, glong value);
@@ -76,7 +76,7 @@ webkit_dom_html_pre_element_set_width(CyberKitDOMHTMLPreElement* self, glong val
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_pre_element_get_wrap(CyberKitDOMHTMLPreElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_pre_element_get_wrap(CyberKitDOMHTMLPreElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_pre_element_set_wrap(CyberKitDOMHTMLPreElement* self, gboolean value);

@@ -24,7 +24,7 @@
 #include "TestIndexedSetterThrowingException.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestIndexedSetterThrowingException : public JSDOMWrapper<TestIndexedSetterThrowingException> {
 public:
@@ -98,4 +98,4 @@ template<> struct JSDOMWrapperConverterTraits<TestIndexedSetterThrowingException
     using ToWrappedReturnType = TestIndexedSetterThrowingException*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

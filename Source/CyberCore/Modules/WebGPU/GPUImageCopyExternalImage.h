@@ -34,7 +34,7 @@
 #include <variant>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUImageCopyExternalImage {
 #if ENABLE(OFFSCREEN_CANVAS)
@@ -47,7 +47,7 @@ struct GPUImageCopyExternalImage {
     {
         return {
             // FIXME: Handle the canvas element.
-            origin ? std::optional { WebCore::convertToBacking(*origin) } : std::nullopt,
+            origin ? std::optional { CyberCore::convertToBacking(*origin) } : std::nullopt,
             flipY,
         };
     }

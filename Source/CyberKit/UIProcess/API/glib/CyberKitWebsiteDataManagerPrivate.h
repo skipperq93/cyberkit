@@ -25,7 +25,7 @@
 #include <wtf/text/CString.h>
 
 #if ENABLE(2022_GLIB_API)
-WebKitWebsiteDataManager* webkitWebsiteDataManagerCreate(CString&&, CString&&);
+CyberKitWebsiteDataManager* webkitWebsiteDataManagerCreate(CString&&, CString&&);
 #endif
-WebKit::WebsiteDataStore& webkitWebsiteDataManagerGetDataStore(WebKitWebsiteDataManager*);
-WebKitITPThirdParty* webkitITPThirdPartyCreate(WebKit::WebResourceLoadStatisticsStore::ThirdPartyData&&);
+CyberKit::WebsiteDataStore& webkitWebsiteDataManagerGetDataStore(CyberKitWebsiteDataManager*);
+CyberKitITPThirdParty* webkitITPThirdPartyCreate(CyberKit::WebResourceLoadStatisticsStore::ThirdPartyData&&);

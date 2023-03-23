@@ -32,7 +32,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PopStateEvent);
 
@@ -83,4 +83,4 @@ EventInterface PopStateEvent::eventInterface() const
     return PopStateEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

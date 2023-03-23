@@ -46,7 +46,7 @@ exclude \.xcodeproj$
 exclude .*\/(Configurations|mac|ios|cf|cg|cocoa|Cocoa|objc|avfoundation|ca|curl|win|gtk)\/.*$
 
 directory Source
-exclude Source/JavaScriptCore/tests
+exclude Source/CyberScriptCore/tests
 exclude Source/CyberCore/PAL/libavif
 exclude Source/CyberCore/platform/audio/resources
 exclude Source/CyberCore/bindings/scripts/test
@@ -66,10 +66,10 @@ directory Source/ThirdParty/pdfjs
 file Source/ThirdParty/pdfjs/web/locale/ca/viewer.properties
 directory Source/ThirdParty/xdgmime
 
-exclude Source/WebKit/Resources
+exclude Source/CyberKit/Resources
 
 # We do want to include the NEWS, but we want it to be in the root of the archive.
-file Source/WebKit/wpe/NEWS NEWS
+file Source/CyberKit/wpe/NEWS NEWS
 
 file Source/CyberCore/en.lproj/mediaControlsLocalizedStrings.js Source/CyberCore/en.lproj/mediaControlsLocalizedStrings.js
 file Source/WebInspectorUI/Localizations/en.lproj/localizedStrings.js Source/WebInspectorUI/Localizations/en.lproj/localizedStrings.js
@@ -94,7 +94,7 @@ file Tools/glib/generate-modern-media-controls-gresource-manifest.py
 file Tools/glib/generate-pdfjs-resource-manifest.py
 
 directory Tools/MiniBrowser
-directory Tools/TestWebKitAPI
+directory Tools/TestCyberKitAPI
 
 file CMakeLists.txt
 file Tools/CMakeLists.txt

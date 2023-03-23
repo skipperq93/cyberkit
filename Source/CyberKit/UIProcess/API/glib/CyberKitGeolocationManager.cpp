@@ -18,30 +18,30 @@
  */
 
 #include "config.h"
-#include "WebKitGeolocationManager.h"
+#include "CyberKitGeolocationManager.h"
 
 #include "APIGeolocationProvider.h"
 #include "GeoclueGeolocationProvider.h"
 #include "WebGeolocationPosition.h"
-#include "WebKitGeolocationManagerPrivate.h"
+#include "CyberKitGeolocationManagerPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/WallTime.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitGeolocationManager:
- * @see_also: #WebKitGeolocationPermissionRequest, #WebKitWebContext
+ * CyberKitGeolocationManager:
+ * @see_also: #CyberKitGeolocationPermissionRequest, #CyberKitWebContext
  *
  * Geolocation manager.
  *
- * WebKitGeolocationManager provides API to get the geographical position of the user.
- * Once a #WebKitGeolocationPermissionRequest is allowed, when WebKit needs to know the
- * user location #WebKitGeolocationManager::start signal is emitted. If the signal is handled
+ * CyberKitGeolocationManager provides API to get the geographical position of the user.
+ * Once a #CyberKitGeolocationPermissionRequest is allowed, when CyberKit needs to know the
+ * user location #CyberKitGeolocationManager::start signal is emitted. If the signal is handled
  * and returns %TRUE, the application is responsible for providing the position every time it's
- * updated by calling webkit_geolocation_manager_update_position(). The signal #WebKitGeolocationManager::stop
+ * updated by calling webkit_geolocation_manager_update_position(). The signal #CyberKitGeolocationManager::stop
  * will be emitted when location updates are no longer needed.
  *
  * Since: 2.26
@@ -61,10 +61,10 @@ enum {
     LAST_SIGNAL
 };
 
-struct _WebKitGeolocationPosition {
-    _WebKitGeolocationPosition() = default;
+struct _CyberKitGeolocationPosition {
+    _CyberKitGeolocationPosition() = default;
 
-    _WebKitGeolocationPosition(double latitude, double longitude, double accuracy)
+    _CyberKitGeolocationPosition(double latitude, double longitude, double accuracy)
     {
         position.timestamp = WallTime::now().secondsSinceEpoch().value();
         position.latitude = latitude;
@@ -72,12 +72,12 @@ struct _WebKitGeolocationPosition {
         position.accuracy = accuracy;
     }
 
-    explicit _WebKitGeolocationPosition(GeolocationPositionData&& corePosition)
+    explicit _CyberKitGeolocationPosition(GeolocationPositionData&& corePosition)
         : position(WTFMove(corePosition))
     {
     }
 
-    explicit _WebKitGeolocationPosition(const GeolocationPositionData& other)
+    explicit _CyberKitGeolocationPosition(const GeolocationPositionData& other)
     {
         position = other;
     }
@@ -86,17 +86,17 @@ struct _WebKitGeolocationPosition {
 };
 
 /**
- * WebKitGeolocationPosition:
+ * CyberKitGeolocationPosition:
  *
- * An opaque struct to provide position updates to a #WebKitGeolocationManager.
+ * An opaque struct to provide position updates to a #CyberKitGeolocationManager.
  *
- * WebKitGeolocationPosition is an opaque struct used to provide position updates to a
- * #WebKitGeolocationManager using webkit_geolocation_manager_update_position().
+ * CyberKitGeolocationPosition is an opaque struct used to provide position updates to a
+ * #CyberKitGeolocationManager using webkit_geolocation_manager_update_position().
  *
  * Since: 2.26
  */
 
-G_DEFINE_BOXED_TYPE(WebKitGeolocationPosition, webkit_geolocation_position, webkit_geolocation_position_copy, webkit_geolocation_position_free)
+G_DEFINE_BOXED_TYPE(CyberKitGeolocationPosition, webkit_geolocation_position, webkit_geolocation_position_copy, webkit_geolocation_position_free)
 
 /**
  * webkit_geolocation_position_new:
@@ -104,57 +104,57 @@ G_DEFINE_BOXED_TYPE(WebKitGeolocationPosition, webkit_geolocation_position, webk
  * @longitude: a valid longitude in degrees
  * @accuracy: accuracy of location in meters
  *
- * Create a new #WebKitGeolocationPosition.
+ * Create a new #CyberKitGeolocationPosition.
  *
- * Returns: (transfer full): a newly created #WebKitGeolocationPosition
+ * Returns: (transfer full): a newly created #CyberKitGeolocationPosition
  *
  * Since: 2.26
  */
-WebKitGeolocationPosition* webkit_geolocation_position_new(double latitude, double longitude, double accuracy)
+CyberKitGeolocationPosition* webkit_geolocation_position_new(double latitude, double longitude, double accuracy)
 {
-    auto* position = static_cast<WebKitGeolocationPosition*>(fastMalloc(sizeof(WebKitGeolocationPosition)));
-    new (position) WebKitGeolocationPosition(latitude, longitude, accuracy);
+    auto* position = static_cast<CyberKitGeolocationPosition*>(fastMalloc(sizeof(CyberKitGeolocationPosition)));
+    new (position) CyberKitGeolocationPosition(latitude, longitude, accuracy);
     return position;
 }
 
 /**
  * webkit_geolocation_position_copy:
- * @position: a #WebKitGeolocationPosition
+ * @position: a #CyberKitGeolocationPosition
  *
- * Make a copy of the #WebKitGeolocationPosition.
+ * Make a copy of the #CyberKitGeolocationPosition.
  *
  * Returns: (transfer full): a copy of @position
  *
  * Since: 2.26
  */
-WebKitGeolocationPosition* webkit_geolocation_position_copy(WebKitGeolocationPosition* position)
+CyberKitGeolocationPosition* webkit_geolocation_position_copy(CyberKitGeolocationPosition* position)
 {
     g_return_val_if_fail(position, nullptr);
 
-    auto* copy = static_cast<WebKitGeolocationPosition*>(fastMalloc(sizeof(WebKitGeolocationPosition)));
-    new (copy) WebKitGeolocationPosition(position->position);
+    auto* copy = static_cast<CyberKitGeolocationPosition*>(fastMalloc(sizeof(CyberKitGeolocationPosition)));
+    new (copy) CyberKitGeolocationPosition(position->position);
     return copy;
 }
 
 /**
  * webkit_geolocation_position_free:
- * @position: a #WebKitGeolocationPosition
+ * @position: a #CyberKitGeolocationPosition
  *
- * Free the #WebKitGeolocationPosition
+ * Free the #CyberKitGeolocationPosition
  *
  * Since: 2.26
  */
-void webkit_geolocation_position_free(WebKitGeolocationPosition* position)
+void webkit_geolocation_position_free(CyberKitGeolocationPosition* position)
 {
     g_return_if_fail(position);
 
-    position->~WebKitGeolocationPosition();
+    position->~CyberKitGeolocationPosition();
     fastFree(position);
 }
 
 /**
  * webkit_geolocation_position_set_timestamp:
- * @position: a #WebKitGeolocationPosition
+ * @position: a #CyberKitGeolocationPosition
  * @timestamp: timestamp in seconds since the epoch, or 0 to use current time
  *
  * Set the @position timestamp.
@@ -163,7 +163,7 @@ void webkit_geolocation_position_free(WebKitGeolocationPosition* position)
  *
  * Since: 2.26
  */
-void webkit_geolocation_position_set_timestamp(WebKitGeolocationPosition* position, guint64 timestamp)
+void webkit_geolocation_position_set_timestamp(CyberKitGeolocationPosition* position, guint64 timestamp)
 {
     g_return_if_fail(position);
 
@@ -172,14 +172,14 @@ void webkit_geolocation_position_set_timestamp(WebKitGeolocationPosition* positi
 
 /**
  * webkit_geolocation_position_set_altitude:
- * @position: a #WebKitGeolocationPosition
+ * @position: a #CyberKitGeolocationPosition
  * @altitude: altitude in meters
  *
  * Set the @position altitude.
  *
  * Since: 2.26
  */
-void webkit_geolocation_position_set_altitude(WebKitGeolocationPosition* position, double altitude)
+void webkit_geolocation_position_set_altitude(CyberKitGeolocationPosition* position, double altitude)
 {
     g_return_if_fail(position);
 
@@ -188,14 +188,14 @@ void webkit_geolocation_position_set_altitude(WebKitGeolocationPosition* positio
 
 /**
  * webkit_geolocation_position_set_altitude_accuracy:
- * @position: a #WebKitGeolocationPosition
+ * @position: a #CyberKitGeolocationPosition
  * @altitude_accuracy: accuracy of position altitude in meters
  *
  * Set the accuracy of @position altitude.
  *
  * Since: 2.26
  */
-void webkit_geolocation_position_set_altitude_accuracy(WebKitGeolocationPosition* position, double altitudeAccuracy)
+void webkit_geolocation_position_set_altitude_accuracy(CyberKitGeolocationPosition* position, double altitudeAccuracy)
 {
     g_return_if_fail(position);
 
@@ -204,7 +204,7 @@ void webkit_geolocation_position_set_altitude_accuracy(WebKitGeolocationPosition
 
 /**
  * webkit_geolocation_position_set_heading:
- * @position: a #WebKitGeolocationPosition
+ * @position: a #CyberKitGeolocationPosition
  * @heading: heading in degrees
  *
  * Set the @position heading.
@@ -214,7 +214,7 @@ void webkit_geolocation_position_set_altitude_accuracy(WebKitGeolocationPosition
  *
  * Since: 2.26
  */
-void webkit_geolocation_position_set_heading(WebKitGeolocationPosition* position, double heading)
+void webkit_geolocation_position_set_heading(CyberKitGeolocationPosition* position, double heading)
 {
     g_return_if_fail(position);
 
@@ -223,21 +223,21 @@ void webkit_geolocation_position_set_heading(WebKitGeolocationPosition* position
 
 /**
  * webkit_geolocation_position_set_speed:
- * @position: a #WebKitGeolocationPosition
+ * @position: a #CyberKitGeolocationPosition
  * @speed: speed in meters per second
  *
  * Set the @position speed.
  *
  * Since: 2.26
  */
-void webkit_geolocation_position_set_speed(WebKitGeolocationPosition* position, double speed)
+void webkit_geolocation_position_set_speed(CyberKitGeolocationPosition* position, double speed)
 {
     g_return_if_fail(position);
 
     position->position.speed = speed;
 }
 
-struct _WebKitGeolocationManagerPrivate {
+struct _CyberKitGeolocationManagerPrivate {
     RefPtr<WebGeolocationManagerProxy> manager;
     bool highAccuracyEnabled;
     std::unique_ptr<GeoclueGeolocationProvider> geoclueProvider;
@@ -245,9 +245,9 @@ struct _WebKitGeolocationManagerPrivate {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitGeolocationManager, webkit_geolocation_manager, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitGeolocationManager, webkit_geolocation_manager, G_TYPE_OBJECT, GObject)
 
-static void webkitGeolocationManagerStart(WebKitGeolocationManager* manager)
+static void webkitGeolocationManagerStart(CyberKitGeolocationManager* manager)
 {
     gboolean returnValue;
     g_signal_emit(manager, signals[START], 0, &returnValue);
@@ -266,12 +266,12 @@ static void webkitGeolocationManagerStart(WebKitGeolocationManager* manager)
             return;
         }
 
-        WebKitGeolocationPosition position(WTFMove(corePosition));
+        CyberKitGeolocationPosition position(WTFMove(corePosition));
         webkit_geolocation_manager_update_position(manager, &position);
     });
 }
 
-static void webkitGeolocationManagerStop(WebKitGeolocationManager* manager)
+static void webkitGeolocationManagerStop(CyberKitGeolocationManager* manager)
 {
     g_signal_emit(manager, signals[STOP], 0, nullptr);
 
@@ -279,7 +279,7 @@ static void webkitGeolocationManagerStop(WebKitGeolocationManager* manager)
         manager->priv->geoclueProvider->stop();
 }
 
-static void webkitGeolocationManagerSetEnableHighAccuracy(WebKitGeolocationManager* manager, bool enabled)
+static void webkitGeolocationManagerSetEnableHighAccuracy(CyberKitGeolocationManager* manager, bool enabled)
 {
     if (manager->priv->highAccuracyEnabled == enabled)
         return;
@@ -292,7 +292,7 @@ static void webkitGeolocationManagerSetEnableHighAccuracy(WebKitGeolocationManag
 
 class GeolocationProvider final : public API::GeolocationProvider {
 public:
-    explicit GeolocationProvider(WebKitGeolocationManager* manager)
+    explicit GeolocationProvider(CyberKitGeolocationManager* manager)
         : m_manager(manager)
     {
     }
@@ -313,10 +313,10 @@ private:
         webkitGeolocationManagerSetEnableHighAccuracy(m_manager, enabled);
     }
 
-    WebKitGeolocationManager* m_manager;
+    CyberKitGeolocationManager* m_manager;
 };
 
-WebKitGeolocationManager* webkitGeolocationManagerCreate(WebGeolocationManagerProxy* proxy)
+CyberKitGeolocationManager* webkitGeolocationManagerCreate(WebGeolocationManagerProxy* proxy)
 {
     auto* manager = WEBKIT_GEOLOCATION_MANAGER(g_object_new(WEBKIT_TYPE_GEOLOCATION_MANAGER, nullptr));
     manager->priv->manager = proxy;
@@ -326,7 +326,7 @@ WebKitGeolocationManager* webkitGeolocationManagerCreate(WebGeolocationManagerPr
 
 static void webkitGeolocationManagerGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitGeolocationManager* manager = WEBKIT_GEOLOCATION_MANAGER(object);
+    CyberKitGeolocationManager* manager = WEBKIT_GEOLOCATION_MANAGER(object);
 
     switch (propId) {
     case PROP_ENABLE_HIGH_ACCURACY:
@@ -339,22 +339,22 @@ static void webkitGeolocationManagerGetProperty(GObject* object, guint propId, G
 
 static void webkitGeolocationManagerDispose(GObject *object)
 {
-    WebKitGeolocationManager* manager = WEBKIT_GEOLOCATION_MANAGER(object);
+    CyberKitGeolocationManager* manager = WEBKIT_GEOLOCATION_MANAGER(object);
     manager->priv->manager->setProvider(nullptr);
     G_OBJECT_CLASS(webkit_geolocation_manager_parent_class)->dispose(object);
 }
 
-static void webkit_geolocation_manager_class_init(WebKitGeolocationManagerClass* geolocationManagerClass)
+static void webkit_geolocation_manager_class_init(CyberKitGeolocationManagerClass* geolocationManagerClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(geolocationManagerClass);
     gObjectClass->get_property = webkitGeolocationManagerGetProperty;
     gObjectClass->dispose = webkitGeolocationManagerDispose;
 
     /**
-     * WebKitGeolocationManager:enable-high-accuracy:
+     * CyberKitGeolocationManager:enable-high-accuracy:
      *
      * Whether high accuracy is enabled. This is a read-only property that will be
-     * set to %TRUE when a #WebKitGeolocationManager needs to get accurate position updates.
+     * set to %TRUE when a #CyberKitGeolocationManager needs to get accurate position updates.
      * You can connect to notify::enable-high-accuracy signal to monitor it.
      *
      * Since: 2.26
@@ -369,8 +369,8 @@ static void webkit_geolocation_manager_class_init(WebKitGeolocationManagerClass*
     g_object_class_install_properties(gObjectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitGeolocationManager::start:
-     * @manager: the #WebKitGeolocationManager on which the signal is emitted
+     * CyberKitGeolocationManager::start:
+     * @manager: the #CyberKitGeolocationManager on which the signal is emitted
      *
      * The signal is emitted to notify that @manager needs to start receiving
      * position updates. After this signal is emitted the user should provide
@@ -378,7 +378,7 @@ static void webkit_geolocation_manager_class_init(WebKitGeolocationManagerClass*
      * the position changes, or use webkit_geolocation_manager_failed() in case
      * it isn't possible to determine the current position.
      *
-     * If the signal is not handled, WebKit will try to determine the position
+     * If the signal is not handled, CyberKit will try to determine the position
      * using GeoClue if available.
      *
      * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -396,8 +396,8 @@ static void webkit_geolocation_manager_class_init(WebKitGeolocationManagerClass*
         G_TYPE_BOOLEAN, 0);
 
     /**
-     * WebKitGeolocationManager::stop:
-     * @manager: the #WebKitGeolocationManager on which the signal is emitted
+     * CyberKitGeolocationManager::stop:
+     * @manager: the #CyberKitGeolocationManager on which the signal is emitted
      *
      * The signal is emitted to notify that @manager doesn't need to receive
      * position updates anymore.
@@ -416,14 +416,14 @@ static void webkit_geolocation_manager_class_init(WebKitGeolocationManagerClass*
 
 /**
  * webkit_geolocation_manager_update_position:
- * @manager: a #WebKitGeolocationManager
- * @position: a #WebKitGeolocationPosition
+ * @manager: a #CyberKitGeolocationManager
+ * @position: a #CyberKitGeolocationPosition
  *
  * Notify @manager that position has been updated to @position.
  *
  * Since: 2.26
  */
-void webkit_geolocation_manager_update_position(WebKitGeolocationManager* manager, WebKitGeolocationPosition* position)
+void webkit_geolocation_manager_update_position(CyberKitGeolocationManager* manager, CyberKitGeolocationPosition* position)
 {
     g_return_if_fail(WEBKIT_IS_GEOLOCATION_MANAGER(manager));
     g_return_if_fail(position);
@@ -435,14 +435,14 @@ void webkit_geolocation_manager_update_position(WebKitGeolocationManager* manage
 
 /**
  * webkit_geolocation_manager_failed:
- * @manager: a #WebKitGeolocationManager
+ * @manager: a #CyberKitGeolocationManager
  * @error_message: the error message
  *
  * Notify @manager that determining the position failed.
  *
  * Since: 2.26
  */
-void webkit_geolocation_manager_failed(WebKitGeolocationManager* manager, const char* errorMessage)
+void webkit_geolocation_manager_failed(CyberKitGeolocationManager* manager, const char* errorMessage)
 {
     g_return_if_fail(WEBKIT_IS_GEOLOCATION_MANAGER(manager));
 
@@ -451,7 +451,7 @@ void webkit_geolocation_manager_failed(WebKitGeolocationManager* manager, const 
 
 /**
  * webkit_geolocation_manager_get_enable_high_accuracy:
- * @manager: a #WebKitGeolocationManager
+ * @manager: a #CyberKitGeolocationManager
  *
  * Get whether high accuracy is enabled.
  *
@@ -459,7 +459,7 @@ void webkit_geolocation_manager_failed(WebKitGeolocationManager* manager, const 
  *
  * Since: 2.26
  */
-gboolean webkit_geolocation_manager_get_enable_high_accuracy(WebKitGeolocationManager* manager)
+gboolean webkit_geolocation_manager_get_enable_high_accuracy(CyberKitGeolocationManager* manager)
 {
     g_return_val_if_fail(WEBKIT_IS_GEOLOCATION_MANAGER(manager), FALSE);
 

@@ -24,7 +24,7 @@
 #include "TestNamedDeleterThrowingException.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestNamedDeleterThrowingException : public JSDOMWrapper<TestNamedDeleterThrowingException> {
 public:
@@ -97,4 +97,4 @@ template<> struct JSDOMWrapperConverterTraits<TestNamedDeleterThrowingException>
     using ToWrappedReturnType = TestNamedDeleterThrowingException*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

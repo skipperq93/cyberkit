@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EXTShaderTextureLOD);
 
@@ -52,6 +52,6 @@ bool EXTShaderTextureLOD::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_EXT_shader_texture_lod"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

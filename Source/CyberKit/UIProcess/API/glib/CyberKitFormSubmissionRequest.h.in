@@ -19,23 +19,23 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitFormSubmissionRequest_h
-#define WebKitFormSubmissionRequest_h
+#ifndef CyberKitFormSubmissionRequest_h
+#define CyberKitFormSubmissionRequest_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_FORM_SUBMISSION_REQUEST            (webkit_form_submission_request_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_FORM_SUBMISSION_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, WebKitFormSubmissionRequest))
+#define WEBKIT_FORM_SUBMISSION_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, CyberKitFormSubmissionRequest))
 #define WEBKIT_IS_FORM_SUBMISSION_REQUEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_FORM_SUBMISSION_REQUEST))
-#define WEBKIT_FORM_SUBMISSION_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, WebKitFormSubmissionRequestClass))
+#define WEBKIT_FORM_SUBMISSION_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, CyberKitFormSubmissionRequestClass))
 #define WEBKIT_IS_FORM_SUBMISSION_REQUEST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_FORM_SUBMISSION_REQUEST))
-#define WEBKIT_FORM_SUBMISSION_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, WebKitFormSubmissionRequestClass))
+#define WEBKIT_FORM_SUBMISSION_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FORM_SUBMISSION_REQUEST, CyberKitFormSubmissionRequestClass))
 
-struct _WebKitFormSubmissionRequestClass {
+struct _CyberKitFormSubmissionRequestClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -46,20 +46,20 @@ struct _WebKitFormSubmissionRequestClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitFormSubmissionRequest, webkit_form_submission_request, WEBKIT, FORM_SUBMISSION_REQUEST, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitFormSubmissionRequest, webkit_form_submission_request, WEBKIT, FORM_SUBMISSION_REQUEST, GObject)
 
 #if PLATFORM(GTK) && !USE(GTK4)
 WEBKIT_DEPRECATED_FOR(webkit_form_submission_request_list_text_fields) GHashTable *
-webkit_form_submission_request_get_text_fields  (WebKitFormSubmissionRequest  *request);
+webkit_form_submission_request_get_text_fields  (CyberKitFormSubmissionRequest  *request);
 #endif
 
 WEBKIT_API gboolean
-webkit_form_submission_request_list_text_fields (WebKitFormSubmissionRequest  *request,
+webkit_form_submission_request_list_text_fields (CyberKitFormSubmissionRequest  *request,
                                                  GPtrArray                   **field_names,
                                                  GPtrArray                   **field_values);
 
 WEBKIT_API void
-webkit_form_submission_request_submit           (WebKitFormSubmissionRequest  *request);
+webkit_form_submission_request_submit           (CyberKitFormSubmissionRequest  *request);
 
 G_END_DECLS
 

@@ -28,7 +28,7 @@
 #include "CompositeEditCommand.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class VisibleSelection;
@@ -65,4 +65,4 @@ void forEachLineInString(const String& string, const LineOperation& operation)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

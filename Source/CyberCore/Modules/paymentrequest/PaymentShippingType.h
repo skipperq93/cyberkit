@@ -27,7 +27,7 @@
 
 #if ENABLE(PAYMENT_REQUEST)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PaymentShippingType {
     Shipping,
@@ -35,6 +35,6 @@ enum class PaymentShippingType {
     Pickup,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

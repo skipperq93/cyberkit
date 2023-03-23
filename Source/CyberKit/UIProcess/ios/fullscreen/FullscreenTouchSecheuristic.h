@@ -27,7 +27,7 @@
 
 #include "FullscreenTouchSecheuristicParameters.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class FullscreenTouchSecheuristic {
 public:

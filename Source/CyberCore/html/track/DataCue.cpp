@@ -38,7 +38,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DataCue);
@@ -180,6 +180,6 @@ void DataCue::toJSON(JSON::Object& object) const
         object.setString("type"_s, m_type);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

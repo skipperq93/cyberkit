@@ -23,10 +23,10 @@
 #include "JSDOMConvertDictionary.h"
 #include "TestDictionaryWithOnlyConditionalMembers.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> TestDictionaryWithOnlyConditionalMembers convertDictionary<TestDictionaryWithOnlyConditionalMembers>(JSC::JSGlobalObject&, JSC::JSValue);
 
 JSC::JSObject* convertDictionaryToJS(JSC::JSGlobalObject&, JSDOMGlobalObject&, const TestDictionaryWithOnlyConditionalMembers&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include "AnimationPlaybackEventInit.h"
 #include <wtf/Markable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnimationPlaybackEvent final : public AnimationEventBase {
     WTF_MAKE_ISO_ALLOCATED(AnimationPlaybackEvent);

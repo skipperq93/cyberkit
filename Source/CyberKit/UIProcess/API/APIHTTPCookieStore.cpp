@@ -42,11 +42,11 @@
 #include "DefaultWebBrowserChecks.h"
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 namespace API {
 
-HTTPCookieStore::HTTPCookieStore(WebKit::WebsiteDataStore& websiteDataStore)
+HTTPCookieStore::HTTPCookieStore(CyberKit::WebsiteDataStore& websiteDataStore)
     : m_sessionID(websiteDataStore.sessionID())
     , m_owningDataStore(websiteDataStore)
 {
@@ -192,14 +192,14 @@ void HTTPCookieStore::cookiesDidChange()
         observer.cookiesDidChange(*this);
 }
 
-WebKit::NetworkProcessProxy* HTTPCookieStore::networkProcessIfExists()
+CyberKit::NetworkProcessProxy* HTTPCookieStore::networkProcessIfExists()
 {
     if (!m_owningDataStore)
         return nullptr;
     return m_owningDataStore->networkProcessIfExists();
 }
 
-WebKit::NetworkProcessProxy* HTTPCookieStore::networkProcessLaunchingIfNecessary()
+CyberKit::NetworkProcessProxy* HTTPCookieStore::networkProcessLaunchingIfNecessary()
 {
     if (!m_owningDataStore)
         return nullptr;

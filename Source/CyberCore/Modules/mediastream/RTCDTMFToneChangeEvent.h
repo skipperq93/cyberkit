@@ -30,7 +30,7 @@
 #include "Event.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDTMFToneChangeEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(RTCDTMFToneChangeEvent);
@@ -56,6 +56,6 @@ private:
     String m_tone;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

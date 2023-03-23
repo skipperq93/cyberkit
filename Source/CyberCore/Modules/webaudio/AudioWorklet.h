@@ -33,7 +33,7 @@
 #include "Worklet.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioWorkletNode;
 class BaseAudioContext;
@@ -58,6 +58,6 @@ private:
     WeakPtr<BaseAudioContext, WeakPtrImplWithEventTargetData> m_audioContext;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

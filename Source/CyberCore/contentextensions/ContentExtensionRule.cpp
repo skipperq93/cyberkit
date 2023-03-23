@@ -30,7 +30,7 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 ContentExtensionRule::ContentExtensionRule(Trigger&& trigger, Action&& action)
     : m_trigger(WTFMove(trigger))
@@ -115,6 +115,6 @@ Action Action::isolatedCopy() &&
     return { crossThreadCopy(WTFMove(m_data)) };
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

@@ -26,46 +26,46 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitColorChooserRequest_h
-#define WebKitColorChooserRequest_h
+#ifndef CyberKitColorChooserRequest_h
+#define CyberKitColorChooserRequest_h
 
 #include <gtk/gtk.h>
-#include <webkit/WebKitDefines.h>
+#include <webkit/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_COLOR_CHOOSER_REQUEST            (webkit_color_chooser_request_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_COLOR_CHOOSER_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_COLOR_CHOOSER_REQUEST, WebKitColorChooserRequest))
+#define WEBKIT_COLOR_CHOOSER_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_COLOR_CHOOSER_REQUEST, CyberKitColorChooserRequest))
 #define WEBKIT_IS_COLOR_CHOOSER_REQUEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_COLOR_CHOOSER_REQUEST))
-#define WEBKIT_COLOR_CHOOSER_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_COLOR_CHOOSER_REQUEST, WebKitColorChooserRequestClass))
+#define WEBKIT_COLOR_CHOOSER_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_COLOR_CHOOSER_REQUEST, CyberKitColorChooserRequestClass))
 #define WEBKIT_IS_COLOR_CHOOSER_REQUEST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_COLOR_CHOOSER_REQUEST))
-#define WEBKIT_COLOR_CHOOSER_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_COLOR_CHOOSER_REQUEST, WebKitColorChooserRequestClass))
+#define WEBKIT_COLOR_CHOOSER_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_COLOR_CHOOSER_REQUEST, CyberKitColorChooserRequestClass))
 
-struct _WebKitColorChooserRequestClass {
+struct _CyberKitColorChooserRequestClass {
     GObjectClass parent_class;
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitColorChooserRequest, webkit_color_chooser_request, WEBKIT, COLOR_CHOOSER_REQUEST, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitColorChooserRequest, webkit_color_chooser_request, WEBKIT, COLOR_CHOOSER_REQUEST, GObject)
 
 WEBKIT_API void
-webkit_color_chooser_request_get_rgba              (WebKitColorChooserRequest *request,
+webkit_color_chooser_request_get_rgba              (CyberKitColorChooserRequest *request,
                                                     GdkRGBA                   *rgba);
 
 WEBKIT_API void
-webkit_color_chooser_request_set_rgba              (WebKitColorChooserRequest *request,
+webkit_color_chooser_request_set_rgba              (CyberKitColorChooserRequest *request,
                                                     const GdkRGBA             *rgba);
 
 WEBKIT_API void
-webkit_color_chooser_request_get_element_rectangle (WebKitColorChooserRequest *request,
+webkit_color_chooser_request_get_element_rectangle (CyberKitColorChooserRequest *request,
                                                     GdkRectangle              *rect);
 
 WEBKIT_API void
-webkit_color_chooser_request_finish                (WebKitColorChooserRequest *request);
+webkit_color_chooser_request_finish                (CyberKitColorChooserRequest *request);
 
 WEBKIT_API void
-webkit_color_chooser_request_cancel                (WebKitColorChooserRequest *request);
+webkit_color_chooser_request_cancel                (CyberKitColorChooserRequest *request);
 
 G_END_DECLS
 

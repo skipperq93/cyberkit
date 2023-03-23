@@ -37,7 +37,7 @@
 #import "WebExtensionAPIRuntime.h"
 #import <CyberScriptCore/JSObjectRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebExtensionCallbackHandler::WebExtensionCallbackHandler(JSContextRef context, JSObjectRef callbackFunction, WebExtensionAPIRuntimeBase& runtime)
     : m_callbackFunction(callbackFunction)
@@ -297,11 +297,11 @@ NSString *serializeJSObject(JSContextRef context, JSValueRef value, JSValueRef* 
     return toNSString(string.get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-using namespace WebKit;
+using namespace CyberKit;
 
-@implementation JSValue (WebKitExtras)
+@implementation JSValue (CyberKitExtras)
 
 - (NSString *)_toJSONString
 {

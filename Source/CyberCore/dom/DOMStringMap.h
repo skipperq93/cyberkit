@@ -27,8 +27,8 @@
 
 #include "DatasetDOMStringMap.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using DOMStringMap = DatasetDOMStringMap;
 
-} // namespace WebCore
+} // namespace CyberCore

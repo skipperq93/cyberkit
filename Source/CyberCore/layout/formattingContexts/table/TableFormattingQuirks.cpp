@@ -33,7 +33,7 @@
 #include "TableFormattingContext.h"
 #include "TableGrid.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 TableFormattingQuirks::TableFormattingQuirks(const TableFormattingContext& tableFormattingContext)

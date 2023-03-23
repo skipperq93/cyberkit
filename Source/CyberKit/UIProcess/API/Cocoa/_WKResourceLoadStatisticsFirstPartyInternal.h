@@ -27,7 +27,7 @@
 #import "WKObject.h"
 #import "_WKResourceLoadStatisticsFirstParty.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ResourceLoadStatisticsFirstParty> {
     using WrapperClass = _WKResourceLoadStatisticsFirstParty;

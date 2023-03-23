@@ -34,7 +34,7 @@
 #import "_WKAutomationSessionInternal.h"
 #import <wtf/BlockPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 AutomationSessionClient::AutomationSessionClient(id <_WKAutomationSessionDelegate> delegate)
     : m_delegate(delegate)
@@ -71,7 +71,7 @@ static inline _WKAutomationSessionBrowsingContextOptions toAPI(API::AutomationSe
     return static_cast<_WKAutomationSessionBrowsingContextOptions>(wkOptions);
 }
 
-void AutomationSessionClient::requestNewPageWithOptions(WebAutomationSession& session, API::AutomationSessionBrowsingContextOptions options, CompletionHandler<void(WebKit::WebPageProxy*)>&& completionHandler)
+void AutomationSessionClient::requestNewPageWithOptions(WebAutomationSession& session, API::AutomationSessionBrowsingContextOptions options, CompletionHandler<void(CyberKit::WebPageProxy*)>&& completionHandler)
 {
     if (m_delegateMethods.requestNewWebViewWithOptions) {
         [m_delegate.get() _automationSession:wrapper(session) requestNewWebViewWithOptions:toAPI(options) completionHandler:makeBlockPtr([completionHandler = WTFMove(completionHandler)](WKWebView *webView) mutable {
@@ -187,4 +187,4 @@ API::AutomationSessionClient::BrowsingContextPresentation AutomationSessionClien
     return API::AutomationSessionClient::BrowsingContextPresentation::Window;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

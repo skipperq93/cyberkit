@@ -88,7 +88,7 @@ target_include_directories(TestCyberKitAPIInjectedBundle SYSTEM PRIVATE
 
 # TestJSC
 set(TestJSC_SOURCES
-    Tests/JavaScriptCore/glib/TestJSC.cpp
+    Tests/CyberScriptCore/glib/TestJSC.cpp
 )
 
 set(TestJSC_SYSTEM_INCLUDE_DIRECTORIES
@@ -98,13 +98,13 @@ set(TestJSC_SYSTEM_INCLUDE_DIRECTORIES
 set(TestJSC_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
     ${TESTWEBKITAPI_DIR}
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
 )
 
 set(TestJSC_LIBRARIES
     ${GLIB_LIBRARIES}
     ${GLIB_GMODULE_LIBRARIES}
-    CyberKit::JavaScriptCore
+    CyberKit::CyberScriptCore
 )
 
 set(TestJSC_DEFINITIONS
@@ -114,7 +114,7 @@ set(TestJSC_DEFINITIONS
 WEBKIT_EXECUTABLE_DECLARE(TestJSC)
 WEBKIT_TEST(TestJSC)
 
-# TestJavaScriptCore
-list(APPEND TestJavaScriptCore_SYSTEM_INCLUDE_DIRECTORIES
+# TestCyberScriptCore
+list(APPEND TestCyberScriptCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
 )

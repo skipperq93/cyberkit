@@ -31,7 +31,7 @@
 #include <wtf/Span.h>
 #include <wtf/Vector.h>
 
-namespace WebCore::PushCrypto {
+namespace CyberCore::PushCrypto {
 
 static constexpr size_t p256dhPublicKeyLength = 65;
 static constexpr size_t p256dhPrivateKeyLength = 32;
@@ -54,6 +54,6 @@ WEBCORE_EXPORT Vector<uint8_t> hmacSHA256(Span<const uint8_t> key, Span<const ui
 
 WEBCORE_EXPORT std::optional<Vector<uint8_t>> decryptAES128GCM(Span<const uint8_t> key, Span<const uint8_t> iv, Span<const uint8_t> cipherTextWithTag);
 
-} // namespace WebCore::PushCrypto
+} // namespace CyberCore::PushCrypto
 
 #endif // ENABLE(SERVICE_WORKER)

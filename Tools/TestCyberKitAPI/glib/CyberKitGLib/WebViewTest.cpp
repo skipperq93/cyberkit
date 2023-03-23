@@ -21,7 +21,7 @@
 #include "config.h"
 #include "WebViewTest.h"
 
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <CyberKitWebViewInternal.h>
 
 bool WebViewTest::shouldInitializeWebViewInConstructor = true;

@@ -26,7 +26,7 @@
 
 #include "MediaQuery.h"
 
-namespace WebCore::MQ {
+namespace CyberCore::MQ {
 
 namespace Features {
 

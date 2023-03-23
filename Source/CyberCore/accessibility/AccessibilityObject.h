@@ -54,7 +54,7 @@ OBJC_CLASS NSView;
 
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilityObject;
 class IntPoint;
@@ -527,7 +527,7 @@ public:
     virtual bool shouldFocusActiveDescendant() const { return false; }
     AccessibilityObject* activeDescendant() const override { return nullptr; }
 
-    WEBCORE_EXPORT static AccessibilityRole ariaRoleToWebCoreRole(const String&);
+    WEBCORE_EXPORT static AccessibilityRole ariaRoleToCyberCoreRole(const String&);
     virtual bool hasAttribute(const QualifiedName&) const;
     virtual const AtomString& getAttribute(const QualifiedName&) const;
     std::optional<String> attributeValue(const String&) const override;
@@ -891,13 +891,13 @@ String roleToPlatformString(AccessibilityRole);
 
 } // namespace Accessibility
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::AXCoreObject& object) { return object.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::AXCoreObject& object) { return object.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilityObject)
-static bool isType(const WebCore::AXCoreObject& context) { return context.isAccessibilityObject(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilityObject)
+static bool isType(const CyberCore::AXCoreObject& context) { return context.isAccessibilityObject(); }
 SPECIALIZE_TYPE_TRAITS_END()

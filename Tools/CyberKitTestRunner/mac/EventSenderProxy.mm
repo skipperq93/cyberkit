@@ -33,7 +33,7 @@
 #import "StringFunctions.h"
 #import "TestController.h"
 #import "TestRunnerWKWebView.h"
-#import "WebKitTestRunnerWindow.h"
+#import "CyberKitTestRunnerWindow.h"
 #import <Carbon/Carbon.h>
 #import <CyberKit/WKString.h>
 #import <CyberKit/WKPagePrivate.h>

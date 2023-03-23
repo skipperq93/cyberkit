@@ -33,7 +33,7 @@
 #include <CyberCore/LocalizedStrings.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebEditCommandProxy::WebEditCommandProxy(WebUndoStepID commandID, const String& label, WebPageProxy& page)
@@ -68,4 +68,4 @@ void WebEditCommandProxy::reapply()
     m_page->registerEditCommand(*this, UndoOrRedo::Undo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PromiseRejectionEvent);
@@ -46,4 +46,4 @@ PromiseRejectionEvent::PromiseRejectionEvent(const AtomString& type, const Init&
 
 PromiseRejectionEvent::~PromiseRejectionEvent() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

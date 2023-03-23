@@ -27,7 +27,7 @@
 
 #include "FloatRoundedRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FillLayer;
 class GraphicsContext;
@@ -79,5 +79,5 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

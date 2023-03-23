@@ -222,7 +222,7 @@ sub generateInterfacesHeader()
 
     my $macroStyledNamespace = $object->toMacroStyle($namespace);
 
-    print F "namespace WebCore {\n";
+    print F "namespace CyberCore {\n";
     print F "\n";
     print F "enum ${namespace}Interface {\n";
 
@@ -255,7 +255,7 @@ sub generateInterfacesHeader()
 
     print F "};\n";
     print F "\n";
-    print F "} // namespace WebCore\n";
+    print F "} // namespace CyberCore\n";
 
     close F;
 }

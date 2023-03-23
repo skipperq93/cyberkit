@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DictationContextType { };
 using DictationContext = ObjectIdentifier<DictationContextType>;
 
-} // namespace WebCore
+} // namespace CyberCore

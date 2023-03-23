@@ -38,7 +38,7 @@ class AuthenticatorAttestationResponse;
 class AuthenticatorAssertionResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LocalAuthenticator final : public Authenticator {
 public:
@@ -85,6 +85,6 @@ private:
     RetainPtr<NSData> m_provisionalCredentialId;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

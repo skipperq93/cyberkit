@@ -34,7 +34,7 @@
 #include "StyledElement.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ClassCollection);
 
@@ -49,4 +49,4 @@ ClassCollection::~ClassCollection()
     ownerNode().nodeLists()->removeCachedCollection(this, m_originalClassNames);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

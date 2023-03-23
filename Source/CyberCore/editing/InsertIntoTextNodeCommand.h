@@ -27,7 +27,7 @@
 
 #include "EditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Text;
 
@@ -62,4 +62,4 @@ inline const String& InsertIntoTextNodeCommand::insertedText()
     return m_text;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

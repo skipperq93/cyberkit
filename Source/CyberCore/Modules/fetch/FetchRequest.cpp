@@ -37,9 +37,9 @@
 #include "ScriptExecutionContext.h"
 #include "SecurityOrigin.h"
 #include "Settings.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Exception> setMethod(ResourceRequest& request, const String& initMethod)
 {
@@ -362,9 +362,9 @@ const char* FetchRequest::activeDOMObjectName() const
     return "Request";
 }
 
-WebCoreOpaqueRoot root(FetchRequest* request)
+CyberCoreOpaqueRoot root(FetchRequest* request)
 {
-    return WebCoreOpaqueRoot { request };
+    return CyberCoreOpaqueRoot { request };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

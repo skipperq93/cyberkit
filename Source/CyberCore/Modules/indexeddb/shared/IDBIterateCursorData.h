@@ -27,7 +27,7 @@
 
 #include "IDBKeyData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct IDBIterateCursorData {
     IDBKeyData keyData;
@@ -42,4 +42,4 @@ struct IDBIterateCursorData {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

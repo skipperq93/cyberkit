@@ -22,7 +22,7 @@
 #include <CyberCore/GtkVersioning.h>
 #include <gdk/gdkkeysyms.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static void backspaceCallback(GtkWidget* widget, KeyBindingTranslator* translator)
 {
@@ -343,4 +343,4 @@ Vector<String> KeyBindingTranslator::commandsForKeyval(unsigned keyval, unsigned
     return handleCustomKeyBindings(keyval, static_cast<GdkModifierType>(modifiers));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

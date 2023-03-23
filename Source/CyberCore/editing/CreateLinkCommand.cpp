@@ -30,7 +30,7 @@
 #include "HTMLAnchorElement.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CreateLinkCommand::CreateLinkCommand(Document& document, const String& url)
     : CompositeEditCommand(document)

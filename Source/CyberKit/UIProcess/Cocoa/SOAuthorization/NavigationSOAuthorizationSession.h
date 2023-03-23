@@ -32,12 +32,12 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // When the WebView, owner of the page, is not in the window, the session will then pause
 // and later resume after the WebView being moved into the window.
 // The reason to apply the above rule to the whole session instead of UI session only is UI
-// can be shown out of process, in which case WebKit will not even get notified.
+// can be shown out of process, in which case CyberKit will not even get notified.
 // FSM: Idle => isInWindow => Active => Completed
 //      Idle => !isInWindow => Waiting => become isInWindow => Active => Completed
 class NavigationSOAuthorizationSession : public SOAuthorizationSession, private WebViewDidMoveToWindowObserver {
@@ -66,6 +66,6 @@ private:
     String m_waitingPageActiveURL;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

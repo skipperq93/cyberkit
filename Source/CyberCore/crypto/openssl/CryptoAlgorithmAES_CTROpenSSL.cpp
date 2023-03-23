@@ -33,7 +33,7 @@
 #include "OpenSSLCryptoUniquePtr.h"
 #include <openssl/evp.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const EVP_CIPHER* aesAlgorithm(size_t keySize)
 {
@@ -140,6 +140,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_CTR::platformDecrypt(const Crypt
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

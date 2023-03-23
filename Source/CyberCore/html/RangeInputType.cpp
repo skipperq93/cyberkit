@@ -65,7 +65,7 @@
 #include "HTMLOptionElement.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -453,4 +453,4 @@ std::optional<Decimal> RangeInputType::findClosestTickMarkValue(const Decimal& v
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

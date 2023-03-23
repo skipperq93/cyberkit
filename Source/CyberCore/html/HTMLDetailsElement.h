@@ -23,7 +23,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLSlotElement;
 
@@ -54,4 +54,4 @@ private:
     bool m_isToggleEventTaskQueued { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

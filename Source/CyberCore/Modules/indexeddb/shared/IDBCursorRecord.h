@@ -28,7 +28,7 @@
 #include "IDBKeyData.h"
 #include "IDBValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct IDBCursorRecord {
     IDBKeyData key;
@@ -39,4 +39,4 @@ struct IDBCursorRecord {
     size_t size() const { return key.size() + primaryKey.size() + value.size(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include "MutationCallback.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
@@ -57,4 +57,4 @@ bool JSMutationObserverOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknow
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

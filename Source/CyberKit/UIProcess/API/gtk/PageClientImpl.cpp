@@ -37,11 +37,11 @@
 #include "WebContextMenuProxyGtk.h"
 #include "WebDataListSuggestionsDropdownGtk.h"
 #include "WebEventFactory.h"
-#include "WebKitColorChooser.h"
-#include "WebKitPopupMenu.h"
-#include "WebKitWebViewBaseInternal.h"
-#include "WebKitWebViewBasePrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitColorChooser.h"
+#include "CyberKitPopupMenu.h"
+#include "CyberKitWebViewBaseInternal.h"
+#include "CyberKitWebViewBasePrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include "WebPageProxy.h"
 #include "WebProcessPool.h"
 #include <CyberCore/CairoUtilities.h>
@@ -61,7 +61,7 @@
 #include "WebDateTimePickerGtk.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 PageClientImpl::PageClientImpl(GtkWidget* viewWidget)
@@ -270,14 +270,14 @@ void PageClientImpl::doneWithKeyEvent(const NativeWebKeyboardEvent& event, bool 
         break;
     }
 
-    WebKitWebViewBase* webkitWebViewBase = WEBKIT_WEB_VIEW_BASE(m_viewWidget);
+    CyberKitWebViewBase* webkitWebViewBase = WEBKIT_WEB_VIEW_BASE(m_viewWidget);
     webkitWebViewBasePropagateKeyEvent(webkitWebViewBase, event.nativeEvent());
 }
 
 RefPtr<WebPopupMenuProxy> PageClientImpl::createPopupMenuProxy(WebPageProxy& page)
 {
     if (WEBKIT_IS_WEB_VIEW(m_viewWidget))
-        return WebKitPopupMenu::create(m_viewWidget, page);
+        return CyberKitPopupMenu::create(m_viewWidget, page);
     return WebPopupMenuProxyGtk::create(m_viewWidget, page);
 }
 
@@ -289,7 +289,7 @@ Ref<WebContextMenuProxy> PageClientImpl::createContextMenuProxy(WebPageProxy& pa
 RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy* page, const CyberCore::Color& color, const CyberCore::IntRect& rect, Vector<CyberCore::Color>&&)
 {
     if (WEBKIT_IS_WEB_VIEW(m_viewWidget))
-        return WebKitColorChooser::create(*page, color, rect);
+        return CyberKitColorChooser::create(*page, color, rect);
     return WebColorPickerGtk::create(*page, color, rect);
 }
 
@@ -621,9 +621,9 @@ CyberCore::Color PageClientImpl::accentColor()
     return SRGBA<uint8_t> { 52, 132, 228 };
 }
 
-WebKitWebResourceLoadManager* PageClientImpl::webResourceLoadManager()
+CyberKitWebResourceLoadManager* PageClientImpl::webResourceLoadManager()
 {
     return WEBKIT_IS_WEB_VIEW(m_viewWidget) ? webkitWebViewGetWebResourceLoadManager(WEBKIT_WEB_VIEW(m_viewWidget)) : nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

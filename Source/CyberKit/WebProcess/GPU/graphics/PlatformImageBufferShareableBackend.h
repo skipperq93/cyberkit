@@ -34,7 +34,7 @@
 #include "ImageBufferShareableMappedIOSurfaceBackend.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using UnacceleratedImageBufferShareableBackend = ImageBufferShareableBitmapBackend;
 
@@ -46,6 +46,6 @@ using AcceleratedImageBufferRemoteBackend = UnacceleratedImageBufferShareableBac
 using AcceleratedImageBufferShareableMappedBackend = UnacceleratedImageBufferShareableBackend;
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

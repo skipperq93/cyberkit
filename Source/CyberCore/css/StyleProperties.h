@@ -23,7 +23,7 @@
 
 #include "CSSProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class Color;
@@ -162,4 +162,4 @@ inline String serializeLonghandValue(CSSPropertyID, const CSSValue*);
 inline CSSValueID longhandValueID(CSSPropertyID, const CSSValue&);
 inline std::optional<CSSValueID> longhandValueID(CSSPropertyID, const CSSValue*);
 
-} // namespace WebCore
+} // namespace CyberCore

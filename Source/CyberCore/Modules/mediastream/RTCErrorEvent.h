@@ -30,7 +30,7 @@
 #include "Event.h"
 #include "RTCError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCErrorEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(RTCErrorEvent);
@@ -52,6 +52,6 @@ private:
     Ref<RTCError> m_error;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -43,7 +43,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BlockFormattingContext);

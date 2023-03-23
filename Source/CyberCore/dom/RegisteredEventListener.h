@@ -26,7 +26,7 @@
 #include "EventListener.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://dom.spec.whatwg.org/#concept-event-listener
 class RegisteredEventListener : public RefCounted<RegisteredEventListener> {
@@ -73,4 +73,4 @@ private:
     Ref<EventListener> m_callback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include "HTMLDivElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextFieldInputType;
 
@@ -54,6 +54,6 @@ private:
     DataListButtonOwner& m_owner;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATALIST_ELEMENT)

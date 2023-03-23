@@ -28,7 +28,7 @@
 #include "Event.h"
 #include "EventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ToggleEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(ToggleEvent);
@@ -58,6 +58,6 @@ private:
     String m_newState;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(ToggleEvent)

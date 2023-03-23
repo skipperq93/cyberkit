@@ -28,7 +28,7 @@
 #include "CollectionType.h"
 #include "ElementIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template <CollectionTraversalType traversalType>
 struct CollectionTraversal { };
@@ -216,4 +216,4 @@ inline void CollectionTraversal<CollectionTraversalType::CustomForwardOnly>::tra
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

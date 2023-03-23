@@ -54,7 +54,7 @@ webkit_dom_html_script_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_script_element_get_text(CyberKitDOMHTMLScriptElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_script_element_get_text(CyberKitDOMHTMLScriptElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_script_element_set_text(CyberKitDOMHTMLScriptElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_script_element_set_text(CyberKitDOMHTMLScriptElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_script_element_get_html_for(CyberKitDOMHTMLScriptElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_script_element_get_html_for(CyberKitDOMHTMLScriptElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_script_element_set_html_for(CyberKitDOMHTMLScriptElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_script_element_set_html_for(CyberKitDOMHTMLScriptElement* self, 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_script_element_get_event(CyberKitDOMHTMLScriptElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_script_element_get_event(CyberKitDOMHTMLScriptElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_script_element_set_event(CyberKitDOMHTMLScriptElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_script_element_set_event(CyberKitDOMHTMLScriptElement* self, con
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_script_element_get_charset(CyberKitDOMHTMLScriptElement* self);
@@ -132,7 +132,7 @@ webkit_dom_html_script_element_get_charset(CyberKitDOMHTMLScriptElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_script_element_set_charset(CyberKitDOMHTMLScriptElement* self, const gchar* value);
@@ -143,7 +143,7 @@ webkit_dom_html_script_element_set_charset(CyberKitDOMHTMLScriptElement* self, c
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_script_element_get_defer(CyberKitDOMHTMLScriptElement* self);
@@ -154,7 +154,7 @@ webkit_dom_html_script_element_get_defer(CyberKitDOMHTMLScriptElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_script_element_set_defer(CyberKitDOMHTMLScriptElement* self, gboolean value);
@@ -165,7 +165,7 @@ webkit_dom_html_script_element_set_defer(CyberKitDOMHTMLScriptElement* self, gbo
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_script_element_get_src(CyberKitDOMHTMLScriptElement* self);
@@ -176,7 +176,7 @@ webkit_dom_html_script_element_get_src(CyberKitDOMHTMLScriptElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_script_element_set_src(CyberKitDOMHTMLScriptElement* self, const gchar* value);
@@ -187,7 +187,7 @@ webkit_dom_html_script_element_set_src(CyberKitDOMHTMLScriptElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_script_element_get_type_attr(CyberKitDOMHTMLScriptElement* self);
@@ -198,7 +198,7 @@ webkit_dom_html_script_element_get_type_attr(CyberKitDOMHTMLScriptElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_script_element_set_type_attr(CyberKitDOMHTMLScriptElement* self, const gchar* value);

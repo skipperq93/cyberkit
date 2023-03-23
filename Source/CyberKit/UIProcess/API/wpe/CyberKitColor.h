@@ -21,22 +21,22 @@
 #error "Only <wpe/webkit.h> can be included directly."
 #endif
 
-#ifndef WebKitColor_h
-#define WebKitColor_h
+#ifndef CyberKitColor_h
+#define CyberKitColor_h
 
 #include <glib-object.h>
-#include <wpe/WebKitDefines.h>
+#include <wpe/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
-struct _WebKitColor {
+struct _CyberKitColor {
     gdouble red;
     gdouble green;
     gdouble blue;
     gdouble alpha;
 };
 
-typedef struct _WebKitColor WebKitColor;
+typedef struct _CyberKitColor CyberKitColor;
 
 #define WEBKIT_TYPE_COLOR (webkit_color_get_type())
 
@@ -44,8 +44,8 @@ WEBKIT_API GType
 webkit_color_get_type     (void);
 
 WEBKIT_API gboolean
-webkit_color_parse        (WebKitColor *color, const gchar *color_string);
+webkit_color_parse        (CyberKitColor *color, const gchar *color_string);
 
 G_END_DECLS
 
-#endif /* WebKitColor_h */
+#endif /* CyberKitColor_h */

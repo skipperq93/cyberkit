@@ -35,7 +35,7 @@
 #include "Event.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStream;
 class MediaStreamTrack;
@@ -74,6 +74,6 @@ private:
     RefPtr<RTCRtpTransceiver> m_transceiver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

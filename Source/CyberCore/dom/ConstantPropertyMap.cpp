@@ -34,7 +34,7 @@
 #include "Page.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ConstantPropertyMap::ConstantPropertyMap(Document& document)
     : m_document(document)

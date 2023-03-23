@@ -42,7 +42,7 @@
 #include "LayoutPoint.h"
 #include "TextRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 void BoxPainter::paintBoxDecorations(const BoxModelBox& box, PaintingContext& paintingContext)
@@ -99,5 +99,5 @@ void BoxPainter::paintBox(const Box& box, PaintingContext& paintingContext, cons
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -46,7 +46,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 ALLOW_DEPRECATED_DECLARATIONS_END
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 LibWebRTCRtpReceiverBackend::LibWebRTCRtpReceiverBackend(rtc::scoped_refptr<webrtc::RtpReceiverInterface>&& rtcReceiver)
     : m_rtcReceiver(WTFMove(rtcReceiver))
@@ -143,6 +143,6 @@ std::unique_ptr<RTCDtlsTransportBackend> LibWebRTCRtpReceiverBackend::dtlsTransp
     return backend ? makeUnique<LibWebRTCDtlsTransportBackend>(WTFMove(backend)) : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

@@ -29,7 +29,7 @@
 #include "JSShadowRoot.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<DocumentFragment>&& impl)
@@ -44,4 +44,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, impl);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

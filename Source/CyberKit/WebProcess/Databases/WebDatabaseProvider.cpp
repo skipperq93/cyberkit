@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static HashMap<PageGroupIdentifier, WebDatabaseProvider*>& databaseProviders()

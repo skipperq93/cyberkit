@@ -19,12 +19,12 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitFaviconDatabase_h
-#define WebKitFaviconDatabase_h
+#ifndef CyberKitFaviconDatabase_h
+#define CyberKitFaviconDatabase_h
 
 #include <gio/gio.h>
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 #if PLATFORM(GTK)
 #if USE(GTK4)
@@ -39,13 +39,13 @@ G_BEGIN_DECLS
 #define WEBKIT_FAVICON_DATABASE_ERROR           (webkit_favicon_database_error_quark())
 #define WEBKIT_TYPE_FAVICON_DATABASE            (webkit_favicon_database_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_FAVICON_DATABASE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FAVICON_DATABASE, WebKitFaviconDatabase))
+#define WEBKIT_FAVICON_DATABASE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FAVICON_DATABASE, CyberKitFaviconDatabase))
 #define WEBKIT_IS_FAVICON_DATABASE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_FAVICON_DATABASE))
-#define WEBKIT_FAVICON_DATABASE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FAVICON_DATABASE, WebKitFaviconDatabaseClass))
+#define WEBKIT_FAVICON_DATABASE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FAVICON_DATABASE, CyberKitFaviconDatabaseClass))
 #define WEBKIT_IS_FAVICON_DATABASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_FAVICON_DATABASE))
-#define WEBKIT_FAVICON_DATABASE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FAVICON_DATABASE, WebKitFaviconDatabaseClass))
+#define WEBKIT_FAVICON_DATABASE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FAVICON_DATABASE, CyberKitFaviconDatabaseClass))
 
-struct _WebKitFaviconDatabaseClass {
+struct _CyberKitFaviconDatabaseClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -56,28 +56,28 @@ struct _WebKitFaviconDatabaseClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitFaviconDatabase, webkit_favicon_database, WEBKIT, FAVICON_DATABASE, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitFaviconDatabase, webkit_favicon_database, WEBKIT, FAVICON_DATABASE, GObject)
 
 /**
- * WebKitFaviconDatabaseError:
- * @WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED: The #WebKitFaviconDatabase is closed
+ * CyberKitFaviconDatabaseError:
+ * @WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED: The #CyberKitFaviconDatabase is closed
  * @WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND: There is not an icon available for the requested URL
  * @WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN: There might be an icon for the requested URL, but its data is unknown at the moment
  *
- * Enum values used to denote the various errors related to the #WebKitFaviconDatabase.
+ * Enum values used to denote the various errors related to the #CyberKitFaviconDatabase.
  **/
 typedef enum {
     WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED,
     WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND,
     WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN
-} WebKitFaviconDatabaseError;
+} CyberKitFaviconDatabaseError;
 
 WEBKIT_API GQuark
 webkit_favicon_database_error_quark        (void);
 
 #if PLATFORM(GTK)
 WEBKIT_API void
-webkit_favicon_database_get_favicon        (WebKitFaviconDatabase *database,
+webkit_favicon_database_get_favicon        (CyberKitFaviconDatabase *database,
                                             const gchar           *page_uri,
                                             GCancellable          *cancellable,
                                             GAsyncReadyCallback    callback,
@@ -85,22 +85,22 @@ webkit_favicon_database_get_favicon        (WebKitFaviconDatabase *database,
 
 #if USE(GTK4)
 WEBKIT_API GdkTexture *
-webkit_favicon_database_get_favicon_finish (WebKitFaviconDatabase *database,
+webkit_favicon_database_get_favicon_finish (CyberKitFaviconDatabase *database,
                                             GAsyncResult          *result,
                                             GError               **error);
 #else
 WEBKIT_API cairo_surface_t *
-webkit_favicon_database_get_favicon_finish (WebKitFaviconDatabase *database,
+webkit_favicon_database_get_favicon_finish (CyberKitFaviconDatabase *database,
                                             GAsyncResult          *result,
                                             GError               **error);
 #endif
 #endif
 
 WEBKIT_API gchar *
-webkit_favicon_database_get_favicon_uri    (WebKitFaviconDatabase *database,
+webkit_favicon_database_get_favicon_uri    (CyberKitFaviconDatabase *database,
                                             const gchar           *page_uri);
 WEBKIT_API void
-webkit_favicon_database_clear              (WebKitFaviconDatabase *database);
+webkit_favicon_database_clear              (CyberKitFaviconDatabase *database);
 
 G_END_DECLS
 

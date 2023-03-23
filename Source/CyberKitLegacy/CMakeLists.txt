@@ -25,7 +25,7 @@ set(CyberKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
 )
 
 set(CyberKitLegacy_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
     CyberCore

@@ -32,7 +32,7 @@
 #include "KeyboardEvent.h"
 #include "RenderMenuList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool HTMLSelectElement::platformHandleKeydownEvent(KeyboardEvent* event)
 {

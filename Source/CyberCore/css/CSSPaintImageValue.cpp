@@ -33,7 +33,7 @@
 #include "StylePaintImage.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSPaintImageValue::CSSPaintImageValue(String&& name, Ref<CSSVariableData>&& arguments)
     : CSSValue { PaintImageClass }
@@ -55,6 +55,6 @@ RefPtr<StyleImage> CSSPaintImageValue::createStyleImage(Style::BuilderState&) co
     return StylePaintImage::create(m_name, m_arguments);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

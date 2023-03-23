@@ -28,7 +28,7 @@
 #include "DeprecatedCSSOMPrimitiveValue.h"
 #include "Rect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeprecatedCSSOMRect final : public RefCounted<DeprecatedCSSOMRect> {
 public:
@@ -57,4 +57,4 @@ private:
     Ref<DeprecatedCSSOMPrimitiveValue> m_left;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

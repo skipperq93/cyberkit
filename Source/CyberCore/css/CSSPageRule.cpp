@@ -31,7 +31,7 @@
 #include "StyleProperties.h"
 #include "StyleRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSPageRule::CSSPageRule(StyleRulePage& pageRule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -89,4 +89,4 @@ void CSSPageRule::reattach(StyleRuleBase& rule)
         m_propertiesCSSOMWrapper->reattach(m_pageRule.get().mutableProperties());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

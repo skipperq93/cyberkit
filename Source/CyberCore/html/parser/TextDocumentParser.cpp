@@ -28,7 +28,7 @@
 #include "HTMLTreeBuilder.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

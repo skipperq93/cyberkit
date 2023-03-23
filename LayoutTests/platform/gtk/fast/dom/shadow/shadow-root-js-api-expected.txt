@@ -4,9 +4,9 @@ On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE
 
 
 PASS window.ShadowRoot is undefined.
-PASS window.WebKitShadowRoot is defined.
-PASS new window.WebKitShadowRoot(document.createElement('div')) threw exception TypeError: '[object ShadowRootConstructor]' is not a constructor (evaluating 'new window.WebKitShadowRoot(document.createElement('div'))').
-PASS shadowRoot instanceof window.WebKitShadowRoot is true
+PASS window.CyberKitShadowRoot is defined.
+PASS new window.CyberKitShadowRoot(document.createElement('div')) threw exception TypeError: '[object ShadowRootConstructor]' is not a constructor (evaluating 'new window.CyberKitShadowRoot(document.createElement('div'))').
+PASS shadowRoot instanceof window.CyberKitShadowRoot is true
 PASS shadowRoot.getElementById('div1') is div1
 PASS shadowRoot.getElementById('foo') is null
 PASS shadowRoot.getElementsByClassName('class2') is [div2]

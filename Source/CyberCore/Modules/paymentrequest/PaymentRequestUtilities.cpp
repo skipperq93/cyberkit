@@ -28,7 +28,7 @@
 
 #if ENABLE(PAYMENT_REQUEST)
 
-namespace WebCore {
+namespace CyberCore {
 
 // Implements the "valid decimal monetary value" validity checker
 // https://www.w3.org/TR/payment-request/#dfn-valid-decimal-monetary-value
@@ -100,6 +100,6 @@ bool isValidDecimalMonetaryValue(StringView value)
     return state == State::Digit || state == State::DotDigit;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

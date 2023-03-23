@@ -32,10 +32,10 @@
 #include "JSNodeCustom.h"
 #include "TrackBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue toJS(JSC::JSGlobalObject*, JSDOMGlobalObject*, TrackBase&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

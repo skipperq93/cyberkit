@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CryptoAlgorithmIdentifier {
     RSAES_PKCS1_v1_5 = 1,
@@ -52,6 +52,6 @@ enum class CryptoAlgorithmIdentifier {
     Ed25519
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

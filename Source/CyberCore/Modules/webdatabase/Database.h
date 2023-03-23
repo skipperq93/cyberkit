@@ -33,7 +33,7 @@
 #include <wtf/Deque.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DatabaseCallback;
 class DatabaseContext;
@@ -180,4 +180,4 @@ private:
     friend class SQLTransactionBackend;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

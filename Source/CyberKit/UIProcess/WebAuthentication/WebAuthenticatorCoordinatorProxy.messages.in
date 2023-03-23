@@ -26,8 +26,8 @@
 
 messages -> WebAuthenticatorCoordinatorProxy NotRefCounted {
 
-    MakeCredential(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct CyberCore::PublicKeyCredentialCreationOptions options, bool processingUserGesture) -> (struct CyberCore::AuthenticatorResponseData data, enum:uint8_t CyberCore::AuthenticatorAttachment attachment, struct CyberCore::ExceptionData exception)
-    GetAssertion(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct CyberCore::PublicKeyCredentialRequestOptions options, enum:uint8_t CyberCore::CredentialRequestOptions::MediationRequirement mediation, std::optional<CyberCore::SecurityOriginData> parentOrigin, bool processingUserGesture) -> (struct CyberCore::AuthenticatorResponseData data, enum:uint8_t CyberCore::AuthenticatorAttachment attachment, struct CyberCore::ExceptionData exception)
+    MakeCredential(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct CyberCore::PublicKeyCredentialCreationOptions options, bool processingUserGesture) -> (struct CyberCore::AuthenticatorResponseData data, enum:uint8_t CyberCore::AuthenticatorAttachment attachment, struct CyberCore::ExceptionData exception)
+    GetAssertion(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct CyberCore::PublicKeyCredentialRequestOptions options, enum:uint8_t CyberCore::CredentialRequestOptions::MediationRequirement mediation, std::optional<CyberCore::SecurityOriginData> parentOrigin, bool processingUserGesture) -> (struct CyberCore::AuthenticatorResponseData data, enum:uint8_t CyberCore::AuthenticatorAttachment attachment, struct CyberCore::ExceptionData exception)
     isConditionalMediationAvailable(CyberCore::SecurityOriginData origin) -> (bool result)
     IsUserVerifyingPlatformAuthenticatorAvailable(CyberCore::SecurityOriginData origin) -> (bool result)
     Cancel()

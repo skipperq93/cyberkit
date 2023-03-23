@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WebXRInputSource;
@@ -43,7 +43,7 @@ class WebXRSession;
 
 class WebXRInputSourceArray final : public ScriptWrappable {
     WTF_MAKE_ISO_ALLOCATED(WebXRInputSourceArray);
-    friend UniqueRef<WebXRInputSourceArray> WTF::makeUniqueRefWithoutFastMallocCheck<WebXRInputSourceArray, WebCore::WebXRSession&>(WebCore::WebXRSession&);
+    friend UniqueRef<WebXRInputSourceArray> WTF::makeUniqueRefWithoutFastMallocCheck<WebXRInputSourceArray, CyberCore::WebXRSession&>(CyberCore::WebXRSession&);
 public:
     using InputSourceList = Vector<PlatformXR::Device::FrameData::InputSource>;
     static UniqueRef<WebXRInputSourceArray> create(WebXRSession&);
@@ -71,6 +71,6 @@ private:
     Vector<Ref<WebXRInputSource>> m_inputSources;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

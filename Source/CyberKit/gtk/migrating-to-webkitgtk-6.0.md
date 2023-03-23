@@ -22,9 +22,9 @@ time to start looking into webkitgtk-6.0.
 ## Stop Using Deprecated APIs
 
 All APIs that were previously deprecated in webkit2gtk-4.0 and webkit2gtk-4.1
-have been removed. This includes the original JavaScriptCore API (e.g.
+have been removed. This includes the original CyberScriptCore API (e.g.
 `JSContextRef` and `JSObjectRef`), which has been replaced by the GObject-style
-JavaScriptCore API (e.g. [type@JSC.Context] and [type@JSC.Object]) that is
+CyberScriptCore API (e.g. [type@JSC.Context] and [type@JSC.Object]) that is
 available since 2.22. It also includes the entire GObject DOM API (e.g.
 `CyberKitDOMDocument`), which has been removed without replacement. Use JavaScript
 to interact with and manipulate the DOM instead, perhaps via

@@ -37,7 +37,7 @@
 #include "WebPageProxy.h"
 #include <CyberCore/Region.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 DrawingAreaProxyWC::DrawingAreaProxyWC(WebPageProxy& webPageProxy)
     : DrawingAreaProxy(DrawingAreaType::WC, webPageProxy)
@@ -102,6 +102,6 @@ void DrawingAreaProxyWC::discardBackingStore()
     m_backingStore = std::nullopt;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

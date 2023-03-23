@@ -40,7 +40,7 @@
 #include "Text.h"
 #include "VisibleUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -505,4 +505,4 @@ void InsertParagraphSeparatorCommand::doApply()
     applyStyleAfterInsertion(startBlock.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

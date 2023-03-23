@@ -43,7 +43,7 @@
 #include "PlatformLocale.h"
 #include "StepRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -138,6 +138,6 @@ void DateTimeLocalInputType::setupLayoutParameters(DateTimeEditElement::LayoutPa
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

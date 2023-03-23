@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKit2_C_h
-#define WebKit2_C_h
+#ifndef CyberKit2_C_h
+#define CyberKit2_C_h
 
 #include <CyberKit/WKBase.h>
 #include <CyberKit/WKType.h>
@@ -69,4 +69,4 @@
 #include <CyberKit/WKView.h>
 #endif
 
-#endif /* WebKit2_C_h */
+#endif /* CyberKit2_C_h */

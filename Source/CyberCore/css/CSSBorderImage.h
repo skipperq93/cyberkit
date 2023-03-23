@@ -21,11 +21,11 @@
 
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 class CSSValueList;
 
 Ref<CSSValueList> createBorderImageValue(RefPtr<CSSValue>&& image, RefPtr<CSSValue>&& imageSlice, RefPtr<CSSValue>&& borderSlice, RefPtr<CSSValue>&& outset, RefPtr<CSSValue>&& repeat);
 
-} // namespace WebCore
+} // namespace CyberCore

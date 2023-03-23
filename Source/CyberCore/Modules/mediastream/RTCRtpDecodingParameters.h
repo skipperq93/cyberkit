@@ -29,11 +29,11 @@
 
 #include "RTCRtpCodingParameters.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpDecodingParameters : RTCRtpCodingParameters {
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -20,10 +20,10 @@
 #pragma once
 
 #include "AuthenticationChallengeProxy.h"
-#include "WebKitAuthenticationRequest.h"
+#include "CyberKitAuthenticationRequest.h"
 #include <CyberCore/Credential.h>
 
-WebKitAuthenticationRequest* webkitAuthenticationRequestCreate(WebKit::AuthenticationChallengeProxy*, bool privateBrowsingEnabled, bool persistentCredentialStorageEnabled);
-WebKit::AuthenticationChallengeProxy* webkitAuthenticationRequestGetAuthenticationChallenge(WebKitAuthenticationRequest*);
-void webkitAuthenticationRequestDidAuthenticate(WebKitAuthenticationRequest*);
-const CyberCore::Credential& webkitAuthenticationRequestGetProposedCredential(WebKitAuthenticationRequest*);
+CyberKitAuthenticationRequest* webkitAuthenticationRequestCreate(CyberKit::AuthenticationChallengeProxy*, bool privateBrowsingEnabled, bool persistentCredentialStorageEnabled);
+CyberKit::AuthenticationChallengeProxy* webkitAuthenticationRequestGetAuthenticationChallenge(CyberKitAuthenticationRequest*);
+void webkitAuthenticationRequestDidAuthenticate(CyberKitAuthenticationRequest*);
+const CyberCore::Credential& webkitAuthenticationRequestGetProposedCredential(CyberKitAuthenticationRequest*);

@@ -47,7 +47,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RobinHoodHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MutationObserver);
 
@@ -267,4 +267,4 @@ void MutationObserver::notifyMutationObservers(WindowEventLoop& eventLoop)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ExceptionOr;
 class HTMLElement;
@@ -87,4 +87,4 @@ private:
     Vector<Item> m_items;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

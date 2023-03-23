@@ -32,7 +32,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoKey;
 
@@ -125,6 +125,6 @@ inline void RTCRtpSFrameTransformer::setMediaType(RTCRtpTransformBackend::MediaT
     m_compatibilityMode = CompatibilityMode::None;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

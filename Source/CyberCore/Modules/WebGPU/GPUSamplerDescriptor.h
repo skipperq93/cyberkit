@@ -34,22 +34,22 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUSamplerDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUSamplerDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::SamplerDescriptor convertToBacking() const
     {
         return {
             { label },
-            WebCore::convertToBacking(addressModeU),
-            WebCore::convertToBacking(addressModeV),
-            WebCore::convertToBacking(addressModeW),
-            WebCore::convertToBacking(magFilter),
-            WebCore::convertToBacking(minFilter),
-            WebCore::convertToBacking(mipmapFilter),
+            CyberCore::convertToBacking(addressModeU),
+            CyberCore::convertToBacking(addressModeV),
+            CyberCore::convertToBacking(addressModeW),
+            CyberCore::convertToBacking(magFilter),
+            CyberCore::convertToBacking(minFilter),
+            CyberCore::convertToBacking(mipmapFilter),
             lodMinClamp,
             lodMaxClamp,
-            compare ? std::optional { WebCore::convertToBacking(*compare) } : std::nullopt,
+            compare ? std::optional { CyberCore::convertToBacking(*compare) } : std::nullopt,
             maxAnisotropy,
         };
     }

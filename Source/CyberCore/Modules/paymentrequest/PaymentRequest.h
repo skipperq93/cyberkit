@@ -38,7 +38,7 @@
 #include <variant>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Event;
@@ -157,10 +157,10 @@ private:
 
 std::optional<PaymentRequest::MethodIdentifier> convertAndValidatePaymentMethodIdentifier(const String& identifier);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::PaymentRequest)
-    static bool isType(const WebCore::EventTarget& eventTarget) { return eventTarget.isPaymentRequest(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::PaymentRequest)
+    static bool isType(const CyberCore::EventTarget& eventTarget) { return eventTarget.isPaymentRequest(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(PAYMENT_REQUEST)

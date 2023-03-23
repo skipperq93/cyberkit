@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EXTTextureFilterAnisotropic);
 
@@ -52,6 +52,6 @@ bool EXTTextureFilterAnisotropic::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_EXT_texture_filter_anisotropic"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

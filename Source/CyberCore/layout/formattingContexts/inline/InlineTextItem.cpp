@@ -31,7 +31,7 @@
 #include "TextUtil.h"
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static_assert(sizeof(InlineItem) == sizeof(InlineTextItem));

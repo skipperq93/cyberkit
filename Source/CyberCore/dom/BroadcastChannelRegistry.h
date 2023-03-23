@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PartitionedSecurityOrigin;
 class SerializedScriptValue;
@@ -42,4 +42,4 @@ public:
     virtual void postMessage(const PartitionedSecurityOrigin&, const String& name, BroadcastChannelIdentifier source, Ref<SerializedScriptValue>&&, CompletionHandler<void()>&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

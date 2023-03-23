@@ -52,7 +52,7 @@ typedef CyberCore::PlaybackSessionInterfaceAVKit PlatformPlaybackSessionInterfac
 typedef CyberCore::PlaybackSessionInterfaceMac PlatformPlaybackSessionInterface;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 class PlaybackSessionManagerProxy;
@@ -259,6 +259,6 @@ private:
     HashCountedSet<PlaybackSessionContextIdentifier> m_clientCounts;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))

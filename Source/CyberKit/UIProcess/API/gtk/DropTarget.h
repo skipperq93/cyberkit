@@ -46,7 +46,7 @@ typedef struct _GtkSelectionData GtkSelectionData;
 using PlatformDropContext = GdkDragContext;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class ShareableBitmap;
 
@@ -90,6 +90,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DRAG_SUPPORT)

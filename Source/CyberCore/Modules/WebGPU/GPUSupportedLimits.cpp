@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUSupportedLimits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 uint32_t GPUSupportedLimits::maxTextureDimension1D() const
 {

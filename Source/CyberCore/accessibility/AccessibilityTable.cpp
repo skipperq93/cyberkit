@@ -47,7 +47,7 @@
 #include "RenderTableSection.h"
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -758,4 +758,4 @@ int AccessibilityTable::axRowCount() const
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

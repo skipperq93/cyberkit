@@ -26,7 +26,7 @@
 #include <CyberScriptCore/JSDestructibleObject.h>
 #include <wtf/SignedPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -92,4 +92,4 @@ template<typename ImplementationClass> struct JSDOMWrapperConverterTraits;
 
 JSC::JSValue cloneAcrossWorlds(JSC::JSGlobalObject&, const JSDOMObject& owner, JSC::JSValue);
 
-} // namespace WebCore
+} // namespace CyberCore

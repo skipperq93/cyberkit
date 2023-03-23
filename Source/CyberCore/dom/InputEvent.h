@@ -28,7 +28,7 @@
 #include "StaticRange.h"
 #include "UIEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataTransfer;
 class WindowProxy;
@@ -72,6 +72,6 @@ private:
     bool m_isInputMethodComposing;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(InputEvent)

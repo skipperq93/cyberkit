@@ -33,7 +33,7 @@
 OBJC_CLASS NSSet;
 OBJC_CLASS RBSProcessMonitor;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 

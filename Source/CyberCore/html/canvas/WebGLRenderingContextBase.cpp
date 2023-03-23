@@ -84,7 +84,7 @@
 #include "RenderBox.h"
 #include "Settings.h"
 #include "WebCodecsVideoFrame.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebGL2RenderingContext.h"
 #include "WebGLActiveInfo.h"
 #include "WebGLBuffer.h"
@@ -158,7 +158,7 @@
 #include "PlatformScreen.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLRenderingContextBase);
 
@@ -5894,27 +5894,27 @@ void WebGLRenderingContextBase::addMembersToOpaqueRoots(JSC::AbstractSlotVisitor
 {
     Locker locker { objectGraphLock() };
 
-    addWebCoreOpaqueRoot(visitor, m_boundArrayBuffer.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundArrayBuffer.get());
 
-    addWebCoreOpaqueRoot(visitor, m_boundVertexArrayObject.get());
+    addCyberCoreOpaqueRoot(visitor, m_boundVertexArrayObject.get());
     if (m_boundVertexArrayObject)
         m_boundVertexArrayObject->addMembersToOpaqueRoots(locker, visitor);
 
-    addWebCoreOpaqueRoot(visitor, m_currentProgram.get());
+    addCyberCoreOpaqueRoot(visitor, m_currentProgram.get());
     if (m_currentProgram)
         m_currentProgram->addMembersToOpaqueRoots(locker, visitor);
 
-    addWebCoreOpaqueRoot(visitor, m_framebufferBinding.get());
+    addCyberCoreOpaqueRoot(visitor, m_framebufferBinding.get());
     if (m_framebufferBinding)
         m_framebufferBinding->addMembersToOpaqueRoots(locker, visitor);
 
-    addWebCoreOpaqueRoot(visitor, m_renderbufferBinding.get());
+    addCyberCoreOpaqueRoot(visitor, m_renderbufferBinding.get());
 
     for (auto& unit : m_textureUnits) {
-        addWebCoreOpaqueRoot(visitor, unit.texture2DBinding.get());
-        addWebCoreOpaqueRoot(visitor, unit.textureCubeMapBinding.get());
-        addWebCoreOpaqueRoot(visitor, unit.texture3DBinding.get());
-        addWebCoreOpaqueRoot(visitor, unit.texture2DArrayBinding.get());
+        addCyberCoreOpaqueRoot(visitor, unit.texture2DBinding.get());
+        addCyberCoreOpaqueRoot(visitor, unit.textureCubeMapBinding.get());
+        addCyberCoreOpaqueRoot(visitor, unit.texture3DBinding.get());
+        addCyberCoreOpaqueRoot(visitor, unit.texture2DArrayBinding.get());
     }
 
     // Extensions' IDL files use GenerateIsReachable=ImplWebGLRenderingContext,
@@ -5942,11 +5942,11 @@ void WebGLRenderingContextBase::updateActiveOrdinal()
     m_activeOrdinal = s_lastActiveOrdinal++;
 }
 
-WebCoreOpaqueRoot root(WebGLRenderingContextBase* context)
+CyberCoreOpaqueRoot root(WebGLRenderingContextBase* context)
 {
-    return WebCoreOpaqueRoot { context };
+    return CyberCoreOpaqueRoot { context };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

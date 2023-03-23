@@ -38,7 +38,7 @@
 #import <CyberCore/IOSurface.h>
 #import <CyberCore/PlatformCALayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace {
 

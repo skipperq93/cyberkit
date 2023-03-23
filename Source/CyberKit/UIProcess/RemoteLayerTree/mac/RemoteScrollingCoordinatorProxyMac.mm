@@ -42,7 +42,7 @@
 #import <CyberCore/ScrollingTreePositionedNode.h>
 #import <CyberCore/WheelEventDeltaFilter.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteScrollingCoordinatorProxyMac::RemoteScrollingCoordinatorProxyMac(WebPageProxy& webPageProxy)
@@ -181,6 +181,6 @@ void RemoteScrollingCoordinatorProxyMac::windowScreenDidChange(PlatformDisplayID
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC) && ENABLE(UI_SIDE_COMPOSITING)

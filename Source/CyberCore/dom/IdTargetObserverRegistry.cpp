@@ -28,7 +28,7 @@
 
 #include "IdTargetObserver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void IdTargetObserverRegistry::addObserver(const AtomString& id, IdTargetObserver* observer)
 {
@@ -74,4 +74,4 @@ void IdTargetObserverRegistry::notifyObserversInternal(const AtomStringImpl& id)
     m_notifyingObserversInSet = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

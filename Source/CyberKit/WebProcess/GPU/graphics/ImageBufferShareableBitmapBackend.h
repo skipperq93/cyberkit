@@ -34,7 +34,7 @@ namespace CyberCore {
 class ProcessIdentity;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ShareableBitmap;
 
@@ -79,4 +79,4 @@ private:
     std::unique_ptr<CyberCore::GraphicsContext> m_context;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

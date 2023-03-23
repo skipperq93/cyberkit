@@ -28,7 +28,7 @@
 #include "EditCommand.h"
 #include "FrameSelection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SetSelectionCommand : public SimpleEditCommand {
 public:
@@ -51,4 +51,4 @@ private:
     VisibleSelection m_selectionToSet;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

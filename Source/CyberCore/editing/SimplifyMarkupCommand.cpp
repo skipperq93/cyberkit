@@ -32,7 +32,7 @@
 #include "RenderObject.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SimplifyMarkupCommand::SimplifyMarkupCommand(Document& document, Node* firstNode, Node* nodeAfterLast)
     : CompositeEditCommand(document)
@@ -126,4 +126,4 @@ int SimplifyMarkupCommand::pruneSubsequentAncestorsToRemove(Vector<Ref<Node>>& n
     return pastLastNodeToRemove - startNodeIndex - 1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

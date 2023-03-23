@@ -31,14 +31,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /*!
- @abstract Indicates additional local paths WebKit can read from when loading content.
+ @abstract Indicates additional local paths CyberKit can read from when loading content.
 */
 WK_EXTERN NSAttributedStringDocumentReadingOptionKey const _WKReadAccessFileURLsOption
     NS_SWIFT_NAME(readAccessPaths) WK_API_AVAILABLE(macos(13.1), ios(16.2));
 
 /*!
  @discussion Private extension of @link //apple_ref/occ/NSAttributedString NSAttributedString @/link to
- translate HTML content into attributed strings using WebKit.
+ translate HTML content into attributed strings using CyberKit.
  */
 @interface NSAttributedString (WKPrivate)
 

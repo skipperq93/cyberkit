@@ -29,7 +29,7 @@
 #include "config.h"
 #include "SQLResultSetRowList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned SQLResultSetRowList::length() const
 {

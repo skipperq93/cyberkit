@@ -28,7 +28,7 @@
 #include "GPUObjectDescriptorBase.h"
 #include <pal/graphics/WebGPU/WebGPUCommandEncoderDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUCommandEncoderDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::CommandEncoderDescriptor convertToBacking() const

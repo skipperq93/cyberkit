@@ -28,11 +28,11 @@
 #include "JSDOMExceptionHandling.h"
 #include "JSDOMWindowCustom.h"
 #include "RuntimeApplicationChecks.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/JSFunction.h>
 #include <CyberScriptCore/Lookup.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static bool getOwnPropertySlotCommon(JSLocation& thisObject, JSGlobalObject& lexicalGlobalObject, PropertyName propertyName, PropertySlot& slot)
@@ -197,4 +197,4 @@ bool JSLocation::preventExtensions(JSObject*, JSGlobalObject*)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

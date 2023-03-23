@@ -32,7 +32,7 @@
 #include "Timer.h"
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpellChecker;
 class TextCheckerClient;
@@ -103,4 +103,4 @@ private:
     Deque<Ref<SpellCheckRequest>> m_requestQueue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

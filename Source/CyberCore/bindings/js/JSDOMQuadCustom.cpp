@@ -28,20 +28,20 @@
 
 #include "DOMPoint.h"
 #include "JSDOMBinding.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
 void JSDOMQuad::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p1()));
-    addWebCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p2()));
-    addWebCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p3()));
-    addWebCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p4()));
+    addCyberCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p1()));
+    addCyberCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p2()));
+    addCyberCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p3()));
+    addCyberCoreOpaqueRoot(visitor, const_cast<DOMPoint*>(&wrapped().p4()));
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSDOMQuad);
 
-} // namespace WebCore
+} // namespace CyberCore

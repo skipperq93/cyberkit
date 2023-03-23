@@ -32,7 +32,7 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCError final : public DOMException {
 public:
@@ -59,6 +59,6 @@ private:
     Init m_values;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -49,7 +49,7 @@ static NSNotificationName const viewServiceBackgroundNotificationName = @"_UIVie
 static NSNotificationName const viewServiceForegroundNotificationName = @"_UIViewServiceHostWillEnterForegroundNotification";
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static WeakHashSet<ApplicationStateTracker>& allApplicationStateTrackers()
 {

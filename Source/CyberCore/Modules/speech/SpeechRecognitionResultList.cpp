@@ -29,7 +29,7 @@
 #include "SpeechRecognitionResult.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SpeechRecognitionResultList);
 
@@ -58,4 +58,4 @@ SpeechRecognitionResultList::SpeechRecognitionResultList(Vector<Ref<SpeechRecogn
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

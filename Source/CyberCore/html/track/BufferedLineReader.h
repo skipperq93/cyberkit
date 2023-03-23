@@ -33,7 +33,7 @@
 #include "SegmentedString.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Line collection helper for the WebVTT Parser.
 //
@@ -73,4 +73,4 @@ inline void BufferedLineReader::reset()
     m_maybeSkipLF = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

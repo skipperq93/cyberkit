@@ -26,7 +26,7 @@
 
 #include "StyleProperties.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PropertySetCSSStyleDeclaration;
 class StyledElement;
@@ -118,6 +118,6 @@ inline MutableStyleProperties::PropertyReference MutableStyleProperties::propert
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MutableStyleProperties)
-    static bool isType(const WebCore::StyleProperties& properties) { return properties.isMutable(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MutableStyleProperties)
+    static bool isType(const CyberCore::StyleProperties& properties) { return properties.isMutable(); }
 SPECIALIZE_TYPE_TRAITS_END()

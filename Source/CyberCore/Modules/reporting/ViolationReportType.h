@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ViolationReportType : uint8_t {
     COEPInheritenceViolation, // https://html.spec.whatwg.org/multipage/origin.html#queue-a-cross-origin-embedder-policy-inheritance-violation
@@ -40,4 +40,4 @@ enum class ViolationReportType : uint8_t {
     // More to come
 };
 
-} // namespace WebCore
+} // namespace CyberCore

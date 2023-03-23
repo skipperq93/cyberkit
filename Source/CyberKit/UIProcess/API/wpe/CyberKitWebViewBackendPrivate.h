@@ -19,15 +19,15 @@
 
 #pragma once
 
-#include "WebKitWebViewBackend.h"
+#include "CyberKitWebViewBackend.h"
 
 #include <wtf/glib/GRefPtr.h>
 
 namespace WTF {
 
-template <> WebKitWebViewBackend* refGPtr(WebKitWebViewBackend* ptr);
-template <> void derefGPtr(WebKitWebViewBackend* ptr);
+template <> CyberKitWebViewBackend* refGPtr(CyberKitWebViewBackend* ptr);
+template <> void derefGPtr(CyberKitWebViewBackend* ptr);
 
 }
 
-void webkitWebViewBackendUnref(WebKitWebViewBackend*);
+void webkitWebViewBackendUnref(CyberKitWebViewBackend*);

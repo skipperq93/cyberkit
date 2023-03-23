@@ -30,7 +30,7 @@
 #include "Text.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ElementAndTextDescendantIterator {
 public:
@@ -318,4 +318,4 @@ inline ElementAndTextDescendantRange elementAndTextDescendants(ContainerNode& ro
     return ElementAndTextDescendantRange(root);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

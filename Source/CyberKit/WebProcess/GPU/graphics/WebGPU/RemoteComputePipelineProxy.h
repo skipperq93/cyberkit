@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUComputePipeline.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ConvertToBackingContext;
 class RemoteBindGroupLayoutProxy;
@@ -83,6 +83,6 @@ private:
     Ref<RemoteDeviceProxy> m_parent;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

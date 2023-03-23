@@ -26,11 +26,11 @@
 #include "config.h"
 #include "APISerializedScriptValue.h"
 
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/JSBase.h>
-#include <JavaScriptCore/JSContextPrivate.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/JSRemoteInspector.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/JSBase.h>
+#include <CyberScriptCore/JSContextPrivate.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/JSRemoteInspector.h>
 #include <jsc/JSCContextPrivate.h>
 #include <jsc/JSCValuePrivate.h>
 #include <wtf/NeverDestroyed.h>

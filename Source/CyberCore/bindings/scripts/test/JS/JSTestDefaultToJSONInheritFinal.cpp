@@ -43,14 +43,14 @@
 #include "JSTestDefaultToJSONIndirectInheritance.h"
 #include "JSTestDefaultToJSONInheritFinal.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSArray.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/ObjectConstructor.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSArray.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
@@ -62,7 +62,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -329,7 +329,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestDefaultToJSONInheritFinalPrototypeFunction_toJSON
 
 JSC::GCClient::IsoSubspace* JSTestDefaultToJSONInheritFinal::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestDefaultToJSONInheritFinal, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestDefaultToJSONInheritFinal, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestDefaultToJSONInheritFinal.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestDefaultToJSONInheritFinal = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestDefaultToJSONInheritFinal.get(); },

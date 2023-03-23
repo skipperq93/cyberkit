@@ -31,7 +31,7 @@
 #include "ViolationReportType.h"
 #include <wtf/ArgumentCoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CORPViolationReportBody : public ReportBody {
     WTF_MAKE_ISO_ALLOCATED(CORPViolationReportBody);
@@ -52,8 +52,8 @@ private:
     FetchOptions::Destination m_destination;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CORPViolationReportBody)
-    static bool isType(const WebCore::ReportBody& reportBody) { return reportBody.reportBodyType() == WebCore::ViolationReportType::CORPViolation; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CORPViolationReportBody)
+    static bool isType(const CyberCore::ReportBody& reportBody) { return reportBody.reportBodyType() == CyberCore::ViolationReportType::CORPViolation; }
 SPECIALIZE_TYPE_TRAITS_END()

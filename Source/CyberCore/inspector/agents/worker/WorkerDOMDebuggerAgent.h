@@ -29,7 +29,7 @@
 #include <CyberScriptCore/Breakpoint.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerDOMDebuggerAgent final : public InspectorDOMDebuggerAgent {
 public:
@@ -44,4 +44,4 @@ private:
     bool setAnimationFrameBreakpoint(Inspector::Protocol::ErrorString&, RefPtr<JSC::Breakpoint>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ShadowPseudoIds {
 
@@ -335,4 +335,4 @@ const AtomString& appleAttachmentControlsContainer()
 
 } // namespace ShadowPseudoId
 
-} // namespace WebCore
+} // namespace CyberCore

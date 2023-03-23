@@ -27,7 +27,7 @@
 
 #include "FormattingQuirks.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class TableFormattingContext;

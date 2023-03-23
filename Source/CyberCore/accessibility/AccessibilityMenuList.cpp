@@ -30,7 +30,7 @@
 #include "AccessibilityMenuListPopup.h"
 #include "RenderMenuList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilityMenuList::AccessibilityMenuList(RenderMenuList* renderer)
     : AccessibilityRenderObject(renderer)
@@ -139,4 +139,4 @@ void AccessibilityMenuList::didUpdateActiveOption(int optionIndex)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

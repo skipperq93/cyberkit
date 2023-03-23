@@ -30,14 +30,14 @@
 
 #include "RemoteWebInspectorUIMessages.h"
 #include "WebInspectorUIProxy.h"
-#include "WebKitInspectorWindow.h"
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitInspectorWindow.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include "WebPageGroup.h"
 #include <CyberCore/CertificateInfo.h>
 #include <CyberCore/GtkVersioning.h>
 #include <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void RemoteWebInspectorUIProxy::updateWindowTitle(const CString& targetName)
@@ -56,16 +56,16 @@ WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
 {
     ASSERT(!m_webView);
 
-    auto preferences = WebPreferences::create(String(), "WebKit2."_s, "WebKit2."_s);
+    auto preferences = WebPreferences::create(String(), "CyberKit2."_s, "CyberKit2."_s);
 #if ENABLE(DEVELOPER_MODE)
     // Allow developers to inspect the Web Inspector in debug builds without changing settings.
     preferences->setDeveloperExtrasEnabled(true);
     preferences->setLogsPageMessagesToSystemConsoleEnabled(true);
 #endif
-    auto pageGroup = WebPageGroup::create(WebKit::defaultInspectorPageGroupIdentifierForPage(nullptr));
+    auto pageGroup = WebPageGroup::create(CyberKit::defaultInspectorPageGroupIdentifierForPage(nullptr));
 
     auto pageConfiguration = API::PageConfiguration::create();
-    pageConfiguration->setProcessPool(&WebKit::defaultInspectorProcessPool(inspectorLevelForPage(nullptr)));
+    pageConfiguration->setProcessPool(&CyberKit::defaultInspectorProcessPool(inspectorLevelForPage(nullptr)));
     pageConfiguration->setPreferences(preferences.ptr());
     pageConfiguration->setPageGroup(pageGroup.ptr());
     m_webView.reset(GTK_WIDGET(webkitWebViewBaseCreate(*pageConfiguration.ptr())));
@@ -186,6 +186,6 @@ void RemoteWebInspectorUIProxy::platformShowCertificate(const CertificateInfo&)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

@@ -28,7 +28,7 @@
 
 #include "MediaSample.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename M>
 class SampleIsLessThanMediaTimeComparator {

@@ -39,7 +39,7 @@ enum class DOMPasteAccessCategory : uint8_t;
 enum class DOMPasteAccessResponse : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaProxy;
 class WebPageNamespace;
@@ -160,4 +160,4 @@ private:
     WebView& m_view;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

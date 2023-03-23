@@ -27,7 +27,7 @@
 #include "MouseEvent.h"
 #include "PlatformWheelEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WheelEvent final : public MouseEvent {
     WTF_MAKE_ISO_ALLOCATED(WheelEvent);
@@ -90,6 +90,6 @@ private:
     std::optional<PlatformWheelEvent> m_underlyingPlatformEvent;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(WheelEvent)

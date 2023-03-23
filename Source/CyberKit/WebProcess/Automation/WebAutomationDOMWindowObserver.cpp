@@ -29,7 +29,7 @@
 #include <CyberCore/Element.h>
 #include <CyberCore/Frame.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebAutomationDOMWindowObserver::WebAutomationDOMWindowObserver(CyberCore::DOMWindow& window, WTF::Function<void(WebAutomationDOMWindowObserver&)>&& callback)
     : m_window(window)
@@ -91,4 +91,4 @@ void WebAutomationDOMWindowObserver::willDetachGlobalObjectFromFrame()
     m_window = nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

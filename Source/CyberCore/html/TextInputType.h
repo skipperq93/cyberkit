@@ -32,7 +32,7 @@
 
 #include "BaseTextInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextInputType final : public BaseTextInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -46,6 +46,6 @@ private:
     const AtomString& formControlType() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(TextInputType, Type::Text)

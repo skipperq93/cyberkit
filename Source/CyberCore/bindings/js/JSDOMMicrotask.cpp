@@ -35,7 +35,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <CyberScriptCore/VMTrapsInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 class JSDOMMicrotask final : public Microtask {
@@ -98,4 +98,4 @@ void JSDOMMicrotask::run(JSGlobalObject* globalObject)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

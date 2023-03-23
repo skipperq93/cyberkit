@@ -36,7 +36,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // We have to clean up this data on the context thread because unprotecting a
 // JSObject on the wrong thread without synchronization would corrupt the heap
@@ -133,4 +133,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

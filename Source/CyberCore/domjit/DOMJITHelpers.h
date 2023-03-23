@@ -35,7 +35,7 @@
 
 IGNORE_WARNINGS_BEGIN("frame-address")
 
-namespace WebCore { namespace DOMJIT {
+namespace CyberCore { namespace DOMJIT {
 
 using JSC::CCallHelpers;
 using JSC::GPRReg;

@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CSSValueID : uint16_t;
 
@@ -55,4 +55,4 @@ private:
     CSSValueID m_listStyle;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

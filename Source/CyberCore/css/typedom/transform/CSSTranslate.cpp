@@ -40,7 +40,7 @@
 #include "ExceptionOr.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSTranslate);
 
@@ -190,4 +190,4 @@ RefPtr<CSSValue> CSSTranslate::toCSSValue() const
     return CSSFunctionValue::create(CSSValueTranslate3d, x.releaseNonNull(), y.releaseNonNull(), z.releaseNonNull());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

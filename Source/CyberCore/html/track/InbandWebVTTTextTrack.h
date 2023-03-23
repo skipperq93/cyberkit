@@ -31,7 +31,7 @@
 #include "WebVTTParser.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandWebVTTTextTrack final : public InbandTextTrack, private WebVTTParserClient {
     WTF_MAKE_ISO_ALLOCATED(InbandWebVTTTextTrack);
@@ -58,6 +58,6 @@ private:
     std::unique_ptr<WebVTTParser> m_webVTTParser;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

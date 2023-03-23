@@ -26,7 +26,7 @@
 #include "config.h"
 #include "NotificationData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NotificationData NotificationData::isolatedCopy() const &
 {
@@ -38,4 +38,4 @@ NotificationData NotificationData::isolatedCopy() &&
     return { WTFMove(title).isolatedCopy(), WTFMove(body).isolatedCopy(), WTFMove(iconURL).isolatedCopy(), WTFMove(tag).isolatedCopy(), WTFMove(language).isolatedCopy(), direction, WTFMove(originString).isolatedCopy(), WTFMove(serviceWorkerRegistrationURL).isolatedCopy(), notificationID, contextIdentifier, sourceSession, creationTime, WTFMove(data) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

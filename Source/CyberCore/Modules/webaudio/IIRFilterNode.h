@@ -31,7 +31,7 @@
 #include <CyberScriptCore/Forward.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IIRFilterNode final : public AudioBasicProcessorNode {
     WTF_MAKE_ISO_ALLOCATED(IIRFilterNode);
@@ -46,4 +46,4 @@ private:
     IIRProcessor* iirProcessor() { return static_cast<IIRProcessor*>(processor()); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

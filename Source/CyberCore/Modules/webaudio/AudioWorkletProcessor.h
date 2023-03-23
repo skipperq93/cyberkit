@@ -44,7 +44,7 @@ class JSArray;
 class MarkedArgumentBufferBase;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class AudioWorkletGlobalScope;
@@ -52,7 +52,7 @@ class AudioWorkletProcessorConstructionData;
 class JSCallbackDataStrong;
 class MessagePort;
 class ScriptExecutionContext;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class AudioWorkletProcessor : public ScriptWrappable, public ThreadSafeRefCountedAndCanMakeThreadSafeWeakPtr<AudioWorkletProcessor> {
     WTF_MAKE_ISO_ALLOCATED(AudioWorkletProcessor);
@@ -81,8 +81,8 @@ private:
     JSValueInWrappedObject m_jsParamValues;
 };
 
-WebCoreOpaqueRoot root(AudioWorkletProcessor*);
+CyberCoreOpaqueRoot root(AudioWorkletProcessor*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

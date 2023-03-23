@@ -19,6 +19,6 @@
 
 #pragma once
 
-#include "WebKitNotificationPermissionRequest.h"
+#include "CyberKitNotificationPermissionRequest.h"
 
-WebKitNotificationPermissionRequest* webkitNotificationPermissionRequestCreate(WebKit::NotificationPermissionRequest*);
+CyberKitNotificationPermissionRequest* webkitNotificationPermissionRequestCreate(CyberKit::NotificationPermissionRequest*);

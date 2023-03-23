@@ -38,7 +38,7 @@
 #include <wtf/RefPtr.h>
 #include <zlib.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DecompressionStreamDecoder : public RefCounted<DecompressionStreamDecoder> {
 public:
@@ -105,4 +105,4 @@ private:
 #endif
     }
 };
-} // namespace WebCore
+} // namespace CyberCore

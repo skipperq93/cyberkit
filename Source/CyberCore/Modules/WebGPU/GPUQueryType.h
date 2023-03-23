@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUQueryType.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUQueryType : uint8_t {
     Occlusion,

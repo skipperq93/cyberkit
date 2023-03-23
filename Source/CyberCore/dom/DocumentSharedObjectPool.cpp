@@ -31,7 +31,7 @@
 #include "ElementData.h"
 #include <wtf/UnalignedAccess.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Do comparisons 8 bytes-at-a-time on architectures where it's safe.
 #if (CPU(X86_64) || CPU(ARM64)) && !ASAN_ENABLED

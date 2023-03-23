@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayRecurringPaymentDateUnit {
     Year,
@@ -39,18 +39,18 @@ enum class ApplePayRecurringPaymentDateUnit {
     Minute,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ApplePayRecurringPaymentDateUnit> {
+template<> struct EnumTraits<CyberCore::ApplePayRecurringPaymentDateUnit> {
     using values = EnumValues<
-        WebCore::ApplePayRecurringPaymentDateUnit,
-        WebCore::ApplePayRecurringPaymentDateUnit::Year,
-        WebCore::ApplePayRecurringPaymentDateUnit::Month,
-        WebCore::ApplePayRecurringPaymentDateUnit::Day,
-        WebCore::ApplePayRecurringPaymentDateUnit::Hour,
-        WebCore::ApplePayRecurringPaymentDateUnit::Minute
+        CyberCore::ApplePayRecurringPaymentDateUnit,
+        CyberCore::ApplePayRecurringPaymentDateUnit::Year,
+        CyberCore::ApplePayRecurringPaymentDateUnit::Month,
+        CyberCore::ApplePayRecurringPaymentDateUnit::Day,
+        CyberCore::ApplePayRecurringPaymentDateUnit::Hour,
+        CyberCore::ApplePayRecurringPaymentDateUnit::Minute
     >;
 };
 

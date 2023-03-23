@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebsiteDataStoreConfiguration.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebsiteDataStoreConfiguration> {
     using WrapperClass = _WKWebsiteDataStoreConfiguration;
@@ -38,6 +38,6 @@ template<> struct WrapperTraits<WebsiteDataStoreConfiguration> {
 
 @interface _WKWebsiteDataStoreConfiguration () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebsiteDataStoreConfiguration> _configuration;
+    API::ObjectStorage<CyberKit::WebsiteDataStoreConfiguration> _configuration;
 }
 @end

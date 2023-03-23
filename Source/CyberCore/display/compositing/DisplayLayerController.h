@@ -28,7 +28,7 @@
 #include "GraphicsLayer.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayer;
 class GraphicsLayerFactory;
@@ -94,5 +94,5 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

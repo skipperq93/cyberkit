@@ -33,7 +33,7 @@
 #include "Performance.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LibWebRTCStatsCollector::LibWebRTCStatsCollector(CollectorCallback&& callback)
     : m_callback(WTFMove(callback))

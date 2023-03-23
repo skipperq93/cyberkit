@@ -20,14 +20,14 @@
 #pragma once
 
 #include "WebAutomationSession.h"
-#include "WebKitAutomationSession.h"
-#include "WebKitWebContext.h"
-#include <JavaScriptCore/RemoteInspector.h>
+#include "CyberKitAutomationSession.h"
+#include "CyberKitWebContext.h"
+#include <CyberScriptCore/RemoteInspector.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
-WebKitAutomationSession* webkitAutomationSessionCreate(WebKitWebContext*, const char* sessionID, const Inspector::RemoteInspector::Client::SessionCapabilities&);
+CyberKitAutomationSession* webkitAutomationSessionCreate(CyberKitWebContext*, const char* sessionID, const Inspector::RemoteInspector::Client::SessionCapabilities&);
 #endif
 
-WebKit::WebAutomationSession& webkitAutomationSessionGetSession(WebKitAutomationSession*);
-String webkitAutomationSessionGetBrowserName(WebKitAutomationSession*);
-String webkitAutomationSessionGetBrowserVersion(WebKitAutomationSession*);
+CyberKit::WebAutomationSession& webkitAutomationSessionGetSession(CyberKitAutomationSession*);
+String webkitAutomationSessionGetBrowserName(CyberKitAutomationSession*);
+String webkitAutomationSessionGetBrowserVersion(CyberKitAutomationSession*);

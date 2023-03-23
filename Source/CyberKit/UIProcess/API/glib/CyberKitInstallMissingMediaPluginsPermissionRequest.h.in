@@ -19,35 +19,35 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitInstallMissingMediaPluginsPermissionRequest_h
-#define WebKitInstallMissingMediaPluginsPermissionRequest_h
+#ifndef CyberKitInstallMissingMediaPluginsPermissionRequest_h
+#define CyberKitInstallMissingMediaPluginsPermissionRequest_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #if !ENABLE(2022_GLIB_API)
 
 #define WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST            (webkit_install_missing_media_plugins_permission_request_get_type())
-#define WEBKIT_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST, WebKitInstallMissingMediaPluginsPermissionRequest))
+#define WEBKIT_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST, CyberKitInstallMissingMediaPluginsPermissionRequest))
 #define WEBKIT_IS_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST))
-#define WEBKIT_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST, WebKitInstallMissingMediaPluginsPermissionRequestClass))
+#define WEBKIT_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST, CyberKitInstallMissingMediaPluginsPermissionRequestClass))
 #define WEBKIT_IS_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST))
-#define WEBKIT_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST, WebKitInstallMissingMediaPluginsPermissionRequestClass))
+#define WEBKIT_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_INSTALL_MISSING_MEDIA_PLUGINS_PERMISSION_REQUEST, CyberKitInstallMissingMediaPluginsPermissionRequestClass))
 
-typedef struct _WebKitInstallMissingMediaPluginsPermissionRequest        WebKitInstallMissingMediaPluginsPermissionRequest;
-typedef struct _WebKitInstallMissingMediaPluginsPermissionRequestClass   WebKitInstallMissingMediaPluginsPermissionRequestClass;
-typedef struct _WebKitInstallMissingMediaPluginsPermissionRequestPrivate WebKitInstallMissingMediaPluginsPermissionRequestPrivate;
+typedef struct _CyberKitInstallMissingMediaPluginsPermissionRequest        CyberKitInstallMissingMediaPluginsPermissionRequest;
+typedef struct _CyberKitInstallMissingMediaPluginsPermissionRequestClass   CyberKitInstallMissingMediaPluginsPermissionRequestClass;
+typedef struct _CyberKitInstallMissingMediaPluginsPermissionRequestPrivate CyberKitInstallMissingMediaPluginsPermissionRequestPrivate;
 
-struct _WebKitInstallMissingMediaPluginsPermissionRequest {
+struct _CyberKitInstallMissingMediaPluginsPermissionRequest {
     GObject parent;
 
     /*< private >*/
-    WebKitInstallMissingMediaPluginsPermissionRequestPrivate *priv;
+    CyberKitInstallMissingMediaPluginsPermissionRequestPrivate *priv;
 };
 
-struct _WebKitInstallMissingMediaPluginsPermissionRequestClass {
+struct _CyberKitInstallMissingMediaPluginsPermissionRequestClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -61,7 +61,7 @@ WEBKIT_API GType
 webkit_install_missing_media_plugins_permission_request_get_type        (void);
 
 WEBKIT_API const gchar *
-webkit_install_missing_media_plugins_permission_request_get_description (WebKitInstallMissingMediaPluginsPermissionRequest *request);
+webkit_install_missing_media_plugins_permission_request_get_description (CyberKitInstallMissingMediaPluginsPermissionRequest *request);
 
 #endif // ENABLE(2022_GLIB_API)
 

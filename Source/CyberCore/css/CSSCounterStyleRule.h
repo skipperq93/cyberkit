@@ -31,7 +31,7 @@
 #include "StyleRule.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class StyleRuleCounterStyle final : public StyleRuleBase {
 public:
     static Ref<StyleRuleCounterStyle> create(const AtomString& name, Ref<StyleProperties>&&);
@@ -110,10 +110,10 @@ private:
 
 CSSCounterStyleDescriptors::System toCounterStyleSystemEnum(const CSSValue*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSCounterStyleRule, StyleRuleType::CounterStyle)
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleCounterStyle)
-static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isCounterStyleRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleCounterStyle)
+static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isCounterStyleRule(); }
 SPECIALIZE_TYPE_TRAITS_END()

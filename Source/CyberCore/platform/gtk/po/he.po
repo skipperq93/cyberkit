@@ -1317,12 +1317,12 @@ msgctxt "Undo action name"
 msgid "Convert to Unordered List"
 msgstr "המרה לרשימה לא מסודרת"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 #| msgid "Search Options"
 msgid "JSC Options"
 msgstr "אפשרויות JSC"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 #| msgid "Search Options"
 msgid "Show JSC Options"
 msgstr "הצגת אפשרויות JSC"

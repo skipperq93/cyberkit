@@ -28,7 +28,7 @@
 #import "UIKitSPI.h"
 #import <CyberCore/GraphicsLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 class RemoteLayerTreeHost;
 class WebPageProxy;
 }
@@ -64,10 +64,10 @@ class WebPageProxy;
 @end
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/WKSeparatedModelView.h>
+#import <CyberKitAdditions/WKSeparatedModelView.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 OptionSet<CyberCore::TouchAction> touchActionsForPoint(UIView *rootView, const CyberCore::IntPoint&);
 UIScrollView *findActingScrollParent(UIScrollView *, const RemoteLayerTreeHost&);

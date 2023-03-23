@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebCodecsVideoFrame;
 
@@ -43,6 +43,6 @@ public:
     virtual CallbackResult<void> handleEvent(WebCodecsVideoFrame&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS)

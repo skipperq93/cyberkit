@@ -28,7 +28,7 @@
 
 #include "InlineTextItem.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct SameSizeAsInlineItem {

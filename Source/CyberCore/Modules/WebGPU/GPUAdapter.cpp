@@ -30,7 +30,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include "JSGPUDevice.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUAdapter::name() const
 {

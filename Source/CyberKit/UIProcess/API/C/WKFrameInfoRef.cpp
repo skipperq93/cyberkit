@@ -33,21 +33,21 @@
 
 WKTypeID WKFrameInfoGetTypeID()
 {
-    return WebKit::toAPI(API::FrameInfo::APIType);
+    return CyberKit::toAPI(API::FrameInfo::APIType);
 }
 
 WKFrameHandleRef WKFrameInfoCreateFrameHandleRef(WKFrameInfoRef frameInfo)
 {
-    return WebKit::toAPI(&WebKit::toImpl(frameInfo)->handle().leakRef());
+    return CyberKit::toAPI(&CyberKit::toImpl(frameInfo)->handle().leakRef());
 }
 
 WKSecurityOriginRef WKFrameInfoCopySecurityOrigin(WKFrameInfoRef frameInfo)
 {
-    auto origin = WebKit::toImpl(frameInfo)->securityOrigin();
-    return WebKit::toAPI(&API::SecurityOrigin::create(origin).leakRef());
+    auto origin = CyberKit::toImpl(frameInfo)->securityOrigin();
+    return CyberKit::toAPI(&API::SecurityOrigin::create(origin).leakRef());
 }
 
 bool WKFrameInfoGetIsMainFrame(WKFrameInfoRef frameInfo)
 {
-    return WebKit::toImpl(frameInfo)->isMainFrame();
+    return CyberKit::toImpl(frameInfo)->isMainFrame();
 }

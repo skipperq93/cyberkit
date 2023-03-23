@@ -35,7 +35,7 @@
 #include "InlineIteratorLineBox.h"
 #include "TextAffinity.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutUnit;
 class Position;
@@ -91,4 +91,4 @@ private:
 
 bool renderObjectContainsPosition(const RenderObject*, const Position&);
 
-} // namespace WebCore
+} // namespace CyberCore

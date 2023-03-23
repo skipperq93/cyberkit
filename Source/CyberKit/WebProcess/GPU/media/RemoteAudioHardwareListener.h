@@ -36,7 +36,7 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class WebProcess;

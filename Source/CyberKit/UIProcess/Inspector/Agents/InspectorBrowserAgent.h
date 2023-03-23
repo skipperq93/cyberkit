@@ -30,7 +30,7 @@
 #include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -59,4 +59,4 @@ private:
     WebPageProxy& m_inspectedPage;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

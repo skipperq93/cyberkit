@@ -64,7 +64,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

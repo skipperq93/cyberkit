@@ -30,7 +30,7 @@
 #include "HTMLNames.h"
 #include <CyberScriptCore/RegularExpression.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -69,4 +69,4 @@ bool BaseTextInputType::supportsSelectionAPI() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

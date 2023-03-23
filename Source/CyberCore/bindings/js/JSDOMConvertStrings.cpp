@@ -29,7 +29,7 @@
 #include <wtf/unicode/CharacterNames.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 String identifierToString(JSGlobalObject& lexicalGlobalObject, const Identifier& identifier)
@@ -118,4 +118,4 @@ AtomString valueToUSVAtomString(JSGlobalObject& lexicalGlobalObject, JSValue val
     return replaceUnpairedSurrogatesWithReplacementCharacter(WTFMove(string));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

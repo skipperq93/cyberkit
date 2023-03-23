@@ -27,11 +27,11 @@
 
 #include "DOMIsoSubspaces.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ExtendedDOMIsoSubspaces : public DOMIsoSubspaces {
 public:
     ExtendedDOMIsoSubspaces() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

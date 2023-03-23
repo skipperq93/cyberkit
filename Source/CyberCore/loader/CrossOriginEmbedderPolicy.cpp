@@ -42,7 +42,7 @@
 #include "ViolationReportType.h"
 #include <wtf/persistence/PersistentCoders.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://html.spec.whatwg.org/multipage/origin.html#obtain-an-embedder-policy
 CrossOriginEmbedderPolicy obtainCrossOriginEmbedderPolicy(const ResourceResponse& response, const ScriptExecutionContext* context)
@@ -181,4 +181,4 @@ std::optional<CrossOriginEmbedderPolicy> CrossOriginEmbedderPolicy::decode(WTF::
     } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

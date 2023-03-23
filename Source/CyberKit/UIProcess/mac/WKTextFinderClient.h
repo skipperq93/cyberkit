@@ -33,13 +33,13 @@
 
 OBJC_CLASS NSView;
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
 @interface WKTextFinderClient : NSObject
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view usePlatformFindUI:(BOOL)usePlatformFindUI;
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view usePlatformFindUI:(BOOL)usePlatformFindUI;
 - (void)willDestroyView:(NSView *)view;
 
 @end

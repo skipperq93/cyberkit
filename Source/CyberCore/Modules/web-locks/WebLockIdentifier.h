@@ -27,7 +27,7 @@
 #include "ProcessQualified.h"
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum WebLockIdentifierType { };
 using WebLockIdentifier = ProcessQualified<ObjectIdentifier<WebLockIdentifierType>>;

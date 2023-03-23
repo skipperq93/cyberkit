@@ -28,7 +28,7 @@
 
 #include "SegmentedString.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool consumeHTMLEntity(SegmentedString&, StringBuilder& decodedEntity, bool& notEnoughCharacters, UChar additionalAllowedCharacter = '\0');
 bool consumeHTMLEntity(SegmentedString&, Vector<UChar>& decodedEntity, bool& notEnoughCharacters, UChar additionalAllowedCharacter = '\0');
@@ -38,4 +38,4 @@ void appendLegalEntityFor(UChar32, Vector<UChar>&);
 // Used by the XML parser.  Not suitable for use in HTML parsing.  Use consumeHTMLEntity instead.
 size_t decodeNamedEntityToUCharArray(const char*, UChar result[4]);
 
-} // namespace WebCore
+} // namespace CyberCore

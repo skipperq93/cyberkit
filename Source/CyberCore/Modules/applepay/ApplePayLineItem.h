@@ -33,7 +33,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayLineItem final {
     enum class Type : bool {
@@ -63,6 +63,6 @@ struct ApplePayLineItem final {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

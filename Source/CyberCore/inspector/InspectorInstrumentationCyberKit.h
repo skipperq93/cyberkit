@@ -30,7 +30,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class ResourceLoader;

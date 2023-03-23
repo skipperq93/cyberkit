@@ -34,7 +34,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -79,4 +79,4 @@ ExceptionOr<void> InspectorAuditDOMObject::simulateUserInteraction(Document& doc
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -47,7 +47,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class Document;
@@ -70,7 +70,7 @@ class RenderStyle;
 class SVGQualifiedName;
 class ShadowRoot;
 class TouchEvent;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 enum class MutationObserverOptionType : uint8_t;
 using MutationObserverOptions = OptionSet<MutationObserverOptionType>;
@@ -275,8 +275,8 @@ public:
     };
     Node& getRootNode(const GetRootNodeOptions&) const;
     
-    inline WebCoreOpaqueRoot opaqueRoot() const; // Defined in DocumentInlines.h.
-    WebCoreOpaqueRoot traverseToOpaqueRoot() const;
+    inline CyberCoreOpaqueRoot opaqueRoot() const; // Defined in DocumentInlines.h.
+    CyberCoreOpaqueRoot traverseToOpaqueRoot() const;
 
     void queueTaskKeepingThisNodeAlive(TaskSource, Function<void ()>&&);
     void queueTaskToDispatchEvent(TaskSource, Ref<Event>&&);
@@ -939,14 +939,14 @@ constexpr bool is_gteq(PartialOrdering ordering)
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const Node&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showTree(const WebCore::Node*);
-void showNodePath(const WebCore::Node*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showTree(const CyberCore::Node*);
+void showNodePath(const CyberCore::Node*);
 #endif
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Node)
-    static bool isType(const WebCore::EventTarget& target) { return target.isNode(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Node)
+    static bool isType(const CyberCore::EventTarget& target) { return target.isNode(); }
 SPECIALIZE_TYPE_TRAITS_END()

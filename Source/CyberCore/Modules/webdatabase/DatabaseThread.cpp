@@ -36,7 +36,7 @@
 #include "SQLTransactionCoordinator.h"
 #include <wtf/AutodrainedPool.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DatabaseThread::DatabaseThread()
     : m_transactionCoordinator(makeUnique<SQLTransactionCoordinator>())
@@ -63,7 +63,7 @@ void DatabaseThread::start()
     if (m_thread)
         return;
 
-    m_thread = Thread::create("WebCore: Database", [this] {
+    m_thread = Thread::create("CyberCore: Database", [this] {
         databaseThread();
     });
 }
@@ -180,4 +180,4 @@ bool DatabaseThread::hasPendingDatabaseActivity() const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

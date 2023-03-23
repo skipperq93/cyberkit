@@ -39,7 +39,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/MediaTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechSynthesis;
 class TextTrack;
@@ -177,14 +177,14 @@ private:
 TextStream& operator<<(TextStream&, const TextTrackCue&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename> struct LogArgument;
 
-template<> struct LogArgument<WebCore::TextTrackCue> {
-    static String toString(const WebCore::TextTrackCue& cue) { return cue.toJSONString(); }
+template<> struct LogArgument<CyberCore::TextTrackCue> {
+    static String toString(const CyberCore::TextTrackCue& cue) { return cue.toJSONString(); }
 };
 
 }

@@ -29,7 +29,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionResultList final : public RefCounted<SpeechRecognitionResultList> {
     WTF_MAKE_ISO_ALLOCATED(SpeechRecognitionResultList);
@@ -49,4 +49,4 @@ private:
     Vector<Ref<SpeechRecognitionResult>> m_list;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

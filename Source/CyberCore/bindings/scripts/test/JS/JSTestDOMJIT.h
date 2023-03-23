@@ -23,9 +23,9 @@
 #include "JSDOMWrapper.h"
 #include "JSNode.h"
 #include "TestDOMJIT.h"
-#include <JavaScriptCore/DOMJITGetterSetter.h>
+#include <CyberScriptCore/DOMJITGetterSetter.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDOMJIT : public JSNode {
 public:
@@ -215,4 +215,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDOMJIT> {
     using ToWrappedReturnType = TestDOMJIT*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

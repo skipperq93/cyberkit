@@ -32,7 +32,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <webrtc/api/dtls_transport_interface.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline RTCDtlsTransportState toRTCDtlsTransportState(webrtc::DtlsTransportState state)
 {
@@ -162,6 +162,6 @@ void LibWebRTCDtlsTransportBackend::unregisterClient()
     m_observer->stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

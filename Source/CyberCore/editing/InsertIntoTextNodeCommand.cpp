@@ -39,7 +39,7 @@
 #include "RenderText.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 InsertIntoTextNodeCommand::InsertIntoTextNodeCommand(Ref<Text>&& node, unsigned offset, const String& text, EditAction editingAction)
     : SimpleEditCommand(node->document(), editingAction)
@@ -94,4 +94,4 @@ void InsertIntoTextNodeCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

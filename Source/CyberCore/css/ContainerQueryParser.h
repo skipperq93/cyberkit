@@ -29,7 +29,7 @@
 #include "ContainerQuery.h"
 #include "GenericMediaQueryParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerQueryParser;
 

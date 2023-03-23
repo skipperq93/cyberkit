@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebPreferences.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebPreferences> {
     using WrapperClass = WKPreferences;
@@ -38,7 +38,7 @@ template<> struct WrapperTraits<WebPreferences> {
 
 @interface WKPreferences () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebPreferences> _preferences;
+    API::ObjectStorage<CyberKit::WebPreferences> _preferences;
 }
 
 @end

@@ -29,7 +29,7 @@
 #include "FileSystemEntry.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void FileSystemEntriesCallback::scheduleCallback(ScriptExecutionContext& context, const Vector<Ref<FileSystemEntry>>& entries)
 {

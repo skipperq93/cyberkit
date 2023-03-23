@@ -19,12 +19,12 @@
 
 #pragma once
 
-#include "WebKitScriptDialog.h"
+#include "CyberKitScriptDialog.h"
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-struct _WebKitScriptDialog {
-    _WebKitScriptDialog(unsigned type, const CString& message, const CString& defaultText, Function<void(bool, const String&)>&& completionHandler)
+struct _CyberKitScriptDialog {
+    _CyberKitScriptDialog(unsigned type, const CString& message, const CString& defaultText, Function<void(bool, const String&)>&& completionHandler)
         : type(type)
         , message(message)
         , defaultText(defaultText)
@@ -52,9 +52,9 @@ struct _WebKitScriptDialog {
     int referenceCount { 1 };
 };
 
-WebKitScriptDialog* webkitScriptDialogCreate(unsigned type, const CString& message, const CString& defaultText, Function<void(bool, const String&)>&& completionHandler);
-bool webkitScriptDialogIsRunning(WebKitScriptDialog*);
-void webkitScriptDialogAccept(WebKitScriptDialog*);
-void webkitScriptDialogDismiss(WebKitScriptDialog*);
-void webkitScriptDialogSetUserInput(WebKitScriptDialog*, const String&);
-bool webkitScriptDialogIsUserHandled(WebKitScriptDialog *);
+CyberKitScriptDialog* webkitScriptDialogCreate(unsigned type, const CString& message, const CString& defaultText, Function<void(bool, const String&)>&& completionHandler);
+bool webkitScriptDialogIsRunning(CyberKitScriptDialog*);
+void webkitScriptDialogAccept(CyberKitScriptDialog*);
+void webkitScriptDialogDismiss(CyberKitScriptDialog*);
+void webkitScriptDialogSetUserInput(CyberKitScriptDialog*, const String&);
+bool webkitScriptDialogIsUserHandled(CyberKitScriptDialog *);

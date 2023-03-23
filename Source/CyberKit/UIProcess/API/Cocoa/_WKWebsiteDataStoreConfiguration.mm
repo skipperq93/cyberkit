@@ -44,7 +44,7 @@ static void checkURLArgument(NSURL *url)
     if (!self)
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebsiteDataStoreConfiguration>(self, WebKit::IsPersistent::Yes);
+    API::Object::constructInWrapper<CyberKit::WebsiteDataStoreConfiguration>(self, CyberKit::IsPersistent::Yes);
 
     return self;
 }
@@ -55,7 +55,7 @@ static void checkURLArgument(NSURL *url)
     if (!self)
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebsiteDataStoreConfiguration>(self, WebKit::IsPersistent::No);
+    API::Object::constructInWrapper<CyberKit::WebsiteDataStoreConfiguration>(self, CyberKit::IsPersistent::No);
 
     return self;
 }
@@ -69,7 +69,7 @@ static void checkURLArgument(NSURL *url)
     if (!identifier)
         [NSException raise:NSInvalidArgumentException format:@"Identifier cannot be nil"];
 
-    API::Object::constructInWrapper<WebKit::WebsiteDataStoreConfiguration>(self, UUID(identifier));
+    API::Object::constructInWrapper<CyberKit::WebsiteDataStoreConfiguration>(self, UUID(identifier));
 
     return self;
 }
@@ -414,27 +414,27 @@ static void checkURLArgument(NSURL *url)
     _configuration->setGeneralStorageDirectory(url.path);
 }
 
-static _WKUnifiedOriginStorageLevel toWKUnifiedOriginStorageLevel(WebKit::UnifiedOriginStorageLevel level)
+static _WKUnifiedOriginStorageLevel toWKUnifiedOriginStorageLevel(CyberKit::UnifiedOriginStorageLevel level)
 {
     switch (level) {
-    case WebKit::UnifiedOriginStorageLevel::None:
+    case CyberKit::UnifiedOriginStorageLevel::None:
         return _WKUnifiedOriginStorageLevelNone;
-    case WebKit::UnifiedOriginStorageLevel::Basic:
+    case CyberKit::UnifiedOriginStorageLevel::Basic:
         return _WKUnifiedOriginStorageLevelBasic;
-    case WebKit::UnifiedOriginStorageLevel::Standard:
+    case CyberKit::UnifiedOriginStorageLevel::Standard:
         return _WKUnifiedOriginStorageLevelStandard;
     }
 }
 
-static WebKit::UnifiedOriginStorageLevel toUnifiedOriginStorageLevel(_WKUnifiedOriginStorageLevel wkLevel)
+static CyberKit::UnifiedOriginStorageLevel toUnifiedOriginStorageLevel(_WKUnifiedOriginStorageLevel wkLevel)
 {
     switch (wkLevel) {
     case _WKUnifiedOriginStorageLevelNone:
-        return WebKit::UnifiedOriginStorageLevel::None;
+        return CyberKit::UnifiedOriginStorageLevel::None;
     case _WKUnifiedOriginStorageLevelBasic:
-        return WebKit::UnifiedOriginStorageLevel::Basic;
+        return CyberKit::UnifiedOriginStorageLevel::Basic;
     case _WKUnifiedOriginStorageLevelStandard:
-        return WebKit::UnifiedOriginStorageLevel::Standard;
+        return CyberKit::UnifiedOriginStorageLevel::Standard;
     }
 }
 

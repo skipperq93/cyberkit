@@ -27,7 +27,7 @@
 #include "GStreamerAudioStreamDescription.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static void copyBusData(AudioBus& bus, GstBuffer* buffer, bool isMuted)
 {
@@ -75,6 +75,6 @@ void MediaStreamAudioSource::consumeAudio(AudioBus& bus, size_t numberOfFrames)
     audioSamplesAvailable(mediaTime, audioBuffer, description, numberOfFrames);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

@@ -97,7 +97,7 @@
 #include "DateTimeChooser.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class UserMessageHandlerDescriptor;
 

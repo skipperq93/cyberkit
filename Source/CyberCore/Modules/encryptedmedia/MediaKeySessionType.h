@@ -32,10 +32,10 @@
 
 #include "CDMSessionType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using MediaKeySessionType = CDMSessionType;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

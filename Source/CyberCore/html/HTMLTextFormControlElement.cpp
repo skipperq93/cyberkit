@@ -62,7 +62,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLTextFormControlElement);
 
@@ -106,13 +106,13 @@ static String pointerTypeFromHitTestRequest(HitTestRequest request)
 {
 #if ENABLE(PENCIL_HOVER)
     if (request.penEvent())
-        return WebCore::penPointerEventType();
+        return CyberCore::penPointerEventType();
     if (request.touchEvent())
-        return WebCore::touchPointerEventType();
+        return CyberCore::touchPointerEventType();
 #else
     UNUSED_PARAM(request);
 #endif
-    return WebCore::mousePointerEventType();
+    return CyberCore::mousePointerEventType();
 }
 
 void HTMLTextFormControlElement::setHovered(bool over, Style::InvalidationScope invalidationScope, HitTestRequest request)
@@ -157,7 +157,7 @@ void HTMLTextFormControlElement::didEditInnerTextValue()
 
 void HTMLTextFormControlElement::forwardEvent(Event& event)
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (event.type() == eventNames.blurEvent || event.type() == eventNames.focusEvent)
         return;
 
@@ -721,7 +721,7 @@ unsigned HTMLTextFormControlElement::indexForPosition(const Position& passedPosi
     VisiblePosition visiblePosition = passedPosition;
     unsigned indexComputedByVisiblePosition = 0;
     if (visiblePosition.isNotNull())
-        indexComputedByVisiblePosition = WebCore::indexForVisiblePosition(innerText, visiblePosition, false /* forSelectionPreservation */);
+        indexComputedByVisiblePosition = CyberCore::indexForVisiblePosition(innerText, visiblePosition, false /* forSelectionPreservation */);
     ASSERT(index == indexComputedByVisiblePosition);
 #endif
 #endif

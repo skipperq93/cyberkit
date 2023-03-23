@@ -30,11 +30,11 @@
 #import "NearFieldSPI.h"
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_FOR_HEADER(WebKit, NearField);
+SOFT_LINK_FRAMEWORK_FOR_HEADER(CyberKit, NearField);
 
-SOFT_LINK_CLASS_FOR_HEADER(WebKit, NFTag);
-SOFT_LINK_CLASS_FOR_HEADER(WebKit, NFSession);
-SOFT_LINK_CLASS_FOR_HEADER(WebKit, NFReaderSession);
-SOFT_LINK_CLASS_FOR_HEADER(WebKit, NFHardwareManager);
+SOFT_LINK_CLASS_FOR_HEADER(CyberKit, NFTag);
+SOFT_LINK_CLASS_FOR_HEADER(CyberKit, NFSession);
+SOFT_LINK_CLASS_FOR_HEADER(CyberKit, NFReaderSession);
+SOFT_LINK_CLASS_FOR_HEADER(CyberKit, NFHardwareManager);
 
 #endif // ENABLE(WEB_AUTHN)

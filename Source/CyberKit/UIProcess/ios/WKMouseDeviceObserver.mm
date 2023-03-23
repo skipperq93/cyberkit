@@ -108,7 +108,7 @@
     _hasMouseDevice = hasMouseDevice;
 
     ensureOnMainRunLoop([hasMouseDevice] {
-        WebKit::WebProcessProxy::notifyHasMouseDeviceChanged(hasMouseDevice);
+        CyberKit::WebProcessProxy::notifyHasMouseDeviceChanged(hasMouseDevice);
     });
 }
 
@@ -119,7 +119,7 @@
     _hasMouseDevice = hasMouseDevice;
 
     ensureOnMainRunLoop([hasMouseDevice] {
-        WebKit::WebProcessProxy::notifyHasMouseDeviceChanged(hasMouseDevice);
+        CyberKit::WebProcessProxy::notifyHasMouseDeviceChanged(hasMouseDevice);
     });
 }
 

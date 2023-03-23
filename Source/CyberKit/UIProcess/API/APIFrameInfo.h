@@ -34,7 +34,7 @@ namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebFrameProxy;
 struct FrameInfoData;
 }
@@ -46,21 +46,21 @@ class SecurityOrigin;
 
 class FrameInfo final : public ObjectImpl<Object::Type::FrameInfo> {
 public:
-    static Ref<FrameInfo> create(WebKit::FrameInfoData&&, RefPtr<WebKit::WebPageProxy>&&);
+    static Ref<FrameInfo> create(CyberKit::FrameInfoData&&, RefPtr<CyberKit::WebPageProxy>&&);
     virtual ~FrameInfo();
 
     bool isMainFrame() const { return m_data.isMainFrame; }
     const CyberCore::ResourceRequest& request() const { return m_data.request; }
     CyberCore::SecurityOriginData& securityOrigin() { return m_data.securityOrigin; }
     Ref<FrameHandle> handle() const;
-    WebKit::WebPageProxy* page() { return m_page.get(); }
+    CyberKit::WebPageProxy* page() { return m_page.get(); }
     RefPtr<FrameHandle> parentFrameHandle() const;
 
 private:
-    FrameInfo(WebKit::FrameInfoData&&, RefPtr<WebKit::WebPageProxy>&&);
+    FrameInfo(CyberKit::FrameInfoData&&, RefPtr<CyberKit::WebPageProxy>&&);
 
-    WebKit::FrameInfoData m_data;
-    RefPtr<WebKit::WebPageProxy> m_page;
+    CyberKit::FrameInfoData m_data;
+    RefPtr<CyberKit::WebPageProxy> m_page;
 };
 
 } // namespace API

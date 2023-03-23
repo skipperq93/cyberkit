@@ -33,7 +33,7 @@
 #include "CryptoKeyRaw.h"
 #include "CryptoUtilitiesCocoa.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Vector<uint8_t>> CryptoAlgorithmHKDF::platformDeriveBits(const CryptoAlgorithmHkdfParams& parameters, const CryptoKeyRaw& key, size_t length)
 {

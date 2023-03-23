@@ -29,7 +29,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -250,4 +250,4 @@ private:
     unsigned m_outstandingTransactionCount;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

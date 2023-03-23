@@ -35,7 +35,7 @@
 #include <CyberScriptCore/JSONObject.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PushMessageData);
 
@@ -68,6 +68,6 @@ String PushMessageData::text()
     return TextResourceDecoder::textFromUTF8(m_data.data(), m_data.size());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -29,7 +29,7 @@
 #include <variant>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 enum class ForVisitedLink : bool;
@@ -62,4 +62,4 @@ private:
     > m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

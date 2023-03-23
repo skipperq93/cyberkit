@@ -40,12 +40,12 @@
 #include "JSAudioWorkletProcessor.h"
 #include "JSAudioWorkletProcessorConstructor.h"
 #include "JSDOMConvert.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/JSLock.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioWorkletGlobalScope);
 
@@ -209,10 +209,10 @@ void AudioWorkletGlobalScope::processorIsNoLongerNeeded(AudioWorkletProcessor& p
 void AudioWorkletGlobalScope::visitProcessors(JSC::AbstractSlotVisitor& visitor)
 {
     m_processors.forEach([&](auto& processor) {
-        addWebCoreOpaqueRoot(visitor, processor);
+        addCyberCoreOpaqueRoot(visitor, processor);
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

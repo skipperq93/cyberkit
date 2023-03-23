@@ -29,7 +29,7 @@
 #include "FocusController.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isAutofillableElement(Element& node)
 {
@@ -118,4 +118,4 @@ void AutofillElements::autofill(String username, String password)
         m_secondPassword->setValueForUser(password);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

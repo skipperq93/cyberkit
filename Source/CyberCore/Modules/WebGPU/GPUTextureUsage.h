@@ -30,7 +30,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureUsage.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUTextureUsageFlags = uint32_t;
 class GPUTextureUsage : public RefCounted<GPUTextureUsage> {

@@ -28,7 +28,7 @@
 #include "IDBKeyData.h"
 #include "IDBKeyRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBKey;
 
@@ -86,4 +86,4 @@ struct IDBKeyRangeData {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

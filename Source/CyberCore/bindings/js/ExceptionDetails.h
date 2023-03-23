@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ExceptionDetails {
     enum class Type : uint8_t {
@@ -47,4 +47,4 @@ struct ExceptionDetails {
     String sourceURL { };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

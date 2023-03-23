@@ -39,7 +39,7 @@
 #import <pal/spi/cocoa/IOKitSPI.h>
 #import <wtf/RetainPtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 static NSString* WKPopoverTableViewCellReuseIdentifier  = @"WKPopoverTableViewCellReuseIdentifier";
 
@@ -133,7 +133,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _textAlignment = (writingDirection == UITextWritingDirectionLeftToRight) ? NSTextAlignmentLeft : NSTextAlignmentRight;
 
     // Typically UIKit apps have their writing direction follow the system
-    // language. However WebKit wants to follow the content direction.
+    // language. However CyberKit wants to follow the content direction.
     // For that reason we have to override what the system thinks.
     if (writingDirection == UITextWritingDirectionRightToLeft)
         self.view.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;

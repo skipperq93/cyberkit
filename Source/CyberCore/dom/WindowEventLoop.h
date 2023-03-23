@@ -31,7 +31,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomElementQueue;
 class Document;
@@ -84,4 +84,4 @@ private:
     bool m_processingBackupElementQueue { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

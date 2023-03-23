@@ -24,7 +24,7 @@
 #include "JSTestDefaultToJSONInherit.h"
 #include "TestDefaultToJSONIndirectInheritance.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDefaultToJSONIndirectInheritance : public JSTestDefaultToJSONInherit {
 public:
@@ -72,4 +72,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDefaultToJSONIndirectInheritan
     using ToWrappedReturnType = TestDefaultToJSONIndirectInheritance*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

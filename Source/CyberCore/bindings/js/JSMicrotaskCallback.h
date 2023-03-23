@@ -29,7 +29,7 @@
 
 #include "JSExecState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSMicrotaskCallback : public RefCounted<JSMicrotaskCallback> {
 public:
@@ -59,4 +59,4 @@ private:
     Ref<JSC::Microtask> m_task;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

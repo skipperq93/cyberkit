@@ -30,7 +30,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<RefPtr<Uint8Array>> DecompressionStreamDecoder::decode(const BufferSource&& input)
 {
@@ -233,4 +233,4 @@ ExceptionOr<RefPtr<JSC::ArrayBuffer>> DecompressionStreamDecoder::decompressAppl
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

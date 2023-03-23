@@ -30,7 +30,7 @@
 #include "WebAnimationUtilities.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AnimationEventBase);
 
@@ -48,4 +48,4 @@ AnimationEventBase::AnimationEventBase(const AtomString& type, const EventInit& 
 
 AnimationEventBase::~AnimationEventBase() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

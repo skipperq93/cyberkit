@@ -43,7 +43,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCPeerConnection;
 
@@ -95,6 +95,6 @@ private:
     std::optional<CandidatePair> m_selectedCandidatePair;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

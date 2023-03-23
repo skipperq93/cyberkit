@@ -29,7 +29,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WheelEvent);
 
@@ -111,4 +111,4 @@ bool WheelEvent::isWheelEvent() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

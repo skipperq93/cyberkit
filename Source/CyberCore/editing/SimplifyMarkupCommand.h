@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SimplifyMarkupCommand : public CompositeEditCommand {
 public:
@@ -46,4 +46,4 @@ private:
     RefPtr<Node> m_nodeAfterLast;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UndoStep : public RefCounted<UndoStep> {
 public:
@@ -47,4 +47,4 @@ public:
     virtual void didRemoveFromUndoManager() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

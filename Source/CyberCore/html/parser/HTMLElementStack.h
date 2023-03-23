@@ -31,7 +31,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class Element;
@@ -159,4 +159,4 @@ private:
     unsigned m_stackDepth { 0 };
 };
     
-} // namespace WebCore
+} // namespace CyberCore

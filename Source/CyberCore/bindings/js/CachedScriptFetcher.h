@@ -31,7 +31,7 @@
 #include <CyberScriptCore/ScriptFetcher.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedScript;
 class Document;
@@ -67,4 +67,4 @@ private:
     ReferrerPolicy m_referrerPolicy { ReferrerPolicy::EmptyString };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

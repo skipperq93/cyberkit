@@ -29,10 +29,10 @@
 
 #include "PlatformXR.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using XRSessionMode = PlatformXR::SessionMode;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

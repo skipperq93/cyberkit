@@ -33,7 +33,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class Gamepad;
@@ -72,6 +72,6 @@ private:
     WeakHashSet<DOMWindow, WeakPtrImplWithEventTargetData> m_gamepadBlindDOMWindows;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

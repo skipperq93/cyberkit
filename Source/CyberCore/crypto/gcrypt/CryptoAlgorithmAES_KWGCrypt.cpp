@@ -33,7 +33,7 @@
 #include <pal/crypto/gcrypt/Handle.h>
 #include <pal/crypto/gcrypt/Utilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> gcryptWrapKey(const Vector<uint8_t>& key, const Vector<uint8_t>& data)
 {
@@ -131,6 +131,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_KW::platformUnwrapKey(const Cryp
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

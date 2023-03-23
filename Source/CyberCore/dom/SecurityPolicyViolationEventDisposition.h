@@ -27,8 +27,8 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SecurityPolicyViolationEventDisposition : bool { Enforce, Report };
 
-} // namespace WebCore
+} // namespace CyberCore

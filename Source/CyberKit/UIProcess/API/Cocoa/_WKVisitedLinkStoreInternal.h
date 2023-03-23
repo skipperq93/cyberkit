@@ -28,7 +28,7 @@
 #import "VisitedLinkStore.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<VisitedLinkStore> {
     using WrapperClass = _WKVisitedLinkStore;
@@ -38,7 +38,7 @@ template<> struct WrapperTraits<VisitedLinkStore> {
 
 @interface _WKVisitedLinkStore () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::VisitedLinkStore> _visitedLinkStore;
+    API::ObjectStorage<CyberKit::VisitedLinkStore> _visitedLinkStore;
 }
 
 @end

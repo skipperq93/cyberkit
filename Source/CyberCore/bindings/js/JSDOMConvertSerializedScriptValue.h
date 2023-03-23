@@ -28,7 +28,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> struct Converter<IDLSerializedScriptValue<T>> : DefaultConverter<IDLSerializedScriptValue<T>> {
     static RefPtr<T> convert(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSValue value)
@@ -47,4 +47,4 @@ template<typename T> struct JSConverter<IDLSerializedScriptValue<T>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String TextEncoder::encoding() const
 {

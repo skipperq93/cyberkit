@@ -46,7 +46,7 @@
 #include "StyleBuilderConverter.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool treatAsInitialValue(const CSSValue& value, CSSPropertyID propertyID)
 {

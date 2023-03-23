@@ -28,7 +28,7 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
 
-namespace WebKit {
+namespace CyberKit {
 
 bool RemoteGraphicsContextGLProxy::moveErrorsToSyntheticErrorList()
 {

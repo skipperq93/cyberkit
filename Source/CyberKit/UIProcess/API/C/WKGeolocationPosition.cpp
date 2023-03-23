@@ -29,7 +29,7 @@
 #include "WKAPICast.h"
 #include "WebGeolocationPosition.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKGeolocationPositionGetTypeID()
 {

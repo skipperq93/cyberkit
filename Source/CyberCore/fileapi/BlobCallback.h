@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class ScriptExecutionContext;
@@ -44,4 +44,4 @@ public:
     void scheduleCallback(ScriptExecutionContext&, RefPtr<Blob>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

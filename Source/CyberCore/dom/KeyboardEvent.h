@@ -29,7 +29,7 @@
 #include <memory>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 class PlatformKeyboardEvent;
@@ -117,6 +117,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(KeyboardEvent)

@@ -84,7 +84,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -809,4 +809,4 @@ RefPtr<InspectorShaderProgram> InspectorCanvasAgent::findInspectorProgram(WebGLP
 
 #endif // ENABLE(WEBGL)
 
-} // namespace WebCore
+} // namespace CyberCore

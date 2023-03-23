@@ -34,7 +34,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 PageClientImplCocoa::PageClientImplCocoa(WKWebView *webView)
     : m_webView { webView }

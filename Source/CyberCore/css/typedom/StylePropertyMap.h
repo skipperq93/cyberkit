@@ -27,7 +27,7 @@
 
 #include "MainThreadStylePropertyMapReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSVariableReferenceValue;
 
@@ -51,4 +51,4 @@ private:
     RefPtr<CSSStyleValue> shorthandPropertyValue(Document&, CSSPropertyID) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

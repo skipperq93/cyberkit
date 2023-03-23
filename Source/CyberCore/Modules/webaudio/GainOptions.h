@@ -28,7 +28,7 @@
 
 #include "AudioNodeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GainOptions : AudioNodeOptions {
     float gain { 1.0 };

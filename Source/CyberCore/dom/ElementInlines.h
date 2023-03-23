@@ -33,7 +33,7 @@
 #include "RenderStyle.h"
 #include "StyleChange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline AttributeIteratorAccessor Element::attributesIterator() const
 {

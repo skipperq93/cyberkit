@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebUserContentControllerProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 template<> struct WrapperTraits<WebUserContentControllerProxy> {
     using WrapperClass = WKUserContentController;
 };
@@ -38,9 +38,9 @@ class WebScriptMessageHandler;
 
 @interface WKUserContentController () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebUserContentControllerProxy> _userContentControllerProxy;
+    API::ObjectStorage<CyberKit::WebUserContentControllerProxy> _userContentControllerProxy;
 }
 
-- (void)_addScriptMessageHandler:(WebKit::WebScriptMessageHandler&)scriptMessageHandler;
+- (void)_addScriptMessageHandler:(CyberKit::WebScriptMessageHandler&)scriptMessageHandler;
 
 @end

@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ANGLEInstancedArrays final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(ANGLEInstancedArrays);
@@ -44,4 +44,4 @@ public:
     void vertexAttribDivisorANGLE(GCGLuint index, GCGLuint divisor);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

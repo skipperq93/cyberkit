@@ -33,7 +33,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebContextMenuProxy::WebContextMenuProxy(WebPageProxy& page, ContextMenuContextData&& context, const UserData& userData)
     : m_context(WTFMove(context))
@@ -78,6 +78,6 @@ void WebContextMenuProxy::useContextMenuItems(Vector<Ref<WebContextMenuItem>>&& 
     page->send(Messages::WebPage::DidShowContextMenu());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -28,7 +28,7 @@
 #include "FormattingContext.h"
 #include "LayoutElementBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class LayoutContainingBlockChainIterator {

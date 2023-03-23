@@ -77,7 +77,7 @@
 </style>
 <form action="" method="POST">
 
-    <?php echo WebKit_Meeting_Registration::form_nonce(); ?>
+    <?php echo CyberKit_Meeting_Registration::form_nonce(); ?>
 
     <div class="form-field">
         <label class="form-label" for="slack-name">Slack Name</label>
@@ -101,7 +101,7 @@
     </div>
 
     <div class="form-field form-toggle">
-        <label class="form-label" for="contributor-toggle"><input type="checkbox" id="contributor-toggle" name="claim" <?php echo WebKit_Meeting_Registration::is_contributor() ? ' checked="checked"' : ''; ?>> I am a WebKit contributor</label>
+        <label class="form-label" for="contributor-toggle"><input type="checkbox" id="contributor-toggle" name="claim" <?php echo CyberKit_Meeting_Registration::is_contributor() ? ' checked="checked"' : ''; ?>> I am a CyberKit contributor</label>
     </div>
 
     <div class="form-field form-toggle">

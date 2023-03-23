@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCIceServer {
     enum class CredentialType { Password };
@@ -42,6 +42,6 @@ struct RTCIceServer {
     CredentialType credentialType { CredentialType::Password };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -38,7 +38,7 @@
 #include "LocalizedStrings.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& URLInputType::formControlType() const
 {
@@ -66,4 +66,4 @@ String URLInputType::sanitizeValue(const String& proposedValue) const
     return stripLeadingAndTrailingHTMLSpaces(BaseTextInputType::sanitizeValue(proposedValue));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class IDBTransactionMode {
     Readonly,
@@ -35,16 +35,16 @@ enum class IDBTransactionMode {
     Versionchange
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::IDBTransactionMode> {
+template<> struct EnumTraits<CyberCore::IDBTransactionMode> {
     using values = EnumValues<
-        WebCore::IDBTransactionMode,
-        WebCore::IDBTransactionMode::Readonly,
-        WebCore::IDBTransactionMode::Readwrite,
-        WebCore::IDBTransactionMode::Versionchange
+        CyberCore::IDBTransactionMode,
+        CyberCore::IDBTransactionMode::Readonly,
+        CyberCore::IDBTransactionMode::Readwrite,
+        CyberCore::IDBTransactionMode::Versionchange
     >;
 };
 

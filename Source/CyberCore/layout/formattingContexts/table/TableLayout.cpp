@@ -30,7 +30,7 @@
 #include "LayoutBoxGeometry.h"
 #include "TableFormattingGeometry.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 // https://www.w3.org/TR/css-tables-3/#table-layout-algorithm

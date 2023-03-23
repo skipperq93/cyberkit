@@ -24,7 +24,7 @@
 #include "TestSetLike.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestSetLike : public JSDOMWrapper<TestSetLike> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestSetLike> {
     using ToWrappedReturnType = TestSetLike*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

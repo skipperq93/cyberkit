@@ -34,7 +34,7 @@
 #include "MediaQuery.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 class Document;
@@ -64,4 +64,4 @@ private:
     bool m_isValid { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

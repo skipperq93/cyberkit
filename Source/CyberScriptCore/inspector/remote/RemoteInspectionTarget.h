@@ -67,7 +67,7 @@ private:
         Yes,
         No,
 
-        // For WebKit internal proxies and wrappers, we want to always disable inspection even when internal policies
+        // For CyberKit internal proxies and wrappers, we want to always disable inspection even when internal policies
         // would otherwise enable inspection.
         NoIgnoringInternalPolicies,
     };

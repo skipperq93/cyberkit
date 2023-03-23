@@ -39,7 +39,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr auto kBlobProtocol = "blob"_s;
 
@@ -96,4 +96,4 @@ URL BlobURL::createBlobURL(StringView originString)
     return URL({ }, urlString);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

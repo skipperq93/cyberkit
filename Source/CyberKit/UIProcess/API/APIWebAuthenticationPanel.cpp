@@ -35,7 +35,7 @@
 
 namespace API {
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 Ref<WebAuthenticationPanel> WebAuthenticationPanel::create(const AuthenticatorManager& manager, const WTF::String& rpId, const TransportSet& transports, ClientDataType type, const WTF::String& userName)
 {

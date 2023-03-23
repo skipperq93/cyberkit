@@ -29,7 +29,7 @@
 
 #include "MediaConstraints.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ConstraintSetType { Mandatory, Advanced };
 

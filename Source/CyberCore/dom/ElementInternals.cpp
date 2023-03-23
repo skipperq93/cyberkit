@@ -33,7 +33,7 @@
 #include "ShadowRoot.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -193,4 +193,4 @@ void ElementInternals::setElementsArrayAttribute(const QualifiedName& name, std:
         cache->deferAttributeChangeIfNeeded(element.get(), name, oldValue, computeValueForAttribute(*element, name));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

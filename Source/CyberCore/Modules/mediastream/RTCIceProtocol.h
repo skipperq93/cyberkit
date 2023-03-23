@@ -24,8 +24,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCIceProtocol { Udp, Tcp };
 
-} // namespace WebCore
+} // namespace CyberCore

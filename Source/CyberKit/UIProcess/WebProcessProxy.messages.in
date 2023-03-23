@@ -21,8 +21,8 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebProcessProxy LegacyReceiver {
-    UpdateBackForwardItem(struct WebKit::BackForwardListItemState backForwardListItemState)
-    DidDestroyFrame(CyberCore::FrameIdentifier frameID, WebKit::WebPageProxyIdentifier pageID) 
+    UpdateBackForwardItem(struct CyberKit::BackForwardListItemState backForwardListItemState)
+    DidDestroyFrame(CyberCore::FrameIdentifier frameID, CyberKit::WebPageProxyIdentifier pageID) 
 
     DidDestroyUserGestureToken(uint64_t userGestureTokenID) 
 
@@ -31,10 +31,10 @@ messages -> WebProcessProxy LegacyReceiver {
     EnableSuddenTermination()
     DisableSuddenTermination()
 
-    GetNetworkProcessConnection() -> (struct WebKit::NetworkProcessConnectionInfo connectionInfo) Synchronous
+    GetNetworkProcessConnection() -> (struct CyberKit::NetworkProcessConnectionInfo connectionInfo) Synchronous
 
 #if ENABLE(GPU_PROCESS)
-    CreateGPUProcessConnection(IPC::Connection::Handle connectionHandle, struct WebKit::GPUProcessConnectionParameters parameters) AllowedWhenWaitingForSyncReply
+    CreateGPUProcessConnection(IPC::Connection::Handle connectionHandle, struct CyberKit::GPUProcessConnectionParameters parameters) AllowedWhenWaitingForSyncReply
 #endif
 
     SetIsHoldingLockedFiles(bool isHoldingLockedFiles)
@@ -60,14 +60,14 @@ messages -> WebProcessProxy LegacyReceiver {
 #endif
 
 #if HAVE(CVDISPLAYLINK)
-    StartDisplayLink(WebKit::DisplayLinkObserverID observerID, uint32_t displayID, unsigned preferredFramesPerSecond)
-    StopDisplayLink(WebKit::DisplayLinkObserverID observerID, uint32_t displayID)
-    SetDisplayLinkPreferredFramesPerSecond(WebKit::DisplayLinkObserverID observerID, uint32_t displayID, unsigned preferredFramesPerSecond);
+    StartDisplayLink(CyberKit::DisplayLinkObserverID observerID, uint32_t displayID, unsigned preferredFramesPerSecond)
+    StopDisplayLink(CyberKit::DisplayLinkObserverID observerID, uint32_t displayID)
+    SetDisplayLinkPreferredFramesPerSecond(CyberKit::DisplayLinkObserverID observerID, uint32_t displayID, unsigned preferredFramesPerSecond);
 #endif
 
 #if PLATFORM(GTK) || PLATFORM(WPE)
-    SendMessageToWebContext(struct WebKit::UserMessage userMessage)
-    SendMessageToWebContextWithReply(struct WebKit::UserMessage userMessage) -> (struct WebKit::UserMessage replyMessage)
+    SendMessageToWebContext(struct CyberKit::UserMessage userMessage)
+    SendMessageToWebContextWithReply(struct CyberKit::UserMessage userMessage) -> (struct CyberKit::UserMessage replyMessage)
 #endif
 
     DidCreateSleepDisabler(CyberCore::SleepDisablerIdentifier identifier, String reason, bool display)
@@ -88,6 +88,6 @@ messages -> WebProcessProxy LegacyReceiver {
 #endif
 
     GetNotifications(URL registrationURL, String tag) -> (Vector<CyberCore::NotificationData> result)
-    SetAppBadge(std::optional<WebKit::WebPageProxyIdentifier> pageIdentifier, CyberCore::SecurityOriginData origin, std::optional<uint64_t> badge)
-    SetClientBadge(WebKit::WebPageProxyIdentifier pageIdentifier, CyberCore::SecurityOriginData origin, std::optional<uint64_t> badge)
+    SetAppBadge(std::optional<CyberKit::WebPageProxyIdentifier> pageIdentifier, CyberCore::SecurityOriginData origin, std::optional<uint64_t> badge)
+    SetClientBadge(CyberKit::WebPageProxyIdentifier pageIdentifier, CyberCore::SecurityOriginData origin, std::optional<uint64_t> badge)
 }

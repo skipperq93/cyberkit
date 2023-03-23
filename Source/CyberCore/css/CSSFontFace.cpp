@@ -48,7 +48,7 @@
 #include "StyleProperties.h"
 #include "StyleRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(CSSFontFace);
 
@@ -718,7 +718,7 @@ RefPtr<Font> CSSFontFace::font(const FontDescription& fontDescription, bool synt
         switch (source->status()) {
         case CSSFontFaceSource::Status::Pending:
         case CSSFontFaceSource::Status::Loading: {
-            Font::Visibility visibility = WebCore::visibility(status(), fontLoadTiming());
+            Font::Visibility visibility = CyberCore::visibility(status(), fontLoadTiming());
             return Font::create(FontCache::forCurrentThread().lastResortFallbackFont(fontDescription)->platformData(), Font::Origin::Local, Font::Interstitial::Yes, visibility);
         }
         case CSSFontFaceSource::Status::Success: {

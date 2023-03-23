@@ -38,7 +38,7 @@ namespace IPC {
 class StreamClientConnection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteRenderingBackendProxy;
 class RemoteImageBufferProxy;
@@ -153,6 +153,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

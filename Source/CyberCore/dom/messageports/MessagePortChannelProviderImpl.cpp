@@ -30,7 +30,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MessagePortChannelProviderImpl::MessagePortChannelProviderImpl()
 {
@@ -90,4 +90,4 @@ void MessagePortChannelProviderImpl::takeAllMessagesForPort(const MessagePortIde
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

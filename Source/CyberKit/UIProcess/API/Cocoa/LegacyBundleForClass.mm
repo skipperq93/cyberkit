@@ -34,7 +34,7 @@
 @implementation className (WKFoundationSupport) \
 + (NSBundle *)bundleForClass \
 { \
-    return [NSBundle bundleWithIdentifier:@"com.apple.WebKit"]; \
+    return [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"]; \
 } \
 @end
 

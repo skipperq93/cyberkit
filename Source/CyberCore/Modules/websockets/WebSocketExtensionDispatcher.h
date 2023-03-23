@@ -35,7 +35,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebSocketExtensionDispatcher {
 public:
@@ -58,4 +58,4 @@ private:
     String m_failureReason;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

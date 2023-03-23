@@ -26,7 +26,7 @@
 #include "TestSerializedScriptValueInterface.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestSerializedScriptValueInterface : public JSDOMWrapper<TestSerializedScriptValueInterface> {
 public:
@@ -96,6 +96,6 @@ template<> struct JSDOMWrapperConverterTraits<TestSerializedScriptValueInterface
     using ToWrappedReturnType = TestSerializedScriptValueInterface*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(Condition1) || ENABLE(Condition2)

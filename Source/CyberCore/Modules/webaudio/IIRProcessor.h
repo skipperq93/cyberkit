@@ -28,7 +28,7 @@
 #include "AudioDSPKernelProcessor.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IIRDSPKernel;
 
@@ -56,4 +56,4 @@ private:
     std::unique_ptr<IIRDSPKernel> m_responseKernel;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

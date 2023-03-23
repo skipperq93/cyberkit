@@ -31,21 +31,21 @@
 #include "JSDOMPromiseDeferred.h"
 #include "ServiceWorkerClients.h"
 #include "ServiceWorkerGlobalScope.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
 template<typename Visitor>
 void JSServiceWorkerGlobalScope::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().clients());
-    addWebCoreOpaqueRoot(visitor, wrapped().registration());
+    addCyberCoreOpaqueRoot(visitor, wrapped().clients());
+    addCyberCoreOpaqueRoot(visitor, wrapped().registration());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSServiceWorkerGlobalScope);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

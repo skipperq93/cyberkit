@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -40,4 +40,4 @@ public:
     unsigned maximumDOMTreeDepth;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "Supplementable.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;
@@ -51,6 +51,6 @@ private:
     static const char* supplementName() { return "DocumentPictureInPicture"; };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PICTURE_IN_PICTURE_API)

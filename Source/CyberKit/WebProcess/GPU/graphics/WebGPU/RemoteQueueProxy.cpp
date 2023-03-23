@@ -31,7 +31,7 @@
 #include "RemoteQueueMessages.h"
 #include "WebGPUConvertToBackingContext.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 RemoteQueueProxy::RemoteQueueProxy(RemoteDeviceProxy& parent, ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier)
     : m_backing(identifier)
@@ -128,6 +128,6 @@ void RemoteQueueProxy::setLabelInternal(const String& label)
     UNUSED_VARIABLE(sendResult);
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

@@ -30,7 +30,7 @@
 #include "JSWritableStream.h"
 #include "JSWritableStreamSink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Ref<WritableStream>> WritableStream::create(JSC::JSGlobalObject& globalObject, std::optional<JSC::Strong<JSC::JSObject>>&& underlyingSink, std::optional<JSC::Strong<JSC::JSObject>>&& strategy)
 {
@@ -84,4 +84,4 @@ JSC::JSValue JSWritableStream::getWriter(JSC::JSGlobalObject& globalObject, JSC:
     return wrapped().internalWritableStream().getWriter(globalObject);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

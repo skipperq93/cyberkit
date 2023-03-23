@@ -30,7 +30,7 @@
 #include "Color.h"
 #include "VTTCue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // A "generic" cue is a non-WebVTT cue, so it is not positioned/sized with the WebVTT logic.
 class TextTrackCueGeneric final : public VTTCue {
@@ -86,16 +86,16 @@ private:
     bool m_useDefaultPosition { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct LogArgument<WebCore::TextTrackCueGeneric> : LogArgument<WebCore::TextTrackCue> { };
+template<> struct LogArgument<CyberCore::TextTrackCueGeneric> : LogArgument<CyberCore::TextTrackCue> { };
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::TextTrackCueGeneric)
-static bool isType(const WebCore::TextTrackCue& cue) { return cue.cueType() == WebCore::TextTrackCue::ConvertedToWebVTT; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::TextTrackCueGeneric)
+static bool isType(const CyberCore::TextTrackCue& cue) { return cue.cueType() == CyberCore::TextTrackCue::ConvertedToWebVTT; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

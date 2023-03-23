@@ -32,7 +32,7 @@
 #import "ProcessAssertion.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void XPCConnectionTerminationWatchdog::startConnectionTerminationWatchdog(OSObjectPtr<xpc_connection_t> xpcConnection, Seconds interval)
 {

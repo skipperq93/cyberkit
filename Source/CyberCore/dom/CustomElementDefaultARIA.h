@@ -32,7 +32,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class WeakPtrImplWithEventTargetData;
@@ -56,4 +56,4 @@ private:
     HashMap<QualifiedName, std::variant<AtomString, WeakElementPtr, Vector<WeakElementPtr>>> m_map;
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore

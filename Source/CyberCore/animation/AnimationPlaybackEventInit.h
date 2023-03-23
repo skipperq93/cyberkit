@@ -28,7 +28,7 @@
 #include "EventInit.h"
 #include "WebAnimationTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AnimationPlaybackEventInit : EventInit {
     MarkableDouble currentTime;

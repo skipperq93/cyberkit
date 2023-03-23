@@ -29,7 +29,7 @@
 #import "FloatRect.h"
 #import "PlatformScreen.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void changeUniversalAccessZoomFocus(const IntRect& viewRect, const IntRect& selectionRect)
 {

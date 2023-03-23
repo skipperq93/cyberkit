@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TouchList : public RefCounted<TouchList> {
 public:
@@ -67,7 +67,7 @@ private:
     Vector<Ref<Touch>> m_values;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TOUCH_EVENTS)
 

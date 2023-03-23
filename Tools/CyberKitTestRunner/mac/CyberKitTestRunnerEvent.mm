@@ -24,14 +24,14 @@
  */
 
 #import "config.h"
-#import "WebKitTestRunnerEvent.h"
+#import "CyberKitTestRunnerEvent.h"
 
 #import "EventSenderProxy.h"
 #import "PlatformWebView.h"
 #import "TestController.h"
-#import "WebKitTestRunnerWindow.h"
+#import "CyberKitTestRunnerWindow.h"
 
-@implementation WebKitTestRunnerEvent
+@implementation CyberKitTestRunnerEvent
 
 + (NSPoint)mouseLocation
 {

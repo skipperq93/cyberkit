@@ -148,8 +148,8 @@ _NO_CONFIG_H_PATH_PATTERNS = [
 
 _EXPORT_MACRO_SPEC = {
     'BEXPORT': 'Source/bmalloc',
-    'JS_EXPORT': 'Source/JavaScriptCore/API',
-    'JS_EXPORT_PRIVATE': 'Source/JavaScriptCore',
+    'JS_EXPORT': 'Source/CyberScriptCore/API',
+    'JS_EXPORT_PRIVATE': 'Source/CyberScriptCore',
     'PAL_EXPORT': 'Source/CyberCore/PAL',
     'WEBCORE_TESTSUPPORT_EXPORT': 'Source/CyberCore/testing',
     # Excludes PAL and testing directories
@@ -3635,7 +3635,7 @@ def _does_primary_header_exist(filename):
 
 
 def _is_javascriptcore_file(filename):
-    return filename.startswith('Source/JavaScriptCore/')
+    return filename.startswith('Source/CyberScriptCore/')
 
 
 def _is_webkit2_file(filename):
@@ -3672,11 +3672,11 @@ def check_include_line(filename, file_extension, clean_lines, line_number, inclu
     include = matched.group(2)
     is_system = (matched.group(1) == '<')
 
-    # FIXME: Remove once JavaScriptCore builds with ARC enabled (Bug 221117).
+    # FIXME: Remove once CyberScriptCore builds with ARC enabled (Bug 221117).
     if _is_javascriptcore_file(filename) and include == 'wtf/BlockPtr.h':
         error(line_number, 'security/javascriptcore_wtf_blockptr', 5,
               'Replace WTF::BlockPtr with WTF::Function. '
-              'WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.')
+              'WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.')
 
     # Look for any of the stream classes that are part of standard C++.
     if match(r'(f|ind|io|i|o|parse|pf|stdio|str|)?stream$', include):
@@ -3881,11 +3881,11 @@ def check_language(filename, clean_lines, line_number, file_extension, include_s
                 'Please replace ASSERT_WITH_SECURITY_IMPLICATION() with '
                 'RELEASE_ASSERT_WITH_SECURITY_IMPLICATION().')
 
-    # FIXME: Remove once JavaScriptCore builds with ARC enabled (Bug 221117).
+    # FIXME: Remove once CyberScriptCore builds with ARC enabled (Bug 221117).
     if _is_javascriptcore_file(filename) and search(r'\b(WTF::)?BlockPtr\s*<', line):
         error(line_number, 'security/javascriptcore_wtf_blockptr', 5,
               'Replace WTF::BlockPtr with WTF::Function. '
-              'WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.')
+              'WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.')
 
     # Check if some verboten C functions are being used.
     if search(r'\bsprintf\b', line):

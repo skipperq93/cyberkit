@@ -31,7 +31,7 @@
 #include <wtf/URL.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class ScriptExecutionContext;
@@ -69,4 +69,4 @@ private:
     RefPtr<URLSearchParams> m_searchParams;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

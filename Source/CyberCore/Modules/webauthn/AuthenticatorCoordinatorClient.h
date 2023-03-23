@@ -36,7 +36,7 @@ namespace WebAuthn {
 enum class Scope;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Frame;
@@ -50,7 +50,7 @@ struct PublicKeyCredentialCreationOptions;
 struct PublicKeyCredentialRequestOptions;
 class SecurityOriginData;
 
-using RequestCompletionHandler = CompletionHandler<void(WebCore::AuthenticatorResponseData&&, WebCore::AuthenticatorAttachment, WebCore::ExceptionData&&)>;
+using RequestCompletionHandler = CompletionHandler<void(CyberCore::AuthenticatorResponseData&&, CyberCore::AuthenticatorAttachment, CyberCore::ExceptionData&&)>;
 using QueryCompletionHandler = CompletionHandler<void(bool)>;
 
 class AuthenticatorCoordinatorClient : public CanMakeWeakPtr<AuthenticatorCoordinatorClient> {
@@ -69,6 +69,6 @@ public:
     virtual void resetUserGestureRequirement() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

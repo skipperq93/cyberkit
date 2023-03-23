@@ -29,7 +29,7 @@
 
 /**
  * WKInputType exposes a subset of all known input types enumerated in
- * WebKit::InputType. While there is currently a one-to-one mapping, we
+ * CyberKit::InputType. While there is currently a one-to-one mapping, we
  * need to consider how we should expose certain input types.
  */
 typedef NS_ENUM(NSInteger, WKInputType) {

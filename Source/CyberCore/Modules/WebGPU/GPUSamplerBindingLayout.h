@@ -28,13 +28,13 @@
 #include "GPUSamplerBindingType.h"
 #include <pal/graphics/WebGPU/WebGPUSamplerBindingLayout.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUSamplerBindingLayout {
     PAL::WebGPU::SamplerBindingLayout convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(type),
+            CyberCore::convertToBacking(type),
         };
     }
 

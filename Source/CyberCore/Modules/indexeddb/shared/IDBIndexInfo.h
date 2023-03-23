@@ -28,7 +28,7 @@
 #include "IDBKeyPath.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBIndexInfo {
 public:
@@ -65,4 +65,4 @@ private:
     bool m_multiEntry { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

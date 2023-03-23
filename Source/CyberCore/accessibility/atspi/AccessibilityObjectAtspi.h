@@ -32,7 +32,7 @@ typedef struct _GDBusInterfaceVTable GDBusInterfaceVTable;
 typedef struct _GVariant GVariant;
 typedef struct _GVariantBuilder GVariantBuilder;
 
-namespace WebCore {
+namespace CyberCore {
 class AXCoreObject;
 class AccessibilityRootAtspi;
 
@@ -288,6 +288,6 @@ private:
     mutable int m_indexInParent { -1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

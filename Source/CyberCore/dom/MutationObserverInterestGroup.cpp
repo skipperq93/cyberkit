@@ -35,7 +35,7 @@
 #include "MutationObserverRegistration.h"
 #include "MutationRecord.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline MutationObserverInterestGroup::MutationObserverInterestGroup(HashMap<Ref<MutationObserver>, MutationRecordDeliveryOptions>&& observers, MutationRecordDeliveryOptions oldValueFlag)
     : m_observers(WTFMove(observers))
@@ -82,4 +82,4 @@ void MutationObserverInterestGroup::enqueueMutationRecord(Ref<MutationRecord>&& 
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

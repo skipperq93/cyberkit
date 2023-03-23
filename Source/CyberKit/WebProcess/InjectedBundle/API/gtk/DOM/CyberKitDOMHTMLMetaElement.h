@@ -54,7 +54,7 @@ webkit_dom_html_meta_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_meta_element_get_content(CyberKitDOMHTMLMetaElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_meta_element_get_content(CyberKitDOMHTMLMetaElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_meta_element_set_content(CyberKitDOMHTMLMetaElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_meta_element_set_content(CyberKitDOMHTMLMetaElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_meta_element_get_http_equiv(CyberKitDOMHTMLMetaElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_meta_element_get_http_equiv(CyberKitDOMHTMLMetaElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_meta_element_set_http_equiv(CyberKitDOMHTMLMetaElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_meta_element_set_http_equiv(CyberKitDOMHTMLMetaElement* self, co
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_meta_element_get_name(CyberKitDOMHTMLMetaElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_meta_element_get_name(CyberKitDOMHTMLMetaElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_meta_element_set_name(CyberKitDOMHTMLMetaElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_meta_element_set_name(CyberKitDOMHTMLMetaElement* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_meta_element_get_scheme(CyberKitDOMHTMLMetaElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_meta_element_get_scheme(CyberKitDOMHTMLMetaElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_meta_element_set_scheme(CyberKitDOMHTMLMetaElement* self, const gchar* value);

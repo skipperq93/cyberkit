@@ -30,7 +30,7 @@
 #include <CyberScriptCore/RemoteInspectionTarget.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -60,8 +60,8 @@ private:
     String m_nameOverride;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_CONTROLLABLE_TARGET(WebKit::WebPageDebuggable, WebPage);
+SPECIALIZE_TYPE_TRAITS_CONTROLLABLE_TARGET(CyberKit::WebPageDebuggable, WebPage);
 
 #endif // ENABLE(REMOTE_INSPECTOR)

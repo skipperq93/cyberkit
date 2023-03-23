@@ -33,7 +33,7 @@
 #import <CyberCore/LegacyNSPasteboardTypes.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(MAC)
 
@@ -70,4 +70,4 @@ String stringForFind()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

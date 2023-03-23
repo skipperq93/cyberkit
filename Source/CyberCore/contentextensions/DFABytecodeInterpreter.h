@@ -33,7 +33,7 @@
 #include <wtf/DataLog.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 class DFABytecodeInterpreter {
 public:
@@ -55,6 +55,6 @@ private:
     const Span<const uint8_t> m_bytecode;
 };
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

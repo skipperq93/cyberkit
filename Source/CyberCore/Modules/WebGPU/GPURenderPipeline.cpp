@@ -28,7 +28,7 @@
 
 #include "GPUBindGroupLayout.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPURenderPipeline::label() const
 {

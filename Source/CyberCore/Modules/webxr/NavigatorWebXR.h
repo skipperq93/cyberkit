@@ -30,7 +30,7 @@
 #include "Supplementable.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Navigator;
 class ScriptExecutionContext;
@@ -47,6 +47,6 @@ private:
     RefPtr<WebXRSystem> m_xr;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

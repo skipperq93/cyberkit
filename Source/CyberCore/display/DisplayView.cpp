@@ -35,7 +35,7 @@
 #include "Page.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(View);
@@ -103,5 +103,5 @@ float View::deviceScaleFactor() const
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -26,7 +26,7 @@
 #include "TestObj.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestObj : public JSDOMWrapper<TestObj> {
 public:
@@ -230,4 +230,4 @@ template<> TestObj::ConditionalDictionaryC convertDictionary<TestObj::Conditiona
 #endif
 
 
-} // namespace WebCore
+} // namespace CyberCore

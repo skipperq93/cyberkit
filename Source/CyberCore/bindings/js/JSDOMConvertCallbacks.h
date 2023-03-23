@@ -29,7 +29,7 @@
 #include "JSDOMConvertBase.h"
 #include "JSDOMGlobalObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> struct Converter<IDLCallbackFunction<T>> : DefaultConverter<IDLCallbackFunction<T>> {
 
@@ -101,4 +101,4 @@ template<typename T> struct JSConverter<IDLCallbackInterface<T>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

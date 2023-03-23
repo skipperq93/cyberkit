@@ -25,33 +25,33 @@
  */
 
 #include "config.h"
-#include "WebKitColorChooserRequest.h"
+#include "CyberKitColorChooserRequest.h"
 
-#include "WebKitColorChooserRequestPrivate.h"
+#include "CyberKitColorChooserRequestPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
 /**
- * WebKitColorChooserRequest:
- * @See_also: #WebKitWebView
+ * CyberKitColorChooserRequest:
+ * @See_also: #CyberKitWebView
  *
  * A request to open a color chooser.
  *
  * Whenever the user interacts with an <input type='color' />
- * HTML element, WebKit will need to show a dialog to choose a color. For that
+ * HTML element, CyberKit will need to show a dialog to choose a color. For that
  * to happen in a general way, instead of just opening a #GtkColorChooser
  * (which might be not desirable in some cases, which could prefer to use their
- * own color chooser dialog), WebKit will fire the
- * #WebKitWebView::run-color-chooser signal with a #WebKitColorChooserRequest
+ * own color chooser dialog), CyberKit will fire the
+ * #CyberKitWebView::run-color-chooser signal with a #CyberKitColorChooserRequest
  * object, which will allow the client application to specify the color to be
  * selected, to inspect the details of the request (e.g. to get initial color)
  * and to cancel the request, in case nothing was selected.
  *
  * In case the client application does not wish to handle this signal,
- * WebKit will provide a default handler which will asynchronously run
+ * CyberKit will provide a default handler which will asynchronously run
  * a regular #GtkColorChooserDialog for the user to interact with.
  */
 
@@ -69,19 +69,19 @@ enum {
     LAST_SIGNAL
 };
 
-struct _WebKitColorChooserRequestPrivate {
-    WebKitColorChooser* colorChooser;
+struct _CyberKitColorChooserRequestPrivate {
+    CyberKitColorChooser* colorChooser;
     GdkRGBA rgba;
     bool handled;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitColorChooserRequest, webkit_color_chooser_request, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitColorChooserRequest, webkit_color_chooser_request, G_TYPE_OBJECT, GObject)
 
 static void webkitColorChooserRequestDispose(GObject* object)
 {
-    WebKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(object);
+    CyberKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(object);
     if (!request->priv->handled)
         webkit_color_chooser_request_finish(request);
 
@@ -90,7 +90,7 @@ static void webkitColorChooserRequestDispose(GObject* object)
 
 static void webkitColorChooserRequestGetProperty(GObject* object, guint propertyID, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(object);
+    CyberKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(object);
 
     switch (propertyID) {
     case PROP_RGBA:
@@ -103,7 +103,7 @@ static void webkitColorChooserRequestGetProperty(GObject* object, guint property
 
 static void webkitColorChooserRequestSetProperty(GObject* object, guint propertyID, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(object);
+    CyberKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(object);
 
     switch (propertyID) {
     case PROP_RGBA:
@@ -114,7 +114,7 @@ static void webkitColorChooserRequestSetProperty(GObject* object, guint property
     }
 }
 
-static void webkit_color_chooser_request_class_init(WebKitColorChooserRequestClass* requestClass)
+static void webkit_color_chooser_request_class_init(CyberKitColorChooserRequestClass* requestClass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(requestClass);
     objectClass->dispose = webkitColorChooserRequestDispose;
@@ -122,7 +122,7 @@ static void webkit_color_chooser_request_class_init(WebKitColorChooserRequestCla
     objectClass->set_property = webkitColorChooserRequestSetProperty;
 
     /**
-     * WebKitColorChooserRequest:rgba:
+     * CyberKitColorChooserRequest:rgba:
      *
      * The #GdkRGBA color of the request
      *
@@ -137,8 +137,8 @@ static void webkit_color_chooser_request_class_init(WebKitColorChooserRequestCla
     g_object_class_install_properties(objectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitColorChooserRequest::finished:
-     * @request: the #WebKitColorChooserRequest on which the signal is emitted
+     * CyberKitColorChooserRequest::finished:
+     * @request: the #CyberKitColorChooserRequest on which the signal is emitted
      *
      * Emitted when the @request finishes. This signal can be emitted because the
      * user completed the @request calling webkit_color_chooser_request_finish(),
@@ -160,14 +160,14 @@ static void webkit_color_chooser_request_class_init(WebKitColorChooserRequestCla
 
 /**
  * webkit_color_chooser_request_set_rgba:
- * @request: a #WebKitFileChooserRequest
+ * @request: a #CyberKitFileChooserRequest
  * @rgba: a pointer #GdkRGBA
  *
  * Sets the current #GdkRGBA color of @request
  *
  * Since: 2.8
  */
-void webkit_color_chooser_request_set_rgba(WebKitColorChooserRequest* request, const GdkRGBA* rgba)
+void webkit_color_chooser_request_set_rgba(CyberKitColorChooserRequest* request, const GdkRGBA* rgba)
 {
     g_return_if_fail(WEBKIT_IS_COLOR_CHOOSER_REQUEST(request));
     g_return_if_fail(rgba);
@@ -181,14 +181,14 @@ void webkit_color_chooser_request_set_rgba(WebKitColorChooserRequest* request, c
 
 /**
  * webkit_color_chooser_request_get_rgba:
- * @request: a #WebKitColorChooserRequest
+ * @request: a #CyberKitColorChooserRequest
  * @rgba: (out): a #GdkRGBA to fill in with the current color.
  *
  * Gets the current #GdkRGBA color of @request
  *
  * Since: 2.8
  */
-void webkit_color_chooser_request_get_rgba(WebKitColorChooserRequest* request, GdkRGBA* rgba)
+void webkit_color_chooser_request_get_rgba(CyberKitColorChooserRequest* request, GdkRGBA* rgba)
 {
     g_return_if_fail(WEBKIT_IS_COLOR_CHOOSER_REQUEST(request));
     g_return_if_fail(rgba);
@@ -198,14 +198,14 @@ void webkit_color_chooser_request_get_rgba(WebKitColorChooserRequest* request, G
 
 /**
  * webkit_color_chooser_request_get_element_rectangle:
- * @request: a #WebKitColorChooserRequest
+ * @request: a #CyberKitColorChooserRequest
  * @rect: (out): a #GdkRectangle to fill in with the element area
  *
  * Gets the bounding box of the color input element.
  *
  * Since: 2.8
  */
-void webkit_color_chooser_request_get_element_rectangle(WebKitColorChooserRequest* request, GdkRectangle* rect)
+void webkit_color_chooser_request_get_element_rectangle(CyberKitColorChooserRequest* request, GdkRectangle* rect)
 {
     g_return_if_fail(WEBKIT_IS_COLOR_CHOOSER_REQUEST(request));
     g_return_if_fail(rect);
@@ -215,19 +215,19 @@ void webkit_color_chooser_request_get_element_rectangle(WebKitColorChooserReques
 
 /**
  * webkit_color_chooser_request_finish:
- * @request: a #WebKitColorChooserRequest
+ * @request: a #CyberKitColorChooserRequest
  *
  * Finishes @request and the input element keeps the current value of
- * #WebKitColorChooserRequest:rgba.
+ * #CyberKitColorChooserRequest:rgba.
  *
  * Finishes @request and the input element keeps the current value of
- * #WebKitColorChooserRequest:rgba.
- * The signal #WebKitColorChooserRequest::finished
+ * #CyberKitColorChooserRequest:rgba.
+ * The signal #CyberKitColorChooserRequest::finished
  * is emitted to notify that the request has finished.
  *
  * Since: 2.8
  */
-void webkit_color_chooser_request_finish(WebKitColorChooserRequest* request)
+void webkit_color_chooser_request_finish(CyberKitColorChooserRequest* request)
 {
     g_return_if_fail(WEBKIT_IS_COLOR_CHOOSER_REQUEST(request));
 
@@ -240,18 +240,18 @@ void webkit_color_chooser_request_finish(WebKitColorChooserRequest* request)
 
 /**
  * webkit_color_chooser_request_cancel:
- * @request: a #WebKitColorChooserRequest
+ * @request: a #CyberKitColorChooserRequest
  *
  * Cancels @request and the input element changes to use the initial color.
  *
  * Cancels @request and the input element changes to use the initial color
  * it has before the request started.
- * The signal #WebKitColorChooserRequest::finished
+ * The signal #CyberKitColorChooserRequest::finished
  * is emitted to notify that the request has finished.
  *
  * Since: 2.8
  */
-void webkit_color_chooser_request_cancel(WebKitColorChooserRequest* request)
+void webkit_color_chooser_request_cancel(CyberKitColorChooserRequest* request)
 {
     g_return_if_fail(WEBKIT_IS_COLOR_CHOOSER_REQUEST(request));
 
@@ -263,9 +263,9 @@ void webkit_color_chooser_request_cancel(WebKitColorChooserRequest* request)
     g_signal_emit(request, signals[FINISHED], 0);
 }
 
-WebKitColorChooserRequest* webkitColorChooserRequestCreate(WebKitColorChooser* colorChooser)
+CyberKitColorChooserRequest* webkitColorChooserRequestCreate(CyberKitColorChooser* colorChooser)
 {
-    WebKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(
+    CyberKitColorChooserRequest* request = WEBKIT_COLOR_CHOOSER_REQUEST(
         g_object_new(WEBKIT_TYPE_COLOR_CHOOSER_REQUEST, "rgba", colorChooser->initialColor(), nullptr));
     request->priv->colorChooser = colorChooser;
     return request;

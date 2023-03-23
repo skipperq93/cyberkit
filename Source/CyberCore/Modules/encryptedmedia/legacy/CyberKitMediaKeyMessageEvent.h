@@ -31,7 +31,7 @@
 #include "Event.h"
 #include "CyberKitMediaKeyError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CyberKitMediaKeyMessageEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(CyberKitMediaKeyMessageEvent);
@@ -66,6 +66,6 @@ private:
     String m_destinationURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LEGACY_ENCRYPTED_MEDIA)

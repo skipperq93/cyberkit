@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TaskSource : uint8_t {
     DOMManipulation,
@@ -50,8 +50,8 @@ enum class TaskSource : uint8_t {
     WebXR,
     WebSocket,
 
-    // Internal to WebCore
+    // Internal to CyberCore
     InternalAsyncTask, // Safe to re-order or delay.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

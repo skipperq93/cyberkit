@@ -35,7 +35,7 @@
 #include "StyleSheetContents.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace ContentExtensions {
 
 ContentExtensionStyleSheet::ContentExtensionStyleSheet(Document& document)
@@ -66,6 +66,6 @@ bool ContentExtensionStyleSheet::addDisplayNoneSelector(const String& selector, 
 }
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

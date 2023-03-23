@@ -35,7 +35,7 @@
 
 OBJC_CLASS NSDictionary;
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class NotificationDirection : uint8_t;
 
@@ -55,7 +55,7 @@ struct NotificationData {
     String iconURL;
     String tag;
     String language;
-    WebCore::NotificationDirection direction;
+    CyberCore::NotificationDirection direction;
     String originString;
     URL serviceWorkerRegistrationURL;
     UUID notificationID;
@@ -65,4 +65,4 @@ struct NotificationData {
     Vector<uint8_t> data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

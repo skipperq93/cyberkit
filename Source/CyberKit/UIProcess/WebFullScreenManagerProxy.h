@@ -44,7 +44,7 @@ template <typename> class RectEdges;
 using FloatBoxExtent = RectEdges<float>;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -125,6 +125,6 @@ private:
     Vector<CompletionHandler<void()>> m_closeCompletionHandlers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(FULLSCREEN_API)

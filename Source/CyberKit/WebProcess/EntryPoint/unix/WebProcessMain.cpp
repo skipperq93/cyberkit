@@ -28,5 +28,5 @@
 
 int main(int argc, char** argv)
 {
-    return WebKit::WebProcessMain(argc, argv);
+    return CyberKit::WebProcessMain(argc, argv);
 }

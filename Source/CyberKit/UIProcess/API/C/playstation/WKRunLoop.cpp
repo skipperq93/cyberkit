@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WKRunLoop.h"
 
-#include "WebKit2Initialize.h"
+#include "CyberKit2Initialize.h"
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
@@ -53,7 +53,7 @@ void WKRunLoopCallOnMainThread(WKRunLoopCallback callback, void* userData)
 void WKRunLoopInitializeMain()
 {
     // FIXME:
-    // Initializing RunLoop by InitializeWebKit2().
-    // WKRunLoopInitializeMain() should be renamed to more straightforward API name to wrap InitializeWebKit2().
-    WebKit::InitializeWebKit2();
+    // Initializing RunLoop by InitializeCyberKit2().
+    // WKRunLoopInitializeMain() should be renamed to more straightforward API name to wrap InitializeCyberKit2().
+    CyberKit::InitializeCyberKit2();
 }

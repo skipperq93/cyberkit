@@ -34,7 +34,7 @@
 #include "ScrollView.h"
 #include "Scrollbar.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilityScrollbar::AccessibilityScrollbar(Scrollbar* scrollbar)
     : m_scrollbar(scrollbar)
@@ -102,4 +102,4 @@ bool AccessibilityScrollbar::setValue(float value)
     return true;
 }
     
-} // namespace WebCore
+} // namespace CyberCore

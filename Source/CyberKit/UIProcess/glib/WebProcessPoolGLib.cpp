@@ -37,7 +37,7 @@
 #include <wtf/glib/Sandbox.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/RemoteInspector.h>
+#include <CyberScriptCore/RemoteInspector.h>
 #endif
 
 #if USE(GSTREAMER)
@@ -56,7 +56,7 @@
 #include "GtkSettingsManager.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebProcessPool::platformInitialize()
 {
@@ -148,4 +148,4 @@ void WebProcessPool::platformResolvePathsForSandboxExtensions()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

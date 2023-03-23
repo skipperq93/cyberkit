@@ -40,7 +40,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_ACCEPT 1
 
@@ -53,7 +53,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_REJECT 2
 
@@ -66,7 +66,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SKIP   3
 
@@ -77,7 +77,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_ALL                    0xFFFFFFFF
 
@@ -88,7 +88,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_ELEMENT                0x00000001
 
@@ -99,7 +99,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_ATTRIBUTE              0x00000002
 
@@ -110,7 +110,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_TEXT                   0x00000004
 
@@ -121,7 +121,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_CDATA_SECTION          0x00000008
 
@@ -132,7 +132,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_ENTITY_REFERENCE       0x00000010
 
@@ -143,7 +143,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_ENTITY                 0x00000020
 
@@ -154,7 +154,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_PROCESSING_INSTRUCTION 0x00000040
 
@@ -165,7 +165,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_COMMENT                0x00000080
 
@@ -176,7 +176,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_DOCUMENT               0x00000100
 
@@ -187,7 +187,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_DOCUMENT_TYPE          0x00000200
 
@@ -198,7 +198,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_DOCUMENT_FRAGMENT      0x00000400
 
@@ -209,7 +209,7 @@ G_BEGIN_DECLS
  *
  * Since: 2.6
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_NODE_FILTER_SHOW_NOTATION               0x00000800
 
@@ -238,7 +238,7 @@ WEBKIT_DEPRECATED GType webkit_dom_node_filter_get_type(void) G_GNUC_CONST;
  *
  * Returns: a #gshort
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gshort webkit_dom_node_filter_accept_node(CyberKitDOMNodeFilter *filter,
                                                      CyberKitDOMNode       *node);

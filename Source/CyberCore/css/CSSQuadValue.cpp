@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CSSQuadValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSQuadValue::CSSQuadValue(Quad quad)
     : CSSValue(QuadClass)
@@ -49,4 +49,4 @@ bool CSSQuadValue::equals(const CSSQuadValue& other) const
     return m_quad.equals(other.m_quad);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

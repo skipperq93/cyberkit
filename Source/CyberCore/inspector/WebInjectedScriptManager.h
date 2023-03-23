@@ -29,7 +29,7 @@
 #include <CyberScriptCore/InjectedScriptManager.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 
@@ -54,4 +54,4 @@ private:
     RefPtr<CommandLineAPIHost> m_commandLineAPIHost;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

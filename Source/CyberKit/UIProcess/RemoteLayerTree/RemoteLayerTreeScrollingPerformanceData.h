@@ -28,7 +28,7 @@
 #import <CyberCore/FloatRect.h>
 #import <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeDrawingAreaProxy;
 

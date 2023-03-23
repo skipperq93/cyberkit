@@ -9,7 +9,7 @@ const shadowRoot1 = host1.attachShadow({mode: 'open'});
 shadowRoot1.innerHTML = '<slot style="color: blue;"></slot> world';
 
 const shadowRoot2 = host2.attachShadow({mode: 'open'});
-shadowRoot2.innerHTML = '<u>WebKit <slot></slot></u>';
+shadowRoot2.innerHTML = '<u>CyberKit <slot></slot></u>';
 
 if (window.testRunner)
     dumpAttributedString(container, container, 0, shadowRoot2.querySelector('u'), 1);

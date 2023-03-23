@@ -42,7 +42,7 @@
 #include <wtf/Vector.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 
 EventListenerMap::EventListenerMap() = default;
 
@@ -208,4 +208,4 @@ void EventListenerMap::copyEventListenersNotCreatedFromMarkupToTarget(EventTarge
         copyListenersNotCreatedFromMarkupToTarget(entry.first, entry.second, target);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include "RenderGrid.h"
 #include "RenderText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -183,4 +183,4 @@ bool PositionIterator::isCandidate() const
     return m_anchorNode->hasEditableStyle() && !Position::nodeIsUserSelectNone(m_anchorNode.get()) && Position(*this).atEditingBoundary();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

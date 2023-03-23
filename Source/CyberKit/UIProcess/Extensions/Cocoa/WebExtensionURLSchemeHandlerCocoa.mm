@@ -41,7 +41,7 @@
 #import <UniformTypeIdentifiers/UTType.h>
 #import <wtf/BlockPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -125,6 +125,6 @@ void WebExtensionURLSchemeHandler::platformTaskCompleted(WebURLSchemeTask& task)
     m_operations.remove(task);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

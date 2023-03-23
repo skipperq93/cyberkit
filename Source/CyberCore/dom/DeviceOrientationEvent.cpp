@@ -33,7 +33,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DeviceOrientationEvent);
 
@@ -138,4 +138,4 @@ void DeviceOrientationEvent::requestPermission(Document& document, PermissionPro
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "932F5B3E0822A1C700736975"
-               BuildableName = "JavaScriptCore.framework"
-               BlueprintName = "JavaScriptCore"
-               ReferencedContainer = "container:JavaScriptCore.xcodeproj">
+               BuildableName = "CyberScriptCore.framework"
+               BlueprintName = "CyberScriptCore"
+               ReferencedContainer = "container:CyberScriptCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "932F5BE30822A1C700736975"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:JavaScriptCore.xcodeproj">
+               ReferencedContainer = "container:CyberScriptCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "932F5B3E0822A1C700736975"
-            BuildableName = "JavaScriptCore.framework"
-            BlueprintName = "JavaScriptCore"
-            ReferencedContainer = "container:JavaScriptCore.xcodeproj">
+            BuildableName = "CyberScriptCore.framework"
+            BlueprintName = "CyberScriptCore"
+            ReferencedContainer = "container:CyberScriptCore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

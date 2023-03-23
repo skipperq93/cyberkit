@@ -45,7 +45,7 @@
 #include <wtf/Logger.h>
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool isValidMediaMIMEType(const ContentType& contentType)
 {

@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLDrawBuffers final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLDrawBuffers);
@@ -42,4 +42,4 @@ public:
     void drawBuffersWEBGL(const Vector<GCGLenum>& buffers);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

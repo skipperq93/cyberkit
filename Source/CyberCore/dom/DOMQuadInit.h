@@ -27,7 +27,7 @@
 
 #include "DOMPointInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMQuadInit {
     DOMPointInit p1;

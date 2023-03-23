@@ -22,7 +22,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProgressValueElement;
 class RenderProgress;

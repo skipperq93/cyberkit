@@ -35,7 +35,7 @@ namespace CyberCore {
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserMediaPermissionCheckProxy : public API::ObjectImpl<API::Object::Type::UserMediaPermissionCheck> {
 public:
@@ -67,4 +67,4 @@ private:
     Ref<CyberCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

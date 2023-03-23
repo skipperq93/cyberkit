@@ -30,7 +30,7 @@
 
 #import "EventNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const AtomString& pointerEventType(PlatformTouchPoint::TouchPhaseType phase)
 {
@@ -58,7 +58,7 @@ static short buttonForType(const AtomString& type)
 static unsigned short buttonsForType(const AtomString& type)
 {
     // We have contact with the touch surface for most events except when we've released the touch or canceled it.
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     return (type == eventNames.pointerupEvent || type == eventNames.pointeroutEvent || type == eventNames.pointerleaveEvent || type == eventNames.pointercancelEvent) ? 0 : 1;
 }
 
@@ -92,6 +92,6 @@ PointerEvent::PointerEvent(const AtomString& type, const PlatformTouchEvent& eve
     m_tiltY = round(sin(azimuthAngle) * cos(altitudeAngle) * 90);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TOUCH_EVENTS) && PLATFORM(IOS_FAMILY)

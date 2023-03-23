@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMMatrix2DInit {
     std::optional<double> a;

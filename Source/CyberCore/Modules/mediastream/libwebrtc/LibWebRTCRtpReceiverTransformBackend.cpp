@@ -29,7 +29,7 @@
 
 #include "LibWebRTCRtpTransformableFrame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline LibWebRTCRtpReceiverTransformBackend::MediaType mediaTypeFromReceiver(const webrtc::RtpReceiverInterface& receiver)
 {
@@ -62,6 +62,6 @@ void LibWebRTCRtpReceiverTransformBackend::requestKeyFrame()
     m_rtcReceiver->GenerateKeyFrame();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

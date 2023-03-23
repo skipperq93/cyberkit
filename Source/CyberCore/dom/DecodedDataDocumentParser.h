@@ -27,7 +27,7 @@
 
 #include "DocumentParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DecodedDataDocumentParser : public DocumentParser {
 public:
@@ -47,4 +47,4 @@ private:
     void flush(DocumentWriter&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -50,11 +50,11 @@ static const NSUInteger maximumFindMatches = 1000;
 - (void)didFindStringMatchesWithRects:(const Vector<Vector<CyberCore::IntRect>>&)rects didWrapAround:(BOOL)didWrapAround;
 
 - (void)getImageForMatchResult:(id <NSTextFinderAsynchronousDocumentFindMatch>)findMatch completionHandler:(void (^)(NSImage *generatedImage))completionHandler;
-- (void)didGetImageForMatchResult:(WebKit::WebImage *)string;
+- (void)didGetImageForMatchResult:(CyberKit::WebImage *)string;
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 class TextFinderFindClient : public API::FindMatchesClient, public API::FindClient {
@@ -154,14 +154,14 @@ private:
 @end
 
 @implementation WKTextFinderClient {
-    NakedPtr<WebKit::WebPageProxy> _page;
+    NakedPtr<CyberKit::WebPageProxy> _page;
     NSView *_view;
     Deque<WTF::Function<void(NSArray *, bool didWrap)>> _findReplyCallbacks;
     Deque<WTF::Function<void(NSImage *)>> _imageReplyCallbacks;
     BOOL _usePlatformFindUI;
 }
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view usePlatformFindUI:(BOOL)usePlatformFindUI
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view usePlatformFindUI:(BOOL)usePlatformFindUI
 {
     self = [super init];
 
@@ -172,8 +172,8 @@ private:
     _view = view;
     _usePlatformFindUI = usePlatformFindUI;
     
-    _page->setFindMatchesClient(makeUnique<WebKit::TextFinderFindClient>(self));
-    _page->setFindClient(makeUnique<WebKit::TextFinderFindClient>(self));
+    _page->setFindMatchesClient(makeUnique<CyberKit::TextFinderFindClient>(self));
+    _page->setFindClient(makeUnique<CyberKit::TextFinderFindClient>(self));
 
     return self;
 }
@@ -209,21 +209,21 @@ private:
     // proportional to document length.
     maxResults = std::min(maxResults, maximumFindMatches);
 
-    OptionSet<WebKit::FindOptions> kitFindOptions;
+    OptionSet<CyberKit::FindOptions> kitFindOptions;
 
     if (findOptions & NSTextFinderAsynchronousDocumentFindOptionsBackwards)
-        kitFindOptions.add(WebKit::FindOptions::Backwards);
+        kitFindOptions.add(CyberKit::FindOptions::Backwards);
     if (findOptions & NSTextFinderAsynchronousDocumentFindOptionsWrap)
-        kitFindOptions.add(WebKit::FindOptions::WrapAround);
+        kitFindOptions.add(CyberKit::FindOptions::WrapAround);
     if (findOptions & NSTextFinderAsynchronousDocumentFindOptionsCaseInsensitive)
-        kitFindOptions.add(WebKit::FindOptions::CaseInsensitive);
+        kitFindOptions.add(CyberKit::FindOptions::CaseInsensitive);
     if (findOptions & NSTextFinderAsynchronousDocumentFindOptionsStartsWith)
-        kitFindOptions.add(WebKit::FindOptions::AtWordStarts);
+        kitFindOptions.add(CyberKit::FindOptions::AtWordStarts);
 
     if (!_usePlatformFindUI) {
-        kitFindOptions.add(WebKit::FindOptions::ShowOverlay);
-        kitFindOptions.add(WebKit::FindOptions::ShowFindIndicator);
-        kitFindOptions.add(WebKit::FindOptions::DetermineMatchIndex);
+        kitFindOptions.add(CyberKit::FindOptions::ShowOverlay);
+        kitFindOptions.add(CyberKit::FindOptions::ShowFindIndicator);
+        kitFindOptions.add(CyberKit::FindOptions::DetermineMatchIndex);
     }
 
     RetainPtr progress = [NSProgress progressWithTotalUnitCount:1];
@@ -290,7 +290,7 @@ private:
     _findReplyCallbacks.takeFirst()(matchObjects.get(), didWrapAround);
 }
 
-- (void)didGetImageForMatchResult:(WebKit::WebImage *)image
+- (void)didGetImageForMatchResult:(CyberKit::WebImage *)image
 {
     if (_imageReplyCallbacks.isEmpty())
         return;

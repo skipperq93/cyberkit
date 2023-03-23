@@ -31,7 +31,7 @@
 #include "RenderObjectEnums.h"
 #include <wtf/CheckedPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestLocation;
 class HitTestRequest;

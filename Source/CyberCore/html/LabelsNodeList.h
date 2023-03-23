@@ -26,7 +26,7 @@
 
 #include "LiveNodeList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLElement;
 
@@ -43,4 +43,4 @@ private:
     explicit LabelsNodeList(HTMLElement&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

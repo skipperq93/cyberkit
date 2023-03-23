@@ -54,7 +54,7 @@ webkit_dom_html_style_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_style_element_get_disabled(CyberKitDOMHTMLStyleElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_style_element_get_disabled(CyberKitDOMHTMLStyleElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_style_element_set_disabled(CyberKitDOMHTMLStyleElement* self, gboolean value);
@@ -76,7 +76,7 @@ webkit_dom_html_style_element_set_disabled(CyberKitDOMHTMLStyleElement* self, gb
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_style_element_get_media(CyberKitDOMHTMLStyleElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_style_element_get_media(CyberKitDOMHTMLStyleElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_style_element_set_media(CyberKitDOMHTMLStyleElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_style_element_set_media(CyberKitDOMHTMLStyleElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_style_element_get_type_attr(CyberKitDOMHTMLStyleElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_style_element_get_type_attr(CyberKitDOMHTMLStyleElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_style_element_set_type_attr(CyberKitDOMHTMLStyleElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_style_element_set_type_attr(CyberKitDOMHTMLStyleElement* self, c
  *
  * Returns: (transfer full): A #CyberKitDOMStyleSheet
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMStyleSheet*
 webkit_dom_html_style_element_get_sheet(CyberKitDOMHTMLStyleElement* self);

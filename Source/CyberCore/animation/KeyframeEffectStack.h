@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyframeEffect;
 class RenderStyle;
@@ -84,4 +84,4 @@ private:
     bool m_isSorted { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

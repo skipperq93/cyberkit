@@ -31,7 +31,7 @@
 
 #include "CustomPaintCanvas.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaintRenderingContext2D final : public CanvasRenderingContext2DBase {
     WTF_MAKE_ISO_ALLOCATED(PaintRenderingContext2D);
@@ -48,6 +48,6 @@ private:
     PaintRenderingContext2D(CanvasBase&);
 };
 
-} // namespace WebCore
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::PaintRenderingContext2D, isPaint())
+} // namespace CyberCore
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::PaintRenderingContext2D, isPaint())
 #endif

@@ -42,7 +42,7 @@
 #include <wtf/cocoa/Entitlements.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 DownloadProxyMap::DownloadProxyMap(NetworkProcessProxy& process)
     : m_process(process)
@@ -78,12 +78,12 @@ DownloadProxy& DownloadProxyMap::createDownloadProxy(WebsiteDataStore& dataStore
 
     if (m_downloads.size() == 1 && m_shouldTakeAssertion) {
         ASSERT(!m_downloadUIAssertion);
-        m_downloadUIAssertion = ProcessAssertion::create(getCurrentProcessID(), "WebKit downloads"_s, ProcessAssertionType::UnboundedNetworking);
+        m_downloadUIAssertion = ProcessAssertion::create(getCurrentProcessID(), "CyberKit downloads"_s, ProcessAssertionType::UnboundedNetworking);
 
         ASSERT(!m_downloadNetworkingAssertion);
-        m_downloadNetworkingAssertion = ProcessAssertion::create(m_process.processIdentifier(), "WebKit downloads"_s, ProcessAssertionType::UnboundedNetworking);
+        m_downloadNetworkingAssertion = ProcessAssertion::create(m_process.processIdentifier(), "CyberKit downloads"_s, ProcessAssertionType::UnboundedNetworking);
 
-        RELEASE_LOG(ProcessSuspension, "UIProcess took 'WebKit downloads' assertions for UIProcess and NetworkProcess");
+        RELEASE_LOG(ProcessSuspension, "UIProcess took 'CyberKit downloads' assertions for UIProcess and NetworkProcess");
     }
 
     m_process.addMessageReceiver(Messages::DownloadProxy::messageReceiverName(), downloadProxy->downloadID().toUInt64(), downloadProxy.get());
@@ -108,7 +108,7 @@ void DownloadProxyMap::downloadFinished(DownloadProxy& downloadProxy)
         ASSERT(m_downloadNetworkingAssertion);
         m_downloadUIAssertion = nullptr;
         m_downloadNetworkingAssertion = nullptr;
-        RELEASE_LOG(ProcessSuspension, "UIProcess released 'WebKit downloads' assertions for UIProcess and NetworkProcess");
+        RELEASE_LOG(ProcessSuspension, "UIProcess released 'CyberKit downloads' assertions for UIProcess and NetworkProcess");
     }
 }
 
@@ -124,7 +124,7 @@ void DownloadProxyMap::invalidate()
     m_downloads.clear();
     m_downloadUIAssertion = nullptr;
     m_downloadNetworkingAssertion = nullptr;
-    RELEASE_LOG(ProcessSuspension, "UIProcess DownloadProxyMap invalidated - Released 'WebKit downloads' assertions for UIProcess and NetworkProcess");
+    RELEASE_LOG(ProcessSuspension, "UIProcess DownloadProxyMap invalidated - Released 'CyberKit downloads' assertions for UIProcess and NetworkProcess");
 }
 
-} // namespace WebKit
+} // namespace CyberKit

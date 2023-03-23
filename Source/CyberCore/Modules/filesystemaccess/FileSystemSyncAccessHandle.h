@@ -35,7 +35,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemFileHandle;
 template<typename> class DOMPromiseDeferred;
@@ -75,4 +75,4 @@ private:
     uint64_t m_capacity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

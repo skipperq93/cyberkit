@@ -27,7 +27,7 @@
 
 #include <CyberScriptCore/ScriptFetchParameters.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ModuleFetchParameters : public JSC::ScriptFetchParameters {
 public:
@@ -51,4 +51,4 @@ private:
     bool m_isTopLevelModule;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

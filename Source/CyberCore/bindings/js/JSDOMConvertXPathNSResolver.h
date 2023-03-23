@@ -31,7 +31,7 @@
 #include "JSCustomXPathNSResolver.h"
 #include "JSXPathNSResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct Converter<IDLInterface<XPathNSResolver>> : DefaultConverter<IDLInterface<XPathNSResolver>> {
     template<typename ExceptionThrower = DefaultExceptionThrower>
@@ -52,4 +52,4 @@ template<> struct Converter<IDLInterface<XPathNSResolver>> : DefaultConverter<ID
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

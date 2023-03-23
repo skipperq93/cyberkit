@@ -30,7 +30,7 @@
 #include "LayoutIntegrationInlineContent.h"
 #include "TextBoxSelectableRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 class BoxModernPath {

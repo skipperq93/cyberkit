@@ -33,11 +33,11 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbortAlgorithm;
 class ScriptExecutionContext;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class AbortSignal final : public RefCounted<AbortSignal>, public EventTarget, private ContextDestructionObserver {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(AbortSignal, WEBCORE_EXPORT);
@@ -93,7 +93,7 @@ private:
     bool m_hasAbortEventListener { false };
 };
 
-WebCoreOpaqueRoot root(AbortSignal*);
+CyberCoreOpaqueRoot root(AbortSignal*);
 
-} // namespace WebCore
+} // namespace CyberCore
 

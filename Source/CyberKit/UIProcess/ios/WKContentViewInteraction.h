@@ -103,7 +103,7 @@ struct DragItem;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 class InputViewUpdateDeferrer;
 class NativeWebTouchEvent;
 class SmartMagnificationController;
@@ -153,8 +153,8 @@ typedef void (^UIWKDictationContextHandler)(NSString *selectedText, NSString *be
 typedef void (^UIWKSelectionCompletionHandler)(void);
 typedef void (^UIWKSelectionWithDirectionCompletionHandler)(BOOL selectionEndIsMoving);
 
-typedef BlockPtr<void(WebKit::InteractionInformationAtPosition)> InteractionInformationCallback;
-typedef std::pair<WebKit::InteractionInformationRequest, InteractionInformationCallback> InteractionInformationRequestAndCallback;
+typedef BlockPtr<void(CyberKit::InteractionInformationAtPosition)> InteractionInformationCallback;
+typedef std::pair<CyberKit::InteractionInformationRequest, InteractionInformationCallback> InteractionInformationRequestAndCallback;
 
 #if ENABLE(IMAGE_ANALYSIS)
 #define FOR_EACH_INSERT_TEXT_FROM_CAMERA_WKCONTENTVIEW_ACTION(M) \
@@ -225,7 +225,7 @@ typedef std::pair<WebKit::InteractionInformationRequest, InteractionInformationC
     M(_pasteAsQuotation) \
     M(_pasteAndMatchStyle)
 
-namespace WebKit {
+namespace CyberKit {
 
 enum SuppressSelectionAssistantReason : uint8_t {
     EditableRootIsTransparentOrFullyClipped = 1 << 0,
@@ -274,7 +274,7 @@ struct ImageAnalysisContextMenuActionData {
     RetainPtr<UIMenu> machineReadableCodeMenu;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @class WKFocusedElementInfo;
 @protocol UIMenuBuilder;
@@ -300,7 +300,7 @@ struct ImageAnalysisContextMenuActionData {
 #if ENABLE(IMAGE_ANALYSIS)
     RetainPtr<WKDeferringGestureRecognizer> _imageAnalysisDeferringGestureRecognizer;
 #endif
-    std::unique_ptr<WebKit::GestureRecognizerConsistencyEnforcer> _gestureRecognizerConsistencyEnforcer;
+    std::unique_ptr<CyberKit::GestureRecognizerConsistencyEnforcer> _gestureRecognizerConsistencyEnforcer;
     RetainPtr<UIWebTouchEventsGestureRecognizer> _touchEventGestureRecognizer;
 
     BOOL _touchEventsCanPreventNativeGestures;
@@ -342,11 +342,11 @@ struct ImageAnalysisContextMenuActionData {
 #if HAVE(UI_POINTER_INTERACTION)
     RetainPtr<UIPointerInteraction> _pointerInteraction;
     BOOL _hasOutstandingPointerInteractionRequest;
-    std::optional<std::pair<WebKit::InteractionInformationRequest, BlockPtr<void(UIPointerRegion *)>>> _deferredPointerInteractionRequest;
+    std::optional<std::pair<CyberKit::InteractionInformationRequest, BlockPtr<void(UIPointerRegion *)>>> _deferredPointerInteractionRequest;
 #endif
 
     RetainPtr<UIWKTextInteractionAssistant> _textInteractionAssistant;
-    OptionSet<WebKit::SuppressSelectionAssistantReason> _suppressSelectionAssistantReasons;
+    OptionSet<CyberKit::SuppressSelectionAssistantReason> _suppressSelectionAssistantReasons;
 
     RetainPtr<UITextInputTraits> _traits;
     RetainPtr<UIWebFormAccessory> _formAccessoryView;
@@ -364,7 +364,7 @@ struct ImageAnalysisContextMenuActionData {
 #endif
     RetainPtr<WKFormInputSession> _formInputSession;
     RetainPtr<WKFileUploadPanel> _fileUploadPanel;
-    WebKit::FrameInfoData _frameInfoForFileUploadPanel;
+    CyberKit::FrameInfoData _frameInfoForFileUploadPanel;
 #if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
     RetainPtr<WKShareSheet> _shareSheet;
 #endif
@@ -396,11 +396,11 @@ struct ImageAnalysisContextMenuActionData {
     RetainPtr<UITargetedPreview> _contextMenuInteractionTargetedPreview;
 #endif
 
-    std::unique_ptr<WebKit::SmartMagnificationController> _smartMagnificationController;
+    std::unique_ptr<CyberKit::SmartMagnificationController> _smartMagnificationController;
 
     WeakObjCPtr<id <UITextInputDelegate>> _inputDelegate;
 
-    WebKit::TapIdentifier _latestTapID;
+    CyberKit::TapIdentifier _latestTapID;
     struct TapHighlightInformation {
         BOOL nodeHasBuiltInClickHandling { false };
         CyberCore::Color color;
@@ -412,25 +412,25 @@ struct ImageAnalysisContextMenuActionData {
     };
     TapHighlightInformation _tapHighlightInformation;
 
-    WebKit::WebAutocorrectionContext _lastAutocorrectionContext;
-    WebKit::WKAutoCorrectionData _autocorrectionData;
-    WebKit::InteractionInformationAtPosition _positionInformation;
-    WebKit::FocusedElementInformation _focusedElementInformation;
+    CyberKit::WebAutocorrectionContext _lastAutocorrectionContext;
+    CyberKit::WKAutoCorrectionData _autocorrectionData;
+    CyberKit::InteractionInformationAtPosition _positionInformation;
+    CyberKit::FocusedElementInformation _focusedElementInformation;
     RetainPtr<NSObject<WKFormPeripheral>> _inputPeripheral;
     BlockPtr<void(::WebEvent *, BOOL)> _keyWebEventHandler;
 
     CGPoint _lastInteractionLocation;
-    WebKit::TransactionID _layerTreeTransactionIdAtLastInteractionStart;
+    CyberKit::TransactionID _layerTreeTransactionIdAtLastInteractionStart;
 
-    WebKit::WKSelectionDrawingInfo _lastSelectionDrawingInfo;
+    CyberKit::WKSelectionDrawingInfo _lastSelectionDrawingInfo;
     RetainPtr<WKTextRange> _cachedSelectedTextRange;
 
-    std::optional<WebKit::InteractionInformationRequest> _lastOutstandingPositionInformationRequest;
+    std::optional<CyberKit::InteractionInformationRequest> _lastOutstandingPositionInformationRequest;
 
     uint64_t _positionInformationCallbackDepth;
     Vector<std::optional<InteractionInformationRequestAndCallback>> _pendingPositionInformationHandlers;
     
-    std::unique_ptr<WebKit::InputViewUpdateDeferrer> _inputViewUpdateDeferrer;
+    std::unique_ptr<CyberKit::InputViewUpdateDeferrer> _inputViewUpdateDeferrer;
 
     RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
 
@@ -442,7 +442,7 @@ struct ImageAnalysisContextMenuActionData {
     WeakObjCPtr<WKDataListSuggestionsControl> _dataListSuggestionsControl;
 #endif
 
-    RefPtr<WebKit::RevealFocusedElementDeferrer> _revealFocusedElementDeferrer;
+    RefPtr<CyberKit::RevealFocusedElementDeferrer> _revealFocusedElementDeferrer;
 
     BOOL _isEditable;
     BOOL _showingTextStyleOptions;
@@ -505,7 +505,7 @@ struct ImageAnalysisContextMenuActionData {
     unsigned _selectionChangeNestingLevel;
 
 #if ENABLE(DRAG_SUPPORT)
-    WebKit::DragDropInteractionState _dragDropInteractionState;
+    CyberKit::DragDropInteractionState _dragDropInteractionState;
     RetainPtr<UIDragInteraction> _dragInteraction;
     RetainPtr<UIDropInteraction> _dropInteraction;
     BOOL _isAnimatingDragCancel;
@@ -529,15 +529,15 @@ struct ImageAnalysisContextMenuActionData {
 #endif // HAVE(PEPPER_UI_CORE)
 
 #if ENABLE(PLATFORM_DRIVEN_TEXT_CHECKING)
-    std::unique_ptr<WebKit::TextCheckingController> _textCheckingController;
+    std::unique_ptr<CyberKit::TextCheckingController> _textCheckingController;
 #endif
 
 #if ENABLE(IMAGE_ANALYSIS)
     RetainPtr<WKImageAnalysisGestureRecognizer> _imageAnalysisGestureRecognizer;
     RetainPtr<UILongPressGestureRecognizer> _imageAnalysisTimeoutGestureRecognizer;
-    std::optional<WebKit::ImageAnalysisRequestIdentifier> _pendingImageAnalysisRequestIdentifier;
+    std::optional<CyberKit::ImageAnalysisRequestIdentifier> _pendingImageAnalysisRequestIdentifier;
     std::optional<CyberCore::ElementContext> _elementPendingImageAnalysis;
-    Vector<BlockPtr<void(WebKit::ProceedWithTextSelectionInImage)>> _actionsToPerformAfterPendingImageAnalysis;
+    Vector<BlockPtr<void(CyberKit::ProceedWithTextSelectionInImage)>> _actionsToPerformAfterPendingImageAnalysis;
 #if USE(UICONTEXTMENU)
     BOOL _contextMenuWasTriggeredByImageAnalysisTimeout;
 #endif // USE(UICONTEXTMENU)
@@ -551,14 +551,14 @@ struct ImageAnalysisContextMenuActionData {
     CGRect _visualSearchPreviewImageBounds;
 #endif // USE(QUICK_LOOK)
     BOOL _waitingForDynamicImageAnalysisContextMenuActions;
-    std::optional<WebKit::ImageAnalysisContextMenuActionData> _imageAnalysisContextMenuActionData;
+    std::optional<CyberKit::ImageAnalysisContextMenuActionData> _imageAnalysisContextMenuActionData;
 #endif // ENABLE(IMAGE_ANALYSIS)
     uint32_t _fullscreenVideoImageAnalysisRequestIdentifier;
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
     RetainPtr<VKCImageAnalysisInteraction> _imageAnalysisInteraction;
     RetainPtr<NSMutableSet<UIButton *>> _imageAnalysisActionButtons;
     CyberCore::FloatRect _imageAnalysisInteractionBounds;
-    std::optional<WebKit::RemoveBackgroundData> _removeBackgroundData;
+    std::optional<CyberKit::RemoveBackgroundData> _removeBackgroundData;
 #endif
 }
 
@@ -584,9 +584,9 @@ struct ImageAnalysisContextMenuActionData {
 @property (nonatomic, readonly) BOOL isEditable;
 @property (nonatomic, readonly) BOOL shouldHideSelectionWhenScrolling;
 @property (nonatomic, readonly) BOOL shouldIgnoreKeyboardWillHideNotification;
-@property (nonatomic, readonly) const WebKit::InteractionInformationAtPosition& positionInformation;
-@property (nonatomic, readonly) const WebKit::WKAutoCorrectionData& autocorrectionData;
-@property (nonatomic, readonly) const WebKit::FocusedElementInformation& focusedElementInformation;
+@property (nonatomic, readonly) const CyberKit::InteractionInformationAtPosition& positionInformation;
+@property (nonatomic, readonly) const CyberKit::WKAutoCorrectionData& autocorrectionData;
+@property (nonatomic, readonly) const CyberKit::FocusedElementInformation& focusedElementInformation;
 @property (nonatomic, readonly) UIWebFormAccessory *formAccessoryView;
 @property (nonatomic, readonly) UITextInputAssistantItem *inputAssistantItemForWebView;
 @property (nonatomic, readonly) UIView *inputViewForWebView;
@@ -596,7 +596,7 @@ struct ImageAnalysisContextMenuActionData {
 @property (nonatomic, readonly) BOOL preventsPanningInYAxis;
 @property (nonatomic, readonly) UIWebTouchEventsGestureRecognizer *touchEventGestureRecognizer;
 @property (nonatomic, readonly) NSArray<WKDeferringGestureRecognizer *> *deferringGestures;
-@property (nonatomic, readonly) WebKit::GestureRecognizerConsistencyEnforcer& gestureRecognizerConsistencyEnforcer;
+@property (nonatomic, readonly) CyberKit::GestureRecognizerConsistencyEnforcer& gestureRecognizerConsistencyEnforcer;
 @property (nonatomic, readonly) CGRect tapHighlightViewRect;
 @property (nonatomic, readonly) UIGestureRecognizer *imageAnalysisGestureRecognizer;
 
@@ -621,8 +621,8 @@ struct ImageAnalysisContextMenuActionData {
 
 - (void)_selectPositionAtPoint:(CGPoint)point stayingWithinFocusedElement:(BOOL)stayingWithinFocusedElement completionHandler:(void (^)(void))completionHandler;
 
-- (void)_startSuppressingSelectionAssistantForReason:(WebKit::SuppressSelectionAssistantReason)reason;
-- (void)_stopSuppressingSelectionAssistantForReason:(WebKit::SuppressSelectionAssistantReason)reason;
+- (void)_startSuppressingSelectionAssistantForReason:(CyberKit::SuppressSelectionAssistantReason)reason;
+- (void)_stopSuppressingSelectionAssistantForReason:(CyberKit::SuppressSelectionAssistantReason)reason;
 
 - (BOOL)_hasFocusedElement;
 - (void)_zoomToRevealFocusedElement;
@@ -644,7 +644,7 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (void)_setTextColorForWebView:(UIColor *)color sender:(id)sender;
 
 #if ENABLE(TOUCH_EVENTS)
-- (void)_webTouchEvent:(const WebKit::NativeWebTouchEvent&)touchEvent preventsNativeGestures:(BOOL)preventsDefault;
+- (void)_webTouchEvent:(const CyberKit::NativeWebTouchEvent&)touchEvent preventsNativeGestures:(BOOL)preventsDefault;
 #endif
 #if ENABLE(IOS_TOUCH_EVENTS)
 - (void)_doneDeferringTouchStart:(BOOL)preventNativeGestures;
@@ -655,12 +655,12 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (void)_didNotHandleTapAsClick:(const CyberCore::IntPoint&)point;
 - (void)_didCompleteSyntheticClick;
 
-- (void)_didGetTapHighlightForRequest:(WebKit::TapIdentifier)requestID color:(const CyberCore::Color&)color quads:(const Vector<CyberCore::FloatQuad>&)highlightedQuads topLeftRadius:(const CyberCore::IntSize&)topLeftRadius topRightRadius:(const CyberCore::IntSize&)topRightRadius bottomLeftRadius:(const CyberCore::IntSize&)bottomLeftRadius bottomRightRadius:(const CyberCore::IntSize&)bottomRightRadius nodeHasBuiltInClickHandling:(BOOL)nodeHasBuiltInClickHandling;
+- (void)_didGetTapHighlightForRequest:(CyberKit::TapIdentifier)requestID color:(const CyberCore::Color&)color quads:(const Vector<CyberCore::FloatQuad>&)highlightedQuads topLeftRadius:(const CyberCore::IntSize&)topLeftRadius topRightRadius:(const CyberCore::IntSize&)topRightRadius bottomLeftRadius:(const CyberCore::IntSize&)bottomLeftRadius bottomRightRadius:(const CyberCore::IntSize&)bottomRightRadius nodeHasBuiltInClickHandling:(BOOL)nodeHasBuiltInClickHandling;
 
 - (BOOL)_mayDisableDoubleTapGesturesDuringSingleTap;
-- (void)_disableDoubleTapGesturesDuringTapIfNecessary:(WebKit::TapIdentifier)requestID;
-- (void)_handleSmartMagnificationInformationForPotentialTap:(WebKit::TapIdentifier)requestID renderRect:(const CyberCore::FloatRect&)renderRect fitEntireRect:(BOOL)fitEntireRect viewportMinimumScale:(double)viewportMinimumScale viewportMaximumScale:(double)viewportMaximumScale nodeIsRootLevel:(BOOL)nodeIsRootLevel;
-- (void)_elementDidFocus:(const WebKit::FocusedElementInformation&)information userIsInteracting:(BOOL)userIsInteracting blurPreviousNode:(BOOL)blurPreviousNode activityStateChanges:(OptionSet<CyberCore::ActivityState::Flag>)activityStateChanges userObject:(NSObject <NSSecureCoding> *)userObject;
+- (void)_disableDoubleTapGesturesDuringTapIfNecessary:(CyberKit::TapIdentifier)requestID;
+- (void)_handleSmartMagnificationInformationForPotentialTap:(CyberKit::TapIdentifier)requestID renderRect:(const CyberCore::FloatRect&)renderRect fitEntireRect:(BOOL)fitEntireRect viewportMinimumScale:(double)viewportMinimumScale viewportMaximumScale:(double)viewportMaximumScale nodeIsRootLevel:(BOOL)nodeIsRootLevel;
+- (void)_elementDidFocus:(const CyberKit::FocusedElementInformation&)information userIsInteracting:(BOOL)userIsInteracting blurPreviousNode:(BOOL)blurPreviousNode activityStateChanges:(OptionSet<CyberCore::ActivityState::Flag>)activityStateChanges userObject:(NSObject <NSSecureCoding> *)userObject;
 - (void)_updateInputContextAfterBlurringAndRefocusingElement;
 - (void)_elementDidBlur;
 - (void)_didUpdateInputMode:(CyberCore::InputMode)mode;
@@ -669,8 +669,8 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (void)_selectionChanged;
 - (void)_updateChangedSelection;
 - (BOOL)_interpretKeyEvent:(::WebEvent *)theEvent isCharEvent:(BOOL)isCharEvent;
-- (void)_positionInformationDidChange:(const WebKit::InteractionInformationAtPosition&)info;
-- (BOOL)_currentPositionInformationIsValidForRequest:(const WebKit::InteractionInformationRequest&)request;
+- (void)_positionInformationDidChange:(const CyberKit::InteractionInformationAtPosition&)info;
+- (BOOL)_currentPositionInformationIsValidForRequest:(const CyberKit::InteractionInformationRequest&)request;
 - (void)_attemptSyntheticClickAtLocation:(CGPoint)location modifierFlags:(UIKeyModifierFlags)modifierFlags;
 - (void)_willStartScrollingOrZooming;
 - (void)_didScroll;
@@ -678,13 +678,13 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (void)_scrollingNodeScrollingWillBegin:(CyberCore::ScrollingNodeID)nodeID;
 - (void)_scrollingNodeScrollingDidEnd:(CyberCore::ScrollingNodeID)nodeID;
 - (void)_showPlaybackTargetPicker:(BOOL)hasVideo fromRect:(const CyberCore::IntRect&)elementRect routeSharingPolicy:(CyberCore::RouteSharingPolicy)policy routingContextUID:(NSString *)contextUID;
-- (void)_showRunOpenPanel:(API::OpenPanelParameters*)parameters frameInfo:(const WebKit::FrameInfoData&)frameInfo resultListener:(WebKit::WebOpenPanelResultListenerProxy*)listener;
+- (void)_showRunOpenPanel:(API::OpenPanelParameters*)parameters frameInfo:(const CyberKit::FrameInfoData&)frameInfo resultListener:(CyberKit::WebOpenPanelResultListenerProxy*)listener;
 - (void)_showShareSheet:(const CyberCore::ShareDataWithParsedURL&)shareData inRect:(std::optional<CyberCore::FloatRect>)rect completionHandler:(WTF::CompletionHandler<void(bool)>&&)completionHandler;
 - (void)_showContactPicker:(const CyberCore::ContactsRequestData&)requestData completionHandler:(WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&&)completionHandler;
 - (NSArray<NSString *> *)filePickerAcceptedTypeIdentifiers;
 - (void)dismissFilePicker;
 - (void)_didHandleKeyEvent:(::WebEvent *)event eventWasHandled:(BOOL)eventWasHandled;
-- (Vector<WebKit::OptionItem>&) focusedSelectElementOptions;
+- (Vector<CyberKit::OptionItem>&) focusedSelectElementOptions;
 - (void)_enableInspectorNodeSearch;
 - (void)_disableInspectorNodeSearch;
 - (void)_becomeFirstResponderWithSelectionMovingForward:(BOOL)selectingForward completionHandler:(void (^)(BOOL didBecomeFirstResponder))completionHandler;
@@ -701,13 +701,13 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (void)_accessibilityClearSelection;
 - (WKFormInputSession *)_formInputSession;
 - (void)_didChangeWebViewEditability;
-- (NSDictionary *)dataDetectionContextForPositionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation;
-- (void)_showDataDetectorsUIForPositionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation;
+- (NSDictionary *)dataDetectionContextForPositionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation;
+- (void)_showDataDetectorsUIForPositionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation;
 
 - (void)willFinishIgnoringCalloutBarFadeAfterPerformingAction;
 
 - (BOOL)hasHiddenContentEditable;
-- (void)generateSyntheticEditingCommand:(WebKit::SyntheticEditingCommandType)command;
+- (void)generateSyntheticEditingCommand:(CyberKit::SyntheticEditingCommandType)command;
 
 - (NSString *)inputLabelText;
 
@@ -725,8 +725,8 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 
 - (void)_requestDOMPasteAccessForCategory:(CyberCore::DOMPasteAccessCategory)pasteAccessCategory elementRect:(const CyberCore::IntRect&)elementRect originIdentifier:(const String&)originIdentifier completionHandler:(CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&&)completionHandler;
 
-- (void)doAfterPositionInformationUpdate:(void (^)(WebKit::InteractionInformationAtPosition))action forRequest:(WebKit::InteractionInformationRequest)request;
-- (BOOL)ensurePositionInformationIsUpToDate:(WebKit::InteractionInformationRequest)request;
+- (void)doAfterPositionInformationUpdate:(void (^)(CyberKit::InteractionInformationAtPosition))action forRequest:(CyberKit::InteractionInformationRequest)request;
+- (BOOL)ensurePositionInformationIsUpToDate:(CyberKit::InteractionInformationRequest)request;
 
 - (void)doAfterEditorStateUpdateAfterFocusingElement:(dispatch_block_t)block;
 - (void)runModalJavaScriptDialog:(CompletionHandler<void()>&&)callback;
@@ -758,7 +758,7 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (void)_willBeginTextInteractionInTextInputContext:(_WKTextInputContext *)context;
 - (void)_didFinishTextInteractionInTextInputContext:(_WKTextInputContext *)context;
 
-- (void)_handleAutocorrectionContext:(const WebKit::WebAutocorrectionContext&)context;
+- (void)_handleAutocorrectionContext:(const CyberKit::WebAutocorrectionContext&)context;
 
 - (void)_didStartProvisionalLoadForMainFrame;
 - (void)_didCommitLoadForMainFrame;
@@ -806,11 +806,11 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (BOOL)_formControlRefreshEnabled;
 #endif
 
-- (CyberCore::DataOwnerType)_dataOwnerForPasteboard:(WebKit::PasteboardAccessIntent)intent;
+- (CyberCore::DataOwnerType)_dataOwnerForPasteboard:(CyberKit::PasteboardAccessIntent)intent;
 
 #if ENABLE(IMAGE_ANALYSIS)
-- (void)_endImageAnalysisGestureDeferral:(WebKit::ShouldPreventGestures)shouldPreventGestures;
-- (void)requestTextRecognition:(NSURL *)imageURL imageData:(const WebKit::ShareableBitmapHandle&)imageData sourceLanguageIdentifier:(NSString *)sourceLanguageIdentifier targetLanguageIdentifier:(NSString *)targetLanguageIdentifier completionHandler:(CompletionHandler<void(CyberCore::TextRecognitionResult&&)>&&)completion;
+- (void)_endImageAnalysisGestureDeferral:(CyberKit::ShouldPreventGestures)shouldPreventGestures;
+- (void)requestTextRecognition:(NSURL *)imageURL imageData:(const CyberKit::ShareableBitmapHandle&)imageData sourceLanguageIdentifier:(NSString *)sourceLanguageIdentifier targetLanguageIdentifier:(NSString *)targetLanguageIdentifier completionHandler:(CompletionHandler<void(CyberCore::TextRecognitionResult&&)>&&)completion;
 #endif
 
 #if HAVE(UIFINDINTERACTION)
@@ -822,11 +822,11 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(DECLARE_WKCONTENTVIEW_ACTION_FOR_WEB_VIEW)
 - (void)requestRectForFoundTextRange:(UITextRange *)range completionHandler:(void (^)(CGRect))completionHandler;
 #endif
 
-- (void)beginTextRecognitionForFullscreenVideo:(const WebKit::ShareableBitmapHandle&)imageHandle playerViewController:(AVPlayerViewController *)playerViewController;
+- (void)beginTextRecognitionForFullscreenVideo:(const CyberKit::ShareableBitmapHandle&)imageHandle playerViewController:(AVPlayerViewController *)playerViewController;
 - (void)cancelTextRecognitionForFullscreenVideo:(AVPlayerViewController *)controller;
 @property (nonatomic, readonly) BOOL isTextRecognitionInFullscreenVideoEnabled;
 
-- (void)beginTextRecognitionForVideoInElementFullscreen:(const WebKit::ShareableBitmapHandle&)bitmapHandle bounds:(CyberCore::FloatRect)bounds;
+- (void)beginTextRecognitionForVideoInElementFullscreen:(const CyberKit::ShareableBitmapHandle&)bitmapHandle bounds:(CyberCore::FloatRect)bounds;
 - (void)cancelTextRecognitionForVideoInElementFullscreen;
 
 @end

@@ -24,7 +24,7 @@
 
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline GStreamerRtpReceiverTransformBackend::MediaType mediaTypeFromReceiver(const GstWebRTCRTPReceiver&)
 {
@@ -54,6 +54,6 @@ void GStreamerRtpReceiverTransformBackend::requestKeyFrame()
     notImplemented();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

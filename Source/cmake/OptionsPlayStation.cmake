@@ -288,7 +288,7 @@ if (ENABLE_MINIBROWSER)
     endif ()
 endif ()
 
-# Create a shared JavaScriptCore with WTF and bmalloc exposed through it.
+# Create a shared CyberScriptCore with WTF and bmalloc exposed through it.
 #
 # Use OBJECT libraries for bmalloc and WTF. This is the modern CMake way to emulate
 # the behavior of --whole-archive. If this is not done then all the exports will
@@ -297,9 +297,9 @@ set(bmalloc_LIBRARY_TYPE OBJECT)
 set(WTF_LIBRARY_TYPE OBJECT)
 
 if (ENABLE_STATIC_JSC)
-    set(JavaScriptCore_LIBRARY_TYPE OBJECT)
+    set(CyberScriptCore_LIBRARY_TYPE OBJECT)
 else ()
-    set(JavaScriptCore_LIBRARY_TYPE SHARED)
+    set(CyberScriptCore_LIBRARY_TYPE SHARED)
 endif ()
 
 # Create a shared CyberKit

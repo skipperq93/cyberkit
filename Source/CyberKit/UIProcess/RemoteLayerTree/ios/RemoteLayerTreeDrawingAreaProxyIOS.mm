@@ -34,7 +34,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 
 @interface WKDisplayLinkHandler : NSObject {
-    WebKit::RemoteLayerTreeDrawingAreaProxy* _drawingAreaProxy;
+    CyberKit::RemoteLayerTreeDrawingAreaProxy* _drawingAreaProxy;
     CADisplayLink *_displayLink;
 #if ENABLE(TIMER_DRIVEN_DISPLAY_REFRESH_FOR_TESTING)
     RetainPtr<NSTimer> _updateTimer;
@@ -42,7 +42,7 @@
 #endif
 }
 
-- (id)initWithDrawingAreaProxy:(WebKit::RemoteLayerTreeDrawingAreaProxy*)drawingAreaProxy;
+- (id)initWithDrawingAreaProxy:(CyberKit::RemoteLayerTreeDrawingAreaProxy*)drawingAreaProxy;
 - (void)setPreferredFramesPerSecond:(NSInteger)preferredFramesPerSecond;
 - (void)displayLinkFired:(CADisplayLink *)sender;
 - (void)invalidate;
@@ -52,7 +52,7 @@
 
 @implementation WKDisplayLinkHandler
 
-- (id)initWithDrawingAreaProxy:(WebKit::RemoteLayerTreeDrawingAreaProxy*)drawingAreaProxy
+- (id)initWithDrawingAreaProxy:(CyberKit::RemoteLayerTreeDrawingAreaProxy*)drawingAreaProxy
 {
     if (self = [super init]) {
         _drawingAreaProxy = drawingAreaProxy;
@@ -148,7 +148,7 @@
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace IPC;
 using namespace CyberCore;
 
@@ -194,6 +194,6 @@ void RemoteLayerTreeDrawingAreaProxyIOS::pauseDisplayRefreshCallbacks()
     [displayLinkHandler() pause];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

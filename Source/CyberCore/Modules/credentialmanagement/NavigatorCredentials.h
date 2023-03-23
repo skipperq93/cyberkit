@@ -32,7 +32,7 @@
 #include "Supplementable.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WeakPtrImplWithEventTargetData;
 class Navigator;
@@ -54,6 +54,6 @@ private:
     RefPtr<CredentialsContainer> m_credentialsContainer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

@@ -8,7 +8,7 @@ sys.stdout.write(
     '<!DOCTYPE html>\n'
     '<html>\n'
     '<head>\n'
-    '<meta http-equiv="X-WebKit-CSP" content="script-src \'nonce-dummy\' \'nonce-dump-as-text\'">\n'
+    '<meta http-equiv="X-CyberKit-CSP" content="script-src \'nonce-dummy\' \'nonce-dump-as-text\'">\n'
     '<script nonce="dump-as-text">\n'
     'if (window.testRunner)\n'
     '    testRunner.dumpAsText();\n'

@@ -33,7 +33,7 @@
 
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<String> BufferedLineReader::nextLine()
 {
@@ -101,4 +101,4 @@ std::optional<String> BufferedLineReader::nextLine()
     return std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

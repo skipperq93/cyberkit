@@ -31,7 +31,7 @@
 #import <pal/spi/mac/NSTextInputContextSPI.h>
 #import <pal/spi/mac/NSUndoManagerSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 bool shouldRegisterInsertionUndoGroup(NSAttributedString *string)
 {

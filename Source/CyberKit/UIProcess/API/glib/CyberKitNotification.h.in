@@ -19,23 +19,23 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitNotification_h
-#define WebKitNotification_h
+#ifndef CyberKitNotification_h
+#define CyberKitNotification_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_NOTIFICATION            (webkit_notification_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_NOTIFICATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_NOTIFICATION, WebKitNotification))
+#define WEBKIT_NOTIFICATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_NOTIFICATION, CyberKitNotification))
 #define WEBKIT_IS_NOTIFICATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_NOTIFICATION))
-#define WEBKIT_NOTIFICATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_NOTIFICATION, WebKitNotificationClass))
+#define WEBKIT_NOTIFICATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_NOTIFICATION, CyberKitNotificationClass))
 #define WEBKIT_IS_NOTIFICATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_NOTIFICATION))
-#define WEBKIT_NOTIFICATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_NOTIFICATION, WebKitNotificationClass))
+#define WEBKIT_NOTIFICATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_NOTIFICATION, CyberKitNotificationClass))
 
-struct _WebKitNotificationClass {
+struct _CyberKitNotificationClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -48,25 +48,25 @@ struct _WebKitNotificationClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitNotification, webkit_notification, WEBKIT, NOTIFICATION, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitNotification, webkit_notification, WEBKIT, NOTIFICATION, GObject)
 
 WEBKIT_API guint64
-webkit_notification_get_id                   (WebKitNotification *notification);
+webkit_notification_get_id                   (CyberKitNotification *notification);
 
 WEBKIT_API const gchar *
-webkit_notification_get_title                (WebKitNotification *notification);
+webkit_notification_get_title                (CyberKitNotification *notification);
 
 WEBKIT_API const gchar *
-webkit_notification_get_body                 (WebKitNotification *notification);
+webkit_notification_get_body                 (CyberKitNotification *notification);
 
 WEBKIT_API const gchar *
-webkit_notification_get_tag                  (WebKitNotification *notification);
+webkit_notification_get_tag                  (CyberKitNotification *notification);
 
 WEBKIT_API void
-webkit_notification_close                    (WebKitNotification *notification);
+webkit_notification_close                    (CyberKitNotification *notification);
 
 WEBKIT_API void
-webkit_notification_clicked                  (WebKitNotification *notification);
+webkit_notification_clicked                  (CyberKitNotification *notification);
 
 G_END_DECLS
 

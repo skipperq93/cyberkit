@@ -31,7 +31,7 @@
 #include "RenderStyle.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<CSSPrimitiveValue> createCSSValue(GlyphOrientation orientation)
 {

@@ -19,45 +19,45 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitApplicationInfo_h
-#define WebKitApplicationInfo_h
+#ifndef CyberKitApplicationInfo_h
+#define CyberKitApplicationInfo_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_APPLICATION_INFO (webkit_application_info_get_type())
 
-typedef struct _WebKitApplicationInfo WebKitApplicationInfo;
+typedef struct _CyberKitApplicationInfo CyberKitApplicationInfo;
 
 
 WEBKIT_API GType
 webkit_application_info_get_type    (void);
 
-WEBKIT_API WebKitApplicationInfo *
+WEBKIT_API CyberKitApplicationInfo *
 webkit_application_info_new         (void);
 
-WEBKIT_API WebKitApplicationInfo *
-webkit_application_info_ref         (WebKitApplicationInfo *info);
+WEBKIT_API CyberKitApplicationInfo *
+webkit_application_info_ref         (CyberKitApplicationInfo *info);
 
 WEBKIT_API void
-webkit_application_info_unref       (WebKitApplicationInfo *info);
+webkit_application_info_unref       (CyberKitApplicationInfo *info);
 
 WEBKIT_API void
-webkit_application_info_set_name    (WebKitApplicationInfo *info,
+webkit_application_info_set_name    (CyberKitApplicationInfo *info,
                                      const gchar           *name);
 WEBKIT_API const gchar *
-webkit_application_info_get_name    (WebKitApplicationInfo *info);
+webkit_application_info_get_name    (CyberKitApplicationInfo *info);
 
 WEBKIT_API void
-webkit_application_info_set_version (WebKitApplicationInfo *info,
+webkit_application_info_set_version (CyberKitApplicationInfo *info,
                                      guint64                major,
                                      guint64                minor,
                                      guint64                micro);
 
 WEBKIT_API void
-webkit_application_info_get_version (WebKitApplicationInfo *info,
+webkit_application_info_get_version (CyberKitApplicationInfo *info,
                                      guint64               *major,
                                      guint64               *minor,
                                      guint64               *micro);

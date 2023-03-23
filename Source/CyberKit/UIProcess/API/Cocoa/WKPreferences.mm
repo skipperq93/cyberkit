@@ -43,7 +43,7 @@
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebPreferences>(self, String(), "WebKit"_s, "WebKitDebug"_s);
+    API::Object::constructInWrapper<CyberKit::WebPreferences>(self, String(), "CyberKit"_s, "CyberKitDebug"_s);
     return self;
 }
 
@@ -539,13 +539,13 @@ static _WKStorageBlockingPolicy toAPI(CyberCore::StorageBlockingPolicy policy)
 
 + (NSArray<_WKFeature *> *)_features
 {
-    auto features = WebKit::WebPreferences::features();
+    auto features = CyberKit::WebPreferences::features();
     return wrapper(API::Array::create(WTFMove(features)));
 }
 
 + (NSArray<_WKFeature *> *)_internalDebugFeatures
 {
-    auto features = WebKit::WebPreferences::internalDebugFeatures();
+    auto features = CyberKit::WebPreferences::internalDebugFeatures();
     return wrapper(API::Array::create(WTFMove(features)));
 }
 
@@ -561,7 +561,7 @@ static _WKStorageBlockingPolicy toAPI(CyberCore::StorageBlockingPolicy policy)
 
 + (NSArray<_WKExperimentalFeature *> *)_experimentalFeatures
 {
-    auto features = WebKit::WebPreferences::experimentalFeatures();
+    auto features = CyberKit::WebPreferences::experimentalFeatures();
     return wrapper(API::Array::create(WTFMove(features)));
 }
 

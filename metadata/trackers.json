@@ -11,14 +11,14 @@
         "redact" : {
             "product:Security": true
         }, "radar_importer": {
-            "name": "Radar WebKit Bug Importer",
+            "name": "Radar CyberKit Bug Importer",
             "emails": ["webkit-bug-importer@group.apple.com"],
             "username": "webkit-bug-importer@group.apple.com"
         }
     },
     {
         "type" : "radar",
-        "projects" : ["JavaScriptCore", "WebKit"],
+        "projects" : ["CyberScriptCore", "CyberKit"],
         "redact" : {
             "classification:Security": true,
             "tentpole:.*Security.*": true

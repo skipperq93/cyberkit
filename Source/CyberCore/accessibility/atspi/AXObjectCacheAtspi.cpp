@@ -31,7 +31,7 @@
 #include "Range.h"
 #include "TextIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void AXObjectCache::attachWrapper(AccessibilityObject* axObject)
 {
@@ -279,6 +279,6 @@ void AXObjectCache::handleScrolledToAnchor(const Node*)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

@@ -31,7 +31,7 @@
 #include "PaintWorkletGlobalScope.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBuffer;
 class RenderElement;

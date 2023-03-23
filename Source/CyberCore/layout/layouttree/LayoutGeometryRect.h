@@ -28,7 +28,7 @@
 #include "LayoutRect.h"
 #include "LayoutUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class Rect {

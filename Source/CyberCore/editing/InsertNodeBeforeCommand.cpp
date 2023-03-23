@@ -32,7 +32,7 @@
 #include "RenderElement.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 InsertNodeBeforeCommand::InsertNodeBeforeCommand(Ref<Node>&& insertChild, Node& refChild, ShouldAssumeContentIsAlwaysEditable shouldAssumeContentIsAlwaysEditable, EditAction editingAction)
     : SimpleEditCommand(refChild.document(), editingAction)

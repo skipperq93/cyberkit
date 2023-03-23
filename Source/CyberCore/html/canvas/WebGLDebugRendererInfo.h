@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLDebugRendererInfo final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLDebugRendererInfo);
@@ -43,4 +43,4 @@ public:
     ExtensionName getName() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

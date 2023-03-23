@@ -39,7 +39,7 @@
 #include "TextIterator.h"
 #include <stdio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr Seconds markerFadeAnimationDuration = 200_ms;
 constexpr double markerFadeAnimationFrameRate = 30;
@@ -771,11 +771,11 @@ void DocumentMarkerController::showMarkers() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showDocumentMarkers(const WebCore::DocumentMarkerController* controller)
+void showDocumentMarkers(const CyberCore::DocumentMarkerController* controller)
 {
     if (controller)
         controller->showMarkers();

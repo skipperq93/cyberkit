@@ -26,7 +26,7 @@
 #pragma once
 
 #include <atomic>
-namespace WebCore {
+namespace CyberCore {
 
 #define FAST_RETURN_IF_NO_FRONTENDS(value)                       \
     if (LIKELY(!InspectorInstrumentationPublic::hasFrontends())) \

@@ -18,24 +18,24 @@
  */
 
 #include "config.h"
-#include "WebKitCredential.h"
+#include "CyberKitCredential.h"
 
 #include "WebCredential.h"
-#include "WebKitCredentialPrivate.h"
+#include "CyberKitCredentialPrivate.h"
 #include <wtf/text/CString.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitCredential:
+ * CyberKitCredential:
  *
  * Groups information used for user authentication.
  *
  * Since: 2.2
  */
 
-struct _WebKitCredential {
-    _WebKitCredential(const CyberCore::Credential& coreCredential)
+struct _CyberKitCredential {
+    _CyberKitCredential(const CyberCore::Credential& coreCredential)
         : credential(coreCredential)
     {
     }
@@ -45,9 +45,9 @@ struct _WebKitCredential {
     CString password;
 };
 
-G_DEFINE_BOXED_TYPE(WebKitCredential, webkit_credential, webkit_credential_copy, webkit_credential_free)
+G_DEFINE_BOXED_TYPE(CyberKitCredential, webkit_credential, webkit_credential_copy, webkit_credential_free)
 
-static inline WebKitCredentialPersistence toWebKitCredentialPersistence(CyberCore::CredentialPersistence corePersistence)
+static inline CyberKitCredentialPersistence toCyberKitCredentialPersistence(CyberCore::CredentialPersistence corePersistence)
 {
     switch (corePersistence) {
     case CyberCore::CredentialPersistenceNone:
@@ -62,7 +62,7 @@ static inline WebKitCredentialPersistence toWebKitCredentialPersistence(CyberCor
     }
 }
 
-static inline CyberCore::CredentialPersistence toCyberCoreCredentialPersistence(WebKitCredentialPersistence kitPersistence)
+static inline CyberCore::CredentialPersistence toCyberCoreCredentialPersistence(CyberKitCredentialPersistence kitPersistence)
 {
     switch (kitPersistence) {
     case WEBKIT_CREDENTIAL_PERSISTENCE_NONE:
@@ -77,14 +77,14 @@ static inline CyberCore::CredentialPersistence toCyberCoreCredentialPersistence(
     }
 }
 
-WebKitCredential* webkitCredentialCreate(const CyberCore::Credential& coreCredential)
+CyberKitCredential* webkitCredentialCreate(const CyberCore::Credential& coreCredential)
 {
-    WebKitCredential* credential = static_cast<WebKitCredential*>(fastMalloc(sizeof(WebKitCredential)));
-    new (credential) WebKitCredential(coreCredential);
+    CyberKitCredential* credential = static_cast<CyberKitCredential*>(fastMalloc(sizeof(CyberKitCredential)));
+    new (credential) CyberKitCredential(coreCredential);
     return credential;
 }
 
-const CyberCore::Credential& webkitCredentialGetCredential(WebKitCredential* credential)
+const CyberCore::Credential& webkitCredentialGetCredential(CyberKitCredential* credential)
 {
     ASSERT(credential);
     return credential->credential;
@@ -94,15 +94,15 @@ const CyberCore::Credential& webkitCredentialGetCredential(WebKitCredential* cre
  * webkit_credential_new:
  * @username: The username for the new credential
  * @password: The password for the new credential
- * @persistence: The #WebKitCredentialPersistence of the new credential
+ * @persistence: The #CyberKitCredentialPersistence of the new credential
  *
  * Create a new credential from the provided username, password and persistence mode.
  *
- * Returns: (transfer full): A #WebKitCredential.
+ * Returns: (transfer full): A #CyberKitCredential.
  *
  * Since: 2.2
  */
-WebKitCredential* webkit_credential_new(const gchar* username, const gchar* password, WebKitCredentialPersistence persistence)
+CyberKitCredential* webkit_credential_new(const gchar* username, const gchar* password, CyberKitCredentialPersistence persistence)
 {
     g_return_val_if_fail(username, 0);
     g_return_val_if_fail(password, 0);
@@ -113,17 +113,17 @@ WebKitCredential* webkit_credential_new(const gchar* username, const gchar* pass
 /**
  * webkit_credential_new_for_certificate_pin:
  * @pin: The PIN for the new credential
- * @persistence: The #WebKitCredentialPersistence of the new credential
+ * @persistence: The #CyberKitCredentialPersistence of the new credential
  *
  * Create a new credential from the provided PIN and persistence mode.
  *
  * Note that %WEBKIT_CREDENTIAL_PERSISTENCE_PERMANENT is not supported for certificate pin credentials.
  *
- * Returns: (transfer full): A #WebKitCredential.
+ * Returns: (transfer full): A #CyberKitCredential.
  *
  * Since: 2.34
  */
-WebKitCredential* webkit_credential_new_for_certificate_pin(const gchar* pin, WebKitCredentialPersistence persistence)
+CyberKitCredential* webkit_credential_new_for_certificate_pin(const gchar* pin, CyberKitCredentialPersistence persistence)
 {
     g_return_val_if_fail(pin, 0);
 
@@ -138,17 +138,17 @@ WebKitCredential* webkit_credential_new_for_certificate_pin(const gchar* pin, We
 /**
  * webkit_credential_new_for_certificate:
  * @certificate: (nullable): The #GTlsCertificate, or %NULL
- * @persistence: The #WebKitCredentialPersistence of the new credential
+ * @persistence: The #CyberKitCredentialPersistence of the new credential
  *
  * Create a new credential from the @certificate and persistence mode.
  *
  * Note that %WEBKIT_CREDENTIAL_PERSISTENCE_PERMANENT is not supported for certificate credentials.
  *
- * Returns: (transfer full): A #WebKitCredential.
+ * Returns: (transfer full): A #CyberKitCredential.
  *
  * Since: 2.34
  */
-WebKitCredential* webkit_credential_new_for_certificate(GTlsCertificate* certificate, WebKitCredentialPersistence persistence)
+CyberKitCredential* webkit_credential_new_for_certificate(GTlsCertificate* certificate, CyberKitCredentialPersistence persistence)
 {
     g_return_val_if_fail(!certificate || G_IS_TLS_CERTIFICATE(certificate), nullptr);
 
@@ -162,15 +162,15 @@ WebKitCredential* webkit_credential_new_for_certificate(GTlsCertificate* certifi
 
 /**
  * webkit_credential_copy:
- * @credential: a #WebKitCredential
+ * @credential: a #CyberKitCredential
  *
- * Make a copy of the #WebKitCredential.
+ * Make a copy of the #CyberKitCredential.
  *
- * Returns: (transfer full): A copy of passed in #WebKitCredential
+ * Returns: (transfer full): A copy of passed in #CyberKitCredential
  *
  * Since: 2.2
  */
-WebKitCredential* webkit_credential_copy(WebKitCredential* credential)
+CyberKitCredential* webkit_credential_copy(CyberKitCredential* credential)
 {
     g_return_val_if_fail(credential, 0);
 
@@ -179,31 +179,31 @@ WebKitCredential* webkit_credential_copy(WebKitCredential* credential)
 
 /**
  * webkit_credential_free:
- * @credential: A #WebKitCredential
+ * @credential: A #CyberKitCredential
  *
- * Free the #WebKitCredential.
+ * Free the #CyberKitCredential.
  *
  * Since: 2.2
  */
-void webkit_credential_free(WebKitCredential* credential)
+void webkit_credential_free(CyberKitCredential* credential)
 {
     g_return_if_fail(credential);
 
-    credential->~WebKitCredential();
+    credential->~CyberKitCredential();
     fastFree(credential);
 }
 
 /**
  * webkit_credential_get_username:
- * @credential: a #WebKitCredential
+ * @credential: a #CyberKitCredential
  *
- * Get the username currently held by this #WebKitCredential.
+ * Get the username currently held by this #CyberKitCredential.
  *
- * Returns: The username stored in the #WebKitCredential.
+ * Returns: The username stored in the #CyberKitCredential.
  *
  * Since: 2.2
  */
-const gchar* webkit_credential_get_username(WebKitCredential* credential)
+const gchar* webkit_credential_get_username(CyberKitCredential* credential)
 {
     g_return_val_if_fail(credential, 0);
 
@@ -214,15 +214,15 @@ const gchar* webkit_credential_get_username(WebKitCredential* credential)
 
 /**
  * webkit_credential_get_password:
- * @credential: a #WebKitCredential
+ * @credential: a #CyberKitCredential
  *
- * Get the password currently held by this #WebKitCredential.
+ * Get the password currently held by this #CyberKitCredential.
  *
- * Returns: The password stored in the #WebKitCredential.
+ * Returns: The password stored in the #CyberKitCredential.
  *
  * Since: 2.2
  */
-const gchar* webkit_credential_get_password(WebKitCredential* credential)
+const gchar* webkit_credential_get_password(CyberKitCredential* credential)
 {
     g_return_val_if_fail(credential, 0);
 
@@ -233,7 +233,7 @@ const gchar* webkit_credential_get_password(WebKitCredential* credential)
 
 /**
  * webkit_credential_has_password:
- * @credential: a #WebKitCredential
+ * @credential: a #CyberKitCredential
  *
  * Determine whether this credential has a password stored.
  *
@@ -241,7 +241,7 @@ const gchar* webkit_credential_get_password(WebKitCredential* credential)
  *
  * Since: 2.2
  */
-gboolean webkit_credential_has_password(WebKitCredential* credential)
+gboolean webkit_credential_has_password(CyberKitCredential* credential)
 {
     g_return_val_if_fail(credential, FALSE);
 
@@ -250,15 +250,15 @@ gboolean webkit_credential_has_password(WebKitCredential* credential)
 
 /**
  * webkit_credential_get_certificate:
- * @credential: a #WebKitCredential
+ * @credential: a #CyberKitCredential
  *
- * Get the certificate currently held by this #WebKitCredential.
+ * Get the certificate currently held by this #CyberKitCredential.
  *
  * Returns: (transfer none): a #GTlsCertificate, or %NULL
  *
  * Since: 2.34
  */
-GTlsCertificate* webkit_credential_get_certificate(WebKitCredential* credential)
+GTlsCertificate* webkit_credential_get_certificate(CyberKitCredential* credential)
 {
     g_return_val_if_fail(credential, NULL);
 
@@ -267,17 +267,17 @@ GTlsCertificate* webkit_credential_get_certificate(WebKitCredential* credential)
 
 /**
  * webkit_credential_get_persistence:
- * @credential: a #WebKitCredential
+ * @credential: a #CyberKitCredential
  *
- * Get the persistence mode currently held by this #WebKitCredential.
+ * Get the persistence mode currently held by this #CyberKitCredential.
  *
- * Returns: The #WebKitCredentialPersistence stored in the #WebKitCredential.
+ * Returns: The #CyberKitCredentialPersistence stored in the #CyberKitCredential.
  *
  * Since: 2.2
  */
-WebKitCredentialPersistence webkit_credential_get_persistence(WebKitCredential* credential)
+CyberKitCredentialPersistence webkit_credential_get_persistence(CyberKitCredential* credential)
 {
     g_return_val_if_fail(credential, WEBKIT_CREDENTIAL_PERSISTENCE_NONE);
 
-    return toWebKitCredentialPersistence(credential->credential.persistence());
+    return toCyberKitCredentialPersistence(credential->credential.persistence());
 }

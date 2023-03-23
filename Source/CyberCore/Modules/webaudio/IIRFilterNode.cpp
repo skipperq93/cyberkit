@@ -34,7 +34,7 @@
 #include <CyberScriptCore/TypedArrays.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IIRFilterNode);
 
@@ -98,7 +98,7 @@ ExceptionOr<Ref<IIRFilterNode>> IIRFilterNode::create(ScriptExecutionContext& sc
     if (!options.feedback[0])
         return Exception { InvalidStateError, "first value of feedback array cannot be zero"_s };
 
-    bool isFilterStable = WebCore::isFilterStable(options.feedback);
+    bool isFilterStable = CyberCore::isFilterStable(options.feedback);
     if (!isFilterStable)
         scriptExecutionContext.addConsoleMessage(MessageSource::JS, MessageLevel::Warning, "IIRFilter is unstable with provided feedback coefficients"_s);
 
@@ -132,6 +132,6 @@ ExceptionOr<void> IIRFilterNode::getFrequencyResponse(Float32Array& frequencyHz,
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

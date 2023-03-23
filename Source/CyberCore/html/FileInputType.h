@@ -37,7 +37,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DirectoryFileListCreator;
 class DragData;
@@ -107,6 +107,6 @@ private:
     String m_displayString;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(FileInputType, Type::File)

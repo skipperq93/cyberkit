@@ -32,7 +32,7 @@
 #include "WebInspectorUIProxy.h"
 #include "WebPageProxy.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKInspectorGetTypeID()
 {

@@ -37,7 +37,7 @@
 #include <wtf/DataLog.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -365,6 +365,6 @@ std::optional<DFA> NFAToDFA::convert(NFA&& nfa)
 
 } // namespace ContentExtensions
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

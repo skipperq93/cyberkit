@@ -30,7 +30,7 @@
 #include "ApplePayPaymentOrderDetails.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentCompleteDetails {
 #if ENABLE(APPLE_PAY_PAYMENT_ORDER_DETAILS)
@@ -38,6 +38,6 @@ struct ApplePayPaymentCompleteDetails {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) && ENABLE(PAYMENT_REQUEST)

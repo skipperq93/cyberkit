@@ -10,7 +10,7 @@
 jsTestIsAsync = true;
 
 description(`This tests removing the target of mouse down during selectstart.
-WebKit should not set the selection's endpoints to newly disconnected nodes even in this case.'`);
+CyberKit should not set the selection's endpoints to newly disconnected nodes even in this case.'`);
 
 editor.addEventListener('mousedown', () => {
     getSelection().removeAllRanges();

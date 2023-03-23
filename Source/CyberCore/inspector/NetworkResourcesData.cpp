@@ -36,7 +36,7 @@
 #include "TextResourceDecoder.h"
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -366,4 +366,4 @@ bool NetworkResourcesData::ensureFreeSpace(size_t size)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

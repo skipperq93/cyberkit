@@ -42,7 +42,7 @@
 #include <wtf/StringExtras.h>
 #include <wtf/URLParser.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline Ref<Blob> blobFromData(ScriptExecutionContext* context, Vector<uint8_t>&& data, const String& contentType)
 {
@@ -493,4 +493,4 @@ FetchBodyConsumer FetchBodyConsumer::clone()
     return clone;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

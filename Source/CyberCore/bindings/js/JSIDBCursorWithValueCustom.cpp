@@ -30,7 +30,7 @@
 #include "IDBCursorWithValue.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC::JSValue JSIDBCursorWithValue::value(JSC::JSGlobalObject& lexicalGlobalObject) const
@@ -51,4 +51,4 @@ void JSIDBCursorWithValue::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSIDBCursorWithValue);
 
-} // namespace WebCore
+} // namespace CyberCore

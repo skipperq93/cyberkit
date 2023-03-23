@@ -38,7 +38,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/URL.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const Seconds suspensionTimeout { 10_s };
@@ -297,4 +297,4 @@ const char* SuspendedPageProxy::loggingString() const
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

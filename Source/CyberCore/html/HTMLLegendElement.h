@@ -26,7 +26,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLLegendElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLLegendElement);
@@ -39,4 +39,4 @@ private:
     HTMLLegendElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

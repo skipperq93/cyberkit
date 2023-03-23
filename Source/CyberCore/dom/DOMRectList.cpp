@@ -28,7 +28,7 @@
 
 #include "DOMRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DOMRectList::DOMRectList(const Vector<FloatQuad>& quads)
     : m_items(quads.map([](auto& quad) { return DOMRect::create(quad.boundingBox()); }))
@@ -42,4 +42,4 @@ DOMRectList::DOMRectList(const Vector<FloatRect>& rects)
 
 DOMRectList::~DOMRectList() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "RenderView.h"
 #include "ServicesOverlayController.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SelectionGeometryGatherer::SelectionGeometryGatherer(RenderView& renderView)
     : m_renderView(renderView)
@@ -92,6 +92,6 @@ std::unique_ptr<SelectionGeometryGatherer::Notifier> SelectionGeometryGatherer::
     return makeUnique<Notifier>(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_CONTROLS)

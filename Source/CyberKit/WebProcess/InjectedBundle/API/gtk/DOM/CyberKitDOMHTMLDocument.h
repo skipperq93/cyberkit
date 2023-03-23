@@ -53,7 +53,7 @@ webkit_dom_html_document_get_type(void);
  * @self: A #CyberKitDOMHTMLDocument
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_close(CyberKitDOMHTMLDocument* self);
@@ -63,7 +63,7 @@ webkit_dom_html_document_close(CyberKitDOMHTMLDocument* self);
  * @self: A #CyberKitDOMHTMLDocument
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_clear(CyberKitDOMHTMLDocument* self);
@@ -73,7 +73,7 @@ webkit_dom_html_document_clear(CyberKitDOMHTMLDocument* self);
  * @self: A #CyberKitDOMHTMLDocument
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_capture_events(CyberKitDOMHTMLDocument* self);
@@ -83,7 +83,7 @@ webkit_dom_html_document_capture_events(CyberKitDOMHTMLDocument* self);
  * @self: A #CyberKitDOMHTMLDocument
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_release_events(CyberKitDOMHTMLDocument* self);
@@ -94,7 +94,7 @@ webkit_dom_html_document_release_events(CyberKitDOMHTMLDocument* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_document_get_width(CyberKitDOMHTMLDocument* self);
@@ -105,7 +105,7 @@ webkit_dom_html_document_get_width(CyberKitDOMHTMLDocument* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_document_get_height(CyberKitDOMHTMLDocument* self);
@@ -116,7 +116,7 @@ webkit_dom_html_document_get_height(CyberKitDOMHTMLDocument* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_document_get_dir(CyberKitDOMHTMLDocument* self);
@@ -127,7 +127,7 @@ webkit_dom_html_document_get_dir(CyberKitDOMHTMLDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_set_dir(CyberKitDOMHTMLDocument* self, const gchar* value);
@@ -138,7 +138,7 @@ webkit_dom_html_document_set_dir(CyberKitDOMHTMLDocument* self, const gchar* val
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_document_get_bg_color(CyberKitDOMHTMLDocument* self);
@@ -149,7 +149,7 @@ webkit_dom_html_document_get_bg_color(CyberKitDOMHTMLDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_set_bg_color(CyberKitDOMHTMLDocument* self, const gchar* value);
@@ -160,7 +160,7 @@ webkit_dom_html_document_set_bg_color(CyberKitDOMHTMLDocument* self, const gchar
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_document_get_fg_color(CyberKitDOMHTMLDocument* self);
@@ -171,7 +171,7 @@ webkit_dom_html_document_get_fg_color(CyberKitDOMHTMLDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_set_fg_color(CyberKitDOMHTMLDocument* self, const gchar* value);
@@ -182,7 +182,7 @@ webkit_dom_html_document_set_fg_color(CyberKitDOMHTMLDocument* self, const gchar
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_document_get_alink_color(CyberKitDOMHTMLDocument* self);
@@ -193,7 +193,7 @@ webkit_dom_html_document_get_alink_color(CyberKitDOMHTMLDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_set_alink_color(CyberKitDOMHTMLDocument* self, const gchar* value);
@@ -204,7 +204,7 @@ webkit_dom_html_document_set_alink_color(CyberKitDOMHTMLDocument* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_document_get_link_color(CyberKitDOMHTMLDocument* self);
@@ -215,7 +215,7 @@ webkit_dom_html_document_get_link_color(CyberKitDOMHTMLDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_set_link_color(CyberKitDOMHTMLDocument* self, const gchar* value);
@@ -226,7 +226,7 @@ webkit_dom_html_document_set_link_color(CyberKitDOMHTMLDocument* self, const gch
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_document_get_vlink_color(CyberKitDOMHTMLDocument* self);
@@ -237,7 +237,7 @@ webkit_dom_html_document_get_vlink_color(CyberKitDOMHTMLDocument* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_document_set_vlink_color(CyberKitDOMHTMLDocument* self, const gchar* value);

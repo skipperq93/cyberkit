@@ -35,7 +35,7 @@
 
 @class WKDateTimePicker;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebDateTimePickerMac final : public WebDateTimePicker {
 public:
@@ -55,6 +55,6 @@ private:
     CyberCore::DateTimeChooserParameters m_params;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES) && USE(APPKIT)

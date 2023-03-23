@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitWebViewDialog.h"
+#include "CyberKitWebViewDialog.h"
 
 #include <CyberCore/FloatSize.h>
 #include <CyberCore/GtkVersioning.h>
@@ -26,7 +26,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 
-struct _WebKitWebViewDialogPrivate {
+struct _CyberKitWebViewDialogPrivate {
     GtkWidget* child;
 #if USE(GTK4)
     GRefPtr<GtkCssProvider> cssProvider;
@@ -34,9 +34,9 @@ struct _WebKitWebViewDialogPrivate {
 };
 
 #if USE(GTK4)
-WEBKIT_DEFINE_ABSTRACT_TYPE(WebKitWebViewDialog, webkit_web_view_dialog, GTK_TYPE_WIDGET)
+WEBKIT_DEFINE_ABSTRACT_TYPE(CyberKitWebViewDialog, webkit_web_view_dialog, GTK_TYPE_WIDGET)
 #else
-WEBKIT_DEFINE_ABSTRACT_TYPE(WebKitWebViewDialog, webkit_web_view_dialog, GTK_TYPE_EVENT_BOX)
+WEBKIT_DEFINE_ABSTRACT_TYPE(CyberKitWebViewDialog, webkit_web_view_dialog, GTK_TYPE_EVENT_BOX)
 #endif
 
 #if USE(GTK4)
@@ -49,7 +49,7 @@ static void webkitWebViewDialogSnapshot(GtkWidget* widget, GtkSnapshot* snapshot
     cairo_set_source_rgba(cr.get(), 0, 0, 0, 0.5);
     cairo_paint(cr.get());
 
-    WebKitWebViewDialogPrivate* priv = WEBKIT_WEB_VIEW_DIALOG(widget)->priv;
+    CyberKitWebViewDialogPrivate* priv = WEBKIT_WEB_VIEW_DIALOG(widget)->priv;
     if (priv->child)
         gtk_widget_snapshot_child(widget, priv->child, snapshot);
 }
@@ -116,7 +116,7 @@ static void webkitWebViewDialogConstructed(GObject* object)
     gtk_widget_add_css_class(GTK_WIDGET(object), "csd");
     gtk_widget_remove_css_class(GTK_WIDGET(object), "background");
 
-    WebKitWebViewDialogPrivate* priv = WEBKIT_WEB_VIEW_DIALOG(object)->priv;
+    CyberKitWebViewDialogPrivate* priv = WEBKIT_WEB_VIEW_DIALOG(object)->priv;
     priv->cssProvider = adoptGRef(gtk_css_provider_new());
     gtk_css_provider_load_from_data(priv->cssProvider.get(), ".dialog-vbox { border-radius: 7px; }", -1);
 #else
@@ -127,7 +127,7 @@ static void webkitWebViewDialogConstructed(GObject* object)
 #endif
 }
 
-static void webkit_web_view_dialog_class_init(WebKitWebViewDialogClass* klass)
+static void webkit_web_view_dialog_class_init(CyberKitWebViewDialogClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->constructed = webkitWebViewDialogConstructed;
@@ -148,9 +148,9 @@ static void webkit_web_view_dialog_class_init(WebKitWebViewDialogClass* klass)
 }
 
 #if USE(GTK4)
-void webkitWebViewDialogSetChild(WebKitWebViewDialog* dialog, GtkWidget* child)
+void webkitWebViewDialogSetChild(CyberKitWebViewDialog* dialog, GtkWidget* child)
 {
-    WebKitWebViewDialogPrivate* priv = dialog->priv;
+    CyberKitWebViewDialogPrivate* priv = dialog->priv;
     g_clear_pointer(&priv->child, gtk_widget_unparent);
     if (child) {
         gtk_widget_set_parent(child, GTK_WIDGET(dialog));
@@ -160,7 +160,7 @@ void webkitWebViewDialogSetChild(WebKitWebViewDialog* dialog, GtkWidget* child)
     }
 }
 
-GtkWidget* webkitWebViewDialogGetChild(WebKitWebViewDialog* dialog)
+GtkWidget* webkitWebViewDialogGetChild(CyberKitWebViewDialog* dialog)
 {
     return dialog->priv->child;
 }

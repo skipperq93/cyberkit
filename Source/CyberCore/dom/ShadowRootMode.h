@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShadowRootMode : uint8_t {
     UserAgent,

@@ -34,7 +34,7 @@
 #include "SharedBuffer.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -122,4 +122,4 @@ using CompletionCallback = CompletionHandler<void(std::optional<Error>&&)>;
 
 } // namespace DOMCacheEngine
 
-} // namespace WebCore
+} // namespace CyberCore

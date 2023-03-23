@@ -33,7 +33,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLCanvasElement;
@@ -99,8 +99,8 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CanvasCaptureMediaStreamTrack)
-static bool isType(const WebCore::MediaStreamTrack& track) { return track.isCanvas(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CanvasCaptureMediaStreamTrack)
+static bool isType(const CyberCore::MediaStreamTrack& track) { return track.isCanvas(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(MEDIA_STREAM)

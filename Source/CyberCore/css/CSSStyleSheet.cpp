@@ -46,7 +46,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleSheetCSSRuleList final : public CSSRuleList {
 public:

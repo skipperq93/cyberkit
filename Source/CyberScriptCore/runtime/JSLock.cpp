@@ -30,7 +30,7 @@
 #include <wtf/threads/Signals.h>
 
 #if USE(WEB_THREAD)
-#include <wtf/ios/WebCoreThread.h>
+#include <wtf/ios/CyberCoreThread.h>
 #endif
 
 #if PLATFORM(COCOA)
@@ -104,8 +104,8 @@ void JSLock::lock(intptr_t lockCount) WTF_IGNORES_THREAD_SAFETY_ANALYSIS
     ASSERT(lockCount > 0);
 #if USE(WEB_THREAD)
     if (m_isWebThreadAware) {
-        ASSERT(WebCoreWebThreadIsEnabled && WebCoreWebThreadIsEnabled());
-        WebCoreWebThreadLock();
+        ASSERT(CyberCoreWebThreadIsEnabled && CyberCoreWebThreadIsEnabled());
+        CyberCoreWebThreadLock();
     }
 #endif
 

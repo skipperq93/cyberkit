@@ -39,7 +39,7 @@
 #include "InputTypeNames.h"
 #include "LocalizedStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& ResetInputType::formControlType() const
 {
@@ -60,4 +60,4 @@ String ResetInputType::defaultValue() const
     return resetButtonDefaultLabel();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

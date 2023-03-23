@@ -30,7 +30,7 @@
 
 #include "AccessibilityTableRow.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityTable;
     
@@ -53,6 +53,6 @@ private:
     AccessibilityObject* parentObjectUnignored() const override;
 };
 
-} // namespace WebCore 
+} // namespace CyberCore 
 
 SPECIALIZE_TYPE_TRAITS_ACCESSIBILITY(AccessibilityARIAGridRow, isAccessibilityARIAGridRowInstance())

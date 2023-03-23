@@ -29,7 +29,7 @@
 #include "APIArray.h"
 #include "WKAPICast.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKCookieManagerGetTypeID()
 {

@@ -32,7 +32,7 @@
 #include "WebProcessProxy.h"
 #include <CyberCore/DiagnosticLoggingKeys.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const Seconds loggingInterval { 60_min };
@@ -100,4 +100,4 @@ RefPtr<WebPageProxy> PerActivityStateCPUUsageSampler::pageForLogging() const
     return nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

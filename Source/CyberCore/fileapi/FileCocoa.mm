@@ -34,7 +34,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 bool File::shouldReplaceFile(const String& path)
 {

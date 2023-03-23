@@ -21,14 +21,14 @@
 
 #include <glib.h>
 
-#ifndef WebKitContextMenuActions_h
-#define WebKitContextMenuActions_h
+#ifndef CyberKitContextMenuActions_h
+#define CyberKitContextMenuActions_h
 
 G_BEGIN_DECLS
 
 #if PLATFORM(GTK)
 /**
- * WebKitContextMenuAction:
+ * CyberKitContextMenuAction:
  * @WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION: No action, used by separator menu items.
  * @WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK: Open current link.
  * @WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW: Open current link in a new window.
@@ -78,11 +78,11 @@ G_BEGIN_DECLS
  * @WEBKIT_CONTEXT_MENU_ACTION_CUSTOM: Custom action defined by applications.
  *
  * Enum values used to denote the stock actions for
- * #WebKitContextMenuItem<!-- -->s
+ * #CyberKitContextMenuItem<!-- -->s
  */
 #elif PLATFORM(WPE)
 /**
- * WebKitContextMenuAction:
+ * CyberKitContextMenuAction:
  * @WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION: No action, used by separator menu items.
  * @WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK: Open current link.
  * @WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW: Open current link in a new window.
@@ -125,7 +125,7 @@ G_BEGIN_DECLS
  * @WEBKIT_CONTEXT_MENU_ACTION_CUSTOM: Custom action defined by applications.
  *
  * Enum values used to denote the stock actions for
- * #WebKitContextMenuItem<!-- -->s
+ * #CyberKitContextMenuItem<!-- -->s
  */
 #endif
 typedef enum {
@@ -184,7 +184,7 @@ typedef enum {
 #endif
 
     WEBKIT_CONTEXT_MENU_ACTION_CUSTOM = 10000
-} WebKitContextMenuAction;
+} CyberKitContextMenuAction;
 
 G_END_DECLS
 

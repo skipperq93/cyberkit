@@ -27,10 +27,10 @@
 
 #include <wtf/Markable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PlaybackDirection : uint8_t { Normal, Reverse, Alternate, AlternateReverse };
 
 using OptionalPlaybackDirection = Markable<PlaybackDirection, EnumMarkableTraits<PlaybackDirection>>;
 
-} // namespace WebCore
+} // namespace CyberCore

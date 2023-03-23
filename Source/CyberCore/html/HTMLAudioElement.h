@@ -30,7 +30,7 @@
 
 #include "HTMLMediaElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -46,12 +46,12 @@ private:
     PlatformMediaSession::MediaType presentationType() const final { return PlatformMediaSession::MediaType::Audio; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLAudioElement)
-    static bool isType(const WebCore::HTMLMediaElement& element) { return element.hasTagName(WebCore::HTMLNames::audioTag); }
-    static bool isType(const WebCore::Element& element) { return is<WebCore::HTMLMediaElement>(element) && isType(downcast<WebCore::HTMLMediaElement>(element)); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::HTMLMediaElement>(node) && isType(downcast<WebCore::HTMLMediaElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLAudioElement)
+    static bool isType(const CyberCore::HTMLMediaElement& element) { return element.hasTagName(CyberCore::HTMLNames::audioTag); }
+    static bool isType(const CyberCore::Element& element) { return is<CyberCore::HTMLMediaElement>(element) && isType(downcast<CyberCore::HTMLMediaElement>(element)); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::HTMLMediaElement>(node) && isType(downcast<CyberCore::HTMLMediaElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO)

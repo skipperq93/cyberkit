@@ -28,12 +28,12 @@
  *  function is called. MemorySampler allows the option of sampling "in use" 
  *  memory (committed memory minus free list byte count) or committed memory for
  *  any allocator which keeps a free list. This includes FastMalloc and the 
- *  JavaScriptCore heap at this time.
+ *  CyberScriptCore heap at this time.
  *  The following memory metrics are recorded:
  *
  *      CyberCore
  *          - FastMalloc allocations bytes              (in use or committed)
- *      JavaScriptCore
+ *      CyberScriptCore
  *          - Garbage collector heap bytes              (in use or committed)
  *          - Stack bytes                               (committed only!)
  *          - JIT Code bytes                            (committed only!)

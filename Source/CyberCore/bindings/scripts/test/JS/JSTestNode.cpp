@@ -45,20 +45,20 @@
 #include "JSDOMWrapperCache.h"
 #include "JSTestNode.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/ObjectConstructor.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -403,7 +403,7 @@ public:
     {
         if constexpr (mode == JSC::SubspaceAccess::Concurrently)
             return nullptr;
-        return WebCore::subspaceForImpl<TestNodeIterator, UseCustomHeapCellType::No>(vm,
+        return CyberCore::subspaceForImpl<TestNodeIterator, UseCustomHeapCellType::No>(vm,
             [] (auto& spaces) { return spaces.m_clientSubspaceForTestNodeIterator.get(); },
             [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestNodeIterator = std::forward<decltype(space)>(space); },
             [] (auto& spaces) { return spaces.m_subspaceForTestNodeIterator.get(); },
@@ -481,7 +481,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestNodePrototypeFunction_forEach, (JSC::JSGlobalObje
 
 JSC::GCClient::IsoSubspace* JSTestNode::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestNode, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestNode, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestNode.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestNode = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestNode.get(); },
@@ -501,9 +501,9 @@ void JSTestNode::analyzeHeap(JSCell* cell, HeapAnalyzer& analyzer)
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestNode@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestNode@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore8TestNodeE[]; }
+extern "C" { extern void* _ZTVN7CyberCore8TestNodeE[]; }
 #endif
 #endif
 
@@ -514,9 +514,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestNode@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestNode@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore8TestNodeE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore8TestNodeE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

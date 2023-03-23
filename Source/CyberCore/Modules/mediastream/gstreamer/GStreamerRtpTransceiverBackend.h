@@ -26,7 +26,7 @@
 #include "GUniquePtrGStreamer.h"
 #include "RTCRtpTransceiverBackend.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerRtpReceiverBackend;
 
@@ -53,6 +53,6 @@ private:
     bool m_isStopped { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

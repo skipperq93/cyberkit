@@ -27,7 +27,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OverflowEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(OverflowEvent);
@@ -77,4 +77,4 @@ private:
     bool m_verticalOverflow;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

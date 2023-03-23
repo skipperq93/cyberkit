@@ -42,7 +42,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 class PositioningContext {
@@ -448,5 +448,5 @@ void showDisplayTree(const StackingItem& stackingItem)
 #endif
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

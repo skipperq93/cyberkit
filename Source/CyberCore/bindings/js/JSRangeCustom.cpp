@@ -28,7 +28,7 @@
 
 #include "Range.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSRange::visitAdditionalChildren(Visitor& visitor)
@@ -38,4 +38,4 @@ void JSRange::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSRange);
 
-} // namespace WebCore
+} // namespace CyberCore

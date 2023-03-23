@@ -58,7 +58,7 @@ webkit_dom_ui_event_get_type(void);
  * @detail: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_ui_event_init_ui_event(CyberKitDOMUIEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, glong detail);
@@ -69,7 +69,7 @@ webkit_dom_ui_event_init_ui_event(CyberKitDOMUIEvent* self, const gchar* type, g
  *
  * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
 webkit_dom_ui_event_get_view(CyberKitDOMUIEvent* self);
@@ -80,7 +80,7 @@ webkit_dom_ui_event_get_view(CyberKitDOMUIEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_ui_event_get_detail(CyberKitDOMUIEvent* self);
@@ -91,7 +91,7 @@ webkit_dom_ui_event_get_detail(CyberKitDOMUIEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_ui_event_get_key_code(CyberKitDOMUIEvent* self);
@@ -102,7 +102,7 @@ webkit_dom_ui_event_get_key_code(CyberKitDOMUIEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_ui_event_get_char_code(CyberKitDOMUIEvent* self);
@@ -113,7 +113,7 @@ webkit_dom_ui_event_get_char_code(CyberKitDOMUIEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_ui_event_get_layer_x(CyberKitDOMUIEvent* self);
@@ -124,7 +124,7 @@ webkit_dom_ui_event_get_layer_x(CyberKitDOMUIEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_ui_event_get_layer_y(CyberKitDOMUIEvent* self);
@@ -135,7 +135,7 @@ webkit_dom_ui_event_get_layer_y(CyberKitDOMUIEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_ui_event_get_page_x(CyberKitDOMUIEvent* self);
@@ -146,7 +146,7 @@ webkit_dom_ui_event_get_page_x(CyberKitDOMUIEvent* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_ui_event_get_page_y(CyberKitDOMUIEvent* self);

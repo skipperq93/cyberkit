@@ -23,7 +23,7 @@
 #include "CSSValue.h"
 #include <unicode/umachine.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using CSSValueListBuilder = Vector<Ref<CSSValue>, 4>;
 
@@ -135,7 +135,7 @@ inline const CSSValue& CSSValueContainingVector::operator[](unsigned index) cons
     return *m_additionalStorage[index - maxInlineSize];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSValueContainingVector, containsVector())
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSValueList, isValueList())

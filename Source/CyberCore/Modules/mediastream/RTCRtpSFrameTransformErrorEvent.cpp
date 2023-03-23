@@ -31,7 +31,7 @@
 #include "EventNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCRtpSFrameTransformErrorEvent);
 
@@ -59,6 +59,6 @@ EventInterface RTCRtpSFrameTransformErrorEvent::eventInterface() const
     return RTCRtpSFrameTransformErrorEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

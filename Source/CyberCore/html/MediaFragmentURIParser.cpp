@@ -38,7 +38,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr int secondsPerHour = 3600;
 constexpr int secondsPerMinute = 60;

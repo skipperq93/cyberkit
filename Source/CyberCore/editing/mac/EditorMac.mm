@@ -63,7 +63,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/NSURLExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void Editor::pasteWithPasteboard(Pasteboard* pasteboard, OptionSet<PasteOption> options)
 {
@@ -262,6 +262,6 @@ void Editor::writeImageToPasteboard(Pasteboard& pasteboard, Element& imageElemen
     pasteboard.write(pasteboardImage);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

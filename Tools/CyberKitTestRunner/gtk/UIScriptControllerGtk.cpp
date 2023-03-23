@@ -31,10 +31,10 @@
 #include "StringFunctions.h"
 #include "TestController.h"
 #include "UIScriptContext.h"
-#include <JavaScriptCore/JavaScript.h>
-#include <JavaScriptCore/OpaqueJSString.h>
-#include <WebKit/WKTextCheckerGLib.h>
-#include <WebKit/WKViewPrivate.h>
+#include <CyberScriptCore/JavaScript.h>
+#include <CyberScriptCore/OpaqueJSString.h>
+#include <CyberKit/WKTextCheckerGLib.h>
+#include <CyberKit/WKViewPrivate.h>
 #include <gtk/gtk.h>
 #include <wtf/JSONValues.h>
 #include <wtf/RunLoop.h>
@@ -172,7 +172,7 @@ void UIScriptControllerGtk::addViewToWindow(JSValueRef callback)
 
 void UIScriptControllerGtk::overridePreference(JSStringRef preference, JSStringRef value)
 {
-    if (toWTFString(preference) != "WebKitMinimumFontSize"_s)
+    if (toWTFString(preference) != "CyberKitMinimumFontSize"_s)
         return;
 
     auto preferences = TestController::singleton().platformPreferences();

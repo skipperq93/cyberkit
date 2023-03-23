@@ -26,7 +26,7 @@
 #include "EventNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BeforeUnloadEvent);
 
@@ -44,4 +44,4 @@ bool BeforeUnloadEvent::isBeforeUnloadEvent() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontFaceRule::CSSFontFaceRule(StyleRuleFontFace& fontFaceRule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -63,4 +63,4 @@ void CSSFontFaceRule::reattach(StyleRuleBase& rule)
         m_propertiesCSSOMWrapper->reattach(m_fontFaceRule->mutableProperties());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

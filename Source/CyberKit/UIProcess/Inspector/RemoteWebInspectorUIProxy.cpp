@@ -40,7 +40,7 @@
 #include "WebInspectorUIExtensionControllerProxy.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 RemoteWebInspectorUIProxy::RemoteWebInspectorUIProxy()
@@ -261,4 +261,4 @@ void RemoteWebInspectorUIProxy::platformShowCertificate(const CertificateInfo&) 
 void RemoteWebInspectorUIProxy::platformCloseFrontendPageAndWindow() { }
 #endif // !ENABLE(REMOTE_INSPECTOR) || (!PLATFORM(MAC) && !PLATFORM(GTK) && !PLATFORM(WIN))
 
-} // namespace WebKit
+} // namespace CyberKit

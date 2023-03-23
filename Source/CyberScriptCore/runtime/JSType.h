@@ -132,7 +132,7 @@ enum JSType : uint8_t {
     DerivedStringObjectType,
     // End StringObjectType types.
 
-    LastJSCObjectType = DerivedStringObjectType, // This is the last "JSC" Object type. After this, we have embedder's (e.g., WebCore) extended object types.
+    LastJSCObjectType = DerivedStringObjectType, // This is the last "JSC" Object type. After this, we have embedder's (e.g., CyberCore) extended object types.
     MaxJSType = 0b11111111,
 };
 

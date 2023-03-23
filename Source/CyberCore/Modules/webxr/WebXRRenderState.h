@@ -31,7 +31,7 @@
 #include "WebXRWebGLLayer.h"
 #include "XRSessionMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct XRRenderStateInit;
 
@@ -76,6 +76,6 @@ private:
     bool m_compositionEnabled { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

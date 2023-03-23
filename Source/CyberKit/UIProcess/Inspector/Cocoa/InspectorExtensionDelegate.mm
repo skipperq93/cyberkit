@@ -35,7 +35,7 @@
 #import "_WKInspectorExtensionInternal.h"
 #import <wtf/UniqueRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 InspectorExtensionDelegate::InspectorExtensionDelegate(_WKInspectorExtension *inspectorExtension, id <_WKInspectorExtensionDelegate> delegate)
     : m_inspectorExtension(inspectorExtension)
@@ -113,6 +113,6 @@ void InspectorExtensionDelegate::InspectorExtensionClient::inspectedPageDidNavig
     [delegate inspectorExtension:m_inspectorExtensionDelegate.m_inspectorExtension.get().get() inspectedPageDidNavigate:newURL];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

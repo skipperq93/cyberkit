@@ -56,16 +56,16 @@ if ($showHelp || !$result) {
    exit 1;
 }
 
-if (!isAppleMacWebKit()) {
-    print STDERR "lldbWebKitTester is currently only supported on Mac.\n";
+if (!isAppleMacCyberKit()) {
+    print STDERR "lldbCyberKitTester is currently only supported on Mac.\n";
     exit 1;
 }
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 my @xcodeOptions = XcodeOptions();
 
-$result = exitStatus(buildXcodeScheme("lldbWebKitTester", $clean, @xcodeOptions, @ARGV));
+$result = exitStatus(buildXcodeScheme("lldbCyberKitTester", $clean, @xcodeOptions, @ARGV));
 exit $result if $result;

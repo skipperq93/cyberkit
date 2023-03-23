@@ -31,7 +31,7 @@
 #include "StyleSheetContents.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSImportRule::CSSImportRule(StyleRuleImport& importRule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -117,4 +117,4 @@ void CSSImportRule::setMediaQueries(MQ::MediaQueryList&& queries)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

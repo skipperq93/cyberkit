@@ -34,7 +34,7 @@
 #include "CryptoKeyRSA.h"
 #include "GCryptUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> gcryptSign(gcry_sexp_t keySexp, const Vector<uint8_t>& data, CryptoAlgorithmIdentifier hashAlgorithmIdentifier, size_t saltLength, size_t keySizeInBytes)
 {
@@ -153,6 +153,6 @@ ExceptionOr<bool> CryptoAlgorithmRSA_PSS::platformVerify(const CryptoAlgorithmRs
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

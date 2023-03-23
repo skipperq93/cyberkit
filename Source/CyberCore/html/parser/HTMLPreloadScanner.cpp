@@ -48,7 +48,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

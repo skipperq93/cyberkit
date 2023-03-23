@@ -28,7 +28,7 @@
 #include "CSSMathValue.h"
 #include "CSSNumericValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSNumericValue;
 
@@ -52,10 +52,10 @@ private:
     Ref<CSSNumericValue> m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSMathNegate)
-static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSMathNegate; }
-static bool isType(const WebCore::CSSNumericValue& numericValue) { return numericValue.getType() == WebCore::CSSStyleValueType::CSSMathNegate; }
-static bool isType(const WebCore::CSSMathValue& mathValue) { return mathValue.getType() == WebCore::CSSStyleValueType::CSSMathNegate; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSMathNegate)
+static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSMathNegate; }
+static bool isType(const CyberCore::CSSNumericValue& numericValue) { return numericValue.getType() == CyberCore::CSSStyleValueType::CSSMathNegate; }
+static bool isType(const CyberCore::CSSMathValue& mathValue) { return mathValue.getType() == CyberCore::CSSStyleValueType::CSSMathNegate; }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -32,7 +32,7 @@
 #include "RTCDataChannelState.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DetachedRTCDataChannel {
     WTF_MAKE_NONCOPYABLE(DetachedRTCDataChannel);
@@ -56,6 +56,6 @@ public:
     RTCDataChannelState state { RTCDataChannelState::Closed };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

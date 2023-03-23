@@ -27,7 +27,7 @@
 
 #include "WebContextMenuProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuProxyWPE final : public WebContextMenuProxy {
 public:
@@ -45,4 +45,4 @@ private:
     { }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -28,7 +28,7 @@
 
 @class NSTextAlternatives;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextAlternativeWithRange {
     WEBCORE_EXPORT TextAlternativeWithRange(NSTextAlternatives* anAlternatives, NSRange aRange);
@@ -38,4 +38,4 @@ struct TextAlternativeWithRange {
 
 WEBCORE_EXPORT void collectDictationTextAlternatives(NSAttributedString*, Vector<TextAlternativeWithRange>& alternatives);
 
-} // namespace WebCore
+} // namespace CyberCore

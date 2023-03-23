@@ -35,7 +35,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GPUCompositorIntegration;
 class GPUPresentationContext;

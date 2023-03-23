@@ -34,7 +34,7 @@
 #include "WebAuthenticationConstants.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT Vector<uint8_t> convertBytesToVector(const uint8_t byteArray[], const size_t length);
 
@@ -66,6 +66,6 @@ WEBCORE_EXPORT cbor::CBORValue::MapValue buildUserEntityMap(const Vector<uint8_t
 
 // encodeRawPublicKey takes X & Y and returns them as a 0x04 || X || Y byte array.
 WEBCORE_EXPORT Vector<uint8_t> encodeRawPublicKey(const Vector<uint8_t>& X, const Vector<uint8_t>& Y);
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

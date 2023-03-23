@@ -32,7 +32,7 @@
 #include "PermissionState.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MainThreadPermissionObserver::MainThreadPermissionObserver(WeakPtr<PermissionStatus, WeakPtrImplWithEventTargetData>&& permissionStatus, ScriptExecutionContextIdentifier contextIdentifier, PermissionState state, PermissionDescriptor descriptor, PermissionQuerySource source, WeakPtr<Page>&& page, ClientOrigin&& origin)
     : m_permissionStatus(WTFMove(permissionStatus))

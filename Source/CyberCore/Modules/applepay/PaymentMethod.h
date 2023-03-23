@@ -31,7 +31,7 @@
 
 OBJC_CLASS PKPaymentMethod;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentMethod;
 

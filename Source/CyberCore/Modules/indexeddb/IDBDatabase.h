@@ -32,7 +32,7 @@
 #include "IDBKeyPath.h"
 #include "IDBTransactionMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMStringList;
 class IDBObjectStore;
@@ -138,4 +138,4 @@ private:
     bool m_isContextSuspended { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

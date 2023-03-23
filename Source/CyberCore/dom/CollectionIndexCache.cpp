@@ -30,7 +30,7 @@
 #include "DOMWindow.h"
 #include "JSDOMBinding.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void reportExtraMemoryAllocatedForCollectionIndexCache(size_t cost)
 {

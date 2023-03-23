@@ -43,7 +43,7 @@
 #include "WorkletParameters.h"
 #include "WorkletPendingTasks.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static WorkletParameters generateWorkletParameters(AudioWorklet& worklet)
 {
@@ -116,6 +116,6 @@ void AudioWorkletMessagingProxy::postTaskToAudioWorklet(Function<void(AudioWorkl
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

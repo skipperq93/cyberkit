@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class UnlinkCommand : public CompositeEditCommand {
 public:
@@ -43,4 +43,4 @@ private:
     EditAction editingAction() const override { return EditAction::Unlink; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

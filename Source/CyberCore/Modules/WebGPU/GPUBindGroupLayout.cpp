@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUBindGroupLayout.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUBindGroupLayout::label() const
 {

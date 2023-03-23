@@ -28,7 +28,7 @@
 
 #include "PrivateClickMeasurement.h"
 
-namespace WebCore::PCM {
+namespace CyberCore::PCM {
 
 const std::optional<const URL> AttributionTriggerData::tokenPublicKeyURL() const
 {

@@ -36,13 +36,13 @@
 
 namespace API {
 
-InspectorExtension::InspectorExtension(const WTF::String& identifier, WebKit::WebInspectorUIExtensionControllerProxy& extensionControllerProxy)
+InspectorExtension::InspectorExtension(const WTF::String& identifier, CyberKit::WebInspectorUIExtensionControllerProxy& extensionControllerProxy)
     : m_identifier(identifier)
     , m_extensionControllerProxy(extensionControllerProxy)
 {
 }
 
-Ref<InspectorExtension> InspectorExtension::create(const WTF::String& identifier, WebKit::WebInspectorUIExtensionControllerProxy& extensionControllerProxy)
+Ref<InspectorExtension> InspectorExtension::create(const WTF::String& identifier, CyberKit::WebInspectorUIExtensionControllerProxy& extensionControllerProxy)
 {
     return adoptRef(*new InspectorExtension(identifier, extensionControllerProxy));
 }

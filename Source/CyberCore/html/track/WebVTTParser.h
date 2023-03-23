@@ -43,7 +43,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -201,6 +201,6 @@ private:
     Vector<String> m_styleSheets;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

@@ -22,7 +22,7 @@
 #include "APIViewClient.h"
 #include <wtf/CompletionHandler.h>
 
-typedef struct _WebKitWebView WebKitWebView;
+typedef struct _CyberKitWebView CyberKitWebView;
 
 namespace WKWPE {
 class View;
@@ -32,19 +32,19 @@ namespace CyberCore {
 class IntRect;
 }
 
-namespace WebKit {
-class WebKitPopupMenu;
-class WebKitWebResourceLoadManager;
+namespace CyberKit {
+class CyberKitPopupMenu;
+class CyberKitWebResourceLoadManager;
 struct WebPopupItem;
 struct UserMessage;
 }
 
-class WebKitWebViewClient final : public API::ViewClient {
+class CyberKitWebViewClient final : public API::ViewClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit WebKitWebViewClient(WebKitWebView*);
+    explicit CyberKitWebViewClient(CyberKitWebView*);
 
-    GRefPtr<WebKitOptionMenu> showOptionMenu(WebKit::WebKitPopupMenu&, const CyberCore::IntRect&, const Vector<WebKit::WebPopupItem>&, int32_t selectedIndex);
+    GRefPtr<CyberKitOptionMenu> showOptionMenu(CyberKit::CyberKitPopupMenu&, const CyberCore::IntRect&, const Vector<CyberKit::WebPopupItem>&, int32_t selectedIndex);
 
 private:
     bool isGLibBasedAPI() override { return true; }
@@ -52,8 +52,8 @@ private:
     void frameDisplayed(WKWPE::View&) override;
     void willStartLoad(WKWPE::View&) override;
     void didChangePageID(WKWPE::View&) override;
-    void didReceiveUserMessage(WKWPE::View&, WebKit::UserMessage&&, CompletionHandler<void(WebKit::UserMessage&&)>&&) override;
-    WebKit::WebKitWebResourceLoadManager* webResourceLoadManager() override;
+    void didReceiveUserMessage(WKWPE::View&, CyberKit::UserMessage&&, CompletionHandler<void(CyberKit::UserMessage&&)>&&) override;
+    CyberKit::CyberKitWebResourceLoadManager* webResourceLoadManager() override;
 
-    WebKitWebView* m_webView;
+    CyberKitWebView* m_webView;
 };

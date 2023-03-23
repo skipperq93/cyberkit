@@ -44,7 +44,7 @@
 #include "TextMetrics.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OffscreenCanvasRenderingContext2D);
 
@@ -141,6 +141,6 @@ Ref<TextMetrics> OffscreenCanvasRenderingContext2D::measureText(const String& te
     return measureTextInternal(text);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSTransformComponent;
 class CSSTransformListValue;
@@ -61,8 +61,8 @@ private:
     Vector<RefPtr<CSSTransformComponent>> m_components;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSTransformValue)
-    static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSTransformValue; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSTransformValue)
+    static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSTransformValue; }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -28,7 +28,7 @@
 #include "Blob.h"
 #include "Pasteboard.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class FragmentedSharedBuffer;
@@ -54,4 +54,4 @@ private:
     RefPtr<Blob> m_result;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

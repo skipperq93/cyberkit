@@ -27,7 +27,7 @@
 #include "AudioBuffer.h"
 #include "EventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct OfflineAudioCompletionEventInit : EventInit {
     RefPtr<AudioBuffer> renderedBuffer;

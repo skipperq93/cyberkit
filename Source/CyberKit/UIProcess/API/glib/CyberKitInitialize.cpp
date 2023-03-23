@@ -24,18 +24,18 @@
  */
 
 #include "config.h"
-#include "WebKitInitialize.h"
+#include "CyberKitInitialize.h"
 
 #include "RemoteInspectorHTTPServer.h"
-#include "WebKit2Initialize.h"
-#include <JavaScriptCore/RemoteInspector.h>
-#include <JavaScriptCore/RemoteInspectorServer.h>
+#include "CyberKit2Initialize.h"
+#include <CyberScriptCore/RemoteInspector.h>
+#include <CyberScriptCore/RemoteInspectorServer.h>
 #include <limits>
 #include <mutex>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(REMOTE_INSPECTOR)
 static void initializeRemoteInspectorServer()
@@ -100,11 +100,11 @@ void webkitInitialize()
     static std::once_flag onceFlag;
 
     std::call_once(onceFlag, [] {
-        InitializeWebKit2();
+        InitializeCyberKit2();
 #if ENABLE(REMOTE_INSPECTOR)
         initializeRemoteInspectorServer();
 #endif
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

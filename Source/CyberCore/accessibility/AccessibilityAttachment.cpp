@@ -34,7 +34,7 @@
 
 #if ENABLE(ATTACHMENT_ELEMENT)
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -104,7 +104,7 @@ void AccessibilityAttachment::accessibilityText(Vector<AccessibilityText>& textO
         textOrder.append(AccessibilityText(subtitle, AccessibilityTextSource::Subtitle));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)
 

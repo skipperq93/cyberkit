@@ -21,7 +21,7 @@
 #include "config.h"
 #include "EventNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #define INITIALIZE_EVENT_NAME(name) name##Event(#name ## _s),
 

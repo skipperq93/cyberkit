@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/ASCIILiteral.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Text;
 
@@ -47,4 +47,4 @@ enum class AnnotateForInterchange : uint8_t { No, Yes };
 
 String convertHTMLTextToInterchangeFormat(const String&, const Text*);
 
-} // namespace WebCore
+} // namespace CyberCore

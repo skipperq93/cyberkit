@@ -34,7 +34,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class DOMEditor;
@@ -72,4 +72,4 @@ private:
     UnusedNodesMap m_unusedNodesMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

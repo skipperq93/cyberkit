@@ -35,7 +35,7 @@
 #include "TransformOperations.h"
 #include "TranslateTransformOperation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class CSSToLengthConversionData;
@@ -48,4 +48,4 @@ RefPtr<TranslateTransformOperation> translateForValue(const CSSValue&, const CSS
 RefPtr<RotateTransformOperation> rotateForValue(const CSSValue&);
 RefPtr<ScaleTransformOperation> scaleForValue(const CSSValue&);
 
-} // namespace WebCore
+} // namespace CyberCore

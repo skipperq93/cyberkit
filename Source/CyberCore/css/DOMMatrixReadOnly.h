@@ -35,7 +35,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMMatrix;
 class DOMPoint;
@@ -156,4 +156,4 @@ inline ExceptionOr<Ref<T>> DOMMatrixReadOnly::fromMatrixHelper(DOMMatrixInit&& i
     }, Is2D::No);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

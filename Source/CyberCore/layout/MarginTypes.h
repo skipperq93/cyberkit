@@ -28,7 +28,7 @@
 #include "LayoutUnit.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct ComputedVerticalMargin {

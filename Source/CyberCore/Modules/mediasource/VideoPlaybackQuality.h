@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct VideoPlaybackQualityMetrics;
 
@@ -57,6 +57,6 @@ private:
     double m_totalFrameDelay;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

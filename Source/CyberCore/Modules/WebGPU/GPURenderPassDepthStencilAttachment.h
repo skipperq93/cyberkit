@@ -33,7 +33,7 @@
 #include <variant>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURenderPassDepthStencilAttachment {
     PAL::WebGPU::RenderPassDepthStencilAttachment convertToBacking() const
@@ -42,12 +42,12 @@ struct GPURenderPassDepthStencilAttachment {
         return {
             view->backing(),
             depthClearValue,
-            depthLoadOp ? std::optional { WebCore::convertToBacking(*depthLoadOp) } : std::nullopt,
-            depthStoreOp ? std::optional { WebCore::convertToBacking(*depthStoreOp) } : std::nullopt,
+            depthLoadOp ? std::optional { CyberCore::convertToBacking(*depthLoadOp) } : std::nullopt,
+            depthStoreOp ? std::optional { CyberCore::convertToBacking(*depthStoreOp) } : std::nullopt,
             depthReadOnly,
             stencilClearValue,
-            stencilLoadOp ? std::optional { WebCore::convertToBacking(*stencilLoadOp) } : std::nullopt,
-            stencilStoreOp ? std::optional { WebCore::convertToBacking(*stencilStoreOp) } : std::nullopt,
+            stencilLoadOp ? std::optional { CyberCore::convertToBacking(*stencilLoadOp) } : std::nullopt,
+            stencilStoreOp ? std::optional { CyberCore::convertToBacking(*stencilStoreOp) } : std::nullopt,
             stencilReadOnly,
         };
     }

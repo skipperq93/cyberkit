@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FrameLoadState.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 FrameLoadState::~FrameLoadState()
 {
@@ -119,4 +119,4 @@ void FrameLoadState::setUnreachableURL(const URL& unreachableURL)
     m_unreachableURL = unreachableURL;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

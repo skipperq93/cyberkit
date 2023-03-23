@@ -32,7 +32,7 @@
 #include "ServiceWorkerGlobalScope.h"
 #include "ServiceWorkerThread.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -64,6 +64,6 @@ Protocol::ErrorStringOr<Ref<Protocol::ServiceWorker::Configuration>> ServiceWork
         .release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

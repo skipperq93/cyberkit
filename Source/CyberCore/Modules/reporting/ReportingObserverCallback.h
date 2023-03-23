@@ -29,7 +29,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Report;
 class ReportingObserver;
@@ -42,4 +42,4 @@ public:
     virtual CallbackResult<void> handleEvent(const Vector<Ref<Report>>&, ReportingObserver&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

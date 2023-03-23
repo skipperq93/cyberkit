@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ImageSmoothingQuality { Low, Medium, High };
 

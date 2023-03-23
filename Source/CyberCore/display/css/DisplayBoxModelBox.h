@@ -28,7 +28,7 @@
 #include "DisplayBox.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 class BoxClip;
@@ -84,7 +84,7 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_DISPLAY_BOX(BoxModelBox, isBoxModelBox())
 

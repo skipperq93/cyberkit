@@ -36,7 +36,7 @@
 #import <wtf/RunLoop.h>
 
 #if USE(WEB_THREAD)
-#import <wtf/ios/WebCoreThread.h>
+#import <wtf/ios/CyberCoreThread.h>
 #endif
 
 namespace Inspector {
@@ -143,9 +143,9 @@ void RemoteConnectionToTarget::dispatchAsyncOnTarget(Function<void ()>&& callbac
     }
 
 #if USE(WEB_THREAD)
-    if (WebCoreWebThreadIsEnabled && WebCoreWebThreadIsEnabled()) {
+    if (CyberCoreWebThreadIsEnabled && CyberCoreWebThreadIsEnabled()) {
         __block auto blockCallback(WTFMove(callback));
-        WebCoreWebThreadRun(^{
+        CyberCoreWebThreadRun(^{
             blockCallback();
         });
         return;

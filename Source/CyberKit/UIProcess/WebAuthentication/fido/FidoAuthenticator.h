@@ -29,7 +29,7 @@
 
 #include "Authenticator.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class CtapDriver;
 
@@ -47,6 +47,6 @@ private:
     std::unique_ptr<CtapDriver> m_driver;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

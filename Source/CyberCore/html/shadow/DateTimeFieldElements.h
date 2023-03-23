@@ -31,7 +31,7 @@
 #include "DateTimeNumericFieldElement.h"
 #include "DateTimeSymbolicFieldElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateTimeDayFieldElement final : public DateTimeNumericFieldElement {
     WTF_MAKE_ISO_ALLOCATED(DateTimeDayFieldElement);
@@ -159,6 +159,6 @@ private:
     void populateDateTimeFieldsState(DateTimeFieldsState&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

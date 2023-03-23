@@ -125,7 +125,7 @@ SOFT_LINK_CLASS(UIFoundation, NSTextTab)
 
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace HTMLNames;
 
 #if PLATFORM(IOS_FAMILY)
@@ -233,7 +233,7 @@ typedef NSUInteger NSTextTabType;
 static RetainPtr<NSFileWrapper> fileWrapperForURL(DocumentLoader *, NSURL *);
 static RetainPtr<NSFileWrapper> fileWrapperForElement(HTMLImageElement&);
 
-@interface NSTextAttachment (WebCoreNSTextAttachment)
+@interface NSTextAttachment (CyberCoreNSTextAttachment)
 - (void)setIgnoresOrientation:(BOOL)flag;
 - (void)setBounds:(CGRect)bounds;
 - (BOOL)ignoresOrientation;
@@ -269,11 +269,11 @@ private:
     HashSet<Ref<Node>> m_ancestorsUnderCommonAncestor;
 };
 
-@interface NSTextList (WebCoreNSTextListDetails)
+@interface NSTextList (CyberCoreNSTextListDetails)
 + (NSDictionary *)_standardMarkerAttributesForAttributes:(NSDictionary *)attrs;
 @end
 
-@interface NSURL (WebCoreNSURLDetails)
+@interface NSURL (CyberCoreNSURLDetails)
 // FIXME: What is the reason to use this Foundation method, and not +[NSURL URLWithString:relativeToURL:]?
 + (NSURL *)_web_URLWithString:(NSString *)string relativeToURL:(NSURL *)baseURL;
 @end
@@ -1337,7 +1337,7 @@ BOOL HTMLConverter::_addAttachmentForElement(Element& element, NSURL *url, BOOL 
                 [attachment setIgnoresOrientation:YES];
 #endif
         } else {
-            NSBundle *webCoreBundle = [NSBundle bundleWithIdentifier:@"com.apple.WebCore"];
+            NSBundle *webCoreBundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberCore"];
 #if PLATFORM(IOS_FAMILY)
             UIImage *missingImage = [PlatformImageClass imageNamed:@"missingImage" inBundle:webCoreBundle compatibleWithTraitCollection:nil];
 #else
@@ -2353,7 +2353,7 @@ static RetainPtr<NSFileWrapper> fileWrapperForElement(HTMLImageElement& element)
 
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // This function supports more HTML features than the editing variant below, such as tables.
 AttributedString attributedString(const SimpleRange& range)

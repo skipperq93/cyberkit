@@ -36,7 +36,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class DisplayLink {
     WTF_MAKE_FAST_ALLOCATED;
@@ -114,6 +114,6 @@ private:
     Vector<std::unique_ptr<DisplayLink>> m_displayLinks;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(CVDISPLAYLINK)

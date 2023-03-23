@@ -31,10 +31,10 @@
 #include "JSDOMWindow.h"
 #include "JSRemoteDOMWindow.h"
 #include "SerializedScriptValue.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/Error.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 STATIC_ASSERT_IS_TRIVIALLY_DESTRUCTIBLE(JSDOMObject);
 
@@ -57,4 +57,4 @@ JSC::JSValue cloneAcrossWorlds(JSC::JSGlobalObject& lexicalGlobalObject, const J
     return serializedValue->deserialize(lexicalGlobalObject, owner.globalObject());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

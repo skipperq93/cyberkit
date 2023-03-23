@@ -41,7 +41,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ScriptProcessorNode);
 
@@ -300,6 +300,6 @@ bool ScriptProcessorNode::virtualHasPendingActivity() const
     return m_hasAudioProcessEventListener;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

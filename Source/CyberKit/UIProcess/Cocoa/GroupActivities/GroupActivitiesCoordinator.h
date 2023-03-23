@@ -39,7 +39,7 @@ OBJC_CLASS AVDelegatingPlaybackCoordinatorBufferingCommand;
 OBJC_CLASS AVDelegatingPlaybackCoordinatorPrepareTransitionCommand;
 OBJC_CLASS WKGroupActivitiesCoordinatorDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class GroupActivitiesCoordinator final : public MediaSessionCoordinatorProxyPrivate {
     WTF_MAKE_FAST_ALLOCATED;

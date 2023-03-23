@@ -35,7 +35,7 @@
 #include <CyberScriptCore/SourceProvider.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebAssemblyCachedScriptSourceProvider final : public JSC::BaseWebAssemblySourceProvider, public CachedResourceClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -90,6 +90,6 @@ private:
     RefPtr<FragmentedSharedBuffer> m_buffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBASSEMBLY)

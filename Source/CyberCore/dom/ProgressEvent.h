@@ -27,7 +27,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProgressEvent : public Event {
     WTF_MAKE_ISO_ALLOCATED(ProgressEvent);
@@ -64,4 +64,4 @@ private:
     unsigned long long m_total;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

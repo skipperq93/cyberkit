@@ -35,7 +35,7 @@
 #include "WebExtensionAPITest.h"
 #include "WebExtensionAPIWebNavigation.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtensionAPIExtension;
 class WebExtensionAPIRuntime;
@@ -62,6 +62,6 @@ private:
     RefPtr<WebExtensionAPIWebNavigation> m_webNavigation;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

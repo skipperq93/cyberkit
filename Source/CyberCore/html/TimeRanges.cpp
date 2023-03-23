@@ -26,7 +26,7 @@
 #include "config.h"
 #include "TimeRanges.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<TimeRanges> TimeRanges::create()
 {

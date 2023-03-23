@@ -54,7 +54,7 @@ webkit_dom_html_quote_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_quote_element_get_cite(CyberKitDOMHTMLQuoteElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_quote_element_get_cite(CyberKitDOMHTMLQuoteElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_quote_element_set_cite(CyberKitDOMHTMLQuoteElement* self, const gchar* value);

@@ -27,10 +27,10 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CSSMatrixComponentOptions {
     std::optional<bool> is2D;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VisibilityChangeClient : public CanMakeWeakPtr<VisibilityChangeClient> {
 public:

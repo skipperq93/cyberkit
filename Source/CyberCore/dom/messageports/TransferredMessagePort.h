@@ -27,10 +27,10 @@
 
 #include "MessagePortIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // When a message port is transferred, it is represented by a pair of identifiers.
 // The first identifier is the port being transferred and the second is its remote port.
 using TransferredMessagePort = std::pair<MessagePortIdentifier, MessagePortIdentifier>;
 
-} // namespace WebCore
+} // namespace CyberCore

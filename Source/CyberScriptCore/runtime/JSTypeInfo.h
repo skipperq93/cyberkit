@@ -37,7 +37,7 @@ class LLIntOffsetsExtractor;
 
 // Inline flags.
 
-static constexpr unsigned MasqueradesAsUndefined = 1; // WebCore uses MasqueradesAsUndefined to make document.all undetectable.
+static constexpr unsigned MasqueradesAsUndefined = 1; // CyberCore uses MasqueradesAsUndefined to make document.all undetectable.
 static constexpr unsigned ImplementsDefaultHasInstance = 1 << 1;
 static constexpr unsigned OverridesGetCallData = 1 << 2; // Need this flag if you implement [[Callable]] interface, which means overriding getCallData. The object may not be callable since getCallData can say it is not callable.
 static constexpr unsigned OverridesGetOwnPropertySlot = 1 << 3;

@@ -32,7 +32,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSMathInvert);
 
@@ -120,4 +120,4 @@ RefPtr<CSSCalcExpressionNode> CSSMathInvert::toCalcExpressionNode() const
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

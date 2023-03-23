@@ -19,16 +19,16 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitUserContent_h
-#define WebKitUserContent_h
+#ifndef CyberKitUserContent_h
+#define CyberKitUserContent_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 /**
- * WebKitUserContentInjectedFrames:
+ * CyberKitUserContentInjectedFrames:
  * @WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES: Insert the user style
  *   sheet in all the frames loaded by the web view, including
  *   nested frames. This is the default.
@@ -43,10 +43,10 @@ G_BEGIN_DECLS
 typedef enum {
     WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES,
     WEBKIT_USER_CONTENT_INJECT_TOP_FRAME,
-} WebKitUserContentInjectedFrames;
+} CyberKitUserContentInjectedFrames;
 
 /**
- * WebKitUserStyleLevel:
+ * CyberKitUserStyleLevel:
  * @WEBKIT_USER_STYLE_LEVEL_USER: The style sheet is an user style sheet,
  *   its contents always override other style sheets. This is the default.
  * @WEBKIT_USER_STYLE_LEVEL_AUTHOR: The style sheet will be treated as if
@@ -60,38 +60,38 @@ typedef enum {
 typedef enum {
     WEBKIT_USER_STYLE_LEVEL_USER,
     WEBKIT_USER_STYLE_LEVEL_AUTHOR,
-} WebKitUserStyleLevel;
+} CyberKitUserStyleLevel;
 
 #define WEBKIT_TYPE_USER_STYLE_SHEET (webkit_user_style_sheet_get_type())
 
-typedef struct _WebKitUserStyleSheet WebKitUserStyleSheet;
+typedef struct _CyberKitUserStyleSheet CyberKitUserStyleSheet;
 
 WEBKIT_API GType
 webkit_user_style_sheet_get_type      (void);
 
-WEBKIT_API WebKitUserStyleSheet *
-webkit_user_style_sheet_ref           (WebKitUserStyleSheet           *user_style_sheet);
+WEBKIT_API CyberKitUserStyleSheet *
+webkit_user_style_sheet_ref           (CyberKitUserStyleSheet           *user_style_sheet);
 
 WEBKIT_API void
-webkit_user_style_sheet_unref         (WebKitUserStyleSheet           *user_style_sheet);
+webkit_user_style_sheet_unref         (CyberKitUserStyleSheet           *user_style_sheet);
 
-WEBKIT_API WebKitUserStyleSheet *
+WEBKIT_API CyberKitUserStyleSheet *
 webkit_user_style_sheet_new           (const gchar                    *source,
-                                       WebKitUserContentInjectedFrames injected_frames,
-                                       WebKitUserStyleLevel            level,
+                                       CyberKitUserContentInjectedFrames injected_frames,
+                                       CyberKitUserStyleLevel            level,
                                        const gchar* const             *allow_list,
                                        const gchar* const             *block_list);
 
-WEBKIT_API WebKitUserStyleSheet *
+WEBKIT_API CyberKitUserStyleSheet *
 webkit_user_style_sheet_new_for_world (const gchar                    *source,
-                                       WebKitUserContentInjectedFrames injected_frames,
-                                       WebKitUserStyleLevel            level,
+                                       CyberKitUserContentInjectedFrames injected_frames,
+                                       CyberKitUserStyleLevel            level,
                                        const gchar                    *world_name,
                                        const gchar* const             *allow_list,
                                        const gchar* const             *block_list);
 
 /**
- * WebKitUserScriptInjectionTime:
+ * CyberKitUserScriptInjectionTime:
  * @WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_START: Insert the code of the user
  *   script at the beginning of loaded documents. This is the default.
  * @WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_END: Insert the code of the user
@@ -104,51 +104,51 @@ webkit_user_style_sheet_new_for_world (const gchar                    *source,
 typedef enum {
     WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_START,
     WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_END,
-} WebKitUserScriptInjectionTime;
+} CyberKitUserScriptInjectionTime;
 
 #define WEBKIT_TYPE_USER_SCRIPT (webkit_user_script_get_type())
 
-typedef struct _WebKitUserScript WebKitUserScript;
+typedef struct _CyberKitUserScript CyberKitUserScript;
 
 WEBKIT_API GType
 webkit_user_script_get_type      (void);
 
-WEBKIT_API WebKitUserScript *
-webkit_user_script_ref           (WebKitUserScript               *user_script);
+WEBKIT_API CyberKitUserScript *
+webkit_user_script_ref           (CyberKitUserScript               *user_script);
 
 WEBKIT_API void
-webkit_user_script_unref         (WebKitUserScript               *user_script);
+webkit_user_script_unref         (CyberKitUserScript               *user_script);
 
-WEBKIT_API WebKitUserScript *
+WEBKIT_API CyberKitUserScript *
 webkit_user_script_new           (const gchar                    *source,
-                                  WebKitUserContentInjectedFrames injected_frames,
-                                  WebKitUserScriptInjectionTime   injection_time,
+                                  CyberKitUserContentInjectedFrames injected_frames,
+                                  CyberKitUserScriptInjectionTime   injection_time,
                                   const gchar* const             *allow_list,
                                   const gchar* const             *block_list);
 
-WEBKIT_API WebKitUserScript *
+WEBKIT_API CyberKitUserScript *
 webkit_user_script_new_for_world (const gchar                    *source,
-                                  WebKitUserContentInjectedFrames injected_frames,
-                                  WebKitUserScriptInjectionTime   injection_time,
+                                  CyberKitUserContentInjectedFrames injected_frames,
+                                  CyberKitUserScriptInjectionTime   injection_time,
                                   const gchar                    *world_name,
                                   const gchar* const             *allow_list,
                                   const gchar* const             *block_list);
 
 #define WEBKIT_TYPE_USER_CONTENT_FILTER   (webkit_user_content_filter_get_type())
 
-typedef struct _WebKitUserContentFilter WebKitUserContentFilter;
+typedef struct _CyberKitUserContentFilter CyberKitUserContentFilter;
 
 WEBKIT_API GType
 webkit_user_content_filter_get_type       (void);
 
 WEBKIT_API const char*
-webkit_user_content_filter_get_identifier (WebKitUserContentFilter     *user_content_filter);
+webkit_user_content_filter_get_identifier (CyberKitUserContentFilter     *user_content_filter);
 
-WEBKIT_API WebKitUserContentFilter *
-webkit_user_content_filter_ref            (WebKitUserContentFilter     *user_content_filter);
+WEBKIT_API CyberKitUserContentFilter *
+webkit_user_content_filter_ref            (CyberKitUserContentFilter     *user_content_filter);
 
 WEBKIT_API void
-webkit_user_content_filter_unref          (WebKitUserContentFilter     *user_content_filter);
+webkit_user_content_filter_unref          (CyberKitUserContentFilter     *user_content_filter);
 
 G_END_DECLS
 

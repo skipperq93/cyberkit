@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DeviceOrientationData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -62,4 +62,4 @@ DeviceOrientationData::DeviceOrientationData(std::optional<double> alpha, std::o
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

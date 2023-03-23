@@ -41,7 +41,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -98,7 +98,7 @@ public:
     LoaderClient(Function<void()>&& loadedCallback)
         : m_loadedCallback { WTFMove(loadedCallback) } { }
 
-    void didFinishLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) final
+    void didFinishLoadForFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, API::Navigation*, API::Object*) final
     {
         m_loadedCallback();
     }
@@ -232,6 +232,6 @@ void RemoteInspectorProtocolHandler::platformStartTask(WebPageProxy& pageProxy, 
     task.didComplete(ResourceError());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

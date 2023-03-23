@@ -32,7 +32,7 @@
 #include "IndexedDB.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace IDBClient {
 class IDBConnectionProxy;
@@ -93,4 +93,4 @@ private:
     std::unique_ptr<IDBDatabaseInfo> m_originalDatabaseInfo;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

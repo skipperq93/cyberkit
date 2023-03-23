@@ -32,7 +32,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLElement;
 
@@ -60,4 +60,4 @@ private:
     RefPtr<HTMLElement> m_spanElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

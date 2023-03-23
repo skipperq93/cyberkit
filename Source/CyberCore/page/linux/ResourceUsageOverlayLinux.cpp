@@ -35,7 +35,7 @@
 #include "Page.h"
 #include "ResourceUsageThread.h"
 #include "SystemFontDatabase.h"
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/VM.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
 namespace CyberCore {

@@ -29,7 +29,7 @@
 #include "CachedResourceHandle.h"
 #include "DisplayReplacedBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Display {
 
@@ -57,7 +57,7 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_DISPLAY_BOX(ImageBox, isImageBox())
 

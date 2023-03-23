@@ -102,7 +102,7 @@ static NSString * const kAXLoadCompleteNotification = @"AXLoadComplete";
 @end
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -300,7 +300,7 @@ void PageClientImpl::didChangeContentSize(const CyberCore::IntSize& newSize)
 void PageClientImpl::setCursor(const CyberCore::Cursor& cursor)
 {
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanCommunicateWithWindowServer));
-    // FIXME: Would be nice to share this code with WebKit1's WebChromeClient.
+    // FIXME: Would be nice to share this code with CyberKit1's WebChromeClient.
 
     // The Web process may have asked to change the cursor when the view was in an active window, but
     // if it is no longer in a window or the window is not active, then the cursor should not change.
@@ -546,7 +546,7 @@ Ref<ValidationBubble> PageClientImpl::createValidationBubble(const String& messa
     return ValidationBubble::create(m_view, message, settings);
 }
 
-void PageClientImpl::showSafeBrowsingWarning(const SafeBrowsingWarning& warning, CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&& completionHandler)
+void PageClientImpl::showSafeBrowsingWarning(const SafeBrowsingWarning& warning, CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)>&& completionHandler)
 {
     if (!m_impl)
         return completionHandler(ContinueUnsafeLoad::Yes);
@@ -1066,6 +1066,6 @@ void PageClientImpl::cancelTextRecognitionForVideoInElementFullscreen()
     m_impl->cancelTextRecognitionForVideoInElementFullscreen();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

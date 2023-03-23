@@ -34,7 +34,7 @@
 #include "OverconstrainedError.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class OverconstrainedErrorEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(OverconstrainedErrorEvent);
@@ -73,6 +73,6 @@ private:
     RefPtr<OverconstrainedError> m_error;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

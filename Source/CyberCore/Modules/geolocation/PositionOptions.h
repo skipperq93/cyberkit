@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
     
 struct PositionOptions {
     bool enableHighAccuracy { false };
@@ -33,4 +33,4 @@ struct PositionOptions {
     unsigned maximumAge { 0 };
 };
     
-} // namespace WebCore
+} // namespace CyberCore

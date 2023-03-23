@@ -30,7 +30,7 @@ namespace JSC {
 class CallFrame;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFrameElementBase : public HTMLFrameOwnerElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLFrameElementBase);
@@ -73,9 +73,9 @@ private:
     bool m_openingURLAfterInserting { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLFrameElementBase)
-    static bool isType(const WebCore::HTMLElement& element) { return is<WebCore::HTMLFrameElement>(element) || is<WebCore::HTMLIFrameElement>(element); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::HTMLElement>(node) && isType(downcast<WebCore::HTMLElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLFrameElementBase)
+    static bool isType(const CyberCore::HTMLElement& element) { return is<CyberCore::HTMLFrameElement>(element) || is<CyberCore::HTMLIFrameElement>(element); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::HTMLElement>(node) && isType(downcast<CyberCore::HTMLElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

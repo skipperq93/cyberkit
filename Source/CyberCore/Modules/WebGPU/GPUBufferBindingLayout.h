@@ -29,13 +29,13 @@
 #include "GPUIntegralTypes.h"
 #include <pal/graphics/WebGPU/WebGPUBufferBindingLayout.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUBufferBindingLayout {
     PAL::WebGPU::BufferBindingLayout convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(type),
+            CyberCore::convertToBacking(type),
             hasDynamicOffset,
             minBindingSize,
         };

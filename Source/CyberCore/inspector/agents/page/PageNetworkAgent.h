@@ -27,7 +27,7 @@
 
 #include "InspectorNetworkAgent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InspectorClient;
 class Page;
@@ -57,4 +57,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

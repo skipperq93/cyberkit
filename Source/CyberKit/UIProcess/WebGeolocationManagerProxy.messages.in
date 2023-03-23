@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebGeolocationManagerProxy {
-    StartUpdating(CyberCore::RegistrableDomain registrableDomain, WebKit::WebPageProxyIdentifier pageProxyID, String authorizationToken, bool enableHighAccuracy)
+    StartUpdating(CyberCore::RegistrableDomain registrableDomain, CyberKit::WebPageProxyIdentifier pageProxyID, String authorizationToken, bool enableHighAccuracy)
     StopUpdating(CyberCore::RegistrableDomain registrableDomain)
     SetEnableHighAccuracy(CyberCore::RegistrableDomain registrableDomain, bool enabled)
 }

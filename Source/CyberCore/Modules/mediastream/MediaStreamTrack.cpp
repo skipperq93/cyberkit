@@ -55,7 +55,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static HashSet<MediaStreamTrack*>& allCaptureTracks()
 {
@@ -716,6 +716,6 @@ WTFLogChannel& MediaStreamTrack::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

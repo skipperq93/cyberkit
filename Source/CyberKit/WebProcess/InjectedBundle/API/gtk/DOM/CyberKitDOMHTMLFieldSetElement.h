@@ -54,7 +54,7 @@ webkit_dom_html_field_set_element_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLFormElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLFormElement*
 webkit_dom_html_field_set_element_get_form(CyberKitDOMHTMLFieldSetElement* self);

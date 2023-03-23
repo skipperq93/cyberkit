@@ -19,43 +19,43 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitJavascriptResult_h
-#define WebKitJavascriptResult_h
+#ifndef CyberKitJavascriptResult_h
+#define CyberKitJavascriptResult_h
 
 #include <jsc/jsc.h>
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 #if PLATFORM(GTK) && !ENABLE(2022_GLIB_API)
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/JSBase.h>
 #endif
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_JAVASCRIPT_RESULT (webkit_javascript_result_get_type())
 
-typedef struct _WebKitJavascriptResult WebKitJavascriptResult;
+typedef struct _CyberKitJavascriptResult CyberKitJavascriptResult;
 
 
 WEBKIT_API GType
 webkit_javascript_result_get_type           (void);
 
-WEBKIT_API WebKitJavascriptResult *
-webkit_javascript_result_ref                (WebKitJavascriptResult *js_result);
+WEBKIT_API CyberKitJavascriptResult *
+webkit_javascript_result_ref                (CyberKitJavascriptResult *js_result);
 
 WEBKIT_API void
-webkit_javascript_result_unref              (WebKitJavascriptResult *js_result);
+webkit_javascript_result_unref              (CyberKitJavascriptResult *js_result);
 
 #if PLATFORM(GTK) && !ENABLE(2022_GLIB_API)
 WEBKIT_DEPRECATED JSGlobalContextRef
-webkit_javascript_result_get_global_context (WebKitJavascriptResult *js_result);
+webkit_javascript_result_get_global_context (CyberKitJavascriptResult *js_result);
 
 WEBKIT_DEPRECATED_FOR(webkit_javascript_result_get_js_value) JSValueRef
-webkit_javascript_result_get_value          (WebKitJavascriptResult *js_result);
+webkit_javascript_result_get_value          (CyberKitJavascriptResult *js_result);
 #endif
 
 WEBKIT_API JSCValue *
-webkit_javascript_result_get_js_value       (WebKitJavascriptResult *js_result);
+webkit_javascript_result_get_js_value       (CyberKitJavascriptResult *js_result);
 
 G_END_DECLS
 

@@ -30,7 +30,7 @@
 #include "GPUTextureViewDescriptor.h"
 #include <pal/graphics/WebGPU/WebGPUTextureViewDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUTexture::label() const
 {

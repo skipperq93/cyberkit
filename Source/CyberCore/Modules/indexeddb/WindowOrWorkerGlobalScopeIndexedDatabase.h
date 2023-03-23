@@ -26,7 +26,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class IDBFactory;
@@ -38,4 +38,4 @@ public:
     WEBCORE_EXPORT static IDBFactory* indexedDB(WorkerGlobalScope&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

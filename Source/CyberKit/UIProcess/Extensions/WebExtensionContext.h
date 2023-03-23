@@ -68,7 +68,7 @@ OBJC_CLASS _WKWebExtensionContext;
 OBJC_CLASS _WKWebExtensionContextDelegate;
 OBJC_PROTOCOL(_WKWebExtensionTab);
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebExtension;
 class WebUserContentControllerProxy;
@@ -100,9 +100,9 @@ public:
     using InjectedContentVector = WebExtension::InjectedContentVector;
 
     using WeakPageCountedSet = WeakHashCountedSet<WebPageProxy>;
-    using EventListenterTypeCountedSet = HashCountedSet<WebExtensionEventListenerType, WTF::IntHash<WebKit::WebExtensionEventListenerType>, WTF::StrongEnumHashTraits<WebKit::WebExtensionEventListenerType>>;
-    using EventListenterTypePageMap = HashMap<WebExtensionEventListenerType, WeakPageCountedSet, WTF::IntHash<WebKit::WebExtensionEventListenerType>, WTF::StrongEnumHashTraits<WebKit::WebExtensionEventListenerType>>;
-    using EventListenerTypeSet = HashSet<WebExtensionEventListenerType, WTF::IntHash<WebKit::WebExtensionEventListenerType>, WTF::StrongEnumHashTraits<WebKit::WebExtensionEventListenerType>>;
+    using EventListenterTypeCountedSet = HashCountedSet<WebExtensionEventListenerType, WTF::IntHash<CyberKit::WebExtensionEventListenerType>, WTF::StrongEnumHashTraits<CyberKit::WebExtensionEventListenerType>>;
+    using EventListenterTypePageMap = HashMap<WebExtensionEventListenerType, WeakPageCountedSet, WTF::IntHash<CyberKit::WebExtensionEventListenerType>, WTF::StrongEnumHashTraits<CyberKit::WebExtensionEventListenerType>>;
+    using EventListenerTypeSet = HashSet<WebExtensionEventListenerType, WTF::IntHash<CyberKit::WebExtensionEventListenerType>, WTF::StrongEnumHashTraits<CyberKit::WebExtensionEventListenerType>>;
     using VoidCompletionHandlerVector = Vector<CompletionHandler<void()>>;
 
     enum class EqualityOnly : bool { No, Yes };
@@ -370,6 +370,6 @@ void WebExtensionContext::sendToProcessesForEvent(WebExtensionEventListenerType 
         process.send(T(message), identifier());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

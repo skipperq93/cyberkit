@@ -24,7 +24,7 @@
 #include "TestStringifierReadWriteAttribute.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestStringifierReadWriteAttribute : public JSDOMWrapper<TestStringifierReadWriteAttribute> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestStringifierReadWriteAttribute>
     using ToWrappedReturnType = TestStringifierReadWriteAttribute*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "ExceptionCode.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Exception {
 public:
@@ -54,4 +54,4 @@ inline Exception::Exception(ExceptionCode code, String message)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

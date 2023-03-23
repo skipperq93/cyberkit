@@ -29,13 +29,13 @@
 
 #include "ActiveDOMObject.h"
 #include "EventTarget.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/Observer.h>
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TrackBase;
 
@@ -57,9 +57,9 @@ public:
     using RefCounted<TrackListBase>::deref;
     ScriptExecutionContext* scriptExecutionContext() const final { return ContextDestructionObserver::scriptExecutionContext(); }
 
-    WebCoreOpaqueRoot opaqueRoot();
+    CyberCoreOpaqueRoot opaqueRoot();
 
-    using OpaqueRootObserver = WTF::Observer<WebCoreOpaqueRoot()>;
+    using OpaqueRootObserver = WTF::Observer<CyberCoreOpaqueRoot()>;
     void setOpaqueRootObserver(const OpaqueRootObserver& observer) { m_opaqueRootObserver = observer; };
 
     // Needs to be public so tracks can call it
@@ -88,11 +88,11 @@ private:
     bool m_isChangeEventScheduled { false };
 };
 
-inline WebCoreOpaqueRoot root(TrackListBase* trackList)
+inline CyberCoreOpaqueRoot root(TrackListBase* trackList)
 {
     return trackList->opaqueRoot();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

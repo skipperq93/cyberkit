@@ -31,7 +31,7 @@
 #include "PaymentCoordinator.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool requiresSupportedNetworks(unsigned version, const ApplePayRequestBase& request)
 {
@@ -126,6 +126,6 @@ ExceptionOr<ApplePaySessionPaymentRequest> convertAndValidate(Document& document
     return WTFMove(result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUCompositorIntegration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 Vector<MachSendRight> GPUCompositorIntegration::recreateRenderBuffers(int width, int height) const
@@ -40,4 +40,4 @@ void GPUCompositorIntegration::prepareForDisplay(CompletionHandler<void()>&& com
     m_backing->prepareForDisplay(WTFMove(completionHandler));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

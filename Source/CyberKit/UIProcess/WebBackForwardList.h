@@ -36,7 +36,7 @@ namespace API {
 class Array;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct BackForwardListState;
 struct WebBackForwardListCounts;
@@ -98,4 +98,4 @@ private:
     std::optional<size_t> m_currentIndex;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

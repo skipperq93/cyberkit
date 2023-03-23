@@ -24,7 +24,7 @@
 #include "MapLike.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSMapLike : public JSDOMWrapper<MapLike> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<MapLike> {
     using ToWrappedReturnType = MapLike*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

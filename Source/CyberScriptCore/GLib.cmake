@@ -1,9 +1,9 @@
 include(GLibMacros)
 
-file(MAKE_DIRECTORY ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR})
-file(MAKE_DIRECTORY ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc)
+file(MAKE_DIRECTORY ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR})
+file(MAKE_DIRECTORY ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc)
 
-list(APPEND JavaScriptCore_SOURCES
+list(APPEND CyberScriptCore_SOURCES
     API/glib/JSAPIWrapperGlobalObject.cpp
     API/glib/JSAPIWrapperObjectGLib.cpp
     API/glib/JSCCallbackFunction.cpp
@@ -18,30 +18,30 @@ list(APPEND JavaScriptCore_SOURCES
     API/glib/JSCWrapperMap.cpp
 )
 
-list(APPEND JavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES
     "${JAVASCRIPTCORE_DIR}/API/glib"
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}"
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
-    "${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
+    "${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}"
 )
 
-list(APPEND JavaScriptCore_INTERFACE_INCLUDE_DIRECTORIES
-    "${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}"
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}"
+list(APPEND CyberScriptCore_INTERFACE_INCLUDE_DIRECTORIES
+    "${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}"
 )
 
-set(JavaScriptCore_INSTALLED_HEADERS
+set(CyberScriptCore_INSTALLED_HEADERS
     ${JAVASCRIPTCORE_DIR}/API/glib/JSCOptions.h
-    ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVersion.h
+    ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVersion.h
 )
 
 if (NOT ENABLE_2022_GLIB_API)
-    list(APPEND JavaScriptCore_INSTALLED_HEADERS
+    list(APPEND CyberScriptCore_INSTALLED_HEADERS
         ${JAVASCRIPTCORE_DIR}/API/glib/JSCAutocleanups.h
     )
 endif ()
 
-set(JavaScriptCore_HEADER_TEMPLATES
+set(CyberScriptCore_HEADER_TEMPLATES
     ${JAVASCRIPTCORE_DIR}/API/glib/JSCClass.h.in
     ${JAVASCRIPTCORE_DIR}/API/glib/JSCContext.h.in
     ${JAVASCRIPTCORE_DIR}/API/glib/JSCDefines.h.in
@@ -52,24 +52,24 @@ set(JavaScriptCore_HEADER_TEMPLATES
     ${JAVASCRIPTCORE_DIR}/API/glib/jsc.h.in
 )
 
-GENERATE_GLIB_API_HEADERS(JavaScriptCore JavaScriptCore_HEADER_TEMPLATES
-    ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc
-    JavaScriptCore_INSTALLED_HEADERS
+GENERATE_GLIB_API_HEADERS(CyberScriptCore CyberScriptCore_HEADER_TEMPLATES
+    ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc
+    CyberScriptCore_INSTALLED_HEADERS
     "-DENABLE_2022_GLIB_API=$<BOOL:${ENABLE_2022_GLIB_API}>"
 )
 
-configure_file(API/glib/JSCVersion.h.in ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVersion.h)
+configure_file(API/glib/JSCVersion.h.in ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc/JSCVersion.h)
 
 # These symbolic link allows includes like #include <jsc/jsc.h> which simulates installed headers.
 add_custom_command(
-    OUTPUT ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}/jsc
+    OUTPUT ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}/jsc
     DEPENDS ${JAVASCRIPTCORE_DIR}/API/glib
-    COMMAND ln -n -s -f ${JAVASCRIPTCORE_DIR}/API/glib ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}/jsc
+    COMMAND ln -n -s -f ${JAVASCRIPTCORE_DIR}/API/glib ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}/jsc
     VERBATIM
 )
 add_custom_target(JSC-fake-api-headers
-    DEPENDS ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}/jsc
+    DEPENDS ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}/jsc
 )
-set(JavaScriptCore_EXTRA_DEPENDENCIES
+set(CyberScriptCore_EXTRA_DEPENDENCIES
     JSC-fake-api-headers
 )

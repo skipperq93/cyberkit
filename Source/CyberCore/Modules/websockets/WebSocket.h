@@ -43,7 +43,7 @@ class ArrayBuffer;
 class ArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class ThreadableWebSocketChannel;
@@ -142,4 +142,4 @@ private:
     RefPtr<PendingActivity<WebSocket>> m_pendingActivity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

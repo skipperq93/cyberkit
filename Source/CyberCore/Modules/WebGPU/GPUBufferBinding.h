@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUBufferBinding.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUBufferBinding {
     PAL::WebGPU::BufferBinding convertToBacking() const

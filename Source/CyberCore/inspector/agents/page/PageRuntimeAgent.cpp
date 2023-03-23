@@ -48,7 +48,7 @@
 #include <CyberScriptCore/InjectedScriptManager.h>
 #include <CyberScriptCore/InspectorProtocolObjects.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -214,4 +214,4 @@ Protocol::ErrorStringOr<std::tuple<Ref<Protocol::Runtime::RemoteObject>, std::op
     return InspectorRuntimeAgent::callFunctionOn(injectedScript, objectId, expression, WTFMove(optionalArguments), WTFMove(doNotPauseOnExceptionsAndMuteConsole), WTFMove(returnByValue), WTFMove(generatePreview), WTFMove(emulateUserGesture));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

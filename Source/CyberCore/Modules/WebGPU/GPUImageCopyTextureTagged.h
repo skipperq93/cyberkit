@@ -29,7 +29,7 @@
 #include "GPUPredefinedColorSpace.h"
 #include <pal/graphics/WebGPU/WebGPUImageCopyTextureTagged.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUImageCopyTextureTagged : public GPUImageCopyTexture {
     PAL::WebGPU::ImageCopyTextureTagged convertToBacking() const
@@ -39,10 +39,10 @@ struct GPUImageCopyTextureTagged : public GPUImageCopyTexture {
             {
                 texture->backing(),
                 mipLevel,
-                origin ? std::optional { WebCore::convertToBacking(*origin) } : std::nullopt,
-                WebCore::convertToBacking(aspect),
+                origin ? std::optional { CyberCore::convertToBacking(*origin) } : std::nullopt,
+                CyberCore::convertToBacking(aspect),
             },
-            WebCore::convertToBacking(colorSpace),
+            CyberCore::convertToBacking(colorSpace),
             premultipliedAlpha,
         };
     }

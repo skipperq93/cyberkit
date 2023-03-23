@@ -38,7 +38,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMFileSystem;
 class DataTransferListItem;

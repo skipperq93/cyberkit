@@ -43,7 +43,7 @@ class Color;
 struct AppHighlight;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PageClientImplCocoa : public PageClient {
 public:

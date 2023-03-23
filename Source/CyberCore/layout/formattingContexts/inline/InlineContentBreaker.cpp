@@ -33,7 +33,7 @@
 #include "LayoutElementBox.h"
 #include "TextUtil.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 

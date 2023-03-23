@@ -38,7 +38,7 @@
 #import "WebAccessibilityObjectWrapperIOS.h"
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 void AccessibilityObject::detachPlatformWrapper(AccessibilityDetachmentType)
 {
@@ -227,6 +227,6 @@ RetainPtr<NSAttributedString> attributedStringCreate(Node* node, StringView text
     return result;
 }
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(ACCESSIBILITY) && PLATFORM(IOS_FAMILY)

@@ -31,7 +31,7 @@
 #include "RTCRtpReceiver.h"
 #include "RTCRtpSender.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<RTCRtpTransform> RTCRtpTransform::from(std::optional<Internal>&& internal)
 {
@@ -148,6 +148,6 @@ bool operator==(const RTCRtpTransform& a, const RTCRtpTransform& b)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

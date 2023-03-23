@@ -36,7 +36,7 @@
 #include "ShadowRoot.h"
 #include "StyledElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Salt to separate otherwise identical string hashes so a class-selector like .article won't match <article> elements.
 enum { TagNameSalt = 13, IdSalt = 17, ClassSalt = 19, AttributeSalt = 23 };

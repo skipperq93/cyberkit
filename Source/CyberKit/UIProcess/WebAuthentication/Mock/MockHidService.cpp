@@ -31,7 +31,7 @@
 #include "MockHidConnection.h"
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 MockHidService::MockHidService(Observer& observer, const CyberCore::MockWebAuthenticationConfiguration& configuration)
     : HidService(observer)
@@ -53,6 +53,6 @@ UniqueRef<HidConnection> MockHidService::createHidConnection(IOHIDDeviceRef devi
     return makeUniqueRef<MockHidConnection>(device, m_configuration);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

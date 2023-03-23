@@ -33,7 +33,7 @@
 #include "WebProcessPool.h"
 #include "WebsiteDataStoreParameters.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& parameters)
 {
@@ -92,4 +92,4 @@ void WebsiteDataStore::setHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPoli
     cookieStore().setHTTPCookieAcceptPolicy(policy, [] { });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

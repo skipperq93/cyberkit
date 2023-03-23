@@ -50,7 +50,7 @@
 #include "UserAgentStyleSheets.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace ImageControlsMac {
 
 #if ENABLE(SERVICE_CONTROLS)
@@ -255,4 +255,4 @@ void destroyImageControls(HTMLElement& element)
 #endif // ENABLE(SERVICE_CONTROLS)
 
 } // namespace ImageControlsMac
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FillLayer;
 class RenderStyle;
@@ -127,5 +127,5 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

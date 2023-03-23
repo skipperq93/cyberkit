@@ -29,16 +29,16 @@
 #include "GPUStencilOperation.h"
 #include <pal/graphics/WebGPU/WebGPUStencilFaceState.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUStencilFaceState {
     PAL::WebGPU::StencilFaceState convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(compare),
-            WebCore::convertToBacking(failOp),
-            WebCore::convertToBacking(depthFailOp),
-            WebCore::convertToBacking(passOp),
+            CyberCore::convertToBacking(compare),
+            CyberCore::convertToBacking(failOp),
+            CyberCore::convertToBacking(depthFailOp),
+            CyberCore::convertToBacking(passOp),
         };
     }
 

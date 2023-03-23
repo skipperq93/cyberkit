@@ -33,7 +33,7 @@
 #include <wtf/Function.h>
 #include <wtf/Span.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FragmentedSharedBuffer;
 
@@ -69,4 +69,4 @@ inline void FetchResponseBodyLoader::consumeDataByChunk(ConsumeDataByChunkCallba
     m_consumeDataCallback(&chunk);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

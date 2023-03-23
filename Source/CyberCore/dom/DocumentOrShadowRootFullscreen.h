@@ -27,7 +27,7 @@
 
 #if ENABLE(FULLSCREEN_API)
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class TreeScope;
@@ -37,6 +37,6 @@ public:
     static Element* fullscreenElement(TreeScope&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

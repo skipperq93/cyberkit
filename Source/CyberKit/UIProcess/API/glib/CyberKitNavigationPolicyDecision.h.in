@@ -19,27 +19,27 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitNavigationPolicyDecision_h
-#define WebKitNavigationPolicyDecision_h
+#ifndef CyberKitNavigationPolicyDecision_h
+#define CyberKitNavigationPolicyDecision_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitNavigationAction.h>
-#include <@API_INCLUDE_PREFIX@/WebKitPolicyDecision.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNavigationAction.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPolicyDecision.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_NAVIGATION_POLICY_DECISION            (webkit_navigation_policy_decision_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_NAVIGATION_POLICY_DECISION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, WebKitNavigationPolicyDecision))
-#define WEBKIT_NAVIGATION_POLICY_DECISION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, WebKitNavigationPolicyDecisionClass))
+#define WEBKIT_NAVIGATION_POLICY_DECISION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, CyberKitNavigationPolicyDecision))
+#define WEBKIT_NAVIGATION_POLICY_DECISION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, CyberKitNavigationPolicyDecisionClass))
 #define WEBKIT_IS_NAVIGATION_POLICY_DECISION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_NAVIGATION_POLICY_DECISION))
 #define WEBKIT_IS_NAVIGATION_POLICY_DECISION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_NAVIGATION_POLICY_DECISION))
-#define WEBKIT_NAVIGATION_POLICY_DECISION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, WebKitNavigationPolicyDecisionClass))
+#define WEBKIT_NAVIGATION_POLICY_DECISION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_NAVIGATION_POLICY_DECISION, CyberKitNavigationPolicyDecisionClass))
 
-struct _WebKitNavigationPolicyDecisionClass {
-    WebKitPolicyDecisionClass parent_class;
+struct _CyberKitNavigationPolicyDecisionClass {
+    CyberKitPolicyDecisionClass parent_class;
 
     /*< private >*/
     void (*_webkit_reserved0) (void);
@@ -49,28 +49,28 @@ struct _WebKitNavigationPolicyDecisionClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitNavigationPolicyDecision, webkit_navigation_policy_decision, WEBKIT, NAVIGATION_POLICY_DECISION, WebKitPolicyDecision)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitNavigationPolicyDecision, webkit_navigation_policy_decision, WEBKIT, NAVIGATION_POLICY_DECISION, CyberKitPolicyDecision)
 
-WEBKIT_API WebKitNavigationAction *
-webkit_navigation_policy_decision_get_navigation_action (WebKitNavigationPolicyDecision *decision);
+WEBKIT_API CyberKitNavigationAction *
+webkit_navigation_policy_decision_get_navigation_action (CyberKitNavigationPolicyDecision *decision);
 
 #if PLATFORM(GTK) && !USE(GTK4)
-WEBKIT_DEPRECATED_FOR(webkit_navigation_policy_decision_get_navigation_action) WebKitNavigationType
-webkit_navigation_policy_decision_get_navigation_type   (WebKitNavigationPolicyDecision *decision);
+WEBKIT_DEPRECATED_FOR(webkit_navigation_policy_decision_get_navigation_action) CyberKitNavigationType
+webkit_navigation_policy_decision_get_navigation_type   (CyberKitNavigationPolicyDecision *decision);
 
 WEBKIT_DEPRECATED_FOR(webkit_navigation_policy_decision_get_navigation_action) guint
-webkit_navigation_policy_decision_get_mouse_button      (WebKitNavigationPolicyDecision *decision);
+webkit_navigation_policy_decision_get_mouse_button      (CyberKitNavigationPolicyDecision *decision);
 
 WEBKIT_DEPRECATED_FOR(webkit_navigation_policy_decision_get_navigation_action) guint
-webkit_navigation_policy_decision_get_modifiers         (WebKitNavigationPolicyDecision *decision);
+webkit_navigation_policy_decision_get_modifiers         (CyberKitNavigationPolicyDecision *decision);
 
-WEBKIT_DEPRECATED_FOR(webkit_navigation_policy_decision_get_navigation_action) WebKitURIRequest *
-webkit_navigation_policy_decision_get_request           (WebKitNavigationPolicyDecision *decision);
+WEBKIT_DEPRECATED_FOR(webkit_navigation_policy_decision_get_navigation_action) CyberKitURIRequest *
+webkit_navigation_policy_decision_get_request           (CyberKitNavigationPolicyDecision *decision);
 #endif
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_DEPRECATED_FOR(webkit_navigation_policy_decision_get_navigation_action) const gchar *
-webkit_navigation_policy_decision_get_frame_name        (WebKitNavigationPolicyDecision *decision);
+webkit_navigation_policy_decision_get_frame_name        (CyberKitNavigationPolicyDecision *decision);
 #endif
 
 G_END_DECLS

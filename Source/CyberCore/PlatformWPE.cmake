@@ -11,13 +11,13 @@ if (USE_EXTERNAL_HOLEPUNCH)
     include(platform/HolePunch.cmake)
 endif ()
 
-list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberCore_UNIFIED_SOURCE_LIST_FILES
     "SourcesWPE.txt"
 
     "platform/SourcesGLib.txt"
 )
 
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/accessibility/atspi"
     "${WEBCORE_DIR}/crypto/openssl"
     "${WEBCORE_DIR}/platform/audio/glib"
@@ -39,7 +39,7 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/wpe"
 )
 
-list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
     accessibility/atspi/AccessibilityAtspi.h
     accessibility/atspi/AccessibilityAtspiEnums.h
     accessibility/atspi/AccessibilityObjectAtspi.h
@@ -53,9 +53,9 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
 
 set(CSS_VALUE_PLATFORM_DEFINES "HAVE_OS_DARK_MODE_SUPPORT=1")
 
-set(WebCore_USER_AGENT_SCRIPTS_DEPENDENCIES ${WEBCORE_DIR}/platform/wpe/RenderThemeWPE.cpp)
+set(CyberCore_USER_AGENT_SCRIPTS_DEPENDENCIES ${WEBCORE_DIR}/platform/wpe/RenderThemeWPE.cpp)
 
-list(APPEND WebCore_LIBRARIES
+list(APPEND CyberCore_LIBRARIES
     WPE::libwpe
     ${GLIB_GIO_LIBRARIES}
     ${GLIB_GMODULE_LIBRARIES}
@@ -65,7 +65,7 @@ list(APPEND WebCore_LIBRARIES
     ${UPOWERGLIB_LIBRARIES}
 )
 
-list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GIO_UNIX_INCLUDE_DIRS}
     ${GLIB_INCLUDE_DIRS}
     ${LIBTASN1_INCLUDE_DIRS}
@@ -73,18 +73,18 @@ list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
 )
 
 if (USE_WPE_VIDEO_PLANE_DISPLAY_DMABUF OR USE_WPEBACKEND_FDO_AUDIO_EXTENSION)
-    list(APPEND WebCore_LIBRARIES ${WPEBACKEND_FDO_LIBRARIES})
-    list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES ${WPE_INCLUDE_DIRS})
-    list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES ${WPEBACKEND_FDO_INCLUDE_DIRS})
+    list(APPEND CyberCore_LIBRARIES ${WPEBACKEND_FDO_LIBRARIES})
+    list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES ${WPE_INCLUDE_DIRS})
+    list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES ${WPEBACKEND_FDO_INCLUDE_DIRS})
 endif ()
 
 if (USE_OPENXR)
-    list(APPEND WebCore_LIBRARIES ${OPENXR_LIBRARIES})
-    list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES ${OPENXR_INCLUDE_DIRS})
+    list(APPEND CyberCore_LIBRARIES ${OPENXR_LIBRARIES})
+    list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES ${OPENXR_INCLUDE_DIRS})
 endif ()
 
 if (USE_ATSPI)
-    set(WebCore_AtspiInterfaceFiles
+    set(CyberCore_AtspiInterfaceFiles
         ${WEBCORE_DIR}/accessibility/atspi/xml/Accessible.xml
         ${WEBCORE_DIR}/accessibility/atspi/xml/Action.xml
         ${WEBCORE_DIR}/accessibility/atspi/xml/Application.xml
@@ -109,44 +109,44 @@ if (USE_ATSPI)
     )
 
     add_custom_command(
-        OUTPUT ${WebCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.h ${WebCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.c
-        DEPENDS ${WebCore_AtspiInterfaceFiles}
-        COMMAND gdbus-codegen --interface-prefix=org.a11y.atspi --c-namespace=webkit --pragma-once --interface-info-header --output=${WebCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.h ${WebCore_AtspiInterfaceFiles}
-        COMMAND gdbus-codegen --interface-prefix=org.a11y.atspi --c-namespace=webkit --interface-info-body --output=${WebCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.c ${WebCore_AtspiInterfaceFiles}
+        OUTPUT ${CyberCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.h ${CyberCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.c
+        DEPENDS ${CyberCore_AtspiInterfaceFiles}
+        COMMAND gdbus-codegen --interface-prefix=org.a11y.atspi --c-namespace=webkit --pragma-once --interface-info-header --output=${CyberCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.h ${CyberCore_AtspiInterfaceFiles}
+        COMMAND gdbus-codegen --interface-prefix=org.a11y.atspi --c-namespace=webkit --interface-info-body --output=${CyberCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.c ${CyberCore_AtspiInterfaceFiles}
         VERBATIM
     )
 
-    list(APPEND WebCore_SOURCES
-        ${WebCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.c
+    list(APPEND CyberCore_SOURCES
+        ${CyberCore_DERIVED_SOURCES_DIR}/AccessibilityAtspiInterfaces.c
     )
 endif ()
 
 if (USE_LIBGBM)
-    list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES
         ${GBM_INCLUDE_DIR}
         ${LIBDRM_INCLUDE_DIR}
     )
-    list(APPEND WebCore_LIBRARIES
+    list(APPEND CyberCore_LIBRARIES
         ${GBM_LIBRARIES}
         ${LIBDRM_LIBRARIES}
     )
 endif ()
 
 if (ENABLE_GAMEPAD)
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/platform/gamepad/libwpe"
     )
 
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/gamepad/libwpe/GamepadProviderLibWPE.h
     )
 endif ()
 
 if (ENABLE_SPEECH_SYNTHESIS)
-    list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_SYSTEM_INCLUDE_DIRECTORIES
         ${Flite_INCLUDE_DIRS}
     )
-    list(APPEND WebCore_LIBRARIES
+    list(APPEND CyberCore_LIBRARIES
         ${Flite_LIBRARIES}
     )
 endif ()

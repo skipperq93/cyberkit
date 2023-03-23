@@ -32,7 +32,7 @@
 #include <utility>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 
@@ -115,6 +115,6 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 
 

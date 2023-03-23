@@ -27,7 +27,7 @@
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMediaElement;
 class RemotePlayback;

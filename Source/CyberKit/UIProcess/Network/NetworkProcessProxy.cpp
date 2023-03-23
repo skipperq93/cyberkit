@@ -93,7 +93,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, connection())
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static constexpr Seconds networkProcessResponsivenessTimeout = 6_s;
@@ -190,7 +190,7 @@ void NetworkProcessProxy::sendCreationParametersToNewProcess()
 {
     ASSERT(RunLoop::isMain());
 
-    // FIXME: This is a temporary workaround for apps using WebKit API on non-main threads.
+    // FIXME: This is a temporary workaround for apps using CyberKit API on non-main threads.
     // We should remove this once we enforce threading violation check on our APIs.
     // https://bugs.webkit.org/show_bug.cgi?id=200246.
     if (!RunLoop::isMain()) {
@@ -1620,15 +1620,15 @@ void NetworkProcessProxy::setWebProcessHasUploads(CyberCore::ProcessIdentifier p
     if (!m_uploadActivity) {
         RELEASE_LOG(ProcessSuspension, "NetworkProcessProxy::setWebProcessHasUploads: The number of uploads in progress is now greater than 0. Taking Networking and UI process assertions.");
         m_uploadActivity = UploadActivity {
-            ProcessAssertion::create(getCurrentProcessID(), "WebKit uploads"_s, ProcessAssertionType::UnboundedNetworking),
-            ProcessAssertion::create(processIdentifier(), "WebKit uploads"_s, ProcessAssertionType::UnboundedNetworking),
+            ProcessAssertion::create(getCurrentProcessID(), "CyberKit uploads"_s, ProcessAssertionType::UnboundedNetworking),
+            ProcessAssertion::create(processIdentifier(), "CyberKit uploads"_s, ProcessAssertionType::UnboundedNetworking),
             HashMap<CyberCore::ProcessIdentifier, RefPtr<ProcessAssertion>>()
         };
     }
 
     m_uploadActivity->webProcessAssertions.ensure(processID, [&] {
         RELEASE_LOG(ProcessSuspension, "NetworkProcessProxy::setWebProcessHasUploads: Taking upload assertion on behalf of WebProcess with PID %d", process->processIdentifier());
-        return ProcessAssertion::create(process->processIdentifier(), "WebKit uploads"_s, ProcessAssertionType::UnboundedNetworking);
+        return ProcessAssertion::create(process->processIdentifier(), "CyberKit uploads"_s, ProcessAssertionType::UnboundedNetworking);
     });
 }
 
@@ -1784,7 +1784,7 @@ void NetworkProcessProxy::processPushMessage(PAL::SessionID sessionID, const Web
     if (auto it = permissions.find(origin); it != permissions.end())
         permission = it->value ? PushPermissionState::Granted : PushPermissionState::Denied;
 
-    RefPtr<ProcessAssertion> assertion = ProcessAssertion::create(getCurrentProcessID(), "WebKit Process Push Event"_s, WebKit::ProcessAssertionType::UnboundedNetworking);
+    RefPtr<ProcessAssertion> assertion = ProcessAssertion::create(getCurrentProcessID(), "CyberKit Process Push Event"_s, CyberKit::ProcessAssertionType::UnboundedNetworking);
 
     auto assertionTimer = makeUnique<Timer>([assertion = WTFMove(assertion)] () mutable {
         RELEASE_LOG_ERROR(ServiceWorker, "NetworkProcess is taking too much time to process a push message");
@@ -1804,7 +1804,7 @@ void NetworkProcessProxy::processNotificationEvent(const NotificationData& data,
 {
     RELEASE_ASSERT(!!callback);
 
-    RefPtr<ProcessAssertion> assertion = ProcessAssertion::create(getCurrentProcessID(), "WebKit Process Notification Event"_s, WebKit::ProcessAssertionType::UnboundedNetworking);
+    RefPtr<ProcessAssertion> assertion = ProcessAssertion::create(getCurrentProcessID(), "CyberKit Process Notification Event"_s, CyberKit::ProcessAssertionType::UnboundedNetworking);
 
     auto assertionTimer = makeUnique<Timer>([assertion = WTFMove(assertion)] () mutable {
         RELEASE_LOG_ERROR(ServiceWorker, "NetworkProcess is taking too much time to process a notification event");
@@ -1959,6 +1959,6 @@ void NetworkProcessProxy::setEmulatedConditions(PAL::SessionID sessionID, std::o
 
 #endif // ENABLE(INSPECTOR_NETWORK_THROTTLING)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK

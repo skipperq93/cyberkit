@@ -18,29 +18,29 @@
  */
 
 #include "config.h"
-#include "WebKitWebsitePolicies.h"
+#include "CyberKitWebsitePolicies.h"
 
 #include "APIWebsitePolicies.h"
-#include "WebKitEnumTypes.h"
+#include "CyberKitEnumTypes.h"
 #include "WebsitePoliciesData.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitWebsitePolicies:
- * @See_also: #WebKitWebView
+ * CyberKitWebsitePolicies:
+ * @See_also: #CyberKitWebView
  *
  * View specific website policies.
  *
- * WebKitWebsitePolicies allows you to configure per-page policies,
+ * CyberKitWebsitePolicies allows you to configure per-page policies,
  * currently only autoplay policies are supported.
  *
  * Since: 2.30
  */
 
-using namespace WebKit;
+using namespace CyberKit;
 
 enum {
     PROP_0,
@@ -48,22 +48,22 @@ enum {
     PROP_AUTOPLAY_POLICY
 };
 
-struct _WebKitWebsitePoliciesPrivate {
-    _WebKitWebsitePoliciesPrivate()
+struct _CyberKitWebsitePoliciesPrivate {
+    _CyberKitWebsitePoliciesPrivate()
         : websitePolicies(API::WebsitePolicies::create())
     {
     }
     RefPtr<API::WebsitePolicies> websitePolicies;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebsitePolicies, webkit_website_policies, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebsitePolicies, webkit_website_policies, G_TYPE_OBJECT, GObject)
 
-API::WebsitePolicies& webkitWebsitePoliciesGetWebsitePolicies(WebKitWebsitePolicies* policies)
+API::WebsitePolicies& webkitWebsitePoliciesGetWebsitePolicies(CyberKitWebsitePolicies* policies)
 {
     return *policies->priv->websitePolicies.get();
 }
 
-WebsitePoliciesData webkitWebsitePoliciesGetPoliciesData(WebKitWebsitePolicies* policies)
+WebsitePoliciesData webkitWebsitePoliciesGetPoliciesData(CyberKitWebsitePolicies* policies)
 {
     WebsitePoliciesData policiesData;
 
@@ -86,7 +86,7 @@ WebsitePoliciesData webkitWebsitePoliciesGetPoliciesData(WebKitWebsitePolicies* 
 
 static void webkitWebsitePoliciesGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebsitePolicies* policies = WEBKIT_WEBSITE_POLICIES(object);
+    CyberKitWebsitePolicies* policies = WEBKIT_WEBSITE_POLICIES(object);
 
     switch (propID) {
     case PROP_AUTOPLAY_POLICY:
@@ -97,7 +97,7 @@ static void webkitWebsitePoliciesGetProperty(GObject* object, guint propID, GVal
     }
 }
 
-void webkitWebsitePoliciesSetAutoplayPolicy(WebKitWebsitePolicies* policies, WebKitAutoplayPolicy policy)
+void webkitWebsitePoliciesSetAutoplayPolicy(CyberKitWebsitePolicies* policies, CyberKitAutoplayPolicy policy)
 {
     g_return_if_fail(WEBKIT_IS_WEBSITE_POLICIES(policies));
 
@@ -116,18 +116,18 @@ void webkitWebsitePoliciesSetAutoplayPolicy(WebKitWebsitePolicies* policies, Web
 
 static void webkitWebsitePoliciesSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebsitePolicies* policies = WEBKIT_WEBSITE_POLICIES(object);
+    CyberKitWebsitePolicies* policies = WEBKIT_WEBSITE_POLICIES(object);
 
     switch (propID) {
     case PROP_AUTOPLAY_POLICY:
-        webkitWebsitePoliciesSetAutoplayPolicy(policies, static_cast<WebKitAutoplayPolicy>(g_value_get_enum(value)));
+        webkitWebsitePoliciesSetAutoplayPolicy(policies, static_cast<CyberKitAutoplayPolicy>(g_value_get_enum(value)));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, propID, paramSpec);
     }
 }
 
-static void webkit_website_policies_class_init(WebKitWebsitePoliciesClass* findClass)
+static void webkit_website_policies_class_init(CyberKitWebsitePoliciesClass* findClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(findClass);
 
@@ -135,9 +135,9 @@ static void webkit_website_policies_class_init(WebKitWebsitePoliciesClass* findC
     gObjectClass->set_property = webkitWebsitePoliciesSetProperty;
 
     /**
-     * WebKitWebsitePolicies:autoplay:
+     * CyberKitWebsitePolicies:autoplay:
      *
-     * The #WebKitAutoplayPolicy of #WebKitWebsitePolicies.
+     * The #CyberKitAutoplayPolicy of #CyberKitWebsitePolicies.
      *
      * Since: 2.30
      */
@@ -155,13 +155,13 @@ static void webkit_website_policies_class_init(WebKitWebsitePoliciesClass* findC
 /**
  * webkit_website_policies_new:
  *
- * Create a new #WebKitWebsitePolicies.
+ * Create a new #CyberKitWebsitePolicies.
  *
- * Returns: (transfer full): the newly created #WebKitWebsitePolicies
+ * Returns: (transfer full): the newly created #CyberKitWebsitePolicies
  *
  * Since: 2.30
  */
-WebKitWebsitePolicies* webkit_website_policies_new(void)
+CyberKitWebsitePolicies* webkit_website_policies_new(void)
 {
     return WEBKIT_WEBSITE_POLICIES(g_object_new(WEBKIT_TYPE_WEBSITE_POLICIES, nullptr));
 }
@@ -171,21 +171,21 @@ WebKitWebsitePolicies* webkit_website_policies_new(void)
  * @first_policy_name: name of the first policy to set
  * @...: value of first policy, followed by more policies, %NULL-terminated
  *
- * Create a new #WebKitWebsitePolicies with given policies.
+ * Create a new #CyberKitWebsitePolicies with given policies.
  *
- * Create a new #WebKitWebsitePolicies with policies given as variadic
+ * Create a new #CyberKitWebsitePolicies with policies given as variadic
  * arguments.
  *
- * Returns: (transfer full): the newly created #WebKitWebsitePolicies
+ * Returns: (transfer full): the newly created #CyberKitWebsitePolicies
  *
  * ```c
- * WebKitWebsitePolicies *default_website_policies = webkit_website_policies_new_with_policies(
+ * CyberKitWebsitePolicies *default_website_policies = webkit_website_policies_new_with_policies(
  *     "autoplay", WEBKIT_AUTOPLAY_DENY,
  *     NULL);
  *
  * // ...
  *
- * WebKitWebView *view = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
+ * CyberKitWebView *view = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
  *     "web-context", ctx,
  *     "settings", settings,
  *     "user-content-manager", content_manager,
@@ -197,11 +197,11 @@ WebKitWebsitePolicies* webkit_website_policies_new(void)
  *
  * Since: 2.30
  */
-WebKitWebsitePolicies* webkit_website_policies_new_with_policies(const gchar* firstPolicyName, ...)
+CyberKitWebsitePolicies* webkit_website_policies_new_with_policies(const gchar* firstPolicyName, ...)
 {
     va_list args;
     va_start(args, firstPolicyName);
-    WebKitWebsitePolicies* policies = WEBKIT_WEBSITE_POLICIES(g_object_new_valist(WEBKIT_TYPE_WEBSITE_POLICIES, firstPolicyName, args));
+    CyberKitWebsitePolicies* policies = WEBKIT_WEBSITE_POLICIES(g_object_new_valist(WEBKIT_TYPE_WEBSITE_POLICIES, firstPolicyName, args));
     va_end(args);
 
     return policies;
@@ -209,15 +209,15 @@ WebKitWebsitePolicies* webkit_website_policies_new_with_policies(const gchar* fi
 
 /**
  * webkit_website_policies_get_autoplay_policy:
- * @policies: a #WebKitWebsitePolicies
+ * @policies: a #CyberKitWebsitePolicies
  *
- * Get the #WebKitWebsitePolicies:autoplay property.
+ * Get the #CyberKitWebsitePolicies:autoplay property.
  *
- * Returns: #WebKitAutoplayPolicy
+ * Returns: #CyberKitAutoplayPolicy
  *
  * Since: 2.30
  */
-WebKitAutoplayPolicy webkit_website_policies_get_autoplay_policy(WebKitWebsitePolicies* policies)
+CyberKitAutoplayPolicy webkit_website_policies_get_autoplay_policy(CyberKitWebsitePolicies* policies)
 {
     g_return_val_if_fail(WEBKIT_IS_WEBSITE_POLICIES(policies), WEBKIT_AUTOPLAY_ALLOW_WITHOUT_SOUND);
 

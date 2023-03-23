@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentMarkerController;
 class Text;
@@ -85,4 +85,4 @@ private:
     RefPtr<TextInsertionMarkerSupplier> m_markerSupplier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

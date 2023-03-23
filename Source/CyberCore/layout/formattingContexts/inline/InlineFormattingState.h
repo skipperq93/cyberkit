@@ -32,7 +32,7 @@
 #include "InlineLineBox.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 using InlineItems = Vector<InlineItem>;

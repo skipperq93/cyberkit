@@ -31,7 +31,7 @@
 #include "WorkerClient.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ImageBitmapBacking::ImageBitmapBacking(RefPtr<ImageBuffer>&& bitmapData, OptionSet<SerializationState> serializationState)
     : m_bitmapData(WTFMove(bitmapData))
@@ -93,4 +93,4 @@ void ImageBitmapBacking::connect(ScriptExecutionContext& context)
         m_bitmapData = SerializedImageBuffer::sinkIntoImageBuffer(WTFMove(m_serializedBitmap));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

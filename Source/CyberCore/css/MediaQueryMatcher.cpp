@@ -35,7 +35,7 @@
 #include "StyleScope.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaQueryMatcher::MediaQueryMatcher(Document& document)
     : m_document(document)
@@ -127,4 +127,4 @@ void MediaQueryMatcher::evaluateAll(EventMode eventMode)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

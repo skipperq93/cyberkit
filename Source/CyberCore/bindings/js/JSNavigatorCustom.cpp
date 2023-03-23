@@ -26,18 +26,18 @@
 #include "config.h"
 #include "JSNavigator.h"
 
-#include "WebCoreJSBuiltinInternals.h"
-#include "WebCoreJSClientData.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreJSBuiltinInternals.h"
+#include "CyberCoreJSClientData.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/CatchScope.h>
 #include <CyberScriptCore/JSCJSValue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSNavigator::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, static_cast<NavigatorBase&>(wrapped()));
+    addCyberCoreOpaqueRoot(visitor, static_cast<NavigatorBase&>(wrapped()));
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSNavigator);

@@ -28,7 +28,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct Converter<IDLNull> : DefaultConverter<IDLNull> {
     static std::nullptr_t convert(JSC::JSGlobalObject&, JSC::JSValue)
@@ -47,4 +47,4 @@ template<> struct JSConverter<IDLNull> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "SQLResultSetRowList.h"
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLResultSet : public ThreadSafeRefCounted<SQLResultSet> {
 public:
@@ -65,4 +65,4 @@ inline void SQLResultSet::setRowsAffected(int count)
     m_rowsAffected = count;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLSlotElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLSlotElement);

@@ -34,7 +34,7 @@
 #include "FeaturePolicy.h"
 #include "PlatformMediaSessionManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DOMAudioSession);
 
@@ -183,6 +183,6 @@ void DOMAudioSession::scheduleStateChangeEvent()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DOM_AUDIO_SESSION)

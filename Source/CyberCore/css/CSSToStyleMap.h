@@ -23,7 +23,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation;
 class CSSBorderImageSliceValue;
@@ -88,4 +88,4 @@ private:
     Style::BuilderState& m_builderState;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

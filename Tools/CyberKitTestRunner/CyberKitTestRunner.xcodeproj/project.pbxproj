@@ -145,7 +145,7 @@
 		A664BC7613A5F3A9009A7B25 /* libCyberCoreTestSupport.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41230E16138C78BF00BCCFCA /* libCyberCoreTestSupport.dylib */; };
 		BC14E4DB120E02D000826C0C /* GCController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC14E4D9120E02D000826C0C /* GCController.cpp */; };
 		BC14E4EA120E03D800826C0C /* JSGCController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC14E4E8120E03D800826C0C /* JSGCController.cpp */; };
-		BC25194011D15D8B002EBC01 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDA2B991191051F00C3BC47 /* JavaScriptCore.framework */; };
+		BC25194011D15D8B002EBC01 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDA2B991191051F00C3BC47 /* CyberScriptCore.framework */; };
 		BC251A3E11D16831002EBC01 /* InjectedBundleMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC25184611D15767002EBC01 /* InjectedBundleMain.cpp */; };
 		BC793400118F7C84005EA8E2 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC7933FF118F7C84005EA8E2 /* main.mm */; };
 		BC7934E811906846005EA8E2 /* PlatformWebViewMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC7934E711906846005EA8E2 /* PlatformWebViewMac.mm */; };
@@ -244,7 +244,7 @@
 		0F622CE81BBB3A1A00838AD3 /* TestOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestOptions.cpp; sourceTree = "<group>"; };
 		0F73B54F1BA78968004B3EF4 /* JSUIScriptController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSUIScriptController.cpp; sourceTree = "<group>"; };
 		0F73B5501BA78968004B3EF4 /* JSUIScriptController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUIScriptController.h; sourceTree = "<group>"; };
-		0F73B5571BA7929E004B3EF4 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		0F73B5571BA7929E004B3EF4 /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CyberScriptCore.framework; path = System/Library/Frameworks/CyberScriptCore.framework; sourceTree = SDKROOT; };
 		0F73B55B1BA89042004B3EF4 /* UIScriptControllerIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIScriptControllerIOS.mm; sourceTree = "<group>"; };
 		0F87B6111BACAD6F004EC572 /* UIScriptControllerMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIScriptControllerMac.mm; sourceTree = "<group>"; };
 		0F87B6141BACC4B9004EC572 /* TestRunnerWKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRunnerWKWebView.h; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 		BCC9981711D3F51E0017BCA2 /* TestRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestRunner.cpp; sourceTree = "<group>"; };
 		BCD7D2F611921278006DB7EE /* TestInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestInvocation.h; sourceTree = "<group>"; };
 		BCD7D2F711921278006DB7EE /* TestInvocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestInvocation.cpp; sourceTree = "<group>"; };
-		BCDA2B991191051F00C3BC47 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCDA2B991191051F00C3BC47 /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0CE720A1247C93300BC0EC4 /* TestRunnerMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TestRunnerMac.mm; path = mac/TestRunnerMac.mm; sourceTree = "<group>"; };
 		E132AA3817CD5F1000611DF0 /* CyberKitTestRunnerDraggingInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CyberKitTestRunnerDraggingInfo.mm; sourceTree = "<group>"; };
 		E132AA3917CD5F1000611DF0 /* CyberKitTestRunnerDraggingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyberKitTestRunnerDraggingInfo.h; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC25194011D15D8B002EBC01 /* JavaScriptCore.framework in Frameworks */,
+				BC25194011D15D8B002EBC01 /* CyberScriptCore.framework in Frameworks */,
 				A664BC7613A5F3A9009A7B25 /* libCyberCoreTestSupport.dylib in Frameworks */,
 				0F5169CC1445222D00E0A9D7 /* CyberKit.framework in Frameworks */,
 			);
@@ -552,7 +552,7 @@
 			children = (
 				E1BA671D1742DA5A00C20251 /* Carbon.framework */,
 				BC7934A411906584005EA8E2 /* Cocoa.framework */,
-				BCDA2B991191051F00C3BC47 /* JavaScriptCore.framework */,
+				BCDA2B991191051F00C3BC47 /* CyberScriptCore.framework */,
 				41230E16138C78BF00BCCFCA /* libCyberCoreTestSupport.dylib */,
 				4181731B138AD39D0057AAA4 /* CyberCoreTestSupport.h */,
 				0F5169CA1445222D00E0A9D7 /* CyberKit.framework */,
@@ -728,7 +728,7 @@
 			children = (
 				2EE52CE41890A9A80010ED21 /* CoreGraphics.framework */,
 				2EE52CE21890A9A80010ED21 /* Foundation.framework */,
-				0F73B5571BA7929E004B3EF4 /* JavaScriptCore.framework */,
+				0F73B5571BA7929E004B3EF4 /* CyberScriptCore.framework */,
 				570E75A42152DA2C00324B6E /* Security.framework */,
 			);
 			name = Frameworks;

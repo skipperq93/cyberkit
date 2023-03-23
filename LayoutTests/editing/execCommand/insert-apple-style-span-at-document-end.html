@@ -8,7 +8,7 @@ Markup.waitUntilDone();
 
 addEventListener("load", () => {
     getSelection().setPosition(document.body, 1);
-    document.execCommand("InsertHTML", false, `<div>Apple</div>WebKit<span class="Apple-style-span"></span>`);
+    document.execCommand("InsertHTML", false, `<div>Apple</div>CyberKit<span class="Apple-style-span"></span>`);
     Markup.dump(document.body);
     Markup.notifyDone();
 });

@@ -18,7 +18,7 @@ ac_request_method = os.environ.get('HTTP_ACCESS_CONTROL_REQUEST_METHOD', '')
 
 sys.stdout.write(
     'Access-Control-Allow-Origin: http://127.0.0.1:8000\r\n'
-    'Access-Control-Allow-Headers: X-WebKit\r\n'
+    'Access-Control-Allow-Headers: X-CyberKit\r\n'
 )
 
 if request_method == 'OPTIONS' and ac_request_method == 'GET':
@@ -29,6 +29,6 @@ header_string_value = os.environ.get('HTTP_X_WEBKIT', '')
 sys.stdout.write(
     'status: 301\r\n'
     'Cache-Control: private, max-age=31536000\r\n'
-    'ETag: "WebKitTest"\r\n'
+    'ETag: "CyberKitTest"\r\n'
     'Location: http://localhost:8000/resourceLoadStatistics/resources/echo-query.py?value={}\r\n\r\n'.format(header_string_value)
 )

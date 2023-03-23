@@ -42,7 +42,7 @@ class JSObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Page;
@@ -83,6 +83,6 @@ private:
     std::optional<ApplePayAMSUIRequest> m_applePayAMSUIRequest;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) && ENABLE(PAYMENT_REQUEST)

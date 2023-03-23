@@ -64,7 +64,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1221,4 +1221,4 @@ HashSet<RefPtr<HTMLImageElement>> visibleImageElementsInRangeWithNonLoadedImages
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

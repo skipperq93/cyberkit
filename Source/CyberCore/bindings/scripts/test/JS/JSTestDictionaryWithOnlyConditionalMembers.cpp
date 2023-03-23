@@ -22,15 +22,15 @@
 #include "JSTestDictionaryWithOnlyConditionalMembers.h"
 
 #include "JSDOMGlobalObject.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ObjectConstructor.h>
 
 #if ENABLE(TEST_CONDITIONAL)
 #include "JSTestDictionary.h"
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<> TestDictionaryWithOnlyConditionalMembers convertDictionary<TestDictionaryWithOnlyConditionalMembers>(JSGlobalObject& lexicalGlobalObject, JSValue value)
@@ -80,4 +80,4 @@ JSC::JSObject* convertDictionaryToJS(JSC::JSGlobalObject& lexicalGlobalObject, J
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

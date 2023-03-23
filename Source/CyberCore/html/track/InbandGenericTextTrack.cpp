@@ -37,7 +37,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(InbandGenericTextTrack);
 
@@ -224,6 +224,6 @@ void InbandGenericTextTrack::fileFailedToParse()
     ERROR_LOG(LOGIDENTIFIER);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

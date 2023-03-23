@@ -19,36 +19,36 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitMimeInfo_h
-#define WebKitMimeInfo_h
+#ifndef CyberKitMimeInfo_h
+#define CyberKitMimeInfo_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_MIME_INFO (webkit_mime_info_get_type())
 
-typedef struct _WebKitMimeInfo WebKitMimeInfo;
+typedef struct _CyberKitMimeInfo CyberKitMimeInfo;
 
 
 WEBKIT_DEPRECATED GType
 webkit_mime_info_get_type        (void);
 
-WEBKIT_DEPRECATED WebKitMimeInfo *
-webkit_mime_info_ref             (WebKitMimeInfo *info);
+WEBKIT_DEPRECATED CyberKitMimeInfo *
+webkit_mime_info_ref             (CyberKitMimeInfo *info);
 
 WEBKIT_DEPRECATED void
-webkit_mime_info_unref           (WebKitMimeInfo *info);
+webkit_mime_info_unref           (CyberKitMimeInfo *info);
 
 WEBKIT_DEPRECATED const gchar *
-webkit_mime_info_get_mime_type   (WebKitMimeInfo *info);
+webkit_mime_info_get_mime_type   (CyberKitMimeInfo *info);
 
 WEBKIT_DEPRECATED const gchar *
-webkit_mime_info_get_description (WebKitMimeInfo *info);
+webkit_mime_info_get_description (CyberKitMimeInfo *info);
 
 WEBKIT_DEPRECATED const gchar * const *
-webkit_mime_info_get_extensions  (WebKitMimeInfo *info);
+webkit_mime_info_get_extensions  (CyberKitMimeInfo *info);
 
 G_END_DECLS
 

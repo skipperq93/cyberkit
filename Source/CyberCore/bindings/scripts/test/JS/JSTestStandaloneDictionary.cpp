@@ -33,15 +33,15 @@
 #include "JSDOMGlobalObject.h"
 #include "JSVoidCallback.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSString.h>
-#include <JavaScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSString.h>
+#include <CyberScriptCore/ObjectConstructor.h>
 #include <variant>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/SortedArrayMap.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 #if ENABLE(Condition1)
@@ -370,6 +370,6 @@ template<> const char* expectedEnumerationValues<TestStandaloneDictionary::EnumI
     return "\"enumValue1\", \"enumValue2\"";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(Condition1)

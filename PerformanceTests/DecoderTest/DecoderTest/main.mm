@@ -37,7 +37,7 @@
 #import <CyberCore/SourceBufferParserWebM.h>
 #import <CyberCore/UTIUtilities.h>
 #import <CyberCore/VP9UtilitiesCocoa.h>
-#import <CyberCore/WebCoreDecompressionSession.h>
+#import <CyberCore/CyberCoreDecompressionSession.h>
 #import <getopt.h>
 #import <pal/avfoundation/MediaTimeAVFoundation.h>
 #import <wtf/CPUTime.h>
@@ -47,7 +47,7 @@
 #import <wtf/WTFSemaphore.h>
 #import <wtf/cf/TypeCastsCF.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static Function<void()>& updateOutputFunction()
 {
@@ -207,7 +207,7 @@ int main(int argc, char* argv[])
             });
         });
 
-        auto decompressionSession = WebCoreDecompressionSession::createOpenGL();
+        auto decompressionSession = CyberCoreDecompressionSession::createOpenGL();
         Semaphore finishedDecodingSemaphore { 0 };
         auto decoderQueue = dispatch_queue_create("decoder queue", DISPATCH_QUEUE_CONCURRENT);
         dispatch_async(decoderQueue, [&] {

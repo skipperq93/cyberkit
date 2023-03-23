@@ -30,7 +30,7 @@
 
 #include <wtf/Scope.h>
 
-namespace WebCore::PushCrypto {
+namespace CyberCore::PushCrypto {
 
 #if !PLATFORM(COCOA)
 
@@ -61,6 +61,6 @@ std::optional<Vector<uint8_t>> decryptAES128GCM(Span<const uint8_t>, Span<const 
 
 #endif // !PLATFORM(COCOA)
 
-} // namespace WebCore::PushCrypto
+} // namespace CyberCore::PushCrypto
 
 #endif // ENABLE(SERVICE_WORKER)

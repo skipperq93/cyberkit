@@ -41,7 +41,7 @@ class TestRevert(testing.PathTestCase):
     def test_github(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
 
             result = program.main(
@@ -58,7 +58,7 @@ class TestRevert(testing.PathTestCase):
             captured.stdout.getvalue(),
             "Created the local development branch 'eng/pr-branch'\n"
             "Created 'PR 1 | Revert [5@main] Patch Series'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -82,7 +82,7 @@ class TestRevert(testing.PathTestCase):
     def test_github_two_step(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
 
             result = program.main(
@@ -101,7 +101,7 @@ class TestRevert(testing.PathTestCase):
             captured.stdout.getvalue(),
             "Created the local development branch 'eng/pr-branch'\n"
             "Created 'PR 1 | Revert [5@main] Patch Series'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -152,7 +152,7 @@ index 05e8751..0bf3c85 100644
     def test_update(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ), mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
 
             result = program.main(
@@ -170,9 +170,9 @@ index 05e8751..0bf3c85 100644
             captured.stdout.getvalue(),
             "Created the local development branch 'eng/pr-branch'\n"
             "Created 'PR 1 | Revert [5@main] Patch Series'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n"
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n"
             "Updated 'PR 1 | Revert [5@main] Patch Series'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()

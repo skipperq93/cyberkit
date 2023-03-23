@@ -53,7 +53,7 @@
 #include "CSSFontVariationValue.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CSSPropertyParserHelpersWorkerSafe {
 
@@ -622,4 +622,4 @@ RefPtr<CSSValue> consumeVariationTagValue(CSSParserTokenRange& range)
 
 } // namespace CSSPropertyParserHelpersWorkerSafe
 
-} // namespace WebCore
+} // namespace CyberCore

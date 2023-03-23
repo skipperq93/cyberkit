@@ -28,7 +28,7 @@
 
 #if ENABLE(WEBGL)
 
-namespace WebCore {
+namespace CyberCore {
 
 WebGLStateTracker::WebGLStateTracker(StateChangeHandler&& handler)
     : m_webGLContextCounter([this](RefCounterEvent) { updateWebGLState(); })
@@ -52,6 +52,6 @@ void WebGLStateTracker::updateWebGLState()
         m_stateChangeHandler(true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -32,7 +32,7 @@
 #include "ReadableStreamDefaultController.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ReadableStreamSource : public RefCounted<ReadableStreamSource> {
 public:
@@ -88,4 +88,4 @@ private:
     bool m_isCancelled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

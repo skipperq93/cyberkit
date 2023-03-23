@@ -31,7 +31,7 @@ OBJC_CLASS UIScrollView;
 
 #include <CyberCore/ScrollingTreeFrameScrollingNode.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ScrollingTreeScrollingNodeDelegateIOS;
 
@@ -61,6 +61,6 @@ private:
     RetainPtr<CALayer> m_footerLayer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ASYNC_SCROLLING) && PLATFORM(IOS_FAMILY)

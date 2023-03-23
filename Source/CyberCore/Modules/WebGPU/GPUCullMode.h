@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUCullMode.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUCullMode : uint8_t {
     None,

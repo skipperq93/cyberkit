@@ -43,9 +43,9 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 enum class CryptoKeyClass {
     AES,
@@ -90,13 +90,13 @@ inline auto CryptoKey::type() const -> Type
     return m_type;
 }
 
-WebCoreOpaqueRoot root(CryptoKey*);
+CyberCoreOpaqueRoot root(CryptoKey*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CRYPTO_KEY(ToClassName, KeyClass) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::CryptoKey& key) { return key.keyClass() == WebCore::KeyClass; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::CryptoKey& key) { return key.keyClass() == CyberCore::KeyClass; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEB_CRYPTO)

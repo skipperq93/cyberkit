@@ -27,7 +27,7 @@
 
 #include "SimulatedClickOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Event;
@@ -39,4 +39,4 @@ enum class SimulatedClickSource {
 
 bool simulateClick(Element&, Event* underlyingEvent, SimulatedClickMouseEventOptions, SimulatedClickVisualOptions, SimulatedClickSource);
 
-} // namespace WebCore
+} // namespace CyberCore

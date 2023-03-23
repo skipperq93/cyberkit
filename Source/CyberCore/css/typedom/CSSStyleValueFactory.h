@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> class ExceptionOr;
 struct CSSParserContext;
@@ -60,4 +60,4 @@ private:
     static ExceptionOr<Ref<CSSUnparsedValue>> extractCustomCSSValues(const String&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __WebKitAvailability__
-#define __WebKitAvailability__
+#ifndef __CyberKitAvailability__
+#define __CyberKitAvailability__
 
 #if defined(__APPLE__)
 
@@ -40,4 +40,4 @@
 #define JSC_CLASS_AVAILABLE(...) JS_EXPORT
 #endif
 
-#endif /* __WebKitAvailability__ */
+#endif /* __CyberKitAvailability__ */

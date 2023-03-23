@@ -538,7 +538,7 @@ set(CyberScriptCore_PUBLIC_FRAMEWORK_HEADERS
     API/JSTypedArray.h
     API/JSValueRef.h
     API/JavaScript.h
-    API/WebKitAvailability.h
+    API/CyberKitAvailability.h
 )
 
 set(CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS

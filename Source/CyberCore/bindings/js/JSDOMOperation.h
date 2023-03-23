@@ -26,7 +26,7 @@
 #include "JSDOMCastThisValue.h"
 #include "JSDOMExceptionHandling.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename JSClass>
 class IDLOperation {
@@ -71,4 +71,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

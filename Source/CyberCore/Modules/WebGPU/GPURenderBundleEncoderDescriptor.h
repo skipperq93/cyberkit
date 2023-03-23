@@ -28,7 +28,7 @@
 #include "GPURenderPassLayout.h"
 #include <pal/graphics/WebGPU/WebGPURenderBundleEncoderDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURenderBundleEncoderDescriptor : public GPURenderPassLayout {
     PAL::WebGPU::RenderBundleEncoderDescriptor convertToBacking() const
@@ -38,10 +38,10 @@ struct GPURenderBundleEncoderDescriptor : public GPURenderPassLayout {
                 { label },
                 colorFormats.map([] (auto& colorFormat) -> std::optional<PAL::WebGPU::TextureFormat> {
                     if (colorFormat)
-                        return WebCore::convertToBacking(*colorFormat);
+                        return CyberCore::convertToBacking(*colorFormat);
                     return std::nullopt;
                 }),
-                depthStencilFormat ? std::optional { WebCore::convertToBacking(*depthStencilFormat) } : std::nullopt,
+                depthStencilFormat ? std::optional { CyberCore::convertToBacking(*depthStencilFormat) } : std::nullopt,
                 sampleCount,
             },
             depthReadOnly,

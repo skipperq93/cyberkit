@@ -40,7 +40,7 @@ namespace webrtc {
 class DtlsTransportInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class LibWebRTCDtlsTransportBackendObserver;
 class LibWebRTCDtlsTransportBackend final : public RTCDtlsTransportBackend, public CanMakeWeakPtr<LibWebRTCDtlsTransportBackend> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -59,6 +59,6 @@ private:
     RefPtr<LibWebRTCDtlsTransportBackendObserver> m_observer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

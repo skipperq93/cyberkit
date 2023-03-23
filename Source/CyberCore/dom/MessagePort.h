@@ -40,10 +40,10 @@ class JSObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 struct StructuredSerializeOptions;
 
@@ -121,6 +121,6 @@ private:
     mutable std::atomic<unsigned> m_refCount { 1 };
 };
 
-WebCoreOpaqueRoot root(MessagePort*);
+CyberCoreOpaqueRoot root(MessagePort*);
 
-} // namespace WebCore
+} // namespace CyberCore

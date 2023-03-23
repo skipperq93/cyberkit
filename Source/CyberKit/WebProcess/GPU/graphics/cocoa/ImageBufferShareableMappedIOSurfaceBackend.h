@@ -35,7 +35,7 @@ namespace CyberCore {
 class ProcessIdentity;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ImageBufferShareableMappedIOSurfaceBackend final : public CyberCore::ImageBufferIOSurfaceBackend, public ImageBufferBackendHandleSharing {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferShareableMappedIOSurfaceBackend);
@@ -59,6 +59,6 @@ private:
     mutable CyberCore::IOSurfaceSeed m_lastSeedWhenCopyingImage { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && HAVE(IOSURFACE)

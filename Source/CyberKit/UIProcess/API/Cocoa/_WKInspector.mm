@@ -61,7 +61,7 @@ public:
 
 private:
     // API::InspectorClient
-    void openURLExternally(WebKit::WebInspectorUIProxy& inspector, const WTF::String& url) final
+    void openURLExternally(CyberKit::WebInspectorUIProxy& inspector, const WTF::String& url) final
     {
         if (!m_delegate || !m_respondsToInspectorOpenURLExternally)
             return;
@@ -69,7 +69,7 @@ private:
         [m_delegate inspector:wrapper(inspector) openURLExternally:[NSURL URLWithString:url]];
     }
 
-    void frontendLoaded(WebKit::WebInspectorUIProxy& inspector) final
+    void frontendLoaded(CyberKit::WebInspectorUIProxy& inspector) final
     {
         if (!m_delegate || !m_respondsToInspectorFrontendLoaded)
             return;
@@ -161,7 +161,7 @@ private:
 
 - (void)showMainResourceForFrame:(_WKFrameHandle *)frame
 {
-    _inspector->showMainResourceForFrame(WebKit::WebFrameProxy::webFrame(frame->_frameHandle->frameID()));
+    _inspector->showMainResourceForFrame(CyberKit::WebFrameProxy::webFrame(frame->_frameHandle->frameID()));
 }
 
 - (void)attach

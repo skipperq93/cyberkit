@@ -25,7 +25,7 @@
 #include "FormListedElement.h"
 #include "HTMLPlugInImageElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFormElement;
 
@@ -106,4 +106,4 @@ private:
     bool m_useFallbackContent { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

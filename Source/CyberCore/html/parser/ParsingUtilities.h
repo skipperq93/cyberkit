@@ -34,7 +34,7 @@
 #include <wtf/text/StringCommon.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename CharacterType> inline bool isNotASCIISpace(CharacterType c)
 {
@@ -218,4 +218,4 @@ template<typename CharacterType, unsigned characterCount> constexpr bool skipCha
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "PasteboardItemInfo.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ClipboardItem::~ClipboardItem() = default;
 
@@ -108,4 +108,4 @@ Clipboard* ClipboardItem::clipboard()
     return m_clipboard.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

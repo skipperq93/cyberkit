@@ -89,7 +89,7 @@ void initialize()
         g_jscConfig.llint.wasmExceptionInstructions[i] = wasm_throw_from_slow_path_trampoline;
     }
 
-    JITOperationList::populatePointersInJavaScriptCoreForLLInt();
+    JITOperationList::populatePointersInCyberScriptCoreForLLInt();
 
 #if CPU(ARM64E)
 

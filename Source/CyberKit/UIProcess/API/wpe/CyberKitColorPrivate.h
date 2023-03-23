@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "WebKitColor.h"
+#include "CyberKitColor.h"
 #include <CyberCore/Color.h>
 
-void webkitColorFillFromCyberCoreColor(const CyberCore::Color&, WebKitColor*);
-const CyberCore::Color webkitColorToCyberCoreColor(WebKitColor*);
+void webkitColorFillFromCyberCoreColor(const CyberCore::Color&, CyberKitColor*);
+const CyberCore::Color webkitColorToCyberCoreColor(CyberKitColor*);

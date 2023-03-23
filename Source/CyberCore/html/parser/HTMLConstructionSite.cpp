@@ -58,7 +58,7 @@
 #include <unicode/ubrk.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace ElementNames;
 using namespace HTMLNames;
@@ -922,4 +922,4 @@ void HTMLConstructionSite::fosterParent(Ref<Node>&& node)
     m_taskQueue.append(WTFMove(task));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -43,7 +43,7 @@
 #include "ShadowRealmGlobalScope.h"
 #include "SubresourceIntegrity.h"
 #include "WebAssemblyScriptSourceCode.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "WorkerModuleScriptLoader.h"
 #include "WorkerOrWorkletGlobalScope.h"
 #include "WorkerOrWorkletScriptController.h"
@@ -66,7 +66,7 @@
 #include "ServiceWorkerGlobalScope.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 ScriptModuleLoader::ScriptModuleLoader(ScriptExecutionContext& context, OwnerType ownerType)
     : m_context(context)

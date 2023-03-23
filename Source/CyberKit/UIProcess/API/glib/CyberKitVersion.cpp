@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitVersion.h"
+#include "CyberKitVersion.h"
 
 /**
  * WEBKIT_MAJOR_VERSION:
@@ -50,25 +50,25 @@
  * @minor: minor version (e.g. 2 for version 1.2.5)
  * @micro: micro version (e.g. 5 for version 1.2.5)
  *
- * Check the version of the WebKit headers at compilation time.
+ * Check the version of the CyberKit headers at compilation time.
  *
- * Returns: %TRUE if the version of the WebKit header files
+ * Returns: %TRUE if the version of the CyberKit header files
  * is the same as or newer than the passed-in version.
  */
 
 /**
  * webkit_get_major_version:
  *
- * Returns the major version number of the WebKit library.
+ * Returns the major version number of the CyberKit library.
  *
- * (e.g. in WebKit version 1.8.3 this is 1.)
+ * (e.g. in CyberKit version 1.8.3 this is 1.)
  *
- * This function is in the library, so it represents the WebKit library
+ * This function is in the library, so it represents the CyberKit library
  * your code is running against. Contrast with the #WEBKIT_MAJOR_VERSION
- * macro, which represents the major version of the WebKit headers you
+ * macro, which represents the major version of the CyberKit headers you
  * have included when compiling your code.
  *
- * Returns: the major version number of the WebKit library
+ * Returns: the major version number of the CyberKit library
  */
 guint webkit_get_major_version(void)
 {
@@ -78,16 +78,16 @@ guint webkit_get_major_version(void)
 /**
  * webkit_get_minor_version:
  *
- * Returns the minor version number of the WebKit library.
+ * Returns the minor version number of the CyberKit library.
  *
- * (e.g. in WebKit version 1.8.3 this is 8.)
+ * (e.g. in CyberKit version 1.8.3 this is 8.)
  *
- * This function is in the library, so it represents the WebKit library
+ * This function is in the library, so it represents the CyberKit library
  * your code is running against. Contrast with the #WEBKIT_MINOR_VERSION
- * macro, which represents the minor version of the WebKit headers you
+ * macro, which represents the minor version of the CyberKit headers you
  * have included when compiling your code.
  *
- * Returns: the minor version number of the WebKit library
+ * Returns: the minor version number of the CyberKit library
  */
 guint webkit_get_minor_version(void)
 {
@@ -97,16 +97,16 @@ guint webkit_get_minor_version(void)
 /**
  * webkit_get_micro_version:
  *
- * Returns the micro version number of the WebKit library.
+ * Returns the micro version number of the CyberKit library.
  *
- * (e.g. in WebKit version 1.8.3 this is 3.)
+ * (e.g. in CyberKit version 1.8.3 this is 3.)
  *
- * This function is in the library, so it represents the WebKit library
+ * This function is in the library, so it represents the CyberKit library
  * your code is running against. Contrast with the #WEBKIT_MICRO_VERSION
- * macro, which represents the micro version of the WebKit headers you
+ * macro, which represents the micro version of the CyberKit headers you
  * have included when compiling your code.
  *
- * Returns: the micro version number of the WebKit library
+ * Returns: the micro version number of the CyberKit library
  */
 guint webkit_get_micro_version(void)
 {

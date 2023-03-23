@@ -34,7 +34,7 @@
 #include "HTMLElement.h"
 #include "ValidationMessage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMaybeFormAssociatedCustomElement;
 
@@ -165,4 +165,4 @@ private:
     ValidatedFormListedElement& m_element;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

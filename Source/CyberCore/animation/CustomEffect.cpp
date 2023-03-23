@@ -29,7 +29,7 @@
 #include "CustomEffectCallback.h"
 #include <CyberScriptCore/Exception.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 ExceptionOr<Ref<CustomEffect>> CustomEffect::create(Ref<CustomEffectCallback>&& callback, std::optional<std::variant<double, EffectTiming>>&& options)
@@ -78,4 +78,4 @@ void CustomEffect::animationDidTick()
     m_callback->handleEvent(*computedTiming.progress);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

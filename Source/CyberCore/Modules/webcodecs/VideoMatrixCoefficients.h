@@ -29,7 +29,7 @@
 
 #include "PlatformVideoMatrixCoefficients.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using VideoMatrixCoefficients = PlatformVideoMatrixCoefficients;
 

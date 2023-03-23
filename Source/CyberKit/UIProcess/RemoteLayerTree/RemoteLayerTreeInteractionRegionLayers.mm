@@ -35,7 +35,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/RemoteLayerTreePropertyApplierInteractionRegionAdditions.mm>
+#import <CyberKitAdditions/RemoteLayerTreePropertyApplierInteractionRegionAdditions.mm>
 #else
 static Class interactionRegionLayerClass() { return [CALayer class]; }
 static void configureLayerForInteractionRegion(CALayer *, NSString *) { }
@@ -48,7 +48,7 @@ static void configureLayerForInteractionRegion(CALayer *, NSString *) { }
 @implementation WKInteractionRegion
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 NSString *interactionRegionKey = @"WKInteractionRegion";
@@ -210,6 +210,6 @@ void updateLayersForInteractionRegions(CALayer *layer, RemoteLayerTreeHost& host
         [sublayer removeFromSuperlayer];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)

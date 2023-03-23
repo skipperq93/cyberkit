@@ -32,7 +32,7 @@
 #include "JsonWebKey.h"
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const unsigned char InitialOctetEC = 0x04; // Per Section 2.3.3 of http://www.secg.org/sec1-v2.pdf
 // OID id-ecPublicKey 1.2.840.10045.2.1.
@@ -416,6 +416,6 @@ Vector<uint8_t> CryptoKeyEC::platformExportPkcs8() const
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

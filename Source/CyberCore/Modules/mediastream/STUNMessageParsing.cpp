@@ -31,7 +31,7 @@
 #include <LibWebRTCMacros.h>
 #include <webrtc/rtc_base/byte_order.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace WebRTC {
 
 static inline bool isStunMessage(uint16_t messageType)
@@ -120,6 +120,6 @@ Vector<uint8_t> extractMessages(Vector<uint8_t>&& buffer, MessageType type, cons
 }
 
 } // namespace WebRTC
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

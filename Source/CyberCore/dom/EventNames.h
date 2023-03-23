@@ -28,7 +28,7 @@
 #include <functional>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(APPLE_PAY_COUPON_CODE)
 #define DOM_EVENT_NAME_APPLE_PAY_COUPON_CODE_CHANGED(macro) macro(couponcodechanged)
@@ -482,4 +482,4 @@ inline bool EventNames::isGamepadEventType(const AtomString& eventType) const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

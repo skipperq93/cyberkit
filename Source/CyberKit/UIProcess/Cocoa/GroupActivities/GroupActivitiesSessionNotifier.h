@@ -34,7 +34,7 @@
 
 OBJC_CLASS WKGroupSessionObserver;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 

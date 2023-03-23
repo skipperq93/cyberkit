@@ -25,7 +25,7 @@
  
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class EditorInsertAction {
     Typed,
@@ -33,4 +33,4 @@ enum class EditorInsertAction {
     Dropped,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

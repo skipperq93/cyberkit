@@ -48,7 +48,7 @@
 #include "ViewGestureGeometryCollectorMessages.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const Seconds swipeSnapshotRemovalWatchdogAfterFirstVisuallyNonEmptyLayoutDuration { 3_s };
@@ -722,4 +722,4 @@ double ViewGestureController::magnification() const
 
 #endif // !PLATFORM(IOS_FAMILY)
 
-} // namespace WebKit
+} // namespace CyberKit

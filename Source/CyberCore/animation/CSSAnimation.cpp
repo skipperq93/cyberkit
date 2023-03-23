@@ -33,7 +33,7 @@
 #include "RenderStyle.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSAnimation);
 
@@ -285,4 +285,4 @@ Ref<DeclarativeAnimationEvent> CSSAnimation::createEvent(const AtomString& event
     return CSSAnimationEvent::create(eventType, this, scheduledTime, elapsedTime, pseudoId, m_animationName);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include "FetchRequest.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MultiCacheQueryOptions;
 
@@ -67,4 +67,4 @@ private:
     bool m_isStopped { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -91,11 +91,11 @@ class Setting
   attr_accessor :customImplementation
 
   def initialize(name, options)
-    @name = normalizeNameForWebCore(name, options)
+    @name = normalizeNameForCyberCore(name, options)
     @options = options
     @type = options["refinedType"] || options["type"]
     @status = options["status"]
-    @defaultValues = options["defaultValue"]["WebCore"]
+    @defaultValues = options["defaultValue"]["CyberCore"]
     @excludeFromInternalSettings = options["webcoreExcludeFromInternalSettings"] || false
     @condition = options["condition"]
     @onChange = options["webcoreOnChange"]
@@ -104,7 +104,7 @@ class Setting
     @customImplementation = options["webcoreImplementation"] == "custom"
   end
 
-  def normalizeNameForWebCore(name, options)
+  def normalizeNameForCyberCore(name, options)
     if options["webcoreName"]
       options["webcoreName"]
     elsif name.start_with?("VP")

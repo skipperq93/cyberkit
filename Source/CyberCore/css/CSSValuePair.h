@@ -27,7 +27,7 @@
 
 #include "CSSValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValuePair : public CSSValue {
 public:
@@ -60,6 +60,6 @@ inline const CSSValue& CSSValue::second() const
     return downcast<CSSValuePair>(*this).second();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSValuePair, isPair())

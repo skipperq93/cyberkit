@@ -28,7 +28,7 @@
 
 #include "StyleCanvasImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSCanvasValue::CSSCanvasValue(String&& name)
     : CSSValue { CanvasClass }
@@ -57,4 +57,4 @@ RefPtr<StyleImage> CSSCanvasValue::createStyleImage(Style::BuilderState&) const
     return m_cachedStyleImage;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

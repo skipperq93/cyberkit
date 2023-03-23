@@ -19,24 +19,24 @@
 
 @SHARED_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitURIRequest_h
-#define WebKitURIRequest_h
+#ifndef CyberKitURIRequest_h
+#define CyberKitURIRequest_h
 
 #include <glib-object.h>
 #include <libsoup/soup.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_URI_REQUEST            (webkit_uri_request_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_URI_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_URI_REQUEST, WebKitURIRequest))
+#define WEBKIT_URI_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_URI_REQUEST, CyberKitURIRequest))
 #define WEBKIT_IS_URI_REQUEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_URI_REQUEST))
-#define WEBKIT_URI_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_URI_REQUEST, WebKitURIRequestClass))
+#define WEBKIT_URI_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_URI_REQUEST, CyberKitURIRequestClass))
 #define WEBKIT_IS_URI_REQUEST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_URI_REQUEST))
-#define WEBKIT_URI_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_URI_REQUEST, WebKitURIRequestClass))
+#define WEBKIT_URI_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_URI_REQUEST, CyberKitURIRequestClass))
 
-struct _WebKitURIRequestClass {
+struct _CyberKitURIRequestClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -47,23 +47,23 @@ struct _WebKitURIRequestClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitURIRequest, webkit_uri_request, WEBKIT, URI_REQUEST, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitURIRequest, webkit_uri_request, WEBKIT, URI_REQUEST, GObject)
 
-WEBKIT_API WebKitURIRequest *
+WEBKIT_API CyberKitURIRequest *
 webkit_uri_request_new              (const gchar      *uri);
 
 WEBKIT_API const gchar *
-webkit_uri_request_get_uri          (WebKitURIRequest *request);
+webkit_uri_request_get_uri          (CyberKitURIRequest *request);
 
 WEBKIT_API void
-webkit_uri_request_set_uri          (WebKitURIRequest *request,
+webkit_uri_request_set_uri          (CyberKitURIRequest *request,
                                      const gchar      *uri);
 
 WEBKIT_API const gchar *
-webkit_uri_request_get_http_method  (WebKitURIRequest *request);
+webkit_uri_request_get_http_method  (CyberKitURIRequest *request);
 
 WEBKIT_API SoupMessageHeaders *
-webkit_uri_request_get_http_headers (WebKitURIRequest *request);
+webkit_uri_request_get_http_headers (CyberKitURIRequest *request);
 
 G_END_DECLS
 

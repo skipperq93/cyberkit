@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleMedia final : public RefCounted<StyleMedia>, public DOMWindowProperty {
 public:
@@ -42,4 +42,4 @@ private:
     explicit StyleMedia(DOMWindow&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

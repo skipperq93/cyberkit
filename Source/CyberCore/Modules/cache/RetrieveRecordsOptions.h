@@ -30,7 +30,7 @@
 #include "ResourceRequest.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RetrieveRecordsOptions {
     RetrieveRecordsOptions isolatedCopy() const & { return { request.isolatedCopy(), crossOriginEmbedderPolicy.isolatedCopy(), sourceOrigin->isolatedCopy(), ignoreSearch, ignoreMethod, ignoreVary, shouldProvideResponse }; }
@@ -45,4 +45,4 @@ struct RetrieveRecordsOptions {
     bool shouldProvideResponse { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

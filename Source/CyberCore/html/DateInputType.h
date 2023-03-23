@@ -34,7 +34,7 @@
 
 #include "BaseDateAndTimeInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateInputType final : public BaseDateAndTimeInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -53,7 +53,7 @@ private:
     void setupLayoutParameters(DateTimeEditElement::LayoutParameters&, const DateComponents&) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(DateInputType, Type::Date)
 

@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSLCH);
 
@@ -116,4 +116,4 @@ ExceptionOr<void> CSSLCH::setAlpha(CSSColorPercent&& alpha)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

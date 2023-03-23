@@ -1,4 +1,4 @@
-This tests WebKit preserves non-directional selection after unapplying replacement on Mac. To manually test on Mac,
+This tests CyberKit preserves non-directional selection after unapplying replacement on Mac. To manually test on Mac,
 
 Select "world" by double-clicking the word
 Replace "world" by a character by pressing a key
@@ -6,5 +6,5 @@ Undo
 Extend selection to the left
 " world" should be selected.
 
-hello world WebKit
+hello world CyberKit
 PASS

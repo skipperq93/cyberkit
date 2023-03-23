@@ -34,20 +34,20 @@
 #include "JSDOMWrapperCache.h"
 #include "JSTestObj.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/ObjectConstructor.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<> ExposedToWorkerAndWindow::Dict convertDictionary<ExposedToWorkerAndWindow::Dict>(JSGlobalObject& lexicalGlobalObject, JSValue value)
@@ -249,7 +249,7 @@ JSC_DEFINE_HOST_FUNCTION(jsExposedToWorkerAndWindowPrototypeFunction_doSomething
 
 JSC::GCClient::IsoSubspace* JSExposedToWorkerAndWindow::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSExposedToWorkerAndWindow, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSExposedToWorkerAndWindow, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForExposedToWorkerAndWindow.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForExposedToWorkerAndWindow = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForExposedToWorkerAndWindow.get(); },
@@ -284,9 +284,9 @@ void JSExposedToWorkerAndWindowOwner::finalize(JSC::Handle<JSC::Unknown> handle,
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7ExposedToWorkerAndWindow@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7ExposedToWorkerAndWindow@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore24ExposedToWorkerAndWindowE[]; }
+extern "C" { extern void* _ZTVN7CyberCore24ExposedToWorkerAndWindowE[]; }
 #endif
 #endif
 
@@ -297,9 +297,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7ExposedToWorkerAndWindow@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7ExposedToWorkerAndWindow@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore24ExposedToWorkerAndWindowE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore24ExposedToWorkerAndWindowE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

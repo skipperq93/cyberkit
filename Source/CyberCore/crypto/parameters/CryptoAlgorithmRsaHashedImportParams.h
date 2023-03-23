@@ -32,7 +32,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmRsaHashedImportParams final : public CryptoAlgorithmParameters {
 public:
@@ -52,7 +52,7 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CRYPTO_ALGORITHM_PARAMETERS(RsaHashedImportParams)
 

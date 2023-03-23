@@ -30,7 +30,7 @@
 #include "WebPageProxy.h"
 #include <CyberCore/NotificationData.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebNotificationManagerMessageHandler::WebNotificationManagerMessageHandler(WebPageProxy& webPageProxy)
     : m_webPageProxy(webPageProxy)
@@ -94,4 +94,4 @@ void WebNotificationManagerMessageHandler::didDestroyNotification(const UUID& no
     m_webPageProxy.didDestroyNotification(notificationID);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

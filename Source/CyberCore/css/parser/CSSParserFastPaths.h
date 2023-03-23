@@ -35,7 +35,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 
@@ -58,4 +58,4 @@ public:
     static bool isSimpleLengthPropertyID(CSSPropertyID, bool& acceptsNegativeNumbers);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

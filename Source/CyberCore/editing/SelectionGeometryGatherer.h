@@ -30,7 +30,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatQuad;
 class LayoutRect;
@@ -74,6 +74,6 @@ private:
     bool m_isTextOnly;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_CONTROLS)

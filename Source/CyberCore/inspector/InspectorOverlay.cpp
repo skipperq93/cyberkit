@@ -76,7 +76,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -869,7 +869,7 @@ void InspectorOverlay::drawBounds(GraphicsContext& context, const InspectorOverl
 
     FrameView* pageView = localMainFrame->view();
     FloatSize viewportSize = pageView->sizeForVisibleContent();
-    FloatSize contentInset(0, pageView->topContentInset(ScrollView::TopContentInsetType::WebCoreOrPlatformContentInset));
+    FloatSize contentInset(0, pageView->topContentInset(ScrollView::TopContentInsetType::CyberCoreOrPlatformContentInset));
 
     Path path;
 
@@ -931,7 +931,7 @@ void InspectorOverlay::drawRulers(GraphicsContext& context, const InspectorOverl
         scrollOffset = pageView->visibleContentRect().location();
 
     FloatSize viewportSize = pageView->sizeForVisibleContent();
-    FloatSize contentInset(0, pageView->topContentInset(ScrollView::TopContentInsetType::WebCoreOrPlatformContentInset));
+    FloatSize contentInset(0, pageView->topContentInset(ScrollView::TopContentInsetType::CyberCoreOrPlatformContentInset));
     float pageScaleFactor = m_page.pageScaleFactor();
     float pageZoomFactor = localMainFrame->pageZoomFactor();
 
@@ -1224,8 +1224,8 @@ Path InspectorOverlay::drawElementTitle(GraphicsContext& context, Node& node, co
         layoutContextBubbleStrings.append(WEB_UI_STRING_KEY("Grid", "Grid (Inspector Element Selection)", "Inspector element selection tooltip text for Grid containers."));
 
     // Need to enable AX to get the computed role.
-    if (!WebCore::AXObjectCache::accessibilityEnabled())
-        WebCore::AXObjectCache::enableAccessibility();
+    if (!CyberCore::AXObjectCache::accessibilityEnabled())
+        CyberCore::AXObjectCache::enableAccessibility();
 
     String elementRole;
     if (AXObjectCache* axObjectCache = node.document().axObjectCache()) {
@@ -1272,7 +1272,7 @@ Path InspectorOverlay::drawElementTitle(GraphicsContext& context, Node& node, co
     FrameView* pageView = localMainFrame->view();
 
     FloatSize viewportSize = pageView->sizeForVisibleContent();
-    FloatSize contentInset(0, pageView->topContentInset(ScrollView::TopContentInsetType::WebCoreOrPlatformContentInset));
+    FloatSize contentInset(0, pageView->topContentInset(ScrollView::TopContentInsetType::CyberCoreOrPlatformContentInset));
     if (m_showRulers || m_showRulersForNodeHighlight)
         contentInset.expand(rulerSize, rulerSize);
 
@@ -1733,7 +1733,7 @@ std::optional<InspectorOverlay::Highlight::GridHighlightOverlay> InspectorOverla
             auto gapLabelPosition = gapLabelLine.start();
 
             // The area under the window's toolbar is drawable, but not meaningfully visible, so we must account for that space.
-            auto topEdgeInset = pageView->topContentInset(ScrollView::TopContentInsetType::WebCoreOrPlatformContentInset);
+            auto topEdgeInset = pageView->topContentInset(ScrollView::TopContentInsetType::CyberCoreOrPlatformContentInset);
             if (gapLabelLine.start().y() - expectedLabelSize.height() - topEdgeInset + scrollPosition.y() - viewportBounds.y() < 0) {
                 arrowDirection = correctedArrowDirection(InspectorOverlayLabel::Arrow::Direction::Up, GridTrackSizingDirection::ForColumns);
 
@@ -2130,4 +2130,4 @@ std::optional<InspectorOverlay::Highlight::FlexHighlightOverlay> InspectorOverla
     return { flexHighlightOverlay };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

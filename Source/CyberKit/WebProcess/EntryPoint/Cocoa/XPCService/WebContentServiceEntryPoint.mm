@@ -43,12 +43,12 @@ void WEBCONTENT_SERVICE_INITIALIZER(xpc_connection_t connection, xpc_object_t in
 
     // Remove the WebProcessShim from the DYLD_INSERT_LIBRARIES environment variable so any processes spawned by
     // the this process don't try to insert the shim and crash.
-    WebKit::EnvironmentUtilities::removeValuesEndingWith("DYLD_INSERT_LIBRARIES", "/WebProcessShim.dylib");
+    CyberKit::EnvironmentUtilities::removeValuesEndingWith("DYLD_INSERT_LIBRARIES", "/WebProcessShim.dylib");
 
 #if PLATFORM(IOS_FAMILY)
     GSInitialize();
     InitCyberCoreThreadSystemInterface();
 #endif // PLATFORM(IOS_FAMILY)
 
-    WebKit::XPCServiceInitializer<WebKit::WebProcess, WebKit::XPCServiceInitializerDelegate>(connection, initializerMessage);
+    CyberKit::XPCServiceInitializer<CyberKit::WebProcess, CyberKit::XPCServiceInitializerDelegate>(connection, initializerMessage);
 }

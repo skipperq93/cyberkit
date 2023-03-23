@@ -38,18 +38,18 @@
 #include "JSDOMGlobalObjectInlines.h"
 #include "JSDOMWrapperCache.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<> TestPromiseRejectionEvent::Init convertDictionary<TestPromiseRejectionEvent::Init>(JSGlobalObject& lexicalGlobalObject, JSValue value)
@@ -298,7 +298,7 @@ JSC_DEFINE_CUSTOM_GETTER(jsTestPromiseRejectionEvent_reason, (JSGlobalObject* le
 
 JSC::GCClient::IsoSubspace* JSTestPromiseRejectionEvent::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestPromiseRejectionEvent, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestPromiseRejectionEvent, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestPromiseRejectionEvent.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestPromiseRejectionEvent = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestPromiseRejectionEvent.get(); },
@@ -318,9 +318,9 @@ void JSTestPromiseRejectionEvent::analyzeHeap(JSCell* cell, HeapAnalyzer& analyz
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestPromiseRejectionEvent@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestPromiseRejectionEvent@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore25TestPromiseRejectionEventE[]; }
+extern "C" { extern void* _ZTVN7CyberCore25TestPromiseRejectionEventE[]; }
 #endif
 #endif
 
@@ -331,9 +331,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestPromiseRejectionEvent@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestPromiseRejectionEvent@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore25TestPromiseRejectionEventE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore25TestPromiseRejectionEventE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

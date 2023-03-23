@@ -28,7 +28,7 @@
 
 #include "IdTargetObserverRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IdTargetObserver::IdTargetObserver(IdTargetObserverRegistry& registry, const AtomString& id)
     : m_registry(&registry)
@@ -43,4 +43,4 @@ IdTargetObserver::~IdTargetObserver()
         m_registry->removeObserver(m_id, this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

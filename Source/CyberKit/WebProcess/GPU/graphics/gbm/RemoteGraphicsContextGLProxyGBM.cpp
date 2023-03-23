@@ -42,7 +42,7 @@
 #include <CyberCore/NicosiaContentLayerTextureMapperImpl.h>
 #include <CyberCore/TextureMapperPlatformLayerProxyDMABuf.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NicosiaDisplayDelegate final : public CyberCore::GraphicsLayerContentsDisplayDelegate, public Nicosia::ContentLayerTextureMapperImpl::Client {
 public:
@@ -142,6 +142,6 @@ Ref<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::platformCreate(I
     return adoptRef(*new RemoteGraphicsContextGLProxyGBM(connection, WTFMove(streamConnection), attributes, WTFMove(videoFrameObjectHeapProxy)));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEBGL) && USE(LIBGBM)

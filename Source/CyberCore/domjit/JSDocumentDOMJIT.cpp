@@ -40,7 +40,7 @@
 
 IGNORE_WARNINGS_BEGIN("frame-address");
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 Ref<JSC::Snippet> checkSubClassSnippetForJSDocument()
@@ -198,7 +198,7 @@ JSC_DEFINE_JIT_OPERATION(operationToJSContainerNode, JSC::EncodedJSValue, (JSC::
     return DOMJIT::toWrapperSlowImpl<ContainerNode>(globalObject, result);
 }
 
-} } // namespace WebCore::DOMJIT
+} } // namespace CyberCore::DOMJIT
 
 IGNORE_WARNINGS_END
 

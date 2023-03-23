@@ -42,7 +42,7 @@
 #include "SecurityPolicy.h"
 #include "ViolationReportType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ASCIILiteral crossOriginOpenerPolicyToString(const CrossOriginOpenerPolicyValue& coop)
 {
@@ -271,4 +271,4 @@ CrossOriginOpenerPolicyEnforcementResult CrossOriginOpenerPolicyEnforcementResul
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

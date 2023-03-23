@@ -52,7 +52,7 @@
 ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN
 @implementation WKProcessGroup {
 ALLOW_DEPRECATED_IMPLEMENTATIONS_END
-    RefPtr<WebKit::WebProcessPool> _processPool;
+    RefPtr<CyberKit::WebProcessPool> _processPool;
 
     WeakObjCPtr<id <WKProcessGroupDelegate>> _delegate;
 
@@ -69,7 +69,7 @@ static void didCreateConnection(WKContextRef, WKConnectionRef connectionRef, con
     auto delegate = processGroup->_delegate.get();
 
     if ([delegate respondsToSelector:@selector(processGroup:didCreateConnectionToWebProcessPlugIn:)])
-        [delegate processGroup:processGroup didCreateConnectionToWebProcessPlugIn:wrapper(*WebKit::toImpl(connectionRef))];
+        [delegate processGroup:processGroup didCreateConnectionToWebProcessPlugIn:wrapper(*CyberKit::toImpl(connectionRef))];
 }
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -96,7 +96,7 @@ static WKTypeRef getInjectedBundleInitializationUserData(WKContextRef, const voi
     if ([delegate respondsToSelector:@selector(processGroupWillCreateConnectionToWebProcessPlugIn:)]) {
         RetainPtr<id> initializationUserData = [delegate processGroupWillCreateConnectionToWebProcessPlugIn:processGroup];
 
-        return toAPI(&WebKit::ObjCObjectGraph::create(initializationUserData.get()).leakRef());
+        return toAPI(&CyberKit::ObjCObjectGraph::create(initializationUserData.get()).leakRef());
     }
 
     return 0;
@@ -118,7 +118,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 static void didNavigateWithNavigationData(WKContextRef, WKPageRef pageRef, WKNavigationDataRef navigationDataRef, WKFrameRef frameRef, const void*)
 {
-    if (!WebKit::toImpl(frameRef)->isMainFrame())
+    if (!CyberKit::toImpl(frameRef)->isMainFrame())
         return;
 
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -127,12 +127,12 @@ static void didNavigateWithNavigationData(WKContextRef, WKPageRef pageRef, WKNav
     auto historyDelegate = controller->_historyDelegate.get();
 
     if ([historyDelegate respondsToSelector:@selector(browsingContextController:didNavigateWithNavigationData:)])
-        [historyDelegate browsingContextController:controller didNavigateWithNavigationData:wrapper(*WebKit::toImpl(navigationDataRef))];
+        [historyDelegate browsingContextController:controller didNavigateWithNavigationData:wrapper(*CyberKit::toImpl(navigationDataRef))];
 }
 
 static void didPerformClientRedirect(WKContextRef, WKPageRef pageRef, WKURLRef sourceURLRef, WKURLRef destinationURLRef, WKFrameRef frameRef, const void*)
 {
-    if (!WebKit::toImpl(frameRef)->isMainFrame())
+    if (!CyberKit::toImpl(frameRef)->isMainFrame())
         return;
 
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -141,12 +141,12 @@ static void didPerformClientRedirect(WKContextRef, WKPageRef pageRef, WKURLRef s
     auto historyDelegate = controller->_historyDelegate.get();
 
     if ([historyDelegate respondsToSelector:@selector(browsingContextController:didPerformClientRedirectFromURL:toURL:)])
-        [historyDelegate browsingContextController:controller didPerformClientRedirectFromURL:wrapper(*WebKit::toImpl(sourceURLRef)) toURL:wrapper(*WebKit::toImpl(destinationURLRef))];
+        [historyDelegate browsingContextController:controller didPerformClientRedirectFromURL:wrapper(*CyberKit::toImpl(sourceURLRef)) toURL:wrapper(*CyberKit::toImpl(destinationURLRef))];
 }
 
 static void didPerformServerRedirect(WKContextRef, WKPageRef pageRef, WKURLRef sourceURLRef, WKURLRef destinationURLRef, WKFrameRef frameRef, const void*)
 {
-    if (!WebKit::toImpl(frameRef)->isMainFrame())
+    if (!CyberKit::toImpl(frameRef)->isMainFrame())
         return;
 
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -155,12 +155,12 @@ static void didPerformServerRedirect(WKContextRef, WKPageRef pageRef, WKURLRef s
     auto historyDelegate = controller->_historyDelegate.get();
 
     if ([historyDelegate respondsToSelector:@selector(browsingContextController:didPerformServerRedirectFromURL:toURL:)])
-        [historyDelegate browsingContextController:controller didPerformServerRedirectFromURL:wrapper(*WebKit::toImpl(sourceURLRef)) toURL:wrapper(*WebKit::toImpl(destinationURLRef))];
+        [historyDelegate browsingContextController:controller didPerformServerRedirectFromURL:wrapper(*CyberKit::toImpl(sourceURLRef)) toURL:wrapper(*CyberKit::toImpl(destinationURLRef))];
 }
 
 static void didUpdateHistoryTitle(WKContextRef, WKPageRef pageRef, WKStringRef titleRef, WKURLRef urlRef, WKFrameRef frameRef, const void*)
 {
-    if (!WebKit::toImpl(frameRef)->isMainFrame())
+    if (!CyberKit::toImpl(frameRef)->isMainFrame())
         return;
 
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -169,7 +169,7 @@ static void didUpdateHistoryTitle(WKContextRef, WKPageRef pageRef, WKStringRef t
     auto historyDelegate = controller->_historyDelegate.get();
 
     if ([historyDelegate respondsToSelector:@selector(browsingContextController:didUpdateHistoryTitle:forURL:)])
-        [historyDelegate browsingContextController:controller didUpdateHistoryTitle:wrapper(*WebKit::toImpl(titleRef)) forURL:wrapper(*WebKit::toImpl(urlRef))];
+        [historyDelegate browsingContextController:controller didUpdateHistoryTitle:wrapper(*CyberKit::toImpl(titleRef)) forURL:wrapper(*CyberKit::toImpl(urlRef))];
 }
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -203,7 +203,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     auto configuration = API::ProcessPoolConfiguration::create();
     configuration->setInjectedBundlePath(bundleURL ? String(bundleURL.path) : String());
 
-    _processPool = WebKit::WebProcessPool::create(configuration);
+    _processPool = CyberKit::WebProcessPool::create(configuration);
 
     setUpConnectionClient(self, toAPI(_processPool.get()));
     setUpInjectedBundleClient(self, toAPI(_processPool.get()));
@@ -238,7 +238,7 @@ static Vector<WTF::String> toStringVector(NSSet *input)
     configuration->setInjectedBundlePath(bundleURL ? String(bundleURL.path) : String());
     configuration->setCustomClassesForParameterCoder(toStringVector(classesForCoder));
 
-    _processPool = WebKit::WebProcessPool::create(configuration);
+    _processPool = CyberKit::WebProcessPool::create(configuration);
 
     setUpConnectionClient(self, toAPI(_processPool.get()));
     setUpInjectedBundleClient(self, toAPI(_processPool.get()));

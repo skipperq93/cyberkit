@@ -30,7 +30,7 @@
 #include <pal/graphics/WebGPU/WebGPUPipelineLayoutDescriptor.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUPipelineLayoutDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::PipelineLayoutDescriptor convertToBacking() const

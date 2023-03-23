@@ -122,7 +122,7 @@
 #include "VideoTrack.h"
 #include "VideoTrackList.h"
 #include "VideoTrackPrivate.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/ScriptObject.h>
 #include <CyberScriptCore/Uint8Array.h>
 #include <limits>
@@ -210,7 +210,7 @@ struct LogArgument<URL> {
 }
 
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLMediaElement);
 
@@ -7490,7 +7490,7 @@ void HTMLMediaElement::updateSleepDisabling()
     else if (shouldDisableSleep != SleepType::None) {
         auto type = shouldDisableSleep == SleepType::Display ? PAL::SleepDisabler::Type::Display : PAL::SleepDisabler::Type::System;
         if (!m_sleepDisabler || m_sleepDisabler->type() != type)
-            m_sleepDisabler = makeUnique<SleepDisabler>("com.apple.WebCore: HTMLMediaElement playback"_s, type);
+            m_sleepDisabler = makeUnique<SleepDisabler>("com.apple.CyberCore: HTMLMediaElement playback"_s, type);
     }
 
     if (m_player)

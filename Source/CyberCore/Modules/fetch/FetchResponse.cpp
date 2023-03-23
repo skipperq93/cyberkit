@@ -40,7 +40,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://fetch.spec.whatwg.org/#null-body-status
 static inline bool isNullBodyStatus(int status)
@@ -617,4 +617,4 @@ bool FetchResponse::hasWasmMIMEType() const
     return MIMETypeRegistry::isSupportedWebAssemblyMIMEType(m_headers->fastGet(HTTPHeaderName::ContentType));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

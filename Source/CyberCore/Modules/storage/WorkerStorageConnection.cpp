@@ -34,7 +34,7 @@
 #include "WorkerThread.h"
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WorkerStorageConnection> WorkerStorageConnection::create(WorkerGlobalScope& scope)
 {
@@ -157,4 +157,4 @@ void WorkerStorageConnection::didGetDirectory(uint64_t callbackIdentifier, Excep
     callback(StorageConnection::DirectoryInfo { result.returnValue().first, Ref { workerFileSystemStorageConnection } });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

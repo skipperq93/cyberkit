@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ShadowPseudoIds {
 
@@ -107,4 +107,4 @@ const AtomString& appleAttachmentControlsContainer();
 
 } // namespace ShadowPseudoId
 
-} // namespace WebCore
+} // namespace CyberCore

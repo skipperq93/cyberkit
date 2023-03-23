@@ -36,7 +36,7 @@
 #include "InsertTextCommand.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DictationCommandLineOperation {
 public:

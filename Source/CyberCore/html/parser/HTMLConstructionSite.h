@@ -36,7 +36,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AtomStringWithCode {
     AtomString string;
@@ -46,10 +46,10 @@ struct AtomStringWithCode {
 }
 
 namespace WTF {
-template<> struct VectorTraits<WebCore::AtomStringWithCode> : SimpleClassVectorTraits { };
+template<> struct VectorTraits<CyberCore::AtomStringWithCode> : SimpleClassVectorTraits { };
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct HTMLConstructionSiteTask {
     enum Operation {
@@ -80,13 +80,13 @@ struct HTMLConstructionSiteTask {
     bool selfClosing;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct VectorTraits<WebCore::HTMLConstructionSiteTask> : SimpleClassVectorTraits { };
+template<> struct VectorTraits<CyberCore::HTMLConstructionSiteTask> : SimpleClassVectorTraits { };
 } // namespace WTF
 
-namespace WebCore {
+namespace CyberCore {
 
 enum WhitespaceMode {
     AllWhitespace,
@@ -240,4 +240,4 @@ private:
     bool m_inQuirksMode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

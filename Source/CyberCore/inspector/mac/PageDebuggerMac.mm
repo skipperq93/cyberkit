@@ -30,7 +30,7 @@
 
 #import <wtf/ProcessPrivilege.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool PageDebugger::platformShouldContinueRunningEventLoopWhilePaused()
 {
@@ -56,6 +56,6 @@ bool PageDebugger::platformShouldContinueRunningEventLoopWhilePaused()
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

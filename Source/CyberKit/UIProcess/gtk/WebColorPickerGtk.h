@@ -38,7 +38,7 @@ class Color;
 class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebColorPickerGtk : public WebColorPicker {
 public:
@@ -67,7 +67,7 @@ private:
     GtkWidget* m_colorChooser;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INPUT_TYPE_COLOR)
 #endif // WebColorPickerGtk_h

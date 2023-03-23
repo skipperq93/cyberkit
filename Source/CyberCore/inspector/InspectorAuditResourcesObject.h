@@ -38,7 +38,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RobinHoodHashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class Document;
@@ -94,4 +94,4 @@ private:
     MemoryCompactRobinHoodHashMap<String, CachedResource*> m_resources;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

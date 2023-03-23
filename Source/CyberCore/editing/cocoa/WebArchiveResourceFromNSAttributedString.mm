@@ -29,7 +29,7 @@
 #import "ArchiveResource.h"
 #import "MIMETypeRegistry.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebArchiveResourceFromNSAttributedString
 

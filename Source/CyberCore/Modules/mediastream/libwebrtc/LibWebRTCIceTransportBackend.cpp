@@ -40,7 +40,7 @@ ALLOW_UNUSED_PARAMETERS_END
 
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline RTCIceTransportState toRTCIceTransportState(webrtc::IceTransportState state)
 {
@@ -204,6 +204,6 @@ void LibWebRTCIceTransportBackend::unregisterClient()
     m_observer->stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

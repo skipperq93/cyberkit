@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Some consumers of this class may benefit from lazily fetching items rather
 //        than creating the list statically as is currently the only option.
@@ -67,4 +67,4 @@ private:
     Vector<String> m_strings;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const CSSCalcExpressionNode& node)
 {

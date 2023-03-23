@@ -31,7 +31,7 @@
 #include "HTMLParserIdioms.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSPreloadScanner::CSSPreloadScanner()
     : m_state(Initial)

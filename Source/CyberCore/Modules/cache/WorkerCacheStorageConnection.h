@@ -30,7 +30,7 @@
 
 #include "ResourceRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerGlobalScope;
 class WorkerLoaderProxy;
@@ -45,7 +45,7 @@ public:
 private:
     explicit WorkerCacheStorageConnection(WorkerGlobalScope&);
 
-    // WebCore::CacheStorageConnection.
+    // CyberCore::CacheStorageConnection.
     void open(const ClientOrigin&, const String& cacheName, DOMCacheEngine::CacheIdentifierCallback&&) final;
     void remove(DOMCacheIdentifier, DOMCacheEngine::RemoveCacheIdentifierCallback&&) final;
     void retrieveCaches(const ClientOrigin&, uint64_t updateCounter, DOMCacheEngine::CacheInfosCallback&&) final;
@@ -61,7 +61,7 @@ private:
     void doRemove(uint64_t requestIdentifier, uint64_t cacheIdentifier);
     void doRetrieveCaches(uint64_t requestIdentifier, const ClientOrigin&, uint64_t updateCounter);
     void doRetrieveRecords(uint64_t requestIdentifier, uint64_t cacheIdentifier, const URL&);
-    void doBatchDeleteOperation(uint64_t requestIdentifier, uint64_t cacheIdentifier, const WebCore::ResourceRequest&, WebCore::CacheQueryOptions&&);
+    void doBatchDeleteOperation(uint64_t requestIdentifier, uint64_t cacheIdentifier, const CyberCore::ResourceRequest&, CyberCore::CacheQueryOptions&&);
     void doBatchPutOperation(uint64_t requestIdentifier, uint64_t cacheIdentifier, Vector<DOMCacheEngine::Record>&&);
 
     void openCompleted(uint64_t requestIdentifier, const DOMCacheEngine::CacheIdentifierOrError&);
@@ -84,4 +84,4 @@ private:
     uint64_t m_lastRequestIdentifier { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

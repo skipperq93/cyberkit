@@ -29,7 +29,7 @@
 #include "ShareableBitmap.h"
 #include "UpdateInfo.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 BackingStore::BackingStore(const IntSize& size, float deviceScaleFactor, WebPageProxy& webPageProxy)
@@ -61,4 +61,4 @@ void BackingStore::incorporateUpdate(const UpdateInfo& updateInfo)
     incorporateUpdate(bitmap.get(), updateInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

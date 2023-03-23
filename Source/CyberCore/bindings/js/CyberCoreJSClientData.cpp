@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 
 #include "DOMGCOutputConstraint.h"
 #include "DocumentInlines.h"
@@ -59,7 +59,7 @@
 #include <mutex>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(JSHeapData);
@@ -188,7 +188,7 @@ void JSVMClientData::initNormalWorld(VM* vm, WorkerThreadType type)
     vm->heap.addMarkingConstraint(makeUnique<DOMGCOutputConstraint>(*vm, clientData->heapData()));
 
     clientData->m_normalWorld = DOMWrapperWorld::create(*vm, DOMWrapperWorld::Type::Normal);
-    vm->m_typedArrayController = adoptRef(new WebCoreTypedArrayController(type == WorkerThreadType::DedicatedWorker || type == WorkerThreadType::Worklet));
+    vm->m_typedArrayController = adoptRef(new CyberCoreTypedArrayController(type == WorkerThreadType::DedicatedWorker || type == WorkerThreadType::Worklet));
 }
 
 String JSVMClientData::overrideSourceURL(const JSC::StackFrame& frame, const String& originalSourceURL) const
@@ -210,5 +210,5 @@ String JSVMClientData::overrideSourceURL(const JSC::StackFrame& frame, const Str
     return document->maskedURLForBindingsIfNeeded(URL(originalSourceURL)).string();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

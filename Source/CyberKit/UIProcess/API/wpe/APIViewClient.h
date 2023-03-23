@@ -30,9 +30,9 @@
 
 typedef struct OpaqueJSContext* JSGlobalContextRef;
 
-namespace WebKit {
+namespace CyberKit {
 class DownloadProxy;
-class WebKitWebResourceLoadManager;
+class CyberKitWebResourceLoadManager;
 }
 
 namespace WKWPE {
@@ -51,8 +51,8 @@ public:
     virtual void frameDisplayed(WKWPE::View&) { }
     virtual void willStartLoad(WKWPE::View&) { }
     virtual void didChangePageID(WKWPE::View&) { }
-    virtual void didReceiveUserMessage(WKWPE::View&, WebKit::UserMessage&&, CompletionHandler<void(WebKit::UserMessage&&)>&& completionHandler) { completionHandler(WebKit::UserMessage()); }
-    virtual WebKit::WebKitWebResourceLoadManager* webResourceLoadManager() { return nullptr; }
+    virtual void didReceiveUserMessage(WKWPE::View&, CyberKit::UserMessage&&, CompletionHandler<void(CyberKit::UserMessage&&)>&& completionHandler) { completionHandler(CyberKit::UserMessage()); }
+    virtual CyberKit::CyberKitWebResourceLoadManager* webResourceLoadManager() { return nullptr; }
 };
 
 } // namespace API

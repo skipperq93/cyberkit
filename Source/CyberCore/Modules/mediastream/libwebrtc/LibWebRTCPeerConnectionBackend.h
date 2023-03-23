@@ -33,7 +33,7 @@ namespace webrtc {
 class IceCandidateInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCMediaEndpoint;
 class LibWebRTCProvider;
@@ -116,6 +116,6 @@ private:
     Vector<Ref<RTCRtpReceiver>> m_pendingReceivers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

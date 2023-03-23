@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# WebKit's Python module for parsing and modifying ChangeLog files
+# CyberKit's Python module for parsing and modifying ChangeLog files
 
 import logging
 import re

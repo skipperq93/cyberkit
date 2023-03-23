@@ -18,20 +18,20 @@
  */
 
 #include "config.h"
-#include "WebKitFormClient.h"
+#include "CyberKitFormClient.h"
 
 #include "APIFormClient.h"
 #include "WebFormSubmissionListenerProxy.h"
-#include "WebKitFormSubmissionRequestPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitFormSubmissionRequestPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 class FormClient final : public API::FormClient {
 public:
-    explicit FormClient(WebKitWebView* webView)
+    explicit FormClient(CyberKitWebView* webView)
         : m_webView(webView)
     {
     }
@@ -39,14 +39,14 @@ public:
 private:
     void willSubmitForm(WebPageProxy&, WebFrameProxy&, WebFrameProxy&, const Vector<std::pair<String, String>>& values, API::Object*, WTF::Function<void(void)>&& completionHandler) override
     {
-        GRefPtr<WebKitFormSubmissionRequest> request = adoptGRef(webkitFormSubmissionRequestCreate(values, WebFormSubmissionListenerProxy::create(WTFMove(completionHandler))));
+        GRefPtr<CyberKitFormSubmissionRequest> request = adoptGRef(webkitFormSubmissionRequestCreate(values, WebFormSubmissionListenerProxy::create(WTFMove(completionHandler))));
         webkitWebViewSubmitFormRequest(m_webView, request.get());
     }
 
-    WebKitWebView* m_webView;
+    CyberKitWebView* m_webView;
 };
 
-void attachFormClientToView(WebKitWebView* webView)
+void attachFormClientToView(CyberKitWebView* webView)
 {
     webkitWebViewGetPage(webView).setFormClient(makeUnique<FormClient>(webView));
 }

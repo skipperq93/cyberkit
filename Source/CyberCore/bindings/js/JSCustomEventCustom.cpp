@@ -32,7 +32,7 @@
 #include <CyberScriptCore/JSCJSValue.h>
 #include <CyberScriptCore/Structure.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue JSCustomEvent::detail(JSC::JSGlobalObject& lexicalGlobalObject) const
 {
@@ -51,4 +51,4 @@ void JSCustomEvent::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSCustomEvent);
 
-} // namespace WebCore
+} // namespace CyberCore

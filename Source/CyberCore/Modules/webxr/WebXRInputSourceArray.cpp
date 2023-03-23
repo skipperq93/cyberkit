@@ -35,7 +35,7 @@
 #include "XRInputSourcesChangeEvent.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRInputSourceArray);
 
@@ -187,7 +187,7 @@ void WebXRInputSourceArray::handleAddedOrUpdatedInputSources(double timestamp, c
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)
 

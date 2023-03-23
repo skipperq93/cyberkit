@@ -28,16 +28,16 @@
 #include <wtf/HashFunctions.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaDeviceHashSalts {
     String persistentDeviceSalt;
     String ephemeralDeviceSalt;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct DefaultHash<WebCore::MediaDeviceHashSalts>;
-template<> struct HashTraits<WebCore::MediaDeviceHashSalts>;
+template<> struct DefaultHash<CyberCore::MediaDeviceHashSalts>;
+template<> struct HashTraits<CyberCore::MediaDeviceHashSalts>;
 }

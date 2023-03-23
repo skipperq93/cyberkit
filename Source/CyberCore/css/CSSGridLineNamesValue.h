@@ -34,7 +34,7 @@
 #include <wtf/FixedVector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSGridLineNamesValue final : public CSSValue {
 public:
@@ -51,6 +51,6 @@ private:
     FixedVector<String> m_names;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSGridLineNamesValue, isGridLineNamesValue());

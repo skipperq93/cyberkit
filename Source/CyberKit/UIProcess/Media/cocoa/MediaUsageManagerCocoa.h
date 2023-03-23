@@ -31,7 +31,7 @@
 
 OBJC_CLASS USVideoUsage;
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaUsageManagerCocoa : public MediaUsageManager {
     WTF_MAKE_FAST_ALLOCATED;
@@ -68,7 +68,7 @@ private:
     HashMap<CyberCore::MediaSessionIdentifier, std::unique_ptr<SessionMediaUsage>> m_mediaSessions;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_USAGE)
 

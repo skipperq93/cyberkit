@@ -19,14 +19,14 @@
 
 #pragma once
 
-#include "WebKitWebResource.h"
+#include "CyberKitWebResource.h"
 #include <CyberCore/ResourceError.h>
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/ResourceResponse.h>
 
-WebKitWebResource* webkitWebResourceCreate(WebKit::WebFrameProxy&, const CyberCore::ResourceRequest&);
-void webkitWebResourceSentRequest(WebKitWebResource*, CyberCore::ResourceRequest&&, CyberCore::ResourceResponse&&);
-void webkitWebResourceSetResponse(WebKitWebResource*, CyberCore::ResourceResponse&&);
-void webkitWebResourceFinished(WebKitWebResource*);
-void webkitWebResourceFailed(WebKitWebResource*, CyberCore::ResourceError&&);
-bool webkitWebResourceIsMainResource(WebKitWebResource*);
+CyberKitWebResource* webkitWebResourceCreate(CyberKit::WebFrameProxy&, const CyberCore::ResourceRequest&);
+void webkitWebResourceSentRequest(CyberKitWebResource*, CyberCore::ResourceRequest&&, CyberCore::ResourceResponse&&);
+void webkitWebResourceSetResponse(CyberKitWebResource*, CyberCore::ResourceResponse&&);
+void webkitWebResourceFinished(CyberKitWebResource*);
+void webkitWebResourceFailed(CyberKitWebResource*, CyberCore::ResourceError&&);
+bool webkitWebResourceIsMainResource(CyberKitWebResource*);

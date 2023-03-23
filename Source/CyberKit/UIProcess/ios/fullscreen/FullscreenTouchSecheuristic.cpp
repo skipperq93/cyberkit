@@ -28,7 +28,7 @@
 
 #include <wtf/MonotonicTime.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 double FullscreenTouchSecheuristic::scoreOfNextTouch(CGPoint location)
 {

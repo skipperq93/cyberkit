@@ -29,7 +29,7 @@
 #include "Navigator.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(UserActivation);
 
@@ -67,4 +67,4 @@ bool UserActivation::isActive() const
     return window && window->hasTransientActivation();
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

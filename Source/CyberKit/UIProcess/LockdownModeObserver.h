@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class LockdownModeObserver : public CanMakeWeakPtr<LockdownModeObserver> {
 public:
@@ -37,4 +37,4 @@ public:
     virtual void didChangeLockdownMode() = 0;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

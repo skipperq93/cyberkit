@@ -27,7 +27,7 @@ class Instance;
 }
 }
 
-namespace WebCore {
+namespace CyberCore {
 
     class HTMLElement;
     class JSHTMLElement;
@@ -41,4 +41,4 @@ namespace WebCore {
     bool pluginElementCustomPut(JSHTMLElement*, JSC::JSGlobalObject*, JSC::PropertyName, JSC::JSValue, JSC::PutPropertySlot&, bool& putResult);
     JSC::CallData pluginElementCustomGetCallData(JSHTMLElement*);
 
-} // namespace WebCore
+} // namespace CyberCore

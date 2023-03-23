@@ -34,7 +34,7 @@
 #include "CryptoKeyRaw.h"
 #include "GCryptUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // libgcrypt doesn't provide HKDF functionality, so we have to implement it manually.
 // We should switch to the libgcrypt-provided implementation once it's available.
@@ -160,6 +160,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmHKDF::platformDeriveBits(const Crypt
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

@@ -36,7 +36,7 @@
 #include "DOMWindow.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DOMWindowSpeechSynthesis::DOMWindowSpeechSynthesis(DOMWindow* window)
     : DOMWindowProperty(window)
@@ -75,6 +75,6 @@ SpeechSynthesis* DOMWindowSpeechSynthesis::speechSynthesis()
     return m_speechSynthesis.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

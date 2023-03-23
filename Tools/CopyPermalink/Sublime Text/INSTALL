@@ -1,14 +1,14 @@
-Copy WebKit Permalink is a Sublime Text plugin that copies to the Clipboard a permanent hyperlink to the currently selected line in the active document.
+Copy CyberKit Permalink is a Sublime Text plugin that copies to the Clipboard a permanent hyperlink to the currently selected line in the active document.
 
 == How to install ==
 
-Copy (or symlink/shortcut) the directory CopyWebKitPermalink (located in the same directory as this file) to your Packages directory. On Mac, you can open your Packages directory by launching Sublime Text and choosing Sublime Text > Preferences > Browse Packages from the menu bar.
+Copy (or symlink/shortcut) the directory CopyCyberKitPermalink (located in the same directory as this file) to your Packages directory. On Mac, you can open your Packages directory by launching Sublime Text and choosing Sublime Text > Preferences > Browse Packages from the menu bar.
 
 == How to use ==
 
-Control-click (on Mac) or right-click (on Linux and Windows) on a line and select Copy WebKit Permalink or Copy WebKit Permalink to Blame from the context menu to copy to the Clipboard a permanent hyperlink to the selected line without or with blame annotations, respectively.
+Control-click (on Mac) or right-click (on Linux and Windows) on a line and select Copy CyberKit Permalink or Copy CyberKit Permalink to Blame from the context menu to copy to the Clipboard a permanent hyperlink to the selected line without or with blame annotations, respectively.
 
-Copy WebKit Permalink and Copy WebKit Permalink to Blame are also available as actions in the command palette.
+Copy CyberKit Permalink and Copy CyberKit Permalink to Blame are also available as actions in the command palette.
 
 == Key bindings for Mac ==
 
@@ -17,4 +17,4 @@ With blame annotations: Command + Shift + Control + Option + C
 
 == Settings ==
 
-Copy `CopyWebKitPermalink.sublime-settings`  (located in the same directory as this file) to your `Packages/User` directory and make changes.
+Copy `CopyCyberKitPermalink.sublime-settings`  (located in the same directory as this file) to your `Packages/User` directory and make changes.

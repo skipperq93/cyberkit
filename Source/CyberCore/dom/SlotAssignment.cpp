@@ -32,7 +32,7 @@
 #include "ShadowRoot.h"
 #include "TypedElementDescendantIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

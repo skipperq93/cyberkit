@@ -37,7 +37,7 @@
 #import <CyberCore/KeyEventCodesIOS.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static std::optional<String> getBase64EncodedPNGData(const RetainPtr<CGImageRef>&& cgImage)
@@ -229,6 +229,6 @@ std::optional<unichar> WebAutomationSession::charCodeIgnoringModifiersForVirtual
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

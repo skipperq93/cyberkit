@@ -26,9 +26,9 @@
 #pragma once
 
 #include "WebBackForwardList.h"
-#include "WebKitBackForwardList.h"
+#include "CyberKitBackForwardList.h"
 
-WebKitBackForwardList* webkitBackForwardListCreate(WebKit::WebBackForwardList*);
-WebKitBackForwardListItem* webkitBackForwardListItemGetOrCreate(WebKit::WebBackForwardListItem*);
-WebKit::WebBackForwardListItem* webkitBackForwardListItemGetItem(WebKitBackForwardListItem*);
-void webkitBackForwardListChanged(WebKitBackForwardList*, WebKit::WebBackForwardListItem* webAddedItem, const Vector<Ref<WebKit::WebBackForwardListItem>>&);
+CyberKitBackForwardList* webkitBackForwardListCreate(CyberKit::WebBackForwardList*);
+CyberKitBackForwardListItem* webkitBackForwardListItemGetOrCreate(CyberKit::WebBackForwardListItem*);
+CyberKit::WebBackForwardListItem* webkitBackForwardListItemGetItem(CyberKitBackForwardListItem*);
+void webkitBackForwardListChanged(CyberKitBackForwardList*, CyberKit::WebBackForwardListItem* webAddedItem, const Vector<Ref<CyberKit::WebBackForwardListItem>>&);

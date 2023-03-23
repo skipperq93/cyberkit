@@ -33,7 +33,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPreferences;
 class WebPageProxy;
@@ -68,4 +68,4 @@ private:
     WeakHashSet<WebPageProxy> m_pages;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

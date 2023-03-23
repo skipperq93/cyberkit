@@ -41,7 +41,7 @@
 #include "LayoutPoint.h"
 #include "ShadowData.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 class BorderPainter {
@@ -1550,5 +1550,5 @@ void BoxDecorationPainter::paintBackgroundAndBorders(PaintingContext& paintingCo
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLDrawInstancedBaseVertexBaseInstance final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLDrawInstancedBaseVertexBaseInstance);
@@ -44,4 +44,4 @@ public:
     void drawElementsInstancedBaseVertexBaseInstanceWEBGL(GCGLenum mode, GCGLsizei count, GCGLenum type, GCGLintptr offset, GCGLsizei instanceCount, GCGLint baseVertex, GCGLuint baseInstance);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

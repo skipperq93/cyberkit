@@ -30,7 +30,7 @@
 #include "WebGLSharedObject.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLTexture final : public WebGLSharedObject {
 public:
@@ -63,6 +63,6 @@ private:
     GCGLenum m_target;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

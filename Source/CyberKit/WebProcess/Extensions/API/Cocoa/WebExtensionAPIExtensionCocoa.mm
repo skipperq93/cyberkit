@@ -32,7 +32,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 bool WebExtensionAPIExtension::isPropertyAllowed(String name, WebPage*)
 {
@@ -50,6 +50,6 @@ NSURL *WebExtensionAPIExtension::getURL(NSString *resourcePath, NSString **error
     return resourcePath.length ? URL { baseURL, resourcePath } : baseURL;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

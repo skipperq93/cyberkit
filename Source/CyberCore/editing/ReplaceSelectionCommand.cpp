@@ -73,7 +73,7 @@
 #include <wtf/RobinHoodHashSet.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1849,4 +1849,4 @@ std::optional<SimpleRange> ReplaceSelectionCommand::insertedContentRange() const
     return makeSimpleRange(m_startOfInsertedContent, m_endOfInsertedContent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@
 #include <CyberScriptCore/Microtask.h>
 #include <wtf/Language.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 const ClassInfo JSWorkerGlobalScopeBase::s_info = { "WorkerGlobalScope"_s, &JSDOMGlobalObject::s_info, nullptr, nullptr, CREATE_METHOD_TABLE(JSWorkerGlobalScopeBase) };
@@ -165,4 +165,4 @@ JSValue toJS(JSGlobalObject*, WorkerGlobalScope& workerGlobalScope)
     return &contextWrapper->proxy();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

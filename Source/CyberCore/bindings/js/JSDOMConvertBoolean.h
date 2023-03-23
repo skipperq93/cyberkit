@@ -28,7 +28,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct Converter<IDLBoolean> : DefaultConverter<IDLBoolean> {
 
@@ -50,4 +50,4 @@ template<> struct JSConverter<IDLBoolean> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

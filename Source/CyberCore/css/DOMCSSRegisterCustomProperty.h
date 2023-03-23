@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class DOMCSSNamespace;

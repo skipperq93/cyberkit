@@ -33,7 +33,7 @@
 #include "WorkerThread.h"
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WorkerFileSystemStorageConnection> WorkerFileSystemStorageConnection::create(WorkerGlobalScope& scope, Ref<FileSystemStorageConnection>&& mainThreadConnection)
 {
@@ -307,7 +307,7 @@ void WorkerFileSystemStorageConnection::unregisterSyncAccessHandle(FileSystemSyn
     });
 }
 
-void WorkerFileSystemStorageConnection::invalidateAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier identifier)
+void WorkerFileSystemStorageConnection::invalidateAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier identifier)
 {
     if (auto handle = m_syncAccessHandles.get(identifier))
         handle->invalidate();
@@ -406,4 +406,4 @@ void WorkerFileSystemStorageConnection::requestNewCapacityForSyncAccessHandle(Fi
     return callback(std::nullopt);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

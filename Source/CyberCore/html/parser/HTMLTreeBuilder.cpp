@@ -57,7 +57,7 @@
 #include "TelephoneNumberDetector.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace ElementNames;
 using namespace HTMLNames;
@@ -2391,7 +2391,7 @@ void HTMLTreeBuilder::linkifyPhoneNumbers(const String& string)
     while (scannerPosition < length && TelephoneNumberDetector::find(&characters[scannerPosition], length - scannerPosition, &relativeStartPosition, &relativeEndPosition)) {
         // The convention in the Data Detectors framework is that the end position is the first character NOT in the phone number
         // (that is, the length of the range is relativeEndPosition - relativeStartPosition). So substract 1 to get the same
-        // convention as the old WebCore phone number parser (so that the rest of the code is still valid if we want to go back
+        // convention as the old CyberCore phone number parser (so that the rest of the code is still valid if we want to go back
         // to the old parser).
         --relativeEndPosition;
 

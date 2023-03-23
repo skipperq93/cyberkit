@@ -28,24 +28,24 @@
 
 #include "JSDOMExceptionHandling.h"
 #include "JSDOMMicrotask.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WorkerGlobalScope.h"
 #include "WorkerLocation.h"
 #include "WorkerNavigator.h"
 #include <CyberScriptCore/Error.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 template<typename Visitor>
 void JSWorkerGlobalScope::visitAdditionalChildren(Visitor& visitor)
 {
     if (auto* location = wrapped().optionalLocation())
-        addWebCoreOpaqueRoot(visitor, *location);
+        addCyberCoreOpaqueRoot(visitor, *location);
     if (auto* navigator = wrapped().optionalNavigator())
-        addWebCoreOpaqueRoot(visitor, *navigator);
+        addCyberCoreOpaqueRoot(visitor, *navigator);
     ScriptExecutionContext& context = wrapped();
-    addWebCoreOpaqueRoot(visitor, context);
+    addCyberCoreOpaqueRoot(visitor, context);
     
     // Normally JSEventTargetCustom.cpp's JSEventTarget::visitAdditionalChildren() would call this. But
     // even though WorkerGlobalScope is an EventTarget, JSWorkerGlobalScope does not subclass
@@ -72,4 +72,4 @@ JSValue JSWorkerGlobalScope::queueMicrotask(JSGlobalObject& lexicalGlobalObject,
     return jsUndefined();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

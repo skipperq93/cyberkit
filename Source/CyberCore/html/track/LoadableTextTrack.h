@@ -31,7 +31,7 @@
 #include "TextTrack.h"
 #include "TextTrackLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTrackElement;
 
@@ -69,10 +69,10 @@ private:
     bool m_loadPending { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::LoadableTextTrack)
-    static bool isType(const WebCore::TextTrack& track) { return track.trackType() == WebCore::TextTrack::TrackElement; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::LoadableTextTrack)
+    static bool isType(const CyberCore::TextTrack& track) { return track.trackType() == CyberCore::TextTrack::TrackElement; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO)

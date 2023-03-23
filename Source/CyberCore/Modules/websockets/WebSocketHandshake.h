@@ -39,7 +39,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceRequest;
 
@@ -115,4 +115,4 @@ private:
     WebSocketExtensionDispatcher m_extensionDispatcher;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

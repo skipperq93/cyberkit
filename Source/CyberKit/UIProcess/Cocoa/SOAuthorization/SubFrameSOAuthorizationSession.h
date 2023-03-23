@@ -33,7 +33,7 @@
 #include <CyberCore/FrameIdentifier.h>
 #include <wtf/Deque.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SubFrameSOAuthorizationSession final : public NavigationSOAuthorizationSession, public FrameLoadState::Observer {
 public:
@@ -66,6 +66,6 @@ private:
     Deque<std::pair<URL, Supplement>> m_requestsToLoad;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

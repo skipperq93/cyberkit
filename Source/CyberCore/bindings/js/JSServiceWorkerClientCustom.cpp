@@ -31,7 +31,7 @@
 #include "JSDOMBinding.h"
 #include "JSServiceWorkerWindowClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -47,6 +47,6 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, client);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

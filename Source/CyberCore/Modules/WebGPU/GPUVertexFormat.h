@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUVertexFormat.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUVertexFormat : uint8_t {
     Uint8x2,

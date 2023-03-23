@@ -28,7 +28,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DoubleRange {
     std::optional<double> max;

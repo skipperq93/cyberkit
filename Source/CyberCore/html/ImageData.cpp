@@ -34,7 +34,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static CheckedUint32 computeDataSize(const IntSize& size)
 {

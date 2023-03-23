@@ -30,7 +30,7 @@
 #include "ApplePayPaymentContact.h"
 #include "ApplePayPaymentPass.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayPaymentMethodType;
 

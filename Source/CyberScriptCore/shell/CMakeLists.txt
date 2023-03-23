@@ -1,7 +1,7 @@
 set(jsc_SOURCES ../jsc.cpp)
 set(jsc_LIBRARIES ${CMAKE_DL_LIBS})
 set(jsc_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     WTF
 )
 if (NOT USE_SYSTEM_MALLOC)
@@ -9,7 +9,7 @@ if (NOT USE_SYSTEM_MALLOC)
 endif ()
 
 set(jsc_PRIVATE_INCLUDE_DIRECTORIES
-    $<TARGET_PROPERTY:JavaScriptCore,INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:CyberScriptCore,INCLUDE_DIRECTORIES>
 )
 
 if (WTF_OS_MACOS)

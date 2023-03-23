@@ -51,7 +51,7 @@ SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
     String _filePath;
     CGRect _lastBounds;
     CyberCore::GraphicsLayer::PlatformLayerID _layerID;
-    WeakPtr<WebKit::WebPageProxy> _page;
+    WeakPtr<CyberKit::WebPageProxy> _page;
 }
 
 - (ASVInlinePreview *)preview
@@ -69,7 +69,7 @@ SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
     return nil;
 }
 
-- (instancetype)initWithModel:(CyberCore::Model&)model layerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID page:(WebKit::WebPageProxy&)page
+- (instancetype)initWithModel:(CyberCore::Model&)model layerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID page:(CyberKit::WebPageProxy&)page
 {
     _lastBounds = CGRectZero;
     self = [super initWithFrame:_lastBounds];
@@ -87,7 +87,7 @@ SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
 
 - (BOOL)createFileForModel:(CyberCore::Model&)model
 {
-    auto pathToDirectory = WebKit::WebsiteDataStore::defaultModelElementCacheDirectory();
+    auto pathToDirectory = CyberKit::WebsiteDataStore::defaultModelElementCacheDirectory();
     if (pathToDirectory.isEmpty())
         return NO;
 

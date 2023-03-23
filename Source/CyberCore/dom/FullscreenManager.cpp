@@ -46,7 +46,7 @@
 #include "Settings.h"
 #include <wtf/LoggerHelper.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

@@ -19,6 +19,6 @@
 #pragma once
 
 #include "APISecurityOrigin.h"
-#include "WebKitUserMediaPermissionRequest.h"
+#include "CyberKitUserMediaPermissionRequest.h"
 
-WebKitUserMediaPermissionRequest* webkitUserMediaPermissionRequestCreate(WebKit::UserMediaPermissionRequestProxy&, API::SecurityOrigin&, API::SecurityOrigin&);
+CyberKitUserMediaPermissionRequest* webkitUserMediaPermissionRequestCreate(CyberKit::UserMediaPermissionRequestProxy&, API::SecurityOrigin&, API::SecurityOrigin&);

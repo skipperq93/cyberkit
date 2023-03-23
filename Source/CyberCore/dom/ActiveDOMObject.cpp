@@ -32,7 +32,7 @@
 #include "EventLoop.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline ScriptExecutionContext* suitableScriptExecutionContext(ScriptExecutionContext* scriptExecutionContext)
 {
@@ -191,4 +191,4 @@ void ActiveDOMObject::queueCancellableTaskToDispatchEventInternal(EventTarget& t
     eventLoopTaskGroup.queueTask(WTFMove(task));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

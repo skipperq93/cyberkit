@@ -37,7 +37,7 @@
 #include <CyberCore/InspectorFrontendClient.h>
 #include <CyberCore/IntRect.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static LPCTSTR RemoteWebInspectorUIProxyPointerProp = TEXT("RemoteWebInspectorUIProxyPointer");
 const LPCWSTR RemoteWebInspectorUIProxyClassName = L"RemoteWebInspectorUIProxyClass";
@@ -102,7 +102,7 @@ LRESULT RemoteWebInspectorUIProxy::onClose()
 
 WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
 {
-    RefPtr<WebPreferences> preferences = WebPreferences::create(String(), "WebKit2."_s, "WebKit2."_s);
+    RefPtr<WebPreferences> preferences = WebPreferences::create(String(), "CyberKit2."_s, "CyberKit2."_s);
     preferences->setAllowFileAccessFromFileURLs(true);
 
 #if ENABLE(DEVELOPER_MODE)
@@ -110,10 +110,10 @@ WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
     preferences->setLogsPageMessagesToSystemConsoleEnabled(true);
 #endif
 
-    RefPtr<WebPageGroup> pageGroup = WebPageGroup::create(WebKit::defaultInspectorPageGroupIdentifierForPage(nullptr));
+    RefPtr<WebPageGroup> pageGroup = WebPageGroup::create(CyberKit::defaultInspectorPageGroupIdentifierForPage(nullptr));
 
     auto pageConfiguration = API::PageConfiguration::create();
-    pageConfiguration->setProcessPool(&WebKit::defaultInspectorProcessPool(inspectorLevelForPage(nullptr)));
+    pageConfiguration->setProcessPool(&CyberKit::defaultInspectorProcessPool(inspectorLevelForPage(nullptr)));
     pageConfiguration->setPreferences(preferences.get());
     pageConfiguration->setPageGroup(pageGroup.get());
 
@@ -148,6 +148,6 @@ void RemoteWebInspectorUIProxy::platformCloseFrontendPageAndWindow()
     ::DestroyWindow(m_frontendHandle);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

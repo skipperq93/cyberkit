@@ -27,7 +27,7 @@
 
 #include <Availability.h>
 #include <TargetConditionals.h>
-#include "WebKitUtilities.h"
+#include "CyberKitUtilities.h"
 #include "api/video/encoded_image.h"
 #include "api/video_codecs/video_decoder_factory.h"
 #include "rtc_base/ref_counted_object.h"
@@ -45,19 +45,19 @@ namespace webrtc {
 struct SdpVideoFormat;
 class VideoDecoderFactory;
 
-struct WebKitVideoDecoder {
+struct CyberKitVideoDecoder {
     using Value = void*;
     Value value { nullptr };
     bool isWebRTCVideoDecoder { false };
 };
-using VideoDecoderCreateCallback = WebKitVideoDecoder(*)(const SdpVideoFormat& format);
-using VideoDecoderReleaseCallback = int32_t(*)(WebKitVideoDecoder::Value);
-using VideoDecoderDecodeCallback = int32_t(*)(WebKitVideoDecoder::Value, uint32_t timeStamp, const uint8_t*, size_t length, uint16_t width, uint16_t height);
-using VideoDecoderRegisterDecodeCompleteCallback = int32_t(*)(WebKitVideoDecoder::Value, void* decodedImageCallback);
+using VideoDecoderCreateCallback = CyberKitVideoDecoder(*)(const SdpVideoFormat& format);
+using VideoDecoderReleaseCallback = int32_t(*)(CyberKitVideoDecoder::Value);
+using VideoDecoderDecodeCallback = int32_t(*)(CyberKitVideoDecoder::Value, uint32_t timeStamp, const uint8_t*, size_t length, uint16_t width, uint16_t height);
+using VideoDecoderRegisterDecodeCompleteCallback = int32_t(*)(CyberKitVideoDecoder::Value, void* decodedImageCallback);
 
 void setVideoDecoderCallbacks(VideoDecoderCreateCallback, VideoDecoderReleaseCallback, VideoDecoderDecodeCallback, VideoDecoderRegisterDecodeCompleteCallback);
 
-std::unique_ptr<webrtc::VideoDecoderFactory> createWebKitDecoderFactory(WebKitH265, WebKitVP9, WebKitVP9VTB, WebKitAv1);
+std::unique_ptr<webrtc::VideoDecoderFactory> createCyberKitDecoderFactory(CyberKitH265, CyberKitVP9, CyberKitVP9VTB, CyberKitAv1);
 void videoDecoderTaskComplete(void* callback, uint32_t timeStamp, uint32_t timeStampRTP, CVPixelBufferRef);
 void videoDecoderTaskComplete(void* callback, uint32_t timeStamp, uint32_t timeStampRTP, void*, GetBufferCallback, ReleaseBufferCallback, int width, int height);
 
@@ -72,11 +72,11 @@ int32_t setDecodingFormat(LocalDecoder, const uint8_t*, size_t, uint16_t width, 
 int32_t decodeFrame(LocalDecoder, int64_t timeStamp, const uint8_t*, size_t);
 void setDecoderFrameSize(LocalDecoder, uint16_t width, uint16_t height);
 
-class WebKitEncodedImageBufferWrapper : public EncodedImageBufferInterface {
+class CyberKitEncodedImageBufferWrapper : public EncodedImageBufferInterface {
 public:
-    static rtc::scoped_refptr<WebKitEncodedImageBufferWrapper> create(uint8_t* data, size_t size) { return rtc::make_ref_counted<WebKitEncodedImageBufferWrapper>(data, size); }
+    static rtc::scoped_refptr<CyberKitEncodedImageBufferWrapper> create(uint8_t* data, size_t size) { return rtc::make_ref_counted<CyberKitEncodedImageBufferWrapper>(data, size); }
 
-    WebKitEncodedImageBufferWrapper(uint8_t* data, size_t size)
+    CyberKitEncodedImageBufferWrapper(uint8_t* data, size_t size)
         : m_data(data)
         , m_size(size)
     {

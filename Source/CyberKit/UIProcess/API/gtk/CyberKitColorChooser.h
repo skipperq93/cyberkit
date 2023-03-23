@@ -23,32 +23,32 @@
 #include <CyberCore/IntRect.h>
 #include <wtf/glib/GRefPtr.h>
 
-typedef struct _WebKitColorChooserRequest WebKitColorChooserRequest;
+typedef struct _CyberKitColorChooserRequest CyberKitColorChooserRequest;
 
 namespace CyberCore {
 class Color;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebKitColorChooser final : public WebColorPickerGtk {
+class CyberKitColorChooser final : public WebColorPickerGtk {
 public:
-    static Ref<WebKitColorChooser> create(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
-    virtual ~WebKitColorChooser();
+    static Ref<CyberKitColorChooser> create(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
+    virtual ~CyberKitColorChooser();
 
     const CyberCore::IntRect& elementRect() const { return m_elementRect; }
 
 private:
-    WebKitColorChooser(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
+    CyberKitColorChooser(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
 
     void endPicker() override;
     void showColorPicker(const CyberCore::Color&) override;
 
-    static void colorChooserRequestFinished(WebKitColorChooserRequest*, WebKitColorChooser*);
-    static void colorChooserRequestRGBAChanged(WebKitColorChooserRequest*, GParamSpec*, WebKitColorChooser*);
+    static void colorChooserRequestFinished(CyberKitColorChooserRequest*, CyberKitColorChooser*);
+    static void colorChooserRequestRGBAChanged(CyberKitColorChooserRequest*, GParamSpec*, CyberKitColorChooser*);
 
-    GRefPtr<WebKitColorChooserRequest> m_request;
+    GRefPtr<CyberKitColorChooserRequest> m_request;
     CyberCore::IntRect m_elementRect;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

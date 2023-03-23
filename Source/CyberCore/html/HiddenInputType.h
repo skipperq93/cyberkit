@@ -32,7 +32,7 @@
 
 #include "InputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HiddenInputType final : public InputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -55,6 +55,6 @@ private:
     bool appendFormData(DOMFormData&) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(HiddenInputType, Type::Hidden)

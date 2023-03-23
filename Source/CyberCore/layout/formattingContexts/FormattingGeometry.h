@@ -27,7 +27,7 @@
 
 #include "FormattingContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct ComputedHorizontalMargin;
@@ -123,7 +123,7 @@ private:
 }
 
 #define SPECIALIZE_TYPE_TRAITS_LAYOUT_FORMATTING_GEOMETRY(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Layout::ToValueTypeName) \
-    static bool isType(const WebCore::Layout::FormattingGeometry& formattingGeometry) { return formattingGeometry.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Layout::ToValueTypeName) \
+    static bool isType(const CyberCore::Layout::FormattingGeometry& formattingGeometry) { return formattingGeometry.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

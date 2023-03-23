@@ -40,7 +40,7 @@ enum class DOMPasteAccessCategory : uint8_t;
 enum class DOMPasteAccessResponse : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct InputMethodState;
 struct UserMessage;
@@ -162,9 +162,9 @@ private:
 
     void selectionDidChange() override;
 
-    WebKitWebResourceLoadManager* webResourceLoadManager() override;
+    CyberKitWebResourceLoadManager* webResourceLoadManager() override;
 
     WKWPE::View& m_view;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

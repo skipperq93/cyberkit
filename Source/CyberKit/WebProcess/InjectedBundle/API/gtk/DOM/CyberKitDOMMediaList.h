@@ -55,7 +55,7 @@ webkit_dom_media_list_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_media_list_item(CyberKitDOMMediaList* self, gulong index);
@@ -67,7 +67,7 @@ webkit_dom_media_list_item(CyberKitDOMMediaList* self, gulong index);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_media_list_delete_medium(CyberKitDOMMediaList* self, const gchar* oldMedium, GError** error);
@@ -79,7 +79,7 @@ webkit_dom_media_list_delete_medium(CyberKitDOMMediaList* self, const gchar* old
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_media_list_append_medium(CyberKitDOMMediaList* self, const gchar* newMedium, GError** error);
@@ -90,7 +90,7 @@ webkit_dom_media_list_append_medium(CyberKitDOMMediaList* self, const gchar* new
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_media_list_get_media_text(CyberKitDOMMediaList* self);
@@ -102,7 +102,7 @@ webkit_dom_media_list_get_media_text(CyberKitDOMMediaList* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_media_list_set_media_text(CyberKitDOMMediaList* self, const gchar* value, GError** error);
@@ -113,7 +113,7 @@ webkit_dom_media_list_set_media_text(CyberKitDOMMediaList* self, const gchar* va
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_media_list_get_length(CyberKitDOMMediaList* self);

@@ -26,8 +26,8 @@
 #include "config.h"
 #include "InspectorInstrumentationPublic.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::atomic<int> InspectorInstrumentationPublic::s_frontendCounter;
 
-} // namespace WebCore
+} // namespace CyberCore

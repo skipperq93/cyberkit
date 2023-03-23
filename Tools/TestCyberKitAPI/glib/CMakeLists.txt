@@ -11,10 +11,10 @@ set(CyberKitGLibAPITests_INCLUDE_DIRECTORIES
     ${TOOLS_DIR}/TestCyberKitAPI/Tests/CyberKitGLib
     ${TOOLS_DIR}/TestCyberKitAPI/glib/CyberKitGLib
     # FIXME Should we add a _PRIVATE_INCLUDE_DIRECTORIES for this?
-    ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}
-    ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
-    ${JavaScriptCore_FRAMEWORK_HEADERS_DIR}
-    ${JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+    ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}
+    ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
+    ${CyberScriptCore_FRAMEWORK_HEADERS_DIR}
+    ${CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
     ${PAL_FRAMEWORK_HEADERS_DIR}
     ${WTF_FRAMEWORK_HEADERS_DIR}
     ${CyberCore_PRIVATE_FRAMEWORK_HEADERS}
@@ -197,8 +197,8 @@ endmacro()
 if (PORT STREQUAL "WPE" AND ENABLE_WPE_QT_API)
     set(WPEQtAPITests_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
-        ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}
-        ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
+        ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}
+        ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
         ${GLIB_INCLUDE_DIRS}
         ${LIBSOUP_INCLUDE_DIRS}
         ${Qt5Test_INCLUDE_DIRS}

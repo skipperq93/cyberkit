@@ -32,7 +32,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ActiveDOMCallbackMicrotask;
 class EventLoopTaskGroup;
@@ -208,4 +208,4 @@ inline EventLoopTask::EventLoopTask(TaskSource source, EventLoopTaskGroup& group
     , m_group(group)
 { }
 
-} // namespace WebCore
+} // namespace CyberCore

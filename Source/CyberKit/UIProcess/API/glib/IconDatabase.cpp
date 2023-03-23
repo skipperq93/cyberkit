@@ -29,7 +29,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/glib/RunLoopSourcePriority.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 // This version number is in the DB and marks the current generation of the schema
@@ -694,4 +694,4 @@ void IconDatabase::clear(CompletionHandler<void()>&& completionHandler)
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

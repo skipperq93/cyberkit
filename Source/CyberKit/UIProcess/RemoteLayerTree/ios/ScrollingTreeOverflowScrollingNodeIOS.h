@@ -31,7 +31,7 @@
 
 OBJC_CLASS UIScrollView;
 
-namespace WebKit {
+namespace CyberKit {
 
 class ScrollingTreeScrollingNodeDelegateIOS;
 
@@ -53,6 +53,6 @@ private:
     void repositionScrollingLayers() final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ASYNC_SCROLLING) && PLATFORM(IOS_FAMILY)

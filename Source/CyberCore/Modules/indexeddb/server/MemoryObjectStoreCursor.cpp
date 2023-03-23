@@ -30,7 +30,7 @@
 #include "Logging.h"
 #include "MemoryObjectStore.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 MemoryObjectStoreCursor::MemoryObjectStoreCursor(MemoryObjectStore& objectStore, const IDBCursorInfo& info)
@@ -349,4 +349,4 @@ void MemoryObjectStoreCursor::iterate(const IDBKeyData& key, const IDBKeyData& p
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

@@ -53,7 +53,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRSystem);
 
@@ -630,6 +630,6 @@ Vector<PlatformXR::Device::ViewData> WebXRSystem::DummyInlineDevice::views(XRSes
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

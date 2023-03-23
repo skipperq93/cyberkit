@@ -29,7 +29,7 @@
 #import <CyberKit/WKBase.h>
 #import <wtf/Function.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebFrameProxy;
 class WebProcessPool;
 struct FrameInfoData;
@@ -42,8 +42,8 @@ class SecurityOrigin;
 @class WKWebView;
 
 @interface WKGeolocationProviderIOS : NSObject
--(id)initWithProcessPool:(WebKit::WebProcessPool&)processPool;
--(void)decidePolicyForGeolocationRequestFromOrigin:(WebKit::FrameInfoData&&)frameInfo completionHandler:(Function<void(bool)>&&)completionHandler view:(WKWebView*)view;
+-(id)initWithProcessPool:(CyberKit::WebProcessPool&)processPool;
+-(void)decidePolicyForGeolocationRequestFromOrigin:(CyberKit::FrameInfoData&&)frameInfo completionHandler:(Function<void(bool)>&&)completionHandler view:(WKWebView*)view;
 @end
 
 #endif // PLATFORM(IOS_FAMILY)

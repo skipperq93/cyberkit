@@ -29,7 +29,7 @@
 #import "WKObject.h"
 #import <wtf/OptionSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::WebsiteDataRecord> {
     using WrapperClass = WKWebsiteDataRecord;
@@ -82,9 +82,9 @@ static inline std::optional<WebsiteDataType> toWebsiteDataType(NSString *website
     return std::nullopt;
 }
 
-static inline OptionSet<WebKit::WebsiteDataType> toWebsiteDataTypes(NSSet *websiteDataTypes)
+static inline OptionSet<CyberKit::WebsiteDataType> toWebsiteDataTypes(NSSet *websiteDataTypes)
 {
-    OptionSet<WebKit::WebsiteDataType> result;
+    OptionSet<CyberKit::WebsiteDataType> result;
 
     for (NSString *websiteDataType in websiteDataTypes) {
         if (auto dataType = toWebsiteDataType(websiteDataType))
@@ -94,7 +94,7 @@ static inline OptionSet<WebKit::WebsiteDataType> toWebsiteDataTypes(NSSet *websi
     return result;
 }
 
-static inline RetainPtr<NSSet> toWKWebsiteDataTypes(OptionSet<WebKit::WebsiteDataType> websiteDataTypes)
+static inline RetainPtr<NSSet> toWKWebsiteDataTypes(OptionSet<CyberKit::WebsiteDataType> websiteDataTypes)
 {
     auto wkWebsiteDataTypes = adoptNS([[NSMutableSet alloc] init]);
 

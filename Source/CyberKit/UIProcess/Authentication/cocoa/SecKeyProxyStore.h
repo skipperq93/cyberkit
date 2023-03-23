@@ -37,7 +37,7 @@ namespace CyberCore {
 class Credential;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SecKeyProxyStore : public RefCounted<SecKeyProxyStore>, public CanMakeWeakPtr<SecKeyProxyStore> {
 public:
@@ -54,6 +54,6 @@ private:
     RetainPtr<SecKeyProxy> m_secKeyProxy;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(SEC_KEY_PROXY)

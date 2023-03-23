@@ -29,7 +29,7 @@
 #import <wtf/Assertions.h>
 #import <wtf/RetainPtr.h>
 
-constexpr auto CaptivePortalConfigurationIgnoreFileName = @"com.apple.WebKit.cpmconfig_ignore";
+constexpr auto CaptivePortalConfigurationIgnoreFileName = @"com.apple.CyberKit.cpmconfig_ignore";
 
 @implementation _WKSystemPreferences
 

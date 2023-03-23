@@ -34,7 +34,7 @@
 #include "HTMLInputElement.h"
 #include "InputTypeNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -43,4 +43,4 @@ const AtomString& TextInputType::formControlType() const
     return InputTypeNames::text();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

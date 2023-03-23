@@ -27,7 +27,7 @@
 
 #include "ReferrerPolicy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using FetchReferrerPolicy = ReferrerPolicy;
 

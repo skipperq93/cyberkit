@@ -33,7 +33,7 @@
 typedef struct _NSRange NSRange;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CharacterRange {
     uint64_t location { 0 };
@@ -93,4 +93,4 @@ constexpr CharacterRange::operator NSRange() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

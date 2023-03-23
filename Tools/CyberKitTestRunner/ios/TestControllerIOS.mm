@@ -169,7 +169,7 @@ void TestController::platformDestroy()
 
 void TestController::initializeInjectedBundlePath()
 {
-    NSString *nsBundlePath = [[NSBundle mainBundle].builtInPlugInsPath stringByAppendingPathComponent:@"WebKitTestRunnerInjectedBundle.bundle"];
+    NSString *nsBundlePath = [[NSBundle mainBundle].builtInPlugInsPath stringByAppendingPathComponent:@"CyberKitTestRunnerInjectedBundle.bundle"];
     m_injectedBundlePath.adopt(WKStringCreateWithCFString((CFStringRef)nsBundlePath));
 }
 
@@ -455,7 +455,7 @@ const char* TestController::platformLibraryPathForTesting()
     static NeverDestroyed<RetainPtr<NSString>> platformLibraryPath;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        platformLibraryPath.get() = [@"~/Library/Application Support/WebKitTestRunner" stringByExpandingTildeInPath];
+        platformLibraryPath.get() = [@"~/Library/Application Support/CyberKitTestRunner" stringByExpandingTildeInPath];
     });
     return [platformLibraryPath.get() UTF8String];
 }

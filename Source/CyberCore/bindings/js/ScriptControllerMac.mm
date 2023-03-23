@@ -51,7 +51,7 @@
 
 using namespace JSC::Bindings;
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<JSC::Bindings::Instance> ScriptController::createScriptInstanceForWidget(Widget* widget)
 {

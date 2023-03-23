@@ -31,7 +31,7 @@
 #include "CanvasStyle.h"
 #include "Gradient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CanvasGradient::CanvasGradient(const FloatPoint& p0, const FloatPoint& p1, CanvasRenderingContext& context)
     : m_gradient(Gradient::create(Gradient::LinearData { p0, p1 }, { ColorInterpolationMethod::SRGB { }, AlphaPremultiplication::Unpremultiplied }))

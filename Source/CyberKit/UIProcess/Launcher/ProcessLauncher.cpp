@@ -35,7 +35,7 @@
 #include <mach/mach_traps.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 ProcessLauncher::ProcessLauncher(Client* client, LaunchOptions&& launchOptions)
     : m_client(client)
@@ -70,4 +70,4 @@ void ProcessLauncher::invalidate()
     platformInvalidate();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

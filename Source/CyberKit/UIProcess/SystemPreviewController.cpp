@@ -31,7 +31,7 @@
 #include "WebPageProxy.h"
 #include <CyberCore/MIMETypeRegistry.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 SystemPreviewController::SystemPreviewController(WebPageProxy& webPageProxy)
     : m_webPageProxy(webPageProxy)

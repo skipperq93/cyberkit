@@ -41,8 +41,8 @@
 
 #import "PDFKitSoftLink.h"
 
-NSString * const WebKitOriginalTopPrintingMarginKey = @"WebKitOriginalTopMargin";
-NSString * const WebKitOriginalBottomPrintingMarginKey = @"WebKitOriginalBottomMargin";
+NSString * const CyberKitOriginalTopPrintingMarginKey = @"CyberKitOriginalTopMargin";
+NSString * const CyberKitOriginalBottomPrintingMarginKey = @"CyberKitOriginalBottomMargin";
 
 NSString * const NSPrintInfoDidChangeNotification = @"NSPrintInfoDidChange";
 
@@ -50,7 +50,7 @@ static BOOL isForcingPreviewUpdate;
 
 @implementation WKPrintingView
 
-- (id)initWithFrameProxy:(WebKit::WebFrameProxy&)frame view:(NSView *)wkView
+- (id)initWithFrameProxy:(CyberKit::WebFrameProxy&)frame view:(NSView *)wkView
 {
     self = [super init]; // No frame rect to pass to NSView.
     if (!self)
@@ -144,18 +144,18 @@ static BOOL isForcingPreviewUpdate;
     // those stashed-away values on subsequent calls.
     double originalTopMargin;
     double originalBottomMargin;
-    NSNumber *originalTopMarginNumber = [infoDictionary objectForKey:WebKitOriginalTopPrintingMarginKey];
+    NSNumber *originalTopMarginNumber = [infoDictionary objectForKey:CyberKitOriginalTopPrintingMarginKey];
     if (!originalTopMarginNumber) {
-        ASSERT(![infoDictionary objectForKey:WebKitOriginalBottomPrintingMarginKey]);
+        ASSERT(![infoDictionary objectForKey:CyberKitOriginalBottomPrintingMarginKey]);
         originalTopMargin = [info topMargin];
         originalBottomMargin = [info bottomMargin];
-        [infoDictionary setObject:@(originalTopMargin) forKey:WebKitOriginalTopPrintingMarginKey];
-        [infoDictionary setObject:@(originalBottomMargin) forKey:WebKitOriginalBottomPrintingMarginKey];
+        [infoDictionary setObject:@(originalTopMargin) forKey:CyberKitOriginalTopPrintingMarginKey];
+        [infoDictionary setObject:@(originalBottomMargin) forKey:CyberKitOriginalBottomPrintingMarginKey];
     } else {
         ASSERT([originalTopMarginNumber isKindOfClass:[NSNumber class]]);
-        ASSERT([[infoDictionary objectForKey:WebKitOriginalBottomPrintingMarginKey] isKindOfClass:[NSNumber class]]);
+        ASSERT([[infoDictionary objectForKey:CyberKitOriginalBottomPrintingMarginKey] isKindOfClass:[NSNumber class]]);
         originalTopMargin = [originalTopMarginNumber doubleValue];
-        originalBottomMargin = [[infoDictionary objectForKey:WebKitOriginalBottomPrintingMarginKey] doubleValue];
+        originalBottomMargin = [[infoDictionary objectForKey:CyberKitOriginalBottomPrintingMarginKey] doubleValue];
     }
     
     CGFloat scale = [info scalingFactor];
@@ -223,7 +223,7 @@ struct IPCCallbackContext {
     IPC::Connection::AsyncReplyID callbackID;
 };
 
-static void pageDidDrawToImage(const WebKit::ShareableBitmapHandle& imageHandle, IPCCallbackContext* context)
+static void pageDidDrawToImage(const CyberKit::ShareableBitmapHandle& imageHandle, IPCCallbackContext* context)
 {
     ASSERT(RunLoop::isMain());
 
@@ -236,7 +236,7 @@ static void pageDidDrawToImage(const WebKit::ShareableBitmapHandle& imageHandle,
         ASSERT([view _isPrintingPreview]);
 
         if (!imageHandle.isNull()) {
-            auto image = WebKit::ShareableBitmap::create(imageHandle, WebKit::SharedMemory::Protection::ReadOnly);
+            auto image = CyberKit::ShareableBitmap::create(imageHandle, CyberKit::SharedMemory::Protection::ReadOnly);
 
             if (image)
                 view->_pagePreviews.add(iter->value, image);
@@ -274,7 +274,7 @@ static void pageDidDrawToImage(const WebKit::ShareableBitmapHandle& imageHandle,
     ASSERT(firstPage <= lastPage);
     LOG(Printing, "WKPrintingView requesting PDF data for pages %u...%u", firstPage, lastPage);
 
-    WebKit::PrintInfo printInfo([_printOperation.get() printInfo]);
+    CyberKit::PrintInfo printInfo([_printOperation.get() printInfo]);
     // Return to printing mode if we're already back to screen (e.g. due to window resizing).
     _webFrame->page()->beginPrinting(_webFrame.get(), printInfo);
 
@@ -363,7 +363,7 @@ static void pageDidComputePageRects(const Vector<CyberCore::IntRect>& pageRects,
         std::unique_ptr<IPCCallbackContext> contextDeleter(context);
         pageDidComputePageRects(pageRects, totalScaleFactorForPrinting, computedPageMargin, context);
     };
-    _expectedComputedPagesCallback = _webFrame->page()->computePagesForPrinting(_webFrame->frameID(), WebKit::PrintInfo([_printOperation.get() printInfo]), WTFMove(callback));
+    _expectedComputedPagesCallback = _webFrame->page()->computePagesForPrinting(_webFrame->frameID(), CyberKit::PrintInfo([_printOperation.get() printInfo]), WTFMove(callback));
     context->view = self;
     context->callbackID = _expectedComputedPagesCallback;
 
@@ -487,7 +487,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
     }
 
     for (PDFAnnotation *annotation in [pdfPage annotations]) {
-        if (![annotation isKindOfClass:WebKit::getPDFAnnotationLinkClass()])
+        if (![annotation isKindOfClass:CyberKit::getPDFAnnotationLinkClass()])
             continue;
 
         ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -521,7 +521,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
     scaledPrintingRect.scale(1 / _totalScaleFactorForPrinting);
     CyberCore::IntSize imageSize(nsRect.size);
     imageSize.scale(_webFrame->page()->deviceScaleFactor());
-    HashMap<CyberCore::IntRect, RefPtr<WebKit::ShareableBitmap>>::iterator pagePreviewIterator = _pagePreviews.find(scaledPrintingRect);
+    HashMap<CyberCore::IntRect, RefPtr<CyberKit::ShareableBitmap>>::iterator pagePreviewIterator = _pagePreviews.find(scaledPrintingRect);
     if (pagePreviewIterator == _pagePreviews.end())  {
         // It's too early to ask for page preview if we don't even know page size and scale.
         if ([self _hasPageRects]) {
@@ -535,14 +535,14 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
 
                 // Preview isn't available yet, request it asynchronously.
                 // Return to printing mode if we're already back to screen (e.g. due to window resizing).
-                _webFrame->page()->beginPrinting(_webFrame.get(), WebKit::PrintInfo([_printOperation.get() printInfo]));
+                _webFrame->page()->beginPrinting(_webFrame.get(), CyberKit::PrintInfo([_printOperation.get() printInfo]));
 
                 IPCCallbackContext* context = new IPCCallbackContext;
-                auto callback = [context](const WebKit::ShareableBitmapHandle& imageHandle) {
+                auto callback = [context](const CyberKit::ShareableBitmapHandle& imageHandle) {
                     std::unique_ptr<IPCCallbackContext> contextDeleter(context);
                     pageDidDrawToImage(imageHandle, context);
                 };
-                _latestExpectedPreviewCallback = _webFrame->page()->drawRectToImage(_webFrame.get(), WebKit::PrintInfo([_printOperation.get() printInfo]), scaledPrintingRect, imageSize, WTFMove(callback));
+                _latestExpectedPreviewCallback = _webFrame->page()->drawRectToImage(_webFrame.get(), CyberKit::PrintInfo([_printOperation.get() printInfo]), scaledPrintingRect, imageSize, WTFMove(callback));
                 _expectedPreviewCallbacks.add(_latestExpectedPreviewCallback, scaledPrintingRect);
 
                 context->view = self;
@@ -555,7 +555,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
         return;
     }
 
-    RefPtr<WebKit::ShareableBitmap> bitmap = pagePreviewIterator->value;
+    RefPtr<CyberKit::ShareableBitmap> bitmap = pagePreviewIterator->value;
 
     CyberCore::GraphicsContextCG context([[NSGraphicsContext currentContext] CGContext]);
     CyberCore::GraphicsContextStateSaver stateSaver(context);
@@ -585,7 +585,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
 
     if (!_printedPagesPDFDocument) {
         RetainPtr<NSData> pdfData = adoptNS([[NSData alloc] initWithBytes:_printedPagesData.data() length:_printedPagesData.size()]);
-        _printedPagesPDFDocument = adoptNS([WebKit::allocPDFDocumentInstance() initWithData:pdfData.get()]);
+        _printedPagesPDFDocument = adoptNS([CyberKit::allocPDFDocumentInstance() initWithData:pdfData.get()]);
 
         unsigned pageCount = [_printedPagesPDFDocument pageCount];
         _linkDestinationsPerPage.clear();
@@ -593,7 +593,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
         for (unsigned i = 0; i < pageCount; i++) {
             PDFPage *page = [_printedPagesPDFDocument pageAtIndex:i];
             for (PDFAnnotation *annotation in page.annotations) {
-                if (![annotation isKindOfClass:WebKit::getPDFAnnotationLinkClass()])
+                if (![annotation isKindOfClass:CyberKit::getPDFAnnotationLinkClass()])
                     continue;
 
                 ALLOW_DEPRECATED_DECLARATIONS_BEGIN

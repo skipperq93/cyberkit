@@ -32,7 +32,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebExtensionAPIRuntimeBase::reportErrorForCallbackHandler(WebExtensionCallbackHandler& callback, NSString *errorMessage, JSGlobalContextRef contextRef)
 {
@@ -105,6 +105,6 @@ JSValueRef WebExtensionAPIRuntime::lastError()
     return m_lastError.get().JSValueRef;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

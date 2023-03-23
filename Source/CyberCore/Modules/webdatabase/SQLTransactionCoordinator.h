@@ -37,7 +37,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLTransaction;
 
@@ -63,4 +63,4 @@ private:
     void processPendingTransactions(CoordinationInfo&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -22,9 +22,9 @@
 
 messages -> DownloadProxy {
     DidStart(CyberCore::ResourceRequest request, String suggestedFilename)
-    DidReceiveAuthenticationChallenge(CyberCore::AuthenticationChallenge challenge, WebKit::AuthenticationChallengeIdentifier challengeID)
+    DidReceiveAuthenticationChallenge(CyberCore::AuthenticationChallenge challenge, CyberKit::AuthenticationChallengeIdentifier challengeID)
     WillSendRequest(CyberCore::ResourceRequest redirectRequest, CyberCore::ResourceResponse redirectResponse))
-    DecideDestinationWithSuggestedFilename(CyberCore::ResourceResponse response, String suggestedFilename) -> (String filename, WebKit::SandboxExtension::Handle handle, enum:bool WebKit::AllowOverwrite allowOverwrite)
+    DecideDestinationWithSuggestedFilename(CyberCore::ResourceResponse response, String suggestedFilename) -> (String filename, CyberKit::SandboxExtension::Handle handle, enum:bool CyberKit::AllowOverwrite allowOverwrite)
 
     DidReceiveData(uint64_t bytesWritten, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite)
     DidCreateDestination(String path)

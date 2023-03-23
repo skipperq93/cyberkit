@@ -30,7 +30,7 @@
 #include "StyleBuilderState.h"
 #include "StyleCrossfadeImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline CSSCrossfadeValue::CSSCrossfadeValue(Ref<CSSValue>&& fromValueOrNone, Ref<CSSValue>&& toValueOrNone, Ref<CSSPrimitiveValue>&& percentageValue, bool isPrefixed)
     : CSSValue { CrossfadeClass }
@@ -68,4 +68,4 @@ RefPtr<StyleImage> CSSCrossfadeValue::createStyleImage(Style::BuilderState& stat
     return StyleCrossfadeImage::create(state.createStyleImage(m_fromValueOrNone), state.createStyleImage(m_toValueOrNone), m_percentageValue->doubleValue(), m_isPrefixed);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

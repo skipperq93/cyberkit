@@ -64,7 +64,7 @@
 #include <dispatch/dispatch.h>
 #endif
 
-// X11 headers define a bunch of macros with common terms, interfering with WebCore and WTF enum values.
+// X11 headers define a bunch of macros with common terms, interfering with CyberCore and WTF enum values.
 // As a workaround, we explicitly undef them here.
 #if defined(None)
 #undef None
@@ -414,10 +414,10 @@ inline Thread* Thread::currentMayBeNull()
 
 inline Thread& Thread::current()
 {
-    // WRT WebCore:
+    // WRT CyberCore:
     //    Thread::current() is used on main thread before it could possibly be used
     //    on secondary ones, so there is no need for synchronization here.
-    // WRT JavaScriptCore:
+    // WRT CyberScriptCore:
     //    Thread::initializeTLSKey() is initially called from initialize(), ensuring
     //    this is initially called in a std::call_once locked context.
 #if !HAVE(FAST_TLS) && !OS(WINDOWS)

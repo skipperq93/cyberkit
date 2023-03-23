@@ -39,7 +39,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ReportingScope);
 
@@ -180,4 +180,4 @@ void ReportingScope::generateTestReport(String&& message, String&& group)
     notifyReportObservers(Report::create(testReportBody->type(), WTFMove(reportURL), WTFMove(testReportBody)));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

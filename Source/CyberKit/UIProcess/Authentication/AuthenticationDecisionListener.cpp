@@ -34,7 +34,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 AuthenticationDecisionListener::AuthenticationDecisionListener(CompletionHandler<void(AuthenticationChallengeDisposition, const CyberCore::Credential&)>&& completionHandler)
     : m_completionHandler(WTFMove(completionHandler))
@@ -53,4 +53,4 @@ void AuthenticationDecisionListener::completeChallenge(AuthenticationChallengeDi
         m_completionHandler(disposition, credential);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

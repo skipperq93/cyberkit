@@ -31,7 +31,7 @@
 
 #include "AudioTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioTrackList::AudioTrackList(ScriptExecutionContext* context)
     : TrackListBase(context, TrackListBase::VideoTrackList)
@@ -94,5 +94,5 @@ const char* AudioTrackList::activeDOMObjectName() const
     return "AudioTrackList";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

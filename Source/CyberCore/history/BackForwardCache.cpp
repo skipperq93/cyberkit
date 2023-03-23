@@ -58,7 +58,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringConcatenate.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define PCLOG(...) LOG(BackForwardCache, "%*s%s", indentLevel*4, "", makeString(__VA_ARGS__).utf8().data())
 
@@ -625,4 +625,4 @@ void BackForwardCache::clearEntriesForOrigins(const HashSet<RefPtr<SecurityOrigi
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -44,7 +44,7 @@ class PlatformMediaSessionManager;
 struct VideoPresetData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedMemory;
 class WebProcessProxy;

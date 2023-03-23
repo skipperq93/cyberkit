@@ -33,7 +33,7 @@
 #include "LibWebRTCUtils.h"
 #include "RTCRtpCodecCapability.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<LibWebRTCRtpReceiverBackend> LibWebRTCRtpTransceiverBackend::createReceiverBackend()
 {
@@ -121,6 +121,6 @@ ExceptionOr<void> LibWebRTCRtpTransceiverBackend::setCodecPreferences(const Vect
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

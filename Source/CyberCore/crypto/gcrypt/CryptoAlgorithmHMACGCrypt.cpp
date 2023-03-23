@@ -35,7 +35,7 @@
 #include <pal/crypto/gcrypt/Handle.h>
 #include <wtf/CryptographicUtilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static int getGCryptDigestAlgorithm(CryptoAlgorithmIdentifier hashFunction)
 {

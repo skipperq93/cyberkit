@@ -28,7 +28,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 
@@ -96,4 +96,4 @@ private:
     mutable CollectionIndexCache<ChildNodeList, Node*> m_indexCache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

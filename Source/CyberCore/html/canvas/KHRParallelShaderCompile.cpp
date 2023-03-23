@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(KHRParallelShaderCompile);
 
@@ -52,6 +52,6 @@ bool KHRParallelShaderCompile::supported(GraphicsContextGL& context)
     return context.supportsExtension("GL_KHR_parallel_shader_compile"_s);
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

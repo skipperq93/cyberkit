@@ -60,7 +60,7 @@ sub generateEntityListFromFile($)
 
     my $revision = svnRevisionForDirectory(dirname($filename));
     my $path = File::Spec->abs2rel($filename, sourceDir());
-    my $result = "# From WebKit svn r" . $revision . " (" . $path . ")\n";
+    my $result = "# From CyberKit svn r" . $revision . " (" . $path . ")\n";
 
     my @entities = ();
     my $in_namespace = 0;

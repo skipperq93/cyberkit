@@ -32,7 +32,7 @@
 
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef uint64_t EpochTimeStamp;
 
@@ -51,4 +51,4 @@ inline double convertEpochTimeStampToSeconds(EpochTimeStamp milliseconds)
     return milliseconds / 1000.0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

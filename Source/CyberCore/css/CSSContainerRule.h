@@ -27,7 +27,7 @@
 
 #include "CSSConditionRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleContainer;
 
@@ -46,6 +46,6 @@ private:
     StyleRuleType styleRuleType() const final { return StyleRuleType::Container; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSContainerRule, StyleRuleType::Container)

@@ -37,7 +37,7 @@
 #include <CyberCore/GraphicsLayerContentsDisplayDelegate.h>
 #include <CyberCore/TextureMapperPlatformLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace {
 

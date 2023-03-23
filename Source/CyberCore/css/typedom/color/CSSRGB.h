@@ -28,7 +28,7 @@
 #include "CSSColorValue.h"
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using CSSColorRGBComp = std::variant<double, RefPtr<CSSNumericValue>, String, RefPtr<CSSKeywordValue>>;
 using RectifiedCSSColorRGBComp = std::variant<RefPtr<CSSNumericValue>, RefPtr<CSSKeywordValue>>;
@@ -58,4 +58,4 @@ private:
     RectifiedCSSColorPercent m_alpha;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

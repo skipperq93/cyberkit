@@ -40,7 +40,7 @@
 #include "KeyboardEvent.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -129,4 +129,4 @@ void BaseCheckableInputType::fireInputAndChangeEvents()
         element->dispatchFormControlChangeEvent();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCStatsReport;
 
@@ -43,6 +43,6 @@ private:
     GRefPtr<GstElement> m_webrtcBin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

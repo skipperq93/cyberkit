@@ -40,7 +40,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMMapAdapter;
 class RTCStatsReport;
@@ -63,6 +63,6 @@ private:
     CollectorCallback m_callback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

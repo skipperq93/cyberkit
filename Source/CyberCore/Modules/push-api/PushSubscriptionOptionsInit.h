@@ -32,7 +32,7 @@
 #include <variant>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PushSubscriptionOptionsInit {
     using ApplicationServerKey = std::variant<RefPtr<JSC::ArrayBufferView>, RefPtr<JSC::ArrayBuffer>, String>;
@@ -40,6 +40,6 @@ struct PushSubscriptionOptionsInit {
     std::optional<ApplicationServerKey> applicationServerKey;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

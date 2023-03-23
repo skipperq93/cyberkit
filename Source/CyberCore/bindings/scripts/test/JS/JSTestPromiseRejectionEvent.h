@@ -25,7 +25,7 @@
 #include "JSEvent.h"
 #include "TestPromiseRejectionEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestPromiseRejectionEvent : public JSEvent {
 public:
@@ -79,4 +79,4 @@ template<> struct JSDOMWrapperConverterTraits<TestPromiseRejectionEvent> {
 template<> TestPromiseRejectionEvent::Init convertDictionary<TestPromiseRejectionEvent::Init>(JSC::JSGlobalObject&, JSC::JSValue);
 
 
-} // namespace WebCore
+} // namespace CyberCore

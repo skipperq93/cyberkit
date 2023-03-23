@@ -24,7 +24,7 @@
 #include "TestOverloadedConstructorsWithSequence.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestOverloadedConstructorsWithSequence : public JSDOMWrapper<TestOverloadedConstructorsWithSequence> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestOverloadedConstructorsWithSequ
     using ToWrappedReturnType = TestOverloadedConstructorsWithSequence*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,14 +28,14 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebContextMenuProxyMac;
 }
 
 @class NSSharingServicePicker;
 
 @interface WKSharingServicePickerDelegate : NSObject <NSSharingServiceDelegate, NSSharingServicePickerDelegate> {
-    WebKit::WebContextMenuProxyMac* _menuProxy;
+    CyberKit::WebContextMenuProxyMac* _menuProxy;
     RetainPtr<NSSharingServicePicker> _picker;
     BOOL _filterEditingServices;
     BOOL _handleEditingReplacement;
@@ -44,8 +44,8 @@ class WebContextMenuProxyMac;
 }
 
 + (WKSharingServicePickerDelegate *)sharedSharingServicePickerDelegate;
-- (WebKit::WebContextMenuProxyMac*)menuProxy;
-- (void)setMenuProxy:(WebKit::WebContextMenuProxyMac*)menuProxy;
+- (CyberKit::WebContextMenuProxyMac*)menuProxy;
+- (void)setMenuProxy:(CyberKit::WebContextMenuProxyMac*)menuProxy;
 - (void)setPicker:(NSSharingServicePicker *)picker;
 - (void)setFiltersEditingServices:(BOOL)filtersEditingServices;
 - (void)setHandlesEditingReplacement:(BOOL)handlesEditingReplacement;

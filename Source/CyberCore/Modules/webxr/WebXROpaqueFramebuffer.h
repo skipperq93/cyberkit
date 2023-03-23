@@ -35,7 +35,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 class WebGLFramebuffer;
@@ -91,6 +91,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

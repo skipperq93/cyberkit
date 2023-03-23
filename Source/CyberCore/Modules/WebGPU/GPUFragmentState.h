@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUFragmentState.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUFragmentState : public GPUProgrammableStage {
     PAL::WebGPU::FragmentState convertToBacking() const

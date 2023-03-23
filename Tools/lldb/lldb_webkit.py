@@ -21,11 +21,11 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 """
-    LLDB Support for WebKit Types
+    LLDB Support for CyberKit Types
 
-    Add the following to your .lldbinit file to add WebKit Type summaries in LLDB and Xcode:
+    Add the following to your .lldbinit file to add CyberKit Type summaries in LLDB and Xcode:
 
-    command script import {Path to WebKit Root}/Tools/lldb/lldb_webkit.py
+    command script import {Path to CyberKit Root}/Tools/lldb/lldb_webkit.py
 
 """
 

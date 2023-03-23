@@ -32,7 +32,7 @@ namespace CyberCore {
 class Frame;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebAutomationDOMWindowObserver final : public RefCounted<WebAutomationDOMWindowObserver>, public CyberCore::DOMWindow::Observer {
 public:
@@ -57,4 +57,4 @@ private:
     WTF::Function<void(WebAutomationDOMWindowObserver&)> m_callback;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

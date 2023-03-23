@@ -30,12 +30,12 @@
 
 namespace API {
 
-Ref<DebuggableInfo> DebuggableInfo::create(const WebKit::DebuggableInfoData& debuggableInfoData)
+Ref<DebuggableInfo> DebuggableInfo::create(const CyberKit::DebuggableInfoData& debuggableInfoData)
 {
     return adoptRef(*new DebuggableInfo(debuggableInfoData));
 }
 
-DebuggableInfo::DebuggableInfo(const WebKit::DebuggableInfoData& data)
+DebuggableInfo::DebuggableInfo(const CyberKit::DebuggableInfoData& data)
     : m_data(data)
 {
 }

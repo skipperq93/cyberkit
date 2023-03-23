@@ -30,7 +30,7 @@
 #include "ImmutableNFA.h"
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace ContentExtensions {
 
 struct NFA;
@@ -195,6 +195,6 @@ private:
 };
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

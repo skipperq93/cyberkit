@@ -43,7 +43,7 @@ OBJC_CLASS ASVInlinePreview;
 OBJC_CLASS WKModelView;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -99,6 +99,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

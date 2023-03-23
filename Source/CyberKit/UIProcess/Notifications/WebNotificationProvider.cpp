@@ -35,7 +35,7 @@
 #include "WebNotificationManagerProxy.h"
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebNotificationProvider::WebNotificationProvider(const WKNotificationProviderBase* provider)
 {
@@ -111,4 +111,4 @@ HashMap<WTF::String, bool> WebNotificationProvider::notificationPermissions()
     return permissions;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

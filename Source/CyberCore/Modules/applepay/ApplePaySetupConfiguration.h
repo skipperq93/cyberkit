@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePaySetupConfiguration {
     String merchantIdentifier;
@@ -39,6 +39,6 @@ struct ApplePaySetupConfiguration {
     Vector<String> signedFields;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

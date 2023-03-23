@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OESDrawBuffersIndexed final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(OESDrawBuffersIndexed);
@@ -54,4 +54,4 @@ public:
     void colorMaskiOES(GCGLuint buf, GCGLboolean red, GCGLboolean green, GCGLboolean blue, GCGLboolean alpha);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

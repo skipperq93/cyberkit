@@ -25,7 +25,7 @@
 #include "Document.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Comment);
 
@@ -54,4 +54,4 @@ Ref<Node> Comment::cloneNodeInternal(Document& targetDocument, CloningOperation)
     return create(targetDocument, String { data() });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

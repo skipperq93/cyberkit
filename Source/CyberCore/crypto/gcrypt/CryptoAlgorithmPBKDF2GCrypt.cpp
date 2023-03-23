@@ -34,7 +34,7 @@
 #include "CryptoKeyRaw.h"
 #include "GCryptUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> gcryptDeriveBits(const Vector<uint8_t>& keyData, const Vector<uint8_t>& saltData, CryptoAlgorithmIdentifier hashIdentifier, size_t iterations, size_t length)
 {
@@ -65,6 +65,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmPBKDF2::platformDeriveBits(const Cry
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

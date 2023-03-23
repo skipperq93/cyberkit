@@ -35,7 +35,7 @@
 #include "AudioWorkletMessagingProxy.h"
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioWorkletThread::AudioWorkletThread(AudioWorkletMessagingProxy& messagingProxy, WorkletParameters&& parameters)
     : WorkerOrWorkletThread(parameters.identifier.isolatedCopy())
@@ -64,7 +64,7 @@ WorkerDebuggerProxy* AudioWorkletThread::workerDebuggerProxy() const
 
 Ref<Thread> AudioWorkletThread::createThread()
 {
-    return Thread::create("WebCore: AudioWorklet", [this] {
+    return Thread::create("CyberCore: AudioWorklet", [this] {
         workerOrWorkletThread();
     }, ThreadType::Audio, m_parameters.isAudioContextRealTime ? Thread::QOS::UserInteractive : Thread::QOS::Default);
 }
@@ -74,6 +74,6 @@ AudioWorkletGlobalScope* AudioWorkletThread::globalScope() const
     return downcast<AudioWorkletGlobalScope>(WorkerOrWorkletThread::globalScope());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

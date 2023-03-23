@@ -53,7 +53,7 @@ class ResourceRequest;
 enum class ShouldTreatAsContinuingLoad : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaProxy;
 class SuspendedPageProxy;
@@ -198,4 +198,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

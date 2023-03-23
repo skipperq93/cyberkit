@@ -30,7 +30,7 @@
 
 #include "MediaPlayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<VideoPlaybackQuality> VideoPlaybackQuality::create(double creationTime, const VideoPlaybackQualityMetrics& metrics)
 {

@@ -40,7 +40,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Endpoint>
 class CreateSessionDescriptionObserver final : public webrtc::CreateSessionDescriptionObserver {
@@ -108,6 +108,6 @@ private:
     Endpoint& m_endpoint;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

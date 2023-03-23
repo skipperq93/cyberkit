@@ -85,7 +85,7 @@
 #include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebGLRenderingContext);
 
@@ -353,9 +353,9 @@ void WebGLRenderingContext::addMembersToOpaqueRoots(JSC::AbstractSlotVisitor& vi
     WebGLRenderingContextBase::addMembersToOpaqueRoots(visitor);
 
     Locker locker { objectGraphLock() };
-    addWebCoreOpaqueRoot(visitor, m_activeQuery.get());
+    addCyberCoreOpaqueRoot(visitor, m_activeQuery.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -32,7 +32,7 @@
 
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // CSSGridIntegerRepeatValue stores the track sizes and line numbers when the
 // integer-repeat syntax is used.
@@ -57,6 +57,6 @@ private:
     size_t m_repetitions;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSGridIntegerRepeatValue, isGridIntegerRepeatValue());

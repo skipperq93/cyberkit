@@ -37,10 +37,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation WKASCAuthorizationPresenterDelegate {
-    WeakPtr<WebKit::AuthenticatorPresenterCoordinator> _coordinator;
+    WeakPtr<CyberKit::AuthenticatorPresenterCoordinator> _coordinator;
 }
 
-- (instancetype)initWithCoordinator:(WebKit::AuthenticatorPresenterCoordinator&)coordinator
+- (instancetype)initWithCoordinator:(CyberKit::AuthenticatorPresenterCoordinator&)coordinator
 {
     if ((self = [super init]))
         _coordinator = coordinator;
@@ -52,15 +52,15 @@ NS_ASSUME_NONNULL_BEGIN
     auto requestHandler = [completionHandler = makeBlockPtr(completionHandler)] (ASCAppleIDCredential *credential, NSError *error) {
         completionHandler(credential, error);
     };
-    [self dispatchCoordinatorCallback:[requestHandler = WTFMove(requestHandler)] (WebKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
+    [self dispatchCoordinatorCallback:[requestHandler = WTFMove(requestHandler)] (CyberKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
         coordinator.setCredentialRequestHandler(WTFMove(requestHandler));
     }];
 
-    if ([loginChoice isKindOfClass:WebKit::getASCPlatformPublicKeyCredentialLoginChoiceClass()]) {
+    if ([loginChoice isKindOfClass:CyberKit::getASCPlatformPublicKeyCredentialLoginChoiceClass()]) {
         auto *platformLoginChoice = (ASCPlatformPublicKeyCredentialLoginChoice *)loginChoice;
 
         if ([platformLoginChoice isRegistrationRequest]) {
-            [self dispatchCoordinatorCallback:[context = retainPtr(context)] (WebKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
+            [self dispatchCoordinatorCallback:[context = retainPtr(context)] (CyberKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
                 coordinator.setLAContext(context.get());
             }];
 
@@ -68,19 +68,19 @@ NS_ASSUME_NONNULL_BEGIN
         }
 
         String loginChoiceName = platformLoginChoice.name;
-        [self dispatchCoordinatorCallback:[loginChoiceName = WTFMove(loginChoiceName), context = retainPtr(context)] (WebKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
+        [self dispatchCoordinatorCallback:[loginChoiceName = WTFMove(loginChoiceName), context = retainPtr(context)] (CyberKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
             coordinator.didSelectAssertionResponse(loginChoiceName, context.get());
         }];
 
         return;
     }
 
-    if ([loginChoice isKindOfClass:WebKit::getASCSecurityKeyPublicKeyCredentialLoginChoiceClass()]) {
+    if ([loginChoice isKindOfClass:CyberKit::getASCSecurityKeyPublicKeyCredentialLoginChoiceClass()]) {
         auto *securityKeyLoginChoice = (ASCSecurityKeyPublicKeyCredentialLoginChoice *)loginChoice;
 
         if ([securityKeyLoginChoice credentialKind] == ASCSecurityKeyPublicKeyCredentialKindAssertion) {
             String loginChoiceName = securityKeyLoginChoice.name;
-            [self dispatchCoordinatorCallback:[loginChoiceName = WTFMove(loginChoiceName)] (WebKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
+            [self dispatchCoordinatorCallback:[loginChoiceName = WTFMove(loginChoiceName)] (CyberKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
                 coordinator.didSelectAssertionResponse(loginChoiceName, nil);
             }];
 
@@ -94,17 +94,17 @@ NS_ASSUME_NONNULL_BEGIN
     auto requestHandler = [completionHandler = makeBlockPtr(completionHandler)] (ASCAppleIDCredential *credential, NSError *error) {
         completionHandler(credential, error);
     };
-    [self dispatchCoordinatorCallback:[requestHandler = WTFMove(requestHandler)] (WebKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
+    [self dispatchCoordinatorCallback:[requestHandler = WTFMove(requestHandler)] (CyberKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
         coordinator.setCredentialRequestHandler(WTFMove(requestHandler));
     }];
 
     String pinString = pin;
-    [self dispatchCoordinatorCallback:[pinString = WTFMove(pinString)] (WebKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
+    [self dispatchCoordinatorCallback:[pinString = WTFMove(pinString)] (CyberKit::AuthenticatorPresenterCoordinator& coordinator) mutable {
         coordinator.setPin(pinString);
     }];
 }
 
-- (void)dispatchCoordinatorCallback:(Function<void(WebKit::AuthenticatorPresenterCoordinator&)>&&)callback
+- (void)dispatchCoordinatorCallback:(Function<void(CyberKit::AuthenticatorPresenterCoordinator&)>&&)callback
 {
     ASSERT(!RunLoop::isMain());
     RunLoop::main().dispatch([coordinator = _coordinator, callback = WTFMove(callback)] {

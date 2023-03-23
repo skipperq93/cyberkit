@@ -34,7 +34,7 @@ namespace webrtc {
 class RtpReceiverInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class Document;
 class RealtimeMediaSource;
 
@@ -59,6 +59,6 @@ private:
     RefPtr<RTCRtpTransformBackend> m_transformBackend;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

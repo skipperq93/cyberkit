@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUDeviceDescriptor : public GPUObjectDescriptorBase {
     PAL::WebGPU::DeviceDescriptor convertToBacking() const
@@ -42,7 +42,7 @@ struct GPUDeviceDescriptor : public GPUObjectDescriptorBase {
         return {
             { label },
             requiredFeatures.map([] (const auto& requiredFeature) {
-                return WebCore::convertToBacking(requiredFeature);
+                return CyberCore::convertToBacking(requiredFeature);
             }),
             requiredLimits,
         };

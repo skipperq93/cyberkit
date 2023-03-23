@@ -32,11 +32,11 @@
 #include <pal/graphics/WebGPU/WebGPUAdapter.h>
 #include <wtf/Deque.h>
 
-namespace WebKit {
+namespace CyberKit {
 class RemoteGPUProxy;
 }
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ConvertToBackingContext;
 
@@ -86,6 +86,6 @@ private:
     Ref<RemoteGPUProxy> m_parent;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

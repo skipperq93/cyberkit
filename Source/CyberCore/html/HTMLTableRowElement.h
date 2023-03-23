@@ -28,7 +28,7 @@
 #include "HTMLTableCellElement.h"
 #include "HTMLTablePartElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableRowElement final : public HTMLTablePartElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLTableRowElement);

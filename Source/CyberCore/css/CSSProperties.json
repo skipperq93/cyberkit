@@ -1311,7 +1311,7 @@
             ],
             "codegen-properties": {
                 "top-priority": true,
-                "comment": "This is a top priority property to ensure that its value can be checked when determining a smart default font size', (<https://trac.webkit.org/browser/trunk/Source/WebCore/ChangeLog?rev=172861>).",
+                "comment": "This is a top priority property to ensure that its value can be checked when determining a smart default font size', (<https://trac.webkit.org/browser/trunk/Source/CyberCore/ChangeLog?rev=172861>).",
                 "parser-grammar": "<<values>>"
             },
             "specification": {

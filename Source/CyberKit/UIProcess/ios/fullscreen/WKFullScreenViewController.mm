@@ -128,7 +128,7 @@ private:
 
 @interface WKFullScreenViewController () <UIGestureRecognizerDelegate, UIToolbarDelegate>
 @property (weak, nonatomic) WKWebView *_webView; // Cannot be retained, see <rdar://problem/14884666>.
-@property (readonly, nonatomic) WebKit::WebFullScreenManagerProxy* _manager;
+@property (readonly, nonatomic) CyberKit::WebFullScreenManagerProxy* _manager;
 @property (readonly, nonatomic) CyberCore::FloatBoxExtent _effectiveFullscreenInsets;
 @end
 
@@ -147,7 +147,7 @@ private:
     RetainPtr<UILayoutGuide> _topGuide;
     RetainPtr<NSLayoutConstraint> _topConstraint;
     String _location;
-    WebKit::FullscreenTouchSecheuristic _secheuristic;
+    CyberKit::FullscreenTouchSecheuristic _secheuristic;
     WKFullScreenViewControllerPlaybackSessionModelClient _playbackClient;
     CGFloat _nonZeroStatusBarHeight;
     std::optional<UIInterfaceOrientationMask> _supportedOrientations;
@@ -171,7 +171,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     _nonZeroStatusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_statusBarFrameDidChange:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
 ALLOW_DEPRECATED_DECLARATIONS_END
-    _secheuristic.setParameters(WebKit::FullscreenTouchSecheuristicParameters::iosParameters());
+    _secheuristic.setParameters(CyberKit::FullscreenTouchSecheuristicParameters::iosParameters());
     self._webView = webView;
 
     _playbackClient.setParent(self);
@@ -635,7 +635,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #pragma mark - Internal Interface
 
 @dynamic _manager;
-- (WebKit::WebFullScreenManagerProxy*)_manager
+- (CyberKit::WebFullScreenManagerProxy*)_manager
 {
     ASSERT(_valid);
     if (auto page = [self._webView _page])
@@ -669,7 +669,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if (!page)
         return;
 
-    WebKit::PlaybackSessionManagerProxy* playbackSessionManager = page->playbackSessionManager();
+    CyberKit::PlaybackSessionManagerProxy* playbackSessionManager = page->playbackSessionManager();
     if (!playbackSessionManager)
         return;
 

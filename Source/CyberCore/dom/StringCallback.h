@@ -35,7 +35,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -49,4 +49,4 @@ public:
     WEBCORE_EXPORT void scheduleCallback(ScriptExecutionContext&, const String& data);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@ namespace API {
 
 class ResourceLoadStatisticsFirstParty final : public ObjectImpl<Object::Type::ResourceLoadStatisticsFirstParty> {
 public:
-    static Ref<ResourceLoadStatisticsFirstParty> create(const WebKit::WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty& firstPartyData)
+    static Ref<ResourceLoadStatisticsFirstParty> create(const CyberKit::WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty& firstPartyData)
     {
         RELEASE_ASSERT(RunLoop::isMain());
         return adoptRef(*new ResourceLoadStatisticsFirstParty(firstPartyData));
@@ -49,12 +49,12 @@ public:
     double timeLastUpdated() const { return m_firstPartyData.timeLastUpdated.value(); }
 
 private:
-    explicit ResourceLoadStatisticsFirstParty(const WebKit::WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty& firstPartyData)
+    explicit ResourceLoadStatisticsFirstParty(const CyberKit::WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty& firstPartyData)
         : m_firstPartyData(firstPartyData)
     {
     }
 
-    const WebKit::WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty m_firstPartyData;
+    const CyberKit::WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty m_firstPartyData;
 };
 
 } // namespace API

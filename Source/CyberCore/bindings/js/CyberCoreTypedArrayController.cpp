@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebCoreTypedArrayController.h"
+#include "CyberCoreTypedArrayController.h"
 
 #include "JSDOMConvertBufferSource.h"
 #include "JSDOMGlobalObject.h"
@@ -32,31 +32,31 @@
 #include <CyberScriptCore/JSArrayBuffer.h>
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
-WebCoreTypedArrayController::WebCoreTypedArrayController(bool allowAtomicsWait)
+CyberCoreTypedArrayController::CyberCoreTypedArrayController(bool allowAtomicsWait)
     : m_allowAtomicsWait(allowAtomicsWait)
 {
 }
 
-WebCoreTypedArrayController::~WebCoreTypedArrayController() = default;
+CyberCoreTypedArrayController::~CyberCoreTypedArrayController() = default;
 
-JSC::JSArrayBuffer* WebCoreTypedArrayController::toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSC::JSGlobalObject* globalObject, JSC::ArrayBuffer* buffer)
+JSC::JSArrayBuffer* CyberCoreTypedArrayController::toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSC::JSGlobalObject* globalObject, JSC::ArrayBuffer* buffer)
 {
-    return JSC::jsCast<JSC::JSArrayBuffer*>(WebCore::toJS(lexicalGlobalObject, JSC::jsCast<JSDOMGlobalObject*>(globalObject), buffer));
+    return JSC::jsCast<JSC::JSArrayBuffer*>(CyberCore::toJS(lexicalGlobalObject, JSC::jsCast<JSDOMGlobalObject*>(globalObject), buffer));
 }
 
-void WebCoreTypedArrayController::registerWrapper(JSC::JSGlobalObject* globalObject, JSC::ArrayBuffer* native, JSC::JSArrayBuffer* wrapper)
+void CyberCoreTypedArrayController::registerWrapper(JSC::JSGlobalObject* globalObject, JSC::ArrayBuffer* native, JSC::JSArrayBuffer* wrapper)
 {
     cacheWrapper(JSC::jsCast<JSDOMGlobalObject*>(globalObject)->world(), native, wrapper);
 }
 
-bool WebCoreTypedArrayController::isAtomicsWaitAllowedOnCurrentThread()
+bool CyberCoreTypedArrayController::isAtomicsWaitAllowedOnCurrentThread()
 {
     return m_allowAtomicsWait;
 }
 
-bool WebCoreTypedArrayController::JSArrayBufferOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, JSC::AbstractSlotVisitor& visitor, const char** reason)
+bool CyberCoreTypedArrayController::JSArrayBufferOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, JSC::AbstractSlotVisitor& visitor, const char** reason)
 {
     if (UNLIKELY(reason))
         *reason = "ArrayBuffer is opaque root";
@@ -64,10 +64,10 @@ bool WebCoreTypedArrayController::JSArrayBufferOwner::isReachableFromOpaqueRoots
     return visitor.containsOpaqueRoot(wrapper.impl());
 }
 
-void WebCoreTypedArrayController::JSArrayBufferOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* context)
+void CyberCoreTypedArrayController::JSArrayBufferOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* context)
 {
     auto& wrapper = *static_cast<JSC::JSArrayBuffer*>(handle.slot()->asCell());
     uncacheWrapper(*static_cast<DOMWrapperWorld*>(context), wrapper.impl(), &wrapper);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include "RemoteAudioHardwareListenerMessages.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

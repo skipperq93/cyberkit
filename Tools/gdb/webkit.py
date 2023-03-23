@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""GDB support for WebKit types.
+"""GDB support for CyberKit types.
 
 Add this to your gdb by amending your ~/.gdbinit as follows:
   python
@@ -336,7 +336,7 @@ add_pretty_printers()
 
 
 class PrintPathToRootCommand(gdb.Command):
-    """Command for printing WebKit Node trees.
+    """Command for printing CyberKit Node trees.
 
     Usage: printpathtoroot variable_name"""
 

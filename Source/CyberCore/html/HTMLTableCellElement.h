@@ -27,7 +27,7 @@
 
 #include "HTMLTablePartElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLTableCellElement final : public HTMLTablePartElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLTableCellElement);
@@ -64,9 +64,9 @@ private:
     void addSubresourceAttributeURLs(ListHashSet<URL>&) const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLTableCellElement)
-    static bool isType(const WebCore::HTMLElement& element) { return element.hasTagName(WebCore::HTMLNames::tdTag) || element.hasTagName(WebCore::HTMLNames::thTag); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::HTMLElement>(node) && isType(downcast<WebCore::HTMLElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLTableCellElement)
+    static bool isType(const CyberCore::HTMLElement& element) { return element.hasTagName(CyberCore::HTMLNames::tdTag) || element.hasTagName(CyberCore::HTMLNames::thTag); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::HTMLElement>(node) && isType(downcast<CyberCore::HTMLElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

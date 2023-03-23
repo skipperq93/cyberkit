@@ -27,7 +27,7 @@
 
 #include "TextInsertionBaseCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TypingCommand final : public TextInsertionBaseCommand {
 public:
@@ -165,4 +165,4 @@ private:
     bool m_shouldPreventSpellChecking;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -57,7 +57,7 @@ static NSString * const suggestionCellReuseIdentifier = @"WKDataListSuggestionVi
 @interface WKDataListSuggestionsController : NSObject<NSTableViewDataSource, NSTableViewDelegate>
 
 - (id)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(NSView *)view;
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownMac&)dropdown;
+- (void)showSuggestionsDropdown:(CyberKit::WebDataListSuggestionsDropdownMac&)dropdown;
 - (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information;
 - (void)moveSelectionByDirection:(const String&)direction;
 - (void)invalidate;
@@ -66,7 +66,7 @@ static NSString * const suggestionCellReuseIdentifier = @"WKDataListSuggestionVi
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebDataListSuggestionsDropdownMac> WebDataListSuggestionsDropdownMac::create(WebPageProxy& page, NSView *view)
 {
@@ -128,7 +128,7 @@ void WebDataListSuggestionsDropdownMac::close()
     WebDataListSuggestionsDropdown::close();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @implementation WKDataListSuggestionWindow {
     RetainPtr<NSVisualEffectView> _backdropView;
@@ -313,7 +313,7 @@ static BOOL shouldShowDividersBetweenCells(const Vector<CyberCore::DataListSugge
 }
 
 @implementation WKDataListSuggestionsController {
-    WeakPtr<WebKit::WebDataListSuggestionsDropdownMac> _dropdown;
+    WeakPtr<CyberKit::WebDataListSuggestionsDropdownMac> _dropdown;
     Vector<CyberCore::DataListSuggestion> _suggestions;
     NSView *_presentingView;
 
@@ -457,7 +457,7 @@ static BOOL shouldShowDividersBetweenCells(const Vector<CyberCore::DataListSugge
     return NSMakeRect(originX, originY, width, height);
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownMac&)dropdown
+- (void)showSuggestionsDropdown:(CyberKit::WebDataListSuggestionsDropdownMac&)dropdown
 {
     _dropdown = dropdown;
     [[_enclosingWindow contentView] addSubview:_scrollView.get()];

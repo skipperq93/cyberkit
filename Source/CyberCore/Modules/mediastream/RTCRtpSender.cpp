@@ -42,7 +42,7 @@
 #include "RTCRtpTransceiver.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !RELEASE_LOG_DISABLED
 #define LOGIDENTIFIER_SENDER Logger::LogSiteIdentifier(logClassName(), __func__, m_connection->logIdentifier())
@@ -260,6 +260,6 @@ WTFLogChannel& RTCRtpSender::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitInputMethodContextImplGtk.h"
+#include "CyberKitInputMethodContextImplGtk.h"
 
 #include <gtk/gtk.h>
 #include <wtf/MathExtras.h>
@@ -26,15 +26,15 @@
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-struct _WebKitInputMethodContextImplGtkPrivate {
+struct _CyberKitInputMethodContextImplGtkPrivate {
     GRefPtr<GtkIMContext> context;
     CString surroundingText;
     unsigned surroundingCursorIndex;
 };
 
-WEBKIT_DEFINE_TYPE(WebKitInputMethodContextImplGtk, webkit_input_method_context_impl_gtk, WEBKIT_TYPE_INPUT_METHOD_CONTEXT)
+WEBKIT_DEFINE_TYPE(CyberKitInputMethodContextImplGtk, webkit_input_method_context_impl_gtk, WEBKIT_TYPE_INPUT_METHOD_CONTEXT)
 
-static GtkInputPurpose toGtkInputPurpose(WebKitInputPurpose purpose)
+static GtkInputPurpose toGtkInputPurpose(CyberKitInputPurpose purpose)
 {
     switch (purpose) {
     case WEBKIT_INPUT_PURPOSE_FREE_FORM:
@@ -56,7 +56,7 @@ static GtkInputPurpose toGtkInputPurpose(WebKitInputPurpose purpose)
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static GtkInputHints toGtkInputHints(WebKitInputHints hints)
+static GtkInputHints toGtkInputHints(CyberKitInputHints hints)
 {
     unsigned gtkHints = 0;
     if (hints & WEBKIT_INPUT_HINT_SPELLCHECK)
@@ -74,37 +74,37 @@ static GtkInputHints toGtkInputHints(WebKitInputHints hints)
     return static_cast<GtkInputHints>(gtkHints);
 }
 
-static void inputPurposeChangedCallback(WebKitInputMethodContextImplGtk* context)
+static void inputPurposeChangedCallback(CyberKitInputMethodContextImplGtk* context)
 {
     g_object_set(context->priv->context.get(), "input-purpose", toGtkInputPurpose(webkit_input_method_context_get_input_purpose(WEBKIT_INPUT_METHOD_CONTEXT(context))), nullptr);
 }
 
-static void inputHintsChangedCallback(WebKitInputMethodContextImplGtk* context)
+static void inputHintsChangedCallback(CyberKitInputMethodContextImplGtk* context)
 {
     g_object_set(context->priv->context.get(), "input-hints", toGtkInputHints(webkit_input_method_context_get_input_hints(WEBKIT_INPUT_METHOD_CONTEXT(context))), nullptr);
 }
 
-static void contextPreeditStartCallback(WebKitInputMethodContextImplGtk* context)
+static void contextPreeditStartCallback(CyberKitInputMethodContextImplGtk* context)
 {
     g_signal_emit_by_name(context, "preedit-started", nullptr);
 }
 
-static void contextPreeditChangedCallback(WebKitInputMethodContextImplGtk* context)
+static void contextPreeditChangedCallback(CyberKitInputMethodContextImplGtk* context)
 {
     g_signal_emit_by_name(context, "preedit-changed", nullptr);
 }
 
-static void contextPreeditEndCallback(WebKitInputMethodContextImplGtk* context)
+static void contextPreeditEndCallback(CyberKitInputMethodContextImplGtk* context)
 {
     g_signal_emit_by_name(context, "preedit-finished", nullptr);
 }
 
-static void contextCommitCallback(WebKitInputMethodContextImplGtk* context, const char* text)
+static void contextCommitCallback(CyberKitInputMethodContextImplGtk* context, const char* text)
 {
     g_signal_emit_by_name(context, "committed", text, nullptr);
 }
 
-static gboolean contextRetrieveSurrounding(WebKitInputMethodContextImplGtk* context)
+static gboolean contextRetrieveSurrounding(CyberKitInputMethodContextImplGtk* context)
 {
     auto* priv = context->priv;
     gtk_im_context_set_surrounding(priv->context.get(), priv->surroundingText.data(), priv->surroundingText.length(), priv->surroundingCursorIndex);
@@ -127,13 +127,13 @@ static void webkitInputMethodContextImplGtkConstructed(GObject* object)
     g_signal_connect_object(priv->context.get(), "retrieve-surrounding", G_CALLBACK(contextRetrieveSurrounding), object, G_CONNECT_SWAPPED);
 }
 
-static void webkitInputMethodContextImplGtkSetEnablePreedit(WebKitInputMethodContext* context, gboolean enabled)
+static void webkitInputMethodContextImplGtkSetEnablePreedit(CyberKitInputMethodContext* context, gboolean enabled)
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     gtk_im_context_set_use_preedit(priv->context.get(), enabled);
 }
 
-static void webkitInputMethodContextImplGtkGetPreedit(WebKitInputMethodContext* context, char** text, GList** underlines, guint* cursorOffset)
+static void webkitInputMethodContextImplGtkGetPreedit(CyberKitInputMethodContext* context, char** text, GList** underlines, guint* cursorOffset)
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     PangoAttrList* attrList = nullptr;
@@ -169,48 +169,48 @@ static void webkitInputMethodContextImplGtkGetPreedit(WebKitInputMethodContext* 
 }
 
 #if USE(GTK4)
-static gboolean webkitInputMethodContextImplGtkFilterKeyEvent(WebKitInputMethodContext* context, GdkEvent* keyEvent)
+static gboolean webkitInputMethodContextImplGtkFilterKeyEvent(CyberKitInputMethodContext* context, GdkEvent* keyEvent)
 #else
-static gboolean webkitInputMethodContextImplGtkFilterKeyEvent(WebKitInputMethodContext* context, GdkEventKey* keyEvent)
+static gboolean webkitInputMethodContextImplGtkFilterKeyEvent(CyberKitInputMethodContext* context, GdkEventKey* keyEvent)
 #endif
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     return gtk_im_context_filter_keypress(priv->context.get(), keyEvent);
 }
 
-static void webkitInputMethodContextImplGtkNotifyFocusIn(WebKitInputMethodContext* context)
+static void webkitInputMethodContextImplGtkNotifyFocusIn(CyberKitInputMethodContext* context)
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     gtk_im_context_focus_in(priv->context.get());
 }
 
-static void webkitInputMethodContextImplGtkNotifyFocusOut(WebKitInputMethodContext* context)
+static void webkitInputMethodContextImplGtkNotifyFocusOut(CyberKitInputMethodContext* context)
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     gtk_im_context_focus_out(priv->context.get());
 }
 
-static void webkitInputMethodContextImplGtkNotifyCursorArea(WebKitInputMethodContext* context, int x, int y, int width, int height)
+static void webkitInputMethodContextImplGtkNotifyCursorArea(CyberKitInputMethodContext* context, int x, int y, int width, int height)
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     GdkRectangle cursorRect = { x, y, width, height };
     gtk_im_context_set_cursor_location(priv->context.get(), &cursorRect);
 }
 
-static void webkitInputMethodContextImplGtkNotifySurrounding(WebKitInputMethodContext* context, const gchar* text, unsigned length, unsigned cursorIndex, unsigned)
+static void webkitInputMethodContextImplGtkNotifySurrounding(CyberKitInputMethodContext* context, const gchar* text, unsigned length, unsigned cursorIndex, unsigned)
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     priv->surroundingText = { text, length };
     priv->surroundingCursorIndex = cursorIndex;
 }
 
-static void webkitInputMethodContextImplGtkReset(WebKitInputMethodContext* context)
+static void webkitInputMethodContextImplGtkReset(CyberKitInputMethodContext* context)
 {
     auto* priv = WEBKIT_INPUT_METHOD_CONTEXT_IMPL_GTK(context)->priv;
     gtk_im_context_reset(priv->context.get());
 }
 
-static void webkit_input_method_context_impl_gtk_class_init(WebKitInputMethodContextImplGtkClass* klass)
+static void webkit_input_method_context_impl_gtk_class_init(CyberKitInputMethodContextImplGtkClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->constructed = webkitInputMethodContextImplGtkConstructed;
@@ -226,12 +226,12 @@ static void webkit_input_method_context_impl_gtk_class_init(WebKitInputMethodCon
     imClass->reset = webkitInputMethodContextImplGtkReset;
 }
 
-WebKitInputMethodContext* webkitInputMethodContextImplGtkNew()
+CyberKitInputMethodContext* webkitInputMethodContextImplGtkNew()
 {
     return WEBKIT_INPUT_METHOD_CONTEXT(g_object_new(WEBKIT_TYPE_INPUT_METHOD_CONTEXT_IMPL_GTK, nullptr));
 }
 
-void webkitInputMethodContextImplGtkSetClientWidget(WebKitInputMethodContextImplGtk* context, GtkWidget* widget)
+void webkitInputMethodContextImplGtkSetClientWidget(CyberKitInputMethodContextImplGtk* context, GtkWidget* widget)
 {
 #if USE(GTK4)
     gtk_im_context_set_client_widget(context->priv->context.get(), widget);

@@ -33,7 +33,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/LoggerHelper.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class HTMLVideoElement;
@@ -89,6 +89,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PICTURE_IN_PICTURE_API)

@@ -41,19 +41,19 @@
 #include "JSDOMWrapperCache.h"
 #include "JSTestCEReactionsStringifier.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -237,7 +237,7 @@ static inline JSValue jsTestCEReactions_reflectAttributeWithCEReactionsGetter(JS
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     auto& impl = thisObject.wrapped();
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, throwScope, impl.attributeWithoutSynchronization(WebCore::HTMLNames::reflectattributewithcereactionsAttr))));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, throwScope, impl.attributeWithoutSynchronization(CyberCore::HTMLNames::reflectattributewithcereactionsAttr))));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestCEReactions_reflectAttributeWithCEReactions, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -255,7 +255,7 @@ static inline bool setJSTestCEReactions_reflectAttributeWithCEReactionsSetter(JS
     auto nativeValue = convert<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, value);
     RETURN_IF_EXCEPTION(throwScope, false);
     invokeFunctorPropagatingExceptionIfNecessary(lexicalGlobalObject, throwScope, [&] {
-        return impl.setAttributeWithoutSynchronization(WebCore::HTMLNames::reflectattributewithcereactionsAttr, WTFMove(nativeValue));
+        return impl.setAttributeWithoutSynchronization(CyberCore::HTMLNames::reflectattributewithcereactionsAttr, WTFMove(nativeValue));
     });
     return true;
 }
@@ -340,7 +340,7 @@ static inline JSValue jsTestCEReactions_reflectAttributeWithCEReactionsNotNeeded
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     auto& impl = thisObject.wrapped();
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, throwScope, impl.attributeWithoutSynchronization(WebCore::HTMLNames::reflectattributewithcereactionsnotneededAttr))));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, throwScope, impl.attributeWithoutSynchronization(CyberCore::HTMLNames::reflectattributewithcereactionsnotneededAttr))));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestCEReactions_reflectAttributeWithCEReactionsNotNeeded, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -358,7 +358,7 @@ static inline bool setJSTestCEReactions_reflectAttributeWithCEReactionsNotNeeded
     auto nativeValue = convert<IDLAtomStringAdaptor<IDLDOMString>>(lexicalGlobalObject, value);
     RETURN_IF_EXCEPTION(throwScope, false);
     invokeFunctorPropagatingExceptionIfNecessary(lexicalGlobalObject, throwScope, [&] {
-        return impl.setAttributeWithoutSynchronization(WebCore::HTMLNames::reflectattributewithcereactionsnotneededAttr, WTFMove(nativeValue));
+        return impl.setAttributeWithoutSynchronization(CyberCore::HTMLNames::reflectattributewithcereactionsnotneededAttr, WTFMove(nativeValue));
     });
     return true;
 }
@@ -439,7 +439,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestCEReactionsPrototypeFunction_methodWithCEReaction
 
 JSC::GCClient::IsoSubspace* JSTestCEReactions::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestCEReactions, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestCEReactions, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestCEReactions.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestCEReactions = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestCEReactions.get(); },
@@ -474,9 +474,9 @@ void JSTestCEReactionsOwner::finalize(JSC::Handle<JSC::Unknown> handle, void* co
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestCEReactions@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestCEReactions@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore15TestCEReactionsE[]; }
+extern "C" { extern void* _ZTVN7CyberCore15TestCEReactionsE[]; }
 #endif
 #endif
 
@@ -487,9 +487,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestCEReactions@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestCEReactions@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore15TestCEReactionsE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore15TestCEReactionsE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

@@ -28,7 +28,7 @@
 #include "IDBKeyPath.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBKeyData;
 
@@ -38,4 +38,4 @@ bool deserializeIDBKeyPath(const uint8_t* buffer, size_t bufferSize, std::option
 RefPtr<SharedBuffer> serializeIDBKeyData(const IDBKeyData&);
 bool deserializeIDBKeyData(const uint8_t* buffer, size_t bufferSize, IDBKeyData&);
 
-} // namespace WebCore
+} // namespace CyberCore

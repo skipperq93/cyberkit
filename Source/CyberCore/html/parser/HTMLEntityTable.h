@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct HTMLEntityTableEntry {
     LChar lastCharacter() const { return entity[length - 1]; }
@@ -47,4 +47,4 @@ public:
     static const HTMLEntityTableEntry* lastEntryStartingWith(UChar);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

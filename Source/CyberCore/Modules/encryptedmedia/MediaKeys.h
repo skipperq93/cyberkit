@@ -42,7 +42,7 @@ namespace WTF {
 class Logger;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDM;
 class CDMClient;
@@ -109,6 +109,6 @@ protected:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

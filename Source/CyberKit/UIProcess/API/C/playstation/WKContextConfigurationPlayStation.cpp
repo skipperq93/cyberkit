@@ -31,30 +31,30 @@
 
 void WKContextConfigurationSetWebProcessPath(WKContextConfigurationRef configuration, WKStringRef webProcessPath)
 {
-    WebKit::toImpl(configuration)->setWebProcessPath(WebKit::toImpl(webProcessPath)->string());
+    CyberKit::toImpl(configuration)->setWebProcessPath(CyberKit::toImpl(webProcessPath)->string());
 }
 
 WKStringRef WKContextConfigurationCopyWebProcessPath(WKContextConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->webProcessPath());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->webProcessPath());
 }
 
 void WKContextConfigurationSetNetworkProcessPath(WKContextConfigurationRef configuration, WKStringRef networkProcessPath)
 {
-    WebKit::toImpl(configuration)->setNetworkProcessPath(WebKit::toImpl(networkProcessPath)->string());
+    CyberKit::toImpl(configuration)->setNetworkProcessPath(CyberKit::toImpl(networkProcessPath)->string());
 }
 
 WKStringRef WKContextConfigurationCopyNetworkProcessPath(WKContextConfigurationRef configuration)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(configuration)->networkProcessPath());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(configuration)->networkProcessPath());
 }
 
 void WKContextConfigurationSetUserId(WKContextConfigurationRef configuration, int32_t userId)
 {
-    WebKit::toImpl(configuration)->setUserId(userId);
+    CyberKit::toImpl(configuration)->setUserId(userId);
 }
 
 int32_t WKContextConfigurationGetUserId(WKContextConfigurationRef configuration)
 {
-    return WebKit::toImpl(configuration)->userId();
+    return CyberKit::toImpl(configuration)->userId();
 }

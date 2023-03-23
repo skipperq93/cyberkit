@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionAlternative final : public RefCounted<SpeechRecognitionAlternative> {
     WTF_MAKE_ISO_ALLOCATED(SpeechRecognitionAlternative);
@@ -46,4 +46,4 @@ private:
     double m_confidence;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

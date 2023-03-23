@@ -46,7 +46,7 @@
 #include "markup.h"
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<Document> documentFromClipboard(const Clipboard* clipboard)
 {
@@ -354,4 +354,4 @@ void ClipboardItemBindingsDataSource::ClipboardItemTypeLoader::didResolveToStrin
     invokeCompletionHandler();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

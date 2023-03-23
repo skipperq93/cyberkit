@@ -53,7 +53,7 @@ class CallFrame;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AXCoreObject;
 class CharacterData;
@@ -359,4 +359,4 @@ private:
     bool m_allowEditingUserAgentShadowTrees { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum GraphicsContextGLIdentifierType { };
 using GraphicsContextGLIdentifier = ObjectIdentifier<GraphicsContextGLIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, _WKOverlayScrollbarStyle) {
     _WKOverlayScrollbarStyleDark,
     _WKOverlayScrollbarStyleLight,
 
-    // Setting the overlay scrollbar style to automatic will cause WebKit to use its normal
+    // Setting the overlay scrollbar style to automatic will cause CyberKit to use its normal
     // heuristic to choose an appropriate color.
     _WKOverlayScrollbarStyleAutomatic
 

@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatSize;
 class GraphicsContext;
@@ -235,36 +235,36 @@ template<class Decoder> std::optional<InspectorOverlayLabel::Content::Decoration
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::InspectorOverlayLabel::Arrow::Direction> {
+template<> struct EnumTraits<CyberCore::InspectorOverlayLabel::Arrow::Direction> {
     using values = EnumValues<
-        WebCore::InspectorOverlayLabel::Arrow::Direction,
-        WebCore::InspectorOverlayLabel::Arrow::Direction::None,
-        WebCore::InspectorOverlayLabel::Arrow::Direction::Down,
-        WebCore::InspectorOverlayLabel::Arrow::Direction::Up,
-        WebCore::InspectorOverlayLabel::Arrow::Direction::Left,
-        WebCore::InspectorOverlayLabel::Arrow::Direction::Right
+        CyberCore::InspectorOverlayLabel::Arrow::Direction,
+        CyberCore::InspectorOverlayLabel::Arrow::Direction::None,
+        CyberCore::InspectorOverlayLabel::Arrow::Direction::Down,
+        CyberCore::InspectorOverlayLabel::Arrow::Direction::Up,
+        CyberCore::InspectorOverlayLabel::Arrow::Direction::Left,
+        CyberCore::InspectorOverlayLabel::Arrow::Direction::Right
     >;
 };
 
-template<> struct EnumTraits<WebCore::InspectorOverlayLabel::Arrow::Alignment> {
+template<> struct EnumTraits<CyberCore::InspectorOverlayLabel::Arrow::Alignment> {
     using values = EnumValues<
-        WebCore::InspectorOverlayLabel::Arrow::Alignment,
-        WebCore::InspectorOverlayLabel::Arrow::Alignment::None,
-        WebCore::InspectorOverlayLabel::Arrow::Alignment::Leading,
-        WebCore::InspectorOverlayLabel::Arrow::Alignment::Middle,
-        WebCore::InspectorOverlayLabel::Arrow::Alignment::Trailing
+        CyberCore::InspectorOverlayLabel::Arrow::Alignment,
+        CyberCore::InspectorOverlayLabel::Arrow::Alignment::None,
+        CyberCore::InspectorOverlayLabel::Arrow::Alignment::Leading,
+        CyberCore::InspectorOverlayLabel::Arrow::Alignment::Middle,
+        CyberCore::InspectorOverlayLabel::Arrow::Alignment::Trailing
     >;
 };
 
-template<> struct EnumTraits<WebCore::InspectorOverlayLabel::Content::Decoration::Type> {
+template<> struct EnumTraits<CyberCore::InspectorOverlayLabel::Content::Decoration::Type> {
     using values = EnumValues<
-        WebCore::InspectorOverlayLabel::Content::Decoration::Type,
-        WebCore::InspectorOverlayLabel::Content::Decoration::Type::None,
-        WebCore::InspectorOverlayLabel::Content::Decoration::Type::Bordered
+        CyberCore::InspectorOverlayLabel::Content::Decoration::Type,
+        CyberCore::InspectorOverlayLabel::Content::Decoration::Type::None,
+        CyberCore::InspectorOverlayLabel::Content::Decoration::Type::Bordered
     >;
 };
 

@@ -27,17 +27,17 @@
 #include "JSSVGViewSpec.h"
 
 #include "JSNode.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSSVGViewSpec::visitAdditionalChildren(Visitor& visitor)
 {
     ASSERT(wrapped().contextElementConcurrently().get());
-    addWebCoreOpaqueRoot(visitor, wrapped().contextElementConcurrently().get());
+    addCyberCoreOpaqueRoot(visitor, wrapped().contextElementConcurrently().get());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSSVGViewSpec);
 
-} // namespace WebCore
+} // namespace CyberCore

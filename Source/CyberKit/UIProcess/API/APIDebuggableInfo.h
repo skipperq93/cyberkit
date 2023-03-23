@@ -33,7 +33,7 @@ namespace API {
 
 class DebuggableInfo final : public ObjectImpl<Object::Type::DebuggableInfo> {
 public:
-    static Ref<DebuggableInfo> create(const WebKit::DebuggableInfoData&);
+    static Ref<DebuggableInfo> create(const CyberKit::DebuggableInfoData&);
     DebuggableInfo() = default;
     virtual ~DebuggableInfo();
 
@@ -52,12 +52,12 @@ public:
     bool targetIsSimulator() const { return m_data.targetIsSimulator; }
     void setTargetIsSimulator(bool targetIsSimulator) { m_data.targetIsSimulator = targetIsSimulator; }
 
-    const WebKit::DebuggableInfoData& debuggableInfoData() const { return m_data; }
+    const CyberKit::DebuggableInfoData& debuggableInfoData() const { return m_data; }
 
 private:
-    explicit DebuggableInfo(const WebKit::DebuggableInfoData&);
+    explicit DebuggableInfo(const CyberKit::DebuggableInfoData&);
 
-    WebKit::DebuggableInfoData m_data;
+    CyberKit::DebuggableInfoData m_data;
 };
 
 } // namespace API

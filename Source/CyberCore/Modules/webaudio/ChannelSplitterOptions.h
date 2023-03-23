@@ -29,12 +29,12 @@
 
 #include "AudioNodeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ChannelSplitterOptions : AudioNodeOptions {
     unsigned numberOfOutputs = 6;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

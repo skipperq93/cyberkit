@@ -30,15 +30,15 @@
 #include "GPUTextureViewDimension.h"
 #include <pal/graphics/WebGPU/WebGPUStorageTextureBindingLayout.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUStorageTextureBindingLayout {
     PAL::WebGPU::StorageTextureBindingLayout convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(access),
-            WebCore::convertToBacking(format),
-            WebCore::convertToBacking(viewDimension),
+            CyberCore::convertToBacking(access),
+            CyberCore::convertToBacking(format),
+            CyberCore::convertToBacking(viewDimension),
         };
     }
 

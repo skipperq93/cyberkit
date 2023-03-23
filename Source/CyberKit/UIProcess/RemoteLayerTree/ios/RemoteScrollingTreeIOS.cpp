@@ -31,7 +31,7 @@
 #include "ScrollingTreeFrameScrollingNodeRemoteIOS.h"
 #include "ScrollingTreeOverflowScrollingNodeIOS.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<RemoteScrollingTree> RemoteScrollingTree::create(RemoteScrollingCoordinatorProxy& scrollingCoordinator)
@@ -82,6 +82,6 @@ Ref<ScrollingTreeNode> RemoteScrollingTreeIOS::createScrollingTreeNode(Scrolling
     return ScrollingTreeFixedNodeCocoa::create(*this, nodeID);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // #if PLATFORM(IOS_FAMILY) && ENABLE(UI_SIDE_COMPOSITING)

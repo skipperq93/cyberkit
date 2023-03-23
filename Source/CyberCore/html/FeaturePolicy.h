@@ -29,7 +29,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLIFrameElement;
@@ -97,4 +97,4 @@ private:
 enum class LogFeaturePolicyFailure { No, Yes };
 extern bool isFeaturePolicyAllowedByDocumentAndAllOwners(FeaturePolicy::Type, const Document&, LogFeaturePolicyFailure = LogFeaturePolicyFailure::Yes);
 
-} // namespace WebCore
+} // namespace CyberCore

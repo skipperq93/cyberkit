@@ -53,7 +53,7 @@ WTF_DECLARE_CF_TYPE_TRAIT(SecACL);
 ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const NSUInteger currentSerializationVersion = 1;
 

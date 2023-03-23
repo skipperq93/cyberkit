@@ -19,7 +19,7 @@
  */
 
 #include <config.h>
-#include "WebKitEnumTypes.h"
+#include "CyberKitEnumTypes.h"
 
 #if USE(GTK4)
 #include <webkit/webkit.h>

@@ -10,7 +10,7 @@ const TemporaryFile = require('./resources/temporary-file.js').TemporaryFile;
 const addWorkerForReport = require('./resources/common-operations.js').addWorkerForReport;
 const prepareServerTest = require('./resources/common-operations.js').prepareServerTest;
 
-function makeReport(rootFile, buildRequestId = 1, repositoryList = ['WebKit'], buildTime = '2017-05-10T02:54:08.666')
+function makeReport(rootFile, buildRequestId = 1, repositoryList = ['CyberKit'], buildTime = '2017-05-10T02:54:08.666')
 {
     return {
         workerName: 'someWorker',
@@ -217,7 +217,7 @@ describe('/api/upload-root/', function () {
         assert.deepStrictEqual(otherCommitSet.allRootFiles(), []);
 
         const rootFile = await addWorkerAndCreateRootFile();
-        const report = makeReport(rootFile, buildRequest.id(), ['WebKit']);
+        const report = makeReport(rootFile, buildRequest.id(), ['CyberKit']);
         report.buildNumber = report.buildTag;
         const response = await TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         assert.strictEqual(response['status'], 'OK');
@@ -258,7 +258,7 @@ describe('/api/upload-root/', function () {
         assert.deepStrictEqual(otherCommitSet.allRootFiles(), []);
 
         const rootFile = await addWorkerAndCreateRootFile();
-        const report = makeReport(rootFile, buildRequest.id(), ['WebKit']);
+        const report = makeReport(rootFile, buildRequest.id(), ['CyberKit']);
         delete report.buildTag;
         report.buildNumber = '123';
         const response = await TestServer.remoteAPI().postFormData('/api/upload-root/', report);
@@ -377,7 +377,7 @@ describe('/api/upload-root/', function () {
 
             return addWorkerAndCreateRootFile();
         }).then((rootFile) => {
-            const report = makeReport(rootFile, buildRequest.id(), ['WebKit']);
+            const report = makeReport(rootFile, buildRequest.id(), ['CyberKit']);
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'OK');
@@ -401,9 +401,9 @@ describe('/api/upload-root/', function () {
 
             assert.deepStrictEqual(buildRequest.commitSet().allRootFiles(), [uploadedRoot]);
             assert.deepStrictEqual(otherBuildRequest.commitSet().allRootFiles(), []);
-            return TemporaryFile.makeTemporaryFile('JavaScriptCore-Root.dat', 'JavaScript Content 0');
+            return TemporaryFile.makeTemporaryFile('CyberScriptCore-Root.dat', 'JavaScript Content 0');
         }).then((rootFile) => {
-            const report = makeReport(rootFile, buildRequest.id(), [{ownerRepositoryWrongKey: 'WebKit', ownedRepository: 'JavaScriptCore'}], '2017-05-10T02:54:09.666');
+            const report = makeReport(rootFile, buildRequest.id(), [{ownerRepositoryWrongKey: 'CyberKit', ownedRepository: 'CyberScriptCore'}], '2017-05-10T02:54:09.666');
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'InvalidKeyForRepository');
@@ -454,7 +454,7 @@ describe('/api/upload-root/', function () {
 
             return addWorkerAndCreateRootFile();
         }).then((rootFile) => {
-            const report = makeReport(rootFile, buildRequest.id(), ['WebKit']);
+            const report = makeReport(rootFile, buildRequest.id(), ['CyberKit']);
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'OK');
@@ -478,9 +478,9 @@ describe('/api/upload-root/', function () {
 
             assert.deepStrictEqual(buildRequest.commitSet().allRootFiles(), [uploadedRoot]);
             assert.deepStrictEqual(otherBuildRequest.commitSet().allRootFiles(), []);
-            return TemporaryFile.makeTemporaryFile('JavaScriptCore-Root.dat', 'JavaScript Content 0');
+            return TemporaryFile.makeTemporaryFile('CyberScriptCore-Root.dat', 'JavaScript Content 0');
         }).then((rootFile) => {
-            const report = makeReport(rootFile, buildRequest.id(), [{ownerRepository: 'WebKit2', ownedRepository: 'JavaScriptCore'}], '2017-05-10T02:54:09.666');
+            const report = makeReport(rootFile, buildRequest.id(), [{ownerRepository: 'CyberKit2', ownedRepository: 'CyberScriptCore'}], '2017-05-10T02:54:09.666');
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'InvalidRepository');
@@ -598,7 +598,7 @@ describe('/api/upload-root/', function () {
             return addWorkerAndCreateRootFile();
         }).then((rootFile) => {
             const report = makeReport(rootFile, buildRequest.id());
-            report.repositoryList = '["WebKit", "BadRepositoryName"]';
+            report.repositoryList = '["CyberKit", "BadRepositoryName"]';
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'InvalidRepository');
@@ -613,7 +613,7 @@ describe('/api/upload-root/', function () {
             return addWorkerAndCreateRootFile();
         }).then((rootFile) => {
             const report = makeReport(rootFile, buildRequest.id());
-            report.repositoryList = '["WebKit", "macOS"]';
+            report.repositoryList = '["CyberKit", "macOS"]';
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'InvalidRepository');
@@ -667,7 +667,7 @@ describe('/api/upload-root/', function () {
             return addWorkerAndCreateRootFile();
         }).then((rootFile) => {
             const report = makeReport(rootFile, buildRequest.id());
-            report.repositoryList = '["WebKit", "Shared"]';
+            report.repositoryList = '["CyberKit", "Shared"]';
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'OK');
@@ -757,7 +757,7 @@ describe('/api/upload-root/', function () {
 
             return addWorkerAndCreateRootFile();
         }).then((rootFile) => {
-            const report = makeReport(rootFile, buildRequest.id(), ['WebKit']);
+            const report = makeReport(rootFile, buildRequest.id(), ['CyberKit']);
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'OK');
@@ -781,15 +781,15 @@ describe('/api/upload-root/', function () {
 
             assert.deepStrictEqual(buildRequest.commitSet().allRootFiles(), [uploadedRoot]);
             assert.deepStrictEqual(otherBuildRequest.commitSet().allRootFiles(), []);
-            return TemporaryFile.makeTemporaryFile('JavaScriptCore-Root.dat', 'JavaScript Content 0');
+            return TemporaryFile.makeTemporaryFile('CyberScriptCore-Root.dat', 'JavaScript Content 0');
         }).then((rootFile) => {
-            const report = makeReport(rootFile, buildRequest.id(), [{ownerRepository: 'WebKit', ownedRepository: 'JavaScriptCore'}], '2017-05-10T02:54:09.666');
+            const report = makeReport(rootFile, buildRequest.id(), [{ownerRepository: 'CyberKit', ownedRepository: 'CyberScriptCore'}], '2017-05-10T02:54:09.666');
             return TestServer.remoteAPI().postFormData('/api/upload-root/', report);
         }).then((response) => {
             assert.strictEqual(response['status'], 'OK');
             const uploadedRootRawData = response['uploadedFile'];
             jscRoot = UploadedFile.ensureSingleton(uploadedRootRawData.id, uploadedRootRawData);
-            assert.strictEqual(jscRoot.filename(), 'JavaScriptCore-Root.dat');
+            assert.strictEqual(jscRoot.filename(), 'CyberScriptCore-Root.dat');
             return TestGroup.fetchForTask(buildRequest.testGroup().task().id(), true);
         }).then((testGroups) => {
             assert.strictEqual(testGroups.length, 1);

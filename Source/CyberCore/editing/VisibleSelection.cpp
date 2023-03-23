@@ -41,7 +41,7 @@
 #include <wtf/text/TextStream.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 VisibleSelection::VisibleSelection()
     : m_anchorIsFirst(true)
@@ -754,16 +754,16 @@ TextStream& operator<<(TextStream& stream, const VisibleSelection& v)
     return stream;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showTree(const WebCore::VisibleSelection& sel)
+void showTree(const CyberCore::VisibleSelection& sel)
 {
     sel.showTreeForThis();
 }
 
-void showTree(const WebCore::VisibleSelection* sel)
+void showTree(const CyberCore::VisibleSelection* sel)
 {
     if (sel)
         sel->showTreeForThis();

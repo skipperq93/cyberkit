@@ -29,7 +29,7 @@
 
 #include "JSDOMPromiseDeferred.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ReadableStreamSource::ReadableStreamSource() = default;
 ReadableStreamSource::~ReadableStreamSource() = default;
@@ -102,4 +102,4 @@ void SimpleReadableStreamSource::enqueue(JSC::JSValue value)
         controller().enqueue(value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include <pal/graphics/WebGPU/WebGPUExternalTextureBindingLayout.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUExternalTextureBindingLayout {
     PAL::WebGPU::ExternalTextureBindingLayout convertToBacking() const

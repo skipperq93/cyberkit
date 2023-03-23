@@ -28,7 +28,7 @@
 #include "ResourceLoaderIdentifier.h"
 #include <CyberScriptCore/InspectorConsoleAgent.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class ResourceError;
@@ -47,4 +47,4 @@ public:
     void didFailLoading(ResourceLoaderIdentifier, const ResourceError&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

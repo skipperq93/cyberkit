@@ -30,7 +30,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation;
 class RenderStyle;
@@ -79,6 +79,6 @@ private:
     OptionSet<Property> m_overriddenProperties;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_WEB_ANIMATION(CSSAnimation, isCSSAnimation())

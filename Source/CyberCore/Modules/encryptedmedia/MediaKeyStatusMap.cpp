@@ -35,7 +35,7 @@
 #include "MediaKeySession.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaKeyStatusMap::MediaKeyStatusMap(const MediaKeySession& session)
     : m_session(&session)
@@ -107,6 +107,6 @@ std::optional<KeyValuePair<BufferSource::VariantType, MediaKeyStatus>> MediaKeyS
     return KeyValuePair<BufferSource::VariantType, MediaKeyStatus> { RefPtr<ArrayBuffer>(WTFMove(buffer)), pair.second };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

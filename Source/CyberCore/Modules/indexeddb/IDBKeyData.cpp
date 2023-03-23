@@ -30,7 +30,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBKeyData::IDBKeyData(const IDBKey* key)
 {
@@ -474,4 +474,4 @@ size_t IDBKeyData::size() const
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include "GPUProgrammableStage.h"
 #include <pal/graphics/WebGPU/WebGPUComputePipelineDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUComputePipelineDescriptor : public GPUPipelineDescriptorBase {
     PAL::WebGPU::ComputePipelineDescriptor convertToBacking(const Ref<GPUPipelineLayout>& autoLayout) const

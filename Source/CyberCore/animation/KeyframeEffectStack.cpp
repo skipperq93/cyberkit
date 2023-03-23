@@ -35,7 +35,7 @@
 #include "WebAnimationUtilities.h"
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 KeyframeEffectStack::KeyframeEffectStack()
 {
@@ -269,4 +269,4 @@ void KeyframeEffectStack::didApplyCascade(const RenderStyle& styleBeforeCascade,
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

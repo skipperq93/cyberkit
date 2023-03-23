@@ -17,11 +17,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitFormClient_h
-#define WebKitFormClient_h
+#ifndef CyberKitFormClient_h
+#define CyberKitFormClient_h
 
-#include "WebKitWebView.h"
+#include "CyberKitWebView.h"
 
-void attachFormClientToView(WebKitWebView*);
+void attachFormClientToView(CyberKitWebView*);
 
 #endif

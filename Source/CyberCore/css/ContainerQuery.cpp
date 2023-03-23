@@ -32,7 +32,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace CQ {
 
 OptionSet<Axis> requiredAxesForFeature(const MQ::Feature& feature)

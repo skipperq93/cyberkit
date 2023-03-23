@@ -33,7 +33,7 @@
 #include "Frame.h"
 #include "Navigator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorCredentials::NavigatorCredentials() = default;
 
@@ -70,6 +70,6 @@ NavigatorCredentials* NavigatorCredentials::from(Navigator* navigator)
     return supplement;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

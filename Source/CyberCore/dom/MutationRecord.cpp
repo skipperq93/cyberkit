@@ -38,7 +38,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
 
@@ -47,7 +47,7 @@ static void visitNodeList(JSC::AbstractSlotVisitor& visitor, NodeList& nodeList)
     ASSERT(!nodeList.isLiveNodeList());
     unsigned length = nodeList.length();
     for (unsigned i = 0; i < length; ++i)
-        addWebCoreOpaqueRoot(visitor, nodeList.item(i));
+        addCyberCoreOpaqueRoot(visitor, nodeList.item(i));
 }
 
 class ChildListRecord final : public MutationRecord {
@@ -71,7 +71,7 @@ private:
 
     void visitNodesConcurrently(JSC::AbstractSlotVisitor& visitor) const final
     {
-        addWebCoreOpaqueRoot(visitor, m_target.get());
+        addCyberCoreOpaqueRoot(visitor, m_target.get());
         if (m_addedNodes)
             visitNodeList(visitor, *m_addedNodes);
         if (m_removedNodes)
@@ -108,7 +108,7 @@ private:
 
     void visitNodesConcurrently(JSC::AbstractSlotVisitor& visitor) const final
     {
-        addWebCoreOpaqueRoot(visitor, m_target.get());
+        addCyberCoreOpaqueRoot(visitor, m_target.get());
     }
 
     Ref<Node> m_target;
@@ -215,4 +215,4 @@ Ref<MutationRecord> MutationRecord::createWithNullOldValue(MutationRecord& recor
 
 MutationRecord::~MutationRecord() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

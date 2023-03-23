@@ -32,7 +32,7 @@
 #include "CSSGroupingRule.h"
 #include "StyleRuleType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleLayer;
 
@@ -52,6 +52,6 @@ private:
 
 String stringFromCascadeLayerName(const CascadeLayerName&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSLayerBlockRule, StyleRuleType::LayerBlock)

@@ -35,7 +35,7 @@
 #include "TextTrack.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebVTTElement);
 
@@ -127,6 +127,6 @@ Ref<HTMLElement> WebVTTElement::createEquivalentHTMLElement(Document& document)
     return htmlElement.releaseNonNull();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

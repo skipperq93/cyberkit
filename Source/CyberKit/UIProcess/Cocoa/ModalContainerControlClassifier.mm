@@ -80,7 +80,7 @@ static NSString *const classifierOutputFeatureKey = @"label";
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 class SpoofChecker {
     WTF_MAKE_FAST_ALLOCATED;
@@ -108,7 +108,7 @@ private:
     USpoofChecker* m_checker { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 @implementation WKModalContainerClassifierInput {
     RetainPtr<NSString> _canonicalInput;
@@ -131,7 +131,7 @@ private:
             return;
 
         if (attributes & (NLTokenizerAttributeSymbolic | NLTokenizerAttributeEmoji)) {
-            WebKit::SpoofChecker checker;
+            CyberKit::SpoofChecker checker;
             if ([lowercaseToken isEqualToString:@"✕"] || [lowercaseToken isEqualToString:@"✖"] || checker.areConfusable(lowercaseToken, "x") || checker.areConfusable(lowercaseToken, "X")) {
                 // ICU does not consider two unicode symbols to be confusable with the letter x, but for the purposes of the classifier we need to treat them as if they were.
                 [tokens addObject:@"x"];
@@ -158,11 +158,11 @@ private:
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ModalContainerControlClassifier::ModalContainerControlClassifier()
-    : m_queue(WorkQueue::create("com.apple.WebKit.ModalContainerControlClassifier"))
+    : m_queue(WorkQueue::create("com.apple.CyberKit.ModalContainerControlClassifier"))
 {
     ASSERT(RunLoop::isMain());
 }
@@ -225,7 +225,7 @@ void ModalContainerControlClassifier::loadModelIfNeeded()
     if (m_model)
         return;
 
-    auto bundle = [NSBundle bundleWithIdentifier:@"com.apple.WebKit"];
+    auto bundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
     auto compiledModelURL = [bundle URLForResource:@"ModalContainerControls" withExtension:@"mlmodelc"];
     if (!compiledModelURL)
         return;
@@ -236,4 +236,4 @@ void ModalContainerControlClassifier::loadModelIfNeeded()
     m_model = [PAL::getMLModelClass() modelWithContentsOfURL:compiledModelURL configuration:configuration.get() error:&loadingError];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -70,7 +70,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, this->connection())
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if ENABLE(MEDIA_STREAM) && HAVE(AUDIT_TOKEN)
@@ -112,7 +112,7 @@ GPUProcessProxy* GPUProcessProxy::singletonIfCreated()
 #if USE(SANDBOX_EXTENSIONS_FOR_CACHE_AND_TEMP_DIRECTORY_ACCESS)
 static String gpuProcessCachesDirectory()
 {
-    String path = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.GPU/"_s);
+    String path = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.CyberKit.GPU/"_s);
 
     FileSystem::makeAllDirectories(path);
     
@@ -703,7 +703,7 @@ void GPUProcessProxy::statusBarWasTapped(CompletionHandler<void()>&& completionH
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK
 

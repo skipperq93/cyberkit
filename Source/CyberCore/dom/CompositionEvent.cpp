@@ -29,7 +29,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CompositionEvent);
 
@@ -69,4 +69,4 @@ bool CompositionEvent::isCompositionEvent() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

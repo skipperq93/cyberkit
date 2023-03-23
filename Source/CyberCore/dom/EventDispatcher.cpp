@@ -45,7 +45,7 @@
 #include "TouchEvent.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void EventDispatcher::dispatchScopedEvent(Node& node, Event& event)
 {

@@ -30,7 +30,7 @@
 #include <CyberScriptCore/JSGlobalObject.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue jsDate(JSC::JSGlobalObject&, WallTime value);
 WallTime valueToDate(JSC::JSGlobalObject&, JSC::JSValue); // NaN if the value can't be converted to a date.
@@ -53,4 +53,4 @@ template<> struct JSConverter<IDLDate> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

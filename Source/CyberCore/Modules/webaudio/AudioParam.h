@@ -38,7 +38,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioNodeOutput;
 
@@ -150,4 +150,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

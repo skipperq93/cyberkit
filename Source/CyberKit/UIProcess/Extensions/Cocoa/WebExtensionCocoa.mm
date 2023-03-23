@@ -59,7 +59,7 @@ SOFT_LINK(CoreSVG, CGSVGDocumentCreateFromData, CGSVGDocumentRef, (CFDataRef dat
 SOFT_LINK(CoreSVG, CGSVGDocumentRelease, void, (CGSVGDocumentRef document), (document))
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSString * const manifestVersionManifestKey = @"manifest_version";
 
@@ -1336,6 +1336,6 @@ NSSet<_WKWebExtensionMatchPattern *> *toAPI(const WebExtension::MatchPatternSet&
     return [result copy];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

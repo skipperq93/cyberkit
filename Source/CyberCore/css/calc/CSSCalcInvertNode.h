@@ -27,7 +27,7 @@
 
 #include "CSSCalcExpressionNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCalcInvertNode final : public CSSCalcExpressionNode {
 public:
@@ -66,4 +66,4 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CSSCALCEXPRESSION_NODE(CSSCalcInvertNode, type() == WebCore::CSSCalcExpressionNode::Type::CssCalcInvert)
+SPECIALIZE_TYPE_TRAITS_CSSCALCEXPRESSION_NODE(CSSCalcInvertNode, type() == CyberCore::CSSCalcExpressionNode::Type::CssCalcInvert)

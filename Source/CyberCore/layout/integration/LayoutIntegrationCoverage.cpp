@@ -82,7 +82,7 @@
     }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace LayoutIntegration {
 
 #ifndef NDEBUG

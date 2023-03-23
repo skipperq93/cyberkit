@@ -32,7 +32,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCustomPropertyValue;
 class CSSVariableData;
@@ -76,4 +76,4 @@ private:
     Document& m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

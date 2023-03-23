@@ -34,7 +34,7 @@
 
 using namespace JSC;
 
-namespace WebCore {
+namespace CyberCore {
 
 JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<AnimationTimeline>&& value)
 {
@@ -48,4 +48,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

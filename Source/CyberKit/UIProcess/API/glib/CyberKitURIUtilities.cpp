@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitURIUtilities.h"
+#include "CyberKitURIUtilities.h"
 
 #include <wtf/URLHelpers.h>
 #include <wtf/text/CString.h>
@@ -31,7 +31,7 @@
  * Use this function to format a URI for display.
  *
  * The URIs used internally by
- * WebKit may contain percent-encoded characters or Punycode, which are not
+ * CyberKit may contain percent-encoded characters or Punycode, which are not
  * generally suitable to display to users. This function provides protection
  * against IDN homograph attacks, so in some cases the host part of the returned
  * URI may be in Punycode if the safety check fails.

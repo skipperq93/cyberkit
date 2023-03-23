@@ -37,7 +37,7 @@
 #include <CyberCore/WebAudioBufferList.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<CyberCore::RealtimeMediaSource> SpeechRecognitionRemoteRealtimeMediaSource::create(SpeechRecognitionRemoteRealtimeMediaSourceManager& manager, const CyberCore::CaptureDevice& captureDevice, CyberCore::PageIdentifier pageIdentifier)
 {
@@ -112,6 +112,6 @@ void SpeechRecognitionRemoteRealtimeMediaSource::remoteSourceStopped()
     stop();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

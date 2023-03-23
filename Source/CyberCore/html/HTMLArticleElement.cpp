@@ -30,7 +30,7 @@
 #include "HTMLNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLArticleElement);
 
@@ -65,4 +65,4 @@ void HTMLArticleElement::removedFromAncestor(RemovalType removalType, ContainerN
     HTMLElement::removedFromAncestor(removalType, oldParentOfRemovedTree);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

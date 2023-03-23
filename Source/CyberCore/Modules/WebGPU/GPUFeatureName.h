@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUFeatureName.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUFeatureName : uint8_t {
     DepthClipControl,

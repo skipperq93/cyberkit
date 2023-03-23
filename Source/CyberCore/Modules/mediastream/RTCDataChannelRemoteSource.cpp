@@ -31,7 +31,7 @@
 #include "RTCDataChannelHandler.h"
 #include "ScriptExecutionContextIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RTCDataChannelRemoteSource::RTCDataChannelRemoteSource(RTCDataChannelIdentifier identifier, UniqueRef<RTCDataChannelHandler>&& handler, Ref<RTCDataChannelRemoteSourceConnection>&& connection)
     : m_identifier(identifier)
@@ -46,6 +46,6 @@ RTCDataChannelRemoteSource::~RTCDataChannelRemoteSource()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

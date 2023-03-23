@@ -33,7 +33,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static NSString* visibilityEndowment = @"com.apple.frontboard.visibility";
 static NSString* userfacingEndowment = @"com.apple.launchservices.userfacing";

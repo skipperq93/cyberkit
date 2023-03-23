@@ -34,7 +34,7 @@
 #include <wtf/Forward.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedRawResource;
 class ContentFilterClient;
@@ -129,6 +129,6 @@ ContentFilter::Type ContentFilter::type()
     return { T::create };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

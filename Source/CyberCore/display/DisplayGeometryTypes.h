@@ -27,7 +27,7 @@
 
 #include "FloatRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 // Absolute coordinates are anchored at the document origin.
@@ -56,5 +56,5 @@ inline auto unionRect(T& a, const T& b) -> typename std::enable_if_t<std::is_bas
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

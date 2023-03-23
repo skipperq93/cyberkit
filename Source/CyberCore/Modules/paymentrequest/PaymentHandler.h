@@ -35,7 +35,7 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 struct AddressErrors;
@@ -61,6 +61,6 @@ public:
     virtual ExceptionOr<void> retry(PaymentValidationErrors&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

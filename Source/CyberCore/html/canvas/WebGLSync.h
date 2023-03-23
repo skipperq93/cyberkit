@@ -30,7 +30,7 @@
 #include "GraphicsContextGL.h"
 #include "WebGLSharedObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLSync final : public WebGLSharedObject {
 public:
@@ -53,6 +53,6 @@ private:
     void deleteObjectImpl(const AbstractLocker&, GraphicsContextGL*, PlatformGLObject) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

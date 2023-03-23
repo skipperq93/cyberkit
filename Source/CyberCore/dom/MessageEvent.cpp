@@ -34,7 +34,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -146,4 +146,4 @@ size_t MessageEvent::memoryCost() const
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

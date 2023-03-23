@@ -29,7 +29,7 @@
 #include "ColorInterpolationMethod.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CSSResolvedColorMix {
     struct Component {
@@ -44,4 +44,4 @@ struct CSSResolvedColorMix {
 
 Color mix(const CSSResolvedColorMix&);
 
-} // namespace WebCore
+} // namespace CyberCore

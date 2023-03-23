@@ -34,7 +34,7 @@
 #include <wtf/text/AtomString.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 bool JSNodeListOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, AbstractSlotVisitor& visitor, const char** reason)
@@ -47,21 +47,21 @@ bool JSNodeListOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handl
         if (UNLIKELY(reason))
             *reason = "LiveNodeList owner is opaque root";
 
-        return containsWebCoreOpaqueRoot(visitor, static_cast<LiveNodeList&>(jsNodeList->wrapped()).ownerNode());
+        return containsCyberCoreOpaqueRoot(visitor, static_cast<LiveNodeList&>(jsNodeList->wrapped()).ownerNode());
     }
 
     if (jsNodeList->wrapped().isChildNodeList()) {
         if (UNLIKELY(reason))
             *reason = "ChildNodeList owner is opaque root";
 
-        return containsWebCoreOpaqueRoot(visitor, static_cast<ChildNodeList&>(jsNodeList->wrapped()).ownerNode());
+        return containsCyberCoreOpaqueRoot(visitor, static_cast<ChildNodeList&>(jsNodeList->wrapped()).ownerNode());
     }
 
     if (jsNodeList->wrapped().isEmptyNodeList()) {
         if (UNLIKELY(reason))
             *reason = "EmptyNodeList owner is opaque root";
 
-        return containsWebCoreOpaqueRoot(visitor, static_cast<EmptyNodeList&>(jsNodeList->wrapped()).ownerNode());
+        return containsCyberCoreOpaqueRoot(visitor, static_cast<EmptyNodeList&>(jsNodeList->wrapped()).ownerNode());
     }
     return false;
 }
@@ -79,4 +79,4 @@ JSC::JSValue toJSNewlyCreated(JSGlobalObject*, JSDOMGlobalObject* globalObject, 
     return createWrapper(*globalObject, WTFMove(nodeList));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include "InlineLine.h"
 #include "InlineLineTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct CommittedContent;

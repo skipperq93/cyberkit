@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayPaymentMethodType {
     Debit,
@@ -36,6 +36,6 @@ enum class ApplePayPaymentMethodType {
     Store,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

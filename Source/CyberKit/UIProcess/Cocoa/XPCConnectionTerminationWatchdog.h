@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class ProcessAndUIAssertion;
 

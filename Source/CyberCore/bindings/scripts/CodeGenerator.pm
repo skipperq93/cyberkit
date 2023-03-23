@@ -1085,7 +1085,7 @@ sub ContentAttributeName
     my $namespace = $generator->NamespaceForAttributeName($interfaceName, $contentAttributeName);
 
     $implIncludes->{"${namespace}.h"} = 1;
-    return "WebCore::${namespace}::${contentAttributeName}Attr";
+    return "CyberCore::${namespace}::${contentAttributeName}Attr";
 }
 
 sub GetterExpression
@@ -1114,10 +1114,10 @@ sub GetterExpression
     } elsif ($attributeType->name eq "FrozenArray" && scalar @{$attributeType->subtypes} == 1 && @{$attributeType->subtypes}[0]->name eq "Element") {
         $functionName = "getElementsArrayAttribute";
     } else {
-        if ($contentAttributeName eq "WebCore::HTMLNames::idAttr") {
+        if ($contentAttributeName eq "CyberCore::HTMLNames::idAttr") {
             $functionName = "getIdAttribute";
             $contentAttributeName = "";
-        } elsif ($contentAttributeName eq "WebCore::HTMLNames::nameAttr") {
+        } elsif ($contentAttributeName eq "CyberCore::HTMLNames::nameAttr") {
             $functionName = "getNameAttribute";
             $contentAttributeName = "";
         } elsif ($generator->IsSVGAnimatedType($attributeType)) {

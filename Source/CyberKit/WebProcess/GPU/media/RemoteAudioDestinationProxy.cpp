@@ -44,7 +44,7 @@
 #include <mach/mach_time.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 // Allocate a ring buffer large enough to contain 2 seconds of audio.
 constexpr size_t ringBufferSizeInSecond = 2;
@@ -211,6 +211,6 @@ void RemoteAudioDestinationProxy::gpuProcessConnectionDidClose(GPUProcessConnect
         startRendering([](bool) { });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO)

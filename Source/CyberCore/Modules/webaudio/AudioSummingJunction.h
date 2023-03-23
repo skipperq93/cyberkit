@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioNodeOutput;
 class BaseAudioContext;
@@ -89,4 +89,4 @@ private:
     Vector<AudioNodeOutput*> m_pendingRenderingOutputs;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

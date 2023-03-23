@@ -32,7 +32,7 @@
 #include "FrameInfoData.h"
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -76,6 +76,6 @@ void WebDeviceOrientationAndMotionAccessController::clearPermissions()
     m_deviceOrientationPermissionDecisions.clear();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DEVICE_ORIENTATION)

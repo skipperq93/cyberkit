@@ -23,26 +23,26 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitVP9Decoder.h"
+#include "CyberKitVP9Decoder.h"
 
-#include "WebKitDecoderReceiver.h"
+#include "CyberKitDecoderReceiver.h"
 #include "modules/video_coding/include/video_error_codes.h"
 #include "rtc_base/logging.h"
 
 namespace webrtc {
 
-WebKitDecoderReceiver::WebKitDecoderReceiver(VTVideoDecoderSession session)
+CyberKitDecoderReceiver::CyberKitDecoderReceiver(VTVideoDecoderSession session)
     : m_session(session)
 {
 }
 
-WebKitDecoderReceiver::~WebKitDecoderReceiver()
+CyberKitDecoderReceiver::~CyberKitDecoderReceiver()
 {
     if (m_pixelBufferPool)
         CFRelease(m_pixelBufferPool);
 }
 
-void WebKitDecoderReceiver::initializeFromFormatDescription(CMFormatDescriptionRef formatDescription)
+void CyberKitDecoderReceiver::initializeFromFormatDescription(CMFormatDescriptionRef formatDescription)
 {
     // CoreAnimation doesn't support full-planar YUV, so we must convert the buffers output
     // by libvpx to bi-planar YUV. Create pixel buffer attributes and give those to the
@@ -77,7 +77,7 @@ void WebKitDecoderReceiver::initializeFromFormatDescription(CMFormatDescriptionR
         m_isFullRange = true;
 }
 
-CVPixelBufferPoolRef WebKitDecoderReceiver::pixelBufferPool(size_t pixelBufferWidth, size_t pixelBufferHeight, bool is10bit)
+CVPixelBufferPoolRef CyberKitDecoderReceiver::pixelBufferPool(size_t pixelBufferWidth, size_t pixelBufferHeight, bool is10bit)
 {
     if (m_pixelBufferPool && m_pixelBufferWidth == pixelBufferWidth && m_pixelBufferHeight == pixelBufferHeight && m_is10bit == is10bit)
         return m_pixelBufferPool;
@@ -139,7 +139,7 @@ CVPixelBufferPoolRef WebKitDecoderReceiver::pixelBufferPool(size_t pixelBufferWi
     return m_pixelBufferPool;
 }
 
-OSStatus WebKitDecoderReceiver::decoderFailed(int error)
+OSStatus CyberKitDecoderReceiver::decoderFailed(int error)
 {
     OSStatus vtError;
     if (error == WEBRTC_VIDEO_CODEC_NO_OUTPUT)
@@ -158,7 +158,7 @@ OSStatus WebKitDecoderReceiver::decoderFailed(int error)
     return vtError;
 }
 
-int32_t WebKitDecoderReceiver::Decoded(VideoFrame& frame)
+int32_t CyberKitDecoderReceiver::Decoded(VideoFrame& frame)
 {
     auto pixelBuffer = createPixelBufferFromFrame(frame, [this](size_t width, size_t height, BufferType type) -> CVPixelBufferRef {
         auto pixelBufferPool = this->pixelBufferPool(width, height, type == BufferType::I010);
@@ -178,13 +178,13 @@ int32_t WebKitDecoderReceiver::Decoded(VideoFrame& frame)
     return 0;
 }
 
-int32_t WebKitDecoderReceiver::Decoded(VideoFrame& frame, int64_t)
+int32_t CyberKitDecoderReceiver::Decoded(VideoFrame& frame, int64_t)
 {
     Decoded(frame);
     return 0;
 }
 
-void WebKitDecoderReceiver::Decoded(VideoFrame& frame, absl::optional<int32_t>, absl::optional<uint8_t>)
+void CyberKitDecoderReceiver::Decoded(VideoFrame& frame, absl::optional<int32_t>, absl::optional<uint8_t>)
 {
     Decoded(frame);
 }

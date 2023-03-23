@@ -32,10 +32,10 @@
 
 #include "CDMKeyStatus.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using MediaKeyStatus = CDMKeyStatus;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

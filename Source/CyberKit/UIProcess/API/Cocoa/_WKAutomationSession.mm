@@ -50,7 +50,7 @@
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebAutomationSession>(self);
+    API::Object::constructInWrapper<CyberKit::WebAutomationSession>(self);
 
     _configuration = adoptNS([configuration copy]);
 
@@ -76,7 +76,7 @@
 - (void)setDelegate:(id <_WKAutomationSessionDelegate>)delegate
 {
     _delegate = delegate;
-    _session->setClient(delegate ? makeUnique<WebKit::AutomationSessionClient>(delegate) : nullptr);
+    _session->setClient(delegate ? makeUnique<CyberKit::AutomationSessionClient>(delegate) : nullptr);
 }
 
 - (NSString *)sessionIdentifier

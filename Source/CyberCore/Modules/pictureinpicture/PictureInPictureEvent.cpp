@@ -32,7 +32,7 @@
 #include "PictureInPictureWindow.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PictureInPictureEvent);
 
@@ -47,6 +47,6 @@ PictureInPictureEvent::PictureInPictureEvent(const AtomString& type, Init&& init
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PICTURE_IN_PICTURE_API)

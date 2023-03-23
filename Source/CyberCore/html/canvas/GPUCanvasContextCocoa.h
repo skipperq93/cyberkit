@@ -42,7 +42,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayBufferDisplayDelegate final : public GraphicsLayerContentsDisplayDelegate {
 public:
@@ -156,4 +156,4 @@ private:
     bool m_compositingResultsNeedsUpdating { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

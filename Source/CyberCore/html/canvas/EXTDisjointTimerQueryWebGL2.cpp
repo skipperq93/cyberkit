@@ -33,7 +33,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EXTDisjointTimerQueryWebGL2);
 
@@ -84,6 +84,6 @@ void EXTDisjointTimerQueryWebGL2::queryCounterEXT(WebGLQuery& query, GCGLenum ta
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

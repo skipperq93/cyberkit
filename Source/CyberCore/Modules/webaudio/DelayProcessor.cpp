@@ -30,7 +30,7 @@
  
 #include "DelayDSPKernel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DelayProcessor::DelayProcessor(BaseAudioContext& context, float sampleRate, unsigned numberOfChannels, double maxDelayTime)
     : AudioDSPKernelProcessor(sampleRate, numberOfChannels)
@@ -50,6 +50,6 @@ std::unique_ptr<AudioDSPKernel> DelayProcessor::createKernel()
     return makeUnique<DelayDSPKernel>(this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

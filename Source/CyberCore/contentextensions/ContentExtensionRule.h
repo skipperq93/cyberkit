@@ -32,7 +32,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 // A ContentExtensionRule is the smallest unit in a ContentExtension.
 //
@@ -172,6 +172,6 @@ private:
     Action m_action;
 };
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

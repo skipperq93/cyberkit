@@ -44,7 +44,7 @@ namespace JSC {
 class JSGlobalObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Attr;
 class Attribute;
@@ -894,9 +894,9 @@ inline void Element::clearAfterPseudoElement()
 
 void invalidateForSiblingCombinators(Element* sibling);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Element)
-    static bool isType(const WebCore::Node& node) { return node.isElementNode(); }
-    static bool isType(const WebCore::EventTarget& target) { return is<WebCore::Node>(target) && isType(downcast<WebCore::Node>(target)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Element)
+    static bool isType(const CyberCore::Node& node) { return node.isElementNode(); }
+    static bool isType(const CyberCore::EventTarget& target) { return is<CyberCore::Node>(target) && isType(downcast<CyberCore::Node>(target)); }
 SPECIALIZE_TYPE_TRAITS_END()

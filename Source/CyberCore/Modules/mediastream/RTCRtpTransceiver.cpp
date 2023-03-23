@@ -38,7 +38,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCRtpTransceiver);
 
@@ -163,6 +163,6 @@ Vector<std::reference_wrapper<RTCRtpReceiver>> RtpTransceiverSet::receivers() co
     return receivers;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

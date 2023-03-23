@@ -443,7 +443,7 @@ static inline bool pointsEqualInDevicePixels(CGPoint a, CGPoint b, float deviceS
         && fabs(a.y * deviceScaleFactor - b.y * deviceScaleFactor) < std::numeric_limits<float>::epsilon();
 }
 
-static CGSize roundScrollViewContentSize(const WebKit::WebPageProxy& page, CGSize contentSize)
+static CGSize roundScrollViewContentSize(const CyberKit::WebPageProxy& page, CGSize contentSize)
 {
     float deviceScaleFactor = page.deviceScaleFactor();
     return CGSizeMake(floorToDevicePixel(contentSize.width, deviceScaleFactor), floorToDevicePixel(contentSize.height, deviceScaleFactor));
@@ -713,7 +713,7 @@ static CyberCore::Color scrollViewBackgroundColor(WKWebView *webView, AllowPageB
 {
     if (!linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::ScrollViewContentInsetsAreNotObscuringInsets)) {
         // For binary compability with third party apps, treat scroll view content insets as obscuring insets when the app is compiled
-        // against a WebKit version without the fix in r229641.
+        // against a CyberKit version without the fix in r229641.
         return [self _computedContentInset];
     }
 
@@ -809,7 +809,7 @@ static CyberCore::Color scrollViewBackgroundColor(WKWebView *webView, AllowPageB
 
 - (void)_didCommitLoadForMainFrame
 {
-    _perProcessState.firstPaintAfterCommitLoadTransactionID = downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).nextLayerTreeTransactionID();
+    _perProcessState.firstPaintAfterCommitLoadTransactionID = downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).nextLayerTreeTransactionID();
 
     _perProcessState.hasCommittedLoadForMainFrame = YES;
     _perProcessState.needsResetViewStateAfterCommitLoadForMainFrame = YES;
@@ -859,7 +859,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
     return bounds;
 }
 
-- (void)_didCommitLayerTreeDuringAnimatedResize:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction
+- (void)_didCommitLayerTreeDuringAnimatedResize:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction
 {
     auto updateID = layerTreeTransaction.dynamicViewportSizeUpdateID();
     if (updateID != _currentDynamicViewportSizeUpdateID)
@@ -889,7 +889,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
         [self _didCompleteAnimatedResize];
 }
 
-- (void)_trackTransactionCommit:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction
+- (void)_trackTransactionCommit:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction
 {
     if (_perProcessState.didDeferUpdateVisibleContentRectsForUnstableScrollView) {
         WKWEBVIEW_RELEASE_LOG("%p (pageProxyID=%llu) -[WKWebView _didCommitLayerTree:] - received a commit (%llu) while deferring visible content rect updates (dynamicViewportUpdateMode %d, needsResetViewStateAfterCommitLoadForMainFrame %d (wants commit %llu), sizeChangedSinceLastVisibleContentRectUpdate %d, [_scrollView isZoomBouncing] %d, currentlyAdjustingScrollViewInsetsForKeyboard %d)",
@@ -904,7 +904,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
     }
 }
 
-- (void)_updateScrollViewForTransaction:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction
+- (void)_updateScrollViewForTransaction:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction
 {
     CGSize newContentSize = roundScrollViewContentSize(*_page, [_contentView frame].size);
     [_scrollView _setContentSizePreservingContentOffsetDuringRubberband:newContentSize];
@@ -921,7 +921,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
         verticalOverscrollBehavior = rootNode->verticalOverscrollBehavior();
     }
     
-    WebKit::ScrollingTreeScrollingNodeDelegateIOS::updateScrollViewForOverscrollBehavior(_scrollView.get(), horizontalOverscrollBehavior, verticalOverscrollBehavior, WebKit::ScrollingTreeScrollingNodeDelegateIOS::AllowOverscrollToPreventScrollPropagation::No);
+    CyberKit::ScrollingTreeScrollingNodeDelegateIOS::updateScrollViewForOverscrollBehavior(_scrollView.get(), horizontalOverscrollBehavior, verticalOverscrollBehavior, CyberKit::ScrollingTreeScrollingNodeDelegateIOS::AllowOverscrollToPreventScrollPropagation::No);
 
     bool hasDockedInputView = !CGRectIsEmpty(_inputViewBoundsInWindow);
     bool isZoomed = layerTreeTransaction.pageScaleFactor() > layerTreeTransaction.initialScaleFactor();
@@ -940,7 +940,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
     [_scrollView panGestureRecognizer].allowedTouchTypes = scrollingEnabled ? _scrollViewDefaultAllowedTouchTypes.get() : @[ ];
     [_scrollView _setScrollEnabledInternal:YES];
 
-    if (!layerTreeTransaction.scaleWasSetByUIProcess() && ![_scrollView isZooming] && ![_scrollView isZoomBouncing] && ![_scrollView _isAnimatingZoom] && !WebKit::scalesAreEssentiallyEqual([_scrollView zoomScale], layerTreeTransaction.pageScaleFactor())) {
+    if (!layerTreeTransaction.scaleWasSetByUIProcess() && ![_scrollView isZooming] && ![_scrollView isZoomBouncing] && ![_scrollView _isAnimatingZoom] && !CyberKit::scalesAreEssentiallyEqual([_scrollView zoomScale], layerTreeTransaction.pageScaleFactor())) {
         LOG_WITH_STREAM(VisibleRects, stream << " updating scroll view with pageScaleFactor " << layerTreeTransaction.pageScaleFactor());
 
         // When web-process-originated scale changes occur, pin the
@@ -954,7 +954,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
     }
 }
 
-- (BOOL)_restoreScrollAndZoomStateForTransaction:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction
+- (BOOL)_restoreScrollAndZoomStateForTransaction:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction
 {
     if (!_perProcessState.firstTransactionIDAfterPageRestore || layerTreeTransaction.transactionID() < _perProcessState.firstTransactionIDAfterPageRestore.value())
         return NO;
@@ -967,7 +967,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
         CyberCore::FloatPoint scaledScrollOffset = _perProcessState.scrollOffsetToRestore.value();
         _perProcessState.scrollOffsetToRestore = std::nullopt;
 
-        if (WebKit::scalesAreEssentiallyEqual(contentZoomScale(self), _scaleToRestore)) {
+        if (CyberKit::scalesAreEssentiallyEqual(contentZoomScale(self), _scaleToRestore)) {
             scaledScrollOffset.scale(_scaleToRestore);
             CyberCore::FloatPoint contentOffsetInScrollViewCoordinates = scaledScrollOffset - CyberCore::FloatSize(_obscuredInsetsWhenSaved.left(), _obscuredInsetsWhenSaved.top());
 
@@ -982,7 +982,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
         CyberCore::FloatPoint unobscuredCenterToRestore = _perProcessState.unobscuredCenterToRestore.value();
         _perProcessState.unobscuredCenterToRestore = std::nullopt;
 
-        if (WebKit::scalesAreEssentiallyEqual(contentZoomScale(self), _scaleToRestore)) {
+        if (CyberKit::scalesAreEssentiallyEqual(contentZoomScale(self), _scaleToRestore)) {
             CGRect unobscuredRect = UIEdgeInsetsInsetRect(self.bounds, _obscuredInsets);
             CyberCore::FloatSize unobscuredContentSizeAtNewScale = CyberCore::FloatSize(unobscuredRect.size) / _scaleToRestore;
             CyberCore::FloatPoint topLeftInDocumentCoordinates = unobscuredCenterToRestore - unobscuredContentSizeAtNewScale / 2;
@@ -1002,7 +1002,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
     return needUpdateVisibleContentRects;
 }
 
-- (void)_didCommitLayerTree:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction
+- (void)_didCommitLayerTree:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction
 {
     [self _trackTransactionCommit:layerTreeTransaction];
 
@@ -1015,7 +1015,7 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
 
     bool needUpdateVisibleContentRects = _page->updateLayoutViewportParameters(layerTreeTransaction);
 
-    if (_perProcessState.dynamicViewportUpdateMode != WebKit::DynamicViewportUpdateMode::NotResizing) {
+    if (_perProcessState.dynamicViewportUpdateMode != CyberKit::DynamicViewportUpdateMode::NotResizing) {
         [self _didCommitLayerTreeDuringAnimatedResize:layerTreeTransaction];
         return;
     }
@@ -1067,11 +1067,11 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
     if (needUpdateVisibleContentRects)
         [self _scheduleVisibleContentRectUpdate];
 
-    if (WebKit::RemoteLayerTreeScrollingPerformanceData* scrollPerfData = _page->scrollingPerformanceData())
+    if (CyberKit::RemoteLayerTreeScrollingPerformanceData* scrollPerfData = _page->scrollingPerformanceData())
         scrollPerfData->didCommitLayerTree([self visibleRectInViewCoordinates]);
 
     if (_perProcessState.pendingFindLayerID) {
-        CALayer *layer = downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).remoteLayerTreeHost().layerForID(_perProcessState.pendingFindLayerID);
+        CALayer *layer = downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).remoteLayerTreeHost().layerForID(_perProcessState.pendingFindLayerID);
         if (layer.superlayer) {
             _perProcessState.committedFindLayerID = std::exchange(_perProcessState.pendingFindLayerID, { });
             _page->findClient().didAddLayerForFindOverlay(_page.get(), layer);
@@ -1084,29 +1084,29 @@ static void changeContentOffsetBoundedInValidRange(UIScrollView *scrollView, Cyb
 }
 
 #if ENABLE(OVERLAY_REGIONS_IN_EVENT_REGION)
-static void addOverlayEventRegions(CyberCore::GraphicsLayer::PlatformLayerID layerID, const WebKit::RemoteLayerTreeTransaction::LayerPropertiesMap& changedLayerPropertiesMap, HashSet<CyberCore::GraphicsLayer::PlatformLayerID>& overlayRegionIDs, const WebKit::RemoteLayerTreeHost& layerTreeHost)
+static void addOverlayEventRegions(CyberCore::GraphicsLayer::PlatformLayerID layerID, const CyberKit::RemoteLayerTreeTransaction::LayerPropertiesMap& changedLayerPropertiesMap, HashSet<CyberCore::GraphicsLayer::PlatformLayerID>& overlayRegionIDs, const CyberKit::RemoteLayerTreeHost& layerTreeHost)
 {
-    using WebKit::RemoteLayerTreeTransaction;
+    using CyberKit::RemoteLayerTreeTransaction;
     const auto& it = changedLayerPropertiesMap.find(layerID);
     if (it == changedLayerPropertiesMap.end())
         return;
 
     const auto& layerProperties = *it->value;
     CGRect rect = layerProperties.eventRegion.region().bounds();
-    if ((layerProperties.changedProperties & WebKit::LayerChange::EventRegionChanged) && !CGRectIsEmpty(rect))
+    if ((layerProperties.changedProperties & CyberKit::LayerChange::EventRegionChanged) && !CGRectIsEmpty(rect))
         overlayRegionIDs.add(layerID);
 
     for (auto childLayerID : layerProperties.children)
         addOverlayEventRegions(childLayerID, changedLayerPropertiesMap, overlayRegionIDs, layerTreeHost);
 }
 
-- (void)_updateOverlayRegions:(const WebKit::RemoteLayerTreeTransaction::LayerPropertiesMap&)changedLayerPropertiesMap destroyedLayers:(const Vector<CyberCore::GraphicsLayer::PlatformLayerID>&)destroyedLayers
+- (void)_updateOverlayRegions:(const CyberKit::RemoteLayerTreeTransaction::LayerPropertiesMap&)changedLayerPropertiesMap destroyedLayers:(const Vector<CyberCore::GraphicsLayer::PlatformLayerID>&)destroyedLayers
 {
     BOOL skipRecursiveRegionUpdate = !changedLayerPropertiesMap.size() && !destroyedLayers.size();
 
-    auto& layerTreeProxy = downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea());
+    auto& layerTreeProxy = downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea());
     auto& layerTreeHost = layerTreeProxy.remoteLayerTreeHost();
-    auto* scrollingCoordinatorProxy = downcast<WebKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy());
+    auto* scrollingCoordinatorProxy = downcast<CyberKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy());
     if (!scrollingCoordinatorProxy)
         return;
 
@@ -1162,7 +1162,7 @@ static void addOverlayEventRegions(CyberCore::GraphicsLayer::PlatformLayerID lay
     if (![self usesStandardContentView])
         return;
 
-    _perProcessState.firstTransactionIDAfterPageRestore = downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).nextLayerTreeTransactionID();
+    _perProcessState.firstTransactionIDAfterPageRestore = downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).nextLayerTreeTransactionID();
     if (scrollPosition)
         _perProcessState.scrollOffsetToRestore = CyberCore::ScrollableArea::scrollOffsetFromPosition(CyberCore::FloatPoint(scrollPosition.value()), CyberCore::toFloatSize(scrollOrigin));
     else
@@ -1186,13 +1186,13 @@ static void addOverlayEventRegions(CyberCore::GraphicsLayer::PlatformLayerID lay
     if (![self usesStandardContentView])
         return;
 
-    _perProcessState.firstTransactionIDAfterPageRestore = downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).nextLayerTreeTransactionID();
+    _perProcessState.firstTransactionIDAfterPageRestore = downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).nextLayerTreeTransactionID();
     _perProcessState.unobscuredCenterToRestore = center;
 
     _scaleToRestore = scale;
 }
 
-- (RefPtr<WebKit::ViewSnapshot>)_takeViewSnapshot
+- (RefPtr<CyberKit::ViewSnapshot>)_takeViewSnapshot
 {
 #if HAVE(CORE_ANIMATION_RENDER_SERVER)
     float deviceScale = CyberCore::screenScaleFactor();
@@ -1217,7 +1217,7 @@ static void addOverlayEventRegions(CyberCore::GraphicsLayer::PlatformLayerID lay
 #if HAVE(IOSURFACE_ACCELERATOR)
     CyberCore::IOSurface::Format compressedFormat = CyberCore::IOSurface::Format::YUV422;
     if (CyberCore::IOSurface::allowConversionFromFormatToFormat(snapshotFormat, compressedFormat)) {
-        auto viewSnapshot = WebKit::ViewSnapshot::create(nullptr);
+        auto viewSnapshot = CyberKit::ViewSnapshot::create(nullptr);
         CyberCore::IOSurface::convertToFormat(nullptr, WTFMove(surface), CyberCore::IOSurface::Format::YUV422, [viewSnapshot](std::unique_ptr<CyberCore::IOSurface> convertedSurface) {
             if (convertedSurface)
                 viewSnapshot->setSurface(WTFMove(convertedSurface));
@@ -1227,7 +1227,7 @@ static void addOverlayEventRegions(CyberCore::GraphicsLayer::PlatformLayerID lay
     }
 #endif // HAVE(IOSURFACE_ACCELERATOR)
 
-    return WebKit::ViewSnapshot::create(WTFMove(surface));
+    return CyberKit::ViewSnapshot::create(WTFMove(surface));
 #else // HAVE(CORE_ANIMATION_RENDER_SERVER)
     return nullptr;
 #endif
@@ -1766,7 +1766,7 @@ static CyberCore::FloatPoint constrainContentOffset(CyberCore::FloatPoint conten
     // At this point, we have a page that asked for width = device-width. However,
     // if the content's width and height were large, we might have had to shrink it.
     // We'll enable double tap zoom whenever we're not at the actual initial scale.
-    return !WebKit::scalesAreEssentiallyEqual(contentZoomScale(self), _perProcessState.initialScaleFactor);
+    return !CyberKit::scalesAreEssentiallyEqual(contentZoomScale(self), _perProcessState.initialScaleFactor);
 }
 
 #pragma mark UIScrollViewDelegate
@@ -1819,7 +1819,7 @@ static CyberCore::FloatPoint constrainContentOffset(CyberCore::FloatPoint conten
 
 #if ENABLE(ASYNC_SCROLLING)
     // FIXME: We will want to detect whether snapping will occur before beginning to drag. See WebPageProxy::didCommitLayerTree.
-    auto* coordinator = downcast<WebKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy());
+    auto* coordinator = downcast<CyberKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy());
     ASSERT(scrollView == _scrollView.get());
     [_scrollView _setDecelerationRateInternal:(coordinator && coordinator->shouldSetScrollViewDecelerationRateFast()) ? UIScrollViewDecelerationRateFast : UIScrollViewDecelerationRateNormal];
 
@@ -1856,7 +1856,7 @@ static CyberCore::FloatPoint constrainContentOffset(CyberCore::FloatPoint conten
             targetContentOffset->y = scrollView.contentOffset.y;
     }
 #if ENABLE(ASYNC_SCROLLING)
-    if (auto* coordinator = downcast<WebKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy())) {
+    if (auto* coordinator = downcast<CyberKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy())) {
         // FIXME: Here, I'm finding the maximum horizontal/vertical scroll offsets. There's probably a better way to do this.
         CGSize maxScrollOffsets = CGSizeMake(scrollView.contentSize.width - scrollView.bounds.size.width, scrollView.contentSize.height - scrollView.bounds.size.height);
 
@@ -1936,7 +1936,7 @@ static CyberCore::FloatPoint constrainContentOffset(CyberCore::FloatPoint conten
     }
 
     CyberCore::IntPoint scrollLocation = CyberCore::roundedIntPoint([scrollEvent locationInView:_contentView.get()]);
-    auto eventListeners = WebKit::eventListenerTypesAtPoint(_contentView.get(), scrollLocation);
+    auto eventListeners = CyberKit::eventListenerTypesAtPoint(_contentView.get(), scrollLocation);
     bool hasWheelHandlers = eventListeners.contains(CyberCore::EventListenerRegionType::Wheel);
     if (!hasWheelHandlers) {
         completion(isHandledByDefault);
@@ -1956,12 +1956,12 @@ static CyberCore::FloatPoint constrainContentOffset(CyberCore::FloatPoint conten
     bool hasActiveWheelHandlers = eventListeners.contains(CyberCore::EventListenerRegionType::NonPassiveWheel);
     bool isCancelable = hasActiveWheelHandlers && (!_currentScrollGestureState || _currentScrollGestureState == CyberCore::WheelScrollGestureState::Blocking);
 
-    std::optional<WebKit::WebWheelEvent::Phase> overridePhase;
+    std::optional<CyberKit::WebWheelEvent::Phase> overridePhase;
     // The first event with non-zero delta in a given gesture should be considered the
     // "Began" event in the CyberCore sense (e.g. for deciding cancelability). Note that
     // this may not be a UIScrollPhaseBegin event, nor even necessarily the first UIScrollPhaseChanged event.
     if (!_wheelEventCountInCurrentScrollGesture)
-        overridePhase = WebKit::WebWheelEvent::PhaseBegan;
+        overridePhase = CyberKit::WebWheelEvent::PhaseBegan;
     auto event = WebIOSEventFactory::createWebWheelEvent(scrollEvent, _contentView.get(), overridePhase);
 
     _wheelEventCountInCurrentScrollGesture++;
@@ -1991,7 +1991,7 @@ static CyberCore::FloatPoint constrainContentOffset(CyberCore::FloatPoint conten
 
     [self _scheduleVisibleContentRectUpdateAfterScrollInView:scrollView];
 
-    if (WebKit::RemoteLayerTreeScrollingPerformanceData* scrollPerfData = _page->scrollingPerformanceData())
+    if (CyberKit::RemoteLayerTreeScrollingPerformanceData* scrollPerfData = _page->scrollingPerformanceData())
         scrollPerfData->didScroll([self visibleRectInViewCoordinates]);
 }
 
@@ -2327,27 +2327,27 @@ static CyberCore::FloatPoint constrainContentOffset(CyberCore::FloatPoint conten
     [self _scheduleVisibleContentRectUpdate];
 }
 
-- (OptionSet<WebKit::ViewStabilityFlag>)_viewStabilityState:(UIScrollView *)scrollView
+- (OptionSet<CyberKit::ViewStabilityFlag>)_viewStabilityState:(UIScrollView *)scrollView
 {
-    OptionSet<WebKit::ViewStabilityFlag> stabilityFlags;
+    OptionSet<CyberKit::ViewStabilityFlag> stabilityFlags;
 
     if (scrollView.isDragging || scrollView.isZooming || scrollView._isInterruptingDeceleration)
-        stabilityFlags.add(WebKit::ViewStabilityFlag::ScrollViewInteracting);
+        stabilityFlags.add(CyberKit::ViewStabilityFlag::ScrollViewInteracting);
 
     if (scrollView.isDecelerating || scrollView._isAnimatingZoom || scrollView._isScrollingToTop)
-        stabilityFlags.add(WebKit::ViewStabilityFlag::ScrollViewAnimatedScrollOrZoom);
+        stabilityFlags.add(CyberKit::ViewStabilityFlag::ScrollViewAnimatedScrollOrZoom);
 
     if (scrollView == _scrollView.get() && _isChangingObscuredInsetsInteractively)
-        stabilityFlags.add(WebKit::ViewStabilityFlag::ChangingObscuredInsetsInteractively);
+        stabilityFlags.add(CyberKit::ViewStabilityFlag::ChangingObscuredInsetsInteractively);
 
     if ([self _scrollViewIsRubberBanding:scrollView])
-        stabilityFlags.add(WebKit::ViewStabilityFlag::ScrollViewRubberBanding);
+        stabilityFlags.add(CyberKit::ViewStabilityFlag::ScrollViewRubberBanding);
 
     if (NSNumber *stableOverride = self._stableStateOverride) {
         if (stableOverride.boolValue)
             stabilityFlags = { };
         else
-            stabilityFlags.add(WebKit::ViewStabilityFlag::UnstableForTesting);
+            stabilityFlags.add(CyberKit::ViewStabilityFlag::UnstableForTesting);
     }
 
     return stabilityFlags;
@@ -2468,7 +2468,7 @@ static bool scrollViewCanScroll(UIScrollView *scrollView)
 
 - (BOOL)_shouldDeferGeometryUpdates
 {
-    return _perProcessState.liveResizeParameters || _perProcessState.dynamicViewportUpdateMode != WebKit::DynamicViewportUpdateMode::NotResizing;
+    return _perProcessState.liveResizeParameters || _perProcessState.dynamicViewportUpdateMode != CyberKit::DynamicViewportUpdateMode::NotResizing;
 }
 
 - (void)_updateVisibleContentRects
@@ -2535,7 +2535,7 @@ static bool scrollViewCanScroll(UIScrollView *scrollView)
 
 #if ENABLE(ASYNC_SCROLLING)
     if (viewStability.isEmpty()) {
-        auto* coordinator = downcast<WebKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy());
+        auto* coordinator = downcast<CyberKit::RemoteScrollingCoordinatorProxyIOS>(_page->scrollingCoordinatorProxy());
         if (coordinator && coordinator->hasActiveSnapPoint()) {
             CGPoint currentPoint = [_scrollView contentOffset];
             CGPoint activePoint = coordinator->nearestActiveContentInsetAdjustedSnapOffset(unobscuredRect.origin.y, currentPoint);
@@ -2626,7 +2626,7 @@ static int32_t activeOrientation(WKWebView *webView)
 {
     WKWEBVIEW_RELEASE_LOG("%p (pageProxyID=%llu) -[WKWebView _cancelAnimatedResize] dynamicViewportUpdateMode %d", self, _page->identifier().toUInt64(), _perProcessState.dynamicViewportUpdateMode);
 
-    if (_perProcessState.dynamicViewportUpdateMode == WebKit::DynamicViewportUpdateMode::NotResizing)
+    if (_perProcessState.dynamicViewportUpdateMode == CyberKit::DynamicViewportUpdateMode::NotResizing)
         return;
 
     if (!_customContentView) {
@@ -2636,14 +2636,14 @@ static int32_t activeOrientation(WKWebView *webView)
         _resizeAnimationTransformAdjustments = CATransform3DIdentity;
     }
 
-    _perProcessState.dynamicViewportUpdateMode = WebKit::DynamicViewportUpdateMode::NotResizing;
+    _perProcessState.dynamicViewportUpdateMode = CyberKit::DynamicViewportUpdateMode::NotResizing;
     _perProcessState.animatedResizeOldBounds = { };
     [self _scheduleVisibleContentRectUpdate];
 }
 
 - (void)_didCompleteAnimatedResize
 {
-    if (_perProcessState.dynamicViewportUpdateMode == WebKit::DynamicViewportUpdateMode::NotResizing)
+    if (_perProcessState.dynamicViewportUpdateMode == CyberKit::DynamicViewportUpdateMode::NotResizing)
         return;
 
     [_contentView setHidden:NO];
@@ -2689,7 +2689,7 @@ static int32_t activeOrientation(WKWebView *webView)
     _resizeAnimationView = nil;
     _resizeAnimationTransformAdjustments = CATransform3DIdentity;
 
-    _perProcessState.dynamicViewportUpdateMode = WebKit::DynamicViewportUpdateMode::NotResizing;
+    _perProcessState.dynamicViewportUpdateMode = CyberKit::DynamicViewportUpdateMode::NotResizing;
     _perProcessState.animatedResizeOldBounds = { };
 
     [self _didStopDeferringGeometryUpdates];
@@ -2736,7 +2736,7 @@ static int32_t activeOrientation(WKWebView *webView)
         _gestureController->didFailNavigation(navigation);
 }
 
-- (void)_didSameDocumentNavigationForMainFrame:(WebKit::SameDocumentNavigationType)navigationType
+- (void)_didSameDocumentNavigationForMainFrame:(CyberKit::SameDocumentNavigationType)navigationType
 {
     [_customContentView web_didSameDocumentNavigation:toAPI(navigationType)];
 
@@ -3009,7 +3009,7 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(UI
         return;
     }
 
-    if (_perProcessState.dynamicViewportUpdateMode != WebKit::DynamicViewportUpdateMode::NotResizing) {
+    if (_perProcessState.dynamicViewportUpdateMode != CyberKit::DynamicViewportUpdateMode::NotResizing) {
         RELEASE_LOG_FAULT(Resize, "Error: _beginLiveResize called during an animated resize.");
         return;
     }
@@ -3034,7 +3034,7 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(UI
 
     _perProcessState.liveResizeParameters = std::nullopt;
 
-    ASSERT(_perProcessState.dynamicViewportUpdateMode == WebKit::DynamicViewportUpdateMode::NotResizing);
+    ASSERT(_perProcessState.dynamicViewportUpdateMode == CyberKit::DynamicViewportUpdateMode::NotResizing);
     [self _destroyResizeAnimationView];
     [self _didStopDeferringGeometryUpdates];
 
@@ -3083,7 +3083,7 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(UI
 #if ENABLE(LOCKDOWN_MODE_API)
 
 // Note: Use the legacy 'CaptivePortal' string to avoid losing users choice from earlier releases.
-constexpr auto WebKitLockdownModeAlertShownKey = @"WebKitCaptivePortalModeAlertShown";
+constexpr auto CyberKitLockdownModeAlertShownKey = @"CyberKitCaptivePortalModeAlertShown";
 
 static bool lockdownModeWarningNeeded = true;
 
@@ -3099,7 +3099,7 @@ static bool isLockdownModeWarningNeeded()
     if (CyberCore::IOSApplication::isMobileSafari())
         return false;
 
-    if (![WKProcessPool _lockdownModeEnabledGloballyForTesting] || [[NSUserDefaults standardUserDefaults] boolForKey:WebKitLockdownModeAlertShownKey])
+    if (![WKProcessPool _lockdownModeEnabledGloballyForTesting] || [[NSUserDefaults standardUserDefaults] boolForKey:CyberKitLockdownModeAlertShownKey])
         return false;
 
     return true;
@@ -3122,7 +3122,7 @@ static bool isLockdownModeWarningNeeded()
         lockdownModeWarningNeeded = false;
 
         if (result == WKDialogResultHandled) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:WebKitLockdownModeAlertShownKey];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CyberKitLockdownModeAlertShownKey];
             return;
         }
 
@@ -3137,7 +3137,7 @@ static bool isLockdownModeWarningNeeded()
 
             UIViewController *presentationViewController = [UIViewController _viewControllerForFullScreenPresentationFromView:protectedSelf.get()];
             [presentationViewController presentViewController:alert animated:YES completion:nil];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:WebKitLockdownModeAlertShownKey];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CyberKitLockdownModeAlertShownKey];
         });
     });
     
@@ -3536,10 +3536,10 @@ static bool isLockdownModeWarningNeeded()
 
 - (void)_requestActivatedElementAtPosition:(CGPoint)position completionBlock:(void (^)(_WKActivatedElementInfo *))block
 {
-    auto infoRequest = WebKit::InteractionInformationRequest(CyberCore::roundedIntPoint(position));
+    auto infoRequest = CyberKit::InteractionInformationRequest(CyberCore::roundedIntPoint(position));
     infoRequest.includeSnapshot = true;
 
-    [_contentView doAfterPositionInformationUpdate:[capturedBlock = makeBlockPtr(block)] (WebKit::InteractionInformationAtPosition information) {
+    [_contentView doAfterPositionInformationUpdate:[capturedBlock = makeBlockPtr(block)] (CyberKit::InteractionInformationAtPosition information) {
         capturedBlock([_WKActivatedElementInfo activatedElementInfoWithInteractionInformationAtPosition:information userInfo:nil]);
     } forRequest:infoRequest];
 }
@@ -3575,7 +3575,7 @@ static bool isLockdownModeWarningNeeded()
 
 - (void)_beginAnimatedResizeWithUpdates:(void (^)(void))updateBlock
 {
-    bool hadPendingAnimatedResize = _perProcessState.dynamicViewportUpdateMode != WebKit::DynamicViewportUpdateMode::NotResizing;
+    bool hadPendingAnimatedResize = _perProcessState.dynamicViewportUpdateMode != CyberKit::DynamicViewportUpdateMode::NotResizing;
     CGRect oldBounds = self.bounds;
     CyberCore::FloatRect oldUnobscuredContentRect = _page->unobscuredContentRect();
 
@@ -3590,7 +3590,7 @@ static bool isLockdownModeWarningNeeded()
 
     WKWEBVIEW_RELEASE_LOG("%p (pageProxyID=%llu) -[WKWebView _beginAnimatedResizeWithUpdates:]", self, _page->identifier().toUInt64());
 
-    _perProcessState.dynamicViewportUpdateMode = WebKit::DynamicViewportUpdateMode::ResizingWithAnimation;
+    _perProcessState.dynamicViewportUpdateMode = CyberKit::DynamicViewportUpdateMode::ResizingWithAnimation;
 
     CGFloat oldMinimumEffectiveDeviceWidth;
     int32_t oldOrientation;
@@ -3723,7 +3723,7 @@ static bool isLockdownModeWarningNeeded()
     _perProcessState.lastSentMinimumEffectiveDeviceWidth = newMinimumEffectiveDeviceWidth;
 
     _page->dynamicViewportSizeUpdate(newViewLayoutSize, newMinimumUnobscuredSize, newMaximumUnobscuredSize, visibleRectInContentCoordinates, unobscuredRectInContentCoordinates, futureUnobscuredRectInSelfCoordinates, unobscuredSafeAreaInsetsExtent, targetScale, newOrientation, newMinimumEffectiveDeviceWidth, ++_currentDynamicViewportSizeUpdateID);
-    if (WebKit::DrawingAreaProxy* drawingArea = _page->drawingArea())
+    if (CyberKit::DrawingAreaProxy* drawingArea = _page->drawingArea())
         drawingArea->setSize(CyberCore::IntSize(newBounds.size));
 
     _perProcessState.waitingForCommitAfterAnimatedResize = YES;
@@ -3746,9 +3746,9 @@ static bool isLockdownModeWarningNeeded()
     WKWEBVIEW_RELEASE_LOG("%p (pageProxyID=%llu) -[WKWebView _resizeWhileHidingContentWithUpdates:]", self, _page->identifier().toUInt64());
 
     [self _beginAnimatedResizeWithUpdates:updateBlock];
-    if (_perProcessState.dynamicViewportUpdateMode == WebKit::DynamicViewportUpdateMode::ResizingWithAnimation) {
+    if (_perProcessState.dynamicViewportUpdateMode == CyberKit::DynamicViewportUpdateMode::ResizingWithAnimation) {
         [_contentView setHidden:YES];
-        _perProcessState.dynamicViewportUpdateMode = WebKit::DynamicViewportUpdateMode::ResizingWithDocumentHidden;
+        _perProcessState.dynamicViewportUpdateMode = CyberKit::DynamicViewportUpdateMode::ResizingWithDocumentHidden;
         
         // _resizeWhileHidingContentWithUpdates is used by itself; the client will
         // not call endAnimatedResize, so we can't wait for it.
@@ -3825,11 +3825,11 @@ static bool isLockdownModeWarningNeeded()
         return;
     }
 
-    _page->takeSnapshot(CyberCore::enclosingIntRect(snapshotRectInContentCoordinates), CyberCore::expandedIntSize(CyberCore::FloatSize(imageSize)), WebKit::SnapshotOptionsExcludeDeviceScaleFactor, [completionHandler = makeBlockPtr(completionHandler)](const WebKit::ShareableBitmapHandle& imageHandle) {
+    _page->takeSnapshot(CyberCore::enclosingIntRect(snapshotRectInContentCoordinates), CyberCore::expandedIntSize(CyberCore::FloatSize(imageSize)), CyberKit::SnapshotOptionsExcludeDeviceScaleFactor, [completionHandler = makeBlockPtr(completionHandler)](const CyberKit::ShareableBitmapHandle& imageHandle) {
         if (imageHandle.isNull())
             return completionHandler(nil);
 
-        auto bitmap = WebKit::ShareableBitmap::create(imageHandle, WebKit::SharedMemory::Protection::ReadOnly);
+        auto bitmap = CyberKit::ShareableBitmap::create(imageHandle, CyberKit::SharedMemory::Protection::ReadOnly);
 
         if (!bitmap)
             return completionHandler(nil);
@@ -4136,7 +4136,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
     if (!_page || !_perProcessState.committedFindLayerID)
         return nil;
 
-    return downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).remoteLayerTreeHost().layerForID(_perProcessState.committedFindLayerID);
+    return downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).remoteLayerTreeHost().layerForID(_perProcessState.committedFindLayerID);
 }
 
 #endif // HAVE(UIFINDINTERACTION)
@@ -4204,14 +4204,14 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 #undef WKWEBVIEW_RELEASE_LOG
 
-_WKTapHandlingResult wkTapHandlingResult(WebKit::TapHandlingResult result)
+_WKTapHandlingResult wkTapHandlingResult(CyberKit::TapHandlingResult result)
 {
     switch (result) {
-    case WebKit::TapHandlingResult::DidNotHandleTapAsClick:
+    case CyberKit::TapHandlingResult::DidNotHandleTapAsClick:
         return _WKTapHandlingResultDidNotHandleTapAsClick;
-    case WebKit::TapHandlingResult::NonMeaningfulClick:
+    case CyberKit::TapHandlingResult::NonMeaningfulClick:
         return _WKTapHandlingResultNonMeaningfulClick;
-    case WebKit::TapHandlingResult::MeaningfulClick:
+    case CyberKit::TapHandlingResult::MeaningfulClick:
         return _WKTapHandlingResultMeaningfulClick;
     }
     ASSERT_NOT_REACHED();

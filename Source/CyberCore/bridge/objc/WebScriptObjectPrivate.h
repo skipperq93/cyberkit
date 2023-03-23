@@ -34,7 +34,7 @@ namespace JSC {
     }
 }
 
-namespace WebCore {
+namespace CyberCore {
     using CreateWrapperFunction = WebScriptObject * (*)(JSC::JSObject&);
     using DisconnectWindowWrapperFunction = void (*)(WebScriptObject *);
     WEBCORE_EXPORT void initializeDOMWrapperHooks(CreateWrapperFunction, DisconnectWindowWrapperFunction);

@@ -28,7 +28,7 @@
 
 #include <CyberScriptCore/JSObjectRef.h>
 #include <CyberScriptCore/JSValueRef.h>
-#include <CyberScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/CyberKitAvailability.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

@@ -36,7 +36,7 @@
 #include "RenderView.h"
 #include "ScriptElementCachedScriptFetcher.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 URL PreloadRequest::completeURL(Document& document)
 {

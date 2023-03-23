@@ -36,7 +36,7 @@
 
 #define MESSAGE_CHECK(connection, assertion) MESSAGE_CHECK_BASE(assertion, (connection))
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline WebProcessProxy& connectionToWebProcessProxy(const IPC::Connection& connection)
 {
@@ -300,6 +300,6 @@ void WebGeolocationManagerProxy::providerSetEnabledHighAccuracy(PerDomainData& p
     m_clientProvider->setEnableHighAccuracy(*this, enabled);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK

@@ -21,6 +21,6 @@
 #include "APISecurityOrigin.h"
 #include "DeviceIdHashSaltStorage.h"
 
-typedef struct _WebKitDeviceInfoPermissionRequest WebKitDeviceInfoPermissionRequest;
+typedef struct _CyberKitDeviceInfoPermissionRequest CyberKitDeviceInfoPermissionRequest;
 
-WebKitDeviceInfoPermissionRequest* webkitDeviceInfoPermissionRequestCreate(WebKit::UserMediaPermissionCheckProxy&, WebKit::DeviceIdHashSaltStorage*);
+CyberKitDeviceInfoPermissionRequest* webkitDeviceInfoPermissionRequestCreate(CyberKit::UserMediaPermissionCheckProxy&, CyberKit::DeviceIdHashSaltStorage*);

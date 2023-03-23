@@ -5,21 +5,21 @@ endif
 ifneq ($(USE_WORKSPACE),NO)
 
 include ../Makefile.shared
-SCHEME = All WebKit Tools
+SCHEME = All CyberKit Tools
 
 else
 
-MODULES = DumpRenderTree WebKitTestRunner MiniBrowser ../Source/ThirdParty/gtest/xcode TestWebKitAPI
+MODULES = DumpRenderTree CyberKitTestRunner MiniBrowser ../Source/ThirdParty/gtest/xcode TestCyberKitAPI
 
 TO_LOWER = $(shell echo $(1) | tr [:upper:] [:lower:])
 
 ifneq (,$(SDKROOT))
 	ifeq (,$(findstring macosx,$(call TO_LOWER,$(notdir $(SDKROOT)))))
 		# Embedded OS
-		MODULES = DumpRenderTree WebKitTestRunner ../Source/ThirdParty/gtest/xcode TestWebKitAPI
+		MODULES = DumpRenderTree CyberKitTestRunner ../Source/ThirdParty/gtest/xcode TestCyberKitAPI
 	endif
 	ifneq (,$(findstring macosx,$(call TO_LOWER,$(notdir $(SDKROOT)))))
-		MODULES += lldb/lldbWebKitTester
+		MODULES += lldb/lldbCyberKitTester
 	endif
 	ifneq (,$(findstring iphone,$(call TO_LOWER,$(notdir $(SDKROOT)))))
 		MODULES += MobileMiniBrowser
@@ -30,7 +30,7 @@ ifeq (,$(DO_NOT_BUILD_IMAGE_DIFF))
 endif
 
 ifeq (iosmac,$(SDK_VARIANT))
-	MODULES = DumpRenderTree WebKitTestRunner ../Source/ThirdParty/gtest/xcode TestWebKitAPI
+	MODULES = DumpRenderTree CyberKitTestRunner ../Source/ThirdParty/gtest/xcode TestCyberKitAPI
 endif
 
 define build_target_for_each_module

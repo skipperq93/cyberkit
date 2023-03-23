@@ -29,7 +29,7 @@
 #include "SecurityOrigin.h"
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String URLDecomposition::origin() const
 {

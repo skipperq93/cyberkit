@@ -30,7 +30,7 @@
 #include "ApplePaySessionPaymentRequest.h"
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayContactField {
     Email,
@@ -42,6 +42,6 @@ enum class ApplePayContactField {
 
 ExceptionOr<ApplePaySessionPaymentRequest::ContactFields> convertAndValidate(unsigned version, const Vector<ApplePayContactField>&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

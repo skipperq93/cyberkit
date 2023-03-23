@@ -23,7 +23,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSUnknownRule final : public CSSRule {
 public:
@@ -41,4 +41,4 @@ private:
     StyleRuleType styleRuleType() const final { return StyleRuleType::Unknown; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

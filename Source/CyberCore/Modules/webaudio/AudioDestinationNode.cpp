@@ -42,7 +42,7 @@
 #include "DenormalDisabler.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioDestinationNode);
 
@@ -126,6 +126,6 @@ void AudioDestinationNode::deref()
     context().deref();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

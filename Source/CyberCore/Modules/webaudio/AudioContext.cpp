@@ -54,7 +54,7 @@
 #include "MediaElementAudioSourceOptions.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #define AUDIOCONTEXT_RELEASE_LOG(fmt, ...) RELEASE_LOG(Media, "%p - AudioContext::" fmt, this, ##__VA_ARGS__)
 
@@ -481,7 +481,7 @@ void AudioContext::isPlayingAudioDidChange()
     DisableMallocRestrictionsForCurrentThreadScope disableMallocRestrictions;
 
     // Make sure to call Document::updateIsPlayingMedia() on the main thread, since
-    // we could be on the audio I/O thread here and the call into WebCore could block.
+    // we could be on the audio I/O thread here and the call into CyberCore could block.
     callOnMainThread([protectedThis = Ref { *this }] {
         if (auto* document = protectedThis->document())
             document->updateIsPlayingMedia();
@@ -549,6 +549,6 @@ bool AudioContext::virtualHasPendingActivity() const
     return !isClosed();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

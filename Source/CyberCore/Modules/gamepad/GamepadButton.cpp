@@ -28,7 +28,7 @@
 
 #if ENABLE(GAMEPAD)
 
-namespace WebCore {
+namespace CyberCore {
 
 GamepadButton::GamepadButton()
 {
@@ -42,6 +42,6 @@ bool GamepadButton::pressed() const
     return m_value > 0.1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

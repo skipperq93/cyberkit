@@ -32,7 +32,7 @@
 #include "NodeList.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT StaticNodeList final : public NodeList {
     WTF_MAKE_ISO_ALLOCATED(StaticNodeList);
@@ -72,4 +72,4 @@ private:
     Vector<Ref<Element>> m_elements;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

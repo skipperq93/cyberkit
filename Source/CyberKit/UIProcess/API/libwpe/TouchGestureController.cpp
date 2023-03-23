@@ -30,7 +30,7 @@
 
 #include <CyberCore/Scrollbar.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // FIXME: These ought to be either configurable or derived from system
 //        properties, such as screen size and pixel density.
@@ -164,6 +164,6 @@ TouchGestureController::EventVariant TouchGestureController::handleEvent(const s
     return NoEvent { };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWPE) && ENABLE(TOUCH_EVENTS)

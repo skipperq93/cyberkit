@@ -131,7 +131,7 @@ public struct Dialog : Identifiable, Hashable {
     }
 }
 
-/// A view providing the WebKit-default UI for generic webpage dialogs.
+/// A view providing the CyberKit-default UI for generic webpage dialogs.
 struct DialogContainer<Contents, Actions> : View where Contents : View, Actions : View {
     var contents: Contents
     var actions: Actions

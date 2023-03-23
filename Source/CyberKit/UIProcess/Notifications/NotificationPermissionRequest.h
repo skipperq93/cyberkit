@@ -28,7 +28,7 @@
 #include "APIObject.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class NotificationPermissionRequest : public API::ObjectImpl<API::Object::Type::NotificationPermissionRequest> {
 public:
@@ -57,4 +57,4 @@ private:
     CompletionHandler<void(bool)> m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

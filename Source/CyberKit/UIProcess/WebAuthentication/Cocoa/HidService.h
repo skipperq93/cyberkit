@@ -32,7 +32,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class HidConnection;
 
@@ -53,6 +53,6 @@ private:
     RetainPtr<IOHIDManagerRef> m_manager;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

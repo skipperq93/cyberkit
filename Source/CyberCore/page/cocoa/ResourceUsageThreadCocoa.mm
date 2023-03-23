@@ -199,7 +199,7 @@ void ResourceUsageThread::platformCollectCPUData(JSC::VM*, ResourceUsageData& da
             return true;
 
         // The bmalloc scavenger thread is below WTF. Detect it by its name.
-        if (thread.threadName == "JavaScriptCore bmalloc scavenger"_s)
+        if (thread.threadName == "CyberScriptCore bmalloc scavenger"_s)
             return true;
 
         // CyberKit uses many WorkQueues with common prefixes.

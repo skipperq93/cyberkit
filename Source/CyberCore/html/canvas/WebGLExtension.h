@@ -33,7 +33,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLExtensionScopedContext final {
     WTF_FORBID_HEAP_ALLOCATION;
@@ -120,6 +120,6 @@ private:
     WebGLRenderingContextBase* m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

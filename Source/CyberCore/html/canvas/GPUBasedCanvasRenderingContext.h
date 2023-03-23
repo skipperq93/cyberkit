@@ -29,7 +29,7 @@
 #include "CanvasRenderingContext.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLCanvasElement;
 
@@ -48,6 +48,6 @@ protected:
     void notifyCanvasContentChanged();
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::GPUBasedCanvasRenderingContext, isGPUBased())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::GPUBasedCanvasRenderingContext, isGPUBased())

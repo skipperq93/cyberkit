@@ -66,7 +66,7 @@ class PixelBufferConformerCV;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioSourceProvider;
 class UserData;
@@ -115,7 +115,7 @@ public:
     void firstVideoFrameAvailable();
     void renderingModeChanged();
 #if PLATFORM(COCOA)
-    void layerHostingContextIdChanged(std::optional<WebKit::LayerHostingContextID>&&, const CyberCore::IntSize&);
+    void layerHostingContextIdChanged(std::optional<CyberKit::LayerHostingContextID>&&, const CyberCore::IntSize&);
     void setVideoInlineSizeFenced(const CyberCore::FloatSize&, const WTF::MachSendRight&);
 #endif
 
@@ -485,6 +485,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

@@ -37,7 +37,7 @@
 #include "Page.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorBeacon::NavigatorBeacon(Navigator& navigator)
     : m_navigator(navigator)

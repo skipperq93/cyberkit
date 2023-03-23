@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "93F198A508245E59001E9ABC"
-               BuildableName = "WebCore.framework"
-               BlueprintName = "WebCore"
-               ReferencedContainer = "container:WebCore.xcodeproj">
+               BuildableName = "CyberCore.framework"
+               BlueprintName = "CyberCore"
+               ReferencedContainer = "container:CyberCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "417DA6CF13734E02007C57FB"
-               BuildableName = "libWebCoreTestSupport.dylib"
-               BlueprintName = "WebCoreTestSupport"
-               ReferencedContainer = "container:WebCore.xcodeproj">
+               BuildableName = "libCyberCoreTestSupport.dylib"
+               BlueprintName = "CyberCoreTestSupport"
+               ReferencedContainer = "container:CyberCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "93F198A508245E59001E9ABC"
-            BuildableName = "WebCore.framework"
-            BlueprintName = "WebCore"
-            ReferencedContainer = "container:WebCore.xcodeproj">
+            BuildableName = "CyberCore.framework"
+            BlueprintName = "CyberCore"
+            ReferencedContainer = "container:CyberCore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

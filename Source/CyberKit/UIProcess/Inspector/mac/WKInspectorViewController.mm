@@ -53,13 +53,13 @@ static NSString * const WKInspectorResourceScheme = @"inspector-resource";
 @end
 
 @implementation WKInspectorViewController {
-    NakedPtr<WebKit::WebPageProxy> _inspectedPage;
+    NakedPtr<CyberKit::WebPageProxy> _inspectedPage;
     RetainPtr<WKInspectorWKWebView> _webView;
     WeakObjCPtr<id <WKInspectorViewControllerDelegate>> _delegate;
     RetainPtr<_WKInspectorConfiguration> _configuration;
 }
 
-- (instancetype)initWithConfiguration:(_WKInspectorConfiguration *)configuration inspectedPage:(NakedPtr<WebKit::WebPageProxy>)inspectedPage
+- (instancetype)initWithConfiguration:(_WKInspectorConfiguration *)configuration inspectedPage:(NakedPtr<CyberKit::WebPageProxy>)inspectedPage
 {
     if (!(self = [super init]))
         return nil;
@@ -93,7 +93,7 @@ static NSString * const WKInspectorResourceScheme = @"inspector-resource";
 {
     // Construct lazily so the client can set the delegate before the WebView is created.
     if (!_webView) {
-        NSRect initialFrame = NSMakeRect(0, 0, WebKit::WebInspectorUIProxy::initialWindowWidth, WebKit::WebInspectorUIProxy::initialWindowHeight);
+        NSRect initialFrame = NSMakeRect(0, 0, CyberKit::WebInspectorUIProxy::initialWindowWidth, CyberKit::WebInspectorUIProxy::initialWindowHeight);
         _webView = adoptNS([[WKInspectorWKWebView alloc] initWithFrame:initialFrame configuration:self.webViewConfiguration]);
         [_webView setInspectable:YES];
         [_webView setUIDelegate:self];
@@ -151,17 +151,17 @@ static NSString * const WKInspectorResourceScheme = @"inspector-resource";
     // If not specified or the inspection level is >1, use the default strategy.
     // This ensures that Inspector^2 cannot be affected by client (mis)configuration.
     auto* customProcessPool = configuration.get().processPool;
-    auto inspectorLevel = WebKit::inspectorLevelForPage(_inspectedPage);
+    auto inspectorLevel = CyberKit::inspectorLevelForPage(_inspectedPage);
     auto useDefaultProcessPool = inspectorLevel > 1 || !customProcessPool;
     if (customProcessPool && !useDefaultProcessPool)
-        WebKit::prepareProcessPoolForInspector(*customProcessPool->_processPool.get());
+        CyberKit::prepareProcessPoolForInspector(*customProcessPool->_processPool.get());
 
     if (useDefaultProcessPool)
-        [configuration setProcessPool:wrapper(WebKit::defaultInspectorProcessPool(inspectorLevel))];
+        [configuration setProcessPool:wrapper(CyberKit::defaultInspectorProcessPool(inspectorLevel))];
 
     // Ensure that a page group identifier is set. This is for computing inspection levels.
     if (!configuration.get()._groupIdentifier)
-        [configuration _setGroupIdentifier:WebKit::defaultInspectorPageGroupIdentifierForPage(_inspectedPage)];
+        [configuration _setGroupIdentifier:CyberKit::defaultInspectorPageGroupIdentifierForPage(_inspectedPage)];
     
     return configuration.autorelease();
 }

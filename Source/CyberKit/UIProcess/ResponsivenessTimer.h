@@ -28,7 +28,7 @@
 
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ResponsivenessTimer {
 public:
@@ -91,7 +91,7 @@ private:
     Seconds m_responsivenessTimeout;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ResponsivenessTimer_h
 

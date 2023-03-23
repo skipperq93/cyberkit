@@ -36,7 +36,7 @@
 #include <variant>
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmRSA_OAEPInternal {
 static constexpr auto ALG1 = "RSA-OAEP"_s;

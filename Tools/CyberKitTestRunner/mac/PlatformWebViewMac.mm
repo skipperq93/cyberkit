@@ -28,8 +28,8 @@
 
 #import "TestController.h"
 #import "TestRunnerWKWebView.h"
-#import "WebKitTestRunnerDraggingInfo.h"
-#import "WebKitTestRunnerWindow.h"
+#import "CyberKitTestRunnerDraggingInfo.h"
+#import "CyberKitTestRunnerWindow.h"
 #import <CyberKit/WKImageCG.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKWebViewConfiguration.h>
@@ -64,7 +64,7 @@ PlatformWebView::PlatformWebView(WKWebViewConfiguration* configuration, const Te
 {
     // FIXME: Not sure this is the best place for this; maybe we should have API to set this so we can do it from TestController?
     if (m_options.useRemoteLayerTree())
-        [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"WebKit2UseRemoteLayerTreeDrawingArea"];
+        [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"CyberKit2UseRemoteLayerTreeDrawingArea"];
 
     auto copiedConfiguration = adoptNS([configuration copy]);
     WKPreferencesSetThreadedScrollingEnabled((__bridge WKPreferencesRef)[copiedConfiguration preferences], m_options.useThreadedScrolling());
@@ -75,7 +75,7 @@ PlatformWebView::PlatformWebView(WKWebViewConfiguration* configuration, const Te
 
     NSScreen *firstScreen = [[NSScreen screens] objectAtIndex:0];
     NSRect windowRect = m_options.shouldShowWindow() ? NSOffsetRect(rect, 100, 100) : NSOffsetRect(rect, -10000, [firstScreen frame].size.height - rect.size.height + 10000);
-    m_window = [[WebKitTestRunnerWindow alloc] initWithContentRect:windowRect styleMask:NSWindowStyleMaskBorderless backing:(NSBackingStoreType)_NSBackingStoreUnbuffered defer:YES];
+    m_window = [[CyberKitTestRunnerWindow alloc] initWithContentRect:windowRect styleMask:NSWindowStyleMaskBorderless backing:(NSBackingStoreType)_NSBackingStoreUnbuffered defer:YES];
     m_window.platformWebView = this;
     [m_window setColorSpace:[firstScreen colorSpace]];
     [m_window setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameAqua]];
@@ -111,7 +111,7 @@ PlatformWebView::~PlatformWebView()
 
 PlatformWindow PlatformWebView::keyWindow()
 {
-    return [WebKitTestRunnerWindow _WTR_keyWindow];
+    return [CyberKitTestRunnerWindow _WTR_keyWindow];
 }
 
 WKPageRef PlatformWebView::page()

@@ -29,7 +29,7 @@
 
 #include <CyberScriptCore/InspectorProtocolObjects.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InspectorCanvas;
 class WebGLProgram;
@@ -63,6 +63,6 @@ private:
     bool m_highlighted { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

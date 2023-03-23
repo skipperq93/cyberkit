@@ -33,7 +33,7 @@
 #include "HTTPParsers.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DOMCacheEngine {
 
@@ -89,7 +89,7 @@ bool queryCacheMatch(const ResourceRequest& request, const ResourceRequest& cach
     if (options.ignoreVary)
         return true;
 
-    String varyValue = cachedResponse.httpHeaderField(WebCore::HTTPHeaderName::Vary);
+    String varyValue = cachedResponse.httpHeaderField(CyberCore::HTTPHeaderName::Vary);
     if (varyValue.isNull())
         return true;
 
@@ -155,5 +155,5 @@ Record Record::copy() const
 
 } // namespace DOMCacheEngine
 
-} // namespace WebCore
+} // namespace CyberCore
 

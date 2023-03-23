@@ -46,13 +46,13 @@
 #include <CyberCore/CyberCoreBundleWin.h>
 #include <CyberCore/CyberCoreInstanceHandle.h>
 #include <CyberCore/WindowMessageBroadcaster.h>
-#include <WebKit/WKPage.h>
+#include <CyberKit/WKPage.h>
 
 #if USE(CF)
 #include <wtf/cf/CFURLExtras.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static const LPCWSTR WebInspectorUIProxyPointerProp = L"WebInspectorUIProxyPointer";
 static const LPCWSTR WebInspectorUIProxyClassName = L"WebInspectorUIProxyClass";
@@ -198,16 +198,16 @@ WebPageProxy* WebInspectorUIProxy::platformCreateFrontendPage()
 {
     ASSERT(inspectedPage());
 
-    auto preferences = WebPreferences::create(String(), "WebKit2."_s, "WebKit2."_s);
+    auto preferences = WebPreferences::create(String(), "CyberKit2."_s, "CyberKit2."_s);
 #if ENABLE(DEVELOPER_MODE)
     // Allow developers to inspect the Web Inspector in debug builds without changing settings.
     preferences->setDeveloperExtrasEnabled(true);
     preferences->setLogsPageMessagesToSystemConsoleEnabled(true);
 #endif
     preferences->setJavaScriptRuntimeFlags({ });
-    auto pageGroup = WebPageGroup::create(WebKit::defaultInspectorPageGroupIdentifierForPage(inspectedPage()));
+    auto pageGroup = WebPageGroup::create(CyberKit::defaultInspectorPageGroupIdentifierForPage(inspectedPage()));
     auto pageConfiguration = API::PageConfiguration::create();
-    pageConfiguration->setProcessPool(&WebKit::defaultInspectorProcessPool(inspectionLevel()));
+    pageConfiguration->setProcessPool(&CyberKit::defaultInspectorProcessPool(inspectionLevel()));
     pageConfiguration->setPreferences(preferences.ptr());
     pageConfiguration->setPageGroup(pageGroup.ptr());
 

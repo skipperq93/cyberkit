@@ -32,7 +32,7 @@
 #include "InstrumentingAgents.h"
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -358,4 +358,4 @@ Ref<JSON::Object> PageDOMDebuggerAgent::buildPauseDataForDOMBreakpoint(Protocol:
     return pauseData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

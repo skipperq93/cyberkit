@@ -18,23 +18,23 @@
  */
 
 #include "config.h"
-#include "WebKitDownloadClient.h"
+#include "CyberKitDownloadClient.h"
 
 #include "APIDownloadClient.h"
-#include "WebKitDownloadPrivate.h"
-#include "WebKitURIResponsePrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitDownloadPrivate.h"
+#include "CyberKitURIResponsePrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include "WebsiteDataStore.h"
 #include <CyberCore/UserAgent.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
 using namespace CyberCore;
-using namespace WebKit;
+using namespace CyberKit;
 
 class DownloadClient final : public API::DownloadClient {
 public:
-    explicit DownloadClient(GRefPtr<WebKitDownload>&& download)
+    explicit DownloadClient(GRefPtr<CyberKitDownload>&& download)
         : m_download(WTFMove(download))
     {
     }
@@ -68,7 +68,7 @@ private:
         if (webkitDownloadIsCancelled(m_download.get()))
             return;
 
-        GRefPtr<WebKitURIResponse> response = adoptGRef(webkitURIResponseCreateForResourceResponse(resourceResponse));
+        GRefPtr<CyberKitURIResponse> response = adoptGRef(webkitURIResponseCreateForResourceResponse(resourceResponse));
         webkitDownloadSetResponse(m_download.get(), response.get());
     }
 
@@ -116,10 +116,10 @@ private:
         m_download = nullptr;
     }
 
-    GRefPtr<WebKitDownload> m_download;
+    GRefPtr<CyberKitDownload> m_download;
 };
 
-void attachDownloadClientToDownload(GRefPtr<WebKitDownload>&& download, DownloadProxy& downloadProxy)
+void attachDownloadClientToDownload(GRefPtr<CyberKitDownload>&& download, DownloadProxy& downloadProxy)
 {
     downloadProxy.setClient(adoptRef(*new DownloadClient(WTFMove(download))));
 }

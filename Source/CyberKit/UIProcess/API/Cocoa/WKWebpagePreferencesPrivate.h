@@ -53,7 +53,7 @@ typedef NS_OPTIONS(NSUInteger, _WKWebsiteDeviceOrientationAndMotionAccessPolicy)
 } WK_API_AVAILABLE(macos(10.14), ios(12.0));
 
 typedef NS_OPTIONS(NSUInteger, _WKWebsiteMouseEventPolicy) {
-    // Indirect pointing devices will generate either touch or mouse events based on WebKit's default policy.
+    // Indirect pointing devices will generate either touch or mouse events based on CyberKit's default policy.
     _WKWebsiteMouseEventPolicyDefault,
 
 #if TARGET_OS_IPHONE

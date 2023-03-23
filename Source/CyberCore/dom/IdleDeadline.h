@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -52,4 +52,4 @@ private:
     const MonotonicTime m_deadline;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "WKString.h"
 #include "WebProcessPool.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 void WKSendDisplayConfigurationChangedMessageForTesting(WKContextRef context)
 {

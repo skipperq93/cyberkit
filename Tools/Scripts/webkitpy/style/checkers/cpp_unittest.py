@@ -3489,22 +3489,22 @@ class OrderOfIncludesTest(CppStyleTestBase):
                                          'Alphabetical sorting problem.  [build/include_order] [4]')
 
     def test_check_wtf_blockptr_usage_in_javascriptcore(self):
-        # FIXME: Remove once JavaScriptCore builds with ARC enabled (Bug 221117).
+        # FIXME: Remove once CyberScriptCore builds with ARC enabled (Bug 221117).
         self.assert_language_rules_check(
-            'Source/JavaScriptCore/foo.h',
+            'Source/CyberScriptCore/foo.h',
             '#include <wtf/BlockPtr.h>\n',
             'Replace WTF::BlockPtr with WTF::Function.'
-            ' WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.'
+            ' WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.'
             '  [security/javascriptcore_wtf_blockptr] [5]')
 
         self.assert_language_rules_check(
-            'Source/JavaScriptCore/foo.mm',
+            'Source/CyberScriptCore/foo.mm',
             '#include <wtf/BlockPtr.h>\n',
             'Replace WTF::BlockPtr with WTF::Function.'
-            ' WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.'
+            ' WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.'
             '  [security/javascriptcore_wtf_blockptr] [5]')
 
-        self.assert_language_rules_check('Source/JavaScriptCore/foo.h',
+        self.assert_language_rules_check('Source/CyberScriptCore/foo.h',
                                          '#include <wtf/Function.h>\n',
                                          '')
 
@@ -3515,21 +3515,21 @@ class OrderOfIncludesTest(CppStyleTestBase):
         self.assert_lint(
             'typedef Vector<BlockPtr<void ()>> RemoteTargetQueue;\n',
             'Replace WTF::BlockPtr with WTF::Function.'
-            ' WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.'
+            ' WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.'
             '  [security/javascriptcore_wtf_blockptr] [5]',
-            file_name='Source/JavaScriptCore/foo.h')
+            file_name='Source/CyberScriptCore/foo.h')
 
         self.assert_lint(
             'BlockPtr<void(WebItemProviderFileCallback)> _callback;\n',
             'Replace WTF::BlockPtr with WTF::Function.'
-            ' WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.'
+            ' WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.'
             '  [security/javascriptcore_wtf_blockptr] [5]',
-            file_name='Source/JavaScriptCore/foo.mm')
+            file_name='Source/CyberScriptCore/foo.mm')
 
         self.assert_lint(
             'typedef Vector<Function<void ()>> RemoteTargetQueue;\n',
             '',
-            file_name='Source/JavaScriptCore/foo.h')
+            file_name='Source/CyberScriptCore/foo.h')
 
         self.assert_lint(
             'typedef Vector<BlockPtr<void ()>> RemoteTargetQueue;\n',
@@ -6184,9 +6184,9 @@ class CyberKitStyleTest(CppStyleTestBase):
                          ['variable_1' + name_underscore_error_message,
                           'variable_2' + name_underscore_error_message])
 
-        # There is an exception for op code functions but only in the JavaScriptCore directory.
-        self.assert_lint('void this_op_code(int var1, int var2)', '', 'Source/JavaScriptCore/foo.cpp')
-        self.assert_lint('void op_code(int var1, int var2)', '', 'Source/JavaScriptCore/foo.cpp')
+        # There is an exception for op code functions but only in the CyberScriptCore directory.
+        self.assert_lint('void this_op_code(int var1, int var2)', '', 'Source/CyberScriptCore/foo.cpp')
+        self.assert_lint('void op_code(int var1, int var2)', '', 'Source/CyberScriptCore/foo.cpp')
         self.assert_lint('void this_op_code(int var1, int var2)', 'this_op_code' + name_underscore_error_message)
 
         # GObject requires certain magical names in class declarations.
@@ -6210,12 +6210,12 @@ class CyberKitStyleTest(CppStyleTestBase):
             'otherkit_web_view_load is incorrectly named. Don\'t use underscores in your identifier names.'
             '  [readability/naming/underscores] [4]', 'Source/Webkit/webkit/foo.cpp')
 
-        # There is an exception for GLib JavaScriptCore API.
-        self.assert_lint('JSCValue* jsc_value_new_null(JSCContext* context)', '', 'Source/JavaScriptCore/API/glib/JSCValue.cpp')
+        # There is an exception for GLib CyberScriptCore API.
+        self.assert_lint('JSCValue* jsc_value_new_null(JSCContext* context)', '', 'Source/CyberScriptCore/API/glib/JSCValue.cpp')
         self.assert_lint('void my_function(int variable_1)',
                          ['my_function' + name_underscore_error_message,
                           'variable_1' + name_underscore_error_message],
-                         'Source/JavaScriptCore/API/glib/JSCValue.cpp')
+                         'Source/CyberScriptCore/API/glib/JSCValue.cpp')
         self.assert_lint('gboolean jsc_value_is_undefined(JSCValue* value)',
                          'jsc_value_is_undefined' + name_underscore_error_message)
 

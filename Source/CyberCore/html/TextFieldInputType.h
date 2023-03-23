@@ -38,7 +38,7 @@
 #include "InputType.h"
 #include "SpinButtonElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMFormData;
 class TextControlInnerTextElement;
@@ -157,4 +157,4 @@ private:
     RefPtr<HTMLElement> m_autoFillButton;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

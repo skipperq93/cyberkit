@@ -28,7 +28,7 @@
 #include "CSSNumericValue.h"
 #include "CSSTransformComponent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFunctionValue;
 
@@ -57,8 +57,8 @@ private:
     Ref<CSSNumericValue> m_ax;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSSkewX)
-    static bool isType(const WebCore::CSSTransformComponent& transform) { return transform.getType() == WebCore::CSSTransformType::SkewX; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSSkewX)
+    static bool isType(const CyberCore::CSSTransformComponent& transform) { return transform.getType() == CyberCore::CSSTransformType::SkewX; }
 SPECIALIZE_TYPE_TRAITS_END()

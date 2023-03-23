@@ -36,7 +36,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class EventQueueScope;
@@ -64,7 +64,7 @@ private:
     Vector<ScopedEvent> m_queuedEvents;
     unsigned m_scopingLevel { 0 };
 
-    friend class WTF::NeverDestroyed<WebCore::ScopedEventQueue>;
+    friend class WTF::NeverDestroyed<CyberCore::ScopedEventQueue>;
     friend class EventQueueScope;
 };
 
@@ -75,4 +75,4 @@ public:
     ~EventQueueScope() { ScopedEventQueue::singleton().decrementScopingLevel(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

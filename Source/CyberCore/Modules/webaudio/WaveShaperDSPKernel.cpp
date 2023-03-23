@@ -35,7 +35,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WaveShaperDSPKernel::WaveShaperDSPKernel(WaveShaperProcessor* processor)
     : AudioDSPKernel(processor)
@@ -204,6 +204,6 @@ bool WaveShaperDSPKernel::requiresTailProcessing() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

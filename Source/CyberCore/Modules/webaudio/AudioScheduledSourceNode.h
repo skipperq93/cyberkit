@@ -31,7 +31,7 @@
 #include "ActiveDOMObject.h"
 #include "AudioNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioScheduledSourceNode : public AudioNode, public ActiveDOMObject {
     WTF_MAKE_ISO_ALLOCATED(AudioScheduledSourceNode);
@@ -94,4 +94,4 @@ protected:
     bool m_hasEndedEventListener { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

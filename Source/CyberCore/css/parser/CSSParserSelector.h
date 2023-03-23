@@ -23,7 +23,7 @@
 #include "CSSSelector.h"
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CSSParserSelectorCombinator {
     Child,

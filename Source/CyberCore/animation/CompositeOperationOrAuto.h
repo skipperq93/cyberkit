@@ -27,7 +27,7 @@
 
 #include "CompositeOperation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CompositeOperationOrAuto : uint8_t { Replace, Add, Accumulate, Auto };
 
@@ -45,4 +45,4 @@ constexpr CompositeOperationOrAuto toCompositeOperationOrAuto(CompositeOperation
     return CompositeOperationOrAuto::Auto;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

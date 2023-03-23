@@ -31,31 +31,31 @@
 
 WKTypeID WKNavigationActionGetTypeID()
 {
-    return WebKit::toAPI(API::NavigationAction::APIType);
+    return CyberKit::toAPI(API::NavigationAction::APIType);
 }
 
 bool WKNavigationActionShouldPerformDownload(WKNavigationActionRef action)
 {
-    return WebKit::toImpl(action)->shouldPerformDownload();
+    return CyberKit::toImpl(action)->shouldPerformDownload();
 }
 
 WKURLRequestRef WKNavigationActionCopyRequest(WKNavigationActionRef action)
 {
-    return WebKit::toAPI(&API::URLRequest::create(WebKit::toImpl(action)->request()).leakRef());
+    return CyberKit::toAPI(&API::URLRequest::create(CyberKit::toImpl(action)->request()).leakRef());
 }
 
 bool WKNavigationActionGetShouldOpenExternalSchemes(WKNavigationActionRef action)
 {
-    return WebKit::toImpl(action)->shouldOpenExternalSchemes();
+    return CyberKit::toImpl(action)->shouldOpenExternalSchemes();
 }
 
 WKFrameInfoRef WKNavigationActionCopyTargetFrameInfo(WKNavigationActionRef action)
 {
-    RefPtr targetFrame = WebKit::toImpl(action)->targetFrame();
-    return targetFrame ? WebKit::toAPI(targetFrame.leakRef()) : nullptr;
+    RefPtr targetFrame = CyberKit::toImpl(action)->targetFrame();
+    return targetFrame ? CyberKit::toAPI(targetFrame.leakRef()) : nullptr;
 }
 
 WKFrameNavigationType WKNavigationActionGetNavigationType(WKNavigationActionRef action)
 {
-    return WebKit::toAPI(WebKit::toImpl(action)->navigationType());
+    return CyberKit::toAPI(CyberKit::toImpl(action)->navigationType());
 }

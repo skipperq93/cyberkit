@@ -76,7 +76,7 @@ static const CGFloat swipeOverlayShadowWidth = 81;
 @synthesize isCancelled = _isCancelled;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 void ViewGestureController::platformTeardown()
@@ -631,6 +631,6 @@ bool ViewGestureController::completeSimulatedSwipeInDirectionForTesting(SwipeDir
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

@@ -26,7 +26,7 @@
 #include "TestOperationConditional.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestOperationConditional : public JSDOMWrapper<TestOperationConditional> {
 public:
@@ -92,6 +92,6 @@ template<> struct JSDOMWrapperConverterTraits<TestOperationConditional> {
     using ToWrappedReturnType = TestOperationConditional*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ConditionDerived)

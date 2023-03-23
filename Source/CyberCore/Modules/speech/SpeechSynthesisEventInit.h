@@ -30,7 +30,7 @@
 #include "EventInit.h"
 #include "SpeechSynthesisUtterance.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SpeechSynthesisEventInit : EventInit {
 
@@ -56,6 +56,6 @@ struct SpeechSynthesisEventInit : EventInit {
     String name;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

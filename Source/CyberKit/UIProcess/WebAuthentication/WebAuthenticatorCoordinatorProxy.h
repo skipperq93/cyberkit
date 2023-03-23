@@ -48,7 +48,7 @@ OBJC_CLASS ASCCredentialRequestContext;
 OBJC_CLASS ASCAgentProxy;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -89,6 +89,6 @@ private:
 #endif // HAVE(UNIFIED_ASC_AUTH_UI)
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

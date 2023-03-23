@@ -30,7 +30,7 @@
 #include "JSDOMMapLike.h"
 #include "JSHighlight.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 void HighlightRegister::initializeMapLike(DOMMapAdapter& map)
 {

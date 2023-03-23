@@ -19,24 +19,24 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitPrintOperation_h
-#define WebKitPrintOperation_h
+#ifndef CyberKitPrintOperation_h
+#define CyberKitPrintOperation_h
 
 #include <glib-object.h>
-#include <webkit/WebKitDefines.h>
-#include <webkit/WebKitWebView.h>
+#include <webkit/CyberKitDefines.h>
+#include <webkit/CyberKitWebView.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_PRINT_OPERATION            (webkit_print_operation_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_PRINT_OPERATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_PRINT_OPERATION, WebKitPrintOperation))
+#define WEBKIT_PRINT_OPERATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_PRINT_OPERATION, CyberKitPrintOperation))
 #define WEBKIT_IS_PRINT_OPERATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_PRINT_OPERATION))
-#define WEBKIT_PRINT_OPERATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_PRINT_OPERATION, WebKitPrintOperationClass))
+#define WEBKIT_PRINT_OPERATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_PRINT_OPERATION, CyberKitPrintOperationClass))
 #define WEBKIT_IS_PRINT_OPERATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_PRINT_OPERATION))
-#define WEBKIT_PRINT_OPERATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_PRINT_OPERATION, WebKitPrintOperationClass))
+#define WEBKIT_PRINT_OPERATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_PRINT_OPERATION, CyberKitPrintOperationClass))
 
-struct _WebKitPrintOperationClass {
+struct _CyberKitPrintOperationClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -47,10 +47,10 @@ struct _WebKitPrintOperationClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitPrintOperation, webkit_print_operation, WEBKIT, PRINT_OPERATION, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitPrintOperation, webkit_print_operation, WEBKIT, PRINT_OPERATION, GObject)
 
 /**
- * WebKitPrintOperationResponse:
+ * CyberKitPrintOperationResponse:
  * @WEBKIT_PRINT_OPERATION_RESPONSE_PRINT: Print button was clicked in print dialog
  * @WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL: Print dialog was cancelled
  *
@@ -60,31 +60,31 @@ WEBKIT_DECLARE_FINAL_TYPE (WebKitPrintOperation, webkit_print_operation, WEBKIT,
 typedef enum {
     WEBKIT_PRINT_OPERATION_RESPONSE_PRINT,
     WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL
-} WebKitPrintOperationResponse;
+} CyberKitPrintOperationResponse;
 
-WEBKIT_API WebKitPrintOperation *
-webkit_print_operation_new                (WebKitWebView        *web_view);
+WEBKIT_API CyberKitPrintOperation *
+webkit_print_operation_new                (CyberKitWebView        *web_view);
 
 WEBKIT_API GtkPrintSettings *
-webkit_print_operation_get_print_settings (WebKitPrintOperation *print_operation);
+webkit_print_operation_get_print_settings (CyberKitPrintOperation *print_operation);
 
 WEBKIT_API void
-webkit_print_operation_set_print_settings (WebKitPrintOperation *print_operation,
+webkit_print_operation_set_print_settings (CyberKitPrintOperation *print_operation,
                                            GtkPrintSettings     *print_settings);
 
 WEBKIT_API GtkPageSetup *
-webkit_print_operation_get_page_setup     (WebKitPrintOperation *print_operation);
+webkit_print_operation_get_page_setup     (CyberKitPrintOperation *print_operation);
 
 WEBKIT_API void
-webkit_print_operation_set_page_setup     (WebKitPrintOperation *print_operation,
+webkit_print_operation_set_page_setup     (CyberKitPrintOperation *print_operation,
                                            GtkPageSetup         *page_setup);
 
-WEBKIT_API WebKitPrintOperationResponse
-webkit_print_operation_run_dialog         (WebKitPrintOperation *print_operation,
+WEBKIT_API CyberKitPrintOperationResponse
+webkit_print_operation_run_dialog         (CyberKitPrintOperation *print_operation,
                                            GtkWindow            *parent);
 
 WEBKIT_API void
-webkit_print_operation_print              (WebKitPrintOperation *print_operation);
+webkit_print_operation_print              (CyberKitPrintOperation *print_operation);
 
 G_END_DECLS
 

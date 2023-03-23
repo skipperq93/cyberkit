@@ -35,7 +35,7 @@
 #include "GCryptUtilities.h"
 #include <pal/crypto/CryptoDigest.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool extractECDSASignatureInteger(Vector<uint8_t>& signature, gcry_sexp_t signatureSexp, const char* integerName, size_t keySizeInBytes)
 {
@@ -186,6 +186,6 @@ ExceptionOr<bool> CryptoAlgorithmECDSA::platformVerify(const CryptoAlgorithmEcds
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

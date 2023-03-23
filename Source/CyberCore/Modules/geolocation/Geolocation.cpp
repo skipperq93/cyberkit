@@ -48,7 +48,7 @@
 #include <wtf/Ref.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const ASCIILiteral permissionDeniedErrorMessage { "User denied Geolocation"_s };
 static const ASCIILiteral failedToStartServiceErrorMessage { "Failed to start Geolocation service"_s };
@@ -758,6 +758,6 @@ Frame* Geolocation::frame() const
     return m_navigator ? m_navigator->frame() : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
                                                         
 #endif // ENABLE(GEOLOCATION)

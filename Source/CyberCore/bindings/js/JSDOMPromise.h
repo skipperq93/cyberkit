@@ -29,7 +29,7 @@
 #include "JSDOMGuardedObject.h"
 #include <CyberScriptCore/JSPromise.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise : public DOMGuarded<JSC::JSPromise> {
 public:
@@ -60,4 +60,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

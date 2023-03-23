@@ -42,7 +42,7 @@ OBJC_CLASS RBSAssertion;
 OBJC_CLASS WKRBSAssertionDelegate;
 #endif // USE(RUNNINGBOARD)
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class ProcessAssertionType {
     Suspended,
@@ -141,4 +141,4 @@ private:
     bool m_isHoldingBackgroundTask { false };
 };
     
-} // namespace WebKit
+} // namespace CyberKit

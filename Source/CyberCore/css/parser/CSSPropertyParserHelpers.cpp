@@ -96,7 +96,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CSSPropertyParserHelpers {
 
@@ -8334,4 +8334,4 @@ RefPtr<CSSValue> consumeTextAutospace(CSSParserTokenRange& range)
 }
 
 } // namespace CSSPropertyParserHelpers
-} // namespace WebCore
+} // namespace CyberCore

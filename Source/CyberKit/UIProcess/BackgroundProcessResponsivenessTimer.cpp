@@ -30,7 +30,7 @@
 #include "WebProcessMessages.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 static const Seconds initialCheckingInterval { 20_s };
 static const Seconds maximumCheckingInterval { 8_h };
@@ -163,4 +163,4 @@ ResponsivenessTimer::Client& BackgroundProcessResponsivenessTimer::client() cons
     return m_webProcessProxy;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -26,10 +26,10 @@
 
 #include "ActiveDOMCallback.h"
 #include "CallbackResult.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -74,6 +74,6 @@ public:
     };
 };
 
-inline WebCoreOpaqueRoot root(NodeFilter* filter) { return WebCoreOpaqueRoot { filter }; }
+inline CyberCoreOpaqueRoot root(NodeFilter* filter) { return CyberCoreOpaqueRoot { filter }; }
 
-} // namespace WebCore
+} // namespace CyberCore

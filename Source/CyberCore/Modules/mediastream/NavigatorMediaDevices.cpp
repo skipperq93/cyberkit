@@ -38,7 +38,7 @@
 #include "MediaDevices.h"
 #include "Navigator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorMediaDevices::NavigatorMediaDevices(DOMWindow* window)
     : DOMWindowProperty(window)
@@ -75,6 +75,6 @@ const char* NavigatorMediaDevices::supplementName()
     return "NavigatorMediaDevices";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

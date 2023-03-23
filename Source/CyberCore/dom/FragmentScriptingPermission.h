@@ -29,7 +29,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ParserContentPolicy : uint8_t {
     AllowScriptingContent = 1 << 0,
@@ -62,4 +62,4 @@ static inline OptionSet<ParserContentPolicy> allowPluginContent(OptionSet<Parser
     return parserContentPolicy;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "Element.h"
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PopoverVisibilityState : bool {
     Hidden,

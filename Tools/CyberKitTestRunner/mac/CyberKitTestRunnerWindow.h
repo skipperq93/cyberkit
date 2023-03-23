@@ -27,12 +27,12 @@ namespace WTR {
 class PlatformWebView;
 }
 
-@interface WebKitTestRunnerWindow : NSWindow {
+@interface CyberKitTestRunnerWindow : NSWindow {
     WTR::PlatformWebView* _platformWebView;
     NSPoint _fakeOrigin;
 }
 
-+ (WebKitTestRunnerWindow *)_WTR_keyWindow;
++ (CyberKitTestRunnerWindow *)_WTR_keyWindow;
 
 @property (nonatomic, assign) WTR::PlatformWebView* platformWebView;
 - (NSRect)frameRespectingFakeOrigin;

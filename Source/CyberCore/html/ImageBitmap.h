@@ -37,7 +37,7 @@ class ArrayBuffer;
 
 using JSC::ArrayBuffer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class CanvasBase;

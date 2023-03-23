@@ -31,7 +31,7 @@
 #include "config.h"
 #include "ElementRareData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsElementRareData : NodeRareData {
     IntPoint savedLayerScrollPosition;
@@ -46,4 +46,4 @@ struct SameSizeAsElementRareData : NodeRareData {
 
 static_assert(sizeof(ElementRareData) == sizeof(SameSizeAsElementRareData), "ElementRareData should stay small");
 
-} // namespace WebCore
+} // namespace CyberCore

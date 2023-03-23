@@ -110,7 +110,7 @@ static CyberCore::CocoaColor *colorForItem(WarningItem item, ViewType *warning)
 
     auto colorNamed = [] (NSString *name) -> CyberCore::CocoaColor * {
 #if HAVE(SAFE_BROWSING)
-        return [NSColor colorNamed:name bundle:[NSBundle bundleWithIdentifier:@"com.apple.WebKit"]];
+        return [NSColor colorNamed:name bundle:[NSBundle bundleWithIdentifier:@"com.apple.CyberKit"]];
 #else
         ASSERT_NOT_REACHED();
         return nil;
@@ -290,13 +290,13 @@ static RetainPtr<ViewType> makeLabel(NSAttributedString *attributedString)
 
 @implementation WKSafeBrowsingWarning
 
-- (instancetype)initWithFrame:(RectType)frame safeBrowsingWarning:(const WebKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler
+- (instancetype)initWithFrame:(RectType)frame safeBrowsingWarning:(const CyberKit::SafeBrowsingWarning&)warning completionHandler:(CompletionHandler<void(std::variant<CyberKit::ContinueUnsafeLoad, URL>&&)>&&)completionHandler
 {
     if (!(self = [super initWithFrame:frame])) {
-        completionHandler(WebKit::ContinueUnsafeLoad::Yes);
+        completionHandler(CyberKit::ContinueUnsafeLoad::Yes);
         return nil;
     }
-    _completionHandler = [weakSelf = WeakObjCPtr<WKSafeBrowsingWarning>(self), completionHandler = WTFMove(completionHandler)] (std::variant<WebKit::ContinueUnsafeLoad, URL>&& result) mutable {
+    _completionHandler = [weakSelf = WeakObjCPtr<WKSafeBrowsingWarning>(self), completionHandler = WTFMove(completionHandler)] (std::variant<CyberKit::ContinueUnsafeLoad, URL>&& result) mutable {
 #if PLATFORM(WATCHOS)
         if (auto strongSelf = weakSelf.get())
             [strongSelf.get()->_previousFirstResponder becomeFirstResponder];
@@ -515,7 +515,7 @@ static RetainPtr<ViewType> makeLabel(NSAttributedString *attributedString)
 {
     ensureOnMainRunLoop([completionHandler = WTFMove(_completionHandler), warning = WTFMove(_warning)] () mutable {
         if (completionHandler)
-            completionHandler(WebKit::ContinueUnsafeLoad::No);
+            completionHandler(CyberKit::ContinueUnsafeLoad::No);
     });
     [super dealloc];
 }
@@ -523,7 +523,7 @@ static RetainPtr<ViewType> makeLabel(NSAttributedString *attributedString)
 - (void)goBackClicked
 {
     if (_completionHandler)
-        _completionHandler(WebKit::ContinueUnsafeLoad::No);
+        _completionHandler(CyberKit::ContinueUnsafeLoad::No);
 }
 
 - (void)clickedOnLink:(NSURL *)link
@@ -531,10 +531,10 @@ static RetainPtr<ViewType> makeLabel(NSAttributedString *attributedString)
     if (!_completionHandler)
         return;
 
-    if ([link isEqual:WebKit::SafeBrowsingWarning::visitUnsafeWebsiteSentinel()])
-        return _completionHandler(WebKit::ContinueUnsafeLoad::Yes);
+    if ([link isEqual:CyberKit::SafeBrowsingWarning::visitUnsafeWebsiteSentinel()])
+        return _completionHandler(CyberKit::ContinueUnsafeLoad::Yes);
 
-    if ([link isEqual:WebKit::SafeBrowsingWarning::confirmMalwareSentinel()]) {
+    if ([link isEqual:CyberKit::SafeBrowsingWarning::confirmMalwareSentinel()]) {
 #if PLATFORM(MAC)
         auto alert = adoptNS([NSAlert new]);
         [alert setMessageText:WEB_UI_NSSTRING(@"Are you sure you wish to go to this site?", "Malware confirmation dialog title")];
@@ -544,11 +544,11 @@ static RetainPtr<ViewType> makeLabel(NSAttributedString *attributedString)
         [alert beginSheetModalForWindow:self.window completionHandler:makeBlockPtr([weakSelf = WeakObjCPtr<WKSafeBrowsingWarning>(self), alert](NSModalResponse returnCode) {
             if (auto strongSelf = weakSelf.get()) {
                 if (returnCode == NSAlertSecondButtonReturn && strongSelf->_completionHandler)
-                    strongSelf->_completionHandler(WebKit::ContinueUnsafeLoad::Yes);
+                    strongSelf->_completionHandler(CyberKit::ContinueUnsafeLoad::Yes);
             }
         }).get()];
 #else
-        _completionHandler(WebKit::ContinueUnsafeLoad::Yes);
+        _completionHandler(CyberKit::ContinueUnsafeLoad::Yes);
 #endif
         return;
     }

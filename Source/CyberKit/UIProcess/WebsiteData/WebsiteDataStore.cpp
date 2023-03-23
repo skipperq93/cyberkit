@@ -41,7 +41,7 @@
 #include "StorageAccessStatus.h"
 #include "UnifiedOriginStorageLevel.h"
 #include "WebBackForwardCache.h"
-#include "WebKit2Initialize.h"
+#include "CyberKit2Initialize.h"
 #include "WebNotificationManagerProxy.h"
 #include "WebPageProxy.h"
 #include "WebProcessCache.h"
@@ -90,7 +90,7 @@
 #include "VirtualAuthenticatorManager.h"
 #endif // ENABLE(WEB_AUTHN)
 
-namespace WebKit {
+namespace CyberKit {
 
 static bool allowsWebsiteDataRecordsForAllOrigins;
 void WebsiteDataStore::allowWebsiteDataRecordsForAllOrigins()
@@ -135,7 +135,7 @@ WebsiteDataStore::WebsiteDataStore(Ref<WebsiteDataStoreConfiguration>&& configur
 #if ENABLE(TRACKING_PREVENTION)
     , m_trackingPreventionDebugMode(m_resolvedConfiguration->resourceLoadStatisticsDebugModeEnabled())
 #endif
-    , m_queue(WorkQueue::create("com.apple.WebKit.WebsiteDataStore"))
+    , m_queue(WorkQueue::create("com.apple.CyberKit.WebsiteDataStore"))
 #if ENABLE(WEB_AUTHN)
     , m_authenticatorManager(makeUniqueRef<AuthenticatorManager>())
 #endif
@@ -206,7 +206,7 @@ static IsPersistent defaultDataStoreIsPersistent()
 
 Ref<WebsiteDataStore> WebsiteDataStore::defaultDataStore()
 {
-    InitializeWebKit2();
+    InitializeCyberKit2();
     auto& globalDatasStore = globalDefaultDataStore();
     if (globalDatasStore)
         return Ref { *globalDatasStore };
@@ -1991,7 +1991,7 @@ String WebsiteDataStore::defaultGeneralStorageDirectory(const String& baseDataDi
 String WebsiteDataStore::defaultNetworkCacheDirectory(const String& baseCacheDirectory)
 {
 #if PLATFORM(PLAYSTATION) || USE(GLIB)
-    return cacheDirectoryFileSystemRepresentation("WebKitCache"_s, baseCacheDirectory);
+    return cacheDirectoryFileSystemRepresentation("CyberKitCache"_s, baseCacheDirectory);
 #else
     return cacheDirectoryFileSystemRepresentation("NetworkCache"_s, baseCacheDirectory);
 #endif

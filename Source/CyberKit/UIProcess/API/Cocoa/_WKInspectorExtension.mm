@@ -65,7 +65,7 @@
     if (!delegate && !_delegate)
         return;
 
-    _delegate = makeUnique<WebKit::InspectorExtensionDelegate>(self, delegate);
+    _delegate = makeUnique<CyberKit::InspectorExtensionDelegate>(self, delegate);
 }
 
 // MARK: API

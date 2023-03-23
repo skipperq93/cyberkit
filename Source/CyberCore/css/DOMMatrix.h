@@ -27,7 +27,7 @@
 
 #include "DOMMatrixReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -165,4 +165,4 @@ inline void DOMMatrix::setM44(double f)
         m_is2D = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

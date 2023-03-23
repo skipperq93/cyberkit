@@ -44,7 +44,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PushManager);
 
@@ -195,6 +195,6 @@ void PushManager::permissionState(ScriptExecutionContext& context, std::optional
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

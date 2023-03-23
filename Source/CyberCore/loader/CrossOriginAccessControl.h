@@ -37,7 +37,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceRequest;
 class Document;
@@ -92,19 +92,19 @@ WEBCORE_EXPORT std::optional<ResourceError> validateCrossOriginResourcePolicy(Cr
 std::optional<ResourceError> validateRangeRequestedFlag(const ResourceRequest&, const ResourceResponse&);
 String validateCrossOriginRedirectionURL(const URL&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::HTTPHeadersToKeepFromCleaning> {
+template<> struct EnumTraits<CyberCore::HTTPHeadersToKeepFromCleaning> {
     using values = EnumValues<
-        WebCore::HTTPHeadersToKeepFromCleaning,
-        WebCore::HTTPHeadersToKeepFromCleaning::ContentType,
-        WebCore::HTTPHeadersToKeepFromCleaning::Referer,
-        WebCore::HTTPHeadersToKeepFromCleaning::Origin,
-        WebCore::HTTPHeadersToKeepFromCleaning::UserAgent,
-        WebCore::HTTPHeadersToKeepFromCleaning::AcceptEncoding,
-        WebCore::HTTPHeadersToKeepFromCleaning::CacheControl
+        CyberCore::HTTPHeadersToKeepFromCleaning,
+        CyberCore::HTTPHeadersToKeepFromCleaning::ContentType,
+        CyberCore::HTTPHeadersToKeepFromCleaning::Referer,
+        CyberCore::HTTPHeadersToKeepFromCleaning::Origin,
+        CyberCore::HTTPHeadersToKeepFromCleaning::UserAgent,
+        CyberCore::HTTPHeadersToKeepFromCleaning::AcceptEncoding,
+        CyberCore::HTTPHeadersToKeepFromCleaning::CacheControl
     >;
 };
 

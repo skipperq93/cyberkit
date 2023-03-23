@@ -28,7 +28,7 @@
 
 #include <wtf/HexNumber.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSUnicodeRangeValue::customCSSText() const
 {

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class StorageConnection;
 
@@ -36,4 +36,4 @@ public:
     virtual StorageConnection& storageConnection() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ namespace WTF {
 class String;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Report;
 class ReportingObserver;

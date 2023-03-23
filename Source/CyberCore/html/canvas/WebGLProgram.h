@@ -42,7 +42,7 @@ namespace WTF {
 class AbstractLocker;
 };
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class WebGLRenderingContextBase;
@@ -115,6 +115,6 @@ private:
     int m_requiredTransformFeedbackBufferCount { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

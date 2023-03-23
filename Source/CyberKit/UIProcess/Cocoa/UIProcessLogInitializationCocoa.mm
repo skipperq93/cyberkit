@@ -33,7 +33,7 @@
 
 #if PLATFORM(COCOA)
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace UIProcess {
 
@@ -62,7 +62,7 @@ String webKitLogLevelString()
     static NeverDestroyed<RetainPtr<NSString>> logString;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, [&] {
-        logString.get() = [[NSUserDefaults standardUserDefaults] stringForKey:@"WebKit2Logging"];
+        logString.get() = [[NSUserDefaults standardUserDefaults] stringForKey:@"CyberKit2Logging"];
     });
     return logString.get().get();
 }

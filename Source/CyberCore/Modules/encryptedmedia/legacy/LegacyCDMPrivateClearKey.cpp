@@ -34,7 +34,7 @@
 #include "MediaPlayer.h"
 #include "PlatformMediaResourceLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool LegacyCDMPrivateClearKey::supportsKeySystem(const String& keySystem)
 {

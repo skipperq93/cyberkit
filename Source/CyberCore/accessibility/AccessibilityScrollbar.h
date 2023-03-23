@@ -30,7 +30,7 @@
 
 #include "AccessibilityMockObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Scrollbar;
 
@@ -61,9 +61,9 @@ private:
     RefPtr<Scrollbar> m_scrollbar;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilityScrollbar) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isAccessibilityScrollbar(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilityScrollbar) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isAccessibilityScrollbar(); } \
 SPECIALIZE_TYPE_TRAITS_END()

@@ -33,15 +33,15 @@ namespace API {
 
 class WebsiteDataRecord final : public ObjectImpl<Object::Type::WebsiteDataRecord> {
 public:
-    static Ref<WebsiteDataRecord> create(WebKit::WebsiteDataRecord&&);
+    static Ref<WebsiteDataRecord> create(CyberKit::WebsiteDataRecord&&);
     virtual ~WebsiteDataRecord();
 
-    const WebKit::WebsiteDataRecord& websiteDataRecord() const { return m_websiteDataRecord; }
+    const CyberKit::WebsiteDataRecord& websiteDataRecord() const { return m_websiteDataRecord; }
 
 private:
-    explicit WebsiteDataRecord(WebKit::WebsiteDataRecord&&);
+    explicit WebsiteDataRecord(CyberKit::WebsiteDataRecord&&);
 
-    const WebKit::WebsiteDataRecord m_websiteDataRecord;
+    const CyberKit::WebsiteDataRecord m_websiteDataRecord;
 };
 
 }

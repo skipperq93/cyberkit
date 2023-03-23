@@ -25,13 +25,13 @@
 
 #import <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ArchiveResource;
 }
 
 @interface WebArchiveResourceFromNSAttributedString : NSObject {
 @package
-    RefPtr<WebCore::ArchiveResource> resource;
+    RefPtr<CyberCore::ArchiveResource> resource;
 }
 - (instancetype)initWithData:(NSData *)data URL:(NSURL *)URL MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName frameName:(NSString *)frameName;
 - (NSString *)MIMEType;

@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleCounterStyle;
 using CounterStyleMap = HashMap<AtomString, RefPtr<CSSCounterStyle>>;
@@ -57,4 +57,4 @@ private:
     bool hasUnresolvedReferences { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -57,7 +57,7 @@ _ENUM_IDENTIFIER_RENAME_MAP = {
     'mediasource': 'MediaSource',  # Console.ChannelSource.mediasource
     'webrtc': 'WebRTC',  # Console.ChannelSource.webrtc
     'itp-debug': 'ITPDebug',  # Console.ChannelSource.itp-debug
-    'webkit': 'WebKit',  # CPUProfiler.ThreadInfo.type
+    'webkit': 'CyberKit',  # CPUProfiler.ThreadInfo.type
 }
 
 # These objects are built manually by creating and setting JSON::Value instances.

@@ -42,7 +42,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;

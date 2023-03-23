@@ -24,7 +24,7 @@
 #include "TestGenerateAddOpaqueRoot.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestGenerateAddOpaqueRoot : public JSDOMWrapper<TestGenerateAddOpaqueRoot> {
 public:
@@ -92,4 +92,4 @@ template<> struct JSDOMWrapperConverterTraits<TestGenerateAddOpaqueRoot> {
     using ToWrappedReturnType = TestGenerateAddOpaqueRoot*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

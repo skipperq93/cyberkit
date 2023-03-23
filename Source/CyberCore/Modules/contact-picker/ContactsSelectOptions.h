@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ContactsSelectOptions {
     bool multiple { false };

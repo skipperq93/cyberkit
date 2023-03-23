@@ -31,7 +31,7 @@
 #include "JSDOMConvertBufferSource.h"
 #include "WebXRRigidTransform.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSC::JSValue JSWebXRRigidTransform::matrix(JSC::JSGlobalObject& lexicalGlobalObject) const
@@ -51,6 +51,6 @@ void JSWebXRRigidTransform::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSWebXRRigidTransform);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

@@ -20,8 +20,8 @@
 #pragma once
 
 #include "NotificationService.h"
-#include "WebKitNotification.h"
-#include "WebKitWebContext.h"
+#include "CyberKitNotification.h"
+#include "CyberKitWebContext.h"
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 #include <wtf/glib/GRefPtr.h>
@@ -31,16 +31,16 @@ namespace CyberCore {
 class NotificationResources;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebNotificationManagerProxy;
 class WebNotification;
 class WebPageProxy;
 
-class WebKitNotificationProvider final : public NotificationService::Observer {
+class CyberKitNotificationProvider final : public NotificationService::Observer {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebKitNotificationProvider(WebNotificationManagerProxy*, WebKitWebContext*);
-    ~WebKitNotificationProvider();
+    CyberKitNotificationProvider(WebNotificationManagerProxy*, CyberKitWebContext*);
+    ~CyberKitNotificationProvider();
 
     void show(WebPageProxy*, WebNotification&, RefPtr<CyberCore::NotificationResources>&&);
     void cancel(const WebNotification&);
@@ -51,11 +51,11 @@ public:
 
 private:
     void cancelNotificationByID(uint64_t);
-    static void apiNotificationCloseCallback(WebKitNotification*, WebKitNotificationProvider*);
-    static void apiNotificationClickedCallback(WebKitNotification*, WebKitNotificationProvider*);
+    static void apiNotificationCloseCallback(CyberKitNotification*, CyberKitNotificationProvider*);
+    static void apiNotificationClickedCallback(CyberKitNotification*, CyberKitNotificationProvider*);
     static void apiNotificationWeakNotify(gpointer, GObject*);
-    void addAPINotification(WebKitNotification*);
-    void removeAPINotification(WebKitNotification*);
+    void addAPINotification(CyberKitNotification*);
+    void removeAPINotification(CyberKitNotification*);
     void removeAPINotification(uint64_t);
     void closeAPINotification(uint64_t);
 
@@ -67,11 +67,11 @@ private:
     void didClickNotification(uint64_t) final;
     void didCloseNotification(uint64_t) final;
 
-    WebKitWebContext* m_webContext;
+    CyberKitWebContext* m_webContext;
     HashMap<WTF::String, bool> m_notificationPermissions;
     RefPtr<WebNotificationManagerProxy> m_notificationManager;
-    HashMap<uint64_t, GRefPtr<WebKitNotification>> m_apiNotifications;
+    HashMap<uint64_t, GRefPtr<CyberKitNotification>> m_apiNotifications;
     bool m_observerRegistered { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

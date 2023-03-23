@@ -28,7 +28,7 @@
 #include "TextGranularity.h"
 #include "VisiblePosition.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SelectionDirection : uint8_t { Forward, Backward, Right, Left };
 
@@ -174,10 +174,10 @@ inline bool operator!=(const VisibleSelection& a, const VisibleSelection& b)
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const VisibleSelection&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showTree(const WebCore::VisibleSelection&);
-void showTree(const WebCore::VisibleSelection*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showTree(const CyberCore::VisibleSelection&);
+void showTree(const CyberCore::VisibleSelection*);
 #endif

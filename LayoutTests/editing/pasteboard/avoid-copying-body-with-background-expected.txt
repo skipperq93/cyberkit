@@ -1,4 +1,4 @@
-This test copies and pastes content inside a body with background and text-decoration properties. WebKit should not nest body.
+This test copies and pastes content inside a body with background and text-decoration properties. CyberKit should not nest body.
 | "\n"
 | <ul>
 |   "\n"
@@ -6,7 +6,7 @@ This test copies and pastes content inside a body with background and text-decor
 |     "hello, world "
 |     <a>
 |       href="http://www.webkit.org/"
-|       "WebKit"
+|       "CyberKit"
 |   "\n"
 |   <li>
 |     "Copied content"
@@ -14,7 +14,7 @@ This test copies and pastes content inside a body with background and text-decor
 |     "hello, world "
 |     <a>
 |       href="http://www.webkit.org/"
-|       "WebKit"
+|       "CyberKit"
 |   <li>
 |     "Copied content<#selection-caret>"
 |   "\n"

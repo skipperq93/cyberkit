@@ -18,19 +18,19 @@
  */
 
 #include "config.h"
-#include "WebKitWebView.h"
+#include "CyberKitWebView.h"
 
-#include "WebKitColorPrivate.h"
-#include "WebKitScriptDialogPrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitColorPrivate.h"
+#include "CyberKitScriptDialogPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 
 
-gboolean webkitWebViewAuthenticate(WebKitWebView*, WebKitAuthenticationRequest*)
+gboolean webkitWebViewAuthenticate(CyberKitWebView*, CyberKitAuthenticationRequest*)
 {
     return FALSE;
 }
 
-gboolean webkitWebViewScriptDialog(WebKitWebView* webview, WebKitScriptDialog* dialog)
+gboolean webkitWebViewScriptDialog(CyberKitWebView* webview, CyberKitScriptDialog* dialog)
 {
     if (webkit_web_view_is_controlled_by_automation(webview)) {
         webkit_script_dialog_ref(dialog);
@@ -40,22 +40,22 @@ gboolean webkitWebViewScriptDialog(WebKitWebView* webview, WebKitScriptDialog* d
     return FALSE;
 }
 
-gboolean webkitWebViewRunFileChooser(WebKitWebView*, WebKitFileChooserRequest*)
+gboolean webkitWebViewRunFileChooser(CyberKitWebView*, CyberKitFileChooserRequest*)
 {
     return FALSE;
 }
 
-void webkitWebViewMaximizeWindow(WebKitWebView*, CompletionHandler<void()>&& completionHandler)
+void webkitWebViewMaximizeWindow(CyberKitWebView*, CompletionHandler<void()>&& completionHandler)
 {
     completionHandler();
 }
 
-void webkitWebViewMinimizeWindow(WebKitWebView*, CompletionHandler<void()>&& completionHandler)
+void webkitWebViewMinimizeWindow(CyberKitWebView*, CompletionHandler<void()>&& completionHandler)
 {
     completionHandler();
 }
 
-void webkitWebViewRestoreWindow(WebKitWebView*, CompletionHandler<void()>&& completionHandler)
+void webkitWebViewRestoreWindow(CyberKitWebView*, CompletionHandler<void()>&& completionHandler)
 {
     completionHandler();
 }
@@ -76,7 +76,7 @@ void webkitWebViewRestoreWindow(WebKitWebView*, CompletionHandler<void()>&& comp
  *
  * Returns: The newly created web view.
  */
-WebKitWebView* webkit_web_view_new(WebKitWebViewBackend* backend)
+CyberKitWebView* webkit_web_view_new(CyberKitWebViewBackend* backend)
 {
     g_return_val_if_fail(backend, nullptr);
 
@@ -103,7 +103,7 @@ WebKitWebView* webkit_web_view_new(WebKitWebViewBackend* backend)
  *
  * Returns: The newly created web view.
  */
-WebKitWebView* webkit_web_view_new_with_context(WebKitWebViewBackend* backend, WebKitWebContext* context)
+CyberKitWebView* webkit_web_view_new_with_context(CyberKitWebViewBackend* backend, CyberKitWebContext* context)
 {
     g_return_val_if_fail(backend, nullptr);
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
@@ -137,7 +137,7 @@ WebKitWebView* webkit_web_view_new_with_context(WebKitWebViewBackend* backend, W
  *
  * Since: 2.4
  */
-WebKitWebView* webkit_web_view_new_with_related_view(WebKitWebViewBackend* backend, WebKitWebView* webView)
+CyberKitWebView* webkit_web_view_new_with_related_view(CyberKitWebViewBackend* backend, CyberKitWebView* webView)
 {
     g_return_val_if_fail(backend, nullptr);
     g_return_val_if_fail(WEBKIT_IS_WEB_VIEW(webView), nullptr);
@@ -165,7 +165,7 @@ WebKitWebView* webkit_web_view_new_with_related_view(WebKitWebViewBackend* backe
  *
  * Since: 2.6
  */
-WebKitWebView* webkit_web_view_new_with_settings(WebKitWebViewBackend* backend, WebKitSettings* settings)
+CyberKitWebView* webkit_web_view_new_with_settings(CyberKitWebViewBackend* backend, CyberKitSettings* settings)
 {
     g_return_val_if_fail(backend, nullptr);
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), nullptr);
@@ -191,7 +191,7 @@ WebKitWebView* webkit_web_view_new_with_settings(WebKitWebViewBackend* backend, 
  *
  * Since: 2.6
  */
-WebKitWebView* webkit_web_view_new_with_user_content_manager(WebKitWebViewBackend* backend, WebKitUserContentManager* userContentManager)
+CyberKitWebView* webkit_web_view_new_with_user_content_manager(CyberKitWebViewBackend* backend, CyberKitUserContentManager* userContentManager)
 {
     g_return_val_if_fail(backend, nullptr);
     g_return_val_if_fail(WEBKIT_IS_USER_CONTENT_MANAGER(userContentManager), nullptr);
@@ -205,8 +205,8 @@ WebKitWebView* webkit_web_view_new_with_user_content_manager(WebKitWebViewBacken
 
 /**
  * webkit_web_view_set_background_color:
- * @web_view: a #WebKitWebView
- * @color: a #WebKitColor
+ * @web_view: a #CyberKitWebView
+ * @color: a #CyberKitColor
  *
  * Sets the color that will be used to draw the @web_view background before
  * the actual contents are rendered. Note that if the web page loaded in @web_view
@@ -215,7 +215,7 @@ WebKitWebView* webkit_web_view_new_with_user_content_manager(WebKitWebViewBacken
  *
  * Since: 2.24
  */
-void webkit_web_view_set_background_color(WebKitWebView* webView, WebKitColor* backgroundColor)
+void webkit_web_view_set_background_color(CyberKitWebView* webView, CyberKitColor* backgroundColor)
 {
     g_return_if_fail(WEBKIT_IS_WEB_VIEW(webView));
     g_return_if_fail(backgroundColor);
@@ -226,8 +226,8 @@ void webkit_web_view_set_background_color(WebKitWebView* webView, WebKitColor* b
 
 /**
  * webkit_web_view_get_background_color:
- * @web_view: a #WebKitWebView
- * @color: (out): a #WebKitColor to fill in with the background color
+ * @web_view: a #CyberKitWebView
+ * @color: (out): a #CyberKitColor to fill in with the background color
  *
  * Gets the color that is used to draw the @web_view background before the
  * actual contents are rendered. For more information see also
@@ -235,7 +235,7 @@ void webkit_web_view_set_background_color(WebKitWebView* webView, WebKitColor* b
  *
  * Since: 2.24
  */
-void webkit_web_view_get_background_color(WebKitWebView* webView, WebKitColor* color)
+void webkit_web_view_get_background_color(CyberKitWebView* webView, CyberKitColor* color)
 {
     g_return_if_fail(WEBKIT_IS_WEB_VIEW(webView));
     auto& page = webkitWebViewGetPage(webView);
@@ -244,18 +244,18 @@ void webkit_web_view_get_background_color(WebKitWebView* webView, WebKitColor* c
     webkitColorFillFromCyberCoreColor(webCoreColor.value_or(CyberCore::Color::white), color);
 }
 
-guint createShowOptionMenuSignal(WebKitWebViewClass* webViewClass)
+guint createShowOptionMenuSignal(CyberKitWebViewClass* webViewClass)
 {
     /**
-     * WebKitWebView::show-option-menu:
-     * @web_view: the #WebKitWebView on which the signal is emitted
-     * @menu: the #WebKitOptionMenu
+     * CyberKitWebView::show-option-menu:
+     * @web_view: the #CyberKitWebView on which the signal is emitted
+     * @menu: the #CyberKitOptionMenu
      * @rectangle: the option element area
      *
      * This signal is emitted when a select element in @web_view needs to display a
      * dropdown menu. This signal can be used to show a custom menu, using @menu to get
      * the details of all items that should be displayed. The area of the element in the
-     * #WebKitWebView is given as @rectangle parameter, it can be used to position the
+     * #CyberKitWebView is given as @rectangle parameter, it can be used to position the
      * menu.
      * To handle this signal asynchronously you should keep a ref of the @menu.
      *
@@ -268,7 +268,7 @@ guint createShowOptionMenuSignal(WebKitWebViewClass* webViewClass)
         "show-option-menu",
         G_TYPE_FROM_CLASS(webViewClass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitWebViewClass, show_option_menu),
+        G_STRUCT_OFFSET(CyberKitWebViewClass, show_option_menu),
         g_signal_accumulator_true_handled, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_BOOLEAN, 2,

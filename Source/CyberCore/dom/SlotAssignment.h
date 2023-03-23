@@ -34,7 +34,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class HTMLSlotElement;
@@ -226,4 +226,4 @@ inline void ShadowRoot::willRemoveAssignedNode(const Node& node)
         m_slotAssignment->willRemoveAssignedNode(node, *this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

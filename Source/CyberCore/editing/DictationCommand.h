@@ -28,7 +28,7 @@
 #include "DictationAlternative.h"
 #include "TextInsertionBaseCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DictationCommand : public TextInsertionBaseCommand {
     friend class DictationCommandLineOperation;
@@ -53,4 +53,4 @@ private:
     Vector<DictationAlternative> m_alternatives;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

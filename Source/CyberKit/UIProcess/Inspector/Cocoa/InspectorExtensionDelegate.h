@@ -34,7 +34,7 @@
 @class _WKInspectorExtension;
 @protocol _WKInspectorExtensionDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class InspectorExtensionDelegate {
     WTF_MAKE_FAST_ALLOCATED;
@@ -73,6 +73,6 @@ private:
     } m_delegateMethods;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

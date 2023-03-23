@@ -32,7 +32,7 @@
 #import <pal/spi/cocoa/AccessibilitySupportSPI.h>
 #import <pal/spi/cocoa/AccessibilitySupportSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void AXIsolatedObject::initializePlatformProperties(const Ref<const AXCoreObject>& object, IsRoot)
 {
@@ -186,6 +186,6 @@ String AXIsolatedObject::titleAttributeValue() const
     return const_cast<AXIsolatedObject*>(this)->getOrRetrievePropertyValue<String>(AXPropertyName::TitleAttributeValue);
 }
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(ACCESSIBILITY_ISOLATED_TREE) && PLATFORM(MAC)

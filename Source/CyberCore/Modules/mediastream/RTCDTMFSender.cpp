@@ -34,7 +34,7 @@
 #include "ScriptExecutionContext.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCDTMFSender);
 
@@ -155,6 +155,6 @@ const char* RTCDTMFSender::activeDOMObjectName() const
     return "RTCDTMFSender";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

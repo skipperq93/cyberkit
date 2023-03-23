@@ -30,7 +30,7 @@
 
 #include "WebContextMenuItem.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebContextMenuListenerProxy::WebContextMenuListenerProxy(WebContextMenuListenerProxy::Client& client)
@@ -48,6 +48,6 @@ void WebContextMenuListenerProxy::useContextMenuItems(Vector<Ref<WebContextMenuI
     m_client->useContextMenuItems(WTFMove(items));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

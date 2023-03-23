@@ -30,7 +30,7 @@
 #include "ApplePayPaymentContact.h"
 #include "ApplePayPaymentMethod.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPayment {
     struct Token {

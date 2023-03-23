@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OESFBORenderMipmap final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(OESFBORenderMipmap);
@@ -40,4 +40,4 @@ public:
     static bool supported(GraphicsContextGL&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

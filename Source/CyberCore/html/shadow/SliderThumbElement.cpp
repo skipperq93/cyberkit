@@ -58,7 +58,7 @@
 #include "TouchEvent.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -487,7 +487,7 @@ void SliderThumbElement::handleTouchEvent(TouchEvent& touchEvent)
     }
 
     const AtomString& eventType = touchEvent.type();
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (eventType == eventNames.touchstartEvent) {
         handleTouchStart(touchEvent);
         return;

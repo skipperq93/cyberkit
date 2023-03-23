@@ -43,7 +43,7 @@ struct ExceptionData;
 struct MockWebAuthenticationConfiguration;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class AuthenticatorManager;
 
 struct WebAuthenticationRequestData;
@@ -61,7 +61,7 @@ public:
     WebAuthenticationPanel();
     ~WebAuthenticationPanel();
 
-    void handleRequest(WebKit::WebAuthenticationRequestData&&, Callback&&);
+    void handleRequest(CyberKit::WebAuthenticationRequestData&&, Callback&&);
     void cancel() const;
     void setMockConfiguration(CyberCore::MockWebAuthenticationConfiguration&&);
 
@@ -70,7 +70,7 @@ public:
 
     // FIXME: <rdar://problem/71509848> Remove the following deprecated methods.
     using TransportSet = HashSet<CyberCore::AuthenticatorTransport, WTF::IntHash<CyberCore::AuthenticatorTransport>, WTF::StrongEnumHashTraits<CyberCore::AuthenticatorTransport>>;
-    static Ref<WebAuthenticationPanel> create(const WebKit::AuthenticatorManager&, const WTF::String& rpId, const TransportSet&, CyberCore::ClientDataType, const WTF::String& userName);
+    static Ref<WebAuthenticationPanel> create(const CyberKit::AuthenticatorManager&, const WTF::String& rpId, const TransportSet&, CyberCore::ClientDataType, const WTF::String& userName);
     WTF::String rpId() const { return m_rpId; }
     const Vector<CyberCore::AuthenticatorTransport>& transports() const { return m_transports; }
     CyberCore::ClientDataType clientDataType() const { return m_clientDataType; }
@@ -78,13 +78,13 @@ public:
 
 private:
     // FIXME: <rdar://problem/71509848> Remove the following deprecated method.
-    WebAuthenticationPanel(const WebKit::AuthenticatorManager&, const WTF::String& rpId, const TransportSet&, CyberCore::ClientDataType, const WTF::String& userName);
+    WebAuthenticationPanel(const CyberKit::AuthenticatorManager&, const WTF::String& rpId, const TransportSet&, CyberCore::ClientDataType, const WTF::String& userName);
 
-    std::unique_ptr<WebKit::AuthenticatorManager> m_manager; // FIXME: <rdar://problem/71509848> Change to UniqueRef.
+    std::unique_ptr<CyberKit::AuthenticatorManager> m_manager; // FIXME: <rdar://problem/71509848> Change to UniqueRef.
     UniqueRef<WebAuthenticationPanelClient> m_client;
 
     // FIXME: <rdar://problem/71509848> Remove the following deprecated fields.
-    WeakPtr<WebKit::AuthenticatorManager> m_weakManager;
+    WeakPtr<CyberKit::AuthenticatorManager> m_weakManager;
     WTF::String m_rpId;
     Vector<CyberCore::AuthenticatorTransport> m_transports;
     CyberCore::ClientDataType m_clientDataType;

@@ -36,7 +36,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCEncodedFrame : public RefCounted<RTCEncodedFrame> {
 public:
@@ -52,6 +52,6 @@ protected:
     mutable RefPtr<JSC::ArrayBuffer> m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

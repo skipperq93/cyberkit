@@ -28,7 +28,7 @@
 #include "FrameIdentifier.h"
 #include "SpeechRecognitionConnectionClientIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionConnectionClient;
 class SpeechRecognitionUpdate;
@@ -45,5 +45,5 @@ public:
     virtual void didReceiveUpdate(SpeechRecognitionUpdate&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

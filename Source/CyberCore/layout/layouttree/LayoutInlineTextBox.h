@@ -28,7 +28,7 @@
 #include "LayoutBox.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Layout {
 

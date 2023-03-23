@@ -30,7 +30,7 @@
 
 #include "NotificationClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NotificationController::NotificationController(NotificationClient* client)
     : m_client(*client)
@@ -61,6 +61,6 @@ void provideNotification(Page* page, NotificationClient* client)
     NotificationController::provideTo(page, NotificationController::supplementName(), makeUnique<NotificationController>(client));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

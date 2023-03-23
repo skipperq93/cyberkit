@@ -32,7 +32,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WeakPtrImplWithEventTargetData;
@@ -61,8 +61,8 @@ private:
     WeakPtr<Document, WeakPtrImplWithEventTargetData> m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSStyleImageValue)
-    static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSStyleImageValue; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSStyleImageValue)
+    static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSStyleImageValue; }
 SPECIALIZE_TYPE_TRAITS_END()

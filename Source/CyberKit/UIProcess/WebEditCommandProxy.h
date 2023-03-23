@@ -34,7 +34,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -62,4 +62,4 @@ private:
     WeakPtr<WebPageProxy> m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

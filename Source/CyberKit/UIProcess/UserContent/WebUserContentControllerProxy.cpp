@@ -48,7 +48,7 @@
 #include "WebCompiledContentRuleList.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -394,4 +394,4 @@ void WebUserContentControllerProxy::removeAllContentRuleLists()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

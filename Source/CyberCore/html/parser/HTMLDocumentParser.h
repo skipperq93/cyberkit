@@ -32,7 +32,7 @@
 #include "PendingScriptClient.h"
 #include "ScriptableDocumentParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentFragment;
 class Element;
@@ -164,4 +164,4 @@ inline HTMLTreeBuilder& HTMLDocumentParser::treeBuilder()
     return *m_treeBuilder;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

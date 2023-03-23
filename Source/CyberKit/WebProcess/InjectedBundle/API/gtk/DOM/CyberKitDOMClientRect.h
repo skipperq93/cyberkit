@@ -58,7 +58,7 @@ webkit_dom_client_rect_get_type(void);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gfloat
 webkit_dom_client_rect_get_top(CyberKitDOMClientRect* self);
@@ -73,7 +73,7 @@ webkit_dom_client_rect_get_top(CyberKitDOMClientRect* self);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gfloat
 webkit_dom_client_rect_get_right(CyberKitDOMClientRect* self);
@@ -88,7 +88,7 @@ webkit_dom_client_rect_get_right(CyberKitDOMClientRect* self);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gfloat
 webkit_dom_client_rect_get_bottom(CyberKitDOMClientRect* self);
@@ -103,7 +103,7 @@ webkit_dom_client_rect_get_bottom(CyberKitDOMClientRect* self);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gfloat
 webkit_dom_client_rect_get_left(CyberKitDOMClientRect* self);
@@ -118,7 +118,7 @@ webkit_dom_client_rect_get_left(CyberKitDOMClientRect* self);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gfloat
 webkit_dom_client_rect_get_width(CyberKitDOMClientRect* self);
@@ -133,7 +133,7 @@ webkit_dom_client_rect_get_width(CyberKitDOMClientRect* self);
  *
  * Since: 2.18
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gfloat
 webkit_dom_client_rect_get_height(CyberKitDOMClientRect* self);

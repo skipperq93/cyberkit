@@ -27,7 +27,7 @@
 
 #include "CSSColorValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSColor : public CSSColorValue {
     WTF_MAKE_ISO_ALLOCATED(CSSColor);
@@ -45,4 +45,4 @@ private:
     CSSNumberish m_alpha;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

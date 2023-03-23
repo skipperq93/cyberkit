@@ -18,18 +18,18 @@
  */
 
 #include "config.h"
-#include "WebKitIconLoadingClient.h"
+#include "CyberKitIconLoadingClient.h"
 
 #include "APIIconLoadingClient.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include <wtf/glib/GWeakPtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 class IconLoadingClient : public API::IconLoadingClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit IconLoadingClient(WebKitWebView* webView)
+    explicit IconLoadingClient(CyberKitWebView* webView)
         : m_webView(webView)
     {
     }
@@ -44,7 +44,7 @@ private:
         }
 
         CyberCore::LinkIcon copiedIcon = icon;
-        webkitWebViewGetLoadDecisionForIcon(m_webView, icon, [weakWebView = GWeakPtr<WebKitWebView>(m_webView), icon = WTFMove(copiedIcon), completionHandler = WTFMove(completionHandler)] (bool loadIcon) mutable {
+        webkitWebViewGetLoadDecisionForIcon(m_webView, icon, [weakWebView = GWeakPtr<CyberKitWebView>(m_webView), icon = WTFMove(copiedIcon), completionHandler = WTFMove(completionHandler)] (bool loadIcon) mutable {
             if (!weakWebView || !loadIcon) {
                 completionHandler(nullptr);
                 return;
@@ -58,10 +58,10 @@ private:
         });
     }
 
-    WebKitWebView* m_webView;
+    CyberKitWebView* m_webView;
 };
 
-void attachIconLoadingClientToView(WebKitWebView* webView)
+void attachIconLoadingClientToView(CyberKitWebView* webView)
 {
     webkitWebViewGetPage(webView).setIconLoadingClient(makeUnique<IconLoadingClient>(webView));
 }

@@ -28,7 +28,7 @@
 
 #include "InspectorInstrumentation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool InspectorInstrumentationCyberKit::shouldInterceptRequestInternal(const ResourceLoader& loader)
 {
@@ -50,4 +50,4 @@ void InspectorInstrumentationCyberKit::interceptResponseInternal(const Frame& fr
     InspectorInstrumentation::interceptResponse(frame, response, identifier, WTFMove(handler));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

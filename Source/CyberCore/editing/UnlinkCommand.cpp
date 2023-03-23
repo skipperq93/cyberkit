@@ -28,7 +28,7 @@
 
 #include "HTMLAnchorElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 UnlinkCommand::UnlinkCommand(Document& document)
     : CompositeEditCommand(document)

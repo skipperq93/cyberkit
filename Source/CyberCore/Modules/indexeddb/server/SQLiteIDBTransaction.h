@@ -33,7 +33,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RobinHoodHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBCursorInfo;
 class SQLiteDatabase;
@@ -92,4 +92,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 RTCError::RTCError(const Init& initializer, String&& message)
     : DOMException(0, "OperationError"_s, WTFMove(message))
@@ -36,6 +36,6 @@ RTCError::RTCError(const Init& initializer, String&& message)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

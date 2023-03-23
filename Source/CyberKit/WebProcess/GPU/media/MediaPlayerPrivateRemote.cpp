@@ -91,7 +91,7 @@ extern WTFLogChannel LogMedia;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #ifdef ALWAYS_LOG_UNIMPLEMENTED_METHODS
@@ -1490,6 +1490,6 @@ WTFLogChannel& MediaPlayerPrivateRemote::logChannel() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

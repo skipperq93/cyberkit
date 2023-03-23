@@ -27,7 +27,7 @@
 
 #include "StylePropertyMapReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -47,4 +47,4 @@ protected:
     virtual RefPtr<CSSValue> customPropertyValue(const AtomString&) const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

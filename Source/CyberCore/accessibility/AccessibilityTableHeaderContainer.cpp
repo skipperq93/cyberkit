@@ -32,7 +32,7 @@
 #include "AXObjectCache.h"
 #include "AccessibilityTable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilityTableHeaderContainer::AccessibilityTableHeaderContainer() = default;
 
@@ -80,4 +80,4 @@ void AccessibilityTableHeaderContainer::addChildren()
         m_headerRect.unite(child->elementRect());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

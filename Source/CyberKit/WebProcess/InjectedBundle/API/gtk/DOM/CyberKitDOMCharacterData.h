@@ -57,7 +57,7 @@ webkit_dom_character_data_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_character_data_substring_data(CyberKitDOMCharacterData* self, gulong offset, gulong length, GError** error);
@@ -69,7 +69,7 @@ webkit_dom_character_data_substring_data(CyberKitDOMCharacterData* self, gulong 
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_character_data_append_data(CyberKitDOMCharacterData* self, const gchar* data, GError** error);
@@ -82,7 +82,7 @@ webkit_dom_character_data_append_data(CyberKitDOMCharacterData* self, const gcha
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_character_data_insert_data(CyberKitDOMCharacterData* self, gulong offset, const gchar* data, GError** error);
@@ -95,7 +95,7 @@ webkit_dom_character_data_insert_data(CyberKitDOMCharacterData* self, gulong off
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_character_data_delete_data(CyberKitDOMCharacterData* self, gulong offset, gulong length, GError** error);
@@ -109,7 +109,7 @@ webkit_dom_character_data_delete_data(CyberKitDOMCharacterData* self, gulong off
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_character_data_replace_data(CyberKitDOMCharacterData* self, gulong offset, gulong length, const gchar* data, GError** error);
@@ -120,7 +120,7 @@ webkit_dom_character_data_replace_data(CyberKitDOMCharacterData* self, gulong of
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_character_data_get_data(CyberKitDOMCharacterData* self);
@@ -132,7 +132,7 @@ webkit_dom_character_data_get_data(CyberKitDOMCharacterData* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_character_data_set_data(CyberKitDOMCharacterData* self, const gchar* value, GError** error);
@@ -143,7 +143,7 @@ webkit_dom_character_data_set_data(CyberKitDOMCharacterData* self, const gchar* 
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_character_data_get_length(CyberKitDOMCharacterData* self);

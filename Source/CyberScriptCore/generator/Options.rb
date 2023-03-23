@@ -46,7 +46,7 @@ $config = {
     },
     wasm_json_filename: {
         long: "--wasm_json FILE",
-        desc: "Path to JavaScriptCore's wasm.json file",
+        desc: "Path to CyberScriptCore's wasm.json file",
     },
     wasm_llint_generator_filename: {
         long: "--wasm_llint_generator_h FILE",

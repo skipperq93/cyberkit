@@ -25,7 +25,7 @@
 #include "TestCallbackFunctionWithThisObject.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestCallbackFunctionWithThisObject final : public TestCallbackFunctionWithThisObject {
 public:
@@ -51,4 +51,4 @@ private:
 JSC::JSValue toJS(TestCallbackFunctionWithThisObject&);
 inline JSC::JSValue toJS(TestCallbackFunctionWithThisObject* impl) { return impl ? toJS(*impl) : JSC::jsNull(); }
 
-} // namespace WebCore
+} // namespace CyberCore

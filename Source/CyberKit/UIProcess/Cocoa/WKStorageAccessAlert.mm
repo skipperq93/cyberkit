@@ -38,7 +38,7 @@
 #import <CyberCore/RegistrableDomain.h>
 #import <wtf/BlockPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void presentStorageAccessAlert(WKWebView *webView, const CyberCore::RegistrableDomain& requesting, const CyberCore::RegistrableDomain& current, CompletionHandler<void(bool)>&& completionHandler)
 {

@@ -30,7 +30,7 @@
 #include "PaymentCurrencyAmount.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentShippingOption {
     String id;
@@ -39,6 +39,6 @@ struct PaymentShippingOption {
     bool selected { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

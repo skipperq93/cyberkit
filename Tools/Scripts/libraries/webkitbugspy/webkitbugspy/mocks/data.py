@@ -40,7 +40,7 @@ USERS.create(
     username='wwatcher@example.com',
 )
 USERS.create(
-    name='Radar WebKit Bug Importer',
+    name='Radar CyberKit Bug Importer',
     emails=['webkit-bug-importer@group.apple.com'],
     username='webkit-bug-importer@group.apple.com',
 )
@@ -53,7 +53,7 @@ ISSUES = [
         creator=USERS['Felix Filer'],
         assignee=USERS['Tim Contributor'],
         description='An example issue for testing',
-        project='WebKit',
+        project='CyberKit',
         component='Text',
         version='Other',
         milestone='October',
@@ -76,7 +76,7 @@ ISSUES = [
         creator=USERS['Tim Contributor'],
         assignee=USERS['Tim Contributor'],
         description='We need to support a new feature',
-        project='WebKit',
+        project='CyberKit',
         component='Scrolling',
         version='Safari 15',
         milestone='October',
@@ -96,9 +96,9 @@ ISSUES = [
         creator=USERS['Felix Filer'],
         assignee=USERS['Tim Contributor'],
         description='Another example issue for testing, example.com is broken',
-        project='WebKit',
+        project='CyberKit',
         component='SVG',
-        version='WebKit Local Build',
+        version='CyberKit Local Build',
         milestone='October',
         keywords=['Keyword B'],
         comments=[
@@ -112,10 +112,10 @@ ISSUES = [
 ]
 
 PROJECTS = dict(
-    WebKit=dict(
+    CyberKit=dict(
         id=1,
-        description='The WebKit browser engine',
-        versions=['Other', 'Safari 15', 'Safari Technology Preview', 'WebKit Local Build'],
+        description='The CyberKit browser engine',
+        versions=['Other', 'Safari 15', 'Safari Technology Preview', 'CyberKit Local Build'],
         components=dict(
             Scrolling=dict(description='Bugs related to main thread and off-main thread scrolling'),
             SVG=dict(description='For bugs in the SVG implementation.'),

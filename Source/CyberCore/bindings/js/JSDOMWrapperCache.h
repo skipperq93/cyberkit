@@ -28,13 +28,13 @@
 #include "JSDOMWrapper.h"
 #include "ScriptWrappable.h"
 #include "ScriptWrappableInlines.h"
-#include "WebCoreTypedArrayController.h"
+#include "CyberCoreTypedArrayController.h"
 #include <CyberScriptCore/JSArrayBuffer.h>
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <CyberScriptCore/Weak.h>
 #include <CyberScriptCore/WeakInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT JSC::Structure* getCachedDOMStructure(const JSDOMGlobalObject&, const JSC::ClassInfo*);
 WEBCORE_EXPORT JSC::Structure* cacheDOMStructure(JSDOMGlobalObject&, JSC::Structure*, const JSC::ClassInfo*);
@@ -100,7 +100,7 @@ template<typename WrapperClass> inline JSC::JSObject* getDOMPrototype(JSC::VM& v
 
 inline JSC::WeakHandleOwner* wrapperOwner(DOMWrapperWorld& world, JSC::ArrayBuffer*)
 {
-    return static_cast<WebCoreTypedArrayController*>(world.vm().m_typedArrayController.get())->wrapperOwner();
+    return static_cast<CyberCoreTypedArrayController*>(world.vm().m_typedArrayController.get())->wrapperOwner();
 }
 
 inline void* wrapperKey(JSC::ArrayBuffer* domObject)
@@ -222,4 +222,4 @@ template<typename DOMClass> inline void setSubclassStructureIfNeeded(JSC::JSGlob
     jsObject->setStructure(vm, subclassStructure);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

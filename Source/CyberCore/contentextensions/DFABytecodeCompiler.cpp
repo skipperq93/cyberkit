@@ -32,7 +32,7 @@
 #include "DFA.h"
 #include "DFANode.h"
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 template <typename IntType>
 void append(Vector<DFABytecode>& bytecode, IntType value)
@@ -567,6 +567,6 @@ void DFABytecodeCompiler::compile()
     setBits<DFAHeader>(m_bytecode, startLocation, m_bytecode.size() - startLocation);
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

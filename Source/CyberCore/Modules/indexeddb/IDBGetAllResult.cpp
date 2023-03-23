@@ -30,7 +30,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBGetAllResult);
 
@@ -85,4 +85,4 @@ Vector<String> IDBGetAllResult::allBlobFilePaths() const
     return copyToVector(pathSet);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

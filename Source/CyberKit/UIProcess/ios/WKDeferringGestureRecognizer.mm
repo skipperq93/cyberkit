@@ -46,7 +46,7 @@
     auto shouldDeferGestures = [_deferringGestureDelegate deferringGestureRecognizer:self willBeginTouchesWithEvent:event];
     [super touchesBegan:touches withEvent:event];
 
-    if (shouldDeferGestures == WebKit::ShouldDeferGestures::No)
+    if (shouldDeferGestures == CyberKit::ShouldDeferGestures::No)
         self.state = UIGestureRecognizerStateFailed;
 }
 
@@ -66,9 +66,9 @@
     self.state = UIGestureRecognizerStateFailed;
 }
 
-- (void)endDeferral:(WebKit::ShouldPreventGestures)shouldPreventGestures
+- (void)endDeferral:(CyberKit::ShouldPreventGestures)shouldPreventGestures
 {
-    if (shouldPreventGestures == WebKit::ShouldPreventGestures::Yes)
+    if (shouldPreventGestures == CyberKit::ShouldPreventGestures::Yes)
         self.state = UIGestureRecognizerStateEnded;
     else
         self.state = UIGestureRecognizerStateFailed;

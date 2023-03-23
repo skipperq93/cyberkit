@@ -31,7 +31,7 @@
 #include <cairo.h>
 #include <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static std::optional<String> base64EncodedPNGData(cairo_surface_t* surface)
@@ -71,5 +71,5 @@ std::optional<String> WebAutomationSession::platformGetBase64EncodedPNGData(cons
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

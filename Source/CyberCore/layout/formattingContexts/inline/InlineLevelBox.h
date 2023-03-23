@@ -31,7 +31,7 @@
 #include "LayoutUnits.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class LineBox;

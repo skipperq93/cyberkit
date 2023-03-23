@@ -77,7 +77,7 @@ typedef NSInteger WKAirPlayRoutePickerRouteSharingPolicy;
     if (_actionSheet)
         return;
 
-    __block RetainPtr<MPAVRoutingController> routingController = adoptNS([allocMPAVRoutingControllerInstance() initWithName:@"WebKit - HTML media element showing AirPlay route picker"]);
+    __block RetainPtr<MPAVRoutingController> routingController = adoptNS([allocMPAVRoutingControllerInstance() initWithName:@"CyberKit - HTML media element showing AirPlay route picker"]);
     [routingController setDiscoveryMode:MPRouteDiscoveryModeDetailed];
 
     RetainPtr<MPMediaControlsConfiguration> configuration;

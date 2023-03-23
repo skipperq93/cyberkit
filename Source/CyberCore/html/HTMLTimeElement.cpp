@@ -29,7 +29,7 @@
 #include "HTMLNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLTimeElement);
 
@@ -46,4 +46,4 @@ inline HTMLTimeElement::HTMLTimeElement(const QualifiedName& tagName, Document& 
     ASSERT(hasTagName(timeTag));
 }
 
-} // namespace WebCore.
+} // namespace CyberCore.

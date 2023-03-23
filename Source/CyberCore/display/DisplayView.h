@@ -29,7 +29,7 @@
 #include "LayoutUnits.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class FrameView;
@@ -74,5 +74,5 @@ private:
 };
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

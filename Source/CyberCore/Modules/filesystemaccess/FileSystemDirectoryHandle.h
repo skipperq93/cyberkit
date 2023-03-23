@@ -27,7 +27,7 @@
 
 #include "FileSystemHandle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemFileHandle;
 template<typename> class ExceptionOr;
@@ -80,8 +80,8 @@ private:
     FileSystemDirectoryHandle(ScriptExecutionContext&, String&&, FileSystemHandleIdentifier, Ref<FileSystemStorageConnection>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::FileSystemDirectoryHandle)
-    static bool isType(const WebCore::FileSystemHandle& handle) { return handle.kind() == WebCore::FileSystemHandle::Kind::Directory; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::FileSystemDirectoryHandle)
+    static bool isType(const CyberCore::FileSystemHandle& handle) { return handle.kind() == CyberCore::FileSystemHandle::Kind::Directory; }
 SPECIALIZE_TYPE_TRAITS_END()

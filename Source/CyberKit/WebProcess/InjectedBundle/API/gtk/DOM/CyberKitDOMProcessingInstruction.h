@@ -54,7 +54,7 @@ webkit_dom_processing_instruction_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_processing_instruction_get_target(CyberKitDOMProcessingInstruction* self);
@@ -65,7 +65,7 @@ webkit_dom_processing_instruction_get_target(CyberKitDOMProcessingInstruction* s
  *
  * Returns: (transfer full): A #CyberKitDOMStyleSheet
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMStyleSheet*
 webkit_dom_processing_instruction_get_sheet(CyberKitDOMProcessingInstruction* self);

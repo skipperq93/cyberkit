@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMCacheStorage;
 class DOMWindow;
@@ -40,4 +40,4 @@ public:
     static DOMCacheStorage* caches(ScriptExecutionContext&, WorkerGlobalScope&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

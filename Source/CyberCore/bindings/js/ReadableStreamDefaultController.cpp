@@ -31,13 +31,13 @@
 #include "config.h"
 #include "ReadableStreamDefaultController.h"
 
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/CatchScope.h>
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/IdentifierInlines.h>
 #include <CyberScriptCore/JSObjectInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool invokeReadableStreamDefaultControllerFunction(JSC::JSGlobalObject& lexicalGlobalObject, const JSC::Identifier& identifier, const JSC::MarkedArgumentBuffer& arguments)
 {
@@ -133,4 +133,4 @@ bool ReadableStreamDefaultController::enqueue(RefPtr<JSC::ArrayBuffer>&& buffer)
     return enqueue(value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

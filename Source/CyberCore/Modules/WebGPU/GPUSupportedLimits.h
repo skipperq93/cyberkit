@@ -27,7 +27,7 @@
 
 #include <pal/graphics/WebGPU/WebGPUSupportedLimits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GPUSupportedLimits : public RefCounted<GPUSupportedLimits> {
 public:

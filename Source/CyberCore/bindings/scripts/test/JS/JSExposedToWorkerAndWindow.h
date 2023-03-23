@@ -25,7 +25,7 @@
 #include "JSDOMWrapper.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSExposedToWorkerAndWindow : public JSDOMWrapper<ExposedToWorkerAndWindow> {
 public:
@@ -95,4 +95,4 @@ template<> ExposedToWorkerAndWindow::Dict convertDictionary<ExposedToWorkerAndWi
 JSC::JSObject* convertDictionaryToJS(JSC::JSGlobalObject&, JSDOMGlobalObject&, const ExposedToWorkerAndWindow::Dict&);
 
 
-} // namespace WebCore
+} // namespace CyberCore

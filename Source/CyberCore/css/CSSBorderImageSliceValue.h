@@ -28,7 +28,7 @@
 #include "CSSValue.h"
 #include "Quad.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 
@@ -52,6 +52,6 @@ private:
     bool m_fill { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSBorderImageSliceValue, isBorderImageSliceValue())

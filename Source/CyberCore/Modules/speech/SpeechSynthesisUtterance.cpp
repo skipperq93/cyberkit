@@ -34,7 +34,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SpeechSynthesisUtterance);
     
@@ -102,6 +102,6 @@ void SpeechSynthesisUtterance::errorEventOccurred(const AtomString& type, Speech
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

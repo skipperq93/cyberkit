@@ -40,7 +40,7 @@ ALLOW_UNUSED_PARAMETERS_BEGIN
 
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCPeerConnectionBackend;
 
@@ -80,6 +80,6 @@ private:
     mutable std::optional<webrtc::RtpParameters> m_currentParameters;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

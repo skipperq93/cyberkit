@@ -35,7 +35,7 @@
 #include <pal/crypto/tasn1/Utilities.h>
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const char* curveName(CryptoKeyEC::NamedCurve curve)
 {
@@ -727,6 +727,6 @@ Vector<uint8_t> CryptoKeyEC::platformExportPkcs8() const
     return WTFMove(result.value());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

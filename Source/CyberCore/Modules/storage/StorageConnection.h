@@ -29,7 +29,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemStorageConnection;
 template<typename> class ExceptionOr;
@@ -49,4 +49,4 @@ public:
     virtual void getEstimate(ClientOrigin&&, GetEstimateCallback&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

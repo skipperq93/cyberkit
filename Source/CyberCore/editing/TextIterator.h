@@ -33,7 +33,7 @@
 #include "TextIteratorBehavior.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTextFragment;
 
@@ -316,4 +316,4 @@ inline BoundaryPoint resolveCharacterLocation(const SimpleRange& scope, uint64_t
     return resolveCharacterRange(scope, { location, 0 }, behaviors).start;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <wtf/ByteOrder.h>
 #include <wtf/CryptographicallyRandomNumber.h>
 
-namespace WebCore::PushCrypto {
+namespace CyberCore::PushCrypto {
 
 // Arbitrary limit that's larger than the largest payload APNS should ever give us.
 static constexpr size_t maxPushPayloadLength = 65535;
@@ -300,6 +300,6 @@ std::optional<Vector<uint8_t>> decryptAESGCMPayload(const ClientKeys& clientKeys
     return Vector<uint8_t> { plainText.data() + paddingLength, plainText.size() - paddingLength };
 }
 
-} // namespace WebCore::PushCrypto
+} // namespace CyberCore::PushCrypto
 
 #endif // ENABLE(SERVICE_WORKER)

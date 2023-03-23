@@ -34,7 +34,7 @@
 GST_DEBUG_CATEGORY(webkit_webrtc_data_channel_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_data_channel_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 GUniquePtr<GstStructure> GStreamerDataChannelHandler::fromRTCDataChannelInit(const RTCDataChannelInit& options)
 {
@@ -376,6 +376,6 @@ void GStreamerDataChannelHandler::postTask(Function<void()>&& function)
     ScriptExecutionContext::postTaskTo(m_contextIdentifier, WTFMove(function));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

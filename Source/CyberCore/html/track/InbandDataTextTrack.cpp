@@ -34,7 +34,7 @@
 #include "TextTrackList.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(InbandDataTextTrack);
 
@@ -138,6 +138,6 @@ ExceptionOr<void> InbandDataTextTrack::removeCue(TextTrackCue& cue)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

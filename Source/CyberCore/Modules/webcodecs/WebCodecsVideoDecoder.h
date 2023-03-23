@@ -37,7 +37,7 @@
 #include <wtf/Deque.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebCodecsEncodedVideoChunk;
 class WebCodecsErrorCallback;

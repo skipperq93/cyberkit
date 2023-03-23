@@ -27,10 +27,10 @@
 
 #include "VoidCallback.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RequestCookieConsentOptions {
     RefPtr<VoidCallback> moreInfo;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

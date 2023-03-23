@@ -29,7 +29,7 @@
 #include "CachedResourceRequest.h"
 #include "ScriptType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PreloadRequest {
     WTF_MAKE_FAST_ALLOCATED;
@@ -88,4 +88,4 @@ private:
     Document& m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

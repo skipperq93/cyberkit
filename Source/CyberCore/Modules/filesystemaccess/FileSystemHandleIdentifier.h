@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum FileSystemHandleIdentifierType { };
 using FileSystemHandleIdentifier = ObjectIdentifier<FileSystemHandleIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

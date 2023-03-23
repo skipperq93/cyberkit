@@ -28,7 +28,7 @@
 #include "InspectorWebAgentBase.h"
 #include "WebConsoleAgent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerConsoleAgent final : public WebConsoleAgent {
     WTF_MAKE_NONCOPYABLE(WorkerConsoleAgent);
@@ -38,4 +38,4 @@ public:
     ~WorkerConsoleAgent();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -20,15 +20,15 @@
 #include "config.h"
 #include "InputMethodFilter.h"
 
-#include "WebKitInputMethodContextImplGtk.h"
-#include "WebKitInputMethodContextPrivate.h"
-#include "WebKitWebViewBaseInternal.h"
+#include "CyberKitInputMethodContextImplGtk.h"
+#include "CyberKitInputMethodContextPrivate.h"
+#include "CyberKitWebViewBaseInternal.h"
 #include <CyberCore/GUniquePtrGtk.h>
 #include <CyberCore/IntRect.h>
 #include <gdk/gdk.h>
 #include <wtf/SetForScope.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 IntRect InputMethodFilter::platformTransformCursorRectToViewCoordinates(const IntRect& cursorRect)
@@ -80,4 +80,4 @@ InputMethodFilter::FilterResult InputMethodFilter::filterKeyEvent(unsigned type,
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

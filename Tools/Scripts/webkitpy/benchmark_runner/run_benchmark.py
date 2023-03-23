@@ -63,7 +63,7 @@ def config_argument_parser():
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--browser-path', help='Specify the path to a non-default copy of the target browser as a path to the .app.')
-    group.add_argument('--build-directory', dest='build_dir', help='Path to the browser executable (e.g. WebKitBuild/Release/).')
+    group.add_argument('--build-directory', dest='build_dir', help='Path to the browser executable (e.g. CyberKitBuild/Release/).')
 
     return parser
 

@@ -35,7 +35,7 @@
 #include "TouchList.h"
 #include "WindowProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<Touch> DocumentTouch::createTouch(Document& document, RefPtr<WindowProxy>&& window, EventTarget* target, int identifier, int pageX, int pageY, int screenX, int screenY, int radiusX, int radiusY, float rotationAngle, float force)
 {

@@ -31,7 +31,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class DatabaseCallback;
@@ -91,4 +91,4 @@ private:
     HashSet<ProposedDatabase*> m_proposedDatabases WTF_GUARDED_BY_LOCK(m_proposedDatabasesLock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

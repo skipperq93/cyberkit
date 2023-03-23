@@ -28,7 +28,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSImportRule;
 class MediaList;
@@ -60,4 +60,4 @@ public:
 
 TextStream& operator<<(TextStream&, const StyleSheet&);
 
-} // namespace WebCore
+} // namespace CyberCore

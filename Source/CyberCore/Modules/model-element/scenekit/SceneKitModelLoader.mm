@@ -35,7 +35,7 @@
 #import "SceneKitModelLoaderClient.h"
 #import "SceneKitModelLoaderUSD.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Defining trivial virtual destructor in implementation to pin vtable.
 SceneKitModelLoader::~SceneKitModelLoader() = default;
@@ -68,11 +68,11 @@ private:
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 static String mimeTypeUtilizingFileExtensionOverridingForLocalFiles(const Model& modelSource)
 {
-    if (modelSource.url().isLocalFile() && (modelSource.mimeType().isEmpty() || modelSource.mimeType() == WebCore::defaultMIMEType())) {
+    if (modelSource.url().isLocalFile() && (modelSource.mimeType().isEmpty() || modelSource.mimeType() == CyberCore::defaultMIMEType())) {
         // FIXME: Getting the file extension from a URL seems like it should be in shared code.
         auto lastPathComponent = modelSource.url().lastPathComponent();
         auto position = lastPathComponent.reverseFind('.');
@@ -95,7 +95,7 @@ static ModelType modelType(Model& modelSource)
 {
     auto mimeType = mimeTypeUtilizingFileExtensionOverridingForLocalFiles(modelSource);
 
-    if (WebCore::MIMETypeRegistry::isUSDMIMEType(mimeType))
+    if (CyberCore::MIMETypeRegistry::isUSDMIMEType(mimeType))
         return ModelType::USD;
 
     return ModelType::Unknown;

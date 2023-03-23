@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HashMapStylePropertyMapReadOnly final : public MainThreadStylePropertyMapReadOnly {
 public:
@@ -48,4 +48,4 @@ private:
     HashMap<AtomString, RefPtr<CSSValue>> m_map;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

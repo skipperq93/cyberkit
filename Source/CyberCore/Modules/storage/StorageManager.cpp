@@ -40,7 +40,7 @@
 #include "WorkerStorageConnection.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(StorageManager);
 
@@ -145,4 +145,4 @@ void StorageManager::fileSystemAccessGetDirectory(DOMPromiseDeferred<IDLInterfac
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

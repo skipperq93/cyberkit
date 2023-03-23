@@ -64,7 +64,7 @@ WEBKIT_DEPRECATED GType     webkit_dom_event_target_get_type(void) G_GNUC_CONST;
  *
  * Returns: a #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_dispatch_event(CyberKitDOMEventTarget *target,
                                                             CyberKitDOMEvent       *event,
@@ -80,7 +80,7 @@ WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_dispatch_event(CyberKitDOMEv
  *
  * Returns: a #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_add_event_listener(CyberKitDOMEventTarget *target,
                                                                 const char           *event_name,
@@ -97,7 +97,7 @@ WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_add_event_listener(CyberKitD
  *
  * Returns: a #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_remove_event_listener(CyberKitDOMEventTarget *target,
                                                                    const char           *event_name,
@@ -116,7 +116,7 @@ WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_remove_event_listener(CyberK
  *
  * Returns: a #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean webkit_dom_event_target_add_event_listener_with_closure(CyberKitDOMEventTarget *target,
                                                                             const char           *event_name,
@@ -135,7 +135,7 @@ WEBKIT_DEPRECATED gboolean webkit_dom_event_target_add_event_listener_with_closu
  *
  * Returns: a #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean webkit_dom_event_target_remove_event_listener_with_closure(CyberKitDOMEventTarget *target,
                                                                                const char           *event_name,

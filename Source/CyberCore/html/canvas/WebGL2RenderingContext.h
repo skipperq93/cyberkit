@@ -31,7 +31,7 @@
 #include <memory>
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(WEB_CODECS)
 class WebCodecsVideoFrame;
@@ -373,8 +373,8 @@ private:
     GCGLint m_maxArrayTextureLayers { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::WebGL2RenderingContext, isWebGL2())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::WebGL2RenderingContext, isWebGL2())
 
 #endif // WEBGL

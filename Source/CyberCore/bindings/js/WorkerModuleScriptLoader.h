@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class JSDOMGlobalObject;
@@ -80,4 +80,4 @@ private:
     bool m_retrievedFromServiceWorkerCache { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

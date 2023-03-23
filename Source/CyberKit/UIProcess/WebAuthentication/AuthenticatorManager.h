@@ -45,7 +45,7 @@ namespace API {
 class WebAuthenticationPanel;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuthenticatorManager : public AuthenticatorTransportService::Observer, public Authenticator::Observer {
     WTF_MAKE_FAST_ALLOCATED;
@@ -129,6 +129,6 @@ private:
     Mode m_mode { Mode::Compatible };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

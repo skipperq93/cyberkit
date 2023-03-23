@@ -33,9 +33,9 @@
 #import "_WKResourceLoadInfoInternal.h"
 #import <CyberCore/CyberCoreObjCExtras.h>
 
-static _WKResourceLoadInfoResourceType toWKResourceLoadInfoResourceType(WebKit::ResourceLoadInfo::Type type)
+static _WKResourceLoadInfoResourceType toWKResourceLoadInfoResourceType(CyberKit::ResourceLoadInfo::Type type)
 {
-    using namespace WebKit;
+    using namespace CyberKit;
     switch (type) {
     case ResourceLoadInfo::Type::ApplicationManifest:
         return _WKResourceLoadInfoResourceTypeApplicationManifest;
@@ -188,15 +188,15 @@ static _WKResourceLoadInfoResourceType toWKResourceLoadInfoResourceType(WebKit::
         return nil;
     }
 
-    WebKit::ResourceLoadInfo info {
-        makeObjectIdentifier<WebKit::NetworkResourceLoadIdentifierType>(resourceLoadID.unsignedLongLongValue),
+    CyberKit::ResourceLoadInfo info {
+        makeObjectIdentifier<CyberKit::NetworkResourceLoadIdentifierType>(resourceLoadID.unsignedLongLongValue),
         frame->_frameHandle->frameID(),
         parentFrame ? std::optional<CyberCore::FrameIdentifier>(parentFrame->_frameHandle->frameID()) : std::nullopt,
         originalURL,
         originalHTTPMethod,
         WallTime::fromRawSeconds(eventTimestamp.timeIntervalSince1970),
         static_cast<bool>(loadedFromCache.boolValue),
-        static_cast<WebKit::ResourceLoadInfo::Type>(type.unsignedCharValue),
+        static_cast<CyberKit::ResourceLoadInfo::Type>(type.unsignedCharValue),
     };
 
     API::Object::constructInWrapper<API::ResourceLoadInfo>(self, WTFMove(info));

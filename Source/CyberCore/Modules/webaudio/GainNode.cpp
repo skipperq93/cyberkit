@@ -34,7 +34,7 @@
 #include "AudioUtilities.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(GainNode);
 
@@ -133,6 +133,6 @@ void GainNode::checkNumberOfChannelsForInput(AudioNodeInput* input)
     AudioNode::checkNumberOfChannelsForInput(input);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

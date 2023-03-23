@@ -21,10 +21,10 @@
 #error "Only <wpe/webkit.h> can be included directly."
 #endif
 
-#ifndef WebKitVersion_h
-#define WebKitVersion_h
+#ifndef CyberKitVersion_h
+#define CyberKitVersion_h
 
-#include <wpe/WebKitDefines.h>
+#include <wpe/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 

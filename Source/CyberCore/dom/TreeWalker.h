@@ -31,7 +31,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TreeWalker final : public ScriptWrappable, public RefCounted<TreeWalker>, public NodeIteratorBase {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(TreeWalker, WEBCORE_EXPORT);
@@ -65,4 +65,4 @@ private:
     Ref<Node> m_current;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

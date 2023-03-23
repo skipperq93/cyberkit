@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUQueue.h>
 #include <wtf/Deque.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ConvertToBackingContext;
 
@@ -106,6 +106,6 @@ private:
     RemoteDeviceProxy& m_parent;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

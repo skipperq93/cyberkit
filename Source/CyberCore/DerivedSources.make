@@ -51,1544 +51,1544 @@ FEATURE_AND_PLATFORM_DEFINES := $(shell $(call platform_h_compiler_command,-E -P
 
 PLATFORM_HEADER_DIR := $(realpath $(BUILT_PRODUCTS_DIR)$(WK_LIBRARY_HEADERS_FOLDER_PATH))
 PLATFORM_HEADER_DEPENDENCIES := $(filter $(PLATFORM_HEADER_DIR)/%,$(realpath $(shell $(call platform_h_compiler_command,-M) | $(PERL) -e "local \$$/; my (\$$target, \$$deps) = split(/:/, <>); print split(/\\\\/, \$$deps);")))
-FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES = $(WebCore)/DerivedSources.make $(PLATFORM_HEADER_DEPENDENCIES)
+FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES = $(CyberCore)/DerivedSources.make $(PLATFORM_HEADER_DEPENDENCIES)
 
 # --------
 
 JS_BINDING_IDLS := \
-    $(WebCore)/Modules/WebGPU/GPU.idl \
-    $(WebCore)/Modules/WebGPU/GPUAdapter.idl \
-    $(WebCore)/Modules/WebGPU/GPUAddressMode.idl \
-    $(WebCore)/Modules/WebGPU/GPUAutoLayoutMode.idl \
-    $(WebCore)/Modules/WebGPU/GPUBindGroup.idl \
-    $(WebCore)/Modules/WebGPU/GPUBindGroupDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUBindGroupEntry.idl \
-    $(WebCore)/Modules/WebGPU/GPUBindGroupLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUBindGroupLayoutDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUBindGroupLayoutEntry.idl \
-    $(WebCore)/Modules/WebGPU/GPUBlendComponent.idl \
-    $(WebCore)/Modules/WebGPU/GPUBlendFactor.idl \
-    $(WebCore)/Modules/WebGPU/GPUBlendOperation.idl \
-    $(WebCore)/Modules/WebGPU/GPUBlendState.idl \
-    $(WebCore)/Modules/WebGPU/GPUBuffer.idl \
-    $(WebCore)/Modules/WebGPU/GPUBufferBinding.idl \
-    $(WebCore)/Modules/WebGPU/GPUBufferBindingLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUBufferBindingType.idl \
-    $(WebCore)/Modules/WebGPU/GPUBufferDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUBufferUsage.idl \
-    $(WebCore)/Modules/WebGPU/GPUCanvasCompositingAlphaMode.idl \
-    $(WebCore)/Modules/WebGPU/GPUCanvasConfiguration.idl \
-    $(WebCore)/Modules/WebGPU/GPUColorDict.idl \
-    $(WebCore)/Modules/WebGPU/GPUColorTargetState.idl \
-    $(WebCore)/Modules/WebGPU/GPUColorWrite.idl \
-    $(WebCore)/Modules/WebGPU/GPUCommandBuffer.idl \
-    $(WebCore)/Modules/WebGPU/GPUCommandBufferDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUCommandEncoder.idl \
-    $(WebCore)/Modules/WebGPU/GPUCommandEncoderDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUCommandsMixin.idl \
-    $(WebCore)/Modules/WebGPU/GPUCompareFunction.idl \
-    $(WebCore)/Modules/WebGPU/GPUCompilationInfo.idl \
-    $(WebCore)/Modules/WebGPU/GPUCompilationMessage.idl \
-    $(WebCore)/Modules/WebGPU/GPUCompilationMessageType.idl \
-    $(WebCore)/Modules/WebGPU/GPUComputePassDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUComputePassEncoder.idl \
-    $(WebCore)/Modules/WebGPU/GPUComputePassTimestampLocation.idl \
-    $(WebCore)/Modules/WebGPU/GPUComputePassTimestampWrite.idl \
-    $(WebCore)/Modules/WebGPU/GPUComputePipeline.idl \
-    $(WebCore)/Modules/WebGPU/GPUComputePipelineDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUCullMode.idl \
-    $(WebCore)/Modules/WebGPU/GPUDebugCommandsMixin.idl \
-    $(WebCore)/Modules/WebGPU/GPUDepthStencilState.idl \
-    $(WebCore)/Modules/WebGPU/GPUDevice.idl \
-    $(WebCore)/Modules/WebGPU/GPUDeviceDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUDeviceError.idl \
-    $(WebCore)/Modules/WebGPU/GPUDeviceLost.idl \
-    $(WebCore)/Modules/WebGPU/GPUDeviceLostInfo.idl \
-    $(WebCore)/Modules/WebGPU/GPUDeviceLostReason.idl \
-    $(WebCore)/Modules/WebGPU/GPUDeviceUncapturedError.idl \
-    $(WebCore)/Modules/WebGPU/GPUErrorFilter.idl \
-    $(WebCore)/Modules/WebGPU/GPUExtent3DDict.idl \
-    $(WebCore)/Modules/WebGPU/GPUExternalTexture.idl \
-    $(WebCore)/Modules/WebGPU/GPUExternalTextureBindingLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUExternalTextureDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUFeatureName.idl \
-    $(WebCore)/Modules/WebGPU/GPUFilterMode.idl \
-    $(WebCore)/Modules/WebGPU/GPUFragmentState.idl \
-    $(WebCore)/Modules/WebGPU/GPUFrontFace.idl \
-    $(WebCore)/Modules/WebGPU/GPUImageCopyBuffer.idl \
-    $(WebCore)/Modules/WebGPU/GPUImageCopyExternalImage.idl \
-    $(WebCore)/Modules/WebGPU/GPUImageCopyTexture.idl \
-    $(WebCore)/Modules/WebGPU/GPUImageCopyTextureTagged.idl \
-    $(WebCore)/Modules/WebGPU/GPUImageDataLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUIndexFormat.idl \
-    $(WebCore)/Modules/WebGPU/GPULoadOp.idl \
-    $(WebCore)/Modules/WebGPU/GPUMapMode.idl \
-    $(WebCore)/Modules/WebGPU/GPUMipmapFilterMode.idl \
-    $(WebCore)/Modules/WebGPU/GPUMultisampleState.idl \
-    $(WebCore)/Modules/WebGPU/GPUObjectBase.idl \
-    $(WebCore)/Modules/WebGPU/GPUObjectDescriptorBase.idl \
-    $(WebCore)/Modules/WebGPU/GPUOrigin2DDict.idl \
-    $(WebCore)/Modules/WebGPU/GPUOrigin3DDict.idl \
-    $(WebCore)/Modules/WebGPU/GPUOutOfMemoryError.idl \
-    $(WebCore)/Modules/WebGPU/GPUPipelineBase.idl \
-    $(WebCore)/Modules/WebGPU/GPUPipelineDescriptorBase.idl \
-    $(WebCore)/Modules/WebGPU/GPUPipelineLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUPipelineLayoutDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUPowerPreference.idl \
-    $(WebCore)/Modules/WebGPU/GPUPredefinedColorSpace.idl \
-    $(WebCore)/Modules/WebGPU/GPUPrimitiveState.idl \
-    $(WebCore)/Modules/WebGPU/GPUPrimitiveTopology.idl \
-    $(WebCore)/Modules/WebGPU/GPUProgrammablePassEncoder.idl \
-    $(WebCore)/Modules/WebGPU/GPUProgrammableStage.idl \
-    $(WebCore)/Modules/WebGPU/GPUQuerySet.idl \
-    $(WebCore)/Modules/WebGPU/GPUQuerySetDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUQueryType.idl \
-    $(WebCore)/Modules/WebGPU/GPUQueue.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderBundle.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderBundleDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderBundleEncoder.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderBundleEncoderDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderEncoderBase.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPassColorAttachment.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPassDepthStencilAttachment.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPassDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPassEncoder.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPassLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPassTimestampLocation.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPassTimestampWrite.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPipeline.idl \
-    $(WebCore)/Modules/WebGPU/GPURenderPipelineDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPURequestAdapterOptions.idl \
-    $(WebCore)/Modules/WebGPU/GPUSampler.idl \
-    $(WebCore)/Modules/WebGPU/GPUSamplerBindingLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUSamplerBindingType.idl \
-    $(WebCore)/Modules/WebGPU/GPUSamplerDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUShaderModule.idl \
-    $(WebCore)/Modules/WebGPU/GPUShaderModuleCompilationHint.idl \
-    $(WebCore)/Modules/WebGPU/GPUShaderModuleDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUShaderStage.idl \
-    $(WebCore)/Modules/WebGPU/GPUStencilFaceState.idl \
-    $(WebCore)/Modules/WebGPU/GPUStencilOperation.idl \
-    $(WebCore)/Modules/WebGPU/GPUStorageTextureAccess.idl \
-    $(WebCore)/Modules/WebGPU/GPUStorageTextureBindingLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUStoreOp.idl \
-    $(WebCore)/Modules/WebGPU/GPUSupportedFeatures.idl \
-    $(WebCore)/Modules/WebGPU/GPUSupportedLimits.idl \
-    $(WebCore)/Modules/WebGPU/GPUTexture.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureAspect.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureBindingLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureDimension.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureFormat.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureSampleType.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureUsage.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureView.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureViewDescriptor.idl \
-    $(WebCore)/Modules/WebGPU/GPUTextureViewDimension.idl \
-    $(WebCore)/Modules/WebGPU/GPUUncapturedErrorEvent.idl \
-    $(WebCore)/Modules/WebGPU/GPUUncapturedErrorEventInit.idl \
-    $(WebCore)/Modules/WebGPU/GPUValidationError.idl \
-    $(WebCore)/Modules/WebGPU/GPUVertexAttribute.idl \
-    $(WebCore)/Modules/WebGPU/GPUVertexBufferLayout.idl \
-    $(WebCore)/Modules/WebGPU/GPUVertexFormat.idl \
-    $(WebCore)/Modules/WebGPU/GPUVertexState.idl \
-    $(WebCore)/Modules/WebGPU/GPUVertexStepMode.idl \
-    $(WebCore)/Modules/WebGPU/NavigatorGPU.idl \
-    $(WebCore)/Modules/airplay/CyberKitPlaybackTargetAvailabilityEvent.idl \
-    $(WebCore)/Modules/applepay/ApplePayAutomaticReloadPaymentRequest.idl \
-    $(WebCore)/Modules/applepay/ApplePayCancelEvent.idl \
-    $(WebCore)/Modules/applepay/ApplePayContactField.idl \
-    $(WebCore)/Modules/applepay/ApplePayCouponCodeChangedEvent.idl \
-    $(WebCore)/Modules/applepay/ApplePayCouponCodeDetails.idl \
-    $(WebCore)/Modules/applepay/ApplePayCouponCodeUpdate.idl \
-    $(WebCore)/Modules/applepay/ApplePayDateComponents.idl \
-    $(WebCore)/Modules/applepay/ApplePayDateComponentsRange.idl \
-    $(WebCore)/Modules/applepay/ApplePayDetailsUpdateBase.idl \
-    $(WebCore)/Modules/applepay/ApplePayError.idl \
-    $(WebCore)/Modules/applepay/ApplePayErrorCode.idl \
-    $(WebCore)/Modules/applepay/ApplePayErrorContactField.idl \
-    $(WebCore)/Modules/applepay/ApplePayFeature.idl \
-    $(WebCore)/Modules/applepay/ApplePayInstallmentConfiguration.idl \
-    $(WebCore)/Modules/applepay/ApplePayInstallmentItem.idl \
-    $(WebCore)/Modules/applepay/ApplePayInstallmentItemType.idl \
-    $(WebCore)/Modules/applepay/ApplePayInstallmentRetailChannel.idl \
-    $(WebCore)/Modules/applepay/ApplePayLineItem.idl \
-    $(WebCore)/Modules/applepay/ApplePayMerchantCapability.idl \
-    $(WebCore)/Modules/applepay/ApplePayPayment.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentAuthorizationResult.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentAuthorizedEvent.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentContact.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentMethod.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentMethodSelectedEvent.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentMethodType.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentMethodUpdate.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentOrderDetails.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentPass.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentRequest.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentTiming.idl \
-    $(WebCore)/Modules/applepay/ApplePayPaymentTokenContext.idl \
-    $(WebCore)/Modules/applepay/ApplePayRecurringPaymentDateUnit.idl \
-    $(WebCore)/Modules/applepay/ApplePayRecurringPaymentRequest.idl \
-    $(WebCore)/Modules/applepay/ApplePayRequestBase.idl \
-    $(WebCore)/Modules/applepay/ApplePaySession.idl \
-    $(WebCore)/Modules/applepay/ApplePaySessionError.idl \
-    $(WebCore)/Modules/applepay/ApplePaySetup.idl \
-    $(WebCore)/Modules/applepay/ApplePaySetupConfiguration.idl \
-    $(WebCore)/Modules/applepay/ApplePaySetupFeature.idl \
-    $(WebCore)/Modules/applepay/ApplePaySetupFeatureState.idl \
-    $(WebCore)/Modules/applepay/ApplePaySetupFeatureType.idl \
-    $(WebCore)/Modules/applepay/ApplePayShippingContactEditingMode.idl \
-    $(WebCore)/Modules/applepay/ApplePayShippingContactSelectedEvent.idl \
-    $(WebCore)/Modules/applepay/ApplePayShippingContactUpdate.idl \
-    $(WebCore)/Modules/applepay/ApplePayShippingMethod.idl \
-    $(WebCore)/Modules/applepay/ApplePayShippingMethodSelectedEvent.idl \
-    $(WebCore)/Modules/applepay/ApplePayShippingMethodUpdate.idl \
-    $(WebCore)/Modules/applepay/ApplePayValidateMerchantEvent.idl \
-    $(WebCore)/Modules/applepay/paymentrequest/ApplePayModifier.idl \
-    $(WebCore)/Modules/applepay/paymentrequest/ApplePayPaymentCompleteDetails.idl \
-    $(WebCore)/Modules/applepay/paymentrequest/ApplePayRequest.idl \
-    $(WebCore)/Modules/applepay-ams-ui/ApplePayAMSUIRequest.idl \
-    $(WebCore)/Modules/async-clipboard/Clipboard.idl \
-    $(WebCore)/Modules/async-clipboard/ClipboardItem.idl \
-    $(WebCore)/Modules/async-clipboard/Navigator+Clipboard.idl \
-    $(WebCore)/Modules/audiosession/DOMAudioSession.idl \
-    $(WebCore)/Modules/audiosession/Navigator+AudioSession.idl \
-    $(WebCore)/Modules/badge/Navigator+Badge.idl \
-    $(WebCore)/Modules/badge/NavigatorBadge.idl \
-    $(WebCore)/Modules/beacon/Navigator+Beacon.idl \
-    $(WebCore)/Modules/cache/CacheQueryOptions.idl \
-    $(WebCore)/Modules/cache/DOMCache.idl \
-    $(WebCore)/Modules/cache/DOMCacheStorage.idl \
-    $(WebCore)/Modules/cache/MultiCacheQueryOptions.idl \
-    $(WebCore)/Modules/cache/WindowOrWorkerGlobalScope+Caches.idl \
-    $(WebCore)/Modules/compression/CompressionStream.idl \
-    $(WebCore)/Modules/compression/CompressionStreamEncoder.idl \
-    $(WebCore)/Modules/compression/DecompressionStream.idl \
-    $(WebCore)/Modules/compression/DecompressionStreamDecoder.idl \
-    $(WebCore)/Modules/contact-picker/ContactInfo.idl \
-    $(WebCore)/Modules/contact-picker/ContactProperty.idl \
-    $(WebCore)/Modules/contact-picker/ContactsManager.idl \
-    $(WebCore)/Modules/contact-picker/ContactsSelectOptions.idl \
-    $(WebCore)/Modules/contact-picker/Navigator+Contacts.idl \
-    $(WebCore)/Modules/cookie-consent/Navigator+CookieConsent.idl \
-    $(WebCore)/Modules/cookie-consent/RequestCookieConsentOptions.idl \
-    $(WebCore)/Modules/credentialmanagement/BasicCredential.idl \
-    $(WebCore)/Modules/credentialmanagement/CredentialCreationOptions.idl \
-    $(WebCore)/Modules/credentialmanagement/CredentialRequestOptions.idl \
-    $(WebCore)/Modules/credentialmanagement/CredentialsContainer.idl \
-    $(WebCore)/Modules/credentialmanagement/Navigator+Credentials.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeyEncryptionScheme.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeyMessageEventInit.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeyMessageEvent.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeyMessageType.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeySession.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeySessionType.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeyStatusMap.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeySystemAccess.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeySystemConfiguration.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeySystemMediaCapability.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeys.idl \
-    $(WebCore)/Modules/encryptedmedia/MediaKeysRequirement.idl \
-    $(WebCore)/Modules/encryptedmedia/Navigator+EME.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeyMessageEvent.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeyNeededEvent.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeySession.idl \
-    $(WebCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeys.idl \
-    $(WebCore)/Modules/entriesapi/DOMFileSystem.idl \
-    $(WebCore)/Modules/entriesapi/ErrorCallback.idl \
-    $(WebCore)/Modules/entriesapi/FileCallback.idl \
-    $(WebCore)/Modules/entriesapi/FileSystemDirectoryEntry.idl \
-    $(WebCore)/Modules/entriesapi/FileSystemDirectoryReader.idl \
-    $(WebCore)/Modules/entriesapi/FileSystemEntriesCallback.idl \
-    $(WebCore)/Modules/entriesapi/FileSystemEntry.idl \
-    $(WebCore)/Modules/entriesapi/FileSystemEntryCallback.idl \
-    $(WebCore)/Modules/entriesapi/FileSystemFileEntry.idl \
-    $(WebCore)/Modules/entriesapi/HTMLInputElement+EntriesAPI.idl \
-    $(WebCore)/Modules/fetch/FetchBody.idl \
-    $(WebCore)/Modules/fetch/FetchHeaders.idl \
-    $(WebCore)/Modules/fetch/FetchReferrerPolicy.idl \
-    $(WebCore)/Modules/fetch/FetchRequest.idl \
-    $(WebCore)/Modules/fetch/FetchRequestCache.idl \
-    $(WebCore)/Modules/fetch/FetchRequestCredentials.idl \
-    $(WebCore)/Modules/fetch/FetchRequestDestination.idl \
-    $(WebCore)/Modules/fetch/FetchRequestInit.idl \
-    $(WebCore)/Modules/fetch/FetchRequestMode.idl \
-    $(WebCore)/Modules/fetch/FetchRequestRedirect.idl \
-    $(WebCore)/Modules/fetch/FetchResponse.idl \
-    $(WebCore)/Modules/fetch/RequestPriority.idl \
-    $(WebCore)/Modules/fetch/WindowOrWorkerGlobalScope+Fetch.idl \
-    $(WebCore)/Modules/filesystemaccess/FileSystemDirectoryHandle.idl \
-    $(WebCore)/Modules/filesystemaccess/FileSystemFileHandle.idl \
-    $(WebCore)/Modules/filesystemaccess/FileSystemHandle.idl \
-    $(WebCore)/Modules/filesystemaccess/FileSystemSyncAccessHandle.idl \
-    $(WebCore)/Modules/filesystemaccess/StorageManager+FileSystemAccess.idl \
-    $(WebCore)/Modules/gamepad/Gamepad.idl \
-    $(WebCore)/Modules/gamepad/GamepadButton.idl \
-    $(WebCore)/Modules/gamepad/GamepadEffectParameters.idl \
-    $(WebCore)/Modules/gamepad/GamepadEvent.idl \
-    $(WebCore)/Modules/gamepad/GamepadHapticActuator.idl \
-    $(WebCore)/Modules/gamepad/GamepadHapticEffectType.idl \
-    $(WebCore)/Modules/gamepad/Navigator+Gamepad.idl \
-    $(WebCore)/Modules/gamepad/WindowEventHandlers+Gamepad.idl \
-    $(WebCore)/Modules/geolocation/Geolocation.idl \
-    $(WebCore)/Modules/geolocation/GeolocationCoordinates.idl \
-    $(WebCore)/Modules/geolocation/GeolocationPosition.idl \
-    $(WebCore)/Modules/geolocation/GeolocationPositionError.idl \
-    $(WebCore)/Modules/geolocation/Navigator+Geolocation.idl \
-    $(WebCore)/Modules/geolocation/PositionCallback.idl \
-    $(WebCore)/Modules/geolocation/PositionErrorCallback.idl \
-    $(WebCore)/Modules/geolocation/PositionOptions.idl \
-    $(WebCore)/Modules/highlight/HighlightRegister.idl \
-    $(WebCore)/Modules/highlight/Highlight.idl \
-    $(WebCore)/Modules/indexeddb/IDBCursor.idl \
-    $(WebCore)/Modules/indexeddb/IDBCursorDirection.idl \
-    $(WebCore)/Modules/indexeddb/IDBCursorWithValue.idl \
-    $(WebCore)/Modules/indexeddb/IDBDatabase.idl \
-    $(WebCore)/Modules/indexeddb/IDBFactory.idl \
-    $(WebCore)/Modules/indexeddb/IDBIndex.idl \
-    $(WebCore)/Modules/indexeddb/IDBKeyRange.idl \
-    $(WebCore)/Modules/indexeddb/IDBObjectStore.idl \
-    $(WebCore)/Modules/indexeddb/IDBOpenDBRequest.idl \
-    $(WebCore)/Modules/indexeddb/IDBRequest.idl \
-    $(WebCore)/Modules/indexeddb/IDBTransaction.idl \
-	$(WebCore)/Modules/indexeddb/IDBTransactionDurability.idl \
-    $(WebCore)/Modules/indexeddb/IDBTransactionMode.idl \
-    $(WebCore)/Modules/indexeddb/IDBVersionChangeEvent.idl \
-    $(WebCore)/Modules/indexeddb/WindowOrWorkerGlobalScope+IndexedDatabase.idl \
-    $(WebCore)/Modules/mediacapabilities/AudioConfiguration.idl \
-    $(WebCore)/Modules/mediacapabilities/ColorGamut.idl \
-    $(WebCore)/Modules/mediacapabilities/HdrMetadataType.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaCapabilities.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaCapabilitiesDecodingInfo.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaCapabilitiesEncodingInfo.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaCapabilitiesInfo.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaConfiguration.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaDecodingConfiguration.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaDecodingType.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaEncodingConfiguration.idl \
-    $(WebCore)/Modules/mediacapabilities/MediaEncodingType.idl \
-    $(WebCore)/Modules/mediacapabilities/Navigator+MediaCapabilities.idl \
-    $(WebCore)/Modules/mediacapabilities/TransferFunction.idl \
-    $(WebCore)/Modules/mediacapabilities/VideoConfiguration.idl \
-    $(WebCore)/Modules/mediacapabilities/WorkerNavigator+MediaCapabilities.idl \
-    $(WebCore)/Modules/mediacontrols/MediaControlsHost.idl \
-    $(WebCore)/Modules/mediarecorder/BlobEvent.idl \
-    $(WebCore)/Modules/mediarecorder/MediaRecorder.idl \
-    $(WebCore)/Modules/mediarecorder/MediaRecorderErrorEvent.idl \
-    $(WebCore)/Modules/mediasource/AudioTrack+MediaSource.idl \
-    $(WebCore)/Modules/mediasource/DOMURL+MediaSource.idl \
-    $(WebCore)/Modules/mediasource/ManagedMediaSource.idl \
-    $(WebCore)/Modules/mediasource/ManagedSourceBuffer.idl \
-    $(WebCore)/Modules/mediasource/MediaSource.idl \
-    $(WebCore)/Modules/mediasource/SourceBuffer.idl \
-    $(WebCore)/Modules/mediasource/SourceBufferList.idl \
-    $(WebCore)/Modules/mediasource/TextTrack+MediaSource.idl \
-    $(WebCore)/Modules/mediasource/VideoPlaybackQuality.idl \
-    $(WebCore)/Modules/mediasource/VideoTrack+MediaSource.idl \
-    $(WebCore)/Modules/mediasession/MediaImage.idl \
-    $(WebCore)/Modules/mediasession/MediaMetadata.idl \
-    $(WebCore)/Modules/mediasession/MediaMetadataInit.idl \
-    $(WebCore)/Modules/mediasession/MediaMetadataPlaylistMixin.idl \
-    $(WebCore)/Modules/mediasession/MediaPositionState.idl \
-    $(WebCore)/Modules/mediasession/MediaSession.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionAction.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionActionDetails.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionActionHandler.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionCoordinator.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionCoordinatorMixin.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionCoordinatorState.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionPlaybackState.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionPlaylistMixin.idl \
-    $(WebCore)/Modules/mediasession/MediaSessionReadyState.idl \
-    $(WebCore)/Modules/mediasession/Navigator+MediaSession.idl \
-    $(WebCore)/Modules/mediastream/CanvasCaptureMediaStreamTrack.idl \
-    $(WebCore)/Modules/mediastream/DoubleRange.idl \
-    $(WebCore)/Modules/mediastream/LongRange.idl \
-    $(WebCore)/Modules/mediastream/MediaDeviceInfo.idl \
-    $(WebCore)/Modules/mediastream/MediaDevices.idl \
-    $(WebCore)/Modules/mediastream/MediaStream.idl \
-    $(WebCore)/Modules/mediastream/MediaStreamTrack.idl \
-    $(WebCore)/Modules/mediastream/MediaStreamTrackEvent.idl \
-    $(WebCore)/Modules/mediastream/MediaTrackConstraints.idl \
-    $(WebCore)/Modules/mediastream/MediaTrackSupportedConstraints.idl \
-    $(WebCore)/Modules/mediastream/Navigator+MediaDevices.idl \
-    $(WebCore)/Modules/mediastream/OverconstrainedError.idl \
-    $(WebCore)/Modules/mediastream/OverconstrainedErrorEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCAnswerOptions.idl \
-    $(WebCore)/Modules/mediastream/RTCCertificate.idl \
-    $(WebCore)/Modules/mediastream/RTCConfiguration.idl \
-    $(WebCore)/Modules/mediastream/RTCDTMFSender.idl \
-    $(WebCore)/Modules/mediastream/RTCDTMFToneChangeEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCDataChannel.idl \
-    $(WebCore)/Modules/mediastream/RTCDataChannelEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCDegradationPreference.idl \
-    $(WebCore)/Modules/mediastream/RTCDtlsTransport.idl \
-    $(WebCore)/Modules/mediastream/RTCDtlsTransportState.idl \
-    $(WebCore)/Modules/mediastream/RTCDtxStatus.idl \
-    $(WebCore)/Modules/mediastream/RTCEncodedAudioFrame.idl \
-    $(WebCore)/Modules/mediastream/RTCEncodedVideoFrame.idl \
-    $(WebCore)/Modules/mediastream/RTCError.idl \
-    $(WebCore)/Modules/mediastream/RTCErrorDetailType.idl \
-    $(WebCore)/Modules/mediastream/RTCErrorEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCIceCandidate.idl \
-    $(WebCore)/Modules/mediastream/RTCIceCandidateInit.idl \
-    $(WebCore)/Modules/mediastream/RTCIceCandidateType.idl \
-    $(WebCore)/Modules/mediastream/RTCIceComponent.idl \
-    $(WebCore)/Modules/mediastream/RTCIceConnectionState.idl \
-    $(WebCore)/Modules/mediastream/RTCIceGatheringState.idl \
-    $(WebCore)/Modules/mediastream/RTCIceProtocol.idl \
-    $(WebCore)/Modules/mediastream/RTCIceServer.idl \
-    $(WebCore)/Modules/mediastream/RTCIceTcpCandidateType.idl \
-    $(WebCore)/Modules/mediastream/RTCIceTransport.idl \
-    $(WebCore)/Modules/mediastream/RTCIceTransportState.idl \
-    $(WebCore)/Modules/mediastream/RTCLocalSessionDescriptionInit.idl \
-    $(WebCore)/Modules/mediastream/RTCOfferAnswerOptions.idl \
-    $(WebCore)/Modules/mediastream/RTCOfferOptions.idl \
-    $(WebCore)/Modules/mediastream/RTCPeerConnection.idl \
-    $(WebCore)/Modules/mediastream/RTCPeerConnectionIceEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCPeerConnectionIceErrorEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCPeerConnectionState.idl \
-    $(WebCore)/Modules/mediastream/RTCPriorityType.idl \
-    $(WebCore)/Modules/mediastream/RTCRtcpParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpCapabilities.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpCodecCapability.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpCodecParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpCodingParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpContributingSource.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpEncodingParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpFecParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpHeaderExtensionParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpReceiver.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpReceiver+Transform.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpRtxParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpSendParameters.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpSender.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpSender+Transform.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpSFrameTransform.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpSFrameTransformErrorEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpScriptTransform.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpScriptTransformProvider.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpScriptTransformer.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpSynchronizationSource.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpTransceiver.idl \
-    $(WebCore)/Modules/mediastream/RTCRtpTransceiverDirection.idl \
-    $(WebCore)/Modules/mediastream/RTCSctpTransport.idl \
-    $(WebCore)/Modules/mediastream/RTCSctpTransportState.idl \
-    $(WebCore)/Modules/mediastream/RTCSdpType.idl \
-    $(WebCore)/Modules/mediastream/RTCSessionDescription.idl \
-    $(WebCore)/Modules/mediastream/RTCSessionDescriptionInit.idl \
-    $(WebCore)/Modules/mediastream/RTCSignalingState.idl \
-    $(WebCore)/Modules/mediastream/RTCStatsReport.idl \
-    $(WebCore)/Modules/mediastream/RTCTrackEvent.idl \
-    $(WebCore)/Modules/mediastream/RTCTransformEvent.idl \
-    $(WebCore)/Modules/model-element/HTMLModelElement.idl \
-    $(WebCore)/Modules/model-element/HTMLModelElementCamera.idl \
-    $(WebCore)/Modules/notifications/Notification.idl \
-    $(WebCore)/Modules/notifications/NotificationDirection.idl \
-    $(WebCore)/Modules/notifications/NotificationEvent.idl \
-    $(WebCore)/Modules/notifications/NotificationOptions.idl \
-    $(WebCore)/Modules/notifications/NotificationPermission.idl \
-    $(WebCore)/Modules/notifications/NotificationPermissionCallback.idl \
-    $(WebCore)/Modules/paymentrequest/AddressErrors.idl \
-    $(WebCore)/Modules/paymentrequest/MerchantValidationEvent.idl \
-    $(WebCore)/Modules/paymentrequest/PayerErrorFields.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentAddress.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentComplete.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentCompleteDetails.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentCurrencyAmount.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentDetailsBase.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentDetailsInit.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentDetailsModifier.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentDetailsUpdate.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentItem.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentMethodChangeEvent.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentMethodData.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentOptions.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentRequest.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentRequestUpdateEvent.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentRequestUpdateEventInit.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentResponse.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentShippingOption.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentShippingType.idl \
-    $(WebCore)/Modules/paymentrequest/PaymentValidationErrors.idl \
-    $(WebCore)/Modules/permissions/Navigator+Permissions.idl \
-    $(WebCore)/Modules/permissions/PermissionDescriptor.idl \
-    $(WebCore)/Modules/permissions/PermissionName.idl \
-    $(WebCore)/Modules/permissions/PermissionState.idl \
-    $(WebCore)/Modules/permissions/PermissionStatus.idl \
-    $(WebCore)/Modules/permissions/Permissions.idl \
-    $(WebCore)/Modules/permissions/WorkerNavigator+Permissions.idl \
-    $(WebCore)/Modules/pictureinpicture/DocumentOrShadowRoot+PictureInPicture.idl \
-    $(WebCore)/Modules/pictureinpicture/Document+PictureInPicture.idl \
-    $(WebCore)/Modules/pictureinpicture/HTMLVideoElement+PictureInPicture.idl \
-    $(WebCore)/Modules/pictureinpicture/PictureInPictureEvent.idl \
-    $(WebCore)/Modules/pictureinpicture/PictureInPictureWindow.idl \
-    $(WebCore)/Modules/push-api/PushEncryptionKeyName.idl \
-    $(WebCore)/Modules/push-api/PushEvent.idl \
-    $(WebCore)/Modules/push-api/PushEventInit.idl \
-    $(WebCore)/Modules/push-api/PushManager.idl \
-    $(WebCore)/Modules/push-api/PushMessageData.idl \
-    $(WebCore)/Modules/push-api/PushPermissionState.idl \
-    $(WebCore)/Modules/push-api/PushSubscription.idl \
-    $(WebCore)/Modules/push-api/PushSubscriptionChangeEvent.idl \
-    $(WebCore)/Modules/push-api/PushSubscriptionChangeEventInit.idl \
-    $(WebCore)/Modules/push-api/PushSubscriptionJSON.idl \
-    $(WebCore)/Modules/push-api/PushSubscriptionOptions.idl \
-    $(WebCore)/Modules/push-api/PushSubscriptionOptionsInit.idl \
-    $(WebCore)/Modules/push-api/ServiceWorkerGlobalScope+PushAPI.idl \
-    $(WebCore)/Modules/push-api/ServiceWorkerRegistration+PushAPI.idl \
-    $(WebCore)/Modules/remoteplayback/HTMLMediaElement+RemotePlayback.idl \
-    $(WebCore)/Modules/remoteplayback/RemotePlayback.idl \
-    $(WebCore)/Modules/remoteplayback/RemotePlaybackAvailabilityCallback.idl \
-    $(WebCore)/Modules/reporting/DeprecationReportBody.idl \
-    $(WebCore)/Modules/reporting/Report.idl \
-    $(WebCore)/Modules/reporting/ReportBody.idl \
-    $(WebCore)/Modules/reporting/ReportingObserver.idl \
-    $(WebCore)/Modules/reporting/ReportingObserverCallback.idl \
-    $(WebCore)/Modules/reporting/TestReportBody.idl \
-    $(WebCore)/Modules/screen-wake-lock/Navigator+ScreenWakeLock.idl \
-    $(WebCore)/Modules/screen-wake-lock/WakeLock.idl \
-    $(WebCore)/Modules/screen-wake-lock/WakeLockSentinel.idl \
-    $(WebCore)/Modules/screen-wake-lock/WakeLockType.idl \
-    $(WebCore)/Modules/speech/DOMWindow+SpeechSynthesis.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesis.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesisErrorCode.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesisErrorEvent.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesisErrorEventInit.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesisEvent.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesisEventInit.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesisUtterance.idl \
-    $(WebCore)/Modules/speech/SpeechSynthesisVoice.idl \
-    $(WebCore)/Modules/speech/SpeechRecognition.idl \
-    $(WebCore)/Modules/speech/SpeechRecognitionAlternative.idl \
-    $(WebCore)/Modules/speech/SpeechRecognitionErrorCode.idl \
-    $(WebCore)/Modules/speech/SpeechRecognitionErrorEvent.idl \
-    $(WebCore)/Modules/speech/SpeechRecognitionEvent.idl \
-    $(WebCore)/Modules/speech/SpeechRecognitionResult.idl \
-    $(WebCore)/Modules/speech/SpeechRecognitionResultList.idl \
-    $(WebCore)/Modules/streams/ByteLengthQueuingStrategy.idl \
-    $(WebCore)/Modules/streams/CountQueuingStrategy.idl \
-    $(WebCore)/Modules/streams/GenericTransformStream.idl \
-    $(WebCore)/Modules/streams/ReadableByteStreamController.idl \
-    $(WebCore)/Modules/streams/ReadableStream.idl \
-    $(WebCore)/Modules/streams/ReadableStreamBYOBReader.idl \
-    $(WebCore)/Modules/streams/ReadableStreamBYOBRequest.idl \
-    $(WebCore)/Modules/streams/ReadableStreamDefaultController.idl \
-    $(WebCore)/Modules/streams/ReadableStreamDefaultReader.idl \
-    $(WebCore)/Modules/streams/ReadableStreamSink.idl \
-    $(WebCore)/Modules/streams/ReadableStreamSource.idl \
-    $(WebCore)/Modules/streams/TransformStream.idl \
-    $(WebCore)/Modules/streams/TransformStreamDefaultController.idl \
-    $(WebCore)/Modules/streams/WritableStream.idl \
-    $(WebCore)/Modules/streams/WritableStreamDefaultController.idl \
-    $(WebCore)/Modules/streams/WritableStreamDefaultWriter.idl \
-    $(WebCore)/Modules/streams/WritableStreamSink.idl \
-    $(WebCore)/Modules/storage/StorageManager.idl \
-    $(WebCore)/Modules/web-locks/NavigatorLocks.idl \
-    $(WebCore)/Modules/web-locks/WebLock.idl \
-    $(WebCore)/Modules/web-locks/WebLockGrantedCallback.idl \
-    $(WebCore)/Modules/web-locks/WebLockManager.idl \
-    $(WebCore)/Modules/web-locks/WebLockManagerSnapshot.idl \
-    $(WebCore)/Modules/web-locks/WebLockMode.idl \
-    $(WebCore)/Modules/webaudio/AnalyserNode.idl \
-    $(WebCore)/Modules/webaudio/AnalyserOptions.idl \
-    $(WebCore)/Modules/webaudio/AudioBuffer.idl \
-    $(WebCore)/Modules/webaudio/AudioBufferCallback.idl \
-    $(WebCore)/Modules/webaudio/AudioBufferOptions.idl \
-    $(WebCore)/Modules/webaudio/AudioBufferSourceNode.idl \
-    $(WebCore)/Modules/webaudio/AudioBufferSourceOptions.idl \
-    $(WebCore)/Modules/webaudio/AudioContext.idl \
-    $(WebCore)/Modules/webaudio/AudioContextLatencyCategory.idl \
-    $(WebCore)/Modules/webaudio/AudioContextOptions.idl \
-    $(WebCore)/Modules/webaudio/AudioContextState.idl \
-    $(WebCore)/Modules/webaudio/AudioDestinationNode.idl \
-    $(WebCore)/Modules/webaudio/AudioListener.idl \
-    $(WebCore)/Modules/webaudio/AudioNode.idl \
-    $(WebCore)/Modules/webaudio/AudioNodeOptions.idl \
-    $(WebCore)/Modules/webaudio/AudioParam.idl \
-    $(WebCore)/Modules/webaudio/AudioParamDescriptor.idl \
-    $(WebCore)/Modules/webaudio/AudioParamMap.idl \
-    $(WebCore)/Modules/webaudio/AudioProcessingEvent.idl \
-    $(WebCore)/Modules/webaudio/AudioProcessingEventInit.idl \
-    $(WebCore)/Modules/webaudio/AudioScheduledSourceNode.idl \
-    $(WebCore)/Modules/webaudio/AudioTimestamp.idl \
-    $(WebCore)/Modules/webaudio/AudioWorklet.idl \
-    $(WebCore)/Modules/webaudio/AudioWorkletGlobalScope.idl \
-    $(WebCore)/Modules/webaudio/AudioWorkletNode.idl \
-    $(WebCore)/Modules/webaudio/AudioWorkletNodeOptions.idl \
-    $(WebCore)/Modules/webaudio/AudioWorkletProcessor.idl \
-    $(WebCore)/Modules/webaudio/AudioWorkletProcessorConstructor.idl \
-    $(WebCore)/Modules/webaudio/AutomationRate.idl \
-    $(WebCore)/Modules/webaudio/BaseAudioContext.idl \
-    $(WebCore)/Modules/webaudio/BiquadFilterNode.idl \
-    $(WebCore)/Modules/webaudio/BiquadFilterOptions.idl \
-    $(WebCore)/Modules/webaudio/BiquadFilterType.idl \
-    $(WebCore)/Modules/webaudio/ChannelCountMode.idl \
-    $(WebCore)/Modules/webaudio/ChannelInterpretation.idl \
-    $(WebCore)/Modules/webaudio/ChannelMergerNode.idl \
-    $(WebCore)/Modules/webaudio/ChannelMergerOptions.idl \
-    $(WebCore)/Modules/webaudio/ChannelSplitterNode.idl \
-    $(WebCore)/Modules/webaudio/ChannelSplitterOptions.idl \
-    $(WebCore)/Modules/webaudio/ConstantSourceNode.idl \
-    $(WebCore)/Modules/webaudio/ConstantSourceOptions.idl \
-    $(WebCore)/Modules/webaudio/ConvolverNode.idl \
-    $(WebCore)/Modules/webaudio/ConvolverOptions.idl \
-    $(WebCore)/Modules/webaudio/DelayNode.idl \
-    $(WebCore)/Modules/webaudio/DelayOptions.idl \
-    $(WebCore)/Modules/webaudio/DistanceModelType.idl \
-    $(WebCore)/Modules/webaudio/DynamicsCompressorNode.idl \
-    $(WebCore)/Modules/webaudio/DynamicsCompressorOptions.idl \
-    $(WebCore)/Modules/webaudio/GainNode.idl \
-    $(WebCore)/Modules/webaudio/GainOptions.idl \
-    $(WebCore)/Modules/webaudio/IIRFilterNode.idl \
-    $(WebCore)/Modules/webaudio/IIRFilterOptions.idl \
-    $(WebCore)/Modules/webaudio/MediaElementAudioSourceNode.idl \
-    $(WebCore)/Modules/webaudio/MediaElementAudioSourceOptions.idl \
-    $(WebCore)/Modules/webaudio/MediaStreamAudioDestinationNode.idl \
-    $(WebCore)/Modules/webaudio/MediaStreamAudioSourceNode.idl \
-    $(WebCore)/Modules/webaudio/MediaStreamAudioSourceOptions.idl \
-    $(WebCore)/Modules/webaudio/OfflineAudioCompletionEvent.idl \
-    $(WebCore)/Modules/webaudio/OfflineAudioCompletionEventInit.idl \
-    $(WebCore)/Modules/webaudio/OfflineAudioContext.idl \
-    $(WebCore)/Modules/webaudio/OfflineAudioContextOptions.idl \
-    $(WebCore)/Modules/webaudio/OscillatorNode.idl \
-    $(WebCore)/Modules/webaudio/OscillatorOptions.idl \
-    $(WebCore)/Modules/webaudio/OscillatorType.idl \
-    $(WebCore)/Modules/webaudio/OverSampleType.idl \
-    $(WebCore)/Modules/webaudio/PannerNode.idl \
-    $(WebCore)/Modules/webaudio/PannerOptions.idl \
-    $(WebCore)/Modules/webaudio/PanningModelType.idl \
-    $(WebCore)/Modules/webaudio/PeriodicWave.idl \
-    $(WebCore)/Modules/webaudio/PeriodicWaveConstraints.idl \
-    $(WebCore)/Modules/webaudio/PeriodicWaveOptions.idl \
-    $(WebCore)/Modules/webaudio/ScriptProcessorNode.idl \
-    $(WebCore)/Modules/webaudio/StereoPannerNode.idl \
-    $(WebCore)/Modules/webaudio/StereoPannerOptions.idl \
-    $(WebCore)/Modules/webaudio/WaveShaperNode.idl \
-    $(WebCore)/Modules/webaudio/WaveShaperOptions.idl \
-    $(WebCore)/Modules/webauthn/AttestationConveyancePreference.idl \
-    $(WebCore)/Modules/webauthn/AuthenticationExtensionsClientInputs.idl \
-    $(WebCore)/Modules/webauthn/AuthenticationExtensionsClientOutputs.idl \
-    $(WebCore)/Modules/webauthn/AuthenticatorAssertionResponse.idl \
-    $(WebCore)/Modules/webauthn/AuthenticatorAttachment.idl \
-    $(WebCore)/Modules/webauthn/AuthenticatorAttestationResponse.idl \
-    $(WebCore)/Modules/webauthn/AuthenticatorResponse.idl \
-    $(WebCore)/Modules/webauthn/AuthenticatorTransport.idl \
-    $(WebCore)/Modules/webauthn/PublicKeyCredential.idl \
-    $(WebCore)/Modules/webauthn/PublicKeyCredentialCreationOptions.idl \
-    $(WebCore)/Modules/webauthn/PublicKeyCredentialDescriptor.idl \
-    $(WebCore)/Modules/webauthn/PublicKeyCredentialRequestOptions.idl \
-    $(WebCore)/Modules/webauthn/PublicKeyCredentialType.idl \
-    $(WebCore)/Modules/webauthn/ResidentKeyRequirement.idl \
-    $(WebCore)/Modules/webauthn/UserVerificationRequirement.idl \
-    $(WebCore)/Modules/webcodecs/AvcEncoderConfig.idl \
-    $(WebCore)/Modules/webcodecs/BitrateMode.idl \
-    $(WebCore)/Modules/webcodecs/LatencyMode.idl \
-    $(WebCore)/Modules/webcodecs/HardwareAcceleration.idl \
-    $(WebCore)/Modules/webcodecs/PlaneLayout.idl \
-    $(WebCore)/Modules/webcodecs/VideoColorPrimaries.idl \
-    $(WebCore)/Modules/webcodecs/VideoColorSpace.idl \
-    $(WebCore)/Modules/webcodecs/VideoColorSpaceInit.idl \
-    $(WebCore)/Modules/webcodecs/VideoMatrixCoefficients.idl \
-    $(WebCore)/Modules/webcodecs/VideoPixelFormat.idl \
-    $(WebCore)/Modules/webcodecs/VideoTransferCharacteristics.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsAlphaOption.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsEncodedVideoChunk.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsEncodedVideoChunkMetadata.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsEncodedVideoChunkOutputCallback.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsEncodedVideoChunkType.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsErrorCallback.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsCodecState.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoDecoder.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoDecoderConfig.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoDecoderSupport.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoEncoder.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoEncoderConfig.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoEncoderEncodeOptions.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoEncoderSupport.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoFrame.idl \
-    $(WebCore)/Modules/webcodecs/WebCodecsVideoFrameOutputCallback.idl \
-    $(WebCore)/Modules/webdatabase/DOMWindow+WebDatabase.idl \
-    $(WebCore)/Modules/webdatabase/Database.idl \
-    $(WebCore)/Modules/webdatabase/DatabaseCallback.idl \
-    $(WebCore)/Modules/webdatabase/SQLError.idl \
-    $(WebCore)/Modules/webdatabase/SQLResultSet.idl \
-    $(WebCore)/Modules/webdatabase/SQLResultSetRowList.idl \
-    $(WebCore)/Modules/webdatabase/SQLStatementCallback.idl \
-    $(WebCore)/Modules/webdatabase/SQLStatementErrorCallback.idl \
-    $(WebCore)/Modules/webdatabase/SQLTransaction.idl \
-    $(WebCore)/Modules/webdatabase/SQLTransactionCallback.idl \
-    $(WebCore)/Modules/webdatabase/SQLTransactionErrorCallback.idl \
-    $(WebCore)/Modules/webdriver/Navigator+WebDriver.idl \
-    $(WebCore)/Modules/websockets/CloseEvent.idl \
-    $(WebCore)/Modules/websockets/WebSocket.idl \
-    $(WebCore)/Modules/webxr/Navigator+WebXR.idl \
-    $(WebCore)/Modules/webxr/WebXRBoundedReferenceSpace.idl \
-    $(WebCore)/Modules/webxr/WebXRFrame+HandInput.idl \
-    $(WebCore)/Modules/webxr/WebXRFrame.idl \
-    $(WebCore)/Modules/webxr/WebXRHand.idl \
-    $(WebCore)/Modules/webxr/WebXRInputSource+Gamepad.idl \
-    $(WebCore)/Modules/webxr/WebXRInputSource.idl \
-    $(WebCore)/Modules/webxr/WebXRInputSourceArray.idl \
-    $(WebCore)/Modules/webxr/WebXRInputSource+HandInput.idl \
-    $(WebCore)/Modules/webxr/WebXRJointPose.idl \
-    $(WebCore)/Modules/webxr/WebXRJointSpace.idl \
-    $(WebCore)/Modules/webxr/WebXRLayer.idl \
-    $(WebCore)/Modules/webxr/WebXRPose.idl \
-    $(WebCore)/Modules/webxr/WebXRReferenceSpace.idl \
-    $(WebCore)/Modules/webxr/WebXRRenderState.idl \
-    $(WebCore)/Modules/webxr/WebXRRigidTransform.idl \
-    $(WebCore)/Modules/webxr/WebXRSession+AR.idl \
-    $(WebCore)/Modules/webxr/WebXRSession.idl \
-    $(WebCore)/Modules/webxr/WebXRSpace.idl \
-    $(WebCore)/Modules/webxr/WebXRSystem.idl \
-    $(WebCore)/Modules/webxr/WebXRViewerPose.idl \
-    $(WebCore)/Modules/webxr/WebXRView.idl \
-    $(WebCore)/Modules/webxr/WebXRViewport.idl \
-    $(WebCore)/Modules/webxr/WebXRWebGLLayer.idl \
-    $(WebCore)/Modules/webxr/XREnvironmentBlendMode.idl \
-    $(WebCore)/Modules/webxr/XREye.idl \
-    $(WebCore)/Modules/webxr/XRFrameRequestCallback.idl \
-    $(WebCore)/Modules/webxr/XRHandJoint.idl \
-    $(WebCore)/Modules/webxr/XRHandedness.idl \
-    $(WebCore)/Modules/webxr/XRInputSourceEvent.idl \
-    $(WebCore)/Modules/webxr/XRInputSourcesChangeEvent.idl \
-    $(WebCore)/Modules/webxr/XRInteractionMode.idl \
-    $(WebCore)/Modules/webxr/XRReferenceSpaceEvent.idl \
-    $(WebCore)/Modules/webxr/XRReferenceSpaceType.idl \
-    $(WebCore)/Modules/webxr/XRRenderStateInit.idl \
-    $(WebCore)/Modules/webxr/XRSessionEvent.idl \
-    $(WebCore)/Modules/webxr/XRSessionInit.idl \
-    $(WebCore)/Modules/webxr/XRSessionMode.idl \
-    $(WebCore)/Modules/webxr/XRTargetRayMode.idl \
-    $(WebCore)/Modules/webxr/XRVisibilityState.idl \
-    $(WebCore)/Modules/webxr/XRWebGLLayerInit.idl \
-    $(WebCore)/accessibility/AccessibilityRole.idl \
-    $(WebCore)/accessibility/AriaAttributes.idl \
-    $(WebCore)/animation/Animatable.idl \
-    $(WebCore)/animation/AnimationEffect.idl \
-    $(WebCore)/animation/AnimationFrameProvider.idl \
-    $(WebCore)/animation/AnimationFrameRatePreset.idl \
-    $(WebCore)/animation/AnimationPlaybackEvent.idl \
-    $(WebCore)/animation/AnimationPlaybackEventInit.idl \
-    $(WebCore)/animation/AnimationTimeline.idl \
-    $(WebCore)/animation/CSSAnimation.idl \
-    $(WebCore)/animation/CSSAnimationEvent.idl \
-    $(WebCore)/animation/CSSTransition.idl \
-    $(WebCore)/animation/CSSTransitionEvent.idl \
-    $(WebCore)/animation/CompositeOperation.idl \
-    $(WebCore)/animation/CompositeOperationOrAuto.idl \
-    $(WebCore)/animation/ComputedEffectTiming.idl \
-    $(WebCore)/animation/CustomAnimationOptions.idl \
-    $(WebCore)/animation/CustomEffect.idl \
-    $(WebCore)/animation/CustomEffectCallback.idl \
-    $(WebCore)/animation/Document+WebAnimations.idl \
-    $(WebCore)/animation/DocumentOrShadowRoot+WebAnimations.idl \
-    $(WebCore)/animation/DocumentTimeline.idl \
-    $(WebCore)/animation/DocumentTimelineOptions.idl \
-    $(WebCore)/animation/EffectTiming.idl \
-    $(WebCore)/animation/FillMode.idl \
-    $(WebCore)/animation/GetAnimationsOptions.idl \
-    $(WebCore)/animation/GlobalEventHandlers+CSSAnimations.idl \
-    $(WebCore)/animation/GlobalEventHandlers+CSSTransitions.idl \
-    $(WebCore)/animation/IterationCompositeOperation.idl \
-    $(WebCore)/animation/KeyframeAnimationOptions.idl \
-    $(WebCore)/animation/KeyframeEffect.idl \
-    $(WebCore)/animation/KeyframeEffectOptions.idl \
-    $(WebCore)/animation/OptionalEffectTiming.idl \
-    $(WebCore)/animation/PlaybackDirection.idl \
-    $(WebCore)/animation/WebAnimation.idl \
-    $(WebCore)/crypto/CryptoAlgorithmParameters.idl \
-    $(WebCore)/crypto/CryptoKey.idl \
-    $(WebCore)/crypto/CryptoKeyPair.idl \
-    $(WebCore)/crypto/CryptoKeyUsage.idl \
-    $(WebCore)/crypto/JsonWebKey.idl \
-    $(WebCore)/crypto/RsaOtherPrimesInfo.idl \
-    $(WebCore)/crypto/SubtleCrypto.idl \
-    $(WebCore)/crypto/keys/CryptoAesKeyAlgorithm.idl \
-    $(WebCore)/crypto/keys/CryptoEcKeyAlgorithm.idl \
-    $(WebCore)/crypto/keys/CryptoHmacKeyAlgorithm.idl \
-    $(WebCore)/crypto/keys/CryptoKeyAlgorithm.idl \
-    $(WebCore)/crypto/keys/CryptoRsaHashedKeyAlgorithm.idl \
-    $(WebCore)/crypto/keys/CryptoRsaKeyAlgorithm.idl \
-    $(WebCore)/crypto/parameters/AesCbcCfbParams.idl \
-    $(WebCore)/crypto/parameters/AesCtrParams.idl \
-    $(WebCore)/crypto/parameters/AesGcmParams.idl \
-    $(WebCore)/crypto/parameters/AesKeyParams.idl \
-    $(WebCore)/crypto/parameters/EcKeyParams.idl \
-    $(WebCore)/crypto/parameters/EcdhKeyDeriveParams.idl \
-    $(WebCore)/crypto/parameters/EcdsaParams.idl \
-    $(WebCore)/crypto/parameters/HkdfParams.idl \
-    $(WebCore)/crypto/parameters/HmacKeyParams.idl \
-    $(WebCore)/crypto/parameters/Pbkdf2Params.idl \
-    $(WebCore)/crypto/parameters/RsaHashedImportParams.idl \
-    $(WebCore)/crypto/parameters/RsaHashedKeyGenParams.idl \
-    $(WebCore)/crypto/parameters/RsaKeyGenParams.idl \
-    $(WebCore)/crypto/parameters/RsaOaepParams.idl \
-    $(WebCore)/crypto/parameters/RsaPssParams.idl \
-    $(WebCore)/css/CSSConditionRule.idl \
-    $(WebCore)/css/CSSContainerRule.idl \
-    $(WebCore)/css/CSSCounterStyleRule.idl \
-    $(WebCore)/css/CSSFontFaceRule.idl \
-    $(WebCore)/css/CSSFontFeatureValuesRule.idl \
-    $(WebCore)/css/CSSFontPaletteValuesRule.idl \
-    $(WebCore)/css/CSSGroupingRule.idl \
-    $(WebCore)/css/CSSImportRule.idl \
-    $(WebCore)/css/CSSImportRule+Layer.idl \
-    $(WebCore)/css/CSSLayerBlockRule.idl \
-    $(WebCore)/css/CSSLayerStatementRule.idl \
-    $(WebCore)/css/CSSKeyframeRule.idl \
-    $(WebCore)/css/CSSKeyframesRule.idl \
-    $(WebCore)/css/CSSMediaRule.idl \
-    $(WebCore)/css/CSSNamespaceRule.idl \
-    $(WebCore)/css/CSSPageRule.idl \
-    $(WebCore)/css/CSSPaintCallback.idl \
-    $(WebCore)/css/CSSPaintSize.idl \
-    $(WebCore)/css/CSSPropertyRule.idl \
-    $(WebCore)/css/CSSRule.idl \
-    $(WebCore)/css/CSSRuleList.idl \
-    $(WebCore)/css/CSSStyleDeclaration.idl \
-    $(WebCore)/css/CSSStyleRule.idl \
-    $(WebCore)/css/CSSStyleSheet.idl \
-    $(WebCore)/css/CSSSupportsRule.idl \
-    $(WebCore)/css/CSSUnknownRule.idl \
-    $(WebCore)/css/DocumentOrShadowRoot+CSSOM.idl \
-    $(WebCore)/css/DOMCSSCustomPropertyDescriptor.idl \
-    $(WebCore)/css/DOMCSSNamespace.idl \
-    $(WebCore)/css/DOMCSSNamespace+CSSNumericFactory.idl \
-    $(WebCore)/css/DOMCSSNamespace+CSSPainting.idl \
-    $(WebCore)/css/DOMCSSNamespace+CSSPropertiesandValues.idl \
-    $(WebCore)/css/DOMMatrix.idl \
-    $(WebCore)/css/DOMMatrix2DInit.idl \
-    $(WebCore)/css/DOMMatrixInit.idl \
-    $(WebCore)/css/DOMMatrixReadOnly.idl \
-    $(WebCore)/css/DeprecatedCSSOMCounter.idl \
-    $(WebCore)/css/DeprecatedCSSOMPrimitiveValue.idl \
-    $(WebCore)/css/DeprecatedCSSOMRGBColor.idl \
-    $(WebCore)/css/DeprecatedCSSOMRect.idl \
-    $(WebCore)/css/DeprecatedCSSOMValue.idl \
-    $(WebCore)/css/DeprecatedCSSOMValueList.idl \
-    $(WebCore)/css/ElementCSSInlineStyle.idl \
-    $(WebCore)/css/FontFace.idl \
-    $(WebCore)/css/FontFaceSet.idl \
-    $(WebCore)/css/FontFaceSource.idl \
-    $(WebCore)/css/LinkStyle.idl \
-    $(WebCore)/css/MediaList.idl \
-    $(WebCore)/css/MediaQueryList.idl \
-    $(WebCore)/css/MediaQueryListEvent.idl \
-    $(WebCore)/css/StyleMedia.idl \
-    $(WebCore)/css/StyleSheet.idl \
-    $(WebCore)/css/StyleSheetList.idl \
-    $(WebCore)/css/typedom/StylePropertyMap.idl \
-    $(WebCore)/css/typedom/StylePropertyMapReadOnly.idl \
-	$(WebCore)/css/typedom/CSSKeywordValue.idl \
-    $(WebCore)/css/typedom/CSSStyleImageValue.idl \
-    $(WebCore)/css/typedom/CSSNumericValue.idl \
-    $(WebCore)/css/typedom/CSSStyleValue.idl \
-    $(WebCore)/css/typedom/CSSUnitValue.idl \
-    $(WebCore)/css/typedom/CSSUnparsedValue.idl \
-    $(WebCore)/css/typedom/CSSOMVariableReferenceValue.idl \
-    $(WebCore)/css/typedom/color/CSSColor.idl \
-    $(WebCore)/css/typedom/color/CSSColorValue.idl \
-    $(WebCore)/css/typedom/color/CSSHSL.idl \
-    $(WebCore)/css/typedom/color/CSSHWB.idl \
-    $(WebCore)/css/typedom/color/CSSLCH.idl \
-    $(WebCore)/css/typedom/color/CSSLab.idl \
-    $(WebCore)/css/typedom/color/CSSOKLCH.idl \
-    $(WebCore)/css/typedom/color/CSSOKLab.idl \
-    $(WebCore)/css/typedom/color/CSSRGB.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathClamp.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathInvert.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathMax.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathMin.idl \
-	$(WebCore)/css/typedom/numeric/CSSMathNegate.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathOperator.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathProduct.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathSum.idl \
-    $(WebCore)/css/typedom/numeric/CSSMathValue.idl \
-    $(WebCore)/css/typedom/numeric/CSSNumericArray.idl \
-    $(WebCore)/css/typedom/numeric/CSSNumericBaseType.idl \
-    $(WebCore)/css/typedom/numeric/CSSNumericType.idl \
-	$(WebCore)/css/typedom/transform/CSSMatrixComponent.idl \
-	$(WebCore)/css/typedom/transform/CSSMatrixComponentOptions.idl \
-	$(WebCore)/css/typedom/transform/CSSPerspective.idl \
-	$(WebCore)/css/typedom/transform/CSSRotate.idl \
-	$(WebCore)/css/typedom/transform/CSSScale.idl \
-	$(WebCore)/css/typedom/transform/CSSSkew.idl \
-	$(WebCore)/css/typedom/transform/CSSSkewX.idl \
-	$(WebCore)/css/typedom/transform/CSSSkewY.idl \
-	$(WebCore)/css/typedom/transform/CSSTransformComponent.idl \
-	$(WebCore)/css/typedom/transform/CSSTransformValue.idl \
-	$(WebCore)/css/typedom/transform/CSSTranslate.idl \
-    $(WebCore)/dom/AbortAlgorithm.idl \
-    $(WebCore)/dom/AbortController.idl \
-    $(WebCore)/dom/AbortSignal.idl \
-    $(WebCore)/dom/AbstractRange.idl \
-    $(WebCore)/dom/AddEventListenerOptions.idl \
-    $(WebCore)/dom/Attr.idl \
-    $(WebCore)/dom/BeforeUnloadEvent.idl \
-    $(WebCore)/dom/BroadcastChannel.idl \
-    $(WebCore)/dom/CDATASection.idl \
-    $(WebCore)/dom/CharacterData.idl \
-    $(WebCore)/dom/ChildNode.idl \
-    $(WebCore)/dom/ClipboardEvent.idl \
-    $(WebCore)/dom/Comment.idl \
-    $(WebCore)/dom/CompositionEvent.idl \
-    $(WebCore)/dom/CustomElementRegistry.idl \
-    $(WebCore)/dom/CustomEvent.idl \
-    $(WebCore)/dom/DOMException.idl \
-    $(WebCore)/dom/DOMImplementation.idl \
-    $(WebCore)/dom/DOMPoint.idl \
-    $(WebCore)/dom/DOMPointInit.idl \
-    $(WebCore)/dom/DOMPointReadOnly.idl \
-    $(WebCore)/dom/DOMQuad.idl \
-    $(WebCore)/dom/DOMQuadInit.idl \
-    $(WebCore)/dom/DOMRect.idl \
-    $(WebCore)/dom/DOMRectInit.idl \
-    $(WebCore)/dom/DOMRectList.idl \
-    $(WebCore)/dom/DOMRectReadOnly.idl \
-    $(WebCore)/dom/DOMStringList.idl \
-    $(WebCore)/dom/DOMStringMap.idl \
-    $(WebCore)/dom/DataTransfer.idl \
-    $(WebCore)/dom/DataTransferItem.idl \
-    $(WebCore)/dom/DataTransferItemList.idl \
-    $(WebCore)/dom/DeviceMotionEvent.idl \
-    $(WebCore)/dom/DeviceOrientationEvent.idl \
-    $(WebCore)/dom/DeviceOrientationOrMotionPermissionState.idl \
-    $(WebCore)/dom/Document.idl \
-    $(WebCore)/dom/Document+CSSOMView.idl \
-    $(WebCore)/dom/Document+Fullscreen.idl \
-    $(WebCore)/dom/Document+HTML.idl \
-    $(WebCore)/dom/Document+HTMLObsolete.idl \
-    $(WebCore)/dom/Document+PageVisibility.idl \
-    $(WebCore)/dom/Document+PointerLock.idl \
-    $(WebCore)/dom/Document+Selection.idl \
-    $(WebCore)/dom/Document+StorageAccess.idl \
-    $(WebCore)/dom/Document+UndoMananger.idl \
-    $(WebCore)/dom/DocumentAndElementEventHandlers.idl \
-    $(WebCore)/dom/DocumentFragment.idl \
-    $(WebCore)/dom/DocumentOrShadowRoot.idl \
-    $(WebCore)/dom/DocumentOrShadowRoot+Fullscreen.idl \
-    $(WebCore)/dom/DocumentOrShadowRoot+PointerLock.idl \
-    $(WebCore)/dom/DocumentType.idl \
-    $(WebCore)/dom/DragEvent.idl \
-    $(WebCore)/dom/Element+CSSOMView.idl \
-    $(WebCore)/dom/Element+ComputedStyleMap.idl \
-    $(WebCore)/dom/Element+DOMParsing.idl \
-    $(WebCore)/dom/Element+Fullscreen.idl \
-    $(WebCore)/dom/Element+PointerEvents.idl \
-    $(WebCore)/dom/Element+PointerLock.idl \
-    $(WebCore)/dom/Element.idl \
-    $(WebCore)/dom/ElementContentEditable.idl \
-    $(WebCore)/dom/ElementInternals.idl \
-    $(WebCore)/dom/ErrorEvent.idl \
-    $(WebCore)/dom/Event.idl \
-    $(WebCore)/dom/EventInit.idl \
-    $(WebCore)/dom/EventListener.idl \
-    $(WebCore)/dom/EventListenerOptions.idl \
-    $(WebCore)/dom/EventModifierInit.idl \
-    $(WebCore)/dom/EventTarget.idl \
-    $(WebCore)/dom/FocusEvent.idl \
-    $(WebCore)/dom/FocusOptions.idl \
-    $(WebCore)/dom/FormDataEvent.idl \
-    $(WebCore)/dom/FullscreenOptions.idl \
-    $(WebCore)/dom/GlobalEventHandlers+PointerEvents.idl \
-    $(WebCore)/dom/GlobalEventHandlers+Selection.idl \
-    $(WebCore)/dom/GlobalEventHandlers.idl \
-    $(WebCore)/dom/HashChangeEvent.idl \
-    $(WebCore)/dom/IdleDeadline.idl \
-    $(WebCore)/dom/IdleRequestCallback.idl \
-    $(WebCore)/dom/IdleRequestOptions.idl \
-    $(WebCore)/dom/InnerHTML.idl \
-    $(WebCore)/dom/InputEvent.idl \
-    $(WebCore)/dom/KeyboardEvent.idl \
-    $(WebCore)/dom/MessageChannel.idl \
-    $(WebCore)/dom/MessageEvent.idl \
-    $(WebCore)/dom/MessagePort.idl \
-    $(WebCore)/dom/MouseEvent.idl \
-    $(WebCore)/dom/MouseEventInit.idl \
-    $(WebCore)/dom/MutationCallback.idl \
-    $(WebCore)/dom/MutationEvent.idl \
-    $(WebCore)/dom/MutationObserver.idl \
-    $(WebCore)/dom/MutationRecord.idl \
-    $(WebCore)/dom/NamedNodeMap.idl \
-    $(WebCore)/dom/NavigatorMaxTouchPoints.idl \
-    $(WebCore)/dom/Node.idl \
-    $(WebCore)/dom/NodeFilter.idl \
-    $(WebCore)/dom/NodeIterator.idl \
-    $(WebCore)/dom/NodeList.idl \
-    $(WebCore)/dom/NonDocumentTypeChildNode.idl \
-    $(WebCore)/dom/NonElementParentNode.idl \
-    $(WebCore)/dom/OverflowEvent.idl \
-    $(WebCore)/dom/PageTransitionEvent.idl \
-    $(WebCore)/dom/ParentNode.idl \
-    $(WebCore)/dom/PointerEvent.idl \
-    $(WebCore)/dom/PopStateEvent.idl \
-    $(WebCore)/dom/ProcessingInstruction.idl \
-    $(WebCore)/dom/ProgressEvent.idl \
-    $(WebCore)/dom/PromiseRejectionEvent.idl \
-    $(WebCore)/dom/Range+CSSOMView.idl \
-    $(WebCore)/dom/Range+DOMParsing.idl \
-    $(WebCore)/dom/Range.idl \
-    $(WebCore)/dom/RequestAnimationFrameCallback.idl \
-    $(WebCore)/dom/SecurityPolicyViolationEvent.idl \
-    $(WebCore)/dom/SecurityPolicyViolationEventDisposition.idl \
-    $(WebCore)/dom/ShadowRoot.idl \
-    $(WebCore)/dom/ShadowRootInit.idl \
-    $(WebCore)/dom/ShadowRootMode.idl \
-    $(WebCore)/dom/SlotAssignmentMode.idl \
-    $(WebCore)/dom/Slotable.idl \
-    $(WebCore)/dom/StaticRange.idl \
-    $(WebCore)/dom/StringCallback.idl \
-    $(WebCore)/dom/Text.idl \
-    $(WebCore)/dom/TextDecoder.idl \
-    $(WebCore)/dom/TextDecoderStream.idl \
-    $(WebCore)/dom/TextDecoderStreamDecoder.idl \
-    $(WebCore)/dom/TextEncoder.idl \
-    $(WebCore)/dom/TextEncoderStream.idl \
-    $(WebCore)/dom/TextEncoderStreamEncoder.idl \
-    $(WebCore)/dom/TextEvent.idl \
-    $(WebCore)/dom/ToggleEvent.idl \
-    $(WebCore)/dom/TreeWalker.idl \
-    $(WebCore)/dom/UIEvent.idl \
-    $(WebCore)/dom/UIEventInit.idl \
-    $(WebCore)/dom/ValidityStateFlags.idl \
-    $(WebCore)/dom/VisibilityState.idl \
-    $(WebCore)/dom/WheelEvent.idl \
-    $(WebCore)/dom/XMLDocument.idl \
-    $(WebCore)/fileapi/Blob.idl \
-    $(WebCore)/fileapi/BlobCallback.idl \
-    $(WebCore)/fileapi/BlobPropertyBag.idl \
-    $(WebCore)/fileapi/EndingType.idl \
-    $(WebCore)/fileapi/File.idl \
-    $(WebCore)/fileapi/FileList.idl \
-    $(WebCore)/fileapi/FileReader.idl \
-    $(WebCore)/fileapi/FileReaderSync.idl \
-    $(WebCore)/html/DOMFormData.idl \
-    $(WebCore)/html/DOMTokenList.idl \
-    $(WebCore)/html/DOMURL.idl \
-    $(WebCore)/html/HTMLAllCollection.idl \
-    $(WebCore)/html/HTMLAnchorElement.idl \
-    $(WebCore)/html/HTMLAreaElement.idl \
-    $(WebCore)/html/HTMLAttachmentElement.idl \
-    $(WebCore)/html/HTMLAudioElement.idl \
-    $(WebCore)/html/HTMLBRElement.idl \
-    $(WebCore)/html/HTMLBaseElement.idl \
-    $(WebCore)/html/HTMLBodyElement+Compat.idl \
-    $(WebCore)/html/HTMLBodyElement.idl \
-    $(WebCore)/html/HTMLButtonElement.idl \
-    $(WebCore)/html/HTMLCanvasElement.idl \
-    $(WebCore)/html/HTMLCollection.idl \
-    $(WebCore)/html/HTMLDListElement.idl \
-    $(WebCore)/html/HTMLDataElement.idl \
-    $(WebCore)/html/HTMLDataListElement.idl \
-    $(WebCore)/html/HTMLDetailsElement.idl \
-    $(WebCore)/html/HTMLDialogElement.idl \
-    $(WebCore)/html/HTMLDirectoryElement.idl \
-    $(WebCore)/html/HTMLDivElement.idl \
-    $(WebCore)/html/HTMLDocument.idl \
-    $(WebCore)/html/HTMLElement+CSSOMView.idl \
-    $(WebCore)/html/HTMLElement.idl \
-    $(WebCore)/html/HTMLEmbedElement.idl \
-    $(WebCore)/html/HTMLFieldSetElement.idl \
-    $(WebCore)/html/HTMLFontElement.idl \
-    $(WebCore)/html/HTMLFormControlsCollection.idl \
-    $(WebCore)/html/HTMLFormElement.idl \
-    $(WebCore)/html/HTMLFrameElement.idl \
-    $(WebCore)/html/HTMLFrameSetElement.idl \
-    $(WebCore)/html/HTMLHRElement.idl \
-    $(WebCore)/html/HTMLHeadElement.idl \
-    $(WebCore)/html/HTMLHeadingElement.idl \
-    $(WebCore)/html/HTMLHtmlElement.idl \
-    $(WebCore)/html/HTMLHyperlinkElementUtils.idl \
-    $(WebCore)/html/HTMLIFrameElement.idl \
-    $(WebCore)/html/HTMLImageElement+CSSOMView.idl \
-    $(WebCore)/html/HTMLImageElement.idl \
-    $(WebCore)/html/HTMLInputElement.idl \
-    $(WebCore)/html/HTMLLIElement.idl \
-    $(WebCore)/html/HTMLLabelElement.idl \
-    $(WebCore)/html/HTMLLegendElement.idl \
-    $(WebCore)/html/HTMLLinkElement.idl \
-    $(WebCore)/html/HTMLMapElement.idl \
-    $(WebCore)/html/HTMLMarqueeElement.idl \
-    $(WebCore)/html/HTMLMediaElement+AudioOutput.idl \
-    $(WebCore)/html/HTMLMediaElement.idl \
-    $(WebCore)/html/HTMLMenuElement.idl \
-    $(WebCore)/html/HTMLMenuItemElement.idl \
-    $(WebCore)/html/HTMLMetaElement.idl \
-    $(WebCore)/html/HTMLMeterElement.idl \
-    $(WebCore)/html/HTMLModElement.idl \
-    $(WebCore)/html/HTMLOListElement.idl \
-    $(WebCore)/html/HTMLObjectElement.idl \
-    $(WebCore)/html/HTMLOptGroupElement.idl \
-    $(WebCore)/html/HTMLOptionElement.idl \
-    $(WebCore)/html/HTMLOptionsCollection.idl \
-    $(WebCore)/html/HTMLOrForeignElement.idl \
-    $(WebCore)/html/HTMLOutputElement.idl \
-    $(WebCore)/html/HTMLParagraphElement.idl \
-    $(WebCore)/html/HTMLParamElement.idl \
-    $(WebCore)/html/HTMLPictureElement.idl \
-    $(WebCore)/html/HTMLPreElement.idl \
-    $(WebCore)/html/HTMLProgressElement.idl \
-    $(WebCore)/html/HTMLQuoteElement.idl \
-    $(WebCore)/html/HTMLScriptElement.idl \
-    $(WebCore)/html/HTMLSelectElement.idl \
-    $(WebCore)/html/HTMLSlotElement.idl \
-    $(WebCore)/html/HTMLSourceElement.idl \
-    $(WebCore)/html/HTMLSpanElement.idl \
-    $(WebCore)/html/HTMLStyleElement.idl \
-    $(WebCore)/html/HTMLTableCaptionElement.idl \
-    $(WebCore)/html/HTMLTableCellElement.idl \
-    $(WebCore)/html/HTMLTableColElement.idl \
-    $(WebCore)/html/HTMLTableElement.idl \
-    $(WebCore)/html/HTMLTableRowElement.idl \
-    $(WebCore)/html/HTMLTableSectionElement.idl \
-    $(WebCore)/html/HTMLTemplateElement.idl \
-    $(WebCore)/html/HTMLTextAreaElement.idl \
-    $(WebCore)/html/HTMLTimeElement.idl \
-    $(WebCore)/html/HTMLTitleElement.idl \
-    $(WebCore)/html/HTMLTrackElement.idl \
-    $(WebCore)/html/HTMLUListElement.idl \
-    $(WebCore)/html/HTMLUnknownElement.idl \
-    $(WebCore)/html/HTMLVideoElement.idl \
-    $(WebCore)/html/HTMLVideoElement+RequestVideoFrameCallback.idl \
-    $(WebCore)/html/ImageBitmap.idl \
-    $(WebCore)/html/ImageBitmapOptions.idl \
-    $(WebCore)/html/ImageData.idl \
-    $(WebCore)/html/ImageDataSettings.idl \
-    $(WebCore)/html/MediaController.idl \
-    $(WebCore)/html/MediaEncryptedEvent.idl \
-    $(WebCore)/html/MediaError.idl \
-    $(WebCore)/html/OffscreenCanvas.idl \
-    $(WebCore)/html/RadioNodeList.idl \
-    $(WebCore)/html/SubmitEvent.idl \
-    $(WebCore)/html/TextMetrics.idl \
-    $(WebCore)/html/TimeRanges.idl \
-    $(WebCore)/html/URLSearchParams.idl \
-    $(WebCore)/html/UserActivation.idl \
-    $(WebCore)/html/ValidityState.idl \
-    $(WebCore)/html/VideoFrameMetadata.idl \
-    $(WebCore)/html/VideoFrameRequestCallback.idl \
-    $(WebCore)/html/VoidCallback.idl \
-    $(WebCore)/html/CyberKitMediaKeyError.idl \
-    $(WebCore)/html/canvas/ANGLEInstancedArrays.idl \
-    $(WebCore)/html/canvas/CanvasCompositing.idl \
-    $(WebCore)/html/canvas/CanvasDirection.idl \
-    $(WebCore)/html/canvas/CanvasDrawImage.idl \
-    $(WebCore)/html/canvas/CanvasDrawPath.idl \
-    $(WebCore)/html/canvas/CanvasFillRule.idl \
-    $(WebCore)/html/canvas/CanvasFillStrokeStyles.idl \
-    $(WebCore)/html/canvas/CanvasFilters.idl \
-    $(WebCore)/html/canvas/CanvasGradient.idl \
-    $(WebCore)/html/canvas/CanvasImageData.idl \
-    $(WebCore)/html/canvas/CanvasImageSmoothing.idl \
-    $(WebCore)/html/canvas/CanvasLineCap.idl \
-    $(WebCore)/html/canvas/CanvasLineJoin.idl \
-    $(WebCore)/html/canvas/CanvasPath.idl \
-    $(WebCore)/html/canvas/CanvasPathDrawingStyles.idl \
-    $(WebCore)/html/canvas/CanvasPattern.idl \
-    $(WebCore)/html/canvas/CanvasRect.idl \
-    $(WebCore)/html/canvas/CanvasRenderingContext2D.idl \
-    $(WebCore)/html/canvas/CanvasRenderingContext2DSettings.idl \
-    $(WebCore)/html/canvas/CanvasShadowStyles.idl \
-    $(WebCore)/html/canvas/CanvasState.idl \
-    $(WebCore)/html/canvas/CanvasText.idl \
-    $(WebCore)/html/canvas/CanvasTextAlign.idl \
-    $(WebCore)/html/canvas/CanvasTextBaseline.idl \
-    $(WebCore)/html/canvas/CanvasTextDrawingStyles.idl \
-    $(WebCore)/html/canvas/CanvasTransform.idl \
-    $(WebCore)/html/canvas/CanvasUserInterface.idl \
-    $(WebCore)/html/canvas/EXTBlendMinMax.idl \
-    $(WebCore)/html/canvas/EXTColorBufferFloat.idl \
-    $(WebCore)/html/canvas/EXTColorBufferHalfFloat.idl \
-    $(WebCore)/html/canvas/EXTDisjointTimerQuery.idl \
-    $(WebCore)/html/canvas/EXTDisjointTimerQueryWebGL2.idl \
-    $(WebCore)/html/canvas/EXTFloatBlend.idl \
-    $(WebCore)/html/canvas/EXTFragDepth.idl \
-    $(WebCore)/html/canvas/EXTShaderTextureLOD.idl \
-    $(WebCore)/html/canvas/EXTTextureCompressionBPTC.idl \
-    $(WebCore)/html/canvas/EXTTextureCompressionRGTC.idl \
-    $(WebCore)/html/canvas/EXTTextureFilterAnisotropic.idl \
-    $(WebCore)/html/canvas/EXTTextureNorm16.idl \
-    $(WebCore)/html/canvas/EXTsRGB.idl \
-    $(WebCore)/html/canvas/GPUCanvasContext.idl \
-    $(WebCore)/html/canvas/ImageBitmapRenderingContext.idl \
-    $(WebCore)/html/canvas/ImageBitmapRenderingContextSettings.idl \
-    $(WebCore)/html/canvas/ImageSmoothingQuality.idl \
-    $(WebCore)/html/canvas/KHRParallelShaderCompile.idl \
-    $(WebCore)/html/canvas/OESDrawBuffersIndexed.idl \
-    $(WebCore)/html/canvas/OESElementIndexUint.idl \
-    $(WebCore)/html/canvas/OESFBORenderMipmap.idl \
-    $(WebCore)/html/canvas/OESStandardDerivatives.idl \
-    $(WebCore)/html/canvas/OESTextureFloat.idl \
-    $(WebCore)/html/canvas/OESTextureFloatLinear.idl \
-    $(WebCore)/html/canvas/OESTextureHalfFloat.idl \
-    $(WebCore)/html/canvas/OESTextureHalfFloatLinear.idl \
-    $(WebCore)/html/canvas/OESVertexArrayObject.idl \
-    $(WebCore)/html/canvas/OffscreenCanvasRenderingContext2D.idl \
-    $(WebCore)/html/canvas/PaintRenderingContext2D.idl \
-    $(WebCore)/html/canvas/Path2D.idl \
-    $(WebCore)/html/canvas/PredefinedColorSpace.idl \
-    $(WebCore)/html/canvas/WebGL2RenderingContext.idl \
-    $(WebCore)/html/canvas/WebGLActiveInfo.idl \
-    $(WebCore)/html/canvas/WebGLBuffer.idl \
-    $(WebCore)/html/canvas/WebGLClipCullDistance.idl \
-    $(WebCore)/html/canvas/WebGLColorBufferFloat.idl \
-    $(WebCore)/html/canvas/WebGLCompressedTextureASTC.idl \
-    $(WebCore)/html/canvas/WebGLCompressedTextureETC.idl \
-    $(WebCore)/html/canvas/WebGLCompressedTextureETC1.idl \
-    $(WebCore)/html/canvas/WebGLCompressedTexturePVRTC.idl \
-    $(WebCore)/html/canvas/WebGLCompressedTextureS3TC.idl \
-    $(WebCore)/html/canvas/WebGLCompressedTextureS3TCsRGB.idl \
-    $(WebCore)/html/canvas/WebGLContextAttributes.idl \
-    $(WebCore)/html/canvas/WebGLContextEvent.idl \
-    $(WebCore)/html/canvas/WebGLDebugRendererInfo.idl \
-    $(WebCore)/html/canvas/WebGLDebugShaders.idl \
-    $(WebCore)/html/canvas/WebGLDepthTexture.idl \
-    $(WebCore)/html/canvas/WebGLDrawBuffers.idl \
-    $(WebCore)/html/canvas/WebGLDrawInstancedBaseVertexBaseInstance.idl \
-    $(WebCore)/html/canvas/WebGLFramebuffer.idl \
-    $(WebCore)/html/canvas/WebGLLoseContext.idl \
-    $(WebCore)/html/canvas/WebGLMultiDraw.idl \
-    $(WebCore)/html/canvas/WebGLMultiDrawInstancedBaseVertexBaseInstance.idl \
-    $(WebCore)/html/canvas/WebGLProgram.idl \
-    $(WebCore)/html/canvas/WebGLProvokingVertex.idl \
-    $(WebCore)/html/canvas/WebGLQuery.idl \
-    $(WebCore)/html/canvas/WebGLRenderbuffer.idl \
-    $(WebCore)/html/canvas/WebGLRenderingContext.idl \
-    $(WebCore)/html/canvas/WebGLRenderingContextBase.idl \
-    $(WebCore)/html/canvas/WebGLSampler.idl \
-    $(WebCore)/html/canvas/WebGLShader.idl \
-    $(WebCore)/html/canvas/WebGLShaderPrecisionFormat.idl \
-    $(WebCore)/html/canvas/WebGLSync.idl \
-    $(WebCore)/html/canvas/WebGLTexture.idl \
-    $(WebCore)/html/canvas/WebGLTimerQueryEXT.idl \
-    $(WebCore)/html/canvas/WebGLTransformFeedback.idl \
-    $(WebCore)/html/canvas/WebGLUniformLocation.idl \
-    $(WebCore)/html/canvas/WebGLVertexArrayObject.idl \
-    $(WebCore)/html/canvas/WebGLVertexArrayObjectOES.idl \
-    $(WebCore)/html/track/AudioTrack.idl \
-    $(WebCore)/html/track/AudioTrackConfiguration.idl \
-    $(WebCore)/html/track/AudioTrackList.idl \
-    $(WebCore)/html/track/DataCue.idl \
-    $(WebCore)/html/track/TextTrack.idl \
-    $(WebCore)/html/track/TextTrackCue.idl \
-    $(WebCore)/html/track/TextTrackCueGeneric.idl \
-    $(WebCore)/html/track/TextTrackCueList.idl \
-    $(WebCore)/html/track/TextTrackList.idl \
-    $(WebCore)/html/track/TrackEvent.idl \
-    $(WebCore)/html/track/VTTCue.idl \
-    $(WebCore)/html/track/VTTRegion.idl \
-    $(WebCore)/html/track/VTTRegionList.idl \
-    $(WebCore)/html/track/VideoTrack.idl \
-    $(WebCore)/html/track/VideoTrackConfiguration.idl \
-    $(WebCore)/html/track/VideoTrackList.idl \
-    $(WebCore)/mathml/MathMLElement.idl \
-    $(WebCore)/mathml/MathMLMathElement.idl \
-    $(WebCore)/inspector/CommandLineAPIHost.idl \
-    $(WebCore)/inspector/InspectorAuditAccessibilityObject.idl \
-    $(WebCore)/inspector/InspectorAuditDOMObject.idl \
-    $(WebCore)/inspector/InspectorAuditResourcesObject.idl \
-    $(WebCore)/inspector/InspectorFrontendHost.idl \
-    $(WebCore)/loader/COEPInheritenceViolationReportBody.idl \
-    $(WebCore)/loader/CORPViolationReportBody.idl \
-    $(WebCore)/loader/appcache/DOMApplicationCache.idl \
-    $(WebCore)/page/BarProp.idl \
-    $(WebCore)/page/Crypto.idl \
-    $(WebCore)/page/DOMSelection.idl \
-    $(WebCore)/page/DOMWindow+CSSOM.idl \
-    $(WebCore)/page/DOMWindow+CSSOMView.idl \
-    $(WebCore)/page/DOMWindow+Compat.idl \
-    $(WebCore)/page/DOMWindow+DeviceMotion.idl \
-    $(WebCore)/page/DOMWindow+DeviceOrientation.idl \
-    $(WebCore)/page/DOMWindow+RequestIdleCallback.idl \
-    $(WebCore)/page/DOMWindow+Selection.idl \
-    $(WebCore)/page/DOMWindow+VisualViewport.idl \
-    $(WebCore)/page/DOMWindow.idl \
-    $(WebCore)/page/EventSource.idl \
-    $(WebCore)/page/History.idl \
-    $(WebCore)/page/IntersectionObserver.idl \
-    $(WebCore)/page/IntersectionObserverCallback.idl \
-    $(WebCore)/page/IntersectionObserverEntry.idl \
-    $(WebCore)/page/Location.idl \
-    $(WebCore)/page/Navigator.idl \
-    $(WebCore)/page/Navigator+IsLoggedIn.idl \
-    $(WebCore)/page/Navigator+UserActivation.idl \
-    $(WebCore)/page/NavigatorCookies.idl \
-    $(WebCore)/page/NavigatorID.idl \
-    $(WebCore)/page/NavigatorLanguage.idl \
-    $(WebCore)/page/NavigatorOnLine.idl \
-    $(WebCore)/page/NavigatorPlugins.idl \
-    $(WebCore)/page/NavigatorServiceWorker.idl \
-    $(WebCore)/page/NavigatorShare.idl \
-    $(WebCore)/page/NavigatorStorage.idl \
-    $(WebCore)/page/Performance+NavigationTiming.idl \
-    $(WebCore)/page/Performance+PerformanceTimeline.idl \
-    $(WebCore)/page/Performance+ResourceTiming.idl \
-    $(WebCore)/page/Performance+UserTiming.idl \
-    $(WebCore)/page/Performance.idl \
-    $(WebCore)/page/PerformanceEntry.idl \
-    $(WebCore)/page/PerformanceMark.idl \
-    $(WebCore)/page/PerformanceMarkOptions.idl \
-    $(WebCore)/page/PerformanceMeasure.idl \
-    $(WebCore)/page/PerformanceMeasureOptions.idl \
-    $(WebCore)/page/PerformanceNavigation.idl \
-    $(WebCore)/page/PerformanceNavigationTiming.idl \
-    $(WebCore)/page/PerformanceObserver.idl \
-    $(WebCore)/page/PerformanceObserverCallback.idl \
-    $(WebCore)/page/PerformanceObserverEntryList.idl \
-    $(WebCore)/page/PerformancePaintTiming.idl \
-    $(WebCore)/page/PerformanceResourceTiming.idl \
-    $(WebCore)/page/PerformanceServerTiming.idl \
-    $(WebCore)/page/PerformanceTiming.idl \
-    $(WebCore)/page/RemoteDOMWindow.idl \
-    $(WebCore)/page/ResizeObserver.idl \
-    $(WebCore)/page/ResizeObserverBoxOptions.idl \
-    $(WebCore)/page/ResizeObserverCallback.idl \
-    $(WebCore)/page/ResizeObserverEntry.idl \
-    $(WebCore)/page/ResizeObserverOptions.idl \
-    $(WebCore)/page/ResizeObserverSize.idl \
-    $(WebCore)/page/Screen.idl \
-    $(WebCore)/page/ScreenOrientation.idl \
-    $(WebCore)/page/ScrollBehavior.idl \
-    $(WebCore)/page/ScrollIntoViewOptions.idl \
-    $(WebCore)/page/ScrollLogicalPosition.idl \
-    $(WebCore)/page/ScrollOptions.idl \
-    $(WebCore)/page/ScrollToOptions.idl \
-    $(WebCore)/page/ShadowRealmGlobalScope.idl \
-    $(WebCore)/page/ShareData.idl \
-    $(WebCore)/page/StructuredSerializeOptions.idl \
-    $(WebCore)/page/UndoItem.idl \
-    $(WebCore)/page/UndoManager.idl \
-    $(WebCore)/page/UserMessageHandler.idl \
-    $(WebCore)/page/UserMessageHandlersNamespace.idl \
-    $(WebCore)/page/VisualViewport.idl \
-    $(WebCore)/page/CyberKitNamespace.idl \
-    $(WebCore)/page/CyberKitPoint.idl \
-    $(WebCore)/page/WindowEventHandlers.idl \
-    $(WebCore)/page/WindowLocalStorage.idl \
-    $(WebCore)/page/WindowOrWorkerGlobalScope+Crypto.idl \
-    $(WebCore)/page/WindowOrWorkerGlobalScope+Performance.idl \
-    $(WebCore)/page/WindowOrWorkerGlobalScope.idl \
-    $(WebCore)/page/WindowSessionStorage.idl \
-    $(WebCore)/page/WorkerNavigator.idl \
-    $(WebCore)/page/csp/CSPViolationReportBody.idl \
-    $(WebCore)/plugins/DOMMimeType.idl \
-    $(WebCore)/plugins/DOMMimeTypeArray.idl \
-    $(WebCore)/plugins/DOMPlugin.idl \
-    $(WebCore)/plugins/DOMPluginArray.idl \
-    $(WebCore)/storage/Storage.idl \
-    $(WebCore)/storage/StorageEvent.idl \
-    $(WebCore)/svg/Document+SVG.idl \
-    $(WebCore)/svg/SVGAElement.idl \
-    $(WebCore)/svg/SVGAngle.idl \
-    $(WebCore)/svg/SVGAnimateColorElement.idl \
-    $(WebCore)/svg/SVGAnimateElement.idl \
-    $(WebCore)/svg/SVGAnimateMotionElement.idl \
-    $(WebCore)/svg/SVGAnimateTransformElement.idl \
-    $(WebCore)/svg/SVGAnimatedAngle.idl \
-    $(WebCore)/svg/SVGAnimatedBoolean.idl \
-    $(WebCore)/svg/SVGAnimatedEnumeration.idl \
-    $(WebCore)/svg/SVGAnimatedInteger.idl \
-    $(WebCore)/svg/SVGAnimatedLength.idl \
-    $(WebCore)/svg/SVGAnimatedLengthList.idl \
-    $(WebCore)/svg/SVGAnimatedNumber.idl \
-    $(WebCore)/svg/SVGAnimatedNumberList.idl \
-    $(WebCore)/svg/SVGAnimatedPreserveAspectRatio.idl \
-    $(WebCore)/svg/SVGAnimatedRect.idl \
-    $(WebCore)/svg/SVGAnimatedString.idl \
-    $(WebCore)/svg/SVGAnimatedTransformList.idl \
-    $(WebCore)/svg/SVGAnimationElement.idl \
-    $(WebCore)/svg/SVGCircleElement.idl \
-    $(WebCore)/svg/SVGClipPathElement.idl \
-    $(WebCore)/svg/SVGComponentTransferFunctionElement.idl \
-    $(WebCore)/svg/SVGDefsElement.idl \
-    $(WebCore)/svg/SVGDescElement.idl \
-    $(WebCore)/svg/SVGElement.idl \
-    $(WebCore)/svg/SVGEllipseElement.idl \
-    $(WebCore)/svg/SVGFEBlendElement.idl \
-    $(WebCore)/svg/SVGFEColorMatrixElement.idl \
-    $(WebCore)/svg/SVGFEComponentTransferElement.idl \
-    $(WebCore)/svg/SVGFECompositeElement.idl \
-    $(WebCore)/svg/SVGFEConvolveMatrixElement.idl \
-    $(WebCore)/svg/SVGFEDiffuseLightingElement.idl \
-    $(WebCore)/svg/SVGFEDisplacementMapElement.idl \
-    $(WebCore)/svg/SVGFEDistantLightElement.idl \
-    $(WebCore)/svg/SVGFEDropShadowElement.idl \
-    $(WebCore)/svg/SVGFEFloodElement.idl \
-    $(WebCore)/svg/SVGFEFuncAElement.idl \
-    $(WebCore)/svg/SVGFEFuncBElement.idl \
-    $(WebCore)/svg/SVGFEFuncGElement.idl \
-    $(WebCore)/svg/SVGFEFuncRElement.idl \
-    $(WebCore)/svg/SVGFEGaussianBlurElement.idl \
-    $(WebCore)/svg/SVGFEImageElement.idl \
-    $(WebCore)/svg/SVGFEMergeElement.idl \
-    $(WebCore)/svg/SVGFEMergeNodeElement.idl \
-    $(WebCore)/svg/SVGFEMorphologyElement.idl \
-    $(WebCore)/svg/SVGFEOffsetElement.idl \
-    $(WebCore)/svg/SVGFEPointLightElement.idl \
-    $(WebCore)/svg/SVGFESpecularLightingElement.idl \
-    $(WebCore)/svg/SVGFESpotLightElement.idl \
-    $(WebCore)/svg/SVGFETileElement.idl \
-    $(WebCore)/svg/SVGFETurbulenceElement.idl \
-    $(WebCore)/svg/SVGFilterElement.idl \
-    $(WebCore)/svg/SVGFilterPrimitiveStandardAttributes.idl \
-    $(WebCore)/svg/SVGFitToViewBox.idl \
-    $(WebCore)/svg/SVGForeignObjectElement.idl \
-    $(WebCore)/svg/SVGGElement.idl \
-    $(WebCore)/svg/SVGGeometryElement.idl \
-    $(WebCore)/svg/SVGGradientElement.idl \
-    $(WebCore)/svg/SVGGraphicsElement.idl \
-    $(WebCore)/svg/SVGImageElement.idl \
-    $(WebCore)/svg/SVGLength.idl \
-    $(WebCore)/svg/SVGLengthList.idl \
-    $(WebCore)/svg/SVGLineElement.idl \
-    $(WebCore)/svg/SVGLinearGradientElement.idl \
-    $(WebCore)/svg/SVGMPathElement.idl \
-    $(WebCore)/svg/SVGMarkerElement.idl \
-    $(WebCore)/svg/SVGMaskElement.idl \
-    $(WebCore)/svg/SVGMatrix.idl \
-    $(WebCore)/svg/SVGMetadataElement.idl \
-    $(WebCore)/svg/SVGNumber.idl \
-    $(WebCore)/svg/SVGNumberList.idl \
-    $(WebCore)/svg/SVGPathElement.idl \
-    $(WebCore)/svg/SVGPathSeg.idl \
-    $(WebCore)/svg/SVGPathSegArcAbs.idl \
-    $(WebCore)/svg/SVGPathSegArcRel.idl \
-    $(WebCore)/svg/SVGPathSegClosePath.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoCubicAbs.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoCubicRel.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoCubicSmoothAbs.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoCubicSmoothRel.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoQuadraticAbs.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoQuadraticRel.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoQuadraticSmoothAbs.idl \
-    $(WebCore)/svg/SVGPathSegCurvetoQuadraticSmoothRel.idl \
-    $(WebCore)/svg/SVGPathSegLinetoAbs.idl \
-    $(WebCore)/svg/SVGPathSegLinetoHorizontalAbs.idl \
-    $(WebCore)/svg/SVGPathSegLinetoHorizontalRel.idl \
-    $(WebCore)/svg/SVGPathSegLinetoRel.idl \
-    $(WebCore)/svg/SVGPathSegLinetoVerticalAbs.idl \
-    $(WebCore)/svg/SVGPathSegLinetoVerticalRel.idl \
-    $(WebCore)/svg/SVGPathSegList.idl \
-    $(WebCore)/svg/SVGPathSegMovetoAbs.idl \
-    $(WebCore)/svg/SVGPathSegMovetoRel.idl \
-    $(WebCore)/svg/SVGPatternElement.idl \
-    $(WebCore)/svg/SVGPoint.idl \
-    $(WebCore)/svg/SVGPointList.idl \
-    $(WebCore)/svg/SVGPolygonElement.idl \
-    $(WebCore)/svg/SVGPolylineElement.idl \
-    $(WebCore)/svg/SVGPreserveAspectRatio.idl \
-    $(WebCore)/svg/SVGRadialGradientElement.idl \
-    $(WebCore)/svg/SVGRect.idl \
-    $(WebCore)/svg/SVGRectElement.idl \
-    $(WebCore)/svg/SVGRenderingIntent.idl \
-    $(WebCore)/svg/SVGSVGElement.idl \
-    $(WebCore)/svg/SVGScriptElement.idl \
-    $(WebCore)/svg/SVGSetElement.idl \
-    $(WebCore)/svg/SVGStopElement.idl \
-    $(WebCore)/svg/SVGStringList.idl \
-    $(WebCore)/svg/SVGStyleElement.idl \
-    $(WebCore)/svg/SVGSwitchElement.idl \
-    $(WebCore)/svg/SVGSymbolElement.idl \
-    $(WebCore)/svg/SVGTSpanElement.idl \
-    $(WebCore)/svg/SVGTests.idl \
-    $(WebCore)/svg/SVGTextContentElement.idl \
-    $(WebCore)/svg/SVGTextElement.idl \
-    $(WebCore)/svg/SVGTextPathElement.idl \
-    $(WebCore)/svg/SVGTextPositioningElement.idl \
-    $(WebCore)/svg/SVGTitleElement.idl \
-    $(WebCore)/svg/SVGTransform.idl \
-    $(WebCore)/svg/SVGTransformList.idl \
-    $(WebCore)/svg/SVGURIReference.idl \
-    $(WebCore)/svg/SVGUnitTypes.idl \
-    $(WebCore)/svg/SVGUseElement.idl \
-    $(WebCore)/svg/SVGViewElement.idl \
-    $(WebCore)/svg/SVGViewSpec.idl \
-    $(WebCore)/svg/SVGZoomAndPan.idl \
-    $(WebCore)/testing/GCObservation.idl \
-    $(WebCore)/testing/InternalSettings.idl \
-    $(WebCore)/testing/Internals.idl \
-    $(WebCore)/testing/InternalsMapLike.idl \
-    $(WebCore)/testing/InternalsSetLike.idl \
-    $(WebCore)/testing/MallocStatistics.idl \
-    $(WebCore)/testing/MemoryInfo.idl \
-    $(WebCore)/testing/MockCDMFactory.idl \
-    $(WebCore)/testing/MockContentFilterSettings.idl \
-    $(WebCore)/testing/MockPageOverlay.idl \
-    $(WebCore)/testing/MockPaymentAddress.idl \
-    $(WebCore)/testing/MockPaymentContactFields.idl \
-    $(WebCore)/testing/MockPaymentCoordinator.idl \
-    $(WebCore)/testing/MockPaymentError.idl \
-    $(WebCore)/testing/MockWebAuthenticationConfiguration.idl \
-    $(WebCore)/testing/ServiceWorkerInternals.idl \
-    $(WebCore)/testing/TypeConversions.idl \
-    $(WebCore)/testing/FakeXRBoundsPoint.idl \
-    $(WebCore)/testing/FakeXRButtonStateInit.idl \
-    $(WebCore)/testing/FakeXRInputSourceInit.idl \
-    $(WebCore)/testing/FakeXRJointStateInit.idl \
-    $(WebCore)/testing/FakeXRRigidTransformInit.idl \
-    $(WebCore)/testing/FakeXRViewInit.idl \
-    $(WebCore)/testing/WebFakeXRDevice.idl \
-    $(WebCore)/testing/WebFakeXRInputController.idl \
-    $(WebCore)/testing/WebXRTest.idl \
-    $(WebCore)/testing/XRSimulateUserActivationFunction.idl \
-    $(WebCore)/workers/AbstractWorker.idl \
-    $(WebCore)/workers/DedicatedWorkerGlobalScope.idl \
-    $(WebCore)/workers/Worker.idl \
-    $(WebCore)/workers/WorkerGlobalScope.idl \
-    $(WebCore)/workers/WorkerLocation.idl \
-    $(WebCore)/workers/WorkerOptions.idl \
-    $(WebCore)/workers/WorkerType.idl \
-    $(WebCore)/workers/service/ExtendableEvent.idl \
-    $(WebCore)/workers/service/ExtendableEventInit.idl \
-    $(WebCore)/workers/service/ExtendableMessageEvent.idl \
-    $(WebCore)/workers/service/FetchEvent.idl \
-    $(WebCore)/workers/service/NavigationPreloadManager.idl \
-    $(WebCore)/workers/service/NavigationPreloadState.idl \
-    $(WebCore)/workers/service/ServiceWorker.idl \
-    $(WebCore)/workers/service/ServiceWorkerClient.idl \
-    $(WebCore)/workers/service/ServiceWorkerClientType.idl \
-    $(WebCore)/workers/service/ServiceWorkerClients.idl \
-    $(WebCore)/workers/service/ServiceWorkerContainer.idl \
-    $(WebCore)/workers/service/ServiceWorkerGlobalScope.idl \
-    $(WebCore)/workers/service/ServiceWorkerRegistration.idl \
-    $(WebCore)/workers/service/ServiceWorkerUpdateViaCache.idl \
-    $(WebCore)/workers/service/ServiceWorkerWindowClient.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchEvent.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchEventInit.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchFailureReason.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchManager.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchOptions.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchRecord.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchRegistration.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchResult.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchUIOptions.idl \
-    $(WebCore)/workers/service/background-fetch/BackgroundFetchUpdateUIEvent.idl \
-    $(WebCore)/workers/service/background-fetch/ImageResource.idl \
-    $(WebCore)/workers/service/background-fetch/ServiceWorkerGlobalScope+BackgroundFetchAPI.idl \
-    $(WebCore)/workers/service/background-fetch/ServiceWorkerRegistration+BackgroundFetchAPI.idl \
-    $(WebCore)/workers/shared/SharedWorker.idl \
-    $(WebCore)/workers/shared/SharedWorkerGlobalScope.idl \
-    $(WebCore)/worklets/PaintWorkletGlobalScope.idl \
-    $(WebCore)/worklets/Worklet.idl \
-    $(WebCore)/worklets/WorkletGlobalScope.idl \
-    $(WebCore)/worklets/WorkletOptions.idl \
-    $(WebCore)/xml/CustomXPathNSResolver.idl \
-    $(WebCore)/xml/DOMParser.idl \
-    $(WebCore)/xml/ParseFromStringOptions.idl \
-    $(WebCore)/xml/XMLHttpRequest.idl \
-    $(WebCore)/xml/XMLHttpRequestEventTarget.idl \
-    $(WebCore)/xml/XMLHttpRequestProgressEvent.idl \
-    $(WebCore)/xml/XMLHttpRequestUpload.idl \
-    $(WebCore)/xml/XMLSerializer.idl \
-    $(WebCore)/xml/XPathEvaluator.idl \
-    $(WebCore)/xml/XPathEvaluatorBase.idl \
-    $(WebCore)/xml/XPathExpression.idl \
-    $(WebCore)/xml/XPathNSResolver.idl \
-    $(WebCore)/xml/XPathResult.idl \
-    $(WebCore)/xml/XSLTProcessor.idl \
+    $(CyberCore)/Modules/WebGPU/GPU.idl \
+    $(CyberCore)/Modules/WebGPU/GPUAdapter.idl \
+    $(CyberCore)/Modules/WebGPU/GPUAddressMode.idl \
+    $(CyberCore)/Modules/WebGPU/GPUAutoLayoutMode.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBindGroup.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBindGroupDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBindGroupEntry.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBindGroupLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBindGroupLayoutDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBindGroupLayoutEntry.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBlendComponent.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBlendFactor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBlendOperation.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBlendState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBuffer.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBufferBinding.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBufferBindingLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBufferBindingType.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBufferDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUBufferUsage.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCanvasCompositingAlphaMode.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCanvasConfiguration.idl \
+    $(CyberCore)/Modules/WebGPU/GPUColorDict.idl \
+    $(CyberCore)/Modules/WebGPU/GPUColorTargetState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUColorWrite.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCommandBuffer.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCommandBufferDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCommandEncoder.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCommandEncoderDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCommandsMixin.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCompareFunction.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCompilationInfo.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCompilationMessage.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCompilationMessageType.idl \
+    $(CyberCore)/Modules/WebGPU/GPUComputePassDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUComputePassEncoder.idl \
+    $(CyberCore)/Modules/WebGPU/GPUComputePassTimestampLocation.idl \
+    $(CyberCore)/Modules/WebGPU/GPUComputePassTimestampWrite.idl \
+    $(CyberCore)/Modules/WebGPU/GPUComputePipeline.idl \
+    $(CyberCore)/Modules/WebGPU/GPUComputePipelineDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUCullMode.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDebugCommandsMixin.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDepthStencilState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDevice.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDeviceDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDeviceError.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDeviceLost.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDeviceLostInfo.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDeviceLostReason.idl \
+    $(CyberCore)/Modules/WebGPU/GPUDeviceUncapturedError.idl \
+    $(CyberCore)/Modules/WebGPU/GPUErrorFilter.idl \
+    $(CyberCore)/Modules/WebGPU/GPUExtent3DDict.idl \
+    $(CyberCore)/Modules/WebGPU/GPUExternalTexture.idl \
+    $(CyberCore)/Modules/WebGPU/GPUExternalTextureBindingLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUExternalTextureDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUFeatureName.idl \
+    $(CyberCore)/Modules/WebGPU/GPUFilterMode.idl \
+    $(CyberCore)/Modules/WebGPU/GPUFragmentState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUFrontFace.idl \
+    $(CyberCore)/Modules/WebGPU/GPUImageCopyBuffer.idl \
+    $(CyberCore)/Modules/WebGPU/GPUImageCopyExternalImage.idl \
+    $(CyberCore)/Modules/WebGPU/GPUImageCopyTexture.idl \
+    $(CyberCore)/Modules/WebGPU/GPUImageCopyTextureTagged.idl \
+    $(CyberCore)/Modules/WebGPU/GPUImageDataLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUIndexFormat.idl \
+    $(CyberCore)/Modules/WebGPU/GPULoadOp.idl \
+    $(CyberCore)/Modules/WebGPU/GPUMapMode.idl \
+    $(CyberCore)/Modules/WebGPU/GPUMipmapFilterMode.idl \
+    $(CyberCore)/Modules/WebGPU/GPUMultisampleState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUObjectBase.idl \
+    $(CyberCore)/Modules/WebGPU/GPUObjectDescriptorBase.idl \
+    $(CyberCore)/Modules/WebGPU/GPUOrigin2DDict.idl \
+    $(CyberCore)/Modules/WebGPU/GPUOrigin3DDict.idl \
+    $(CyberCore)/Modules/WebGPU/GPUOutOfMemoryError.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPipelineBase.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPipelineDescriptorBase.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPipelineLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPipelineLayoutDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPowerPreference.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPredefinedColorSpace.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPrimitiveState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUPrimitiveTopology.idl \
+    $(CyberCore)/Modules/WebGPU/GPUProgrammablePassEncoder.idl \
+    $(CyberCore)/Modules/WebGPU/GPUProgrammableStage.idl \
+    $(CyberCore)/Modules/WebGPU/GPUQuerySet.idl \
+    $(CyberCore)/Modules/WebGPU/GPUQuerySetDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUQueryType.idl \
+    $(CyberCore)/Modules/WebGPU/GPUQueue.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderBundle.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderBundleDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderBundleEncoder.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderBundleEncoderDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderEncoderBase.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPassColorAttachment.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPassDepthStencilAttachment.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPassDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPassEncoder.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPassLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPassTimestampLocation.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPassTimestampWrite.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPipeline.idl \
+    $(CyberCore)/Modules/WebGPU/GPURenderPipelineDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPURequestAdapterOptions.idl \
+    $(CyberCore)/Modules/WebGPU/GPUSampler.idl \
+    $(CyberCore)/Modules/WebGPU/GPUSamplerBindingLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUSamplerBindingType.idl \
+    $(CyberCore)/Modules/WebGPU/GPUSamplerDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUShaderModule.idl \
+    $(CyberCore)/Modules/WebGPU/GPUShaderModuleCompilationHint.idl \
+    $(CyberCore)/Modules/WebGPU/GPUShaderModuleDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUShaderStage.idl \
+    $(CyberCore)/Modules/WebGPU/GPUStencilFaceState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUStencilOperation.idl \
+    $(CyberCore)/Modules/WebGPU/GPUStorageTextureAccess.idl \
+    $(CyberCore)/Modules/WebGPU/GPUStorageTextureBindingLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUStoreOp.idl \
+    $(CyberCore)/Modules/WebGPU/GPUSupportedFeatures.idl \
+    $(CyberCore)/Modules/WebGPU/GPUSupportedLimits.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTexture.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureAspect.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureBindingLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureDimension.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureFormat.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureSampleType.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureUsage.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureView.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureViewDescriptor.idl \
+    $(CyberCore)/Modules/WebGPU/GPUTextureViewDimension.idl \
+    $(CyberCore)/Modules/WebGPU/GPUUncapturedErrorEvent.idl \
+    $(CyberCore)/Modules/WebGPU/GPUUncapturedErrorEventInit.idl \
+    $(CyberCore)/Modules/WebGPU/GPUValidationError.idl \
+    $(CyberCore)/Modules/WebGPU/GPUVertexAttribute.idl \
+    $(CyberCore)/Modules/WebGPU/GPUVertexBufferLayout.idl \
+    $(CyberCore)/Modules/WebGPU/GPUVertexFormat.idl \
+    $(CyberCore)/Modules/WebGPU/GPUVertexState.idl \
+    $(CyberCore)/Modules/WebGPU/GPUVertexStepMode.idl \
+    $(CyberCore)/Modules/WebGPU/NavigatorGPU.idl \
+    $(CyberCore)/Modules/airplay/CyberKitPlaybackTargetAvailabilityEvent.idl \
+    $(CyberCore)/Modules/applepay/ApplePayAutomaticReloadPaymentRequest.idl \
+    $(CyberCore)/Modules/applepay/ApplePayCancelEvent.idl \
+    $(CyberCore)/Modules/applepay/ApplePayContactField.idl \
+    $(CyberCore)/Modules/applepay/ApplePayCouponCodeChangedEvent.idl \
+    $(CyberCore)/Modules/applepay/ApplePayCouponCodeDetails.idl \
+    $(CyberCore)/Modules/applepay/ApplePayCouponCodeUpdate.idl \
+    $(CyberCore)/Modules/applepay/ApplePayDateComponents.idl \
+    $(CyberCore)/Modules/applepay/ApplePayDateComponentsRange.idl \
+    $(CyberCore)/Modules/applepay/ApplePayDetailsUpdateBase.idl \
+    $(CyberCore)/Modules/applepay/ApplePayError.idl \
+    $(CyberCore)/Modules/applepay/ApplePayErrorCode.idl \
+    $(CyberCore)/Modules/applepay/ApplePayErrorContactField.idl \
+    $(CyberCore)/Modules/applepay/ApplePayFeature.idl \
+    $(CyberCore)/Modules/applepay/ApplePayInstallmentConfiguration.idl \
+    $(CyberCore)/Modules/applepay/ApplePayInstallmentItem.idl \
+    $(CyberCore)/Modules/applepay/ApplePayInstallmentItemType.idl \
+    $(CyberCore)/Modules/applepay/ApplePayInstallmentRetailChannel.idl \
+    $(CyberCore)/Modules/applepay/ApplePayLineItem.idl \
+    $(CyberCore)/Modules/applepay/ApplePayMerchantCapability.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPayment.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentAuthorizationResult.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentAuthorizedEvent.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentContact.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentMethod.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentMethodSelectedEvent.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentMethodType.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentMethodUpdate.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentOrderDetails.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentPass.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentRequest.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentTiming.idl \
+    $(CyberCore)/Modules/applepay/ApplePayPaymentTokenContext.idl \
+    $(CyberCore)/Modules/applepay/ApplePayRecurringPaymentDateUnit.idl \
+    $(CyberCore)/Modules/applepay/ApplePayRecurringPaymentRequest.idl \
+    $(CyberCore)/Modules/applepay/ApplePayRequestBase.idl \
+    $(CyberCore)/Modules/applepay/ApplePaySession.idl \
+    $(CyberCore)/Modules/applepay/ApplePaySessionError.idl \
+    $(CyberCore)/Modules/applepay/ApplePaySetup.idl \
+    $(CyberCore)/Modules/applepay/ApplePaySetupConfiguration.idl \
+    $(CyberCore)/Modules/applepay/ApplePaySetupFeature.idl \
+    $(CyberCore)/Modules/applepay/ApplePaySetupFeatureState.idl \
+    $(CyberCore)/Modules/applepay/ApplePaySetupFeatureType.idl \
+    $(CyberCore)/Modules/applepay/ApplePayShippingContactEditingMode.idl \
+    $(CyberCore)/Modules/applepay/ApplePayShippingContactSelectedEvent.idl \
+    $(CyberCore)/Modules/applepay/ApplePayShippingContactUpdate.idl \
+    $(CyberCore)/Modules/applepay/ApplePayShippingMethod.idl \
+    $(CyberCore)/Modules/applepay/ApplePayShippingMethodSelectedEvent.idl \
+    $(CyberCore)/Modules/applepay/ApplePayShippingMethodUpdate.idl \
+    $(CyberCore)/Modules/applepay/ApplePayValidateMerchantEvent.idl \
+    $(CyberCore)/Modules/applepay/paymentrequest/ApplePayModifier.idl \
+    $(CyberCore)/Modules/applepay/paymentrequest/ApplePayPaymentCompleteDetails.idl \
+    $(CyberCore)/Modules/applepay/paymentrequest/ApplePayRequest.idl \
+    $(CyberCore)/Modules/applepay-ams-ui/ApplePayAMSUIRequest.idl \
+    $(CyberCore)/Modules/async-clipboard/Clipboard.idl \
+    $(CyberCore)/Modules/async-clipboard/ClipboardItem.idl \
+    $(CyberCore)/Modules/async-clipboard/Navigator+Clipboard.idl \
+    $(CyberCore)/Modules/audiosession/DOMAudioSession.idl \
+    $(CyberCore)/Modules/audiosession/Navigator+AudioSession.idl \
+    $(CyberCore)/Modules/badge/Navigator+Badge.idl \
+    $(CyberCore)/Modules/badge/NavigatorBadge.idl \
+    $(CyberCore)/Modules/beacon/Navigator+Beacon.idl \
+    $(CyberCore)/Modules/cache/CacheQueryOptions.idl \
+    $(CyberCore)/Modules/cache/DOMCache.idl \
+    $(CyberCore)/Modules/cache/DOMCacheStorage.idl \
+    $(CyberCore)/Modules/cache/MultiCacheQueryOptions.idl \
+    $(CyberCore)/Modules/cache/WindowOrWorkerGlobalScope+Caches.idl \
+    $(CyberCore)/Modules/compression/CompressionStream.idl \
+    $(CyberCore)/Modules/compression/CompressionStreamEncoder.idl \
+    $(CyberCore)/Modules/compression/DecompressionStream.idl \
+    $(CyberCore)/Modules/compression/DecompressionStreamDecoder.idl \
+    $(CyberCore)/Modules/contact-picker/ContactInfo.idl \
+    $(CyberCore)/Modules/contact-picker/ContactProperty.idl \
+    $(CyberCore)/Modules/contact-picker/ContactsManager.idl \
+    $(CyberCore)/Modules/contact-picker/ContactsSelectOptions.idl \
+    $(CyberCore)/Modules/contact-picker/Navigator+Contacts.idl \
+    $(CyberCore)/Modules/cookie-consent/Navigator+CookieConsent.idl \
+    $(CyberCore)/Modules/cookie-consent/RequestCookieConsentOptions.idl \
+    $(CyberCore)/Modules/credentialmanagement/BasicCredential.idl \
+    $(CyberCore)/Modules/credentialmanagement/CredentialCreationOptions.idl \
+    $(CyberCore)/Modules/credentialmanagement/CredentialRequestOptions.idl \
+    $(CyberCore)/Modules/credentialmanagement/CredentialsContainer.idl \
+    $(CyberCore)/Modules/credentialmanagement/Navigator+Credentials.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeyEncryptionScheme.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeyMessageEventInit.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeyMessageEvent.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeyMessageType.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeySession.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeySessionType.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeyStatusMap.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeySystemAccess.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeySystemConfiguration.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeySystemMediaCapability.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeys.idl \
+    $(CyberCore)/Modules/encryptedmedia/MediaKeysRequirement.idl \
+    $(CyberCore)/Modules/encryptedmedia/Navigator+EME.idl \
+    $(CyberCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeyMessageEvent.idl \
+    $(CyberCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeyNeededEvent.idl \
+    $(CyberCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeySession.idl \
+    $(CyberCore)/Modules/encryptedmedia/legacy/CyberKitMediaKeys.idl \
+    $(CyberCore)/Modules/entriesapi/DOMFileSystem.idl \
+    $(CyberCore)/Modules/entriesapi/ErrorCallback.idl \
+    $(CyberCore)/Modules/entriesapi/FileCallback.idl \
+    $(CyberCore)/Modules/entriesapi/FileSystemDirectoryEntry.idl \
+    $(CyberCore)/Modules/entriesapi/FileSystemDirectoryReader.idl \
+    $(CyberCore)/Modules/entriesapi/FileSystemEntriesCallback.idl \
+    $(CyberCore)/Modules/entriesapi/FileSystemEntry.idl \
+    $(CyberCore)/Modules/entriesapi/FileSystemEntryCallback.idl \
+    $(CyberCore)/Modules/entriesapi/FileSystemFileEntry.idl \
+    $(CyberCore)/Modules/entriesapi/HTMLInputElement+EntriesAPI.idl \
+    $(CyberCore)/Modules/fetch/FetchBody.idl \
+    $(CyberCore)/Modules/fetch/FetchHeaders.idl \
+    $(CyberCore)/Modules/fetch/FetchReferrerPolicy.idl \
+    $(CyberCore)/Modules/fetch/FetchRequest.idl \
+    $(CyberCore)/Modules/fetch/FetchRequestCache.idl \
+    $(CyberCore)/Modules/fetch/FetchRequestCredentials.idl \
+    $(CyberCore)/Modules/fetch/FetchRequestDestination.idl \
+    $(CyberCore)/Modules/fetch/FetchRequestInit.idl \
+    $(CyberCore)/Modules/fetch/FetchRequestMode.idl \
+    $(CyberCore)/Modules/fetch/FetchRequestRedirect.idl \
+    $(CyberCore)/Modules/fetch/FetchResponse.idl \
+    $(CyberCore)/Modules/fetch/RequestPriority.idl \
+    $(CyberCore)/Modules/fetch/WindowOrWorkerGlobalScope+Fetch.idl \
+    $(CyberCore)/Modules/filesystemaccess/FileSystemDirectoryHandle.idl \
+    $(CyberCore)/Modules/filesystemaccess/FileSystemFileHandle.idl \
+    $(CyberCore)/Modules/filesystemaccess/FileSystemHandle.idl \
+    $(CyberCore)/Modules/filesystemaccess/FileSystemSyncAccessHandle.idl \
+    $(CyberCore)/Modules/filesystemaccess/StorageManager+FileSystemAccess.idl \
+    $(CyberCore)/Modules/gamepad/Gamepad.idl \
+    $(CyberCore)/Modules/gamepad/GamepadButton.idl \
+    $(CyberCore)/Modules/gamepad/GamepadEffectParameters.idl \
+    $(CyberCore)/Modules/gamepad/GamepadEvent.idl \
+    $(CyberCore)/Modules/gamepad/GamepadHapticActuator.idl \
+    $(CyberCore)/Modules/gamepad/GamepadHapticEffectType.idl \
+    $(CyberCore)/Modules/gamepad/Navigator+Gamepad.idl \
+    $(CyberCore)/Modules/gamepad/WindowEventHandlers+Gamepad.idl \
+    $(CyberCore)/Modules/geolocation/Geolocation.idl \
+    $(CyberCore)/Modules/geolocation/GeolocationCoordinates.idl \
+    $(CyberCore)/Modules/geolocation/GeolocationPosition.idl \
+    $(CyberCore)/Modules/geolocation/GeolocationPositionError.idl \
+    $(CyberCore)/Modules/geolocation/Navigator+Geolocation.idl \
+    $(CyberCore)/Modules/geolocation/PositionCallback.idl \
+    $(CyberCore)/Modules/geolocation/PositionErrorCallback.idl \
+    $(CyberCore)/Modules/geolocation/PositionOptions.idl \
+    $(CyberCore)/Modules/highlight/HighlightRegister.idl \
+    $(CyberCore)/Modules/highlight/Highlight.idl \
+    $(CyberCore)/Modules/indexeddb/IDBCursor.idl \
+    $(CyberCore)/Modules/indexeddb/IDBCursorDirection.idl \
+    $(CyberCore)/Modules/indexeddb/IDBCursorWithValue.idl \
+    $(CyberCore)/Modules/indexeddb/IDBDatabase.idl \
+    $(CyberCore)/Modules/indexeddb/IDBFactory.idl \
+    $(CyberCore)/Modules/indexeddb/IDBIndex.idl \
+    $(CyberCore)/Modules/indexeddb/IDBKeyRange.idl \
+    $(CyberCore)/Modules/indexeddb/IDBObjectStore.idl \
+    $(CyberCore)/Modules/indexeddb/IDBOpenDBRequest.idl \
+    $(CyberCore)/Modules/indexeddb/IDBRequest.idl \
+    $(CyberCore)/Modules/indexeddb/IDBTransaction.idl \
+	$(CyberCore)/Modules/indexeddb/IDBTransactionDurability.idl \
+    $(CyberCore)/Modules/indexeddb/IDBTransactionMode.idl \
+    $(CyberCore)/Modules/indexeddb/IDBVersionChangeEvent.idl \
+    $(CyberCore)/Modules/indexeddb/WindowOrWorkerGlobalScope+IndexedDatabase.idl \
+    $(CyberCore)/Modules/mediacapabilities/AudioConfiguration.idl \
+    $(CyberCore)/Modules/mediacapabilities/ColorGamut.idl \
+    $(CyberCore)/Modules/mediacapabilities/HdrMetadataType.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaCapabilities.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaCapabilitiesDecodingInfo.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaCapabilitiesEncodingInfo.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaCapabilitiesInfo.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaConfiguration.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaDecodingConfiguration.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaDecodingType.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaEncodingConfiguration.idl \
+    $(CyberCore)/Modules/mediacapabilities/MediaEncodingType.idl \
+    $(CyberCore)/Modules/mediacapabilities/Navigator+MediaCapabilities.idl \
+    $(CyberCore)/Modules/mediacapabilities/TransferFunction.idl \
+    $(CyberCore)/Modules/mediacapabilities/VideoConfiguration.idl \
+    $(CyberCore)/Modules/mediacapabilities/WorkerNavigator+MediaCapabilities.idl \
+    $(CyberCore)/Modules/mediacontrols/MediaControlsHost.idl \
+    $(CyberCore)/Modules/mediarecorder/BlobEvent.idl \
+    $(CyberCore)/Modules/mediarecorder/MediaRecorder.idl \
+    $(CyberCore)/Modules/mediarecorder/MediaRecorderErrorEvent.idl \
+    $(CyberCore)/Modules/mediasource/AudioTrack+MediaSource.idl \
+    $(CyberCore)/Modules/mediasource/DOMURL+MediaSource.idl \
+    $(CyberCore)/Modules/mediasource/ManagedMediaSource.idl \
+    $(CyberCore)/Modules/mediasource/ManagedSourceBuffer.idl \
+    $(CyberCore)/Modules/mediasource/MediaSource.idl \
+    $(CyberCore)/Modules/mediasource/SourceBuffer.idl \
+    $(CyberCore)/Modules/mediasource/SourceBufferList.idl \
+    $(CyberCore)/Modules/mediasource/TextTrack+MediaSource.idl \
+    $(CyberCore)/Modules/mediasource/VideoPlaybackQuality.idl \
+    $(CyberCore)/Modules/mediasource/VideoTrack+MediaSource.idl \
+    $(CyberCore)/Modules/mediasession/MediaImage.idl \
+    $(CyberCore)/Modules/mediasession/MediaMetadata.idl \
+    $(CyberCore)/Modules/mediasession/MediaMetadataInit.idl \
+    $(CyberCore)/Modules/mediasession/MediaMetadataPlaylistMixin.idl \
+    $(CyberCore)/Modules/mediasession/MediaPositionState.idl \
+    $(CyberCore)/Modules/mediasession/MediaSession.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionAction.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionActionDetails.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionActionHandler.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionCoordinator.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionCoordinatorMixin.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionCoordinatorState.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionPlaybackState.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionPlaylistMixin.idl \
+    $(CyberCore)/Modules/mediasession/MediaSessionReadyState.idl \
+    $(CyberCore)/Modules/mediasession/Navigator+MediaSession.idl \
+    $(CyberCore)/Modules/mediastream/CanvasCaptureMediaStreamTrack.idl \
+    $(CyberCore)/Modules/mediastream/DoubleRange.idl \
+    $(CyberCore)/Modules/mediastream/LongRange.idl \
+    $(CyberCore)/Modules/mediastream/MediaDeviceInfo.idl \
+    $(CyberCore)/Modules/mediastream/MediaDevices.idl \
+    $(CyberCore)/Modules/mediastream/MediaStream.idl \
+    $(CyberCore)/Modules/mediastream/MediaStreamTrack.idl \
+    $(CyberCore)/Modules/mediastream/MediaStreamTrackEvent.idl \
+    $(CyberCore)/Modules/mediastream/MediaTrackConstraints.idl \
+    $(CyberCore)/Modules/mediastream/MediaTrackSupportedConstraints.idl \
+    $(CyberCore)/Modules/mediastream/Navigator+MediaDevices.idl \
+    $(CyberCore)/Modules/mediastream/OverconstrainedError.idl \
+    $(CyberCore)/Modules/mediastream/OverconstrainedErrorEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCAnswerOptions.idl \
+    $(CyberCore)/Modules/mediastream/RTCCertificate.idl \
+    $(CyberCore)/Modules/mediastream/RTCConfiguration.idl \
+    $(CyberCore)/Modules/mediastream/RTCDTMFSender.idl \
+    $(CyberCore)/Modules/mediastream/RTCDTMFToneChangeEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCDataChannel.idl \
+    $(CyberCore)/Modules/mediastream/RTCDataChannelEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCDegradationPreference.idl \
+    $(CyberCore)/Modules/mediastream/RTCDtlsTransport.idl \
+    $(CyberCore)/Modules/mediastream/RTCDtlsTransportState.idl \
+    $(CyberCore)/Modules/mediastream/RTCDtxStatus.idl \
+    $(CyberCore)/Modules/mediastream/RTCEncodedAudioFrame.idl \
+    $(CyberCore)/Modules/mediastream/RTCEncodedVideoFrame.idl \
+    $(CyberCore)/Modules/mediastream/RTCError.idl \
+    $(CyberCore)/Modules/mediastream/RTCErrorDetailType.idl \
+    $(CyberCore)/Modules/mediastream/RTCErrorEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceCandidate.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceCandidateInit.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceCandidateType.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceComponent.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceConnectionState.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceGatheringState.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceProtocol.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceServer.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceTcpCandidateType.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceTransport.idl \
+    $(CyberCore)/Modules/mediastream/RTCIceTransportState.idl \
+    $(CyberCore)/Modules/mediastream/RTCLocalSessionDescriptionInit.idl \
+    $(CyberCore)/Modules/mediastream/RTCOfferAnswerOptions.idl \
+    $(CyberCore)/Modules/mediastream/RTCOfferOptions.idl \
+    $(CyberCore)/Modules/mediastream/RTCPeerConnection.idl \
+    $(CyberCore)/Modules/mediastream/RTCPeerConnectionIceEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCPeerConnectionIceErrorEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCPeerConnectionState.idl \
+    $(CyberCore)/Modules/mediastream/RTCPriorityType.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtcpParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpCapabilities.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpCodecCapability.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpCodecParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpCodingParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpContributingSource.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpEncodingParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpFecParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpHeaderExtensionParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpReceiver.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpReceiver+Transform.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpRtxParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpSendParameters.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpSender.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpSender+Transform.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpSFrameTransform.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpSFrameTransformErrorEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpScriptTransform.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpScriptTransformProvider.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpScriptTransformer.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpSynchronizationSource.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpTransceiver.idl \
+    $(CyberCore)/Modules/mediastream/RTCRtpTransceiverDirection.idl \
+    $(CyberCore)/Modules/mediastream/RTCSctpTransport.idl \
+    $(CyberCore)/Modules/mediastream/RTCSctpTransportState.idl \
+    $(CyberCore)/Modules/mediastream/RTCSdpType.idl \
+    $(CyberCore)/Modules/mediastream/RTCSessionDescription.idl \
+    $(CyberCore)/Modules/mediastream/RTCSessionDescriptionInit.idl \
+    $(CyberCore)/Modules/mediastream/RTCSignalingState.idl \
+    $(CyberCore)/Modules/mediastream/RTCStatsReport.idl \
+    $(CyberCore)/Modules/mediastream/RTCTrackEvent.idl \
+    $(CyberCore)/Modules/mediastream/RTCTransformEvent.idl \
+    $(CyberCore)/Modules/model-element/HTMLModelElement.idl \
+    $(CyberCore)/Modules/model-element/HTMLModelElementCamera.idl \
+    $(CyberCore)/Modules/notifications/Notification.idl \
+    $(CyberCore)/Modules/notifications/NotificationDirection.idl \
+    $(CyberCore)/Modules/notifications/NotificationEvent.idl \
+    $(CyberCore)/Modules/notifications/NotificationOptions.idl \
+    $(CyberCore)/Modules/notifications/NotificationPermission.idl \
+    $(CyberCore)/Modules/notifications/NotificationPermissionCallback.idl \
+    $(CyberCore)/Modules/paymentrequest/AddressErrors.idl \
+    $(CyberCore)/Modules/paymentrequest/MerchantValidationEvent.idl \
+    $(CyberCore)/Modules/paymentrequest/PayerErrorFields.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentAddress.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentComplete.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentCompleteDetails.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentCurrencyAmount.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentDetailsBase.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentDetailsInit.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentDetailsModifier.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentDetailsUpdate.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentItem.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentMethodChangeEvent.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentMethodData.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentOptions.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentRequest.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentRequestUpdateEvent.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentRequestUpdateEventInit.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentResponse.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentShippingOption.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentShippingType.idl \
+    $(CyberCore)/Modules/paymentrequest/PaymentValidationErrors.idl \
+    $(CyberCore)/Modules/permissions/Navigator+Permissions.idl \
+    $(CyberCore)/Modules/permissions/PermissionDescriptor.idl \
+    $(CyberCore)/Modules/permissions/PermissionName.idl \
+    $(CyberCore)/Modules/permissions/PermissionState.idl \
+    $(CyberCore)/Modules/permissions/PermissionStatus.idl \
+    $(CyberCore)/Modules/permissions/Permissions.idl \
+    $(CyberCore)/Modules/permissions/WorkerNavigator+Permissions.idl \
+    $(CyberCore)/Modules/pictureinpicture/DocumentOrShadowRoot+PictureInPicture.idl \
+    $(CyberCore)/Modules/pictureinpicture/Document+PictureInPicture.idl \
+    $(CyberCore)/Modules/pictureinpicture/HTMLVideoElement+PictureInPicture.idl \
+    $(CyberCore)/Modules/pictureinpicture/PictureInPictureEvent.idl \
+    $(CyberCore)/Modules/pictureinpicture/PictureInPictureWindow.idl \
+    $(CyberCore)/Modules/push-api/PushEncryptionKeyName.idl \
+    $(CyberCore)/Modules/push-api/PushEvent.idl \
+    $(CyberCore)/Modules/push-api/PushEventInit.idl \
+    $(CyberCore)/Modules/push-api/PushManager.idl \
+    $(CyberCore)/Modules/push-api/PushMessageData.idl \
+    $(CyberCore)/Modules/push-api/PushPermissionState.idl \
+    $(CyberCore)/Modules/push-api/PushSubscription.idl \
+    $(CyberCore)/Modules/push-api/PushSubscriptionChangeEvent.idl \
+    $(CyberCore)/Modules/push-api/PushSubscriptionChangeEventInit.idl \
+    $(CyberCore)/Modules/push-api/PushSubscriptionJSON.idl \
+    $(CyberCore)/Modules/push-api/PushSubscriptionOptions.idl \
+    $(CyberCore)/Modules/push-api/PushSubscriptionOptionsInit.idl \
+    $(CyberCore)/Modules/push-api/ServiceWorkerGlobalScope+PushAPI.idl \
+    $(CyberCore)/Modules/push-api/ServiceWorkerRegistration+PushAPI.idl \
+    $(CyberCore)/Modules/remoteplayback/HTMLMediaElement+RemotePlayback.idl \
+    $(CyberCore)/Modules/remoteplayback/RemotePlayback.idl \
+    $(CyberCore)/Modules/remoteplayback/RemotePlaybackAvailabilityCallback.idl \
+    $(CyberCore)/Modules/reporting/DeprecationReportBody.idl \
+    $(CyberCore)/Modules/reporting/Report.idl \
+    $(CyberCore)/Modules/reporting/ReportBody.idl \
+    $(CyberCore)/Modules/reporting/ReportingObserver.idl \
+    $(CyberCore)/Modules/reporting/ReportingObserverCallback.idl \
+    $(CyberCore)/Modules/reporting/TestReportBody.idl \
+    $(CyberCore)/Modules/screen-wake-lock/Navigator+ScreenWakeLock.idl \
+    $(CyberCore)/Modules/screen-wake-lock/WakeLock.idl \
+    $(CyberCore)/Modules/screen-wake-lock/WakeLockSentinel.idl \
+    $(CyberCore)/Modules/screen-wake-lock/WakeLockType.idl \
+    $(CyberCore)/Modules/speech/DOMWindow+SpeechSynthesis.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesis.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesisErrorCode.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesisErrorEvent.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesisErrorEventInit.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesisEvent.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesisEventInit.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesisUtterance.idl \
+    $(CyberCore)/Modules/speech/SpeechSynthesisVoice.idl \
+    $(CyberCore)/Modules/speech/SpeechRecognition.idl \
+    $(CyberCore)/Modules/speech/SpeechRecognitionAlternative.idl \
+    $(CyberCore)/Modules/speech/SpeechRecognitionErrorCode.idl \
+    $(CyberCore)/Modules/speech/SpeechRecognitionErrorEvent.idl \
+    $(CyberCore)/Modules/speech/SpeechRecognitionEvent.idl \
+    $(CyberCore)/Modules/speech/SpeechRecognitionResult.idl \
+    $(CyberCore)/Modules/speech/SpeechRecognitionResultList.idl \
+    $(CyberCore)/Modules/streams/ByteLengthQueuingStrategy.idl \
+    $(CyberCore)/Modules/streams/CountQueuingStrategy.idl \
+    $(CyberCore)/Modules/streams/GenericTransformStream.idl \
+    $(CyberCore)/Modules/streams/ReadableByteStreamController.idl \
+    $(CyberCore)/Modules/streams/ReadableStream.idl \
+    $(CyberCore)/Modules/streams/ReadableStreamBYOBReader.idl \
+    $(CyberCore)/Modules/streams/ReadableStreamBYOBRequest.idl \
+    $(CyberCore)/Modules/streams/ReadableStreamDefaultController.idl \
+    $(CyberCore)/Modules/streams/ReadableStreamDefaultReader.idl \
+    $(CyberCore)/Modules/streams/ReadableStreamSink.idl \
+    $(CyberCore)/Modules/streams/ReadableStreamSource.idl \
+    $(CyberCore)/Modules/streams/TransformStream.idl \
+    $(CyberCore)/Modules/streams/TransformStreamDefaultController.idl \
+    $(CyberCore)/Modules/streams/WritableStream.idl \
+    $(CyberCore)/Modules/streams/WritableStreamDefaultController.idl \
+    $(CyberCore)/Modules/streams/WritableStreamDefaultWriter.idl \
+    $(CyberCore)/Modules/streams/WritableStreamSink.idl \
+    $(CyberCore)/Modules/storage/StorageManager.idl \
+    $(CyberCore)/Modules/web-locks/NavigatorLocks.idl \
+    $(CyberCore)/Modules/web-locks/WebLock.idl \
+    $(CyberCore)/Modules/web-locks/WebLockGrantedCallback.idl \
+    $(CyberCore)/Modules/web-locks/WebLockManager.idl \
+    $(CyberCore)/Modules/web-locks/WebLockManagerSnapshot.idl \
+    $(CyberCore)/Modules/web-locks/WebLockMode.idl \
+    $(CyberCore)/Modules/webaudio/AnalyserNode.idl \
+    $(CyberCore)/Modules/webaudio/AnalyserOptions.idl \
+    $(CyberCore)/Modules/webaudio/AudioBuffer.idl \
+    $(CyberCore)/Modules/webaudio/AudioBufferCallback.idl \
+    $(CyberCore)/Modules/webaudio/AudioBufferOptions.idl \
+    $(CyberCore)/Modules/webaudio/AudioBufferSourceNode.idl \
+    $(CyberCore)/Modules/webaudio/AudioBufferSourceOptions.idl \
+    $(CyberCore)/Modules/webaudio/AudioContext.idl \
+    $(CyberCore)/Modules/webaudio/AudioContextLatencyCategory.idl \
+    $(CyberCore)/Modules/webaudio/AudioContextOptions.idl \
+    $(CyberCore)/Modules/webaudio/AudioContextState.idl \
+    $(CyberCore)/Modules/webaudio/AudioDestinationNode.idl \
+    $(CyberCore)/Modules/webaudio/AudioListener.idl \
+    $(CyberCore)/Modules/webaudio/AudioNode.idl \
+    $(CyberCore)/Modules/webaudio/AudioNodeOptions.idl \
+    $(CyberCore)/Modules/webaudio/AudioParam.idl \
+    $(CyberCore)/Modules/webaudio/AudioParamDescriptor.idl \
+    $(CyberCore)/Modules/webaudio/AudioParamMap.idl \
+    $(CyberCore)/Modules/webaudio/AudioProcessingEvent.idl \
+    $(CyberCore)/Modules/webaudio/AudioProcessingEventInit.idl \
+    $(CyberCore)/Modules/webaudio/AudioScheduledSourceNode.idl \
+    $(CyberCore)/Modules/webaudio/AudioTimestamp.idl \
+    $(CyberCore)/Modules/webaudio/AudioWorklet.idl \
+    $(CyberCore)/Modules/webaudio/AudioWorkletGlobalScope.idl \
+    $(CyberCore)/Modules/webaudio/AudioWorkletNode.idl \
+    $(CyberCore)/Modules/webaudio/AudioWorkletNodeOptions.idl \
+    $(CyberCore)/Modules/webaudio/AudioWorkletProcessor.idl \
+    $(CyberCore)/Modules/webaudio/AudioWorkletProcessorConstructor.idl \
+    $(CyberCore)/Modules/webaudio/AutomationRate.idl \
+    $(CyberCore)/Modules/webaudio/BaseAudioContext.idl \
+    $(CyberCore)/Modules/webaudio/BiquadFilterNode.idl \
+    $(CyberCore)/Modules/webaudio/BiquadFilterOptions.idl \
+    $(CyberCore)/Modules/webaudio/BiquadFilterType.idl \
+    $(CyberCore)/Modules/webaudio/ChannelCountMode.idl \
+    $(CyberCore)/Modules/webaudio/ChannelInterpretation.idl \
+    $(CyberCore)/Modules/webaudio/ChannelMergerNode.idl \
+    $(CyberCore)/Modules/webaudio/ChannelMergerOptions.idl \
+    $(CyberCore)/Modules/webaudio/ChannelSplitterNode.idl \
+    $(CyberCore)/Modules/webaudio/ChannelSplitterOptions.idl \
+    $(CyberCore)/Modules/webaudio/ConstantSourceNode.idl \
+    $(CyberCore)/Modules/webaudio/ConstantSourceOptions.idl \
+    $(CyberCore)/Modules/webaudio/ConvolverNode.idl \
+    $(CyberCore)/Modules/webaudio/ConvolverOptions.idl \
+    $(CyberCore)/Modules/webaudio/DelayNode.idl \
+    $(CyberCore)/Modules/webaudio/DelayOptions.idl \
+    $(CyberCore)/Modules/webaudio/DistanceModelType.idl \
+    $(CyberCore)/Modules/webaudio/DynamicsCompressorNode.idl \
+    $(CyberCore)/Modules/webaudio/DynamicsCompressorOptions.idl \
+    $(CyberCore)/Modules/webaudio/GainNode.idl \
+    $(CyberCore)/Modules/webaudio/GainOptions.idl \
+    $(CyberCore)/Modules/webaudio/IIRFilterNode.idl \
+    $(CyberCore)/Modules/webaudio/IIRFilterOptions.idl \
+    $(CyberCore)/Modules/webaudio/MediaElementAudioSourceNode.idl \
+    $(CyberCore)/Modules/webaudio/MediaElementAudioSourceOptions.idl \
+    $(CyberCore)/Modules/webaudio/MediaStreamAudioDestinationNode.idl \
+    $(CyberCore)/Modules/webaudio/MediaStreamAudioSourceNode.idl \
+    $(CyberCore)/Modules/webaudio/MediaStreamAudioSourceOptions.idl \
+    $(CyberCore)/Modules/webaudio/OfflineAudioCompletionEvent.idl \
+    $(CyberCore)/Modules/webaudio/OfflineAudioCompletionEventInit.idl \
+    $(CyberCore)/Modules/webaudio/OfflineAudioContext.idl \
+    $(CyberCore)/Modules/webaudio/OfflineAudioContextOptions.idl \
+    $(CyberCore)/Modules/webaudio/OscillatorNode.idl \
+    $(CyberCore)/Modules/webaudio/OscillatorOptions.idl \
+    $(CyberCore)/Modules/webaudio/OscillatorType.idl \
+    $(CyberCore)/Modules/webaudio/OverSampleType.idl \
+    $(CyberCore)/Modules/webaudio/PannerNode.idl \
+    $(CyberCore)/Modules/webaudio/PannerOptions.idl \
+    $(CyberCore)/Modules/webaudio/PanningModelType.idl \
+    $(CyberCore)/Modules/webaudio/PeriodicWave.idl \
+    $(CyberCore)/Modules/webaudio/PeriodicWaveConstraints.idl \
+    $(CyberCore)/Modules/webaudio/PeriodicWaveOptions.idl \
+    $(CyberCore)/Modules/webaudio/ScriptProcessorNode.idl \
+    $(CyberCore)/Modules/webaudio/StereoPannerNode.idl \
+    $(CyberCore)/Modules/webaudio/StereoPannerOptions.idl \
+    $(CyberCore)/Modules/webaudio/WaveShaperNode.idl \
+    $(CyberCore)/Modules/webaudio/WaveShaperOptions.idl \
+    $(CyberCore)/Modules/webauthn/AttestationConveyancePreference.idl \
+    $(CyberCore)/Modules/webauthn/AuthenticationExtensionsClientInputs.idl \
+    $(CyberCore)/Modules/webauthn/AuthenticationExtensionsClientOutputs.idl \
+    $(CyberCore)/Modules/webauthn/AuthenticatorAssertionResponse.idl \
+    $(CyberCore)/Modules/webauthn/AuthenticatorAttachment.idl \
+    $(CyberCore)/Modules/webauthn/AuthenticatorAttestationResponse.idl \
+    $(CyberCore)/Modules/webauthn/AuthenticatorResponse.idl \
+    $(CyberCore)/Modules/webauthn/AuthenticatorTransport.idl \
+    $(CyberCore)/Modules/webauthn/PublicKeyCredential.idl \
+    $(CyberCore)/Modules/webauthn/PublicKeyCredentialCreationOptions.idl \
+    $(CyberCore)/Modules/webauthn/PublicKeyCredentialDescriptor.idl \
+    $(CyberCore)/Modules/webauthn/PublicKeyCredentialRequestOptions.idl \
+    $(CyberCore)/Modules/webauthn/PublicKeyCredentialType.idl \
+    $(CyberCore)/Modules/webauthn/ResidentKeyRequirement.idl \
+    $(CyberCore)/Modules/webauthn/UserVerificationRequirement.idl \
+    $(CyberCore)/Modules/webcodecs/AvcEncoderConfig.idl \
+    $(CyberCore)/Modules/webcodecs/BitrateMode.idl \
+    $(CyberCore)/Modules/webcodecs/LatencyMode.idl \
+    $(CyberCore)/Modules/webcodecs/HardwareAcceleration.idl \
+    $(CyberCore)/Modules/webcodecs/PlaneLayout.idl \
+    $(CyberCore)/Modules/webcodecs/VideoColorPrimaries.idl \
+    $(CyberCore)/Modules/webcodecs/VideoColorSpace.idl \
+    $(CyberCore)/Modules/webcodecs/VideoColorSpaceInit.idl \
+    $(CyberCore)/Modules/webcodecs/VideoMatrixCoefficients.idl \
+    $(CyberCore)/Modules/webcodecs/VideoPixelFormat.idl \
+    $(CyberCore)/Modules/webcodecs/VideoTransferCharacteristics.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsAlphaOption.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsEncodedVideoChunk.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsEncodedVideoChunkMetadata.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsEncodedVideoChunkOutputCallback.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsEncodedVideoChunkType.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsErrorCallback.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsCodecState.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoDecoder.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoDecoderConfig.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoDecoderSupport.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoEncoder.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoEncoderConfig.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoEncoderEncodeOptions.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoEncoderSupport.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoFrame.idl \
+    $(CyberCore)/Modules/webcodecs/WebCodecsVideoFrameOutputCallback.idl \
+    $(CyberCore)/Modules/webdatabase/DOMWindow+WebDatabase.idl \
+    $(CyberCore)/Modules/webdatabase/Database.idl \
+    $(CyberCore)/Modules/webdatabase/DatabaseCallback.idl \
+    $(CyberCore)/Modules/webdatabase/SQLError.idl \
+    $(CyberCore)/Modules/webdatabase/SQLResultSet.idl \
+    $(CyberCore)/Modules/webdatabase/SQLResultSetRowList.idl \
+    $(CyberCore)/Modules/webdatabase/SQLStatementCallback.idl \
+    $(CyberCore)/Modules/webdatabase/SQLStatementErrorCallback.idl \
+    $(CyberCore)/Modules/webdatabase/SQLTransaction.idl \
+    $(CyberCore)/Modules/webdatabase/SQLTransactionCallback.idl \
+    $(CyberCore)/Modules/webdatabase/SQLTransactionErrorCallback.idl \
+    $(CyberCore)/Modules/webdriver/Navigator+WebDriver.idl \
+    $(CyberCore)/Modules/websockets/CloseEvent.idl \
+    $(CyberCore)/Modules/websockets/WebSocket.idl \
+    $(CyberCore)/Modules/webxr/Navigator+WebXR.idl \
+    $(CyberCore)/Modules/webxr/WebXRBoundedReferenceSpace.idl \
+    $(CyberCore)/Modules/webxr/WebXRFrame+HandInput.idl \
+    $(CyberCore)/Modules/webxr/WebXRFrame.idl \
+    $(CyberCore)/Modules/webxr/WebXRHand.idl \
+    $(CyberCore)/Modules/webxr/WebXRInputSource+Gamepad.idl \
+    $(CyberCore)/Modules/webxr/WebXRInputSource.idl \
+    $(CyberCore)/Modules/webxr/WebXRInputSourceArray.idl \
+    $(CyberCore)/Modules/webxr/WebXRInputSource+HandInput.idl \
+    $(CyberCore)/Modules/webxr/WebXRJointPose.idl \
+    $(CyberCore)/Modules/webxr/WebXRJointSpace.idl \
+    $(CyberCore)/Modules/webxr/WebXRLayer.idl \
+    $(CyberCore)/Modules/webxr/WebXRPose.idl \
+    $(CyberCore)/Modules/webxr/WebXRReferenceSpace.idl \
+    $(CyberCore)/Modules/webxr/WebXRRenderState.idl \
+    $(CyberCore)/Modules/webxr/WebXRRigidTransform.idl \
+    $(CyberCore)/Modules/webxr/WebXRSession+AR.idl \
+    $(CyberCore)/Modules/webxr/WebXRSession.idl \
+    $(CyberCore)/Modules/webxr/WebXRSpace.idl \
+    $(CyberCore)/Modules/webxr/WebXRSystem.idl \
+    $(CyberCore)/Modules/webxr/WebXRViewerPose.idl \
+    $(CyberCore)/Modules/webxr/WebXRView.idl \
+    $(CyberCore)/Modules/webxr/WebXRViewport.idl \
+    $(CyberCore)/Modules/webxr/WebXRWebGLLayer.idl \
+    $(CyberCore)/Modules/webxr/XREnvironmentBlendMode.idl \
+    $(CyberCore)/Modules/webxr/XREye.idl \
+    $(CyberCore)/Modules/webxr/XRFrameRequestCallback.idl \
+    $(CyberCore)/Modules/webxr/XRHandJoint.idl \
+    $(CyberCore)/Modules/webxr/XRHandedness.idl \
+    $(CyberCore)/Modules/webxr/XRInputSourceEvent.idl \
+    $(CyberCore)/Modules/webxr/XRInputSourcesChangeEvent.idl \
+    $(CyberCore)/Modules/webxr/XRInteractionMode.idl \
+    $(CyberCore)/Modules/webxr/XRReferenceSpaceEvent.idl \
+    $(CyberCore)/Modules/webxr/XRReferenceSpaceType.idl \
+    $(CyberCore)/Modules/webxr/XRRenderStateInit.idl \
+    $(CyberCore)/Modules/webxr/XRSessionEvent.idl \
+    $(CyberCore)/Modules/webxr/XRSessionInit.idl \
+    $(CyberCore)/Modules/webxr/XRSessionMode.idl \
+    $(CyberCore)/Modules/webxr/XRTargetRayMode.idl \
+    $(CyberCore)/Modules/webxr/XRVisibilityState.idl \
+    $(CyberCore)/Modules/webxr/XRWebGLLayerInit.idl \
+    $(CyberCore)/accessibility/AccessibilityRole.idl \
+    $(CyberCore)/accessibility/AriaAttributes.idl \
+    $(CyberCore)/animation/Animatable.idl \
+    $(CyberCore)/animation/AnimationEffect.idl \
+    $(CyberCore)/animation/AnimationFrameProvider.idl \
+    $(CyberCore)/animation/AnimationFrameRatePreset.idl \
+    $(CyberCore)/animation/AnimationPlaybackEvent.idl \
+    $(CyberCore)/animation/AnimationPlaybackEventInit.idl \
+    $(CyberCore)/animation/AnimationTimeline.idl \
+    $(CyberCore)/animation/CSSAnimation.idl \
+    $(CyberCore)/animation/CSSAnimationEvent.idl \
+    $(CyberCore)/animation/CSSTransition.idl \
+    $(CyberCore)/animation/CSSTransitionEvent.idl \
+    $(CyberCore)/animation/CompositeOperation.idl \
+    $(CyberCore)/animation/CompositeOperationOrAuto.idl \
+    $(CyberCore)/animation/ComputedEffectTiming.idl \
+    $(CyberCore)/animation/CustomAnimationOptions.idl \
+    $(CyberCore)/animation/CustomEffect.idl \
+    $(CyberCore)/animation/CustomEffectCallback.idl \
+    $(CyberCore)/animation/Document+WebAnimations.idl \
+    $(CyberCore)/animation/DocumentOrShadowRoot+WebAnimations.idl \
+    $(CyberCore)/animation/DocumentTimeline.idl \
+    $(CyberCore)/animation/DocumentTimelineOptions.idl \
+    $(CyberCore)/animation/EffectTiming.idl \
+    $(CyberCore)/animation/FillMode.idl \
+    $(CyberCore)/animation/GetAnimationsOptions.idl \
+    $(CyberCore)/animation/GlobalEventHandlers+CSSAnimations.idl \
+    $(CyberCore)/animation/GlobalEventHandlers+CSSTransitions.idl \
+    $(CyberCore)/animation/IterationCompositeOperation.idl \
+    $(CyberCore)/animation/KeyframeAnimationOptions.idl \
+    $(CyberCore)/animation/KeyframeEffect.idl \
+    $(CyberCore)/animation/KeyframeEffectOptions.idl \
+    $(CyberCore)/animation/OptionalEffectTiming.idl \
+    $(CyberCore)/animation/PlaybackDirection.idl \
+    $(CyberCore)/animation/WebAnimation.idl \
+    $(CyberCore)/crypto/CryptoAlgorithmParameters.idl \
+    $(CyberCore)/crypto/CryptoKey.idl \
+    $(CyberCore)/crypto/CryptoKeyPair.idl \
+    $(CyberCore)/crypto/CryptoKeyUsage.idl \
+    $(CyberCore)/crypto/JsonWebKey.idl \
+    $(CyberCore)/crypto/RsaOtherPrimesInfo.idl \
+    $(CyberCore)/crypto/SubtleCrypto.idl \
+    $(CyberCore)/crypto/keys/CryptoAesKeyAlgorithm.idl \
+    $(CyberCore)/crypto/keys/CryptoEcKeyAlgorithm.idl \
+    $(CyberCore)/crypto/keys/CryptoHmacKeyAlgorithm.idl \
+    $(CyberCore)/crypto/keys/CryptoKeyAlgorithm.idl \
+    $(CyberCore)/crypto/keys/CryptoRsaHashedKeyAlgorithm.idl \
+    $(CyberCore)/crypto/keys/CryptoRsaKeyAlgorithm.idl \
+    $(CyberCore)/crypto/parameters/AesCbcCfbParams.idl \
+    $(CyberCore)/crypto/parameters/AesCtrParams.idl \
+    $(CyberCore)/crypto/parameters/AesGcmParams.idl \
+    $(CyberCore)/crypto/parameters/AesKeyParams.idl \
+    $(CyberCore)/crypto/parameters/EcKeyParams.idl \
+    $(CyberCore)/crypto/parameters/EcdhKeyDeriveParams.idl \
+    $(CyberCore)/crypto/parameters/EcdsaParams.idl \
+    $(CyberCore)/crypto/parameters/HkdfParams.idl \
+    $(CyberCore)/crypto/parameters/HmacKeyParams.idl \
+    $(CyberCore)/crypto/parameters/Pbkdf2Params.idl \
+    $(CyberCore)/crypto/parameters/RsaHashedImportParams.idl \
+    $(CyberCore)/crypto/parameters/RsaHashedKeyGenParams.idl \
+    $(CyberCore)/crypto/parameters/RsaKeyGenParams.idl \
+    $(CyberCore)/crypto/parameters/RsaOaepParams.idl \
+    $(CyberCore)/crypto/parameters/RsaPssParams.idl \
+    $(CyberCore)/css/CSSConditionRule.idl \
+    $(CyberCore)/css/CSSContainerRule.idl \
+    $(CyberCore)/css/CSSCounterStyleRule.idl \
+    $(CyberCore)/css/CSSFontFaceRule.idl \
+    $(CyberCore)/css/CSSFontFeatureValuesRule.idl \
+    $(CyberCore)/css/CSSFontPaletteValuesRule.idl \
+    $(CyberCore)/css/CSSGroupingRule.idl \
+    $(CyberCore)/css/CSSImportRule.idl \
+    $(CyberCore)/css/CSSImportRule+Layer.idl \
+    $(CyberCore)/css/CSSLayerBlockRule.idl \
+    $(CyberCore)/css/CSSLayerStatementRule.idl \
+    $(CyberCore)/css/CSSKeyframeRule.idl \
+    $(CyberCore)/css/CSSKeyframesRule.idl \
+    $(CyberCore)/css/CSSMediaRule.idl \
+    $(CyberCore)/css/CSSNamespaceRule.idl \
+    $(CyberCore)/css/CSSPageRule.idl \
+    $(CyberCore)/css/CSSPaintCallback.idl \
+    $(CyberCore)/css/CSSPaintSize.idl \
+    $(CyberCore)/css/CSSPropertyRule.idl \
+    $(CyberCore)/css/CSSRule.idl \
+    $(CyberCore)/css/CSSRuleList.idl \
+    $(CyberCore)/css/CSSStyleDeclaration.idl \
+    $(CyberCore)/css/CSSStyleRule.idl \
+    $(CyberCore)/css/CSSStyleSheet.idl \
+    $(CyberCore)/css/CSSSupportsRule.idl \
+    $(CyberCore)/css/CSSUnknownRule.idl \
+    $(CyberCore)/css/DocumentOrShadowRoot+CSSOM.idl \
+    $(CyberCore)/css/DOMCSSCustomPropertyDescriptor.idl \
+    $(CyberCore)/css/DOMCSSNamespace.idl \
+    $(CyberCore)/css/DOMCSSNamespace+CSSNumericFactory.idl \
+    $(CyberCore)/css/DOMCSSNamespace+CSSPainting.idl \
+    $(CyberCore)/css/DOMCSSNamespace+CSSPropertiesandValues.idl \
+    $(CyberCore)/css/DOMMatrix.idl \
+    $(CyberCore)/css/DOMMatrix2DInit.idl \
+    $(CyberCore)/css/DOMMatrixInit.idl \
+    $(CyberCore)/css/DOMMatrixReadOnly.idl \
+    $(CyberCore)/css/DeprecatedCSSOMCounter.idl \
+    $(CyberCore)/css/DeprecatedCSSOMPrimitiveValue.idl \
+    $(CyberCore)/css/DeprecatedCSSOMRGBColor.idl \
+    $(CyberCore)/css/DeprecatedCSSOMRect.idl \
+    $(CyberCore)/css/DeprecatedCSSOMValue.idl \
+    $(CyberCore)/css/DeprecatedCSSOMValueList.idl \
+    $(CyberCore)/css/ElementCSSInlineStyle.idl \
+    $(CyberCore)/css/FontFace.idl \
+    $(CyberCore)/css/FontFaceSet.idl \
+    $(CyberCore)/css/FontFaceSource.idl \
+    $(CyberCore)/css/LinkStyle.idl \
+    $(CyberCore)/css/MediaList.idl \
+    $(CyberCore)/css/MediaQueryList.idl \
+    $(CyberCore)/css/MediaQueryListEvent.idl \
+    $(CyberCore)/css/StyleMedia.idl \
+    $(CyberCore)/css/StyleSheet.idl \
+    $(CyberCore)/css/StyleSheetList.idl \
+    $(CyberCore)/css/typedom/StylePropertyMap.idl \
+    $(CyberCore)/css/typedom/StylePropertyMapReadOnly.idl \
+	$(CyberCore)/css/typedom/CSSKeywordValue.idl \
+    $(CyberCore)/css/typedom/CSSStyleImageValue.idl \
+    $(CyberCore)/css/typedom/CSSNumericValue.idl \
+    $(CyberCore)/css/typedom/CSSStyleValue.idl \
+    $(CyberCore)/css/typedom/CSSUnitValue.idl \
+    $(CyberCore)/css/typedom/CSSUnparsedValue.idl \
+    $(CyberCore)/css/typedom/CSSOMVariableReferenceValue.idl \
+    $(CyberCore)/css/typedom/color/CSSColor.idl \
+    $(CyberCore)/css/typedom/color/CSSColorValue.idl \
+    $(CyberCore)/css/typedom/color/CSSHSL.idl \
+    $(CyberCore)/css/typedom/color/CSSHWB.idl \
+    $(CyberCore)/css/typedom/color/CSSLCH.idl \
+    $(CyberCore)/css/typedom/color/CSSLab.idl \
+    $(CyberCore)/css/typedom/color/CSSOKLCH.idl \
+    $(CyberCore)/css/typedom/color/CSSOKLab.idl \
+    $(CyberCore)/css/typedom/color/CSSRGB.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathClamp.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathInvert.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathMax.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathMin.idl \
+	$(CyberCore)/css/typedom/numeric/CSSMathNegate.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathOperator.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathProduct.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathSum.idl \
+    $(CyberCore)/css/typedom/numeric/CSSMathValue.idl \
+    $(CyberCore)/css/typedom/numeric/CSSNumericArray.idl \
+    $(CyberCore)/css/typedom/numeric/CSSNumericBaseType.idl \
+    $(CyberCore)/css/typedom/numeric/CSSNumericType.idl \
+	$(CyberCore)/css/typedom/transform/CSSMatrixComponent.idl \
+	$(CyberCore)/css/typedom/transform/CSSMatrixComponentOptions.idl \
+	$(CyberCore)/css/typedom/transform/CSSPerspective.idl \
+	$(CyberCore)/css/typedom/transform/CSSRotate.idl \
+	$(CyberCore)/css/typedom/transform/CSSScale.idl \
+	$(CyberCore)/css/typedom/transform/CSSSkew.idl \
+	$(CyberCore)/css/typedom/transform/CSSSkewX.idl \
+	$(CyberCore)/css/typedom/transform/CSSSkewY.idl \
+	$(CyberCore)/css/typedom/transform/CSSTransformComponent.idl \
+	$(CyberCore)/css/typedom/transform/CSSTransformValue.idl \
+	$(CyberCore)/css/typedom/transform/CSSTranslate.idl \
+    $(CyberCore)/dom/AbortAlgorithm.idl \
+    $(CyberCore)/dom/AbortController.idl \
+    $(CyberCore)/dom/AbortSignal.idl \
+    $(CyberCore)/dom/AbstractRange.idl \
+    $(CyberCore)/dom/AddEventListenerOptions.idl \
+    $(CyberCore)/dom/Attr.idl \
+    $(CyberCore)/dom/BeforeUnloadEvent.idl \
+    $(CyberCore)/dom/BroadcastChannel.idl \
+    $(CyberCore)/dom/CDATASection.idl \
+    $(CyberCore)/dom/CharacterData.idl \
+    $(CyberCore)/dom/ChildNode.idl \
+    $(CyberCore)/dom/ClipboardEvent.idl \
+    $(CyberCore)/dom/Comment.idl \
+    $(CyberCore)/dom/CompositionEvent.idl \
+    $(CyberCore)/dom/CustomElementRegistry.idl \
+    $(CyberCore)/dom/CustomEvent.idl \
+    $(CyberCore)/dom/DOMException.idl \
+    $(CyberCore)/dom/DOMImplementation.idl \
+    $(CyberCore)/dom/DOMPoint.idl \
+    $(CyberCore)/dom/DOMPointInit.idl \
+    $(CyberCore)/dom/DOMPointReadOnly.idl \
+    $(CyberCore)/dom/DOMQuad.idl \
+    $(CyberCore)/dom/DOMQuadInit.idl \
+    $(CyberCore)/dom/DOMRect.idl \
+    $(CyberCore)/dom/DOMRectInit.idl \
+    $(CyberCore)/dom/DOMRectList.idl \
+    $(CyberCore)/dom/DOMRectReadOnly.idl \
+    $(CyberCore)/dom/DOMStringList.idl \
+    $(CyberCore)/dom/DOMStringMap.idl \
+    $(CyberCore)/dom/DataTransfer.idl \
+    $(CyberCore)/dom/DataTransferItem.idl \
+    $(CyberCore)/dom/DataTransferItemList.idl \
+    $(CyberCore)/dom/DeviceMotionEvent.idl \
+    $(CyberCore)/dom/DeviceOrientationEvent.idl \
+    $(CyberCore)/dom/DeviceOrientationOrMotionPermissionState.idl \
+    $(CyberCore)/dom/Document.idl \
+    $(CyberCore)/dom/Document+CSSOMView.idl \
+    $(CyberCore)/dom/Document+Fullscreen.idl \
+    $(CyberCore)/dom/Document+HTML.idl \
+    $(CyberCore)/dom/Document+HTMLObsolete.idl \
+    $(CyberCore)/dom/Document+PageVisibility.idl \
+    $(CyberCore)/dom/Document+PointerLock.idl \
+    $(CyberCore)/dom/Document+Selection.idl \
+    $(CyberCore)/dom/Document+StorageAccess.idl \
+    $(CyberCore)/dom/Document+UndoMananger.idl \
+    $(CyberCore)/dom/DocumentAndElementEventHandlers.idl \
+    $(CyberCore)/dom/DocumentFragment.idl \
+    $(CyberCore)/dom/DocumentOrShadowRoot.idl \
+    $(CyberCore)/dom/DocumentOrShadowRoot+Fullscreen.idl \
+    $(CyberCore)/dom/DocumentOrShadowRoot+PointerLock.idl \
+    $(CyberCore)/dom/DocumentType.idl \
+    $(CyberCore)/dom/DragEvent.idl \
+    $(CyberCore)/dom/Element+CSSOMView.idl \
+    $(CyberCore)/dom/Element+ComputedStyleMap.idl \
+    $(CyberCore)/dom/Element+DOMParsing.idl \
+    $(CyberCore)/dom/Element+Fullscreen.idl \
+    $(CyberCore)/dom/Element+PointerEvents.idl \
+    $(CyberCore)/dom/Element+PointerLock.idl \
+    $(CyberCore)/dom/Element.idl \
+    $(CyberCore)/dom/ElementContentEditable.idl \
+    $(CyberCore)/dom/ElementInternals.idl \
+    $(CyberCore)/dom/ErrorEvent.idl \
+    $(CyberCore)/dom/Event.idl \
+    $(CyberCore)/dom/EventInit.idl \
+    $(CyberCore)/dom/EventListener.idl \
+    $(CyberCore)/dom/EventListenerOptions.idl \
+    $(CyberCore)/dom/EventModifierInit.idl \
+    $(CyberCore)/dom/EventTarget.idl \
+    $(CyberCore)/dom/FocusEvent.idl \
+    $(CyberCore)/dom/FocusOptions.idl \
+    $(CyberCore)/dom/FormDataEvent.idl \
+    $(CyberCore)/dom/FullscreenOptions.idl \
+    $(CyberCore)/dom/GlobalEventHandlers+PointerEvents.idl \
+    $(CyberCore)/dom/GlobalEventHandlers+Selection.idl \
+    $(CyberCore)/dom/GlobalEventHandlers.idl \
+    $(CyberCore)/dom/HashChangeEvent.idl \
+    $(CyberCore)/dom/IdleDeadline.idl \
+    $(CyberCore)/dom/IdleRequestCallback.idl \
+    $(CyberCore)/dom/IdleRequestOptions.idl \
+    $(CyberCore)/dom/InnerHTML.idl \
+    $(CyberCore)/dom/InputEvent.idl \
+    $(CyberCore)/dom/KeyboardEvent.idl \
+    $(CyberCore)/dom/MessageChannel.idl \
+    $(CyberCore)/dom/MessageEvent.idl \
+    $(CyberCore)/dom/MessagePort.idl \
+    $(CyberCore)/dom/MouseEvent.idl \
+    $(CyberCore)/dom/MouseEventInit.idl \
+    $(CyberCore)/dom/MutationCallback.idl \
+    $(CyberCore)/dom/MutationEvent.idl \
+    $(CyberCore)/dom/MutationObserver.idl \
+    $(CyberCore)/dom/MutationRecord.idl \
+    $(CyberCore)/dom/NamedNodeMap.idl \
+    $(CyberCore)/dom/NavigatorMaxTouchPoints.idl \
+    $(CyberCore)/dom/Node.idl \
+    $(CyberCore)/dom/NodeFilter.idl \
+    $(CyberCore)/dom/NodeIterator.idl \
+    $(CyberCore)/dom/NodeList.idl \
+    $(CyberCore)/dom/NonDocumentTypeChildNode.idl \
+    $(CyberCore)/dom/NonElementParentNode.idl \
+    $(CyberCore)/dom/OverflowEvent.idl \
+    $(CyberCore)/dom/PageTransitionEvent.idl \
+    $(CyberCore)/dom/ParentNode.idl \
+    $(CyberCore)/dom/PointerEvent.idl \
+    $(CyberCore)/dom/PopStateEvent.idl \
+    $(CyberCore)/dom/ProcessingInstruction.idl \
+    $(CyberCore)/dom/ProgressEvent.idl \
+    $(CyberCore)/dom/PromiseRejectionEvent.idl \
+    $(CyberCore)/dom/Range+CSSOMView.idl \
+    $(CyberCore)/dom/Range+DOMParsing.idl \
+    $(CyberCore)/dom/Range.idl \
+    $(CyberCore)/dom/RequestAnimationFrameCallback.idl \
+    $(CyberCore)/dom/SecurityPolicyViolationEvent.idl \
+    $(CyberCore)/dom/SecurityPolicyViolationEventDisposition.idl \
+    $(CyberCore)/dom/ShadowRoot.idl \
+    $(CyberCore)/dom/ShadowRootInit.idl \
+    $(CyberCore)/dom/ShadowRootMode.idl \
+    $(CyberCore)/dom/SlotAssignmentMode.idl \
+    $(CyberCore)/dom/Slotable.idl \
+    $(CyberCore)/dom/StaticRange.idl \
+    $(CyberCore)/dom/StringCallback.idl \
+    $(CyberCore)/dom/Text.idl \
+    $(CyberCore)/dom/TextDecoder.idl \
+    $(CyberCore)/dom/TextDecoderStream.idl \
+    $(CyberCore)/dom/TextDecoderStreamDecoder.idl \
+    $(CyberCore)/dom/TextEncoder.idl \
+    $(CyberCore)/dom/TextEncoderStream.idl \
+    $(CyberCore)/dom/TextEncoderStreamEncoder.idl \
+    $(CyberCore)/dom/TextEvent.idl \
+    $(CyberCore)/dom/ToggleEvent.idl \
+    $(CyberCore)/dom/TreeWalker.idl \
+    $(CyberCore)/dom/UIEvent.idl \
+    $(CyberCore)/dom/UIEventInit.idl \
+    $(CyberCore)/dom/ValidityStateFlags.idl \
+    $(CyberCore)/dom/VisibilityState.idl \
+    $(CyberCore)/dom/WheelEvent.idl \
+    $(CyberCore)/dom/XMLDocument.idl \
+    $(CyberCore)/fileapi/Blob.idl \
+    $(CyberCore)/fileapi/BlobCallback.idl \
+    $(CyberCore)/fileapi/BlobPropertyBag.idl \
+    $(CyberCore)/fileapi/EndingType.idl \
+    $(CyberCore)/fileapi/File.idl \
+    $(CyberCore)/fileapi/FileList.idl \
+    $(CyberCore)/fileapi/FileReader.idl \
+    $(CyberCore)/fileapi/FileReaderSync.idl \
+    $(CyberCore)/html/DOMFormData.idl \
+    $(CyberCore)/html/DOMTokenList.idl \
+    $(CyberCore)/html/DOMURL.idl \
+    $(CyberCore)/html/HTMLAllCollection.idl \
+    $(CyberCore)/html/HTMLAnchorElement.idl \
+    $(CyberCore)/html/HTMLAreaElement.idl \
+    $(CyberCore)/html/HTMLAttachmentElement.idl \
+    $(CyberCore)/html/HTMLAudioElement.idl \
+    $(CyberCore)/html/HTMLBRElement.idl \
+    $(CyberCore)/html/HTMLBaseElement.idl \
+    $(CyberCore)/html/HTMLBodyElement+Compat.idl \
+    $(CyberCore)/html/HTMLBodyElement.idl \
+    $(CyberCore)/html/HTMLButtonElement.idl \
+    $(CyberCore)/html/HTMLCanvasElement.idl \
+    $(CyberCore)/html/HTMLCollection.idl \
+    $(CyberCore)/html/HTMLDListElement.idl \
+    $(CyberCore)/html/HTMLDataElement.idl \
+    $(CyberCore)/html/HTMLDataListElement.idl \
+    $(CyberCore)/html/HTMLDetailsElement.idl \
+    $(CyberCore)/html/HTMLDialogElement.idl \
+    $(CyberCore)/html/HTMLDirectoryElement.idl \
+    $(CyberCore)/html/HTMLDivElement.idl \
+    $(CyberCore)/html/HTMLDocument.idl \
+    $(CyberCore)/html/HTMLElement+CSSOMView.idl \
+    $(CyberCore)/html/HTMLElement.idl \
+    $(CyberCore)/html/HTMLEmbedElement.idl \
+    $(CyberCore)/html/HTMLFieldSetElement.idl \
+    $(CyberCore)/html/HTMLFontElement.idl \
+    $(CyberCore)/html/HTMLFormControlsCollection.idl \
+    $(CyberCore)/html/HTMLFormElement.idl \
+    $(CyberCore)/html/HTMLFrameElement.idl \
+    $(CyberCore)/html/HTMLFrameSetElement.idl \
+    $(CyberCore)/html/HTMLHRElement.idl \
+    $(CyberCore)/html/HTMLHeadElement.idl \
+    $(CyberCore)/html/HTMLHeadingElement.idl \
+    $(CyberCore)/html/HTMLHtmlElement.idl \
+    $(CyberCore)/html/HTMLHyperlinkElementUtils.idl \
+    $(CyberCore)/html/HTMLIFrameElement.idl \
+    $(CyberCore)/html/HTMLImageElement+CSSOMView.idl \
+    $(CyberCore)/html/HTMLImageElement.idl \
+    $(CyberCore)/html/HTMLInputElement.idl \
+    $(CyberCore)/html/HTMLLIElement.idl \
+    $(CyberCore)/html/HTMLLabelElement.idl \
+    $(CyberCore)/html/HTMLLegendElement.idl \
+    $(CyberCore)/html/HTMLLinkElement.idl \
+    $(CyberCore)/html/HTMLMapElement.idl \
+    $(CyberCore)/html/HTMLMarqueeElement.idl \
+    $(CyberCore)/html/HTMLMediaElement+AudioOutput.idl \
+    $(CyberCore)/html/HTMLMediaElement.idl \
+    $(CyberCore)/html/HTMLMenuElement.idl \
+    $(CyberCore)/html/HTMLMenuItemElement.idl \
+    $(CyberCore)/html/HTMLMetaElement.idl \
+    $(CyberCore)/html/HTMLMeterElement.idl \
+    $(CyberCore)/html/HTMLModElement.idl \
+    $(CyberCore)/html/HTMLOListElement.idl \
+    $(CyberCore)/html/HTMLObjectElement.idl \
+    $(CyberCore)/html/HTMLOptGroupElement.idl \
+    $(CyberCore)/html/HTMLOptionElement.idl \
+    $(CyberCore)/html/HTMLOptionsCollection.idl \
+    $(CyberCore)/html/HTMLOrForeignElement.idl \
+    $(CyberCore)/html/HTMLOutputElement.idl \
+    $(CyberCore)/html/HTMLParagraphElement.idl \
+    $(CyberCore)/html/HTMLParamElement.idl \
+    $(CyberCore)/html/HTMLPictureElement.idl \
+    $(CyberCore)/html/HTMLPreElement.idl \
+    $(CyberCore)/html/HTMLProgressElement.idl \
+    $(CyberCore)/html/HTMLQuoteElement.idl \
+    $(CyberCore)/html/HTMLScriptElement.idl \
+    $(CyberCore)/html/HTMLSelectElement.idl \
+    $(CyberCore)/html/HTMLSlotElement.idl \
+    $(CyberCore)/html/HTMLSourceElement.idl \
+    $(CyberCore)/html/HTMLSpanElement.idl \
+    $(CyberCore)/html/HTMLStyleElement.idl \
+    $(CyberCore)/html/HTMLTableCaptionElement.idl \
+    $(CyberCore)/html/HTMLTableCellElement.idl \
+    $(CyberCore)/html/HTMLTableColElement.idl \
+    $(CyberCore)/html/HTMLTableElement.idl \
+    $(CyberCore)/html/HTMLTableRowElement.idl \
+    $(CyberCore)/html/HTMLTableSectionElement.idl \
+    $(CyberCore)/html/HTMLTemplateElement.idl \
+    $(CyberCore)/html/HTMLTextAreaElement.idl \
+    $(CyberCore)/html/HTMLTimeElement.idl \
+    $(CyberCore)/html/HTMLTitleElement.idl \
+    $(CyberCore)/html/HTMLTrackElement.idl \
+    $(CyberCore)/html/HTMLUListElement.idl \
+    $(CyberCore)/html/HTMLUnknownElement.idl \
+    $(CyberCore)/html/HTMLVideoElement.idl \
+    $(CyberCore)/html/HTMLVideoElement+RequestVideoFrameCallback.idl \
+    $(CyberCore)/html/ImageBitmap.idl \
+    $(CyberCore)/html/ImageBitmapOptions.idl \
+    $(CyberCore)/html/ImageData.idl \
+    $(CyberCore)/html/ImageDataSettings.idl \
+    $(CyberCore)/html/MediaController.idl \
+    $(CyberCore)/html/MediaEncryptedEvent.idl \
+    $(CyberCore)/html/MediaError.idl \
+    $(CyberCore)/html/OffscreenCanvas.idl \
+    $(CyberCore)/html/RadioNodeList.idl \
+    $(CyberCore)/html/SubmitEvent.idl \
+    $(CyberCore)/html/TextMetrics.idl \
+    $(CyberCore)/html/TimeRanges.idl \
+    $(CyberCore)/html/URLSearchParams.idl \
+    $(CyberCore)/html/UserActivation.idl \
+    $(CyberCore)/html/ValidityState.idl \
+    $(CyberCore)/html/VideoFrameMetadata.idl \
+    $(CyberCore)/html/VideoFrameRequestCallback.idl \
+    $(CyberCore)/html/VoidCallback.idl \
+    $(CyberCore)/html/CyberKitMediaKeyError.idl \
+    $(CyberCore)/html/canvas/ANGLEInstancedArrays.idl \
+    $(CyberCore)/html/canvas/CanvasCompositing.idl \
+    $(CyberCore)/html/canvas/CanvasDirection.idl \
+    $(CyberCore)/html/canvas/CanvasDrawImage.idl \
+    $(CyberCore)/html/canvas/CanvasDrawPath.idl \
+    $(CyberCore)/html/canvas/CanvasFillRule.idl \
+    $(CyberCore)/html/canvas/CanvasFillStrokeStyles.idl \
+    $(CyberCore)/html/canvas/CanvasFilters.idl \
+    $(CyberCore)/html/canvas/CanvasGradient.idl \
+    $(CyberCore)/html/canvas/CanvasImageData.idl \
+    $(CyberCore)/html/canvas/CanvasImageSmoothing.idl \
+    $(CyberCore)/html/canvas/CanvasLineCap.idl \
+    $(CyberCore)/html/canvas/CanvasLineJoin.idl \
+    $(CyberCore)/html/canvas/CanvasPath.idl \
+    $(CyberCore)/html/canvas/CanvasPathDrawingStyles.idl \
+    $(CyberCore)/html/canvas/CanvasPattern.idl \
+    $(CyberCore)/html/canvas/CanvasRect.idl \
+    $(CyberCore)/html/canvas/CanvasRenderingContext2D.idl \
+    $(CyberCore)/html/canvas/CanvasRenderingContext2DSettings.idl \
+    $(CyberCore)/html/canvas/CanvasShadowStyles.idl \
+    $(CyberCore)/html/canvas/CanvasState.idl \
+    $(CyberCore)/html/canvas/CanvasText.idl \
+    $(CyberCore)/html/canvas/CanvasTextAlign.idl \
+    $(CyberCore)/html/canvas/CanvasTextBaseline.idl \
+    $(CyberCore)/html/canvas/CanvasTextDrawingStyles.idl \
+    $(CyberCore)/html/canvas/CanvasTransform.idl \
+    $(CyberCore)/html/canvas/CanvasUserInterface.idl \
+    $(CyberCore)/html/canvas/EXTBlendMinMax.idl \
+    $(CyberCore)/html/canvas/EXTColorBufferFloat.idl \
+    $(CyberCore)/html/canvas/EXTColorBufferHalfFloat.idl \
+    $(CyberCore)/html/canvas/EXTDisjointTimerQuery.idl \
+    $(CyberCore)/html/canvas/EXTDisjointTimerQueryWebGL2.idl \
+    $(CyberCore)/html/canvas/EXTFloatBlend.idl \
+    $(CyberCore)/html/canvas/EXTFragDepth.idl \
+    $(CyberCore)/html/canvas/EXTShaderTextureLOD.idl \
+    $(CyberCore)/html/canvas/EXTTextureCompressionBPTC.idl \
+    $(CyberCore)/html/canvas/EXTTextureCompressionRGTC.idl \
+    $(CyberCore)/html/canvas/EXTTextureFilterAnisotropic.idl \
+    $(CyberCore)/html/canvas/EXTTextureNorm16.idl \
+    $(CyberCore)/html/canvas/EXTsRGB.idl \
+    $(CyberCore)/html/canvas/GPUCanvasContext.idl \
+    $(CyberCore)/html/canvas/ImageBitmapRenderingContext.idl \
+    $(CyberCore)/html/canvas/ImageBitmapRenderingContextSettings.idl \
+    $(CyberCore)/html/canvas/ImageSmoothingQuality.idl \
+    $(CyberCore)/html/canvas/KHRParallelShaderCompile.idl \
+    $(CyberCore)/html/canvas/OESDrawBuffersIndexed.idl \
+    $(CyberCore)/html/canvas/OESElementIndexUint.idl \
+    $(CyberCore)/html/canvas/OESFBORenderMipmap.idl \
+    $(CyberCore)/html/canvas/OESStandardDerivatives.idl \
+    $(CyberCore)/html/canvas/OESTextureFloat.idl \
+    $(CyberCore)/html/canvas/OESTextureFloatLinear.idl \
+    $(CyberCore)/html/canvas/OESTextureHalfFloat.idl \
+    $(CyberCore)/html/canvas/OESTextureHalfFloatLinear.idl \
+    $(CyberCore)/html/canvas/OESVertexArrayObject.idl \
+    $(CyberCore)/html/canvas/OffscreenCanvasRenderingContext2D.idl \
+    $(CyberCore)/html/canvas/PaintRenderingContext2D.idl \
+    $(CyberCore)/html/canvas/Path2D.idl \
+    $(CyberCore)/html/canvas/PredefinedColorSpace.idl \
+    $(CyberCore)/html/canvas/WebGL2RenderingContext.idl \
+    $(CyberCore)/html/canvas/WebGLActiveInfo.idl \
+    $(CyberCore)/html/canvas/WebGLBuffer.idl \
+    $(CyberCore)/html/canvas/WebGLClipCullDistance.idl \
+    $(CyberCore)/html/canvas/WebGLColorBufferFloat.idl \
+    $(CyberCore)/html/canvas/WebGLCompressedTextureASTC.idl \
+    $(CyberCore)/html/canvas/WebGLCompressedTextureETC.idl \
+    $(CyberCore)/html/canvas/WebGLCompressedTextureETC1.idl \
+    $(CyberCore)/html/canvas/WebGLCompressedTexturePVRTC.idl \
+    $(CyberCore)/html/canvas/WebGLCompressedTextureS3TC.idl \
+    $(CyberCore)/html/canvas/WebGLCompressedTextureS3TCsRGB.idl \
+    $(CyberCore)/html/canvas/WebGLContextAttributes.idl \
+    $(CyberCore)/html/canvas/WebGLContextEvent.idl \
+    $(CyberCore)/html/canvas/WebGLDebugRendererInfo.idl \
+    $(CyberCore)/html/canvas/WebGLDebugShaders.idl \
+    $(CyberCore)/html/canvas/WebGLDepthTexture.idl \
+    $(CyberCore)/html/canvas/WebGLDrawBuffers.idl \
+    $(CyberCore)/html/canvas/WebGLDrawInstancedBaseVertexBaseInstance.idl \
+    $(CyberCore)/html/canvas/WebGLFramebuffer.idl \
+    $(CyberCore)/html/canvas/WebGLLoseContext.idl \
+    $(CyberCore)/html/canvas/WebGLMultiDraw.idl \
+    $(CyberCore)/html/canvas/WebGLMultiDrawInstancedBaseVertexBaseInstance.idl \
+    $(CyberCore)/html/canvas/WebGLProgram.idl \
+    $(CyberCore)/html/canvas/WebGLProvokingVertex.idl \
+    $(CyberCore)/html/canvas/WebGLQuery.idl \
+    $(CyberCore)/html/canvas/WebGLRenderbuffer.idl \
+    $(CyberCore)/html/canvas/WebGLRenderingContext.idl \
+    $(CyberCore)/html/canvas/WebGLRenderingContextBase.idl \
+    $(CyberCore)/html/canvas/WebGLSampler.idl \
+    $(CyberCore)/html/canvas/WebGLShader.idl \
+    $(CyberCore)/html/canvas/WebGLShaderPrecisionFormat.idl \
+    $(CyberCore)/html/canvas/WebGLSync.idl \
+    $(CyberCore)/html/canvas/WebGLTexture.idl \
+    $(CyberCore)/html/canvas/WebGLTimerQueryEXT.idl \
+    $(CyberCore)/html/canvas/WebGLTransformFeedback.idl \
+    $(CyberCore)/html/canvas/WebGLUniformLocation.idl \
+    $(CyberCore)/html/canvas/WebGLVertexArrayObject.idl \
+    $(CyberCore)/html/canvas/WebGLVertexArrayObjectOES.idl \
+    $(CyberCore)/html/track/AudioTrack.idl \
+    $(CyberCore)/html/track/AudioTrackConfiguration.idl \
+    $(CyberCore)/html/track/AudioTrackList.idl \
+    $(CyberCore)/html/track/DataCue.idl \
+    $(CyberCore)/html/track/TextTrack.idl \
+    $(CyberCore)/html/track/TextTrackCue.idl \
+    $(CyberCore)/html/track/TextTrackCueGeneric.idl \
+    $(CyberCore)/html/track/TextTrackCueList.idl \
+    $(CyberCore)/html/track/TextTrackList.idl \
+    $(CyberCore)/html/track/TrackEvent.idl \
+    $(CyberCore)/html/track/VTTCue.idl \
+    $(CyberCore)/html/track/VTTRegion.idl \
+    $(CyberCore)/html/track/VTTRegionList.idl \
+    $(CyberCore)/html/track/VideoTrack.idl \
+    $(CyberCore)/html/track/VideoTrackConfiguration.idl \
+    $(CyberCore)/html/track/VideoTrackList.idl \
+    $(CyberCore)/mathml/MathMLElement.idl \
+    $(CyberCore)/mathml/MathMLMathElement.idl \
+    $(CyberCore)/inspector/CommandLineAPIHost.idl \
+    $(CyberCore)/inspector/InspectorAuditAccessibilityObject.idl \
+    $(CyberCore)/inspector/InspectorAuditDOMObject.idl \
+    $(CyberCore)/inspector/InspectorAuditResourcesObject.idl \
+    $(CyberCore)/inspector/InspectorFrontendHost.idl \
+    $(CyberCore)/loader/COEPInheritenceViolationReportBody.idl \
+    $(CyberCore)/loader/CORPViolationReportBody.idl \
+    $(CyberCore)/loader/appcache/DOMApplicationCache.idl \
+    $(CyberCore)/page/BarProp.idl \
+    $(CyberCore)/page/Crypto.idl \
+    $(CyberCore)/page/DOMSelection.idl \
+    $(CyberCore)/page/DOMWindow+CSSOM.idl \
+    $(CyberCore)/page/DOMWindow+CSSOMView.idl \
+    $(CyberCore)/page/DOMWindow+Compat.idl \
+    $(CyberCore)/page/DOMWindow+DeviceMotion.idl \
+    $(CyberCore)/page/DOMWindow+DeviceOrientation.idl \
+    $(CyberCore)/page/DOMWindow+RequestIdleCallback.idl \
+    $(CyberCore)/page/DOMWindow+Selection.idl \
+    $(CyberCore)/page/DOMWindow+VisualViewport.idl \
+    $(CyberCore)/page/DOMWindow.idl \
+    $(CyberCore)/page/EventSource.idl \
+    $(CyberCore)/page/History.idl \
+    $(CyberCore)/page/IntersectionObserver.idl \
+    $(CyberCore)/page/IntersectionObserverCallback.idl \
+    $(CyberCore)/page/IntersectionObserverEntry.idl \
+    $(CyberCore)/page/Location.idl \
+    $(CyberCore)/page/Navigator.idl \
+    $(CyberCore)/page/Navigator+IsLoggedIn.idl \
+    $(CyberCore)/page/Navigator+UserActivation.idl \
+    $(CyberCore)/page/NavigatorCookies.idl \
+    $(CyberCore)/page/NavigatorID.idl \
+    $(CyberCore)/page/NavigatorLanguage.idl \
+    $(CyberCore)/page/NavigatorOnLine.idl \
+    $(CyberCore)/page/NavigatorPlugins.idl \
+    $(CyberCore)/page/NavigatorServiceWorker.idl \
+    $(CyberCore)/page/NavigatorShare.idl \
+    $(CyberCore)/page/NavigatorStorage.idl \
+    $(CyberCore)/page/Performance+NavigationTiming.idl \
+    $(CyberCore)/page/Performance+PerformanceTimeline.idl \
+    $(CyberCore)/page/Performance+ResourceTiming.idl \
+    $(CyberCore)/page/Performance+UserTiming.idl \
+    $(CyberCore)/page/Performance.idl \
+    $(CyberCore)/page/PerformanceEntry.idl \
+    $(CyberCore)/page/PerformanceMark.idl \
+    $(CyberCore)/page/PerformanceMarkOptions.idl \
+    $(CyberCore)/page/PerformanceMeasure.idl \
+    $(CyberCore)/page/PerformanceMeasureOptions.idl \
+    $(CyberCore)/page/PerformanceNavigation.idl \
+    $(CyberCore)/page/PerformanceNavigationTiming.idl \
+    $(CyberCore)/page/PerformanceObserver.idl \
+    $(CyberCore)/page/PerformanceObserverCallback.idl \
+    $(CyberCore)/page/PerformanceObserverEntryList.idl \
+    $(CyberCore)/page/PerformancePaintTiming.idl \
+    $(CyberCore)/page/PerformanceResourceTiming.idl \
+    $(CyberCore)/page/PerformanceServerTiming.idl \
+    $(CyberCore)/page/PerformanceTiming.idl \
+    $(CyberCore)/page/RemoteDOMWindow.idl \
+    $(CyberCore)/page/ResizeObserver.idl \
+    $(CyberCore)/page/ResizeObserverBoxOptions.idl \
+    $(CyberCore)/page/ResizeObserverCallback.idl \
+    $(CyberCore)/page/ResizeObserverEntry.idl \
+    $(CyberCore)/page/ResizeObserverOptions.idl \
+    $(CyberCore)/page/ResizeObserverSize.idl \
+    $(CyberCore)/page/Screen.idl \
+    $(CyberCore)/page/ScreenOrientation.idl \
+    $(CyberCore)/page/ScrollBehavior.idl \
+    $(CyberCore)/page/ScrollIntoViewOptions.idl \
+    $(CyberCore)/page/ScrollLogicalPosition.idl \
+    $(CyberCore)/page/ScrollOptions.idl \
+    $(CyberCore)/page/ScrollToOptions.idl \
+    $(CyberCore)/page/ShadowRealmGlobalScope.idl \
+    $(CyberCore)/page/ShareData.idl \
+    $(CyberCore)/page/StructuredSerializeOptions.idl \
+    $(CyberCore)/page/UndoItem.idl \
+    $(CyberCore)/page/UndoManager.idl \
+    $(CyberCore)/page/UserMessageHandler.idl \
+    $(CyberCore)/page/UserMessageHandlersNamespace.idl \
+    $(CyberCore)/page/VisualViewport.idl \
+    $(CyberCore)/page/CyberKitNamespace.idl \
+    $(CyberCore)/page/CyberKitPoint.idl \
+    $(CyberCore)/page/WindowEventHandlers.idl \
+    $(CyberCore)/page/WindowLocalStorage.idl \
+    $(CyberCore)/page/WindowOrWorkerGlobalScope+Crypto.idl \
+    $(CyberCore)/page/WindowOrWorkerGlobalScope+Performance.idl \
+    $(CyberCore)/page/WindowOrWorkerGlobalScope.idl \
+    $(CyberCore)/page/WindowSessionStorage.idl \
+    $(CyberCore)/page/WorkerNavigator.idl \
+    $(CyberCore)/page/csp/CSPViolationReportBody.idl \
+    $(CyberCore)/plugins/DOMMimeType.idl \
+    $(CyberCore)/plugins/DOMMimeTypeArray.idl \
+    $(CyberCore)/plugins/DOMPlugin.idl \
+    $(CyberCore)/plugins/DOMPluginArray.idl \
+    $(CyberCore)/storage/Storage.idl \
+    $(CyberCore)/storage/StorageEvent.idl \
+    $(CyberCore)/svg/Document+SVG.idl \
+    $(CyberCore)/svg/SVGAElement.idl \
+    $(CyberCore)/svg/SVGAngle.idl \
+    $(CyberCore)/svg/SVGAnimateColorElement.idl \
+    $(CyberCore)/svg/SVGAnimateElement.idl \
+    $(CyberCore)/svg/SVGAnimateMotionElement.idl \
+    $(CyberCore)/svg/SVGAnimateTransformElement.idl \
+    $(CyberCore)/svg/SVGAnimatedAngle.idl \
+    $(CyberCore)/svg/SVGAnimatedBoolean.idl \
+    $(CyberCore)/svg/SVGAnimatedEnumeration.idl \
+    $(CyberCore)/svg/SVGAnimatedInteger.idl \
+    $(CyberCore)/svg/SVGAnimatedLength.idl \
+    $(CyberCore)/svg/SVGAnimatedLengthList.idl \
+    $(CyberCore)/svg/SVGAnimatedNumber.idl \
+    $(CyberCore)/svg/SVGAnimatedNumberList.idl \
+    $(CyberCore)/svg/SVGAnimatedPreserveAspectRatio.idl \
+    $(CyberCore)/svg/SVGAnimatedRect.idl \
+    $(CyberCore)/svg/SVGAnimatedString.idl \
+    $(CyberCore)/svg/SVGAnimatedTransformList.idl \
+    $(CyberCore)/svg/SVGAnimationElement.idl \
+    $(CyberCore)/svg/SVGCircleElement.idl \
+    $(CyberCore)/svg/SVGClipPathElement.idl \
+    $(CyberCore)/svg/SVGComponentTransferFunctionElement.idl \
+    $(CyberCore)/svg/SVGDefsElement.idl \
+    $(CyberCore)/svg/SVGDescElement.idl \
+    $(CyberCore)/svg/SVGElement.idl \
+    $(CyberCore)/svg/SVGEllipseElement.idl \
+    $(CyberCore)/svg/SVGFEBlendElement.idl \
+    $(CyberCore)/svg/SVGFEColorMatrixElement.idl \
+    $(CyberCore)/svg/SVGFEComponentTransferElement.idl \
+    $(CyberCore)/svg/SVGFECompositeElement.idl \
+    $(CyberCore)/svg/SVGFEConvolveMatrixElement.idl \
+    $(CyberCore)/svg/SVGFEDiffuseLightingElement.idl \
+    $(CyberCore)/svg/SVGFEDisplacementMapElement.idl \
+    $(CyberCore)/svg/SVGFEDistantLightElement.idl \
+    $(CyberCore)/svg/SVGFEDropShadowElement.idl \
+    $(CyberCore)/svg/SVGFEFloodElement.idl \
+    $(CyberCore)/svg/SVGFEFuncAElement.idl \
+    $(CyberCore)/svg/SVGFEFuncBElement.idl \
+    $(CyberCore)/svg/SVGFEFuncGElement.idl \
+    $(CyberCore)/svg/SVGFEFuncRElement.idl \
+    $(CyberCore)/svg/SVGFEGaussianBlurElement.idl \
+    $(CyberCore)/svg/SVGFEImageElement.idl \
+    $(CyberCore)/svg/SVGFEMergeElement.idl \
+    $(CyberCore)/svg/SVGFEMergeNodeElement.idl \
+    $(CyberCore)/svg/SVGFEMorphologyElement.idl \
+    $(CyberCore)/svg/SVGFEOffsetElement.idl \
+    $(CyberCore)/svg/SVGFEPointLightElement.idl \
+    $(CyberCore)/svg/SVGFESpecularLightingElement.idl \
+    $(CyberCore)/svg/SVGFESpotLightElement.idl \
+    $(CyberCore)/svg/SVGFETileElement.idl \
+    $(CyberCore)/svg/SVGFETurbulenceElement.idl \
+    $(CyberCore)/svg/SVGFilterElement.idl \
+    $(CyberCore)/svg/SVGFilterPrimitiveStandardAttributes.idl \
+    $(CyberCore)/svg/SVGFitToViewBox.idl \
+    $(CyberCore)/svg/SVGForeignObjectElement.idl \
+    $(CyberCore)/svg/SVGGElement.idl \
+    $(CyberCore)/svg/SVGGeometryElement.idl \
+    $(CyberCore)/svg/SVGGradientElement.idl \
+    $(CyberCore)/svg/SVGGraphicsElement.idl \
+    $(CyberCore)/svg/SVGImageElement.idl \
+    $(CyberCore)/svg/SVGLength.idl \
+    $(CyberCore)/svg/SVGLengthList.idl \
+    $(CyberCore)/svg/SVGLineElement.idl \
+    $(CyberCore)/svg/SVGLinearGradientElement.idl \
+    $(CyberCore)/svg/SVGMPathElement.idl \
+    $(CyberCore)/svg/SVGMarkerElement.idl \
+    $(CyberCore)/svg/SVGMaskElement.idl \
+    $(CyberCore)/svg/SVGMatrix.idl \
+    $(CyberCore)/svg/SVGMetadataElement.idl \
+    $(CyberCore)/svg/SVGNumber.idl \
+    $(CyberCore)/svg/SVGNumberList.idl \
+    $(CyberCore)/svg/SVGPathElement.idl \
+    $(CyberCore)/svg/SVGPathSeg.idl \
+    $(CyberCore)/svg/SVGPathSegArcAbs.idl \
+    $(CyberCore)/svg/SVGPathSegArcRel.idl \
+    $(CyberCore)/svg/SVGPathSegClosePath.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoCubicAbs.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoCubicRel.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoCubicSmoothAbs.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoCubicSmoothRel.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoQuadraticAbs.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoQuadraticRel.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoQuadraticSmoothAbs.idl \
+    $(CyberCore)/svg/SVGPathSegCurvetoQuadraticSmoothRel.idl \
+    $(CyberCore)/svg/SVGPathSegLinetoAbs.idl \
+    $(CyberCore)/svg/SVGPathSegLinetoHorizontalAbs.idl \
+    $(CyberCore)/svg/SVGPathSegLinetoHorizontalRel.idl \
+    $(CyberCore)/svg/SVGPathSegLinetoRel.idl \
+    $(CyberCore)/svg/SVGPathSegLinetoVerticalAbs.idl \
+    $(CyberCore)/svg/SVGPathSegLinetoVerticalRel.idl \
+    $(CyberCore)/svg/SVGPathSegList.idl \
+    $(CyberCore)/svg/SVGPathSegMovetoAbs.idl \
+    $(CyberCore)/svg/SVGPathSegMovetoRel.idl \
+    $(CyberCore)/svg/SVGPatternElement.idl \
+    $(CyberCore)/svg/SVGPoint.idl \
+    $(CyberCore)/svg/SVGPointList.idl \
+    $(CyberCore)/svg/SVGPolygonElement.idl \
+    $(CyberCore)/svg/SVGPolylineElement.idl \
+    $(CyberCore)/svg/SVGPreserveAspectRatio.idl \
+    $(CyberCore)/svg/SVGRadialGradientElement.idl \
+    $(CyberCore)/svg/SVGRect.idl \
+    $(CyberCore)/svg/SVGRectElement.idl \
+    $(CyberCore)/svg/SVGRenderingIntent.idl \
+    $(CyberCore)/svg/SVGSVGElement.idl \
+    $(CyberCore)/svg/SVGScriptElement.idl \
+    $(CyberCore)/svg/SVGSetElement.idl \
+    $(CyberCore)/svg/SVGStopElement.idl \
+    $(CyberCore)/svg/SVGStringList.idl \
+    $(CyberCore)/svg/SVGStyleElement.idl \
+    $(CyberCore)/svg/SVGSwitchElement.idl \
+    $(CyberCore)/svg/SVGSymbolElement.idl \
+    $(CyberCore)/svg/SVGTSpanElement.idl \
+    $(CyberCore)/svg/SVGTests.idl \
+    $(CyberCore)/svg/SVGTextContentElement.idl \
+    $(CyberCore)/svg/SVGTextElement.idl \
+    $(CyberCore)/svg/SVGTextPathElement.idl \
+    $(CyberCore)/svg/SVGTextPositioningElement.idl \
+    $(CyberCore)/svg/SVGTitleElement.idl \
+    $(CyberCore)/svg/SVGTransform.idl \
+    $(CyberCore)/svg/SVGTransformList.idl \
+    $(CyberCore)/svg/SVGURIReference.idl \
+    $(CyberCore)/svg/SVGUnitTypes.idl \
+    $(CyberCore)/svg/SVGUseElement.idl \
+    $(CyberCore)/svg/SVGViewElement.idl \
+    $(CyberCore)/svg/SVGViewSpec.idl \
+    $(CyberCore)/svg/SVGZoomAndPan.idl \
+    $(CyberCore)/testing/GCObservation.idl \
+    $(CyberCore)/testing/InternalSettings.idl \
+    $(CyberCore)/testing/Internals.idl \
+    $(CyberCore)/testing/InternalsMapLike.idl \
+    $(CyberCore)/testing/InternalsSetLike.idl \
+    $(CyberCore)/testing/MallocStatistics.idl \
+    $(CyberCore)/testing/MemoryInfo.idl \
+    $(CyberCore)/testing/MockCDMFactory.idl \
+    $(CyberCore)/testing/MockContentFilterSettings.idl \
+    $(CyberCore)/testing/MockPageOverlay.idl \
+    $(CyberCore)/testing/MockPaymentAddress.idl \
+    $(CyberCore)/testing/MockPaymentContactFields.idl \
+    $(CyberCore)/testing/MockPaymentCoordinator.idl \
+    $(CyberCore)/testing/MockPaymentError.idl \
+    $(CyberCore)/testing/MockWebAuthenticationConfiguration.idl \
+    $(CyberCore)/testing/ServiceWorkerInternals.idl \
+    $(CyberCore)/testing/TypeConversions.idl \
+    $(CyberCore)/testing/FakeXRBoundsPoint.idl \
+    $(CyberCore)/testing/FakeXRButtonStateInit.idl \
+    $(CyberCore)/testing/FakeXRInputSourceInit.idl \
+    $(CyberCore)/testing/FakeXRJointStateInit.idl \
+    $(CyberCore)/testing/FakeXRRigidTransformInit.idl \
+    $(CyberCore)/testing/FakeXRViewInit.idl \
+    $(CyberCore)/testing/WebFakeXRDevice.idl \
+    $(CyberCore)/testing/WebFakeXRInputController.idl \
+    $(CyberCore)/testing/WebXRTest.idl \
+    $(CyberCore)/testing/XRSimulateUserActivationFunction.idl \
+    $(CyberCore)/workers/AbstractWorker.idl \
+    $(CyberCore)/workers/DedicatedWorkerGlobalScope.idl \
+    $(CyberCore)/workers/Worker.idl \
+    $(CyberCore)/workers/WorkerGlobalScope.idl \
+    $(CyberCore)/workers/WorkerLocation.idl \
+    $(CyberCore)/workers/WorkerOptions.idl \
+    $(CyberCore)/workers/WorkerType.idl \
+    $(CyberCore)/workers/service/ExtendableEvent.idl \
+    $(CyberCore)/workers/service/ExtendableEventInit.idl \
+    $(CyberCore)/workers/service/ExtendableMessageEvent.idl \
+    $(CyberCore)/workers/service/FetchEvent.idl \
+    $(CyberCore)/workers/service/NavigationPreloadManager.idl \
+    $(CyberCore)/workers/service/NavigationPreloadState.idl \
+    $(CyberCore)/workers/service/ServiceWorker.idl \
+    $(CyberCore)/workers/service/ServiceWorkerClient.idl \
+    $(CyberCore)/workers/service/ServiceWorkerClientType.idl \
+    $(CyberCore)/workers/service/ServiceWorkerClients.idl \
+    $(CyberCore)/workers/service/ServiceWorkerContainer.idl \
+    $(CyberCore)/workers/service/ServiceWorkerGlobalScope.idl \
+    $(CyberCore)/workers/service/ServiceWorkerRegistration.idl \
+    $(CyberCore)/workers/service/ServiceWorkerUpdateViaCache.idl \
+    $(CyberCore)/workers/service/ServiceWorkerWindowClient.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchEvent.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchEventInit.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchFailureReason.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchManager.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchOptions.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchRecord.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchRegistration.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchResult.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchUIOptions.idl \
+    $(CyberCore)/workers/service/background-fetch/BackgroundFetchUpdateUIEvent.idl \
+    $(CyberCore)/workers/service/background-fetch/ImageResource.idl \
+    $(CyberCore)/workers/service/background-fetch/ServiceWorkerGlobalScope+BackgroundFetchAPI.idl \
+    $(CyberCore)/workers/service/background-fetch/ServiceWorkerRegistration+BackgroundFetchAPI.idl \
+    $(CyberCore)/workers/shared/SharedWorker.idl \
+    $(CyberCore)/workers/shared/SharedWorkerGlobalScope.idl \
+    $(CyberCore)/worklets/PaintWorkletGlobalScope.idl \
+    $(CyberCore)/worklets/Worklet.idl \
+    $(CyberCore)/worklets/WorkletGlobalScope.idl \
+    $(CyberCore)/worklets/WorkletOptions.idl \
+    $(CyberCore)/xml/CustomXPathNSResolver.idl \
+    $(CyberCore)/xml/DOMParser.idl \
+    $(CyberCore)/xml/ParseFromStringOptions.idl \
+    $(CyberCore)/xml/XMLHttpRequest.idl \
+    $(CyberCore)/xml/XMLHttpRequestEventTarget.idl \
+    $(CyberCore)/xml/XMLHttpRequestProgressEvent.idl \
+    $(CyberCore)/xml/XMLHttpRequestUpload.idl \
+    $(CyberCore)/xml/XMLSerializer.idl \
+    $(CyberCore)/xml/XPathEvaluator.idl \
+    $(CyberCore)/xml/XPathEvaluatorBase.idl \
+    $(CyberCore)/xml/XPathExpression.idl \
+    $(CyberCore)/xml/XPathNSResolver.idl \
+    $(CyberCore)/xml/XPathResult.idl \
+    $(CyberCore)/xml/XSLTProcessor.idl \
     InternalSettingsGenerated.idl \
     CSSStyleDeclaration+PropertyNames.idl \
 #
@@ -1610,7 +1610,7 @@ vpath %.in $(WEBKITADDITIONS_HEADER_SEARCH_PATHS)
 ADDITIONAL_EVENT_NAMES =
 ADDITIONAL_EVENT_TARGET_FACTORY =
 
--include WebCoreDerivedSourcesAdditions.make
+-include CyberCoreDerivedSourcesAdditions.make
 
 # Convert the "bare" IDL names in ADDITIONAL_BINDING_IDLS to full paths by
 # looking for those files in the expected locations: in /usr/local/include in
@@ -1713,9 +1713,9 @@ all : \
 
 # CSS property names and value keywords
 
-WEBCORE_CSS_PROPERTY_NAMES := $(WebCore)/css/CSSProperties.json
-WEBCORE_CSS_VALUE_KEYWORDS := $(WebCore)/css/CSSValueKeywords.in
-WEBCORE_CSS_VALUE_KEYWORDS := $(WEBCORE_CSS_VALUE_KEYWORDS) $(WebCore)/css/SVGCSSValueKeywords.in
+WEBCORE_CSS_PROPERTY_NAMES := $(CyberCore)/css/CSSProperties.json
+WEBCORE_CSS_VALUE_KEYWORDS := $(CyberCore)/css/CSSValueKeywords.in
+WEBCORE_CSS_VALUE_KEYWORDS := $(WEBCORE_CSS_VALUE_KEYWORDS) $(CyberCore)/css/SVGCSSValueKeywords.in
 
 CSS_PROPERTY_NAME_FILES = \
     CSSPropertyNames.cpp \
@@ -1730,9 +1730,9 @@ CSS_PROPERTY_NAME_FILES = \
 CSS_PROPERTY_NAME_FILES_PATTERNS = $(subst .,%,$(CSS_PROPERTY_NAME_FILES))
 
 all : $(CSS_PROPERTY_NAME_FILES)
-$(CSS_PROPERTY_NAME_FILES_PATTERNS) : $(WEBCORE_CSS_PROPERTY_NAMES) $(WebCore)/css/process-css-properties.py $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+$(CSS_PROPERTY_NAME_FILES_PATTERNS) : $(WEBCORE_CSS_PROPERTY_NAMES) $(CyberCore)/css/process-css-properties.py $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	$(PERL) -pe '' $(WEBCORE_CSS_PROPERTY_NAMES) > CSSProperties.json
-	$(PYTHON) "$(WebCore)/css/process-css-properties.py" --gperf-executable gperf --defines "$(FEATURE_AND_PLATFORM_DEFINES)"
+	$(PYTHON) "$(CyberCore)/css/process-css-properties.py" --gperf-executable gperf --defines "$(FEATURE_AND_PLATFORM_DEFINES)"
 
 CSS_VALUE_KEYWORD_FILES = \
     CSSValueKeywords.h \
@@ -1741,19 +1741,19 @@ CSS_VALUE_KEYWORD_FILES = \
 CSS_VALUE_KEYWORD_FILES_PATTERNS = $(subst .,%,$(CSS_VALUE_KEYWORD_FILES))
 
 all : $(CSS_VALUE_KEYWORD_FILES)
-$(CSS_VALUE_KEYWORD_FILES_PATTERNS) : $(WEBCORE_CSS_VALUE_KEYWORDS) $(WebCore)/css/process-css-values.py $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+$(CSS_VALUE_KEYWORD_FILES_PATTERNS) : $(WEBCORE_CSS_VALUE_KEYWORDS) $(CyberCore)/css/process-css-values.py $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	$(PERL) -pe '' $(WEBCORE_CSS_VALUE_KEYWORDS) > CSSValueKeywords.in
-	$(PYTHON) "$(WebCore)/css/process-css-values.py" --gperf-executable gperf --defines "$(FEATURE_AND_PLATFORM_DEFINES)"
+	$(PYTHON) "$(CyberCore)/css/process-css-values.py" --gperf-executable gperf --defines "$(FEATURE_AND_PLATFORM_DEFINES)"
 
 # --------
 
 # CSS Selector pseudo type name to value map.
 
-SelectorPseudoClassAndCompatibilityElementMap.cpp : $(WebCore)/css/makeSelectorPseudoClassAndCompatibilityElementMap.py $(WebCore)/css/SelectorPseudoClassAndCompatibilityElementMap.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
-	$(PYTHON) "$(WebCore)/css/makeSelectorPseudoClassAndCompatibilityElementMap.py" $(WebCore)/css/SelectorPseudoClassAndCompatibilityElementMap.in gperf "$(FEATURE_AND_PLATFORM_DEFINES)"
+SelectorPseudoClassAndCompatibilityElementMap.cpp : $(CyberCore)/css/makeSelectorPseudoClassAndCompatibilityElementMap.py $(CyberCore)/css/SelectorPseudoClassAndCompatibilityElementMap.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+	$(PYTHON) "$(CyberCore)/css/makeSelectorPseudoClassAndCompatibilityElementMap.py" $(CyberCore)/css/SelectorPseudoClassAndCompatibilityElementMap.in gperf "$(FEATURE_AND_PLATFORM_DEFINES)"
 
-SelectorPseudoElementTypeMap.cpp : $(WebCore)/css/makeSelectorPseudoElementsMap.py $(WebCore)/css/SelectorPseudoElementTypeMap.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
-	$(PYTHON) "$(WebCore)/css/makeSelectorPseudoElementsMap.py" $(WebCore)/css/SelectorPseudoElementTypeMap.in gperf "$(FEATURE_AND_PLATFORM_DEFINES)"
+SelectorPseudoElementTypeMap.cpp : $(CyberCore)/css/makeSelectorPseudoElementsMap.py $(CyberCore)/css/SelectorPseudoElementTypeMap.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+	$(PYTHON) "$(CyberCore)/css/makeSelectorPseudoElementsMap.py" $(CyberCore)/css/SelectorPseudoElementTypeMap.in gperf "$(FEATURE_AND_PLATFORM_DEFINES)"
 
 # --------
 
@@ -1761,8 +1761,8 @@ SelectorPseudoElementTypeMap.cpp : $(WebCore)/css/makeSelectorPseudoElementsMap.
 
 all : DOMJITAbstractHeapRepository.h
 
-DOMJITAbstractHeapRepository.h : $(WebCore)/domjit/generate-abstract-heap.rb $(WebCore)/domjit/DOMJITAbstractHeapRepository.yaml
-	$(RUBY) "$(WebCore)/domjit/generate-abstract-heap.rb" $(WebCore)/domjit/DOMJITAbstractHeapRepository.yaml DOMJITAbstractHeapRepository.h
+DOMJITAbstractHeapRepository.h : $(CyberCore)/domjit/generate-abstract-heap.rb $(CyberCore)/domjit/DOMJITAbstractHeapRepository.yaml
+	$(RUBY) "$(CyberCore)/domjit/generate-abstract-heap.rb" $(CyberCore)/domjit/DOMJITAbstractHeapRepository.yaml DOMJITAbstractHeapRepository.h
 
 # --------
 
@@ -1770,9 +1770,9 @@ DOMJITAbstractHeapRepository.h : $(WebCore)/domjit/generate-abstract-heap.rb $(W
 
 all : XMLViewerCSS.h
 
-XMLViewerCSS.h : $(WebCore)/xml/XMLViewer.css
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/cssmin.py < "$(WebCore)/xml/XMLViewer.css" > XMLViewer.min.css
-	$(PERL) $(JavaScriptCore_SCRIPTS_DIR)/xxd.pl XMLViewer_css XMLViewer.min.css XMLViewerCSS.h
+XMLViewerCSS.h : $(CyberCore)/xml/XMLViewer.css
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/cssmin.py < "$(CyberCore)/xml/XMLViewer.css" > XMLViewer.min.css
+	$(PERL) $(CyberScriptCore_SCRIPTS_DIR)/xxd.pl XMLViewer_css XMLViewer.min.css XMLViewerCSS.h
 	$(DELETE) XMLViewer.min.css
 
 # --------
@@ -1781,17 +1781,17 @@ XMLViewerCSS.h : $(WebCore)/xml/XMLViewer.css
 
 all : XMLViewerJS.h
 
-XMLViewerJS.h : $(WebCore)/xml/XMLViewer.js
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/jsmin.py < "$(WebCore)/xml/XMLViewer.js" > XMLViewer.min.js
-	$(PERL) $(JavaScriptCore_SCRIPTS_DIR)/xxd.pl XMLViewer_js XMLViewer.min.js XMLViewerJS.h
+XMLViewerJS.h : $(CyberCore)/xml/XMLViewer.js
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/jsmin.py < "$(CyberCore)/xml/XMLViewer.js" > XMLViewer.min.js
+	$(PERL) $(CyberScriptCore_SCRIPTS_DIR)/xxd.pl XMLViewer_js XMLViewer.min.js XMLViewerJS.h
 	$(DELETE) XMLViewer.min.js
 
 # --------
 
 # HTML entity names
 
-HTMLEntityTable.cpp : $(WebCore)/html/parser/HTMLEntityNames.in $(WebCore)/html/parser/create-html-entity-table
-	$(PYTHON) $(WebCore)/html/parser/create-html-entity-table -o HTMLEntityTable.cpp $(WebCore)/html/parser/HTMLEntityNames.in
+HTMLEntityTable.cpp : $(CyberCore)/html/parser/HTMLEntityNames.in $(CyberCore)/html/parser/create-html-entity-table
+	$(PYTHON) $(CyberCore)/html/parser/create-html-entity-table -o HTMLEntityTable.cpp $(CyberCore)/html/parser/HTMLEntityNames.in
 
 # --------
 
@@ -1805,15 +1805,15 @@ HTTP_HEADER_NAMES_FILES = \
 HTTP_HEADER_NAMES_FILES_PATTERNS = $(subst .,%,$(HTTP_HEADER_NAMES_FILES))
 
 all : $(HTTP_HEADER_NAMES_FILES)
-$(HTTP_HEADER_NAMES_FILES_PATTERNS) : $(WebCore)/platform/network/HTTPHeaderNames.in $(WebCore)/platform/network/create-http-header-name-table
-	$(PYTHON) $(WebCore)/platform/network/create-http-header-name-table $(WebCore)/platform/network/HTTPHeaderNames.in gperf
+$(HTTP_HEADER_NAMES_FILES_PATTERNS) : $(CyberCore)/platform/network/HTTPHeaderNames.in $(CyberCore)/platform/network/create-http-header-name-table
+	$(PYTHON) $(CyberCore)/platform/network/create-http-header-name-table $(CyberCore)/platform/network/HTTPHeaderNames.in gperf
 
 # --------
 
 # color names
 
-ColorData.cpp : $(WebCore)/platform/ColorData.gperf $(WebCore)/make-hash-tools.pl
-	$(PERL) $(WebCore)/make-hash-tools.pl . $(WebCore)/platform/ColorData.gperf
+ColorData.cpp : $(CyberCore)/platform/ColorData.gperf $(CyberCore)/make-hash-tools.pl
+	$(PERL) $(CyberCore)/make-hash-tools.pl . $(CyberCore)/platform/ColorData.gperf
 
 # --------
 
@@ -1823,7 +1823,7 @@ POSSIBLE_LOCALIZABLE_STRINGS_FILES := $(wildcard $(foreach ADDITIONS_PATH,$(ADDI
 
 LOCALIZABLE_STRINGS_FILE = $(word 1,$(POSSIBLE_LOCALIZABLE_STRINGS_FILES))
 
-LocalizableAdditions.strings.out : $(WebCore)/preprocess-localizable-strings.pl $(WebCore)/bindings/scripts/preprocessor.pm $(LOCALIZABLE_STRINGS_FILE) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+LocalizableAdditions.strings.out : $(CyberCore)/preprocess-localizable-strings.pl $(CyberCore)/bindings/scripts/preprocessor.pm $(LOCALIZABLE_STRINGS_FILE) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	$(PERL) $< --defines "$(FEATURE_AND_PLATFORM_DEFINES)" $@ $(LOCALIZABLE_STRINGS_FILE)
 
 # --------
@@ -1840,26 +1840,26 @@ POSSIBLE_ADDITIONAL_MODERN_MEDIA_CONTROLS_STYLE_SHEETS = \
             $(ADDITIONS_PATH)/$(STYLE_SHEET)))))
 
 MODERN_MEDIA_CONTROLS_STYLE_SHEETS = \
-    $(WebCore)/Modules/modern-media-controls/controls/activity-indicator.css \
-    $(WebCore)/Modules/modern-media-controls/controls/airplay-button.css \
-    $(WebCore)/Modules/modern-media-controls/controls/background-tint.css \
-    $(WebCore)/Modules/modern-media-controls/controls/button.css \
-    $(WebCore)/Modules/modern-media-controls/controls/buttons-container.css \
-    $(WebCore)/Modules/modern-media-controls/controls/controls-bar.css \
-    $(WebCore)/Modules/modern-media-controls/controls/inline-media-controls.css \
-    $(WebCore)/Modules/modern-media-controls/controls/ios-inline-media-controls.css \
-    $(WebCore)/Modules/modern-media-controls/controls/macos-fullscreen-media-controls.css \
-    $(WebCore)/Modules/modern-media-controls/controls/macos-inline-media-controls.css \
-    $(WebCore)/Modules/modern-media-controls/controls/media-controls.css \
-    $(WebCore)/Modules/modern-media-controls/controls/media-document.css \
-    $(WebCore)/Modules/modern-media-controls/controls/placard.css \
-    $(WebCore)/Modules/modern-media-controls/controls/slider-base.css \
-    $(WebCore)/Modules/modern-media-controls/controls/slider.css \
-    $(WebCore)/Modules/modern-media-controls/controls/status-label.css \
-    $(WebCore)/Modules/modern-media-controls/controls/text-tracks.css \
-    $(WebCore)/Modules/modern-media-controls/controls/time-label.css \
-    $(WebCore)/Modules/modern-media-controls/controls/watchos-activity-indicator.css \
-    $(WebCore)/Modules/modern-media-controls/controls/watchos-media-controls.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/activity-indicator.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/airplay-button.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/background-tint.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/button.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/buttons-container.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/controls-bar.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/inline-media-controls.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/ios-inline-media-controls.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/macos-fullscreen-media-controls.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/macos-inline-media-controls.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/media-controls.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/media-document.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/placard.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/slider-base.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/slider.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/status-label.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/text-tracks.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/time-label.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/watchos-activity-indicator.css \
+    $(CyberCore)/Modules/modern-media-controls/controls/watchos-media-controls.css \
     $(POSSIBLE_ADDITIONAL_MODERN_MEDIA_CONTROLS_STYLE_SHEETS) \
 #
 
@@ -1880,22 +1880,22 @@ POSSIBLE_ADDITIONAL_USER_AGENT_STYLE_SHEETS = \
             $(ADDITIONS_PATH)/$(STYLE_SHEET)))))
 
 USER_AGENT_STYLE_SHEETS = \
-    $(WebCore)/css/counterStyles.css \
-    $(WebCore)/css/dialog.css \
-    $(WebCore)/css/fullscreen.css \
-    $(WebCore)/css/horizontalFormControls.css \
-    $(WebCore)/css/html.css \
-    $(WebCore)/css/legacyFormControlsIOS.css \
-    $(WebCore)/css/mathml.css \
-    $(WebCore)/css/mediaControls.css \
-    $(WebCore)/css/plugIns.css \
-    $(WebCore)/css/popover.css \
-    $(WebCore)/css/quirks.css \
-    $(WebCore)/css/svg.css \
-    $(WebCore)/html/shadow/mac/imageControlsMac.css \
-    $(WebCore)/html/shadow/attachmentElementShadow.css \
-    $(WebCore)/html/shadow/imageOverlay.css \
-    $(WebCore)/html/shadow/meterElementShadow.css \
+    $(CyberCore)/css/counterStyles.css \
+    $(CyberCore)/css/dialog.css \
+    $(CyberCore)/css/fullscreen.css \
+    $(CyberCore)/css/horizontalFormControls.css \
+    $(CyberCore)/css/html.css \
+    $(CyberCore)/css/legacyFormControlsIOS.css \
+    $(CyberCore)/css/mathml.css \
+    $(CyberCore)/css/mediaControls.css \
+    $(CyberCore)/css/plugIns.css \
+    $(CyberCore)/css/popover.css \
+    $(CyberCore)/css/quirks.css \
+    $(CyberCore)/css/svg.css \
+    $(CyberCore)/html/shadow/mac/imageControlsMac.css \
+    $(CyberCore)/html/shadow/attachmentElementShadow.css \
+    $(CyberCore)/html/shadow/imageOverlay.css \
+    $(CyberCore)/html/shadow/meterElementShadow.css \
     ModernMediaControls.css \
     $(POSSIBLE_ADDITIONAL_USER_AGENT_STYLE_SHEETS) \
 #
@@ -1905,7 +1905,7 @@ USER_AGENT_STYLE_SHEETS_FILES_PATTERNS = $(subst .,%,$(USER_AGENT_STYLE_SHEETS_F
 
 all : $(USER_AGENT_STYLE_SHEETS_FILES)
 
-$(USER_AGENT_STYLE_SHEETS_FILES_PATTERNS) : $(WebCore)/css/make-css-file-arrays.pl $(WebCore)/bindings/scripts/preprocessor.pm $(USER_AGENT_STYLE_SHEETS) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+$(USER_AGENT_STYLE_SHEETS_FILES_PATTERNS) : $(CyberCore)/css/make-css-file-arrays.pl $(CyberCore)/bindings/scripts/preprocessor.pm $(USER_AGENT_STYLE_SHEETS) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	$(PERL) $< --defines "$(FEATURE_AND_PLATFORM_DEFINES)" $(USER_AGENT_STYLE_SHEETS_FILES) $(USER_AGENT_STYLE_SHEETS)
 
 # --------
@@ -1922,78 +1922,78 @@ POSSIBLE_ADDITIONAL_MODERN_MEDIA_CONTROLS_SCRIPTS = \
             $(ADDITIONS_PATH)/$(SCRIPT)))))
 
 MODERN_MEDIA_CONTROLS_SCRIPTS = \
-    $(WebCore)/Modules/modern-media-controls/main.js \
-    $(WebCore)/Modules/modern-media-controls/gesture-recognizers/gesture-recognizer.js \
-    $(WebCore)/Modules/modern-media-controls/gesture-recognizers/tap.js \
-    $(WebCore)/Modules/modern-media-controls/gesture-recognizers/pinch.js \
-    $(WebCore)/Modules/modern-media-controls/controls/scheduler.js \
-    $(WebCore)/Modules/modern-media-controls/controls/layout-traits.js \
-    $(WebCore)/Modules/modern-media-controls/controls/layout-node.js \
-    $(WebCore)/Modules/modern-media-controls/controls/layout-item.js \
-    $(WebCore)/Modules/modern-media-controls/controls/icon-service.js \
-    $(WebCore)/Modules/modern-media-controls/controls/background-tint.js \
-    $(WebCore)/Modules/modern-media-controls/controls/time-control.js \
-    $(WebCore)/Modules/modern-media-controls/controls/time-label.js \
-    $(WebCore)/Modules/modern-media-controls/controls/slider-base.js \
-    $(WebCore)/Modules/modern-media-controls/controls/slider.js \
-    $(WebCore)/Modules/modern-media-controls/controls/button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/play-pause-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/skip-back-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/skip-forward-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/mute-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/airplay-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/pip-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/tracks-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/fullscreen-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/seek-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/rewind-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/forward-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/overflow-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/close-button.js \
-    $(WebCore)/Modules/modern-media-controls/controls/buttons-container.js \
-    $(WebCore)/Modules/modern-media-controls/controls/status-label.js \
-    $(WebCore)/Modules/modern-media-controls/controls/controls-bar.js \
-    $(WebCore)/Modules/modern-media-controls/controls/auto-hide-controller.js \
-    $(WebCore)/Modules/modern-media-controls/controls/media-controls.js \
-    $(WebCore)/Modules/modern-media-controls/controls/background-click-delegate-notifier.js \
-    $(WebCore)/Modules/modern-media-controls/controls/inline-media-controls.js \
-    $(WebCore)/Modules/modern-media-controls/controls/ios-inline-media-controls.js \
-    $(WebCore)/Modules/modern-media-controls/controls/ios-layout-traits.js \
-    $(WebCore)/Modules/modern-media-controls/controls/macos-inline-media-controls.js \
-    $(WebCore)/Modules/modern-media-controls/controls/macos-fullscreen-media-controls.js \
-    $(WebCore)/Modules/modern-media-controls/controls/macos-layout-traits.js \
-    $(WebCore)/Modules/modern-media-controls/controls/placard.js \
-    $(WebCore)/Modules/modern-media-controls/controls/airplay-placard.js \
-    $(WebCore)/Modules/modern-media-controls/controls/invalid-placard.js \
-    $(WebCore)/Modules/modern-media-controls/controls/pip-placard.js \
-    $(WebCore)/Modules/modern-media-controls/controls/watchos-activity-indicator.js \
-    $(WebCore)/Modules/modern-media-controls/controls/watchos-media-controls.js \
-    $(WebCore)/Modules/modern-media-controls/controls/watchos-layout-traits.js \
-    $(WebCore)/Modules/modern-media-controls/media/media-controller-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/airplay-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/audio-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/close-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/controls-visibility-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/fullscreen-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/mute-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/overflow-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/pip-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/placard-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/playback-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/scrubbing-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/seek-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/seek-backward-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/seek-forward-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/skip-back-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/skip-forward-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/start-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/status-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/time-control-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/tracks-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/volume-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/media-document-controller.js \
-    $(WebCore)/Modules/modern-media-controls/media/watchos-media-controls-support.js \
-    $(WebCore)/Modules/modern-media-controls/media/media-controller.js \
+    $(CyberCore)/Modules/modern-media-controls/main.js \
+    $(CyberCore)/Modules/modern-media-controls/gesture-recognizers/gesture-recognizer.js \
+    $(CyberCore)/Modules/modern-media-controls/gesture-recognizers/tap.js \
+    $(CyberCore)/Modules/modern-media-controls/gesture-recognizers/pinch.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/scheduler.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/layout-traits.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/layout-node.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/layout-item.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/icon-service.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/background-tint.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/time-control.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/time-label.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/slider-base.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/slider.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/play-pause-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/skip-back-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/skip-forward-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/mute-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/airplay-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/pip-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/tracks-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/fullscreen-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/seek-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/rewind-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/forward-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/overflow-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/close-button.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/buttons-container.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/status-label.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/controls-bar.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/auto-hide-controller.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/media-controls.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/background-click-delegate-notifier.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/inline-media-controls.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/ios-inline-media-controls.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/ios-layout-traits.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/macos-inline-media-controls.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/macos-fullscreen-media-controls.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/macos-layout-traits.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/placard.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/airplay-placard.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/invalid-placard.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/pip-placard.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/watchos-activity-indicator.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/watchos-media-controls.js \
+    $(CyberCore)/Modules/modern-media-controls/controls/watchos-layout-traits.js \
+    $(CyberCore)/Modules/modern-media-controls/media/media-controller-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/airplay-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/audio-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/close-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/controls-visibility-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/fullscreen-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/mute-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/overflow-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/pip-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/placard-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/playback-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/scrubbing-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/seek-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/seek-backward-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/seek-forward-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/skip-back-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/skip-forward-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/start-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/status-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/time-control-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/tracks-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/volume-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/media-document-controller.js \
+    $(CyberCore)/Modules/modern-media-controls/media/watchos-media-controls-support.js \
+    $(CyberCore)/Modules/modern-media-controls/media/media-controller.js \
     $(POSSIBLE_ADDITIONAL_MODERN_MEDIA_CONTROLS_SCRIPTS) \
 #
 
@@ -2016,14 +2016,14 @@ USER_AGENT_SCRIPTS_FILES_PATTERNS = $(subst .,%,$(USER_AGENT_SCRIPTS_FILES))
 
 all : $(USER_AGENT_SCRIPTS_FILES)
 
-$(USER_AGENT_SCRIPTS_FILES_PATTERNS) : $(JavaScriptCore_SCRIPTS_DIR)/make-js-file-arrays.py $(USER_AGENT_SCRIPTS)
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/make-js-file-arrays.py -n WebCore --fail-if-non-ascii $(USER_AGENT_SCRIPTS_FILES) $(USER_AGENT_SCRIPTS)
+$(USER_AGENT_SCRIPTS_FILES_PATTERNS) : $(CyberScriptCore_SCRIPTS_DIR)/make-js-file-arrays.py $(USER_AGENT_SCRIPTS)
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/make-js-file-arrays.py -n CyberCore --fail-if-non-ascii $(USER_AGENT_SCRIPTS_FILES) $(USER_AGENT_SCRIPTS)
 
 # --------
 
 # plug-ins resources
 
-PLUG_INS_RESOURCES = $(WebCore)/Resources/plugIns.js
+PLUG_INS_RESOURCES = $(CyberCore)/Resources/plugIns.js
 
 # order matters -- make-css-file-arrays.pl takes the header and then the source file path
 PLUG_INS_RESOURCES_FILES = PlugInsResources.h PlugInsResourcesData.cpp
@@ -2031,7 +2031,7 @@ PLUG_INS_RESOURCES_FILES_PATTERNS = $(subst .,%,$(PLUG_INS_RESOURCES_FILES))
 
 all : $(PLUG_INS_RESOURCES_FILES)
 
-$(PLUG_INS_RESOURCES_FILES_PATTERNS) : $(WebCore)/css/make-css-file-arrays.pl $(WebCore)/bindings/scripts/preprocessor.pm $(PLUG_INS_RESOURCES) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+$(PLUG_INS_RESOURCES_FILES_PATTERNS) : $(CyberCore)/css/make-css-file-arrays.pl $(CyberCore)/bindings/scripts/preprocessor.pm $(PLUG_INS_RESOURCES) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	$(PERL) $< --defines "$(FEATURE_AND_PLATFORM_DEFINES)" $(PLUG_INS_RESOURCES_FILES) $(PLUG_INS_RESOURCES)
 
 # --------
@@ -2043,8 +2043,8 @@ WEBKIT_FONT_FAMILY_NAME_FILES = \
 WEBKIT_FONT_FAMILY_NAME_FILES_PATTERNS = $(subst .,%,$(WEBKIT_FONT_FAMILY_NAME_FILES))
 
 all : $(WEBKIT_FONT_FAMILY_NAME_FILES)
-$(WEBKIT_FONT_FAMILY_NAME_FILES_PATTERNS): $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/css/CyberKitFontFamilyNames.in
-	$(PERL) $< --fonts $(WebCore)/css/CyberKitFontFamilyNames.in
+$(WEBKIT_FONT_FAMILY_NAME_FILES_PATTERNS): $(CyberCore)/dom/make_names.pl $(CyberCore)/bindings/scripts/Hasher.pm $(CyberCore)/bindings/scripts/StaticString.pm $(CyberCore)/css/CyberKitFontFamilyNames.in
+	$(PERL) $< --fonts $(CyberCore)/css/CyberKitFontFamilyNames.in
 
 # HTML tag and attribute names
 
@@ -2061,24 +2061,24 @@ HTML_TAG_FILES_PATTERNS = $(subst .,%,$(HTML_TAG_FILES))
 
 all : $(HTML_TAG_FILES)
 
-$(HTML_TAG_FILES_PATTERNS) : $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/html/HTMLTagNames.in $(WebCore)/html/HTMLAttributeNames.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
-	$(PERL) $< --elements $(WebCore)/html/HTMLTagNames.in --attrs $(WebCore)/html/HTMLAttributeNames.in --factory --wrapperFactory
+$(HTML_TAG_FILES_PATTERNS) : $(CyberCore)/dom/make_names.pl $(CyberCore)/bindings/scripts/Hasher.pm $(CyberCore)/bindings/scripts/StaticString.pm $(CyberCore)/html/HTMLTagNames.in $(CyberCore)/html/HTMLAttributeNames.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+	$(PERL) $< --elements $(CyberCore)/html/HTMLTagNames.in --attrs $(CyberCore)/html/HTMLAttributeNames.in --factory --wrapperFactory
 
 XML_NS_NAMES_FILES = XMLNSNames.cpp XMLNSNames.h
 XML_NS_NAMES_FILES_PATTERNS = $(subst .,%,$(XML_NS_NAMES_FILES))
 
 all : $(XML_NS_NAMES_FILES)
 
-$(XML_NS_NAMES_FILES_PATTERNS) : $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/xml/xmlnsattrs.in
-	$(PERL) $< --attrs $(WebCore)/xml/xmlnsattrs.in
+$(XML_NS_NAMES_FILES_PATTERNS) : $(CyberCore)/dom/make_names.pl $(CyberCore)/bindings/scripts/Hasher.pm $(CyberCore)/bindings/scripts/StaticString.pm $(CyberCore)/xml/xmlnsattrs.in
+	$(PERL) $< --attrs $(CyberCore)/xml/xmlnsattrs.in
 	
 XML_NAMES_FILES = XMLNames.cpp XMLNames.h
 XML_NAMES_FILES_PATTERNS = $(subst .,%,$(XML_NAMES_FILES))
 
 all : $(XML_NAMES_FILES)
 
-$(XML_NAMES_FILES_PATTERNS) : $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/xml/xmlattrs.in
-	$(PERL) $< --attrs $(WebCore)/xml/xmlattrs.in
+$(XML_NAMES_FILES_PATTERNS) : $(CyberCore)/dom/make_names.pl $(CyberCore)/bindings/scripts/Hasher.pm $(CyberCore)/bindings/scripts/StaticString.pm $(CyberCore)/xml/xmlattrs.in
+	$(PERL) $< --attrs $(CyberCore)/xml/xmlattrs.in
 
 # --------
 
@@ -2097,22 +2097,22 @@ SVG_TAG_FILES_PATTERNS = $(subst .,%,$(SVG_TAG_FILES))
 
 all : $(SVG_TAG_FILES)
 
-$(SVG_TAG_FILES_PATTERNS) : $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/svg/svgtags.in $(WebCore)/svg/svgattrs.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
-	$(PERL) $< --elements $(WebCore)/svg/svgtags.in --attrs $(WebCore)/svg/svgattrs.in --factory --wrapperFactory
+$(SVG_TAG_FILES_PATTERNS) : $(CyberCore)/dom/make_names.pl $(CyberCore)/bindings/scripts/Hasher.pm $(CyberCore)/bindings/scripts/StaticString.pm $(CyberCore)/svg/svgtags.in $(CyberCore)/svg/svgattrs.in $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
+	$(PERL) $< --elements $(CyberCore)/svg/svgtags.in --attrs $(CyberCore)/svg/svgattrs.in --factory --wrapperFactory
 
 XLINK_NAMES_FILES = XLinkNames.cpp XLinkNames.h
 XLINK_NAMES_FILES_PATTERNS = $(subst .,%,$(XLINK_NAMES_FILES))
 
 all : $(XLINK_NAMES_FILES)
 
-$(XLINK_NAMES_FILES_PATTERNS) : $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/svg/xlinkattrs.in
-	$(PERL) $< --attrs $(WebCore)/svg/xlinkattrs.in
+$(XLINK_NAMES_FILES_PATTERNS) : $(CyberCore)/dom/make_names.pl $(CyberCore)/bindings/scripts/Hasher.pm $(CyberCore)/bindings/scripts/StaticString.pm $(CyberCore)/svg/xlinkattrs.in
+	$(PERL) $< --attrs $(CyberCore)/svg/xlinkattrs.in
 
 # --------
 
 # Register event constructors and targets
 
-EVENT_NAMES = $(WebCore)/dom/EventNames.in $(ADDITIONAL_EVENT_NAMES)
+EVENT_NAMES = $(CyberCore)/dom/EventNames.in $(ADDITIONAL_EVENT_NAMES)
 
 EVENT_FACTORY_FILES = \
     EventFactory.cpp \
@@ -2122,10 +2122,10 @@ EVENT_FACTORY_FILES = \
 EVENT_FACTORY_PATTERNS = $(subst .,%,$(EVENT_FACTORY_FILES))
 
 all : $(EVENT_FACTORY_FILES)
-$(EVENT_FACTORY_PATTERNS) : $(WebCore)/dom/make_event_factory.pl $(EVENT_NAMES)
-	$(PERL) $< $(addprefix --input , $(filter-out $(WebCore)/dom/make_event_factory.pl, $^))
+$(EVENT_FACTORY_PATTERNS) : $(CyberCore)/dom/make_event_factory.pl $(EVENT_NAMES)
+	$(PERL) $< $(addprefix --input , $(filter-out $(CyberCore)/dom/make_event_factory.pl, $^))
 
-EVENT_TARGET_FACTORY = $(WebCore)/dom/EventTargetFactory.in $(ADDITIONAL_EVENT_TARGET_FACTORY)
+EVENT_TARGET_FACTORY = $(CyberCore)/dom/EventTargetFactory.in $(ADDITIONAL_EVENT_TARGET_FACTORY)
 
 EVENT_TARGET_FACTORY_FILES = \
     EventTargetFactory.cpp \
@@ -2135,8 +2135,8 @@ EVENT_TARGET_FACTORY_FILES = \
 EVENT_TARGET_FACTORY_PATTERNS = $(subst .,%,$(EVENT_TARGET_FACTORY_FILES))
 
 all : $(EVENT_TARGET_FACTORY_FILES)
-$(EVENT_TARGET_FACTORY_PATTERNS) : $(WebCore)/dom/make_event_factory.pl $(EVENT_TARGET_FACTORY)
-	$(PERL) $< $(addprefix --input , $(filter-out $(WebCore)/dom/make_event_factory.pl, $^))
+$(EVENT_TARGET_FACTORY_PATTERNS) : $(CyberCore)/dom/make_event_factory.pl $(EVENT_TARGET_FACTORY)
+	$(PERL) $< $(addprefix --input , $(filter-out $(CyberCore)/dom/make_event_factory.pl, $^))
 
 # --------
 
@@ -2154,38 +2154,38 @@ MATH_ML_GENERATED_FILES = \
 MATH_ML_GENERATED_PATTERNS = $(subst .,%,$(MATH_ML_GENERATED_FILES))
 
 all : $(MATH_ML_GENERATED_FILES)
-$(MATH_ML_GENERATED_PATTERNS) : $(WebCore)/dom/make_names.pl $(WebCore)/bindings/scripts/Hasher.pm $(WebCore)/bindings/scripts/StaticString.pm $(WebCore)/mathml/mathtags.in $(WebCore)/mathml/mathattrs.in
-	$(PERL) $< --elements $(WebCore)/mathml/mathtags.in --attrs $(WebCore)/mathml/mathattrs.in --factory --wrapperFactory
+$(MATH_ML_GENERATED_PATTERNS) : $(CyberCore)/dom/make_names.pl $(CyberCore)/bindings/scripts/Hasher.pm $(CyberCore)/bindings/scripts/StaticString.pm $(CyberCore)/mathml/mathtags.in $(CyberCore)/mathml/mathattrs.in
+	$(PERL) $< --elements $(CyberCore)/mathml/mathtags.in --attrs $(CyberCore)/mathml/mathattrs.in --factory --wrapperFactory
 
 # --------
 
 # TagName, ElementName, and Namespace enums
 
 DOM_NAME_ENUM_DEPS = \
-    $(WebCore)/dom/make_names.pl \
-    $(WebCore)/bindings/scripts/Hasher.pm \
-    $(WebCore)/bindings/scripts/StaticString.pm \
-    $(WebCore)/html/HTMLTagNames.in \
-    $(WebCore)/svg/svgtags.in \
-    $(WebCore)/mathml/mathtags.in \
-    $(WebCore)/html/HTMLAttributeNames.in \
-    $(WebCore)/mathml/mathattrs.in \
-    $(WebCore)/svg/svgattrs.in \
-    $(WebCore)/svg/xlinkattrs.in \
-    $(WebCore)/xml/xmlattrs.in \
-    $(WebCore)/xml/xmlnsattrs.in \
+    $(CyberCore)/dom/make_names.pl \
+    $(CyberCore)/bindings/scripts/Hasher.pm \
+    $(CyberCore)/bindings/scripts/StaticString.pm \
+    $(CyberCore)/html/HTMLTagNames.in \
+    $(CyberCore)/svg/svgtags.in \
+    $(CyberCore)/mathml/mathtags.in \
+    $(CyberCore)/html/HTMLAttributeNames.in \
+    $(CyberCore)/mathml/mathattrs.in \
+    $(CyberCore)/svg/svgattrs.in \
+    $(CyberCore)/svg/xlinkattrs.in \
+    $(CyberCore)/xml/xmlattrs.in \
+    $(CyberCore)/xml/xmlnsattrs.in \
 #
 
 DOM_NAME_ENUM_ARGUMENTS = \
-    --elements $(WebCore)/html/HTMLTagNames.in \
-    --elements $(WebCore)/svg/svgtags.in \
-    --elements $(WebCore)/mathml/mathtags.in \
-    --attrs $(WebCore)/html/HTMLAttributeNames.in \
-    --attrs $(WebCore)/mathml/mathattrs.in \
-    --attrs $(WebCore)/svg/svgattrs.in \
-    --attrs $(WebCore)/svg/xlinkattrs.in \
-    --attrs $(WebCore)/xml/xmlattrs.in \
-    --attrs $(WebCore)/xml/xmlnsattrs.in \
+    --elements $(CyberCore)/html/HTMLTagNames.in \
+    --elements $(CyberCore)/svg/svgtags.in \
+    --elements $(CyberCore)/mathml/mathtags.in \
+    --attrs $(CyberCore)/html/HTMLAttributeNames.in \
+    --attrs $(CyberCore)/mathml/mathattrs.in \
+    --attrs $(CyberCore)/svg/svgattrs.in \
+    --attrs $(CyberCore)/svg/xlinkattrs.in \
+    --attrs $(CyberCore)/xml/xmlattrs.in \
+    --attrs $(CyberCore)/xml/xmlnsattrs.in \
 #
 
 TAG_NAME_GENERATED_FILES = \
@@ -2224,7 +2224,7 @@ $(NAMESPACE_GENERATED_PATTERNS) : $(DOM_NAME_ENUM_DEPS)
 
 WEB_PREFERENCES_INPUT_FILES = \
     ${WTF_BUILD_SCRIPTS_DIR}/Preferences/UnifiedWebPreferences.yaml \
-    ${WebCore}/page/Settings.yaml \
+    ${CyberCore}/page/Settings.yaml \
 #
 
 GENERATE_SETTINGS = \
@@ -2237,31 +2237,31 @@ GENERATE_SETTINGS = \
 
 all : $(GENERATE_SETTINGS)
 
-$(GENERATE_SETTINGS) : % : $(WebCore)/Scripts/SettingsTemplates/%.erb $(WEB_PREFERENCES_INPUT_FILES) $(WebCore)/Scripts/GenerateSettings.rb
-	$(RUBY) $(WebCore)/Scripts/GenerateSettings.rb $(WEB_PREFERENCES_INPUT_FILES) --template $<
+$(GENERATE_SETTINGS) : % : $(CyberCore)/Scripts/SettingsTemplates/%.erb $(WEB_PREFERENCES_INPUT_FILES) $(CyberCore)/Scripts/GenerateSettings.rb
+	$(RUBY) $(CyberCore)/Scripts/GenerateSettings.rb $(WEB_PREFERENCES_INPUT_FILES) --template $<
 
 # --------
 
 # Common generator things
 
 COMMON_BINDINGS_SCRIPTS = \
-    $(WebCore)/bindings/scripts/CodeGenerator.pm \
-    $(WebCore)/bindings/scripts/IDLParser.pm \
-    $(WebCore)/bindings/scripts/generate-bindings.pl \
-    $(WebCore)/bindings/scripts/preprocessor.pm
+    $(CyberCore)/bindings/scripts/CodeGenerator.pm \
+    $(CyberCore)/bindings/scripts/IDLParser.pm \
+    $(CyberCore)/bindings/scripts/generate-bindings.pl \
+    $(CyberCore)/bindings/scripts/preprocessor.pm
 
 PREPROCESS_IDLS_SCRIPTS = \
-    $(WebCore)/bindings/scripts/preprocess-idls.pl
+    $(CyberCore)/bindings/scripts/preprocess-idls.pl
 
 # JS bindings generator
 
 IDL_INCLUDES = \
-    $(WebCore)/Modules \
+    $(CyberCore)/Modules \
     $(ADDITIONAL_BINDING_IDLS_PATHS)
 
 IDL_COMMON_ARGS = $(IDL_INCLUDES:%=--include %) --write-dependencies --outputDir .
 
-JS_BINDINGS_SCRIPTS = $(COMMON_BINDINGS_SCRIPTS) $(WebCore)/bindings/scripts/CodeGeneratorJS.pm
+JS_BINDINGS_SCRIPTS = $(COMMON_BINDINGS_SCRIPTS) $(CyberCore)/bindings/scripts/CodeGeneratorJS.pm
 
 SUPPLEMENTAL_DEPENDENCY_FILE = SupplementalDependencies.txt
 SUPPLEMENTAL_MAKEFILE_DEPS = SupplementalDependencies.dep
@@ -2277,7 +2277,7 @@ SHAREDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE = SharedWorkerGlobalScopeConstructors.
 WORKLETGLOBALSCOPE_CONSTRUCTORS_FILE = WorkletGlobalScopeConstructors.idl
 PAINTWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE = PaintWorkletGlobalScopeConstructors.idl
 AUDIOWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE = AudioWorkletGlobalScopeConstructors.idl
-IDL_ATTRIBUTES_FILE = $(WebCore)/bindings/scripts/IDLAttributes.json
+IDL_ATTRIBUTES_FILE = $(CyberCore)/bindings/scripts/IDLAttributes.json
 
 IDL_INTERMEDIATE_FILES = \
     $(SUPPLEMENTAL_MAKEFILE_DEPS) \
@@ -2301,7 +2301,7 @@ $(IDL_FILE_NAMES_LIST) : $(JS_BINDING_IDLS)
 	echo $(JS_BINDING_IDLS) | tr " " "\n" > $@
 
 $(IDL_INTERMEDIATE_PATTERNS) : $(PREPROCESS_IDLS_SCRIPTS) $(IDL_ATTRIBUTES_FILE) $(IDL_FILE_NAMES_LIST) $(JS_BINDING_IDLS) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
-	$(PERL) $(WebCore)/bindings/scripts/preprocess-idls.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES) LANGUAGE_JAVASCRIPT" --idlFileNamesList $(IDL_FILE_NAMES_LIST) --idlAttributesFile $(IDL_ATTRIBUTES_FILE) --supplementalDependencyFile $(SUPPLEMENTAL_DEPENDENCY_FILE) --isoSubspacesHeaderFile $(ISO_SUBSPACES_HEADER_FILE) --clientISOSubspacesHeaderFile $(CLIENT_ISO_SUBSPACES_HEADER_FILE) --constructorsHeaderFile $(CONSTRUCTORS_HEADER_FILE) --windowConstructorsFile $(WINDOW_CONSTRUCTORS_FILE) --workerGlobalScopeConstructorsFile $(WORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --shadowRealmGlobalScopeConstructorsFile $(SHADOWREALMGLOBALSCOPE_CONSTRUCTORS_FILE) --dedicatedWorkerGlobalScopeConstructorsFile $(DEDICATEDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --serviceWorkerGlobalScopeConstructorsFile $(SERVICEWORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --sharedWorkerGlobalScopeConstructorsFile $(SHAREDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --workletGlobalScopeConstructorsFile $(WORKLETGLOBALSCOPE_CONSTRUCTORS_FILE) --paintWorkletGlobalScopeConstructorsFile $(PAINTWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE) --audioWorkletGlobalScopeConstructorsFile $(AUDIOWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE) --supplementalMakefileDeps $(SUPPLEMENTAL_MAKEFILE_DEPS)
+	$(PERL) $(CyberCore)/bindings/scripts/preprocess-idls.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES) LANGUAGE_JAVASCRIPT" --idlFileNamesList $(IDL_FILE_NAMES_LIST) --idlAttributesFile $(IDL_ATTRIBUTES_FILE) --supplementalDependencyFile $(SUPPLEMENTAL_DEPENDENCY_FILE) --isoSubspacesHeaderFile $(ISO_SUBSPACES_HEADER_FILE) --clientISOSubspacesHeaderFile $(CLIENT_ISO_SUBSPACES_HEADER_FILE) --constructorsHeaderFile $(CONSTRUCTORS_HEADER_FILE) --windowConstructorsFile $(WINDOW_CONSTRUCTORS_FILE) --workerGlobalScopeConstructorsFile $(WORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --shadowRealmGlobalScopeConstructorsFile $(SHADOWREALMGLOBALSCOPE_CONSTRUCTORS_FILE) --dedicatedWorkerGlobalScopeConstructorsFile $(DEDICATEDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --serviceWorkerGlobalScopeConstructorsFile $(SERVICEWORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --sharedWorkerGlobalScopeConstructorsFile $(SHAREDWORKERGLOBALSCOPE_CONSTRUCTORS_FILE) --workletGlobalScopeConstructorsFile $(WORKLETGLOBALSCOPE_CONSTRUCTORS_FILE) --paintWorkletGlobalScopeConstructorsFile $(PAINTWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE) --audioWorkletGlobalScopeConstructorsFile $(AUDIOWORKLETGLOBALSCOPE_CONSTRUCTORS_FILE) --supplementalMakefileDeps $(SUPPLEMENTAL_MAKEFILE_DEPS)
 
 #
 # Emit the rules to generate bindings from IDL files. Note that there are
@@ -2313,17 +2313,17 @@ $(IDL_INTERMEDIATE_PATTERNS) : $(PREPROCESS_IDLS_SCRIPTS) $(IDL_ATTRIBUTES_FILE)
 #   file will be used, otherwise, there will be no GestureEvent facility.
 #
 # * Files such as TouchEvent.idl can also be found in BUILT_PRODUCTS_DIR or
-#   SDKROOT. However, there is also a version of the file in WebCore/dom. If
+#   SDKROOT. However, there is also a version of the file in CyberCore/dom. If
 #   the file can't be found in either of the first two locations, the version
-#   in WebCore/dom will be used.
+#   in CyberCore/dom will be used.
 #
 # * Files such as ApplePaySetup.idl used to be provided externally in
 #   BUILT_PRODUCTS_DIR or SDKROOT, but are now "upstreamed" into
-#   WebCore/Modules/applepay. Because they were previously found in SDKROOT,
+#   CyberCore/Modules/applepay. Because they were previously found in SDKROOT,
 #   building against old SDKs will cause the build system to be exposed to old,
 #   out-of-date versions of ApplePaySetup.idl. In these cases, we want to
 #   *ignore* the externally-provided versions and use the versions found in
-#   WebCore.
+#   CyberCore.
 #
 # To build the IDL files, we used to have a rule like the following:
 #
@@ -2333,7 +2333,7 @@ $(IDL_INTERMEDIATE_PATTERNS) : $(PREPROCESS_IDLS_SCRIPTS) $(IDL_ATTRIBUTES_FILE)
 # This rule made use of vpath to find the %.idl files in all their myriad
 # locations. However, because of the three scenarios previously outlined, that
 # approach is problematic. In some cases, we want to prefer the files in
-# BUILT_PRODUCTS_DIR or SDKROOT over those in WebCore. In other cases, it's the
+# BUILT_PRODUCTS_DIR or SDKROOT over those in CyberCore. In other cases, it's the
 # other way around. So we can't use vpath to find the files indicated by %.idl.
 #
 # Instead, since the IDL files come from many different sources, we need a
@@ -2345,13 +2345,13 @@ $(IDL_INTERMEDIATE_PATTERNS) : $(PREPROCESS_IDLS_SCRIPTS) $(IDL_ATTRIBUTES_FILE)
 # generate file information without paths, and those still need to benefit from
 # setting search paths with vpath.
 
-vpath %.idl $(ADDITIONAL_BINDING_IDLS_PATHS) $(WebCore)/bindings/scripts
+vpath %.idl $(ADDITIONAL_BINDING_IDLS_PATHS) $(CyberCore)/bindings/scripts
 
 # -------------------------------------------------
 define GENERATE_BINDINGS_template
 
 JS$(call get_bare_name,$(1)).cpp JS$(call get_bare_name,$(1)).h: $(1) $$(JS_BINDINGS_SCRIPTS) $$(IDL_ATTRIBUTES_FILE) $$(IDL_INTERMEDIATE_FILES) $$(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
-	$$(PERL) $$(WebCore)/bindings/scripts/generate-bindings.pl \
+	$$(PERL) $$(CyberCore)/bindings/scripts/generate-bindings.pl \
 		$$(IDL_COMMON_ARGS) \
 		--defines "$$(FEATURE_AND_PLATFORM_DEFINES) LANGUAGE_JAVASCRIPT" \
 		--generator JS \
@@ -2372,79 +2372,79 @@ ifneq ($(NO_SUPPLEMENTAL_FILES),1)
 -include $(JS_DOM_HEADERS:.h=.dep)
 endif
 
-# WebCore JS Builtins
+# CyberCore JS Builtins
 
-WebCore_BUILTINS_SOURCES = \
-    $(WebCore)/Modules/compression/CompressionStream.js \
-    $(WebCore)/Modules/compression/DecompressionStream.js \
-    $(WebCore)/Modules/streams/ByteLengthQueuingStrategy.js \
-    $(WebCore)/Modules/streams/CountQueuingStrategy.js \
-    $(WebCore)/Modules/streams/ReadableByteStreamController.js \
-    $(WebCore)/Modules/streams/ReadableByteStreamInternals.js \
-    $(WebCore)/Modules/streams/ReadableStream.js \
-    $(WebCore)/Modules/streams/ReadableStreamBYOBRequest.js \
-    $(WebCore)/Modules/streams/ReadableStreamDefaultController.js \
-    $(WebCore)/Modules/streams/ReadableStreamInternals.js \
-    $(WebCore)/Modules/streams/ReadableStreamBYOBReader.js \
-    $(WebCore)/Modules/streams/ReadableStreamDefaultReader.js \
-    $(WebCore)/Modules/streams/StreamInternals.js \
-    $(WebCore)/Modules/streams/TransformStream.js \
-    $(WebCore)/Modules/streams/TransformStreamDefaultController.js \
-    $(WebCore)/Modules/streams/TransformStreamInternals.js \
-    $(WebCore)/Modules/streams/WritableStreamDefaultController.js \
-    $(WebCore)/Modules/streams/WritableStreamDefaultWriter.js \
-    $(WebCore)/Modules/streams/WritableStreamInternals.js \
-    $(WebCore)/dom/TextDecoderStream.js \
-    $(WebCore)/dom/TextEncoderStream.js \
-    $(WebCore)/bindings/js/JSDOMBindingInternals.js \
-    $(WebCore)/inspector/CommandLineAPIModuleSource.js \
+CyberCore_BUILTINS_SOURCES = \
+    $(CyberCore)/Modules/compression/CompressionStream.js \
+    $(CyberCore)/Modules/compression/DecompressionStream.js \
+    $(CyberCore)/Modules/streams/ByteLengthQueuingStrategy.js \
+    $(CyberCore)/Modules/streams/CountQueuingStrategy.js \
+    $(CyberCore)/Modules/streams/ReadableByteStreamController.js \
+    $(CyberCore)/Modules/streams/ReadableByteStreamInternals.js \
+    $(CyberCore)/Modules/streams/ReadableStream.js \
+    $(CyberCore)/Modules/streams/ReadableStreamBYOBRequest.js \
+    $(CyberCore)/Modules/streams/ReadableStreamDefaultController.js \
+    $(CyberCore)/Modules/streams/ReadableStreamInternals.js \
+    $(CyberCore)/Modules/streams/ReadableStreamBYOBReader.js \
+    $(CyberCore)/Modules/streams/ReadableStreamDefaultReader.js \
+    $(CyberCore)/Modules/streams/StreamInternals.js \
+    $(CyberCore)/Modules/streams/TransformStream.js \
+    $(CyberCore)/Modules/streams/TransformStreamDefaultController.js \
+    $(CyberCore)/Modules/streams/TransformStreamInternals.js \
+    $(CyberCore)/Modules/streams/WritableStreamDefaultController.js \
+    $(CyberCore)/Modules/streams/WritableStreamDefaultWriter.js \
+    $(CyberCore)/Modules/streams/WritableStreamInternals.js \
+    $(CyberCore)/dom/TextDecoderStream.js \
+    $(CyberCore)/dom/TextEncoderStream.js \
+    $(CyberCore)/bindings/js/JSDOMBindingInternals.js \
+    $(CyberCore)/inspector/CommandLineAPIModuleSource.js \
 #
 
 BUILTINS_GENERATOR_SCRIPTS = \
-    $(JavaScriptCore_SCRIPTS_DIR)/wkbuiltins.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generator.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_model.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_templates.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_combined_header.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_combined_implementation.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_separate_header.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_separate_implementation.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_internals_wrapper_header.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_internals_wrapper_implementation.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_wrapper_header.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/builtins_generate_wrapper_implementation.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/generate-js-builtins.py \
-    $(JavaScriptCore_SCRIPTS_DIR)/lazywriter.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/wkbuiltins.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generator.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_model.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_templates.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_combined_header.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_combined_implementation.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_separate_header.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_separate_implementation.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_internals_wrapper_header.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_internals_wrapper_implementation.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_wrapper_header.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/builtins_generate_wrapper_implementation.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/generate-js-builtins.py \
+    $(CyberScriptCore_SCRIPTS_DIR)/lazywriter.py \
 #
 
-WebCore_BUILTINS_WRAPPERS = $(addsuffix Builtins.cpp, $(notdir $(basename $(WebCore_BUILTINS_SOURCES))))
-WebCore_BUILTINS_WRAPPERS += \
-    WebCoreJSBuiltins.h \
-    WebCoreJSBuiltins.cpp \
-    WebCoreJSBuiltinInternals.h \
-    WebCoreJSBuiltinInternals.cpp \
+CyberCore_BUILTINS_WRAPPERS = $(addsuffix Builtins.cpp, $(notdir $(basename $(CyberCore_BUILTINS_SOURCES))))
+CyberCore_BUILTINS_WRAPPERS += \
+    CyberCoreJSBuiltins.h \
+    CyberCoreJSBuiltins.cpp \
+    CyberCoreJSBuiltinInternals.h \
+    CyberCoreJSBuiltinInternals.cpp \
 #
-WebCore_BUILTINS_WRAPPERS_PATTERNS = $(subst .,%,$(WebCore_BUILTINS_WRAPPERS))
+CyberCore_BUILTINS_WRAPPERS_PATTERNS = $(subst .,%,$(CyberCore_BUILTINS_WRAPPERS))
 
 # Adding/removing scripts should trigger regeneration, but changing which builtins are
 # generated should not affect other builtins when not passing '--combined' to the generator.
 
-WebCore_BUILTINS_SOURCES_LIST : $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py $(WebCore)/DerivedSources.make
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(WebCore_BUILTINS_SOURCES)' $@
+CyberCore_BUILTINS_SOURCES_LIST : $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py $(CyberCore)/DerivedSources.make
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(CyberCore_BUILTINS_SOURCES)' $@
 
-WebCore_BUILTINS_DEPENDENCIES_LIST : $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py $(WebCore)/DerivedSources.make
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(BUILTINS_GENERATOR_SCRIPTS)' $@
+CyberCore_BUILTINS_DEPENDENCIES_LIST : $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py $(CyberCore)/DerivedSources.make
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/UpdateContents.py '$(BUILTINS_GENERATOR_SCRIPTS)' $@
 
-$(WebCore_BUILTINS_WRAPPERS_PATTERNS) : $(WebCore_BUILTINS_SOURCES) WebCore_BUILTINS_SOURCES_LIST $(BUILTINS_GENERATOR_SCRIPTS) WebCore_BUILTINS_DEPENDENCIES_LIST
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --wrappers-only --output-directory . --framework CyberCore $(WebCore_BUILTINS_SOURCES)
+$(CyberCore_BUILTINS_WRAPPERS_PATTERNS) : $(CyberCore_BUILTINS_SOURCES) CyberCore_BUILTINS_SOURCES_LIST $(BUILTINS_GENERATOR_SCRIPTS) CyberCore_BUILTINS_DEPENDENCIES_LIST
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --wrappers-only --output-directory . --framework CyberCore $(CyberCore_BUILTINS_SOURCES)
 
 # See comments for IDL_PATHS for a description of what this is for.
-vpath %.js $(sort $(foreach f,$(WebCore_BUILTINS_SOURCES),$(realpath $(dir $(f)))))
+vpath %.js $(sort $(foreach f,$(CyberCore_BUILTINS_SOURCES),$(realpath $(dir $(f)))))
 
-%Builtins.h: %.js $(BUILTINS_GENERATOR_SCRIPTS) WebCore_BUILTINS_DEPENDENCIES_LIST
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --output-directory . --framework CyberCore $<
+%Builtins.h: %.js $(BUILTINS_GENERATOR_SCRIPTS) CyberCore_BUILTINS_DEPENDENCIES_LIST
+	$(PYTHON) $(CyberScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --output-directory . --framework CyberCore $<
 
-all : $(notdir $(WebCore_BUILTINS_SOURCES:%.js=%Builtins.h)) $(WebCore_BUILTINS_WRAPPERS)
+all : $(notdir $(CyberCore_BUILTINS_SOURCES:%.js=%Builtins.h)) $(CyberCore_BUILTINS_WRAPPERS)
 
 # ------------------------
 

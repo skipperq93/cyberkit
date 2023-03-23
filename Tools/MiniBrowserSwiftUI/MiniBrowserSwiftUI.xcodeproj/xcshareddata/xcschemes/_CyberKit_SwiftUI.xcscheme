@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C05BE8EB2549F05300554B94"
-               BuildableName = "_WebKit_SwiftUI.framework"
-               BlueprintName = "_WebKit_SwiftUI"
+               BuildableName = "_CyberKit_SwiftUI.framework"
+               BlueprintName = "_CyberKit_SwiftUI"
                ReferencedContainer = "container:MiniBrowserSwiftUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C05BE8EB2549F05300554B94"
-            BuildableName = "_WebKit_SwiftUI.framework"
-            BlueprintName = "_WebKit_SwiftUI"
+            BuildableName = "_CyberKit_SwiftUI.framework"
+            BlueprintName = "_CyberKit_SwiftUI"
             ReferencedContainer = "container:MiniBrowserSwiftUI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

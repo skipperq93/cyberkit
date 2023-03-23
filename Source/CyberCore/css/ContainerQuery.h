@@ -29,7 +29,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 class Element;

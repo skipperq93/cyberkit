@@ -32,7 +32,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCIceCandidateInit {
     String candidate;
@@ -41,6 +41,6 @@ struct RTCIceCandidateInit {
     String usernameFragment;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

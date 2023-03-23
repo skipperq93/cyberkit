@@ -30,7 +30,7 @@
 #include "TrackEvent.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TrackEvent);
 
@@ -70,6 +70,6 @@ EventInterface TrackEvent::eventInterface() const
     return TrackEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

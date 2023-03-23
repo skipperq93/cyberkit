@@ -37,7 +37,7 @@
 #include "AudioNodeOutput.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ChannelMergerNode);
 
@@ -115,6 +115,6 @@ ExceptionOr<void> ChannelMergerNode::setChannelCountMode(ChannelCountMode mode)
     return AudioNode::setChannelCountMode(mode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

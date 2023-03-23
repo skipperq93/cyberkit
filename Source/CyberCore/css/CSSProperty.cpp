@@ -25,7 +25,7 @@
 #include "StylePropertyShorthand.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsCSSProperty {
     uint32_t bitfields;
@@ -44,4 +44,4 @@ CSSPropertyID StylePropertyMetadata::shorthandID() const
     return shorthands[m_indexInShorthandsVector].id();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

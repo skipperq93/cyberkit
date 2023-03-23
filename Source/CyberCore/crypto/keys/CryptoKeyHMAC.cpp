@@ -35,7 +35,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static size_t getKeyLengthFromHash(CryptoAlgorithmIdentifier hash)
 {
@@ -148,6 +148,6 @@ auto CryptoKeyHMAC::algorithm() const -> KeyAlgorithm
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

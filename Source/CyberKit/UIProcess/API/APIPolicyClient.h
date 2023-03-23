@@ -35,7 +35,7 @@ class ResourceRequest;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 struct NavigationActionData;
 class WebPageProxy;
 class WebFrameProxy;
@@ -50,15 +50,15 @@ class PolicyClient {
 public:
     virtual ~PolicyClient() { }
 
-    virtual void decidePolicyForNavigationAction(WebKit::WebPageProxy&, WebKit::WebFrameProxy*, Ref<API::NavigationAction>&&, WebKit::WebFrameProxy*, const CyberCore::ResourceRequest&, const CyberCore::ResourceRequest&, Ref<WebKit::WebFramePolicyListenerProxy>&& listener)
+    virtual void decidePolicyForNavigationAction(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy*, Ref<API::NavigationAction>&&, CyberKit::WebFrameProxy*, const CyberCore::ResourceRequest&, const CyberCore::ResourceRequest&, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener)
     {
         listener->use();
     }
-    virtual void decidePolicyForNewWindowAction(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, Ref<API::NavigationAction>&&, const CyberCore::ResourceRequest&, const WTF::String&, Ref<WebKit::WebFramePolicyListenerProxy>&& listener)
+    virtual void decidePolicyForNewWindowAction(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, Ref<API::NavigationAction>&&, const CyberCore::ResourceRequest&, const WTF::String&, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener)
     {
         listener->use();
     }
-    virtual void decidePolicyForResponse(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, const CyberCore::ResourceResponse&, const CyberCore::ResourceRequest&, bool, Ref<WebKit::WebFramePolicyListenerProxy>&& listener)
+    virtual void decidePolicyForResponse(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, const CyberCore::ResourceResponse&, const CyberCore::ResourceRequest&, bool, Ref<CyberKit::WebFramePolicyListenerProxy>&& listener)
     {
         listener->use();
     }

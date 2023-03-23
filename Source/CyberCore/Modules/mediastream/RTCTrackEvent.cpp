@@ -38,7 +38,7 @@
 #include "RTCRtpTransceiver.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCTrackEvent);
 
@@ -70,6 +70,6 @@ RTCTrackEvent::RTCTrackEvent(const AtomString& type, const Init& initializer, Is
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

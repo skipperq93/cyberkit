@@ -27,7 +27,7 @@
 
 #if ENABLE(PAYMENT_REQUEST)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PaymentComplete {
     Fail,
@@ -35,6 +35,6 @@ enum class PaymentComplete {
     Unknown,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

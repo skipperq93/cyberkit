@@ -32,7 +32,7 @@
 
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin;
 
@@ -58,4 +58,4 @@ private:
     BlobURL() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

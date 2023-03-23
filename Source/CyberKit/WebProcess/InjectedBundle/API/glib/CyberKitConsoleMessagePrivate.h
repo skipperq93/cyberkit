@@ -21,7 +21,7 @@
 #define CyberKitConsoleMessagePrivate_h
 
 #include "CyberKitConsoleMessage.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 

@@ -32,7 +32,7 @@ _log = logging.getLogger(__name__)
 
 host = Host()
 host.initialize_scm()
-webkit_finder = webkit_finder.WebKitFinder(host.filesystem)
+webkit_finder = webkit_finder.CyberKitFinder(host.filesystem)
 layout_tests_directory = webkit_finder.layout_tests_dir()
 platform_directory = os.path.join(layout_tests_directory, 'platform')
 

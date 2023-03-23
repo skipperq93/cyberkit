@@ -27,7 +27,7 @@
 
 #include "CryptoKeyAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CryptoEcKeyAlgorithm : CryptoKeyAlgorithm {
     // The named curve that the key uses

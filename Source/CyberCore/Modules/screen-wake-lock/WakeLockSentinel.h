@@ -30,7 +30,7 @@
 #include "WakeLockType.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class WakeLockManager;
@@ -72,4 +72,4 @@ private:
     bool m_hasReleaseEventListener { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

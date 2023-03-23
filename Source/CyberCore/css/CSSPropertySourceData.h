@@ -37,7 +37,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleBase;
 
@@ -115,4 +115,4 @@ struct CSSRuleSourceData : public RefCounted<CSSRuleSourceData> {
     RuleSourceDataList childRules;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

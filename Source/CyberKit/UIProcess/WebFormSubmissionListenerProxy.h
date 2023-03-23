@@ -28,7 +28,7 @@
 #include "APIObject.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFormSubmissionListenerProxy : public API::ObjectImpl<API::Object::Type::FormSubmissionListener> {
 public:
@@ -46,4 +46,4 @@ private:
     CompletionHandler<void()> m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

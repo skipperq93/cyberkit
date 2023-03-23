@@ -32,7 +32,7 @@
 #include <wtf/Function.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedFont;
 class FontLoadRequest;
@@ -72,6 +72,6 @@ private:
     Ref<CSSPrimitiveValue> m_color;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSFontPaletteValuesOverrideColorsValue, isFontPaletteValuesOverrideColorsValue())

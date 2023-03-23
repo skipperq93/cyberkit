@@ -35,7 +35,7 @@
 #include "PermissionQuerySource.h"
 #include "PermissionState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 
@@ -73,4 +73,4 @@ private:
     std::atomic<bool> m_hasChangeEventListener;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void WebSocketExtensionDispatcher::reset()
 {
@@ -140,4 +140,4 @@ String WebSocketExtensionDispatcher::failureReason() const
     return m_failureReason;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

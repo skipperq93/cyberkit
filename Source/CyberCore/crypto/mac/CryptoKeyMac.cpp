@@ -30,7 +30,7 @@
 
 #include "CommonCryptoUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<uint8_t> CryptoKey::randomData(size_t size)
 {
@@ -40,6 +40,6 @@ Vector<uint8_t> CryptoKey::randomData(size_t size)
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

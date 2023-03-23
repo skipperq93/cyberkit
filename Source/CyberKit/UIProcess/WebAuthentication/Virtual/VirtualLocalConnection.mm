@@ -41,7 +41,7 @@
 
 #import "LocalAuthenticationSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 VirtualLocalConnection::VirtualLocalConnection(const VirtualAuthenticatorConfiguration& configuration)
@@ -93,6 +93,6 @@ void VirtualLocalConnection::filterResponses(Vector<Ref<AuthenticatorAssertionRe
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

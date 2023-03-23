@@ -39,7 +39,7 @@
 #include "VisibleSelection.h"
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CharacterData;
 class Frame;
@@ -403,12 +403,12 @@ inline void FrameSelection::restoreScrolling()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showTree(const WebCore::FrameSelection&);
-void showTree(const WebCore::FrameSelection*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showTree(const CyberCore::FrameSelection&);
+void showTree(const CyberCore::FrameSelection*);
 
 #endif

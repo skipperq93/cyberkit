@@ -24,8 +24,8 @@ list(APPEND TestWTF_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
 )
 
-# TestJavaScriptCore
-list(APPEND TestJavaScriptCore_SYSTEM_INCLUDE_DIRECTORIES
+# TestCyberScriptCore
+list(APPEND TestCyberScriptCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
 )
 
@@ -90,7 +90,7 @@ target_include_directories(TestCyberKitAPIInjectedBundle PRIVATE
 
 # TestJSC
 set(TestJSC_SOURCES
-    Tests/JavaScriptCore/glib/TestJSC.cpp
+    Tests/CyberScriptCore/glib/TestJSC.cpp
 )
 
 set(TestJSC_SYSTEM_INCLUDE_DIRECTORIES
@@ -100,7 +100,7 @@ set(TestJSC_SYSTEM_INCLUDE_DIRECTORIES
 set(TestJSC_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
     ${TESTWEBKITAPI_DIR}
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
 )
 
 set(TestJSC_LIBRARIES
@@ -109,7 +109,7 @@ set(TestJSC_LIBRARIES
 )
 
 set(TestJSC_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     WTF
 )
 

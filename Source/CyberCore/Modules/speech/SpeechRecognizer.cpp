@@ -35,7 +35,7 @@
 #include <pal/cf/CoreMediaSoftLink.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 SpeechRecognizer::SpeechRecognizer(DelegateCallback&& delegateCallback, UniqueRef<SpeechRecognitionRequest>&& request)
     : m_delegateCallback(WTFMove(delegateCallback))
@@ -148,4 +148,4 @@ void SpeechRecognizer::stopRecognition()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

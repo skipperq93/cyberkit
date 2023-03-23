@@ -26,7 +26,7 @@
 #if ENABLE(WEBXR)
 
 messages -> PlatformXRSystem NotRefCounted {
-    EnumerateImmersiveXRDevices() -> (Vector<WebKit::XRDeviceInfo> devicesInfos)
+    EnumerateImmersiveXRDevices() -> (Vector<CyberKit::XRDeviceInfo> devicesInfos)
     RequestPermissionOnSessionFeatures(CyberCore::SecurityOriginData origin, PlatformXR::SessionMode mode, Vector<PlatformXR::SessionFeature> granted, Vector<PlatformXR::SessionFeature> consentRequired, Vector<PlatformXR::SessionFeature> consentOptional) -> (std::optional<Vector<PlatformXR::SessionFeature>> userGranted)
     InitializeTrackingAndRendering(CyberCore::SecurityOriginData origin, PlatformXR::SessionMode mode, Vector<PlatformXR::SessionFeature> requestedFeatures)
     ShutDownTrackingAndRendering()

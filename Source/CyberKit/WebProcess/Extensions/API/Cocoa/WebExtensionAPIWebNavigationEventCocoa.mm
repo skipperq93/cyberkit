@@ -40,7 +40,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 class JSWebExtensionWrappable;
 
@@ -95,6 +95,6 @@ bool WebExtensionAPIWebNavigationEvent::hasListener(RefPtr<WebExtensionCallbackH
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

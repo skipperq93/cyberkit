@@ -32,7 +32,7 @@
 #import <UIKit/UIKit.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void DownloadProxyMap::platformCreate()
 {
@@ -42,4 +42,4 @@ void DownloadProxyMap::platformDestroy()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -36,7 +36,7 @@ ALLOW_UNUSED_PARAMETERS_BEGIN
 
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline RTCSctpTransportState toRTCSctpTransportState(webrtc::SctpTransportState state)
 {
@@ -151,6 +151,6 @@ void LibWebRTCSctpTransportBackend::unregisterClient()
     m_observer->stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

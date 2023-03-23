@@ -69,7 +69,7 @@ static String objectGroupForBreakpointAction(JSC::BreakpointActionID id)
     return makeString("breakpoint-action-", id);
 }
 
-static bool isWebKitInjectedScript(const String& sourceURL)
+static bool isCyberKitInjectedScript(const String& sourceURL)
 {
     return sourceURL.startsWith("__InjectedScript_"_s) && sourceURL.endsWith(".js"_s);
 }
@@ -260,7 +260,7 @@ void InspectorDebuggerAgent::internalEnable()
 
     for (auto& [sourceID, script] : m_scripts) {
         std::optional<JSC::Debugger::BlackboxType> blackboxType;
-        if (isWebKitInjectedScript(script.sourceURL)) {
+        if (isCyberKitInjectedScript(script.sourceURL)) {
             if (!m_pauseForInternalScripts)
                 blackboxType = JSC::Debugger::BlackboxType::Ignored;
         } else if (shouldBlackboxURL(script.sourceURL) || shouldBlackboxURL(script.url))
@@ -1310,7 +1310,7 @@ Protocol::ErrorStringOr<void> InspectorDebuggerAgent::setShouldBlackboxURL(const
     bool caseSensitive = optionalCaseSensitive.value_or(false);
     bool isRegex = optionalIsRegex.value_or(false);
 
-    if (!caseSensitive && !isRegex && isWebKitInjectedScript(url))
+    if (!caseSensitive && !isRegex && isCyberKitInjectedScript(url))
         return makeUnexpected("Blackboxing of internal scripts is controlled by 'Debugger.setPauseForInternalScripts'"_s);
 
     BlackboxConfig config { url, caseSensitive, isRegex };
@@ -1320,7 +1320,7 @@ Protocol::ErrorStringOr<void> InspectorDebuggerAgent::setShouldBlackboxURL(const
         m_blackboxedURLs.removeAll(config);
 
     for (auto& [sourceID, script] : m_scripts) {
-        if (isWebKitInjectedScript(script.sourceURL))
+        if (isCyberKitInjectedScript(script.sourceURL))
             continue;
 
         std::optional<JSC::Debugger::BlackboxType> blackboxType;
@@ -1381,7 +1381,7 @@ Protocol::ErrorStringOr<void> InspectorDebuggerAgent::setPauseForInternalScripts
 
     auto blackboxType = !m_pauseForInternalScripts ? std::optional<JSC::Debugger::BlackboxType>(JSC::Debugger::BlackboxType::Ignored) : std::nullopt;
     for (auto& [sourceID, script] : m_scripts) {
-        if (!isWebKitInjectedScript(script.sourceURL))
+        if (!isCyberKitInjectedScript(script.sourceURL))
             continue;
         m_debugger.setBlackboxType(sourceID, blackboxType);
     }
@@ -1537,7 +1537,7 @@ void InspectorDebuggerAgent::didParseSource(JSC::SourceID sourceID, const JSC::D
 
     m_scripts.set(sourceID, script);
 
-    if (isWebKitInjectedScript(sourceURL)) {
+    if (isCyberKitInjectedScript(sourceURL)) {
         if (!m_pauseForInternalScripts)
             m_debugger.setBlackboxType(sourceID, JSC::Debugger::BlackboxType::Ignored);
     } else if (shouldBlackboxURL(sourceURL) || shouldBlackboxURL(script.url))

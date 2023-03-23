@@ -28,7 +28,7 @@
 
 #include "IDBKey.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBKeyRangeData::IDBKeyRangeData(IDBKey* key)
     : lowerKey(key)
@@ -107,4 +107,4 @@ String IDBKeyRangeData::loggingString() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "IDBCursorInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBGetResult;
 class IDBKeyData;
@@ -52,4 +52,4 @@ protected:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

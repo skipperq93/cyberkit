@@ -41,7 +41,7 @@ class JSValue;
 class SlotVisitor;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMStringList;
 class IDBIndex;
@@ -50,7 +50,7 @@ class IDBKeyRange;
 class IDBRequest;
 class IDBTransaction;
 class SerializedScriptValue;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 struct IDBKeyRangeData;
 
@@ -144,6 +144,6 @@ private:
     HashMap<uint64_t, std::unique_ptr<IDBIndex>> m_deletedIndexes WTF_GUARDED_BY_LOCK(m_referencedIndexLock);
 };
 
-WebCoreOpaqueRoot root(IDBObjectStore*);
+CyberCoreOpaqueRoot root(IDBObjectStore*);
 
-} // namespace WebCore
+} // namespace CyberCore

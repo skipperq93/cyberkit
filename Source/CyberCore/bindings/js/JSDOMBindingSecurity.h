@@ -31,7 +31,7 @@ class CallFrame;
 class JSGlobalObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class Frame;
@@ -82,4 +82,4 @@ template<typename T> inline ExceptionOr<T*> BindingSecurity::checkSecurityForNod
     return checkSecurityForNode(lexicalGlobalObject, value.releaseReturnValue());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

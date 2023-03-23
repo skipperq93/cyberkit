@@ -34,7 +34,7 @@
 #include "FontPaletteValues.h"
 #include "FontSelector.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSSegmentedFontFace::CSSSegmentedFontFace()
 {

@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSToLengthConversionData;
 class CalcExpressionNode;
@@ -86,6 +86,6 @@ String prettyPrintNodes(const Vector<Ref<CSSCalcExpressionNode>>&);
 }
 
 #define SPECIALIZE_TYPE_TRAITS_CSSCALCEXPRESSION_NODE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::CSSCalcExpressionNode& node) { return node.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::CSSCalcExpressionNode& node) { return node.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

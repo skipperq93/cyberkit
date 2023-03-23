@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentDetailsModifier {
     String supportedMethods;
@@ -42,6 +42,6 @@ struct PaymentDetailsModifier {
     JSC::Strong<JSC::JSObject> data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

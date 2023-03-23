@@ -68,7 +68,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static InspectorCanvasAgent* enabledCanvasAgent(CanvasRenderingContext& canvasRenderingContext)
 {
@@ -112,4 +112,4 @@ void InspectorCanvasCallTracer::recordAction(const HTMLCanvasElement& canvasElem
     recordAction(*canvasElement.renderingContext(), WTFMove(name), WTFMove(arguments));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

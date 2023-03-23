@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include "JSObservableArray.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class ShadowRoot;
@@ -66,4 +66,4 @@ private:
     Vector<RefPtr<CSSStyleSheet>> m_sheets;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_webrtc_endpoint_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_endpoint_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 GStreamerRtpTransceiverBackend::GStreamerRtpTransceiverBackend(GRefPtr<GstWebRTCRTPTransceiver>&& rtcTransceiver)
     : m_rtcTransceiver(WTFMove(rtcTransceiver))
@@ -139,6 +139,6 @@ ExceptionOr<void> GStreamerRtpTransceiverBackend::setCodecPreferences(const Vect
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

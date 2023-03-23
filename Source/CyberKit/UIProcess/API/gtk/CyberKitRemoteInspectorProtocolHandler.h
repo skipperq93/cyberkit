@@ -22,40 +22,40 @@
 #if ENABLE(REMOTE_INSPECTOR)
 
 #include "RemoteInspectorClient.h"
-#include "WebKitURISchemeRequest.h"
-#include "WebKitUserContentManager.h"
-#include "WebKitWebView.h"
+#include "CyberKitURISchemeRequest.h"
+#include "CyberKitUserContentManager.h"
+#include "CyberKitWebView.h"
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteInspectorProtocolHandler final : public RemoteInspectorObserver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit RemoteInspectorProtocolHandler(WebKitWebContext* context);
+    explicit RemoteInspectorProtocolHandler(CyberKitWebContext* context);
     ~RemoteInspectorProtocolHandler();
 
     void inspect(const String& hostAndPort, uint64_t connectionID, uint64_t targetID, const String& targetType);
 
 private:
-    static void webViewDestroyed(RemoteInspectorProtocolHandler*, WebKitWebView*);
-    static void userContentManagerDestroyed(RemoteInspectorProtocolHandler*, WebKitUserContentManager*);
+    static void webViewDestroyed(RemoteInspectorProtocolHandler*, CyberKitWebView*);
+    static void userContentManagerDestroyed(RemoteInspectorProtocolHandler*, CyberKitUserContentManager*);
 
-    void handleRequest(WebKitURISchemeRequest*);
-    void updateTargetList(WebKitWebView*);
-    static void webViewLoadChanged(WebKitWebView*, WebKitLoadEvent, RemoteInspectorProtocolHandler*);
+    void handleRequest(CyberKitURISchemeRequest*);
+    void updateTargetList(CyberKitWebView*);
+    static void webViewLoadChanged(CyberKitWebView*, CyberKitLoadEvent, RemoteInspectorProtocolHandler*);
 
     // RemoteInspectorObserver.
     void targetListChanged(RemoteInspectorClient&) override;
     void connectionClosed(RemoteInspectorClient&) override;
 
     HashMap<String, std::unique_ptr<RemoteInspectorClient>> m_inspectorClients;
-    HashSet<WebKitUserContentManager*> m_userContentManagers;
-    HashMap<WebKitWebView*, RemoteInspectorClient*> m_webViews;
+    HashSet<CyberKitUserContentManager*> m_userContentManagers;
+    HashMap<CyberKitWebView*, RemoteInspectorClient*> m_webViews;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

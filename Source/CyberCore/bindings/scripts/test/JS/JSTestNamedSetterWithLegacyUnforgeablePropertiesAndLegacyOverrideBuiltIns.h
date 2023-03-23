@@ -24,7 +24,7 @@
 #include "TestNamedSetterWithLegacyUnforgeablePropertiesAndLegacyOverrideBuiltIns.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestNamedSetterWithLegacyUnforgeablePropertiesAndLegacyOverrideBuiltIns : public JSDOMWrapper<TestNamedSetterWithLegacyUnforgeablePropertiesAndLegacyOverrideBuiltIns> {
 public:
@@ -98,4 +98,4 @@ template<> struct JSDOMWrapperConverterTraits<TestNamedSetterWithLegacyUnforgeab
     using ToWrappedReturnType = TestNamedSetterWithLegacyUnforgeablePropertiesAndLegacyOverrideBuiltIns*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

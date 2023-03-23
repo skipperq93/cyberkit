@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://html.spec.whatwg.org/multipage/scripting.html#concept-script-type
 // https://wicg.github.io/import-maps/#integration-prepare-a-script

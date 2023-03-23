@@ -34,7 +34,7 @@ class AbstractSlotVisitor;
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ExceptionOr;
 
@@ -68,6 +68,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StaticRange)
-    static bool isType(const WebCore::AbstractRange& range) { return !range.isLiveRange(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StaticRange)
+    static bool isType(const CyberCore::AbstractRange& range) { return !range.isLiveRange(); }
 SPECIALIZE_TYPE_TRAITS_END()

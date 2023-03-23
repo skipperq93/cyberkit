@@ -32,12 +32,12 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PushSubscriptionData {
     PushSubscriptionIdentifier identifier;
     String endpoint;
-    std::optional<WebCore::EpochTimeStamp> expirationTime;
+    std::optional<CyberCore::EpochTimeStamp> expirationTime;
     Vector<uint8_t> serverVAPIDPublicKey;
     Vector<uint8_t> clientECDHPublicKey;
     Vector<uint8_t> sharedAuthenticationSecret;
@@ -46,6 +46,6 @@ struct PushSubscriptionData {
     WEBCORE_EXPORT PushSubscriptionData isolatedCopy() &&;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

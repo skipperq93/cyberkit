@@ -32,9 +32,9 @@
 #include "MediaProducer.h"
 #include "SecurityOrigin.h"
 #include "TextResourceDecoder.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline PAL::TextEncoding Document::textEncoding() const
 {
@@ -112,16 +112,16 @@ inline bool Document::hasBrowsingContext() const
     return !!frame();
 }
 
-inline WebCoreOpaqueRoot Node::opaqueRoot() const
+inline CyberCoreOpaqueRoot Node::opaqueRoot() const
 {
     // FIXME: Possible race?
     // https://bugs.webkit.org/show_bug.cgi?id=165713
     if (isConnected())
-        return WebCoreOpaqueRoot { &document() };
+        return CyberCoreOpaqueRoot { &document() };
     return traverseToOpaqueRoot();
 }
 
 inline bool Document::wasLastFocusByClick() const { return m_latestFocusTrigger == FocusTrigger::Click; }
 
 
-} // namespace WebCore
+} // namespace CyberCore

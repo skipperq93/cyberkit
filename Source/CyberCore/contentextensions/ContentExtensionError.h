@@ -31,7 +31,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace ContentExtensions {
 
 enum class ContentExtensionError {
@@ -97,10 +97,10 @@ inline std::error_code make_error_code(ContentExtensionError error)
 }
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace std {
-    template<> struct is_error_code_enum<WebCore::ContentExtensions::ContentExtensionError> : public true_type { };
+    template<> struct is_error_code_enum<CyberCore::ContentExtensions::ContentExtensionError> : public true_type { };
 }
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

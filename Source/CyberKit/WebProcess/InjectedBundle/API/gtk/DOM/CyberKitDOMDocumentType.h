@@ -54,7 +54,7 @@ webkit_dom_document_type_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_type_get_name(CyberKitDOMDocumentType* self);
@@ -65,7 +65,7 @@ webkit_dom_document_type_get_name(CyberKitDOMDocumentType* self);
  *
  * Returns: (transfer full): A #CyberKitDOMNamedNodeMap
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNamedNodeMap*
 webkit_dom_document_type_get_entities(CyberKitDOMDocumentType* self);
@@ -76,7 +76,7 @@ webkit_dom_document_type_get_entities(CyberKitDOMDocumentType* self);
  *
  * Returns: (transfer full): A #CyberKitDOMNamedNodeMap
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNamedNodeMap*
 webkit_dom_document_type_get_notations(CyberKitDOMDocumentType* self);
@@ -87,7 +87,7 @@ webkit_dom_document_type_get_notations(CyberKitDOMDocumentType* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_type_get_internal_subset(CyberKitDOMDocumentType* self);
@@ -98,7 +98,7 @@ webkit_dom_document_type_get_internal_subset(CyberKitDOMDocumentType* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_type_get_public_id(CyberKitDOMDocumentType* self);
@@ -109,7 +109,7 @@ webkit_dom_document_type_get_public_id(CyberKitDOMDocumentType* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_document_type_get_system_id(CyberKitDOMDocumentType* self);

@@ -30,7 +30,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MessagePortIdentifier {
     ProcessIdentifier processIdentifier;
@@ -60,24 +60,24 @@ inline String MessagePortIdentifier::logString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 struct MessagePortIdentifierHash {
-    static unsigned hash(const WebCore::MessagePortIdentifier& key) { return computeHash(key); }
-    static bool equal(const WebCore::MessagePortIdentifier& a, const WebCore::MessagePortIdentifier& b) { return a == b; }
+    static unsigned hash(const CyberCore::MessagePortIdentifier& key) { return computeHash(key); }
+    static bool equal(const CyberCore::MessagePortIdentifier& a, const CyberCore::MessagePortIdentifier& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct HashTraits<WebCore::MessagePortIdentifier> : GenericHashTraits<WebCore::MessagePortIdentifier> {
-    static WebCore::MessagePortIdentifier emptyValue() { return { }; }
+template<> struct HashTraits<CyberCore::MessagePortIdentifier> : GenericHashTraits<CyberCore::MessagePortIdentifier> {
+    static CyberCore::MessagePortIdentifier emptyValue() { return { }; }
 
-    static void constructDeletedValue(WebCore::MessagePortIdentifier& slot) { new (NotNull, &slot.processIdentifier) WebCore::ProcessIdentifier(WTF::HashTableDeletedValue); }
+    static void constructDeletedValue(CyberCore::MessagePortIdentifier& slot) { new (NotNull, &slot.processIdentifier) CyberCore::ProcessIdentifier(WTF::HashTableDeletedValue); }
 
-    static bool isDeletedValue(const WebCore::MessagePortIdentifier& slot) { return slot.processIdentifier.isHashTableDeletedValue(); }
+    static bool isDeletedValue(const CyberCore::MessagePortIdentifier& slot) { return slot.processIdentifier.isHashTableDeletedValue(); }
 };
 
-template<> struct DefaultHash<WebCore::MessagePortIdentifier> : MessagePortIdentifierHash { };
+template<> struct DefaultHash<CyberCore::MessagePortIdentifier> : MessagePortIdentifierHash { };
 
 } // namespace WTF

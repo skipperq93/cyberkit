@@ -37,7 +37,7 @@
 #include "Page.h"
 #include "UserGestureIndicator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DeviceOrientationAndMotionAccessController::DeviceOrientationAndMotionAccessController(Document& topDocument)
     : m_topDocument(topDocument)
@@ -92,6 +92,6 @@ void DeviceOrientationAndMotionAccessController::shouldAllowAccess(const Documen
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DEVICE_ORIENTATION)

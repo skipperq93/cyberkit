@@ -48,7 +48,7 @@
 #define PAYMENT_COORDINATOR_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ApplePay, "%p - PaymentCoordinator::" fmt, this, ##__VA_ARGS__)
 #define PAYMENT_COORDINATOR_RELEASE_LOG(fmt, ...) RELEASE_LOG(ApplePay, "%p - PaymentCoordinator::" fmt, this, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 PaymentCoordinator::PaymentCoordinator(PaymentCoordinatorClient& client)
     : m_client { client }
@@ -303,7 +303,7 @@ void PaymentCoordinator::endApplePaySetup()
     m_client.endApplePaySetup();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef PAYMENT_COORDINATOR_RELEASE_LOG_ERROR
 #undef PAYMENT_COORDINATOR_RELEASE_LOG

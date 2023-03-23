@@ -30,13 +30,13 @@
 #import "APIInspectorConfiguration.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::InspectorConfiguration> {
     using WrapperClass = _WKInspectorConfiguration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 NS_ASSUME_NONNULL_BEGIN
 

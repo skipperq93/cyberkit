@@ -34,14 +34,14 @@ namespace API {
 class OpenPanelParameters;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebOpenPanelResultListenerProxy;
 }
 
 @interface WKFileUploadPanel : UIViewController
 @property (nonatomic, weak) id <WKFileUploadPanelDelegate> delegate;
 - (instancetype)initWithView:(WKContentView *)view;
-- (void)presentWithParameters:(API::OpenPanelParameters*)parameters resultListener:(WebKit::WebOpenPanelResultListenerProxy*)listener;
+- (void)presentWithParameters:(API::OpenPanelParameters*)parameters resultListener:(CyberKit::WebOpenPanelResultListenerProxy*)listener;
 - (void)dismiss;
 
 #if USE(UICONTEXTMENU)

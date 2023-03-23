@@ -31,7 +31,7 @@
 #include <unicode/ubidi.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineDisplay {
 
 struct Box {

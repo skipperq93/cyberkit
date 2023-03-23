@@ -56,7 +56,7 @@
 
 @implementation WKImmediateActionController
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)viewImpl recognizer:(NSImmediateActionGestureRecognizer *)immediateActionRecognizer
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)viewImpl recognizer:(NSImmediateActionGestureRecognizer *)immediateActionRecognizer
 {
     self = [super init];
 
@@ -78,7 +78,7 @@
     _page = nullptr;
     _view = nil;
     _viewImpl = nullptr;
-    _hitTestResultData = WebKit::WebHitTestResultData();
+    _hitTestResultData = CyberKit::WebHitTestResultData();
     _contentPreventsDefault = NO;
     
     id animationController = [_immediateActionRecognizer animationController];
@@ -118,8 +118,8 @@
             [PAL::getDDActionsManagerClass() didUseActions];
     }
 
-    _state = WebKit::ImmediateActionState::None;
-    _hitTestResultData = WebKit::WebHitTestResultData();
+    _state = CyberKit::ImmediateActionState::None;
+    _hitTestResultData = CyberKit::WebHitTestResultData();
     _contentPreventsDefault = NO;
     _type = kWKImmediateActionNone;
     _currentActionContext = nil;
@@ -128,15 +128,15 @@
     _hasActiveImmediateAction = NO;
 }
 
-- (void)didPerformImmediateActionHitTest:(const WebKit::WebHitTestResultData&)hitTestResult contentPreventsDefault:(BOOL)contentPreventsDefault userData:(API::Object*)userData
+- (void)didPerformImmediateActionHitTest:(const CyberKit::WebHitTestResultData&)hitTestResult contentPreventsDefault:(BOOL)contentPreventsDefault userData:(API::Object*)userData
 {
     // If we've already given up on this gesture (either because it was canceled or the
     // willBeginAnimation timeout expired), we shouldn't build a new animationController for it.
-    if (_state != WebKit::ImmediateActionState::Pending)
+    if (_state != CyberKit::ImmediateActionState::Pending)
         return;
 
-    // FIXME: This needs to use the WebKit2 callback mechanism to avoid out-of-order replies.
-    _state = WebKit::ImmediateActionState::Ready;
+    // FIXME: This needs to use the CyberKit2 callback mechanism to avoid out-of-order replies.
+    _state = CyberKit::ImmediateActionState::Ready;
     _hitTestResultData = hitTestResult;
     _contentPreventsDefault = contentPreventsDefault;
     _userData = userData;
@@ -169,7 +169,7 @@
 
     _page->setMaintainsInactiveSelection(true);
 
-    _state = WebKit::ImmediateActionState::Pending;
+    _state = CyberKit::ImmediateActionState::Pending;
     immediateActionRecognizer.animationController = nil;
 
     _page->performImmediateActionHitTestAtLocation([immediateActionRecognizer locationInView:immediateActionRecognizer.view]);
@@ -180,22 +180,22 @@
     if (immediateActionRecognizer != _immediateActionRecognizer)
         return;
 
-    if (_state == WebKit::ImmediateActionState::None)
+    if (_state == CyberKit::ImmediateActionState::None)
         return;
 
     _hasActiveImmediateAction = YES;
 
     // FIXME: We need to be able to cancel this if the gesture recognizer is cancelled.
     // FIXME: Connection can be null if the process is closed; we should clean up better in that case.
-    if (_state == WebKit::ImmediateActionState::Pending) {
+    if (_state == CyberKit::ImmediateActionState::Pending) {
         if (auto* connection = _page->process().connection()) {
             bool receivedReply = connection->waitForAndDispatchImmediately<Messages::WebPageProxy::DidPerformImmediateActionHitTest>(_page->webPageID(), Seconds::fromMilliseconds(500));
             if (!receivedReply)
-                _state = WebKit::ImmediateActionState::TimedOut;
+                _state = CyberKit::ImmediateActionState::TimedOut;
         }
     }
 
-    if (_state != WebKit::ImmediateActionState::Ready) {
+    if (_state != CyberKit::ImmediateActionState::Ready) {
         [self _updateImmediateActionItem];
         [self _cancelImmediateActionIfNeeded];
     }
@@ -250,7 +250,7 @@
 - (RefPtr<API::HitTestResult>)_webHitTestResult
 {
     RefPtr<API::HitTestResult> hitTestResult;
-    if (_state == WebKit::ImmediateActionState::Ready)
+    if (_state == CyberKit::ImmediateActionState::Ready)
         hitTestResult = API::HitTestResult::create(_hitTestResultData);
     else
         hitTestResult = _page->lastMouseMoveHitTestResult();
@@ -413,7 +413,7 @@
     if (![[PAL::getDDActionsManagerClass() sharedManager] hasActionsForResult:actionContext.mainResult actionContext:actionContext])
         return nil;
 
-    RefPtr<WebKit::WebPageProxy> page = _page.get();
+    RefPtr<CyberKit::WebPageProxy> page = _page.get();
     CyberCore::PageOverlay::PageOverlayID overlayID = _hitTestResultData.platformData.detectedDataOriginatingPageOverlay;
     _currentActionContext = [actionContext contextForView:_view altMode:YES interactionStartedHandler:^() {
         page->send(Messages::WebPage::DataDetectorsDidPresentUI(overlayID));
@@ -449,7 +449,7 @@
     [actionContext setAltMode:YES];
     [actionContext setImmediate:YES];
 
-    RefPtr<WebKit::WebPageProxy> page = _page.get();
+    RefPtr<CyberKit::WebPageProxy> page = _page.get();
     _currentActionContext = [actionContext contextForView:_view altMode:YES interactionStartedHandler:^() {
     } interactionChangedHandler:^() {
         if (_hitTestResultData.linkTextIndicator)
@@ -476,7 +476,7 @@
 
 - (id<NSImmediateActionAnimationController>)_animationControllerForText
 {
-    if (_state != WebKit::ImmediateActionState::Ready)
+    if (_state != CyberKit::ImmediateActionState::Ready)
         return nil;
 
     CyberCore::DictionaryPopupInfo dictionaryPopupInfo = _hitTestResultData.dictionaryPopupInfo;

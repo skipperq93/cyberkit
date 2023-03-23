@@ -29,7 +29,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleProperties;
 
@@ -120,4 +120,4 @@ struct CSSCounterStyleDescriptors {
     OptionSet<ExplicitlySetDescriptors> m_explicitlySetDescriptors;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

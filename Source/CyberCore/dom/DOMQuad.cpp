@@ -32,7 +32,7 @@
 #include <wtf/MathExtras.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace WTF;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DOMQuad);

@@ -128,8 +128,8 @@ def bisect_builds(revision_list, start_index, end_index, options):
         bisect_builds(revision_list, index_to_test, end_index, options)
 
 
-# download-built-product and built-product-archive implicitly use WebKitBuild directory for downloaded archive.
-# FIXME: Modifying the WebKitBuild directory makes no sense here, find a way to use a temporary directory for the archive.
+# download-built-product and built-product-archive implicitly use CyberKitBuild directory for downloaded archive.
+# FIXME: Modifying the CyberKitBuild directory makes no sense here, find a way to use a temporary directory for the archive.
 def download_archive(options, revision):
     api_url = get_api_archive_url(options)
     s3_url = get_s3_location_for_revision(api_url, revision)

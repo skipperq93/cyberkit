@@ -34,7 +34,7 @@
 
 #import "AuthenticationServicesCoreSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 AuthenticatorPresenterCoordinator::AuthenticatorPresenterCoordinator(const AuthenticatorManager& manager, const String& rpId, const TransportSet& transports, ClientDataType type, const String& username)
@@ -243,7 +243,7 @@ void AuthenticatorPresenterCoordinator::dimissPresenter(WebAuthenticationResult 
     if (result == WebAuthenticationResult::Succeeded && m_credentialRequestHandler) {
         // FIXME(219767): Replace the ASCAppleIDCredential with the upcoming WebAuthn credentials one.
         // This is just a place holder to tell the UI that the ceremony succeeds.
-        m_credentialRequestHandler(adoptNS([WebKit::allocASCAppleIDCredentialInstance() initWithUser:@"" identityToken:adoptNS([[NSData alloc] init]).get() state:nil]).get(), nil);
+        m_credentialRequestHandler(adoptNS([CyberKit::allocASCAppleIDCredentialInstance() initWithUser:@"" identityToken:adoptNS([[NSData alloc] init]).get() state:nil]).get(), nil);
     }
 
     [m_presenter dismissWithError:nil];
@@ -277,6 +277,6 @@ void AuthenticatorPresenterCoordinator::setPin(const String& pin)
     m_pinHandler(pin);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

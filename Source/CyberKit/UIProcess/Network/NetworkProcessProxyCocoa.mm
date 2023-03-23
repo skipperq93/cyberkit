@@ -37,7 +37,7 @@
 #import <wtf/WeakPtr.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 

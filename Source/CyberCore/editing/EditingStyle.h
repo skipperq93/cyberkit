@@ -38,7 +38,7 @@
 #include <wtf/TriState.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleDeclaration;
 class CSSComputedStyleDeclaration;
@@ -240,4 +240,4 @@ private:
     AtomString m_applyFontSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

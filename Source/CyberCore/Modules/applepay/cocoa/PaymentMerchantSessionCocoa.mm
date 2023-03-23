@@ -33,7 +33,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<PaymentMerchantSession> PaymentMerchantSession::fromJS(JSC::JSGlobalObject& lexicalGlobalObject, JSC::JSValue value, String&)
 {

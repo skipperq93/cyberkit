@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUBuffer.h>
 #include <wtf/Deque.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ConvertToBackingContext;
 
@@ -90,6 +90,6 @@ private:
     PAL::WebGPU::MapModeFlags m_mapModeFlags;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

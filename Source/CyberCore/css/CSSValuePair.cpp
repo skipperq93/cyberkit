@@ -27,7 +27,7 @@
 #include "CSSValuePair.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSValuePair::CSSValuePair(Ref<CSSValue> first, Ref<CSSValue> second, IdenticalValueSerialization serialization)
     : CSSValue(ValuePairClass)
@@ -64,4 +64,4 @@ bool CSSValuePair::equals(const CSSValuePair& other) const
         && m_second->equals(other.m_second);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "HTMLSlotElement.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ComposedTreeIterator::Context::Context()
 {

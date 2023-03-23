@@ -34,7 +34,7 @@
 #include "TrackBase.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class TextTrack;
@@ -215,7 +215,7 @@ inline void TextTrack::setKindForBindings(Kind kind)
 String convertEnumerationToString(TextTrack::Mode); // Defined in JSTextTrack.cpp
 String convertEnumerationToString(TextTrack::Kind);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -223,28 +223,28 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::TextTrack::Kind> {
-    static String toString(const WebCore::TextTrack::Kind kind)
+struct LogArgument<CyberCore::TextTrack::Kind> {
+    static String toString(const CyberCore::TextTrack::Kind kind)
     {
         return convertEnumerationToString(kind);
     }
 };
 
 template <>
-struct LogArgument<WebCore::TextTrack::Mode> {
-    static String toString(const WebCore::TextTrack::Mode mode)
+struct LogArgument<CyberCore::TextTrack::Mode> {
+    static String toString(const CyberCore::TextTrack::Mode mode)
     {
         return convertEnumerationToString(mode);
     }
 };
 
-template<> struct DefaultHash<WebCore::TextTrack::Kind> : IntHash<WebCore::TextTrack::Kind> { };
-template<> struct HashTraits<WebCore::TextTrack::Kind> : StrongEnumHashTraits<WebCore::TextTrack::Kind> { };
+template<> struct DefaultHash<CyberCore::TextTrack::Kind> : IntHash<CyberCore::TextTrack::Kind> { };
+template<> struct HashTraits<CyberCore::TextTrack::Kind> : StrongEnumHashTraits<CyberCore::TextTrack::Kind> { };
 
 } // namespace WTF
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::TextTrack)
-    static bool isType(const WebCore::TrackBase& track) { return track.type() == WebCore::TrackBase::TextTrack; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::TextTrack)
+    static bool isType(const CyberCore::TrackBase& track) { return track.type() == CyberCore::TrackBase::TextTrack; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

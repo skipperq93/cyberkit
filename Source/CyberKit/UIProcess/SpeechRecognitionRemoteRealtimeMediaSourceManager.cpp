@@ -31,7 +31,7 @@
 #include "SpeechRecognitionRealtimeMediaSourceManagerMessages.h"
 #include "SpeechRecognitionRemoteRealtimeMediaSource.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 SpeechRecognitionRemoteRealtimeMediaSourceManager::SpeechRecognitionRemoteRealtimeMediaSourceManager(Ref<IPC::Connection>&& connection)
     : m_connection(WTFMove(connection))
@@ -117,6 +117,6 @@ void SpeechRecognitionRemoteRealtimeMediaSourceManager::setStorage(CyberCore::Re
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -40,21 +40,21 @@
 #import <wtf/MainThread.h>
 
 @interface WKObservablePageState : NSObject <_WKObservablePageState> {
-    RefPtr<WebKit::WebPageProxy> _page;
-    std::unique_ptr<WebKit::PageLoadStateObserver> _observer;
+    RefPtr<CyberKit::WebPageProxy> _page;
+    std::unique_ptr<CyberKit::PageLoadStateObserver> _observer;
 }
 
 @end
 
 @implementation WKObservablePageState
 
-- (id)initWithPage:(RefPtr<WebKit::WebPageProxy>&&)page
+- (id)initWithPage:(RefPtr<CyberKit::WebPageProxy>&&)page
 {
     if (!(self = [super init]))
         return nil;
 
     _page = WTFMove(page);
-    _observer = makeUnique<WebKit::PageLoadStateObserver>(self, @"URL");
+    _observer = makeUnique<CyberKit::PageLoadStateObserver>(self, @"URL");
     _page->pageLoadState().addObserver(*_observer);
 
     return self;
@@ -115,13 +115,13 @@
 
 id <_WKObservablePageState> WKPageCreateObservableState(WKPageRef pageRef)
 {
-    return [[WKObservablePageState alloc] initWithPage:WebKit::toImpl(pageRef)];
+    return [[WKObservablePageState alloc] initWithPage:CyberKit::toImpl(pageRef)];
 }
 
 _WKRemoteObjectRegistry *WKPageGetObjectRegistry(WKPageRef pageRef)
 {
 #if PLATFORM(MAC)
-    return WebKit::toImpl(pageRef)->remoteObjectRegistry();
+    return CyberKit::toImpl(pageRef)->remoteObjectRegistry();
 #else
     return nil;
 #endif
@@ -129,45 +129,45 @@ _WKRemoteObjectRegistry *WKPageGetObjectRegistry(WKPageRef pageRef)
 
 bool WKPageIsURLKnownHSTSHost(WKPageRef page, WKURLRef url)
 {
-    WebKit::WebPageProxy* webPageProxy = WebKit::toImpl(page);
+    CyberKit::WebPageProxy* webPageProxy = CyberKit::toImpl(page);
 
-    return webPageProxy->process().processPool().isURLKnownHSTSHost(WebKit::toImpl(url)->string());
+    return webPageProxy->process().processPool().isURLKnownHSTSHost(CyberKit::toImpl(url)->string());
 }
 
 WKNavigation *WKPageLoadURLRequestReturningNavigation(WKPageRef pageRef, WKURLRequestRef urlRequestRef)
 {
-    auto resourceRequest = WebKit::toImpl(urlRequestRef)->resourceRequest();
-    return WebKit::wrapper(WebKit::toImpl(pageRef)->loadRequest(WTFMove(resourceRequest)));
+    auto resourceRequest = CyberKit::toImpl(urlRequestRef)->resourceRequest();
+    return CyberKit::wrapper(CyberKit::toImpl(pageRef)->loadRequest(WTFMove(resourceRequest)));
 }
 
 WKNavigation *WKPageLoadFileReturningNavigation(WKPageRef pageRef, WKURLRef fileURL, WKURLRef resourceDirectoryURL)
 {
-    return WebKit::wrapper(WebKit::toImpl(pageRef)->loadFile(WebKit::toWTFString(fileURL), WebKit::toWTFString(resourceDirectoryURL)));
+    return CyberKit::wrapper(CyberKit::toImpl(pageRef)->loadFile(CyberKit::toWTFString(fileURL), CyberKit::toWTFString(resourceDirectoryURL)));
 }
 
 WKWebView *WKPageGetWebView(WKPageRef page)
 {
-    return page ? WebKit::toImpl(page)->cocoaView().autorelease() : nil;
+    return page ? CyberKit::toImpl(page)->cocoaView().autorelease() : nil;
 }
 
 #if PLATFORM(MAC)
 bool WKPageIsPlayingVideoInEnhancedFullscreen(WKPageRef pageRef)
 {
-    return WebKit::toImpl(pageRef)->isPlayingVideoInEnhancedFullscreen();
+    return CyberKit::toImpl(pageRef)->isPlayingVideoInEnhancedFullscreen();
 }
 #endif
 
 void WKPageSetFullscreenDelegate(WKPageRef page, id <_WKFullscreenDelegate> delegate)
 {
 #if ENABLE(FULLSCREEN_API)
-    downcast<WebKit::FullscreenClient>(WebKit::toImpl(page)->fullscreenClient()).setDelegate(delegate);
+    downcast<CyberKit::FullscreenClient>(CyberKit::toImpl(page)->fullscreenClient()).setDelegate(delegate);
 #endif
 }
 
 id <_WKFullscreenDelegate> WKPageGetFullscreenDelegate(WKPageRef page)
 {
 #if ENABLE(FULLSCREEN_API)
-    return downcast<WebKit::FullscreenClient>(WebKit::toImpl(page)->fullscreenClient()).delegate().autorelease();
+    return downcast<CyberKit::FullscreenClient>(CyberKit::toImpl(page)->fullscreenClient()).delegate().autorelease();
 #else
     return nil;
 #endif

@@ -31,7 +31,7 @@
 #include "BufferSource.h"
 #include "PublicKeyCredentialType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PublicKeyCredentialDescriptor {
     PublicKeyCredentialType type;
@@ -39,6 +39,6 @@ struct PublicKeyCredentialDescriptor {
     Vector<AuthenticatorTransport> transports;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

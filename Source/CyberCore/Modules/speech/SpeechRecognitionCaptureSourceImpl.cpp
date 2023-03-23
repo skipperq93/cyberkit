@@ -36,7 +36,7 @@
 #include "WebAudioBufferList.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !RELEASE_LOG_DISABLED
 static const void* nextLogIdentifier()
@@ -173,6 +173,6 @@ void SpeechRecognitionCaptureSourceImpl::mute()
     m_source->setMuted(true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

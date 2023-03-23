@@ -37,7 +37,7 @@
 #include "SVGTitleElement.h"
 #include "TypedElementDescendantIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AccessibilitySVGRoot::AccessibilitySVGRoot(RenderObject* renderer, AXObjectCache* cache)
     : AccessibilitySVGElement(renderer, cache)
@@ -114,4 +114,4 @@ bool AccessibilitySVGRoot::hasAccessibleContent() const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

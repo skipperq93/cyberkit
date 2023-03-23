@@ -54,7 +54,7 @@ webkit_dom_html_o_list_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_o_list_element_get_compact(CyberKitDOMHTMLOListElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_o_list_element_get_compact(CyberKitDOMHTMLOListElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_o_list_element_set_compact(CyberKitDOMHTMLOListElement* self, gboolean value);
@@ -76,7 +76,7 @@ webkit_dom_html_o_list_element_set_compact(CyberKitDOMHTMLOListElement* self, gb
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_o_list_element_get_start(CyberKitDOMHTMLOListElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_o_list_element_get_start(CyberKitDOMHTMLOListElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_o_list_element_set_start(CyberKitDOMHTMLOListElement* self, glong value);
@@ -98,7 +98,7 @@ webkit_dom_html_o_list_element_set_start(CyberKitDOMHTMLOListElement* self, glon
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_o_list_element_get_type_attr(CyberKitDOMHTMLOListElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_o_list_element_get_type_attr(CyberKitDOMHTMLOListElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_o_list_element_set_type_attr(CyberKitDOMHTMLOListElement* self, const gchar* value);

@@ -29,7 +29,7 @@
 #include <CyberCore/TextChecking.h>
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using SpellDocumentTag = int64_t;
 
@@ -52,4 +52,4 @@ private:
     WebPageProxy* m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

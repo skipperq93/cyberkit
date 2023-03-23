@@ -31,7 +31,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WebGLExtensionScopedContext::WebGLExtensionScopedContext(WebGLExtension* extension)
     : m_context(extension->context())
@@ -52,6 +52,6 @@ void WebGLExtension::loseParentContext(WebGLRenderingContextBase::LostContextMod
     m_context = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

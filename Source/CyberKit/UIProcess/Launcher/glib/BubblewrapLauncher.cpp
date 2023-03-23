@@ -65,7 +65,7 @@ static int memfd_create(const char* name, unsigned flags)
 #define BASE_DIRECTORY "wpe"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static int createSealedMemFdWithData(const char* name, gconstpointer data, size_t size)
@@ -150,7 +150,7 @@ static int createFlatpakInfo()
         GUniqueOutPtr<GError> error;
         const char* appID = applicationId(&error.outPtr());
         if (!appID)
-            g_error("Unable to configure xdg-desktop-portal access in the WebKit sandbox: %s", error->message);
+            g_error("Unable to configure xdg-desktop-portal access in the CyberKit sandbox: %s", error->message);
 
         GUniquePtr<GKeyFile> keyFile(g_key_file_new());
         g_key_file_set_string(keyFile.get(), "Application", "name", appID);

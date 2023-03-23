@@ -45,7 +45,7 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
 + (instancetype)extensionWithAppExtensionBundle:(NSBundle *)appExtensionBundle
 {
     NSError * __autoreleasing internalError;
-    auto result = WebKit::WebExtension::create(appExtensionBundle, &internalError);
+    auto result = CyberKit::WebExtension::create(appExtensionBundle, &internalError);
 
     if (internalError)
         return nil;
@@ -56,7 +56,7 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
 + (instancetype)extensionWithResourceBaseURL:(NSURL *)resourceBaseURL
 {
     NSError * __autoreleasing internalError;
-    auto result = WebKit::WebExtension::create(resourceBaseURL, &internalError);
+    auto result = CyberKit::WebExtension::create(resourceBaseURL, &internalError);
 
     if (internalError)
         return nil;
@@ -75,7 +75,7 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
         return nil;
 
     NSError * __autoreleasing internalError;
-    API::Object::constructInWrapper<WebKit::WebExtension>(self, appExtensionBundle, &internalError);
+    API::Object::constructInWrapper<CyberKit::WebExtension>(self, appExtensionBundle, &internalError);
 
     if (internalError) {
         if (error)
@@ -99,7 +99,7 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
         return nil;
 
     NSError * __autoreleasing internalError;
-    API::Object::constructInWrapper<WebKit::WebExtension>(self, resourceBaseURL, &internalError);
+    API::Object::constructInWrapper<CyberKit::WebExtension>(self, resourceBaseURL, &internalError);
 
     if (internalError) {
         if (error)
@@ -124,7 +124,7 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebExtension>(self, manifest, resources);
+    API::Object::constructInWrapper<CyberKit::WebExtension>(self, manifest, resources);
 
     return self;
 }
@@ -136,7 +136,7 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebExtension>(self, resources);
+    API::Object::constructInWrapper<CyberKit::WebExtension>(self, resources);
 
     return self;
 }
@@ -212,12 +212,12 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
 
 - (NSSet<_WKWebExtensionPermission> *)requestedPermissions
 {
-    return WebKit::toAPI(_webExtension->requestedPermissions());
+    return CyberKit::toAPI(_webExtension->requestedPermissions());
 }
 
 - (NSSet<_WKWebExtensionPermission> *)optionalPermissions
 {
-    return WebKit::toAPI(_webExtension->optionalPermissions());
+    return CyberKit::toAPI(_webExtension->optionalPermissions());
 }
 
 - (NSSet<_WKWebExtensionMatchPattern *> *)requestedPermissionMatchPatterns
@@ -274,7 +274,7 @@ NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWeb
     return *_webExtension;
 }
 
-- (WebKit::WebExtension&)_webExtension
+- (CyberKit::WebExtension&)_webExtension
 {
     return *_webExtension;
 }

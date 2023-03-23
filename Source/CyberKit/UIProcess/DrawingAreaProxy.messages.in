@@ -21,14 +21,14 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> DrawingAreaProxy NotRefCounted {
-    EnterAcceleratedCompositingMode(uint64_t backingStoreStateID, WebKit::LayerTreeContext context)
-    UpdateAcceleratedCompositingMode(uint64_t backingStoreStateID, WebKit::LayerTreeContext context)
-    DidFirstLayerFlush(uint64_t backingStoreStateID, WebKit::LayerTreeContext context)
+    EnterAcceleratedCompositingMode(uint64_t backingStoreStateID, CyberKit::LayerTreeContext context)
+    UpdateAcceleratedCompositingMode(uint64_t backingStoreStateID, CyberKit::LayerTreeContext context)
+    DidFirstLayerFlush(uint64_t backingStoreStateID, CyberKit::LayerTreeContext context)
     DispatchPresentationCallbacksAfterFlushingLayers(Vector<IPC::AsyncReplyID> callbackIDs);
 
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
-    Update(uint64_t stateID, WebKit::UpdateInfo updateInfo)
-    DidUpdateBackingStoreState(uint64_t backingStoreStateID, WebKit::UpdateInfo updateInfo, WebKit::LayerTreeContext context)
-    ExitAcceleratedCompositingMode(uint64_t backingStoreStateID, WebKit::UpdateInfo updateInfo)
+    Update(uint64_t stateID, CyberKit::UpdateInfo updateInfo)
+    DidUpdateBackingStoreState(uint64_t backingStoreStateID, CyberKit::UpdateInfo updateInfo, CyberKit::LayerTreeContext context)
+    ExitAcceleratedCompositingMode(uint64_t backingStoreStateID, CyberKit::UpdateInfo updateInfo)
 #endif
 }

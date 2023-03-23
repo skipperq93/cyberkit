@@ -37,7 +37,7 @@ TestUtils.COMBINATIONS.forEach(function(combination) {
           let names = combination.map(function(e) { return e.name });
           // Open a cross-origin popup with an iframe that is same-origin with us and serves the Clear-Site-Data header.
           // Even though same origin with us, it shouldn't clear our data because of origin partitioning.
-          open(get_host_info().REMOTE_ORIGIN + "/WebKit/clear-site-data/resources/partitioning-popup.html?" + names.join("&"));
+          open(get_host_info().REMOTE_ORIGIN + "/CyberKit/clear-site-data/resources/partitioning-popup.html?" + names.join("&"));
         }).then(function(messageEvent) {
           // The same-origin frame under a cross-origin parent cleared site data. Check that our data didn't go away.
           var report = {};

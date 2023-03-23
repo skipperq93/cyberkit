@@ -31,7 +31,7 @@
 #include "CSSValueList.h"
 #include "CSSValuePool.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontVariantLigaturesParser {
 public:
@@ -89,4 +89,4 @@ private:
     CSSValueListBuilder m_result;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

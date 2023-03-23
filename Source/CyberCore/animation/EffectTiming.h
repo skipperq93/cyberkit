@@ -31,7 +31,7 @@
 #include <variant>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct EffectTiming {
     std::variant<double, String> duration { autoAtom() };
@@ -44,4 +44,4 @@ struct EffectTiming {
     PlaybackDirection direction { PlaybackDirection::Normal };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

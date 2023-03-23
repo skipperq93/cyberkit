@@ -34,7 +34,7 @@ class Connection;
 class Decoder;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebCacheStorageProvider final : public CyberCore::CacheStorageProvider {
 public:

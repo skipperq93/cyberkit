@@ -32,7 +32,7 @@
 
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class InspectorHistory;
@@ -80,4 +80,4 @@ private:
     InspectorHistory& m_history;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

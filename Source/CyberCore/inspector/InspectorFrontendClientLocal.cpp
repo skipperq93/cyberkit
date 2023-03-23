@@ -59,7 +59,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -285,7 +285,7 @@ void InspectorFrontendClientLocal::openURLExternally(const String& url)
 
     bool created;
     WindowFeatures features;
-    auto frame = WebCore::createWindow(mainFrame, mainFrame, WTFMove(frameLoadRequest), features, created);
+    auto frame = CyberCore::createWindow(mainFrame, mainFrame, WTFMove(frameLoadRequest), features, created);
     if (!frame)
         return;
 
@@ -439,4 +439,4 @@ Page* InspectorFrontendClientLocal::inspectedPage() const
     return &m_inspectedPageController->inspectedPage();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

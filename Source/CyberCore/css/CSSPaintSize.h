@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPaintSize : public RefCounted<CSSPaintSize> {
 public:
@@ -53,6 +53,6 @@ private:
     double m_height;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -33,7 +33,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCIceTransportBackend;
 
@@ -59,6 +59,6 @@ inline bool operator==(const RTCDtlsTransportBackend& a, const RTCDtlsTransportB
     return a.backend() == b.backend();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

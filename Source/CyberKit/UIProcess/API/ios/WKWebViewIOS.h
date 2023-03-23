@@ -30,7 +30,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-namespace WebKit {
+namespace CyberKit {
 enum class TapHandlingResult : uint8_t;
 }
 
@@ -64,14 +64,14 @@ enum class TapHandlingResult : uint8_t;
 - (UIView *)_currentContentView;
 
 - (void)_didCommitLoadForMainFrame;
-- (void)_didCommitLayerTree:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction;
+- (void)_didCommitLayerTree:(const CyberKit::RemoteLayerTreeTransaction&)layerTreeTransaction;
 - (void)_layerTreeCommitComplete;
 
 - (void)_couldNotRestorePageState;
 - (void)_restorePageScrollPosition:(std::optional<CyberCore::FloatPoint>)scrollPosition scrollOrigin:(CyberCore::FloatPoint)scrollOrigin previousObscuredInset:(CyberCore::FloatBoxExtent)insets scale:(double)scale;
 - (void)_restorePageStateToUnobscuredCenter:(std::optional<CyberCore::FloatPoint>)center scale:(double)scale; // FIXME: needs scroll origin?
 
-- (RefPtr<WebKit::ViewSnapshot>)_takeViewSnapshot;
+- (RefPtr<CyberKit::ViewSnapshot>)_takeViewSnapshot;
 
 - (void)_scrollToContentScrollPosition:(CyberCore::FloatPoint)scrollPosition scrollOrigin:(CyberCore::IntPoint)scrollOrigin animated:(BOOL)animated;
 - (BOOL)_scrollToRect:(CyberCore::FloatRect)targetRect origin:(CyberCore::FloatPoint)origin minimumScrollDistance:(float)minimumScrollDistance;
@@ -100,7 +100,7 @@ enum class TapHandlingResult : uint8_t;
 - (void)_didStartProvisionalLoadForMainFrame;
 - (void)_didFinishNavigation:(API::Navigation*)navigation;
 - (void)_didFailNavigation:(API::Navigation*)navigation;
-- (void)_didSameDocumentNavigationForMainFrame:(WebKit::SameDocumentNavigationType)navigationType;
+- (void)_didSameDocumentNavigationForMainFrame:(CyberKit::SameDocumentNavigationType)navigationType;
 
 - (BOOL)_isShowingVideoPictureInPicture;
 - (BOOL)_mayAutomaticallyShowVideoPictureInPicture;
@@ -188,6 +188,6 @@ enum class TapHandlingResult : uint8_t;
 
 @end
 
-_WKTapHandlingResult wkTapHandlingResult(WebKit::TapHandlingResult);
+_WKTapHandlingResult wkTapHandlingResult(CyberKit::TapHandlingResult);
 
 #endif // PLATFORM(IOS_FAMILY)

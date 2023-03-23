@@ -33,7 +33,7 @@
 #include "ViewSnapshotStore.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void installMemoryPressureHandler()
 {
@@ -49,4 +49,4 @@ void installMemoryPressureHandler()
     memoryPressureHandler.install();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

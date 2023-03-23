@@ -34,11 +34,11 @@
 #include "HTMLInputElement.h"
 #include "InputTypeNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const AtomString& TelephoneInputType::formControlType() const
 {
     return InputTypeNames::telephone();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

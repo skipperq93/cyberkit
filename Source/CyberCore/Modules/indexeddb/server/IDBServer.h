@@ -38,7 +38,7 @@
 #include <wtf/Lock.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBCursorInfo;
 class IDBRequestData;
@@ -100,7 +100,7 @@ public:
     WEBCORE_EXPORT void closeAndDeleteDatabasesModifiedSince(WallTime);
     WEBCORE_EXPORT void closeAndDeleteDatabasesForOrigins(const Vector<SecurityOriginData>&);
     void closeDatabasesForOrigins(const Vector<SecurityOriginData>&, Function<bool(const SecurityOriginData&, const ClientOrigin&)>&&);
-    WEBCORE_EXPORT void renameOrigin(const WebCore::SecurityOriginData&, const WebCore::SecurityOriginData&);
+    WEBCORE_EXPORT void renameOrigin(const CyberCore::SecurityOriginData&, const CyberCore::SecurityOriginData&);
 
     WEBCORE_EXPORT static uint64_t diskUsage(const String& rootDirectory, const ClientOrigin&);
 
@@ -111,7 +111,7 @@ private:
     UniqueIDBDatabase& getOrCreateUniqueIDBDatabase(const IDBDatabaseIdentifier&);
 
     void upgradeFilesIfNecessary();
-    String upgradedDatabaseDirectory(const WebCore::IDBDatabaseIdentifier&);
+    String upgradedDatabaseDirectory(const CyberCore::IDBDatabaseIdentifier&);
     void removeDatabasesModifiedSinceForVersion(WallTime, const String&);
     void removeDatabasesWithOriginsForVersion(const Vector<SecurityOriginData>&, const String&);
 
@@ -132,4 +132,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

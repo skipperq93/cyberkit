@@ -30,7 +30,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // Must not grow beyond 3 bits, due to packing in StyleProperties.
 enum CSSParserMode : uint8_t {
@@ -89,4 +89,4 @@ inline bool isStrictParserMode(CSSParserMode cssParserMode)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

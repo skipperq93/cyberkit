@@ -24,7 +24,7 @@
 #include "TestCEReactions.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestCEReactions : public JSDOMWrapper<TestCEReactions> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestCEReactions> {
     using ToWrappedReturnType = TestCEReactions*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

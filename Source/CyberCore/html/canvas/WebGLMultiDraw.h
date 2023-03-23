@@ -28,7 +28,7 @@
 #include "WebGLExtension.h"
 #include <CyberScriptCore/TypedArrays.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLMultiDraw final : public WebGLExtension {
     WTF_MAKE_ISO_ALLOCATED(WebGLMultiDraw);
@@ -56,4 +56,4 @@ private:
     bool validateOffset(WebGLExtensionScopedContext&, const char* functionName, const char* outOfBoundsDescription, GCGLsizei, GCGLuint offset, GCGLsizei drawcount);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

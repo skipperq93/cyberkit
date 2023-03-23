@@ -31,7 +31,7 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -143,6 +143,6 @@ uint32_t DFANode::bestFallbackTarget(const DFA& dfa) const
 
 } // namespace ContentExtensions
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

@@ -27,7 +27,7 @@
 
 #include "ClipboardItemDataSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PasteboardItemInfo;
 
@@ -45,4 +45,4 @@ private:
     Vector<String> m_types;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPointReadOnly;
 
@@ -60,11 +60,11 @@ private:
     int m_lastUpdateId { -1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WebXRBoundedReferenceSpace)
-    static bool isType(const WebCore::WebXRReferenceSpace& element) { return element.isBoundedReferenceSpace(); }
-    static bool isType(const WebCore::WebXRSpace& element) { return is<WebCore::WebXRReferenceSpace>(element) && isType(downcast<WebCore::WebXRReferenceSpace>(element)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WebXRBoundedReferenceSpace)
+    static bool isType(const CyberCore::WebXRReferenceSpace& element) { return element.isBoundedReferenceSpace(); }
+    static bool isType(const CyberCore::WebXRSpace& element) { return is<CyberCore::WebXRReferenceSpace>(element) && isType(downcast<CyberCore::WebXRReferenceSpace>(element)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEBXR)

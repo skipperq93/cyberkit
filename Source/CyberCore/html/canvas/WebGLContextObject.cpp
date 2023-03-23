@@ -31,7 +31,7 @@
 #include "WebGLRenderingContextBase.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WebGLContextObject::WebGLContextObject(WebGLRenderingContextBase& context)
     : m_context(&context)

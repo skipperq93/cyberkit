@@ -60,7 +60,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Registering "opened" databases with the DatabaseTracker
 // =======================================================
@@ -810,4 +810,4 @@ String Database::databaseDebugName() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

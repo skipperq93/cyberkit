@@ -27,7 +27,7 @@
 #include "CommonAtomStrings.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // HTMLCollection that limits to a particular tag.
 class TagCollection final : public CachedHTMLCollection<TagCollection, CollectionTypeTraits<ByTag>::traversalType> {
@@ -104,4 +104,4 @@ inline bool HTMLTagCollection::elementMatches(Element& element) const
     return m_qualifiedName == element.tagQName().toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

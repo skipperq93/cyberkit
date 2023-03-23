@@ -29,19 +29,19 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "FetchRequest.h"
-#include "WebCoreOpaqueRoot.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSFetchEvent::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().request());
+    addCyberCoreOpaqueRoot(visitor, wrapped().request());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSFetchEvent);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

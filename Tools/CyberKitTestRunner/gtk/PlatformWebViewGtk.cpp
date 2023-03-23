@@ -29,10 +29,10 @@
 #include "PlatformWebView.h"
 
 #include <CyberCore/GtkVersioning.h>
-#include <WebKit/WKImageCairo.h>
-#include <WebKit/WKPageConfigurationRef.h>
-#include <WebKit/WKView.h>
-#include <WebKit/WKViewPrivate.h>
+#include <CyberKit/WKImageCairo.h>
+#include <CyberKit/WKPageConfigurationRef.h>
+#include <CyberKit/WKView.h>
+#include <CyberKit/WKViewPrivate.h>
 #include <gtk/gtk.h>
 #include <wtf/Assertions.h>
 #include <wtf/glib/GRefPtr.h>

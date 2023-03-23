@@ -32,7 +32,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static uint64_t nextClientResourceNumber()
 {
@@ -93,4 +93,4 @@ String IDBResourceIdentifier::loggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

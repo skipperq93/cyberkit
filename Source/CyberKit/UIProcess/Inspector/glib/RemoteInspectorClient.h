@@ -35,7 +35,7 @@
 
 typedef struct _GCancellable GCancellable;
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteInspectorClient;
 class RemoteInspectorProxy;
@@ -90,6 +90,6 @@ private:
     HashMap<std::pair<uint64_t, uint64_t>, std::unique_ptr<RemoteInspectorProxy>> m_inspectorProxyMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

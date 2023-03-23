@@ -37,7 +37,7 @@ namespace CyberCore {
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaKeySystemPermissionRequestManagerProxy;
 
@@ -75,4 +75,4 @@ private:
     String m_keySystem;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

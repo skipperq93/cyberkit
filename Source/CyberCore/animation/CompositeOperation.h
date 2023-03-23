@@ -28,7 +28,7 @@
 #include <optional>
 #include <wtf/HashTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 
@@ -36,8 +36,8 @@ enum class CompositeOperation : uint8_t { Replace, Add, Accumulate };
 
 std::optional<CompositeOperation> toCompositeOperation(const CSSValue&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct DefaultHash<WebCore::CompositeOperation> : IntHash<WebCore::CompositeOperation> { };
+template<> struct DefaultHash<CyberCore::CompositeOperation> : IntHash<CyberCore::CompositeOperation> { };
 } // namespace WTF

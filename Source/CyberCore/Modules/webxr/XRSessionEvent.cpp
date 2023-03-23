@@ -31,7 +31,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include "WebXRSession.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(XRSessionEvent);
 
@@ -60,6 +60,6 @@ const WebXRSession& XRSessionEvent::session() const
     return *m_session;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

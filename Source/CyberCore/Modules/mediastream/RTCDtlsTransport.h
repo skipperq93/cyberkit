@@ -32,7 +32,7 @@
 #include "RTCDtlsTransportBackend.h"
 #include <CyberScriptCore/ArrayBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PeerConnectionBackend;
 class RTCIceTransport;
@@ -80,6 +80,6 @@ private:
     Vector<Ref<JSC::ArrayBuffer>> m_remoteCertificates;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

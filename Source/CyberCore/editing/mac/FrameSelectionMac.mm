@@ -33,7 +33,7 @@
 #import "Frame.h"
 #import "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void FrameSelection::notifyAccessibilityForSelectionChange(const AXTextStateChangeIntent& intent)
 {
@@ -67,4 +67,4 @@ void FrameSelection::notifyAccessibilityForSelectionChange(const AXTextStateChan
 #endif // !PLATFORM(IOS_FAMILY)
 }
 
-} // namespace WebCore
+} // namespace CyberCore

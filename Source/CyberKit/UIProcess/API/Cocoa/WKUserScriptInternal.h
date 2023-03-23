@@ -27,7 +27,7 @@
 
 #import "APIUserScript.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::UserScript> {
     using WrapperClass = WKUserScript;

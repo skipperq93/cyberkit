@@ -29,7 +29,7 @@
 #include "Event.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class RTCIceCandidate;
 
 class RTCPeerConnectionIceEvent final : public Event {
@@ -57,6 +57,6 @@ private:
     String m_url;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

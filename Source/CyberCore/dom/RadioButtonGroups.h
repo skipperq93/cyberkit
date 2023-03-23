@@ -25,7 +25,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLInputElement;
 class RadioButtonGroup;
@@ -49,4 +49,4 @@ private:
     NameToGroupMap m_nameToGroupMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 
 @protocol WKURLSchemeHandler;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebURLSchemeTask;
 
@@ -52,4 +52,4 @@ private:
 
 }; // class WebURLSchemeHandler
 
-} // namespace WebKit
+} // namespace CyberKit

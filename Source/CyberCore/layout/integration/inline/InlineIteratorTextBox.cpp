@@ -32,7 +32,7 @@
 #include "RenderCombineText.h"
 #include "SVGInlineTextBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 TextBoxIterator TextBox::nextTextBox() const

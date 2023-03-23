@@ -29,7 +29,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PushPermissionState : uint8_t {
     Denied,
@@ -37,15 +37,15 @@ enum class PushPermissionState : uint8_t {
     Prompt
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct EnumTraits<WebCore::PushPermissionState> {
+template<> struct EnumTraits<CyberCore::PushPermissionState> {
     using values = EnumValues<
-        WebCore::PushPermissionState,
-        WebCore::PushPermissionState::Denied,
-        WebCore::PushPermissionState::Granted,
-        WebCore::PushPermissionState::Prompt
+        CyberCore::PushPermissionState,
+        CyberCore::PushPermissionState::Denied,
+        CyberCore::PushPermissionState::Granted,
+        CyberCore::PushPermissionState::Prompt
     >;
 };
 } // namespace WTF

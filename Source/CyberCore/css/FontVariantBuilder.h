@@ -27,7 +27,7 @@
 
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 struct FontVariantSettings;
@@ -39,4 +39,4 @@ FontVariantLigaturesValues extractFontVariantLigatures(const CSSValue&);
 FontVariantNumericValues extractFontVariantNumeric(const CSSValue&);
 FontVariantEastAsianValues extractFontVariantEastAsian(const CSSValue&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "CryptoKeyRaw.h"
 #include <CommonCrypto/CommonKeyDerivation.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmPBKDF2MacInternal {
 static CCPseudoRandomAlgorithm commonCryptoHMACAlgorithm(CryptoAlgorithmIdentifier hashFunction)

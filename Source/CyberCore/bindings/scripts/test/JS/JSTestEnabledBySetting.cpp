@@ -35,13 +35,13 @@
 #include "JSTestSubObj.h"
 #include "ScriptExecutionContext.h"
 #include "TestEnabledBySettingSupplemental.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
@@ -52,7 +52,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Functions
@@ -405,7 +405,7 @@ static inline JSValue jsTestEnabledBySetting_supplementalAttributeGetter(JSGloba
     auto& vm = JSC::getVM(&lexicalGlobalObject);
     auto throwScope = DECLARE_THROW_SCOPE(vm);
     auto& impl = thisObject.wrapped();
-    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, WebCore::TestEnabledBySettingSupplemental::supplementalAttribute(impl))));
+    RELEASE_AND_RETURN(throwScope, (toJS<IDLDOMString>(lexicalGlobalObject, throwScope, CyberCore::TestEnabledBySettingSupplemental::supplementalAttribute(impl))));
 }
 
 JSC_DEFINE_CUSTOM_GETTER(jsTestEnabledBySetting_supplementalAttribute, (JSGlobalObject* lexicalGlobalObject, EncodedJSValue thisValue, PropertyName attributeName))
@@ -422,7 +422,7 @@ static inline bool setJSTestEnabledBySetting_supplementalAttributeSetter(JSGloba
     auto nativeValue = convert<IDLDOMString>(lexicalGlobalObject, value);
     RETURN_IF_EXCEPTION(throwScope, false);
     invokeFunctorPropagatingExceptionIfNecessary(lexicalGlobalObject, throwScope, [&] {
-        return WebCore::TestEnabledBySettingSupplemental::setSupplementalAttribute(impl, WTFMove(nativeValue));
+        return CyberCore::TestEnabledBySettingSupplemental::setSupplementalAttribute(impl, WTFMove(nativeValue));
     });
     return true;
 }
@@ -457,7 +457,7 @@ JSC_DEFINE_HOST_FUNCTION(jsTestEnabledBySettingPrototypeFunction_enabledBySettin
 
 JSC::GCClient::IsoSubspace* JSTestEnabledBySetting::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSTestEnabledBySetting, UseCustomHeapCellType::No>(vm,
+    return CyberCore::subspaceForImpl<JSTestEnabledBySetting, UseCustomHeapCellType::No>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForTestEnabledBySetting.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForTestEnabledBySetting = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForTestEnabledBySetting.get(); },
@@ -492,9 +492,9 @@ void JSTestEnabledBySettingOwner::finalize(JSC::Handle<JSC::Unknown> handle, voi
 #if ENABLE(BINDING_INTEGRITY)
 #if PLATFORM(WIN)
 #pragma warning(disable: 4483)
-extern "C" { extern void (*const __identifier("??_7TestEnabledBySetting@WebCore@@6B@")[])(); }
+extern "C" { extern void (*const __identifier("??_7TestEnabledBySetting@CyberCore@@6B@")[])(); }
 #else
-extern "C" { extern void* _ZTVN7WebCore20TestEnabledBySettingE[]; }
+extern "C" { extern void* _ZTVN7CyberCore20TestEnabledBySettingE[]; }
 #endif
 #endif
 
@@ -505,9 +505,9 @@ JSC::JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObj
 #if ENABLE(BINDING_INTEGRITY)
         const void* actualVTablePointer = getVTablePointer(impl.ptr());
 #if PLATFORM(WIN)
-        void* expectedVTablePointer = __identifier("??_7TestEnabledBySetting@WebCore@@6B@");
+        void* expectedVTablePointer = __identifier("??_7TestEnabledBySetting@CyberCore@@6B@");
 #else
-        void* expectedVTablePointer = &_ZTVN7WebCore20TestEnabledBySettingE[2];
+        void* expectedVTablePointer = &_ZTVN7CyberCore20TestEnabledBySettingE[2];
 #endif
 
         // If you hit this assertion you either have a use after free bug, or

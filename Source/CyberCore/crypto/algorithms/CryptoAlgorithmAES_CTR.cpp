@@ -35,7 +35,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/FlipBytes.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmAES_CTRInternal {
 static constexpr auto ALG128 = "A128CTR"_s;

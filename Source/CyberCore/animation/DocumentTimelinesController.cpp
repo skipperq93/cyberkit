@@ -40,7 +40,7 @@
 #include <CyberScriptCore/VM.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DocumentTimelinesController::DocumentTimelinesController(Document& document)
     : m_document(document)
@@ -299,10 +299,10 @@ void DocumentTimelinesController::maybeClearCachedCurrentTime()
     // We want to make sure we only clear the cached current time if we're not currently running
     // JS or waiting on all current animation updating code to have completed. This is so that
     // we're guaranteed to have a consistent current time reported for all work happening in a given
-    // JS frame or throughout updating animations in WebCore.
+    // JS frame or throughout updating animations in CyberCore.
     if (!m_isSuspended && !m_waitingOnVMIdle && !m_currentTimeClearingTaskCancellationGroup.hasPendingTask())
         m_cachedCurrentTime = std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

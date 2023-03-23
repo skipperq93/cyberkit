@@ -31,7 +31,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MicrotaskQueue::MicrotaskQueue(JSC::VM& vm, EventLoop& eventLoop)
     : m_vm(vm)
@@ -100,4 +100,4 @@ void MicrotaskQueue::addCheckpointTask(std::unique_ptr<EventLoopTask>&& task)
     m_checkpointTasks.append(WTFMove(task));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

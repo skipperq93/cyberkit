@@ -34,7 +34,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSParserToken& CSSParserTokenRange::eofToken()
 {
@@ -113,4 +113,4 @@ String CSSParserTokenRange::serialize() const
     return builder.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

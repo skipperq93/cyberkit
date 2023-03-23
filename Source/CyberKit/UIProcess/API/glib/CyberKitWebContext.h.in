@@ -19,66 +19,66 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitWebContext_h
-#define WebKitWebContext_h
+#ifndef CyberKitWebContext_h
+#define CyberKitWebContext_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitAutomationSession.h>
-#include <@API_INCLUDE_PREFIX@/WebKitCookieManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDownload.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitAutomationSession.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitCookieManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDownload.h>
 #if !ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitFaviconDatabase.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFaviconDatabase.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitGeolocationManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitNetworkProxySettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitGeolocationManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkProxySettings.h>
 #if ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitNetworkSession.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkSession.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitSecurityManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURISchemeRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitUserMessage.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebsiteDataManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSecurityManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURISchemeRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMessage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteDataManager.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_CONTEXT            (webkit_web_context_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_WEB_CONTEXT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_CONTEXT, WebKitWebContext))
-#define WEBKIT_WEB_CONTEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_CONTEXT, WebKitWebContextClass))
+#define WEBKIT_WEB_CONTEXT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_CONTEXT, CyberKitWebContext))
+#define WEBKIT_WEB_CONTEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_CONTEXT, CyberKitWebContextClass))
 #define WEBKIT_IS_WEB_CONTEXT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_WEB_CONTEXT))
 #define WEBKIT_IS_WEB_CONTEXT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_WEB_CONTEXT))
-#define WEBKIT_WEB_CONTEXT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_CONTEXT, WebKitWebContextClass))
+#define WEBKIT_WEB_CONTEXT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_CONTEXT, CyberKitWebContextClass))
 #endif
 
-WEBKIT_DECLARE_TYPE (WebKitWebContext, webkit_web_context, WEBKIT, WEB_CONTEXT, GObject)
+WEBKIT_DECLARE_TYPE (CyberKitWebContext, webkit_web_context, WEBKIT, WEB_CONTEXT, GObject)
 
 /**
- * WebKitCacheModel:
+ * CyberKitCacheModel:
  * @WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER: Disable the cache completely, which
  *   substantially reduces memory usage. Useful for applications that only
  *   access a single local file, with no navigation to other pages. No remote
  *   resources will be cached.
  * @WEBKIT_CACHE_MODEL_DOCUMENT_BROWSER: A cache model optimized for viewing
  *   a series of local files -- for example, a documentation viewer or a website
- *   designer. WebKit will cache a moderate number of resources.
+ *   designer. CyberKit will cache a moderate number of resources.
  * @WEBKIT_CACHE_MODEL_WEB_BROWSER: Improve document load speed substantially
  *   by caching a very large number of resources and previously viewed content.
  *
- * Enum values used for determining the #WebKitWebContext cache model.
+ * Enum values used for determining the #CyberKitWebContext cache model.
  */
 typedef enum {
     WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER,
     WEBKIT_CACHE_MODEL_WEB_BROWSER,
     WEBKIT_CACHE_MODEL_DOCUMENT_BROWSER
-} WebKitCacheModel;
+} CyberKitCacheModel;
 
 #if !ENABLE(2022_GLIB_API)
 /**
- * WebKitProcessModel:
+ * CyberKitProcessModel:
  * @WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS: Deprecated 2.26.
  * @WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES: Use one process
- *   for each #WebKitWebView, while still allowing for some of them to
+ *   for each #CyberKitWebView, while still allowing for some of them to
  *   share a process in certain situations. The main advantage
  *   of this process model is that the rendering process for a web view
  *   can crash while the rest of the views keep working normally. This
@@ -87,7 +87,7 @@ typedef enum {
  *   rest — for example a full-fledged web browser with support for
  *   multiple tabs.
  *
- * Enum values used for determining the #WebKitWebContext process model.
+ * Enum values used for determining the #CyberKitWebContext process model.
  *
  * Since: 2.4
  *
@@ -96,34 +96,34 @@ typedef enum {
 typedef enum {
     WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS,
     WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES,
-} WebKitProcessModel;
+} CyberKitProcessModel;
 #endif
 
 /**
- * WebKitURISchemeRequestCallback:
- * @request: the #WebKitURISchemeRequest
+ * CyberKitURISchemeRequestCallback:
+ * @request: the #CyberKitURISchemeRequest
  * @user_data: user data passed to the callback
  *
  * Type definition for a function that will be called back when an URI request is
  * made for a user registered URI scheme.
  */
-typedef void (* WebKitURISchemeRequestCallback) (WebKitURISchemeRequest *request,
+typedef void (* CyberKitURISchemeRequestCallback) (CyberKitURISchemeRequest *request,
                                                  gpointer                user_data);
 
-struct _WebKitWebContextClass {
+struct _CyberKitWebContextClass {
     GObjectClass parent;
 
     /*< public >*/
 #if !ENABLE(2022_GLIB_API)
-    void     (* download_started)                    (WebKitWebContext        *context,
-                                                      WebKitDownload          *download);
+    void     (* download_started)                    (CyberKitWebContext        *context,
+                                                      CyberKitDownload          *download);
 #endif
-    void     (* initialize_web_extensions)           (WebKitWebContext        *context);
-    void     (* initialize_notification_permissions) (WebKitWebContext        *context);
-    void     (* automation_started)                  (WebKitWebContext        *context,
-                                                      WebKitAutomationSession *session);
-    gboolean (* user_message_received)               (WebKitWebContext        *context,
-                                                      WebKitUserMessage       *message);
+    void     (* initialize_web_extensions)           (CyberKitWebContext        *context);
+    void     (* initialize_notification_permissions) (CyberKitWebContext        *context);
+    void     (* automation_started)                  (CyberKitWebContext        *context,
+                                                      CyberKitAutomationSession *session);
+    gboolean (* user_message_received)               (CyberKitWebContext        *context,
+                                                      CyberKitUserMessage       *message);
 
     /*< private >*/
     void (*_webkit_reserved0) (void);
@@ -131,204 +131,204 @@ struct _WebKitWebContextClass {
     void (*_webkit_reserved2) (void);
 };
 
-WEBKIT_API WebKitWebContext *
+WEBKIT_API CyberKitWebContext *
 webkit_web_context_get_default                      (void);
 
-WEBKIT_API WebKitWebContext *
+WEBKIT_API CyberKitWebContext *
 webkit_web_context_new                              (void);
 
 #if !ENABLE(2022_GLIB_API)
-WEBKIT_API WebKitWebContext *
+WEBKIT_API CyberKitWebContext *
 webkit_web_context_new_ephemeral                    (void);
 
-WEBKIT_API WebKitWebContext *
-webkit_web_context_new_with_website_data_manager    (WebKitWebsiteDataManager      *manager);
+WEBKIT_API CyberKitWebContext *
+webkit_web_context_new_with_website_data_manager    (CyberKitWebsiteDataManager      *manager);
 
-WEBKIT_API WebKitWebsiteDataManager *
-webkit_web_context_get_website_data_manager         (WebKitWebContext              *context);
+WEBKIT_API CyberKitWebsiteDataManager *
+webkit_web_context_get_website_data_manager         (CyberKitWebContext              *context);
 
 WEBKIT_API gboolean
-webkit_web_context_is_ephemeral                     (WebKitWebContext              *context);
+webkit_web_context_is_ephemeral                     (CyberKitWebContext              *context);
 #endif
 
 WEBKIT_API gboolean
-webkit_web_context_is_automation_allowed            (WebKitWebContext              *context);
+webkit_web_context_is_automation_allowed            (CyberKitWebContext              *context);
 
 WEBKIT_API void
-webkit_web_context_set_automation_allowed           (WebKitWebContext              *context,
+webkit_web_context_set_automation_allowed           (CyberKitWebContext              *context,
                                                      gboolean                       allowed);
 
 #if ENABLE(2022_GLIB_API)
-WEBKIT_API WebKitNetworkSession *
-webkit_web_context_get_network_session_for_automation(WebKitWebContext             *context);
+WEBKIT_API CyberKitNetworkSession *
+webkit_web_context_get_network_session_for_automation(CyberKitWebContext             *context);
 #endif
 
 WEBKIT_API void
-webkit_web_context_set_cache_model                  (WebKitWebContext              *context,
-                                                     WebKitCacheModel               cache_model);
-WEBKIT_API WebKitCacheModel
-webkit_web_context_get_cache_model                  (WebKitWebContext              *context);
+webkit_web_context_set_cache_model                  (CyberKitWebContext              *context,
+                                                     CyberKitCacheModel               cache_model);
+WEBKIT_API CyberKitCacheModel
+webkit_web_context_get_cache_model                  (CyberKitWebContext              *context);
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_DEPRECATED void
-webkit_web_context_set_web_process_count_limit      (WebKitWebContext              *context,
+webkit_web_context_set_web_process_count_limit      (CyberKitWebContext              *context,
                                                      guint                          limit);
 
 WEBKIT_DEPRECATED guint
-webkit_web_context_get_web_process_count_limit      (WebKitWebContext              *context);
+webkit_web_context_get_web_process_count_limit      (CyberKitWebContext              *context);
 #endif
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_API void
-webkit_web_context_clear_cache                      (WebKitWebContext              *context);
+webkit_web_context_clear_cache                      (CyberKitWebContext              *context);
 
 WEBKIT_DEPRECATED_FOR(webkit_website_data_manager_set_network_proxy_settings) void
-webkit_web_context_set_network_proxy_settings       (WebKitWebContext              *context,
-                                                     WebKitNetworkProxyMode         proxy_mode,
-                                                     WebKitNetworkProxySettings    *proxy_settings);
+webkit_web_context_set_network_proxy_settings       (CyberKitWebContext              *context,
+                                                     CyberKitNetworkProxyMode         proxy_mode,
+                                                     CyberKitNetworkProxySettings    *proxy_settings);
 
-WEBKIT_API WebKitDownload *
-webkit_web_context_download_uri                     (WebKitWebContext              *context,
+WEBKIT_API CyberKitDownload *
+webkit_web_context_download_uri                     (CyberKitWebContext              *context,
                                                      const gchar                   *uri);
 
-WEBKIT_API WebKitCookieManager *
-webkit_web_context_get_cookie_manager               (WebKitWebContext              *context);
+WEBKIT_API CyberKitCookieManager *
+webkit_web_context_get_cookie_manager               (CyberKitWebContext              *context);
 #endif
 
-WEBKIT_API WebKitGeolocationManager *
-webkit_web_context_get_geolocation_manager          (WebKitWebContext              *context);
+WEBKIT_API CyberKitGeolocationManager *
+webkit_web_context_get_geolocation_manager          (CyberKitWebContext              *context);
 
 #if !ENABLE(2022_GLIB_API)
-WEBKIT_API WebKitFaviconDatabase *
-webkit_web_context_get_favicon_database             (WebKitWebContext              *context);
+WEBKIT_API CyberKitFaviconDatabase *
+webkit_web_context_get_favicon_database             (CyberKitWebContext              *context);
 
 WEBKIT_API void
-webkit_web_context_set_favicon_database_directory   (WebKitWebContext              *context,
+webkit_web_context_set_favicon_database_directory   (CyberKitWebContext              *context,
                                                      const gchar                   *path);
 WEBKIT_API const gchar *
-webkit_web_context_get_favicon_database_directory   (WebKitWebContext              *context);
+webkit_web_context_get_favicon_database_directory   (CyberKitWebContext              *context);
 #endif
 
-WEBKIT_API WebKitSecurityManager *
-webkit_web_context_get_security_manager             (WebKitWebContext              *context);
+WEBKIT_API CyberKitSecurityManager *
+webkit_web_context_get_security_manager             (CyberKitWebContext              *context);
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_DEPRECATED void
-webkit_web_context_set_additional_plugins_directory (WebKitWebContext              *context,
+webkit_web_context_set_additional_plugins_directory (CyberKitWebContext              *context,
                                                      const gchar                   *directory);
 
 WEBKIT_DEPRECATED void
-webkit_web_context_get_plugins                      (WebKitWebContext              *context,
+webkit_web_context_get_plugins                      (CyberKitWebContext              *context,
                                                      GCancellable                  *cancellable,
                                                      GAsyncReadyCallback            callback,
                                                      gpointer                       user_data);
 
 WEBKIT_DEPRECATED GList *
-webkit_web_context_get_plugins_finish               (WebKitWebContext              *context,
+webkit_web_context_get_plugins_finish               (CyberKitWebContext              *context,
                                                      GAsyncResult                  *result,
                                                      GError                       **error);
 #endif
 
 WEBKIT_API void
-webkit_web_context_register_uri_scheme              (WebKitWebContext              *context,
+webkit_web_context_register_uri_scheme              (CyberKitWebContext              *context,
                                                      const gchar                   *scheme,
-                                                     WebKitURISchemeRequestCallback callback,
+                                                     CyberKitURISchemeRequestCallback callback,
                                                      gpointer                       user_data,
                                                      GDestroyNotify                 user_data_destroy_func);
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_API void
-webkit_web_context_set_sandbox_enabled              (WebKitWebContext              *context,
+webkit_web_context_set_sandbox_enabled              (CyberKitWebContext              *context,
                                                      gboolean                       enabled);
 
 WEBKIT_API gboolean
-webkit_web_context_get_sandbox_enabled              (WebKitWebContext              *context);
+webkit_web_context_get_sandbox_enabled              (CyberKitWebContext              *context);
 #endif
 
 WEBKIT_API void
-webkit_web_context_add_path_to_sandbox              (WebKitWebContext              *context,
+webkit_web_context_add_path_to_sandbox              (CyberKitWebContext              *context,
                                                      const char                    *path,
                                                      gboolean                       read_only);
 
 WEBKIT_API gboolean
-webkit_web_context_get_spell_checking_enabled       (WebKitWebContext              *context);
+webkit_web_context_get_spell_checking_enabled       (CyberKitWebContext              *context);
 
 WEBKIT_API void
-webkit_web_context_set_spell_checking_enabled       (WebKitWebContext              *context,
+webkit_web_context_set_spell_checking_enabled       (CyberKitWebContext              *context,
                                                      gboolean                       enabled);
 WEBKIT_API const gchar * const *
-webkit_web_context_get_spell_checking_languages     (WebKitWebContext              *context);
+webkit_web_context_get_spell_checking_languages     (CyberKitWebContext              *context);
 
 WEBKIT_API void
-webkit_web_context_set_spell_checking_languages     (WebKitWebContext              *context,
+webkit_web_context_set_spell_checking_languages     (CyberKitWebContext              *context,
                                                      const gchar * const           *languages);
 
 WEBKIT_API void
-webkit_web_context_set_preferred_languages          (WebKitWebContext              *context,
+webkit_web_context_set_preferred_languages          (CyberKitWebContext              *context,
                                                      const gchar * const           *languages);
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_DEPRECATED_FOR(webkit_website_data_manager_set_tls_errors_policy) void
-webkit_web_context_set_tls_errors_policy            (WebKitWebContext              *context,
-                                                     WebKitTLSErrorsPolicy          policy);
+webkit_web_context_set_tls_errors_policy            (CyberKitWebContext              *context,
+                                                     CyberKitTLSErrorsPolicy          policy);
 
-WEBKIT_DEPRECATED_FOR(webkit_website_data_manager_get_tls_errors_policy) WebKitTLSErrorsPolicy
-webkit_web_context_get_tls_errors_policy            (WebKitWebContext              *context);
+WEBKIT_DEPRECATED_FOR(webkit_website_data_manager_get_tls_errors_policy) CyberKitTLSErrorsPolicy
+webkit_web_context_get_tls_errors_policy            (CyberKitWebContext              *context);
 #endif
 
 WEBKIT_API void
-webkit_web_context_set_web_extensions_directory     (WebKitWebContext              *context,
+webkit_web_context_set_web_extensions_directory     (CyberKitWebContext              *context,
                                                      const gchar                   *directory);
 
 WEBKIT_API void
 webkit_web_context_set_web_extensions_initialization_user_data
-                                                    (WebKitWebContext              *context,
+                                                    (CyberKitWebContext              *context,
                                                      GVariant                      *user_data);
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_API void
-webkit_web_context_prefetch_dns                     (WebKitWebContext              *context,
+webkit_web_context_prefetch_dns                     (CyberKitWebContext              *context,
                                                      const gchar                   *hostname);
 
 #if PLATFORM(GTK)
 WEBKIT_DEPRECATED_FOR(webkit_web_context_new_with_website_data_manager) void
-webkit_web_context_set_disk_cache_directory         (WebKitWebContext              *context,
+webkit_web_context_set_disk_cache_directory         (CyberKitWebContext              *context,
                                                      const gchar                   *directory);
 #endif
 
 WEBKIT_API void
-webkit_web_context_allow_tls_certificate_for_host   (WebKitWebContext              *context,
+webkit_web_context_allow_tls_certificate_for_host   (CyberKitWebContext              *context,
                                                      GTlsCertificate               *certificate,
                                                      const gchar                   *host);
 
 WEBKIT_DEPRECATED void
-webkit_web_context_set_process_model                (WebKitWebContext              *context,
-                                                     WebKitProcessModel             process_model);
+webkit_web_context_set_process_model                (CyberKitWebContext              *context,
+                                                     CyberKitProcessModel             process_model);
 
-WEBKIT_DEPRECATED WebKitProcessModel
-webkit_web_context_get_process_model                (WebKitWebContext              *context);
+WEBKIT_DEPRECATED CyberKitProcessModel
+webkit_web_context_get_process_model                (CyberKitWebContext              *context);
 #endif
 
 WEBKIT_API void
 webkit_web_context_initialize_notification_permissions
-                                                    (WebKitWebContext              *context,
+                                                    (CyberKitWebContext              *context,
                                                      GList                         *allowed_origins,
                                                      GList                         *disallowed_origins);
 
 WEBKIT_API void
-webkit_web_context_send_message_to_all_extensions   (WebKitWebContext              *context,
-                                                     WebKitUserMessage             *message);
+webkit_web_context_send_message_to_all_extensions   (CyberKitWebContext              *context,
+                                                     CyberKitUserMessage             *message);
 
 #if PLATFORM(GTK) && !USE(GTK4)
 WEBKIT_API void
-webkit_web_context_set_use_system_appearance_for_scrollbars (WebKitWebContext      *context,
+webkit_web_context_set_use_system_appearance_for_scrollbars (CyberKitWebContext      *context,
                                                              gboolean               enabled);
 
 WEBKIT_API gboolean
-webkit_web_context_get_use_system_appearance_for_scrollbars (WebKitWebContext      *context);
+webkit_web_context_get_use_system_appearance_for_scrollbars (CyberKitWebContext      *context);
 #endif
 
 WEBKIT_API const gchar*
-webkit_web_context_get_time_zone_override           (WebKitWebContext              *context);
+webkit_web_context_get_time_zone_override           (CyberKitWebContext              *context);
 
 G_END_DECLS
 

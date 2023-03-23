@@ -39,7 +39,7 @@ def plugin_unloaded():
 
 class Settings(object):
     def __init__(self):
-        self._settings = sublime.load_settings('CopyWebKitPermalink.sublime-settings')
+        self._settings = sublime.load_settings('CopyCyberKitPermalink.sublime-settings')
         self._cache = {}
 
     def unload(self):
@@ -75,7 +75,7 @@ class Settings(object):
         self._cache[key] = value
         self._settings.set(key, value)
 
-class CopyWebKitPermalinkCommand(sublime_plugin.TextCommand):
+class CopyCyberKitPermalinkCommand(sublime_plugin.TextCommand):
     def run(self, edit, annotate_blame=False):
         if not self.is_enabled():
             return
@@ -110,7 +110,7 @@ class CopyWebKitPermalinkCommand(sublime_plugin.TextCommand):
         return self.is_enabled()
 
     def description(self):
-        return 'Copy WebKit Permalink'
+        return 'Copy CyberKit Permalink'
 
     def is_git_directory(self):
         try:

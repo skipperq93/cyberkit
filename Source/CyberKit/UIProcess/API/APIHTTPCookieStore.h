@@ -42,7 +42,7 @@ struct Cookie;
 enum class HTTPCookieAcceptPolicy : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class NetworkProcessProxy;
 class WebsiteDataStore;
 }
@@ -51,7 +51,7 @@ namespace API {
 
 class HTTPCookieStore final : public ObjectImpl<Object::Type::HTTPCookieStore> {
 public:
-    static Ref<HTTPCookieStore> create(WebKit::WebsiteDataStore& websiteDataStore)
+    static Ref<HTTPCookieStore> create(CyberKit::WebsiteDataStore& websiteDataStore)
     {
         return adoptRef(*new HTTPCookieStore(websiteDataStore));
     }
@@ -83,16 +83,16 @@ public:
     void filterAppBoundCookies(Vector<CyberCore::Cookie>&&, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&&);
 
 #if USE(SOUP)
-    void setCookiePersistentStorage(const WTF::String& storagePath, WebKit::SoupCookiePersistentStorageType);
+    void setCookiePersistentStorage(const WTF::String& storagePath, CyberKit::SoupCookiePersistentStorageType);
 #endif
 
 private:
-    HTTPCookieStore(WebKit::WebsiteDataStore&);
-    WebKit::NetworkProcessProxy* networkProcessIfExists();
-    WebKit::NetworkProcessProxy* networkProcessLaunchingIfNecessary();
+    HTTPCookieStore(CyberKit::WebsiteDataStore&);
+    CyberKit::NetworkProcessProxy* networkProcessIfExists();
+    CyberKit::NetworkProcessProxy* networkProcessLaunchingIfNecessary();
 
     PAL::SessionID m_sessionID;
-    WeakPtr<WebKit::WebsiteDataStore> m_owningDataStore;
+    WeakPtr<CyberKit::WebsiteDataStore> m_owningDataStore;
     WeakHashSet<Observer> m_observers;
 };
 

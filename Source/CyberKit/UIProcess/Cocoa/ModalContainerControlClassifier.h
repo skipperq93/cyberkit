@@ -34,7 +34,7 @@ namespace CyberCore {
 enum class ModalContainerControlType : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ModalContainerControlClassifier {
     WTF_MAKE_FAST_ALLOCATED;
@@ -53,4 +53,4 @@ private:
     RetainPtr<MLModel> m_model;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

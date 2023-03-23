@@ -34,7 +34,7 @@
 OBJC_CLASS WKContentView;
 OBJC_CLASS UIScrollView;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -62,6 +62,6 @@ private:
     WKContentView *m_contentView;
 };
     
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

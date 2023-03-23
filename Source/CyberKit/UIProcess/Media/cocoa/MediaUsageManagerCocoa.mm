@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static bool usageTrackingAvailable()
@@ -217,7 +217,7 @@ bool MediaUsageManagerCocoa::isPlayingVideoInViewport() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_USAGE)
 

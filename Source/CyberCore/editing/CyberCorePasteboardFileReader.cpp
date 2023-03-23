@@ -24,22 +24,22 @@
  */
 
 #include "config.h"
-#include "WebCorePasteboardFileReader.h"
+#include "CyberCorePasteboardFileReader.h"
 
 #include "Document.h"
 #include "File.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
-WebCorePasteboardFileReader::~WebCorePasteboardFileReader() = default;
+CyberCorePasteboardFileReader::~CyberCorePasteboardFileReader() = default;
 
-void WebCorePasteboardFileReader::readFilename(const String& filename)
+void CyberCorePasteboardFileReader::readFilename(const String& filename)
 {
     files.append(File::create(context.get(), filename));
 }
 
-void WebCorePasteboardFileReader::readBuffer(const String& filename, const String& type, Ref<SharedBuffer>&& buffer)
+void CyberCorePasteboardFileReader::readBuffer(const String& filename, const String& type, Ref<SharedBuffer>&& buffer)
 {
     files.append(File::create(context.get(), Blob::create(context.get(), buffer->extractData(), type), filename));
 }

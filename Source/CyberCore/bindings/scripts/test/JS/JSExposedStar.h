@@ -24,7 +24,7 @@
 #include "JSDOMWrapper.h"
 #include "JSEventTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSExposedStar : public JSEventTarget {
 public:
@@ -77,4 +77,4 @@ template<> struct JSDOMWrapperConverterTraits<ExposedStar> {
     using ToWrappedReturnType = ExposedStar*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

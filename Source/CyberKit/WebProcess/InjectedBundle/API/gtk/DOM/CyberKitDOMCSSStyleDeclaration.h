@@ -55,7 +55,7 @@ webkit_dom_css_style_declaration_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_style_declaration_get_property_value(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
@@ -68,7 +68,7 @@ webkit_dom_css_style_declaration_get_property_value(CyberKitDOMCSSStyleDeclarati
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_style_declaration_remove_property(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName, GError** error);
@@ -80,7 +80,7 @@ webkit_dom_css_style_declaration_remove_property(CyberKitDOMCSSStyleDeclaration*
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_style_declaration_get_property_priority(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
@@ -94,7 +94,7 @@ webkit_dom_css_style_declaration_get_property_priority(CyberKitDOMCSSStyleDeclar
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_css_style_declaration_set_property(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName, const gchar* value, const gchar* priority, GError** error);
@@ -106,7 +106,7 @@ webkit_dom_css_style_declaration_set_property(CyberKitDOMCSSStyleDeclaration* se
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_style_declaration_item(CyberKitDOMCSSStyleDeclaration* self, gulong index);
@@ -118,7 +118,7 @@ webkit_dom_css_style_declaration_item(CyberKitDOMCSSStyleDeclaration* self, gulo
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_style_declaration_get_property_shorthand(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
@@ -130,7 +130,7 @@ webkit_dom_css_style_declaration_get_property_shorthand(CyberKitDOMCSSStyleDecla
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_css_style_declaration_is_property_implicit(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
@@ -141,7 +141,7 @@ webkit_dom_css_style_declaration_is_property_implicit(CyberKitDOMCSSStyleDeclara
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_style_declaration_get_css_text(CyberKitDOMCSSStyleDeclaration* self);
@@ -153,7 +153,7 @@ webkit_dom_css_style_declaration_get_css_text(CyberKitDOMCSSStyleDeclaration* se
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_css_style_declaration_set_css_text(CyberKitDOMCSSStyleDeclaration* self, const gchar* value, GError** error);
@@ -164,7 +164,7 @@ webkit_dom_css_style_declaration_set_css_text(CyberKitDOMCSSStyleDeclaration* se
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_css_style_declaration_get_length(CyberKitDOMCSSStyleDeclaration* self);
@@ -175,7 +175,7 @@ webkit_dom_css_style_declaration_get_length(CyberKitDOMCSSStyleDeclaration* self
  *
  * Returns: (transfer full): A #CyberKitDOMCSSRule
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSRule*
 webkit_dom_css_style_declaration_get_parent_rule(CyberKitDOMCSSStyleDeclaration* self);

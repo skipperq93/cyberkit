@@ -27,7 +27,7 @@
 
 #include "DeclarativeAnimationEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSAnimationEvent final : public DeclarativeAnimationEvent {
     WTF_MAKE_ISO_ALLOCATED(CSSAnimationEvent);
@@ -63,6 +63,6 @@ private:
     String m_animationName;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_ANIMATION_EVENT_BASE(CSSAnimationEvent, isCSSAnimationEvent())

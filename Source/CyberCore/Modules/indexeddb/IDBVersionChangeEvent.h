@@ -28,7 +28,7 @@
 #include "Event.h"
 #include "IDBResourceIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBVersionChangeEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(IDBVersionChangeEvent);
@@ -71,8 +71,8 @@ private:
     std::optional<uint64_t> m_newVersion;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::IDBVersionChangeEvent)
-    static bool isType(const WebCore::Event& event) { return event.isVersionChangeEvent(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::IDBVersionChangeEvent)
+    static bool isType(const CyberCore::Event& event) { return event.isVersionChangeEvent(); }
 SPECIALIZE_TYPE_TRAITS_END()

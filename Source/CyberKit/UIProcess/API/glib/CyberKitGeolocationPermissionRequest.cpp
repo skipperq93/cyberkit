@@ -18,30 +18,30 @@
  */
 
 #include "config.h"
-#include "WebKitGeolocationPermissionRequest.h"
+#include "CyberKitGeolocationPermissionRequest.h"
 
 #include "GeolocationPermissionRequestProxy.h"
-#include "WebKitGeolocationPermissionRequestPrivate.h"
-#include "WebKitPermissionRequest.h"
+#include "CyberKitGeolocationPermissionRequestPrivate.h"
+#include "CyberKitPermissionRequest.h"
 #include <wtf/glib/WTFGType.h>
 
 #if !ENABLE(2022_GLIB_API)
-typedef WebKitPermissionRequestIface WebKitPermissionRequestInterface;
+typedef CyberKitPermissionRequestIface CyberKitPermissionRequestInterface;
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitGeolocationPermissionRequest:
- * @See_also: #WebKitPermissionRequest, #WebKitWebView
+ * CyberKitGeolocationPermissionRequest:
+ * @See_also: #CyberKitPermissionRequest, #CyberKitWebView
  *
  * A permission request for sharing the user's location.
  *
- * WebKitGeolocationPermissionRequest represents a request for
- * permission to decide whether WebKit should provide the user's
+ * CyberKitGeolocationPermissionRequest represents a request for
+ * permission to decide whether CyberKit should provide the user's
  * location to a website when requested through the Geolocation API.
  *
- * When a WebKitGeolocationPermissionRequest is not handled by the user,
+ * When a CyberKitGeolocationPermissionRequest is not handled by the user,
  * it is denied by default.
  *
  * When embedding web views in your application, you *must* configure an
@@ -50,7 +50,7 @@ using namespace WebKit;
  * the application, sans the suffix.
  *
  * If your application uses #GApplication (or any subclass like
- * #GtkApplication), WebKit will automatically use the identifier returned by
+ * #GtkApplication), CyberKit will automatically use the identifier returned by
  * g_application_get_application_id(). This is the recommended approach for
  * enabling geolocation in applications.
  *
@@ -61,22 +61,22 @@ using namespace WebKit;
  * does not match the name of a valid `.desktop` file.
  */
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface*);
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface*);
 
-struct _WebKitGeolocationPermissionRequestPrivate {
+struct _CyberKitGeolocationPermissionRequestPrivate {
     RefPtr<GeolocationPermissionRequest> request;
     bool madeDecision;
 };
 
 WEBKIT_DEFINE_FINAL_TYPE_WITH_CODE(
-    WebKitGeolocationPermissionRequest, webkit_geolocation_permission_request, G_TYPE_OBJECT, GObject,
+    CyberKitGeolocationPermissionRequest, webkit_geolocation_permission_request, G_TYPE_OBJECT, GObject,
     G_IMPLEMENT_INTERFACE(WEBKIT_TYPE_PERMISSION_REQUEST, webkit_permission_request_interface_init))
 
-static void webkitGeolocationPermissionRequestAllow(WebKitPermissionRequest* request)
+static void webkitGeolocationPermissionRequestAllow(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_GEOLOCATION_PERMISSION_REQUEST(request));
 
-    WebKitGeolocationPermissionRequestPrivate* priv = WEBKIT_GEOLOCATION_PERMISSION_REQUEST(request)->priv;
+    CyberKitGeolocationPermissionRequestPrivate* priv = WEBKIT_GEOLOCATION_PERMISSION_REQUEST(request)->priv;
 
     // Only one decision at a time.
     if (priv->madeDecision)
@@ -86,11 +86,11 @@ static void webkitGeolocationPermissionRequestAllow(WebKitPermissionRequest* req
     priv->madeDecision = true;
 }
 
-static void webkitGeolocationPermissionRequestDeny(WebKitPermissionRequest* request)
+static void webkitGeolocationPermissionRequestDeny(CyberKitPermissionRequest* request)
 {
     ASSERT(WEBKIT_IS_GEOLOCATION_PERMISSION_REQUEST(request));
 
-    WebKitGeolocationPermissionRequestPrivate* priv = WEBKIT_GEOLOCATION_PERMISSION_REQUEST(request)->priv;
+    CyberKitGeolocationPermissionRequestPrivate* priv = WEBKIT_GEOLOCATION_PERMISSION_REQUEST(request)->priv;
 
     // Only one decision at a time.
     if (priv->madeDecision)
@@ -100,7 +100,7 @@ static void webkitGeolocationPermissionRequestDeny(WebKitPermissionRequest* requ
     priv->madeDecision = true;
 }
 
-static void webkit_permission_request_interface_init(WebKitPermissionRequestInterface* iface)
+static void webkit_permission_request_interface_init(CyberKitPermissionRequestInterface* iface)
 {
     iface->allow = webkitGeolocationPermissionRequestAllow;
     iface->deny = webkitGeolocationPermissionRequestDeny;
@@ -113,15 +113,15 @@ static void webkitGeolocationPermissionRequestDispose(GObject* object)
     G_OBJECT_CLASS(webkit_geolocation_permission_request_parent_class)->dispose(object);
 }
 
-static void webkit_geolocation_permission_request_class_init(WebKitGeolocationPermissionRequestClass* klass)
+static void webkit_geolocation_permission_request_class_init(CyberKitGeolocationPermissionRequestClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->dispose = webkitGeolocationPermissionRequestDispose;
 }
 
-WebKitGeolocationPermissionRequest* webkitGeolocationPermissionRequestCreate(GeolocationPermissionRequest* request)
+CyberKitGeolocationPermissionRequest* webkitGeolocationPermissionRequestCreate(GeolocationPermissionRequest* request)
 {
-    WebKitGeolocationPermissionRequest* geolocationPermissionRequest = WEBKIT_GEOLOCATION_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_GEOLOCATION_PERMISSION_REQUEST, NULL));
+    CyberKitGeolocationPermissionRequest* geolocationPermissionRequest = WEBKIT_GEOLOCATION_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_GEOLOCATION_PERMISSION_REQUEST, NULL));
     geolocationPermissionRequest->priv->request = request;
     return geolocationPermissionRequest;
 }

@@ -24,7 +24,7 @@
 #include "DOMWindowProperty.h"
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Geolocation;
 class Navigator;
@@ -50,6 +50,6 @@ private:
     Navigator& m_navigator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GEOLOCATION)

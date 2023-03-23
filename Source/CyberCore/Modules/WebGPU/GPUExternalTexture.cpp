@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUExternalTexture.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUExternalTexture::label() const
 {

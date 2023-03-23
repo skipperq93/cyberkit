@@ -32,7 +32,7 @@
 #include "JSFileSystemDirectoryHandle.h"
 #include "JSFileSystemFileHandle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObject, FileSystemHandle& handle)
 {

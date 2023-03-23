@@ -35,7 +35,7 @@
 #include "TextUtil.h"
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct CommittedContent {

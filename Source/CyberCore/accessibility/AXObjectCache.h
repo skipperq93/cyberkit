@@ -43,7 +43,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLAreaElement;
@@ -749,4 +749,4 @@ inline AXAttributeCacheEnabler::~AXAttributeCacheEnabler() { }
 
 WTF::TextStream& operator<<(WTF::TextStream&, AXObjectCache::AXNotification);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -64,7 +64,7 @@
 #include <memory>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isCustomPropertyName(StringView propertyName)
 {
@@ -289,7 +289,7 @@ bool CSSPropertyParser::parseValueStart(CSSPropertyID propertyID, bool important
         return true;
 
     CSSParserTokenRange originalRange = m_range;
-    bool isShorthand = WebCore::isShorthand(propertyID);
+    bool isShorthand = CyberCore::isShorthand(propertyID);
 
     if (isShorthand) {
         // Variable references will fail to parse here and will fall out to the variable ref parser below.
@@ -2743,4 +2743,4 @@ bool CSSPropertyParser::parseShorthand(CSSPropertyID property, bool important)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ContextDestructionObserver::ContextDestructionObserver(ScriptExecutionContext* scriptExecutionContext)
     : m_scriptExecutionContext(nullptr)
@@ -62,4 +62,4 @@ void ContextDestructionObserver::contextDestroyed()
     m_scriptExecutionContext = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

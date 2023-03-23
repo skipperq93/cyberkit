@@ -33,7 +33,7 @@
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool normalizeQuaternion(DOMPointInit& q)
 {
@@ -163,6 +163,6 @@ const TransformationMatrix& WebXRRigidTransform::rawTransform() const
     return m_rawTransform;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

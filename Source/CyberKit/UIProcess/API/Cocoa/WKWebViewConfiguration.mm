@@ -36,7 +36,7 @@
 #import "WKWebpagePreferencesInternal.h"
 #import <CyberKit/WKWebView.h>
 #import "WKWebViewContentProviderRegistry.h"
-#import "WebKit2Initialize.h"
+#import "CyberKit2Initialize.h"
 #import "WebPreferencesDefaultValues.h"
 #import "WebPreferencesDefinitions.h"
 #import "WebURLSchemeHandlerCocoa.h"
@@ -195,7 +195,7 @@ static bool defaultShouldDecidePolicyBeforeLoadingQuickLookPreview()
     if (!(self = [super init]))
         return nil;
 
-    WebKit::InitializeWebKit2();
+    CyberKit::InitializeCyberKit2();
 
     _pageConfiguration = API::PageConfiguration::create();
 
@@ -204,7 +204,7 @@ static bool defaultShouldDecidePolicyBeforeLoadingQuickLookPreview()
     _allowsPictureInPictureMediaPlayback = YES;
 #endif
 
-    _allowsInlineMediaPlayback = !WebKit::currentUserInterfaceIdiomIsSmallScreen();
+    _allowsInlineMediaPlayback = !CyberKit::currentUserInterfaceIdiomIsSmallScreen();
     _inlineMediaPlaybackRequiresPlaysInlineAttribute = !_allowsInlineMediaPlayback;
     _allowsInlineMediaPlaybackAfterFullscreen = !_allowsInlineMediaPlayback;
     _mediaDataLoadsAutomatically = _allowsInlineMediaPlayback;
@@ -252,7 +252,7 @@ static bool defaultShouldDecidePolicyBeforeLoadingQuickLookPreview()
 
 #if PLATFORM(IOS_FAMILY)
     _selectionGranularity = WKSelectionGranularityDynamic;
-    _dragLiftDelay = toDragLiftDelay([[NSUserDefaults standardUserDefaults] integerForKey:@"WebKitDebugDragLiftDelay"]);
+    _dragLiftDelay = toDragLiftDelay([[NSUserDefaults standardUserDefaults] integerForKey:@"CyberKitDebugDragLiftDelay"]);
 #if PLATFORM(WATCHOS)
     _textInteractionGesturesEnabled = NO;
     _longPressActionsEnabled = NO;
@@ -632,7 +632,7 @@ static NSString *defaultApplicationNameForUserAgent()
     if (_pageConfiguration->urlSchemeHandlerForURLScheme(*canonicalScheme))
         [NSException raise:NSInvalidArgumentException format:@"URL scheme '%@' already has a registered URL scheme handler", urlScheme];
 
-    _pageConfiguration->setURLSchemeHandlerForURLScheme(WebKit::WebURLSchemeHandlerCocoa::create(urlSchemeHandler), *canonicalScheme);
+    _pageConfiguration->setURLSchemeHandlerForURLScheme(CyberKit::WebURLSchemeHandlerCocoa::create(urlSchemeHandler), *canonicalScheme);
 }
 
 - (id <WKURLSchemeHandler>)urlSchemeHandlerForURLScheme:(NSString *)urlScheme
@@ -645,7 +645,7 @@ static NSString *defaultApplicationNameForUserAgent()
     if (!handler || !handler->isAPIHandler())
         return nil;
 
-    return static_cast<WebKit::WebURLSchemeHandlerCocoa*>(handler.get())->apiHandler();
+    return static_cast<CyberKit::WebURLSchemeHandlerCocoa*>(handler.get())->apiHandler();
 }
 
 #if PLATFORM(IOS_FAMILY)
@@ -900,22 +900,22 @@ static NSString *defaultApplicationNameForUserAgent()
     return _pageConfiguration->clickInteractionDriverForTesting().get();
 }
 
-static _WKAttributionOverrideTesting toWKAttributionOverrideTesting(WebKit::AttributionOverrideTesting value)
+static _WKAttributionOverrideTesting toWKAttributionOverrideTesting(CyberKit::AttributionOverrideTesting value)
 {
-    if (value == WebKit::AttributionOverrideTesting::AppInitiated)
+    if (value == CyberKit::AttributionOverrideTesting::AppInitiated)
         return _WKAttributionOverrideTestingAppInitiated;
-    if (value == WebKit::AttributionOverrideTesting::UserInitiated)
+    if (value == CyberKit::AttributionOverrideTesting::UserInitiated)
         return _WKAttributionOverrideTestingUserInitiated;
     return _WKAttributionOverrideTestingNoOverride;
 }
 
-static WebKit::AttributionOverrideTesting toAttributionOverrideTesting(_WKAttributionOverrideTesting value)
+static CyberKit::AttributionOverrideTesting toAttributionOverrideTesting(_WKAttributionOverrideTesting value)
 {
     if (value == _WKAttributionOverrideTestingAppInitiated)
-        return WebKit::AttributionOverrideTesting::AppInitiated;
+        return CyberKit::AttributionOverrideTesting::AppInitiated;
     if (value == _WKAttributionOverrideTestingUserInitiated)
-        return WebKit::AttributionOverrideTesting::UserInitiated;
-    return WebKit::AttributionOverrideTesting::NoOverride;
+        return CyberKit::AttributionOverrideTesting::UserInitiated;
+    return CyberKit::AttributionOverrideTesting::NoOverride;
 }
 
 - (void)_setAppInitiatedOverrideValueForTesting:(_WKAttributionOverrideTesting)value
@@ -1390,7 +1390,7 @@ static WebKit::AttributionOverrideTesting toAttributionOverrideTesting(_WKAttrib
 
 - (void)_setShouldRelaxThirdPartyCookieBlocking:(BOOL)relax
 {
-    bool allowed = CyberCore::applicationBundleIdentifier() == "com.apple.WebKit.TestWebKitAPI"_s;
+    bool allowed = CyberCore::applicationBundleIdentifier() == "com.apple.CyberKit.TestCyberKitAPI"_s;
 #if PLATFORM(MAC)
     allowed = allowed || CyberCore::MacApplication::isSafari();
 #elif PLATFORM(IOS_FAMILY)
@@ -1447,12 +1447,12 @@ static WebKit::AttributionOverrideTesting toAttributionOverrideTesting(_WKAttrib
 
 - (void)_setContentSecurityPolicyModeForExtension:(_WKContentSecurityPolicyModeForExtension)mode
 {
-    _pageConfiguration->setContentSecurityPolicyModeForExtension(WebKit::toContentSecurityPolicyModeForExtension(mode));
+    _pageConfiguration->setContentSecurityPolicyModeForExtension(CyberKit::toContentSecurityPolicyModeForExtension(mode));
 }
 
 - (_WKContentSecurityPolicyModeForExtension)_contentSecurityPolicyModeForExtension
 {
-    return WebKit::toWKContentSecurityPolicyModeForExtension(_pageConfiguration->contentSecurityPolicyModeForExtension());
+    return CyberKit::toWKContentSecurityPolicyModeForExtension(_pageConfiguration->contentSecurityPolicyModeForExtension());
 }
 
 - (void)_setMarkedTextInputEnabled:(BOOL)enabled

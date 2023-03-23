@@ -57,7 +57,7 @@
 #include <wtf/Scope.h>
 #include <wtf/UUID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PaymentRequest);
 
@@ -814,6 +814,6 @@ void PaymentRequest::cancel()
     abortWithException(Exception { AbortError });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

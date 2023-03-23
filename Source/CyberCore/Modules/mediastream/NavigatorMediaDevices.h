@@ -35,7 +35,7 @@
 #include "DOMWindowProperty.h"
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaDevices;
 class Navigator;
@@ -56,6 +56,6 @@ private:
     mutable RefPtr<MediaDevices> m_mediaDevices;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

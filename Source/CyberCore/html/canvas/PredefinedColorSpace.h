@@ -28,7 +28,7 @@
 #include <optional>
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DestinationColorSpace;
 
@@ -46,12 +46,12 @@ std::optional<PredefinedColorSpace> toPredefinedColorSpace(const DestinationColo
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PredefinedColorSpace> {
+template<> struct EnumTraits<CyberCore::PredefinedColorSpace> {
     using values = EnumValues<
-        WebCore::PredefinedColorSpace,
-        WebCore::PredefinedColorSpace::SRGB
+        CyberCore::PredefinedColorSpace,
+        CyberCore::PredefinedColorSpace::SRGB
 #if ENABLE(PREDEFINED_COLOR_SPACE_DISPLAY_P3)
-        , WebCore::PredefinedColorSpace::DisplayP3
+        , CyberCore::PredefinedColorSpace::DisplayP3
 #endif
     >;
 };

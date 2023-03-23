@@ -41,7 +41,7 @@
 #include "StylePropertyMap.h"
 #include "StylePropertyMapReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ElementRareData : public NodeRareData {
 public:
@@ -298,4 +298,4 @@ inline ShadowRoot* Element::shadowRoot() const
     return hasRareData() ? elementRareData()->shadowRoot() : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

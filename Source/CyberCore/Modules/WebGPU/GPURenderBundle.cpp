@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPURenderBundle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPURenderBundle::label() const
 {

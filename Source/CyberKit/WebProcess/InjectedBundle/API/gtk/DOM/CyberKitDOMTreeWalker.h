@@ -54,7 +54,7 @@ webkit_dom_tree_walker_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_parent_node(CyberKitDOMTreeWalker* self);
@@ -65,7 +65,7 @@ webkit_dom_tree_walker_parent_node(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_first_child(CyberKitDOMTreeWalker* self);
@@ -76,7 +76,7 @@ webkit_dom_tree_walker_first_child(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_last_child(CyberKitDOMTreeWalker* self);
@@ -87,7 +87,7 @@ webkit_dom_tree_walker_last_child(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_previous_sibling(CyberKitDOMTreeWalker* self);
@@ -98,7 +98,7 @@ webkit_dom_tree_walker_previous_sibling(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_next_sibling(CyberKitDOMTreeWalker* self);
@@ -109,7 +109,7 @@ webkit_dom_tree_walker_next_sibling(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_previous_node(CyberKitDOMTreeWalker* self);
@@ -120,7 +120,7 @@ webkit_dom_tree_walker_previous_node(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_next_node(CyberKitDOMTreeWalker* self);
@@ -131,7 +131,7 @@ webkit_dom_tree_walker_next_node(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_get_root(CyberKitDOMTreeWalker* self);
@@ -142,7 +142,7 @@ webkit_dom_tree_walker_get_root(CyberKitDOMTreeWalker* self);
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_tree_walker_get_what_to_show(CyberKitDOMTreeWalker* self);
@@ -153,7 +153,7 @@ webkit_dom_tree_walker_get_what_to_show(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer full): A #CyberKitDOMNodeFilter
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNodeFilter*
 webkit_dom_tree_walker_get_filter(CyberKitDOMTreeWalker* self);
@@ -164,7 +164,7 @@ webkit_dom_tree_walker_get_filter(CyberKitDOMTreeWalker* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_tree_walker_get_current_node(CyberKitDOMTreeWalker* self);
@@ -176,7 +176,7 @@ webkit_dom_tree_walker_get_current_node(CyberKitDOMTreeWalker* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_tree_walker_set_current_node(CyberKitDOMTreeWalker* self, CyberKitDOMNode* value, GError** error);

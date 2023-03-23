@@ -28,7 +28,7 @@
 #include <wtf/HashCountedSet.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderWidget;
 
@@ -106,8 +106,8 @@ private:
     ContainerNode* m_root;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLFrameOwnerElement)
-    static bool isType(const WebCore::Node& node) { return node.isFrameOwnerElement(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLFrameOwnerElement)
+    static bool isType(const CyberCore::Node& node) { return node.isFrameOwnerElement(); }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -30,7 +30,7 @@
 #include "FlexRect.h"
 #include <wtf/Range.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 // This class implements the layout logic for flex formatting contexts.

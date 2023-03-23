@@ -19,6 +19,6 @@
 
 #pragma once
 
-#include "WebKitGeolocationPermissionRequest.h"
+#include "CyberKitGeolocationPermissionRequest.h"
 
-WebKitGeolocationPermissionRequest* webkitGeolocationPermissionRequestCreate(WebKit::GeolocationPermissionRequest*);
+CyberKitGeolocationPermissionRequest* webkitGeolocationPermissionRequestCreate(CyberKit::GeolocationPermissionRequest*);

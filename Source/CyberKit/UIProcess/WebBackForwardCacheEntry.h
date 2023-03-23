@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SuspendedPageProxy;
 class WebBackForwardCache;
@@ -59,4 +59,4 @@ private:
     RunLoop::Timer m_expirationTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

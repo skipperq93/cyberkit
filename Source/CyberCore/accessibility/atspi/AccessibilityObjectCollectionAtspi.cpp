@@ -24,7 +24,7 @@
 #include "AccessibilityAtspi.h"
 #include "AccessibilityAtspiEnums.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_collectionFunctions = {
     // method_call
@@ -375,6 +375,6 @@ Vector<RefPtr<AccessibilityObjectAtspi>> AccessibilityObjectAtspi::matches(Colle
     return matchList;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

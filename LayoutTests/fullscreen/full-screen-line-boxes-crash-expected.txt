@@ -1,4 +1,4 @@
-PASS. WebKit didn't crash.
+PASS. CyberKit didn't crash.
 EVENT(webkitfullscreenchange)
 END OF TEST
 

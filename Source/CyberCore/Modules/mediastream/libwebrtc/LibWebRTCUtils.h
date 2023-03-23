@@ -47,7 +47,7 @@ enum class RTCErrorType;
 enum class RtpTransceiverDirection;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Exception;
 class RTCError;
@@ -82,6 +82,6 @@ inline String fromStdString(const std::string& value)
 
 RTCIceCandidateFields convertIceCandidate(const cricket::Candidate&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

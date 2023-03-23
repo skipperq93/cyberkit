@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitUtilities.h"
+#include "CyberKitUtilities.h"
 
 #include "api/make_ref_counted.h"
 #include "api/video/i420_buffer.h"

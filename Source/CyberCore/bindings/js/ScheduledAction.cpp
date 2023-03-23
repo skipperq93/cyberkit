@@ -43,7 +43,7 @@
 #include "WorkerThread.h"
 #include <CyberScriptCore/JSLock.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 std::unique_ptr<ScheduledAction> ScheduledAction::create(DOMWrapperWorld& isolatedWorld, Strong<JSObject>&& function)
@@ -157,4 +157,4 @@ void ScheduledAction::execute(WorkerGlobalScope& workerGlobalScope)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

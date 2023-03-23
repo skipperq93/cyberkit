@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "WebKitFileChooserRequest.h"
+#include "CyberKitFileChooserRequest.h"
 #include "WebOpenPanelResultListenerProxy.h"
 
-WebKitFileChooserRequest* webkitFileChooserRequestCreate(API::OpenPanelParameters*, WebKit::WebOpenPanelResultListenerProxy*);
+CyberKitFileChooserRequest* webkitFileChooserRequestCreate(API::OpenPanelParameters*, CyberKit::WebOpenPanelResultListenerProxy*);

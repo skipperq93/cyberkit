@@ -40,7 +40,7 @@
 #include "WindowEventLoop.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaRecorder);
 
@@ -406,6 +406,6 @@ void MediaRecorder::computeBitRates(const MediaStreamPrivate* stream)
     m_videoBitsPerSecond = bitRates.video;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

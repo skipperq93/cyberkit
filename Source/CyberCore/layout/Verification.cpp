@@ -44,7 +44,7 @@
 #include "RenderView.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static bool areEssentiallyEqual(LayoutUnit a, LayoutUnit b)
@@ -69,7 +69,7 @@ static bool areEssentiallyEqual(LayoutRect a, LayoutRect b)
         && areEssentiallyEqual(a.height(), b.height());
 }
 
-static bool checkForMatchingNonTextRuns(const InlineDisplay::Box& box, const WebCore::LegacyInlineBox& inlineBox)
+static bool checkForMatchingNonTextRuns(const InlineDisplay::Box& box, const CyberCore::LegacyInlineBox& inlineBox)
 {
     return areEssentiallyEqual(inlineBox.left(), box.left())
         && areEssentiallyEqual(inlineBox.right(), box.right())
@@ -78,7 +78,7 @@ static bool checkForMatchingNonTextRuns(const InlineDisplay::Box& box, const Web
 }
 
 
-static bool checkForMatchingTextRuns(InlineDisplay::Box& box, const WebCore::LegacyInlineTextBox& inlineTextBox)
+static bool checkForMatchingTextRuns(InlineDisplay::Box& box, const CyberCore::LegacyInlineTextBox& inlineTextBox)
 {
     if (!box.isTextOrSoftLineBreak())
         return false;
@@ -89,7 +89,7 @@ static bool checkForMatchingTextRuns(InlineDisplay::Box& box, const WebCore::Leg
         && (inlineTextBox.isLineBreak() || (inlineTextBox.start() == box.text().start() && inlineTextBox.end() == box.text().end()));
 }
 
-static void collectFlowBoxSubtree(const LegacyInlineFlowBox& flowbox, Vector<WebCore::LegacyInlineBox*>& inlineBoxes)
+static void collectFlowBoxSubtree(const LegacyInlineFlowBox& flowbox, Vector<CyberCore::LegacyInlineBox*>& inlineBoxes)
 {
     auto* inlineBox = flowbox.firstLeafDescendant();
     auto* lastLeafDescendant = flowbox.lastLeafDescendant();
@@ -101,7 +101,7 @@ static void collectFlowBoxSubtree(const LegacyInlineFlowBox& flowbox, Vector<Web
     }
 }
 
-static void collectInlineBoxes(const RenderBlockFlow& root, Vector<WebCore::LegacyInlineBox*>& inlineBoxes)
+static void collectInlineBoxes(const RenderBlockFlow& root, Vector<CyberCore::LegacyInlineBox*>& inlineBoxes)
 {
     for (auto* rootLine = root.firstRootBox(); rootLine; rootLine = rootLine->nextRootBox()) {
         for (auto* inlineBox = rootLine->firstChild(); inlineBox; inlineBox = inlineBox->nextOnLine()) {
@@ -119,7 +119,7 @@ static bool outputMismatchingComplexLineInformationIfNeeded(TextStream& stream, 
     auto& inlineFormattingState = layoutState.formattingStateForFormattingContext(inlineFormattingRoot);
     auto& boxes = downcast<InlineFormattingState>(inlineFormattingState).boxes();
     // Collect inlineboxes.
-    Vector<WebCore::LegacyInlineBox*> inlineBoxes;
+    Vector<CyberCore::LegacyInlineBox*> inlineBoxes;
     collectInlineBoxes(blockFlow, inlineBoxes);
 
     auto mismatched = false;
@@ -133,7 +133,7 @@ static bool outputMismatchingComplexLineInformationIfNeeded(TextStream& stream, 
     for (unsigned inlineBoxIndex = 0; inlineBoxIndex < inlineBoxes.size() && boxIndex < boxes.size(); ++inlineBoxIndex) {
         auto& box = boxes[boxIndex];
         auto* inlineBox = inlineBoxes[inlineBoxIndex];
-        auto* inlineTextBox = dynamicDowncast<WebCore::LegacyInlineTextBox>(inlineBox);
+        auto* inlineTextBox = dynamicDowncast<CyberCore::LegacyInlineTextBox>(inlineBox);
         bool matchingRuns = inlineTextBox ? checkForMatchingTextRuns(box, *inlineTextBox) : checkForMatchingNonTextRuns(box, *inlineBox);
 
         if (!matchingRuns) {

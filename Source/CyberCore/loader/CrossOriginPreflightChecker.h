@@ -35,7 +35,7 @@
 #include "ResourceLoaderIdentifier.h"
 #include "ResourceRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedRawResource;
 class Document;
@@ -65,4 +65,4 @@ private:
     ResourceRequest m_request;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

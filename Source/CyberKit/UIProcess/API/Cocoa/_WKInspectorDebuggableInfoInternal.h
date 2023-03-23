@@ -28,7 +28,7 @@
 #import "APIDebuggableInfo.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::DebuggableInfo> {
     using WrapperClass = _WKInspectorDebuggableInfo;

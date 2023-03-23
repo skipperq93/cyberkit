@@ -54,7 +54,7 @@ webkit_dom_html_map_element_get_type(void);
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_html_map_element_get_areas(CyberKitDOMHTMLMapElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_map_element_get_areas(CyberKitDOMHTMLMapElement* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_map_element_get_name(CyberKitDOMHTMLMapElement* self);
@@ -76,7 +76,7 @@ webkit_dom_html_map_element_get_name(CyberKitDOMHTMLMapElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_map_element_set_name(CyberKitDOMHTMLMapElement* self, const gchar* value);

@@ -29,7 +29,7 @@ from webkitcorepy import OutputCapture, mocks as wkmocks
 
 
 class TestGitHub(unittest.TestCase):
-    URL = 'https://github.example.com/WebKit/WebKit'
+    URL = 'https://github.example.com/CyberKit/CyberKit'
 
     def test_encoding(self):
         self.assertEqual(
@@ -38,7 +38,7 @@ class TestGitHub(unittest.TestCase):
                 res=[re.compile(r'\Aexample.com/b/(?P<id>\d+)\Z')],
             )), dict(
                 type='github',
-                url='https://github.example.com/WebKit/WebKit',
+                url='https://github.example.com/CyberKit/CyberKit',
                 hide_title=False,
                 res=['\\Aexample.com/b/(?P<id>\\d+)\\Z']
             ),
@@ -50,7 +50,7 @@ class TestGitHub(unittest.TestCase):
             res=[re.compile(r'\Aexample.com/b/(?P<id>\d+)\Z')],
         ), cls=Tracker.Encoder))
         self.assertIsInstance(decoded, github.Tracker)
-        self.assertEqual(decoded.url, 'https://github.example.com/WebKit/WebKit')
+        self.assertEqual(decoded.url, 'https://github.example.com/CyberKit/CyberKit')
         self.assertEqual(decoded.from_string('example.com/b/1234').id, 1234)
 
     def test_users(self):
@@ -69,14 +69,14 @@ class TestGitHub(unittest.TestCase):
 
     def test_link(self):
         tracker = github.Tracker(self.URL)
-        self.assertEqual(tracker.issue(1234).link, 'https://github.example.com/WebKit/WebKit/issues/1234')
+        self.assertEqual(tracker.issue(1234).link, 'https://github.example.com/CyberKit/CyberKit/issues/1234')
         self.assertEqual(
-            tracker.from_string('http://github.example.com/WebKit/WebKit/issues/1234').link,
-            'https://github.example.com/WebKit/WebKit/issues/1234',
+            tracker.from_string('http://github.example.com/CyberKit/CyberKit/issues/1234').link,
+            'https://github.example.com/CyberKit/CyberKit/issues/1234',
         )
         self.assertEqual(
-            tracker.from_string('http://api.github.example.com/repos/WebKit/WebKit/issues/1234').link,
-            'https://github.example.com/WebKit/WebKit/issues/1234',
+            tracker.from_string('http://api.github.example.com/repos/CyberKit/CyberKit/issues/1234').link,
+            'https://github.example.com/CyberKit/CyberKit/issues/1234',
         )
         self.assertEqual(tracker.from_string('https://github.example.com/Apple/Swift/issues/1234'), None)
 
@@ -84,7 +84,7 @@ class TestGitHub(unittest.TestCase):
         with mocks.GitHub(self.URL.split('://')[1], issues=mocks.ISSUES):
             tracker = github.Tracker(self.URL)
             self.assertEqual(tracker.issue(1).title, 'Example issue 1')
-            self.assertEqual(str(tracker.issue(1)), 'https://github.example.com/WebKit/WebKit/issues/1 Example issue 1')
+            self.assertEqual(str(tracker.issue(1)), 'https://github.example.com/CyberKit/CyberKit/issues/1 Example issue 1')
 
     def test_timestamp(self):
         with mocks.GitHub(self.URL.split('://')[1], issues=mocks.ISSUES):
@@ -272,8 +272,8 @@ class TestGitHub(unittest.TestCase):
         with mocks.GitHub(self.URL.split('://')[1], projects=mocks.PROJECTS):
             self.assertDictEqual(
                 dict(
-                    WebKit=dict(
-                        versions=['All', 'Other', 'Safari 15', 'Safari Technology Preview', 'WebKit Local Build'],
+                    CyberKit=dict(
+                        versions=['All', 'Other', 'Safari 15', 'Safari Technology Preview', 'CyberKit Local Build'],
                         components=dict(
                             IPv4=dict(
                                 description='Bugs involving IPv4 networking',
@@ -337,12 +337,12 @@ class TestGitHub(unittest.TestCase):
                 dict(name='Tim Contributor', username='tcontributor', emails=['tcontributor@example.com']),
             )
 
-            self.assertEqual(created.project, 'WebKit')
+            self.assertEqual(created.project, 'CyberKit')
             self.assertEqual(created.component, 'SVG')
 
         self.assertEqual(
             captured.stdout.getvalue(),
-            '''What component in 'WebKit' should the bug be associated with?:
+            '''What component in 'CyberKit' should the bug be associated with?:
     1) IPv4
     2) IPv6
     3) SVG
@@ -356,7 +356,7 @@ class TestGitHub(unittest.TestCase):
     def test_get_component(self):
         with mocks.GitHub(self.URL.split('://')[1], issues=mocks.ISSUES, projects=mocks.PROJECTS):
             issue = github.Tracker(self.URL).issue(1)
-            self.assertEqual(issue.project, 'WebKit')
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'Text')
             self.assertEqual(issue.version, 'Other')
 
@@ -368,7 +368,7 @@ class TestGitHub(unittest.TestCase):
             github.Tracker(self.URL).issue(1).set_component(component='Tables', version='Safari 15')
 
             issue = github.Tracker(self.URL).issue(1)
-            self.assertEqual(issue.project, 'WebKit')
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'Tables')
             self.assertEqual(issue.version, 'Safari 15')
 
@@ -386,8 +386,8 @@ class TestGitHub(unittest.TestCase):
                 github.Tracker.Redaction(True, 'is a GitHub Issue'),
             )
             self.assertEqual(
-                github.Tracker(self.URL, redact={'project:WebKit': True}).issue(1).redacted,
-                github.Tracker.Redaction(True, "matches 'project:WebKit'"),
+                github.Tracker(self.URL, redact={'project:CyberKit': True}).issue(1).redacted,
+                github.Tracker.Redaction(True, "matches 'project:CyberKit'"),
             )
             self.assertEqual(
                 github.Tracker(self.URL, redact={'component:Text': True}).issue(1).redacted,

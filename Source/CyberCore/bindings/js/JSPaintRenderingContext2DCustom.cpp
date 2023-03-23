@@ -28,15 +28,15 @@
 
 #if ENABLE(CSS_PAINTING_API)
 
-#include "WebCoreOpaqueRoot.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
-inline WebCoreOpaqueRoot root(CustomPaintCanvas* canvas)
+inline CyberCoreOpaqueRoot root(CustomPaintCanvas* canvas)
 {
-    return WebCoreOpaqueRoot { canvas };
+    return CyberCoreOpaqueRoot { canvas };
 }
 
 bool JSPaintRenderingContext2DOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, AbstractSlotVisitor& visitor, const char** reason)
@@ -45,17 +45,17 @@ bool JSPaintRenderingContext2DOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC:
         *reason = "Canvas is opaque root";
 
     auto* jsPaintRenderingContext = jsCast<JSPaintRenderingContext2D*>(handle.slot()->asCell());
-    return containsWebCoreOpaqueRoot(visitor, jsPaintRenderingContext->wrapped().canvas());
+    return containsCyberCoreOpaqueRoot(visitor, jsPaintRenderingContext->wrapped().canvas());
 }
 
 template<typename Visitor>
 void JSPaintRenderingContext2D::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped().canvas());
+    addCyberCoreOpaqueRoot(visitor, wrapped().canvas());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSPaintRenderingContext2D);
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif
 

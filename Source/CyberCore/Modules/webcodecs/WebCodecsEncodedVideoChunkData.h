@@ -30,7 +30,7 @@
 #include "WebCodecsEncodedVideoChunkType.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WebCodecsEncodedVideoChunkData {
     WebCodecsEncodedVideoChunkType type { WebCodecsEncodedVideoChunkType::Key };

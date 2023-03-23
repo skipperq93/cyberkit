@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PushSubscriptionOptions);
 
@@ -62,6 +62,6 @@ ExceptionOr<RefPtr<JSC::ArrayBuffer>> PushSubscriptionOptions::applicationServer
     return m_applicationServerKey.copyRef();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

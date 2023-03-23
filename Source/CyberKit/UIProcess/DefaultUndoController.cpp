@@ -26,7 +26,7 @@
 #include "WebEditCommandProxy.h"
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void DefaultUndoController::registerEditCommand(Ref<WebEditCommandProxy>&& command, UndoOrRedo undoOrRedo)
 {
@@ -64,4 +64,4 @@ void DefaultUndoController::executeUndoRedo(UndoOrRedo undoOrRedo)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -39,7 +39,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBOpenDBRequest;
 class ScriptExecutionContext;
@@ -79,4 +79,4 @@ private:
     Ref<IDBClient::IDBConnectionProxy> m_connectionProxy;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

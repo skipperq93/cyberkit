@@ -28,7 +28,7 @@
 #include "LayoutElementBox.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlockFlow;
 class RenderBox;

@@ -34,7 +34,7 @@
 #include "NotImplemented.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaEncryptedEvent);
 
@@ -52,6 +52,6 @@ EventInterface MediaEncryptedEvent::eventInterface() const
     return MediaEncryptedEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

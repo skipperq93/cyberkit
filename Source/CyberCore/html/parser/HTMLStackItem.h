@@ -33,7 +33,7 @@
 #include "Namespace.h"
 #include "TagName.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLStackItem {
 public:
@@ -113,7 +113,7 @@ inline const Vector<Attribute>& HTMLStackItem::attributes() const
 
 inline const Attribute* HTMLStackItem::findAttribute(const QualifiedName& attributeName) const
 {
-    return WebCore::findAttribute(const_cast<Vector<Attribute>&>(attributes()), attributeName);
+    return CyberCore::findAttribute(const_cast<Vector<Attribute>&>(attributes()), attributeName);
 }
 
 inline bool HTMLStackItem::matchesHTMLTag(const AtomString& name) const
@@ -249,4 +249,4 @@ inline bool isSpecialNode(const HTMLStackItem& item)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

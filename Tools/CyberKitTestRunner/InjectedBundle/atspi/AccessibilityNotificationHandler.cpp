@@ -31,7 +31,7 @@
 #if USE(ATSPI)
 #include "InjectedBundlePage.h"
 #include "JSWrapper.h"
-#include <JavaScriptCore/OpaqueJSString.h>
+#include <CyberScriptCore/OpaqueJSString.h>
 #include <CyberCore/AccessibilityObjectAtspi.h>
 #include <CyberKit/WKBundleFrame.h>
 #include <CyberKit/WKBundlePage.h>

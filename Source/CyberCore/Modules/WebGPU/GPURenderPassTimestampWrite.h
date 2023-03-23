@@ -32,7 +32,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURenderPassTimestampWrite {
     PAL::WebGPU::RenderPassTimestampWrite convertToBacking() const
@@ -41,7 +41,7 @@ struct GPURenderPassTimestampWrite {
         return {
             querySet->backing(),
             queryIndex,
-            WebCore::convertToBacking(location),
+            CyberCore::convertToBacking(location),
         };
     }
 

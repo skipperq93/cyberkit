@@ -30,12 +30,12 @@
 #include <CyberScriptCore/JSObject.h>
 #include <CyberScriptCore/Strong.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaymentCompleteDetails {
     JSC::Strong<JSC::JSObject> data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

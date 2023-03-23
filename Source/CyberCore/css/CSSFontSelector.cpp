@@ -55,7 +55,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace CyberKitFontFamilyNames;
 

@@ -34,7 +34,7 @@
 
 @class WKContentView;
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class RevealFocusedElementDeferralReason : uint8_t {
     EditorState = 1 << 0,
@@ -54,16 +54,16 @@ private:
     OptionSet<RevealFocusedElementDeferralReason> m_reasons;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::RevealFocusedElementDeferralReason> {
+template<> struct EnumTraits<CyberKit::RevealFocusedElementDeferralReason> {
     using values = EnumValues<
-        WebKit::RevealFocusedElementDeferralReason,
-        WebKit::RevealFocusedElementDeferralReason::EditorState,
-        WebKit::RevealFocusedElementDeferralReason::KeyboardWillShow,
-        WebKit::RevealFocusedElementDeferralReason::KeyboardDidShow
+        CyberKit::RevealFocusedElementDeferralReason,
+        CyberKit::RevealFocusedElementDeferralReason::EditorState,
+        CyberKit::RevealFocusedElementDeferralReason::KeyboardWillShow,
+        CyberKit::RevealFocusedElementDeferralReason::KeyboardDidShow
     >;
 };
 

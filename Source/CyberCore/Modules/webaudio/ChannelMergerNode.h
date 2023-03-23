@@ -31,7 +31,7 @@
 #include "AudioNode.h"
 #include "ChannelMergerOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
     
@@ -54,4 +54,4 @@ private:
     ChannelMergerNode(BaseAudioContext&, unsigned numberOfInputs);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

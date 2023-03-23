@@ -29,7 +29,7 @@
 #include "CSSNumericValue.h"
 #include "CSSStyleValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSKeywordValue;
 
@@ -58,4 +58,4 @@ public:
     RefPtr<CSSValue> toCSSValue() const final;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

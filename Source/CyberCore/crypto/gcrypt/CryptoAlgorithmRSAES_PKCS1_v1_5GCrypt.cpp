@@ -31,7 +31,7 @@
 #include "CryptoKeyRSA.h"
 #include "GCryptUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<uint8_t>> gcryptEncrypt(gcry_sexp_t keySexp, const Vector<uint8_t>& plainText, size_t keySizeInBytes)
 {
@@ -110,6 +110,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmRSAES_PKCS1_v1_5::platformDecrypt(co
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

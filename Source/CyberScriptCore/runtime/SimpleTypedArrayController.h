@@ -32,8 +32,8 @@
 namespace JSC {
 
 // The default controller used for managing the relationship between
-// array buffers and their wrappers in JavaScriptCore. This isn't what
-// WebCore uses, but it is what JSC uses when running standalone. This
+// array buffers and their wrappers in CyberScriptCore. This isn't what
+// CyberCore uses, but it is what JSC uses when running standalone. This
 // is pretty simple:
 //
 // - If the JSArrayBuffer is live, then the ArrayBuffer stays alive.

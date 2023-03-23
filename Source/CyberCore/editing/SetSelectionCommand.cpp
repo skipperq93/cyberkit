@@ -30,7 +30,7 @@
 #include "Document.h"
 #include "Frame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SetSelectionCommand::SetSelectionCommand(const VisibleSelection& selection, OptionSet<FrameSelection::SetSelectionOption> options)
     : SimpleEditCommand(selection.base().anchorNode()->document())
@@ -57,4 +57,4 @@ void SetSelectionCommand::doUnapply()
         selection.setSelection(startingSelection(), m_options);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

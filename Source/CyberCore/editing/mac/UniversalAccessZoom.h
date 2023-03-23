@@ -27,7 +27,7 @@
 
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT void changeUniversalAccessZoomFocus(const IntRect& viewRect, const IntRect& selectionRect);
 

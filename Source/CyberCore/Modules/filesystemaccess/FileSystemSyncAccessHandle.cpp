@@ -31,7 +31,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FileSystemSyncAccessHandle> FileSystemSyncAccessHandle::create(ScriptExecutionContext& context, FileSystemFileHandle& source, FileSystemSyncAccessHandleIdentifier identifier, FileHandle&& file, uint64_t capacity)
 {
@@ -184,4 +184,4 @@ bool FileSystemSyncAccessHandle::requestSpaceForWrite(uint64_t writeOffset, uint
     return newSize <= m_capacity;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

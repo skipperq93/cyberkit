@@ -28,7 +28,7 @@
 #include "Color.h"
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CompositionUnderlineColor : bool { GivenColor, TextColor };
 
@@ -54,4 +54,4 @@ struct CompositionUnderline {
     bool thick { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

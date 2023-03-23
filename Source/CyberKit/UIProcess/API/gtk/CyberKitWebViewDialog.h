@@ -24,17 +24,17 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_VIEW_DIALOG            (webkit_web_view_dialog_get_type())
-#define WEBKIT_WEB_VIEW_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_VIEW_DIALOG, WebKitWebViewDialog))
+#define WEBKIT_WEB_VIEW_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_VIEW_DIALOG, CyberKitWebViewDialog))
 #define WEBKIT_IS_WEB_VIEW_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_WEB_VIEW_DIALOG))
-#define WEBKIT_WEB_VIEW_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_VIEW_DIALOG, WebKitWebViewDialogClass))
+#define WEBKIT_WEB_VIEW_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_VIEW_DIALOG, CyberKitWebViewDialogClass))
 #define WEBKIT_IS_WEB_VIEW_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_WEB_VIEW_DIALOG))
-#define WEBKIT_WEB_VIEW_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_VIEW_DIALOG, WebKitWebViewDialogClass))
+#define WEBKIT_WEB_VIEW_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_VIEW_DIALOG, CyberKitWebViewDialogClass))
 
-typedef struct _WebKitWebViewDialog        WebKitWebViewDialog;
-typedef struct _WebKitWebViewDialogClass   WebKitWebViewDialogClass;
-typedef struct _WebKitWebViewDialogPrivate WebKitWebViewDialogPrivate;
+typedef struct _CyberKitWebViewDialog        CyberKitWebViewDialog;
+typedef struct _CyberKitWebViewDialogClass   CyberKitWebViewDialogClass;
+typedef struct _CyberKitWebViewDialogPrivate CyberKitWebViewDialogPrivate;
 
-struct _WebKitWebViewDialog {
+struct _CyberKitWebViewDialog {
 #if USE(GTK4)
     GtkWidget parent;
 #else
@@ -42,10 +42,10 @@ struct _WebKitWebViewDialog {
 #endif
 
     /*< private >*/
-    WebKitWebViewDialogPrivate* priv;
+    CyberKitWebViewDialogPrivate* priv;
 };
 
-struct _WebKitWebViewDialogClass {
+struct _CyberKitWebViewDialogClass {
 #if USE(GTK4)
     GtkWidgetClass parentClass;
 #else
@@ -55,8 +55,8 @@ struct _WebKitWebViewDialogClass {
 
 GType webkit_web_view_dialog_get_type();
 #if USE(GTK4)
-void webkitWebViewDialogSetChild(WebKitWebViewDialog*, GtkWidget*);
-GtkWidget* webkitWebViewDialogGetChild(WebKitWebViewDialog*);
+void webkitWebViewDialogSetChild(CyberKitWebViewDialog*, GtkWidget*);
+GtkWidget* webkitWebViewDialogGetChild(CyberKitWebViewDialog*);
 #endif
 
 G_END_DECLS

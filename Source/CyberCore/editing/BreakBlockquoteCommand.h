@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BreakBlockquoteCommand : public CompositeEditCommand {
 public:
@@ -41,4 +41,4 @@ private:
     void doApply() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

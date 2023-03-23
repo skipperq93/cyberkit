@@ -29,7 +29,7 @@
 
 #if ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 VTTRegion* VTTRegionList::item(unsigned index) const
 {
@@ -66,6 +66,6 @@ void VTTRegionList::remove(VTTRegion& region)
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

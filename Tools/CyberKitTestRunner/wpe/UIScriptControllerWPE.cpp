@@ -30,8 +30,8 @@
 #include "PlatformWebView.h"
 #include "TestController.h"
 #include "UIScriptContext.h"
-#include <JavaScriptCore/OpaqueJSString.h>
-#include <WebKit/WKTextCheckerGLib.h>
+#include <CyberScriptCore/OpaqueJSString.h>
+#include <CyberKit/WKTextCheckerGLib.h>
 #include <wtf/RunLoop.h>
 
 namespace WTR {

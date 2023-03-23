@@ -33,7 +33,7 @@
 #include "RealtimeMediaSourceCenter.h"
 #include "UserMediaRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const char* UserMediaController::supplementName()
 {
@@ -76,6 +76,6 @@ void UserMediaController::logEnumerateDevicesDenial(Document& document)
         window->printErrorMessage(makeString("Not allowed to call enumerateDevices."));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -27,7 +27,7 @@
 
 #include "BoundaryPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SimpleRange {
     BoundaryPoint start;

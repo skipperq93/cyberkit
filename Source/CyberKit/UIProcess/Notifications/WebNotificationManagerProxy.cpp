@@ -40,7 +40,7 @@
 #include <CyberCore/NotificationData.h>
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 const char* WebNotificationManagerProxy::supplementName()
@@ -393,4 +393,4 @@ void WebNotificationManagerProxy::getNotifications(const URL& url, const String&
     callback(map(notifications, [](auto& notification) { return notification->data(); }));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

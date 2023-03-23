@@ -47,7 +47,7 @@
 
 @implementation WKViewLayoutStrategy
 
-+ (instancetype)layoutStrategyWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
++ (instancetype)layoutStrategyWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
 {
     RetainPtr<WKViewLayoutStrategy> strategy;
 
@@ -72,7 +72,7 @@
     return strategy.autorelease();
 }
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
 {
     self = [super init];
 
@@ -152,7 +152,7 @@
 
 @implementation WKViewViewSizeLayoutStrategy
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
 {
     self = [super initWithPage:page.copyRef() view:view viewImpl:webViewImpl.copyRef() mode:mode];
 
@@ -172,7 +172,7 @@
 
 @implementation WKViewFixedSizeLayoutStrategy
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
 {
     self = [super initWithPage:page.copyRef() view:view viewImpl:webViewImpl.copyRef() mode:mode];
 
@@ -192,7 +192,7 @@
 
 @implementation WKViewDynamicSizeComputedFromViewScaleLayoutStrategy
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
 {
     self = [super initWithPage:page.copyRef() view:view viewImpl:webViewImpl.copyRef() mode:mode];
 
@@ -231,7 +231,7 @@
 
 @implementation WKViewDynamicSizeComputedFromMinimumDocumentSizeLayoutStrategy
 
-- (instancetype)initWithPage:(NakedRef<WebKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<WebKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
+- (instancetype)initWithPage:(NakedRef<CyberKit::WebPageProxy>)page view:(NSView *)view viewImpl:(NakedRef<CyberKit::WebViewImpl>)webViewImpl mode:(WKLayoutMode)mode
 {
     self = [super initWithPage:page.copyRef() view:view viewImpl:webViewImpl.copyRef() mode:mode];
 

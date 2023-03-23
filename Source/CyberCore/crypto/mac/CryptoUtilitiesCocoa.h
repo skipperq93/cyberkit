@@ -35,7 +35,7 @@ typedef uint32_t CCDigestAlgorithm;
 typedef uint32_t CCHmacAlgorithm;
 typedef uint32_t CCOperation;
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Vector<uint8_t>> transformAES_CTR(CCOperation, const Vector<uint8_t>& counter, size_t counterLength, const Vector<uint8_t>& key, const uint8_t* data, size_t dataSize);
 CCStatus keyDerivationHMAC(CCDigestAlgorithm, const void *, size_t, const void *, size_t, const void *, size_t, void *, size_t);
@@ -44,6 +44,6 @@ ExceptionOr<Vector<uint8_t>> deriveHDKFSHA256Bits(const uint8_t* key, size_t key
 Vector<uint8_t> calculateHMACSignature(CCHmacAlgorithm, const Vector<uint8_t>& key, const uint8_t* data, size_t);
 Vector<uint8_t> calculateSHA256Signature(const Vector<uint8_t>& key, const uint8_t* data, size_t);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO) || ENABLE(WEB_RTC)

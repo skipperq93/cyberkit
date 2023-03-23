@@ -45,7 +45,7 @@
 #include <CyberCore/MediaPlayer.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace CyberCore;
 
@@ -516,6 +516,6 @@ void RemoteGraphicsContextGLProxy::disconnectGpuProcessIfNeeded()
     ASSERT(isContextLost());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

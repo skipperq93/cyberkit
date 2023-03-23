@@ -36,7 +36,7 @@
 #include "Settings.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<DocumentFragment> createFragmentFromPasteboardData(Pasteboard& pasteboard, Frame& frame, const SimpleRange& range, bool allowPlainText, bool& chosePlainText)
 {
@@ -99,6 +99,6 @@ void Editor::platformPasteFont()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWPE)

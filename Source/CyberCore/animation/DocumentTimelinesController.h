@@ -33,7 +33,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSTransition;
 class Document;
@@ -79,4 +79,4 @@ private:
     bool m_waitingOnVMIdle { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

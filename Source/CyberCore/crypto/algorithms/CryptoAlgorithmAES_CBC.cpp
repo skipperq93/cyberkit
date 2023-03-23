@@ -33,7 +33,7 @@
 #include "CryptoKeyAES.h"
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoAlgorithmAES_CBCInternal {
 static constexpr auto ALG128 = "A128CBC"_s;

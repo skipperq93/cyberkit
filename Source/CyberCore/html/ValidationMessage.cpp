@@ -50,7 +50,7 @@
 #include "Text.h"
 #include "ValidationMessageClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -279,4 +279,4 @@ bool ValidationMessage::isVisible() const
     return !m_message.isEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

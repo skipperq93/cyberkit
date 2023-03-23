@@ -29,7 +29,7 @@
 
 #include "CanvasRenderingContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBufferPipe;
 class OffscreenCanvas;
@@ -55,6 +55,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::PlaceholderRenderingContext, isPlaceholder())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::PlaceholderRenderingContext, isPlaceholder())
 
 #endif

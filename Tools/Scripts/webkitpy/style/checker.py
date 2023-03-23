@@ -171,7 +171,7 @@ _PATH_RULES_SPECIFIER = [
     ([
       # The GTK+ and WPE APIs use upper case, underscore separated, words in
       # certain types of enums (e.g. signals, properties).
-      os.path.join('Source', 'JavaScriptCore', 'API', 'glib'),
+      os.path.join('Source', 'CyberScriptCore', 'API', 'glib'),
       os.path.join('Source', 'CyberKit', 'Shared', 'API', 'glib'),
       os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'glib'),
       os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk'),
@@ -200,11 +200,11 @@ _PATH_RULES_SPECIFIER = [
     ([
       # Assembler has lots of opcodes that use underscores, so
       # we don't check for underscores in that directory.
-      os.path.join('Source', 'JavaScriptCore', 'assembler'),
-      os.path.join('Source', 'JavaScriptCore', 'jit', 'JIT')],
+      os.path.join('Source', 'CyberScriptCore', 'assembler'),
+      os.path.join('Source', 'CyberScriptCore', 'jit', 'JIT')],
      ["-readability/naming/underscores"]),
     ([  # JITStubs has an usual syntax which causes false alarms for a few checks.
-      os.path.join('JavaScriptCore', 'jit', 'JITStubs.cpp')],
+      os.path.join('CyberScriptCore', 'jit', 'JITStubs.cpp')],
      ["-readability/parameter_name",
       "-whitespace/parens"]),
 
@@ -282,8 +282,8 @@ _PATH_RULES_SPECIFIER = [
       "+whitespace/carriage_return"]),
 
     ([
-      # Source/JavaScriptCore/disassembler/zydis/ is third-party code.
-      os.path.join('Source', 'JavaScriptCore', 'disassembler', 'zydis')],
+      # Source/CyberScriptCore/disassembler/zydis/ is third-party code.
+      os.path.join('Source', 'CyberScriptCore', 'disassembler', 'zydis')],
      ["-readability/naming/underscores",
       "-whitespace/declaration",
       "-whitespace/indent"]),
@@ -291,11 +291,11 @@ _PATH_RULES_SPECIFIER = [
     ([
       # There is no way to avoid the symbols __jit_debug_register_code
       # and __jit_debug_descriptor when integrating with gdb.
-      os.path.join('Source', 'JavaScriptCore', 'jit', 'GDBInterface.cpp')],
+      os.path.join('Source', 'CyberScriptCore', 'jit', 'GDBInterface.cpp')],
      ["-readability/naming"]),
 
     ([  # On some systems the trailing CR is causing parser failure.
-      os.path.join('Source', 'JavaScriptCore', 'parser', 'Keywords.table')],
+      os.path.join('Source', 'CyberScriptCore', 'parser', 'Keywords.table')],
      ["+whitespace/carriage_return"]),
 
     ([  # DataDetectorsCoreSPI.h declares enum bitfields as CFIndex.
@@ -405,7 +405,7 @@ _SKIPPED_FILES_WITH_WARNING = [
     os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKitGtk'),
 
     # CyberKit*.h and JSC*.h files in, except those ending in Private.h are API headers, which do not follow CyberKit coding style.
-    re.compile(re.escape(os.path.join('Source', 'JavaScriptCore', 'API', 'glib') + os.path.sep) + r'JSC(?!.*Private\.h).*\.h$'),
+    re.compile(re.escape(os.path.join('Source', 'CyberScriptCore', 'API', 'glib') + os.path.sep) + r'JSC(?!.*Private\.h).*\.h$'),
     re.compile(re.escape(os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk3') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
     re.compile(re.escape(os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk4') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
     re.compile(re.escape(os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
@@ -417,7 +417,7 @@ _SKIPPED_FILES_WITH_WARNING = [
     # GObject DOM bindings copied from generated code using different coding style.
     os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk', 'DOM'),
 
-    os.path.join('Source', 'JavaScriptCore', 'API', 'glib', 'jsc.h'),
+    os.path.join('Source', 'CyberScriptCore', 'API', 'glib', 'jsc.h'),
     os.path.join('Source', 'CyberCore', 'platform', 'gtk', 'GtkVersioning.h'),
     os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
     os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'webkit.h'),
@@ -442,7 +442,7 @@ _SKIPPED_FILES_WITHOUT_WARNING = [
     os.path.join('Source', 'CyberCore', 'bindings', 'scripts', 'test'),
 
     # ICU headers are imported.
-    os.path.join('Source', 'JavaScriptCore', 'icu'),
+    os.path.join('Source', 'CyberScriptCore', 'icu'),
     os.path.join('Source', 'CyberCore', 'icu'),
     os.path.join('Source', 'CyberKitLegacy', 'mac', 'icu'),
     os.path.join('Source', 'WTF', 'icu'),

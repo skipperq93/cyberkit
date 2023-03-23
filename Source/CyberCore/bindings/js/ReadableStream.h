@@ -31,7 +31,7 @@
 #include "JSDOMGuardedObject.h"
 #include "JSReadableStream.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ReadableStreamSink;
 class ReadableStreamSource;

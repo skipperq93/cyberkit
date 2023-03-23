@@ -37,7 +37,7 @@
 #include "Range.h"
 #include "VisibleUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

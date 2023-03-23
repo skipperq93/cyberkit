@@ -32,7 +32,7 @@
 #include "GeolocationError.h"
 #include "GeolocationPositionData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GeolocationController::GeolocationController(Page& page, GeolocationClient& client)
     : m_page(page)
@@ -184,6 +184,6 @@ void provideGeolocationTo(Page* page, GeolocationClient& client)
     Supplement<Page>::provideTo(page, GeolocationController::supplementName(), makeUnique<GeolocationController>(*page, client));
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GEOLOCATION)

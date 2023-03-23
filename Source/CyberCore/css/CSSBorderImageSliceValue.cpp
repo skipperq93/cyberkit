@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSBorderImageSliceValue::CSSBorderImageSliceValue(Quad slices, bool fill)
     : CSSValue(BorderImageSliceClass)
@@ -56,4 +56,4 @@ bool CSSBorderImageSliceValue::equals(const CSSBorderImageSliceValue& other) con
     return m_fill == other.m_fill && m_slices.equals(other.m_slices);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "EditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLElement;
 
@@ -54,4 +54,4 @@ private:
     RefPtr<HTMLElement> m_dummySpan;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

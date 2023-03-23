@@ -33,7 +33,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSSubgridValue::customCSSText() const
 {

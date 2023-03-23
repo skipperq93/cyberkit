@@ -34,7 +34,7 @@
 #include "CallbackResult.h"
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 
@@ -45,4 +45,4 @@ public:
     virtual CallbackResult<void> handleEvent(Database&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

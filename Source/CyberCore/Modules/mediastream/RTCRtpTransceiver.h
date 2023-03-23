@@ -42,7 +42,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCPeerConnection;
 struct RTCRtpCodecCapability;
@@ -102,6 +102,6 @@ private:
     Vector<RefPtr<RTCRtpTransceiver>> m_transceivers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

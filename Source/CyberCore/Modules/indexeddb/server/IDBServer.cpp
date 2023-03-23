@@ -41,7 +41,7 @@
 #include <wtf/Locker.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 IDBServer::IDBServer(PAL::SessionID sessionID, const String& databaseDirectoryPath, StorageQuotaManagerSpaceRequester&& spaceRequester, Lock& lock)
@@ -544,7 +544,7 @@ void IDBServer::getAllDatabaseNamesAndVersions(IDBConnectionIdentifier serverCon
     connection->didGetAllDatabaseNamesAndVersions(requestIdentifier, WTFMove(result));
 }
 
-static void collectOriginsForVersion(const String& versionPath, HashSet<WebCore::SecurityOriginData>& securityOrigins)
+static void collectOriginsForVersion(const String& versionPath, HashSet<CyberCore::SecurityOriginData>& securityOrigins)
 {
     for (auto& databaseIdentifier : FileSystem::listDirectory(versionPath)) {
         if (auto securityOrigin = SecurityOriginData::fromDatabaseIdentifier(databaseIdentifier)) {
@@ -566,7 +566,7 @@ HashSet<SecurityOriginData> IDBServer::getOrigins() const
     if (m_databaseDirectoryPath.isEmpty())
         return { };
 
-    HashSet<WebCore::SecurityOriginData> securityOrigins;
+    HashSet<CyberCore::SecurityOriginData> securityOrigins;
     collectOriginsForVersion(FileSystem::pathByAppendingComponent(m_databaseDirectoryPath, "v0"_s), securityOrigins);
     collectOriginsForVersion(FileSystem::pathByAppendingComponent(m_databaseDirectoryPath, "v1"_s), securityOrigins);
 
@@ -726,7 +726,7 @@ void IDBServer::removeDatabasesWithOriginsForVersion(const Vector<SecurityOrigin
     }
 }
 
-void IDBServer::renameOrigin(const WebCore::SecurityOriginData& oldOrigin, const WebCore::SecurityOriginData& newOrigin)
+void IDBServer::renameOrigin(const CyberCore::SecurityOriginData& oldOrigin, const CyberCore::SecurityOriginData& newOrigin)
 {
     Vector<SecurityOriginData> targetOrigins = { oldOrigin };
     closeDatabasesForOrigins(targetOrigins, [](const SecurityOriginData& targetOrigin, const ClientOrigin& databaseOrigin) -> bool {
@@ -774,7 +774,7 @@ void IDBServer::upgradeFilesIfNecessary()
         FileSystem::makeAllDirectories(newVersionDirectory);
 }
 
-String IDBServer::upgradedDatabaseDirectory(const WebCore::IDBDatabaseIdentifier& identifier)
+String IDBServer::upgradedDatabaseDirectory(const CyberCore::IDBDatabaseIdentifier& identifier)
 {
     String oldOriginDirectory = identifier.databaseDirectoryRelativeToRoot(m_databaseDirectoryPath, "v0"_s);
     String oldDatabaseDirectory = FileSystem::pathByAppendingComponent(oldOriginDirectory, SQLiteIDBBackingStore::encodeDatabaseName(identifier.databaseName()));
@@ -824,4 +824,4 @@ void IDBServer::stopDatabaseActivitiesOnMainThread()
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

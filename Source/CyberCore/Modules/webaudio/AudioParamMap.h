@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioParam;
 class DOMMapAdapter;
@@ -56,6 +56,6 @@ private:
     HashMap<String, Ref<AudioParam>> m_map;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

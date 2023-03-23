@@ -17,11 +17,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitContextMenuClient_h
-#define WebKitContextMenuClient_h
+#ifndef CyberKitContextMenuClient_h
+#define CyberKitContextMenuClient_h
 
-#include "WebKitWebView.h"
+#include "CyberKitWebView.h"
 
-void attachContextMenuClientToView(WebKitWebView*);
+void attachContextMenuClientToView(CyberKitWebView*);
 
 #endif

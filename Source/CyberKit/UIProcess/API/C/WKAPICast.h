@@ -70,7 +70,7 @@ class WebsitePolicies;
 class WindowFeatures;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AuthenticationChallengeProxy;
 class AuthenticationDecisionListener;
@@ -163,8 +163,8 @@ WK_ADD_API_MAPPING(WKUserMediaPermissionCheckRef, UserMediaPermissionCheckProxy)
 WK_ADD_API_MAPPING(WKUserMediaPermissionRequestRef, UserMediaPermissionRequestProxy)
 WK_ADD_API_MAPPING(WKUserScriptRef, API::UserScript)
 WK_ADD_API_MAPPING(WKViewportAttributesRef, WebViewportAttributes)
-WK_ADD_API_MAPPING(WKWebsiteDataStoreRef, WebKit::WebsiteDataStore)
-WK_ADD_API_MAPPING(WKWebsiteDataStoreConfigurationRef, WebKit::WebsiteDataStoreConfiguration)
+WK_ADD_API_MAPPING(WKWebsiteDataStoreRef, CyberKit::WebsiteDataStore)
+WK_ADD_API_MAPPING(WKWebsiteDataStoreConfigurationRef, CyberKit::WebsiteDataStoreConfiguration)
 WK_ADD_API_MAPPING(WKWebsitePoliciesRef, API::WebsitePolicies)
 WK_ADD_API_MAPPING(WKWindowFeaturesRef, API::WindowFeatures)
 
@@ -419,7 +419,7 @@ inline WKStorageBlockingPolicy toAPI(CyberCore::StorageBlockingPolicy policy)
     return kWKAllowAllStorage;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if defined(BUILDING_GTK__)
 #include "WKAPICastGtk.h"

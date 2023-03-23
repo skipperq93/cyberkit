@@ -34,7 +34,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobLoader final : public FileReaderLoaderClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -107,4 +107,4 @@ inline void BlobLoader::didFail(ExceptionCode)
     m_completionHandler(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -26,7 +26,7 @@
 #import "AttributedString.h"
 #import "SimpleRange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT AttributedString attributedString(const SimpleRange&);
 
@@ -39,4 +39,4 @@ enum class IncludeImages { Yes, No };
 WEBCORE_EXPORT AttributedString editingAttributedString(const SimpleRange&, IncludeImages = IncludeImages::Yes);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

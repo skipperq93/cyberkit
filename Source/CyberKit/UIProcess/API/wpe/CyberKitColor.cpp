@@ -18,13 +18,13 @@
  */
 
 #include "config.h"
-#include "WebKitColor.h"
+#include "CyberKitColor.h"
 
-#include "WebKitColorPrivate.h"
+#include "CyberKitColorPrivate.h"
 #include <CyberCore/CSSParser.h>
 
 /**
- * WebKitColor:
+ * CyberKitColor:
  * @red: Red channel, between 0.0 and 1.0 inclusive
  * @green: Green channel, between 0.0 and 1.0 inclusive
  * @blue: Blue channel, between 0.0 and 1.0 inclusive
@@ -37,19 +37,19 @@
 
 /**
  * webkit_color_copy:
- * @color: a #WebKitColor
+ * @color: a #CyberKitColor
  *
  * Make a copy of @color.
  *
- * Returns: (transfer full): A copy of passed in #WebKitColor.
+ * Returns: (transfer full): A copy of passed in #CyberKitColor.
  *
  * Since: 2.24
  */
-WebKitColor* webkit_color_copy(WebKitColor* color)
+CyberKitColor* webkit_color_copy(CyberKitColor* color)
 {
     g_return_val_if_fail(color, nullptr);
 
-    WebKitColor* copy = static_cast<WebKitColor*>(fastZeroedMalloc(sizeof(WebKitColor)));
+    CyberKitColor* copy = static_cast<CyberKitColor*>(fastZeroedMalloc(sizeof(CyberKitColor)));
     copy->red = color->red;
     copy->green = color->green;
     copy->blue = color->blue;
@@ -59,27 +59,27 @@ WebKitColor* webkit_color_copy(WebKitColor* color)
 
 /**
  * webkit_color_free:
- * @color: a #WebKitColor
+ * @color: a #CyberKitColor
  *
- * Free the #WebKitColor.
+ * Free the #CyberKitColor.
  *
  * Since: 2.24
  */
-void webkit_color_free(WebKitColor* color)
+void webkit_color_free(CyberKitColor* color)
 {
     g_return_if_fail(color);
 
     fastFree(color);
 }
 
-G_DEFINE_BOXED_TYPE(WebKitColor, webkit_color, webkit_color_copy, webkit_color_free);
+G_DEFINE_BOXED_TYPE(CyberKitColor, webkit_color, webkit_color_copy, webkit_color_free);
 
-const CyberCore::Color webkitColorToCyberCoreColor(WebKitColor* color)
+const CyberCore::Color webkitColorToCyberCoreColor(CyberKitColor* color)
 {
     return CyberCore::convertColor<CyberCore::SRGBA<uint8_t>>(CyberCore::SRGBA<float> { static_cast<float>(color->red), static_cast<float>(color->green), static_cast<float>(color->blue), static_cast<float>(color->alpha) });
 }
 
-void webkitColorFillFromCyberCoreColor(const CyberCore::Color& webCoreColor, WebKitColor* color)
+void webkitColorFillFromCyberCoreColor(const CyberCore::Color& webCoreColor, CyberKitColor* color)
 {
     RELEASE_ASSERT(webCoreColor.isValid());
 
@@ -92,10 +92,10 @@ void webkitColorFillFromCyberCoreColor(const CyberCore::Color& webCoreColor, Web
 
 /**
  * webkit_color_parse:
- * @color: a #WebKitColor to fill in
+ * @color: a #CyberKitColor to fill in
  * @color_string: color representation as color nickname or HEX string
  *
- * Create a new #WebKitColor for the given @color_string
+ * Create a new #CyberKitColor for the given @color_string
  * representation. There are two valid representation types: standard color
  * names (see https://htmlcolorcodes.com/color-names/ for instance) or HEX
  * values.
@@ -104,7 +104,7 @@ void webkitColorFillFromCyberCoreColor(const CyberCore::Color& webCoreColor, Web
  *
  * Since: 2.24
  */
-gboolean webkit_color_parse(WebKitColor* color, const gchar* colorString)
+gboolean webkit_color_parse(CyberKitColor* color, const gchar* colorString)
 {
     g_return_val_if_fail(color, FALSE);
     g_return_val_if_fail(colorString, FALSE);

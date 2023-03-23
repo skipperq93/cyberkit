@@ -33,7 +33,7 @@ namespace CyberCore {
 class AuthenticationChallenge;
 }
 
-namespace WebKit {
+namespace CyberKit {
 struct ResourceLoadInfo;
 }
 
@@ -43,11 +43,11 @@ class ResourceLoadClient {
 public:
     virtual ~ResourceLoadClient() = default;
 
-    virtual void didSendRequest(WebKit::ResourceLoadInfo&&, CyberCore::ResourceRequest&&) const = 0;
-    virtual void didPerformHTTPRedirection(WebKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&) const = 0;
-    virtual void didReceiveChallenge(WebKit::ResourceLoadInfo&&, CyberCore::AuthenticationChallenge&&) const = 0;
-    virtual void didReceiveResponse(WebKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&) const = 0;
-    virtual void didCompleteWithError(WebKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceError&&) const = 0;
+    virtual void didSendRequest(CyberKit::ResourceLoadInfo&&, CyberCore::ResourceRequest&&) const = 0;
+    virtual void didPerformHTTPRedirection(CyberKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&) const = 0;
+    virtual void didReceiveChallenge(CyberKit::ResourceLoadInfo&&, CyberCore::AuthenticationChallenge&&) const = 0;
+    virtual void didReceiveResponse(CyberKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&) const = 0;
+    virtual void didCompleteWithError(CyberKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceError&&) const = 0;
 };
 
 } // namespace API

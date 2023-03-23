@@ -52,7 +52,7 @@
 #include "WebGL2RenderingContext.h"
 #endif // ENABLE(WEBGL)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(OffscreenCanvas);
 

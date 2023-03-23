@@ -30,7 +30,7 @@
 #include "Event.h"
 #include "WebXRSession.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class XRSessionEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(XRSessionEvent);
@@ -58,6 +58,6 @@ private:
     RefPtr<WebXRSession> m_session;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

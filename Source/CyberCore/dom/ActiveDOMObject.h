@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Event;
@@ -171,4 +171,4 @@ inline void ActiveDOMObject::assertSuspendIfNeededWasCalled() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

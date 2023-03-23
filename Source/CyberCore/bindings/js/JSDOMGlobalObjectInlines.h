@@ -31,7 +31,7 @@
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/JSObjectInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline JSDOMStructureMap& JSDOMGlobalObject::structures(NoLockingNecessaryTag)
 {
@@ -74,4 +74,4 @@ JSClass* toJSDOMGlobalObject(JSC::VM&, JSC::JSValue value)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

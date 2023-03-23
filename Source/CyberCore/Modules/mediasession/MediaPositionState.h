@@ -27,7 +27,7 @@
 
 #if ENABLE(MEDIA_SESSION)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaPositionState {
     double duration = std::numeric_limits<double>::infinity();
@@ -45,8 +45,8 @@ namespace WTF {
 
 template<typename> struct LogArgument;
 
-template<> struct LogArgument<WebCore::MediaPositionState> {
-    static String toString(const WebCore::MediaPositionState& state) { return state.toJSONString(); }
+template<> struct LogArgument<CyberCore::MediaPositionState> {
+    static String toString(const CyberCore::MediaPositionState& state) { return state.toJSONString(); }
 };
 
 } // namespace WTF

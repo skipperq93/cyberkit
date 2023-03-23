@@ -31,7 +31,7 @@
 #include "PublicKeyCredentialRequestOptions.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbortSignal;
 
@@ -45,17 +45,17 @@ struct CredentialRequestOptions {
     std::optional<PublicKeyCredentialRequestOptions> publicKey;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CredentialRequestOptions::MediationRequirement> {
+template<> struct EnumTraits<CyberCore::CredentialRequestOptions::MediationRequirement> {
     using values = EnumValues<
-        WebCore::CredentialRequestOptions::MediationRequirement,
-        WebCore::CredentialRequestOptions::MediationRequirement::Silent,
-        WebCore::CredentialRequestOptions::MediationRequirement::Optional,
-        WebCore::CredentialRequestOptions::MediationRequirement::Required,
-        WebCore::CredentialRequestOptions::MediationRequirement::Conditional
+        CyberCore::CredentialRequestOptions::MediationRequirement,
+        CyberCore::CredentialRequestOptions::MediationRequirement::Silent,
+        CyberCore::CredentialRequestOptions::MediationRequirement::Optional,
+        CyberCore::CredentialRequestOptions::MediationRequirement::Required,
+        CyberCore::CredentialRequestOptions::MediationRequirement::Conditional
     >;
 };
 

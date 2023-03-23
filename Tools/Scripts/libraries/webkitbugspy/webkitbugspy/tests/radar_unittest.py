@@ -30,8 +30,8 @@ from webkitcorepy import mocks as wkmocks, OutputCapture
 class TestRadar(unittest.TestCase):
     def test_encoding(self):
         self.assertEqual(
-            radar.Tracker.Encoder().default(radar.Tracker(project='WebKit')),
-            dict(hide_title=True, type='radar', projects=['WebKit']),
+            radar.Tracker.Encoder().default(radar.Tracker(project='CyberKit')),
+            dict(hide_title=True, type='radar', projects=['CyberKit']),
         )
 
     def test_decoding(self):
@@ -233,33 +233,33 @@ class TestRadar(unittest.TestCase):
         with mocks.Radar(projects=mocks.PROJECTS):
             self.assertDictEqual(
                 dict(
-                    WebKit=dict(
+                    CyberKit=dict(
                         description=None,
                         versions=[],
                         components=dict(
                             Scrolling=dict(
-                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'WebKit Local Build'],
+                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'CyberKit Local Build'],
                                 description='Bugs related to main thread and off-main thread scrolling',
                             ), SVG=dict(
-                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'WebKit Local Build'],
+                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'CyberKit Local Build'],
                                 description='For bugs in the SVG implementation.',
                             ), Tables=dict(
-                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'WebKit Local Build'],
+                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'CyberKit Local Build'],
                                 description='For bugs specific to tables (both the DOM and rendering issues).',
                             ), Text=dict(
-                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'WebKit Local Build'],
+                                versions=['Other', 'Safari 15', 'Safari Technology Preview', 'CyberKit Local Build'],
                                 description='For bugs in text layout and rendering, including international text support.',
                             ),
                         ),
                     ),
-                ), radar.Tracker(project='WebKit').projects,
+                ), radar.Tracker(project='CyberKit').projects,
             )
 
     def test_create(self):
         with wkmocks.Environment(RADAR_USERNAME='tcontributor'), mocks.Radar(issues=mocks.ISSUES, projects=mocks.PROJECTS):
-            created = radar.Tracker(projects=['CFNetwork', 'WebKit']).create(
+            created = radar.Tracker(projects=['CFNetwork', 'CyberKit']).create(
                 'New bug', 'Creating new bug',
-                project='WebKit', component='Tables', version='Other',
+                project='CyberKit', component='Tables', version='Other',
             )
             self.assertEqual(created.id, 4)
             self.assertEqual(created.title, 'New bug')
@@ -274,7 +274,7 @@ class TestRadar(unittest.TestCase):
                 dict(name='Tim Contributor', username=504, emails=['tcontributor@example.com']),
             )
 
-            self.assertEqual(created.project, 'WebKit')
+            self.assertEqual(created.project, 'CyberKit')
             self.assertEqual(created.component, 'Tables')
             self.assertEqual(created.version, 'Other')
 
@@ -282,7 +282,7 @@ class TestRadar(unittest.TestCase):
         with wkmocks.Environment(RADAR_USERNAME='tcontributor'), mocks.Radar(issues=mocks.ISSUES, projects=mocks.PROJECTS), \
             wkmocks.Terminal.input('2', '4', '4'), OutputCapture() as captured:
 
-            created = radar.Tracker(projects=['CFNetwork', 'WebKit']).create('New bug', 'Creating new bug')
+            created = radar.Tracker(projects=['CFNetwork', 'CyberKit']).create('New bug', 'Creating new bug')
             self.assertEqual(created.id, 4)
             self.assertEqual(created.title, 'New bug')
             self.assertEqual(created.description, 'Creating new bug')
@@ -296,44 +296,44 @@ class TestRadar(unittest.TestCase):
                 dict(name='Tim Contributor', username=504, emails=['tcontributor@example.com']),
             )
 
-            self.assertEqual(created.project, 'WebKit')
+            self.assertEqual(created.project, 'CyberKit')
             self.assertEqual(created.component, 'Text')
-            self.assertEqual(created.version, 'WebKit Local Build')
+            self.assertEqual(created.version, 'CyberKit Local Build')
 
         self.assertEqual(
             captured.stdout.getvalue(),
             '''What project should the bug be associated with?:
     1) CFNetwork
-    2) WebKit
+    2) CyberKit
 : 
-What component in 'WebKit' should the bug be associated with?:
+What component in 'CyberKit' should the bug be associated with?:
     1) SVG
     2) Scrolling
     3) Tables
     4) Text
 : 
-What version of 'WebKit Text' should the bug be associated with?:
+What version of 'CyberKit Text' should the bug be associated with?:
     1) Other
     2) Safari 15
     3) Safari Technology Preview
-    4) WebKit Local Build
+    4) CyberKit Local Build
 : 
 ''',
         )
 
     def test_get_component(self):
         with wkmocks.Environment(RADAR_USERNAME='tcontributor'), mocks.Radar(issues=mocks.ISSUES, projects=mocks.PROJECTS):
-            issue = radar.Tracker(project='WebKit').issue(1)
-            self.assertEqual(issue.project, 'WebKit')
+            issue = radar.Tracker(project='CyberKit').issue(1)
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'Text')
             self.assertEqual(issue.version, 'Other')
 
     def test_set_component(self):
         with wkmocks.Environment(RADAR_USERNAME='tcontributor'), mocks.Radar(issues=mocks.ISSUES, projects=mocks.PROJECTS):
-            radar.Tracker(project='WebKit').issue(1).set_component(component='Tables', version='Safari 15')
+            radar.Tracker(project='CyberKit').issue(1).set_component(component='Tables', version='Safari 15')
 
-            issue = radar.Tracker(project='WebKit').issue(1)
-            self.assertEqual(issue.project, 'WebKit')
+            issue = radar.Tracker(project='CyberKit').issue(1)
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'Tables')
             self.assertEqual(issue.version, 'Safari 15')
 
@@ -345,31 +345,31 @@ What version of 'WebKit Text' should the bug be associated with?:
     def test_redaction(self):
         with wkmocks.Environment(RADAR_USERNAME='tcontributor'), mocks.Radar(issues=mocks.ISSUES, projects=mocks.PROJECTS):
             self.assertEqual(radar.Tracker(
-                project='WebKit',
+                project='CyberKit',
                 redact=None,
             ).issue(1).redacted, False)
 
             self.assertTrue(bool(radar.Tracker(
-                project='WebKit',
+                project='CyberKit',
                 redact={'.*': True},
             ).issue(1).redacted))
             self.assertEqual(radar.Tracker(
-                project='WebKit',
+                project='CyberKit',
                 redact={'.*': True},
             ).issue(1).redacted, radar.Tracker.Redaction(True, 'is a Radar'),)
 
             self.assertEqual(radar.Tracker(
-                project='WebKit',
-                redact={'project:WebKit': True},
-            ).issue(1).redacted, radar.Tracker.Redaction(True, "matches 'project:WebKit'"))
+                project='CyberKit',
+                redact={'project:CyberKit': True},
+            ).issue(1).redacted, radar.Tracker.Redaction(True, "matches 'project:CyberKit'"))
 
             self.assertEqual(radar.Tracker(
-                project='WebKit',
+                project='CyberKit',
                 redact={'component:Text': True},
             ).issue(1).redacted, radar.Tracker.Redaction(True, "matches 'component:Text'"))
 
             self.assertEqual(radar.Tracker(
-                project='WebKit',
+                project='CyberKit',
                 redact={'version:Other': True},
             ).issue(1).redacted, radar.Tracker.Redaction(True, "matches 'version:Other'"))
 

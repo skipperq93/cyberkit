@@ -28,7 +28,7 @@
 #include "Event.h"
 #include "JSValueInWrappedObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 
@@ -59,4 +59,4 @@ private:
     JSValueInWrappedObject m_reason;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

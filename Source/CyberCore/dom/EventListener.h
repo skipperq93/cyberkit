@@ -29,7 +29,7 @@ class JSObject;
 class SlotVisitor;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class Event;
@@ -76,4 +76,4 @@ private:
     Type m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

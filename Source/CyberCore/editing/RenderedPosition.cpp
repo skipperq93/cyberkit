@@ -35,7 +35,7 @@
 #include "InlineRunAndOffset.h"
 #include "VisiblePosition.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline const RenderObject* rendererFromPosition(const Position& position)
 {

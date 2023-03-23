@@ -33,12 +33,12 @@
 static int _argc;
 static const char **_argv;
 
-@interface WebKitTestRunnerApp : UIApplication {
+@interface CyberKitTestRunnerApp : UIApplication {
     UIBackgroundTaskIdentifier backgroundTaskIdentifier;
 }
 @end
 
-@implementation WebKitTestRunnerApp
+@implementation CyberKitTestRunnerApp
 
 - (void)_runTestController
 {
@@ -71,6 +71,6 @@ int main(int argc, const char* argv[])
 
     [WKProcessPool _setLinkedOnOrAfterEverythingForTesting];
 
-    UIApplicationMain(argc, (char**)argv, @"WebKitTestRunnerApp", @"WebKitTestRunnerApp");
+    UIApplicationMain(argc, (char**)argv, @"CyberKitTestRunnerApp", @"CyberKitTestRunnerApp");
     return 0;
 }

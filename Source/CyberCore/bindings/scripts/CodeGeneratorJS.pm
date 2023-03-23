@@ -1880,7 +1880,7 @@ sub GetFullyQualifiedImplementationCallName
     my $implementedBy = $property->extendedAttributes->{ImplementedBy};
     if ($implementedBy && !$property->extendedAttributes->{Reflect}) {
         AddToImplIncludes("${implementedBy}.h", $conditional);
-        return "WebCore::${implementedBy}::${implementationName}";
+        return "CyberCore::${implementedBy}::${implementationName}";
     }
     
     if ($property->isStatic || $property->isConstructor) {
@@ -2332,9 +2332,9 @@ sub GenerateEnumerationHeader
 
     $headerIncludes{"${className}.h"} = 1;
 
-    push(@headerContent, "\nnamespace WebCore {\n\n");
+    push(@headerContent, "\nnamespace CyberCore {\n\n");
     push(@headerContent, GenerateEnumerationHeaderContent($enumeration, $className));
-    push(@headerContent, "} // namespace WebCore\n");
+    push(@headerContent, "} // namespace CyberCore\n");
      
     my $conditionalString = $codeGenerator->GenerateConditionalString($enumeration);
     push(@headerContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -2347,10 +2347,10 @@ sub GenerateEnumerationImplementation
     # - Add default header template
     push(@implContentHeader, GenerateImplementationContentHeader($enumeration));
 
-    push(@implContent, "\n\nnamespace WebCore {\n");
+    push(@implContent, "\n\nnamespace CyberCore {\n");
     push(@implContent, "using namespace JSC;\n\n");
     push(@implContent, GenerateEnumerationImplementationContent($enumeration, $className));
-    push(@implContent, "} // namespace WebCore\n");
+    push(@implContent, "} // namespace CyberCore\n");
      
     my $conditionalString = $codeGenerator->GenerateConditionalString($enumeration);
     push(@implContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -2887,7 +2887,7 @@ sub GenerateHeader
     my $numAttributes = @{$interface->attributes};
     my $numOperations = @{$interface->operations};
 
-    push(@headerContent, "\nnamespace WebCore {\n\n");
+    push(@headerContent, "\nnamespace CyberCore {\n\n");
 
     if ($codeGenerator->IsSVGAnimatedType($interface->type)) {
         $headerIncludes{"SVGAnimatedPropertyImpl.h"} = 1;
@@ -3343,7 +3343,7 @@ sub GenerateHeader
     push(@headerContent, GenerateDictionariesHeaderContent($interface, $dictionaries));
 
     my $conditionalString = $codeGenerator->GenerateConditionalString($interface);
-    push(@headerContent, "\n} // namespace WebCore\n");
+    push(@headerContent, "\n} // namespace CyberCore\n");
     push(@headerContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
 
     if ($interface->extendedAttributes->{AppleCopyright}) {
@@ -3902,7 +3902,7 @@ sub GetGnuMangledNameForInterface
         return "";
     }
     my $mangledType = length($typename) . $typename;
-    my $namespace = "WebCore";
+    my $namespace = "CyberCore";
     my $mangledNamespace =  "N" . length($namespace) . $namespace;
     return $mangledNamespace . $mangledType . "E";
 }
@@ -3959,7 +3959,7 @@ sub GetWinMangledNameForInterface
 {
     my $interface = shift;
     my $typename = $interface->type->name;
-    my $namespace = "WebCore";
+    my $namespace = "CyberCore";
     return $typename . "@" . $namespace . "@@";
 }
 
@@ -4296,7 +4296,7 @@ sub GenerateImplementation
 
     @implContent = ();
 
-    push(@implContent, "\n\nnamespace WebCore {\n");
+    push(@implContent, "\n\nnamespace CyberCore {\n");
     push(@implContent, "using namespace JSC;\n\n");
 
     push(@implContent, GenerateEnumerationsImplementationContent($interface, $enumerations));
@@ -4620,7 +4620,7 @@ sub GenerateImplementation
 
         foreach my $attribute (@runtimeEnabledAttributes) {
             if (NeedsRuntimeReadWriteCheck($interface, $attribute)) {
-                AddToImplIncludes("WebCoreJSClientData.h");
+                AddToImplIncludes("CyberCoreJSClientData.h");
                 my $runtimeEnableConditionalString = GenerateRuntimeEnableConditionalString($interface, $attribute, "globalObject()");
 
                 my $attributeName = $attribute->name;
@@ -4650,7 +4650,7 @@ sub GenerateImplementation
 
         foreach my $operation (@{$interface->operations}) {
             next unless ($operation->extendedAttributes->{PrivateIdentifier});
-            AddToImplIncludes("WebCoreJSClientData.h");
+            AddToImplIncludes("CyberCoreJSClientData.h");
             my $conditionalString = $codeGenerator->GenerateConditionalString($operation);
             push(@implContent, "#if ${conditionalString}\n") if $conditionalString;
             push(@implContent, "    putDirect(vm, builtinNames(vm)." . $operation->name . "PrivateName(), JSFunction::create(vm, globalObject(), 0, String(), " . GetFunctionName($interface, $className, $operation) . ", ImplementationVisibility::Public), JSC::PropertyAttribute::ReadOnly | JSC::PropertyAttribute::DontEnum);\n");
@@ -4766,7 +4766,7 @@ sub GenerateImplementation
         next unless NeedsRuntimeCheck($interface, $attribute);
         next unless AttributeShouldBeOnInstance($interface, $attribute);
 
-        AddToImplIncludes("WebCoreJSClientData.h");
+        AddToImplIncludes("CyberCoreJSClientData.h");
         my $runtimeEnableConditionalString = GenerateRuntimeEnableConditionalString($interface, $attribute, "globalObject()");
         my $attributeName = $attribute->name;
         my $getter = GetAttributeGetterName($interface, $className, $attribute);
@@ -4798,7 +4798,7 @@ sub GenerateImplementation
         next unless $attribute->extendedAttributes->{PrivateIdentifier};
         next unless AttributeShouldBeOnInstance($interface, $attribute);
 
-        AddToImplIncludes("WebCoreJSClientData.h");
+        AddToImplIncludes("CyberCoreJSClientData.h");
         my $conditionalString = $codeGenerator->GenerateConditionalString($attribute);
         my $attributeName = $attribute->name;
         my $getter = GetAttributeGetterName($interface, $className, $attribute);
@@ -4815,7 +4815,7 @@ sub GenerateImplementation
         next unless OperationShouldBeOnInstance($interface, $operation);
         next if $operation->{overloadIndex} && $operation->{overloadIndex} > 1;
 
-        AddToImplIncludes("WebCoreJSClientData.h");
+        AddToImplIncludes("CyberCoreJSClientData.h");
         my $runtimeEnableConditionalString = GenerateRuntimeEnableConditionalString($interface, $operation, "globalObject()");
         my $functionName = $operation->name;
         my $implementationFunction = GetFunctionName($interface, $className, $operation);
@@ -4934,7 +4934,7 @@ sub GenerateImplementation
 
     AddToImplIncludes("ExtendedDOMClientIsoSubspaces.h");
     AddToImplIncludes("ExtendedDOMIsoSubspaces.h");
-    AddToImplIncludes("WebCoreJSClientData.h");
+    AddToImplIncludes("CyberCoreJSClientData.h");
     AddToImplIncludes("<CyberScriptCore/JSDestructibleObjectHeapCellType.h>");
     AddToImplIncludes("<CyberScriptCore/SlotVisitorMacros.h>");
     AddToImplIncludes("<CyberScriptCore/SubspaceInlines.h>");
@@ -4942,7 +4942,7 @@ sub GenerateImplementation
     push(@implContent, "{\n");
 
     my $isGlobal = IsDOMGlobalObject($interface);
-    push(@implContent, "    return WebCore::subspaceForImpl<${className}, UseCustomHeapCellType::" . ($isGlobal ? "Yes" : "No") . ">(vm,\n");
+    push(@implContent, "    return CyberCore::subspaceForImpl<${className}, UseCustomHeapCellType::" . ($isGlobal ? "Yes" : "No") . ">(vm,\n");
     push(@implContent, "        [] (auto& spaces) { return spaces.m_clientSubspaceFor${interfaceName}.get(); },\n");
     push(@implContent, "        [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceFor${interfaceName} = std::forward<decltype(space)>(space); },\n");
     push(@implContent, "        [] (auto& spaces) { return spaces.m_subspaceFor${interfaceName}.get(); },\n");
@@ -4961,10 +4961,10 @@ sub GenerateImplementation
         push(@implContent, "    thisObject->visitAdditionalChildren(visitor);\n") if $interface->extendedAttributes->{JSCustomMarkFunction};
         if ($interface->extendedAttributes->{GenerateAddOpaqueRoot}) {
             AddToImplIncludes("<wtf/GetPtr.h>");
-            AddToImplIncludes("WebCoreOpaqueRoot.h");
+            AddToImplIncludes("CyberCoreOpaqueRoot.h");
             my $functionName = $interface->extendedAttributes->{GenerateAddOpaqueRoot};
             $functionName = "opaqueRoot" if $functionName eq "VALUE_IS_MISSING";
-            push(@implContent, "    addWebCoreOpaqueRoot(visitor, thisObject->wrapped().${functionName}());\n");
+            push(@implContent, "    addCyberCoreOpaqueRoot(visitor, thisObject->wrapped().${functionName}());\n");
         }
         if ($interface->extendedAttributes->{ReportExtraMemoryCost}) {
             push(@implContent, "    visitor.reportExtraMemoryVisited(thisObject->wrapped().memoryCost());\n");
@@ -5068,7 +5068,7 @@ sub GenerateImplementation
             push(@implContent, "        return true;\n");
         }
         if (GetGenerateIsReachable($interface)) {
-           AddToImplIncludes("WebCoreOpaqueRoot.h");
+           AddToImplIncludes("CyberCoreOpaqueRoot.h");
 
             if (!$emittedJSCast) {
                 push(@implContent, "    auto* js${interfaceName} = jsCast<JS${interfaceName}*>(handle.slot()->asCell());\n");
@@ -5141,7 +5141,7 @@ sub GenerateImplementation
             }
 
             push(@implContent, $rootString);
-            push(@implContent, "    return containsWebCoreOpaqueRoot(visitor, owner);\n");
+            push(@implContent, "    return containsCyberCoreOpaqueRoot(visitor, owner);\n");
         } else {
             if (!$emittedJSCast) {
                 push(@implContent, "    UNUSED_PARAM(handle);\n");
@@ -5263,7 +5263,7 @@ sub GenerateForEachEventHandlerContentAttribute
         }
     }
     push(@$outputArray, "    };\n");
-    push(@$outputArray, "    auto& eventNames = WebCore::eventNames();\n");
+    push(@$outputArray, "    auto& eventNames = CyberCore::eventNames();\n");
     push(@$outputArray, "    for (auto& names : table)\n");
     push(@$outputArray, "        function(names.first.get().localName(), eventNames.*names.second);\n");
     push(@$outputArray, "}\n\n");
@@ -6317,11 +6317,11 @@ sub GenerateDictionaryHeader
 
     $headerIncludes{"${className}.h"} = 1;
 
-    push(@headerContent, "\nnamespace WebCore {\n\n");
+    push(@headerContent, "\nnamespace CyberCore {\n\n");
     push(@headerContent, GenerateDictionaryHeaderContent($dictionary, $className));
     push(@headerContent, GenerateEnumerationsHeaderContent($dictionary, $enumerations));
     push(@headerContent, GenerateDictionariesHeaderContent($dictionary, $otherDictionaries)) if $otherDictionaries;
-    push(@headerContent, "} // namespace WebCore\n");
+    push(@headerContent, "} // namespace CyberCore\n");
 
     my $conditionalString = $codeGenerator->GenerateConditionalString($dictionary);
     push(@headerContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -6348,12 +6348,12 @@ sub GenerateDictionaryImplementation
     # - Add default header template
     push(@implContentHeader, GenerateImplementationContentHeader($dictionary));
 
-    push(@implContent, "\n\nnamespace WebCore {\n");
+    push(@implContent, "\n\nnamespace CyberCore {\n");
     push(@implContent, "using namespace JSC;\n\n");
     push(@implContent, GenerateDictionaryImplementationContent($dictionary, $className));
     push(@implContent, GenerateEnumerationsImplementationContent($dictionary, $enumerations));
     push(@implContent, GenerateDictionariesImplementationContent($dictionary, $otherDictionaries)) if $otherDictionaries;
-    push(@implContent, "} // namespace WebCore\n");
+    push(@implContent, "} // namespace CyberCore\n");
 
     my $conditionalString = $codeGenerator->GenerateConditionalString($dictionary);
     push(@implContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -6365,7 +6365,7 @@ sub GenerateCallbackFunctionHeader
 
     push(@headerContentHeader, GenerateHeaderContentHeader($callbackFunction));
 
-    push(@headerContent, "\nnamespace WebCore {\n\n");
+    push(@headerContent, "\nnamespace CyberCore {\n\n");
 
     my @operations = ();
     push(@operations, $callbackFunction->operation);
@@ -6376,7 +6376,7 @@ sub GenerateCallbackFunctionHeader
     push(@headerContent, GenerateEnumerationsHeaderContent($callbackFunction, $enumerations));
     push(@headerContent, GenerateDictionariesHeaderContent($callbackFunction, $dictionaries));
 
-    push(@headerContent, "} // namespace WebCore\n");
+    push(@headerContent, "} // namespace CyberCore\n");
 
     my $conditionalString = $codeGenerator->GenerateConditionalString($callbackFunction);
     push(@headerContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -6388,7 +6388,7 @@ sub GenerateCallbackFunctionImplementation
 
     push(@implContentHeader, GenerateImplementationContentHeader($callbackFunction));
 
-    push(@implContent, "\n\nnamespace WebCore {\n");
+    push(@implContent, "\n\nnamespace CyberCore {\n");
     push(@implContent, "using namespace JSC;\n\n");
 
     push(@implContent, GenerateEnumerationsImplementationContent($callbackFunction, $enumerations));
@@ -6400,7 +6400,7 @@ sub GenerateCallbackFunctionImplementation
 
     $object->GenerateCallbackImplementationContent($callbackFunction, \@operations, \@constants, \@implContent, \%implIncludes);
 
-    push(@implContent, "} // namespace WebCore\n");
+    push(@implContent, "} // namespace CyberCore\n");
 
     my $conditionalString = $codeGenerator->GenerateConditionalString($callbackFunction);
     push(@implContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -6412,14 +6412,14 @@ sub GenerateCallbackInterfaceHeader
 
     push(@headerContentHeader, GenerateHeaderContentHeader($callbackInterface));
 
-    push(@headerContent, "\nnamespace WebCore {\n\n");
+    push(@headerContent, "\nnamespace CyberCore {\n\n");
     
     $object->GenerateCallbackHeaderContent($callbackInterface, $callbackInterface->operations, $callbackInterface->constants, \@headerContent, \%headerIncludes);
 
     push(@headerContent, GenerateEnumerationsHeaderContent($callbackInterface, $enumerations));
     push(@headerContent, GenerateDictionariesHeaderContent($callbackInterface, $dictionaries));
 
-    push(@headerContent, "} // namespace WebCore\n");
+    push(@headerContent, "} // namespace CyberCore\n");
 
     my $conditionalString = $codeGenerator->GenerateConditionalString($callbackInterface);
     push(@headerContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -6431,7 +6431,7 @@ sub GenerateCallbackInterfaceImplementation
 
     push(@implContentHeader, GenerateImplementationContentHeader($callbackInterface));
 
-    push(@implContent, "\n\nnamespace WebCore {\n");
+    push(@implContent, "\n\nnamespace CyberCore {\n");
     push(@implContent, "using namespace JSC;\n\n");
 
     push(@implContent, GenerateEnumerationsImplementationContent($callbackInterface, $enumerations));
@@ -6439,7 +6439,7 @@ sub GenerateCallbackInterfaceImplementation
 
     $object->GenerateCallbackImplementationContent($callbackInterface, $callbackInterface->operations, $callbackInterface->constants, \@implContent, \%implIncludes);
 
-    push(@implContent, "} // namespace WebCore\n");
+    push(@implContent, "} // namespace CyberCore\n");
 
     my $conditionalString = $codeGenerator->GenerateConditionalString($callbackInterface);
     push(@implContent, "\n#endif // ${conditionalString}\n") if $conditionalString;
@@ -6873,7 +6873,7 @@ public:
     {
         if constexpr (mode == JSC::SubspaceAccess::Concurrently)
             return nullptr;
-        return WebCore::subspaceForImpl<${iteratorName}, UseCustomHeapCellType::No>(vm,
+        return CyberCore::subspaceForImpl<${iteratorName}, UseCustomHeapCellType::No>(vm,
             [] (auto& spaces) { return spaces.m_clientSubspaceFor${iteratorName}.get(); },
             [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceFor${iteratorName} = std::forward<decltype(space)>(space); },
             [] (auto& spaces) { return spaces.m_subspaceFor${iteratorName}.get(); },
@@ -7549,19 +7549,19 @@ sub SubstituteHeader
     # Internal macOS SDKs up to 10.15 have non-suffixed headers in their CyberKitAdditions, requiring the addition of the suffix to build successfully.
     my $include = shift;
     if ($include eq "\"ApplePayInstallmentConfiguration.h\"") {
-        return "\"ApplePayInstallmentConfigurationWebCore.h\"";
+        return "\"ApplePayInstallmentConfigurationCyberCore.h\"";
     }
     if ($include eq "\"ApplePaySetupFeatureType.h\"") {
-        return "\"ApplePaySetupFeatureTypeWebCore.h\"";
+        return "\"ApplePaySetupFeatureTypeCyberCore.h\"";
     }
     if ($include eq "\"ApplePaySetupFeature.h\"") {
-        return "\"ApplePaySetupFeatureWebCore.h\"";
+        return "\"ApplePaySetupFeatureCyberCore.h\"";
     }
     if ($include eq "\"ApplePaySetup.h\"") {
-        return "\"ApplePaySetupWebCore.h\"";
+        return "\"ApplePaySetupCyberCore.h\"";
     }
     if ($include eq "\"PaymentInstallmentConfiguration.h\"") {
-        return "\"PaymentInstallmentConfigurationWebCore.h\"";
+        return "\"PaymentInstallmentConfigurationCyberCore.h\"";
     }
     return $include;
 }

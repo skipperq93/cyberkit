@@ -44,7 +44,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<ClientOrigin> clientOriginFromContext(ScriptExecutionContext* context)
 {
@@ -365,4 +365,4 @@ const char* WebLockManager::activeDOMObjectName() const
     return "WebLockManager";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

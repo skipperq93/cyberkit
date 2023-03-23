@@ -32,7 +32,7 @@
 #include "InsertListCommand.h"
 #include "ModifySelectionListLevel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void InsertNestedListCommand::insertUnorderedList(Document& document)
 {
@@ -63,4 +63,4 @@ void InsertNestedListCommand::doApply()
     applyCommandToComposite(InsertListCommand::create(document(), commandType));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

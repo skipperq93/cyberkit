@@ -36,7 +36,7 @@
 #include <wtf/Logger.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds taskDelayInterval { 100_ms };
 
@@ -58,7 +58,7 @@ struct ClientState {
 
     WebMediaSessionManagerClient& client;
     PlaybackTargetClientContextIdentifier contextId;
-    WebCore::MediaProducerMediaStateFlags flags;
+    CyberCore::MediaProducerMediaStateFlags flags;
     bool requestedPicker { false };
     bool previouslyRequestedPicker { false };
     bool configurationRequired { true };
@@ -182,7 +182,7 @@ MediaPlaybackTargetPickerMock& WebMediaSessionManager::mockPicker()
     return *m_pickerOverride.get();
 }
 
-WebCore::MediaPlaybackTargetPicker& WebMediaSessionManager::targetPicker()
+CyberCore::MediaPlaybackTargetPicker& WebMediaSessionManager::targetPicker()
 {
     if (m_mockPickerEnabled)
         return mockPicker();
@@ -531,6 +531,6 @@ void WebMediaSessionManager::watchdogTimerFired()
     targetPicker().invalidatePlaybackTargets();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)

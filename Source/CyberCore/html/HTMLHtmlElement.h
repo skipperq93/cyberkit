@@ -25,7 +25,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLHtmlElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLHtmlElement);
@@ -41,4 +41,4 @@ private:
     bool isURLAttribute(const Attribute&) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

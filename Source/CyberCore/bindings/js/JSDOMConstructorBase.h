@@ -22,7 +22,7 @@
 #include "JSDOMGlobalObject.h"
 #include <CyberScriptCore/InternalFunction.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 JSC_DECLARE_HOST_FUNCTION(callThrowTypeErrorForJSDOMConstructor);
 JSC_DECLARE_HOST_FUNCTION(callThrowTypeErrorForJSDOMConstructorNotConstructable);
@@ -58,4 +58,4 @@ protected:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

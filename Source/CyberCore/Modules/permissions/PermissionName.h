@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PermissionName : uint8_t {
     Accelerometer,
@@ -46,27 +46,27 @@ enum class PermissionName : uint8_t {
     SpeakerSelection
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PermissionName> {
+template<> struct EnumTraits<CyberCore::PermissionName> {
     using values = EnumValues<
-        WebCore::PermissionName,
-        WebCore::PermissionName::Accelerometer,
-        WebCore::PermissionName::BackgroundFetch,
-        WebCore::PermissionName::Bluetooth,
-        WebCore::PermissionName::Camera,
-        WebCore::PermissionName::DisplayCapture,
-        WebCore::PermissionName::Geolocation,
-        WebCore::PermissionName::Gyroscope,
-        WebCore::PermissionName::Magnetometer,
-        WebCore::PermissionName::Microphone,
-        WebCore::PermissionName::Midi,
-        WebCore::PermissionName::Nfc,
-        WebCore::PermissionName::Notifications,
-        WebCore::PermissionName::ScreenWakeLock,
-        WebCore::PermissionName::SpeakerSelection
+        CyberCore::PermissionName,
+        CyberCore::PermissionName::Accelerometer,
+        CyberCore::PermissionName::BackgroundFetch,
+        CyberCore::PermissionName::Bluetooth,
+        CyberCore::PermissionName::Camera,
+        CyberCore::PermissionName::DisplayCapture,
+        CyberCore::PermissionName::Geolocation,
+        CyberCore::PermissionName::Gyroscope,
+        CyberCore::PermissionName::Magnetometer,
+        CyberCore::PermissionName::Microphone,
+        CyberCore::PermissionName::Midi,
+        CyberCore::PermissionName::Nfc,
+        CyberCore::PermissionName::Notifications,
+        CyberCore::PermissionName::ScreenWakeLock,
+        CyberCore::PermissionName::SpeakerSelection
     >;
 };
 

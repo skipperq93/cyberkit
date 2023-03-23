@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class ScriptExecutionContext;
@@ -50,4 +50,4 @@ private:
     HashMap<uint64_t, MediaEngineConfigurationFactory::EncodingConfigurationCallback> m_encodingTasks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

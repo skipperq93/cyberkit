@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebCodecsEncodedVideoChunk;
 struct WebCodecsEncodedVideoChunkMetadata;
@@ -44,6 +44,6 @@ public:
     virtual CallbackResult<void> handleEvent(WebCodecsEncodedVideoChunk&, const WebCodecsEncodedVideoChunkMetadata&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS)

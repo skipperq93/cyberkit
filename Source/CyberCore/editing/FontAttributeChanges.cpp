@@ -36,7 +36,7 @@
 #include "MutableStyleProperties.h"
 #include "StyleProperties.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FontChanges::FontChanges(String&& fontName, String&& fontFamily, std::optional<double>&& fontSize, std::optional<double>&& fontSizeDelta, std::optional<bool>&& bold, std::optional<bool>&& italic)
     : m_fontName(WTFMove(fontName))
@@ -169,4 +169,4 @@ Ref<EditingStyle> FontAttributeChanges::createEditingStyle() const
     return editingStyle;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

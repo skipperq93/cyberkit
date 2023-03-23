@@ -29,7 +29,7 @@
 
 #if ENABLE(INPUT_TYPE_COLOR)
 
-namespace WebKit {
+namespace CyberKit {
 
 WebColorPicker::WebColorPicker(Client* client)
     : m_client(client)
@@ -63,6 +63,6 @@ void WebColorPicker::showColorPicker(const CyberCore::Color&)
     return;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INPUT_TYPE_COLOR)

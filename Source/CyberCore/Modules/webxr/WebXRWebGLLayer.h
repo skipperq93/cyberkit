@@ -39,7 +39,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLCanvasElement;
 class IntSize;
@@ -113,6 +113,6 @@ private:
     bool m_viewportsDirty { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

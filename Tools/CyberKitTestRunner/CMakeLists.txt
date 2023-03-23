@@ -21,7 +21,7 @@ set(CyberKitTestRunner_LIBRARIES
     CyberKit::CyberCoreTestSupport
 )
 set(CyberKitTestRunner_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
     CyberCore

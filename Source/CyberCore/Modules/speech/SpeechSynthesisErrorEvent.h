@@ -31,7 +31,7 @@
 #include "SpeechSynthesisErrorEventInit.h"
 #include "SpeechSynthesisEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechSynthesisErrorEvent final : public SpeechSynthesisEvent {
     WTF_MAKE_ISO_ALLOCATED(SpeechSynthesisErrorEvent);
@@ -49,6 +49,6 @@ private:
     SpeechSynthesisErrorCode m_error;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

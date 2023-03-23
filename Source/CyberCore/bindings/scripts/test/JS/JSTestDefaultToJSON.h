@@ -24,7 +24,7 @@
 #include "TestDefaultToJSON.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDefaultToJSON : public JSDOMWrapper<TestDefaultToJSON> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDefaultToJSON> {
     using ToWrappedReturnType = TestDefaultToJSON*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

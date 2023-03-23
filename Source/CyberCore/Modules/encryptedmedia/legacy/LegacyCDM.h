@@ -32,7 +32,7 @@
 #include <wtf/Function.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyCDM;
 class CDMPrivateInterface;

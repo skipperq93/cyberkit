@@ -31,7 +31,7 @@
 
 #include "VideoTrack.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoTrackList::VideoTrackList(ScriptExecutionContext* context)
     : TrackListBase(context, TrackListBase::VideoTrackList)
@@ -99,5 +99,5 @@ const char* VideoTrackList::activeDOMObjectName() const
     return "VideoTrackList";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

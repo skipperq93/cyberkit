@@ -18,25 +18,25 @@
  */
 
 #include "config.h"
-#include "WebKitInputMethodContext.h"
+#include "CyberKitInputMethodContext.h"
 
-#include "WebKitEnumTypes.h"
-#include "WebKitInitialize.h"
-#include "WebKitInputMethodContextPrivate.h"
-#include "WebKitWebView.h"
+#include "CyberKitEnumTypes.h"
+#include "CyberKitInitialize.h"
+#include "CyberKitInputMethodContextPrivate.h"
+#include "CyberKitWebView.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 
 using namespace CyberCore;
 
 /**
- * WebKitInputMethodContext:
- * @See_also: #WebKitWebView
+ * CyberKitInputMethodContext:
+ * @See_also: #CyberKitWebView
  *
  * Base class for input method contexts.
  *
- * WebKitInputMethodContext defines the interface to implement WebKit input methods.
- * The input methods are used by WebKit, when editable content is focused, to map from
+ * CyberKitInputMethodContext defines the interface to implement CyberKit input methods.
+ * The input methods are used by CyberKit, when editable content is focused, to map from
  * key events to Unicode character strings.
  *
  * An input method may consume multiple key events in sequence and finally
@@ -69,16 +69,16 @@ enum {
 };
 
 /**
- * WebKitInputMethodUnderline:
+ * CyberKitInputMethodUnderline:
  *
  * Range of text in an preedit string to be shown underlined.
  *
  * Since: 2.28
  */
 
-G_DEFINE_BOXED_TYPE(WebKitInputMethodUnderline, webkit_input_method_underline, webkit_input_method_underline_copy, webkit_input_method_underline_free)
+G_DEFINE_BOXED_TYPE(CyberKitInputMethodUnderline, webkit_input_method_underline, webkit_input_method_underline_copy, webkit_input_method_underline_free)
 
-const CompositionUnderline& webkitInputMethodUnderlineGetCompositionUnderline(WebKitInputMethodUnderline* underline)
+const CompositionUnderline& webkitInputMethodUnderlineGetCompositionUnderline(CyberKitInputMethodUnderline* underline)
 {
     return underline->underline;
 }
@@ -88,66 +88,66 @@ const CompositionUnderline& webkitInputMethodUnderlineGetCompositionUnderline(We
  * @start_offset: the start offset in preedit string
  * @end_offset: the end offset in preedit string
  *
- * Create a new #WebKitInputMethodUnderline for the given range in preedit string
+ * Create a new #CyberKitInputMethodUnderline for the given range in preedit string
  *
- * Returns: (transfer full): A newly created #WebKitInputMethodUnderline
+ * Returns: (transfer full): A newly created #CyberKitInputMethodUnderline
  *
  * Since: 2.28
  */
-WebKitInputMethodUnderline* webkit_input_method_underline_new(unsigned startOffset, unsigned endOffset)
+CyberKitInputMethodUnderline* webkit_input_method_underline_new(unsigned startOffset, unsigned endOffset)
 {
-    auto* underline = static_cast<WebKitInputMethodUnderline*>(fastMalloc(sizeof(WebKitInputMethodUnderline)));
-    new (underline) WebKitInputMethodUnderline(startOffset, endOffset);
+    auto* underline = static_cast<CyberKitInputMethodUnderline*>(fastMalloc(sizeof(CyberKitInputMethodUnderline)));
+    new (underline) CyberKitInputMethodUnderline(startOffset, endOffset);
     return underline;
 }
 
 /**
  * webkit_input_method_underline_copy:
- * @underline: a #WebKitInputMethodUnderline
+ * @underline: a #CyberKitInputMethodUnderline
  *
- * Make a copy of the #WebKitInputMethodUnderline.
+ * Make a copy of the #CyberKitInputMethodUnderline.
  *
- * Returns: (transfer full): A copy of passed in #WebKitInputMethodUnderline
+ * Returns: (transfer full): A copy of passed in #CyberKitInputMethodUnderline
  *
  * Since: 2.28
  */
-WebKitInputMethodUnderline* webkit_input_method_underline_copy(WebKitInputMethodUnderline* underline)
+CyberKitInputMethodUnderline* webkit_input_method_underline_copy(CyberKitInputMethodUnderline* underline)
 {
     g_return_val_if_fail(underline, nullptr);
 
-    auto* copyUnderline = static_cast<WebKitInputMethodUnderline*>(fastMalloc(sizeof(WebKitInputMethodUnderline)));
-    new (copyUnderline) WebKitInputMethodUnderline(underline->underline);
+    auto* copyUnderline = static_cast<CyberKitInputMethodUnderline*>(fastMalloc(sizeof(CyberKitInputMethodUnderline)));
+    new (copyUnderline) CyberKitInputMethodUnderline(underline->underline);
     return copyUnderline;
 }
 
 /**
  * webkit_input_method_underline_free:
- * @underline: A #WebKitInputMethodUnderline
+ * @underline: A #CyberKitInputMethodUnderline
  *
- * Free the #WebKitInputMethodUnderline.
+ * Free the #CyberKitInputMethodUnderline.
  *
  * Since: 2.28
  */
-void webkit_input_method_underline_free(WebKitInputMethodUnderline* underline)
+void webkit_input_method_underline_free(CyberKitInputMethodUnderline* underline)
 {
     g_return_if_fail(underline);
 
-    underline->~WebKitInputMethodUnderline();
+    underline->~CyberKitInputMethodUnderline();
     fastFree(underline);
 }
 
-struct _WebKitInputMethodContextPrivate {
-    WebKitWebView* webView;
-    WebKitInputPurpose purpose;
-    WebKitInputHints hints;
+struct _CyberKitInputMethodContextPrivate {
+    CyberKitWebView* webView;
+    CyberKitInputPurpose purpose;
+    CyberKitInputHints hints;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_ABSTRACT_TYPE(WebKitInputMethodContext, webkit_input_method_context, G_TYPE_OBJECT)
+WEBKIT_DEFINE_ABSTRACT_TYPE(CyberKitInputMethodContext, webkit_input_method_context, G_TYPE_OBJECT)
 
 /**
- * WebKitInputMethodContextClass:
+ * CyberKitInputMethodContextClass:
  * @set_enable_preedit: Called via webkit_input_method_context_set_enable_preedit() to
  *   control the use of the preedit string.
  * @get_preedit: Called via webkit_input_method_context_get_preedit() to
@@ -159,14 +159,14 @@ WEBKIT_DEFINE_ABSTRACT_TYPE(WebKitInputMethodContext, webkit_input_method_contex
  *   key press or release event. Every non-trivial input method needs to
  *   override this in order to implement the mapping from key events to text.
  *   A return value of %TRUE indicates to the caller that the event was
- *   consumed by the input method. In that case, the #WebKitInputMethodContext::committed
+ *   consumed by the input method. In that case, the #CyberKitInputMethodContext::committed
  *   signal should be emitted upon completion of a key sequence to pass the
  *   resulting text back to the editable element. Alternatively, %FALSE may be
  *   returned to indicate that the event wasn’t handled by the input method.
  * @notify_focus_in: Called via webkit_input_method_context_notify_focus_in() when
- *   an editable element of the #WebKitWebView has gained focus.
+ *   an editable element of the #CyberKitWebView has gained focus.
  * @notify_focus_out: Called via webkit_input_method_context_notify_focus_out() when
- *   an editable element of the #WebKitWebView has lost focus.
+ *   an editable element of the #CyberKitWebView has lost focus.
  * @notify_cursor_area: Called via webkit_input_method_context_notify_cursor_area()
  *   to inform the input method of the current cursor location relative to
  *   the client window.
@@ -182,14 +182,14 @@ WEBKIT_DEFINE_ABSTRACT_TYPE(WebKitInputMethodContext, webkit_input_method_contex
 
 static void webkitInputMethodContextSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitInputMethodContext* context = WEBKIT_INPUT_METHOD_CONTEXT(object);
+    CyberKitInputMethodContext* context = WEBKIT_INPUT_METHOD_CONTEXT(object);
 
     switch (propId) {
     case PROP_INPUT_PURPOSE:
-        webkit_input_method_context_set_input_purpose(context, static_cast<WebKitInputPurpose>(g_value_get_enum(value)));
+        webkit_input_method_context_set_input_purpose(context, static_cast<CyberKitInputPurpose>(g_value_get_enum(value)));
         break;
     case PROP_INPUT_HINTS:
-        webkit_input_method_context_set_input_hints(context, static_cast<WebKitInputHints>(g_value_get_flags(value)));
+        webkit_input_method_context_set_input_hints(context, static_cast<CyberKitInputHints>(g_value_get_flags(value)));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, propId, paramSpec);
@@ -198,7 +198,7 @@ static void webkitInputMethodContextSetProperty(GObject* object, guint propId, c
 
 static void webkitInputMethodContextGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitInputMethodContext* context = WEBKIT_INPUT_METHOD_CONTEXT(object);
+    CyberKitInputMethodContext* context = WEBKIT_INPUT_METHOD_CONTEXT(object);
 
     switch (propId) {
     case PROP_INPUT_PURPOSE:
@@ -212,18 +212,18 @@ static void webkitInputMethodContextGetProperty(GObject* object, guint propId, G
     }
 }
 
-static void webkit_input_method_context_class_init(WebKitInputMethodContextClass* klass)
+static void webkit_input_method_context_class_init(CyberKitInputMethodContextClass* klass)
 {
-    WebKit::webkitInitialize();
+    CyberKit::webkitInitialize();
 
     GObjectClass* gObjectClass = G_OBJECT_CLASS(klass);
     gObjectClass->set_property = webkitInputMethodContextSetProperty;
     gObjectClass->get_property = webkitInputMethodContextGetProperty;
 
     /**
-     * WebKitInputMethodContext:input-purpose:
+     * CyberKitInputMethodContext:input-purpose:
      *
-     * The #WebKitInputPurpose of the input associated with this context.
+     * The #CyberKitInputPurpose of the input associated with this context.
      *
      * Since: 2.28
      */
@@ -236,9 +236,9 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
             WEBKIT_PARAM_READWRITE);
 
     /**
-     * WebKitInputMethodContext:input-hints:
+     * CyberKitInputMethodContext:input-hints:
      *
-     * The #WebKitInputHints of the input associated with this context.
+     * The #CyberKitInputHints of the input associated with this context.
      *
      * Since: 2.28
      */
@@ -253,8 +253,8 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
     g_object_class_install_properties(gObjectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitInputMethodContext::preedit-started:
-     * @context: the #WebKitInputMethodContext on which the signal is emitted
+     * CyberKitInputMethodContext::preedit-started:
+     * @context: the #CyberKitInputMethodContext on which the signal is emitted
      *
      * Emitted when a new preediting sequence starts.
      *
@@ -264,14 +264,14 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
         "preedit-started",
         G_TYPE_FROM_CLASS(klass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitInputMethodContextClass, preedit_started),
+        G_STRUCT_OFFSET(CyberKitInputMethodContextClass, preedit_started),
         nullptr, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_NONE, 0);
 
     /**
-     * WebKitInputMethodContext::preedit-changed:
-     * @context: the #WebKitInputMethodContext on which the signal is emitted
+     * CyberKitInputMethodContext::preedit-changed:
+     * @context: the #CyberKitInputMethodContext on which the signal is emitted
      *
      * Emitted whenever the preedit sequence currently being entered has changed.
      * It is also emitted at the end of a preedit sequence, in which case
@@ -283,14 +283,14 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
         "preedit-changed",
         G_TYPE_FROM_CLASS(klass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitInputMethodContextClass, preedit_changed),
+        G_STRUCT_OFFSET(CyberKitInputMethodContextClass, preedit_changed),
         nullptr, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_NONE, 0);
 
     /**
-     * WebKitInputMethodContext::preedit-finished:
-     * @context: the #WebKitInputMethodContext on which the signal is emitted
+     * CyberKitInputMethodContext::preedit-finished:
+     * @context: the #CyberKitInputMethodContext on which the signal is emitted
      *
      * Emitted when a preediting sequence has been completed or canceled.
      *
@@ -300,14 +300,14 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
         "preedit-finished",
         G_TYPE_FROM_CLASS(klass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitInputMethodContextClass, preedit_finished),
+        G_STRUCT_OFFSET(CyberKitInputMethodContextClass, preedit_finished),
         nullptr, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_NONE, 0);
 
     /**
-     * WebKitInputMethodContext::committed:
-     * @context: the #WebKitInputMethodContext on which the signal is emitted
+     * CyberKitInputMethodContext::committed:
+     * @context: the #CyberKitInputMethodContext on which the signal is emitted
      * @text: the string result
      *
      * Emitted when a complete input sequence has been entered by the user.
@@ -320,15 +320,15 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
         "committed",
         G_TYPE_FROM_CLASS(klass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitInputMethodContextClass, committed),
+        G_STRUCT_OFFSET(CyberKitInputMethodContextClass, committed),
         nullptr, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_NONE, 1,
         G_TYPE_STRING);
 
     /**
-     * WebKitInputMethodContext::delete-surrounding:
-     * @context: the #WebKitInputMethodContext on which the signal is emitted
+     * CyberKitInputMethodContext::delete-surrounding:
+     * @context: the #CyberKitInputMethodContext on which the signal is emitted
      * @offset: the character offset from the cursor position of the text to be deleted.
      * @n_chars: the number of characters to be deleted
      *
@@ -341,7 +341,7 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
         "delete-surrounding",
         G_TYPE_FROM_CLASS(klass),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(WebKitInputMethodContextClass, delete_surrounding),
+        G_STRUCT_OFFSET(CyberKitInputMethodContextClass, delete_surrounding),
         nullptr, nullptr,
         g_cclosure_marshal_generic,
         G_TYPE_NONE, 2,
@@ -349,26 +349,26 @@ static void webkit_input_method_context_class_init(WebKitInputMethodContextClass
         G_TYPE_UINT);
 }
 
-void webkitInputMethodContextSetWebView(WebKitInputMethodContext* context, WebKitWebView* webView)
+void webkitInputMethodContextSetWebView(CyberKitInputMethodContext* context, CyberKitWebView* webView)
 {
     context->priv->webView = webView;
 }
 
-WebKitWebView* webkitInputMethodContextGetWebView(WebKitInputMethodContext* context)
+CyberKitWebView* webkitInputMethodContextGetWebView(CyberKitInputMethodContext* context)
 {
     return context->priv->webView;
 }
 
 /**
  * webkit_input_method_context_set_enable_preedit:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  * @enabled: whether to enable preedit
  *
  * Set whether @context should enable preedit to display feedback.
  *
  * Since: 2.28
  */
-void webkit_input_method_context_set_enable_preedit(WebKitInputMethodContext* context, gboolean enabled)
+void webkit_input_method_context_set_enable_preedit(CyberKitInputMethodContext* context, gboolean enabled)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 
@@ -379,19 +379,19 @@ void webkit_input_method_context_set_enable_preedit(WebKitInputMethodContext* co
 
 /**
  * webkit_input_method_context_get_preedit:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  * @text: (out) (transfer full) (nullable): location to store the preedit string
- * @underlines: (out) (transfer full) (nullable) (element-type WebKitInputMethodUnderline): location to store the underlines as a #GList of #WebKitInputMethodUnderline
+ * @underlines: (out) (transfer full) (nullable) (element-type CyberKitInputMethodUnderline): location to store the underlines as a #GList of #CyberKitInputMethodUnderline
  * @cursor_offset: (out) (nullable): location to store the position of cursor in preedit string
  *
- *  Get the pre-edit string and a list of WebKitInputMethodUnderline.
+ *  Get the pre-edit string and a list of CyberKitInputMethodUnderline.
  *
- * Get the current pre-edit string for the @context, and a list of WebKitInputMethodUnderline to apply to the string.
+ * Get the current pre-edit string for the @context, and a list of CyberKitInputMethodUnderline to apply to the string.
  * The string will be displayed inserted at @cursor_offset.
  *
  * Since: 2.28
  */
-void webkit_input_method_context_get_preedit(WebKitInputMethodContext* context, char** text, GList** underlines, unsigned* cursorOffset)
+void webkit_input_method_context_get_preedit(CyberKitInputMethodContext* context, char** text, GList** underlines, unsigned* cursorOffset)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 
@@ -411,13 +411,13 @@ void webkit_input_method_context_get_preedit(WebKitInputMethodContext* context, 
 
 /**
  * webkit_input_method_context_notify_focus_in:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  *
  * Notify @context that input associated has gained focus.
  *
  * Since: 2.28
  */
-void webkit_input_method_context_notify_focus_in(WebKitInputMethodContext* context)
+void webkit_input_method_context_notify_focus_in(CyberKitInputMethodContext* context)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 
@@ -428,13 +428,13 @@ void webkit_input_method_context_notify_focus_in(WebKitInputMethodContext* conte
 
 /**
  * webkit_input_method_context_notify_focus_out:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  *
  * Notify @context that input associated has lost focus.
  *
  * Since: 2.28
  */
-void webkit_input_method_context_notify_focus_out(WebKitInputMethodContext* context)
+void webkit_input_method_context_notify_focus_out(CyberKitInputMethodContext* context)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 
@@ -445,7 +445,7 @@ void webkit_input_method_context_notify_focus_out(WebKitInputMethodContext* cont
 
 /**
  * webkit_input_method_context_notify_cursor_area:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  * @x: the x coordinate of cursor location
  * @y: the y coordinate of cursor location
  * @width: the width of cursor area
@@ -455,7 +455,7 @@ void webkit_input_method_context_notify_focus_out(WebKitInputMethodContext* cont
  *
  * Since: 2.28
  */
-void webkit_input_method_context_notify_cursor_area(WebKitInputMethodContext* context, int x, int y, int width, int height)
+void webkit_input_method_context_notify_cursor_area(CyberKitInputMethodContext* context, int x, int y, int width, int height)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 
@@ -466,7 +466,7 @@ void webkit_input_method_context_notify_cursor_area(WebKitInputMethodContext* co
 
 /**
  * webkit_input_method_context_notify_surrounding:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  * @text: text surrounding the insertion point
  * @length: the length of @text, or -1 if @text is nul-terminated
  * @cursor_index: the byte index of the insertion cursor within @text.
@@ -478,7 +478,7 @@ void webkit_input_method_context_notify_cursor_area(WebKitInputMethodContext* co
  *
  * Since: 2.28
  */
-void webkit_input_method_context_notify_surrounding(WebKitInputMethodContext* context, const char* text, int length, unsigned cursorIndex, unsigned selectionIndex)
+void webkit_input_method_context_notify_surrounding(CyberKitInputMethodContext* context, const char* text, int length, unsigned cursorIndex, unsigned selectionIndex)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
     g_return_if_fail(text || !length);
@@ -496,7 +496,7 @@ void webkit_input_method_context_notify_surrounding(WebKitInputMethodContext* co
 
 /**
  * webkit_input_method_context_reset:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  *
  * Reset the @context.
  *
@@ -504,7 +504,7 @@ void webkit_input_method_context_notify_surrounding(WebKitInputMethodContext* co
  *
  * Since: 2.28
  */
-void webkit_input_method_context_reset(WebKitInputMethodContext* context)
+void webkit_input_method_context_reset(CyberKitInputMethodContext* context)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 
@@ -515,15 +515,15 @@ void webkit_input_method_context_reset(WebKitInputMethodContext* context)
 
 /**
  * webkit_input_method_context_get_input_purpose:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  *
- * Get the value of the #WebKitInputMethodContext:input-purpose property.
+ * Get the value of the #CyberKitInputMethodContext:input-purpose property.
  *
- * Returns: the #WebKitInputPurpose of the input associated with @context
+ * Returns: the #CyberKitInputPurpose of the input associated with @context
  *
  * Since: 2.28
  */
-WebKitInputPurpose webkit_input_method_context_get_input_purpose(WebKitInputMethodContext* context)
+CyberKitInputPurpose webkit_input_method_context_get_input_purpose(CyberKitInputMethodContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context), WEBKIT_INPUT_PURPOSE_FREE_FORM);
 
@@ -532,14 +532,14 @@ WebKitInputPurpose webkit_input_method_context_get_input_purpose(WebKitInputMeth
 
 /**
  * webkit_input_method_context_set_input_purpose:
- * @context: a #WebKitInputMethodContext
- * @purpose: a #WebKitInputPurpose
+ * @context: a #CyberKitInputMethodContext
+ * @purpose: a #CyberKitInputPurpose
  *
- * Set the value of the #WebKitInputMethodContext:input-purpose property.
+ * Set the value of the #CyberKitInputMethodContext:input-purpose property.
  *
  * Since: 2.28
  */
-void webkit_input_method_context_set_input_purpose(WebKitInputMethodContext* context, WebKitInputPurpose purpose)
+void webkit_input_method_context_set_input_purpose(CyberKitInputMethodContext* context, CyberKitInputPurpose purpose)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 
@@ -552,15 +552,15 @@ void webkit_input_method_context_set_input_purpose(WebKitInputMethodContext* con
 
 /**
  * webkit_input_method_context_get_input_hints:
- * @context: a #WebKitInputMethodContext
+ * @context: a #CyberKitInputMethodContext
  *
- * Get the value of the #WebKitInputMethodContext:input-hints property.
+ * Get the value of the #CyberKitInputMethodContext:input-hints property.
  *
- * Returns: the #WebKitInputHints of the input associated with @context
+ * Returns: the #CyberKitInputHints of the input associated with @context
  *
  * Since: 2.28
  */
-WebKitInputHints webkit_input_method_context_get_input_hints(WebKitInputMethodContext* context)
+CyberKitInputHints webkit_input_method_context_get_input_hints(CyberKitInputMethodContext* context)
 {
     g_return_val_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context), WEBKIT_INPUT_HINT_NONE);
 
@@ -569,14 +569,14 @@ WebKitInputHints webkit_input_method_context_get_input_hints(WebKitInputMethodCo
 
 /**
  * webkit_input_method_context_set_input_hints:
- * @context: a #WebKitInputMethodContext
- * @hints: a #WebKitInputHints
+ * @context: a #CyberKitInputMethodContext
+ * @hints: a #CyberKitInputHints
  *
- * Set the value of the #WebKitInputMethodContext:input-hints property.
+ * Set the value of the #CyberKitInputMethodContext:input-hints property.
  *
  * Since: 2.28
  */
-void webkit_input_method_context_set_input_hints(WebKitInputMethodContext* context, WebKitInputHints hints)
+void webkit_input_method_context_set_input_hints(CyberKitInputMethodContext* context, CyberKitInputHints hints)
 {
     g_return_if_fail(WEBKIT_IS_INPUT_METHOD_CONTEXT(context));
 

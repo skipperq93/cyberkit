@@ -33,7 +33,7 @@
 #include "PlaybackTargetClientContextIdentifier.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebMediaSessionManagerClient {
 public:
@@ -47,6 +47,6 @@ public:
     virtual PlatformView* platformView() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)

@@ -44,7 +44,7 @@
 #define AUTHORIZATIONCOORDINATOR_RELEASE_LOG(fmt, ...) RELEASE_LOG(AppSSO, "%p - SOAuthorizationCoordinator::" fmt, this, ##__VA_ARGS__)
 #define AUTHORIZATIONCOORDINATOR_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(AppSSO, "%p - SOAuthorizationCoordinator::" fmt, this, ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 
 SOAuthorizationCoordinator::SOAuthorizationCoordinator()
 {
@@ -111,7 +111,7 @@ void SOAuthorizationCoordinator::tryAuthorize(Ref<API::NavigationAction>&& navig
     [m_soAuthorizationDelegate setSession:WTFMove(session)];
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef AUTHORIZATIONCOORDINATOR_RELEASE_LOG_ERROR
 #undef AUTHORIZATIONCOORDINATOR_RELEASE_LOG

@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Span.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BufferSource;
 class ReadableStream;
@@ -63,4 +63,4 @@ private:
     Callback m_callback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

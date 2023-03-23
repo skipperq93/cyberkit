@@ -33,7 +33,7 @@ class Instance;
 }
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class PluginReplacement;
 class PluginViewBase;
@@ -110,8 +110,8 @@ private:
     DisplayState m_displayState { Playing };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLPlugInElement)
-    static bool isType(const WebCore::Node& node) { return node.isPluginElement(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLPlugInElement)
+    static bool isType(const CyberCore::Node& node) { return node.isPluginElement(); }
 SPECIALIZE_TYPE_TRAITS_END()

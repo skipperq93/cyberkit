@@ -34,7 +34,7 @@
 #include "MediaPlayerPrivateRemote.h"
 #include "RemoteMediaPlayerProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 AudioTrackPrivateRemote::AudioTrackPrivateRemote(GPUProcessConnection& gpuProcessConnection, CyberCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, AudioTrackPrivateRemoteConfiguration&& configuration)
     : m_gpuProcessConnection(gpuProcessConnection)
@@ -86,6 +86,6 @@ void AudioTrackPrivateRemote::updateConfiguration(AudioTrackPrivateRemoteConfigu
     AudioTrackPrivate::setEnabled(configuration.enabled);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

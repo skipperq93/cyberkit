@@ -27,7 +27,7 @@
 #include "HTMLOptionElement.h"
 #include "HTMLSelectElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLOptionsCollection final : public CachedHTMLCollection<HTMLOptionsCollection, CollectionTypeTraits<SelectOptions>::traversalType> {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(HTMLOptionsCollection, WEBCORE_EXPORT);
@@ -88,6 +88,6 @@ inline bool HTMLOptionsCollection::elementMatches(Element& element) const
     return element.parentNode()->hasTagName(HTMLNames::optgroupTag) && element.parentNode()->parentNode() == &selectElement();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_HTMLCOLLECTION(HTMLOptionsCollection, SelectOptions)

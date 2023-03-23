@@ -38,7 +38,7 @@
 #include <CyberCore/IntRect.h>
 #include <CyberCore/ScreenOrientationType.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebFullScreenManagerProxy::WebFullScreenManagerProxy(WebPageProxy& page, WebFullScreenManagerProxyClient& client)
@@ -222,6 +222,6 @@ void WebFullScreenManagerProxy::unlockFullscreenOrientation()
     m_client.unlockFullscreenOrientation();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(FULLSCREEN_API)

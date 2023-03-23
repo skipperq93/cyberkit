@@ -27,7 +27,7 @@
 
 #include <CyberScriptCore/InjectedScriptModule.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CommandLineAPIModule final : public Inspector::InjectedScriptModule {
 public:
@@ -39,4 +39,4 @@ public:
     static void injectIfNeeded(Inspector::InjectedScriptManager*, const Inspector::InjectedScript&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

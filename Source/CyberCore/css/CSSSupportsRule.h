@@ -32,7 +32,7 @@
 
 #include "CSSConditionRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRuleSupports;
 
@@ -48,6 +48,6 @@ private:
     StyleRuleType styleRuleType() const final { return StyleRuleType::Supports; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSSupportsRule, StyleRuleType::Supports)

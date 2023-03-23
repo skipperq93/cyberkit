@@ -28,7 +28,7 @@
 #include "CSSNumericValue.h"
 #include "CSSTransformComponent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class ExceptionOr;
 class CSSFunctionValue;
@@ -59,8 +59,8 @@ private:
     CSSPerspectiveValue m_length;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSPerspective)
-    static bool isType(const WebCore::CSSTransformComponent& transform) { return transform.getType() == WebCore::CSSTransformType::Perspective; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSPerspective)
+    static bool isType(const CyberCore::CSSTransformComponent& transform) { return transform.getType() == CyberCore::CSSTransformType::Perspective; }
 SPECIALIZE_TYPE_TRAITS_END()

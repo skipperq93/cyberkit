@@ -33,7 +33,7 @@
 #include <pal/graphics/WebGPU/WebGPUCompilationInfo.h>
 #include <pal/graphics/WebGPU/WebGPUCompilationMessage.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 RemoteShaderModuleProxy::RemoteShaderModuleProxy(RemoteDeviceProxy& parent, ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier)
     : m_backing(identifier)
@@ -64,6 +64,6 @@ void RemoteShaderModuleProxy::setLabelInternal(const String& label)
     UNUSED_VARIABLE(sendResult);
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

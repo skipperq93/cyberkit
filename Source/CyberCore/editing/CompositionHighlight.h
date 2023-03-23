@@ -27,7 +27,7 @@
 
 #include "Color.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CompositionHighlight {
     CompositionHighlight() = default;
@@ -51,4 +51,4 @@ struct CompositionHighlight {
     std::optional<Color> foregroundColor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

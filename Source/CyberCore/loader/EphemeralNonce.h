@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore::PCM {
+namespace CyberCore::PCM {
 
 struct EphemeralNonce {
     String nonce;

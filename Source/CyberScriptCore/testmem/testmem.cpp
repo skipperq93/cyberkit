@@ -25,9 +25,9 @@
  */
 
 #include "config.h"
-#include <JavaScriptCore/JSBase.h>
-#include <JavaScriptCore/JSContextRef.h>
-#include <JavaScriptCore/JSStringRef.h>
+#include <CyberScriptCore/JSBase.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSStringRef.h>
 #include <inttypes.h>
 #include <optional>
 #include <stdio.h>

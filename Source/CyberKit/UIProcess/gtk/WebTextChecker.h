@@ -30,7 +30,7 @@
 #include "WebTextCheckerClient.h"
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -53,4 +53,4 @@ private:
     WebTextCheckerClient m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

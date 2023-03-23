@@ -27,7 +27,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLPictureElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLPictureElement);
@@ -46,4 +46,4 @@ private:
     HTMLPictureElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

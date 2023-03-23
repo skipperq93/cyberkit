@@ -43,14 +43,14 @@
 #include "Page.h"
 #include "ScriptExecutionContext.h"
 #include "SerializedScriptValue.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/CatchScope.h>
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBObjectStore);
@@ -743,9 +743,9 @@ void IDBObjectStore::visitReferencedIndexes(Visitor& visitor) const
 {
     Locker locker { m_referencedIndexLock };
     for (auto& index : m_referencedIndexes.values())
-        addWebCoreOpaqueRoot(visitor, index.get());
+        addCyberCoreOpaqueRoot(visitor, index.get());
     for (auto& index : m_deletedIndexes.values())
-        addWebCoreOpaqueRoot(visitor, index.get());
+        addCyberCoreOpaqueRoot(visitor, index.get());
 }
 
 template void IDBObjectStore::visitReferencedIndexes(AbstractSlotVisitor&) const;
@@ -777,9 +777,9 @@ void IDBObjectStore::deref()
     m_transaction.deref();
 }
 
-WebCoreOpaqueRoot root(IDBObjectStore* store)
+CyberCoreOpaqueRoot root(IDBObjectStore* store)
 {
-    return WebCoreOpaqueRoot { store };
+    return CyberCoreOpaqueRoot { store };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

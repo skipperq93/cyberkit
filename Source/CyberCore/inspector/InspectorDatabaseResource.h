@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 
@@ -60,4 +60,4 @@ private:
     String m_version;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

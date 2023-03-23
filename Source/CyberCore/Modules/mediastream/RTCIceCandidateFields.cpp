@@ -40,7 +40,7 @@ ALLOW_COMMA_END
 ALLOW_DEPRECATED_DECLARATIONS_END
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<RTCIceCandidateFields> parseIceCandidateSDP(const String& sdp)
 {
@@ -51,6 +51,6 @@ std::optional<RTCIceCandidateFields> parseIceCandidateSDP(const String& sdp)
     return convertIceCandidate(candidate);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

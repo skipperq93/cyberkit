@@ -29,7 +29,7 @@
 
 #include "SourceBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ManagedMediaSource;
 
@@ -45,10 +45,10 @@ private:
     ManagedSourceBuffer(Ref<SourceBufferPrivate>&&, ManagedMediaSource&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ManagedSourceBuffer)
-    static bool isType(const WebCore::SourceBuffer& buffer) { return buffer.isManaged(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ManagedSourceBuffer)
+    static bool isType(const CyberCore::SourceBuffer& buffer) { return buffer.isManaged(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

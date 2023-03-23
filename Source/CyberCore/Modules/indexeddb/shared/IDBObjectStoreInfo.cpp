@@ -29,7 +29,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBObjectStoreInfo::IDBObjectStoreInfo()
 {
@@ -148,4 +148,4 @@ String IDBObjectStoreInfo::condensedLoggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

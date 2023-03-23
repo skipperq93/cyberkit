@@ -36,7 +36,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Clipboard::Clipboard(Type type)
     : m_clipboard(type == Type::Clipboard ? gdk_display_get_clipboard(gdk_display_get_default()) : gdk_display_get_primary_clipboard(gdk_display_get_default()))
@@ -204,6 +204,6 @@ void Clipboard::clear()
     gdk_clipboard_set_content(m_clipboard, nullptr);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

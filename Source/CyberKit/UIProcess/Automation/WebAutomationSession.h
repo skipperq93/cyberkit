@@ -73,7 +73,7 @@ namespace API {
 class OpenPanelParameters;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ViewSnapshot;
 class WebAutomationSessionClient;
@@ -371,4 +371,4 @@ private:
 
 };
 
-} // namespace WebKit
+} // namespace CyberKit

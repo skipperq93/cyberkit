@@ -26,7 +26,7 @@
 #include "HTMLElement.h"
 #include <wtf/UniqueArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WindowProxy;
 
@@ -86,4 +86,4 @@ private:
     bool m_noresize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

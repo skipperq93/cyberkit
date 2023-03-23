@@ -33,7 +33,7 @@
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Arbitrary value for minimum viewport scaling.
 // Below this threshold the resulting viewport would be too pixelated.
@@ -72,6 +72,6 @@ void WebXRView::requestViewportScale(std::optional<double> value)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

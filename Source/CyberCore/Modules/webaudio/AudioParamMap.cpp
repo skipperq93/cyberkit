@@ -35,7 +35,7 @@
 #include "JSAudioParam.h"
 #include "JSDOMMapLike.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioParamMap::AudioParamMap() = default;
 
@@ -52,6 +52,6 @@ void AudioParamMap::add(const String& name, Ref<AudioParam>&& param)
     m_map.add(name, WTFMove(param));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

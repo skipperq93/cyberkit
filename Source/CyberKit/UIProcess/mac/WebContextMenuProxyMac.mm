@@ -106,11 +106,11 @@
 @end
 
 @interface WKMenuTarget : NSObject {
-    WeakPtr<WebKit::WebContextMenuProxyMac> _menuProxy;
+    WeakPtr<CyberKit::WebContextMenuProxyMac> _menuProxy;
 }
 + (WKMenuTarget *)sharedMenuTarget;
-- (WebKit::WebContextMenuProxyMac*)menuProxy;
-- (void)setMenuProxy:(WebKit::WebContextMenuProxyMac*)menuProxy;
+- (CyberKit::WebContextMenuProxyMac*)menuProxy;
+- (void)setMenuProxy:(CyberKit::WebContextMenuProxyMac*)menuProxy;
 - (void)forwardContextMenuAction:(id)sender;
 @end
 
@@ -122,12 +122,12 @@
     return target;
 }
 
-- (WebKit::WebContextMenuProxyMac*)menuProxy
+- (CyberKit::WebContextMenuProxyMac*)menuProxy
 {
     return _menuProxy.get();
 }
 
-- (void)setMenuProxy:(WebKit::WebContextMenuProxyMac*)menuProxy
+- (void)setMenuProxy:(CyberKit::WebContextMenuProxyMac*)menuProxy
 {
     _menuProxy = menuProxy;
 }
@@ -147,7 +147,7 @@
     }
 
     ASSERT(!sender || [sender isKindOfClass:NSMenuItem.class]);
-    WebKit::WebContextMenuItemData item(CyberCore::ActionType, static_cast<CyberCore::ContextMenuAction>([sender tag]), [sender title], [sender isEnabled], [(NSMenuItem *)sender state] == NSControlStateValueOn);
+    CyberKit::WebContextMenuItemData item(CyberCore::ActionType, static_cast<CyberCore::ContextMenuAction>([sender tag]), [sender title], [sender isEnabled], [(NSMenuItem *)sender state] == NSControlStateValueOn);
     if (representedObject) {
         ASSERT([representedObject isKindOfClass:[WKUserDataWrapper class]]);
         item.setUserData([static_cast<WKUserDataWrapper *>(representedObject) userData]);
@@ -159,14 +159,14 @@
 @end
 
 @interface WKMenuDelegate : NSObject <NSMenuDelegate> {
-    WeakPtr<WebKit::WebContextMenuProxyMac> _menuProxy;
+    WeakPtr<CyberKit::WebContextMenuProxyMac> _menuProxy;
 }
-- (instancetype)initWithMenuProxy:(WebKit::WebContextMenuProxyMac&)menuProxy;
+- (instancetype)initWithMenuProxy:(CyberKit::WebContextMenuProxyMac&)menuProxy;
 @end
 
 @implementation WKMenuDelegate
 
--(instancetype)initWithMenuProxy:(WebKit::WebContextMenuProxyMac&)menuProxy
+-(instancetype)initWithMenuProxy:(CyberKit::WebContextMenuProxyMac&)menuProxy
 {
     if (!(self = [super init]))
         return nil;
@@ -190,7 +190,7 @@
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 WebContextMenuProxyMac::WebContextMenuProxyMac(NSView *webView, WebPageProxy& page, ContextMenuContextData&& context, const UserData& userData)
@@ -897,6 +897,6 @@ NSArray *WebContextMenuProxyMac::platformData() const
     return result;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

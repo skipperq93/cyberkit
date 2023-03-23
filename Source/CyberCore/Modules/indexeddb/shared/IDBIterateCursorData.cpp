@@ -27,7 +27,7 @@
 #include "IDBIterateCursorData.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBIterateCursorData IDBIterateCursorData::isolatedCopy() const
 {
@@ -43,4 +43,4 @@ String IDBIterateCursorData::loggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

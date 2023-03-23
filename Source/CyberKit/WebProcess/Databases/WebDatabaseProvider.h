@@ -29,7 +29,7 @@
 #include <CyberCore/DatabaseProvider.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebDatabaseProvider final : public CyberCore::DatabaseProvider {
 public:

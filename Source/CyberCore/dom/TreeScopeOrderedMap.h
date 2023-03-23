@@ -35,7 +35,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomStringImpl.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class HTMLImageElement;
@@ -108,4 +108,4 @@ inline bool TreeScopeOrderedMap::containsMultiple(const AtomStringImpl& id) cons
     return it != m_map.end() && it->value.count > 1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

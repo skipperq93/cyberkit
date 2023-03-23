@@ -28,7 +28,7 @@
 #include "AccessibilityObject.h"
 #include "ScrollView.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AccessibilityScrollbar;
 class Scrollbar;
@@ -87,8 +87,8 @@ private:
     bool m_childrenDirty;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AccessibilityScrollView) \
-    static bool isType(const WebCore::AccessibilityObject& object) { return object.isAccessibilityScrollViewInstance(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AccessibilityScrollView) \
+    static bool isType(const CyberCore::AccessibilityObject& object) { return object.isAccessibilityScrollViewInstance(); } \
 SPECIALIZE_TYPE_TRAITS_END()

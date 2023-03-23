@@ -30,7 +30,7 @@
 #include "Page.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NotificationClient;
 
@@ -50,6 +50,6 @@ private:
     NotificationClient& m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

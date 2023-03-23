@@ -28,17 +28,17 @@
 #include "JSIntersectionObserver.h"
 
 #include "JSNodeCustom.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSIntersectionObserver::visitAdditionalChildren(Visitor& visitor)
 {
     if (auto* callback = wrapped().callbackConcurrently())
         callback->visitJSFunction(visitor);
-    addWebCoreOpaqueRoot(visitor, wrapped().root());
+    addCyberCoreOpaqueRoot(visitor, wrapped().root());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSIntersectionObserver);
@@ -53,4 +53,4 @@ bool JSIntersectionObserverOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Un
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

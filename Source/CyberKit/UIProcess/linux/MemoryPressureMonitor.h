@@ -31,7 +31,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MemoryPressureMonitor {
     WTF_MAKE_NONCOPYABLE(MemoryPressureMonitor);
@@ -80,6 +80,6 @@ private:
     size_t getCgroupFileValue(FILE*);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // OS(LINUX)

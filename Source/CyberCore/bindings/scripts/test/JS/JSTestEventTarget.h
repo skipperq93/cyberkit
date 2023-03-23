@@ -24,7 +24,7 @@
 #include "JSEventTarget.h"
 #include "TestEventTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestEventTarget : public JSEventTarget {
 public:
@@ -83,4 +83,4 @@ template<> struct JSDOMWrapperConverterTraits<TestEventTarget> {
     using ToWrappedReturnType = TestEventTarget*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

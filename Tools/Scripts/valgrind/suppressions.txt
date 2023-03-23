@@ -4,7 +4,7 @@
 # 2. Intentional unit test errors, false positives
 # in our own code, or leaks that are so trivial they are not worth fixing.
 #
-# 3. Suppressions for real WebKit bugs that are not yet fixed.
+# 3. Suppressions for real CyberKit bugs that are not yet fixed.
 # These should all be in webkit's bug tracking system
 # Periodically we should sweep this file and the bug tracker clean by
 # running overnight and removing outdated bugs/suppressions.
@@ -467,7 +467,7 @@
 }
 
 {
-   # This is WebKit wide theading initialization which is intentionally kept
+   # This is CyberKit wide theading initialization which is intentionally kept
    # around (not freed) while the process is running.
    WTF::ThreadIdentifierData::initialize() (Intentional)
    Memcheck:Leak
@@ -476,7 +476,7 @@
 }
 
 {
-   # This is WebKit wide theading initialization which is intentionally kept
+   # This is CyberKit wide theading initialization which is intentionally kept
    # around (not freed) while the process is running.
    WTF::ThreadData (Intentional)
    Memcheck:Leak
@@ -516,12 +516,12 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   fun:_ZN6WebKit14DOMObjectCache3putEPvS1_
+   fun:_ZN6CyberKit14DOMObjectCache3putEPvS1_
    fun:_ZL33webkit_dom_dom_window_constructormjP22_GObjectConstructParam
    fun:g_object_newv
    fun:g_object_new_valist
    fun:g_object_new
-   fun:_ZN6WebKit13wrapDOMWindowEPN7CyberCore9DOMWindowE
+   fun:_ZN6CyberKit13wrapDOMWindowEPN7CyberCore9DOMWindowE
    fun:webkit_dom_document_get_default_view
  }
 
@@ -549,20 +549,20 @@
 }
 
 {
-   # DumpRenderTree WebKitWebView is leaked
+   # DumpRenderTree CyberKitWebView is leaked
    webViewCreate
    Memcheck:Leak
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
    fun:g_slist_prepend
-   fun:_ZL13webViewCreateP14_WebKitWebViewP15_WebKitWebFrame
+   fun:_ZL13webViewCreateP14_CyberKitWebViewP15_CyberKitWebFrame
    fun:webkit_marshal_OBJECT__OBJECT
    fun:g_closure_invoke
    fun:signal_emit_unlocked_R
    fun:g_signal_emit_valist
    fun:g_signal_emit_by_name
-   fun:_ZN6WebKit12ChromeClient12createWindowEPN7CyberCore5FrameERKNS1_16FrameLoadRequestERKNS1_14WindowFeaturesERKNS1_16NavigationActionE
+   fun:_ZN6CyberKit12ChromeClient12createWindowEPN7CyberCore5FrameERKNS1_16FrameLoadRequestERKNS1_14WindowFeaturesERKNS1_16NavigationActionE
    fun:_ZNK7CyberCore6Chrome12createWindowEPNS_5FrameERKNS_16FrameLoadRequestERKNS_14WindowFeaturesERKNS_16NavigationActionE
    fun:_ZN7CyberCore12createWindowEPNS_5FrameES1_RKNS_16FrameLoadRequestERKNS_14WindowFeaturesERb
    fun:_ZN7CyberCore9DOMWindow12createWindowERKN3WTF6StringERKNS1_12AtomicStringERKNS_14WindowFeaturesEPS0_PNS_5FrameESD_PFvSB_PvESE_

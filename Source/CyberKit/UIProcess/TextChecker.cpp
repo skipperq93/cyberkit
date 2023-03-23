@@ -32,7 +32,7 @@
 #include "TextCheckerState.h"
 #include <CyberCore/NotImplemented.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static TextCheckerState& checkerState()
@@ -153,6 +153,6 @@ Vector<TextCheckingResult> TextChecker::checkTextOfParagraph(SpellDocumentTag, S
 }
 #endif
 
-} // namespace WebKit 
+} // namespace CyberKit 
 
 #endif // !PLATFORM(COCOA) && !PLATFORM(GTK)

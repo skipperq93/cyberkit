@@ -32,7 +32,7 @@
 #include "MemoryIndex.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 IndexValueStore::IndexValueStore(bool unique)
@@ -407,4 +407,4 @@ String IndexValueStore::loggingString() const
 #endif
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

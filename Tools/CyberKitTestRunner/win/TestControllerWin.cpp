@@ -42,7 +42,7 @@
 namespace WTR {
 
 static HANDLE webProcessCrashingEvent;
-static const char webProcessCrashingEventName[] = "WebKitTestRunner.WebProcessCrashing";
+static const char webProcessCrashingEventName[] = "CyberKitTestRunner.WebProcessCrashing";
 // This is the longest we'll wait (in seconds) for the web process to finish crashing and a crash
 // log to be saved. This interval should be just a tiny bit longer than it will ever reasonably
 // take to save a crash log.
@@ -84,7 +84,7 @@ static RunLoopResult runRunLoopUntil(bool& condition, HANDLE object, double time
         // There are messages in the queue. Process them.
         MSG msg;
         while (::PeekMessageW(&msg, 0, 0, 0, PM_REMOVE)) {
-            // WM_MOUSELEAVE is dispatched because the mouse cursor is not on the WebKitTestRunner's window.
+            // WM_MOUSELEAVE is dispatched because the mouse cursor is not on the CyberKitTestRunner's window.
             // Ignore WM_MOUSELEAVE because it discontinues mouse dragging events.
             if (msg.message == WM_MOUSELEAVE)
                 continue;

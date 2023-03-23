@@ -33,7 +33,7 @@
 #include "Logging.h"
 #include "SQLTransaction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DatabaseTaskSynchronizer::DatabaseTaskSynchronizer()
 {
@@ -192,4 +192,4 @@ const char* DatabaseTableNamesTask::debugTaskName() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,10 +27,10 @@
 
 #include "PredefinedColorSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImageDataSettings {
     std::optional<PredefinedColorSpace> colorSpace;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

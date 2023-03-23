@@ -28,7 +28,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(BoxDecorationData);
@@ -155,5 +155,5 @@ bool BoxDecorationData::borderObscuresBackgroundEdge(const FloatSize& contextSca
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

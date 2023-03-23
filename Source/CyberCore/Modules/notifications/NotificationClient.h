@@ -34,7 +34,7 @@
 #include "NotificationPermission.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NotificationPermissionCallback;
 class NotificationResources;
@@ -75,4 +75,4 @@ public:
 
 WEBCORE_EXPORT void provideNotification(Page*, NotificationClient*);
 
-} // namespace WebCore
+} // namespace CyberCore

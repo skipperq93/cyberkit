@@ -28,7 +28,7 @@
 #include "ImmutableStyleProperties.h"
 #include "MutableStyleProperties.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline StyleProperties::StyleProperties(CSSParserMode mode)
     : m_cssParserMode(mode)

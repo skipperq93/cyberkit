@@ -31,7 +31,7 @@
 #include "OverrideLanguages.h"
 #include "WKAPICast.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKContextConfigurationRef WKContextConfigurationCreate()
 {
@@ -157,7 +157,7 @@ void WKContextConfigurationSetOverrideLanguages(WKContextConfigurationRef, WKArr
     // FIXME: This is an SPI function, and is only (supposed to be) used for testing.
     // However, playwright automation tests rely on it.
     // See https://bugs.webkit.org/show_bug.cgi?id=242827 for details.
-    WebKit::setOverrideLanguages(toImpl(overrideLanguages)->toStringVector());
+    CyberKit::setOverrideLanguages(toImpl(overrideLanguages)->toStringVector());
 }
 
 bool WKContextConfigurationProcessSwapsOnNavigation(WKContextConfigurationRef configuration)

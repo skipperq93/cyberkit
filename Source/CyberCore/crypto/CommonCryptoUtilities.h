@@ -33,10 +33,10 @@
 #include <pal/spi/cocoa/CommonCryptoSPI.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool getCommonCryptoDigestAlgorithm(CryptoAlgorithmIdentifier, CCDigestAlgorithm&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

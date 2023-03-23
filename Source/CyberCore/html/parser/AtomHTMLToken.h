@@ -33,7 +33,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AtomHTMLToken {
 public:
@@ -293,4 +293,4 @@ inline AtomHTMLToken::AtomHTMLToken(HTMLToken::Type type, TagName tagName, Vecto
     ASSERT(tagName != TagName::Unknown);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

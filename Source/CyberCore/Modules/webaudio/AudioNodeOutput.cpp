@@ -36,7 +36,7 @@
 #include "AudioUtilities.h"
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioNodeOutput::AudioNodeOutput(AudioNode* node, unsigned numberOfChannels)
     : m_node(node)
@@ -247,6 +247,6 @@ void AudioNodeOutput::enable()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

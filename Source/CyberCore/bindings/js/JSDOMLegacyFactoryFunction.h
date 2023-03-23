@@ -21,7 +21,7 @@
 
 #include "JSDOMConstructorWithDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // All legacy factory functions are exposed on Window only, while authors are advised against adding new ones.
 template<typename JSClass> class JSDOMLegacyFactoryFunction final : public JSDOMConstructorWithDocument {
@@ -70,4 +70,4 @@ template<typename JSClass> inline void JSDOMLegacyFactoryFunction<JSClass>::fini
     initializeProperties(vm, globalObject);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

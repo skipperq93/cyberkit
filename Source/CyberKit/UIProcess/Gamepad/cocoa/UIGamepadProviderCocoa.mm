@@ -33,7 +33,7 @@
 #import <CyberCore/MockGamepadProvider.h>
 #import <CyberCore/MultiGamepadProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if HAVE(WIDE_GAMECONTROLLER_SUPPORT)

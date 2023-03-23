@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CSSFontStyleWithAngleValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontStyleWithAngleValue::CSSFontStyleWithAngleValue(Ref<CSSPrimitiveValue>&& obliqueAngle)
     : CSSValue(FontStyleWithAngleClass)

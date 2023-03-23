@@ -30,9 +30,9 @@
 #import "AppAttestSPI.h"
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_PRIVATE_FRAMEWORK_FOR_SOURCE(WebKit, AppAttestInternal);
+SOFT_LINK_PRIVATE_FRAMEWORK_FOR_SOURCE(CyberKit, AppAttestInternal);
 
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebKit, AppAttestInternal, AppAttest_WebAuthentication_IsSupported, BOOL, (void), ());
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebKit, AppAttestInternal, AppAttest_WebAuthentication_AttestKey, void, (SecKeyRef referenceKey, NSData *authenticatorData, NSData *clientDataHash, AppAttest_WebAuthentication_AttestKeyCompletionBlock completion), (referenceKey, authenticatorData, clientDataHash, completion));
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberKit, AppAttestInternal, AppAttest_WebAuthentication_IsSupported, BOOL, (void), ());
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberKit, AppAttestInternal, AppAttest_WebAuthentication_AttestKey, void, (SecKeyRef referenceKey, NSData *authenticatorData, NSData *clientDataHash, AppAttest_WebAuthentication_AttestKeyCompletionBlock completion), (referenceKey, authenticatorData, clientDataHash, completion));
 
 #endif // HAVE(APPLE_ATTESTATION)

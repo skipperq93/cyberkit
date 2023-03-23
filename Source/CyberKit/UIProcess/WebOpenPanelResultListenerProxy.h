@@ -35,7 +35,7 @@ class Array;
 class Data;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -62,4 +62,4 @@ private:
     RefPtr<WebPageProxy> m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

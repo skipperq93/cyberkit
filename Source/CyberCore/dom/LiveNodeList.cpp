@@ -23,7 +23,7 @@
 #include "config.h"
 #include "LiveNodeList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LiveNodeList::LiveNodeList(ContainerNode& ownerNode, NodeListInvalidationType invalidationType)
     : m_ownerNode(ownerNode)
@@ -33,4 +33,4 @@ LiveNodeList::LiveNodeList(ContainerNode& ownerNode, NodeListInvalidationType in
 
 LiveNodeList::~LiveNodeList() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <glib/gi18n-lib.h>
 #include <locale.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<AccessibilityRootAtspi> AccessibilityRootAtspi::create(Page& page)
 {
@@ -325,6 +325,6 @@ IntRect AccessibilityRootAtspi::frameRect(Atspi::CoordinateType coordinateType) 
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

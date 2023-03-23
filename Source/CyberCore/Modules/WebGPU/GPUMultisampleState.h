@@ -28,7 +28,7 @@
 #include "GPUIntegralTypes.h"
 #include <pal/graphics/WebGPU/WebGPUMultisampleState.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUMultisampleState {
     PAL::WebGPU::MultisampleState convertToBacking() const

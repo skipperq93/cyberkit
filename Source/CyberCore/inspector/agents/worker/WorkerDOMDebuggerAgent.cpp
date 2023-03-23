@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WorkerDOMDebuggerAgent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -53,4 +53,4 @@ bool WorkerDOMDebuggerAgent::setAnimationFrameBreakpoint(Protocol::ErrorString& 
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

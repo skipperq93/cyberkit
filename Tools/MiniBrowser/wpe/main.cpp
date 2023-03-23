@@ -76,7 +76,7 @@ static const GOptionEntry commandLineOptions[] =
 
 class InputClient final : public WPEToolingBackends::ViewBackend::InputClient {
 public:
-    InputClient(GApplication* application, WebKitWebView* webView)
+    InputClient(GApplication* application, CyberKitWebView* webView)
         : m_application(application)
         , m_webView(webView)
     {
@@ -109,15 +109,15 @@ public:
 
 private:
     GApplication* m_application { nullptr };
-    WebKitWebView* m_webView { nullptr };
+    CyberKitWebView* m_webView { nullptr };
 };
 
-static WebKitWebView* createWebViewForAutomationCallback(WebKitAutomationSession*, WebKitWebView* view)
+static CyberKitWebView* createWebViewForAutomationCallback(CyberKitAutomationSession*, CyberKitWebView* view)
 {
     return view;
 }
 
-static void automationStartedCallback(WebKitWebContext*, WebKitAutomationSession* session, WebKitWebView* view)
+static void automationStartedCallback(CyberKitWebContext*, CyberKitAutomationSession* session, CyberKitWebView* view)
 {
     auto* info = webkit_application_info_new();
     webkit_application_info_set_version(info, WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION);
@@ -127,7 +127,7 @@ static void automationStartedCallback(WebKitWebContext*, WebKitAutomationSession
     g_signal_connect(session, "create-web-view", G_CALLBACK(createWebViewForAutomationCallback), view);
 }
 
-static gboolean decidePermissionRequest(WebKitWebView *, WebKitPermissionRequest *request, gpointer)
+static gboolean decidePermissionRequest(CyberKitWebView *, CyberKitPermissionRequest *request, gpointer)
 {
     g_print("Accepting %s request\n", G_OBJECT_TYPE_NAME(request));
     webkit_permission_request_allow(request);
@@ -144,23 +144,23 @@ static std::unique_ptr<WPEToolingBackends::ViewBackend> createViewBackend(uint32
 
 struct FilterSaveData {
     GMainLoop* mainLoop { nullptr };
-    WebKitUserContentFilter* filter { nullptr };
+    CyberKitUserContentFilter* filter { nullptr };
     GError* error { nullptr };
 };
 
-static void filterSavedCallback(WebKitUserContentFilterStore *store, GAsyncResult *result, FilterSaveData *data)
+static void filterSavedCallback(CyberKitUserContentFilterStore *store, GAsyncResult *result, FilterSaveData *data)
 {
     data->filter = webkit_user_content_filter_store_save_finish(store, result, &data->error);
     g_main_loop_quit(data->mainLoop);
 }
 
-static void webViewClose(WebKitWebView* webView, gpointer)
+static void webViewClose(CyberKitWebView* webView, gpointer)
 {
     // Hash table key delete func takes care of unref'ing the view
     g_hash_table_remove(openViews, webView);
 }
 
-static WebKitWebView* createWebView(WebKitWebView* webView, WebKitNavigationAction*, gpointer)
+static CyberKitWebView* createWebView(CyberKitWebView* webView, CyberKitNavigationAction*, gpointer)
 {
     auto backend = createViewBackend(1280, 720);
     struct wpe_view_backend* wpeBackend = backend->backend();
@@ -191,7 +191,7 @@ static void activate(GApplication* application, WPEToolingBackends::ViewBackend*
 {
     g_application_hold(application);
 #if ENABLE_2022_GLIB_API
-    WebKitNetworkSession* networkSession = nullptr;
+    CyberKitNetworkSession* networkSession = nullptr;
     if (!automationMode) {
         networkSession = privateMode ? webkit_network_session_new_ephemeral() : webkit_network_session_new(nullptr, nullptr);
         webkit_network_session_set_itp_enabled(networkSession, enableITP);
@@ -210,7 +210,7 @@ static void activate(GApplication* application, WPEToolingBackends::ViewBackend*
             auto* enumClass = static_cast<GEnumClass*>(g_type_class_ref(WEBKIT_TYPE_COOKIE_ACCEPT_POLICY));
             GEnumValue* enumValue = g_enum_get_value_by_nick(enumClass, cookiesPolicy);
             if (enumValue)
-                webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<WebKitCookieAcceptPolicy>(enumValue->value));
+                webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<CyberKitCookieAcceptPolicy>(enumValue->value));
             g_type_class_unref(enumClass);
         }
 
@@ -243,7 +243,7 @@ static void activate(GApplication* application, WPEToolingBackends::ViewBackend*
         auto* enumClass = static_cast<GEnumClass*>(g_type_class_ref(WEBKIT_TYPE_COOKIE_ACCEPT_POLICY));
         GEnumValue* enumValue = g_enum_get_value_by_nick(enumClass, cookiesPolicy);
         if (enumValue)
-            webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<WebKitCookieAcceptPolicy>(enumValue->value));
+            webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<CyberKitCookieAcceptPolicy>(enumValue->value));
         g_type_class_unref(enumClass);
     }
 
@@ -254,13 +254,13 @@ static void activate(GApplication* application, WPEToolingBackends::ViewBackend*
     }
 #endif
 
-    WebKitUserContentManager* userContentManager = nullptr;
+    CyberKitUserContentManager* userContentManager = nullptr;
     if (contentFilter) {
         GFile* contentFilterFile = g_file_new_for_commandline_arg(contentFilter);
 
         FilterSaveData saveData = { nullptr, };
         gchar* filtersPath = g_build_filename(g_get_user_cache_dir(), g_get_prgname(), "filters", nullptr);
-        WebKitUserContentFilterStore* store = webkit_user_content_filter_store_new(filtersPath);
+        CyberKitUserContentFilterStore* store = webkit_user_content_filter_store_new(filtersPath);
         g_free(filtersPath);
 
         webkit_user_content_filter_store_save_from_file(store, "WPEMiniBrowserFilter", contentFilterFile, nullptr, (GAsyncReadyCallback)filterSavedCallback, &saveData);
@@ -319,7 +319,7 @@ static void activate(GApplication* application, WPEToolingBackends::ViewBackend*
     g_signal_connect(webView, "close", G_CALLBACK(webViewClose), nullptr);
     g_hash_table_add(openViews, webView);
 
-    WebKitColor color;
+    CyberKitColor color;
     if (bgColor && webkit_color_parse(&color, bgColor))
         webkit_web_view_set_background_color(webView, &color);
 
@@ -368,7 +368,7 @@ int main(int argc, char *argv[])
     g_option_context_free(context);
 
     if (printVersion) {
-        g_print("WPE WebKit %u.%u.%u",
+        g_print("WPE CyberKit %u.%u.%u",
             webkit_get_major_version(),
             webkit_get_minor_version(),
             webkit_get_micro_version());

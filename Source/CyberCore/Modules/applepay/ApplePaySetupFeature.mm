@@ -24,15 +24,15 @@
  */
 
 #import "config.h"
-#import "ApplePaySetupFeatureWebCore.h"
+#import "ApplePaySetupFeatureCyberCore.h"
 
 #if ENABLE(APPLE_PAY)
 
 #import "ApplePaySetupFeatureState.h"
-#import "ApplePaySetupFeatureTypeWebCore.h"
+#import "ApplePaySetupFeatureTypeCyberCore.h"
 #import <pal/spi/cocoa/PassKitSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ApplePaySetupFeature::supportsFeature(PKPaymentSetupFeature *feature)
 {
@@ -94,6 +94,6 @@ ApplePaySetupFeature::ApplePaySetupFeature(PKPaymentSetupFeature *feature)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

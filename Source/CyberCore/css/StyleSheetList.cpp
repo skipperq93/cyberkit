@@ -29,7 +29,7 @@
 #include "StyleScope.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -109,4 +109,4 @@ Vector<AtomString> StyleSheetList::supportedPropertyNames()
     return Vector<AtomString>();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

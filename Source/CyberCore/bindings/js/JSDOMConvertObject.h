@@ -29,7 +29,7 @@
 #include "JSDOMConvertBase.h"
 #include <CyberScriptCore/StrongInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<> struct Converter<IDLObject> : DefaultConverter<IDLObject> {
 
@@ -60,4 +60,4 @@ template<> struct JSConverter<IDLObject> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

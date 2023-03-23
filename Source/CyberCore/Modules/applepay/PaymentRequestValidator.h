@@ -31,7 +31,7 @@
 #include "ExceptionOr.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaymentRequestValidator {
 public:

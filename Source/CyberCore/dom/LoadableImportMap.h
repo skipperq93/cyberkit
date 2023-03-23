@@ -33,7 +33,7 @@
 #include "ReferrerPolicy.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // A CachedResourceHandle alone does not prevent the underlying CachedResource
 // from purging its data buffer. This class holds a client until this class is
@@ -52,6 +52,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::LoadableImportMap)
-    static bool isType(const WebCore::LoadableScript& script) { return script.isImportMap(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::LoadableImportMap)
+    static bool isType(const CyberCore::LoadableScript& script) { return script.isImportMap(); }
 SPECIALIZE_TYPE_TRAITS_END()

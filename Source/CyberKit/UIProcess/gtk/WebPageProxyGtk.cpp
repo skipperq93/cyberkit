@@ -29,16 +29,16 @@
 
 #include "InputMethodState.h"
 #include "PageClientImpl.h"
-#include "WebKitUserMessage.h"
-#include "WebKitWebViewBasePrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitUserMessage.h"
+#include "CyberKitWebViewBasePrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include "WebPageMessages.h"
 #include "WebPasteboardProxy.h"
 #include "WebProcessProxy.h"
 #include <CyberCore/PlatformDisplay.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPageProxy::platformInitialize()
 {
@@ -116,4 +116,4 @@ void WebPageProxy::accentColorDidChange()
     send(Messages::WebPage::SetAccentColor(accentColor));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

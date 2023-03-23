@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebInspectorUIProxy;
 }
 
@@ -38,8 +38,8 @@ class InspectorClient {
 public:
     virtual ~InspectorClient() = default;
 
-    virtual void openURLExternally(WebKit::WebInspectorUIProxy&, const WTF::String& url) { }
-    virtual void frontendLoaded(WebKit::WebInspectorUIProxy&) { }
+    virtual void openURLExternally(CyberKit::WebInspectorUIProxy&, const WTF::String& url) { }
+    virtual void frontendLoaded(CyberKit::WebInspectorUIProxy&) { }
 };
 
 } // namespace API

@@ -69,7 +69,7 @@ typedef void (*PFNGLEGLIMAGETARGETTEXTURE2DOESPROC) (GLenum target, GLeglImageOE
 
 static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glImageTargetTexture2D;
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 enum class WaylandImpl { Unsupported, EGL, SHM };
@@ -580,6 +580,6 @@ bool AcceleratedBackingStoreWayland::paint(cairo_t* cr, const IntRect& clipRect)
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(WAYLAND)

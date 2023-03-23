@@ -34,7 +34,7 @@
 #include "CSSValue.h"
 #include "GridArea.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSGridTemplateAreasValue final : public CSSValue {
 public:
@@ -58,6 +58,6 @@ private:
     size_t m_columnCount;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSGridTemplateAreasValue, isGridTemplateAreasValue())

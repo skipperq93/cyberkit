@@ -19,17 +19,17 @@
 
 #pragma once
 
-#include "WebKitInputMethodContext.h"
-#include "WebKitWebView.h"
+#include "CyberKitInputMethodContext.h"
+#include "CyberKitWebView.h"
 #include <CyberCore/CompositionUnderline.h>
 
-struct _WebKitInputMethodUnderline {
-    explicit _WebKitInputMethodUnderline(const CyberCore::CompositionUnderline& underline)
+struct _CyberKitInputMethodUnderline {
+    explicit _CyberKitInputMethodUnderline(const CyberCore::CompositionUnderline& underline)
         : underline(underline)
     {
     }
 
-    _WebKitInputMethodUnderline(unsigned startOffset, unsigned endOffset)
+    _CyberKitInputMethodUnderline(unsigned startOffset, unsigned endOffset)
     {
         underline.startOffset = startOffset;
         underline.endOffset = endOffset;
@@ -38,6 +38,6 @@ struct _WebKitInputMethodUnderline {
     CyberCore::CompositionUnderline underline;
 };
 
-const CyberCore::CompositionUnderline& webkitInputMethodUnderlineGetCompositionUnderline(WebKitInputMethodUnderline*);
-void webkitInputMethodContextSetWebView(WebKitInputMethodContext*, WebKitWebView*);
-WebKitWebView* webkitInputMethodContextGetWebView(WebKitInputMethodContext*);
+const CyberCore::CompositionUnderline& webkitInputMethodUnderlineGetCompositionUnderline(CyberKitInputMethodUnderline*);
+void webkitInputMethodContextSetWebView(CyberKitInputMethodContext*, CyberKitWebView*);
+CyberKitWebView* webkitInputMethodContextGetWebView(CyberKitInputMethodContext*);

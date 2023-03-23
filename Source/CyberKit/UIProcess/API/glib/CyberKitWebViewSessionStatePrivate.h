@@ -18,12 +18,12 @@
  */
 
 #include "SessionState.h"
-#include "WebKitWebViewSessionState.h"
+#include "CyberKitWebViewSessionState.h"
 
-#ifndef WebKitWebViewSessionStatePrivate_h
-#define WebKitWebViewSessionStatePrivate_h
+#ifndef CyberKitWebViewSessionStatePrivate_h
+#define CyberKitWebViewSessionStatePrivate_h
 
-WebKitWebViewSessionState* webkitWebViewSessionStateCreate(WebKit::SessionState&&);
-const WebKit::SessionState& webkitWebViewSessionStateGetSessionState(WebKitWebViewSessionState*);
+CyberKitWebViewSessionState* webkitWebViewSessionStateCreate(CyberKit::SessionState&&);
+const CyberKit::SessionState& webkitWebViewSessionStateGetSessionState(CyberKitWebViewSessionState*);
 
-#endif // WebKitWebViewSessionStatePrivate_h
+#endif // CyberKitWebViewSessionStatePrivate_h

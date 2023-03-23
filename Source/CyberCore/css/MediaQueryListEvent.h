@@ -27,7 +27,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaQueryListEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(MediaQueryListEvent);
@@ -53,4 +53,4 @@ private:
     bool m_matches;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

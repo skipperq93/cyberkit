@@ -23,7 +23,7 @@
 
 #include "CSSRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleDeclaration;
 class StyleRuleFontFace;
@@ -48,6 +48,6 @@ private:
     RefPtr<StyleRuleCSSStyleDeclaration> m_propertiesCSSOMWrapper;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_RULE(CSSFontFaceRule, StyleRuleType::FontFace)

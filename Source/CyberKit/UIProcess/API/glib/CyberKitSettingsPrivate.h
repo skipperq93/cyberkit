@@ -23,16 +23,16 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKitSettingsPrivate_h
-#define WebKitSettingsPrivate_h
+#ifndef CyberKitSettingsPrivate_h
+#define CyberKitSettingsPrivate_h
 
-#include <WebKit/WKBase.h>
-#include "WebKitSettings.h"
+#include <CyberKit/WKBase.h>
+#include "CyberKitSettings.h"
 #include "WebPreferences.h"
 
-WebKit::WebPreferences* webkitSettingsGetPreferences(WebKitSettings*);
+CyberKit::WebPreferences* webkitSettingsGetPreferences(CyberKitSettings*);
 
-WK_EXPORT void webkitSettingsSetMediaCaptureRequiresSecureConnection(WebKitSettings*, bool required);
-WK_EXPORT void webkitSettingsSetGetUserMediaRequiresFocus(WebKitSettings*, bool required);
+WK_EXPORT void webkitSettingsSetMediaCaptureRequiresSecureConnection(CyberKitSettings*, bool required);
+WK_EXPORT void webkitSettingsSetGetUserMediaRequiresFocus(CyberKitSettings*, bool required);
 
-#endif // WebKitSettingsPrivate_h
+#endif // CyberKitSettingsPrivate_h

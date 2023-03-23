@@ -33,7 +33,7 @@ namespace PAL {
 class TextCodec;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextDecoder final : public RefCounted<TextDecoder> {
 public:

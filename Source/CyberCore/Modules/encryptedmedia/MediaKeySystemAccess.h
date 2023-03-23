@@ -36,7 +36,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDM;
 class DeferredPromise;
@@ -63,6 +63,6 @@ private:
     Ref<CDM> m_implementation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

@@ -36,7 +36,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using InlineStyleSheetCacheKey = std::pair<String, CSSParserContext>;
 using InlineStyleSheetCache = HashMap<InlineStyleSheetCacheKey, RefPtr<StyleSheetContents>>;

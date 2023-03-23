@@ -24,7 +24,7 @@
 
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 Structure* getCachedDOMStructure(const JSDOMGlobalObject& globalObject, const ClassInfo* classInfo)
@@ -45,4 +45,4 @@ Structure* cacheDOMStructure(JSDOMGlobalObject& globalObject, Structure* structu
     return addToStructures(globalObject.structures(NoLockingNecessary), globalObject, structure, classInfo);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

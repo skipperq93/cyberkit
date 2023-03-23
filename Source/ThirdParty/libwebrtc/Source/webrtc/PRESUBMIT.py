@@ -1355,7 +1355,7 @@ def CheckAddedDepsHaveTargetApprovals(input_api, output_api):
   virtual_depended_on_files = set()
 
   file_filter = lambda f: not input_api.re.match(
-      r"^third_party[\\\/](WebKit|blink)[\\\/].*", f.LocalPath())
+      r"^third_party[\\\/](CyberKit|blink)[\\\/].*", f.LocalPath())
   for f in input_api.AffectedFiles(include_deletes=False,
                                    file_filter=file_filter):
     filename = input_api.os_path.basename(f.LocalPath())

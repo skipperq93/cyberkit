@@ -38,7 +38,7 @@
 #include "RenderObject.h"
 #include "RenderTableCell.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -457,4 +457,4 @@ int AccessibilityTableCell::axRowSpan() const
     return -1;
 }
     
-} // namespace WebCore
+} // namespace CyberCore

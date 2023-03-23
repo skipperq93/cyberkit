@@ -33,7 +33,7 @@
 #include "Frame.h"
 #include "FrameView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static int contentsX(Frame* frame)
 {
@@ -102,6 +102,6 @@ Ref<Touch> Touch::cloneWithNewTarget(EventTarget* eventTarget) const
     return adoptRef(*new Touch(eventTarget, m_identifier, m_clientX, m_clientY, m_screenX, m_screenY, m_pageX, m_pageY, m_radiusX, m_radiusY, m_rotationAngle, m_force, m_absoluteLocation));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

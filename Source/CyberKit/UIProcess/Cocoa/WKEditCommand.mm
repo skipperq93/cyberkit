@@ -30,7 +30,7 @@
 
 @implementation WKEditCommand
 
-- (instancetype)initWithWebEditCommandProxy:(Ref<WebKit::WebEditCommandProxy>&&)command
+- (instancetype)initWithWebEditCommandProxy:(Ref<CyberKit::WebEditCommandProxy>&&)command
 {
     self = [super init];
     if (!self)
@@ -40,7 +40,7 @@
     return self;
 }
 
-- (WebKit::WebEditCommandProxy&)command
+- (CyberKit::WebEditCommandProxy&)command
 {
     return *_command;
 }

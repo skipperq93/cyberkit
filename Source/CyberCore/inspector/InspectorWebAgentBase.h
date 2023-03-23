@@ -29,7 +29,7 @@
 #include <CyberScriptCore/InspectorAgentBase.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InstrumentingAgents;
 class Page;
@@ -79,4 +79,4 @@ protected:
     Inspector::InspectorEnvironment& m_environment;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

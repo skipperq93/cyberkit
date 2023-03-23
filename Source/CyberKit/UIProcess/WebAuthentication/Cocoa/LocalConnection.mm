@@ -38,12 +38,12 @@
 #import "LocalAuthenticationSoftLink.h"
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/LocalConnectionAdditions.h>
+#import <CyberKitAdditions/LocalConnectionAdditions.h>
 #else
 #define LOCAL_CONNECTION_ADDITIONS
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 namespace {
@@ -208,6 +208,6 @@ void LocalConnection::getAttestation(SecKeyRef privateKey, NSData *authData, NSD
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -34,7 +34,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentExtensions {
 
@@ -463,6 +463,6 @@ bool CombinedURLFilters::processNFAs(size_t maxNFASize, Function<bool(NFA&&)>&& 
 }
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

@@ -24,7 +24,7 @@
  */
 
 #pragma once
-namespace WebCore {
+namespace CyberCore {
 
 enum TextManipulationTokenIdentifierType { };
 using TextManipulationTokenIdentifier = ObjectIdentifier<TextManipulationTokenIdentifierType>;
@@ -43,4 +43,4 @@ struct TextManipulationToken {
     bool isExcluded { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

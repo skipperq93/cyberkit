@@ -28,7 +28,7 @@
 #include "CSSValueList.h"
 #include "DeprecatedCSSOMValue.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class DeprecatedCSSOMValueList : public DeprecatedCSSOMValue {
 public:
@@ -53,6 +53,6 @@ private:
     Vector<Ref<DeprecatedCSSOMValue>, 4> m_values;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSSOM_VALUE(DeprecatedCSSOMValueList, isValueList())

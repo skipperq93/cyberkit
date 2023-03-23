@@ -31,7 +31,7 @@
 
 typedef struct OpaqueJSClass* JSClassRef;
 
-namespace WebKit {
+namespace CyberKit {
 
 class JSWebExtensionWrappable : public RefCounted<JSWebExtensionWrappable> {
 public:
@@ -40,6 +40,6 @@ public:
     virtual JSClassRef wrapperClass() = 0;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

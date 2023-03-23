@@ -29,10 +29,10 @@
 
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isValidDecimalMonetaryValue(StringView);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

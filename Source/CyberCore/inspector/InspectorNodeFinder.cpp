@@ -42,7 +42,7 @@
 #include "XPathNSResolver.h"
 #include "XPathResult.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static String stripCharacters(const String& string, const char startCharacter, const char endCharacter, bool& startCharFound, bool& endCharFound)
 {
@@ -199,4 +199,4 @@ void InspectorNodeFinder::searchUsingCSSSelectors(Node& parentNode)
         m_results.add(nodeList->item(i));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

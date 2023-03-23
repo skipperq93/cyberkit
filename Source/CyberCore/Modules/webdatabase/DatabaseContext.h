@@ -36,7 +36,7 @@
 #include <wtf/Threading.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Database;
 class DatabaseDetails;
@@ -82,4 +82,4 @@ private:
     friend class DatabaseManager;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

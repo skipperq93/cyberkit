@@ -34,7 +34,7 @@
 #import "WKWebViewInternal.h"
 #import <wtf/ProcessPrivilege.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPageProxy* UIGamepadProvider::platformWebPageProxyForGamepadInput()
 {

@@ -26,7 +26,7 @@
 #include "StyleRuleType.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleSheet;
 class StyleRuleBase;
@@ -93,9 +93,9 @@ inline CSSStyleSheet* CSSRule::parentStyleSheet() const
     return m_parentStyleSheet;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CSS_RULE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::CSSRule& rule) { return rule.styleRuleType() == WebCore::predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::CSSRule& rule) { return rule.styleRuleType() == CyberCore::predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

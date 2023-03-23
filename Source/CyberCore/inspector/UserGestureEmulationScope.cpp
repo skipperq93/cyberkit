@@ -37,7 +37,7 @@
 #include "Page.h"
 #include "UserGestureIndicator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 UserGestureEmulationScope::UserGestureEmulationScope(Page& inspectedPage, bool emulateUserGesture, Document* document)
     : m_pageChromeClient(inspectedPage.chrome().client())
@@ -58,4 +58,4 @@ UserGestureEmulationScope::~UserGestureEmulationScope()
         m_pageChromeClient.setUserIsInteracting(false);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

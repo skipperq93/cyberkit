@@ -34,7 +34,7 @@
 #import <unicode/uloc.h>
 #import <wtf/unicode/icu/ICUHelpers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<void> validateCountryCode(const String&);
 static ExceptionOr<void> validateCurrencyCode(const String&);

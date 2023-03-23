@@ -29,7 +29,7 @@
 #include "Document.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DocumentParser::DocumentParser(Document& document)
     : m_state(ParserState::Parsing)
@@ -76,4 +76,4 @@ void DocumentParser::resumeScheduledTasks()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

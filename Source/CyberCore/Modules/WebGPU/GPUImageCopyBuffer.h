@@ -30,7 +30,7 @@
 #include <pal/graphics/WebGPU/WebGPUImageCopyBuffer.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUImageCopyBuffer : public GPUImageDataLayout {
     PAL::WebGPU::ImageCopyBuffer convertToBacking() const

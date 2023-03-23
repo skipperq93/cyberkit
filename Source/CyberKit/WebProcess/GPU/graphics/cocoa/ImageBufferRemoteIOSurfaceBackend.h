@@ -32,7 +32,7 @@
 #include <CyberCore/ImageBufferBackend.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ImageBufferRemoteIOSurfaceBackend final : public CyberCore::ImageBufferBackend, public ImageBufferBackendHandleSharing {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferRemoteIOSurfaceBackend);
@@ -82,6 +82,6 @@ private:
     CyberCore::VolatilityState m_volatilityState { CyberCore::VolatilityState::NonVolatile };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(IOSURFACE)

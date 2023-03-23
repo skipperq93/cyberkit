@@ -124,7 +124,7 @@ struct PermissionRequest {
     if (!self)
         return nil;
 
-    _diskDispatchQueue = adoptNS(dispatch_queue_create("com.apple.WebKit.WKWebGeolocationPolicyDecider", DISPATCH_QUEUE_SERIAL));
+    _diskDispatchQueue = adoptNS(dispatch_queue_create("com.apple.CyberKit.WKWebGeolocationPolicyDecider", DISPATCH_QUEUE_SERIAL));
 
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), self, clearGeolocationCache, CLAppResetChangedNotification, NULL, CFNotificationSuspensionBehaviorCoalesce);
 
@@ -221,7 +221,7 @@ struct PermissionRequest {
 
 - (NSString *)_siteFileInContainerDirectory:(NSString *)containerDirectory creatingIntermediateDirectoriesIfNecessary:(BOOL)createIntermediateDirectories
 {
-    NSString *webKitDirectory = [containerDirectory stringByAppendingPathComponent:@"Library/WebKit"];
+    NSString *webKitDirectory = [containerDirectory stringByAppendingPathComponent:@"Library/CyberKit"];
     if (createIntermediateDirectories)
         [[NSFileManager defaultManager] _web_createDirectoryAtPathWithIntermediateDirectories:webKitDirectory attributes:nil];
     return [webKitDirectory stringByAppendingPathComponent:@"GeolocationSitesV2.plist"];

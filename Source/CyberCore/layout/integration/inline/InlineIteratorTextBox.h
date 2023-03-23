@@ -28,7 +28,7 @@
 #include "InlineIteratorBox.h"
 #include "RenderText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace InlineIterator {
 
@@ -163,11 +163,11 @@ inline TextRun TextBox::textRun(TextRunMode mode) const
 }
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::InlineIterator::TextBox)
-static bool isType(const WebCore::InlineIterator::Box& box) { return box.isText(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::InlineIterator::TextBox)
+static bool isType(const CyberCore::InlineIterator::Box& box) { return box.isText(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::InlineIterator::TextBoxIterator)
-static bool isType(const WebCore::InlineIterator::BoxIterator& box) { return !box || box->isText(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::InlineIterator::TextBoxIterator)
+static bool isType(const CyberCore::InlineIterator::BoxIterator& box) { return !box || box->isText(); }
 SPECIALIZE_TYPE_TRAITS_END()
 

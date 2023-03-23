@@ -33,7 +33,7 @@
 #include <wtf/text/AtomStringHash.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DOMTokenList::DOMTokenList(Element& element, const QualifiedName& attributeName, IsSupportedTokenFunction&& isSupportedToken)
     : m_element(element)
@@ -288,4 +288,4 @@ Vector<AtomString>& DOMTokenList::tokens()
     return m_tokens;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

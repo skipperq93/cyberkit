@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUStencilOperation.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUStencilOperation : uint8_t {
     Keep,

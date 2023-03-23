@@ -30,7 +30,7 @@
 #include "HTMLCanvasElement.h"
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GPUBasedCanvasRenderingContext::GPUBasedCanvasRenderingContext(CanvasBase& canvas)
     : CanvasRenderingContext(canvas)
@@ -55,4 +55,4 @@ void GPUBasedCanvasRenderingContext::notifyCanvasContentChanged()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

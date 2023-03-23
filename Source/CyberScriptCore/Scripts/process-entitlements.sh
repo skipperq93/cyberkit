@@ -32,7 +32,7 @@ function mac_process_testapi_entitlements()
     if [[ "${WK_USE_RESTRICTED_ENTITLEMENTS}" == YES ]]
     then
         plistbuddy Add :com.apple.security.cs.allow-jit bool YES
-        plistbuddy Add :com.apple.rootless.storage.JavaScriptCore bool YES
+        plistbuddy Add :com.apple.rootless.storage.CyberScriptCore bool YES
 
         if (( "${TARGET_MAC_OS_X_VERSION_MAJOR}" >= 110000 ))
         then
@@ -72,7 +72,7 @@ function maccatalyst_process_jsc_entitlements()
 
 function maccatalyst_process_testapi_entitlements()
 {
-    plistbuddy Add :com.apple.rootless.storage.JavaScriptCore bool YES
+    plistbuddy Add :com.apple.rootless.storage.CyberScriptCore bool YES
     plistbuddy Add :com.apple.security.cs.allow-jit bool YES
 
     if (( "${TARGET_MAC_OS_X_VERSION_MAJOR}" >= 110000 ))

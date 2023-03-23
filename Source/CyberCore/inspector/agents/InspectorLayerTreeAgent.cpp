@@ -42,7 +42,7 @@
 #include "RenderView.h"
 #include <CyberScriptCore/IdentifiersFactory.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -368,4 +368,4 @@ void InspectorLayerTreeAgent::unbindPseudoElement(PseudoElement* pseudoElement)
     m_idToPseudoElement.remove(identifier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include "HTMLParserIdioms.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

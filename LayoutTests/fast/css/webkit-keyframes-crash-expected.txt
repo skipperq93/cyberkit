@@ -1,4 +1,4 @@
-Test for bug 62384: CyberCore::WebKitCSSKeyframesRuleInternal::nameAttrSetter() - crash
+Test for bug 62384: CyberCore::CyberKitCSSKeyframesRuleInternal::nameAttrSetter() - crash
 
 This test passed if it did not crash
 

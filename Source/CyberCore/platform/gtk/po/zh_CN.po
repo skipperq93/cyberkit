@@ -1338,11 +1338,11 @@ msgctxt "Undo action name"
 msgid "Convert to Unordered List"
 msgstr "转换为无序列表"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 msgid "JSC Options"
 msgstr "JSC 选项"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 msgid "Show JSC Options"
 msgstr "显示 JSC 选项"
 

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "AccessibilityMockObject.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 AccessibilityMockObject::AccessibilityMockObject()
     : m_parent(nullptr)

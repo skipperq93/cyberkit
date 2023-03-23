@@ -31,7 +31,7 @@
 #include "WebGPUIdentifier.h"
 #include <pal/graphics/WebGPU/WebGPURenderBundleEncoder.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ConvertToBackingContext;
 
@@ -109,6 +109,6 @@ private:
     Ref<RemoteDeviceProxy> m_parent;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

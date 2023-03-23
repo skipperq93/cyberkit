@@ -22,7 +22,7 @@
 
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CSSValueList> createBorderImageValue(RefPtr<CSSValue>&& image, RefPtr<CSSValue>&& imageSlice, RefPtr<CSSValue>&& borderSlice, RefPtr<CSSValue>&& outset, RefPtr<CSSValue>&& repeat)
 {
@@ -45,4 +45,4 @@ Ref<CSSValueList> createBorderImageValue(RefPtr<CSSValue>&& image, RefPtr<CSSVal
     return CSSValueList::createSpaceSeparated(WTFMove(list));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

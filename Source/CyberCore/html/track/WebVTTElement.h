@@ -30,7 +30,7 @@
 #include "HTMLElement.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum WebVTTNodeType {
     WebVTTNodeTypeNone = 0,
@@ -84,10 +84,10 @@ private:
     AtomString m_language;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WebVTTElement)
-    static bool isType(const WebCore::Node& node) { return node.isWebVTTElement(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WebVTTElement)
+    static bool isType(const CyberCore::Node& node) { return node.isWebVTTElement(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO)

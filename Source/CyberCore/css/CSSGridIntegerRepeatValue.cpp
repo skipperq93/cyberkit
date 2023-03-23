@@ -33,7 +33,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSGridIntegerRepeatValue::CSSGridIntegerRepeatValue(size_t repetitions, CSSValueListBuilder builder)
     : CSSValueContainingVector(GridIntegerRepeatClass, SpaceSeparator, WTFMove(builder))
@@ -61,4 +61,4 @@ bool CSSGridIntegerRepeatValue::equals(const CSSGridIntegerRepeatValue& other) c
     return m_repetitions == other.m_repetitions && itemsEqual(other);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

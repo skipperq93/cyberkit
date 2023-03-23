@@ -37,7 +37,7 @@
 #include "WorkerCacheStorageConnection.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindowCaches : public Supplement<DOMWindow>, public DOMWindowProperty {
     WTF_MAKE_FAST_ALLOCATED;
@@ -140,4 +140,4 @@ DOMCacheStorage* WindowOrWorkerGlobalScopeCaches::caches(ScriptExecutionContext&
     return WorkerGlobalScopeCaches::from(scope)->caches();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

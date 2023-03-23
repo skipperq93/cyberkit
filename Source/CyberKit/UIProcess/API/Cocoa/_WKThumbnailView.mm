@@ -49,7 +49,7 @@
     RetainPtr<WKView> _wkView;
     ALLOW_DEPRECATED_DECLARATIONS_END
     RetainPtr<WKWebView> _wkWebView;
-    NakedPtr<WebKit::WebPageProxy> _webPageProxy;
+    NakedPtr<CyberKit::WebPageProxy> _webPageProxy;
 
     BOOL _originalMayStartMediaWhenInWindow;
     BOOL _originalSourceViewIsInWindow;
@@ -82,7 +82,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         return nil;
 
     _wkView = wkView;
-    _webPageProxy = WebKit::toImpl([_wkView pageRef]);
+    _webPageProxy = CyberKit::toImpl([_wkView pageRef]);
     _originalMayStartMediaWhenInWindow = _webPageProxy->mayStartMediaWhenInWindow();
     _originalSourceViewIsInWindow = !![_wkView window];
 
@@ -128,7 +128,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
     RetainPtr<_WKThumbnailView> thumbnailView = self;
     CyberCore::IntRect snapshotRect(CyberCore::IntPoint(), _webPageProxy->viewSize() - CyberCore::IntSize(0, _webPageProxy->topContentInset()));
-    WebKit::SnapshotOptions options = WebKit::SnapshotOptionsInViewCoordinates | WebKit::SnapshotOptionsUseScreenColorSpace;
+    CyberKit::SnapshotOptions options = CyberKit::SnapshotOptionsInViewCoordinates | CyberKit::SnapshotOptionsUseScreenColorSpace;
     CyberCore::IntSize bitmapSize = snapshotRect.size();
     bitmapSize.scale(_scale * _webPageProxy->deviceScaleFactor());
 
@@ -143,8 +143,8 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
     _lastSnapshotScale = _scale;
     _lastSnapshotMaximumSize = _maximumSnapshotSize;
-    _webPageProxy->takeSnapshot(snapshotRect, bitmapSize, options, [thumbnailView](const WebKit::ShareableBitmapHandle& imageHandle) {
-        auto bitmap = WebKit::ShareableBitmap::create(imageHandle, WebKit::SharedMemory::Protection::ReadOnly);
+    _webPageProxy->takeSnapshot(snapshotRect, bitmapSize, options, [thumbnailView](const CyberKit::ShareableBitmapHandle& imageHandle) {
+        auto bitmap = CyberKit::ShareableBitmap::create(imageHandle, CyberKit::SharedMemory::Protection::ReadOnly);
         RetainPtr<CGImageRef> cgImage = bitmap ? bitmap->makeCGImage() : nullptr;
         tracePoint(TakeSnapshotEnd, !!cgImage);
         [thumbnailView _didTakeSnapshot:cgImage.get()];

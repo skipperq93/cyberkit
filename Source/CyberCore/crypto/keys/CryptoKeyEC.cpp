@@ -32,7 +32,7 @@
 #include "JsonWebKey.h"
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const ASCIILiteral P256 { "P-256"_s };
 static const ASCIILiteral P384 { "P-384"_s };
@@ -229,6 +229,6 @@ auto CryptoKeyEC::algorithm() const -> KeyAlgorithm
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

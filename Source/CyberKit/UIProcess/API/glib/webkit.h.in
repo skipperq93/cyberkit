@@ -36,102 +36,102 @@
 
 #define __WEBKIT_H_INSIDE__
 
-#include <@API_INCLUDE_PREFIX@/WebKitApplicationInfo.h>
-#include <@API_INCLUDE_PREFIX@/WebKitAuthenticationRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitAutomationSession.h>
-#include <@API_INCLUDE_PREFIX@/WebKitBackForwardList.h>
-#include <@API_INCLUDE_PREFIX@/WebKitBackForwardListItem.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitApplicationInfo.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitAuthenticationRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitAutomationSession.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitBackForwardList.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitBackForwardListItem.h>
 #if PLATFORM(GTK)
-#include <@API_INCLUDE_PREFIX@/WebKitColorChooserRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitColorChooserRequest.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenu.h>
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenuActions.h>
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenuItem.h>
-#include <@API_INCLUDE_PREFIX@/WebKitCookieManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitCredential.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDeviceInfoPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDownload.h>
-#include <@API_INCLUDE_PREFIX@/WebKitEditingCommands.h>
-#include <@API_INCLUDE_PREFIX@/WebKitEditorState.h>
-#include <@API_INCLUDE_PREFIX@/WebKitEnumTypes.h>
-#include <@API_INCLUDE_PREFIX@/WebKitError.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenuActions.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenuItem.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitCookieManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitCredential.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDeviceInfoPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDownload.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitEditingCommands.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitEditorState.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitEnumTypes.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitError.h>
 #if PLATFORM(GTK) || (PLATFORM(WPE) && !ENABLE(2022_GLIB_API))
-#include <@API_INCLUDE_PREFIX@/WebKitFaviconDatabase.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFaviconDatabase.h>
 #endif
 #if PLATFORM(GTK)
-#include <@API_INCLUDE_PREFIX@/WebKitFileChooserRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFileChooserRequest.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitFindController.h>
-#include <@API_INCLUDE_PREFIX@/WebKitFormSubmissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitGeolocationManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitGeolocationPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitHitTestResult.h>
-#include <@API_INCLUDE_PREFIX@/WebKitInputMethodContext.h>
-#include <@API_INCLUDE_PREFIX@/WebKitInstallMissingMediaPluginsPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitJavascriptResult.h>
-#include <@API_INCLUDE_PREFIX@/WebKitMediaKeySystemPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitMemoryPressureSettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFindController.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFormSubmissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitGeolocationManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitGeolocationPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitHitTestResult.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitInputMethodContext.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitInstallMissingMediaPluginsPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitJavascriptResult.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitMediaKeySystemPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitMemoryPressureSettings.h>
 #if !ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitMimeInfo.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitMimeInfo.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitNavigationAction.h>
-#include <@API_INCLUDE_PREFIX@/WebKitNavigationPolicyDecision.h>
-#include <@API_INCLUDE_PREFIX@/WebKitNetworkProxySettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNavigationAction.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNavigationPolicyDecision.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkProxySettings.h>
 #if ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitNetworkSession.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkSession.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitNotification.h>
-#include <@API_INCLUDE_PREFIX@/WebKitNotificationPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitOptionMenu.h>
-#include <@API_INCLUDE_PREFIX@/WebKitOptionMenuItem.h>
-#include <@API_INCLUDE_PREFIX@/WebKitPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitPermissionStateQuery.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNotification.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNotificationPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitOptionMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitOptionMenuItem.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPermissionStateQuery.h>
 #if !ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitPlugin.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPlugin.h>
 #endif
 #if PLATFORM(GTK)
-#include <@API_INCLUDE_PREFIX@/WebKitPointerLockPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPointerLockPermissionRequest.h>
 #if !ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitPrintCustomWidget.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPrintCustomWidget.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitPrintOperation.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPrintOperation.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitResponsePolicyDecision.h>
-#include <@API_INCLUDE_PREFIX@/WebKitScriptDialog.h>
-#include <@API_INCLUDE_PREFIX@/WebKitSecurityManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitSecurityOrigin.h>
-#include <@API_INCLUDE_PREFIX@/WebKitSettings.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIResponse.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURISchemeRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURISchemeResponse.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIUtilities.h>
-#include <@API_INCLUDE_PREFIX@/WebKitUserContent.h>
-#include <@API_INCLUDE_PREFIX@/WebKitUserContentFilterStore.h>
-#include <@API_INCLUDE_PREFIX@/WebKitUserContentManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitUserMediaPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitUserMessage.h>
-#include <@API_INCLUDE_PREFIX@/WebKitVersion.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebContext.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitResponsePolicyDecision.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitScriptDialog.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSecurityManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSecurityOrigin.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIResponse.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURISchemeRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURISchemeResponse.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIUtilities.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserContent.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserContentFilterStore.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserContentManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMediaPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMessage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitVersion.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebContext.h>
 #if PLATFORM(GTK)
-#include <@API_INCLUDE_PREFIX@/WebKitWebInspector.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebInspector.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitWebResource.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebView.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebResource.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebView.h>
 #if PLATFORM(WPE)
-#include <wpe/WebKitWebViewBackend.h>
+#include <wpe/CyberKitWebViewBackend.h>
 #endif
 #if PLATFORM(GTK)
-#include <@API_INCLUDE_PREFIX@/WebKitWebViewBase.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebViewBase.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitWebViewSessionState.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebsiteData.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebsiteDataAccessPermissionRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebsiteDataManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWindowProperties.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebViewSessionState.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteData.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteDataAccessPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteDataManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWindowProperties.h>
 
-#include <@API_INCLUDE_PREFIX@/WebKitAutocleanups.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitAutocleanups.h>
 
 #undef __WEBKIT_H_INSIDE__
 

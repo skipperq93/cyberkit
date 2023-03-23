@@ -39,7 +39,7 @@ static std::optional<RetainPtr<id>> makeVectorElement(const RetainPtr<id>*, id a
     return { retainPtr(arrayElement) };
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SceneKitModelPlayer> SceneKitModelPlayer::create(ModelPlayerClient& client)
 {

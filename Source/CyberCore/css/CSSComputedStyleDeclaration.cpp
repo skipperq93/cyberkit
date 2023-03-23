@@ -41,7 +41,7 @@
 #include "StyleScope.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSComputedStyleDeclaration);
 
@@ -232,4 +232,4 @@ ExceptionOr<void> CSSComputedStyleDeclaration::setPropertyInternal(CSSPropertyID
     return Exception { NoModificationAllowedError };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

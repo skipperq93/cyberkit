@@ -27,7 +27,7 @@
 
 #if ENABLE(MEDIA_SESSION)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaSessionAction {
     Play,
@@ -42,23 +42,23 @@ enum class MediaSessionAction {
     Settrack,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MediaSessionAction> {
+template<> struct EnumTraits<CyberCore::MediaSessionAction> {
     using values = EnumValues<
-        WebCore::MediaSessionAction,
-        WebCore::MediaSessionAction::Play,
-        WebCore::MediaSessionAction::Pause,
-        WebCore::MediaSessionAction::Seekbackward,
-        WebCore::MediaSessionAction::Seekforward,
-        WebCore::MediaSessionAction::Previoustrack,
-        WebCore::MediaSessionAction::Nexttrack,
-        WebCore::MediaSessionAction::Skipad,
-        WebCore::MediaSessionAction::Stop,
-        WebCore::MediaSessionAction::Seekto,
-        WebCore::MediaSessionAction::Settrack
+        CyberCore::MediaSessionAction,
+        CyberCore::MediaSessionAction::Play,
+        CyberCore::MediaSessionAction::Pause,
+        CyberCore::MediaSessionAction::Seekbackward,
+        CyberCore::MediaSessionAction::Seekforward,
+        CyberCore::MediaSessionAction::Previoustrack,
+        CyberCore::MediaSessionAction::Nexttrack,
+        CyberCore::MediaSessionAction::Skipad,
+        CyberCore::MediaSessionAction::Stop,
+        CyberCore::MediaSessionAction::Seekto,
+        CyberCore::MediaSessionAction::Settrack
     >;
 };
 

@@ -34,7 +34,7 @@
 #include <variant>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleImageValue;
 class CanvasGradient;
@@ -149,4 +149,4 @@ private:
     bool m_contentChanged { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

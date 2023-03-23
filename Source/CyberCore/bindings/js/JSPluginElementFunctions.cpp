@@ -25,7 +25,7 @@
 #include "HTMLPlugInElement.h"
 #include "JSHTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 using namespace Bindings;
@@ -156,4 +156,4 @@ CallData pluginElementCustomGetCallData(JSHTMLElement* element)
     return callData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

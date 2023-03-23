@@ -32,7 +32,7 @@
 #include "RTCRtpHeaderExtensionParameters.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpParameters {
     Vector<RTCRtpHeaderExtensionParameters> headerExtensions;
@@ -41,6 +41,6 @@ struct RTCRtpParameters {
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -32,7 +32,7 @@
 #include "JSDOMConvertSequences.h"
 #include "JSDOMConvertStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -65,4 +65,4 @@ JSValue JSKeyframeEffect::getKeyframes(JSGlobalObject& lexicalGlobalObject, Call
     return toJS<IDLSequence<IDLObject>>(lexicalGlobalObject, domGlobalObject, throwScope, keyframeObjects);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

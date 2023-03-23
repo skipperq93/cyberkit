@@ -35,7 +35,7 @@
 #include "BaseButtonInputType.h"
 #include "IntPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageInputType final : public BaseButtonInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -60,6 +60,6 @@ private:
     IntPoint m_clickLocation; // Valid only during HTMLFormElement::submitIfPossible().
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(ImageInputType, Type::Image)

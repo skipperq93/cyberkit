@@ -27,7 +27,7 @@
 
 #include <wtf/RefCounter.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum VisibleWebPageCounterType { };
 using VisibleWebPageCounter = RefCounter<VisibleWebPageCounterType>;

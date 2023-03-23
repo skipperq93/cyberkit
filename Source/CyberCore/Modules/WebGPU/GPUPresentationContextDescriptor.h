@@ -28,7 +28,7 @@
 #include "GPUCompositorIntegration.h"
 #include <pal/graphics/WebGPU/WebGPUPresentationContextDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUPresentationContextDescriptor {
     PAL::WebGPU::PresentationContextDescriptor convertToBacking() const

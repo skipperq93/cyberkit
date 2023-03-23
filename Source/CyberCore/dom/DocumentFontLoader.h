@@ -31,7 +31,7 @@
 #include "Timer.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedFont;
 
@@ -60,4 +60,4 @@ private:
     bool m_isStopped { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

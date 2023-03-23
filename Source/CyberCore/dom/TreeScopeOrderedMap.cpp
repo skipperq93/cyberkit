@@ -38,7 +38,7 @@
 #include "HTMLMapElement.h"
 #include "HTMLNameCollection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -225,4 +225,4 @@ const Vector<AtomString> TreeScopeOrderedMap::keys() const
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

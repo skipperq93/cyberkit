@@ -28,7 +28,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSLineBoxContainValue::CSSLineBoxContainValue(OptionSet<LineBoxContain> value)
     : CSSValue(LineBoxContainClass)

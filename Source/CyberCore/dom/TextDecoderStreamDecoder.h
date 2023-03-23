@@ -26,7 +26,7 @@
 
 #include "TextDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextDecoderStreamDecoder : public RefCounted<TextDecoderStreamDecoder> {
 public:

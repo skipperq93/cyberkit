@@ -32,7 +32,7 @@
 #include "CSSPrimitiveValue.h"
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CSSParserTokenType {
     IdentToken = 0,
@@ -172,4 +172,4 @@ private:
     };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

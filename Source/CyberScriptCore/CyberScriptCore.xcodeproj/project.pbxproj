@@ -1752,7 +1752,7 @@
 		BC18C4680E16F5CD00B34460 /* StringObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BC18C3C30E16EE3300B34460 /* StringObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BC18C46A0E16F5CD00B34460 /* StringPrototype.h in Headers */ = {isa = PBXBuildFile; fileRef = BC18C3C60E16EE3300B34460 /* StringPrototype.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BC18C46B0E16F5CD00B34460 /* SymbolTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A396A60CD2933100B5B4FF /* SymbolTable.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		BC18C47A0E16F5CD00B34460 /* WebKitAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE3D0F40DD8DDFB00468714 /* WebKitAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC18C47A0E16F5CD00B34460 /* CyberKitAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE3D0F40DD8DDFB00468714 /* CyberKitAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC18C52E0E16FCE100B34460 /* Lexer.lut.h in Headers */ = {isa = PBXBuildFile; fileRef = BC18C52D0E16FCE100B34460 /* Lexer.lut.h */; };
 		BC3046070E1F497F003232CF /* Error.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3046060E1F497F003232CF /* Error.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BC6AAAE50E1F426500AD87D8 /* ClassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = BC6AAAE40E1F426500AD87D8 /* ClassInfo.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -1846,8 +1846,8 @@
 		DD5F74F9283EF58D0027A8C6 /* copy-profiling-data.sh in Headers */ = {isa = PBXBuildFile; fileRef = DD5F74F8283EF4380027A8C6 /* copy-profiling-data.sh */; settings = {ATTRIBUTES = (Private, ); }; };
 		DDB04F41278E569A008D3678 /* libWTF.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = 1498CAD3214656C400710879 /* libWTF.a */; };
 		DDB04F42278E56A2008D3678 /* libWTF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1498CAD3214656C400710879 /* libWTF.a */; };
-		DDE99310278D087D00F60D26 /* libWebKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE9930E278D086600F60D26 /* libWebKitAdditions.a */; };
-		DDE99312278D089000F60D26 /* libWebKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE9930E278D086600F60D26 /* libWebKitAdditions.a */; };
+		DDE99310278D087D00F60D26 /* libCyberKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE9930E278D086600F60D26 /* libCyberKitAdditions.a */; };
+		DDE99312278D089000F60D26 /* libCyberKitAdditions.a in Product Dependencies */ = {isa = PBXBuildFile; fileRef = DDE9930E278D086600F60D26 /* libCyberKitAdditions.a */; };
 		DE26E9031CB5DD0500D2BE82 /* BuiltinExecutableCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = DE26E9021CB5DD0500D2BE82 /* BuiltinExecutableCreator.h */; };
 		DEA7E2451BBC677F00D78440 /* JSTypedArrayViewPrototype.h in Headers */ = {isa = PBXBuildFile; fileRef = 53917E7C1B791106000EBD33 /* JSTypedArrayViewPrototype.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DFBC2CA625E6D5B90081BDD1 /* SymbolStubsForSafariCompatibility.mm in Sources */ = {isa = PBXBuildFile; fileRef = DFBC2CA525E6D5790081BDD1 /* SymbolStubsForSafariCompatibility.mm */; };
@@ -2516,7 +2516,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				DDE99310278D087D00F60D26 /* libWebKitAdditions.a in Product Dependencies */,
+				DDE99310278D087D00F60D26 /* libCyberKitAdditions.a in Product Dependencies */,
 			);
 			name = "Product Dependencies";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2527,7 +2527,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				DDE99312278D089000F60D26 /* libWebKitAdditions.a in Product Dependencies */,
+				DDE99312278D089000F60D26 /* libCyberKitAdditions.a in Product Dependencies */,
 			);
 			name = "Product Dependencies";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4217,7 +4217,7 @@
 		5C4E8E951DBEBDA20036F1FC /* JSONParseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONParseTest.h; path = API/tests/JSONParseTest.h; sourceTree = "<group>"; };
 		5D5D8AD00E0D0EBE00F9C692 /* libedit.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libedit.dylib; path = /usr/lib/libedit.dylib; sourceTree = "<absolute>"; };
 		5DAFD6CB146B686300FBEFB4 /* JSC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JSC.xcconfig; sourceTree = "<group>"; };
-		5DE3D0F40DD8DDFB00468714 /* WebKitAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebKitAvailability.h; sourceTree = "<group>"; };
+		5DE3D0F40DD8DDFB00468714 /* CyberKitAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyberKitAvailability.h; sourceTree = "<group>"; };
 		623A37EB1B87A7BD00754209 /* RegisterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterMap.h; sourceTree = "<group>"; };
 		627673211B680C1E00FD9F2E /* CallMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallMode.cpp; sourceTree = "<group>"; };
 		627673221B680C1E00FD9F2E /* CallMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMode.h; sourceTree = "<group>"; };
@@ -5323,7 +5323,7 @@
 		DD284677291A280D0009A61D /* JSCBytecodeCacheVersion.cpp.in */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = JSCBytecodeCacheVersion.cpp.in; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		DD28467A291A35120009A61D /* JSCBytecodeCacheVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCBytecodeCacheVersion.h; sourceTree = "<group>"; };
 		DD5F74F8283EF4380027A8C6 /* copy-profiling-data.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "copy-profiling-data.sh"; sourceTree = "<group>"; };
-		DDE9930E278D086600F60D26 /* libWebKitAdditions.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWebKitAdditions.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDE9930E278D086600F60D26 /* libCyberKitAdditions.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCyberKitAdditions.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE26E9021CB5DD0500D2BE82 /* BuiltinExecutableCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltinExecutableCreator.h; sourceTree = "<group>"; };
 		DE26E9061CB5DD9600D2BE82 /* BuiltinExecutableCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuiltinExecutableCreator.cpp; sourceTree = "<group>"; };
 		DE5A09FF1BA3AC3E003D4424 /* IntrinsicEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntrinsicEmitter.cpp; sourceTree = "<group>"; };
@@ -6096,7 +6096,7 @@
 				5D5D8AD00E0D0EBE00F9C692 /* libedit.dylib */,
 				9322A00306C341D3009067BB /* libicucore.dylib */,
 				51F0EC0705C86C9A00E6DF1B /* libobjc.dylib */,
-				DDE9930E278D086600F60D26 /* libWebKitAdditions.a */,
+				DDE9930E278D086600F60D26 /* libCyberKitAdditions.a */,
 				1498CAD3214656C400710879 /* libWTF.a */,
 				371D842C17C98B6E00ECF994 /* libz.dylib */,
 				A5098B031C16AA0200087797 /* Security.framework */,
@@ -7093,7 +7093,7 @@
 				86F3EEB616855A5B0077B92A /* ObjcRuntimeExtras.h */,
 				E124A8F60E555775003091F1 /* OpaqueJSString.cpp */,
 				E124A8F50E555775003091F1 /* OpaqueJSString.h */,
-				5DE3D0F40DD8DDFB00468714 /* WebKitAvailability.h */,
+				5DE3D0F40DD8DDFB00468714 /* CyberKitAvailability.h */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -11517,7 +11517,7 @@
 				14D01BE626DEEF3800CAE0D0 /* WebAssemblyTagConstructor.h in Headers */,
 				14D01BE726DEEF3800CAE0D0 /* WebAssemblyTagPrototype.h in Headers */,
 				52F6C35E1E71EB080081F4CC /* WebAssemblyWrapperFunction.h in Headers */,
-				BC18C47A0E16F5CD00B34460 /* WebKitAvailability.h in Headers */,
+				BC18C47A0E16F5CD00B34460 /* CyberKitAvailability.h in Headers */,
 				4B1F22F62900BFC700CB5E66 /* Width.h in Headers */,
 				99DA00A61BD5993100F4575C /* wkbuiltins.py in Headers */,
 				A7DCB97312E5193F00911940 /* WriteBarrier.h in Headers */,
@@ -11795,7 +11795,7 @@
 				53B4BD141F68C2AA00D2BEA3 /* PBXTargetDependency */,
 			);
 			name = CyberScriptCore;
-			productInstallPath = "${SYSTEM_LIBRARY_DIR}/Frameworks/WebKit.framework/Versions/A/Frameworks";
+			productInstallPath = "${SYSTEM_LIBRARY_DIR}/Frameworks/CyberKit.framework/Versions/A/Frameworks";
 			productName = CyberScriptCore;
 			productReference = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */;
 			productType = "com.apple.product-type.framework";

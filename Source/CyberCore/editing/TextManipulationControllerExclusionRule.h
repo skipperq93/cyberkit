@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -51,4 +51,4 @@ struct TextManipulationControllerExclusionRule {
     bool match(const Element&) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

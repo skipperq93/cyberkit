@@ -23,7 +23,7 @@
 #include "CSSValue.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 
@@ -60,6 +60,6 @@ private:
         RefPtr<CSSPrimitiveValue>&& color);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSShadowValue, isShadowValue())

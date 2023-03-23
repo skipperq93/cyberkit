@@ -58,7 +58,7 @@
 
 - (WKContentMode)effectiveContentMode
 {
-    return WebKit::contentMode(_navigation->effectiveContentMode());
+    return CyberKit::contentMode(_navigation->effectiveContentMode());
 }
 
 #endif // PLATFORM(IOS_FAMILY)

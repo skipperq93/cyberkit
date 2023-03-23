@@ -28,7 +28,7 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct SessionState;
 

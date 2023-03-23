@@ -30,7 +30,7 @@
 #include <wtf/Markable.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSNumericValue;
 enum class CSSUnitType : uint8_t;
@@ -85,4 +85,4 @@ public:
     String debugString() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

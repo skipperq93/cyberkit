@@ -34,7 +34,7 @@
 #include "Settings.h"
 #include "WorkerOrWorkletGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CachedScriptFetcher> CachedScriptFetcher::create(const String& charset)
 {

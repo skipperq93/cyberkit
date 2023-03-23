@@ -35,7 +35,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 const EVP_MD* digestAlgorithm(CryptoAlgorithmIdentifier hashFunction);
 
@@ -60,6 +60,6 @@ private:
     AES_KEY m_key;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

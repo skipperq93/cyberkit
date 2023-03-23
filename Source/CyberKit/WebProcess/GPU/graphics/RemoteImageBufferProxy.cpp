@@ -38,7 +38,7 @@
 #include <CyberCore/WorkerGlobalScope.h>
 #include <wtf/SystemTracing.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 namespace {
@@ -419,6 +419,6 @@ RemoteSerializedImageBufferProxy::~RemoteSerializedImageBufferProxy()
         m_connection->send(Messages::GPUConnectionToWebProcess::ReleaseSerializedImageBuffer(m_referenceTracker.write()), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

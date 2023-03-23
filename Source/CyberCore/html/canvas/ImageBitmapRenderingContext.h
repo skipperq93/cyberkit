@@ -32,7 +32,7 @@
 #include <memory>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBitmap;
 class ImageBuffer;
@@ -77,4 +77,4 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(WebCore::ImageBitmapRenderingContext, isBitmapRenderer())
+SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(CyberCore::ImageBitmapRenderingContext, isBitmapRenderer())

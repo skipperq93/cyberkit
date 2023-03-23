@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PermissionQuerySource : uint8_t {
     Window,
@@ -36,17 +36,17 @@ enum class PermissionQuerySource : uint8_t {
     ServiceWorker    
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PermissionQuerySource> {
+template<> struct EnumTraits<CyberCore::PermissionQuerySource> {
     using values = EnumValues<
-        WebCore::PermissionQuerySource,
-        WebCore::PermissionQuerySource::Window,
-        WebCore::PermissionQuerySource::DedicatedWorker,
-        WebCore::PermissionQuerySource::SharedWorker,
-        WebCore::PermissionQuerySource::ServiceWorker
+        CyberCore::PermissionQuerySource,
+        CyberCore::PermissionQuerySource::Window,
+        CyberCore::PermissionQuerySource::DedicatedWorker,
+        CyberCore::PermissionQuerySource::SharedWorker,
+        CyberCore::PermissionQuerySource::ServiceWorker
     >;
 };
 

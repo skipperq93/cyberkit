@@ -130,7 +130,7 @@
     CGSize _overlaidAccessoryViewsInset;
     RetainPtr<UIView> _pageNumberIndicator;
     CString _passwordForPrinting;
-    WebKit::InteractionInformationAtPosition _positionInformation;
+    CyberKit::InteractionInformationAtPosition _positionInformation;
     RetainPtr<NSString> _suggestedFilename;
     WeakObjCPtr<WKWebView> _webView;
     RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
@@ -568,7 +568,7 @@ static NSStringCompareOptions stringCompareOptions(_WKFindOptions findOptions)
     if (!webView)
         return;
 
-    WebKit::InteractionInformationAtPosition positionInformation;
+    CyberKit::InteractionInformationAtPosition positionInformation;
     positionInformation.bounds = CyberCore::roundedIntRect(annotationRect);
     positionInformation.request.point = CyberCore::roundedIntPoint(location);
     positionInformation.url = url;
@@ -600,21 +600,21 @@ static NSStringCompareOptions stringCompareOptions(_WKFindOptions findOptions)
     // FIXME 40916725: PDFKit should dispatch this message to the main thread like it does for other delegate messages.
     RunLoop::main().dispatch([webView = _webView] {
         if (auto page = [webView _page])
-            page->dispatchProcessDidTerminate(WebKit::ProcessTerminationReason::Crash);
+            page->dispatchProcessDidTerminate(CyberKit::ProcessTerminationReason::Crash);
     });
 }
 
 
 #pragma mark WKActionSheetAssistantDelegate
 
-- (std::optional<WebKit::InteractionInformationAtPosition>)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)assistant
+- (std::optional<CyberKit::InteractionInformationAtPosition>)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)assistant
 {
     return _positionInformation;
 }
 
-- (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant performAction:(WebKit::SheetAction)action
+- (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant performAction:(CyberKit::SheetAction)action
 {
-    if (action != WebKit::SheetAction::Copy)
+    if (action != CyberKit::SheetAction::Copy)
         return;
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
@@ -677,7 +677,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     return page->uiClient().actionsForElement(element, WTFMove(defaultActions));
 }
 
-- (NSDictionary *)dataDetectionContextForActionSheetAssistant:(WKActionSheetAssistant *)assistant positionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation
+- (NSDictionary *)dataDetectionContextForActionSheetAssistant:(WKActionSheetAssistant *)assistant positionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation
 {
     auto webView = _webView.getAutoreleased();
     if (!webView)

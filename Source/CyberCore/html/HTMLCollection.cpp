@@ -27,7 +27,7 @@
 #include "NodeRareData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -252,4 +252,4 @@ Vector<Ref<Element>> HTMLCollection::namedItems(const AtomString& name) const
     return elements;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

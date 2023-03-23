@@ -32,7 +32,7 @@
 
 OBJC_CLASS NSData;
 
-namespace WebKit {
+namespace CyberKit {
 
 class MockNfcService final : public NfcService {
 public:
@@ -50,6 +50,6 @@ private:
     CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

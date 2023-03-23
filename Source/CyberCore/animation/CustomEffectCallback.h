@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomEffectCallback : public RefCounted<CustomEffectCallback>, public ActiveDOMCallback {
 public:
@@ -39,4 +39,4 @@ public:
     virtual CallbackResult<void> handleEvent(double progress) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include "AccessibilityRenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilitySVGElement : public AccessibilityRenderObject {
 public:
@@ -57,4 +57,4 @@ private:
     WeakPtr<AXObjectCache> m_axObjectCache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

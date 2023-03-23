@@ -36,7 +36,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebInspectorUIExtensionControllerProxy::WebInspectorUIExtensionControllerProxy(WebPageProxy& inspectorPage)
     : m_inspectorPage(inspectorPage)
@@ -306,6 +306,6 @@ void WebInspectorUIExtensionControllerProxy::inspectedPageDidNavigate(const URL&
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

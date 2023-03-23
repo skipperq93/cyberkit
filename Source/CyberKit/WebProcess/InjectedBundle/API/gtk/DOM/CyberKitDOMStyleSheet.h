@@ -54,7 +54,7 @@ webkit_dom_style_sheet_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_style_sheet_get_content_type(CyberKitDOMStyleSheet* self);
@@ -65,7 +65,7 @@ webkit_dom_style_sheet_get_content_type(CyberKitDOMStyleSheet* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_style_sheet_get_disabled(CyberKitDOMStyleSheet* self);
@@ -76,7 +76,7 @@ webkit_dom_style_sheet_get_disabled(CyberKitDOMStyleSheet* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_style_sheet_set_disabled(CyberKitDOMStyleSheet* self, gboolean value);
@@ -87,7 +87,7 @@ webkit_dom_style_sheet_set_disabled(CyberKitDOMStyleSheet* self, gboolean value)
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_style_sheet_get_owner_node(CyberKitDOMStyleSheet* self);
@@ -98,7 +98,7 @@ webkit_dom_style_sheet_get_owner_node(CyberKitDOMStyleSheet* self);
  *
  * Returns: (transfer full): A #CyberKitDOMStyleSheet
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMStyleSheet*
 webkit_dom_style_sheet_get_parent_style_sheet(CyberKitDOMStyleSheet* self);
@@ -109,7 +109,7 @@ webkit_dom_style_sheet_get_parent_style_sheet(CyberKitDOMStyleSheet* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_style_sheet_get_href(CyberKitDOMStyleSheet* self);
@@ -120,7 +120,7 @@ webkit_dom_style_sheet_get_href(CyberKitDOMStyleSheet* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_style_sheet_get_title(CyberKitDOMStyleSheet* self);
@@ -131,7 +131,7 @@ webkit_dom_style_sheet_get_title(CyberKitDOMStyleSheet* self);
  *
  * Returns: (transfer full): A #CyberKitDOMMediaList
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMMediaList*
 webkit_dom_style_sheet_get_media(CyberKitDOMStyleSheet* self);

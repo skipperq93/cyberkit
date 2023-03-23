@@ -352,7 +352,7 @@ typedef struct OpaqueJSContext* JSGlobalContextRef;
 typedef HWND PlatformViewWidget;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class AudioSessionRoutingArbitratorProxy;
 class CallbackID;
@@ -930,11 +930,11 @@ public:
     void commitPotentialTapFailed();
     void didNotHandleTapAsClick(const CyberCore::IntPoint&);
     void didCompleteSyntheticClick();
-    void disableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIdentifier);
-    void handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel);
+    void disableDoubleTapGesturesDuringTapIfNecessary(CyberKit::TapIdentifier);
+    void handleSmartMagnificationInformationForPotentialTap(CyberKit::TapIdentifier, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel);
     void contentSizeCategoryDidChange(const String& contentSizeCategory);
     void getSelectionContext(CompletionHandler<void(const String&, const String&, const String&)>&&);
-    void handleTwoFingerTapAtPoint(const CyberCore::IntPoint&, OptionSet<WebKit::WebEventModifier>, WebKit::TapIdentifier requestID);
+    void handleTwoFingerTapAtPoint(const CyberCore::IntPoint&, OptionSet<CyberKit::WebEventModifier>, CyberKit::TapIdentifier requestID);
     void setForceAlwaysUserScalable(bool);
     bool forceAlwaysUserScalable() const { return m_forceAlwaysUserScalable; }
     double layoutSizeScaleFactor() const { return m_viewportConfigurationLayoutSizeScaleFactor; }
@@ -953,7 +953,7 @@ public:
     void requestEvasionRectsAboveSelection(CompletionHandler<void(const Vector<CyberCore::FloatRect>&)>&&);
     void updateSelectionWithDelta(int64_t locationDelta, int64_t lengthDelta, CompletionHandler<void()>&&);
     CyberCore::FloatRect selectionBoundingRectInRootViewCoordinates() const;
-    void requestDocumentEditingContext(WebKit::DocumentEditingContextRequest, CompletionHandler<void(WebKit::DocumentEditingContext)>&&);
+    void requestDocumentEditingContext(CyberKit::DocumentEditingContextRequest, CompletionHandler<void(CyberKit::DocumentEditingContext)>&&);
     void generateSyntheticEditingCommand(SyntheticEditingCommandType);
     void showDataDetectorsUIForPositionInformation(const InteractionInformationAtPosition&);
 #if ENABLE(DRAG_SUPPORT)
@@ -972,10 +972,10 @@ public:
     void setDataDetectionResult(const DataDetectionResult&);
     void handleClickForDataDetectionResult(const CyberCore::DataDetectorElementInfo&, const CyberCore::IntPoint&);
 #endif
-    void didCommitLayerTree(const WebKit::RemoteLayerTreeTransaction&);
+    void didCommitLayerTree(const CyberKit::RemoteLayerTreeTransaction&);
     void layerTreeCommitComplete();
 
-    bool updateLayoutViewportParameters(const WebKit::RemoteLayerTreeTransaction&);
+    bool updateLayoutViewportParameters(const CyberKit::RemoteLayerTreeTransaction&);
 
 #if PLATFORM(GTK) || PLATFORM(WPE)
     void cancelComposition(const String& compositionString);
@@ -1259,7 +1259,7 @@ public:
     // Find.
     void findString(const String&, OptionSet<FindOptions>, unsigned maxMatchCount, CompletionHandler<void(bool)>&& = [](bool) { });
     void findStringMatches(const String&, OptionSet<FindOptions>, unsigned maxMatchCount);
-    void findRectsForStringMatches(const String&, OptionSet<WebKit::FindOptions>, unsigned maxMatchCount, CompletionHandler<void(Vector<CyberCore::FloatRect>&&)>&&);
+    void findRectsForStringMatches(const String&, OptionSet<CyberKit::FindOptions>, unsigned maxMatchCount, CompletionHandler<void(Vector<CyberCore::FloatRect>&&)>&&);
     void getImageForFindMatch(int32_t matchIndex);
     void selectFindMatch(int32_t matchIndex);
     void indicateFindMatch(int32_t matchIndex);
@@ -1476,12 +1476,12 @@ public:
     IPC::Connection::AsyncReplyID computePagesForPrinting(CyberCore::FrameIdentifier, const PrintInfo&, CompletionHandler<void(const Vector<CyberCore::IntRect>&, double, const CyberCore::FloatBoxExtent&)>&&);
     void getPDFFirstPageSize(CyberCore::FrameIdentifier, CompletionHandler<void(CyberCore::FloatSize)>&&);
 #if PLATFORM(COCOA)
-    IPC::Connection::AsyncReplyID drawRectToImage(WebFrameProxy*, const PrintInfo&, const CyberCore::IntRect&, const CyberCore::IntSize&, CompletionHandler<void(const WebKit::ShareableBitmapHandle&)>&&);
+    IPC::Connection::AsyncReplyID drawRectToImage(WebFrameProxy*, const PrintInfo&, const CyberCore::IntRect&, const CyberCore::IntSize&, CompletionHandler<void(const CyberKit::ShareableBitmapHandle&)>&&);
     IPC::Connection::AsyncReplyID drawPagesToPDF(WebFrameProxy*, const PrintInfo&, uint32_t first, uint32_t count, CompletionHandler<void(API::Data*)>&&);
     void drawToPDF(CyberCore::FrameIdentifier, const std::optional<CyberCore::FloatRect>&, bool allowTransparentBackground,  CompletionHandler<void(RefPtr<CyberCore::SharedBuffer>&&)>&&);
 #if PLATFORM(IOS_FAMILY)
     size_t computePagesForPrintingiOS(CyberCore::FrameIdentifier, const PrintInfo&);
-    IPC::Connection::AsyncReplyID drawToImage(CyberCore::FrameIdentifier, const PrintInfo&, size_t pageCount, CompletionHandler<void(WebKit::ShareableBitmapHandle&&)>&&);
+    IPC::Connection::AsyncReplyID drawToImage(CyberCore::FrameIdentifier, const PrintInfo&, size_t pageCount, CompletionHandler<void(CyberKit::ShareableBitmapHandle&&)>&&);
     IPC::Connection::AsyncReplyID drawToPDFiOS(CyberCore::FrameIdentifier, const PrintInfo&, size_t pageCount, CompletionHandler<void(RefPtr<CyberCore::SharedBuffer>&&)>&&);
 #endif
 #elif PLATFORM(GTK)
@@ -1504,7 +1504,7 @@ public:
 #endif
 
 #if ENABLE(PDFKIT_PLUGIN)
-    void showPDFContextMenu(const WebKit::PDFContextMenu&, PDFPluginIdentifier, CompletionHandler<void(std::optional<int32_t>&&)>&&);
+    void showPDFContextMenu(const CyberKit::PDFContextMenu&, PDFPluginIdentifier, CompletionHandler<void(std::optional<int32_t>&&)>&&);
 #endif
     CyberCore::IntRect visibleScrollerThumbRect() const { return m_visibleScrollerThumbRect; }
 
@@ -1522,7 +1522,7 @@ public:
     void pauseAllMediaPlayback(CompletionHandler<void()>&&);
     void suspendAllMediaPlayback(CompletionHandler<void()>&&);
     void resumeAllMediaPlayback(CompletionHandler<void()>&&);
-    void requestMediaPlaybackState(CompletionHandler<void(WebKit::MediaPlaybackState)>&&);
+    void requestMediaPlaybackState(CompletionHandler<void(CyberKit::MediaPlaybackState)>&&);
 
 #if ENABLE(POINTER_LOCK)
     void didAllowPointerLock();
@@ -1538,11 +1538,11 @@ public:
 #if PLATFORM(IOS_FAMILY)
     void willStartUserTriggeredZooming();
 
-    void potentialTapAtPosition(const CyberCore::FloatPoint&, bool shouldRequestMagnificationInformation, WebKit::TapIdentifier requestID);
-    void commitPotentialTap(OptionSet<WebKit::WebEventModifier>, TransactionID layerTreeTransactionIdAtLastTouchStart, CyberCore::PointerID);
+    void potentialTapAtPosition(const CyberCore::FloatPoint&, bool shouldRequestMagnificationInformation, CyberKit::TapIdentifier requestID);
+    void commitPotentialTap(OptionSet<CyberKit::WebEventModifier>, TransactionID layerTreeTransactionIdAtLastTouchStart, CyberCore::PointerID);
     void cancelPotentialTap();
-    void tapHighlightAtPosition(const CyberCore::FloatPoint&, WebKit::TapIdentifier requestID);
-    void attemptSyntheticClick(const CyberCore::FloatPoint&, OptionSet<WebKit::WebEventModifier>, TransactionID layerTreeTransactionIdAtLastTouchStart);
+    void tapHighlightAtPosition(const CyberCore::FloatPoint&, CyberKit::TapIdentifier requestID);
+    void attemptSyntheticClick(const CyberCore::FloatPoint&, OptionSet<CyberKit::WebEventModifier>, TransactionID layerTreeTransactionIdAtLastTouchStart);
     void didRecognizeLongPress();
     void handleDoubleTapForDoubleClickAtPoint(const CyberCore::IntPoint&, OptionSet<WebEventModifier>, TransactionID layerTreeTransactionIdAtLastTouchStart);
 
@@ -1751,7 +1751,7 @@ public:
 
     void didRestoreScrollPosition();
 
-    void getLoadDecisionForIcon(const CyberCore::LinkIcon&, WebKit::CallbackID);
+    void getLoadDecisionForIcon(const CyberCore::LinkIcon&, CyberKit::CallbackID);
 
     void focusFromServiceWorker(CompletionHandler<void()>&&);
     void setFocus(bool focused);
@@ -2063,7 +2063,7 @@ public:
 #if ENABLE(APP_HIGHLIGHTS)
     void createAppHighlightInSelectedRange(CyberCore::CreateNewGroupForHighlight, CyberCore::HighlightRequestOriginatedInApp);
     void storeAppHighlight(const CyberCore::AppHighlight&);
-    void restoreAppHighlightsAndScrollToIndex(const Vector<Ref<WebKit::SharedMemory>>& highlights, const std::optional<unsigned> index);
+    void restoreAppHighlightsAndScrollToIndex(const Vector<Ref<CyberKit::SharedMemory>>& highlights, const std::optional<unsigned> index);
     void setAppHighlightsVisibility(const CyberCore::HighlightVisibility);
     bool appHighlightsVisibility();
     CGRect appHighlightsOverlayRect();
@@ -2323,11 +2323,11 @@ private:
     void didUpdateHistoryTitle(const String& title, const String& url, CyberCore::FrameIdentifier);
 
     // UI client
-    void createNewPage(FrameInfoData&&, WebPageProxyIdentifier originatingPageID, CyberCore::ResourceRequest&&, CyberCore::WindowFeatures&&, NavigationActionData&&, CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<WebKit::WebPageCreationParameters>)>&&);
+    void createNewPage(FrameInfoData&&, WebPageProxyIdentifier originatingPageID, CyberCore::ResourceRequest&&, CyberCore::WindowFeatures&&, NavigationActionData&&, CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<CyberKit::WebPageCreationParameters>)>&&);
     void showPage();
-    void runJavaScriptAlert(CyberCore::FrameIdentifier, WebKit::FrameInfoData&&, const String&, CompletionHandler<void()>&&);
-    void runJavaScriptConfirm(CyberCore::FrameIdentifier, WebKit::FrameInfoData&&, const String&, CompletionHandler<void(bool)>&&);
-    void runJavaScriptPrompt(CyberCore::FrameIdentifier, WebKit::FrameInfoData&&, const String&, const String&, CompletionHandler<void(const String&)>&&);
+    void runJavaScriptAlert(CyberCore::FrameIdentifier, CyberKit::FrameInfoData&&, const String&, CompletionHandler<void()>&&);
+    void runJavaScriptConfirm(CyberCore::FrameIdentifier, CyberKit::FrameInfoData&&, const String&, CompletionHandler<void(bool)>&&);
+    void runJavaScriptPrompt(CyberCore::FrameIdentifier, CyberKit::FrameInfoData&&, const String&, const String&, CompletionHandler<void(const String&)>&&);
     void setStatusText(const String&);
     void mouseDidMoveOverElement(WebHitTestResultData&&, uint32_t modifiers, UserData&&);
 
@@ -2580,7 +2580,7 @@ private:
     void restorePageState(std::optional<CyberCore::FloatPoint> scrollPosition, const CyberCore::FloatPoint& scrollOrigin, const CyberCore::FloatBoxExtent& obscuredInsetsOnSave, double scale);
     void restorePageCenterAndScale(std::optional<CyberCore::FloatPoint>, double scale);
 
-    void didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const CyberCore::Color&, const Vector<CyberCore::FloatQuad>& geometries, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling);
+    void didGetTapHighlightGeometries(CyberKit::TapIdentifier requestID, const CyberCore::Color&, const Vector<CyberCore::FloatQuad>& geometries, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling);
 
     void elementDidFocus(const FocusedElementInformation&, bool userIsInteracting, bool blurPreviousNode, OptionSet<CyberCore::ActivityState::Flag> activityStateChanges, const UserData&);
     void elementDidBlur();
@@ -2692,7 +2692,7 @@ private:
 
     void requestAttachmentIcon(const String& identifier, const String& type, const String& path, const String& title, const CyberCore::FloatSize&);
 
-    RefPtr<WebKit::ShareableBitmap> iconForAttachment(const String& fileName, const String& contentType, const String& title, CyberCore::FloatSize&);
+    RefPtr<CyberKit::ShareableBitmap> iconForAttachment(const String& fileName, const String& contentType, const String& title, CyberCore::FloatSize&);
 
 #if HAVE(QUICKLOOK_THUMBNAILING)
     void requestThumbnail(WKQLThumbnailLoadOperation *);
@@ -3418,7 +3418,7 @@ private:
     std::unique_ptr<NetworkIssueReporter> m_networkIssueReporter;
 #endif
 
-    RefPtr<WebKit::WebPageProxy> m_pageToCloneSessionStorageFrom;
+    RefPtr<CyberKit::WebPageProxy> m_pageToCloneSessionStorageFrom;
 };
 
 #ifdef __OBJC__
@@ -3430,4 +3430,4 @@ inline RetainPtr<WKWebView> WebPageProxy::cocoaView()
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -43,7 +43,7 @@ class SharedBuffer;
 class FragmentedSharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 }
 
@@ -51,7 +51,7 @@ namespace API {
 
 class Attachment final : public ObjectImpl<Object::Type::Attachment> {
 public:
-    static Ref<Attachment> create(const WTF::String& identifier, WebKit::WebPageProxy&);
+    static Ref<Attachment> create(const WTF::String& identifier, CyberKit::WebPageProxy&);
     virtual ~Attachment();
 
     enum class InsertionState : uint8_t { NotInserted, Inserted };
@@ -95,7 +95,7 @@ public:
     void updateFromSerializedRepresentation(Ref<CyberCore::SharedBuffer>&&, const WTF::String& contentType);
 
 private:
-    explicit Attachment(const WTF::String& identifier, WebKit::WebPageProxy&);
+    explicit Attachment(const WTF::String& identifier, CyberKit::WebPageProxy&);
 
 #if PLATFORM(COCOA)
     mutable Lock m_fileWrapperLock;
@@ -104,7 +104,7 @@ private:
     WTF::String m_identifier;
     WTF::String m_filePath;
     WTF::String m_contentType;
-    WeakPtr<WebKit::WebPageProxy> m_webPage;
+    WeakPtr<CyberKit::WebPageProxy> m_webPage;
     InsertionState m_insertionState { InsertionState::NotInserted };
     bool m_hasEnclosingImage { false };
 };

@@ -29,7 +29,7 @@
 #include "InlineRect.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class FlexFormattingState : public FormattingState {

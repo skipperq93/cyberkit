@@ -20,24 +20,24 @@
 #pragma once
 
 #include "APINavigationAction.h"
-#include "WebKitNavigationAction.h"
+#include "CyberKitNavigationAction.h"
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
-struct _WebKitNavigationAction {
-    _WebKitNavigationAction(Ref<API::NavigationAction>&& action)
+struct _CyberKitNavigationAction {
+    _CyberKitNavigationAction(Ref<API::NavigationAction>&& action)
         : action(WTFMove(action))
     {
     }
 
-    _WebKitNavigationAction(WebKitNavigationAction* navigation)
+    _CyberKitNavigationAction(CyberKitNavigationAction* navigation)
         : action(navigation->action)
     {
     }
 
     RefPtr<API::NavigationAction> action;
-    GRefPtr<WebKitURIRequest> request;
+    GRefPtr<CyberKitURIRequest> request;
     std::optional<CString> frameName;
 };
 
-WebKitNavigationAction* webkitNavigationActionCreate(Ref<API::NavigationAction>&&);
+CyberKitNavigationAction* webkitNavigationActionCreate(Ref<API::NavigationAction>&&);

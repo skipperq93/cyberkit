@@ -26,7 +26,7 @@
 #import "config.h"
 #import "CSPExtensionUtilities.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 _WKContentSecurityPolicyModeForExtension toWKContentSecurityPolicyModeForExtension(CyberCore::ContentSecurityPolicyModeForExtension mode)
 {
@@ -59,4 +59,4 @@ CyberCore::ContentSecurityPolicyModeForExtension toContentSecurityPolicyModeForE
     return mode;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #include <wtf/Span.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 class WEBCORE_EXPORT CompiledContentExtension : public ThreadSafeRefCounted<CompiledContentExtension> {
 public:
@@ -44,6 +44,6 @@ public:
     virtual Span<const uint8_t> serializedActions() const = 0;
 };
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

@@ -26,7 +26,7 @@
 
 #include "HTMLDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FTPDirectoryDocument final : public HTMLDocument {
     WTF_MAKE_ISO_ALLOCATED(FTPDirectoryDocument);
@@ -43,4 +43,4 @@ private:
     Ref<DocumentParser> createParser() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <pal/graphics/WebGPU/WebGPUShaderStage.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using GPUShaderStageFlags = uint32_t;
 class GPUShaderStage : public RefCounted<GPUShaderStage> {

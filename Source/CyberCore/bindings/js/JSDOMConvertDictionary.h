@@ -28,7 +28,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Specialized by generated code for IDL dictionary conversion.
 template<typename T> T convertDictionary(JSC::JSGlobalObject&, JSC::JSValue);
@@ -53,4 +53,4 @@ template<typename T> struct JSConverter<IDLDictionary<T>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

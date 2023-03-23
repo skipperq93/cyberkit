@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSelector;
 class ContainerNode;
@@ -133,4 +133,4 @@ inline Element* SelectorQuery::queryFirst(ContainerNode& rootNode) const
     return m_selectors.queryFirst(rootNode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

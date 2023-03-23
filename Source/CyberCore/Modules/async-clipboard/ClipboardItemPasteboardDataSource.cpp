@@ -32,7 +32,7 @@
 #include "PasteboardCustomData.h"
 #include "PasteboardItemInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ClipboardItemPasteboardDataSource::ClipboardItemPasteboardDataSource(ClipboardItem& item, const PasteboardItemInfo& info)
     : ClipboardItemDataSource(item)
@@ -62,4 +62,4 @@ void ClipboardItemPasteboardDataSource::collectDataForWriting(Clipboard&, Comple
     completion(std::nullopt);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

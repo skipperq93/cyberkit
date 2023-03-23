@@ -27,7 +27,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionResultList;
 
@@ -55,4 +55,4 @@ private:
     RefPtr<SpeechRecognitionResultList> m_results;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

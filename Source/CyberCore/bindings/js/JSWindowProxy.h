@@ -37,7 +37,7 @@ namespace JSC {
 class Debugger;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractDOMWindow;
 class AbstractFrame;
@@ -92,4 +92,4 @@ template<> struct JSDOMWrapperConverterTraits<WindowProxy> {
     using ToWrappedReturnType = WindowProxy*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

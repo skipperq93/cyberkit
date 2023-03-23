@@ -41,7 +41,7 @@
 #include "WindowEventLoop.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DatabaseManager::ProposedDatabase {
 public:
@@ -279,4 +279,4 @@ void DatabaseManager::platformInitialize(const String& databasePath)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

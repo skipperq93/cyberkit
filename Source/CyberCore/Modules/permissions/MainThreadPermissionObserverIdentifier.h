@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum MainThreadPermissionObserverIdentifierType { };
 using MainThreadPermissionObserverIdentifier = ObjectIdentifier<MainThreadPermissionObserverIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

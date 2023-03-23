@@ -40,7 +40,7 @@
 #include "SharedBuffer.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class LayoutSize;
@@ -176,6 +176,6 @@ private:
     RefPtr<ModelPlayer> m_modelPlayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MODEL_ELEMENT)

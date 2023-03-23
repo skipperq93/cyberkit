@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO) && HAVE(RSA_PSS)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CryptoAlgorithmRsaPssParams;
 class CryptoKeyRSA;
@@ -54,6 +54,6 @@ private:
     static ExceptionOr<bool> platformVerify(const CryptoAlgorithmRsaPssParams&, const CryptoKeyRSA&, const Vector<uint8_t>&, const Vector<uint8_t>&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO) && HAVE(RSA_PSS)

@@ -35,7 +35,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebInspectorUIExtensionControllerProxy;
 }
 
@@ -43,7 +43,7 @@ namespace API {
 
 class InspectorExtension final : public API::ObjectImpl<Object::Type::InspectorExtension> {
 public:
-    static Ref<InspectorExtension> create(const WTF::String& identifier, WebKit::WebInspectorUIExtensionControllerProxy&);
+    static Ref<InspectorExtension> create(const WTF::String& identifier, CyberKit::WebInspectorUIExtensionControllerProxy&);
 
     const WTF::String& identifier() const { return m_identifier; }
 
@@ -59,10 +59,10 @@ public:
     void setClient(UniqueRef<InspectorExtensionClient>&&);
 
 private:
-    InspectorExtension(const WTF::String& identifier, WebKit::WebInspectorUIExtensionControllerProxy&);
+    InspectorExtension(const WTF::String& identifier, CyberKit::WebInspectorUIExtensionControllerProxy&);
 
     WTF::String m_identifier;
-    WeakPtr<WebKit::WebInspectorUIExtensionControllerProxy> m_extensionControllerProxy;
+    WeakPtr<CyberKit::WebInspectorUIExtensionControllerProxy> m_extensionControllerProxy;
     std::unique_ptr<API::InspectorExtensionClient> m_client;
 };
 

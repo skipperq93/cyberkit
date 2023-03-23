@@ -36,7 +36,7 @@ OBJC_CLASS NFReaderSession;
 OBJC_CLASS NSArray;
 OBJC_CLASS WKNFReaderSessionDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class NfcService;
 
@@ -63,6 +63,6 @@ private:
     RunLoop::Timer m_retryTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN) && HAVE(NEAR_FIELD)

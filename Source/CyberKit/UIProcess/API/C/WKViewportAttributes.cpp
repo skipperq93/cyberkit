@@ -29,7 +29,7 @@
 #include "WKAPICast.h"
 #include "WebViewportAttributes.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKViewportAttributesGetTypeID()
 {

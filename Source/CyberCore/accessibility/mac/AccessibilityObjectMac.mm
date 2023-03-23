@@ -47,7 +47,7 @@
 #import "WebAccessibilityObjectWrapperMac.h"
 #import "Widget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void AccessibilityObject::detachPlatformWrapper(AccessibilityDetachmentType)
 {
@@ -832,7 +832,7 @@ PlatformRoleMap createPlatformRoleMap()
         { AccessibilityRole::DisclosureTriangle, NSAccessibilityDisclosureTriangleRole },
         { AccessibilityRole::Grid, NSAccessibilityTableRole },
         { AccessibilityRole::TreeGrid, NSAccessibilityTableRole },
-        { AccessibilityRole::WebCoreLink, NSAccessibilityLinkRole },
+        { AccessibilityRole::CyberCoreLink, NSAccessibilityLinkRole },
         { AccessibilityRole::ImageMapLink, NSAccessibilityLinkRole },
         { AccessibilityRole::ImageMap, @"AXImageMap" },
         { AccessibilityRole::ListMarker, @"AXListMarker" },
@@ -934,6 +934,6 @@ PlatformRoleMap createPlatformRoleMap()
 
 } // namespace Accessibility
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(ACCESSIBILITY) && PLATFORM(MAC)

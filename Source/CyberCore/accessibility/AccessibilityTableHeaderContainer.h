@@ -32,7 +32,7 @@
 #include "AccessibilityTable.h"
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilityTableHeaderContainer final : public AccessibilityMockObject {
 public:
@@ -53,4 +53,4 @@ private:
     LayoutRect m_headerRect;
 }; 
     
-} // namespace WebCore 
+} // namespace CyberCore 

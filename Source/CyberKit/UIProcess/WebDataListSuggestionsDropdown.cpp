@@ -30,7 +30,7 @@
 
 #if ENABLE(DATALIST_ELEMENT)
 
-namespace WebKit {
+namespace CyberKit {
 
 WebDataListSuggestionsDropdown::WebDataListSuggestionsDropdown(WebPageProxy& page)
     : m_page(page)
@@ -47,6 +47,6 @@ void WebDataListSuggestionsDropdown::close()
         page->didCloseSuggestions();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATALIST_ELEMENT)

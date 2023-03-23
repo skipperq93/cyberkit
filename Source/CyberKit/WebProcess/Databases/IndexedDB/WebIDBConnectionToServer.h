@@ -30,7 +30,7 @@
 #include <CyberCore/IDBConnectionToServer.h>
 #include <CyberCore/ProcessIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebIDBResult;
 
@@ -108,4 +108,4 @@ private:
     Ref<CyberCore::IDBClient::IDBConnectionToServer> m_connectionToServer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

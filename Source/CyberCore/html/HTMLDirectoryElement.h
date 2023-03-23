@@ -24,7 +24,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLDirectoryElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLDirectoryElement);
@@ -35,4 +35,4 @@ private:
     HTMLDirectoryElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

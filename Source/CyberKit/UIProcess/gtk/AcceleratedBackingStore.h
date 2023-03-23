@@ -38,7 +38,7 @@ namespace CyberCore {
 class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LayerTreeContext;
 class WebPageProxy;
@@ -67,4 +67,4 @@ protected:
     WebPageProxy& m_webPage;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

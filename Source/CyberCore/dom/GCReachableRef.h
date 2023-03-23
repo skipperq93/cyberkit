@@ -30,7 +30,7 @@
 #include <wtf/RawPtrTraits.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -106,24 +106,24 @@ private:
     RefPtr<T> m_ptr;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<typename P> struct HashTraits<WebCore::GCReachableRef<P>> : SimpleClassHashTraits<WebCore::GCReachableRef<P>> {
+template<typename P> struct HashTraits<CyberCore::GCReachableRef<P>> : SimpleClassHashTraits<CyberCore::GCReachableRef<P>> {
     static const bool emptyValueIsZero = true;
-    static WebCore::GCReachableRef<P> emptyValue() { return HashTableEmptyValue; }
+    static CyberCore::GCReachableRef<P> emptyValue() { return HashTableEmptyValue; }
 
     template <typename>
-    static void constructEmptyValue(WebCore::GCReachableRef<P>& slot)
+    static void constructEmptyValue(CyberCore::GCReachableRef<P>& slot)
     {
-        new (NotNull, std::addressof(slot)) WebCore::GCReachableRef<P>(HashTableEmptyValue);
+        new (NotNull, std::addressof(slot)) CyberCore::GCReachableRef<P>(HashTableEmptyValue);
     }
 
     static const bool hasIsEmptyValueFunction = true;
-    static bool isEmptyValue(const WebCore::GCReachableRef<P>& value) { return value.isHashTableEmptyValue(); }
+    static bool isEmptyValue(const CyberCore::GCReachableRef<P>& value) { return value.isHashTableEmptyValue(); }
 
-    static void assignToEmpty(WebCore::GCReachableRef<P>& emptyValue, WebCore::GCReachableRef<P>&& newValue)
+    static void assignToEmpty(CyberCore::GCReachableRef<P>& emptyValue, CyberCore::GCReachableRef<P>&& newValue)
     {
         ASSERT(isEmptyValue(emptyValue));
         emptyValue.assignToHashTableEmptyValue(WTFMove(newValue));
@@ -138,21 +138,21 @@ template<typename P> struct HashTraits<WebCore::GCReachableRef<P>> : SimpleClass
 };
 
 template <typename T, typename U>
-struct GetPtrHelper<WebCore::GCReachableRef<T, U>> {
+struct GetPtrHelper<CyberCore::GCReachableRef<T, U>> {
     typedef T* PtrType;
-    static T* getPtr(const WebCore::GCReachableRef<T, U>& reference) { return const_cast<T*>(reference.ptr()); }
+    static T* getPtr(const CyberCore::GCReachableRef<T, U>& reference) { return const_cast<T*>(reference.ptr()); }
 };
 
 template <typename T, typename U>
-struct IsSmartPtr<WebCore::GCReachableRef<T, U>> {
+struct IsSmartPtr<CyberCore::GCReachableRef<T, U>> {
     static const bool value = true;
 };
 
-template<typename P> struct PtrHash<WebCore::GCReachableRef<P>> : PtrHashBase<WebCore::GCReachableRef<P>, IsSmartPtr<WebCore::GCReachableRef<P>>::value> {
+template<typename P> struct PtrHash<CyberCore::GCReachableRef<P>> : PtrHashBase<CyberCore::GCReachableRef<P>, IsSmartPtr<CyberCore::GCReachableRef<P>>::value> {
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-template<typename P> struct DefaultHash<WebCore::GCReachableRef<P>> : PtrHash<WebCore::GCReachableRef<P>> { };
+template<typename P> struct DefaultHash<CyberCore::GCReachableRef<P>> : PtrHash<CyberCore::GCReachableRef<P>> { };
 
 } // namespace WTF
 

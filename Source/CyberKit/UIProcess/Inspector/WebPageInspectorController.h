@@ -39,7 +39,7 @@ class FrontendChannel;
 class FrontendRouter;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InspectorBrowserAgent;
 struct WebPageAgentContext;
@@ -102,4 +102,4 @@ private:
     bool m_didCreateLazyAgents { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

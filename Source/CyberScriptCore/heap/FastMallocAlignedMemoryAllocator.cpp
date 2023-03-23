@@ -32,7 +32,7 @@ namespace JSC {
 
 FastMallocAlignedMemoryAllocator::FastMallocAlignedMemoryAllocator()
 #if ENABLE(MALLOC_HEAP_BREAKDOWN)
-    : m_heap("WebKit FastMallocAlignedMemoryAllocator")
+    : m_heap("CyberKit FastMallocAlignedMemoryAllocator")
 #endif
 {
 }

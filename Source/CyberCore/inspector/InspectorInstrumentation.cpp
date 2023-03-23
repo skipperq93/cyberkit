@@ -79,7 +79,7 @@
 #include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -910,7 +910,7 @@ void InspectorInstrumentation::interceptResponseImpl(InstrumentingAgents& instru
         networkAgent->interceptResponse(response, identifier, WTFMove(handler));
 }
 
-// JavaScriptCore InspectorDebuggerAgent should know Console MessageTypes.
+// CyberScriptCore InspectorDebuggerAgent should know Console MessageTypes.
 static bool isConsoleAssertMessage(MessageSource source, MessageType type)
 {
     return source == MessageSource::ConsoleAPI && type == MessageType::Assert;
@@ -927,7 +927,7 @@ void InspectorInstrumentation::addMessageToConsoleImpl(InstrumentingAgents& inst
 
     if (auto* consoleAgent = instrumentingAgents.webConsoleAgent())
         consoleAgent->addMessageToConsole(WTFMove(message));
-    // FIXME: This should just pass the message on to the debugger agent. JavaScriptCore InspectorDebuggerAgent should know Console MessageTypes.
+    // FIXME: This should just pass the message on to the debugger agent. CyberScriptCore InspectorDebuggerAgent should know Console MessageTypes.
     if (auto* webDebuggerAgent = instrumentingAgents.enabledWebDebuggerAgent()) {
         if (isConsoleAssertMessage(source, type))
             webDebuggerAgent->handleConsoleAssert(messageText);
@@ -1360,4 +1360,4 @@ InstrumentingAgents* InspectorInstrumentation::instrumentingAgents(ScriptExecuti
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

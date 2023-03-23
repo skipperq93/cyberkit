@@ -29,7 +29,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct StorageEstimate {
     uint64_t usage { 0 };
@@ -38,4 +38,4 @@ struct StorageEstimate {
     StorageEstimate isolatedCopy() const { return *this; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

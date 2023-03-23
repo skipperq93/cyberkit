@@ -28,14 +28,14 @@
 
 #if ENABLE(DRAG_SUPPORT) && USE(GTK4)
 
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include <CyberCore/DragData.h>
 #include <CyberCore/GtkUtilities.h>
 #include <CyberCore/PasteboardCustomData.h>
 #include <gtk/gtk.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 enum DropTargetType { Markup, Text, URIList, NetscapeURL, SmartPaste };
@@ -133,7 +133,7 @@ void DropTarget::accept(GdkDrop* drop, std::optional<CyberCore::IntPoint> positi
         "_NETSCAPE_URL",
         "text/uri-list",
         "application/vnd.webkitgtk.smartpaste",
-        "org.webkitgtk.WebKit.custom-pasteboard-data"
+        "org.webkitgtk.CyberKit.custom-pasteboard-data"
     };
 
     for (unsigned i = 0; i < G_N_ELEMENTS(supportedMimeTypes); ++i) {
@@ -316,6 +316,6 @@ void DropTarget::drop(IntPoint&& position, unsigned)
     gdk_drop_finish(m_drop.get(), gdk_drop_get_actions(m_drop.get()));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DRAG_SUPPORT) && USE(GTK4)

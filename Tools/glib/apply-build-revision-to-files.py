@@ -66,7 +66,7 @@ def main(args):
     for in_file in args:
         file = Path(in_file)
         if file.name == "BuildRevision.h":
-            with open("Source/WebKit/Shared/glib/BuildRevision.h.in") as template:
+            with open("Source/CyberKit/Shared/glib/BuildRevision.h.in") as template:
                 data = template.read()
         elif file.suffix == '.pc':
             # Restore a valid BUILD_REVISION template.

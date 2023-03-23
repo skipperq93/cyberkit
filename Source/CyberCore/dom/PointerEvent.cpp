@@ -30,7 +30,7 @@
 #include "Node.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PointerEvent);
 
@@ -116,4 +116,4 @@ EventInterface PointerEvent::eventInterface() const
     return PointerEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

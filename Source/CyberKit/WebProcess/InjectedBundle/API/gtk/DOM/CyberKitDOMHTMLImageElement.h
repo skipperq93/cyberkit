@@ -54,7 +54,7 @@ webkit_dom_html_image_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_name(CyberKitDOMHTMLImageElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_image_element_get_name(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_name(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_image_element_set_name(CyberKitDOMHTMLImageElement* self, const 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_align(CyberKitDOMHTMLImageElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_image_element_get_align(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_align(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -98,7 +98,7 @@ webkit_dom_html_image_element_set_align(CyberKitDOMHTMLImageElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_alt(CyberKitDOMHTMLImageElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_image_element_get_alt(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_alt(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_image_element_set_alt(CyberKitDOMHTMLImageElement* self, const g
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_border(CyberKitDOMHTMLImageElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_image_element_get_border(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_border(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -142,7 +142,7 @@ webkit_dom_html_image_element_set_border(CyberKitDOMHTMLImageElement* self, cons
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_height(CyberKitDOMHTMLImageElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_image_element_get_height(CyberKitDOMHTMLImageElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_height(CyberKitDOMHTMLImageElement* self, glong value);
@@ -164,7 +164,7 @@ webkit_dom_html_image_element_set_height(CyberKitDOMHTMLImageElement* self, glon
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_hspace(CyberKitDOMHTMLImageElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_image_element_get_hspace(CyberKitDOMHTMLImageElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_hspace(CyberKitDOMHTMLImageElement* self, glong value);
@@ -186,7 +186,7 @@ webkit_dom_html_image_element_set_hspace(CyberKitDOMHTMLImageElement* self, glon
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_image_element_get_is_map(CyberKitDOMHTMLImageElement* self);
@@ -197,7 +197,7 @@ webkit_dom_html_image_element_get_is_map(CyberKitDOMHTMLImageElement* self);
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_is_map(CyberKitDOMHTMLImageElement* self, gboolean value);
@@ -208,7 +208,7 @@ webkit_dom_html_image_element_set_is_map(CyberKitDOMHTMLImageElement* self, gboo
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_long_desc(CyberKitDOMHTMLImageElement* self);
@@ -219,7 +219,7 @@ webkit_dom_html_image_element_get_long_desc(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_long_desc(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -230,7 +230,7 @@ webkit_dom_html_image_element_set_long_desc(CyberKitDOMHTMLImageElement* self, c
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_src(CyberKitDOMHTMLImageElement* self);
@@ -241,7 +241,7 @@ webkit_dom_html_image_element_get_src(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_src(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -252,7 +252,7 @@ webkit_dom_html_image_element_set_src(CyberKitDOMHTMLImageElement* self, const g
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_use_map(CyberKitDOMHTMLImageElement* self);
@@ -263,7 +263,7 @@ webkit_dom_html_image_element_get_use_map(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_use_map(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -274,7 +274,7 @@ webkit_dom_html_image_element_set_use_map(CyberKitDOMHTMLImageElement* self, con
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_vspace(CyberKitDOMHTMLImageElement* self);
@@ -285,7 +285,7 @@ webkit_dom_html_image_element_get_vspace(CyberKitDOMHTMLImageElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_vspace(CyberKitDOMHTMLImageElement* self, glong value);
@@ -296,7 +296,7 @@ webkit_dom_html_image_element_set_vspace(CyberKitDOMHTMLImageElement* self, glon
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_width(CyberKitDOMHTMLImageElement* self);
@@ -307,7 +307,7 @@ webkit_dom_html_image_element_get_width(CyberKitDOMHTMLImageElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_width(CyberKitDOMHTMLImageElement* self, glong value);
@@ -318,7 +318,7 @@ webkit_dom_html_image_element_set_width(CyberKitDOMHTMLImageElement* self, glong
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_image_element_get_complete(CyberKitDOMHTMLImageElement* self);
@@ -329,7 +329,7 @@ webkit_dom_html_image_element_get_complete(CyberKitDOMHTMLImageElement* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_image_element_get_lowsrc(CyberKitDOMHTMLImageElement* self);
@@ -340,7 +340,7 @@ webkit_dom_html_image_element_get_lowsrc(CyberKitDOMHTMLImageElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_image_element_set_lowsrc(CyberKitDOMHTMLImageElement* self, const gchar* value);
@@ -351,7 +351,7 @@ webkit_dom_html_image_element_set_lowsrc(CyberKitDOMHTMLImageElement* self, cons
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_natural_height(CyberKitDOMHTMLImageElement* self);
@@ -362,7 +362,7 @@ webkit_dom_html_image_element_get_natural_height(CyberKitDOMHTMLImageElement* se
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_natural_width(CyberKitDOMHTMLImageElement* self);
@@ -373,7 +373,7 @@ webkit_dom_html_image_element_get_natural_width(CyberKitDOMHTMLImageElement* sel
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_x(CyberKitDOMHTMLImageElement* self);
@@ -384,7 +384,7 @@ webkit_dom_html_image_element_get_x(CyberKitDOMHTMLImageElement* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_image_element_get_y(CyberKitDOMHTMLImageElement* self);

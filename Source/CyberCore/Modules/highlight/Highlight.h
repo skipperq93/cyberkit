@@ -30,7 +30,7 @@
 #include "StaticRange.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleDeclaration;
 class DOMSetAdapter;

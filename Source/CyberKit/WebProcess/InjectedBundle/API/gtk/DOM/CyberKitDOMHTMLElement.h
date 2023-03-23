@@ -53,7 +53,7 @@ webkit_dom_html_element_get_type(void);
  * @self: A #CyberKitDOMHTMLElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_click(CyberKitDOMHTMLElement* self);
@@ -64,7 +64,7 @@ webkit_dom_html_element_click(CyberKitDOMHTMLElement* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_title(CyberKitDOMHTMLElement* self);
@@ -75,7 +75,7 @@ webkit_dom_html_element_get_title(CyberKitDOMHTMLElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_title(CyberKitDOMHTMLElement* self, const gchar* value);
@@ -86,7 +86,7 @@ webkit_dom_html_element_set_title(CyberKitDOMHTMLElement* self, const gchar* val
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_lang(CyberKitDOMHTMLElement* self);
@@ -97,7 +97,7 @@ webkit_dom_html_element_get_lang(CyberKitDOMHTMLElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_lang(CyberKitDOMHTMLElement* self, const gchar* value);
@@ -108,7 +108,7 @@ webkit_dom_html_element_set_lang(CyberKitDOMHTMLElement* self, const gchar* valu
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_dir(CyberKitDOMHTMLElement* self);
@@ -119,7 +119,7 @@ webkit_dom_html_element_get_dir(CyberKitDOMHTMLElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_dir(CyberKitDOMHTMLElement* self, const gchar* value);
@@ -130,7 +130,7 @@ webkit_dom_html_element_set_dir(CyberKitDOMHTMLElement* self, const gchar* value
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_element_get_tab_index(CyberKitDOMHTMLElement* self);
@@ -141,7 +141,7 @@ webkit_dom_html_element_get_tab_index(CyberKitDOMHTMLElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_tab_index(CyberKitDOMHTMLElement* self, glong value);
@@ -152,7 +152,7 @@ webkit_dom_html_element_set_tab_index(CyberKitDOMHTMLElement* self, glong value)
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_access_key(CyberKitDOMHTMLElement* self);
@@ -163,7 +163,7 @@ webkit_dom_html_element_get_access_key(CyberKitDOMHTMLElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_access_key(CyberKitDOMHTMLElement* self, const gchar* value);
@@ -174,7 +174,7 @@ webkit_dom_html_element_set_access_key(CyberKitDOMHTMLElement* self, const gchar
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_inner_text(CyberKitDOMHTMLElement* self);
@@ -186,7 +186,7 @@ webkit_dom_html_element_get_inner_text(CyberKitDOMHTMLElement* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_inner_text(CyberKitDOMHTMLElement* self, const gchar* value, GError** error);
@@ -197,7 +197,7 @@ webkit_dom_html_element_set_inner_text(CyberKitDOMHTMLElement* self, const gchar
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_outer_text(CyberKitDOMHTMLElement* self);
@@ -209,7 +209,7 @@ webkit_dom_html_element_get_outer_text(CyberKitDOMHTMLElement* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_outer_text(CyberKitDOMHTMLElement* self, const gchar* value, GError** error);
@@ -220,7 +220,7 @@ webkit_dom_html_element_set_outer_text(CyberKitDOMHTMLElement* self, const gchar
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_content_editable(CyberKitDOMHTMLElement* self);
@@ -232,7 +232,7 @@ webkit_dom_html_element_get_content_editable(CyberKitDOMHTMLElement* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_content_editable(CyberKitDOMHTMLElement* self, const gchar* value, GError** error);
@@ -243,7 +243,7 @@ webkit_dom_html_element_set_content_editable(CyberKitDOMHTMLElement* self, const
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_element_get_is_content_editable(CyberKitDOMHTMLElement* self);
@@ -256,7 +256,7 @@ webkit_dom_html_element_get_is_content_editable(CyberKitDOMHTMLElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_element_get_translate(CyberKitDOMHTMLElement* self);
@@ -268,7 +268,7 @@ webkit_dom_html_element_get_translate(CyberKitDOMHTMLElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_translate(CyberKitDOMHTMLElement* self, gboolean value);
@@ -281,7 +281,7 @@ webkit_dom_html_element_set_translate(CyberKitDOMHTMLElement* self, gboolean val
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_element_get_draggable(CyberKitDOMHTMLElement* self);
@@ -293,7 +293,7 @@ webkit_dom_html_element_get_draggable(CyberKitDOMHTMLElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_draggable(CyberKitDOMHTMLElement* self, gboolean value);
@@ -306,7 +306,7 @@ webkit_dom_html_element_set_draggable(CyberKitDOMHTMLElement* self, gboolean val
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_element_get_webkitdropzone(CyberKitDOMHTMLElement* self);
@@ -318,7 +318,7 @@ webkit_dom_html_element_get_webkitdropzone(CyberKitDOMHTMLElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_webkitdropzone(CyberKitDOMHTMLElement* self, const gchar* value);
@@ -331,7 +331,7 @@ webkit_dom_html_element_set_webkitdropzone(CyberKitDOMHTMLElement* self, const g
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_element_get_hidden(CyberKitDOMHTMLElement* self);
@@ -343,7 +343,7 @@ webkit_dom_html_element_get_hidden(CyberKitDOMHTMLElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_hidden(CyberKitDOMHTMLElement* self, gboolean value);
@@ -356,7 +356,7 @@ webkit_dom_html_element_set_hidden(CyberKitDOMHTMLElement* self, gboolean value)
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_element_get_spellcheck(CyberKitDOMHTMLElement* self);
@@ -368,7 +368,7 @@ webkit_dom_html_element_get_spellcheck(CyberKitDOMHTMLElement* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_element_set_spellcheck(CyberKitDOMHTMLElement* self, gboolean value);

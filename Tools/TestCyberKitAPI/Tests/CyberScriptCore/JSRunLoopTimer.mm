@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "Test.h"
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/RunLoop.h>
 #import <wtf/URL.h>
@@ -35,7 +35,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/WTFString.h>
 
-// JavaScriptCore's behavior at the time of writing is that destructors
+// CyberScriptCore's behavior at the time of writing is that destructors
 // run asynchronously on the thread that allocated the VM, unless they run
 // synchronously during an API call on some other thread.
 
@@ -79,7 +79,7 @@ static void cycleRunLoop()
     }
 }
 
-TEST(JavaScriptCore, IncrementalSweeperMainThread)
+TEST(CyberScriptCore, IncrementalSweeperMainThread)
 {
     auto context = adoptNS([JSContext new]);
     s_expectedRunLoop = &RunLoop::current();
@@ -90,7 +90,7 @@ TEST(JavaScriptCore, IncrementalSweeperMainThread)
     }
 }
 
-TEST(JavaScriptCore, IncrementalSweeperSecondaryThread)
+TEST(CyberScriptCore, IncrementalSweeperSecondaryThread)
 {
     auto context = adoptNS([JSContext new]);
     s_expectedRunLoop = &RunLoop::current();

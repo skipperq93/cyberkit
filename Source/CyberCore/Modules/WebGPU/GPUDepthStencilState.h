@@ -32,15 +32,15 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUDepthStencilState.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUDepthStencilState {
     PAL::WebGPU::DepthStencilState convertToBacking() const
     {
         return {
-            WebCore::convertToBacking(format),
+            CyberCore::convertToBacking(format),
             depthWriteEnabled,
-            WebCore::convertToBacking(depthCompare),
+            CyberCore::convertToBacking(depthCompare),
             stencilFront.convertToBacking(),
             stencilBack.convertToBacking(),
             stencilReadMask ? std::optional { *stencilReadMask } : std::nullopt,

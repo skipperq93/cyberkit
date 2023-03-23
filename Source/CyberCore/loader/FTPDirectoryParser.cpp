@@ -34,7 +34,7 @@
 #include <pthread.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if OS(WINDOWS) && !defined(gmtime_r)
 #define gmtime_r(x, y) gmtime_s((y), (x))
@@ -1391,6 +1391,6 @@ FTPEntryType parseOneFTPLine(const char* line, ListState& state, ListResult& res
     return ParsingFailed(state);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FTPDIR)

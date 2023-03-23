@@ -26,17 +26,17 @@
 
 #pragma once
 
-#include "WebKitWindowProperties.h"
+#include "CyberKitWindowProperties.h"
 #include <CyberCore/WindowFeatures.h>
 
-WebKitWindowProperties* webkitWindowPropertiesCreate();
-void webkitWindowPropertiesUpdateFromWebWindowFeatures(WebKitWindowProperties*, const CyberCore::WindowFeatures&);
+CyberKitWindowProperties* webkitWindowPropertiesCreate();
+void webkitWindowPropertiesUpdateFromWebWindowFeatures(CyberKitWindowProperties*, const CyberCore::WindowFeatures&);
 #if PLATFORM(GTK)
-void webkitWindowPropertiesSetGeometry(WebKitWindowProperties*, GdkRectangle*);
+void webkitWindowPropertiesSetGeometry(CyberKitWindowProperties*, GdkRectangle*);
 #endif
-void webkitWindowPropertiesSetToolbarVisible(WebKitWindowProperties*, bool toolbarsVisible);
-void webkitWindowPropertiesSetMenubarVisible(WebKitWindowProperties*, bool menuBarVisible);
-void webkitWindowPropertiesSetStatusbarVisible(WebKitWindowProperties*, bool statusBarVisible);
-void webkitWindowPropertiesSetScrollbarsVisible(WebKitWindowProperties*, bool scrollBarsVisible);
-void webkitWindowPropertiesSetResizable(WebKitWindowProperties*, bool resizable);
-void webkitWindowPropertiesSetFullscreen(WebKitWindowProperties*, bool fullscreen);
+void webkitWindowPropertiesSetToolbarVisible(CyberKitWindowProperties*, bool toolbarsVisible);
+void webkitWindowPropertiesSetMenubarVisible(CyberKitWindowProperties*, bool menuBarVisible);
+void webkitWindowPropertiesSetStatusbarVisible(CyberKitWindowProperties*, bool statusBarVisible);
+void webkitWindowPropertiesSetScrollbarsVisible(CyberKitWindowProperties*, bool scrollBarsVisible);
+void webkitWindowPropertiesSetResizable(CyberKitWindowProperties*, bool resizable);
+void webkitWindowPropertiesSetFullscreen(CyberKitWindowProperties*, bool fullscreen);

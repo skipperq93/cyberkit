@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutSize;
 
@@ -101,5 +101,5 @@ void showDisplayTree(const StackingItem&);
 #endif
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

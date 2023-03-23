@@ -40,7 +40,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class Document;
@@ -108,4 +108,4 @@ protected:
     WebSocketIdentifier m_identifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

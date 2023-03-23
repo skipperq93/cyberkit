@@ -40,7 +40,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static const size_t notSet = static_cast<size_t>(-1);
 
@@ -488,6 +488,6 @@ size_t CGroupMemoryController::getMemoryUsageWithCgroup()
     return notSet;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // OS(LINUX)

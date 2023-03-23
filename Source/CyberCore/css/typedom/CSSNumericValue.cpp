@@ -56,7 +56,7 @@
 #include <wtf/FixedVector.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSNumericValue);
 
@@ -147,13 +147,13 @@ ExceptionOr<Ref<CSSNumericValue>> CSSNumericValue::reifyMathExpression(const CSS
 {
     switch (root.type()) {
     case CSSCalcExpressionNode::CssCalcPrimitiveValue:
-        return WebCore::reifyMathExpression(downcast<CSSCalcPrimitiveValueNode>(root));
+        return CyberCore::reifyMathExpression(downcast<CSSCalcPrimitiveValueNode>(root));
     case CSSCalcExpressionNode::CssCalcOperation:
-        return WebCore::reifyMathExpression(downcast<CSSCalcOperationNode>(root));
+        return CyberCore::reifyMathExpression(downcast<CSSCalcOperationNode>(root));
     case CSSCalcExpressionNode::CssCalcNegate:
-        return WebCore::reifyMathExpression(downcast<CSSCalcNegateNode>(root));
+        return CyberCore::reifyMathExpression(downcast<CSSCalcNegateNode>(root));
     case CSSCalcExpressionNode::CssCalcInvert:
-        return WebCore::reifyMathExpression(downcast<CSSCalcInvertNode>(root));
+        return CyberCore::reifyMathExpression(downcast<CSSCalcInvertNode>(root));
     }
     ASSERT_NOT_REACHED();
     return Exception { SyntaxError };
@@ -462,6 +462,6 @@ ExceptionOr<Ref<CSSNumericValue>> CSSNumericValue::parse(String&& cssText)
     return Exception { SyntaxError, "Failed to parse CSS text"_s };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef CSS_NUMERIC_RETURN_IF_EXCEPTION

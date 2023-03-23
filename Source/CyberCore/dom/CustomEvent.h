@@ -30,7 +30,7 @@
 #include "JSValueInWrappedObject.h"
 #include "SerializedScriptValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(CustomEvent);
@@ -60,4 +60,4 @@ private:
     JSValueInWrappedObject m_cachedDetail;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

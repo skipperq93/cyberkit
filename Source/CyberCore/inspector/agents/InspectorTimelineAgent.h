@@ -42,7 +42,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class FloatQuad;
@@ -213,8 +213,8 @@ private:
     Vector<Inspector::Protocol::Timeline::Instrument> m_instruments;
 
 #if PLATFORM(COCOA)
-    std::unique_ptr<WebCore::RunLoopObserver> m_frameStartObserver;
-    std::unique_ptr<WebCore::RunLoopObserver> m_frameStopObserver;
+    std::unique_ptr<CyberCore::RunLoopObserver> m_frameStartObserver;
+    std::unique_ptr<CyberCore::RunLoopObserver> m_frameStopObserver;
     int m_runLoopNestingLevel { 0 };
 #elif USE(GLIB_EVENT_LOOP)
     std::unique_ptr<RunLoop::Observer> m_runLoopObserver;
@@ -223,4 +223,4 @@ private:
     bool m_isCapturingScreenshot { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

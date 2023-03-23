@@ -1136,7 +1136,7 @@ let RemoteObject = class RemoteObject extends PrototypelessObjectBase
 
     static nodePreview(node)
     {
-        // FIXME: <webkit.org/b/239774> Injected script should use WebCore built-ins.
+        // FIXME: <webkit.org/b/239774> Injected script should use CyberCore built-ins.
         let isXMLDocument = node.ownerDocument && !!node.ownerDocument.xmlVersion;
         let nodeName = isXMLDocument ? node.nodeName : node.nodeName.toLowerCase();
 

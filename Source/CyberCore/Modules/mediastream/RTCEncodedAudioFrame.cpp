@@ -30,7 +30,7 @@
 
 #include <CyberScriptCore/ArrayBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RTCEncodedAudioFrame::RTCEncodedAudioFrame(Ref<RTCRtpTransformableFrame>&& frame)
     : RTCEncodedFrame(WTFMove(frame))
@@ -51,6 +51,6 @@ const RTCEncodedAudioFrame::Metadata& RTCEncodedAudioFrame::getMetadata()
     return *m_metadata;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

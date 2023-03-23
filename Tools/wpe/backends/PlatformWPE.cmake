@@ -14,7 +14,7 @@ list(APPEND WPEToolingBackends_SOURCES
     ${WPEToolingBackends_DERIVED_SOURCES_DIR}/xdg-shell-unstable-v6-protocol.c
 
     atk/ViewBackendAtk.cpp
-    atk/WebKitAccessibleApplication.cpp
+    atk/CyberKitAccessibleApplication.cpp
 
     fdo/HeadlessViewBackendFdo.cpp
     fdo/WindowViewBackend.cpp

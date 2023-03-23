@@ -36,7 +36,7 @@ namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -70,6 +70,6 @@ public:
     virtual void submitFrame(WebPageProxy&) { }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBXR)

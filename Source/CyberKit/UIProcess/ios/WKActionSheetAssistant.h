@@ -37,7 +37,7 @@ namespace CyberCore {
 class FloatRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 struct InteractionInformationAtPosition;
 }
@@ -54,8 +54,8 @@ typedef NS_ENUM(NSInteger, _WKElementActionType);
 
 @protocol WKActionSheetAssistantDelegate <NSObject>
 @required
-- (std::optional<WebKit::InteractionInformationAtPosition>)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)assistant;
-- (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant performAction:(WebKit::SheetAction)action;
+- (std::optional<CyberKit::InteractionInformationAtPosition>)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)assistant;
+- (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant performAction:(CyberKit::SheetAction)action;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant openElementAtLocation:(CGPoint)location;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant shareElementWithURL:(NSURL *)url rect:(CGRect)boundingRect;
 #if HAVE(APP_LINKS)
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, _WKElementActionType);
 - (CGRect)unoccludedWindowBoundsForActionSheetAssistant:(WKActionSheetAssistant *)assistant;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant willStartInteractionWithElement:(_WKActivatedElementInfo *)element;
 - (void)actionSheetAssistantDidStopInteraction:(WKActionSheetAssistant *)assistant;
-- (NSDictionary *)dataDetectionContextForActionSheetAssistant:(WKActionSheetAssistant *)assistant positionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation;
+- (NSDictionary *)dataDetectionContextForActionSheetAssistant:(WKActionSheetAssistant *)assistant positionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation;
 - (NSString *)selectedTextForActionSheetAssistant:(WKActionSheetAssistant *)assistant;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)assistant getAlternateURLForImage:(UIImage *)image completion:(void (^)(NSURL *alternateURL, NSDictionary *userInfo))completion;
 #if USE(UICONTEXTMENU)
@@ -106,7 +106,7 @@ UIContextMenuInteractionDelegate>
 - (id)initWithView:(UIView *)view;
 - (void)showLinkSheet;
 - (void)showImageSheet;
-- (void)showDataDetectorsUIForPositionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation;
+- (void)showDataDetectorsUIForPositionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation;
 #if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
 - (void)showMediaControlsContextMenu:(CyberCore::FloatRect&&)targetFrame items:(Vector<CyberCore::MediaControlsContextMenuItem>&&)items completionHandler:(CompletionHandler<void(CyberCore::MediaControlsContextMenuItem::ID)>&&)completionHandler;
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
@@ -115,10 +115,10 @@ UIContextMenuInteractionDelegate>
 - (RetainPtr<NSArray<_WKElementAction *>>)defaultActionsForLinkSheet:(_WKActivatedElementInfo *)elementInfo;
 - (RetainPtr<NSArray<_WKElementAction *>>)defaultActionsForImageSheet:(_WKActivatedElementInfo *)elementInfo;
 - (BOOL)isShowingSheet;
-- (void)interactionDidStartWithPositionInformation:(const WebKit::InteractionInformationAtPosition&)information;
+- (void)interactionDidStartWithPositionInformation:(const CyberKit::InteractionInformationAtPosition&)information;
 - (void)handleElementActionWithType:(_WKElementActionType)type element:(_WKActivatedElementInfo *)element needsInteraction:(BOOL)needsInteraction;
 #if USE(UICONTEXTMENU)
-- (NSMutableArray<UIMenuElement *> *)suggestedActionsForContextMenuWithPositionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation;
+- (NSMutableArray<UIMenuElement *> *)suggestedActionsForContextMenuWithPositionInformation:(const CyberKit::InteractionInformationAtPosition&)positionInformation;
 #endif
 @end
 

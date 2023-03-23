@@ -171,7 +171,7 @@ ALWAYS_INLINE int RegExp::matchInline(JSGlobalObject* nullOrGlobalObject, VM& vm
     // The YARR Interpreter is "unsigned" clean, while the YARR JIT hasn't been addressed.
     // The offset vector handling needs to change as well.
     // Right now we convert a match where the offsets overflowed into match failure.
-    // There are two places in WebCore that call the interpreter directly that need to
+    // There are two places in CyberCore that call the interpreter directly that need to
     // have their offsets changed to int as well. They are yarr/RegularExpression.cpp
     // and inspector/ContentSearchUtilities.cpp
     if (s.length() > INT_MAX) {

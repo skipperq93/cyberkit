@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AudioContextState : uint8_t { Suspended, Running, Interrupted, Closed };
 

@@ -34,7 +34,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSFontPaletteValuesRule::CSSFontPaletteValuesRule(StyleRuleFontPaletteValues& fontPaletteValuesRule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -123,4 +123,4 @@ void CSSFontPaletteValuesRule::reattach(StyleRuleBase& rule)
     m_fontPaletteValuesRule = downcast<StyleRuleFontPaletteValues>(rule);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

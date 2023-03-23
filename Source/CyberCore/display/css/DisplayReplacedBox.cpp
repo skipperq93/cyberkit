@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ReplacedBox);
@@ -44,5 +44,5 @@ const char* ReplacedBox::boxName() const
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

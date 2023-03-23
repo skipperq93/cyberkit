@@ -33,7 +33,7 @@
 #include "PlatformGamepad.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Gamepad::Gamepad(Document* document, const PlatformGamepad& platformGamepad)
     : m_id(platformGamepad.id())
@@ -73,6 +73,6 @@ void Gamepad::updateFromPlatformGamepad(const PlatformGamepad& platformGamepad)
     m_timestamp = platformGamepad.lastUpdateTime();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

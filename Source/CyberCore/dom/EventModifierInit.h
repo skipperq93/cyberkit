@@ -27,7 +27,7 @@
 
 #include "UIEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct EventModifierInit : UIEventInit {
     bool ctrlKey { false };

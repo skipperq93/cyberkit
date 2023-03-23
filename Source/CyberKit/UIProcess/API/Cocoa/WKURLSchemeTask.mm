@@ -37,9 +37,9 @@
 #import <wtf/CompletionHandler.h>
 #import <wtf/MainThread.h>
 
-static WebKit::WebURLSchemeTask::ExceptionType getExceptionTypeFromMainRunLoop(Function<WebKit::WebURLSchemeTask::ExceptionType ()>&& function)
+static CyberKit::WebURLSchemeTask::ExceptionType getExceptionTypeFromMainRunLoop(Function<CyberKit::WebURLSchemeTask::ExceptionType ()>&& function)
 {
-    WebKit::WebURLSchemeTask::ExceptionType exceptionType;
+    CyberKit::WebURLSchemeTask::ExceptionType exceptionType;
     callOnMainRunLoopAndWait([function = WTFMove(function), &exceptionType] {
         exceptionType = function();
     });
@@ -47,27 +47,27 @@ static WebKit::WebURLSchemeTask::ExceptionType getExceptionTypeFromMainRunLoop(F
     return exceptionType;
 }
 
-static void raiseExceptionIfNecessary(WebKit::WebURLSchemeTask::ExceptionType exceptionType)
+static void raiseExceptionIfNecessary(CyberKit::WebURLSchemeTask::ExceptionType exceptionType)
 {
     switch (exceptionType) {
-    case WebKit::WebURLSchemeTask::ExceptionType::None:
+    case CyberKit::WebURLSchemeTask::ExceptionType::None:
         return;
-    case WebKit::WebURLSchemeTask::ExceptionType::TaskAlreadyStopped:
+    case CyberKit::WebURLSchemeTask::ExceptionType::TaskAlreadyStopped:
         [NSException raise:NSInternalInconsistencyException format:@"This task has already been stopped"];
         break;
-    case WebKit::WebURLSchemeTask::ExceptionType::CompleteAlreadyCalled:
+    case CyberKit::WebURLSchemeTask::ExceptionType::CompleteAlreadyCalled:
         [NSException raise:NSInternalInconsistencyException format:@"[WKURLSchemeTask taskDidCompleteWithError:] has already been called for this task"];
         break;
-    case WebKit::WebURLSchemeTask::ExceptionType::DataAlreadySent:
+    case CyberKit::WebURLSchemeTask::ExceptionType::DataAlreadySent:
         [NSException raise:NSInternalInconsistencyException format:@"[WKURLSchemeTask taskDidReceiveData:] has already been called for this task"];
         break;
-    case WebKit::WebURLSchemeTask::ExceptionType::NoResponseSent:
+    case CyberKit::WebURLSchemeTask::ExceptionType::NoResponseSent:
         [NSException raise:NSInternalInconsistencyException format:@"No response has been sent for this task"];
         break;
-    case WebKit::WebURLSchemeTask::ExceptionType::RedirectAfterResponse:
+    case CyberKit::WebURLSchemeTask::ExceptionType::RedirectAfterResponse:
         [NSException raise:NSInternalInconsistencyException format:@"No redirects are allowed after the response"];
         break;
-    case WebKit::WebURLSchemeTask::ExceptionType::WaitingForRedirectCompletionHandler:
+    case CyberKit::WebURLSchemeTask::ExceptionType::WaitingForRedirectCompletionHandler:
         [NSException raise:NSInternalInconsistencyException format:@"No callbacks are allowed while waiting for the redirection completion handler to be invoked"];
         break;
     }

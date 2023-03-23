@@ -19,10 +19,10 @@
  */
 
 #include "config.h"
-#include "WebKitError.h"
+#include "CyberKitError.h"
 
 #include "APIError.h"
-#include "WebKitPrivate.h"
+#include "CyberKitPrivate.h"
 
 using namespace CyberCore;
 
@@ -97,7 +97,7 @@ GQuark webkit_print_error_quark()
  */
 GQuark webkit_javascript_error_quark()
 {
-    return g_quark_from_static_string("WebKitJavascriptError");
+    return g_quark_from_static_string("CyberKitJavascriptError");
 }
 
 /**
@@ -109,7 +109,7 @@ GQuark webkit_javascript_error_quark()
  */
 GQuark webkit_snapshot_error_quark()
 {
-    return g_quark_from_static_string("WebKitSnapshotError");
+    return g_quark_from_static_string("CyberKitSnapshotError");
 }
 
 /**
@@ -119,7 +119,7 @@ GQuark webkit_snapshot_error_quark()
  *
  * Returns: user content filter error domain.
  */
-G_DEFINE_QUARK(WebKitUserContentFilterError, webkit_user_content_filter_error)
+G_DEFINE_QUARK(CyberKitUserContentFilterError, webkit_user_content_filter_error)
 
 #if ENABLE(2022_GLIB_API)
 /**
@@ -131,5 +131,5 @@ G_DEFINE_QUARK(WebKitUserContentFilterError, webkit_user_content_filter_error)
  *
  * Since: 2.40
  */
-G_DEFINE_QUARK(WebKitMediaError, webkit_media_error)
+G_DEFINE_QUARK(CyberKitMediaError, webkit_media_error)
 #endif

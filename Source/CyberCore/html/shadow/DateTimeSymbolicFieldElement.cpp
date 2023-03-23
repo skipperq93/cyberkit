@@ -38,7 +38,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DateTimeSymbolicFieldElement);
 
@@ -146,6 +146,6 @@ String DateTimeSymbolicFieldElement::optionAtIndex(int index) const
     return m_symbols[index];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

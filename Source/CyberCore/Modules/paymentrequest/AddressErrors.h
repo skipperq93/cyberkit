@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AddressErrors {
     String addressLine;
@@ -46,6 +46,6 @@ struct AddressErrors {
     String sortingCode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

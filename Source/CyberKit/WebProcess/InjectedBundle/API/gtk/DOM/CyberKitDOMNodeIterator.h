@@ -55,7 +55,7 @@ webkit_dom_node_iterator_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_node_iterator_next_node(CyberKitDOMNodeIterator* self, GError** error);
@@ -67,7 +67,7 @@ webkit_dom_node_iterator_next_node(CyberKitDOMNodeIterator* self, GError** error
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_node_iterator_previous_node(CyberKitDOMNodeIterator* self, GError** error);
@@ -77,7 +77,7 @@ webkit_dom_node_iterator_previous_node(CyberKitDOMNodeIterator* self, GError** e
  * @self: A #CyberKitDOMNodeIterator
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_node_iterator_detach(CyberKitDOMNodeIterator* self);
@@ -88,7 +88,7 @@ webkit_dom_node_iterator_detach(CyberKitDOMNodeIterator* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_node_iterator_get_root(CyberKitDOMNodeIterator* self);
@@ -99,7 +99,7 @@ webkit_dom_node_iterator_get_root(CyberKitDOMNodeIterator* self);
  *
  * Returns: A #gulong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
 webkit_dom_node_iterator_get_what_to_show(CyberKitDOMNodeIterator* self);
@@ -110,7 +110,7 @@ webkit_dom_node_iterator_get_what_to_show(CyberKitDOMNodeIterator* self);
  *
  * Returns: (transfer full): A #CyberKitDOMNodeFilter
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNodeFilter*
 webkit_dom_node_iterator_get_filter(CyberKitDOMNodeIterator* self);
@@ -121,7 +121,7 @@ webkit_dom_node_iterator_get_filter(CyberKitDOMNodeIterator* self);
  *
  * Returns: (transfer none): A #CyberKitDOMNode
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMNode*
 webkit_dom_node_iterator_get_reference_node(CyberKitDOMNodeIterator* self);
@@ -132,7 +132,7 @@ webkit_dom_node_iterator_get_reference_node(CyberKitDOMNodeIterator* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_node_iterator_get_pointer_before_reference_node(CyberKitDOMNodeIterator* self);

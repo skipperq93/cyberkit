@@ -37,7 +37,7 @@
 
 using WTF::Range;
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static inline LayoutUnit marginLeftInInlineDirection(const Layout::BoxGeometry& boxGeometry, bool isLeftToRightDirection)
@@ -563,7 +563,7 @@ using IsFirstLastIndexesMap = HashMap<const Box*, IsFirstLastIndex>;
 void InlineDisplayContentBuilder::adjustVisualGeometryForDisplayBox(size_t displayBoxNodeIndex, InlineLayoutUnit& contentRightInInlineDirectionVisualOrder, InlineLayoutUnit lineBoxLogicalTop, const DisplayBoxTree& displayBoxTree, DisplayBoxes& boxes, const LineBox& lineBox, const IsFirstLastIndexesMap& isFirstLastIndexesMap)
 {
     auto writingMode = root().style().writingMode();
-    auto isHorizontalWritingMode = WebCore::isHorizontalWritingMode(writingMode);
+    auto isHorizontalWritingMode = CyberCore::isHorizontalWritingMode(writingMode);
     // Non-inline box display boxes just need a horizontal adjustment while
     // inline box type of display boxes need
     // 1. horizontal adjustment and margin/border/padding start offsetting on the first box
@@ -647,7 +647,7 @@ void InlineDisplayContentBuilder::processBidiContent(const LineBuilder::LineCont
     ancestorStack.push({ }, root());
 
     auto writingMode = root().style().writingMode();
-    auto isHorizontalWritingMode = WebCore::isHorizontalWritingMode(writingMode);
+    auto isHorizontalWritingMode = CyberCore::isHorizontalWritingMode(writingMode);
 
     auto lineLogicalTop = isHorizontalWritingMode ? displayLine.top() : displayLine.left();
     auto lineLogicalLeft = isHorizontalWritingMode ? displayLine.left() : displayLine.top();
@@ -860,7 +860,7 @@ void InlineDisplayContentBuilder::collectInkOverflowForTextDecorations(DisplayBo
 {
     auto logicalBottomForTextDecoration = std::optional<float> { };
     auto writingMode = root().style().writingMode();
-    auto isHorizontalWritingMode = WebCore::isHorizontalWritingMode(writingMode);
+    auto isHorizontalWritingMode = CyberCore::isHorizontalWritingMode(writingMode);
 
     for (auto& displayBox : boxes) {
         if (!displayBox.isText())

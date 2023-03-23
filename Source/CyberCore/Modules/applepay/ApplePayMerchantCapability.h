@@ -30,7 +30,7 @@
 #include "ApplePaySessionPaymentRequest.h"
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayMerchantCapability {
     Supports3DS,
@@ -41,6 +41,6 @@ enum class ApplePayMerchantCapability {
 
 ExceptionOr<ApplePaySessionPaymentRequest::MerchantCapabilities> convertAndValidate(const Vector<ApplePayMerchantCapability>&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

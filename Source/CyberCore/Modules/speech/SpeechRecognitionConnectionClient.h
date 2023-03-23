@@ -28,7 +28,7 @@
 #include "SpeechRecognitionConnectionClientIdentifier.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SpeechRecognitionError;
 struct SpeechRecognitionResultData;
@@ -60,4 +60,4 @@ private:
     SpeechRecognitionConnectionClientIdentifier m_identifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

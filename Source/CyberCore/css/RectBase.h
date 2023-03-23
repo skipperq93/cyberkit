@@ -22,7 +22,7 @@
 
 #include "CSSPrimitiveValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RectBase {
 public:
@@ -61,4 +61,4 @@ private:
     Ref<const CSSPrimitiveValue> m_left;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

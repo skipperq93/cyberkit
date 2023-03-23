@@ -75,7 +75,7 @@
 #include <wtf/text/TextBreakIteratorInternalICU.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace WTF::Unicode;
 using namespace HTMLNames;
@@ -2002,7 +2002,7 @@ inline SearchBuffer::SearchBuffer(const String& target, FindOptions options)
     // to move to multiple searchers.
     lockSearcher();
 
-    UStringSearch* searcher = WebCore::searcher();
+    UStringSearch* searcher = CyberCore::searcher();
     UCollator* collator = usearch_getCollator(searcher);
 
     UCollationStrength strength;
@@ -2037,9 +2037,9 @@ inline SearchBuffer::~SearchBuffer()
 {
     // Leave the static object pointing to a valid string.
     UErrorCode status = U_ZERO_ERROR;
-    usearch_setPattern(WebCore::searcher(), &newlineCharacter, 1, &status);
+    usearch_setPattern(CyberCore::searcher(), &newlineCharacter, 1, &status);
     ASSERT(U_SUCCESS(status));
-    usearch_setText(WebCore::searcher(), &newlineCharacter, 1, &status);
+    usearch_setText(CyberCore::searcher(), &newlineCharacter, 1, &status);
     ASSERT(U_SUCCESS(status));
 
     unlockSearcher();
@@ -2217,7 +2217,7 @@ inline bool SearchBuffer::isWordStartMatch(size_t start, size_t length) const
                 return true;
         } else if (isSeparator(previousCharacter) || isASCIIDigit(previousCharacter)) {
             // The start of a non-separator, non-uppercase, non-digit run is a word start,
-            // except after an uppercase. ("org" in "webkit.org", but not "ore" in "WebCore").
+            // except after an uppercase. ("org" in "webkit.org", but not "ore" in "CyberCore").
             return true;
         }
     }
@@ -2244,7 +2244,7 @@ inline size_t SearchBuffer::search(size_t& start)
             return 0;
     }
 
-    UStringSearch* searcher = WebCore::searcher();
+    UStringSearch* searcher = CyberCore::searcher();
 
     UErrorCode status = U_ZERO_ERROR;
     usearch_setText(searcher, m_buffer.data(), size, &status);

@@ -36,7 +36,7 @@
 OBJC_CLASS NSData;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class BufferSource {
 public:
@@ -95,8 +95,8 @@ inline RetainPtr<NSData> toNSData(const BufferSource& data)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if PLATFORM(COCOA) && defined(__OBJC__)
-using WebCore::toNSData;
+using CyberCore::toNSData;
 #endif

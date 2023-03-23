@@ -29,7 +29,7 @@
 #include "LayoutRect.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 class FillLayer;
 class RenderStyle;
 class StyleImage;
@@ -82,5 +82,5 @@ private:
 Vector<FillLayerImageGeometry, 1> calculateFillLayerImageGeometry(const RenderStyle&, const Layout::BoxGeometry&, LayoutSize offsetFromRoot, float pixelSnappingFactor);
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

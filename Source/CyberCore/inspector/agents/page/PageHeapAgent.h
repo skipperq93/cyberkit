@@ -29,7 +29,7 @@
 #include "InstrumentingAgents.h"
 #include "WebHeapAgent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PageHeapAgent final : public WebHeapAgent {
     WTF_MAKE_NONCOPYABLE(PageHeapAgent);
@@ -49,4 +49,4 @@ private:
     InstrumentingAgents& m_instrumentingAgents;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

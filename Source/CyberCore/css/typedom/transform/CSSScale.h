@@ -28,7 +28,7 @@
 #include "CSSNumericValue.h"
 #include "CSSTransformComponent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFunctionValue;
 
@@ -63,8 +63,8 @@ private:
     Ref<CSSNumericValue> m_z;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSScale)
-    static bool isType(const WebCore::CSSTransformComponent& transform) { return transform.getType() == WebCore::CSSTransformType::Scale; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSScale)
+    static bool isType(const CyberCore::CSSTransformComponent& transform) { return transform.getType() == CyberCore::CSSTransformType::Scale; }
 SPECIALIZE_TYPE_TRAITS_END()

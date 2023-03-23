@@ -27,7 +27,7 @@
 
 #include "EditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InsertNodeBeforeCommand : public SimpleEditCommand {
 public:
@@ -53,4 +53,4 @@ private:
     ShouldAssumeContentIsAlwaysEditable m_shouldAssumeContentIsAlwaysEditable;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

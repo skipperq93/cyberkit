@@ -36,7 +36,7 @@
 #include <limits.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool hasConstantValue(float* values, size_t framesToProcess)
 {
@@ -212,6 +212,6 @@ bool BiquadDSPKernel::requiresTailProcessing() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

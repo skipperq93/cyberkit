@@ -1499,7 +1499,7 @@
 		F5F717200288493C018635CA /* WebPluginDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = WebPluginDatabase.h; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; };
 		F5F717210288493C018635CA /* WebPluginDatabase.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; indentWidth = 4; path = WebPluginDatabase.mm; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; };
 		F5F732D202FF4D4F01A80180 /* CyberKit.exp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.exports; name = CyberKit.exp; path = mac/CyberKit.exp; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
-		F738C9E903FAD3DF0321FBE0 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F738C9E903FAD3DF0321FBE0 /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F738C9EA03FAD3DF0321FBE0 /* CyberCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F834AAD50E64B1C700E2737C /* WebTextIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebTextIterator.h; sourceTree = "<group>"; };
 		F834AAD60E64B1C700E2737C /* WebTextIterator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebTextIterator.mm; sourceTree = "<group>"; };
@@ -1576,7 +1576,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				F738C9E903FAD3DF0321FBE0 /* JavaScriptCore.framework */,
+				F738C9E903FAD3DF0321FBE0 /* CyberScriptCore.framework */,
 				93D623DD051E791F002F47DD /* libicucore.dylib */,
 				37A4533A1899EC880034DC25 /* QuartzCore.framework */,
 				37A4533C1899EE710034DC25 /* Security.framework */,

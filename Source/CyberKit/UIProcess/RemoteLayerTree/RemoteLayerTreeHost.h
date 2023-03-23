@@ -34,7 +34,7 @@
 OBJC_CLASS CAAnimation;
 OBJC_CLASS WKAnimationDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeDrawingAreaProxy;
 class WebPageProxy;
@@ -105,4 +105,4 @@ private:
     bool m_isDebugLayerTreeHost { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

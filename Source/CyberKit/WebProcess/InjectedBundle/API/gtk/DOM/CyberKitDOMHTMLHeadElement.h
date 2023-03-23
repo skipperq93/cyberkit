@@ -54,7 +54,7 @@ webkit_dom_html_head_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_head_element_get_profile(CyberKitDOMHTMLHeadElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_head_element_get_profile(CyberKitDOMHTMLHeadElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_head_element_set_profile(CyberKitDOMHTMLHeadElement* self, const gchar* value);

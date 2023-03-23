@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GPUCompilationMessage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const String& GPUCompilationMessage::message() const
 {

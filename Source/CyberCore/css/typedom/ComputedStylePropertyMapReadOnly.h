@@ -27,7 +27,7 @@
 
 #include "MainThreadStylePropertyMapReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 
 class ComputedStylePropertyMapReadOnly final : public MainThreadStylePropertyMapReadOnly {
@@ -46,4 +46,4 @@ private:
     Ref<Element> m_element;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

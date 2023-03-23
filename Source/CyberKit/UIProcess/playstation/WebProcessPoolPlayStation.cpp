@@ -28,7 +28,7 @@
 
 #include "WebProcessCreationParameters.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebProcessPool::platformInitialize()
 {
@@ -53,4 +53,4 @@ void WebProcessPool::platformResolvePathsForSandboxExtensions()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -44,7 +44,7 @@ namespace API {
 class GeolocationProvider;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebGeolocationPosition;
 class WebProcessPool;
@@ -122,4 +122,4 @@ private:
     std::unique_ptr<API::GeolocationProvider> m_clientProvider;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

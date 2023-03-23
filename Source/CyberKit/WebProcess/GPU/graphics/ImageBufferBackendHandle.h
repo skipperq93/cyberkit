@@ -30,7 +30,7 @@
 #include <variant>
 #include <wtf/MachSendRight.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using ImageBufferBackendHandle = std::variant<
     ShareableBitmapHandle
@@ -42,4 +42,4 @@ using ImageBufferBackendHandle = std::variant<
 #endif
 >;
 
-} // namespace WebKit
+} // namespace CyberKit

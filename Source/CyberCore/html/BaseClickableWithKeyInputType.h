@@ -32,7 +32,7 @@
 
 #include "InputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Base of input types that dispatches a simulated click on space/return key.
 class BaseClickableWithKeyInputType : public InputType {
@@ -55,4 +55,4 @@ private:
     bool accessKeyAction(bool sendMouseEvents) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

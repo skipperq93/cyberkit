@@ -53,7 +53,7 @@ webkit_dom_html_form_element_get_type(void);
  * @self: A #CyberKitDOMHTMLFormElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_submit(CyberKitDOMHTMLFormElement* self);
@@ -63,7 +63,7 @@ webkit_dom_html_form_element_submit(CyberKitDOMHTMLFormElement* self);
  * @self: A #CyberKitDOMHTMLFormElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_reset(CyberKitDOMHTMLFormElement* self);
@@ -74,7 +74,7 @@ webkit_dom_html_form_element_reset(CyberKitDOMHTMLFormElement* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_form_element_get_accept_charset(CyberKitDOMHTMLFormElement* self);
@@ -85,7 +85,7 @@ webkit_dom_html_form_element_get_accept_charset(CyberKitDOMHTMLFormElement* self
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_set_accept_charset(CyberKitDOMHTMLFormElement* self, const gchar* value);
@@ -96,7 +96,7 @@ webkit_dom_html_form_element_set_accept_charset(CyberKitDOMHTMLFormElement* self
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_form_element_get_action(CyberKitDOMHTMLFormElement* self);
@@ -107,7 +107,7 @@ webkit_dom_html_form_element_get_action(CyberKitDOMHTMLFormElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_set_action(CyberKitDOMHTMLFormElement* self, const gchar* value);
@@ -118,7 +118,7 @@ webkit_dom_html_form_element_set_action(CyberKitDOMHTMLFormElement* self, const 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_form_element_get_enctype(CyberKitDOMHTMLFormElement* self);
@@ -129,7 +129,7 @@ webkit_dom_html_form_element_get_enctype(CyberKitDOMHTMLFormElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_set_enctype(CyberKitDOMHTMLFormElement* self, const gchar* value);
@@ -140,7 +140,7 @@ webkit_dom_html_form_element_set_enctype(CyberKitDOMHTMLFormElement* self, const
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_form_element_get_encoding(CyberKitDOMHTMLFormElement* self);
@@ -151,7 +151,7 @@ webkit_dom_html_form_element_get_encoding(CyberKitDOMHTMLFormElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_set_encoding(CyberKitDOMHTMLFormElement* self, const gchar* value);
@@ -162,7 +162,7 @@ webkit_dom_html_form_element_set_encoding(CyberKitDOMHTMLFormElement* self, cons
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_form_element_get_method(CyberKitDOMHTMLFormElement* self);
@@ -173,7 +173,7 @@ webkit_dom_html_form_element_get_method(CyberKitDOMHTMLFormElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_set_method(CyberKitDOMHTMLFormElement* self, const gchar* value);
@@ -184,7 +184,7 @@ webkit_dom_html_form_element_set_method(CyberKitDOMHTMLFormElement* self, const 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_form_element_get_name(CyberKitDOMHTMLFormElement* self);
@@ -195,7 +195,7 @@ webkit_dom_html_form_element_get_name(CyberKitDOMHTMLFormElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_set_name(CyberKitDOMHTMLFormElement* self, const gchar* value);
@@ -206,7 +206,7 @@ webkit_dom_html_form_element_set_name(CyberKitDOMHTMLFormElement* self, const gc
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_form_element_get_target(CyberKitDOMHTMLFormElement* self);
@@ -217,7 +217,7 @@ webkit_dom_html_form_element_get_target(CyberKitDOMHTMLFormElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_form_element_set_target(CyberKitDOMHTMLFormElement* self, const gchar* value);
@@ -228,7 +228,7 @@ webkit_dom_html_form_element_set_target(CyberKitDOMHTMLFormElement* self, const 
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_html_form_element_get_elements(CyberKitDOMHTMLFormElement* self);
@@ -239,7 +239,7 @@ webkit_dom_html_form_element_get_elements(CyberKitDOMHTMLFormElement* self);
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_form_element_get_length(CyberKitDOMHTMLFormElement* self);

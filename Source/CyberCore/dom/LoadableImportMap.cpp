@@ -34,7 +34,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringImpl.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<LoadableImportMap> LoadableImportMap::create(const AtomString& nonce, const AtomString& integrityMetadata, ReferrerPolicy policy, const AtomString& crossOriginMode, const AtomString& initiatorType, bool isInUserAgentShadowTree, bool isAsync)
 {

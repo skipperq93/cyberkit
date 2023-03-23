@@ -30,7 +30,7 @@
 #include "HTMLNames.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<InlineClassicScript> InlineClassicScript::create(ScriptElement& scriptElement)
 {

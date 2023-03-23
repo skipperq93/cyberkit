@@ -48,4 +48,4 @@ void registerNotifyCallback(ASCIILiteral notifyID, Function<void()>&& callback)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

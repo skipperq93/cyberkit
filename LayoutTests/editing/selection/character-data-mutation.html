@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This test ensures WebKit adjusts or clears the selection when either the start or the end container was modified.</p>
+<p>This test ensures CyberKit adjusts or clears the selection when either the start or the end container was modified.</p>
 <div id="test" contenteditable></div>
 <pre>
 <script>
@@ -62,12 +62,12 @@ function runTestPairs(actor, expectedStartOffset, expectedEndOffset, skipEnd) {
 function runTests() {
     runTestPairs(function() { test.removeChild(test.firstChild); return 'Removing the parent of startContainer'; }, 0, undefined, true);
     runTestPairs(function(node, nodeName) { node.nodeValue = 'a'; return 'Replacing nodeValue of ' + nodeName; }, 0, 0);
-    runTestPairs(function(node, nodeName) { node.appendData(' WebKit'); return 'Appending " WebKit" to ' + nodeName; }, 2, 3);
+    runTestPairs(function(node, nodeName) { node.appendData(' CyberKit'); return 'Appending " CyberKit" to ' + nodeName; }, 2, 3);
 
-    runTestPairs(function(node, nodeName) { node.insertData(2, 'WebKit ');
-        return 'Inserting " WebKit" to ' + nodeName + ' before the end point'; }, 2, 10);
-    runTestPairs(function(node, nodeName) { node.insertData(3, 'WebKit ');
-        return 'Inserting " WebKit" to ' + nodeName + ' after the end point'; }, 2, 3);
+    runTestPairs(function(node, nodeName) { node.insertData(2, 'CyberKit ');
+        return 'Inserting " CyberKit" to ' + nodeName + ' before the end point'; }, 2, 10);
+    runTestPairs(function(node, nodeName) { node.insertData(3, 'CyberKit ');
+        return 'Inserting " CyberKit" to ' + nodeName + ' after the end point'; }, 2, 3);
 
     runTestPairs(function(node, nodeName) { node.deleteData(1, 4);
         return 'Removing text in ' + nodeName + ' containing the end point'; }, 1, 1);

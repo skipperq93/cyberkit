@@ -94,7 +94,7 @@ function run(input, parameters) {
     var xcodeDocumentPath = xcodeDocument.path();
     determineVCSFromPath(xcodeDocumentPath);
 
-    if (!pathIsInWebKitCheckout(xcodeDocumentPath))
+    if (!pathIsInCyberKitCheckout(xcodeDocumentPath))
         return;
 
     var lineNumber = xcodeSelectedLineInDocument(xcodeDocument);
@@ -105,7 +105,7 @@ function run(input, parameters) {
     App.setTheClipboardTo(permalinkForPath(path, lineNumber, revisionInfo, annotateBlame));
 }
 
-function pathIsInWebKitCheckout(path)
+function pathIsInCyberKitCheckout(path)
 {
     var repositoryURL = revisionInfoForPath(path).repositoryURL;
     return !!repositoryURL.match(/^\w+:\/\/\w+\.webkit.org/);

@@ -30,7 +30,7 @@
 #include "WebPageProxy.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPageDiagnosticLoggingClient::WebPageDiagnosticLoggingClient(const WKPageDiagnosticLoggingClientBase* client)
 {
@@ -69,4 +69,4 @@ void WebPageDiagnosticLoggingClient::logDiagnosticMessageWithEnhancedPrivacy(Web
     m_client.logDiagnosticMessageWithEnhancedPrivacy(toAPI(page), toAPI(message.impl()), toAPI(description.impl()), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

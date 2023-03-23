@@ -34,7 +34,7 @@
 #include <wtf/cf/TypeCastsCF.h>
 #include <wtf/text/StringView.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 // Session state keys.
 static const uint32_t sessionStateDataVersion = 2;
@@ -1167,4 +1167,4 @@ bool decodeLegacySessionState(const uint8_t* bytes, size_t size, SessionState& s
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

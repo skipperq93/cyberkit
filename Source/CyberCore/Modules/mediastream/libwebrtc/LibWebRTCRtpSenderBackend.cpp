@@ -38,7 +38,7 @@
 #include "RTCRtpTransformBackend.h"
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LibWebRTCRtpSenderBackend::LibWebRTCRtpSenderBackend(LibWebRTCPeerConnectionBackend& backend, rtc::scoped_refptr<webrtc::RtpSenderInterface>&& rtcSender)
     : m_peerConnectionBackend(backend)
@@ -256,6 +256,6 @@ void LibWebRTCRtpSenderBackend::takeSource(LibWebRTCRtpSenderBackend& backend)
     setSource(WTFMove(backend.m_source));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

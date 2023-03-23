@@ -73,7 +73,7 @@
 
 
 <!-- This moduleset is used when the environment variable WEBKIT_JHBUILD_MODULESET=minimal is set -->
-<!-- Its intended to allow building WebKit using as much as libraries from your distribution as possible -->
+<!-- Its intended to allow building CyberKit using as much as libraries from your distribution as possible -->
 <!-- In order to ensure its minimal, all the modules should have a pkg-config declaration line -->
 
   <cmake id="libwpe">

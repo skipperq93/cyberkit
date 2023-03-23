@@ -37,7 +37,7 @@
 @class _WKWebAuthenticationPanel;
 @protocol _WKWebAuthenticationPanelDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebAuthenticationPanelClient final : public API::WebAuthenticationPanelClient, public CanMakeWeakPtr<WebAuthenticationPanelClient> {
 public:
@@ -67,6 +67,6 @@ private:
     } m_delegateMethods;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

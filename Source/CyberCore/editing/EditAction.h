@@ -29,7 +29,7 @@ namespace WTF {
 class String;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class EditAction : uint8_t {
     AlignLeft,
@@ -99,4 +99,4 @@ enum class EditAction : uint8_t {
 
 WTF::String undoRedoLabel(EditAction);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "FormattingConstraints.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct ConstraintsForFlexContent : public ConstraintsForInFlowContent {

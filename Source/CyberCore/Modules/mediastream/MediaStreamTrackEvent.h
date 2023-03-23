@@ -29,7 +29,7 @@
 #include "Event.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamTrack;
 
@@ -57,6 +57,6 @@ private:
     RefPtr<MediaStreamTrack> m_track;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

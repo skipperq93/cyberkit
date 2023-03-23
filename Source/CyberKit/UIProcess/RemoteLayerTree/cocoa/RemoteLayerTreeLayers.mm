@@ -36,7 +36,7 @@
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-#import <WebKitAdditions/CGDisplayListImageBufferAdditions.h>
+#import <CyberKitAdditions/CGDisplayListImageBufferAdditions.h>
 #endif
 
 @implementation WKCompositingLayer {
@@ -47,12 +47,12 @@
 
 - (NSString *)description
 {
-    return WebKit::RemoteLayerTreeNode::appendLayerDescription(super.description, self);
+    return CyberKit::RemoteLayerTreeNode::appendLayerDescription(super.description, self);
 }
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
 
-- (void)_setWKContents:(id)contents withDisplayList:(WebKit::CGDisplayList&&)displayList replayForTesting:(BOOL)replay
+- (void)_setWKContents:(id)contents withDisplayList:(CyberKit::CGDisplayList&&)displayList replayForTesting:(BOOL)replay
 {
     auto data = displayList.buffer()->createCFData();
 

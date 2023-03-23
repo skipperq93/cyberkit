@@ -42,7 +42,7 @@ class WebAudioBufferList;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 class SpeechRecognitionRemoteRealtimeMediaSourceManager;
     
 class SpeechRecognitionRemoteRealtimeMediaSource : public CyberCore::RealtimeMediaSource {
@@ -81,6 +81,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

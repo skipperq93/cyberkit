@@ -45,7 +45,7 @@
 #include <CyberScriptCore/VMEntryScope.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 inline JSErrorHandler::JSErrorHandler(JSObject& listener, JSObject& wrapper, bool isAttribute, DOMWrapperWorld& world)
@@ -122,4 +122,4 @@ void JSErrorHandler::handleEvent(ScriptExecutionContext& scriptExecutionContext,
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 HTMLFormElement* FormController::ownerForm(const FormListedElement& control)
 {
@@ -370,4 +370,4 @@ Vector<String> FormController::referencedFilePaths(const Vector<AtomString>& sta
     return paths;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

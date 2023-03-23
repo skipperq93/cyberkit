@@ -54,7 +54,7 @@ webkit_dom_html_li_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_li_element_get_type_attr(CyberKitDOMHTMLLIElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_li_element_get_type_attr(CyberKitDOMHTMLLIElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_li_element_set_type_attr(CyberKitDOMHTMLLIElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_li_element_set_type_attr(CyberKitDOMHTMLLIElement* self, const g
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_li_element_get_value(CyberKitDOMHTMLLIElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_li_element_get_value(CyberKitDOMHTMLLIElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_li_element_set_value(CyberKitDOMHTMLLIElement* self, glong value);

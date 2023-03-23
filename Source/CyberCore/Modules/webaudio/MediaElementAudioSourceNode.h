@@ -34,7 +34,7 @@
 #include <memory>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioContext;
 struct MediaElementAudioSourceOptions;
@@ -79,6 +79,6 @@ private:
     std::unique_ptr<MultiChannelResampler> m_multiChannelResampler WTF_GUARDED_BY_LOCK(m_processLock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && ENABLE(VIDEO)

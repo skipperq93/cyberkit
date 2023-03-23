@@ -26,7 +26,7 @@
 #include "GStreamerWebRTCUtils.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerSenderTransformer;
 
@@ -46,6 +46,6 @@ private:
     GRefPtr<GstWebRTCRTPSender> m_rtcSender;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

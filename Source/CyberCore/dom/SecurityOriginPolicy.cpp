@@ -28,7 +28,7 @@
 
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SecurityOriginPolicy> SecurityOriginPolicy::create(Ref<SecurityOrigin>&& securityOrigin)
 {

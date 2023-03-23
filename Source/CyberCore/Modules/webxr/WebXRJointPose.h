@@ -34,7 +34,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRJointPose : public WebXRPose {
     WTF_MAKE_ISO_ALLOCATED(WebXRJointPose);

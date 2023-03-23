@@ -51,7 +51,7 @@
 #include <GL/glxproto.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 static std::optional<int> s_damageEventBase;
 static std::optional<int> s_damageErrorBase;
@@ -296,6 +296,6 @@ bool AcceleratedBackingStoreX11::paint(cairo_t* cr, const CyberCore::IntRect& cl
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(X11)

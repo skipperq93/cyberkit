@@ -67,7 +67,7 @@
 #include "Settings.h"
 #include "SystemSoundManager.h"
 #include "UserGestureIndicator.h"
-#include "WebCorePersistentCoders.h"
+#include "CyberCorePersistentCoders.h"
 #include <CyberScriptCore/ScriptFunctionCall.h>
 #include <pal/system/Sound.h>
 #include <wtf/CompletionHandler.h>
@@ -80,7 +80,7 @@
 #include <wtf/spi/darwin/OSVariantSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 using ValueOrException = Expected<JSC::JSValue, ExceptionDetails>;
@@ -124,7 +124,7 @@ private:
             UserGestureIndicator gestureIndicator(ProcessingUserGesture, dynamicDowncast<Document>(executionContext(m_frontendApiObject.globalObject())));
             int itemNumber = action - ContextMenuItemBaseCustomTag;
 
-            Deprecated::ScriptFunctionCall function(m_frontendApiObject, "contextMenuItemSelected"_s, WebCore::functionCallHandlerFromAnyThread);
+            Deprecated::ScriptFunctionCall function(m_frontendApiObject, "contextMenuItemSelected"_s, CyberCore::functionCallHandlerFromAnyThread);
             function.appendArgument(itemNumber);
             function.call();
         }
@@ -133,7 +133,7 @@ private:
     void contextMenuCleared() override
     {
         if (m_frontendHost) {
-            Deprecated::ScriptFunctionCall function(m_frontendApiObject, "contextMenuCleared"_s, WebCore::functionCallHandlerFromAnyThread);
+            Deprecated::ScriptFunctionCall function(m_frontendApiObject, "contextMenuCleared"_s, CyberCore::functionCallHandlerFromAnyThread);
             function.call();
 
             m_frontendHost->m_menuProvider = nullptr;
@@ -511,7 +511,7 @@ void InspectorFrontendHost::pickColorFromScreen(Ref<DeferredPromise>&& promise)
         return;
     }
 
-    m_client->pickColorFromScreen([promise = WTFMove(promise)](const std::optional<WebCore::Color>& color) {
+    m_client->pickColorFromScreen([promise = WTFMove(promise)](const std::optional<CyberCore::Color>& color) {
         if (!color) {
             promise->resolve();
             return;
@@ -856,4 +856,4 @@ void InspectorFrontendHost::setPath(CanvasRenderingContext2D& context, Path2D& p
     context.setPath(path);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

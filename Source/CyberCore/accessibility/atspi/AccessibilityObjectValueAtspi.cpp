@@ -26,7 +26,7 @@
 #include "AccessibilityObject.h"
 #include <gio/gio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_valueFunctions = {
     // method_call
@@ -101,7 +101,7 @@ double AccessibilityObjectAtspi::minimumIncrement() const
     if (!stepAttribute.isEmpty())
         return stepAttribute.toFloat();
 
-    // If 'step' attribute is not defined, WebCore assumes a 5% of the range between
+    // If 'step' attribute is not defined, CyberCore assumes a 5% of the range between
     // minimum and maximum values. Implicit value of step should be one or larger.
     float step = (m_coreObject->maxValueForRange() - m_coreObject->minValueForRange()) * 0.05;
     return step < 1 ? 1 : step;
@@ -112,6 +112,6 @@ void AccessibilityObjectAtspi::valueChanged(double value)
     AccessibilityAtspi::singleton().valueChanged(*this, value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

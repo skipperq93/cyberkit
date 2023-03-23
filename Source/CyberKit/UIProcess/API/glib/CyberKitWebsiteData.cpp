@@ -18,40 +18,40 @@
  */
 
 #include "config.h"
-#include "WebKitWebsiteData.h"
+#include "CyberKitWebsiteData.h"
 
-#include "WebKitSecurityOriginPrivate.h"
-#include "WebKitWebsiteDataPrivate.h"
+#include "CyberKitSecurityOriginPrivate.h"
+#include "CyberKitWebsiteDataPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/HashTable.h>
 #include <wtf/Vector.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitWebsiteData: (ref-func webkit_website_data_ref) (unref-func webkit_website_data_unref)
- * @See_also: #WebKitWebsiteDataManager
+ * CyberKitWebsiteData: (ref-func webkit_website_data_ref) (unref-func webkit_website_data_unref)
+ * @See_also: #CyberKitWebsiteDataManager
  *
  * Data stored locally by a web site.
  *
- * WebKitWebsiteData represents data stored in the client by a particular website.
+ * CyberKitWebsiteData represents data stored in the client by a particular website.
  * A website is normally a set of URLs grouped by domain name. You can get the website name,
  * which is usually the domain, with webkit_website_data_get_name().
- * Documents loaded from the file system, like file:// URIs, are all grouped in the same WebKitWebsiteData
+ * Documents loaded from the file system, like file:// URIs, are all grouped in the same CyberKitWebsiteData
  * with the name "Local files".
  *
- * A website can store different types of data in the client side. #WebKitWebsiteDataTypes is an enum containing
+ * A website can store different types of data in the client side. #CyberKitWebsiteDataTypes is an enum containing
  * all the possible data types; use webkit_website_data_get_types() to get the bitmask of data types.
- * It's also possible to know the size of the data stored for some of the #WebKitWebsiteDataTypes by using
+ * It's also possible to know the size of the data stored for some of the #CyberKitWebsiteDataTypes by using
  * webkit_website_data_get_size().
  *
- * A list of WebKitWebsiteData can be retrieved with webkit_website_data_manager_fetch(). See #WebKitWebsiteDataManager
+ * A list of CyberKitWebsiteData can be retrieved with webkit_website_data_manager_fetch(). See #CyberKitWebsiteDataManager
  * for more information.
  *
  * Since: 2.16
  */
-struct _WebKitWebsiteData {
-    explicit _WebKitWebsiteData(WebsiteDataRecord&& websiteDataDecord)
+struct _CyberKitWebsiteData {
+    explicit _CyberKitWebsiteData(WebsiteDataRecord&& websiteDataDecord)
         : record(WTFMove(websiteDataDecord))
     {
     }
@@ -61,7 +61,7 @@ struct _WebKitWebsiteData {
     int referenceCount { 1 };
 };
 
-G_DEFINE_BOXED_TYPE(WebKitWebsiteData, webkit_website_data, webkit_website_data_ref, webkit_website_data_unref)
+G_DEFINE_BOXED_TYPE(CyberKitWebsiteData, webkit_website_data, webkit_website_data_ref, webkit_website_data_unref)
 
 static bool recordContainsSupportedDataTypes(const WebsiteDataRecord& record)
 {
@@ -86,7 +86,7 @@ static bool recordContainsSupportedDataTypes(const WebsiteDataRecord& record)
     });
 }
 
-static WebKitWebsiteDataTypes toWebKitWebsiteDataTypes(OptionSet<WebsiteDataType> types)
+static CyberKitWebsiteDataTypes toCyberKitWebsiteDataTypes(OptionSet<WebsiteDataType> types)
 {
     uint32_t returnValue = 0;
     if (types.contains(WebsiteDataType::MemoryCache))
@@ -119,20 +119,20 @@ static WebKitWebsiteDataTypes toWebKitWebsiteDataTypes(OptionSet<WebsiteDataType
 #endif
     if (types.contains(WebsiteDataType::DOMCache))
         returnValue |= WEBKIT_WEBSITE_DATA_DOM_CACHE;
-    return static_cast<WebKitWebsiteDataTypes>(returnValue);
+    return static_cast<CyberKitWebsiteDataTypes>(returnValue);
 }
 
-WebKitWebsiteData* webkitWebsiteDataCreate(WebsiteDataRecord&& record)
+CyberKitWebsiteData* webkitWebsiteDataCreate(WebsiteDataRecord&& record)
 {
     if (!recordContainsSupportedDataTypes(record))
         return nullptr;
 
-    WebKitWebsiteData* websiteData = static_cast<WebKitWebsiteData*>(fastMalloc(sizeof(WebKitWebsiteData)));
-    new (websiteData) WebKitWebsiteData(WTFMove(record));
+    CyberKitWebsiteData* websiteData = static_cast<CyberKitWebsiteData*>(fastMalloc(sizeof(CyberKitWebsiteData)));
+    new (websiteData) CyberKitWebsiteData(WTFMove(record));
     return websiteData;
 }
 
-const WebKit::WebsiteDataRecord& webkitWebsiteDataGetRecord(WebKitWebsiteData* websiteData)
+const CyberKit::WebsiteDataRecord& webkitWebsiteDataGetRecord(CyberKitWebsiteData* websiteData)
 {
     ASSERT(websiteData);
     return websiteData->record;
@@ -140,17 +140,17 @@ const WebKit::WebsiteDataRecord& webkitWebsiteDataGetRecord(WebKitWebsiteData* w
 
 /**
  * webkit_website_data_ref:
- * @website_data: a #WebKitWebsiteData
+ * @website_data: a #CyberKitWebsiteData
  *
  * Atomically increments the reference count of @website_data by one.
  *
  * This function is MT-safe and may be called from any thread.
  *
- * Returns: The passed #WebKitWebsiteData
+ * Returns: The passed #CyberKitWebsiteData
  *
  * Since: 2.16
  */
-WebKitWebsiteData* webkit_website_data_ref(WebKitWebsiteData* websiteData)
+CyberKitWebsiteData* webkit_website_data_ref(CyberKitWebsiteData* websiteData)
 {
     g_return_val_if_fail(websiteData, nullptr);
 
@@ -160,41 +160,41 @@ WebKitWebsiteData* webkit_website_data_ref(WebKitWebsiteData* websiteData)
 
 /**
  * webkit_website_data_unref:
- * @website_data: A #WebKitWebsiteData
+ * @website_data: A #CyberKitWebsiteData
  *
  * Atomically decrements the reference count of @website_data by one.
  *
  * If the reference count drops to 0, all memory allocated by
- * #WebKitWebsiteData is released. This function is MT-safe and may be
+ * #CyberKitWebsiteData is released. This function is MT-safe and may be
  * called from any thread.
  *
  * Since: 2.16
  */
-void webkit_website_data_unref(WebKitWebsiteData* websiteData)
+void webkit_website_data_unref(CyberKitWebsiteData* websiteData)
 {
     g_return_if_fail(websiteData);
 
     if (g_atomic_int_dec_and_test(&websiteData->referenceCount)) {
-        websiteData->~WebKitWebsiteData();
+        websiteData->~CyberKitWebsiteData();
         fastFree(websiteData);
     }
 }
 
 /**
  * webkit_website_data_get_name:
- * @website_data: a #WebKitWebsiteData
+ * @website_data: a #CyberKitWebsiteData
  *
- * Gets the name of #WebKitWebsiteData.
+ * Gets the name of #CyberKitWebsiteData.
  *
  * This is the website name, normally represented by
- * a domain or host name. All local documents are grouped in the same #WebKitWebsiteData using
+ * a domain or host name. All local documents are grouped in the same #CyberKitWebsiteData using
  * the name "Local files".
  *
  * Returns: the website name of @website_data.
  *
  * Since: 2.16
  */
-const char* webkit_website_data_get_name(WebKitWebsiteData* websiteData)
+const char* webkit_website_data_get_name(CyberKitWebsiteData* websiteData)
 {
     g_return_val_if_fail(websiteData, nullptr);
 
@@ -209,30 +209,30 @@ const char* webkit_website_data_get_name(WebKitWebsiteData* websiteData)
 
 /**
  * webkit_website_data_get_types:
- * @website_data: a #WebKitWebsiteData
+ * @website_data: a #CyberKitWebsiteData
  *
- * Gets the types of data stored in the client for a #WebKitWebsiteData.
+ * Gets the types of data stored in the client for a #CyberKitWebsiteData.
  *
  * These are the
  * types actually present, not the types queried with webkit_website_data_manager_fetch().
  *
- * Returns: a bitmask of #WebKitWebsiteDataTypes in @website_data
+ * Returns: a bitmask of #CyberKitWebsiteDataTypes in @website_data
  *
  * Since: 2.16
  */
-WebKitWebsiteDataTypes webkit_website_data_get_types(WebKitWebsiteData* websiteData)
+CyberKitWebsiteDataTypes webkit_website_data_get_types(CyberKitWebsiteData* websiteData)
 {
-    g_return_val_if_fail(websiteData, static_cast<WebKitWebsiteDataTypes>(0));
+    g_return_val_if_fail(websiteData, static_cast<CyberKitWebsiteDataTypes>(0));
 
-    return toWebKitWebsiteDataTypes(websiteData->record.types);
+    return toCyberKitWebsiteDataTypes(websiteData->record.types);
 }
 
 /**
  * webkit_website_data_get_size:
- * @website_data: a #WebKitWebsiteData
- * @types: a bitmask  of #WebKitWebsiteDataTypes
+ * @website_data: a #CyberKitWebsiteData
+ * @types: a bitmask  of #CyberKitWebsiteDataTypes
  *
- * Gets the size of the data of types @types in a #WebKitWebsiteData.
+ * Gets the size of the data of types @types in a #CyberKitWebsiteData.
  *
  * Note that currently the data size is only known for %WEBKIT_WEBSITE_DATA_DISK_CACHE data type
  * so for all other types 0 will be returned.
@@ -241,7 +241,7 @@ WebKitWebsiteDataTypes webkit_website_data_get_types(WebKitWebsiteData* websiteD
  *
  * Since: 2.16
  */
-guint64 webkit_website_data_get_size(WebKitWebsiteData* websiteData, WebKitWebsiteDataTypes types)
+guint64 webkit_website_data_get_size(CyberKitWebsiteData* websiteData, CyberKitWebsiteDataTypes types)
 {
     g_return_val_if_fail(websiteData, 0);
 

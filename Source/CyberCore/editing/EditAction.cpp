@@ -29,7 +29,7 @@
 #include "LocalizedStrings.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String undoRedoLabel(EditAction editAction)
 {
@@ -148,4 +148,4 @@ String undoRedoLabel(EditAction editAction)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

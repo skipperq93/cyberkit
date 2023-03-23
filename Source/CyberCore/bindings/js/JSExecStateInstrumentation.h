@@ -30,7 +30,7 @@
 #include "JSExecState.h"
 #include <CyberScriptCore/FunctionExecutable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void JSExecState::instrumentFunction(ScriptExecutionContext* context, const JSC::CallData& callData)
 {
@@ -49,4 +49,4 @@ inline void JSExecState::instrumentFunction(ScriptExecutionContext* context, con
     InspectorInstrumentation::willCallFunction(context, resourceName, lineNumber, columnNumber);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

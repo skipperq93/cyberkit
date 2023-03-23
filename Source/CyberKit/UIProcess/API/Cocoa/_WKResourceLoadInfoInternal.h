@@ -27,7 +27,7 @@
 #import "WKObject.h"
 #import "_WKResourceLoadInfo.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ResourceLoadInfo> {
     using WrapperClass = _WKResourceLoadInfo;

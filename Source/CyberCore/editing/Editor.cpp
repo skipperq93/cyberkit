@@ -136,7 +136,7 @@
 #include "PromisedAttachmentInfo.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool dispatchBeforeInputEvent(Element& element, const AtomString& inputType, IsInputMethodComposing isInputMethodComposing, const String& data = { },
     RefPtr<DataTransfer>&& dataTransfer = nullptr, const Vector<RefPtr<StaticRange>>& targetRanges = { }, Event::IsCancelable cancelable = Event::IsCancelable::Yes)
@@ -3367,7 +3367,7 @@ void Editor::changeSelectionAfterCommand(const VisibleSelection& newSelection, O
     // Some editing operations change the selection visually without affecting its position within the DOM.
     // For example when you press return in the following (the caret is marked by ^):
     // <div contentEditable="true"><div>^Hello</div></div>
-    // WebCore inserts <div><br></div> *before* the current block, which correctly moves the paragraph down but which doesn't
+    // CyberCore inserts <div><br></div> *before* the current block, which correctly moves the paragraph down but which doesn't
     // change the caret's DOM position (["hello", 0]). In these situations the above FrameSelection::setSelection call
     // does not call EditorClient::respondToChangedSelection(), which, on the Mac, sends selection change notifications and
     // starts a new kill ring sequence, but we want to do these things (matches AppKit).
@@ -4371,7 +4371,7 @@ void Editor::handleAcceptedCandidate(TextCheckingResult acceptedCandidate)
 
 bool Editor::unifiedTextCheckerEnabled() const
 {
-    return WebCore::unifiedTextCheckerEnabled(m_document.frame());
+    return CyberCore::unifiedTextCheckerEnabled(m_document.frame());
 }
 
 Vector<String> Editor::dictationAlternativesForMarker(const DocumentMarker& marker)
@@ -4494,4 +4494,4 @@ bool Editor::canCopyExcludingStandaloneImages() const
     return selection.isRange() && !selection.isInPasswordField();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

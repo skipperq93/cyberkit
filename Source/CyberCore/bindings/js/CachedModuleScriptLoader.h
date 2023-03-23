@@ -37,7 +37,7 @@
 namespace JSC {
 class ScriptFetchParameters;
 }
-namespace WebCore {
+namespace CyberCore {
 
 class ModuleScriptLoaderClient;
 class CachedScript;
@@ -65,4 +65,4 @@ private:
     URL m_sourceURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

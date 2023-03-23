@@ -35,7 +35,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 enum Columns {
@@ -511,4 +511,4 @@ bool WebPopupMenuProxyGtk::typeAheadFind(unsigned keyval, uint32_t timestamp)
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

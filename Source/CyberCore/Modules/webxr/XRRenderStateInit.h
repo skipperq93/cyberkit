@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct XRRenderStateInit {
     std::optional<double> depthNear;
@@ -41,6 +41,6 @@ struct XRRenderStateInit {
     std::optional<Vector<RefPtr<WebXRLayer>>> layers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

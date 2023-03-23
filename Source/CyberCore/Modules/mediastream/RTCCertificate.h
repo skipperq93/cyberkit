@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCCertificate : public RefCounted<RTCCertificate> {
 public:
@@ -58,6 +58,6 @@ private:
     String m_pemPrivateKey;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

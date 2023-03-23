@@ -30,7 +30,7 @@
 #include <wtf/Lock.h>
 #include <wtf/UniqueArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 struct AudioBufferSourceOptions;
@@ -134,4 +134,4 @@ private:
     mutable Lock m_processLock;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

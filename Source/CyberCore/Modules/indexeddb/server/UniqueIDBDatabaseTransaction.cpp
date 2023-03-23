@@ -33,7 +33,7 @@
 #include "UniqueIDBDatabaseConnection.h"
 #include "UniqueIDBDatabaseManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 Ref<UniqueIDBDatabaseTransaction> UniqueIDBDatabaseTransaction::create(UniqueIDBDatabaseConnection& connection, const IDBTransactionInfo& info)
@@ -544,4 +544,4 @@ void UniqueIDBDatabaseTransaction::didActivateInBackingStore(const IDBError& err
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

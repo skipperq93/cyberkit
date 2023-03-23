@@ -42,7 +42,7 @@
 #include "WebInjectedScriptManager.h"
 #include <CyberScriptCore/ConsoleMessage.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -126,4 +126,4 @@ Protocol::ErrorStringOr<void> PageConsoleAgent::setLoggingChannelLevel(Protocol:
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUCompareFunction.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUCompareFunction : uint8_t {
     Never,

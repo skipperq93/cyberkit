@@ -43,7 +43,7 @@ namespace CyberCore {
 class ResourceRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DownloadProxy;
 class NetworkProcessProxy;
@@ -78,4 +78,4 @@ private:
     RefPtr<ProcessAssertion> m_downloadNetworkingAssertion;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

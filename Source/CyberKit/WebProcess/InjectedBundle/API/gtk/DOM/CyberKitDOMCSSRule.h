@@ -42,49 +42,49 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_CSS_RULE_UNKNOWN_RULE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_RULE_UNKNOWN_RULE 0
 
 /**
  * WEBKIT_DOM_CSS_RULE_STYLE_RULE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_RULE_STYLE_RULE 1
 
 /**
  * WEBKIT_DOM_CSS_RULE_CHARSET_RULE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_RULE_CHARSET_RULE 2
 
 /**
  * WEBKIT_DOM_CSS_RULE_IMPORT_RULE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_RULE_IMPORT_RULE 3
 
 /**
  * WEBKIT_DOM_CSS_RULE_MEDIA_RULE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_RULE_MEDIA_RULE 4
 
 /**
  * WEBKIT_DOM_CSS_RULE_FONT_FACE_RULE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_RULE_FONT_FACE_RULE 5
 
 /**
  * WEBKIT_DOM_CSS_RULE_PAGE_RULE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_RULE_PAGE_RULE 6
 
@@ -107,7 +107,7 @@ webkit_dom_css_rule_get_type(void);
  *
  * Returns: A #gushort
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
 webkit_dom_css_rule_get_rule_type(CyberKitDOMCSSRule* self);
@@ -118,7 +118,7 @@ webkit_dom_css_rule_get_rule_type(CyberKitDOMCSSRule* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_rule_get_css_text(CyberKitDOMCSSRule* self);
@@ -130,7 +130,7 @@ webkit_dom_css_rule_get_css_text(CyberKitDOMCSSRule* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_css_rule_set_css_text(CyberKitDOMCSSRule* self, const gchar* value, GError** error);
@@ -141,7 +141,7 @@ webkit_dom_css_rule_set_css_text(CyberKitDOMCSSRule* self, const gchar* value, G
  *
  * Returns: (transfer full): A #CyberKitDOMCSSStyleSheet
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSStyleSheet*
 webkit_dom_css_rule_get_parent_style_sheet(CyberKitDOMCSSRule* self);
@@ -152,7 +152,7 @@ webkit_dom_css_rule_get_parent_style_sheet(CyberKitDOMCSSRule* self);
  *
  * Returns: (transfer full): A #CyberKitDOMCSSRule
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMCSSRule*
 webkit_dom_css_rule_get_parent_rule(CyberKitDOMCSSRule* self);

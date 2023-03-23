@@ -36,7 +36,7 @@
 #include <type_traits>
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://webidl.spec.whatwg.org/#es-asynchronous-iterator-prototype-object
 template<typename JSWrapper, typename IteratorTraits> class JSDOMAsyncIteratorPrototype final : public JSC::JSNonFinalObject {

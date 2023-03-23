@@ -31,7 +31,7 @@
 #include "PlatformXR.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRGamepad: public PlatformGamepad {
 public:
@@ -45,6 +45,6 @@ private:
     Vector<SharedGamepadValue> m_buttons;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

@@ -173,14 +173,14 @@ class GenerationContext:
             // Older versions of gperf generate code using the `register` keyword.
             #define register
 
-            namespace WebCore {
+            namespace CyberCore {
 
             %}
             """))
 
     def _generate_css_value_keywords_gperf_footing(self, *, to):
         to.write(textwrap.dedent("""\
-            } // namespace WebCore
+            } // namespace CyberCore
 
             IGNORE_WARNINGS_END
             """))
@@ -310,7 +310,7 @@ class GenerationContext:
             #include <wtf/HashFunctions.h>
             #include <wtf/HashTraits.h>
 
-            namespace WebCore {
+            namespace CyberCore {
 
             """))
 
@@ -357,16 +357,16 @@ class GenerationContext:
             };
             constexpr AllCSSValueKeywordsRange allCSSValueKeywords() { return { }; }
 
-            } // namespace WebCore
+            } // namespace CyberCore
             """))
 
     def _generate_css_value_keywords_h_hash_traits(self, *, to):
         to.write(textwrap.dedent("""
             namespace WTF {
 
-            template<> struct DefaultHash<WebCore::CSSValueID> : IntHash<unsigned> { };
+            template<> struct DefaultHash<CyberCore::CSSValueID> : IntHash<unsigned> { };
 
-            template<> struct HashTraits<WebCore::CSSValueID> : StrongEnumHashTraits<WebCore::CSSValueID> { };
+            template<> struct HashTraits<CyberCore::CSSValueID> : StrongEnumHashTraits<CyberCore::CSSValueID> { };
 
             }
             """))
@@ -375,7 +375,7 @@ class GenerationContext:
         to.write(textwrap.dedent("""
             namespace std {
 
-            template<> struct iterator_traits<WebCore::AllCSSValueKeywordsRange::Iterator> { using value_type = WebCore::CSSValueID; };
+            template<> struct iterator_traits<CyberCore::AllCSSValueKeywordsRange::Iterator> { using value_type = CyberCore::CSSValueID; };
 
             }
             """))

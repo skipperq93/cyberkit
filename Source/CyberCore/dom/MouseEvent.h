@@ -36,7 +36,7 @@ class CallFrame;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 class PlatformMouseEvent;
@@ -114,6 +114,6 @@ private:
     double m_force { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_EVENT(MouseEvent)

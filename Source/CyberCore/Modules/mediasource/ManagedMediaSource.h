@@ -29,7 +29,7 @@
 
 #include "MediaSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ManagedMediaSource final : public MediaSource {
     WTF_MAKE_ISO_ALLOCATED(ManagedMediaSource);
@@ -50,10 +50,10 @@ private:
     explicit ManagedMediaSource(ScriptExecutionContext&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ManagedMediaSource)
-    static bool isType(const WebCore::MediaSource& mediaSource) { return mediaSource.isManaged(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ManagedMediaSource)
+    static bool isType(const CyberCore::MediaSource& mediaSource) { return mediaSource.isManaged(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

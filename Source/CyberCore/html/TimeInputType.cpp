@@ -44,7 +44,7 @@
 #include <wtf/DateMath.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -141,6 +141,6 @@ void TimeInputType::setupLayoutParameters(DateTimeEditElement::LayoutParameters&
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

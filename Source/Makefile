@@ -5,7 +5,7 @@ endif
 ifneq ($(USE_WORKSPACE),NO)
 
 include ../Makefile.shared
-SCHEME = Everything up to WebKit + Tools
+SCHEME = Everything up to CyberKit + Tools
 
 else
 
@@ -28,7 +28,7 @@ ifeq (iosmac,$(SDK_VARIANT))
 	WEBINSPECTORUI_MODULE =
 endif
 
-MODULES = bmalloc WTF JavaScriptCore WebGPU ThirdParty WebCore $(WEBINSPECTORUI_MODULE) CyberKitLegacy WebKit
+MODULES = bmalloc WTF CyberScriptCore WebGPU ThirdParty CyberCore $(WEBINSPECTORUI_MODULE) CyberKitLegacy CyberKit
 
 define build_target_for_each_module
 	for dir in $(MODULES); do \

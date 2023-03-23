@@ -29,7 +29,7 @@
 #include "Model.h"
 #include "ResourceError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DummyModelPlayer> DummyModelPlayer::create(ModelPlayerClient& client)
 {
@@ -74,11 +74,11 @@ void DummyModelPlayer::handleMouseUp(const LayoutPoint&, MonotonicTime)
 {
 }
 
-void DummyModelPlayer::getCamera(CompletionHandler<void(std::optional<WebCore::HTMLModelElementCamera>&&)>&&)
+void DummyModelPlayer::getCamera(CompletionHandler<void(std::optional<CyberCore::HTMLModelElementCamera>&&)>&&)
 {
 }
 
-void DummyModelPlayer::setCamera(WebCore::HTMLModelElementCamera, CompletionHandler<void(bool success)>&&)
+void DummyModelPlayer::setCamera(CyberCore::HTMLModelElementCamera, CompletionHandler<void(bool success)>&&)
 {
 }
 

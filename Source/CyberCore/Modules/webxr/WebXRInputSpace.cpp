@@ -33,7 +33,7 @@
 #include "WebXRSession.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRInputSpace);
 
@@ -58,6 +58,6 @@ std::optional<TransformationMatrix> WebXRInputSpace::nativeOrigin() const
     return WebXRFrame::matrixFromPose(m_pose.pose);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

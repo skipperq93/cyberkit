@@ -18,17 +18,17 @@
  */
 
 #include "config.h"
-#include "WebKitScriptDialogImpl.h"
+#include "CyberKitScriptDialogImpl.h"
 
-#include "WebKitScriptDialogPrivate.h"
+#include "CyberKitScriptDialogPrivate.h"
 #include <CyberCore/GtkUtilities.h>
 #include <CyberCore/GtkVersioning.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-struct _WebKitScriptDialogImplPrivate {
-    WebKitScriptDialog* dialog;
+struct _CyberKitScriptDialogImplPrivate {
+    CyberKitScriptDialog* dialog;
     GtkWidget* vbox;
     GtkWidget* swindow;
     GtkWidget* title;
@@ -38,9 +38,9 @@ struct _WebKitScriptDialogImplPrivate {
     GtkWidget* defaultButton;
 };
 
-WEBKIT_DEFINE_TYPE(WebKitScriptDialogImpl, webkit_script_dialog_impl, WEBKIT_TYPE_WEB_VIEW_DIALOG)
+WEBKIT_DEFINE_TYPE(CyberKitScriptDialogImpl, webkit_script_dialog_impl, WEBKIT_TYPE_WEB_VIEW_DIALOG)
 
-static void webkitScriptDialogImplClose(WebKitScriptDialogImpl* dialog)
+static void webkitScriptDialogImplClose(CyberKitScriptDialogImpl* dialog)
 {
     webkit_script_dialog_close(dialog->priv->dialog);
 #if USE(GTK4)
@@ -51,7 +51,7 @@ static void webkitScriptDialogImplClose(WebKitScriptDialogImpl* dialog)
 }
 
 #if USE(GTK4)
-static gboolean webkitScriptDialogImplKeyPressed(WebKitScriptDialogImpl* dialog, unsigned keyval, unsigned, GdkModifierType, GtkEventController*)
+static gboolean webkitScriptDialogImplKeyPressed(CyberKitScriptDialogImpl* dialog, unsigned keyval, unsigned, GdkModifierType, GtkEventController*)
 {
     if (keyval == GDK_KEY_Escape) {
         webkitScriptDialogImplClose(dialog);
@@ -90,7 +90,7 @@ static void webkitScriptDialogImplUnmap(GtkWidget* widget)
 
 static void webkitScriptDialogImplMap(GtkWidget* widget)
 {
-    WebKitScriptDialogImplPrivate* priv = WEBKIT_SCRIPT_DIALOG_IMPL(widget)->priv;
+    CyberKitScriptDialogImplPrivate* priv = WEBKIT_SCRIPT_DIALOG_IMPL(widget)->priv;
     auto* toplevel = gtk_widget_get_toplevel(widget);
     if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
         gtk_window_set_default(GTK_WINDOW(toplevel), priv->defaultButton);
@@ -114,7 +114,7 @@ static void webkitScriptDialogImplConstructed(GObject* object)
     G_OBJECT_CLASS(webkit_script_dialog_impl_parent_class)->constructed(object);
 
     auto* dialog = WEBKIT_SCRIPT_DIALOG_IMPL(object);
-    WebKitScriptDialogImplPrivate* priv = dialog->priv;
+    CyberKitScriptDialogImplPrivate* priv = dialog->priv;
 
     priv->vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 20);
 #if USE(GTK4)
@@ -238,7 +238,7 @@ static void webkitScriptDialogImplDispose(GObject* object)
     G_OBJECT_CLASS(webkit_script_dialog_impl_parent_class)->dispose(object);
 }
 
-static void webkit_script_dialog_impl_class_init(WebKitScriptDialogImplClass* klass)
+static void webkit_script_dialog_impl_class_init(CyberKitScriptDialogImplClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->constructed = webkitScriptDialogImplConstructed;
@@ -257,18 +257,18 @@ static void webkit_script_dialog_impl_class_init(WebKitScriptDialogImplClass* kl
 #endif
 }
 
-static void webkitScriptDialogImplSetText(WebKitScriptDialogImpl* dialog, const char* text, GtkRequisition* maxSize)
+static void webkitScriptDialogImplSetText(CyberKitScriptDialogImpl* dialog, const char* text, GtkRequisition* maxSize)
 {
-    WebKitScriptDialogImplPrivate* priv = dialog->priv;
+    CyberKitScriptDialogImplPrivate* priv = dialog->priv;
     gtk_label_set_text(GTK_LABEL(priv->label), text);
     GtkRequisition naturalRequisition;
     gtk_widget_get_preferred_size(priv->label, nullptr, &naturalRequisition);
     gtk_widget_set_size_request(priv->swindow, std::min(naturalRequisition.width, maxSize->width), std::min(maxSize->height, naturalRequisition.height));
 }
 
-static GtkWidget* webkitScriptDialogImplAddButton(WebKitScriptDialogImpl* dialog, const char* text)
+static GtkWidget* webkitScriptDialogImplAddButton(CyberKitScriptDialogImpl* dialog, const char* text)
 {
-    WebKitScriptDialogImplPrivate* priv = dialog->priv;
+    CyberKitScriptDialogImplPrivate* priv = dialog->priv;
     GtkWidget* button = gtk_button_new_with_label(text);
     gtk_button_set_use_underline(GTK_BUTTON(button), TRUE);
     gtk_widget_add_css_class(button, "text-button");
@@ -287,7 +287,7 @@ static GtkWidget* webkitScriptDialogImplAddButton(WebKitScriptDialogImpl* dialog
     return button;
 }
 
-GtkWidget* webkitScriptDialogImplNew(WebKitScriptDialog* scriptDialog, const char* title, GtkRequisition* maxSize)
+GtkWidget* webkitScriptDialogImplNew(CyberKitScriptDialog* scriptDialog, const char* title, GtkRequisition* maxSize)
 {
     auto* dialog = WEBKIT_SCRIPT_DIALOG_IMPL(g_object_new(WEBKIT_TYPE_SCRIPT_DIALOG_IMPL, nullptr));
     dialog->priv->dialog = webkit_script_dialog_ref(scriptDialog);
@@ -343,7 +343,7 @@ GtkWidget* webkitScriptDialogImplNew(WebKitScriptDialog* scriptDialog, const cha
     return GTK_WIDGET(dialog);
 }
 
-void webkitScriptDialogImplCancel(WebKitScriptDialogImpl* dialog)
+void webkitScriptDialogImplCancel(CyberKitScriptDialogImpl* dialog)
 {
     switch (dialog->priv->dialog->type) {
     case WEBKIT_SCRIPT_DIALOG_ALERT:
@@ -357,7 +357,7 @@ void webkitScriptDialogImplCancel(WebKitScriptDialogImpl* dialog)
     webkitScriptDialogImplClose(dialog);
 }
 
-void webkitScriptDialogImplConfirm(WebKitScriptDialogImpl* dialog)
+void webkitScriptDialogImplConfirm(CyberKitScriptDialogImpl* dialog)
 {
     switch (dialog->priv->dialog->type) {
     case WEBKIT_SCRIPT_DIALOG_ALERT:
@@ -373,7 +373,7 @@ void webkitScriptDialogImplConfirm(WebKitScriptDialogImpl* dialog)
     webkitScriptDialogImplClose(dialog);
 }
 
-void webkitScriptDialogImplSetEntryText(WebKitScriptDialogImpl* dialog, const String& text)
+void webkitScriptDialogImplSetEntryText(CyberKitScriptDialogImpl* dialog, const String& text)
 {
     if (dialog->priv->dialog->type != WEBKIT_SCRIPT_DIALOG_PROMPT)
         return;

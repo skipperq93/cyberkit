@@ -30,7 +30,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebUserContentControllerProxy;
 }
 
@@ -38,27 +38,27 @@ namespace API {
 
 class ContentWorld final : public API::ObjectImpl<API::Object::Type::ContentWorld> {
 public:
-    static ContentWorld* worldForIdentifier(WebKit::ContentWorldIdentifier);
+    static ContentWorld* worldForIdentifier(CyberKit::ContentWorldIdentifier);
     static Ref<ContentWorld> sharedWorldWithName(const WTF::String&);
     static ContentWorld& pageContentWorld();
     static ContentWorld& defaultClientWorld();
 
     virtual ~ContentWorld();
 
-    WebKit::ContentWorldIdentifier identifier() const { return m_identifier; }
+    CyberKit::ContentWorldIdentifier identifier() const { return m_identifier; }
     const WTF::String& name() const { return m_name; }
-    std::pair<WebKit::ContentWorldIdentifier, WTF::String> worldData() const { return { m_identifier, m_name }; }
+    std::pair<CyberKit::ContentWorldIdentifier, WTF::String> worldData() const { return { m_identifier, m_name }; }
 
-    void addAssociatedUserContentControllerProxy(WebKit::WebUserContentControllerProxy&);
-    void userContentControllerProxyDestroyed(WebKit::WebUserContentControllerProxy&);
+    void addAssociatedUserContentControllerProxy(CyberKit::WebUserContentControllerProxy&);
+    void userContentControllerProxyDestroyed(CyberKit::WebUserContentControllerProxy&);
 
 private:
     explicit ContentWorld(const WTF::String&);
-    explicit ContentWorld(WebKit::ContentWorldIdentifier);
+    explicit ContentWorld(CyberKit::ContentWorldIdentifier);
 
-    WebKit::ContentWorldIdentifier m_identifier;
+    CyberKit::ContentWorldIdentifier m_identifier;
     WTF::String m_name;
-    HashSet<WebKit::WebUserContentControllerProxy*> m_associatedContentControllerProxies;
+    HashSet<CyberKit::WebUserContentControllerProxy*> m_associatedContentControllerProxies;
 };
 
 } // namespace API

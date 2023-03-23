@@ -50,7 +50,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 struct FrameTreeNodeData;
 class ProvisionalFrameProxy;
 class SafeBrowsingWarning;
@@ -183,4 +183,4 @@ private:
     CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<CyberCore::FrameIdentifier>)> m_navigateCallback;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

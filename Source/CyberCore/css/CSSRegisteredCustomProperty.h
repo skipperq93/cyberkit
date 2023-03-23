@@ -28,7 +28,7 @@
 #include "CSSCustomPropertySyntax.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCustomPropertyValue;
 

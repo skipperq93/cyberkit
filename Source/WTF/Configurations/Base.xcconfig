@@ -115,7 +115,7 @@ STRIP_INSTALLED_PRODUCT[config=Debug] = NO;
 SDKROOT = macosx.internal;
 
 OTHER_CPLUSPLUSFLAGS = $(inherited) -isystem $(SDKROOT)/System/Library/Frameworks/System.framework/PrivateHeaders;
-EXCLUDED_SOURCE_FILE_NAMES = libWebKitAdditions.a
+EXCLUDED_SOURCE_FILE_NAMES = libCyberKitAdditions.a
 
 LLVM_LTO = $(WK_LLVM_LTO_$(WK_XCODE_SUPPORTS_LTO));
 WK_LLVM_LTO_NO = NO;

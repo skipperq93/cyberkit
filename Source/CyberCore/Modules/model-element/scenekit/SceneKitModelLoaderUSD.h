@@ -29,7 +29,7 @@
 
 #import <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Model;
 class SceneKitModelLoader;

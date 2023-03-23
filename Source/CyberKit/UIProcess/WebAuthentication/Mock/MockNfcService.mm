@@ -124,7 +124,7 @@ uint8_t tagID2[] = { 0x02 };
 
 #endif // HAVE(NEAR_FIELD)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 using Mock = CyberCore::MockWebAuthenticationConfiguration;
 
@@ -264,6 +264,6 @@ void MockNfcService::detectTags() const
 #endif // HAVE(NEAR_FIELD)
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -29,7 +29,7 @@
 #include <CyberCore/ClientOrigin.h>
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaKeySystemPermissionRequest : public RefCounted<MediaKeySystemPermissionRequest> {
 public:
@@ -73,4 +73,4 @@ private:
     CompletionHandler<void(bool)> m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

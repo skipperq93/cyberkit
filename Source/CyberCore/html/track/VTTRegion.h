@@ -38,7 +38,7 @@
 #include "TextTrack.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLDivElement;
 class VTTCueBox;
@@ -156,6 +156,6 @@ private:
     bool m_recalculateStyles { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

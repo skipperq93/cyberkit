@@ -30,7 +30,7 @@
 
 #include "PaymentAPIVersion.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool PaymentCoordinatorClient::supportsVersion(unsigned version)
 {
@@ -38,6 +38,6 @@ bool PaymentCoordinatorClient::supportsVersion(unsigned version)
     return version <= PaymentAPIVersion::current();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

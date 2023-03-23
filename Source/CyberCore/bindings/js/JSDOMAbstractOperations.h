@@ -28,7 +28,7 @@
 #include "JSDOMConvertStrings.h"
 #include "JSDOMExceptionHandling.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Implementations of the abstract operations defined at
 // https://webidl.spec.whatwg.org/#legacy-platform-object-abstract-ops

@@ -32,7 +32,7 @@
 
 #include "BaseButtonInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ButtonInputType final : public BaseButtonInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -46,6 +46,6 @@ private:
     const AtomString& formControlType() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(ButtonInputType, Type::Button)

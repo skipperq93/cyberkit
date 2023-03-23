@@ -1402,11 +1402,11 @@ msgctxt "Undo action name"
 msgid "Convert to Unordered List"
 msgstr "Konvertér til unummereret liste"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 msgid "JSC Options"
 msgstr "JSC-indstillinger"
 
-#: ../../../../JavaScriptCore/API/glib/JSCOptions.cpp:661
+#: ../../../../CyberScriptCore/API/glib/JSCOptions.cpp:661
 msgid "Show JSC Options"
 msgstr "Vis JSC-indstillinger"
 

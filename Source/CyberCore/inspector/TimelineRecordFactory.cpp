@@ -39,7 +39,7 @@
 #include <CyberScriptCore/ScriptCallStack.h>
 #include <CyberScriptCore/ScriptCallStackFactory.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -173,4 +173,4 @@ void TimelineRecordFactory::appendLayoutRoot(JSON::Object& data, const FloatQuad
     data.setArray("root"_s, createQuad(quad));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "GamepadConstants.h"
 #include "XRTargetRayMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://immersive-web.github.io/webxr-gamepads-module/#gamepad-differences
 // Gamepad's index attribute must be -1.
@@ -56,6 +56,6 @@ WebXRGamepad::WebXRGamepad(double timestamp, double connectTime, const PlatformX
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR) && ENABLE(GAMEPAD)

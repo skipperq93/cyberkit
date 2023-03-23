@@ -28,7 +28,7 @@
 
 #include "IDBKeyRangeData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBGetRecordData IDBGetRecordData::isolatedCopy() const
 {
@@ -44,4 +44,4 @@ String IDBGetRecordData::loggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

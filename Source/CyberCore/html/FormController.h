@@ -24,7 +24,7 @@
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class FormListedElement;
@@ -63,4 +63,4 @@ private:
     std::unique_ptr<FormKeyGenerator> m_formKeyGenerator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

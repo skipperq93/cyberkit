@@ -45,7 +45,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebXRWebGLLayer);
 
@@ -328,6 +328,6 @@ void WebXRWebGLLayer::computeViewports()
     m_viewportsDirty = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

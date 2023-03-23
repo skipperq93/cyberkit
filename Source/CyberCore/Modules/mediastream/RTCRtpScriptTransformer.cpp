@@ -42,7 +42,7 @@
 #include "WritableStream.h"
 #include "WritableStreamSink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Ref<RTCRtpScriptTransformer>> RTCRtpScriptTransformer::create(ScriptExecutionContext& context, MessageWithMessagePorts&& options)
 {
@@ -198,6 +198,6 @@ JSC::JSValue RTCRtpScriptTransformer::options(JSC::JSGlobalObject& globalObject)
     return m_options->deserialize(globalObject, &globalObject, m_ports);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

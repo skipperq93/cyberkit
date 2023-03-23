@@ -32,7 +32,7 @@
 #include "WebCredential.h"
 #include "WebProtectionSpace.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKAuthenticationChallengeGetTypeID()
 {

@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CSSParserContext;
 
@@ -46,6 +46,6 @@ WEBCORE_EXPORT bool isValidCSSSelector(const String&);
 CSSParserContext contentExtensionCSSParserContext();
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

@@ -29,7 +29,7 @@
 #include "config.h"
 #include "CSSRayValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSRayValue::customCSSText() const
 {

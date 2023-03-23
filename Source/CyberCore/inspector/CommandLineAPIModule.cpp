@@ -27,12 +27,12 @@
 #include "CommandLineAPIModule.h"
 
 #include "JSDOMGlobalObject.h"
-#include "WebCoreJSBuiltinInternals.h"
+#include "CyberCoreJSBuiltinInternals.h"
 #include "WebInjectedScriptManager.h"
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/InjectedScript.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 using namespace Inspector;
@@ -68,4 +68,4 @@ JSValue CommandLineAPIModule::host(InjectedScriptManager* injectedScriptManager,
     return pageInjectedScriptManager->commandLineAPIHost()->wrapper(lexicalGlobalObject, globalObject);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

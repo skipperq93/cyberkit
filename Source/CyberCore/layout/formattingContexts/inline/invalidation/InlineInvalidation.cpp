@@ -29,7 +29,7 @@
 #include "InlineDamage.h"
 #include <wtf/Range.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 InlineInvalidation::InlineInvalidation(InlineDamage& inlineDamage, const InlineFormattingState& inlineFormattingState, const Vector<InlineDisplay::Box>& displayBoxes)

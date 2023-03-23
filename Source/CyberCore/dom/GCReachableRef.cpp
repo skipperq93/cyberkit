@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 HashCountedSet<Node*>& GCReachableRefMap::map()
 {
@@ -36,4 +36,4 @@ HashCountedSet<Node*>& GCReachableRefMap::map()
     return map;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

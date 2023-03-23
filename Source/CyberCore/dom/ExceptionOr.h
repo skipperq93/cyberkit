@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wtf/Expected.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> class ExceptionOr {
 public:
@@ -201,8 +201,8 @@ template <typename T> using TypeOrExceptionOrUnderlyingType = typename TypeOrExc
 }
 
 namespace WTF {
-template<typename T> struct CrossThreadCopierBase<false, false, WebCore::ExceptionOr<T> > {
-    typedef WebCore::ExceptionOr<T> Type;
+template<typename T> struct CrossThreadCopierBase<false, false, CyberCore::ExceptionOr<T> > {
+    typedef CyberCore::ExceptionOr<T> Type;
     static Type copy(const Type& source)
     {
         if (source.hasException())
@@ -217,8 +217,8 @@ template<typename T> struct CrossThreadCopierBase<false, false, WebCore::Excepti
     }
 };
 
-template<> struct CrossThreadCopierBase<false, false, WebCore::ExceptionOr<void> > {
-    typedef WebCore::ExceptionOr<void> Type;
+template<> struct CrossThreadCopierBase<false, false, CyberCore::ExceptionOr<void> > {
+    typedef CyberCore::ExceptionOr<void> Type;
     static Type copy(const Type& source)
     {
         if (source.hasException())

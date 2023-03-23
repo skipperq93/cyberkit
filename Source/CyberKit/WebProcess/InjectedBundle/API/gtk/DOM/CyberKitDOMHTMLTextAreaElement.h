@@ -53,7 +53,7 @@ webkit_dom_html_text_area_element_get_type(void);
  * @self: A #CyberKitDOMHTMLTextAreaElement
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_select(CyberKitDOMHTMLTextAreaElement* self);
@@ -66,7 +66,7 @@ webkit_dom_html_text_area_element_select(CyberKitDOMHTMLTextAreaElement* self);
  * @direction: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_selection_range(CyberKitDOMHTMLTextAreaElement* self, glong start, glong end, const gchar* direction);
@@ -77,7 +77,7 @@ webkit_dom_html_text_area_element_set_selection_range(CyberKitDOMHTMLTextAreaEle
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_text_area_element_get_autofocus(CyberKitDOMHTMLTextAreaElement* self);
@@ -88,7 +88,7 @@ webkit_dom_html_text_area_element_get_autofocus(CyberKitDOMHTMLTextAreaElement* 
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_autofocus(CyberKitDOMHTMLTextAreaElement* self, gboolean value);
@@ -99,7 +99,7 @@ webkit_dom_html_text_area_element_set_autofocus(CyberKitDOMHTMLTextAreaElement* 
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_text_area_element_get_disabled(CyberKitDOMHTMLTextAreaElement* self);
@@ -110,7 +110,7 @@ webkit_dom_html_text_area_element_get_disabled(CyberKitDOMHTMLTextAreaElement* s
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_disabled(CyberKitDOMHTMLTextAreaElement* self, gboolean value);
@@ -121,7 +121,7 @@ webkit_dom_html_text_area_element_set_disabled(CyberKitDOMHTMLTextAreaElement* s
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLFormElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLFormElement*
 webkit_dom_html_text_area_element_get_form(CyberKitDOMHTMLTextAreaElement* self);
@@ -132,7 +132,7 @@ webkit_dom_html_text_area_element_get_form(CyberKitDOMHTMLTextAreaElement* self)
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_text_area_element_get_name(CyberKitDOMHTMLTextAreaElement* self);
@@ -143,7 +143,7 @@ webkit_dom_html_text_area_element_get_name(CyberKitDOMHTMLTextAreaElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_name(CyberKitDOMHTMLTextAreaElement* self, const gchar* value);
@@ -154,7 +154,7 @@ webkit_dom_html_text_area_element_set_name(CyberKitDOMHTMLTextAreaElement* self,
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_text_area_element_get_read_only(CyberKitDOMHTMLTextAreaElement* self);
@@ -165,7 +165,7 @@ webkit_dom_html_text_area_element_get_read_only(CyberKitDOMHTMLTextAreaElement* 
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_read_only(CyberKitDOMHTMLTextAreaElement* self, gboolean value);
@@ -176,7 +176,7 @@ webkit_dom_html_text_area_element_set_read_only(CyberKitDOMHTMLTextAreaElement* 
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_text_area_element_get_rows(CyberKitDOMHTMLTextAreaElement* self);
@@ -187,7 +187,7 @@ webkit_dom_html_text_area_element_get_rows(CyberKitDOMHTMLTextAreaElement* self)
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_rows(CyberKitDOMHTMLTextAreaElement* self, glong value);
@@ -198,7 +198,7 @@ webkit_dom_html_text_area_element_set_rows(CyberKitDOMHTMLTextAreaElement* self,
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_text_area_element_get_cols(CyberKitDOMHTMLTextAreaElement* self);
@@ -209,7 +209,7 @@ webkit_dom_html_text_area_element_get_cols(CyberKitDOMHTMLTextAreaElement* self)
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_cols(CyberKitDOMHTMLTextAreaElement* self, glong value);
@@ -220,7 +220,7 @@ webkit_dom_html_text_area_element_set_cols(CyberKitDOMHTMLTextAreaElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_text_area_element_get_area_type(CyberKitDOMHTMLTextAreaElement* self);
@@ -231,7 +231,7 @@ webkit_dom_html_text_area_element_get_area_type(CyberKitDOMHTMLTextAreaElement* 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_text_area_element_get_default_value(CyberKitDOMHTMLTextAreaElement* self);
@@ -242,7 +242,7 @@ webkit_dom_html_text_area_element_get_default_value(CyberKitDOMHTMLTextAreaEleme
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_default_value(CyberKitDOMHTMLTextAreaElement* self, const gchar* value);
@@ -253,7 +253,7 @@ webkit_dom_html_text_area_element_set_default_value(CyberKitDOMHTMLTextAreaEleme
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_text_area_element_get_value(CyberKitDOMHTMLTextAreaElement* self);
@@ -264,7 +264,7 @@ webkit_dom_html_text_area_element_get_value(CyberKitDOMHTMLTextAreaElement* self
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_value(CyberKitDOMHTMLTextAreaElement* self, const gchar* value);
@@ -275,7 +275,7 @@ webkit_dom_html_text_area_element_set_value(CyberKitDOMHTMLTextAreaElement* self
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_text_area_element_get_will_validate(CyberKitDOMHTMLTextAreaElement* self);
@@ -286,7 +286,7 @@ webkit_dom_html_text_area_element_get_will_validate(CyberKitDOMHTMLTextAreaEleme
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_text_area_element_get_selection_start(CyberKitDOMHTMLTextAreaElement* self);
@@ -297,7 +297,7 @@ webkit_dom_html_text_area_element_get_selection_start(CyberKitDOMHTMLTextAreaEle
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_selection_start(CyberKitDOMHTMLTextAreaElement* self, glong value);
@@ -308,7 +308,7 @@ webkit_dom_html_text_area_element_set_selection_start(CyberKitDOMHTMLTextAreaEle
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_text_area_element_get_selection_end(CyberKitDOMHTMLTextAreaElement* self);
@@ -319,7 +319,7 @@ webkit_dom_html_text_area_element_get_selection_end(CyberKitDOMHTMLTextAreaEleme
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_text_area_element_set_selection_end(CyberKitDOMHTMLTextAreaElement* self, glong value);
@@ -330,7 +330,7 @@ webkit_dom_html_text_area_element_set_selection_end(CyberKitDOMHTMLTextAreaEleme
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean webkit_dom_html_text_area_element_is_edited(CyberKitDOMHTMLTextAreaElement* input);
 

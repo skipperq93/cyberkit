@@ -46,7 +46,7 @@
 
 #if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/SeparatedLayerAdditions.h>
+#import <CyberKitAdditions/SeparatedLayerAdditions.h>
 #else
 static void dumpSeparatedLayerProperties(TextStream&, CALayer *) { }
 #endif
@@ -111,7 +111,7 @@ static void dumpSeparatedLayerProperties(TextStream&, CALayer *) { }
 - (BOOL)_mayContainEditableElementsInRect:(CGRect)rect
 {
 #if ENABLE(EDITABLE_REGION)
-    return WebKit::mayContainEditableElementsInRect(_contentView.get(), [self convertRect:rect toView:_contentView.get()]);
+    return CyberKit::mayContainEditableElementsInRect(_contentView.get(), [self convertRect:rect toView:_contentView.get()]);
 #else
     return NO;
 #endif
@@ -316,7 +316,7 @@ static void dumpUIView(TextStream& ts, UIView *view)
 
 - (NSDictionary *)_propertiesOfLayerWithID:(unsigned long long)layerID
 {
-    CALayer* layer = downcast<WebKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).layerWithIDForTesting({ makeObjectIdentifier<CyberCore::GraphicsLayer::PlatformLayerIDType>(layerID), _page->process().coreProcessIdentifier() });
+    CALayer* layer = downcast<CyberKit::RemoteLayerTreeDrawingAreaProxy>(*_page->drawingArea()).layerWithIDForTesting({ makeObjectIdentifier<CyberCore::GraphicsLayer::PlatformLayerIDType>(layerID), _page->process().coreProcessIdentifier() });
     if (!layer)
         return nil;
 

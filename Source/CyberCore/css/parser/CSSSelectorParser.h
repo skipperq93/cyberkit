@@ -35,7 +35,7 @@
 #include "CSSSelectorList.h"
 #include "StyleSheetContents.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSParserTokenRange;
 class CSSSelectorList;
@@ -111,4 +111,4 @@ private:
 
 std::optional<CSSSelectorList> parseCSSSelector(CSSParserTokenRange, const CSSParserContext&, StyleSheetContents*, CSSSelectorParser::IsNestedContext);
 
-} // namespace WebCore
+} // namespace CyberCore

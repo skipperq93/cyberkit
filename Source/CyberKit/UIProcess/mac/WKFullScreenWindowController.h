@@ -30,7 +30,7 @@
 #import <wtf/NakedRef.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebKit { 
+namespace CyberKit { 
 class LayerTreeContext;
 class WebPageProxy;
 }
@@ -47,7 +47,7 @@ typedef enum FullScreenState : NSInteger FullScreenState;
 @interface WKFullScreenWindowController : NSWindowController<NSWindowDelegate> {
 @private
     NSView *_webView; // Cannot be retained, see <rdar://problem/14884666>.
-    NakedPtr<WebKit::WebPageProxy> _page;
+    NakedPtr<CyberKit::WebPageProxy> _page;
     RetainPtr<CyberCoreFullScreenPlaceholderView> _webViewPlaceholder;
     RetainPtr<NSView> _exitPlaceholder;
     RetainPtr<NSView> _clipView;
@@ -68,7 +68,7 @@ typedef enum FullScreenState : NSInteger FullScreenState;
 @property (readonly) NSRect finalFrame;
 @property (assign) NSArray *savedConstraints;
 
-- (id)initWithWindow:(NSWindow *)window webView:(NSView *)webView page:(NakedRef<WebKit::WebPageProxy>)page;
+- (id)initWithWindow:(NSWindow *)window webView:(NSView *)webView page:(NakedRef<CyberKit::WebPageProxy>)page;
 
 - (CyberCoreFullScreenPlaceholderView*)webViewPlaceholder;
 

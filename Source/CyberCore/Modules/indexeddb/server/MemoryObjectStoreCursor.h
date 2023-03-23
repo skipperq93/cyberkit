@@ -29,7 +29,7 @@
 #include "IDBKeyData.h"
 #include "MemoryCursor.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 class MemoryObjectStore;
@@ -65,4 +65,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

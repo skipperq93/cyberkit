@@ -29,7 +29,7 @@
 #include "SpaceSplitString.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Attr;
 class MutableStyleProperties;
@@ -341,12 +341,12 @@ inline Attribute& UniqueElementData::attributeAt(unsigned index)
     return m_attributeVector.at(index);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ShareableElementData)
-    static bool isType(const WebCore::ElementData& elementData) { return !elementData.isUnique(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ShareableElementData)
+    static bool isType(const CyberCore::ElementData& elementData) { return !elementData.isUnique(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::UniqueElementData)
-    static bool isType(const WebCore::ElementData& elementData) { return elementData.isUnique(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::UniqueElementData)
+    static bool isType(const CyberCore::ElementData& elementData) { return elementData.isUnique(); }
 SPECIALIZE_TYPE_TRAITS_END()

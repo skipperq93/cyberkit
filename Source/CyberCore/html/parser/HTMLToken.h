@@ -28,7 +28,7 @@
 
 #include "Attribute.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DoctypeData {
     WTF_MAKE_FAST_ALLOCATED;
@@ -442,4 +442,4 @@ inline const HTMLToken::Attribute* findAttribute(const HTMLToken::AttributeList&
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 
 @protocol _WKAutomationSessionDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class AutomationSessionClient final : public API::AutomationSessionClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -45,10 +45,10 @@ private:
     void didDisconnectFromRemote(WebAutomationSession&) override;
 
     void requestNewPageWithOptions(WebAutomationSession&, API::AutomationSessionBrowsingContextOptions, CompletionHandler<void(WebPageProxy*)>&&) override;
-    void requestSwitchToPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&&) override;
-    void requestHideWindowOfPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&&) override;
-    void requestRestoreWindowOfPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&&) override;
-    void requestMaximizeWindowOfPage(WebKit::WebAutomationSession&, WebKit::WebPageProxy&, CompletionHandler<void()>&&) override;
+    void requestSwitchToPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&&) override;
+    void requestHideWindowOfPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&&) override;
+    void requestRestoreWindowOfPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&&) override;
+    void requestMaximizeWindowOfPage(CyberKit::WebAutomationSession&, CyberKit::WebPageProxy&, CompletionHandler<void()>&&) override;
 
     bool isShowingJavaScriptDialogOnPage(WebAutomationSession&, WebPageProxy&) override;
     void dismissCurrentJavaScriptDialogOnPage(WebAutomationSession&, WebPageProxy&) override;
@@ -78,6 +78,6 @@ private:
     } m_delegateMethods;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // AutomationSessionClient_h

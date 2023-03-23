@@ -18,22 +18,22 @@
  */
 
 #include "config.h"
-#include "WebKitRemoteInspectorProtocolHandler.h"
+#include "CyberKitRemoteInspectorProtocolHandler.h"
 
 #if ENABLE(REMOTE_INSPECTOR)
 
 #include "APIContentWorld.h"
-#include "WebKitError.h"
-#include "WebKitNavigationPolicyDecision.h"
-#include "WebKitUserContentManagerPrivate.h"
-#include "WebKitWebContextPrivate.h"
+#include "CyberKitError.h"
+#include "CyberKitNavigationPolicyDecision.h"
+#include "CyberKitUserContentManagerPrivate.h"
+#include "CyberKitWebContextPrivate.h"
 #include "WebPageProxy.h"
 #include "WebScriptMessageHandler.h"
 #include <wtf/URL.h>
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 class ScriptMessageClient final : public WebScriptMessageHandler::Client {
@@ -70,9 +70,9 @@ private:
     RemoteInspectorProtocolHandler& m_inspectorProtocolHandler;
 };
 
-RemoteInspectorProtocolHandler::RemoteInspectorProtocolHandler(WebKitWebContext* context)
+RemoteInspectorProtocolHandler::RemoteInspectorProtocolHandler(CyberKitWebContext* context)
 {
-    webkit_web_context_register_uri_scheme(context, "inspector", [](WebKitURISchemeRequest* request, gpointer userData) {
+    webkit_web_context_register_uri_scheme(context, "inspector", [](CyberKitURISchemeRequest* request, gpointer userData) {
         static_cast<RemoteInspectorProtocolHandler*>(userData)->handleRequest(request);
     }, this, nullptr);
 }
@@ -90,17 +90,17 @@ RemoteInspectorProtocolHandler::~RemoteInspectorProtocolHandler()
     }
 }
 
-void RemoteInspectorProtocolHandler::webViewDestroyed(RemoteInspectorProtocolHandler* inspectorProtocolHandler, WebKitWebView* webView)
+void RemoteInspectorProtocolHandler::webViewDestroyed(RemoteInspectorProtocolHandler* inspectorProtocolHandler, CyberKitWebView* webView)
 {
     inspectorProtocolHandler->m_webViews.remove(webView);
 }
 
-void RemoteInspectorProtocolHandler::userContentManagerDestroyed(RemoteInspectorProtocolHandler* inspectorProtocolHandler, WebKitUserContentManager* userContentManager)
+void RemoteInspectorProtocolHandler::userContentManagerDestroyed(RemoteInspectorProtocolHandler* inspectorProtocolHandler, CyberKitUserContentManager* userContentManager)
 {
     inspectorProtocolHandler->m_userContentManagers.remove(userContentManager);
 }
 
-void RemoteInspectorProtocolHandler::handleRequest(WebKitURISchemeRequest* request)
+void RemoteInspectorProtocolHandler::handleRequest(CyberKitURISchemeRequest* request)
 {
     URL requestURL = URL(String::fromLatin1(webkit_uri_scheme_request_get_uri(request)));
     if (!requestURL.port()) {
@@ -113,7 +113,7 @@ void RemoteInspectorProtocolHandler::handleRequest(WebKitURISchemeRequest* reque
     ASSERT(webView);
     auto webViewResult = m_webViews.add(webView, nullptr);
     if (webViewResult.isNewEntry) {
-        g_signal_connect(webView, "notify::uri", G_CALLBACK(+[](WebKitWebView* webView, GParamSpec*, RemoteInspectorProtocolHandler* handler) {
+        g_signal_connect(webView, "notify::uri", G_CALLBACK(+[](CyberKitWebView* webView, GParamSpec*, RemoteInspectorProtocolHandler* handler) {
             URL webViewURL = URL(String::fromUTF8(webkit_web_view_get_uri(webView)));
             if (!webViewURL.protocolIs("inspector"_s) || !handler->m_inspectorClients.contains(webViewURL.hostAndPort())) {
                 g_signal_handlers_disconnect_by_data(webView, handler);
@@ -149,7 +149,7 @@ void RemoteInspectorProtocolHandler::inspect(const String& hostAndPort, uint64_t
         client->inspect(connectionID, tatgetID, targetType);
 }
 
-void RemoteInspectorProtocolHandler::updateTargetList(WebKitWebView* webView)
+void RemoteInspectorProtocolHandler::updateTargetList(CyberKitWebView* webView)
 {
     auto* clientForWebView = m_webViews.get(webView);
     if (!clientForWebView)
@@ -162,7 +162,7 @@ void RemoteInspectorProtocolHandler::updateTargetList(WebKitWebView* webView)
     g_string_free(script, TRUE);
 }
 
-void RemoteInspectorProtocolHandler::webViewLoadChanged(WebKitWebView* webView, WebKitLoadEvent event, RemoteInspectorProtocolHandler* handler)
+void RemoteInspectorProtocolHandler::webViewLoadChanged(CyberKitWebView* webView, CyberKitLoadEvent event, RemoteInspectorProtocolHandler* handler)
 {
     if (event != WEBKIT_LOAD_FINISHED)
         return;
@@ -197,6 +197,6 @@ void RemoteInspectorProtocolHandler::connectionClosed(RemoteInspectorClient& cli
     m_inspectorClients.remove(client.hostAndPort());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(REMOTE_INSPECTOR)

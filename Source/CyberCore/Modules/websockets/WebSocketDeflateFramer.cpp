@@ -37,7 +37,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebSocketExtensionDeflateFrame final : public WebSocketExtensionProcessor {
     WTF_MAKE_FAST_ALLOCATED;
@@ -211,4 +211,4 @@ void WebSocketDeflateFramer::didFail()
     resetInflateContext();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

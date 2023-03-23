@@ -31,7 +31,7 @@
 #include <pal/graphics/WebGPU/WebGPUVertexState.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUVertexState : public GPUProgrammableStage {
     PAL::WebGPU::VertexState convertToBacking() const

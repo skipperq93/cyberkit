@@ -37,10 +37,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /*!
- @abstract Indicates which local files WebKit can access when loading content.
+ @abstract Indicates which local files CyberKit can access when loading content.
  @discussion If NSReadAccessURLDocumentOption references a single file, only that file may be
- loaded by WebKit. If NSReadAccessURLDocumentOption references a directory, files inside that
- directory may be loaded by WebKit.
+ loaded by CyberKit. If NSReadAccessURLDocumentOption references a directory, files inside that
+ directory may be loaded by CyberKit.
 */
 WK_EXTERN NSAttributedStringDocumentReadingOptionKey const NSReadAccessURLDocumentOption
     NS_SWIFT_NAME(readAccessURL) WK_API_AVAILABLE(macos(10.15), ios(13.0));
@@ -56,9 +56,9 @@ typedef void (^NSAttributedStringCompletionHandler)(NSAttributedString * _Nullab
 
 /*!
  @discussion Extension of @link //apple_ref/occ/NSAttributedString NSAttributedString @/link to
- create attributed strings from HTML content using WebKit.
+ create attributed strings from HTML content using CyberKit.
 */
-@interface NSAttributedString (NSAttributedStringWebKitAdditions)
+@interface NSAttributedString (NSAttributedStringCyberKitAdditions)
 
 /*!
  @abstract Loads an HTML URL request and converts the contents into an attributed string.
@@ -81,8 +81,8 @@ typedef void (^NSAttributedStringCompletionHandler)(NSAttributedString * _Nullab
  @param completionHandler A block to invoke when the operation completes or fails.
  @discussion The completionHandler is passed the attributed string result along with any
  document-level attributes, or an error. If NSReadAccessURLDocumentOption references a single file,
- only that file may be loaded by WebKit. If NSReadAccessURLDocumentOption references a directory,
- files inside that directory may be loaded by WebKit.
+ only that file may be loaded by CyberKit. If NSReadAccessURLDocumentOption references a directory,
+ files inside that directory may be loaded by CyberKit.
 */
 + (void)loadFromHTMLWithFileURL:(NSURL *)fileURL options:(NSDictionary<NSAttributedStringDocumentReadingOptionKey, id> *)options completionHandler:(NSAttributedStringCompletionHandler)completionHandler
     NS_SWIFT_NAME(loadFromHTML(fileURL:options:completionHandler:)) WK_SWIFT_ASYNC_NAME(fromHTML(fileURL:options:)) WK_API_AVAILABLE(macos(10.15), ios(13.0));

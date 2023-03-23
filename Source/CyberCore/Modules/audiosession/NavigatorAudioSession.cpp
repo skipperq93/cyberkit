@@ -31,7 +31,7 @@
 #include "DOMAudioSession.h"
 #include "Navigator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorAudioSession::NavigatorAudioSession()
 {

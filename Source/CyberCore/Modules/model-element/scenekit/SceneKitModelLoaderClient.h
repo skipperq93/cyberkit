@@ -30,7 +30,7 @@
 #import <wtf/Forward.h>
 #import <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError;
 class SceneKitModel;

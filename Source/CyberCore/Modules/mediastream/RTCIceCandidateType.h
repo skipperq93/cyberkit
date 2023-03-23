@@ -24,8 +24,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCIceCandidateType { Host, Srflx, Prflx, Relay };
 
-} // namespace WebCore
+} // namespace CyberCore

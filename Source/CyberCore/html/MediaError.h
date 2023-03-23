@@ -29,7 +29,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaError : public RefCounted<MediaError> {
 public:
@@ -61,6 +61,6 @@ private:
     String m_message;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

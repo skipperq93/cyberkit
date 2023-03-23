@@ -34,7 +34,7 @@
 #include "PaymentAddress.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class PaymentRequest;
@@ -131,6 +131,6 @@ private:
     RefPtr<PendingActivity<PaymentResponse>> m_pendingActivity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

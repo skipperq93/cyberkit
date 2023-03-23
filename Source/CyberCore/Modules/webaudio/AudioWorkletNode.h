@@ -39,7 +39,7 @@ namespace JSC {
 class JSGlobalObject;
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioParamMap;
 class AudioWorkletProcessor;
@@ -99,6 +99,6 @@ private:
     bool m_wasOutputChannelCountGiven { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

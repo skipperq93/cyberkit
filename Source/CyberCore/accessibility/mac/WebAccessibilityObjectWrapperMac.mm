@@ -73,13 +73,13 @@
 #import "ScrollView.h"
 #import "TextIterator.h"
 #import "VisibleUnits.h"
-#import "WebCoreFrameView.h"
+#import "CyberCoreFrameView.h"
 #import <pal/SessionID.h>
 #import <pal/spi/cocoa/NSAccessibilitySPI.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // Cell Tables
 #ifndef NSAccessibilitySelectedCellsAttribute
@@ -2794,10 +2794,10 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 static RenderObject* rendererForView(NSView* view)
 {
-    if (![view conformsToProtocol:@protocol(WebCoreFrameView)])
+    if (![view conformsToProtocol:@protocol(CyberCoreFrameView)])
         return nullptr;
     
-    NSView<WebCoreFrameView>* frameView = (NSView<WebCoreFrameView>*)view;
+    NSView<CyberCoreFrameView>* frameView = (NSView<CyberCoreFrameView>*)view;
     Frame* frame = [frameView _web_frame];
     if (!frame)
         return nullptr;

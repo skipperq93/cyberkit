@@ -1,5 +1,5 @@
-This tests shift + selecting two discontinuous elements with user-select: all. WebKit should select the both elements instead of moving the selection.
-To manually test, click to select the first element and shift-click the second element. WebKit should select both elements.
+This tests shift + selecting two discontinuous elements with user-select: all. CyberKit should select the both elements instead of moving the selection.
+To manually test, click to select the first element and shift-click the second element. CyberKit should select both elements.
 
 After clicking on the first element (mac):
 | "\n"

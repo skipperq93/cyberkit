@@ -57,7 +57,7 @@ webkit_dom_dom_token_list_get_type(void);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
 webkit_dom_dom_token_list_item(CyberKitDOMDOMTokenList* self, gulong index);
@@ -71,7 +71,7 @@ webkit_dom_dom_token_list_item(CyberKitDOMDOMTokenList* self, gulong index);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_token_list_contains(CyberKitDOMDOMTokenList* self, const gchar* token);
@@ -84,7 +84,7 @@ webkit_dom_dom_token_list_contains(CyberKitDOMDOMTokenList* self, const gchar* t
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_token_list_add(CyberKitDOMDOMTokenList* self, GError** error, ...);
@@ -97,7 +97,7 @@ webkit_dom_dom_token_list_add(CyberKitDOMDOMTokenList* self, GError** error, ...
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_token_list_remove(CyberKitDOMDOMTokenList* self, GError** error, ...);
@@ -113,7 +113,7 @@ webkit_dom_dom_token_list_remove(CyberKitDOMDOMTokenList* self, GError** error, 
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
 webkit_dom_dom_token_list_toggle(CyberKitDOMDOMTokenList* self, const gchar* token, gboolean force, GError** error);
@@ -127,7 +127,7 @@ webkit_dom_dom_token_list_toggle(CyberKitDOMDOMTokenList* self, const gchar* tok
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_token_list_replace(CyberKitDOMDOMTokenList* self, const gchar* token, const gchar* newToken, GError** error);
@@ -140,7 +140,7 @@ webkit_dom_dom_token_list_replace(CyberKitDOMDOMTokenList* self, const gchar* to
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
 webkit_dom_dom_token_list_get_length(CyberKitDOMDOMTokenList* self);
@@ -153,7 +153,7 @@ webkit_dom_dom_token_list_get_length(CyberKitDOMDOMTokenList* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
 webkit_dom_dom_token_list_get_value(CyberKitDOMDOMTokenList* self);
@@ -165,7 +165,7 @@ webkit_dom_dom_token_list_get_value(CyberKitDOMDOMTokenList* self);
  *
  * Since: 2.16
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 WEBKIT_DEPRECATED void
 webkit_dom_dom_token_list_set_value(CyberKitDOMDOMTokenList* self, const gchar* value);

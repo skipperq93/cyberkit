@@ -30,7 +30,7 @@ from steps import (AddReviewerToCommitMessage, ApplyPatch, ApplyWatchList, Canon
                    DownloadBuiltProduct, ExtractBuiltProduct, FetchBranches, FindModifiedLayoutTests,
                    InstallGtkDependencies, InstallWpeDependencies, KillOldProcesses, PrintConfiguration, PushCommitToCyberKitRepo, PushPullRequestBranch,
                    MapBranchAlias, RunAPITests, RunBindingsTests, RunBuildCyberKitOrgUnitTests, RunBuildbotCheckConfigForBuildCyberKit, RunBuildbotCheckConfigForEWS,
-                   RunEWSUnitTests, RunResultsdbpyTests, RunJavaScriptCoreTests, RunCyberKit1Tests, RunCyberKitPerlTests, RunCyberKitPyPython2Tests,
+                   RunEWSUnitTests, RunResultsdbpyTests, RunCyberScriptCoreTests, RunCyberKit1Tests, RunCyberKitPerlTests, RunCyberKitPyPython2Tests,
                    RunCyberKitPyPython3Tests, RunCyberKitTests, RunCyberKitTestsRedTree, RunCyberKitTestsInStressMode, RunCyberKitTestsInStressGuardmallocMode,
                    SetBuildSummary, ShowIdentifier, TriggerCrashLogSubmission, UpdateWorkingDirectory, UpdatePullRequest,
                    ValidateCommitMessage, ValidateChange, ValidateCommitterAndReviewer, WaitForCrashCollection,
@@ -191,7 +191,7 @@ class JSCBuildAndTestsFactory(Factory):
         self.addStep(ValidateChange(addURLs=False))
         self.addStep(CompileJSC(skipUpload=True))
         if runTests.lower() == 'true':
-            self.addStep(RunJavaScriptCoreTests())
+            self.addStep(RunCyberScriptCoreTests())
 
 
 class JSCTestsFactory(Factory):
@@ -200,7 +200,7 @@ class JSCTestsFactory(Factory):
         self.addStep(DownloadBuiltProduct())
         self.addStep(ExtractBuiltProduct())
         self.addStep(KillOldProcesses())
-        self.addStep(RunJavaScriptCoreTests())
+        self.addStep(RunCyberScriptCoreTests())
 
 
 class APITestsFactory(TestFactory):

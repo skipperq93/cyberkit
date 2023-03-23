@@ -32,7 +32,7 @@
 #include <CyberCore/AudioTrackPrivate.h>
 #include <CyberCore/MediaPlayerIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class MediaPlayerPrivateRemote;
@@ -72,6 +72,6 @@ private:
     TrackPrivateRemoteIdentifier m_identifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

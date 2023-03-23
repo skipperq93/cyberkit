@@ -37,7 +37,7 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleSheet;
 class CSSStyleSheetObservableArray;
@@ -177,4 +177,4 @@ inline bool TreeScope::containsMultipleElementsWithName(const AtomString& name) 
 
 TreeScope* commonTreeScope(Node*, Node*);
 
-} // namespace WebCore
+} // namespace CyberCore

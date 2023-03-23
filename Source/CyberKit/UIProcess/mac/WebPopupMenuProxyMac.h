@@ -34,7 +34,7 @@
 OBJC_CLASS NSPopUpButtonCell;
 OBJC_CLASS WKView;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -60,7 +60,7 @@ private:
     bool m_wasCanceled;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(APPKIT)
 

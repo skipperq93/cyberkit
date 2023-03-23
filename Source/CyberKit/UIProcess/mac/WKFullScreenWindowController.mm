@@ -70,7 +70,7 @@ enum FullScreenState : NSInteger {
 
 @interface WKFullScreenWindowController (Private) <NSAnimationDelegate>
 - (void)_replaceView:(NSView *)view with:(NSView *)otherView;
-- (WebKit::WebFullScreenManagerProxy *)_manager;
+- (CyberKit::WebFullScreenManagerProxy *)_manager;
 - (void)_startEnterFullScreenAnimationWithDuration:(NSTimeInterval)duration;
 - (void)_startExitFullScreenAnimationWithDuration:(NSTimeInterval)duration;
 @end
@@ -87,12 +87,12 @@ static void makeResponderFirstResponderIfDescendantOfView(NSWindow *window, NSRe
 }
 
 @implementation WKFullScreenWindowController {
-    std::unique_ptr<WebKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver> _pipObserver;
+    std::unique_ptr<CyberKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver> _pipObserver;
 }
 
 #pragma mark -
 #pragma mark Initialization
-- (id)initWithWindow:(NSWindow *)window webView:(NSView *)webView page:(NakedRef<WebKit::WebPageProxy>)page
+- (id)initWithWindow:(NSWindow *)window webView:(NSView *)webView page:(NakedRef<CyberKit::WebPageProxy>)page
 {
     self = [super initWithWindow:window];
     if (!self)
@@ -378,7 +378,7 @@ static const float minVideoWidth = 468; // Keep in sync with `--controls-bar-wid
             eventNumber:0
             clickCount:0
             pressure:0];
-        WebKit::NativeWebMouseEvent webEvent(fakeEvent, nil, _webView);
+        CyberKit::NativeWebMouseEvent webEvent(fakeEvent, nil, _webView);
         _page->handleMouseEvent(webEvent);
     }
 
@@ -479,7 +479,7 @@ static RetainPtr<CGImageRef> takeWindowSnapshot(CGSWindowID windowID, bool captu
 {
     if (_fullScreenState == InFullScreen) {
         // If we are currently in the InFullScreen state, this notification is unexpected, meaning
-        // fullscreen was exited without being initiated by WebKit. Do not return early, but continue to
+        // fullscreen was exited without being initiated by CyberKit. Do not return early, but continue to
         // clean up our state by calling those methods which would have been called by -exitFullscreen,
         // and proceed to close the fullscreen window.
         [self _manager]->requestExitFullScreen();
@@ -612,7 +612,7 @@ static RetainPtr<CGImageRef> takeWindowSnapshot(CGSWindowID windowID, bool captu
     if (_pipObserver)
         return;
 
-    _pipObserver = WTF::makeUnique<WebKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver>([self] (bool inPiP) {
+    _pipObserver = WTF::makeUnique<CyberKit::VideoFullscreenManagerProxy::VideoInPictureInPictureDidChangeObserver>([self] (bool inPiP) {
         if (inPiP)
             [self didEnterPictureInPicture];
         else
@@ -690,7 +690,7 @@ static RetainPtr<CGImageRef> takeWindowSnapshot(CGSWindowID windowID, bool captu
 #pragma mark -
 #pragma mark Internal Interface
 
-- (WebKit::WebFullScreenManagerProxy*)_manager
+- (CyberKit::WebFullScreenManagerProxy*)_manager
 {
     if (!_page)
         return nullptr;
@@ -698,7 +698,7 @@ static RetainPtr<CGImageRef> takeWindowSnapshot(CGSWindowID windowID, bool captu
     return _page->fullScreenManager();
 }
 
-- (WebKit::VideoFullscreenManagerProxy*)_videoFullscreenManager
+- (CyberKit::VideoFullscreenManagerProxy*)_videoFullscreenManager
 {
     if (!_page)
         return nullptr;

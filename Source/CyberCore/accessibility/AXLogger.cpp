@@ -41,7 +41,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED
 
@@ -745,4 +745,4 @@ void streamSubtree(TextStream& stream, const RefPtr<AXCoreObject>& object, const
     stream.decreaseIndent();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

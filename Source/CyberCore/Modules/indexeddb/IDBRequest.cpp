@@ -44,13 +44,13 @@
 #include "Logging.h"
 #include "ScriptExecutionContext.h"
 #include "ThreadSafeDataBuffer.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/StrongInlines.h>
 #include <variant>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBRequest);
@@ -196,7 +196,7 @@ void IDBRequest::setVersionChangeTransaction(IDBTransaction& transaction)
     m_transaction = &transaction;
 }
 
-RefPtr<WebCore::IDBTransaction> IDBRequest::transaction() const
+RefPtr<CyberCore::IDBTransaction> IDBRequest::transaction() const
 {
     ASSERT(canCurrentThreadAccessThreadLocalData(originThread()));
     return m_shouldExposeTransactionToDOM ? m_transaction : nullptr;
@@ -576,9 +576,9 @@ bool IDBRequest::willAbortTransactionAfterDispatchingEvent() const
     return !m_eventBeingDispatched->defaultPrevented() && m_eventBeingDispatched->type() == eventNames().errorEvent;
 }
 
-WebCoreOpaqueRoot root(IDBRequest* request)
+CyberCoreOpaqueRoot root(IDBRequest* request)
 {
-    return WebCoreOpaqueRoot { request };
+    return CyberCoreOpaqueRoot { request };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

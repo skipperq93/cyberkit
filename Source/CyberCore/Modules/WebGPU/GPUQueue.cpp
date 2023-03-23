@@ -36,7 +36,7 @@
 #include "OffscreenCanvas.h"
 #include "PixelBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPUQueue::label() const
 {
@@ -123,4 +123,4 @@ void GPUQueue::copyExternalImageToTexture(
     m_backing->writeTexture(destination.convertToBacking(), pixelBuffer->bytes(), sizeInBytes, dataLayout.convertToBacking(), convertToBacking(copySize));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

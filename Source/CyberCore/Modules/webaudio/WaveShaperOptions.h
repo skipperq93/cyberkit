@@ -30,7 +30,7 @@
 #include "OverSampleType.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WaveShaperOptions : AudioNodeOptions {
     std::optional<Vector<float>> curve;

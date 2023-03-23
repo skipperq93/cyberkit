@@ -40,7 +40,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/ListHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ClientOrigin;
 class IDBError;
@@ -183,4 +183,4 @@ private:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

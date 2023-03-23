@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BaseAudioContext;
 
@@ -103,4 +103,4 @@ private:
     Vector<std::unique_ptr<AudioFloatArray>> m_bandLimitedTables;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

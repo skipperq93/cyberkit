@@ -30,7 +30,7 @@
 #include "JSDocumentCustom.h"
 #include "NodeTraversal.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -48,4 +48,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return toJSNewlyCreated(lexicalGlobalObject, globalObject, Ref<XMLDocument>(document));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

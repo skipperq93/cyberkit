@@ -19,12 +19,12 @@
 
 #pragma once
 
-#include "WebKitURISchemeResponse.h"
+#include "CyberKitURISchemeResponse.h"
 #include <wtf/text/CString.h>
 
-int webKitURISchemeResponseGetStatusCode(const WebKitURISchemeResponse*);
-GInputStream* webKitURISchemeResponseGetStream(const WebKitURISchemeResponse*);
-const CString& webKitURISchemeResponseGetStatusMessage(const WebKitURISchemeResponse*);
-const CString& webKitURISchemeResponseGetContentType(const WebKitURISchemeResponse*);
-uint64_t webKitURISchemeResponseGetStreamLength(const WebKitURISchemeResponse*);
-SoupMessageHeaders* webKitURISchemeResponseGetHeaders(WebKitURISchemeResponse*);
+int webKitURISchemeResponseGetStatusCode(const CyberKitURISchemeResponse*);
+GInputStream* webKitURISchemeResponseGetStream(const CyberKitURISchemeResponse*);
+const CString& webKitURISchemeResponseGetStatusMessage(const CyberKitURISchemeResponse*);
+const CString& webKitURISchemeResponseGetContentType(const CyberKitURISchemeResponse*);
+uint64_t webKitURISchemeResponseGetStreamLength(const CyberKitURISchemeResponse*);
+SoupMessageHeaders* webKitURISchemeResponseGetHeaders(CyberKitURISchemeResponse*);

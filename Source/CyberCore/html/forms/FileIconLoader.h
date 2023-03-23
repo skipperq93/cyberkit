@@ -32,7 +32,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Icon;
 
@@ -54,4 +54,4 @@ private:
     FileIconLoaderClient* m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

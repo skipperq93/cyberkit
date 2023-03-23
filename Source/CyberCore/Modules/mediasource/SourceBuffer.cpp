@@ -55,7 +55,7 @@
 #include "VideoTrack.h"
 #include "VideoTrackList.h"
 #include "VideoTrackPrivate.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/JSCInlines.h>
 #include <CyberScriptCore/JSLock.h>
 #include <CyberScriptCore/VM.h>
@@ -65,7 +65,7 @@
 #include <wtf/StringPrintStream.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SourceBuffer);
 
@@ -1367,9 +1367,9 @@ size_t SourceBuffer::memoryCost() const
     return sizeof(SourceBuffer) + m_extraMemoryCost;
 }
 
-WebCoreOpaqueRoot SourceBuffer::opaqueRoot()
+CyberCoreOpaqueRoot SourceBuffer::opaqueRoot()
 {
-    return WebCoreOpaqueRoot { this };
+    return CyberCoreOpaqueRoot { this };
 }
 
 void SourceBuffer::memoryPressure()
@@ -1389,6 +1389,6 @@ WTFLogChannel& SourceBuffer::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

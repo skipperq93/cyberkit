@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RenderElement;
@@ -43,4 +43,4 @@ public:
     virtual ~CSSPropertyBlendingClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

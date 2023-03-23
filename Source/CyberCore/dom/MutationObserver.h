@@ -44,7 +44,7 @@ namespace JSC {
 class AbstractSlotVisitor;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLSlotElement;
@@ -130,4 +130,4 @@ private:
     unsigned m_priority;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 
 OBJC_CLASS NSData;
 
-namespace WebKit {
+namespace CyberKit {
 
 class MockCcidService final : public CcidService {
 public:
@@ -46,6 +46,6 @@ private:
     CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

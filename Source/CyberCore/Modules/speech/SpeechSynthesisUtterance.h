@@ -34,7 +34,7 @@
 #include "SpeechSynthesisVoice.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT SpeechSynthesisUtterance final : public PlatformSpeechSynthesisUtteranceClient, public RefCounted<SpeechSynthesisUtterance>, public EventTarget {
     WTF_MAKE_ISO_ALLOCATED(SpeechSynthesisUtterance);
@@ -91,6 +91,6 @@ private:
     UtteranceCompletionHandler m_completionHandler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

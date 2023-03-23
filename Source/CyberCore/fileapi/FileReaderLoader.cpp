@@ -51,7 +51,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const int defaultBufferLength = 32768;
 
@@ -368,4 +368,4 @@ void FileReaderLoader::setEncoding(StringView encoding)
         m_encoding = PAL::TextEncoding(encoding);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

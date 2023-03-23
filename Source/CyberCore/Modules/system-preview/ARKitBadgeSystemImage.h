@@ -37,7 +37,7 @@
 
 OBJC_CLASS CIContext;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ARKitBadgeSystemImage final : public SystemImage {
 public:
@@ -81,10 +81,10 @@ private:
     FloatSize m_imageSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ARKitBadgeSystemImage)
-    static bool isType(const WebCore::SystemImage& systemImage) { return systemImage.systemImageType() == WebCore::SystemImageType::ARKitBadge; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ARKitBadgeSystemImage)
+    static bool isType(const CyberCore::SystemImage& systemImage) { return systemImage.systemImageType() == CyberCore::SystemImageType::ARKitBadge; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(SYSTEM_PREVIEW)

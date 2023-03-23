@@ -29,10 +29,10 @@
 extern "C" {
 #endif
 
-extern void (*WebCoreWebThreadLock)(void);
-extern bool (*WebCoreWebThreadIsLockedOrDisabled)(void);
-extern bool (*WebCoreWebThreadIsEnabled)(void);
-extern void (*WebCoreWebThreadRun)(void (^block)());
+extern void (*CyberCoreWebThreadLock)(void);
+extern bool (*CyberCoreWebThreadIsLockedOrDisabled)(void);
+extern bool (*CyberCoreWebThreadIsEnabled)(void);
+extern void (*CyberCoreWebThreadRun)(void (^block)());
 
 #ifdef __cplusplus
 }

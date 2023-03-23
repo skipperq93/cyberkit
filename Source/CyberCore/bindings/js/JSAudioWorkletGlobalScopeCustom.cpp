@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_AUDIO)
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSAudioWorkletGlobalScope::visitAdditionalChildren(Visitor& visitor)
@@ -41,6 +41,6 @@ void JSAudioWorkletGlobalScope::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSAudioWorkletGlobalScope);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

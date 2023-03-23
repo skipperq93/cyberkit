@@ -19,65 +19,65 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitMemoryPressureSettings_h
-#define WebKitMemoryPressureSettings_h
+#ifndef CyberKitMemoryPressureSettings_h
+#define CyberKitMemoryPressureSettings_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_MEMORY_PRESSURE_SETTINGS (webkit_memory_pressure_settings_get_type())
 
-typedef struct _WebKitMemoryPressureSettings WebKitMemoryPressureSettings;
+typedef struct _CyberKitMemoryPressureSettings CyberKitMemoryPressureSettings;
 
 WEBKIT_API GType
 webkit_memory_pressure_settings_get_type                   (void);
 
-WEBKIT_API WebKitMemoryPressureSettings *
+WEBKIT_API CyberKitMemoryPressureSettings *
 webkit_memory_pressure_settings_new                        (void);
 
-WEBKIT_API WebKitMemoryPressureSettings *
-webkit_memory_pressure_settings_copy                       (WebKitMemoryPressureSettings *settings);
+WEBKIT_API CyberKitMemoryPressureSettings *
+webkit_memory_pressure_settings_copy                       (CyberKitMemoryPressureSettings *settings);
 
 WEBKIT_API void
-webkit_memory_pressure_settings_free                       (WebKitMemoryPressureSettings *settings);
+webkit_memory_pressure_settings_free                       (CyberKitMemoryPressureSettings *settings);
 
 WEBKIT_API void
-webkit_memory_pressure_settings_set_memory_limit           (WebKitMemoryPressureSettings *settings,
+webkit_memory_pressure_settings_set_memory_limit           (CyberKitMemoryPressureSettings *settings,
                                                             guint                         memory_limit);
 
 WEBKIT_API guint
-webkit_memory_pressure_settings_get_memory_limit           (WebKitMemoryPressureSettings *settings);
+webkit_memory_pressure_settings_get_memory_limit           (CyberKitMemoryPressureSettings *settings);
 
 WEBKIT_API void
-webkit_memory_pressure_settings_set_conservative_threshold (WebKitMemoryPressureSettings *settings,
+webkit_memory_pressure_settings_set_conservative_threshold (CyberKitMemoryPressureSettings *settings,
                                                             gdouble                       value);
 
 WEBKIT_API gdouble
-webkit_memory_pressure_settings_get_conservative_threshold (WebKitMemoryPressureSettings *settings);
+webkit_memory_pressure_settings_get_conservative_threshold (CyberKitMemoryPressureSettings *settings);
 
 WEBKIT_API void
-webkit_memory_pressure_settings_set_strict_threshold       (WebKitMemoryPressureSettings *settings,
+webkit_memory_pressure_settings_set_strict_threshold       (CyberKitMemoryPressureSettings *settings,
                                                             gdouble                       value);
 
 WEBKIT_API gdouble
-webkit_memory_pressure_settings_get_strict_threshold       (WebKitMemoryPressureSettings *settings);
+webkit_memory_pressure_settings_get_strict_threshold       (CyberKitMemoryPressureSettings *settings);
 
 WEBKIT_API void
-webkit_memory_pressure_settings_set_kill_threshold         (WebKitMemoryPressureSettings *settings,
+webkit_memory_pressure_settings_set_kill_threshold         (CyberKitMemoryPressureSettings *settings,
                                                             gdouble                       value);
 
 WEBKIT_API gdouble
-webkit_memory_pressure_settings_get_kill_threshold         (WebKitMemoryPressureSettings *settings);
+webkit_memory_pressure_settings_get_kill_threshold         (CyberKitMemoryPressureSettings *settings);
 
 WEBKIT_API void
-webkit_memory_pressure_settings_set_poll_interval          (WebKitMemoryPressureSettings *settings,
+webkit_memory_pressure_settings_set_poll_interval          (CyberKitMemoryPressureSettings *settings,
                                                             gdouble                       value);
 
 WEBKIT_API gdouble
-webkit_memory_pressure_settings_get_poll_interval          (WebKitMemoryPressureSettings *settings);
+webkit_memory_pressure_settings_get_poll_interval          (CyberKitMemoryPressureSettings *settings);
 
 G_END_DECLS
 
-#endif /* WebKitMemoryPressureSettings_h */
+#endif /* CyberKitMemoryPressureSettings_h */

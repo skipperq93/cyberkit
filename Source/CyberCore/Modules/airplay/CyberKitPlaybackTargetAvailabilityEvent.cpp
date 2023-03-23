@@ -31,7 +31,7 @@
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET_AVAILABILITY_API)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CyberKitPlaybackTargetAvailabilityEvent);
 
@@ -55,6 +55,6 @@ CyberKitPlaybackTargetAvailabilityEvent::CyberKitPlaybackTargetAvailabilityEvent
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET_AVAILABILITY_API)

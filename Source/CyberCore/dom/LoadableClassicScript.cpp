@@ -36,7 +36,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringImpl.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LoadableNonModuleScriptBase::LoadableNonModuleScriptBase(const AtomString& nonce, const AtomString& integrity, ReferrerPolicy policy, const AtomString& crossOriginMode, const String& charset, const AtomString& initiatorType, bool isInUserAgentShadowTree, bool isAsync)
     : LoadableScript(nonce, policy, crossOriginMode, charset, initiatorType, isInUserAgentShadowTree)

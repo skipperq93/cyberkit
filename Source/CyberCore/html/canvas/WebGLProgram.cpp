@@ -30,7 +30,7 @@
 
 #include "InspectorInstrumentation.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebGLContextGroup.h"
 #include "WebGLRenderingContextBase.h"
 #include "WebGLShader.h"
@@ -40,7 +40,7 @@
 #include <wtf/Locker.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Lock WebGLProgram::s_instancesLock;
 
@@ -206,8 +206,8 @@ bool WebGLProgram::detachShader(const AbstractLocker&, WebGLShader* shader)
 
 void WebGLProgram::addMembersToOpaqueRoots(const AbstractLocker&, JSC::AbstractSlotVisitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, m_vertexShader.get());
-    addWebCoreOpaqueRoot(visitor, m_fragmentShader.get());
+    addCyberCoreOpaqueRoot(visitor, m_vertexShader.get());
+    addCyberCoreOpaqueRoot(visitor, m_fragmentShader.get());
 }
 
 void WebGLProgram::cacheActiveAttribLocations(GraphicsContextGL* context3d)

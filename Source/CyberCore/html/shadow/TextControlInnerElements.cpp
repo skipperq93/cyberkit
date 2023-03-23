@@ -52,7 +52,7 @@
 #include <wtf/Ref.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextControlInnerContainer);
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextControlInnerElement);

@@ -33,7 +33,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 class Box;
 class ElementBox;

@@ -22,7 +22,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLDetailsElement;
 
@@ -50,4 +50,4 @@ private:
     bool supportsFocus() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

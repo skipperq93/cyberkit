@@ -19,8 +19,8 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitEditingCommands_h
-#define WebKitEditingCommands_h
+#ifndef CyberKitEditingCommands_h
+#define CyberKitEditingCommands_h
 
 G_BEGIN_DECLS
 
@@ -28,10 +28,10 @@ G_BEGIN_DECLS
  * WEBKIT_EDITING_COMMAND_CUT:
  *
  * The cut clipboard command. Copies the current selection inside
- * a #WebKitWebView to the clipboard and deletes the selected content.
+ * a #CyberKitWebView to the clipboard and deletes the selected content.
  * You can check whether it's possible to execute the command with
  * webkit_web_view_can_execute_editing_command(). In general it's
- * possible to cut to the clipboard when the #WebKitWebView content is
+ * possible to cut to the clipboard when the #CyberKitWebView content is
  * editable and there is an active selection.
  */
 #define WEBKIT_EDITING_COMMAND_CUT "Cut"
@@ -40,11 +40,11 @@ G_BEGIN_DECLS
  * WEBKIT_EDITING_COMMAND_COPY:
  *
  * The copy clipboard command. Copies the current selection inside
- * a #WebKitWebView to the clipboard.
+ * a #CyberKitWebView to the clipboard.
  * You can check whether it's possible to execute the command with
  * webkit_web_view_can_execute_editing_command(). In general it's
  * possible to copy to the clipboard when there is an active selection
- * inside the #WebKitWebView.
+ * inside the #CyberKitWebView.
  */
 #define WEBKIT_EDITING_COMMAND_COPY "Copy"
 
@@ -52,10 +52,10 @@ G_BEGIN_DECLS
  * WEBKIT_EDITING_COMMAND_PASTE:
  *
  * The paste clipboard command. Pastes the contents of the clipboard to
- * a #WebKitWebView.
+ * a #CyberKitWebView.
  * You can check whether it's possible to execute the command with
  * webkit_web_view_can_execute_editing_command(). In general it's possible
- * to paste from the clipboard when the #WebKitWebView content is editable
+ * to paste from the clipboard when the #CyberKitWebView content is editable
  * and clipboard is not empty.
  */
 #define WEBKIT_EDITING_COMMAND_PASTE "Paste"
@@ -64,10 +64,10 @@ G_BEGIN_DECLS
  * WEBKIT_EDITING_COMMAND_PASTE_AS_PLAIN_TEXT:
  *
  * The paste as plaintext clipboard command. Pastes the contents of the
- * clipboard to a #WebKitWebView, with formatting removed.
+ * clipboard to a #CyberKitWebView, with formatting removed.
  * You can check whether it's possible to execute the command with
  * webkit_web_view_can_execute_editing_command(). In general it's possible
- * to paste from the clipboard when the #WebKitWebView content is editable
+ * to paste from the clipboard when the #CyberKitWebView content is editable
  * and clipboard is not empty.
  *
  * Since: 2.30
@@ -78,9 +78,9 @@ G_BEGIN_DECLS
  * WEBKIT_EDITING_COMMAND_SELECT_ALL:
  *
  * The select all command. Selects all the content of the current text field in
- * a #WebKitWebView.
+ * a #CyberKitWebView.
  * It is always possible to select all text, no matter whether the
- * #WebKitWebView content is editable or not. You can still check it
+ * #CyberKitWebView content is editable or not. You can still check it
  * with webkit_web_view_can_execute_editing_command().
  */
 #define WEBKIT_EDITING_COMMAND_SELECT_ALL "SelectAll"
@@ -88,7 +88,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_EDITING_COMMAND_UNDO:
  *
- * The undo command. Undoes the last editing command in a #WebKitWebView.
+ * The undo command. Undoes the last editing command in a #CyberKitWebView.
  * You can check whether it's possible to execute the command with
  * webkit_web_view_can_execute_editing_command(). It's only possible
  * to undo a command after a previously executed editing operation.
@@ -99,7 +99,7 @@ G_BEGIN_DECLS
  * WEBKIT_EDITING_COMMAND_REDO:
  *
  * The redo command. Redoes a previously undone editing command in
- * a #WebKitWebView.
+ * a #CyberKitWebView.
  * You can check whether it's possible to execute the command with
  * webkit_web_view_can_execute_editing_command(). It's only possible
  * to redo a command when it has been previously undone.

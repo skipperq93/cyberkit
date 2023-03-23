@@ -38,7 +38,7 @@
 #include "MemoryObjectStore.h"
 #include "MemoryObjectStoreCursor.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 // The IndexedDB spec states the maximum value you can get from the key generator is 2^53.
@@ -641,4 +641,4 @@ void MemoryIDBBackingStore::close()
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

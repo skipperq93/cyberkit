@@ -39,7 +39,7 @@
 WTF_WEAK_LINK_FORCE_IMPORT(PLQueryRegistered);
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 void GPUProcessProxy::platformInitializeGPUProcessParameters(GPUProcessCreationParameters& parameters)
 {
@@ -52,7 +52,7 @@ bool GPUProcessProxy::isPowerLoggingInTaskMode()
 {
     CFDictionaryRef dictionary = nullptr;
     if (PLQueryRegistered)
-        dictionary = PLQueryRegistered(PLClientIDWebKit, CFSTR("TaskModeQuery"), nullptr);
+        dictionary = PLQueryRegistered(PLClientIDCyberKit, CFSTR("TaskModeQuery"), nullptr);
     if (!dictionary)
         return false;
     CFNumberRef taskModeRef = static_cast<CFNumberRef>(CFDictionaryGetValue(dictionary, CFSTR("Task Mode")));

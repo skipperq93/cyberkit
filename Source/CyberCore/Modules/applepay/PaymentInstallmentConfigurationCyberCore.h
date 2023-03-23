@@ -32,7 +32,7 @@
 OBJC_CLASS NSDictionary;
 OBJC_CLASS PKPaymentInstallmentConfiguration;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 struct ApplePayInstallmentConfiguration;
@@ -54,6 +54,6 @@ private:
     RetainPtr<PKPaymentInstallmentConfiguration> m_configuration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(PASSKIT_INSTALLMENTS)

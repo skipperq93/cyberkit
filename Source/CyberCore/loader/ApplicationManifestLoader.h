@@ -33,7 +33,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedApplicationManifest;
 class DocumentLoader;
@@ -61,6 +61,6 @@ private:
     CachedResourceHandle<CachedApplicationManifest> m_resource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLICATION_MANIFEST)

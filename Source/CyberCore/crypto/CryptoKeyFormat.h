@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CryptoKeyFormat {
     Raw,

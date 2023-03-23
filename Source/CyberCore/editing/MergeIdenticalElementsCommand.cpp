@@ -28,7 +28,7 @@
 
 #include "Element.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MergeIdenticalElementsCommand::MergeIdenticalElementsCommand(Ref<Element>&& first, Ref<Element>&& second)
     : SimpleEditCommand(first->document())
@@ -82,4 +82,4 @@ void MergeIdenticalElementsCommand::getNodesInCommand(HashSet<Ref<Node>>& nodes)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

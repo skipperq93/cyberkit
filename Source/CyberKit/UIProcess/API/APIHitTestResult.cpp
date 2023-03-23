@@ -23,7 +23,7 @@
 namespace API {
 using namespace CyberCore;
 
-Ref<HitTestResult> HitTestResult::create(const WebKit::WebHitTestResultData& hitTestResultData)
+Ref<HitTestResult> HitTestResult::create(const CyberKit::WebHitTestResultData& hitTestResultData)
 {
     return adoptRef(*new HitTestResult(hitTestResultData));
 }

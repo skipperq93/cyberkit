@@ -28,7 +28,7 @@
 
 #include "CSSUnits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSCalcSymbolTable::CSSCalcSymbolTable(std::initializer_list<std::tuple<CSSValueID, CSSUnitType, double>> initializer)
 {

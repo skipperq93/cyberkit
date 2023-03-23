@@ -31,12 +31,12 @@
 #include "ChromeClient.h"
 #include <wtf/UniqueRef.h>
 
-// Empty client classes for use by WebCore.
+// Empty client classes for use by CyberCore.
 //
 // First created for SVGImage as it had no way to access the current Page (nor should it, since Images are not tied to a page).
 // See http://bugs.webkit.org/show_bug.cgi?id=5971 for the original discussion about this file.
 
-namespace WebCore {
+namespace CyberCore {
 
 class DiagnosticLoggingClient;
 class EditorClient;

@@ -39,7 +39,7 @@
 #include <unicode/ubidi.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static inline InlineLayoutUnit spaceWidth(const FontCascade& fontCascade, bool canUseSimplifiedContentMeasuring)
@@ -73,7 +73,7 @@ InlineLayoutUnit TextUtil::width(const InlineTextBox& inlineTextBox, const FontC
     else {
         auto& style = inlineTextBox.style();
         auto directionalOverride = style.unicodeBidi() == UnicodeBidi::Override;
-        auto run = WebCore::TextRun { StringView(text).substring(from, to - from), contentLogicalLeft, { }, ExpansionBehavior::defaultBehavior(), directionalOverride ? style.direction() : TextDirection::LTR, directionalOverride };
+        auto run = CyberCore::TextRun { StringView(text).substring(from, to - from), contentLogicalLeft, { }, ExpansionBehavior::defaultBehavior(), directionalOverride ? style.direction() : TextDirection::LTR, directionalOverride };
         if (!style.collapseWhiteSpace() && style.tabSize())
             run.setTabSize(true, style.tabSize());
         width = fontCascade.width(run);
@@ -319,7 +319,7 @@ unsigned TextUtil::findNextBreakablePosition(LazyLineBreakIterator& lineBreakIte
 
     if (lineBreakIterator.mode() == LineBreakIteratorMode::Default) {
         if (breakNBSP)
-            return WebCore::nextBreakablePosition(lineBreakIterator, startPosition);
+            return CyberCore::nextBreakablePosition(lineBreakIterator, startPosition);
         return nextBreakablePositionIgnoringNBSP(lineBreakIterator, startPosition);
     }
 

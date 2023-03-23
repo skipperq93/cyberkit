@@ -39,13 +39,13 @@ static HashMap<WTF::String, ContentWorld*>& sharedWorldNameMap()
     return sharedMap;
 }
 
-static HashMap<WebKit::ContentWorldIdentifier, ContentWorld*>& sharedWorldIdentifierMap()
+static HashMap<CyberKit::ContentWorldIdentifier, ContentWorld*>& sharedWorldIdentifierMap()
 {
-    static NeverDestroyed<HashMap<WebKit::ContentWorldIdentifier, ContentWorld*>> sharedMap;
+    static NeverDestroyed<HashMap<CyberKit::ContentWorldIdentifier, ContentWorld*>> sharedMap;
     return sharedMap;
 }
 
-ContentWorld* ContentWorld::worldForIdentifier(WebKit::ContentWorldIdentifier identifier)
+ContentWorld* ContentWorld::worldForIdentifier(CyberKit::ContentWorldIdentifier identifier)
 {
     return sharedWorldIdentifierMap().get(identifier);
 }
@@ -57,19 +57,19 @@ ContentWorld::ContentWorld(const WTF::String& name)
     std::call_once(once, [] {
         // To make sure we don't use our shared pageContentWorld identifier for this
         // content world we're about to make, burn through one identifier.
-        auto identifier = WebKit::ContentWorldIdentifier::generate();
-        ASSERT_UNUSED(identifier, identifier.toUInt64() >= WebKit::pageContentWorldIdentifier().toUInt64());
+        auto identifier = CyberKit::ContentWorldIdentifier::generate();
+        ASSERT_UNUSED(identifier, identifier.toUInt64() >= CyberKit::pageContentWorldIdentifier().toUInt64());
     });
 
-    m_identifier = WebKit::ContentWorldIdentifier::generate();
+    m_identifier = CyberKit::ContentWorldIdentifier::generate();
     auto addResult = sharedWorldIdentifierMap().add(m_identifier, this);
     ASSERT_UNUSED(addResult, addResult.isNewEntry);
 }
 
-ContentWorld::ContentWorld(WebKit::ContentWorldIdentifier identifier)
+ContentWorld::ContentWorld(CyberKit::ContentWorldIdentifier identifier)
     : m_identifier(identifier)
 {
-    ASSERT(m_identifier == WebKit::pageContentWorldIdentifier());
+    ASSERT(m_identifier == CyberKit::pageContentWorldIdentifier());
 }
 
 Ref<ContentWorld> ContentWorld::sharedWorldWithName(const WTF::String& name)
@@ -85,7 +85,7 @@ Ref<ContentWorld> ContentWorld::sharedWorldWithName(const WTF::String& name)
 
 ContentWorld& ContentWorld::pageContentWorld()
 {
-    static NeverDestroyed<RefPtr<ContentWorld>> world(adoptRef(new ContentWorld(WebKit::pageContentWorldIdentifier())));
+    static NeverDestroyed<RefPtr<ContentWorld>> world(adoptRef(new ContentWorld(CyberKit::pageContentWorldIdentifier())));
     return *world.get();
 }
 
@@ -97,10 +97,10 @@ ContentWorld& ContentWorld::defaultClientWorld()
 
 ContentWorld::~ContentWorld()
 {
-    ASSERT(m_identifier != WebKit::pageContentWorldIdentifier());
+    ASSERT(m_identifier != CyberKit::pageContentWorldIdentifier());
 
     auto result = sharedWorldIdentifierMap().take(m_identifier);
-    ASSERT_UNUSED(result, result == this || m_identifier == WebKit::pageContentWorldIdentifier());
+    ASSERT_UNUSED(result, result == this || m_identifier == CyberKit::pageContentWorldIdentifier());
 
     if (!name().isNull()) {
         auto taken = sharedWorldNameMap().take(name());
@@ -111,13 +111,13 @@ ContentWorld::~ContentWorld()
         proxy->contentWorldDestroyed(*this);
 }
 
-void ContentWorld::addAssociatedUserContentControllerProxy(WebKit::WebUserContentControllerProxy& proxy)
+void ContentWorld::addAssociatedUserContentControllerProxy(CyberKit::WebUserContentControllerProxy& proxy)
 {
     auto addResult = m_associatedContentControllerProxies.add(&proxy);
     ASSERT_UNUSED(addResult, addResult.isNewEntry);
 }
 
-void ContentWorld::userContentControllerProxyDestroyed(WebKit::WebUserContentControllerProxy& proxy)
+void ContentWorld::userContentControllerProxyDestroyed(CyberKit::WebUserContentControllerProxy& proxy)
 {
     bool removed = m_associatedContentControllerProxies.remove(&proxy);
     ASSERT_UNUSED(removed, removed);

@@ -31,7 +31,7 @@
 #include "WebProcessPool.h"
 #include "WebsiteDataStoreParameters.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& parameters)
 {

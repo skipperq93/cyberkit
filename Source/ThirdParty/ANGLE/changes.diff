@@ -410,7 +410,7 @@ index 3eaa9a64e79af26faa786102ece3f0bdea84d090..2ecf7b40bd5a2edc3fd9d69841e266b6
  //
  // mtl_resource_spi.h:
 -//    Used to set Metal resource ownership identity with SPI.
--//    Purposefully empty header file. Actual implementation will be hosted in WebKit.
+-//    Purposefully empty header file. Actual implementation will be hosted in CyberKit.
 +//    Used to set Metal resource ownership identity with SPI
  //
 +

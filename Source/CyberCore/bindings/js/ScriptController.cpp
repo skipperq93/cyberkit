@@ -54,8 +54,8 @@
 #include "ScriptableDocumentParser.h"
 #include "Settings.h"
 #include "UserGestureIndicator.h"
-#include "WebCoreJITOperations.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJITOperations.h"
+#include "CyberCoreJSClientData.h"
 #include "runtime_root.h"
 #include <CyberScriptCore/AbstractModuleRecord.h>
 #include <CyberScriptCore/Debugger.h>
@@ -82,19 +82,19 @@
 
 #define SCRIPTCONTROLLER_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - ScriptController::" fmt, this, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
-enum class WebCoreProfileTag { };
+enum class CyberCoreProfileTag { };
 
 void ScriptController::initializeMainThread()
 {
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
-    WTF::registerProfileGenerationCallback<WebCoreProfileTag>("WebCore");
+    WTF::registerProfileGenerationCallback<CyberCoreProfileTag>("CyberCore");
 }
 
 ScriptController::ScriptController(Frame& frame)
@@ -931,6 +931,6 @@ void ScriptController::clearPendingImportMaps()
     jsWindowProxy(world).window()->clearPendingImportMaps();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef SCRIPTCONTROLLER_RELEASE_LOG_ERROR

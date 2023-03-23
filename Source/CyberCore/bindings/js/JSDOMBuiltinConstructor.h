@@ -23,7 +23,7 @@
 #include "JSDOMExceptionHandling.h"
 #include "JSDOMWrapperCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename JSClass> class JSDOMBuiltinConstructor final : public JSDOMBuiltinConstructorBase {
 public:
@@ -102,4 +102,4 @@ template<typename JSClass> inline JSC::EncodedJSValue JSC_HOST_CALL_ATTRIBUTES J
     return JSC::JSValue::encode(jsObject);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

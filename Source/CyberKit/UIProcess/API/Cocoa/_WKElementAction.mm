@@ -69,8 +69,8 @@ static UIActionIdentifier const WKElementActionPauseAllAnimationsIdentifier = @"
 static UIActionIdentifier const WKElementActionPlayAnimationIdentifier = @"WKElementActionPlayAnimation";
 static UIActionIdentifier const WKElementActionPauseAnimationIdentifier = @"WKElementActionPauseAnimation";
 
-static NSString * const webkitShowLinkPreviewsPreferenceKey = @"WebKitShowLinkPreviews";
-static NSString * const webkitShowLinkPreviewsPreferenceChangedNotification = @"WebKitShowLinkPreviewsPreferenceChanged";
+static NSString * const webkitShowLinkPreviewsPreferenceKey = @"CyberKitShowLinkPreviews";
+static NSString * const webkitShowLinkPreviewsPreferenceChangedNotification = @"CyberKitShowLinkPreviewsPreferenceChanged";
 
 @implementation _WKElementAction  {
     RetainPtr<NSString> _title;

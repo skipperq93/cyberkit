@@ -30,7 +30,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PictureInPictureWindow;
 
@@ -53,6 +53,6 @@ private:
     Ref<PictureInPictureWindow> m_pictureInPictureWindow;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PICTURE_IN_PICTURE_API)

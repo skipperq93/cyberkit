@@ -34,7 +34,7 @@
 OBJC_CLASS NSShadow;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontShadow {
 #if PLATFORM(COCOA)
@@ -52,4 +52,4 @@ WEBCORE_EXPORT FontShadow fontShadowFromNSShadow(NSShadow *);
 
 WEBCORE_EXPORT String serializationForCSS(const FontShadow&);
 
-} // namespace WebCore
+} // namespace CyberCore

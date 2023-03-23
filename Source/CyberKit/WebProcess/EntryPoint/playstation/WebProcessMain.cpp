@@ -59,11 +59,11 @@ int main(int argc, char** argv)
     loadLibraryOrExit(Fontconfig_LOAD_AT);
     loadLibraryOrExit(HarfBuzz_LOAD_AT);
     loadLibraryOrExit(Cairo_LOAD_AT);
-    loadLibraryOrExit(WebKitRequirements_LOAD_AT);
+    loadLibraryOrExit(CyberKitRequirements_LOAD_AT);
 #if !ENABLE(STATIC_JSC)
-    loadLibraryOrExit("libJavaScriptCore");
+    loadLibraryOrExit("libCyberScriptCore");
 #endif
-    loadLibraryOrExit("libWebKit");
+    loadLibraryOrExit("libCyberKit");
 
     char* coreProcessIdentifier = argv[1];
 
@@ -77,5 +77,5 @@ int main(int argc, char** argv)
         connectionIdentifier,
         0
     };
-    return WebKit::WebProcessMain(sizeof(internalArgv) / sizeof(char*), internalArgv);
+    return CyberKit::WebProcessMain(sizeof(internalArgv) / sizeof(char*), internalArgv);
 }

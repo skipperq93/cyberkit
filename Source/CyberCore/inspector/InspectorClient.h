@@ -33,7 +33,7 @@ namespace Inspector {
 class FrontendChannel;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class Frame;
@@ -81,16 +81,16 @@ public:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::InspectorClient::DeveloperPreference> {
+template<> struct EnumTraits<CyberCore::InspectorClient::DeveloperPreference> {
     using values = EnumValues<
-        WebCore::InspectorClient::DeveloperPreference,
-        WebCore::InspectorClient::DeveloperPreference::PrivateClickMeasurementDebugModeEnabled,
-        WebCore::InspectorClient::DeveloperPreference::ITPDebugModeEnabled,
-        WebCore::InspectorClient::DeveloperPreference::MockCaptureDevicesEnabled
+        CyberCore::InspectorClient::DeveloperPreference,
+        CyberCore::InspectorClient::DeveloperPreference::PrivateClickMeasurementDebugModeEnabled,
+        CyberCore::InspectorClient::DeveloperPreference::ITPDebugModeEnabled,
+        CyberCore::InspectorClient::DeveloperPreference::MockCaptureDevicesEnabled
     >;
 };
 

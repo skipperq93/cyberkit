@@ -32,7 +32,7 @@
 #include "ScriptController.h"
 #include "ScriptElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<LoadableModuleScript> LoadableModuleScript::create(const AtomString& nonce, const AtomString& integrity, ReferrerPolicy policy, const AtomString& crossOriginMode, const String& charset, const AtomString& initiatorType, bool isInUserAgentShadowTree)
 {

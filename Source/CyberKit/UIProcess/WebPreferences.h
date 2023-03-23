@@ -38,7 +38,7 @@
     void delete##KeyUpper(); \
     Type KeyLower() const;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -71,11 +71,11 @@ public:
     void setFeatureEnabledForKey(const String&, bool);
 
     // FIXME: Update for unified feature semantics
-    // enableAllExperimentalFeatures() should enable settings for testing based on status, or be replaced with an API that WebKitTestRunner can use to enable arbitrary settings.
+    // enableAllExperimentalFeatures() should enable settings for testing based on status, or be replaced with an API that CyberKitTestRunner can use to enable arbitrary settings.
     void enableAllExperimentalFeatures();
     void resetAllInternalDebugFeatures();
 
-    // Exposed for WebKitTestRunner use only.
+    // Exposed for CyberKitTestRunner use only.
     void setBoolValueForKey(const String&, bool value, bool ephemeral);
     void setDoubleValueForKey(const String&, double value, bool ephemeral);
     void setUInt32ValueForKey(const String&, uint32_t value, bool ephemeral);
@@ -139,4 +139,4 @@ private:
     bool m_needUpdateAfterBatch { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

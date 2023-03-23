@@ -34,7 +34,7 @@
 #include "JSElement.h"
 #include "JSHTMLCollection.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static JSC_DECLARE_HOST_FUNCTION(callJSHTMLAllCollection);
@@ -65,4 +65,4 @@ CallData JSHTMLAllCollection::getCallData(JSCell*)
     return callData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

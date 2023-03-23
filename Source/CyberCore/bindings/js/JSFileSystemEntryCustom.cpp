@@ -33,7 +33,7 @@
 #include "JSFileSystemFileEntry.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue toJSNewlyCreated(JSC::JSGlobalObject*, JSDOMGlobalObject* globalObject, Ref<FileSystemEntry>&& entry)
@@ -48,4 +48,4 @@ JSValue toJS(JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* globalObjec
     return wrap(lexicalGlobalObject, globalObject, entry);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

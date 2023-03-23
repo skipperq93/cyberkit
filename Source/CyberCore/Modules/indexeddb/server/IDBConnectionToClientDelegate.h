@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBError;
 class IDBResultData;
@@ -74,4 +74,4 @@ public:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

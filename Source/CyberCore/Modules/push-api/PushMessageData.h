@@ -33,7 +33,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class JSDOMGlobalObject;
@@ -60,6 +60,6 @@ inline PushMessageData::PushMessageData(Vector<uint8_t>&& data)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

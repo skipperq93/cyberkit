@@ -27,7 +27,7 @@
 
 #import "APISecurityOrigin.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::SecurityOrigin> {
     using WrapperClass = WKSecurityOrigin;

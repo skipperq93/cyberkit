@@ -30,7 +30,7 @@
 #include "DocumentFragment.h"
 #include "Element.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TemplateContentDocumentFragment final : public DocumentFragment {
     WTF_MAKE_ISO_ALLOCATED(TemplateContentDocumentFragment);
@@ -55,13 +55,13 @@ private:
     WeakPtr<const Element, WeakPtrImplWithEventTargetData> m_host;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::TemplateContentDocumentFragment)
-    static bool isType(const WebCore::Node& node)
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::TemplateContentDocumentFragment)
+    static bool isType(const CyberCore::Node& node)
     {
-        auto* fragment = dynamicDowncast<WebCore::DocumentFragment>(node);
-        return fragment && is<WebCore::TemplateContentDocumentFragment>(*fragment);
+        auto* fragment = dynamicDowncast<CyberCore::DocumentFragment>(node);
+        return fragment && is<CyberCore::TemplateContentDocumentFragment>(*fragment);
     }
-    static bool isType(const WebCore::DocumentFragment& node) { return node.isTemplateContent(); }
+    static bool isType(const CyberCore::DocumentFragment& node) { return node.isTemplateContent(); }
 SPECIALIZE_TYPE_TRAITS_END()

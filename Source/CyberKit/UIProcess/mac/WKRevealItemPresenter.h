@@ -32,13 +32,13 @@
 
 @class RVItem;
 
-namespace WebKit {
+namespace CyberKit {
 class WebViewImpl;
 }
 
 @interface WKRevealItemPresenter : NSObject
 
-- (instancetype)initWithWebViewImpl:(const WebKit::WebViewImpl&)webViewImpl item:(RVItem *)item frame:(CGRect)frameInView menuLocation:(CGPoint)menuLocationInView;
+- (instancetype)initWithWebViewImpl:(const CyberKit::WebViewImpl&)webViewImpl item:(RVItem *)item frame:(CGRect)frameInView menuLocation:(CGPoint)menuLocationInView;
 - (void)showContextMenu;
 
 @property (nonatomic) BOOL shouldUseDefaultHighlight;

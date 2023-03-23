@@ -37,7 +37,7 @@
 #include <wtf/SetForScope.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static JSObject* getCustomElementCallback(JSGlobalObject& lexicalGlobalObject, JSObject& prototype, const Identifier& id)
@@ -257,4 +257,4 @@ void JSCustomElementRegistry::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSCustomElementRegistry);
 
-} // namespace WebCore
+} // namespace CyberCore

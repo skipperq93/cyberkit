@@ -30,7 +30,7 @@
 #include "Frame.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool s_processingUserTypingGesture;
 bool UserTypingGestureIndicator::processingUserTypingGesture()
@@ -63,4 +63,4 @@ UserTypingGestureIndicator::~UserTypingGestureIndicator()
     focusedNode() = m_previousFocusedNode;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

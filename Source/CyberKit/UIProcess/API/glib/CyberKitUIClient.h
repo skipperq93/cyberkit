@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "WebKitWebView.h"
+#include "CyberKitWebView.h"
 
-void attachUIClientToView(WebKitWebView*);
+void attachUIClientToView(CyberKitWebView*);
 

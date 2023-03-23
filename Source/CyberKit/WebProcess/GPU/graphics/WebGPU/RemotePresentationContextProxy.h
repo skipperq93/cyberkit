@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPUIntegralTypes.h>
 #include <pal/graphics/WebGPU/WebGPUPresentationContext.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ConvertToBackingContext;
 class RemoteTextureProxy;
@@ -87,6 +87,6 @@ private:
     RefPtr<RemoteTextureProxy> m_currentTexture;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

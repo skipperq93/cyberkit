@@ -29,7 +29,7 @@
 #include "Document.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(COCOA)
 
@@ -45,4 +45,4 @@ bool ClipboardImageReader::shouldReadBuffer(const String& mimeType) const
     return !m_result && m_mimeType == mimeType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

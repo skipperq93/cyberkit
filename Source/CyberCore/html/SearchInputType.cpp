@@ -45,7 +45,7 @@
 #include "ShadowRoot.h"
 #include "TextControlInnerElements.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -240,4 +240,4 @@ void SearchInputType::setValue(const String& sanitizedValue, bool valueChanged, 
         m_cancelButton->invalidateStyleInternal();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ _FRAMEWORK_CONFIG_MAP = {
     },
     "CyberCore": {
         "macro_prefix": "WEBCORE",
-        "namespace": "WebCore",
+        "namespace": "CyberCore",
     },
 }
 

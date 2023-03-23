@@ -41,7 +41,7 @@ class InspectorAgent;
 class InspectorScriptProfilerAgent;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class InspectorAnimationAgent;
 class InspectorApplicationCacheAgent;
@@ -168,4 +168,4 @@ FOR_EACH_INSPECTOR_AGENT(DECLARE_MEMBER_VARIABLE_FOR_INSPECTOR_AGENT)
 #undef DECLARE_MEMBER_VARIABLE_FOR_INSPECTOR_AGENT
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GCController {
     WTF_MAKE_FAST_ALLOCATED;
@@ -58,4 +58,4 @@ private:
     Timer m_GCTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

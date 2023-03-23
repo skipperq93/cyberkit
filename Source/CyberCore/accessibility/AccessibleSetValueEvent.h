@@ -27,7 +27,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibleSetValueEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(AccessibleSetValueEvent);

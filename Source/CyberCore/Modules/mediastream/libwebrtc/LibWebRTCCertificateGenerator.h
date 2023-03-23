@@ -28,7 +28,7 @@
 
 #include "PeerConnectionBackend.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCProvider;
 class SecurityOrigin;
@@ -39,6 +39,6 @@ void generateCertificate(Ref<SecurityOrigin>&&, LibWebRTCProvider&, const PeerCo
 
 } // namespace LibWebRTCCertificateGenerator
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

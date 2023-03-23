@@ -31,7 +31,7 @@
 #include "GamepadData.h"
 #include <CyberCore/PlatformGamepad.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 UIGamepad::UIGamepad(CyberCore::PlatformGamepad& platformGamepad)

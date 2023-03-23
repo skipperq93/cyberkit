@@ -62,7 +62,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/SharedTask.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LibWebRTCMediaEndpoint::LibWebRTCMediaEndpoint(LibWebRTCPeerConnectionBackend& peerConnection, LibWebRTCProvider& client)
     : m_peerConnectionBackend(peerConnection)
@@ -846,7 +846,7 @@ Seconds LibWebRTCMediaEndpoint::statsLogInterval(int64_t reportTimestamp) const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -854,8 +854,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::RTCStatsLogger> {
-    static String toString(const WebCore::RTCStatsLogger& logger)
+struct LogArgument<CyberCore::RTCStatsLogger> {
+    static String toString(const CyberCore::RTCStatsLogger& logger)
     {
         return String(logger.toJSONString());
     }

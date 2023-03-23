@@ -129,7 +129,7 @@ static NSString *dataTypesToString(NSSet *dataTypes)
 
 - (NSSet *)dataTypes
 {
-    return WebKit::toWKWebsiteDataTypes(_websiteDataRecord->websiteDataRecord().types).autorelease();
+    return CyberKit::toWKWebsiteDataTypes(_websiteDataRecord->websiteDataRecord().types).autorelease();
 }
 
 #pragma mark WKObject protocol implementation

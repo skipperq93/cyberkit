@@ -53,7 +53,7 @@ my $shouldRunStaticAnalyzer = 0;
 my $minimal = 0;
 my $coverageSupport = 0;
 my $showHelp = 0;
-my $ftlJIT = int(isAppleCocoaWebKit() && !willUseIOSSimulatorSDK() || ((isARM64() || isX86_64()) && (isGtk() || isJSCOnly())));
+my $ftlJIT = int(isAppleCocoaCyberKit() && !willUseIOSSimulatorSDK() || ((isARM64() || isX86_64()) && (isGtk() || isJSCOnly())));
 my $forceCLoop = 0;
 my $makeArgs = "";
 my @cmakeArgs;
@@ -146,7 +146,7 @@ $ENV{'EXPORT_COMPILE_COMMANDS'} = "YES" if $exportCompileCommands;
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 my @options = XcodeOptions();
 my @additionalSupportOptions = ();
 push @additionalSupportOptions, XcodeCoverageSupportOptions() if $coverageSupport;
@@ -191,11 +191,11 @@ if (isCMakeBuild()) {
 
     # This call only returns if nothing wrong happened
     buildCMakeProjectOrExit(0, undef, $buildTarget, @featureArgs, @cmakeArgs);
-    writeCongrats("JavaScriptCore");
+    writeCongrats("CyberScriptCore");
     exit exitStatus(0);
 }
 
-if (isAppleCocoaWebKit()) {
+if (isAppleCocoaCyberKit()) {
     push @options, ($forceCLoop ? "ENABLE_JIT=ENABLE_JIT=0" : "ENABLE_JIT=ENABLE_JIT");
     push @options, ($forceCLoop ? "ENABLE_C_LOOP=ENABLE_C_LOOP" : "ENABLE_C_LOOP=ENABLE_C_LOOP=0");
     push @options, ($ftlJIT ? "ENABLE_FTL_JIT=ENABLE_FTL_JIT" : "ENABLE_FTL_JIT=ENABLE_FTL_JIT=0");
@@ -220,12 +220,12 @@ sub buildUpToProject
     my ($projectDirectory, $projectName) = @_;
     my $result;
     chdir $projectDirectory or die "Can't find $projectName directory to build from";
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         if (!configuredXcodeWorkspace()) {
-            system("$FindBin::Bin/set-webkit-configuration", "--workspace=" . sourceDir() . "/WebKit.xcworkspace") == 0 or die;
+            system("$FindBin::Bin/set-webkit-configuration", "--workspace=" . sourceDir() . "/CyberKit.xcworkspace") == 0 or die;
         }
         # By convention, projects that support this build workflow
-        # (JavaScriptCore, WebGPU) have a scheme which builds that project
+        # (CyberScriptCore, WebGPU) have a scheme which builds that project
         # and its implicit dependencies.
         my $schemeName = "Everything up to $projectName";
 
@@ -258,7 +258,7 @@ sub buildUpToProject
         die "Building not defined for this platform!\n";
     }
     exit exitStatus($result) if exitStatus($result);
-    chdirWebKit();
+    chdirCyberKit();
 }
 
 sub writeCongrats

@@ -32,7 +32,7 @@
 
 #include "CSSValueKeywords.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isValueAllowedInMode(unsigned short id, CSSParserMode mode)
 {
@@ -48,4 +48,4 @@ bool isValueAllowedInMode(unsigned short id, CSSParserMode mode)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

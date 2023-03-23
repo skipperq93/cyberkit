@@ -27,7 +27,7 @@
 
 @class NSView;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 
@@ -58,4 +58,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

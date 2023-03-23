@@ -29,10 +29,10 @@
 #import <Foundation/Foundation.h>
 #import <string>
 
-@interface JSJavaScriptCoreFinder : NSObject
+@interface JSCyberScriptCoreFinder : NSObject
 @end
 
-@implementation JSJavaScriptCoreFinder
+@implementation JSCyberScriptCoreFinder
 @end
 
 
@@ -44,7 +44,7 @@ const CString& bundlePath()
 {
     if (!constantBundlePath) {
         @autoreleasepool {
-            NSBundle* myBundle = [NSBundle bundleForClass:[JSJavaScriptCoreFinder class]];
+            NSBundle* myBundle = [NSBundle bundleForClass:[JSCyberScriptCoreFinder class]];
 
             constantBundlePath = new CString([[myBundle bundlePath] UTF8String]);
         }

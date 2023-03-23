@@ -27,7 +27,7 @@
 #include <wtf/Function.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class CachedResourceLoader;
@@ -77,6 +77,6 @@ private:
     RefPtr<CSSImageValue> m_unresolvedValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSImageValue, isImageValue())

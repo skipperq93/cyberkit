@@ -82,16 +82,16 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
     _interactionPoint = [_view lastInteractionLocation];
 
     switch (view.focusedElementInformation.elementType) {
-    case WebKit::InputType::Date:
+    case CyberKit::InputType::Date:
         _formatString = kDateFormatString;
         break;
-    case WebKit::InputType::Month:
+    case CyberKit::InputType::Month:
         _formatString = kMonthFormatString;
         break;
-    case WebKit::InputType::Time:
+    case CyberKit::InputType::Time:
         _formatString = kTimeFormatString;
         break;
-    case WebKit::InputType::DateTimeLocal:
+    case CyberKit::InputType::DateTimeLocal:
         _formatString = kDateTimeFormatString;
         break;
     default:
@@ -217,10 +217,10 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
     // Times may have seconds and milliseconds information which we just
     // ignore. For example: "01:56:20.391" is shortened to just "01:56".
 
-    if (_view.focusedElementInformation.elementType == WebKit::InputType::Time)
+    if (_view.focusedElementInformation.elementType == CyberKit::InputType::Time)
         return [value substringToIndex:[kTimeFormatString length]];
 
-    if (_view.focusedElementInformation.elementType == WebKit::InputType::DateTimeLocal) {
+    if (_view.focusedElementInformation.elementType == CyberKit::InputType::DateTimeLocal) {
         NSString *timeString = [[value componentsSeparatedByString:@"T"] objectAtIndex:1];
         NSString *sanitizedTimeString = [timeString substringToIndex:[kTimeFormatString length]];
         return [value stringByReplacingOccurrencesOfString:timeString withString:sanitizedTimeString];
@@ -266,7 +266,7 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
 - (void)controlBeginEditing
 {
     auto elementType = _view.focusedElementInformation.elementType;
-    if (elementType == WebKit::InputType::Time || elementType == WebKit::InputType::DateTimeLocal)
+    if (elementType == CyberKit::InputType::Time || elementType == CyberKit::InputType::DateTimeLocal)
         [_view startRelinquishingFirstResponderToFocusedElement];
 
     // Set the time zone in case it changed.
@@ -328,16 +328,16 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
     UIDatePickerMode mode;
 
     switch (view.focusedElementInformation.elementType) {
-    case WebKit::InputType::Date:
+    case CyberKit::InputType::Date:
         mode = UIDatePickerModeDate;
         break;
-    case WebKit::InputType::DateTimeLocal:
+    case CyberKit::InputType::DateTimeLocal:
         mode = UIDatePickerModeDateAndTime;
         break;
-    case WebKit::InputType::Time:
+    case CyberKit::InputType::Time:
         mode = UIDatePickerModeTime;
         break;
-    case WebKit::InputType::Month:
+    case CyberKit::InputType::Month:
         mode = (UIDatePickerMode)UIDatePickerModeYearAndMonth;
         break;
     default:

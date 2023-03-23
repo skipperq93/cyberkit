@@ -24,7 +24,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WebLockMode : bool { Shared, Exclusive };
 

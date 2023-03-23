@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBObjectStoreInfo {
 public:
@@ -74,4 +74,4 @@ private:
     HashMap<uint64_t, IDBIndexInfo> m_indexMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

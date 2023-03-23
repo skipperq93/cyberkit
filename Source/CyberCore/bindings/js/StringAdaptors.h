@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This exists to communicate to the bindings that this string is not a good candidate
 // for caching.

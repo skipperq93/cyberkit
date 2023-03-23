@@ -32,7 +32,7 @@
 #include "RemoteDeviceProxy.h"
 #include "WebGPUConvertToBackingContext.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 RemoteAdapterProxy::RemoteAdapterProxy(String&& name, PAL::WebGPU::SupportedFeatures& features, PAL::WebGPU::SupportedLimits& limits, bool isFallbackAdapter, RemoteGPUProxy& parent, ConvertToBackingContext& convertToBackingContext, WebGPUIdentifier identifier)
     : Adapter(WTFMove(name), features, limits, isFallbackAdapter)
@@ -102,6 +102,6 @@ void RemoteAdapterProxy::requestDevice(const PAL::WebGPU::DeviceDescriptor& desc
     callback(RemoteDeviceProxy::create(WTFMove(resultSupportedFeatures), WTFMove(resultSupportedLimits), *this, m_convertToBackingContext, identifier, queueIdentifier));
 }
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // HAVE(GPU_PROCESS)

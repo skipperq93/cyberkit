@@ -43,7 +43,7 @@
 #include <wtf/Lock.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCDataChannel);
 
@@ -361,6 +361,6 @@ Ref<RTCDataChannel> RTCDataChannel::create(ScriptExecutionContext& context, RTCD
     return channel;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

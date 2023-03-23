@@ -26,17 +26,17 @@
 
 #include "BrowserWindow.h"
 #include "Common.h"
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WebKit2_C.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/CyberKit2_C.h>
 #include <unordered_map>
 #include <wtf/Ref.h>
 
-class WebKitBrowserWindow : public BrowserWindow {
+class CyberKitBrowserWindow : public BrowserWindow {
 public:
     static Ref<BrowserWindow> create(BrowserWindowClient&, HWND mainWnd, bool useLayeredWebView = false);
 
 private:
-    WebKitBrowserWindow(BrowserWindowClient&, WKPageConfigurationRef, HWND mainWnd);
+    CyberKitBrowserWindow(BrowserWindowClient&, WKPageConfigurationRef, HWND mainWnd);
 
     HRESULT init() override;
     HWND hwnd() override;

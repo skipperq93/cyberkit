@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7D20068622F26721008DF640"
-               BuildableName = "libswiftWebKit.dylib"
-               BlueprintName = "WebKitSwiftOverlay-maccatalyst"
-               ReferencedContainer = "container:WebKitSwiftOverlay.xcodeproj">
+               BuildableName = "libswiftCyberKit.dylib"
+               BlueprintName = "CyberKitSwiftOverlay-maccatalyst"
+               ReferencedContainer = "container:CyberKitSwiftOverlay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7D20071522F4ECCA008DF640"
-               BuildableName = "WebKitSwiftOverlayTests-maccatalyst.xctest"
-               BlueprintName = "WebKitSwiftOverlayTests-maccatalyst"
-               ReferencedContainer = "container:WebKitSwiftOverlay.xcodeproj">
+               BuildableName = "CyberKitSwiftOverlayTests-maccatalyst.xctest"
+               BlueprintName = "CyberKitSwiftOverlayTests-maccatalyst"
+               ReferencedContainer = "container:CyberKitSwiftOverlay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7D20071522F4ECCA008DF640"
-               BuildableName = "WebKitSwiftOverlayTests-maccatalyst.xctest"
-               BlueprintName = "WebKitSwiftOverlayTests-maccatalyst"
-               ReferencedContainer = "container:WebKitSwiftOverlay.xcodeproj">
+               BuildableName = "CyberKitSwiftOverlayTests-maccatalyst.xctest"
+               BlueprintName = "CyberKitSwiftOverlayTests-maccatalyst"
+               ReferencedContainer = "container:CyberKitSwiftOverlay.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7D20068622F26721008DF640"
-            BuildableName = "libswiftWebKit.dylib"
-            BlueprintName = "WebKitSwiftOverlay-maccatalyst"
-            ReferencedContainer = "container:WebKitSwiftOverlay.xcodeproj">
+            BuildableName = "libswiftCyberKit.dylib"
+            BlueprintName = "CyberKitSwiftOverlay-maccatalyst"
+            ReferencedContainer = "container:CyberKitSwiftOverlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

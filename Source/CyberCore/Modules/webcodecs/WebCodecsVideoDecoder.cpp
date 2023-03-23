@@ -40,7 +40,7 @@
 #include "WebCodecsVideoFrameOutputCallback.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WebCodecsVideoDecoder);
 
@@ -328,7 +328,7 @@ void WebCodecsVideoDecoder::processControlMessageQueue()
         m_controlMessageQueue.takeFirst()();
 }
 
-void WebCore::WebCodecsVideoDecoder::suspend(ReasonForSuspension)
+void CyberCore::WebCodecsVideoDecoder::suspend(ReasonForSuspension)
 {
     // FIXME: Implement.
 }
@@ -349,6 +349,6 @@ bool WebCodecsVideoDecoder::virtualHasPendingActivity() const
     return m_state == WebCodecsCodecState::Configured && (m_decodeQueueSize || m_beingDecodedQueueSize || m_isFlushing);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS)

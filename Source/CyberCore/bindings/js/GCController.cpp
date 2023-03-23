@@ -39,7 +39,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 static void collect()
@@ -68,7 +68,7 @@ GCController::GCController()
 void GCController::garbageCollectSoon()
 {
     // We only use reportAbandonedObjectGraph for systems for which there's an implementation
-    // of the garbage collector timers in JavaScriptCore. We wouldn't need this if JavaScriptCore
+    // of the garbage collector timers in CyberScriptCore. We wouldn't need this if CyberScriptCore
     // used a timer implementation from WTF like RunLoop::Timer.
 #if USE(CF) || USE(GLIB)
     JSLockHolder lock(commonVM());
@@ -111,7 +111,7 @@ void GCController::garbageCollectNowIfNotDoneRecently()
 
 void GCController::garbageCollectOnAlternateThreadForDebugging(bool waitUntilDone)
 {
-    auto thread = Thread::create("WebCore: GCController", &collect, ThreadType::GarbageCollection);
+    auto thread = Thread::create("CyberCore: GCController", &collect, ThreadType::GarbageCollection);
 
     if (waitUntilDone) {
         thread->waitForCompletion();
@@ -170,4 +170,4 @@ void GCController::dumpHeap()
     WTFLogAlways("Dumped GC heap to %s", tempFilePath.utf8().data());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

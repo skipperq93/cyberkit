@@ -35,7 +35,7 @@ from webkitpy.common.checkout.checkout import Checkout
 from webkitpy.common.checkout.changelog import ChangeLogEntry
 from webkitpy.common.checkout.scm import CommitMessage, SCMDetector
 from webkitpy.common.checkout.scm.scm_mock import MockSCM
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.common.system.executive import Executive, ScriptError
 from webkitpy.common.system.filesystem import FileSystem  # FIXME: This should not be needed.
 from webkitpy.common.system.filesystem_mock import MockFileSystem
@@ -87,8 +87,8 @@ _changelog3 = u"""2014-07-17  David Kilzer  <ddkilzer@apple.com>
 
         Reviewed by Darin Adler.
 
-        * WebKit.xcodeproj/project.pbxproj: Remove references to unused
-        WebKit.xcconfig file.
+        * CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+        CyberKit.xcconfig file.
 """
 
 _changelog4 = u"""2014-07-17  David Kilzer  <ddkilzer@apple.com>
@@ -138,7 +138,7 @@ class CommitMessageForThisCommitTest(unittest.TestCase):
         self.temp_dir = str(self.filesystem.mkdtemp(suffix="changelogs"))
         self.old_cwd = self.filesystem.getcwd()
         self.filesystem.chdir(self.temp_dir)
-        self.webkit_base = WebKitFinder(self.filesystem).webkit_base()
+        self.webkit_base = CyberKitFinder(self.filesystem).webkit_base()
 
         # Trick commit-log-editor into thinking we're in a Subversion working copy so it won't
         # complain about not being able to figure out what SCM is in use.
@@ -212,8 +212,8 @@ Second part of this complicated change by me, Fr\u00e9d\u00e9ric Wang!
 Patch by David Kilzer <ddkilzer@apple.com> on 2014-07-17
 Reviewed by Darin Adler.
 
-* WebKit.xcodeproj/project.pbxproj: Remove references to unused
-WebKit.xcconfig file.
+* CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+CyberKit.xcconfig file.
 """
 
         self.changelog_paths = list(map(self.filesystem.abspath, [self.filesystem.join("Source/CyberKitLegacy", "ChangeLog")]))
@@ -234,8 +234,8 @@ Reviewed by Darin Adler.
 
 Source/CyberKitLegacy:
 
-* WebKit.xcodeproj/project.pbxproj: Remove references to unused
-WebKit.xcconfig file.
+* CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+CyberKit.xcconfig file.
 
 LayoutTests:
 
@@ -260,8 +260,8 @@ Reviewed by Darin Adler.
 
 Source/CyberKitLegacy:
 
-* WebKit.xcodeproj/project.pbxproj: Remove references to unused
-WebKit.xcconfig file.
+* CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+CyberKit.xcconfig file.
 
 LayoutTests:
 

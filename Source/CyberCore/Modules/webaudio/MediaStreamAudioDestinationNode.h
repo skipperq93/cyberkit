@@ -31,7 +31,7 @@
 #include "AudioNodeOptions.h"
 #include "MediaStream.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BaseAudioContext;
 class MediaStreamAudioSource;
@@ -62,6 +62,6 @@ private:
     Ref<MediaStream> m_stream;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && ENABLE(MEDIA_STREAM)

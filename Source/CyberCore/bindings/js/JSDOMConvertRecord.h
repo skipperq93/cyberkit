@@ -30,7 +30,7 @@
 #include "JSDOMGlobalObject.h"
 #include <CyberScriptCore/ObjectConstructor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Detail {
 
@@ -188,4 +188,4 @@ template<typename K, typename V> struct JSConverter<IDLRecord<K, V>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRFrame;
 class WebXRRigidTransform;
@@ -74,6 +74,6 @@ private:
     JSValueInWrappedObject m_cachedProjectionMatrix;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

@@ -31,7 +31,7 @@
 #include "DateTimeFieldElement.h"
 #include "TypeAhead.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateTimeSymbolicFieldElement : public DateTimeFieldElement, public TypeAheadDataSource {
     WTF_MAKE_ISO_ALLOCATED(DateTimeSymbolicFieldElement);
@@ -67,6 +67,6 @@ private:
     TypeAhead m_typeAhead;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

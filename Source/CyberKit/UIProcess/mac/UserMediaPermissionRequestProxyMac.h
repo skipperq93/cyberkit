@@ -28,7 +28,7 @@
 #include "UserMediaPermissionRequestProxy.h"
 #include <CyberCore/SecurityOrigin.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserMediaPermissionRequestProxyMac final : public UserMediaPermissionRequestProxy {
 public:
@@ -41,4 +41,4 @@ public:
 };
 
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -37,7 +37,7 @@
 #include <CyberScriptCore/Microtask.h>
 #include <wtf/Language.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -165,4 +165,4 @@ JSValue toJS(JSGlobalObject*, ShadowRealmGlobalScope& realmGlobalScope)
     return &realmGlobalScope.wrapper()->proxy();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

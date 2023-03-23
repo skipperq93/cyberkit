@@ -29,7 +29,7 @@
 #include "PerformanceObserverCallback.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSPerformanceObserver::visitAdditionalChildren(Visitor& visitor)

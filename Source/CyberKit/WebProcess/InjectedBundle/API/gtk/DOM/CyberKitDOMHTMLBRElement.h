@@ -54,7 +54,7 @@ webkit_dom_html_br_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_br_element_get_clear(CyberKitDOMHTMLBRElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_br_element_get_clear(CyberKitDOMHTMLBRElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_br_element_set_clear(CyberKitDOMHTMLBRElement* self, const gchar* value);

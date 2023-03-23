@@ -28,7 +28,7 @@
 
 #include "DOMException.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBError::IDBError(std::optional<ExceptionCode> code, const String& message)
     : m_code(code)
@@ -58,4 +58,4 @@ RefPtr<DOMException> IDBError::toDOMException() const
     return DOMException::create(*m_code, m_message);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

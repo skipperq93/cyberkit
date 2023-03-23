@@ -31,7 +31,7 @@
 #include "WebContextMenuListenerProxy.h"
 #include "WebContextMenuProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebContextMenuItemData;
 class WebPageProxy;
@@ -52,6 +52,6 @@ private:
 };
 
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

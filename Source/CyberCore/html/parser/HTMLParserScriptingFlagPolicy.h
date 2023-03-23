@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class HTMLParserScriptingFlagPolicy : uint8_t {
     OnlyIfScriptIsEnabled,

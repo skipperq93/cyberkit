@@ -28,13 +28,13 @@
 
 #if ENABLE(DRAG_SUPPORT) && !USE(GTK4)
 
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitWebViewBasePrivate.h"
 #include <CyberCore/GRefPtrGtk.h>
 #include <CyberCore/GtkUtilities.h>
 #include <CyberCore/PasteboardCustomData.h>
 #include <gtk/gtk.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 enum DragTargetType { Markup, Text, Image, URIList, NetscapeURL, SmartPaste, Custom };
@@ -146,6 +146,6 @@ void DragSource::begin(SelectionData&& selectionData, OptionSet<DragOperation> o
         gtk_drag_set_icon_default(m_drag.get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DRAG_SUPPORT) && !USE(GTK4)

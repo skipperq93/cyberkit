@@ -79,7 +79,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -1338,4 +1338,4 @@ void InspectorCSSAgent::resetPseudoStates()
     m_documentsWithForcedPseudoStates.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "StyleRule.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSLayerStatementRule::CSSLayerStatementRule(StyleRuleLayer& rule, CSSStyleSheet* parent)
     : CSSRule(parent)
@@ -83,5 +83,5 @@ void CSSLayerStatementRule::reattach(StyleRuleBase& rule)
     m_layerRule = downcast<StyleRuleLayer>(rule);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

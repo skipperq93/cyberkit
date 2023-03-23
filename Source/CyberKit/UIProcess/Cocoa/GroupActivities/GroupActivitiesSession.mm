@@ -30,7 +30,7 @@
 
 #import "WKGroupSession.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<GroupActivitiesSession> GroupActivitiesSession::create(RetainPtr<WKGroupSession>&& session)
 {

@@ -25,7 +25,7 @@
 #include "AccessibilityAtspi.h"
 #include "AccessibilityObject.h" // NOLINT: check-webkit-style has problems with files that do not have primary header
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_selectionFunctions = {
     // method_call
@@ -185,7 +185,7 @@ bool AccessibilityObjectAtspi::clearSelection() const
 
 void AccessibilityObjectAtspi::selectionChanged()
 {
-    // selectionChanged can be called multiple times by WebCore, so ensure we don't
+    // selectionChanged can be called multiple times by CyberCore, so ensure we don't
     // emit it if the last one happened in the same run loop iteration.
     auto* source = g_main_current_source();
     int64_t sourceTime = source ? g_source_get_time(source) : -1;
@@ -196,6 +196,6 @@ void AccessibilityObjectAtspi::selectionChanged()
     AccessibilityAtspi::singleton().selectionChanged(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

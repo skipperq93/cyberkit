@@ -78,7 +78,7 @@
 #include "TextEvent.h"
 #include "TextManipulationController.h"
 #include "TouchEvent.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WheelEvent.h"
 #include "XMLNSNames.h"
 #include "XMLNames.h"
@@ -96,7 +96,7 @@
 #include "ContentChangeObserver.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Node);
 
@@ -330,7 +330,7 @@ void Node::dumpStatistics()
 #endif
 }
 
-DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, nodeCounter, ("WebCoreNode"));
+DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, nodeCounter, ("CyberCoreNode"));
 
 #ifndef NDEBUG
 static bool shouldIgnoreLeaks = false;
@@ -2162,7 +2162,7 @@ void Node::moveNodeToNewDocument(Document& oldDocument, Document& newDocument)
         textManipulationController->removeNode(*this);
 
     if (auto* eventTargetData = this->eventTargetData()) {
-        auto& eventNames = WebCore::eventNames();
+        auto& eventNames = CyberCore::eventNames();
         if (!eventTargetData->eventListenerMap.isEmpty()) {
             for (auto& type : eventTargetData->eventListenerMap.eventTypes())
                 newDocument.addListenerTypeIfNeeded(type);
@@ -2229,7 +2229,7 @@ static inline bool tryAddEventListener(Node* targetNode, const AtomString& event
 
     targetNode->document().addListenerTypeIfNeeded(eventType);
 
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (eventNames.isWheelEventType(eventType))
         targetNode->document().didAddWheelEventHandler(*targetNode);
     else if (eventNames.isTouchRelatedEventType(eventType, *targetNode))
@@ -2269,7 +2269,7 @@ static inline bool tryRemoveEventListener(Node* targetNode, const AtomString& ev
 
     // FIXME: Notify Document that the listener has vanished. We need to keep track of a number of
     // listeners for each type, not just a bool - see https://bugs.webkit.org/show_bug.cgi?id=33861
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (eventNames.isWheelEventType(eventType))
         targetNode->document().didRemoveWheelEventHandler(*targetNode);
     else if (eventNames.isTouchRelatedEventType(eventType, *targetNode))
@@ -2462,7 +2462,7 @@ void Node::defaultEventHandler(Event& event)
     if (event.target() != this)
         return;
     auto& eventType = event.type();
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (eventType == eventNames.keydownEvent || eventType == eventNames.keypressEvent || eventType == eventNames.keyupEvent) {
         if (is<KeyboardEvent>(event)) {
             if (Frame* frame = document().frame())
@@ -2542,7 +2542,7 @@ bool Node::willRespondToMouseMoveEvents() const
     if (downcast<Element>(*this).isDisabledFormControl())
         return false;
 #endif
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     return eventTypes().containsIf([&](const auto& type) {
         return eventNames.isMouseMoveRelatedEventType(type);
     });
@@ -2550,7 +2550,7 @@ bool Node::willRespondToMouseMoveEvents() const
 
 bool Node::willRespondToTouchEvents() const
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     return eventTypes().containsIf([&](const auto& type) {
         return eventNames.isTouchRelatedEventType(type, *this);
     });
@@ -2585,7 +2585,7 @@ bool Node::willRespondToMouseClickEventsWithEditability(Editability editability)
     if (editability != Editability::ReadOnly)
         return true;
 
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     return eventTypes().containsIf([&](const auto& type) {
         return eventNames.isMouseClickRelatedEventType(type);
     });
@@ -2685,7 +2685,7 @@ bool Node::inRenderedDocument() const
     return isConnected() && document().hasLivingRenderTree();
 }
 
-WebCoreOpaqueRoot Node::traverseToOpaqueRoot() const
+CyberCoreOpaqueRoot Node::traverseToOpaqueRoot() const
 {
     ASSERT_WITH_MESSAGE(!isConnected(), "Call opaqueRoot() or document() when the node is connected");
     const Node* node = this;
@@ -2695,7 +2695,7 @@ WebCoreOpaqueRoot Node::traverseToOpaqueRoot() const
             break;
         node = nextNode;
     }
-    return WebCoreOpaqueRoot { const_cast<Node*>(node) };
+    return CyberCoreOpaqueRoot { const_cast<Node*>(node) };
 }
 
 void Node::notifyInspectorOfRendererChange()
@@ -2832,17 +2832,17 @@ TextStream& operator<<(TextStream& ts, const Node& node)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showTree(const WebCore::Node* node)
+void showTree(const CyberCore::Node* node)
 {
     if (node)
         node->showTreeForThis();
 }
 
-void showNodePath(const WebCore::Node* node)
+void showNodePath(const CyberCore::Node* node)
 {
     if (node)
         node->showNodePathForThis();

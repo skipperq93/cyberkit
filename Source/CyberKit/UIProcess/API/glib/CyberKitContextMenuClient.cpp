@@ -18,24 +18,24 @@
  */
 
 #include "config.h"
-#include "WebKitContextMenuClient.h"
+#include "CyberKitContextMenuClient.h"
 
 #include "APIContextMenuClient.h"
 #include "APIString.h"
 #include "WebContextMenuItem.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitWebViewPrivate.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 class ContextMenuClient final: public API::ContextMenuClient {
 public:
-    explicit ContextMenuClient(WebKitWebView* webView)
+    explicit ContextMenuClient(CyberKitWebView* webView)
         : m_webView(webView)
     {
     }
 
 private:
-    void getContextMenuFromProposedMenu(WebPageProxy&, Vector<Ref<WebKit::WebContextMenuItem>>&& proposedMenu, WebKit::WebContextMenuListenerProxy& contextMenuListener, const WebHitTestResultData& hitTestResultData, API::Object* userData) override
+    void getContextMenuFromProposedMenu(WebPageProxy&, Vector<Ref<CyberKit::WebContextMenuItem>>&& proposedMenu, CyberKit::WebContextMenuListenerProxy& contextMenuListener, const WebHitTestResultData& hitTestResultData, API::Object* userData) override
     {
         GRefPtr<GVariant> variant;
         if (userData) {
@@ -52,10 +52,10 @@ private:
         contextMenuListener.useContextMenuItems({ });
     }
 
-    WebKitWebView* m_webView;
+    CyberKitWebView* m_webView;
 };
 
-void attachContextMenuClientToView(WebKitWebView* webView)
+void attachContextMenuClientToView(CyberKitWebView* webView)
 {
     webkitWebViewGetPage(webView).setContextMenuClient(makeUnique<ContextMenuClient>(webView));
 }

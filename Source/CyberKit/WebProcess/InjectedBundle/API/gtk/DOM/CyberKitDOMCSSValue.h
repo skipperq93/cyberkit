@@ -42,28 +42,28 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_CSS_VALUE_CSS_INHERIT:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_VALUE_CSS_INHERIT 0
 
 /**
  * WEBKIT_DOM_CSS_VALUE_CSS_PRIMITIVE_VALUE:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_VALUE_CSS_PRIMITIVE_VALUE 1
 
 /**
  * WEBKIT_DOM_CSS_VALUE_CSS_VALUE_LIST:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_VALUE_CSS_VALUE_LIST 2
 
 /**
  * WEBKIT_DOM_CSS_VALUE_CSS_CUSTOM:
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
  */
 #define WEBKIT_DOM_CSS_VALUE_CSS_CUSTOM 3
 
@@ -86,7 +86,7 @@ webkit_dom_css_value_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_css_value_get_css_text(CyberKitDOMCSSValue* self);
@@ -98,7 +98,7 @@ webkit_dom_css_value_get_css_text(CyberKitDOMCSSValue* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_css_value_set_css_text(CyberKitDOMCSSValue* self, const gchar* value, GError** error);
@@ -109,7 +109,7 @@ webkit_dom_css_value_set_css_text(CyberKitDOMCSSValue* self, const gchar* value,
  *
  * Returns: A #gushort
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
 webkit_dom_css_value_get_css_value_type(CyberKitDOMCSSValue* self);

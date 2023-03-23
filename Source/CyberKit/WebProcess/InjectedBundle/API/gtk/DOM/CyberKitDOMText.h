@@ -56,7 +56,7 @@ webkit_dom_text_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMText
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMText*
 webkit_dom_text_split_text(CyberKitDOMText* self, gulong offset, GError** error);
@@ -67,7 +67,7 @@ webkit_dom_text_split_text(CyberKitDOMText* self, gulong offset, GError** error)
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_text_get_whole_text(CyberKitDOMText* self);

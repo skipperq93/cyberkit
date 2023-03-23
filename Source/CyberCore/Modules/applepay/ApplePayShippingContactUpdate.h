@@ -33,13 +33,13 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayShippingContactUpdate final : public ApplePayDetailsUpdateBase {
     Vector<RefPtr<ApplePayError>> errors;
     Vector<ApplePayShippingMethod> newShippingMethods;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -53,7 +53,7 @@ typedef CyberCore::VideoFullscreenInterfaceAVKit PlatformVideoFullscreenInterfac
 typedef CyberCore::VideoFullscreenInterfaceMac PlatformVideoFullscreenInterface;
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 constexpr size_t DefaultMockPictureInPictureWindowWidth = 100;
 constexpr size_t DefaultMockPictureInPictureWindowHeight = 100;
@@ -174,7 +174,7 @@ private:
     void hasVideoInPictureInPictureDidChange(bool);
 
     // Messages from VideoFullscreenManager
-    void setupFullscreenWithID(PlaybackSessionContextIdentifier, WebKit::LayerHostingContextID videoLayerID, const CyberCore::FloatRect& initialRect, const CyberCore::FloatSize& videoDimensions, float hostingScaleFactor, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture);
+    void setupFullscreenWithID(PlaybackSessionContextIdentifier, CyberKit::LayerHostingContextID videoLayerID, const CyberCore::FloatRect& initialRect, const CyberCore::FloatSize& videoDimensions, float hostingScaleFactor, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture);
     void setInlineRect(PlaybackSessionContextIdentifier, const CyberCore::FloatRect& inlineRect, bool visible);
     void setHasVideoContentLayer(PlaybackSessionContextIdentifier, bool value);
     void setHasVideo(PlaybackSessionContextIdentifier, bool);
@@ -217,6 +217,6 @@ private:
     WeakHashSet<VideoInPictureInPictureDidChangeObserver> m_pipChangeObservers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(VIDEO_PRESENTATION_MODE)

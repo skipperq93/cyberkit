@@ -69,7 +69,7 @@
 #include "CyberCoreArgumentCoders.h"
 #include "WebGeolocationManagerProxy.h"
 #include "WebInspectorUtilities.h"
-#include "WebKit2Initialize.h"
+#include "CyberKit2Initialize.h"
 #include "WebMemorySampler.h"
 #include "WebNotificationManagerProxy.h"
 #include "WebPageGroup.h"
@@ -148,7 +148,7 @@
 #define WEBPROCESSPOOL_RELEASE_LOG_STATIC(channel, fmt, ...) RELEASE_LOG(channel, "WebProcessPool::" fmt, ##__VA_ARGS__)
 #define WEBPROCESSPOOL_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - WebProcessPool::" fmt, this, ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, processPoolCounter, ("WebProcessPool"));
@@ -166,7 +166,7 @@ bool WebProcessPool::s_didGlobalStaticInitialization = false;
 
 Ref<WebProcessPool> WebProcessPool::create(API::ProcessPoolConfiguration& configuration)
 {
-    InitializeWebKit2();
+    InitializeCyberKit2();
     return adoptRef(*new WebProcessPool(configuration));
 }
 
@@ -228,7 +228,7 @@ WebProcessPool::WebProcessPool(API::ProcessPoolConfiguration& configuration)
 #if PLATFORM(COCOA)
         determineTrackingPreventionState();
 
-        // This can be removed once Safari calls _setLinkedOnOrAfterEverything everywhere that WebKit deploys.
+        // This can be removed once Safari calls _setLinkedOnOrAfterEverything everywhere that CyberKit deploys.
 #if PLATFORM(IOS_FAMILY)
         bool isSafari = CyberCore::IOSApplication::isMobileSafari();
 #elif PLATFORM(MAC)
@@ -376,7 +376,7 @@ void WebProcessPool::setCustomWebContentServiceBundleIdentifier(const String& cu
 
 void WebProcessPool::setOverrideLanguages(Vector<String>&& languages)
 {
-    WebKit::setOverrideLanguages(WTFMove(languages));
+    CyberKit::setOverrideLanguages(WTFMove(languages));
 
     LOG_WITH_STREAM(Language, stream << "WebProcessPool is setting OverrideLanguages: " << languages);
     sendToAllProcesses(Messages::WebProcess::UserPreferredLanguagesChanged(overrideLanguages()));
@@ -491,7 +491,7 @@ void WebProcessPool::gpuProcessExited(ProcessID identifier, ProcessTerminationRe
     }
 }
 
-void WebProcessPool::createGPUProcessConnection(WebProcessProxy& webProcessProxy, IPC::Connection::Handle&& connectionIdentifier, WebKit::GPUProcessConnectionParameters&& parameters)
+void WebProcessPool::createGPUProcessConnection(WebProcessProxy& webProcessProxy, IPC::Connection::Handle&& connectionIdentifier, CyberKit::GPUProcessConnectionParameters&& parameters)
 {
 #if ENABLE(IPC_TESTING_API)
     parameters.ignoreInvalidMessageForTesting = webProcessProxy.ignoreInvalidMessageForTesting();
@@ -1049,7 +1049,7 @@ Ref<WebProcessProxy> WebProcessPool::processForRegistrableDomain(WebsiteDataStor
 
     if (usesSingleWebProcess()) {
 #if PLATFORM(COCOA)
-        bool mustMatchDataStore = WebKit::WebsiteDataStore::defaultDataStoreExists() && &websiteDataStore != WebKit::WebsiteDataStore::defaultDataStore().ptr();
+        bool mustMatchDataStore = CyberKit::WebsiteDataStore::defaultDataStoreExists() && &websiteDataStore != CyberKit::WebsiteDataStore::defaultDataStore().ptr();
 #else
         bool mustMatchDataStore = false;
 #endif
@@ -1091,7 +1091,7 @@ Ref<WebPageProxy> WebProcessPool::createWebPage(PageClient& pageClient, Ref<API:
     if (!pageConfiguration->websiteDataStore()) {
         // We try to avoid creating the default data store as long as possible.
         // But if there is an attempt to create a web page without any specified data store, then we have to create it.
-        pageConfiguration->setWebsiteDataStore(WebKit::WebsiteDataStore::defaultDataStore().ptr());
+        pageConfiguration->setWebsiteDataStore(CyberKit::WebsiteDataStore::defaultDataStore().ptr());
     }
 
     RefPtr<WebProcessProxy> process;
@@ -1347,7 +1347,7 @@ void WebProcessPool::registerGlobalURLSchemeAsHavingCustomProtocolHandlers(const
     if (!urlScheme)
         return;
 
-    InitializeWebKit2();
+    InitializeCyberKit2();
     globalURLSchemesWithCustomProtocolHandlers().add(urlScheme);
     for (auto networkProcess : NetworkProcessProxy::allNetworkProcesses())
         networkProcess->registerSchemeForLegacyCustomProtocol(urlScheme);
@@ -1358,7 +1358,7 @@ void WebProcessPool::unregisterGlobalURLSchemeAsHavingCustomProtocolHandlers(con
     if (!urlScheme)
         return;
 
-    InitializeWebKit2();
+    InitializeCyberKit2();
     globalURLSchemesWithCustomProtocolHandlers().remove(urlScheme);
     for (auto networkProcess : NetworkProcessProxy::allNetworkProcesses())
         networkProcess->unregisterSchemeForLegacyCustomProtocol(urlScheme);
@@ -1567,7 +1567,7 @@ static WebProcessProxy* webProcessProxyFromConnection(IPC::Connection& connectio
     return nullptr;
 }
 
-void WebProcessPool::handleMessage(IPC::Connection& connection, const String& messageName, const WebKit::UserData& messageBody)
+void WebProcessPool::handleMessage(IPC::Connection& connection, const String& messageName, const CyberKit::UserData& messageBody)
 {
     auto* webProcessProxy = webProcessProxyFromConnection(connection, m_processes);
     if (!webProcessProxy)
@@ -2104,9 +2104,9 @@ void WebProcessPool::updateAudibleMediaAssertions()
 
     WEBPROCESSPOOL_RELEASE_LOG(ProcessSuspension, "updateAudibleMediaAssertions: The number of processes playing audible media is now greater than zero. Taking UI process assertion.");
     m_audibleMediaActivity = AudibleMediaActivity {
-        ProcessAssertion::create(getCurrentProcessID(), "WebKit Media Playback"_s, ProcessAssertionType::MediaPlayback)
+        ProcessAssertion::create(getCurrentProcessID(), "CyberKit Media Playback"_s, ProcessAssertionType::MediaPlayback)
 #if ENABLE(GPU_PROCESS)
-        , gpuProcess() ? RefPtr<ProcessAssertion> { ProcessAssertion::create(gpuProcess()->processIdentifier(), "WebKit Media Playback"_s, ProcessAssertionType::MediaPlayback) } : nullptr
+        , gpuProcess() ? RefPtr<ProcessAssertion> { ProcessAssertion::create(gpuProcess()->processIdentifier(), "CyberKit Media Playback"_s, ProcessAssertionType::MediaPlayback) } : nullptr
 #endif
     };
 }
@@ -2215,4 +2215,4 @@ void setLockdownModeEnabledGloballyForTesting(std::optional<bool>)
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -36,7 +36,7 @@
 #include "HTMLUListElement.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<std::pair<ChangeListTypeCommand::Type, Ref<HTMLElement>>> listConversionTypeForSelection(const VisibleSelection& selection)
 {
@@ -95,4 +95,4 @@ void ChangeListTypeCommand::doApply()
     setEndingSelection({ Position { newList.ptr(), Position::PositionIsAfterChildren }});
 }
 
-} // namespace WebCore
+} // namespace CyberCore

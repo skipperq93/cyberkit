@@ -28,7 +28,7 @@
 #include "AudioDSPKernel.h"
 #include "DelayProcessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DelayProcessor;
     
@@ -65,4 +65,4 @@ private:
     DelayProcessor* delayProcessor() { return static_cast<DelayProcessor*>(processor()); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

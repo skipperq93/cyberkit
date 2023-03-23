@@ -31,7 +31,7 @@
 #include "Page.h"
 #include "ShouldTreatAsContinuingLoad.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BackForwardController::BackForwardController(Page& page, Ref<BackForwardClient>&& client)
     : m_page(page)
@@ -149,4 +149,4 @@ void BackForwardController::close()
     m_client->close();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

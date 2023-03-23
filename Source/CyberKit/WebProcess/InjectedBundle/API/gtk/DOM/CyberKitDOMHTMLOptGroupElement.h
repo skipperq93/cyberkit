@@ -54,7 +54,7 @@ webkit_dom_html_opt_group_element_get_type(void);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_html_opt_group_element_get_disabled(CyberKitDOMHTMLOptGroupElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_opt_group_element_get_disabled(CyberKitDOMHTMLOptGroupElement* s
  * @value: A #gboolean
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_opt_group_element_set_disabled(CyberKitDOMHTMLOptGroupElement* self, gboolean value);
@@ -76,7 +76,7 @@ webkit_dom_html_opt_group_element_set_disabled(CyberKitDOMHTMLOptGroupElement* s
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_opt_group_element_get_label(CyberKitDOMHTMLOptGroupElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_opt_group_element_get_label(CyberKitDOMHTMLOptGroupElement* self
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_opt_group_element_set_label(CyberKitDOMHTMLOptGroupElement* self, const gchar* value);

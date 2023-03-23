@@ -35,7 +35,7 @@
 #include <pal/crypto/gcrypt/Handle.h>
 #include <pal/crypto/gcrypt/Utilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This is a helper function that resets the cipher object, sets the provided counter data,
 // and executes the encrypt or decrypt operation, retrieving and returning the output data.
@@ -211,6 +211,6 @@ ExceptionOr<Vector<uint8_t>> CryptoAlgorithmAES_CTR::platformDecrypt(const Crypt
     return WTFMove(*output);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

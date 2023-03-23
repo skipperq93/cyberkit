@@ -30,7 +30,7 @@
 #include <CyberCore/SecurityOrigin.h>
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 UserMediaPermissionCheckProxy::UserMediaPermissionCheckProxy(FrameIdentifier frameID, CompletionHandler&& handler, Ref<CyberCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin)
@@ -61,5 +61,5 @@ void UserMediaPermissionCheckProxy::complete(PermissionInfo info)
     completionHandler(info);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

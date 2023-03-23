@@ -29,7 +29,7 @@
 #include "CachedImage.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Display {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ImageBox);
@@ -71,5 +71,5 @@ String ImageBox::debugDescription() const
 }
 
 } // namespace Display
-} // namespace WebCore
+} // namespace CyberCore
 

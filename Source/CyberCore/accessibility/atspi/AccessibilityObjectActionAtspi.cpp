@@ -26,7 +26,7 @@
 #include <gio/gio.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_actionFunctions = {
     // method_call
@@ -91,6 +91,6 @@ bool AccessibilityObjectAtspi::doAction() const
     return m_coreObject ? m_coreObject->performDefaultAction() : false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

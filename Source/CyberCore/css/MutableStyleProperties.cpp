@@ -33,7 +33,7 @@
 #include "StylePropertiesInlines.h"
 #include "StylePropertyShorthand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(MutableStyleProperties);
 
@@ -106,7 +106,7 @@ bool MutableStyleProperties::removePropertyAtIndex(int index, String* returnText
 
     if (returnText) {
         auto property = propertyAt(index);
-        *returnText = WebCore::serializeLonghandValue(property.id(), *property.value());
+        *returnText = CyberCore::serializeLonghandValue(property.id(), *property.value());
     }
 
     // A more efficient removal strategy would involve marking entries as empty

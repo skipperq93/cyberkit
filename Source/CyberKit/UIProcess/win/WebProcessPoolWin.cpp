@@ -31,12 +31,12 @@
 #include <CyberCore/NotImplemented.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/RemoteInspectorServer.h>
+#include <CyberScriptCore/RemoteInspectorServer.h>
 #include <CyberCore/CyberCoreBundleWin.h>
 #include <wtf/text/StringToIntegerConversion.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(REMOTE_INSPECTOR)
 static void initializeRemoteInspectorServer(StringView address)
@@ -53,7 +53,7 @@ static void initializeRemoteInspectorServer(StringView address)
     if (!port)
         return;
 
-    auto backendCommands = CyberCore::webKitBundlePath({ "WebKit.Resources"_s, "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
+    auto backendCommands = CyberCore::webKitBundlePath({ "CyberKit.Resources"_s, "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
     Inspector::RemoteInspector::singleton().setBackendCommandsPath(backendCommands);
     Inspector::RemoteInspectorServer::singleton().start(host.utf8().data(), port.value());
 }
@@ -86,4 +86,4 @@ void WebProcessPool::platformResolvePathsForSandboxExtensions()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

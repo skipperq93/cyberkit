@@ -39,7 +39,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioStreamDescription;
 class PlatformAudioData;
@@ -81,7 +81,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif
 

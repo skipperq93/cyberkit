@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpCodecParameters {
     unsigned short payloadType { 0 };
@@ -39,6 +39,6 @@ struct RTCRtpCodecParameters {
     String sdpFmtpLine;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

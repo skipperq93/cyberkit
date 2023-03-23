@@ -28,7 +28,7 @@
 #include "InlineLineTypes.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class InlineInvalidation;

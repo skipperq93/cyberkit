@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebPageProxy;
 struct WebNavigationDataStore;
 }
@@ -39,10 +39,10 @@ class HistoryClient {
 public:
     virtual ~HistoryClient() { }
 
-    virtual void didNavigateWithNavigationData(WebKit::WebPageProxy&, const WebKit::WebNavigationDataStore&) { }
-    virtual void didPerformClientRedirect(WebKit::WebPageProxy&, const WTF::String&, const WTF::String&) { }
-    virtual void didPerformServerRedirect(WebKit::WebPageProxy&, const WTF::String&, const WTF::String&) { }
-    virtual void didUpdateHistoryTitle(WebKit::WebPageProxy&, const WTF::String&, const WTF::String&) { }
+    virtual void didNavigateWithNavigationData(CyberKit::WebPageProxy&, const CyberKit::WebNavigationDataStore&) { }
+    virtual void didPerformClientRedirect(CyberKit::WebPageProxy&, const WTF::String&, const WTF::String&) { }
+    virtual void didPerformServerRedirect(CyberKit::WebPageProxy&, const WTF::String&, const WTF::String&) { }
+    virtual void didUpdateHistoryTitle(CyberKit::WebPageProxy&, const WTF::String&, const WTF::String&) { }
 };
 
 } // namespace API

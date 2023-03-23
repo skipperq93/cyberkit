@@ -28,7 +28,7 @@
 #include "LayoutUnit.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct HorizontalConstraints {
@@ -141,7 +141,7 @@ inline IntrinsicWidthConstraints& IntrinsicWidthConstraints::operator-=(LayoutUn
 }
 
 #define SPECIALIZE_TYPE_TRAITS_LAYOUT_FORMATTING_CONSTRAINTS(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Layout::ToValueTypeName) \
-    static bool isType(const WebCore::Layout::ConstraintsForInFlowContent& constraints) { return constraints.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Layout::ToValueTypeName) \
+    static bool isType(const CyberCore::Layout::ConstraintsForInFlowContent& constraints) { return constraints.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

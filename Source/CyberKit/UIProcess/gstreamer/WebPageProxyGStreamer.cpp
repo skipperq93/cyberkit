@@ -32,7 +32,7 @@
 #if ENABLE(VIDEO) && USE(GSTREAMER)
 #include "PageClient.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(SPEECH_SYNTHESIS)
 void WebPageProxy::didStartSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
@@ -75,6 +75,6 @@ void WebPageProxy::voicesDidChange()
 }
 #endif // ENABLE(SPEECH_SYNTHESIS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

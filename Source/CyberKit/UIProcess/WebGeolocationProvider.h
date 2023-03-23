@@ -37,7 +37,7 @@ template<> struct ClientTraits<WKGeolocationProviderBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebGeolocationManagerProxy;
 
@@ -51,6 +51,6 @@ public:
     void setEnableHighAccuracy(WebGeolocationManagerProxy&, bool) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebGeolocationProvider_h

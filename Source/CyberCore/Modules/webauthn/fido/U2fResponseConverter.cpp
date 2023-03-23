@@ -38,7 +38,7 @@
 #include "WebAuthenticationUtils.h"
 
 namespace fido {
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace {
 
@@ -163,7 +163,7 @@ RefPtr<AuthenticatorAttestationResponse> readU2fRegisterResponse(const String& r
     return AuthenticatorAttestationResponse::create(credentialId, attestationObject, attachment, WTFMove(transports));
 }
 
-RefPtr<AuthenticatorAssertionResponse> readU2fSignResponse(const String& rpId, const WebCore::BufferSource& keyHandle, const Vector<uint8_t>& u2fData, AuthenticatorAttachment attachment)
+RefPtr<AuthenticatorAssertionResponse> readU2fSignResponse(const String& rpId, const CyberCore::BufferSource& keyHandle, const Vector<uint8_t>& u2fData, AuthenticatorAttachment attachment)
 {
     if (!keyHandle.length() || u2fData.size() <= signatureIndex)
         return nullptr;

@@ -35,7 +35,7 @@
 #include "StylePropertiesInlines.h"
 #include "XMLNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ElementData);
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ShareableElementData);

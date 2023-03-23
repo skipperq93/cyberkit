@@ -28,7 +28,7 @@
 
 #include "CSSPropertyParser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<HashMapStylePropertyMapReadOnly> HashMapStylePropertyMapReadOnly::create(HashMap<AtomString, RefPtr<CSSValue>>&& map)
 {
@@ -76,4 +76,4 @@ auto HashMapStylePropertyMapReadOnly::entries(ScriptExecutionContext* context) c
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

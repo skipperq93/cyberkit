@@ -27,7 +27,7 @@
 #include "ExceptionOr.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 class NodeFilter;
@@ -51,4 +51,4 @@ private:
     bool m_isActive { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

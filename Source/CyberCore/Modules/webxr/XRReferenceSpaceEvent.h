@@ -31,7 +31,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRReferenceSpace;
 class WebXRRigidTransform;
@@ -57,6 +57,6 @@ private:
     RefPtr<WebXRRigidTransform> m_transform;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

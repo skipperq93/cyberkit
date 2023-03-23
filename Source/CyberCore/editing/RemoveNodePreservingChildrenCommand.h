@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoveNodePreservingChildrenCommand : public CompositeEditCommand {
 public:
@@ -45,4 +45,4 @@ private:
     ShouldAssumeContentIsAlwaysEditable m_shouldAssumeContentIsAlwaysEditable;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

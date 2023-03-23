@@ -27,7 +27,7 @@
 
 #include "StylePropertyMap.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InlineStylePropertyMap final : public StylePropertyMap {
 public:
@@ -52,4 +52,4 @@ private:
     StyledElement* m_element;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

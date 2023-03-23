@@ -27,7 +27,7 @@
 
 #include <CyberScriptCore/InjectedScriptHost.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebInjectedScriptHost final : public Inspector::InjectedScriptHost {
 public:
@@ -38,4 +38,4 @@ public:
     bool isHTMLAllCollection(JSC::VM&, JSC::JSValue) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

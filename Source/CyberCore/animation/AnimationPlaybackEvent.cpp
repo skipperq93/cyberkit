@@ -29,7 +29,7 @@
 #include "WebAnimationUtilities.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AnimationPlaybackEvent);
 
@@ -70,4 +70,4 @@ std::optional<double> AnimationPlaybackEvent::bindingsTimelineTime() const
     return secondsToWebAnimationsAPITime(m_timelineTime.value());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

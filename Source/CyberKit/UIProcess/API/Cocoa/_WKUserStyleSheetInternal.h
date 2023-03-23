@@ -27,7 +27,7 @@
 
 #import "APIUserStyleSheet.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::UserStyleSheet> {
     using WrapperClass = _WKUserStyleSheet;

@@ -33,7 +33,7 @@
 #include "RTCRtpFecParameters.h"
 #include "RTCRtpRtxParameters.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpEncodingParameters : RTCRtpCodingParameters {
     unsigned long ssrc { 0 };
@@ -48,6 +48,6 @@ struct RTCRtpEncodingParameters : RTCRtpCodingParameters {
     double scaleResolutionDownBy { 1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

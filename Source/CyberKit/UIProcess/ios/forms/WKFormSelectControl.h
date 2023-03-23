@@ -31,7 +31,7 @@
 #import "WKFormPopover.h"
 #import <UIKit/UIPickerView.h>
 
-CGFloat adjustedFontSize(CGFloat textWidth, UIFont *, CGFloat initialFontSize, const Vector<WebKit::OptionItem>& items);
+CGFloat adjustedFontSize(CGFloat textWidth, UIFont *, CGFloat initialFontSize, const Vector<CyberKit::OptionItem>& items);
 
 @class WKContentView;
 

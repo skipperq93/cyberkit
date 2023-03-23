@@ -29,13 +29,13 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPURequestAdapterOptions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURequestAdapterOptions {
     PAL::WebGPU::RequestAdapterOptions convertToBacking() const
     {
         return {
-            powerPreference ? std::optional { WebCore::convertToBacking(*powerPreference) } : std::nullopt,
+            powerPreference ? std::optional { CyberCore::convertToBacking(*powerPreference) } : std::nullopt,
             forceFallbackAdapter,
         };
     }

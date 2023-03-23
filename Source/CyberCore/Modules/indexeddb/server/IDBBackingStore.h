@@ -30,7 +30,7 @@
 #include "IndexKey.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBCursorInfo;
 class IDBGetAllResult;
@@ -103,4 +103,4 @@ protected:
 };
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

@@ -48,7 +48,7 @@ struct PasteboardWebContent;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class PasteboardAccessIntent : bool;
 class WebFrameProxy;
@@ -108,7 +108,7 @@ private:
     void setPasteboardBufferForType(IPC::Connection&, const String& pasteboardName, const String& pasteboardType, RefPtr<CyberCore::SharedBuffer>&&, std::optional<CyberCore::PageIdentifier>, CompletionHandler<void(int64_t)>&&);
 
 #if ENABLE(IPC_TESTING_API)
-    void testIPCSharedMemory(IPC::Connection&, const String& pasteboardName, const String& pasteboardType, WebKit::SharedMemory::Handle&&, std::optional<CyberCore::PageIdentifier>, CompletionHandler<void(int64_t, String)>&&);
+    void testIPCSharedMemory(IPC::Connection&, const String& pasteboardName, const String& pasteboardType, CyberKit::SharedMemory::Handle&&, std::optional<CyberCore::PageIdentifier>, CompletionHandler<void(int64_t, String)>&&);
 #endif
 
 #endif
@@ -170,4 +170,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

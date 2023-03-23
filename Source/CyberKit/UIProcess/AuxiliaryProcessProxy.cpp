@@ -44,7 +44,7 @@
 #import <pal/spi/ios/MobileGestaltSPI.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 AuxiliaryProcessProxy::AuxiliaryProcessProxy(bool alwaysRunsAtBackgroundPriority, Seconds responsivenessTimeout)
     : m_responsivenessTimer(*this, responsivenessTimeout)
@@ -68,7 +68,7 @@ AuxiliaryProcessProxy::~AuxiliaryProcessProxy()
 void AuxiliaryProcessProxy::populateOverrideLanguagesLaunchOptions(ProcessLauncher::LaunchOptions& launchOptions) const
 {
     LOG(Language, "WebProcessProxy is getting launch options.");
-    auto overrideLanguages = WebKit::overrideLanguages();
+    auto overrideLanguages = CyberKit::overrideLanguages();
     if (overrideLanguages.isEmpty()) {
         LOG(Language, "overrideLanguages() reports empty. Calling platformOverrideLanguages()");
         overrideLanguages = platformOverrideLanguages();
@@ -482,4 +482,4 @@ void AuxiliaryProcessProxy::setRunningBoardThrottlingEnabled()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

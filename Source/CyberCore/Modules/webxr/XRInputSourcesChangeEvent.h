@@ -31,7 +31,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRInputSource;
 class WebXRSession;
@@ -62,6 +62,6 @@ private:
     Vector<RefPtr<WebXRInputSource>> m_removed;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

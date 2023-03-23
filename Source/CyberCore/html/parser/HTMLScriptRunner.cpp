@@ -43,7 +43,7 @@
 #include "ScriptElement.h"
 #include "ScriptSourceCode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

@@ -29,7 +29,7 @@
 #import "WKObject.h"
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<API::ContentWorld> {
     using WrapperClass = WKContentWorld;

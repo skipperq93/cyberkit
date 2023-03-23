@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebGeolocationManagerProxy;
 }
 
@@ -38,9 +38,9 @@ class GeolocationProvider {
 public:
     virtual ~GeolocationProvider() { }
 
-    virtual void startUpdating(WebKit::WebGeolocationManagerProxy&) { };
-    virtual void stopUpdating(WebKit::WebGeolocationManagerProxy&) { };
-    virtual void setEnableHighAccuracy(WebKit::WebGeolocationManagerProxy&, bool) { };
+    virtual void startUpdating(CyberKit::WebGeolocationManagerProxy&) { };
+    virtual void stopUpdating(CyberKit::WebGeolocationManagerProxy&) { };
+    virtual void setEnableHighAccuracy(CyberKit::WebGeolocationManagerProxy&, bool) { };
 };
 
 } // namespace API

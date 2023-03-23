@@ -34,7 +34,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 bool WebExtensionAPINamespace::isPropertyAllowed(String name, WebPage*)
 {
@@ -87,6 +87,6 @@ WebExtensionAPIWebNavigation& WebExtensionAPINamespace::webNavigation()
     return *m_webNavigation;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

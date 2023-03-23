@@ -30,7 +30,7 @@
 #import "WKObject.h"
 #import "WebExtensionController.h"
 
-namespace WebKit {
+namespace CyberKit {
 template<> struct WrapperTraits<WebExtensionController> {
     using WrapperClass = _WKWebExtensionController;
 };
@@ -38,10 +38,10 @@ template<> struct WrapperTraits<WebExtensionController> {
 
 @interface _WKWebExtensionController () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebExtensionController> _webExtensionController;
+    API::ObjectStorage<CyberKit::WebExtensionController> _webExtensionController;
 }
 
-@property (nonatomic, readonly) WebKit::WebExtensionController& _webExtensionController;
+@property (nonatomic, readonly) CyberKit::WebExtensionController& _webExtensionController;
 
 @end
 

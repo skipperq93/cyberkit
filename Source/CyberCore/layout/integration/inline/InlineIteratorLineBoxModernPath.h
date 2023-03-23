@@ -29,7 +29,7 @@
 #include "LayoutIntegrationInlineContent.h"
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace InlineIterator {
 
 class BoxModernPath;

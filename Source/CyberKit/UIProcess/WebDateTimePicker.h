@@ -34,7 +34,7 @@ namespace CyberCore {
 struct DateTimeChooserParameters;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -51,6 +51,6 @@ protected:
     WeakPtr<WebPageProxy> m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

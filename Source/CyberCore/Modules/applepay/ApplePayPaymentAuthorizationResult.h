@@ -33,7 +33,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayPaymentAuthorizationResult {
     using Status = unsigned short;

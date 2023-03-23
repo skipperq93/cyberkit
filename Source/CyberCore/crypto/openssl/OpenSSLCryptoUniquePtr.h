@@ -35,7 +35,7 @@
 #endif
 #include <openssl/x509.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename T>
 struct OpenSSLCryptoPtrDeleter {
@@ -88,4 +88,4 @@ DEFINE_OPENSSL_CRYPTO_PTR_FULL(ASN1SequencePtr, ASN1_SEQUENCE_ANY, sk_ASN1_TYPE_
 #undef DEFINE_OPENSSL_CRYPTO_PTR
 #undef DEFINE_OPENSSL_CRYPTO_PTR_FULL
 
-} // namespace WebCore
+} // namespace CyberCore

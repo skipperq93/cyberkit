@@ -37,7 +37,7 @@
 #include <wtf/StdLibExtras.h>
 #include <zlib.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int defaultMemLevel = 8;
 static const size_t bufferIncrementUnit = 4096;
@@ -221,4 +221,4 @@ void WebSocketInflater::reset()
     m_buffer.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

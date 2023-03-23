@@ -34,7 +34,7 @@
 #import "WebURLSchemeTask.h"
 #import <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebURLSchemeHandlerCocoa> WebURLSchemeHandlerCocoa::create(id <WKURLSchemeHandler> apiHandler)
 {
@@ -62,4 +62,4 @@ void WebURLSchemeHandlerCocoa::platformStopTask(WebPageProxy& page, WebURLScheme
         task.suppressTaskStoppedExceptions();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

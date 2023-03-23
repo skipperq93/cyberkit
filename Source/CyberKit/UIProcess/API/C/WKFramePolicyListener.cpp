@@ -34,7 +34,7 @@
 #include "WebsiteDataStore.h"
 #include "WebsitePoliciesData.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKFramePolicyListenerGetTypeID()
 {

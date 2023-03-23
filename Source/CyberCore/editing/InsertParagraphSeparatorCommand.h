@@ -27,7 +27,7 @@
 
 #include "CompositeEditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EditingStyle;
 
@@ -58,4 +58,4 @@ private:
     bool m_pasteBlockqutoeIntoUnquotedArea;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "CSSSelector.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PseudoClassOrCompatibilityPseudoElement {
     CSSSelector::PseudoClassType pseudoClass;
@@ -37,4 +37,4 @@ struct PseudoClassOrCompatibilityPseudoElement {
 PseudoClassOrCompatibilityPseudoElement parsePseudoClassAndCompatibilityElementString(StringView pseudoTypeString);
 CSSSelector::PseudoElementType parsePseudoElementString(StringView pseudoTypeString);
 
-} // namespace WebCore
+} // namespace CyberCore

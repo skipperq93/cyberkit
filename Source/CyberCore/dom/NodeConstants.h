@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NodeConstants {
     enum NodeType {
@@ -49,4 +49,4 @@ struct NodeConstants {
     static const uint8_t LastNodeType = NOTATION_NODE;
 };
 
-} // namespace WebCore::NodeType
+} // namespace CyberCore::NodeType

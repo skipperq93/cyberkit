@@ -29,7 +29,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IDBIndexInfo::IDBIndexInfo()
 {
@@ -62,7 +62,7 @@ String IDBIndexInfo::loggingString(int indent) const
     StringBuilder indentString;
     for (int i = 0; i < indent; ++i)
         indentString.append(' ');
-    return makeString(indentString.toString(), "Index: ", m_name, " (", m_identifier, ") keyPath: ", WebCore::loggingString(m_keyPath), '\n');
+    return makeString(indentString.toString(), "Index: ", m_name, " (", m_identifier, ") keyPath: ", CyberCore::loggingString(m_keyPath), '\n');
 }
 
 String IDBIndexInfo::condensedLoggingString() const
@@ -72,4 +72,4 @@ String IDBIndexInfo::condensedLoggingString() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

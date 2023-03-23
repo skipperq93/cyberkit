@@ -33,7 +33,7 @@
 #include "HTMLTableElement.h"
 #include "MathMLNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace ElementNames;
 

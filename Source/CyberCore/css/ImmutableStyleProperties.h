@@ -26,7 +26,7 @@
 
 #include "StyleProperties.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ImmutableStyleProperties);
 class ImmutableStyleProperties final : public StyleProperties {
@@ -86,6 +86,6 @@ constexpr size_t ImmutableStyleProperties::objectSize(unsigned count)
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ImmutableStyleProperties)
-    static bool isType(const WebCore::StyleProperties& properties) { return !properties.isMutable(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ImmutableStyleProperties)
+    static bool isType(const CyberCore::StyleProperties& properties) { return !properties.isMutable(); }
 SPECIALIZE_TYPE_TRAITS_END()

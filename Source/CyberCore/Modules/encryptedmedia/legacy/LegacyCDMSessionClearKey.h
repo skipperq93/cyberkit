@@ -31,7 +31,7 @@
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMSessionClearKey final : public LegacyCDMSession {
     WTF_MAKE_FAST_ALLOCATED;
@@ -54,6 +54,6 @@ private:
     String m_sessionId;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LEGACY_ENCRYPTED_MEDIA)

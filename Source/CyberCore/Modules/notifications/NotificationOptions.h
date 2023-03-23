@@ -28,7 +28,7 @@
 
 #if ENABLE(NOTIFICATIONS)
 
-namespace WebCore {
+namespace CyberCore {
 
 using NotificationOptions = Notification::Options;
 

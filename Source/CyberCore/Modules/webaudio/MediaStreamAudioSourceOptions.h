@@ -28,12 +28,12 @@
 
 #include "MediaStream.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaStreamAudioSourceOptions {
     RefPtr<MediaStream> mediaStream;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && ENABLE(MEDIA_STREAM)

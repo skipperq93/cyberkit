@@ -53,7 +53,7 @@
 #include "JSRsaPssParams.h"
 #include <CyberScriptCore/JSONObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 SubtleCrypto::SubtleCrypto(ScriptExecutionContext* context)
@@ -78,7 +78,7 @@ enum class Operations {
     GetKeyLength
 };
 
-static ExceptionOr<std::unique_ptr<CryptoAlgorithmParameters>> normalizeCryptoAlgorithmParameters(JSGlobalObject&, WebCore::SubtleCrypto::AlgorithmIdentifier, Operations);
+static ExceptionOr<std::unique_ptr<CryptoAlgorithmParameters>> normalizeCryptoAlgorithmParameters(JSGlobalObject&, CyberCore::SubtleCrypto::AlgorithmIdentifier, Operations);
 
 static ExceptionOr<CryptoAlgorithmIdentifier> toHashIdentifier(JSGlobalObject& state, SubtleCrypto::AlgorithmIdentifier algorithmIdentifier)
 {

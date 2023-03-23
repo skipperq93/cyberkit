@@ -30,7 +30,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceOrientationController;
 class DeviceOrientationData;
@@ -48,4 +48,4 @@ public:
 
 WEBCORE_EXPORT void provideDeviceOrientationTo(Page&, DeviceOrientationClient&);
 
-} // namespace WebCore
+} // namespace CyberCore

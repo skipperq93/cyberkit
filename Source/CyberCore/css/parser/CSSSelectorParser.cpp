@@ -38,7 +38,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static AtomString serializeANPlusB(const std::pair<int, int>&);
 static bool consumeANPlusB(CSSParserTokenRange&, std::pair<int, int>&);
@@ -1212,4 +1212,4 @@ CSSSelectorList CSSSelectorParser::resolveNestingParent(const CSSSelectorList& n
     return final;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

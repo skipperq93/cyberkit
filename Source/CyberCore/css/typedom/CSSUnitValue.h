@@ -30,7 +30,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CSSUnitType : uint8_t;
 
@@ -66,8 +66,8 @@ private:
     const CSSUnitType m_unit;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSUnitValue)
-static bool isType(const WebCore::CSSStyleValue& styleValue) { return styleValue.getType() == WebCore::CSSStyleValueType::CSSUnitValue; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSUnitValue)
+static bool isType(const CyberCore::CSSStyleValue& styleValue) { return styleValue.getType() == CyberCore::CSSStyleValueType::CSSUnitValue; }
 SPECIALIZE_TYPE_TRAITS_END()

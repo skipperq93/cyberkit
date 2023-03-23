@@ -33,7 +33,7 @@
 
 #include "JSEventListener.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSErrorHandler final : public JSEventListener {
 public:
@@ -45,4 +45,4 @@ private:
     void handleEvent(ScriptExecutionContext&, Event&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

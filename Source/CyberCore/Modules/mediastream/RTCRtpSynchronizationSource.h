@@ -29,12 +29,12 @@
 
 #include "RTCRtpContributingSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpSynchronizationSource : RTCRtpContributingSource {
     std::optional<bool> voiceActivityFlag;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

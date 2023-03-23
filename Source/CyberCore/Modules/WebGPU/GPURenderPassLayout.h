@@ -32,7 +32,7 @@
 #include <pal/graphics/WebGPU/WebGPURenderPassLayout.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURenderPassLayout : public GPUObjectDescriptorBase {
     PAL::WebGPU::RenderPassLayout convertToBacking() const
@@ -41,10 +41,10 @@ struct GPURenderPassLayout : public GPUObjectDescriptorBase {
             { label },
             colorFormats.map([] (auto& colorFormat) -> std::optional<PAL::WebGPU::TextureFormat> {
                 if (colorFormat)
-                    return WebCore::convertToBacking(*colorFormat);
+                    return CyberCore::convertToBacking(*colorFormat);
                 return std::nullopt;
             }),
-            depthStencilFormat ? std::optional { WebCore::convertToBacking(*depthStencilFormat) } : std::nullopt,
+            depthStencilFormat ? std::optional { CyberCore::convertToBacking(*depthStencilFormat) } : std::nullopt,
             sampleCount,
         };
     }

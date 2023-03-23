@@ -28,7 +28,7 @@
 #include "MouseEvent.h"
 #include "MouseEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataTransfer;
 
@@ -62,4 +62,4 @@ private:
     RefPtr<DataTransfer> m_dataTransfer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

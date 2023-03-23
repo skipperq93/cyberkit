@@ -32,7 +32,7 @@
 
 #include "JSDOMGlobalObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CastedThisErrorBehavior : uint8_t {
     Throw,

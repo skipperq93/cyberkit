@@ -45,7 +45,7 @@ namespace Inspector {
 class CSSFrontendDispatcher;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSRule;
 class CSSStyleRule;
@@ -202,4 +202,4 @@ private:
     Inspector::Protocol::CSS::LayoutContextTypeChangedMode m_layoutContextTypeChangedMode { Inspector::Protocol::CSS::LayoutContextTypeChangedMode::Observed };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

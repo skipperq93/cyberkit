@@ -29,7 +29,7 @@
 #include "APIDictionary.h"
 #include <CyberCore/NotificationData.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebNotification::WebNotification(const CyberCore::NotificationData& data, WebPageProxyIdentifier pageIdentifier, const std::optional<UUID>& dataStoreIdentifier, IPC::Connection& sourceConnection)
     : m_data(data)
@@ -40,4 +40,4 @@ WebNotification::WebNotification(const CyberCore::NotificationData& data, WebPag
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

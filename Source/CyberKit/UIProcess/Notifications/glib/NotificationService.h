@@ -38,7 +38,7 @@ namespace CyberCore {
 class NotificationResources;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebNotification;
 
@@ -98,4 +98,4 @@ private:
     HashSet<Observer*> m_observers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -30,9 +30,9 @@
 
 #include "WKAPICast.h"
 #include "WKViewPrivate.h"
-#include "WebKitWebViewBasePrivate.h"
+#include "CyberKitWebViewBasePrivate.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKViewRef WKViewCreate(WKPageConfigurationRef configuration)
 {

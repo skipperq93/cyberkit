@@ -28,7 +28,7 @@
 #include "JSDOMGlobalObjectInlines.h"
 #include "JSDOMWrapper.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ShadowRealmGlobalScope;
 
@@ -79,4 +79,4 @@ inline JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalOb
 JSC::JSValue toJS(JSC::JSGlobalObject*, ShadowRealmGlobalScope&);
 inline JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, ShadowRealmGlobalScope* scope) { return scope ? toJS(lexicalGlobalObject, *scope) : JSC::jsNull(); }
 
-} // namespace WebCore
+} // namespace CyberCore

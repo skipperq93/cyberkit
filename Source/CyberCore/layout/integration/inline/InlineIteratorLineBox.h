@@ -31,7 +31,7 @@
 #include "RenderBlockFlow.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LineSelection;
 

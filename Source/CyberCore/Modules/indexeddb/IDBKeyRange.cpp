@@ -34,7 +34,7 @@
 #include <CyberScriptCore/JSGlobalObject.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(IDBKeyRange);
@@ -160,4 +160,4 @@ ExceptionOr<bool> IDBKeyRange::includes(JSC::JSGlobalObject& state, JSC::JSValue
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

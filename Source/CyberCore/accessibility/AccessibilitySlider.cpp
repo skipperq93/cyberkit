@@ -36,7 +36,7 @@
 #include "RenderSlider.h"
 #include "SliderThumbElement.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -186,4 +186,4 @@ bool AccessibilitySliderThumb::computeAccessibilityIsIgnored() const
     return accessibilityIsIgnoredByDefault();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

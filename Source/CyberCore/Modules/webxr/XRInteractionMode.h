@@ -27,13 +27,13 @@
 
 #if ENABLE(WEBXR)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class XRInteractionMode {
     ScreenSpace,
     WorldSpace
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

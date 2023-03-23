@@ -48,7 +48,7 @@ class ArrayBufferView;
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class BlobLoader;
@@ -56,7 +56,7 @@ class DeferredPromise;
 class ReadableStream;
 class ScriptExecutionContext;
 class FragmentedSharedBuffer;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 template<typename> class ExceptionOr;
 
@@ -161,6 +161,6 @@ private:
     HashSet<std::unique_ptr<BlobLoader>> m_blobLoaders;
 };
 
-WebCoreOpaqueRoot root(Blob*);
+CyberCoreOpaqueRoot root(Blob*);
 
-} // namespace WebCore
+} // namespace CyberCore

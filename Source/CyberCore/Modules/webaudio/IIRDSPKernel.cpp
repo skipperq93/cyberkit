@@ -28,7 +28,7 @@
 #if ENABLE(WEB_AUDIO)
 #include "IIRDSPKernel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IIRDSPKernel::IIRDSPKernel(IIRProcessor& processor)
     : AudioDSPKernel(&processor)
@@ -72,6 +72,6 @@ bool IIRDSPKernel::requiresTailProcessing() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

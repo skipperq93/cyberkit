@@ -25,7 +25,7 @@
 
 // https://whatwg.github.io/loader/#loader-object
 // Module Loader has several hooks that can be customized by the platform.
-// For example, the [[Fetch]] hook can be provided by the JavaScriptCore shell
+// For example, the [[Fetch]] hook can be provided by the CyberScriptCore shell
 // as fetching the payload from the local file system.
 // Currently, there are 4 hooks.
 //    1. Loader.resolve
@@ -175,7 +175,7 @@ function requestFetch(entry, parameters, fetcher)
     // 2. Loader.fetch
     //     https://whatwg.github.io/loader/#browser-fetch
     //     Take the key and fetch the resource actually.
-    //     For example, JavaScriptCore shell can provide the hook fetching the resource
+    //     For example, CyberScriptCore shell can provide the hook fetching the resource
     //     from the local file system.
     var fetchPromise = this.fetch(entry.key, parameters, fetcher).then((source) => {
         @setStateToMax(entry, @ModuleInstantiate);

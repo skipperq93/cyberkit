@@ -30,7 +30,7 @@
 #include "WKAPICast.h"
 #include "WebIconDatabase.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKIconDatabaseGetTypeID()
 {

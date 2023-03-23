@@ -41,7 +41,7 @@ static NSString * const WebNotificationContextUUIDStringKey = @"WebNotificationC
 static NSString * const WebNotificationSessionIDKey = @"WebNotificationSessionIDKey";
 static NSString * const WebNotificationDataKey = @"WebNotificationDataKey";
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<NotificationData> NotificationData::fromDictionary(NSDictionary *dictionary)
 {

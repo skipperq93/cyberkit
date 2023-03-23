@@ -28,7 +28,7 @@
 #import "AuthenticationChallengeProxy.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<AuthenticationChallengeProxy> {
     using WrapperClass = NSURLAuthenticationChallenge;

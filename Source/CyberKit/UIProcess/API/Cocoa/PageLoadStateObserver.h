@@ -25,7 +25,7 @@
 
 #import "PageLoadState.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class PageLoadStateObserver : public PageLoadState::Observer {
     WTF_MAKE_FAST_ALLOCATED;

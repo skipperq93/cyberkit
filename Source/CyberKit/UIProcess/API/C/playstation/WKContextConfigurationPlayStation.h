@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKContextConfigurationRef.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKContextConfigurationRef.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -32,7 +32,7 @@
 #include "VirtualCredential.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class VirtualAuthenticatorManager;
 
@@ -47,6 +47,6 @@ private:
     Vector<std::pair<String, VirtualAuthenticatorConfiguration>> m_authenticators;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

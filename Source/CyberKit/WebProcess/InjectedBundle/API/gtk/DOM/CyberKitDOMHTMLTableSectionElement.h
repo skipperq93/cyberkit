@@ -56,7 +56,7 @@ webkit_dom_html_table_section_element_get_type(void);
  *
  * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
 webkit_dom_html_table_section_element_insert_row(CyberKitDOMHTMLTableSectionElement* self, glong index, GError** error);
@@ -68,7 +68,7 @@ webkit_dom_html_table_section_element_insert_row(CyberKitDOMHTMLTableSectionElem
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_section_element_delete_row(CyberKitDOMHTMLTableSectionElement* self, glong index, GError** error);
@@ -79,7 +79,7 @@ webkit_dom_html_table_section_element_delete_row(CyberKitDOMHTMLTableSectionElem
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_section_element_get_align(CyberKitDOMHTMLTableSectionElement* self);
@@ -90,7 +90,7 @@ webkit_dom_html_table_section_element_get_align(CyberKitDOMHTMLTableSectionEleme
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_section_element_set_align(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
@@ -101,7 +101,7 @@ webkit_dom_html_table_section_element_set_align(CyberKitDOMHTMLTableSectionEleme
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_section_element_get_ch(CyberKitDOMHTMLTableSectionElement* self);
@@ -112,7 +112,7 @@ webkit_dom_html_table_section_element_get_ch(CyberKitDOMHTMLTableSectionElement*
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_section_element_set_ch(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
@@ -123,7 +123,7 @@ webkit_dom_html_table_section_element_set_ch(CyberKitDOMHTMLTableSectionElement*
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_section_element_get_ch_off(CyberKitDOMHTMLTableSectionElement* self);
@@ -134,7 +134,7 @@ webkit_dom_html_table_section_element_get_ch_off(CyberKitDOMHTMLTableSectionElem
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_section_element_set_ch_off(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
@@ -145,7 +145,7 @@ webkit_dom_html_table_section_element_set_ch_off(CyberKitDOMHTMLTableSectionElem
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_table_section_element_get_v_align(CyberKitDOMHTMLTableSectionElement* self);
@@ -156,7 +156,7 @@ webkit_dom_html_table_section_element_get_v_align(CyberKitDOMHTMLTableSectionEle
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_table_section_element_set_v_align(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
@@ -167,7 +167,7 @@ webkit_dom_html_table_section_element_set_v_align(CyberKitDOMHTMLTableSectionEle
  *
  * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
 webkit_dom_html_table_section_element_get_rows(CyberKitDOMHTMLTableSectionElement* self);

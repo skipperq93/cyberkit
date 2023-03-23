@@ -36,7 +36,7 @@
 @class WKWebView;
 @protocol _WKDiagnosticLoggingDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class DiagnosticLoggingClient final : public API::DiagnosticLoggingClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -68,7 +68,7 @@ private:
     } m_delegateMethods;
 };
 
-} // WebKit
+} // CyberKit
 
 #endif // DiagnosticLoggingClient_h
 

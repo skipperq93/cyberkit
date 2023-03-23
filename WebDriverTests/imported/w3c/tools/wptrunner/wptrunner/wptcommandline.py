@@ -385,9 +385,9 @@ scheme host and port.""")
                                    type=str,
                                    help="Path to GitHub checks output file")
 
-    webkit_group = parser.add_argument_group("WebKit-specific")
+    webkit_group = parser.add_argument_group("CyberKit-specific")
     webkit_group.add_argument("--webkit-port", dest="webkit_port",
-                              help="WebKit port")
+                              help="CyberKit port")
 
     safari_group = parser.add_argument_group("Safari-specific")
     safari_group.add_argument("--kill-safari", dest="kill_safari", action="store_true", default=False,

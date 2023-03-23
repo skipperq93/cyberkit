@@ -31,7 +31,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WeakPtrImplWithEventTargetData;
@@ -64,4 +64,4 @@ private:
     WeakPtr<Document, WeakPtrImplWithEventTargetData> m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

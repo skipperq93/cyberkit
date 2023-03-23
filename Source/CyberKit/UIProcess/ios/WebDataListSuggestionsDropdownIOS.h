@@ -46,7 +46,7 @@ OBJC_CLASS WKContentView;
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebDataListSuggestionsDropdownIOS : public WebDataListSuggestionsDropdown {
 public:
@@ -65,6 +65,6 @@ private:
     RetainPtr<WKDataListSuggestionsControl> m_suggestionsControl;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DATALIST_ELEMENT) && PLATFORM(IOS_FAMILY)

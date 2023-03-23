@@ -24,7 +24,7 @@
 #include "JSTestDefaultToJSONInherit.h"
 #include "TestDefaultToJSONInheritFinal.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDefaultToJSONInheritFinal : public JSTestDefaultToJSONInherit {
 public:
@@ -72,4 +72,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDefaultToJSONInheritFinal> {
     using ToWrappedReturnType = TestDefaultToJSONInheritFinal*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

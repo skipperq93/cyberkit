@@ -32,7 +32,7 @@
 #include "Text.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SplitTextNodeContainingElementCommand::SplitTextNodeContainingElementCommand(Ref<Text>&& text, int offset)
     : CompositeEditCommand(text->document())

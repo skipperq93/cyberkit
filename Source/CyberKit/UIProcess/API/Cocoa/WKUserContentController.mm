@@ -55,7 +55,7 @@
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebUserContentControllerProxy>(self);
+    API::Object::constructInWrapper<CyberKit::WebUserContentControllerProxy>(self);
 
     return self;
 }
@@ -94,7 +94,7 @@
 
 - (void)addUserScript:(WKUserScript *)userScript
 {
-    _userContentControllerProxy->addUserScript(*userScript->_userScript, WebKit::InjectUserScriptImmediately::No);
+    _userContentControllerProxy->addUserScript(*userScript->_userScript, CyberKit::InjectUserScriptImmediately::No);
 }
 
 - (void)removeAllUserScripts
@@ -123,7 +123,7 @@
 #endif
 }
 
-class ScriptMessageHandlerDelegate final : public WebKit::WebScriptMessageHandler::Client {
+class ScriptMessageHandlerDelegate final : public CyberKit::WebScriptMessageHandler::Client {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     ScriptMessageHandlerDelegate(WKUserContentController *controller, id <WKScriptMessageHandler> handler, NSString *name)
@@ -142,7 +142,7 @@ public:
     {
     }
 
-    void didPostMessage(WebKit::WebPageProxy& page, WebKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, CyberCore::SerializedScriptValue& serializedScriptValue) final
+    void didPostMessage(CyberKit::WebPageProxy& page, CyberKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, CyberCore::SerializedScriptValue& serializedScriptValue) final
     {
         @autoreleasepool {
             auto webView = page.cocoaView();
@@ -161,7 +161,7 @@ public:
         return m_supportsAsyncReply;
     }
 
-    void didPostMessageWithAsyncReply(WebKit::WebPageProxy& page, WebKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, CyberCore::SerializedScriptValue& serializedScriptValue, Function<void(API::SerializedScriptValue*, const String&)>&& replyHandler) final
+    void didPostMessageWithAsyncReply(CyberKit::WebPageProxy& page, CyberKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, CyberCore::SerializedScriptValue& serializedScriptValue, Function<void(API::SerializedScriptValue*, const String&)>&& replyHandler) final
     {
         ASSERT(m_supportsAsyncReply);
 
@@ -208,7 +208,7 @@ private:
     bool m_supportsAsyncReply;
 };
 
-- (void)_addScriptMessageHandler:(WebKit::WebScriptMessageHandler&)scriptMessageHandler
+- (void)_addScriptMessageHandler:(CyberKit::WebScriptMessageHandler&)scriptMessageHandler
 {
     if (!_userContentControllerProxy->addUserScriptMessageHandler(scriptMessageHandler))
         [NSException raise:NSInvalidArgumentException format:@"Attempt to add script message handler with name '%@' when one already exists.", (NSString *)scriptMessageHandler.name()];
@@ -216,19 +216,19 @@ private:
 
 - (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name
 {
-    auto handler = WebKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, API::ContentWorld::pageContentWorld());
+    auto handler = CyberKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, API::ContentWorld::pageContentWorld());
     [self _addScriptMessageHandler:handler.get()];
 }
 
 - (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler contentWorld:(WKContentWorld *)world name:(NSString *)name
 {
-    auto handler = WebKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, *world->_contentWorld);
+    auto handler = CyberKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, *world->_contentWorld);
     [self _addScriptMessageHandler:handler.get()];
 }
 
 - (void)addScriptMessageHandlerWithReply:(id <WKScriptMessageHandlerWithReply>)scriptMessageHandler contentWorld:(WKContentWorld *)world name:(NSString *)name
 {
-    auto handler = WebKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, *world->_contentWorld);
+    auto handler = CyberKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, *world->_contentWorld);
     [self _addScriptMessageHandler:handler.get()];
 }
 
@@ -275,7 +275,7 @@ private:
 
 - (void)_addUserScriptImmediately:(WKUserScript *)userScript
 {
-    _userContentControllerProxy->addUserScript(*userScript->_userScript, WebKit::InjectUserScriptImmediately::Yes);
+    _userContentControllerProxy->addUserScript(*userScript->_userScript, CyberKit::InjectUserScriptImmediately::Yes);
 }
 
 #pragma clang diagnostic push
@@ -337,7 +337,7 @@ private:
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 - (void)_addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name userContentWorld:(_WKUserContentWorld *)userContentWorld
 {
-    auto handler = WebKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, *userContentWorld->_contentWorld->_contentWorld);
+    auto handler = CyberKit::WebScriptMessageHandler::create(makeUnique<ScriptMessageHandlerDelegate>(self, scriptMessageHandler, name), name, *userContentWorld->_contentWorld->_contentWorld);
     if (!_userContentControllerProxy->addUserScriptMessageHandler(handler.get()))
         [NSException raise:NSInvalidArgumentException format:@"Attempt to add script message handler with name '%@' when one already exists.", name];
 }

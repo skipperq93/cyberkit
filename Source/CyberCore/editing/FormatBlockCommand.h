@@ -29,7 +29,7 @@
 #include "EditAction.h"
 #include "QualifiedName.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -59,4 +59,4 @@ private:
     bool m_didApply;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

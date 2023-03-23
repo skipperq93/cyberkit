@@ -21,29 +21,29 @@
 #error "Only <wpe/webkit.h> can be included directly."
 #endif
 
-#ifndef WebKitWebViewBackend_h
-#define WebKitWebViewBackend_h
+#ifndef CyberKitWebViewBackend_h
+#define CyberKitWebViewBackend_h
 
 #include <glib-object.h>
-#include <wpe/WebKitDefines.h>
+#include <wpe/CyberKitDefines.h>
 #include <wpe/wpe.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_VIEW_BACKEND (webkit_web_view_backend_get_type())
 
-typedef struct _WebKitWebViewBackend WebKitWebViewBackend;
+typedef struct _CyberKitWebViewBackend CyberKitWebViewBackend;
 
 WEBKIT_API GType
 webkit_web_view_backend_get_type        (void);
 
-WEBKIT_API WebKitWebViewBackend *
+WEBKIT_API CyberKitWebViewBackend *
 webkit_web_view_backend_new             (struct wpe_view_backend *backend,
                                          GDestroyNotify           notify,
                                          gpointer                 user_data);
 WEBKIT_API struct wpe_view_backend *
-webkit_web_view_backend_get_wpe_backend (WebKitWebViewBackend    *view_backend);
+webkit_web_view_backend_get_wpe_backend (CyberKitWebViewBackend    *view_backend);
 
 G_END_DECLS
 
-#endif /* WebKitWebViewBackend_h */
+#endif /* CyberKitWebViewBackend_h */

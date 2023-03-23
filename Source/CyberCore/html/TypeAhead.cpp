@@ -32,7 +32,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TypeAhead::TypeAhead(TypeAheadDataSource* dataSource)
     : m_dataSource(dataSource)
@@ -109,4 +109,4 @@ int TypeAhead::handleEvent(KeyboardEvent* event, MatchModeFlags matchMode)
     return -1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

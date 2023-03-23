@@ -27,7 +27,7 @@
 
 #if ENABLE(WEBXR)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct XRWebGLLayerInit {
     bool antialias { true };
@@ -38,6 +38,6 @@ struct XRWebGLLayerInit {
     double framebufferScaleFactor { 1.0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

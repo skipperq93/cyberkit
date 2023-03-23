@@ -40,7 +40,7 @@ namespace CyberCore {
 enum class DOMPasteAccessPolicy : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaProxy;
 class WebPageNamespace;
@@ -176,11 +176,11 @@ private:
 
     CyberCore::Color accentColor() override;
 
-    WebKitWebResourceLoadManager* webResourceLoadManager() override;
+    CyberKitWebResourceLoadManager* webResourceLoadManager() override;
 
     // Members of PageClientImpl class
     GtkWidget* m_viewWidget;
     DefaultUndoController m_undoController;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

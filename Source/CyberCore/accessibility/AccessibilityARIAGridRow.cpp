@@ -32,7 +32,7 @@
 #include "AccessibilityObject.h"
 #include "AccessibilityTable.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 AccessibilityARIAGridRow::AccessibilityARIAGridRow(RenderObject* renderer)
     : AccessibilityTableRow(renderer)
@@ -147,4 +147,4 @@ AXCoreObject* AccessibilityARIAGridRow::headerObject()
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

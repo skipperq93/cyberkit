@@ -31,7 +31,7 @@
 #include <wtf/Function.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename IDLType>
 class DOMPromiseProxy {

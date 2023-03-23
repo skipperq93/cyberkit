@@ -27,7 +27,7 @@
 
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Navigator;
 class Permissions;

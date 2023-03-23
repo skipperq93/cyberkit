@@ -35,7 +35,7 @@
 #include <pal/graphics/WebGPU/WebGPUTextureFormat.h>
 #include <pal/graphics/WebGPU/WebGPUTextureViewDescriptor.h>
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class ConvertToBackingContext;
 
@@ -86,6 +86,6 @@ private:
     Ref<RemoteGPUProxy> m_root;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

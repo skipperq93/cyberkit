@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FullscreenTouchSecheuristicParameters.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 FullscreenTouchSecheuristicParameters FullscreenTouchSecheuristicParameters::iosParameters()
 {

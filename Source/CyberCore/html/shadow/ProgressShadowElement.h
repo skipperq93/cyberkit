@@ -34,7 +34,7 @@
 #include "HTMLDivElement.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLProgressElement;
 
@@ -84,4 +84,4 @@ private:
 };
 static_assert(sizeof(ProgressValueElement) == sizeof(ProgressShadowElement));
 
-} // namespace WebCore
+} // namespace CyberCore

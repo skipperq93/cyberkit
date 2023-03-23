@@ -29,7 +29,7 @@
 #include "GeolocationIdentifier.h"
 #include <wtf/Function.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GeolocationPermissionRequestManagerProxy;
 
@@ -70,4 +70,4 @@ private:
     Function<void(bool)> m_completionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

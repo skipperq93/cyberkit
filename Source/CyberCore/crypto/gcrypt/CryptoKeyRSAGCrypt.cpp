@@ -33,13 +33,13 @@
 #include "CryptoKeyRSAComponents.h"
 #include "GCryptUtilities.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <pal/crypto/gcrypt/Utilities.h>
 #include <pal/crypto/tasn1/Utilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static size_t getRSAModulusLength(gcry_sexp_t keySexp)
 {
@@ -709,6 +709,6 @@ std::unique_ptr<CryptoKeyRSAComponents> CryptoKeyRSA::exportData() const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

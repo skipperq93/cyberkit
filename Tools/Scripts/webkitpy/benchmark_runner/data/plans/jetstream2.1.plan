@@ -2,12 +2,12 @@
     "timeout": 1200,
     "count": 5,
     "local_git_archive": "PerformanceTests/JetStream2@bb52774d658ff6d0f32d1630d9f1682ea1d7457a",
-    "github_source": "https://github.com/WebKit/WebKit/tree/bb52774d658ff6d0f32d1630d9f1682ea1d7457a/PerformanceTests/JetStream2",
+    "github_source": "https://github.com/CyberKit/CyberKit/tree/bb52774d658ff6d0f32d1630d9f1682ea1d7457a/PerformanceTests/JetStream2",
     "signpost_patch": "data/patches/signposts/JetStream2.patch",
     "entry_point": "index.html?report=true",
     "output_file": "jetstream2.result",
     "github_subtree": {
-        "url": "https://api.github.com/repos/WebKit/WebKit/git/trees/51fcdc288eaccb1ff2f73e86d441a72c5970fd56",
+        "url": "https://api.github.com/repos/CyberKit/CyberKit/git/trees/51fcdc288eaccb1ff2f73e86d441a72c5970fd56",
         "truncated": false,
         "tree": [
             {"path": "ARES-6", "mode": "040000", "type": "tree"},

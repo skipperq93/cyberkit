@@ -24,7 +24,7 @@
 #include "TestSetLikeWithOverriddenOperations.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestSetLikeWithOverriddenOperations : public JSDOMWrapper<TestSetLikeWithOverriddenOperations> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestSetLikeWithOverriddenOperation
     using ToWrappedReturnType = TestSetLikeWithOverriddenOperations*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -41,7 +41,7 @@ namespace webrtc {
 class RtpSenderInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCSenderTransformer;
 
@@ -62,6 +62,6 @@ private:
     rtc::scoped_refptr<webrtc::RtpSenderInterface> m_rtcSender;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

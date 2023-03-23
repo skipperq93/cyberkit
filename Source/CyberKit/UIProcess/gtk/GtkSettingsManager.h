@@ -29,7 +29,7 @@
 #include <gtk/gtk.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GtkSettingsManager {
     WTF_MAKE_NONCOPYABLE(GtkSettingsManager);
@@ -59,4 +59,4 @@ private:
     GtkSettingsState m_settingsState;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

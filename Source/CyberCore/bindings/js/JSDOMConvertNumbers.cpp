@@ -29,7 +29,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 enum class IntegerConversionConfiguration { Normal, EnforceRange, Clamp };
@@ -374,4 +374,4 @@ template<> uint64_t convertToInteger<uint64_t>(JSC::JSGlobalObject& lexicalGloba
     return n;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

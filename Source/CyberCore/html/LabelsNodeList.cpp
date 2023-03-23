@@ -30,7 +30,7 @@
 #include "NodeRareData.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -56,4 +56,4 @@ bool LabelsNodeList::elementMatches(Element& testNode) const
     return is<HTMLLabelElement>(testNode) && downcast<HTMLLabelElement>(testNode).control() == &ownerNode();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

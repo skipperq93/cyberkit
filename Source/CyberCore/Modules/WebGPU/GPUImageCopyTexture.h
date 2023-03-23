@@ -33,7 +33,7 @@
 #include <pal/graphics/WebGPU/WebGPUImageCopyTexture.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUImageCopyTexture {
     PAL::WebGPU::ImageCopyTexture convertToBacking() const
@@ -42,8 +42,8 @@ struct GPUImageCopyTexture {
         return {
             texture->backing(),
             mipLevel,
-            origin ? std::optional { WebCore::convertToBacking(*origin) } : std::nullopt,
-            WebCore::convertToBacking(aspect),
+            origin ? std::optional { CyberCore::convertToBacking(*origin) } : std::nullopt,
+            CyberCore::convertToBacking(aspect),
         };
     }
 

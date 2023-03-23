@@ -41,7 +41,7 @@
     BOOL _touching;
     BOOL _cancelledOrExited;
 
-    std::unique_ptr<WebKit::NativeWebMouseEvent> _lastEvent;
+    std::unique_ptr<CyberKit::NativeWebMouseEvent> _lastEvent;
     std::optional<CGPoint> _lastLocation;
     std::optional<UIEventButtonMask> _pressedButtonMask;
 }
@@ -68,7 +68,7 @@
     return touch == _currentTouch && touch._isPointerTouch;
 }
 
-- (std::unique_ptr<WebKit::NativeWebMouseEvent>)takeLastMouseEvent
+- (std::unique_ptr<CyberKit::NativeWebMouseEvent>)takeLastMouseEvent
 {
     return std::exchange(_lastEvent, nullptr);
 }
@@ -102,22 +102,22 @@ static String pointerTypeForUITouchType(UITouchType type)
 }
 
 
-- (std::unique_ptr<WebKit::NativeWebMouseEvent>)createMouseEventWithType:(WebKit::WebEventType)type wasCancelled:(BOOL)cancelled
+- (std::unique_ptr<CyberKit::NativeWebMouseEvent>)createMouseEventWithType:(CyberKit::WebEventType)type wasCancelled:(BOOL)cancelled
 {
     auto modifiers = WebIOSEventFactory::webEventModifiersForUIKeyModifierFlags(self.modifierFlags);
-    BOOL isRightButton = modifiers.contains(WebKit::WebEventModifier::ControlKey) || (_pressedButtonMask && (*_pressedButtonMask & UIEventButtonMaskSecondary));
+    BOOL isRightButton = modifiers.contains(CyberKit::WebEventModifier::ControlKey) || (_pressedButtonMask && (*_pressedButtonMask & UIEventButtonMaskSecondary));
 
     auto button = [&] {
         if (!_touching)
-            return WebKit::WebMouseEventButton::NoButton;
+            return CyberKit::WebMouseEventButton::NoButton;
         if (isRightButton)
-            return WebKit::WebMouseEventButton::RightButton;
-        return WebKit::WebMouseEventButton::LeftButton;
+            return CyberKit::WebMouseEventButton::RightButton;
+        return CyberKit::WebMouseEventButton::LeftButton;
     }();
 
     // FIXME: 'buttons' should report any buttons that are still down in the case when one button is released from a chord.
     auto buttons = [&] {
-        if (!_touching || type == WebKit::WebEventType::MouseUp)
+        if (!_touching || type == CyberKit::WebEventType::MouseUp)
             return 0;
         if (isRightButton)
             return 2;
@@ -129,7 +129,7 @@ static String pointerTypeForUITouchType(UITouchType type)
     // UITouch's timestamp uses mach_absolute_time as its timebase, same as MonotonicTime.
     auto timestamp = MonotonicTime::fromRawSeconds([_currentTouch timestamp]).approximateWallTime();
 
-    return WTF::makeUnique<WebKit::NativeWebMouseEvent>(type, button, buttons, point, point, delta.width(), delta.height(), 0, [_currentTouch tapCount], modifiers, timestamp, 0, cancelled ? WebKit::GestureWasCancelled::Yes : WebKit::GestureWasCancelled::No, pointerTypeForUITouchType([_currentTouch type]));
+    return WTF::makeUnique<CyberKit::NativeWebMouseEvent>(type, button, buttons, point, point, delta.width(), delta.height(), 0, [_currentTouch tapCount], modifiers, timestamp, 0, cancelled ? CyberKit::GestureWasCancelled::Yes : CyberKit::GestureWasCancelled::No, pointerTypeForUITouchType([_currentTouch type]));
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -137,7 +137,7 @@ static String pointerTypeForUITouchType(UITouchType type)
     _touching = YES;
     _pressedButtonMask = [event _buttonMask];
 
-    _lastEvent = [self createMouseEventWithType:WebKit::WebEventType::MouseDown wasCancelled:NO];
+    _lastEvent = [self createMouseEventWithType:CyberKit::WebEventType::MouseDown wasCancelled:NO];
     _lastLocation = [self locationInView:self.view];
 
     self.state = UIGestureRecognizerStateChanged;
@@ -145,7 +145,7 @@ static String pointerTypeForUITouchType(UITouchType type)
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    _lastEvent = [self createMouseEventWithType:WebKit::WebEventType::MouseMove wasCancelled:NO];
+    _lastEvent = [self createMouseEventWithType:CyberKit::WebEventType::MouseMove wasCancelled:NO];
     _lastLocation = [self locationInView:self.view];
 
     self.state = UIGestureRecognizerStateChanged;
@@ -153,7 +153,7 @@ static String pointerTypeForUITouchType(UITouchType type)
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    _lastEvent = [self createMouseEventWithType:WebKit::WebEventType::MouseUp wasCancelled:NO];
+    _lastEvent = [self createMouseEventWithType:CyberKit::WebEventType::MouseUp wasCancelled:NO];
     _lastLocation = [self locationInView:self.view];
 
     _touching = NO;
@@ -164,7 +164,7 @@ static String pointerTypeForUITouchType(UITouchType type)
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    _lastEvent = [self createMouseEventWithType:WebKit::WebEventType::MouseUp wasCancelled:YES];
+    _lastEvent = [self createMouseEventWithType:CyberKit::WebEventType::MouseUp wasCancelled:YES];
     _lastLocation = [self locationInView:self.view];
 
     _touching = NO;
@@ -184,7 +184,7 @@ static String pointerTypeForUITouchType(UITouchType type)
         _lastLocation = [self locationInView:self.view];
     }
 
-    _lastEvent = [self createMouseEventWithType:WebKit::WebEventType::MouseMove wasCancelled:NO];
+    _lastEvent = [self createMouseEventWithType:CyberKit::WebEventType::MouseMove wasCancelled:NO];
     
     if (shouldBeginGesture)
         self.state = UIGestureRecognizerStateBegan;
@@ -198,7 +198,7 @@ static String pointerTypeForUITouchType(UITouchType type)
     }
 
     _cancelledOrExited = NO;
-    _lastEvent = [self createMouseEventWithType:WebKit::WebEventType::MouseMove wasCancelled:NO];
+    _lastEvent = [self createMouseEventWithType:CyberKit::WebEventType::MouseMove wasCancelled:NO];
     _lastLocation = [self locationInView:self.view];
 
     if (_currentHoverEvent == event && [touches containsObject:_currentTouch.get()])
@@ -208,7 +208,7 @@ static String pointerTypeForUITouchType(UITouchType type)
 - (void)_hoverExited:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     _cancelledOrExited = YES;
-    _lastEvent = [self createMouseEventWithType:WebKit::WebEventType::MouseMove wasCancelled:NO];
+    _lastEvent = [self createMouseEventWithType:CyberKit::WebEventType::MouseMove wasCancelled:NO];
     _lastLocation = [self locationInView:self.view];
 
     if (_currentHoverEvent == event) {

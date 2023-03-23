@@ -30,7 +30,7 @@
 
 #import <CyberCore/UserVerificationRequirement.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 ClientDataType getClientDataType(const std::variant<PublicKeyCredentialCreationOptions, PublicKeyCredentialRequestOptions>& options)
@@ -51,6 +51,6 @@ UserVerificationRequirement getUserVerificationRequirement(const std::variant<Pu
     return std::get<PublicKeyCredentialRequestOptions>(options).userVerification;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

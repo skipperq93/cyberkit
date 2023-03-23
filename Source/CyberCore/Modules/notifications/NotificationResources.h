@@ -28,7 +28,7 @@
 #include "Image.h"
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NotificationResources : public ThreadSafeRefCounted<NotificationResources> {
 public:
@@ -56,4 +56,4 @@ private:
     RefPtr<Image> m_icon;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

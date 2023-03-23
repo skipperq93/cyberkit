@@ -38,7 +38,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/StringView.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static TextCheckerState& mutableState()
@@ -370,6 +370,6 @@ void TextChecker::requestCheckingOfString(Ref<TextCheckerCompletion>&&, int32_t)
     notImplemented();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

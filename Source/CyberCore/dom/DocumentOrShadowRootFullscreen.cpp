@@ -33,7 +33,7 @@
 #include "FullscreenManager.h"
 #include "TreeScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://fullscreen.spec.whatwg.org/#dom-document-fullscreenelement
 Element* DocumentOrShadowRootFullscreen::fullscreenElement(TreeScope& treeScope)
@@ -42,6 +42,6 @@ Element* DocumentOrShadowRootFullscreen::fullscreenElement(TreeScope& treeScope)
     return treeScope.ancestorElementInThisScope(document.fullscreenManager().fullscreenElement());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

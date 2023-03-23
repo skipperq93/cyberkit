@@ -155,7 +155,7 @@ struct DragItem;
 struct KeypressCommand;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PageClient;
 class PageClientImpl;
@@ -822,7 +822,7 @@ private:
 #endif
 
 #if ENABLE(UI_PROCESS_PDF_HUD)
-    HashMap<WebKit::PDFPluginIdentifier, RetainPtr<WKPDFHUDView>> _pdfHUDViews;
+    HashMap<CyberKit::PDFPluginIdentifier, RetainPtr<WKPDFHUDView>> _pdfHUDViews;
 #endif
 
     RetainPtr<WKShareSheet> _shareSheet;
@@ -941,6 +941,6 @@ private:
 #endif
 };
     
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

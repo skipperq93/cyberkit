@@ -30,7 +30,7 @@
 #include "Supplementable.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMAudioSession;
 class Navigator;

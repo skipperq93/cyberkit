@@ -74,7 +74,7 @@ _WKWebExtensionContextNotificationUserInfoKey const _WKWebExtensionContextNotifi
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<WebKit::WebExtensionContext>(self, extension._webExtension);
+    API::Object::constructInWrapper<CyberKit::WebExtensionContext>(self, extension._webExtension);
 
     return self;
 }
@@ -141,32 +141,32 @@ _WKWebExtensionContextNotificationUserInfoKey const _WKWebExtensionContextNotifi
 
 static inline WallTime toImpl(NSDate *date)
 {
-    return date ? WebKit::toImpl(date) : WebKit::toImpl(NSDate.distantFuture);
+    return date ? CyberKit::toImpl(date) : CyberKit::toImpl(NSDate.distantFuture);
 }
 
-static inline NSDictionary<_WKWebExtensionPermission, NSDate *> *toAPI(const WebKit::WebExtensionContext::PermissionsMap& permissions)
+static inline NSDictionary<_WKWebExtensionPermission, NSDate *> *toAPI(const CyberKit::WebExtensionContext::PermissionsMap& permissions)
 {
     NSMutableDictionary<_WKWebExtensionPermission, NSDate *> *result = [NSMutableDictionary dictionaryWithCapacity:permissions.size()];
 
     for (auto& entry : permissions)
-        [result setObject:WebKit::toAPI(entry.value) forKey:entry.key];
+        [result setObject:CyberKit::toAPI(entry.value) forKey:entry.key];
 
     return [result copy];
 }
 
-static inline NSDictionary<_WKWebExtensionMatchPattern *, NSDate *> *toAPI(const WebKit::WebExtensionContext::PermissionMatchPatternsMap& permissionMatchPatterns)
+static inline NSDictionary<_WKWebExtensionMatchPattern *, NSDate *> *toAPI(const CyberKit::WebExtensionContext::PermissionMatchPatternsMap& permissionMatchPatterns)
 {
     NSMutableDictionary<_WKWebExtensionMatchPattern *, NSDate *> *result = [NSMutableDictionary dictionaryWithCapacity:permissionMatchPatterns.size()];
 
     for (auto& entry : permissionMatchPatterns)
-        [result setObject:WebKit::toAPI(entry.value) forKey:wrapper(entry.key)];
+        [result setObject:CyberKit::toAPI(entry.value) forKey:wrapper(entry.key)];
 
     return [result copy];
 }
 
-static inline WebKit::WebExtensionContext::PermissionsMap toImpl(NSDictionary<_WKWebExtensionPermission, NSDate *> *permissions)
+static inline CyberKit::WebExtensionContext::PermissionsMap toImpl(NSDictionary<_WKWebExtensionPermission, NSDate *> *permissions)
 {
-    __block WebKit::WebExtensionContext::PermissionsMap result;
+    __block CyberKit::WebExtensionContext::PermissionsMap result;
     result.reserveInitialCapacity(permissions.count);
 
     [permissions enumerateKeysAndObjectsUsingBlock:^(_WKWebExtensionPermission permission, NSDate *date, BOOL *) {
@@ -176,9 +176,9 @@ static inline WebKit::WebExtensionContext::PermissionsMap toImpl(NSDictionary<_W
     return result;
 }
 
-static inline WebKit::WebExtensionContext::PermissionMatchPatternsMap toImpl(NSDictionary<_WKWebExtensionMatchPattern *, NSDate *> *permissionMatchPatterns)
+static inline CyberKit::WebExtensionContext::PermissionMatchPatternsMap toImpl(NSDictionary<_WKWebExtensionMatchPattern *, NSDate *> *permissionMatchPatterns)
 {
-    __block WebKit::WebExtensionContext::PermissionMatchPatternsMap result;
+    __block CyberKit::WebExtensionContext::PermissionMatchPatternsMap result;
     result.reserveInitialCapacity(permissionMatchPatterns.count);
 
     [permissionMatchPatterns enumerateKeysAndObjectsUsingBlock:^(_WKWebExtensionMatchPattern *origin, NSDate *date, BOOL *) {
@@ -246,7 +246,7 @@ static inline WebKit::WebExtensionContext::PermissionMatchPatternsMap toImpl(NSD
     return _webExtensionContext->setRequestedOptionalAccessToAllHosts(requested);
 }
 
-static inline NSSet<_WKWebExtensionPermission> *toAPI(const WebKit::WebExtensionContext::PermissionsMap::KeysConstIteratorRange& permissions)
+static inline NSSet<_WKWebExtensionPermission> *toAPI(const CyberKit::WebExtensionContext::PermissionsMap::KeysConstIteratorRange& permissions)
 {
     NSMutableSet<_WKWebExtensionPermission> *result = [NSMutableSet setWithCapacity:permissions.size()];
 
@@ -256,7 +256,7 @@ static inline NSSet<_WKWebExtensionPermission> *toAPI(const WebKit::WebExtension
     return [result copy];
 }
 
-static inline NSSet<_WKWebExtensionMatchPattern *> *toAPI(const WebKit::WebExtensionContext::PermissionMatchPatternsMap::KeysConstIteratorRange& permissionMatchPatterns)
+static inline NSSet<_WKWebExtensionMatchPattern *> *toAPI(const CyberKit::WebExtensionContext::PermissionMatchPatternsMap::KeysConstIteratorRange& permissionMatchPatterns)
 {
     NSMutableSet<_WKWebExtensionMatchPattern *> *result = [NSMutableSet setWithCapacity:permissionMatchPatterns.size()];
 
@@ -304,43 +304,43 @@ static inline NSSet<_WKWebExtensionMatchPattern *> *toAPI(const WebKit::WebExten
     return _webExtensionContext->hasPermission(url, tab);
 }
 
-static inline _WKWebExtensionContextPermissionStatus toAPI(WebKit::WebExtensionContext::PermissionState status)
+static inline _WKWebExtensionContextPermissionStatus toAPI(CyberKit::WebExtensionContext::PermissionState status)
 {
     switch (status) {
-    case WebKit::WebExtensionContext::PermissionState::DeniedExplicitly:
+    case CyberKit::WebExtensionContext::PermissionState::DeniedExplicitly:
         return _WKWebExtensionContextPermissionStatusDeniedExplicitly;
-    case WebKit::WebExtensionContext::PermissionState::DeniedImplicitly:
+    case CyberKit::WebExtensionContext::PermissionState::DeniedImplicitly:
         return _WKWebExtensionContextPermissionStatusDeniedImplicitly;
-    case WebKit::WebExtensionContext::PermissionState::RequestedImplicitly:
+    case CyberKit::WebExtensionContext::PermissionState::RequestedImplicitly:
         return _WKWebExtensionContextPermissionStatusRequestedImplicitly;
-    case WebKit::WebExtensionContext::PermissionState::Unknown:
+    case CyberKit::WebExtensionContext::PermissionState::Unknown:
         return _WKWebExtensionContextPermissionStatusUnknown;
-    case WebKit::WebExtensionContext::PermissionState::RequestedExplicitly:
+    case CyberKit::WebExtensionContext::PermissionState::RequestedExplicitly:
         return _WKWebExtensionContextPermissionStatusRequestedExplicitly;
-    case WebKit::WebExtensionContext::PermissionState::GrantedImplicitly:
+    case CyberKit::WebExtensionContext::PermissionState::GrantedImplicitly:
         return _WKWebExtensionContextPermissionStatusGrantedImplicitly;
-    case WebKit::WebExtensionContext::PermissionState::GrantedExplicitly:
+    case CyberKit::WebExtensionContext::PermissionState::GrantedExplicitly:
         return _WKWebExtensionContextPermissionStatusGrantedExplicitly;
     }
 }
 
-static inline WebKit::WebExtensionContext::PermissionState toImpl(_WKWebExtensionContextPermissionStatus status)
+static inline CyberKit::WebExtensionContext::PermissionState toImpl(_WKWebExtensionContextPermissionStatus status)
 {
     switch (status) {
     case _WKWebExtensionContextPermissionStatusDeniedExplicitly:
-        return WebKit::WebExtensionContext::PermissionState::DeniedExplicitly;
+        return CyberKit::WebExtensionContext::PermissionState::DeniedExplicitly;
     case _WKWebExtensionContextPermissionStatusDeniedImplicitly:
-        return WebKit::WebExtensionContext::PermissionState::DeniedImplicitly;
+        return CyberKit::WebExtensionContext::PermissionState::DeniedImplicitly;
     case _WKWebExtensionContextPermissionStatusRequestedImplicitly:
-        return WebKit::WebExtensionContext::PermissionState::RequestedImplicitly;
+        return CyberKit::WebExtensionContext::PermissionState::RequestedImplicitly;
     case _WKWebExtensionContextPermissionStatusUnknown:
-        return WebKit::WebExtensionContext::PermissionState::Unknown;
+        return CyberKit::WebExtensionContext::PermissionState::Unknown;
     case _WKWebExtensionContextPermissionStatusRequestedExplicitly:
-        return WebKit::WebExtensionContext::PermissionState::RequestedExplicitly;
+        return CyberKit::WebExtensionContext::PermissionState::RequestedExplicitly;
     case _WKWebExtensionContextPermissionStatusGrantedImplicitly:
-        return WebKit::WebExtensionContext::PermissionState::GrantedImplicitly;
+        return CyberKit::WebExtensionContext::PermissionState::GrantedImplicitly;
     case _WKWebExtensionContextPermissionStatusGrantedExplicitly:
-        return WebKit::WebExtensionContext::PermissionState::GrantedExplicitly;
+        return CyberKit::WebExtensionContext::PermissionState::GrantedExplicitly;
     }
 }
 
@@ -483,7 +483,7 @@ static inline WebKit::WebExtensionContext::PermissionState toImpl(_WKWebExtensio
     return *_webExtensionContext;
 }
 
-- (WebKit::WebExtensionContext&)_webExtensionContext
+- (CyberKit::WebExtensionContext&)_webExtensionContext
 {
     return *_webExtensionContext;
 }

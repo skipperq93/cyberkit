@@ -30,7 +30,7 @@
 #include "HTMLTokenizer.h"
 #include "SegmentedString.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TokenPreloadScanner {
     WTF_MAKE_NONCOPYABLE(TokenPreloadScanner);
@@ -97,4 +97,4 @@ private:
 
 WEBCORE_EXPORT bool testPreloadScannerViewportSupport(Document*);
 
-} // namespace WebCore
+} // namespace CyberCore

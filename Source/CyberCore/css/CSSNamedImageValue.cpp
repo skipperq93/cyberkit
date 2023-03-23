@@ -28,7 +28,7 @@
 
 #include "StyleNamedImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSNamedImageValue::CSSNamedImageValue(String&& name)
     : CSSValue { NamedImageClass }
@@ -57,4 +57,4 @@ RefPtr<StyleImage> CSSNamedImageValue::createStyleImage(Style::BuilderState&) co
     return m_cachedStyleImage;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

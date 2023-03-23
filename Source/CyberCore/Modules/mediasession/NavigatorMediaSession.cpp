@@ -32,7 +32,7 @@
 #include "Navigator.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorMediaSession::NavigatorMediaSession(Navigator& navigator)
     : m_navigator(navigator)

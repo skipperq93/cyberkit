@@ -29,7 +29,7 @@
 
 #import "WebGeolocationPosition.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebGeolocationPosition> {
     using WrapperClass = _WKGeolocationPosition;
@@ -39,7 +39,7 @@ template<> struct WrapperTraits<WebGeolocationPosition> {
 
 @interface _WKGeolocationPosition () <WKObject> {
 @package
-    API::ObjectStorage<WebKit::WebGeolocationPosition> _geolocationPosition;
+    API::ObjectStorage<CyberKit::WebGeolocationPosition> _geolocationPosition;
 }
 @end
 

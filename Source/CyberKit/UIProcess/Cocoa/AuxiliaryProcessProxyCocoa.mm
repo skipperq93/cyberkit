@@ -35,7 +35,7 @@
 
 #import <pal/cf/AudioToolboxSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if HAVE(AUDIO_COMPONENT_SERVER_REGISTRATIONS)
 RefPtr<CyberCore::SharedBuffer> AuxiliaryProcessProxy::fetchAudioComponentServerRegistrations()
@@ -73,4 +73,4 @@ void AuxiliaryProcessProxy::platformStartConnectionTerminationWatchdog()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

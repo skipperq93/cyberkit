@@ -35,7 +35,7 @@
 #include "RenderBlockFlow.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLInputElement;
 class TouchEvent;
@@ -117,14 +117,14 @@ private:
     bool isSliderContainerElement() const final { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SliderThumbElement)
-    static bool isType(const WebCore::Element& element) { return element.isSliderThumbElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SliderThumbElement)
+    static bool isType(const CyberCore::Element& element) { return element.isSliderThumbElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SliderContainerElement)
-    static bool isType(const WebCore::Element& element) { return element.isSliderContainerElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SliderContainerElement)
+    static bool isType(const CyberCore::Element& element) { return element.isSliderContainerElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

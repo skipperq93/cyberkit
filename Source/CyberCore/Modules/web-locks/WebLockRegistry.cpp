@@ -33,7 +33,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<WebLockRegistry>& sharedRegistry()
 {
@@ -320,4 +320,4 @@ void LocalWebLockRegistry::clientsAreGoingAway(ProcessIdentifier processIdentifi
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

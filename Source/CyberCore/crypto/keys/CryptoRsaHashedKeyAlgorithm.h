@@ -27,7 +27,7 @@
 
 #include "CryptoRsaKeyAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CryptoRsaHashedKeyAlgorithm : CryptoRsaKeyAlgorithm {
     // The hash algorithm that is used with this key

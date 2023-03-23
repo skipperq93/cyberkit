@@ -34,7 +34,7 @@
 #include "WebProcessProxy.h"
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 PlatformXRSystem::PlatformXRSystem(WebPageProxy& page)
     : m_page(page)
@@ -140,7 +140,7 @@ void PlatformXRSystem::sessionDidUpdateVisibilityState(XRDeviceIdentifier device
 }
 
 #if !USE(APPLE_INTERNAL_SDK)
-namespace WebKit {
+namespace CyberKit {
 
 PlatformXRCoordinator* PlatformXRSystem::xrCoordinator()
 {

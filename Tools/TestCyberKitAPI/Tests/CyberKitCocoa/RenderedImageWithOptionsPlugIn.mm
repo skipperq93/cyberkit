@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "RenderedImageWithOptionsProtocol.h"
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <CyberKit/WKWebProcessPlugIn.h>
 #import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
 #import <CyberKit/WKWebProcessPlugInFrame.h>

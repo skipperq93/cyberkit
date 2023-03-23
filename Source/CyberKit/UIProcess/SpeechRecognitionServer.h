@@ -41,7 +41,7 @@ struct CaptureSourceOrError;
 struct ClientOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcessProxy;
 
@@ -91,4 +91,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

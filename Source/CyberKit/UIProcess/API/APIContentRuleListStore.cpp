@@ -51,7 +51,7 @@
 
 
 namespace API {
-using namespace WebKit::NetworkCache;
+using namespace CyberKit::NetworkCache;
 using namespace FileSystem;
 
 ContentRuleListStore& ContentRuleListStore::defaultStore()
@@ -127,7 +127,7 @@ struct ContentRuleListMetaData {
     }
 };
 
-static WebKit::NetworkCache::Data encodeContentRuleListMetaData(const ContentRuleListMetaData& metaData)
+static CyberKit::NetworkCache::Data encodeContentRuleListMetaData(const ContentRuleListMetaData& metaData)
 {
     WTF::Persistence::Encoder encoder;
 
@@ -142,11 +142,11 @@ static WebKit::NetworkCache::Data encodeContentRuleListMetaData(const ContentRul
     encoder << metaData.unused64bits2;
 
     ASSERT(encoder.bufferSize() == CurrentVersionFileHeaderSize);
-    return WebKit::NetworkCache::Data(encoder.buffer(), encoder.bufferSize());
+    return CyberKit::NetworkCache::Data(encoder.buffer(), encoder.bufferSize());
 }
 
 template<typename T> void getData(const T&, const Function<bool(Span<const uint8_t>)>&);
-template<> void getData(const WebKit::NetworkCache::Data& data, const Function<bool(Span<const uint8_t>)>& function)
+template<> void getData(const CyberKit::NetworkCache::Data& data, const Function<bool(Span<const uint8_t>)>& function)
 {
     data.apply(function);
 }
@@ -155,7 +155,7 @@ template<> void getData(const CyberCore::SharedBuffer& data, const Function<bool
     function({ data.data(), data.size() });
 }
 
-static std::optional<ContentRuleListMetaData> decodeContentRuleListMetaData(const WebKit::NetworkCache::Data& fileData)
+static std::optional<ContentRuleListMetaData> decodeContentRuleListMetaData(const CyberKit::NetworkCache::Data& fileData)
 {
     ContentRuleListMetaData metaData;
     auto span = fileData.span();
@@ -224,7 +224,7 @@ static std::optional<ContentRuleListMetaData> decodeContentRuleListMetaData(cons
 
 struct MappedData {
     ContentRuleListMetaData metaData;
-    WebKit::NetworkCache::Data data;
+    CyberKit::NetworkCache::Data data;
 };
 
 static std::optional<MappedData> openAndMapContentRuleList(const WTF::String& path)
@@ -240,7 +240,7 @@ static std::optional<MappedData> openAndMapContentRuleList(const WTF::String& pa
     return {{ WTFMove(*metaData), { WTFMove(fileData) }}};
 }
 
-static bool writeDataToFile(const WebKit::NetworkCache::Data& fileData, PlatformFileHandle fd)
+static bool writeDataToFile(const CyberKit::NetworkCache::Data& fileData, PlatformFileHandle fd)
 {
     bool success = true;
     fileData.apply([fd, &success](Span<const uint8_t> span) {
@@ -283,11 +283,11 @@ static Expected<MappedData, std::error_code> compiledToFile(WTF::String&& json, 
             m_sourceWritten += sizeof(bool);
             if (sourceJSON.is8Bit()) {
                 size_t serializedLength = sourceJSON.length() * sizeof(LChar);
-                writeToFile(WebKit::NetworkCache::Data(sourceJSON.characters8(), serializedLength));
+                writeToFile(CyberKit::NetworkCache::Data(sourceJSON.characters8(), serializedLength));
                 m_sourceWritten += serializedLength;
             } else {
                 size_t serializedLength = sourceJSON.length() * sizeof(UChar);
-                writeToFile(WebKit::NetworkCache::Data(reinterpret_cast<const uint8_t*>(sourceJSON.characters16()), serializedLength));
+                writeToFile(CyberKit::NetworkCache::Data(reinterpret_cast<const uint8_t*>(sourceJSON.characters16()), serializedLength));
                 m_sourceWritten += serializedLength;
             }
         }
@@ -299,7 +299,7 @@ static Expected<MappedData, std::error_code> compiledToFile(WTF::String&& json, 
             ASSERT(!m_topURLFiltersBytecodeWritten);
             ASSERT(!m_frameURLFiltersBytecodeWritten);
             m_actionsWritten += actions.size();
-            writeToFile(WebKit::NetworkCache::Data(actions.data(), actions.size()));
+            writeToFile(CyberKit::NetworkCache::Data(actions.data(), actions.size()));
         }
 
         void writeURLFiltersBytecode(Vector<DFABytecode>&& bytecode) final
@@ -307,20 +307,20 @@ static Expected<MappedData, std::error_code> compiledToFile(WTF::String&& json, 
             ASSERT(!m_topURLFiltersBytecodeWritten);
             ASSERT(!m_frameURLFiltersBytecodeWritten);
             m_urlFiltersBytecodeWritten += bytecode.size();
-            writeToFile(WebKit::NetworkCache::Data(bytecode.data(), bytecode.size()));
+            writeToFile(CyberKit::NetworkCache::Data(bytecode.data(), bytecode.size()));
         }
         
         void writeTopURLFiltersBytecode(Vector<DFABytecode>&& bytecode) final
         {
             ASSERT(!m_frameURLFiltersBytecodeWritten);
             m_topURLFiltersBytecodeWritten += bytecode.size();
-            writeToFile(WebKit::NetworkCache::Data(bytecode.data(), bytecode.size()));
+            writeToFile(CyberKit::NetworkCache::Data(bytecode.data(), bytecode.size()));
         }
 
         void writeFrameURLFiltersBytecode(Vector<DFABytecode>&& bytecode) final
         {
             m_frameURLFiltersBytecodeWritten += bytecode.size();
-            writeToFile(WebKit::NetworkCache::Data(bytecode.data(), bytecode.size()));
+            writeToFile(CyberKit::NetworkCache::Data(bytecode.data(), bytecode.size()));
         }
         
         void finalize() final
@@ -331,7 +331,7 @@ static Expected<MappedData, std::error_code> compiledToFile(WTF::String&& json, 
             m_metaData.topURLFiltersBytecodeSize = m_topURLFiltersBytecodeWritten;
             m_metaData.frameURLFiltersBytecodeSize = m_frameURLFiltersBytecodeWritten;
 
-            WebKit::NetworkCache::Data header = encodeContentRuleListMetaData(m_metaData);
+            CyberKit::NetworkCache::Data header = encodeContentRuleListMetaData(m_metaData);
             if (!m_fileError && seekFile(m_fileHandle, 0ll, FileSeekOrigin::Beginning) == -1) {
                 closeFile(m_fileHandle);
                 m_fileError = true;
@@ -344,9 +344,9 @@ static Expected<MappedData, std::error_code> compiledToFile(WTF::String&& json, 
     private:
         void writeToFile(bool value)
         {
-            writeToFile(WebKit::NetworkCache::Data(reinterpret_cast<const uint8_t*>(&value), sizeof(value)));
+            writeToFile(CyberKit::NetworkCache::Data(reinterpret_cast<const uint8_t*>(&value), sizeof(value)));
         }
-        void writeToFile(const WebKit::NetworkCache::Data& data)
+        void writeToFile(const CyberKit::NetworkCache::Data& data)
         {
             if (!m_fileError && !writeDataToFile(data, m_fileHandle)) {
                 closeFile(m_fileHandle);
@@ -429,7 +429,7 @@ static Ref<API::ContentRuleList> createExtension(WTF::String&& identifier, Mappe
     const size_t topURLFiltersOffset = urlFiltersOffset + data.metaData.urlFiltersBytecodeSize;
     const size_t frameURLFiltersOffset = topURLFiltersOffset + data.metaData.topURLFiltersBytecodeSize;
 
-    auto compiledContentRuleListData = WebKit::WebCompiledContentRuleListData(
+    auto compiledContentRuleListData = CyberKit::WebCompiledContentRuleListData(
         WTFMove(identifier),
         sharedMemory.releaseNonNull(),
         actionsOffset,
@@ -441,7 +441,7 @@ static Ref<API::ContentRuleList> createExtension(WTF::String&& identifier, Mappe
         frameURLFiltersOffset,
         data.metaData.frameURLFiltersBytecodeSize
     );
-    auto compiledContentRuleList = WebKit::WebCompiledContentRuleList::create(WTFMove(compiledContentRuleListData));
+    auto compiledContentRuleList = CyberKit::WebCompiledContentRuleList::create(WTFMove(compiledContentRuleListData));
     return API::ContentRuleList::create(WTFMove(compiledContentRuleList), WTFMove(data.data));
 }
 

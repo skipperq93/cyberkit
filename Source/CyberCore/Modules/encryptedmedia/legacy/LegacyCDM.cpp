@@ -41,7 +41,7 @@
 #include "CDMPrivateMediaSourceAVFObjC.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct LegacyCDMFactory {
     CreateCDM constructor;

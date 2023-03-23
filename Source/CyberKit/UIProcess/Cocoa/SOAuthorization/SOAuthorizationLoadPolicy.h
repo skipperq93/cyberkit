@@ -27,13 +27,13 @@
 
 #if HAVE(APP_SSO)
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class SOAuthorizationLoadPolicy : uint8_t {
     Allow,
     Ignore
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // HAVE(APP_SSO)

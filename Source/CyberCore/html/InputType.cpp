@@ -84,7 +84,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1237,4 +1237,4 @@ void InputType::createShadowSubtreeIfNeeded()
     createShadowSubtree();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

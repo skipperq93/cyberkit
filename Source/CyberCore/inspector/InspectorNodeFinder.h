@@ -33,7 +33,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Attribute;
 class Element;
@@ -69,4 +69,4 @@ private:
     bool m_exactAttributeMatch;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

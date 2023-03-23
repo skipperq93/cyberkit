@@ -26,7 +26,7 @@
 #include "AccessibilityAtspiEnums.h"
 #include <gio/gio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_tableCellFunctions = {
     // method_call
@@ -128,6 +128,6 @@ std::pair<std::optional<unsigned>, std::optional<unsigned>> AccessibilityObjectA
     return position;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

@@ -29,7 +29,7 @@
 #import "DisplayCaptureSessionManager.h"
 #import "UserMediaPermissionRequestManagerProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<UserMediaPermissionRequestProxy> UserMediaPermissionRequestProxy::create(UserMediaPermissionRequestManagerProxy& manager, UserMediaRequestIdentifier userMediaID, FrameIdentifier mainFrameID, FrameIdentifier frameID, Ref<SecurityOrigin>&& userMediaDocumentOrigin, Ref<SecurityOrigin>&& topLevelDocumentOrigin, Vector<CaptureDevice>&& audioDevices, Vector<CaptureDevice>&& videoDevices, MediaStreamRequest&& request, CompletionHandler<void(bool)>&& decisionCompletionHandler)
@@ -76,4 +76,4 @@ bool UserMediaPermissionRequestProxyMac::canPromptForGetDisplayMedia()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

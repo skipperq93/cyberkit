@@ -29,7 +29,7 @@
 #include "RenderBox.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore::CQ::Features {
+namespace CyberCore::CQ::Features {
 
 using namespace MQ;
 

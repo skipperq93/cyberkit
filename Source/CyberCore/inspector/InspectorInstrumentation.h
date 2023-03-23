@@ -69,7 +69,7 @@ class ScriptArguments;
 class ScriptCallStack;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class CharacterData;
@@ -1780,4 +1780,4 @@ inline void InspectorInstrumentation::frontendDeleted()
         InspectorInstrumentation::lastFrontendDeleted();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

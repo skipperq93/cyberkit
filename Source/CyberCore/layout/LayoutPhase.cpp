@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 static Phase& phase()

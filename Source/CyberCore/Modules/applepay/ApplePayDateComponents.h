@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLE_PAY_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ApplePayDateComponents {
     std::optional<unsigned> years;
@@ -36,6 +36,6 @@ struct ApplePayDateComponents {
     std::optional<unsigned> hours;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)

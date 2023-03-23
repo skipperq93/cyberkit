@@ -32,7 +32,7 @@
 #include <wtf/Scope.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 struct WhitespaceContent {

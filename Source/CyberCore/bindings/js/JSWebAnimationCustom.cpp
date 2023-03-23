@@ -34,7 +34,7 @@
 #include "JSDOMConstructor.h"
 #include "JSDOMConvert.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -81,4 +81,4 @@ EncodedJSValue constructJSWebAnimation(JSGlobalObject* lexicalGlobalObject, Call
     return JSValue::encode(toJSNewlyCreated<IDLInterface<WebAnimation>>(*lexicalGlobalObject, *jsConstructor->globalObject(), WTFMove(object)));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

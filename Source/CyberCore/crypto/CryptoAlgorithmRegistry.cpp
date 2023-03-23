@@ -31,7 +31,7 @@
 #include "CryptoAlgorithm.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CryptoAlgorithmRegistry& CryptoAlgorithmRegistry::singleton()
 {
@@ -97,6 +97,6 @@ void CryptoAlgorithmRegistry::registerAlgorithm(const String& name, CryptoAlgori
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

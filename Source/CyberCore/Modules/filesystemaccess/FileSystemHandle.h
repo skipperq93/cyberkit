@@ -31,7 +31,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/ThreadSafeWeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename> class DOMPromiseDeferred;
 
@@ -71,4 +71,4 @@ private:
     bool m_isClosed { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

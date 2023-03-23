@@ -32,7 +32,7 @@
 #include <wtf/Span.h>
 #include <wtf/Vector.h>
 
-namespace WebCore::PushCrypto {
+namespace CyberCore::PushCrypto {
 
 struct ClientKeys {
     P256DHKeyPair clientP256DHKeyPair;
@@ -47,6 +47,6 @@ WEBCORE_EXPORT std::optional<Vector<uint8_t>> decryptAES128GCMPayload(const Clie
 // Decrypts a push payload encoded with the aesgcm Content-Encoding as described in draft-ietf-webpush-encryption-04.
 WEBCORE_EXPORT std::optional<Vector<uint8_t>> decryptAESGCMPayload(const ClientKeys&, Span<const uint8_t> serverP256DHPublicKey, Span<const uint8_t> salt, Span<const uint8_t> payload);
 
-} // namespace WebCore::PushCrypto
+} // namespace CyberCore::PushCrypto
 
 #endif // ENABLE(SERVICE_WORKER)

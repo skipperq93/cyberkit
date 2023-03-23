@@ -33,7 +33,7 @@
 #include "CryptoKeyRSA.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr auto ALG = "RSA1_5"_s;
 

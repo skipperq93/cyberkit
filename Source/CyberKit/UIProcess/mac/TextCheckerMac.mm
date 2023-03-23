@@ -47,7 +47,7 @@ static NSString* const WebAutomaticDashSubstitutionEnabled = @"WebAutomaticDashS
 static NSString* const WebAutomaticLinkDetectionEnabled = @"WebAutomaticLinkDetectionEnabled";
 static NSString* const WebAutomaticTextReplacementEnabled = @"WebAutomaticTextReplacementEnabled";
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static bool shouldAutomaticTextReplacementBeEnabled()
@@ -499,6 +499,6 @@ void TextChecker::requestCheckingOfString(Ref<TextCheckerCompletion>&&, int32_t)
     notImplemented();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

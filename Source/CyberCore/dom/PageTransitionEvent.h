@@ -27,7 +27,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PageTransitionEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(PageTransitionEvent);
@@ -59,4 +59,4 @@ private:
     bool m_persisted;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -115,7 +115,7 @@
 #define WEBPROCESSPROXY_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - [PID=%i] WebProcessProxy::" fmt, this, processIdentifier(), ##__VA_ARGS__)
 #define WEBPROCESSPROXY_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - [PID=%i] WebProcessProxy::" fmt, this, processIdentifier(), ##__VA_ARGS__)
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static unsigned s_maxProcessCount { 400 };
@@ -488,7 +488,7 @@ void WebProcessProxy::getLaunchOptions(ProcessLauncher::LaunchOptions& launchOpt
 
     if (!m_processPool->customWebContentServiceBundleIdentifier().isEmpty())
         launchOptions.customWebContentServiceBundleIdentifier = m_processPool->customWebContentServiceBundleIdentifier().ascii();
-    if (WebKit::isInspectorProcessPool(processPool()))
+    if (CyberKit::isInspectorProcessPool(processPool()))
         launchOptions.extraInitializationData.add<HashTranslatorASCIILiteral>("inspector-process"_s, "1"_s);
 
     launchOptions.nonValidInjectedCodeAllowed = shouldAllowNonValidInjectedCode();
@@ -508,7 +508,7 @@ void WebProcessProxy::getLaunchOptions(ProcessLauncher::LaunchOptions& launchOpt
 
 #if ENABLE(WEBCONTENT_CRASH_TESTING)
     if (isCrashyProcess()) {
-        launchOptions.customWebContentServiceBundleIdentifier = toCString("com.apple.WebKit.WebContent.Crashy");
+        launchOptions.customWebContentServiceBundleIdentifier = toCString("com.apple.CyberKit.WebContent.Crashy");
         launchOptions.extraInitializationData.add<HashTranslatorASCIILiteral>("is-webcontent-crashy"_s, "1"_s);
     }
 #endif
@@ -929,7 +929,7 @@ void WebProcessProxy::getNetworkProcessConnection(CompletionHandler<void(Network
 }
 
 #if ENABLE(GPU_PROCESS)
-void WebProcessProxy::createGPUProcessConnection(IPC::Connection::Handle&& connectionIdentifier, WebKit::GPUProcessConnectionParameters&& parameters)
+void WebProcessProxy::createGPUProcessConnection(IPC::Connection::Handle&& connectionIdentifier, CyberKit::GPUProcessConnectionParameters&& parameters)
 {
     m_processPool->createGPUProcessConnection(*this, WTFMove(connectionIdentifier), WTFMove(parameters));
 }
@@ -1278,7 +1278,7 @@ bool WebProcessProxy::canBeAddedToWebProcessCache() const
         return false;
     }
 
-    if (WebKit::isInspectorProcessPool(processPool()))
+    if (CyberKit::isInspectorProcessPool(processPool()))
         return false;
 
     return true;
@@ -1642,7 +1642,7 @@ void WebProcessProxy::updateAudibleMediaAssertions()
     if (hasAudibleWebPage) {
         WEBPROCESSPROXY_RELEASE_LOG(ProcessSuspension, "updateAudibleMediaAssertions: Taking MediaPlayback assertion for WebProcess");
         m_audibleMediaActivity = AudibleMediaActivity {
-            ProcessAssertion::create(processIdentifier(), "WebKit Media Playback"_s, ProcessAssertionType::MediaPlayback),
+            ProcessAssertion::create(processIdentifier(), "CyberKit Media Playback"_s, ProcessAssertionType::MediaPlayback),
             processPool().webProcessWithAudibleMediaToken()
         };
     } else {
@@ -2292,7 +2292,7 @@ const WeakHashSet<WebProcessProxy>* WebProcessProxy::sharedWorkerClientProcesses
 
 void WebProcessProxy::permissionChanged(CyberCore::PermissionName permissionName, const CyberCore::SecurityOriginData& topOrigin)
 {
-    auto webProcessPools = WebKit::WebProcessPool::allProcessPools();
+    auto webProcessPools = CyberKit::WebProcessPool::allProcessPools();
 
     for (auto& webProcessPool : webProcessPools) {
         for (auto& webProcessProxy : webProcessPool->processes())
@@ -2331,7 +2331,7 @@ TextStream& operator<<(TextStream& ts, const WebProcessProxy& process)
     return ts;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef MESSAGE_CHECK
 #undef MESSAGE_CHECK_URL

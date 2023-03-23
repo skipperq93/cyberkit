@@ -54,7 +54,7 @@ webkit_dom_html_frame_set_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_frame_set_element_get_cols(CyberKitDOMHTMLFrameSetElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_frame_set_element_get_cols(CyberKitDOMHTMLFrameSetElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_frame_set_element_set_cols(CyberKitDOMHTMLFrameSetElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_frame_set_element_set_cols(CyberKitDOMHTMLFrameSetElement* self,
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_frame_set_element_get_rows(CyberKitDOMHTMLFrameSetElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_frame_set_element_get_rows(CyberKitDOMHTMLFrameSetElement* self)
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_frame_set_element_set_rows(CyberKitDOMHTMLFrameSetElement* self, const gchar* value);

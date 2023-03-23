@@ -36,7 +36,7 @@
 OBJC_CLASS WebSpeechRecognizerTask;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionRequest;
 class SpeechRecognitionUpdate;
@@ -87,4 +87,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

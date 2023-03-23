@@ -34,7 +34,7 @@ from resultsdbpy.model.casserole import CasseroleNodes, CasseroleRedis
 from resultsdbpy.model.ci_context import BuildbotURLFactory
 from resultsdbpy.model.mock_cassandra_context import MockCassandraContext
 from resultsdbpy.model.model import Model
-from resultsdbpy.model.repository import WebKitRepository
+from resultsdbpy.model.repository import CyberKitRepository
 from resultsdbpy.model.partitioned_redis import PartitionedRedis
 
 MOCK_CASSANDRA = 'mock'
@@ -140,7 +140,7 @@ class ModelFromEnvironment(Model):
             )
         redis.ping()  # Force a connection with the redis database
 
-        webkit = WebKitRepository()
+        webkit = CyberKitRepository()
         super(ModelFromEnvironment, self).__init__(
             redis=redis, cassandra=cassandra,
             repositories=[webkit],

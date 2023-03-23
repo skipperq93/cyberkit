@@ -27,7 +27,7 @@
 #if ENABLE(MEDIA_RECORDER)
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMException;
 
@@ -53,6 +53,6 @@ private:
     Ref<DOMException> m_domError;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

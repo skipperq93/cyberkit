@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AuthenticationExtensionsClientInputs {
     String appid;
@@ -40,6 +40,6 @@ struct AuthenticationExtensionsClientInputs {
     WEBCORE_EXPORT static std::optional<AuthenticationExtensionsClientInputs> fromCBOR(Span<const uint8_t>);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

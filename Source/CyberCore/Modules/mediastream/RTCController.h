@@ -27,7 +27,7 @@
 #include "SecurityOrigin.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RTCPeerConnection;
@@ -62,4 +62,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

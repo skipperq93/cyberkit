@@ -36,7 +36,7 @@
 #include "ScriptExecutionContext.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DOMCacheStorage> DOMCacheStorage::create(ScriptExecutionContext& context, Ref<CacheStorageConnection>&& connection)
 {
@@ -272,4 +272,4 @@ const char* DOMCacheStorage::activeDOMObjectName() const
     return "CacheStorage";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

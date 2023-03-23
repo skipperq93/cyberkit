@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ForcedAccessibilityValue : uint8_t { System, On, Off };
 

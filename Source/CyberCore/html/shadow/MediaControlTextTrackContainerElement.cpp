@@ -60,7 +60,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Language.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaControlTextTrackContainerElement);
 
@@ -486,6 +486,6 @@ WTFLogChannel& MediaControlTextTrackContainerElement::logChannel() const
 
 // ----------------------------
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

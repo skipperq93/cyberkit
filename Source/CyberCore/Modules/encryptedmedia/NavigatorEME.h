@@ -33,7 +33,7 @@
 #include "MediaKeySystemConfiguration.h"
 #include "Supplementable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;
@@ -46,6 +46,6 @@ public:
     static void requestMediaKeySystemAccess(Navigator&, Document&, const String&, Vector<MediaKeySystemConfiguration>&&, Ref<DeferredPromise>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

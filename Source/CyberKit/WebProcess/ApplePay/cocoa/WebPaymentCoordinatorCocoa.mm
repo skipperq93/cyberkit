@@ -30,7 +30,7 @@
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPaymentCoordinator::AvailablePaymentNetworksSet WebPaymentCoordinator::platformAvailablePaymentNetworks()
 {
@@ -45,6 +45,6 @@ WebPaymentCoordinator::AvailablePaymentNetworksSet WebPaymentCoordinator::platfo
     return availableNetworks;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(APPLE_PAY) && PLATFORM(COCOA)

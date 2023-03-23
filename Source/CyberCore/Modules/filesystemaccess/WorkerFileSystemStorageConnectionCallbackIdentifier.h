@@ -27,10 +27,10 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum WorkerFileSystemStorageConnectionCallbackIdentifierType { };
 using WorkerFileSystemStorageConnectionCallbackIdentifier = ObjectIdentifier<WorkerFileSystemStorageConnectionCallbackIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore
 

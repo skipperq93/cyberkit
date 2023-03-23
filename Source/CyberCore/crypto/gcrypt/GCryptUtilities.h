@@ -35,7 +35,7 @@
 #include <pal/crypto/gcrypt/Handle.h>
 #include <pal/crypto/gcrypt/Utilities.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CryptoConstants {
 
@@ -82,4 +82,4 @@ std::optional<Vector<uint8_t>> mpiZeroPrefixedData(gcry_sexp_t, size_t targetLen
 std::optional<Vector<uint8_t>> mpiSignedData(gcry_mpi_t);
 std::optional<Vector<uint8_t>> mpiSignedData(gcry_sexp_t);
 
-} // namespace WebCore
+} // namespace CyberCore

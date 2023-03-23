@@ -36,7 +36,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IDBKey;
 class ScriptExecutionContext;
@@ -74,4 +74,4 @@ private:
     bool m_isUpperOpen;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

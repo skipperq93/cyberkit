@@ -40,7 +40,7 @@
 #include "InputType.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateComponents;
 
@@ -150,6 +150,6 @@ private:
     RefPtr<DateTimeEditElement> m_dateTimeEditElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

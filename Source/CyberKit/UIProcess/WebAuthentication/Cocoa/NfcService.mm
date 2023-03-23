@@ -37,7 +37,7 @@
 
 #import "NearFieldSoftLink.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 NfcService::NfcService(Observer& observer)
     : FidoService(observer)
@@ -122,6 +122,6 @@ void NfcService::platformStartDiscovery()
 #endif // HAVE(NEAR_FIELD)
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

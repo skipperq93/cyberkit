@@ -38,12 +38,12 @@
 #include "JSCallbackData.h"
 #include "JSDOMExceptionHandling.h"
 #include "MessagePort.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/JSTypedArrays.h>
 #include <wtf/GetPtr.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AudioWorkletProcessor);
 
@@ -267,11 +267,11 @@ bool AudioWorkletProcessor::process(const Vector<RefPtr<AudioBus>>& inputs, Vect
     return result.toBoolean(&globalObject);
 }
 
-WebCoreOpaqueRoot root(AudioWorkletProcessor* processor)
+CyberCoreOpaqueRoot root(AudioWorkletProcessor* processor)
 {
-    return WebCoreOpaqueRoot { processor };
+    return CyberCoreOpaqueRoot { processor };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

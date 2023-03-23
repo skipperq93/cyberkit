@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebLock : public RefCounted<WebLock> {
 public:
@@ -48,4 +48,4 @@ private:
     WebLockMode m_mode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

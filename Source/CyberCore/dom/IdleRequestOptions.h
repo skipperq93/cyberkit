@@ -25,10 +25,10 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct IdleRequestOptions {
     unsigned timeout { 0 }; // Used if positive.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

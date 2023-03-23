@@ -32,7 +32,7 @@
 #include <pal/spi/cocoa/CommonCryptoSPI.h>
 #include <wtf/Scope.h>
 
-namespace WebCore::PushCrypto {
+namespace CyberCore::PushCrypto {
 
 P256DHKeyPair P256DHKeyPair::generate(void)
 {
@@ -127,6 +127,6 @@ std::optional<Vector<uint8_t>> decryptAES128GCM(Span<const uint8_t> key, Span<co
     return plainText;
 }
 
-} // namespace WebCore::PushCrypto
+} // namespace CyberCore::PushCrypto
 
 #endif // ENABLE(SERVICE_WORKER)

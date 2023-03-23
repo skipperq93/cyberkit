@@ -32,7 +32,7 @@
 #include "ThreadableLoaderClient.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class FetchBodyConsumer;
@@ -70,4 +70,4 @@ private:
     URL m_urlForReading;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

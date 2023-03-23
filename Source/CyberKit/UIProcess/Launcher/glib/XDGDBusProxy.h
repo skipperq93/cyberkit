@@ -32,7 +32,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/unix/UnixFileDescriptor.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class XDGDBusProxy {
     WTF_MAKE_NONCOPYABLE(XDGDBusProxy); WTF_MAKE_FAST_ALLOCATED;
@@ -55,6 +55,6 @@ private:
     UnixFileDescriptor m_syncFD;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(BUBBLEWRAP_SANDBOX)

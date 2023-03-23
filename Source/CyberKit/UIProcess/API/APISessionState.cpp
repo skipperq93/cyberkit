@@ -28,12 +28,12 @@
 
 namespace API {
 
-Ref<SessionState> SessionState::create(WebKit::SessionState sessionState)
+Ref<SessionState> SessionState::create(CyberKit::SessionState sessionState)
 {
     return adoptRef(*new SessionState(WTFMove(sessionState)));
 }
 
-SessionState::SessionState(WebKit::SessionState sessionState)
+SessionState::SessionState(CyberKit::SessionState sessionState)
     : m_sessionState(WTFMove(sessionState))
 {
 }

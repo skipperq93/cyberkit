@@ -30,7 +30,7 @@
 #include "HTMLElement.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -110,4 +110,4 @@ unsigned NamedNodeMap::length() const
     return m_element.attributeCount();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

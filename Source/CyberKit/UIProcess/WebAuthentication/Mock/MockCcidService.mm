@@ -32,14 +32,14 @@
 #include <wtf/RunLoop.h>
 
 @interface _WKMockTKSmartCard : TKSmartCard
-- (instancetype)initWithService:(WeakPtr<WebKit::MockCcidService>&&)service;
+- (instancetype)initWithService:(WeakPtr<CyberKit::MockCcidService>&&)service;
 @end
 
 @implementation _WKMockTKSmartCard {
-    WeakPtr<WebKit::MockCcidService> m_service;
+    WeakPtr<CyberKit::MockCcidService> m_service;
 }
 
-- (instancetype)initWithService:(WeakPtr<WebKit::MockCcidService>&&)service
+- (instancetype)initWithService:(WeakPtr<CyberKit::MockCcidService>&&)service
 {
     if (!(self = [super init]))
         return nil;
@@ -65,7 +65,7 @@
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
 MockCcidService::MockCcidService(Observer& observer, const CyberCore::MockWebAuthenticationConfiguration& configuration)
     : CcidService(observer)
@@ -93,6 +93,6 @@ RetainPtr<NSData> MockCcidService::nextReply()
     return result;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

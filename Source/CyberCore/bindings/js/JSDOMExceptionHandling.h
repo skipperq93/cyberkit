@@ -31,7 +31,7 @@ namespace JSC {
 class CatchScope;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedScript;
 class DeferredPromise;
@@ -100,4 +100,4 @@ template<typename Functor> void invokeFunctorPropagatingExceptionIfNecessary(JSC
         functor();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

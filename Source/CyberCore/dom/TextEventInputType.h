@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum TextEventInputType {
     TextEventInputKeyboard, // any newline characters in the text are line breaks only, not paragraph separators.
@@ -40,4 +40,4 @@ enum TextEventInputType {
     TextEventInputOther,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

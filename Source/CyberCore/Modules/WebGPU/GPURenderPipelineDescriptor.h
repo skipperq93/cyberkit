@@ -34,7 +34,7 @@
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPURenderPipelineDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPURenderPipelineDescriptor : public GPUPipelineDescriptorBase {
     PAL::WebGPU::RenderPipelineDescriptor convertToBacking(const Ref<GPUPipelineLayout>& autoLayout) const

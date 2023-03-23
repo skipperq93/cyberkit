@@ -26,7 +26,7 @@
 #include "RTCDtlsTransportBackend.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerDtlsTransportBackend final : public RTCDtlsTransportBackend, public CanMakeWeakPtr<GStreamerDtlsTransportBackend, WeakPtrFactoryInitialization::Eager> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -48,6 +48,6 @@ private:
     WeakPtr<Client> m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

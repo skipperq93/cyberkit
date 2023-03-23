@@ -40,7 +40,7 @@
 #include "WorkerScriptFetcher.h"
 #include "WorkerScriptLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WorkerModuleScriptLoader> WorkerModuleScriptLoader::create(ModuleScriptLoaderClient& client, DeferredPromise& promise, WorkerScriptFetcher& scriptFetcher, RefPtr<JSC::ScriptFetchParameters>&& parameters)
 {

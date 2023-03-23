@@ -24,7 +24,7 @@
 #include "WebEditCommandProxy.h"
 #include "WebPageProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class UndoOrRedo : bool;
 
@@ -41,4 +41,4 @@ private:
     CommandVector m_redoStack;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

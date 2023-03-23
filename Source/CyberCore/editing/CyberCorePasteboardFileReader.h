@@ -27,18 +27,18 @@
 
 #include "Pasteboard.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class File;
 class ScriptExecutionContext;
 
-struct WebCorePasteboardFileReader final : PasteboardFileReader {
-    explicit WebCorePasteboardFileReader(ScriptExecutionContext* context)
+struct CyberCorePasteboardFileReader final : PasteboardFileReader {
+    explicit CyberCorePasteboardFileReader(ScriptExecutionContext* context)
         : context(context)
     {
     }
 
-    ~WebCorePasteboardFileReader();
+    ~CyberCorePasteboardFileReader();
 
     void readFilename(const String&) final;
     void readBuffer(const String& filename, const String& type, Ref<SharedBuffer>&&) final;

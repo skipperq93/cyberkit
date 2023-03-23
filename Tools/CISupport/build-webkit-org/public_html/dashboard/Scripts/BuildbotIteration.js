@@ -419,14 +419,14 @@ BuildbotIteration.prototype = {
         }.bind(this), {jsonpCallbackName: "ADD_RESULTS", withCredentials: this.queue.buildbot.needsAuthentication});
     },
 
-    loadJavaScriptCoreTestResults: function(testName, callback)
+    loadCyberScriptCoreTestResults: function(testName, callback)
     {
         if (this.queue.buildbot.needsAuthentication && this.queue.buildbot.authenticationStatus === Buildbot.AuthenticationStatus.InvalidCredentials)
             return;
 
         JSON.load(this.queue.buildbot.javaScriptCoreTestFailuresURLForIteration(this, testName), function(data) {
             this.queue.buildbot.isAuthenticated = true;
-            this.javaScriptCoreTestResults.addJavaScriptCoreTestFailures(data);
+            this.javaScriptCoreTestResults.addCyberScriptCoreTestFailures(data);
             callback();
         }.bind(this),
         function(data) {

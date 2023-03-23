@@ -26,7 +26,7 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBuffer;
 struct OfflineAudioCompletionEventInit;
@@ -50,4 +50,4 @@ private:
     Ref<AudioBuffer> m_renderedBuffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

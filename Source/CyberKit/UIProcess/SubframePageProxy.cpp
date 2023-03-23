@@ -31,7 +31,7 @@
 #include "WebPageProxyMessages.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 SubframePageProxy::SubframePageProxy(WebFrameProxy& frame, WebPageProxy& page, WebProcessProxy& process)
     : m_webPageID(page.webPageID())

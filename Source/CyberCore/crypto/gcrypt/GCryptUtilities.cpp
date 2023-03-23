@@ -29,7 +29,7 @@
 #include "GCryptUtilities.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<const char*> hashAlgorithmName(CryptoAlgorithmIdentifier identifier)
 {
@@ -208,4 +208,4 @@ std::optional<Vector<uint8_t>> mpiSignedData(gcry_sexp_t paramSexp)
     return data;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

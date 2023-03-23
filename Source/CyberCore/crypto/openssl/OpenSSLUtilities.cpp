@@ -30,7 +30,7 @@
 
 #include "OpenSSLCryptoUniquePtr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const EVP_MD* digestAlgorithm(CryptoAlgorithmIdentifier hashFunction)
 {
@@ -132,7 +132,7 @@ AESKey::~AESKey()
     memset(&m_key, 0, sizeof m_key);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 
 #endif // ENABLE(WEB_CRYPTO)

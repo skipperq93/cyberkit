@@ -36,7 +36,7 @@
 #include "SQLiteTransaction.h"
 #include <sqlite3.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 static const size_t prefetchLimit = 256;
@@ -654,4 +654,4 @@ int64_t SQLiteIDBCursor::currentRecordRowID() const
 
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

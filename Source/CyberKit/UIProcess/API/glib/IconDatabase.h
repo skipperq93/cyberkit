@@ -28,7 +28,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class IconDatabase : public ThreadSafeRefCounted<IconDatabase> {
 public:
@@ -89,4 +89,4 @@ private:
     RunLoop::Timer m_clearLoadedIconsTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -33,7 +33,7 @@
 #include "WebNotificationManagerProxy.h"
 #include "WebNotificationProvider.h"
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKNotificationManagerGetTypeID()
 {

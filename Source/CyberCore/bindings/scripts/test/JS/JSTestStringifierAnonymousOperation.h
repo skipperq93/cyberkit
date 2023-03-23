@@ -24,7 +24,7 @@
 #include "TestStringifierAnonymousOperation.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestStringifierAnonymousOperation : public JSDOMWrapper<TestStringifierAnonymousOperation> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestStringifierAnonymousOperation>
     using ToWrappedReturnType = TestStringifierAnonymousOperation*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -183,7 +183,7 @@ EOF
     push(@contents, "#include \"${className}Custom.h\"\n") if $interface->extendedAttributes->{"CustomHeader"};
     push(@contents, <<EOF);
 
-namespace WebKit {
+namespace CyberKit {
 
 class ${implementationClassName};
 
@@ -259,7 +259,7 @@ EOF
 
 ${implementationClassName}* to${implementationClassName}(JSContextRef, JSValueRef);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 EOF
 
@@ -315,7 +315,7 @@ EOF
     push(@contents, <<EOF);
 #include <wtf/GetPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ${implementationClassName}* to${implementationClassName}(JSContextRef context, JSValueRef value)
 {
@@ -844,7 +844,7 @@ EOF
 
     push(@contents, <<EOF);
 
-} // namespace WebKit
+} // namespace CyberKit
 EOF
 
     push(@contents, <<EOF) if $conditionalString;

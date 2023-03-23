@@ -29,7 +29,7 @@
 
 #if ENABLE(WEB_CRYPTO)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RsaOtherPrimesInfo {
     String r;
@@ -37,6 +37,6 @@ struct RsaOtherPrimesInfo {
     String t;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

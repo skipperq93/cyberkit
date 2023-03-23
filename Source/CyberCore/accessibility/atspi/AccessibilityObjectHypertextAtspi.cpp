@@ -26,7 +26,7 @@
 #include <gio/gio.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDBusInterfaceVTable AccessibilityObjectAtspi::s_hypertextFunctions = {
     // method_call
@@ -104,6 +104,6 @@ std::optional<unsigned> AccessibilityObjectAtspi::hyperlinkIndex(unsigned offset
     return characterIndex(objectReplacementCharacter, offset);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ATSPI)

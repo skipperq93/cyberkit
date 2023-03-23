@@ -44,7 +44,7 @@ JSRunLoopTimer::Manager::PerVMData::PerVMData(Manager& manager, RunLoop& runLoop
 {
 #if USE(GLIB_EVENT_LOOP)
     timer->setPriority(RunLoopSourcePriority::JavascriptTimer);
-    timer->setName("[JavaScriptCore] JSRunLoopTimer");
+    timer->setName("[CyberScriptCore] JSRunLoopTimer");
 #endif
 }
 

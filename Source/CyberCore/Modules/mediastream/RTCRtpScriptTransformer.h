@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessagePort;
 class ReadableStream;
@@ -93,6 +93,6 @@ private:
     Deque<Ref<DeferredPromise>> m_pendingKeyFramePromises;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

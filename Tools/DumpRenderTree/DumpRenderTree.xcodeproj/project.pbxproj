@@ -63,15 +63,15 @@
 		5185F6B210714E07007AA393 /* HistoryDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5185F69F10714A57007AA393 /* HistoryDelegate.mm */; };
 		53CBB832134E42F3001CE6A4 /* CyclicRedundancyCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53CBB830134E42F3001CE6A4 /* CyclicRedundancyCheck.cpp */; };
 		5DB9AC970F722C3600684641 /* AHEM____.TTF in Copy Font Files */ = {isa = PBXBuildFile; fileRef = AA7F10C20CB3C1030003BDC9 /* AHEM____.TTF */; };
-		5DB9AC980F722C3600684641 /* WebKitWeightWatcher100.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09710DAC3CB600C8B4E5 /* WebKitWeightWatcher100.ttf */; };
-		5DB9AC990F722C3600684641 /* WebKitWeightWatcher200.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09720DAC3CB600C8B4E5 /* WebKitWeightWatcher200.ttf */; };
-		5DB9AC9A0F722C3600684641 /* WebKitWeightWatcher300.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09730DAC3CB600C8B4E5 /* WebKitWeightWatcher300.ttf */; };
-		5DB9AC9B0F722C3600684641 /* WebKitWeightWatcher400.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09740DAC3CB600C8B4E5 /* WebKitWeightWatcher400.ttf */; };
-		5DB9AC9C0F722C3600684641 /* WebKitWeightWatcher500.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09750DAC3CB600C8B4E5 /* WebKitWeightWatcher500.ttf */; };
-		5DB9AC9D0F722C3600684641 /* WebKitWeightWatcher600.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09760DAC3CB600C8B4E5 /* WebKitWeightWatcher600.ttf */; };
-		5DB9AC9E0F722C3600684641 /* WebKitWeightWatcher700.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09770DAC3CB600C8B4E5 /* WebKitWeightWatcher700.ttf */; };
-		5DB9AC9F0F722C3600684641 /* WebKitWeightWatcher800.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09780DAC3CB600C8B4E5 /* WebKitWeightWatcher800.ttf */; };
-		5DB9ACA00F722C3600684641 /* WebKitWeightWatcher900.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09790DAC3CB600C8B4E5 /* WebKitWeightWatcher900.ttf */; };
+		5DB9AC980F722C3600684641 /* CyberKitWeightWatcher100.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09710DAC3CB600C8B4E5 /* CyberKitWeightWatcher100.ttf */; };
+		5DB9AC990F722C3600684641 /* CyberKitWeightWatcher200.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09720DAC3CB600C8B4E5 /* CyberKitWeightWatcher200.ttf */; };
+		5DB9AC9A0F722C3600684641 /* CyberKitWeightWatcher300.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09730DAC3CB600C8B4E5 /* CyberKitWeightWatcher300.ttf */; };
+		5DB9AC9B0F722C3600684641 /* CyberKitWeightWatcher400.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09740DAC3CB600C8B4E5 /* CyberKitWeightWatcher400.ttf */; };
+		5DB9AC9C0F722C3600684641 /* CyberKitWeightWatcher500.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09750DAC3CB600C8B4E5 /* CyberKitWeightWatcher500.ttf */; };
+		5DB9AC9D0F722C3600684641 /* CyberKitWeightWatcher600.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09760DAC3CB600C8B4E5 /* CyberKitWeightWatcher600.ttf */; };
+		5DB9AC9E0F722C3600684641 /* CyberKitWeightWatcher700.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09770DAC3CB600C8B4E5 /* CyberKitWeightWatcher700.ttf */; };
+		5DB9AC9F0F722C3600684641 /* CyberKitWeightWatcher800.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09780DAC3CB600C8B4E5 /* CyberKitWeightWatcher800.ttf */; };
+		5DB9ACA00F722C3600684641 /* CyberKitWeightWatcher900.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = 375F09790DAC3CB600C8B4E5 /* CyberKitWeightWatcher900.ttf */; };
 		7C9893DF25433F8E00354EBC /* TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9893DE25433C8700354EBC /* TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp */; };
 		7CFF9BBF2533BB240008009F /* TestFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF9BBE2533BB240008009F /* TestFeatures.cpp */; };
 		7CFF9BC22533BC160008009F /* TestCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF9BC12533BC160008009F /* TestCommand.cpp */; };
@@ -119,8 +119,8 @@
 		BCF6C6500C98E9C000AC063E /* GCController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCF6C64F0C98E9C000AC063E /* GCController.cpp */; };
 		C23EA2081BC9F05100C980B7 /* FontWithFeatures.otf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = C23EA2061BC9EABA00C980B7 /* FontWithFeatures.otf */; };
 		C23EA2091BC9F05100C980B7 /* FontWithFeatures.ttf in Copy Font Files */ = {isa = PBXBuildFile; fileRef = C23EA2071BC9EABA00C980B7 /* FontWithFeatures.ttf */; };
-		DD20DE7627BDEAE90093D175 /* WebKit.framework in Product Dependencies */ = {isa = PBXBuildFile; fileRef = 9335435F03D75502008635CE /* WebKit.framework */; };
-		DDD2187827A21850002B7025 /* WebKit.framework in Product Dependencies */ = {isa = PBXBuildFile; fileRef = 9335435F03D75502008635CE /* WebKit.framework */; };
+		DD20DE7627BDEAE90093D175 /* CyberKit.framework in Product Dependencies */ = {isa = PBXBuildFile; fileRef = 9335435F03D75502008635CE /* CyberKit.framework */; };
+		DDD2187827A21850002B7025 /* CyberKit.framework in Product Dependencies */ = {isa = PBXBuildFile; fileRef = 9335435F03D75502008635CE /* CyberKit.framework */; };
 		E1B7816511AF31B7007E1BC2 /* MockGeolocationProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1B7808711AF1669007E1BC2 /* MockGeolocationProvider.mm */; };
 		F4010B7B24DA201F00A876E2 /* PoseAsClass.mm in Sources */ = {isa = PBXBuildFile; fileRef = F4010B7924DA200E00A876E2 /* PoseAsClass.mm */; };
 		F445C68624B2789D00790440 /* UIScriptControllerShared.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F445C68524B2788F00790440 /* UIScriptControllerShared.cpp */; };
@@ -187,15 +187,15 @@
 				5DB9AC970F722C3600684641 /* AHEM____.TTF in Copy Font Files */,
 				C23EA2081BC9F05100C980B7 /* FontWithFeatures.otf in Copy Font Files */,
 				C23EA2091BC9F05100C980B7 /* FontWithFeatures.ttf in Copy Font Files */,
-				5DB9AC980F722C3600684641 /* WebKitWeightWatcher100.ttf in Copy Font Files */,
-				5DB9AC990F722C3600684641 /* WebKitWeightWatcher200.ttf in Copy Font Files */,
-				5DB9AC9A0F722C3600684641 /* WebKitWeightWatcher300.ttf in Copy Font Files */,
-				5DB9AC9B0F722C3600684641 /* WebKitWeightWatcher400.ttf in Copy Font Files */,
-				5DB9AC9C0F722C3600684641 /* WebKitWeightWatcher500.ttf in Copy Font Files */,
-				5DB9AC9D0F722C3600684641 /* WebKitWeightWatcher600.ttf in Copy Font Files */,
-				5DB9AC9E0F722C3600684641 /* WebKitWeightWatcher700.ttf in Copy Font Files */,
-				5DB9AC9F0F722C3600684641 /* WebKitWeightWatcher800.ttf in Copy Font Files */,
-				5DB9ACA00F722C3600684641 /* WebKitWeightWatcher900.ttf in Copy Font Files */,
+				5DB9AC980F722C3600684641 /* CyberKitWeightWatcher100.ttf in Copy Font Files */,
+				5DB9AC990F722C3600684641 /* CyberKitWeightWatcher200.ttf in Copy Font Files */,
+				5DB9AC9A0F722C3600684641 /* CyberKitWeightWatcher300.ttf in Copy Font Files */,
+				5DB9AC9B0F722C3600684641 /* CyberKitWeightWatcher400.ttf in Copy Font Files */,
+				5DB9AC9C0F722C3600684641 /* CyberKitWeightWatcher500.ttf in Copy Font Files */,
+				5DB9AC9D0F722C3600684641 /* CyberKitWeightWatcher600.ttf in Copy Font Files */,
+				5DB9AC9E0F722C3600684641 /* CyberKitWeightWatcher700.ttf in Copy Font Files */,
+				5DB9AC9F0F722C3600684641 /* CyberKitWeightWatcher800.ttf in Copy Font Files */,
+				5DB9ACA00F722C3600684641 /* CyberKitWeightWatcher900.ttf in Copy Font Files */,
 			);
 			name = "Copy Font Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +206,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				DD20DE7627BDEAE90093D175 /* WebKit.framework in Product Dependencies */,
+				DD20DE7627BDEAE90093D175 /* CyberKit.framework in Product Dependencies */,
 			);
 			name = "Product Dependencies";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,7 +217,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				DDD2187827A21850002B7025 /* WebKit.framework in Product Dependencies */,
+				DDD2187827A21850002B7025 /* CyberKit.framework in Product Dependencies */,
 			);
 			name = "Product Dependencies";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,15 +258,15 @@
 		3148A0551E6F90F400D3B316 /* IOSLayoutTestCommunication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSLayoutTestCommunication.cpp; sourceTree = "<group>"; };
 		3148A0561E6F90F400D3B316 /* IOSLayoutTestCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSLayoutTestCommunication.h; sourceTree = "<group>"; };
 		32A70AAB03705E1F00C91783 /* DumpRenderTreePrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumpRenderTreePrefix.h; sourceTree = "<group>"; };
-		375F09710DAC3CB600C8B4E5 /* WebKitWeightWatcher100.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher100.ttf; path = fonts/WebKitWeightWatcher100.ttf; sourceTree = "<group>"; };
-		375F09720DAC3CB600C8B4E5 /* WebKitWeightWatcher200.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher200.ttf; path = fonts/WebKitWeightWatcher200.ttf; sourceTree = "<group>"; };
-		375F09730DAC3CB600C8B4E5 /* WebKitWeightWatcher300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher300.ttf; path = fonts/WebKitWeightWatcher300.ttf; sourceTree = "<group>"; };
-		375F09740DAC3CB600C8B4E5 /* WebKitWeightWatcher400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher400.ttf; path = fonts/WebKitWeightWatcher400.ttf; sourceTree = "<group>"; };
-		375F09750DAC3CB600C8B4E5 /* WebKitWeightWatcher500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher500.ttf; path = fonts/WebKitWeightWatcher500.ttf; sourceTree = "<group>"; };
-		375F09760DAC3CB600C8B4E5 /* WebKitWeightWatcher600.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher600.ttf; path = fonts/WebKitWeightWatcher600.ttf; sourceTree = "<group>"; };
-		375F09770DAC3CB600C8B4E5 /* WebKitWeightWatcher700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher700.ttf; path = fonts/WebKitWeightWatcher700.ttf; sourceTree = "<group>"; };
-		375F09780DAC3CB600C8B4E5 /* WebKitWeightWatcher800.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher800.ttf; path = fonts/WebKitWeightWatcher800.ttf; sourceTree = "<group>"; };
-		375F09790DAC3CB600C8B4E5 /* WebKitWeightWatcher900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WebKitWeightWatcher900.ttf; path = fonts/WebKitWeightWatcher900.ttf; sourceTree = "<group>"; };
+		375F09710DAC3CB600C8B4E5 /* CyberKitWeightWatcher100.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher100.ttf; path = fonts/CyberKitWeightWatcher100.ttf; sourceTree = "<group>"; };
+		375F09720DAC3CB600C8B4E5 /* CyberKitWeightWatcher200.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher200.ttf; path = fonts/CyberKitWeightWatcher200.ttf; sourceTree = "<group>"; };
+		375F09730DAC3CB600C8B4E5 /* CyberKitWeightWatcher300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher300.ttf; path = fonts/CyberKitWeightWatcher300.ttf; sourceTree = "<group>"; };
+		375F09740DAC3CB600C8B4E5 /* CyberKitWeightWatcher400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher400.ttf; path = fonts/CyberKitWeightWatcher400.ttf; sourceTree = "<group>"; };
+		375F09750DAC3CB600C8B4E5 /* CyberKitWeightWatcher500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher500.ttf; path = fonts/CyberKitWeightWatcher500.ttf; sourceTree = "<group>"; };
+		375F09760DAC3CB600C8B4E5 /* CyberKitWeightWatcher600.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher600.ttf; path = fonts/CyberKitWeightWatcher600.ttf; sourceTree = "<group>"; };
+		375F09770DAC3CB600C8B4E5 /* CyberKitWeightWatcher700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher700.ttf; path = fonts/CyberKitWeightWatcher700.ttf; sourceTree = "<group>"; };
+		375F09780DAC3CB600C8B4E5 /* CyberKitWeightWatcher800.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher800.ttf; path = fonts/CyberKitWeightWatcher800.ttf; sourceTree = "<group>"; };
+		375F09790DAC3CB600C8B4E5 /* CyberKitWeightWatcher900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CyberKitWeightWatcher900.ttf; path = fonts/CyberKitWeightWatcher900.ttf; sourceTree = "<group>"; };
 		417DAA1C137B3E24007C57FB /* CyberCoreTestSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CyberCoreTestSupport.h; path = CyberCoreTestSupport/CyberCoreTestSupport.h; sourceTree = BUILT_PRODUCTS_DIR; };
 		4464CABD1C20A07000E5BB55 /* DumpRenderTreeAppMain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DumpRenderTreeAppMain.mm; path = ios/DumpRenderTreeAppMain.mm; sourceTree = "<group>"; };
 		5185F69E10714A57007AA393 /* HistoryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryDelegate.h; path = mac/HistoryDelegate.h; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 		8465E2C60FFA8DF2003B8342 /* PixelDumpSupport.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PixelDumpSupport.cpp; sourceTree = "<group>"; };
 		932BB9C1270E273C0094CC33 /* ModifierKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifierKeys.h; sourceTree = "<group>"; };
 		932BB9C2270E273C0094CC33 /* ModifierKeys.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModifierKeys.mm; sourceTree = "<group>"; };
-		9335435F03D75502008635CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9335435F03D75502008635CE /* CyberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9340995408540CAF007F3BC8 /* DumpRenderTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DumpRenderTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C78824250C6D3900C0AA24 /* WPTFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WPTFunctions.cpp; sourceTree = "<group>"; };
 		93C78825250C6D3900C0AA24 /* WPTFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPTFunctions.h; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 		A19317FD18928738001C52B1 /* DumpRenderTreeApp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = DumpRenderTreeApp.xcconfig; path = mac/Configurations/DumpRenderTreeApp.xcconfig; sourceTree = "<group>"; };
 		A30A21F72051D8960008FF42 /* TestOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestOptions.cpp; sourceTree = "<group>"; };
 		A803FF7409CAAD08009B2A37 /* DumpRenderTree.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = DumpRenderTree.h; sourceTree = "<group>"; };
-		A817090308B164D300CCB9FB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A817090308B164D300CCB9FB /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A84F608908B136DA00E9745F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		A8B91AD70CF3B32F008F91FF /* DumpRenderTreePasteboard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DumpRenderTreePasteboard.mm; path = mac/DumpRenderTreePasteboard.mm; sourceTree = "<group>"; };
 		A8B91AD90CF3B32F008F91FF /* DumpRenderTreeWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DumpRenderTreeWindow.mm; path = mac/DumpRenderTreeWindow.mm; sourceTree = "<group>"; };
@@ -673,15 +673,15 @@
 				AA7F10C20CB3C1030003BDC9 /* AHEM____.TTF */,
 				C23EA2061BC9EABA00C980B7 /* FontWithFeatures.otf */,
 				C23EA2071BC9EABA00C980B7 /* FontWithFeatures.ttf */,
-				375F09710DAC3CB600C8B4E5 /* WebKitWeightWatcher100.ttf */,
-				375F09720DAC3CB600C8B4E5 /* WebKitWeightWatcher200.ttf */,
-				375F09730DAC3CB600C8B4E5 /* WebKitWeightWatcher300.ttf */,
-				375F09740DAC3CB600C8B4E5 /* WebKitWeightWatcher400.ttf */,
-				375F09750DAC3CB600C8B4E5 /* WebKitWeightWatcher500.ttf */,
-				375F09760DAC3CB600C8B4E5 /* WebKitWeightWatcher600.ttf */,
-				375F09770DAC3CB600C8B4E5 /* WebKitWeightWatcher700.ttf */,
-				375F09780DAC3CB600C8B4E5 /* WebKitWeightWatcher800.ttf */,
-				375F09790DAC3CB600C8B4E5 /* WebKitWeightWatcher900.ttf */,
+				375F09710DAC3CB600C8B4E5 /* CyberKitWeightWatcher100.ttf */,
+				375F09720DAC3CB600C8B4E5 /* CyberKitWeightWatcher200.ttf */,
+				375F09730DAC3CB600C8B4E5 /* CyberKitWeightWatcher300.ttf */,
+				375F09740DAC3CB600C8B4E5 /* CyberKitWeightWatcher400.ttf */,
+				375F09750DAC3CB600C8B4E5 /* CyberKitWeightWatcher500.ttf */,
+				375F09760DAC3CB600C8B4E5 /* CyberKitWeightWatcher600.ttf */,
+				375F09770DAC3CB600C8B4E5 /* CyberKitWeightWatcher700.ttf */,
+				375F09780DAC3CB600C8B4E5 /* CyberKitWeightWatcher800.ttf */,
+				375F09790DAC3CB600C8B4E5 /* CyberKitWeightWatcher900.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -725,11 +725,11 @@
 				A84F608908B136DA00E9745F /* Cocoa.framework */,
 				1CB6741F195BAE7B000F35B5 /* CoreText.framework */,
 				1A7961061803454C00FE42CD /* IOKit.framework */,
-				A817090308B164D300CCB9FB /* JavaScriptCore.framework */,
+				A817090308B164D300CCB9FB /* CyberScriptCore.framework */,
 				5DE8AE4313A2C15800D6A37D /* libCyberCoreTestSupport.dylib */,
 				23BCB88F0EA57623003C6289 /* OpenGL.framework */,
 				B5A752A108AF5D1F00138E45 /* QuartzCore.framework */,
-				9335435F03D75502008635CE /* WebKit.framework */,
+				9335435F03D75502008635CE /* CyberKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

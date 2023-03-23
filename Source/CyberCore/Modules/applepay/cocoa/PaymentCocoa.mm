@@ -33,7 +33,7 @@
 #import "PaymentMethod.h"
 #import <pal/spi/cocoa/PassKitSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void finishConverting(PKPayment *payment, ApplePayPayment& result)
 {

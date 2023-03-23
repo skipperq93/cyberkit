@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class WebAuthenticationPanelResult : uint8_t {
     Unavailable,
@@ -61,6 +61,6 @@ enum class WebAuthenticationSource : bool {
     External
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -54,7 +54,7 @@ webkit_dom_attr_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_attr_get_name(CyberKitDOMAttr* self);
@@ -65,7 +65,7 @@ webkit_dom_attr_get_name(CyberKitDOMAttr* self);
  *
  * Returns: A #gboolean
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
 webkit_dom_attr_get_specified(CyberKitDOMAttr* self);
@@ -76,7 +76,7 @@ webkit_dom_attr_get_specified(CyberKitDOMAttr* self);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_attr_get_value(CyberKitDOMAttr* self);
@@ -88,7 +88,7 @@ webkit_dom_attr_get_value(CyberKitDOMAttr* self);
  * @error: #GError
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_attr_set_value(CyberKitDOMAttr* self, const gchar* value, GError** error);
@@ -99,7 +99,7 @@ webkit_dom_attr_set_value(CyberKitDOMAttr* self, const gchar* value, GError** er
  *
  * Returns: (transfer none): A #CyberKitDOMElement
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED CyberKitDOMElement*
 webkit_dom_attr_get_owner_element(CyberKitDOMAttr* self);
@@ -112,7 +112,7 @@ webkit_dom_attr_get_owner_element(CyberKitDOMAttr* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_attr_get_namespace_uri(CyberKitDOMAttr* self);
@@ -125,7 +125,7 @@ webkit_dom_attr_get_namespace_uri(CyberKitDOMAttr* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_attr_get_prefix(CyberKitDOMAttr* self);
@@ -138,7 +138,7 @@ webkit_dom_attr_get_prefix(CyberKitDOMAttr* self);
  *
  * Since: 2.14
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_attr_get_local_name(CyberKitDOMAttr* self);

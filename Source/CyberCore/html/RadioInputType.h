@@ -33,7 +33,7 @@
 
 #include "BaseCheckableInputType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RadioInputType final : public BaseCheckableInputType {
     template<typename DowncastedType> friend bool isInvalidInputType(const InputType&, const String&);
@@ -61,6 +61,6 @@ private:
     void willUpdateCheckedness(bool nowChecked) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(RadioInputType, Type::Radio)

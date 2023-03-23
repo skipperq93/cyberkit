@@ -30,7 +30,7 @@
 #include "CSSValueKeywords.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSCounterValue::CSSCounterValue(AtomString identifier, AtomString separator, CSSValueID listStyle)
     : CSSValue(CounterClass)
@@ -63,4 +63,4 @@ String CSSCounterValue::customCSSText() const
     return result.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

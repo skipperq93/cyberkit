@@ -35,7 +35,7 @@
 #include "ComputedStyleExtractor.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CSSCustomPropertyValue> CSSCustomPropertyValue::createEmpty(const AtomString& name)
 {
@@ -44,7 +44,7 @@ Ref<CSSCustomPropertyValue> CSSCustomPropertyValue::createEmpty(const AtomString
 
 Ref<CSSCustomPropertyValue> CSSCustomPropertyValue::createWithID(const AtomString& name, CSSValueID id)
 {
-    ASSERT(WebCore::isCSSWideKeyword(id) || id == CSSValueInvalid);
+    ASSERT(CyberCore::isCSSWideKeyword(id) || id == CSSValueInvalid);
     return adoptRef(*new CSSCustomPropertyValue(name, { id }));
 }
 
@@ -146,7 +146,7 @@ const Vector<CSSParserToken>& CSSCustomPropertyValue::tokens() const
 
 bool CSSCustomPropertyValue::containsCSSWideKeyword() const
 {
-    return std::holds_alternative<CSSValueID>(m_value) && WebCore::isCSSWideKeyword(std::get<CSSValueID>(m_value));
+    return std::holds_alternative<CSSValueID>(m_value) && CyberCore::isCSSWideKeyword(std::get<CSSValueID>(m_value));
 }
 
 Ref<const CSSVariableData> CSSCustomPropertyValue::asVariableData() const

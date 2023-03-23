@@ -40,7 +40,7 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-namespace WebKit {
+namespace CyberKit {
 
 static std::pair<String, unsigned> scriptLocation(JSContextRef context)
 {
@@ -215,6 +215,6 @@ void WebExtensionAPITest::fireTestEvent()
     testEvent().invokeListeners();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

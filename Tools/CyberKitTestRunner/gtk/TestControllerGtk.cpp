@@ -28,8 +28,8 @@
 #include "TestController.h"
 
 #include "PlatformWebView.h"
-#include <WebKit/WKTextCheckerGLib.h>
-#include <WebKit/WKViewPrivate.h>
+#include <CyberKit/WKTextCheckerGLib.h>
+#include <CyberKit/WKViewPrivate.h>
 #include <gtk/gtk.h>
 #include <wtf/Platform.h>
 #include <wtf/RunLoop.h>
@@ -143,7 +143,7 @@ const char* TestController::platformLibraryPathForTesting()
 
 void TestController::platformConfigureViewForTest(const TestInvocation&)
 {
-    WKRetainPtr<WKStringRef> appName = adoptWK(WKStringCreateWithUTF8CString("WebKitTestRunnerGTK"));
+    WKRetainPtr<WKStringRef> appName = adoptWK(WKStringCreateWithUTF8CString("CyberKitTestRunnerGTK"));
     WKPageSetApplicationNameForUserAgent(mainWebView()->page(), appName.get());
 }
 

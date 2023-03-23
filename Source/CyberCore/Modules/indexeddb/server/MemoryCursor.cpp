@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 static Lock cursorMapLock;
@@ -68,4 +68,4 @@ MemoryCursor* MemoryCursor::cursorForIdentifier(const IDBResourceIdentifier& ide
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

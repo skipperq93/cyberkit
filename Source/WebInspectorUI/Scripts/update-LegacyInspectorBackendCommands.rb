@@ -9,7 +9,7 @@ if ARGV.size != 0
 end
 
 WEB_INSPECTOR_PATH = File.expand_path File.join(File.dirname(__FILE__), "..")
-JAVASCRIPTCORE_PATH = File.expand_path File.join(File.dirname(__FILE__), "..", "..", "JavaScriptCore")
+JAVASCRIPTCORE_PATH = File.expand_path File.join(File.dirname(__FILE__), "..", "..", "CyberScriptCore")
 
 $code_generator_path = File.join JAVASCRIPTCORE_PATH, "inspector", "scripts", "generate-inspector-protocol-bindings.py"
 $versions_directory_path = File.join WEB_INSPECTOR_PATH, "Versions"

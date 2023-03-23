@@ -87,7 +87,7 @@ RuntimeObject* Instance::newRuntimeObject(JSGlobalObject* lexicalGlobalObject)
     JSLockHolder lock(lexicalGlobalObject);
 
     // FIXME: deprecatedGetDOMStructure uses the prototype off of the wrong global object.
-    return RuntimeObject::create(lexicalGlobalObject->vm(), WebCore::deprecatedGetDOMStructure<RuntimeObject>(lexicalGlobalObject), this);
+    return RuntimeObject::create(lexicalGlobalObject->vm(), CyberCore::deprecatedGetDOMStructure<RuntimeObject>(lexicalGlobalObject), this);
 }
 
 void Instance::willInvalidateRuntimeObject()

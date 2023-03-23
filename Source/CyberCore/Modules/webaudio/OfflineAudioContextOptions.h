@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_AUDIO)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct OfflineAudioContextOptions {
     unsigned numberOfChannels;
@@ -35,6 +35,6 @@ struct OfflineAudioContextOptions {
     float sampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

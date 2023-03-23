@@ -27,7 +27,7 @@
 
 #include "CSSValueList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleImage;
 
@@ -48,6 +48,6 @@ private:
     explicit CSSImageSetValue(CSSValueListBuilder);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CSS_VALUE(CSSImageSetValue, isImageSetValue())

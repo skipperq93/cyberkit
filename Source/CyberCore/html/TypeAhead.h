@@ -29,7 +29,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyboardEvent;
 
@@ -63,4 +63,4 @@ private:
     StringBuilder m_buffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

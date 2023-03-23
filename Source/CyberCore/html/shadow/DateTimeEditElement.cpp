@@ -44,7 +44,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -404,6 +404,6 @@ DateTimeFieldsState DateTimeEditElement::valueAsDateTimeFieldsState() const
     return dateTimeFieldsState;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

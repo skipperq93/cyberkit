@@ -33,7 +33,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentLoader;
 class Page;
@@ -49,7 +49,7 @@ struct ResourceLoadInfo;
 //
 // It provides two services:
 // 1) It stores the rules for each content extension.
-// 2) It provides APIs for the WebCore interfaces to use those rules efficiently.
+// 2) It provides APIs for the CyberCore interfaces to use those rules efficiently.
 class ContentExtensionsBackend {
     WTF_MAKE_FAST_ALLOCATED;
 public:
@@ -61,7 +61,7 @@ public:
     WEBCORE_EXPORT void removeContentExtension(const String& identifier);
     WEBCORE_EXPORT void removeAllContentExtensions();
 
-    // - Internal WebCore Interface.
+    // - Internal CyberCore Interface.
     struct ActionsFromContentRuleList {
         String contentRuleListIdentifier;
         bool sawIgnorePreviousRules { false };
@@ -91,7 +91,7 @@ private:
 WEBCORE_EXPORT void applyResultsToRequest(ContentRuleListResults&&, Page*, ResourceRequest&);
 std::optional<String> customLoadBlockingMessageForConsole(const ContentRuleListResults&, const URL& urlString = { }, const URL& mainDocumentURL = { });
 
-} // namespace WebCore::ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore::ContentExtensions
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

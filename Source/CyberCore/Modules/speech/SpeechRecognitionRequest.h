@@ -28,7 +28,7 @@
 #include "SpeechRecognitionConnectionClientIdentifier.h"
 #include "SpeechRecognitionRequestInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionRequest : public CanMakeWeakPtr<SpeechRecognitionRequest> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -47,4 +47,4 @@ private:
     SpeechRecognitionRequestInfo m_info;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

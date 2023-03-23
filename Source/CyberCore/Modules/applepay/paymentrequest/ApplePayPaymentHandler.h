@@ -37,7 +37,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePayError;
 class PaymentCoordinator;
@@ -109,6 +109,6 @@ private:
     } m_updateState { UpdateState::None };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY) && ENABLE(PAYMENT_REQUEST)

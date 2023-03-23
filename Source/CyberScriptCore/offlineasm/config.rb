@@ -24,11 +24,11 @@
 buildProductsDirectory = ENV['BUILT_PRODUCTS_DIR'];
 headersFolderPath = ENV['WK_LIBRARY_HEADERS_FOLDER_PATH'];
 if buildProductsDirectory and File.exist?(buildProductsDirectory)
-    $: << "#{buildProductsDirectory}#{headersFolderPath}/WebKitAdditions/Scripts"
+    $: << "#{buildProductsDirectory}#{headersFolderPath}/CyberKitAdditions/Scripts"
 end
 sdkRootDirectory = ENV['SDKROOT'];
 if sdkRootDirectory and File.exist?(sdkRootDirectory)
-    $: << "#{sdkRootDirectory}#{headersFolderPath}/WebKitAdditions/Scripts"
+    $: << "#{sdkRootDirectory}#{headersFolderPath}/CyberKitAdditions/Scripts"
 end
 
 
@@ -51,8 +51,8 @@ $enableLabelCountComments = false
 # For example,  the output will look like this:
 #
 #    ...
-#    "\tmovq -8(%r13), %rcx\n"   // JavaScriptCore/llint/LowLevelInterpreter64.asm:185
-#    "\tmovl 52(%rcx), %ecx\n"   // JavaScriptCore/llint/LowLevelInterpreter64.asm:186
+#    "\tmovq -8(%r13), %rcx\n"   // CyberScriptCore/llint/LowLevelInterpreter64.asm:185
+#    "\tmovl 52(%rcx), %ecx\n"   // CyberScriptCore/llint/LowLevelInterpreter64.asm:186
 #    ...
 #
 $enableCodeOriginComments = true

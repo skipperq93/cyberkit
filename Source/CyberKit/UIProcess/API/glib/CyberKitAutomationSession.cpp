@@ -18,35 +18,35 @@
  */
 
 #include "config.h"
-#include "WebKitAutomationSession.h"
+#include "CyberKitAutomationSession.h"
 
 #include "APIAutomationSessionClient.h"
-#include "WebKitApplicationInfo.h"
-#include "WebKitAutomationSessionPrivate.h"
-#include "WebKitNetworkProxySettingsPrivate.h"
-#include "WebKitWebContextPrivate.h"
-#include "WebKitWebViewPrivate.h"
-#include "WebKitWebsiteDataManagerPrivate.h"
+#include "CyberKitApplicationInfo.h"
+#include "CyberKitAutomationSessionPrivate.h"
+#include "CyberKitNetworkProxySettingsPrivate.h"
+#include "CyberKitWebContextPrivate.h"
+#include "CyberKitWebViewPrivate.h"
+#include "CyberKitWebsiteDataManagerPrivate.h"
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
 #if ENABLE(2022_GLIB_API)
-#include "WebKitNetworkSession.h"
+#include "CyberKitNetworkSession.h"
 #endif
 
-using namespace WebKit;
+using namespace CyberKit;
 
 /**
- * WebKitAutomationSession:
+ * CyberKitAutomationSession:
  *
  * Automation Session.
  *
- * WebKitAutomationSession represents an automation session of a WebKitWebContext.
- * When a new session is requested, a WebKitAutomationSession is created and the signal
- * WebKitWebContext::automation-started is emitted with the WebKitAutomationSession as
+ * CyberKitAutomationSession represents an automation session of a CyberKitWebContext.
+ * When a new session is requested, a CyberKitAutomationSession is created and the signal
+ * CyberKitWebContext::automation-started is emitted with the CyberKitAutomationSession as
  * argument. Then, the automation client can request the session to create a new
- * #WebKitWebView to interact with it. When this happens the signal #WebKitAutomationSession::create-web-view
+ * #CyberKitWebView to interact with it. When this happens the signal #CyberKitAutomationSession::create-web-view
  * is emitted.
  *
  * Since: 2.18
@@ -64,21 +64,21 @@ enum {
     LAST_SIGNAL
 };
 
-struct _WebKitAutomationSessionPrivate {
+struct _CyberKitAutomationSessionPrivate {
     RefPtr<WebAutomationSession> session;
-    WebKitApplicationInfo* applicationInfo;
-    WebKitWebContext* webContext;
+    CyberKitApplicationInfo* applicationInfo;
+    CyberKitWebContext* webContext;
     CString id;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitAutomationSession, webkit_automation_session, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitAutomationSession, webkit_automation_session, G_TYPE_OBJECT, GObject)
 
 class AutomationSessionClient final : public API::AutomationSessionClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    explicit AutomationSessionClient(WebKitAutomationSession* session)
+    explicit AutomationSessionClient(CyberKitAutomationSession* session)
         : m_session(session)
     {
     }
@@ -98,7 +98,7 @@ private:
 
     void requestNewPageWithOptions(WebAutomationSession&, API::AutomationSessionBrowsingContextOptions options, CompletionHandler<void(WebPageProxy*)>&& completionHandler) override
     {
-        WebKitWebView* webView = nullptr;
+        CyberKitWebView* webView = nullptr;
         GQuark detail = options & API::AutomationSessionBrowsingContextOptionsPreferNewTab ? g_quark_from_string("tab") : g_quark_from_string("window");
         g_signal_emit(m_session, signals[CREATE_WEB_VIEW], detail, &webView);
         if (!webView || !webkit_web_view_is_controlled_by_automation(webView))
@@ -210,12 +210,12 @@ private:
         RELEASE_ASSERT_NOT_REACHED();
     }
 
-    WebKitAutomationSession* m_session;
+    CyberKitAutomationSession* m_session;
 };
 
 static void webkitAutomationSessionGetProperty(GObject* object, guint propID, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
+    CyberKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
 
     switch (propID) {
     case PROP_ID:
@@ -228,7 +228,7 @@ static void webkitAutomationSessionGetProperty(GObject* object, guint propID, GV
 
 static void webkitAutomationSessionSetProperty(GObject* object, guint propID, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
+    CyberKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
 
     switch (propID) {
     case PROP_ID:
@@ -241,7 +241,7 @@ static void webkitAutomationSessionSetProperty(GObject* object, guint propID, co
 
 static void webkitAutomationSessionConstructed(GObject* object)
 {
-    WebKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
+    CyberKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
 
     G_OBJECT_CLASS(webkit_automation_session_parent_class)->constructed(object);
 
@@ -252,7 +252,7 @@ static void webkitAutomationSessionConstructed(GObject* object)
 
 static void webkitAutomationSessionDispose(GObject* object)
 {
-    WebKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
+    CyberKitAutomationSession* session = WEBKIT_AUTOMATION_SESSION(object);
 
     session->priv->session->setClient(nullptr);
 
@@ -264,7 +264,7 @@ static void webkitAutomationSessionDispose(GObject* object)
     G_OBJECT_CLASS(webkit_automation_session_parent_class)->dispose(object);
 }
 
-static void webkit_automation_session_class_init(WebKitAutomationSessionClass* sessionClass)
+static void webkit_automation_session_class_init(CyberKitAutomationSessionClass* sessionClass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(sessionClass);
     gObjectClass->get_property = webkitAutomationSessionGetProperty;
@@ -273,7 +273,7 @@ static void webkit_automation_session_class_init(WebKitAutomationSessionClass* s
     gObjectClass->dispose = webkitAutomationSessionDispose;
 
     /**
-     * WebKitAutomationSession:id:
+     * CyberKitAutomationSession:id:
      *
      * The session unique identifier.
      *
@@ -289,23 +289,23 @@ static void webkit_automation_session_class_init(WebKitAutomationSessionClass* s
             static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY)));
 
     /**
-     * WebKitAutomationSession::create-web-view:
-     * @session: a #WebKitAutomationSession
+     * CyberKitAutomationSession::create-web-view:
+     * @session: a #CyberKitAutomationSession
      *
      * This signal is emitted when the automation client requests a new
      * browsing context to interact with it. The callback handler should
-     * return a #WebKitWebView created with #WebKitWebView:is-controlled-by-automation
-     * construct property enabled and #WebKitWebView:automation-presentation-type construct
+     * return a #CyberKitWebView created with #CyberKitWebView:is-controlled-by-automation
+     * construct property enabled and #CyberKitWebView:automation-presentation-type construct
      * property set if needed.
      *
-     * If the signal is emitted with "tab" detail, the returned #WebKitWebView should be
+     * If the signal is emitted with "tab" detail, the returned #CyberKitWebView should be
      * a new web view added to a new tab of the current browsing context window.
-     * If the signal is emitted with "window" detail, the returned #WebKitWebView should be
+     * If the signal is emitted with "window" detail, the returned #CyberKitWebView should be
      * a new web view added to a new window.
      * When creating a new web view and there's an active browsing context, the new window
      * or tab shouldn't be focused.
      *
-     * Returns: (transfer none): a #WebKitWebView widget.
+     * Returns: (transfer none): a #CyberKitWebView widget.
      *
      * Since: 2.18
      */
@@ -321,7 +321,7 @@ static void webkit_automation_session_class_init(WebKitAutomationSessionClass* s
 }
 
 #if ENABLE(REMOTE_INSPECTOR)
-static WebKitNetworkProxyMode parseProxyCapabilities(const Inspector::RemoteInspector::Client::SessionCapabilities::Proxy& proxy, WebKitNetworkProxySettings** settings)
+static CyberKitNetworkProxyMode parseProxyCapabilities(const Inspector::RemoteInspector::Client::SessionCapabilities::Proxy& proxy, CyberKitNetworkProxySettings** settings)
 {
     if (proxy.type == "system"_s || proxy.type == "autodetect"_s)
         return WEBKIT_NETWORK_PROXY_MODE_DEFAULT;
@@ -350,12 +350,12 @@ static WebKitNetworkProxyMode parseProxyCapabilities(const Inspector::RemoteInsp
     return WEBKIT_NETWORK_PROXY_MODE_CUSTOM;
 }
 
-WebKitAutomationSession* webkitAutomationSessionCreate(WebKitWebContext* webContext, const char* sessionID, const Inspector::RemoteInspector::Client::SessionCapabilities& capabilities)
+CyberKitAutomationSession* webkitAutomationSessionCreate(CyberKitWebContext* webContext, const char* sessionID, const Inspector::RemoteInspector::Client::SessionCapabilities& capabilities)
 {
     auto* session = WEBKIT_AUTOMATION_SESSION(g_object_new(WEBKIT_TYPE_AUTOMATION_SESSION, "id", sessionID, nullptr));
     session->priv->webContext = webContext;
 #if ENABLE(2022_GLIB_API)
-    WebKitNetworkSession* networkSession = webkit_web_context_get_network_session_for_automation(webContext);
+    CyberKitNetworkSession* networkSession = webkit_web_context_get_network_session_for_automation(webContext);
 #endif
 
     if (capabilities.acceptInsecureCertificates) {
@@ -391,7 +391,7 @@ WebKitAutomationSession* webkitAutomationSessionCreate(WebKitWebContext* webCont
                 dataStore.setNetworkProxySettings(WTFMove(settings));
             }
         } else {
-            WebKitNetworkProxySettings* proxySettings = nullptr;
+            CyberKitNetworkProxySettings* proxySettings = nullptr;
             auto proxyMode = parseProxyCapabilities(*capabilities.proxy, &proxySettings);
 #if ENABLE(2022_GLIB_API)
             webkit_network_session_set_proxy_settings(networkSession, proxyMode, proxySettings);
@@ -406,12 +406,12 @@ WebKitAutomationSession* webkitAutomationSessionCreate(WebKitWebContext* webCont
 }
 #endif
 
-WebAutomationSession& webkitAutomationSessionGetSession(WebKitAutomationSession* session)
+WebAutomationSession& webkitAutomationSessionGetSession(CyberKitAutomationSession* session)
 {
     return *session->priv->session;
 }
 
-String webkitAutomationSessionGetBrowserName(WebKitAutomationSession* session)
+String webkitAutomationSessionGetBrowserName(CyberKitAutomationSession* session)
 {
     if (session->priv->applicationInfo)
         return String::fromUTF8(webkit_application_info_get_name(session->priv->applicationInfo));
@@ -419,7 +419,7 @@ String webkitAutomationSessionGetBrowserName(WebKitAutomationSession* session)
     return String::fromUTF8(g_get_prgname());
 }
 
-String webkitAutomationSessionGetBrowserVersion(WebKitAutomationSession* session)
+String webkitAutomationSessionGetBrowserVersion(CyberKitAutomationSession* session)
 {
     if (!session->priv->applicationInfo)
         return { };
@@ -438,15 +438,15 @@ String webkitAutomationSessionGetBrowserVersion(WebKitAutomationSession* session
 
 /**
  * webkit_automation_session_get_id:
- * @session: a #WebKitAutomationSession
+ * @session: a #CyberKitAutomationSession
  *
- * Get the unique identifier of a #WebKitAutomationSession
+ * Get the unique identifier of a #CyberKitAutomationSession
  *
  * Returns: the unique identifier of @session
  *
  * Since: 2.18
  */
-const char* webkit_automation_session_get_id(WebKitAutomationSession* session)
+const char* webkit_automation_session_get_id(CyberKitAutomationSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_AUTOMATION_SESSION(session), nullptr);
     return session->priv->id.data();
@@ -454,8 +454,8 @@ const char* webkit_automation_session_get_id(WebKitAutomationSession* session)
 
 /**
  * webkit_automation_session_set_application_info:
- * @session: a #WebKitAutomationSession
- * @info: a #WebKitApplicationInfo
+ * @session: a #CyberKitAutomationSession
+ * @info: a #CyberKitApplicationInfo
  *
  * Set the application information to @session.
  *
@@ -464,11 +464,11 @@ const char* webkit_automation_session_get_id(WebKitAutomationSession* session)
  * is not provided to the session when a new automation session is requested, the creation might fail
  * if the client requested a specific browser name or version. This will not have any effect when called
  * after the automation session has been fully created, so this must be called in the callback of
- * #WebKitWebContext::automation-started signal.
+ * #CyberKitWebContext::automation-started signal.
  *
  * Since: 2.18
  */
-void webkit_automation_session_set_application_info(WebKitAutomationSession* session, WebKitApplicationInfo* info)
+void webkit_automation_session_set_application_info(CyberKitAutomationSession* session, CyberKitApplicationInfo* info)
 {
     g_return_if_fail(WEBKIT_IS_AUTOMATION_SESSION(session));
     g_return_if_fail(info);
@@ -483,17 +483,17 @@ void webkit_automation_session_set_application_info(WebKitAutomationSession* ses
 
 /**
  * webkit_automation_session_get_application_info:
- * @session: a #WebKitAutomationSession
+ * @session: a #CyberKitAutomationSession
  *
- * Get the the previously set #WebKitAutomationSession.
+ * Get the the previously set #CyberKitAutomationSession.
  *
- * Get the #WebKitAutomationSession previously set with webkit_automation_session_set_application_info().
+ * Get the #CyberKitAutomationSession previously set with webkit_automation_session_set_application_info().
  *
- * Returns: (transfer none): the #WebKitAutomationSession of @session, or %NULL if no one has been set.
+ * Returns: (transfer none): the #CyberKitAutomationSession of @session, or %NULL if no one has been set.
  *
  * Since: 2.18
  */
-WebKitApplicationInfo* webkit_automation_session_get_application_info(WebKitAutomationSession* session)
+CyberKitApplicationInfo* webkit_automation_session_get_application_info(CyberKitAutomationSession* session)
 {
     g_return_val_if_fail(WEBKIT_IS_AUTOMATION_SESSION(session), nullptr);
 

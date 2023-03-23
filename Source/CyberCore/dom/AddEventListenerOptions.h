@@ -29,7 +29,7 @@
 #include "EventListenerOptions.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AddEventListenerOptions : EventListenerOptions {
     AddEventListenerOptions(bool capture = false, std::optional<bool> passive = std::nullopt, bool once = false, RefPtr<AbortSignal>&& signal = nullptr)
@@ -45,4 +45,4 @@ struct AddEventListenerOptions : EventListenerOptions {
     RefPtr<AbortSignal> signal;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

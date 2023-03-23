@@ -40,7 +40,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaSourceRegistry& MediaSourceRegistry::registry()
 {
@@ -110,6 +110,6 @@ MediaSourceRegistry::MediaSourceRegistry()
     MediaSource::setRegistry(this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

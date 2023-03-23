@@ -5,7 +5,7 @@ include(platform/ImageDecoders.cmake)
 include(platform/OpenSSL.cmake)
 include(platform/TextureMapper.cmake)
 
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     ${WEBCORE_DIR}/platform
     ${WEBCORE_DIR}/platform/generic
     ${WEBCORE_DIR}/platform/graphics/egl
@@ -14,7 +14,7 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     ${WEBCORE_DIR}/platform/mediacapabilities
 )
 
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     editing/libwpe/EditorLibWPE.cpp
 
     page/playstation/ResourceUsageOverlayPlayStation.cpp
@@ -68,31 +68,31 @@ list(APPEND WebCore_SOURCES
     rendering/RenderThemePlayStation.cpp
 )
 
-list(APPEND WebCore_USER_AGENT_STYLE_SHEETS
+list(APPEND CyberCore_USER_AGENT_STYLE_SHEETS
     ${WEBCORE_DIR}/Modules/mediacontrols/mediaControlsBase.css
     ${WEBCORE_DIR}/css/mediaControls.css
 )
 
-set(WebCore_USER_AGENT_SCRIPTS
+set(CyberCore_USER_AGENT_SCRIPTS
     ${WEBCORE_DIR}/en.lproj/mediaControlsLocalizedStrings.js
     ${WEBCORE_DIR}/Modules/mediacontrols/mediaControlsBase.js
 )
 
-list(APPEND WebCore_LIBRARIES
+list(APPEND CyberCore_LIBRARIES
     WPE::libwpe
 )
 
 if (ENABLE_GAMEPAD)
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/platform/gamepad/libwpe"
     )
 
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/gamepad/libwpe/GamepadLibWPE.cpp
         platform/gamepad/libwpe/GamepadProviderLibWPE.cpp
     )
 
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/gamepad/libwpe/GamepadProviderLibWPE.h
     )
 endif ()
@@ -119,10 +119,10 @@ endforeach ()
 if (EGL_EXTRAS)
     add_custom_target(EGLExtras_Copy ALL DEPENDS ${EGL_EXTRAS})
     set_target_properties(EGLExtras_Copy PROPERTIES FOLDER "PlayStation")
-    list(APPEND WebCore_INTERFACE_DEPENDENCIES EGLExtras_Copy)
+    list(APPEND CyberCore_INTERFACE_DEPENDENCIES EGLExtras_Copy)
 endif ()
 
-set(WebCore_MODULES
+set(CyberCore_MODULES
     CURL
     Cairo
     EGL
@@ -138,7 +138,7 @@ set(WebCore_MODULES
 )
 
 if (USE_WPE_BACKEND_PLAYSTATION)
-    list(APPEND WebCore_MODULES WPE)
+    list(APPEND CyberCore_MODULES WPE)
 endif ()
 
-PLAYSTATION_COPY_MODULES(WebCore TARGETS ${WebCore_MODULES})
+PLAYSTATION_COPY_MODULES(CyberCore TARGETS ${CyberCore_MODULES})

@@ -37,7 +37,7 @@
 #include "MemoryObjectStore.h"
 #include "ThreadSafeDataBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 
 Ref<MemoryIndex> MemoryIndex::create(const IDBIndexInfo& info, MemoryObjectStore& objectStore)
@@ -262,4 +262,4 @@ MemoryIndexCursor* MemoryIndex::maybeOpenCursor(const IDBCursorInfo& info)
 }
 
 } // namespace IDBServer
-} // namespace WebCore
+} // namespace CyberCore

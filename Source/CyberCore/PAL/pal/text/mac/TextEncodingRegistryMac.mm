@@ -54,6 +54,6 @@ CFStringEncoding webDefaultCFStringEncoding()
     return encoding;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

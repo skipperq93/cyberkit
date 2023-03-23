@@ -27,7 +27,7 @@
 #include "StyleRule.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedCSSStyleSheet;
 class StyleSheetContents;
@@ -89,8 +89,8 @@ private:
     bool m_loading { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleRuleImport)
-    static bool isType(const WebCore::StyleRuleBase& rule) { return rule.isImportRule(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleRuleImport)
+    static bool isType(const CyberCore::StyleRuleBase& rule) { return rule.isImportRule(); }
 SPECIALIZE_TYPE_TRAITS_END()

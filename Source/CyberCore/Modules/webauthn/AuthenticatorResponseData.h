@@ -32,7 +32,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticatorResponse;
 
@@ -53,7 +53,7 @@ struct AuthenticatorResponseData {
     RefPtr<ArrayBuffer> signature;
     RefPtr<ArrayBuffer> userHandle;
 
-    Vector<WebCore::AuthenticatorTransport> transports;
+    Vector<CyberCore::AuthenticatorTransport> transports;
 
     template<class Encoder> void encode(Encoder&) const;
     template<class Decoder> static std::optional<AuthenticatorResponseData> decode(Decoder&);
@@ -170,6 +170,6 @@ std::optional<AuthenticatorResponseData> AuthenticatorResponseData::decode(Decod
     return result;
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

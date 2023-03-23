@@ -34,7 +34,7 @@
 #include "StyleBuilderState.h"
 #include "StyleCachedImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSImageValue::CSSImageValue(ResolvedURL&& location, LoadedFromOpaqueSource loadedFromOpaqueSource, AtomString&& initiatorType)
     : CSSValue(ImageClass)
@@ -133,4 +133,4 @@ bool CSSImageValue::knownToBeOpaque(const RenderElement& renderer) const
     return m_cachedImage.value_or(nullptr) && (**m_cachedImage).currentFrameKnownToBeOpaque(&renderer);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PaymentAddress final : public RefCounted<PaymentAddress> {
 public:
@@ -66,6 +66,6 @@ private:
     String m_phone;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

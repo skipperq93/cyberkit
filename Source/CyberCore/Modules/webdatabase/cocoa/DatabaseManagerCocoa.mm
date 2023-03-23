@@ -31,7 +31,7 @@
 
 #import <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void DatabaseManager::platformInitialize(const String& databasePath)
 {
@@ -47,4 +47,4 @@ void DatabaseManager::platformInitialize(const String& databasePath)
     setenv("SQLITE_EXEMPT_PATH_FROM_VNODE_GUARDS", FileSystem::realPath(databasePath).utf8().data(), overwrite);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

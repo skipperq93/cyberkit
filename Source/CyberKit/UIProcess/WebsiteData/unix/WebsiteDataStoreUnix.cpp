@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebsiteDataStore.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebsiteDataStore::platformInitialize()
 {
@@ -36,4 +36,4 @@ void WebsiteDataStore::platformDestroy()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

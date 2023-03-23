@@ -37,7 +37,7 @@
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/JSCJSValueInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue JSPopStateEvent::state(JSGlobalObject& lexicalGlobalObject) const
@@ -100,4 +100,4 @@ void JSPopStateEvent::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSPopStateEvent);
 
-} // namespace WebCore
+} // namespace CyberCore

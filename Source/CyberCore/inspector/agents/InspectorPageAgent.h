@@ -41,7 +41,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class DocumentLoader;
@@ -182,4 +182,4 @@ private:
     bool m_showPaintRects { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

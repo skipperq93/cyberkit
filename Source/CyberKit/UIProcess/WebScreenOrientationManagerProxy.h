@@ -40,7 +40,7 @@ namespace CyberCore {
 class Exception;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPageProxy;
 
@@ -90,4 +90,4 @@ private:
     CompletionHandler<void(std::optional<CyberCore::Exception>&&)> m_currentLockRequest;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

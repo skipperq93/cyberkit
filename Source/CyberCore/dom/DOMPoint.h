@@ -32,7 +32,7 @@
 
 #include "DOMPointReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPoint final : public DOMPointReadOnly {
 public:
@@ -53,4 +53,4 @@ private:
 };
 static_assert(sizeof(DOMPoint) == sizeof(DOMPointReadOnly));
 
-} // namespace WebCore
+} // namespace CyberCore

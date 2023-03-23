@@ -28,7 +28,7 @@
 #include <CyberCore/SecurityOriginData.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #if !PLATFORM(COCOA)
@@ -213,4 +213,4 @@ bool UserMediaPermissionRequestProxy::canPromptForGetDisplayMedia()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

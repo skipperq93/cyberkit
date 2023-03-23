@@ -339,7 +339,7 @@ set(CyberKit_MESSAGES_IN_FILES
 )
 
 set(CyberKit_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
     CyberCore
@@ -711,10 +711,10 @@ list(APPEND CyberKit_SOURCES
 add_custom_command(
     OUTPUT ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
     MAIN_DEPENDENCY ${WEBKIT_DIR}/WebProcess/Automation/WebAutomationSessionProxy.js
-    DEPENDS ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py
+    DEPENDS ${CyberScriptCore_SCRIPTS_DIR}/xxd.pl ${CyberScriptCore_SCRIPTS_DIR}/jsmin.py
     COMMAND ${CMAKE_COMMAND} -E echo "//# sourceURL=__InjectedScript_WebAutomationSessionProxy.js" > ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py < ${WEBKIT_DIR}/WebProcess/Automation/WebAutomationSessionProxy.js >> ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
-    COMMAND ${PERL_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/xxd.pl WebAutomationSessionProxyScriptSource ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h
+    COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/jsmin.py < ${WEBKIT_DIR}/WebProcess/Automation/WebAutomationSessionProxy.js >> ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js
+    COMMAND ${PERL_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/xxd.pl WebAutomationSessionProxyScriptSource ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxy.min.js ${CyberKit_DERIVED_SOURCES_DIR}/WebAutomationSessionProxyScriptSource.h
     VERBATIM)
 
 list(APPEND CyberKit_HEADERS

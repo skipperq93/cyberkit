@@ -35,7 +35,7 @@
 #include "PictureInPictureSupport.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DocumentPictureInPicture);
 
@@ -69,6 +69,6 @@ DocumentPictureInPicture* DocumentPictureInPicture::from(Document& document)
     return supplement;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PICTURE_IN_PICTURE_API)

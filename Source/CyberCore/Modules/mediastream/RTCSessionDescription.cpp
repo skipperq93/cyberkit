@@ -38,7 +38,7 @@
 #include "RTCSessionDescriptionInit.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCSessionDescription);
 
@@ -58,6 +58,6 @@ Ref<RTCSessionDescription> RTCSessionDescription::create(RTCSdpType type, String
     return adoptRef(*new RTCSessionDescription(type, WTFMove(sdp)));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

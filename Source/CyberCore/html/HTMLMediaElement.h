@@ -69,7 +69,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSourceProvider;
 class AudioTrackList;
@@ -1233,7 +1233,7 @@ private:
     RefPtr<Blob> m_blob;
     URL m_blobURLForReading;
     MediaProvider m_mediaProvider;
-    WTF::Observer<WebCoreOpaqueRoot()> m_opaqueRootProvider;
+    WTF::Observer<CyberCoreOpaqueRoot()> m_opaqueRootProvider;
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
     bool m_hasNeedkeyListener { false };
@@ -1309,23 +1309,23 @@ private:
 String convertEnumerationToString(HTMLMediaElement::AutoplayEventPlaybackState);
 String convertEnumerationToString(HTMLMediaElement::SpeechSynthesisState);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct LogArgument<WebCore::HTMLMediaElement::AutoplayEventPlaybackState> {
-    static String toString(WebCore::HTMLMediaElement::AutoplayEventPlaybackState reason) { return convertEnumerationToString(reason); }
+template<> struct LogArgument<CyberCore::HTMLMediaElement::AutoplayEventPlaybackState> {
+    static String toString(CyberCore::HTMLMediaElement::AutoplayEventPlaybackState reason) { return convertEnumerationToString(reason); }
 };
 
-template<> struct LogArgument<WebCore::HTMLMediaElement::SpeechSynthesisState> {
-    static String toString(WebCore::HTMLMediaElement::SpeechSynthesisState state) { return convertEnumerationToString(state); }
+template<> struct LogArgument<CyberCore::HTMLMediaElement::SpeechSynthesisState> {
+    static String toString(CyberCore::HTMLMediaElement::SpeechSynthesisState state) { return convertEnumerationToString(state); }
 };
 
 } // namespace WTF
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::HTMLMediaElement)
-    static bool isType(const WebCore::Element& element) { return element.isMediaElement(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Element>(node) && isType(downcast<WebCore::Element>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::HTMLMediaElement)
+    static bool isType(const CyberCore::Element& element) { return element.isMediaElement(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Element>(node) && isType(downcast<CyberCore::Element>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

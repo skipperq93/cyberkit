@@ -34,7 +34,7 @@
 #include "FrameDestructionObserverInlines.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool isSecure(DocumentLoader& documentLoader)
 {
@@ -77,6 +77,6 @@ ExceptionOr<void> PaymentSession::canCreateSession(Document& document)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

@@ -33,7 +33,7 @@
 #include "WebNotification.h"
 #include <CyberCore/NotificationDirection.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 WKTypeID WKNotificationGetTypeID()
 {

@@ -36,7 +36,7 @@
 
 using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 void UIGamepadProvider::platformSetDefaultGamepadProvider()
 {

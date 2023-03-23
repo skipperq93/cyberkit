@@ -34,18 +34,18 @@
 #include "JSPaintWorkletGlobalScope.h"
 #include "PaintWorkletGlobalScope.h"
 #include "ScriptExecutionContext.h"
-#include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#include <JavaScriptCore/SlotVisitorMacros.h>
-#include <JavaScriptCore/SubspaceInlines.h>
+#include "CyberCoreJSClientData.h"
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#include <CyberScriptCore/SlotVisitorMacros.h>
+#include <CyberScriptCore/SubspaceInlines.h>
 #include <wtf/GetPtr.h>
 #include <wtf/PointerPreparations.h>
 #include <wtf/URL.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 // Attributes
@@ -166,7 +166,7 @@ JSC_DEFINE_CUSTOM_GETTER(jsPaintWorkletGlobalScope_PaintWorkletGlobalScopeConstr
 
 JSC::GCClient::IsoSubspace* JSPaintWorkletGlobalScope::subspaceForImpl(JSC::VM& vm)
 {
-    return WebCore::subspaceForImpl<JSPaintWorkletGlobalScope, UseCustomHeapCellType::Yes>(vm,
+    return CyberCore::subspaceForImpl<JSPaintWorkletGlobalScope, UseCustomHeapCellType::Yes>(vm,
         [] (auto& spaces) { return spaces.m_clientSubspaceForPaintWorkletGlobalScope.get(); },
         [] (auto& spaces, auto&& space) { spaces.m_clientSubspaceForPaintWorkletGlobalScope = std::forward<decltype(space)>(space); },
         [] (auto& spaces) { return spaces.m_subspaceForPaintWorkletGlobalScope.get(); },

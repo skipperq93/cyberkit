@@ -136,17 +136,17 @@
 #if USE(APPLE_INTERNAL_SDK)
 #include <CyberKitAdditions/DocumentLoaderAdditions.cpp>
 #else
-namespace WebCore {
+namespace CyberCore {
 
 bool DocumentLoader::isLoadingInHeadlessMode() const
 {
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(CONTENT_FILTERING)
 static bool& contentFilterInDocumentLoader()
@@ -781,7 +781,7 @@ std::optional<CrossOriginOpenerPolicyEnforcementResult> DocumentLoader::doCrossO
 
     auto currentCoopEnforcementResult = CrossOriginOpenerPolicyEnforcementResult::from(m_frame->document()->url(), m_frame->document()->securityOrigin(), m_frame->document()->crossOriginOpenerPolicy(), m_triggeringAction.requester(), openerURL);
 
-    auto newCoopEnforcementResult = WebCore::doCrossOriginOpenerHandlingOfResponse(*m_frame->document(), response, m_triggeringAction.requester(), m_contentSecurityPolicy.get(), frameLoader()->effectiveSandboxFlags(), m_request.httpReferrer(), frameLoader()->stateMachine().isDisplayingInitialEmptyDocument(), currentCoopEnforcementResult);
+    auto newCoopEnforcementResult = CyberCore::doCrossOriginOpenerHandlingOfResponse(*m_frame->document(), response, m_triggeringAction.requester(), m_contentSecurityPolicy.get(), frameLoader()->effectiveSandboxFlags(), m_request.httpReferrer(), frameLoader()->stateMachine().isDisplayingInitialEmptyDocument(), currentCoopEnforcementResult);
     if (!newCoopEnforcementResult) {
         cancelMainResourceLoad(frameLoader()->cancelledError(m_request));
         return std::nullopt;
@@ -2368,7 +2368,7 @@ void DocumentLoader::startIconLoading()
     if (!m_linkIcons.size())
         return;
 
-    auto iconDecisions = WTF::map(m_linkIcons, [&](auto& icon) -> std::pair<WebCore::LinkIcon&, uint64_t> {
+    auto iconDecisions = WTF::map(m_linkIcons, [&](auto& icon) -> std::pair<CyberCore::LinkIcon&, uint64_t> {
         auto result = m_iconsPendingLoadDecision.add(nextIconCallbackID++, icon);
         return { icon, result.iterator->key };
     });
@@ -2582,7 +2582,7 @@ bool DocumentLoader::allowsActiveContentRuleListActionsForURL(const String& cont
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef PAGE_ID
 #undef FRAME_ID

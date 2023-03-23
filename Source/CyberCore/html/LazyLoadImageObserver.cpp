@@ -32,7 +32,7 @@
 
 #include <limits>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LazyImageLoadIntersectionObserverCallback final : public IntersectionObserverCallback {
 public:

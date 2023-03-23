@@ -24,7 +24,7 @@
 #include "JSNode.h"
 #include "TestNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT JSTestNode : public JSNode {
 public:
@@ -76,4 +76,4 @@ template<> struct JSDOMWrapperConverterTraits<TestNode> {
     using ToWrappedReturnType = TestNode*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

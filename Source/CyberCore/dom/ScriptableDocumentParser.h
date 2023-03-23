@@ -30,7 +30,7 @@
 #include "Timer.h"
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptableDocumentParser : public DecodedDataDocumentParser {
 public:
@@ -72,4 +72,4 @@ private:
     Timer m_scriptsWaitingForStylesheetsExecutionTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

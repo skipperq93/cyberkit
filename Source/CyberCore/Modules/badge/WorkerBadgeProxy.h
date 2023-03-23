@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerBadgeProxy {
 public:
@@ -36,4 +36,4 @@ public:
     virtual void setAppBadge(std::optional<uint64_t>) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

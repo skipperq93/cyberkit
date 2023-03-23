@@ -39,7 +39,7 @@
 #include "RTCIceTransportPolicy.h"
 #include "RTCPMuxPolicy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCConfiguration {
     std::optional<Vector<RTCIceServer>> iceServers;
@@ -50,6 +50,6 @@ struct RTCConfiguration {
     Vector<RefPtr<RTCCertificate>> certificates;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

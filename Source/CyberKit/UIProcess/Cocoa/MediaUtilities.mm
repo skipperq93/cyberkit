@@ -26,7 +26,7 @@
 #import "config.h"
 #import "MediaUtilities.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 _WKMediaCaptureStateDeprecated toWKMediaCaptureStateDeprecated(CyberCore::MediaProducerMediaStateFlags state)
 {
@@ -55,4 +55,4 @@ _WKMediaMutedState toWKMediaMutedState(CyberCore::MediaProducerMutedStateFlags s
     return mediaMutedState;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

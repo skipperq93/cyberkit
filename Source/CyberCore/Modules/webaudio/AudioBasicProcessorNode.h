@@ -27,7 +27,7 @@
 #include "AudioNode.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class AudioNodeInput;
@@ -63,4 +63,4 @@ protected:
     std::unique_ptr<AudioProcessor> m_processor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

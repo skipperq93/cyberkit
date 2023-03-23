@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebBackForwardList.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebBackForwardList> {
     using WrapperClass = WKBackForwardList;

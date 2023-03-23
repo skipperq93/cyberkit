@@ -30,7 +30,7 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-namespace WebCore {
+namespace CyberCore {
 namespace ContentExtensions {
 
 template<typename T>
@@ -136,6 +136,6 @@ auto SerializedNFA::actions() const -> const Range<uint64_t>
 }
 
 } // namespace ContentExtensions
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

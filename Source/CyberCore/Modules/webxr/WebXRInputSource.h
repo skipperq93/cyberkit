@@ -44,7 +44,7 @@
 #include "WebXRHand.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(GAMEPAD)
 class Gamepad;
@@ -107,6 +107,6 @@ private:
     bool m_squeezeStarted { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

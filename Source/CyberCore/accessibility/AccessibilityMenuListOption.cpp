@@ -33,7 +33,7 @@
 #include "HTMLOptionElement.h"
 #include "HTMLSelectElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -128,4 +128,4 @@ String AccessibilityMenuListOption::stringValue() const
     return m_element ? m_element->label() : String();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

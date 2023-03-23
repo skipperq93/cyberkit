@@ -45,7 +45,7 @@
 #include <wtf/UUID.h>
 #include "WritingMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;
@@ -162,6 +162,6 @@ private:
     RefPtr<NotificationResources> m_resources;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

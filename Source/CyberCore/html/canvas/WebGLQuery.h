@@ -33,7 +33,7 @@ namespace WTF {
 class AbstractLocker;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLQuery final : public WebGLSharedObject {
 public:
@@ -55,6 +55,6 @@ private:
     GCGLenum m_target { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

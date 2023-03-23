@@ -18,25 +18,25 @@
  */
 
 #include "config.h"
-#include "WebKitInjectedBundleClient.h"
+#include "CyberKitInjectedBundleClient.h"
 
 #include "APIInjectedBundleClient.h"
 #include "APIString.h"
 #include "WebImage.h"
-#include "WebKitPrivate.h"
-#include "WebKitURIRequestPrivate.h"
-#include "WebKitURIResponsePrivate.h"
-#include "WebKitWebContextPrivate.h"
-#include "WebKitWebResourcePrivate.h"
-#include "WebKitWebViewPrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
+#include "CyberKitURIResponsePrivate.h"
+#include "CyberKitWebContextPrivate.h"
+#include "CyberKitWebResourcePrivate.h"
+#include "CyberKitWebViewPrivate.h"
 #include <wtf/glib/GUniquePtr.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 using namespace CyberCore;
 
-class WebKitInjectedBundleClient final : public API::InjectedBundleClient {
+class CyberKitInjectedBundleClient final : public API::InjectedBundleClient {
 public:
-    explicit WebKitInjectedBundleClient(WebKitWebContext* webContext)
+    explicit CyberKitInjectedBundleClient(CyberKitWebContext* webContext)
         : m_webContext(webContext)
     {
     }
@@ -49,10 +49,10 @@ private:
         return API::String::create(String::fromUTF8(dataString.get()));
     }
 
-    WebKitWebContext* m_webContext;
+    CyberKitWebContext* m_webContext;
 };
 
-void attachInjectedBundleClientToContext(WebKitWebContext* webContext)
+void attachInjectedBundleClientToContext(CyberKitWebContext* webContext)
 {
-    webkitWebContextGetProcessPool(webContext).setInjectedBundleClient(makeUnique<WebKitInjectedBundleClient>(webContext));
+    webkitWebContextGetProcessPool(webContext).setInjectedBundleClient(makeUnique<CyberKitInjectedBundleClient>(webContext));
 }

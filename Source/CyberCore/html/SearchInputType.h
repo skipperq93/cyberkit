@@ -34,7 +34,7 @@
 #include "BaseTextInputType.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SearchFieldResultsButtonElement;
 
@@ -70,6 +70,6 @@ private:
     Timer m_searchEventTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INPUT_TYPE(SearchInputType, Type::Search)

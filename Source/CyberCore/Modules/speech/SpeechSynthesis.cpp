@@ -42,7 +42,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SpeechSynthesis);
 
@@ -316,6 +316,6 @@ void SpeechSynthesis::speakingErrorOccurred(PlatformSpeechSynthesisUtterance& ut
         handleSpeakingCompleted(static_cast<SpeechSynthesisUtterance&>(*utterance.client()), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

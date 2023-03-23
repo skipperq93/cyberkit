@@ -45,7 +45,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 // css-display-none combining is special because we combine the string arguments with commas because we know they are css selectors.
 struct PendingDisplayNoneActions {
@@ -398,6 +398,6 @@ std::error_code compileRuleList(ContentExtensionCompilationClient& client, Strin
     return { };
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

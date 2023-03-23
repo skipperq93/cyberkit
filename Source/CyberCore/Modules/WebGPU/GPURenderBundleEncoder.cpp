@@ -31,7 +31,7 @@
 #include "GPURenderBundle.h"
 #include "GPURenderPipeline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String GPURenderBundleEncoder::label() const
 {

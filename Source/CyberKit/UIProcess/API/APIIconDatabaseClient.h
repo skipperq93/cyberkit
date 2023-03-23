@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebIconDatabase;
 }
 
@@ -38,9 +38,9 @@ class IconDatabaseClient {
 public:
     virtual ~IconDatabaseClient() { }
 
-    virtual void didChangeIconForPageURL(WebKit::WebIconDatabase&, const WTF::String&) { };
-    virtual void didRemoveAllIcons(WebKit::WebIconDatabase&) { };
-    virtual void iconDataReadyForPageURL(WebKit::WebIconDatabase&, const WTF::String&) { };
+    virtual void didChangeIconForPageURL(CyberKit::WebIconDatabase&, const WTF::String&) { };
+    virtual void didRemoveAllIcons(CyberKit::WebIconDatabase&) { };
+    virtual void iconDataReadyForPageURL(CyberKit::WebIconDatabase&, const WTF::String&) { };
 };
 
 } // namespace API

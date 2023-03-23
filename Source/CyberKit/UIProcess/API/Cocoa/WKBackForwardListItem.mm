@@ -30,7 +30,7 @@
 #import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKBackForwardListItem {
-    API::ObjectStorage<WebKit::WebBackForwardListItem> _item;
+    API::ObjectStorage<CyberKit::WebBackForwardListItem> _item;
 }
 
 - (void)dealloc
@@ -61,7 +61,7 @@
     return [NSURL _web_URLWithWTFString:_item->originalURL()];
 }
 
-- (WebKit::WebBackForwardListItem&)_item
+- (CyberKit::WebBackForwardListItem&)_item
 {
     return *_item;
 }

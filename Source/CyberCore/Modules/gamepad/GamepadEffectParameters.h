@@ -29,7 +29,7 @@
 
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GamepadEffectParameters {
     double duration = 0.0;
@@ -45,6 +45,6 @@ struct GamepadEffectParameters {
     static constexpr Seconds maximumDuration = 5_s;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

@@ -31,7 +31,7 @@
 #include <CyberScriptCore/PropertySlot.h>
 #include <type_traits>
 
-namespace WebCore {
+namespace CyberCore {
 
 void addValueIterableMethods(JSC::JSGlobalObject&, JSC::JSObject&);
 

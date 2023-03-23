@@ -24,7 +24,7 @@
 #include "TestDelegateToSharedSyntheticAttribute.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestDelegateToSharedSyntheticAttribute : public JSDOMWrapper<TestDelegateToSharedSyntheticAttribute> {
 public:
@@ -90,4 +90,4 @@ template<> struct JSDOMWrapperConverterTraits<TestDelegateToSharedSyntheticAttri
     using ToWrappedReturnType = TestDelegateToSharedSyntheticAttribute*;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ namespace WTF {
 class String;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class NavigatorBase;
 class PermissionStatus;
@@ -65,4 +65,4 @@ private:
     WeakPtr<NavigatorBase> m_navigator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

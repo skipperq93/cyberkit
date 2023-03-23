@@ -44,7 +44,7 @@
 #include <CyberCore/WebAuthenticationConstants.h>
 #include <wtf/MonotonicTime.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 namespace {
@@ -565,6 +565,6 @@ void AuthenticatorManager::dispatchPanelClientCall(Function<void(const API::WebA
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

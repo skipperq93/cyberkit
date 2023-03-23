@@ -27,13 +27,13 @@
 #include "runtime_array.h"
 
 #include "JSDOMBinding.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/ArrayPrototype.h>
 #include <CyberScriptCore/Error.h>
 #include <CyberScriptCore/JSGlobalObjectInlines.h>
 #include <CyberScriptCore/PropertyNameArray.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace JSC {
 

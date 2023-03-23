@@ -39,7 +39,7 @@
 #include "InspectorInstrumentation.h"
 #include "StyleCanvasImage.h"
 #include "RenderElement.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WorkerClient.h"
 #include "WorkerGlobalScope.h"
 #include <CyberScriptCore/JSCInlines.h>
@@ -49,7 +49,7 @@
 
 static std::atomic<size_t> s_activePixelMemory { 0 };
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 // FIXME: It seems strange that the default quality is not the one that is literally named "default".
@@ -370,9 +370,9 @@ void CanvasBase::resetGraphicsContextState() const
     }
 }
 
-WebCoreOpaqueRoot root(CanvasBase* canvas)
+CyberCoreOpaqueRoot root(CanvasBase* canvas)
 {
-    return WebCoreOpaqueRoot { canvas };
+    return CyberCoreOpaqueRoot { canvas };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

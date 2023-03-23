@@ -62,7 +62,7 @@ public:
     bool isLoading() const;
     bool canGoForward() const;
 
-    WebKitWebView* webView() const;
+    CyberKitWebView* webView() const;
 
 public Q_SLOTS:
     void goBack();
@@ -106,10 +106,10 @@ private:
     static void notifyUrlChangedCallback(WPEQtView*);
     static void notifyTitleChangedCallback(WPEQtView*);
     static void notifyLoadProgressCallback(WPEQtView*);
-    static void notifyLoadChangedCallback(WebKitWebView*, WebKitLoadEvent, WPEQtView*);
-    static void notifyLoadFailedCallback(WebKitWebView*, WebKitLoadEvent, const gchar* failingURI, GError*, WPEQtView*);
+    static void notifyLoadChangedCallback(CyberKitWebView*, CyberKitLoadEvent, WPEQtView*);
+    static void notifyLoadFailedCallback(CyberKitWebView*, CyberKitLoadEvent, const gchar* failingURI, GError*, WPEQtView*);
 
-    WebKitWebView* m_webView { nullptr };
+    CyberKitWebView* m_webView { nullptr };
     QUrl m_url;
     QString m_html;
     QUrl m_baseUrl;

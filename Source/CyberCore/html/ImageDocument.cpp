@@ -52,7 +52,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageDocument);
 

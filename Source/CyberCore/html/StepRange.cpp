@@ -26,7 +26,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -181,4 +181,4 @@ bool StepRange::stepMismatch(const Decimal& valueForCheck) const
     return computedAcceptableError < remainder && remainder < (m_step - computedAcceptableError);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

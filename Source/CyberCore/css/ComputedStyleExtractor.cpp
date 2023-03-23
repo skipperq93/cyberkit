@@ -78,7 +78,7 @@
 #include "TranslateTransformOperation.h"
 #include "WebAnimationUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ConvertibleType> Ref<CSSPrimitiveValue> createConvertingToCSSValueID(const ConvertibleType& value)
 {
@@ -4348,4 +4348,4 @@ Ref<CSSValue> ComputedStyleExtractor::getMaskShorthandValue()
     return getFillLayerPropertyShorthandValue(CSSPropertyMask, StylePropertyShorthand(CSSPropertyMask, propertiesBeforeSlashSeparator), StylePropertyShorthand(CSSPropertyMask, propertiesAfterSlashSeparator), CSSPropertyInvalid);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

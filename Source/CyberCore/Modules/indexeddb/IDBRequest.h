@@ -43,7 +43,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMException;
 class Event;
@@ -54,7 +54,7 @@ class IDBObjectStore;
 class IDBResultData;
 class IDBTransaction;
 class ThreadSafeDataBuffer;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 namespace IDBClient {
 class IDBConnectionProxy;
@@ -201,6 +201,6 @@ private:
     RefPtr<Event> m_eventBeingDispatched;
 };
 
-WebCoreOpaqueRoot root(IDBRequest*);
+CyberCoreOpaqueRoot root(IDBRequest*);
 
-} // namespace WebCore
+} // namespace CyberCore

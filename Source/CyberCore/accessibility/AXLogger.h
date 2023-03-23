@@ -28,7 +28,7 @@
 #include "AXObjectCache.h"
 #include "AccessibilityObjectInterface.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AXLoggingOptions : uint8_t {
     MainThread = 1 << 0, // Logs messages on the main thread.
@@ -86,4 +86,4 @@ private:
 void streamAXCoreObject(TextStream&, const AXCoreObject&, const OptionSet<AXStreamOptions>&);
 void streamSubtree(TextStream&, const RefPtr<AXCoreObject>&, const OptionSet<AXStreamOptions>&);
 
-} // namespace WebCore
+} // namespace CyberCore

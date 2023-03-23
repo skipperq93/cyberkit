@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 
@@ -87,6 +87,6 @@ private:
     LayoutPoint m_absoluteLocation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TOUCH_EVENTS)

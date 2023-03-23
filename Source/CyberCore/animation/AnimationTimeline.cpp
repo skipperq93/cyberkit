@@ -33,7 +33,7 @@
 #include "Styleable.h"
 #include "WebAnimationUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AnimationTimeline::AnimationTimeline() = default;
 AnimationTimeline::~AnimationTimeline() = default;
@@ -86,4 +86,4 @@ std::optional<double> AnimationTimeline::bindingsCurrentTime()
     return secondsToWebAnimationsAPITime(*time);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

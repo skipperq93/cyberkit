@@ -41,7 +41,7 @@ namespace webrtc {
 class RtpReceiverInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCRtpReceiverTransformBackend final : public LibWebRTCRtpTransformBackend {
 public:
@@ -59,6 +59,6 @@ private:
     rtc::scoped_refptr<webrtc::RtpReceiverInterface> m_rtcReceiver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(LIBWEBRTC)

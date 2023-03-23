@@ -35,7 +35,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Locker.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MediaStreamAudioDestinationNode);
 
@@ -72,6 +72,6 @@ void MediaStreamAudioDestinationNode::process(size_t numberOfFrames)
     m_source->consumeAudio(*input(0)->bus(), numberOfFrames);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && ENABLE(MEDIA_STREAM)

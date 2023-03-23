@@ -27,14 +27,14 @@
 #include "JSStyleSheet.h"
 
 #include "JSCSSStyleSheet.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSStyleSheet::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, wrapped());
+    addCyberCoreOpaqueRoot(visitor, wrapped());
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSStyleSheet);
@@ -51,4 +51,4 @@ JSC::JSValue toJS(JSC::JSGlobalObject* lexicalGlobalObject, JSDOMGlobalObject* g
     return wrap(lexicalGlobalObject, globalObject, stylesheet);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

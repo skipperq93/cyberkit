@@ -33,7 +33,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace Inspector;
 
@@ -102,4 +102,4 @@ bool InspectorTargetProxy::isProvisional() const
     return !!m_provisionalPage;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

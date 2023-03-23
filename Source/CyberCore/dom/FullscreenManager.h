@@ -34,7 +34,7 @@
 #include <wtf/Deque.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class RenderStyle;

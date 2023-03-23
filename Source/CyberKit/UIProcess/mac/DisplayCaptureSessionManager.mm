@@ -47,7 +47,7 @@
 #import <wtf/cocoa/TypeCastsCocoa.h>
 #import <wtf/text/StringToIntegerConversion.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if HAVE(SCREEN_CAPTURE_KIT)
 
@@ -222,6 +222,6 @@ void DisplayCaptureSessionManager::promptForGetDisplayMedia(UserMediaPermissionR
 #endif
 
 }
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)

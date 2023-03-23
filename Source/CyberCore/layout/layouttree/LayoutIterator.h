@@ -27,7 +27,7 @@
 
 #include "LayoutInitialContainingBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 template <typename T>

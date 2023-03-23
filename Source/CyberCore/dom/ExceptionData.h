@@ -28,7 +28,7 @@
 #include "Exception.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ExceptionData {
     ExceptionCode code;
@@ -41,4 +41,4 @@ struct ExceptionData {
     Exception toException() && { return Exception { code, WTFMove(message) }; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

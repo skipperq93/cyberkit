@@ -32,7 +32,7 @@
 #include "JSDOMBinding.h"
 #include "Node.h"
 
-namespace WebCore { namespace DOMJIT {
+namespace CyberCore { namespace DOMJIT {
 
 using JSC::CCallHelpers;
 using JSC::GPRReg;

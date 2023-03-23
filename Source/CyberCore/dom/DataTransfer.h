@@ -28,7 +28,7 @@
 #include "DragImage.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class DataTransferItemList;
@@ -158,4 +158,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

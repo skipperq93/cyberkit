@@ -28,7 +28,7 @@
 #include "FileSystemStorageConnection.h"
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileSystemHandleCloseScope : public ThreadSafeRefCounted<FileSystemHandleCloseScope, WTF::DestructionThread::MainRunLoop> {
 public:
@@ -67,4 +67,4 @@ private:
     Ref<FileSystemStorageConnection> m_connection;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

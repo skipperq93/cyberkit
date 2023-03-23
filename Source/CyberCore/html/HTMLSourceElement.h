@@ -30,7 +30,7 @@
 #include "MediaQuery.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLSourceElement final : public HTMLElement, public ActiveDOMObject {
     WTF_MAKE_ISO_ALLOCATED(HTMLSourceElement);
@@ -63,4 +63,4 @@ private:
     mutable std::optional<MQ::MediaQueryList> m_cachedParsedMediaAttribute;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

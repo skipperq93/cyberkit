@@ -29,7 +29,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static String programName()
 {
@@ -41,7 +41,7 @@ static String programName()
 #elif PLATFORM(WPE)
     return "wpe"_s;
 #else
-    return "WebKit"_s;
+    return "CyberKit"_s;
 #endif
 }
 

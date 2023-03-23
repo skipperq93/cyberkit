@@ -30,7 +30,7 @@
 #include "DrawingAreaProxyCoordinatedGraphics.h"
 #include "WebProcessPool.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 RefPtr<PlayStationWebView> PlayStationWebView::create(const API::PageConfiguration& configuration)
 {
@@ -152,4 +152,4 @@ void PlayStationWebView::setCursor(const CyberCore::Cursor& cursor)
         m_client->setCursor(*this, cursor);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

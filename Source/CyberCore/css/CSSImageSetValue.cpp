@@ -33,7 +33,7 @@
 #include "StyleImageSet.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CSSImageSetValue> CSSImageSetValue::create(CSSValueListBuilder builder)
 {
@@ -88,4 +88,4 @@ RefPtr<StyleImage> CSSImageSetValue::createStyleImage(Style::BuilderState& state
     return StyleImageSet::create(WTFMove(images));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

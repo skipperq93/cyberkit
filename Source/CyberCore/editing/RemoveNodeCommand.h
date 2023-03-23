@@ -27,7 +27,7 @@
 
 #include "EditCommand.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoveNodeCommand : public SimpleEditCommand {
 public:
@@ -52,4 +52,4 @@ private:
     ShouldAssumeContentIsAlwaysEditable m_shouldAssumeContentIsAlwaysEditable;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

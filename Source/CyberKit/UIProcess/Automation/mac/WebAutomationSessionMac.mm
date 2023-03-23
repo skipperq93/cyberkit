@@ -42,7 +42,7 @@
 #import <objc/runtime.h>
 #import <pal/spi/mac/NSEventSPI.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 #pragma mark Commands for 'PLATFORM(MAC)'
@@ -844,6 +844,6 @@ void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, 
 
 #endif // ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

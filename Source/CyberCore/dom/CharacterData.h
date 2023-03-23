@@ -24,7 +24,7 @@
 
 #include "ContainerNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CharacterData : public Node {
     WTF_MAKE_ISO_ALLOCATED(CharacterData);
@@ -78,8 +78,8 @@ inline unsigned Node::length() const
     return countChildNodes();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CharacterData)
-    static bool isType(const WebCore::Node& node) { return node.isCharacterDataNode(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CharacterData)
+    static bool isType(const CyberCore::Node& node) { return node.isCharacterDataNode(); }
 SPECIALIZE_TYPE_TRAITS_END()

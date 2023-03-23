@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <pal/graphics/WebGPU/WebGPUSamplerBindingType.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GPUSamplerBindingType : uint8_t {
     Filtering,

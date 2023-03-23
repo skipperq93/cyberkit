@@ -41,7 +41,7 @@
 #include "ScriptWrappable.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStream;
 class RTCDTMFSender;
@@ -120,6 +120,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -32,7 +32,7 @@
 #include "SerializedScriptValue.h"
 #include <CyberScriptCore/JSCInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -53,4 +53,4 @@ void JSHistory::visitAdditionalChildren(Visitor& visitor)
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSHistory);
 
-} // namespace WebCore
+} // namespace CyberCore

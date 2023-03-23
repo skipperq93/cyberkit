@@ -33,7 +33,7 @@
 #include "WebProcessCreationParameters.h"
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/RemoteInspector.h>
+#include <CyberScriptCore/RemoteInspector.h>
 #endif
 
 #if USE(GSTREAMER)

@@ -30,7 +30,7 @@
 #include "InspectorWebAgentBase.h"
 #include <CyberScriptCore/InspectorBackendDispatchers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ServiceWorkerGlobalScope;
 
@@ -53,6 +53,6 @@ private:
     RefPtr<Inspector::ServiceWorkerBackendDispatcher> m_backendDispatcher;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

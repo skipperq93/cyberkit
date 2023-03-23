@@ -716,7 +716,7 @@ typedef NS_OPTIONS(NSUInteger, WKDisplayCaptureSurfaces) {
 @property (nonatomic, setter=_setThumbnailView:) _WKThumbnailView *_thumbnailView WK_API_AVAILABLE(macos(10.13.4));
 @property (nonatomic, setter=_setIgnoresAllEvents:) BOOL _ignoresAllEvents WK_API_AVAILABLE(macos(10.13.4));
 
-// Defaults to YES; if set to NO, WebKit will draw the grey wash and highlights itself.
+// Defaults to YES; if set to NO, CyberKit will draw the grey wash and highlights itself.
 @property (nonatomic, setter=_setUsePlatformFindUI:) BOOL _usePlatformFindUI WK_API_AVAILABLE(macos(10.15));
 
 - (void)_setShouldSuppressFirstResponderChanges:(BOOL)shouldSuppress;

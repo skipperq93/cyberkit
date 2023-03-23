@@ -36,7 +36,7 @@ namespace WebAuthn {
 enum class Scope;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbortSignal;
 class AuthenticatorCoordinatorClient;
@@ -74,6 +74,6 @@ private:
     std::unique_ptr<AuthenticatorCoordinatorClient> m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUTHN)

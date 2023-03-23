@@ -42,7 +42,7 @@
 #include "StyleBuilder.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSVariableReferenceValue::CSSVariableReferenceValue(Ref<CSSVariableData>&& data, const CSSParserContext& context)
     : CSSValue(VariableReferenceClass)
@@ -173,4 +173,4 @@ RefPtr<CSSVariableData> CSSVariableReferenceValue::resolveVariableReferences(Sty
     return CSSVariableData::create(*resolvedTokens);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

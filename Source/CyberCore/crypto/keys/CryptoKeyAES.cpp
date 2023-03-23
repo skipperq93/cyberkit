@@ -36,7 +36,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool lengthIsValid(size_t length)
 {
@@ -129,6 +129,6 @@ auto CryptoKeyAES::algorithm() const -> KeyAlgorithm
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CRYPTO)

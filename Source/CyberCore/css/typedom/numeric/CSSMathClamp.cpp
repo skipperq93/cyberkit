@@ -32,7 +32,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSMathClamp);
 
@@ -116,4 +116,4 @@ RefPtr<CSSCalcExpressionNode> CSSMathClamp::toCalcExpressionNode() const
     return CSSCalcOperationNode::createMinOrMaxOrClamp(CalcOperator::Clamp, WTFMove(values), CalculationCategory::Length);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

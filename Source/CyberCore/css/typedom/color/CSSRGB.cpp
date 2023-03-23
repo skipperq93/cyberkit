@@ -30,7 +30,7 @@
 #include "CSSUnits.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(CSSRGB);
 
@@ -143,4 +143,4 @@ ExceptionOr<RectifiedCSSColorRGBComp> CSSRGB::rectifyCSSColorRGBComp(CSSColorRGB
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

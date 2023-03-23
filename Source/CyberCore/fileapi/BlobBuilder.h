@@ -38,7 +38,7 @@ class ArrayBuffer;
 class ArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 
@@ -59,4 +59,4 @@ private:
     Vector<uint8_t> m_appendableData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

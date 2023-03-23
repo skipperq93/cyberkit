@@ -31,7 +31,7 @@
 #include "CommonCryptoUtilities.h"
 #include "CryptoKeyEC.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<Vector<uint8_t>> CryptoAlgorithmECDH::platformDeriveBits(const CryptoKeyEC& baseKey, const CryptoKeyEC& publicKey)
 {

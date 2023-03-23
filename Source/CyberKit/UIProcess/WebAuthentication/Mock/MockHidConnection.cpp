@@ -38,7 +38,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/text/Base64.h>
 
-namespace WebKit {
+namespace CyberKit {
 using Mock = CyberCore::MockWebAuthenticationConfiguration;
 using namespace CyberCore;
 using namespace cbor;
@@ -301,6 +301,6 @@ void MockHidConnection::continueFeedReports()
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

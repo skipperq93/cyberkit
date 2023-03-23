@@ -19,37 +19,37 @@
 
 #pragma once
 
-#include "WebKitScriptDialog.h"
-#include "WebKitWebViewDialog.h"
+#include "CyberKitScriptDialog.h"
+#include "CyberKitWebViewDialog.h"
 #include <wtf/text/WTFString.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_SCRIPT_DIALOG_IMPL            (webkit_script_dialog_impl_get_type())
-#define WEBKIT_SCRIPT_DIALOG_IMPL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_SCRIPT_DIALOG_IMPL, WebKitScriptDialogImpl))
+#define WEBKIT_SCRIPT_DIALOG_IMPL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_SCRIPT_DIALOG_IMPL, CyberKitScriptDialogImpl))
 #define WEBKIT_IS_SCRIPT_DIALOG_IMPL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_SCRIPT_DIALOG_IMPL))
-#define WEBKIT_SCRIPT_DIALOG_IMPL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_SCRIPT_DIALOG_IMPL, WebKitScriptDialogImplClass))
+#define WEBKIT_SCRIPT_DIALOG_IMPL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_SCRIPT_DIALOG_IMPL, CyberKitScriptDialogImplClass))
 #define WEBKIT_IS_SCRIPT_DIALOG_IMPL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_SCRIPT_DIALOG_IMPL))
-#define WEBKIT_SCRIPT_DIALOG_IMPL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_SCRIPT_DIALOG_IMPL, WebKitScriptDialogImplClass))
+#define WEBKIT_SCRIPT_DIALOG_IMPL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_SCRIPT_DIALOG_IMPL, CyberKitScriptDialogImplClass))
 
-typedef struct _WebKitScriptDialogImpl        WebKitScriptDialogImpl;
-typedef struct _WebKitScriptDialogImplClass   WebKitScriptDialogImplClass;
-typedef struct _WebKitScriptDialogImplPrivate WebKitScriptDialogImplPrivate;
+typedef struct _CyberKitScriptDialogImpl        CyberKitScriptDialogImpl;
+typedef struct _CyberKitScriptDialogImplClass   CyberKitScriptDialogImplClass;
+typedef struct _CyberKitScriptDialogImplPrivate CyberKitScriptDialogImplPrivate;
 
-struct _WebKitScriptDialogImpl {
-    WebKitWebViewDialog parent;
+struct _CyberKitScriptDialogImpl {
+    CyberKitWebViewDialog parent;
 
-    WebKitScriptDialogImplPrivate* priv;
+    CyberKitScriptDialogImplPrivate* priv;
 };
 
-struct _WebKitScriptDialogImplClass {
-    WebKitWebViewDialogClass parentClass;
+struct _CyberKitScriptDialogImplClass {
+    CyberKitWebViewDialogClass parentClass;
 };
 
 GType webkit_script_dialog_impl_get_type();
-GtkWidget* webkitScriptDialogImplNew(WebKitScriptDialog*, const char* title, GtkRequisition* maxSize);
-void webkitScriptDialogImplCancel(WebKitScriptDialogImpl*);
-void webkitScriptDialogImplConfirm(WebKitScriptDialogImpl*);
-void webkitScriptDialogImplSetEntryText(WebKitScriptDialogImpl*, const String&);
+GtkWidget* webkitScriptDialogImplNew(CyberKitScriptDialog*, const char* title, GtkRequisition* maxSize);
+void webkitScriptDialogImplCancel(CyberKitScriptDialogImpl*);
+void webkitScriptDialogImplConfirm(CyberKitScriptDialogImpl*);
+void webkitScriptDialogImplSetEntryText(CyberKitScriptDialogImpl*, const String&);
 
 G_END_DECLS

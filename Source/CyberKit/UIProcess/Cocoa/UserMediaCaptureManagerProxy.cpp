@@ -49,7 +49,7 @@
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, &m_connectionProxy->connection())
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 class UserMediaCaptureManagerProxy::SourceProxy

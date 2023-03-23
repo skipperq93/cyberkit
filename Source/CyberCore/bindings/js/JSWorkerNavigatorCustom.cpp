@@ -26,17 +26,17 @@
 #include "config.h"
 #include "JSWorkerNavigator.h"
 
-#include "WebCoreOpaqueRoot.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename Visitor>
 void JSWorkerNavigator::visitAdditionalChildren(Visitor& visitor)
 {
-    addWebCoreOpaqueRoot(visitor, static_cast<NavigatorBase&>(wrapped()));
+    addCyberCoreOpaqueRoot(visitor, static_cast<NavigatorBase&>(wrapped()));
 }
 
 DEFINE_VISIT_ADDITIONAL_CHILDREN(JSWorkerNavigator);
 
-} // namespace WebCore
+} // namespace CyberCore

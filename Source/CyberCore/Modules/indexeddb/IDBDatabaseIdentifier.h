@@ -29,7 +29,7 @@
 #include "SecurityOriginData.h"
 #include <wtf/ArgumentCoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin;
 
@@ -105,11 +105,11 @@ struct IDBDatabaseIdentifierHashTraits : SimpleClassHashTraits<IDBDatabaseIdenti
     static bool isEmptyValue(const IDBDatabaseIdentifier& info) { return info.isEmpty(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct HashTraits<WebCore::IDBDatabaseIdentifier> : WebCore::IDBDatabaseIdentifierHashTraits { };
-template<> struct DefaultHash<WebCore::IDBDatabaseIdentifier> : WebCore::IDBDatabaseIdentifierHash { };
+template<> struct HashTraits<CyberCore::IDBDatabaseIdentifier> : CyberCore::IDBDatabaseIdentifierHashTraits { };
+template<> struct DefaultHash<CyberCore::IDBDatabaseIdentifier> : CyberCore::IDBDatabaseIdentifierHash { };
 
 } // namespace WTF

@@ -32,7 +32,7 @@
 #include "Notification.h"
 #include "NotificationEventType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NotificationEventInit : ExtendableEventInit {
     RefPtr<Notification> notification;
@@ -61,6 +61,6 @@ private:
     String m_action;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATION_EVENT)

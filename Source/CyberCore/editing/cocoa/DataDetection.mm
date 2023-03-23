@@ -69,7 +69,7 @@ template<> struct WTF::CFTypeTrait<DDResultRef> {
 };
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -731,6 +731,6 @@ Ref<HTMLDivElement> DataDetection::createElementForImageOverlay(Document& docume
 
 #endif // ENABLE(IMAGE_ANALYSIS)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

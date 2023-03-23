@@ -31,7 +31,7 @@
 #include "SelectorChecker.h"
 #include <CyberScriptCore/VM.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSelector;
 class Element;
@@ -98,6 +98,6 @@ inline unsigned querySelectorSelectorCheckerWithCheckingContext(CompiledSelector
 }
 
 } // namespace SelectorCompiler
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CSS_SELECTOR_JIT)

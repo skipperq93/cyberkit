@@ -33,7 +33,7 @@
 
 #import <CyberCore/ScrollingStateOverflowScrollingNode.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 Ref<ScrollingTreeOverflowScrollingNodeIOS> ScrollingTreeOverflowScrollingNodeIOS::create(CyberCore::ScrollingTree& scrollingTree, CyberCore::ScrollingNodeID nodeID)
@@ -83,7 +83,7 @@ void ScrollingTreeOverflowScrollingNodeIOS::repositionScrollingLayers()
     delegate().repositionScrollingLayers();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ASYNC_SCROLLING)
 #endif // PLATFORM(IOS_FAMILY)

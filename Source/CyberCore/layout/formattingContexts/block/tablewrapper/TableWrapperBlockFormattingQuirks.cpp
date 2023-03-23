@@ -30,7 +30,7 @@
 #include "LayoutState.h"
 #include "TableWrapperBlockFormattingContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 TableWrapperQuirks::TableWrapperQuirks(const TableWrapperBlockFormattingContext& formattingContext)

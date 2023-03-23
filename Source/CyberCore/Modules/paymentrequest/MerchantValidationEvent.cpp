@@ -32,7 +32,7 @@
 #include "PaymentRequest.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(MerchantValidationEvent);
 
@@ -96,6 +96,6 @@ ExceptionOr<void> MerchantValidationEvent::complete(Ref<DOMPromise>&& merchantSe
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PAYMENT_REQUEST)

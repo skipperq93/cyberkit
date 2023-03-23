@@ -38,7 +38,7 @@
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace cbor;
 using namespace fido;
 using namespace CyberCore;
@@ -329,6 +329,6 @@ void VirtualHidConnection::parseRequest()
 }
 
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

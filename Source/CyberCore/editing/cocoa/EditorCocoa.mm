@@ -66,7 +66,7 @@
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/cocoa/NSURLExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<SharedBuffer> archivedDataForAttributedString(NSAttributedString *attributedString)
 {

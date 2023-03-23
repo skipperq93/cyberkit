@@ -35,7 +35,7 @@
 #include <memory>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class QualifiedName;
 
@@ -81,4 +81,4 @@ private:
     MutationRecordDeliveryOptions m_oldValueFlag;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

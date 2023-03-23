@@ -28,7 +28,7 @@
 #include "InlineItem.h"
 #include "LayoutInlineTextBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Layout {
 
 class InlineItemsBuilder;

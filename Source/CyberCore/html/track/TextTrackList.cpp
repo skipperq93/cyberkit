@@ -34,7 +34,7 @@
 #include "LoadableTextTrack.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(TextTrackList);
 
@@ -258,5 +258,5 @@ const char* TextTrackList::activeDOMObjectName() const
     return "TextTrackList";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

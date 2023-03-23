@@ -32,7 +32,7 @@
 
 OBJC_CLASS NFReaderSession;
 
-namespace WebKit {
+namespace CyberKit {
 
 class NfcConnection;
 
@@ -67,6 +67,6 @@ private:
     RunLoop::Timer m_restartTimer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

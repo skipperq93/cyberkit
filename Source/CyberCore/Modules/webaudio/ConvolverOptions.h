@@ -29,13 +29,13 @@
 #include "AudioBuffer.h"
 #include "AudioNodeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ConvolverOptions : AudioNodeOptions {
     RefPtr<AudioBuffer> buffer;
     bool disableNormalization { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

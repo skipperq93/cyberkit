@@ -32,7 +32,7 @@
 #include "WorkerLoaderProxy.h"
 #include "WorkletGlobalScopeProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioWorklet;
 class AudioWorkletThread;
@@ -70,10 +70,10 @@ private:
     Ref<AudioWorkletThread> m_workletThread;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioWorkletMessagingProxy)
-static bool isType(const WebCore::WorkletGlobalScopeProxy& proxy) { return proxy.isAudioWorkletMessagingProxy(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioWorkletMessagingProxy)
+static bool isType(const CyberCore::WorkletGlobalScopeProxy& proxy) { return proxy.isAudioWorkletMessagingProxy(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEB_AUDIO)

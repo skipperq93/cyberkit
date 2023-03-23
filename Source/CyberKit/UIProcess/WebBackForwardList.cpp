@@ -42,7 +42,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace CyberCore;
 
 static const unsigned DefaultCapacity = 100;
@@ -565,4 +565,4 @@ const char* WebBackForwardList::loggingString()
 
 #endif // !LOG_DISABLED
 
-} // namespace WebKit
+} // namespace CyberKit

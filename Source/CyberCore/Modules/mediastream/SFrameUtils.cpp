@@ -30,7 +30,7 @@
 
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isSliceNALU(uint8_t data)
 {
@@ -204,6 +204,6 @@ SFrameCompatibilityPrefixBuffer computeVP8PrefixBuffer(const uint8_t* frame, siz
     return { prefix.data(), prefix.size(), WTFMove(prefix) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

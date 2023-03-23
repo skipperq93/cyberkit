@@ -216,7 +216,7 @@ const char kAuthDataKey[] = "authData";
 // https://w3c.github.io/webauthn/#credentialType
 const char kPublicKey[] = "public-key";
 
-const char* publicKeyCredentialTypeToString(WebCore::PublicKeyCredentialType);
+const char* publicKeyCredentialTypeToString(CyberCore::PublicKeyCredentialType);
 
 // FIXME: Add url to the official spec once it's standardized.
 constexpr auto kCtap2Version = "FIDO_2_0"_s;

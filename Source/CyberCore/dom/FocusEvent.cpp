@@ -29,7 +29,7 @@
 #include "Node.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FocusEvent);
 
@@ -55,4 +55,4 @@ FocusEvent::FocusEvent(const AtomString& type, const Init& initializer)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

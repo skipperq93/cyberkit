@@ -453,7 +453,7 @@ JSC_DEFINE_HOST_FUNCTION(moduleLoaderFetch, (JSGlobalObject* globalObject, CallF
     // Hook point, Loader.fetch
     // https://whatwg.github.io/loader/#browser-fetch
     // Take the key and fetch the resource actually.
-    // For example, JavaScriptCore shell can provide the hook fetching the resource
+    // For example, CyberScriptCore shell can provide the hook fetching the resource
     // from the local file system.
     JSModuleLoader* loader = jsDynamicCast<JSModuleLoader*>(callFrame->thisValue());
     if (!loader)

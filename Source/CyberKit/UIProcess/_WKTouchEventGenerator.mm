@@ -90,7 +90,7 @@ static void delayBetweenMove(int eventIndex, double elapsed)
     }   
 }
 
-// NOTE: this event synthesizer is derived from WebKitTestRunner code.
+// NOTE: this event synthesizer is derived from CyberKitTestRunner code.
 // Compared to that version, this lacks support for stylus event simulation,
 // event stream, and only single touches are exposed via the touch/lift/move method calls.
 @interface _WKTouchEventGenerator ()

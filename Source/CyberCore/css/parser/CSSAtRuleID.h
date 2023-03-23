@@ -31,7 +31,7 @@
 
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CSSAtRuleID {
     CSSAtRuleInvalid = 0,
@@ -65,4 +65,4 @@ enum CSSAtRuleID {
 
 CSSAtRuleID cssAtRuleID(StringView name);
 
-} // namespace WebCore
+} // namespace CyberCore

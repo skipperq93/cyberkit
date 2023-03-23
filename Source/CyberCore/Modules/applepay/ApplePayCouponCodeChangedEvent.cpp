@@ -30,7 +30,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ApplePayCouponCodeChangedEvent);
 
@@ -47,6 +47,6 @@ EventInterface ApplePayCouponCodeChangedEvent::eventInterface() const
     return ApplePayCouponCodeChangedEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY_COUPON_CODE)

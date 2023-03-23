@@ -49,7 +49,7 @@ class GraphicsLayer;
 class HTMLVideoElement;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -127,6 +127,6 @@ private:
     bool m_closing { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(FULLSCREEN_API)

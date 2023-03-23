@@ -37,7 +37,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MutationObserverInterestGroup;
 
@@ -98,4 +98,4 @@ private:
     RefPtr<ChildListMutationAccumulator> m_accumulator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

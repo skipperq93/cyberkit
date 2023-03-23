@@ -33,7 +33,7 @@
 #include "InstrumentingAgents.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -51,4 +51,4 @@ FOR_EACH_INSPECTOR_AGENT(RESET_MEMBER_VARIABLE_FOR_INSPECTOR_AGENT)
 #undef RESET_MEMBER_VARIABLE_FOR_INSPECTOR_AGENT
 }
 
-} // namespace WebCore
+} // namespace CyberCore

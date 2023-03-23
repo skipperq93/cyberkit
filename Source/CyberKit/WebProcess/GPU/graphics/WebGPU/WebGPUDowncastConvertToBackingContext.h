@@ -29,7 +29,7 @@
 
 #include "WebGPUConvertToBackingContext.h"
 
-namespace WebKit::WebGPU {
+namespace CyberKit::WebGPU {
 
 class DowncastConvertToBackingContext final : public ConvertToBackingContext {
     WTF_MAKE_FAST_ALLOCATED;
@@ -71,6 +71,6 @@ private:
     DowncastConvertToBackingContext() = default;
 };
 
-} // namespace WebKit::WebGPU
+} // namespace CyberKit::WebGPU
 
 #endif // ENABLE(GPU_PROCESS)

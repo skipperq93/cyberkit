@@ -33,7 +33,7 @@
 #include "WebsiteDataStore.h"
 #include "WebsitePoliciesData.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebFramePolicyListenerProxy::WebFramePolicyListenerProxy(Reply&& reply, ShouldExpectSafeBrowsingResult expectSafeBrowsingResult, ShouldExpectAppBoundDomainResult expectAppBoundDomainResult, ShouldWaitForInitialLookalikeCharacterStrings shouldWaitForInitialLookalikeCharacterStrings)
     : m_reply(WTFMove(reply))
@@ -105,4 +105,4 @@ void WebFramePolicyListenerProxy::ignore()
         m_reply(CyberCore::PolicyAction::Ignore, nullptr, ProcessSwapRequestedByClient::No, { }, { });
 }
 
-} // namespace WebKit
+} // namespace CyberKit

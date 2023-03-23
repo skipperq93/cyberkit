@@ -55,7 +55,7 @@
 #include <wtf/WeakPtr.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/JSGlobalObjectAdditions.h>
+#include <CyberKitAdditions/JSGlobalObjectAdditions.h>
 #else
 #define JS_GLOBAL_OBJECT_ADDITIONS_1
 #define JS_GLOBAL_OBJECT_ADDITIONS_2

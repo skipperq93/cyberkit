@@ -25,7 +25,7 @@
 #include "TestCallbackFunctionRethrow.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSTestCallbackFunctionRethrow final : public TestCallbackFunctionRethrow {
 public:
@@ -51,4 +51,4 @@ private:
 JSC::JSValue toJS(TestCallbackFunctionRethrow&);
 inline JSC::JSValue toJS(TestCallbackFunctionRethrow* impl) { return impl ? toJS(*impl) : JSC::jsNull(); }
 
-} // namespace WebCore
+} // namespace CyberCore

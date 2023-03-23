@@ -35,7 +35,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/WeakHashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnimationEffect;
 class DeclarativeAnimation;
@@ -111,4 +111,4 @@ private:
     HashMap<DeclarativeAnimation*, UniqueRef<TrackedDeclarativeAnimationData>> m_trackedDeclarativeAnimationData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnimationTimeline : public RefCounted<AnimationTimeline>, public CanMakeWeakPtr<AnimationTimeline> {
 public:
@@ -63,9 +63,9 @@ private:
     Markable<Seconds, Seconds::MarkableTraits> m_currentTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_ANIMATION_TIMELINE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-static bool isType(const WebCore::AnimationTimeline& value) { return value.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+static bool isType(const CyberCore::AnimationTimeline& value) { return value.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

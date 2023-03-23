@@ -35,7 +35,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleImageValue;
 class CachedImage;
@@ -121,9 +121,9 @@ private:
     CanvasBase& m_canvas;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CANVASRENDERINGCONTEXT(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::CanvasRenderingContext& context) { return context.predicate; } \
+    static bool isType(const CyberCore::CanvasRenderingContext& context) { return context.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

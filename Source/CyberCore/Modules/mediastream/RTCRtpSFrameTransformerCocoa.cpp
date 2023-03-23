@@ -31,7 +31,7 @@
 #include "CryptoUtilitiesCocoa.h"
 #include <CommonCrypto/CommonCrypto.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Vector<uint8_t>> RTCRtpSFrameTransformer::computeSaltKey(const Vector<uint8_t>& rawKey)
 {
@@ -113,6 +113,6 @@ void RTCRtpSFrameTransformer::updateAuthenticationSize()
         m_authenticationSize = CC_SHA256_DIGEST_LENGTH;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

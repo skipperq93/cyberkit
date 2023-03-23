@@ -34,7 +34,7 @@
 @class WKWebView;
 @protocol _WKIconLoadingDelegate;
 
-namespace WebKit {
+namespace CyberKit {
 
 class IconLoadingDelegate {
     WTF_MAKE_FAST_ALLOCATED;
@@ -68,4 +68,4 @@ private:
     } m_delegateMethods;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

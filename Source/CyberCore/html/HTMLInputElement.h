@@ -27,7 +27,7 @@
 #include "HTMLTextFormControlElement.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Decimal;
 class DragData;

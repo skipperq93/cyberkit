@@ -27,7 +27,7 @@
 
 #include "WebGLExtension.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLShader;
 
@@ -44,4 +44,4 @@ public:
     String getTranslatedShaderSource(WebGLShader&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

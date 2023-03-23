@@ -24,7 +24,7 @@
 
 #include "HTMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLLIElement final : public HTMLElement {
     WTF_MAKE_ISO_ALLOCATED(HTMLLIElement);
@@ -44,4 +44,4 @@ private:
     void parseValue(const AtomString&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

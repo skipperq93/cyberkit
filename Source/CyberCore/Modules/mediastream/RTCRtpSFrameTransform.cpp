@@ -47,7 +47,7 @@
 #include "WritableStream.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RTCRtpSFrameTransform);
 
@@ -287,6 +287,6 @@ bool RTCRtpSFrameTransform::virtualHasPendingActivity() const
     return (m_isAttached || m_hasWritable) && hasEventListeners();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

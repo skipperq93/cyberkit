@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DOMGCOutputConstraint.h"
 
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include <CyberScriptCore/BlockDirectoryInlines.h>
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/MarkedBlockInlines.h>
@@ -34,7 +34,7 @@
 #include <CyberScriptCore/SubspaceInlines.h>
 #include <CyberScriptCore/VM.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -76,5 +76,5 @@ void DOMGCOutputConstraint::executeImplImpl(Visitor& visitor)
 void DOMGCOutputConstraint::executeImpl(AbstractSlotVisitor& visitor) { executeImplImpl(visitor); }
 void DOMGCOutputConstraint::executeImpl(SlotVisitor& visitor) { executeImplImpl(visitor); }
 
-} // namespace WebCore
+} // namespace CyberCore
 

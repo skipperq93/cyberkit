@@ -32,7 +32,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include <CyberScriptCore/JSBigInt.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 JSValue JSRTCRtpSFrameTransform::setEncryptionKey(JSGlobalObject& lexicalGlobalObject, CallFrame& callFrame, Ref<DeferredPromise>&& promise)

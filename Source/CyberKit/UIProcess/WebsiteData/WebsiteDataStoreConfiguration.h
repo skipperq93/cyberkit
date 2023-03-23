@@ -31,7 +31,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class UnifiedOriginStorageLevel : uint8_t;
 

@@ -32,7 +32,7 @@
 
 #include "HTMLParserIdioms.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CSSTokenizerInputStream::CSSTokenizerInputStream(const String& input)
     : m_offset(0)
@@ -70,4 +70,4 @@ double CSSTokenizerInputStream::getDouble(unsigned start, unsigned end) const
     return isResultOK ? result : 0.0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

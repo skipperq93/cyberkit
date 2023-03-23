@@ -38,7 +38,7 @@
 #include <wtf/RunLoop.h>
 
 
-namespace WebKit {
+namespace CyberKit {
 using namespace fido;
 
 FidoService::FidoService(Observer& observer)
@@ -78,6 +78,6 @@ void FidoService::continueAfterGetInfo(WeakPtr<CtapDriver>&& weakDriver, Vector<
     observer()->authenticatorAdded(U2fAuthenticator::create(WTFMove(driver)));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

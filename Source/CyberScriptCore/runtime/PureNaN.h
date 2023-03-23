@@ -30,7 +30,7 @@
 
 namespace JSC {
 
-// NaN (not-a-number) double values are central to how JavaScriptCore encodes JavaScript
+// NaN (not-a-number) double values are central to how CyberScriptCore encodes JavaScript
 // values (JSValues).  All values, including integers and non-numeric values, are always
 // encoded using the IEEE 754 binary double format.  Non-double values are encoded using
 // a NaN with the sign bit set.  The 51-bit payload is then used for encoding the actual

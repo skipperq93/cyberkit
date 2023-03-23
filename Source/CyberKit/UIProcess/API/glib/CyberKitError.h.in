@@ -20,10 +20,10 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitError_h
-#define WebKitError_h
+#ifndef CyberKitError_h
+#define CyberKitError_h
 
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
@@ -46,7 +46,7 @@ G_BEGIN_DECLS
 #endif
 
 /**
- * WebKitNetworkError:
+ * CyberKitNetworkError:
  * @WEBKIT_NETWORK_ERROR_FAILED: Generic load failure
  * @WEBKIT_NETWORK_ERROR_TRANSPORT: Load failure due to transport error
  * @WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL: Load failure due to unknown protocol
@@ -61,10 +61,10 @@ typedef enum {
     WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL = 301,
     WEBKIT_NETWORK_ERROR_CANCELLED = 302,
     WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST = 303
-} WebKitNetworkError;
+} CyberKitNetworkError;
 
 /**
- * WebKitPolicyError:
+ * CyberKitPolicyError:
  * @WEBKIT_POLICY_ERROR_FAILED: Generic load failure due to policy error
  * @WEBKIT_POLICY_ERROR_CANNOT_SHOW_MIME_TYPE: Load failure due to unsupported mime type
  * @WEBKIT_POLICY_ERROR_CANNOT_SHOW_URI: Load failure due to URI that can not be shown
@@ -79,11 +79,11 @@ typedef enum {
     WEBKIT_POLICY_ERROR_CANNOT_SHOW_URI = 101,
     WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE = 102,
     WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT = 103
-} WebKitPolicyError;
+} CyberKitPolicyError;
 
 #if !ENABLE(2022_GLIB_API)
 /**
- * WebKitPluginError:
+ * CyberKitPluginError:
  * @WEBKIT_PLUGIN_ERROR_FAILED: Generic plugin load failure. Deprecated 2.32
  * @WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN: Load failure due to missing plugin. Deprecated 2.32
  * @WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN: Load failure due to inability to load plugin. Deprecated 2.32
@@ -100,11 +100,11 @@ typedef enum {
     WEBKIT_PLUGIN_ERROR_JAVA_UNAVAILABLE = 202,
     WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED = 203,
     WEBKIT_PLUGIN_ERROR_WILL_HANDLE_LOAD = 204,
-} WebKitPluginError;
+} CyberKitPluginError;
 #endif
 
 /**
- * WebKitDownloadError:
+ * CyberKitDownloadError:
  * @WEBKIT_DOWNLOAD_ERROR_NETWORK: Download failure due to network error
  * @WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER: Download was cancelled by user
  * @WEBKIT_DOWNLOAD_ERROR_DESTINATION: Download failure due to destination error
@@ -115,11 +115,11 @@ typedef enum {
     WEBKIT_DOWNLOAD_ERROR_NETWORK = 499,
     WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER = 400,
     WEBKIT_DOWNLOAD_ERROR_DESTINATION = 401
-} WebKitDownloadError;
+} CyberKitDownloadError;
 
 #if PLATFORM(GTK)
 /**
- * WebKitPrintError:
+ * CyberKitPrintError:
  * @WEBKIT_PRINT_ERROR_GENERAL: Unspecified error during a print operation
  * @WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND: Selected printer cannot be found
  * @WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE: Invalid page range
@@ -130,11 +130,11 @@ typedef enum {
     WEBKIT_PRINT_ERROR_GENERAL = 599,
     WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND = 500,
     WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE = 501
-} WebKitPrintError;
+} CyberKitPrintError;
 #endif
 
 /**
- * WebKitJavascriptError:
+ * CyberKitJavascriptError:
  * @WEBKIT_JAVASCRIPT_ERROR_SCRIPT_FAILED: An exception was raised in JavaScript execution
  * @WEBKIT_JAVASCRIPT_ERROR_INVALID_PARAMETER: An unsupported parameter has been used to call and async function from API. Since 2.40
  * @WEBKIT_JAVASCRIPT_ERROR_INVALID_RESULT: The result of JavaScript execution could not be returned. Since 2.40
@@ -145,20 +145,20 @@ typedef enum {
     WEBKIT_JAVASCRIPT_ERROR_SCRIPT_FAILED = 699,
     WEBKIT_JAVASCRIPT_ERROR_INVALID_PARAMETER = 600,
     WEBKIT_JAVASCRIPT_ERROR_INVALID_RESULT = 601,
-} WebKitJavascriptError;
+} CyberKitJavascriptError;
 
 /**
- * WebKitSnapshotError:
+ * CyberKitSnapshotError:
  * @WEBKIT_SNAPSHOT_ERROR_FAILED_TO_CREATE: An error occurred when creating a webpage snapshot.
  *
- * Enum values used to denote errors happening when creating snapshots of #WebKitWebView
+ * Enum values used to denote errors happening when creating snapshots of #CyberKitWebView
  */
 typedef enum {
     WEBKIT_SNAPSHOT_ERROR_FAILED_TO_CREATE = 799
-} WebKitSnapshotError;
+} CyberKitSnapshotError;
 
 /**
- * WebKitUserContentFilterError:
+ * CyberKitUserContentFilterError:
  * @WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE: The JSON source for a content filter is invalid.
  * @WEBKIT_USER_CONTENT_FILTER_ERROR_NOT_FOUND: The requested content filter could not be found.
  *
@@ -169,11 +169,11 @@ typedef enum {
 typedef enum {
     WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE,
     WEBKIT_USER_CONTENT_FILTER_ERROR_NOT_FOUND,
-} WebKitUserContentFilterError;
+} CyberKitUserContentFilterError;
 
 #if ENABLE(2022_GLIB_API)
 /**
- * WebKitMediaError:
+ * CyberKitMediaError:
  * @WEBKIT_MEDIA_ERROR_WILL_HANDLE_LOAD: Preliminary load failure for media content types. A new load will be started to perform the media load. Since: 2.40
  *
  * Enum values used to denote the various media errors.
@@ -182,7 +182,7 @@ typedef enum {
  */
 typedef enum {
     WEBKIT_MEDIA_ERROR_WILL_HANDLE_LOAD = 204
-} WebKitMediaError;
+} CyberKitMediaError;
 #endif
 
 WEBKIT_API GQuark

@@ -36,7 +36,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(HTMLFrameOwnerElement);
 
@@ -159,4 +159,4 @@ bool SubframeLoadingDisabler::canLoadFrame(HTMLFrameOwnerElement& owner)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

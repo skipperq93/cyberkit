@@ -37,7 +37,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class BufferSource;
 }
 
@@ -131,7 +131,7 @@ public:
     explicit CBORValue(const BinaryValue&);
     explicit CBORValue(BinaryValue&&);
 
-    explicit CBORValue(const WebCore::BufferSource&);
+    explicit CBORValue(const CyberCore::BufferSource&);
 
     explicit CBORValue(const char*);
     explicit CBORValue(ASCIILiteral);

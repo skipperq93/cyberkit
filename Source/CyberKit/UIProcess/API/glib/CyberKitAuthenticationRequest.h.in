@@ -19,12 +19,12 @@
 
 @API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitAuthenticationRequest_h
-#define WebKitAuthenticationRequest_h
+#ifndef CyberKitAuthenticationRequest_h
+#define CyberKitAuthenticationRequest_h
 
-#include <@API_INCLUDE_PREFIX@/WebKitCredential.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitSecurityOrigin.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitCredential.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSecurityOrigin.h>
 
 #if PLATFORM(GTK)
 #include <gtk/gtk.h>
@@ -34,13 +34,13 @@ G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_AUTHENTICATION_REQUEST            (webkit_authentication_request_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_AUTHENTICATION_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUTHENTICATION_REQUEST, WebKitAuthenticationRequest))
-#define WEBKIT_AUTHENTICATION_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_AUTHENTICATION_REQUEST, WebKitAuthenticationRequestClass))
+#define WEBKIT_AUTHENTICATION_REQUEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUTHENTICATION_REQUEST, CyberKitAuthenticationRequest))
+#define WEBKIT_AUTHENTICATION_REQUEST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_AUTHENTICATION_REQUEST, CyberKitAuthenticationRequestClass))
 #define WEBKIT_IS_AUTHENTICATION_REQUEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_AUTHENTICATION_REQUEST))
 #define WEBKIT_IS_AUTHENTICATION_REQUEST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_AUTHENTICATION_REQUEST))
-#define WEBKIT_AUTHENTICATION_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_AUTHENTICATION_REQUEST, WebKitAuthenticationRequestClass))
+#define WEBKIT_AUTHENTICATION_REQUEST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_AUTHENTICATION_REQUEST, CyberKitAuthenticationRequestClass))
 
-struct _WebKitAuthenticationRequestClass {
+struct _CyberKitAuthenticationRequestClass {
     GObjectClass parent_class;
 
     /*< private >*/
@@ -51,11 +51,11 @@ struct _WebKitAuthenticationRequestClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitAuthenticationRequest, webkit_authentication_request, WEBKIT, AUTHENTICATION_REQUEST, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitAuthenticationRequest, webkit_authentication_request, WEBKIT, AUTHENTICATION_REQUEST, GObject)
 
 /**
- * WebKitAuthenticationScheme:
- * @WEBKIT_AUTHENTICATION_SCHEME_DEFAULT: The default authentication scheme of WebKit.
+ * CyberKitAuthenticationScheme:
+ * @WEBKIT_AUTHENTICATION_SCHEME_DEFAULT: The default authentication scheme of CyberKit.
  * @WEBKIT_AUTHENTICATION_SCHEME_HTTP_BASIC: Basic authentication scheme as defined in RFC 2617.
  * @WEBKIT_AUTHENTICATION_SCHEME_HTTP_DIGEST: Digest authentication scheme as defined in RFC 2617.
  * @WEBKIT_AUTHENTICATION_SCHEME_HTML_FORM: HTML Form authentication.
@@ -81,53 +81,53 @@ typedef enum {
     WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED = 8,
     WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_PIN_REQUESTED = 9,
     WEBKIT_AUTHENTICATION_SCHEME_UNKNOWN = 100,
-} WebKitAuthenticationScheme;
+} CyberKitAuthenticationScheme;
 
 
 WEBKIT_API gboolean
-webkit_authentication_request_can_save_credentials    (WebKitAuthenticationRequest *request);
+webkit_authentication_request_can_save_credentials    (CyberKitAuthenticationRequest *request);
 
 WEBKIT_API void
-webkit_authentication_request_set_can_save_credentials(WebKitAuthenticationRequest *request,
+webkit_authentication_request_set_can_save_credentials(CyberKitAuthenticationRequest *request,
                                                        gboolean                     enabled);
 
-WEBKIT_API WebKitCredential *
-webkit_authentication_request_get_proposed_credential (WebKitAuthenticationRequest *request);
+WEBKIT_API CyberKitCredential *
+webkit_authentication_request_get_proposed_credential (CyberKitAuthenticationRequest *request);
 
 WEBKIT_API void
-webkit_authentication_request_set_proposed_credential (WebKitAuthenticationRequest *request,
-                                                       WebKitCredential            *credential);
+webkit_authentication_request_set_proposed_credential (CyberKitAuthenticationRequest *request,
+                                                       CyberKitCredential            *credential);
 
 WEBKIT_API const gchar *
-webkit_authentication_request_get_host                (WebKitAuthenticationRequest *request);
+webkit_authentication_request_get_host                (CyberKitAuthenticationRequest *request);
 
 WEBKIT_API guint
-webkit_authentication_request_get_port                (WebKitAuthenticationRequest *request);
+webkit_authentication_request_get_port                (CyberKitAuthenticationRequest *request);
 
-WEBKIT_API WebKitSecurityOrigin *
-webkit_authentication_request_get_security_origin     (WebKitAuthenticationRequest *request);
+WEBKIT_API CyberKitSecurityOrigin *
+webkit_authentication_request_get_security_origin     (CyberKitAuthenticationRequest *request);
 
 WEBKIT_API const gchar *
-webkit_authentication_request_get_realm               (WebKitAuthenticationRequest *request);
+webkit_authentication_request_get_realm               (CyberKitAuthenticationRequest *request);
 
-WEBKIT_API WebKitAuthenticationScheme
-webkit_authentication_request_get_scheme              (WebKitAuthenticationRequest *request);
-
-WEBKIT_API gboolean
-webkit_authentication_request_is_for_proxy            (WebKitAuthenticationRequest *request);
+WEBKIT_API CyberKitAuthenticationScheme
+webkit_authentication_request_get_scheme              (CyberKitAuthenticationRequest *request);
 
 WEBKIT_API gboolean
-webkit_authentication_request_is_retry                (WebKitAuthenticationRequest *request);
+webkit_authentication_request_is_for_proxy            (CyberKitAuthenticationRequest *request);
+
+WEBKIT_API gboolean
+webkit_authentication_request_is_retry                (CyberKitAuthenticationRequest *request);
 
 WEBKIT_API void
-webkit_authentication_request_authenticate            (WebKitAuthenticationRequest *request,
-                                                       WebKitCredential            *credential);
+webkit_authentication_request_authenticate            (CyberKitAuthenticationRequest *request,
+                                                       CyberKitCredential            *credential);
 
 WEBKIT_API void
-webkit_authentication_request_cancel                  (WebKitAuthenticationRequest *request);
+webkit_authentication_request_cancel                  (CyberKitAuthenticationRequest *request);
 
 WEBKIT_API GTlsPasswordFlags
-webkit_authentication_request_get_certificate_pin_flags (WebKitAuthenticationRequest* request);
+webkit_authentication_request_get_certificate_pin_flags (CyberKitAuthenticationRequest* request);
 
 G_END_DECLS
 

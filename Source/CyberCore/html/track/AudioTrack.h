@@ -32,7 +32,7 @@
 #include "TrackBase.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackClient;
 class AudioTrackConfiguration;
@@ -99,10 +99,10 @@ private:
     Ref<AudioTrackConfiguration> m_configuration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioTrack)
-    static bool isType(const WebCore::TrackBase& track) { return track.type() == WebCore::TrackBase::AudioTrack; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioTrack)
+    static bool isType(const CyberCore::TrackBase& track) { return track.type() == CyberCore::TrackBase::AudioTrack; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

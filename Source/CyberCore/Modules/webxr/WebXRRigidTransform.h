@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMPointInit;
 class DOMPointReadOnly;
@@ -69,6 +69,6 @@ private:
     JSValueInWrappedObject m_cachedMatrix;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

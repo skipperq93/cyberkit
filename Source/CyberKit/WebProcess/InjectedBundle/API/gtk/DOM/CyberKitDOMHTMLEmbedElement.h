@@ -54,7 +54,7 @@ webkit_dom_html_embed_element_get_type(void);
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_embed_element_get_align(CyberKitDOMHTMLEmbedElement* self);
@@ -65,7 +65,7 @@ webkit_dom_html_embed_element_get_align(CyberKitDOMHTMLEmbedElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_embed_element_set_align(CyberKitDOMHTMLEmbedElement* self, const gchar* value);
@@ -76,7 +76,7 @@ webkit_dom_html_embed_element_set_align(CyberKitDOMHTMLEmbedElement* self, const
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_embed_element_get_height(CyberKitDOMHTMLEmbedElement* self);
@@ -87,7 +87,7 @@ webkit_dom_html_embed_element_get_height(CyberKitDOMHTMLEmbedElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_embed_element_set_height(CyberKitDOMHTMLEmbedElement* self, glong value);
@@ -98,7 +98,7 @@ webkit_dom_html_embed_element_set_height(CyberKitDOMHTMLEmbedElement* self, glon
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_embed_element_get_name(CyberKitDOMHTMLEmbedElement* self);
@@ -109,7 +109,7 @@ webkit_dom_html_embed_element_get_name(CyberKitDOMHTMLEmbedElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_embed_element_set_name(CyberKitDOMHTMLEmbedElement* self, const gchar* value);
@@ -120,7 +120,7 @@ webkit_dom_html_embed_element_set_name(CyberKitDOMHTMLEmbedElement* self, const 
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_embed_element_get_src(CyberKitDOMHTMLEmbedElement* self);
@@ -131,7 +131,7 @@ webkit_dom_html_embed_element_get_src(CyberKitDOMHTMLEmbedElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_embed_element_set_src(CyberKitDOMHTMLEmbedElement* self, const gchar* value);
@@ -142,7 +142,7 @@ webkit_dom_html_embed_element_set_src(CyberKitDOMHTMLEmbedElement* self, const g
  *
  * Returns: A #gchar
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
 webkit_dom_html_embed_element_get_type_attr(CyberKitDOMHTMLEmbedElement* self);
@@ -153,7 +153,7 @@ webkit_dom_html_embed_element_get_type_attr(CyberKitDOMHTMLEmbedElement* self);
  * @value: A #gchar
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_embed_element_set_type_attr(CyberKitDOMHTMLEmbedElement* self, const gchar* value);
@@ -164,7 +164,7 @@ webkit_dom_html_embed_element_set_type_attr(CyberKitDOMHTMLEmbedElement* self, c
  *
  * Returns: A #glong
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
 webkit_dom_html_embed_element_get_width(CyberKitDOMHTMLEmbedElement* self);
@@ -175,7 +175,7 @@ webkit_dom_html_embed_element_get_width(CyberKitDOMHTMLEmbedElement* self);
  * @value: A #glong
  *
  *
- * Deprecated: 2.22: Use JavaScriptCore API instead
+ * Deprecated: 2.22: Use CyberScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
 webkit_dom_html_embed_element_set_width(CyberKitDOMHTMLEmbedElement* self, glong value);

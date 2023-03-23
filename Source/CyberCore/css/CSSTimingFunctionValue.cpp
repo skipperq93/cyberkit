@@ -28,7 +28,7 @@
 
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String CSSCubicBezierTimingFunctionValue::customCSSText() const
 {
@@ -80,4 +80,4 @@ bool CSSSpringTimingFunctionValue::equals(const CSSSpringTimingFunctionValue& ot
     return m_mass == other.m_mass && m_stiffness == other.m_stiffness && m_damping == other.m_damping && m_initialVelocity == other.m_initialVelocity;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

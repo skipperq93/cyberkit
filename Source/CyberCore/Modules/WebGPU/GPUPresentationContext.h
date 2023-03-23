@@ -35,7 +35,7 @@
 #include <wtf/MachSendRight.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GPUCanvasConfiguration;
 class GPUTexture;
