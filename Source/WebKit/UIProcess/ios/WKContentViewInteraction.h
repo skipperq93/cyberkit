@@ -171,7 +171,7 @@ typedef std::pair<WebKit::InteractionInformationRequest, InteractionInformationC
 #define FOR_EACH_FIND_WKCONTENTVIEW_ACTION(M)
 #endif
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+#if (!TARGET_OS_IOS || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 #define FOR_EACH_PASTE_AND_MATCH_STYLE(M) \
     M(pasteAndMatchStyle)
 #else

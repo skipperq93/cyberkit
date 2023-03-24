@@ -123,7 +123,7 @@ static void encodeNSError(Encoder& encoder, NSError *nsError)
     id peerCertificateChain = [userInfo objectForKey:@"NSErrorPeerCertificateChainKey"];
     if (!peerCertificateChain) {
         if (SecTrustRef peerTrust = (__bridge SecTrustRef)[userInfo objectForKey:NSURLErrorFailingURLPeerTrustErrorKey]) {
-#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             peerCertificateChain = (__bridge NSArray *)adoptCF(SecTrustCopyCertificateChain(peerTrust)).autorelease();
 #else
             CFIndex count = SecTrustGetCertificateCount(peerTrust);
